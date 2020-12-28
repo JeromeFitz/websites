@@ -14,16 +14,49 @@
  * limitations under the License.
  */
 
-export type Image = {
-  url: string
+export type ContentProperties = {
+  properties: any[]
+}
+
+export type ContentValue = {
+  id: string
+  type: string
+  properties?: ContentProperties[]
+}
+
+export type Content = {
+  value: ContentValue
+}
+
+export type BlogItem = {
+  Authors: string
+  columns: any
+  content: Content[]
+  'Date.Published': any
+  Date: any
+  Headline: string
+  id: string
+  NextLink: any
+  NoIndex: string
+  Overline: string
+  preview: any
+  Published: string
+  routeType: string
+  'SEO.Description': string
+  'SEO.Image.Description': string
+  'SEO.Image': string
+  Slug: string
+  Subline: string
+  Tags: string
+  Title: string
 }
 
 export type Blog = {
-  name: string
-  slug: string
-  stream: string
-  discord: string
-  schedule: Talk[]
+  [id: string]: BlogItem
+}
+
+export type Image = {
+  url: string
 }
 
 export type Speaker = {

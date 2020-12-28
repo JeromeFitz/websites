@@ -2,6 +2,7 @@
   "compilerOptions": {
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
     "downlevelIteration": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
@@ -20,10 +21,9 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "sourceMap": true,
-    "suppressImplicitAnyIndexErrors": true,
     "strict": false,
+    "suppressImplicitAnyIndexErrors": true,
     "target": "ES2016",
-    "baseUrl": ".",
     "paths": {
       "~components/*": ["components/*"],
       "~config/*": ["config/*"],
@@ -53,7 +53,7 @@
   "include": [
     "next-env.d.ts",
     "index.d.ts",
-    // "**/*.css",
+    "**/*.css",
     "**/*.js",
     "**/*.jsx",
     "**/*.ts",

@@ -17,6 +17,7 @@ const getTimestamp = (ts: number) => {
   const full = _format(timestamp, `EEEE MMMM do 'at' hha`)
   const podcast = _format(timestamp, `EEEE, MMMM do`)
   const tablet =
+    // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
     _upperCase(_format(timestamp, 'EEE MMM do')) + _format(timestamp, ' hha')
   const upcoming = _format(timestamp, 'EEE. MMM. do hha')
   const iso = _formatISO(timestamp)

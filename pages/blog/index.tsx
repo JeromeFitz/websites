@@ -5,18 +5,22 @@ import { getBlogs } from '~lib/cms-api'
 import { Blog } from '~lib/types'
 
 import Container from '~components/Container'
+import Header from '~components/Header'
+import { BlogListing } from '~components/Blog'
 
 const url = 'https://jeromefitzgerald.com/blog'
 const title = 'Blog'
-const description = '@todo(notion)'
+const description = 'Placeholder until Notion normalizer and routing is in place'
+const header = {
+  description,
+  title,
+}
 
 type Props = {
   blogs: Blog[]
 }
 
 const BlogPage = ({ blogs }: Props) => {
-  console.dir('BlogPage')
-  console.dir(blogs)
   return (
     <Container>
       <NextSeo
@@ -29,14 +33,8 @@ const BlogPage = ({ blogs }: Props) => {
           description,
         }}
       />
-      <>
-        <h1>{title}</h1>
-        <div className="mt-2 mb-4 text-gray-900 dark:text-gray-100">
-          <p className="my-4 mt-0">
-            Placeholder until Notion normalizer and routing is in place.
-          </p>
-        </div>
-      </>
+      <Header {...header} />
+      <BlogListing blogs={blogs} />
     </Container>
   )
 }
