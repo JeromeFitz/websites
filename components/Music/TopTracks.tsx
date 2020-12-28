@@ -20,8 +20,14 @@ const TopTracks = () => {
       return <Track key={`track-temp-${index}`} loading={true} ranking={index + 1} />
     })
   }
+
   return data.tracks.map((track, index: number) => (
-    <Track key={track.songUrl} loading={loading} ranking={index + 1} {...track} />
+    <Track
+      key={`track-perm-${index}`}
+      loading={loading}
+      ranking={index + 1}
+      {...track}
+    />
   ))
 }
 

@@ -4,13 +4,32 @@ export default async (_, res) => {
   const response = await getTopTracks()
   const { items } = await response.json()
 
-  // console.dir(items)
-
-  const tracks = items.slice(0, 10).map((track) => ({
-    artist: track.artists.map((_artist) => _artist.name).join(', '),
-    songUrl: track.external_urls.spotify,
-    title: track.name,
-  }))
+  const tracks = items.slice(0, 10).map((track) => {
+    const { album, artists } = track
+    const trackId = track.id
+    const trackName = track.name
+    const trackUrl = track.external_urls.spotify
+    return {
+      album: {
+        id: album.id,
+        imageUrl: album.images[0].url,
+        name: album.name,
+        url: album.external_urls.spotify,
+        year: album.release_date.substring(0, 4),
+      },
+      artist: {
+        name: artists.map((_artist) => _artist.name).join(', '),
+      },
+      // @refactor(spotify) prefer spotify schema or normalize consistently
+      artists,
+      isPlaying: false,
+      track: {
+        id: trackId,
+        name: trackName,
+        url: trackUrl,
+      },
+    }
+  })
 
   return res.status(200).json({ tracks })
 }

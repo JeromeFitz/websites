@@ -59,7 +59,7 @@ const Music = () => {
             Top Tracks
           </h2>
           <p className="text-gray-600 dark:text-gray-400 mb-4">
-            For 2020 my number one track was{' '}
+            For 2020 my number one song was{' '}
             <strong>
               <em>“Oh La La (f. Greg Nice) (p. DJ Premier)”</em>
             </strong>{' '}

@@ -3,23 +3,13 @@ import Link from 'next/link'
 import useSWR from 'swr'
 
 import fetcher from '~lib/fetcher'
+import { spotifyFavoriteTracks } from '~lib/spotify/favorites'
 
 // const HOUR = 3600000
 const MINUTE = 60000
 // const SECOND = 1000
 
-/**
- * @todo(spotify) Randomize with Nice Rec joints when not playing
- */
-const initialData = {
-  album: 'Spilligion',
-  albumImageUrl: 'https://i.scdn.co/image/ab67616d0000b273230d88bf27d6ca322fb59eb4',
-  artist: 'Spillage Village, JID, EARTHGANG',
-  isPlaying: false,
-  songUrl: 'https://open.spotify.com/track/7f6CWizFGRfpyOstAbyxy1',
-  title: 'Mecca (with JID & EARTHGANG)',
-  year: '2020',
-}
+const initialData = spotifyFavoriteTracks[0]
 
 const NowPlaying = () => {
   const { data } = useSWR('/api/spotify/now-playing', fetcher, {
@@ -28,36 +18,40 @@ const NowPlaying = () => {
     revalidateOnFocus: true,
   })
 
-  const item = data.isPlaying ? data : initialData
+  // @refactor(swr) This a little convulated
+  const { album, artist, isPlaying, track } =
+    data.isPlaying || !!data.artist ? data : initialData
+
+  const title = isPlaying ? 'Listening To' : 'Listening To'
 
   return (
     <>
       <div className="flex flex-col justify-center px-8 bg-green-300 border border-gray-900">
         <div className="flex flex-col w-full px-2 py-8 md:px-8 my-0 md:my-8 mx-auto max-w-4xl">
-          <h1 className="text-black dark:text-black">Listening To</h1>
+          <h1 className="text-black dark:text-black">{title}</h1>
           <div className="grid grid-cols-1 sm:grid-cols-2 sm:px-2 sm:py-12 sm:gap-x-4 md:py-16">
             <div className="relative z-10 col-start-1 row-start-1 px-4 pt-44 md:pt-24 pb-3 bg-gradient-to-t from-black sm:bg-none sm:leading-normal">
               <p className="font-extrabold text-white mb-2 sm:mb-4 sm:text-gray-900 text-sm md:text-3xl ">
-                {item.artist}
+                {artist.name}
               </p>
               <h2 className="font-semibold text-white mb-2 sm:mb-6 text-xl sm:text-4xl sm:leading-normal sm:text-black">
-                {item.title}
+                {track.name}
               </h2>
               <h3 className="text-sm text-white mb-1 sm:mb-2 sm:text-2xl sm:leading-snug sm:text-black md:text-3xl italic">
-                {item.album}
+                {album.name}
               </h3>
               <h4 className="text-xs text-white sm:text-lg sm:leading-normal sm:text-black md:text-lg italic">
-                {item.year}
+                {album.year}
               </h4>
             </div>
             <div className="col-start-1 row-start-1 flex sm:col-start-2 sm:row-span-3">
               <div className="w-full grid grid-cols-3 grid-rows-2 gap-2">
                 <div className="relative col-span-3 row-span-2 md:col-span-3">
                   <Image
-                    alt={`Album cover for “${item.album}” by ${item.artist} (${item.year})`}
+                    alt={`Album cover for “${album.name}” by ${artist.name} (${album.year})`}
                     height={450}
-                    src={item.albumImageUrl ?? '/static/images/placeholder.jpg'}
-                    title={`“${item.album}” by ${item.artist} (${item.year})`}
+                    src={album.imageUrl ?? '/static/images/placeholder.jpg'}
+                    title={`“${album.name}” by ${artist.name} (${album.year})`}
                     width={450}
                   />
                 </div>
