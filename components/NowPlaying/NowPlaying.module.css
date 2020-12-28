@@ -1,0 +1,43 @@
+.container {
+  @apply flex justify-center items-center sm:justify-center sm:items-start border border-gray-300 dark:border-gray-800 rounded-lg p-2 mb-8 w-full;
+}
+
+.link {
+  @apply text-gray-800 dark:text-gray-200 font-medium;
+}
+
+.text {
+  @apply text-gray-500 dark:text-gray-300;
+}
+
+.title {
+  @apply text-gray-900 dark:text-gray-100 text-2xl;
+}
+
+.artist {
+  @apply text-gray-700 dark:text-gray-300 text-xl;
+}
+
+.button {
+  @apply text-gray-800;
+}
+
+.buttonPlay {
+  @apply p-8 rounded-full shadow-lg;
+}
+
+.test {
+  color: red;
+}
+
+@media (min-width: 500px) {
+  .test {
+    color: yellow;
+  }
+}
+
+@media (min-width: 768px) {
+  .test {
+    color: green;
+  }
+}

@@ -1,0 +1,145 @@
+@tailwind base;
+@import './base.css';
+
+@tailwind components;
+@import './components.css';
+
+@tailwind utilities;
+
+@import '~components/NProgress/NProgress.module.css';
+
+html {
+  min-width: 375px;
+  scroll-behavior: smooth;
+}
+
+/* #__next {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+} */
+
+.sticky-nav {
+  position: sticky;
+  z-index: 10;
+  top: 0;
+  backdrop-filter: saturate(180%) blur(36px);
+  transition: background-color 0.1 ease-in-out;
+}
+
+.prose pre {
+  @apply bg-gray-50 dark:bg-gray-900;
+  @apply border border-gray-200 dark:border-gray-700;
+}
+
+.prose code {
+  @apply px-1 py-0.5 rounded-md;
+  @apply text-gray-800 dark:text-gray-200;
+  @apply border border-gray-100 dark:border-gray-800;
+  @apply bg-gray-100 dark:bg-gray-900;
+}
+
+.prose img {
+  /* Don't apply styles to next/image */
+  @apply m-0;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  @apply text-gray-700 dark:text-gray-300;
+}
+
+.token.punctuation {
+  @apply text-gray-700 dark:text-gray-300;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  @apply text-green-500;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  @apply text-purple-500;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  @apply text-yellow-500;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  @apply text-blue-500;
+}
+
+.token.function,
+.token.class-name {
+  @apply text-pink-500;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  @apply text-yellow-500;
+}
+
+code[class*='language-'],
+pre[class*='language-'] {
+  @apply text-gray-800 dark:text-gray-50;
+}
+
+pre::-webkit-scrollbar {
+  display: none;
+}
+
+pre {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Remove Safari input shadow on mobile */
+input[type='text'],
+input[type='email'] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.card > a {
+  @apply no-underline;
+}
+
+.card > p {
+  @apply my-2;
+}
+
+.step > h3 {
+  @apply my-0;
+}
+
+::selection {
+  @apply bg-pink-900 dark:bg-pink-100;
+  @apply text-gray-100 dark:text-gray-900;
+}
+
+h1 {
+  @apply font-bold tracking-tight mb-8;
+  @apply text-3xl md:text-5xl;
+  @apply text-black dark:text-white;
+}

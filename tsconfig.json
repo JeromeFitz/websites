@@ -1,0 +1,62 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "downlevelIteration": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "lib": ["ES6", "dom", "dom.iterable", "ESNext", "ES2016"],
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "noEmit": false,
+    "noImplicitAny": false,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "outDir": "./.dist",
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "strict": false,
+    "target": "ES2016",
+    "baseUrl": ".",
+    "paths": {
+      "~components/*": ["components/*"],
+      "~config/*": ["config/*"],
+      "~containers/*": ["containers/*"],
+      "~context/*": ["context/*"],
+      "~data/*": ["data/*"],
+      "~hooks/*": ["hooks/*"],
+      "~lib/*": ["lib/*"],
+      "~pages/*": ["pages/*"],
+      "~scripts/*": ["scripts/*"],
+      "~styles/*": ["styles/*"],
+      "~svg/*": ["svg/*"],
+      "~theme/*": ["theme/*"],
+      "~utils/*": ["utils/*"]
+    }
+  },
+  "exclude": [
+    "./.cache",
+    "./.dist",
+    "./*.d.ts",
+    ".next",
+    "bundles",
+    "node_modules",
+    "out",
+    "public"
+  ],
+  "include": [
+    "next-env.d.ts",
+    "index.d.ts",
+    // "**/*.css",
+    "**/*.js",
+    "**/*.jsx",
+    "**/*.ts",
+    "**/*.tsx"
+  ]
+}

@@ -1,0 +1,12 @@
+**/_next/**
+**/.dist/**
+**/.next/**
+**/.now/**
+**/.vercel/**
+**/bundles/**
+**/dist/**
+**/out/**
+
+**/deprecated/**
+**/fonts/**
+**/zzz--do-not-use/**
