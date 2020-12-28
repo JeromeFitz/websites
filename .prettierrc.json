@@ -1,7 +1,7 @@
 {
   "arrowParens": "always",
   "endOfLine": "auto",
-  "printWidth": 75,
+  "printWidth": 85,
   "semi": false,
   "singleQuote": true,
   "tabWidth": 2,

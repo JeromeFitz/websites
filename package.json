@@ -59,7 +59,8 @@
     "react-tweet-embed": "1.2.2",
     "reading-time": "1.2.1",
     "swr": "0.3.11",
-    "tailwindcss": "2.0.2"
+    "tailwindcss": "2.0.2",
+    "uuid": "8.3.2"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "10.0.4",

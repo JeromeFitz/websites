@@ -26,8 +26,8 @@ const Music = () => {
         <h1>{title}</h1>
         <div className="mt-2 mb-4 text-gray-900 dark:text-gray-100">
           <p className="my-4 mt-0">
-            I listen to music extensively on MP3s “old-school” style, and
-            vinyl which is even more ancient.
+            I listen to music extensively on MP3s “old-school” style, and vinyl which
+            is even more ancient.
           </p>
           <p className="my-4">
             All this data comes from{' '}
@@ -41,8 +41,8 @@ const Music = () => {
               Please...
               <br />
             </span>
-            Buy music. Go to live online shows. Go to live shows when we
-            can. Keep art alive.
+            Buy music. Go to live online shows. Go to live shows when we can. Keep
+            art alive.
           </p>
         </div>
         <div className="my-8">

@@ -13,11 +13,7 @@ class MyDocument extends Document<any> {
       <Html lang="en">
         <GoogleFonts href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" />
         <Head>
-          <link
-            rel="preconnect"
-            href="https://fonts.gstatic.com/"
-            crossOrigin=""
-          />
+          <link rel="preconnect" href="https://fonts.gstatic.com/" crossOrigin="" />
           {/* <link
             rel="preconnect"
             // href="/static/fonts/name-sans/name_sans-variable.woff2"
@@ -26,11 +22,7 @@ class MyDocument extends Document<any> {
             type="font/woff2"
             crossOrigin="anonymous"
           /> */}
-          <link
-            rel="preconnect"
-            href="https://cdn.usefathom.com"
-            crossOrigin=""
-          />
+          <link rel="preconnect" href="https://cdn.usefathom.com" crossOrigin="" />
         </Head>
         <body className="bg-white dark:bg-black text-white dark:text-black">
           <Main />

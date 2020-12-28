@@ -1,7 +1,5 @@
 export default async (_, res) => {
-  const userResponse = await fetch(
-    'https://api.github.com/users/JeromeFitz'
-  )
+  const userResponse = await fetch('https://api.github.com/users/JeromeFitz')
   const userReposResponse = await fetch(
     'https://api.github.com/users/JeromeFitz/repos'
   )
@@ -15,10 +13,7 @@ export default async (_, res) => {
     return accumulator + repository['stargazers_count']
   }, 0)
 
-  res.setHeader(
-    'Cache-Control',
-    'public, s-maxage=1200, stale-while-revalidate=600'
-  )
+  res.setHeader('Cache-Control', 'public, s-maxage=1200, stale-while-revalidate=600')
 
   return res.status(200).json({
     followers: user.followers,

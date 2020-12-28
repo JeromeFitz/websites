@@ -13,10 +13,7 @@ module.exports = {
     purgeLayersByDefault: true,
     applyComplexClasses: true,
   },
-  purge: [
-    './pages/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}',
-  ],
+  purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       fontFamily: {
@@ -91,8 +88,5 @@ module.exports = {
     },
     typography: ['dark'],
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-    require('@tailwindcss/ui'),
-  ],
+  plugins: [require('@tailwindcss/typography'), require('@tailwindcss/ui')],
 }

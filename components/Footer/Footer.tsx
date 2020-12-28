@@ -81,19 +81,13 @@ const Footer = () => {
       </div> */}
         <div className="space-x-3">
           <Link href="/">
-            <a className="text-sm text-gray-500 hover:text-gray-600">
-              /home
-            </a>
+            <a className="text-sm text-gray-500 hover:text-gray-600">/home</a>
           </Link>
           <Link href="/comedy">
-            <a className="text-sm text-gray-500 hover:text-gray-600">
-              /comedy
-            </a>
+            <a className="text-sm text-gray-500 hover:text-gray-600">/comedy</a>
           </Link>
           <Link href="/music">
-            <a className="text-sm text-gray-500 hover:text-gray-600">
-              /music
-            </a>
+            <a className="text-sm text-gray-500 hover:text-gray-600">/music</a>
           </Link>
           {/* <Link href="/newsletter">
           <a className="text-sm text-gray-500 hover:text-gray-600">/newsletter</a>

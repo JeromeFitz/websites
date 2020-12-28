@@ -17,22 +17,11 @@ const TopTracks = () => {
 
   if (loading) {
     return [...Array(10).keys()].map((index: number) => {
-      return (
-        <Track
-          key={`track-temp-${index}`}
-          loading={true}
-          ranking={index + 1}
-        />
-      )
+      return <Track key={`track-temp-${index}`} loading={true} ranking={index + 1} />
     })
   }
   return data.tracks.map((track, index: number) => (
-    <Track
-      key={track.songUrl}
-      loading={loading}
-      ranking={index + 1}
-      {...track}
-    />
+    <Track key={track.songUrl} loading={loading} ranking={index + 1} {...track} />
   ))
 }
 

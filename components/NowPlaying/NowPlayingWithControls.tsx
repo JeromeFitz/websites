@@ -33,8 +33,7 @@ const isPlayable = false
  */
 const initialData = {
   album: 'Spilligion',
-  albumImageUrl:
-    'https://i.scdn.co/image/ab67616d0000b273230d88bf27d6ca322fb59eb4',
+  albumImageUrl: 'https://i.scdn.co/image/ab67616d0000b273230d88bf27d6ca322fb59eb4',
   artist: 'Spillage Village, JID, EARTHGANG',
   isPlaying: false,
   songUrl: 'https://open.spotify.com/track/7f6CWizFGRfpyOstAbyxy1',

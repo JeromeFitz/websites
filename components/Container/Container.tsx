@@ -26,14 +26,10 @@ const Container = ({ children }) => {
               </a>
             </NextLink>
             <NextLink href="/comedy">
-              <a className="p-1 sm:p-4 text-gray-900 dark:text-gray-100">
-                Comedy
-              </a>
+              <a className="p-1 sm:p-4 text-gray-900 dark:text-gray-100">Comedy</a>
             </NextLink>
             <NextLink href="/music">
-              <a className="p-1 sm:p-4 text-gray-900 dark:text-gray-100">
-                Music
-              </a>
+              <a className="p-1 sm:p-4 text-gray-900 dark:text-gray-100">Music</a>
             </NextLink>
           </div>
           <button

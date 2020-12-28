@@ -13,8 +13,7 @@ const MINUTE = 60000
  */
 const initialData = {
   album: 'Spilligion',
-  albumImageUrl:
-    'https://i.scdn.co/image/ab67616d0000b273230d88bf27d6ca322fb59eb4',
+  albumImageUrl: 'https://i.scdn.co/image/ab67616d0000b273230d88bf27d6ca322fb59eb4',
   artist: 'Spillage Village, JID, EARTHGANG',
   isPlaying: false,
   songUrl: 'https://open.spotify.com/track/7f6CWizFGRfpyOstAbyxy1',
@@ -66,9 +65,7 @@ const NowPlaying = () => {
           <p className="text-center text-black font-medium mt-4">
             I listen to a lot of{' '}
             <Link href="/music">
-              <a className="text-gray-700 hover:text-gray-900 underline">
-                music
-              </a>
+              <a className="text-gray-700 hover:text-gray-900 underline">music</a>
             </Link>
             .
           </p>

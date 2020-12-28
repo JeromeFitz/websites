@@ -18,23 +18,14 @@ const TopTracks = () => {
   if (loading) {
     return [...Array(10).keys()].map((index: number) => {
       return (
-        <Artist
-          key={`artist-temp-${index}`}
-          loading={true}
-          ranking={index + 1}
-        />
+        <Artist key={`artist-temp-${index}`} loading={true} ranking={index + 1} />
       )
     })
   }
 
   return data.artists.map((artist, index: number) => {
     return (
-      <Artist
-        key={artist.url}
-        loading={loading}
-        ranking={index + 1}
-        {...artist}
-      />
+      <Artist key={artist.url} loading={loading} ranking={index + 1} {...artist} />
     )
   })
 }

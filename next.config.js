@@ -1,13 +1,29 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const { withPlugins } = require('next-compose-plugins')
+const getRedirects = require('./config/website/getRedirects')
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
 
 const nextConfig = {
+  amp: false,
+  assetPrefix: '',
+  distDir: './.next',
+  experimental: {
+    jsconfigPaths: true,
+    modern: true,
+    catchAllRouting: true,
+    polyfillsOptimization: true,
+    productionBrowserSourceMaps: false,
+  },
   images: {
     domains: [
+      'cdn.jerandky.com', // CDN
+      'cdn.jeromefitzgerald.com', // CDN
+      'notion.so', // Notion
+      'www.notion.so', // Notion
+      's3-us-west-2.amazonaws.com', // AWS
       'cdn.aglty.io', // Agility
       'i.scdn.co', // Spotify Album Art
       'images.ctfassets.net', // Contentful
@@ -20,6 +36,13 @@ const nextConfig = {
   i18n: {
     locales: ['en'],
     defaultLocale: 'en',
+  },
+  pageExtensions: ['jsx', 'js', 'tsx', 'ts'],
+  poweredByHeader: false,
+  target: target,
+  useFileSystemPublicRoutes: true, // false will block './pages' as router
+  async rewrites() {
+    return await getRedirects
   },
   webpack: (config, { dev, isServer }) => {
     // @todo(sitemap)
