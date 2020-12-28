@@ -1,5 +1,4 @@
 import { isPages, routeTypes } from '~config/notion/website'
-// // import getStaticPropsQueryCollection from '~utils/notion/getStaticPropsQueryCollection'
 
 const isDebug = false
 
@@ -11,9 +10,9 @@ const getCollectionView = ({ catchAll }) => {
   let itemDate: any
   let id: any
   let slug: any = null
-  let episode: any = null
+  // let episode: any = null
   let url: any
-  let indexId, collectionId, collectionViewId
+  let indexId: string, collectionId: string, collectionViewId: string
 
   isDebug && console.dir(`catchAll`)
   isDebug && console.dir(catchAll)
@@ -202,7 +201,7 @@ const getCollectionView = ({ catchAll }) => {
       if (!!episodePodcast) {
         url += `/${episodePodcast}`
         slug = episodePodcast
-        episode = episodePodcast
+        // episode = episodePodcast
       }
 
       if (isPodcastsIndex) {
@@ -283,7 +282,7 @@ const getCollectionView = ({ catchAll }) => {
   return {
     collectionId,
     collectionViewId,
-    episode,
+    // episode,
     id,
     indexId,
     itemDate,

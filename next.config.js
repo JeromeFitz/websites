@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const { withPlugins } = require('next-compose-plugins')
-const getRedirects = require('./config/website/getRedirects')
+const getRedirects = require('./config/notion/website/getRedirects')
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
@@ -39,11 +39,10 @@ const nextConfig = {
   },
   pageExtensions: ['jsx', 'js', 'tsx', 'ts'],
   poweredByHeader: false,
-  target: target,
-  useFileSystemPublicRoutes: true, // false will block './pages' as router
-  async rewrites() {
-    return await getRedirects
+  rewrites() {
+    return getRedirects
   },
+  useFileSystemPublicRoutes: true, // false will block './pages' as router
   webpack: (config, { dev, isServer }) => {
     // @todo(sitemap)
     // if (isServer) {

@@ -28,6 +28,8 @@ const NowPlaying = () => {
     revalidateOnFocus: true,
   })
 
+  const item = data.isPlaying ? data : initialData
+
   return (
     <>
       <div className="flex flex-col justify-center px-8 bg-green-300 border border-gray-900">
@@ -36,26 +38,26 @@ const NowPlaying = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 sm:px-2 sm:py-12 sm:gap-x-4 md:py-16">
             <div className="relative z-10 col-start-1 row-start-1 px-4 pt-44 md:pt-24 pb-3 bg-gradient-to-t from-black sm:bg-none sm:leading-normal">
               <p className="font-extrabold text-white mb-2 sm:mb-4 sm:text-gray-900 text-sm md:text-3xl ">
-                {data?.artist}
+                {item.artist}
               </p>
               <h2 className="font-semibold text-white mb-2 sm:mb-6 text-xl sm:text-4xl sm:leading-normal sm:text-black">
-                {data?.title}
+                {item.title}
               </h2>
               <h3 className="text-sm text-white mb-1 sm:mb-2 sm:text-2xl sm:leading-snug sm:text-black md:text-3xl italic">
-                {data?.album}
+                {item.album}
               </h3>
               <h4 className="text-xs text-white sm:text-lg sm:leading-normal sm:text-black md:text-lg italic">
-                {data?.year}
+                {item.year}
               </h4>
             </div>
             <div className="col-start-1 row-start-1 flex sm:col-start-2 sm:row-span-3">
               <div className="w-full grid grid-cols-3 grid-rows-2 gap-2">
                 <div className="relative col-span-3 row-span-2 md:col-span-3">
                   <Image
-                    alt={`Album cover for “${data?.album}” by ${data?.artist} (${data?.year})`}
+                    alt={`Album cover for “${item.album}” by ${item.artist} (${item.year})`}
                     height={450}
-                    src={data?.albumImageUrl}
-                    title={`“${data?.album}” by ${data?.artist} (${data?.year})`}
+                    src={item.albumImageUrl ?? '/static/images/placeholder.jpg'}
+                    title={`“${item.album}” by ${item.artist} (${item.year})`}
                     width={450}
                   />
                 </div>
