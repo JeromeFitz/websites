@@ -4,14 +4,14 @@ import { useState, useEffect } from 'react'
 import { useTheme } from 'next-themes'
 import NextLink from 'next/link'
 import _map from 'lodash/map'
-
+import _capitalize from 'lodash/capitalize'
 import { MdWbSunny } from 'react-icons/md'
 import { IoMdMoon } from 'react-icons/io'
 
 import Footer from '~components/Footer'
 
 const links = [
-  { active: true, href: '/', title: 'Home' },
+  { active: true, href: '/', title: 'home' },
   { active: true, href: '/blog', title: 'blog' },
   { active: true, href: '/comedy', title: 'comedy' },
   { active: true, href: '/music', title: 'music' },
@@ -34,8 +34,8 @@ const Container = ({ children }) => {
           <div>
             {_map(links, (link) => (
               <NextLink href={link.href} key={`nav-link-${link.title}`}>
-                <a className="p-1 sm:p-4 sm:pl-0 text-gray-900 dark:text-gray-100 capitalize">
-                  {link.title}
+                <a className="p-1 sm:p-4 sm:pl-0 text-gray-900 dark:text-gray-100">
+                  {_capitalize(link.title)}
                 </a>
               </NextLink>
             ))}
