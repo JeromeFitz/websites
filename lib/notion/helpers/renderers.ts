@@ -1,32 +1,29 @@
 import React from 'react'
 import components from '~components/Dynamic/dynamic'
 
-function applyTags(tags = [], children, noPTag = false, key) {
+function applyTags({ children, key, pTagRender = false, tags = [] }) {
   let child = children
 
   for (const tag of tags) {
     const props: { [key: string]: any } = { key }
     let tagName = tag[0]
 
-    if (noPTag && tagName === 'p') tagName = React.Fragment
+    if (!pTagRender && tagName === 'p') tagName = React.Fragment
     if (tagName === 'c') tagName = 'code'
 
     if (tagName === 'a') {
       props.href = tag[1]
     }
 
-    // console.dir(`* applyTags: child`)
-    // console.dir(props)
-
     child = React.createElement(components[tagName] || tagName, props, child)
   }
   return child
 }
 
-export function textBlock(text = [], noPTag = false, mainKey) {
+export function textBlock({ parentKey, pTagRender = true, text = [] }) {
   const children = []
   let key = 0
-  let childKey = `${mainKey}--`
+  const childKey = `${parentKey}--`
 
   for (const textItem of text) {
     key++
@@ -35,13 +32,19 @@ export function textBlock(text = [], noPTag = false, mainKey) {
       continue
     }
     children.push(
-      applyTags(textItem[1], textItem[0], noPTag, `${childKey}--${key}`)
+      applyTags({
+        children: textItem[0],
+        key: `${childKey}--${key}`,
+        pTagRender,
+        tags: textItem[1],
+      })
     )
   }
+
   return React.createElement(
-    noPTag ? React.Fragment : components.p,
-    { key: mainKey },
-    ...children,
-    noPTag
+    pTagRender ? components.p : components.span,
+    { key: parentKey },
+    // null,
+    ...children
   )
 }

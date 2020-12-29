@@ -72,7 +72,7 @@ const renderNotionContent = (data) => {
         // const renderHeading = (Type: string | React.ComponentType) => {
         //   toRender.push(
         //     <Heading key={id} id={id}>
-        //       <Type key={id}>{textBlock(properties.title, true, id)}</Type>
+        //       <Type key={id}>{textBlock({parentKey: id, pRenderTag: true, text: properties.title)}</Type>
         //     </Heading>
         //   )
         // }
@@ -130,7 +130,11 @@ const renderNotionContent = (data) => {
           listMap[id] = {
             key: id,
             nested: [],
-            children: textBlock(properties.title, true, id),
+            children: textBlock({
+              parentKey: id,
+              pTagRender: true,
+              text: properties.title,
+            }),
           }
 
           if (listMap[parent_id]) {
@@ -181,7 +185,13 @@ const renderNotionContent = (data) => {
             break
           case 'text':
             if (properties) {
-              toRender.push(textBlock(properties.title, false, id))
+              toRender.push(
+                textBlock({
+                  parentKey: id,
+                  pTagRender: true,
+                  text: properties.title,
+                })
+              )
             }
             break
           case 'image':
@@ -435,7 +445,11 @@ const renderNotionContent = (data) => {
           //       severity="info"
           //       variant="standard"
           //     >
-          //       {textBlock(properties.title, true, id)}
+          //       {textBlock({
+          //           parentKey: id,
+          //           TagRender: true,
+          //           text: properties.title
+          //       })}
           //     </Alert>
           //   )
           //   break

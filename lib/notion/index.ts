@@ -120,6 +120,15 @@ export async function getEvents(): Promise<Blog[]> {
   return await refactorNotionCalls(catchAll)
 }
 
+export async function getPage(catchAll): Promise<any> {
+  return await refactorNotionCalls(catchAll)
+}
+
+export async function getPages(): Promise<Blog[]> {
+  const catchAll = ['pages']
+  return await refactorNotionCalls(catchAll)
+}
+
 export async function getPeople(catchAll): Promise<any> {
   return await refactorNotionCalls(catchAll)
 }

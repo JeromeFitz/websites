@@ -56,9 +56,7 @@ const Music = () => {
         <p className="text-gray-600 dark:text-gray-400 mb-4">
           For 2020 my number one artist was <strong>Madlib</strong>.
         </p>
-        <ul>
-          <TopArtists />
-        </ul>
+        <TopArtists />
       </div>
       <div className="my-8">
         <h2 className="font-bold text-3xl mb-4 tracking-tight text-black dark:text-white">

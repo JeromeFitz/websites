@@ -9,6 +9,8 @@ let cmsApi: {
   getBlogs: () => Promise<Blog[]>
   getEvent: () => Promise<any>
   getEvents: () => Promise<any[]>
+  getPage: () => Promise<any>
+  getPages: () => Promise<any[]>
   getPeople: () => Promise<any>
   getPeoples: () => Promise<any[]>
   getPodcast: () => Promise<any>
@@ -32,6 +34,8 @@ if (notionApi) {
     getBlogs: async () => [],
     getEvent: async () => null,
     getEvents: async () => [],
+    getPage: async () => null,
+    getPages: async () => [],
     getPeople: async () => null,
     getPeoples: async () => [],
     getPodcast: async () => null,
@@ -57,6 +61,14 @@ export function getEvent(catchAll): Promise<any> {
 
 export function getEvents(): Promise<Blog[]> {
   return cmsApi.getEvents()
+}
+
+export function getPage(catchAll): Promise<any> {
+  return cmsApi.getPage(catchAll)
+}
+
+export function getPages(): Promise<Blog[]> {
+  return cmsApi.getPages()
 }
 
 export function getPeople(catchAll): Promise<any> {

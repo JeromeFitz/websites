@@ -110,7 +110,12 @@ const Listing = ({ items, ...rest }: Props) => {
                   {(item.preview || []).map((block, idx) => {
                     // console.dir(`> item.preview debugging`)
                     // console.dir(block)
-                    return textBlock(block, true, `${item.Slug}${idx}`)
+                    // @note(key) Technically, this does not _need_ a key since every
+                    return textBlock({
+                      parentKey: `${item.Slug}${idx}`,
+                      pTagRender: false,
+                      text: block,
+                    })
                   })}
                 </p>
               </li>

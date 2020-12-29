@@ -15,20 +15,22 @@ const TopTracks = () => {
 
   const loading = !data && !error
 
-  if (loading) {
-    return [...Array(10).keys()].map((index: number) => {
-      return <Track key={`track-temp-${index}`} loading={true} ranking={index + 1} />
-    })
-  }
-
-  return data.tracks.map((track, index: number) => (
-    <Track
-      key={`track-perm-${index}`}
-      loading={loading}
-      ranking={index + 1}
-      {...track}
-    />
-  ))
+  return (
+    <ul>
+      {loading
+        ? [...Array(10).keys()].map((index: number) => {
+            ;<Track key={`track-temp-${index}`} loading={true} ranking={index + 1} />
+          })
+        : data.tracks.map((track, index: number) => (
+            <Track
+              key={`track-perm-${index}`}
+              loading={loading}
+              ranking={index + 1}
+              {...track}
+            />
+          ))}
+    </ul>
+  )
 }
 
 export default TopTracks

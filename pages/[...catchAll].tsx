@@ -18,6 +18,8 @@ import {
   getBlogs,
   getEvent,
   getEvents,
+  getPage,
+  getPages,
   getPeople,
   getPeoples,
   getPodcast,
@@ -109,6 +111,9 @@ export const getStaticProps: GetStaticProps<any> = async ({
       break
     case 'events':
       data = isIndex ? await getEvents() : await getEvent(rest.params.catchAll)
+      break
+    case 'pages':
+      data = isIndex ? await getPages() : await getPage(rest.params.catchAll)
       break
     case 'people':
       data = isIndex ? await getPeoples() : await getPeople(rest.params.catchAll)
@@ -223,6 +228,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   const blogData: Blog[] = await getBlogs()
   const eventsData: any = await getEvents()
+  const pagesData: any = await getPages()
   const peoplesData: any = await getPeoples()
   const podcastsData: any = await getPodcasts()
   const showsData: any = await getShows()
@@ -241,6 +247,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
     routeType: 'events',
   })
   eventsPaths && paths.push(...eventsPaths)
+
+  const { paths: pagesPaths } = await getStaticPathsDefault({
+    data: pagesData,
+    routeType: 'pages',
+  })
+  pagesPaths && paths.push(...pagesPaths)
 
   const { paths: peoplesPaths } = await getStaticPathsDefault({
     data: peoplesData,

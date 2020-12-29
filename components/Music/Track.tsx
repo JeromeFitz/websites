@@ -1,24 +1,62 @@
+import cx from 'clsx'
 import { MdOpenInNew } from 'react-icons/md'
 import lpad from '~utils/lpad'
 import { Skeleton } from '~components/Music'
 
 const Track = (item) => {
-  const { artist, loading, ranking, track } = item
+  const { album, artist, loading, ranking, track } = item
   return (
-    <div className="flex flex-row items-baseline border-b border-gray-100 dark:border-gray-800 max-w-3xl w-full mt-8">
-      <p className="text-sm font-bold text-gray-400 dark:text-gray-600">
+    <li
+      className={cx(
+        'flex flex-row items-center',
+        'border-t first:border-t-0',
+        'border-l-0 border-r-0 ',
+        'w-full',
+        'py-6',
+        'border-cool-gray-900 dark:border-cool-gray-100',
+        'odd:bg-cool-gray-200 dark:odd:bg-cool-gray-800'
+      )}
+    >
+      <p
+        className={cx(
+          'text-sm font-bold',
+          'text-cool-gray-600 dark:text-cool-gray-400',
+          'ml-4'
+        )}
+      >
         {lpad(ranking)}.
       </p>
-      <div className="flex flex-col pl-3 mb-4 w-60 sm:w-96 md:w-full">
+      {/* <Image
+        alt={`Image of ${artist.name}`}
+        height={64}
+        width={64}
+        src={artist.image}
+        className={cx(
+          'w-16 h-16 rounded-full pl-6 mr-2 border border-black bg-gray-100'
+        )}
+      /> */}
+      <img
+        alt={`Album cover image of “${album.name}” by ${artist.name}`}
+        src={album.imageUrl}
+        className={cx(
+          'w-16 h-16 md:w-24 md:h-24',
+          'hidden md:inline-flex ml-6 mr-2',
+          'rounded-md border border-cool-gray-700 dark:border-cool-gray-200 bg-gray-100'
+        )}
+      />
+      <div className={cx('flex flex-col pl-3 my-4 w-60 sm:w-96 md:w-full')}>
         {loading ? (
           <>
             <Skeleton />
-            <Skeleton className="bg-gray-500 dark:bg-gray-400" />
+            <Skeleton className="bg-cool-gray-500 dark:bg-cool-gray-400" />
           </>
         ) : (
           <>
             <a
-              className="font-medium text-gray-900 dark:text-gray-100 pt-1 flex flex-row"
+              className={cx(
+                'font-medium text-cool-gray-900 dark:text-cool-gray-300',
+                'pt-1 flex flex-row'
+              )}
               href={track.url}
               target="_blank"
               rel="noopener noreferrer"
@@ -28,13 +66,13 @@ const Track = (item) => {
                 <MdOpenInNew />
               </span>
             </a>
-            <p className="text-gray-500 truncate" color="gray.500">
+            <p className="text-cool-gray-700 dark:text-cool-gray-300 truncate">
               {artist.name}
             </p>
           </>
         )}
       </div>
-    </div>
+    </li>
   )
 }
 

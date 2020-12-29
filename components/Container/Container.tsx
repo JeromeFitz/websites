@@ -36,28 +36,28 @@ const Container = ({ children }) => {
       <nav className="sticky-nav bg-opacity-60 dark:bg-opacity-60 ">
         <div className="flex flex-row justify-between items-center w-full p-8 my-0 md:my-8 mx-auto max-w-4xl">
           <div>
-            {_map(links, (link) => {
-              // @refactor(isSelected) This is ... a mess haha
-              const isSelected =
-                (router.asPath.length > 1 &&
-                  router.asPath.startsWith(link.href) &&
-                  link.title !== 'home') ||
-                (router.asPath.length === 1 &&
-                  router.asPath.startsWith(link.href) &&
-                  link.title === 'home')
-              return (
-                <NextLink href={link.href} key={`nav-link-${link.title}`}>
-                  <a
-                    className={cx(
-                      'p-1 sm:p-4 sm:pl-0 text-gray-900 dark:text-gray-100',
-                      isSelected && 'underline font-bold'
-                    )}
-                  >
-                    {_capitalize(link.title)}
-                  </a>
-                </NextLink>
-              )
-            })}
+            {mounted &&
+              _map(links, (link) => {
+                // @refactor(isSelected) This is ... a mess haha
+                const isSelected =
+                  (router.asPath.length > 1 &&
+                    router.asPath.startsWith(link.href) &&
+                    link.title !== 'home') ||
+                  (router.asPath.length === 1 && link.title === 'home')
+
+                return (
+                  <NextLink href={link.href} key={`nav-link-${link.title}`}>
+                    <a
+                      className={cx(
+                        'p-1 sm:p-4 sm:pl-0 text-gray-900 dark:text-gray-100',
+                        isSelected && 'underline font-bold'
+                      )}
+                    >
+                      {_capitalize(link.title)}
+                    </a>
+                  </NextLink>
+                )
+              })}
           </div>
           <button
             aria-label="Toggle Dark Mode"

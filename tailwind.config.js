@@ -92,9 +92,12 @@ module.exports = {
     },
   },
   variants: {
+    // backgroundColor: ['responsive', 'odd', 'hover', 'focus', 'dark'],
     extend: {
+      backgroundColor: ['dark', 'first', 'last', 'even', 'odd'],
       backgroundOpacity: ['dark'],
       boxShadow: ['dark'],
+      borderWidth: ['first', 'last'],
     },
     typography: ['dark'],
   },

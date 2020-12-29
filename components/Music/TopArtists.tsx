@@ -15,15 +15,26 @@ const TopArtists = () => {
 
   const loading = !data && !error
 
-  if (loading) {
-    return [...Array(10).keys()].map((index: number) => (
-      <Artist key={`artist-temp-${index}`} loading={true} ranking={index + 1} />
-    ))
-  }
-
-  return data.artists.map((artist, index: number) => (
-    <Artist key={artist.url} loading={loading} ranking={index + 1} {...artist} />
-  ))
+  return (
+    <ul>
+      {loading
+        ? [...Array(10).keys()].map((index: number) => (
+            <Artist
+              key={`artist-temp-${index}`}
+              loading={true}
+              ranking={index + 1}
+            />
+          ))
+        : data.artists.map((artist, index: number) => (
+            <Artist
+              key={artist.url}
+              loading={loading}
+              ranking={index + 1}
+              {...artist}
+            />
+          ))}
+    </ul>
+  )
 }
 
 export default TopArtists
