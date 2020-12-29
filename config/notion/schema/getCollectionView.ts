@@ -1,6 +1,6 @@
 import { isPages, routeTypes } from '~config/notion/website'
 
-const isDebug = false
+const isDebug = true
 
 const getCollectionView = ({ catchAll }) => {
   /**
@@ -65,6 +65,14 @@ const getCollectionView = ({ catchAll }) => {
         date: dateBlog,
       }
 
+      isDebug && console.dir(`isIndex:   ${isIndex}`)
+      isDebug && console.dir(`!isIndex:  ${!isIndex}`)
+      isDebug && console.dir(`yearBlog:  ${yearBlog}`)
+      isDebug && console.dir(`monthBlog: ${monthBlog}`)
+      isDebug && console.dir(`dateBlog:  ${dateBlog}`)
+      isDebug && console.dir(`slugBlog:  ${slugBlog}`)
+      isDebug && console.dir(`url:       ${url}`)
+
       if (!isIndex) {
         if (yearBlog) url += `/${yearBlog}`
         if (monthBlog) url += `/${monthBlog}`
@@ -88,16 +96,30 @@ const getCollectionView = ({ catchAll }) => {
 
       indexId = blog__indexId
       collectionId = blog__collectionId
-      collectionViewId = isIndex
-        ? blog__collectionViewId
-        : slugBlog //|| dateBlog
-        ? // ? blog__collectionViewId__slug
-          blog__collectionViewId__dateExactDate
-        : blog__collectionViewId__dateExactMonth
+      // collectionViewId = isIndex
+      //   ? blog__collectionViewId
+      //   : slugBlog //|| dateBlog
+      //   ? // ? blog__collectionViewId__slug
+      //     blog__collectionViewId__dateExactDate
+      //   : blog__collectionViewId__dateExactMonth
+
+      if (isIndex) {
+        isDebug && console.dir(`>>> if isIndex`)
+        collectionViewId = blog__collectionViewId
+      } else if (slugBlog) {
+        isDebug && console.dir(`>>> slugBlog`)
+        collectionViewId = blog__collectionViewId__slug
+      } else if (dateBlog) {
+        isDebug && console.dir(`>>> dateBlog`)
+        collectionViewId = blog__collectionViewId__dateExactDate
+      } else {
+        isDebug && console.dir(`>>> else = monthBlog`)
+        collectionViewId = blog__collectionViewId__dateExactMonth
+      }
 
       isDebug && console.dir(`url:       ${url}`)
       isDebug && console.dir(`slug:      ${slug}`)
-      isDebug && console.dir(`slugBlog: ${slugBlog}`)
+      isDebug && console.dir(`slugBlog:  ${slugBlog}`)
       isDebug && console.dir(`itemDate`)
       isDebug && console.dir(itemDate)
       isDebug && console.dir(routeTypes[routeType])

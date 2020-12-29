@@ -13,13 +13,13 @@ type Props = {
 }
 
 const BlogListing = ({ blogs }: Props) => {
-  const response = useSWR('/api/notion/blog', {
+  const { data } = useSWR('/api/notion/blog', {
     initialData: blogs,
     refreshInterval: MINUTE,
     revalidateOnFocus: false,
   })
 
-  const updatedBlogs = response.data || []
+  const updatedBlogs = data || []
   // const updatedBlog = updatedBlogs.find((b: BlogItem) => b.id === blog.id) || blog
 
   return (
@@ -27,15 +27,13 @@ const BlogListing = ({ blogs }: Props) => {
       {!!updatedBlogs && (
         <ul>
           {_map(updatedBlogs, (blog: BlogItem, blogId) => {
-            console.dir(`blog...`)
-            console.dir(`blogId: ${blogId}`)
-            console.dir(blog)
             return (
-              <li className={cx('font-mono text-black dark:text-white')}>
-                {blog.id}:<br />
-                <span className="font-sans">{blog.Overline}</span>
-                <br />
-                <br />
+              <li
+                className={cx('font-mono text-black dark:text-white')}
+                key={blogId}
+              >
+                {blog.id}:
+                <span className="font-sans block mt-2 mb-8">{blog.Overline}</span>
               </li>
             )
           })}

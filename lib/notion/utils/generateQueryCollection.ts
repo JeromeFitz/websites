@@ -7,7 +7,7 @@ import getCollectionViewWithItemDate from '~lib/notion/utils/getCollectionViewWi
 import getCollectionViewWithMultiSelect from '~lib/notion/utils/getCollectionViewWithMultiSelect'
 import getCollectionViewWithString from '~lib/notion/utils/getCollectionViewWithString'
 
-const isDebug = false
+const isDebug = true
 
 const generateQueryCollection = ({
   collectionId,
@@ -48,10 +48,12 @@ const generateQueryCollection = ({
   isDebug && console.dir(`schemaSlug: ${schemaSlug}`)
 
   let indexCollectionView = indexCollection.collectionViewIds[collectionViewId]
-  // console.dir(`>> indexCollectionView`)
-  // console.dir(indexCollectionView)
+  isDebug && console.dir(`>> indexCollectionView`)
+  isDebug && console.dir(indexCollectionView)
 
-  if (!!itemDate) {
+  if (!!itemDate && !slug) {
+    isDebug && console.dir(`> generateQueryCollection: !!itemDate`)
+    isDebug && console.dir(itemDate)
     indexCollectionView = getCollectionViewWithItemDate({
       indexCollectionView,
       itemDate,
@@ -64,6 +66,7 @@ const generateQueryCollection = ({
    * slug
    */
   if (slug && schemaSlug) {
+    isDebug && console.dir(`> generateQueryCollection: slug && schemaSlug`)
     indexCollectionView = getCollectionViewWithString({
       indexCollectionView,
       preview,
@@ -77,7 +80,7 @@ const generateQueryCollection = ({
    */
   const schemaTags = getSchemaKey('Tags')
   if (routeType === 'podcastEpisodes') {
-    isDebug && console.dir('.. podcastEpisodes')
+    isDebug && console.dir(`> generateQueryCollection: podcastEpisodes`)
     indexCollectionView = getCollectionViewWithMultiSelect({
       indexCollectionView,
       preview,

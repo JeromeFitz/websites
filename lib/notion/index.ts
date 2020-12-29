@@ -30,13 +30,16 @@ const notionHeaders = {
   'x-notion-active-user-header': notionConfig.userId,
 }
 
-export async function fetchCmsAPI(fnName: string, query: any) {
+export async function fetchCmsAPI(fnName: string, body: any) {
   const url = `${notionConfig.apiUrl}/${fnName}`
   const res = await fetch(url, {
     method: 'POST',
     headers: notionHeaders,
-    body: JSON.stringify(query),
+    body: JSON.stringify(body),
   })
+
+  console.dir(`body`)
+  console.dir(body.query)
 
   const json = await res.json()
   if (json.errors) {
@@ -58,19 +61,34 @@ const refactorNotionCalls = async (catchAll) => {
 
   // getCollectionView
   const notionQuery = getCollectionView({ catchAll })
+  console.dir(`notionQuery`)
+  console.dir(notionQuery)
   // generateQueryCollection
   const getQueryCollection = generateQueryCollection(notionQuery)
+  // console.dir(`getQueryCollection`)
+  // console.dir(getQueryCollection)
   // fetchCmsAPI (rpc)
   const data = !!getQueryCollection
     ? await fetchCmsAPI('queryCollection', getQueryCollection.payload)
     : null
 
+  // console.dir(`data`)
+  // console.dir(data)
+  // console.dir(`data.recordMap.block`)
+  // console.dir(data.recordMap.block)
+
   const blocks = getBlocks(data.recordMap.block)
+  console.dir(`blocks`)
+  console.dir(blocks)
+
   const properties: any = await getProperties({
     blocks,
     routeType,
     schema: getQueryCollection.schema,
   })
+
+  console.dir(`properties`)
+  console.dir(properties)
 
   return properties
 }
