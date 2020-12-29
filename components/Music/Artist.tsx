@@ -1,11 +1,20 @@
 // import Image from 'next/image'
+import cx from 'clsx'
 import { MdOpenInNew } from 'react-icons/md'
 import lpad from '~utils/lpad'
 import { Skeleton } from '~components/Music'
 
 const Artist = (artist) => {
   return (
-    <div className="flex flex-row items-baseline border-b border-gray-100 dark:border-gray-800 max-w-3xl w-full mt-8">
+    <li
+      className={cx(
+        'flex flex-row items-baseline',
+        'border-b border-gray-100 dark:border-gray-800',
+        'max-w-3xl w-full mt-8',
+        'odd:bg-green-400',
+        ''
+      )}
+    >
       {/* <Image
         alt={artist.name}
         height={150}
@@ -20,7 +29,9 @@ const Artist = (artist) => {
           <Skeleton />
         ) : (
           <a
-            className="font-medium text-gray-900 dark:text-gray-100 pt-1 flex flex-row"
+            className={cx(
+              'font-medium text-base text-gray-900 dark:text-gray-100 pt-1 flex flex-row'
+            )}
             href={artist.url}
             target="_blank"
             rel="noopener noreferrer"
@@ -32,7 +43,7 @@ const Artist = (artist) => {
           </a>
         )}
       </div>
-    </div>
+    </li>
   )
 }
 

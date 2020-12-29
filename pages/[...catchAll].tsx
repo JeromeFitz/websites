@@ -33,6 +33,8 @@ import Container from '~components/Container'
 import Header from '~components/Header'
 import { Listing } from '~components/Listing'
 
+import renderNotionContent from '~lib/notion/helpers/renderNotionContent'
+
 const isDebug = false
 
 // type Props = {
@@ -51,8 +53,8 @@ export default function CatchAll({ ...rest }: any) {
   const isSingle = key && key.length === 1
   const item = isSingle && items[key[0]]
 
-  title = _capitalize(rest.routeType)
-  description = `Description: ${title}`
+  title = isSingle ? item.Title : _capitalize(rest.routeType)
+  description = isSingle ? item['SEO.Description'] : `Description: ${title}`
 
   const header = {
     description,
@@ -76,9 +78,7 @@ export default function CatchAll({ ...rest }: any) {
       />
       <Header {...header} />
       {!isSingle && items && <Listing items={items} {...rest} />}
-      {isSingle && item && (
-        <h1 className="text-black dark:text-white">{item.Title}</h1>
-      )}
+      {isSingle && item && <div id="content">{renderNotionContent(item)}</div>}
     </Container>
   )
 }

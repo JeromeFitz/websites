@@ -80,6 +80,16 @@ module.exports = {
         },
       }),
     },
+    underlineOffset: {
+      sm: '0.125rem',
+      md: '0.25rem',
+      lg: '0.4rem',
+    },
+    underlineThickness: {
+      sm: '0.125rem',
+      md: '0.25rem',
+      lg: '0.5rem',
+    },
   },
   variants: {
     extend: {
@@ -88,5 +98,9 @@ module.exports = {
     },
     typography: ['dark'],
   },
-  plugins: [require('@tailwindcss/typography'), require('@tailwindcss/ui')],
+  plugins: [
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/ui'),
+    require('tailwind-underline-utils'),
+  ],
 }

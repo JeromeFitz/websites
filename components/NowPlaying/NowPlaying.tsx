@@ -1,3 +1,4 @@
+import cx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
 import useSWR from 'swr'
@@ -31,16 +32,36 @@ const NowPlaying = () => {
           <h1 className="text-black dark:text-black">{title}</h1>
           <div className="grid grid-cols-1 sm:grid-cols-2 sm:px-2 sm:py-12 sm:gap-x-4 md:py-16">
             <div className="relative z-10 col-start-1 row-start-1 px-4 pt-44 md:pt-24 pb-3 bg-gradient-to-t from-black sm:bg-none sm:leading-normal">
-              <p className="font-extrabold text-white mb-2 sm:mb-4 sm:text-gray-900 text-sm md:text-3xl ">
+              <p
+                className={cx(
+                  'font-extrabold text-white  sm:text-gray-900',
+                  'mb-2 sm:mb-4',
+                  'text-sm md:text-3xl',
+                  'leading-normal sm:leading-tight',
+                  'tracking-normal sm:tracking-tight'
+                )}
+              >
                 {artist.name}
               </p>
-              <h2 className="font-semibold text-white mb-2 sm:mb-6 text-xl sm:text-4xl sm:leading-normal sm:text-black">
+              <h2
+                className={cx(
+                  'font-semibold text-white sm:text-black',
+                  'mb-2 sm:mb-6',
+                  'text-xl sm:text-4xl',
+                  'leading-normal sm:leading-tight',
+                  'tracking-normal sm:tracking-tight'
+                )}
+              >
                 {track.name}
               </h2>
               <h3 className="text-sm text-white mb-1 sm:mb-2 sm:text-2xl sm:leading-snug sm:text-black md:text-3xl italic">
                 {album.name}
               </h3>
-              <h4 className="text-xs text-white sm:text-lg sm:leading-normal sm:text-black md:text-lg italic">
+              <h4
+                className={cx(
+                  'text-xs text-white sm:text-lg sm:leading-normal sm:text-black md:text-lg italic'
+                )}
+              >
                 {album.year}
               </h4>
             </div>

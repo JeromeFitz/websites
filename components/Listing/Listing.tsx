@@ -1,17 +1,20 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import useSWR from 'swr'
 import cx from 'clsx'
-import { Blog, BlogItem } from '~lib/types'
+// import { Blog, BlogItem } from '~lib/types'
 import _map from 'lodash/map'
+import _sortBy from 'lodash/sortBy'
 import Link from 'next/link'
 import { getNotionLink } from '~lib/notion/helpers'
-
+import { textBlock } from '~lib/notion/helpers/renderers'
 // const HOUR = 3600000
 const MINUTE = 60000
 // const SECOND = 1000
 
 type Props = {
   // blog: Blog
-  blogs: Blog[]
+  // blogs: Blog[]
+  items: any
   params: any
   relativeUrl: string
 }
@@ -29,11 +32,21 @@ const Listing = ({ items, ...rest }: Props) => {
 
   const routeType = rest.params.catchAll[0]
 
+  let updatedBlogsNew = updatedBlogs
+  // @todo(sort)
+  if (routeType === 'shows') {
+    updatedBlogsNew = _sortBy(updatedBlogs, [
+      (item) => {
+        return item.Slug
+      },
+    ])
+  }
+
   return (
     <>
-      {!!updatedBlogs && (
+      {!!updatedBlogsNew && (
         <ul>
-          {_map(updatedBlogs, (item: BlogItem, itemId) => {
+          {_map(updatedBlogsNew, (item: any, itemId) => {
             /**
              * Double-check Verification (NoIndex is fine)
              */
@@ -70,8 +83,36 @@ const Listing = ({ items, ...rest }: Props) => {
               key = link.as
             }
             return (
-              <li className={cx('text-black dark:text-white')} key={itemId}>
-                <Link {...link}>{item.Title}</Link>
+              <li
+                className={cx(
+                  'text-black dark:text-white font-bold',
+                  'text-2xl md:text-3xl py-3 md:py-6',
+                  'leading-tight md:leading-tight',
+                  'tracking-tight md:ltracking-tight'
+                )}
+                key={itemId}
+              >
+                <Link {...link}>
+                  <a className="underline underline-thickness-md underline-offset-lg">
+                    {item.Title}
+                  </a>
+                </Link>
+                <p
+                  className={cx(
+                    'font-normal pt-2',
+                    'text-md md:text-lg',
+                    'leading-normal md:tracking-normal',
+                    'tracking-normal md:tracking-normal'
+                  )}
+                >
+                  {(!item.preview || item.preview.length === 0) &&
+                    '[No Preview Content]'}
+                  {(item.preview || []).map((block, idx) => {
+                    // console.dir(`> item.preview debugging`)
+                    // console.dir(block)
+                    return textBlock(block, true, `${item.Slug}${idx}`)
+                  })}
+                </p>
               </li>
             )
           })}

@@ -143,3 +143,13 @@ h1 {
   @apply text-3xl md:text-5xl;
   @apply text-black dark:text-white;
 }
+
+/**
+* @note use `>` so we only do the Preview Content from Notion
+**/
+#content > p:first-of-type,
+#content > hr:first-of-type,
+.contentContainer > p:first-of-type,
+.contentContainer > hr:first-of-type {
+  display: none;
+}
