@@ -1,7 +1,20 @@
 import ms from 'ms'
 import { NextApiRequest, NextApiResponse } from 'next'
 import { isPages } from '~config/notion/website'
-import { getBlog, getBlogs } from '~lib/cms-api'
+import {
+  getBlog,
+  getBlogs,
+  getEvent,
+  getEvents,
+  getPeople,
+  getPeoples,
+  getPodcast,
+  getPodcasts,
+  getShow,
+  getShows,
+  getVenue,
+  getVenues,
+} from '~lib/cms-api'
 
 // Number of seconds to cache the API response for
 const EXPIRES_SECONDS = 5
@@ -25,14 +38,24 @@ export default async function getNotionApi(
     let data
     switch (routeType) {
       case 'blog':
-        // console.dir(`routeType: ${routeType}`)
-        // console.dir(`slug: ${slug}`)
-        // console.dir(`preview: ${preview}`)
-        // console.dir(`display: ${display}`)
-        // console.dir(`clear: ${clear}`)
-        // console.dir(catchAll)
         data = !!slug ? await getBlog(catchAll) : await getBlogs()
         break
+      case 'events':
+        data = !!slug ? await getEvent(catchAll) : await getEvents()
+        break
+      case 'people':
+        data = !!slug ? await getPeople(catchAll) : await getPeoples()
+        break
+      case 'podcasts':
+        data = !!slug ? await getPodcast(catchAll) : await getPodcasts()
+        break
+      case 'shows':
+        data = !!slug ? await getShow(catchAll) : await getShows()
+        break
+      case 'venues':
+        data = !!slug ? await getVenue(catchAll) : await getVenues()
+        break
+
       default:
         data = null
         break

@@ -7,7 +7,7 @@ import getCollectionViewWithItemDate from '~lib/notion/utils/getCollectionViewWi
 import getCollectionViewWithMultiSelect from '~lib/notion/utils/getCollectionViewWithMultiSelect'
 import getCollectionViewWithString from '~lib/notion/utils/getCollectionViewWithString'
 
-const isDebug = true
+const isDebug = false
 
 const generateQueryCollection = ({
   collectionId,

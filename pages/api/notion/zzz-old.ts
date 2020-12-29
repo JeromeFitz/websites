@@ -17,7 +17,7 @@ import generateQueryCollection from '~lib/notion/utils/generateQueryCollection'
 import rpc, { values } from '~lib/notion/rpc'
 // import isObjectEmpty from '~utils/isObjectEmpty'
 
-const isDebug = true
+const isDebug = false
 const nonPreviewTypes = new Set(['editor', 'page', 'collection_view'])
 
 // Initialize the cors middleware

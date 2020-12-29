@@ -7,6 +7,8 @@ import getProperties from '~lib/notion/utils/getProperties'
 
 import { Blog } from '../types'
 
+const isDebug = false
+
 const notionConfig = {
   apiUrl: process.env.NOTION_API_URL,
   loader: {
@@ -31,15 +33,22 @@ const notionHeaders = {
 }
 
 export async function fetchCmsAPI(fnName: string, body: any) {
+  isDebug && console.dir(`body`)
+  isDebug && console.dir(body)
+
+  if (fnName === undefined) {
+    throw new Error(`fetchCmsAPI: fnName must be provided`)
+  }
+
+  if (body === undefined) {
+    throw new Error(`fetchCmsAPI: body must be provided`)
+  }
   const url = `${notionConfig.apiUrl}/${fnName}`
   const res = await fetch(url, {
     method: 'POST',
     headers: notionHeaders,
     body: JSON.stringify(body),
   })
-
-  console.dir(`body`)
-  console.dir(body.query)
 
   const json = await res.json()
   if (json.errors) {
@@ -61,25 +70,25 @@ const refactorNotionCalls = async (catchAll) => {
 
   // getCollectionView
   const notionQuery = getCollectionView({ catchAll })
-  console.dir(`notionQuery`)
-  console.dir(notionQuery)
+  isDebug && console.dir(`notionQuery`)
+  isDebug && console.dir(notionQuery)
   // generateQueryCollection
   const getQueryCollection = generateQueryCollection(notionQuery)
-  // console.dir(`getQueryCollection`)
-  // console.dir(getQueryCollection)
+  isDebug && console.dir(`getQueryCollection`)
+  isDebug && console.dir(getQueryCollection)
   // fetchCmsAPI (rpc)
   const data = !!getQueryCollection
     ? await fetchCmsAPI('queryCollection', getQueryCollection.payload)
     : null
 
-  // console.dir(`data`)
-  // console.dir(data)
-  // console.dir(`data.recordMap.block`)
-  // console.dir(data.recordMap.block)
+  // isDebug && console.dir(`data`)
+  // isDebug && console.dir(data)
+  // isDebug && console.dir(`data.recordMap.block`)
+  // isDebug && console.dir(data.recordMap.block)
 
   const blocks = getBlocks(data.recordMap.block)
-  console.dir(`blocks`)
-  console.dir(blocks)
+  isDebug && console.dir(`blocks`)
+  isDebug && console.dir(blocks)
 
   const properties: any = await getProperties({
     blocks,
@@ -87,8 +96,8 @@ const refactorNotionCalls = async (catchAll) => {
     schema: getQueryCollection.schema,
   })
 
-  console.dir(`properties`)
-  console.dir(properties)
+  isDebug && console.dir(`properties`)
+  isDebug && console.dir(properties)
 
   return properties
 }
@@ -99,6 +108,51 @@ export async function getBlog(catchAll): Promise<Blog> {
 
 export async function getBlogs(): Promise<Blog[]> {
   const catchAll = ['blog']
+  return await refactorNotionCalls(catchAll)
+}
+
+export async function getEvent(catchAll): Promise<any> {
+  return await refactorNotionCalls(catchAll)
+}
+
+export async function getEvents(): Promise<Blog[]> {
+  const catchAll = ['events']
+  return await refactorNotionCalls(catchAll)
+}
+
+export async function getPeople(catchAll): Promise<any> {
+  return await refactorNotionCalls(catchAll)
+}
+
+export async function getPeoples(): Promise<Blog[]> {
+  const catchAll = ['people']
+  return await refactorNotionCalls(catchAll)
+}
+
+export async function getPodcast(catchAll): Promise<any> {
+  return await refactorNotionCalls(catchAll)
+}
+
+export async function getPodcasts(): Promise<Blog[]> {
+  const catchAll = ['podcasts']
+  return await refactorNotionCalls(catchAll)
+}
+
+export async function getShow(catchAll): Promise<any> {
+  return await refactorNotionCalls(catchAll)
+}
+
+export async function getShows(): Promise<Blog[]> {
+  const catchAll = ['shows']
+  return await refactorNotionCalls(catchAll)
+}
+
+export async function getVenue(catchAll): Promise<any> {
+  return await refactorNotionCalls(catchAll)
+}
+
+export async function getVenues(): Promise<Blog[]> {
+  const catchAll = ['venues']
   return await refactorNotionCalls(catchAll)
 }
 

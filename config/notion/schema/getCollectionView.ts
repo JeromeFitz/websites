@@ -1,6 +1,6 @@
 import { isPages, routeTypes } from '~config/notion/website'
 
-const isDebug = true
+const isDebug = false
 
 const getCollectionView = ({ catchAll }) => {
   /**
