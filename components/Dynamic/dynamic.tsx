@@ -93,5 +93,5 @@ export default {
   // Code: dynamic(() => import('./code')),
   ColumnContainer: dynamic(() => import('./column-container')),
   Column: dynamic(() => import('./column')),
-  Counter: dynamic(() => import('./counter')),
+  // Counter: dynamic(() => import('./counter')),
 }

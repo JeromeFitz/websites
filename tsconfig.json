@@ -40,23 +40,15 @@
       "~utils/*": ["utils/*"]
     }
   },
-  "exclude": [
-    "./.cache",
-    "./.dist",
-    "./*.d.ts",
-    ".next",
-    "bundles",
-    "node_modules",
-    "out",
-    "public"
-  ],
+  "exclude": ["node_modules"],
   "include": [
-    "next-env.d.ts",
     "index.d.ts",
-    "**/*.css",
-    "**/*.js",
-    "**/*.jsx",
+    "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    "lint-staged.config.js",
+    "next.config.js",
+    "tailwind.config.js",
+    "config/notion/website/getRedirects.js"
   ]
 }

@@ -103,6 +103,7 @@ export default async function getTableData(
             }
             // initial with provided date
             const providedDate = new Date(
+              // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
               type[1].start_date + ' ' + (type[1].start_time || '')
             ).getTime()
 

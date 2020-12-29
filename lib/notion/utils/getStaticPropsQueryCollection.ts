@@ -12,6 +12,7 @@ import rpc, { values } from '~lib/notion/rpc'
 import generateQueryCollection from '~lib/notion/utils/generateQueryCollection'
 import getRouteTypeSeo from '~lib/notion/utils/getRouteTypeSeo'
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const isDebug = false
@@ -43,13 +44,13 @@ const getStaticPropsQueryCollection = async ({
   url,
 }) => {
   let cacheData
-  let cacheFile
+  // let cacheFile
   // cacheFile = '.cache' + url.replace(/\//gi, '__') + '.json'
   // cacheFile = path.join(process.cwd(), cacheFile)
   /**
    * @ref https://nextjs.org/docs/basic-features/data-fetching#reading-files-use-processcwd
    */
-  cacheFile = path.join(
+  const cacheFile = path.join(
     process.cwd(),
     '.cache',
     `${url === '/' ? 'index' : url}.json`
@@ -130,7 +131,7 @@ const getStaticPropsQueryCollection = async ({
     // console.dir(getQueryCollection)
     // console.dir(getQueryCollection.schema)
     const schema = {}
-    await _map(getQueryCollection.schema, async (_s, _sId) => {
+    await _map(getQueryCollection.schema, (_s, _sId) => {
       schema[_s.name] = { ..._s, _id: _sId }
     })
 
@@ -146,7 +147,7 @@ const getStaticPropsQueryCollection = async ({
       /**
        * Cycle through Schema
        */
-      await _map(getQueryCollection.schema, async (_s, _sId) => {
+      await _map(getQueryCollection.schema, (_s, _sId) => {
         // block.propz[_s.name] = block.value.properties[_sId] || null
         // await _map(block.value.properties, async (_p, _pId) => {
         //   block.propz[_s.name] = _p
@@ -185,6 +186,7 @@ const getStaticPropsQueryCollection = async ({
               propertyValue.time_zone = 'America/New_York'
               // initial with provided date
               const providedDate = new Date(
+                // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
                 propertyValue.start_date + ' ' + (propertyValue.start_time || '')
               ).getTime()
 
@@ -260,13 +262,10 @@ const getStaticPropsQueryCollection = async ({
             break
         }
         block.props[propertyValue && schemaKey.name] = propertyValue
-        const getRecordValues = await _map(
-          block.value.content,
-          (_content, _contentKey) => ({
-            table: 'block',
-            id: _content,
-          })
-        )
+        const getRecordValues = await _map(block.value.content, (_content: any) => ({
+          table: 'block',
+          id: _content,
+        }))
         block.contentRequests = {
           requests: getRecordValues,
         }
@@ -347,7 +346,7 @@ const getStaticPropsQueryCollection = async ({
     /**
      * @hack My world is crumbling. Why does this work with a fake Promise ...
      */
-    await Promise.all(await _map(properties, async (_p: any) => false))
+    await Promise.all(await _map(properties, () => false))
     /**
      * Column Data
      */
@@ -360,7 +359,7 @@ const getStaticPropsQueryCollection = async ({
         /**
          * Clean Content Data...
          */
-        await _map(contentResults.results, async (_c: any, _cId: any) => {
+        await _map(contentResults.results, (_c: any, _cId: any) => {
           // console.dir(`>> clean content data yo...`)
           // console.dir(`>> _c`)
           delete contentResults.results[_cId].role
@@ -416,7 +415,7 @@ const getStaticPropsQueryCollection = async ({
           // console.dir(`_p...`)
           // console.dir(_p)
           await Promise.all(
-            _map(_p.content, async (_p2: any, _p2Id) => {
+            _map(_p.content, async (_p2: any) => {
               // console.dir(`_p2...`)
               // console.dir(_p2)
               if (_p2.value.type === 'column_list') {
@@ -441,7 +440,7 @@ const getStaticPropsQueryCollection = async ({
                     // properties[_pId]['contentRequests__columns'][_p2.value.id][
                     //   columnID
                     // ] = await {
-                    const contentRequests__columns = await {
+                    const contentRequests__columns = {
                       requests: [
                         {
                           table: 'block',
@@ -464,7 +463,7 @@ const getStaticPropsQueryCollection = async ({
                     // properties[_pId]['contentRequests__columns__children'][
                     //   _p2.value.id
                     // ][columnID] = await {
-                    const contentRequests__columns__children = await {
+                    const contentRequests__columns__children = {
                       // requests: await properties[_pId][
                       //   'contentResults__columns'
                       // ][_p2.value.id][columnID].results[0].value.content.map(
@@ -487,7 +486,7 @@ const getStaticPropsQueryCollection = async ({
                     /**
                      * Clean Content Data...
                      */
-                    await _map(columnResults.results, async (_c: any, _cId: any) => {
+                    await _map(columnResults.results, (_c: any, _cId: any) => {
                       // console.dir(`>> clean content data yo...`)
                       // console.dir(`>> _c`)
                       delete columnResults.results[_cId].role
@@ -505,6 +504,8 @@ const getStaticPropsQueryCollection = async ({
                       delete columnResults.results[_cId].value.created_by_id
                       delete columnResults.results[_cId].value.last_edited_by_table
                       delete columnResults.results[_cId].value.last_edited_by_id
+
+                      return true
                     })
                     // properties[_pId]['contentResults__columns__children'][
                     //   _p2.value.id

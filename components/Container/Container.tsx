@@ -50,7 +50,8 @@ const Container = ({ children }) => {
                     <a
                       className={cx(
                         'p-1 sm:p-4 sm:pl-0 text-gray-900 dark:text-gray-100',
-                        isSelected && 'underline font-bold'
+                        isSelected &&
+                          'underline underline-thickness-sm underline-offset-lg font-semibold'
                       )}
                     >
                       {_capitalize(link.title)}

@@ -7,9 +7,7 @@ import {
 } from 'body-scroll-lock'
 import { MdClose } from 'react-icons/md'
 
-// import styles from './Modal.module.css'
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const styles = require('./Modal.module.css')
+import styles from './Modal.module.css'
 
 interface Props {
   className?: string

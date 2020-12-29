@@ -7,17 +7,17 @@ import * as notionApi from './notion'
 let cmsApi: {
   getBlog: (catchAll) => Promise<Blog>
   getBlogs: () => Promise<Blog[]>
-  getEvent: () => Promise<any>
+  getEvent: (catchAll) => Promise<any>
   getEvents: () => Promise<any[]>
-  getPage: () => Promise<any>
+  getPage: (catchAll) => Promise<any>
   getPages: () => Promise<any[]>
-  getPeople: () => Promise<any>
+  getPeople: (catchAll) => Promise<any>
   getPeoples: () => Promise<any[]>
-  getPodcast: () => Promise<any>
+  getPodcast: (catchAll) => Promise<any>
   getPodcasts: () => Promise<any[]>
-  getShow: () => Promise<any>
+  getShow: (catchAll) => Promise<any>
   getShows: () => Promise<any[]>
-  getVenue: () => Promise<any>
+  getVenue: (catchAll) => Promise<any>
   getVenues: () => Promise<any[]>
 
   // getJobs: () => Promise<Job[]>

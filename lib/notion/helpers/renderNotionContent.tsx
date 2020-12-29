@@ -12,7 +12,7 @@ const columnTypes = new Set(['column_list'])
 const renderNotionContent = (data) => {
   // console.dir(`> renderNotionContent`)
   // console.dir(data)
-  let listTagName: string | null = null
+  let listTagName: any // string | null = null
   let listLastId: string | null = null
   let listMap: {
     [id: string]: {
@@ -154,13 +154,15 @@ const renderNotionContent = (data) => {
                 const createEl = (item) =>
                   React.createElement(
                     components.li || 'ul',
-                    { key: item.key },
+                    // { key: item.key },
+                    null,
                     item.children,
                     item.nested.length > 0
                       ? React.createElement(
                           components.ul || 'ul',
                           // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
-                          { key: item + 'sub-list' },
+                          // { key: item + 'sub-list' },
+                          null,
                           item.nested.map((nestedId) => createEl(listMap[nestedId]))
                         )
                       : null

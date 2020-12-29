@@ -1,7 +1,7 @@
 /**
  * Notion: queryCollection
  */
-import Cors from 'cors'
+// import Cors from 'cors'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import _filter from 'lodash/filter'
 // import _find from 'lodash/find'
@@ -10,8 +10,8 @@ import _merge from 'lodash/merge'
 // import path from 'path'
 import getTimestamp from '~utils/getTimestamp'
 import { isPages } from '~config/notion/website'
-import initMiddleware from '~utils/initMiddleware'
-// import getNotionCatchAll from '~lib/notion/getNotionCatchAll'
+// import initMiddleware from '~utils/initMiddleware'
+// // import getNotionCatchAll from '~lib/notion/getNotionCatchAll'
 import getCollectionView from '~config/notion/schema/getCollectionView'
 import generateQueryCollection from '~lib/notion/utils/generateQueryCollection'
 import rpc, { values } from '~lib/notion/rpc'
@@ -20,19 +20,19 @@ import rpc, { values } from '~lib/notion/rpc'
 const isDebug = false
 const nonPreviewTypes = new Set(['editor', 'page', 'collection_view'])
 
-// Initialize the cors middleware
-const cors = initMiddleware(
-  // You can read more about the available options here: https://github.com/expressjs/cors#configuration-options
-  Cors({
-    // Only allow requests with GET, POST and OPTIONS
-    // methods: ['GET', 'POST', 'OPTIONS'],
-    methods: ['GET'],
-    origin: true,
-  })
-)
+// // Initialize the cors middleware
+// const cors = initMiddleware(
+//   // You can read more about the available options here: https://github.com/expressjs/cors#configuration-options
+//   Cors({
+//     // Only allow requests with GET, POST and OPTIONS
+//     // methods: ['GET', 'POST', 'OPTIONS'],
+//     methods: ['GET'],
+//     origin: true,
+//   })
+// )
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  await cors(req, res)
+  // await cors(req, res)
 
   isDebug && console.dir(`api/notion/[...catchAll]].js`)
   isDebug && console.dir(`> req.url: ${req.url}`)

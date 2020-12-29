@@ -103,6 +103,9 @@
     "rimraf": "3.0.2",
     "typescript": "4.1.3"
   },
+  "resolutions": {
+    "webpack": "5.11.1"
+  },
   "next-unused": {
     "alias": {
       "~components/*": [

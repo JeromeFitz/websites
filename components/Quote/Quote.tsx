@@ -1,9 +1,7 @@
 import cx from 'clsx'
 import React from 'react'
 
-// import styles from './Quote.module.css'
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const styles = require('./Quote.module.css')
+import styles from './Quote.module.css'
 
 export interface QuoteProps {
   children: any

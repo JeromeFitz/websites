@@ -54,13 +54,15 @@ const Listing = ({ items, ...rest }: Props) => {
             if (item.Published === 'No') {
               return true
             }
-            let event, show, venue
-            let key = item.Slug
-            if (routeType === 'events') {
-              event = item
-              show = item.Shows && item.Shows[item.ShowIDs[0]]
-              venue = item.Venues && item.Venues[item.VenueIDs[0]]
-            }
+            // @todo(any)
+            // let event: any, show: any, venue: any
+            // // let key = item.Slug
+            // @refactor(events) This was ported over, but got lost in shuffle
+            // if (routeType === 'events') {
+            //   event = item
+            //   show = item.Shows && item.Shows[item.ShowIDs[0]]
+            //   venue = item.Venues && item.Venues[item.VenueIDs[0]]
+            // }
 
             let link
             if (item?.NextLink) {
@@ -80,7 +82,7 @@ const Listing = ({ items, ...rest }: Props) => {
                   itemDate: routeType === 'events' && item?.Date?.event,
                 }),
               }
-              key = link.as
+              // key = link.as
             }
             return (
               <li

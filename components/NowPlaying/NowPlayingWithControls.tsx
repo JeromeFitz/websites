@@ -15,9 +15,7 @@ import {
   // MdStop,
 } from 'react-icons/md'
 
-// import styles from './NowPlaying.module.css'
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const styles = require('./NowPlaying.module.css')
+import styles from './NowPlaying.module.css'
 
 const HOUR = 3600000
 // const MINUTE = 60000

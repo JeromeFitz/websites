@@ -1,5 +1,5 @@
 const getNextLink = (url: string) => {
-  let [, routeType] = url.split('/')
+  const [, routeType] = url.split('/')
   let link: any = {}
 
   switch (routeType) {
