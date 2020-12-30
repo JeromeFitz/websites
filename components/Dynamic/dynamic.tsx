@@ -1,45 +1,67 @@
 import cx from 'clsx'
 import dynamic from 'next/dynamic'
 import ExtLink from './ext-link'
+import SplitText from '~components/SplitText'
 
 export interface Props {
   children: any
   props: any
 }
 
+/**
+ * @todo Notion Refactor to get away from [0][0] this far away from normalizer
+ *       Notion Headlines should be treated differently than defaults.
+ */
 const H1 = ({ children, props }: Props) => {
+  if (!children) {
+    return null
+  }
+  const text = children[0][0]
   return (
     <h1
       className={cx(
-        'text-black dark:text-white my-6 text-2xl md:text-3xl font-heavy'
+        'text-cool-gray-900 dark:text-cool-gray-100 my-6 text-2xl md:text-3xl font-extrabold'
       )}
+      aria-label={text}
       {...props}
     >
-      {children}
+      <SplitText text={text} />
     </h1>
   )
 }
 
 const H2 = ({ children, props }: Props) => {
+  if (!children) {
+    return null
+  }
+  const text = children[0][0]
   return (
     <h2
-      className={cx('text-black dark:text-white my-4 text-xl md:text-2xl font-bold')}
+      className={cx(
+        'text-cool-gray-900 dark:text-cool-gray-100 my-4 text-xl md:text-2xl font-bold'
+      )}
+      aria-label={text}
       {...props}
     >
-      {children}
+      <SplitText text={text} />
     </h2>
   )
 }
 
 const H3 = ({ children, props }: Props) => {
+  if (!children) {
+    return null
+  }
+  const text = children[0][0]
   return (
     <h3
       className={cx(
-        'text-black dark:text-white my-3 text-lg md:text-xl font-semibold'
+        'text-cool-gray-900 dark:text-cool-gray-100 my-3 text-lg md:text-xl font-semibold'
       )}
+      aria-label={text}
       {...props}
     >
-      {children}
+      <SplitText text={text} transition={false} />
     </h3>
   )
 }
@@ -58,7 +80,7 @@ const UL = ({ children, props }: Props) => {
 const LI = ({ children, props }: Props) => {
   return (
     <li
-      className={cx('text-black dark:text-white my-4 text-md md:text-lg mx-4')}
+      className={cx('text-black dark:text-white my-4 text-base md:text-lg mx-4')}
       {...props}
     >
       {children}

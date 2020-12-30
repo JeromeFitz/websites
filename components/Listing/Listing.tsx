@@ -7,6 +7,9 @@ import _sortBy from 'lodash/sortBy'
 import Link from 'next/link'
 import { getNotionLink } from '~lib/notion/helpers'
 import { textBlock } from '~lib/notion/helpers/renderers'
+
+import SplitText from '~components/SplitText'
+
 // const HOUR = 3600000
 const MINUTE = 60000
 // const SECOND = 1000
@@ -95,14 +98,20 @@ const Listing = ({ items, ...rest }: Props) => {
                 key={itemId}
               >
                 <Link {...link}>
-                  <a className="underline underline-thickness-md underline-offset-lg">
-                    {item.Title}
+                  <a
+                    className={cx(
+                      'underline underline-thickness-md underline-offset-lg',
+                      'hover:text-green-500 dark:hover:text-yellow-200'
+                    )}
+                    aria-label={item.Title}
+                  >
+                    <SplitText text={item.Title} />
                   </a>
                 </Link>
                 <p
                   className={cx(
                     'font-normal pt-2',
-                    'text-md md:text-lg',
+                    'text-base md:text-lg',
                     'leading-normal md:tracking-normal',
                     'tracking-normal md:tracking-normal'
                   )}

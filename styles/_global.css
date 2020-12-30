@@ -1,0 +1,32 @@
+html {
+  min-width: 375px;
+  scroll-behavior: smooth;
+}
+
+/* #__next {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+} */
+
+code[class*='language-'],
+pre[class*='language-'] {
+  @apply text-gray-800 dark:text-gray-50;
+}
+
+pre::-webkit-scrollbar {
+  display: none;
+}
+
+pre {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Remove Safari input shadow on mobile */
+input[type='text'],
+input[type='email'] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}

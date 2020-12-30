@@ -11,6 +11,7 @@ import { MdWbSunny } from 'react-icons/md'
 import { IoMdMoon } from 'react-icons/io'
 
 import Footer from '~components/Footer'
+import SplitText from '~components/SplitText'
 
 const links = [
   { active: true, href: '/', title: 'home' },
@@ -45,16 +46,23 @@ const Container = ({ children }) => {
                     link.title !== 'home') ||
                   (router.asPath.length === 1 && link.title === 'home')
 
+                const linkTitle = _capitalize(link.title)
+
                 return (
                   <NextLink href={link.href} key={`nav-link-${link.title}`}>
                     <a
                       className={cx(
-                        'p-1 sm:p-4 sm:pl-0 text-gray-900 dark:text-gray-100',
+                        'p-1 sm:p-4 sm:pl-0',
+                        'text-cool-gray-900 dark:text-cool-gray-100',
+                        'font-semibold text-base md:text-lg',
+                        !isSelected &&
+                          'hover:text-green-500 dark:hover:text-yellow-200',
                         isSelected &&
-                          'underline underline-thickness-sm underline-offset-lg font-semibold'
+                          'underline underline-thickness-sm underline-offset-lg font-bold'
                       )}
+                      aria-label={linkTitle}
                     >
-                      {_capitalize(link.title)}
+                      <SplitText text={linkTitle} />
                     </a>
                   </NextLink>
                 )

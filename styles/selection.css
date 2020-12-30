@@ -1,0 +1,9 @@
+::selection {
+  @apply bg-pink-900 dark:bg-pink-100;
+  @apply text-gray-100 dark:text-gray-900;
+}
+
+#now-playing ::selection {
+  @apply bg-cool-gray-900;
+  @apply text-green-200;
+}

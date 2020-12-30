@@ -1,0 +1,48 @@
+@tailwind base;
+@import 'tailwind/base.css';
+
+@tailwind components;
+@import 'tailwind/components.css';
+
+@tailwind utilities;
+
+/**
+* Load these after initial Tailwind Configuration
+**/
+
+@import '_global.css'; /* @note naming convention for alpha-sort */
+@import 'navigation.css';
+@import 'notion.css';
+@import 'prose.css';
+@import 'selection.css';
+/* @import 'typography.css'; */
+@import '~components/NProgress/NProgress.module.css';
+
+/**
+* @note layer/base seems to only work as last and in root :X
+**/
+@layer base {
+  p {
+    @apply text-cool-gray-900 dark:text-cool-gray-100 text-xl;
+    transition: color 0.25s cubic-bezier(0.175, 0.75, 0.5, 1);
+    transition-delay: calc(1.5s);
+  }
+
+  h1 {
+    @apply font-bold tracking-tight mb-6 md:mb-8;
+    @apply text-3xl md:text-5xl;
+    @apply text-cool-gray-900 dark:text-cool-gray-50;
+  }
+
+  h2 {
+    @apply font-bold tracking-tight mb-3 md:mb-4;
+    @apply text-xl md:text-3xl;
+    @apply text-cool-gray-900 dark:text-cool-gray-50;
+  }
+
+  h3 {
+    @apply font-bold tracking-tight mb-2 md:mb-3;
+    @apply text-lg md:text-xl;
+    @apply text-cool-gray-900 dark:text-cool-gray-50;
+  }
+}

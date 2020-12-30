@@ -1,0 +1,15 @@
+.prose pre {
+  @apply bg-cool-gray-50 dark:bg-cool-gray-900;
+  @apply border border-cool-gray-200 dark:border-cool-gray-700;
+}
+
+.prose code {
+  @apply px-1 py-0.5 rounded-md;
+  @apply text-cool-gray-800 dark:text-cool-gray-200;
+  @apply border border-cool-gray-100 dark:border-cool-gray-800;
+  @apply bg-cool-gray-100 dark:bg-cool-gray-900;
+}
+
+.prose img {
+  @apply m-0;
+}

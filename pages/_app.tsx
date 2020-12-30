@@ -1,4 +1,4 @@
-import '~styles/global.css'
+import '~styles/index.css'
 // import 'keen-slider/keen-slider.min.css'
 
 import { FC } from 'react'

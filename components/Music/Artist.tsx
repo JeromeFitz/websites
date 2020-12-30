@@ -50,15 +50,16 @@ const Artist = (artist) => {
         ) : (
           <a
             className={cx(
-              'font-medium text-cool-gray-900 dark:text-cool-gray-300',
+              'text-cool-gray-900 dark:text-cool-gray-300',
+              'font-semibold text-lg md:text-2xl',
               'flex flex-row'
             )}
             href={artist.url}
             target="_blank"
             rel="noopener noreferrer"
           >
-            <span className="truncate">{artist?.name}</span>
-            <span className="ml-2 mt-0.5">
+            <span className="md:max-w-lg truncate">{artist?.name}</span>
+            <span className="ml-2 mt-0.5 text-base">
               <MdOpenInNew />
             </span>
           </a>

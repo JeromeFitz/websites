@@ -9,7 +9,7 @@ export interface Props {
 const P = ({ children, props }: Props) => {
   return (
     <p
-      className={cx('text-black dark:text-white my-4 text-md md:text-lg')}
+      className={cx('text-black dark:text-white my-4 text-base md:text-lg')}
       {...props}
     >
       {children}

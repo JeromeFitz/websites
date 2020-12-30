@@ -258,8 +258,8 @@ const renderNotionContent = (data) => {
               // const images = getImages(source)
               const images = source
 
-              console.dir(`images`)
-              console.dir(images)
+              // console.dir(`images`)
+              // console.dir(images)
               // const original = false
               // @todo(images) how can we inline with NextImage Notion/AWS? :X
               // const isNotionAws = images.original.includes('amazonaws')

@@ -21,7 +21,7 @@ const Track = (item) => {
         className={cx(
           'text-sm font-bold',
           'text-cool-gray-600 dark:text-cool-gray-400',
-          'ml-4'
+          'ml-4 mb-5 md:mb-0'
         )}
       >
         {lpad(ranking)}.
@@ -54,19 +54,26 @@ const Track = (item) => {
           <>
             <a
               className={cx(
-                'font-medium text-cool-gray-900 dark:text-cool-gray-300',
-                'pt-1 flex flex-row'
+                'text-cool-gray-900 dark:text-cool-gray-300',
+                'font-semibold text-lg md:text-2xl',
+                'flex flex-row pt-1'
               )}
               href={track.url}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <span className="truncate">{track.name}</span>
-              <span className="ml-2 mt-1">
+              <span className="max-w-lg truncate">{track.name}</span>
+              <span className="ml-2 mt-1 text-base">
                 <MdOpenInNew />
               </span>
             </a>
-            <p className="text-cool-gray-700 dark:text-cool-gray-300 truncate">
+            <p
+              className={cx(
+                'text-cool-gray-700 dark:text-cool-gray-300',
+                'text-base md:text-xl',
+                'truncate'
+              )}
+            >
               {artist.name}
             </p>
           </>
