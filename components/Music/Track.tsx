@@ -49,7 +49,7 @@ const Track = (item) => {
       /> */}
       <img
         alt={`Album cover image of “${album.name}” by ${artist.name}`}
-        src={album.imageUrl}
+        src={artist.loading ? '/static/images/placeholder.jpg' : album.imageUrl}
         className={cx(
           'w-16 h-16 md:w-24 md:h-24',
           'hidden md:inline-flex ml-6 mr-2',

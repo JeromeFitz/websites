@@ -68,6 +68,11 @@ const refactorNotionCalls = async (catchAll) => {
   // const isIndex = !catchAll[1]
   // const slug = !isIndex && catchAll[1]
 
+  console.dir(`> refactorNotionCalls`)
+  console.dir(`isPage: ${isPage}`)
+  console.dir(`routeType: ${routeType}`)
+  console.dir(catchAll)
+
   // getCollectionView
   const notionQuery = getCollectionView({ catchAll })
   isDebug && console.dir(`notionQuery`)
@@ -96,8 +101,8 @@ const refactorNotionCalls = async (catchAll) => {
     schema: getQueryCollection.schema,
   })
 
-  isDebug && console.dir(`properties`)
-  isDebug && console.dir(properties)
+  // isDebug && console.dir(`properties`)
+  // isDebug && console.dir(properties)
 
   return properties
 }
@@ -115,7 +120,7 @@ export async function getEvent(catchAll): Promise<any> {
   return await refactorNotionCalls(catchAll)
 }
 
-export async function getEvents(): Promise<Blog[]> {
+export async function getEvents(): Promise<any[]> {
   const catchAll = ['events']
   return await refactorNotionCalls(catchAll)
 }
@@ -124,16 +129,18 @@ export async function getPage(catchAll): Promise<any> {
   return await refactorNotionCalls(catchAll)
 }
 
-export async function getPages(): Promise<Blog[]> {
-  const catchAll = ['pages']
-  return await refactorNotionCalls(catchAll)
-}
+// // @note This one is different than the others :X
+// export async function getPages(): Promise<any[]> {
+//   console.dir(`___ notion:index::pages`)
+//   const catchAll = ['']
+//   return await refactorNotionCalls(catchAll)
+// }
 
 export async function getPeople(catchAll): Promise<any> {
   return await refactorNotionCalls(catchAll)
 }
 
-export async function getPeoples(): Promise<Blog[]> {
+export async function getPeoples(): Promise<any[]> {
   const catchAll = ['people']
   return await refactorNotionCalls(catchAll)
 }
@@ -142,7 +149,7 @@ export async function getPodcast(catchAll): Promise<any> {
   return await refactorNotionCalls(catchAll)
 }
 
-export async function getPodcasts(): Promise<Blog[]> {
+export async function getPodcasts(): Promise<any[]> {
   const catchAll = ['podcasts']
   return await refactorNotionCalls(catchAll)
 }
@@ -151,7 +158,7 @@ export async function getShow(catchAll): Promise<any> {
   return await refactorNotionCalls(catchAll)
 }
 
-export async function getShows(): Promise<Blog[]> {
+export async function getShows(): Promise<any[]> {
   const catchAll = ['shows']
   return await refactorNotionCalls(catchAll)
 }
@@ -160,7 +167,7 @@ export async function getVenue(catchAll): Promise<any> {
   return await refactorNotionCalls(catchAll)
 }
 
-export async function getVenues(): Promise<Blog[]> {
+export async function getVenues(): Promise<any[]> {
   const catchAll = ['venues']
   return await refactorNotionCalls(catchAll)
 }

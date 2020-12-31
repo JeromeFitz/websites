@@ -19,7 +19,7 @@ import {
   getEvent,
   getEvents,
   getPage,
-  getPages,
+  // getPages,
   getPeople,
   getPeoples,
   getPodcast,
@@ -113,7 +113,8 @@ export const getStaticProps: GetStaticProps<any> = async ({
       data = isIndex ? await getEvents() : await getEvent(rest.params.catchAll)
       break
     case 'pages':
-      data = isIndex ? await getPages() : await getPage(rest.params.catchAll)
+      // data = isIndex ? await getPages() : await getPage(rest.params.catchAll)
+      data = await getPage(rest.params.catchAll)
       break
     case 'people':
       data = isIndex ? await getPeoples() : await getPeople(rest.params.catchAll)
@@ -151,6 +152,9 @@ export const getStaticProps: GetStaticProps<any> = async ({
 }
 
 const getStaticPathsDefault = async ({ data, routeType }) => {
+  console.dir(`> getStaticPathsDefault`)
+  console.dir(`routeType: ${routeType}`)
+  // console.dir(data)
   // @refactor(filter) only published
   const paths = await _map(data, (item: any) => {
     return getNotionLink({ slug: item.Slug, routeType })
@@ -228,7 +232,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   const blogData: Blog[] = await getBlogs()
   const eventsData: any = await getEvents()
-  const pagesData: any = await getPages()
+  // const pagesData: any = await getPages()
   const peoplesData: any = await getPeoples()
   const podcastsData: any = await getPodcasts()
   const showsData: any = await getShows()
@@ -248,15 +252,15 @@ export const getStaticPaths: GetStaticPaths = async () => {
   })
   eventsPaths && paths.push(...eventsPaths)
 
-  const { paths: pagesPaths } = await getStaticPathsDefault({
-    data: pagesData,
-    routeType: 'pages',
-  })
-  pagesPaths && paths.push(...pagesPaths)
+  // const { paths: pagesPaths } = await getStaticPathsDefault({
+  //   data: pagesData,
+  //   routeType: 'pages',
+  // })
+  // pagesPaths && paths.push(...pagesPaths)
 
   const { paths: peoplesPaths } = await getStaticPathsDefault({
     data: peoplesData,
-    routeType: 'peoples',
+    routeType: 'people',
   })
   peoplesPaths && paths.push(...peoplesPaths)
 

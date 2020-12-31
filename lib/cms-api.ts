@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/require-await */
-// import { Blog, Job, Sponsor, Stage, Speaker } from '~lib/types'
 import { Blog } from '~lib/types'
 
 import * as notionApi from './notion'
@@ -10,7 +9,7 @@ let cmsApi: {
   getEvent: (catchAll) => Promise<any>
   getEvents: () => Promise<any[]>
   getPage: (catchAll) => Promise<any>
-  getPages: () => Promise<any[]>
+  // getPages: () => Promise<any[]>
   getPeople: (catchAll) => Promise<any>
   getPeoples: () => Promise<any[]>
   getPodcast: (catchAll) => Promise<any>
@@ -19,11 +18,6 @@ let cmsApi: {
   getShows: () => Promise<any[]>
   getVenue: (catchAll) => Promise<any>
   getVenues: () => Promise<any[]>
-
-  // getJobs: () => Promise<Job[]>
-  // getSpeakers: () => Promise<Speaker[]>
-  // getSponsors: () => Promise<Sponsor[]>
-  // getStages: () => Promise<Stage[]>
 }
 
 if (notionApi) {
@@ -35,7 +29,7 @@ if (notionApi) {
     getEvent: async () => null,
     getEvents: async () => [],
     getPage: async () => null,
-    getPages: async () => [],
+    // getPages: async () => [],
     getPeople: async () => null,
     getPeoples: async () => [],
     getPodcast: async () => null,
@@ -59,7 +53,7 @@ export function getEvent(catchAll): Promise<any> {
   return cmsApi.getEvent(catchAll)
 }
 
-export function getEvents(): Promise<Blog[]> {
+export function getEvents(): Promise<any[]> {
   return cmsApi.getEvents()
 }
 
@@ -67,15 +61,15 @@ export function getPage(catchAll): Promise<any> {
   return cmsApi.getPage(catchAll)
 }
 
-export function getPages(): Promise<Blog[]> {
-  return cmsApi.getPages()
-}
+// export function getPages(): Promise<any[]> {
+//   return cmsApi.getPages()
+// }
 
 export function getPeople(catchAll): Promise<any> {
   return cmsApi.getPeople(catchAll)
 }
 
-export function getPeoples(): Promise<Blog[]> {
+export function getPeoples(): Promise<any[]> {
   return cmsApi.getPeoples()
 }
 
@@ -83,7 +77,7 @@ export function getPodcast(catchAll): Promise<any> {
   return cmsApi.getPodcast(catchAll)
 }
 
-export function getPodcasts(): Promise<Blog[]> {
+export function getPodcasts(): Promise<any[]> {
   return cmsApi.getPodcasts()
 }
 
@@ -91,7 +85,7 @@ export function getShow(catchAll): Promise<any> {
   return cmsApi.getShow(catchAll)
 }
 
-export function getShows(): Promise<Blog[]> {
+export function getShows(): Promise<any[]> {
   return cmsApi.getShows()
 }
 
@@ -99,22 +93,6 @@ export function getVenue(catchAll): Promise<any> {
   return cmsApi.getVenue(catchAll)
 }
 
-export function getVenues(): Promise<Blog[]> {
+export function getVenues(): Promise<any[]> {
   return cmsApi.getVenues()
 }
-
-// export async function getJobs(): Promise<Job[]> {
-//   return cmsApi.getJobs()
-// }
-
-// export async function getSpeakers(): Promise<Speaker[]> {
-//   return cmsApi.getSpeakers()
-// }
-
-// export async function getSponsors(): Promise<Sponsor[]> {
-//   return cmsApi.getSponsors()
-// }
-
-// export async function getStages(): Promise<Stage[]> {
-//   return cmsApi.getStages()
-// }

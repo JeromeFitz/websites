@@ -6,6 +6,8 @@ import {
   getBlogs,
   getEvent,
   getEvents,
+  getPage,
+  // getPages,
   getPeople,
   getPeoples,
   getPodcast,
@@ -42,6 +44,10 @@ export default async function getNotionApi(
         break
       case 'events':
         data = !!slug ? await getEvent(catchAll) : await getEvents()
+        break
+      case 'pages':
+        // data = !!slug ? await getPage(catchAll) : await getPages()
+        data = await getPage(catchAll)
         break
       case 'people':
         data = !!slug ? await getPeople(catchAll) : await getPeoples()

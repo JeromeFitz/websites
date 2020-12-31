@@ -48,7 +48,7 @@ const Artist = (artist) => {
       /> */}
       <img
         alt={`Image of ${artist.name}`}
-        src={artist.image}
+        src={artist.loading ? '/static/images/placeholder.jpg' : artist.image}
         className={cx(
           'w-16 h-16 md:w-24 md:h-24',
           'hidden md:inline-flex ml-6 mr-2',
@@ -57,6 +57,7 @@ const Artist = (artist) => {
           'transition-all ease-in-out delay-75'
         )}
       />
+
       <div className="flex flex-col pl-3 w-60 md:w-full">
         {artist.loading ? (
           <Skeleton />

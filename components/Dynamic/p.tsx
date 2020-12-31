@@ -8,7 +8,7 @@ export interface Props {
 
 const P = ({ children, props }: Props) => {
   return (
-    <p className={cx('my-4 text-base md:text-lg')} {...props}>
+    <p className={cx('my-4 text-base md:text-lg flex flex-row')} {...props}>
       {children}
     </p>
   )

@@ -10,3 +10,28 @@
   display: none;
   visibility: hidden;
 }
+
+.row {
+  display: flex;
+  align-items: center;
+  margin: 0 -1.5rem;
+}
+.columnContainer {
+  display: flex;
+  flex-direction: row;
+  /* // padding: 0 0.5rem; */
+}
+.column {
+  flex: 1;
+  padding-right: 0.75rem;
+}
+.column:last-of-type {
+  padding-right: 0;
+}
+
+@media screen and (max-width: 640px) {
+  .columnContainer {
+    flex-direction: column;
+    padding: 0.5rem 0;
+  }
+}

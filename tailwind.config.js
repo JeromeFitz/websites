@@ -32,11 +32,11 @@ module.exports = {
       secondary: 'var(--text-secondary)',
       black: {
         DEFAULT: 'var(--black)',
-        ...colors.black,
+        // ...colors.black,
       },
       white: {
         DEFAULT: 'var(--white)',
-        ...colors.white,
+        // ...colors.white,
       },
       ...themeColors,
       // black: colors.black,
@@ -84,6 +84,7 @@ module.exports = {
         'odd',
       ],
       backgroundOpacity: ['dark'],
+      borderColor: ['dark'],
       borderWidth: ['group-hover'],
       boxShadow: ['dark'],
       borderWidth: ['first', 'last'],

@@ -1,6 +1,5 @@
 .quote {
-  border-left: '0.25rem solid var(--color--red)';
-  margin: '1rem 2rem 1rem 0.25rem';
-  padding-left: '1rem';
-  font-size: '1.25rem';
+  @apply text-xl font-medium tracking-wider text-justify;
+  @apply border-l-4 border-green-500 dark:border-yellow-200;
+  @apply pl-4 my-8 mr-8 ml-1;
 }

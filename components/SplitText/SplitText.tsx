@@ -11,7 +11,7 @@ const SplitText = ({
   text,
   transition = true,
 }) => {
-  if (!text) return null
+  if (!text || typeof text === 'object') return null
 
   const split = text.split('')
 

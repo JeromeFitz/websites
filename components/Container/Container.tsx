@@ -10,6 +10,7 @@ import _capitalize from 'lodash/capitalize'
 import { MdWbSunny } from 'react-icons/md'
 import { IoMdMoon } from 'react-icons/io'
 
+// import Banner from '~components/Banner'
 import Footer from '~components/Footer'
 import SplitText from '~components/SplitText'
 
@@ -34,6 +35,7 @@ const Container = ({ children }) => {
   return (
     <div>
       <SkipNavLink />
+      {/* <Banner /> */}
       <nav className="sticky-nav bg-opacity-50 dark:bg-opacity-50">
         <div
           className={cx(

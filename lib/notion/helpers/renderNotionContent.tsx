@@ -320,9 +320,7 @@ const renderNotionContent = (data) => {
                       />
                       {caption && (
                         <div>
-                          <small className="block font-sans">
-                            {caption && caption}
-                          </small>
+                          <small className="font-sans">{caption && caption}</small>
                         </div>
                       )}
                     </React.Fragment>

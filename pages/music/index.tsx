@@ -48,7 +48,9 @@ const Music = () => {
           <span className="text-green-600 dark:text-green-400 font-medium">
             Spotify
           </span>
-          .
+          . (Yes, I own a lot of vinyl and an utterly extensive back-up MP3
+          collection. Please support artists by purchasing music, especially local
+          and indie. Go to shows [when we can again].)
         </p>
       </div>
       <div className="my-4 md:my-6">
