@@ -22,6 +22,9 @@ const dataUserId = process.env.NOTION_USER_ID
 /**
  * Temp Variables
  */
+/**
+ * This should be a function that takes seed data and maps through
+ */
 const NOTION__PAGE__ID = 'f09fac69-3045-46cc-9209-44b13665bada'
 const NOTION__PAGE__COLLECTION__ID = 'cd6f2e2f-3e1d-482b-9891-530501f1c797'
 const NOTION__PAGE__COLLECTION_VIEW_ID__SLUG = '29b6acc9-24e4-46f1-996f-94c0a38fac13'

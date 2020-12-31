@@ -190,11 +190,14 @@ async function createRouteType(routeTypeData) {
 
   const collection_page_properties = []
 
-  // eslint-disable-next-line @typescript-eslint/require-await
-  _map(schema, async (s: any, sIndex: any) => {
+  _map(schema, (s: any, sIndex: any) => {
+    const property = sIndex
+    const visible = !!s.visible ? s.visible : false
+    const width = !!s.width ? s.width : 100
     collection_page_properties.push({
-      property: sIndex,
-      visible: !!s.visible ? s.visible : false,
+      property,
+      visible,
+      width,
     })
   })
 

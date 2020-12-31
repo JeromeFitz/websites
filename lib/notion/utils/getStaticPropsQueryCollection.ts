@@ -43,6 +43,7 @@ const getStaticPropsQueryCollection = async ({
   slug,
   url,
 }) => {
+  console.dir(` ~~~ getStaticPropsQueryCollection ~~~`)
   let cacheData
   // let cacheFile
   // cacheFile = '.cache' + url.replace(/\//gi, '__') + '.json'
@@ -55,7 +56,7 @@ const getStaticPropsQueryCollection = async ({
     '.cache',
     `${url === '/' ? 'index' : url}.json`
   )
-  // console.dir(`> cacheFile: ${cacheFile}`)
+  console.dir(`> cacheFile: ${cacheFile}`)
 
   if (useCache) {
     try {
@@ -557,8 +558,8 @@ const getStaticPropsQueryCollection = async ({
     /**
      * Cache
      */
-    // console.dir(`> routeTypeSeo, passProps`)
-    // console.dir(routeTypeSeo)
+    console.dir(`> routeTypeSeo, passProps`)
+    console.dir(routeTypeSeo)
 
     const passProps = {
       data: properties,

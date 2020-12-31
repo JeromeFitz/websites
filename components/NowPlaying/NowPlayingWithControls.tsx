@@ -79,15 +79,15 @@ const NowPlaying = () => {
       <div className="flex flex-col justify-center px-8 bg-green-300">
         <div className="flex flex-col w-full p-2 md:p-8 my-0 md:my-8 mx-auto max-w-4xl">
           <h1>Listening To</h1>
-          <div className="grid grid-cols-1 md:grid-cols-2 md:px-8 md:py-12 md:gap-x-8 md:py-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-8 md:py-16">
             <div className="relative z-10 col-start-1 row-start-1 px-4 pt-32 pb-3 bg-gradient-to-t from-black md:bg-none">
               <p className="text-sm md:text-2xl font-black text-white mb-2 md:mb-1 md:text-gray-900">
                 {data?.artist}
               </p>
-              <h2 className="text-xl font-semibold text-white mb-2 md:mb-1 md:text-2xl md:leading-7 md:text-black md:text-3xl">
+              <h2 className="text-xl font-semibold text-white mb-2 md:mb-1 md:leading-7 md:text-black md:text-3xl">
                 {data?.title}
               </h2>
-              <h3 className="text-sm font-sans text-white md:text-2xl md:leading-7 md:text-black md:text-3xl">
+              <h3 className="text-sm font-sans text-white md:leading-7 md:text-black md:text-3xl">
                 {data?.album}
                 <span className="ml-1 italic">({data?.year})</span>
               </h3>

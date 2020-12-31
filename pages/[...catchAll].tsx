@@ -36,6 +36,7 @@ import Header from '~components/Header'
 import { Listing } from '~components/Listing'
 
 import renderNotionContent from '~lib/notion/helpers/renderNotionContent'
+import getRouteTypeSeo from '~lib/notion/utils/getRouteTypeSeo'
 
 const isDebug = false
 
@@ -139,6 +140,8 @@ export const getStaticProps: GetStaticProps<any> = async ({
     }
   }
 
+  const routeTypeSeo = isIndex ? await getRouteTypeSeo(routeType) : null
+
   return {
     props: {
       ...rest,
@@ -146,6 +149,7 @@ export const getStaticProps: GetStaticProps<any> = async ({
       preview,
       relativeUrl: _join(rest.params.catchAll, '/'),
       routeType,
+      routeTypeSeo,
     },
     revalidate: 60,
   }

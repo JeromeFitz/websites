@@ -4,10 +4,12 @@ import { isPages } from '~config/notion/website'
 import generateQueryCollection from '~lib/notion/utils/generateQueryCollection'
 import getBlocks from '~lib/notion/utils/getBlocks'
 import getProperties from '~lib/notion/utils/getProperties'
+import getRouteTypeSeo from '~lib/notion/utils/getRouteTypeSeo'
 
 import { Blog } from '../types'
 
-const isDebug = false
+const isDebug = true
+const debugRouteType = 'shows'
 
 const notionConfig = {
   apiUrl: process.env.NOTION_API_URL,
@@ -33,8 +35,8 @@ const notionHeaders = {
 }
 
 export async function fetchCmsAPI(fnName: string, body: any) {
-  isDebug && console.dir(`body`)
-  isDebug && console.dir(body)
+  // isDebug && console.dir(`body`)
+  // isDebug && console.dir(body)
 
   if (fnName === undefined) {
     throw new Error(`fetchCmsAPI: fnName must be provided`)
@@ -65,35 +67,45 @@ const refactorNotionCalls = async (catchAll) => {
   // @refactor(DRY)
   const isPage = isPages(catchAll[0])
   const routeType = isPage ? 'pages' : catchAll[0]
-  // const isIndex = !catchAll[1]
-  // const slug = !isIndex && catchAll[1]
+  const isIndex = !catchAll[1]
+  const slug = !isIndex && catchAll[1]
 
-  // console.dir(`> refactorNotionCalls`)
-  // console.dir(`isPage: ${isPage}`)
-  // console.dir(`routeType: ${routeType}`)
-  // console.dir(catchAll)
+  const todoDebug = isDebug && routeType === debugRouteType
 
-  // getCollectionView
+  todoDebug && console.dir(`> refactorNotionCalls`)
+  todoDebug && console.dir(`isPage:    ${isPage}`)
+  todoDebug && console.dir(`isIndex:   ${isIndex}`)
+  todoDebug && console.dir(`routeType: ${routeType}`)
+  todoDebug && console.dir(catchAll)
+
   const notionQuery = getCollectionView({ catchAll })
-  isDebug && console.dir(`notionQuery`)
-  isDebug && console.dir(notionQuery)
+  todoDebug && console.dir(`notionQuery`)
+  todoDebug && console.dir(notionQuery)
   // generateQueryCollection
   const getQueryCollection = generateQueryCollection(notionQuery)
-  isDebug && console.dir(`getQueryCollection`)
-  isDebug && console.dir(getQueryCollection)
+  // todoDebug && console.dir(`getQueryCollection`)
+  // todoDebug && console.dir(getQueryCollection)
   // fetchCmsAPI (rpc)
   const data = !!getQueryCollection
     ? await fetchCmsAPI('queryCollection', getQueryCollection.payload)
     : null
 
-  // isDebug && console.dir(`data`)
-  // isDebug && console.dir(data)
-  // isDebug && console.dir(`data.recordMap.block`)
-  // isDebug && console.dir(data.recordMap.block)
+  // let routeTypeSeo: any = null
+  // if (!slug) {
+  //   routeTypeSeo = await getRouteTypeSeo(routeType)
+  // }
+
+  // todoDebug && console.dir(`routeTypeSeo`)
+  // todoDebug && console.dir(routeTypeSeo)
+
+  // // todoDebug && console.dir(`data`)
+  // // todoDebug && console.dir(data)
+  // // todoDebug  && console.dir(`data.recordMap.block`)
+  // // todoDebug  && console.dir(data.recordMap.block)
 
   const blocks = getBlocks(data.recordMap.block)
-  isDebug && console.dir(`blocks`)
-  isDebug && console.dir(blocks)
+  // todoDebug && console.dir(`blocks`)
+  // todoDebug && console.dir(blocks)
 
   const properties: any = await getProperties({
     blocks,
@@ -101,8 +113,8 @@ const refactorNotionCalls = async (catchAll) => {
     schema: getQueryCollection.schema,
   })
 
-  // isDebug && console.dir(`properties`)
-  // isDebug && console.dir(properties)
+  // todoDebug && console.dir(`properties`)
+  // todoDebug && console.dir(properties)
 
   return properties
 }
@@ -160,6 +172,7 @@ export async function getShow(catchAll): Promise<any> {
 
 export async function getShows(): Promise<any[]> {
   const catchAll = ['shows']
+  console.dir(`> getShows`)
   return await refactorNotionCalls(catchAll)
 }
 
