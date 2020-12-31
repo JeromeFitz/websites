@@ -68,10 +68,10 @@ const refactorNotionCalls = async (catchAll) => {
   // const isIndex = !catchAll[1]
   // const slug = !isIndex && catchAll[1]
 
-  console.dir(`> refactorNotionCalls`)
-  console.dir(`isPage: ${isPage}`)
-  console.dir(`routeType: ${routeType}`)
-  console.dir(catchAll)
+  // console.dir(`> refactorNotionCalls`)
+  // console.dir(`isPage: ${isPage}`)
+  // console.dir(`routeType: ${routeType}`)
+  // console.dir(catchAll)
 
   // getCollectionView
   const notionQuery = getCollectionView({ catchAll })

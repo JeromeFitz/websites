@@ -152,8 +152,8 @@ export const getStaticProps: GetStaticProps<any> = async ({
 }
 
 const getStaticPathsDefault = async ({ data, routeType }) => {
-  console.dir(`> getStaticPathsDefault`)
-  console.dir(`routeType: ${routeType}`)
+  isDebug && console.dir(`> getStaticPathsDefault`)
+  isDebug && console.dir(`routeType: ${routeType}`)
   // console.dir(data)
   // @refactor(filter) only published
   const paths = await _map(data, (item: any) => {
@@ -257,6 +257,20 @@ export const getStaticPaths: GetStaticPaths = async () => {
   //   routeType: 'pages',
   // })
   // pagesPaths && paths.push(...pagesPaths)
+  /**
+   * @refactor This should pull from RouteTypes
+   *           for Listings and customizations not hard-coded
+   */
+  paths.push(
+    '/blog',
+    '/colophon',
+    '/events',
+    '/people',
+    '/podcasts',
+    '/shows',
+    '/users',
+    '/venues'
+  )
 
   const { paths: peoplesPaths } = await getStaticPathsDefault({
     data: peoplesData,
