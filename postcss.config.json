@@ -1,10 +1,9 @@
 {
   "plugins": [
     "tailwindcss",
-    "autoprefixer",
-    "postcss-nesting",
     "postcss-hover-media-feature",
     "postcss-flexbugs-fixes",
+    "autoprefixer",
     [
       "postcss-preset-env",
       {

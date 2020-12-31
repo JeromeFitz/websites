@@ -9,6 +9,7 @@ export default async (_, res) => {
     id: artist.id,
     image: artist.images[0].url,
     name: artist.name,
+    uri: artist.uri,
     url: artist.external_urls.spotify,
   }))
 

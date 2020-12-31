@@ -3,7 +3,7 @@
 }
 
 #nprogress .bar {
-  @apply bg-green-500 dark:bg-yellow-200;
+  @apply bg-black dark:bg-white;
   position: fixed;
   z-index: 1001;
   top: 0;

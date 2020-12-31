@@ -1,9 +1,13 @@
 ::selection {
-  @apply bg-pink-900 dark:bg-pink-100;
-  @apply text-gray-100 dark:text-gray-900;
+  @apply bg-black dark:bg-white;
+  @apply text-white dark:text-black;
 }
 
-#now-playing ::selection {
-  @apply bg-cool-gray-900;
+/* #now-playing ::selection {
+  @apply bg-gray-900;
   @apply text-green-200;
+} */
+
+#now-playing {
+  transition: none !important;
 }

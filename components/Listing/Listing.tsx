@@ -90,10 +90,10 @@ const Listing = ({ items, ...rest }: Props) => {
             return (
               <li
                 className={cx(
-                  'text-black dark:text-white font-bold',
-                  'text-2xl md:text-3xl py-3 md:py-6',
+                  'text-2xl md:text-3xl font-semibold',
                   'leading-tight md:leading-tight',
-                  'tracking-tight md:ltracking-tight'
+                  'tracking-tight md:ltracking-tight',
+                  'py-3 md:py-6'
                 )}
                 key={itemId}
               >
@@ -132,7 +132,6 @@ const Listing = ({ items, ...rest }: Props) => {
               </li>
             )
           })}
-          )
         </ul>
       )}
     </>

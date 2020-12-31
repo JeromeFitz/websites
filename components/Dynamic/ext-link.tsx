@@ -19,7 +19,7 @@ const extLink = (props) => {
         key={key}
         rel="noopener"
         target={props.target || '_blank'}
-        className="text-black dark:text-white underline"
+        className="underline underline-offset-sm underline-thickness-sm"
       />
     )
   } else {

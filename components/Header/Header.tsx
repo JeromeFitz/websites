@@ -2,11 +2,11 @@ import SplitText from '~components/SplitText'
 
 const Header = ({ description, title }) => (
   <>
-    <h1 aria-label={title} className="h1">
+    <h1 aria-label={title}>
       <SplitText text={title} />
     </h1>
-    <div className="mt-2 mb-4">
-      <p className="my-4 mt-0">{description}</p>
+    <div className="mt-2 mb-4 font-medium text-2xl leading-tight md:max-w-2xl">
+      <p className="lead">{description}</p>
     </div>
   </>
 )

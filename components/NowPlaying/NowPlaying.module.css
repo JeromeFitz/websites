@@ -1,25 +1,25 @@
 .container {
-  @apply flex justify-center items-center sm:justify-center sm:items-start border border-cool-gray-300 dark:border-cool-gray-800 rounded-lg p-2 mb-8 w-full;
+  @apply flex justify-center items-center md:justify-center md:items-start border border-gray-300 dark:border-gray-800 rounded-lg p-2 mb-8 w-full;
 }
 
 .link {
-  @apply text-cool-gray-800 dark:text-cool-gray-200 font-medium;
+  @apply text-gray-800 dark:text-gray-200 font-medium;
 }
 
 .text {
-  @apply text-cool-gray-500 dark:text-cool-gray-300;
+  @apply text-gray-500 dark:text-gray-300;
 }
 
 .title {
-  @apply text-cool-gray-900 dark:text-cool-gray-100 text-2xl;
+  @apply text-gray-900 dark:text-gray-100 text-2xl;
 }
 
 .artist {
-  @apply text-cool-gray-700 dark:text-cool-gray-300 text-xl;
+  @apply text-gray-700 dark:text-gray-300 text-xl;
 }
 
 .button {
-  @apply text-cool-gray-800;
+  @apply text-gray-800;
 }
 
 .buttonPlay {

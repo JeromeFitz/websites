@@ -18,10 +18,10 @@ const links = [
   { active: true, href: '/blog', title: 'blog' },
   { active: true, href: '/comedy', title: 'comedy' },
   { active: true, href: '/music', title: 'music' },
-  { active: true, href: '/people', title: 'people' },
+  { active: false, href: '/people', title: 'people' },
   { active: true, href: '/podcasts', title: 'podcasts' },
   { active: true, href: '/shows', title: 'shows' },
-  { active: true, href: '/venues', title: 'venues' },
+  { active: false, href: '/venues', title: 'venues' },
 ]
 
 const Container = ({ children }) => {
@@ -32,13 +32,21 @@ const Container = ({ children }) => {
   const router = useRouter()
 
   return (
-    <div className="bg-white dark:bg-black">
+    <div>
       <SkipNavLink />
-      <nav className="sticky-nav bg-opacity-60 dark:bg-opacity-60 ">
-        <div className="flex flex-row justify-between items-center w-full p-8 my-0 md:my-8 mx-auto max-w-4xl">
+      <nav className="sticky-nav bg-opacity-50 dark:bg-opacity-50">
+        <div
+          className={cx(
+            'flex flex-row justify-between items-center',
+            'w-full p-8 my-0 md:my-8 mx-auto max-w-4xl'
+          )}
+        >
           <div>
             {mounted &&
               _map(links, (link) => {
+                if (!link.active) {
+                  return true
+                }
                 // @refactor(isSelected) This is ... a mess haha
                 const isSelected =
                   (router.asPath.length > 1 &&
@@ -52,8 +60,7 @@ const Container = ({ children }) => {
                   <NextLink href={link.href} key={`nav-link-${link.title}`}>
                     <a
                       className={cx(
-                        'p-1 sm:p-4 sm:pl-0',
-                        'text-cool-gray-900 dark:text-cool-gray-100',
+                        'p-1 md:p-4 md:pl-0',
                         'font-semibold text-base md:text-lg',
                         !isSelected &&
                           'hover:text-green-500 dark:hover:text-yellow-200',
@@ -69,22 +76,35 @@ const Container = ({ children }) => {
               })}
           </div>
           <button
-            aria-label="Toggle Dark Mode"
+            aria-label={`Toggle to ${theme === 'light' ? 'dark' : 'light'} mode`}
             type="button"
-            className="bg-gray-300 dark:bg-gray-700 rounded p-3 h-10 w-10 border border-black dark:border-white"
-            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            className={cx(
+              'bg-gray-300 dark:bg-gray-700',
+              'rounded p-3 h-10 w-10',
+              'border border-black dark:border-white'
+            )}
+            onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
           >
             {mounted && (
               <span className="h-4 w-4 text-gray-900 dark:text-gray-100">
-                {theme === 'dark' ? <MdWbSunny /> : <IoMdMoon />}
+                {theme === 'light' ? (
+                  <IoMdMoon className="text-black" />
+                ) : (
+                  <MdWbSunny className="text-white" />
+                )}
               </span>
             )}
           </button>
         </div>
       </nav>
       <SkipNavContent />
-      <main className="flex flex-col justify-center px-8">
-        <article className="flex flex-col w-full px-2 py-8 md:px-8 my-0 md:my-8 mx-auto max-w-4xl">
+      <main className="flex flex-col justify-center px-4 md:px-8">
+        <article
+          className={cx(
+            'flex flex-col w-full max-w-4xl',
+            'px-2 py-8 md:px-8 my-0 md:my-8 mx-auto'
+          )}
+        >
           {children}
         </article>
       </main>

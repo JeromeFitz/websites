@@ -1,9 +1,35 @@
-.transition {
-  transition: color 0.25s cubic-bezier(0.175, 0.75, 0.5, 1);
+/*! purgecss start ignore */
+/* t = transition */
+.ngop-t-0 {
+  @apply md:transition-colors md:duration-300 md:ease-in-out;
+}
+.ngop-t-1 {
+  @apply md:transition-colors md:duration-300 md:ease-in-out;
+  transition-delay: calc(0.01s * var(--split-id));
+}
+
+.ngop-t-2 {
+  @apply md:transition-colors md:duration-300 md:ease-in-out;
+  transition-delay: calc(0.02s * var(--split-id));
+}
+
+.ngop-t-3 {
+  @apply md:transition-colors md:duration-300 md:ease-in-out;
+  transition-delay: calc(0.03s * var(--split-id));
+}
+
+.ngop-t-4 {
+  @apply md:transition-colors md:duration-300 md:ease-in-out;
+  transition-delay: calc(0.04s * var(--split-id));
+}
+
+.ngop-t-5 {
+  @apply md:transition-colors md:duration-300 md:ease-in-out;
   transition-delay: calc(0.05s * var(--split-id));
 }
 
-.transition-slight-delay {
-  transition: color 0.25s cubic-bezier(0.175, 0.75, 0.5, 1);
-  transition-delay: 1.5s;
+/* sd = slight-delay */
+.ngop-t-sd {
+  @apply md:transition-colors md:duration-300 md:ease-in-out;
 }
+/*! purgecss end ignore */

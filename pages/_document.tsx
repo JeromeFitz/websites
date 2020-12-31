@@ -24,7 +24,7 @@ class MyDocument extends Document<any> {
           /> */}
           <link rel="preconnect" href="https://cdn.usefathom.com" crossOrigin="" />
         </Head>
-        <body className="bg-white dark:bg-black text-white dark:text-black">
+        <body>
           <Main />
           <NextScript />
         </body>

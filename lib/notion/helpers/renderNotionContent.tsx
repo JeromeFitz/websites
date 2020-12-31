@@ -320,7 +320,7 @@ const renderNotionContent = (data) => {
                       />
                       {caption && (
                         <div>
-                          <small className="block text-black dark:text-white font-sans">
+                          <small className="block font-sans">
                             {caption && caption}
                           </small>
                         </div>

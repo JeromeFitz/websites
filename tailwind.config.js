@@ -1,6 +1,12 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const { spacing } = require('tailwindcss/defaultTheme')
+// const { spacing } = require('tailwindcss/defaultTheme')
 const defaultTheme = require('tailwindcss/defaultTheme')
+// const screens = require('tailwindcss/screens')
+const colors = require('tailwindcss/colors')
+const _pick = require('lodash/pick')
+// const _merge = require('lodash/merge')
+
+const themeColors = _pick(colors, ['gray', 'green', 'yellow'])
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 function px(pixels) {
@@ -13,87 +19,46 @@ module.exports = {
     purgeLayersByDefault: true,
     applyComplexClasses: true,
   },
-  purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
+  purge: {
+    content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
+    enabled: true,
+    whitelistPatterns: [/ngop/],
+  },
   theme: {
+    colors: {
+      transparent: 'transparent',
+      current: 'currentColor',
+      primary: 'var(--text-primary)',
+      secondary: 'var(--text-secondary)',
+      black: {
+        DEFAULT: 'var(--black)',
+        ...colors.black,
+      },
+      white: {
+        DEFAULT: 'var(--white)',
+        ...colors.white,
+      },
+      ...themeColors,
+      // black: colors.black,
+      // white: colors.white,
+      // gray: colors.coolGray,
+      // red: colors.red,
+      // yellow: colors.amber,
+      // blue: colors.blue,
+      // pink: colors.pink,
+    },
     extend: {
       fontFamily: {
         sans: ['Inter', ...defaultTheme.fontFamily.sans],
       },
-      typography: (theme) => ({
-        DEFAULT: {
-          css: {
-            color: theme('colors.coolGray.700'),
-            a: {
-              color: theme('colors.blue.500'),
-              '&:hover': {
-                color: theme('colors.blue.700'),
-              },
-              code: { color: theme('colors.blue.400') },
-            },
-            h1: {
-              color: theme('colors.coolGray.900'),
-              fontWeight: '800',
-            },
-            h2: {
-              color: theme('colors.coolGray.900'),
-              fontWeight: '700',
-            },
-            h3: {
-              color: theme('colors.coolGray.900'),
-              fontWeight: '600',
-            },
-            h4: {
-              color: theme('colors.coolGray.900'),
-              fontWeight: '600',
-            },
-            'h2,h3,h4': {
-              'scroll-margin-top': spacing[32],
-            },
-            code: { color: theme('colors.pink.500') },
-            'blockquote p:first-of-type::before': false,
-            'blockquote p:last-of-type::after': false,
-          },
-        },
-        dark: {
-          css: {
-            color: theme('colors.coolGray.300'),
-            a: {
-              color: theme('colors.blue.400'),
-              '&:hover': {
-                color: theme('colors.blue.600'),
-              },
-              code: { color: theme('colors.blue.400') },
-            },
-            blockquote: {
-              borderLeftColor: theme('colors.coolGray.700'),
-              color: theme('colors.coolGray.300'),
-            },
-            'h2,h3,h4': {
-              'scroll-margin-top': spacing[32],
-            },
-            hr: { borderColor: theme('colors.coolGray.700') },
-            ol: {
-              li: {
-                '&:before': { color: theme('colors.coolGray.500') },
-              },
-            },
-            ul: {
-              li: {
-                '&:before': { backgroundColor: theme('colors.coolGray.500') },
-              },
-            },
-            strong: { color: theme('colors.coolGray.300') },
-            thead: {
-              color: theme('colors.coolGray.100'),
-            },
-            tbody: {
-              tr: {
-                borderBottomColor: theme('colors.coolGray.700'),
-              },
-            },
-          },
-        },
-      }),
+    },
+    screens: {
+      md: { min: '768px' },
+      // sm: { min: '640px', max: '767px' },
+      // md: { min: '768px', max: '1023px' },
+      // lg: { min: '1024px', max: '1279px' },
+      // xl: { min: '1280px', max: '1535px' },
+      // '2xl': { min: '1536px' },
     },
     underlineOffset: {
       sm: '0.125rem',
@@ -109,15 +74,24 @@ module.exports = {
   variants: {
     // backgroundColor: ['responsive', 'odd', 'hover', 'focus', 'dark'],
     extend: {
-      backgroundColor: ['dark', 'even', 'first', 'last', 'odd'],
+      backgroundColor: [
+        'dark',
+        'even',
+        'first',
+        'group-hover',
+        'hover',
+        'last',
+        'odd',
+      ],
       backgroundOpacity: ['dark'],
+      borderWidth: ['group-hover'],
       boxShadow: ['dark'],
       borderWidth: ['first', 'last'],
     },
     typography: ['dark'],
   },
   plugins: [
-    require('@tailwindcss/typography'),
+    // require('@tailwindcss/typography'),
     require('@tailwindcss/ui'),
     require('tailwind-underline-utils'),
   ],

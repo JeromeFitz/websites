@@ -2,26 +2,38 @@ import cx from 'clsx'
 import { MdOpenInNew } from 'react-icons/md'
 import lpad from '~utils/lpad'
 import { Skeleton } from '~components/Music'
+import SplitText from '~components/SplitText'
 
 const Track = (item) => {
   const { album, artist, loading, ranking, track } = item
+  const handleClick = () => {
+    window.open(track.uri, '_blank', 'noopener,noreferrer')
+  }
+
   return (
     <li
       className={cx(
         'flex flex-row items-center',
-        'border-t first:border-t-0',
+        'border-t last:border-b',
         'border-l-0 border-r-0 ',
         'w-full',
         'py-6',
-        'border-cool-gray-900 dark:border-cool-gray-100',
-        'odd:bg-cool-gray-200 dark:odd:bg-cool-gray-800'
+        'border-gray-900 dark:border-gray-100',
+        'even:bg-gray-400 dark:even:bg-gray-800',
+        'odd:bg-gray-200 dark:odd:bg-gray-600',
+        'group cursor-pointer',
+        'hover:bg-white dark:hover:bg-black',
+        'transition-all ease-out'
       )}
+      onClick={() => handleClick}
     >
       <p
         className={cx(
           'text-sm font-bold',
-          'text-cool-gray-600 dark:text-cool-gray-400',
-          'ml-4 mb-5 md:mb-0'
+          'text-gray-600 dark:text-gray-400',
+          'ml-4',
+          'group-hover:text-green-500 dark:group-hover:text-yellow-200',
+          'delay-75'
         )}
       >
         {lpad(ranking)}.
@@ -41,35 +53,44 @@ const Track = (item) => {
         className={cx(
           'w-16 h-16 md:w-24 md:h-24',
           'hidden md:inline-flex ml-6 mr-2',
-          'rounded-md border border-cool-gray-700 dark:border-cool-gray-200 bg-gray-100'
+          'rounded-md border border-gray-700 dark:border-gray-200 bg-gray-100',
+          'group-hover:border-green-500 dark:group-hover:border-yellow-200',
+          'transition-all ease-in-out delay-75'
         )}
       />
-      <div className={cx('flex flex-col pl-3 my-4 w-60 sm:w-96 md:w-full')}>
+      <div className={cx('flex flex-col pl-3 my-4 w-60 md:w-full')}>
         {loading ? (
           <>
             <Skeleton />
-            <Skeleton className="bg-cool-gray-500 dark:bg-cool-gray-400" />
+            <Skeleton className="bg-gray-500 dark:bg-gray-400" />
           </>
         ) : (
           <>
             <a
+              aria-label={track.name}
               className={cx(
-                'text-cool-gray-900 dark:text-cool-gray-300',
+                'text-gray-900 dark:text-gray-300',
+                'group-hover:text-green-500 dark:group-hover:text-yellow-200',
+                'underline underline-offset-sm underline-thickness-sm',
                 'font-semibold text-lg md:text-2xl',
                 'flex flex-row pt-1'
               )}
-              href={track.url}
+              href={track.uri}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <span className="max-w-lg truncate">{track.name}</span>
+              <span className="max-w-lg truncate">
+                <SplitText speed={3} text={track.name} />
+              </span>
               <span className="ml-2 mt-1 text-base">
                 <MdOpenInNew />
               </span>
             </a>
             <p
               className={cx(
-                'text-cool-gray-700 dark:text-cool-gray-300',
+                'text-gray-700 dark:text-gray-300',
+                'group-hover:text-green-400 dark:group-hover:text-yellow-100',
+                'delay-75',
                 'text-base md:text-xl',
                 'truncate'
               )}

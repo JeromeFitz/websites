@@ -32,6 +32,7 @@ const spotifyFavoriteAlbums = [
     id: '6dByOY5Bt5fXIAulZldIGW',
     imageUrl: 'https://i.scdn.co/image/ab67616d0000b273e064b2b86b27fadd8abaf618',
     name: 'Blasting Off',
+    uri: 'spotify:album:6dByOY5Bt5fXIAulZldIGW',
     url: 'https://open.spotify.com/album/6dByOY5Bt5fXIAulZldIGW',
     year: '2020',
   },
@@ -45,6 +46,7 @@ const spotifyFavoriteArtists = [
     id: '2xVtLMwf4oZwJT5d1J5289',
     imageUrl: 'https://i.scdn.co/image/755e8552908351489847be25e209546fefceeb58',
     name: 'Buscrates',
+    uri: 'spotify:artist:2xVtLMwf4oZwJT5d1J5289',
     url: 'https://open.spotify.com/artist/2xVtLMwf4oZwJT5d1J5289',
   },
 ]
@@ -55,6 +57,7 @@ const spotifyFavoriteTracks = [
       id: '2L13Kv0sx6GPAHo7QTZLAy',
       imageUrl: 'https://i.scdn.co/image/ab67616d0000b273230d88bf27d6ca322fb59eb4',
       name: 'Spilligion',
+      uri: '',
       url: 'https://open.spotify.com/album/2L13Kv0sx6GPAHo7QTZLAy',
       year: '2020',
     },
@@ -66,6 +69,7 @@ const spotifyFavoriteTracks = [
     track: {
       id: '7f6CWizFGRfpyOstAbyxy1',
       name: 'Mecca (with JID & EARTHGANG)',
+      uri: 'spotify:track:7f6CWizFGRfpyOstAbyxy1',
       url: 'https://open.spotify.com/track/7f6CWizFGRfpyOstAbyxy1',
     },
   },

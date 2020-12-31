@@ -7,6 +7,7 @@ const MAX_ID = 30
 const SplitText = ({
   className = null,
   idPrefix = 'split',
+  speed = 5,
   text,
   transition = true,
 }) => {
@@ -17,13 +18,14 @@ const SplitText = ({
   return split.map((letter, index) => {
     const cssProperties = {}
     cssProperties[`--${idPrefix}-id`] = index > MAX_ID ? MAX_ID : index
+    const transitionSpeed = `ngop-t-${speed}`
     return (
       <span
         aria-hidden={true}
         className={cx(
           idPrefix,
           className,
-          transition ? styles.transition : styles['transition-slight-delay']
+          transition ? styles[transitionSpeed] : styles['ngop-t-sd']
         )}
         style={cssProperties}
       >

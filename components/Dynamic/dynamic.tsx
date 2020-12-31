@@ -19,9 +19,7 @@ const H1 = ({ children, props }: Props) => {
   const text = children[0][0]
   return (
     <h1
-      className={cx(
-        'text-cool-gray-900 dark:text-cool-gray-100 my-6 text-2xl md:text-3xl font-extrabold'
-      )}
+      className={cx('my-6 text-2xl md:text-3xl font-extrabold')}
       aria-label={text}
       {...props}
     >
@@ -37,9 +35,7 @@ const H2 = ({ children, props }: Props) => {
   const text = children[0][0]
   return (
     <h2
-      className={cx(
-        'text-cool-gray-900 dark:text-cool-gray-100 my-4 text-xl md:text-2xl font-bold'
-      )}
+      className={cx('my-4 text-xl md:text-2xl font-bold')}
       aria-label={text}
       {...props}
     >
@@ -55,9 +51,7 @@ const H3 = ({ children, props }: Props) => {
   const text = children[0][0]
   return (
     <h3
-      className={cx(
-        'text-cool-gray-900 dark:text-cool-gray-100 my-3 text-lg md:text-xl font-semibold'
-      )}
+      className={cx('my-3 text-lg md:text-xl font-semibold')}
       aria-label={text}
       {...props}
     >
@@ -68,10 +62,7 @@ const H3 = ({ children, props }: Props) => {
 
 const UL = ({ children, props }: Props) => {
   return (
-    <ul
-      className={cx('text-black dark:text-white my-2 text-lg md:text-xl')}
-      {...props}
-    >
+    <ul className={cx('my-2 text-lg md:text-xl')} {...props}>
       {children}
     </ul>
   )
@@ -79,10 +70,7 @@ const UL = ({ children, props }: Props) => {
 
 const LI = ({ children, props }: Props) => {
   return (
-    <li
-      className={cx('text-black dark:text-white my-4 text-base md:text-lg mx-4')}
-      {...props}
-    >
+    <li className={cx('my-4 text-base md:text-lg mx-4')} {...props}>
       {children}
     </li>
   )

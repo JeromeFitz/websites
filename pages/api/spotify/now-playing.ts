@@ -15,6 +15,7 @@ export default async (_, res) => {
 
   const trackId = track.item.id
   const trackName = track.item.name
+  const trackUri = track.item.uri
   const trackUrl = track.item.external_urls.spotify
 
   return res.status(200).json({
@@ -22,6 +23,7 @@ export default async (_, res) => {
       id: album.id,
       imageUrl: album.images[0].url,
       name: album.name,
+      uri: album.uri,
       url: album.external_urls.spotify,
       year: album.release_date.substring(0, 4),
     },
@@ -34,6 +36,7 @@ export default async (_, res) => {
     track: {
       id: trackId,
       name: trackName,
+      uri: trackUri,
       url: trackUrl,
     },
   })

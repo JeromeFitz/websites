@@ -75,30 +75,30 @@ const NowPlaying = () => {
           <p>Status: {data?.isPlaying ? 'Playing' : 'Not Playing'}</p>
         </div>
       </div>
-      <hr className="w-full  border-gray-900 hidden sm:block" />
+      <hr className="w-full  border-gray-900 hidden md:block" />
       <div className="flex flex-col justify-center px-8 bg-green-300">
         <div className="flex flex-col w-full p-2 md:p-8 my-0 md:my-8 mx-auto max-w-4xl">
           <h1>Listening To</h1>
-          <div className="grid grid-cols-1 sm:grid-cols-2 sm:px-8 sm:py-12 sm:gap-x-8 md:py-16">
-            <div className="relative z-10 col-start-1 row-start-1 px-4 pt-32 pb-3 bg-gradient-to-t from-black sm:bg-none">
-              <p className="text-sm md:text-2xl font-black text-white mb-2 sm:mb-1 sm:text-gray-900">
+          <div className="grid grid-cols-1 md:grid-cols-2 md:px-8 md:py-12 md:gap-x-8 md:py-16">
+            <div className="relative z-10 col-start-1 row-start-1 px-4 pt-32 pb-3 bg-gradient-to-t from-black md:bg-none">
+              <p className="text-sm md:text-2xl font-black text-white mb-2 md:mb-1 md:text-gray-900">
                 {data?.artist}
               </p>
-              <h2 className="text-xl font-semibold text-white mb-2 sm:mb-1 sm:text-2xl sm:leading-7 sm:text-black md:text-3xl">
+              <h2 className="text-xl font-semibold text-white mb-2 md:mb-1 md:text-2xl md:leading-7 md:text-black md:text-3xl">
                 {data?.title}
               </h2>
-              <h3 className="text-sm font-sans text-white sm:text-2xl sm:leading-7 sm:text-black md:text-3xl">
+              <h3 className="text-sm font-sans text-white md:text-2xl md:leading-7 md:text-black md:text-3xl">
                 {data?.album}
                 <span className="ml-1 italic">({data?.year})</span>
               </h3>
             </div>
-            <div className="col-start-1 row-start-1 flex sm:col-start-2 sm:row-span-3">
+            <div className="col-start-1 row-start-1 flex md:col-start-2 md:row-span-3">
               <div className="w-full grid grid-cols-3 grid-rows-2 gap-2">
                 {/* <div className="relative col-span-3 row-span-2 md:col-span-2"> */}
                 <div className="relative col-span-3 row-span-2 md:col-span-3">
                   {/* <img
                     alt={`Album Cover for ${data?.album}`}
-                    className="absolute inset-0 object-cover sm:rounded-lg"
+                    className="absolute inset-0 object-cover md:rounded-lg"
                     height={450}
                     src={data?.albumImageUrl}
                     title={data?.album}
@@ -118,7 +118,7 @@ const NowPlaying = () => {
           </div>
         </div>
       </div>
-      <hr className="w-full border-gray-900 hidden sm:block" />
+      <hr className="w-full border-gray-900 hidden md:block" />
       <div className="w-full">
         <div className="h-2"></div>
         <div className="flex items-center justify-center">
