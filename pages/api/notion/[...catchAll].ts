@@ -1,8 +1,7 @@
 import ms from 'ms'
 import { NextApiRequest, NextApiResponse } from 'next'
-import _find from 'lodash/find'
-import _join from 'lodash/join'
 import _last from 'lodash/last'
+
 import { isPages } from '~config/notion/website'
 import {
   getBlog,
@@ -20,7 +19,6 @@ import {
   getVenue,
   getVenues,
 } from '~lib/cms-api'
-import getRouteTypeSeo from '~lib/notion/utils/getRouteTypeSeo'
 
 // Number of seconds to cache the API response for
 const EXPIRES_SECONDS = 5
@@ -35,12 +33,21 @@ export default async function getNotionApi(
     const clear = req.query?.clear || false
     const catchAll = req.query.catchAll
 
+    // console.dir(`> getNotionApi`)
+    // console.dir(catchAll)
+
     // http://localhost:3000/api/notion/blog/my-third-post?preview=true&display=true
     const isPage = isPages(catchAll[0])
     const routeType = isPage ? 'pages' : catchAll[0]
     const isIndex = !catchAll[1]
     // @todo(notion) getSlug: nuance between Blog|Events and others
-    const slug = !isIndex && _last(catchAll)
+    const slug = (!isIndex || isPage) && _last(catchAll)
+
+    // console.dir(`> isPage:    ${isPage}`)
+    // console.dir(`> routeType: ${routeType}`)
+    // console.dir(`> isIndex:   ${isIndex}`)
+    // console.dir(`> slug:      ${slug}`)
+    // console.dir(`> catchAll:  ${catchAll}`)
 
     let data
     switch (routeType) {
@@ -72,69 +79,6 @@ export default async function getNotionApi(
         break
     }
 
-    const relativeUrl = _join(catchAll, '/')
-    const urlBase = 'https://jeromefitzgerald.com/'
-    let noindex = false
-    let title: string, description: string, openGraph: any
-    let url: string = urlBase
-
-    //
-    url += relativeUrl
-    noindex = false
-
-    const isItems = isIndex && !slug
-    const items = isItems ? data : null
-    const item = !isItems ? _find(data, { Slug: slug }) : null
-
-    let routeTypeSeo: any = null
-    if (items) {
-      // @todo(notion) Blog, Event ... Date Listing SEO Defaults
-      routeTypeSeo = await getRouteTypeSeo(routeType)
-      title = routeTypeSeo['Title']
-      description = routeTypeSeo['SEO.Description']
-      noindex = routeTypeSeo.NoIndex || false
-      openGraph = routeTypeSeo && {
-        url,
-        title,
-        description,
-        images:
-          routeTypeSeo && routeTypeSeo['SEO.Image']
-            ? [
-                {
-                  alt: routeTypeSeo['SEO.Image.Description'] || description,
-                  url: routeTypeSeo['SEO.Image'],
-                },
-              ]
-            : null,
-      }
-    } else {
-      title = item['Title']
-      description = item['SEO.Description']
-      noindex = item.NoIndex || false
-      openGraph = item && {
-        url,
-        title,
-        description,
-        images:
-          item && item['SEO.Image']
-            ? [
-                {
-                  alt: item['SEO.Image.Description'] || description,
-                  url: item['SEO.Image'],
-                },
-              ]
-            : null,
-      }
-    }
-
-    const seo = {
-      canonical: url,
-      description,
-      noindex,
-      openGraph,
-      title,
-    }
-
     // Set caching headers
     // @refactor(cache) Every Route Probably Does Not Need This Treatment (catchAll)
 
@@ -159,7 +103,6 @@ export default async function getNotionApi(
         // catchAll,
         // routeType,
         // routeTypeSeo,
-        seo,
       },
       preview,
     }

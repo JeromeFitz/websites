@@ -18,22 +18,19 @@ type Props = {
   // blog: Blog
   // blogs: Blog[]
   items: any
-  params: any
-  relativeUrl: string
+  routeData: any
 }
 
-const Listing = ({ items, ...rest }: Props) => {
-  const { data } = useSWR(`/api/notion/${rest.relativeUrl}`, {
+const Listing = ({ items, routeData }: Props) => {
+  const { data } = useSWR(`/api/notion/${routeData.relativeUrl}`, {
     initialData: items,
     refreshInterval: MINUTE,
     revalidateOnFocus: false,
   })
 
-  // @refactor(data) ugh, why do we have double data now?
-  const updatedBlogs = data.data || items
-  // const updatedBlog = updatedBlogs.find((b: BlogItem) => b.id === blog.id) || blog
+  const updatedBlogs = data.items || items
 
-  const routeType = rest.params.catchAll[0]
+  const routeType = routeData.catchAll[0]
 
   let updatedBlogsNew = updatedBlogs
   // @todo(sort)

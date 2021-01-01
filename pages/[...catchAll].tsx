@@ -1,18 +1,12 @@
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { NextSeo } from 'next-seo'
 import { isPages } from '~config/notion/website'
-// import _concat from 'lodash/concat'
-// import _find from 'lodash/find'
 import _isEqual from 'lodash/isEqual'
-import _capitalize from 'lodash/capitalize'
-import _join from 'lodash/join'
 import _map from 'lodash/map'
-// import _merge from 'lodash/merge'
 import _uniqWith from 'lodash/uniqWith'
+
 import getTimestamp from '~utils/getTimestamp'
 import { getNotionLink } from '~lib/notion/helpers'
-// import getCollectionView from '~config/notion/schema/getCollectionView'
-// import getStaticPropsQueryCollection from '~lib/notion/utils/getStaticPropsQueryCollection'
 import {
   getBlog,
   getBlogs,
@@ -36,7 +30,6 @@ import Header from '~components/Header'
 import { Listing } from '~components/Listing'
 
 import renderNotionContent from '~lib/notion/helpers/renderNotionContent'
-import getRouteTypeSeo from '~lib/notion/utils/getRouteTypeSeo'
 
 const isDebug = false
 
@@ -46,42 +39,23 @@ const isDebug = false
 //   preview: boolean
 // }
 
-export default function CatchAll({ ...rest }: any) {
-  const url = 'https://jeromefitzgerald.com'
-  let title = 'B1'
-  let description = 'B1 Placeholder'
-
-  const items = rest.data
-  const key = items && Object.keys(items)
-  const isSingle = key && key.length === 1
-  const item = isSingle && items[key[0]]
-
-  title = isSingle ? item.Title : _capitalize(rest.routeType)
-  description = isSingle ? item['SEO.Description'] : `Description: ${title}`
+export default function CatchAll({ item, items, seo, ...rest }: any) {
+  const isIndex = !!items
 
   const header = {
-    description,
-    title,
+    description: seo.description || '',
+    title: seo.title || '',
   }
 
-  isDebug && console.dir(`> items`)
-  isDebug && console.dir(items)
+  isDebug && console.dir(`> rest`)
+  isDebug && console.dir(rest)
 
   return (
     <Container>
-      <NextSeo
-        title={title}
-        description={description}
-        canonical={url}
-        openGraph={{
-          url,
-          title,
-          description,
-        }}
-      />
+      <NextSeo {...seo} />
       <Header {...header} />
-      {!isSingle && items && <Listing items={items} {...rest} />}
-      {isSingle && item && <div id="content">{renderNotionContent(item)}</div>}
+      {isIndex && items && <Listing items={items} {...rest} />}
+      {!isIndex && item && <div id="content">{renderNotionContent(item)}</div>}
     </Container>
   )
 }
@@ -140,16 +114,10 @@ export const getStaticProps: GetStaticProps<any> = async ({
     }
   }
 
-  const routeTypeSeo = isIndex ? await getRouteTypeSeo(routeType) : null
-
   return {
     props: {
-      ...rest,
-      data,
+      ...data,
       preview,
-      relativeUrl: _join(rest.params.catchAll, '/'),
-      routeType,
-      routeTypeSeo,
     },
     revalidate: 60,
   }
@@ -245,13 +213,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const paths = []
 
   const { paths: blogPaths } = await getStaticPathsWithDate({
-    data: blogData,
+    data: blogData.items,
     routeType: 'blog',
   })
   blogPaths && paths.push(...blogPaths)
 
   const { paths: eventsPaths } = await getStaticPathsWithDate({
-    data: eventsData,
+    data: eventsData.items,
     routeType: 'events',
   })
   eventsPaths && paths.push(...eventsPaths)
@@ -277,25 +245,25 @@ export const getStaticPaths: GetStaticPaths = async () => {
   )
 
   const { paths: peoplesPaths } = await getStaticPathsDefault({
-    data: peoplesData,
+    data: peoplesData.items,
     routeType: 'people',
   })
   peoplesPaths && paths.push(...peoplesPaths)
 
   const { paths: podcastsPath } = await getStaticPathsPodcastsEpisodes({
-    data: podcastsData,
+    data: podcastsData.items,
     routeType: 'podcasts',
   })
   podcastsPath && paths.push(...podcastsPath)
 
   const { paths: showsPath } = await getStaticPathsDefault({
-    data: showsData,
+    data: showsData.items,
     routeType: 'shows',
   })
   showsPath && paths.push(...showsPath)
 
   const { paths: venuesPath } = await getStaticPathsDefault({
-    data: venuesData,
+    data: venuesData.items,
     routeType: 'venues',
   })
   venuesPath && paths.push(...venuesPath)

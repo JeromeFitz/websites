@@ -15,7 +15,7 @@
 @import 'notion.css';
 /* @import 'prose.css'; */
 @import 'selection.css';
-/* @import 'typography.css'; */
+@import 'typography.css';
 @import '~components/NProgress/NProgress.module.css';
 
 /**

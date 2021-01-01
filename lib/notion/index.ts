@@ -1,3 +1,7 @@
+import _find from 'lodash/find'
+import _join from 'lodash/join'
+import _last from 'lodash/last'
+
 import getCollectionView from '~config/notion/schema/getCollectionView'
 import { isPages } from '~config/notion/website'
 
@@ -8,7 +12,7 @@ import getRouteTypeSeo from '~lib/notion/utils/getRouteTypeSeo'
 
 import { Blog } from '../types'
 
-const isDebug = true
+const isDebug = false
 const debugRouteType = 'shows'
 
 const notionConfig = {
@@ -68,7 +72,8 @@ const refactorNotionCalls = async (catchAll) => {
   const isPage = isPages(catchAll[0])
   const routeType = isPage ? 'pages' : catchAll[0]
   const isIndex = !catchAll[1]
-  const slug = !isIndex && catchAll[1]
+  // @todo(notion) getSlug: nuance between Blog|Events and others
+  const slug = (!isIndex || isPage) && _last(catchAll)
 
   const todoDebug = isDebug && routeType === debugRouteType
 
@@ -90,14 +95,6 @@ const refactorNotionCalls = async (catchAll) => {
     ? await fetchCmsAPI('queryCollection', getQueryCollection.payload)
     : null
 
-  // let routeTypeSeo: any = null
-  // if (!slug) {
-  //   routeTypeSeo = await getRouteTypeSeo(routeType)
-  // }
-
-  // todoDebug && console.dir(`routeTypeSeo`)
-  // todoDebug && console.dir(routeTypeSeo)
-
   // // todoDebug && console.dir(`data`)
   // // todoDebug && console.dir(data)
   // // todoDebug  && console.dir(`data.recordMap.block`)
@@ -116,7 +113,85 @@ const refactorNotionCalls = async (catchAll) => {
   // todoDebug && console.dir(`properties`)
   // todoDebug && console.dir(properties)
 
-  return properties
+  // return properties
+
+  /**
+   * SEO & Other Data
+   */
+  const relativeUrl = _join(catchAll, '/')
+  const urlBase = 'https://jeromefitzgerald.com/'
+  let noindex = false
+  let title: string, description: string, openGraph: any
+  let url: string = urlBase
+
+  //
+  url += relativeUrl
+  noindex = false
+
+  const isItems = isIndex && !slug
+  const items = isItems ? properties : null
+  const item = !isItems ? _find(properties, { Slug: slug }) : null
+
+  let routeTypeSeo: any = null
+  if (items) {
+    // @todo(notion) Blog, Event ... Date Listing SEO Defaults
+    routeTypeSeo = await getRouteTypeSeo(routeType)
+    title = routeTypeSeo['Title']
+    description = routeTypeSeo['SEO.Description']
+    noindex = routeTypeSeo.NoIndex || false
+    openGraph = routeTypeSeo && {
+      url,
+      title,
+      description,
+      images:
+        routeTypeSeo && routeTypeSeo['SEO.Image']
+          ? [
+              {
+                alt: routeTypeSeo['SEO.Image.Description'] || description,
+                url: routeTypeSeo['SEO.Image'],
+              },
+            ]
+          : null,
+    }
+  } else {
+    title = item['Title']
+    description = item['SEO.Description']
+    noindex = item.NoIndex || false
+    openGraph = item && {
+      url,
+      title,
+      description,
+      images:
+        item && item['SEO.Image']
+          ? [
+              {
+                alt: item['SEO.Image.Description'] || description,
+                url: item['SEO.Image'],
+              },
+            ]
+          : null,
+    }
+  }
+
+  const seo = {
+    canonical: url,
+    description,
+    noindex,
+    openGraph,
+    title,
+  }
+
+  return {
+    item,
+    items,
+    seo,
+    routeData: {
+      relativeUrl,
+      routeType,
+      catchAll,
+      slug,
+    },
+  }
 }
 
 export async function getBlog(catchAll): Promise<Blog> {
