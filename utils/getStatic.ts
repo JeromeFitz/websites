@@ -1,4 +1,4 @@
-import { GetStaticProps, GetStaticPaths } from 'next'
+// import { GetStaticProps, GetStaticPaths } from 'next'
 import { isPages } from '~config/notion/website'
 import _isEqual from 'lodash/isEqual'
 import _last from 'lodash/last'
@@ -23,7 +23,9 @@ import {
   getVenue,
   getVenues,
 } from '~lib/cms-api'
-import { Blog, BlogItem } from '~lib/types'
+
+// @todo(types)
+// import { Blog, BlogItem } from '~lib/types'
 
 const isDebug = false
 
@@ -53,10 +55,9 @@ const getPathVariables = (catchAll) => {
   }
 }
 
-const getStaticPropsCatchAll: GetStaticProps<any> = async ({
-  preview,
-  ...props
-}) => {
+// @todo(types)
+// const getStaticPropsCatchAll: GetStaticProps<any> = async ({
+const getStaticPropsCatchAll = async ({ preview, ...props }) => {
   isDebug && console.dir(`_ getStaticProps`)
   isDebug && console.dir(props)
 
@@ -118,7 +119,8 @@ const getStaticPathsWithDate = async ({ data, routeType }) => {
   const dates = []
 
   // @refactor(filter) only published
-  const paths = await _map(data, (item: BlogItem) => {
+  // @todo(types)
+  const paths = await _map(data, (item) => {
     const { year, month, date } = getTimestamp(item['Date']?.start_date).event
     return getNotionLink({
       slug: item.Slug,
@@ -188,11 +190,14 @@ const getStaticPathsPodcastsEpisodes = async ({ data, routeType }) => {
   }
 }
 
+// @todo(types)
+// const getStaticPathsCatchAll: GetStaticPaths = async (_ctx) => {
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const getStaticPathsCatchAll: GetStaticPaths = async (_ctx) => {
+const getStaticPathsCatchAll = async (_ctx) => {
   isDebug && console.dir(`_ getStaticPaths`)
 
-  const blogData: Blog[] = await getBlogs()
+  // @todo(types)
+  const blogData: any = await getBlogs()
   const eventsData: any = await getEvents()
   // const pagesData: any = await getPages()
   const peoplesData: any = await getPeoples()

@@ -1,4 +1,4 @@
-import { GetStaticProps, GetStaticPaths } from 'next'
+// import { GetStaticProps, GetStaticPaths } from 'next'
 import { NextSeo } from 'next-seo'
 
 import Container from '~components/Container'
@@ -12,8 +12,8 @@ export default function CatchAll({ item, items, seo, ...rest }: any) {
   const isIndex = !!items
 
   const header = {
-    description: seo.description || '',
-    title: seo.title || '',
+    description: seo?.description || '',
+    title: seo?.title || '',
   }
 
   return (
@@ -26,13 +26,14 @@ export default function CatchAll({ item, items, seo, ...rest }: any) {
   )
 }
 
-export const getStaticProps: GetStaticProps<any> = async ({
-  preview = false,
-  ...props
-}) => {
+// @todo(types)
+// export const getStaticProps: GetStaticProps<any> = async ({
+export const getStaticProps = async ({ preview = false, ...props }) => {
   return await getStaticPropsCatchAll({ preview, ...props })
 }
 
-export const getStaticPaths: GetStaticPaths = async (ctx) => {
+// @todo(types)
+// export const getStaticPaths: GetStaticPaths = async (ctx) => {
+export const getStaticPaths = async (ctx) => {
   return await getStaticPathsCatchAll(ctx)
 }

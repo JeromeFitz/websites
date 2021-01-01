@@ -1,5 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /**
+ * @note This is faux security to protect against accidentally routing
+ *       Should enable some type of user security to protect against init
+ *       Though by keeping CREATE commented out, it will suffice.
+ */
+/**
  * @note Notion Init
  * 0. Top Level: Y, Skip -- N, Create
  * 1. Website: Y, Skip -- N, Create

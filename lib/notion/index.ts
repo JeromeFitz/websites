@@ -10,7 +10,7 @@ import getBlocks from '~lib/notion/utils/getBlocks'
 import getProperties from '~lib/notion/utils/getProperties'
 import getRouteTypeSeo from '~lib/notion/utils/getRouteTypeSeo'
 
-import { Blog } from '../types'
+// import { Blog } from '../types'
 
 const isDebug = false
 const debugRouteType = 'shows'
@@ -194,11 +194,11 @@ const refactorNotionCalls = async (catchAll) => {
   }
 }
 
-export async function getBlog(catchAll): Promise<Blog> {
+export async function getBlog(catchAll): Promise<any> {
   return await refactorNotionCalls(catchAll)
 }
 
-export async function getBlogs(): Promise<Blog[]> {
+export async function getBlogs(): Promise<any> {
   const catchAll = ['blog']
   return await refactorNotionCalls(catchAll)
 }
@@ -207,7 +207,7 @@ export async function getEvent(catchAll): Promise<any> {
   return await refactorNotionCalls(catchAll)
 }
 
-export async function getEvents(): Promise<any[]> {
+export async function getEvents(): Promise<any> {
   const catchAll = ['events']
   return await refactorNotionCalls(catchAll)
 }
@@ -217,7 +217,7 @@ export async function getPage(catchAll): Promise<any> {
 }
 
 // // @note This one is different than the others :X
-// export async function getPages(): Promise<any[]> {
+// export async function getPages(): Promise<any> {
 //   console.dir(`___ notion:index::pages`)
 //   const catchAll = ['']
 //   return await refactorNotionCalls(catchAll)
@@ -227,7 +227,7 @@ export async function getPeople(catchAll): Promise<any> {
   return await refactorNotionCalls(catchAll)
 }
 
-export async function getPeoples(): Promise<any[]> {
+export async function getPeoples(): Promise<any> {
   const catchAll = ['people']
   return await refactorNotionCalls(catchAll)
 }
@@ -236,7 +236,7 @@ export async function getPodcast(catchAll): Promise<any> {
   return await refactorNotionCalls(catchAll)
 }
 
-export async function getPodcasts(): Promise<any[]> {
+export async function getPodcasts(): Promise<any> {
   const catchAll = ['podcasts']
   return await refactorNotionCalls(catchAll)
 }
@@ -245,7 +245,7 @@ export async function getShow(catchAll): Promise<any> {
   return await refactorNotionCalls(catchAll)
 }
 
-export async function getShows(): Promise<any[]> {
+export async function getShows(): Promise<any> {
   const catchAll = ['shows']
   return await refactorNotionCalls(catchAll)
 }
@@ -254,7 +254,7 @@ export async function getVenue(catchAll): Promise<any> {
   return await refactorNotionCalls(catchAll)
 }
 
-export async function getVenues(): Promise<any[]> {
+export async function getVenues(): Promise<any> {
   const catchAll = ['venues']
   return await refactorNotionCalls(catchAll)
 }
