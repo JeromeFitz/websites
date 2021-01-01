@@ -1,24 +1,7 @@
 import ms from 'ms'
 import { NextApiRequest, NextApiResponse } from 'next'
-import _last from 'lodash/last'
 
-import { isPages } from '~config/notion/website'
-import {
-  getBlog,
-  getBlogs,
-  getEvent,
-  getEvents,
-  getPage,
-  // getPages,
-  getPeople,
-  getPeoples,
-  getPodcast,
-  getPodcasts,
-  getShow,
-  getShows,
-  getVenue,
-  getVenues,
-} from '~lib/cms-api'
+import { getPathVariables, getStaticPropsCatchAll } from '~utils/getStatic'
 
 // Number of seconds to cache the API response for
 const EXPIRES_SECONDS = 5
@@ -33,50 +16,16 @@ export default async function getNotionApi(
     const clear = req.query?.clear || false
     const catchAll = req.query.catchAll
 
-    // console.dir(`> getNotionApi`)
-    // console.dir(catchAll)
-
-    // http://localhost:3000/api/notion/blog/my-third-post?preview=true&display=true
-    const isPage = isPages(catchAll[0])
-    const routeType = isPage ? 'pages' : catchAll[0]
-    const isIndex = !catchAll[1]
-    // @todo(notion) getSlug: nuance between Blog|Events and others
-    const slug = (!isIndex || isPage) && _last(catchAll)
-
-    // console.dir(`> isPage:    ${isPage}`)
-    // console.dir(`> routeType: ${routeType}`)
-    // console.dir(`> isIndex:   ${isIndex}`)
-    // console.dir(`> slug:      ${slug}`)
-    // console.dir(`> catchAll:  ${catchAll}`)
+    const { isPage, routeType, slug } = getPathVariables(catchAll)
 
     let data
-    switch (routeType) {
-      case 'blog':
-        data = !!slug ? await getBlog(catchAll) : await getBlogs()
-        break
-      case 'events':
-        data = !!slug ? await getEvent(catchAll) : await getEvents()
-        break
-      case 'pages':
-        // data = !!slug ? await getPage(catchAll) : await getPages()
-        data = await getPage(catchAll)
-        break
-      case 'people':
-        data = !!slug ? await getPeople(catchAll) : await getPeoples()
-        break
-      case 'podcasts':
-        data = !!slug ? await getPodcast(catchAll) : await getPodcasts()
-        break
-      case 'shows':
-        data = !!slug ? await getShow(catchAll) : await getShows()
-        break
-      case 'venues':
-        data = !!slug ? await getVenue(catchAll) : await getVenues()
-        break
-
-      default:
-        data = null
-        break
+    if (routeType) {
+      data = await getStaticPropsCatchAll({
+        clear,
+        display,
+        params: { catchAll },
+        preview,
+      })
     }
 
     // Set caching headers
@@ -99,10 +48,7 @@ export default async function getNotionApi(
 
     const json = {
       props: {
-        data,
-        // catchAll,
-        // routeType,
-        // routeTypeSeo,
+        ...data,
       },
       preview,
     }

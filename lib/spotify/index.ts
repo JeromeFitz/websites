@@ -7,9 +7,20 @@ const {
 } = process.env
 
 const basic = Buffer.from(`${client_id}:${client_secret}`).toString('base64')
-const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-playing`
-const TOP_ARTISTS_ENDPOINT = `https://api.spotify.com/v1/me/top/artists`
-const TOP_TRACKS_ENDPOINT = `https://api.spotify.com/v1/me/top/tracks`
+
+const LIMIT = 10 // 20 Default
+const TIME_RANGE = {
+  long: 'long_term', // All-Time
+  medium: 'medium_term', // ~6 Months
+  short: 'short_term', // ~1 Month
+}
+
+const ENDPOINT = {
+  NOW_PLAYING: `https://api.spotify.com/v1/me/player/currently-playing`,
+  TOP_ARTISTS: `https://api.spotify.com/v1/me/top/artists?limit=${LIMIT}&time_range=${TIME_RANGE.medium}`,
+  TOP_TRACKS: `https://api.spotify.com/v1/me/top/tracks?limit=${LIMIT}&time_range=${TIME_RANGE.medium}`,
+}
+
 const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`
 
 const getAccessToken = async () => {
@@ -31,7 +42,7 @@ const getAccessToken = async () => {
 export const getNowPlaying = async () => {
   const { access_token } = await getAccessToken()
 
-  return fetch(NOW_PLAYING_ENDPOINT, {
+  return fetch(ENDPOINT.NOW_PLAYING, {
     headers: {
       Authorization: `Bearer ${access_token}`,
     },
@@ -41,7 +52,7 @@ export const getNowPlaying = async () => {
 export const getTopArtists = async () => {
   const { access_token } = await getAccessToken()
 
-  return fetch(TOP_ARTISTS_ENDPOINT, {
+  return fetch(ENDPOINT.TOP_ARTISTS, {
     headers: {
       Authorization: `Bearer ${access_token}`,
     },
@@ -51,7 +62,7 @@ export const getTopArtists = async () => {
 export const getTopTracks = async () => {
   const { access_token } = await getAccessToken()
 
-  return fetch(TOP_TRACKS_ENDPOINT, {
+  return fetch(ENDPOINT.TOP_TRACKS, {
     headers: {
       Authorization: `Bearer ${access_token}`,
     },

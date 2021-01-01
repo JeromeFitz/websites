@@ -247,7 +247,6 @@ export async function getShow(catchAll): Promise<any> {
 
 export async function getShows(): Promise<any[]> {
   const catchAll = ['shows']
-  console.dir(`> getShows`)
   return await refactorNotionCalls(catchAll)
 }
 
