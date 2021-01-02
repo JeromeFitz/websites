@@ -39,16 +39,18 @@ const useCache = process.env.NODE_ENV === 'production'
 const getPathVariables = (catchAll) => {
   let isIndex = false,
     isPage = false,
+    relativeUrl = null,
     routeType = null,
     slug = null,
     url = null
 
   if (!!catchAll) {
     isPage = isPages(catchAll[0])
+    relativeUrl = _join(catchAll, '/')
     routeType = isPage ? 'pages' : catchAll[0]
     isIndex = !catchAll[1]
     slug = (!isIndex || isPage) && _last(catchAll)
-    url = _join(catchAll, '/')
+    url = relativeUrl
   }
 
   isDebug && console.dir(`> isIndex: ${isIndex}`)
@@ -59,6 +61,7 @@ const getPathVariables = (catchAll) => {
   return {
     isIndex,
     isPage,
+    relativeUrl,
     routeType,
     slug,
     url,
@@ -69,6 +72,7 @@ const getPathVariables = (catchAll) => {
 // const getStaticPropsCatchAll: GetStaticProps<any> = async ({
 const getStaticPropsCatchAll = async ({ preview, ...props }) => {
   isDebug && console.dir(`_ getStaticProps`)
+  isDebug && console.dir(`preview: ${preview}`)
   isDebug && console.dir(props)
 
   // @note(typess) Fix this ignore please.

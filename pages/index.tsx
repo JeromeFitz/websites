@@ -4,7 +4,7 @@ import renderNotionContent from '~lib/notion/helpers/renderNotionContent'
 
 import getStaticPropsQueryCollection from '~lib/notion/utils/getStaticPropsQueryCollection'
 
-import Container from '~components/Container'
+import Layout from '~components/Layout'
 import Header from '~components/Header'
 
 /**
@@ -48,10 +48,10 @@ const Index = ({ ...rest }: any) => {
   const isSingle = key && key.length === 1
   const item = isSingle && items[key[0]]
   return (
-    <Container>
+    <Layout>
       <Header {...header} />
       <div id="content">{renderNotionContent(item)}</div>
-    </Container>
+    </Layout>
   )
 }
 

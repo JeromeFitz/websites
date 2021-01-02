@@ -1,6 +1,7 @@
 import _find from 'lodash/find'
 import _join from 'lodash/join'
 import _last from 'lodash/last'
+import _merge from 'lodash/merge'
 
 import getCollectionView from '~config/notion/schema/getCollectionView'
 import { isPages } from '~config/notion/website'
@@ -87,7 +88,9 @@ const refactorNotionCalls = async (catchAll) => {
   todoDebug && console.dir(`notionQuery`)
   todoDebug && console.dir(notionQuery)
   // generateQueryCollection
-  const getQueryCollection = generateQueryCollection(notionQuery)
+  // @wip(preview)
+  const gqc = _merge(notionQuery, { preview: true })
+  const getQueryCollection = generateQueryCollection(gqc)
   todoDebug && console.dir(`getQueryCollection`)
   todoDebug && console.dir(getQueryCollection)
   // fetchCmsAPI (rpc)
@@ -130,7 +133,10 @@ const refactorNotionCalls = async (catchAll) => {
 
   const isItems = isIndex && !slug
   const items = isItems ? properties : null
-  const item = !isItems ? _find(properties, { Slug: slug }) : null
+  let item = !isItems ? _find(properties, { Slug: slug }) : null
+  if (!item) {
+    item = null
+  }
 
   let routeTypeSeo: any = null
   if (items) {

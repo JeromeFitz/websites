@@ -2,7 +2,7 @@ import cx from 'clsx'
 import Link from 'next/link'
 import { NextSeo } from 'next-seo'
 
-import Container from '~components/Container'
+import Layout from '~components/Layout'
 import Header from '~components/Header'
 import { TopArtists, TopTracks } from '~components/Music'
 import SplitText from '~components/SplitText'
@@ -18,7 +18,7 @@ const header = {
 
 const Music = () => {
   return (
-    <Container>
+    <Layout>
       <NextSeo
         title={title}
         description={description}
@@ -97,7 +97,7 @@ const Music = () => {
         </p>
         <TopTracks />
       </div>
-    </Container>
+    </Layout>
   )
 }
 

@@ -12,17 +12,16 @@ export default async function getNotionApi(
 ) {
   try {
     const preview = req.query?.preview || false
-    const display = req.query?.display || false
     const clear = req.query?.clear || false
     const catchAll = req.query.catchAll
 
-    const { isPage, routeType, slug } = getPathVariables(catchAll)
+    // http://localhost:3000/api/notion/blog/2020/12/28/preview-blog-post?preview=true
+    const { isPage, relativeUrl, routeType } = getPathVariables(catchAll)
 
     let data
     if (routeType) {
       data = await getStaticPropsCatchAll({
         clear,
-        display,
         params: { catchAll },
         preview,
       })
@@ -54,10 +53,10 @@ export default async function getNotionApi(
     }
 
     if (json?.props) {
-      if (preview && display) {
+      if (preview) {
         res.setPreviewData({})
         res.writeHead(307, {
-          Location: `/${routeType}/${slug}`,
+          Location: `/${relativeUrl}`,
         })
         res.end()
       } else {

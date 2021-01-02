@@ -11,6 +11,8 @@
 **/
 
 @import '_global.css'; /* @note naming convention for alpha-sort */
+@import 'alerts.css';
+@import 'animations.css';
 @import 'navigation.css';
 @import 'notion.css';
 /* @import 'prose.css'; */

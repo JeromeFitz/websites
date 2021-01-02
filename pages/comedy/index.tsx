@@ -1,6 +1,6 @@
 import { NextSeo } from 'next-seo'
 
-import Container from '~components/Container'
+import Layout from '~components/Layout'
 import Header from '~components/Header'
 
 const url = 'https://jeromefitzgerald.com/music'
@@ -14,7 +14,7 @@ const header = {
 
 const Music = () => {
   return (
-    <Container>
+    <Layout>
       <NextSeo
         title={title}
         description={description}
@@ -26,7 +26,7 @@ const Music = () => {
         }}
       />
       <Header {...header} />
-    </Container>
+    </Layout>
   )
 }
 

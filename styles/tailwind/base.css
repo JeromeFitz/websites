@@ -39,6 +39,19 @@
   --accents-9: #212529;
   --font-sans: 'Inter', -apple-system, system-ui, BlinkMacSystemFont,
     'Helvetica Neue', 'Helvetica', sans-serif;
+
+  --success-lighter: #d3e5ff;
+  --success-light: #3291ff;
+  --success: #0070f3;
+  --success-dark: #0761d1;
+  --error-lighter: #f7d4d6;
+  --error-light: #ff1a1a;
+  --error: #ee0000;
+  --error-dark: #c50000;
+  --warning-lighter: #ffefcf;
+  --warning-light: #f7b955;
+  --warning: #f5a623;
+  --warning-dark: #ab570a;
 }
 
 .dark,

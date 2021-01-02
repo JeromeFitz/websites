@@ -21,6 +21,7 @@ const extLink = (props) => {
     return (
       <a
         {...props}
+        aria-label={text}
         key={key}
         rel="noopener"
         target={props.target || '_blank'}

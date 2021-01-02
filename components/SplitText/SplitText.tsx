@@ -29,7 +29,7 @@ const SplitText = ({
         )}
         style={cssProperties}
       >
-        {letter}
+        {letter === ' ' ? '\u00A0' : letter}
       </span>
     )
   })
