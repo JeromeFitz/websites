@@ -88,8 +88,8 @@ const refactorNotionCalls = async (catchAll) => {
   todoDebug && console.dir(notionQuery)
   // generateQueryCollection
   const getQueryCollection = generateQueryCollection(notionQuery)
-  // todoDebug && console.dir(`getQueryCollection`)
-  // todoDebug && console.dir(getQueryCollection)
+  todoDebug && console.dir(`getQueryCollection`)
+  todoDebug && console.dir(getQueryCollection)
   // fetchCmsAPI (rpc)
   const data = !!getQueryCollection
     ? await fetchCmsAPI('queryCollection', getQueryCollection.payload)
@@ -134,7 +134,8 @@ const refactorNotionCalls = async (catchAll) => {
 
   let routeTypeSeo: any = null
   if (items) {
-    // @todo(notion) Blog, Event ... Date Listing SEO Defaults
+    // // @todo(notion) Blog, Event ... Date Listing SEO Defaults
+    // return null
     routeTypeSeo = await getRouteTypeSeo(routeType)
     title = routeTypeSeo['Title']
     description = routeTypeSeo['SEO.Description']
@@ -154,9 +155,9 @@ const refactorNotionCalls = async (catchAll) => {
           : null,
     }
   } else {
-    title = item['Title']
-    description = item['SEO.Description']
-    noindex = item.NoIndex || false
+    title = item?.Title || ''
+    description = item && item['SEO.Description']
+    noindex = item?.NoIndex || false
     openGraph = item && {
       url,
       title,

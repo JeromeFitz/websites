@@ -1,11 +1,12 @@
-// import { GetStaticProps, GetStaticPaths } from 'next'
-import { isPages } from '~config/notion/website'
 import _isEqual from 'lodash/isEqual'
+import _join from 'lodash/join'
 import _last from 'lodash/last'
 import _map from 'lodash/map'
 import _uniqWith from 'lodash/uniqWith'
+import path from 'path'
 
-import getTimestamp from '~utils/getTimestamp'
+import { isPages } from '~config/notion/website'
+import { readFile, writeFileSyncRecursive } from '~lib/notion/helpers/fs-helpers'
 import { getNotionLink } from '~lib/notion/helpers'
 import {
   getBlog,
@@ -23,23 +24,31 @@ import {
   getVenue,
   getVenues,
 } from '~lib/cms-api'
+import getTimestamp from '~utils/getTimestamp'
 
 // @todo(types)
 // import { Blog, BlogItem } from '~lib/types'
 
 const isDebug = false
+/**
+ * @todo Make this a `process.env.CACHE` variable YIKES DOES NOT WORK LIVE
+ */
+const useCache = process.env.NODE_ENV === 'production'
+// const useCache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE
 
 const getPathVariables = (catchAll) => {
   let isIndex = false,
     isPage = false,
     routeType = null,
-    slug = null
+    slug = null,
+    url = null
 
   if (!!catchAll) {
     isPage = isPages(catchAll[0])
     routeType = isPage ? 'pages' : catchAll[0]
     isIndex = !catchAll[1]
     slug = (!isIndex || isPage) && _last(catchAll)
+    url = _join(catchAll, '/')
   }
 
   isDebug && console.dir(`> isIndex: ${isIndex}`)
@@ -52,6 +61,7 @@ const getPathVariables = (catchAll) => {
     isPage,
     routeType,
     slug,
+    url,
   }
 }
 
@@ -65,43 +75,85 @@ const getStaticPropsCatchAll = async ({ preview, ...props }) => {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const { catchAll } = props.params
-  const { routeType, slug } = getPathVariables(catchAll)
+  const { routeType, slug, url } = getPathVariables(catchAll)
 
   isDebug && console.dir(`routeType: ${routeType}`)
 
-  let data
-  switch (routeType) {
-    case 'blog':
-      data = slug ? await getBlog(catchAll) : await getBlogs()
-      break
-    case 'events':
-      data = slug ? await getEvent(catchAll) : await getEvents()
-      break
-    case 'pages':
-      // data = slug ? await getPage(catchAll):await getPages()
-      data = await getPage(catchAll)
-      break
-    case 'people':
-      data = slug ? await getPeople(catchAll) : await getPeoples()
-      break
-    case 'podcasts':
-      data = slug ? await getPodcast(catchAll) : await getPodcasts()
-      break
-    case 'shows':
-      data = slug ? await getShow(catchAll) : await getShows()
-      break
-    case 'venues':
-      data = slug ? await getVenue(catchAll) : await getVenues()
-      break
-    default:
-      isDebug && console.dir(`routeType: null`)
-      break
+  isDebug && console.dir(` *** cache ***`)
+  let cacheData, data
+  const cacheFile = path.join(
+    process.cwd(),
+    '.cache',
+    `${url === '/' ? 'index' : url}.json`
+  )
+  isDebug && console.dir(`> cacheFile: ${cacheFile}`)
+
+  if (useCache) {
+    try {
+      cacheData = JSON.parse(await readFile(cacheFile, 'utf8'))
+      data = cacheData
+      isDebug && console.dir(`> readFile: ${cacheFile}`)
+      // // @todo(cache) Cheat here since we technically have the data
+      // from getPathVariables
+      // if (isIndex) {
+      //   _map(data.items, (item) => {
+      //     const cacheFileItem = path.join(
+      //       process.cwd(),
+      //       '.cache',
+      //       `${routeType}/${item.Slug}.json`
+      //     )
+      //     isDebug && console.dir(`> cacheFileItem: ${cacheFileItem}`)
+      //     writeFileSyncRecursive(cacheFile, JSON.stringify(data), 'utf8')
+      //   })
+      // }
+    } catch (_) {
+      isDebug && console.dir(`> cacheFile: not found`)
+      /* not fatal */
+    }
+  }
+
+  if (!data) {
+    switch (routeType) {
+      case 'blog':
+        data = slug ? await getBlog(catchAll) : await getBlogs()
+        break
+      case 'events':
+        data = slug ? await getEvent(catchAll) : await getEvents()
+        break
+      case 'pages':
+        // data = slug ? await getPage(catchAll):await getPages()
+        data = await getPage(catchAll)
+        break
+      case 'people':
+        data = slug ? await getPeople(catchAll) : await getPeoples()
+        break
+      case 'podcasts':
+        data = slug ? await getPodcast(catchAll) : await getPodcasts()
+        break
+      case 'shows':
+        isDebug && console.dir('______')
+        data = slug ? await getShow(catchAll) : await getShows()
+        isDebug && console.dir(data)
+        break
+      case 'venues':
+        data = slug ? await getVenue(catchAll) : await getVenues()
+        break
+      default:
+        isDebug && console.dir(`routeType: null`)
+        break
+    }
   }
 
   if (!data) {
     return {
       notFound: true,
     }
+  }
+
+  // @note(cache) Don't write file if no data
+  if (useCache && !cacheData) {
+    isDebug && console.dir(`> writeFileSyncRecursive: ${cacheFile}`)
+    writeFileSyncRecursive(cacheFile, JSON.stringify(data), 'utf8')
   }
 
   return {

@@ -151,8 +151,8 @@ const renderNotionContent = (data) => {
               Object.keys(listMap).map((itemId) => {
                 if (listMap[itemId].isNested) return null
 
-                const createEl = (item) =>
-                  React.createElement(
+                const createEl = (item) => {
+                  return React.createElement(
                     components.li || 'ul',
                     // { key: item.key },
                     null,
@@ -167,6 +167,7 @@ const renderNotionContent = (data) => {
                         )
                       : null
                   )
+                }
                 return createEl(listMap[itemId])
               })
             )

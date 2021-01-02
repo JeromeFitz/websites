@@ -4,10 +4,7 @@ import _map from 'lodash/map'
 import _merge from 'lodash/merge'
 import path from 'path'
 import getTimestamp from '~utils/getTimestamp'
-import {
-  readFile,
-  // writeFileSyncRecursive,
-} from '~lib/notion/helpers/fs-helpers'
+import { readFile, writeFileSyncRecursive } from '~lib/notion/helpers/fs-helpers'
 import rpc, { values } from '~lib/notion/rpc'
 import generateQueryCollection from '~lib/notion/utils/generateQueryCollection'
 import getRouteTypeSeo from '~lib/notion/utils/getRouteTypeSeo'
@@ -20,8 +17,8 @@ const isDebug = false
 /**
  * @todo Make this a `process.env.CACHE` variable YIKES DOES NOT WORK LIVE
  */
-// const useCache = process.env.NODE_ENV === 'production'
-const useCache = false
+const useCache = process.env.NODE_ENV === 'production'
+// const useCache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE
 
 const nonPreviewTypes = new Set(['editor', 'page', 'collection_view'])
 // const getBlocks = async (data) =>
@@ -45,9 +42,6 @@ const getStaticPropsQueryCollection = async ({
 }) => {
   console.dir(` ~~~ getStaticPropsQueryCollection ~~~`)
   let cacheData
-  // let cacheFile
-  // cacheFile = '.cache' + url.replace(/\//gi, '__') + '.json'
-  // cacheFile = path.join(process.cwd(), cacheFile)
   /**
    * @ref https://nextjs.org/docs/basic-features/data-fetching#reading-files-use-processcwd
    */
@@ -62,7 +56,7 @@ const getStaticPropsQueryCollection = async ({
     try {
       cacheData = JSON.parse(await readFile(cacheFile, 'utf8'))
     } catch (_) {
-      // console.dir(`> cacheFile: not found`)
+      console.dir(`> cacheFile: not found`)
       /* not fatal */
     }
   }
@@ -550,6 +544,7 @@ const getStaticPropsQueryCollection = async ({
           routeType,
           routeTypeSeo: routeTypeSeo ? routeTypeSeo : null,
           slug,
+          foo: 'bar',
         },
         revalidate: 5, // [slug]
         // revalidate: 10, // index
@@ -570,12 +565,14 @@ const getStaticPropsQueryCollection = async ({
       routeType: routeType === 'podcastEpisodes' ? 'podcasts' : routeType,
       routeTypeSeo: routeTypeSeo ? routeTypeSeo : null,
       slug,
+      foo: 'baz',
     }
     cacheData = passProps
 
-    // if (useCache) {
-    //   writeFileSyncRecursive(cacheFile, JSON.stringify(cacheData), 'utf8')
-    // }
+    if (useCache) {
+      console.dir(`> writeFileSyncRecursive: ${cacheFile}`)
+      writeFileSyncRecursive(cacheFile, JSON.stringify(cacheData), 'utf8')
+    }
   } else {
     // console.dir(`_____ SKIP THE NOTION API CALLS ______`)
   }
