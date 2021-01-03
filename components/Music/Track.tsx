@@ -80,7 +80,7 @@ const Track = (item) => {
               rel="noopener noreferrer"
             >
               <span className="max-w-lg truncate">
-                <SplitText speed={3} text={track.name} />
+                <SplitText speed={3} splitBy="letter" text={track.name} />
               </span>
               <span className="ml-2 mt-1 text-base">
                 <MdOpenInNew />

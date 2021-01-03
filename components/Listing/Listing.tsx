@@ -102,7 +102,7 @@ const Listing = ({ items, routeData }: Props) => {
                     )}
                     aria-label={item.Title}
                   >
-                    <SplitText text={item.Title} />
+                    <SplitText splitBy="letter" text={item.Title} />
                   </a>
                 </Link>
                 <p

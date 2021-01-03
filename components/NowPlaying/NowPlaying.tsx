@@ -40,7 +40,7 @@ const NowPlaying = () => {
         <div className="flex flex-col w-full px-2 py-8 md:px-8 my-0 md:my-8 mx-auto max-w-4xl">
           <h1 className="text-black">{title}</h1>
           <div className="grid grid-cols-1 md:grid-cols-2 md:px-2 py-12 md:gap-x-4 md:py-16">
-            <div className="relative z-5 col-start-1 row-start-1 px-4 pt-44 md:pt-24 pb-3 bg-gradient-to-t from-black md:bg-none md:leading-normal">
+            <div className="relative col-start-1 row-start-1 px-4 pt-44 md:pt-24 pb-3 bg-gradient-to-t from-black md:bg-none md:leading-normal z-10">
               <p
                 className={cx(
                   'font-extrabold',
@@ -62,7 +62,8 @@ const NowPlaying = () => {
                   'mb-2 md:mb-6',
                   'text-xl md:text-4xl',
                   'leading-normal md:leading-normal',
-                  'tracking-normal md:tracking-tight'
+                  'tracking-normal md:tracking-tight',
+                  ''
                 )}
               >
                 <a
@@ -70,7 +71,8 @@ const NowPlaying = () => {
                   className={cx(
                     'underline underline-offset-md',
                     'underline-thickness-sm md:underline-thickness-md',
-                    'md:hover:text-yellow-900 md:dark:hover:text-yellow-900'
+                    'md:hover:text-yellow-900 md:dark:hover:text-yellow-900',
+                    'flex flex-wrap'
                   )}
                   href={track.uri}
                   target="_blank"
@@ -102,7 +104,7 @@ const NowPlaying = () => {
                 {album.year}
               </h4>
             </div>
-            <div className="col-start-1 row-start-1 flex md:col-start-2 md:row-span-3">
+            <div className="col-start-1 row-start-1 flex md:col-start-2 md:row-span-3 z-0">
               <div className="w-full grid grid-cols-3 grid-rows-2 gap-2">
                 <div className="relative col-span-3 row-span-2 md:col-span-3">
                   <Image

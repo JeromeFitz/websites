@@ -23,7 +23,7 @@ const H1 = ({ children, props }: Props) => {
       aria-label={text}
       {...props}
     >
-      <SplitText text={text} />
+      <SplitText splitBy="letter" text={text} />
     </h1>
   )
 }
@@ -39,7 +39,7 @@ const H2 = ({ children, props }: Props) => {
       aria-label={text}
       {...props}
     >
-      <SplitText text={text} />
+      <SplitText splitBy="letter" text={text} />
     </h2>
   )
 }

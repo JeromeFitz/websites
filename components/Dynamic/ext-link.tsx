@@ -32,7 +32,11 @@ const extLink = (props) => {
         )}
       >
         {/* @hack(notion) If you strike a link, ... der. */}
-        {typeof text === 'object' ? text : <SplitText speed={3} text={text} />}{' '}
+        {typeof text === 'object' ? (
+          text
+        ) : (
+          <SplitText splitBy="letter" speed={3} text={text} />
+        )}{' '}
         <span className="ml-2 mt-1 text-base inline">
           <MdOpenInNew />
         </span>
@@ -51,7 +55,7 @@ const extLink = (props) => {
             'hover:text-green-500 dark:hover:text-yellow-200'
           )}
         >
-          <SplitText speed={3} text={text} />
+          <SplitText speed={3} splitBy="letter" text={text} />
         </a>
       </Link>
     )

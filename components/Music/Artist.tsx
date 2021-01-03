@@ -76,7 +76,7 @@ const Artist = (artist) => {
             rel="noopener noreferrer"
           >
             <span className="md:max-w-lg truncate">
-              <SplitText speed={3} text={artist?.name} />
+              <SplitText speed={3} splitBy="letter" text={artist?.name} />
             </span>
             <span className="ml-2 mt-0.5 text-base">
               <MdOpenInNew />

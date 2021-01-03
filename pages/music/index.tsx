@@ -55,7 +55,7 @@ const Music = () => {
       </div>
       <div className="my-4 md:my-6">
         <h2 aria-label="Top Artists">
-          <SplitText text="Top Artists" />
+          <SplitText splitBy="letter" text="Top Artists" />
         </h2>
         <p className="mb-6 md:mb-8">
           For 2020 my number one artist was{' '}
@@ -68,7 +68,7 @@ const Music = () => {
               )}
               aria-label={'Madlib'}
             >
-              <SplitText text={'Madlib'} />
+              <SplitText splitBy="letter" text={'Madlib'} />
             </a>
           </Link>
           .
@@ -77,7 +77,7 @@ const Music = () => {
       </div>
       <div className="my-8">
         <h2 aria-label="Top Tracks">
-          <SplitText text="Top Tracks" />
+          <SplitText splitBy="letter" text="Top Tracks" />
         </h2>
         <p className="mb-6 md:mb-8 leading-relaxed">
           <span className="inline md:block">For 2020 my number one song was </span>

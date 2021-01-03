@@ -72,7 +72,7 @@ const Layout = ({ children }) => {
                       )}
                       aria-label={linkTitle}
                     >
-                      <SplitText text={linkTitle} />
+                      <SplitText splitBy="letter" text={linkTitle} />
                     </a>
                   </NextLink>
                 )
