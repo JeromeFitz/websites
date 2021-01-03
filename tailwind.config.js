@@ -1,10 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-// const { spacing } = require('tailwindcss/defaultTheme')
-const defaultTheme = require('tailwindcss/defaultTheme')
-// const screens = require('tailwindcss/screens')
+const { fontFamily, spacing } = require('tailwindcss/defaultTheme')
 const colors = require('tailwindcss/colors')
 const _pick = require('lodash/pick')
-// const _merge = require('lodash/merge')
 
 const themeColors = _pick(colors, ['gray', 'green', 'yellow'])
 
@@ -21,7 +18,7 @@ module.exports = {
   },
   purge: {
     content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
-    enabled: true,
+    enabled: false,
     whitelistPatterns: [/ngop/],
   },
   theme: {
@@ -37,6 +34,12 @@ module.exports = {
       white: {
         DEFAULT: 'var(--white)',
         // ...colors.white,
+      },
+      info: {
+        DEFAULT: 'var(--info)',
+        ligther: 'var(--info-lighter)',
+        light: 'var(--info-lighter)',
+        dark: 'var(--info-dark)',
       },
       error: {
         DEFAULT: 'var(--error)',
@@ -67,8 +70,25 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        sans: ['Inter', ...defaultTheme.fontFamily.sans],
+        sans: ['Inter', ...fontFamily.sans],
       },
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            'h2,h3,h4': {
+              'scroll-margin-top': spacing[32],
+            },
+          },
+        },
+        dark: {
+          css: {
+            'h2,h3,h4': {
+              'scroll-margin-top': spacing[32],
+            },
+          },
+        },
+      }),
     },
     screens: {
       md: { min: '768px' },
@@ -103,9 +123,12 @@ module.exports = {
       ],
       backgroundOpacity: ['dark'],
       borderColor: ['dark'],
-      borderWidth: ['group-hover'],
+      borderWidth: ['group-hover', 'first', 'last'],
       boxShadow: ['dark'],
-      borderWidth: ['first', 'last'],
+      opacity: ['group-hover'],
+      scale: ['group-hover'],
+      transform: ['group-hover'],
+      translate: ['group-hover'],
     },
     typography: ['dark'],
   },

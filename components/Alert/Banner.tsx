@@ -11,7 +11,7 @@ const Banner = ({ isPersistent = true, children }) => {
   return (
     <div
       className={cx(
-        'alert-footer w-full fixed bottom-0 z-50 bg-warning',
+        'alert-footer w-full fixed bottom-0 z-40 bg-warning',
         'border border-l-0 border-r-0 border-black',
         { checked: isChecked }
       )}
@@ -19,7 +19,6 @@ const Banner = ({ isPersistent = true, children }) => {
       <input
         checked={isChecked}
         className="hidden"
-        defaultChecked={false}
         id="alert-footer"
         onChange={() => handleVisible()}
         type="checkbox"

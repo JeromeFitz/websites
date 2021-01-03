@@ -40,18 +40,66 @@
   --font-sans: 'Inter', -apple-system, system-ui, BlinkMacSystemFont,
     'Helvetica Neue', 'Helvetica', sans-serif;
 
-  --success-lighter: #d3e5ff;
-  --success-light: #3291ff;
-  --success: #0070f3;
-  --success-dark: #0761d1;
-  --error-lighter: #f7d4d6;
-  --error-light: #ff1a1a;
-  --error: #ee0000;
+  --info-dark: #0761d1;
+  --info-light: #3291ff;
+  --info-lighter: #d3e5ff;
+  --info: #0070f3;
   --error-dark: #c50000;
-  --warning-lighter: #ffefcf;
-  --warning-light: #f7b955;
-  --warning: #f5a623;
+  --error-light: #ff1a1a;
+  --error-lighter: #f7d4d6;
+  --error: #ee0000;
+  --success-dark: #0761d1;
+  --success-light: #3291ff;
+  --success-lighter: #d3e5ff;
+  --success: #0070f3;
   --warning-dark: #ab570a;
+  --warning-light: #f7b955;
+  --warning-lighter: #ffefcf;
+  --warning: #f5a623;
+
+  --space: 4px;
+  --space-2x: 8px;
+  --space-4x: 16px;
+  --space-8x: 32px;
+  --space-16x: 64px;
+  --space-24x: 96px;
+  --space-32x: 128px;
+  --space-48x: 192px;
+  --space-64x: 256px;
+  --space-small: 32px;
+  --space-medium: 40px;
+  --space-large: 48px;
+  --space-gap: 24px;
+  --space-gap-half: 12px;
+  --space-gap-quarter: var(--space-2x);
+  --gap: var(--space-gap);
+  --gap-half: var(--space-gap-half);
+  --gap-quarter: var(--space-gap-quarter);
+  --gap-double: var(--space-large);
+  --space-negative: -4px;
+  --space-2x-negative: -8px;
+  --space-4x-negative: -16px;
+  --space-8x-negative: -32px;
+  --space-16x-negative: -64px;
+  --space-24x-negative: -96px;
+  --space-32x-negative: -128px;
+  --space-48x-negative: -192px;
+  --space-64x-negative: -256px;
+  --space-small-negative: -32px;
+  --space-medium-negative: -40px;
+  --space-large-negative: -48px;
+  --space-gap-negative: -24px;
+  --space-gap-half-negative: -12px;
+  --space-gap-quarter-negative: var(--space-2x-negative);
+  --gap-negative: var(--space-gap-negative);
+  --gap-half-negative: var(--space-gap-half-negative);
+  --gap-quarter-negative: var(--space-gap-quarter-negative);
+  --gap-double-negative: var(--space-large-negative);
+  --page-margin: var(--space-gap);
+  --page-width: 1000px;
+  --page-width-with-margin: 1048px;
+  --radius: 5px;
+  --marketing-radius: 8px;
 }
 
 .dark,

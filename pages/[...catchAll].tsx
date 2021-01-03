@@ -12,7 +12,15 @@ import { Listing } from '~components/Listing'
 import renderNotionContent from '~lib/notion/helpers/renderNotionContent'
 import { getStaticPathsCatchAll, getStaticPropsCatchAll } from '~utils/getStatic'
 
-export default function CatchAll({ item, items, preview, routeData, seo }: any) {
+import { CatchAll as CatchAllProps } from '~lib/types'
+
+export default function CatchAll({
+  item,
+  items,
+  preview,
+  routeData,
+  seo,
+}: CatchAllProps) {
   const isIndex = !!items
   // const router = useRouter()
 
@@ -28,7 +36,8 @@ export default function CatchAll({ item, items, preview, routeData, seo }: any) 
   //   return <ErrorPage statusCode={404} />
   // }
 
-  const previewClearUrl = `/api/notion/${routeData.relativeUrl}?clear=true`
+  const previewClearUrl =
+    routeData?.relativeUrl && `/api/notion/${routeData.relativeUrl}?clear=true`
 
   return (
     <>

@@ -1,4 +1,5 @@
 import Banner from './Banner'
 import Toast from './Toast'
+import ToastContainer from './ToastContainer'
 
-export { Banner, Toast }
+export { Banner, Toast, ToastContainer }

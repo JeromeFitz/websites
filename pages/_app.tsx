@@ -5,6 +5,8 @@ import { FC } from 'react'
 import type { AppProps } from 'next/app'
 import { DefaultSeo } from 'next-seo'
 
+import ToastProvider from '~context/Toast'
+
 import Head from '~components/Head'
 import NProgress from '~components/NProgress'
 import { ManagedUIContext } from '~context/ManagedUIContext'
@@ -23,10 +25,12 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <Head />
       <DefaultSeo {...SEO} />
       <ManagedUIContext>
-        <Layout pageProps={pageProps}>
-          <Component {...pageProps} />
-          <NProgress />
-        </Layout>
+        <ToastProvider>
+          <Layout pageProps={pageProps}>
+            <Component {...pageProps} />
+            <NProgress />
+          </Layout>
+        </ToastProvider>
       </ManagedUIContext>
     </>
   )

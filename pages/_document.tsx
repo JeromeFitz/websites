@@ -5,23 +5,20 @@ import Document, {
   Main,
   NextScript,
 } from 'next/document'
-import GoogleFonts from 'next-google-fonts'
 
 class MyDocument extends Document<any> {
   render() {
     return (
       <Html lang="en">
-        <GoogleFonts href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" />
         <Head>
-          <link rel="preconnect" href="https://fonts.gstatic.com/" crossOrigin="" />
-          {/* <link
+          <link
             rel="preconnect"
             // href="/static/fonts/name-sans/name_sans-variable.woff2"
             href="/static/fonts/inter/inter-var-latin.woff2"
             as="font"
             type="font/woff2"
             crossOrigin="anonymous"
-          /> */}
+          />
           <link rel="preconnect" href="https://cdn.usefathom.com" crossOrigin="" />
         </Head>
         <body>

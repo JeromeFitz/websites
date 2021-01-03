@@ -191,13 +191,14 @@ const refactorNotionCalls = async (catchAll) => {
   return {
     item,
     items,
-    seo,
     routeData: {
       relativeUrl,
       routeType,
       catchAll,
       slug,
+      url,
     },
+    seo,
   }
 }
 

@@ -10,9 +10,10 @@ import _capitalize from 'lodash/capitalize'
 import { MdWbSunny } from 'react-icons/md'
 import { IoMdMoon } from 'react-icons/io'
 
-// import Banner from '~components/Banner'
 import Footer from '~components/Footer'
 import SplitText from '~components/SplitText'
+
+const isDev = process.env.NODE_ENV !== 'production'
 
 const links = [
   { active: true, href: '/', title: 'home' },
@@ -23,6 +24,7 @@ const links = [
   { active: true, href: '/podcasts', title: 'podcasts' },
   { active: true, href: '/shows', title: 'shows' },
   { active: false, href: '/venues', title: 'venues' },
+  { active: isDev, href: '/playground', title: 'playground' },
 ]
 
 const Layout = ({ children }) => {
@@ -35,7 +37,6 @@ const Layout = ({ children }) => {
   return (
     <div>
       <SkipNavLink />
-      {/* <Banner /> */}
       <nav className="sticky-nav bg-opacity-50 dark:bg-opacity-50 z-40 top-0 sticky">
         <div
           className={cx(

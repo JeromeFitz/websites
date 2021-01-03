@@ -40,7 +40,7 @@ const getStaticPropsQueryCollection = async ({
   slug,
   url,
 }) => {
-  console.dir(` ~~~ getStaticPropsQueryCollection ~~~`)
+  isDebug && console.dir(` ~~~ getStaticPropsQueryCollection ~~~`)
   let cacheData
   /**
    * @ref https://nextjs.org/docs/basic-features/data-fetching#reading-files-use-processcwd
@@ -50,13 +50,13 @@ const getStaticPropsQueryCollection = async ({
     '.cache',
     `${url === '/' ? 'index' : url}.json`
   )
-  console.dir(`> cacheFile: ${cacheFile}`)
+  isDebug && console.dir(`> cacheFile: ${cacheFile}`)
 
   if (useCache) {
     try {
       cacheData = JSON.parse(await readFile(cacheFile, 'utf8'))
     } catch (_) {
-      console.dir(`> cacheFile: not found`)
+      isDebug && console.dir(`> cacheFile: not found`)
       /* not fatal */
     }
   }
@@ -76,14 +76,14 @@ const getStaticPropsQueryCollection = async ({
       routeTypeSeo = await getRouteTypeSeo(routeType)
     }
 
-    // console.dir(`> getQueryCollection`)
-    // console.dir(getQueryCollection)
-    // console.dir(collectionId)
-    // console.dir(collectionViewId)
+    // isDebug && console.dir(`> getQueryCollection`)
+    // isDebug && console.dir(getQueryCollection)
+    // isDebug && console.dir(collectionId)
+    // isDebug && console.dir(collectionViewId)
 
     const data = await rpc('queryCollection', getQueryCollection.payload)
-    // console.dir(`> data`)
-    // console.dir(data)
+    // isDebug && console.dir(`> data`)
+    // isDebug && console.dir(data)
 
     /**
      * old
@@ -95,8 +95,8 @@ const getStaticPropsQueryCollection = async ({
     //   //   ? (block: any) => block.value.type === 'collection_view'
     //   //   : (block: any) => block.value.type === 'collection_view_page'
     // )
-    // console.dir(`> tableBlock`)
-    // console.dir(tableBlock)
+    // isDebug && console.dir(`> tableBlock`)
+    // isDebug && console.dir(tableBlock)
 
     // const blocks = await getBlocks(data.recordMap.block)
     const blocks = await _filter(data.recordMap.block, {
@@ -108,11 +108,11 @@ const getStaticPropsQueryCollection = async ({
     //     block.value.parent_table === 'collection' &&
     //     block.value.type === 'page'
     // )
-    // console.dir(`> blocks`)
-    // console.dir(blocks)
-    // // console.dir(`> blocksDeux`)
-    // // console.dir(blocksDeux)
-    // // console.dir(blocks[0])
+    // isDebug && console.dir(`> blocks`)
+    // isDebug && console.dir(blocks)
+    // // isDebug && console.dir(`> blocksDeux`)
+    // // isDebug && console.dir(blocksDeux)
+    // // isDebug && console.dir(blocks[0])
 
     // const notionData = await getTableData(
     //   tableBlock,
@@ -120,11 +120,11 @@ const getStaticPropsQueryCollection = async ({
     //   collectionId,
     //   collectionViewId
     // )
-    // console.dir(`> notionData`)
-    // console.dir(notionData)
-    // console.dir(`___`)
-    // console.dir(getQueryCollection)
-    // console.dir(getQueryCollection.schema)
+    // isDebug && console.dir(`> notionData`)
+    // isDebug && console.dir(notionData)
+    // isDebug && console.dir(`___`)
+    // isDebug && console.dir(getQueryCollection)
+    // isDebug && console.dir(getQueryCollection.schema)
     const schema = {}
     await _map(getQueryCollection.schema, (_s, _sId) => {
       schema[_s.name] = { ..._s, _id: _sId }
@@ -132,10 +132,10 @@ const getStaticPropsQueryCollection = async ({
 
     const properties = {}
     await _map(blocks, async (block) => {
-      // console.dir(`>> block.value.content`)
-      // console.dir(block.value.content)
-      // console.dir(`>> block.value.properties`)
-      // console.dir(block.value.properties)
+      // isDebug && console.dir(`>> block.value.content`)
+      // isDebug && console.dir(block.value.content)
+      // isDebug && console.dir(`>> block.value.properties`)
+      // isDebug && console.dir(block.value.properties)
       block.props = {}
       block.propz = {}
       block.preview = {}
@@ -157,22 +157,22 @@ const getStaticPropsQueryCollection = async ({
             case 'checkbox':
             case 'text':
             case 'title':
-              // console.dir(`[x] checkbox|text|title`)
-              // console.dir(`>>> schemaKey`)
-              // console.dir(schemaKey)
-              // console.dir(`>>> property`)
-              // console.dir(property)
+              // isDebug && console.dir(`[x] checkbox|text|title`)
+              // isDebug && console.dir(`>>> schemaKey`)
+              // isDebug && console.dir(schemaKey)
+              // isDebug && console.dir(`>>> property`)
+              // isDebug && console.dir(property)
               propertyValue = property[0][0]
-              // console.dir(`>>> propertyValue`)
-              // console.dir(propertyValue)
+              // isDebug && console.dir(`>>> propertyValue`)
+              // isDebug && console.dir(propertyValue)
               break
             case 'multi_select':
-              // console.dir(`[x] multi_select`)
+              // isDebug && console.dir(`[x] multi_select`)
               propertyValue = property[0][0].split(',').join(' ')
-              // console.dir(propertyValue)
+              // isDebug && console.dir(propertyValue)
               break
             case 'date':
-              // console.dir(`[x] date`)
+              // isDebug && console.dir(`[x] date`)
               propertyValue = property[0][1][0][1]
               if (!propertyValue.start_date || !propertyValue.time_zone) {
                 break
@@ -204,8 +204,8 @@ const getStaticPropsQueryCollection = async ({
               propertyValue = property[0][0]
               break
             case 'link':
-              // console.dir(`__ link`)
-              // console.dir(property)
+              // isDebug && console.dir(`__ link`)
+              // isDebug && console.dir(property)
               propertyValue = property[0][1]
               break
             /**
@@ -225,7 +225,7 @@ const getStaticPropsQueryCollection = async ({
               propertyValue = parseFloat(property[0][0])
               break
             default:
-              // console.dir(`> default (nothing): ${_s.type}`)
+              // isDebug && console.dir(`> default (nothing): ${_s.type}`)
               propertyValue = null
               break
           }
@@ -287,8 +287,8 @@ const getStaticPropsQueryCollection = async ({
 
             break
           case 'podcasts':
-            // console.dir(`~~ getStaticNotion: ${routeType}`)
-            // console.dir(`~~ block.props.Slug: ${block.props.Slug}`)
+            // isDebug && console.dir(`~~ getStaticNotion: ${routeType}`)
+            // isDebug && console.dir(`~~ block.props.Slug: ${block.props.Slug}`)
             // nextHref = `/${routeType}/[...catchAll]`
             nextHref = `/[...catchAll]`
             nextAs = `/${routeType}/${block.props.Slug}`
@@ -300,9 +300,9 @@ const getStaticPropsQueryCollection = async ({
 
             break
           case 'podcastEpisodes':
-            // console.dir(`~~ getStaticNotion: ${routeType}`)
-            // console.dir(`~~ block.props`)
-            // console.dir(block.props)
+            // isDebug && console.dir(`~~ getStaticNotion: ${routeType}`)
+            // isDebug && console.dir(`~~ block.props`)
+            // isDebug && console.dir(block.props)
             // nextHref = `/${routeType}/[...catchAll]`
             nextHref = `/[...catchAll]`
             nextAs = `/podcasts/${block.props.Tags}/${block.props.Slug}`
@@ -329,7 +329,7 @@ const getStaticPropsQueryCollection = async ({
       /**
        * @hack Move everything...
        */
-      // console.dir(block)
+      // isDebug && console.dir(block)
       properties[block.value.id] = block
       // properties[block.value.id] = _merge(
       //   block.propz,
@@ -355,8 +355,8 @@ const getStaticPropsQueryCollection = async ({
          * Clean Content Data...
          */
         await _map(contentResults.results, (_c: any, _cId: any) => {
-          // console.dir(`>> clean content data yo...`)
-          // console.dir(`>> _c`)
+          // isDebug && console.dir(`>> clean content data yo...`)
+          // isDebug && console.dir(`>> _c`)
           delete contentResults.results[_cId].role
           // delete contentResults.results[_cId].value.id
           delete contentResults.results[_cId].value.version
@@ -407,12 +407,12 @@ const getStaticPropsQueryCollection = async ({
       await Promise.all(
         _map(properties, async (_p: any, _pId) => {
           properties[_pId]['columns'] = {}
-          // console.dir(`_p...`)
-          // console.dir(_p)
+          // isDebug && console.dir(`_p...`)
+          // isDebug && console.dir(_p)
           await Promise.all(
             _map(_p.content, async (_p2: any) => {
-              // console.dir(`_p2...`)
-              // console.dir(_p2)
+              // isDebug && console.dir(`_p2...`)
+              // isDebug && console.dir(_p2)
               if (_p2.value.type === 'column_list') {
                 // properties[_pId]['contentRequests__columns'] = {}
                 // properties[_pId]['contentRequests__columns'][_p2.value.id] = {}
@@ -453,7 +453,7 @@ const getStaticPropsQueryCollection = async ({
                       //   _p2.value.id
                       // ][columnID]
                     )
-                    // console.dir(`> end: contentResults__columns`)
+                    // isDebug && console.dir(`> end: contentResults__columns`)
 
                     // properties[_pId]['contentRequests__columns__children'][
                     //   _p2.value.id
@@ -477,13 +477,13 @@ const getStaticPropsQueryCollection = async ({
                       //   _p2.value.id
                       // ][columnID]
                     )
-                    // console.dir(`> end: contentResults__columns__children`)
+                    // isDebug && console.dir(`> end: contentResults__columns__children`)
                     /**
                      * Clean Content Data...
                      */
                     await _map(columnResults.results, (_c: any, _cId: any) => {
-                      // console.dir(`>> clean content data yo...`)
-                      // console.dir(`>> _c`)
+                      // isDebug && console.dir(`>> clean content data yo...`)
+                      // isDebug && console.dir(`>> _c`)
                       delete columnResults.results[_cId].role
                       // delete columnResults.results[_cId].value.id
                       delete columnResults.results[_cId].value.version
@@ -553,8 +553,8 @@ const getStaticPropsQueryCollection = async ({
     /**
      * Cache
      */
-    console.dir(`> routeTypeSeo, passProps`)
-    console.dir(routeTypeSeo)
+    isDebug && console.dir(`> routeTypeSeo, passProps`)
+    isDebug && console.dir(routeTypeSeo)
 
     const passProps = {
       data: properties,
@@ -570,11 +570,11 @@ const getStaticPropsQueryCollection = async ({
     cacheData = passProps
 
     if (useCache) {
-      console.dir(`> writeFileSyncRecursive: ${cacheFile}`)
+      isDebug && console.dir(`> writeFileSyncRecursive: ${cacheFile}`)
       writeFileSyncRecursive(cacheFile, JSON.stringify(cacheData), 'utf8')
     }
   } else {
-    // console.dir(`_____ SKIP THE NOTION API CALLS ______`)
+    // isDebug && console.dir(`_____ SKIP THE NOTION API CALLS ______`)
   }
   /**
    * Return
