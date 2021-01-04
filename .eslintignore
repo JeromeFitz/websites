@@ -1,0 +1,8 @@
+# folders
+.cache
+.next
+.vercel
+node_modules
+
+# public
+public/scripts/**

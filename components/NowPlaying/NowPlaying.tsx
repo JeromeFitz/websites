@@ -19,7 +19,7 @@ const NowPlaying = () => {
   const { data } = useSWR('/api/spotify/now-playing', fetcher, {
     initialData,
     refreshInterval: MINUTE,
-    revalidateOnFocus: false,
+    revalidateOnFocus: true,
   })
 
   // @refactor(swr) This a little convulated

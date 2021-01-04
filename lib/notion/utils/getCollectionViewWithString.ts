@@ -22,7 +22,7 @@ const getCollectionViewWithString = ({
   }
   // const previewData
   if (preview) {
-    console.warn(`___ preview: ${preview} => remove?`)
+    isDebug && console.warn(`___ preview: ${preview} => remove?`)
     indexCollectionView.query.filter.filters.splice(1, 1)
   }
   /**

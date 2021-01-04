@@ -25,7 +25,12 @@ const H1 = ({ children, props }: Props) => {
       aria-label={text}
       {...props}
     >
-      <SplitText splitBy="word" text={text} />
+      <span aria-hidden="true" className="md:hidden">
+        {text}
+      </span>
+      <span aria-hidden="true" className="hidden md:flex flex-row flex-wrap">
+        <SplitText splitBy="word" text={text} />
+      </span>
     </h1>
   )
 }
@@ -37,11 +42,16 @@ const H2 = ({ children, props }: Props) => {
   const text = children[0][0]
   return (
     <h2
-      className={cx('my-4 text-xl md:text-2xl font-bold flex flex-row flex-wrap')}
+      className={cx('my-4 text-xl md:text-2xl font-bold')}
       aria-label={text}
       {...props}
     >
-      <SplitText splitBy="word" text={text} />
+      <span aria-hidden="true" className="md:hidden">
+        {text}
+      </span>
+      <span aria-hidden="true" className="hidden md:flex flex-row flex-wrap">
+        <SplitText splitBy="word" text={text} />
+      </span>
     </h2>
   )
 }
@@ -57,7 +67,12 @@ const H3 = ({ children, props }: Props) => {
       aria-label={text}
       {...props}
     >
-      <SplitText text={text} transition={false} />
+      <span aria-hidden="true" className="md:hidden">
+        {text}
+      </span>
+      <span aria-hidden="true" className="hidden md:flex flex-row flex-wrap">
+        <SplitText text={text} transition={false} />
+      </span>
     </h3>
   )
 }

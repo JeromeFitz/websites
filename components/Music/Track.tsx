@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import cx from 'clsx'
 import { MdOpenInNew } from 'react-icons/md'
 import lpad from '~utils/lpad'
@@ -30,7 +31,7 @@ const Track = (item) => {
       <p
         className={cx(
           'text-sm font-bold',
-          'text-gray-600 dark:text-gray-400',
+          'text-gray-800 dark:text-gray-400',
           'ml-4',
           'group-hover:text-green-500 dark:group-hover:text-yellow-200',
           'delay-75'
@@ -38,26 +39,27 @@ const Track = (item) => {
       >
         {lpad(ranking)}.
       </p>
-      {/* <Image
-        alt={`Image of ${artist.name}`}
-        height={64}
-        width={64}
-        src={artist.image}
+      <div
         className={cx(
-          'w-16 h-16 rounded-full pl-6 mr-2 border border-black bg-gray-100'
-        )}
-      /> */}
-      <img
-        alt={`Album cover image of “${album.name}” by ${artist.name}`}
-        src={artist.loading ? '/static/images/placeholder.jpg' : album.imageUrl}
-        className={cx(
-          'w-16 h-16 md:w-24 md:h-24',
-          'hidden md:inline-flex ml-6 mr-2',
+          'ml-6 mr-2 hidden md:inline-flex',
+          'hidden md:inline-flex',
+          'w-24 h-24 md:w-32 md:h-30',
           'rounded-md border border-gray-700 dark:border-gray-200 bg-gray-100',
           'group-hover:border-green-500 dark:group-hover:border-yellow-200',
           'transition-all ease-in-out delay-75'
         )}
-      />
+      >
+        {artist.loading ? (
+          <Skeleton type="image" />
+        ) : (
+          <Image
+            alt={`Album cover image of “${album.name}” by ${artist.name}`}
+            height={128}
+            width={128}
+            src={album.imageUrl}
+          />
+        )}
+      </div>
       <div className={cx('flex flex-col pl-3 my-4 w-60 md:w-full')}>
         {loading ? (
           <>
@@ -88,7 +90,7 @@ const Track = (item) => {
             </a>
             <p
               className={cx(
-                'text-gray-700 dark:text-gray-300',
+                'text-gray-800 dark:text-gray-400',
                 'group-hover:text-green-400 dark:group-hover:text-yellow-100',
                 'delay-75',
                 'text-base md:text-xl',

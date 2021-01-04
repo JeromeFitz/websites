@@ -30,27 +30,16 @@ const Music = () => {
         }}
       />
       <Header {...header} />
-      {/* This data needs to come from API */}
       <div className="mb-4">
-        {/* <p className="my-4">
-          I listen to music extensively on MP3s “old-school” style, and vinyl which
-          is even more ancient.
-        </p>
-        <p className="my-4">
-          <span className="italic font-bold block">Please...</span>
-          Buy music. Go to live online shows. Go to live shows when we can. Keep art
-          alive.
-        </p> */}
         <p className="my-4">
           <span className="italic font-bold block">Note:</span>
           <span className="block md:inline">Links will open in, and all </span>data
-          comes from{' '}
-          <span className="text-green-600 dark:text-green-400 font-medium">
+          comes from,{' '}
+          <span className="text-green-800 dark:text-green-400 font-medium">
             Spotify
           </span>
-          . (Yes, I own a lot of vinyl and an utterly extensive back-up MP3
-          collection. Please support artists by purchasing music, especially local
-          and indie. Go to shows [when we can again].)
+          . (Please support artists by purchasing music, especially local and indie.
+          Go to shows [when we can again].)
         </p>
       </div>
       <div className="my-4 md:my-6">

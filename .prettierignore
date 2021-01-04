@@ -15,3 +15,5 @@ node_modules
 **/deprecated/**
 **/fonts/**
 **/zzz--do-not-use/**
+
+public/scripts/**

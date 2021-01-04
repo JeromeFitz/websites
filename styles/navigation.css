@@ -1,4 +1,4 @@
-.sticky-nav {
+.bg-blur {
   backdrop-filter: saturate(100%) blur(1.25rem);
   transition: background-color 0.1 ease-in-out;
   /* @apply shadow-sm; */
