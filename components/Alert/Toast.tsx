@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import cx from 'clsx'
 
 import { useToast } from '~context/Toast'
 import styles from './Toast.module.css'
 
-const Toast = ({ children, count, id, index, isPersistent = false }) => {
+const Toast = ({ children, id, indexReverse, preserve, type }) => {
   const { removeToast } = useToast()
 
   const [isChecked, isCheckedSet] = useState(false)
@@ -13,43 +13,60 @@ const Toast = ({ children, count, id, index, isPersistent = false }) => {
     isCheckedSet(true)
     removeToast(id)
   }
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      removeToast(id)
-    }, 3000)
+  useMemo(() => {
+    if (!preserve) {
+      const timer = setTimeout(() => {
+        removeToast(id)
+      }, 3000)
 
-    return () => {
-      clearTimeout(timer)
+      return () => {
+        clearTimeout(timer)
+      }
+    } else {
+      return () => {}
     }
-  }, [id, removeToast])
+  }, [id, preserve, removeToast])
 
   const idCss = `alert-toast--${id}`
 
-  const indexReverse = count - index
-
   const cssProperties = {}
   cssProperties[`--toast-id`] = indexReverse
+
+  const bgType = `bg-${type}`
+  const bgTypeLighter = `bg-${type}-lighter`
+  const bgTypeLight = `bg-${type}-light`
+  // const bgTypeDark = `bg-${type}-dark`
 
   return (
     <>
       <div
         className={cx(
           styles.toastContainer,
-          'bg-warning',
-          'max-h-20 shadow-xl',
+          // bgType,
+          'max-h-24 shadow text-secondary',
           { 'opacity-0': indexReverse > 3 },
           { 'max-h-1': indexReverse > 1 },
-          { 'opacity-100': indexReverse <= 3 },
+          // { 'opacity-100': indexReverse <= 3 },
           {
-            '-translate-y-8 scale-90 group-hover:-translate-y-40':
+            'group-hover:opacity-100 -translate-y-8 scale-90 group-hover:-translate-y-40':
               indexReverse === 3,
           },
+          { [bgTypeLighter]: indexReverse === 3 },
           {
-            '-translate-y-4 scale-95 group-hover:-translate-y-20':
+            'group-hover:opacity-100 -translate-y-4 scale-95 group-hover:-translate-y-20':
               indexReverse === 2,
           },
           {
-            '-translate-y-0 group-hover:-translate-y-1': indexReverse === 1,
+            [bgTypeLight]: indexReverse === 2,
+          },
+          `${indexReverse === 3 && 'group-hover:' + bgType}`,
+          `${indexReverse === 2 && 'group-hover:' + bgType}`,
+          {
+            'opacity-100 -translate-y-0 group-hover:-translate-y-1':
+              indexReverse === 1,
+          },
+          {
+            [bgType]: indexReverse === 1,
           },
           'transform group-hover:transform',
           { checked: isChecked }
@@ -70,7 +87,7 @@ const Toast = ({ children, count, id, index, isPersistent = false }) => {
               type="checkbox"
             />
             {children}
-            {!isPersistent && (
+            {preserve && (
               <label className="close cursor-pointer" title="close" htmlFor={idCss}>
                 <svg
                   className="fill-current "

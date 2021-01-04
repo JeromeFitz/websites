@@ -1,4 +1,5 @@
 import React, { useState, useContext, useCallback } from 'react'
+
 import ToastContainer from '~components/Alert/ToastContainer'
 
 const ToastContext = React.createContext(null)
@@ -9,12 +10,22 @@ const ToastProvider = ({ children }) => {
   const [toasts, setToasts] = useState([])
 
   const addToast = useCallback(
-    (content) => {
+    ({
+      action = null,
+      cancelAction = null,
+      preserve = true,
+      text,
+      type = 'info',
+    }) => {
       setToasts((toasts) => [
         ...toasts,
         {
+          action,
+          cancelAction,
           id: id++,
-          content,
+          preserve,
+          text,
+          type,
         },
       ])
     },

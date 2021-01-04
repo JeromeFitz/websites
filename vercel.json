@@ -1,4 +1,13 @@
 {
+  "version": 2,
+  "regions": ["iad", "sfo"],
+  "public": false,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/next@canary"
+    }
+  ],
   "cleanUrls": true,
   "trailingSlash": false,
   "headers": [

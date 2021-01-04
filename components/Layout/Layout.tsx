@@ -1,4 +1,3 @@
-import '@reach/skip-nav/styles.css'
 import { SkipNavContent, SkipNavLink } from '@reach/skip-nav'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
@@ -6,23 +5,24 @@ import { useTheme } from 'next-themes'
 import NextLink from 'next/link'
 import cx from 'clsx'
 import _map from 'lodash/map'
-import _capitalize from 'lodash/capitalize'
+import title from 'title'
 import { MdWbSunny } from 'react-icons/md'
 import { IoMdMoon } from 'react-icons/io'
 
 import Footer from '~components/Footer'
 import SplitText from '~components/SplitText'
 
-const isDev = process.env.NODE_ENV !== 'production'
+const isDev = false
+// const isDev = process.env.NODE_ENV !== 'production'
 
 const links = [
   { active: true, href: '/', title: 'home' },
-  { active: true, href: '/blog', title: 'blog' },
-  { active: true, href: '/comedy', title: 'comedy' },
+  { active: isDev, href: '/blog', title: 'blog' },
+  { active: isDev, href: '/comedy', title: 'comedy' },
+  { active: true, href: '/shows', title: 'featured shows' },
   { active: true, href: '/music', title: 'music' },
   { active: false, href: '/people', title: 'people' },
   { active: true, href: '/podcasts', title: 'podcasts' },
-  { active: true, href: '/shows', title: 'shows' },
   { active: false, href: '/venues', title: 'venues' },
   { active: isDev, href: '/playground', title: 'playground' },
 ]
@@ -35,7 +35,7 @@ const Layout = ({ children }) => {
   const router = useRouter()
 
   return (
-    <div>
+    <>
       <SkipNavLink />
       <nav className="sticky-nav bg-opacity-50 dark:bg-opacity-50 z-40 top-0 sticky">
         <div
@@ -57,7 +57,7 @@ const Layout = ({ children }) => {
                     link.title !== 'home') ||
                   (router.asPath.length === 1 && link.title === 'home')
 
-                const linkTitle = _capitalize(link.title)
+                const linkTitle = title(link.title)
 
                 return (
                   <NextLink href={link.href} key={`nav-link-${link.title}`}>
@@ -101,7 +101,7 @@ const Layout = ({ children }) => {
         </div>
       </nav>
       <SkipNavContent />
-      <main className="flex flex-col justify-center px-4 md:px-8">
+      <main className="flex flex-col px-4 md:px-8 min-h-screen">
         <article
           className={cx(
             'flex flex-col w-full max-w-4xl',
@@ -112,7 +112,7 @@ const Layout = ({ children }) => {
         </article>
       </main>
       <Footer />
-    </div>
+    </>
   )
 }
 

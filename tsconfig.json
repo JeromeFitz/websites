@@ -48,6 +48,7 @@
     "**/*.tsx",
     "lint-staged.config.js",
     "next.config.js",
+    "postcss.config.js",
     "tailwind.config.js",
     "config/notion/website/getRedirects.js"
   ]

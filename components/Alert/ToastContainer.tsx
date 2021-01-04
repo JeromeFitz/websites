@@ -16,14 +16,16 @@ const ToastContainer = ({ toasts }) => {
     <Portal>
       <div className={cx(styles.toastArea, 'group')}>
         {toasts.map((toast, toastIndex) => {
+          const indexReverse = toastSize - toastIndex
           return (
             <Toast
-              count={toastSize}
               id={toast.id}
-              index={toastIndex}
+              indexReverse={indexReverse}
               key={`toast--${toastIndex}`}
+              preserve={toast.preserve}
+              type={toast.type}
             >
-              {toast.content}
+              {toast.text}
             </Toast>
           )
         })}

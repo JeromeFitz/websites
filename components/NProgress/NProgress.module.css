@@ -1,7 +1,9 @@
+/*! purgecss ignore */
 #nprogress {
   pointer-events: none;
 }
 
+/*! purgecss ignore */
 #nprogress .bar {
   @apply bg-black dark:bg-white;
   position: fixed;

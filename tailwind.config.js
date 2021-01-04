@@ -13,13 +13,18 @@ function px(pixels) {
 module.exports = {
   darkMode: 'class',
   future: {
-    purgeLayersByDefault: true,
     applyComplexClasses: true,
+    purgeLayersByDefault: true,
+    removeDeprecatedGapUtilities: true,
   },
   purge: {
     content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
     enabled: false,
-    whitelistPatterns: [/ngop/],
+    options: {
+      safelist: [/ngop/, /^bg-error/, /^bg-info/, /^bg-success/, /^bg-warning/],
+      keyframes: false,
+      fontFace: false,
+    },
   },
   theme: {
     colors: {
@@ -36,27 +41,27 @@ module.exports = {
         // ...colors.white,
       },
       info: {
-        DEFAULT: 'var(--info)',
-        ligther: 'var(--info-lighter)',
-        light: 'var(--info-lighter)',
-        dark: 'var(--info-dark)',
+        DEFAULT: 'var(--accents-8)',
+        lighter: 'var(--accents-6)',
+        light: 'var(--accents-7)',
+        dark: 'var(--accents-9)',
       },
       error: {
         DEFAULT: 'var(--error)',
-        ligther: 'var(--error-lighter)',
-        light: 'var(--error-lighter)',
+        lighter: 'var(--error-lighter)',
+        light: 'var(--error-light)',
         dark: 'var(--error-dark)',
       },
       success: {
         DEFAULT: 'var(--success)',
-        ligther: 'var(--success-lighter)',
-        light: 'var(--success-lighter)',
+        lighter: 'var(--success-lighter)',
+        light: 'var(--success-light)',
         dark: 'var(--success-dark)',
       },
       warning: {
         DEFAULT: 'var(--warning)',
-        ligther: 'var(--warning-lighter)',
-        light: 'var(--warning-lighter)',
+        lighter: 'var(--warning-lighter)',
+        light: 'var(--warning-light)',
         dark: 'var(--warning-dark)',
       },
       ...themeColors,

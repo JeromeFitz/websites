@@ -1,8 +1,10 @@
+/*! purgecss start ignore */
 @tailwind base;
 @import 'tailwind/base.css';
 
 @tailwind components;
 @import 'tailwind/components.css';
+/*! purgecss end ignore */
 
 @tailwind utilities;
 
@@ -16,6 +18,7 @@
 @import 'navigation.css';
 @import 'notion.css';
 /* @import 'prose.css'; */
+@import 'reach/skip-nav.css';
 @import 'selection.css';
 @import 'typography.css';
 @import '~components/NProgress/NProgress.module.css';

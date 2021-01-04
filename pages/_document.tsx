@@ -13,7 +13,6 @@ class MyDocument extends Document<any> {
         <Head>
           <link
             rel="preconnect"
-            // href="/static/fonts/name-sans/name_sans-variable.woff2"
             href="/static/fonts/inter/inter-var-latin.woff2"
             as="font"
             type="font/woff2"

@@ -40,22 +40,22 @@
   --font-sans: 'Inter', -apple-system, system-ui, BlinkMacSystemFont,
     'Helvetica Neue', 'Helvetica', sans-serif;
 
-  --info-dark: #0761d1;
-  --info-light: #3291ff;
-  --info-lighter: #d3e5ff;
-  --info: #0070f3;
   --error-dark: #c50000;
   --error-light: #ff1a1a;
   --error-lighter: #f7d4d6;
-  --error: #ee0000;
-  --success-dark: #0761d1;
+  --error: #c50000;
+  --info-dark: #0761d1;
+  --info-light: #3291ff;
+  --info-lighter: #d3e5ff;
+  --info: #07438b;
+  --success-dark: #07438b;
   --success-light: #3291ff;
   --success-lighter: #d3e5ff;
-  --success: #0070f3;
+  --success: #07438b;
   --warning-dark: #ab570a;
   --warning-light: #f7b955;
   --warning-lighter: #ffefcf;
-  --warning: #f5a623;
+  --warning: #ab570a;
 
   --space: 4px;
   --space-2x: 8px;
@@ -127,6 +127,11 @@
   --accents-7: #e9ecef;
   --accents-8: #f1f3f5;
   --accents-9: #f8f9fa;
+
+  --info: #0070f3;
+  --error: #ee0000;
+  --success: #0070f3;
+  --warning: #f5a623;
 }
 
 *,
