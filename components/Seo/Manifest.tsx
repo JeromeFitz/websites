@@ -64,24 +64,9 @@ const Manifest = () => {
         sizes="192x192"
         type="image/png"
       />
-      <link
-        href="/favicon-32x32.png"
-        rel="icon"
-        sizes="32x32"
-        type="image/png"
-      />
-      <link
-        href="/favicon-96x96.png"
-        rel="icon"
-        sizes="96x96"
-        type="image/png"
-      />
-      <link
-        href="/favicon-16x16.png"
-        rel="icon"
-        sizes="16x16"
-        type="image/png"
-      />
+      <link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" />
+      <link href="/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png" />
+      <link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png" />
       <link href="/manifest.json" rel="manifest" />
       <meta name="msapplication-TileColor" content="#f4f4f4" />
       <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />

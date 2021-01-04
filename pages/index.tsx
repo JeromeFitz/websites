@@ -35,18 +35,19 @@ export const getStaticProps: GetStaticProps = ({ preview }) => {
   })
 }
 
-const title = 'Hello, my name is Jerome.'
-const description = 'I write and perform comedy.'
-const header = {
-  description,
-  title,
-}
-
 const Index = ({ ...rest }: any) => {
   const items = rest.data
   const key = items && Object.keys(items)
   const isSingle = key && key.length === 1
   const item = isSingle && items[key[0]]
+
+  const title = 'Hello, my name is Jerome.'
+  const description = 'I write and perform comedy.'
+  const header = {
+    description,
+    title,
+  }
+
   return (
     <Layout>
       <Header {...header} />

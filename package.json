@@ -138,7 +138,6 @@
       "config/notion/schema/defaults.ts",
       "config/notion/website/getRedirects.js",
       "components/Modal/*",
-      "components/NoSsr/*",
       "components/NowPlaying/NowPlaying.module.css",
       "components/NowPlaying/NowPlayingWithControls.tsx",
       "lib/firebase.ts",

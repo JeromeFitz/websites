@@ -8,15 +8,6 @@ import { Banner as AlertBanner } from '~components/Alert'
 
 import { useToast } from '~context/Toast'
 
-const url = 'https://jeromefitzgerald.com/playground'
-const title = 'Playground'
-const description =
-  'This is just a “safe-haven” for Components that are currently being worked on.'
-const header = {
-  description,
-  title,
-}
-
 const Playground = () => {
   const { addToast } = useToast()
   const [text, textSet] = useState('foo')
@@ -29,6 +20,15 @@ const Playground = () => {
 
   const preserveHandleChange = () => {
     preserveSet(!preserve)
+  }
+
+  const url = 'https://jeromefitzgerald.com/playground'
+  const title = 'Playground'
+  const description =
+    'This is just a “safe-haven” for Components that are currently being worked on.'
+  const header = {
+    description,
+    title,
   }
 
   return (
@@ -45,7 +45,7 @@ const Playground = () => {
           }}
         />
         <Header {...header} />
-        <>
+        <div id="content">
           <div className="flex items-baseline mt-4 mb-6">
             <div className="space-x-2 flex">
               <label>
@@ -167,7 +167,7 @@ const Playground = () => {
               <div className="bg-warning-dark">bg-warning-dark</div>
             </div>
           </div> */}
-        </>
+        </div>
       </Layout>
       {/* <AlertToast>Toast Test</AlertToast> */}
       <></>

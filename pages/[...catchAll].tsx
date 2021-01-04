@@ -1,7 +1,4 @@
-// import { GetStaticProps, GetStaticPaths } from 'next'
 import cx from 'clsx'
-// import ErrorPage from 'next/error'
-// import { useRouter } from 'next/router'
 import { NextSeo } from 'next-seo'
 
 import { Banner as AlertBanner } from '~components/Alert'
@@ -22,20 +19,11 @@ export default function CatchAll({
   seo,
 }: CatchAllProps) {
   const isIndex = !!items
-  // const router = useRouter()
 
   const header = {
     description: seo?.description || '',
     title: seo?.title || '',
   }
-
-  // // Double-Check
-  // if (!router.isFallback && !items && !item) {
-  //   console.dir(`> 404 Double-Check`)
-  //   console.dir(router)
-  //   return <ErrorPage statusCode={404} />
-  // }
-
   const previewClearUrl =
     routeData?.relativeUrl && `/api/notion/${routeData.relativeUrl}?clear=true`
 

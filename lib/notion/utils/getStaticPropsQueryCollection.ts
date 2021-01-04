@@ -17,8 +17,8 @@ const isDebug = false
 /**
  * @todo Make this a `process.env.CACHE` variable YIKES DOES NOT WORK LIVE
  */
-const useCache = process.env.NODE_ENV === 'production'
-// const useCache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE
+// const useCache = process.env.NODE_ENV === 'production'
+const useCache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE
 
 const nonPreviewTypes = new Set(['editor', 'page', 'collection_view'])
 // const getBlocks = async (data) =>

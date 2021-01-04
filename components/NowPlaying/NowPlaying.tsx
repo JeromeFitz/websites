@@ -33,8 +33,8 @@ const NowPlaying = () => {
       <div
         id="now-playing"
         className={cx(
-          'flex flex-col justify-center px-8 border border-gray-900',
-          'bg-green-300'
+          'flex flex-col justify-center px-8 bg-green-300',
+          'border border-gray-900 border-l-0 border-r-0'
         )}
       >
         <div className="flex flex-col w-full px-2 py-8 md:px-8 my-0 md:my-8 mx-auto max-w-4xl">

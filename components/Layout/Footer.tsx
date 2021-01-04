@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { memo, useEffect, useState } from 'react'
 import Link from 'next/link'
 import cx from 'clsx'
 import { MdInfo } from 'react-icons/md'
@@ -6,7 +6,7 @@ import { FaPencilRuler } from 'react-icons/fa'
 
 import NowPlaying from '~components/NowPlaying'
 
-const Footer = () => {
+const Footer = memo(() => {
   const [mounted, setMounted] = useState(false)
   useEffect(() => setMounted(true), [])
   return (
@@ -14,7 +14,12 @@ const Footer = () => {
       {mounted && (
         <>
           <NowPlaying />
-          <footer className={cx('bg-secondary text-primary mx-2')}>
+          <footer
+            className={cx(
+              'bg-secondary text-primary mx-2',
+              'bg-gradient-to-b from-gray-50 dark:from-gray-900'
+            )}
+          >
             <section
               className={cx(
                 'flex flex-row justify-between items-center',
@@ -54,6 +59,6 @@ const Footer = () => {
       )}
     </>
   )
-}
+})
 
 export default Footer
