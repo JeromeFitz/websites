@@ -2,7 +2,7 @@
 const _replace = require('lodash/replace')
 
 const removeEn = (config, url) => {
-  console.dir(`url: ${url}`)
+  // console.dir(`url: ${url}`)
   return {
     loc: _replace(url, '/en', ''),
     // changefreq: config.changefreq,

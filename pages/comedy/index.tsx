@@ -1,4 +1,4 @@
-import { NextSeo } from 'next-seo'
+import Seo from '~components/Seo'
 
 import Layout from '~components/Layout'
 import Header from '~components/Header'
@@ -12,18 +12,20 @@ const Music = () => {
     title,
   }
 
+  const seo = {
+    title: title,
+    description: description,
+    canonical: url,
+    openGraph: {
+      url,
+      title,
+      description,
+    },
+  }
+
   return (
     <Layout>
-      <NextSeo
-        title={title}
-        description={description}
-        canonical={url}
-        openGraph={{
-          url,
-          title,
-          description,
-        }}
-      />
+      <Seo {...seo} />
       <Header {...header} />
     </Layout>
   )

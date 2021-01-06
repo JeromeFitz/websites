@@ -1,35 +1,26 @@
 import '~styles/index.css'
 // import 'keen-slider/keen-slider.min.css'
 
-import { FC } from 'react'
 import type { AppProps } from 'next/app'
 import { DefaultSeo } from 'next-seo'
 
+import { getNextSeo as SEO } from '~config/notion/website'
 import ToastProvider from '~context/Toast'
-
-import Head from '~components/Head'
 import NProgress from '~components/NProgress'
 import { ManagedUIContext } from '~context/ManagedUIContext'
-import { useAnalytics } from '~lib/analytics'
-import SEO from '~config/next-seo.config'
 
-const Noop: FC = ({ children }) => <>{children}</>
+import { useAnalytics } from '~lib/analytics'
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   useAnalytics()
 
-  const Layout = (Component as any).Layout || Noop
-
   return (
     <>
-      <Head />
-      <DefaultSeo {...SEO} />
       <ManagedUIContext>
         <ToastProvider>
-          <Layout pageProps={pageProps}>
-            <Component {...pageProps} />
-            <NProgress />
-          </Layout>
+          <DefaultSeo {...SEO} />
+          <Component {...pageProps} />
+          <NProgress />
         </ToastProvider>
       </ManagedUIContext>
     </>

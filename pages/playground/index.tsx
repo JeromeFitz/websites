@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import { NextSeo } from 'next-seo'
 import cx from 'clsx'
 import _title from 'title'
 
+import Seo from '~components/Seo'
 import Layout from '~components/Layout'
 import Header from '~components/Header'
 
@@ -45,19 +45,21 @@ const Playground = () => {
     title,
   }
 
+  const seo = {
+    title: title,
+    description: description,
+    canonical: url,
+    openGraph: {
+      url,
+      title,
+      description,
+    },
+  }
+
   return (
     <>
       <Layout>
-        <NextSeo
-          title={title}
-          description={description}
-          canonical={url}
-          openGraph={{
-            url,
-            title,
-            description,
-          }}
-        />
+        <Seo {...seo} />
         <Header {...header} />
         <div id="content">
           <h3 className="w-full bg-success text-white rounded pl-2 py-2">Toast</h3>

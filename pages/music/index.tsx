@@ -1,11 +1,11 @@
 import cx from 'clsx'
-import { NextSeo } from 'next-seo'
 import _title from 'title'
 import _map from 'lodash/map'
 
 // import { useToast } from '~context/Toast'
 import useSpotify, { setSpotifyTimeRange } from '~hooks/useSpotify'
 
+import Seo from '~components/Seo'
 import ExternalLink from '~components/Dynamic/ext-link'
 import Layout from '~components/Layout'
 import Header from '~components/Header'
@@ -61,22 +61,24 @@ const Music = () => {
     title,
   }
 
+  const seo = {
+    title: title,
+    description: description,
+    canonical: url,
+    openGraph: {
+      url,
+      title,
+      description,
+    },
+  }
+
   const handleSpotifyTimeRange = async (value) => {
     await setSpotifyTimeRange(data, value)
   }
 
   return (
     <Layout>
-      <NextSeo
-        title={title}
-        description={description}
-        canonical={url}
-        openGraph={{
-          url,
-          title,
-          description,
-        }}
-      />
+      <Seo {...seo} />
       <Header {...header} />
       <div id="content">
         <div className="mb-4">

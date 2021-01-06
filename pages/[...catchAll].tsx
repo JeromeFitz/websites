@@ -1,10 +1,10 @@
 import cx from 'clsx'
-import { NextSeo } from 'next-seo'
 
 import { Banner as AlertBanner } from '~components/Alert'
 import Header from '~components/Header'
 import Layout from '~components/Layout'
 import { Listing } from '~components/Listing'
+import Seo from '~components/Seo'
 
 import renderNotionContent from '~lib/notion/helpers/renderNotionContent'
 import { getStaticPathsCatchAll, getStaticPropsCatchAll } from '~utils/getStatic'
@@ -30,7 +30,7 @@ export default function CatchAll({
   return (
     <>
       <Layout>
-        <NextSeo {...seo} />
+        <Seo {...seo} />
         <Header {...header} />
         {isIndex && items && <Listing items={items} routeData={routeData} />}
         {!isIndex && item && <div id="content">{renderNotionContent(item)}</div>}
