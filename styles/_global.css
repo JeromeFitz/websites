@@ -12,6 +12,7 @@
 }
 
 html {
+  min-height: 100vh;
   min-width: 375px;
   scroll-behavior: smooth;
 }

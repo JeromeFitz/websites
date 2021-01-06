@@ -13,7 +13,8 @@ const extLink = (props) => {
   /**
    * @todo Determine if it starts with http
    */
-  const isExternal = _startsWith(props.href, 'http', 0)
+  const isExternal =
+    _startsWith(props.href, 'http', 0) || _startsWith(props.href, 'spotify', 0)
   if (isExternal) {
     const slugger = new Slugger()
     const key = slugger.slug(props.href)
@@ -26,6 +27,7 @@ const extLink = (props) => {
         rel="noopener"
         target={props.target || '_blank'}
         className={cx(
+          props?.className,
           'font-semibold flex',
           'underline underline-offset-md underline-thickness-sm',
           'hover:text-green-500 dark:hover:text-yellow-200'

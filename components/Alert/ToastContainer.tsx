@@ -11,10 +11,12 @@ const ToastContainer = ({ toasts }) => {
   }
 
   const toastSize = toasts.length
+  const cssProperties = {}
+  cssProperties[`--offset-bottom`] = '0px'
 
   return (
     <Portal>
-      <div className={cx(styles.toastArea, 'group')}>
+      <div className={cx(styles.toastArea, 'group')} style={cssProperties}>
         {toasts.map((toast, toastIndex) => {
           const indexReverse = toastSize - toastIndex
           return (

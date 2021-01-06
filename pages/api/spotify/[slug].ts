@@ -5,7 +5,7 @@ import { getTopTracks } from '~lib/spotify'
 // @todo(routes) Lock this down a bit beter with Typescript
 // const allowedRoutes = ['now-playing', 'top-artists', 'top-tracks']
 
-export default async ({ query: { slug } }, res) => {
+export default async ({ query: { limit, slug, time_range } }, res) => {
   switch (slug) {
     case 'now-playing':
       const response = await getNowPlaying()
@@ -48,7 +48,7 @@ export default async ({ query: { slug } }, res) => {
         },
       })
     case 'top-artists':
-      const responseTopArtists = await getTopArtists()
+      const responseTopArtists = await getTopArtists({ limit, time_range })
       const { items } = await responseTopArtists.json()
 
       // @refactor(spotify) prefer spotify schema or normalize consistently
@@ -62,7 +62,7 @@ export default async ({ query: { slug } }, res) => {
 
       return res.status(200).json({ artists: artistsTopArtists })
     case 'top-tracks':
-      const responseTopTracks = await getTopTracks()
+      const responseTopTracks = await getTopTracks({ limit, time_range })
       const { items: itemsTopTracks } = await responseTopTracks.json()
 
       const tracks = itemsTopTracks.slice(0, 10).map((track) => {

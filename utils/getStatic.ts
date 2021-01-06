@@ -177,7 +177,8 @@ const getStaticPathsWithDate = async ({ data, routeType }) => {
   // @refactor(filter) only published
   // @todo(types)
   const paths = await _map(data, (item) => {
-    const { year, month, date } = getTimestamp(item['Date']?.start_date).event
+    const { year, month, date } =
+      item['Date']?.event || getTimestamp(item['Date']?.start_date).event
     return getNotionLink({
       slug: item.Slug,
       routeType,
@@ -287,7 +288,7 @@ const getStaticPathsCatchAll = async (_ctx) => {
   paths.push(
     '/blog',
     '/colophon',
-    '/events',
+    // '/events',
     '/people',
     '/podcasts',
     '/shows',

@@ -1,6 +1,7 @@
 import cx from 'clsx'
 
 import { Footer, Navigation } from '~components/Layout'
+// import CTA from '~components/CTA'
 
 const Layout = ({ children }) => {
   return (
@@ -8,7 +9,8 @@ const Layout = ({ children }) => {
       <Navigation />
       <main
         className={cx(
-          'flex flex-col px-4 md:px-8 min-h-screen',
+          'flex flex-col min-h-screen',
+          // 'px-4 md:px-8',
           'bg-gradient-to-t from-gray-200 dark:from-gray-900'
         )}
       >
@@ -20,6 +22,7 @@ const Layout = ({ children }) => {
         >
           {children}
         </article>
+        {/* <CTA /> */}
       </main>
       <Footer />
     </>

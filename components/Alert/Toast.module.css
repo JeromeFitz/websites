@@ -1,17 +1,23 @@
 /* @todo(tailwind) */
 
 .toastArea {
-  @apply fixed max-w-sm bottom-4 right-4 z-40;
+  @apply fixed z-40;
+  @apply w-11/12 md:max-w-sm;
+  @apply right-0.5 md:right-4;
+  @apply bottom-0.5 md:bottom-5;
   transition: transform 0.4s ease, bottom 0.4s ease;
 }
 
 .toastContainer {
   @apply absolute bottom-0 right-0 rounded p-6 z-40;
+  @apply w-11/12 md:max-w-sm;
   transition: all 0.4s ease;
 }
 
 .toast {
-  @apply max-w-full w-96 items-center justify-between flex text-sm;
+  @apply max-w-full w-96;
+  @apply flex items-center justify-between;
+  @apply text-sm;
   transition: all 0.4s ease;
 }
 

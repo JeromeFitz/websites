@@ -131,6 +131,8 @@ module.exports = {
       borderWidth: ['group-hover', 'first', 'last'],
       boxShadow: ['dark'],
       opacity: ['group-hover'],
+      pointerEvents: ['hover', 'focus'],
+      ringColor: ['dark'],
       scale: ['group-hover'],
       transform: ['group-hover'],
       translate: ['group-hover'],

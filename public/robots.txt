@@ -1,14 +1,4 @@
 User-agent: *
-Disallow:
-
-User-agent: *
-Disallow: /api
-
-User-agent: litefinder
-Disallow: /
-
-User-agent: Slurp
-Disallow: /
-
-User-agent: Baidu
-Disallow: /
+Allow: /
+Host: https://jeromefitzgerald.com
+Sitemap: https://jeromefitzgerald.com/sitemap.xml

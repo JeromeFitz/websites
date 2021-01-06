@@ -6,7 +6,7 @@ import { useTheme } from 'next-themes'
 import NextLink from 'next/link'
 import cx from 'clsx'
 import _map from 'lodash/map'
-import title from 'title'
+import _title from 'title'
 import { MdWbSunny } from 'react-icons/md'
 import { IoMdMoon } from 'react-icons/io'
 
@@ -77,8 +77,8 @@ const Navigation = memo(() => {
                     link.title !== 'home') ||
                   (router.asPath.length === 1 && link.title === 'home')
 
-                const linkTitle = title(link.title)
-                const linkTitleMobile = title(link.titleMobile)
+                const linkTitle = _title(link.title)
+                const linkTitleMobile = _title(link.titleMobile)
 
                 return (
                   <NextLink href={link.href} key={`nav-link-${link.title}`}>
