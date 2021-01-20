@@ -12,8 +12,8 @@ import { IoMdMoon } from 'react-icons/io'
 
 import SplitText from '~components/SplitText'
 
-const isDev = false
-// const isDev = process.env.NODE_ENV !== 'production'
+// const isDev = false
+const isDev = process.env.NODE_ENV !== 'production'
 
 const links = [
   { active: true, href: '/', title: 'home', titleMobile: 'home' },

@@ -6,7 +6,6 @@ class MyDocument extends Document<any> {
       <Html lang="en">
         <Head>
           <meta charSet="utf-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="msapplication-tap-highlight" content="no" />
           <meta name="superfish" content="nofish" />
           <meta content="origin-when-cross-origin" name="referrer" />
@@ -101,7 +100,7 @@ class MyDocument extends Document<any> {
           <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
           <meta name="theme-color" content="#f4f4f4" />
         </Head>
-        <body className="bg-white dark:bg-black text-black dark:text-white">
+        <body className="loading bg-white dark:bg-black text-black dark:text-white">
           <Main />
           <NextScript />
         </body>

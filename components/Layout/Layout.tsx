@@ -1,9 +1,37 @@
+import React, { FC } from 'react'
 import cx from 'clsx'
+import dynamic from 'next/dynamic'
 
+import { Modal, LoadingDots } from '~components/UI'
 import { Footer, Navigation } from '~components/Layout'
 // import CTA from '~components/CTA'
 
-const Layout = ({ children }) => {
+import { useUI } from '~context/ManagedUIContext'
+
+const Loading = () => (
+  <div className="flex items-center text-center justify-center p-3 w-24 h-24">
+    <LoadingDots />
+  </div>
+)
+
+const dynamicProps = {
+  loading: () => <Loading />,
+}
+
+const ModalTest = dynamic(
+  () => import('~components/UI/Modal/ModalTest'),
+  dynamicProps
+)
+
+const Layout: FC<any> = ({ children }) => {
+  const {
+    // displaySidebar,
+    displayModal,
+    // closeSidebar,
+    closeModal,
+    modalView,
+  } = useUI()
+
   return (
     <>
       <Navigation />
@@ -25,6 +53,9 @@ const Layout = ({ children }) => {
         {/* <CTA /> */}
       </main>
       <Footer />
+      <Modal open={displayModal} onClose={closeModal}>
+        {modalView === 'MODAL_TEST_VIEW' && <ModalTest />}
+      </Modal>
     </>
   )
 }

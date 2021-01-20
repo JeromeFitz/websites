@@ -22,7 +22,7 @@ const extLink = (props) => {
     return (
       <a
         {...props}
-        aria-label={text}
+        aria-label={`Link for ${text}`}
         key={key}
         rel="noopener"
         target={props.target || '_blank'}
@@ -50,7 +50,7 @@ const extLink = (props) => {
     return (
       <Link as={link.as} href={link.href}>
         <a
-          aria-label={text}
+          aria-label={`Link for ${text}`}
           className={cx(
             'font-semibold',
             'underline underline-offset-md underline-thickness-sm',

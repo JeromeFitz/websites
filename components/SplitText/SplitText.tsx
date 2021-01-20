@@ -37,6 +37,7 @@ const SplitText = ({
           className,
           transition ? styles[transitionSpeed] : styles['ngop-t-sd']
         )}
+        key={`text-span--${text}--${wordIndex}`}
         style={cssProperties}
       >
         {!isWord && (word === ' ' ? '\u00A0' : word)}

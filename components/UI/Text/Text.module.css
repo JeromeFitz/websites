@@ -1,0 +1,18 @@
+.body {
+  /* @apply leading-7; */
+  @apply text-lg font-medium max-w-6xl mx-auto;
+}
+
+.heading {
+  @apply text-5xl mb-12;
+}
+
+.pageHeading {
+  /* @apply leading-7; */
+  @apply pt-1 pb-4 text-2xl font-bold tracking-wide;
+}
+
+.sectionHeading {
+  /* @apply leading-7 border-accents-2; */
+  @apply pt-1 pb-2 font-semibold tracking-wider uppercase border-b  mb-3;
+}

@@ -16,7 +16,7 @@ const Footer = memo(() => {
           <NowPlaying />
           <footer
             className={cx(
-              'bg-secondary text-primary mx-2',
+              'bg-primary text-secondary mx-2',
               'bg-gradient-to-b from-gray-50 dark:from-gray-900'
             )}
           >

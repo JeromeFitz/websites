@@ -1,0 +1,40 @@
+.root {
+  @apply cursor-pointer inline-flex px-10 rounded-sm;
+  /* @apply bg-secondary text-accents-1 leading-6 shadow-sm; */
+  @apply transition ease-in-out duration-150 font-semibold;
+  @apply text-center justify-center uppercase;
+  @apply py-4 border border-transparent items-center;
+}
+
+.root:hover {
+  /* @apply bg-accents-0 text-primary border-secondary; */
+  @apply border;
+}
+
+.root:focus {
+  /* @apply shadow-outline; */
+  @apply outline-none;
+}
+
+.root[data-active] {
+  @apply bg-gray-600;
+}
+
+.loading {
+  /* @apply bg-accents-1 text-accents-3 border-accents-2; */
+  @apply cursor-not-allowed;
+}
+
+.slim {
+  @apply py-2 transform-none normal-case;
+}
+
+.disabled,
+.disabled:hover {
+  /* @apply text-accents-4 border-accents-2 bg-accents-1; */
+  @apply cursor-not-allowed;
+  filter: grayscale(1);
+  -webkit-transform: translateZ(0);
+  -webkit-perspective: 1000;
+  -webkit-backface-visibility: hidden;
+}

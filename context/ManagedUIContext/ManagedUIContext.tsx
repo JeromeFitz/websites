@@ -53,7 +53,7 @@ type Action =
       view: MODAL_VIEWS
     }
 
-type MODAL_VIEWS = 'SIGNUP_VIEW' | 'LOGIN_VIEW' | 'FORGOT_VIEW'
+type MODAL_VIEWS = 'SIGNUP_VIEW' | 'LOGIN_VIEW' | 'FORGOT_VIEW' | 'MODAL_TEST_VIEW'
 type ToastText = string
 
 export const UIContext = React.createContext<State | any>(initialState)
@@ -146,8 +146,10 @@ export const UIProvider: FC = (props) => {
   const openToast = () => dispatch({ type: 'OPEN_TOAST' })
   const closeToast = () => dispatch({ type: 'CLOSE_TOAST' })
 
-  const setModalView = (view: MODAL_VIEWS) =>
-    dispatch({ type: 'SET_MODAL_VIEW', view })
+  const setModalView = (view: MODAL_VIEWS) => {
+    console.dir(`> setModalView: ${view}`)
+    return dispatch({ type: 'SET_MODAL_VIEW', view })
+  }
 
   const value = useMemo(
     () => ({

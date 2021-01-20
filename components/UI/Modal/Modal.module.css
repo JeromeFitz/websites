@@ -1,0 +1,15 @@
+.root {
+  @apply bg-primary text-primary;
+  @apply fixed flex items-center inset-0 z-50 justify-center;
+  background-color: rgba(0, 0, 0, 0.35);
+}
+
+.modal {
+  @apply border-accents-2 relative;
+  @apply bg-primary text-secondary;
+  @apply p-12 border relative rounded-xl shadow-outline-2;
+}
+
+.modal:focus {
+  @apply outline-none;
+}

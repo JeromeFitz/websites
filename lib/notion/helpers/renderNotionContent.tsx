@@ -328,8 +328,8 @@ const renderNotionContent = (data) => {
                         width={imageWidth}
                       />
                       {caption && (
-                        <div>
-                          <small className="font-sans">{caption && caption}</small>
+                        <div className="font-sans text-accents-7 dark:text-accents-5 my-4 mx-0 imageCaption">
+                          <small>{caption && caption}</small>
                         </div>
                       )}
                     </React.Fragment>

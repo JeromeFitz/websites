@@ -2,13 +2,16 @@ import { useState } from 'react'
 import cx from 'clsx'
 import _title from 'title'
 
-import Seo from '~components/Seo'
-import Layout from '~components/Layout'
-import Header from '~components/Header'
-
 import { Banner as AlertBanner } from '~components/Alert'
+import { Container, Grid, Skeleton, Button } from '~components/UI'
+import Header from '~components/Header'
+import Layout from '~components/Layout'
+import Seo from '~components/Seo'
 
+import { useUI } from '~context/ManagedUIContext'
 import { useToast } from '~context/Toast'
+
+import rangeMap from '~utils/rangeMap'
 
 const mockTrueFalse = [
   { value: true, title: 'true ' },
@@ -16,13 +19,17 @@ const mockTrueFalse = [
 ]
 
 const mockTypes = [
-  { description: 'Descriptoin of ', value: 'error', title: 'error' },
-  { description: 'Descriptoin of ', value: 'info', title: 'info' },
-  { description: 'Descriptoin of ', value: 'success', title: 'error' },
-  { description: 'Descriptoin of ', value: 'warning', title: 'warning' },
+  { description: 'Description of ', value: 'error', title: 'error' },
+  { description: 'Description of ', value: 'info', title: 'info' },
+  { description: 'Description of ', value: 'success', title: 'error' },
+  { description: 'Description of ', value: 'warning', title: 'warning' },
 ]
 
 const Playground = () => {
+  const { openModal, setModalView } = useUI()
+  const [loading] = useState(false)
+  const [disabled] = useState(false)
+
   const { addToast } = useToast()
   const [text, textSet] = useState('foo')
   const [type, typeSet] = useState('info')
@@ -56,34 +63,63 @@ const Playground = () => {
     },
   }
 
+  const handleModalTest = () => {
+    setModalView('MODAL_TEST_VIEW')
+    openModal()
+  }
+
   return (
     <>
       <Layout>
         <Seo {...seo} />
         <Header {...header} />
         <div id="content">
+          <Button
+            variant="slim"
+            type="submit"
+            loading={loading}
+            disabled={disabled}
+            onClick={() => handleModalTest()}
+          >
+            Modal Test
+          </Button>
+          <Container>
+            <Grid layout="normal">
+              {rangeMap(12, (i) => (
+                <Skeleton
+                  key={i}
+                  className="w-full animated fadeIn"
+                  height={9}
+                  width={9}
+                />
+              ))}
+            </Grid>
+          </Container>
           <h3 className="w-full bg-success text-white rounded pl-2 py-2">Toast</h3>
           <div className="flex flex-col md:flex-row items-start justify-items-start justify-between mt-4 mb-6 w-full overflow-hidden">
             <div className="flex flex-col md:flex-col">
               <fieldset className="flex flex-col mb-4">
                 <div>
-                  <legend className="text-base font-medium text-primary">
+                  <legend className="text-base font-medium text-secondary">
                     Preserved
                   </legend>
-                  <p className="text-sm text-primary">
+                  <p className="text-sm text-secondary">
                     Should the toast be preserved until User Action?
                   </p>
                 </div>
                 <div className="mt-4 space-y-4">
-                  {mockTrueFalse.map((item) => {
+                  {mockTrueFalse.map((item, itemIdx) => {
                     return (
-                      <div className="flex items-center">
+                      <div
+                        className="flex items-center"
+                        key={`mockTrueFalse--${itemIdx}`}
+                      >
                         <input
                           checked={preserve === item.value}
                           className={cx(
                             'h-4 w-4 ',
                             'border-gray-700 dark:border-gray-300',
-                            'text-primary',
+                            'text-secondary',
                             'focus:ring-yellow-400'
                           )}
                           id={item.title}
@@ -93,7 +129,7 @@ const Playground = () => {
                           value={item.value.toString()}
                         />
                         <label
-                          className="ml-3 block text-sm font-medium text-primary"
+                          className="ml-3 block text-sm font-medium text-secondary"
                           htmlFor={item.title}
                         >
                           {_title(item.title)}
@@ -105,10 +141,10 @@ const Playground = () => {
               </fieldset>
               <fieldset className="flex flex-col mb-4">
                 <div>
-                  <legend className="text-base font-medium text-primary">
+                  <legend className="text-base font-medium text-secondary">
                     Message
                   </legend>
-                  <p className="text-sm text-primary">
+                  <p className="text-sm text-secondary">
                     Text that should be displayed to User
                   </p>
                 </div>
@@ -124,14 +160,14 @@ const Playground = () => {
                       type="text"
                       name="message"
                       id="message"
-                      className="mt-1 p-4 focus:ring-indigo-500 focus:border-indigo-500 block shadow-sm sm:text-sm border border-gray-800 dark:border-gray-300 rounded-md text-black"
+                      className="mt-1 p-4 focus:ring-yellow-500 focus:border-yellow-500 block shadow-sm sm:text-sm border border-gray-800 dark:border-gray-300 rounded-md text-black"
                       value={text}
                       onChange={(e) => textSet(e.target.value)}
                     />
                   </div>
                   <div className="py-3 text-left sm:px-6">
                     <button
-                      className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-secondary bg-primary hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-secondary bg-primary hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
                       onClick={() => {
                         if (text) {
                           addToast({ preserve, text, type })
@@ -147,22 +183,24 @@ const Playground = () => {
             </div>
             <fieldset className="flex flex-col">
               <div>
-                <legend className="text-base font-medium text-primary">Types</legend>
-                <p className="text-sm text-primary">
+                <legend className="text-base font-medium text-secondary">
+                  Types
+                </legend>
+                <p className="text-sm text-secondary">
                   What type of Toast should be shown to User?
                 </p>
               </div>
               <div className="mt-4 space-y-4">
-                {mockTypes.map((item) => {
+                {mockTypes.map((item, itemIdx) => {
                   return (
-                    <div className="flex items-start">
+                    <div className="flex items-start" key={`mockType--${itemIdx}`}>
                       <div className="flex items-center h-5">
                         <input
                           id={item.title}
                           name="types"
                           type="checkbox"
-                          className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
-                          onClick={typeHandleChange}
+                          className="focus:ring-yellow-500 h-4 w-4 text-yellow-600 border-gray-300 rounded"
+                          onChange={typeHandleChange}
                           checked={type === item.value}
                           value={item.value}
                         />

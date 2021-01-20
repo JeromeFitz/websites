@@ -24,6 +24,7 @@
 .toastMessage {
   @apply flex flex-row items-end justify-between;
   @apply -mt-1 w-full h-full;
+  @apply text-primary;
   /* @apply pb-10; */
   transition: opacity 0.4s ease;
 }
