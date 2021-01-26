@@ -5,9 +5,7 @@ import '~styles/chrome.css'
 import { FC, useEffect } from 'react'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import { DefaultSeo } from 'next-seo'
 
-import { getNextSeo as SEO } from '~config/notion/website'
 import ToastProvider from '~context/Toast'
 import NProgress from '~components/NProgress'
 import { ManagedUIContext } from '~context/ManagedUIContext'
@@ -33,7 +31,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <ManagedUIContext>
         <ToastProvider>
           <Layout pageProps={pageProps}>
-            <DefaultSeo {...SEO} />
             <Component {...pageProps} />
             <NProgress />
           </Layout>

@@ -6,6 +6,7 @@ import getStaticPropsQueryCollection from '~lib/notion/utils/getStaticPropsQuery
 
 import Layout from '~components/Layout'
 import Header from '~components/Header'
+import Seo from '~components/Seo'
 
 /**
  * @note Customized homepage.
@@ -35,8 +36,8 @@ export const getStaticProps: GetStaticProps = ({ preview }) => {
   })
 }
 
-const Index = ({ ...rest }: any) => {
-  const items = rest.data
+const Index = ({ data }: any) => {
+  const items = data
   const key = items && Object.keys(items)
   const isSingle = key && key.length === 1
   const item = isSingle && items[key[0]]
@@ -48,8 +49,12 @@ const Index = ({ ...rest }: any) => {
     title,
   }
 
+  // @hack(next-seo) DefaultSeo in _app was causing dupe SEO
+  const seo = {}
+
   return (
     <Layout>
+      <Seo {...seo} />
       <Header {...header} />
       <div id="content">{renderNotionContent(item)}</div>
     </Layout>
