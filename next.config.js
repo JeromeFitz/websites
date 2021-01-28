@@ -43,20 +43,23 @@ const nextConfig = {
     return getRedirects
   },
   useFileSystemPublicRoutes: true, // false will block './pages' as router
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   webpack: (config, { dev, isServer }) => {
     // @todo(sitemap)
     // if (isServer) {
     //   require('./scripts/generate-sitemap');
     // }
 
-    // Replace React with Preact only in client production build
-    if (!dev && !isServer) {
-      Object.assign(config.resolve.alias, {
-        react: 'preact/compat',
-        'react-dom/test-utils': 'preact/test-utils',
-        'react-dom': 'preact/compat',
-      })
-    }
+    // // Replace React with Preact only in client production build
+    // if (!dev && !isServer) {
+    //   Object.assign(config.resolve.alias, {
+    //     react: 'preact/compat',
+    //     'react-dom/test-utils': 'preact/test-utils',
+    //     'react-dom': 'preact/compat',
+    //   })
+    // }
 
     return config
   },

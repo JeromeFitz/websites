@@ -1,4 +1,9 @@
+# *
 User-agent: *
 Allow: /
+
+# Host
 Host: https://jeromefitzgerald.com
+
+# Sitemaps
 Sitemap: https://jeromefitzgerald.com/sitemap.xml
