@@ -42,15 +42,16 @@
   },
   "exclude": ["node_modules"],
   "include": [
-    "index.d.ts",
-    "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
+    "config/next-seo.config.js",
+    "config/notion/website/getRedirects.js",
+    "index.d.ts",
     "lint-staged.config.js",
+    "next-env.d.ts",
     "next.config.js",
     "next.sitemap.js",
     "postcss.config.js",
-    "tailwind.config.js",
-    "config/notion/website/getRedirects.js"
+    "tailwind.config.js"
   ]
 }
