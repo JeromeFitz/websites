@@ -23,6 +23,8 @@ interface Props {
   onEnter?: () => void | null
 }
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Modal: FC<Props> = ({ children, open, onClose, onEnter = null }) => {
   const ref = useRef()

@@ -27,8 +27,6 @@ export default function CatchAll({
   const previewClearUrl =
     routeData?.relativeUrl && `/api/notion/${routeData.relativeUrl}?clear=true`
 
-  console.dir(`uh`)
-
   return (
     <>
       <Layout>
