@@ -14,9 +14,17 @@ const Seo = memo(({ ...seo }) => {
   // console.dir(`> newSeo`)
   // console.dir(newSeo)
 
-  return <NextSeo {...newSeo} />
+  /**
+   * @note This is stupid.
+   */
+  if (newSeo?.noindex === 'No') {
+    newSeo.noindex = false
+  }
+  if (newSeo?.noindex === 'Yes') {
+    newSeo.noindex = true
+  }
 
-  // return <NextSeo {...seo} />
+  return <NextSeo {...newSeo} />
 })
 
 export default Seo

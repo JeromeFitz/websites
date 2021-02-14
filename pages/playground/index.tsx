@@ -56,6 +56,7 @@ const Playground = () => {
     title: title,
     description: description,
     canonical: url,
+    noindex: true,
     openGraph: {
       url,
       title,

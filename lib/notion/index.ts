@@ -145,7 +145,7 @@ const refactorNotionCalls = async (catchAll) => {
     routeTypeSeo = await getRouteTypeSeo(routeType)
     title = routeTypeSeo['Title']
     description = routeTypeSeo['SEO.Description']
-    noindex = routeTypeSeo.NoIndex || false
+    noindex = routeTypeSeo.NoIndex === 'Yes' ? true : false || false
     openGraph = routeTypeSeo && {
       url,
       title,
@@ -163,7 +163,7 @@ const refactorNotionCalls = async (catchAll) => {
   } else {
     title = item?.Title || ''
     description = item && item['SEO.Description']
-    noindex = item?.NoIndex || false
+    noindex = item?.NoIndex === 'Yes' ? true : false || false
     openGraph = item && {
       url,
       title,
