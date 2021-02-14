@@ -39,7 +39,7 @@ const TopArtists = () => {
               ranking={index + 1}
             />
           ))
-        : data.artists.map((artist, index: number) => (
+        : data?.artists.map((artist, index: number) => (
             <Artist
               key={artist.url}
               loading={loading}
