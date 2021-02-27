@@ -1,5 +1,6 @@
 {
   "name": "website",
+  "private": "true",
   "version": "0.1.0",
   "author": {
     "name": "Jerome Fitzgerald",
@@ -75,8 +76,8 @@
     "uuid": "8.3.2"
   },
   "devDependencies": {
-    "@jeromefitz/codestyle": "1.1.0-akuma.1",
-    "@jeromefitz/semantic": "2.0.0-canary.4",
+    "@jeromefitz/codestyle": "1.1.0-develop.1",
+    "@jeromefitz/semantic": "2.0.0-develop.1",
     "@next/bundle-analyzer": "10.0.7",
     "@types/js-cookie": "2.2.6",
     "@types/ms": "0.7.31",
