@@ -1,4 +1,6 @@
-const plugins = require('@jeromefitz/semantic/release.config.js').plugins
+const release = require('@jeromefitz/semantic/release.config.js')
+
+const plugins = release.plugins
 
 // const ci = true
 // const dryRun = false
