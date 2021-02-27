@@ -9,6 +9,16 @@ const plugins = [
   release.plugins[0],
   release.plugins[1],
   [
+    '@semantic-release/npm',
+    {
+      npmPublish: false,
+    },
+  ],
+  [
+    '@semantic-release/github',
+    { labels: false, releasedLabels: false, successComment: false },
+  ],
+  [
     '@semantic-release/git',
     {
       assets: ['package.json'],
