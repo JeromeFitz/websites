@@ -31,9 +31,9 @@ const TopTracks = () => {
   return (
     <ul>
       {loading
-        ? [...Array(10).keys()].map((index: number) => {
-            ;<Track key={`track-temp-${index}`} loading={true} ranking={index + 1} />
-          })
+        ? [...Array(10).keys()].map((index: number) => (
+            <Track key={`track-temp-${index}`} loading={true} ranking={index + 1} />
+          ))
         : data?.tracks.map((track, index: number) => (
             <Track
               key={`track-perm-${index}`}

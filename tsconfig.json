@@ -1,29 +1,7 @@
 {
   "compilerOptions": {
-    "allowJs": true,
-    "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
-    "downlevelIteration": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "lib": ["ES6", "dom", "dom.iterable", "ESNext", "ES2016"],
-    "module": "ESNext",
-    "moduleResolution": "node",
-    "noEmit": false,
-    "noImplicitAny": false,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
     "outDir": "./.dist",
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "sourceMap": true,
-    "strict": false,
-    "suppressImplicitAnyIndexErrors": true,
-    "target": "ES2016",
     "paths": {
       "~components/*": ["components/*"],
       "~config/*": ["config/*"],
@@ -38,9 +16,12 @@
       "~svg/*": ["svg/*"],
       "~theme/*": ["theme/*"],
       "~utils/*": ["utils/*"]
-    }
+    },
+    "noUnusedParameters": false, // @todo(lint)
+    "rootDir": ".",
+    "strict": false
   },
-  "exclude": ["node_modules"],
+  "extends": "@jeromefitz/codestyle/tsconfig.react.json",
   "include": [
     "**/*.ts",
     "**/*.tsx",
