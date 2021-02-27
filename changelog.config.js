@@ -1,12 +1,4 @@
 const changelog = require('@jeromefitz/semantic/src/changelog.config.js')
 const scopes = ['', 'release']
-const questions = [
-  // 'breaking',
-  'type',
-  // 'scope',
-  'subject',
-  'body',
-  // 'issues',
-  'lerna',
-]
+const questions = ['type', 'subject', 'body']
 module.exports = { ...changelog, questions, scopes }

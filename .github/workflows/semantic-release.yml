@@ -1,0 +1,33 @@
+name: '🚀️ Semantic Release'
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+  push:
+    branches:
+      - main
+      - develop
+      - release/**
+jobs:
+  release:
+    name: '🚀️ Semantic Release'
+    runs-on: ubuntu-latest
+    steps:
+      - name: '🐙️ Git Checkout'
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: '🌵️ Cache-tus'
+        uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+      - name: '📦️ Install Dependecies'
+        run: yarn install --frozen-lockfile --ignore-engines --network-concurrency 1
+      - name: '🏷️ Semantic Version: Release'
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: yarn run semantic-release

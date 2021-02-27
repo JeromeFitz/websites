@@ -26,6 +26,7 @@
     "prettier-check": "prettier --check \"**/*.{js,jsx,ts,tsx,json,md,mdx,css,html,yml,yaml,scss}\"",
     "prettier-fix": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,mdx,css,html,yml,yaml,scss}\"",
     "pretty-quick": "pretty-quick",
+    "semantic-release": "semantic-release",
     "start": "next start",
     "typescript": "tsc --noEmit --declaration -p tsconfig.json"
   },
