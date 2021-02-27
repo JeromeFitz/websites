@@ -1,3 +1,5 @@
+const isCI = require('is-ci')
+require('dotenv').config({ path: './.env' })
 const release = require('@jeromefitz/semantic/release.config.js')
 
 // const ci = true
