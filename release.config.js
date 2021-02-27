@@ -1,5 +1,3 @@
-const isCI = require('is-ci')
-require('dotenv').config({ path: './.env' })
 const release = require('@jeromefitz/semantic/release.config.js')
 
 // const ci = true
@@ -24,7 +22,7 @@ const plugins = [
     '@semantic-release/git',
     {
       assets: ['package.json'],
-      message: `🔖️ {PACKAGE_NAME}@{VERSION} [skip ci]\n\nhttps://github.com/jeromefitz/website/releases/tag/{RELEASE_TAG}\n\n{RELEASE_NOTES}`,
+      message: `🔖️ {PACKAGE_NAME}@{VERSION} [skip ci]\n\n{RELEASE_URL}/releases/tag/{RELEASE_TAG}\n\n{RELEASE_NOTES}`,
     },
   ],
 ]
