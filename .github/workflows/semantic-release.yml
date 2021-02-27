@@ -21,7 +21,6 @@ jobs:
       - name: '🐙️ Git Checkout'
         uses: actions/setup-node@v1
         with:
-          fetch-depth: 0
           node-version: ${{ matrix.node-version }}
       # - name: '🌵️ Cache-tus'
       #   uses: actions/cache@v2
@@ -29,10 +28,19 @@ jobs:
       #     path: '**/node_modules'
       #     key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
       - name: '📦️ Install Dependecies'
+        with:
+          fetch-depth: 0
         run: |
           echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
-          npm install yarn -g
-          yarn install --frozen-lockfile --ignore-engines --network-concurrency 1
+          # npm install yarn -g
+          # yarn install --frozen-lockfile --ignore-engines --network-concurrency 1
+          npm install
+        env:
+          CI: true
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: '🏷️ Semantic Version: Release'
         env:
           CI: true
@@ -40,4 +48,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: yarn run semantic-release
+        # run: yarn run semantic-release
+        run: npm run semantic-release
