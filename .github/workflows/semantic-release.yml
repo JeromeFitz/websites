@@ -13,21 +13,29 @@ jobs:
   release:
     name: '🚀️ Semantic Release'
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
     steps:
+      - uses: actions/checkout@v2
       - name: '🐙️ Git Checkout'
-        uses: actions/checkout@v2
+        uses: actions/setup-node@v1
         with:
           fetch-depth: 0
-          registry-url: 'https://registry.npmjs.org'
-      - name: '🌵️ Cache-tus'
-        uses: actions/cache@v2
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+          node-version: ${{ matrix.node-version }}
+      # - name: '🌵️ Cache-tus'
+      #   uses: actions/cache@v2
+      #   with:
+      #     path: '**/node_modules'
+      #     key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
       - name: '📦️ Install Dependecies'
-        run: yarn install --frozen-lockfile --ignore-engines --network-concurrency 1
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
+          npm install yarn -g
+          yarn install --frozen-lockfile --ignore-engines --network-concurrency 1
       - name: '🏷️ Semantic Version: Release'
         env:
+          CI: true
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
