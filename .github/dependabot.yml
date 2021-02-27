@@ -16,3 +16,4 @@ updates:
       - dependency-name: '@types/node'
         versions:
           - '>=13'
+      - dependency-name: 'typescript'
