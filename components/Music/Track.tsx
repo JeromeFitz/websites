@@ -11,6 +11,8 @@ const Track = (item) => {
     window.open(track.uri, '_blank', 'noopener,noreferrer')
   }
 
+  console.dir(artist)
+
   return (
     <li
       className={cx(
@@ -49,7 +51,7 @@ const Track = (item) => {
           'transition-all ease-in-out delay-75'
         )}
       >
-        {artist.loading ? (
+        {loading ? (
           <Skeleton type="image" />
         ) : (
           <Image

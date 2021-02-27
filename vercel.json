@@ -9,6 +9,12 @@
     }
   ],
   "cleanUrls": true,
+  "build": {
+    "env": {
+      "NPM_RC": "registry=https://registry.npmjs.org/jeromefitz\n//registry.npmjs.org/:_authToken=${NPM_TOKEN}\n//registry.npmjs.org/jeromefitz/:_authToken=${NPM_TOKEN}\nalways-auth=true\n",
+      "NPM_TOKEN": "@npm--jeromefitz--read-token"
+    }
+  },
   "trailingSlash": false,
   "headers": [
     {

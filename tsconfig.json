@@ -15,7 +15,8 @@
       "~styles/*": ["styles/*"],
       "~svg/*": ["svg/*"],
       "~theme/*": ["theme/*"],
-      "~utils/*": ["utils/*"]
+      "~utils/*": ["utils/*"],
+      "react-icons/*": ["node_modules/react-icons/*"]
     },
     "noUnusedParameters": false, // @todo(lint)
     "rootDir": ".",
@@ -34,5 +35,6 @@
     "next.sitemap.js",
     "postcss.config.js",
     "tailwind.config.js"
-  ]
+  ],
+  "exclude": ["node_modules"]
 }
