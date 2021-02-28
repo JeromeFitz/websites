@@ -11,7 +11,7 @@ updates:
     commit-message:
       prefix: '⬆️ '
       include: 'scope'
-    target-branch: 'develop'
+    target-branch: 'main'
     ignore:
       - dependency-name: '@types/node'
         versions:
