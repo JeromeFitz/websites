@@ -93,7 +93,13 @@ const Music = () => {
             indie. Go to shows [when we can again].)
           </p>
         </div>
-        <div className="flex flex-col md:flex-row items-start justify-items-start justify-between mt-4 mb-6 md:mt-0 md:mb-6 mr-4 md:mr-0">
+        <div
+          className={cx(
+            'flex flex-col md:flex-row',
+            'items-start justify-items-start justify-between',
+            'mt-4 mb-6 md:mt-0 md:mb-6 mr-4 md:mr-0'
+          )}
+        >
           <div className="flex flex-col">
             <fieldset className="flex flex-col mb-4">
               <div>
@@ -106,40 +112,49 @@ const Music = () => {
                 </p>
               </div>
               <div className="mt-4 flex flex-col md:flex-row justify-center items-start">
-                {_map(TIME_RANGE, (timeRange: TIME_RANGE_ITEM_PROPS) => {
-                  const name = 'timeRange'
-                  return (
-                    <div className="mx-4 my-2 first:ml-0 last:mr-0 flex flex-row align-middle items-center">
-                      <input
-                        disabled={data.disabled}
-                        checked={data.time_range === timeRange.value}
+                {_map(
+                  TIME_RANGE,
+                  (timeRange: TIME_RANGE_ITEM_PROPS, timeRangeIndex: number) => {
+                    const name = 'timeRange'
+                    return (
+                      <div
                         className={cx(
-                          'h-4 w-4 md:h-6 md:w-6',
-                          'border-gray-700 dark:border-gray-300',
-                          'text-primary',
-                          'focus:ring-yellow-400'
+                          'mx-4 my-2 first:ml-0 last:mr-0',
+                          'flex flex-row align-middle items-center'
                         )}
-                        id={timeRange.title}
-                        name={name}
-                        // onChange={preserveHandleChange}
-                        onChange={() => handleSpotifyTimeRange(timeRange.value)}
-                        type="radio"
-                        value={timeRange.value}
-                      />
-                      <div className="ml-3 text-sm">
-                        <label
-                          htmlFor={timeRange.title}
-                          className="font-medium text-gray-700 dark:text-gray-200"
-                        >
-                          {_title(timeRange.title)}
-                        </label>
-                        <p className="text-gray-500 dark:text-gray-300">
-                          {_title(timeRange.description)}
-                        </p>
+                        key={`time-range--${timeRangeIndex}`}
+                      >
+                        <input
+                          disabled={data.disabled}
+                          checked={data.time_range === timeRange.value}
+                          className={cx(
+                            'h-4 w-4 md:h-6 md:w-6',
+                            'border-gray-700 dark:border-gray-300',
+                            'text-primary',
+                            'focus:ring-yellow-400'
+                          )}
+                          id={timeRange.title}
+                          name={name}
+                          // onChange={preserveHandleChange}
+                          onChange={() => handleSpotifyTimeRange(timeRange.value)}
+                          type="radio"
+                          value={timeRange.value}
+                        />
+                        <div className="ml-3 text-sm">
+                          <label
+                            htmlFor={timeRange.title}
+                            className="font-medium text-gray-700 dark:text-gray-200"
+                          >
+                            {_title(timeRange.title)}
+                          </label>
+                          <p className="text-gray-500 dark:text-gray-300">
+                            {_title(timeRange.description)}
+                          </p>
+                        </div>
                       </div>
-                    </div>
-                  )
-                })}
+                    )
+                  }
+                )}
               </div>
             </fieldset>
           </div>
@@ -161,7 +176,6 @@ const Music = () => {
               </span>
             </p>
           </div>
-
           <TopArtists />
         </div>
         <div className="my-8">

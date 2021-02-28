@@ -110,7 +110,8 @@ export default {
 
   // p: 'p',
   p: dynamic(() => import('./p')),
-  span: 'span',
+  span: dynamic(() => import('./span')),
+  // span: 'span',
 
   // blockquote: 'blockquote',
   blockquote: dynamic(() => import('~components/Quote')),

@@ -6,6 +6,12 @@ export default async function rpc(fnName: string, body: any) {
   if (!process.env.NOTION_TOKEN) {
     throw new Error('process.env.NOTION_TOKEN is not set in env')
   }
+  if (!process.env.NOTION_API_URL) {
+    throw new Error('process.env.NOTION_API_URL is not set in env')
+  }
+  if (!process.env.NOTION_USER_ID) {
+    throw new Error('process.env.NOTION_USER_ID is not set in env')
+  }
   const url = `${process.env.NOTION_API_URL}/${fnName}`
   const headers = {
     'content-type': 'application/json',

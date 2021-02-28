@@ -153,16 +153,17 @@ const renderNotionContent = (data) => {
                 if (listMap[itemId].isNested) return null
 
                 const createEl = (item) => {
+                  // console.dir(item)
                   return React.createElement(
-                    components.li || 'ul',
-                    // { key: item.key },
+                    components.li || components.ul,
+                    // { key: item.key + '--list' },
                     null,
                     item.children,
                     item.nested.length > 0
                       ? React.createElement(
-                          components.ul || 'ul',
+                          components.ul || components.ul,
                           // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
-                          // { key: item + 'sub-list' },
+                          // { key: item + '--list-sub' },
                           null,
                           item.nested.map((nestedId) => createEl(listMap[nestedId]))
                         )

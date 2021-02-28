@@ -16,8 +16,12 @@ import getRouteTypeSeo from '~lib/notion/utils/getRouteTypeSeo'
 const isDebug = false
 const debugRouteType = 'shows'
 
+if (!process.env.NOTION_API_URL) {
+  throw new Error('process.env.NOTION_API_URL is not set in env')
+}
+
 const notionConfig = {
-  apiUrl: process.env.NOTION_API_URL,
+  apiUrl: process.env.NOTION_API_URL || 'https://www.notion.so/api/v3',
   loader: {
     type: 'table',
     searchQuery: '',
@@ -51,6 +55,9 @@ export async function fetchCmsAPI(fnName: string, body: any) {
     throw new Error(`fetchCmsAPI: body must be provided`)
   }
   const url = `${notionConfig.apiUrl}/${fnName}`
+
+  // console.dir(`fetchCmsAPI: ${url}`)
+
   const res = await fetch(url, {
     method: 'POST',
     headers: notionHeaders,

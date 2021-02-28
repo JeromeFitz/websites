@@ -52,7 +52,7 @@ const Listing = ({ items, routeData }: Props) => {
              */
             // @todo(published)
             if (item.Published === 'No') {
-              return true
+              return null
             }
             // @todo(any)
             // let event: any, show: any, venue: any
@@ -92,7 +92,7 @@ const Listing = ({ items, routeData }: Props) => {
                   'tracking-tight md:ltracking-tight',
                   'py-3 md:py-6'
                 )}
-                key={itemId}
+                key={`item--${itemId}`}
               >
                 <Link {...link}>
                   <a

@@ -11,8 +11,6 @@ const Track = (item) => {
     window.open(track.uri, '_blank', 'noopener,noreferrer')
   }
 
-  console.dir(artist)
-
   return (
     <li
       className={cx(
