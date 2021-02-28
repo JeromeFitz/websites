@@ -706,10 +706,10 @@
     rimraf "3.0.2"
     typescript "4.1.5"
 
-"@jeromefitz/git-cz@4.8.0-develop.0":
-  version "4.8.0-develop.0"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/git-cz/-/git-cz-4.8.0-develop.0.tgz#7f575d97ecb45f3ca9b297e568f5a9d371baf22d"
-  integrity sha512-R+TflM9gj65n0u53AsbVPzgKWcR17OM0ytQQi5COwEYKmOQtGpcM6wusFUavdf4go13J5Q21iDme4upc7EqTTA==
+"@jeromefitz/git-cz@5.0.0-canary.1":
+  version "5.0.0-canary.1"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/git-cz/-/git-cz-5.0.0-canary.1.tgz#977e8e008a53d13d7f1ebf0cdb585ddbc1cf4790"
+  integrity sha512-J8BB7uXbxCUuxiGAU4V+23ZV9yDAUUsuhUBgj+yshNVaUbI3wHV3qboq8gQpHfhxEk9tzCg1ocF3xXqiwYMQ/w==
 
 "@jeromefitz/semantic-release-git@10.0.0-develop.2":
   version "10.0.0-develop.2"
@@ -725,12 +725,12 @@
     micromatch "^4.0.0"
     p-reduce "^2.0.0"
 
-"@jeromefitz/semantic@2.0.0-develop.4":
-  version "2.0.0-develop.4"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/semantic/-/semantic-2.0.0-develop.4.tgz#a3d9c48cfbf5fec24230013e8ae01fab34740b82"
-  integrity sha512-AswSKT9457XmyJvLVjGuSXe8/gM50icp4L3orfRE5kKPROXWnD+GhgNdM3UxqP0K1e7MTXmHe56IYh3NXloJeA==
+"@jeromefitz/semantic@2.0.0-develop.5":
+  version "2.0.0-develop.5"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/semantic/-/semantic-2.0.0-develop.5.tgz#ba829826667019bbba71282016d5ccda7d2d0da3"
+  integrity sha512-U1ulogXOD7wVETqMC0GiKRdYc7fUqyO+CPfZ+hT2NuzMDeaHyJ9riSxVC1wa3QWSUIJJRt31gMHnnRk8p8hKNw==
   dependencies:
-    "@jeromefitz/git-cz" "4.8.0-develop.0"
+    "@jeromefitz/git-cz" "5.0.0-canary.1"
     "@jeromefitz/semantic-release-git" "10.0.0-develop.2"
     "@semantic-release/commit-analyzer" "8.0.1"
     "@semantic-release/exec" "5.0.0"
