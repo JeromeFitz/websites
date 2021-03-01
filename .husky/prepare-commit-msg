@@ -2,4 +2,4 @@
 
 yarn pretty-quick --staged
 exec < /dev/tty
-git cz --hook || true
+node ./node_modules/.bin/gitcz --hook --theme gitmoji || true

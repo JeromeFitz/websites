@@ -706,10 +706,10 @@
     rimraf "3.0.2"
     typescript "4.1.5"
 
-"@jeromefitz/git-cz@5.0.0-canary.1":
-  version "5.0.0-canary.1"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/git-cz/-/git-cz-5.0.0-canary.1.tgz#977e8e008a53d13d7f1ebf0cdb585ddbc1cf4790"
-  integrity sha512-J8BB7uXbxCUuxiGAU4V+23ZV9yDAUUsuhUBgj+yshNVaUbI3wHV3qboq8gQpHfhxEk9tzCg1ocF3xXqiwYMQ/w==
+"@jeromefitz/git-cz@5.0.0-canary.11":
+  version "5.0.0-canary.11"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/git-cz/-/git-cz-5.0.0-canary.11.tgz#ea8f0a3a25f888a457e782dfe272193e8f50d342"
+  integrity sha512-4y3L9mD8PHlikxSBbUHPBHVQvWjfqayvsMN/8+MzTgfh8sRwP0m3CxnHQC02qzGI1Lvxbrj28CNCZ6+T720UAA==
 
 "@jeromefitz/semantic-release-git@10.0.0-develop.2":
   version "10.0.0-develop.2"
@@ -725,12 +725,12 @@
     micromatch "^4.0.0"
     p-reduce "^2.0.0"
 
-"@jeromefitz/semantic@2.0.0-develop.5":
-  version "2.0.0-develop.5"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/semantic/-/semantic-2.0.0-develop.5.tgz#ba829826667019bbba71282016d5ccda7d2d0da3"
-  integrity sha512-U1ulogXOD7wVETqMC0GiKRdYc7fUqyO+CPfZ+hT2NuzMDeaHyJ9riSxVC1wa3QWSUIJJRt31gMHnnRk8p8hKNw==
+"@jeromefitz/semantic@2.0.0-develop.6":
+  version "2.0.0-develop.6"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/semantic/-/semantic-2.0.0-develop.6.tgz#672c3774185a9316e692c2dbdad3cbf6bb3c76ff"
+  integrity sha512-LlG/GhwibUcS3Z4ZhNhi0LfHrcNF3Kv1NqmFyzHMf7PPJYmx8OuHOw5LjbzLiwTVOKT4xSkUvFBTwkoUqRBp6A==
   dependencies:
-    "@jeromefitz/git-cz" "5.0.0-canary.1"
+    "@jeromefitz/git-cz" "5.0.0-canary.11"
     "@jeromefitz/semantic-release-git" "10.0.0-develop.2"
     "@semantic-release/commit-analyzer" "8.0.1"
     "@semantic-release/exec" "5.0.0"
@@ -738,8 +738,6 @@
     "@semantic-release/npm" "7.0.10"
     "@semantic-release/release-notes-generator" "9.0.1"
     commitizen "4.2.3"
-    cross-env "7.0.3"
-    isomorphic-unfetch "3.1.0"
     lodash "4.17.21"
     semantic-release "17.4.0"
     semantic-release-commit-filter "1.0.2"
@@ -5210,6 +5208,11 @@ husky@5.1.1:
   resolved "https://registry.yarnpkg.com/husky/-/husky-5.1.1.tgz#8678953fd8deb86f387cbf1ad50bb2f7f96e83f2"
   integrity sha512-80LZ736V0Nr4/st0c2COYaMbEQhHNmAbLMN8J/kLk7/mo0QdUkUGNDjv/7jVkhug377Wh8wfbWyaVXEJ/h2B/Q==
 
+husky@5.1.2:
+  version "5.1.2"
+  resolved "https://registry.yarnpkg.com/husky/-/husky-5.1.2.tgz#dc6a1f68640455d8d98c28875e073087f86c5081"
+  integrity sha512-lilaRYeDXcAOj8DuRnN9IxUyEMVbYg9rK7yVNkPB5V4hCvxIUxpMeiv9K2h77CE0HzjCnk1Br0oWe1IghXngDQ==
+
 iconv-lite@0.4.24, iconv-lite@^0.4.24:
   version "0.4.24"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.24.tgz#2022b4b25fbddc21d2f524974a474aafe733908b"
@@ -5749,14 +5752,6 @@ isobject@^3.0.0, isobject@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/isobject/-/isobject-3.0.1.tgz#4e431e92b11a9731636aa1f9c8d1ccbcfdab78df"
   integrity sha1-TkMekrEalzFjaqH5yNHMvP2reN8=
-
-isomorphic-unfetch@3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/isomorphic-unfetch/-/isomorphic-unfetch-3.1.0.tgz#87341d5f4f7b63843d468438128cb087b7c3e98f"
-  integrity sha512-geDJjpoZ8N0kWexiwkX8F9NkTsXhetLPVbZFQ+JTW239QNOwvB0gniuR1Wc6f0AMTn7/mFGyXvHTifrCp/GH8Q==
-  dependencies:
-    node-fetch "^2.6.1"
-    unfetch "^4.2.0"
 
 isstream@~0.1.2:
   version "0.1.2"
@@ -10556,11 +10551,6 @@ umask@^1.1.0, umask@~1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/umask/-/umask-1.1.0.tgz#f29cebf01df517912bb58ff9c4e50fde8e33320d"
   integrity sha1-8pzr8B31F5ErtY/5xOUP3o4zMg0=
-
-unfetch@^4.2.0:
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/unfetch/-/unfetch-4.2.0.tgz#7e21b0ef7d363d8d9af0fb929a5555f6ef97a3be"
-  integrity sha512-F9p7yYCn6cIW9El1zi0HI6vqpeIvBsr3dSuRO6Xuppb1u5rXpCPmMvLSyECLhybr9isec8Ohl0hPekMVrEinDA==
 
 union-value@^1.0.0:
   version "1.0.1"
