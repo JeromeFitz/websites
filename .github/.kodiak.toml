@@ -6,7 +6,7 @@ version = 1
 [merge]
 automerge_label = "🥳️ LGTM"
 require_automerge_label = true
-blocking_labels = ["🚧️ WIP"] 
+blocking_labels = ["🚧️ WIP"]
 method = "rebase"
 optimistic_updates = true
 
