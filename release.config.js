@@ -1,4 +1,6 @@
 const release = require('@jeromefitz/semantic/release.config.js')
+const isCI = require('is-ci')
+!isCI && require('dotenv').config({ path: './.env.build' })
 
 const plugins = release.plugins
 
