@@ -1,5 +1,5 @@
 // const changelog = require('@jeromefitz/semantic/src/changelog.config.js')
 const format = '{emoji}{scope} {subject}'
-const scopes = ['', 'release']
+const scope = ['', 'release']
 const questions = ['type', 'subject', 'body']
-module.exports = { format, questions, scopes }
+module.exports = { format, questions, scope }
