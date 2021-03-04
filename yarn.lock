@@ -683,10 +683,10 @@
     micromatch "^4.0.0"
     p-reduce "^2.0.0"
 
-"@jeromefitz/semantic@2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/semantic/-/semantic-2.1.0.tgz#682c732d7e4ae02d04e2b77c24b253ec9ce2a865"
-  integrity sha512-XuNEjeBOOEnSPG/G9GO7maYJzYf4foBOb6BH20Ki5rWQPQIauqaCSvdOHRbKsSOg8tfDBtz+4cikl81reJD5Eg==
+"@jeromefitz/semantic@2.1.1":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/semantic/-/semantic-2.1.1.tgz#6350d1d0890ef47dc18ee859db5e368d8b8287d6"
+  integrity sha512-xfd7oVSsavu5gDgL9ufIlvZKprBVgHgZW7dckE24DqefPBFZ0Dg4lLR9inABW2LoZA1Gy+ihGbINrFKbl+rfsA==
   dependencies:
     "@jeromefitz/git-cz" "5.0.0"
     "@jeromefitz/semantic-release-git" "10.0.0-develop.2"
@@ -695,8 +695,9 @@
     "@semantic-release/github" "7.2.0"
     "@semantic-release/npm" "7.0.10"
     "@semantic-release/release-notes-generator" "9.0.1"
+    grapheme-splitter "1.0.4"
     lodash "4.17.21"
-    semantic-release "17.4.0"
+    semantic-release "17.4.1"
     semantic-release-commit-filter "1.0.2"
     semantic-release-monorepo "7.0.4"
 
@@ -4535,6 +4536,11 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.6
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.6.tgz#ff040b2b0853b23c3d31027523706f1885d76bee"
   integrity sha512-nTnJ528pbqxYanhpDYsi4Rd8MAeaBA67+RZ10CM1m3bTAVFEDcd5AuA4a6W5YkGZ1iNXHzZz8T6TBKLeBuNriQ==
 
+grapheme-splitter@1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/grapheme-splitter/-/grapheme-splitter-1.0.4.tgz#9cf3a665c6247479896834af35cf1dbb4400767e"
+  integrity sha512-bzh50DW9kTPM00T8y4o8vQg89Di9oLJVLW/KaOGIXJWP/iqCN6WKYkbNOF04vFLJhwcpYUh9ydh/+5vpOqV4YQ==
+
 graphviz@0.0.9:
   version "0.0.9"
   resolved "https://registry.yarnpkg.com/graphviz/-/graphviz-0.0.9.tgz#0bbf1df588c6a92259282da35323622528c4bbc4"
@@ -6019,14 +6025,14 @@ map-obj@^4.0.0:
   resolved "https://registry.yarnpkg.com/map-obj/-/map-obj-4.1.0.tgz#b91221b542734b9f14256c0132c897c5d7256fd5"
   integrity sha512-glc9y00wgtwcDmp7GaE/0b0OnxpNJsVf3ael/An6Fe2Q51LLwN1er6sdomLRzz5h0+yMpiYLhWYF5R7HeqVd4g==
 
-marked-terminal@^4.0.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/marked-terminal/-/marked-terminal-4.1.0.tgz#01087372d3636dc7cb286475a1d6147187f500e0"
-  integrity sha512-5KllfAOW02WS6hLRQ7cNvGOxvKW1BKuXELH4EtbWfyWgxQhROoMxEvuQ/3fTgkNjledR0J48F4HbapvYp1zWkQ==
+marked-terminal@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/marked-terminal/-/marked-terminal-4.1.1.tgz#34a6f063cd6cfe26bffaf5bac3724e24242168a9"
+  integrity sha512-t7Mdf6T3PvOEyN01c3tYxDzhyKZ8xnkp8Rs6Fohno63L/0pFTJ5Qtwto2AQVuDtbQiWzD+4E5AAu1Z2iLc8miQ==
   dependencies:
     ansi-escapes "^4.3.1"
     cardinal "^2.1.1"
-    chalk "^4.0.0"
+    chalk "^4.1.0"
     cli-table "^0.3.1"
     node-emoji "^1.10.0"
     supports-hyperlinks "^2.1.0"
@@ -8549,10 +8555,10 @@ semantic-release-plugin-decorators@^3.0.0:
   resolved "https://registry.yarnpkg.com/semantic-release-plugin-decorators/-/semantic-release-plugin-decorators-3.0.1.tgz#961b5fec7e1ab113aa10aed5256ee7c3ee6804d9"
   integrity sha512-f5Qjvv/AJYByvkaj11a+05gQwfPwgQKo5OIhj8YVM2Dhf2rOPEOLD83jGrTdM7Nuf//sZYw77/cGUSVygUG9Kg==
 
-semantic-release@17.4.0:
-  version "17.4.0"
-  resolved "https://registry.yarnpkg.com/semantic-release/-/semantic-release-17.4.0.tgz#a7f86b20534f77870e6471ec6609b160aa672ae4"
-  integrity sha512-FrPUpqKobak39F/6HnxhBK6LdL2ZEHadz5qVDTIJ9qlJ6bw8BQ5sguZ2j0ewI0aqRcLf/u9LGy/kOnUy0v7NbQ==
+semantic-release@17.4.1:
+  version "17.4.1"
+  resolved "https://registry.yarnpkg.com/semantic-release/-/semantic-release-17.4.1.tgz#71b89a772452f8cd3bbd55bbf99287630be1c81f"
+  integrity sha512-o/Rjk0HCBUWEYxN99Vq04Th+XtRQAxbC+FN+pBQ49wpqQ5NW/cfwhfw0qyxeTEhbchQ/1/KGMPWqD4/rRScAag==
   dependencies:
     "@semantic-release/commit-analyzer" "^8.0.0"
     "@semantic-release/error" "^2.2.0"
@@ -8572,7 +8578,7 @@ semantic-release@17.4.0:
     hosted-git-info "^3.0.0"
     lodash "^4.17.15"
     marked "^2.0.0"
-    marked-terminal "^4.0.0"
+    marked-terminal "^4.1.1"
     micromatch "^4.0.2"
     p-each-series "^2.1.0"
     p-reduce "^2.0.0"
