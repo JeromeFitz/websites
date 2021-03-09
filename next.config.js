@@ -17,6 +17,7 @@ const nextConfig = {
     polyfillsOptimization: true,
     productionBrowserSourceMaps: false,
   },
+  future: { webpack5: true },
   images: {
     domains: [
       'cdn.jerandky.com', // CDN
