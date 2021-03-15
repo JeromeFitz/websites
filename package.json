@@ -61,7 +61,7 @@
     "nprogress": "0.2.0",
     "postcss": "8.2.8",
     "postcss-nesting": "7.0.1",
-    "preact": "10.5.12",
+    "preact": "10.5.13",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-icons": "4.2.0",
