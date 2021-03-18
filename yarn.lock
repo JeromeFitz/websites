@@ -6221,13 +6221,14 @@ next-themes@0.0.12:
   resolved "https://registry.yarnpkg.com/next-themes/-/next-themes-0.0.12.tgz#8021999f314dc08614f4bcd1f8b7b91f1cd5bf00"
   integrity sha512-127ZeerlF/GC17TMVkZkarj3f01weI03b+Ne1xHmmaRs9ouYXVkgyAd60GHRzUnCFVo1NKLcZe0Pr8OnTzrxwQ==
 
-next-unused@0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/next-unused/-/next-unused-0.0.4.tgz#49b894ba70c46e5561a5f3b84c05eedf51d03a56"
-  integrity sha512-CA/xi60i12Bg4qPmeWueioxesi1Lu6q7xo8Kitx8TaIuaheHcPjKuVsslxbMCwyuL47ztC17uwwnaozvg48lnA==
+next-unused@0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/next-unused/-/next-unused-0.0.6.tgz#dbefa300bf5586e33d5bfde909130fb19ab04a64"
+  integrity sha512-dHFNNBanFq4wvYrULtsjfWyZ6BzOnr5VYI9EYMGAZYF2vkAhFpj2JOuT5Wu2o3LbFSG92PmAZnSUF/LstF82pA==
   dependencies:
     madge "^4.0.1"
     ts-loader "^7.0.0"
+    typescript "^4.2.3"
 
 next@10.0.9-canary.4:
   version "10.0.9-canary.4"
@@ -9444,6 +9445,11 @@ typescript@^3.9.5, typescript@^3.9.7:
   version "3.9.9"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.9.tgz#e69905c54bc0681d0518bd4d587cc6f2d0b1a674"
   integrity sha512-kdMjTiekY+z/ubJCATUPlRDl39vXYiMV9iyeMuEuXZh2we6zz80uovNN2WlAxmmdE/Z/YQe+EbOEXB5RHEED3w==
+
+typescript@^4.2.3:
+  version "4.2.3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.2.3.tgz#39062d8019912d43726298f09493d598048c1ce3"
+  integrity sha512-qOcYwxaByStAWrBf4x0fibwZvMRG+r4cQoTjbPtUlrWjBHbmCAww1i448U0GJ+3cNNEtebDteo/cHOR3xJ4wEw==
 
 uglify-js@^3.1.4:
   version "3.12.8"
