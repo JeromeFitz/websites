@@ -8,14 +8,16 @@ export const useAnalytics = () => {
   useEffect(() => {
     if (process.env.NODE_ENV === 'production') {
       Fathom.load(process.env.NEXT_PUBLIC_FATHOM_SITE_ID, {
-        honorDNT: true,
-        includedDomains: ['jeromefitzgerald.com'],
-        url: '/scripts/fathom.js',
+        // honorDNT: true,
+        includedDomains: [process.env.NEXT_PUBLIC__SITE],
+        url: `https://${process.env.NEXT_PUBLIC__FATHOM_CUSTOM_DOMAIN}/script.js`,
       })
     }
 
     function onRouteChangeComplete() {
-      Fathom.trackPageview()
+      if (process.env.NODE_ENV === 'production') {
+        Fathom.trackPageview()
+      }
     }
 
     router.events.on('routeChangeComplete', onRouteChangeComplete)
