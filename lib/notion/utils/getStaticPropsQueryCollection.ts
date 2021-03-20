@@ -39,6 +39,7 @@ const getStaticPropsQueryCollection = async ({
   routeType,
   slug,
   url,
+  writeCacheFile = true,
 }) => {
   isDebug && console.dir(` ~~~ getStaticPropsQueryCollection ~~~`)
   let cacheData
@@ -569,7 +570,7 @@ const getStaticPropsQueryCollection = async ({
     }
     cacheData = passProps
 
-    if (useCache) {
+    if (useCache && writeCacheFile) {
       isDebug && console.dir(`> gSPQC: writeFileSyncRecursive: ${cacheFile}`)
       writeFileSyncRecursive(cacheFile, JSON.stringify(cacheData), 'utf8')
     }

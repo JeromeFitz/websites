@@ -86,6 +86,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       routeType: 'podcastEpisodes',
       slug,
       url: `episodes/${slug}`,
+      // @note(vercel) cannot write live cache files after builds to vercel
+      writeCacheFile: false,
     })
     isDebug && console.dir(`podcastEpisodesData: `)
     isDebug && console.dir(podcastEpisodesData)
