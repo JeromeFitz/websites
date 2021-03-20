@@ -76,8 +76,8 @@ const getStaticPropsQueryCollection = async ({
       routeTypeSeo = await getRouteTypeSeo(routeType)
     }
 
-    // isDebug && console.dir(`> getQueryCollection`)
-    // isDebug && console.dir(getQueryCollection)
+    isDebug && console.dir(`> getQueryCollection`)
+    isDebug && console.dir(getQueryCollection)
     // isDebug && console.dir(collectionId)
     // isDebug && console.dir(collectionViewId)
 
@@ -570,7 +570,7 @@ const getStaticPropsQueryCollection = async ({
     cacheData = passProps
 
     if (useCache) {
-      isDebug && console.dir(`> writeFileSyncRecursive: ${cacheFile}`)
+      isDebug && console.dir(`> gSPQC: writeFileSyncRecursive: ${cacheFile}`)
       writeFileSyncRecursive(cacheFile, JSON.stringify(cacheData), 'utf8')
     }
   } else {

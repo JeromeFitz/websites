@@ -45,6 +45,8 @@ const getPathVariables = (catchAll) => {
     url = null
 
   if (!!catchAll) {
+    isDebug && console.dir(`!!catchAll`)
+    isDebug && console.dir(catchAll)
     isPage = isPages(catchAll[0])
     relativeUrl = _join(catchAll, '/')
     routeType = isPage ? 'pages' : catchAll[0]
@@ -57,6 +59,7 @@ const getPathVariables = (catchAll) => {
   isDebug && console.dir(`> isPage: ${isPage}`)
   isDebug && console.dir(`> routeType: ${routeType}`)
   isDebug && console.dir(`> slug: ${slug}`)
+  isDebug && console.dir(`> url: ${url}`)
 
   return {
     isIndex,
@@ -75,9 +78,6 @@ const getStaticPropsCatchAll = async ({ preview, ...props }) => {
   isDebug && console.dir(`preview: ${preview}`)
   isDebug && console.dir(props)
 
-  // @note(typess) Fix this ignore please.
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
   const { catchAll } = props.params
   const { routeType, slug, url } = getPathVariables(catchAll)
 
@@ -97,6 +97,8 @@ const getStaticPropsCatchAll = async ({ preview, ...props }) => {
       cacheData = JSON.parse(await readFile(cacheFile, 'utf8'))
       data = cacheData
       isDebug && console.dir(`> readFile: ${cacheFile}`)
+      // isDebug && console.dir(`> data:`)
+      // isDebug && console.dir(data)
       // // @todo(cache) Cheat here since we technically have the data
       // from getPathVariables
       // if (isIndex) {
@@ -135,7 +137,6 @@ const getStaticPropsCatchAll = async ({ preview, ...props }) => {
         data = slug ? await getPodcast(catchAll) : await getPodcasts()
         break
       case 'shows':
-        isDebug && console.dir('______')
         data = slug ? await getShow(catchAll) : await getShows()
         isDebug && console.dir(data)
         break
@@ -156,17 +157,22 @@ const getStaticPropsCatchAll = async ({ preview, ...props }) => {
 
   // @note(cache) Don't write file if no data
   if (useCache && !cacheData) {
-    isDebug && console.dir(`> writeFileSyncRecursive: ${cacheFile}`)
+    isDebug && console.dir(`> gS: writeFileSyncRecursive: ${cacheFile}`)
     writeFileSyncRecursive(cacheFile, JSON.stringify(data), 'utf8')
   }
 
-  return {
+  const returnData = {
     props: {
       ...data,
       preview,
     },
     revalidate: 60,
   }
+
+  isDebug && console.dir(`> returnData`)
+  // isDebug && console.dir(returnData)
+
+  return returnData
 }
 
 const getStaticPathsWithDate = async ({ data, routeType }) => {
@@ -254,7 +260,7 @@ const getStaticPathsCatchAll = async (_ctx) => {
   isDebug && console.dir(`_ getStaticPaths`)
 
   // @todo(types)
-  const blogData: any = await getBlogs()
+  // const blogData: any = await getBlogs()
   const eventsData: any = await getEvents()
   // const pagesData: any = await getPages()
   const peoplesData: any = await getPeoples()
@@ -264,11 +270,11 @@ const getStaticPathsCatchAll = async (_ctx) => {
 
   const paths = []
 
-  const { paths: blogPaths } = await getStaticPathsWithDate({
-    data: blogData.items,
-    routeType: 'blog',
-  })
-  blogPaths && paths.push(...blogPaths)
+  // const { paths: blogPaths } = await getStaticPathsWithDate({
+  //   data: blogData.items,
+  //   routeType: 'blog',
+  // })
+  // blogPaths && paths.push(...blogPaths)
 
   const { paths: eventsPaths } = await getStaticPathsWithDate({
     data: eventsData.items,

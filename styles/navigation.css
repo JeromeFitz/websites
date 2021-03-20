@@ -6,3 +6,10 @@
   backdrop-filter: saturate(180%) url(#sharpBlur);
   transition: background-color 0.1 ease-in-out;
 }
+
+@supports not (backdrop-filter: none) {
+  .bg-blur {
+    backdrop-filter: none;
+    @apply bg-opacity-100;
+  }
+}

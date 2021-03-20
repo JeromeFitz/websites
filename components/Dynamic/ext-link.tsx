@@ -6,8 +6,12 @@ import _startsWith from 'lodash/startsWith'
 import { MdOpenInNew } from 'react-icons/md'
 
 import getNextLink from '~utils/getNextLink'
+import isObject from '~utils/isObject'
 
 import SplitText from '~components/SplitText'
+
+// @hack(notion) too much customization
+const getText = (text) => (isObject(text) ? text.props.children : text)
 
 const extLink = (props) => {
   /**
@@ -46,7 +50,8 @@ const extLink = (props) => {
     )
   } else {
     const link = getNextLink(props.href)
-    const text = props.children
+    const text = getText(props.children)
+
     return (
       <Link as={link.as} href={link.href}>
         <a

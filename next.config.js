@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const { withPlugins } = require('next-compose-plugins')
 const getRedirects = require('./config/notion/website/getRedirects')
+require('dotenv').config({ path: './.env.build' })
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
@@ -17,7 +18,7 @@ const nextConfig = {
     polyfillsOptimization: true,
     productionBrowserSourceMaps: false,
   },
-  future: { webpack5: true },
+  // future: { webpack5: true },
   images: {
     domains: [
       'cdn.jerandky.com', // CDN

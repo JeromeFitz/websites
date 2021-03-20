@@ -11,7 +11,7 @@ const queryCollection = ({
     type = 'table',
     userLocale = 'en',
     userTimeZone = 'America/New_York',
-    limit = 999, // TODO: figure out Notion's way of handling pagination
+    limit = parseInt(process.env.NEXT_PUBLIC__NOTION_LIMIT), // TODO: figure out Notion's way of handling pagination
   } = loader
 
   const {

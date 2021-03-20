@@ -1,4 +1,4 @@
-const website = 'jeromefitzgerald'
+const website = 'jerandky'
 const nt_website = `.nt__${website}__`
 // @note Order matters for base view
 const baseSchema = [
@@ -18,19 +18,19 @@ const routeTypes = {
   blog: {
     id: 'blog',
     // @note UUID
-    indexId: 'baee64b0-8851-4522-8afb-e15a9ea5a910',
+    indexId: '27789ca1-49e8-4490-bb29-5a3fdec0ec77',
     // @note UUID
-    collectionId: '4c56ab0f-b5e9-47c7-ab8c-cf62ab2781e5',
+    collectionId: 'b3a25942-2cb0-4b5b-8880-ecaa4c2cf06d',
     // @note UUID
-    collectionViewId: 'fc3ed911-0cd6-4a6a-9816-3b88098267d2',
+    collectionViewId: 'a8cbcf35-8978-4f45-9a5c-8d315927edfd',
     // @note UUID
-    collectionViewId__published: 'a4254b95-1d2d-43da-9deb-44d9aa94ffa2',
+    collectionViewId__published: '8d65d6be-24d1-49e5-9edf-c8b65e742dbc',
     // @note UUID
-    collectionViewId__slug: 'bbafc311-a22a-4e59-a7e4-58d0a29e8571',
+    collectionViewId__slug: '7bd7657e-f7a0-4685-a576-4472f87b9004',
     // @note UUID
-    collectionViewId__dateExactMonth: '78818f5b-a649-41dd-972b-fea347a25863',
+    collectionViewId__dateExactMonth: '838b84c1-a319-4d2e-a4f0-ebf0f6ef73b7',
     // @note UUID
-    collectionViewId__dateExactDate: '7028166a-39fd-4bb6-a978-33e2ca94af5a',
+    collectionViewId__dateExactDate: '7271247e-02bf-409d-82f6-653b87c1f28d',
     seoId: null,
     schema: [
       ...baseSchema,
@@ -52,17 +52,17 @@ const routeTypes = {
   episodes: {
     id: 'episodes',
     // @note UUID
-    indexId: 'd67380f6-8492-4fb5-9b1d-b4ed8880155b',
+    indexId: 'f09fac69-3045-46cc-9209-44b13665bada',
     // @note UUID
-    collectionId: 'b623c83e-7663-43a5-a330-4683d2a64c54',
+    collectionId: 'cd6f2e2f-3e1d-482b-9891-530501f1c797',
     // @note UUID
-    collectionViewId: 'a081fabd-d29d-4931-b031-33baedbcd097',
+    collectionViewId: 'c71ef2fa-02ce-4dfe-8442-4d66b6439e1a',
     // @note UUID
-    collectionViewId__published: '58dbe242-7443-4577-8bc2-33b4546696a2',
+    collectionViewId__published: '8e3ee1e1-bb50-489b-9b2f-24b5493080ad',
     // @note UUID
-    collectionViewId__slug: '0e2a1efd-a228-4f3d-8799-41f66182ac25',
+    collectionViewId__slug: '29b6acc9-24e4-46f1-996f-94c0a38fac13',
     // @note UUID
-    collectionViewId__podcast: '76905204-c009-49bd-b870-0fc30fc81528',
+    collectionViewId__podcast: 'c97aac1e-166e-4657-8cf2-8712f280505d',
     seoId: null,
     schema: [
       ...baseSchema,
@@ -95,19 +95,19 @@ const routeTypes = {
   events: {
     id: 'events',
     // @note UUID
-    indexId: '781c7375-e20e-487f-a5d9-6e565f7a2d07',
+    indexId: '23e3954d-c714-4279-9f81-a8a51c9087ba',
     // @note UUID
-    collectionId: '77b2f1db-6f12-4b69-b950-1de238f21fe1',
+    collectionId: '389b9609-716c-4b20-a9fd-0b254b2c93be',
     // @note UUID
-    collectionViewId: 'd571880e-035b-4155-ba7c-42eaaad94885',
+    collectionViewId: '705f9e36-09de-4a26-b87f-b2ccb7a4b93a',
     // @note UUID
-    collectionViewId__published: '6cb05be0-9a3d-4608-9e79-127566d16516',
+    collectionViewId__published: 'b3aa844a-7391-4f9b-8918-087c694c3958',
     // @note UUID
-    collectionViewId__upcomingEvents: '5353d4b7-9b39-44ed-bd97-eac3064f177a',
+    collectionViewId__upcomingEvents: '2b71c9b9-28d4-4fef-a3c6-49d37b4828ae',
     // @note UUID
-    collectionViewId__dateExactMonth: '8b654975-03b7-4411-a3b1-227e17494d76',
+    collectionViewId__dateExactMonth: 'ee19f1d1-89d0-4275-93e3-cbdde1d57add',
     // @note UUID
-    collectionViewId__dateExactDate: '15649a8b-1dd5-4a70-b9b6-3f954c5ff5e1',
+    collectionViewId__dateExactDate: '7f20315e-a623-4077-9ed7-4a5521eac3da',
     seoId: null,
     schema: [
       ...baseSchema,
@@ -132,15 +132,15 @@ const routeTypes = {
   pages: {
     id: 'pages',
     // @note UUID
-    indexId: '3e9add0f-399c-4ae5-a48f-fb13f23e6992',
+    indexId: '96432799-6f4c-46e2-a618-d0d0eb2a79f2',
     // @note UUID
-    collectionId: '452fc905-23a9-4b8f-b435-668e157dcf5c',
+    collectionId: '55070552-3c47-490f-80c5-06b954f618aa',
     // @note UUID
-    collectionViewId: '49e95628-a338-4f12-bb5c-90ed7a7123f1',
+    collectionViewId: 'f684c626-7d46-4174-8365-69d7b4bf9fa7',
     // @note UUID
-    collectionViewId__published: '104e6f1e-fe2f-4a6f-aa9a-f73de2fcd188',
+    collectionViewId__published: '2f1e4f10-2308-4c4c-ad41-f2699c4f6e28',
     // @note UUID
-    collectionViewId__slug: '854f6e66-7398-434d-8046-a9e43d5a2c5f',
+    collectionViewId__slug: 'd04dbafb-e388-44cd-b850-8b9e46df41ca',
     seoId: null,
     schema: [
       ...baseSchema,
@@ -157,15 +157,15 @@ const routeTypes = {
   people: {
     id: 'people',
     // @note UUID
-    indexId: '13540a89-ef44-4aec-85ba-1bc05e9a7123',
+    indexId: '6cedcf32-de09-4e81-a658-1aea384821e5',
     // @note UUID
-    collectionId: '88e780a4-10ea-4aba-8534-0ed47651f654',
+    collectionId: '027db15c-52da-457e-a5c5-21c3a38c1154',
     // @note UUID
-    collectionViewId: '176b9048-eeb6-48b5-b4ee-83ca883f00f8',
+    collectionViewId: '37c89c97-28d2-4f8e-9225-4a1fad9c0d4a',
     // @note UUID
-    collectionViewId__published: 'ec61d234-ddec-4370-bb44-00d9ddcac445',
+    collectionViewId__published: '2f9d4cf7-6ad5-4e16-b162-a29f611fcb2b',
     // @note UUID
-    collectionViewId__slug: 'fbd7df6c-8185-4c90-b730-2176402acf71',
+    collectionViewId__slug: 'f5e1ba7b-d7c3-49ff-b8e6-1bba73b89318',
     seoId: null,
     schema: [
       ...baseSchema,
@@ -197,15 +197,15 @@ const routeTypes = {
   podcasts: {
     id: 'podcasts',
     // @note UUID
-    indexId: '22e65a94-72eb-4fc0-abe2-b1f9da3e3433',
+    indexId: 'daed70c1-43b2-4177-986b-fe874d346b4e',
     // @note UUID
-    collectionId: '13abc318-feac-421a-a70b-476b7f69d75a',
+    collectionId: '56803e86-dc05-40f1-b610-dfdd6d8f74b2',
     // @note UUID
-    collectionViewId: '8b6fbfae-e639-447e-b787-148565e8f605',
+    collectionViewId: 'a3628c46-4e76-4bd0-aa9b-b98cb6edd872',
     // @note UUID
-    collectionViewId__published: '23518337-ed41-4153-b0a5-449e88262455',
+    collectionViewId__published: '705b0c25-880a-4bae-8368-1f17ea8b2ed0',
     // @note UUID
-    collectionViewId__slug: '53c0b60b-6ac6-4a7d-88d4-5a3764db01ba',
+    collectionViewId__slug: 'd74fee35-0e29-48eb-a707-f1c5edddfaf4',
     seoId: null,
     schema: [
       ...baseSchema,
@@ -233,15 +233,15 @@ const routeTypes = {
   seo: {
     id: 'seo',
     // @note UUID
-    indexId: '810db8a2-71b6-4087-b61c-212bc81dbabe',
+    indexId: '07dd136e-92cd-49a3-a99d-f409ac3ca87b',
     // @note UUID
-    collectionId: '0591a137-f18b-4b18-92d0-6a97a5bde87d',
+    collectionId: 'd6f24c5e-94a3-48af-9dc9-72b3165748a3',
     // @note UUID
-    collectionViewId: '30ddea77-19dc-46aa-b717-091ce7710ac9',
+    collectionViewId: '1ec81875-5fa8-4204-8973-8da98c2e9656',
     // @note UUID
-    collectionViewId__published: 'bac6dbff-5d62-4598-a2a2-2b03ac0b0ee4',
+    collectionViewId__published: '91230f8f-fc20-4e7a-8d7c-fefa25594da9',
     // @note UUID
-    collectionViewId__slug: '95af9077-d26c-4639-82d3-fe21ee3fa16c',
+    collectionViewId__slug: 'af3db7ce-8236-43c2-b331-75d97364a1cf',
     seoId: null,
     schema: [
       ...baseSchema,
@@ -263,15 +263,15 @@ const routeTypes = {
   shows: {
     id: 'shows',
     // @note UUID
-    indexId: '2a8cf797-1eae-4dc4-991f-b6b5ac981f51',
+    indexId: '552ca1a6-4729-4950-9cd4-cebbec996b91',
     // @note UUID
-    collectionId: 'ece62f5c-a24f-460e-849f-49584f6e6bed',
+    collectionId: '6eab1927-66b6-471b-9228-5a652c02d798',
     // @note UUID
-    collectionViewId: '2d64ba6f-a3b0-4308-a9cf-20ae304a3cfc',
+    collectionViewId: '78906856-1a5d-4744-94f6-06139c5e34c6',
     // @note UUID
-    collectionViewId__published: '198a11ed-e87f-4712-bfda-bc50f685f23d',
+    collectionViewId__published: '678afbe3-9016-43f6-98aa-a2bbdf65296f',
     // @note UUID
-    collectionViewId__slug: 'e310f190-7c0c-44f4-bc4c-9822e20c5253',
+    collectionViewId__slug: 'bd22431b-7049-4b87-a0c7-71882b27fddc',
     seoId: null,
     schema: [
       ...baseSchema,
@@ -305,15 +305,15 @@ const routeTypes = {
   users: {
     id: 'users',
     // @note UUID
-    indexId: 'ddfc7897-eb59-442e-a64e-578d8ae8bee9',
+    indexId: '4579aa0d-1ce2-4175-93d7-5e513f60e82c',
     // @note UUID
-    collectionId: '37f2072e-1120-4be7-905c-25c587c0b797',
+    collectionId: 'e9346340-ce60-42df-b3e9-730f163628b5',
     // @note UUID
-    collectionViewId: 'd456113a-7a13-461e-b5f6-40fdada47c4e',
+    collectionViewId: '607fa2a0-0157-41d4-beb4-7c616e8e4d35',
     // @note UUID
-    collectionViewId__published: '10704d99-d3a0-42a9-8ca0-b0e2abb4650c',
+    collectionViewId__published: '8c83f3c9-1d53-47de-ae28-abf80a8b6a0c',
     // @note UUID
-    collectionViewId__slug: 'b263d4c5-c897-46dd-b042-dcfe1cf9d641',
+    collectionViewId__slug: 'ef1234f5-7c6e-49ed-b13c-95bdc551530a',
     seoId: null,
     schema: [
       // @todo This is an outlier in regard to baseSchema :X
@@ -335,15 +335,15 @@ const routeTypes = {
   venues: {
     id: 'venues',
     // @note UUID
-    indexId: '8b3f4ae6-ecf7-48ad-8ae9-8b69528e2110',
+    indexId: 'e7bac7a0-e489-4e97-a242-c9934f645621',
     // @note UUID
-    collectionId: '14d06967-0774-415a-9429-e7284b3badff',
+    collectionId: '9f94283b-95be-41a8-a05d-f435f5150a11',
     // @note UUID
-    collectionViewId: 'af142cac-5b5e-4dfe-a1cd-41f0d3db445c',
+    collectionViewId: 'bf08db17-a3e7-4f6c-afbd-b36a9e0c3a86',
     // @note UUID
-    collectionViewId__published: '9f1bd4da-fb3e-460d-864a-8fad3af21fbc',
+    collectionViewId__published: 'd16b315b-0258-42e2-9284-9408151d5154',
     // @note UUID
-    collectionViewId__slug: 'ed87e1b6-4450-4150-a7f0-c6568a30ef92',
+    collectionViewId__slug: '84ce45cf-5ffa-465d-aa21-a8639d363062',
     seoId: null,
     schema: [
       ...baseSchema,

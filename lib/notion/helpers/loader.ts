@@ -4,7 +4,7 @@ const loader = {
   userTimeZone: 'America/New_York',
   userLocale: 'en',
   loadContentCover: false,
-  limit: 70,
+  limit: parseInt(process.env.NEXT_PUBLIC__NOTION_LIMIT),
 }
 
 export default loader

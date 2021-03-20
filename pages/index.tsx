@@ -42,8 +42,10 @@ const Index = ({ data }: any) => {
   const isSingle = key && key.length === 1
   const item = isSingle && items[key[0]]
 
-  const title = 'Hello, my name is Jerome.'
-  const description = 'I write and perform comedy.'
+  // const title = 'Hello, my name is Jerome.'
+  // const description = 'I write and perform comedy.'
+  const title = 'Jer & Ky Productions'
+  const description = 'The JerKy BoyZ'
   const header = {
     description,
     title,

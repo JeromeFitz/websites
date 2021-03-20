@@ -9,8 +9,8 @@ const getCollectionViewWithString = ({
   isDebug && console.dir(`> getCollectionViewWithString`)
   isDebug && console.dir(indexCollectionView)
   // isDebug && console.dir(` preview: ${preview}`)
-  isDebug && console.dir(` property: ${property}`)
-  isDebug && console.dir(` slug: ${slug}`)
+  isDebug && console.dir(`>> property: ${property}`)
+  isDebug && console.dir(`>> slug: ${slug}`)
   if (slug && property) {
     indexCollectionView.query.filter.filters[0] = {
       filter: {

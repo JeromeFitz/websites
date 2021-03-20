@@ -1,8 +1,8 @@
 // @note This needs to be the first import 😑️
-import routeTypes from '~config/notion/website/jeromefitzgerald.com/routeTypes'
+import routeTypes from '~config/notion/website/jerandky.com/routeTypes'
 
-import getNextSeo from '~config/notion/website/jeromefitzgerald.com/getNextSeo'
-import getRedirects from '~config/notion/website/jeromefitzgerald.com/getRedirects'
+import getNextSeo from '~config/notion/website/jerandky.com/getNextSeo'
+import getRedirects from '~config/notion/website/jerandky.com/getRedirects'
 
 import {
   getCache,
@@ -10,7 +10,8 @@ import {
   merged,
   notion,
   routeTypesArray,
-} from '~config/notion/website/jeromefitzgerald.com'
+  urlBase,
+} from '~config/notion/website/jerandky.com'
 
 export {
   getCache,
@@ -21,6 +22,7 @@ export {
   notion,
   routeTypes,
   routeTypesArray,
+  urlBase,
 }
 
 export default routeTypes

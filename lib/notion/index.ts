@@ -4,7 +4,7 @@ import _last from 'lodash/last'
 import _merge from 'lodash/merge'
 
 import getCollectionView from '~config/notion/schema/getCollectionView'
-import { isPages } from '~config/notion/website'
+import { isPages, urlBase } from '~config/notion/website'
 
 import generateQueryCollection from '~lib/notion/utils/generateQueryCollection'
 import getBlocks from '~lib/notion/utils/getBlocks'
@@ -28,7 +28,7 @@ const notionConfig = {
     userTimeZone: 'America/New_York',
     userLocale: 'en',
     loadContentCover: false,
-    limit: 70,
+    limit: parseInt(process.env.NEXT_PUBLIC__NOTION_LIMIT),
   },
   shard: process.env.NOTION_SHARD,
   token: process.env.NOTION_TOKEN,
@@ -129,7 +129,6 @@ const refactorNotionCalls = async (catchAll) => {
    * SEO & Other Data
    */
   const relativeUrl = _join(catchAll, '/')
-  const urlBase = 'https://jeromefitzgerald.com/'
   let noindex = false
   let title: string, description: string, openGraph: any
   let url: string = urlBase

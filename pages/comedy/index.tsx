@@ -3,7 +3,7 @@ import Seo from '~components/Seo'
 import Layout from '~components/Layout'
 import Header from '~components/Header'
 
-const Music = () => {
+const Comedy = () => {
   const url = 'https://jeromefitzgerald.com/comedy'
   const title = 'Comedy'
   const description = 'Jerome loves comedy. Content coming soon.'
@@ -31,4 +31,4 @@ const Music = () => {
   )
 }
 
-export default Music
+export default Comedy

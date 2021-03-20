@@ -14,9 +14,9 @@ import {
 
 const notion = {
   topLevel: {
-    icon: '🤩️',
-    id: '7e150417-ce29-48e0-8e3e-76cec9519846',
-    title: 'jeromefitzgerald.com',
+    icon: '😵️',
+    id: '11b0f69c-217f-4549-b1f3-787408337cf3',
+    title: 'jerandky.com',
   },
   website: {
     icon: '🕸️',
@@ -25,7 +25,7 @@ const notion = {
   },
 }
 
-const urlBase = 'https://jeromefitzgerald.com/'
+const urlBase = 'https://jerandky.com/'
 
 const merged = {
   ...blog,
@@ -41,16 +41,16 @@ const merged = {
 }
 
 const routeTypesArray = [
-  'blog',
+  // 'blog',
   'episodes',
-  'events',
+  // 'events',
   'pages',
-  'people',
+  // 'people',
   'podcasts',
   'seo',
-  'shows',
-  'users',
-  'venues',
+  // 'shows',
+  // 'users',
+  // 'venues',
 ]
 
 /**

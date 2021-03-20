@@ -7,11 +7,11 @@ import { routeTypes } from '~config/notion/website'
 const getRouteTypeSeo = async (slug) => {
   const routeTypeId = routeTypes['seo'].indexId
   const routeTypeTable = await rpc('loadPageChunk', {
-    pageId: routeTypeId,
-    cursor: { stack: [] },
     chunkNumber: 0,
+    cursor: { stack: [] },
+    limit: parseInt(process.env.NEXT_PUBLIC__NOTION_LIMIT), // TODO: figure out Notion's way of handling pagination
+    pageId: routeTypeId,
     verticalColumns: false,
-    limit: 999, // TODO: figure out Notion's way of handling pagination
   })
   const routeTypeTableBlock = values(routeTypeTable.recordMap.block).find(
     (block: any) => block.value.type === 'collection_view_page'

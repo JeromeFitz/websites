@@ -19,14 +19,14 @@ export default async function rpc(fnName: string, body: any) {
     'x-notion-active-user-header': process.env.NOTION_USER_ID,
   }
 
-  // isDebug && console.dir(`> url`)
-  // isDebug && console.dir(url)
-  // isDebug && console.dir(`> fnName`)
-  // isDebug && console.dir(fnName)
-  // isDebug && console.dir(`> body`)
-  // isDebug && console.dir(body)
-  // isDebug && console.dir(`> headers`)
-  // isDebug && console.dir(headers)
+  isDebug && console.dir(`> url`)
+  isDebug && console.dir(url)
+  isDebug && console.dir(`> fnName`)
+  isDebug && console.dir(fnName)
+  isDebug && console.dir(`> body`)
+  isDebug && console.dir(body)
+  isDebug && console.dir(`> headers`)
+  isDebug && console.dir(headers)
 
   const data = JSON.stringify(body)
   const res = await fetch(url, {

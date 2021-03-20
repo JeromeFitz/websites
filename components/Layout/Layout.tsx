@@ -3,6 +3,9 @@ import cx from 'clsx'
 import dynamic from 'next/dynamic'
 
 import { Modal, LoadingDots } from '~components/UI'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Footer, Navigation } from '~components/Layout'
 // import CTA from '~components/CTA'
 
@@ -52,7 +55,7 @@ const Layout: FC<any> = ({ children }) => {
         </article>
         {/* <CTA /> */}
       </main>
-      <Footer />
+      {/* <Footer /> */}
       <Modal open={displayModal} onClose={closeModal}>
         {modalView === 'MODAL_TEST_VIEW' && <ModalTest />}
       </Modal>
