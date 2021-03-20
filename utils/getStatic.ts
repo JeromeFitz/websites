@@ -11,6 +11,8 @@ import { getNotionLink } from '~lib/notion/helpers'
 import {
   getBlog,
   getBlogs,
+  getEpisode,
+  getEpisodes,
   getEvent,
   getEvents,
   getPage,
@@ -122,6 +124,9 @@ const getStaticPropsCatchAll = async ({ preview, ...props }) => {
     switch (routeType) {
       case 'blog':
         data = slug ? await getBlog(catchAll) : await getBlogs()
+        break
+      case 'episodes':
+        data = slug ? await getEpisode(catchAll) : await getEpisodes()
         break
       case 'events':
         data = slug ? await getEvent(catchAll) : await getEvents()
@@ -260,7 +265,8 @@ const getStaticPathsCatchAll = async (_ctx) => {
   isDebug && console.dir(`_ getStaticPaths`)
 
   // @todo(types)
-  // const blogData: any = await getBlogs()
+  const blogData: any = await getBlogs()
+  // const episodesData: any = await getEpisodes()
   const eventsData: any = await getEvents()
   // const pagesData: any = await getPages()
   const peoplesData: any = await getPeoples()
@@ -270,11 +276,17 @@ const getStaticPathsCatchAll = async (_ctx) => {
 
   const paths = []
 
-  // const { paths: blogPaths } = await getStaticPathsWithDate({
-  //   data: blogData.items,
-  //   routeType: 'blog',
+  const { paths: blogPaths } = await getStaticPathsWithDate({
+    data: blogData.items,
+    routeType: 'blog',
+  })
+  blogPaths && paths.push(...blogPaths)
+
+  // const { paths: episodesPaths } = await getStaticPathsWithDate({
+  //   data: episodesData.items,
+  //   routeType: 'episodes',
   // })
-  // blogPaths && paths.push(...blogPaths)
+  // episodesPaths && paths.push(...episodesPaths)
 
   const { paths: eventsPaths } = await getStaticPathsWithDate({
     data: eventsData.items,
@@ -294,6 +306,7 @@ const getStaticPathsCatchAll = async (_ctx) => {
   paths.push(
     '/blog',
     '/colophon',
+    '/episodes',
     // '/events',
     '/people',
     '/podcasts',
