@@ -7,6 +7,16 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
 
+if (!process.env.NEXT_PUBLIC__SITE) {
+  throw new Error('process.env.NEXT_PUBLIC__SITE is not set in env')
+}
+
+// @hack(dynamic) hack way to ensure when we build we are doing the right site
+const urlBaseCheck = 'jeromefitzgerald.com'
+if (process.env.NEXT_PUBLIC__SITE !== urlBaseCheck) {
+  throw new Error(`process.env.NEXT_PUBLIC__SITE is not: ${urlBaseCheck}`)
+}
+
 const nextConfig = {
   amp: false,
   assetPrefix: '',
