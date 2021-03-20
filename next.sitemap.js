@@ -1,6 +1,45 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const _replace = require('lodash/replace')
 
+const sites = {
+  'jerandky.com': {
+    description: 'The JerKy BoyZ',
+    excludes: [
+      '/en/blog',
+      '/en/blog/*',
+      '/en/colophon',
+      '/en/colophon/*',
+      '/en/comedy',
+      '/en/comedy/*',
+      '/en/music',
+      '/en/music/*',
+      '/en/shows',
+      '/en/shows/*',
+      //
+      '/blog',
+      '/blog/*',
+      '/colophon',
+      '/colophon/*',
+      '/comedy',
+      '/comedy/*',
+      '/music',
+      '/music/*',
+      '/shows',
+      '/shows/*',
+    ],
+    siteUrl: 'https://jerandky.com',
+    title: 'Jer & Ky Productions',
+  },
+  'jeromefitzgerald.com': {
+    description: 'I write and perform comedy.',
+    excludes: [],
+    siteUrl: 'https://jeromefitzgerald.com',
+    title: 'Hello, my name is Jerome.',
+  },
+}
+
+const { excludes, siteUrl } = sites[process.env.NEXT_PUBLIC__SITE]
+
 const removeEn = (config, url) => {
   // console.dir(`url: ${url}`)
   return {
@@ -14,8 +53,8 @@ const removeEn = (config, url) => {
 module.exports = {
   changefreq: 'weekly',
   exclude: [
-    '/en/episdoes/*',
     '/en/episodes',
+    '/en/episodes/*',
     '/en/people',
     '/en/people/*',
     '/en/person/*',
@@ -26,9 +65,11 @@ module.exports = {
     '/events',
     '/events/*',
     '/playground',
+    ...excludes,
   ],
   generateRobotsTxt: true,
-  siteUrl: 'https://jeromefitzgerald.com',
+  siteUrl,
+  sites,
   transform: (config, url) => {
     return removeEn(config, url)
     // // custom function to ignore the url

@@ -1,3 +1,4 @@
+import navigation from './navigation'
 import getCache from '~config/notion/schema/getCache'
 import {
   blog,
@@ -16,7 +17,7 @@ const notion = {
   topLevel: {
     icon: '🤩️',
     id: '7e150417-ce29-48e0-8e3e-76cec9519846',
-    title: 'jeromefitzgerald.com',
+    title: process.env.NEXT_PUBLIC__SITE,
   },
   website: {
     icon: '🕸️',
@@ -24,8 +25,6 @@ const notion = {
     title: 'Website Data',
   },
 }
-
-const urlBase = 'https://jeromefitzgerald.com/'
 
 const merged = {
   ...blog,
@@ -61,4 +60,4 @@ const isPages = (routeType) => {
   return !isPage
 }
 
-export { getCache, isPages, merged, notion, routeTypesArray, urlBase }
+export { getCache, isPages, merged, navigation, notion, routeTypesArray }
