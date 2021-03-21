@@ -217,14 +217,14 @@ export async function getBlogs(): Promise<any> {
   return await refactorNotionCalls(catchAll)
 }
 
-export async function getEpisode(catchAll): Promise<any> {
-  return await refactorNotionCalls(catchAll)
-}
-
-export async function getEpisodes(): Promise<any> {
-  const catchAll = ['episodes']
-  return await refactorNotionCalls(catchAll)
-}
+// export async function getEpisode(catchAll): Promise<any> {
+//   return await refactorNotionCalls(catchAll)
+// }
+//
+// export async function getEpisodes(): Promise<any> {
+//   const catchAll = ['episodes']
+//   return await refactorNotionCalls(catchAll)
+// }
 
 export async function getEvent(catchAll): Promise<any> {
   return await refactorNotionCalls(catchAll)

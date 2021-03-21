@@ -49,6 +49,7 @@ const getStaticPropsQueryCollection = async ({
   const cacheFile = path.join(
     process.cwd(),
     '.cache',
+    process.env.NEXT_PUBLIC__SITE,
     `${url === '/' ? 'index' : url}.json`
   )
   isDebug && console.dir(`> cacheFile: ${cacheFile}`)

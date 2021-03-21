@@ -13,7 +13,9 @@ const Footer = memo(() => {
     <>
       {mounted && (
         <>
-          <NowPlaying />
+          {process.env.NEXT_PUBLIC__SITE === 'jeromefitzgerald.com' && (
+            <NowPlaying />
+          )}
           <footer
             className={cx(
               'bg-primary text-secondary mx-2',
@@ -48,7 +50,7 @@ const Footer = memo(() => {
                   <span>This site is a work-in-progress.</span>
                 </div>
                 <div className="text-sm" style={{ textAlign: 'end' }}>
-                  <span>Copyright</span> © 2020
+                  <span>Copyright</span> © 2021
                   <br />
                   <span className="font-semibold">Nice Group of People, LLC</span>
                 </div>
