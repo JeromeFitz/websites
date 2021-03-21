@@ -80,6 +80,7 @@
     "@jeromefitz/codestyle": "1.1.1",
     "@jeromefitz/semantic": "2.1.2",
     "@next/bundle-analyzer": "10.0.9",
+    "@tailwindcss/jit": "0.1.5",
     "@types/js-cookie": "2.2.6",
     "@types/ms": "0.7.31",
     "@types/nanoid": "2.1.0",
@@ -99,9 +100,14 @@
     "next-sitemap": "1.6.3",
     "next-unused": "0.0.6",
     "pinst": "2.1.6",
+    "postcss-custom-properties": "11.0.0",
     "postcss-flexbugs-fixes": "5.0.2",
+    "postcss-font-variant": "5.0.0",
+    "postcss-gap-properties": "2.0.0",
     "postcss-hover-media-feature": "1.0.0",
-    "postcss-preset-env": "6.7.0",
+    "postcss-initial": "4.0.0",
+    "postcss-media-minmax": "5.0.0",
+    "postcss-page-break": "3.0.4",
     "rimraf": "3.0.2",
     "typescript": "4.1.5"
   },
@@ -138,13 +144,13 @@
       "utils"
     ],
     "exclude": [
-      "config/notion/schema/defaults.ts",
-      "config/notion/website/getRedirects.js",
       "components/Modal/*",
       "components/NowPlaying/NowPlaying.module.css",
       "components/NowPlaying/NowPlayingWithControls.tsx",
+      "config/notion/schema/defaults.ts",
+      "config/notion/website/*",
       "lib/firebase.ts",
-      "lib/notion/init/createPageWithInlineTableItem.ts",
+      "lib/notion/init/*",
       "lib/spotify/mock/mockTrack.ts",
       "utils/isObjectEmpty.ts"
     ],
@@ -158,6 +164,6 @@
     }
   },
   "resolutions": {
-    "webpack": "5.27.0"
+    "webpack": "5.26.2"
   }
 }

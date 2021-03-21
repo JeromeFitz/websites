@@ -11,8 +11,8 @@ import { getNotionLink } from '~lib/notion/helpers'
 import {
   getBlog,
   getBlogs,
-  getEpisode,
-  getEpisodes,
+  // getEpisode,
+  // getEpisodes,
   getEvent,
   getEvents,
   getPage,
@@ -90,6 +90,7 @@ const getStaticPropsCatchAll = async ({ preview, ...props }) => {
   const cacheFile = path.join(
     process.cwd(),
     '.cache',
+    process.env.NEXT_PUBLIC__SITE,
     `${url === '/' ? 'index' : url}.json`
   )
   isDebug && console.dir(`> cacheFile: ${cacheFile}`)
@@ -108,6 +109,7 @@ const getStaticPropsCatchAll = async ({ preview, ...props }) => {
       //     const cacheFileItem = path.join(
       //       process.cwd(),
       //       '.cache',
+      //       process.env.NEXT_PUBLIC__SITE,
       //       `${routeType}/${item.Slug}.json`
       //     )
       //     isDebug && console.dir(`> cacheFileItem: ${cacheFileItem}`)
@@ -125,9 +127,9 @@ const getStaticPropsCatchAll = async ({ preview, ...props }) => {
       case 'blog':
         data = slug ? await getBlog(catchAll) : await getBlogs()
         break
-      case 'episodes':
-        data = slug ? await getEpisode(catchAll) : await getEpisodes()
-        break
+      // case 'episodes':
+      //   data = slug ? await getEpisode(catchAll) : await getEpisodes()
+      //   break
       case 'events':
         data = slug ? await getEvent(catchAll) : await getEvents()
         break
