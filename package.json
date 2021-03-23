@@ -80,7 +80,7 @@
     "@jeromefitz/codestyle": "1.1.1",
     "@jeromefitz/semantic": "2.1.2",
     "@next/bundle-analyzer": "10.0.9",
-    "@tailwindcss/jit": "0.1.5",
+    "@tailwindcss/jit": "0.1.7",
     "@types/js-cookie": "2.2.6",
     "@types/ms": "0.7.31",
     "@types/nanoid": "2.1.0",
