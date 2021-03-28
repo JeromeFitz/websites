@@ -21,6 +21,10 @@ const nextConfig = {
   amp: false,
   assetPrefix: '',
   distDir: './.next',
+  eslint: {
+    // @note(eslint) we use @jeromefitz/codestyle opt out of next.js
+    build: false,
+  },
   experimental: {
     jsconfigPaths: true,
     modern: true,
