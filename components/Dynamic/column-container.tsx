@@ -3,7 +3,7 @@ import React from 'react'
 
 const columnContainer = ({ id, content }) => {
   return (
-    <div className="columnContainer" key={`${id}--cc`}>
+    <div className="columnContainer">
       {content.map((data, dataIndex) => {
         const children = _merge(
           { ...data.props.children },

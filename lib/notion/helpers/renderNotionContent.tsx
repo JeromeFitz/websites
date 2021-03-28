@@ -73,7 +73,7 @@ const renderNotionContent = (data) => {
 
         // const renderHeading = (Type: string | React.ComponentType) => {
         //   toRender.push(
-        //     <Heading key={id} key={id}>
+        //     <Heading key={id}>
         //       <Type key={id}>{textBlock({parentKey: id, pRenderTag: true, text: properties.title)}</Type>
         //     </Heading>
         //   )
@@ -83,6 +83,7 @@ const renderNotionContent = (data) => {
           // console.warn(`> renderColumn`)
           // console.dir(data)
           const columnData = renderNotionContent({ content: data })
+          // @note(jsx) no key needed here
           toRenderColumn.push(<components.Column>{columnData}</components.Column>)
         }
 
@@ -118,7 +119,7 @@ const renderNotionContent = (data) => {
           })
 
           toRender.push(
-            <components.ColumnContainer content={toRenderColumn} key={id} key={id} />
+            <components.ColumnContainer content={toRenderColumn} id={id} key={id} />
           )
           toRenderColumn = []
           columnMap = {}
