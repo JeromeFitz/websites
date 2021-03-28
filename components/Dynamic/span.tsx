@@ -3,10 +3,9 @@ import React from 'react'
 
 export interface Props {
   children: any
-  props: any
 }
 
-const Span = ({ children, props }: Props) => {
+const Span = ({ children, ...props }: Props) => {
   return (
     <span
       className={cx(

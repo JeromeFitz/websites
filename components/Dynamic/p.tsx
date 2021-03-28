@@ -3,10 +3,9 @@ import React from 'react'
 
 export interface Props {
   children: any
-  props: any
 }
 
-const P = ({ children, props }: Props) => {
+const P = ({ children, ...props }: Props) => {
   return (
     <p
       className={cx(
