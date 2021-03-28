@@ -13,6 +13,7 @@ const columnTypes = new Set(['column_list'])
 const renderNotionContent = (data) => {
   // console.dir(`> renderNotionContent`)
   // console.dir(data)
+  let listComponent: any // string | null = null
   let listTagName: any // string | null = null
   let listLastId: string | null = null
   let listMap: {
@@ -72,7 +73,7 @@ const renderNotionContent = (data) => {
 
         // const renderHeading = (Type: string | React.ComponentType) => {
         //   toRender.push(
-        //     <Heading key={id} id={id}>
+        //     <Heading key={id} key={id}>
         //       <Type key={id}>{textBlock({parentKey: id, pRenderTag: true, text: properties.title)}</Type>
         //     </Heading>
         //   )
@@ -117,7 +118,7 @@ const renderNotionContent = (data) => {
           })
 
           toRender.push(
-            <components.ColumnContainer content={toRenderColumn} id={id} key={id} />
+            <components.ColumnContainer content={toRenderColumn} key={id} key={id} />
           )
           toRenderColumn = []
           columnMap = {}
@@ -125,6 +126,7 @@ const renderNotionContent = (data) => {
           columnTagName = null
         }
         if (isList) {
+          listComponent = type === 'bulleted_list' ? 'ul' : 'ol'
           listTagName = components[type === 'bulleted_list' ? 'ul' : 'ol']
           listLastId = `list${id}`
 
@@ -145,35 +147,41 @@ const renderNotionContent = (data) => {
         }
 
         if (listTagName && (isLast || !isList)) {
-          toRender.push(
-            React.createElement(
-              listTagName,
-              { key: listLastId },
-              Object.keys(listMap).map((itemId) => {
-                if (listMap[itemId].isNested) return null
+          const children = Object.keys(listMap).map((itemId) => {
+            if (listMap[itemId].isNested) return null
 
-                const createEl = (item) => {
-                  // console.dir(item)
-                  return React.createElement(
-                    components.li || components.ul,
-                    // { key: item.key + '--list' },
-                    null,
-                    item.children,
-                    item.nested.length > 0
-                      ? React.createElement(
-                          components.ul || components.ul,
-                          // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
-                          // { key: item + '--list-sub' },
-                          null,
-                          item.nested.map((nestedId) => createEl(listMap[nestedId]))
-                        )
-                      : null
-                  )
-                }
-                return createEl(listMap[itemId])
-              })
-            )
-          )
+            const createEl = (item) => {
+              // console.dir(`>createEl: inside`)
+              // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
+              const key = item.key + '--list'
+              // return React.createElement(
+              //   components.li,
+              //   { id: key },
+              //   item.children
+              //   // item.nested.length > 0
+              //   //   ? React.createElement(
+              //   //       components.ul || components.ul,
+              //   //       // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
+              //   //       // { key: item + '--list-sub' },
+              //   //       null,
+              //   //       item.nested.map((nestedId) => createEl(listMap[nestedId]))
+              //   //     )
+              //   //   : null
+              // )
+              return <components.li key={key}>{item.children}</components.li>
+            }
+            return createEl(listMap[itemId])
+          })
+
+          // console.dir(`listTagName:`)
+          // console.dir(listTagName)
+          // console.dir(`listComponent: ${listComponent}`)
+
+          // @hack(notion) this will always be 'ul' but just make sure
+          listComponent === 'ul' &&
+            toRender.push(<components.ul key={listLastId}>{children}</components.ul>)
+
+          // @note(notion) reset fields
           listMap = {}
           listLastId = null
           listTagName = null
@@ -361,12 +369,7 @@ const renderNotionContent = (data) => {
             // renderHeading('h1')
             if (properties.title) {
               toRender.push(
-                React.createElement(
-                  components.h1,
-                  // { key: id },
-                  null,
-                  properties.title
-                )
+                <components.h1 key={id}>{properties.title}</components.h1>
               )
             }
             break
@@ -374,12 +377,7 @@ const renderNotionContent = (data) => {
             // renderHeading('h2')
             if (properties.title) {
               toRender.push(
-                React.createElement(
-                  components.h2,
-                  // { key: id },
-                  null,
-                  properties.title
-                )
+                <components.h2 key={id}>{properties.title}</components.h2>
               )
             }
             break
@@ -387,12 +385,7 @@ const renderNotionContent = (data) => {
             // renderHeading('h3')
             if (properties.title) {
               toRender.push(
-                React.createElement(
-                  components.h3,
-                  // { key: id },
-                  null,
-                  properties.title
-                )
+                <components.h3 key={id}>{properties.title}</components.h3>
               )
             }
             break
@@ -427,12 +420,9 @@ const renderNotionContent = (data) => {
           case 'quote': {
             if (properties.title) {
               toRender.push(
-                React.createElement(
-                  components.blockquote,
-                  // { key: id },
-                  null,
-                  properties.title
-                )
+                <components.blockquote key={id}>
+                  {properties.title}
+                </components.blockquote>
               )
             }
             break
@@ -492,6 +482,8 @@ const renderNotionContent = (data) => {
             }
             break
         }
+        // console.dir(`> toRender`)
+        // console.dir(toRender)
         return toRender
       })}
     </>

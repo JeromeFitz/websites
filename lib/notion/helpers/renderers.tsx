@@ -41,10 +41,9 @@ export function textBlock({ parentKey, pTagRender = true, text = [] }) {
     )
   }
 
-  return React.createElement(
-    pTagRender ? components.p : components.span,
-    // { key: parentKey },
-    null,
-    ...children
+  return pTagRender ? (
+    <components.p key={parentKey}>{children}</components.p>
+  ) : (
+    <components.span key={parentKey}>{children}</components.span>
   )
 }

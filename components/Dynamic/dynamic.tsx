@@ -5,14 +5,13 @@ import SplitText from '~components/SplitText'
 
 export interface Props {
   children: any
-  props: any
 }
 
 /**
  * @todo Notion Refactor to get away from [0][0] this far away from normalizer
  *       Notion Headlines should be treated differently than defaults.
  */
-const H1 = ({ children, props }: Props) => {
+const H1 = ({ children, ...props }: Props) => {
   if (!children) {
     return null
   }
@@ -35,7 +34,7 @@ const H1 = ({ children, props }: Props) => {
   )
 }
 
-const H2 = ({ children, props }: Props) => {
+const H2 = ({ children, ...props }: Props) => {
   if (!children) {
     return null
   }
@@ -56,7 +55,7 @@ const H2 = ({ children, props }: Props) => {
   )
 }
 
-const H3 = ({ children, props }: Props) => {
+const H3 = ({ children, ...props }: Props) => {
   if (!children) {
     return null
   }
@@ -77,7 +76,7 @@ const H3 = ({ children, props }: Props) => {
   )
 }
 
-const UL = ({ children, props }: Props) => {
+const UL = ({ children, ...props }: Props) => {
   return (
     <ul className={cx('my-2 text-lg md:text-xl')} {...props}>
       {children}
@@ -85,7 +84,7 @@ const UL = ({ children, props }: Props) => {
   )
 }
 
-const LI = ({ children, props }: Props) => {
+const LI = ({ children, ...props }) => {
   return (
     <li className={cx('my-4 text-base md:text-lg mx-4')} {...props}>
       {children}

@@ -5,10 +5,9 @@ import styles from './Quote.module.css'
 
 export interface QuoteProps {
   children: any
-  props: any
 }
 
-const Quote = ({ children, props }: QuoteProps) => {
+const Quote = ({ children, ...props }: QuoteProps) => {
   return (
     <blockquote className={cx(styles.quote)} {...props}>
       {children}

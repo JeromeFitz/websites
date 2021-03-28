@@ -110,6 +110,7 @@ const NowPlaying = () => {
                   <Image
                     alt={`Album cover for “${album.name}” by ${artist.name} (${album.year})`}
                     height={450}
+                    layout="intrinsic"
                     src={album.imageUrl ?? '/static/images/placeholder.jpg'}
                     title={`“${album.name}” by ${artist.name} (${album.year})`}
                     width={450}
