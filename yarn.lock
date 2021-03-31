@@ -836,10 +836,10 @@
     semantic-release-commit-filter "1.0.2"
     semantic-release-monorepo "7.0.4"
 
-"@next/bundle-analyzer@10.1.1":
-  version "10.1.1"
-  resolved "https://registry.yarnpkg.com/@next/bundle-analyzer/-/bundle-analyzer-10.1.1.tgz#073aea2ec798f78aa214e64d7b9bebfeba57b18a"
-  integrity sha512-slb62/Z6CrYPj8PyqJRWOHaasC7WDPCUBai14S+16PFAig8ZfLZQtnVSjjHrZgUnXmLOovdtA9sBuyJGbX6Dsg==
+"@next/bundle-analyzer@10.1.2":
+  version "10.1.2"
+  resolved "https://registry.yarnpkg.com/@next/bundle-analyzer/-/bundle-analyzer-10.1.2.tgz#0bd2a2481cd5854a286decd321f3c793d9b111e1"
+  integrity sha512-hlenu9Kq32cVA+mkFC0OYoonv9DSK2W5PNDGPV94Rvv7ZBTcSSQyp8tD5mRDGfV4p9oAq+n5hJVgj/urCfRwUg==
   dependencies:
     webpack-bundle-analyzer "4.3.0"
 
