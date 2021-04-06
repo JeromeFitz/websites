@@ -90,7 +90,7 @@
     "@types/reach__skip-nav": "0.1.1",
     "@types/react": "17.0.3",
     "@types/uuid": "8.3.0",
-    "concurrently": "6.0.0",
+    "concurrently": "6.0.1",
     "cross-env": "7.0.3",
     "fs-extra": "9.1.0",
     "globby": "11.0.3",
