@@ -697,10 +697,10 @@
     pretty-quick "3.1.0"
     typescript "4.1.5"
 
-"@jeromefitz/git-cz@6.2.0":
-  version "6.2.0"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/git-cz/-/git-cz-6.2.0.tgz#2d46f969746d631a2526057ab5da2e8842b108f5"
-  integrity sha512-WBqe248UH/gOaceHSQFn2n9poUx13WIgKk6F1JVLyWKyuiEWLNNt3q/GrNosAiaKzxBLZJKoJtPsUMWP8FaGdw==
+"@jeromefitz/git-cz@6.2.1":
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/git-cz/-/git-cz-6.2.1.tgz#6d6bd260bd2a0bd39e7f553799cf4352cba1ab6c"
+  integrity sha512-WxpfX32UxZgq9vn1iZSI7DDrCNpAwjnzxauOg8oVtfRoWRatItTo8dbTMA2u8NMBUGNM05rD3nhuPPNvgkgw9A==
 
 "@jeromefitz/semantic-release-git@10.0.0-develop.2":
   version "10.0.0-develop.2"
@@ -716,12 +716,12 @@
     micromatch "^4.0.0"
     p-reduce "^2.0.0"
 
-"@jeromefitz/semantic@3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/semantic/-/semantic-3.0.0.tgz#5d579df13fb5739b66d93a4efdce4d400e054647"
-  integrity sha512-B11cNq5rxVjXQk3+i3o08j3Kn7vdq944JSzuoV/G8MWSrce5/Mm4cPnF/mkBWKhOslcBs3FgCdA0j0eioz8bjw==
+"@jeromefitz/semantic@3.0.2":
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/semantic/-/semantic-3.0.2.tgz#21a06228db7bed48f6b928f425e13ca9c5700267"
+  integrity sha512-/581z2qG1ukL5BfUYmCpyEuvBwzA9WhTJw2iBjGrnl9FXmSidV6iyXnieBAAlYFGh3y61g9WWaRreuMRPmSh+Q==
   dependencies:
-    "@jeromefitz/git-cz" "6.2.0"
+    "@jeromefitz/git-cz" "6.2.1"
     "@jeromefitz/semantic-release-git" "10.0.0-develop.2"
     "@semantic-release/commit-analyzer" "8.0.1"
     "@semantic-release/exec" "5.0.0"
