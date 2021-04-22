@@ -805,20 +805,20 @@
   dependencies:
     webpack-bundle-analyzer "4.3.0"
 
-"@next/env@10.1.4-canary.10":
-  version "10.1.4-canary.10"
-  resolved "https://registry.yarnpkg.com/@next/env/-/env-10.1.4-canary.10.tgz#5173b1c88d061ad3256e2792acb825e03fb76ae2"
-  integrity sha512-lfWu/Rvn58f5L7hgLbYjIrb/wlYsWVGGFBJ0UhHuO8p2xtmVPNgvNoVHcXPYj+jkacltpetkj5Y4O0+05V1MZQ==
+"@next/env@10.1.4-canary.13":
+  version "10.1.4-canary.13"
+  resolved "https://registry.yarnpkg.com/@next/env/-/env-10.1.4-canary.13.tgz#2627c9fd0b483a27bc08d132a14fcf7e41b10560"
+  integrity sha512-VP48fho2hEktrOXbU5IH3I6cCL6GGO/VMtjoDj9G8uuD2lqGJAqUZgCSoOk12upt4U801oaC+Rl0CaN4k1RTrw==
 
-"@next/polyfill-module@10.1.4-canary.10":
-  version "10.1.4-canary.10"
-  resolved "https://registry.yarnpkg.com/@next/polyfill-module/-/polyfill-module-10.1.4-canary.10.tgz#111b4078762495f9cee45428b2c0309f698a3bd6"
-  integrity sha512-WvTyj04FdYhtqNKyGjch0aA8Fl7jreuZnr7+tvS7/gbm+rVuwyfBwl6Cyc7sgOddl5G8Q7nYykxD1+kjgzO7Ug==
+"@next/polyfill-module@10.1.4-canary.13":
+  version "10.1.4-canary.13"
+  resolved "https://registry.yarnpkg.com/@next/polyfill-module/-/polyfill-module-10.1.4-canary.13.tgz#e00999bc21e86e5c907a10d833ed2572923cb7a1"
+  integrity sha512-eRxthUkOMdUQh7YOzEMEuAE0gL+dCo1agAXjunacrTd6iH5j5FJsH1d0wJV8kHySSBxVvwVByXdFvVkHDdSnlA==
 
-"@next/react-dev-overlay@10.1.4-canary.10":
-  version "10.1.4-canary.10"
-  resolved "https://registry.yarnpkg.com/@next/react-dev-overlay/-/react-dev-overlay-10.1.4-canary.10.tgz#216f892805f67968c7b63d4ae89400cdc27d55dc"
-  integrity sha512-AiTsQl5h8qju4oN1KWtr8TGAk/JyK3yvqfv4+DH7A+BvtJzXIdlW9WZORAhbGD5XyPsEc+awMgJ+uuTStPu1wg==
+"@next/react-dev-overlay@10.1.4-canary.13":
+  version "10.1.4-canary.13"
+  resolved "https://registry.yarnpkg.com/@next/react-dev-overlay/-/react-dev-overlay-10.1.4-canary.13.tgz#3b7c00188ee603155713753446f496af60319c2d"
+  integrity sha512-c/1l6Nk6FYeQwsL5quwB2uuL/pe1jZUYXzUoZB31utRTHs0U3Hfy4Mt+RCnxiGiYdHz5r5ADnoSGAZkbyxpgYA==
   dependencies:
     "@babel/code-frame" "7.12.11"
     anser "1.4.9"
@@ -832,10 +832,10 @@
     stacktrace-parser "0.1.10"
     strip-ansi "6.0.0"
 
-"@next/react-refresh-utils@10.1.4-canary.10":
-  version "10.1.4-canary.10"
-  resolved "https://registry.yarnpkg.com/@next/react-refresh-utils/-/react-refresh-utils-10.1.4-canary.10.tgz#880ab806b2400d043e6f72abd19032ed4df9fd0d"
-  integrity sha512-UaolZcfDoS7QH8Z9JeRvnGnIHnZwJMTfr9il48lVlaUhgKLRxEPZLB9+RFT5wxjTe8kTBuNpP81pWkXopArqaQ==
+"@next/react-refresh-utils@10.1.4-canary.13":
+  version "10.1.4-canary.13"
+  resolved "https://registry.yarnpkg.com/@next/react-refresh-utils/-/react-refresh-utils-10.1.4-canary.13.tgz#5437929765f785681229db3b09681006b5ca80a8"
+  integrity sha512-p4I12uMyTe3i5OZfMoqoayGoEWOLNO8KlV+f5EbRXDiVd9g2MH9FKhDT8SjR52uQBP/bl1UA9Insrd4rhmc5mw==
 
 "@nodelib/fs.scandir@2.1.4":
   version "2.1.4"
@@ -1340,10 +1340,15 @@
     "@types/estree" "*"
     "@types/json-schema" "*"
 
-"@types/estree@*", "@types/estree@^0.0.46":
+"@types/estree@*":
   version "0.0.46"
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.46.tgz#0fb6bfbbeabd7a30880504993369c4bf1deab1fe"
   integrity sha512-laIjwTQaD+5DukBZaygQ79K1Z0jb1bPEMRrkXSLjtCcZm+abyp5YbrqpSLzD42FwWW6gK/aS4NYpJ804nG2brg==
+
+"@types/estree@^0.0.47":
+  version "0.0.47"
+  resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.47.tgz#d7a51db20f0650efec24cd04994f523d93172ed4"
+  integrity sha512-c5ciR06jK8u9BstrmJyO97m+klJrrhCf9u3rLu3DEAJBirxRqSCvDQoYKmxuYwQI5SZChAWu+tq9oVlGRuzPAg==
 
 "@types/js-cookie@2.2.6":
   version "2.2.6"
@@ -3574,10 +3579,18 @@ enhanced-resolve@^4.0.0:
     memory-fs "^0.5.0"
     tapable "^1.0.0"
 
-enhanced-resolve@^5.3.2, enhanced-resolve@^5.7.0:
+enhanced-resolve@^5.3.2:
   version "5.7.0"
   resolved "https://registry.yarnpkg.com/enhanced-resolve/-/enhanced-resolve-5.7.0.tgz#525c5d856680fbd5052de453ac83e32049958b5c"
   integrity sha512-6njwt/NsZFUKhM6j9U8hzVyD4E4r0x7NQzhTCbcWOJ0IQjNSAoalWmb0AE51Wn+fwan5qVESWi7t2ToBxs9vrw==
+  dependencies:
+    graceful-fs "^4.2.4"
+    tapable "^2.2.0"
+
+enhanced-resolve@^5.8.0:
+  version "5.8.0"
+  resolved "https://registry.yarnpkg.com/enhanced-resolve/-/enhanced-resolve-5.8.0.tgz#d9deae58f9d3773b6a111a5a46831da5be5c9ac0"
+  integrity sha512-Sl3KRpJA8OpprrtaIswVki3cWPiPKxXuFxJXBp+zNb6s6VwNWwFRUdtmzd2ReUut8n+sCPx7QCtQ7w5wfJhSgQ==
   dependencies:
     graceful-fs "^4.2.4"
     tapable "^2.2.0"
@@ -6243,17 +6256,17 @@ next-unused@0.0.6:
     ts-loader "^7.0.0"
     typescript "^4.2.3"
 
-next@10.1.4-canary.10:
-  version "10.1.4-canary.10"
-  resolved "https://registry.yarnpkg.com/next/-/next-10.1.4-canary.10.tgz#aa6d58ab6afaf4b3c03e406da6898359728ca588"
-  integrity sha512-4b0u6SBExffsUEneQA4QFg5YmcBVSyWI2J7Qv3uM/7COERORXBk+vxdfHfEdL0wxnDYjBHIxgzdmsRpSgGtIGw==
+next@10.1.4-canary.13:
+  version "10.1.4-canary.13"
+  resolved "https://registry.yarnpkg.com/next/-/next-10.1.4-canary.13.tgz#7fa3d42db898181c1cc2764bbc7843a27ff6383b"
+  integrity sha512-LpvB1OpJf2AlMDx05+jrn8Slt4R3ZvREi6W/aT/1vnqJvvKU2ByZiJypqa0hdaXUpcQS07p27ECGY3NED+63nA==
   dependencies:
     "@babel/runtime" "7.12.5"
     "@hapi/accept" "5.0.1"
-    "@next/env" "10.1.4-canary.10"
-    "@next/polyfill-module" "10.1.4-canary.10"
-    "@next/react-dev-overlay" "10.1.4-canary.10"
-    "@next/react-refresh-utils" "10.1.4-canary.10"
+    "@next/env" "10.1.4-canary.13"
+    "@next/polyfill-module" "10.1.4-canary.13"
+    "@next/react-dev-overlay" "10.1.4-canary.13"
+    "@next/react-refresh-utils" "10.1.4-canary.13"
     "@opentelemetry/api" "0.14.0"
     assert "2.0.0"
     ast-types "0.13.2"
@@ -9202,20 +9215,20 @@ webpack-sources@^2.1.1:
     source-list-map "^2.0.1"
     source-map "^0.6.1"
 
-webpack@5.33.2:
-  version "5.33.2"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.33.2.tgz#c049717c9b038febf5a72fd2f53319ad59a8c1fc"
-  integrity sha512-X4b7F1sYBmJx8mlh2B7mV5szEkE0jYNJ2y3akgAP0ERi0vLCG1VvdsIxt8lFd4st6SUy0lf7W0CCQS566MBpJg==
+webpack@5.35.0:
+  version "5.35.0"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.35.0.tgz#4db23c2b96c4e53a90c5732d7cdb301a84a33576"
+  integrity sha512-au3gu55yYF/h6NXFr0KZPZAYxS6Nlc595BzYPke8n0CSff5WXcoixtjh5LC/8mXunkRKxhymhXmBY0+kEbR6jg==
   dependencies:
     "@types/eslint-scope" "^3.7.0"
-    "@types/estree" "^0.0.46"
+    "@types/estree" "^0.0.47"
     "@webassemblyjs/ast" "1.11.0"
     "@webassemblyjs/wasm-edit" "1.11.0"
     "@webassemblyjs/wasm-parser" "1.11.0"
     acorn "^8.0.4"
     browserslist "^4.14.5"
     chrome-trace-event "^1.0.2"
-    enhanced-resolve "^5.7.0"
+    enhanced-resolve "^5.8.0"
     es-module-lexer "^0.4.0"
     eslint-scope "^5.1.1"
     events "^3.2.0"
