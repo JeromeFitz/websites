@@ -221,14 +221,7 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.10.2", "@babel/runtime@^7.11.2":
-  version "7.13.8"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.13.8.tgz#cc886a85c072df1de23670dc1aa59fc116c4017c"
-  integrity sha512-CwQljpw6qSayc0fRG1soxHAKs1CnQMOChm4mlQP6My0kf9upVGizj/KhlTTgyUnETmHpcUXjaluNAkteRFuafg==
-  dependencies:
-    regenerator-runtime "^0.13.4"
-
-"@babel/runtime@^7.5.5":
+"@babel/runtime@^7.10.2", "@babel/runtime@^7.11.2", "@babel/runtime@^7.5.5":
   version "7.13.17"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.13.17.tgz#8966d1fc9593bf848602f0662d6b4d0069e3a7ec"
   integrity sha512-NCdgJEelPTSh+FEFylhnP1ylq848l1z9t9N0j1Lfbcw0+KXGjsTvUmkxy+voLLXB5SOKMbLLx4jxYliGrYQseA==
@@ -810,20 +803,20 @@
   dependencies:
     webpack-bundle-analyzer "4.3.0"
 
-"@next/env@10.1.4-canary.13":
-  version "10.1.4-canary.13"
-  resolved "https://registry.yarnpkg.com/@next/env/-/env-10.1.4-canary.13.tgz#2627c9fd0b483a27bc08d132a14fcf7e41b10560"
-  integrity sha512-VP48fho2hEktrOXbU5IH3I6cCL6GGO/VMtjoDj9G8uuD2lqGJAqUZgCSoOk12upt4U801oaC+Rl0CaN4k1RTrw==
+"@next/env@10.1.4-canary.16":
+  version "10.1.4-canary.16"
+  resolved "https://registry.yarnpkg.com/@next/env/-/env-10.1.4-canary.16.tgz#a602aff082786ce83fa97614f2ebb3a9a1d32c34"
+  integrity sha512-JCROqmBKdwze5jXuSgLMIEG0JrAdrbFLkEQlQDFQldm5ypoDSFR+X0CXIhLtlgAz+1ZKYksXKw/9ivVl7Ia1LQ==
 
-"@next/polyfill-module@10.1.4-canary.13":
-  version "10.1.4-canary.13"
-  resolved "https://registry.yarnpkg.com/@next/polyfill-module/-/polyfill-module-10.1.4-canary.13.tgz#e00999bc21e86e5c907a10d833ed2572923cb7a1"
-  integrity sha512-eRxthUkOMdUQh7YOzEMEuAE0gL+dCo1agAXjunacrTd6iH5j5FJsH1d0wJV8kHySSBxVvwVByXdFvVkHDdSnlA==
+"@next/polyfill-module@10.1.4-canary.16":
+  version "10.1.4-canary.16"
+  resolved "https://registry.yarnpkg.com/@next/polyfill-module/-/polyfill-module-10.1.4-canary.16.tgz#8e713fe34b5d85c862afca987998be5ccf5b231a"
+  integrity sha512-L42OGKiEQjVYdqj9/G2vUS2yJdOgfT3T5wwkfuJzu61bkmMg1s9F7+w+dmxqaKtocTH0GnTqRs++5lD498k8rg==
 
-"@next/react-dev-overlay@10.1.4-canary.13":
-  version "10.1.4-canary.13"
-  resolved "https://registry.yarnpkg.com/@next/react-dev-overlay/-/react-dev-overlay-10.1.4-canary.13.tgz#3b7c00188ee603155713753446f496af60319c2d"
-  integrity sha512-c/1l6Nk6FYeQwsL5quwB2uuL/pe1jZUYXzUoZB31utRTHs0U3Hfy4Mt+RCnxiGiYdHz5r5ADnoSGAZkbyxpgYA==
+"@next/react-dev-overlay@10.1.4-canary.16":
+  version "10.1.4-canary.16"
+  resolved "https://registry.yarnpkg.com/@next/react-dev-overlay/-/react-dev-overlay-10.1.4-canary.16.tgz#fe45455322be8b370cc83cdc8c6dbd40dc04a98d"
+  integrity sha512-OvtNhNCNYHuE5oUiJT8l7kq6qf9kXv4L5q9eF2FexWh4bpeHAsDtf+V2F37L8vFUXZT9fBc+rPoEQKaQhv6xdQ==
   dependencies:
     "@babel/code-frame" "7.12.11"
     anser "1.4.9"
@@ -837,10 +830,10 @@
     stacktrace-parser "0.1.10"
     strip-ansi "6.0.0"
 
-"@next/react-refresh-utils@10.1.4-canary.13":
-  version "10.1.4-canary.13"
-  resolved "https://registry.yarnpkg.com/@next/react-refresh-utils/-/react-refresh-utils-10.1.4-canary.13.tgz#5437929765f785681229db3b09681006b5ca80a8"
-  integrity sha512-p4I12uMyTe3i5OZfMoqoayGoEWOLNO8KlV+f5EbRXDiVd9g2MH9FKhDT8SjR52uQBP/bl1UA9Insrd4rhmc5mw==
+"@next/react-refresh-utils@10.1.4-canary.16":
+  version "10.1.4-canary.16"
+  resolved "https://registry.yarnpkg.com/@next/react-refresh-utils/-/react-refresh-utils-10.1.4-canary.16.tgz#df5c1bad650c844b0db4847a3db29acfc64f0d93"
+  integrity sha512-caCqWEUSgTR43eFx0+PNZARJDkFgBb8WIbw9ne4KvfGuWDUfa+rwZustraCQnWKb5IMOlRQt7ek5Y6g65RDzwA==
 
 "@nodelib/fs.scandir@2.1.4":
   version "2.1.4"
@@ -2515,17 +2508,7 @@ camelcase@^5.3.1:
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-5.3.1.tgz#e3c9b31569e106811df242f715725a1f4c494320"
   integrity sha512-L28STB170nwWS63UjtlEOE3dldQApaJXZkOI1uMFfzf3rRuPegHaHesyee+YxQ+W6SvRDQV6UrdOdRiR153wJg==
 
-caniuse-lite@^1.0.30001173, caniuse-lite@^1.0.30001179:
-  version "1.0.30001198"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001198.tgz#ed2d9b5f060322ba2efa42afdc56dee3255473f4"
-  integrity sha512-r5GGgESqOPZzwvdLVER374FpQu2WluCF1Z2DSiFJ89KSmGjT0LVKjgv4NcAqHmGWF9ihNpqRI9KXO9Ex4sKsgA==
-
-caniuse-lite@^1.0.30001181, caniuse-lite@^1.0.30001196:
-  version "1.0.30001197"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001197.tgz#47ad15b977d2f32b3ec2fe2b087e0c50443771db"
-  integrity sha512-8aE+sqBqtXz4G8g35Eg/XEaFr2N7rd/VQ6eABGBmNtcB8cN6qNJhMi6oSFy4UWWZgqgL3filHT8Nha4meu3tsw==
-
-caniuse-lite@^1.0.30001202:
+caniuse-lite@^1.0.30001173, caniuse-lite@^1.0.30001179, caniuse-lite@^1.0.30001181, caniuse-lite@^1.0.30001196, caniuse-lite@^1.0.30001202:
   version "1.0.30001209"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001209.tgz#1bb4be0bd118e98e21cfb7ef617b1ef2164622f4"
   integrity sha512-2Ktt4OeRM7EM/JaOZjuLzPYAIqmbwQMNnYbgooT+icoRGrKOyAxA1xhlnotBD1KArRSPsuJp3TdYcZYrL7qNxA==
@@ -6261,17 +6244,17 @@ next-unused@0.0.6:
     ts-loader "^7.0.0"
     typescript "^4.2.3"
 
-next@10.1.4-canary.13:
-  version "10.1.4-canary.13"
-  resolved "https://registry.yarnpkg.com/next/-/next-10.1.4-canary.13.tgz#7fa3d42db898181c1cc2764bbc7843a27ff6383b"
-  integrity sha512-LpvB1OpJf2AlMDx05+jrn8Slt4R3ZvREi6W/aT/1vnqJvvKU2ByZiJypqa0hdaXUpcQS07p27ECGY3NED+63nA==
+next@10.1.4-canary.16:
+  version "10.1.4-canary.16"
+  resolved "https://registry.yarnpkg.com/next/-/next-10.1.4-canary.16.tgz#af0c954f135ff096914749d2d8ad7daa5a225927"
+  integrity sha512-Pec4rQqgBHd7YaJVRa15NZ1+K2N4Ek/kyKdomimRgmtLeElDT0BwF8JfjHb1LbsvtA8MhD/p7xDUo13KY1DaRA==
   dependencies:
     "@babel/runtime" "7.12.5"
     "@hapi/accept" "5.0.1"
-    "@next/env" "10.1.4-canary.13"
-    "@next/polyfill-module" "10.1.4-canary.13"
-    "@next/react-dev-overlay" "10.1.4-canary.13"
-    "@next/react-refresh-utils" "10.1.4-canary.13"
+    "@next/env" "10.1.4-canary.16"
+    "@next/polyfill-module" "10.1.4-canary.16"
+    "@next/react-dev-overlay" "10.1.4-canary.16"
+    "@next/react-refresh-utils" "10.1.4-canary.16"
     "@opentelemetry/api" "0.14.0"
     assert "2.0.0"
     ast-types "0.13.2"
