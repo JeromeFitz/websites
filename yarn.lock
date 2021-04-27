@@ -7145,12 +7145,10 @@ postcss-nested@5.0.5:
   dependencies:
     postcss-selector-parser "^6.0.4"
 
-postcss-nesting@7.0.1:
-  version "7.0.1"
-  resolved "https://registry.yarnpkg.com/postcss-nesting/-/postcss-nesting-7.0.1.tgz#b50ad7b7f0173e5b5e3880c3501344703e04c052"
-  integrity sha512-FrorPb0H3nuVq0Sff7W2rnc3SmIcruVC6YwpcS+k687VxyxO33iE1amna7wHuRVzM8vfiYofXSBHNAZ3QhLvYg==
-  dependencies:
-    postcss "^7.0.2"
+postcss-nesting@8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/postcss-nesting/-/postcss-nesting-8.0.0.tgz#94645b3e6e261f00581bc23c5ae7070220704829"
+  integrity sha512-zxxjODoplKlNhUG+B+FjhYliNv52dGnAjb06b6PQjTbNGY24hwqxHmRtTQkcl9pEr2W4+BB09GzMPFNerrOvcw==
 
 postcss-page-break@3.0.4:
   version "3.0.4"
@@ -7222,7 +7220,7 @@ postcss@^6.0.9:
     source-map "^0.6.1"
     supports-color "^5.4.0"
 
-postcss@^7.0.2, postcss@^7.0.5:
+postcss@^7.0.5:
   version "7.0.35"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-7.0.35.tgz#d2be00b998f7f211d8a276974079f2e92b970e24"
   integrity sha512-3QT8bBJeX/S5zKTTjTCIjRF3If4avAT6kqxcASlTWEtAFCb9NH0OUxNDfgZSWdP5fJnBYCMEWkIFfWeugjzYMg==
