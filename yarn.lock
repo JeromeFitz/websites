@@ -8621,10 +8621,10 @@ table@^6.0.4:
     slice-ansi "^4.0.0"
     string-width "^4.2.0"
 
-tailwind-underline-utils@1.1.2:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/tailwind-underline-utils/-/tailwind-underline-utils-1.1.2.tgz#2a391d31af77e38813c52de2b44df6185328a29d"
-  integrity sha512-AjoBjXXY7iytuGg7hqUZFWg4hpgRfmX0lQkrOwwhaTOheJXqpvUoKU9xj4m7t7KVhPlPChYLOa3Z4PLv2zBrEg==
+tailwind-underline-utils@1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/tailwind-underline-utils/-/tailwind-underline-utils-1.1.3.tgz#e3c874d24679f1943b193cd57a0c2723b399f42f"
+  integrity sha512-8FSynb8KOBFj7Y1wurCzx0MBAQtdOuRWlCk5wXFImI5ZfJ2yiRLvNbybiJ6pjWz5Htr+lStnowcTXl/00s8xRw==
 
 tailwindcss@2.1.2:
   version "2.1.2"
