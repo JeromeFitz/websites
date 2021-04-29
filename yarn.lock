@@ -803,20 +803,20 @@
   dependencies:
     webpack-bundle-analyzer "4.3.0"
 
-"@next/env@10.1.4-canary.16":
-  version "10.1.4-canary.16"
-  resolved "https://registry.yarnpkg.com/@next/env/-/env-10.1.4-canary.16.tgz#a602aff082786ce83fa97614f2ebb3a9a1d32c34"
-  integrity sha512-JCROqmBKdwze5jXuSgLMIEG0JrAdrbFLkEQlQDFQldm5ypoDSFR+X0CXIhLtlgAz+1ZKYksXKw/9ivVl7Ia1LQ==
+"@next/env@10.2.0":
+  version "10.2.0"
+  resolved "https://registry.yarnpkg.com/@next/env/-/env-10.2.0.tgz#154dbce2efa3ad067ebd20b7d0aa9aed775e7c97"
+  integrity sha512-tsWBsn1Rb6hXRaHc/pWMCpZ4Ipkf3OCbZ54ef5ukgIyEvzzGdGFXQshPP2AF7yb+8yMpunWs7vOMZW3e8oPF6A==
 
-"@next/polyfill-module@10.1.4-canary.16":
-  version "10.1.4-canary.16"
-  resolved "https://registry.yarnpkg.com/@next/polyfill-module/-/polyfill-module-10.1.4-canary.16.tgz#8e713fe34b5d85c862afca987998be5ccf5b231a"
-  integrity sha512-L42OGKiEQjVYdqj9/G2vUS2yJdOgfT3T5wwkfuJzu61bkmMg1s9F7+w+dmxqaKtocTH0GnTqRs++5lD498k8rg==
+"@next/polyfill-module@10.2.0":
+  version "10.2.0"
+  resolved "https://registry.yarnpkg.com/@next/polyfill-module/-/polyfill-module-10.2.0.tgz#61f41110c4b465cc26d113e2054e205df61c3594"
+  integrity sha512-Nl3GexIUXsmuggkUqrRFyE/2k7UI44JaVzSywtXEyHzxpZm2a5bdMaWuC89pgLiFDDOqmbqyLAbtwm5lNxa7Eg==
 
-"@next/react-dev-overlay@10.1.4-canary.16":
-  version "10.1.4-canary.16"
-  resolved "https://registry.yarnpkg.com/@next/react-dev-overlay/-/react-dev-overlay-10.1.4-canary.16.tgz#fe45455322be8b370cc83cdc8c6dbd40dc04a98d"
-  integrity sha512-OvtNhNCNYHuE5oUiJT8l7kq6qf9kXv4L5q9eF2FexWh4bpeHAsDtf+V2F37L8vFUXZT9fBc+rPoEQKaQhv6xdQ==
+"@next/react-dev-overlay@10.2.0":
+  version "10.2.0"
+  resolved "https://registry.yarnpkg.com/@next/react-dev-overlay/-/react-dev-overlay-10.2.0.tgz#4220121abac7e3404cbaf467784aeecca8be46cf"
+  integrity sha512-PRIAoWog41hLN4iJ8dChKp4ysOX0Q8yiNQ/cwzyqEd3EjugkDV5OiKl3mumGKaApJaIra1MX6j1wgQRuLhuWMA==
   dependencies:
     "@babel/code-frame" "7.12.11"
     anser "1.4.9"
@@ -830,10 +830,10 @@
     stacktrace-parser "0.1.10"
     strip-ansi "6.0.0"
 
-"@next/react-refresh-utils@10.1.4-canary.16":
-  version "10.1.4-canary.16"
-  resolved "https://registry.yarnpkg.com/@next/react-refresh-utils/-/react-refresh-utils-10.1.4-canary.16.tgz#df5c1bad650c844b0db4847a3db29acfc64f0d93"
-  integrity sha512-caCqWEUSgTR43eFx0+PNZARJDkFgBb8WIbw9ne4KvfGuWDUfa+rwZustraCQnWKb5IMOlRQt7ek5Y6g65RDzwA==
+"@next/react-refresh-utils@10.2.0":
+  version "10.2.0"
+  resolved "https://registry.yarnpkg.com/@next/react-refresh-utils/-/react-refresh-utils-10.2.0.tgz#55953b697769c6647f371bc6bcd865a24e1a22e9"
+  integrity sha512-3I31K9B4hEQRl7yQ44Umyz+szHtuMJrNdwsgJGhoEnUCXSBRHp5wv5Zv8eDa2NewSbe53b2C0oOpivrzmdBakw==
 
 "@nodelib/fs.scandir@2.1.4":
   version "2.1.4"
@@ -6239,17 +6239,17 @@ next-unused@0.0.6:
     ts-loader "^7.0.0"
     typescript "^4.2.3"
 
-next@10.1.4-canary.16:
-  version "10.1.4-canary.16"
-  resolved "https://registry.yarnpkg.com/next/-/next-10.1.4-canary.16.tgz#af0c954f135ff096914749d2d8ad7daa5a225927"
-  integrity sha512-Pec4rQqgBHd7YaJVRa15NZ1+K2N4Ek/kyKdomimRgmtLeElDT0BwF8JfjHb1LbsvtA8MhD/p7xDUo13KY1DaRA==
+next@10.2.0:
+  version "10.2.0"
+  resolved "https://registry.yarnpkg.com/next/-/next-10.2.0.tgz#6654cc925d8abcb15474fa062fc6b3ee527dd6dc"
+  integrity sha512-PKDKCSF7s82xudu3kQhOEaokxggpbLEWouEUtzP6OqV0YqKYHF+Ff+BFLycEem8ixtTM2M6ElN0VRJcskJfxPQ==
   dependencies:
     "@babel/runtime" "7.12.5"
     "@hapi/accept" "5.0.1"
-    "@next/env" "10.1.4-canary.16"
-    "@next/polyfill-module" "10.1.4-canary.16"
-    "@next/react-dev-overlay" "10.1.4-canary.16"
-    "@next/react-refresh-utils" "10.1.4-canary.16"
+    "@next/env" "10.2.0"
+    "@next/polyfill-module" "10.2.0"
+    "@next/react-dev-overlay" "10.2.0"
+    "@next/react-refresh-utils" "10.2.0"
     "@opentelemetry/api" "0.14.0"
     assert "2.0.0"
     ast-types "0.13.2"
@@ -6277,7 +6277,7 @@ next@10.1.4-canary.16:
     p-limit "3.1.0"
     path-browserify "1.0.1"
     pnp-webpack-plugin "1.6.4"
-    postcss "8.2.10"
+    postcss "8.2.13"
     process "0.11.10"
     prop-types "15.7.2"
     querystring-es3 "0.2.1"
@@ -7187,15 +7187,6 @@ postcss-values-parser@^4.0.0:
     color-name "^1.1.4"
     is-url-superb "^4.0.0"
     postcss "^7.0.5"
-
-postcss@8.2.10:
-  version "8.2.10"
-  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.2.10.tgz#ca7a042aa8aff494b334d0ff3e9e77079f6f702b"
-  integrity sha512-b/h7CPV7QEdrqIxtAf2j31U5ef05uBDuvoXv6L51Q4rcS1jdlXAVKJv+atCFdUXYl9dyTHGyoMzIepwowRJjFw==
-  dependencies:
-    colorette "^1.2.2"
-    nanoid "^3.1.22"
-    source-map "^0.6.1"
 
 postcss@8.2.13, postcss@^8.1.6, postcss@^8.1.7, postcss@^8.2.1:
   version "8.2.13"
