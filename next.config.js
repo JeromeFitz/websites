@@ -77,9 +77,10 @@ const nextConfig = {
     build: false,
   },
   experimental: {
+    catchAllRouting: true,
+    enableBlurryPlaceholder: true,
     jsconfigPaths: true,
     modern: true,
-    catchAllRouting: true,
     polyfillsOptimization: true,
     productionBrowserSourceMaps: false,
   },
