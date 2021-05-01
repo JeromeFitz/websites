@@ -695,10 +695,10 @@
   resolved "https://registry.yarnpkg.com/@hapi/hoek/-/hoek-9.1.1.tgz#9daf5745156fd84b8e9889a2dc721f0c58e894aa"
   integrity sha512-CAEbWH7OIur6jEOzaai83jq3FmKmv4PmX1JYfs9IrYcGEVI/lyL1EXJGCj7eFVJ0bg5QR8LMxBlEtA+xKiLpFw==
 
-"@jeromefitz/codestyle@1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/codestyle/-/codestyle-1.1.1.tgz#9b56dca0f81ccccec6f813fea6f6a29d36391f44"
-  integrity sha512-x2WEMeluAhDhkVzQhcpDS7e2uF7NRLA3VGOsoZ8m0/JsIUWxxGdmZBSxQDc3XJ7E9gJL1E6qvGwir5OiEeHHBg==
+"@jeromefitz/codestyle@1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/codestyle/-/codestyle-1.1.2.tgz#18e44feabdd424e32499de740f5ed0ed341f0de3"
+  integrity sha512-W4k1J76717i6iNjj6y+JPuorvEt3Dbv8bJh4mmNPS2WiTEevPutzdqQ0We3FpI8nzQK9PHDqGagpYmf8vfa8nQ==
   dependencies:
     "@babel/core" "7.14.0"
     "@babel/eslint-parser" "7.13.14"

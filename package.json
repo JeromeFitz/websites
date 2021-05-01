@@ -75,7 +75,7 @@
     "uuid": "8.3.2"
   },
   "devDependencies": {
-    "@jeromefitz/codestyle": "1.1.1",
+    "@jeromefitz/codestyle": "1.1.2",
     "@jeromefitz/semantic": "1.1.1",
     "@next/bundle-analyzer": "10.2.0",
     "@types/js-cookie": "2.2.6",
