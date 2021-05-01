@@ -1,22 +1,21 @@
 module.exports = {
-  plugins: [
-    'tailwindcss',
-    'postcss-nesting',
-    'postcss-hover-media-feature',
-    'postcss-flexbugs-fixes',
-    // // @note(postcss) manual,stage 3
-    'postcss-initial',
-    'postcss-page-break',
-    // // 'postcss-custom-properties',
-    'postcss-font-variant',
-    // // 'postcss-gap-properties',
-    'postcss-media-minmax',
-    ['autoprefixer', { flexbox: 'no-2009' }],
-    // // @note(postcss) not needed with tailwind purge most likely
+  plugins: {
+    tailwindcss: {},
+    'postcss-nested': {},
+    'postcss-hover-media-feature': {},
+    'postcss-flexbugs-fixes': {},
+    'postcss-initial': {},
+    'postcss-page-break': {},
+    'postcss-custom-properties': {},
+    'postcss-font-variant': {},
+    'postcss-gap-properties': {},
+    'postcss-media-minmax': {},
+    autoprefixer: {
+      flexbox: 'no-2009',
+    },
     // '@fullhuman/postcss-purgecss':
     //   process.env.NODE_ENV === 'production'
     //     ? {
-    //         // the paths to all template files
     //         content: [
     //           './pages/**/*.{js,jsx,ts,tsx}',
     //           './components/**/*.{js,jsx,ts,tsx}',
@@ -28,9 +27,8 @@ module.exports = {
     //           '^bg-success',
     //           '^bg-warning',
     //         ],
-    //         // function used to extract class names from the templates
     //         defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
     //       }
     //     : false,
-  ],
+  },
 }
