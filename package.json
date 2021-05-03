@@ -158,11 +158,6 @@
       "pages"
     ]
   },
-  "config": {
-    "commitizen": {
-      "path": "git-cz"
-    }
-  },
   "resolutions": {
     "webpack": "5.35.0"
   }
