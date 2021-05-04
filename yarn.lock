@@ -715,10 +715,10 @@
     pretty-quick "3.1.0"
     typescript "4.1.5"
 
-"@jeromefitz/git-cz@6.2.1":
-  version "6.2.1"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/git-cz/-/git-cz-6.2.1.tgz#6d6bd260bd2a0bd39e7f553799cf4352cba1ab6c"
-  integrity sha512-WxpfX32UxZgq9vn1iZSI7DDrCNpAwjnzxauOg8oVtfRoWRatItTo8dbTMA2u8NMBUGNM05rD3nhuPPNvgkgw9A==
+"@jeromefitz/git-cz@7.0.2":
+  version "7.0.2"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/git-cz/-/git-cz-7.0.2.tgz#3d1e7e9a8db24281b4781412938ab2cbacc94165"
+  integrity sha512-mLRlnMwix0bsJsVzqr8U+UD/+NoDRuuSk1hpqT9ilYJCFYjRdavwJTvYNzDREh+bTPuVA1aBCheGHIACdoFLzg==
 
 "@jeromefitz/semantic-release-git@10.0.0-develop.2":
   version "10.0.0-develop.2"
@@ -734,12 +734,12 @@
     micromatch "^4.0.0"
     p-reduce "^2.0.0"
 
-"@jeromefitz/semantic@1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/semantic/-/semantic-1.1.1.tgz#9c46e3006f85f786985226fd72eac1edc6e3d766"
-  integrity sha512-q8OVMGHGJCkknByTy1EtLcxWl8pH/IAeTlXcYicXC1JRCFu9Qk3XRvV4WHsSXNhY9jUj0le/8FRJUXuFVtv2MA==
+"@jeromefitz/semantic@1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/semantic/-/semantic-1.1.2.tgz#502f882e13f6cf1eeaf988eff81aafd344d20554"
+  integrity sha512-DKYFTG+QnraszQi/PqO6KdMNSyoB2YO3Jrzn+K1+CqQrTFfLU+gZxSRbuwCcVgoChq4vBjP2rcqUp8ls2c2SPA==
   dependencies:
-    "@jeromefitz/git-cz" "6.2.1"
+    "@jeromefitz/git-cz" "7.0.2"
     "@jeromefitz/semantic-release-git" "10.0.0-develop.2"
     "@octokit/core" "3.4.0"
     "@semantic-release/commit-analyzer" "8.0.1"
@@ -975,7 +975,7 @@
   dependencies:
     "@octokit/types" "^6.0.3"
 
-"@octokit/core@3.4.0":
+"@octokit/core@3.4.0", "@octokit/core@^3.2.3":
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/@octokit/core/-/core-3.4.0.tgz#b48aa27d755b339fe7550548b340dcc2b513b742"
   integrity sha512-6/vlKPP8NF17cgYXqucdshWqmMZGXkuvtcrWCgU5NOI0Pl2GjlmZyWgBMrU8zJ3v2MJlM6++CiB45VKYmhiWWg==
@@ -986,18 +986,6 @@
     "@octokit/request-error" "^2.0.5"
     "@octokit/types" "^6.0.3"
     before-after-hook "^2.2.0"
-    universal-user-agent "^6.0.0"
-
-"@octokit/core@^3.2.3":
-  version "3.2.5"
-  resolved "https://registry.yarnpkg.com/@octokit/core/-/core-3.2.5.tgz#57becbd5fd789b0592b915840855f3a5f233d554"
-  integrity sha512-+DCtPykGnvXKWWQI0E1XD+CCeWSBhB6kwItXqfFmNBlIlhczuDPbg+P6BtLnVBaRJDAjv+1mrUJuRsFSjktopg==
-  dependencies:
-    "@octokit/auth-token" "^2.4.4"
-    "@octokit/graphql" "^4.5.8"
-    "@octokit/request" "^5.4.12"
-    "@octokit/types" "^6.0.3"
-    before-after-hook "^2.1.0"
     universal-user-agent "^6.0.0"
 
 "@octokit/endpoint@^6.0.1":
@@ -2209,11 +2197,6 @@ bcrypt-pbkdf@^1.0.0:
   integrity sha1-pDAdOJtqQ/m2f/PKEaP2Y342Dp4=
   dependencies:
     tweetnacl "^0.14.3"
-
-before-after-hook@^2.1.0:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/before-after-hook/-/before-after-hook-2.1.1.tgz#99ae36992b5cfab4a83f6bee74ab27835f28f405"
-  integrity sha512-5ekuQOvO04MDj7kYZJaMab2S8SPjGJbotVNyv7QYFCOAwrGZs/YnoDNlh1U+m5hl7H2D/+n0taaAV/tfyd3KMA==
 
 before-after-hook@^2.2.0:
   version "2.2.1"
