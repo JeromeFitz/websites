@@ -85,7 +85,7 @@
     "@types/node-fetch": "2.5.10",
     "@types/nprogress": "0.2.0",
     "@types/reach__skip-nav": "0.1.1",
-    "@types/react": "17.0.4",
+    "@types/react": "17.0.5",
     "@types/uuid": "8.3.0",
     "concurrently": "6.0.2",
     "cross-env": "7.0.3",
