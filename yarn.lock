@@ -2763,10 +2763,10 @@ combined-stream@^1.0.6, combined-stream@^1.0.8, combined-stream@~1.0.6:
   dependencies:
     delayed-stream "~1.0.0"
 
-comma-number@2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/comma-number/-/comma-number-2.0.2.tgz#5746283419d47d3c8f33da485147587aa8411680"
-  integrity sha512-+0izevRLy+l+W07CbfYf2EsEtbApfvk62NLGHlPR9bWUv7rqDEmfqPOH1gAOBNsZb/6rcJLGXsw0JW4zaojjbg==
+comma-number@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/comma-number/-/comma-number-2.1.0.tgz#0f38eef7293fe5ba4a0de6d1ffd3ea70a5e3e288"
+  integrity sha512-fRcu1c+4yFLFp3tgranEkKPPWRlnkWQXr4p0KBL0WW9Kd2wmbKAoQ2R4rluFm4ubXCtXGybEaFB7r6YgPOnahQ==
 
 commander@^2.16.0, commander@^2.20.0, commander@^2.20.3, commander@^2.8.1:
   version "2.20.3"
