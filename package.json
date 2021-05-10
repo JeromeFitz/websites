@@ -42,7 +42,7 @@
     "body-scroll-lock": "3.1.5",
     "clsx": "1.1.1",
     "comma-number": "2.1.0",
-    "date-fns": "2.21.2",
+    "date-fns": "2.21.3",
     "date-fns-tz": "1.1.4",
     "fathom-client": "3.0.0",
     "firebase": "8.5.0",
