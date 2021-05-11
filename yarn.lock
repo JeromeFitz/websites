@@ -736,20 +736,20 @@
   dependencies:
     webpack-bundle-analyzer "4.3.0"
 
-"@next/env@10.2.1-canary.2":
-  version "10.2.1-canary.2"
-  resolved "https://registry.yarnpkg.com/@next/env/-/env-10.2.1-canary.2.tgz#508ac4e87f36d5e360f3e1aaea57915d351e10af"
-  integrity sha512-3KsWMJJIoBKGQKjsOpdyBYY6szydSc78AYM6FqC4iy2dL3X3o21CoxcseWet24TlneV/cLRdLWBqRIDd8ccFyQ==
+"@next/env@10.2.1-canary.4":
+  version "10.2.1-canary.4"
+  resolved "https://registry.yarnpkg.com/@next/env/-/env-10.2.1-canary.4.tgz#3165726c3e2a1a1da98d4b031247f4d193cad5d8"
+  integrity sha512-5sXqfVnv9TnHbZ3w14mxBSnqgXF11/1zlCP6pFmWYkhXMSJzeLGY18Oso1x6R5AEJYSLLQd56aw6EGCc9nyzUw==
 
-"@next/polyfill-module@10.2.1-canary.2":
-  version "10.2.1-canary.2"
-  resolved "https://registry.yarnpkg.com/@next/polyfill-module/-/polyfill-module-10.2.1-canary.2.tgz#e192b79355a2b565c220efc22efb1bbdf0436714"
-  integrity sha512-O2EmqQ8ZsnV56BYPuUsHVvjy/7I0eUD4QzW+G4Nq3uOzI020mMg35xA9ZIxkY6QMLli68K0l7WxYcEc8kE5Mgg==
+"@next/polyfill-module@10.2.1-canary.4":
+  version "10.2.1-canary.4"
+  resolved "https://registry.yarnpkg.com/@next/polyfill-module/-/polyfill-module-10.2.1-canary.4.tgz#2b9e234b2c5c6fdb028c67c62534da7032b0b731"
+  integrity sha512-XHlHaUStZ8s21xKdXMqkkPwwRnYsB5mmnGIJD4WSb2yA14Ayx/0YyVxh9ux7i/Zos253dU4MYrc8ibU3BzT9dg==
 
-"@next/react-dev-overlay@10.2.1-canary.2":
-  version "10.2.1-canary.2"
-  resolved "https://registry.yarnpkg.com/@next/react-dev-overlay/-/react-dev-overlay-10.2.1-canary.2.tgz#a1f4ac81eb631bfc628fe832674fb048a0518506"
-  integrity sha512-WGEnQzLejj2XKXqzcaJ0UbytyPT1LuKdR6re9FOzF2BV7PUUcezhSRKYRi2TrGykg10tyuUflErry8B5TwrbPA==
+"@next/react-dev-overlay@10.2.1-canary.4":
+  version "10.2.1-canary.4"
+  resolved "https://registry.yarnpkg.com/@next/react-dev-overlay/-/react-dev-overlay-10.2.1-canary.4.tgz#a51725b6ae30ca7c51a929267f258db0d98724b9"
+  integrity sha512-C66XjgSsJ3UPzhlNQgMZGMsVKP8+c+I3a47S4wZX6yp8Uxf3qgS6srOK5gOTcsC6z1jmMo5I4HKDzdWR9NaV1A==
   dependencies:
     "@babel/code-frame" "7.12.11"
     anser "1.4.9"
@@ -763,10 +763,10 @@
     stacktrace-parser "0.1.10"
     strip-ansi "6.0.0"
 
-"@next/react-refresh-utils@10.2.1-canary.2":
-  version "10.2.1-canary.2"
-  resolved "https://registry.yarnpkg.com/@next/react-refresh-utils/-/react-refresh-utils-10.2.1-canary.2.tgz#fb686da4bb86457ab4a9aa87c7d99396a945c00d"
-  integrity sha512-xipwcQE475Nlz8HJBNJlN7box/XKuyljRVBYYdMN7FNfNJRWDQTXkAZPPK2fnjgDG2/x+ZwmRpwiogCjc23ITQ==
+"@next/react-refresh-utils@10.2.1-canary.4":
+  version "10.2.1-canary.4"
+  resolved "https://registry.yarnpkg.com/@next/react-refresh-utils/-/react-refresh-utils-10.2.1-canary.4.tgz#fe4dfd70ee65df35da5a258e778a6593f2162490"
+  integrity sha512-JRNzKflARJVmelDVDNlQJRrblxCBXf4ehh6O/FOFs+4rX+pm18nzrY2HKqzAU9qpBNXQvix6RpBrU3G85+liqQ==
 
 "@nodelib/fs.scandir@2.1.4":
   version "2.1.4"
@@ -2509,12 +2509,7 @@ camelcase@^5.3.1:
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-5.3.1.tgz#e3c9b31569e106811df242f715725a1f4c494320"
   integrity sha512-L28STB170nwWS63UjtlEOE3dldQApaJXZkOI1uMFfzf3rRuPegHaHesyee+YxQ+W6SvRDQV6UrdOdRiR153wJg==
 
-caniuse-lite@^1.0.30001173, caniuse-lite@^1.0.30001179, caniuse-lite@^1.0.30001181, caniuse-lite@^1.0.30001196:
-  version "1.0.30001209"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001209.tgz#1bb4be0bd118e98e21cfb7ef617b1ef2164622f4"
-  integrity sha512-2Ktt4OeRM7EM/JaOZjuLzPYAIqmbwQMNnYbgooT+icoRGrKOyAxA1xhlnotBD1KArRSPsuJp3TdYcZYrL7qNxA==
-
-caniuse-lite@^1.0.30001202:
+caniuse-lite@^1.0.30001173, caniuse-lite@^1.0.30001179, caniuse-lite@^1.0.30001181, caniuse-lite@^1.0.30001196, caniuse-lite@^1.0.30001202:
   version "1.0.30001219"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001219.tgz#5bfa5d0519f41f993618bd318f606a4c4c16156b"
   integrity sha512-c0yixVG4v9KBc/tQ2rlbB3A/bgBFRvl8h8M4IeUbqCca4gsiCfvtaheUssbnux/Mb66Vjz7x8yYjDgYcNQOhyQ==
@@ -6295,17 +6290,17 @@ next-unused@0.0.6:
     ts-loader "^7.0.0"
     typescript "^4.2.3"
 
-next@10.2.1-canary.2:
-  version "10.2.1-canary.2"
-  resolved "https://registry.yarnpkg.com/next/-/next-10.2.1-canary.2.tgz#0a1b566fcf8a08ed84c40aed185ff74ed5689d80"
-  integrity sha512-kWKj/BxZs4IrZjIus4S5CxRugzwtL/jbuUQu0PW/0yty7UTmV/FDtLDpDtPUFdGvRojWF3WERLOp9PTw6qkPdg==
+next@10.2.1-canary.4:
+  version "10.2.1-canary.4"
+  resolved "https://registry.yarnpkg.com/next/-/next-10.2.1-canary.4.tgz#d95083d928078c406e528344830e779134f3de78"
+  integrity sha512-xeVSUybg8G0JekMoSHSixwD/wPaK8o65dhNbzTLOk1SMzpcYFpdML8PPBILNuDBdaUEeDcPzmCj1SO4guGrukw==
   dependencies:
     "@babel/runtime" "7.12.5"
     "@hapi/accept" "5.0.1"
-    "@next/env" "10.2.1-canary.2"
-    "@next/polyfill-module" "10.2.1-canary.2"
-    "@next/react-dev-overlay" "10.2.1-canary.2"
-    "@next/react-refresh-utils" "10.2.1-canary.2"
+    "@next/env" "10.2.1-canary.4"
+    "@next/polyfill-module" "10.2.1-canary.4"
+    "@next/react-dev-overlay" "10.2.1-canary.4"
+    "@next/react-refresh-utils" "10.2.1-canary.4"
     "@opentelemetry/api" "0.14.0"
     assert "2.0.0"
     ast-types "0.13.2"
