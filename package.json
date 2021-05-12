@@ -52,7 +52,7 @@
     "intersection-observer": "0.12.0",
     "ioredis": "4.27.2",
     "js-cookie": "2.2.1",
-    "keen-slider": "5.4.0",
+    "keen-slider": "5.4.1",
     "lodash": "4.17.21",
     "ms": "2.1.3",
     "next": "10.2.1-canary.2",

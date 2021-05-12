@@ -5429,10 +5429,10 @@ jws@^4.0.0:
     jwa "^2.0.0"
     safe-buffer "^5.0.1"
 
-keen-slider@5.4.0:
-  version "5.4.0"
-  resolved "https://registry.yarnpkg.com/keen-slider/-/keen-slider-5.4.0.tgz#e5a949e2bb237d7d6b068458dcda59ae9c415254"
-  integrity sha512-gN+lYpaj4vgJr0fIKtJVy/xG2CnjHiY4lixllp32x6LW8QlT1gD4qmzclFBwMn1/LPvnM2UhOFSgAOmBIhPtAQ==
+keen-slider@5.4.1:
+  version "5.4.1"
+  resolved "https://registry.yarnpkg.com/keen-slider/-/keen-slider-5.4.1.tgz#a6444b8afd28da1d15d7f769d531c2e00414bde0"
+  integrity sha512-CRBQDs7sQRxDRdQbHECuV2+IETD6UGp1bqnyNlbGM4trW9ObUTY39DWl/dLGh91x8qEepkCiYAO+w0B9gjEtkg==
 
 kind-of@^6.0.3:
   version "6.0.3"
