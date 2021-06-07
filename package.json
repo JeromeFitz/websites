@@ -45,7 +45,7 @@
     "date-fns": "2.22.1",
     "date-fns-tz": "1.1.4",
     "fathom-client": "3.0.0",
-    "firebase": "8.6.4",
+    "firebase": "8.6.5",
     "firebase-admin": "9.9.0",
     "github-slugger": "1.3.0",
     "htmlescape": "1.1.1",
