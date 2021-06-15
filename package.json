@@ -95,7 +95,7 @@
     "husky": "6.0.0",
     "is-ci": "3.0.0",
     "next-compose-plugins": "2.2.1",
-    "next-sitemap": "1.6.111",
+    "next-sitemap": "1.6.116",
     "next-unused": "0.0.6",
     "pinst": "2.1.6",
     "postcss": "8.3.3",
