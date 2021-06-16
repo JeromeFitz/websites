@@ -79,12 +79,14 @@ const nextConfig = {
   experimental: {
     catchAllRouting: true,
     enableBlurryPlaceholder: true,
+    eslint: false,
     jsconfigPaths: true,
     modern: true,
     polyfillsOptimization: true,
     productionBrowserSourceMaps: false,
+    turbo: false,
   },
-  future: { strictPostcssConfiguration: true, webpack5: true },
+  future: { strictPostcssConfiguration: true },
   async headers() {
     return [
       {
