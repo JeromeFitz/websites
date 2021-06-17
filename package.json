@@ -91,7 +91,7 @@
     "cross-env": "7.0.3",
     "dotenv": "10.0.0",
     "fs-extra": "10.0.0",
-    "globby": "11.0.3",
+    "globby": "11.0.4",
     "husky": "6.0.0",
     "is-ci": "3.0.0",
     "next-compose-plugins": "2.2.1",
