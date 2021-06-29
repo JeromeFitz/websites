@@ -32,7 +32,7 @@
     "typescript": "tsc --noEmit --declaration -p tsconfig.json"
   },
   "dependencies": {
-    "@reach/portal": "0.15.0",
+    "@reach/portal": "0.15.2",
     "@reach/skip-nav": "0.15.0",
     "@tailwindcss/typography": "0.4.1",
     "@tailwindcss/ui": "0.7.2",
