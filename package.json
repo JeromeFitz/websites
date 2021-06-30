@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@reach/portal": "0.15.2",
-    "@reach/skip-nav": "0.15.0",
+    "@reach/skip-nav": "0.15.2",
     "@tailwindcss/typography": "0.4.1",
     "@tailwindcss/ui": "0.7.2",
     "@types/body-scroll-lock": "2.6.1",
