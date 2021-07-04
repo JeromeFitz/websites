@@ -1,6 +1,5 @@
-import { memo } from 'react'
+import { memo, useState, useEffect } from 'react'
 import { SkipNavContent, SkipNavLink } from '@reach/skip-nav'
-import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { useTheme } from 'next-themes'
 import NextLink from 'next/link'

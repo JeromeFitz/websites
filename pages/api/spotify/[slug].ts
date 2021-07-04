@@ -1,6 +1,4 @@
-import { getNowPlaying } from '~lib/spotify'
-import { getTopArtists } from '~lib/spotify'
-import { getTopTracks } from '~lib/spotify'
+import { getNowPlaying, getTopArtists, getTopTracks } from '~lib/spotify'
 
 // @todo(routes) Lock this down a bit beter with Typescript
 // const allowedRoutes = ['now-playing', 'top-artists', 'top-tracks']

@@ -212,12 +212,8 @@ const renderNotionContent = (data) => {
           case 'video':
           case 'embed': {
             const { format = {} } = value
-            const {
-              block_width,
-              block_height,
-              display_source,
-              block_aspect_ratio,
-            } = format
+            const { block_width, block_height, display_source, block_aspect_ratio } =
+              format
             const baseBlockWidth = 768
             const roundFactor = Math.pow(10, 2)
             // calculate percentages

@@ -11,7 +11,8 @@ const getCollectionViewWithItemDate = ({
     const month = parseInt(itemDate.month)
     const date = parseInt(itemDate.date)
     const dateString = `${year}-${lpad(month)}-${lpad(date)}`
-    indexCollectionView.query.filter.filters[1].filter.value.value.start_date = dateString
+    indexCollectionView.query.filter.filters[1].filter.value.value.start_date =
+      dateString
     /**
      * SLUG: CREATE if we have it
      */
@@ -43,7 +44,8 @@ const getCollectionViewWithItemDate = ({
       before = `${year}-${lpad(month + 1)}-01`
     }
     indexCollectionView.query.filter.filters[1].filter.value.value.start_date = after
-    indexCollectionView.query.filter.filters[2].filter.value.value.start_date = before
+    indexCollectionView.query.filter.filters[2].filter.value.value.start_date =
+      before
     return indexCollectionView
   }
   if (itemDate?.year) {
@@ -51,7 +53,8 @@ const getCollectionViewWithItemDate = ({
     const after = `${year}-01-01`
     const before = `${year + 1}-01-01`
     indexCollectionView.query.filter.filters[1].filter.value.value.start_date = after
-    indexCollectionView.query.filter.filters[2].filter.value.value.start_date = before
+    indexCollectionView.query.filter.filters[2].filter.value.value.start_date =
+      before
 
     return indexCollectionView
   }

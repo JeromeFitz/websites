@@ -16,20 +16,19 @@
     "dev": "next dev",
     "debug": "NODE_OPTIONS='--inspect' next dev",
     "find:unused": "next-unused",
-    "lint-typescript": "yarn typescript",
-    "lint-eslint": "eslint . --ext js,jsx,ts,tsx --max-warnings=0",
-    "lint": "yarn lint-typescript && yarn prettier-check && yarn lint-eslint",
-    "lint-fix": "yarn prettier-fix && eslint . --ext js,jsx,ts,tsx --fix --max-warnings=0",
+    "lint:eslint": "eslint . --ext js,jsx,ts,tsx --max-warnings=0",
+    "lint:fix": "yarn lint:eslint --fix && yarn lint:prettier --write && yarn typescript",
+    "lint:prettier": "prettier \"**/*.{js,jsx,ts,tsx,json,md,mdx,css,html,yml,yaml,scss}\"",
+    "lint:typescript": "yarn typescript",
+    "lint": "yarn typescript && yarn lint:prettier --check && yarn lint:eslint && yarn next lint",
     "postbuild": "next-sitemap --config next.sitemap.js",
     "postpublish": "pinst --enable",
     "prepare": "is-ci || husky install",
     "prepublishOnly": "pinst --disable",
-    "prettier-check": "prettier --check \"**/*.{js,jsx,ts,tsx,json,md,mdx,css,html,yml,yaml,scss}\"",
-    "prettier-fix": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,mdx,css,html,yml,yaml,scss}\"",
     "pretty-quick": "pretty-quick",
     "semantic-release": "semantic-release",
     "start": "next start",
-    "typescript": "tsc --noEmit --declaration -p tsconfig.json"
+    "typescript": "tsc --noEmit --declaration"
   },
   "dependencies": {
     "@reach/portal": "0.15.2",
@@ -75,9 +74,9 @@
     "uuid": "8.3.2"
   },
   "devDependencies": {
-    "@jeromefitz/codestyle": "1.1.2",
-    "@jeromefitz/git-cz": "8.3.13",
-    "@jeromefitz/semantic": "2.3.13",
+    "@jeromefitz/codestyle": "2.3.14",
+    "@jeromefitz/git-cz": "8.3.14",
+    "@jeromefitz/semantic": "2.3.14",
     "@next/bundle-analyzer": "11.0.1",
     "@types/js-cookie": "2.2.6",
     "@types/ms": "0.7.31",
@@ -110,7 +109,7 @@
     "postcss-nested": "5.0.5",
     "postcss-page-break": "3.0.4",
     "rimraf": "3.0.2",
-    "typescript": "4.1.5"
+    "typescript": "4.3.5"
   },
   "next-unused": {
     "alias": {
@@ -160,6 +159,6 @@
     ]
   },
   "resolutions": {
-    "webpack": "5.39.0"
+    "webpack": "5.42.0"
   }
 }
