@@ -51,13 +51,8 @@ const getCollectionView = ({ catchAll }) => {
       break
     case 'blog':
       // @note Skip first array element as that is: routeType
-      const [
-        ,
-        yearBlog = null,
-        monthBlog = null,
-        dateBlog = null,
-        slugBlog = null,
-      ] = catchAll
+      const [, yearBlog = null, monthBlog = null, dateBlog = null, slugBlog = null] =
+        catchAll
       url = `/${routeType}`
       itemDate = !isIndex && {
         year: yearBlog,
