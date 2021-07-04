@@ -363,12 +363,13 @@ const getProperties = async ({ blocks, routeType, schema }) => {
                     // requests: await properties[_pId][
                     //   'contentResults__columns'
                     // ][_p2.value.id][columnID].results[0].value.content.map(
-                    requests: await contentResults__columns.results[0].value.content.map(
-                      (contentId) => ({
-                        table: 'block',
-                        id: contentId,
-                      })
-                    ),
+                    requests:
+                      await contentResults__columns.results[0].value.content.map(
+                        (contentId) => ({
+                          table: 'block',
+                          id: contentId,
+                        })
+                      ),
                   }
 
                   const columnResults = await fetchCmsAPI(

@@ -148,27 +148,27 @@ export interface ItemShow extends ItemBase {
   Tags: any
 }
 
-export interface ItemShow extends ItemBase {
-  Headline: any
-  Overline: any
-  Subline: any
-  //
-  EventIDs: any
-  Festival: any
-  'People.Cast': any
-  'People.CastPast': any
-  'People.Crew': any
-  'People.Director': any
-  'People.DirectorMusical': any
-  'People.DirectorTechnical': any
-  'People.Producer': any
-  'People.Thanks': any
-  'People.Writer': any
-  'Social.Facebook': any
-  'Social.Instagram': any
-  'Social.Twitter': any
-  Tags: any
-}
+// export interface ItemShow extends ItemBase {
+//   Headline: any
+//   Overline: any
+//   Subline: any
+//   //
+//   EventIDs: any
+//   Festival: any
+//   'People.Cast': any
+//   'People.CastPast': any
+//   'People.Crew': any
+//   'People.Director': any
+//   'People.DirectorMusical': any
+//   'People.DirectorTechnical': any
+//   'People.Producer': any
+//   'People.Thanks': any
+//   'People.Writer': any
+//   'Social.Facebook': any
+//   'Social.Instagram': any
+//   'Social.Twitter': any
+//   Tags: any
+// }
 
 export interface ItemUser extends ItemBase {
   Email: any

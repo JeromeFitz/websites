@@ -86,14 +86,8 @@ async function createRouteType(routeTypeData) {
   // @note Custom pass-through data
   const { dataPageId, pageId } = routeTypeData
   // @note Original Route Type Data
-  const {
-    collectionId,
-    collectionViewIds,
-    description,
-    icon,
-    name,
-    schema,
-  } = routeTypeData
+  const { collectionId, collectionViewIds, description, icon, name, schema } =
+    routeTypeData
 
   // @note If this is SSR, we can reduce calls
   // const dataUserId = await getUserId()
