@@ -738,10 +738,10 @@
     micromatch "^4.0.0"
     p-reduce "^2.0.0"
 
-"@jeromefitz/semantic@2.3.16":
-  version "2.3.16"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/semantic/-/semantic-2.3.16.tgz#2d0ecdc4f41329b7c96f174f77e7e936a4b469df"
-  integrity sha512-eEXszHfjWDpd1VNpiXe15sKnAH0KAn1c+2e68FrXWc3HhamALsCSMNWZvVHdc/+UZuTm8WUrwFeK+FXmsCuEDQ==
+"@jeromefitz/semantic@2.3.17":
+  version "2.3.17"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/semantic/-/semantic-2.3.17.tgz#57ab1f655d55fa5c84578c05989ba6036a177b57"
+  integrity sha512-5n2VoifiO1LnQefUyf5gVe0W186TfdiPNza233A0OFyoRlMuW5DDDJg8hc/W5rz9e+XZI8fQbiD1v2mo4gy7IA==
   dependencies:
     "@jeromefitz/semantic-release-git" "10.0.0-develop.2"
     "@octokit/core" "3.5.1"
