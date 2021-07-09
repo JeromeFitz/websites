@@ -785,25 +785,25 @@
   dependencies:
     webpack-bundle-analyzer "4.3.0"
 
-"@next/env@11.0.2-canary.5":
-  version "11.0.2-canary.5"
-  resolved "https://registry.yarnpkg.com/@next/env/-/env-11.0.2-canary.5.tgz#9dda8f8e571a5032e556f0bf9dad22fa2f6866f3"
-  integrity sha512-CQOQV4TSpbQt0ByN6W1zmhbF1s3sC1br1H4blLWv4u3wO0LRWJbfXZVvotmjE53E1bcYl7qtRb010bhYrgDlmQ==
+"@next/env@11.0.2-canary.9":
+  version "11.0.2-canary.9"
+  resolved "https://registry.yarnpkg.com/@next/env/-/env-11.0.2-canary.9.tgz#0b58766d6831843e7d14ddfa6a27cb74ac5ddf73"
+  integrity sha512-jTLZA0l+CJ/fNJOOm3AH+COpEW8q6RJBbPFJLOztSHufgWgCLprjrHjGMD/iKQ7DU0WCj8ww2abGdnOksct78w==
 
 "@next/eslint-plugin-next@11.0.1":
   version "11.0.1"
   resolved "https://registry.yarnpkg.com/@next/eslint-plugin-next/-/eslint-plugin-next-11.0.1.tgz#5dd3264a40fadcf28eba00d914d69103422bb7e6"
   integrity sha512-UzdX3y6XSrj9YuASUb/p4sRvfjP2klj2YgIOfMwrWoLTTPJQMh00hREB9Ftr7m7RIxjVSAaaLXIRLdxvq948GA==
 
-"@next/polyfill-module@11.0.2-canary.5":
-  version "11.0.2-canary.5"
-  resolved "https://registry.yarnpkg.com/@next/polyfill-module/-/polyfill-module-11.0.2-canary.5.tgz#271502d97031e1446fee5cc91d7d097a49610069"
-  integrity sha512-bu6KDqYPGswRrsSZysv4PsPCXXe1NRPA5maC4IKoMBMrL5VcPRm+3C4UvYotsCSzU8YIUQPT8VbLOVwbvWjF0A==
+"@next/polyfill-module@11.0.2-canary.9":
+  version "11.0.2-canary.9"
+  resolved "https://registry.yarnpkg.com/@next/polyfill-module/-/polyfill-module-11.0.2-canary.9.tgz#59fd687165708ccecd9e350accd1579a014f1f85"
+  integrity sha512-TFyOpPw/H+h1L6gsUrEBifwp+zTvylLehSSt8Xi+0cGt9cE4+NQNf4DS6hBtZ9nXv9moTrBhhaZu7XzaNapvQw==
 
-"@next/react-dev-overlay@11.0.2-canary.5":
-  version "11.0.2-canary.5"
-  resolved "https://registry.yarnpkg.com/@next/react-dev-overlay/-/react-dev-overlay-11.0.2-canary.5.tgz#b2db796ea3a5ef9205748d87980a2c9f480d8e73"
-  integrity sha512-q3N9/W1OKv+b4ONXz567o6M8VpJpod3ZydsigZAWepJMOkMzdv8+DWu6ntO+QAV2/zj8TGn7haQ7ObcBVSAqzA==
+"@next/react-dev-overlay@11.0.2-canary.9":
+  version "11.0.2-canary.9"
+  resolved "https://registry.yarnpkg.com/@next/react-dev-overlay/-/react-dev-overlay-11.0.2-canary.9.tgz#ce9eed9ea282c157bed012ceff391c1bdb015b3a"
+  integrity sha512-00yKVIuEv6agBmYrbUu2uKYGH3hBVJaCN5kTKmkmBxf+Rsfa5XnDj45kr1Y70fI0Izkl7/3btEOr3tQiWsG49w==
   dependencies:
     "@babel/code-frame" "7.12.11"
     anser "1.4.9"
@@ -817,10 +817,10 @@
     stacktrace-parser "0.1.10"
     strip-ansi "6.0.0"
 
-"@next/react-refresh-utils@11.0.2-canary.5":
-  version "11.0.2-canary.5"
-  resolved "https://registry.yarnpkg.com/@next/react-refresh-utils/-/react-refresh-utils-11.0.2-canary.5.tgz#242a4b4ca255c4c1cb3c2c399e67eed0b7caf930"
-  integrity sha512-l6rle5Lyd5skJMgLftGdxSkaPp+7p8OdHmsgm67v6IoeIT2vFW9w+2Wo6Wzv1slUPU/+v+hRdXyPGdjQp4ICWA==
+"@next/react-refresh-utils@11.0.2-canary.9":
+  version "11.0.2-canary.9"
+  resolved "https://registry.yarnpkg.com/@next/react-refresh-utils/-/react-refresh-utils-11.0.2-canary.9.tgz#de8ff57bf86986f57bf8859a9fe9a6f33f3d2aa1"
+  integrity sha512-fJ80PZ6sOyqrKgJRUPcxMuREKeq0al+KCKS5VzoWJGd9coTmrvIZksLoFh4AieyiFqlvd/soFNPX5yRIyFcQGA==
 
 "@nodelib/fs.scandir@2.1.4":
   version "2.1.4"
@@ -2658,12 +2658,7 @@ camelcase@^5.3.1:
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-5.3.1.tgz#e3c9b31569e106811df242f715725a1f4c494320"
   integrity sha512-L28STB170nwWS63UjtlEOE3dldQApaJXZkOI1uMFfzf3rRuPegHaHesyee+YxQ+W6SvRDQV6UrdOdRiR153wJg==
 
-caniuse-lite@^1.0.30001202, caniuse-lite@^1.0.30001219, caniuse-lite@^1.0.30001230:
-  version "1.0.30001230"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001230.tgz#8135c57459854b2240b57a4a6786044bdc5a9f71"
-  integrity sha512-5yBd5nWCBS+jWKTcHOzXwo5xzcj4ePE/yjtkZyUV1BTUmrBaA9MRGC+e7mxnqXSA90CmCA8L3eKLaSUkt099IQ==
-
-caniuse-lite@^1.0.30001228:
+caniuse-lite@^1.0.30001202, caniuse-lite@^1.0.30001219, caniuse-lite@^1.0.30001228, caniuse-lite@^1.0.30001230:
   version "1.0.30001237"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001237.tgz#4b7783661515b8e7151fc6376cfd97f0e427b9e5"
   integrity sha512-pDHgRndit6p1NR2GhzMbQ6CkRrp4VKuSsqbcLeOQppYPKOYkKT/6ZvZDvKJUqcmtyWIAHuZq3SVS2vc1egCZzw==
@@ -3252,10 +3247,10 @@ cssnano-preset-simple@^2.0.0:
   dependencies:
     caniuse-lite "^1.0.30001202"
 
-cssnano-simple@2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/cssnano-simple/-/cssnano-simple-2.0.0.tgz#930d9dcd8ba105c5a62ce719cb00854da58b5c05"
-  integrity sha512-0G3TXaFxlh/szPEG/o3VcmCwl0N3E60XNb9YZZijew5eIs6fLjJuOPxQd9yEBaX2p/YfJtt49i4vYi38iH6/6w==
+cssnano-simple@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/cssnano-simple/-/cssnano-simple-2.1.0.tgz#747a110ceff616ba2e883e2cb64666f0a87acd8b"
+  integrity sha512-iFisFT39FT1YCw7ydvvRH4Yq0ftVBQGfGXuKv8TJ9WOzmPXaw7MZbxBzFQoeJUVCp+fGf6tvwaQqSigw4tvn7w==
   dependencies:
     cssnano-preset-simple "^2.0.0"
 
@@ -6642,17 +6637,17 @@ next-unused@0.0.6:
     ts-loader "^7.0.0"
     typescript "^4.2.3"
 
-next@11.0.2-canary.5:
-  version "11.0.2-canary.5"
-  resolved "https://registry.yarnpkg.com/next/-/next-11.0.2-canary.5.tgz#607a8543843fca6e0f580a2399fa2e7ae85d8474"
-  integrity sha512-5RpUkB6vaAlhKNnE5vgmZXpp164nie/hqgzX8tnqlvP8V48ilItiuCH6QL5x0pEigdIufp+M9WXpXnkbfvNnrA==
+next@11.0.2-canary.9:
+  version "11.0.2-canary.9"
+  resolved "https://registry.yarnpkg.com/next/-/next-11.0.2-canary.9.tgz#b040e2c9dfd996e9c2891bb00378d637da63565c"
+  integrity sha512-Y2UOjxxJb6chzDDfdeaNsO/1LCLvDSDmWpe9/sFXQoHYSgp0KtMw1rF1KHwGsHBnIajEFoZH29E4Dp+AvdzW2w==
   dependencies:
     "@babel/runtime" "7.12.5"
     "@hapi/accept" "5.0.2"
-    "@next/env" "11.0.2-canary.5"
-    "@next/polyfill-module" "11.0.2-canary.5"
-    "@next/react-dev-overlay" "11.0.2-canary.5"
-    "@next/react-refresh-utils" "11.0.2-canary.5"
+    "@next/env" "11.0.2-canary.9"
+    "@next/polyfill-module" "11.0.2-canary.9"
+    "@next/react-dev-overlay" "11.0.2-canary.9"
+    "@next/react-refresh-utils" "11.0.2-canary.9"
     assert "2.0.0"
     ast-types "0.13.2"
     browserify-zlib "0.2.0"
@@ -6663,7 +6658,7 @@ next@11.0.2-canary.5:
     chokidar "3.5.1"
     constants-browserify "1.0.0"
     crypto-browserify "3.12.0"
-    cssnano-simple "2.0.0"
+    cssnano-simple "2.1.0"
     domain-browser "4.19.0"
     encoding "0.1.13"
     etag "1.8.1"
