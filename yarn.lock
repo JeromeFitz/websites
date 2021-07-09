@@ -708,10 +708,10 @@
     pretty-quick "3.1.1"
     typescript "4.3.5"
 
-"@jeromefitz/git-cz@8.3.16":
-  version "8.3.16"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/git-cz/-/git-cz-8.3.16.tgz#523ae33e70075fd3911dd405862d7a206891968a"
-  integrity sha512-Hvs9HLvsbSY4BAU9w9Pxns39ANaL5td2TAiSupfZ2Qq2mEg5oK27LQzoVmBEgwrWBNYEJ+o/ek9GYrq7huIAcQ==
+"@jeromefitz/git-cz@8.3.17":
+  version "8.3.17"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/git-cz/-/git-cz-8.3.17.tgz#d42a170c4f4c99c10c5f94698a5b1d6796c1091c"
+  integrity sha512-UYK+oinEpqPMugbky9F6n6EiR2x6Mh/bzlcVdteV4roQUWJO+IIIpV/Kk//3gmibC/wz3EEYQuRrcRAyDh07RQ==
   dependencies:
     "@types/chalk-pipe" "2.0.0"
     chalk "4.1.1"
