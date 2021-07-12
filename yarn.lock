@@ -687,10 +687,10 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.0.tgz#87de7af9c231826fdd68ac7258f77c429e0e5fcf"
   integrity sha512-wdppn25U8z/2yiaT6YGquE6X8sSv7hNMWSXYSSU1jGv/yd6XqjXgTDJ8KP4NgjTXfJ3GbRjeeb8RTV7a/VpM+w==
 
-"@jeromefitz/codestyle@2.3.17":
-  version "2.3.17"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/codestyle/-/codestyle-2.3.17.tgz#63b223413fc95c8b74e247a5f1011e28be2c8a1d"
-  integrity sha512-l4fP9xPZ21nap9ETtnSJkFelC1SnvLCkTtQ4dDPQF79oxyqStD4LcmutACD9cA5MSEMV5FssJjWcR0DjEvveJQ==
+"@jeromefitz/codestyle@2.3.18":
+  version "2.3.18"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/codestyle/-/codestyle-2.3.18.tgz#f9f2fd11ca4911ea76b6dc35f27d8e8c06820607"
+  integrity sha512-xCQGcJIt5ZAyr1IrSklEjNS3XwCnGLbSiLy9wtMMVHhY+/ilJP7SYHNoA04uaANBE4UuyStlqofJa0rVgSzuzw==
   dependencies:
     "@babel/core" "7.14.6"
     "@babel/eslint-parser" "7.14.7"
