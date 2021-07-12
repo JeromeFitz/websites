@@ -738,10 +738,10 @@
     micromatch "^4.0.0"
     p-reduce "^2.0.0"
 
-"@jeromefitz/semantic@2.3.17":
-  version "2.3.17"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/semantic/-/semantic-2.3.17.tgz#57ab1f655d55fa5c84578c05989ba6036a177b57"
-  integrity sha512-5n2VoifiO1LnQefUyf5gVe0W186TfdiPNza233A0OFyoRlMuW5DDDJg8hc/W5rz9e+XZI8fQbiD1v2mo4gy7IA==
+"@jeromefitz/semantic@2.3.18":
+  version "2.3.18"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/semantic/-/semantic-2.3.18.tgz#624773701e40bfdff1e644c82f93d1a132b40a02"
+  integrity sha512-PTjxwT0jOW3WG4dG5licRcuAt5FVRBoPaQg8znYHMQ8sjxI1Icja+nhVuFCjnHBNZeo6sNafxqN6uICt71gdJw==
   dependencies:
     "@jeromefitz/semantic-release-git" "10.0.0-develop.2"
     "@octokit/core" "3.5.1"
@@ -752,7 +752,7 @@
     "@semantic-release/release-notes-generator" "9.0.3"
     grapheme-splitter "1.0.4"
     lodash "4.17.21"
-    multi-semantic-release "2.8.1"
+    multi-semantic-release "2.8.2"
     semantic-release "17.4.4"
     semantic-release-commit-filter "1.0.2"
     title "3.4.3"
@@ -6546,10 +6546,10 @@ ms@2.1.3, ms@^2.0.0, ms@^2.1.1, ms@^2.1.2:
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.3.tgz#574c8138ce1d2b5861f0b44579dbadd60c6615b2"
   integrity sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==
 
-multi-semantic-release@2.8.1:
-  version "2.8.1"
-  resolved "https://registry.yarnpkg.com/multi-semantic-release/-/multi-semantic-release-2.8.1.tgz#7418dd59842ab295b0af868078f0155a597993eb"
-  integrity sha512-o5346JJQjIgllveSZGKK4ELHZW5nz7yizHQBMwKpsD4XksbKasb5iwUp0zeJJ5KP/ty5GfK3PvZFQ0RgGDfYcQ==
+multi-semantic-release@2.8.2:
+  version "2.8.2"
+  resolved "https://registry.yarnpkg.com/multi-semantic-release/-/multi-semantic-release-2.8.2.tgz#ebe0afa3ac86bff28e91508fb3a2f3442337cb1b"
+  integrity sha512-/okdqPXtpZ83pOYmj+CAjTLuqDGikp0Y0iJsK15UM2BGSvYWRRXYAYDb6Byjb3dKar1wJ8IODd71Z+q8pYEt5Q==
   dependencies:
     "@manypkg/get-packages" "^1.1.1"
     blork "^9.2.2"
@@ -6561,7 +6561,7 @@ multi-semantic-release@2.8.1:
     get-stream "^6.0.0"
     git-log-parser "^1.2.0"
     globby "11.0.2"
-    lodash "^4.17.20"
+    lodash "^4.17.21"
     meow "^8.0.0"
     promise-events "^0.2.1"
     semantic-release "^17.3.0"
