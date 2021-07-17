@@ -6,3 +6,4 @@ node_modules
 
 # public
 public/scripts/**
+next-env.d.ts
