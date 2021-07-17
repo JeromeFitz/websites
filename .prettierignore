@@ -18,3 +18,4 @@ node_modules
 **/zzz--do-not-use/**
 
 public/scripts/**
+next-env.d.ts
