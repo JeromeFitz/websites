@@ -722,10 +722,10 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.0.tgz#87de7af9c231826fdd68ac7258f77c429e0e5fcf"
   integrity sha512-wdppn25U8z/2yiaT6YGquE6X8sSv7hNMWSXYSSU1jGv/yd6XqjXgTDJ8KP4NgjTXfJ3GbRjeeb8RTV7a/VpM+w==
 
-"@jeromefitz/codestyle@2.3.23":
-  version "2.3.23"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/codestyle/-/codestyle-2.3.23.tgz#9732feab85fbd6e2e30f3c350b1c7e9a279e41e4"
-  integrity sha512-brCvDTKWPUyfRgYcXNXt+RfN1c5/YOeToSMuhP534qUptjVrOu/S2JsxyZU49KZ3ipJV+Cc0u+H6He6bJ4uCUw==
+"@jeromefitz/codestyle@2.3.24":
+  version "2.3.24"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/codestyle/-/codestyle-2.3.24.tgz#b4e159c7cd838ee8fa561c01ce27380ae3d7d455"
+  integrity sha512-adOZj8qBE9wN0FH8e1K7jT7IKeGKDwYNzwAWPUuQWPYhVxEcvBz0no7PCQPIKstuOCtM4loXMbOPi2eCcPXDoQ==
   dependencies:
     "@babel/core" "7.14.8"
     "@babel/eslint-parser" "7.14.7"
@@ -734,7 +734,7 @@
     eslint "7.31.0"
     eslint-config-prettier "8.3.0"
     eslint-plugin-import "2.23.4"
-    eslint-plugin-jest "24.3.7"
+    eslint-plugin-jest "24.4.0"
     eslint-plugin-jsx-a11y "6.4.1"
     eslint-plugin-react "7.24.0"
     eslint-plugin-react-hooks "4.2.0"
@@ -3993,10 +3993,10 @@ eslint-plugin-import@2.23.4, eslint-plugin-import@^2.22.1:
     resolve "^1.20.0"
     tsconfig-paths "^3.9.0"
 
-eslint-plugin-jest@24.3.7:
-  version "24.3.7"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-24.3.7.tgz#a4deaa9e88182b92533a9c25cc4f3c369d7f33eb"
-  integrity sha512-pXED2NA4q2M/5mxlN6GyuUXAFJndT0uosOkQCHaUED9pqgBPd89ZzpcZEU6c5HtZNahC00M36FkwLdDHMDqaHw==
+eslint-plugin-jest@24.4.0:
+  version "24.4.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-24.4.0.tgz#fa4b614dbd46a98b652d830377971f097bda9262"
+  integrity sha512-8qnt/hgtZ94E9dA6viqfViKBfkJwFHXgJmTWlMGDgunw1XJEGqm3eiPjDsTanM3/u/3Az82nyQM9GX7PM/QGmg==
   dependencies:
     "@typescript-eslint/experimental-utils" "^4.0.1"
 
