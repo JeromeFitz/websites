@@ -81,7 +81,7 @@
     "@types/js-cookie": "2.2.7",
     "@types/ms": "0.7.31",
     "@types/node": "16.0.0",
-    "@types/node-fetch": "2.5.11",
+    "@types/node-fetch": "2.5.12",
     "@types/nprogress": "0.2.0",
     "@types/reach__skip-nav": "0.1.3",
     "@types/react": "17.0.14",
