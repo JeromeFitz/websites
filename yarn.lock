@@ -722,10 +722,10 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.0.tgz#87de7af9c231826fdd68ac7258f77c429e0e5fcf"
   integrity sha512-wdppn25U8z/2yiaT6YGquE6X8sSv7hNMWSXYSSU1jGv/yd6XqjXgTDJ8KP4NgjTXfJ3GbRjeeb8RTV7a/VpM+w==
 
-"@jeromefitz/codestyle@2.3.24":
-  version "2.3.24"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/codestyle/-/codestyle-2.3.24.tgz#b4e159c7cd838ee8fa561c01ce27380ae3d7d455"
-  integrity sha512-adOZj8qBE9wN0FH8e1K7jT7IKeGKDwYNzwAWPUuQWPYhVxEcvBz0no7PCQPIKstuOCtM4loXMbOPi2eCcPXDoQ==
+"@jeromefitz/codestyle@2.3.25":
+  version "2.3.25"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/codestyle/-/codestyle-2.3.25.tgz#3356370aa14522e2f6c532909febc7ba157b24c2"
+  integrity sha512-m9xI9/X+WfSJnNhX+XJP4usNHZpmNnLl6HYJrPp8Z6/cutdXZxV57Nqf5N9Wpg8E/gwk3WM/S+Ym052KmqaEYA==
   dependencies:
     "@babel/core" "7.14.8"
     "@babel/eslint-parser" "7.14.7"
@@ -738,7 +738,7 @@
     eslint-plugin-jsx-a11y "6.4.1"
     eslint-plugin-react "7.24.0"
     eslint-plugin-react-hooks "4.2.0"
-    lint-staged "11.0.1"
+    lint-staged "11.1.0"
     prettier "2.3.2"
     pretty-quick "3.1.1"
     typescript "4.3.5"
@@ -5942,10 +5942,10 @@ lines-and-columns@^1.1.6:
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.1.6.tgz#1c00c743b433cd0a4e80758f7b64a57440d9ff00"
   integrity sha1-HADHQ7QzzQpOgHWPe2SldEDZ/wA=
 
-lint-staged@11.0.1:
-  version "11.0.1"
-  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-11.0.1.tgz#1b8ae8ed5a52ed87252db95fe008c2618c85f55a"
-  integrity sha512-RkTA1ulE6jAGFskxpGAwxfVRXjHp7D9gFg/+KMARUWMPiVFP0t28Em2u0gL8sA0w3/ck3TC57F2v2RNeQ5XPnw==
+lint-staged@11.1.0:
+  version "11.1.0"
+  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-11.1.0.tgz#a21d67ffe4516e907635adeaf6d6450d8cffb4e4"
+  integrity sha512-pzwEf+NKbTauAlk7gPPwTfulRXESEPZCSFXYfg20F220UOObebxu5uL5mkr9csQLNOM2Ydfrt3DJXakzAL7aaQ==
   dependencies:
     chalk "^4.1.1"
     cli-truncate "^2.1.0"
