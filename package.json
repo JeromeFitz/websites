@@ -106,7 +106,7 @@
     "postcss-hover-media-feature": "1.0.1",
     "postcss-initial": "4.0.1",
     "postcss-media-minmax": "5.0.0",
-    "postcss-nested": "5.0.5",
+    "postcss-nested": "5.0.6",
     "postcss-page-break": "3.0.4",
     "rimraf": "3.0.2",
     "typescript": "4.3.5"
