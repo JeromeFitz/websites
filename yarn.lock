@@ -1223,12 +1223,12 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha1-p3c2C1s5oaLlEG+OhY8v0tBgxXA=
 
-"@reach/portal@0.15.3":
-  version "0.15.3"
-  resolved "https://registry.yarnpkg.com/@reach/portal/-/portal-0.15.3.tgz#56fe4f6575ff07fc7d1a151481713171c7e37c88"
-  integrity sha512-9VkVEQIF9gK73uK1f9MYhrJivd0dpxhkBEb2zwVCIEGvKVxadmRNmCjgcWexGjA0UeCjIhEjQQehs/IZHNLPdw==
+"@reach/portal@0.16.0":
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/@reach/portal/-/portal-0.16.0.tgz#1544531d978b770770b718b2872b35652a11e7e3"
+  integrity sha512-vXJ0O9T+72HiSEWHPs2cx7YbSO7pQsTMhgqPc5aaddIYpo2clJx1PnYuS0lSNlVaDO0IxQhwYq43evXaXnmviw==
   dependencies:
-    "@reach/utils" "0.15.3"
+    "@reach/utils" "0.16.0"
     tslib "^2.3.0"
 
 "@reach/skip-nav@*", "@reach/skip-nav@0.16.0":
@@ -1237,14 +1237,6 @@
   integrity sha512-SY4PdNx+hQHbeOr/+qLc+QXdRt9NTVlt0r737bOqY1WURGBIEN9sGgsmIsHluP1/bQuAe0JKdOJ/tXiwQ3Z3ug==
   dependencies:
     "@reach/utils" "0.16.0"
-    tslib "^2.3.0"
-
-"@reach/utils@0.15.3":
-  version "0.15.3"
-  resolved "https://registry.yarnpkg.com/@reach/utils/-/utils-0.15.3.tgz#200f42adba9d1463b1c6a75ee2aaf9f0cba84f9d"
-  integrity sha512-HFyjw8LZ4/RRk5bcMpDAeEc3aOeLR/vWRDsljlE3cHI5GfFlZcG3DDLSW8C2ba74RCFp/4X3Nz0nOrd4JdkZ1w==
-  dependencies:
-    tiny-warning "^1.0.3"
     tslib "^2.3.0"
 
 "@reach/utils@0.16.0":

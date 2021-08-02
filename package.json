@@ -31,7 +31,7 @@
     "typescript": "tsc --noEmit --declaration"
   },
   "dependencies": {
-    "@reach/portal": "0.15.3",
+    "@reach/portal": "0.16.0",
     "@reach/skip-nav": "0.16.0",
     "@tailwindcss/typography": "0.4.1",
     "@tailwindcss/ui": "0.7.2",
