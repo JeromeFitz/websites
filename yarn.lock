@@ -49,10 +49,10 @@
     semver "^6.3.0"
     source-map "^0.5.0"
 
-"@babel/eslint-parser@7.14.9":
-  version "7.14.9"
-  resolved "https://registry.yarnpkg.com/@babel/eslint-parser/-/eslint-parser-7.14.9.tgz#b2cfaf67cc7f7a9b475d3ee9b166755ffd44e086"
-  integrity sha512-W3En2CT6iOZJ+jEujLlwL2h/Jraj6S/IHrh63nV+TfX83DYe9pI4pcu0Luj6/hJ2kIr/3hOttxzaEsSQnUKx+w==
+"@babel/eslint-parser@7.15.0":
+  version "7.15.0"
+  resolved "https://registry.yarnpkg.com/@babel/eslint-parser/-/eslint-parser-7.15.0.tgz#b54f06e04d0e93aebcba99f89251e3bf0ee39f21"
+  integrity sha512-+gSPtjSBxOZz4Uh8Ggqu7HbfpB8cT1LwW0DnVVLZEJvzXauiD0Di3zszcBkRmfGGrLdYeHUwcflG7i3tr9kQlw==
   dependencies:
     eslint-scope "^5.1.1"
     eslint-visitor-keys "^2.1.0"
@@ -734,13 +734,13 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.0.tgz#87de7af9c231826fdd68ac7258f77c429e0e5fcf"
   integrity sha512-wdppn25U8z/2yiaT6YGquE6X8sSv7hNMWSXYSSU1jGv/yd6XqjXgTDJ8KP4NgjTXfJ3GbRjeeb8RTV7a/VpM+w==
 
-"@jeromefitz/codestyle@2.3.31":
-  version "2.3.31"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/codestyle/-/codestyle-2.3.31.tgz#7b2fb51e3e2a5c46f0f48ae320666db3f9e0a09d"
-  integrity sha512-dZYNdCVRqwgJy2b1g9KLCiZ8eaCVqvg7c6g7EcWQhSJdiST9605cZIVaYVmvuzMSfS3IRBMyzNzx0XeziqBNFw==
+"@jeromefitz/codestyle@2.3.32":
+  version "2.3.32"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/codestyle/-/codestyle-2.3.32.tgz#9fc2bd843f0e70545225d5e9cc7e467b66e4c058"
+  integrity sha512-+bj3i6/HrV05aNuFN/MEHpSnrx0iXZ7zGATQWuN0MXWbsZAh9MbiWrC1ecp4eC5G0KllPtWqrSTo2XaSgDJPUg==
   dependencies:
     "@babel/core" "7.14.8"
-    "@babel/eslint-parser" "7.14.9"
+    "@babel/eslint-parser" "7.15.0"
     "@typescript-eslint/eslint-plugin" "4.29.0"
     "@typescript-eslint/parser" "4.29.0"
     eslint "7.32.0"
