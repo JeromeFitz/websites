@@ -75,7 +75,7 @@
   },
   "devDependencies": {
     "@jeromefitz/codestyle": "2.3.39",
-    "@jeromefitz/git-cz": "8.3.39",
+    "@jeromefitz/git-cz": "8.3.40",
     "@jeromefitz/semantic": "2.3.39",
     "@next/bundle-analyzer": "11.1.0",
     "@types/js-cookie": "2.2.7",
