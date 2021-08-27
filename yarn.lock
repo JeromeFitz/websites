@@ -827,10 +827,10 @@
     micromatch "^4.0.0"
     p-reduce "^2.0.0"
 
-"@jeromefitz/semantic@2.3.43":
-  version "2.3.43"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/semantic/-/semantic-2.3.43.tgz#3a1aeef8edffafc00f7621435d09900596285863"
-  integrity sha512-6zKWjIfVsL2uvz44p9jrMcOfF9j4QZgXvEn3Vz3icH5bbvv/Zc3YRn3wDdx/lHzPHVLqS0+uwo7W5mchf5riig==
+"@jeromefitz/semantic@2.3.44":
+  version "2.3.44"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/semantic/-/semantic-2.3.44.tgz#d2f83db136dfd6ab190644250a3d6a9b04e8b7d6"
+  integrity sha512-SPQcHNE4Bw2kkcf5BkTrdeQRb+hcz50jGB0vpjoHTkXeOfEsnOvOLdHAjZTlLAP0a6N32iIqbv7V0JDzEDbujg==
   dependencies:
     "@jeromefitz/semantic-release-git" "10.0.0-develop.2"
     "@octokit/core" "3.5.1"
@@ -842,7 +842,7 @@
     grapheme-splitter "1.0.4"
     lodash "4.17.21"
     multi-semantic-release "2.8.4"
-    semantic-release "17.4.6"
+    semantic-release "17.4.7"
     semantic-release-commit-filter "1.0.2"
     title "3.4.3"
 
@@ -8515,10 +8515,10 @@ semantic-release-commit-filter@1.0.2:
   resolved "https://registry.yarnpkg.com/semantic-release-commit-filter/-/semantic-release-commit-filter-1.0.2.tgz#8e8c99799087891cb47ec7fa54377ed442696348"
   integrity sha512-LpIB1UN78oRmJnqgPdvA/qRgVitih5V1Ybyszv8GcOBAJWJBHGWI1PmSrOfdEmbf1ZvGkdK/NNDdBHbuSQqSyQ==
 
-semantic-release@17.4.6, semantic-release@^17.3.0:
-  version "17.4.6"
-  resolved "https://registry.yarnpkg.com/semantic-release/-/semantic-release-17.4.6.tgz#a9e53da3d43ac07250c55b6939857587be2ecaa2"
-  integrity sha512-0B1OGkW8gzQjLbj3H5G4fJyy73HAWsoDnzWYyfNJHyyyLi1acQd+id4O7U+12wXTk9G83pXCgSFj9oYTvocFMA==
+semantic-release@17.4.7, semantic-release@^17.3.0:
+  version "17.4.7"
+  resolved "https://registry.yarnpkg.com/semantic-release/-/semantic-release-17.4.7.tgz#88e1dce7294cc43acc54c4e0a83f582264567206"
+  integrity sha512-3Ghu8mKCJgCG3QzE5xphkYWM19lGE3XjFdOXQIKBM2PBpBvgFQ/lXv31oX0+fuN/UjNFO/dqhNs8ATLBhg6zBg==
   dependencies:
     "@semantic-release/commit-analyzer" "^8.0.0"
     "@semantic-release/error" "^2.2.0"
