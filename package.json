@@ -80,13 +80,13 @@
     "uuid": "8.3.2"
   },
   "devDependencies": {
-    "@jeromefitz/codestyle": "2.3.44",
-    "@jeromefitz/git-cz": "8.3.42",
-    "@jeromefitz/semantic": "2.3.44",
+    "@jeromefitz/codestyle": "2.3.45",
+    "@jeromefitz/git-cz": "8.3.45",
+    "@jeromefitz/semantic": "2.3.45",
     "@next/bundle-analyzer": "11.1.0",
     "@types/js-cookie": "2.2.7",
     "@types/ms": "0.7.31",
-    "@types/node": "16.0.0",
+    "@types/node": "16.7.4",
     "@types/node-fetch": "2.5.12",
     "@types/nprogress": "0.2.0",
     "@types/reach__skip-nav": "0.1.3",
@@ -115,7 +115,7 @@
     "postcss-nested": "5.0.6",
     "postcss-page-break": "3.0.4",
     "rimraf": "3.0.2",
-    "typescript": "4.3.5"
+    "typescript": "4.4.2"
   },
   "next-unused": {
     "alias": {

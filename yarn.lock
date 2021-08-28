@@ -779,10 +779,10 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.0.tgz#87de7af9c231826fdd68ac7258f77c429e0e5fcf"
   integrity sha512-wdppn25U8z/2yiaT6YGquE6X8sSv7hNMWSXYSSU1jGv/yd6XqjXgTDJ8KP4NgjTXfJ3GbRjeeb8RTV7a/VpM+w==
 
-"@jeromefitz/codestyle@2.3.44":
-  version "2.3.44"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/codestyle/-/codestyle-2.3.44.tgz#37a96745bb601cb6001edc001e3427ab15ef387c"
-  integrity sha512-+SI7qB6XpnFj4POTA70mWDdgoH9S4lBqO/D9awB1VbfMRvL0lNit2FIl2F/ZfVG4nRtu2qieceffKNpM4Yy/tA==
+"@jeromefitz/codestyle@2.3.45":
+  version "2.3.45"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/codestyle/-/codestyle-2.3.45.tgz#504168e00cf1c1ae9ecf180cf8acb728fda154a5"
+  integrity sha512-SekelSZRFN3yvDLJqYIJPlPEMUbu7vzOqF2vC+M1BRXQsJtKVHAwlApjPwqLpPK8T1YB6BNXwZf054ivVYjBQQ==
   dependencies:
     "@babel/core" "7.15.0"
     "@babel/eslint-parser" "7.15.0"
@@ -800,10 +800,10 @@
     pretty-quick "3.1.1"
     typescript "4.3.5"
 
-"@jeromefitz/git-cz@8.3.42":
-  version "8.3.42"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/git-cz/-/git-cz-8.3.42.tgz#d95a68032730da070d5338e04e10f7be57f890f8"
-  integrity sha512-9hEXXfcWT5e6s7nG/E70n9LiATSDlI+Gfx5z/D81zh781LqtY++/5Uc1bk068M0qh5stojiZzKsJql07WErQXQ==
+"@jeromefitz/git-cz@8.3.45":
+  version "8.3.45"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/git-cz/-/git-cz-8.3.45.tgz#371f7a50e70b13a8b43250c412d6bf0f2a409504"
+  integrity sha512-oEBephjSKFotbRgN0/LwgXFHy7h4OT59dvOT4/yqifa+lahBRT4cEii2oV95kg3Q1hocwf1Z+UFl9dnju+ssyw==
   dependencies:
     "@types/chalk-pipe" "2.0.0"
     chalk "4.1.2"
@@ -830,10 +830,10 @@
     micromatch "^4.0.0"
     p-reduce "^2.0.0"
 
-"@jeromefitz/semantic@2.3.44":
-  version "2.3.44"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/semantic/-/semantic-2.3.44.tgz#d2f83db136dfd6ab190644250a3d6a9b04e8b7d6"
-  integrity sha512-SPQcHNE4Bw2kkcf5BkTrdeQRb+hcz50jGB0vpjoHTkXeOfEsnOvOLdHAjZTlLAP0a6N32iIqbv7V0JDzEDbujg==
+"@jeromefitz/semantic@2.3.45":
+  version "2.3.45"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/semantic/-/semantic-2.3.45.tgz#130b1b0a806edfbd8a802ea86a75125a0ba6fd07"
+  integrity sha512-T0modohy1NhG/327gGpNYADXt47zTDPeMLbHdWAtO0bIHDbwUBmxAOrq95XRQy6/kQ/W82abLkeYbABbIzi21g==
   dependencies:
     "@jeromefitz/semantic-release-git" "10.0.0-develop.2"
     "@octokit/core" "3.5.1"
@@ -1641,7 +1641,7 @@
     "@types/node" "*"
     form-data "^3.0.0"
 
-"@types/node@*", "@types/node@16.0.0", "@types/node@>=12.12.47", "@types/node@>=13.7.0":
+"@types/node@*", "@types/node@>=12.12.47", "@types/node@>=13.7.0":
   version "16.0.0"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-16.0.0.tgz#067a6c49dc7a5c2412a505628e26902ae967bf6f"
   integrity sha512-TmCW5HoZ2o2/z2EYi109jLqIaPIi9y/lc2LmDCWzuCi35bcaQ+OtUh6nwBiFK7SOu25FAU5+YKdqFZUwtqGSdg==
@@ -1650,6 +1650,11 @@
   version "10.12.18"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.18.tgz#1d3ca764718915584fcd9f6344621b7672665c67"
   integrity sha512-fh+pAqt4xRzPfqA6eh3Z2y6fyZavRIumvjhaCL753+TVkGKGhpPeyrJG2JftD0T9q4GF00KjefsQ+PQNDdWQaQ==
+
+"@types/node@16.7.4":
+  version "16.7.4"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.7.4.tgz#68a9384694af63ceab8848e95d76d9a3519e84b6"
+  integrity sha512-25QXpDsTiDnl2rZGUenagVMwO46way8dOUdvoC3R3p+6TrbpxeJBo/v87BEG1IHI31Jhaa8lPeSHcqwxsVBeYQ==
 
 "@types/node@^12.7.1":
   version "12.20.10"
@@ -9855,6 +9860,11 @@ typescript@4.3.5, typescript@^4.2.3:
   version "4.3.5"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.3.5.tgz#4d1c37cc16e893973c45a06886b7113234f119f4"
   integrity sha512-DqQgihaQ9cUrskJo9kIyW/+g0Vxsk8cDtZ52a3NGh0YNTfpUSArXSohyUGnvbPazEPLu398C0UxmKSOrPumUzA==
+
+typescript@4.4.2:
+  version "4.4.2"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.4.2.tgz#6d618640d430e3569a1dfb44f7d7e600ced3ee86"
+  integrity sha512-gzP+t5W4hdy4c+68bfcv0t400HVJMMd2+H9B7gae1nQlBzCqvrXX+6GL/b3GAgyTH966pzrZ70/fRjwAtZksSQ==
 
 typescript@^3.9.5, typescript@^3.9.7:
   version "3.9.9"
