@@ -13,7 +13,7 @@ const initialStore = {
 
 function useSpotify() {
   const { data, error } = useSWR(key, {
-    initialData: initialStore,
+    fallbackData: initialStore,
   })
 
   return {

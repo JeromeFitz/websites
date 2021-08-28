@@ -17,7 +17,7 @@ const initialData = spotifyFavoriteTracks[0]
 
 const NowPlaying = () => {
   const { data } = useSWR('/api/spotify/now-playing', fetcher, {
-    initialData,
+    fallbackData: initialData,
     refreshInterval: MINUTE,
     revalidateOnFocus: true,
   })

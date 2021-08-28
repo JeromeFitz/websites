@@ -5,7 +5,7 @@ const initialStore = { foo: 'bar' }
 
 function useSettings() {
   const { data, error } = useSWR(key, {
-    initialData: initialStore,
+    fallbackData: initialStore,
   })
 
   return {

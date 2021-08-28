@@ -72,7 +72,7 @@
     "react-jsx-parser": "1.28.4",
     "react-merge-refs": "1.1.0",
     "sharp": "0.29.0",
-    "swr": "0.5.6",
+    "swr": "1.0.0",
     "tabbable": "5.2.1",
     "tailwind-underline-utils": "1.1.3",
     "tailwindcss": "2.2.8",
@@ -115,7 +115,7 @@
     "postcss-nested": "5.0.6",
     "postcss-page-break": "3.0.4",
     "rimraf": "3.0.2",
-    "typescript": "4.4.2"
+    "typescript": "4.4.0"
   },
   "next-unused": {
     "alias": {

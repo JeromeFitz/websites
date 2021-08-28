@@ -23,7 +23,7 @@ type Props = {
 
 const Listing = ({ items, routeData }: Props) => {
   const { data } = useSWR(`/api/notion/${routeData.relativeUrl}`, {
-    initialData: items,
+    fallbackData: items,
     refreshInterval: MINUTE,
     revalidateOnFocus: false,
   })
