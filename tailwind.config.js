@@ -205,5 +205,6 @@ module.exports = {
     // require('@tailwindcss/typography'),
     require('@tailwindcss/ui'),
     require('tailwind-underline-utils'),
+    require('@plaiceholder/tailwindcss'),
   ],
 }

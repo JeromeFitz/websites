@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+const { withPlaiceholder } = require('@plaiceholder/next')
 const { withPlugins } = require('next-compose-plugins')
 const getRedirects = require('./config/notion/website/getRedirects')
 require('dotenv').config({ path: './.env.build' })
@@ -149,6 +150,8 @@ module.exports = withPlugins(
   [
     // @next/bundle-analyzer
     [withBundleAnalyzer],
+    // @plaiceholder/next
+    [withPlaiceholder],
   ],
   nextConfig
 )

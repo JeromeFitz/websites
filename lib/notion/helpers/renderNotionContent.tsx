@@ -2,9 +2,9 @@ import React, { CSSProperties } from 'react'
 // import cx from 'clsx'
 // import ReactJSXParser from 'react-jsx-parser'
 // import NoSsr from '~components/NoSsr'
-import Image from 'next/image'
 
 import components from '~components/Dynamic/dynamic'
+import Image from '~components/Image'
 import { textBlock } from '~lib/notion/helpers/renderers'
 
 const listTypes = new Set(['bulleted_list', 'numbered_list'])
