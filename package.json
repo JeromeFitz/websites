@@ -115,7 +115,7 @@
     "postcss-nested": "5.0.6",
     "postcss-page-break": "3.0.4",
     "rimraf": "3.0.2",
-    "typescript": "4.4.0"
+    "typescript": "4.3.5"
   },
   "next-unused": {
     "alias": {
