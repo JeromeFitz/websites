@@ -31,7 +31,7 @@ const nonPreviewTypes = new Set(['editor', 'page', 'collection_view'])
 //   })
 // )
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const notionApi = async (req: NextApiRequest, res: NextApiResponse) => {
   // await cors(req, res)
 
   isDebug && console.dir(`api/notion/[...catchAll]].js`)
@@ -527,3 +527,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   return true
 }
+
+export default notionApi

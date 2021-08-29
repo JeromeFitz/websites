@@ -92,7 +92,7 @@ const LI = ({ children, ...props }) => {
   )
 }
 
-export default {
+const dynamicElements = {
   // default tags
   b: 'strong',
   i: 'em',
@@ -122,3 +122,5 @@ export default {
   Column: dynamic(() => import('./column')),
   // Counter: dynamic(() => import('./counter')),
 }
+
+export default dynamicElements

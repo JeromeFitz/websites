@@ -11,7 +11,7 @@ import venues from './venues'
 
 export { blog, episodes, events, pages, people, podcasts, seo, shows, users, venues }
 
-export default {
+const routeTypes = {
   blog,
   episodes,
   events,
@@ -23,3 +23,5 @@ export default {
   users,
   venues,
 }
+
+export default routeTypes

@@ -12,7 +12,7 @@ import { IoMdMoon } from 'react-icons/io'
 import SplitText from '~components/SplitText'
 import { navigation as links } from '~config/notion/website'
 
-const Navigation = memo(() => {
+const Navigation = () => {
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
   useEffect(() => setMounted(true), [])
@@ -109,6 +109,6 @@ const Navigation = memo(() => {
       <SkipNavContent />
     </>
   )
-})
+}
 
-export default Navigation
+export default memo(Navigation)

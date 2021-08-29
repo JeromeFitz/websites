@@ -14,7 +14,7 @@ import Seo from '~components/Seo'
 import { sites } from '../next.sitemap'
 const { description, title } = sites[process.env.NEXT_PUBLIC__SITE]
 
-import routeTypes from '~config/notion/website'
+import { routeTypes } from '~config/notion/website'
 const routeType = 'pages'
 const slug = 'homepage'
 
