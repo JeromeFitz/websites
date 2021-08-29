@@ -56,6 +56,7 @@ export default function FocusTrap({ children, focusFirst = false }: Props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [root, children])
 
+  // eslint-disable-next-line react/no-children-prop
   return React.createElement('div', {
     ref: root,
     children,

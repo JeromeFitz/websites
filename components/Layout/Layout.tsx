@@ -15,6 +15,7 @@ const Loading = () => (
 )
 
 const dynamicProps = {
+  // eslint-disable-next-line react/display-name
   loading: () => <Loading />,
 }
 

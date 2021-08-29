@@ -6,7 +6,7 @@ import { FaPencilRuler } from 'react-icons/fa'
 
 import NowPlaying from '~components/NowPlaying'
 
-const Footer = memo(() => {
+const Footer = () => {
   const [mounted, setMounted] = useState(false)
   useEffect(() => setMounted(true), [])
   return (
@@ -61,6 +61,6 @@ const Footer = memo(() => {
       )}
     </>
   )
-})
+}
 
-export default Footer
+export default memo(Footer)

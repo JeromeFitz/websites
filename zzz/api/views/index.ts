@@ -1,6 +1,6 @@
 import db from '~lib/firebase'
 
-export default async (_, res) => {
+const viewsApi = async (_, res) => {
   const snapshot = await db.ref('views').once('value')
   const views = snapshot.val()
   const allViews = Object.values(views).reduce(
@@ -9,3 +9,5 @@ export default async (_, res) => {
 
   return res.status(200).json({ total: allViews })
 }
+
+export default viewsApi

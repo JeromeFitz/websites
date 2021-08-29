@@ -11,6 +11,7 @@
   "scripts": {
     "analyze": "BUNDLE_ANALYZE=both yarn build",
     "build": "next build",
+    "branch": "git-cz -m branch --allow-empty",
     "clean": "./scripts/clean.sh",
     "clean:install": "yarn run clean && yarn install",
     "dev": "next dev",

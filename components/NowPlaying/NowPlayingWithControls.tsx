@@ -132,6 +132,7 @@ const NowPlaying = () => {
                   title={data?.album}
                   width={450}
                 /> */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   alt={`Album Cover for ${data?.album}`}
                   // height={450}
