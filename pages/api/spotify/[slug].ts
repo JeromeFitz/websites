@@ -3,7 +3,7 @@ import { getNowPlaying, getTopArtists, getTopTracks } from '~lib/spotify'
 // @todo(routes) Lock this down a bit beter with Typescript
 // const allowedRoutes = ['now-playing', 'top-artists', 'top-tracks']
 
-export default async ({ query: { limit, slug, time_range } }, res) => {
+const spotifyApi = async ({ query: { limit, slug, time_range } }, res) => {
   switch (slug) {
     case 'now-playing':
       const response = await getNowPlaying()
@@ -102,3 +102,5 @@ export default async ({ query: { limit, slug, time_range } }, res) => {
       break
   }
 }
+
+export default spotifyApi

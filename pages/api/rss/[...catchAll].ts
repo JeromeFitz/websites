@@ -22,7 +22,7 @@ const url = getNextSeo.custom.url
 
 const isTrue = (val) => (val === 'Yes' ? true : false)
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const rssApi = async (req: NextApiRequest, res: NextApiResponse) => {
   let feed: any = null
 
   isDebug && console.dir(`api/rss/[...catchAll]].js`)
@@ -246,3 +246,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   }
   return true
 }
+
+export default rssApi
