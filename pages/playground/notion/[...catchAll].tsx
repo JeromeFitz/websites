@@ -1,6 +1,6 @@
-import { Client } from '@notionhq/client'
 import cx from 'clsx'
 import Image from 'next/image'
+import Link from 'next/link'
 import _map from 'lodash/map'
 import _slice from 'lodash/slice'
 import useSWR from 'swr'
@@ -10,10 +10,12 @@ import Seo from '~components/Seo'
 
 import fetcher from '~lib/fetcher'
 
-import { getPathVariables } from '~utils/notion/prepareNotionData'
-import { DATABASES, TYPES, pageId } from '~pages/api/notion-new/[...catchAll]'
-
-const notion = new Client({ auth: process.env.NOTION_API_KEY })
+import {
+  getPathVariables,
+  getStaticPathsCatchAll,
+} from '~utils/notion/prepareNotionData'
+import getPage from '~utils/notion/getPage'
+import getSearch from '~utils/notion/getSearch'
 
 interface Annotations {
   bold: boolean
@@ -83,7 +85,21 @@ const getTextAnnotations = ({ href, plain_text, annotations }) => {
     returnElement = <u>{returnElement}</u>
   }
   if (href) {
-    returnElement = <a href={href}>{returnElement}</a>
+    const link = getNextLink(href)
+    // returnElement = <a href={href}>{returnElement}</a>
+    returnElement = (
+      <Link as={link.as} href={link.href}>
+        <a
+          className={cx(
+            'font-semibold',
+            'underline underline-offset-md underline-thickness-sm',
+            'hover:text-green-500 dark:hover:text-yellow-200'
+          )}
+        >
+          {returnElement}
+        </a>
+      </Link>
+    )
   }
   return returnElement
 }
@@ -92,6 +108,38 @@ const getContentTypeDetail = (content) =>
   _map(content.text, (text: Text) => {
     return getTextAnnotations(text)
   })
+
+const getNextLink = (url: string) => {
+  const urlTemp = url.replace('https://jeromefitzgerald.com', '')
+  const [, routeType] = urlTemp.split('/')
+  let link: any = {}
+
+  switch (routeType) {
+    case 'blog':
+    case 'events':
+    case 'people':
+    case 'podcasts':
+    case 'shows':
+    case 'users':
+    case 'venues':
+      link = {
+        as: urlTemp,
+        // href: !slug ? `/${routeType}` : `/${routeType}/[slug]`,
+        href: `/[...catchAll]`,
+      }
+      break
+    default:
+      /* @note Must be a page. */
+      link = {
+        // as: url,
+        // href: url === '/' ? '/' : `/playground/notion/[...catchAll]`,
+        as: urlTemp,
+        href: urlTemp === '/' ? '/' : `/playground/notion/[...catchAll]`,
+      }
+      break
+  }
+  return link
+}
 
 const getContentType = (item: NotionBlock) => {
   const { id, type } = item
@@ -153,10 +201,17 @@ const getContentType = (item: NotionBlock) => {
 }
 
 const CatchAll = (props) => {
-  // const { relativeUrl, routeType, slug, url } = props
-  const { relativeUrl, routeType } = props
-  const { data, error } = useSWR(`/api/notion-new/${props.url}`, fetcher, {
-    fallbackData: { info: props.info, content: props.content },
+  const {
+    content: contentFallback,
+    info: infoFallback,
+    relativeUrl,
+    routeType,
+    slug,
+    url,
+  } = props
+
+  const { data, error } = useSWR(() => `/api/notion-new/${url}`, fetcher, {
+    fallbackData: { info: infoFallback, content: contentFallback },
     revalidateOnFocus: false,
   })
 
@@ -177,18 +232,18 @@ const CatchAll = (props) => {
 
   const items = _slice(results, 2)
 
-  console.dir(`props`)
-  console.dir(props)
+  // console.dir(`props`)
+  // console.dir(props)
 
-  console.dir(`items`)
-  console.dir(items)
+  // console.dir(`items`)
+  // console.dir(items)
 
-  console.dir(`info`)
-  console.dir(info)
+  // console.dir(`info`)
+  // console.dir(info)
 
   const { cover, icon, id, properties } = info[0]
 
-  const coverImage = cover.external.url
+  const coverImage = cover?.external?.url
   const emoji = !!icon?.emoji ? `${icon.emoji} ` : ''
   const title = getContentType(properties.Title)
   const seoDescription = getContentType(properties['SEO.Description'])
@@ -232,11 +287,13 @@ const CatchAll = (props) => {
           {emoji}
           {title}
         </h1>
-        {!!routeType && <small>{` /${relativeUrl}`}</small>}
+        {!!slug && <small>{` /${routeType}/${slug}`}</small>}
+        {!!relativeUrl && <small>{` /${relativeUrl}`}</small>}
+        {!!published && <small>Published: {datePublished.start}</small>}
         {!!coverImage && (
           <Image alt="Cover" src={coverImage} height="500" width="500" />
         )}
-        {!!published && <p>{datePublished.start}</p>}
+
         {!!tags && (
           <ul className={cx('mb-5 flex flex-row flex-wrap gap-2.5')}>{tags}</ul>
         )}
@@ -250,37 +307,22 @@ const CatchAll = (props) => {
 export const getStaticProps = async ({ preview = false, ...props }) => {
   // console.dir(`getStaticProps`)
   // console.dir(props)
-  // const { catchAll } = props.params
-  const catchAll = ['shows', 'alex-o-jerome']
+  const { catchAll } = props.params
+  // const catchAll = ['shows', 'jfle']
   // const catchAll = ['events', '2021']
   // const catchAll = ['events', '2021', '09', '18', 'jerome-and']
   const pathVariables = getPathVariables(catchAll)
+  const info = await getSearch(pathVariables, preview)
+  const pageId = info.results[0].id
   const data = {
-    info: await notion.databases.query({
-      database_id: DATABASES[TYPES.shows],
-      filter: {
-        and: [
-          {
-            property: 'Slug',
-            text: {
-              equals: pathVariables.slug,
-            },
-          },
-          // Remove Filter if preview is True
-          !preview && {
-            property: 'Published',
-            checkbox: {
-              equals: true,
-            },
-          },
-        ],
-      },
-    }),
-    content: await notion.blocks.children.list({
-      block_id: pageId,
-    }),
+    info,
+    content: await getPage(pathVariables, pageId),
   }
   return { props: { preview, ...data, ...pathVariables, ...props } }
+}
+
+export const getStaticPaths = () => {
+  return getStaticPathsCatchAll()
 }
 
 export default CatchAll

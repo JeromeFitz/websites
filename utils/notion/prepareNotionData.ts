@@ -85,6 +85,7 @@ const getStaticPathsCatchAll = () => {
     '/playground/notion/people',
     '/playground/notion/podcasts',
     '/playground/notion/shows',
+    '/playground/notion/shows/jfle',
     '/playground/notion/shows/alex-o-jerome',
     '/playground/notion/users',
     '/playground/notion/venues'
