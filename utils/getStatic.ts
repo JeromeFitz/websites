@@ -182,14 +182,14 @@ const getStaticPropsCatchAll = async ({ preview, ...props }) => {
   return returnData
 }
 
-const getStaticPathsWithDate = async ({ data, routeType }) => {
+const getStaticPathsWithDate = ({ data, routeType }) => {
   const years = []
   const months = []
   const dates = []
 
   // @refactor(filter) only published
   // @todo(types)
-  const paths = await _map(data, (item) => {
+  const paths = _map(data, (item) => {
     const { year, month, date } =
       item['Date']?.event || getTimestamp(item['Date']?.start_date).event
     return getNotionLink({
@@ -203,13 +203,13 @@ const getStaticPathsWithDate = async ({ data, routeType }) => {
    * @todo This is ... not great, haha.
    * Go through each event to create index for YEAR, MONTH, DATE...
    */
-  const yearsUnique = await _uniqWith(years, _isEqual)
+  const yearsUnique = _uniqWith(years, _isEqual)
   yearsUnique.map((itemDate) => paths.push(`/${routeType}/${itemDate.year}`))
-  const monthsUnique = await _uniqWith(months, _isEqual)
+  const monthsUnique = _uniqWith(months, _isEqual)
   monthsUnique.map((itemDate) =>
     paths.push(`/${routeType}/${itemDate.year}/${itemDate.month}`)
   )
-  const datesUnique = await _uniqWith(dates, _isEqual)
+  const datesUnique = _uniqWith(dates, _isEqual)
   datesUnique.map((itemDate) =>
     paths.push(`/${routeType}/${itemDate.year}/${itemDate.month}/${itemDate.date}`)
   )
@@ -220,12 +220,12 @@ const getStaticPathsWithDate = async ({ data, routeType }) => {
   }
 }
 
-const getStaticPathsDefault = async ({ data, routeType }) => {
+const getStaticPathsDefault = ({ data, routeType }) => {
   isDebug && console.dir(`> getStaticPathsDefault`)
   isDebug && console.dir(`routeType: ${routeType}`)
   // console.dir(data)
   // @refactor(filter) only published
-  const paths = await _map(data, (item: any) => {
+  const paths = _map(data, (item: any) => {
     return getNotionLink({ slug: item.Slug, routeType })
   })
 
@@ -235,9 +235,9 @@ const getStaticPathsDefault = async ({ data, routeType }) => {
   }
 }
 
-const getStaticPathsPodcastsEpisodes = async ({ data, routeType }) => {
+const getStaticPathsPodcastsEpisodes = ({ data, routeType }) => {
   // @refactor(filter) only published
-  const paths = await _map(data, (item: any) => {
+  const paths = _map(data, (item: any) => {
     if (routeType === 'episodes') {
       // isDebug && console.dir(item)
       return getNotionLink({
@@ -278,7 +278,7 @@ const getStaticPathsCatchAll = async (_ctx) => {
 
   const paths = []
 
-  const { paths: blogPaths } = await getStaticPathsWithDate({
+  const { paths: blogPaths } = getStaticPathsWithDate({
     data: blogData.items,
     routeType: 'blog',
   })
@@ -290,7 +290,7 @@ const getStaticPathsCatchAll = async (_ctx) => {
   // })
   // episodesPaths && paths.push(...episodesPaths)
 
-  const { paths: eventsPaths } = await getStaticPathsWithDate({
+  const { paths: eventsPaths } = getStaticPathsWithDate({
     data: eventsData.items,
     routeType: 'events',
   })
@@ -317,25 +317,25 @@ const getStaticPathsCatchAll = async (_ctx) => {
     '/venues'
   )
 
-  const { paths: peoplesPaths } = await getStaticPathsDefault({
+  const { paths: peoplesPaths } = getStaticPathsDefault({
     data: peoplesData.items,
     routeType: 'people',
   })
   peoplesPaths && paths.push(...peoplesPaths)
 
-  const { paths: podcastsPath } = await getStaticPathsPodcastsEpisodes({
+  const { paths: podcastsPath } = getStaticPathsPodcastsEpisodes({
     data: podcastsData.items,
     routeType: 'podcasts',
   })
   podcastsPath && paths.push(...podcastsPath)
 
-  const { paths: showsPath } = await getStaticPathsDefault({
+  const { paths: showsPath } = getStaticPathsDefault({
     data: showsData.items,
     routeType: 'shows',
   })
   showsPath && paths.push(...showsPath)
 
-  const { paths: venuesPath } = await getStaticPathsDefault({
+  const { paths: venuesPath } = getStaticPathsDefault({
     data: venuesData.items,
     routeType: 'venues',
   })

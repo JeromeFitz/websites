@@ -26,7 +26,7 @@ const getProperties = async ({ blocks, routeType, schema }) => {
   // })
 
   const properties = {}
-  await _map(blocks, async (block) => {
+  _map(blocks, (block) => {
     // console.dir(`>> block.value.content`)
     // console.dir(block.value.content)
     // console.dir(`>> block.value.properties`)
@@ -37,7 +37,7 @@ const getProperties = async ({ blocks, routeType, schema }) => {
     /**
      * Cycle through Schema
      */
-    await _map(schema, (_s, _sId) => {
+    _map(schema, (_s, _sId) => {
       // block.propz[_s.name] = block.value.properties[_sId] || null
       // await _map(block.value.properties, async (_p, _pId) => {
       //   block.propz[_s.name] = _p
@@ -128,7 +128,7 @@ const getProperties = async ({ blocks, routeType, schema }) => {
       }
     })
 
-    await _map(block.value.properties, async (property, propertyKey) => {
+    _map(block.value.properties, (property, propertyKey) => {
       const schemaKey = schema[propertyKey]
       let propertyValue: any
       block.props.NextLink = {}
@@ -152,7 +152,7 @@ const getProperties = async ({ blocks, routeType, schema }) => {
           break
       }
       block.props[propertyValue && schemaKey.name] = propertyValue
-      const getRecordValues = await _map(
+      const getRecordValues = _map(
         block.value.content,
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         (_content, _contentKey) => ({
@@ -241,12 +241,12 @@ const getProperties = async ({ blocks, routeType, schema }) => {
    * @hack My world is crumbling. Why does this work with a fake Promise ...
    */
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  await Promise.all(await _map(properties, (_p: any) => false))
+  await Promise.all(_map(properties, (_p: any) => false))
   /**
    * Column Data
    */
   await Promise.all(
-    await _map(properties, async (_p: any) => {
+    _map(properties, async (_p: any) => {
       const contentResults = await fetchCmsAPI(
         'getRecordValues',
         properties[_p.value.id].contentRequests
@@ -254,7 +254,7 @@ const getProperties = async ({ blocks, routeType, schema }) => {
       /**
        * Clean Content Data...
        */
-      await _map(contentResults.results, (_c: any, _cId: any) => {
+      _map(contentResults.results, (_c: any, _cId: any) => {
         // console.dir(`>> clean content data yo...`)
         // console.dir(`>> _c`)
         delete contentResults.results[_cId].role
@@ -383,7 +383,7 @@ const getProperties = async ({ blocks, routeType, schema }) => {
                   /**
                    * Clean Content Data...
                    */
-                  await _map(columnResults.results, (_c: any, _cId: any) => {
+                  _map(columnResults.results, (_c: any, _cId: any) => {
                     // console.dir(`>> clean content data yo...`)
                     // console.dir(`>> _c`)
                     delete columnResults.results[_cId].role

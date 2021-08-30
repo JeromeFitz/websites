@@ -68,8 +68,8 @@ const setTransaction = async (data) => {
   await saveTransactions(data)
 }
 
-async function createPageWithInlineTable() {
-  await _map(routeTypesArray, (routeType) => {
+function createPageWithInlineTable() {
+  _map(routeTypesArray, (routeType) => {
     const routeTypeSchema = schema__routeTypes[routeType]
     const id = Object.keys(routeTypeSchema)[0]
     const pageId = id
@@ -195,7 +195,7 @@ async function createRouteType(routeTypeData) {
     })
   })
 
-  await _map(collectionViewIds, (collectionView, collectionViewId) => {
+  _map(collectionViewIds, (collectionView, collectionViewId) => {
     unstable__collectionViewIds.push(collectionViewId)
     unstable__collectionViewPushes.push({
       id: collectionViewId,
@@ -328,7 +328,7 @@ async function createRouteType(routeTypeData) {
     ],
   }
 
-  await _map(unstable__collectionViewPushes, (cvp) =>
+  _map(unstable__collectionViewPushes, (cvp) =>
     dataViewsDynamic.transactions[0].operations.push(cvp)
   )
 

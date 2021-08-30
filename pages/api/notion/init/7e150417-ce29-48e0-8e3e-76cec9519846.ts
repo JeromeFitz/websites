@@ -37,7 +37,7 @@ const notionInit = async (_req: NextApiRequest, res: NextApiResponse) => {
       STATE = '🌐️ Created Successfully'
       break
     case 'pageWithInlineTable':
-      await createPageWithInlineTable()
+      createPageWithInlineTable()
       STATE = '📃️ Created Successfully'
       break
     // // @todo Broken, handle with physical imports please

@@ -90,12 +90,12 @@ const notionApi = async (req: NextApiRequest, res: NextApiResponse) => {
   // const dataNotNormalized = hasBlockData && blocks.map
 
   const schema = {}
-  await _map(getQueryCollection.schema, (_s, _sId) => {
+  _map(getQueryCollection.schema, (_s, _sId) => {
     schema[_s.name] = { ..._s, _id: _sId }
   })
 
   const properties = {}
-  await _map(blocks, async (block) => {
+  _map(blocks, (block) => {
     // console.dir(`>> block.value.content`)
     // console.dir(block.value.content)
     // console.dir(`>> block.value.properties`)
@@ -106,7 +106,7 @@ const notionApi = async (req: NextApiRequest, res: NextApiResponse) => {
     /**
      * Cycle through Schema
      */
-    await _map(getQueryCollection.schema, (_s, _sId) => {
+    _map(getQueryCollection.schema, (_s, _sId) => {
       // block.propz[_s.name] = block.value.properties[_sId] || null
       // await _map(block.value.properties, async (_p, _pId) => {
       //   block.propz[_s.name] = _p
@@ -197,7 +197,7 @@ const notionApi = async (req: NextApiRequest, res: NextApiResponse) => {
       }
     })
 
-    await _map(block.value.properties, async (property, propertyKey) => {
+    _map(block.value.properties, (property, propertyKey) => {
       const schemaKey = getQueryCollection.schema[propertyKey]
       let propertyValue: any
       block.props.NextLink = {}
@@ -221,7 +221,7 @@ const notionApi = async (req: NextApiRequest, res: NextApiResponse) => {
           break
       }
       block.props[propertyValue && schemaKey.name] = propertyValue
-      const getRecordValues = await _map(
+      const getRecordValues = _map(
         block.value.content,
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         (_content, _contentKey) => ({
@@ -310,12 +310,12 @@ const notionApi = async (req: NextApiRequest, res: NextApiResponse) => {
    * @hack My world is crumbling. Why does this work with a fake Promise ...
    */
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  await Promise.all(await _map(properties, (_p: any) => false))
+  await Promise.all(_map(properties, (_p: any) => false))
   /**
    * Column Data
    */
   await Promise.all(
-    await _map(properties, async (_p: any) => {
+    _map(properties, async (_p: any) => {
       const contentResults = await rpc(
         'getRecordValues',
         properties[_p.value.id].contentRequests
@@ -323,7 +323,7 @@ const notionApi = async (req: NextApiRequest, res: NextApiResponse) => {
       /**
        * Clean Content Data...
        */
-      await _map(contentResults.results, (_c: any, _cId: any) => {
+      _map(contentResults.results, (_c: any, _cId: any) => {
         // console.dir(`>> clean content data yo...`)
         // console.dir(`>> _c`)
         delete contentResults.results[_cId].role
@@ -452,7 +452,7 @@ const notionApi = async (req: NextApiRequest, res: NextApiResponse) => {
                   /**
                    * Clean Content Data...
                    */
-                  await _map(columnResults.results, (_c: any, _cId: any) => {
+                  _map(columnResults.results, (_c: any, _cId: any) => {
                     // console.dir(`>> clean content data yo...`)
                     // console.dir(`>> _c`)
                     delete columnResults.results[_cId].role

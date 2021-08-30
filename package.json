@@ -32,6 +32,7 @@
     "typescript": "tsc --noEmit --declaration"
   },
   "dependencies": {
+    "@notionhq/client": "0.3.1",
     "@plaiceholder/next": "2.1.0",
     "@plaiceholder/tailwindcss": "2.1.0",
     "@reach/portal": "0.16.0",
@@ -84,6 +85,7 @@
     "@jeromefitz/git-cz": "8.3.45",
     "@jeromefitz/semantic": "2.3.45",
     "@next/bundle-analyzer": "11.1.0",
+    "@types/lodash": "4.14.172",
     "@types/ms": "0.7.31",
     "@types/node": "16.7.4",
     "@types/node-fetch": "2.5.12",
