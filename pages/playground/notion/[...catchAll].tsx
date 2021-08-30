@@ -1,6 +1,7 @@
 import cx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
+import _size from 'lodash/size'
 import _map from 'lodash/map'
 import _slice from 'lodash/slice'
 import useSWR from 'swr'
@@ -110,7 +111,10 @@ const getContentTypeDetail = (content) =>
   })
 
 const getNextLink = (url: string) => {
-  const urlTemp = url.replace('https://jeromefitzgerald.com', '')
+  const urlTemp = url
+    .replace('https://jeromefitzgerald.com', '')
+    .replace('/playground/notion', '')
+    .replace('//', '/')
   const [, routeType] = urlTemp.split('/')
   let link: any = {}
 
@@ -123,9 +127,9 @@ const getNextLink = (url: string) => {
     case 'users':
     case 'venues':
       link = {
-        as: urlTemp,
+        as: `/playground/notion/${urlTemp}`,
         // href: !slug ? `/${routeType}` : `/${routeType}/[slug]`,
-        href: `/[...catchAll]`,
+        href: `/playground/notion/[...catchAll]`,
       }
       break
     default:
@@ -134,7 +138,10 @@ const getNextLink = (url: string) => {
         // as: url,
         // href: url === '/' ? '/' : `/playground/notion/[...catchAll]`,
         as: urlTemp,
-        href: urlTemp === '/' ? '/' : `/playground/notion/[...catchAll]`,
+        href:
+          urlTemp === '/playground/notion'
+            ? '/playground/notion'
+            : `/playground/notion/[...catchAll]`,
       }
       break
   }
@@ -171,13 +178,14 @@ const getContentType = (item: NotionBlock) => {
           height={750}
         />
       )
+    case 'text':
     case 'title':
     case 'rich_text':
       // @todo(notion)
-      return content[0].plain_text
+      return _size(content) > 0 ? content[0].plain_text : ''
     case 'files':
       // @todo(notion)
-      return content[0].external.url
+      return _size(content) > 0 ? content[0].external.url : ''
     case 'url':
       // @todo(notion)
       return content
@@ -200,15 +208,44 @@ const getContentType = (item: NotionBlock) => {
   }
 }
 
+const getInfoType = (item: any) => {
+  // console.dir(item)
+  const date = item.properties['Date'].date.start.slice(0, 10)
+  const slug = item.properties['Slug'].rich_text[0].plain_text
+  const [year, month, day] = date.split('-')
+  return (
+    <>
+      {/* {item.id}: {item.properties['Slug'].rich_text[0].plain_text} */}
+      <Link
+        as={`/playground/notion/events/${year}/${month}/${day}/${slug}`}
+        href={`/playground/notion/[...catchAll]`}
+      >
+        <a
+          className={cx(
+            'font-semibold',
+            'underline underline-offset-md underline-thickness-sm',
+            'hover:text-green-500 dark:hover:text-yellow-200'
+          )}
+        >
+          {date}: {slug}
+        </a>
+      </Link>
+    </>
+  )
+}
+
 const CatchAll = (props) => {
   const {
     content: contentFallback,
     info: infoFallback,
+    isIndex,
     relativeUrl,
     routeType,
     slug,
     url,
   } = props
+
+  console.dir(props)
 
   const { data, error } = useSWR(() => `/api/notion-new/${url}`, fetcher, {
     fallbackData: { info: infoFallback, content: contentFallback },
@@ -218,7 +255,7 @@ const CatchAll = (props) => {
   /**
    * @error or @loading
    */
-  if (error || !data)
+  if (error || !data || data?.content === undefined || data?.info === undefined)
     return (
       <>
         <Layout>
@@ -227,6 +264,7 @@ const CatchAll = (props) => {
       </>
     )
 
+  // console.dir(data)
   const { results } = data?.content
   const { results: info } = data?.info
 
@@ -298,7 +336,8 @@ const CatchAll = (props) => {
           <ul className={cx('mb-5 flex flex-row flex-wrap gap-2.5')}>{tags}</ul>
         )}
         {/* Dynamic Content */}
-        {_map(items, (item: NotionBlock) => getContentType(item))}
+        {isIndex && _map(info, (item) => getInfoType(item))}
+        {!isIndex && _map(items, (item: NotionBlock) => getContentType(item))}
       </Layout>
     </>
   )
@@ -309,14 +348,18 @@ export const getStaticProps = async ({ preview = false, ...props }) => {
   // console.dir(props)
   const { catchAll } = props.params
   // const catchAll = ['shows', 'jfle']
-  // const catchAll = ['events', '2021']
-  // const catchAll = ['events', '2021', '09', '18', 'jerome-and']
+  // const catchAll = ['events', '2020']
+  // const catchAll = ['events', '2020', '05', '01', 'jerome-and']
   const pathVariables = getPathVariables(catchAll)
+  // console.dir(`pathVariables`)
+  // console.dir(pathVariables)
   const info = await getSearch(pathVariables, preview)
-  const pageId = info.results[0].id
+  // console.dir(`info..`)
+  // console.dir(info)
+  const pageId = pathVariables.isIndex ? '' : info.results[0].id
   const data = {
     info,
-    content: await getPage(pathVariables, pageId),
+    content: pathVariables.isIndex ? [] : await getPage(pathVariables, pageId),
   }
   return { props: { preview, ...data, ...pathVariables, ...props } }
 }

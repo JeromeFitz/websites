@@ -17,11 +17,12 @@ const getPathVariables = (catchAll) => {
     url = null
 
   if (!!catchAll) {
+    console.dir(catchAll)
     isPage = isPages(catchAll[0])
     relativeUrl = _join(catchAll, '/')
     routeType = isPage ? 'pages' : _first(catchAll)
-    isIndex = !catchAll[1]
     slug = (!isIndex || isPage) && _last(catchAll)
+    isIndex = !catchAll[1] || parseInt(slug) > 0
     url = relativeUrl
   }
 
@@ -78,17 +79,25 @@ const getStaticPathsCatchAll = () => {
    *           for Listings and customizations not hard-coded
    */
   paths.push(
-    '/playground/notion/blog',
-    '/playground/notion/colophon',
-    '/playground/notion/episodes',
-    // '/events',
-    '/playground/notion/people',
-    '/playground/notion/podcasts',
+    // '/playground/notion/blog',
+    // '/playground/notion/colophon',
+    // '/playground/notion/episodes',
+    '/playground/notion/events',
+    '/playground/notion/events/2020',
+    '/playground/notion/events/2020/05',
+    '/playground/notion/events/2020/05/01',
+    '/playground/notion/events/2020/05/01/jerome-and',
+    '/playground/notion/events/2020/05/08',
+    '/playground/notion/events/2020/05/08/jerome-and',
+    '/playground/notion/events/2020/05/22',
+    '/playground/notion/events/2020/05/22/jerome-and',
+    // '/playground/notion/people',
+    // '/playground/notion/podcasts',
     '/playground/notion/shows',
     '/playground/notion/shows/jfle',
-    '/playground/notion/shows/alex-o-jerome',
-    '/playground/notion/users',
-    '/playground/notion/venues'
+    '/playground/notion/shows/alex-o-jerome'
+    // '/playground/notion/users',
+    // '/playground/notion/venues'
   )
 
   // const { paths: peoplesPaths } = await getStaticPathsDefault({
@@ -153,6 +162,7 @@ const getStaticPropsCatchAll = ({ preview, ...props }) => {
         break
       case 'events':
         // data = slug ? await getEvent(catchAll) : await getEvents()
+        data = slug ? { get: 'event' } : { get: 'events' }
         break
       case 'pages':
         // // data = slug ? await getPage(catchAll):await getPages()
@@ -166,7 +176,7 @@ const getStaticPropsCatchAll = ({ preview, ...props }) => {
         break
       case 'shows':
         // data = slug ? await getShow(catchAll) : await getShows()
-        data = slug ? { foo: 'getShow' } : { foo: 'getShows' }
+        data = slug ? { get: 'show' } : { get: 'shows' }
         break
       case 'venues':
         // data = slug ? await getVenue(catchAll) : await getVenues()

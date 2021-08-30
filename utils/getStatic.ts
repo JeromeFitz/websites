@@ -192,11 +192,13 @@ const getStaticPathsWithDate = ({ data, routeType }) => {
   const paths = _map(data, (item) => {
     const { year, month, date } =
       item['Date']?.event || getTimestamp(item['Date']?.start_date).event
-    return getNotionLink({
+    const notionLink = getNotionLink({
       slug: item.Slug,
       routeType,
       itemDate: { year, month, date },
     })
+
+    return notionLink
   })
 
   /**
