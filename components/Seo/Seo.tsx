@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import { useRouter } from 'next/router'
+// import { useRouter } from 'next/router'
 import _merge from 'lodash/merge'
 import { NextSeo } from 'next-seo'
 
@@ -22,13 +22,13 @@ const Seo = memo(({ ...seo }) => {
     newSeo.noindex = true
   }
 
-  const router = useRouter()
-  console.dir(`> router`)
-  console.dir(router)
-  console.dir(`> newSeo`)
-  console.dir(newSeo)
+  // const router = useRouter()
+  // console.dir(`> router`)
+  // console.dir(router)
+  // console.dir(`> newSeo`)
+  // console.dir(newSeo)
 
-  newSeo.canonical = `https://jeromefitzgerald.com${router.asPath}`
+  // newSeo.canonical = `https://jeromefitzgerald.com${router.asPath}`
   // newSeo.canonical = `https://jeromefitzgerald.com${router.pathname}`
   // newSeo.canonical = `https://jeromefitzgerald.com${router.route}`
 

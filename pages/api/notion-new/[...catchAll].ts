@@ -5,7 +5,7 @@ import { getPathVariables } from '~utils/notion/prepareNotionData'
 
 const notion = new Client({ auth: process.env.NOTION_API_KEY })
 
-const TYPES = {
+export const TYPES = {
   blog: 'blog',
   episodes: 'episodes',
   events: 'events',
@@ -18,7 +18,7 @@ const TYPES = {
   venues: 'venues',
 }
 
-const DATABASES = {
+export const DATABASES = {
   blog: 'baee64b0-8851-4522-8afb-e15a9ea5a910',
   episodes: 'd67380f6-8492-4fb5-9b1d-b4ed8880155b',
   events: '781c7375-e20e-487f-a5d9-6e565f7a2d07',
@@ -31,7 +31,7 @@ const DATABASES = {
   venues: '8b3f4ae6-ecf7-48ad-8ae9-8b69528e2110',
 }
 
-const pageId = 'e850b6ac-947a-4f2d-82cc-ad899ae2adb1'
+export const pageId = 'e850b6ac-947a-4f2d-82cc-ad899ae2adb1'
 
 const notionApi = async (req: NextApiRequest, res: NextApiResponse) => {
   try {

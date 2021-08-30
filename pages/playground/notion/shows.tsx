@@ -1,3 +1,4 @@
+import { Client } from '@notionhq/client'
 import cx from 'clsx'
 import Image from 'next/image'
 import _map from 'lodash/map'
@@ -8,6 +9,11 @@ import Layout from '~components/Layout'
 import Seo from '~components/Seo'
 
 import fetcher from '~lib/fetcher'
+
+import { getPathVariables } from '~utils/notion/prepareNotionData'
+import { DATABASES, TYPES, pageId } from '~pages/api/notion-new/[...catchAll]'
+
+const notion = new Client({ auth: process.env.NOTION_API_KEY })
 
 interface Annotations {
   bold: boolean
@@ -147,7 +153,10 @@ const getContentType = (item: NotionBlock) => {
 }
 
 const CatchAll = (props) => {
-  const { data, error } = useSWR(`/api/notion-new/shows/alex-o-jerome`, fetcher, {
+  // const { relativeUrl, routeType, slug, url } = props
+  const { relativeUrl, routeType } = props
+  const { data, error } = useSWR(`/api/notion-new/${props.url}`, fetcher, {
+    fallbackData: { info: props.info, content: props.content },
     revalidateOnFocus: false,
   })
 
@@ -191,9 +200,9 @@ const CatchAll = (props) => {
   const noIndex = getContentType(properties['NoIndex'])
   const tags = getContentType(properties['Tags'])
 
-  const url = 'https://localhost:3000/playground/notion/shows'
+  const seoUrl = `https://jeromefitzgerald.com/${relativeUrl}`
   const seo = {
-    canonical: url,
+    canonical: seoUrl,
     description: seoDescription,
     image: seoImage,
     noindex: !published || noIndex,
@@ -208,7 +217,7 @@ const CatchAll = (props) => {
         },
       ],
       title,
-      url,
+      url: seoUrl,
     },
     title,
   }
@@ -223,6 +232,7 @@ const CatchAll = (props) => {
           {emoji}
           {title}
         </h1>
+        {!!routeType && <small>{` /${relativeUrl}`}</small>}
         {!!coverImage && (
           <Image alt="Cover" src={coverImage} height="500" width="500" />
         )}
@@ -235,6 +245,42 @@ const CatchAll = (props) => {
       </Layout>
     </>
   )
+}
+
+export const getStaticProps = async ({ preview = false, ...props }) => {
+  // console.dir(`getStaticProps`)
+  // console.dir(props)
+  // const { catchAll } = props.params
+  const catchAll = ['shows', 'alex-o-jerome']
+  // const catchAll = ['events', '2021']
+  // const catchAll = ['events', '2021', '09', '18', 'jerome-and']
+  const pathVariables = getPathVariables(catchAll)
+  const data = {
+    info: await notion.databases.query({
+      database_id: DATABASES[TYPES.shows],
+      filter: {
+        and: [
+          {
+            property: 'Slug',
+            text: {
+              equals: pathVariables.slug,
+            },
+          },
+          // Remove Filter if preview is True
+          !preview && {
+            property: 'Published',
+            checkbox: {
+              equals: true,
+            },
+          },
+        ],
+      },
+    }),
+    content: await notion.blocks.children.list({
+      block_id: pageId,
+    }),
+  }
+  return { props: { preview, ...data, ...pathVariables, ...props } }
 }
 
 export default CatchAll
