@@ -94,7 +94,7 @@
     "concurrently": "6.2.1",
     "cross-env": "7.0.3",
     "dotenv": "10.0.0",
-    "eslint-config-next": "11.1.0",
+    "eslint-config-next": "11.1.2",
     "fs-extra": "10.0.0",
     "husky": "7.0.2",
     "is-ci": "3.0.0",
