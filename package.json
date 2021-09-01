@@ -82,7 +82,7 @@
   "devDependencies": {
     "@jeromefitz/codestyle": "2.3.46",
     "@jeromefitz/git-cz": "8.3.45",
-    "@jeromefitz/semantic": "2.3.46",
+    "@jeromefitz/semantic": "2.3.47",
     "@next/bundle-analyzer": "11.1.0",
     "@types/ms": "0.7.31",
     "@types/node": "16.7.4",
