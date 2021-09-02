@@ -52,6 +52,7 @@ const getSearch = async (pathVariables, preview) => {
           !!day ? day : '01'
         }`
       )
+      console.dir(`dateTimestampBlog: ${dateTimestampBlog}`)
       console.dir(`dateTimestamp:     ${dateTimestamp}`)
       console.dir(`dateTimestamp:     ${dateTimestamp.slice(0, 4)}`)
       console.dir(`timestampQuery:    ${timestampQuery.toISOString()}`)
@@ -61,7 +62,6 @@ const getSearch = async (pathVariables, preview) => {
       /**
        * @test Need to remove this
        */
-      console.dir(`dateTimestamp:    ${dateTimestamp}`)
       !!pathVariables.isIndex &&
         year === undefined &&
         month === undefined &&
@@ -69,7 +69,10 @@ const getSearch = async (pathVariables, preview) => {
         andFilters.push({
           property: 'Date',
           date: {
-            on_or_after: TYPES.blog ? dateTimestampBlog : dateTimestamp,
+            on_or_after:
+              TYPES.blog === pathVariables.routeType
+                ? dateTimestampBlog
+                : dateTimestamp,
           },
         })
 

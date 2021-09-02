@@ -12,16 +12,15 @@ const notionApi = async (req: NextApiRequest, res: NextApiResponse) => {
 
     // http://localhost:3000/api/notion/blog/2020/12/28/preview-blog-post?preview=true
     const pathVariables = getPathVariables(catchAll)
-    console.dir(`pathVariables`)
-    console.dir(pathVariables)
-
+    // console.dir(`pathVariables`)
+    // console.dir(pathVariables)
     let info = await getSearch(pathVariables, preview)
-    console.dir(`info`)
-    console.dir(info)
+    // console.dir(`info`)
+    // console.dir(info)
     const pageId = pathVariables.isIndex ? undefined : info.results[0].id
     let content = await getPage(pathVariables, pageId)
-    console.dir(`content`)
-    console.dir(content)
+    // console.dir(`content`)
+    // console.dir(content)
     let items = null
 
     /**

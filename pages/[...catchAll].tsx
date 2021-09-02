@@ -10,6 +10,7 @@ import Seo from '~components/Seo'
 
 import fetcher from '~lib/fetcher'
 
+// import getNextLink from '~utils/getNextLink'
 import {
   getPathVariables,
   getStaticPathsCatchAll,
@@ -205,19 +206,32 @@ const getContentType = (item: NotionBlock) => {
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const getInfoType = (item: any) => {
-  // console.dir(item)
+const getInfoType = (item: any, routeType) => {
+  console.dir(item)
   const date = item.properties['Date'].date.start.slice(0, 10)
   const slug = item.properties['Slug'].rich_text[0].plain_text
   const [year, month, day] = date.split('-')
+
+  let as = ''
+
+  switch (routeType) {
+    case 'blog':
+    case 'events':
+      as = `/${routeType}/${year}/${month}/${day}/${slug}`
+      break
+    case 'people':
+    case 'podcasts':
+    case 'shows':
+    case 'users':
+    case 'venues':
+    default:
+      as = `/${routeType}/${slug}`
+      break
+  }
+
   return (
     <>
-      {/* {item.id}: {item.properties['Slug'].rich_text[0].plain_text} */}
-      <Link
-        as={`/events/${year}/${month}/${day}/${slug}`}
-        href={`/[...catchAll]`}
-        key={`link-${slug}`}
-      >
+      <Link as={as} href={`/[...catchAll]`} key={`link-${slug}`}>
         <a
           className={cx(
             'font-semibold',
@@ -356,9 +370,12 @@ const CatchAll = (props) => {
           <ul className={cx('mb-5 flex flex-row flex-wrap gap-2.5')}>{tags}</ul>
         )}
         {/* Dynamic Content */}
-        {isIndex && _map(items.results, (item) => getInfoType(item))}
+        {isIndex && _map(items.results, (item) => getInfoType(item, routeType))}
         {/*  */}
-        {/* {!isIndex && _map(content, (contentItem: NotionBlock) => getContentType(contentItem))} */}
+        {!isIndex &&
+          _map(content.results, (contentItem: NotionBlock) =>
+            getContentType(contentItem)
+          )}
       </Layout>
     </>
   )
@@ -372,19 +389,15 @@ export const getStaticProps = async ({ preview = false, ...props }) => {
   // const catchAll = ['events', '2020']
   // const catchAll = ['events', '2020', '05', '01', 'jerome-and']
   const pathVariables = getPathVariables(catchAll)
-  // // console.dir(`pathVariables`)
-  // // console.dir(pathVariables)
-  // const info = await getSearch(pathVariables, preview)
-  // // console.dir(`info..`)
-  // // console.dir(info)
-  // const pageId = pathVariables.isIndex ? '' : info.results[0].id
-  // const data = {
-  //   info,
-  //   content: pathVariables.isIndex ? [] : await getPage(pathVariables, pageId),
-  // }
+  // console.dir(`pathVariables`)
+  // console.dir(pathVariables)
   let info = await getSearch(pathVariables, preview)
+  console.dir(`info`)
+  console.dir(info)
   const pageId = pathVariables.isIndex ? undefined : info.results[0].id
   let content = await getPage(pathVariables, pageId)
+  // console.dir(`content`)
+  // console.dir(content)
   let items = null
 
   /**
