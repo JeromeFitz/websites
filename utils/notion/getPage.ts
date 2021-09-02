@@ -23,10 +23,10 @@ const getPage = async (pathVariables, pageId) => {
   switch (pathVariables.routeType) {
     case TYPES.blog:
     case TYPES.events:
+    case TYPES.podcasts:
     case TYPES.shows:
-      data = await getPageData(pageId, pathVariables.routeType)
-      break
     default:
+      data = await getPageData(pageId, pathVariables.routeType)
       break
   }
   return data

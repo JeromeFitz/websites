@@ -218,6 +218,28 @@ const getSearch = async (pathVariables, preview) => {
       })
       break
     default:
+      pathVariables.slug !== undefined &&
+        pathVariables.slug !== pathVariables.routeType &&
+        andFilters.push({
+          property: 'Slug',
+          text: {
+            equals: pathVariables.slug,
+          },
+        })
+      console.dir(`andFilters`)
+      console.dir(andFilters)
+      data = await notion.databases.query({
+        database_id: DATABASES[pathVariables.routeType],
+        sorts: [
+          {
+            property: 'Date',
+            direction: 'descending',
+          },
+        ],
+        filter: {
+          and: andFilters,
+        },
+      })
       break
   }
   return data
