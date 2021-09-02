@@ -45,15 +45,15 @@ const Toast = ({ children, id, indexReverse, preserve, type }) => {
           // bgType,
           'max-h-24 shadow text-secondary',
           { 'opacity-0': indexReverse > 3 },
-          { 'max-h-1': indexReverse > 1 },
+          { 'max-h-1 group-hover:max-h-24': indexReverse > 1 },
           // { 'opacity-100': indexReverse <= 3 },
           {
-            'group-hover:opacity-100 -translate-y-8 scale-90 group-hover:-translate-y-40':
+            'group-hover:opacity-100 -translate-y-12 scale-90 group-hover:scale-100 group-hover:-translate-y-40':
               indexReverse === 3,
           },
           { [bgTypeLighter]: indexReverse === 3 },
           {
-            'group-hover:opacity-100 -translate-y-4 scale-95 group-hover:-translate-y-20':
+            'group-hover:scale-100 -hover:opacity-100 -translate-y-8 scale-95 group-hover:scale-100 group-hover:-translate-y-20':
               indexReverse === 2,
           },
           {
