@@ -1,6 +1,7 @@
 import _map from 'lodash/map'
 import _size from 'lodash/size'
 import Image from 'next/image'
+import React from 'react'
 
 import { NotionBlock } from '~utils/notion'
 import getContentTypeDetail from '~utils/notion/getContentTypeDetail'

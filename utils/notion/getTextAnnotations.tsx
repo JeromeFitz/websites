@@ -24,7 +24,7 @@ const getTextAnnotations = ({ href, plain_text, annotations }) => {
     const link = getNextLink(href)
     // returnElement = <a href={href}>{returnElement}</a>
     returnElement = (
-      <Link as={link.as} href={link.href}>
+      <Link as={link.as.replace('//', '/')} href={link.href}>
         <a
           className={cx(
             'font-semibold',

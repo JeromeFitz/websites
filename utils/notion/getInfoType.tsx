@@ -29,7 +29,7 @@ const getInfoType = (item: any, routeType) => {
 
   return (
     <>
-      <Link as={as} href={`/[...catchAll]`} key={`link-${slug}`}>
+      <Link as={as.replace('//', '/')} href={`/[...catchAll]`} key={`link-${slug}`}>
         <a
           className={cx(
             'font-semibold',
