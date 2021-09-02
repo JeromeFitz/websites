@@ -1,4 +1,19 @@
-import { notion, TYPES } from '~utils/notion/helper'
+import { notion, SEO, TYPES } from '~utils/notion/helper'
+
+const getPageData = async (pageId, routeType) => {
+  console.dir(`pageId: ${pageId}`)
+  console.dir(!!pageId ? pageId : SEO[routeType])
+  // return await notion.blocks.children.list({
+  //   block_id: !!pageId ? pageId : SEO[routeType],
+  // })
+  return !!pageId
+    ? await notion.blocks.children.list({
+        block_id: pageId,
+      })
+    : await notion.pages.retrieve({
+        page_id: SEO[routeType],
+      })
+}
 
 const getPage = async (pathVariables, pageId) => {
   let data
@@ -7,9 +22,7 @@ const getPage = async (pathVariables, pageId) => {
     // case TYPES.blog:
     case TYPES.events:
     case TYPES.shows:
-      data = await notion.blocks.children.list({
-        block_id: pageId,
-      })
+      data = await getPageData(pageId, pathVariables.routeType)
       break
     default:
       break

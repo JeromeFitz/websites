@@ -3,7 +3,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import _size from 'lodash/size'
 import _map from 'lodash/map'
-import _slice from 'lodash/slice'
 import useSWR from 'swr'
 
 import Layout from '~components/Layout'
@@ -208,6 +207,9 @@ const getContentType = (item: NotionBlock) => {
   }
 }
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const getInfoType = (item: any) => {
   // console.dir(item)
   const date = item.properties['Date'].date.start.slice(0, 10)
@@ -219,6 +221,7 @@ const getInfoType = (item: any) => {
       <Link
         as={`/playground/notion/events/${year}/${month}/${day}/${slug}`}
         href={`/playground/notion/[...catchAll]`}
+        key={`link-${slug}`}
       >
         <a
           className={cx(
@@ -238,17 +241,34 @@ const CatchAll = (props) => {
   const {
     content: contentFallback,
     info: infoFallback,
+    items: itemsFallback,
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     isIndex,
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    isPage,
     relativeUrl,
     routeType,
     slug,
     url,
   } = props
 
-  console.dir(props)
+  // console.dir(`props`)
+  // console.dir(props)
+
+  /**
+   * @info Odd behavior, but if listing page we need data swapped
+   */
 
   const { data, error } = useSWR(() => `/api/notion-new/${url}`, fetcher, {
-    fallbackData: { info: infoFallback, content: contentFallback },
+    fallbackData: {
+      info: infoFallback,
+      content: contentFallback,
+      items: itemsFallback,
+    },
     revalidateOnFocus: false,
   })
 
@@ -265,21 +285,26 @@ const CatchAll = (props) => {
     )
 
   // console.dir(data)
-  const { results } = data?.content
-  const { results: info } = data?.info
 
-  const items = _slice(results, 2)
+  const { info = null, content = null, items = null } = data
 
-  // console.dir(`props`)
-  // console.dir(props)
+  // const { results: info } = data?.info
+  // const { results: content } = data?.content
+  // const { results: content } = data?.content
 
-  // console.dir(`items`)
-  // console.dir(items)
+  console.dir(`info`)
+  console.dir(info)
 
-  // console.dir(`info`)
-  // console.dir(info)
+  console.dir(`content`)
+  console.dir(content)
 
-  const { cover, icon, id, properties } = info[0]
+  console.dir(`items`)
+  console.dir(items)
+
+  const isInfoObjectPage = !!info && info?.object === 'page'
+  console.dir(info?.object)
+
+  const { cover, icon, id, properties } = isInfoObjectPage ? info : info.results[0]
 
   const coverImage = cover?.external?.url
   const emoji = !!icon?.emoji ? `${icon.emoji} ` : ''
@@ -336,8 +361,9 @@ const CatchAll = (props) => {
           <ul className={cx('mb-5 flex flex-row flex-wrap gap-2.5')}>{tags}</ul>
         )}
         {/* Dynamic Content */}
-        {isIndex && _map(info, (item) => getInfoType(item))}
-        {!isIndex && _map(items, (item: NotionBlock) => getContentType(item))}
+        {/* {isIndex && _map(items.results, (item) => getInfoType(item))} */}
+        {/*  */}
+        {/* {!isIndex && _map(content, (contentItem: NotionBlock) => getContentType(contentItem))} */}
       </Layout>
     </>
   )
@@ -351,16 +377,31 @@ export const getStaticProps = async ({ preview = false, ...props }) => {
   // const catchAll = ['events', '2020']
   // const catchAll = ['events', '2020', '05', '01', 'jerome-and']
   const pathVariables = getPathVariables(catchAll)
-  // console.dir(`pathVariables`)
-  // console.dir(pathVariables)
-  const info = await getSearch(pathVariables, preview)
-  // console.dir(`info..`)
-  // console.dir(info)
+  // // console.dir(`pathVariables`)
+  // // console.dir(pathVariables)
+  // const info = await getSearch(pathVariables, preview)
+  // // console.dir(`info..`)
+  // // console.dir(info)
+  // const pageId = pathVariables.isIndex ? '' : info.results[0].id
+  // const data = {
+  //   info,
+  //   content: pathVariables.isIndex ? [] : await getPage(pathVariables, pageId),
+  // }
+  let info = await getSearch(pathVariables, preview)
   const pageId = pathVariables.isIndex ? '' : info.results[0].id
-  const data = {
-    info,
-    content: pathVariables.isIndex ? [] : await getPage(pathVariables, pageId),
+  let content = await getPage(pathVariables, pageId)
+  let items = null
+
+  /**
+   * @isIndex override (blog|events)
+   */
+  if (pathVariables.isIndex) {
+    const _info = info
+    info = content
+    content = await getPage(pathVariables, info?.id)
+    items = _info
   }
+  const data = { info, content, items }
   return { props: { preview, ...data, ...pathVariables, ...props } }
 }
 

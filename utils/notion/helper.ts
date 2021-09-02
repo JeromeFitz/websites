@@ -28,4 +28,17 @@ const DATABASES = {
   venues: '8b3f4ae6-ecf7-48ad-8ae9-8b69528e2110',
 }
 
-export { notion, DATABASES, TYPES }
+const SEO = {
+  blog: '',
+  episodes: '',
+  events: '7bc401a6-5f36-409a-8e33-dcd05653d73c',
+  pages: '',
+  people: '',
+  podcasts: '',
+  seo: '',
+  shows: '',
+  users: '',
+  venues: '',
+}
+
+export { notion, DATABASES, SEO, TYPES }

@@ -13,11 +13,25 @@ const notionApi = async (req: NextApiRequest, res: NextApiResponse) => {
     // http://localhost:3000/api/notion/blog/2020/12/28/preview-blog-post?preview=true
     const pathVariables = getPathVariables(catchAll)
 
-    const info = await getSearch(pathVariables, preview)
-    const pageId = info.results[0].id
+    let info = await getSearch(pathVariables, preview)
+    const pageId = pathVariables.isIndex ? '' : info.results[0].id
+    let content = await getPage(pathVariables, pageId)
+    let items = null
+
+    /**
+     * @isIndex override (blog|events)
+     */
+    if (pathVariables.isIndex) {
+      const _info = info
+      info = content
+      content = await getPage(pathVariables, info?.id)
+      items = _info
+    }
+
     res.status(200).json({
       info,
-      content: await getPage(pathVariables, pageId),
+      content,
+      items,
     })
   } catch (e) {
     // eslint-disable-next-line no-console

@@ -1,5 +1,23 @@
+import _addDays from 'date-fns/addDays'
+import _addMonths from 'date-fns/addMonths'
+import _addYears from 'date-fns/addYears'
 import { notion, DATABASES, TYPES } from '~utils/notion/helper'
-import lpad from '~utils/lpad'
+// import lpad from '~utils/lpad'
+
+const dateTimestamp = new Date().toISOString()
+
+const addTime = (date, type) => {
+  switch (type) {
+    case 'year':
+      return _addYears(date, 1).toISOString()
+    case 'month':
+      return _addMonths(date, 1).toISOString()
+    case 'day':
+      // @hack the TimeZone to UTC is ... not great.
+      return _addDays(date, 2).toISOString()
+  }
+  return _addDays(date, -1).toISOString()
+}
 
 const getSearch = async (pathVariables, preview) => {
   let data
@@ -26,9 +44,20 @@ const getSearch = async (pathVariables, preview) => {
       console.dir(`month: ${month}`)
       console.dir(`day: ${day}`)
       console.dir(`slug: ${slug}`)
+
+      const timestampQuery = new Date(
+        `${year ? year : dateTimestamp.slice(0, 3)}-${month ? month : '01'}-${
+          day ? day : '01'
+        }`
+      )
+      console.dir(`timestampQuery:    ${timestampQuery.toISOString()}`)
+      console.dir(`timestampQuery+1:  ${addTime(timestampQuery, 'year')}`)
+      console.dir(`timestampQuery+2:  ${addTime(timestampQuery, 'month')}`)
+      console.dir(`timestampQuery+3:  ${addTime(timestampQuery, 'day')}`)
       /**
        * @test Need to remove this
        */
+      console.dir(`dateTimestamp:    ${dateTimestamp}`)
       !!pathVariables.isIndex &&
         year === undefined &&
         month === undefined &&
@@ -36,7 +65,7 @@ const getSearch = async (pathVariables, preview) => {
         andFilters.push({
           property: 'Date',
           date: {
-            on_or_after: '2020-09-01',
+            on_or_after: dateTimestamp,
           },
         })
 
@@ -57,8 +86,7 @@ const getSearch = async (pathVariables, preview) => {
         andFilters.push({
           property: 'Date',
           date: {
-            on_or_after: `${year}-01-01`,
-            // before: `${parseInt(year) + 1}-01-02`,
+            on_or_after: addTime(timestampQuery, ''),
           },
         })
       year !== undefined &&
@@ -67,8 +95,7 @@ const getSearch = async (pathVariables, preview) => {
         andFilters.push({
           property: 'Date',
           date: {
-            // on_or_after: `${year}-01-02`,
-            before: `${parseInt(year) + 1}-01-01`,
+            before: addTime(timestampQuery, 'year'),
           },
         })
 
@@ -78,8 +105,7 @@ const getSearch = async (pathVariables, preview) => {
         andFilters.push({
           property: 'Date',
           date: {
-            on_or_after: `${year}-${lpad(parseInt(month))}-01`,
-            // before: `${year}-${lpad(parseInt(month) + 1)}-02`,
+            on_or_after: addTime(timestampQuery, ''),
           },
         })
       month !== undefined &&
@@ -88,8 +114,7 @@ const getSearch = async (pathVariables, preview) => {
         andFilters.push({
           property: 'Date',
           date: {
-            // on_or_after: `${year}-${lpad(parseInt(month))}-02`,
-            before: `${year}-${lpad(parseInt(month) + 1)}-01`,
+            before: addTime(timestampQuery, 'month'),
           },
         })
 
@@ -99,7 +124,7 @@ const getSearch = async (pathVariables, preview) => {
         andFilters.push({
           property: 'Date',
           date: {
-            on_or_after: `${year}-${month}-${lpad(parseInt(day))}`,
+            on_or_after: addTime(timestampQuery, ''),
           },
         })
       day !== undefined &&
@@ -108,7 +133,7 @@ const getSearch = async (pathVariables, preview) => {
         andFilters.push({
           property: 'Date',
           date: {
-            before: `${year}-${month}-${lpad(parseInt(day) + 3)}`,
+            before: addTime(timestampQuery, 'day'),
           },
         })
 

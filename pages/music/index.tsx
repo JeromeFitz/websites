@@ -103,10 +103,10 @@ const Music = () => {
           <div className="flex flex-col">
             <fieldset className="flex flex-col mb-4">
               <div>
-                <legend className="text-base font-medium text-primary">
+                <legend className="font-medium text-secondary">
                   Change the Timing Frequency
                 </legend>
-                <p className="text-sm text-primary">
+                <p className="text-sm text-secondary">
                   I’ve had Spotify since March 2020, so you can go back that far or
                   two other options currently.
                 </p>
