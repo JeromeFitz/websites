@@ -29,16 +29,16 @@ const DATABASES = {
 }
 
 const SEO = {
-  blog: '',
+  blog: 'd9a4d872-1274-4657-a5b0-ca3a085e4b9e',
   episodes: '',
   events: '7bc401a6-5f36-409a-8e33-dcd05653d73c',
   pages: '',
-  people: '',
-  podcasts: '',
+  people: 'a94187ce-498c-4beb-88b2-78d56097d9f6',
+  podcasts: '535c2582-ac66-4a6f-8216-6df092d4fbc2',
   seo: '',
-  shows: '',
-  users: '',
-  venues: '',
+  shows: '9e13be55-72c0-4964-b32e-f0ada3c9a082',
+  users: '41500e18-d97d-406d-8ca5-42cece7dafb5',
+  venues: 'd79444f6-8158-4bae-9b75-285e0b5f85b2',
 }
 
 export { notion, DATABASES, SEO, TYPES }

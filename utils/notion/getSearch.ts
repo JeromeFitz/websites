@@ -5,6 +5,7 @@ import { notion, DATABASES, TYPES } from '~utils/notion/helper'
 // import lpad from '~utils/lpad'
 
 const dateTimestamp = new Date().toISOString()
+const dateTimestampBlog = new Date('2020-01-01').toISOString()
 
 const addTime = (date, type) => {
   switch (type) {
@@ -35,6 +36,7 @@ const getSearch = async (pathVariables, preview) => {
     })
 
   switch (pathVariables.routeType) {
+    case TYPES.blog:
     case TYPES.events:
       /**
        * @query
@@ -46,10 +48,12 @@ const getSearch = async (pathVariables, preview) => {
       console.dir(`slug: ${slug}`)
 
       const timestampQuery = new Date(
-        `${year ? year : dateTimestamp.slice(0, 3)}-${month ? month : '01'}-${
-          day ? day : '01'
+        `${!!year ? year : dateTimestamp.slice(0, 4)}-${!!month ? month : '01'}-${
+          !!day ? day : '01'
         }`
       )
+      console.dir(`dateTimestamp:     ${dateTimestamp}`)
+      console.dir(`dateTimestamp:     ${dateTimestamp.slice(0, 4)}`)
       console.dir(`timestampQuery:    ${timestampQuery.toISOString()}`)
       console.dir(`timestampQuery+1:  ${addTime(timestampQuery, 'year')}`)
       console.dir(`timestampQuery+2:  ${addTime(timestampQuery, 'month')}`)
@@ -65,7 +69,7 @@ const getSearch = async (pathVariables, preview) => {
         andFilters.push({
           property: 'Date',
           date: {
-            on_or_after: dateTimestamp,
+            on_or_after: TYPES.blog ? dateTimestampBlog : dateTimestamp,
           },
         })
 
@@ -143,7 +147,7 @@ const getSearch = async (pathVariables, preview) => {
       data = await notion.databases.query({
         database_id: pathVariables.isPage
           ? DATABASES[TYPES.seo]
-          : DATABASES[TYPES.events],
+          : DATABASES[pathVariables.routeType],
         sorts: [
           {
             property: 'Date',
@@ -157,13 +161,13 @@ const getSearch = async (pathVariables, preview) => {
       break
     case TYPES.shows:
       pathVariables.slug !== undefined &&
+        pathVariables.slug !== pathVariables.routeType &&
         andFilters.push({
           property: 'Slug',
           text: {
-            equals:
-              pathVariables.isIndex && !pathVariables.slug
-                ? pathVariables.routeType
-                : pathVariables.slug,
+            equals: pathVariables.isIndex
+              ? pathVariables.routeType
+              : pathVariables.slug,
           },
         })
 
@@ -184,10 +188,27 @@ const getSearch = async (pathVariables, preview) => {
       /**
        * @query
        */
+      // data = await notion.databases.query({
+      //   database_id: pathVariables.isIndex
+      //     ? DATABASES[TYPES.seo]
+      //     : DATABASES[TYPES.shows],
+      //   filter: {
+      //     and: andFilters,
+      //   },
+      // })
+      console.dir(`andFilters`)
+      console.dir(andFilters)
+
       data = await notion.databases.query({
-        database_id: pathVariables.isIndex
+        database_id: pathVariables.isPage
           ? DATABASES[TYPES.seo]
-          : DATABASES[TYPES.shows],
+          : DATABASES[pathVariables.routeType],
+        sorts: [
+          {
+            property: 'Title',
+            direction: 'ascending',
+          },
+        ],
         filter: {
           and: andFilters,
         },

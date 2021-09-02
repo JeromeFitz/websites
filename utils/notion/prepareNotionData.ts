@@ -25,6 +25,7 @@ const getPathVariables = (catchAll) => {
     isIndex = !catchAll[1] || parseInt(slug) > 0
     url = relativeUrl
   }
+  console.dir(!catchAll[1] || parseInt(slug) > 0)
 
   return {
     isIndex,
@@ -79,25 +80,25 @@ const getStaticPathsCatchAll = () => {
    *           for Listings and customizations not hard-coded
    */
   paths.push(
-    // '/playground/notion/blog',
-    // '/playground/notion/colophon',
-    // '/playground/notion/episodes',
-    '/playground/notion/events',
-    '/playground/notion/events/2020',
-    '/playground/notion/events/2020/05',
-    '/playground/notion/events/2020/05/01',
-    '/playground/notion/events/2020/05/01/jerome-and',
-    '/playground/notion/events/2020/05/08',
-    '/playground/notion/events/2020/05/08/jerome-and',
-    '/playground/notion/events/2020/05/22',
-    '/playground/notion/events/2020/05/22/jerome-and',
-    // '/playground/notion/people',
-    // '/playground/notion/podcasts',
-    '/playground/notion/shows',
-    '/playground/notion/shows/jfle',
-    '/playground/notion/shows/alex-o-jerome'
-    // '/playground/notion/users',
-    // '/playground/notion/venues'
+    '/blog',
+    '/colophon',
+    '/episodes',
+    '/events',
+    '/events/2020',
+    '/events/2020/05',
+    '/events/2020/05/01',
+    '/events/2020/05/01/jerome-and',
+    '/events/2020/05/08',
+    '/events/2020/05/08/jerome-and',
+    '/events/2020/05/22',
+    '/events/2020/05/22/jerome-and',
+    '/people',
+    '/podcasts',
+    '/shows',
+    '/shows/jfle',
+    '/shows/alex-o-jerome',
+    '/users',
+    '/venues'
   )
 
   // const { paths: peoplesPaths } = await getStaticPathsDefault({
