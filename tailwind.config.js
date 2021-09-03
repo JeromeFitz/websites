@@ -9,13 +9,15 @@ const {
 const colorsTailwind = require('tailwindcss/colors')
 const _pick = require('lodash/pick')
 
-const themeColors = _pick(colorsTailwind, [
-  // 'primary',
-  // 'secondary',
-  'gray',
-  'green',
-  'yellow',
-])
+const themeColors = colorsTailwind
+// const themeColors = _pick(colorsTailwind, [
+//   // 'primary',
+//   // 'secondary',
+//   'gray',
+//   'green',
+//   'yellow',
+//   'violet',
+// ])
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 function px(pixels) {
@@ -153,6 +155,19 @@ module.exports = {
             'h2,h3,h4': {
               'scroll-margin-top': spacing[32],
             },
+          },
+        },
+        '3xl': {
+          css: {
+            fontSize: '1.875rem',
+            // h1: {
+            //   fontSize: '4rem',
+            // },
+          },
+        },
+        '4xl': {
+          css: {
+            fontSize: '2rem',
           },
         },
       }),

@@ -15,6 +15,7 @@
 @import '_global.css'; /* @note naming convention for alpha-sort */
 @import 'alerts.css';
 @import 'animations.css';
+@import 'badge.css';
 @import 'navigation.css';
 @import 'notion.css';
 /* @import 'prose.css'; */
@@ -31,23 +32,38 @@
     /* @apply text-gray-900 dark:text-gray-100 text-xl; */
     transition: color 0.25s cubic-bezier(0.175, 0.75, 0.5, 1);
     transition-delay: calc(1.5s);
+    @apply my-2 mt-2 inline-flex flex-wrap;
+    /* @apply text-base md:text-lg; */
+    @apply prose md:prose-lg max-w-none;
+  }
+
+  p > a,
+  p > code,
+  p > em,
+  p > s,
+  p > strong,
+  p > u {
+    @apply mx-1;
   }
 
   h1 {
     @apply font-bold tracking-tight mb-6 md:mb-8;
-    @apply text-3xl md:text-5xl;
+    /* @apply text-3xl md:text-5xl; */
+    @apply prose prose-3xl max-w-none;
     /* @apply text-gray-900 dark:text-gray-50; */
   }
 
   h2 {
     @apply font-bold tracking-tight mb-3 md:mb-4;
-    @apply text-xl md:text-3xl;
+    /* @apply text-xl md:text-3xl; */
+    @apply prose prose-2xl max-w-none;
     /* @apply text-gray-900 dark:text-gray-50; */
   }
 
   h3 {
     @apply font-bold tracking-tight mb-2 md:mb-3;
-    @apply text-lg md:text-xl;
+    /* @apply text-lg md:text-xl; */
+    @apply prose prose-xl max-w-none;
     /* @apply text-gray-900 dark:text-gray-50; */
   }
 }

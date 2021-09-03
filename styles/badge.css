@@ -1,0 +1,64 @@
+.badge {
+  @apply inline-flex items-center justify-center leading-none;
+  @apply rounded-lg px-1.5 py-1.5 my-2;
+  @apply text-xs font-semibold;
+  @apply transition;
+}
+
+.badge-blue {
+  @apply bg-blue-800 text-blue-50;
+  @apply dark:bg-blue-900 dark:text-blue-100;
+}
+
+.badge-brown,
+.badge-amber {
+  /* @apply bg-amber-800 text-amber-50;
+  @apply dark:bg-amber-900 dark:text-amber-100; */
+  @apply bg-gray-800 text-gray-50;
+  @apply dark:bg-gray-900 dark:text-gray-100;
+}
+
+.badge-default,
+.badge-fuchsia {
+  /* @apply bg-fuchsia-800 text-fuchsia-50;
+  @apply dark:bg-fuchsia-900 dark:text-fuchsia-100; */
+  @apply bg-gray-800 text-gray-50;
+  @apply dark:bg-gray-900 dark:text-gray-100;
+}
+
+.badge-gray {
+  @apply bg-gray-800 text-gray-50;
+  @apply dark:bg-gray-900 dark:text-gray-100;
+}
+
+.badge-green {
+  @apply bg-green-800 text-green-50;
+  @apply dark:bg-green-900 dark:text-green-100;
+}
+
+.badge-orange {
+  /* @apply bg-orange-800 text-orange-50;
+  @apply dark:bg-orange-900 dark:text-orange-100; */
+  @apply bg-gray-800 text-gray-50;
+  @apply dark:bg-gray-900 dark:text-gray-100;
+}
+
+.badge-pink {
+  @apply bg-pink-800 text-pink-50;
+  @apply dark:bg-pink-900 dark:text-pink-100;
+}
+
+.badge-purple {
+  @apply bg-purple-800 text-purple-50;
+  @apply dark:bg-purple-900 dark:text-purple-100;
+}
+
+.badge-red {
+  @apply bg-red-800 text-red-50;
+  @apply dark:bg-red-900 dark:text-red-100;
+}
+
+.badge-yellow {
+  @apply bg-yellow-800 text-yellow-50;
+  @apply dark:bg-yellow-900 dark:text-yellow-100;
+}

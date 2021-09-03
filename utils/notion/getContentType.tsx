@@ -1,3 +1,4 @@
+import cx from 'clsx'
 import _map from 'lodash/map'
 import _size from 'lodash/size'
 import Image from 'next/image'
@@ -5,6 +6,7 @@ import React from 'react'
 
 import { NotionBlock } from '~utils/notion'
 import getContentTypeDetail from '~utils/notion/getContentTypeDetail'
+import notionToTailwindColor from '~utils/notion/notionToTailwindColor'
 
 const getContentType = (item: NotionBlock) => {
   const { id, type } = item
@@ -56,10 +58,16 @@ const getContentType = (item: NotionBlock) => {
     case 'multi_select':
       // @todo(notion)
       return _map(content, (tag) => (
-        <li key={tag.id} style={{ color: tag.color }}>
+        <li
+          className={cx(`badge badge-${notionToTailwindColor(tag.color)}`)}
+          key={tag.id}
+        >
           {tag.name}
         </li>
       ))
+    case 'relation':
+      console.dir(content)
+      return content[0].id
     default:
       console.dir(`not supported yet: ${type}`)
       break
