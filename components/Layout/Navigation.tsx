@@ -1,4 +1,5 @@
 import { memo, useState, useEffect } from 'react'
+import useSound from 'use-sound'
 import { SkipNavContent, SkipNavLink } from '@reach/skip-nav'
 import { useRouter } from 'next/router'
 import { useTheme } from 'next-themes'
@@ -6,18 +7,67 @@ import NextLink from 'next/link'
 import cx from 'clsx'
 import _map from 'lodash/map'
 import _title from 'title'
-import { MdWbSunny } from 'react-icons/md'
-import { IoMdMoon } from 'react-icons/io'
-
+import { useUI } from '~context/ManagedUIContext'
 import SplitText from '~components/SplitText'
 import { navigation as links } from '~config/notion/website'
+import Emoji from '~components/Notion/Emoji'
+import { animated } from 'react-spring'
+import useBoop from '~hooks/useBoop'
+
+const config = {
+  emoji: {
+    true: '🔉️',
+    false: '🔇️',
+  },
+  theme: {
+    dark: '🌚️',
+    light: '🌞️',
+  },
+  // spring: {
+  //   base: {
+  //     x: 0,
+  //     y: 0,
+  //     rotation: 0,
+  //     scale: 1,
+  //     timing: 150,
+  //     springConfig: {
+  //       tension: 300,
+  //       friction: 10,
+  //     },
+  //   },
+  //   scale: {
+  //     x: 0,
+  //     y: 0,
+  //     rotation: 0,
+  //     scale: 1.2,
+  //     timing: 150,
+  //     springConfig: {
+  //       tension: 300,
+  //       friction: 10,
+  //     },
+  //   },
+  // },
+}
 
 const Navigation = () => {
+  const router = useRouter()
   const { theme, setTheme } = useTheme()
+  const { audio, toggleAudio } = useUI()
+  const [styleAudio, triggerAudio] = useBoop({ scale: 1.2 })
+  const [styleTheme, triggerTheme] = useBoop({ scale: 1.2 })
+
+  const [playBleep] = useSound('/static/audio/bleep.mp3', { soundEnabled: audio })
+  const [playEnableSound] = useSound('/static/audio/enable-sound.mp3', {
+    soundEnabled: true,
+    volume: 0.25,
+  })
+  const [playDisableSound] = useSound('/static/audio/disable-sound.mp3', {
+    soundEnabled: true,
+    volume: 0.25,
+  })
+
   const [mounted, setMounted] = useState(false)
   useEffect(() => setMounted(true), [])
-
-  const router = useRouter()
 
   return (
     <>
@@ -82,27 +132,33 @@ const Navigation = () => {
               })}
           </div>
           <div>
-            <button
-              aria-label={`Toggle to ${theme === 'light' ? 'dark' : 'light'} mode`}
-              type="button"
-              className={cx(
-                'bg-gray-300 dark:bg-gray-700',
-                'rounded-3xl',
-                'p-1.5 h-8 w-8 md:p-3 md:h-10 md:w-10',
-                'border border-black dark:border-white'
-              )}
-              onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+            <animated.button
+              aria-label={`${theme === 'light' ? 'Enable' : 'Disable'} sounds`}
+              className="text-2xl mr-2.5"
+              onClick={() => {
+                triggerAudio
+                audio ? playDisableSound() : playEnableSound()
+                toggleAudio()
+              }}
+              onMouseEnter={() => triggerAudio}
+              style={styleAudio}
             >
-              {mounted && (
-                <span className="h-4 w-4 text-gray-900 dark:text-gray-100">
-                  {theme === 'light' ? (
-                    <IoMdMoon className="text-black" />
-                  ) : (
-                    <MdWbSunny className="text-white" />
-                  )}
-                </span>
-              )}
-            </button>
+              <Emoji character={config.emoji[audio]} />
+            </animated.button>
+
+            <animated.button
+              aria-label={`Activate ${theme === 'light' ? 'dark' : 'light'} mode`}
+              className="text-2xl"
+              onClick={() => {
+                triggerTheme
+                playBleep()
+                setTheme(theme === 'light' ? 'dark' : 'light')
+              }}
+              onMouseEnter={() => triggerTheme}
+              style={styleTheme}
+            >
+              <Emoji character={config.theme[theme || 'dark']} />
+            </animated.button>
           </div>
         </div>
       </nav>

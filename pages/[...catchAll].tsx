@@ -6,8 +6,9 @@ import useSWR, { useSWRConfig } from 'swr'
 
 import Avatar from '~components/Avatar'
 import Layout from '~components/Layout'
-import Breadcrumb from '~components/Notion/Breadcrumb'
+// import Breadcrumb from '~components/Notion/Breadcrumb'
 import Emoji from '~components/Notion/Emoji'
+import ImageCaption from '~components/Notion/ImageCaption'
 import Meta from '~components/Notion/Meta'
 import Link from '~components/Notion/Link'
 import Seo from '~components/Seo'
@@ -23,6 +24,7 @@ import getPage from '~utils/notion/getPage'
 import getSearch from '~utils/notion/getSearch'
 import getContentType from '~utils/notion/getContentType'
 import { NotionBlock } from '~utils/notion'
+import { WEBKIT_BACKGROUND } from '~lib/constants'
 
 /**
  * @plaiceholder
@@ -53,9 +55,6 @@ const CatchAll = (props) => {
     // @ts-ignore
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     isIndex,
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     isPage,
     relativeUrl,
     routeType,
@@ -179,31 +178,26 @@ const CatchAll = (props) => {
         {/* SEO Content */}
         <Seo {...seo} />
         {/* Breadcrumb Content */}
-        <Breadcrumb title={title} />
+        {/* <Breadcrumb title={title} /> */}
         {/* Template Content */}
-        <h1
-          key={id}
-          style={{
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-          }}
-        >
-          {/* h1 identifier */}
+        <h1 key={id} style={WEBKIT_BACKGROUND}>
           {emoji && <Emoji character={emoji} />}
           {!emoji && <Avatar name={title} />}
           {title}
         </h1>
         {!!seoImageData && (
-          <Image
-            alt={seoImageDescription}
-            blurDataURL={seoImageData.base64}
-            key={seoImageSlug}
-            placeholder="blur"
-            title={seoImageDescription}
-            {...seoImageData.img}
-          />
+          <div className="w-2/3 mx-auto">
+            <Image
+              alt={seoImageDescription}
+              blurDataURL={seoImageData.base64}
+              key={seoImageSlug}
+              placeholder="blur"
+              title={seoImageDescription}
+              {...seoImageData.img}
+            />
+            <ImageCaption caption={seoImageDescription} />
+          </div>
         )}
-
         {!!tags && tags.length > 0 && (
           <ul
             key="tagsKeyDog"
@@ -215,13 +209,14 @@ const CatchAll = (props) => {
         {/* Dynamic */}
         {/* Items */}
         {isIndex &&
+          !isPage &&
           _map(items.results, (item, itemIndex) => (
             <>
               <Link key={itemIndex} item={item} routeType={routeType} />
             </>
           ))}
         {/* Content */}
-        {!isIndex &&
+        {(!isIndex || isPage) &&
           _map(content.results, (contentItem: NotionBlock) =>
             getContentType(contentItem)
           )}
@@ -241,10 +236,13 @@ export const getStaticProps = async ({ preview = false, ...props }) => {
   const pathVariables = getPathVariables(catchAll)
   // console.dir(`pathVariables`)
   // console.dir(pathVariables)
+  const pageSlug = pathVariables.isPage && pathVariables.slug
+  const isHomepage = pathVariables.slug === pageSlug
   let info = await getSearch(pathVariables, preview)
   // console.dir(`info`)
   // console.dir(info)
-  const pageId = pathVariables.isIndex ? undefined : info.results[0].id
+  const pageId =
+    pathVariables.isIndex && !isHomepage ? undefined : info.results[0].id
   let content = await getPage(pathVariables, pageId)
   // console.dir(`content`)
   // console.dir(content)
@@ -253,7 +251,7 @@ export const getStaticProps = async ({ preview = false, ...props }) => {
   /**
    * @isIndex override (blog|events)
    */
-  if (pathVariables.isIndex) {
+  if (pathVariables.isIndex && !pathVariables.isPage) {
     const _info = info
     info = content
     content = await getPage(pathVariables, info?.id)

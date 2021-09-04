@@ -12,10 +12,10 @@ const notionApi = async (req: NextApiRequest, res: NextApiResponse) => {
 
     // http://localhost:3000/api/notion/blog/2020/12/28/preview-blog-post?preview=true
     const pathVariables = getPathVariables(catchAll)
-    const homepageSlug = 'homepage-2021'
-    const isHomepage = pathVariables.slug === homepageSlug
-    console.dir(`pathVariables`)
-    console.dir(pathVariables)
+    const pageSlug = pathVariables.isPage && pathVariables.slug
+    const isHomepage = pathVariables.slug === pageSlug
+    // console.dir(`pathVariables`)
+    // console.dir(pathVariables)
     let info = await getSearch(pathVariables, preview)
     // console.dir(`info`)
     // console.dir(info)

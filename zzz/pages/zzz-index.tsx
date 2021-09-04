@@ -11,7 +11,7 @@ import Seo from '~components/Seo'
 /**
  * @note Customized homepage.
  */
-import { sites } from '../next.sitemap'
+import { sites } from '../../next.sitemap'
 const { description, title } = sites[process.env.NEXT_PUBLIC__SITE]
 
 import { routeTypes } from '~config/notion/website'

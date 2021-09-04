@@ -82,23 +82,23 @@ const getStaticPathsCatchAll = () => {
   paths.push(
     '/blog',
     '/colophon',
-    '/episodes',
+    // '/episodes',
     '/events',
-    '/events/2020',
-    '/events/2020/05',
-    '/events/2020/05/01',
-    '/events/2020/05/01/jerome-and',
-    '/events/2020/05/08',
-    '/events/2020/05/08/jerome-and',
-    '/events/2020/05/22',
-    '/events/2020/05/22/jerome-and',
-    '/people',
+    // '/events/2020',
+    // '/events/2020/05',
+    // '/events/2020/05/01',
+    // '/events/2020/05/01/jerome-and',
+    // '/events/2020/05/08',
+    // '/events/2020/05/08/jerome-and',
+    // '/events/2020/05/22',
+    // '/events/2020/05/22/jerome-and',
+    // '/people',
     '/podcasts',
-    '/shows',
-    '/shows/jfle',
-    '/shows/alex-o-jerome',
-    '/users',
-    '/venues'
+    '/shows'
+    // '/shows/jfle',
+    // '/shows/alex-o-jerome',
+    // '/users',
+    // '/venues'
   )
 
   // const { paths: peoplesPaths } = await getStaticPathsDefault({

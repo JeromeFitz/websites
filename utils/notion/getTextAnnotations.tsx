@@ -1,10 +1,22 @@
 import cx from 'clsx'
 import Link from 'next/link'
+import nodeEmoji from 'node-emoji'
+import Emoji from '~components/Notion/Emoji'
 
 import getNextLink from '~utils/notion/getNextLink'
 
+const emojiParser = (text) => {
+  const emojiFound = nodeEmoji.find(text.trim())
+
+  if (emojiFound === undefined) {
+    return text
+  }
+
+  return <Emoji character={emojiFound.emoji} />
+}
+
 const getTextAnnotations = ({ href, plain_text, annotations }) => {
-  let returnElement = <>{plain_text}</>
+  let returnElement = <>{emojiParser(plain_text)}</>
   if (annotations.bold) {
     returnElement = <strong>{returnElement}</strong>
   }

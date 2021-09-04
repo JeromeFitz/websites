@@ -7,7 +7,7 @@ import React from 'react'
 import { NotionBlock } from '~utils/notion'
 import getContentTypeDetail from '~utils/notion/getContentTypeDetail'
 import notionToTailwindColor from '~utils/notion/notionToTailwindColor'
-
+import { WEBKIT_BACKGROUND } from '~lib/constants'
 const getContentType = (item: NotionBlock) => {
   const { id, type } = item
   const content = item[type]
@@ -18,37 +18,19 @@ const getContentType = (item: NotionBlock) => {
      */
     case 'heading_1':
       return (
-        <h2
-          key={id}
-          style={{
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-          }}
-        >
+        <h2 key={id} style={WEBKIT_BACKGROUND}>
           {getContentTypeDetail(content)}
         </h2>
       )
     case 'heading_2':
       return (
-        <h3
-          key={id}
-          style={{
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-          }}
-        >
+        <h3 key={id} style={WEBKIT_BACKGROUND}>
           {getContentTypeDetail(content)}
         </h3>
       )
     case 'heading_3':
       return (
-        <h4
-          key={id}
-          style={{
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-          }}
-        >
+        <h4 key={id} style={WEBKIT_BACKGROUND}>
           {getContentTypeDetail(content)}
         </h4>
       )
@@ -98,7 +80,7 @@ const getContentType = (item: NotionBlock) => {
     case 'relation':
       return !!content[0] && content[0].id
     default:
-      console.dir(`not supported yet: ${type}`)
+      // console.dir(`not supported yet: ${type}`)
       break
   }
 }

@@ -8,6 +8,7 @@ export interface State {
   displayNotification: boolean
   modalView: string
   notificationText: string
+  audio: boolean
 }
 
 const initialState = {
@@ -17,6 +18,7 @@ const initialState = {
   modalView: 'LOGIN_VIEW',
   displayNotification: false,
   notificationText: '',
+  audio: true,
 }
 
 type Action =
@@ -51,6 +53,12 @@ type Action =
   | {
       type: 'SET_MODAL_VIEW'
       view: MODAL_VIEWS
+    }
+  | {
+      type: 'AUDIO_ENABLE'
+    }
+  | {
+      type: 'AUDIO_DISABLE'
     }
 
 type MODAL_VIEWS = 'SIGNUP_VIEW' | 'LOGIN_VIEW' | 'FORGOT_VIEW' | 'MODAL_TEST_VIEW'
@@ -122,6 +130,18 @@ function uiReducer(state: State, action: Action) {
         notificationText: action.text,
       }
     }
+    case 'AUDIO_ENABLE': {
+      return {
+        ...state,
+        audio: true,
+      }
+    }
+    case 'AUDIO_DISABLE': {
+      return {
+        ...state,
+        audio: false,
+      }
+    }
   }
 }
 
@@ -146,25 +166,30 @@ export const UIProvider: FC = (props) => {
   const openNotification = () => dispatch({ type: 'OPEN_TOAST' })
   const closeNotification = () => dispatch({ type: 'CLOSE_TOAST' })
 
+  const toggleAudio = () =>
+    state.audio
+      ? dispatch({ type: 'AUDIO_DISABLE' })
+      : dispatch({ type: 'AUDIO_ENABLE' })
+
   const setModalView = (view: MODAL_VIEWS) => {
-    console.dir(`> setModalView: ${view}`)
     return dispatch({ type: 'SET_MODAL_VIEW', view })
   }
 
   const value = useMemo(
     () => ({
       ...state,
-      openSidebar,
+      closeDropdown,
+      closeModal,
+      closeNotification,
       closeSidebar,
-      toggleSidebar,
       closeSidebarIfPresent,
       openDropdown,
-      closeDropdown,
       openModal,
-      closeModal,
-      setModalView,
       openNotification,
-      closeNotification,
+      openSidebar,
+      setModalView,
+      toggleAudio,
+      toggleSidebar,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [state]

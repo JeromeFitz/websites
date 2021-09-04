@@ -2,6 +2,7 @@ import '~styles/index.css'
 // import 'keen-slider/keen-slider.min.css'
 import '~styles/chrome.css'
 
+import Inspect from 'inspx'
 import { FC, useEffect } from 'react'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
@@ -25,20 +26,22 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <Head>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0,viewport-fit=cover"
-        />
-      </Head>
-      <ManagedUIContext>
-        <NotificationProvider>
-          <Layout pageProps={pageProps}>
-            <Component {...pageProps} />
-            <NProgress />
-          </Layout>
-        </NotificationProvider>
-      </ManagedUIContext>
+      <Inspect>
+        <Head>
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0,viewport-fit=cover"
+          />
+        </Head>
+        <ManagedUIContext>
+          <NotificationProvider>
+            <Layout pageProps={pageProps}>
+              <Component {...pageProps} />
+              <NProgress />
+            </Layout>
+          </NotificationProvider>
+        </ManagedUIContext>
+      </Inspect>
     </>
   )
 }

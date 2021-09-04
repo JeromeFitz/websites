@@ -20,6 +20,7 @@
 @import 'notion.css';
 /* @import 'prose.css'; */
 @import 'reach/skip-nav.css';
+@import 'reach/tooltip.css';
 @import 'selection.css';
 @import 'typography.css';
 @import '~components/NProgress/NProgress.module.css';
@@ -28,6 +29,10 @@
 * @note layer/base seems to only work as last and in root :X
 **/
 @layer base {
+  p em,
+  p s,
+  p strong,
+  p u,
   p {
     /* @apply text-gray-900 dark:text-gray-100 text-xl; */
     @apply my-2 mt-2 inline-flex flex-wrap;
@@ -36,8 +41,14 @@
     @apply text-black dark:text-white;
   }
 
+  li {
+    @apply my-1.5;
+  }
+
   @media (prefers-reduced-motion: no-preference) {
     .breadcrumb-transition,
+    a,
+    li,
     p {
       transition: color 0.25s cubic-bezier(0.175, 0.75, 0.5, 1);
     }
@@ -56,18 +67,27 @@
   p > s,
   p > strong,
   p > u {
+    color: 'inherit';
     @apply mx-1;
+  }
+
+  p > a {
+    @apply text-black dark:text-white;
   }
 
   h1,
   h2,
   h3,
   h4 {
-    /* @apply bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500; */
-    /* @apply bg-gradient-conic-t from-emerald-600 via-emerald-200 to-emerald-800; */
-    @apply bg-gradient-to-r from-green-900 via-green-700 to-green-600;
-    @apply dark:bg-gradient-to-r dark:from-green-200 dark:via-green-400 dark:to-green-500;
     @apply bg-clip-text;
+    @apply bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500;
+    @apply dark:bg-gradient-to-l;
+  }
+
+  h2,
+  h3,
+  h4 {
+    @apply bg-gradient-to-l dark:bg-gradient-to-r;
   }
 
   h1 {

@@ -1,13 +1,22 @@
 import React, { useMemo, useState } from 'react'
 import cx from 'clsx'
+import useSound from 'use-sound'
 
-import { useNotification } from '../../context/Notification'
+import { useNotification } from '~context/Notification'
+import { useUI } from '~context/ManagedUIContext'
+
 import styles from './Notification.module.css'
 
 const Notification = ({ children, id, indexReverse, preserve, type }) => {
   const { removeNotification } = useNotification()
 
   const [isChecked, isCheckedSet] = useState(false)
+
+  const { audio } = useUI()
+  const [playActive] = useSound('/static/audio/pop-down.mp3', {
+    soundEnabled: audio,
+    volume: 0.25,
+  })
 
   const handleVisible = () => {
     isCheckedSet(true)
@@ -84,7 +93,10 @@ const Notification = ({ children, id, indexReverse, preserve, type }) => {
               checked={isChecked}
               className="hidden"
               id={idCss}
-              onChange={() => handleVisible()}
+              onChange={() => {
+                playActive()
+                handleVisible()
+              }}
               type="checkbox"
             />
             {children}

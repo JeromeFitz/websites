@@ -1,17 +1,19 @@
 import cx from 'clsx'
 import _title from 'title'
 import _map from 'lodash/map'
+import { useUI } from '~context/ManagedUIContext'
 
+import useSound from 'use-sound'
 // import { useNotification } from '~context/Notification'
 import useSpotify, { setSpotifyTimeRange } from '~hooks/useSpotify'
 
 import Seo from '~components/Seo'
 import ExternalLink from '~components/Dynamic/ext-link'
 import Layout from '~components/Layout'
-import Header from '~components/Header'
+import Emoji from '~components/Notion/Emoji'
 import { TopArtists, TopTracks } from '~components/Music'
 import SplitText from '~components/SplitText'
-
+import { WEBKIT_BACKGROUND } from '~lib/constants'
 /**
  * @todo Move this away from here, and lib/spotify (process.env)
  */
@@ -51,15 +53,16 @@ export const TIME_RANGE: TIME_RANGE_PROPS = {
 
 const Music = () => {
   const { data } = useSpotify()
+  const { audio } = useUI()
+  const [playOn] = useSound('/static/audio/pop-up-on.mp3', {
+    soundEnabled: audio,
+    volume: 0.25,
+  })
 
   const url = 'https://jeromefitzgerald.com/music'
   const title = 'Music'
   const description =
     'Jerome loves music. Here are his current top artists and tracks.'
-  const header = {
-    description,
-    title,
-  }
 
   const seo = {
     title: title,
@@ -79,18 +82,26 @@ const Music = () => {
   return (
     <Layout>
       <Seo {...seo} />
-      <Header {...header} />
+      <h1 style={WEBKIT_BACKGROUND}>
+        <Emoji character={`🎹️`} margin={true} />
+        {title}
+      </h1>
+      <h2 style={WEBKIT_BACKGROUND}>{description}</h2>
       <div id="content">
         <div className="mb-4">
-          <p className="my-4">
-            <span className="italic font-bold block">Note:</span>
-            <span className="block md:inline">Links will open in, and all </span>data
-            comes from,{' '}
-            <span className="text-green-800 dark:text-green-400 font-medium">
+          <p className="my-4 text-sm">
+            <Emoji character={`📝️`} margin={true} />
+            <span className="italic font-bold mr-1">Note:</span>
+            Links will open in, and all data comes from,{' '}
+            <span className="text-green-800 dark:text-green-400 font-medium ml-1.5">
               Spotify
             </span>
-            . (Please support artists by purchasing music, especially local and
-            indie. Go to shows [when we can again].)
+            .
+          </p>
+          <p className="prose font-medium">
+            Please support artists by purchasing music, especially local and indie.
+            <br />
+            Go to shows (when we can again).
           </p>
         </div>
         <div
@@ -103,7 +114,7 @@ const Music = () => {
           <div className="flex flex-col">
             <fieldset className="flex flex-col mb-4">
               <div>
-                <legend className="font-medium text-secondary">
+                <legend className="font-bold text-secondary">
                   Change the Timing Frequency
                 </legend>
                 <p className="text-sm text-secondary">
@@ -136,7 +147,10 @@ const Music = () => {
                           id={timeRange.title}
                           name={name}
                           // onChange={preserveHandleChange}
-                          onChange={() => handleSpotifyTimeRange(timeRange.value)}
+                          onChange={() => {
+                            playOn()
+                            void handleSpotifyTimeRange(timeRange.value)
+                          }}
                           type="radio"
                           value={timeRange.value}
                         />
@@ -160,7 +174,7 @@ const Music = () => {
           </div>
         </div>
         <div className="my-4 md:my-6">
-          <h2 aria-label="Top Artists">
+          <h2 aria-label="Top Artists" style={WEBKIT_BACKGROUND}>
             <SplitText splitBy="letter" text="Top Artists" />
           </h2>
           <div className="flex flex-col md:flex-row w-full items-start justify-between">
@@ -168,7 +182,7 @@ const Music = () => {
               For 2020 my number one artist was{' '}
               <span className="block md:inline">
                 <ExternalLink
-                  className="text-2xl"
+                  className="text-2xl ml-2"
                   href="spotify:artist:5LhTec3c7dcqBvpLRWbMcf"
                 >
                   Madlib.
@@ -179,7 +193,7 @@ const Music = () => {
           <TopArtists />
         </div>
         <div className="my-8">
-          <h2 aria-label="Top Tracks">
+          <h2 aria-label="Top Tracks" style={WEBKIT_BACKGROUND}>
             <SplitText splitBy="letter" text="Top Tracks" />
           </h2>
           <p className="mb-6 md:mb-8 leading-relaxed">

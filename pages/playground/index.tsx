@@ -4,13 +4,15 @@ import _title from 'title'
 
 import { Banner as AlertBanner } from '~components/Alert'
 import { Container, Grid, Skeleton, Button } from '~components/UI'
-import Header from '~components/Header'
+
 import Layout from '~components/Layout'
 import Seo from '~components/Seo'
 
 import { useUI } from '~context/ManagedUIContext'
 import { useNotification } from '~context/Notification'
 
+import useSound from 'use-sound'
+import { WEBKIT_BACKGROUND } from '~lib/constants'
 import rangeMap from '~utils/rangeMap'
 
 const mockTrueFalse = [
@@ -26,7 +28,7 @@ const mockTypes = [
 ]
 
 const Playground = () => {
-  const { openModal, setModalView } = useUI()
+  const { audio, openModal, setModalView } = useUI()
   const [loading] = useState(false)
   const [disabled] = useState(false)
 
@@ -34,6 +36,19 @@ const Playground = () => {
   const [text, textSet] = useState('foo')
   const [type, typeSet] = useState('info')
   const [preserve, preserveSet] = useState(false)
+
+  const [playActive] = useSound('/static/audio/pop-down.mp3', {
+    soundEnabled: audio,
+    volume: 0.25,
+  })
+  const [playOn] = useSound('/static/audio/pop-up-on.mp3', {
+    soundEnabled: audio,
+    volume: 0.25,
+  })
+  const [playOff] = useSound('/static/audio/pop-up-off.mp3', {
+    soundEnabled: audio,
+    volume: 0.25,
+  })
 
   const typeHandleChange = (e) => {
     typeSet(e.target.value)
@@ -47,10 +62,6 @@ const Playground = () => {
   const title = 'Playground'
   const description =
     'This is just a “safe-haven” for Components that are currently being worked on.'
-  const header = {
-    description,
-    title,
-  }
 
   const seo = {
     title: title,
@@ -73,7 +84,8 @@ const Playground = () => {
     <>
       <Layout>
         <Seo {...seo} />
-        <Header {...header} />
+        <h1 style={WEBKIT_BACKGROUND}>{title}</h1>
+        <h2 style={WEBKIT_BACKGROUND}>{description}</h2>
         <div id="content">
           <Button
             variant="slim"
@@ -86,7 +98,7 @@ const Playground = () => {
           </Button>
           <Container>
             <Grid layout="normal">
-              {rangeMap(12, (i) => (
+              {rangeMap(9, (i) => (
                 <Skeleton
                   key={i}
                   className="w-full animated fadeIn"
@@ -96,7 +108,7 @@ const Playground = () => {
               ))}
             </Grid>
           </Container>
-          <h3 className="w-full bg-success text-white rounded pl-2 py-2">
+          <h3 className="w-full bg-success text-black dark:text-white rounded pl-2 py-2">
             Notification
           </h3>
           <div className="flex flex-col md:flex-row items-start justify-items-start justify-between mt-4 mb-6 w-full overflow-hidden">
@@ -163,19 +175,30 @@ const Playground = () => {
                       type="text"
                       name="message"
                       id="message"
-                      className="mt-1 p-4 focus:ring-yellow-500 focus:border-yellow-500 block shadow-sm sm:text-sm border border-gray-800 dark:border-gray-300 rounded-md text-black"
+                      className={cx(
+                        `mt-1 p-4 focus:ring-yellow-500 focus:border-yellow-500 block shadow-sm sm:text-sm border border-gray-800 dark:border-gray-300 rounded-md`
+                      )}
                       value={text}
                       onChange={(e) => textSet(e.target.value)}
                     />
                   </div>
                   <div className="py-3 text-left sm:px-6">
                     <button
-                      className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-secondary bg-primary hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
+                      className={cx(
+                        `inline-flex justify-center py-2 px-4 border border-transparent`,
+                        `shadow-sm text-sm font-medium rounded-md`,
+                        `dark:text-black dark:bg-white text-white bg-black`,
+                        `focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500`
+                      )}
                       onClick={() => {
                         if (text) {
                           addNotification({ preserve, text, type })
                           // setValue('')
                         }
+                      }}
+                      onMouseDown={() => playActive}
+                      onMouseUp={() => {
+                        playOff()
                       }}
                     >
                       Save
@@ -204,6 +227,10 @@ const Playground = () => {
                           type="checkbox"
                           className="focus:ring-yellow-500 h-4 w-4 text-yellow-600 border-gray-300 rounded"
                           onChange={typeHandleChange}
+                          onMouseDown={() => playActive}
+                          onMouseUp={() => {
+                            type === item.value ? playOff() : playOn()
+                          }}
                           checked={type === item.value}
                           value={item.value}
                         />
