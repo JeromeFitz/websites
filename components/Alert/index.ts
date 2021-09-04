@@ -1,5 +1,5 @@
 import Banner from './Banner'
-import Toast from './Toast'
-import ToastContainer from './ToastContainer'
+import Notification from './Notification'
+import NotificationContainer from './NotifcationContainer'
 
-export { Banner, Toast, ToastContainer }
+export { Banner, Notification, NotificationContainer }

@@ -1,8 +1,14 @@
 .badge {
   @apply inline-flex items-center justify-center leading-none;
-  @apply rounded-lg px-1.5 py-1.5 my-2;
+  /* @apply rounded-lg px-1.5 py-1.5 my-2; */
+  @apply rounded-full py-1.5 px-3 my-2;
   @apply text-xs font-semibold;
-  @apply transition;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .badge {
+    @apply transition;
+  }
 }
 
 .badge-blue {

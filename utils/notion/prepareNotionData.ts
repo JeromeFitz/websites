@@ -17,7 +17,7 @@ const getPathVariables = (catchAll) => {
     url = null
 
   if (!!catchAll) {
-    console.dir(catchAll)
+    // console.dir(catchAll)
     isPage = isPages(catchAll[0])
     relativeUrl = isPage && catchAll[0] === 'homepage' ? '/' : _join(catchAll, '/')
     routeType = isPage ? 'pages' : _first(catchAll)
@@ -25,7 +25,7 @@ const getPathVariables = (catchAll) => {
     isIndex = !catchAll[1] || parseInt(slug) > 0
     url = relativeUrl
   }
-  console.dir(!catchAll[1] || parseInt(slug) > 0)
+  // console.dir(!catchAll[1] || parseInt(slug) > 0)
 
   return {
     isIndex,
@@ -38,7 +38,7 @@ const getPathVariables = (catchAll) => {
 }
 
 const getStaticPathsCatchAll = () => {
-  console.dir(`_ getStaticPaths`)
+  // console.dir(`_ getStaticPaths`)
 
   // // @todo(types)
   // const blogData: any = await getBlogs()
@@ -125,8 +125,8 @@ const getStaticPathsCatchAll = () => {
   // })
   // venuesPath && paths.push(...venuesPath)
 
-  console.dir(`paths`)
-  console.dir(paths)
+  // console.dir(`paths`)
+  // console.dir(paths)
 
   return {
     paths,
@@ -135,26 +135,29 @@ const getStaticPathsCatchAll = () => {
 }
 
 const getStaticPropsCatchAll = ({ preview, ...props }) => {
-  console.dir(`_ getStaticProps`)
-  console.dir(`preview: ${preview}`)
-  console.dir(props)
+  // console.dir(`_ getStaticProps`)
+  // console.dir(`preview: ${preview}`)
+  // console.dir(props)
 
   const { catchAll } = props.params
   const { routeType, slug, url } = getPathVariables(catchAll)
 
-  console.dir(`routeType: ${routeType}`)
+  // console.dir(`routeType: ${routeType}`)
 
-  console.dir(` *** cache ***`)
+  // console.dir(` *** cache ***`)
 
   let cacheData, data
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const cacheFile = path.join(
     process.cwd(),
     '.cache',
     process.env.NEXT_PUBLIC__SITE,
     `${url === '/' ? 'index' : url}.json`
   )
-  console.dir(`> cacheFile: ${cacheFile}`)
+  // console.dir(`> cacheFile: ${cacheFile}`)
 
   if (!data) {
     switch (routeType) {
@@ -183,7 +186,7 @@ const getStaticPropsCatchAll = ({ preview, ...props }) => {
         // data = slug ? await getVenue(catchAll) : await getVenues()
         break
       default:
-        console.dir(`routeType: null`)
+        // console.dir(`routeType: null`)
         break
     }
   }
@@ -196,7 +199,7 @@ const getStaticPropsCatchAll = ({ preview, ...props }) => {
 
   // @note(cache) Don't write file if no data
   if (useCache && !cacheData) {
-    console.dir(`> gS: writeFileSyncRecursive: ${cacheFile}`)
+    // console.dir(`> gS: writeFileSyncRecursive: ${cacheFile}`)
     // writeFileSyncRecursive(cacheFile, JSON.stringify(data), 'utf8')
   }
 
@@ -208,8 +211,8 @@ const getStaticPropsCatchAll = ({ preview, ...props }) => {
     revalidate: 60,
   }
 
-  console.dir(`> returnData`)
-  console.dir(returnData)
+  // console.dir(`> returnData`)
+  // console.dir(returnData)
 
   return returnData
 }

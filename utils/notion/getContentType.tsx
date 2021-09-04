@@ -96,8 +96,7 @@ const getContentType = (item: NotionBlock) => {
         </li>
       ))
     case 'relation':
-      console.dir(content)
-      return content[0].id
+      return !!content[0] && content[0].id
     default:
       console.dir(`not supported yet: ${type}`)
       break

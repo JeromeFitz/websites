@@ -1,22 +1,22 @@
 import React, { useMemo, useState } from 'react'
 import cx from 'clsx'
 
-import { useToast } from '~context/Toast'
-import styles from './Toast.module.css'
+import { useNotification } from '../../context/Notification'
+import styles from './Notification.module.css'
 
-const Toast = ({ children, id, indexReverse, preserve, type }) => {
-  const { removeToast } = useToast()
+const Notification = ({ children, id, indexReverse, preserve, type }) => {
+  const { removeNotification } = useNotification()
 
   const [isChecked, isCheckedSet] = useState(false)
 
   const handleVisible = () => {
     isCheckedSet(true)
-    removeToast(id)
+    removeNotification(id)
   }
   useMemo(() => {
     if (!preserve) {
       const timer = setTimeout(() => {
-        removeToast(id)
+        removeNotification(id)
       }, 3000)
 
       return () => {
@@ -25,12 +25,12 @@ const Toast = ({ children, id, indexReverse, preserve, type }) => {
     } else {
       return () => {}
     }
-  }, [id, preserve, removeToast])
+  }, [id, preserve, removeNotification])
 
-  const idCss = `alert-toast--${id}`
+  const idCss = `alert-notification--${id}`
 
   const cssProperties = {}
-  cssProperties[`--toast-id`] = indexReverse
+  cssProperties[`--notification-id`] = indexReverse
 
   const bgType = `bg-${type}`
   const bgTypeLighter = `bg-${type}-lighter`
@@ -41,7 +41,7 @@ const Toast = ({ children, id, indexReverse, preserve, type }) => {
     <>
       <div
         className={cx(
-          styles.toastContainer,
+          styles.notificationContainer,
           // bgType,
           'max-h-24 shadow text-secondary',
           { 'opacity-0': indexReverse > 3 },
@@ -72,10 +72,11 @@ const Toast = ({ children, id, indexReverse, preserve, type }) => {
           { checked: isChecked }
         )}
         style={cssProperties}
+        role={'status'}
       >
-        <div className={cx(styles.toast)}>
+        <div className={cx(styles.notification)}>
           <div
-            className={cx(styles.toastMessage, {
+            className={cx(styles.notificationMessage, {
               'opacity-0 group-hover:opacity-100': indexReverse > 1,
             })}
           >
@@ -107,4 +108,4 @@ const Toast = ({ children, id, indexReverse, preserve, type }) => {
   )
 }
 
-export default Toast
+export default Notification

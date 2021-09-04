@@ -2,7 +2,7 @@ import cx from 'clsx'
 import _title from 'title'
 import _map from 'lodash/map'
 
-// import { useToast } from '~context/Toast'
+// import { useNotification } from '~context/Notification'
 import useSpotify, { setSpotifyTimeRange } from '~hooks/useSpotify'
 
 import Seo from '~components/Seo'

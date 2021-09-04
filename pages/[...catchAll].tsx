@@ -4,8 +4,10 @@ import Image from 'next/image'
 import _map from 'lodash/map'
 import useSWR, { useSWRConfig } from 'swr'
 
+import Avatar from '~components/Avatar'
 import Layout from '~components/Layout'
 import Breadcrumb from '~components/Notion/Breadcrumb'
+import Emoji from '~components/Notion/Emoji'
 import Meta from '~components/Notion/Meta'
 import Link from '~components/Notion/Link'
 import Seo from '~components/Seo'
@@ -70,21 +72,24 @@ const CatchAll = (props) => {
   /**
    * @info Odd behavior, but if listing page we need data swapped
    */
-
-  const { data, error } = useSWR(() => `/api/notion/${url}`, fetcher, {
-    fallbackData: {
-      info: infoFallback,
-      content: contentFallback,
-      items: itemsFallback,
-    },
-    revalidateOnFocus: true,
-  })
+  const { data, error } = useSWR(
+    () => (!!url ? `/api/notion/${url}` : null),
+    fetcher,
+    {
+      fallbackData: {
+        info: infoFallback,
+        content: contentFallback,
+        items: itemsFallback,
+      },
+      revalidateOnFocus: true,
+    }
+  )
 
   const slugger = new Slugger()
   const { mutate } = useSWRConfig()
   const { data: images } = useSWR('images', { fallbackData: imagesFallback })
-  console.dir(`images`)
-  console.dir(images)
+  // console.dir(`images`)
+  // console.dir(images)
 
   useEffect(() => {
     mutate('images', { ...images, ...imagesFallback }, false)
@@ -97,7 +102,7 @@ const CatchAll = (props) => {
     return (
       <>
         <Layout>
-          <h1>{error ? <>Error</> : <>Loading...</>}</h1>
+          <h1 key={`error-loading-h1`}>{error ? <>Error</> : <>Loading...</>}</h1>
         </Layout>
       </>
     )
@@ -128,7 +133,7 @@ const CatchAll = (props) => {
   const { cover, icon, id, properties } = isInfoObjectPage ? info : info.results[0]
 
   // const coverImage = cover?.external?.url
-  const emoji = !!icon?.emoji ? `${icon.emoji} ` : ''
+  const emoji = !!icon?.emoji ? icon.emoji : ''
   const title = getContentType(properties.Title)
   const seoDescription = getContentType(properties['SEO.Description'])
   const seoImage = getContentType(properties['SEO.Image'])
@@ -165,8 +170,6 @@ const CatchAll = (props) => {
   const seoImageSlug = slugger.slug(properties['SEO.Image']?.files[0]?.external.url)
   const seoImageData = images[seoImageSlug]
 
-  const _title = `${emoji} ${title}`
-
   const isEvent = !isIndex
   const showId = !!properties['ShowIDs'] && getContentType(properties['ShowIDs'])
 
@@ -176,7 +179,7 @@ const CatchAll = (props) => {
         {/* SEO Content */}
         <Seo {...seo} />
         {/* Breadcrumb Content */}
-        <Breadcrumb emoji={emoji} title={title} />
+        <Breadcrumb title={title} />
         {/* Template Content */}
         <h1
           key={id}
@@ -185,7 +188,10 @@ const CatchAll = (props) => {
             WebkitTextFillColor: 'transparent',
           }}
         >
-          {_title}
+          {/* h1 identifier */}
+          {emoji && <Emoji character={emoji} />}
+          {!emoji && <Avatar name={title} />}
+          {title}
         </h1>
         {!!seoImageData && (
           <Image
@@ -198,13 +204,23 @@ const CatchAll = (props) => {
           />
         )}
 
-        {!!tags && (
-          <ul className={cx('mb-5 flex flex-row flex-wrap gap-2.5')}>{tags}</ul>
+        {!!tags && tags.length > 0 && (
+          <ul
+            key="tagsKeyDog"
+            className={cx('mb-5 flex flex-row flex-wrap gap-2.5')}
+          >
+            {tags}
+          </ul>
         )}
-        {/* Dynamic Content */}
+        {/* Dynamic */}
+        {/* Items */}
         {isIndex &&
-          _map(items.results, (item) => <Link item={item} routeType={routeType} />)}
-        {/*  */}
+          _map(items.results, (item, itemIndex) => (
+            <>
+              <Link key={itemIndex} item={item} routeType={routeType} />
+            </>
+          ))}
+        {/* Content */}
         {!isIndex &&
           _map(content.results, (contentItem: NotionBlock) =>
             getContentType(contentItem)
@@ -226,8 +242,8 @@ export const getStaticProps = async ({ preview = false, ...props }) => {
   // console.dir(`pathVariables`)
   // console.dir(pathVariables)
   let info = await getSearch(pathVariables, preview)
-  console.dir(`info`)
-  console.dir(info)
+  // console.dir(`info`)
+  // console.dir(info)
   const pageId = pathVariables.isIndex ? undefined : info.results[0].id
   let content = await getPage(pathVariables, pageId)
   // console.dir(`content`)
@@ -253,12 +269,12 @@ export const getStaticProps = async ({ preview = false, ...props }) => {
     info.object === 'page'
       ? filterImages(info?.properties, 'info')
       : filterImages(info?.results[0]?.properties, 'info')
-  console.dir(`infoImagesFilter`)
-  console.dir(infoImagesFilter)
-  console.dir(info)
+  // console.dir(`infoImagesFilter`)
+  // console.dir(infoImagesFilter)
+  // console.dir(info)
   const infoImagesAwait = infoImagesFilter.files.map(async (imageResult) => {
-    console.dir(`imageResult`)
-    console.dir(imageResult)
+    // console.dir(`imageResult`)
+    // console.dir(imageResult)
     const imageExternalUrl =
       imageResult.type === 'external'
         ? imageResult.external.url
@@ -269,8 +285,8 @@ export const getStaticProps = async ({ preview = false, ...props }) => {
     return { base64, id, img, url: imageExternalUrl }
   })
   const infoImages = await Promise.all(infoImagesAwait)
-  console.dir(`infoImages`)
-  console.dir(infoImages)
+  // console.dir(`infoImages`)
+  // console.dir(infoImages)
 
   const contentImagesFilter =
     !pathVariables.isIndex && filterImages(content?.results, 'content')
@@ -288,8 +304,8 @@ export const getStaticProps = async ({ preview = false, ...props }) => {
     })
   const contentImages =
     !!contentImagesAwait && (await Promise.all(contentImagesAwait))
-  console.dir(`contentImages`)
-  console.dir(contentImages)
+  // console.dir(`contentImages`)
+  // console.dir(contentImages)
 
   // _map(newImages, (image) => console.dir(image))
   // const mergeImages = _merge(...infoImages, ...contentImages)

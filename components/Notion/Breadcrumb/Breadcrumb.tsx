@@ -1,12 +1,10 @@
+import cx from 'clsx'
 import { useRouter } from 'next/router'
 import NextLink from 'next/link'
 import _take from 'lodash/take'
 import _lowerCase from 'lodash/lowerCase'
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const Breadcrumb = ({ emoji, title }) => {
+const Breadcrumb = ({ title }) => {
   const router = useRouter()
 
   let as = ''
@@ -17,8 +15,14 @@ const Breadcrumb = ({ emoji, title }) => {
 
   return (
     <nav aria-label="breadcrumb">
-      <ol className="flex leading-none text-black divide-x divide-black tracking-wide mb-4 capitalize">
-        <li className="pr-2 text-gray-500">
+      <ol
+        className={cx(
+          'flex leading-none tracking-wide mb-4 capitalize',
+          'divide-x divide-black dark:divide-white',
+          'breadcrumb-transition'
+        )}
+      >
+        <li className="pr-2" key={'breadcrumb-'}>
           <NextLink as={'/'} href={'/'}>
             Home
           </NextLink>
@@ -34,16 +38,16 @@ const Breadcrumb = ({ emoji, title }) => {
               : title
 
           return !isLast ? (
-            <li className="px-2 text-gray-700" key={breadcrumbIndex}>
+            <li className="px-2" key={`breadcrumb-${breadcrumbIndex}`}>
               <NextLink as={as} href={href}>
                 {breadcrumb}
               </NextLink>
             </li>
           ) : (
             <li
-              className="px-2 text-gray-900"
+              className="px-2"
               aria-current="page"
-              key={breadcrumbIndex}
+              key={`breadcrumb-${breadcrumbIndex}`}
             >
               {_title}
             </li>

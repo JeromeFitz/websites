@@ -6,7 +6,7 @@ import { FC, useEffect } from 'react'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 
-import ToastProvider from '~context/Toast'
+import NotificationProvider from '~context/Notification'
 import NProgress from '~components/NProgress'
 import { ManagedUIContext } from '~context/ManagedUIContext'
 
@@ -32,12 +32,12 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         />
       </Head>
       <ManagedUIContext>
-        <ToastProvider>
+        <NotificationProvider>
           <Layout pageProps={pageProps}>
             <Component {...pageProps} />
             <NProgress />
           </Layout>
-        </ToastProvider>
+        </NotificationProvider>
       </ManagedUIContext>
     </>
   )

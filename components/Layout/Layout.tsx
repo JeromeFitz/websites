@@ -46,7 +46,8 @@ const Layout: FC<any> = ({ children }) => {
         <article
           className={cx(
             'flex flex-col w-full max-w-4xl',
-            'px-2 py-8 md:px-8 my-0 md:my-8 mx-auto'
+            'px-2 py-4 my-0 mx-auto',
+            'md:px-8 md:py-4'
           )}
         >
           {children}

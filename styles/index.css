@@ -30,11 +30,24 @@
 @layer base {
   p {
     /* @apply text-gray-900 dark:text-gray-100 text-xl; */
-    transition: color 0.25s cubic-bezier(0.175, 0.75, 0.5, 1);
-    transition-delay: calc(1.5s);
     @apply my-2 mt-2 inline-flex flex-wrap;
     /* @apply text-base md:text-lg; */
     @apply prose md:prose-lg max-w-none;
+    @apply text-black dark:text-white;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .breadcrumb-transition,
+    p {
+      transition: color 0.25s cubic-bezier(0.175, 0.75, 0.5, 1);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      @apply transition-all;
+    }
   }
 
   p > a,

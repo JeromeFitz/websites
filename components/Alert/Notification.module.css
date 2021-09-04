@@ -1,6 +1,6 @@
 /* @todo(tailwind) */
 
-.toastArea {
+.notificationArea {
   @apply fixed z-40;
   @apply w-11/12 md:max-w-sm;
   @apply right-0.5 md:right-4;
@@ -8,20 +8,20 @@
   transition: transform 0.4s ease, bottom 0.4s ease;
 }
 
-.toastContainer {
+.notificationContainer {
   @apply absolute bottom-0 right-0 rounded p-6 z-40;
   @apply w-11/12 md:max-w-sm;
   transition: all 0.4s ease;
 }
 
-.toast {
+.notification {
   @apply max-w-full w-96;
   @apply flex items-center justify-between;
   @apply text-sm;
   transition: all 0.4s ease;
 }
 
-.toastMessage {
+.notificationMessage {
   @apply flex flex-row items-end justify-between;
   @apply -mt-1 w-full h-full;
   @apply text-primary;

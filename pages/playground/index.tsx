@@ -9,7 +9,7 @@ import Layout from '~components/Layout'
 import Seo from '~components/Seo'
 
 import { useUI } from '~context/ManagedUIContext'
-import { useToast } from '~context/Toast'
+import { useNotification } from '~context/Notification'
 
 import rangeMap from '~utils/rangeMap'
 
@@ -30,7 +30,7 @@ const Playground = () => {
   const [loading] = useState(false)
   const [disabled] = useState(false)
 
-  const { addToast } = useToast()
+  const { addNotification } = useNotification()
   const [text, textSet] = useState('foo')
   const [type, typeSet] = useState('info')
   const [preserve, preserveSet] = useState(false)
@@ -96,7 +96,9 @@ const Playground = () => {
               ))}
             </Grid>
           </Container>
-          <h3 className="w-full bg-success text-white rounded pl-2 py-2">Toast</h3>
+          <h3 className="w-full bg-success text-white rounded pl-2 py-2">
+            Notification
+          </h3>
           <div className="flex flex-col md:flex-row items-start justify-items-start justify-between mt-4 mb-6 w-full overflow-hidden">
             <div className="flex flex-col md:flex-col">
               <fieldset className="flex flex-col mb-4">
@@ -105,7 +107,7 @@ const Playground = () => {
                     Preserved
                   </legend>
                   <p className="text-sm text-secondary">
-                    Should the toast be preserved until User Action?
+                    Should the notification be preserved until User Action?
                   </p>
                 </div>
                 <div className="mt-4 space-y-4">
@@ -171,7 +173,7 @@ const Playground = () => {
                       className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-secondary bg-primary hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
                       onClick={() => {
                         if (text) {
-                          addToast({ preserve, text, type })
+                          addNotification({ preserve, text, type })
                           // setValue('')
                         }
                       }}
@@ -188,7 +190,7 @@ const Playground = () => {
                   Types
                 </legend>
                 <p className="text-sm text-secondary">
-                  What type of Toast should be shown to User?
+                  What type of Notification should be shown to User?
                 </p>
               </div>
               <div className="mt-4 space-y-4">
@@ -252,9 +254,9 @@ const Playground = () => {
           </div> */}
         </div>
       </Layout>
-      {/* <AlertToast>Toast Test</AlertToast> */}
+      {/* <AlertNotification>Notification Test</AlertNotification> */}
       <></>
-      <AlertBanner>Toast Test</AlertBanner>
+      <AlertBanner>Notification Test</AlertBanner>
     </>
   )
 }

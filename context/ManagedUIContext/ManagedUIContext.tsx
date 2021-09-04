@@ -5,9 +5,9 @@ export interface State {
   displaySidebar: boolean
   displayDropdown: boolean
   displayModal: boolean
-  displayToast: boolean
+  displayNotification: boolean
   modalView: string
-  toastText: string
+  notificationText: string
 }
 
 const initialState = {
@@ -15,8 +15,8 @@ const initialState = {
   displayDropdown: false,
   displayModal: false,
   modalView: 'LOGIN_VIEW',
-  displayToast: false,
-  toastText: '',
+  displayNotification: false,
+  notificationText: '',
 }
 
 type Action =
@@ -34,7 +34,7 @@ type Action =
     }
   | {
       type: 'SET_TOAST_TEXT'
-      text: ToastText
+      text: NotificationText
     }
   | {
       type: 'OPEN_DROPDOWN'
@@ -54,7 +54,7 @@ type Action =
     }
 
 type MODAL_VIEWS = 'SIGNUP_VIEW' | 'LOGIN_VIEW' | 'FORGOT_VIEW' | 'MODAL_TEST_VIEW'
-type ToastText = string
+type NotificationText = string
 
 export const UIContext = React.createContext<State | any>(initialState)
 
@@ -101,13 +101,13 @@ function uiReducer(state: State, action: Action) {
     case 'OPEN_TOAST': {
       return {
         ...state,
-        displayToast: true,
+        displayNotification: true,
       }
     }
     case 'CLOSE_TOAST': {
       return {
         ...state,
-        displayToast: false,
+        displayNotification: false,
       }
     }
     case 'SET_MODAL_VIEW': {
@@ -119,7 +119,7 @@ function uiReducer(state: State, action: Action) {
     case 'SET_TOAST_TEXT': {
       return {
         ...state,
-        toastText: action.text,
+        notificationText: action.text,
       }
     }
   }
@@ -143,8 +143,8 @@ export const UIProvider: FC = (props) => {
   const openModal = () => dispatch({ type: 'OPEN_MODAL' })
   const closeModal = () => dispatch({ type: 'CLOSE_MODAL' })
 
-  const openToast = () => dispatch({ type: 'OPEN_TOAST' })
-  const closeToast = () => dispatch({ type: 'CLOSE_TOAST' })
+  const openNotification = () => dispatch({ type: 'OPEN_TOAST' })
+  const closeNotification = () => dispatch({ type: 'CLOSE_TOAST' })
 
   const setModalView = (view: MODAL_VIEWS) => {
     console.dir(`> setModalView: ${view}`)
@@ -163,8 +163,8 @@ export const UIProvider: FC = (props) => {
       openModal,
       closeModal,
       setModalView,
-      openToast,
-      closeToast,
+      openNotification,
+      closeNotification,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [state]

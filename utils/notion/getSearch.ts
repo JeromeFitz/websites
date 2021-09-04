@@ -23,8 +23,8 @@ const addTime = (date, type) => {
 const getSearch = async (pathVariables, preview) => {
   let data
 
-  console.dir(`pathVariables`)
-  console.dir(pathVariables)
+  // console.dir(`pathVariables`)
+  // console.dir(pathVariables)
 
   const andFilters = []
   !preview &&
@@ -42,23 +42,23 @@ const getSearch = async (pathVariables, preview) => {
        * @query
        */
       const [, year, month, day, slug] = pathVariables.url.split('/')
-      console.dir(`year: ${year}`)
-      console.dir(`month: ${month}`)
-      console.dir(`day: ${day}`)
-      console.dir(`slug: ${slug}`)
+      // console.dir(`year: ${year}`)
+      // console.dir(`month: ${month}`)
+      // console.dir(`day: ${day}`)
+      // console.dir(`slug: ${slug}`)
 
       const timestampQuery = new Date(
         `${!!year ? year : dateTimestamp.slice(0, 4)}-${!!month ? month : '01'}-${
           !!day ? day : '01'
         }`
       )
-      console.dir(`dateTimestampBlog: ${dateTimestampBlog}`)
-      console.dir(`dateTimestamp:     ${dateTimestamp}`)
-      console.dir(`dateTimestamp:     ${dateTimestamp.slice(0, 4)}`)
-      console.dir(`timestampQuery:    ${timestampQuery.toISOString()}`)
-      console.dir(`timestampQuery+1:  ${addTime(timestampQuery, 'year')}`)
-      console.dir(`timestampQuery+2:  ${addTime(timestampQuery, 'month')}`)
-      console.dir(`timestampQuery+3:  ${addTime(timestampQuery, 'day')}`)
+      // console.dir(`dateTimestampBlog: ${dateTimestampBlog}`)
+      // console.dir(`dateTimestamp:     ${dateTimestamp}`)
+      // console.dir(`dateTimestamp:     ${dateTimestamp.slice(0, 4)}`)
+      // console.dir(`timestampQuery:    ${timestampQuery.toISOString()}`)
+      // console.dir(`timestampQuery+1:  ${addTime(timestampQuery, 'year')}`)
+      // console.dir(`timestampQuery+2:  ${addTime(timestampQuery, 'month')}`)
+      // console.dir(`timestampQuery+3:  ${addTime(timestampQuery, 'day')}`)
       /**
        * @test Need to remove this
        */
@@ -144,8 +144,8 @@ const getSearch = async (pathVariables, preview) => {
           },
         })
 
-      console.dir(`andFilters`)
-      console.dir(andFilters)
+      // console.dir(`andFilters`)
+      // console.dir(andFilters)
 
       data = await notion.databases.query({
         database_id: pathVariables.isPage
@@ -199,8 +199,8 @@ const getSearch = async (pathVariables, preview) => {
       //     and: andFilters,
       //   },
       // })
-      console.dir(`andFilters`)
-      console.dir(andFilters)
+      // console.dir(`andFilters`)
+      // console.dir(andFilters)
 
       data = await notion.databases.query({
         database_id: pathVariables.isPage
@@ -226,8 +226,8 @@ const getSearch = async (pathVariables, preview) => {
             equals: pathVariables.slug,
           },
         })
-      console.dir(`andFilters`)
-      console.dir(andFilters)
+      // console.dir(`andFilters`)
+      // console.dir(andFilters)
       data = await notion.databases.query({
         database_id: DATABASES[pathVariables.routeType],
         sorts: [
