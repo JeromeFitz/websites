@@ -17,11 +17,41 @@ const getContentType = (item: NotionBlock) => {
      * @note h1 = Title (Static Content) Type, increase Notion Headings
      */
     case 'heading_1':
-      return <h2 key={id}>{getContentTypeDetail(content)}</h2>
+      return (
+        <h2
+          key={id}
+          style={{
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+          }}
+        >
+          {getContentTypeDetail(content)}
+        </h2>
+      )
     case 'heading_2':
-      return <h3 key={id}>{getContentTypeDetail(content)}</h3>
+      return (
+        <h3
+          key={id}
+          style={{
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+          }}
+        >
+          {getContentTypeDetail(content)}
+        </h3>
+      )
     case 'heading_3':
-      return <h4 key={id}>{getContentTypeDetail(content)}</h4>
+      return (
+        <h4
+          key={id}
+          style={{
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+          }}
+        >
+          {getContentTypeDetail(content)}
+        </h4>
+      )
     case 'paragraph':
       return <p key={id}>{getContentTypeDetail(content)}</p>
     case 'bulleted_list_item':

@@ -46,24 +46,34 @@
     @apply mx-1;
   }
 
+  h1,
+  h2,
+  h3,
+  h4 {
+    /* @apply bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500; */
+    /* @apply bg-gradient-conic-t from-emerald-600 via-emerald-200 to-emerald-800; */
+    @apply bg-gradient-to-r from-green-900 via-green-700 to-green-600;
+    @apply dark:bg-gradient-to-r dark:from-green-200 dark:via-green-400 dark:to-green-500;
+    @apply bg-clip-text;
+  }
+
   h1 {
     @apply font-bold tracking-tight mb-6 md:mb-8;
-    /* @apply text-3xl md:text-5xl; */
     @apply prose prose-3xl max-w-none;
-    /* @apply text-gray-900 dark:text-gray-50; */
   }
 
   h2 {
     @apply font-bold tracking-tight mb-3 md:mb-4;
-    /* @apply text-xl md:text-3xl; */
     @apply prose prose-2xl max-w-none;
-    /* @apply text-gray-900 dark:text-gray-50; */
   }
 
   h3 {
     @apply font-bold tracking-tight mb-2 md:mb-3;
-    /* @apply text-lg md:text-xl; */
     @apply prose prose-xl max-w-none;
-    /* @apply text-gray-900 dark:text-gray-50; */
+  }
+
+  h4 {
+    @apply font-bold tracking-tight mb-2 md:mb-3;
+    @apply prose prose-lg max-w-none;
   }
 }

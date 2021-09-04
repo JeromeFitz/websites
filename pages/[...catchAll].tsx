@@ -178,7 +178,15 @@ const CatchAll = (props) => {
         {/* Breadcrumb Content */}
         <Breadcrumb emoji={emoji} title={title} />
         {/* Template Content */}
-        <h1 key={id}>{_title}</h1>
+        <h1
+          key={id}
+          style={{
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+          }}
+        >
+          {_title}
+        </h1>
         {!!seoImageData && (
           <Image
             alt={seoImageDescription}
