@@ -17,9 +17,17 @@ const Meta = ({ id }) => {
     )
   console.dir(data)
 
+  const { icon, properties } = data
+  const emoji = icon.emoji
+  const title = properties['Title'].title[0].plain_text
+
   return (
     <>
-      <h1>Meta</h1>
+      <h1>
+        {emoji}
+        {` `}
+        {title}
+      </h1>
     </>
   )
 }

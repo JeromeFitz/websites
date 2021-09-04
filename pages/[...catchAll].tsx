@@ -209,7 +209,7 @@ const CatchAll = (props) => {
           _map(content.results, (contentItem: NotionBlock) =>
             getContentType(contentItem)
           )}
-        {isEvent && <Meta id={showId} />}
+        {isEvent && showId && <Meta id={showId} />}
       </Layout>
     </>
   )
