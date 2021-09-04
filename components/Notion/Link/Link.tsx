@@ -32,9 +32,11 @@ const Link = ({ item, routeType }) => {
           {properties['Title'].title[0].plain_text}
         </a>
       </NextLink>
-      <p className={cx('prose pb-2')}>
-        {properties['SEO.Description'].rich_text[0].plain_text}
-      </p>
+      {!!properties['SEO.Description'].rich_text[0] && (
+        <p className={cx('prose pb-2')}>
+          {properties['SEO.Description'].rich_text[0].plain_text}
+        </p>
+      )}
     </>
   )
 }
