@@ -1,8 +1,8 @@
 import cx from 'clsx'
-import { useRouter } from 'next/router'
-import NextLink from 'next/link'
-import _take from 'lodash/take'
 import _lowerCase from 'lodash/lowerCase'
+import _take from 'lodash/take'
+import NextLink from 'next/link'
+import { useRouter } from 'next/router'
 
 const Breadcrumb = ({ title }) => {
   const router = useRouter()

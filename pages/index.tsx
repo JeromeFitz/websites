@@ -1,36 +1,33 @@
-import { useEffect } from 'react'
-// import cx from 'clsx'
-import Image from 'next/image'
+import Slugger from 'github-slugger'
+import _filter from 'lodash/filter'
 import _map from 'lodash/map'
+import Image from 'next/image'
+import { getPlaiceholder } from 'plaiceholder'
+import { useEffect } from 'react'
 import useSWR, { useSWRConfig } from 'swr'
 
-import Avatar from '~components/Avatar'
 import Layout from '~components/Layout'
-// import Breadcrumb from '~components/Notion/Breadcrumb'
-import Emoji from '~components/Notion/Emoji'
 import ImageCaption from '~components/Notion/ImageCaption'
-// import Meta from '~components/Notion/Meta'
-// import Link from '~components/Notion/Link'
+import Title from '~components/Notion/Title'
 import Seo from '~components/Seo'
-
 import fetcher from '~lib/fetcher'
-
-// import getNextLink from '~utils/getNextLink'
+import { NotionBlock } from '~utils/notion'
+import getContentType from '~utils/notion/getContentType'
+import getPage from '~utils/notion/getPage'
+import getSearch from '~utils/notion/getSearch'
 import {
   getPathVariables,
   // getStaticPathsCatchAll,
 } from '~utils/notion/prepareNotionData'
-import getPage from '~utils/notion/getPage'
-import getSearch from '~utils/notion/getSearch'
-import getContentType from '~utils/notion/getContentType'
-import { NotionBlock } from '~utils/notion'
-import { WEBKIT_BACKGROUND } from '~lib/constants'
+
+// import cx from 'clsx'
+// import Breadcrumb from '~components/Notion/Breadcrumb'
+// import Meta from '~components/Notion/Meta'
+// import Link from '~components/Notion/Link'
+// import getNextLink from '~utils/getNextLink'
 /**
  * @plaiceholder
  */
-import Slugger from 'github-slugger'
-import { getPlaiceholder } from 'plaiceholder'
-import _filter from 'lodash/filter'
 
 const filterImages = (data, type) => {
   switch (type) {
@@ -157,7 +154,7 @@ const CatchAll = (props) => {
   // const isEvent = !isIndex
   // const showId = !!properties['ShowIDs'] && getContentType(properties['ShowIDs'])
   const imageProps = {
-    ...seoImageData.img,
+    ...seoImageData?.img,
     height: 1200,
     width: 1200,
   }
@@ -168,11 +165,7 @@ const CatchAll = (props) => {
         {/* SEO Content */}
         <Seo {...seo} />
         {/* Template Content */}
-        <h1 key={id} style={WEBKIT_BACKGROUND}>
-          {emoji && <Emoji character={emoji} />}
-          {!emoji && <Avatar name={title} />}
-          {title}
-        </h1>
+        <Title emoji={emoji} id={id} title={title} />
         {!!seoImageData && (
           <div className="w-2/3 mx-auto">
             <Image

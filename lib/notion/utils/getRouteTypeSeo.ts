@@ -1,8 +1,8 @@
 import _find from 'lodash/find'
-import getTableData from '~lib/notion/utils/getTableData'
-import rpc, { values } from '~lib/notion/rpc'
 
 import { routeTypes } from '~config/notion/website'
+import rpc, { values } from '~lib/notion/rpc'
+import getTableData from '~lib/notion/utils/getTableData'
 
 const getRouteTypeSeo = async (slug) => {
   const routeTypeId = routeTypes['seo'].indexId

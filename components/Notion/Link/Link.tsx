@@ -1,9 +1,8 @@
 import cx from 'clsx'
 import NextLink from 'next/link'
 
-import getInfoType from '~utils/notion/getInfoType'
-
 import Emoji from '~components/Notion/Emoji'
+import getInfoType from '~utils/notion/getInfoType'
 
 const Link = ({ item, routeType }) => {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment

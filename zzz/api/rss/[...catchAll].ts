@@ -10,10 +10,10 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import Podcast from 'podcast'
 
 import { getNextSeo, isPages, routeTypes } from '~config/notion/website'
+import getStaticPropsQueryCollection from '~lib/notion/utils/getStaticPropsQueryCollection'
+import { getStaticPropsCatchAll } from '~utils/getStatic'
 import getTimeInSeconds from '~utils/getTimeInSeconds'
 // import { getStaticProps } from '~utils/notion/getStaticNotion'
-import { getStaticPropsCatchAll } from '~utils/getStatic'
-import getStaticPropsQueryCollection from '~lib/notion/utils/getStaticPropsQueryCollection'
 
 const isDebug = false
 

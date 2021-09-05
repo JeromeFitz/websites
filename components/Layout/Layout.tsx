@@ -1,11 +1,9 @@
-import React, { FC } from 'react'
 import cx from 'clsx'
 import dynamic from 'next/dynamic'
+import React, { FC } from 'react'
 
-import { Modal, LoadingDots } from '~components/UI'
 import { Footer, Navigation } from '~components/Layout'
-// import CTA from '~components/CTA'
-
+import { Modal, LoadingDots } from '~components/UI'
 import { useUI } from '~context/ManagedUIContext'
 
 const Loading = () => (

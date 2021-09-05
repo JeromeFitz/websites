@@ -3,14 +3,13 @@ import '~styles/index.css'
 import '~styles/chrome.css'
 
 import Inspect from 'inspx'
-import { FC, useEffect } from 'react'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
+import { FC, useEffect } from 'react'
 
-import NotificationProvider from '~context/Notification'
 import NProgress from '~components/NProgress'
 import { ManagedUIContext } from '~context/ManagedUIContext'
-
+import NotificationProvider from '~context/Notification'
 import { useAnalytics } from '~lib/analytics'
 
 const Noop: FC = ({ children }) => <>{children}</>

@@ -1,10 +1,10 @@
-import * as React from 'react'
-import cx from 'clsx'
 import {
   Tooltip as ReachTooltip,
   TooltipProps as ReachTooltipProps,
 } from '@reach/tooltip'
 import VisuallyHidden from '@reach/visually-hidden'
+import cx from 'clsx'
+import * as React from 'react'
 
 const Tooltip = React.forwardRef<
   HTMLDivElement,

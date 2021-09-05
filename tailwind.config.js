@@ -1,4 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+const _pick = require('lodash/pick')
+const colorsTailwind = require('tailwindcss/colors')
 const {
   backgroundImage,
   boxShadow,
@@ -7,8 +9,6 @@ const {
   lineHeight,
   spacing,
 } = require('tailwindcss/defaultTheme')
-const colorsTailwind = require('tailwindcss/colors')
-const _pick = require('lodash/pick')
 
 const themeColors = colorsTailwind
 // const themeColors = _pick(colorsTailwind, [

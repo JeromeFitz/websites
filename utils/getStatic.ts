@@ -1,13 +1,12 @@
+import path from 'path'
+
 import _isEqual from 'lodash/isEqual'
 import _join from 'lodash/join'
 import _last from 'lodash/last'
 import _map from 'lodash/map'
 import _uniqWith from 'lodash/uniqWith'
-import path from 'path'
 
 import { isPages } from '~config/notion/website'
-import { readFile, writeFileSyncRecursive } from '~lib/notion/helpers/fs-helpers'
-import { getNotionLink } from '~lib/notion/helpers'
 import {
   getBlog,
   getBlogs,
@@ -26,6 +25,8 @@ import {
   getVenue,
   getVenues,
 } from '~lib/cms-api'
+import { getNotionLink } from '~lib/notion/helpers'
+import { readFile, writeFileSyncRecursive } from '~lib/notion/helpers/fs-helpers'
 import getTimestamp from '~utils/getTimestamp'
 
 // @todo(types)

@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import useSWR from 'swr'
 import cx from 'clsx'
 // import { Blog, BlogItem } from '~lib/types'
 import _map from 'lodash/map'
 import _sortBy from 'lodash/sortBy'
 import Link from 'next/link'
-import { getNotionLink } from '~lib/notion/helpers'
-import { textBlock } from '~lib/notion/helpers/renderers'
+import useSWR from 'swr'
 
 import SplitText from '~components/SplitText'
+import { getNotionLink } from '~lib/notion/helpers'
+import { textBlock } from '~lib/notion/helpers/renderers'
 
 // const HOUR = 3600000
 const MINUTE = 60000

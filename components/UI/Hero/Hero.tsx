@@ -1,8 +1,9 @@
+import Link from 'next/link'
 import React, { FC } from 'react'
 import { MdArrowForward as RightArrow } from 'react-icons/md'
-import Link from 'next/link'
 
 import { Container } from '~components/UI'
+
 import styles from './Hero.module.css'
 
 interface Props {

@@ -19,7 +19,7 @@ const Emoji = ({ character, margin = false }) => {
     <span
       aria-label={label}
       // @hack(emoji) this breaks the underline on links
-      className={cx('not-italic', margin && 'mr-1.5')}
+      className={cx('not-italic z-10', margin && 'mr-1.5')}
       role="img"
       style={{
         WebkitBackgroundClip: 'text',

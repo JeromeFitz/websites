@@ -1,5 +1,5 @@
 import Banner from './Banner'
-import Notification from './Notification'
 import NotificationContainer from './NotifcationContainer'
+import Notification from './Notification'
 
 export { Banner, Notification, NotificationContainer }

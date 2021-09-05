@@ -1,6 +1,7 @@
 // ref: https://www.joshwcomeau.com/react/boop/
 import { useCallback, useEffect, useState } from 'react'
 import { useSpring } from 'react-spring'
+
 import usePrefersReducedMotion from '~hooks/usePrefersReducedMotion'
 
 function useBoop({

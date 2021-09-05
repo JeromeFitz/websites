@@ -1,6 +1,8 @@
-import React, { CSSProperties } from 'react'
 import cx from 'clsx'
+import React, { CSSProperties } from 'react'
+
 import px from '~utils/toPixels'
+
 import styles from './Skeleton.module.css'
 
 interface Props {

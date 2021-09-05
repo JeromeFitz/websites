@@ -1,17 +1,15 @@
-import { useState } from 'react'
 import cx from 'clsx'
+import { useState } from 'react'
 import _title from 'title'
+import useSound from 'use-sound'
 
 import { Banner as AlertBanner } from '~components/Alert'
-import { Container, Grid, Skeleton, Button } from '~components/UI'
-
 import Layout from '~components/Layout'
+import Title from '~components/Notion/Title'
 import Seo from '~components/Seo'
-
+import { Container, Grid, Skeleton, Button } from '~components/UI'
 import { useUI } from '~context/ManagedUIContext'
 import { useNotification } from '~context/Notification'
-
-import useSound from 'use-sound'
 import { WEBKIT_BACKGROUND } from '~lib/constants'
 import rangeMap from '~utils/rangeMap'
 
@@ -84,7 +82,7 @@ const Playground = () => {
     <>
       <Layout>
         <Seo {...seo} />
-        <h1 style={WEBKIT_BACKGROUND}>{title}</h1>
+        <Title emoji={``} id={`fdsajklfads`} title={title} />
         <h2 style={WEBKIT_BACKGROUND}>{description}</h2>
         <div id="content">
           <Button

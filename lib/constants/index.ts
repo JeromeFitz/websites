@@ -5,9 +5,19 @@ const WEBKIT_BACKGROUND = {
   WebkitTextFillColor: 'transparent',
 }
 
-const WEBKIT_BACKGROUND__BREWAK = {
-  WebkitBackgroundClip: 'text',
+const WEBKIT_BACKGROUND_INHERIT = {
+  WebkitBackgroundClip: 'inherit',
   WebkitTextFillColor: 'transparent',
 }
 
-export { EMOJI_FALLBACK, WEBKIT_BACKGROUND, WEBKIT_BACKGROUND__BREWAK }
+const WEBKIT_BACKGROUND__BREAK = {
+  WebkitBackgroundClip: 'text',
+  WebkitTextFillColor: 'yellow',
+}
+
+export {
+  EMOJI_FALLBACK,
+  WEBKIT_BACKGROUND,
+  WEBKIT_BACKGROUND_INHERIT,
+  WEBKIT_BACKGROUND__BREAK,
+}

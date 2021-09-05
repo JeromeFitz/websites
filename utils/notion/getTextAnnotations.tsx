@@ -1,8 +1,8 @@
 import cx from 'clsx'
 import Link from 'next/link'
 import nodeEmoji from 'node-emoji'
-import Emoji from '~components/Notion/Emoji'
 
+import Emoji from '~components/Notion/Emoji'
 import getNextLink from '~utils/notion/getNextLink'
 
 const emojiParser = (text) => {

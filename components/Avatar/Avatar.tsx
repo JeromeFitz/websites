@@ -3,9 +3,9 @@ import cx from 'clsx'
 import AvatarFallback from './Avatar.fallback'
 import { AvatarProps } from './Avatar.types'
 
-const Avatar = ({ name = 'jerome' }: AvatarProps) => {
+const Avatar = ({ margin = false, name = 'jerome' }: AvatarProps) => {
   return (
-    <span className={cx('rounded inline pr-1.5')}>
+    <span className={cx('rounded inline z-10', margin ? 'pr-3' : 'pr-2')}>
       <AvatarFallback name={name.replace(/\s+/g, '')} />
     </span>
   )

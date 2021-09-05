@@ -1,5 +1,6 @@
 import cx from 'clsx'
 import { useState } from 'react'
+
 import Container from '~components/Container'
 
 const Banner = ({ isPersistent = true, children }) => {

@@ -1,4 +1,3 @@
-import navigation from './navigation'
 import getCache from '~config/notion/schema/getCache'
 import {
   blog,
@@ -12,6 +11,8 @@ import {
   users,
   venues,
 } from '~config/notion/schema/routeTypes'
+
+import navigation from './navigation'
 
 const notion = {
   topLevel: {

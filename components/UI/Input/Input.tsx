@@ -1,6 +1,7 @@
 import cx from 'clsx'
-import styles from './Input.module.css'
 import React, { InputHTMLAttributes } from 'react'
+
+import styles from './Input.module.css'
 
 export interface Props extends InputHTMLAttributes<HTMLInputElement> {
   className?: string

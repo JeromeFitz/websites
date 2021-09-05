@@ -3,7 +3,6 @@ import _merge from 'lodash/merge'
 
 import { fetchCmsAPI } from '~lib/notion'
 import getValues from '~lib/notion/utils/getValues'
-
 import getTimestamp from '~utils/getTimestamp'
 
 const nonPreviewTypes = new Set(['editor', 'page', 'collection_view'])

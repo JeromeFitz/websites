@@ -5,7 +5,6 @@ import _merge from 'lodash/merge'
 
 import getCollectionView from '~config/notion/schema/getCollectionView'
 import { isPages, urlBase } from '~config/notion/website'
-
 import generateQueryCollection from '~lib/notion/utils/generateQueryCollection'
 import getBlocks from '~lib/notion/utils/getBlocks'
 import getProperties from '~lib/notion/utils/getProperties'

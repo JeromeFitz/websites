@@ -82,6 +82,7 @@
     @apply bg-clip-text;
     @apply bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500;
     @apply dark:bg-gradient-to-l;
+    @apply overflow-x-hidden;
   }
 
   h2,
@@ -91,8 +92,10 @@
   }
 
   h1 {
-    @apply font-bold tracking-tight mb-6 md:mb-8;
-    @apply prose prose-3xl max-w-none;
+    /* @apply font-bold tracking-tight mb-6 md:mb-8; */
+    /* @apply prose prose-3xl max-w-none; */
+    @apply mb-6 md:mb-8;
+    @apply text-7xl tracking-tight leading-normal font-extrabold;
   }
 
   h2 {

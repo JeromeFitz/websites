@@ -1,8 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import { getPathVariables } from '~utils/notion/prepareNotionData'
 import getPage from '~utils/notion/getPage'
 import getSearch from '~utils/notion/getSearch'
+import { getPathVariables } from '~utils/notion/prepareNotionData'
 
 const notionApi = async (req: NextApiRequest, res: NextApiResponse) => {
   try {

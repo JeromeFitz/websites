@@ -1,13 +1,12 @@
 import cx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
-import useSWR from 'swr'
 import { MdOpenInNew } from 'react-icons/md'
-
-import fetcher from '~lib/fetcher'
-import { spotifyFavoriteTracks } from '~lib/spotify/favorites'
+import useSWR from 'swr'
 
 import SplitText from '~components/SplitText'
+import fetcher from '~lib/fetcher'
+import { spotifyFavoriteTracks } from '~lib/spotify/favorites'
 
 // const HOUR = 3600000
 const MINUTE = 60000

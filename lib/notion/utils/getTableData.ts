@@ -1,7 +1,8 @@
 import Slugger from 'github-slugger'
+
 import { normalizeSlug } from '~lib/notion/helpers'
-import queryCollection from '~lib/notion/utils/queryCollection'
 import { values } from '~lib/notion/rpc'
+import queryCollection from '~lib/notion/utils/queryCollection'
 
 export default async function getTableData(
   collectionBlock: any,

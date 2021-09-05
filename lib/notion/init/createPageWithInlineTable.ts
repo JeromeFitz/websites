@@ -8,12 +8,11 @@ import _map from 'lodash/map'
 import _merge from 'lodash/merge'
 import fetch from 'node-fetch'
 
-import { notion, routeTypesArray } from '~config/notion/website'
 import schema__routeTypes from '~config/notion/schema/routeTypes'
-
+import { notion, routeTypesArray } from '~config/notion/website'
 import getTransactionId from '~lib/notion/utils/getTransactionId'
-import saveTransactions from '~lib/notion/utils/saveTransactions'
 import notionTimestamp from '~lib/notion/utils/notionTimestamp'
+import saveTransactions from '~lib/notion/utils/saveTransactions'
 
 // const isDebug = false
 const dataParentId = notion.website.id

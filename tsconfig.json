@@ -26,7 +26,7 @@
   "include": [
     "**/*.ts",
     "**/*.tsx",
-    "config/notion/website/getRedirects.js",
+    // "config/notion/website/getRedirects.js",
     "index.d.ts",
     "lint-staged.config.js",
     "next-env.d.ts",

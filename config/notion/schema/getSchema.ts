@@ -51,11 +51,11 @@ const getSchema = (items): any => {
   return schema
 }
 
-function getSchemaCollectionId(routeType: string) {
+async function getSchemaCollectionId(routeType: string) {
   // console.dir(`getSchemaCollectionId`)
   // console.dir(`routeType: ${routeType}`)
   // console.dir(routeTypes)
-  const data = routeTypes[routeType].collectionId
+  const data = await routeTypes[routeType].collectionId
   // console.dir(data)
   return data
 }

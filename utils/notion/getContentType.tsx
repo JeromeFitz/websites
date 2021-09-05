@@ -4,10 +4,10 @@ import _size from 'lodash/size'
 import Image from 'next/image'
 import React from 'react'
 
+import { WEBKIT_BACKGROUND } from '~lib/constants'
 import { NotionBlock } from '~utils/notion'
 import getContentTypeDetail from '~utils/notion/getContentTypeDetail'
 import notionToTailwindColor from '~utils/notion/notionToTailwindColor'
-import { WEBKIT_BACKGROUND } from '~lib/constants'
 const getContentType = (item: NotionBlock) => {
   const { id, type } = item
   const content = item[type]

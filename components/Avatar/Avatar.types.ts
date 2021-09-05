@@ -1,4 +1,5 @@
 interface AvatarProps {
+  margin?: boolean
   name: string
 }
 

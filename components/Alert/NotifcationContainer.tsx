@@ -1,6 +1,6 @@
-import React from 'react'
-import cx from 'clsx'
 import Portal from '@reach/portal'
+import cx from 'clsx'
+import React from 'react'
 
 import Notification from './Notification'
 import styles from './Notification.module.css'

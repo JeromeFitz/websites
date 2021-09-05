@@ -1,20 +1,18 @@
 import { GetStaticProps } from 'next'
 
-import renderNotionContent from '~lib/notion/helpers/renderNotionContent'
+import { sites } from '../../next.sitemap'
 
-import getStaticPropsQueryCollection from '~lib/notion/utils/getStaticPropsQueryCollection'
-
-import Layout from '~components/Layout'
 import Header from '~components/Header'
+import Layout from '~components/Layout'
 import Seo from '~components/Seo'
+import { routeTypes } from '~config/notion/website'
+import renderNotionContent from '~lib/notion/helpers/renderNotionContent'
+import getStaticPropsQueryCollection from '~lib/notion/utils/getStaticPropsQueryCollection'
 
 /**
  * @note Customized homepage.
  */
-import { sites } from '../../next.sitemap'
 const { description, title } = sites[process.env.NEXT_PUBLIC__SITE]
-
-import { routeTypes } from '~config/notion/website'
 const routeType = 'pages'
 const slug = 'homepage'
 

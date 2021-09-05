@@ -1,6 +1,7 @@
 // 4fd37202-ec62-4897-a0dd-5ed8ab8b4b53
 
 import { NextApiRequest, NextApiResponse } from 'next'
+
 import { notion } from '~utils/notion/helper'
 
 const notionApi = async (req: NextApiRequest, res: NextApiResponse) => {

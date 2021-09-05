@@ -1,18 +1,19 @@
 import cx from 'clsx'
-import _title from 'title'
 import _map from 'lodash/map'
-import { useUI } from '~context/ManagedUIContext'
-
+import _title from 'title'
 import useSound from 'use-sound'
-// import { useNotification } from '~context/Notification'
-import useSpotify, { setSpotifyTimeRange } from '~hooks/useSpotify'
 
-import Seo from '~components/Seo'
+// import { useNotification } from '~context/Notification'
+
 import ExternalLink from '~components/Dynamic/ext-link'
 import Layout from '~components/Layout'
-import Emoji from '~components/Notion/Emoji'
 import { TopArtists, TopTracks } from '~components/Music'
+import Emoji from '~components/Notion/Emoji'
+import Title from '~components/Notion/Title'
+import Seo from '~components/Seo'
 import SplitText from '~components/SplitText'
+import { useUI } from '~context/ManagedUIContext'
+import useSpotify, { setSpotifyTimeRange } from '~hooks/useSpotify'
 import { WEBKIT_BACKGROUND } from '~lib/constants'
 /**
  * @todo Move this away from here, and lib/spotify (process.env)
@@ -82,10 +83,7 @@ const Music = () => {
   return (
     <Layout>
       <Seo {...seo} />
-      <h1 style={WEBKIT_BACKGROUND}>
-        <Emoji character={`🎹️`} margin={true} />
-        {title}
-      </h1>
+      <Title emoji={`🎹️`} id="page-music" title={title} />
       <h2 style={WEBKIT_BACKGROUND}>{description}</h2>
       <div id="content">
         <div className="mb-4">

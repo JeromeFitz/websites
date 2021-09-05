@@ -4,7 +4,27 @@ import _first from 'lodash/first'
 import _join from 'lodash/join'
 import _last from 'lodash/last'
 
-import { isPages } from '~config/notion/website'
+// import { isPages } from '~config/notion/website'
+const routeTypesArray = [
+  'blog',
+  'episodes',
+  'events',
+  'pages',
+  'people',
+  'podcasts',
+  'seo',
+  'shows',
+  'users',
+  'venues',
+]
+
+/**
+ * @todo fix anti-pattern, this is confusing
+ */
+const isPages = (routeType) => {
+  const isPage = routeTypesArray.indexOf(routeType) > -1
+  return !isPage
+}
 
 const useCache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE
 

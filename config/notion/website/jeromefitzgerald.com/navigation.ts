@@ -24,8 +24,14 @@ const navigation = [
   {
     active: isDev,
     href: '/playground',
-    title: 'playground',
-    titleMobile: 'playground',
+    title: 'p',
+    titleMobile: 'p',
+  },
+  {
+    active: isDev,
+    href: '/playground/spring',
+    title: 'p2',
+    titleMobile: 'p2',
   },
 ]
 

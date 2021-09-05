@@ -1,9 +1,9 @@
-import React, { useMemo, useState } from 'react'
 import cx from 'clsx'
+import React, { useMemo, useState } from 'react'
 import useSound from 'use-sound'
 
-import { useNotification } from '~context/Notification'
 import { useUI } from '~context/ManagedUIContext'
+import { useNotification } from '~context/Notification'
 
 import styles from './Notification.module.css'
 

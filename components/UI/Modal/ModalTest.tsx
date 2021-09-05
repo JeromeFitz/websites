@@ -1,6 +1,7 @@
 import { FC, useState } from 'react'
-import { useUI } from '~context/ManagedUIContext'
+
 import { Button, Skeleton } from '~components/UI'
+import { useUI } from '~context/ManagedUIContext'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface Props {}

@@ -1,14 +1,13 @@
-import React from 'react'
 import cx from 'clsx'
-import Link from 'next/link'
 import Slugger from 'github-slugger'
 import _startsWith from 'lodash/startsWith'
+import Link from 'next/link'
+import React from 'react'
 import { MdOpenInNew } from 'react-icons/md'
 
+import SplitText from '~components/SplitText'
 import getNextLink from '~utils/getNextLink'
 import isObject from '~utils/isObject'
-
-import SplitText from '~components/SplitText'
 
 import styles from './ext-link.module.css'
 

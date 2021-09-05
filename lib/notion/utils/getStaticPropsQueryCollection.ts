@@ -1,13 +1,15 @@
+import path from 'path'
+
 import _filter from 'lodash/filter'
 import _find from 'lodash/find'
 import _map from 'lodash/map'
 import _merge from 'lodash/merge'
-import path from 'path'
-import getTimestamp from '~utils/getTimestamp'
+
 import { readFile, writeFileSyncRecursive } from '~lib/notion/helpers/fs-helpers'
 import rpc, { values } from '~lib/notion/rpc'
 import generateQueryCollection from '~lib/notion/utils/generateQueryCollection'
 import getRouteTypeSeo from '~lib/notion/utils/getRouteTypeSeo'
+import getTimestamp from '~utils/getTimestamp'
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore

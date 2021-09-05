@@ -14,9 +14,9 @@
 
 import type { NextApiRequest, NextApiResponse } from 'next'
 
+import createPageWithInlineTable from '~lib/notion/init/createPageWithInlineTable'
 import createTopLevel from '~lib/notion/init/createTopLevel'
 import createWebsite from '~lib/notion/init/createWebsite'
-import createPageWithInlineTable from '~lib/notion/init/createPageWithInlineTable'
 // import createPageWithInlineTableItem from '~lib/notion/init/createPageWithInlineTableItem'
 
 let CREATE: string = null

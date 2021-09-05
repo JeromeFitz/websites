@@ -1,10 +1,9 @@
+import getSchema, { getSchemaKey } from '~config/notion/schema/getSchema'
 import { routeTypes } from '~config/notion/website'
 
-import getSchema, { getSchemaKey } from '~config/notion/schema/getSchema'
-
-// console.dir(`> ~config/schema/routeTypes/blog`)
-// console.dir(`>> routeTypes`)
-// console.dir(routeTypes)
+console.dir(`> ~config/schema/routeTypes/blog`)
+console.dir(`>> routeTypes`)
+console.dir(routeTypes)
 
 const routeType = 'blog'
 const routeTypeSchema = routeTypes[routeType].schema

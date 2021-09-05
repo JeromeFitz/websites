@@ -1,5 +1,5 @@
-import { routeTypes } from '~config/notion/website'
 import getSchema, { getSchemaKey } from '~config/notion/schema/getSchema'
+import { routeTypes } from '~config/notion/website'
 
 const routeType = 'shows'
 const routeTypeSchema = routeTypes[routeType].schema

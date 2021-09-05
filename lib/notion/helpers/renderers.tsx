@@ -1,4 +1,5 @@
 import React from 'react'
+
 import components from '~components/Dynamic/dynamic'
 
 function applyTags({ children, key, pTagRender = false, tags = [] }) {

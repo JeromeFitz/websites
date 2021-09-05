@@ -1,6 +1,6 @@
-import Seo from '~components/Seo'
-import Layout from '~components/Layout'
 import Header from '~components/Header'
+import Layout from '~components/Layout'
+import Seo from '~components/Seo'
 
 const Events = () => {
   const url = 'https://jeromefitzgerald.com/events'

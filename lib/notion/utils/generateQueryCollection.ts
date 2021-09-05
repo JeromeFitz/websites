@@ -1,8 +1,6 @@
-import { merged } from '~config/notion/website'
 import { getSchemaKey } from '~config/notion/schema/getSchema'
-
+import { merged } from '~config/notion/website'
 import loader from '~lib/notion/helpers/loader'
-
 import getCollectionViewWithItemDate from '~lib/notion/utils/getCollectionViewWithItemDate'
 import getCollectionViewWithMultiSelect from '~lib/notion/utils/getCollectionViewWithMultiSelect'
 import getCollectionViewWithString from '~lib/notion/utils/getCollectionViewWithString'
