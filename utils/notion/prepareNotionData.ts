@@ -112,11 +112,21 @@ const getStaticPathsCatchAll = () => {
     // '/events/2020/05/08/jerome-and',
     // '/events/2020/05/22',
     // '/events/2020/05/22/jerome-and',
+    '/events/2021/09/09/the-playlist',
     // '/people',
     '/podcasts',
-    '/shows'
-    // '/shows/jfle',
-    // '/shows/alex-o-jerome',
+    '/podcasts/jer-and-ky-and-guest',
+    '/podcasts/knockoffs',
+    '/shows',
+    '/shows/alex-o-jerome',
+    '/shows/boo-humbag',
+    '/shows/bubble-boy-the-musical',
+    '/shows/jer-and-ky',
+    '/shows/jerome-and',
+    '/shows/justin-and-jerome-experience',
+    '/shows/my-dinner-with-andre-the-musical',
+    '/shows/the-death-show',
+    '/shows/the-playlist'
     // '/users',
     // '/venues'
   )
