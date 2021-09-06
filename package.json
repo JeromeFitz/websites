@@ -80,7 +80,7 @@
     "uuid": "8.3.2"
   },
   "devDependencies": {
-    "@jeromefitz/codestyle": "2.3.48",
+    "@jeromefitz/codestyle": "2.3.49",
     "@jeromefitz/git-cz": "8.3.48",
     "@jeromefitz/semantic": "2.3.48",
     "@next/bundle-analyzer": "11.1.2",
