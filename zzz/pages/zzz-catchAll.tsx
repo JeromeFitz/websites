@@ -1,5 +1,7 @@
 import cx from 'clsx'
 
+import { getStaticPathsCatchAll, getStaticPropsCatchAll } from '../utils/getStatic'
+
 import { Banner as AlertBanner } from '~components/Alert'
 import Header from '~components/Header'
 import Layout from '~components/Layout'
@@ -7,7 +9,6 @@ import { Listing } from '~components/Listing'
 import Seo from '~components/Seo'
 import renderNotionContent from '~lib/notion/helpers/renderNotionContent'
 import { CatchAll as CatchAllProps } from '~lib/types'
-import { getStaticPathsCatchAll, getStaticPropsCatchAll } from '~utils/getStatic'
 
 export default function CatchAll({
   item,

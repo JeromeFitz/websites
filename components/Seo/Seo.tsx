@@ -3,7 +3,7 @@ import _merge from 'lodash/merge'
 import { NextSeo } from 'next-seo'
 import { memo } from 'react'
 
-import getNextSeo from '~config/notion/website/jeromefitzgerald.com/getNextSeo'
+import getNextSeo from '~config/getNextSeo'
 
 const Seo = memo(({ ...seo }) => {
   const newSeo = _merge({}, getNextSeo, seo)

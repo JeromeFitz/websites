@@ -1,7 +1,7 @@
 import ms from 'ms'
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import { getPathVariables, getStaticPropsCatchAll } from '~utils/getStatic'
+import { getPathVariables, getStaticPropsCatchAll } from '../../utils/getStatic'
 
 // Number of seconds to cache the API response for
 const EXPIRES_SECONDS = 5

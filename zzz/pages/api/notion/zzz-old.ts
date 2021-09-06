@@ -9,8 +9,9 @@ import _merge from 'lodash/merge'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 // import path from 'path'
-import getCollectionView from '~config/notion/schema/getCollectionView'
-import { isPages } from '~config/notion/website'
+import getCollectionView from '../../config/notion/schema/getCollectionView'
+import { isPages } from '../../config/notion/website'
+
 // import initMiddleware from '~utils/initMiddleware'
 // // import getNotionCatchAll from '~lib/notion/getNotionCatchAll'
 import rpc, { values } from '~lib/notion/rpc'

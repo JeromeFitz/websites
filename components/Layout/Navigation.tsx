@@ -8,7 +8,7 @@ import _title from 'title'
 import useSound from 'use-sound'
 
 import Avatar from '~components/Avatar'
-import links from '~config/notion/website/jeromefitzgerald.com/navigation'
+import links from '~config/navigation'
 import { useUI } from '~context/ManagedUIContext'
 import isActiveLink from '~utils/isActiveLink'
 

@@ -6,7 +6,8 @@ import _last from 'lodash/last'
 import _map from 'lodash/map'
 import _uniqWith from 'lodash/uniqWith'
 
-import { isPages } from '~config/notion/website'
+import { isPages } from '../config/notion/website'
+
 import {
   getBlog,
   getBlogs,

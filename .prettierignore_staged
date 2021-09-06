@@ -16,6 +16,7 @@ node_modules
 **/deprecated/**
 **/fonts/**
 **/zzz--do-not-use/**
+**/zzz/**
 
 public/scripts/**
 next-env.d.ts
