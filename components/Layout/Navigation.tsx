@@ -1,4 +1,3 @@
-import { SkipNavContent, SkipNavLink } from '@reach/skip-nav'
 import cx from 'clsx'
 import { AnimateSharedLayout, motion } from 'framer-motion'
 import NextLink from 'next/link'
@@ -54,8 +53,7 @@ const Navigation = () => {
   return (
     <>
       <AnimateSharedLayout>
-        <SkipNavLink />
-        <nav className={cx()}>
+        <nav className={cx('flex flex-col md:flex-row')}>
           <ul>
             {links.map((link, linkIndex) => {
               if (!link.active) {
@@ -65,7 +63,6 @@ const Navigation = () => {
             })}
           </ul>
         </nav>
-        <SkipNavContent />
       </AnimateSharedLayout>
     </>
   )

@@ -39,7 +39,12 @@ const getPathVariables = (catchAll) => {
   if (!!catchAll) {
     console.dir(`catchAll`)
     console.dir(catchAll)
-    isPage = isPages(catchAll[0])
+    if (catchAll === undefined || catchAll === null || catchAll.length === 0) {
+      console.dir(`jettison`)
+      return null
+    }
+    console.dir(`flintistones`)
+    isPage = isPages(catchAll[0] || '')
     relativeUrl = isPage && catchAll[0] === 'homepage' ? '/' : _join(catchAll, '/')
     routeType = isPage ? 'pages' : _first(catchAll)
     slug = (!isIndex || isPage) && _last(catchAll)

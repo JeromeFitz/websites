@@ -1,3 +1,4 @@
+import { SkipNavContent } from '@reach/skip-nav'
 import cx from 'clsx'
 import dynamic from 'next/dynamic'
 import React, { FC } from 'react'
@@ -47,6 +48,7 @@ const Layout: FC<any> = ({ children }) => {
             'md:px-8 md:py-4'
           )}
         >
+          <SkipNavContent />
           {children}
         </article>
         {/* <CTA /> */}

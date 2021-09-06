@@ -1,3 +1,4 @@
+import { SkipNavLink } from '@reach/skip-nav'
 import cx from 'clsx'
 
 import { Navigation, ThemeMode } from '~components/Layout'
@@ -25,11 +26,12 @@ const Header = () => {
         `flex flex-row content-center items-center`
       )}
     >
+      <SkipNavLink />
       <Blur />
       <div
         className={cx(
-          'flex flex-row justify-between items-center',
-          'w-full max-w-4xl',
+          'flex flex-col md:flex-row justify-between items-center',
+          'w-full md:max-w-4xl',
           'mx-auto',
           'my-0 md:my-1',
           'p-2 md:p-4'
