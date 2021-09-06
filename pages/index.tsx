@@ -1,3 +1,5 @@
+import cx from 'clsx'
+import { motion } from 'framer-motion'
 import Slugger from 'github-slugger'
 import _filter from 'lodash/filter'
 import _map from 'lodash/map'
@@ -10,6 +12,7 @@ import Layout from '~components/Layout'
 import ImageCaption from '~components/Notion/ImageCaption'
 import Title from '~components/Notion/Title'
 import Seo from '~components/Seo'
+import { MOTION_PAGE_VARIANTS } from '~lib/constants'
 import fetcher from '~lib/fetcher'
 import { NotionBlock } from '~utils/notion'
 import getContentType from '~utils/notion/getContentType'
@@ -158,7 +161,7 @@ const CatchAll = (props) => {
     height: 1200,
     width: 1200,
   }
-  console.dir(imageProps)
+  // console.dir(imageProps)
   return (
     <>
       <Layout>
@@ -166,24 +169,34 @@ const CatchAll = (props) => {
         <Seo {...seo} />
         {/* Template Content */}
         <Title emoji={emoji} id={id} title={title} />
-        {!!seoImageData && (
-          <div className="w-2/3 mx-auto">
-            <Image
-              alt={seoImageDescription}
-              blurDataURL={seoImageData.base64}
-              key={seoImageSlug}
-              layout="responsive"
-              placeholder="blur"
-              title={seoImageDescription}
-              {...imageProps}
-            />
-            <ImageCaption caption={seoImageDescription} />
-          </div>
-        )}
-        {/* Dynamic Content */}
-        {_map(content.results, (contentItem: NotionBlock) =>
-          getContentType(contentItem)
-        )}
+        <motion.div
+          key={id}
+          initial="hidden"
+          animate="enter"
+          exit="exit"
+          variants={MOTION_PAGE_VARIANTS}
+          transition={{ delay: 0.25, duration: 1, type: 'linear' }}
+          className={cx('flex flex-col')}
+        >
+          {!!seoImageData && (
+            <div className="w-2/3 mx-auto">
+              <Image
+                alt={seoImageDescription}
+                blurDataURL={seoImageData.base64}
+                key={seoImageSlug}
+                layout="responsive"
+                placeholder="blur"
+                title={seoImageDescription}
+                {...imageProps}
+              />
+              <ImageCaption caption={seoImageDescription} />
+            </div>
+          )}
+          {/* Dynamic Content */}
+          {_map(content.results, (contentItem: NotionBlock) =>
+            getContentType(contentItem)
+          )}
+        </motion.div>
       </Layout>
     </>
   )

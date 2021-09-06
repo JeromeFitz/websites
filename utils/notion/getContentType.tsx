@@ -4,7 +4,7 @@ import _size from 'lodash/size'
 import Image from 'next/image'
 import React from 'react'
 
-import { WEBKIT_BACKGROUND } from '~lib/constants'
+import { WEBKIT_BACKGROUND__BREAK } from '~lib/constants'
 import { NotionBlock } from '~utils/notion'
 import getContentTypeDetail from '~utils/notion/getContentTypeDetail'
 import notionToTailwindColor from '~utils/notion/notionToTailwindColor'
@@ -18,19 +18,19 @@ const getContentType = (item: NotionBlock) => {
      */
     case 'heading_1':
       return (
-        <h2 key={id} style={WEBKIT_BACKGROUND}>
+        <h2 key={id} style={WEBKIT_BACKGROUND__BREAK}>
           {getContentTypeDetail(content)}
         </h2>
       )
     case 'heading_2':
       return (
-        <h3 key={id} style={WEBKIT_BACKGROUND}>
+        <h3 key={id} style={WEBKIT_BACKGROUND__BREAK}>
           {getContentTypeDetail(content)}
         </h3>
       )
     case 'heading_3':
       return (
-        <h4 key={id} style={WEBKIT_BACKGROUND}>
+        <h4 key={id} style={WEBKIT_BACKGROUND__BREAK}>
           {getContentTypeDetail(content)}
         </h4>
       )
@@ -78,7 +78,7 @@ const getContentType = (item: NotionBlock) => {
         </li>
       ))
     case 'relation':
-      return !!content[0] && content[0].id
+      return !!content[0] && content
     default:
       // console.dir(`not supported yet: ${type}`)
       break

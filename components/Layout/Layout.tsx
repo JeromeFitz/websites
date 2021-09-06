@@ -2,7 +2,7 @@ import cx from 'clsx'
 import dynamic from 'next/dynamic'
 import React, { FC } from 'react'
 
-import { Footer, Navigation } from '~components/Layout'
+import { Footer } from '~components/Layout'
 import { Modal, LoadingDots } from '~components/UI'
 import { useUI } from '~context/ManagedUIContext'
 
@@ -33,7 +33,6 @@ const Layout: FC<any> = ({ children }) => {
 
   return (
     <>
-      <Navigation />
       <main
         className={cx(
           'flex flex-col min-h-screen',

@@ -1,50 +1,48 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import React from 'react'
-import { config, useTrail, a } from 'react-spring'
+import cx from 'clsx'
+import { motion } from 'framer-motion'
 
 import Avatar from '~components/Avatar'
-// import Emoji from '~components/Notion/Emoji'
 import { WEBKIT_BACKGROUND } from '~lib/constants'
-import styles from '~pages/playground/spring.module.css'
 
-const Trail: React.FC = ({ children }) => {
-  const items = React.Children.toArray(children)
-  const trail = useTrail(items.length, {
-    config: config.slow,
-    delay: 0,
-    opacity: 1,
-    x: 0,
-    // from: { opacity: 0, x: 0 },
-    from: { opacity: 0, x: -200 },
-  })
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const Title = ({ emoji, id, title }) => {
+  const xDiff = title.length < 20 ? -500 : -1000
 
   return (
     <>
-      {trail.map(({ ...style }, index) => {
-        return (
-          <a.span key={index} className={styles.trailsText} style={style}>
-            {items[index]}
-          </a.span>
-        )
-      })}
+      <h1
+        className="flex flex-row overflow-x-hidden items-center"
+        style={WEBKIT_BACKGROUND}
+        key={id}
+      >
+        <div className="z-10 bg-white dark:bg-black rounded-br-full rounded-tr-full">
+          <motion.div
+            animate={{ scale: 1 }}
+            exit={{ scale: 0.75 }}
+            initial={{ scale: 0.75 }}
+            transition={{ delay: 0, duration: 0.25 }}
+          >
+            <Avatar name={title} />
+          </motion.div>
+        </div>
+        <motion.span
+          animate={{ x: 0 }}
+          className={cx(
+            'z-0',
+            'text-xl md:text-6xl tracking-tight leading-normal font-extrabold',
+            'bg-clip-text leading-normal md:leading-normal',
+            'bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500',
+            'dark:bg-gradient-to-l'
+          )}
+          exit={{ x: xDiff }}
+          initial={{ x: xDiff }}
+          transition={{ delay: 0, duration: 0.75 }}
+          style={{ willChange: 'transform, opacity' }}
+        >
+          {title}
+        </motion.span>
+      </h1>
     </>
-  )
-}
-
-const Title = ({ emoji, id, title }) => {
-  return (
-    <h1
-      className="flex flex-row overflow-x-hidden items-center"
-      key={id}
-      style={WEBKIT_BACKGROUND}
-    >
-      <span className="z-10 bg-white dark:bg-black">
-        {/* {emoji && <Emoji character={emoji} margin={true} />} */}
-        {/* {!emoji && <Avatar name={title} />} */}
-        <Avatar name={title} />
-      </span>
-      <Trail>{title}</Trail>
-    </h1>
   )
 }
 

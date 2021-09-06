@@ -1,4 +1,5 @@
 import cx from 'clsx'
+import { motion } from 'framer-motion'
 import Slugger from 'github-slugger'
 import _filter from 'lodash/filter'
 import _map from 'lodash/map'
@@ -10,9 +11,11 @@ import useSWR, { useSWRConfig } from 'swr'
 import Layout from '~components/Layout'
 import ImageCaption from '~components/Notion/ImageCaption'
 import Link from '~components/Notion/Link'
-import Meta from '~components/Notion/Meta'
+// import Meta from '~components/Notion/Meta'
+import Listing from '~components/Notion/Listing'
 import Title from '~components/Notion/Title'
 import Seo from '~components/Seo'
+import { MOTION_PAGE_VARIANTS } from '~lib/constants'
 import fetcher from '~lib/fetcher'
 import { NotionBlock } from '~utils/notion'
 import getContentType from '~utils/notion/getContentType'
@@ -167,53 +170,82 @@ const CatchAll = (props) => {
   const seoImageData = images[seoImageSlug]
 
   const isEvent = !isIndex
-  const showId = !!properties['ShowIDs'] && getContentType(properties['ShowIDs'])
+  // const showId = !!properties['ShowIDs'] && getContentType(properties['ShowIDs'])
+  const peopleCast =
+    !!properties['People.Cast'] && getContentType(properties['People.Cast'])
+
+  // console.dir(`showId`)
+  // console.dir(showId)
+  // console.dir(`peopleCast`)
+  // console.dir(peopleCast)
+
+  // console.dir(`id`)
+  // console.dir(id)
 
   return (
     <>
       <Layout>
         {/* SEO Content */}
         <Seo {...seo} />
-        {/* Breadcrumb Content */}
-        {/* <Breadcrumb title={title} /> */}
         {/* Template Content */}
         <Title emoji={emoji} id={id} title={title} />
-        {!!seoImageData && (
-          <div className="w-2/3 mx-auto">
-            <Image
-              alt={seoImageDescription}
-              blurDataURL={seoImageData.base64}
-              key={seoImageSlug}
-              placeholder="blur"
-              title={seoImageDescription}
-              {...seoImageData.img}
-            />
-            <ImageCaption caption={seoImageDescription} />
-          </div>
-        )}
-        {!!tags && tags.length > 0 && (
-          <ul
-            key="tagsKeyDog"
-            className={cx('mb-5 flex flex-row flex-wrap gap-2.5')}
-          >
-            {tags}
-          </ul>
-        )}
-        {/* Dynamic */}
-        {/* Items */}
-        {isIndex &&
-          !isPage &&
-          _map(items.results, (item, itemIndex) => (
-            <>
-              <Link key={itemIndex} item={item} routeType={routeType} />
-            </>
-          ))}
-        {/* Content */}
-        {(!isIndex || isPage) &&
-          _map(content.results, (contentItem: NotionBlock) =>
-            getContentType(contentItem)
+        {/* Breadcrumb Content */}
+        {/* {!isIndex && <Breadcrumb title={title} />} */}
+        <motion.div
+          key={id}
+          initial="hidden"
+          animate="enter"
+          exit="exit"
+          variants={MOTION_PAGE_VARIANTS}
+          transition={{ delay: 0.25, duration: 1, type: 'linear' }}
+          className={cx('flex flex-col')}
+        >
+          {!!seoImageData && (
+            <div className="w-2/3 mx-auto">
+              <Image
+                alt={seoImageDescription}
+                blurDataURL={seoImageData.base64}
+                key={seoImageSlug}
+                placeholder="blur"
+                title={seoImageDescription}
+                {...seoImageData.img}
+              />
+              <ImageCaption caption={seoImageDescription} />
+            </div>
           )}
-        {isEvent && showId && <Meta id={showId} />}
+          {!!tags && tags.length > 0 && (
+            <ul
+              key="tagsKeyDog"
+              className={cx('mb-5 flex flex-row flex-wrap gap-2.5')}
+            >
+              {tags}
+            </ul>
+          )}
+          {/* Dynamic */}
+          {/* Items */}
+          {isIndex &&
+            !isPage &&
+            _map(items.results, (item, itemIndex) => (
+              <>
+                <Link key={itemIndex} item={item} routeType={routeType} />
+              </>
+            ))}
+          {/* Content */}
+          {(!isIndex || isPage) &&
+            _map(content.results, (contentItem: NotionBlock) =>
+              getContentType(contentItem)
+            )}
+          {/* {isEvent && showId && <Meta id={showId} />} */}
+          {isEvent && peopleCast && <Listing items={peopleCast} slug={slug} />}
+          {/* {isEvent && peopleCast && (
+            <>
+              <h5>Cast</h5>
+              {peopleCast.map((person) => (
+                <Meta key={person.id} id={person.id} />
+              ))}
+            </>
+          )} */}
+        </motion.div>
       </Layout>
     </>
   )

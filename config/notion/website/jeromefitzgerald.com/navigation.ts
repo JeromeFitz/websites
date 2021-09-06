@@ -8,13 +8,13 @@ const navigation = [
   {
     active: true,
     href: '/shows',
-    title: 'featured shows',
+    title: 'shows',
     titleMobile: 'shows',
   },
   {
     active: true,
     href: '/events',
-    title: 'upcoming events',
+    title: 'events',
     titleMobile: 'events',
   },
   { active: true, href: '/music', title: 'music', titleMobile: 'music' },
@@ -26,12 +26,6 @@ const navigation = [
     href: '/playground',
     title: 'p',
     titleMobile: 'p',
-  },
-  {
-    active: isDev,
-    href: '/playground/spring',
-    title: 'p2',
-    titleMobile: 'p2',
   },
 ]
 
