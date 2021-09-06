@@ -10,7 +10,7 @@ const ListItem = ({ id, slug }) => {
   // console.dir(`id: ${id}`)
   // console.dir(`slug: ${slug}`)
   const { data: cast } = useCast({ slug })
-  const { data, error } = useSWR(() => `/api/notion/p/${id}`, fetcher, {
+  const { data, error } = useSWR(() => `/api/notion/pages/${id}`, fetcher, {
     revalidateOnFocus: true,
   })
   /**

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import path from 'path'
 
 import _first from 'lodash/first'
@@ -5,6 +6,8 @@ import _join from 'lodash/join'
 import _last from 'lodash/last'
 
 // import { isPages } from '~config/notion/website'
+// @ts-ignore
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const routeTypesArray = [
   'blog',
   'episodes',
@@ -21,8 +24,9 @@ const routeTypesArray = [
 /**
  * @todo fix anti-pattern, this is confusing
  */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const isPages = (routeType) => {
-  const isPage = routeTypesArray.indexOf(routeType) > -1
+  const isPage = false //routeTypesArray.indexOf(routeType) > -1
   return !isPage
 }
 
@@ -37,13 +41,9 @@ const getPathVariables = (catchAll) => {
     url = null
 
   if (!!catchAll) {
-    console.dir(`catchAll`)
-    console.dir(catchAll)
     if (catchAll === undefined || catchAll === null || catchAll.length === 0) {
-      console.dir(`jettison`)
       return null
     }
-    console.dir(`flintistones`)
     isPage = isPages(catchAll[0] || '')
     relativeUrl = isPage && catchAll[0] === 'homepage' ? '/' : _join(catchAll, '/')
     routeType = isPage ? 'pages' : _first(catchAll)

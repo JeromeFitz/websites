@@ -4,7 +4,7 @@ import fetcher from '~lib/fetcher'
 
 const Meta = ({ id }) => {
   console.dir(`id: ${id}`)
-  const { data, error } = useSWR(() => `/api/notion/p/${id}`, fetcher, {
+  const { data, error } = useSWR(() => `/api/notion/pages/${id}`, fetcher, {
     revalidateOnFocus: true,
   })
   /**

@@ -4,7 +4,8 @@ import getPage from '~utils/notion/getPage'
 import getSearch from '~utils/notion/getSearch'
 import { getPathVariables } from '~utils/notion/prepareNotionData'
 
-const notionApi = async (req: NextApiRequest, res: NextApiResponse) => {
+const notionSearch = async (req: NextApiRequest, res: NextApiResponse) => {
+  console.dir(`notionSearchOriginal`)
   try {
     const preview = req.query?.preview || false
     // const clear = req.query?.clear || false
@@ -54,4 +55,4 @@ const notionApi = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 }
 
-export default notionApi
+export default notionSearch

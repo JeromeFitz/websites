@@ -2,6 +2,116 @@ import { Client } from '@notionhq/client'
 
 const notion = new Client({ auth: process.env.NOTION_API_KEY })
 
+const PROPERTIES = {
+  address: {
+    city: 'Address.City',
+    lat: 'Address.GeoLat',
+    lng: 'Address.GeoLng',
+    neighborhood: 'Address.Neighborhood',
+    state: 'Address.State',
+    street: 'Address.Street',
+    zipCode: 'Address.PostalCode',
+  },
+  categories: 'Category',
+  date: 'Date',
+  datePublished: 'Date.Published',
+  dateRecorded: 'Date.Recorded',
+  duration: 'Duration',
+  email: 'Email',
+  episode: 'Episode',
+  episodes: 'EpisodeIDs',
+  episodesPeopleGuest: 'Episodes.People.Guest',
+  episodesPeopleSoundEngineer: 'Episodes.People.SoundEngineer',
+  episodesPeopleThanks: 'Episodes.People.Thanks',
+  episodesVenues: 'Episodes.Venues.RecordAt',
+  events: 'EventIDs',
+  explicit: 'Explicit',
+  festivals: 'Festival',
+  food: 'Food',
+  mp3: 'MP3',
+  name: {
+    first: 'Name.First',
+    last: 'Name.Last',
+    preferred: 'Name.Preferred',
+  },
+  noIndex: 'NoIndex',
+  peopleCast: 'People.Cast',
+  peopleCastPast: 'People.CastPast',
+  peopleCrew: 'People.Crew',
+  peopleCrewPast: 'People.CrewPast',
+  peopleDirector: 'People.Director',
+  peopleDirectorMusical: 'People.DirectorMusical',
+  peopleDirectorTechnical: 'People.DirectorTechnical',
+  peopleGuest: 'People.Guest',
+  peopleHost: 'People.Host',
+  peopleProducer: 'People.Producer',
+  peopleSoundEngineer: 'People.SoundEngineer',
+  peopleThanks: 'People.Thanks',
+  peopleWriter: 'People.Writer',
+  phoneNumber: 'Phone',
+  podcastAuthor: 'Author',
+  podcastAuthorEmail: 'Author.Email',
+  podcasts: 'PodcastIDs',
+  podcastsPeopleHost: 'Podcasts.People.Host',
+  published: 'Published',
+  season: 'Season',
+  seoDescription: 'SEO.Description',
+  seoImage: 'SEO.Image',
+  seoImageDescription: 'SEO.ImageDescription',
+  shows: 'ShowIDs',
+  showsPeopleCast: 'Shows.People.Cast',
+  showsPeopleCastPast: 'Shows.People.CastPast',
+  showsPeopleCrew: 'Shows.People.Crew',
+  showsPeopleDirector: 'Shows.People.Director',
+  showsPeopleDirectorMusical: 'Shows.People.DirectorMusical',
+  showsPeopleDirectorTechnical: 'Shows.People.DirectorTechnical',
+  showsPeopleProducer: 'Shows.People.Producer',
+  showsPeopleThanks: 'Shows.People.Thanks',
+  showsPeopleWriter: 'Shows.People.Writer',
+  slug: 'Slug',
+  social: {
+    facebook: 'Social.Facebook',
+    instagram: 'Social.Instagram',
+    twitter: 'Social.Twitter',
+  },
+  tags: 'Tags',
+  ticketUrl: 'TicketUrl',
+  title: 'Title',
+  type: 'Type',
+  venues: 'VenueIDs',
+  venuesRecordedAt: 'Venues.RecordedAt',
+}
+
+const dateTimestamp = new Date().toISOString()
+// const dateTimestampBlog = new Date('2020-01-01').toISOString()
+
+const QUERIES = {
+  dateBefore: {
+    property: PROPERTIES.date,
+    date: {
+      before: dateTimestamp,
+    },
+  },
+  dateOnOrAfter: {
+    property: PROPERTIES.date,
+    date: {
+      on_or_after: dateTimestamp,
+    },
+  },
+  published: {
+    property: PROPERTIES.published,
+    checkbox: {
+      equals: false,
+    },
+  },
+  slug: {
+    property: PROPERTIES.slug,
+    text: {
+      equals: '',
+    },
+  },
+}
+
 const TYPES = {
   blog: 'blog',
   episodes: 'episodes',
@@ -41,4 +151,4 @@ const SEO = {
   venues: 'd79444f6-8158-4bae-9b75-285e0b5f85b2',
 }
 
-export { notion, DATABASES, SEO, TYPES }
+export { notion, DATABASES, PROPERTIES, QUERIES, SEO, TYPES }

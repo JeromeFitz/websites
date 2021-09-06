@@ -4,7 +4,8 @@ import { NextApiRequest, NextApiResponse } from 'next'
 
 import { notion } from '~utils/notion/helper'
 
-const notionApi = async (req: NextApiRequest, res: NextApiResponse) => {
+const notionPagesId = async (req: NextApiRequest, res: NextApiResponse) => {
+  console.dir(`notionPagesId`)
   const page_id = req.query.id
   try {
     const data = await notion.pages.retrieve({
@@ -33,4 +34,4 @@ const notionApi = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 }
 
-export default notionApi
+export default notionPagesId
