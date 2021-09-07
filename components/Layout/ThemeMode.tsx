@@ -6,17 +6,6 @@ import useSound from 'use-sound'
 import Emoji from '~components/Notion/Emoji'
 import { useUI } from '~context/ManagedUIContext'
 
-const config = {
-  emoji: {
-    true: '🔉️',
-    false: '🔇️',
-  },
-  theme: {
-    dark: '🌚️',
-    light: '🌞️',
-  },
-}
-
 const AppSoundToggle = () => {
   const { audio, toggleAudio } = useUI()
   const [playEnableSound] = useSound('/static/audio/enable-sound.mp3', {
@@ -40,10 +29,10 @@ const AppSoundToggle = () => {
       animate={{ scale: 1, y: 0, opacity: 1 }}
       exit={{ scale: 0.8, y: 0, opacity: 0 }}
       transition={{ duration: 0.2 }}
-      // whileHover={{ scale: 1.2 }}
-      // whileTap={{ scale: 0.8 }}
+      whileHover={{ scale: 1.2 }}
+      whileTap={{ scale: 0.8 }}
     >
-      <Emoji character={config.emoji[audio]} />
+      <Emoji character={audio ? '🔉️' : '🔇️'} />
     </motion.button>
   )
 }
@@ -68,10 +57,10 @@ const AppThemeToggle = () => {
       animate={{ scale: 1, y: 0, opacity: 1 }}
       exit={{ scale: 0.8, y: 0, opacity: 0 }}
       transition={{ duration: 0.2 }}
-      // whileHover={{ scale: 1.2 }}
-      // whileTap={{ scale: 0.8 }}
+      whileHover={{ scale: 1.2 }}
+      whileTap={{ scale: 0.8 }}
     >
-      <Emoji character={config.theme[theme || 'dark']} />
+      <Emoji character={theme === 'light' ? '🌞️' : '🌚️'} />
     </motion.button>
   )
 }
