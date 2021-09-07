@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/require-await */
 import { Blog } from '~lib/types'
 
-import * as notionApi from './notion'
+// import * as notionApi from './notion'
+const notionApi = false
 
 let cmsApi: {
   getBlog: (catchAll) => Promise<Blog>

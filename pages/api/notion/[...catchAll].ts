@@ -1,73 +1,18 @@
-import ms from 'ms'
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import { getPathVariables, getStaticPropsCatchAll } from '~utils/getStatic'
+import getCatchAll from '~lib/notion/getCatchAll'
 
-// Number of seconds to cache the API response for
-const EXPIRES_SECONDS = 5
-
-export default async function getNotionApi(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+const notionSearch = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
+    // @todo(next) preview
     const preview = req.query?.preview || false
     const clear = req.query?.clear || false
     const catchAll = req.query.catchAll
 
     // http://localhost:3000/api/notion/blog/2020/12/28/preview-blog-post?preview=true
-    const { isPage, relativeUrl, routeType } = getPathVariables(catchAll)
+    const data = await getCatchAll({ preview, clear, catchAll })
 
-    let data
-    if (routeType) {
-      data = await getStaticPropsCatchAll({
-        clear,
-        params: { catchAll },
-        preview,
-      })
-    }
-
-    // Set caching headers
-    // @refactor(cache) Every Route Probably Does Not Need This Treatment (catchAll)
-
-    // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
-    const expires = new Date(Date.now() + ms(`${EXPIRES_SECONDS}s`))
-    res.setHeader('Expires', expires.toUTCString())
-    res.setHeader(
-      'Cache-Control',
-      `s-maxage=${EXPIRES_SECONDS}, immutable, must-revalidate, stale-while-revalidate`
-    )
-
-    if (clear) {
-      const location = isPage ? '/' : `/${routeType}`
-      res.clearPreviewData()
-      res.writeHead(307, { Location: location })
-      res.end()
-    }
-
-    const json = {
-      props: {
-        ...data,
-      },
-      preview,
-    }
-
-    if (json?.props) {
-      if (preview) {
-        res.setPreviewData({})
-        res.writeHead(307, {
-          Location: `/${relativeUrl}`,
-        })
-        res.end()
-      } else {
-        res.status(200).json(json.props)
-        // return res.status(200).json(data)
-      }
-    } else {
-      res.status(404).json({
-        status: 404,
-      })
-    }
+    res.status(200).json({ ...data })
   } catch (e) {
     // eslint-disable-next-line no-console
     console.log(e)
@@ -80,3 +25,5 @@ export default async function getNotionApi(
     })
   }
 }
+
+export default notionSearch

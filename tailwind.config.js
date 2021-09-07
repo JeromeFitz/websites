@@ -1,21 +1,24 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+const _pick = require('lodash/pick')
+const colorsTailwind = require('tailwindcss/colors')
 const {
+  backgroundImage,
   boxShadow,
   colors,
   fontFamily,
   lineHeight,
   spacing,
 } = require('tailwindcss/defaultTheme')
-const colorsTailwind = require('tailwindcss/colors')
-const _pick = require('lodash/pick')
 
-const themeColors = _pick(colorsTailwind, [
-  // 'primary',
-  // 'secondary',
-  'gray',
-  'green',
-  'yellow',
-])
+const themeColors = colorsTailwind
+// const themeColors = _pick(colorsTailwind, [
+//   // 'primary',
+//   // 'secondary',
+//   'gray',
+//   'green',
+//   'yellow',
+//   'violet',
+// ])
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 function px(pixels) {
@@ -41,12 +44,29 @@ module.exports = {
         /^bg-success/,
         /^bg-warning/,
         'outline-none',
+        /^tooltip/,
+        '.tooltip',
+        'tooltip',
       ],
       keyframes: false,
       fontFace: false,
     },
   },
   theme: {
+    backgroundImage: {
+      ...backgroundImage,
+      'gradient-conic': 'conic-gradient(var(--tw-gradient-stops))',
+      'gradient-conic-t': 'conic-gradient(at top, var(--tw-gradient-stops))',
+      'gradient-conic-r': 'conic-gradient(at right, var(--tw-gradient-stops))',
+      'gradient-conic-b': 'conic-gradient(at bottom, var(--tw-gradient-stops))',
+      'gradient-conic-l': 'conic-gradient(at left, var(--tw-gradient-stops))',
+      'gradient-conic-tr': 'conic-gradient(at top right, var(--tw-gradient-stops))',
+      'gradient-conic-tl': 'conic-gradient(at top left, var(--tw-gradient-stops))',
+      'gradient-conic-br':
+        'conic-gradient(at bottom right, var(--tw-gradient-stops))',
+      'gradient-conic-bl':
+        'conic-gradient(at bottom left, var(--tw-gradient-stops))',
+    },
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
@@ -153,6 +173,19 @@ module.exports = {
             'h2,h3,h4': {
               'scroll-margin-top': spacing[32],
             },
+          },
+        },
+        '3xl': {
+          css: {
+            fontSize: '1.875rem',
+            // h1: {
+            //   fontSize: '4rem',
+            // },
+          },
+        },
+        '4xl': {
+          css: {
+            fontSize: '2rem',
           },
         },
       }),

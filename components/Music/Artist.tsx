@@ -1,9 +1,10 @@
-import Image from 'next/image'
 import cx from 'clsx'
+import Image from 'next/image'
 import { MdOpenInNew } from 'react-icons/md'
-import lpad from '~utils/lpad'
+
 import { Skeleton } from '~components/Music'
 import SplitText from '~components/SplitText'
+import lpad from '~utils/lpad'
 
 const Artist = (artist) => {
   const handleClick = () => {

@@ -1,9 +1,5 @@
 import cx from 'clsx'
 import Image from 'next/image'
-import useSWR from 'swr'
-
-import fetcher from '~lib/fetcher'
-
 import {
   MdPause,
   // MdPlayArrow,
@@ -14,6 +10,9 @@ import {
   MdSkipPrevious,
   // MdStop,
 } from 'react-icons/md'
+import useSWR from 'swr'
+
+import fetcher from '~lib/fetcher'
 
 import styles from './NowPlaying.module.css'
 

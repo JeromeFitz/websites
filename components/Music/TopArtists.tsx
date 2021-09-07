@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import useSWR from 'swr'
-import useSpotify from '~hooks/useSpotify'
 
-import fetcher from '~lib/fetcher'
 import { Artist } from '~components/Music'
+import useSpotify from '~hooks/useSpotify'
+import fetcher from '~lib/fetcher'
 
 const HOUR = 3600000
 // const MINUTE = 60000

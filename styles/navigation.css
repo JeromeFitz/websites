@@ -1,10 +1,15 @@
 .bg-blur {
   /* backdrop-filter: saturate(100%) blur(1.25rem); */
-  /* transition: background-color 0.1 ease-in-out; */
   /* @apply shadow-sm; */
   /* background-color: rgba(255, 255, 255, 0); */
   backdrop-filter: saturate(180%) url(#sharpBlur);
-  transition: background-color 0.1 ease-in-out;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .bg-blur {
+    /* transition: background-color 0.1 ease-in-out; */
+    transition: background-color 0.1 ease-in-out;
+  }
 }
 
 @supports not (backdrop-filter: none) {

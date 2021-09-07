@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const { withPlaiceholder } = require('@plaiceholder/next')
-const { withPlugins } = require('next-compose-plugins')
-const getRedirects = require('./config/notion/website/getRedirects')
 require('dotenv').config({ path: './.env.build' })
-
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
+const { withPlaiceholder } = require('@plaiceholder/next')
+const { withPlugins } = require('next-compose-plugins')
+
+// const getRedirects = require('./config/notion/website/getRedirects')
 
 if (!process.env.NEXT_PUBLIC__SITE) {
   throw new Error('process.env.NEXT_PUBLIC__SITE is not set in env')
@@ -116,9 +116,9 @@ const nextConfig = {
   },
   pageExtensions: ['jsx', 'js', 'tsx', 'ts'],
   poweredByHeader: false,
-  rewrites() {
-    return getRedirects
-  },
+  // rewrites() {
+  //   return getRedirects
+  // },
   useFileSystemPublicRoutes: true, // false will block './pages' as router
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore

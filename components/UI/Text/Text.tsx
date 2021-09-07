@@ -1,9 +1,10 @@
+import cx from 'clsx'
 import React, {
   FunctionComponent,
   JSXElementConstructor,
   CSSProperties,
 } from 'react'
-import cx from 'clsx'
+
 import s from './Text.module.css'
 
 interface Props {

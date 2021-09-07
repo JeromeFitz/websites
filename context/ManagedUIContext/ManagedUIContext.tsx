@@ -1,13 +1,14 @@
-import React, { FC, useMemo } from 'react'
 import { ThemeProvider } from 'next-themes'
+import React, { FC, useMemo } from 'react'
 
 export interface State {
   displaySidebar: boolean
   displayDropdown: boolean
   displayModal: boolean
-  displayToast: boolean
+  displayNotification: boolean
   modalView: string
-  toastText: string
+  notificationText: string
+  audio: boolean
 }
 
 const initialState = {
@@ -15,8 +16,9 @@ const initialState = {
   displayDropdown: false,
   displayModal: false,
   modalView: 'LOGIN_VIEW',
-  displayToast: false,
-  toastText: '',
+  displayNotification: false,
+  notificationText: '',
+  audio: true,
 }
 
 type Action =
@@ -34,7 +36,7 @@ type Action =
     }
   | {
       type: 'SET_TOAST_TEXT'
-      text: ToastText
+      text: NotificationText
     }
   | {
       type: 'OPEN_DROPDOWN'
@@ -52,9 +54,15 @@ type Action =
       type: 'SET_MODAL_VIEW'
       view: MODAL_VIEWS
     }
+  | {
+      type: 'AUDIO_ENABLE'
+    }
+  | {
+      type: 'AUDIO_DISABLE'
+    }
 
 type MODAL_VIEWS = 'SIGNUP_VIEW' | 'LOGIN_VIEW' | 'FORGOT_VIEW' | 'MODAL_TEST_VIEW'
-type ToastText = string
+type NotificationText = string
 
 export const UIContext = React.createContext<State | any>(initialState)
 
@@ -101,13 +109,13 @@ function uiReducer(state: State, action: Action) {
     case 'OPEN_TOAST': {
       return {
         ...state,
-        displayToast: true,
+        displayNotification: true,
       }
     }
     case 'CLOSE_TOAST': {
       return {
         ...state,
-        displayToast: false,
+        displayNotification: false,
       }
     }
     case 'SET_MODAL_VIEW': {
@@ -119,7 +127,19 @@ function uiReducer(state: State, action: Action) {
     case 'SET_TOAST_TEXT': {
       return {
         ...state,
-        toastText: action.text,
+        notificationText: action.text,
+      }
+    }
+    case 'AUDIO_ENABLE': {
+      return {
+        ...state,
+        audio: true,
+      }
+    }
+    case 'AUDIO_DISABLE': {
+      return {
+        ...state,
+        audio: false,
       }
     }
   }
@@ -143,28 +163,33 @@ export const UIProvider: FC = (props) => {
   const openModal = () => dispatch({ type: 'OPEN_MODAL' })
   const closeModal = () => dispatch({ type: 'CLOSE_MODAL' })
 
-  const openToast = () => dispatch({ type: 'OPEN_TOAST' })
-  const closeToast = () => dispatch({ type: 'CLOSE_TOAST' })
+  const openNotification = () => dispatch({ type: 'OPEN_TOAST' })
+  const closeNotification = () => dispatch({ type: 'CLOSE_TOAST' })
+
+  const toggleAudio = () =>
+    state.audio
+      ? dispatch({ type: 'AUDIO_DISABLE' })
+      : dispatch({ type: 'AUDIO_ENABLE' })
 
   const setModalView = (view: MODAL_VIEWS) => {
-    console.dir(`> setModalView: ${view}`)
     return dispatch({ type: 'SET_MODAL_VIEW', view })
   }
 
   const value = useMemo(
     () => ({
       ...state,
-      openSidebar,
+      closeDropdown,
+      closeModal,
+      closeNotification,
       closeSidebar,
-      toggleSidebar,
       closeSidebarIfPresent,
       openDropdown,
-      closeDropdown,
       openModal,
-      closeModal,
+      openNotification,
+      openSidebar,
       setModalView,
-      openToast,
-      closeToast,
+      toggleAudio,
+      toggleSidebar,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [state]
