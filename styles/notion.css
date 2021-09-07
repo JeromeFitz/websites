@@ -3,13 +3,13 @@
 * This removes the Preview Portion from Notion posts that appear in Listing
 * @todo Apply no-sr
 **/
-#content > p:first-of-type,
+/* #content > p:first-of-type,
 #content > hr:first-of-type,
 .contentContainer > p:first-of-type,
 .contentContainer > hr:first-of-type {
   display: none;
   visibility: hidden;
-}
+} */
 
 .row {
   display: flex;

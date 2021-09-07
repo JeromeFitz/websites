@@ -1,8 +1,8 @@
-import { memo, useEffect, useState } from 'react'
-import Link from 'next/link'
 import cx from 'clsx'
-import { MdInfo } from 'react-icons/md'
+import Link from 'next/link'
+import { memo, useEffect, useState } from 'react'
 import { FaPencilRuler } from 'react-icons/fa'
+import { MdInfo } from 'react-icons/md'
 
 import NowPlaying from '~components/NowPlaying'
 

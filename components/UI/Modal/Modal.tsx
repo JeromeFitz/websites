@@ -1,17 +1,16 @@
-import { FC, useRef, useEffect, useCallback } from 'react'
-import cx from 'clsx'
 import Portal from '@reach/portal'
-import { ImCross as Cross } from 'react-icons/im'
-// import { MdClose } from 'react-icons/md'
 import {
   disableBodyScroll,
   enableBodyScroll,
   clearAllBodyScrollLocks,
 } from 'body-scroll-lock'
-
-import FocusTrap from '~lib/focusTrap'
+import cx from 'clsx'
+import { FC, useRef, useEffect, useCallback } from 'react'
+import { ImCross as Cross } from 'react-icons/im'
+// import { MdClose } from 'react-icons/md'
 
 import { useUI } from '~context/ManagedUIContext'
+import FocusTrap from '~lib/focusTrap'
 
 import styles from './Modal.module.css'
 

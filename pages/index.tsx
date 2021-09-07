@@ -1,65 +1,79 @@
-import { GetStaticProps } from 'next'
-
-import renderNotionContent from '~lib/notion/helpers/renderNotionContent'
-
-import getStaticPropsQueryCollection from '~lib/notion/utils/getStaticPropsQueryCollection'
+import useSWR from 'swr'
 
 import Layout from '~components/Layout'
-import Header from '~components/Header'
-import Seo from '~components/Seo'
+import Page from '~components/Notion/Page'
+import fetcher from '~lib/fetcher'
+import getCatchAll from '~lib/notion/getCatchAll'
+import getImages from '~lib/notion/getImages'
+import getPathVariables from '~lib/notion/getPathVariables'
 
-/**
- * @note Customized homepage.
- */
-import { sites } from '../next.sitemap'
-const { description, title } = sites[process.env.NEXT_PUBLIC__SITE]
-
-import { routeTypes } from '~config/notion/website'
-const routeType = 'pages'
-const slug = 'homepage'
-
-const { indexId, collectionId, collectionViewId__slug } = routeTypes[routeType]
-
-export const getStaticProps: GetStaticProps = ({ preview }) => {
-  // const slug = 'homepage'
-  const url = `/`
-  // let url = `/${routeType}`
-  // if (slug) url += `/${slug}`
-
-  return getStaticPropsQueryCollection({
-    indexId,
-    collectionId,
-    collectionViewId: collectionViewId__slug,
-    preview,
-    routeType,
+const CatchAll = (props) => {
+  const {
+    content: contentFallback,
+    info: infoFallback,
+    // images: imagesFallback,
+    items: itemsFallback,
+    // hasMeta,
+    // isPage,
+    // isIndex,
+    // meta,
+    // routeType,
     slug,
-    itemDate: null,
-    id: null,
-    url,
-  })
-}
+    // url,
+  } = props
 
-const Index = ({ data }: any) => {
-  const items = data
-  const key = items && Object.keys(items)
-  const isSingle = key && key.length === 1
-  const item = isSingle && items[key[0]]
+  // console.dir(`props`)
+  // console.dir(props)
 
-  const header = {
-    description,
-    title,
-  }
+  /**
+   * @info Odd behavior, but if listing page we need data swapped
+   */
+  const { data, error } = useSWR(
+    // () => (!!url ? `/api/notion/${url}` : null),
+    () => (!!slug ? `/api/notion/${slug}` : null),
+    fetcher,
+    {
+      fallbackData: {
+        info: infoFallback,
+        content: contentFallback,
+        items: itemsFallback,
+      },
+      revalidateOnFocus: true,
+    }
+  )
 
-  // @hack(next-seo) DefaultSeo in _app was causing dupe SEO
-  const seo = {}
+  /**
+   * @error or @loading
+   */
+  if (error || !data || data?.content === undefined || data?.info === undefined)
+    return (
+      <>
+        <Layout>
+          <h1 key={`error-loading-h1`}>{error ? <>Error</> : <>Loading...</>}</h1>
+        </Layout>
+      </>
+    )
 
   return (
-    <Layout>
-      <Seo {...seo} />
-      <Header {...header} />
-      <div id="content">{renderNotionContent(item)}</div>
-    </Layout>
+    <>
+      <Layout>
+        <Page data={data} props={props} />
+      </Layout>
+    </>
   )
 }
 
-export default Index
+export const getStaticProps = async ({ preview = false, ...props }) => {
+  // const { catchAll } = props.params
+  const homepageSlug = 'homepage-2021'
+  const catchAll = [homepageSlug]
+  const clear = false
+  const pathVariables = getPathVariables(catchAll)
+  const data = await getCatchAll({ preview, clear, catchAll })
+  const images = await getImages({ data, pathVariables })
+
+  const dataReturn = { ...data, images }
+  return { props: { preview, ...dataReturn, ...pathVariables, ...props } }
+}
+
+export default CatchAll

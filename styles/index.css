@@ -15,10 +15,12 @@
 @import '_global.css'; /* @note naming convention for alpha-sort */
 @import 'alerts.css';
 @import 'animations.css';
+@import 'badge.css';
 @import 'navigation.css';
 @import 'notion.css';
 /* @import 'prose.css'; */
 @import 'reach/skip-nav.css';
+@import 'reach/tooltip.css';
 @import 'selection.css';
 @import 'typography.css';
 @import '~components/NProgress/NProgress.module.css';
@@ -27,27 +29,138 @@
 * @note layer/base seems to only work as last and in root :X
 **/
 @layer base {
+  p em,
+  p s,
+  p strong,
+  p u,
   p {
     /* @apply text-gray-900 dark:text-gray-100 text-xl; */
-    transition: color 0.25s cubic-bezier(0.175, 0.75, 0.5, 1);
-    transition-delay: calc(1.5s);
+    @apply my-2 mt-2 inline-flex flex-wrap;
+    /* @apply text-base md:text-lg; */
+    @apply prose md:prose-lg max-w-none;
+    @apply text-black dark:text-white;
+  }
+
+  li {
+    @apply my-1.5;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .breadcrumb-transition,
+    a,
+    li,
+    p {
+      transition: color 0.25s cubic-bezier(0.175, 0.75, 0.5, 1);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      @apply transition-all;
+    }
+  }
+
+  p > a,
+  p > code,
+  p > em,
+  p > s,
+  p > strong,
+  p > u {
+    color: 'inherit';
+    @apply mx-1;
+  }
+
+  p > a {
+    @apply text-black dark:text-white;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply text-black dark:text-white;
+    @apply overflow-x-hidden;
   }
 
   h1 {
-    @apply font-bold tracking-tight mb-6 md:mb-8;
-    @apply text-3xl md:text-5xl;
-    /* @apply text-gray-900 dark:text-gray-50; */
+    @apply bg-clip-text;
+    @apply bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500;
+    @apply dark:bg-gradient-to-l;
+  }
+
+  /* h2,
+  h3,
+  h4 {
+    @apply bg-gradient-to-l dark:bg-gradient-to-r;
+  } */
+
+  h1 {
+    /* @apply font-bold tracking-tight mb-6 md:mb-8; */
+    /* @apply prose prose-3xl max-w-none; */
+    @apply mb-6 md:mb-8;
+    @apply text-7xl tracking-tight leading-normal font-extrabold;
   }
 
   h2 {
     @apply font-bold tracking-tight mb-3 md:mb-4;
-    @apply text-xl md:text-3xl;
-    /* @apply text-gray-900 dark:text-gray-50; */
+    @apply prose prose-2xl max-w-none;
   }
 
   h3 {
     @apply font-bold tracking-tight mb-2 md:mb-3;
-    @apply text-lg md:text-xl;
-    /* @apply text-gray-900 dark:text-gray-50; */
+    @apply prose prose-xl max-w-none;
+  }
+
+  h4 {
+    @apply font-bold tracking-tight mb-2 md:mb-3;
+    @apply prose prose-lg max-w-none;
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+    @apply text-sm visible;
+  }
+
+  .item {
+    display: flex;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin: 5px;
+    position: relative;
+    cursor: pointer;
+    flex-shrink: 0;
+    @apply text-sm visible;
+  }
+
+  .outline {
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    right: -6px;
+    bottom: -6px;
+    border: 2px solid white;
+    border-radius: 0%;
+  }
+}
+
+@layer utilities {
+  @variants responsive {
+    .hide {
+      display: none;
+      visibility: hidden;
+    }
+
+    .show {
+      display: inline;
+      visibility: visible;
+    }
   }
 }

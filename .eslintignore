@@ -3,6 +3,7 @@
 .next
 .vercel
 node_modules
+zzz
 
 # public
 public/scripts/**

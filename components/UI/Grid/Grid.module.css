@@ -39,7 +39,7 @@
   &.filled {
     & > *:nth-child(6n + 1),
     & > *:nth-child(6n + 5) {
-      @apply bg-violet;
+      @apply bg-green-600;
     }
 
     & > *:nth-child(6n + 5) {
@@ -51,7 +51,7 @@
     }
 
     & > *:nth-child(6n + 6) {
-      @apply bg-cyan;
+      @apply bg-sky-600;
     }
   }
 }
@@ -69,7 +69,7 @@
     }
 
     & > *:nth-child(6n + 4) {
-      @apply bg-violet;
+      @apply bg-green-600;
     }
 
     & > *:nth-child(6n + 3) {
@@ -77,7 +77,7 @@
     }
 
     & > *:nth-child(6n + 6) {
-      @apply bg-cyan;
+      @apply bg-sky-600;
     }
   }
 }
@@ -91,12 +91,12 @@
 
   &.filled {
     & > *:nth-child(12n + 1) {
-      @apply bg-violet;
+      @apply bg-green-600;
       height: var(--row-height);
     }
 
     & > *:nth-child(12n + 8) {
-      @apply bg-cyan;
+      @apply bg-sky-600;
       height: var(--row-height);
     }
 
@@ -115,11 +115,11 @@
 
   &.filled {
     & > *:nth-child(12n + 2) {
-      @apply bg-violet;
+      @apply bg-green-600;
     }
 
     & > *:nth-child(12n + 7) {
-      @apply bg-cyan;
+      @apply bg-sky-600;
     }
 
     & > *:nth-child(6n + 3) {

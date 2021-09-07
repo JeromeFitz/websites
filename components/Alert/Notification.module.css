@@ -1,0 +1,30 @@
+/* @todo(tailwind) */
+
+.notificationArea {
+  @apply fixed z-40;
+  @apply w-11/12 md:max-w-sm;
+  @apply right-0.5 md:right-4;
+  @apply bottom-0.5 md:bottom-5;
+  transition: transform 0.4s ease, bottom 0.4s ease;
+}
+
+.notificationContainer {
+  @apply absolute bottom-0 right-0 rounded p-6 z-40;
+  @apply w-11/12 md:max-w-sm;
+  transition: all 0.4s ease;
+}
+
+.notification {
+  @apply max-w-full w-96;
+  @apply flex items-center justify-between;
+  @apply text-sm;
+  transition: all 0.4s ease;
+}
+
+.notificationMessage {
+  @apply flex flex-row items-end justify-between;
+  @apply -mt-1 w-full h-full;
+  @apply text-primary;
+  /* @apply pb-10; */
+  transition: opacity 0.4s ease;
+}

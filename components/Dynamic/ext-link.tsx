@@ -1,14 +1,15 @@
-import React from 'react'
 import cx from 'clsx'
-import Link from 'next/link'
 import Slugger from 'github-slugger'
 import _startsWith from 'lodash/startsWith'
+import Link from 'next/link'
+import React from 'react'
 import { MdOpenInNew } from 'react-icons/md'
 
+import SplitText from '~components/SplitText'
 import getNextLink from '~utils/getNextLink'
 import isObject from '~utils/isObject'
 
-import SplitText from '~components/SplitText'
+import styles from './ext-link.module.css'
 
 // @hack(notion) too much customization
 const getText = (text) => (isObject(text) ? text.props.children : text)
@@ -68,5 +69,49 @@ const extLink = (props) => {
     )
   }
 }
+
+const nextLink = (props) => {
+  /**
+   * @todo Determine if it starts with http
+   */
+  const isExternal =
+    _startsWith(props.href, 'http', 0) || _startsWith(props.href, 'spotify', 0)
+  if (isExternal) {
+    const slugger = new Slugger()
+    const key = slugger.slug(props.href)
+    const text = props.children
+    return (
+      <a
+        {...props}
+        aria-label={`Link for ${text}`}
+        key={key}
+        rel="noopener"
+        target={props.target || '_blank'}
+        className={cx(props?.className, 'font-semibold flex', styles.link)}
+      >
+        {text}
+        <span className="ml-2 mt-1 text-base inline">
+          <MdOpenInNew />
+        </span>
+      </a>
+    )
+  } else {
+    const link = getNextLink(props.href)
+    const text = getText(props.children)
+
+    return (
+      <Link as={link.as} href={link.href}>
+        <a
+          aria-label={`Link for ${text}`}
+          className={cx('font-semibold', styles.link)}
+        >
+          {text}
+        </a>
+      </Link>
+    )
+  }
+}
+
+export { nextLink }
 
 export default extLink

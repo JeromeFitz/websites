@@ -1,12 +1,26 @@
-import { memo } from 'react'
 // import { useRouter } from 'next/router'
 import _merge from 'lodash/merge'
 import { NextSeo } from 'next-seo'
+import { memo } from 'react'
 
-import { getNextSeo } from '~config/notion/website'
+import getNextSeo from '~config/getNextSeo'
 
 const Seo = memo(({ ...seo }) => {
   const newSeo = _merge({}, getNextSeo, seo)
+
+  /**
+   * @note This is stupid.
+   */
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  if (newSeo?.noindex === 'No') {
+    newSeo.noindex = false
+  }
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  if (newSeo?.noindex === 'Yes') {
+    newSeo.noindex = true
+  }
 
   // const router = useRouter()
   // console.dir(`> router`)
@@ -14,15 +28,9 @@ const Seo = memo(({ ...seo }) => {
   // console.dir(`> newSeo`)
   // console.dir(newSeo)
 
-  /**
-   * @note This is stupid.
-   */
-  if (newSeo?.noindex === 'No') {
-    newSeo.noindex = false
-  }
-  if (newSeo?.noindex === 'Yes') {
-    newSeo.noindex = true
-  }
+  // newSeo.canonical = `https://jeromefitzgerald.com${router.asPath}`
+  // newSeo.canonical = `https://jeromefitzgerald.com${router.pathname}`
+  // newSeo.canonical = `https://jeromefitzgerald.com${router.route}`
 
   return <NextSeo {...newSeo} />
 })

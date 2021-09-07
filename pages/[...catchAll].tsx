@@ -1,71 +1,89 @@
-import cx from 'clsx'
+import useSWR from 'swr'
 
-import { Banner as AlertBanner } from '~components/Alert'
-import Header from '~components/Header'
 import Layout from '~components/Layout'
-import { Listing } from '~components/Listing'
-import Seo from '~components/Seo'
+import Page from '~components/Notion/Page'
+import fetcher from '~lib/fetcher'
+import getCatchAll from '~lib/notion/getCatchAll'
+import getImages from '~lib/notion/getImages'
+import getPathVariables from '~lib/notion/getPathVariables'
+import getStaticPathsCatchAll from '~lib/notion/getStaticPathsCatchAll'
 
-import renderNotionContent from '~lib/notion/helpers/renderNotionContent'
-import { getStaticPathsCatchAll, getStaticPropsCatchAll } from '~utils/getStatic'
+const CatchAll = (props) => {
+  const {
+    content: contentFallback,
+    info: infoFallback,
+    // images: imagesFallback,
+    items: itemsFallback,
+    // hasMeta,
+    // isPage,
+    // isIndex,
+    // meta,
+    // routeType,
+    // slug,
+    url,
+  } = props
 
-import { CatchAll as CatchAllProps } from '~lib/types'
+  // console.dir(`props`)
+  // console.dir(props)
 
-export default function CatchAll({
-  item,
-  items,
-  preview,
-  routeData,
-  seo,
-}: CatchAllProps) {
-  const isIndex = !!items
+  /**
+   * @info Odd behavior, but if listing page we need data swapped
+   */
+  const { data, error } = useSWR(
+    () => (!!url ? `/api/notion/${url}` : null),
+    // () => (!!slug ? `/api/notion/${slug}` : null),
+    fetcher,
+    {
+      fallbackData: {
+        info: infoFallback,
+        content: contentFallback,
+        items: itemsFallback,
+      },
+      revalidateOnFocus: true,
+    }
+  )
 
-  const header = {
-    description: seo?.description || '',
-    title: seo?.title || '',
-  }
-  const previewClearUrl =
-    routeData?.relativeUrl && `/api/notion/${routeData.relativeUrl}?clear=true`
+  /**
+   * @error or @loading
+   */
+  if (
+    (error && data === undefined) ||
+    !data ||
+    data?.content === undefined ||
+    data?.info === undefined
+  )
+    return (
+      <>
+        <Layout>
+          <h1 key={`error-loading-h1`}>{error ? <>Error</> : <>Loading...</>}</h1>
+        </Layout>
+      </>
+    )
 
   return (
     <>
       <Layout>
-        <Seo {...seo} />
-        <Header {...header} />
-        {isIndex && items && <Listing items={items} routeData={routeData} />}
-        {!isIndex && item && <div id="content">{renderNotionContent(item)}</div>}
+        <Page data={data} props={props} />
       </Layout>
-      {preview && (
-        <AlertBanner>
-          <p>
-            <span className="block md:inline">
-              <strong>Please Note: </strong> This is a preview.{' '}
-            </span>
-            <a
-              href={previewClearUrl}
-              className={cx(
-                'hover:text-cyan duration-200 transition-colors',
-                'underline underline-offset-sm font-semibold'
-              )}
-            >
-              Click here
-            </a>{' '}
-            to exit preview mode.
-          </p>
-        </AlertBanner>
-      )}
     </>
   )
 }
 
-// @todo(types)
-// export const getStaticProps: GetStaticProps<any> = async ({
 export const getStaticProps = async ({ preview = false, ...props }) => {
-  return await getStaticPropsCatchAll({ preview, ...props })
+  const { catchAll } = props.params
+  // const homepageSlug = 'homepage-2021'
+  // const catchAll = [homepageSlug]
+  const clear = false
+  const pathVariables = getPathVariables(catchAll)
+  const data = await getCatchAll({ preview, clear, catchAll })
+  const images = await getImages({ data, pathVariables })
+
+  const dataReturn = { ...data, images }
+  return { props: { preview, ...dataReturn, ...pathVariables, ...props } }
 }
 
-// @todo(types)
-// export const getStaticPaths: GetStaticPaths = async (ctx) => {
-export const getStaticPaths = async (ctx) => {
-  return await getStaticPathsCatchAll(ctx)
+export const getStaticPaths = () => {
+  return getStaticPathsCatchAll()
 }
+
+export default CatchAll

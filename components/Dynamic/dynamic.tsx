@@ -1,7 +1,10 @@
 import cx from 'clsx'
 import dynamic from 'next/dynamic'
-import ExtLink from './ext-link'
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import SplitText from '~components/SplitText'
+
+import ExtLink from './ext-link'
 
 export interface Props {
   children: any
