@@ -1,13 +1,13 @@
 const getStaticPathsCatchAll = () => {
   const paths = []
   paths.push(
-    '/blog',
+    // '/blog',
     '/colophon',
-    '/events',
-    '/events/2021',
-    '/events/2021/09',
-    '/events/2021/09/09',
-    '/events/2021/09/09/the-playlist',
+    // '/events',
+    // '/events/2021',
+    // '/events/2021/09',
+    // '/events/2021/09/09',
+    // '/events/2021/09/09/the-playlist',
     '/podcasts',
     '/podcasts/jer-and-ky-and-guest',
     '/podcasts/knockoffs',

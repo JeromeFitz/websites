@@ -27,20 +27,21 @@ const AppSoundToggle = () => {
     soundEnabled: true,
     volume: 0.25,
   })
+  const handleClick = () => {
+    audio ? playDisableSound() : playEnableSound()
+    toggleAudio()
+  }
   return (
     <motion.button
       className="text-2xl sm:text-3xl text-yellow-400 dark:text-yellow-300 focus:outline-none"
-      onClick={() => {
-        audio ? playDisableSound() : playEnableSound()
-        toggleAudio()
-      }}
+      onClick={() => handleClick()}
       key={audio ? 'sound-on-icon' : 'soun-off-icon'}
       initial={{ scale: 0.8, y: 0, opacity: 0 }}
       animate={{ scale: 1, y: 0, opacity: 1 }}
       exit={{ scale: 0.8, y: 0, opacity: 0 }}
       transition={{ duration: 0.2 }}
-      whileHover={{ scale: 1.2 }}
-      whileTap={{ scale: 0.8 }}
+      // whileHover={{ scale: 1.2 }}
+      // whileTap={{ scale: 0.8 }}
     >
       <Emoji character={config.emoji[audio]} />
     </motion.button>
@@ -54,20 +55,21 @@ const AppThemeToggle = () => {
   const [playBleep] = useSound('/static/audio/bleep.mp3', { soundEnabled: audio })
 
   const darkModeActive = theme === 'dark'
+  const handleClick = () => {
+    playBleep()
+    setTheme(theme === 'light' ? 'dark' : 'light')
+  }
   return (
     <motion.button
       className="ml-4 text-2xl sm:text-3xl text-yellow-400 dark:text-yellow-300 focus:outline-none"
-      onClick={() => {
-        playBleep()
-        setTheme(theme === 'light' ? 'dark' : 'light')
-      }}
+      onClick={() => handleClick()}
       key={darkModeActive ? 'dark-icon' : 'light-icon'}
       initial={{ scale: 0.8, y: 0, opacity: 0 }}
       animate={{ scale: 1, y: 0, opacity: 1 }}
       exit={{ scale: 0.8, y: 0, opacity: 0 }}
       transition={{ duration: 0.2 }}
-      whileHover={{ scale: 1.2 }}
-      whileTap={{ scale: 0.8 }}
+      // whileHover={{ scale: 1.2 }}
+      // whileTap={{ scale: 0.8 }}
     >
       <Emoji character={config.theme[theme || 'dark']} />
     </motion.button>

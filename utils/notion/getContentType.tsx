@@ -47,7 +47,7 @@ const getContentType = (item: NotionBlock, images: any[]) => {
       const imageSlug = slugger.slug(content.external.url)
       const imageData = images[imageSlug]
       return !!imageData ? (
-        <div className="w-2/3 mx-auto">
+        <div className="w-2/3 mx-auto" key={id}>
           <Image
             alt={`todo:`}
             blurDataURL={imageData.base64}

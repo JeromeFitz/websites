@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { BlocksChildrenListResponse } from '@notionhq/client/build/src/api-endpoints'
 import {
   CheckboxPropertyValue,
@@ -631,7 +632,7 @@ const getCatchAll = async ({ preview, clear, catchAll }) => {
   switch (dataType) {
     case 1:
     case 5:
-      info = await getDatabasesByIdQuery({
+      const info1 = await getDatabasesByIdQuery({
         databaseId: DATABASES[routeType],
         filter: {
           and: [
@@ -642,15 +643,15 @@ const getCatchAll = async ({ preview, clear, catchAll }) => {
           ],
         },
       })
-      info = info.object === 'list' && info.results[0]
-      info = normalizerContent(info)
+      const info1a = info1.object === 'list' && info1.results[0]
+      info = normalizerContent(info1a)
       content = await getBlocksByIdChildren({ blockId: info.id })
       break
     case 2:
-      info = await getPagesById({ pageId: SEO[routeType] })
-      info = info.object === 'page' && normalizerContent(info)
+      const info2 = await getPagesById({ pageId: SEO[routeType] })
+      info = info2.object === 'page' && normalizerContent(info2)
       content = await getBlocksByIdChildren({ blockId: info.id })
-      items = await getDatabasesByIdQuery({
+      const items2 = await getDatabasesByIdQuery({
         databaseId: DATABASES[routeType],
         filter: {
           and: [
@@ -665,15 +666,17 @@ const getCatchAll = async ({ preview, clear, catchAll }) => {
           ],
         },
       })
-      items.data = {}
-      _map(items.results, (item) => (items.data[item.id] = normalizerContent(item)))
-      items = _omit(items, 'results')
-      items.results = items.data
-      items = _omit(items, 'data')
+      const items2Data = {}
+      _map(items2.results, (item) => (items2Data[item.id] = normalizerContent(item)))
+      const items2Omit = _omit(items2, 'results')
+      // @ts-ignore
+      items2Omit.results = items2Data
+      items = _omit(items2Omit, 'data')
       break
     case 3:
-      info = await getPagesById({ pageId: SEO[routeType] })
-      info = info.object === 'page' && normalizerContent(info)
+      const info3 = await getPagesById({ pageId: SEO[routeType] })
+      const info3a = info3.object === 'page' && normalizerContent(info3)
+      info = info3a
       content = await getBlocksByIdChildren({ blockId: info.id })
       /**
        * @filter
@@ -790,15 +793,16 @@ const getCatchAll = async ({ preview, clear, catchAll }) => {
           }
           break
       }
-      items = await getDatabasesByIdQuery({
+      const items3 = await getDatabasesByIdQuery({
         databaseId: DATABASES[routeType],
         filter,
       })
-      items.data = {}
-      _map(items.results, (item) => (items.data[item.id] = normalizerContent(item)))
-      items = _omit(items, 'results')
-      items.results = items.data
-      items = _omit(items, 'data')
+      const items3Data = {}
+      _map(items3.results, (item) => (items3Data[item.id] = normalizerContent(item)))
+      const items3Omit = _omit(items3, 'results')
+      // @ts-ignore
+      items3Omit.results = items3Data
+      items = _omit(items3Omit, 'data')
       /***
        * @hack
        */
@@ -815,7 +819,7 @@ const getCatchAll = async ({ preview, clear, catchAll }) => {
           !!day ? day : '01'
         }`
       )
-      info = await getDatabasesByIdQuery({
+      const info4 = await getDatabasesByIdQuery({
         databaseId: DATABASES[routeType],
         filter: {
           and: [
@@ -840,8 +844,8 @@ const getCatchAll = async ({ preview, clear, catchAll }) => {
           ],
         },
       })
-      info = info.object === 'list' && info.results[0]
-      info = normalizerContent(info)
+      const info4a = info4.object === 'list' && info4.results[0]
+      info = normalizerContent(info4a)
       content = await getBlocksByIdChildren({ blockId: info.id })
       break
     default:

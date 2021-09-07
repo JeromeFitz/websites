@@ -1,5 +1,5 @@
 import cx from 'clsx'
-import Link from 'next/link'
+import NextLink from 'next/link'
 import nodeEmoji from 'node-emoji'
 
 import Emoji from '~components/Notion/Emoji'
@@ -35,19 +35,23 @@ const getTextAnnotations = ({ href, plain_text, annotations }) => {
   if (href) {
     const link = getNextLink(href)
     // returnElement = <a href={href}>{returnElement}</a>
-    returnElement = (
-      <Link as={link.as.replace('//', '/')} href={link.href}>
-        <a
-          className={cx(
-            'font-semibold',
-            'underline underline-offset-md underline-thickness-sm',
-            'hover:text-green-500 dark:hover:text-yellow-200'
-          )}
-        >
-          {returnElement}
-        </a>
-      </Link>
-    )
+    if (!!link) {
+      returnElement = (
+        <NextLink as={link.as.replace('//', '/')} href={link.href}>
+          <a
+            className={cx(
+              'font-semibold',
+              'underline underline-offset-md underline-thickness-sm',
+              'hover:text-green-500 dark:hover:text-yellow-200'
+            )}
+          >
+            {returnElement}
+          </a>
+        </NextLink>
+      )
+    } else {
+      return null
+    }
   }
   return returnElement
 }

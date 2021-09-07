@@ -46,7 +46,12 @@ const CatchAll = (props) => {
   /**
    * @error or @loading
    */
-  if (error || !data || data?.content === undefined || data?.info === undefined)
+  if (
+    (error && data === undefined) ||
+    !data ||
+    data?.content === undefined ||
+    data?.info === undefined
+  )
     return (
       <>
         <Layout>
