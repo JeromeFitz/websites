@@ -26,28 +26,22 @@ const getPathVariables = (catchAll: any) => {
   const last: string = _last(catchAll)
 
   const meta =
-    size > 1 && _includes(['blog', 'podcasts', 'events'], first)
+    size > 1 && _includes(['blog', 'events'], first)
       ? _drop(catchAll)
       : _drop(_dropRight(catchAll))
   const routeType =
     first === last && !_includes(routeTypesArray, first) ? 'pages' : first
-  const slug = first !== last && !_isInteger(parseInt(last)) ? last : false
+  const slug = first !== last && !_isInteger(parseInt(last)) ? last : first
 
   const isPage = routeType === 'pages'
-  const isIndex = slug === false
+  const isIndex = slug === first
   const hasMeta = !!meta && _size(meta) !== 0
 
   const url = isPage && first === 'homepage-2021' ? '' : _join(catchAll, '/')
 
-  return {
-    hasMeta,
-    isPage,
-    isIndex,
-    meta,
-    routeType,
-    slug,
-    url,
-  }
+  const pathVariables = { hasMeta, isPage, isIndex, meta, routeType, slug, url }
+
+  return pathVariables
 }
 
 export default getPathVariables

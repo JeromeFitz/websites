@@ -15,9 +15,6 @@ const Link = ({ item, routeType }) => {
   const key = `link-${slug}`
   const emoji = !!icon?.emoji ? icon.emoji : ''
 
-  console.dir(`properties`)
-  console.dir(properties)
-
   return (
     <>
       <NextLink as={as} href={href} key={key}>

@@ -29,8 +29,8 @@ const Title = ({ emoji, id, title }) => {
           animate={{ x: 0 }}
           className={cx(
             'z-0',
-            'text-xl md:text-6xl tracking-tight leading-normal font-extrabold',
-            'bg-clip-text leading-normal md:leading-normal',
+            'text-xl md:text-6xl tracking-tight font-extrabold',
+            'bg-clip-text',
             'bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500',
             'dark:bg-gradient-to-l'
           )}

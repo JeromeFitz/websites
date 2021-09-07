@@ -1,4 +1,5 @@
 import cx from 'clsx'
+import Slugger from 'github-slugger'
 import _map from 'lodash/map'
 import _size from 'lodash/size'
 import Image from 'next/image'
@@ -8,7 +9,8 @@ import { WEBKIT_BACKGROUND__BREAK } from '~lib/constants'
 import { NotionBlock } from '~utils/notion'
 import getContentTypeDetail from '~utils/notion/getContentTypeDetail'
 import notionToTailwindColor from '~utils/notion/notionToTailwindColor'
-const getContentType = (item: NotionBlock) => {
+
+const getContentType = (item: NotionBlock, images: any[]) => {
   const { id, type } = item
   const content = item[type]
 
@@ -41,15 +43,22 @@ const getContentType = (item: NotionBlock) => {
     case 'numbered_list_item':
       return <li key={id}>{getContentTypeDetail(content)}</li>
     case 'image':
-      return (
-        <Image
-          alt={`test`}
-          key={id}
-          src={content.external.url}
-          width={250}
-          height={750}
-        />
-      )
+      const slugger = new Slugger()
+      const imageSlug = slugger.slug(content.external.url)
+      const imageData = images[imageSlug]
+      return !!imageData ? (
+        <div className="w-2/3 mx-auto">
+          <Image
+            alt={`todo:`}
+            blurDataURL={imageData.base64}
+            key={imageSlug}
+            placeholder="blur"
+            title={`todo:`}
+            {...imageData.img}
+          />
+          {/* <ImageCaption caption={seoImageDescription} /> */}
+        </div>
+      ) : null
     case 'text':
     case 'title':
     case 'rich_text':

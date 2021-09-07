@@ -17,6 +17,7 @@ import _addMonths from 'date-fns/addMonths'
 import _addYears from 'date-fns/addYears'
 import Slugger from 'github-slugger'
 import _ from 'lodash'
+import _filter from 'lodash/filter'
 import _map from 'lodash/map'
 import _omit from 'lodash/omit'
 // import _pick from 'lodash/pick'
@@ -261,8 +262,14 @@ const getTypeRichTextNormalized = (data: RichTextPropertyValue) =>
 
 const getTypeSelectNormalized = (data: SelectPropertyValue) => {
   const s: any = data.select
-  s.slug = slugger.slug(data.select.name)
-  return { [s.id]: s }
+  // console.dir(`getTypeSelectNormalized`)
+  // console.dir(data)
+  if (!!s) {
+    s.slug = slugger.slug(data.select.name)
+    return { [s.id]: s }
+  } else {
+    return null
+  }
 }
 
 const getTypeTitleNormalized = (data: TitlePropertyValue) =>
@@ -613,7 +620,7 @@ const getCatchAll = async ({ preview, clear, catchAll }) => {
   } else {
     dataType = 5
   }
-  console.dir(`dataType: ${dataType}`)
+  // console.dir(`dataType: ${dataType}`)
   /**
    * @info
    * used for seo information and immediate display above the fold
@@ -841,6 +848,9 @@ const getCatchAll = async ({ preview, clear, catchAll }) => {
       break
   }
 
+  if (!!items) {
+    items.results = _filter(items.results, { data: { published: true } })
+  }
   return { info, content, items }
 }
 
