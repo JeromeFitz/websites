@@ -172,8 +172,5 @@
     "entrypoints": [
       "pages"
     ]
-  },
-  "resolutions": {
-    "webpack": "5.52.0"
   }
 }
