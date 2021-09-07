@@ -6,7 +6,7 @@ import fetcher from '~lib/fetcher'
 import getCatchAll from '~lib/notion/getCatchAll'
 import getImages from '~lib/notion/getImages'
 import getPathVariables from '~lib/notion/getPathVariables'
-import { getStaticPathsCatchAll } from '~utils/notion/prepareNotionData'
+import getStaticPathsCatchAll from '~lib/notion/getStaticPathsCatchAll'
 
 const CatchAll = (props) => {
   const {
