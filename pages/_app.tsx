@@ -7,7 +7,7 @@ import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import { FC, useEffect } from 'react'
 
-import ErrorBoundary from '~components/ErrorBoundary'
+// import ErrorBoundary from '~components/ErrorBoundary'
 import { Header } from '~components/Layout'
 import NProgress from '~components/NProgress'
 import { ManagedUIContext } from '~context/ManagedUIContext'
@@ -28,29 +28,29 @@ export default function MyApp({ Component, pageProps, router }: AppProps) {
   return (
     <>
       <Inspect disabled={process.env.NODE_ENV === 'production'}>
-        <ErrorBoundary>
-          <Head>
-            <meta
-              name="viewport"
-              content="width=device-width, initial-scale=1.0,viewport-fit=cover"
-            />
-          </Head>
-          <ManagedUIContext>
-            <NotificationProvider>
-              <Layout pageProps={pageProps}>
-                <Header />
-                <AnimatePresence
-                  exitBeforeEnter
-                  initial={false}
-                  onExitComplete={() => window.scrollTo(0, 0)}
-                >
-                  <Component {...pageProps} key={router.route} />
-                </AnimatePresence>
-                <NProgress />
-              </Layout>
-            </NotificationProvider>
-          </ManagedUIContext>
-        </ErrorBoundary>
+        {/* <ErrorBoundary> */}
+        <Head>
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0,viewport-fit=cover"
+          />
+        </Head>
+        <ManagedUIContext>
+          <NotificationProvider>
+            <Layout pageProps={pageProps}>
+              <Header />
+              <AnimatePresence
+                exitBeforeEnter
+                initial={false}
+                onExitComplete={() => window.scrollTo(0, 0)}
+              >
+                <Component {...pageProps} key={router.route} />
+              </AnimatePresence>
+              <NProgress />
+            </Layout>
+          </NotificationProvider>
+        </ManagedUIContext>
+        {/* </ErrorBoundary> */}
       </Inspect>
     </>
   )

@@ -99,7 +99,7 @@
     /* @apply font-bold tracking-tight mb-6 md:mb-8; */
     /* @apply prose prose-3xl max-w-none; */
     @apply mb-6 md:mb-8;
-    @apply text-7xl tracking-tight leading-normal font-extrabold;
+    @apply text-6xl tracking-tight leading-normal font-extrabold;
   }
 
   h2 {

@@ -2,7 +2,7 @@ import cx from 'clsx'
 import { motion } from 'framer-motion'
 import _map from 'lodash/map'
 import _title from 'title'
-import useSound from 'use-sound'
+import { useSound } from 'use-sound'
 
 // import { useNotification } from '~context/Notification'
 

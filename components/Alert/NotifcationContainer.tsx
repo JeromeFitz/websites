@@ -1,4 +1,4 @@
-import Portal from '@reach/portal'
+import { Portal } from '@reach/portal'
 import cx from 'clsx'
 import React from 'react'
 
