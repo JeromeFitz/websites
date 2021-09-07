@@ -10,11 +10,13 @@ const Link = ({ item, routeType }) => {
   // @ts-ignore
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { as, date, href, slug } = getInfoType(item, routeType)
-  const { icon, properties } = item
+  const { icon, data: properties } = item
+  const { seoDescription, title } = properties
   const key = `link-${slug}`
   const emoji = !!icon?.emoji ? icon.emoji : ''
 
-  // console.dir(properties)
+  console.dir(`properties`)
+  console.dir(properties)
 
   return (
     <>
@@ -29,14 +31,10 @@ const Link = ({ item, routeType }) => {
           )}
         >
           {emoji && <Emoji character={emoji} />}
-          {properties['Title'].title[0].plain_text}
+          {title}
         </a>
       </NextLink>
-      {!!properties['SEO.Description'].rich_text[0] && (
-        <p className={cx('prose pb-2')}>
-          {properties['SEO.Description'].rich_text[0].plain_text}
-        </p>
-      )}
+      {!!seoDescription && <p className={cx('prose pb-2')}>{seoDescription}</p>}
     </>
   )
 }

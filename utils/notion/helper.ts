@@ -57,7 +57,7 @@ const PROPERTIES = {
   season: 'Season',
   seoDescription: 'SEO.Description',
   seoImage: 'SEO.Image',
-  seoImageDescription: 'SEO.ImageDescription',
+  seoImageDescription: 'SEO.Image.Description',
   shows: 'ShowIDs',
   showsPeopleCast: 'Shows.People.Cast',
   showsPeopleCastPast: 'Shows.People.CastPast',

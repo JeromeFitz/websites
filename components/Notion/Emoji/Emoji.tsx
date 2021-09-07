@@ -13,7 +13,7 @@ const Emoji = ({ character, margin = false }) => {
   }
 
   const { emoji, key } = emojiFound
-  const label = key.replace(/_/gi, ' ')
+  const label = `emoji ${key.replace(/_/gi, ' ')}`
 
   return (
     <span

@@ -1,8 +1,10 @@
 import cx from 'clsx'
 import { motion } from 'framer-motion'
 import Slugger from 'github-slugger'
+import _capitalize from 'lodash/capitalize'
 import _filter from 'lodash/filter'
 import _map from 'lodash/map'
+import _size from 'lodash/size'
 import Image from 'next/image'
 import { getPlaiceholder } from 'plaiceholder'
 import { useEffect } from 'react'
@@ -12,20 +14,17 @@ import Layout from '~components/Layout'
 import ImageCaption from '~components/Notion/ImageCaption'
 import Link from '~components/Notion/Link'
 // import Meta from '~components/Notion/Meta'
-import Listing from '~components/Notion/Listing'
+// import Listing from '~components/Notion/Listing'
 import Title from '~components/Notion/Title'
 import Seo from '~components/Seo'
 import { MOTION_PAGE_VARIANTS } from '~lib/constants'
 import fetcher from '~lib/fetcher'
+import getCatchAll from '~lib/notion/getCatchAll'
+import getPathVariables from '~lib/notion/getPathVariables'
 import { NotionBlock } from '~utils/notion'
 import getContentType from '~utils/notion/getContentType'
-import getPage from '~utils/notion/getPage'
-import getSearch from '~utils/notion/getSearch'
-import {
-  getPathVariables,
-  getStaticPathsCatchAll,
-} from '~utils/notion/prepareNotionData'
-
+import notionToTailwindColor from '~utils/notion/notionToTailwindColor'
+import { getStaticPathsCatchAll } from '~utils/notion/prepareNotionData'
 // import Breadcrumb from '~components/Notion/Breadcrumb'
 // import getNextLink from '~utils/getNextLink'
 
@@ -36,10 +35,10 @@ import {
 const filterImages = (data, type) => {
   switch (type) {
     case 'info':
-      return data['SEO.Image']
+      return !!data && [data?.seoImage]
     case 'content':
-      return _filter(data, { object: 'block', type: 'image' })
-    case 'list':
+      return !!data && _filter(data, { object: 'block', type: 'image' })
+    case 'items':
     default:
       return []
   }
@@ -51,22 +50,17 @@ const CatchAll = (props) => {
     info: infoFallback,
     images: imagesFallback,
     items: itemsFallback,
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    isIndex,
+    // hasMeta,
     isPage,
-    relativeUrl,
+    isIndex,
+    // meta,
     routeType,
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    slug,
+    // slug,
     url,
   } = props
 
-  // console.dir(`props`)
-  // console.dir(props)
+  console.dir(`props`)
+  console.dir(props)
 
   /**
    * @info Odd behavior, but if listing page we need data swapped
@@ -126,24 +120,28 @@ const CatchAll = (props) => {
   const isInfoObjectPage = !!info && info?.object === 'page'
   // console.dir(info?.object)
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { cover, icon, id, properties } = isInfoObjectPage ? info : info.results[0]
-
-  // const coverImage = cover?.external?.url
+  const {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    cover,
+    icon,
+    id,
+    data: properties,
+  } = isInfoObjectPage ? info : info.results[0]
   const emoji = !!icon?.emoji ? icon.emoji : ''
-  const title = getContentType(properties.Title)
-  const seoDescription = getContentType(properties['SEO.Description'])
-  const seoImage = getContentType(properties['SEO.Image'])
-  const seoImageDescription = getContentType(properties['SEO.Image.Description'])
-  // const twitterUrl = getContentType(properties['Social.Twitter'])
-  // const datePublished = getContentType(properties['Date.Published'])
-  const published = getContentType(properties['Published'])
-  const noIndex = getContentType(properties['NoIndex'])
-  const tags = getContentType(properties['Tags'])
 
-  const seoUrl = `https://jeromefitzgerald.com/${relativeUrl}`
+  const {
+    noIndex,
+    published,
+    seoDescription,
+    seoImage,
+    seoImageDescription,
+    tags,
+    title,
+  } = properties
+
+  const seoUrl = `https://jeromefitzgerald.com/${url}`
   const seo = {
     canonical: seoUrl,
     description: seoDescription,
@@ -166,8 +164,10 @@ const CatchAll = (props) => {
   }
 
   // @todo(external)
-  const seoImageSlug = slugger.slug(properties['SEO.Image']?.files[0]?.external.url)
+  const seoImageSlug = slugger.slug(seoImage?.url)
   const seoImageData = images[seoImageSlug]
+  console.dir(`images`)
+  console.dir(images)
 
   const isEvent = !isIndex
   // const showId = !!properties['ShowIDs'] && getContentType(properties['ShowIDs'])
@@ -213,30 +213,54 @@ const CatchAll = (props) => {
               <ImageCaption caption={seoImageDescription} />
             </div>
           )}
-          {!!tags && tags.length > 0 && (
+          {!!tags && _size(tags) > 0 && (
             <ul
               key="tagsKeyDog"
               className={cx('mb-5 flex flex-row flex-wrap gap-2.5')}
             >
-              {tags}
+              {_map(tags, (t, tindex) => {
+                const tag = tags[tindex]
+                return (
+                  <li
+                    className={cx(`badge badge-${notionToTailwindColor(tag.color)}`)}
+                    key={tag.id}
+                  >
+                    {tag.name}
+                  </li>
+                )
+              })}
             </ul>
           )}
           {/* Dynamic */}
-          {/* Items */}
-          {isIndex &&
-            !isPage &&
-            _map(items.results, (item, itemIndex) => (
-              <>
-                <Link key={itemIndex} item={item} routeType={routeType} />
-              </>
-            ))}
           {/* Content */}
-          {(!isIndex || isPage) &&
-            _map(content.results, (contentItem: NotionBlock) =>
-              getContentType(contentItem)
-            )}
+          {_map(content.results, (contentItem: NotionBlock) =>
+            getContentType(contentItem)
+          )}
+          {/* Items */}
+          {isIndex && !isPage && (
+            <>
+              <h5 className="text-3xl font-bold mt-2 pt-2 pb-2">
+                {_capitalize(routeType)}
+              </h5>
+              {_map(items.results, (i, iIndex) => {
+                const item = items.results[iIndex]
+                console.dir(`i`)
+                console.dir(i)
+                console.dir(`item`)
+                console.dir(item)
+                if (item.data.slug === null || item.data.slug === undefined) {
+                  return null
+                }
+                return (
+                  <>
+                    <Link key={iIndex} item={item} routeType={routeType} />
+                  </>
+                )
+              })}
+            </>
+          )}
           {/* {isEvent && showId && <Meta id={showId} />} */}
-          {isEvent && peopleCast && <Listing items={peopleCast} slug={slug} />}
+          {/* {isEvent && peopleCast && <Listing items={peopleCast} slug={slug} />} */}
           {/* {isEvent && peopleCast && (
             <>
               <h5>Cast</h5>
@@ -252,36 +276,10 @@ const CatchAll = (props) => {
 }
 
 export const getStaticProps = async ({ preview = false, ...props }) => {
-  // console.dir(`getStaticProps`)
-  // console.dir(props)
   const { catchAll } = props.params
-  // const catchAll = ['shows', 'jfle']
-  // const catchAll = ['events', '2020']
-  // const catchAll = ['events', '2020', '05', '01', 'jerome-and']
+  const clear = false
   const pathVariables = getPathVariables(catchAll)
-  // console.dir(`pathVariables`)
-  // console.dir(pathVariables)
-  const pageSlug = pathVariables.isPage && pathVariables.slug
-  const isHomepage = pathVariables.slug === pageSlug
-  let info = await getSearch(pathVariables, preview)
-  // console.dir(`info`)
-  // console.dir(info)
-  const pageId =
-    pathVariables.isIndex && !isHomepage ? undefined : info.results[0].id
-  let content = await getPage(pathVariables, pageId)
-  // console.dir(`content`)
-  // console.dir(content)
-  let items = null
-
-  /**
-   * @isIndex override (blog|events)
-   */
-  if (pathVariables.isIndex && !pathVariables.isPage) {
-    const _info = info
-    info = content
-    content = await getPage(pathVariables, info?.id)
-    items = _info
-  }
+  const data = await getCatchAll({ preview, clear, catchAll })
 
   /**
    * @plaiceholder/next
@@ -289,55 +287,60 @@ export const getStaticProps = async ({ preview = false, ...props }) => {
   // const images = []
   const slugger = new Slugger()
   const infoImagesFilter =
-    info.object === 'page'
-      ? filterImages(info?.properties, 'info')
-      : filterImages(info?.results[0]?.properties, 'info')
-  // console.dir(`infoImagesFilter`)
-  // console.dir(infoImagesFilter)
-  // console.dir(info)
-  const infoImagesAwait = infoImagesFilter.files.map(async (imageResult) => {
-    // console.dir(`imageResult`)
-    // console.dir(imageResult)
-    const imageExternalUrl =
-      imageResult.type === 'external'
-        ? imageResult.external.url
-        : imageResult.external.url
+    data.info.object === 'page'
+      ? filterImages(data.info?.data, 'info')
+      : filterImages(data.info?.results[0]?.properties, 'info')
+  console.dir(`infoImagesFilter`)
+  console.dir(infoImagesFilter)
 
-    const { base64, img } = await getPlaiceholder(imageExternalUrl)
-    const id = slugger.slug(imageExternalUrl)
-    return { base64, id, img, url: imageExternalUrl }
+  const infoImagesAwait = infoImagesFilter.map(async (imageResult) => {
+    if (!imageResult) {
+      return null
+    }
+    const url = !!imageResult && imageResult?.url
+
+    if (!url) {
+      return null
+    }
+
+    const { base64, img } = await getPlaiceholder(url)
+    const id = slugger.slug(url)
+
+    return { base64, id, img, url }
   })
   const infoImages = await Promise.all(infoImagesAwait)
   // console.dir(`infoImages`)
   // console.dir(infoImages)
 
-  const contentImagesFilter =
-    !pathVariables.isIndex && filterImages(content?.results, 'content')
-  const contentImagesAwait =
-    !!contentImagesFilter &&
-    contentImagesFilter.map(async (imageResult) => {
-      const imageExternalUrl =
-        imageResult.image.type === 'external'
-          ? imageResult.image.external.url
-          : imageResult.image.external.url
+  // const contentImagesFilter =
+  //   !pathVariables.isIndex && filterImages(content?.results, 'content')
+  // const contentImagesAwait =
+  //   !!contentImagesFilter &&
+  //   contentImagesFilter.map(async (imageResult) => {
+  //     const imageExternalUrl =
+  //       imageResult.image.type === 'external'
+  //         ? imageResult.image.external.url
+  //         : imageResult.image.external.url
 
-      const { base64, img } = await getPlaiceholder(imageExternalUrl)
-      const id = slugger.slug(imageExternalUrl)
-      return { base64, id, img, url: imageExternalUrl }
-    })
-  const contentImages =
-    !!contentImagesAwait && (await Promise.all(contentImagesAwait))
-  // console.dir(`contentImages`)
-  // console.dir(contentImages)
+  //     const { base64, img } = await getPlaiceholder(imageExternalUrl)
+  //     const id = slugger.slug(imageExternalUrl)
+  //     return { base64, id, img, url: imageExternalUrl }
+  //   })
+  // const contentImages =
+  //   !!contentImagesAwait && (await Promise.all(contentImagesAwait))
+  // // console.dir(`contentImages`)
+  // // console.dir(contentImages)
 
-  // _map(newImages, (image) => console.dir(image))
-  // const mergeImages = _merge(...infoImages, ...contentImages)
+  // // _map(newImages, (image) => console.dir(image))
+  // // const mergeImages = _merge(...infoImages, ...contentImages)
   const mergeImages = {}
-  _map(infoImages, (image: any) => (mergeImages[image.id] = image))
-  _map(contentImages, (image: any) => (mergeImages[image.id] = image))
+  !!infoImages &&
+    infoImages[0] &&
+    _map(infoImages, (image: any) => (mergeImages[image.id] = image))
+  // _map(contentImages, (image: any) => (mergeImages[image.id] = image))
 
-  const data = { info, content, images: mergeImages, items }
-  return { props: { preview, ...data, ...pathVariables, ...props } }
+  const dataReturn = { ...data, images: mergeImages }
+  return { props: { preview, ...dataReturn, ...pathVariables, ...props } }
 }
 
 export const getStaticPaths = () => {
