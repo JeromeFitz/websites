@@ -2,7 +2,7 @@ import cx from 'clsx'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 import _title from 'title'
-import useSound from 'use-sound'
+import { useSound } from 'use-sound'
 
 import { Banner as AlertBanner } from '~components/Alert'
 import Layout from '~components/Layout'

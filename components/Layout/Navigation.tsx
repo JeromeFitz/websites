@@ -4,7 +4,7 @@ import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 import { memo } from 'react'
 import _title from 'title'
-import useSound from 'use-sound'
+import { useSound } from 'use-sound'
 
 import Avatar from '~components/Avatar'
 import links from '~config/navigation'
