@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import cx from 'clsx'
 import { motion } from 'framer-motion'
 import Slugger from 'github-slugger'
@@ -5,11 +6,13 @@ import _capitalize from 'lodash/capitalize'
 import _map from 'lodash/map'
 import _size from 'lodash/size'
 import Image from 'next/image'
+import pluralize from 'pluralize'
 import { useEffect } from 'react'
 import useSWR, { useSWRConfig } from 'swr'
 
 import ImageCaption from '~components/Notion/ImageCaption'
 import Link from '~components/Notion/Link'
+import Meta from '~components/Notion/Meta'
 import Title from '~components/Notion/Title'
 import Seo from '~components/Seo'
 import { MOTION_PAGE_VARIANTS } from '~lib/constants'
@@ -19,8 +22,27 @@ import notionToTailwindColor from '~utils/notion/notionToTailwindColor'
 
 // import Breadcrumb from '~components/Notion/Breadcrumb'
 // import Listing from '~components/Notion/Listing'
-// import Meta from '~components/Notion/Meta'
 // import getNextLink from '~utils/getNextLink'
+
+pluralize.addPluralRule(/cast$/i, 'cast')
+pluralize.addPluralRule(/crew$/i, 'crew')
+
+const peopleMap = [
+  'peopleCast',
+  'peopleCrew',
+  'peopleDirector',
+  'peopleDirectorMusical',
+  'peopleDirectorTechnical',
+  'peopleProducer',
+  'peopleThanks',
+  'peopleWriter',
+]
+
+const getTitle = (_title) =>
+  _title
+    .replace('people', '')
+    .replace('DirectorMusical', 'Musical Director')
+    .replace('DirectorTechnical', 'Technical Director')
 
 const Page = ({ data, props }) => {
   const {
@@ -105,10 +127,7 @@ const Page = ({ data, props }) => {
   // const peopleCast =
   //   !!properties['People.Cast'] && getContentType(properties['People.Cast'])
 
-  // // console.dir(`showId`)
-  // // console.dir(showId)
-  // // console.dir(`peopleCast`)
-  // // console.dir(peopleCast)
+  // console.dir(peopleCast)
 
   // // console.dir(`id`)
   // // console.dir(id)
@@ -186,15 +205,37 @@ const Page = ({ data, props }) => {
           </>
         )}
         {/* {isEvent && showId && <Meta id={showId} />} */}
-        {/* {isEvent && peopleCast && <Listing items={peopleCast} slug={slug} />} */}
-        {/* {isEvent && peopleCast && (
-            <>
-              <h5>Cast</h5>
-              {peopleCast.map((person) => (
-                <Meta key={person.id} id={person.id} />
-              ))}
-            </>
-          )} */}
+        {!!peopleMap && (
+          <div
+            id="container--people"
+            className={cx('grid', 'grid-cols-2 gap-3', 'md:grid-cols-3 md:gap-4')}
+          >
+            {_map(peopleMap, (peopleKey) => {
+              const peopleIds = properties[peopleKey]
+              const peopleTitle = getTitle(peopleKey)
+              const peopleSize = _size(peopleIds)
+              return (
+                peopleSize > 0 && (
+                  <div
+                    id={`container--people--${peopleKey
+                      .replace('people', '')
+                      .toLowerCase()}`}
+                    className="pl-2 md:pl-1 pr-2 md:pr-0"
+                  >
+                    <h5 className="mt-2 font-bold">
+                      {pluralize(peopleTitle, peopleSize)}
+                    </h5>
+                    <ul className="flex flex-col">
+                      {peopleIds.map((personId) => {
+                        return <Meta key={personId} id={personId} />
+                      })}
+                    </ul>
+                  </div>
+                )
+              )
+            })}
+          </div>
+        )}
       </motion.div>
     </>
   )

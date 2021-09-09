@@ -2,17 +2,20 @@
 
 import { NextApiRequest, NextApiResponse } from 'next'
 
+import { normalizerContent } from '~lib/notion/getCatchAll'
 import { notion } from '~utils/notion/helper'
 
 const notionPagesId = async (req: NextApiRequest, res: NextApiResponse) => {
-  console.dir(`notionPagesId`)
+  // console.dir(`notionPagesId`)
   const page_id = req.query.id
   try {
-    const data = await notion.pages.retrieve({
+    const contentData = await notion.pages.retrieve({
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       page_id,
     })
+
+    const data = normalizerContent(contentData)
 
     res.status(200).json({
       ...data,

@@ -858,4 +858,5 @@ const getCatchAll = async ({ preview, clear, catchAll }) => {
   return { info, content, items }
 }
 
+export { normalizerContent }
 export default getCatchAll

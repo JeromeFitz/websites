@@ -3,27 +3,28 @@ import useSWR from 'swr'
 import fetcher from '~lib/fetcher'
 
 const Meta = ({ id }) => {
-  console.dir(`id: ${id}`)
+  // console.dir(`id: ${id}`)
+  // console.dir(`/api/notion/pages/${id}`)
   const { data, error } = useSWR(() => `/api/notion/pages/${id}`, fetcher, {
-    revalidateOnFocus: true,
+    revalidateOnFocus: false,
   })
+  // console.dir(`data`)
+  // console.dir(data)
   /**
    * @error or @loading
    */
-  if (error || !data || data?.parent === undefined || data?.properties === undefined)
+  if (error || !data || data?.parent === undefined || data?.data === undefined)
     return (
       <>
-        <h1>{error ? <>Error</> : <>Loading...</>}</h1>
+        <li>{error ? <>Error</> : <>Loading...</>}</li>
       </>
     )
-  console.dir(data)
 
-  const { properties } = data
-  const title = properties['Title'].title[0].plain_text
+  const { title } = data?.data
 
   return (
     <>
-      <h6>{title}</h6>
+      <li>{title}</li>
     </>
   )
 }
