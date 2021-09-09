@@ -6,6 +6,7 @@ const {
   boxShadow,
   colors,
   fontFamily,
+  fontSize,
   lineHeight,
   spacing,
 } = require('tailwindcss/defaultTheme')
@@ -148,6 +149,22 @@ module.exports = {
         'rgba(0, 0, 0, 0.02) 0px 30px 30px, rgba(0, 0, 0, 0.03) 0px 0px 8px, rgba(0, 0, 0, 0.05) 0px 1px 0px',
       ...boxShadow,
     },
+    // @todo(merge from default)
+    fontSize: {
+      xs: ['0.75rem', { lineHeight: '1rem' }],
+      sm: ['0.875rem', { lineHeight: '1.25rem' }],
+      base: ['1rem', { lineHeight: '1.5rem' }],
+      lg: ['1.125rem', { lineHeight: '1.75rem' }],
+      xl: ['1.25rem', { lineHeight: '1.75rem' }],
+      '2xl': ['1.5rem', { lineHeight: '2rem' }],
+      '3xl': ['1.875rem', { lineHeight: '2.25rem' }],
+      '4xl': ['2.25rem', { lineHeight: '2.5rem' }],
+      '5xl': ['3rem', { lineHeight: '1.125' }],
+      '6xl': ['3.75rem', { lineHeight: '1.25' }],
+      '7xl': ['4.5rem', { lineHeight: '1.25' }],
+      '8xl': ['6rem', { lineHeight: '1.25' }],
+      '9xl': ['8rem', { lineHeight: '1.25' }],
+    },
     lineHeight: {
       'extra-loose': '2.2',
       ...lineHeight,
@@ -158,6 +175,9 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['Inter', ...fontFamily.sans],
+      },
+      lineHeight: {
+        'leading-tighter': '1.125',
       },
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       typography: (theme) => ({
@@ -235,8 +255,8 @@ module.exports = {
     typography: ['dark'],
   },
   plugins: [
-    // require('@tailwindcss/typography'),
-    require('@tailwindcss/ui'),
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/aspect-ratio'),
     require('tailwind-underline-utils'),
     require('@plaiceholder/tailwindcss'),
   ],

@@ -1,6 +1,6 @@
 import cx from 'clsx'
 import React, { useMemo, useState } from 'react'
-import useSound from 'use-sound'
+import { useSound } from 'use-sound'
 
 import { useUI } from '~context/ManagedUIContext'
 import { useNotification } from '~context/Notification'

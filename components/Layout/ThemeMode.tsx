@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { useTheme } from 'next-themes'
 import { memo } from 'react'
-import useSound from 'use-sound'
+import { useSound } from 'use-sound'
 
 import Emoji from '~components/Notion/Emoji'
 import { useUI } from '~context/ManagedUIContext'
