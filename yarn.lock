@@ -1049,10 +1049,10 @@
     "@nodelib/fs.scandir" "2.1.4"
     fastq "^1.6.0"
 
-"@notionhq/client@0.3.1":
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/@notionhq/client/-/client-0.3.1.tgz#c6cbd819cb69fc97b9fde4f8f5db4cfec3dc358b"
-  integrity sha512-f0qTgzIVE9lTlS1rAQFDzkUiH8tUPAPnGpqXlTEv2r6kc01WYoI4/efqWKDlNoBJviravJl5EwyVh03Aow5CzA==
+"@notionhq/client@0.3.2":
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/@notionhq/client/-/client-0.3.2.tgz#16e2a5abbcab32c836b2fa08188217dacf6002f4"
+  integrity sha512-CSYk88/+gwRff9ftz8G+7EKHgE8/3TWDdQVmIoesXhHZp+FmV8L82Y+dn2dRuWrDf1XZiVYv0A0DPLwlh94fzw==
   dependencies:
     "@types/node-fetch" "^2.5.10"
     node-fetch "^2.6.1"
