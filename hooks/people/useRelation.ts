@@ -1,14 +1,12 @@
+import _merge from 'lodash/merge'
 import useSWR, { mutate } from 'swr'
 
-// const initialStore = {}
+const initialStore = {}
 
 function useRelation({ swrKey }) {
-  console.dir(`useRelation`)
-  console.dir(useRelation)
-  console.dir(`swrKey`)
-  console.dir(swrKey)
+  console.dir(`> useRelation: ${swrKey}`)
   const { data, error } = useSWR(swrKey, {
-    // fallbackData: initialStore,
+    fallbackData: initialStore,
     revalidateOnFocus: true,
   })
 
@@ -20,13 +18,10 @@ function useRelation({ swrKey }) {
 }
 
 const setRelation = async (keyMutate, data, value) => {
-  console.dir(`> keyMutate`)
-  console.dir(keyMutate)
-  console.dir(`> data`)
-  console.dir(data)
-  console.dir(`> value`)
-  console.dir(value)
-  await mutate(keyMutate, { ...data, [value.id]: value }, false)
+  // console.dir(`> setRelation`)
+  // console.dir(data)
+  !!value && (await mutate(keyMutate, _merge(data, { [value.id]: value }), false))
+  void mutate(keyMutate)
 }
 
 export { setRelation }

@@ -1,12 +1,15 @@
 import '~styles/index.css'
 // import 'keen-slider/keen-slider.min.css'
 import '~styles/chrome.css'
+
 import { AnimatePresence } from 'framer-motion'
 import Inspect from 'inspx'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import pluralize from 'pluralize'
 import { FC, useEffect } from 'react'
+// import { SWRDevTools } from 'swr-devtools'
+// import useSWR, { SWRConfig } from 'swr'
 
 // import ErrorBoundary from '~components/ErrorBoundary'
 import { Header } from '~components/Layout'
@@ -34,6 +37,7 @@ export default function MyApp({ Component, pageProps, router }: AppProps) {
     <>
       <Inspect disabled={process.env.NODE_ENV === 'production'}>
         {/* <ErrorBoundary> */}
+        {/* <SWRConfig value={{ provider: () => new Map() }}> */}
         <Head>
           <meta
             name="viewport"
@@ -49,13 +53,16 @@ export default function MyApp({ Component, pageProps, router }: AppProps) {
                 initial={false}
                 onExitComplete={() => window.scrollTo(0, 0)}
               >
+                {/* <SWRDevTools> */}
                 <Component {...pageProps} key={router.route} />
+                {/* </SWRDevTools> */}
               </AnimatePresence>
               <NProgress />
             </Layout>
           </NotificationProvider>
         </ManagedUIContext>
         {/* </ErrorBoundary> */}
+        {/* </SWRConfig> */}
       </Inspect>
     </>
   )

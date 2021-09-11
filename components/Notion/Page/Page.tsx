@@ -176,10 +176,12 @@ const Page = ({ data, props }) => {
         )}
         {/* Dynamic */}
         {/* Content */}
+        {/* @todo(key) */}
         {_map(content.results, (contentItem: NotionBlock) =>
           getContentType(contentItem, images)
         )}
         {/* Items */}
+        {/* @todo(key) */}
         {isIndex && !isPage && (
           <>
             <h5 className="text-3xl font-bold mt-2 pt-2 pb-2">
@@ -208,16 +210,19 @@ const Page = ({ data, props }) => {
             {_map(peopleMap, (peopleKey) => {
               const ids = properties[peopleKey]
               const idsSize = _size(ids)
-              return (
-                idsSize > 0 && (
+              const swrKey = `${slug}--${peopleKey}`
+              if (idsSize === 0) {
+                return null
+              } else {
+                return (
                   <Meta
                     ids={ids}
-                    key={`${slug}--${peopleKey}--meta`}
-                    swrKey={`${slug}--${peopleKey}`}
+                    key={`${slug}--${peopleKey}--container`}
+                    swrKey={`/${swrKey}`.toLowerCase()}
                     title={peopleKey}
                   />
                 )
-              )
+              }
             })}
           </div>
         )}
