@@ -5,6 +5,7 @@ import { AnimatePresence } from 'framer-motion'
 import Inspect from 'inspx'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
+import pluralize from 'pluralize'
 import { FC, useEffect } from 'react'
 
 // import ErrorBoundary from '~components/ErrorBoundary'
@@ -13,6 +14,10 @@ import NProgress from '~components/NProgress'
 import { ManagedUIContext } from '~context/ManagedUIContext'
 import NotificationProvider from '~context/Notification'
 import { useAnalytics } from '~lib/analytics'
+
+pluralize.addPluralRule(/cast$/i, 'cast')
+pluralize.addPluralRule(/crew$/i, 'crew')
+pluralize.addSingularRule(/thanks$/i, 'thanks')
 
 const Noop: FC = ({ children }) => <>{children}</>
 

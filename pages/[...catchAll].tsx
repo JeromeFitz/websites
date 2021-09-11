@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+// import { useEffect, useState } from 'react'
 import useSWR from 'swr'
 
 import Layout from '~components/Layout'
@@ -27,11 +27,11 @@ const CatchAll = (props) => {
   // console.dir(`props`)
   // console.dir(props)
 
-  const [mounted, setMounted] = useState(true)
-  useEffect(() => setMounted(false), [])
+  // const [mounted, setMounted] = useState(true)
+  // useEffect(() => setMounted(false), [])
   const { data, error } = useSWR(
-    () => (!!url ? `/api/notion/${url}?cache=${mounted}` : null),
-    // () => (!!slug ? `/api/notion/${slug}` : null),
+    () => (!!url ? `/api/notion/${url}` : null),
+    // () => (!!url ? `/api/notion/${url}?cache=${mounted}` : null),
     fetcher,
     {
       fallbackData: {
@@ -75,7 +75,11 @@ export const getStaticProps = async ({ preview = false, ...props }) => {
   // const catchAll = [homepageSlug]
   const clear = false
   const pathVariables = getPathVariables(catchAll)
-  const data = await getCatchAll({ preview, clear, catchAll })
+  /**
+   * @cache
+   */
+  const cache = true
+  const data = await getCatchAll({ cache, catchAll, clear, preview })
   const images = await getImages({ data, pathVariables })
 
   const dataReturn = { ...data, images }

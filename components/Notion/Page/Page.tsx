@@ -6,7 +6,6 @@ import _capitalize from 'lodash/capitalize'
 import _map from 'lodash/map'
 import _size from 'lodash/size'
 import Image from 'next/image'
-import pluralize from 'pluralize'
 import { useEffect } from 'react'
 import useSWR, { useSWRConfig } from 'swr'
 
@@ -24,25 +23,17 @@ import notionToTailwindColor from '~utils/notion/notionToTailwindColor'
 // import Listing from '~components/Notion/Listing'
 // import getNextLink from '~utils/getNextLink'
 
-pluralize.addPluralRule(/cast$/i, 'cast')
-pluralize.addPluralRule(/crew$/i, 'crew')
-
 const peopleMap = [
   'peopleCast',
   'peopleCrew',
   'peopleDirector',
   'peopleDirectorMusical',
   'peopleDirectorTechnical',
+  'peopleHost',
   'peopleProducer',
   'peopleThanks',
   'peopleWriter',
 ]
-
-const getTitle = (_title) =>
-  _title
-    .replace('people', '')
-    .replace('DirectorMusical', 'Musical Director')
-    .replace('DirectorTechnical', 'Technical Director')
 
 const Page = ({ data, props }) => {
   const {
@@ -55,7 +46,7 @@ const Page = ({ data, props }) => {
     isIndex,
     // meta,
     routeType,
-    // slug,
+    slug,
     url,
   } = props
 
@@ -96,6 +87,9 @@ const Page = ({ data, props }) => {
     tags,
     title,
   } = properties
+
+  console.dir(`properties`)
+  console.dir(properties)
 
   // @todo(external)
   const seoImageSlug = slugger.slug(seoImage?.url)
@@ -205,32 +199,23 @@ const Page = ({ data, props }) => {
           </>
         )}
         {/* {isEvent && showId && <Meta id={showId} />} */}
-        {!!properties.peopleCast && !!peopleMap && (
+        {/* @hack(notion) */}
+        {!isIndex && !!peopleMap && (
           <div
             id="container--people"
             className={cx('grid', 'grid-cols-2 gap-3', 'md:grid-cols-3 md:gap-4')}
           >
             {_map(peopleMap, (peopleKey) => {
-              const peopleIds = properties[peopleKey]
-              const peopleTitle = getTitle(peopleKey)
-              const peopleSize = _size(peopleIds)
+              const ids = properties[peopleKey]
+              const idsSize = _size(ids)
               return (
-                peopleSize > 0 && (
-                  <div
-                    id={`container--people--${peopleKey
-                      .replace('people', '')
-                      .toLowerCase()}`}
-                    className="pl-2 md:pl-1 pr-2 md:pr-0"
-                  >
-                    <h5 className="mt-2 font-bold">
-                      {pluralize(peopleTitle, peopleSize)}
-                    </h5>
-                    <ul className="flex flex-col">
-                      {peopleIds.map((personId) => {
-                        return <Meta key={personId} id={personId} />
-                      })}
-                    </ul>
-                  </div>
+                idsSize > 0 && (
+                  <Meta
+                    ids={ids}
+                    key={`${slug}--${peopleKey}--meta`}
+                    swrKey={`${slug}--${peopleKey}`}
+                    title={peopleKey}
+                  />
                 )
               )
             })}

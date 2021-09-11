@@ -1,3 +1,4 @@
+// import { useEffect, useState } from 'react'
 import useSWR from 'swr'
 
 import Layout from '~components/Layout'
@@ -28,9 +29,11 @@ const CatchAll = (props) => {
   /**
    * @info Odd behavior, but if listing page we need data swapped
    */
+  // const [mounted, setMounted] = useState(true)
+  // useEffect(() => setMounted(false), [])
   const { data, error } = useSWR(
-    // () => (!!url ? `/api/notion/${url}` : null),
     () => (!!slug ? `/api/notion/${slug}` : null),
+    // () => (!!slug ? `/api/notion/${slug}?cache=${mounted}` : null),
     fetcher,
     {
       fallbackData: {
@@ -69,7 +72,11 @@ export const getStaticProps = async ({ preview = false, ...props }) => {
   const catchAll = [homepageSlug]
   const clear = false
   const pathVariables = getPathVariables(catchAll)
-  const data = await getCatchAll({ preview, clear, catchAll })
+  /**
+   * @cache
+   */
+  const cache = true
+  const data = await getCatchAll({ cache, catchAll, clear, preview })
   const images = await getImages({ data, pathVariables })
 
   const dataReturn = { ...data, images }

@@ -1,50 +1,16 @@
 // 4fd37202-ec62-4897-a0dd-5ed8ab8b4b53
-import _omit from 'lodash/omit'
+// import _omit from 'lodash/omit'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 import { getCache, setCache } from '~lib/notion/getCache'
 import { normalizerContent } from '~lib/notion/getCatchAll'
+// import omitFields from '~lib/notion/omitFields'
 import { notion } from '~utils/notion/helper'
 
 const useCache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE
 
-const omitFields = [
-  'object',
-  'created_time',
-  'last_edited_time',
-  'parent',
-  'url',
-  'data.address',
-  'data.date',
-  'data.datePublished',
-  'data.episodesPeopleGuest',
-  'data.episodesPeopleSoundEngineer',
-  'data.episodesPeopleThanks',
-  'data.events',
-  'data.festivals',
-  'data.peopleCast',
-  'data.peopleCastPast',
-  'data.peopleCrew',
-  'data.peopleDirector',
-  'data.peopleDirectorMusical',
-  'data.peopleDirectorTechnical',
-  'data.peopleProducer',
-  'data.peopleThanks',
-  'data.peopleWriter',
-  'data.podcastsPeopleHost',
-  'data.showsPeopleCastPast',
-  'data.showsPeopleCrew',
-  'data.showsPeopleDirector',
-  'data.showsPeopleDirectorMusical',
-  'data.showsPeopleDirectorTechnical',
-  'data.showsPeopleProducer',
-  'data.showsPeopleWriter',
-  'data.social',
-  'data.tags',
-]
-
 const notionPagesId = async (req: NextApiRequest, res: NextApiResponse) => {
-  console.dir(`notionPagesId`)
+  // console.dir(`notionPagesId`)
   const page_id = req.query.id
   const catchAll = ['api', 'notion', 'pages', page_id]
   /**
@@ -87,7 +53,8 @@ const notionPagesId = async (req: NextApiRequest, res: NextApiResponse) => {
     /**
      * @json should this be omitted at write time?
      */
-    const dataOmittted = _omit(data, omitFields)
+    // const dataOmittted = _omit(data, omitFields['people'])
+    const dataOmittted = data
     res.status(200).json({
       ...dataOmittted,
     })

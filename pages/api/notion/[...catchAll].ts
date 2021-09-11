@@ -1,7 +1,10 @@
 // import _isBoolean from 'lodash/isBoolean'
+// import _omit from 'lodash/omit'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 import getCatchAll from '~lib/notion/getCatchAll'
+// import getPathVariables from '~lib/notion/getPathVariables'
+// import omitFields from '~lib/notion/omitFields'
 
 const notionSearch = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
@@ -9,14 +12,21 @@ const notionSearch = async (req: NextApiRequest, res: NextApiResponse) => {
     const preview = req.query?.preview || false
     const clear = req.query?.clear || false
     const catchAll = req.query?.catchAll
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    const cache = !!req.query?.cache ? JSON.parse(req.query?.cache) : true
+    /**
+     * @cache
+     */
+    // // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // // @ts-ignore
+    // const cache = !!req.query?.cache ? JSON.parse(req.query?.cache) : true
+    const cache = false
 
     // http://localhost:3000/api/notion/blog/2020/12/28/preview-blog-post?preview=true
+    // const { routeType } = getPathVariables(catchAll)
     const data = await getCatchAll({ preview, cache, clear, catchAll })
+    // const dataOmittted = _omit(data, omitFields[routeType])
+    const dataOmittted = data
 
-    res.status(200).json({ ...data })
+    res.status(200).json({ ...dataOmittted })
   } catch (e) {
     // eslint-disable-next-line no-console
     console.log(e)
