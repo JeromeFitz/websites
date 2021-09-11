@@ -24,11 +24,14 @@ import _omit from 'lodash/omit'
 // import _pick from 'lodash/pick'
 import _size from 'lodash/size'
 
+import { getCache, setCache } from '~lib/getCache'
 import getBlocksByIdChildren from '~lib/notion/api/getBlocksByIdChildren'
 import getDatabasesByIdQuery from '~lib/notion/api/getDatabasesByIdQuery'
 import getPagesById from '~lib/notion/api/getPagesById'
 import getPathVariables from '~lib/notion/getPathVariables'
 import { DATABASES, SEO, QUERIES, PROPERTIES } from '~utils/notion/helper'
+
+const useCache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE
 
 const slugger = new Slugger()
 
@@ -855,7 +858,20 @@ const getCatchAll = async ({ preview, clear, catchAll }) => {
   if (!!items) {
     items.results = _filter(items.results, { data: { published: true } })
   }
-  return { info, content, items }
+
+  const data = { info, content, items }
+
+  /**
+   * @cache
+   */
+  if (useCache) {
+    const url = catchAll.join('/')
+    const isCacheExists = await getCache(url)
+    if (!isCacheExists) {
+      setCache(data, url)
+    }
+  }
+  return data
 }
 
 export { normalizerContent }
