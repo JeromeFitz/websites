@@ -205,7 +205,7 @@ const Page = ({ data, props }) => {
           </>
         )}
         {/* {isEvent && showId && <Meta id={showId} />} */}
-        {!!peopleMap && (
+        {!!properties.peopleCast && !!peopleMap && (
           <div
             id="container--people"
             className={cx('grid', 'grid-cols-2 gap-3', 'md:grid-cols-3 md:gap-4')}

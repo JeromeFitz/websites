@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import useSWR from 'swr'
 
 import Layout from '~components/Layout'
@@ -26,11 +27,10 @@ const CatchAll = (props) => {
   // console.dir(`props`)
   // console.dir(props)
 
-  /**
-   * @info Odd behavior, but if listing page we need data swapped
-   */
+  const [mounted, setMounted] = useState(true)
+  useEffect(() => setMounted(false), [])
   const { data, error } = useSWR(
-    () => (!!url ? `/api/notion/${url}` : null),
+    () => (!!url ? `/api/notion/${url}?cache=${mounted}` : null),
     // () => (!!slug ? `/api/notion/${slug}` : null),
     fetcher,
     {

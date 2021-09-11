@@ -24,10 +24,10 @@ import _omit from 'lodash/omit'
 // import _pick from 'lodash/pick'
 import _size from 'lodash/size'
 
-import { getCache, setCache } from '~lib/getCache'
 import getBlocksByIdChildren from '~lib/notion/api/getBlocksByIdChildren'
 import getDatabasesByIdQuery from '~lib/notion/api/getDatabasesByIdQuery'
 import getPagesById from '~lib/notion/api/getPagesById'
+import { getCache, setCache } from '~lib/notion/getCache'
 import getPathVariables from '~lib/notion/getPathVariables'
 import { DATABASES, SEO, QUERIES, PROPERTIES } from '~utils/notion/helper'
 
@@ -591,14 +591,15 @@ const normalizerContent = (data) => {
 
 // @todo(next) preview
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const getCatchAll = async ({ preview, clear, catchAll }) => {
+const getCatchAll = async ({ preview, cache = true, clear, catchAll }) => {
+  const isCache = useCache && cache
   const { hasMeta, isPage, isIndex, meta, routeType, slug } =
     getPathVariables(catchAll)
   let data
   /**
    * @cache pre
    */
-  if (useCache) {
+  if (isCache) {
     const url = catchAll.join('/')
     const cacheData = await getCache(url)
     if (!!cacheData) {
@@ -888,7 +889,7 @@ const getCatchAll = async ({ preview, clear, catchAll }) => {
     /**
      * @cache post
      */
-    if (useCache) {
+    if (isCache) {
       // console.dir(`*** useCache x1 ***`)
       const url = catchAll.join('/')
       // console.dir(url)
