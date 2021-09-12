@@ -25,14 +25,16 @@ import notionToTailwindColor from '~utils/notion/notionToTailwindColor'
 
 const peopleMap = [
   'peopleCast',
-  'peopleCrew',
+  'peopleWriter',
+  'peopleProducer',
   'peopleDirector',
   'peopleDirectorMusical',
+  'peopleMusic',
   'peopleDirectorTechnical',
+  'peopleCrew',
   'peopleHost',
-  'peopleProducer',
+
   'peopleThanks',
-  'peopleWriter',
 ]
 
 const Page = ({ data, props }) => {

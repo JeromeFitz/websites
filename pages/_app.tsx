@@ -8,10 +8,7 @@ import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import pluralize from 'pluralize'
 import { FC, useEffect } from 'react'
-// import { SWRDevTools } from 'swr-devtools'
-// import useSWR, { SWRConfig } from 'swr'
 
-// import ErrorBoundary from '~components/ErrorBoundary'
 import { Header } from '~components/Layout'
 import NProgress from '~components/NProgress'
 import { ManagedUIContext } from '~context/ManagedUIContext'
@@ -20,6 +17,7 @@ import { useAnalytics } from '~lib/analytics'
 
 pluralize.addPluralRule(/cast$/i, 'cast')
 pluralize.addPluralRule(/crew$/i, 'crew')
+pluralize.addSingularRule(/music$/i, 'music')
 pluralize.addSingularRule(/thanks$/i, 'thanks')
 
 const Noop: FC = ({ children }) => <>{children}</>
@@ -36,8 +34,6 @@ export default function MyApp({ Component, pageProps, router }: AppProps) {
   return (
     <>
       <Inspect disabled={process.env.NODE_ENV === 'production'}>
-        {/* <ErrorBoundary> */}
-        {/* <SWRConfig value={{ provider: () => new Map() }}> */}
         <Head>
           <meta
             name="viewport"
@@ -53,16 +49,12 @@ export default function MyApp({ Component, pageProps, router }: AppProps) {
                 initial={false}
                 onExitComplete={() => window.scrollTo(0, 0)}
               >
-                {/* <SWRDevTools> */}
                 <Component {...pageProps} key={router.route} />
-                {/* </SWRDevTools> */}
               </AnimatePresence>
               <NProgress />
             </Layout>
           </NotificationProvider>
         </ManagedUIContext>
-        {/* </ErrorBoundary> */}
-        {/* </SWRConfig> */}
       </Inspect>
     </>
   )

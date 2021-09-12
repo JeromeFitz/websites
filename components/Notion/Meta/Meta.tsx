@@ -1,12 +1,11 @@
+import _filter from 'lodash/filter'
 import _map from 'lodash/map'
-// import _orderBy from 'lodash/orderBy'
+import _orderBy from 'lodash/orderBy'
 import _size from 'lodash/size'
 import pluralize from 'pluralize'
-// import { useEffect, useReducer, useState } from 'react'
-import useSWR from 'swr'
 
-import { setRelation } from '~hooks/people/useRelation'
-import fetcher from '~lib/fetcher'
+import usePage from '~hooks/notion/usePage'
+import useRelation, { setRelation } from '~hooks/notion/useRelation'
 import getTitle from '~lib/notion/getTitle'
 import rangeMap from '~utils/rangeMap'
 
@@ -20,59 +19,49 @@ const LiGhost = () => (
   </div>
 )
 
-const MetaItem = ({ id, swrKey }) => {
-  // console.dir(`(MetaItem) swrKey: ${swrKey}`)
-  // const { data } = useRelation({ swrKey })
-  const { data } = useSWR(swrKey, {
-    fallbackData: {},
-    revalidateOnFocus: true,
-  })
-
-  const { data: item, error: itemError } = useSWR(
-    () => (!!id ? `/api/notion/pages/${id}` : null),
-    fetcher,
-    {
-      revalidateOnFocus: false,
-    }
-  )
-
-  /**
-   * @error or @loading
-   */
-  if (itemError || !item || item === undefined) return null
-  void setRelation(swrKey, data, item)
+// @todo(react)
+//  Cannot update a component (`MetaHidden`) while
+//  rendering a different component(`MetaHidden`)
+const MetaHidden = ({ id }) => {
+  const { data: relations } = useRelation()
+  const { data, isError, isLoading } = usePage({ id })
+  if (isLoading || isError) return null
+  void setRelation(relations, data)
   return null
 }
 
 const Meta = ({ ids, swrKey, title }) => {
-  console.dir(`(Meta) swrKey: ${swrKey}`)
-  const { data } = useSWR(swrKey, {
-    fallbackData: {},
-  })
+  const { data: relations } = useRelation()
+  const data = _orderBy(
+    // @todo(any)
+    _filter(relations, (relation: any) => ids.includes(relation.id)),
+    ['data.title'],
+    ['asc']
+  )
 
   return (
     <div className="flex flex-col" id={`${swrKey}--container`}>
-      <h5 className="font-semibold">{pluralize(getTitle(title), ids.length)}</h5>
+      {/* @todo(react) */}
       {_map(ids, (id) => (
-        <MetaItem key={`${swrKey}--${id}--hidden`} id={id} swrKey={swrKey} />
+        <MetaHidden id={id} />
       ))}
-      <ul className="flex flex-col">
-        {/* {_map(data, (person) => (
-          <li key={`${swrKey}--${person.id}`}>{person.data.title}</li>
-        ))} */}
-        {rangeMap(ids.length, (i) => {
-          console.dir(`data`)
-          console.dir(data)
-          return _size(data) > 0 ? (
-            <LiGhost key={`${swrKey}--${i}`} />
-          ) : (
-            <LiGhost key={`${swrKey}--${i}`} />
-          )
-        })}
+      <h5 className="font-semibold">{pluralize(getTitle(title), ids.length)}</h5>
+      <ul className="flex flex-col ">
+        {!!data || _size(data) > 0
+          ? // @todo(any)
+            _map(data, (relation: any) => (
+              <li id={`id--${relation.id}`}>{relation.data.title}</li>
+            ))
+          : rangeMap(ids.length, (i) => {
+              return _size(data) > 0 ? (
+                <LiGhost key={`${swrKey}--${i}`} />
+              ) : (
+                <LiGhost key={`${swrKey}--${i}`} />
+              )
+            })}
       </ul>
     </div>
   )
 }
 
 export default Meta
-//

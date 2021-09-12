@@ -151,6 +151,7 @@ interface NormalizerProperties {
   showsPeopleDirector?: string[]
   showsPeopleDirectorMusical?: string[]
   showsPeopleDirectorTechnical?: string[]
+  showsPeopleMusic?: string[]
   showsPeopleProducer?: string[]
   showsPeopleThanks?: string[]
   showsPeopleWriter?: string[]
@@ -171,6 +172,7 @@ interface NormalizerProperties {
   peopleDirector?: string[]
   peopleDirectorMusical?: string[]
   peopleDirectorTechnical?: string[]
+  peopleMusic?: string[]
   peopleProducer?: string[]
   // peopleThanks?: string[]
   peopleWriter?: string[]
@@ -424,6 +426,9 @@ const normalizerProperties = (properties) => {
       case PROPERTIES.showsPeopleDirectorTechnical:
         data.showsPeopleDirectorTechnical = getTypeRelationNormalized(value)
         break
+      case PROPERTIES.showPeopleMusic:
+        data.showPeopleMusic = getTypeRelationNormalized(value)
+        break
       case PROPERTIES.showsPeopleProducer:
         data.showsPeopleProducer = getTypeRelationNormalized(value)
         break
@@ -470,6 +475,9 @@ const normalizerProperties = (properties) => {
         break
       case PROPERTIES.peopleDirectorTechnical:
         data.peopleDirectorTechnical = getTypeRelationNormalized(value)
+        break
+      case PROPERTIES.peopleMusic:
+        data.peopleMusic = getTypeRelationNormalized(value)
         break
       case PROPERTIES.peopleProducer:
         data.peopleProducer = getTypeRelationNormalized(value)
