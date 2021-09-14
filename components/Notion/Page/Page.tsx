@@ -183,7 +183,6 @@ const Page = ({ data, props }) => {
         )}
         {/* @note(switch) */}
         {isIndex && !isPage && <Listing items={items} routeType={routeType} />}
-
         {/* {isEvent && showId && <Meta id={showId} />} */}
         {/* @hack(notion) */}
         {!isIndex && !!relationsMap && (

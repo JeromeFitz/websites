@@ -29,6 +29,7 @@ const AppSoundToggle = () => {
   }
   return (
     <motion.button
+      aria-label={audio ? 'Sound On' : 'Sound off'}
       className={cx(
         'text-2xl sm:text-3xl focus:outline-none',
         'hover:text-gray-600 dark:hover:text-gray-100'
@@ -65,6 +66,7 @@ const AppThemeToggle = () => {
   }
   return (
     <motion.button
+      aria-label={darkModeActive ? 'Change to Light Theme' : 'Change to Dark Theme'}
       className={cx(
         'ml-4',
         'text-2xl sm:text-3xl focus:outline-none',

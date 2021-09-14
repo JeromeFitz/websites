@@ -77,7 +77,7 @@ const NowPlaying = () => {
       <hr className="w-full  border-gray-900 hidden md:block" />
       <div className="flex flex-col justify-center px-8 bg-green-300">
         <div className="flex flex-col w-full p-2 md:p-8 my-0 md:my-8 mx-auto max-w-4xl">
-          <h1>Listening To</h1>
+          <h1 className="text-black">Listening To</h1>
           <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-8 md:py-16">
             <div className="relative z-10 col-start-1 row-start-1 px-4 pt-32 pb-3 bg-gradient-to-t from-black md:bg-none">
               <p className="text-sm md:text-2xl font-black text-white mb-2 md:mb-1 md:text-gray-900">
