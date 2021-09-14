@@ -129,7 +129,7 @@ const NowPlaying = () => {
             <Link href="/music">
               <a
                 aria-label="music"
-                className="underline underline-offset-md hover:text-yellow-900"
+                className="underline underline-offset-md hover:text-yellow-900 text-black"
               >
                 <SplitText text={'music'} />
               </a>
