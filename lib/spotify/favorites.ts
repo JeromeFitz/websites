@@ -75,4 +75,96 @@ const spotifyFavoriteTracks = [
   },
 ]
 
-export { spotifyFavoriteAlbums, spotifyFavoriteArtists, spotifyFavoriteTracks }
+const demo = {
+  timestamp: 1631477387075,
+  context: {
+    external_urls: {
+      spotify: 'https://open.spotify.com/playlist/37i9dQZF1E8O07fbUlWNZh',
+    },
+    href: 'https://api.spotify.com/v1/playlists/37i9dQZF1E8O07fbUlWNZh',
+    type: 'playlist',
+    uri: 'spotify:playlist:37i9dQZF1E8O07fbUlWNZh',
+  },
+  progress_ms: 22738,
+  item: {
+    album: {
+      album_type: 'album',
+      artists: [
+        {
+          external_urls: {
+            spotify: 'https://open.spotify.com/artist/2ATweaQe83QUQVjM8LMh7J',
+          },
+          href: 'https://api.spotify.com/v1/artists/2ATweaQe83QUQVjM8LMh7J',
+          id: '2ATweaQe83QUQVjM8LMh7J',
+          name: 'Gengahr',
+          type: 'artist',
+          uri: 'spotify:artist:2ATweaQe83QUQVjM8LMh7J',
+        },
+      ],
+      available_markets: [],
+      external_urls: {
+        spotify: 'https://open.spotify.com/album/6TpdsAKl6qB08qTqkerwZw',
+      },
+      href: 'https://api.spotify.com/v1/albums/6TpdsAKl6qB08qTqkerwZw',
+      id: '6TpdsAKl6qB08qTqkerwZw',
+      images: [
+        {
+          height: 640,
+          url: 'https://i.scdn.co/image/ab67616d0000b27399aecdb0ff69e41761687d2f',
+          width: 640,
+        },
+        {
+          height: 300,
+          url: 'https://i.scdn.co/image/ab67616d00001e0299aecdb0ff69e41761687d2f',
+          width: 300,
+        },
+        {
+          height: 64,
+          url: 'https://i.scdn.co/image/ab67616d0000485199aecdb0ff69e41761687d2f',
+          width: 64,
+        },
+      ],
+      name: 'Sanctuary',
+      release_date: '2020-01-31',
+      release_date_precision: 'day',
+      total_tracks: 10,
+      type: 'album',
+      uri: 'spotify:album:6TpdsAKl6qB08qTqkerwZw',
+    },
+    artists: [
+      {
+        external_urls: {
+          spotify: 'https://open.spotify.com/artist/2ATweaQe83QUQVjM8LMh7J',
+        },
+        href: 'https://api.spotify.com/v1/artists/2ATweaQe83QUQVjM8LMh7J',
+        id: '2ATweaQe83QUQVjM8LMh7J',
+        name: 'Gengahr',
+        type: 'artist',
+        uri: 'spotify:artist:2ATweaQe83QUQVjM8LMh7J',
+      },
+    ],
+    available_markets: [],
+    disc_number: 1,
+    duration_ms: 206960,
+    explicit: false,
+    external_ids: { isrc: 'AULI01926900' },
+    external_urls: {
+      spotify: 'https://open.spotify.com/track/0KGc8uyIXJdZjyMe8Jihdk',
+    },
+    href: 'https://api.spotify.com/v1/tracks/0KGc8uyIXJdZjyMe8Jihdk',
+    id: '0KGc8uyIXJdZjyMe8Jihdk',
+    is_local: false,
+    name: 'Heavenly Maybe',
+    popularity: 53,
+    preview_url:
+      'https://p.scdn.co/mp3-preview/727ccba1551fb6278a2d80215995752d6610ae22?cid=75960520d55a48618ff076a11d8d9d10',
+    track_number: 3,
+    type: 'track',
+    uri: 'spotify:track:0KGc8uyIXJdZjyMe8Jihdk',
+  },
+  currently_playing_type: 'track',
+  actions: { disallows: { resuming: true } },
+  is_playing: true,
+}
+
+export { demo, spotifyFavoriteAlbums, spotifyFavoriteArtists, spotifyFavoriteTracks }

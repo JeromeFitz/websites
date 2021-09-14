@@ -27,8 +27,11 @@ import _size from 'lodash/size'
 import getBlocksByIdChildren from '~lib/notion/api/getBlocksByIdChildren'
 import getDatabasesByIdQuery from '~lib/notion/api/getDatabasesByIdQuery'
 import getPagesById from '~lib/notion/api/getPagesById'
+import { getCache, setCache } from '~lib/notion/getCache'
 import getPathVariables from '~lib/notion/getPathVariables'
 import { DATABASES, SEO, QUERIES, PROPERTIES } from '~utils/notion/helper'
+
+const useCache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE
 
 const slugger = new Slugger()
 
@@ -135,6 +138,7 @@ interface NormalizerProperties {
    */
   shows?: string[]
   venues?: string[]
+  eventsLineupShowIds?: string[]
   /**
    * @relation @_PEOPLE
    */
@@ -148,6 +152,7 @@ interface NormalizerProperties {
   showsPeopleDirector?: string[]
   showsPeopleDirectorMusical?: string[]
   showsPeopleDirectorTechnical?: string[]
+  showsPeopleMusic?: string[]
   showsPeopleProducer?: string[]
   showsPeopleThanks?: string[]
   showsPeopleWriter?: string[]
@@ -168,6 +173,7 @@ interface NormalizerProperties {
   peopleDirector?: string[]
   peopleDirectorMusical?: string[]
   peopleDirectorTechnical?: string[]
+  peopleMusic?: string[]
   peopleProducer?: string[]
   // peopleThanks?: string[]
   peopleWriter?: string[]
@@ -388,6 +394,9 @@ const normalizerProperties = (properties) => {
       case PROPERTIES.venues:
         data.venues = getTypeRelationNormalized(value)
         break
+      case PROPERTIES.eventsLineupShowIds:
+        data.eventsLineupShowIds = getTypeRelationNormalized(value)
+        break
       /**
        * @relation @_PEOPLE
        */
@@ -420,6 +429,9 @@ const normalizerProperties = (properties) => {
         break
       case PROPERTIES.showsPeopleDirectorTechnical:
         data.showsPeopleDirectorTechnical = getTypeRelationNormalized(value)
+        break
+      case PROPERTIES.showsPeopleMusic:
+        data.showsPeopleMusic = getTypeRelationNormalized(value)
         break
       case PROPERTIES.showsPeopleProducer:
         data.showsPeopleProducer = getTypeRelationNormalized(value)
@@ -467,6 +479,9 @@ const normalizerProperties = (properties) => {
         break
       case PROPERTIES.peopleDirectorTechnical:
         data.peopleDirectorTechnical = getTypeRelationNormalized(value)
+        break
+      case PROPERTIES.peopleMusic:
+        data.peopleMusic = getTypeRelationNormalized(value)
         break
       case PROPERTIES.peopleProducer:
         data.peopleProducer = getTypeRelationNormalized(value)
@@ -588,112 +603,85 @@ const normalizerContent = (data) => {
 
 // @todo(next) preview
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const getCatchAll = async ({ preview, clear, catchAll }) => {
+const getCatchAll = async ({ cache = false, catchAll, clear, preview }) => {
+  const isCache = useCache && cache
   const { hasMeta, isPage, isIndex, meta, routeType, slug } =
     getPathVariables(catchAll)
-
+  let data
   /**
-   * @hack
+   * @cache pre
    */
-  let info: Pick<any, string | number | symbol>,
-    content: BlocksChildrenListResponse,
-    items: Pick<any, string | number | symbol> = null
-
-  let dataType: number
-  /**
-   * @test cases
-   */
-  // 1 = /colophon
-  // 2 = /blog, /events, /podcasts
-  // 3 = /blog/2020, blog/2020/05, blog/2020/05/09
-  //     /events/2020, events/2020/05, events/2020/05/09,
-  //     /podcasts/knockoffs/s01e01--i-know-what-you-did-last-summer
-  // 4 = blog/2020/05/09/title, events/2020/05/09/title,
-  // 5 = /shows/alex-o-jerome, /events/2020/05/09/jerome-and, podcasts/knockoffs
-  if (isPage) {
-    dataType = 1
-  } else if (isIndex && !hasMeta) {
-    dataType = 2
-  } else if (isIndex && hasMeta) {
-    dataType = 3
-  } else if (hasMeta) {
-    dataType = 4
-  } else {
-    dataType = 5
+  if (isCache) {
+    const url = catchAll.join('/')
+    const cacheData = await getCache(url)
+    if (!!cacheData) {
+      data = cacheData
+    }
   }
-  // console.dir(`dataType: ${dataType}`)
-  /**
-   * @info
-   * used for seo information and immediate display above the fold
-   */
-  const dateTimestamp = new Date().toISOString()
-  const dateTimestampBlog = new Date('2020-01-01').toISOString()
 
-  switch (dataType) {
-    case 1:
-    case 5:
-      const info1 = await getDatabasesByIdQuery({
-        databaseId: DATABASES[routeType],
-        filter: {
-          and: [
-            {
-              ...QUERIES.slug,
-              text: { equals: slug },
-            },
-          ],
-        },
-      })
-      const info1a = info1.object === 'list' && info1.results[0]
-      info = normalizerContent(info1a)
-      content = await getBlocksByIdChildren({ blockId: info.id })
-      break
-    case 2:
-      const info2 = await getPagesById({ pageId: SEO[routeType] })
-      info = info2.object === 'page' && normalizerContent(info2)
-      content = await getBlocksByIdChildren({ blockId: info.id })
-      const items2 = await getDatabasesByIdQuery({
-        databaseId: DATABASES[routeType],
-        filter: {
-          and: [
-            {
-              property:
-                routeType === 'events' ? PROPERTIES.date : PROPERTIES.datePublished,
-              date: {
-                on_or_after:
-                  routeType === 'events' ? dateTimestamp : dateTimestampBlog,
-              },
-            },
-          ],
-        },
-      })
-      const items2Data = {}
-      _map(items2.results, (item) => (items2Data[item.id] = normalizerContent(item)))
-      const items2Omit = _omit(items2, 'results')
-      // @ts-ignore
-      items2Omit.results = items2Data
-      items = _omit(items2Omit, 'data')
-      break
-    case 3:
-      const info3 = await getPagesById({ pageId: SEO[routeType] })
-      const info3a = info3.object === 'page' && normalizerContent(info3)
-      info = info3a
-      content = await getBlocksByIdChildren({ blockId: info.id })
-      /**
-       * @filter
-       * @note events|blog only for now
-       */
-      const metaCount = _size(meta)
-      const [year3, month3, day3] = meta
-      const timestampQuery3 = new Date(
-        `${!!year3 ? year3 : dateTimestamp.slice(0, 4)}-${
-          !!month3 ? month3 : '01'
-        }-${!!day3 ? day3 : '01'}`
-      )
-      let filter
+  if (!data || data === undefined) {
+    /**
+     * @hack
+     */
+    let info: Pick<any, string | number | symbol>,
+      content: BlocksChildrenListResponse,
+      items: Pick<any, string | number | symbol> = null
 
-      switch (metaCount) {
-        case 1:
-          filter = {
+    let dataType: number
+    /**
+     * @test cases
+     */
+    // 1 = /colophon
+    // 2 = /blog, /events, /podcasts
+    // 3 = /blog/2020, blog/2020/05, blog/2020/05/09
+    //     /events/2020, events/2020/05, events/2020/05/09,
+    //     /podcasts/knockoffs/s01e01--i-know-what-you-did-last-summer
+    // 4 = blog/2020/05/09/title, events/2020/05/09/title,
+    // 5 = /shows/alex-o-jerome, /events/2020/05/09/jerome-and, podcasts/knockoffs
+    if (isPage) {
+      dataType = 1
+    } else if (isIndex && !hasMeta) {
+      dataType = 2
+    } else if (isIndex && hasMeta) {
+      dataType = 3
+    } else if (hasMeta) {
+      dataType = 4
+    } else {
+      dataType = 5
+    }
+    // console.dir(`dataType: ${dataType}`)
+    /**
+     * @info
+     * used for seo information and immediate display above the fold
+     */
+    const dateTimestamp = new Date().toISOString()
+    const dateTimestampBlog = new Date('2020-01-01').toISOString()
+
+    switch (dataType) {
+      case 1:
+      case 5:
+        const info1 = await getDatabasesByIdQuery({
+          databaseId: DATABASES[routeType],
+          filter: {
+            and: [
+              {
+                ...QUERIES.slug,
+                text: { equals: slug },
+              },
+            ],
+          },
+        })
+        const info1a = info1.object === 'list' && info1.results[0]
+        info = normalizerContent(info1a)
+        content = await getBlocksByIdChildren({ blockId: info.id })
+        break
+      case 2:
+        const info2 = await getPagesById({ pageId: SEO[routeType] })
+        info = info2.object === 'page' && normalizerContent(info2)
+        content = await getBlocksByIdChildren({ blockId: info.id })
+        const items2 = await getDatabasesByIdQuery({
+          databaseId: DATABASES[routeType],
+          filter: {
             and: [
               {
                 property:
@@ -701,23 +689,182 @@ const getCatchAll = async ({ preview, clear, catchAll }) => {
                     ? PROPERTIES.date
                     : PROPERTIES.datePublished,
                 date: {
-                  on_or_after: addTime(timestampQuery3, ''),
-                },
-              },
-              {
-                property:
-                  routeType === 'events'
-                    ? PROPERTIES.date
-                    : PROPERTIES.datePublished,
-                date: {
-                  before: addTime(timestampQuery3, 'year'),
+                  on_or_after:
+                    routeType === 'events' ? dateTimestamp : dateTimestampBlog,
                 },
               },
             ],
-          }
-          break
-        case 2:
-          filter = {
+          },
+        })
+        const items2Data = {}
+        _map(
+          items2.results,
+          (item) => (items2Data[item.id] = normalizerContent(item))
+        )
+        const items2Omit = _omit(items2, 'results')
+        // @ts-ignore
+        items2Omit.results = items2Data
+        items = _omit(items2Omit, 'data')
+        break
+      case 3:
+        const info3 = await getPagesById({ pageId: SEO[routeType] })
+        const info3a = info3.object === 'page' && normalizerContent(info3)
+        info = info3a
+        content = await getBlocksByIdChildren({ blockId: info.id })
+        /**
+         * @filter
+         * @note events|blog only for now
+         */
+        const metaCount = _size(meta)
+        const [year3, month3, day3] = meta
+        const timestampQuery3 = new Date(
+          `${!!year3 ? year3 : dateTimestamp.slice(0, 4)}-${
+            !!month3 ? month3 : '01'
+          }-${!!day3 ? day3 : '01'}`
+        )
+        let filter
+        const sorts3 = [
+          {
+            property: PROPERTIES.date,
+            direction: 'descending',
+          },
+        ]
+
+        switch (metaCount) {
+          case 1:
+            filter = {
+              and: [
+                {
+                  property:
+                    routeType === 'events'
+                      ? PROPERTIES.date
+                      : PROPERTIES.datePublished,
+                  date: {
+                    on_or_after: addTime(timestampQuery3, ''),
+                  },
+                },
+                {
+                  property:
+                    routeType === 'events'
+                      ? PROPERTIES.date
+                      : PROPERTIES.datePublished,
+                  date: {
+                    before: addTime(timestampQuery3, 'year'),
+                  },
+                },
+              ],
+            }
+            break
+          case 2:
+            filter = {
+              and: [
+                {
+                  property:
+                    routeType === 'events'
+                      ? PROPERTIES.date
+                      : PROPERTIES.datePublished,
+                  date: {
+                    on_or_after: addTime(timestampQuery3, ''),
+                  },
+                },
+                {
+                  property:
+                    routeType === 'events'
+                      ? PROPERTIES.date
+                      : PROPERTIES.datePublished,
+                  date: {
+                    before: addTime(timestampQuery3, 'month'),
+                  },
+                },
+              ],
+            }
+            break
+          case 3:
+            filter = {
+              and: [
+                {
+                  property:
+                    routeType === 'events'
+                      ? PROPERTIES.date
+                      : PROPERTIES.datePublished,
+                  date: {
+                    on_or_after: addTime(timestampQuery3, ''),
+                  },
+                },
+                {
+                  property:
+                    routeType === 'events'
+                      ? PROPERTIES.date
+                      : PROPERTIES.datePublished,
+                  date: {
+                    before: addTime(timestampQuery3, 'day'),
+                  },
+                },
+              ],
+            }
+            break
+          default:
+            filter = {
+              and: [
+                {
+                  property:
+                    routeType === 'events'
+                      ? PROPERTIES.date
+                      : PROPERTIES.datePublished,
+                  date: {
+                    on_or_after: addTime(timestampQuery3, ''),
+                  },
+                },
+                {
+                  property:
+                    routeType === 'events'
+                      ? PROPERTIES.date
+                      : PROPERTIES.datePublished,
+                  date: {
+                    before: addTime(timestampQuery3, 'day'),
+                  },
+                },
+                {
+                  ...QUERIES.slug,
+                  text: { equals: slug },
+                },
+              ],
+            }
+            break
+        }
+        const items3 = await getDatabasesByIdQuery({
+          databaseId: DATABASES[routeType],
+          filter,
+          sorts: sorts3,
+        })
+        const items3Data = {}
+        _map(
+          items3.results,
+          (item) => (items3Data[item.id] = normalizerContent(item))
+        )
+        const items3Omit = _omit(items3, 'results')
+        // @ts-ignore
+        items3Omit.results = items3Data
+        items = _omit(items3Omit, 'data')
+        /***
+         * @hack
+         */
+        break
+
+      case 4:
+        /**
+         * @filter
+         * @note events|blog only for now
+         */
+        const [year, month, day] = meta
+        const timestampQuery = new Date(
+          `${!!year ? year : dateTimestamp.slice(0, 4)}-${!!month ? month : '01'}-${
+            !!day ? day : '01'
+          }`
+        )
+        const info4 = await getDatabasesByIdQuery({
+          databaseId: DATABASES[routeType],
+          filter: {
             and: [
               {
                 property:
@@ -725,7 +872,7 @@ const getCatchAll = async ({ preview, clear, catchAll }) => {
                     ? PROPERTIES.date
                     : PROPERTIES.datePublished,
                 date: {
-                  on_or_after: addTime(timestampQuery3, ''),
+                  on_or_after: addTime(timestampQuery, ''),
                 },
               },
               {
@@ -734,55 +881,7 @@ const getCatchAll = async ({ preview, clear, catchAll }) => {
                     ? PROPERTIES.date
                     : PROPERTIES.datePublished,
                 date: {
-                  before: addTime(timestampQuery3, 'month'),
-                },
-              },
-            ],
-          }
-          break
-        case 3:
-          filter = {
-            and: [
-              {
-                property:
-                  routeType === 'events'
-                    ? PROPERTIES.date
-                    : PROPERTIES.datePublished,
-                date: {
-                  on_or_after: addTime(timestampQuery3, ''),
-                },
-              },
-              {
-                property:
-                  routeType === 'events'
-                    ? PROPERTIES.date
-                    : PROPERTIES.datePublished,
-                date: {
-                  before: addTime(timestampQuery3, 'day'),
-                },
-              },
-            ],
-          }
-          break
-        default:
-          filter = {
-            and: [
-              {
-                property:
-                  routeType === 'events'
-                    ? PROPERTIES.date
-                    : PROPERTIES.datePublished,
-                date: {
-                  on_or_after: addTime(timestampQuery3, ''),
-                },
-              },
-              {
-                property:
-                  routeType === 'events'
-                    ? PROPERTIES.date
-                    : PROPERTIES.datePublished,
-                date: {
-                  before: addTime(timestampQuery3, 'day'),
+                  before: addTime(timestampQuery, 'day'),
                 },
               },
               {
@@ -790,72 +889,38 @@ const getCatchAll = async ({ preview, clear, catchAll }) => {
                 text: { equals: slug },
               },
             ],
-          }
-          break
+          },
+        })
+        const info4a = info4.object === 'list' && info4.results[0]
+        info = normalizerContent(info4a)
+        content = await getBlocksByIdChildren({ blockId: info.id })
+        break
+      default:
+        break
+    }
+
+    if (!!items) {
+      items.results = _filter(items.results, { data: { published: true } })
+    }
+
+    data = { info, content, items }
+
+    /**
+     * @cache post
+     */
+    if (isCache) {
+      // console.dir(`*** useCache x1 ***`)
+      const url = catchAll.join('/')
+      // console.dir(url)
+      const isCacheExists = await getCache(url)
+      // console.dir(isCacheExists)
+      if (!isCacheExists || isCacheExists === undefined) {
+        setCache(data, url)
       }
-      const items3 = await getDatabasesByIdQuery({
-        databaseId: DATABASES[routeType],
-        filter,
-      })
-      const items3Data = {}
-      _map(items3.results, (item) => (items3Data[item.id] = normalizerContent(item)))
-      const items3Omit = _omit(items3, 'results')
-      // @ts-ignore
-      items3Omit.results = items3Data
-      items = _omit(items3Omit, 'data')
-      /***
-       * @hack
-       */
-      break
-
-    case 4:
-      /**
-       * @filter
-       * @note events|blog only for now
-       */
-      const [year, month, day] = meta
-      const timestampQuery = new Date(
-        `${!!year ? year : dateTimestamp.slice(0, 4)}-${!!month ? month : '01'}-${
-          !!day ? day : '01'
-        }`
-      )
-      const info4 = await getDatabasesByIdQuery({
-        databaseId: DATABASES[routeType],
-        filter: {
-          and: [
-            {
-              property:
-                routeType === 'events' ? PROPERTIES.date : PROPERTIES.datePublished,
-              date: {
-                on_or_after: addTime(timestampQuery, ''),
-              },
-            },
-            {
-              property:
-                routeType === 'events' ? PROPERTIES.date : PROPERTIES.datePublished,
-              date: {
-                before: addTime(timestampQuery, 'day'),
-              },
-            },
-            {
-              ...QUERIES.slug,
-              text: { equals: slug },
-            },
-          ],
-        },
-      })
-      const info4a = info4.object === 'list' && info4.results[0]
-      info = normalizerContent(info4a)
-      content = await getBlocksByIdChildren({ blockId: info.id })
-      break
-    default:
-      break
+    }
   }
-
-  if (!!items) {
-    items.results = _filter(items.results, { data: { published: true } })
-  }
-  return { info, content, items }
+  return data
 }
 
+export { normalizerContent }
 export default getCatchAll

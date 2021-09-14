@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import cx from 'clsx'
 import { motion } from 'framer-motion'
 import Slugger from 'github-slugger'
@@ -9,7 +10,8 @@ import { useEffect } from 'react'
 import useSWR, { useSWRConfig } from 'swr'
 
 import ImageCaption from '~components/Notion/ImageCaption'
-import Link from '~components/Notion/Link'
+import Listing from '~components/Notion/Listing'
+import Meta from '~components/Notion/Meta'
 import Title from '~components/Notion/Title'
 import Seo from '~components/Seo'
 import { MOTION_PAGE_VARIANTS } from '~lib/constants'
@@ -19,8 +21,20 @@ import notionToTailwindColor from '~utils/notion/notionToTailwindColor'
 
 // import Breadcrumb from '~components/Notion/Breadcrumb'
 // import Listing from '~components/Notion/Listing'
-// import Meta from '~components/Notion/Meta'
 // import getNextLink from '~utils/getNextLink'
+
+const relationsMap = [
+  'peopleCast',
+  'peopleWriter',
+  'peopleProducer',
+  'peopleDirector',
+  'peopleDirectorMusical',
+  'peopleMusic',
+  'peopleDirectorTechnical',
+  'peopleCrew',
+  'peopleHost',
+  'peopleThanks',
+]
 
 const Page = ({ data, props }) => {
   const {
@@ -33,7 +47,7 @@ const Page = ({ data, props }) => {
     isIndex,
     // meta,
     routeType,
-    // slug,
+    slug,
     url,
   } = props
 
@@ -44,7 +58,7 @@ const Page = ({ data, props }) => {
   const { mutate } = useSWRConfig()
   const { data: images } = useSWR('images', { fallbackData: imagesFallback })
   useEffect(() => {
-    mutate('images', { ...images, ...imagesFallback }, false)
+    void mutate('images', { ...images, ...imagesFallback }, false)
   }, [images, imagesFallback, mutate])
 
   /**
@@ -74,6 +88,9 @@ const Page = ({ data, props }) => {
     tags,
     title,
   } = properties
+
+  console.dir(`properties`)
+  console.dir(properties)
 
   // @todo(external)
   const seoImageSlug = slugger.slug(seoImage?.url)
@@ -105,10 +122,7 @@ const Page = ({ data, props }) => {
   // const peopleCast =
   //   !!properties['People.Cast'] && getContentType(properties['People.Cast'])
 
-  // // console.dir(`showId`)
-  // // console.dir(showId)
-  // // console.dir(`peopleCast`)
-  // // console.dir(peopleCast)
+  // console.dir(peopleCast)
 
   // // console.dir(`id`)
   // // console.dir(id)
@@ -163,38 +177,39 @@ const Page = ({ data, props }) => {
         )}
         {/* Dynamic */}
         {/* Content */}
+        {/* @todo(key) */}
         {_map(content.results, (contentItem: NotionBlock) =>
           getContentType(contentItem, images)
         )}
-        {/* Items */}
-        {isIndex && !isPage && (
-          <>
-            <h5 className="text-3xl font-bold mt-2 pt-2 pb-2">
-              {_capitalize(routeType)}
-            </h5>
-            {_map(items.results, (i, iIndex) => {
-              const item = items.results[iIndex]
-              if (item.data.slug === null || item.data.slug === undefined) {
-                return null
-              }
-              return (
-                <>
-                  <Link key={iIndex} item={item} routeType={routeType} />
-                </>
-              )
-            })}
-          </>
-        )}
+        {/* @note(switch) */}
+        {isIndex && !isPage && <Listing items={items} routeType={routeType} />}
+
         {/* {isEvent && showId && <Meta id={showId} />} */}
-        {/* {isEvent && peopleCast && <Listing items={peopleCast} slug={slug} />} */}
-        {/* {isEvent && peopleCast && (
-            <>
-              <h5>Cast</h5>
-              {peopleCast.map((person) => (
-                <Meta key={person.id} id={person.id} />
-              ))}
-            </>
-          )} */}
+        {/* @hack(notion) */}
+        {!isIndex && !!relationsMap && (
+          <div
+            id="container--relations"
+            className={cx('grid', 'grid-cols-2 gap-3', 'md:grid-cols-3 md:gap-4')}
+          >
+            {_map(relationsMap, (relationKey) => {
+              const ids = properties[relationKey]
+              const idsSize = _size(ids)
+              const swrKey = `${slug}--${relationKey}`
+              if (idsSize === 0) {
+                return null
+              } else {
+                return (
+                  <Meta
+                    ids={ids}
+                    key={`${slug}--${relationKey}--container`}
+                    swrKey={`/${swrKey}`.toLowerCase()}
+                    title={relationKey}
+                  />
+                )
+              }
+            })}
+          </div>
+        )}
       </motion.div>
     </>
   )

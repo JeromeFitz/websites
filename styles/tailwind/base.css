@@ -160,6 +160,10 @@ body {
   color: var(--text-primary);
 }
 
+html.nprogress-busy {
+  @apply cursor-wait;
+}
+
 body {
   position: relative;
   min-height: 100%;

@@ -27,6 +27,12 @@ const navigation = [
     title: 'p',
     titleMobile: 'p',
   },
+  {
+    active: isDev,
+    href: '/events/2020',
+    title: 'e',
+    titleMobile: 'e',
+  },
 ]
 
 export default navigation
