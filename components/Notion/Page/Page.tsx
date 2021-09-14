@@ -89,8 +89,8 @@ const Page = ({ data, props }) => {
     title,
   } = properties
 
-  console.dir(`properties`)
-  console.dir(properties)
+  // console.dir(`properties`)
+  // console.dir(properties)
 
   // @todo(external)
   const seoImageSlug = slugger.slug(seoImage?.url)
