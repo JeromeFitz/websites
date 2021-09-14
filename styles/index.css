@@ -22,6 +22,7 @@
 @import 'reach/skip-nav.css';
 @import 'reach/tooltip.css';
 @import 'selection.css';
+@import 'shadows.css';
 @import 'typography.css';
 @import '~components/NProgress/NProgress.module.css';
 

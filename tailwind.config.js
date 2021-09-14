@@ -48,6 +48,8 @@ module.exports = {
         /^tooltip/,
         '.tooltip',
         'tooltip',
+        '.shadows-lg',
+        'shadows-lg',
       ],
       keyframes: false,
       fontFace: false,

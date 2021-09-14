@@ -106,7 +106,7 @@ const Event = () => {
           transition={{ delay: 0.25, duration: 1, type: 'linear' }}
           className={cx('flex flex-col')}
         >
-          <div id="event--container" className={cx('w-11/12 md:w-full', 'm-4')}>
+          <div id="event--container" className={cx('w-11/12 md:w-full', 'my-4')}>
             <div id="event--header" className={cx('')}>
               <div id="event--header--content">
                 <div
