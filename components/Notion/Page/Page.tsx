@@ -10,7 +10,7 @@ import { useEffect } from 'react'
 import useSWR, { useSWRConfig } from 'swr'
 
 import ImageCaption from '~components/Notion/ImageCaption'
-import Link from '~components/Notion/Link'
+import Listing from '~components/Notion/Listing'
 import Meta from '~components/Notion/Meta'
 import Title from '~components/Notion/Title'
 import Seo from '~components/Seo'
@@ -58,7 +58,7 @@ const Page = ({ data, props }) => {
   const { mutate } = useSWRConfig()
   const { data: images } = useSWR('images', { fallbackData: imagesFallback })
   useEffect(() => {
-    mutate('images', { ...images, ...imagesFallback }, false)
+    void mutate('images', { ...images, ...imagesFallback }, false)
   }, [images, imagesFallback, mutate])
 
   /**
@@ -181,26 +181,9 @@ const Page = ({ data, props }) => {
         {_map(content.results, (contentItem: NotionBlock) =>
           getContentType(contentItem, images)
         )}
-        {/* Items */}
-        {/* @todo(key) */}
-        {isIndex && !isPage && (
-          <>
-            <h5 className="text-3xl font-bold mt-2 pt-2 pb-2">
-              {_capitalize(routeType)}
-            </h5>
-            {_map(items.results, (i, iIndex) => {
-              const item = items.results[iIndex]
-              if (item.data.slug === null || item.data.slug === undefined) {
-                return null
-              }
-              return (
-                <>
-                  <Link key={iIndex} item={item} routeType={routeType} />
-                </>
-              )
-            })}
-          </>
-        )}
+        {/* @note(switch) */}
+        {isIndex && !isPage && <Listing items={items} routeType={routeType} />}
+
         {/* {isEvent && showId && <Meta id={showId} />} */}
         {/* @hack(notion) */}
         {!isIndex && !!relationsMap && (

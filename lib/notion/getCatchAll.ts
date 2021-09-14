@@ -723,6 +723,12 @@ const getCatchAll = async ({ cache = false, catchAll, clear, preview }) => {
           }-${!!day3 ? day3 : '01'}`
         )
         let filter
+        const sorts3 = [
+          {
+            property: PROPERTIES.date,
+            direction: 'descending',
+          },
+        ]
 
         switch (metaCount) {
           case 1:
@@ -829,6 +835,7 @@ const getCatchAll = async ({ cache = false, catchAll, clear, preview }) => {
         const items3 = await getDatabasesByIdQuery({
           databaseId: DATABASES[routeType],
           filter,
+          sorts: sorts3,
         })
         const items3Data = {}
         _map(
