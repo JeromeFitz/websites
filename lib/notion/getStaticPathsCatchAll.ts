@@ -17,6 +17,8 @@ const getStaticPathsCatchAll = () => {
     '/shows/bubble-boy-the-musical',
     '/shows/jer-and-ky',
     '/shows/jerome-and',
+    '/shows/jfle-take-broadway',
+    '/shows/jfle',
     '/shows/justin-and-jerome-experience',
     '/shows/my-dinner-with-andre-the-musical',
     '/shows/the-death-show',
