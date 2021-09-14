@@ -12,6 +12,7 @@ import useSWR, { useSWRConfig } from 'swr'
 import ImageCaption from '~components/Notion/ImageCaption'
 import Listing from '~components/Notion/Listing'
 import Meta from '~components/Notion/Meta'
+import { Event } from '~components/Notion/Page'
 import Title from '~components/Notion/Title'
 import Seo from '~components/Seo'
 import { MOTION_PAGE_VARIANTS } from '~lib/constants'
@@ -178,8 +179,12 @@ const Page = ({ data, props }) => {
         {/* Dynamic */}
         {/* Content */}
         {/* @todo(key) */}
-        {_map(content.results, (contentItem: NotionBlock) =>
-          getContentType(contentItem, images)
+        {routeType === 'events' && !isIndex ? (
+          <Event data={data} />
+        ) : (
+          _map(content.results, (contentItem: NotionBlock) =>
+            getContentType(contentItem, images)
+          )
         )}
         {/* @note(switch) */}
         {isIndex && !isPage && <Listing items={items} routeType={routeType} />}

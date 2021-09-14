@@ -41,14 +41,22 @@ const Listing = ({ items, routeType }) => {
           return (
             <>
               <div className="mt-12">
-                <div className={cx('flex flex-row ')}>
+                <div
+                  className={cx(
+                    'flex flex-row',
+                    'shadow-lg rounded-lg',
+                    'md:shadow-xl md:rounded-xl'
+                  )}
+                >
                   <div
                     className={cx(
                       'block px-4 py-2 rounded-md',
                       'text-center',
-                      'mr-4 mb-4 max-h-20 w-20',
-                      'sticky top-24',
-                      'bg-gray-800 dark:bg-gray-200'
+                      'mr-3 max-h-16 w-16',
+                      'md:mr-4 md:max-h-20 md:w-20',
+                      'sticky top-28 md:top-24',
+                      'bg-gray-800 dark:bg-gray-200',
+                      'shadow-2xl'
                     )}
                   >
                     <time dateTime={item.data.date.start}>
@@ -63,7 +71,7 @@ const Listing = ({ items, routeType }) => {
                       </h5>
                       <h1
                         className={cx(
-                          'text-3xl font-bold tracking-tighter',
+                          'text-2xl md:text-3xl font-bold tracking-tighter',
                           'text-gray-200 dark:text-gray-800'
                         )}
                       >
@@ -88,7 +96,7 @@ const Listing = ({ items, routeType }) => {
                               <span className="uppercase">
                                 {timestamp.event.dayAbbreviation}{' '}
                               </span>
-                              {timestamp.event.time} - Arcade Comedy Theater
+                              {timestamp.event.time}
                             </h4>
                           </div>
                           <p id="events--listing--info">

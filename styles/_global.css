@@ -15,6 +15,10 @@
   }
 }
 
+:root {
+  --shadow-color: 0deg 0% 50%;
+}
+
 html {
   min-height: 100vh;
   min-width: 375px;
