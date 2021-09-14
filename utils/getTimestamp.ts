@@ -31,8 +31,11 @@ const getTimestamp = (ts: number) => {
     upcoming,
     event: {
       day: _format(timestamp, 'EEEE'),
+      dayAbbreviation: _format(timestamp, 'EEE'),
       date: _format(timestamp, 'dd'),
       month: _format(timestamp, 'MM'),
+      monthAbbreviation: _format(timestamp, 'MMM'),
+      monthName: _format(timestamp, 'MMMM'),
       year: _format(timestamp, 'yyyy'),
       //
       hour: _format(timestamp, 'hh'),
@@ -40,6 +43,7 @@ const getTimestamp = (ts: number) => {
       ampm: _format(timestamp, 'a'),
       timeZone: _formatUTC(timestamp, 'zzz', { timeZone, locale: enUS }),
       timeZoneFull: _formatUTC(timestamp, 'zzzz', { timeZone, locale: enUS }),
+      time: _format(timestamp, 'hh:mma'),
     },
     // @todo(time_zone)
     time_zone: timeZone,

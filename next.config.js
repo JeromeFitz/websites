@@ -107,6 +107,7 @@ const nextConfig = {
       'images.prismic.io', // Prismic
       'pbs.twimg.com', // Twitter Profile Picture
       'www.datocms-assets.com', // DataO
+      'tailwindcss.com', // Tailwind
     ],
     imageSizes: [24, 64, 300],
   },

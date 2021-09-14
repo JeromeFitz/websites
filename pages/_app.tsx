@@ -1,18 +1,25 @@
 import '~styles/index.css'
 // import 'keen-slider/keen-slider.min.css'
 import '~styles/chrome.css'
+
 import { AnimatePresence } from 'framer-motion'
 import Inspect from 'inspx'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
+import pluralize from 'pluralize'
 import { FC, useEffect } from 'react'
 
-// import ErrorBoundary from '~components/ErrorBoundary'
 import { Header } from '~components/Layout'
 import NProgress from '~components/NProgress'
 import { ManagedUIContext } from '~context/ManagedUIContext'
 import NotificationProvider from '~context/Notification'
 import { useAnalytics } from '~lib/analytics'
+
+pluralize.addPluralRule(/cast$/i, 'cast')
+pluralize.addPluralRule(/crew$/i, 'crew')
+pluralize.addPluralRule(/lineup$/i, 'lineup')
+pluralize.addSingularRule(/music$/i, 'music')
+pluralize.addSingularRule(/thanks$/i, 'thanks')
 
 const Noop: FC = ({ children }) => <>{children}</>
 
@@ -28,7 +35,6 @@ export default function MyApp({ Component, pageProps, router }: AppProps) {
   return (
     <>
       <Inspect disabled={process.env.NODE_ENV === 'production'}>
-        {/* <ErrorBoundary> */}
         <Head>
           <meta
             name="viewport"
@@ -50,7 +56,6 @@ export default function MyApp({ Component, pageProps, router }: AppProps) {
             </Layout>
           </NotificationProvider>
         </ManagedUIContext>
-        {/* </ErrorBoundary> */}
       </Inspect>
     </>
   )

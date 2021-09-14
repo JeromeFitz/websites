@@ -35,10 +35,12 @@
   p u,
   p {
     /* @apply text-gray-900 dark:text-gray-100 text-xl; */
-    @apply my-2 mt-2 inline-flex flex-wrap;
+    @apply my-2 mt-2;
+    /* @apply flex items-center; */
     /* @apply text-base md:text-lg; */
     @apply prose md:prose-lg max-w-none;
     @apply text-black dark:text-white;
+    @apply leading-normal;
   }
 
   li {
@@ -68,7 +70,7 @@
   p > strong,
   p > u {
     color: 'inherit';
-    @apply mx-1;
+    /* @apply mx-0.5; */
   }
 
   p > a {

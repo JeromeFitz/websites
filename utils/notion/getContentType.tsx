@@ -10,7 +10,7 @@ import { NotionBlock } from '~utils/notion'
 import getContentTypeDetail from '~utils/notion/getContentTypeDetail'
 import notionToTailwindColor from '~utils/notion/notionToTailwindColor'
 
-const getContentType = (item: NotionBlock, images: any[]) => {
+const getContentType = (item: NotionBlock, images?: any[]) => {
   const { id, type } = item
   const content = item[type]
 
@@ -44,8 +44,8 @@ const getContentType = (item: NotionBlock, images: any[]) => {
       return <li key={id}>{getContentTypeDetail(content)}</li>
     case 'image':
       const slugger = new Slugger()
-      const imageSlug = slugger.slug(content.external.url)
-      const imageData = images[imageSlug]
+      const imageSlug = slugger.slug(content?.external?.url)
+      const imageData = !!imageSlug && !!images && images[imageSlug]
       return !!imageData ? (
         <div className="w-2/3 mx-auto" key={id}>
           <Image

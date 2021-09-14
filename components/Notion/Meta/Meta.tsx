@@ -1,30 +1,68 @@
-import useSWR from 'swr'
+import _filter from 'lodash/filter'
+import _map from 'lodash/map'
+import _orderBy from 'lodash/orderBy'
+import _size from 'lodash/size'
+import pluralize from 'pluralize'
 
-import fetcher from '~lib/fetcher'
+import usePage from '~hooks/notion/usePage'
+import useRelation, { setRelation } from '~hooks/notion/useRelation'
+import getTitle from '~lib/notion/getTitle'
+import rangeMap from '~utils/rangeMap'
 
-const Meta = ({ id }) => {
-  console.dir(`id: ${id}`)
-  const { data, error } = useSWR(() => `/api/notion/pages/${id}`, fetcher, {
-    revalidateOnFocus: true,
-  })
-  /**
-   * @error or @loading
-   */
-  if (error || !data || data?.parent === undefined || data?.properties === undefined)
-    return (
-      <>
-        <h1>{error ? <>Error</> : <>Loading...</>}</h1>
-      </>
-    )
-  console.dir(data)
+const LiGhost = () => (
+  <div className="max-w-sm w-full mx-auto">
+    <div className="animate-pulse flex space-x-4">
+      <div className="flex-1 space-y-4 py-2">
+        <div className="h-4 bg-gray-400 rounded w-3/4"></div>
+      </div>
+    </div>
+  </div>
+)
 
-  const { properties } = data
-  const title = properties['Title'].title[0].plain_text
+// @todo(react)
+//  Cannot update a component (`MetaHidden`) while
+//  rendering a different component(`MetaHidden`)
+const MetaHidden = ({ id }) => {
+  const { data: relations } = useRelation()
+  const { data, isError, isLoading } = usePage({ id })
+  if (isLoading || isError) return null
+  void setRelation(relations, data)
+  return null
+}
+
+const Meta = ({ ids, swrKey, title }) => {
+  const { data: relations } = useRelation()
+  const data = _orderBy(
+    // @todo(any)
+    _filter(relations, (relation: any) => ids.includes(relation.id)),
+    ['data.title'],
+    ['asc']
+  )
 
   return (
-    <>
-      <h6>{title}</h6>
-    </>
+    <div className="flex flex-col" id={`${swrKey}--container`}>
+      {/* @todo(react) */}
+      {_map(ids, (id) => (
+        <MetaHidden id={id} key={`hidden--${id}`} />
+      ))}
+      <h5 className="font-semibold">{pluralize(getTitle(title), ids.length)}</h5>
+      <ul className="flex flex-col ">
+        {!!data || _size(data) > 0
+          ? // @todo(any)
+            _map(data, (relation: any) => (
+              <li id={`id--${relation.id}`} key={`id--${relation.id}`}>
+                {relation.data.title}
+              </li>
+            ))
+          : rangeMap(ids.length, (i) => {
+              return _size(data) > 0 ? (
+                <LiGhost key={`${swrKey}--${i}`} />
+              ) : (
+                <LiGhost key={`${swrKey}--${i}`} />
+              )
+            })}
+      </ul>
+    </div>
   )
 }
 
