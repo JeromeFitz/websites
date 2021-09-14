@@ -39,7 +39,11 @@ const getContentType = (item: NotionBlock, images?: any[]) => {
     case 'paragraph':
       return <p key={id}>{getContentTypeDetail(content)}</p>
     case 'bulleted_list_item':
-      return <li key={id}>{getContentTypeDetail(content)}</li>
+      return (
+        <li key={id} className="flex flex-row list-disc">
+          {getContentTypeDetail(content)}
+        </li>
+      )
     case 'numbered_list_item':
       return <li key={id}>{getContentTypeDetail(content)}</li>
     case 'image':
