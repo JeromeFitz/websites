@@ -1,9 +1,16 @@
+import {
+  VolumeOffIcon,
+  VolumeUpIcon,
+  MoonIcon,
+  SunIcon,
+} from '@heroicons/react/solid'
+import cx from 'clsx'
 import { motion } from 'framer-motion'
 import { useTheme } from 'next-themes'
 import { memo } from 'react'
 import { useSound } from 'use-sound'
 
-import Emoji from '~components/Notion/Emoji'
+// import Emoji from '~components/Notion/Emoji'
 import { useUI } from '~context/ManagedUIContext'
 
 const AppSoundToggle = () => {
@@ -22,9 +29,12 @@ const AppSoundToggle = () => {
   }
   return (
     <motion.button
-      className="text-2xl sm:text-3xl text-yellow-400 dark:text-yellow-300 focus:outline-none"
+      className={cx(
+        'text-2xl sm:text-3xl focus:outline-none',
+        'hover:text-gray-600 dark:hover:text-gray-100'
+      )}
       onClick={() => handleClick()}
-      key={audio ? 'sound-on-icon' : 'soun-off-icon'}
+      key={audio ? 'sound-on-icon' : 'sound-off-icon'}
       initial={{ scale: 0.8, y: 0, opacity: 0 }}
       animate={{ scale: 1, y: 0, opacity: 1 }}
       exit={{ scale: 0.8, y: 0, opacity: 0 }}
@@ -32,7 +42,12 @@ const AppSoundToggle = () => {
       whileHover={{ scale: 1.2 }}
       whileTap={{ scale: 0.8 }}
     >
-      <Emoji character={audio ? '🔉️' : '🔇️'} />
+      {/* <Emoji character={audio ? '🔉️' : '🔇️'} /> */}
+      {audio ? (
+        <VolumeUpIcon className="h-5 w-5 " />
+      ) : (
+        <VolumeOffIcon className="h-5 w-5" />
+      )}
     </motion.button>
   )
 }
@@ -50,7 +65,11 @@ const AppThemeToggle = () => {
   }
   return (
     <motion.button
-      className="ml-4 text-2xl sm:text-3xl text-yellow-400 dark:text-yellow-300 focus:outline-none"
+      className={cx(
+        'ml-4',
+        'text-2xl sm:text-3xl focus:outline-none',
+        'hover:text-gray-600 dark:hover:text-gray-100'
+      )}
       onClick={() => handleClick()}
       key={darkModeActive ? 'dark-icon' : 'light-icon'}
       initial={{ scale: 0.8, y: 0, opacity: 0 }}
@@ -60,7 +79,12 @@ const AppThemeToggle = () => {
       whileHover={{ scale: 1.2 }}
       whileTap={{ scale: 0.8 }}
     >
-      <Emoji character={theme === 'light' ? '🌞️' : '🌚️'} />
+      {/* <Emoji character={theme === 'light' ? '🌞️' : '🌚️'} /> */}
+      {theme === 'light' ? (
+        <SunIcon className="h-5 w-5 " />
+      ) : (
+        <MoonIcon className="h-5 w-5 " />
+      )}
     </motion.button>
   )
 }

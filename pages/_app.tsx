@@ -17,6 +17,7 @@ import { useAnalytics } from '~lib/analytics'
 
 pluralize.addPluralRule(/cast$/i, 'cast')
 pluralize.addPluralRule(/crew$/i, 'crew')
+pluralize.addPluralRule(/lineup$/i, 'lineup')
 pluralize.addSingularRule(/music$/i, 'music')
 pluralize.addSingularRule(/thanks$/i, 'thanks')
 

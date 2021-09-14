@@ -43,14 +43,16 @@ const Meta = ({ ids, swrKey, title }) => {
     <div className="flex flex-col" id={`${swrKey}--container`}>
       {/* @todo(react) */}
       {_map(ids, (id) => (
-        <MetaHidden id={id} />
+        <MetaHidden id={id} key={`hidden--${id}`} />
       ))}
       <h5 className="font-semibold">{pluralize(getTitle(title), ids.length)}</h5>
       <ul className="flex flex-col ">
         {!!data || _size(data) > 0
           ? // @todo(any)
             _map(data, (relation: any) => (
-              <li id={`id--${relation.id}`}>{relation.data.title}</li>
+              <li id={`id--${relation.id}`} key={`id--${relation.id}`}>
+                {relation.data.title}
+              </li>
             ))
           : rangeMap(ids.length, (i) => {
               return _size(data) > 0 ? (

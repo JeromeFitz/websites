@@ -16,6 +16,10 @@ const spotifyApi = async ({ query: { limit, slug, time_range } }, res) => {
 
       const { album, artists } = track.item
 
+      // console.dir(track)
+      // console.dir(album)
+      // console.dir(artists)
+
       const isPlaying = track.is_playing
 
       const trackId = track.item.id

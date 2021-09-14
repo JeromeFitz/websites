@@ -56,7 +56,7 @@
     "strings": true
   },
   "tailwindCSS.includeLanguages": {
-    "plaintext": "css"
+    "plaintext": "javascript"
   },
   "tailwindCSS.validate": true
 }

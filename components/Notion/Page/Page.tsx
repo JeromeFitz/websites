@@ -23,7 +23,7 @@ import notionToTailwindColor from '~utils/notion/notionToTailwindColor'
 // import Listing from '~components/Notion/Listing'
 // import getNextLink from '~utils/getNextLink'
 
-const peopleMap = [
+const relationsMap = [
   'peopleCast',
   'peopleWriter',
   'peopleProducer',
@@ -33,7 +33,6 @@ const peopleMap = [
   'peopleDirectorTechnical',
   'peopleCrew',
   'peopleHost',
-
   'peopleThanks',
 ]
 
@@ -204,24 +203,24 @@ const Page = ({ data, props }) => {
         )}
         {/* {isEvent && showId && <Meta id={showId} />} */}
         {/* @hack(notion) */}
-        {!isIndex && !!peopleMap && (
+        {!isIndex && !!relationsMap && (
           <div
-            id="container--people"
+            id="container--relations"
             className={cx('grid', 'grid-cols-2 gap-3', 'md:grid-cols-3 md:gap-4')}
           >
-            {_map(peopleMap, (peopleKey) => {
-              const ids = properties[peopleKey]
+            {_map(relationsMap, (relationKey) => {
+              const ids = properties[relationKey]
               const idsSize = _size(ids)
-              const swrKey = `${slug}--${peopleKey}`
+              const swrKey = `${slug}--${relationKey}`
               if (idsSize === 0) {
                 return null
               } else {
                 return (
                   <Meta
                     ids={ids}
-                    key={`${slug}--${peopleKey}--container`}
+                    key={`${slug}--${relationKey}--container`}
                     swrKey={`/${swrKey}`.toLowerCase()}
-                    title={peopleKey}
+                    title={relationKey}
                   />
                 )
               }

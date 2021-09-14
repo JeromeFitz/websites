@@ -138,6 +138,7 @@ interface NormalizerProperties {
    */
   shows?: string[]
   venues?: string[]
+  eventsLineupShowIds?: string[]
   /**
    * @relation @_PEOPLE
    */
@@ -393,6 +394,9 @@ const normalizerProperties = (properties) => {
       case PROPERTIES.venues:
         data.venues = getTypeRelationNormalized(value)
         break
+      case PROPERTIES.eventsLineupShowIds:
+        data.eventsLineupShowIds = getTypeRelationNormalized(value)
+        break
       /**
        * @relation @_PEOPLE
        */
@@ -426,8 +430,8 @@ const normalizerProperties = (properties) => {
       case PROPERTIES.showsPeopleDirectorTechnical:
         data.showsPeopleDirectorTechnical = getTypeRelationNormalized(value)
         break
-      case PROPERTIES.showPeopleMusic:
-        data.showPeopleMusic = getTypeRelationNormalized(value)
+      case PROPERTIES.showsPeopleMusic:
+        data.showsPeopleMusic = getTypeRelationNormalized(value)
         break
       case PROPERTIES.showsPeopleProducer:
         data.showsPeopleProducer = getTypeRelationNormalized(value)

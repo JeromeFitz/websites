@@ -1,5 +1,6 @@
 import cx from 'clsx'
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 import { useState } from 'react'
 import _title from 'title'
 import { useSound } from 'use-sound'
@@ -95,6 +96,7 @@ const Playground = () => {
         >
           <h2 style={WEBKIT_BACKGROUND}>{description}</h2>
           <div id="content">
+            <Link href="/playground/event">Event Template</Link>
             <Button
               variant="slim"
               type="submit"
