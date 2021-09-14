@@ -1,3 +1,4 @@
+import { ExternalLinkIcon } from '@heroicons/react/solid'
 import cx from 'clsx'
 import NextLink from 'next/link'
 import nodeEmoji from 'node-emoji'
@@ -33,24 +34,45 @@ const getTextAnnotations = ({ href, plain_text, annotations }) => {
     returnElement = <u>{returnElement}</u>
   }
   if (href) {
-    const link = getNextLink(href)
-    // returnElement = <a href={href}>{returnElement}</a>
-    if (!!link) {
-      returnElement = (
-        <NextLink as={link.as.replace('//', '/')} href={link.href}>
-          <a
-            className={cx(
-              'font-semibold',
-              'underline underline-offset-md underline-thickness-sm',
-              'hover:text-green-500 dark:hover:text-yellow-200'
-            )}
-          >
-            {returnElement}
-          </a>
-        </NextLink>
-      )
+    const isExternal = !href.includes('jerome')
+
+    if (!isExternal) {
+      const link = getNextLink(href)
+      if (!!link) {
+        returnElement = (
+          <NextLink as={link.as.replace('//', '/')} href={link.href}>
+            <a
+              className={cx(
+                'font-semibold',
+                'underline underline-offset-md underline-thickness-sm',
+                'hover:text-green-500 dark:hover:text-yellow-200'
+              )}
+            >
+              {returnElement}
+            </a>
+          </NextLink>
+        )
+      } else {
+        return null
+      }
     } else {
-      return null
+      returnElement = (
+        <a
+          className={cx(
+            'font-semibold',
+            'underline underline-offset-md underline-thickness-sm',
+            'hover:text-green-500 dark:hover:text-yellow-200',
+            'inline-flex flex-row',
+            'ml-1'
+          )}
+          href={href}
+          rel="noreferrer"
+          target={'_blank'}
+        >
+          <span>{returnElement}</span>
+          <ExternalLinkIcon className="h-4   w-4  ml-1" />
+        </a>
+      )
     }
   }
   return returnElement

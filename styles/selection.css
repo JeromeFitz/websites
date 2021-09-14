@@ -1,6 +1,13 @@
 ::selection {
-  @apply bg-black dark:bg-white;
-  @apply text-white dark:text-black;
+  @apply bg-black;
+  @apply text-white;
+  -webkit-text-fill-color: white;
+}
+
+.dark ::selection {
+  @apply bg-white;
+  @apply text-black;
+  -webkit-text-fill-color: black;
 }
 
 /* #now-playing ::selection {
