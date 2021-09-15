@@ -864,10 +864,10 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.0.tgz#87de7af9c231826fdd68ac7258f77c429e0e5fcf"
   integrity sha512-wdppn25U8z/2yiaT6YGquE6X8sSv7hNMWSXYSSU1jGv/yd6XqjXgTDJ8KP4NgjTXfJ3GbRjeeb8RTV7a/VpM+w==
 
-"@jeromefitz/codestyle@2.3.55":
-  version "2.3.55"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/codestyle/-/codestyle-2.3.55.tgz#5ab4ff07503ba7d10e74c52dd006e80b47f123b9"
-  integrity sha512-AG5cyIHmI5iKVo5SvO0txd4IOyhiUD6mbIv0GiavdF1q5GjoiD7UBCi781YeQN6hezHvZu9Gd4irRNOoiMj8tg==
+"@jeromefitz/codestyle@2.3.56":
+  version "2.3.56"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/codestyle/-/codestyle-2.3.56.tgz#98026656210123f3c5335324cab79d4194c1d247"
+  integrity sha512-NDo9ISRmJPR5EnKWjC7gAWD57g/swZ+N2rrOJZ/Szzu3OTYPfakUZMRAUFvXGhhB+MfgMYNFvVUvtxRDmOm+BA==
   dependencies:
     "@babel/core" "7.15.5"
     "@babel/eslint-parser" "7.15.4"
@@ -883,12 +883,12 @@
     lint-staged "11.1.2"
     prettier "2.4.0"
     pretty-quick "3.1.1"
-    typescript "4.3.5"
+    typescript "4.4.3"
 
-"@jeromefitz/git-cz@8.3.55":
-  version "8.3.55"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/git-cz/-/git-cz-8.3.55.tgz#1392b54aa605897c6611e1a0d5a5e5d54dc57703"
-  integrity sha512-GSl0YkCsQ+szNvP04m98b7IhIYRuV5lJnm4LrW86X96+kK5cyICzoKcap+i5qRVys3u5dQ9khqEzPZqnRmH/Ng==
+"@jeromefitz/git-cz@8.3.56":
+  version "8.3.56"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/git-cz/-/git-cz-8.3.56.tgz#354e006e5536cf7b321372336c6223ab22962c7d"
+  integrity sha512-ujXP215ERtICcqBHm+CZkNZtFtto+t3A0bqTPiCqB2CyHaZW/26BZIT+7hRUnRFSxoNWzHxu8Yv0Vbh4g1ij6Q==
   dependencies:
     "@types/chalk-pipe" "2.0.0"
     chalk "4.1.2"
@@ -915,10 +915,10 @@
     micromatch "^4.0.0"
     p-reduce "^2.0.0"
 
-"@jeromefitz/semantic@2.3.54":
-  version "2.3.54"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/semantic/-/semantic-2.3.54.tgz#cd427a2dbf4c57411bf99e4aabb277bad84e2917"
-  integrity sha512-IekdLUfRLnFry12iQfs6ZKOcX4KaijLEs+f8jzl9kHIJEUFzdHlOI4dIMHKR80ZE7jn8G1Jpv0avPrdRJxysYQ==
+"@jeromefitz/semantic@2.3.55":
+  version "2.3.55"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/semantic/-/semantic-2.3.55.tgz#133d9aa95c2f5ebc7fcc82d1995f878e813f0b6d"
+  integrity sha512-2Fs7gT0gf/L6mhF9TC4WJ80cURiVy123u1fCS4vOhqicGPp1dEd4u7zheTWrKJJyq8E9pZTVEYHItgyKNybG8Q==
   dependencies:
     "@jeromefitz/semantic-release-git" "10.0.0-develop.2"
     "@octokit/core" "3.5.1"
@@ -9932,11 +9932,6 @@ typedarray-to-buffer@^3.1.5:
   dependencies:
     is-typedarray "^1.0.0"
 
-typescript@4.3.5, typescript@^4.2.3:
-  version "4.3.5"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.3.5.tgz#4d1c37cc16e893973c45a06886b7113234f119f4"
-  integrity sha512-DqQgihaQ9cUrskJo9kIyW/+g0Vxsk8cDtZ52a3NGh0YNTfpUSArXSohyUGnvbPazEPLu398C0UxmKSOrPumUzA==
-
 typescript@4.4.3:
   version "4.4.3"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.4.3.tgz#bdc5407caa2b109efd4f82fe130656f977a29324"
@@ -9946,6 +9941,11 @@ typescript@^3.9.5, typescript@^3.9.7:
   version "3.9.9"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.9.tgz#e69905c54bc0681d0518bd4d587cc6f2d0b1a674"
   integrity sha512-kdMjTiekY+z/ubJCATUPlRDl39vXYiMV9iyeMuEuXZh2we6zz80uovNN2WlAxmmdE/Z/YQe+EbOEXB5RHEED3w==
+
+typescript@^4.2.3:
+  version "4.3.5"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.3.5.tgz#4d1c37cc16e893973c45a06886b7113234f119f4"
+  integrity sha512-DqQgihaQ9cUrskJo9kIyW/+g0Vxsk8cDtZ52a3NGh0YNTfpUSArXSohyUGnvbPazEPLu398C0UxmKSOrPumUzA==
 
 uglify-js@^3.1.4:
   version "3.12.8"
