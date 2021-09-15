@@ -885,16 +885,16 @@
     pretty-quick "3.1.1"
     typescript "4.4.3"
 
-"@jeromefitz/git-cz@8.3.56":
-  version "8.3.56"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/git-cz/-/git-cz-8.3.56.tgz#354e006e5536cf7b321372336c6223ab22962c7d"
-  integrity sha512-ujXP215ERtICcqBHm+CZkNZtFtto+t3A0bqTPiCqB2CyHaZW/26BZIT+7hRUnRFSxoNWzHxu8Yv0Vbh4g1ij6Q==
+"@jeromefitz/git-cz@9.0.0":
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/git-cz/-/git-cz-9.0.0.tgz#cc519fcfd72409849ebe1237fdfa09bd640f2a33"
+  integrity sha512-nCRTUwWeYKtPKmp6vkQoTvy+n04fru0iLMfMfBX5YFGtsFmGsEuxxlAnBuLIusxVMhj9DGCRNotTdKFoH+sUpg==
   dependencies:
     "@types/chalk-pipe" "2.0.0"
     chalk "4.1.2"
     chalk-pipe "4.0.0"
     fuzzy "0.1.3"
-    inquirer "8.1.3"
+    inquirer "8.1.5"
     inquirer-list-search-prompt "1.0.2"
     lodash "4.17.21"
     minimist "1.2.5"
@@ -5427,10 +5427,10 @@ inquirer-list-search-prompt@1.0.2:
     figures "^2.0.0"
     run-async "^2.3.0"
 
-inquirer@8.1.3:
-  version "8.1.3"
-  resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-8.1.3.tgz#1c46cf13be1f99b1b2e4c713d472fed5fbb51f98"
-  integrity sha512-Ga5u7VbdPgTSUAy3bdOGlJqO/qpKGyYcbCmwu8KEXMXG8J/B3b4vTgeMc8+ALuvb9nejZu/LIag0bhSejzJnPQ==
+inquirer@8.1.5:
+  version "8.1.5"
+  resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-8.1.5.tgz#2dc5159203c826d654915b5fe6990fd17f54a150"
+  integrity sha512-G6/9xUqmt/r+UvufSyrPpt84NYwhKZ9jLsgMbQzlx804XErNupor8WQdBnBRrXmBfTPpuwf1sV+ss2ovjgdXIg==
   dependencies:
     ansi-escapes "^4.2.1"
     chalk "^4.1.1"
