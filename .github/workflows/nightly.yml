@@ -1,0 +1,44 @@
+name: '🌃️  Nightly'
+on:
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    # ref: https://docs.github.com/en/actions/reference/events-that-trigger-workflows#schedule
+    - cron: '0 0 * * *'
+jobs:
+  release:
+    name: '🌃️  Nightly'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: ['12']
+    steps:
+      - name: '🔧️ Setup Node: ${{ matrix.node }}'
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+          architecture: 'x64'
+      - name: '🐙️  Git Checkout'
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: '🌵️  Cache-tus'
+        uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+      - name: '📦️ Install Dependecies'
+        run: |
+          yarn install --frozen-lockfile --ignore-engines --network-concurrency 1
+      - name: '🚨️  Lint'
+        run: |
+          yarn lint
+      - name: '🏷️  Semantic Release'
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          echo "registry=http://registry.npmjs.org/" >> .npmrc
+          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> .npmrc
+          echo "@jeromefitz:registry=https://registry.npmjs.org/" >> .npmrc
+          yarn semantic-release
