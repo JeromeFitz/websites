@@ -1,13 +1,21 @@
 import cx from 'clsx'
+import { motion } from 'framer-motion'
 import _capitalize from 'lodash/capitalize'
 import _map from 'lodash/map'
 import NextLink from 'next/link'
+import { useSound } from 'use-sound'
 
 import Link from '~components/Notion/Link'
+import { useUI } from '~context/ManagedUIContext'
 import getTimestamp from '~utils/getTimestamp'
 import getInfoType from '~utils/notion/getInfoType'
 
 const Listing = ({ items, routeType }) => {
+  const { audio } = useUI()
+  const [playActive] = useSound('/static/audio/pop-down.mp3', {
+    soundEnabled: audio,
+    volume: 0.25,
+  })
   return (
     <>
       {routeType !== 'events' && (
@@ -82,7 +90,12 @@ const Listing = ({ items, routeType }) => {
                   <div className={cx('flex flex-col mb-20')}>
                     {/* <Link key={itemIndex} item={item} routeType={routeType} /> */}
                     <NextLink as={as} href={href}>
-                      <a className={cx('cursor-pointer')}>
+                      <a
+                        className={cx('cursor-pointer')}
+                        onClick={() => {
+                          playActive()
+                        }}
+                      >
                         <>
                           <div
                             className={
@@ -91,7 +104,9 @@ const Listing = ({ items, routeType }) => {
                               // 'sticky top-24'
                             }
                           >
-                            <h3 id="events--listing--title">{title}</h3>
+                            <motion.h3 id="events--listing--title" layoutId="foo">
+                              {title}
+                            </motion.h3>
                             <h4 id="events--listing--meta">
                               <span className="uppercase">
                                 {timestamp.event.dayAbbreviation}{' '}
