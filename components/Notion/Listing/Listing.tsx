@@ -104,7 +104,7 @@ const Listing = ({ items, routeType }) => {
                               // 'sticky top-24'
                             }
                           >
-                            <motion.h3 id="events--listing--title" layoutId="foo">
+                            <motion.h3 id="events--listing--title">
                               {title}
                             </motion.h3>
                             <h4 id="events--listing--meta">
@@ -116,7 +116,9 @@ const Listing = ({ items, routeType }) => {
                           </div>
                           <p id="events--listing--info">
                             {!!seoDescription && (
-                              <p className={cx('prose pb-2')}>{seoDescription}</p>
+                              <span className={cx('prose pb-2')}>
+                                {seoDescription}
+                              </span>
                             )}
                           </p>
                         </>
