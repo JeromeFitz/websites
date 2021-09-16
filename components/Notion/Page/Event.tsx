@@ -83,9 +83,7 @@ const Event = ({ data: dataEvent }) => {
               id="event--header--content--title"
               className={cx('mb-4 text-3xl font-semibold md:truncate')}
             >
-              <motion.h3 id="events--listing--title" layoutId="foo">
-                {title}
-              </motion.h3>
+              <motion.h3 id="events--listing--title">{title}</motion.h3>
             </div>
             <div
               id="event--header--content--ticket-info"
