@@ -2,8 +2,10 @@ import { ExternalLinkIcon } from '@heroicons/react/solid'
 import cx from 'clsx'
 import NextLink from 'next/link'
 import nodeEmoji from 'node-emoji'
+import { useSound } from 'use-sound'
 
 import Emoji from '~components/Notion/Emoji'
+import { useUI } from '~context/ManagedUIContext'
 import getNextLink from '~utils/notion/getNextLink'
 
 const emojiParser = (text) => {
@@ -16,7 +18,13 @@ const emojiParser = (text) => {
   return <Emoji character={emojiFound.emoji} />
 }
 
-const getTextAnnotations = ({ href, plain_text, annotations }) => {
+const TextAnnotations = ({ href, plain_text, annotations }) => {
+  const { audio } = useUI()
+  const [playActive] = useSound('/static/audio/pop-down.mp3', {
+    soundEnabled: audio,
+    volume: 0.25,
+  })
+
   let returnElement = <>{emojiParser(plain_text)}</>
   if (annotations.bold) {
     returnElement = <strong>{returnElement}</strong>
@@ -47,6 +55,9 @@ const getTextAnnotations = ({ href, plain_text, annotations }) => {
                 'underline underline-offset-md underline-thickness-sm',
                 'hover:text-green-500 dark:hover:text-yellow-200'
               )}
+              onClick={() => {
+                playActive()
+              }}
             >
               {returnElement}
             </a>
@@ -68,6 +79,9 @@ const getTextAnnotations = ({ href, plain_text, annotations }) => {
           href={href}
           rel="noreferrer"
           target={'_blank'}
+          onClick={() => {
+            playActive()
+          }}
         >
           <span>{returnElement}</span>
           <ExternalLinkIcon className="h-4   w-4  ml-1" />
@@ -78,4 +92,4 @@ const getTextAnnotations = ({ href, plain_text, annotations }) => {
   return returnElement
 }
 
-export default getTextAnnotations
+export default TextAnnotations

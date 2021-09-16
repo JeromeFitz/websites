@@ -1,3 +1,4 @@
+import { AnimatePresence } from 'framer-motion'
 import _map from 'lodash/map'
 import { useEffect } from 'react'
 import useSWR, { useSWRConfig } from 'swr'
@@ -70,13 +71,15 @@ const Page = ({ data, props }) => {
         {/* Dynamic */}
         {/* Content */}
         {/* @todo(key) */}
-        {routeType === 'events' && !isIndex ? (
-          <Event data={data} />
-        ) : (
-          _map(content.results, (contentItem: NotionBlock) =>
-            getContentType(contentItem, images)
-          )
-        )}
+        <AnimatePresence>
+          {routeType === 'events' && !isIndex ? (
+            <Event data={data} />
+          ) : (
+            _map(content.results, (contentItem: NotionBlock) =>
+              getContentType(contentItem, images)
+            )
+          )}
+        </AnimatePresence>
         {/* @note(switch) */}
         {isIndex && !isPage && <Listing items={items} routeType={routeType} />}
         {/* {isEvent && showId && <Meta id={showId} />} */}

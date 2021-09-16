@@ -2,7 +2,8 @@ import '~styles/index.css'
 // import 'keen-slider/keen-slider.min.css'
 import '~styles/chrome.css'
 
-import { AnimatePresence } from 'framer-motion'
+// import { AnimatePresence } from 'framer-motion'
+import { AnimateSharedLayout } from 'framer-motion'
 import Inspect from 'inspx'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
@@ -45,13 +46,14 @@ export default function MyApp({ Component, pageProps, router }: AppProps) {
           <NotificationProvider>
             <Layout pageProps={pageProps}>
               <Header />
-              <AnimatePresence
+              {/* <AnimatePresence
                 exitBeforeEnter
                 initial={false}
                 onExitComplete={() => window.scrollTo(0, 0)}
-              >
+              > */}
+              <AnimateSharedLayout type="crossfade">
                 <Component {...pageProps} key={router.route} />
-              </AnimatePresence>
+              </AnimateSharedLayout>
               <NProgress />
             </Layout>
           </NotificationProvider>

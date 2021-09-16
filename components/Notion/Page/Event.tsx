@@ -8,6 +8,7 @@ import {
 import cx from 'clsx'
 import _isBefore from 'date-fns/isBefore'
 import _parseISO from 'date-fns/parseISO'
+import { motion } from 'framer-motion'
 import _map from 'lodash/map'
 import _size from 'lodash/size'
 
@@ -82,7 +83,9 @@ const Event = ({ data: dataEvent }) => {
               id="event--header--content--title"
               className={cx('mb-4 text-3xl font-semibold md:truncate')}
             >
-              {title}
+              <motion.h3 id="events--listing--title" layoutId="foo">
+                {title}
+              </motion.h3>
             </div>
             <div
               id="event--header--content--ticket-info"
