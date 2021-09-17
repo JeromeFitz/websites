@@ -864,10 +864,10 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.0.tgz#87de7af9c231826fdd68ac7258f77c429e0e5fcf"
   integrity sha512-wdppn25U8z/2yiaT6YGquE6X8sSv7hNMWSXYSSU1jGv/yd6XqjXgTDJ8KP4NgjTXfJ3GbRjeeb8RTV7a/VpM+w==
 
-"@jeromefitz/codestyle@3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/codestyle/-/codestyle-3.0.0.tgz#ccf230f65abf1243dcc0d698285b0c1b91b6eed6"
-  integrity sha512-w88G8K+pwv1ZGo4/y+lWE7aiGMaxwtSzLqb1CypP9miZ2JJK3k8RI1tjbdN23UJAoGrqGTgj8YwQqpIjFyV2bw==
+"@jeromefitz/codestyle@3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/codestyle/-/codestyle-3.0.1.tgz#0da2771f589a5fd7fb2a13224f22014100307db5"
+  integrity sha512-AHT1BuSs+skge8/fknPW6ofpg884rYN1A8xVd12YZx2/Rr9ABQYgELx7cwG2ngwBY9Uwn0ZZqwE6KDc7rClRBg==
   dependencies:
     "@babel/core" "7.15.5"
     "@babel/eslint-parser" "7.15.4"
@@ -881,7 +881,7 @@
     eslint-plugin-react "7.25.1"
     eslint-plugin-react-hooks "4.2.0"
     lint-staged "11.1.2"
-    prettier "2.4.0"
+    prettier "2.4.1"
     pretty-quick "3.1.1"
     typescript "4.4.3"
 
@@ -7977,10 +7977,10 @@ prelude-ls@~1.1.2:
   resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.1.2.tgz#21932a549f5e52ffd9a827f570e04be62a97da54"
   integrity sha1-IZMqVJ9eUv/ZqCf1cOBL5iqX2lQ=
 
-prettier@2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.4.0.tgz#85bdfe0f70c3e777cf13a4ffff39713ca6f64cba"
-  integrity sha512-DsEPLY1dE5HF3BxCRBmD4uYZ+5DCbvatnolqTqcxEgKVZnL2kUfyu7b8pPQ5+hTBkdhU9SLUmK0/pHb07RE4WQ==
+prettier@2.4.1:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.4.1.tgz#671e11c89c14a4cfc876ce564106c4a6726c9f5c"
+  integrity sha512-9fbDAXSBcc6Bs1mZrDYb3XKzDLm4EXXL9sC1LqKP5rZkT6KRr/rf9amVUcODVXgguK/isJz0d0hP72WeaKWsvA==
 
 pretty-hrtime@^1.0.3:
   version "1.0.3"
