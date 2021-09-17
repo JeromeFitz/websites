@@ -7812,8 +7812,9 @@ postcss-font-variant@5.0.0:
   integrity sha512-1fmkBaCALD72CK2a9i468mA/+tr9/1cBxRRMXOUaZqO43oWPR5imcyPjXwuv7PXbCid4ndlP5zWhidQVVa3hmA==
 
 "postcss-gap-properties@git://github.com/csstools/postcss-gap-properties.git#main":
-  version "2.0.0"
-  resolved "git://github.com/csstools/postcss-gap-properties.git#332595d17a923577075db34e69b9484559cfa0fc"
+  version "3.0.0"
+  uid "86a5b1f815566f3b2185ca45e8211427d0cf4d79"
+  resolved "git://github.com/csstools/postcss-gap-properties.git#86a5b1f815566f3b2185ca45e8211427d0cf4d79"
 
 postcss-hover-media-feature@1.0.1:
   version "1.0.1"
