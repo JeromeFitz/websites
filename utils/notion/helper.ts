@@ -72,6 +72,7 @@ const PROPERTIES = {
   showsPeopleProducer: 'Shows.People.Producer',
   showsPeopleThanks: 'Shows.People.Thanks',
   showsPeopleWriter: 'Shows.People.Writer',
+  showsTags: 'Rollup.Shows.Tags',
   slug: 'Slug',
   social: {
     facebook: 'Social.Facebook',

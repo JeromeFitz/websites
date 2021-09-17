@@ -11,8 +11,12 @@ import _parseISO from 'date-fns/parseISO'
 import { motion } from 'framer-motion'
 import _map from 'lodash/map'
 import _size from 'lodash/size'
+import { useState } from 'react'
+import { useMount } from 'react-use'
 
 import Meta from '~components/Notion/Meta'
+// import usePage from '~hooks/notion/usePage'
+// import useRelation, { setRelation } from '~hooks/notion/useRelation'
 import FacebookIcon from '~styles/icons/Facebook'
 import TwitterIcon from '~styles/icons/Twitter'
 import getTimestamp from '~utils/getTimestamp'
@@ -53,7 +57,28 @@ const copy = {
   },
 }
 
+// const TagHidden ({ id }) => {
+//   const { data: relations } = useRelation()
+//     const { data, isError, isLoading } = usePage({ id })
+//   if (isLoading || isError) return null
+//   void setRelation(relations, data)
+//   return null
+// }
+
 const Event = ({ data: dataEvent }) => {
+  // console.dir(`Event:`)
+  // const { data: relations } = useRelation()
+  // console.dir(`relations`)
+  // console.dir(relations)
+
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [mount, mountSet] = useState(false)
+  useMount(() => {
+    mountSet(true)
+  })
+
   const { content, info } = dataEvent
   const { data, slug } = info
   const {
