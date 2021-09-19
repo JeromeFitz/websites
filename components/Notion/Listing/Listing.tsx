@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import _capitalize from 'lodash/capitalize'
 import _map from 'lodash/map'
 import NextLink from 'next/link'
+import React from 'react'
 import { useSound } from 'use-sound'
 
 import Link from '~components/Notion/Link'
@@ -47,7 +48,7 @@ const Listing = ({ items, routeType }) => {
 
         if (routeType === 'events') {
           return (
-            <>
+            <React.Fragment key={itemIndex}>
               <div className="mt-12">
                 <div
                   className={cx(
@@ -80,7 +81,8 @@ const Listing = ({ items, routeType }) => {
                       <h1
                         className={cx(
                           'text-2xl md:text-3xl font-bold tracking-tighter',
-                          'text-gray-200 dark:text-gray-800'
+                          'text-gray-200 dark:text-gray-800',
+                          'mt-0.5'
                         )}
                       >
                         {timestamp.event.date}
@@ -116,7 +118,11 @@ const Listing = ({ items, routeType }) => {
                           </div>
                           <p id="events--listing--info">
                             {!!seoDescription && (
-                              <span className={cx('prose pb-2')}>
+                              <span
+                                className={cx(
+                                  'prose pb-2 text-black dark:text-white'
+                                )}
+                              >
                                 {seoDescription}
                               </span>
                             )}
@@ -127,14 +133,10 @@ const Listing = ({ items, routeType }) => {
                   </div>
                 </div>
               </div>
-            </>
+            </React.Fragment>
           )
         } else {
-          return (
-            <>
-              <Link key={itemIndex} item={item} routeType={routeType} />
-            </>
-          )
+          return <Link key={itemIndex} item={item} routeType={routeType} />
         }
       })}
     </>

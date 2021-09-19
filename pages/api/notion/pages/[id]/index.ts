@@ -5,9 +5,11 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import { getCache, setCache } from '~lib/notion/getCache'
 import { normalizerContent } from '~lib/notion/getCatchAll'
 // import omitFields from '~lib/notion/omitFields'
+import avoidRateLimit from '~utils/avoidRateLimit'
 import { notion } from '~utils/notion/helper'
 
 const useCache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE
+// const useCache = false
 
 const notionPagesId = async (req: NextApiRequest, res: NextApiResponse) => {
   // console.dir(`notionPagesId`)
@@ -26,19 +28,17 @@ const notionPagesId = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   if (!data || data === undefined) {
+    await avoidRateLimit()
     const contentData = await notion.pages.retrieve({
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       page_id,
     })
-
     data = normalizerContent(contentData)
-
     /**
      * @cache post
      */
-    if (useCache) {
-      // console.dir(`*** useCache x1 ***`)
+    if (useCache && !!data) {
       const url = catchAll.join('/')
       // console.dir(url)
       const isCacheExists = await getCache(url)
