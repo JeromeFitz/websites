@@ -23,7 +23,8 @@ import getTimestamp from '~utils/getTimestamp'
 import { NotionBlock } from '~utils/notion'
 import getContentType from '~utils/notion/getContentType'
 
-const relationsMap = ['eventsLineupShowIds']
+const relationsMap = ['eventsLineupShowIds', 'tags']
+// const relationsMap = ['eventsLineupShowIds']
 
 const copy = {
   cta: {
@@ -80,8 +81,9 @@ const Event = ({ data: dataEvent }) => {
   })
 
   const { content, info } = dataEvent
-  const { data, slug } = info
+  const { data } = info
   const {
+    slug,
     title,
     date: { start: dateStart },
   } = data
@@ -95,6 +97,9 @@ const Event = ({ data: dataEvent }) => {
   const handleBuyClick = () => {
     // console.dir(`handleBuyClick`)
   }
+
+  // console.dir(`Event: data`)
+  // console.dir(data)
 
   return (
     <>
@@ -247,6 +252,7 @@ const Event = ({ data: dataEvent }) => {
             const ids = data[relationKey]
             const idsSize = _size(ids)
             const swrKey = `${slug}--${relationKey}`
+            // console.dir(`relationKey: ${relationKey}`)
             if (idsSize === 0) {
               return null
             } else {

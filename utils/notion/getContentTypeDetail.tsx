@@ -4,13 +4,14 @@ import { NotionText } from '~utils/notion'
 import TextAnnotations from '~utils/notion/TextAnnotations'
 
 const getContentTypeDetail = (content) =>
-  _map(content.text, (text: NotionText) => {
+  _map(content.text, (text: NotionText, textId) => {
     const { href, plain_text, annotations } = text
     return (
       <TextAnnotations
-        href={href}
-        plain_text={plain_text}
         annotations={annotations}
+        href={href}
+        key={`text-annotations--${textId}`}
+        plain_text={plain_text}
       />
     )
   })

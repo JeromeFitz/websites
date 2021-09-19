@@ -1,3 +1,4 @@
+import avoidRateLimit from '~utils/avoidRateLimit'
 import { notion, PROPERTIES } from '~utils/notion/helper'
 
 const mock: any = {
@@ -14,6 +15,7 @@ const getDatabasesByIdQuery = async ({
   sorts = mock.sorts,
   filter = mock.filter,
 }) => {
+  await avoidRateLimit()
   return await notion.databases.query({
     database_id: databaseId,
     sorts,

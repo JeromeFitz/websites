@@ -126,6 +126,7 @@ const TYPES = {
   podcasts: 'podcasts',
   seo: 'seo',
   shows: 'shows',
+  tags: 'tags',
   users: 'users',
   venues: 'venues',
 }
@@ -139,6 +140,8 @@ const DATABASES = {
   podcasts: '22e65a94-72eb-4fc0-abe2-b1f9da3e3433',
   seo: '810db8a2-71b6-4087-b61c-212bc81dbabe',
   shows: '2a8cf797-1eae-4dc4-991f-b6b5ac981f51',
+  tags: 'c5fc362f-b8cc-4593-a220-89c8974e9750',
+  // tag:   '60dd326d-687e-4e64-a49b-46bfba218ffb'
   users: 'ddfc7897-eb59-442e-a64e-578d8ae8bee9',
   venues: '8b3f4ae6-ecf7-48ad-8ae9-8b69528e2110',
 }
@@ -152,6 +155,7 @@ const SEO = {
   podcasts: '535c2582-ac66-4a6f-8216-6df092d4fbc2',
   seo: '',
   shows: '9e13be55-72c0-4964-b32e-f0ada3c9a082',
+  tags: '',
   users: '41500e18-d97d-406d-8ca5-42cece7dafb5',
   venues: 'd79444f6-8158-4bae-9b75-285e0b5f85b2',
 }
