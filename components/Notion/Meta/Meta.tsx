@@ -1,13 +1,15 @@
-import _filter from 'lodash/filter'
+// import cx from 'clsx'
+// import _filter from 'lodash/filter'
 import _map from 'lodash/map'
-import _orderBy from 'lodash/orderBy'
-import _size from 'lodash/size'
+// import _orderBy from 'lodash/orderBy'
+// import _size from 'lodash/size'
 import pluralize from 'pluralize'
+// import { useEffect, useState } from 'react'
+// import { useSWRConfig } from 'swr'
 
 import usePage from '~hooks/notion/usePage'
-import useRelation, { setRelation } from '~hooks/notion/useRelation'
 import getTitle from '~lib/notion/getTitle'
-import rangeMap from '~utils/rangeMap'
+// import rangeMap from '~utils/rangeMap'
 
 const LiGhost = () => (
   <div className="max-w-sm w-full mx-auto">
@@ -19,49 +21,65 @@ const LiGhost = () => (
   </div>
 )
 
-// @todo(react)
-//  Cannot update a component (`MetaHidden`) while
-//  rendering a different component(`MetaHidden`)
-const MetaHidden = ({ id }) => {
-  const { data: relations } = useRelation()
+// @hack(swr)
+const MetaSwr = ({ id }) => {
+  // const { mutate } = useSWRConfig()
   const { data, isError, isLoading } = usePage({ id })
-  if (isLoading || isError) return null
-  void setRelation(relations, data)
-  return null
+  // void mutate(`/api/notion/pages/${id}`)
+  if (isError || isLoading)
+    return (
+      <li>
+        <LiGhost />
+      </li>
+    )
+  return <li>{data?.data?.title}</li>
 }
 
 const Meta = ({ ids, swrKey, title }) => {
-  const { data: relations } = useRelation()
-  const data = _orderBy(
-    // @todo(any)
-    _filter(relations, (relation: any) => ids.includes(relation.id)),
-    ['data.title'],
-    ['asc']
-  )
+  // const { cache } = useSWRConfig()
+  // const [data, dataSet] = useState()
+  // const [hasData, hasDataSet] = useState(false)
+  // useEffect(() => {
+  //   console.dir(`useEffect: inbound`)
+  //   const dataPrep = {}
+  //   _map(ids, (id) => {
+  //     const dataGet = cache.get(`/api/notion/pages/${id}`)
+  //     if (!!dataGet) dataPrep[id] = dataGet
+  //   })
+  //   // @todo(any)
+  //   const dataGet: any = _orderBy(
+  //     _filter(dataPrep, (relation: any) => ids.includes(relation.id)),
+  //     ['data.title'],
+  //     ['asc']
+  //   )
+  //   dataSet(dataGet)
+  //   hasDataSet(!!dataGet && _size(dataGet) > 0)
+  //   // return () => {}
+  // }, [cache, ids])
 
   return (
     <div className="flex flex-col" id={`${swrKey}--container`}>
-      {/* @todo(react) */}
-      {_map(ids, (id) => (
-        <MetaHidden id={id} key={`hidden--${id}`} />
-      ))}
       <h5 className="font-semibold">{pluralize(getTitle(title), ids.length)}</h5>
-      <ul className="flex flex-col ">
-        {!!data || _size(data) > 0
-          ? // @todo(any)
-            _map(data, (relation: any) => (
-              <li id={`id--${relation.id}`} key={`id--${relation.id}`}>
-                {relation.data.title}
-              </li>
-            ))
-          : rangeMap(ids.length, (i) => {
-              return _size(data) > 0 ? (
-                <LiGhost key={`${swrKey}--${i}`} />
-              ) : (
-                <LiGhost key={`${swrKey}--${i}`} />
-              )
-            })}
+      <ul className="flex flex-col">
+        {_map(ids, (id) => (
+          <MetaSwr id={id} key={`swr-li--${swrKey}--${id}`} />
+        ))}
       </ul>
+      {/* <ul className="flex flex-col">
+        {rangeMap(ids.length, (id) => {
+          // console.dir(`rangeMap(${id})`)
+          return hasData && !!data && !!data[id] ? (
+            // <li key={`swr-visible--${swrKey}--${id}`}>{data[id]?.data?.title}</li>
+            <MetaSwr
+              id={data[id]}
+              key={`swr-visible--${swrKey}--${id}`}
+              visible={true}
+            />
+          ) : (
+            <LiGhost key={`swr-visible--${swrKey}----${id}`} />
+          )
+        })}
+      </ul> */}
     </div>
   )
 }

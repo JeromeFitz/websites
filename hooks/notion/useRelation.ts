@@ -1,25 +1,10 @@
-import useSWR, { mutate } from 'swr'
-
-import fetcher from '~lib/fetcher'
+import useSWR from 'swr'
 
 const key = 'relations'
 const initialStore = {}
 
-function useRelationPrep({ id }) {
-  const { data, error } = useSWR(() => `/api/notion/pages/${id}`, fetcher, {
-    revalidateOnFocus: false,
-  })
-
-  return {
-    data,
-    isError: error,
-    isLoading: !error && !data,
-    key,
-  }
-}
-
 function useRelation() {
-  const { data, error } = useSWR(key, {
+  const { data, error, mutate } = useSWR(key, {
     fallbackData: initialStore,
   })
 
@@ -28,12 +13,13 @@ function useRelation() {
     isError: error,
     isLoading: !error && !data,
     key,
+    mutate,
   }
 }
 
-const setRelation = async (data, value) => {
-  !!value && (await mutate(key, { ...data, [value.id]: value }, false))
-}
+// const setRelation = async (data, value) => {
+//   !!value && (await mutate(key, { ...data, [value.id]: value }, false))
+// }
 
-export { useRelationPrep, setRelation }
+// export { setRelation }
 export default useRelation

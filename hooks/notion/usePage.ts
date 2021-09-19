@@ -1,4 +1,5 @@
-import useSWR, { mutate } from 'swr'
+// import useSWR, { useSWRConfig } from 'swr'
+import useSWR from 'swr'
 
 import fetcher from '~lib/fetcher'
 
@@ -6,10 +7,13 @@ const key = 'pages'
 const initialStore = {}
 
 function usePage({ id }) {
-  const { data, error } = useSWR(() => `/api/notion/pages/${id}`, fetcher, {
+  // const { mutate } = useSWRConfig()
+  const { data, error } = useSWR(`/api/notion/pages/${id}`, fetcher, {
     fallbackData: initialStore,
-    revalidateOnFocus: false,
+    revalidateOnFocus: true,
   })
+  // console.dir(`mutate: ${!!data} (${id})`)
+  // !!data && mutate(`/api/notion/pages/${id}`)
 
   return {
     data,
@@ -19,9 +23,4 @@ function usePage({ id }) {
   }
 }
 
-const setPage = async (data, value) => {
-  !!value && (await mutate(key, { ...data, [value.id]: value }, false))
-}
-
-export { setPage }
 export default usePage

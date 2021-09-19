@@ -9,6 +9,7 @@ import {
   PhoneNumberPropertyValue,
   RelationProperty,
   RichTextPropertyValue,
+  // RollupPropertyValue,
   SelectPropertyValue,
   TitlePropertyValue,
   URLPropertyValue,
@@ -156,6 +157,7 @@ interface NormalizerProperties {
   showsPeopleProducer?: string[]
   showsPeopleThanks?: string[]
   showsPeopleWriter?: string[]
+  showsTags?: string[]
   /**
    * @relation @_PODCASTS
    *
@@ -260,8 +262,44 @@ const getTypeNumberNormalized = (data: NumberPropertyValue) => data?.number || n
 const getTypePhoneNumberNormalized = (data: PhoneNumberPropertyValue) =>
   data?.phone_number || null
 
-const getTypeRelationNormalized = (data: RelationProperty) =>
-  _map(data.relation, (relation: any) => relation.id)
+const getTypeRelationNormalized = (data: RelationProperty) => {
+  // console.dir(`getTypeRelationNormalized`)
+  // console.dir(data)
+  return _map(data.relation, (relation: any) => relation.id)
+  // if (data.type === 'rollup') {
+  //   // console.dir(`rollup`)
+  //   // console.dir(data.rollup.array)
+  //   // // @note(notion) This brings back the ID of the Relation
+  //   // const foo = _map(data.rollup.array, (item) =>
+  //   //   _map(item.type === 'relation' && item.relation, (relation: any) => relation.id)
+  //   // )[0]
+  //   // console.dir(foo)
+  //   return []
+  //   // return (
+  //   //   data.rollup.type === 'array' &&
+  //   //   _map(data.rollup.array, (relation: any) => relation.id)
+  //   // )
+  // } else {
+  //   return _map(data.relation, (relation: any) => relation.id)
+  // }
+}
+
+// const getTypeRollupNormalized = (data: RollupPropertyValue) => {
+//   return null
+//   // console.dir(`getTypeRollupNormalized x2`)
+//   // console.dir(data)
+//   // if (data?.type === 'rollup' && data?.rollup?.type === 'array') {
+//   //   const rollupData = data?.rollup?.array[0]
+//   //   const rollupType = rollupData.type
+//   //   switch (rollupType) {
+//   //     case 'multi_select':
+//   //       return getTypeMultiSelectNormalized(rollupData)
+//   //     // return null
+//   //     default:
+//   //       return null
+//   //   }
+//   // }
+// }
 
 const getTypeRichTextNormalized = (data: RichTextPropertyValue) =>
   // @todo(zeroArray)
@@ -279,9 +317,12 @@ const getTypeSelectNormalized = (data: SelectPropertyValue) => {
   }
 }
 
-const getTypeTitleNormalized = (data: TitlePropertyValue) =>
+const getTypeTitleNormalized = (data: TitlePropertyValue) => {
+  // console.dir(`getTypeTitleNormalized`)
+  // console.dir(data)
   // @todo(zeroArray)
-  data?.title[0]?.plain_text || null
+  return data?.title[0]?.plain_text || null
+}
 
 const getTypeUrlNormalized = (data: URLPropertyValue) => {
   return data.url || null
@@ -334,7 +375,9 @@ const normalizerProperties = (properties) => {
         data.festivals = getTypeMultiSelectNormalized(value)
         break
       case PROPERTIES.tags:
-        data.tags = getTypeMultiSelectNormalized(value)
+        // // data.tags = getTypeMultiSelectNormalized(value)
+        data.tags = getTypeRelationNormalized(value)
+        // data.tags = null
         break
       /**
        * @number
@@ -439,9 +482,12 @@ const normalizerProperties = (properties) => {
       case PROPERTIES.showsPeopleThanks:
         data.showsPeopleThanks = getTypeRelationNormalized(value)
         break
-        break
       case PROPERTIES.showsPeopleWriter:
         data.showsPeopleWriter = getTypeRelationNormalized(value)
+        break
+      case PROPERTIES.showsTags:
+        // data.showsTags = getTypeRollupNormalized(value)
+        data.showsTags = getTypeRelationNormalized(value)
         break
       /**
        * @relation @_PODCASTS
@@ -556,6 +602,7 @@ const normalizerProperties = (properties) => {
        * @title
        */
       case PROPERTIES.title:
+      case 'Name':
         data.title = getTypeTitleNormalized(value)
         break
       /**
