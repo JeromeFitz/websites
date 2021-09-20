@@ -95,7 +95,7 @@
   "devDependencies": {
     "@jeromefitz/codestyle": "3.0.2",
     "@jeromefitz/git-cz": "9.0.3",
-    "@jeromefitz/semantic": "3.0.1",
+    "@jeromefitz/semantic": "3.0.3",
     "@next/bundle-analyzer": "11.1.2",
     "@types/body-scroll-lock": "3.1.0",
     "@types/lodash": "4.14.173",
