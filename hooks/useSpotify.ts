@@ -1,4 +1,4 @@
-import useSWR, { mutate } from 'swr'
+import useSWR from 'swr'
 
 const key = 'spotify'
 const initialStore = {
@@ -12,25 +12,26 @@ const initialStore = {
 }
 
 function useSpotify() {
-  const { data, error } = useSWR(key, {
+  const { data, error, mutate } = useSWR(key, {
     fallbackData: initialStore,
   })
+
+  const setSpotifyLimit = async (data, value) => {
+    await mutate({ ...data, limit: value })
+  }
+
+  const setSpotifyTimeRange = async (data, value) => {
+    await mutate({ ...data, time_range: value })
+  }
 
   return {
     data,
     isError: error,
     isLoading: !error && !data,
     key,
+    setSpotifyLimit,
+    setSpotifyTimeRange,
   }
 }
 
-const setSpotifyLimit = async (data, value) => {
-  await mutate(key, { ...data, limit: value }, false)
-}
-
-const setSpotifyTimeRange = async (data, value) => {
-  await mutate(key, { ...data, time_range: value }, false)
-}
-
-export { setSpotifyLimit, setSpotifyTimeRange }
 export default useSpotify

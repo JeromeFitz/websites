@@ -5,7 +5,7 @@ import _map from 'lodash/map'
 // import _size from 'lodash/size'
 import pluralize from 'pluralize'
 // import { useEffect, useState } from 'react'
-// import { useSWRConfig } from 'swr'
+import { useSWRConfig } from 'swr'
 
 import usePage from '~hooks/notion/usePage'
 import getTitle from '~lib/notion/getTitle'
@@ -36,7 +36,9 @@ const MetaSwr = ({ id }) => {
 }
 
 const Meta = ({ ids, swrKey, title }) => {
-  // const { cache } = useSWRConfig()
+  const { cache } = useSWRConfig()
+  console.dir(`cache`)
+  console.dir(cache)
   // const [data, dataSet] = useState()
   // const [hasData, hasDataSet] = useState(false)
   // useEffect(() => {

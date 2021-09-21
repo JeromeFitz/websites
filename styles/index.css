@@ -30,6 +30,10 @@
 * @note layer/base seems to only work as last and in root :X
 **/
 @layer base {
+  .events #relations--container #relations--container--shows {
+    display: none !important;
+  }
+
   p em,
   p s,
   p strong,
