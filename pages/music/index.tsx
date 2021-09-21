@@ -14,7 +14,7 @@ import Title from '~components/Notion/Title'
 import Seo from '~components/Seo'
 import SplitText from '~components/SplitText'
 import { useUI } from '~context/ManagedUIContext'
-import useSpotify, { setSpotifyTimeRange } from '~hooks/useSpotify'
+import useSpotify from '~hooks/useSpotify'
 import { MOTION_PAGE_VARIANTS, WEBKIT_BACKGROUND } from '~lib/constants'
 /**
  * @todo Move this away from here, and lib/spotify (process.env)
@@ -54,7 +54,7 @@ export const TIME_RANGE: TIME_RANGE_PROPS = {
 }
 
 const Music = () => {
-  const { data } = useSpotify()
+  const { data, setSpotifyTimeRange } = useSpotify()
   const { audio } = useUI()
   const [playOn] = useSound('/static/audio/pop-up-on.mp3', {
     soundEnabled: audio,
@@ -78,6 +78,7 @@ const Music = () => {
   }
 
   const handleSpotifyTimeRange = async (value) => {
+    playOn()
     await setSpotifyTimeRange(data, value)
   }
 
@@ -156,7 +157,6 @@ const Music = () => {
                             name={name}
                             // onChange={preserveHandleChange}
                             onChange={() => {
-                              playOn()
                               void handleSpotifyTimeRange(timeRange.value)
                             }}
                             type="radio"

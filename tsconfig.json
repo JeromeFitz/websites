@@ -20,7 +20,8 @@
     },
     "noUnusedParameters": false, // @todo(lint)
     "rootDir": ".",
-    "strict": false
+    "strict": false,
+    "incremental": true
   },
   "extends": "@jeromefitz/codestyle/tsconfig.react.json",
   "include": [

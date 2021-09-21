@@ -5,7 +5,7 @@ import useSWR from 'swr'
 
 import Seo from '~components/Seo'
 import { MOTION_PAGE_VARIANTS } from '~lib/constants'
-const Layout = ({ id, children, data, url }) => {
+const Layout = ({ id, children, data, routeType, url }) => {
   const slugger = new Slugger()
   const { data: images } = useSWR('images')
 
@@ -55,7 +55,7 @@ const Layout = ({ id, children, data, url }) => {
         exit="exit"
         variants={MOTION_PAGE_VARIANTS}
         transition={{ delay: 0.25, duration: 1, type: 'linear' }}
-        className={cx('flex flex-col')}
+        className={cx(routeType, 'flex flex-col')}
       >
         {children}
       </motion.div>
