@@ -7,6 +7,9 @@
     "email": "j@jeromefitzgerald.com",
     "url": "https://jeromefitzgerald.com"
   },
+  "engines": {
+    "node": ">=14"
+  },
   "license": "MIT",
   "scripts": {
     "analyze": "BUNDLE_ANALYZE=both yarn build",
