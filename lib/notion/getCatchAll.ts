@@ -648,6 +648,16 @@ const normalizerContent = (data) => {
   return normalizedData
 }
 
+const normalizerContentResults = (results) => {
+  const normalizedResults = results
+  _map(results, (result, index) => {
+    const normalizedResult = _omit(result, 'properties')
+    normalizedResult.data = normalizerProperties(result?.properties)
+    normalizedResults[index] = normalizedResult
+  })
+  return normalizedResults
+}
+
 // @todo(next) preview
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const getCatchAll = async ({ cache = false, catchAll, clear, preview }) => {
@@ -969,5 +979,5 @@ const getCatchAll = async ({ cache = false, catchAll, clear, preview }) => {
   return data
 }
 
-export { normalizerContent }
+export { normalizerContent, normalizerContentResults }
 export default getCatchAll
