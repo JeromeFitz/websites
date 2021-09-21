@@ -10,11 +10,12 @@ import _isBefore from 'date-fns/isBefore'
 import _parseISO from 'date-fns/parseISO'
 import { motion } from 'framer-motion'
 import _map from 'lodash/map'
-import _size from 'lodash/size'
 import { useState } from 'react'
 import { useMount } from 'react-use'
 
-import Meta from '~components/Notion/Meta'
+// import Meta, { MetaTags } from '~components/Notion/Meta'
+// import Meta from '~components/Notion/Meta'
+import Relations from '~components/Notion/Relations'
 // import usePage from '~hooks/notion/usePage'
 // import useRelation, { setRelation } from '~hooks/notion/useRelation'
 import FacebookIcon from '~styles/icons/Facebook'
@@ -23,7 +24,7 @@ import getTimestamp from '~utils/getTimestamp'
 import { NotionBlock } from '~utils/notion'
 import getContentType from '~utils/notion/getContentType'
 
-const relationsMap = ['eventsLineupShowIds', 'tags']
+const relationsMap = ['shows', 'eventsLineupShowIds']
 // const relationsMap = ['eventsLineupShowIds']
 
 const copy = {
@@ -81,12 +82,12 @@ const Event = ({ data: dataEvent }) => {
   })
 
   const { content, info } = dataEvent
-  const { data } = info
+  const { id, data: properties } = info
   const {
     slug,
     title,
     date: { start: dateStart },
-  } = data
+  } = properties
 
   const timestamp = getTimestamp(dateStart)
   const addressFormat = `${copy.venue.address.street}`
@@ -98,11 +99,20 @@ const Event = ({ data: dataEvent }) => {
     // console.dir(`handleBuyClick`)
   }
 
-  // console.dir(`Event: data`)
-  // console.dir(data)
+  // console.dir(`Event: properties`)
+  // console.dir(properties)
+
+  /**
+   * @tags
+   */
+  // const tagParams = `events=${info?.id}&shows=${info.data.shows.join(
+  //   ','
+  // )}&eventsLineupShowIds=${info.data.eventsLineupShowIds.join(',')}`
 
   return (
     <>
+      {/* @hack(notion) */}
+      {/* <MetaTags tagParams={tagParams} /> */}
       <div id="event--container" className={cx('w-11/12 md:w-full', 'my-4')}>
         <div id="event--header" className={cx('')}>
           <div id="event--header--content">
@@ -244,29 +254,14 @@ const Event = ({ data: dataEvent }) => {
       </div>
       {/* @hack(notion) */}
       {!!relationsMap && (
-        <div
-          id="container--people"
-          className={cx('grid', 'grid-cols-2 gap-3', 'md:grid-cols-3 md:gap-4')}
-        >
-          {_map(relationsMap, (relationKey) => {
-            const ids = data[relationKey]
-            const idsSize = _size(ids)
-            const swrKey = `${slug}--${relationKey}`
-            // console.dir(`relationKey: ${relationKey}`)
-            if (idsSize === 0) {
-              return null
-            } else {
-              return (
-                <Meta
-                  ids={ids}
-                  key={`${slug}--${relationKey}--container`}
-                  swrKey={`/${swrKey}`.toLowerCase()}
-                  title={relationKey}
-                />
-              )
-            }
-          })}
-        </div>
+        <Relations
+          id={id}
+          isIndex={false}
+          properties={properties}
+          relationsMap={['shows', 'eventsLineupShowIds']}
+          routeType={'events'}
+          slug={slug}
+        />
       )}
       <div
         id="event--content--mobile--cta"

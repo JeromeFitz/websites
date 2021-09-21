@@ -1,24 +1,15 @@
 import cx from 'clsx'
 import _map from 'lodash/map'
 import _size from 'lodash/size'
+// import { useSWRConfig } from 'swr'
 
-import Meta from '~components/Notion/Meta'
-
-const relationsMap = [
-  'peopleCast',
-  'peopleWriter',
-  'peopleProducer',
-  'peopleDirector',
-  'peopleDirectorMusical',
-  'peopleMusic',
-  'peopleDirectorTechnical',
-  'peopleCrew',
-  'peopleHost',
-  'peopleThanks',
-]
+import { MetaRelations } from '~components/Notion/Meta'
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const Relations = ({ isIndex, properties, routeType, slug }) => {
+const Relations = ({ id, isIndex, properties, relationsMap, routeType, slug }) => {
+  // const { cache } = useSWRConfig()
+  // console.dir(`cache`)
+  // console.dir(cache)
   // @hack(notion)
   const hasRelations = !isIndex && !!relationsMap
   if (!hasRelations) {
@@ -27,22 +18,21 @@ const Relations = ({ isIndex, properties, routeType, slug }) => {
 
   return (
     <div
-      id="container--relations"
+      id="relations--container"
       className={cx('grid', 'grid-cols-2 gap-3', 'md:grid-cols-3 md:gap-4')}
     >
       {_map(relationsMap, (relationKey) => {
         const ids = properties[relationKey]
-        const idsSize = _size(ids)
-        const swrKey = `${slug}--${relationKey}`
-        if (idsSize === 0) {
+        if (_size(ids) === 0) {
           return null
         } else {
           return (
-            <Meta
+            <MetaRelations
+              id={id}
               ids={ids}
-              key={`${slug}--${relationKey}--container`}
-              swrKey={`/${swrKey}`.toLowerCase()}
-              title={relationKey}
+              key={`relations--${id}--${relationKey.toLowerCase()}`}
+              relationKey={relationKey}
+              routeType={routeType}
             />
           )
         }

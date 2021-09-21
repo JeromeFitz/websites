@@ -5,9 +5,9 @@ import useSWR, { useSWRConfig } from 'swr'
 
 import NotionLayout, { ImageLead } from '~components/Notion/Layout'
 import Listing from '~components/Notion/Listing'
+import { MetaTags } from '~components/Notion/Meta'
 import { Event } from '~components/Notion/Page'
 import Relations from '~components/Notion/Relations'
-import Tags from '~components/Notion/Tags'
 import Title from '~components/Notion/Title'
 import { NotionBlock } from '~utils/notion'
 import getContentType from '~utils/notion/getContentType'
@@ -46,6 +46,9 @@ const Page = ({ data, props }) => {
   const { icon, id, data: properties } = isInfoObjectPage ? info : info.results[0]
   const emoji = !!icon?.emoji ? icon.emoji : ''
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { tags, title } = properties
 
   // console.dir(`properties`)
@@ -56,18 +59,35 @@ const Page = ({ data, props }) => {
 
   // @todo(switch)
 
+  /**
+   * @tags
+   */
+  let tagParams
+  switch (routeType) {
+    case 'events':
+      tagParams = `events=${id || ''}&shows=${
+        info?.data?.shows?.join(',') || ''
+      }&eventsLineupShowIds=${info?.data?.eventsLineupShowIds?.join(',') || ''}`
+      break
+    case 'shows':
+      tagParams = `shows=${id || ''}`
+      break
+    default:
+      break
+  }
+
   return (
     <>
       {/* Template Content */}
       <Title emoji={emoji} id={id} title={title} />
       {/* Breadcrumb Content */}
       {/* {!isIndex && <Breadcrumb title={title} />} */}
-      <NotionLayout id={id} data={properties} url={url}>
+      <NotionLayout id={id} data={properties} routeType={routeType} url={url}>
         <ImageLead
           description={properties?.seoImageDescription}
           image={properties?.seoImage}
         />
-        <Tags data={tags} />
+        {!!tagParams && <MetaTags tagParams={tagParams} />}
         {/* Dynamic */}
         {/* Content */}
         {/* @todo(key) */}
@@ -84,8 +104,21 @@ const Page = ({ data, props }) => {
         {isIndex && !isPage && <Listing items={items} routeType={routeType} />}
         {/* {isEvent && showId && <Meta id={showId} />} */}
         <Relations
+          id={id}
           isIndex={isIndex}
           properties={properties}
+          relationsMap={[
+            'peopleCast',
+            'peopleHost',
+            'peopleWriter',
+            'peopleProducer',
+            'peopleDirector',
+            'peopleDirectorMusical',
+            'peopleMusic',
+            'peopleDirectorTechnical',
+            'peopleCrew',
+            'peopleThanks',
+          ]}
           routeType={routeType}
           slug={slug}
         />
