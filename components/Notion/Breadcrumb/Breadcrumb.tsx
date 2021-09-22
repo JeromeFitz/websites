@@ -10,10 +10,11 @@ import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 import { useRef } from 'react'
 
-import Avatar from '~components/Avatar'
+// import Avatar from '~components/Avatar'
 import useSticky from '~hooks/useSticky'
 import { WEBKIT_BACKGROUND__BREAK } from '~lib/constants'
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Breadcrumb = ({ isIndex, title }) => {
   const router = useRouter()
 
@@ -36,11 +37,12 @@ const Breadcrumb = ({ isIndex, title }) => {
       <motion.nav
         aria-label="breadcrumb"
         className={cx(
-          `flex flex-row sticky top-0 items-center mb-0.5`,
+          `flex flex-row sticky top-0 items-center`,
           `overflow-hidden`, // `bg-blur bg-opacity-50 dark:bg-opacity-50`,
           `z-10`,
           `bg-white dark:bg-black`,
           isFix && 'py-2 border-b border-black dark:border-white',
+          `py-4`,
           ``
         )}
         ref={stickyRef}
@@ -53,9 +55,9 @@ const Breadcrumb = ({ isIndex, title }) => {
         //   display: isFix ? 'none' : 'block',
         // }}
       >
-        <span className="flex-inline">
+        {/* <span className="flex-inline">
           <Avatar name={title} />
-        </span>
+        </span> */}
         <motion.ol
           className={cx(
             'flex-inline flex flex-row',
@@ -73,7 +75,8 @@ const Breadcrumb = ({ isIndex, title }) => {
             <NextLink as={'/'} href={'/'}>
               {/* {isFix ? <HomeIcon className="h-5 w-5 " /> : isIndex ? title : ''} */}
               {!isFix && isHomepage ? (
-                'Jerome Fitzgerald'
+                // 'Jerome Fitzgerald'
+                ''
               ) : (
                 <HomeIcon className="h-5 w-5 " />
               )}
@@ -148,7 +151,7 @@ const Breadcrumb = ({ isIndex, title }) => {
             }}
             transition={{ duration: 0.125 }}
           >
-            {isIndex ? '' : title}
+            {isHomepage ? 'Jerome Fitzgerald' : title}
           </motion.h3>
           <div className="spacer bg-gray-600 dark:bg-gray-300" />
         </>

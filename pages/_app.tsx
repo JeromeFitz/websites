@@ -11,7 +11,8 @@ import pluralize from 'pluralize'
 import { FC, useEffect } from 'react'
 import { SWRConfig } from 'swr'
 
-import { Header } from '~components/Layout'
+// import { Header } from '~components/Layout'
+import Navigation from '~components/Notion/Navigation'
 import NProgress from '~components/NProgress'
 import { ManagedUIContext } from '~context/ManagedUIContext'
 import NotificationProvider from '~context/Notification'
@@ -48,7 +49,8 @@ export default function MyApp({ Component, pageProps, router }: AppProps) {
           <ManagedUIContext>
             <NotificationProvider>
               <Layout pageProps={pageProps}>
-                <Header />
+                {/* <Header /> */}
+                <Navigation />
                 {/* <AnimatePresence
                 exitBeforeEnter
                 initial={false}

@@ -6,7 +6,7 @@ import { memo } from 'react'
 import _title from 'title'
 import { useSound } from 'use-sound'
 
-import Avatar from '~components/Avatar'
+// import Avatar from '~components/Avatar'
 import links from '~config/navigation'
 import { useUI } from '~context/ManagedUIContext'
 import isActiveLink from '~utils/isActiveLink'
@@ -26,10 +26,9 @@ const Item = ({ link }) => {
     >
       <NextLink href={link.href} key={`nav-link-${link.title}`}>
         <a className="cursor-pointer" onClick={() => play()}>
-          <motion.span className={cx(isActive ? 'grayscale-10' : 'grayscale')}>
+          {/* <motion.span className={cx(isActive ? 'grayscale-10' : 'grayscale')}>
             <Avatar name={linkTitle} margin={true} />
-          </motion.span>
-
+          </motion.span> */}
           {linkTitle}
           {isActive && (
             <motion.div

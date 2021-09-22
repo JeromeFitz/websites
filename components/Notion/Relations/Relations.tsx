@@ -20,7 +20,7 @@ const Relations = ({ id, isIndex, properties, relationsMap, routeType, slug }) =
   return (
     <div
       id="relations--container"
-      className={cx('grid', 'grid-cols-2 gap-3', 'md:grid-cols-3 md:gap-4')}
+      className={cx('grid', 'grid-cols-2 gap-3', 'md:grid-cols-3 md:gap-4', 'mb-12')}
     >
       {_map(relationsMap, (relationKey) => {
         const ids = properties[relationKey]
