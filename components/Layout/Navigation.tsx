@@ -6,12 +6,12 @@ import { memo } from 'react'
 import _title from 'title'
 import { useSound } from 'use-sound'
 
-import Avatar from '~components/Avatar'
+// import Avatar from '~components/Avatar'
 import links from '~config/navigation'
 import { useUI } from '~context/ManagedUIContext'
 import isActiveLink from '~utils/isActiveLink'
 
-const Item = ({ link }) => {
+const Item = ({ handleClick, link }) => {
   const router = useRouter()
   const { audio } = useUI()
   const [play] = useSound('/static/audio/menu-open.mp3', {
@@ -22,14 +22,20 @@ const Item = ({ link }) => {
   const isActive = isActiveLink(link, router)
   return (
     <motion.li
-    // layout="position"
+      className="mr-1.5 md:mr-3"
+      // layout="position"
     >
       <NextLink href={link.href} key={`nav-link-${link.title}`}>
-        <a className="cursor-pointer" onClick={() => play()}>
-          <motion.span className={cx(isActive ? 'grayscale-10' : 'grayscale')}>
+        <a
+          className="cursor-pointer"
+          onClick={() => {
+            handleClick()
+            play()
+          }}
+        >
+          {/* <motion.span className={cx(isActive ? 'grayscale-10' : 'grayscale')}>
             <Avatar name={linkTitle} margin={true} />
-          </motion.span>
-
+          </motion.span> */}
           {linkTitle}
           {isActive && (
             <motion.div
@@ -49,17 +55,19 @@ const Item = ({ link }) => {
 
 const ItemMemo = memo(Item)
 
-const Navigation = () => {
+const Navigation = ({ handleClick }) => {
   return (
     <>
       <AnimateSharedLayout>
-        <nav className={cx('flex flex-col md:flex-row')}>
-          <ul>
+        <nav className={cx('flex flex-row')}>
+          <ul className="justify-between">
             {links.map((link, linkIndex) => {
               if (!link.active) {
                 return null
               }
-              return <ItemMemo key={linkIndex} link={link} />
+              return (
+                <ItemMemo handleClick={handleClick} key={linkIndex} link={link} />
+              )
             })}
           </ul>
         </nav>

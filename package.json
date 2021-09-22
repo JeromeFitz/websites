@@ -38,7 +38,7 @@
     "@heroicons/react": "1.0.4",
     "@notionhq/client": "0.3.2",
     "@plaiceholder/next": "2.1.0",
-    "@plaiceholder/tailwindcss": "2.1.0",
+    "@plaiceholder/tailwindcss": "^2.1.0",
     "@reach/alert": "0.16.0",
     "@reach/auto-id": "0.16.0",
     "@reach/portal": "0.16.0",

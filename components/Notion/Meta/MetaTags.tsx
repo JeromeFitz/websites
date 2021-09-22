@@ -16,7 +16,10 @@ const MetaTags = ({ tagParams }) => {
   const isLoading = !error && !data
   if (isError || isLoading)
     return (
-      <ul key="tagsKeyDog" className={cx('mb-5 flex flex-row flex-wrap gap-2.5')}>
+      <ul
+        key="tagsKeyDog"
+        className={cx('mt-0 mb-4 flex flex-row flex-wrap gap-2.5')}
+      >
         <li className={cx('badge badge-ghost w-16')} />
       </ul>
     )
@@ -25,13 +28,16 @@ const MetaTags = ({ tagParams }) => {
 
   return (
     // <MetaUL title={title}>
-    <ul key="tagsKeyDog" className={cx('mb-5 flex flex-row flex-wrap gap-2.5')}>
+    <ul key="tagsKeyDog" className={cx('mt-0 mb-4 flex flex-row flex-wrap gap-2.5')}>
       {_map(data?.results, (item) => (
         <li
           className={cx(
             `badge`,
-            !!item?.data?.tailwindColorBackground &&
-              `badge-${item?.data?.tailwindColorBackground}`
+            // !!item?.data?.tailwindColorBackground &&
+            //   `badge-${item?.data?.tailwindColorBackground}`
+            `bg-black text-white`,
+            `dark:bg-white dark:text-black`,
+            ``
           )}
           key={item?.id}
         >

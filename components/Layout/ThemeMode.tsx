@@ -61,8 +61,8 @@ const AppThemeToggle = () => {
 
   const darkModeActive = theme === 'dark'
   const handleClick = () => {
-    playBleep()
     setTheme(theme === 'light' ? 'dark' : 'light')
+    playBleep()
   }
   return (
     <motion.button
@@ -93,7 +93,7 @@ const AppThemeToggle = () => {
 
 const ThemeMode = () => {
   return (
-    <div className="flex flex-row">
+    <div className="flex flex-row float-right">
       <AppSoundToggle />
       <AppThemeToggle />
     </div>

@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-const _pick = require('lodash/pick')
+// const _pick = require('lodash/pick')
 const colorsTailwind = require('tailwindcss/colors')
 const {
   backgroundImage,
@@ -21,10 +20,10 @@ const themeColors = colorsTailwind
 //   'violet',
 // ])
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function px(pixels) {
-  return `${pixels / 16}rem`
-}
+// // eslint-disable-next-line @typescript-eslint/no-unused-vars
+// function px(pixels) {
+//   return `${pixels / 16}rem`
+// }
 
 module.exports = {
   darkMode: 'class',
@@ -98,11 +97,11 @@ module.exports = {
       //
       black: {
         DEFAULT: 'var(--black)',
-        // ...colors.black,
+        // // ...colors.black,
       },
       white: {
         DEFAULT: 'var(--white)',
-        // ...colors.white,
+        // // ...colors.white,
       },
       info: {
         DEFAULT: 'var(--accents-8)',
@@ -130,13 +129,13 @@ module.exports = {
       },
       ...colors,
       ...themeColors,
-      // black: colors.black,
-      // white: colors.white,
-      // gray: colors.coolGray,
-      // red: colors.red,
-      // yellow: colors.amber,
-      // blue: colors.blue,
-      // pink: colors.pink,
+      // // black: colors.black,
+      // // white: colors.white,
+      // // gray: colors.coolGray,
+      // // red: colors.red,
+      // // yellow: colors.amber,
+      // // blue: colors.blue,
+      // // pink: colors.pink,
     },
     // textColor: {
     //   base: 'var(--text-base)',
@@ -186,6 +185,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['Inter', ...fontFamily.sans],
+        // sans: ['Inter'],
       },
       lineHeight: {
         'leading-tighter': '1.125',
@@ -269,6 +269,7 @@ module.exports = {
     require('@tailwindcss/typography'),
     require('@tailwindcss/aspect-ratio'),
     require('tailwind-underline-utils'),
-    require('@plaiceholder/tailwindcss'),
+    // require('@plaiceholder/tailwindcss'),
+    require('./patches/@plaiceholder/tailwindcss/dist/plugin'),
   ],
 }

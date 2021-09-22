@@ -18,7 +18,7 @@ const ImageLead = ({ description, image }) => {
   }
 
   return (
-    <div className="w-2/3 mx-auto">
+    <div className="w-2/3 mx-auto py-4 mt-4">
       <Image
         alt={description}
         blurDataURL={imageData?.base64}

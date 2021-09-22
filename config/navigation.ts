@@ -1,9 +1,9 @@
 // const isDev = false
-const isDev = process.env.NODE_ENV !== 'production'
+// const isDev = process.env.NODE_ENV !== 'production'
 
 const navigation = [
-  { active: true, href: '/', title: 'home', titleMobile: 'home' },
-  { active: isDev, href: '/blog', title: 'blog', titleMobile: 'blog' },
+  { active: false, href: '/', title: 'home', titleMobile: 'home' },
+  { active: false, href: '/blog', title: 'blog', titleMobile: 'blog' },
   { active: false, href: '/comedy', title: 'comedy', titleMobile: 'comedy' },
   {
     active: true,
@@ -22,13 +22,13 @@ const navigation = [
   { active: true, href: '/podcasts', title: 'podcasts', titleMobile: 'podcasts' },
   { active: false, href: '/venues', title: 'venues', titleMobile: 'venues' },
   {
-    active: isDev,
+    active: false,
     href: '/playground',
     title: 'p',
     titleMobile: 'p',
   },
   {
-    active: isDev,
+    active: false,
     href: '/events/2020',
     title: 'e',
     titleMobile: 'e',

@@ -9,13 +9,14 @@ import { useSound } from 'use-sound'
 import ExternalLink from '~components/Dynamic/ext-link'
 import Layout from '~components/Layout'
 import { TopArtists, TopTracks } from '~components/Music'
+import Breadcrumb from '~components/Notion/Breadcrumb'
 import Emoji from '~components/Notion/Emoji'
-import Title from '~components/Notion/Title'
+// import Title from '~components/Notion/Title'
 import Seo from '~components/Seo'
 import SplitText from '~components/SplitText'
 import { useUI } from '~context/ManagedUIContext'
 import useSpotify from '~hooks/useSpotify'
-import { MOTION_PAGE_VARIANTS, WEBKIT_BACKGROUND } from '~lib/constants'
+import { MOTION_PAGE_VARIANTS, WEBKIT_BACKGROUND__BREAK } from '~lib/constants'
 /**
  * @todo Move this away from here, and lib/spotify (process.env)
  */
@@ -85,7 +86,8 @@ const Music = () => {
   return (
     <Layout>
       <Seo {...seo} />
-      <Title emoji={`🎹️`} id="page-music" title={title} />
+      {/* <Title emoji={`🎹️`} id="page-music" title={title} /> */}
+      <Breadcrumb isIndex={true} title={title} />
       <motion.div
         key={`page-music`}
         initial="hidden"
@@ -95,24 +97,23 @@ const Music = () => {
         transition={{ delay: 0.25, duration: 1, type: 'linear' }}
         className={cx('flex flex-col')}
       >
-        <h2 style={WEBKIT_BACKGROUND}>{description}</h2>
+        <h2 style={WEBKIT_BACKGROUND__BREAK}>{description}</h2>
         <div id="content">
-          <div className="mb-4">
-            <p className="my-4 text-sm">
-              <Emoji character={`📝️`} margin={true} />
-              <span className="italic font-bold mr-1">Note:</span>
-              Links will open in, and all data comes from,{' '}
-              <span className="text-green-800 dark:text-green-400 font-medium ml-1.5">
-                Spotify
-              </span>
-              .
-            </p>
-            <p className="prose font-medium">
-              Please support artists by purchasing music, especially local and indie.
-              <br />
-              Go to shows (when we can again).
-            </p>
-          </div>
+          <p className="my-4 text-sm">
+            <Emoji character={`📝️`} margin={true} />
+            <span className="italic font-bold mr-1">Note:</span>
+            Links will open in, and all data comes from,{' '}
+            <span className="text-green-800 dark:text-green-400 font-medium ml-1.5">
+              Spotify
+            </span>
+            .
+          </p>
+          <p className="prose font-medium">
+            Please support artists by purchasing music, especially local and indie.
+            <br />
+            Go to shows (when we can again).
+          </p>
+
           <div
             className={cx(
               'flex flex-col md:flex-row',
@@ -182,7 +183,7 @@ const Music = () => {
             </div>
           </div>
           <div className="my-4 md:my-6">
-            <h2 aria-label="Top Artists" style={WEBKIT_BACKGROUND}>
+            <h2 aria-label="Top Artists" style={WEBKIT_BACKGROUND__BREAK}>
               <SplitText splitBy="letter" text="Top Artists" />
             </h2>
             <div className="flex flex-col md:flex-row w-full items-start justify-between">
@@ -201,7 +202,7 @@ const Music = () => {
             <TopArtists />
           </div>
           <div className="my-8">
-            <h2 aria-label="Top Tracks" style={WEBKIT_BACKGROUND}>
+            <h2 aria-label="Top Tracks" style={WEBKIT_BACKGROUND__BREAK}>
               <SplitText splitBy="letter" text="Top Tracks" />
             </h2>
             <p className="mb-6 md:mb-8 leading-relaxed">

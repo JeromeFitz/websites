@@ -1343,7 +1343,7 @@
   resolved "https://registry.yarnpkg.com/@plaiceholder/next/-/next-2.1.0.tgz#0bf2dff97b3f2208be3d88a3162013794ccc0745"
   integrity sha512-7iTw4Oxh0eLkAZnAl5zNkwnXjzhn3WSuuPIsGe9EszLa01eLv/vFwnG7etnX5hKNWhQ48x9vM/smltrfF3DTQw==
 
-"@plaiceholder/tailwindcss@2.1.0":
+"@plaiceholder/tailwindcss@^2.1.0":
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/@plaiceholder/tailwindcss/-/tailwindcss-2.1.0.tgz#1132499d79e5b314156b8de570a2bef942577990"
   integrity sha512-u+a8p9BhkMC2kGpTT+UOHCHeO29bKwpGh+fAzlD8w1PBbhlqLC5K1wAogqbQvxz4CEZghPj/aVXrWXpT69JhWA==

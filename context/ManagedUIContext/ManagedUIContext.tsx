@@ -2,23 +2,25 @@ import { ThemeProvider } from 'next-themes'
 import React, { FC, useMemo } from 'react'
 
 export interface State {
-  displaySidebar: boolean
+  audio: boolean
   displayDropdown: boolean
   displayModal: boolean
+  displayNavigation: boolean
   displayNotification: boolean
+  displaySidebar: boolean
   modalView: string
   notificationText: string
-  audio: boolean
 }
 
 const initialState = {
-  displaySidebar: false,
+  audio: false,
   displayDropdown: false,
   displayModal: false,
-  modalView: 'LOGIN_VIEW',
+  displayNavigation: false,
   displayNotification: false,
+  displaySidebar: false,
+  modalView: 'LOGIN_VIEW',
   notificationText: '',
-  audio: true,
 }
 
 type Action =
@@ -49,6 +51,12 @@ type Action =
     }
   | {
       type: 'CLOSE_MODAL'
+    }
+  | {
+      type: 'OPEN_NAVIGATION'
+    }
+  | {
+      type: 'CLOSE_NAVIGATION'
     }
   | {
       type: 'SET_MODAL_VIEW'
@@ -104,6 +112,18 @@ function uiReducer(state: State, action: Action) {
       return {
         ...state,
         displayModal: false,
+      }
+    }
+    case 'OPEN_NAVIGATION': {
+      return {
+        ...state,
+        displayNavigation: true,
+      }
+    }
+    case 'CLOSE_NAVIGATION': {
+      return {
+        ...state,
+        displayNavigation: false,
       }
     }
     case 'OPEN_TOAST': {
@@ -163,6 +183,9 @@ export const UIProvider: FC = (props) => {
   const openModal = () => dispatch({ type: 'OPEN_MODAL' })
   const closeModal = () => dispatch({ type: 'CLOSE_MODAL' })
 
+  const openNavigation = () => dispatch({ type: 'OPEN_NAVIGATION' })
+  const closeNavigation = () => dispatch({ type: 'CLOSE_NAVIGATION' })
+
   const openNotification = () => dispatch({ type: 'OPEN_TOAST' })
   const closeNotification = () => dispatch({ type: 'CLOSE_TOAST' })
 
@@ -180,11 +203,13 @@ export const UIProvider: FC = (props) => {
       ...state,
       closeDropdown,
       closeModal,
+      closeNavigation,
       closeNotification,
       closeSidebar,
       closeSidebarIfPresent,
       openDropdown,
       openModal,
+      openNavigation,
       openNotification,
       openSidebar,
       setModalView,

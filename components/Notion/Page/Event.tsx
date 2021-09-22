@@ -15,7 +15,7 @@ import { useMount } from 'react-use'
 
 // import Meta, { MetaTags } from '~components/Notion/Meta'
 // import Meta from '~components/Notion/Meta'
-import Relations from '~components/Notion/Relations'
+// import Relations from '~components/Notion/Relations'
 // import usePage from '~hooks/notion/usePage'
 // import useRelation, { setRelation } from '~hooks/notion/useRelation'
 import FacebookIcon from '~styles/icons/Facebook'
@@ -24,8 +24,8 @@ import getTimestamp from '~utils/getTimestamp'
 import { NotionBlock } from '~utils/notion'
 import getContentType from '~utils/notion/getContentType'
 
-const relationsMap = ['shows', 'eventsLineupShowIds']
-// const relationsMap = ['eventsLineupShowIds']
+// const relationsMap = ['shows', 'eventsLineupShowIds']
+// // const relationsMap = ['eventsLineupShowIds']
 
 const copy = {
   cta: {
@@ -82,8 +82,14 @@ const Event = ({ data: dataEvent }) => {
   })
 
   const { content, info } = dataEvent
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { id, data: properties } = info
   const {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     slug,
     title,
     date: { start: dateStart },
@@ -253,16 +259,20 @@ const Event = ({ data: dataEvent }) => {
         <div id="event--footer"></div>
       </div>
       {/* @hack(notion) */}
-      {!!relationsMap && (
-        <Relations
-          id={id}
-          isIndex={false}
-          properties={properties}
-          relationsMap={['shows', 'eventsLineupShowIds']}
-          routeType={'events'}
-          slug={slug}
-        />
-      )}
+      {/* {!!relationsMap && (
+        <>
+          <h2 className="text-4xl">Information</h2>
+          <div className="spacer--h mb-4" />
+          <Relations
+            id={id}
+            isIndex={false}
+            properties={properties}
+            relationsMap={['shows', 'eventsLineupShowIds']}
+            routeType={'events'}
+            slug={slug}
+          />
+        </>
+      )} */}
       <div
         id="event--content--mobile--cta"
         className={cx(

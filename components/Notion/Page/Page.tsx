@@ -3,12 +3,13 @@ import _map from 'lodash/map'
 import { useEffect } from 'react'
 import useSWR, { useSWRConfig } from 'swr'
 
+import Breadcrumb from '~components/Notion/Breadcrumb'
 import NotionLayout, { ImageLead } from '~components/Notion/Layout'
 import Listing from '~components/Notion/Listing'
 import { MetaTags } from '~components/Notion/Meta'
 import { Event } from '~components/Notion/Page'
 import Relations from '~components/Notion/Relations'
-import Title from '~components/Notion/Title'
+// import Title from '~components/Notion/Title'
 import { NotionBlock } from '~utils/notion'
 import getContentType from '~utils/notion/getContentType'
 
@@ -43,7 +44,10 @@ const Page = ({ data, props }) => {
 
   const isInfoObjectPage = !!info && info?.object === 'page'
 
-  const { icon, id, data: properties } = isInfoObjectPage ? info : info.results[0]
+  const { icon, id, data: properties } = isInfoObjectPage ? info : info?.results[0]
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const emoji = !!icon?.emoji ? icon.emoji : ''
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -80,15 +84,17 @@ const Page = ({ data, props }) => {
   return (
     <>
       {/* Template Content */}
-      <Title emoji={emoji} id={id} title={title} />
+      {/* <Title emoji={emoji} id={id} title={title} /> */}
+      <Breadcrumb isIndex={isIndex} title={title} />
       {/* Breadcrumb Content */}
       {/* {!isIndex && <Breadcrumb title={title} />} */}
       <NotionLayout id={id} data={properties} routeType={routeType} url={url}>
+        {/* ImageLead */}
         <ImageLead
           description={properties?.seoImageDescription}
           image={properties?.seoImage}
         />
-        {!!tagParams && <MetaTags tagParams={tagParams} />}
+
         {/* Dynamic */}
         {/* Content */}
         {/* @todo(key) */}
@@ -104,25 +110,39 @@ const Page = ({ data, props }) => {
         {/* @note(switch) */}
         {isIndex && !isPage && <Listing items={items} routeType={routeType} />}
         {/* {isEvent && showId && <Meta id={showId} />} */}
-        <Relations
-          id={id}
-          isIndex={isIndex}
-          properties={properties}
-          relationsMap={[
-            'peopleCast',
-            'peopleHost',
-            'peopleWriter',
-            'peopleProducer',
-            'peopleDirector',
-            'peopleDirectorMusical',
-            'peopleMusic',
-            'peopleDirectorTechnical',
-            'peopleCrew',
-            'peopleThanks',
-          ]}
-          routeType={routeType}
-          slug={slug}
-        />
+        <>
+          {!isIndex && <h2 className="text-3xl md:text-4xl">Information</h2>}
+          <div className="spacer--h mb-4" />
+          {!!tagParams && !isIndex && (
+            <>
+              <MetaTags tagParams={tagParams} />
+              {/* <div className="spacer--h" /> */}
+            </>
+          )}
+          <Relations
+            id={id}
+            isIndex={isIndex}
+            properties={properties}
+            relationsMap={
+              routeType === 'events'
+                ? ['shows', 'eventsLineupShowIds']
+                : [
+                    'peopleCast',
+                    'peopleHost',
+                    'peopleWriter',
+                    'peopleProducer',
+                    'peopleDirector',
+                    'peopleDirectorMusical',
+                    'peopleMusic',
+                    'peopleDirectorTechnical',
+                    'peopleCrew',
+                    'peopleThanks',
+                  ]
+            }
+            routeType={routeType}
+            slug={slug}
+          />
+        </>
       </NotionLayout>
     </>
   )

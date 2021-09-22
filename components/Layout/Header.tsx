@@ -25,8 +25,12 @@ const Header = () => {
   return (
     <header
       className={cx(
-        'bg-blur bg-opacity-50 dark:bg-opacity-50 z-40 top-0 sticky min-w-full',
-        `flex flex-row content-center items-center`
+        'min-w-full',
+        `flex flex-row content-center items-center`,
+        'bg-white dark:bg-black',
+        // `top-0 sticky `
+        `z-20 `,
+        ``
       )}
     >
       <SkipNavLink />
@@ -40,7 +44,7 @@ const Header = () => {
           'p-2 md:p-4'
         )}
       >
-        <Navigation />
+        <Navigation handleClick={() => {}} />
         <ThemeMode />
       </div>
     </header>
