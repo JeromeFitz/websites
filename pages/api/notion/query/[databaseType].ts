@@ -62,6 +62,9 @@ const notionQueryRouteType = async (req: NextApiRequest, res: NextApiResponse) =
   const { routeType, key, value } = reqQuery
   let k, v
 
+  /**
+   * @todo(notion) make this DRY
+   */
   switch (databaseType) {
     case 'shows':
       switch (key) {
@@ -128,7 +131,15 @@ const notionQueryRouteType = async (req: NextApiRequest, res: NextApiResponse) =
           v = value
           break
         case 'peopleThanks':
-          k = 'Podcasts.People.Thanks'
+          k =
+            routeType === 'podcasts'
+              ? 'Podcasts.People.Thanks'
+              : 'Shows.People.Thanks'
+          v = value
+          break
+        // @todo(notion) dry
+        case 'peopleGuest':
+          k = 'Episodes.People.Guest'
           v = value
           break
         case 'peopleWriter':

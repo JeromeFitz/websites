@@ -62,6 +62,7 @@ const Page = ({ data, props }) => {
   /**
    * @tags
    */
+  // @todo(notion) dry
   let tagParams
   switch (routeType) {
     case 'events':
