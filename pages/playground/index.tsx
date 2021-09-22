@@ -7,7 +7,8 @@ import { useSound } from 'use-sound'
 
 import { Banner as AlertBanner } from '~components/Alert'
 import Layout from '~components/Layout'
-import Title from '~components/Notion/Title'
+import Breadcrumb from '~components/Notion/Breadcrumb'
+// import Title from '~components/Notion/Title'
 import Seo from '~components/Seo'
 import { Container, Grid, Skeleton, Button } from '~components/UI'
 import { useUI } from '~context/ManagedUIContext'
@@ -84,7 +85,8 @@ const Playground = () => {
     <>
       <Layout>
         <Seo {...seo} />
-        <Title emoji={``} id={`fdsajklfads`} title={title} />
+        {/* <Title emoji={``} id={`fdsajklfads`} title={title} /> */}
+        <Breadcrumb isIndex={true} title={title} />
         <motion.div
           key={`page-playground`}
           initial="hidden"

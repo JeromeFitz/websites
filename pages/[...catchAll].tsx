@@ -46,19 +46,46 @@ const CatchAll = (props) => {
   /**
    * @error or @loading
    */
+  const isError = error
+  const isLoading = !error && !data
+
+  if (isError && data === undefined)
+    return (
+      <>
+        <Layout>
+          <h1 key={`error-loading-h1`}>
+            <>Error...</>
+          </h1>
+        </Layout>
+      </>
+    )
+
   if (
-    (error && data === undefined) ||
-    !data ||
-    data?.content === undefined ||
-    data?.info === undefined
+    !isError &&
+    (isLoading || !data || data?.content === undefined || data?.info === undefined)
   )
     return (
       <>
         <Layout>
-          <h1 key={`error-loading-h1`}>{error ? <>Error</> : <>Loading...</>}</h1>
+          <h1 key={`error-loading-h1`}>
+            <>Loading...</>
+          </h1>
         </Layout>
       </>
     )
+  // if (
+  //   (error && data === undefined) ||
+  //   !data ||
+  //   data?.content === undefined ||
+  //   data?.info === undefined
+  // )
+  //   return (
+  //     <>
+  //       <Layout>
+  //         <h1 key={`error-loading-h1`}>{error ? <>Error</> : <>Loading...</>}</h1>
+  //       </Layout>
+  //     </>
+  //   )
 
   return (
     <>

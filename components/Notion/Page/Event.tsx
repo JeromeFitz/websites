@@ -253,16 +253,20 @@ const Event = ({ data: dataEvent }) => {
         <div id="event--footer"></div>
       </div>
       {/* @hack(notion) */}
-      {!!relationsMap && (
-        <Relations
-          id={id}
-          isIndex={false}
-          properties={properties}
-          relationsMap={['shows', 'eventsLineupShowIds']}
-          routeType={'events'}
-          slug={slug}
-        />
-      )}
+      {/* {!!relationsMap && (
+        <>
+          <h2 className="text-4xl">Information</h2>
+          <div className="spacer--h mb-4" />
+          <Relations
+            id={id}
+            isIndex={false}
+            properties={properties}
+            relationsMap={['shows', 'eventsLineupShowIds']}
+            routeType={'events'}
+            slug={slug}
+          />
+        </>
+      )} */}
       <div
         id="event--content--mobile--cta"
         className={cx(
