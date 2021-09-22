@@ -80,6 +80,7 @@ const PROPERTIES = {
     twitter: 'Social.Twitter',
   },
   tags: 'Tags',
+  tailwindColorBackground: 'Tailwind.Color.Background',
   ticketUrl: 'TicketUrl',
   title: 'Title',
   type: 'Type',

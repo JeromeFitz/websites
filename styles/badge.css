@@ -37,9 +37,25 @@
   @apply dark:bg-gray-900 dark:text-gray-100;
 }
 
+#relations--container--ghost h5 {
+  @apply animate-pulse w-20 h-8 rounded mb-2;
+  @apply bg-gray-800 text-gray-50;
+  @apply dark:bg-gray-50 dark:text-gray-800;
+}
+.badge-ghost {
+  @apply animate-pulse;
+  @apply bg-gray-800 text-gray-50;
+  @apply dark:bg-gray-50 dark:text-gray-800;
+}
+
 .badge-green {
   @apply bg-green-800 text-green-50;
   @apply dark:bg-green-900 dark:text-green-100;
+}
+
+.badge-lime {
+  @apply bg-lime-800 text-lime-50;
+  @apply dark:bg-lime-900 dark:text-lime-100;
 }
 
 .badge-orange {
@@ -62,6 +78,11 @@
 .badge-red {
   @apply bg-red-800 text-red-50;
   @apply dark:bg-red-900 dark:text-red-100;
+}
+
+.badge-sky {
+  @apply bg-sky-800 text-sky-50;
+  @apply dark:bg-sky-900 dark:text-sky-100;
 }
 
 .badge-yellow {

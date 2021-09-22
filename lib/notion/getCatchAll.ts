@@ -201,6 +201,7 @@ interface NormalizerProperties {
   seoDescription?: string
   seoImageDescription?: string
   slug?: string
+  tailwindColorBackground?: string
   /**
    * @select
    */
@@ -587,6 +588,9 @@ const normalizerProperties = (properties) => {
         break
       case PROPERTIES.duration:
         data.duration = getTypeRichTextNormalized(value)
+        break
+      case PROPERTIES.tailwindColorBackground:
+        data.tailwindColorBackground = getTypeRichTextNormalized(value)
         break
       /**
        * @select

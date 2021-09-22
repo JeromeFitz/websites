@@ -14,7 +14,12 @@ const MetaTags = ({ tagParams }) => {
   )
   const isError = error
   const isLoading = !error && !data
-  if (isError || isLoading) return null
+  if (isError || isLoading)
+    return (
+      <ul key="tagsKeyDog" className={cx('mb-5 flex flex-row flex-wrap gap-2.5')}>
+        <li className={cx('badge badge-ghost w-16')} />
+      </ul>
+    )
 
   // const title = pluralize('Tag', data?.results.length)
 
@@ -22,7 +27,14 @@ const MetaTags = ({ tagParams }) => {
     // <MetaUL title={title}>
     <ul key="tagsKeyDog" className={cx('mb-5 flex flex-row flex-wrap gap-2.5')}>
       {_map(data?.results, (item) => (
-        <li className={cx(`badge badge-red`)} key={item?.id}>
+        <li
+          className={cx(
+            `badge`,
+            !!item?.data?.tailwindColorBackground &&
+              `badge-${item?.data?.tailwindColorBackground}`
+          )}
+          key={item?.id}
+        >
           {item?.data?.title}
         </li>
       ))}
