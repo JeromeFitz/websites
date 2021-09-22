@@ -1,0 +1,1 @@
+{"version":3,"file":"config.umd.js","sources":["../src/config.ts"],"sourcesContent":["export const classNamePrefix = \"plaiceholder\";\n"],"names":["classNamePrefix"],"mappings":";;;;;OAAaA,eAAe,GAAG;;;;;;;;"}

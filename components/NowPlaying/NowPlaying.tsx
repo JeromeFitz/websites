@@ -37,7 +37,7 @@ const NowPlaying = () => {
         )}
       >
         <div className="flex flex-col w-full px-2 py-8 md:px-8 my-0 md:my-8 mx-auto max-w-4xl">
-          <h1 className="text-black">{title}</h1>
+          <h1 className="text-black dark:text-black">{title}</h1>
           <div className="grid grid-cols-1 md:grid-cols-2 md:px-2 py-12 md:gap-x-4 md:py-16">
             <div className="relative col-start-1 row-start-1 px-4 pt-44 md:pt-24 pb-3 bg-gradient-to-t from-black md:bg-none md:leading-normal z-10">
               <p
@@ -129,7 +129,7 @@ const NowPlaying = () => {
             <Link href="/music">
               <a
                 aria-label="music"
-                className="underline underline-offset-md hover:text-yellow-900 text-black"
+                className="underline underline-offset-md hover:text-yellow-900 text-black dark:text-black"
               >
                 <SplitText text={'music'} />
               </a>

@@ -9,7 +9,7 @@ const AvatarFallback = ({ margin, name }: AvatarProps) => {
   const c1 = c.toHexString()
   const c2 = c.triad()[1].toHexString()
 
-  const variable = margin ? 10 : 30
+  const variable = margin ? 10 : 20
   const variable2 = variable * 2
 
   return (

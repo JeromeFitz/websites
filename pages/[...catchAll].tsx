@@ -2,6 +2,7 @@
 import useSWR from 'swr'
 
 import Layout from '~components/Layout'
+import Breadcrumb from '~components/Notion/Breadcrumb'
 import Page from '~components/Notion/Page'
 import fetcher from '~lib/fetcher'
 import getCatchAll from '~lib/notion/getCatchAll'
@@ -46,19 +47,42 @@ const CatchAll = (props) => {
   /**
    * @error or @loading
    */
+  const isError = error
+  const isLoading = !error && !data
+
+  if (isError && data === undefined)
+    return (
+      <>
+        <Layout>
+          <Breadcrumb isIndex={true} title={'Error...'} />
+        </Layout>
+      </>
+    )
+
   if (
-    (error && data === undefined) ||
-    !data ||
-    data?.content === undefined ||
-    data?.info === undefined
+    !isError &&
+    (isLoading || !data || data?.content === undefined || data?.info === undefined)
   )
     return (
       <>
         <Layout>
-          <h1 key={`error-loading-h1`}>{error ? <>Error</> : <>Loading...</>}</h1>
+          <Breadcrumb isIndex={true} title={'Loading...'} />
         </Layout>
       </>
     )
+  // if (
+  //   (error && data === undefined) ||
+  //   !data ||
+  //   data?.content === undefined ||
+  //   data?.info === undefined
+  // )
+  //   return (
+  //     <>
+  //       <Layout>
+  //         <h1 key={`error-loading-h1`}>{error ? <>Error</> : <>Loading...</>}</h1>
+  //       </Layout>
+  //     </>
+  //   )
 
   return (
     <>
