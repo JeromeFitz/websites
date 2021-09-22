@@ -916,10 +916,10 @@
     micromatch "^4.0.0"
     p-reduce "^2.0.0"
 
-"@jeromefitz/semantic@3.0.4":
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/semantic/-/semantic-3.0.4.tgz#d379003f44fc1b76e32d112f5b579f6109da9b07"
-  integrity sha512-+rctAlQ2rXXVM0fGcHVBigIp/39A5T0g4JkpGKEDuvM9g9in7HAXAmcHjpP5xN2aoIo/eCimRaWD7iHLAmayCw==
+"@jeromefitz/semantic@3.0.5":
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/semantic/-/semantic-3.0.5.tgz#d059664dc5f0f133b5de28af3f8fa1b0e45ab5f2"
+  integrity sha512-aENTbJDGiu1TJ4EwVP5IJqIS0YkCm8hsq2PwPWKCBqmqdX1g8ep6rComxVsdryzRuWRbLfpAGjhnRYbcNXGwGg==
   dependencies:
     "@jeromefitz/semantic-release-git" "10.0.0-develop.2"
     "@octokit/core" "3.5.1"
