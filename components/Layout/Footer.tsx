@@ -3,7 +3,7 @@ import cx from 'clsx'
 import Link from 'next/link'
 import { memo, useEffect, useState } from 'react'
 
-// import NowPlaying from '~components/NowPlaying'
+import NowPlaying from '~components/NowPlaying'
 
 const Footer = () => {
   const [mounted, setMounted] = useState(false)
@@ -12,9 +12,9 @@ const Footer = () => {
     <>
       {mounted && (
         <>
-          {/* {process.env.NEXT_PUBLIC__SITE === 'jeromefitzgerald.com' && (
+          {process.env.NEXT_PUBLIC__SITE === 'jeromefitzgerald.com' && (
             <NowPlaying />
-          )} */}
+          )}
           <footer
             className={cx(
               'bg-primary text-secondary ',
