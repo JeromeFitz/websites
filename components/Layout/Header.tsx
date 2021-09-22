@@ -44,7 +44,7 @@ const Header = () => {
           'p-2 md:p-4'
         )}
       >
-        <Navigation />
+        <Navigation handleClick={() => {}} />
         <ThemeMode />
       </div>
     </header>
