@@ -166,7 +166,7 @@ const Breadcrumb = ({ isIndex, title }) => {
               'flex flex-row items-center',
               'gradient text-2xl md:text-4xl',
               'leading-tight md:leading-tight',
-              'mt-0 mb-2'
+              'mt-0 mb-3'
               // 'z-0'
             )}
             style={WEBKIT_BACKGROUND__BREAK}
@@ -181,7 +181,12 @@ const Breadcrumb = ({ isIndex, title }) => {
           >
             {isHomepage ? 'Jerome Fitzgerald' : title}
           </motion.h3>
-          <div className="spacer bg-gray-600 dark:bg-gray-300" />
+          <div
+            className={cx(
+              'spacer bg-gray-600 dark:bg-gray-300',
+              displayNavigation && 'hidden'
+            )}
+          />
         </>
       }
     </>
