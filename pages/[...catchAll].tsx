@@ -2,6 +2,7 @@
 import useSWR from 'swr'
 
 import Layout from '~components/Layout'
+import Breadcrumb from '~components/Notion/Breadcrumb'
 import Page from '~components/Notion/Page'
 import fetcher from '~lib/fetcher'
 import getCatchAll from '~lib/notion/getCatchAll'
@@ -53,9 +54,7 @@ const CatchAll = (props) => {
     return (
       <>
         <Layout>
-          <h1 key={`error-loading-h1`}>
-            <>Error...</>
-          </h1>
+          <Breadcrumb isIndex={true} title={'Error...'} />
         </Layout>
       </>
     )
@@ -67,9 +66,7 @@ const CatchAll = (props) => {
     return (
       <>
         <Layout>
-          <h1 key={`error-loading-h1`}>
-            <>Loading...</>
-          </h1>
+          <Breadcrumb isIndex={true} title={'Loading...'} />
         </Layout>
       </>
     )
