@@ -1,0 +1,1 @@
+{"version":3,"file":"config.esm.js","sources":["../src/config.ts"],"sourcesContent":["export const classNamePrefix = \"plaiceholder\";\n"],"names":["classNamePrefix"],"mappings":"MAAaA,eAAe,GAAG;;;;"}
