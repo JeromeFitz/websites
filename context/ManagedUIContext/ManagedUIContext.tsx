@@ -13,7 +13,7 @@ export interface State {
 }
 
 const initialState = {
-  audio: true,
+  audio: false,
   displayDropdown: false,
   displayModal: false,
   displayNavigation: false,
