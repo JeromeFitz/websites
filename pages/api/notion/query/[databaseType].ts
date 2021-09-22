@@ -217,8 +217,8 @@ const notionQueryRouteType = async (req: NextApiRequest, res: NextApiResponse) =
     await avoidRateLimit()
     let contentData
     if (!!filter) {
-      console.dir(`filter`)
-      console.dir(filter)
+      // console.dir(`filter`)
+      // console.dir(filter)
       contentData = await notion.databases.query({
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
