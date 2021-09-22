@@ -1,4 +1,4 @@
-import { HomeIcon } from '@heroicons/react/solid'
+import { HomeIcon, MenuAlt4Icon } from '@heroicons/react/solid'
 import cx from 'clsx'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -11,13 +11,18 @@ import { useRouter } from 'next/router'
 import { useRef } from 'react'
 
 // import Avatar from '~components/Avatar'
+import { useUI } from '~context/ManagedUIContext'
 import useSticky from '~hooks/useSticky'
 import { WEBKIT_BACKGROUND__BREAK } from '~lib/constants'
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Breadcrumb = ({ isIndex, title }) => {
   const router = useRouter()
-
+  const { closeNavigation, openNavigation, displayNavigation } = useUI()
+  const handleClick = () => {
+    displayNavigation ? closeNavigation() : openNavigation()
+    // overlayYSet(displayNavigation ? -100 : 0)
+  }
   let as = ''
   const href = `/[...catchAll]`
 
@@ -39,10 +44,11 @@ const Breadcrumb = ({ isIndex, title }) => {
         className={cx(
           `flex flex-row sticky top-0 items-center`,
           `overflow-hidden`, // `bg-blur bg-opacity-50 dark:bg-opacity-50`,
-          `z-10`,
+          // `pointer-events-auto`,
           `bg-white dark:bg-black`,
           isFix && 'py-2 border-b border-black dark:border-white',
           `py-4`,
+          displayNavigation ? `z-0` : `z-40`,
           ``
         )}
         ref={stickyRef}
@@ -65,7 +71,6 @@ const Breadcrumb = ({ isIndex, title }) => {
             'breadcrumb-transition',
             'font-medium',
             'text-lg md:text-xl',
-            'z-10',
             'items-center',
             'divide-black dark:divide-white divide-x',
             ``
@@ -101,7 +106,7 @@ const Breadcrumb = ({ isIndex, title }) => {
                 animate={{
                   y: isFix ? [0, -150] : [-150, 0],
                   rotate: 0,
-                  opacity: isFix ? 0 : 1,
+                  // opacity: isFix ? 0 : 1,
                   display: isFix ? 'none' : 'block',
                 }}
                 transition={{ duration: 0.125 }}
@@ -120,7 +125,7 @@ const Breadcrumb = ({ isIndex, title }) => {
                 animate={{
                   y: isFix ? [150, 0] : [0, 150],
                   rotate: 0,
-                  opacity: isFix ? 1 : 0,
+                  // opacity: isFix ? 1 : 0,
                 }}
                 transition={{ duration: 0.125 }}
               >
@@ -129,6 +134,29 @@ const Breadcrumb = ({ isIndex, title }) => {
             )
           })}
         </motion.ol>
+        <div className="ml-auto">
+          <motion.button
+            aria-label={'Open Menu'}
+            className={cx(
+              'ml-4',
+              'text-2xl sm:text-3xl focus:outline-none',
+              'hover:text-gray-600 dark:hover:text-gray-100',
+              'place-self-end'
+            )}
+            onClick={() => handleClick()}
+            key={'menu--open'}
+            initial={{ scale: 0.8, y: 0 }}
+            animate={{ scale: 1, y: 0 }}
+            exit={{ scale: 0.8, y: 0 }}
+            transition={{ duration: 0.2 }}
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.8 }}
+          >
+            {displayNavigation ? null : ( // <XIcon className="h-5 w-5 " />
+              <MenuAlt4Icon className="h-5 w-5 " />
+            )}
+          </motion.button>
+        </div>
       </motion.nav>
 
       {
@@ -138,8 +166,8 @@ const Breadcrumb = ({ isIndex, title }) => {
               'flex flex-row items-center',
               'gradient text-2xl md:text-4xl',
               'leading-tight md:leading-tight',
-              'mt-0 mb-2',
-              'z-0'
+              'mt-0 mb-2'
+              // 'z-0'
             )}
             style={WEBKIT_BACKGROUND__BREAK}
             layout
@@ -147,7 +175,7 @@ const Breadcrumb = ({ isIndex, title }) => {
             animate={{
               y: isFix ? [0, -150] : [-150, 0],
               rotate: 0,
-              opacity: isFix ? 0 : 1,
+              // opacity: isFix ? 0 : 1,
             }}
             transition={{ duration: 0.125 }}
           >

@@ -81,6 +81,19 @@ const Playground = () => {
     openModal()
   }
 
+  /**
+   * @error or @loading
+   */
+  const isLoading = false
+  if (isLoading)
+    return (
+      <>
+        <Layout>
+          <Breadcrumb isIndex={true} title={'Loading...'} />
+        </Layout>
+      </>
+    )
+
   return (
     <>
       <Layout>
