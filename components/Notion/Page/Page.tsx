@@ -45,6 +45,9 @@ const Page = ({ data, props }) => {
   const isInfoObjectPage = !!info && info?.object === 'page'
 
   const { icon, id, data: properties } = isInfoObjectPage ? info : info?.results[0]
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const emoji = !!icon?.emoji ? icon.emoji : ''
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -87,10 +90,10 @@ const Page = ({ data, props }) => {
       {/* {!isIndex && <Breadcrumb title={title} />} */}
       <NotionLayout id={id} data={properties} routeType={routeType} url={url}>
         {/* ImageLead */}
-        {/* <ImageLead
+        <ImageLead
           description={properties?.seoImageDescription}
           image={properties?.seoImage}
-        /> */}
+        />
 
         {/* Dynamic */}
         {/* Content */}
