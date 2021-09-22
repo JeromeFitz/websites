@@ -13,9 +13,9 @@ const Notification = ({ children, id, indexReverse, preserve, type }) => {
   const [isChecked, isCheckedSet] = useState(false)
 
   const { audio } = useUI()
-  const [playActive] = useSound('/static/audio/pop-down.mp3', {
+  const [playDown] = useSound('/static/audio/pop-down.mp3', {
     soundEnabled: audio,
-    volume: 0.25,
+    volume: 0.45,
   })
 
   const handleVisible = () => {
@@ -94,7 +94,7 @@ const Notification = ({ children, id, indexReverse, preserve, type }) => {
               className="hidden"
               id={idCss}
               onChange={() => {
-                playActive()
+                playDown()
                 handleVisible()
               }}
               type="checkbox"

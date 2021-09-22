@@ -1,3 +1,4 @@
+import cx from 'clsx'
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 
 class MyDocument extends Document<any> {
@@ -100,7 +101,14 @@ class MyDocument extends Document<any> {
           <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
           <meta name="theme-color" content="#f4f4f4" />
         </Head>
-        <body className="loading bg-white dark:bg-black text-black dark:text-white">
+        <body
+          className={cx(
+            `loading`,
+            `bg-white dark:bg-black`,
+            `text-black dark:text-white`,
+            ``
+          )}
+        >
           <Main />
           <NextScript />
         </body>

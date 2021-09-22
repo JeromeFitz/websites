@@ -81,12 +81,14 @@ const notionQueryRouteType = async (req: NextApiRequest, res: NextApiResponse) =
           break
       }
       const filterEventsShows = []
-      filterEventsShows.push({
-        property: k,
-        relation: {
-          contains: v,
-        },
-      })
+      !!k &&
+        !!v &&
+        filterEventsShows.push({
+          property: k,
+          relation: {
+            contains: v,
+          },
+        })
       filter = { or: [...filterEventsShows] }
 
       break
@@ -151,12 +153,14 @@ const notionQueryRouteType = async (req: NextApiRequest, res: NextApiResponse) =
           break
       }
       const filterPeopleShows = []
-      filterPeopleShows.push({
-        property: k,
-        relation: {
-          contains: v,
-        },
-      })
+      !!k &&
+        !!v &&
+        filterPeopleShows.push({
+          property: k,
+          relation: {
+            contains: v,
+          },
+        })
       filter = { or: [...filterPeopleShows] }
       break
     case 'tags':
@@ -211,19 +215,27 @@ const notionQueryRouteType = async (req: NextApiRequest, res: NextApiResponse) =
 
   if (!hasError && (!data || data === undefined)) {
     await avoidRateLimit()
-    const contentData = await notion.databases.query({
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      database_id,
-      filter,
-      sorts,
-    })
-    // data = normalizerContent(contentData)
-    data = contentData
-    items = normalizerContentResults(contentData.results)
-    // console.dir(`items`)
-    // console.dir(items)
-    data.results = items
+    let contentData
+    if (!!filter) {
+      console.dir(`filter`)
+      console.dir(filter)
+      contentData = await notion.databases.query({
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        database_id,
+        filter,
+        sorts,
+      })
+      // data = normalizerContent(contentData)
+      data = contentData
+      items = normalizerContentResults(contentData.results)
+      // console.dir(`items`)
+      // console.dir(items)
+      data.results = items
+    } else {
+      hasError = true
+    }
+
     // /**
     //  * @cache post
     //  */
