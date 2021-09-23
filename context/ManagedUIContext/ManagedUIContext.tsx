@@ -13,7 +13,7 @@ export interface State {
 }
 
 const initialState = {
-  audio: false,
+  audio: true,
   displayDropdown: false,
   displayModal: false,
   displayNavigation: false,
@@ -185,6 +185,10 @@ export const UIProvider: FC = (props) => {
 
   const openNavigation = () => dispatch({ type: 'OPEN_NAVIGATION' })
   const closeNavigation = () => dispatch({ type: 'CLOSE_NAVIGATION' })
+  const toggleNavigation = () =>
+    state.displayNavigation
+      ? dispatch({ type: 'CLOSE_NAVIGATION' })
+      : dispatch({ type: 'OPEN_NAVIGATION' })
 
   const openNotification = () => dispatch({ type: 'OPEN_TOAST' })
   const closeNotification = () => dispatch({ type: 'CLOSE_TOAST' })
@@ -214,6 +218,7 @@ export const UIProvider: FC = (props) => {
       openSidebar,
       setModalView,
       toggleAudio,
+      toggleNavigation,
       toggleSidebar,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
