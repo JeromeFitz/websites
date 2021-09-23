@@ -3,7 +3,7 @@ import cx from 'clsx'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { AnimateSharedLayout, motion } from 'framer-motion'
+import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion'
 import _lowerCase from 'lodash/lowerCase'
 import _take from 'lodash/take'
 import NextLink from 'next/link'
@@ -136,26 +136,28 @@ const Breadcrumb = ({ isIndex, title }) => {
 
       {
         <>
-          <motion.h3
-            className={cx(
-              'flex flex-row items-center',
-              'gradient text-2xl md:text-4xl',
-              'leading-tight md:leading-tight',
-              'mt-0 mb-3'
-              // 'z-0'
-            )}
-            style={WEBKIT_BACKGROUND__BREAK}
-            layout
-            // transition={{ duration: 0.25 }}
-            animate={{
-              y: isFix ? [0, -150] : [-150, 0],
-              rotate: 0,
-              // opacity: isFix ? 0 : 1,
-            }}
-            transition={{ duration: 0.125 }}
-          >
-            {isHomepage ? 'Jerome Fitzgerald' : title}
-          </motion.h3>
+          <AnimatePresence>
+            <motion.h3
+              className={cx(
+                'flex flex-row items-center',
+                'gradient text-2xl md:text-4xl',
+                'leading-tight md:leading-tight',
+                'mt-0 mb-3'
+                // 'z-0'
+              )}
+              style={WEBKIT_BACKGROUND__BREAK}
+              layout
+              // transition={{ duration: 0.25 }}
+              animate={{
+                y: isFix ? [0, -150] : [-150, 0],
+                rotate: 0,
+                // opacity: isFix ? 0 : 1,
+              }}
+              transition={{ duration: 0.125 }}
+            >
+              {isHomepage ? 'Jerome Fitzgerald' : title}
+            </motion.h3>
+          </AnimatePresence>
           <div className={cx('spacer bg-gray-600 dark:bg-gray-300')} />
         </>
       }
