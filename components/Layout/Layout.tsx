@@ -72,23 +72,31 @@ const Layout: FC<any> = ({ children }) => {
 
 const NavigationMobile = () => {
   const router = useRouter()
-  const { audio, displayNavigation, openNavigation, closeNavigation } = useUI()
-  const [play] = useSound('/static/audio/menu-open.mp3', {
+  const { audio, displayNavigation, closeNavigation, toggleNavigation } = useUI()
+  // const [soundMenuOpen] = useSound('/static/audio/menu-open.mp3', {
+  //   soundEnabled: audio,
+  //   volume: 0.5,
+  // })
+  const [soundSwitchOff] = useSound('/static/audio/switch-off.mp3', {
+    soundEnabled: audio,
+    volume: 0.5,
+  })
+  const [soundSwitchOn] = useSound('/static/audio/switch-on.mp3', {
     soundEnabled: audio,
     volume: 0.5,
   })
 
   const handleClick = () => {
-    play()
-    displayNavigation ? closeNavigation() : openNavigation()
+    displayNavigation ? soundSwitchOff() : soundSwitchOn()
+    toggleNavigation()
   }
   const handleClickHome = () => {
     closeNavigation()
-    play()
+    soundSwitchOff()
     void router.push('/')
   }
   const handleClickLink = () => {
-    play()
+    soundSwitchOff()
     closeNavigation()
   }
 
