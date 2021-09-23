@@ -10,7 +10,7 @@ import { useSound } from 'use-sound'
 
 import { Footer } from '~components/Layout'
 import { Modal, LoadingDots } from '~components/UI'
-import links from '~config/navigation'
+import navigationLinks from '~config/navigation'
 import { useUI } from '~context/ManagedUIContext'
 
 const Loading = () => (
@@ -140,7 +140,7 @@ const NavigationMobile = () => {
             // exit={{ scale: 0.8, y: -1000, opacity: 0 }}
             // transition={{ duration: 0.125 }}
           >
-            {links.map((link, linkIndex) => {
+            {navigationLinks.map((link, linkIndex) => {
               if (!link.active) {
                 return null
               }
