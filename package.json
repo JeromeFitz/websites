@@ -32,13 +32,14 @@
     "pretty-quick": "pretty-quick",
     "semantic-release": "semantic-release",
     "start": "next start",
+    "test": "jest",
     "typescript": "tsc --noEmit --declaration"
   },
   "dependencies": {
     "@heroicons/react": "1.0.4",
     "@notionhq/client": "0.3.2",
     "@plaiceholder/next": "2.1.0",
-    "@plaiceholder/tailwindcss": "^2.1.0",
+    "@plaiceholder/tailwindcss": "2.1.0",
     "@reach/alert": "0.16.0",
     "@reach/auto-id": "0.16.0",
     "@reach/portal": "0.16.0",
@@ -67,7 +68,7 @@
     "keen-slider": "5.5.1",
     "lodash": "4.17.21",
     "ms": "3.0.0-canary.1",
-    "next": "11.1.3-canary.29",
+    "next": "11.1.3-canary.31",
     "next-seo": "4.28.1",
     "next-themes": "0.0.15",
     "node-emoji": "1.11.0",
@@ -96,11 +97,12 @@
     "uuid": "8.3.2"
   },
   "devDependencies": {
-    "@jeromefitz/codestyle": "3.0.5",
-    "@jeromefitz/git-cz": "9.0.5",
-    "@jeromefitz/semantic": "3.0.5",
+    "@jeromefitz/codestyle": "4.0.1",
+    "@jeromefitz/git-cz": "10.0.1",
+    "@jeromefitz/semantic": "4.0.1",
     "@next/bundle-analyzer": "11.1.2",
     "@types/body-scroll-lock": "3.1.0",
+    "@types/jest": "27.0.2",
     "@types/lodash": "4.14.173",
     "@types/ms": "0.7.31",
     "@types/node": "16.9.6",
@@ -115,6 +117,7 @@
     "fs-extra": "10.0.0",
     "husky": "7.0.2",
     "is-ci": "3.0.0",
+    "jest": "27.2.1",
     "next-compose-plugins": "2.2.1",
     "next-sitemap": "1.6.168",
     "next-unused": "0.0.6",
@@ -130,6 +133,8 @@
     "postcss-nested": "5.0.6",
     "postcss-page-break": "3.0.4",
     "rimraf": "3.0.2",
+    "ts-jest": "27.0.5",
+    "ts-node": "10.2.1",
     "typescript": "4.4.3"
   },
   "next-unused": {

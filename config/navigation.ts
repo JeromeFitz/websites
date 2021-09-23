@@ -1,5 +1,6 @@
+import _filter from 'lodash/filter'
 // const isDev = false
-// const isDev = process.env.NODE_ENV !== 'production'
+const isDev = process.env.NODE_ENV !== 'production'
 
 const navigation = [
   { active: false, href: '/', title: 'home', titleMobile: 'home' },
@@ -22,17 +23,20 @@ const navigation = [
   { active: true, href: '/podcasts', title: 'podcasts', titleMobile: 'podcasts' },
   { active: false, href: '/venues', title: 'venues', titleMobile: 'venues' },
   {
-    active: false,
+    active: isDev,
     href: '/playground',
     title: 'p',
     titleMobile: 'p',
   },
   {
-    active: false,
+    active: isDev,
     href: '/events/2020',
     title: 'e',
     titleMobile: 'e',
   },
 ]
 
+const activeLinks = _filter(navigation, 'active')
+
+export { activeLinks }
 export default navigation

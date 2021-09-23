@@ -1,3 +1,6 @@
+import Slugger from 'github-slugger'
+import { getPlaiceholder } from 'plaiceholder'
+
 import { getNowPlaying, getTopArtists, getTopTracks } from '~lib/spotify'
 
 // @todo(routes) Lock this down a bit beter with Typescript
@@ -16,8 +19,11 @@ const spotifyApi = async ({ query: { limit, slug, time_range } }, res) => {
 
       const { album, artists } = track.item
 
+      // console.dir(`track`)
       // console.dir(track)
+      // console.dir(`album`)
       // console.dir(album)
+      // console.dir(`artists`)
       // console.dir(artists)
 
       const isPlaying = track.is_playing
@@ -26,6 +32,10 @@ const spotifyApi = async ({ query: { limit, slug, time_range } }, res) => {
       const trackName = track.item.name
       const trackUri = track.item.uri
       const trackUrl = track.item.external_urls.spotify
+
+      const slugger = new Slugger()
+      const slug = slugger.slug(album.images[0].url)
+      const { base64, img } = await getPlaiceholder(album.images[0].url)
 
       return res.status(200).json({
         album: {
@@ -42,6 +52,12 @@ const spotifyApi = async ({ query: { limit, slug, time_range } }, res) => {
         // @refactor(spotify) prefer spotify schema or normalize consistently
         artists,
         isPlaying,
+        meta: {
+          base64,
+          img,
+          slug,
+          url: album.images[0].url,
+        },
         track: {
           id: trackId,
           name: trackName,
@@ -54,13 +70,19 @@ const spotifyApi = async ({ query: { limit, slug, time_range } }, res) => {
       const { items } = await responseTopArtists.json()
 
       // @refactor(spotify) prefer spotify schema or normalize consistently
-      const artistsTopArtists = items.slice(0, 10).map((artist) => ({
-        id: artist.id,
-        image: artist.images[0].url,
-        name: artist.name,
-        uri: artist.uri,
-        url: artist.external_urls.spotify,
-      }))
+      const artistsTopArtists = items.slice(0, 10).map((artist) => {
+        // console.dir(`artist`)
+        // console.dir(artist)
+        return {
+          id: artist.id,
+          image: artist.images[0].url,
+          images: artist.images,
+          genres: artist.genres,
+          name: artist.name,
+          uri: artist.uri,
+          url: artist.external_urls.spotify,
+        }
+      })
 
       return res.status(200).json({ artists: artistsTopArtists })
     case 'top-tracks':
@@ -74,10 +96,16 @@ const spotifyApi = async ({ query: { limit, slug, time_range } }, res) => {
         const trackUri = track.uri
         const trackUrl = track.external_urls.spotify
 
+        // console.dir(`album`)
+        // console.dir(album)
+        // console.dir(`artists`)
+        // console.dir(artists)
+
         return {
           album: {
             id: album.id,
             imageUrl: album.images[0].url,
+            images: album.images,
             name: album.name,
             uri: album.uri,
             url: album.external_urls.spotify,
