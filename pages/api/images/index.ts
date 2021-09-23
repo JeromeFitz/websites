@@ -1,12 +1,17 @@
+import Slugger from 'github-slugger'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { getPlaiceholder } from 'plaiceholder'
 
-const imagesApi = async (_req: NextApiRequest, res: NextApiResponse) => {
-  const { base64, img } = await getPlaiceholder(
-    'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2020/01/_original/2020-01--sf-sketchfest--000--jerome--bob-shields.jpg'
-  )
+const imagesApi = async (req: NextApiRequest, res: NextApiResponse) => {
+  const { url } = req.query
 
-  return res.status(200).json({ base64, img })
+  const slugger = new Slugger()
+  const slug = slugger.slug(url)
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  const { base64, img } = await getPlaiceholder(url)
+
+  return res.status(200).json({ base64, img, slug, url })
 }
 
 export default imagesApi

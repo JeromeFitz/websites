@@ -28,6 +28,29 @@ const mockTypes = [
   { description: 'Description of ', value: 'warning', title: 'warning' },
 ]
 
+const WavingHand = () => (
+  <motion.div
+    style={{
+      marginBottom: '-20px',
+      marginRight: '-45px',
+      paddingBottom: '20px',
+      paddingRight: '45px',
+      display: 'inline-block',
+    }}
+    animate={{ rotate: 20 }}
+    transition={{
+      repeat: 7,
+      repeatType: 'mirror',
+      duration: 0.2,
+      delay: 0.5,
+      ease: 'easeInOut',
+      type: 'tween',
+    }}
+  >
+    👋
+  </motion.div>
+)
+
 const Playground = () => {
   const { audio, openModal, setModalView } = useUI()
   const [loading] = useState(false)
@@ -100,6 +123,9 @@ const Playground = () => {
         <Seo {...seo} />
         {/* <Title emoji={``} id={`fdsajklfads`} title={title} /> */}
         <Breadcrumb isIndex={true} title={title} />
+        <h4>
+          Hello <WavingHand />
+        </h4>
         <motion.div
           key={`page-playground`}
           initial="hidden"

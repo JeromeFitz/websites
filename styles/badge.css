@@ -1,8 +1,16 @@
 .badge {
   @apply inline-flex items-center justify-center leading-none;
-  /* @apply rounded-lg px-1.5 py-1.5 my-2; */
   @apply rounded-full py-2.5 px-4 my-3;
   @apply text-sm font-semibold;
+}
+
+.badge-sm {
+  @apply inline-flex items-center justify-center leading-none;
+  @apply rounded-full py-2 px-3 my-1;
+  @apply text-sm font-semibold;
+  @apply md:py-4 md:px-6 md:my-2;
+  @apply md:text-lg md:font-bold;
+  @apply transition-all;
 }
 
 @media (prefers-reduced-motion: no-preference) {

@@ -2,6 +2,7 @@
 .cache
 .next
 .vercel
+coverage
 node_modules
 zzz
 

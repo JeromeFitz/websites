@@ -1,141 +1,254 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { ExternalLinkIcon } from '@heroicons/react/solid'
 import cx from 'clsx'
-import Image from 'next/image'
-import Link from 'next/link'
-import { MdOpenInNew } from 'react-icons/md'
-import useSWR from 'swr'
+import { motion } from 'framer-motion'
+import Slugger from 'github-slugger'
+import NextImage from 'next/image'
+import NextLink from 'next/link'
+import { useEffect } from 'react'
+// import { useInView } from 'react-intersection-observer'
+import useSWR, { useSWRConfig } from 'swr'
 
-import SplitText from '~components/SplitText'
+import { WEBKIT_BACKGROUND__BREAK } from '~lib/constants'
 import fetcher from '~lib/fetcher'
 import { spotifyFavoriteTracks } from '~lib/spotify/favorites'
-
 // const HOUR = 3600000
 const MINUTE = 60000
 // const SECOND = 1000
 
 const initialData = spotifyFavoriteTracks[0]
 
+const CardWithGlow = ({ children }) => {
+  const cardVariants = {
+    // hover: {
+    //   scale: 1.05,
+    // },
+    // initial: {
+    //   scale: 1,
+    // },
+  }
+
+  const glowVariants = {
+    // hover: {
+    //   opacity: 0.8,
+    // },
+    // initial: {
+    //   scale: 1.05,
+    //   opacity: 0,
+    // },
+  }
+
+  return (
+    <motion.div
+      className={cx(
+        'relative'
+        // 'overflow-hidden relative',
+        // 'w-2/4 h-3/4'
+      )}
+      // initial="initial"
+      // whileHover="hover"
+      initial="hover"
+      whileHover="initial"
+    >
+      <motion.div
+        className={cx(
+          'absolute top-0 left-0 w-full h-full blur-lg rounded-xl',
+          // 'bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500'
+          'bg-gradient-to-r from-gray-700 via-gray-900 to-black'
+        )}
+        variants={glowVariants}
+        transition={{
+          ease: 'easeOut',
+          delay: 0.15,
+        }}
+      />
+      <motion.div
+        className={cx(
+          ' relative',
+          'h-full',
+          // 'mb-0 px-10 py-10',
+          'rounded-xl',
+          'bg-white'
+          // 'backdrop-opacity-75',
+          // 'hover:opacity-95'
+        )}
+        variants={cardVariants}
+        transition={{
+          ease: 'easeOut',
+          delay: 0.15,
+          duration: 0.5,
+        }}
+      >
+        {children}
+      </motion.div>
+    </motion.div>
+  )
+}
+
 const NowPlaying = () => {
+  // const [ref, refInView] = useInView()
   const { data } = useSWR('/api/spotify/now-playing', fetcher, {
     fallbackData: initialData,
     refreshInterval: MINUTE,
     revalidateOnFocus: true,
   })
-
   // @refactor(swr) This a little convulated
-  const { album, artist, isPlaying, track } =
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  const { album, artist, isPlaying, meta, track } =
     data.isPlaying || !!data.artist ? data : initialData
 
+  /**
+   * @images
+   */
+  const { mutate } = useSWRConfig()
+  const { data: images } = useSWR('images')
+  useEffect(() => {
+    const newImage = !!meta && {
+      [meta.slug]: {
+        base64: meta.base64,
+        id: meta.slug,
+        img: meta.img,
+        url: meta.url,
+      },
+    }
+    !!newImage && void mutate('images', { ...images, ...newImage })
+  }, [images, meta, mutate])
+
   const title = isPlaying ? 'Listening To' : 'Listening To'
+
+  // const queryParams = !!album
+  //   ? `url=${album?.imageUrl}`
+  //   : `url=${`https://i.scdn.co/image/ab67616d0000b27377b08ffd1ea32abba3672bb6`}`
+
+  // const { data: spotifyImage } = useSWR(
+  //   [`/api/images`, queryParams],
+  //   (url) => fetcher(`${url}?${queryParams}`),
+  //   { revalidateOnFocus: false }
+  // )
+  // console.dir(`album`)
+  // console.dir(album)
+  // console.dir(`artist`)
+  // console.dir(artist)
+  // console.dir(`track`)
+  // console.dir(track)
+  // console.dir(`meta`)
+  // console.dir(meta)
+
+  const slugger = new Slugger()
+  const imageSlug = slugger.slug(album?.imageUrl)
+  const imageData = !!imageSlug && !!images && images[imageSlug]
+  // const imageSlug = meta?.slug
+  // const imageData = meta
 
   return (
     <>
       <div
-        id="now-playing"
         className={cx(
-          'flex flex-col justify-center px-8 bg-green-300',
-          'border border-gray-900 border-l-0 border-r-0'
+          `min-h-full py-12`,
+          'border-t border-black dark:border-white',
+          `bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400`
         )}
       >
-        <div className="flex flex-col w-full px-2 py-8 md:px-8 my-0 md:my-8 mx-auto max-w-4xl">
-          <h1 className="text-black dark:text-black">{title}</h1>
-          <div className="grid grid-cols-1 md:grid-cols-2 md:px-2 py-12 md:gap-x-4 md:py-16">
-            <div className="relative col-start-1 row-start-1 px-4 pt-44 md:pt-24 pb-3 bg-gradient-to-t from-black md:bg-none md:leading-normal z-10">
-              <p
+        <div
+          className={cx(`flex flex-col w-full max-w-4xl`, `px-2 mx-auto md:px-8`)}
+        >
+          <motion.h3
+            className={cx(
+              'flex flex-row items-center',
+              'gradient text-2xl md:text-4xl',
+              'leading-tight md:leading-tight',
+              'mt-0 mb-3',
+              '_text-black'
+            )}
+            style={WEBKIT_BACKGROUND__BREAK}
+            layout
+            animate={{}}
+            transition={{}}
+          >
+            {title}
+          </motion.h3>
+          <div className={cx('spacer ')} />
+          <div className={cx('spacer _bg-black')} />
+          <p className={cx('_text-black')}>
+            I listen to a lot of music. I do not think that makes me unique, however,
+            I enjoy it all the same. If you’d like to see more of my listening habits
+            please check out the{' '}
+            <NextLink href="/music">
+              <a className="font-black _text-black underline-style-solid underline-offset-md underline-thickness-md">
+                music
+              </a>
+            </NextLink>{' '}
+            section.
+          </p>
+          <div className="flex align-center my-6 w-full">
+            <CardWithGlow>
+              <div
                 className={cx(
-                  'font-extrabold',
-                  'text-white dark:text-white',
-                  'md:text-gray-900 md:dark:text-gray-900',
-                  'mb-2 md:mb-4',
-                  'text-sm md:text-3xl',
-                  'leading-normal md:leading-tight',
-                  'tracking-normal md:tracking-tight'
+                  'flex flex-col md:flex-row w-full'
+                  //'mb-0'
                 )}
               >
-                {artist.name}
-              </p>
-              <h2
-                className={cx(
-                  'font-semibold',
-                  'text-white dark:text-white',
-                  'md:text-black md:dark:text-black',
-                  'mb-2 md:mb-6',
-                  'text-xl md:text-4xl',
-                  'leading-normal md:leading-normal',
-                  'tracking-normal md:tracking-tight',
-                  ''
-                )}
-              >
-                <a
-                  aria-label={track.name}
+                <div
                   className={cx(
-                    'underline underline-offset-md',
-                    'underline-thickness-sm md:underline-thickness-md',
-                    'md:hover:text-yellow-900 md:dark:hover:text-yellow-900',
-                    'flex flex-wrap'
+                    'flex flex-col md:w-2/5',
+                    'px-5 py-5',
+                    'md:px-10 md:py-10'
                   )}
-                  href={track.uri}
-                  target="_blank"
-                  rel="noopener noreferrer"
                 >
-                  <SplitText text={track.name} />{' '}
-                  <span className="ml-2 mt-1 text-base inline-flex">
-                    <MdOpenInNew />
-                  </span>
-                </a>
-              </h2>
-              <h3
-                className={cx(
-                  'italic text-sm md:text-3xl md:leading-snug',
-                  'mb-1 md:mb-2',
-                  'text-white dark:text-white',
-                  'md:text-black md:dark:text-black'
-                )}
-              >
-                {album.name}
-              </h3>
-              <h4
-                className={cx(
-                  'italic text-xs md:leading-normal md:text-lg',
-                  'text-white dark:text-white',
-                  'md:text-black md:dark:text-black'
-                )}
-              >
-                {album.year}
-              </h4>
-            </div>
-            <div className="col-start-1 row-start-1 flex md:col-start-2 md:row-span-3 z-0">
-              <div className="w-full grid grid-cols-3 grid-rows-2 gap-2">
-                <div className="relative col-span-3 row-span-2 md:col-span-3">
-                  <Image
-                    alt={`Album cover for “${album.name}” by ${artist.name} (${album.year})`}
-                    height={450}
-                    layout="intrinsic"
-                    src={album.imageUrl ?? '/static/images/placeholder.jpg'}
-                    title={`“${album.name}” by ${artist.name} (${album.year})`}
-                    width={450}
-                  />
+                  <p className="font-black text-xl md:text-2xl _text-black">
+                    {artist.name}
+                  </p>
+                  <div className={cx('spacer bg-gray-600 dark:bg-gray-300')} />
+                  <p className="font-medium text-lg md:text-xl pb-2 md:pb-4 _text-black">
+                    “{track.name}”
+                  </p>
+                  <p className="font-normal text-base md:text-lg pb-2 md:pb-4 _text-black">
+                    Off of “<span className={cx(' font-bold')}>{album.name}</span>”
+                    relased in <span className={cx(' font-bold')}>{album.year}</span>
+                    .
+                  </p>
+                  <p className="text-sm md:text-base _text-black">
+                    Join along{' '}
+                    <a
+                      aria-label={track.name}
+                      className={cx(
+                        'underline-style-solid underline-offset-md underline-thickness-md',
+                        '_text-black'
+                      )}
+                      href={track.uri}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      here
+                      <ExternalLinkIcon className="h-4 w-4 ml-2 mb-1 inline-flex _text-black" />
+                    </a>
+                    .
+                  </p>
+                </div>
+                <div
+                  className={cx(
+                    'flex flex-col md:w-3/5'
+                    // 'md:drop-shadow-xl md:scale-105'
+                  )}
+                >
+                  {!!imageData ? (
+                    <NextImage
+                      alt={`Album Cover for ${album.name}`}
+                      blurDataURL={imageData.base64}
+                      className={cx('rounded')}
+                      key={imageSlug}
+                      layout="intrinsic"
+                      placeholder="blur"
+                      title={`Album Cover for ${album.name}`}
+                      {...imageData.img}
+                    />
+                  ) : null}
+                  {/* <ImageCaption caption={seoImageDescription} /> */}
                 </div>
               </div>
-            </div>
+            </CardWithGlow>
           </div>
-          <p
-            className={cx(
-              'text-center font-medium mt-4',
-              'text-black dark:text-black',
-              'text-xl'
-            )}
-          >
-            I listen to a lot of{' '}
-            <Link href="/music">
-              <a
-                aria-label="music"
-                className="underline underline-offset-md hover:text-yellow-900 text-black dark:text-black"
-              >
-                <SplitText text={'music'} />
-              </a>
-            </Link>
-            .
-          </p>
         </div>
       </div>
     </>

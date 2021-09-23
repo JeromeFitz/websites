@@ -66,6 +66,18 @@ const spotifyFavoriteTracks = [
     },
     artists: [],
     isPlaying: false,
+    meta: {
+      base64:
+        'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAEAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAeEAABAwQDAAAAAAAAAAAAAAADAAECBAUiMQYREv/EABQBAQAAAAAAAAAAAAAAAAAAAAP/xAAYEQEBAAMAAAAAAAAAAAAAAAABAAIRQf/aAAwDAQACEQMRAD8AkKXkt7rHO1XczmYBZAF7jDAbai2Om7dERGYhyXbf/9k=',
+      img: {
+        src: 'https://i.scdn.co/image/ab67616d0000b273230d88bf27d6ca322fb59eb4',
+        width: 640,
+        height: 640,
+        type: 'jpg',
+      },
+      slug: 'httpsiscdncoimageab67616d0000b273230d88bf27d6ca322fb59eb4',
+      url: 'https://i.scdn.co/image/ab67616d0000b273230d88bf27d6ca322fb59eb4',
+    },
     track: {
       id: '7f6CWizFGRfpyOstAbyxy1',
       name: 'Mecca (with JID & EARTHGANG)',

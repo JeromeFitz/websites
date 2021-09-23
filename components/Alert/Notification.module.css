@@ -1,7 +1,7 @@
 /* @todo(tailwind) */
 
 .notificationArea {
-  @apply fixed z-40;
+  @apply fixed z-50;
   @apply w-11/12 md:max-w-sm;
   @apply right-0.5 md:right-4;
   @apply bottom-0.5 md:bottom-5;
@@ -9,7 +9,7 @@
 }
 
 .notificationContainer {
-  @apply absolute bottom-0 right-0 rounded p-6 z-40;
+  @apply absolute bottom-0 right-0 rounded p-6 z-50;
   @apply w-11/12 md:max-w-sm;
   transition: all 0.4s ease;
 }

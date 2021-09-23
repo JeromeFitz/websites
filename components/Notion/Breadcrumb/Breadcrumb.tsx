@@ -1,28 +1,23 @@
-import { HomeIcon, MenuAlt4Icon } from '@heroicons/react/solid'
+import { HomeIcon } from '@heroicons/react/solid'
 import cx from 'clsx'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { AnimateSharedLayout, motion } from 'framer-motion'
+import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion'
 import _lowerCase from 'lodash/lowerCase'
 import _take from 'lodash/take'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 import { useRef } from 'react'
 
+import { ThemeMode } from '~components/Layout'
 // import Avatar from '~components/Avatar'
-import { useUI } from '~context/ManagedUIContext'
 import useSticky from '~hooks/useSticky'
 import { WEBKIT_BACKGROUND__BREAK } from '~lib/constants'
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Breadcrumb = ({ isIndex, title }) => {
   const router = useRouter()
-  const { closeNavigation, openNavigation, displayNavigation } = useUI()
-  const handleClick = () => {
-    displayNavigation ? closeNavigation() : openNavigation()
-    // overlayYSet(displayNavigation ? -100 : 0)
-  }
   let as = ''
   const href = `/[...catchAll]`
 
@@ -48,7 +43,7 @@ const Breadcrumb = ({ isIndex, title }) => {
           `bg-white dark:bg-black`,
           isFix && 'py-2 border-b border-black dark:border-white',
           `py-4`,
-          displayNavigation ? `z-0` : `z-40`,
+          `z-20`,
           ``
         )}
         ref={stickyRef}
@@ -135,58 +130,35 @@ const Breadcrumb = ({ isIndex, title }) => {
           })}
         </motion.ol>
         <div className="ml-auto">
-          <motion.button
-            aria-label={'Open Menu'}
-            className={cx(
-              'ml-4',
-              'text-2xl sm:text-3xl focus:outline-none',
-              'hover:text-gray-600 dark:hover:text-gray-100',
-              'place-self-end'
-            )}
-            onClick={() => handleClick()}
-            key={'menu--open'}
-            initial={{ scale: 0.8, y: 0 }}
-            animate={{ scale: 1, y: 0 }}
-            exit={{ scale: 0.8, y: 0 }}
-            transition={{ duration: 0.2 }}
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.8 }}
-          >
-            {displayNavigation ? null : ( // <XIcon className="h-5 w-5 " />
-              <MenuAlt4Icon className="h-5 w-5 " />
-            )}
-          </motion.button>
+          <ThemeMode />
         </div>
       </motion.nav>
 
       {
         <>
-          <motion.h3
-            className={cx(
-              'flex flex-row items-center',
-              'gradient text-2xl md:text-4xl',
-              'leading-tight md:leading-tight',
-              'mt-0 mb-3'
-              // 'z-0'
-            )}
-            style={WEBKIT_BACKGROUND__BREAK}
-            layout
-            // transition={{ duration: 0.25 }}
-            animate={{
-              y: isFix ? [0, -150] : [-150, 0],
-              rotate: 0,
-              // opacity: isFix ? 0 : 1,
-            }}
-            transition={{ duration: 0.125 }}
-          >
-            {isHomepage ? 'Jerome Fitzgerald' : title}
-          </motion.h3>
-          <div
-            className={cx(
-              'spacer bg-gray-600 dark:bg-gray-300',
-              displayNavigation && 'hidden'
-            )}
-          />
+          <AnimatePresence>
+            <motion.h3
+              className={cx(
+                'flex flex-row items-center',
+                'gradient text-2xl md:text-4xl',
+                'leading-tight md:leading-tight',
+                'mt-0 mb-3'
+                // 'z-0'
+              )}
+              style={WEBKIT_BACKGROUND__BREAK}
+              layout
+              // transition={{ duration: 0.25 }}
+              animate={{
+                y: isFix ? [0, -150] : [-150, 0],
+                rotate: 0,
+                // opacity: isFix ? 0 : 1,
+              }}
+              transition={{ duration: 0.125 }}
+            >
+              {isHomepage ? 'Jerome Fitzgerald' : title}
+            </motion.h3>
+          </AnimatePresence>
+          <div className={cx('spacer bg-gray-600 dark:bg-gray-300')} />
         </>
       }
     </>

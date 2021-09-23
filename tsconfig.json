@@ -36,5 +36,5 @@
     "postcss.config.js",
     "tailwind.config.js"
   ],
-  "exclude": ["node_modules", "zzz/"]
+  "exclude": ["node_modules", "zzz/", "**/*.test.ts"]
 }
