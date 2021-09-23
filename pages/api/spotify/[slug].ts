@@ -16,8 +16,11 @@ const spotifyApi = async ({ query: { limit, slug, time_range } }, res) => {
 
       const { album, artists } = track.item
 
+      // console.dir(`track`)
       // console.dir(track)
+      // console.dir(`album`)
       // console.dir(album)
+      // console.dir(`artists`)
       // console.dir(artists)
 
       const isPlaying = track.is_playing
@@ -54,13 +57,19 @@ const spotifyApi = async ({ query: { limit, slug, time_range } }, res) => {
       const { items } = await responseTopArtists.json()
 
       // @refactor(spotify) prefer spotify schema or normalize consistently
-      const artistsTopArtists = items.slice(0, 10).map((artist) => ({
-        id: artist.id,
-        image: artist.images[0].url,
-        name: artist.name,
-        uri: artist.uri,
-        url: artist.external_urls.spotify,
-      }))
+      const artistsTopArtists = items.slice(0, 10).map((artist) => {
+        console.dir(`artist`)
+        console.dir(artist)
+        return {
+          id: artist.id,
+          image: artist.images[0].url,
+          images: artist.images,
+          genres: artist.genres,
+          name: artist.name,
+          uri: artist.uri,
+          url: artist.external_urls.spotify,
+        }
+      })
 
       return res.status(200).json({ artists: artistsTopArtists })
     case 'top-tracks':
@@ -74,10 +83,16 @@ const spotifyApi = async ({ query: { limit, slug, time_range } }, res) => {
         const trackUri = track.uri
         const trackUrl = track.external_urls.spotify
 
+        // console.dir(`album`)
+        // console.dir(album)
+        // console.dir(`artists`)
+        // console.dir(artists)
+
         return {
           album: {
             id: album.id,
             imageUrl: album.images[0].url,
+            images: album.images,
             name: album.name,
             uri: album.uri,
             url: album.external_urls.spotify,
