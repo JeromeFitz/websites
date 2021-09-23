@@ -97,12 +97,12 @@
     "uuid": "8.3.2"
   },
   "devDependencies": {
-    "@jeromefitz/codestyle": "3.0.5",
-    "@jeromefitz/git-cz": "9.0.5",
-    "@jeromefitz/semantic": "3.0.5",
+    "@jeromefitz/codestyle": "4.0.1",
+    "@jeromefitz/git-cz": "10.0.1",
+    "@jeromefitz/semantic": "4.0.1",
     "@next/bundle-analyzer": "11.1.2",
     "@types/body-scroll-lock": "3.1.0",
-    "@types/jest": "27.0.1",
+    "@types/jest": "27.0.2",
     "@types/lodash": "4.14.173",
     "@types/ms": "0.7.31",
     "@types/node": "16.9.6",
