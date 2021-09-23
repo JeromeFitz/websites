@@ -1,3 +1,6 @@
+import Slugger from 'github-slugger'
+import { getPlaiceholder } from 'plaiceholder'
+
 import { getNowPlaying, getTopArtists, getTopTracks } from '~lib/spotify'
 
 // @todo(routes) Lock this down a bit beter with Typescript
@@ -30,6 +33,10 @@ const spotifyApi = async ({ query: { limit, slug, time_range } }, res) => {
       const trackUri = track.item.uri
       const trackUrl = track.item.external_urls.spotify
 
+      const slugger = new Slugger()
+      const slug = slugger.slug(album.images[0].url)
+      const { base64, img } = await getPlaiceholder(album.images[0].url)
+
       return res.status(200).json({
         album: {
           id: album.id,
@@ -45,6 +52,12 @@ const spotifyApi = async ({ query: { limit, slug, time_range } }, res) => {
         // @refactor(spotify) prefer spotify schema or normalize consistently
         artists,
         isPlaying,
+        meta: {
+          base64,
+          img,
+          slug,
+          url: album.images[0].url,
+        },
         track: {
           id: trackId,
           name: trackName,
@@ -58,8 +71,8 @@ const spotifyApi = async ({ query: { limit, slug, time_range } }, res) => {
 
       // @refactor(spotify) prefer spotify schema or normalize consistently
       const artistsTopArtists = items.slice(0, 10).map((artist) => {
-        console.dir(`artist`)
-        console.dir(artist)
+        // console.dir(`artist`)
+        // console.dir(artist)
         return {
           id: artist.id,
           image: artist.images[0].url,

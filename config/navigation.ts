@@ -1,3 +1,4 @@
+import _filter from 'lodash/filter'
 // const isDev = false
 const isDev = process.env.NODE_ENV !== 'production'
 
@@ -35,4 +36,7 @@ const navigation = [
   },
 ]
 
+const activeLinks = _filter(navigation, 'active')
+
+export { activeLinks }
 export default navigation

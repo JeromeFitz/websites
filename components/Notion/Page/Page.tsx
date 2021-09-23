@@ -112,36 +112,38 @@ const Page = ({ data, props }) => {
         {/* {isEvent && showId && <Meta id={showId} />} */}
         <>
           {!isIndex && <h2 className="text-3xl md:text-4xl">Information</h2>}
-          <div className="spacer--h mb-4" />
+          {!!tagParams && !isIndex && <div className="spacer--h mb-4" />}
           {!!tagParams && !isIndex && (
             <>
               <MetaTags tagParams={tagParams} />
               {/* <div className="spacer--h" /> */}
             </>
           )}
-          <Relations
-            id={id}
-            isIndex={isIndex}
-            properties={properties}
-            relationsMap={
-              routeType === 'events'
-                ? ['shows', 'eventsLineupShowIds']
-                : [
-                    'peopleCast',
-                    'peopleHost',
-                    'peopleWriter',
-                    'peopleProducer',
-                    'peopleDirector',
-                    'peopleDirectorMusical',
-                    'peopleMusic',
-                    'peopleDirectorTechnical',
-                    'peopleCrew',
-                    'peopleThanks',
-                  ]
-            }
-            routeType={routeType}
-            slug={slug}
-          />
+          {!isIndex && (
+            <Relations
+              id={id}
+              isIndex={isIndex}
+              properties={properties}
+              relationsMap={
+                routeType === 'events'
+                  ? ['shows', 'eventsLineupShowIds']
+                  : [
+                      'peopleCast',
+                      'peopleHost',
+                      'peopleWriter',
+                      'peopleProducer',
+                      'peopleDirector',
+                      'peopleDirectorMusical',
+                      'peopleMusic',
+                      'peopleDirectorTechnical',
+                      'peopleCrew',
+                      'peopleThanks',
+                    ]
+              }
+              routeType={routeType}
+              slug={slug}
+            />
+          )}
         </>
       </NotionLayout>
     </>

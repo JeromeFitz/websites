@@ -103,10 +103,16 @@ const Music = () => {
             <Emoji character={`📝️`} margin={true} />
             <span className="italic font-bold mr-1">Note:</span>
             Links will open in, and all data comes from,{' '}
-            <span className="text-green-800 dark:text-green-400 font-medium ml-1.5">
+            <span className="text-green-800 dark:text-green-400 font-medium ml-1">
               Spotify
             </span>
             .
+          </p>
+          <p className="my-4 text-sm">
+            <Emoji character={`📝️`} margin={true} />
+            <span className="italic font-bold mr-1">Note:</span>
+            This page is currently being revamped as well.
+            <Emoji character={`😇️`} margin={true} />
           </p>
           <p className="prose font-medium">
             Please support artists by purchasing music, especially local and indie.
