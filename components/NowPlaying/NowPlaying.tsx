@@ -6,7 +6,7 @@ import Slugger from 'github-slugger'
 import NextImage from 'next/image'
 import NextLink from 'next/link'
 import { useEffect } from 'react'
-import { useInView } from 'react-intersection-observer'
+// import { useInView } from 'react-intersection-observer'
 import useSWR, { useSWRConfig } from 'swr'
 
 import { WEBKIT_BACKGROUND__BREAK } from '~lib/constants'
@@ -86,7 +86,7 @@ const CardWithGlow = ({ children }) => {
 }
 
 const NowPlaying = () => {
-  const [ref, refInView] = useInView()
+  // const [ref, refInView] = useInView()
   const { data } = useSWR('/api/spotify/now-playing', fetcher, {
     fallbackData: initialData,
     refreshInterval: MINUTE,

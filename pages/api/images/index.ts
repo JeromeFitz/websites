@@ -7,6 +7,8 @@ const imagesApi = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const slugger = new Slugger()
   const slug = slugger.slug(url)
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   const { base64, img } = await getPlaiceholder(url)
 
   return res.status(200).json({ base64, img, slug, url })
