@@ -1,29 +1,22 @@
-import { ExternalLinkIcon } from '@heroicons/react/solid'
 import cx from 'clsx'
 import { motion } from 'framer-motion'
-// import Slugger from 'github-slugger'
 import _map from 'lodash/map'
 import _title from 'title'
 import { useSound } from 'use-sound'
 
 // import { useNotification } from '~context/Notification'
-// import ExternalLink from '~components/Dynamic/ext-link'
-import { CardWithGlow, CardWithGlowProps } from '~components/Card'
-import Layout, { Breakout } from '~components/Layout'
-// import { TopArtists, TopTracks } from '~components/Music'
+
+import ExternalLink from '~components/Dynamic/ext-link'
+import Layout from '~components/Layout'
+import { TopArtists, TopTracks } from '~components/Music'
 import Breadcrumb from '~components/Notion/Breadcrumb'
 import Emoji from '~components/Notion/Emoji'
 // import Title from '~components/Notion/Title'
 import Seo from '~components/Seo'
-// import SplitText from '~components/SplitText'
+import SplitText from '~components/SplitText'
 import { useUI } from '~context/ManagedUIContext'
 import useSpotify from '~hooks/useSpotify'
 import { MOTION_PAGE_VARIANTS, WEBKIT_BACKGROUND__BREAK } from '~lib/constants'
-import {
-  spotifyFavoriteAlbums,
-  spotifyFavoriteArtists,
-} from '~lib/spotify/favorites'
-
 /**
  * @todo Move this away from here, and lib/spotify (process.env)
  */
@@ -90,17 +83,6 @@ const Music = () => {
     await setSpotifyTimeRange(data, value)
   }
 
-  // console.dir(`spotifyFavoriteAlbums`)
-  // console.dir(spotifyFavoriteAlbums)
-  // console.dir(`spotifyFavoriteArtists`)
-  // console.dir(spotifyFavoriteArtists)
-
-  // const slugger = new Slugger()
-  // // const imageSlug = slugger.slug(album?.imageUrl)
-  // // const imageData = !!imageSlug && !!images && images[imageSlug]
-  // const imageSlug = spotifyFavoriteArtists[0]?.artists[0]?.meta?.slug
-  // const imageData = spotifyFavoriteArtists[0]?.artists[0]?.meta
-
   return (
     <Layout>
       <Seo {...seo} />
@@ -116,7 +98,7 @@ const Music = () => {
         className={cx('flex flex-col')}
       >
         <h2 style={WEBKIT_BACKGROUND__BREAK}>{description}</h2>
-        <motion.div id="content">
+        <div id="content">
           <p className="my-4 text-sm">
             <Emoji character={`📝️`} margin={true} />
             <span className="italic font-bold mr-1">Note:</span>
@@ -208,144 +190,43 @@ const Music = () => {
           </div>
           <div className="my-4 md:my-6">
             <h2 aria-label="Top Artists" style={WEBKIT_BACKGROUND__BREAK}>
-              Top Artists
+              <SplitText splitBy="letter" text="Top Artists" />
             </h2>
-            {/* <TopArtists /> */}
+            <div className="flex flex-col md:flex-row w-full items-start justify-between">
+              <p className="mb-6 md:mb-8">
+                For 2020 my number one artist was{' '}
+                <span className="block md:inline">
+                  <ExternalLink
+                    className="text-2xl ml-2"
+                    href="spotify:artist:5LhTec3c7dcqBvpLRWbMcf"
+                  >
+                    Madlib.
+                  </ExternalLink>
+                </span>
+              </p>
+            </div>
+            <TopArtists />
           </div>
           <div className="my-8">
             <h2 aria-label="Top Tracks" style={WEBKIT_BACKGROUND__BREAK}>
-              Top Tracks
+              <SplitText splitBy="letter" text="Top Tracks" />
             </h2>
-            {/* <TopTracks /> */}
-          </div>
-        </motion.div>
-      </motion.div>
-      <Breakout>
-        <div
-          className={cx(
-            `min-h-full py-12`,
-            'border-t border-black dark:border-white',
-            // `bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400`
-            `bg-gradient-to-r from-red-200 via-red-300 to-yellow-200`
-          )}
-        >
-          <div
-            className={cx(`flex flex-col w-full max-w-4xl`, `px-2 mx-auto md:px-8`)}
-          >
-            <motion.h3
-              className={cx(
-                'flex flex-row items-center',
-                'gradient text-2xl md:text-4xl',
-                'leading-tight md:leading-tight',
-                'mt-0 mb-3',
-                '_text-black'
-              )}
-              style={WEBKIT_BACKGROUND__BREAK}
-              layout
-              animate={{}}
-              transition={{}}
-            >
-              2020 Recap
-            </motion.h3>
-            <div className={cx('spacer ')} />
-            <div className={cx('spacer _bg-black')} />
-            <p className={cx('_text-black')}>
-              I think it is understated how much music got me through the year that
-              was.
+            <p className="mb-6 md:mb-8 leading-relaxed">
+              <span className="inline md:block">
+                For 2020 my number one song was{' '}
+              </span>
+              <ExternalLink
+                className="text-xl"
+                href="spotify:track:5taqLrLouA4vCjM7ZQpEtW"
+              >
+                “ooh la la (feat. Greg Nice &amp; DJ Premier)”
+              </ExternalLink>{' '}
+              by <span className="text-lg font-bold">Run The Jewels</span>.
             </p>
-            <div className="flex align-center my-6 w-full"></div>
-            <div className={cx('flex flex-col')}>
-              <CardWithGlow>
-                <CardWithGlowProps
-                  headline={spotifyFavoriteArtists[0].artist.name}
-                  subline={`2020 “Favourite Artist”`}
-                  tags={spotifyFavoriteArtists[0].genres}
-                  description={
-                    <>
-                      Describing himself as “a DJ first, producer second, and MC
-                      last,” <span className={cx('font-bold')}>Madlib</span>is the
-                      primary alias of{' '}
-                      <span className={cx('font-bold')}>Otis Jackson</span>, Jr., who
-                      has become one of the most celebrated, prolific, and eclectic
-                      artists in hip-hop since emerging on the scene in the early
-                      ‘90s.
-                    </>
-                  }
-                  share={
-                    <>
-                      Read more and listen{' '}
-                      <a
-                        aria-label={spotifyFavoriteArtists[0].artist.name}
-                        className={cx(
-                          'underline-style-solid underline-offset-md underline-thickness-md',
-                          '_text-black'
-                        )}
-                        href={spotifyFavoriteArtists[0].artists[0].uri}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        here
-                        <ExternalLinkIcon className="h-4 w-4 ml-2 mb-1 inline-flex _text-black" />
-                      </a>
-                      .
-                    </>
-                  }
-                  slug={spotifyFavoriteArtists[0]?.artists[0]?.meta?.slug}
-                  meta={spotifyFavoriteArtists[0]?.artists[0]?.meta}
-                />
-              </CardWithGlow>
-              <div className={cx('spacer my-6 md:my-8')} />
-              <CardWithGlow>
-                <CardWithGlowProps
-                  reverse={true}
-                  headline={`“${spotifyFavoriteAlbums[0].track.name}”`}
-                  subline={`2020 “Favourite Track”`}
-                  tags={spotifyFavoriteAlbums[0].genres}
-                  description={
-                    <>
-                      Off of “
-                      <span className={cx(' font-bold')}>
-                        {spotifyFavoriteAlbums[0].album.name}
-                      </span>
-                      ” released in{' '}
-                      <span className={cx(' font-bold')}>
-                        {spotifyFavoriteAlbums[0].album.year}
-                      </span>{' '}
-                      by{' '}
-                      <span className={cx(' font-bold')}>
-                        {spotifyFavoriteAlbums[0].artists[0].name}
-                      </span>
-                      .
-                    </>
-                  }
-                  share={
-                    <>
-                      Join along{' '}
-                      <a
-                        aria-label={spotifyFavoriteAlbums[0].artist.name}
-                        className={cx(
-                          'underline-style-solid underline-offset-md underline-thickness-md',
-                          '_text-black'
-                        )}
-                        href={spotifyFavoriteAlbums[0].artists[0].uri}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        here
-                        <ExternalLinkIcon className="h-4 w-4 ml-2 mb-1 inline-flex _text-black" />
-                      </a>
-                      .
-                    </>
-                  }
-                  slug={spotifyFavoriteAlbums[0]?.artists[0]?.meta?.slug}
-                  meta={spotifyFavoriteAlbums[0]?.artists[0]?.meta}
-                />
-              </CardWithGlow>
-              <div className={cx('spacer my-6 md:my-8')} />
-            </div>
+            <TopTracks />
           </div>
         </div>
-      </Breakout>
+      </motion.div>
     </Layout>
   )
 }

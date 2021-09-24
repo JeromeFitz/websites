@@ -35,6 +35,7 @@ const spotifyApi = async ({ query: { limit, slug, time_range } }, res) => {
       const trackUrl = track.item.external_urls.spotify
 
       const artistIds = _map(artists, (artist) => artist.id)
+      // const artistIds = ['7izarc0fRIPbdZ8cVyChRf']
       const dataGenres = await getGenres({ ids: artistIds.join('%2C') })
       const dataGenresJson = await dataGenres.json()
       const genres = []
@@ -51,6 +52,12 @@ const spotifyApi = async ({ query: { limit, slug, time_range } }, res) => {
         album: {
           id: album.id,
           imageUrl: album.images[0].url,
+          meta: {
+            base64,
+            img,
+            slug,
+            url: album.images[0].url,
+          },
           name: album.name,
           uri: album.uri,
           url: album.external_urls.spotify,
@@ -63,12 +70,6 @@ const spotifyApi = async ({ query: { limit, slug, time_range } }, res) => {
         artists,
         genres,
         isPlaying,
-        meta: {
-          base64,
-          img,
-          slug,
-          url: album.images[0].url,
-        },
         track: {
           id: trackId,
           name: trackName,
@@ -81,14 +82,24 @@ const spotifyApi = async ({ query: { limit, slug, time_range } }, res) => {
       const { items } = await responseTopArtists.json()
 
       // @refactor(spotify) prefer spotify schema or normalize consistently
-      const artistsTopArtists = items.slice(0, 10).map((artist) => {
+      const artistsTopArtists = items.slice(0, 10).map(async (artist) => {
         // console.dir(`artist`)
         // console.dir(artist)
+        const slugger = new Slugger()
+        const slug = slugger.slug(artist.images[0].url)
+        const { base64, img } = await getPlaiceholder(artist.images[0].url)
+
         return {
           id: artist.id,
           image: artist.images[0].url,
           images: artist.images,
           genres: artist.genres,
+          meta: {
+            base64,
+            img,
+            slug,
+            url: album.images[0].url,
+          },
           name: artist.name,
           uri: artist.uri,
           url: artist.external_urls.spotify,
