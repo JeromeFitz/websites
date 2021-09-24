@@ -2,12 +2,13 @@
 import { ExternalLinkIcon } from '@heroicons/react/solid'
 import cx from 'clsx'
 import { motion } from 'framer-motion'
-import Slugger from 'github-slugger'
+// import Slugger from 'github-slugger'
 import NextImage from 'next/image'
 import NextLink from 'next/link'
-import { useEffect } from 'react'
+// import { useEffect } from 'react'
 // import { useInView } from 'react-intersection-observer'
-import useSWR, { useSWRConfig } from 'swr'
+// import useSWR, { useSWRConfig } from 'swr'
+import useSWR from 'swr'
 
 import { WEBKIT_BACKGROUND__BREAK } from '~lib/constants'
 import fetcher from '~lib/fetcher'
@@ -101,19 +102,19 @@ const NowPlaying = () => {
   /**
    * @images
    */
-  const { mutate } = useSWRConfig()
-  const { data: images } = useSWR('images')
-  useEffect(() => {
-    const newImage = !!meta && {
-      [meta.slug]: {
-        base64: meta.base64,
-        id: meta.slug,
-        img: meta.img,
-        url: meta.url,
-      },
-    }
-    !!newImage && void mutate('images', { ...images, ...newImage })
-  }, [images, meta, mutate])
+  // const { mutate } = useSWRConfig()
+  // const { data: images } = useSWR('images')
+  // useEffect(() => {
+  //   const newImage = !!meta && {
+  //     [meta.slug]: {
+  //       base64: meta.base64,
+  //       id: meta.slug,
+  //       img: meta.img,
+  //       url: meta.url,
+  //     },
+  //   }
+  //   !!newImage && void mutate('images', { ...images, ...newImage })
+  // }, [images, meta, mutate])
 
   const title = isPlaying ? 'Listening To' : 'Listening To'
 
@@ -135,11 +136,11 @@ const NowPlaying = () => {
   // console.dir(`meta`)
   // console.dir(meta)
 
-  const slugger = new Slugger()
-  const imageSlug = slugger.slug(album?.imageUrl)
-  const imageData = !!imageSlug && !!images && images[imageSlug]
-  // const imageSlug = meta?.slug
-  // const imageData = meta
+  // const slugger = new Slugger()
+  // const imageSlug = slugger.slug(album?.imageUrl)
+  // const imageData = !!imageSlug && !!images && images[imageSlug]
+  const imageSlug = meta?.slug
+  const imageData = meta
 
   return (
     <>
