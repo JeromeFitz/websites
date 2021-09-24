@@ -1,7 +1,9 @@
 import Slugger from 'github-slugger'
 import _map from 'lodash/map'
+import _noop from 'lodash/noop'
 import { getPlaiceholder } from 'plaiceholder'
 
+import asyncForEach from '~lib/asyncForEach'
 import { getGenres, getNowPlaying, getTopArtists, getTopTracks } from '~lib/spotify'
 
 // @todo(routes) Lock this down a bit beter with Typescript
@@ -79,17 +81,29 @@ const spotifyApi = async ({ query: { limit, slug, time_range } }, res) => {
       })
     case 'top-artists':
       const responseTopArtists = await getTopArtists({ limit, time_range })
-      const { items } = await responseTopArtists.json()
+      const { items: itemsArtists } = await responseTopArtists.json()
 
-      // @refactor(spotify) prefer spotify schema or normalize consistently
-      const artistsTopArtists = items.slice(0, 10).map(async (artist) => {
+      // @todo(types) any
+      const dataArtists: any[] = []
+      const loopArtists = itemsArtists.slice(0, 10)
+      await asyncForEach(loopArtists, async (artist: any) => {
         // console.dir(`artist`)
         // console.dir(artist)
         const slugger = new Slugger()
         const slug = slugger.slug(artist.images[0].url)
         const { base64, img } = await getPlaiceholder(artist.images[0].url)
 
-        return {
+        // const artistIds = _map(artists, (artist) => artist.id)
+        const artistIds = [artist.id]
+        const dataGenres = await getGenres({ ids: artistIds.join('%2C') })
+        const dataGenresJson = await dataGenres.json()
+        const genres = []
+        _map(
+          dataGenresJson.artists,
+          (artist) => !!artist && genres.push(...artist?.genres)
+        )
+
+        const dataArtistInner = {
           id: artist.id,
           image: artist.images[0].url,
           images: artist.images,
@@ -98,36 +112,58 @@ const spotifyApi = async ({ query: { limit, slug, time_range } }, res) => {
             base64,
             img,
             slug,
-            url: album.images[0].url,
+            url: artist.images[0].url,
           },
           name: artist.name,
           uri: artist.uri,
           url: artist.external_urls.spotify,
         }
-      })
+        dataArtists.push(dataArtistInner)
+      }).catch(_noop)
 
-      return res.status(200).json({ artists: artistsTopArtists })
+      return res.status(200).json({ artists: dataArtists })
     case 'top-tracks':
       const responseTopTracks = await getTopTracks({ limit, time_range })
-      const { items: itemsTopTracks } = await responseTopTracks.json()
+      const { items: itemsTracks } = await responseTopTracks.json()
 
-      const tracks = itemsTopTracks.slice(0, 10).map((track) => {
+      // @todo(types) any
+      const dataTracks: any[] = []
+      const loopTracks = itemsTracks.slice(0, 10)
+      await asyncForEach(loopTracks, async (track: any) => {
         const { album, artists } = track
+
         const trackId = track.id
         const trackName = track.name
         const trackUri = track.uri
         const trackUrl = track.external_urls.spotify
 
-        // console.dir(`album`)
-        // console.dir(album)
-        // console.dir(`artists`)
-        // console.dir(artists)
+        const slugger = new Slugger()
+        const slug = slugger.slug(album.images[0].url)
+        const { base64, img } = await getPlaiceholder(album.images[0].url)
 
-        return {
+        const artistIds = _map(artists, (artist) => artist.id)
+        // const artistIds = ['7izarc0fRIPbdZ8cVyChRf']
+        const dataGenres = await getGenres({ ids: artistIds.join('%2C') })
+        const dataGenresJson = await dataGenres.json()
+        const genres = []
+        _map(
+          dataGenresJson.artists,
+          (artist) => !!artist && genres.push(...artist?.genres)
+        )
+        // console.dir(`genres`)
+        // console.dir(genres)
+
+        const dataTrackInner = {
           album: {
             id: album.id,
             imageUrl: album.images[0].url,
             images: album.images,
+            meta: {
+              base64,
+              img,
+              slug,
+              url: album.images[0].url,
+            },
             name: album.name,
             uri: album.uri,
             url: album.external_urls.spotify,
@@ -138,6 +174,7 @@ const spotifyApi = async ({ query: { limit, slug, time_range } }, res) => {
           },
           // @refactor(spotify) prefer spotify schema or normalize consistently
           artists,
+          genres,
           isPlaying: false,
           track: {
             id: trackId,
@@ -146,9 +183,10 @@ const spotifyApi = async ({ query: { limit, slug, time_range } }, res) => {
             url: trackUrl,
           },
         }
-      })
+        dataTracks.push(dataTrackInner)
+      }).catch(_noop)
 
-      return res.status(200).json({ tracks })
+      return res.status(200).json({ tracks: dataTracks })
     default:
       res.status(404).json({
         status: 404,

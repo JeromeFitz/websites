@@ -127,13 +127,11 @@ export const getTopTracks = async ({
     time_range,
   })
 
-  const data = fetch(url, {
+  return fetch(url, {
     headers: {
       Authorization: `Bearer ${access_token}`,
     },
   })
-
-  return data
 }
 
 export const getGenres = async ({ ids }) => {
