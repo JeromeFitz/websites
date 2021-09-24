@@ -46,6 +46,7 @@ const TIME_RANGE: TIME_RANGE_PROPS = {
 }
 
 const ENDPOINT = {
+  ARTISTS: `https://api.spotify.com/v1/artists`,
   NOW_PLAYING: `https://api.spotify.com/v1/me/player/currently-playing`,
   TOP_ARTISTS: `https://api.spotify.com/v1/me/top/artists`,
   TOP_TRACKS: `https://api.spotify.com/v1/me/top/tracks`,
@@ -126,7 +127,22 @@ export const getTopTracks = async ({
     time_range,
   })
 
-  return fetch(url, {
+  const data = fetch(url, {
+    headers: {
+      Authorization: `Bearer ${access_token}`,
+    },
+  })
+
+  return data
+}
+
+export const getGenres = async ({ ids }) => {
+  const { access_token } = await getAccessToken()
+
+  const url = ENDPOINT.ARTISTS
+  const urlCustom = url + `?ids=${ids.replace(',', '%2C')}`
+
+  return fetch(urlCustom, {
     headers: {
       Authorization: `Bearer ${access_token}`,
     },

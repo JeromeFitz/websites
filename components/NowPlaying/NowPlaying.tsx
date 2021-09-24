@@ -2,13 +2,16 @@
 import { ExternalLinkIcon } from '@heroicons/react/solid'
 import cx from 'clsx'
 import { motion } from 'framer-motion'
-// import Slugger from 'github-slugger'
+import Slugger from 'github-slugger'
+import _map from 'lodash/map'
+import _slice from 'lodash/slice'
 import NextImage from 'next/image'
 import NextLink from 'next/link'
 // import { useEffect } from 'react'
 // import { useInView } from 'react-intersection-observer'
 // import useSWR, { useSWRConfig } from 'swr'
 import useSWR from 'swr'
+import _title from 'title'
 
 import { WEBKIT_BACKGROUND__BREAK } from '~lib/constants'
 import fetcher from '~lib/fetcher'
@@ -96,9 +99,10 @@ const NowPlaying = () => {
   // @refactor(swr) This a little convulated
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
-  const { album, artist, isPlaying, meta, track } =
+  const { album, artist, genres, isPlaying, meta, track } =
     data.isPlaying || !!data.artist ? data : initialData
 
+  const genr3 = _slice(genres, 0, 3)
   /**
    * @images
    */
@@ -136,7 +140,7 @@ const NowPlaying = () => {
   // console.dir(`meta`)
   // console.dir(meta)
 
-  // const slugger = new Slugger()
+  const slugger = new Slugger()
   // const imageSlug = slugger.slug(album?.imageUrl)
   // const imageData = !!imageSlug && !!images && images[imageSlug]
   const imageSlug = meta?.slug
@@ -201,10 +205,17 @@ const NowPlaying = () => {
                     {artist.name}
                   </p>
                   <div className={cx('spacer bg-gray-600 dark:bg-gray-300')} />
-                  <p className="font-medium text-lg md:text-xl pb-2 md:pb-4 _text-black">
+                  <p className="font-medium text-lg md:text-xl pb-1 md:pb-2 _text-black">
                     “{track.name}”
                   </p>
-                  <p className="font-normal text-base md:text-lg pb-2 md:pb-4 _text-black">
+                  <ul className={cx('h-auto mb-1 md:mb-2')}>
+                    {_map(genr3, (genre) => (
+                      <li className={cx(`badge-xs`)} key={slugger.slug(genre)}>
+                        {_title(genre)}
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="font-normal text-base md:text-lg pb-1 md:pb-1 _text-black">
                     Off of “<span className={cx(' font-bold')}>{album.name}</span>”
                     released in{' '}
                     <span className={cx(' font-bold')}>{album.year}</span>.
