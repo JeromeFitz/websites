@@ -4,50 +4,144 @@
 
 const spotifyFavoriteAlbums = [
   {
+    album: {
+      id: '6cx4GVNs03Pu4ZczRnWiLd',
+      imageUrl: 'https://i.scdn.co/image/ab67616d0000b273e064b2b86b27fadd8abaf618',
+      meta: {
+        base64:
+          'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAEAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAiEAABAgMJAAAAAAAAAAAAAAABAAMCBBEGEhMWFyExQZH/xAAVAQEBAAAAAAAAAAAAAAAAAAAEBv/EABoRAAIDAQEAAAAAAAAAAAAAAAECAAMRMZH/2gAMAwEAAhEDEQA/ALrT3EaaGbbVi5AIaicbJPdSS3vz4AiIlMx3sqXtsBwMfZ//2Q==',
+        img: {
+          src: 'https://i.scdn.co/image/ab67616d00001e02bed9d43f754cc05ae29c2c85',
+          width: 300,
+          height: 300,
+          type: 'jpg',
+        },
+        slug: 'httpsiscdncoimageab67616d00001e02bed9d43f754cc05ae29c2c85',
+        url: 'https://i.scdn.co/image/ab67616d00001e02bed9d43f754cc05ae29c2c85',
+      },
+      name: 'RTJ4',
+      uri: '',
+      url: 'https://open.spotify.com/album/6cx4GVNs03Pu4ZczRnWiLd',
+      year: '2020',
+    },
     artist: {
-      name: 'Buscrates, Anda',
+      name: 'Run The Jewels, Greg Nice, DJ Premier',
     },
     artists: [
       {
         external_urls: {
-          spotify: 'https://open.spotify.com/artist/2xVtLMwf4oZwJT5d1J5289',
+          spotify: 'https://open.spotify.com/artist/4RnBFZRiMLRyZy0AzzTg2C',
         },
-        href: 'https://api.spotify.com/v1/artists/2xVtLMwf4oZwJT5d1J5289',
-        id: '2xVtLMwf4oZwJT5d1J5289',
-        name: 'Buscrates',
+        href: 'https://api.spotify.com/v1/artists/4RnBFZRiMLRyZy0AzzTg2C',
+        id: '4RnBFZRiMLRyZy0AzzTg2C',
+        meta: {
+          base64:
+            'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAEAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAf/xAAdEAEAAgICAwAAAAAAAAAAAAABAgMABAYRBxJh/8QAFAEBAAAAAAAAAAAAAAAAAAAABf/EABcRAQEBAQAAAAAAAAAAAAAAAAECADH/2gAMAwEAAhEDEQA/AJjDzDyzjxLT1Nqu2pnK3u73UZSVDqQB8xjGOV1xcxKCm//Z',
+          img: {
+            src: 'https://i.scdn.co/image/ab6772690000dd224ac0d170ad59dd806b9824b8',
+            width: 500,
+            height: 500,
+            type: 'jpg',
+          },
+          slug: 'httpsiscdncoimageab6772690000dd224ac0d170ad59dd806b9824b8',
+          url: 'https://i.scdn.co/image/ab6772690000dd224ac0d170ad59dd806b9824b8',
+        },
+        name: 'Run The Jewels',
         type: 'artist',
-        uri: 'spotify:artist:2xVtLMwf4oZwJT5d1J5289',
+        uri: 'spotify:artist:4RnBFZRiMLRyZy0AzzTg2C',
       },
       {
         external_urls: {
-          spotify: 'https://open.spotify.com/artist/5bquQfqH9CFJ15P8ArOXea',
+          spotify: 'https://open.spotify.com/artist/11QdxwAGVKkoLuarCX7L3N',
         },
-        href: 'https://api.spotify.com/v1/artists/5bquQfqH9CFJ15P8ArOXea',
-        id: '5bquQfqH9CFJ15P8ArOXea',
-        name: 'Anda',
+        href: 'https://api.spotify.com/v1/artists/11QdxwAGVKkoLuarCX7L3N',
+        id: '11QdxwAGVKkoLuarCX7L3N',
+        meta: {
+          base64:
+            'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAEAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAf/xAAgEAABAwQCAwAAAAAAAAAAAAABAAIEAwYRIQcSFGFx/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AI9M5hvuNId4twyqIqYqPGn9nEbOXgkfBr0iIg//2Q==',
+          img: {
+            src: 'https://i.scdn.co/image/9e6f4734630fb9297ac6d24a778d4d97dbdc95f6',
+            width: 640,
+            height: 628,
+            type: 'jpg',
+          },
+          slug: 'httpsiscdncoimage9e6f4734630fb9297ac6d24a778d4d97dbdc95f6',
+          url: 'https://i.scdn.co/image/9e6f4734630fb9297ac6d24a778d4d97dbdc95f6',
+        },
+        name: 'Greg Nice',
         type: 'artist',
-        uri: 'spotify:artist:5bquQfqH9CFJ15P8ArOXea',
+        uri: 'spotify:artist:11QdxwAGVKkoLuarCX7L3N',
+      },
+      {
+        external_urls: {
+          spotify: 'https://open.spotify.com/artist/6GEykX11lQqp92UVOQQCC7',
+        },
+        href: 'https://api.spotify.com/v1/artists/6GEykX11lQqp92UVOQQCC7',
+        id: '6GEykX11lQqp92UVOQQCC7',
+        meta: {
+          base64:
+            'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAEAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAf/xAAeEAABBAIDAQAAAAAAAAAAAAACAAEDBAURByExcf/EABQBAQAAAAAAAAAAAAAAAAAAAAL/xAAWEQEBAQAAAAAAAAAAAAAAAAABACH/2gAMAwEAAhEDEQA/AJNa5Sz9LK5KeuFASyFk7solC5MMh62w7J3YevPqIiICbBxv/9k=',
+          img: {
+            src: 'https://i.scdn.co/image/ab6761610000e5eb7bbda26434643249f6228ea1',
+            width: 640,
+            height: 640,
+            type: 'jpg',
+          },
+          slug: 'httpsiscdncoimageab6761610000e5eb7bbda26434643249f6228ea1',
+          url: 'https://i.scdn.co/image/ab6761610000e5eb7bbda26434643249f6228ea1',
+        },
+        name: 'DJ Premier',
+        type: 'artist',
+        uri: 'spotify:artist:6GEykX11lQqp92UVOQQCC7',
       },
     ],
-    id: '6dByOY5Bt5fXIAulZldIGW',
-    imageUrl: 'https://i.scdn.co/image/ab67616d0000b273e064b2b86b27fadd8abaf618',
-    name: 'Blasting Off',
-    uri: 'spotify:album:6dByOY5Bt5fXIAulZldIGW',
-    url: 'https://open.spotify.com/album/6dByOY5Bt5fXIAulZldIGW',
-    year: '2020',
+    genres: ['hip hop', 'political hip hop'],
+    track: {
+      id: '5taqLrLouA4vCjM7ZQpEtW',
+      name: 'ohh la la (feat. Greg Nice, DJ Premier)',
+      uri: 'spotify:track:5taqLrLouA4vCjM7ZQpEtW',
+      url: 'https://open.spotify.com/track/5taqLrLouA4vCjM7ZQpEtW',
+    },
   },
 ]
 
 const spotifyFavoriteArtists = [
   {
-    external_urls: {
-      spotify: 'https://open.spotify.com/artist/2xVtLMwf4oZwJT5d1J5289',
+    artist: {
+      name: 'Madlib',
     },
-    id: '2xVtLMwf4oZwJT5d1J5289',
-    imageUrl: 'https://i.scdn.co/image/755e8552908351489847be25e209546fefceeb58',
-    name: 'Buscrates',
-    uri: 'spotify:artist:2xVtLMwf4oZwJT5d1J5289',
-    url: 'https://open.spotify.com/artist/2xVtLMwf4oZwJT5d1J5289',
+    artists: [
+      {
+        external_urls: {
+          spotify: 'https://open.spotify.com/artist/5LhTec3c7dcqBvpLRWbMcf',
+        },
+        id: '5LhTec3c7dcqBvpLRWbMcf',
+        imageUrl: 'https://i.scdn.co/image/4dd30d4be1752b29e1ad6ad61f3bf5ba4a8edcdd',
+        meta: {
+          base64:
+            'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAEAAMDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAH/xAAdEAABBAMBAQAAAAAAAAAAAAACAAEEBgMFEhEx/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAH/xAAaEQACAgMAAAAAAAAAAAAAAAAAAgERAyEx/9oADAMBAAIRAxEAPwCVG32Pe1+Ls5m6ljIkueQxxMAiz9l8bl/GRESUW+EXI1Rs/9k=',
+          img: {
+            src: 'https://i.scdn.co/image/4dd30d4be1752b29e1ad6ad61f3bf5ba4a8edcdd',
+            width: 560,
+            height: 700,
+            type: 'jpg',
+          },
+          slug: 'httpsiscdncoimage4dd30d4be1752b29e1ad6ad61f3bf5ba4a8edcdd',
+          url: 'https://i.scdn.co/image/4dd30d4be1752b29e1ad6ad61f3bf5ba4a8edcdd',
+        },
+        name: 'Madlib',
+        uri: 'spotify:artist:5LhTec3c7dcqBvpLRWbMcf',
+        url: 'https://open.spotify.com/artist/5LhTec3c7dcqBvpLRWbMcf',
+      },
+    ],
+    genres: [
+      'alternative hip hop',
+      // 'escape room',
+      'funk',
+      'hip hop',
+      // 'psychedelic hip hop',
+    ],
+    isPlaying: false,
   },
 ]
 
@@ -56,6 +150,18 @@ const spotifyFavoriteTracks = [
     album: {
       id: '2L13Kv0sx6GPAHo7QTZLAy',
       imageUrl: 'https://i.scdn.co/image/ab67616d0000b273230d88bf27d6ca322fb59eb4',
+      meta: {
+        base64:
+          'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAEAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAeEAABAwQDAAAAAAAAAAAAAAADAAECBAUiMQYREv/EABQBAQAAAAAAAAAAAAAAAAAAAAP/xAAYEQEBAAMAAAAAAAAAAAAAAAABAAIRQf/aAAwDAQACEQMRAD8AkKXkt7rHO1XczmYBZAF7jDAbai2Om7dERGYhyXbf/9k=',
+        img: {
+          src: 'https://i.scdn.co/image/ab67616d0000b273230d88bf27d6ca322fb59eb4',
+          width: 640,
+          height: 640,
+          type: 'jpg',
+        },
+        slug: 'httpsiscdncoimageab67616d0000b273230d88bf27d6ca322fb59eb4',
+        url: 'https://i.scdn.co/image/ab67616d0000b273230d88bf27d6ca322fb59eb4',
+      },
       name: 'Spilligion',
       uri: '',
       url: 'https://open.spotify.com/album/2L13Kv0sx6GPAHo7QTZLAy',
@@ -64,20 +170,32 @@ const spotifyFavoriteTracks = [
     artist: {
       name: 'Spillage Village, JID, EARTHGANG',
     },
-    artists: [],
-    isPlaying: false,
-    meta: {
-      base64:
-        'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAEAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAeEAABAwQDAAAAAAAAAAAAAAADAAECBAUiMQYREv/EABQBAQAAAAAAAAAAAAAAAAAAAAP/xAAYEQEBAAMAAAAAAAAAAAAAAAABAAIRQf/aAAwDAQACEQMRAD8AkKXkt7rHO1XczmYBZAF7jDAbai2Om7dERGYhyXbf/9k=',
-      img: {
-        src: 'https://i.scdn.co/image/ab67616d0000b273230d88bf27d6ca322fb59eb4',
-        width: 640,
-        height: 640,
-        type: 'jpg',
+    artists: [
+      {
+        external_urls: {
+          spotify: 'https://open.spotify.com/artist/7izarc0fRIPbdZ8cVyChRf',
+        },
+        href: 'https://api.spotify.com/v1/artists/7izarc0fRIPbdZ8cVyChRf',
+        id: '7izarc0fRIPbdZ8cVyChRf',
+        meta: {
+          base64:
+            'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAACAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAP/xAAeEAABBAEFAAAAAAAAAAAAAAABAAIDBAUGESFBYf/EABQBAQAAAAAAAAAAAAAAAAAAAAP/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCjL1uDB6cZBanjYcLQcWskIG7q0ZJ47JJJ9KIiAz//2Q==',
+          img: {
+            src: 'https://i.scdn.co/image/ab6761670000ecd492c596c9764cf3bf6f98ffa5',
+            width: 640,
+            height: 369,
+            type: 'jpg',
+          },
+          slug: 'httpsiscdncoimageab6761670000ecd492c596c9764cf3bf6f98ffa5',
+          url: 'https://i.scdn.co/image/ab6761670000ecd492c596c9764cf3bf6f98ffa5',
+        },
+        name: 'Spillage Village',
+        type: 'artist',
+        uri: 'spotify:artist:7izarc0fRIPbdZ8cVyChRf',
       },
-      slug: 'httpsiscdncoimageab67616d0000b273230d88bf27d6ca322fb59eb4',
-      url: 'https://i.scdn.co/image/ab67616d0000b273230d88bf27d6ca322fb59eb4',
-    },
+    ],
+    genres: ['hip hop', 'rap', 'underground hip hop'],
+    isPlaying: false,
     track: {
       id: '7f6CWizFGRfpyOstAbyxy1',
       name: 'Mecca (with JID & EARTHGANG)',
