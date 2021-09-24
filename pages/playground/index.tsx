@@ -124,7 +124,7 @@ const Playground = () => {
         {/* <Title emoji={``} id={`fdsajklfads`} title={title} /> */}
         <Breadcrumb isIndex={true} title={title} />
         <h4>
-          Hello <WavingHand />
+          Halo <WavingHand />
         </h4>
         <motion.div
           key={`page-playground`}

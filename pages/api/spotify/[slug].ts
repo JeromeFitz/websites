@@ -4,7 +4,13 @@ import _noop from 'lodash/noop'
 import { getPlaiceholder } from 'plaiceholder'
 
 import asyncForEach from '~lib/asyncForEach'
-import { getGenres, getNowPlaying, getTopArtists, getTopTracks } from '~lib/spotify'
+import {
+  getBio,
+  getGenres,
+  getNowPlaying,
+  getTopArtists,
+  getTopTracks,
+} from '~lib/spotify'
 
 // @todo(routes) Lock this down a bit beter with Typescript
 // const allowedRoutes = ['now-playing', 'top-artists', 'top-tracks']
@@ -103,7 +109,17 @@ const spotifyApi = async ({ query: { limit, slug, time_range } }, res) => {
           (artist) => !!artist && genres.push(...artist?.genres)
         )
 
+        let biography = { text: null }
+        // @hack(spotify) just atned to see if I _could_ do this
+        const spotifyHackForBioFlag = false
+        if (spotifyHackForBioFlag) {
+          const dataBio = await getBio({ id: artist.id })
+          const dataBioJson = await dataBio.json()
+          biography = dataBioJson?.data?.artist?.profile?.biography
+        }
+
         const dataArtistInner = {
+          biography,
           id: artist.id,
           image: artist.images[0].url,
           images: artist.images,

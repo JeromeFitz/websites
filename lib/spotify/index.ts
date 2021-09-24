@@ -146,3 +146,42 @@ export const getGenres = async ({ ids }) => {
     },
   })
 }
+
+export const getBio = async ({ id }) => {
+  const url = `https://api-partner.spotify.com/pathfinder/v1/`
+  const urlCustom =
+    // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
+    url +
+    `query?operationName=queryArtistOverview&variables=%7B%22uri%22%3A%22spotify%3Aartist%3A` +
+    id +
+    `%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22d66221ea13998b2f81883c5187d174c8646e4041d67f5b1e103bc262d447e3a0%22%7D%7D`
+
+  // // @hack(spotify) this is borderline unethical but i am curious
+  // // const { access_token } = await getAccessToken()
+  const access_token = process.env.SPOTIFY_HACK_PATHFINDER_TOKEN
+
+  return await fetch(urlCustom, {
+    headers: {
+      'accept-encoding': 'gzip, deflate, br',
+      'accept-language': 'en',
+      'app-platform': 'OSX',
+      'client-token': process.env.SPOTIFY_HACK_CLIENT_TOKEN,
+      'content-type': 'application/json;charset=UTF-8',
+      'sec-ch-ua-mobile': '?0',
+      'sec-ch-ua': '"Chromium";v="91"',
+      'sec-fetch-dest': 'empty',
+      'sec-fetch-mode': 'cors',
+      'sec-fetch-site': 'same-site',
+      'spotiy-app-version': '1.1.68.632',
+      'user-agent':
+        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.164 Spotify/1.1.68.632 Safari/537.36',
+      authorization: `Bearer ${access_token}`,
+      authority: 'api-partner.spotify.com',
+      accept: 'application/json',
+      dnt: '1',
+      origin: 'https://xpui.app.spotify.com',
+      referer: 'https://xpui.app.spotify.com/',
+    },
+  })
+}
+//

@@ -23,7 +23,8 @@ const CardWithGlowProps = ({
   return (
     <div
       className={cx(
-        'flex flex-col md:flex-row w-full',
+        'flex flex-col md:flex-row w-full min-h-full',
+        // 'h-80',
         reverse && 'md:flex-row-reverse'
         //'mb-0'
       )}

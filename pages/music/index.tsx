@@ -1,67 +1,32 @@
 import { ExternalLinkIcon } from '@heroicons/react/solid'
 import cx from 'clsx'
 import { motion } from 'framer-motion'
-// import Slugger from 'github-slugger'
 import _map from 'lodash/map'
+// import { useState } from 'react'
 import _title from 'title'
 import { useSound } from 'use-sound'
 
-// import { useNotification } from '~context/Notification'
-// import ExternalLink from '~components/Dynamic/ext-link'
 import { CardWithGlow, CardWithGlowProps } from '~components/Card'
 import Layout, { Breakout } from '~components/Layout'
-// import { TopArtists, TopTracks } from '~components/Music'
+import { TopArtists, TopTracks } from '~components/Music'
 import Breadcrumb from '~components/Notion/Breadcrumb'
 import Emoji from '~components/Notion/Emoji'
-// import Title from '~components/Notion/Title'
 import Seo from '~components/Seo'
-// import SplitText from '~components/SplitText'
 import { useUI } from '~context/ManagedUIContext'
 import useSpotify from '~hooks/useSpotify'
-import { MOTION_PAGE_VARIANTS, WEBKIT_BACKGROUND__BREAK } from '~lib/constants'
+import {
+  MOTION_PAGE_VARIANTS,
+  TIME_RANGE,
+  TIME_RANGE_ITEM_PROPS,
+  WEBKIT_BACKGROUND__BREAK,
+} from '~lib/constants'
 import {
   spotifyFavoriteAlbums,
   spotifyFavoriteArtists,
 } from '~lib/spotify/favorites'
 
-/**
- * @todo Move this away from here, and lib/spotify (process.env)
- */
-export type TIME_RANGE_ITEM_PROPS = {
-  description: string
-  time_range: string
-  title: string
-  value: string
-}
-export type TIME_RANGE_PROPS = {
-  [id: string]: TIME_RANGE_ITEM_PROPS
-}
-
-export const TIME_RANGE: TIME_RANGE_PROPS = {
-  // All-Time
-  long: {
-    description: 'Since March 2020.',
-    time_range: 'long_term',
-    title: 'All-Time',
-    value: 'long_term',
-  },
-  // ~6 Months
-  medium: {
-    description: 'Half a year of music.',
-    time_range: 'medium_term',
-    title: '~6 Months',
-    value: 'medium_term',
-  },
-  // ~1 Month
-  short: {
-    description: 'The latest and greatest.',
-    time_range: 'short_term',
-    title: '~1 Month',
-    value: 'short_term',
-  },
-}
-
 const Music = () => {
+  // const [term, termSet] = useState('medium_term')
   const { data, setSpotifyTimeRange } = useSpotify()
   const { audio } = useUI()
   const [playOn] = useSound('/static/audio/pop-up-on.mp3', {
@@ -72,7 +37,7 @@ const Music = () => {
   const url = 'https://jeromefitzgerald.com/music'
   const title = 'Music'
   const description =
-    'Jerome loves music. Here are his current top artists and tracks.'
+    'Jerome loves music. Here are his current top artists and tracks (all data from Spotify).'
 
   const seo = {
     title: title,
@@ -87,24 +52,14 @@ const Music = () => {
 
   const handleSpotifyTimeRange = async (value) => {
     playOn()
+    termSet(value)
     await setSpotifyTimeRange(data, value)
   }
-
-  // console.dir(`spotifyFavoriteAlbums`)
-  // console.dir(spotifyFavoriteAlbums)
-  // console.dir(`spotifyFavoriteArtists`)
-  // console.dir(spotifyFavoriteArtists)
-
-  // const slugger = new Slugger()
-  // // const imageSlug = slugger.slug(album?.imageUrl)
-  // // const imageData = !!imageSlug && !!images && images[imageSlug]
-  // const imageSlug = spotifyFavoriteArtists[0]?.artists[0]?.meta?.slug
-  // const imageData = spotifyFavoriteArtists[0]?.artists[0]?.meta
-
+  // console.dir(`data`)
+  // console.dir(data)
   return (
     <Layout>
       <Seo {...seo} />
-      {/* <Title emoji={`🎹️`} id="page-music" title={title} /> */}
       <Breadcrumb isIndex={true} title={title} />
       <motion.div
         key={`page-music`}
@@ -115,29 +70,37 @@ const Music = () => {
         transition={{ delay: 0.25, duration: 1, type: 'linear' }}
         className={cx('flex flex-col')}
       >
-        <h2 style={WEBKIT_BACKGROUND__BREAK}>{description}</h2>
         <motion.div id="content">
           <p className="my-4 text-sm">
             <Emoji character={`📝️`} margin={true} />
             <span className="italic font-bold mr-1">Note:</span>
             Links will open in, and all data comes from,{' '}
-            <span className="text-green-800 dark:text-green-400 font-medium ml-1">
+            <span className="text-green-800 dark:text-green-400 font-bold">
               Spotify
             </span>
             .
-          </p>
-          <p className="my-4 text-sm">
-            <Emoji character={`📝️`} margin={true} />
-            <span className="italic font-bold mr-1">Note:</span>
-            This page is currently being revamped as well.
-            <Emoji character={`😇️`} margin={true} />
           </p>
           <p className="prose font-medium">
             Please support artists by purchasing music, especially local and indie.
             <br />
             Go to shows (when we can again).
           </p>
-
+          {/* <div
+            className={cx(
+              'rounded-3xl cursor-pointer flex bg-green-500',
+              term === 'short_term' && 'bg-red-100 justify-start',
+              term === 'medium_term' && 'bg-red-500 justify-center',
+              term === 'short_term' && 'bg-red-900 justify-end'
+            )}
+            style={{ width: '200px', height: '50px' }}
+            // onClick={() => termSet((prev) => !prev)}
+          >
+            <motion.div
+              className={cx('bg-yellow-800 rounded-full')}
+              style={{ width: '50px', height: '50px' }}
+              layout
+            ></motion.div>
+          </div> */}
           <div
             className={cx(
               'flex flex-col md:flex-row',
@@ -210,13 +173,13 @@ const Music = () => {
             <h2 aria-label="Top Artists" style={WEBKIT_BACKGROUND__BREAK}>
               Top Artists
             </h2>
-            {/* <TopArtists /> */}
+            <TopArtists />
           </div>
           <div className="my-8">
             <h2 aria-label="Top Tracks" style={WEBKIT_BACKGROUND__BREAK}>
               Top Tracks
             </h2>
-            {/* <TopTracks /> */}
+            <TopTracks />
           </div>
         </motion.div>
       </motion.div>
@@ -263,9 +226,9 @@ const Music = () => {
                   description={
                     <>
                       Describing himself as “a DJ first, producer second, and MC
-                      last,” <span className={cx('font-bold')}>Madlib</span>is the
+                      last,” <span className={cx('font-bold')}>Madlib</span> is the
                       primary alias of{' '}
-                      <span className={cx('font-bold')}>Otis Jackson</span>, Jr., who
+                      <span className={cx('font-bold')}>Otis Jackson, Jr.</span>, who
                       has become one of the most celebrated, prolific, and eclectic
                       artists in hip-hop since emerging on the scene in the early
                       ‘90s.
@@ -273,7 +236,7 @@ const Music = () => {
                   }
                   share={
                     <>
-                      Read more and listen{' '}
+                      Full bio and music{' '}
                       <a
                         aria-label={spotifyFavoriteArtists[0].artist.name}
                         className={cx(
@@ -320,7 +283,7 @@ const Music = () => {
                   }
                   share={
                     <>
-                      Join along{' '}
+                      Peep the track{' '}
                       <a
                         aria-label={spotifyFavoriteAlbums[0].artist.name}
                         className={cx(
