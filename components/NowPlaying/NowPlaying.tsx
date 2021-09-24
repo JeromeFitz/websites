@@ -205,8 +205,8 @@ const NowPlaying = () => {
                   </p>
                   <p className="font-normal text-base md:text-lg pb-2 md:pb-4 _text-black">
                     Off of “<span className={cx(' font-bold')}>{album.name}</span>”
-                    relased in <span className={cx(' font-bold')}>{album.year}</span>
-                    .
+                    released in{' '}
+                    <span className={cx(' font-bold')}>{album.year}</span>.
                   </p>
                   <p className="text-sm md:text-base _text-black">
                     Join along{' '}

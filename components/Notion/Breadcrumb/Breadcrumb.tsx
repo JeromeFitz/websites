@@ -73,13 +73,15 @@ const Breadcrumb = ({ isIndex, title }) => {
         >
           <li className="pr-2 cursor-pointer" key={'breadcrumb-'}>
             <NextLink as={'/'} href={'/'}>
-              {/* {isFix ? <HomeIcon className="h-5 w-5 " /> : isIndex ? title : ''} */}
-              {!isFix && isHomepage ? (
-                // 'Jerome Fitzgerald'
-                ''
-              ) : (
-                <HomeIcon className="h-5 w-5 " />
-              )}
+              <a>
+                {/* {isFix ? <HomeIcon className="h-5 w-5 " /> : isIndex ? title : ''} */}
+                {!isFix && isHomepage ? (
+                  // 'Jerome Fitzgerald'
+                  ''
+                ) : (
+                  <HomeIcon className="h-5 w-5 " />
+                )}
+              </a>
             </NextLink>
           </li>
           {breadcrumbs.map((breadcrumb, breadcrumbIndex) => {
