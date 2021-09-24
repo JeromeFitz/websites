@@ -1,19 +1,66 @@
-// import cx from 'clsx'
+import { ExternalLinkIcon } from '@heroicons/react/solid'
+import cx from 'clsx'
 // import NextImage from 'next/image'
 
 // import { Skeleton } from '~components/Music'
 // import { CardWithGlow } from '~components/NowPlaying/NowPlaying'
 // import lpad from '~utils/lpad'
+import { CardWithGlow, CardWithGlowProps } from '~components/Card'
+import lpad from '~utils/lpad'
 
 const Artist = (artist) => {
-  // const handleClick = () => {
-  //   window.open(artist.uri, '_blank', 'noopener,noreferrer')
-  // }
+  const { loading, ranking } = artist
+  const handleClick = () => {
+    window.open(artist.uri, '_blank', 'noopener,noreferrer')
+  }
 
-  console.dir(`artist`)
-  console.dir(artist)
+  // console.dir(`artistd`)
+  // console.dir(artist)
 
-  return <></>
+  if (loading) return null
+
+  // const tags = []
+  // const tags = artist.genres.slice(0, 3)
+  const tags = artist.genres
+
+  return (
+    <>
+      <div className="">
+        <div className="flex align-center my-6 w-full" onClick={() => handleClick}>
+          <CardWithGlow>
+            <CardWithGlowProps
+              reverse={ranking % 2 == 0}
+              headline={`${lpad(ranking)}. ${artist.name}`}
+              subline={``}
+              tags={tags}
+              description={<>{artist?.biography?.text}</>}
+              share={
+                <>
+                  See full bio{' '}
+                  <a
+                    aria-label={artist.name}
+                    className={cx(
+                      'underline-style-solid underline-offset-md underline-thickness-md',
+                      '_text-black'
+                    )}
+                    href={artist.uri}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    here
+                    <ExternalLinkIcon className="h-4 w-4 ml-2 mb-1 inline-flex _text-black" />
+                  </a>
+                  .
+                </>
+              }
+              slug={artist?.meta?.slug}
+              meta={artist?.meta}
+            />
+          </CardWithGlow>
+        </div>
+      </div>
+    </>
+  )
 }
 
 export default Artist
