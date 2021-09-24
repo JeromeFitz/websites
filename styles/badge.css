@@ -13,6 +13,15 @@
   @apply transition-all;
 }
 
+.badge-xs {
+  /* @apply inline-flex items-center justify-center leading-none; */
+  @apply rounded-full p-2.5 m-1;
+  @apply text-xs font-semibold;
+  @apply transition-all;
+  @apply text-white dark:text-white;
+  @apply bg-black dark:bg-black;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .badge {
     @apply transition;

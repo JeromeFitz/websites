@@ -172,6 +172,12 @@
   ._bg-black {
     @apply bg-black dark:bg-black;
   }
+  ._text-white {
+    @apply text-white dark:text-white;
+  }
+  ._bg-white {
+    @apply bg-white dark:bg-white;
+  }
 }
 
 @layer utilities {
