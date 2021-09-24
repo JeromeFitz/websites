@@ -52,7 +52,7 @@ const Music = () => {
 
   const handleSpotifyTimeRange = async (value) => {
     playOn()
-    termSet(value)
+    // termSet(value)
     await setSpotifyTimeRange(data, value)
   }
   // console.dir(`data`)
