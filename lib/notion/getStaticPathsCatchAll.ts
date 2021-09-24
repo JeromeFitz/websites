@@ -23,6 +23,7 @@ const getStaticPathsCatchAll = () => {
     '/shows/my-dinner-with-andre-the-musical',
     '/shows/the-death-show',
     '/shows/the-playlist'
+    //
   )
 
   return {
