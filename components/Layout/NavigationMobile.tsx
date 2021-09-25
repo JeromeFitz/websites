@@ -5,8 +5,16 @@ import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 import { useSound } from 'use-sound'
 
+import { ThemeMode } from '~components/Layout'
 import { activeLinks } from '~config/navigation'
 import { useUI } from '~context/ManagedUIContext'
+
+// const ThemeMode = dynamic(
+//   () => import('~components/Layout').then((mod) => mod.ThemeMode),
+//   {
+//     ssr: false,
+//   }
+// )
 
 const NavigationMobile = () => {
   const router = useRouter()
@@ -40,6 +48,44 @@ const NavigationMobile = () => {
 
   return (
     <header>
+      {/* Top Right Menu Controls */}
+      <div className={cx('menu--theme z-50', 'absolute top-5', 'w-full')}>
+        <div
+          className={cx(`flex flex-col w-full max-w-4xl`, `px-2 mx-auto md:px-8`)}
+        >
+          <div className="ml-auto">
+            <ThemeMode />
+          </div>
+        </div>
+      </div>
+      {/* Bottom Left Home Button */}
+      {router.asPath === '/' ? null : (
+        <div
+          className={cx('menu--home z-50', 'fixed bottom-3 left-8 md:left-11', '')}
+        >
+          <motion.button
+            aria-label={`Link to homepage of jeromefitzgerald.com`}
+            className={cx(
+              `badge`,
+              'focus:ring-4',
+              `bg-black text-white`,
+              `dark:bg-white dark:text-black`,
+              'text-lg',
+              'drop-shadow-lg'
+            )}
+            onClick={() => handleClickHome()}
+            initial={{ scale: 0.8, y: 0 }}
+            animate={{ scale: 1, y: 0 }}
+            exit={{ scale: 0.8, y: 0 }}
+            transition={{ duration: 0.2 }}
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.8 }}
+          >
+            <HomeIcon className={cx('h-5 w-5 md:h10 md:w-10')} />
+          </motion.button>
+        </div>
+      )}
+      {/* Bottom Right Menu */}
       <div
         className={cx('menu--mobile z-50', 'fixed bottom-3 right-8 md:right-11', '')}
       >
@@ -158,32 +204,6 @@ const NavigationMobile = () => {
           </AnimatePresence>
         </motion.nav>
       </div>
-      {router.asPath === '/' ? null : (
-        <div
-          className={cx('menu--home z-50', 'fixed bottom-3 left-8 md:left-11', '')}
-        >
-          <motion.button
-            aria-label={`Link to homepage of jeromefitzgerald.com`}
-            className={cx(
-              `badge`,
-              'focus:ring-4',
-              `bg-black text-white`,
-              `dark:bg-white dark:text-black`,
-              'text-lg',
-              'drop-shadow-lg'
-            )}
-            onClick={() => handleClickHome()}
-            initial={{ scale: 0.8, y: 0 }}
-            animate={{ scale: 1, y: 0 }}
-            exit={{ scale: 0.8, y: 0 }}
-            transition={{ duration: 0.2 }}
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.8 }}
-          >
-            <HomeIcon className={cx('h-5 w-5 md:h10 md:w-10')} />
-          </motion.button>
-        </div>
-      )}
     </header>
   )
 }

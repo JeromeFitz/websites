@@ -38,7 +38,7 @@ const AppSoundToggle = () => {
       key={audio ? 'sound-on-icon' : 'sound-off-icon'}
       initial={{ scale: 0.8, y: 0, opacity: 0 }}
       animate={{ scale: 1, y: 0, opacity: 1 }}
-      exit={{ scale: 0.8, y: 0, opacity: 0 }}
+      exit={{ scale: 1, y: 0, opacity: 1 }}
       transition={{ duration: 0.2 }}
       whileHover={{ scale: 1.2 }}
       whileTap={{ scale: 0.8 }}

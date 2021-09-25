@@ -6,6 +6,7 @@ import '~styles/chrome.css'
 import { AnimateSharedLayout } from 'framer-motion'
 // import Inspect from 'inspx'
 import type { AppProps, NextWebVitalsMetric } from 'next/app'
+import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import pluralize from 'pluralize'
 import { FC, useEffect } from 'react'
@@ -16,6 +17,13 @@ import NProgress from '~components/NProgress'
 import { ManagedUIContext } from '~context/ManagedUIContext'
 import NotificationProvider from '~context/Notification'
 import { useAnalytics } from '~lib/analytics'
+
+const NavigationMobileWithNoSSR = dynamic(
+  () => import('~components/Layout').then((mod) => mod.NavigationMobile),
+  {
+    ssr: false,
+  }
+)
 
 pluralize.addPluralRule(/cast$/i, 'cast')
 pluralize.addPluralRule(/crew$/i, 'crew')
@@ -48,7 +56,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
         <ManagedUIContext>
           <NotificationProvider>
             <Layout pageProps={pageProps}>
-              {/* <Navigation /> */}
+              <NavigationMobileWithNoSSR />
               <AnimateSharedLayout type="crossfade">
                 <Component {...pageProps} key={router.route} />
               </AnimateSharedLayout>
