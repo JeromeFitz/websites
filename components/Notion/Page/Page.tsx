@@ -2,7 +2,6 @@ import { AnimatePresence } from 'framer-motion'
 import _map from 'lodash/map'
 import { useEffect } from 'react'
 import useSWR, { useSWRConfig } from 'swr'
-import { v4 as uuid } from 'uuid'
 
 import Breadcrumb from '~components/Notion/Breadcrumb'
 import NotionLayout, { ImageLead } from '~components/Notion/Layout'
@@ -11,8 +10,7 @@ import { MetaTags } from '~components/Notion/Meta'
 import { Event } from '~components/Notion/Page'
 import Relations from '~components/Notion/Relations'
 // import Title from '~components/Notion/Title'
-import { NotionBlock } from '~utils/notion'
-import getContentType from '~utils/notion/getContentType'
+import getContentNodes from '~utils/notion/getContentNodes'
 
 const Page = ({ data, props }) => {
   const {
@@ -82,63 +80,24 @@ const Page = ({ data, props }) => {
       break
   }
 
-  /**
-   * @hack
-   * (notion) this gets the job done for `ul=>li`
-   * @todo
-   * (notion) other elements that rely on parent element
-   * (notion) can we lift the images out of this earlier for cache state?
-   *
-   */
-  let listCurrentId = ''
-  let listCurrentState = false
-  const nodes = {}
-  _map(content.results, (contentItem: NotionBlock) => {
-    if (contentItem.type === 'bulleted_list_item') {
-      if (!listCurrentState) {
-        listCurrentId = uuid()
-        nodes[listCurrentId] = {
-          id: listCurrentId,
-          type: 'ul',
-          node: [],
-        }
-      }
-      listCurrentState = true
-      nodes[listCurrentId].node.push(getContentType(contentItem, images))
-      return
-    } else {
-      listCurrentState = false
-    }
-    nodes[contentItem.id] = {
-      id: contentItem.id,
-      type: contentItem.type,
-      node: getContentType(contentItem, images),
-    }
-  })
-
-  // console.dir(`nodes`)
-  // console.dir(nodes)
+  // console.dir(`content`)
+  // console.dir(content)
+  // const nodes = getContentNodes({ content, images })
 
   return (
     <>
-      {/* Template Content */}
-      {/* <Title emoji={emoji} id={id} title={title} /> */}
       <Breadcrumb isIndex={isIndex} title={title} />
-      {/* Breadcrumb Content */}
-      {/* {!isIndex && <Breadcrumb title={title} />} */}
       <NotionLayout id={id} data={properties} routeType={routeType} url={url}>
-        {/* ImageLead */}
         <ImageLead
           description={properties?.seoImageDescription}
           image={properties?.seoImage}
+          key={`image-lead--${id}`}
         />
-
-        {/* Dynamic */}
         {/* Content */}
-        <AnimatePresence>
+        <AnimatePresence key={`animate-presence--${id}`}>
           {routeType === 'events' && !isIndex ? <Event data={data} /> : null}
           {/* // node: NotionBlock (w/ id/type) */}
-          {_map(nodes, (node: any) => {
+          {_map(getContentNodes({ content, images }), (node: any) => {
             if (node.type === 'ul') {
               return (
                 <ul className="flex flex-col list-disc list-inside" key={node.id}>
@@ -146,18 +105,34 @@ const Page = ({ data, props }) => {
                 </ul>
               )
             }
+            // if (node.type === 'image') {
+            //   return (
+            //     <>
+            //       <h5 key="image-here">Image Here</h5>
+            //       {node.node}
+            //     </>
+            //   )
+            // }
             return node.node
           })}
         </AnimatePresence>
         {/* @note(switch) */}
-        {isIndex && !isPage && <Listing items={items} routeType={routeType} />}
+        {isIndex && !isPage && (
+          <Listing items={items} key={`listing--${id}`} routeType={routeType} />
+        )}
         {/* {isEvent && showId && <Meta id={showId} />} */}
         <>
-          {!isIndex && <h2 className="text-3xl md:text-4xl">Information</h2>}
-          {!!tagParams && !isIndex && <div className="spacer--h mb-4" />}
+          {!isIndex && (
+            <h2 className="text-3xl md:text-4xl" key={`h2-information--${id}`}>
+              Information
+            </h2>
+          )}
+          {!!tagParams && !isIndex && (
+            <div className="spacer--h mb-4" key={`spacer-0--${id}`} />
+          )}
           {!!tagParams && !isIndex && (
             <>
-              <MetaTags tagParams={tagParams} />
+              <MetaTags key={`meta-tags--${id}`} tagParams={tagParams} />
               {/* <div className="spacer--h" /> */}
             </>
           )}
@@ -165,6 +140,7 @@ const Page = ({ data, props }) => {
             <Relations
               id={id}
               isIndex={isIndex}
+              key={`relations--${id}`}
               properties={properties}
               relationsMap={
                 routeType === 'events'
