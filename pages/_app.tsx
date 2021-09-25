@@ -2,16 +2,15 @@ import '~styles/index.css'
 // import 'keen-slider/keen-slider.min.css'
 import '~styles/chrome.css'
 
-// import { AnimatePresence } from 'framer-motion'
+// // import { AnimatePresence } from 'framer-motion'
 import { AnimateSharedLayout } from 'framer-motion'
-import Inspect from 'inspx'
-import type { AppProps } from 'next/app'
+// import Inspect from 'inspx'
+import type { AppProps, NextWebVitalsMetric } from 'next/app'
 import Head from 'next/head'
 import pluralize from 'pluralize'
 import { FC, useEffect } from 'react'
 import { SWRConfig } from 'swr'
 
-// import { Header } from '~components/Layout'
 import Navigation from '~components/Notion/Navigation'
 import NProgress from '~components/NProgress'
 import { ManagedUIContext } from '~context/ManagedUIContext'
@@ -27,7 +26,7 @@ pluralize.addSingularRule(/thanks$/i, 'thanks')
 
 const Noop: FC = ({ children }) => <>{children}</>
 
-export default function MyApp({ Component, pageProps, router }: AppProps) {
+function MyApp({ Component, pageProps, router }: AppProps) {
   useAnalytics()
 
   const Layout = (Component as any).Layout || Noop
@@ -39,32 +38,32 @@ export default function MyApp({ Component, pageProps, router }: AppProps) {
   return (
     <>
       <SWRConfig value={{ provider: () => new Map() }}>
-        <Inspect disabled={process.env.NODE_ENV === 'production'}>
-          <Head>
-            <meta
-              name="viewport"
-              content="width=device-width, initial-scale=1.0,viewport-fit=cover"
-            />
-          </Head>
-          <ManagedUIContext>
-            <NotificationProvider>
-              <Layout pageProps={pageProps}>
-                {/* <Header /> */}
-                <Navigation />
-                {/* <AnimatePresence
-                exitBeforeEnter
-                initial={false}
-                onExitComplete={() => window.scrollTo(0, 0)}
-              > */}
-                <AnimateSharedLayout type="crossfade">
-                  <Component {...pageProps} key={router.route} />
-                </AnimateSharedLayout>
-                <NProgress />
-              </Layout>
-            </NotificationProvider>
-          </ManagedUIContext>
-        </Inspect>
+        {/* <Inspect disabled={process.env.NODE_ENV === 'production'}> */}
+        <Head>
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0,viewport-fit=cover"
+          />
+        </Head>
+        <ManagedUIContext>
+          <NotificationProvider>
+            <Layout pageProps={pageProps}>
+              <Navigation />
+              <AnimateSharedLayout type="crossfade">
+                <Component {...pageProps} key={router.route} />
+              </AnimateSharedLayout>
+            </Layout>
+            <NProgress />
+          </NotificationProvider>
+        </ManagedUIContext>
+        {/* </Inspect> */}
       </SWRConfig>
     </>
   )
 }
+
+export function reportWebVitals(metric: NextWebVitalsMetric) {
+  process.env.NODE_ENV === 'test' && console.log(metric)
+}
+
+export default MyApp

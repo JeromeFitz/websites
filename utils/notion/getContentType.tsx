@@ -2,11 +2,11 @@ import cx from 'clsx'
 import Slugger from 'github-slugger'
 import _map from 'lodash/map'
 import _size from 'lodash/size'
-import Image from 'next/image'
+import NextImage from 'next/image'
 import React from 'react'
 
-// import ImageCaption from '~components/Notion/ImageCaption'
-import { WEBKIT_BACKGROUND__BREAK } from '~lib/constants'
+import ImageCaption from '~components/Notion/ImageCaption'
+import { IMAGE__PLACEHOLDER, WEBKIT_BACKGROUND__BREAK } from '~lib/constants'
 import { NotionBlock } from '~utils/notion'
 import getContentTypeDetail from '~utils/notion/getContentTypeDetail'
 import notionToTailwindColor from '~utils/notion/notionToTailwindColor'
@@ -14,6 +14,10 @@ import notionToTailwindColor from '~utils/notion/notionToTailwindColor'
 const getContentType = (item: NotionBlock, images?: any[]) => {
   const { id, type } = item
   const content = item[type]
+  const slugger = new Slugger()
+
+  // console.dir(`item`)
+  // console.dir(item)
 
   switch (type) {
     /**
@@ -44,28 +48,39 @@ const getContentType = (item: NotionBlock, images?: any[]) => {
     case 'numbered_list_item':
       return <li key={id}>{getContentTypeDetail(content)}</li>
     case 'image':
-      console.dir(`image.......`)
-      console.dir(content)
-      const slugger = new Slugger()
       const imageSlug = slugger.slug(content?.external?.url)
       const imageData = !!imageSlug && !!images && images[imageSlug]
-
       const caption = _size(content?.caption) > 0 && content?.caption[0]?.plain_text
-      console.dir(`caption`)
-      console.dir(caption)
+
       return !!imageData ? (
         <div className="w-2/3 mx-auto" key={id}>
-          <Image
-            alt={`todo:`}
+          <NextImage
+            alt={!!caption ? caption : ''}
             blurDataURL={imageData.base64}
             key={imageSlug}
             placeholder="blur"
-            title={`todo:`}
+            title={!!caption ? caption : ''}
             {...imageData.img}
           />
-          {/* {!!caption && <ImageCaption caption={caption} />} */}
+          {!!caption && <ImageCaption caption={caption} />}
         </div>
-      ) : null
+      ) : (
+        <div className="w-2/3 h-full mx-auto overflow-hidden" key={id}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            alt={!!caption ? caption : ''}
+            className="nonNextNoStaticProps"
+            src={content?.external?.url}
+            style={{
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+              backgroundSize: '100%',
+              backgroundImage: `url(${IMAGE__PLACEHOLDER.base64})`,
+            }}
+          />
+          {!!caption && <ImageCaption caption={caption} />}
+        </div>
+      )
     case 'text':
     case 'title':
     case 'rich_text':
