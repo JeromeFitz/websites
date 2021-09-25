@@ -63,9 +63,11 @@ const Layout: FC<any> = ({ children }) => {
         {/* <CTA /> */}
       </main>
       <Footer />
-      <Modal open={displayModal} onClose={closeModal}>
-        {modalView === 'MODAL_TEST_VIEW' && <ModalTest />}
-      </Modal>
+      {!!displayModal && (
+        <Modal open={displayModal} onClose={closeModal}>
+          {modalView === 'MODAL_TEST_VIEW' && <ModalTest />}
+        </Modal>
+      )}
     </>
   )
 }

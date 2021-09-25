@@ -50,7 +50,11 @@ const CatchAll = (props) => {
   const isError = error
   const isLoading = !error && !data
 
-  if (isError && data === undefined)
+  if (isError && data === undefined) {
+    console.dir(`error`)
+    console.dir(`If this is: notionhq_client_request_timeout`)
+    console.dir(`We should show fallback data`)
+    console.dir(error)
     return (
       <>
         <Layout>
@@ -58,6 +62,7 @@ const CatchAll = (props) => {
         </Layout>
       </>
     )
+  }
 
   if (
     !isError &&

@@ -5,6 +5,7 @@ import _size from 'lodash/size'
 import Image from 'next/image'
 import React from 'react'
 
+// import ImageCaption from '~components/Notion/ImageCaption'
 import { WEBKIT_BACKGROUND__BREAK } from '~lib/constants'
 import { NotionBlock } from '~utils/notion'
 import getContentTypeDetail from '~utils/notion/getContentTypeDetail'
@@ -43,9 +44,15 @@ const getContentType = (item: NotionBlock, images?: any[]) => {
     case 'numbered_list_item':
       return <li key={id}>{getContentTypeDetail(content)}</li>
     case 'image':
+      console.dir(`image.......`)
+      console.dir(content)
       const slugger = new Slugger()
       const imageSlug = slugger.slug(content?.external?.url)
       const imageData = !!imageSlug && !!images && images[imageSlug]
+
+      const caption = _size(content?.caption) > 0 && content?.caption[0]?.plain_text
+      console.dir(`caption`)
+      console.dir(caption)
       return !!imageData ? (
         <div className="w-2/3 mx-auto" key={id}>
           <Image
@@ -56,7 +63,7 @@ const getContentType = (item: NotionBlock, images?: any[]) => {
             title={`todo:`}
             {...imageData.img}
           />
-          {/* <ImageCaption caption={seoImageDescription} /> */}
+          {/* {!!caption && <ImageCaption caption={caption} />} */}
         </div>
       ) : null
     case 'text':
