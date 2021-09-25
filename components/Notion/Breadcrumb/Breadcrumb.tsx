@@ -170,15 +170,10 @@ const Breadcrumb = ({ isIndex, title }) => {
               )}
               style={WEBKIT_BACKGROUND__BREAK}
               layout
-              // transition={{ duration: 0.25 }}
-              animate={
-                {
-                  // y: isFix ? [0, -150] : [-150, 0],
-                  // rotate: 0,
-                  // opacity: isFix ? 0 : 1,
-                }
-              }
-              transition={{ duration: 0.125 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
             >
               {isHomepage ? 'Jerome Fitzgerald' : title}
             </motion.h3>
