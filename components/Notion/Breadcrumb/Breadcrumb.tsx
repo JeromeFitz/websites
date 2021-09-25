@@ -6,7 +6,7 @@ import cx from 'clsx'
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion'
 import _lowerCase from 'lodash/lowerCase'
 import _take from 'lodash/take'
-import dynamic from 'next/dynamic'
+// import dynamic from 'next/dynamic'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 import { useRef } from 'react'
@@ -16,12 +16,12 @@ import { useRef } from 'react'
 import useSticky from '~hooks/useSticky'
 import { WEBKIT_BACKGROUND__BREAK } from '~lib/constants'
 
-const ThemeMode = dynamic(
-  () => import('~components/Layout').then((mod) => mod.ThemeMode),
-  {
-    ssr: false,
-  }
-)
+// const ThemeMode = dynamic(
+//   () => import('~components/Layout').then((mod) => mod.ThemeMode),
+//   {
+//     ssr: false,
+//   }
+// )
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Breadcrumb = ({ isIndex, title }) => {
@@ -152,9 +152,9 @@ const Breadcrumb = ({ isIndex, title }) => {
             })}
           </motion.ol>
         </AnimatePresence>
-        <div className="ml-auto">
+        {/* <div className="ml-auto">
           <ThemeMode />
-        </div>
+        </div> */}
       </motion.nav>
 
       {

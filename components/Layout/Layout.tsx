@@ -30,13 +30,6 @@ const FooterWithNoSSR = dynamic(
   }
 )
 
-const NavigationMobileWithNoSSR = dynamic(
-  () => import('~components/Layout').then((mod) => mod.NavigationMobile),
-  {
-    ssr: false,
-  }
-)
-
 const Layout: FC<any> = ({ children }) => {
   const {
     // displaySidebar,
@@ -48,7 +41,6 @@ const Layout: FC<any> = ({ children }) => {
 
   return (
     <>
-      <NavigationMobileWithNoSSR />
       <main
         className={cx(
           'flex flex-col min-h-screen'
