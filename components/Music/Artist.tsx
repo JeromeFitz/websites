@@ -53,7 +53,7 @@ const Artist = (artist) => {
                 </>
               }
               slug={artist?.meta?.slug}
-              meta={artist?.meta}
+              meta={artist}
             />
           </CardWithGlow>
         </div>

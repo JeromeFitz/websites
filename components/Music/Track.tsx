@@ -61,7 +61,7 @@ const Track = (item) => {
                 </>
               }
               slug={album?.meta?.slug}
-              meta={album?.meta}
+              meta={album}
             />
           </CardWithGlow>
         </div>
