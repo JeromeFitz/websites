@@ -4,7 +4,8 @@ import { useEffect } from 'react'
 import useSWR, { useSWRConfig } from 'swr'
 
 import Breadcrumb from '~components/Notion/Breadcrumb'
-import NotionLayout, { ImageLead } from '~components/Notion/Layout'
+// import NotionLayout, { ImageLead } from '~components/Notion/Layout'
+import NotionLayout from '~components/Notion/Layout'
 import Listing from '~components/Notion/Listing'
 import { MetaTags } from '~components/Notion/Meta'
 import { Event } from '~components/Notion/Page'
@@ -88,11 +89,11 @@ const Page = ({ data, props }) => {
     <>
       <Breadcrumb isIndex={isIndex} title={title} />
       <NotionLayout id={id} data={properties} routeType={routeType} url={url}>
-        <ImageLead
+        {/* <ImageLead
           description={properties?.seoImageDescription}
           image={properties?.seoImage}
           key={`image-lead--${id}`}
-        />
+        /> */}
         {/* Content */}
         <AnimatePresence key={`animate-presence--${id}`}>
           {routeType === 'events' && !isIndex ? <Event data={data} /> : null}

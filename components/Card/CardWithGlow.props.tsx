@@ -18,7 +18,7 @@ const CardWithGlowProps = ({
   // const imageSlug = slugger.slug(album?.imageUrl)
   // const imageData = !!imageSlug && !!images && images[imageSlug]
   const imageSlug = slug
-  const imageData = meta
+  const imageData = meta?.meta
 
   return (
     <div
@@ -57,13 +57,13 @@ const CardWithGlowProps = ({
       >
         {!!imageData ? (
           <NextImage
-            alt={`Image for ${''}`}
+            alt={`Image for ${meta?.name}`}
             blurDataURL={imageData.base64}
             className={cx('rounded')}
             key={imageSlug}
             layout="intrinsic"
             placeholder="blur"
-            title={`Image for ${''}`}
+            title={`Image for ${meta?.name}`}
             {...imageData.img}
           />
         ) : null}

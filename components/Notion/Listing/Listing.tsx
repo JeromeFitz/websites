@@ -37,8 +37,8 @@ const Listing = ({ items, routeType }) => {
           title,
         } = item?.data
         const timestamp = getTimestamp(dateStart)
-        // console.dir(`item`)
-        // console.dir(item)
+        console.dir(`item`)
+        console.dir(item)
         // console.dir(`timestamp`)
         // console.dir(timestamp)
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment

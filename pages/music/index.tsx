@@ -253,7 +253,7 @@ const Music = () => {
                     </>
                   }
                   slug={spotifyFavoriteArtists[0]?.artists[0]?.meta?.slug}
-                  meta={spotifyFavoriteArtists[0]?.artists[0]?.meta}
+                  meta={spotifyFavoriteArtists[0]?.artists[0]}
                 />
               </CardWithGlow>
               <div className={cx('spacer my-6 md:my-8')} />
@@ -299,7 +299,7 @@ const Music = () => {
                     </>
                   }
                   slug={spotifyFavoriteAlbums[0]?.artists[0]?.meta?.slug}
-                  meta={spotifyFavoriteAlbums[0]?.artists[0]?.meta}
+                  meta={spotifyFavoriteAlbums[0]?.artists[0]}
                 />
               </CardWithGlow>
               <div className={cx('spacer my-6 md:my-8')} />
