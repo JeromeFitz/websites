@@ -136,7 +136,6 @@ const NowPlaying = () => {
                 }
                 share={
                   <>
-                    Join along{' '}
                     <a
                       aria-label={`Link to ${track.name}`}
                       className={cx(
@@ -148,10 +147,9 @@ const NowPlaying = () => {
                       target="_blank"
                       title={`Link to ${track.name}`}
                     >
-                      here
+                      Join along here.
                       <ExternalLinkIcon className="h-4 w-4 ml-2 mb-1 inline-flex _text-black" />
                     </a>
-                    .
                   </>
                 }
                 slug={album?.meta?.slug}
