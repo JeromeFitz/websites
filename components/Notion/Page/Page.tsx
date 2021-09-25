@@ -82,7 +82,7 @@ const Page = ({ data, props }) => {
 
   // console.dir(`content`)
   // console.dir(content)
-  const nodes = getContentNodes({ content, images })
+  // const nodes = getContentNodes({ content, images })
 
   return (
     <>
@@ -97,7 +97,7 @@ const Page = ({ data, props }) => {
         <AnimatePresence key={`animate-presence--${id}`}>
           {routeType === 'events' && !isIndex ? <Event data={data} /> : null}
           {/* // node: NotionBlock (w/ id/type) */}
-          {_map(nodes, (node: any) => {
+          {_map(getContentNodes({ content, images }), (node: any) => {
             if (node.type === 'ul') {
               return (
                 <ul className="flex flex-col list-disc list-inside" key={node.id}>

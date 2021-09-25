@@ -81,85 +81,81 @@ const NowPlaying = () => {
   // const imageData = album?.meta
 
   return (
-    <>
-      <div
-        className={cx(
-          `min-h-full py-12`,
-          'border-t border-black dark:border-white',
-          `bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400`
-        )}
-      >
-        <div
-          className={cx(`flex flex-col w-full max-w-4xl`, `px-2 mx-auto md:px-8`)}
+    <section
+      className={cx(
+        `min-h-full py-12`,
+        'border-t border-black dark:border-white',
+        `bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400`
+      )}
+    >
+      <div className={cx(`flex flex-col w-full max-w-4xl`, `px-2 mx-auto md:px-8`)}>
+        <motion.h3
+          className={cx(
+            'flex flex-row items-center',
+            'gradient text-2xl md:text-4xl',
+            'leading-tight md:leading-tight',
+            'mt-0 mb-3',
+            '_text-black'
+          )}
+          style={WEBKIT_BACKGROUND__BREAK}
+          layout
+          animate={{}}
+          transition={{}}
         >
-          <motion.h3
-            className={cx(
-              'flex flex-row items-center',
-              'gradient text-2xl md:text-4xl',
-              'leading-tight md:leading-tight',
-              'mt-0 mb-3',
-              '_text-black'
-            )}
-            style={WEBKIT_BACKGROUND__BREAK}
-            layout
-            animate={{}}
-            transition={{}}
-          >
-            {title}
-          </motion.h3>
-          <div className={cx('spacer ')} />
-          <div className={cx('spacer _bg-black')} />
-          <p className={cx('_text-black')}>
-            I listen to a lot of music. I do not think that makes me unique, however,
-            I enjoy it all the same. If you’d like to see more of my listening habits
-            please check out the{' '}
-            <NextLink href="/music">
-              <a className="font-black _text-black underline-style-solid underline-offset-md underline-thickness-md">
-                music
-              </a>
-            </NextLink>{' '}
-            section.
-          </p>
-          <div className="flex align-center my-6 w-full">
-            <CardWithGlow>
-              <CardWithGlowProps
-                reverse={false}
-                headline={artist.name}
-                subline={`“${track.name}”`}
-                tags={genresData}
-                description={
-                  <>
-                    Off of “<span className={cx('font-bold')}>{album.name}</span>”
-                    released in <span className={cx('font-bold')}>{album.year}</span>
-                    . .
-                  </>
-                }
-                share={
-                  <>
-                    <a
-                      aria-label={`Link to ${track.name}`}
-                      className={cx(
-                        'underline-style-solid underline-offset-md underline-thickness-md',
-                        '_text-black'
-                      )}
-                      href={track.uri}
-                      rel="noopener noreferrer"
-                      target="_blank"
-                      title={`Link to ${track.name}`}
-                    >
-                      Join along here.
-                      <ExternalLinkIcon className="h-4 w-4 ml-2 mb-1 inline-flex _text-black" />
-                    </a>
-                  </>
-                }
-                slug={album?.meta?.slug}
-                meta={album?.meta}
-              />
-            </CardWithGlow>
-          </div>
+          {title}
+        </motion.h3>
+        <div className={cx('spacer ')} />
+        <div className={cx('spacer _bg-black')} />
+        <p className={cx('_text-black')}>
+          I listen to a lot of music. I do not think that makes me unique, however, I
+          enjoy it all the same. If you’d like to see more of my listening habits
+          please check out the{' '}
+          <NextLink href="/music">
+            <a className="font-black _text-black underline-style-solid underline-offset-md underline-thickness-md">
+              music
+            </a>
+          </NextLink>{' '}
+          section.
+        </p>
+        <div className="flex align-center my-6 w-full">
+          <CardWithGlow>
+            <CardWithGlowProps
+              reverse={false}
+              headline={artist.name}
+              subline={`“${track.name}”`}
+              tags={genresData}
+              description={
+                <>
+                  Off of “<span className={cx('font-bold')}>{album.name}</span>”
+                  released in <span className={cx('font-bold')}>{album.year}</span>.
+                  .
+                </>
+              }
+              share={
+                <>
+                  <a
+                    aria-label={`Link to ${track.name}`}
+                    className={cx(
+                      'underline-style-solid underline-offset-md underline-thickness-md',
+                      '_text-black'
+                    )}
+                    href={track.uri}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    title={`Link to ${track.name}`}
+                  >
+                    Join along here.
+                    <ExternalLinkIcon className="h-4 w-4 ml-2 mb-1 inline-flex _text-black" />
+                  </a>
+                </>
+              }
+              slug={album?.meta?.slug}
+              meta={album?.meta}
+            />
+          </CardWithGlow>
         </div>
       </div>
-    </>
+    </section>
   )
 }
 

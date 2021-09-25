@@ -40,7 +40,6 @@ const Layout: FC<any> = ({ children }) => {
 
   return (
     <>
-      <NavigationMobile />
       <main
         className={cx(
           'flex flex-col min-h-screen'
@@ -63,6 +62,7 @@ const Layout: FC<any> = ({ children }) => {
         {/* <CTA /> */}
       </main>
       <Footer />
+      <NavigationMobile />
       {!!displayModal && (
         <Modal open={displayModal} onClose={closeModal}>
           {modalView === 'MODAL_TEST_VIEW' && <ModalTest />}
@@ -131,7 +131,10 @@ const NavigationMobile = () => {
             <MenuAlt4Icon className={cx('h-5 w-5 md:h10 md:w-10')} />
           )}
         </motion.button>
-        <motion.nav className="absolute top-0 max-w-min items-end">
+        <motion.nav
+          aria-label="Site Navigation"
+          className="absolute top-0 max-w-min items-end"
+        >
           <AnimatePresence>
             <motion.ul
               className={cx(
