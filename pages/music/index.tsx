@@ -238,14 +238,15 @@ const Music = () => {
                     <>
                       Full bio and music{' '}
                       <a
-                        aria-label={spotifyFavoriteArtists[0].artist.name}
+                        aria-label={`Link to ${spotifyFavoriteArtists[0].artist.name}`}
                         className={cx(
                           'underline-style-solid underline-offset-md underline-thickness-md',
                           '_text-black'
                         )}
                         href={spotifyFavoriteArtists[0].artists[0].uri}
-                        target="_blank"
                         rel="noopener noreferrer"
+                        target="_blank"
+                        title={`Link to ${spotifyFavoriteArtists[0].artist.name}`}
                       >
                         here
                         <ExternalLinkIcon className="h-4 w-4 ml-2 mb-1 inline-flex _text-black" />
@@ -285,14 +286,15 @@ const Music = () => {
                     <>
                       Peep the track{' '}
                       <a
-                        aria-label={spotifyFavoriteAlbums[0].artist.name}
+                        aria-label={`Link to ${spotifyFavoriteAlbums[0].artist.name}`}
                         className={cx(
                           'underline-style-solid underline-offset-md underline-thickness-md',
                           '_text-black'
                         )}
                         href={spotifyFavoriteAlbums[0].artists[0].uri}
-                        target="_blank"
                         rel="noopener noreferrer"
+                        target="_blank"
+                        title={`Link to ${spotifyFavoriteAlbums[0].artist.name}`}
                       >
                         here
                         <ExternalLinkIcon className="h-4 w-4 ml-2 mb-1 inline-flex _text-black" />

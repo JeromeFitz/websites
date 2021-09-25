@@ -35,7 +35,6 @@ const Breadcrumb = ({ isIndex, title }) => {
   return (
     <>
       <motion.nav
-        aria-label="breadcrumb"
         className={cx(
           `flex flex-row sticky top-0 items-center`,
           `overflow-hidden`, // `bg-blur bg-opacity-50 dark:bg-opacity-50`,
@@ -73,7 +72,10 @@ const Breadcrumb = ({ isIndex, title }) => {
         >
           <li className="pr-2 cursor-pointer" key={'breadcrumb-'}>
             <NextLink as={'/'} href={'/'}>
-              <a>
+              <a
+                aria-label={`Link to homepage of jeromefitzgerald.com`}
+                title={`Link to homepage of jeromefitzgerald.com`}
+              >
                 {/* {isFix ? <HomeIcon className="h-5 w-5 " /> : isIndex ? title : ''} */}
                 {!isFix && isHomepage ? (
                   // 'Jerome Fitzgerald'
