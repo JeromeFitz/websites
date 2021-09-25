@@ -11,7 +11,7 @@ import pluralize from 'pluralize'
 import { FC, useEffect } from 'react'
 import { SWRConfig } from 'swr'
 
-import Navigation from '~components/Notion/Navigation'
+// import Navigation from '~components/Notion/Navigation'
 import NProgress from '~components/NProgress'
 import { ManagedUIContext } from '~context/ManagedUIContext'
 import NotificationProvider from '~context/Notification'
@@ -48,7 +48,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
         <ManagedUIContext>
           <NotificationProvider>
             <Layout pageProps={pageProps}>
-              <Navigation />
+              {/* <Navigation /> */}
               <AnimateSharedLayout type="crossfade">
                 <Component {...pageProps} key={router.route} />
               </AnimateSharedLayout>

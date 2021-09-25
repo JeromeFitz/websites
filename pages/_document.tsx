@@ -1,7 +1,13 @@
 import cx from 'clsx'
-import Document, { Html, Head, Main, NextScript } from 'next/document'
+import Document, {
+  DocumentContext,
+  Html,
+  Head,
+  Main,
+  NextScript,
+} from 'next/document'
 
-class MyDocument extends Document<any> {
+class MyDocument extends Document<DocumentContext> {
   render() {
     return (
       <Html lang="en">
