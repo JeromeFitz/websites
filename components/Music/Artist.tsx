@@ -36,21 +36,20 @@ const Artist = (artist) => {
               description={<>{artist?.biography?.text}</>}
               share={
                 <>
-                  See full bio{' '}
                   <a
-                    aria-label={artist.name}
+                    aria-label={`Link to ${artist.name}`}
                     className={cx(
                       'underline-style-solid underline-offset-md underline-thickness-md',
                       '_text-black'
                     )}
                     href={artist.uri}
-                    target="_blank"
                     rel="noopener noreferrer"
+                    target="_blank"
+                    title={`Link to ${artist.name}`}
                   >
-                    here
+                    See full bio here.
                     <ExternalLinkIcon className="h-4 w-4 ml-2 mb-1 inline-flex _text-black" />
                   </a>
-                  .
                 </>
               }
               slug={artist?.meta?.slug}

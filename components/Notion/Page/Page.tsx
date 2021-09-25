@@ -2,6 +2,7 @@ import { AnimatePresence } from 'framer-motion'
 import _map from 'lodash/map'
 import { useEffect } from 'react'
 import useSWR, { useSWRConfig } from 'swr'
+import { v4 as uuid } from 'uuid'
 
 import Breadcrumb from '~components/Notion/Breadcrumb'
 import NotionLayout, { ImageLead } from '~components/Notion/Layout'
@@ -81,6 +82,43 @@ const Page = ({ data, props }) => {
       break
   }
 
+  /**
+   * @hack
+   * (notion) this gets the job done for `ul=>li`
+   * @todo
+   * (notion) other elements that rely on parent element
+   * (notion) can we lift the images out of this earlier for cache state?
+   *
+   */
+  let listCurrentId = ''
+  let listCurrentState = false
+  const nodes = {}
+  _map(content.results, (contentItem: NotionBlock) => {
+    if (contentItem.type === 'bulleted_list_item') {
+      if (!listCurrentState) {
+        listCurrentId = uuid()
+        nodes[listCurrentId] = {
+          id: listCurrentId,
+          type: 'ul',
+          node: [],
+        }
+      }
+      listCurrentState = true
+      nodes[listCurrentId].node.push(getContentType(contentItem, images))
+      return
+    } else {
+      listCurrentState = false
+    }
+    nodes[contentItem.id] = {
+      id: contentItem.id,
+      type: contentItem.type,
+      node: getContentType(contentItem, images),
+    }
+  })
+
+  // console.dir(`nodes`)
+  // console.dir(nodes)
+
   return (
     <>
       {/* Template Content */}
@@ -97,15 +135,19 @@ const Page = ({ data, props }) => {
 
         {/* Dynamic */}
         {/* Content */}
-        {/* @todo(key) */}
         <AnimatePresence>
-          {routeType === 'events' && !isIndex ? (
-            <Event data={data} />
-          ) : (
-            _map(content.results, (contentItem: NotionBlock) =>
-              getContentType(contentItem, images)
-            )
-          )}
+          {routeType === 'events' && !isIndex ? <Event data={data} /> : null}
+          {/* // node: NotionBlock (w/ id/type) */}
+          {_map(nodes, (node: any) => {
+            if (node.type === 'ul') {
+              return (
+                <ul className="flex flex-col list-disc list-inside" key={node.id}>
+                  {node.node}
+                </ul>
+              )
+            }
+            return node.node
+          })}
         </AnimatePresence>
         {/* @note(switch) */}
         {isIndex && !isPage && <Listing items={items} routeType={routeType} />}
