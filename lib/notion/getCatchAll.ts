@@ -1,19 +1,20 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { BlocksChildrenListResponse } from '@notionhq/client/build/src/api-endpoints'
-import {
-  CheckboxPropertyValue,
-  DatePropertyValue,
-  FilesPropertyValue,
-  MultiSelectPropertyValue,
-  NumberPropertyValue,
-  PhoneNumberPropertyValue,
-  RelationProperty,
-  RichTextPropertyValue,
-  // RollupPropertyValue,
-  SelectPropertyValue,
-  TitlePropertyValue,
-  URLPropertyValue,
-} from '@notionhq/client/build/src/api-types'
+import { ListBlockChildrenResponse } from '@notionhq/client/build/src/api-endpoints'
+// @note(notion) took these away in 0.4.0
+// import {
+//   CheckboxPropertyValue,
+//   DatePropertyValue,
+//   FilesPropertyValue,
+//   MultiSelectPropertyValue,
+//   NumberPropertyValue,
+//   PhoneNumberPropertyValue,
+//   RelationProperty,
+//   RichTextPropertyValue,
+//   // RollupPropertyValue,
+//   SelectPropertyValue,
+//   TitlePropertyValue,
+//   URLPropertyValue,
+// } from '@notionhq/client/build/src/api-types'
 import _addDays from 'date-fns/addDays'
 import _addMonths from 'date-fns/addMonths'
 import _addYears from 'date-fns/addYears'
@@ -229,12 +230,11 @@ interface NormalizerProperties {
 const dataSorted = (data: NormalizerProperties) =>
   _(data).toPairs().sortBy(0).fromPairs().value()
 
-const getTypeCheckboxNormalized = (data: CheckboxPropertyValue) =>
-  data.checkbox || false
+const getTypeCheckboxNormalized = (data: any) => data.checkbox || false
 
-const getTypeDateNormalized = (data: DatePropertyValue) => data.date || null
+const getTypeDateNormalized = (data: any) => data.date || null
 
-const getTypeFilesNormalized = (data: FilesPropertyValue) =>
+const getTypeFilesNormalized = (data: any) =>
   _size(data.files) > 0 &&
   // @todo(zeroArray)
   (data.files[0].type === 'external'
@@ -249,7 +249,7 @@ const getTypeFilesNormalized = (data: FilesPropertyValue) =>
         expiryTime: data.files[0].file.expiry_time,
       })
 
-const getTypeMultiSelectNormalized = (data: MultiSelectPropertyValue) => {
+const getTypeMultiSelectNormalized = (data: any) => {
   const dataReturn = {}
   _map(data.multi_select, (multiSelect: any) => {
     const ms = multiSelect
@@ -258,12 +258,11 @@ const getTypeMultiSelectNormalized = (data: MultiSelectPropertyValue) => {
   })
   return dataReturn
 }
-const getTypeNumberNormalized = (data: NumberPropertyValue) => data?.number || null
+const getTypeNumberNormalized = (data: any) => data?.number || null
 
-const getTypePhoneNumberNormalized = (data: PhoneNumberPropertyValue) =>
-  data?.phone_number || null
+const getTypePhoneNumberNormalized = (data: any) => data?.phone_number || null
 
-const getTypeRelationNormalized = (data: RelationProperty) => {
+const getTypeRelationNormalized = (data: any) => {
   // console.dir(`getTypeRelationNormalized`)
   // console.dir(data)
   return _map(data.relation, (relation: any) => relation.id)
@@ -302,11 +301,11 @@ const getTypeRelationNormalized = (data: RelationProperty) => {
 //   // }
 // }
 
-const getTypeRichTextNormalized = (data: RichTextPropertyValue) =>
+const getTypeRichTextNormalized = (data: any) =>
   // @todo(zeroArray)
   data?.rich_text[0]?.plain_text || null
 
-const getTypeSelectNormalized = (data: SelectPropertyValue) => {
+const getTypeSelectNormalized = (data: any) => {
   const s: any = data.select
   // console.dir(`getTypeSelectNormalized`)
   // console.dir(data)
@@ -318,14 +317,14 @@ const getTypeSelectNormalized = (data: SelectPropertyValue) => {
   }
 }
 
-const getTypeTitleNormalized = (data: TitlePropertyValue) => {
+const getTypeTitleNormalized = (data: any) => {
   // console.dir(`getTypeTitleNormalized`)
   // console.dir(data)
   // @todo(zeroArray)
   return data?.title[0]?.plain_text || null
 }
 
-const getTypeUrlNormalized = (data: URLPropertyValue) => {
+const getTypeUrlNormalized = (data: any) => {
   return data.url || null
 }
 
@@ -685,7 +684,7 @@ const getCatchAll = async ({ cache = false, catchAll, clear, preview }) => {
      * @hack
      */
     let info: Pick<any, string | number | symbol>,
-      content: BlocksChildrenListResponse,
+      content: ListBlockChildrenResponse,
       items: Pick<any, string | number | symbol> = null
 
     let dataType: number

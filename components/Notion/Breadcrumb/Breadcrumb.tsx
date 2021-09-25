@@ -6,14 +6,22 @@ import cx from 'clsx'
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion'
 import _lowerCase from 'lodash/lowerCase'
 import _take from 'lodash/take'
+import dynamic from 'next/dynamic'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 import { useRef } from 'react'
 
-import { ThemeMode } from '~components/Layout'
+// import { ThemeMode } from '~components/Layout'
 // import Avatar from '~components/Avatar'
 import useSticky from '~hooks/useSticky'
 import { WEBKIT_BACKGROUND__BREAK } from '~lib/constants'
+
+const ThemeMode = dynamic(
+  () => import('~components/Layout').then((mod) => mod.ThemeMode),
+  {
+    ssr: false,
+  }
+)
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Breadcrumb = ({ isIndex, title }) => {
@@ -35,6 +43,7 @@ const Breadcrumb = ({ isIndex, title }) => {
   return (
     <>
       <motion.nav
+        aria-label="Article Navigation"
         className={cx(
           `flex flex-row sticky top-0 items-center`,
           `overflow-hidden`, // `bg-blur bg-opacity-50 dark:bg-opacity-50`,
@@ -48,91 +57,101 @@ const Breadcrumb = ({ isIndex, title }) => {
         ref={stickyRef}
         layout
         // transition={{ duration: 0.25 }}
-        // animate={{
-        //   // y: isFix ? [0, -150] : [-150, 0],
-        //   // rotate: 0,
-        //   opacity: isFix ? 0 : 1,
-        //   display: isFix ? 'none' : 'block',
-        // }}
+        animate={
+          {
+            // y: isFix ? [0, -150] : [-150, 0],
+            // rotate: 0,
+            // opacity: isFix ? 1 : 0,
+            // display: isFix ? 'none' : 'block',
+          }
+        }
       >
         {/* <span className="flex-inline">
           <Avatar name={title} />
         </span> */}
-        <motion.ol
-          className={cx(
-            'flex-inline flex flex-row',
-            'leading-none tracking-tight capitalize',
-            'breadcrumb-transition',
-            'font-medium',
-            'text-lg md:text-xl',
-            'items-center',
-            'divide-black dark:divide-white divide-x',
-            ``
-          )}
-        >
-          <li className="pr-2 cursor-pointer" key={'breadcrumb-'}>
-            <NextLink as={'/'} href={'/'}>
-              <a
-                aria-label={`Link to homepage of jeromefitzgerald.com`}
-                title={`Link to homepage of jeromefitzgerald.com`}
-              >
-                {/* {isFix ? <HomeIcon className="h-5 w-5 " /> : isIndex ? title : ''} */}
-                {!isFix && isHomepage ? (
-                  // 'Jerome Fitzgerald'
-                  ''
-                ) : (
-                  <HomeIcon className="h-5 w-5 " />
-                )}
-              </a>
-            </NextLink>
-          </li>
-          {breadcrumbs.map((breadcrumb, breadcrumbIndex) => {
-            const take = _take(breadcrumbs, breadcrumbIndex + 1)
-            const isLast = breadcrumbsSize === breadcrumbIndex + 1
-            as = `/${take.join('/')}`
+        <AnimatePresence>
+          <motion.ol
+            className={cx(
+              'flex-inline flex flex-row',
+              'leading-none tracking-tight capitalize',
+              'breadcrumb-transition',
+              'font-medium',
+              'text-lg md:text-xl',
+              'items-center',
+              'divide-black dark:divide-white divide-x',
+              ``
+            )}
+            layout
+            initial={{ opacity: 0 }}
+            animate={{ opacity: isFix ? 1 : 0 }}
+            exit={{ opacity: 0 }}
+          >
+            <li className="pr-2 cursor-pointer" key={'breadcrumb-'}>
+              <NextLink as={'/'} href={'/'}>
+                <a
+                  aria-label={`Link to homepage of jeromefitzgerald.com`}
+                  title={`Link to homepage of jeromefitzgerald.com`}
+                >
+                  {/* {isFix ? <HomeIcon className="h-5 w-5 " /> : isIndex ? title : ''} */}
+                  {!isFix && isHomepage ? (
+                    // 'Jerome Fitzgerald'
+                    ''
+                  ) : (
+                    <HomeIcon className="h-5 w-5 " />
+                  )}
+                </a>
+              </NextLink>
+            </li>
+            {breadcrumbs.map((breadcrumb, breadcrumbIndex) => {
+              const take = _take(breadcrumbs, breadcrumbIndex + 1)
+              const isLast = breadcrumbsSize === breadcrumbIndex + 1
+              as = `/${take.join('/')}`
 
-            const _title =
-              _lowerCase(title) === 'blog' || _lowerCase(title) === 'events'
-                ? breadcrumb
-                : title
+              const _title =
+                _lowerCase(title) === 'blog' || _lowerCase(title) === 'events'
+                  ? breadcrumb
+                  : title
 
-            return !isLast ? (
-              <motion.li
-                className="px-2"
-                key={`breadcrumb-${breadcrumbIndex}`}
-                layout
-                // transition={{ duration: 0.25 }}
-                animate={{
-                  y: isFix ? [0, -150] : [-150, 0],
-                  rotate: 0,
-                  // opacity: isFix ? 0 : 1,
-                  display: isFix ? 'none' : 'block',
-                }}
-                transition={{ duration: 0.125 }}
-              >
-                <NextLink as={as} href={href}>
-                  {breadcrumb}
-                </NextLink>
-              </motion.li>
-            ) : (
-              <motion.li
-                className={cx('px-2 font-bold')}
-                aria-current="page"
-                key={`breadcrumb-${breadcrumbIndex}`}
-                layout
-                // transition={{ duration: 0.25 }}
-                animate={{
-                  y: isFix ? [150, 0] : [0, 150],
-                  rotate: 0,
-                  // opacity: isFix ? 1 : 0,
-                }}
-                transition={{ duration: 0.125 }}
-              >
-                {_title}
-              </motion.li>
-            )
-          })}
-        </motion.ol>
+              return !isLast ? (
+                <motion.li
+                  className="px-2"
+                  key={`breadcrumb-${breadcrumbIndex}`}
+                  layout
+                  animate={
+                    {
+                      // y: isFix ? [0, -150] : [-150, 0],
+                      // rotate: 0,
+                      // opacity: isFix ? 0 : 1,
+                      // display: isFix ? 'none' : 'block',
+                    }
+                  }
+                  transition={{ duration: 0.125 }}
+                >
+                  <NextLink as={as} href={href}>
+                    {breadcrumb}
+                  </NextLink>
+                </motion.li>
+              ) : (
+                <motion.li
+                  className={cx('px-2 font-bold')}
+                  aria-current="page"
+                  key={`breadcrumb-${breadcrumbIndex}`}
+                  layout
+                  animate={
+                    {
+                      // y: isFix ? [150, 0] : [0, 150],
+                      // rotate: 0,
+                      // opacity: isFix ? 1 : 0,
+                    }
+                  }
+                  transition={{ duration: 0.125 }}
+                >
+                  {_title}
+                </motion.li>
+              )
+            })}
+          </motion.ol>
+        </AnimatePresence>
         <div className="ml-auto">
           <ThemeMode />
         </div>
@@ -152,11 +171,13 @@ const Breadcrumb = ({ isIndex, title }) => {
               style={WEBKIT_BACKGROUND__BREAK}
               layout
               // transition={{ duration: 0.25 }}
-              animate={{
-                y: isFix ? [0, -150] : [-150, 0],
-                rotate: 0,
-                // opacity: isFix ? 0 : 1,
-              }}
+              animate={
+                {
+                  // y: isFix ? [0, -150] : [-150, 0],
+                  // rotate: 0,
+                  // opacity: isFix ? 0 : 1,
+                }
+              }
               transition={{ duration: 0.125 }}
             >
               {isHomepage ? 'Jerome Fitzgerald' : title}
