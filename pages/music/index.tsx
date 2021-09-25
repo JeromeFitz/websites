@@ -236,7 +236,6 @@ const Music = () => {
                   }
                   share={
                     <>
-                      Full bio and music{' '}
                       <a
                         aria-label={`Link to ${spotifyFavoriteArtists[0].artist.name}`}
                         className={cx(
@@ -248,10 +247,9 @@ const Music = () => {
                         target="_blank"
                         title={`Link to ${spotifyFavoriteArtists[0].artist.name}`}
                       >
-                        here
+                        Full bio and music here.
                         <ExternalLinkIcon className="h-4 w-4 ml-2 mb-1 inline-flex _text-black" />
                       </a>
-                      .
                     </>
                   }
                   slug={spotifyFavoriteArtists[0]?.artists[0]?.meta?.slug}
@@ -284,7 +282,6 @@ const Music = () => {
                   }
                   share={
                     <>
-                      Peep the track{' '}
                       <a
                         aria-label={`Link to ${spotifyFavoriteAlbums[0].artist.name}`}
                         className={cx(
@@ -296,10 +293,9 @@ const Music = () => {
                         target="_blank"
                         title={`Link to ${spotifyFavoriteAlbums[0].artist.name}`}
                       >
-                        here
+                        Peep the track here.
                         <ExternalLinkIcon className="h-4 w-4 ml-2 mb-1 inline-flex _text-black" />
                       </a>
-                      .
                     </>
                   }
                   slug={spotifyFavoriteAlbums[0]?.artists[0]?.meta?.slug}

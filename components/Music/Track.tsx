@@ -44,7 +44,6 @@ const Track = (item) => {
               }
               share={
                 <>
-                  Peep the track{' '}
                   <a
                     aria-label={`Link to ${track.name}`}
                     className={cx(
@@ -56,10 +55,9 @@ const Track = (item) => {
                     title={`Link to ${track.name}`}
                     rel="noopener noreferrer"
                   >
-                    here
+                    Peep the track here.
                     <ExternalLinkIcon className="h-4 w-4 ml-2 mb-1 inline-flex _text-black" />
                   </a>
-                  .
                 </>
               }
               slug={album?.meta?.slug}
