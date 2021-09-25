@@ -106,6 +106,7 @@ const NavigationMobile = () => {
         className={cx('menu--mobile z-50', 'fixed bottom-3 right-8 md:right-11', '')}
       >
         <motion.button
+          aria-label={displayNavigation ? `Close navigation` : `Open navigation`}
           className={cx(
             `badge`,
             'focus:ring-4',
@@ -221,6 +222,7 @@ const NavigationMobile = () => {
           className={cx('menu--home z-50', 'fixed bottom-3 left-8 md:left-11', '')}
         >
           <motion.button
+            aria-label={`Link to homepage of jeromefitzgerald.com`}
             className={cx(
               `badge`,
               'focus:ring-4',
