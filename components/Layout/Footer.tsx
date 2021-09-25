@@ -1,9 +1,13 @@
 import { AnnotationIcon, InformationCircleIcon } from '@heroicons/react/solid'
 import cx from 'clsx'
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { memo, useEffect, useState } from 'react'
 
-import NowPlaying from '~components/NowPlaying'
+// import NowPlaying from '~components/NowPlaying'
+const NowPlayingWithNoSSR = dynamic(() => import('~components/NowPlaying'), {
+  ssr: false,
+})
 
 const Footer = () => {
   const [mounted, setMounted] = useState(false)
@@ -13,7 +17,7 @@ const Footer = () => {
       {mounted && (
         <>
           {process.env.NEXT_PUBLIC__SITE === 'jeromefitzgerald.com' && (
-            <NowPlaying />
+            <NowPlayingWithNoSSR />
           )}
           <footer
             className={cx(
