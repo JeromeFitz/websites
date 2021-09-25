@@ -46,13 +46,14 @@ const Track = (item) => {
                 <>
                   Peep the track{' '}
                   <a
-                    aria-label={track.name}
+                    aria-label={`Link to ${track.name}`}
                     className={cx(
                       'underline-style-solid underline-offset-md underline-thickness-md',
                       '_text-black'
                     )}
                     href={track.uri}
                     target="_blank"
+                    title={`Link to ${track.name}`}
                     rel="noopener noreferrer"
                   >
                     here
