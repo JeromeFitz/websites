@@ -2,7 +2,7 @@
 
 const ImageCaption = ({ caption }) => {
   return (
-    <p className="text-xs pb-2">
+    <p className="text-xs py-3.5">
       {/* <Emoji character={`📸️`} margin={true} /> */}
       {caption}
     </p>
