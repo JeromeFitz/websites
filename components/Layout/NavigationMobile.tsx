@@ -97,7 +97,7 @@ const NavigationMobile = () => {
             `bg-black text-white`,
             `dark:bg-white dark:text-black`,
             'text-lg',
-            'drop-shadow-lg'
+            'drop-shadow-xl'
           )}
           onClick={() => handleClick()}
           initial={{ scale: 0, y: 0 }}
