@@ -85,7 +85,8 @@ const NowPlaying = () => {
       className={cx(
         `min-h-full py-12`,
         'border-t border-black dark:border-white',
-        `bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400`
+        `bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400`,
+        ''
       )}
     >
       <div className={cx(`flex flex-col w-full max-w-4xl`, `px-2 mx-auto md:px-8`)}>
