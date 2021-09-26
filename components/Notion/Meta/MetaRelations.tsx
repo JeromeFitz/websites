@@ -1,3 +1,4 @@
+import cx from 'clsx'
 import _map from 'lodash/map'
 import pluralize from 'pluralize'
 import useSWR from 'swr'
@@ -39,7 +40,9 @@ const MetaRelations = ({ id, ids, relationKey, routeType }) => {
   return (
     <MetaUL id={`relations--container--${relationKey.toLowerCase()}`} title={title}>
       {_map(data?.results, (item) => (
-        <li key={item?.id}>{item?.data?.title}</li>
+        <li className={cx('first:pt-2')} key={item?.id}>
+          {item?.data?.title}
+        </li>
       ))}
     </MetaUL>
   )
