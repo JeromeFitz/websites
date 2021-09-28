@@ -1060,10 +1060,10 @@
     micromatch "^4.0.0"
     p-reduce "^2.0.0"
 
-"@jeromefitz/semantic@4.0.3":
-  version "4.0.3"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/semantic/-/semantic-4.0.3.tgz#3a30163aa0c094784286bb0aadbf53cde023072e"
-  integrity sha512-YBFPNDV/tjf6X8LMKtcoWUTfboOt9budLdYIbHnKSFwEknwBERt36SuE0KD3P/O2GPXnCTipXonZKeKiXcvoEQ==
+"@jeromefitz/semantic@4.0.4":
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/semantic/-/semantic-4.0.4.tgz#17a9209693cb7ed0d0941ce4e00d12c7b636e2ff"
+  integrity sha512-aBGJrxVPZgbXLERIods1w8zrGNjfUt536mysx4IlwMHphZyFncVORGUPQPgJ3wW00PsMKueoBZR5mjq45PkWhg==
   dependencies:
     "@jeromefitz/semantic-release-git" "10.0.0-develop.2"
     "@octokit/core" "3.5.1"
@@ -1874,7 +1874,7 @@
     lodash "^4.17.4"
     parse-json "^5.0.0"
 
-"@semantic-release/github@8.0.1":
+"@semantic-release/github@8.0.1", "@semantic-release/github@^8.0.0":
   version "8.0.1"
   resolved "https://registry.yarnpkg.com/@semantic-release/github/-/github-8.0.1.tgz#58d6bc5cdb4b4beaa0a106a9a9ad420318144e4f"
   integrity sha512-T01lfh4yBZodAeo8t0U+W5hmPYR9BdnfwLDerXnGaYeLXm8+KMx4mQEBAf/UbRVlzmIKTqMx+/s9fY/mSQNV0A==
@@ -1900,28 +1900,6 @@
   version "7.2.3"
   resolved "https://registry.yarnpkg.com/@semantic-release/github/-/github-7.2.3.tgz#20a83abd42dca43d97f03553de970eac72856c85"
   integrity sha512-lWjIVDLal+EQBzy697ayUNN8MoBpp+jYIyW2luOdqn5XBH4d9bQGfTnjuLyzARZBHejqh932HVjiH/j4+R7VHw==
-  dependencies:
-    "@octokit/rest" "^18.0.0"
-    "@semantic-release/error" "^2.2.0"
-    aggregate-error "^3.0.0"
-    bottleneck "^2.18.1"
-    debug "^4.0.0"
-    dir-glob "^3.0.0"
-    fs-extra "^10.0.0"
-    globby "^11.0.0"
-    http-proxy-agent "^4.0.0"
-    https-proxy-agent "^5.0.0"
-    issue-parser "^6.0.0"
-    lodash "^4.17.4"
-    mime "^2.4.3"
-    p-filter "^2.0.0"
-    p-retry "^4.0.0"
-    url-join "^4.0.0"
-
-"@semantic-release/github@^8.0.0":
-  version "8.0.0"
-  resolved "https://registry.yarnpkg.com/@semantic-release/github/-/github-8.0.0.tgz#154586837f29b7ff8033f177e40dc14ce2c66570"
-  integrity sha512-TSDlqWeUo7fWlbp6SAMu0T/980s3/SC155ua4rhFj89hC2MYVXDI8o7Mgc5Qw21phQb6+PxHIe5DbFjg9CbeNQ==
   dependencies:
     "@octokit/rest" "^18.0.0"
     "@semantic-release/error" "^2.2.0"
