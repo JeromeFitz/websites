@@ -117,7 +117,7 @@
     "fs-extra": "10.0.0",
     "husky": "7.0.2",
     "is-ci": "3.0.0",
-    "jest": "27.2.3",
+    "jest": "27.2.4",
     "next-compose-plugins": "2.2.1",
     "next-sitemap": "1.6.168",
     "next-unused": "0.0.6",
