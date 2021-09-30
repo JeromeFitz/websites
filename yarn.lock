@@ -1027,10 +1027,10 @@
     micromatch "^4.0.0"
     p-reduce "^2.0.0"
 
-"@jeromefitz/semantic@4.0.5":
-  version "4.0.5"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/semantic/-/semantic-4.0.5.tgz#d345a25d5b6ad46483e161072e98fb857d4d8638"
-  integrity sha512-ShLlonYU3Q5DnWs5wFMHK6F/wDr+YAeIl/yr7NkvkmTh7loxFjsYuyAZQbYUz2kFL3URCtn2tfUaUdLiMk93+w==
+"@jeromefitz/semantic@4.0.6":
+  version "4.0.6"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/semantic/-/semantic-4.0.6.tgz#8ac7cdbbd3e257135f3f28cdf22ec880ebdcbf6f"
+  integrity sha512-3ErHbDGehRt+QzW1ZxkOwJuXI3s59LKrrDop185+xqBWrWQhZy8RoYujrHIWllsJovnyLm6gQJju/brRJEaRKg==
   dependencies:
     "@jeromefitz/semantic-release-git" "10.0.0-develop.2"
     "@octokit/core" "3.5.1"
