@@ -1,7 +1,7 @@
 import cx from 'clsx'
 import { motion } from 'framer-motion'
 
-const CardWithGlow = ({ children }) => {
+const CardWithGlow = ({ children, blurDataURL = '', isImage = false }) => {
   const cardVariants = {
     // hover: {
     //   scale: 1.05,
@@ -21,6 +21,9 @@ const CardWithGlow = ({ children }) => {
     // },
   }
 
+  const bgLight = 'from-gray-700 via-gray-900 to-black'
+  const bgDark = 'dark:from-gray-700 dark:via-gray-900 dark:to-gray-500'
+
   return (
     <motion.div
       className={cx(
@@ -36,14 +39,28 @@ const CardWithGlow = ({ children }) => {
       <motion.div
         className={cx(
           'absolute top-0 left-0 w-full h-full blur-lg rounded-xl',
-          // 'bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500'
-          'bg-gradient-to-r from-gray-700 via-gray-900 to-black'
+          // 'bg-gradient-to-r',
+          // // // 'dark:from-pink-500 dark:via-red-500 dark:to-yellow-500',
+          // // 'dark:from-gray-500 dark:via-gray-300 dark:to-gray-100',
+          // // 'from-gray-700 via-gray-900 to-black'
+          // bgLight,
+          // bgDark,
+          !!blurDataURL ? '' : `${bgLight} ${bgDark}`,
+          ''
         )}
         variants={glowVariants}
         transition={{
           ease: 'easeOut',
           delay: 0.15,
         }}
+        style={
+          !!blurDataURL
+            ? {
+                background: `url(${blurDataURL})`,
+                backgroundSize: 'cover',
+              }
+            : {}
+        }
       />
       <motion.div
         className={cx(
@@ -51,7 +68,7 @@ const CardWithGlow = ({ children }) => {
           'h-full',
           // 'mb-0 px-10 py-10',
           'rounded-xl',
-          'bg-white'
+          !isImage && 'bg-white'
           // 'backdrop-opacity-75',
           // 'hover:opacity-95'
         )}

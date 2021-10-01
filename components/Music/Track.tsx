@@ -29,7 +29,7 @@ const Track = (item) => {
     <>
       <div className="">
         <div className="flex align-center my-6 w-full" onClick={() => handleClick}>
-          <CardWithGlow>
+          <CardWithGlow blurDataURL={album.meta.base64}>
             <CardWithGlowProps
               reverse={ranking % 2 == 0}
               headline={`${lpad(ranking)}. ${artist.name}`}

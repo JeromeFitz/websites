@@ -28,6 +28,7 @@ const TopArtists = () => {
   }, [time_range])
 
   const loading = !data && !error
+  // const loading = true
 
   return (
     <ul>
