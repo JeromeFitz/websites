@@ -35,7 +35,7 @@ const ImageLead = ({ description, image }) => {
           className={cx(`flex flex-col w-full max-w-4xl`, `px-2 mx-auto md:px-8`)}
         >
           <div className="w-11/12 md:w-2/3 mx-auto py-4 mt-4">
-            <CardWithGlow isImage={true}>
+            <CardWithGlow blurDataURL={imageData.base64} isImage={true}>
               <Image
                 alt={description}
                 blurDataURL={imageData?.base64}
