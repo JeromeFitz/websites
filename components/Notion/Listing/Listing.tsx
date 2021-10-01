@@ -42,10 +42,10 @@ const Listing = ({ items, routeType }) => {
               title,
             } = item?.data
             const timestamp = getTimestamp(dateStart)
-            console.dir(`item`)
-            console.dir(item)
-            // console.dir(`timestamp`)
-            // console.dir(timestamp)
+            // console.dir(`item`)
+            // console.dir(item)
+            // // console.dir(`timestamp`)
+            // // console.dir(timestamp)
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -141,7 +141,14 @@ const Listing = ({ items, routeType }) => {
                 </React.Fragment>
               )
             } else {
-              return <Link key={itemIndex} item={item} routeType={routeType} />
+              return (
+                <Link
+                  key={itemIndex}
+                  item={item}
+                  itemIndex={itemIndex}
+                  routeType={routeType}
+                />
+              )
             }
           })}
         </ul>

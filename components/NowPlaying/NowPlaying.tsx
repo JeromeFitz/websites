@@ -33,7 +33,7 @@ const NowPlaying = () => {
   // @refactor(swr) This a little convulated
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
-  const { album, artist, genres, isPlaying, meta, track } =
+  const { album, artist, artists, genres, isPlaying, meta, track } =
     data.isPlaying || !!data.artist ? data : initialData
   // const { album, artist, genres, isPlaying, meta, track } = initialData
   const genresData = _slice(genres, 0, 3)
@@ -65,14 +65,16 @@ const NowPlaying = () => {
   //   (url) => fetcher(`${url}?${queryParams}`),
   //   { revalidateOnFocus: false }
   // )
-  // console.dir(`album`)
-  // console.dir(album)
-  // console.dir(`artist`)
-  // console.dir(artist)
-  // console.dir(`track`)
-  // console.dir(track)
-  // console.dir(`meta`)
-  // console.dir(meta)
+  console.dir(`album`)
+  console.dir(album)
+  console.dir(`artists`)
+  console.dir(artists)
+  console.dir(`artist`)
+  console.dir(artist)
+  console.dir(`track`)
+  console.dir(track)
+  console.dir(`meta`)
+  console.dir(meta)
 
   // const slugger = new Slugger()
   // // const imageSlug = slugger.slug(album?.imageUrl)

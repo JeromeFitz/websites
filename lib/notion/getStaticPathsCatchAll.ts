@@ -3,7 +3,7 @@ const getStaticPathsCatchAll = () => {
   paths.push(
     // '/blog',
     '/colophon',
-    // '/events',
+    '/events',
     // '/events/2021',
     // '/events/2021/09',
     // '/events/2021/09/09',
@@ -22,8 +22,9 @@ const getStaticPathsCatchAll = () => {
     '/shows/justin-and-jerome-experience',
     '/shows/my-dinner-with-andre-the-musical',
     '/shows/the-death-show',
-    '/shows/the-playlist'
+    '/shows/the-playlist',
     //
+    '/testing-ground'
   )
 
   return {
