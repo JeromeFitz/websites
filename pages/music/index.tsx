@@ -75,23 +75,31 @@ const Music = () => {
             <Emoji character={`📝️`} margin={true} />
             <span className="italic font-bold mr-1">Note:</span>
             Links will open in, and all data comes from,{' '}
-            <span className="text-green-800 dark:text-green-400 font-bold">
+            <span
+              className={cx(
+                'font-bold text-transparent bg-clip-text bg-gradient-to-t',
+                'from-green-500 via-green-500 to-green-500'
+              )}
+            >
               Spotify
             </span>
             . My “
-            <span className="text-green-800 dark:text-green-400 font-bold">
+            <span
+              className={cx(
+                'font-bold text-transparent bg-clip-text bg-gradient-to-t',
+                'from-red-500 via-red-400 to-red-300'
+              )}
+            >
               Music
             </span>
-            ” has over 50 days of continuous music, and am continuing an ever growing
-            vinyl collection.
+            ” library is at over 50 days, and am continuing an ever growing vinyl
+            collection (have not yet made the leap to first editions, heh).
           </p>
           <p className="prose font-medium">
-            Please support artists by purchasing music, especially local and indie.
-            <br />
-            Go to shows (when we can again).
+            Please support artists by going to shows (when we can again), purchasing
+            music, especially local and indie. Like...
           </p>
           <p className="prose font-medium">
-            Like{' '}
             <a
               aria-label="Link to Nice Rec’s, “Drink The Blue Sky” on Bandcamp"
               className="font-black text-xl"
@@ -101,7 +109,7 @@ const Music = () => {
               title="Link to Nice Rec’s, “Drink The Blue Sky” on Bandcamp"
             >
               Nice Rec’s, “Drink The Blue Sky”{' '}
-              <ExternalLinkIcon className="h-4 w-4 ml-2 mb-1 inline-flex _text-black" />
+              <ExternalLinkIcon className="h-4 w-4 ml-2 mb-1 inline-flex _text-black dark:_text-white" />
             </a>
             {` `}
             on Bandcamp.
