@@ -33,7 +33,7 @@ const NowPlaying = () => {
   // @refactor(swr) This a little convulated
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
-  const { album, artist, genres, isPlaying, meta, track } =
+  const { album, artist, artists, genres, isPlaying, meta, track } =
     data.isPlaying || !!data.artist ? data : initialData
   // const { album, artist, genres, isPlaying, meta, track } = initialData
   const genresData = _slice(genres, 0, 3)
@@ -67,6 +67,8 @@ const NowPlaying = () => {
   // )
   // console.dir(`album`)
   // console.dir(album)
+  // console.dir(`artists`)
+  // console.dir(artists)
   // console.dir(`artist`)
   // console.dir(artist)
   // console.dir(`track`)
@@ -85,7 +87,8 @@ const NowPlaying = () => {
       className={cx(
         `min-h-full py-12`,
         'border-t border-black dark:border-white',
-        `bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400`
+        `bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400`,
+        ''
       )}
     >
       <div className={cx(`flex flex-col w-full max-w-4xl`, `px-2 mx-auto md:px-8`)}>
@@ -118,7 +121,7 @@ const NowPlaying = () => {
           section.
         </p>
         <div className="flex align-center my-6 w-full">
-          <CardWithGlow>
+          <CardWithGlow blurDataURL={album.meta.base64}>
             <CardWithGlowProps
               reverse={false}
               headline={artist.name}

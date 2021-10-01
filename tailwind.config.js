@@ -183,6 +183,13 @@ module.exports = {
     //   120: '1.2',
     // },
     extend: {
+      backgroundSize: {
+        'size-200': '200% 200%',
+      },
+      backgroundPosition: {
+        'pos-0': '0% 0%',
+        'pos-100': '100% 100%',
+      },
       fontFamily: {
         sans: ['Inter', ...fontFamily.sans],
         // sans: ['Inter'],
@@ -220,6 +227,9 @@ module.exports = {
           },
         },
       }),
+      zIndex: {
+        '-1': -1,
+      },
     },
     screens: {
       md: { min: '768px' },
@@ -239,6 +249,7 @@ module.exports = {
       md: '0.25rem',
       lg: '0.5rem',
     },
+    // zIndex: ['before', 'hover', 'active'],
   },
   variants: {
     // backgroundColor: ['responsive', 'odd', 'hover', 'focus', 'dark'],

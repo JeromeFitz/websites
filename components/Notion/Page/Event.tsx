@@ -151,7 +151,7 @@ const Event = ({ data: dataEvent }) => {
               'md:p-4 md:rounded-xl md:max-h-96 md:ml-2',
               'md:max-w-xs md:min-w-xs md:w-xs',
               'md:dark:text-black text-lg md:text-sm',
-              'md:sticky md:top-24',
+              'md:sticky md:top-24 z-10',
               isEventPast && 'hidden'
             )}
           >
