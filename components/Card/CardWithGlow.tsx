@@ -23,11 +23,6 @@ const CardWithGlow = ({ children, blurDataURL = '', isImage = false }) => {
 
   const bgLight = 'from-gray-700 via-gray-900 to-black'
   const bgDark = 'dark:from-gray-700 dark:via-gray-900 dark:to-gray-500'
-  // const bgBlur = {
-  //   background: `url(data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAEAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAf/xAAdEAACAQQDAAAAAAAAAAAAAAAAAQIDBAYhBQcR/8QAFQEBAQAAAAAAAAAAAAAAAAAABQb/xAAZEQACAwEAAAAAAAAAAAAAAAAAAwECEiH/2gAMAwEAAhEDEQA/AI72BmXN18pvJzvJJp+a0ACkDFLriOH/2Q==) no-repeat left center`,
-  //   backgroundSize: 'cover',
-  //   zIndex: '99',
-  // }
 
   return (
     <motion.div
@@ -63,7 +58,6 @@ const CardWithGlow = ({ children, blurDataURL = '', isImage = false }) => {
             ? {
                 background: `url(${blurDataURL})`,
                 backgroundSize: 'cover',
-                // zIndex: '99',
               }
             : {}
         }
