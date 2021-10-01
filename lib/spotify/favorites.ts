@@ -148,6 +148,63 @@ const spotifyFavoriteArtists = [
 const spotifyFavoriteTracks = [
   {
     album: {
+      id: '"1oRqN29gAlQfdirSZ31ACY"',
+      imageUrl: 'https://i.scdn.co/image/ab67616d0000b273a33ac83de4bc24bbf75c8b60',
+      meta: {
+        base64:
+          'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAEAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAX/xAAeEAABBAIDAQAAAAAAAAAAAAABAAMEBQIGEyIxYf/EABUBAQEAAAAAAAAAAAAAAAAAAAEF/8QAGREBAQEBAQEAAAAAAAAAAAAAAQIDABGR/9oADAMBAAIRAxEAPwCfGlwqbX9eZZoaWSXq1mQ47LjczmWeYJPYnz4iIquet1ItPDlA+Enzv//Z',
+        img: {
+          src: 'https://i.scdn.co/image/ab67616d0000b273a33ac83de4bc24bbf75c8b60',
+          width: 640,
+          height: 640,
+          type: 'jpg',
+        },
+        slug: 'httpsiscdncoimageab67616d0000b273a33ac83de4bc24bbf75c8b60',
+        url: 'https://i.scdn.co/image/ab67616d0000b273a33ac83de4bc24bbf75c8b60',
+      },
+      name: 'Drink The Blue Sky',
+      uri: '',
+      url: 'https://open.spotify.com/album/"1oRqN29gAlQfdirSZ31ACY"',
+      year: '2021',
+    },
+    artist: {
+      name: 'Nice Rec',
+    },
+    artists: [
+      {
+        external_urls: {
+          spotify: 'https://open.spotify.com/artist/0e9uinKl2aVSSUtaGfmTAY',
+        },
+        href: 'https://api.spotify.com/v1/artists/0e9uinKl2aVSSUtaGfmTAY',
+        id: '0e9uinKl2aVSSUtaGfmTAY',
+        meta: {
+          base64:
+            'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAEAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAX/xAAeEAABBAIDAQAAAAAAAAAAAAABAAMEBQIGEyIxYf/EABUBAQEAAAAAAAAAAAAAAAAAAAEF/8QAGREBAQEBAQEAAAAAAAAAAAAAAQIDABGR/9oADAMBAAIRAxEAPwCfGlwqbX9eZZoaWSXq1mQ47LjczmWeYJPYnz4iIquet1ItPDlA+Enzv//Z',
+          img: {
+            src: 'https://i.scdn.co/image/ab67616d0000b273a33ac83de4bc24bbf75c8b60',
+            width: 640,
+            height: 640,
+            type: 'jpg',
+          },
+          slug: 'httpsiscdncoimageab67616d0000b273a33ac83de4bc24bbf75c8b60',
+          url: 'https://i.scdn.co/image/ab67616d0000b273a33ac83de4bc24bbf75c8b60',
+        },
+        name: 'Nice Rec',
+        type: 'artist',
+        uri: 'spotify:artist:0e9uinKl2aVSSUtaGfmTAY',
+      },
+    ],
+    genres: [''],
+    isPlaying: false,
+    track: {
+      id: '"6LgL97ErFZ9aXwvmw5x1h6"',
+      name: 'Earthen',
+      uri: 'spotify:track:"6LgL97ErFZ9aXwvmw5x1h6"',
+      url: 'https://open.spotify.com/track/"6LgL97ErFZ9aXwvmw5x1h6"',
+    },
+  },
+  {
+    album: {
       id: '2L13Kv0sx6GPAHo7QTZLAy',
       imageUrl: 'https://i.scdn.co/image/ab67616d0000b273230d88bf27d6ca322fb59eb4',
       meta: {

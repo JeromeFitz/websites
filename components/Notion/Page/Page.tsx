@@ -95,6 +95,7 @@ const Page = ({ data, props }) => {
           key={`image-lead--${id}`}
         />
         {/* Content */}
+        {/* @todo(content) */}
         <AnimatePresence key={`animate-presence--${id}`}>
           {routeType === 'events' && !isIndex ? <Event data={data} /> : null}
           {/* // node: NotionBlock (w/ id/type) */}

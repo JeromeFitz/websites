@@ -78,12 +78,33 @@ const Music = () => {
             <span className="text-green-800 dark:text-green-400 font-bold">
               Spotify
             </span>
-            .
+            . My “
+            <span className="text-green-800 dark:text-green-400 font-bold">
+              Music
+            </span>
+            ” has over 50 days of continuous music, and am continuing an ever growing
+            vinyl collection.
           </p>
           <p className="prose font-medium">
             Please support artists by purchasing music, especially local and indie.
             <br />
             Go to shows (when we can again).
+          </p>
+          <p className="prose font-medium">
+            Like{' '}
+            <a
+              aria-label="Link to Nice Rec’s, “Drink The Blue Sky” on Bandcamp"
+              className="font-black text-xl"
+              href="https://nicerec.bandcamp.com/album/drink-the-blue-sky"
+              rel="noopener noreferrer"
+              target="_blank"
+              title="Link to Nice Rec’s, “Drink The Blue Sky” on Bandcamp"
+            >
+              Nice Rec’s, “Drink The Blue Sky”{' '}
+              <ExternalLinkIcon className="h-4 w-4 ml-2 mb-1 inline-flex _text-black" />
+            </a>
+            {` `}
+            on Bandcamp.
           </p>
           {/* <div
             className={cx(
