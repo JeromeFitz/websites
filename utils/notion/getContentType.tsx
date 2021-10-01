@@ -75,7 +75,7 @@ const getContentType = (item: NotionBlock, images?: any[]) => {
               backgroundPosition: 'center',
               backgroundRepeat: 'no-repeat',
               backgroundSize: '100%',
-              backgroundImage: `url(${IMAGE__PLACEHOLDER.base64})`,
+              backgroundImage: `url(${IMAGE__PLACEHOLDER.meta.base64})`,
             }}
           />
           {!!caption && <ImageCaption caption={caption} />}
