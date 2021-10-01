@@ -56,16 +56,18 @@ const TIME_RANGE: TIME_RANGE_PROPS = {
 }
 
 const IMAGE__PLACEHOLDER = {
-  base64:
-    'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAEAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAf/xAAdEAACAQQDAAAAAAAAAAAAAAAAAQIDBAYhBQcR/8QAFQEBAQAAAAAAAAAAAAAAAAAABQb/xAAZEQACAwEAAAAAAAAAAAAAAAAAAwECEiH/2gAMAwEAAhEDEQA/AI72BmXN18pvJzvJJp+a0ACkDFLriOH/2Q==',
-  img: {
-    src: 'https://f4.bcbits.com/img/0026174629_41.jpg',
-    width: 210,
-    height: 210,
-    type: 'jpg',
+  meta: {
+    base64:
+      'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAEAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAX/xAAeEAABBAIDAQAAAAAAAAAAAAABAAMEBQIGEyIxYf/EABUBAQEAAAAAAAAAAAAAAAAAAAEF/8QAGREBAQEBAQEAAAAAAAAAAAAAAQIDABGR/9oADAMBAAIRAxEAPwCfGlwqbX9eZZoaWSXq1mQ47LjczmWeYJPYnz4iIquet1ItPDlA+Enzv//Z',
+    img: {
+      src: 'https://i.scdn.co/image/ab67616d0000b273a33ac83de4bc24bbf75c8b60',
+      width: 640,
+      height: 640,
+      type: 'jpg',
+    },
+    slug: 'httpsiscdncoimageab67616d0000b273a33ac83de4bc24bbf75c8b60',
+    url: 'https://i.scdn.co/image/ab67616d0000b273a33ac83de4bc24bbf75c8b60',
   },
-  slug: 'httpsf4bcbitscomimg0026174629_41jpg',
-  url: 'https://f4.bcbits.com/img/0026174629_41.jpg',
 }
 
 export {

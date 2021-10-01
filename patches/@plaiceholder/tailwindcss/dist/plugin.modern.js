@@ -266,32 +266,32 @@ const getPlaiceholder = makeSynchronous(async (imageUrl) => {
 })
 var plugin = plugin$1(async (props) => {
   if (typeof props === 'undefined') {
-    // console.warn("warn - `@plaiceholder/tailwindcss` no props passed");
+    // console.warn("warn  - `@plaiceholder/tailwindcss` no props passed");
     return
   } else {
     console.warn(
-      "warn - `@plaiceholder/tailwindcss` uses Tailwind's JIT engine and is not covered by semver."
+      "warn  - `@plaiceholder/tailwindcss` uses Tailwind's JIT engine and is not covered by semver."
     )
     const { config, matchUtilities } = props
     const configMode = await config('mode')
 
     if (typeof configMode === 'undefined') {
-      // console.warn("warn - `@plaiceholder/tailwindcss` no config passed.");
+      // console.warn("warn  - `@plaiceholder/tailwindcss` no config passed.");
       return
     } else {
       if (configMode !== 'jit') {
-        console.warn('warn - `@plaiceholder/tailwindcss` only supports JIT mode.') // console.warn(configMode)
+        console.warn('warn  - `@plaiceholder/tailwindcss` only supports JIT mode.') // console.warn(configMode)
       }
     }
 
     if (typeof matchUtilities === 'undefined') {
-      // console.warn("warn - `@plaiceholder/tailwindcss` no matchUtilities passed.");
+      // console.warn("warn  - `@plaiceholder/tailwindcss` no matchUtilities passed.");
       return
     } else {
       matchUtilities({
         [classNamePrefix]: (url) => getPlaiceholder(url),
       })
-    } // console.warn("warn - `@plaiceholder/tailwindcss` complete");
+    } // console.warn("warn  - `@plaiceholder/tailwindcss` complete");
   }
 })
 
