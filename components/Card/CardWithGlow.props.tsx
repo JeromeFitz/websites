@@ -51,9 +51,15 @@ const CardWithGlowProps = ({
       </div>
       <div
         className={cx(
-          'flex flex-col md:w-3/5'
+          'flex flex-col md:w-3/5 bg-black justify-center',
+          'rounded-xl',
+          reverse ? 'rounded-r-none' : 'rounded-l-none'
           // 'md:drop-shadow-xl md:scale-105'
         )}
+        style={{
+          background: `url(${imageData.base64})`,
+          backgroundSize: 'cover',
+        }}
       >
         {!!imageData ? (
           <NextImage

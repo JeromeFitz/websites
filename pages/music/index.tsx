@@ -239,7 +239,9 @@ const Music = () => {
             </p>
             <div className="flex align-center my-6 w-full"></div>
             <div className={cx('flex flex-col')}>
-              <CardWithGlow>
+              <CardWithGlow
+                blurDataURL={spotifyFavoriteArtists[0]?.artists[0].meta.base64}
+              >
                 <CardWithGlowProps
                   headline={spotifyFavoriteArtists[0].artist.name}
                   subline={`2020 “Favourite Artist”`}
@@ -278,7 +280,9 @@ const Music = () => {
                 />
               </CardWithGlow>
               <div className={cx('spacer my-6 md:my-8')} />
-              <CardWithGlow>
+              <CardWithGlow
+                blurDataURL={spotifyFavoriteAlbums[0]?.artists[0].meta.base64}
+              >
                 <CardWithGlowProps
                   reverse={true}
                   headline={`“${spotifyFavoriteAlbums[0].track.name}”`}
