@@ -1,7 +1,7 @@
 import cx from 'clsx'
 import { motion } from 'framer-motion'
 
-const CardWithGlow = ({ children, isImage = false }) => {
+const CardWithGlow = ({ children, blurDataURL = '', isImage = false }) => {
   const cardVariants = {
     // hover: {
     //   scale: 1.05,
@@ -23,6 +23,11 @@ const CardWithGlow = ({ children, isImage = false }) => {
 
   const bgLight = 'from-gray-700 via-gray-900 to-black'
   const bgDark = 'dark:from-gray-700 dark:via-gray-900 dark:to-gray-500'
+  // const bgBlur = {
+  //   background: `url(data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAEAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAf/xAAdEAACAQQDAAAAAAAAAAAAAAAAAQIDBAYhBQcR/8QAFQEBAQAAAAAAAAAAAAAAAAAABQb/xAAZEQACAwEAAAAAAAAAAAAAAAAAAwECEiH/2gAMAwEAAhEDEQA/AI72BmXN18pvJzvJJp+a0ACkDFLriOH/2Q==) no-repeat left center`,
+  //   backgroundSize: 'cover',
+  //   zIndex: '99',
+  // }
 
   return (
     <motion.div
@@ -39,12 +44,13 @@ const CardWithGlow = ({ children, isImage = false }) => {
       <motion.div
         className={cx(
           'absolute top-0 left-0 w-full h-full blur-lg rounded-xl',
-          'bg-gradient-to-r',
-          // // 'dark:from-pink-500 dark:via-red-500 dark:to-yellow-500',
-          // 'dark:from-gray-500 dark:via-gray-300 dark:to-gray-100',
-          // 'from-gray-700 via-gray-900 to-black'
-          bgLight,
-          bgDark,
+          // 'bg-gradient-to-r',
+          // // // 'dark:from-pink-500 dark:via-red-500 dark:to-yellow-500',
+          // // 'dark:from-gray-500 dark:via-gray-300 dark:to-gray-100',
+          // // 'from-gray-700 via-gray-900 to-black'
+          // bgLight,
+          // bgDark,
+          !!blurDataURL ? '' : `${bgLight} ${bgDark}`,
           ''
         )}
         variants={glowVariants}
@@ -52,6 +58,15 @@ const CardWithGlow = ({ children, isImage = false }) => {
           ease: 'easeOut',
           delay: 0.15,
         }}
+        style={
+          !!blurDataURL
+            ? {
+                background: `url(${blurDataURL})`,
+                backgroundSize: 'cover',
+                // zIndex: '99',
+              }
+            : {}
+        }
       />
       <motion.div
         className={cx(

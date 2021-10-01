@@ -65,16 +65,16 @@ const NowPlaying = () => {
   //   (url) => fetcher(`${url}?${queryParams}`),
   //   { revalidateOnFocus: false }
   // )
-  console.dir(`album`)
-  console.dir(album)
-  console.dir(`artists`)
-  console.dir(artists)
-  console.dir(`artist`)
-  console.dir(artist)
-  console.dir(`track`)
-  console.dir(track)
-  console.dir(`meta`)
-  console.dir(meta)
+  // console.dir(`album`)
+  // console.dir(album)
+  // console.dir(`artists`)
+  // console.dir(artists)
+  // console.dir(`artist`)
+  // console.dir(artist)
+  // console.dir(`track`)
+  // console.dir(track)
+  // console.dir(`meta`)
+  // console.dir(meta)
 
   // const slugger = new Slugger()
   // // const imageSlug = slugger.slug(album?.imageUrl)
@@ -121,7 +121,7 @@ const NowPlaying = () => {
           section.
         </p>
         <div className="flex align-center my-6 w-full">
-          <CardWithGlow>
+          <CardWithGlow blurDataURL={album.meta.base64}>
             <CardWithGlowProps
               reverse={false}
               headline={artist.name}
