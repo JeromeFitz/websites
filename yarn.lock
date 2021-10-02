@@ -975,10 +975,10 @@
   resolved "https://registry.yarnpkg.com/@istanbuljs/schema/-/schema-0.1.3.tgz#e45e384e4b8ec16bce2fd903af78450f6bf7ec98"
   integrity sha512-ZXRY4jNvVgSVQ8DL3LTcakaAtXwTVUxE81hslsyD2AtoXW/wVob10HkOJ1X/pAlcI7D+2YoZKg5do8G/w6RYgA==
 
-"@jeromefitz/codestyle@4.0.7":
-  version "4.0.7"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/codestyle/-/codestyle-4.0.7.tgz#e31feee928701d37c70c71c7587896d394220f50"
-  integrity sha512-VnNkv50P0z39gWgYn2jiNmtHCLhzVLVtJp/aIK32OdZECn3YtLsgE0P3rBUquC5GjEpHprnRZkjx5KzDm7LAaQ==
+"@jeromefitz/codestyle@4.0.8":
+  version "4.0.8"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/codestyle/-/codestyle-4.0.8.tgz#31650c3491bea28cc69027a041c82ced584ad07a"
+  integrity sha512-1A9714qMD0ji/lYOyr8Ni6ylnlNTK9Ma/bsgERRnzwv/FYfAv9lIGk/BWDL9G0dQU1np7U+SpjbN0up4yDDt6A==
   dependencies:
     "@babel/core" "7.15.5"
     "@babel/eslint-parser" "7.15.7"
@@ -996,10 +996,10 @@
     pretty-quick "3.1.1"
     typescript "4.4.3"
 
-"@jeromefitz/git-cz@10.0.7":
-  version "10.0.7"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/git-cz/-/git-cz-10.0.7.tgz#b1967cf4e810623a2b43bbcbc777db85efb111b8"
-  integrity sha512-BWSUatjRmgRmLRwZIt5j5TqAtta6gv6SV5igNtloFi4PoCD+5A63yq/smzBhNS+3QOKsqNJHz4fj+5Q41udhqg==
+"@jeromefitz/git-cz@10.0.8":
+  version "10.0.8"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/git-cz/-/git-cz-10.0.8.tgz#fba511451c831db78febf8dbb16f21d0807f3058"
+  integrity sha512-yiMy99YbM7OO8d5eN4MryYMpfLzngCOO0Ln0jv5ZVBPSPkskZjjlZoJQ7gCUWxc7xGaz69U2x1kar8pZHrJ4XQ==
   dependencies:
     "@types/chalk-pipe" "2.0.0"
     chalk "4.1.2"
@@ -1027,10 +1027,10 @@
     micromatch "^4.0.0"
     p-reduce "^2.0.0"
 
-"@jeromefitz/semantic@4.0.7":
-  version "4.0.7"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/semantic/-/semantic-4.0.7.tgz#8c1b5cdc47b05b8cafed7adfbbac739589be48d3"
-  integrity sha512-rA55ueg4DHXvmAX6KVhx+4Ntcw8HA86TDKW1sDxnzN5pvyf22rZ4Nh0uprKsgwIT+kDwa82LxkLQWrqvSYsFsg==
+"@jeromefitz/semantic@4.0.8":
+  version "4.0.8"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/semantic/-/semantic-4.0.8.tgz#353ee1a80bcf12b8445facb768c90b1f924b699d"
+  integrity sha512-LPzPvpmSUJOk5FjJX9ieOf8adKpgsk3/EVUMWNrEUlu87a6yTXj2LoHClATjJME4e6bWU53ughywPiuX6NNrWQ==
   dependencies:
     "@jeromefitz/semantic-release-git" "10.0.0-develop.2"
     "@octokit/core" "3.5.1"
@@ -3165,10 +3165,10 @@ bn.js@^5.0.0, bn.js@^5.1.1:
   resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-5.2.0.tgz#358860674396c6997771a9d051fcc1b57d4ae002"
   integrity sha512-D7iWRBvnZE8ecXiLj/9wbxH7Tk79fAh8IHaTNq1RWRixsS02W+5qS+iE9yq6RYl0asXx5tw0bLhmT5pIfbSquw==
 
-body-scroll-lock@3.1.5:
-  version "3.1.5"
-  resolved "https://registry.yarnpkg.com/body-scroll-lock/-/body-scroll-lock-3.1.5.tgz#c1392d9217ed2c3e237fee1e910f6cdd80b7aaec"
-  integrity sha512-Yi1Xaml0EvNA0OYWxXiYNqY24AfWkbA6w5vxE7GWxtKfzIbZM+Qw+aSmkgsbWzbHiy/RCSkUZBplVxTA+E4jJg==
+body-scroll-lock@4.0.0-beta.0:
+  version "4.0.0-beta.0"
+  resolved "https://registry.yarnpkg.com/body-scroll-lock/-/body-scroll-lock-4.0.0-beta.0.tgz#4f78789d10e6388115c0460cd6d7d4dd2bbc4f7e"
+  integrity sha512-a7tP5+0Mw3YlUJcGAKUqIBkYYGlYxk2fnCasq/FUph1hadxlTRjF+gAcZksxANnaMnALjxEddmSi/H3OR8ugcQ==
 
 bottleneck@^2.18.1:
   version "2.19.5"
@@ -3801,10 +3801,10 @@ concat-map@0.0.1:
   resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
   integrity sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=
 
-concurrently@6.2.2:
-  version "6.2.2"
-  resolved "https://registry.yarnpkg.com/concurrently/-/concurrently-6.2.2.tgz#81c11b85d9a7de56ad4388ff6aab4a94ddea51f2"
-  integrity sha512-7a45BjVakAl3pprLOeqaOoZfIWZRmdC68NkjyzPbKu0/pE6CRmqS3l8RG7Q2cX9LnRHkB0oPM6af8PS7NEQvYQ==
+concurrently@6.3.0:
+  version "6.3.0"
+  resolved "https://registry.yarnpkg.com/concurrently/-/concurrently-6.3.0.tgz#63128cb4a6ed54d3c0ed8528728590a5fe54582a"
+  integrity sha512-k4k1jQGHHKsfbqzkUszVf29qECBrkvBKkcPJEUDTyVR7tZd1G/JOfnst4g1sYbFvJ4UjHZisj1aWQR8yLKpGPw==
   dependencies:
     chalk "^4.1.0"
     date-fns "^2.16.1"
