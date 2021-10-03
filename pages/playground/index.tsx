@@ -57,7 +57,7 @@ const BackgroundColorMotion = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const shouldReduceMotion = useReducedMotion()
   return (
-    <div className="h-5/6 w-5/6 mx-0 my-auto p-4 bg-black">
+    <div className="h-5/6 w-5/6 mx-0 my-auto p-4">
       <div
         className={cx(
           'transition-all duration-500 bg-gradient-to-tl',
@@ -77,6 +77,18 @@ const BackgroundColorMotion = () => {
       >
         <h1>Uh Hello.</h1>
       </div>
+      <h1
+        className={cx(
+          'font-bold text-transparent bg-clip-text bg-gradient-to-l',
+          'transition-all duration-500',
+          // 'from-green-100 via-green-300 to-green-500',
+          'from-green-200 via-green-400 to-purple-700',
+          'bg-pos-0 hover:bg-pos-100',
+          'bg-size-100 hover:bg-size-175'
+        )}
+      >
+        Uh Goodbye.
+      </h1>
       <button className="m-2 p-10 text-white rounded-xl transition-all duration-500 bg-gradient-to-t to-white via-black from-red-500 bg-size-200 bg-pos-0 hover:bg-pos-100">
         Hover me
       </button>

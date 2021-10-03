@@ -184,10 +184,17 @@ module.exports = {
     // },
     extend: {
       backgroundSize: {
+        'size-100': '100% 100%',
+        'size-125': '125% 125%',
+        'size-150': '150% 150%',
+        'size-175': '175% 175%',
         'size-200': '200% 200%',
       },
       backgroundPosition: {
         'pos-0': '0% 0%',
+        'pos-25': '25% 25%',
+        'pos-50': '50% 50%',
+        'pos-75': '75% 75%',
         'pos-100': '100% 100%',
       },
       fontFamily: {
