@@ -1,7 +1,7 @@
+import { ExternalLinkIcon } from '@heroicons/react/solid'
 import cx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
-import { MdOpenInNew } from 'react-icons/md'
 import useSWR from 'swr'
 
 import SplitText from '~components/SplitText'
@@ -79,7 +79,7 @@ const NowPlaying = () => {
                 >
                   <SplitText text={track.name} />{' '}
                   <span className="ml-2 mt-1 text-base inline-flex">
-                    <MdOpenInNew />
+                    <ExternalLinkIcon className="h-5 w-5" />
                   </span>
                 </a>
               </h2>
