@@ -1,7 +1,7 @@
-import { ArrowRightIcon } from '@heroicons/react/solid'
 import Link from 'next/link'
 import React, { FC } from 'react'
 
+import Icon from '~components/Icon'
 import { Container } from '~components/UI'
 
 import styles from './Hero.module.css'
@@ -26,7 +26,7 @@ const Hero: FC<Props> = ({ headline, description }) => {
             <Link href="/blog">
               <a className="text-white pt-3 font-bold hover:underline flex flex-row cursor-pointer w-max-content">
                 Read it here
-                <ArrowRightIcon className="h-5 w-5 ml-1" />
+                <Icon className="h-5 w-5 ml-1" icon={'ArrowRightIcon'} />
               </a>
             </Link>
           </div>

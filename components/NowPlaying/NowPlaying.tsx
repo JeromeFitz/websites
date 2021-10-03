@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { ExternalLinkIcon } from '@heroicons/react/solid'
 import cx from 'clsx'
 import { motion } from 'framer-motion'
 // import Slugger from 'github-slugger'
@@ -14,6 +13,7 @@ import useSWR from 'swr'
 import _title from 'title'
 
 import { CardWithGlow, CardWithGlowProps } from '~components/Card'
+import Icon from '~components/Icon'
 import { WEBKIT_BACKGROUND__BREAK } from '~lib/constants'
 import fetcher from '~lib/fetcher'
 import { spotifyFavoriteTracks } from '~lib/spotify/favorites'
@@ -148,7 +148,10 @@ const NowPlaying = () => {
                     title={`Link to ${track.name}`}
                   >
                     Join along here.
-                    <ExternalLinkIcon className="h-4 w-4 ml-2 mb-1 inline-flex _text-black" />
+                    <Icon
+                      className="h-4 w-4 ml-2 mb-1 inline-flex _text-black"
+                      icon={'ExternalLinkIcon'}
+                    />
                   </a>
                 </>
               }

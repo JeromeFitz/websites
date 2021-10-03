@@ -1,10 +1,10 @@
-import { HomeIcon, MenuAlt4Icon, XIcon } from '@heroicons/react/solid'
 import cx from 'clsx'
 import { AnimatePresence, motion } from 'framer-motion'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 import { useSound } from 'use-sound'
 
+import Icon from '~components/Icon'
 import { ThemeMode } from '~components/Layout'
 import { activeLinks } from '~config/navigation'
 import { useUI } from '~context/ManagedUIContext'
@@ -81,7 +81,7 @@ const NavigationMobile = () => {
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.8 }}
           >
-            <HomeIcon className={cx('h-5 w-5 md:h10 md:w-10')} />
+            <Icon className={cx('h-5 w-5 md:h10 md:w-10')} icon={'HomeIcon'} />
           </motion.button>
         </div>
       )}
@@ -108,9 +108,9 @@ const NavigationMobile = () => {
           whileTap={{ scale: 0.8 }}
         >
           {displayNavigation ? (
-            <XIcon className={cx('h-5 w-5 md:h10 md:w-10')} />
+            <Icon className={cx('h-5 w-5 md:h10 md:w-10')} icon={'XIcon'} />
           ) : (
-            <MenuAlt4Icon className={cx('h-5 w-5 md:h10 md:w-10')} />
+            <Icon className={cx('h-5 w-5 md:h10 md:w-10')} icon={'MenuAlt4Icon'} />
           )}
         </motion.button>
         <motion.nav

@@ -1,9 +1,9 @@
-import { ExternalLinkIcon } from '@heroicons/react/solid'
 import cx from 'clsx'
 import NextLink from 'next/link'
 import nodeEmoji from 'node-emoji'
 import { useSound } from 'use-sound'
 
+import Icon from '~components/Icon'
 import Emoji from '~components/Notion/Emoji'
 import { useUI } from '~context/ManagedUIContext'
 import getNextLink from '~utils/notion/getNextLink'
@@ -84,7 +84,7 @@ const TextAnnotations = ({ href, plain_text, annotations }) => {
           }}
         >
           <span>{returnElement}</span>
-          <ExternalLinkIcon className="h-4   w-4  ml-1" />
+          <Icon className="h-4 w-4 ml-1" icon={'ExternalLinkIcon'} />
         </a>
       )
     }

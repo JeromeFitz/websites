@@ -1,4 +1,3 @@
-import { XIcon } from '@heroicons/react/solid'
 import { Portal } from '@reach/portal'
 import {
   disableBodyScroll,
@@ -8,6 +7,7 @@ import {
 import cx from 'clsx'
 import { FC, useRef, useEffect, useCallback } from 'react'
 
+import Icon from '~components/Icon'
 import { useUI } from '~context/ManagedUIContext'
 import FocusTrap from '~lib/focusTrap'
 
@@ -67,7 +67,7 @@ const Modal: FC<Props> = ({ children, open, onClose, onEnter = null }) => {
               aria-label="Close panel"
               className="hover:text-gray-500 transition ease-in-out duration-150 focus:outline-none absolute right-0 top-0 m-6"
             >
-              <XIcon className="h-4 w-4" />
+              <Icon className="h-4 w-4" icon={'XIcon'} />
             </button>
             <FocusTrap focusFirst>{children}</FocusTrap>
           </div>

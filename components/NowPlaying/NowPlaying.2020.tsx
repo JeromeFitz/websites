@@ -1,9 +1,9 @@
-import { ExternalLinkIcon } from '@heroicons/react/solid'
 import cx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
 import useSWR from 'swr'
 
+import Icon from '~components/Icon'
 import SplitText from '~components/SplitText'
 import fetcher from '~lib/fetcher'
 import { spotifyFavoriteTracks } from '~lib/spotify/favorites'
@@ -79,7 +79,7 @@ const NowPlaying = () => {
                 >
                   <SplitText text={track.name} />{' '}
                   <span className="ml-2 mt-1 text-base inline-flex">
-                    <ExternalLinkIcon className="h-5 w-5" />
+                    <Icon icon={'ExternalLinkIcon'} />
                   </span>
                 </a>
               </h2>
