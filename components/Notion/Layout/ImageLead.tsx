@@ -1,6 +1,6 @@
 import cx from 'clsx'
 import Slugger from 'github-slugger'
-import Image from 'next/image'
+import NextImage from 'next/image'
 import useSWR from 'swr'
 
 import { CardWithGlow } from '~components/Card'
@@ -36,12 +36,13 @@ const ImageLead = ({ description, image }) => {
         >
           <div className="w-11/12 md:w-2/3 mx-auto py-4 mt-4">
             <CardWithGlow blurDataURL={imageData.base64} isImage={true}>
-              <Image
+              <NextImage
                 alt={description}
                 blurDataURL={imageData?.base64}
                 className={cx('rounded-xl')}
                 key={imageSlug}
                 placeholder="blur"
+                priority={true}
                 title={description}
                 {...imageData?.img}
               />
