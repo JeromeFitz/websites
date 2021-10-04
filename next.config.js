@@ -5,6 +5,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 })
 const { withPlaiceholder } = require('@plaiceholder/next')
 const { withPlugins } = require('next-compose-plugins')
+const withPWA = require('next-pwa')
 
 // const getRedirects = require('./config/notion/website/getRedirects')
 
@@ -153,6 +154,13 @@ module.exports = withPlugins(
     [withBundleAnalyzer],
     // @plaiceholder/next
     [withPlaiceholder],
+    [
+      withPWA({
+        pwa: {
+          dest: 'public',
+        },
+      }),
+    ],
   ],
   nextConfig
 )
