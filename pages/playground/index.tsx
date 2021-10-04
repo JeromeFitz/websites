@@ -1,5 +1,6 @@
 import cx from 'clsx'
 import { motion, useReducedMotion } from 'framer-motion'
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { useState } from 'react'
 import _title from 'title'
@@ -7,14 +8,14 @@ import { useSound } from 'use-sound'
 
 import { Banner as AlertBanner } from '~components/Alert'
 import Layout from '~components/Layout'
-import Breadcrumb from '~components/Notion/Breadcrumb'
-// import Title from '~components/Notion/Title'
 import Seo from '~components/Seo'
 import { Container, Grid, Skeleton, Button } from '~components/UI'
 import { useUI } from '~context/ManagedUIContext'
 import { useNotification } from '~context/Notification'
 import { MOTION_PAGE_VARIANTS, WEBKIT_BACKGROUND } from '~lib/constants'
 import rangeMap from '~utils/rangeMap'
+
+const Breadcrumb = dynamic(() => import('~components/Notion/Breadcrumb'), {})
 
 const mockTrueFalse = [
   { value: true, title: 'true ' },
@@ -57,7 +58,7 @@ const BackgroundColorMotion = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const shouldReduceMotion = useReducedMotion()
   return (
-    <div className="h-5/6 w-5/6 mx-0 my-auto p-4 bg-black">
+    <div className="h-5/6 w-5/6 mx-0 my-auto p-4">
       <div
         className={cx(
           'transition-all duration-500 bg-gradient-to-tl',
@@ -77,6 +78,18 @@ const BackgroundColorMotion = () => {
       >
         <h1>Uh Hello.</h1>
       </div>
+      <h1
+        className={cx(
+          'font-bold text-transparent bg-clip-text bg-gradient-to-l',
+          'transition-all duration-500',
+          // 'from-green-100 via-green-300 to-green-500',
+          'from-green-200 via-green-400 to-purple-700',
+          'bg-pos-0 hover:bg-pos-100',
+          'bg-size-100 hover:bg-size-175'
+        )}
+      >
+        Uh Goodbye.
+      </h1>
       <button className="m-2 p-10 text-white rounded-xl transition-all duration-500 bg-gradient-to-t to-white via-black from-red-500 bg-size-200 bg-pos-0 hover:bg-pos-100">
         Hover me
       </button>

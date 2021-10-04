@@ -1,19 +1,19 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { ExternalLinkIcon } from '@heroicons/react/solid'
 import cx from 'clsx'
-import { motion } from 'framer-motion'
+import { useAnimation, motion } from 'framer-motion'
 // import Slugger from 'github-slugger'
 import _map from 'lodash/map'
 import _slice from 'lodash/slice'
 // import NextImage from 'next/image'
 import NextLink from 'next/link'
-// import { useEffect } from 'react'
-// import { useInView } from 'react-intersection-observer'
+import { useEffect } from 'react'
+import { useInView } from 'react-intersection-observer'
 // import useSWR, { useSWRConfig } from 'swr'
 import useSWR from 'swr'
 import _title from 'title'
 
 import { CardWithGlow, CardWithGlowProps } from '~components/Card'
+import Icon from '~components/Icon'
 import { WEBKIT_BACKGROUND__BREAK } from '~lib/constants'
 import fetcher from '~lib/fetcher'
 import { spotifyFavoriteTracks } from '~lib/spotify/favorites'
@@ -22,9 +22,20 @@ const MINUTE = 60000
 // const SECOND = 1000
 
 const initialData = spotifyFavoriteTracks[0]
+const variants = {
+  visible: { opacity: 1, transition: { duration: 1 } },
+  hidden: { opacity: 0 },
+}
 
 const NowPlaying = () => {
-  // const [ref, refInView] = useInView()
+  const [ref, refInView] = useInView()
+  const controls = useAnimation()
+  useEffect(() => {
+    if (refInView) {
+      void controls.start('visible')
+    }
+  }, [controls, refInView])
+
   const { data } = useSWR('/api/spotify/now-playing', fetcher, {
     fallbackData: initialData,
     refreshInterval: MINUTE,
@@ -91,7 +102,13 @@ const NowPlaying = () => {
         ''
       )}
     >
-      <div className={cx(`flex flex-col w-full max-w-4xl`, `px-2 mx-auto md:px-8`)}>
+      <motion.div
+        className={cx(`flex flex-col w-full max-w-4xl`, `px-2 mx-auto md:px-8`)}
+        ref={ref}
+        animate={controls}
+        initial="hidden"
+        variants={variants}
+      >
         <motion.h3
           className={cx(
             'flex flex-row items-center',
@@ -131,7 +148,6 @@ const NowPlaying = () => {
                 <>
                   Off of “<span className={cx('font-bold')}>{album.name}</span>”
                   released in <span className={cx('font-bold')}>{album.year}</span>.
-                  .
                 </>
               }
               share={
@@ -148,7 +164,10 @@ const NowPlaying = () => {
                     title={`Link to ${track.name}`}
                   >
                     Join along here.
-                    <ExternalLinkIcon className="h-4 w-4 ml-2 mb-1 inline-flex _text-black" />
+                    <Icon
+                      className="h-4 w-4 ml-2 mb-1 inline-flex _text-black"
+                      icon={'ExternalLinkIcon'}
+                    />
                   </a>
                 </>
               }
@@ -157,7 +176,7 @@ const NowPlaying = () => {
             />
           </CardWithGlow>
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }

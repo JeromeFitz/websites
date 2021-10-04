@@ -14,8 +14,7 @@
       "~styles/*": ["styles/*"],
       "~svg/*": ["svg/*"],
       "~theme/*": ["theme/*"],
-      "~utils/*": ["utils/*"],
-      "react-icons/*": ["node_modules/react-icons/*"]
+      "~utils/*": ["utils/*"]
     }
   }
 }

@@ -1,16 +1,10 @@
-import {
-  VolumeOffIcon,
-  VolumeUpIcon,
-  MoonIcon,
-  SunIcon,
-} from '@heroicons/react/solid'
 import cx from 'clsx'
 import { motion } from 'framer-motion'
 import { useTheme } from 'next-themes'
 import { memo } from 'react'
 import { useSound } from 'use-sound'
 
-// import Emoji from '~components/Notion/Emoji'
+import Icon from '~components/Icon'
 import { useUI } from '~context/ManagedUIContext'
 
 const AppSoundToggle = () => {
@@ -43,12 +37,7 @@ const AppSoundToggle = () => {
       whileHover={{ scale: 1.2 }}
       whileTap={{ scale: 0.8 }}
     >
-      {/* <Emoji character={audio ? '🔉️' : '🔇️'} /> */}
-      {audio ? (
-        <VolumeUpIcon className="h-5 w-5 " />
-      ) : (
-        <VolumeOffIcon className="h-5 w-5" />
-      )}
+      {audio ? <Icon icon={'VolumeUpIcon'} /> : <Icon icon={'VolumeOffIcon'} />}
     </motion.button>
   )
 }
@@ -81,12 +70,7 @@ const AppThemeToggle = () => {
       whileHover={{ scale: 1.2 }}
       whileTap={{ scale: 0.8 }}
     >
-      {/* <Emoji character={theme === 'light' ? '🌞️' : '🌚️'} /> */}
-      {theme === 'light' ? (
-        <SunIcon className="h-5 w-5 " />
-      ) : (
-        <MoonIcon className="h-5 w-5 " />
-      )}
+      {theme === 'light' ? <Icon icon={'SunIcon'} /> : <Icon icon={'MoonIcon'} />}
     </motion.button>
   )
 }

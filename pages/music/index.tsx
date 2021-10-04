@@ -1,16 +1,15 @@
-import { ExternalLinkIcon } from '@heroicons/react/solid'
 import cx from 'clsx'
 import { motion } from 'framer-motion'
 import _map from 'lodash/map'
+import dynamic from 'next/dynamic'
 // import { useState } from 'react'
 import _title from 'title'
 import { useSound } from 'use-sound'
 
 import { CardWithGlow, CardWithGlowProps } from '~components/Card'
+import Icon from '~components/Icon'
 import Layout, { Breakout } from '~components/Layout'
 import { TopArtists, TopTracks } from '~components/Music'
-import Breadcrumb from '~components/Notion/Breadcrumb'
-import Emoji from '~components/Notion/Emoji'
 import Seo from '~components/Seo'
 import { useUI } from '~context/ManagedUIContext'
 import useSpotify from '~hooks/useSpotify'
@@ -24,6 +23,11 @@ import {
   spotifyFavoriteAlbums,
   spotifyFavoriteArtists,
 } from '~lib/spotify/favorites'
+
+const Breadcrumb = dynamic(() => import('~components/Notion/Breadcrumb'), {})
+const Emoji = dynamic(() => import('~components/Notion/Emoji'), {
+  ssr: false,
+})
 
 const Music = () => {
   // const [term, termSet] = useState('medium_term')
@@ -109,7 +113,10 @@ const Music = () => {
               title="Link to Nice Rec’s, “Drink The Blue Sky” on Bandcamp"
             >
               Nice Rec’s, “Drink The Blue Sky”{' '}
-              <ExternalLinkIcon className="h-4 w-4 ml-2 mb-1 inline-flex _text-black dark:_text-white" />
+              <Icon
+                className="h-4 w-4 ml-2 mb-1 inline-flex _text-black dark:_text-white"
+                icon={'ExternalLinkIcon'}
+              />
             </a>
             {` `}
             on Bandcamp.
@@ -279,7 +286,10 @@ const Music = () => {
                         title={`Link to ${spotifyFavoriteArtists[0].artist.name}`}
                       >
                         Full bio and music here.
-                        <ExternalLinkIcon className="h-4 w-4 ml-2 mb-1 inline-flex _text-black" />
+                        <Icon
+                          className="h-4 w-4 ml-2 mb-1 inline-flex _text-black"
+                          icon={'ExternalLinkIcon'}
+                        />
                       </a>
                     </>
                   }
@@ -327,7 +337,10 @@ const Music = () => {
                         title={`Link to ${spotifyFavoriteAlbums[0].artist.name}`}
                       >
                         Peep the track here.
-                        <ExternalLinkIcon className="h-4 w-4 ml-2 mb-1 inline-flex _text-black" />
+                        <Icon
+                          className="h-4 w-4 ml-2 mb-1 inline-flex _text-black"
+                          icon={'ExternalLinkIcon'}
+                        />
                       </a>
                     </>
                   }

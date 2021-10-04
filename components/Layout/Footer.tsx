@@ -1,8 +1,9 @@
-import { AnnotationIcon, InformationCircleIcon } from '@heroicons/react/solid'
 import cx from 'clsx'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { memo, useEffect, useState } from 'react'
+
+import Icon from '~components/Icon'
 
 // import NowPlaying from '~components/NowPlaying'
 const NowPlayingWithNoSSR = dynamic(() => import('~components/NowPlaying'), {
@@ -44,7 +45,7 @@ const Footer = () => {
                 <div className="flex flex-col items-center md:items-start">
                   <div className="flex flex-row mb-2">
                     <span className="mr-2 text-base inline-flex">
-                      <AnnotationIcon className="h-5 w-5" />
+                      <Icon icon={'AnnotationIcon'} />
                     </span>
                     <Link href="/colophon">
                       <a className=" font-semibold">Colophon</a>
@@ -52,7 +53,7 @@ const Footer = () => {
                   </div>
                   <div className="flex flex-row mb-2">
                     <span className="mr-2 text-base inline-flex">
-                      <InformationCircleIcon className="h-5 w-5" />
+                      <Icon icon={'InformationCircleIcon'} />
                     </span>
                     <span>
                       <strong>Note: </strong> This site is a work-in-progress.

@@ -3,8 +3,8 @@ import Slugger from 'github-slugger'
 import _startsWith from 'lodash/startsWith'
 import Link from 'next/link'
 import React from 'react'
-import { MdOpenInNew } from 'react-icons/md'
 
+import Icon from '~components/Icon'
 import SplitText from '~components/SplitText'
 import getNextLink from '~utils/getNextLink'
 import isObject from '~utils/isObject'
@@ -45,7 +45,7 @@ const extLink = (props) => {
           <SplitText splitBy="letter" speed={3} text={text} />
         )}{' '}
         <span className="ml-2 mt-1 text-base inline">
-          <MdOpenInNew />
+          <Icon icon={'ExternalLinkIcon'} />
         </span>
       </a>
     )
@@ -91,7 +91,7 @@ const nextLink = (props) => {
       >
         {text}
         <span className="ml-2 mt-1 text-base inline">
-          <MdOpenInNew />
+          <Icon icon={'ExternalLinkIcon'} />
         </span>
       </a>
     )

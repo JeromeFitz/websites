@@ -1,9 +1,5 @@
-import { HomeIcon } from '@heroicons/react/solid'
 import cx from 'clsx'
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import _lowerCase from 'lodash/lowerCase'
 import _take from 'lodash/take'
 // import dynamic from 'next/dynamic'
@@ -13,6 +9,7 @@ import { useRef } from 'react'
 
 // import { ThemeMode } from '~components/Layout'
 // import Avatar from '~components/Avatar'
+import Icon from '~components/Icon'
 import useSticky from '~hooks/useSticky'
 import { WEBKIT_BACKGROUND__BREAK } from '~lib/constants'
 
@@ -92,12 +89,12 @@ const Breadcrumb = ({ isIndex, title }) => {
                   aria-label={`Link to homepage of jeromefitzgerald.com`}
                   title={`Link to homepage of jeromefitzgerald.com`}
                 >
-                  {/* {isFix ? <HomeIcon className="h-5 w-5 " /> : isIndex ? title : ''} */}
+                  {/* {isFix ?  <Icon icon={'HomeIcon'} /> : isIndex ? title : ''} */}
                   {!isFix && isHomepage ? (
                     // 'Jerome Fitzgerald'
                     ''
                   ) : (
-                    <HomeIcon className="h-5 w-5 " />
+                    <Icon icon={'HomeIcon'} />
                   )}
                 </a>
               </NextLink>

@@ -3,6 +3,16 @@ import nodeEmoji from 'node-emoji'
 
 import { EMOJI_FALLBACK } from '~lib/constants'
 
+const emojiParser = (text: string) => {
+  const emojiFound = nodeEmoji.find(text.trim())
+
+  if (emojiFound === undefined) {
+    return text
+  }
+
+  return <Emoji character={emojiFound.emoji} />
+}
+
 const Emoji = ({ character, margin = false }) => {
   // @hack(emoji) emojis that are made up of more than one not supported yet
   const emojiTemp = !!character && character.length > 3 ? EMOJI_FALLBACK : character
@@ -35,4 +45,5 @@ const Emoji = ({ character, margin = false }) => {
   )
 }
 
+export { emojiParser }
 export default Emoji

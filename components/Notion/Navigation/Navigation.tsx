@@ -1,8 +1,8 @@
-import { MenuAlt4Icon } from '@heroicons/react/solid'
 import cx from 'clsx'
 import { motion } from 'framer-motion'
 import { useSound } from 'use-sound'
 
+import Icon from '~components/Icon'
 import { useUI } from '~context/ManagedUIContext'
 
 const Navigation = () => {
@@ -45,7 +45,7 @@ const Navigation = () => {
           whileHover={{ scale: 1.2 }}
           whileTap={{ scale: 0.8 }}
         >
-          {displayNavigation ? null : <MenuAlt4Icon className="h-5 w-5 " />}
+          {displayNavigation ? null : <Icon icon={'MenuAlt4Icon'} />}
         </motion.button>
       </div>
     </motion.header>

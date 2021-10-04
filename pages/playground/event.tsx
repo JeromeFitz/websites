@@ -1,10 +1,3 @@
-import {
-  ExternalLinkIcon,
-  LibraryIcon,
-  LinkIcon,
-  LocationMarkerIcon,
-  TicketIcon,
-} from '@heroicons/react/solid'
 import cx from 'clsx'
 import _isBefore from 'date-fns/isBefore'
 import _parseISO from 'date-fns/parseISO'
@@ -14,6 +7,7 @@ import _size from 'lodash/size'
 // import Image from 'next/image'
 import useSWR from 'swr'
 
+import Icon from '~components/Icon'
 import Layout from '~components/Layout'
 import Meta from '~components/Notion/Meta'
 // import Title from '~components/Notion/Title'
@@ -171,7 +165,7 @@ const Event = () => {
                     <span className={cx(isEventPast && 'line-through')}>
                       Ticket Purchase in New Window
                     </span>
-                    <ExternalLinkIcon className="h-4 w-4 ml-2" />
+                    <Icon className="h-4 w-4 ml-2" icon={'ExternalLinkIcon'} />
                   </p>
                 </div>
                 <div id="event--content--sidebar--meta">
@@ -182,7 +176,7 @@ const Event = () => {
                       'flex flex-row justify-start place-content-center items-center'
                     )}
                   >
-                    <TicketIcon className="h-4 w-4 mr-2" />
+                    <Icon className="h-4 w-4 mr-2" icon={'TicketIcon'} />
                     <span>
                       {isEventPast ? copy.cta.onSalePast : copy.cta.onSaleNow}
                     </span>
@@ -194,7 +188,7 @@ const Event = () => {
                       'flex flex-row justify-start place-content-center items-center'
                     )}
                   >
-                    <LibraryIcon className="h-4 w-4 mr-2" />
+                    <Icon className="h-4 w-4 mr-2" icon={'LibraryIcon'} />
                     <span>{copy.venue.title}</span>
                   </div>
                   <div
@@ -204,7 +198,7 @@ const Event = () => {
                       'flex flex-row justify-start place-content-center items-center'
                     )}
                   >
-                    <LocationMarkerIcon className="h-4 w-4 mr-2" />
+                    <Icon className="h-4 w-4 mr-2" icon={'LocationMarkerIcon'} />
                     <span>
                       {addressFormat}
                       <br />
@@ -231,7 +225,7 @@ const Event = () => {
                     Share with friends
                   </div>
                   <div id="event--content--sidebar--social--link" className={cx('')}>
-                    <LinkIcon className="h-4 w-4 mx-2" />
+                    <Icon className="h-4 w-4 mx-2" icon={'LinkIcon'} />
                   </div>
                   <div
                     id="event--content--sidebar--social--facebook"
@@ -305,7 +299,7 @@ const Event = () => {
             </button>
             <p className="text-xs center text-white dark:text-black flex justify-start place-content-center items-center">
               <span>Ticket Purchase in New Window</span>
-              <ExternalLinkIcon className="h-4 w-4 ml-2" />
+              <Icon className="h-4 w-4 ml-2" icon={'ExternalLinkIcon'} />
             </p>
           </div>
           {/* <div className="grid grid-cols-1 sm:grid-cols-2 sm:px-8 sm:py-12 sm:gap-x-8 md:py-16">
