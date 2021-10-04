@@ -120,6 +120,7 @@ const nextConfig = {
   },
   pageExtensions: ['jsx', 'js', 'tsx', 'ts'],
   poweredByHeader: false,
+  // reactStrictMode: true,
   // rewrites() {
   //   return getRedirects
   // },
