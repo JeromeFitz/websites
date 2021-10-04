@@ -92,6 +92,7 @@ const Page = ({ data, props }) => {
         <ImageLead
           description={properties?.seoImageDescription}
           image={properties?.seoImage}
+          imagesFallback={props?.images}
           key={`image-lead--${id}`}
         />
         {/* Content */}
