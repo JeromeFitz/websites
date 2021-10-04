@@ -63,10 +63,31 @@ const notionQueryRouteType = async (req: NextApiRequest, res: NextApiResponse) =
   const { routeType, key, value } = reqQuery
   let k, v
 
+  // console.dir(`reqQuery`)
+  // console.dir(reqQuery)
+
   /**
    * @todo(notion) make this DRY
    */
   switch (databaseType) {
+    case 'venues':
+      const { events: eventsV } = reqQuery
+
+      const filterTagEventsV = []
+      const eventVIds = []
+      !!eventsV && eventVIds.push(...eventsV?.split(','))
+      _size(eventVIds) > 0 &&
+        _map(eventVIds, (id) =>
+          filterTagEventsV.push({
+            property: 'EventIDs',
+            relation: {
+              contains: id,
+            },
+          })
+        )
+      filter = { or: [...filterTagEventsV] }
+
+      break
     case 'shows':
       switch (key) {
         /**

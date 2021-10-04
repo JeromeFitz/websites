@@ -1,7 +1,7 @@
 import cx from 'clsx'
 import Slugger from 'github-slugger'
 import _startsWith from 'lodash/startsWith'
-import Link from 'next/link'
+import NextLink from 'next/link'
 import React from 'react'
 
 import Icon from '~components/Icon'
@@ -54,7 +54,7 @@ const extLink = (props) => {
     const text = getText(props.children)
 
     return (
-      <Link as={link.as} href={link.href}>
+      <NextLink as={link.as} href={link.href}>
         <a
           aria-label={`Link for ${text}`}
           className={cx(
@@ -65,7 +65,7 @@ const extLink = (props) => {
         >
           <SplitText speed={3} splitBy="letter" text={text} />
         </a>
-      </Link>
+      </NextLink>
     )
   }
 }
@@ -100,14 +100,14 @@ const nextLink = (props) => {
     const text = getText(props.children)
 
     return (
-      <Link as={link.as} href={link.href}>
+      <NextLink as={link.as} href={link.href}>
         <a
           aria-label={`Link for ${text}`}
           className={cx('font-semibold', styles.link)}
         >
           {text}
         </a>
-      </Link>
+      </NextLink>
     )
   }
 }

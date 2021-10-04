@@ -2,6 +2,7 @@ import cx from 'clsx'
 // import { motion } from 'framer-motion'
 // import _capitalize from 'lodash/capitalize'
 import _map from 'lodash/map'
+import _orderBy from 'lodash/orderBy'
 import _size from 'lodash/size'
 import NextLink from 'next/link'
 import React from 'react'
@@ -20,6 +21,13 @@ const Listing = ({ items, routeType }) => {
   })
   const itemsSize = _size(items.results)
 
+  let itemsData
+  if (routeType === 'events') {
+    itemsData = _orderBy(items.results, ['data.date.start'], ['asc'])
+  } else {
+    itemsData = items.results
+  }
+
   return (
     <>
       {/* {routeType !== 'events' && (
@@ -30,8 +38,8 @@ const Listing = ({ items, routeType }) => {
 
       {itemsSize > 0 && (
         <ul className="my-6">
-          {_map(items.results, (item, itemIndex) => {
-            // const item = items.results[iIndex]
+          {_map(itemsData, (item, itemIndex) => {
+            // const item = itemsData[iIndex]
             if (item.data.slug === null || item.data.slug === undefined) {
               return null
             }

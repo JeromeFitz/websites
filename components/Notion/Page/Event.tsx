@@ -1,10 +1,12 @@
 import cx from 'clsx'
 import _isBefore from 'date-fns/isBefore'
 import _parseISO from 'date-fns/parseISO'
-import { motion } from 'framer-motion'
+// import { motion } from 'framer-motion'
 import _map from 'lodash/map'
+// import NextLink from 'next/link'
 import { useState } from 'react'
 import { useMount } from 'react-use'
+import useSWR from 'swr'
 
 // import Meta, { MetaTags } from '~components/Notion/Meta'
 // import Meta from '~components/Notion/Meta'
@@ -12,8 +14,9 @@ import { useMount } from 'react-use'
 // import usePage from '~hooks/notion/usePage'
 // import useRelation, { setRelation } from '~hooks/notion/useRelation'
 import Icon from '~components/Icon'
-import FacebookIcon from '~styles/icons/Facebook'
-import TwitterIcon from '~styles/icons/Twitter'
+import fetcher from '~lib/fetcher'
+// import FacebookIcon from '~styles/icons/Facebook'
+// import TwitterIcon from '~styles/icons/Twitter'
 import getTimestamp from '~utils/getTimestamp'
 import { NotionBlock } from '~utils/notion'
 import getContentType from '~utils/notion/getContentType'
@@ -85,29 +88,33 @@ const Event = ({ data: dataEvent }) => {
     // @ts-ignore
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     slug,
+    ticketUrl,
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     title,
     date: { start: dateStart },
   } = properties
 
   const timestamp = getTimestamp(dateStart)
-  const addressFormat = `${copy.venue.address.street}`
 
   const timestampNow = new Date().toISOString()
   const isEventPast = _isBefore(_parseISO(dateStart), _parseISO(timestampNow))
 
-  const handleBuyClick = () => {
-    // console.dir(`handleBuyClick`)
-  }
-
   // console.dir(`Event: properties`)
   // console.dir(properties)
 
-  /**
-   * @tags
-   */
-  // const tagParams = `events=${info?.id}&shows=${info.data.shows.join(
-  //   ','
-  // )}&eventsLineupShowIds=${info.data.eventsLineupShowIds.join(',')}`
+  const tagParams = `events=${id || ''}`
+
+  const { data: venues } = useSWR(
+    ['/api/notion/query/venues', tagParams],
+    (url) => fetcher(`${url}?${tagParams}`),
+    {}
+  )
+
+  // console.dir(`venues`)
+  // console.dir(venues)
+  const venue = !!venues && venues?.results[0]?.data
 
   return (
     <>
@@ -119,17 +126,18 @@ const Event = ({ data: dataEvent }) => {
             <div id="event--header--content--date" className={cx('mb-4 text-xl')}>
               {timestamp.full}
             </div>
-            <div
+            {/* <div
               id="event--header--content--title"
               className={cx('mb-4 text-3xl font-semibold md:truncate')}
             >
-              <motion.h3 id="events--listing--title">{title}</motion.h3>
-            </div>
+              <h3 id="events--listing--title">{title}</h3>
+            </div> */}
             <div
               id="event--header--content--ticket-info"
               className={cx('mb-4 text-lg', isEventPast && 'hidden md:block')}
             >
-              {isEventPast ? 'This event has passed.' : `$${copy.ticket.cost}.00`}
+              {/* {isEventPast ? 'This event has passed.' : `$${copy.ticket.cost}.00`} */}
+              {isEventPast ? 'This event has passed.' : ``}
             </div>
           </div>
         </div>
@@ -146,26 +154,39 @@ const Event = ({ data: dataEvent }) => {
               'md:max-w-xs md:min-w-xs md:w-xs',
               'md:dark:text-black text-lg md:text-sm',
               'md:sticky md:top-24 z-10',
-              isEventPast && 'hidden'
+              // isEventPast && 'hidden',
+              ''
             )}
           >
             <div
               id="event--content--sidebar--cta"
               className={cx('flex flex-col items-center hidden md:flex')}
             >
-              <button
-                className={cx(
-                  'rounded-md p-4 w-full shadow-md md:mt-4 transition-all',
-                  isEventPast
-                    ? 'cursor-not-allowed bg-gray-200 hover:bg-gray-200 text-black dark:text-black'
-                    : 'bg-black hover:bg-gray-700 text-white'
-                )}
-                type="submit"
-                disabled={isEventPast}
-                onClick={() => handleBuyClick()}
-              >
-                {isEventPast ? copy.cta.buyPast : copy.cta.buyNow}
-              </button>
+              {isEventPast ? (
+                <button
+                  className={cx(
+                    'rounded-md p-4 w-full shadow-md md:mt-4 transition-all text-center',
+                    'cursor-not-allowed bg-gray-200 hover:bg-gray-200 text-black dark:text-black'
+                  )}
+                  type="submit"
+                  disabled={isEventPast}
+                >
+                  {copy.cta.buyPast}
+                </button>
+              ) : (
+                <a
+                  href={ticketUrl}
+                  className={cx(
+                    'rounded-md p-4 w-full shadow-md md:mt-4 transition-all text-center',
+                    'bg-black hover:bg-gray-700 text-white'
+                  )}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  {copy.cta.buyNow}
+                </a>
+              )}
+
               <p className="text-xs center flex justify-start place-content-center items-center md:dark:text-black">
                 <span className={cx(isEventPast && 'line-through')}>
                   Ticket Purchase in New Window
@@ -192,7 +213,7 @@ const Event = ({ data: dataEvent }) => {
                 )}
               >
                 <Icon className="h-4 w-4 mr-2" icon={'LibraryIcon'} />
-                <span>{copy.venue.title}</span>
+                <span>{venue?.title}</span>
               </div>
               <div
                 id="event--content--sidebar--meta--venue-address"
@@ -203,21 +224,23 @@ const Event = ({ data: dataEvent }) => {
               >
                 <Icon className="h-4 w-4 mr-2" icon={'LocationMarkerIcon'} />
                 <span>
-                  {addressFormat}
+                  {venue?.address?.street}
                   <br />
-                  {copy.venue.address.city}, PA{` `}
-                  {copy.venue.address.zipCode}
+                  {venue?.address?.city}, PA{` `}
+                  {venue?.address?.zipCode}
                 </span>
               </div>
               {/* <div
-                    id="event--content--sidebar--meta--event-start"
-                    className={cx('m-1 py-4 border-b border-solid border-black dark:border-white')}
-                  >
-                    {timestamp.event.hour}
-                    {timestamp.event.ampm}
-                  </div> */}
+                id="event--content--sidebar--meta--event-start"
+                className={cx(
+                  'm-1 py-4 border-b border-solid border-black dark:border-white'
+                )}
+              >
+                {timestamp.event.hour}
+                {timestamp.event.ampm}
+              </div> */}
             </div>
-            <div
+            {/* <div
               id="event--content--sidebar--social"
               className={cx('flex text-xs my-2 align-center items-center')}
             >
@@ -237,7 +260,7 @@ const Event = ({ data: dataEvent }) => {
                 <TwitterIcon className="h-5 w-5 mx-2" />
               </div>
             </div>
-            <div id="event--content--sidebar--policy"></div>
+            <div id="event--content--sidebar--policy"></div> */}
           </div>
           <div id="event--content--main">
             <div id="event--content--main--badges"></div>
@@ -272,18 +295,41 @@ const Event = ({ data: dataEvent }) => {
         className={cx(
           'flex flex-col items-center p-4',
           // 'bg-gradient-to-b from-gray-700 via-gray-900 to-black',
-          'bg-black dark:bg-white shadow shadow-lg',
+          'bg-black dark:bg-white shadow-lg',
           'md:hidden transition-all',
-          isEventPast ? 'hidden' : 'sticky bottom-0'
+          isEventPast ? 'hidden' : 'sticky bottom-0 z-50'
         )}
       >
-        <button
+        {/* <button
           className="rounded-md bg-white dark:bg-black hover:bg-gray-700 text-black dark:text-white p-4 w-full shadow-md md:mt-4 transition-all"
           type="submit"
           disabled={isEventPast}
         >
           {copy.cta.buyNow}
-        </button>
+        </button> */}
+        {isEventPast ? (
+          <button
+            className={cx(
+              'rounded-md bg-white dark:bg-black hover:bg-gray-700 text-black dark:text-white p-4 w-full shadow-md md:mt-4 transition-all'
+            )}
+            type="submit"
+            disabled={isEventPast}
+          >
+            {copy.cta.buyPast}
+          </button>
+        ) : (
+          <a
+            href={ticketUrl}
+            className={cx(
+              'rounded-md bg-white dark:bg-black hover:bg-gray-700 text-black dark:text-white p-4 w-full shadow-md md:mt-4 transition-all',
+              'text-center'
+            )}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            {copy.cta.buyNow}
+          </a>
+        )}
         <p className="text-xs center text-white dark:text-black flex justify-start place-content-center items-center">
           <span>Ticket Purchase in New Window</span>
           <Icon className="h-4 w-4 ml-2" icon={'ExternalLinkIcon'} />
