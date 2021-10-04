@@ -2,15 +2,19 @@ import cx from 'clsx'
 import { motion } from 'framer-motion'
 import Slugger from 'github-slugger'
 import { useTheme } from 'next-themes'
+import dynamic from 'next/dynamic'
 import NextImage from 'next/image'
 import NextLink from 'next/link'
 import useSWR from 'swr'
 import { useSound } from 'use-sound'
 
-import Emoji from '~components/Notion/Emoji'
 import { useUI } from '~context/ManagedUIContext'
 import { WEBKIT_BACKGROUND } from '~lib/constants'
 import getInfoType from '~utils/notion/getInfoType'
+
+const Emoji = dynamic(() => import('~components/Notion/Emoji'), {
+  ssr: false,
+})
 
 // const cardVariants = {
 //   hover: {

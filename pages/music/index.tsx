@@ -1,6 +1,7 @@
 import cx from 'clsx'
 import { motion } from 'framer-motion'
 import _map from 'lodash/map'
+import dynamic from 'next/dynamic'
 // import { useState } from 'react'
 import _title from 'title'
 import { useSound } from 'use-sound'
@@ -10,7 +11,6 @@ import Icon from '~components/Icon'
 import Layout, { Breakout } from '~components/Layout'
 import { TopArtists, TopTracks } from '~components/Music'
 import Breadcrumb from '~components/Notion/Breadcrumb'
-import Emoji from '~components/Notion/Emoji'
 import Seo from '~components/Seo'
 import { useUI } from '~context/ManagedUIContext'
 import useSpotify from '~hooks/useSpotify'
@@ -24,6 +24,10 @@ import {
   spotifyFavoriteAlbums,
   spotifyFavoriteArtists,
 } from '~lib/spotify/favorites'
+
+const Emoji = dynamic(() => import('~components/Notion/Emoji'), {
+  ssr: false,
+})
 
 const Music = () => {
   // const [term, termSet] = useState('medium_term')
