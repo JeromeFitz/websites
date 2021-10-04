@@ -13,7 +13,7 @@ const Emoji = dynamic(() => import('~components/Notion/Emoji'), {
 })
 
 const emojiParser = (text) => {
-  const emojiFound = hasEmoji(text.trim())
+  const emojiFound = hasEmoji(text.trim()) && text.trim().length <= 3
 
   if (emojiFound === undefined || emojiFound === false) {
     return text

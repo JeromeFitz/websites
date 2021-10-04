@@ -5,7 +5,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 })
 const { withPlaiceholder } = require('@plaiceholder/next')
 const { withPlugins } = require('next-compose-plugins')
-const withPWA = require('next-pwa')
+// const withPWA = require('next-pwa')
 
 // const getRedirects = require('./config/notion/website/getRedirects')
 
@@ -25,7 +25,8 @@ const ContentSecurityPolicy = `
   script-src 'self' 'unsafe-eval' 'unsafe-inline' *.youtube.com *.twitter.com cdn.usefathom.com *.jeromefitzgerald.com;
   child-src *.youtube.com *.google.com *.twitter.com;
   style-src 'self' 'unsafe-inline' *.googleapis.com;
-  img-src * blob: data:;
+  img-src 'self' * blob: data:;
+  object-src 'self' * blob: data:;
   media-src 'none';
   connect-src *;
   font-src 'self';
@@ -79,6 +80,7 @@ const nextConfig = {
     build: false,
   },
   experimental: {
+    cacheUnaffected: true,
     catchAllRouting: true,
     enableBlurryPlaceholder: true,
     jsconfigPaths: true,
@@ -154,15 +156,15 @@ module.exports = withPlugins(
     [withBundleAnalyzer],
     // @plaiceholder/next
     [withPlaiceholder],
-    [
-      withPWA({
-        pwa: {
-          // disable: process.env.NODE_ENV === 'development',
-          disable: true,
-          dest: 'public',
-        },
-      }),
-    ],
+    // [
+    //   withPWA({
+    //     pwa: {
+    //       // disable: process.env.NODE_ENV === 'development',
+    //       disable: true,
+    //       dest: 'public',
+    //     },
+    //   }),
+    // ],
   ],
   nextConfig
 )
