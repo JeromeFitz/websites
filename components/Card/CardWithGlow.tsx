@@ -51,7 +51,7 @@ const CardWithGlow = ({ children, blurDataURL = '', isImage = false }) => {
         variants={glowVariants}
         transition={{
           ease: 'easeOut',
-          delay: 0.15,
+          delay: 0,
         }}
         style={
           !!blurDataURL
@@ -75,8 +75,8 @@ const CardWithGlow = ({ children, blurDataURL = '', isImage = false }) => {
         variants={cardVariants}
         transition={{
           ease: 'easeOut',
-          delay: 0.15,
-          duration: 0.5,
+          delay: 0,
+          duration: 0.25,
         }}
       >
         {children}
