@@ -1,4 +1,3 @@
-import { ExternalLinkIcon } from '@heroicons/react/solid'
 import cx from 'clsx'
 // import NextImage from 'next/image'
 
@@ -6,6 +5,7 @@ import cx from 'clsx'
 // import { CardWithGlow } from '~components/NowPlaying/NowPlaying'
 // import lpad from '~utils/lpad'
 import { CardWithGlow, CardWithGlowProps } from '~components/Card'
+import Icon from '~components/Icon'
 import { IMAGE__PLACEHOLDER } from '~lib/constants'
 import lpad from '~utils/lpad'
 
@@ -40,7 +40,10 @@ const Artist = (artist) => {
                       )}
                     >
                       Loading.
-                      <ExternalLinkIcon className="h-4 w-4 ml-2 mb-1 inline-flex _text-black" />
+                      <Icon
+                        className="h-4 w-4 ml-2 mb-1 inline-flex _text-black"
+                        icon={'ExternalLinkIcon'}
+                      />
                     </p>
                   </>
                 }
@@ -82,7 +85,10 @@ const Artist = (artist) => {
                     title={`Link to ${artist.name}`}
                   >
                     See full bio here.
-                    <ExternalLinkIcon className="h-4 w-4 ml-2 mb-1 inline-flex _text-black" />
+                    <Icon
+                      className="h-4 w-4 ml-2 mb-1 inline-flex _text-black"
+                      icon={'ExternalLinkIcon'}
+                    />
                   </a>
                 </>
               }

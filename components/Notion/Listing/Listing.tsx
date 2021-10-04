@@ -1,5 +1,5 @@
 import cx from 'clsx'
-import { motion } from 'framer-motion'
+// import { motion } from 'framer-motion'
 // import _capitalize from 'lodash/capitalize'
 import _map from 'lodash/map'
 import _size from 'lodash/size'
@@ -111,9 +111,7 @@ const Listing = ({ items, routeType }) => {
                                   // 'sticky top-24'
                                 }
                               >
-                                <motion.h3 id="events--listing--title">
-                                  {title}
-                                </motion.h3>
+                                <h3 id="events--listing--title">{title}</h3>
                                 <h4 id="events--listing--meta">
                                   <span className="uppercase">
                                     {timestamp.event.dayAbbreviation}{' '}

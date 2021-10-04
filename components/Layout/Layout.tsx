@@ -3,8 +3,7 @@ import cx from 'clsx'
 import dynamic from 'next/dynamic'
 import React, { FC } from 'react'
 
-// import { Footer } from '~components/Layout'
-import { Modal, LoadingDots } from '~components/UI'
+import { LoadingDots } from '~components/UI'
 import { useUI } from '~context/ManagedUIContext'
 
 const Loading = () => (
@@ -17,6 +16,10 @@ const dynamicProps = {
   // eslint-disable-next-line react/display-name
   loading: () => <Loading />,
 }
+
+const Modal = dynamic(() => import('~components/UI').then((mod) => mod.Modal), {
+  ssr: false,
+})
 
 const ModalTest = dynamic(
   () => import('~components/UI/Modal/ModalTest'),

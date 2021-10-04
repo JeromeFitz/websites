@@ -1,5 +1,5 @@
 import cx from 'clsx'
-import { AnimateSharedLayout, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 import { memo } from 'react'
@@ -21,14 +21,12 @@ const Item = ({ link }) => {
   const linkTitle = _title(link.title)
   const isActive = isActiveLink(link, router)
   return (
-    <motion.li
-    // layout="position"
-    >
+    <li>
       <NextLink href={link.href} key={`nav-link-${link.title}`}>
         <a className="cursor-pointer" onClick={() => play()}>
-          <motion.span className={cx(isActive ? 'grayscale-10' : 'grayscale')}>
+          <span className={cx(isActive ? 'grayscale-10' : 'grayscale')}>
             <Avatar name={linkTitle} margin={true} />
-          </motion.span>
+          </span>
 
           {linkTitle}
           {isActive && (
@@ -43,7 +41,7 @@ const Item = ({ link }) => {
           )}
         </a>
       </NextLink>
-    </motion.li>
+    </li>
   )
 }
 
@@ -52,18 +50,18 @@ const ItemMemo = memo(Item)
 const Navigation = () => {
   return (
     <>
-      <AnimateSharedLayout>
-        <nav className={cx('flex flex-col md:flex-row')}>
-          <ul>
-            {links.map((link, linkIndex) => {
-              if (!link.active) {
-                return null
-              }
-              return <ItemMemo key={linkIndex} link={link} />
-            })}
-          </ul>
-        </nav>
-      </AnimateSharedLayout>
+      {/* <AnimateSharedLayout> */}
+      <nav className={cx('flex flex-col md:flex-row')}>
+        <ul>
+          {links.map((link, linkIndex) => {
+            if (!link.active) {
+              return null
+            }
+            return <ItemMemo key={linkIndex} link={link} />
+          })}
+        </ul>
+      </nav>
+      {/* </AnimateSharedLayout> */}
     </>
   )
 }

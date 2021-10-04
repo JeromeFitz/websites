@@ -1,21 +1,25 @@
-import { ExternalLinkIcon } from '@heroicons/react/solid'
 import cx from 'clsx'
+import hasEmoji from 'has-emoji'
+import dynamic from 'next/dynamic'
 import NextLink from 'next/link'
-import nodeEmoji from 'node-emoji'
 import { useSound } from 'use-sound'
 
-import Emoji from '~components/Notion/Emoji'
+import Icon from '~components/Icon'
 import { useUI } from '~context/ManagedUIContext'
 import getNextLink from '~utils/notion/getNextLink'
 
-const emojiParser = (text) => {
-  const emojiFound = nodeEmoji.find(text.trim())
+const Emoji = dynamic(() => import('~components/Notion/Emoji'), {
+  ssr: false,
+})
 
-  if (emojiFound === undefined) {
+const emojiParser = (text) => {
+  const emojiFound = hasEmoji(text.trim())
+
+  if (emojiFound === undefined || emojiFound === false) {
     return text
   }
 
-  return <Emoji character={emojiFound.emoji} />
+  return <Emoji character={text.trim()} />
 }
 
 const TextAnnotations = ({ href, plain_text, annotations }) => {
@@ -84,7 +88,7 @@ const TextAnnotations = ({ href, plain_text, annotations }) => {
           }}
         >
           <span>{returnElement}</span>
-          <ExternalLinkIcon className="h-4   w-4  ml-1" />
+          <Icon className="h-4 w-4 ml-1" icon={'ExternalLinkIcon'} />
         </a>
       )
     }

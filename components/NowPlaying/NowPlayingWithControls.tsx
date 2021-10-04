@@ -1,15 +1,5 @@
 import cx from 'clsx'
 import Image from 'next/image'
-import {
-  MdPause,
-  // MdPlayArrow,
-  MdRepeat,
-  // MdReplay30,
-  MdShuffle,
-  MdSkipNext,
-  MdSkipPrevious,
-  // MdStop,
-} from 'react-icons/md'
 import useSWR from 'swr'
 
 import fetcher from '~lib/fetcher'
@@ -153,19 +143,24 @@ const NowPlaying = () => {
                 </div>
                 <div className="flex justify-between items-center mt-8">
                   <div className={cx(styles.button)}>
-                    <MdShuffle />
+                    {/* <MdShuffle /> */}
+                    <span className="font-bold text-xs">[Insert Shuffle]</span>
                   </div>
                   <div className={cx(styles.button)}>
-                    <MdSkipPrevious />
+                    {/* <MdSkipPrevious /> */}
+                    <span className="font-bold text-xs">[Insert SkipPrevious]</span>
                   </div>
                   <div className={cx(styles.button, styles.buttonPlay)}>
-                    <MdPause />
+                    {/* <MdPause /> */}
+                    <span className="font-bold text-xs">[Insert Pause]</span>
                   </div>
                   <div className={cx(styles.button)}>
-                    <MdSkipNext />
+                    {/* <MdSkipNext /> */}
+                    <span className="font-bold text-xs">[Insert SkipNext]</span>
                   </div>
                   <div className={cx(styles.button)}>
-                    <MdRepeat />
+                    {/* <MdRepeat /> */}
+                    <span className="font-bold text-xs">[Insert Repeat]</span>
                   </div>
                 </div>
               </div>

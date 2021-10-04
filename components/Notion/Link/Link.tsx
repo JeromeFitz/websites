@@ -2,15 +2,19 @@ import cx from 'clsx'
 import { motion } from 'framer-motion'
 import Slugger from 'github-slugger'
 import { useTheme } from 'next-themes'
+import dynamic from 'next/dynamic'
 import NextImage from 'next/image'
 import NextLink from 'next/link'
 import useSWR from 'swr'
 import { useSound } from 'use-sound'
 
-import Emoji from '~components/Notion/Emoji'
 import { useUI } from '~context/ManagedUIContext'
 import { WEBKIT_BACKGROUND } from '~lib/constants'
 import getInfoType from '~utils/notion/getInfoType'
+
+const Emoji = dynamic(() => import('~components/Notion/Emoji'), {
+  ssr: false,
+})
 
 // const cardVariants = {
 //   hover: {
@@ -66,12 +70,7 @@ const Link = ({ item, itemIndex, routeType }) => {
   const hasImage = false
 
   return (
-    <motion.li
-      className={cx('relative list-none cursor-pointer my-4 md:my-8 w-full')}
-      initial="inital"
-      whileHover="hover"
-      // layout
-    >
+    <li className={cx('relative list-none cursor-pointer my-4 md:my-8 w-full')}>
       <NextLink as={as} href={href} key={key}>
         <a
           className={cx()}
@@ -201,7 +200,7 @@ const Link = ({ item, itemIndex, routeType }) => {
         </a>
       </NextLink>
       {/* {!!seoDescription && <p className={cx('prose pb-2')}>{seoDescription}</p>} */}
-    </motion.li>
+    </li>
   )
 }
 

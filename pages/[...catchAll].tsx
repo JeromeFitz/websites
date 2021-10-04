@@ -1,14 +1,16 @@
+import dynamic from 'next/dynamic'
 // import { useEffect, useState } from 'react'
 import useSWR from 'swr'
 
 import Layout from '~components/Layout'
-import Breadcrumb from '~components/Notion/Breadcrumb'
 import Page from '~components/Notion/Page'
 import fetcher from '~lib/fetcher'
 import getCatchAll from '~lib/notion/getCatchAll'
 import getImages from '~lib/notion/getImages'
 import getPathVariables from '~lib/notion/getPathVariables'
 import getStaticPathsCatchAll from '~lib/notion/getStaticPathsCatchAll'
+
+const Breadcrumb = dynamic(() => import('~components/Notion/Breadcrumb'), {})
 
 const CatchAll = (props) => {
   const {
