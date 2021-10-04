@@ -50,11 +50,11 @@ const Layout = ({ id, children, data, routeType, url }) => {
       <Seo {...seo} />
       <motion.div
         key={id}
-        initial="hidden"
+        initial="enter"
         animate="enter"
         exit="exit"
         variants={MOTION_PAGE_VARIANTS}
-        transition={{ delay: 0.25, duration: 1, type: 'linear' }}
+        transition={{ delay: 0, duration: 0.25, type: 'linear' }}
         className={cx(routeType, 'flex flex-col')}
       >
         {children}
