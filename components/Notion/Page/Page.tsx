@@ -1,17 +1,17 @@
 import { AnimatePresence } from 'framer-motion'
 import _map from 'lodash/map'
+import dynamic from 'next/dynamic'
 import { useEffect } from 'react'
 import useSWR, { useSWRConfig } from 'swr'
 
-import Breadcrumb from '~components/Notion/Breadcrumb'
 import NotionLayout, { ImageLead } from '~components/Notion/Layout'
-// import NotionLayout from '~components/Notion/Layout'
-import Listing from '~components/Notion/Listing'
 import { MetaTags } from '~components/Notion/Meta'
 import { Event } from '~components/Notion/Page'
 import Relations from '~components/Notion/Relations'
-// import Title from '~components/Notion/Title'
 import getContentNodes from '~utils/notion/getContentNodes'
+
+const Breadcrumb = dynamic(() => import('~components/Notion/Breadcrumb'), {})
+const Listing = dynamic(() => import('~components/Notion/Listing'), {})
 
 const Page = ({ data, props }) => {
   const {

@@ -70,12 +70,7 @@ const Link = ({ item, itemIndex, routeType }) => {
   const hasImage = false
 
   return (
-    <motion.li
-      className={cx('relative list-none cursor-pointer my-4 md:my-8 w-full')}
-      initial="inital"
-      whileHover="hover"
-      // layout
-    >
+    <li className={cx('relative list-none cursor-pointer my-4 md:my-8 w-full')}>
       <NextLink as={as} href={href} key={key}>
         <a
           className={cx()}
@@ -205,7 +200,7 @@ const Link = ({ item, itemIndex, routeType }) => {
         </a>
       </NextLink>
       {/* {!!seoDescription && <p className={cx('prose pb-2')}>{seoDescription}</p>} */}
-    </motion.li>
+    </li>
   )
 }
 

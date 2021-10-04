@@ -1,8 +1,5 @@
 import cx from 'clsx'
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import _lowerCase from 'lodash/lowerCase'
 import _take from 'lodash/take'
 // import dynamic from 'next/dynamic'

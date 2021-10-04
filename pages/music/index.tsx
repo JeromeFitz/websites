@@ -10,7 +10,6 @@ import { CardWithGlow, CardWithGlowProps } from '~components/Card'
 import Icon from '~components/Icon'
 import Layout, { Breakout } from '~components/Layout'
 import { TopArtists, TopTracks } from '~components/Music'
-import Breadcrumb from '~components/Notion/Breadcrumb'
 import Seo from '~components/Seo'
 import { useUI } from '~context/ManagedUIContext'
 import useSpotify from '~hooks/useSpotify'
@@ -25,6 +24,7 @@ import {
   spotifyFavoriteArtists,
 } from '~lib/spotify/favorites'
 
+const Breadcrumb = dynamic(() => import('~components/Notion/Breadcrumb'), {})
 const Emoji = dynamic(() => import('~components/Notion/Emoji'), {
   ssr: false,
 })

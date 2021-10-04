@@ -1,5 +1,6 @@
 import cx from 'clsx'
 import { motion, useReducedMotion } from 'framer-motion'
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { useState } from 'react'
 import _title from 'title'
@@ -7,14 +8,14 @@ import { useSound } from 'use-sound'
 
 import { Banner as AlertBanner } from '~components/Alert'
 import Layout from '~components/Layout'
-import Breadcrumb from '~components/Notion/Breadcrumb'
-// import Title from '~components/Notion/Title'
 import Seo from '~components/Seo'
 import { Container, Grid, Skeleton, Button } from '~components/UI'
 import { useUI } from '~context/ManagedUIContext'
 import { useNotification } from '~context/Notification'
 import { MOTION_PAGE_VARIANTS, WEBKIT_BACKGROUND } from '~lib/constants'
 import rangeMap from '~utils/rangeMap'
+
+const Breadcrumb = dynamic(() => import('~components/Notion/Breadcrumb'), {})
 
 const mockTrueFalse = [
   { value: true, title: 'true ' },
