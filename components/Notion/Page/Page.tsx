@@ -85,6 +85,8 @@ const Page = ({ data, props }) => {
   // console.dir(content)
   // const nodes = getContentNodes({ content, images })
 
+  const isEventListing = routeType === 'events' && !isIndex
+
   return (
     <>
       <Breadcrumb isIndex={isIndex} title={title} />
@@ -98,26 +100,31 @@ const Page = ({ data, props }) => {
         {/* Content */}
         {/* @todo(content) */}
         <AnimatePresence key={`animate-presence--${id}`}>
-          {routeType === 'events' && !isIndex ? <Event data={data} /> : null}
+          {isEventListing ? <Event data={data} /> : null}
           {/* // node: NotionBlock (w/ id/type) */}
-          {_map(getContentNodes({ content, images }), (node: any) => {
-            if (node.type === 'ul') {
-              return (
-                <ul className="flex flex-col list-disc list-inside" key={node.id}>
-                  {node.node}
-                </ul>
-              )
-            }
-            // if (node.type === 'image') {
-            //   return (
-            //     <>
-            //       <h5 key="image-here">Image Here</h5>
-            //       {node.node}
-            //     </>
-            //   )
-            // }
-            return node.node
-          })}
+          {isEventListing
+            ? null
+            : _map(getContentNodes({ content, images }), (node: any) => {
+                if (node.type === 'ul') {
+                  return (
+                    <ul
+                      className="flex flex-col list-disc list-inside"
+                      key={node.id}
+                    >
+                      {node.node}
+                    </ul>
+                  )
+                }
+                // if (node.type === 'image') {
+                //   return (
+                //     <>
+                //       <h5 key="image-here">Image Here</h5>
+                //       {node.node}
+                //     </>
+                //   )
+                // }
+                return node.node
+              })}
         </AnimatePresence>
         {/* @note(switch) */}
         {isIndex && !isPage && (

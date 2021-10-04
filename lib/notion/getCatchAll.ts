@@ -138,9 +138,10 @@ interface NormalizerProperties {
    * @relation @_EVENTS
    *
    */
+  eventsLineupShowIds?: string[]
   shows?: string[]
   venues?: string[]
-  eventsLineupShowIds?: string[]
+  venuesSlugs?: string[]
   /**
    * @relation @_PEOPLE
    */
@@ -439,6 +440,9 @@ const normalizerProperties = (properties) => {
         break
       case PROPERTIES.eventsLineupShowIds:
         data.eventsLineupShowIds = getTypeRelationNormalized(value)
+        break
+      case PROPERTIES.venuesSlugs:
+        data.venuesSlugs = getTypeRelationNormalized(value)
         break
       /**
        * @relation @_PEOPLE

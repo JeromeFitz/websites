@@ -85,6 +85,7 @@ const PROPERTIES = {
   title: 'Title',
   type: 'Type',
   venues: 'VenueIDs',
+  venuesSlugs: 'Rollup.Venues.Slug',
   venuesRecordedAt: 'Venues.RecordedAt',
 }
 
