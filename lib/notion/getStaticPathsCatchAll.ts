@@ -58,7 +58,7 @@ const getStaticPathsCatchAll = async () => {
 
   return {
     paths,
-    fallback: true,
+    fallback: 'blocking',
   }
 }
 

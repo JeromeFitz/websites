@@ -4,6 +4,7 @@ import useSWR from 'swr'
 
 import Layout from '~components/Layout'
 import Page from '~components/Notion/Page'
+import { SLUG__HOMEPAGE } from '~lib/constants'
 import fetcher from '~lib/fetcher'
 import getCatchAll from '~lib/notion/getCatchAll'
 import getImages from '~lib/notion/getImages'
@@ -71,8 +72,7 @@ const CatchAll = (props) => {
 
 export const getStaticProps = async ({ preview = false, ...props }) => {
   // const { catchAll } = props.params
-  const homepageSlug = 'homepage-2021'
-  const catchAll = [homepageSlug]
+  const catchAll = [SLUG__HOMEPAGE]
   const clear = false
   const pathVariables = getPathVariables(catchAll)
   /**
