@@ -6,7 +6,7 @@ import getCatchAll from '~lib/notion/getCatchAll'
 // import getPathVariables from '~lib/notion/getPathVariables'
 // import omitFields from '~lib/notion/omitFields'
 
-const notionSearch = async (req: NextApiRequest, res: NextApiResponse) => {
+const notionCatchAll = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     // @todo(next) preview
     const preview = req.query?.preview || false
@@ -40,4 +40,4 @@ const notionSearch = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 }
 
-export default notionSearch
+export default notionCatchAll

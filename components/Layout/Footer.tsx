@@ -48,7 +48,9 @@ const Footer = () => {
                       <Icon icon={'AnnotationIcon'} />
                     </span>
                     <Link href="/colophon">
-                      <a className=" font-semibold">Colophon</a>
+                      <a className="font-semibold underline-style-solid underline-offset-md underline-thickness-md">
+                        Colophon
+                      </a>
                     </Link>
                   </div>
                   <div className="flex flex-row mb-2">

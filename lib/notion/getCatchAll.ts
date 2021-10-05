@@ -668,6 +668,8 @@ const normalizerContentResults = (results) => {
 // @todo(next) preview
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const getCatchAll = async ({ cache = false, catchAll, clear, preview }) => {
+  console.dir(`> getCatchAll`)
+  console.dir(catchAll)
   const isCache = useCache && cache
   const { hasMeta, isPage, isIndex, meta, routeType, slug } =
     getPathVariables(catchAll)

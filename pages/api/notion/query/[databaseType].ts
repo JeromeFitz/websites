@@ -28,6 +28,9 @@ interface RequestQueryProps {
   // @people
   key?: string
   value?: string
+  // @podcasts
+  episodes?: string
+  podcasts?: string
 }
 
 const notionQueryRouteType = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -53,7 +56,7 @@ const notionQueryRouteType = async (req: NextApiRequest, res: NextApiResponse) =
   let data, items
   let filter
   // @todo(notion) sorts dynamic
-  const sorts: any[] = [
+  let sorts: any[] = [
     {
       property: 'Slug',
       direction: 'ascending',
@@ -70,6 +73,24 @@ const notionQueryRouteType = async (req: NextApiRequest, res: NextApiResponse) =
    * @todo(notion) make this DRY
    */
   switch (databaseType) {
+    case 'episodes':
+      const { podcasts: e__podcasts } = reqQuery
+
+      const filterTagEpisodesByPodcasts = []
+      const e__podcastIds = []
+      !!e__podcasts && e__podcastIds.push(...e__podcasts?.split(','))
+      _size(e__podcastIds) > 0 &&
+        _map(e__podcastIds, (id) =>
+          filterTagEpisodesByPodcasts.push({
+            property: 'PodcastIDs',
+            relation: {
+              contains: id,
+            },
+          })
+        )
+      filter = { or: [...filterTagEpisodesByPodcasts] }
+
+      break
     case 'venues':
       const { events: eventsV } = reqQuery
 
@@ -219,6 +240,15 @@ const notionQueryRouteType = async (req: NextApiRequest, res: NextApiResponse) =
       filter = { or: [...filterTagEvents, ...filterTagShows] }
 
       break
+
+    case 'events':
+      sorts = [
+        {
+          property: 'Date',
+          direction: 'ascending',
+        },
+      ]
+      break
     default:
       hasError = true
       break
@@ -241,6 +271,8 @@ const notionQueryRouteType = async (req: NextApiRequest, res: NextApiResponse) =
     if (!!filter) {
       // console.dir(`filter`)
       // console.dir(filter)
+      // console.dir(`sorts`)
+      // console.dir(sorts)
       // @hack(notion)-do-not-return'
       if (filter?.or.length === 0) {
         filter = {
@@ -266,6 +298,7 @@ const notionQueryRouteType = async (req: NextApiRequest, res: NextApiResponse) =
       // console.dir(items)
       data.results = items
     } else {
+      // console.dir(`no filter`)
       hasError = true
     }
 
