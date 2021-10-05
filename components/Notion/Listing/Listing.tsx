@@ -1,24 +1,205 @@
 import cx from 'clsx'
-// import { motion } from 'framer-motion'
-// import _capitalize from 'lodash/capitalize'
 import _map from 'lodash/map'
 import _orderBy from 'lodash/orderBy'
 import _size from 'lodash/size'
+import dynamic from 'next/dynamic'
 import NextLink from 'next/link'
 import React from 'react'
+import useSWR from 'swr'
 import { useSound } from 'use-sound'
 
-import Link from '~components/Notion/Link'
+// import Link from '~components/Notion/Link'
+import { MetaTags } from '~components/Notion/Meta'
 import { useUI } from '~context/ManagedUIContext'
+import fetcher from '~lib/fetcher'
 import getTimestamp from '~utils/getTimestamp'
 import getInfoType from '~utils/notion/getInfoType'
 
-const Listing = ({ items, routeType }) => {
+const Emoji = dynamic(() => import('~components/Notion/Emoji'), {
+  ssr: false,
+})
+
+const ListingItemEvent = ({ item, routeType }) => {
   const { audio } = useUI()
   const [playActive] = useSound('/static/audio/pop-down.mp3', {
     soundEnabled: audio,
     volume: 0.25,
   })
+
+  const venueParams = `events=${item?.id || ''}`
+
+  const { data: venues } = useSWR(
+    ['/api/notion/query/venues', venueParams],
+    (url) => fetcher(`${url}?${venueParams}`),
+    {}
+  )
+
+  if (item.data.slug === null || item.data.slug === undefined) {
+    return null
+  }
+
+  const {
+    date: { start: dateStart },
+    seoDescription,
+    title,
+  } = item?.data
+  const timestamp = getTimestamp(dateStart)
+  // // console.dir(`item`)
+  // // console.dir(item)
+  // console.dir(`timestamp`)
+  // console.dir(timestamp)
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { as, date, href, slug } = getInfoType(item, routeType)
+
+  const venue = !!venues && venues?.results[0]?.data
+  // console.dir(`venue`)
+  // console.dir(venue)
+
+  const tagParams = `events=${item?.id || ''}&shows=${
+    item?.data?.shows?.join(',') || ''
+  }&eventsLineupShowIds=${item?.data?.eventsLineupShowIds?.join(',') || ''}`
+
+  return (
+    <NextLink as={as} href={href}>
+      <a
+        className={cx('cursor-pointer')}
+        onClick={() => {
+          playActive()
+        }}
+      >
+        <div className={cx('listing--container', 'w-full mb-16')}>
+          <div className={cx('listing--row', 'flex flex-col')}>
+            <div
+              className={cx(
+                'listing--item',
+                'rounded-3xl border',
+                'border-gray-300 hover:border-black',
+                'md:hover:shadow-lg',
+                'dark:border-gray-500 dark:hover:border-white',
+                'px-8 py-4',
+                ''
+              )}
+            >
+              <div className={cx('listing--date')}>
+                <p
+                  className={cx(
+                    'text-sm font-medium text-gray-600 dark:text-gray-200'
+                  )}
+                >
+                  <span className={cx('inline md:hidden')}>
+                    {timestamp?.tablet}
+                    <br />| {venue?.title}
+                  </span>
+                  <span className={cx('hidden md:inline')}>
+                    {timestamp?.podcast} at {timestamp?.event?.time}
+                    <br />| {venue?.title}
+                  </span>
+                </p>
+              </div>
+              <div className={cx('listing--title')}>
+                <h2>{title}</h2>
+              </div>
+              <div className={cx('listing--description')}>
+                <p>{seoDescription}</p>
+              </div>
+              <div className={cx('listing--meta')}>
+                <>
+                  <MetaTags tagParams={tagParams} />
+                  {/* <div className="spacer--h" /> */}
+                </>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </NextLink>
+  )
+}
+
+const ListingItem = ({ item, routeType }) => {
+  const { audio } = useUI()
+  const [playActive] = useSound('/static/audio/pop-down.mp3', {
+    soundEnabled: audio,
+    volume: 0.25,
+  })
+
+  // const venueParams = `events=${item?.id || ''}`
+
+  // const { data: venues } = useSWR(
+  //   ['/api/notion/query/venues', venueParams],
+  //   (url) => fetcher(`${url}?${venueParams}`),
+  //   {}
+  // )
+
+  if (item.data.slug === null || item.data.slug === undefined) {
+    return null
+  }
+
+  const { seoDescription, title } = item?.data
+  const { icon } = item
+  const emoji = !!icon?.emoji ? icon.emoji : ''
+  // const timestamp = getTimestamp(dateStart)
+  // // console.dir(`item`)
+  // // console.dir(item)
+  // console.dir(`timestamp`)
+  // console.dir(timestamp)
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { as, date, href, slug } = getInfoType(item, routeType)
+
+  // const venue = !!venues && venues?.results[0]?.data
+  // // console.dir(`venue`)
+  // // console.dir(venue)
+
+  const tagParams = `shows=${item?.id || ''}`
+
+  return (
+    <NextLink as={as} href={href}>
+      <a
+        className={cx(
+          'cursor-pointer',
+          'rounded-3xl border',
+          'px-8 py-4 mb-16',
+          'border-gray-300 dark:border-gray-500',
+          'hover:border-black focus:border-black',
+          'focus:shadow-md md:hover:shadow-lg',
+          'dark:hover:border-white dark:focus:border-white',
+          'hover:bg-gray-100 dark:hover:bg-gray-900',
+          'focus:bg-gray-100 dark:focus:bg-gray-900',
+          ''
+        )}
+        onClick={() => {
+          playActive()
+        }}
+      >
+        <div className={cx('listing--item')}>
+          <div className={cx('listing--date')}>
+            <p className={cx('text-2xl mb-0 pb-0')}>
+              {emoji && <Emoji character={emoji} />}
+            </p>
+          </div>
+          <div className={cx('listing--title')}>
+            <h2>{title}</h2>
+          </div>
+          <div className={cx('listing--description')}>
+            <p>{seoDescription}</p>
+          </div>
+          <div className={cx('listing--meta')}>
+            <>
+              <MetaTags tagParams={tagParams} />
+              {/* <div className="spacer--h" /> */}
+            </>
+          </div>
+        </div>
+      </a>
+    </NextLink>
+  )
+}
+
+const Listing = ({ items, routeType }) => {
   const itemsSize = _size(items.results)
 
   let itemsData
@@ -37,123 +218,20 @@ const Listing = ({ items, routeType }) => {
       )} */}
 
       {itemsSize > 0 && (
-        <ul className="my-6">
+        <ul className="my-6 w-full flex flex-col">
           {_map(itemsData, (item, itemIndex) => {
             // const item = itemsData[iIndex]
-            if (item.data.slug === null || item.data.slug === undefined) {
-              return null
-            }
-
-            const {
-              date: { start: dateStart },
-              seoDescription,
-              title,
-            } = item?.data
-            const timestamp = getTimestamp(dateStart)
-            // console.dir(`item`)
-            // console.dir(item)
-            // // console.dir(`timestamp`)
-            // // console.dir(timestamp)
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
-            const { as, date, href, slug } = getInfoType(item, routeType)
-
             if (routeType === 'events') {
               return (
-                <React.Fragment key={itemIndex}>
-                  <div className="mt-12">
-                    <div
-                      className={cx(
-                        'flex flex-row',
-                        'shadow-lg rounded-lg',
-                        'md:shadow-xl md:rounded-xl'
-                      )}
-                    >
-                      <div
-                        className={cx(
-                          'block px-4 py-2 rounded-md',
-                          'text-center',
-                          'mr-3 max-h-16 w-16',
-                          'md:mr-4 md:max-h-20 md:w-20',
-                          'sticky top-28 md:top-24',
-                          'bg-gray-800 dark:bg-gray-200',
-                          'shadow-2xl'
-                        )}
-                      >
-                        <time dateTime={item.data.date.start}>
-                          <h5
-                            className={cx(
-                              'text-xs font-bold tracking-widest uppercase',
-                              'text-gray-400 dark:text-gray-600',
-                              'text-align-center'
-                            )}
-                          >
-                            {timestamp.event.monthAbbreviation}
-                          </h5>
-                          <h1
-                            className={cx(
-                              'text-2xl md:text-3xl font-bold tracking-tighter',
-                              'text-gray-200 dark:text-gray-800',
-                              'mt-0.5'
-                            )}
-                          >
-                            {timestamp.event.date}
-                          </h1>
-                        </time>
-                      </div>
-                      <div className={cx('flex flex-col mb-20')}>
-                        {/* <Link key={itemIndex} item={item} routeType={routeType} /> */}
-                        <NextLink as={as} href={href}>
-                          <a
-                            className={cx('cursor-pointer')}
-                            onClick={() => {
-                              playActive()
-                            }}
-                          >
-                            <>
-                              <div
-                                className={
-                                  cx()
-                                  // 'bg-inherit bg-white dark:bg-black',
-                                  // 'sticky top-24'
-                                }
-                              >
-                                <h3 id="events--listing--title">{title}</h3>
-                                <h4 id="events--listing--meta">
-                                  <span className="uppercase">
-                                    {timestamp.event.dayAbbreviation}{' '}
-                                  </span>
-                                  {timestamp.event.time}
-                                </h4>
-                              </div>
-                              <p id="events--listing--info">
-                                {!!seoDescription && (
-                                  <span
-                                    className={cx(
-                                      'prose pb-2 text-black dark:text-white'
-                                    )}
-                                  >
-                                    {seoDescription}
-                                  </span>
-                                )}
-                              </p>
-                            </>
-                          </a>
-                        </NextLink>
-                      </div>
-                    </div>
-                  </div>
-                </React.Fragment>
+                <ListingItemEvent
+                  item={item}
+                  key={itemIndex}
+                  routeType={routeType}
+                />
               )
             } else {
               return (
-                <Link
-                  key={itemIndex}
-                  item={item}
-                  itemIndex={itemIndex}
-                  routeType={routeType}
-                />
+                <ListingItem item={item} key={itemIndex} routeType={routeType} />
               )
             }
           })}
