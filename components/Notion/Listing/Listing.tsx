@@ -289,7 +289,11 @@ const Listing = ({ items, routeType }) => {
         itemsData = _orderBy(items.results, ['data.date.start'], ['asc'])
         break
       case 'podcasts':
-        itemsData = _orderBy(items.results, ['data.datePublished.start'], ['desc'])
+        itemsData = _orderBy(
+          items.results,
+          ['data.season', 'data.episode'],
+          ['desc', 'desc']
+        )
         break
       default:
         itemsData = items.results

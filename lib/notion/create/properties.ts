@@ -2,7 +2,7 @@ import Slugger from 'github-slugger'
 
 const slugger = new Slugger()
 
-const title = 'Foo Bar Baz'
+const title = 'Foo Bar Baze'
 
 const authorsPeople = [
   {

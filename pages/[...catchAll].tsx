@@ -43,7 +43,7 @@ const CatchAll = (props) => {
         content: contentFallback,
         items: itemsFallback,
       },
-      revalidateOnFocus: false,
+      revalidateOnFocus: true,
     }
   )
 
