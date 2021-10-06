@@ -80,7 +80,7 @@ const nextConfig = {
     build: false,
   },
   experimental: {
-    cacheUnaffected: true,
+    cacheUnaffected: false,
     catchAllRouting: true,
     enableBlurryPlaceholder: true,
     jsconfigPaths: true,

@@ -28,7 +28,7 @@ const getPathVariables = (catchAll: any) => {
   const last: string = _last(catchAll)
 
   const meta =
-    size > 1 && _includes(['blog', 'events'], first)
+    size > 1 && _includes(['blog', 'events', 'podcasts'], first)
       ? _drop(catchAll)
       : _drop(_dropRight(catchAll))
   const routeType =

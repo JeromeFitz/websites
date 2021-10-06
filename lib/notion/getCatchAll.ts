@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { ListBlockChildrenResponse } from '@notionhq/client/build/src/api-endpoints'
+// import { ListBlockChildrenResponse } from '@notionhq/client/build/src/api-endpoints'
 // @note(notion) took these away in 0.4.0
 // import {
 //   CheckboxPropertyValue,
@@ -26,11 +26,13 @@ import _omit from 'lodash/omit'
 // import _pick from 'lodash/pick'
 import _size from 'lodash/size'
 
+// import isUndefined from '~utils/isUndefined'
 import getBlocksByIdChildren from '~lib/notion/api/getBlocksByIdChildren'
 import getDatabasesByIdQuery from '~lib/notion/api/getDatabasesByIdQuery'
 import getPagesById from '~lib/notion/api/getPagesById'
 import { getCache, setCache } from '~lib/notion/getCache'
 import getPathVariables from '~lib/notion/getPathVariables'
+import getQuery from '~lib/notion/getQuery'
 import { DATABASES, SEO, QUERIES, PROPERTIES } from '~utils/notion/helper'
 
 const useCache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE
@@ -668,11 +670,20 @@ const normalizerContentResults = (results) => {
 // @todo(next) preview
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const getCatchAll = async ({ cache = false, catchAll, clear, preview }) => {
-  console.dir(`> getCatchAll`)
-  console.dir(catchAll)
+  // console.dir(`> getCatchAll`)
+  // console.dir(catchAll)
   const isCache = useCache && cache
   const { hasMeta, isPage, isIndex, meta, routeType, slug } =
     getPathVariables(catchAll)
+
+  /**
+   * @hack some reason everything is coming here, is it `notion/index.ts`?
+   */
+  if (slug === 'favicon.ico') return null
+
+  /**
+   * @resume
+   */
   let data
   /**
    * @cache pre
@@ -690,7 +701,8 @@ const getCatchAll = async ({ cache = false, catchAll, clear, preview }) => {
      * @hack
      */
     let info: Pick<any, string | number | symbol>,
-      content: ListBlockChildrenResponse,
+      // content: ListBlockChildrenResponse,
+      content: any,
       items: Pick<any, string | number | symbol> = null
 
     let dataType: number
@@ -699,11 +711,11 @@ const getCatchAll = async ({ cache = false, catchAll, clear, preview }) => {
      */
     // 1 = /colophon
     // 2 = /blog, /events, /podcasts
-    // 3 = /blog/2020, blog/2020/05, blog/2020/05/09
-    //     /events/2020, events/2020/05, events/2020/05/09,
-    //     /podcasts/knockoffs/s01e01--i-know-what-you-did-last-summer
-    // 4 = blog/2020/05/09/title, events/2020/05/09/title,
-    // 5 = /shows/alex-o-jerome, /events/2020/05/09/jerome-and, podcasts/knockoffs
+    // 3 = /blog/2020, /blog/2020/05, /blog/2020/05/09
+    //     /events/2020, /events/2020/05, /events/2020/05/09,
+    // 4 = /blog/2020/05/09/title, /events/2020/05/09/title,
+    //     /podcasts/knockoffs/i-know-what-you-did-last-summer
+    // 5 = /shows/alex-o-jerome, /events/2020/05/09/jerome-and, /podcasts/knockoffs
     if (isPage) {
       dataType = 1
     } else if (isIndex && !hasMeta) {
@@ -715,12 +727,15 @@ const getCatchAll = async ({ cache = false, catchAll, clear, preview }) => {
     } else {
       dataType = 5
     }
+    // console.dir(`routeType: ${routeType}`)
     // console.dir(`dataType: ${dataType}`)
+    // console.dir(`slug: ${slug}`)
     /**
      * @info
      * used for seo information and immediate display above the fold
      */
     const dateTimestamp = new Date().toISOString()
+    // @todo(date-fns) make this the first date of the year dynamically
     const dateTimestampBlog = new Date('2020-01-01').toISOString()
 
     switch (dataType) {
@@ -918,48 +933,83 @@ const getCatchAll = async ({ cache = false, catchAll, clear, preview }) => {
         break
 
       case 4:
-        /**
-         * @filter
-         * @note events|blog only for now
-         */
-        const [year, month, day] = meta
-        const timestampQuery = new Date(
-          `${!!year ? year : dateTimestamp.slice(0, 4)}-${!!month ? month : '01'}-${
-            !!day ? day : '01'
-          }`
-        )
-        const info4 = await getDatabasesByIdQuery({
-          databaseId: DATABASES[routeType],
-          filter: {
-            and: [
-              {
-                property:
-                  routeType === 'events'
-                    ? PROPERTIES.date
-                    : PROPERTIES.datePublished,
-                date: {
-                  on_or_after: addTime(timestampQuery, ''),
+        if (routeType === 'podcasts') {
+          const [podcastSlug, episodeSlug] = meta
+          const hasEpisode = _size(meta) === 2
+          const info4__p = await getDatabasesByIdQuery({
+            databaseId: DATABASES[hasEpisode ? 'episodes' : routeType],
+            filter: {
+              and: [
+                {
+                  ...QUERIES.slug,
+                  text: { equals: hasEpisode ? episodeSlug : podcastSlug },
                 },
-              },
-              {
-                property:
-                  routeType === 'events'
-                    ? PROPERTIES.date
-                    : PROPERTIES.datePublished,
-                date: {
-                  before: addTime(timestampQuery, 'day'),
+              ],
+            },
+          })
+          const info4__pa = info4__p.object === 'list' && info4__p.results[0]
+          info = normalizerContent(info4__pa)
+          content = await getBlocksByIdChildren({ blockId: info.id })
+          // @hack(podcasts)
+          if (!hasEpisode) {
+            let items4__p = null
+            if (routeType === 'podcasts') {
+              items4__p = await getQuery({
+                reqQuery: {
+                  podcasts: info.id,
+                  databaseType: 'episodes',
                 },
-              },
-              {
-                ...QUERIES.slug,
-                text: { equals: slug },
-              },
-            ],
-          },
-        })
-        const info4a = info4.object === 'list' && info4.results[0]
-        info = normalizerContent(info4a)
-        content = await getBlocksByIdChildren({ blockId: info.id })
+              })
+              const items4__pData = {}
+              _map(items4__p.results, (item) => (items4__pData[item.id] = item))
+              const items4__pOmit = _omit(items4__p, 'results')
+              // @ts-ignore
+              items4__pOmit.results = items4__pData
+              items = _omit(items4__pOmit, 'data')
+            }
+          }
+        }
+        if (routeType === 'events' || routeType === 'blog') {
+          const [year, month, day] = meta
+          const timestampQuery = new Date(
+            `${!!year ? year : dateTimestamp.slice(0, 4)}-${
+              !!month ? month : '01'
+            }-${!!day ? day : '01'}`
+          )
+          const info4__be = await getDatabasesByIdQuery({
+            databaseId: DATABASES[routeType],
+            filter: {
+              and: [
+                {
+                  property:
+                    routeType === 'events'
+                      ? PROPERTIES.date
+                      : PROPERTIES.datePublished,
+                  date: {
+                    on_or_after: addTime(timestampQuery, ''),
+                  },
+                },
+                {
+                  property:
+                    routeType === 'events'
+                      ? PROPERTIES.date
+                      : PROPERTIES.datePublished,
+                  date: {
+                    before: addTime(timestampQuery, 'day'),
+                  },
+                },
+                {
+                  ...QUERIES.slug,
+                  text: { equals: slug },
+                },
+              ],
+            },
+          })
+          const info4__bea = info4__be.object === 'list' && info4__be.results[0]
+          info = normalizerContent(info4__bea)
+          content = await getBlocksByIdChildren({ blockId: info.id })
+        }
+
         break
       default:
         break

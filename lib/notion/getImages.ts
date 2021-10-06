@@ -14,7 +14,7 @@ const getImages = async ({ data, pathVariables }) => {
    * @info
    */
   const infoImagesFilter =
-    data.info.object === 'page'
+    data.info?.object === 'page'
       ? filterImages(data.info?.data, 'info')
       : filterImages(data.info?.results[0]?.properties, 'info')
   const infoImagesAwait = infoImagesFilter.map(async (imageResult) => {
@@ -43,6 +43,11 @@ const getImages = async ({ data, pathVariables }) => {
   const contentImagesAwait =
     !!contentImagesFilter &&
     contentImagesFilter.map(async (imageResult) => {
+      if (!imageResult) {
+        return null
+      }
+      // console.dir(`imageResult`)
+      // console.dir(imageResult)
       const imageExternalUrl =
         imageResult.image.type === 'external'
           ? imageResult.image.external.url
@@ -90,6 +95,9 @@ const getImages = async ({ data, pathVariables }) => {
   !!contentImages &&
     contentImages[0] &&
     _map(contentImages, (image: any) => (mergeImages[image.id] = image))
+
+  // console.dir(`mergeImages`)
+  // console.dir(mergeImages)
 
   return mergeImages
 }

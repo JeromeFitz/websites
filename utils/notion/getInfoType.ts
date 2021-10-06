@@ -1,4 +1,4 @@
-const getInfoType = (item: any, routeType) => {
+const getInfoType = (item: any, routeType, meta = null) => {
   const date = item.data?.date?.start.slice(0, 10)
   const slug = item.data?.slug
 
@@ -12,8 +12,12 @@ const getInfoType = (item: any, routeType) => {
     case 'events':
       as = `/${routeType}/${year}/${month}/${day}/${slug}`
       break
-    case 'people':
     case 'podcasts':
+    case 'episodes':
+      as = `/${meta.join('/')}/${slug}`
+      break
+    case 'people':
+
     case 'shows':
     case 'users':
     case 'venues':

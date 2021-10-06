@@ -51,6 +51,11 @@ const getContentType = (item: NotionBlock, images?: any[]) => {
       const imageSlug = slugger.slug(content?.external?.url)
       const imageData = !!imageSlug && !!images && images[imageSlug]
       const caption = _size(content?.caption) > 0 && content?.caption[0]?.plain_text
+      // console.dir(`getContentType`)
+      // console.dir(`imageSlug: ${imageSlug}`)
+      // console.dir(images)
+      // console.dir(`imageData`)
+      // console.dir(imageData)
 
       return !!imageData ? (
         <div className="w-2/3 mx-auto" key={id}>

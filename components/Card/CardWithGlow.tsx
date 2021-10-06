@@ -56,7 +56,7 @@ const CardWithGlow = ({ children, blurDataURL = '', isImage = false }) => {
         style={
           !!blurDataURL
             ? {
-                background: `url(${blurDataURL})`,
+                backgroundImage: `url(${blurDataURL})`,
                 backgroundSize: 'cover',
               }
             : {}

@@ -111,7 +111,7 @@ export const getStaticProps = async ({ preview = false, ...props }) => {
    */
   const cache = true
   const data = await getCatchAll({ cache, catchAll, clear, preview })
-  const images = await getImages({ data, pathVariables })
+  const images = !!data ? await getImages({ data, pathVariables }) : []
 
   const dataReturn = { ...data, images }
   return { props: { preview, ...dataReturn, ...pathVariables, ...props } }
