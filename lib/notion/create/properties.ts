@@ -252,4 +252,5 @@ const properties = {
   },
 }
 
+export { slug }
 export default properties
