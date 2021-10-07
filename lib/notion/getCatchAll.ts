@@ -756,7 +756,7 @@ const getCatchAll = async ({ cache = false, catchAll, clear, preview }) => {
             ],
           },
         })
-        const info1a = info1.object === 'list' && info1.results[0]
+        const info1a = info1?.object === 'list' && info1.results[0]
         info = normalizerContent(info1a)
         content = await getBlocksByIdChildren({ blockId: info.id })
         break

@@ -38,7 +38,7 @@ const Page = ({ data, props }) => {
   const { mutate } = useSWRConfig()
   const { data: images } = useSWR('images', { fallbackData: imagesFallback })
   useEffect(() => {
-    void mutate('images', { ...images, ...imagesFallback }, false)
+    void mutate('images', { ...images, ...imagesFallback }, true)
   }, [images, imagesFallback, mutate])
 
   // console.dir(`images`)
@@ -102,7 +102,6 @@ const Page = ({ data, props }) => {
         <ImageLead
           description={properties?.seoImageDescription}
           image={properties?.seoImage}
-          imagesFallback={props?.images}
           key={`image-lead--${id}`}
         />
         {/* Content */}

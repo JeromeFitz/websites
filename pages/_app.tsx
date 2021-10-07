@@ -17,6 +17,7 @@ import NProgress from '~components/NProgress'
 import { ManagedUIContext } from '~context/ManagedUIContext'
 import NotificationProvider from '~context/Notification'
 import { useAnalytics } from '~lib/analytics'
+import { IMAGE__FALLBACKS__SHOWS } from '~lib/constants'
 
 const NavigationMobileWithNoSSR = dynamic(
   () => import('~components/Layout').then((mod) => mod.NavigationMobile),
@@ -45,7 +46,12 @@ function MyApp({ Component, pageProps, router }: AppProps) {
 
   return (
     <>
-      <SWRConfig value={{ provider: () => new Map() }}>
+      <SWRConfig
+        value={{
+          fallback: { images: IMAGE__FALLBACKS__SHOWS },
+          provider: () => new Map(),
+        }}
+      >
         {/* <Inspect disabled={process.env.NODE_ENV === 'production'}> */}
         <Head>
           <meta
