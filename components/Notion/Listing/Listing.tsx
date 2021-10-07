@@ -13,6 +13,7 @@ import { MetaTags } from '~components/Notion/Meta'
 import { useUI } from '~context/ManagedUIContext'
 import fetcher from '~lib/fetcher'
 import getTimestamp from '~utils/getTimestamp'
+import lpad from '~utils/lpad'
 import getInfoType from '~utils/notion/getInfoType'
 
 const Emoji = dynamic(() => import('~components/Notion/Emoji'), {
@@ -70,7 +71,7 @@ const ListingItemEpisode = ({ item, routeType }) => {
                       'text-sm font-medium text-gray-600 dark:text-gray-200'
                     )}
                   >
-                    S{season}E{episode}
+                    S{lpad(season)}E{lpad(episode)}
                   </p>
                 ) : (
                   <p className={cx('text-2xl mb-0 pb-0')}>

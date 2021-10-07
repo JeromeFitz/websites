@@ -111,6 +111,7 @@ const nextConfig = {
       'pbs.twimg.com', // Twitter Profile Picture
       'www.datocms-assets.com', // DataO
       'tailwindcss.com', // Tailwind
+      'images.unsplash.com', // Unsplash
     ],
     imageSizes: [24, 64, 300],
   },

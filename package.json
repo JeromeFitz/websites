@@ -55,6 +55,7 @@
     "body-scroll-lock": "4.0.0-beta.0",
     "clsx": "1.1.1",
     "comma-number": "2.1.0",
+    "csv-parser": "3.0.0",
     "date-fns": "2.25.0",
     "date-fns-tz": "1.1.6",
     "fathom-client": "3.2.0",
@@ -136,7 +137,6 @@
     "postcss-page-break": "3.0.4",
     "rimraf": "3.0.2",
     "ts-jest": "27.0.5",
-    "ts-node": "10.2.1",
     "typescript": "4.4.3"
   },
   "next-unused": {

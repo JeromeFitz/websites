@@ -2,8 +2,10 @@ import _size from 'lodash/size'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 import createPage from '~lib/notion/api/createPage'
+// @todo(notion) this no longer works!
 import children from '~lib/notion/create/children'
-import properties, { slug } from '~lib/notion/create/properties'
+// @todo(notion) this no longer works!
+import properties from '~lib/notion/create/properties'
 import getCatchAll from '~lib/notion/getCatchAll'
 // import getPathVariables from '~lib/notion/getPathVariables'
 import { DATABASES } from '~utils/notion/helper'
@@ -16,27 +18,25 @@ const isObjectEmptyDeep = (obj) =>
     )
   )
 
-const secretCreatePage = async (req: NextApiRequest, res: NextApiResponse) => {
-  /**
-   * @setup
-   */
-  const routeType = 'episodes'
-  const databaseId = DATABASES[routeType]
-  const icon = {
-    type: 'emoji',
-    emoji: '🦇',
-  }
+const routeType = 'episodes'
+const databaseId = DATABASES[routeType]
+const icon = {
+  type: 'emoji',
+  emoji: '🦇',
+}
 
-  const page = {
-    object: 'page',
-    cover: null,
-    icon,
-    parent: {
-      database_id: databaseId,
-    },
-    properties,
-    children,
-  }
+const page = {
+  object: 'page',
+  cover: null,
+  icon,
+  parent: {
+    database_id: databaseId,
+  },
+  properties,
+  children,
+}
+
+const secretCreatePage = async (req: NextApiRequest, res: NextApiResponse) => {
   /**
    * @notion Check if Page Exists
    * Y: UPDATE, but only update "new" fields provided
@@ -46,6 +46,8 @@ const secretCreatePage = async (req: NextApiRequest, res: NextApiResponse) => {
   let _data = null,
     _type = 'exists',
     _id
+  // @todo(notion) this no longer works!
+  const slug = 'am-i-dracula-greg-gillotti'
   const catchAll = ['podcasts', 'jer-and-ky-and-guest', slug]
   data = await getCatchAll({
     preview: false,
