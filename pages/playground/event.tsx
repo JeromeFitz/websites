@@ -68,7 +68,7 @@ const Event = () => {
     return <h1>Loading...</h1>
   }
 
-  console.dir(dataEvent)
+  // console.dir(dataEvent)
 
   const { content, info } = dataEvent
   const { data, id, slug } = info
