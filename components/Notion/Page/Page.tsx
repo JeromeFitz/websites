@@ -60,7 +60,7 @@ const Page = ({ data, props }) => {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { tags, title } = properties
+  const { spotifyShow, tags, title } = properties
 
   // console.dir(`properties`)
   // console.dir(properties)
@@ -181,11 +181,23 @@ const Page = ({ data, props }) => {
             />
           )}
           {isEpisodeListing ? (
-            <Listing
-              items={items}
-              key={`listing--episodes--${id}`}
-              routeType={routeType}
-            />
+            <>
+              {/* {!!spotifyShow && (
+                <iframe
+                  src={`https://open.spotify.com/embed/show/${spotifyShow}`}
+                  width="100%"
+                  height="232"
+                  frameBorder="0"
+                  allowFullScreen={true}
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                ></iframe>
+              )} */}
+              <Listing
+                items={items}
+                key={`listing--episodes--${id}`}
+                routeType={routeType}
+              />
+            </>
           ) : null}
         </>
       </NotionLayout>

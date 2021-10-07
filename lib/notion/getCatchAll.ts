@@ -204,6 +204,7 @@ interface NormalizerProperties {
   podcastAuthorEmail?: string
   seoDescription?: string
   seoImageDescription?: string
+  spotifyShow?: string
   slug?: string
   tailwindColorBackground?: string
   /**
@@ -558,6 +559,9 @@ const normalizerProperties = (properties) => {
         break
       case PROPERTIES.seoImageDescription:
         data.seoImageDescription = getTypeRichTextNormalized(value)
+        break
+      case PROPERTIES.spotifyShow:
+        data.spotifyShow = getTypeRichTextNormalized(value)
         break
       case PROPERTIES.address.city:
         data.address.city = getTypeRichTextNormalized(value)

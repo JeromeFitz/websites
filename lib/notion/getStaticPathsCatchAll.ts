@@ -26,6 +26,16 @@ const getStaticPathsDefault = ({ items, routeType }) => {
       })
       _uniqWith(dates, _isEqual).map((route) => data.push(route))
       break
+    case 'episodes':
+      _map(items, (item) => {
+        // @todo(notion) what if there is more than two? make dynamic please
+        const podcastSlug =
+          item?.data?.podcasts[0] === 'fff1042d-3403-4210-991e-678c6820fe68'
+            ? 'knockoffs'
+            : 'jer-and-ky-and-guest'
+        data.push(`/podcasts/${podcastSlug}/${item?.data?.slug}`)
+      })
+      break
     default:
       _map(items, (item) => data.push(`/${routeType}/${item?.data?.slug}`))
       break
@@ -33,14 +43,14 @@ const getStaticPathsDefault = ({ items, routeType }) => {
   return data
 }
 
-const routeTypes = ['blog', 'events', 'podcasts', 'shows']
+const routeTypes = ['blog', 'episodes', 'events', 'podcasts', 'shows']
 
 const getStaticPathsCatchAll = async () => {
   const paths = []
   paths.push('/colophon')
 
   await asyncForEach(routeTypes, async (routeType: any) => {
-    paths.push(`/${routeType}`)
+    if (routeType !== 'episodes') paths.push(`/${routeType}`)
     const catchAll = [routeType]
     const data = await getCatchAll({
       preview: false,

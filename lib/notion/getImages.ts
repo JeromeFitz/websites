@@ -17,21 +17,23 @@ const getImages = async ({ data, pathVariables }) => {
     data.info?.object === 'page'
       ? filterImages(data.info?.data, 'info')
       : filterImages(data.info?.results[0]?.properties, 'info')
-  const infoImagesAwait = infoImagesFilter.map(async (imageResult) => {
-    if (!imageResult) {
-      return null
-    }
-    const url = !!imageResult && imageResult?.url
+  const infoImagesAwait =
+    !!infoImagesFilter &&
+    infoImagesFilter.map(async (imageResult) => {
+      if (!imageResult) {
+        return null
+      }
+      const url = !!imageResult && imageResult?.url
 
-    if (!url) {
-      return null
-    }
+      if (!url) {
+        return null
+      }
 
-    const { base64, img } = await getPlaiceholder(url)
-    const id = slugger.slug(url)
+      const { base64, img } = await getPlaiceholder(url)
+      const id = slugger.slug(url)
 
-    return { base64, id, img, url }
-  })
+      return { base64, id, img, url }
+    })
   const infoImages = await Promise.all(infoImagesAwait)
 
   /**

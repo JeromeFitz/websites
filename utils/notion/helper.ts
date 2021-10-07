@@ -79,6 +79,7 @@ const PROPERTIES = {
     instagram: 'Social.Instagram',
     twitter: 'Social.Twitter',
   },
+  spotifyShow: 'Spotify.Show',
   tags: 'Tags',
   tailwindColorBackground: 'Tailwind.Color.Background',
   ticketUrl: 'TicketUrl',
