@@ -23,7 +23,7 @@ if (process.env.NEXT_PUBLIC__SITE !== urlBaseCheck) {
 const ContentSecurityPolicy = `
   default-src 'self';
   script-src 'self' 'unsafe-eval' 'unsafe-inline' *.youtube.com *.twitter.com cdn.usefathom.com *.jeromefitzgerald.com;
-  child-src *.youtube.com *.google.com *.twitter.com;
+  child-src *.youtube.com *.google.com *.twitter.com *.spotify.com;
   style-src 'self' 'unsafe-inline' *.googleapis.com;
   img-src 'self' * blob: data:;
   object-src 'self' * blob: data:;
@@ -80,7 +80,7 @@ const nextConfig = {
     build: false,
   },
   experimental: {
-    cacheUnaffected: true,
+    cacheUnaffected: false,
     catchAllRouting: true,
     enableBlurryPlaceholder: true,
     jsconfigPaths: true,
@@ -111,6 +111,7 @@ const nextConfig = {
       'pbs.twimg.com', // Twitter Profile Picture
       'www.datocms-assets.com', // DataO
       'tailwindcss.com', // Tailwind
+      'images.unsplash.com', // Unsplash
     ],
     imageSizes: [24, 64, 300],
   },

@@ -84,7 +84,7 @@ const CardWithGlowProps = ({
           // 'md:drop-shadow-xl md:scale-105'
         )}
         style={{
-          background: !loading && `url(${imageData.base64})`,
+          backgroundImage: !loading && `url(${imageData.base64})`,
           backgroundSize: 'cover',
         }}
       >

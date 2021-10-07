@@ -12,6 +12,10 @@ import getContentNodes from '~utils/notion/getContentNodes'
 
 const Breadcrumb = dynamic(() => import('~components/Notion/Breadcrumb'), {})
 const Listing = dynamic(() => import('~components/Notion/Listing'), {})
+// const ListingEpisodes = dynamic(
+//   () => import('~components/Notion/Listing').then((mod) => mod.ListingEpisodes),
+//   {}
+// )
 
 const Page = ({ data, props }) => {
   const {
@@ -37,6 +41,9 @@ const Page = ({ data, props }) => {
     void mutate('images', { ...images, ...imagesFallback }, false)
   }, [images, imagesFallback, mutate])
 
+  // console.dir(`images`)
+  // console.dir(images)
+
   /**
    * @data
    */
@@ -53,7 +60,7 @@ const Page = ({ data, props }) => {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { tags, title } = properties
+  const { spotifyShow, tags, title } = properties
 
   // console.dir(`properties`)
   // console.dir(properties)
@@ -86,6 +93,7 @@ const Page = ({ data, props }) => {
   // const nodes = getContentNodes({ content, images })
 
   const isEventListing = routeType === 'events' && !isIndex
+  const isEpisodeListing = routeType === 'podcasts' && !isIndex
 
   return (
     <>
@@ -172,6 +180,25 @@ const Page = ({ data, props }) => {
               slug={slug}
             />
           )}
+          {isEpisodeListing ? (
+            <>
+              {/* {!!spotifyShow && (
+                <iframe
+                  src={`https://open.spotify.com/embed/show/${spotifyShow}`}
+                  width="100%"
+                  height="232"
+                  frameBorder="0"
+                  allowFullScreen={true}
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                ></iframe>
+              )} */}
+              <Listing
+                items={items}
+                key={`listing--episodes--${id}`}
+                routeType={routeType}
+              />
+            </>
+          ) : null}
         </>
       </NotionLayout>
     </>
