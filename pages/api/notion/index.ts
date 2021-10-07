@@ -2,6 +2,7 @@
 // import _omit from 'lodash/omit'
 import { NextApiRequest, NextApiResponse } from 'next'
 
+import { SLUG__HOMEPAGE } from '~lib/constants'
 import getCatchAll from '~lib/notion/getCatchAll'
 // import getPathVariables from '~lib/notion/getPathVariables'
 // import omitFields from '~lib/notion/omitFields'
@@ -11,7 +12,7 @@ const notionCatchAll = async (req: NextApiRequest, res: NextApiResponse) => {
     // @todo(next) preview
     const preview = req.query?.preview || false
     const clear = req.query?.clear || false
-    const catchAll = req.query?.catchAll
+    const catchAll = [SLUG__HOMEPAGE]
     /**
      * @cache
      */

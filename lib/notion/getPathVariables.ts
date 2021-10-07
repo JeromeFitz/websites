@@ -7,6 +7,8 @@ import _join from 'lodash/join'
 import _last from 'lodash/last'
 import _size from 'lodash/size'
 
+import { SLUG__HOMEPAGE } from '~lib/constants'
+
 const routeTypesArray = [
   'blog',
   'episodes',
@@ -26,7 +28,7 @@ const getPathVariables = (catchAll: any) => {
   const last: string = _last(catchAll)
 
   const meta =
-    size > 1 && _includes(['blog', 'events'], first)
+    size > 1 && _includes(['blog', 'events', 'podcasts'], first)
       ? _drop(catchAll)
       : _drop(_dropRight(catchAll))
   const routeType =
@@ -37,7 +39,7 @@ const getPathVariables = (catchAll: any) => {
   const isIndex = slug === first
   const hasMeta = !!meta && _size(meta) !== 0
 
-  const url = isPage && first === 'homepage-2021' ? '' : _join(catchAll, '/')
+  const url = isPage && first === SLUG__HOMEPAGE ? '' : _join(catchAll, '/')
 
   const pathVariables = { hasMeta, isPage, isIndex, meta, routeType, slug, url }
 

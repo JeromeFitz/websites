@@ -3,7 +3,6 @@ const _replace = require('lodash/replace')
 
 const sites = {
   'jerandky.com': {
-    description: 'The JerKy BoyZ',
     excludes: [
       '/en/blog',
       '/en/blog/*',
@@ -28,13 +27,23 @@ const sites = {
       '/shows/*',
     ],
     siteUrl: 'https://jerandky.com',
-    title: 'Jer & Ky Productions',
   },
   'jeromefitzgerald.com': {
-    description: 'I write and perform comedy.',
-    excludes: [],
+    excludes: [
+      '/en/episodes',
+      '/en/episodes/*',
+      '/en/people',
+      '/en/people/*',
+      // @note(sitemap) turn off episodes for the moment
+      '/en/podcasts/*/*',
+      '/en/users',
+      '/en/users/*',
+      '/en/venues',
+      '/en/venues/*',
+      '/playground',
+      '/playground/*',
+    ],
     siteUrl: 'https://jeromefitzgerald.com',
-    title: 'Hello, my name is Jerome.',
   },
 }
 
@@ -52,21 +61,7 @@ const removeEn = (config, url) => {
 
 module.exports = {
   changefreq: 'weekly',
-  exclude: [
-    '/en/episodes',
-    '/en/episodes/*',
-    '/en/people',
-    '/en/people/*',
-    '/en/person/*',
-    '/en/users',
-    '/en/users/*',
-    '/en/venues',
-    '/en/venues/*',
-    '/events',
-    '/events/*',
-    '/playground',
-    ...excludes,
-  ],
+  exclude: [...excludes],
   generateRobotsTxt: true,
   siteUrl,
   sites,

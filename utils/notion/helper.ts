@@ -79,6 +79,7 @@ const PROPERTIES = {
     instagram: 'Social.Instagram',
     twitter: 'Social.Twitter',
   },
+  spotifyShow: 'Spotify.Show',
   tags: 'Tags',
   tailwindColorBackground: 'Tailwind.Color.Background',
   ticketUrl: 'TicketUrl',
@@ -150,7 +151,7 @@ const DATABASES = {
 
 const SEO = {
   blog: 'd9a4d872-1274-4657-a5b0-ca3a085e4b9e',
-  episodes: '',
+  episodes: 'b3c98bd5-b168-46d9-b4b6-bdf01612890d',
   events: '7bc401a6-5f36-409a-8e33-dcd05653d73c',
   pages: '',
   people: 'a94187ce-498c-4beb-88b2-78d56097d9f6',
