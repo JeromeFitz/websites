@@ -14,6 +14,7 @@ export interface State {
 
 const initialState = {
   audio: false,
+  backgroundColor: 'bg-black',
   displayDropdown: false,
   displayModal: false,
   displayNavigation: false,
@@ -67,6 +68,10 @@ type Action =
     }
   | {
       type: 'AUDIO_DISABLE'
+    }
+  | {
+      type: 'SET_BACKGROUND_COLOR'
+      backgroundColor: string
     }
 
 type MODAL_VIEWS = 'SIGNUP_VIEW' | 'LOGIN_VIEW' | 'FORGOT_VIEW' | 'MODAL_TEST_VIEW'
@@ -162,6 +167,12 @@ function uiReducer(state: State, action: Action) {
         audio: false,
       }
     }
+    case 'SET_BACKGROUND_COLOR': {
+      return {
+        ...state,
+        backgroundColor: action.backgroundColor,
+      }
+    }
   }
 }
 
@@ -202,6 +213,9 @@ export const UIProvider: FC = (props) => {
     return dispatch({ type: 'SET_MODAL_VIEW', view })
   }
 
+  const setBackgroundColor = ({ backgroundColor }) =>
+    dispatch({ type: 'SET_BACKGROUND_COLOR', backgroundColor })
+
   const value = useMemo(
     () => ({
       ...state,
@@ -216,6 +230,7 @@ export const UIProvider: FC = (props) => {
       openNavigation,
       openNotification,
       openSidebar,
+      setBackgroundColor,
       setModalView,
       toggleAudio,
       toggleNavigation,

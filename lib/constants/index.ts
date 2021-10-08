@@ -1,6 +1,6 @@
 import IMAGE__FALLBACKS__SHOWS from '~lib/constants/images/shows'
 
-const SLUG__HOMEPAGE = 'homepage-2021'
+const SLUG__HOMEPAGE = 'homepage'
 
 const EMOJI_FALLBACK = '🍕️'
 
