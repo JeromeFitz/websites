@@ -39,7 +39,10 @@ function getContentNodes({ content, images }) {
   const nodes = {}
   // _map(content.results, (contentItem: NotionBlock) => {
   _map(content, (contentItem: NotionBlock) => {
-    if (contentItem.type === 'bulleted_list_item') {
+    // console.dir(`contentItem`)
+    // console.dir(contentItem)
+    if (contentItem === undefined || contentItem === null) return null
+    if (contentItem?.type === 'bulleted_list_item') {
       if (!listCurrentState) {
         listCurrentId = uuid()
         nodes[listCurrentId] = {
@@ -54,9 +57,9 @@ function getContentNodes({ content, images }) {
     } else {
       listCurrentState = false
     }
-    nodes[contentItem.id] = {
-      id: contentItem.id,
-      type: contentItem.type,
+    nodes[contentItem?.id] = {
+      id: contentItem?.id,
+      type: contentItem?.type,
       node: getContentType(contentItem, images),
     }
   })

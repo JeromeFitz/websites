@@ -1,6 +1,3 @@
-import { Disclosure, Transition } from '@headlessui/react'
-import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/solid'
-// import { ChevronUpIcon } from '@heroicons/react/solid'
 import cx from 'clsx'
 import Slugger from 'github-slugger'
 import _map from 'lodash/map'
@@ -10,6 +7,7 @@ import NextImage from 'next/image'
 import React from 'react'
 
 import ImageCaption from '~components/Notion/ImageCaption'
+// import Toggle from '~components/Notion/Toggle'
 // import Quote from '~components/Notion/Quote'
 import { IMAGE__PLACEHOLDER, WEBKIT_BACKGROUND__BREAK } from '~lib/constants'
 import { NotionBlock } from '~utils/notion'
@@ -17,6 +15,7 @@ import getContentTypeDetail from '~utils/notion/getContentTypeDetail'
 import notionToTailwindColor from '~utils/notion/notionToTailwindColor'
 
 const Emoji = dynamic(() => import('~components/Notion/Emoji'), {})
+const Toggle = dynamic(() => import('~components/Notion/Toggle'), {})
 
 const getContentType = (item: NotionBlock, images?: any[]) => {
   const { has_children, id, type } = item
@@ -171,59 +170,14 @@ const getContentType = (item: NotionBlock, images?: any[]) => {
       return null
     case 'toggle':
       if (!has_children) return null
-      // console.dir(content)
-      // if (_size(content) > 0) {
-      // console.dir(`!!`)
+      const title = getContentTypeDetail(content)
       const nodeContent = _map(content.children, (content) =>
         getContentType(content)
       )
-      console.dir(`nodeContent`)
-      console.dir(nodeContent)
-      // }
-      // return null
       return (
-        <div className="w-full px-4 pt-16" key={id}>
-          <div className="w-full max-w-md p-2 mx-auto bg-info-lighter rounded-2xl">
-            <Disclosure>
-              {({ open }) => (
-                <>
-                  <Disclosure.Button className="flex flex-row">
-                    {getContentTypeDetail(content)}
-                    {` `}Open: {open ? 'yes' : 'no'}
-                    {open ? (
-                      <ChevronUpIcon className={cx('text-green-400 w-5 h-5')} />
-                    ) : (
-                      <ChevronDownIcon className={cx('text-green-400 w-5 h-5')} />
-                    )}
-                  </Disclosure.Button>
-
-                  {/*
-          Use the Transition + open render prop argument to add transitions.
-        */}
-                  <Transition
-                    show={open}
-                    enter="transition duration-100 ease-out"
-                    enterFrom="transform scale-95 opacity-0"
-                    enterTo="transform scale-100 opacity-100"
-                    leave="transition duration-75 ease-out"
-                    leaveFrom="transform scale-100 opacity-100"
-                    leaveTo="transform scale-95 opacity-0"
-                  >
-                    {/*
-            Don't forget to add `static` to your Disclosure.Panel!
-          */}
-                    <Disclosure.Panel
-                      className="px-4 pt-4 pb-2 text-sm text-gray-500"
-                      static
-                    >
-                      {nodeContent}
-                    </Disclosure.Panel>
-                  </Transition>
-                </>
-              )}
-            </Disclosure>
-          </div>
-        </div>
+        <Toggle key={id} title={title}>
+          {nodeContent}
+        </Toggle>
       )
     default:
       console.dir(`@unsupported(notion): ${type}`)
