@@ -1,7 +1,8 @@
 import { AnimatePresence } from 'framer-motion'
 import _map from 'lodash/map'
 import dynamic from 'next/dynamic'
-import { useEffect } from 'react'
+// import { useEffect } from 'react'
+import { useEffectOnce } from 'react-use'
 import useSWR, { useSWRConfig } from 'swr'
 
 import NotionLayout, { ImageLead } from '~components/Notion/Layout'
@@ -35,14 +36,20 @@ const Page = ({ data, props }) => {
   /**
    * @images
    */
-  const { mutate } = useSWRConfig()
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { cache, mutate } = useSWRConfig()
   const { data: images } = useSWR('images', { fallbackData: imagesFallback })
-  useEffect(() => {
+  useEffectOnce(() => {
+    // console.dir(`useEffectOnce`)
     void mutate('images', { ...images, ...imagesFallback }, true)
-  }, [images, imagesFallback, mutate])
+  })
 
-  // console.dir(`images`)
-  // console.dir(images)
+  // // console.dir(`images`)
+  // // console.dir(images)
+  // console.dir(`cache`)
+  // console.dir(cache)
 
   /**
    * @data
@@ -102,6 +109,7 @@ const Page = ({ data, props }) => {
         <ImageLead
           description={properties?.seoImageDescription}
           image={properties?.seoImage}
+          imagesFallback={imagesFallback}
           key={`image-lead--${id}`}
         />
         {/* Content */}

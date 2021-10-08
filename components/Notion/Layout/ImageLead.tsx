@@ -1,15 +1,21 @@
 import cx from 'clsx'
 import Slugger from 'github-slugger'
 import NextImage from 'next/image'
-import useSWR from 'swr'
+import { useEffectOnce } from 'react-use'
+import useSWR, { useSWRConfig } from 'swr'
 
 import { CardWithGlow } from '~components/Card'
 import { Breakout } from '~components/Layout'
 import ImageCaption from '~components/Notion/ImageCaption'
 
-const ImageLead = ({ description, image }) => {
+const ImageLead = ({ description, image, imagesFallback }) => {
+  const { mutate } = useSWRConfig()
   const slugger = new Slugger()
   const { data: images } = useSWR('images', null)
+  useEffectOnce(() => {
+    // console.dir(`useEffectOnce`)
+    void mutate('images', { ...images, ...imagesFallback }, true)
+  })
   // @todo(external)
   const imageSlug = slugger.slug(image?.url)
   const imageData = !!images && images[imageSlug]
