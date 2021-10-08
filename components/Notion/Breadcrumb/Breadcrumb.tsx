@@ -130,7 +130,7 @@ const Breadcrumb = ({ isIndex, title }) => {
                 </motion.li>
               ) : (
                 <motion.li
-                  className={cx('px-2 font-bold')}
+                  className={cx('px-2 font-bold _text-black dark:_text-white')}
                   aria-current="page"
                   key={`breadcrumb-${breadcrumbIndex}`}
                   layout
