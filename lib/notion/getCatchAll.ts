@@ -745,7 +745,7 @@ const getCatchAll = async ({ cache = false, catchAll, clear, preview }) => {
     switch (dataType) {
       case 1:
       case 5:
-        const info1 = await getDatabasesByIdQuery({
+        const info1: any = await getDatabasesByIdQuery({
           databaseId: DATABASES[routeType],
           filter: {
             and: [
@@ -756,7 +756,7 @@ const getCatchAll = async ({ cache = false, catchAll, clear, preview }) => {
             ],
           },
         })
-        const info1a = info1.object === 'list' && info1.results[0]
+        const info1a = info1?.object === 'list' && info1.results[0]
         info = normalizerContent(info1a)
         content = await getBlocksByIdChildren({ blockId: info.id })
         break
@@ -764,7 +764,7 @@ const getCatchAll = async ({ cache = false, catchAll, clear, preview }) => {
         const info2 = await getPagesById({ pageId: SEO[routeType] })
         info = info2.object === 'page' && normalizerContent(info2)
         content = await getBlocksByIdChildren({ blockId: info.id })
-        const items2 = await getDatabasesByIdQuery({
+        const items2: any = await getDatabasesByIdQuery({
           databaseId: DATABASES[routeType],
           filter: {
             and: [
@@ -917,7 +917,7 @@ const getCatchAll = async ({ cache = false, catchAll, clear, preview }) => {
             }
             break
         }
-        const items3 = await getDatabasesByIdQuery({
+        const items3: any = await getDatabasesByIdQuery({
           databaseId: DATABASES[routeType],
           filter,
           sorts: sorts3,
@@ -940,7 +940,7 @@ const getCatchAll = async ({ cache = false, catchAll, clear, preview }) => {
         if (routeType === 'podcasts') {
           const [podcastSlug, episodeSlug] = meta
           const hasEpisode = _size(meta) === 2
-          const info4__p = await getDatabasesByIdQuery({
+          const info4__p: any = await getDatabasesByIdQuery({
             databaseId: DATABASES[hasEpisode ? 'episodes' : routeType],
             filter: {
               and: [
@@ -980,7 +980,7 @@ const getCatchAll = async ({ cache = false, catchAll, clear, preview }) => {
               !!month ? month : '01'
             }-${!!day ? day : '01'}`
           )
-          const info4__be = await getDatabasesByIdQuery({
+          const info4__be: any = await getDatabasesByIdQuery({
             databaseId: DATABASES[routeType],
             filter: {
               and: [

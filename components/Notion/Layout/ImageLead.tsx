@@ -7,11 +7,9 @@ import { CardWithGlow } from '~components/Card'
 import { Breakout } from '~components/Layout'
 import ImageCaption from '~components/Notion/ImageCaption'
 
-const ImageLead = ({ imagesFallback = {}, description, image }) => {
+const ImageLead = ({ description, image }) => {
   const slugger = new Slugger()
-  const { data: images } = useSWR('images', null, {
-    fallbackData: imagesFallback,
-  })
+  const { data: images } = useSWR('images', null)
   // @todo(external)
   const imageSlug = slugger.slug(image?.url)
   const imageData = !!images && images[imageSlug]

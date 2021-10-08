@@ -55,8 +55,9 @@ class MyDocument extends Document<DocumentContext> {
         <body
           className={cx(
             `loading`,
-            `bg-white dark:bg-black`,
-            `text-black dark:text-white`,
+            // `bg-white dark:bg-black`,
+            // `text-black dark:text-white`,
+            'bg-primary text-secondary',
             ``
           )}
         >

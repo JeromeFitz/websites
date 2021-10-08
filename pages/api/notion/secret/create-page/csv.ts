@@ -58,6 +58,8 @@ const csvApi = (req: NextApiRequest, res: NextApiResponse) => {
         // @todo(notion) DRY
         const routeType = 'episodes'
         const databaseId = DATABASES[routeType]
+        if (!databaseId) res.status(404).json({ _csv: false })
+
         // @todo(notion) DRY
         const icon = {
           type: 'emoji',

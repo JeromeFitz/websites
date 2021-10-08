@@ -3,7 +3,9 @@ import dynamic from 'next/dynamic'
 import useSWR from 'swr'
 
 import Layout from '~components/Layout'
+import ListingShows from '~components/Notion/Listing/ListingCard'
 import Page from '~components/Notion/Page'
+import Quote from '~components/Notion/Quote'
 import { SLUG__HOMEPAGE } from '~lib/constants'
 import fetcher from '~lib/fetcher'
 import getCatchAll from '~lib/notion/getCatchAll'
@@ -65,6 +67,9 @@ const CatchAll = (props) => {
     <>
       <Layout>
         <Page data={data} props={props} />
+        <ListingShows />
+        <div className="spacer--h mb-4" />
+        <Quote />
       </Layout>
     </>
   )

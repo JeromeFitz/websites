@@ -29,10 +29,16 @@ const navigation = [
     titleMobile: 'p',
   },
   {
-    active: isDev,
+    active: false,
     href: '/events/2020',
     title: 'e',
     titleMobile: 'e',
+  },
+  {
+    active: isDev,
+    href: '/playground/shows',
+    title: 's',
+    titleMobile: 's',
   },
 ]
 

@@ -16,7 +16,8 @@ const getImages = async ({ data, pathVariables }) => {
   const infoImagesFilter =
     data.info?.object === 'page'
       ? filterImages(data.info?.data, 'info')
-      : filterImages(data.info?.results[0]?.properties, 'info')
+      : !!data.info?.results &&
+        filterImages(data.info?.results[0]?.properties, 'info')
   const infoImagesAwait =
     !!infoImagesFilter &&
     infoImagesFilter.map(async (imageResult) => {

@@ -24,6 +24,8 @@ const getQuery = async ({ reqQuery }) => {
    */
 
   const database_id = DATABASES[databaseType]
+  if (!database_id) return []
+
   let data, items
   let filter
   // @todo(notion) sorts dynamic

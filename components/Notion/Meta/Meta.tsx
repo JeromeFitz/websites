@@ -5,7 +5,7 @@ import _map from 'lodash/map'
 // import _size from 'lodash/size'
 import pluralize from 'pluralize'
 // import { useEffect, useState } from 'react'
-import { useSWRConfig } from 'swr'
+// import { useSWRConfig } from 'swr'
 
 import usePage from '~hooks/notion/usePage'
 import getTitle from '~lib/notion/getTitle'
@@ -36,28 +36,28 @@ const MetaSwr = ({ id }) => {
 }
 
 const Meta = ({ ids, swrKey, title }) => {
-  const { cache } = useSWRConfig()
-  console.dir(`cache`)
-  console.dir(cache)
-  // const [data, dataSet] = useState()
-  // const [hasData, hasDataSet] = useState(false)
-  // useEffect(() => {
-  //   console.dir(`useEffect: inbound`)
-  //   const dataPrep = {}
-  //   _map(ids, (id) => {
-  //     const dataGet = cache.get(`/api/notion/pages/${id}`)
-  //     if (!!dataGet) dataPrep[id] = dataGet
-  //   })
-  //   // @todo(any)
-  //   const dataGet: any = _orderBy(
-  //     _filter(dataPrep, (relation: any) => ids.includes(relation.id)),
-  //     ['data.title'],
-  //     ['asc']
-  //   )
-  //   dataSet(dataGet)
-  //   hasDataSet(!!dataGet && _size(dataGet) > 0)
-  //   // return () => {}
-  // }, [cache, ids])
+  // const { cache } = useSWRConfig()
+  // console.dir(`cache`)
+  // console.dir(cache)
+  // // const [data, dataSet] = useState()
+  // // const [hasData, hasDataSet] = useState(false)
+  // // useEffect(() => {
+  // //   console.dir(`useEffect: inbound`)
+  // //   const dataPrep = {}
+  // //   _map(ids, (id) => {
+  // //     const dataGet = cache.get(`/api/notion/pages/${id}`)
+  // //     if (!!dataGet) dataPrep[id] = dataGet
+  // //   })
+  // //   // @todo(any)
+  // //   const dataGet: any = _orderBy(
+  // //     _filter(dataPrep, (relation: any) => ids.includes(relation.id)),
+  // //     ['data.title'],
+  // //     ['asc']
+  // //   )
+  // //   dataSet(dataGet)
+  // //   hasDataSet(!!dataGet && _size(dataGet) > 0)
+  // //   // return () => {}
+  // // }, [cache, ids])
 
   return (
     <div className="flex flex-col" id={`${swrKey}--container`}>
