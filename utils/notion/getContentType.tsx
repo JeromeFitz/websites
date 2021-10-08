@@ -2,14 +2,18 @@ import cx from 'clsx'
 import Slugger from 'github-slugger'
 import _map from 'lodash/map'
 import _size from 'lodash/size'
+import dynamic from 'next/dynamic'
 import NextImage from 'next/image'
 import React from 'react'
 
 import ImageCaption from '~components/Notion/ImageCaption'
+// import Quote from '~components/Notion/Quote'
 import { IMAGE__PLACEHOLDER, WEBKIT_BACKGROUND__BREAK } from '~lib/constants'
 import { NotionBlock } from '~utils/notion'
 import getContentTypeDetail from '~utils/notion/getContentTypeDetail'
 import notionToTailwindColor from '~utils/notion/notionToTailwindColor'
+
+const Emoji = dynamic(() => import('~components/Notion/Emoji'), {})
 
 const getContentType = (item: NotionBlock, images?: any[]) => {
   const { id, type } = item
@@ -115,8 +119,52 @@ const getContentType = (item: NotionBlock, images?: any[]) => {
       ))
     case 'relation':
       return !!content[0] && content
+    case 'quote':
+      if (_size(content) > 0) {
+        return (
+          <div key={id} className={cx('py-4')}>
+            <div
+              className={cx(
+                'rounded-xl bg-secondary text-primary m-8 p-8 flex',
+                'align-middle justify-start items-start',
+                'text-2xl leading-normal'
+              )}
+            >
+              <span className={cx('mb-0 pb-0')}>
+                <Emoji character={`📰️`} />
+              </span>
+              <blockquote className={cx('ml-4')}>
+                {getContentTypeDetail(content)}
+              </blockquote>
+            </div>
+          </div>
+        )
+      }
+      return null
+    case 'callout':
+      if (_size(content) > 0) {
+        const {
+          icon: { emoji },
+        } = content
+        return (
+          <div
+            key={id}
+            className={cx(
+              'rounded-xl bg-secondary text-primary m-8 p-8 flex',
+              'align-middle justify-start items-start',
+              'text-2xl leading-normal'
+            )}
+          >
+            <span className={cx('mb-0 pb-0')}>
+              {emoji && <Emoji character={emoji} />}
+            </span>
+            <h6 className={cx('ml-4')}>{getContentTypeDetail(content)}</h6>
+          </div>
+        )
+      }
+      return null
     default:
-      // console.dir(`not supported yet: ${type}`)
+      console.dir(`@unsupported(notion): ${type}`)
       break
   }
 }
