@@ -3,9 +3,7 @@ import dynamic from 'next/dynamic'
 import useSWR from 'swr'
 
 import Layout from '~components/Layout'
-import ListingShows from '~components/Notion/Listing/ListingCard'
 import Page from '~components/Notion/Page'
-import Quote from '~components/Notion/Quote'
 import { SLUG__HOMEPAGE } from '~lib/constants'
 import fetcher from '~lib/fetcher'
 import getCatchAll from '~lib/notion/getCatchAll'
@@ -13,6 +11,11 @@ import getImages from '~lib/notion/getImages'
 import getPathVariables from '~lib/notion/getPathVariables'
 
 const Breadcrumb = dynamic(() => import('~components/Notion/Breadcrumb'), {})
+const ListingShows = dynamic(
+  () => import('~components/Notion/Listing/ListingCard'),
+  {}
+)
+const Quote = dynamic(() => import('~components/Notion/Quote'), {})
 
 const CatchAll = (props) => {
   const {

@@ -100,6 +100,7 @@ const ListingItem = ({ index, item }) => {
                 }
               />
               <NextImage
+                alt={`image for ${title}`}
                 blurDataURL={blurDataURL}
                 className={cx('rounded-xl')}
                 placeholder="blur"
