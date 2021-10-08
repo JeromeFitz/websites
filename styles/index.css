@@ -178,6 +178,13 @@
   ._bg-white {
     @apply bg-white dark:bg-white;
   }
+
+  ._transform {
+    @apply transform;
+  }
+  ._rotate-180 {
+    @apply rotate-180;
+  }
 }
 
 @layer utilities {

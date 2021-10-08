@@ -1,3 +1,6 @@
+import { Disclosure, Transition } from '@headlessui/react'
+import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/solid'
+// import { ChevronUpIcon } from '@heroicons/react/solid'
 import cx from 'clsx'
 import Slugger from 'github-slugger'
 import _map from 'lodash/map'
@@ -16,18 +19,21 @@ import notionToTailwindColor from '~utils/notion/notionToTailwindColor'
 const Emoji = dynamic(() => import('~components/Notion/Emoji'), {})
 
 const getContentType = (item: NotionBlock, images?: any[]) => {
-  const { id, type } = item
+  const { has_children, id, type } = item
   const content = item[type]
   const slugger = new Slugger()
 
   // console.dir(`item`)
   // console.dir(item)
+  // // console.dir(`type: ${type}`)
 
   switch (type) {
     /**
      * @note h1 = Title (Static Content) Type, increase Notion Headings
      */
     case 'heading_1':
+      // console.dir(`heading_1`)
+      // console.dir(content)
       return (
         <h2 key={id} style={WEBKIT_BACKGROUND__BREAK}>
           {getContentTypeDetail(content)}
@@ -163,6 +169,62 @@ const getContentType = (item: NotionBlock, images?: any[]) => {
         )
       }
       return null
+    case 'toggle':
+      if (!has_children) return null
+      // console.dir(content)
+      // if (_size(content) > 0) {
+      // console.dir(`!!`)
+      const nodeContent = _map(content.children, (content) =>
+        getContentType(content)
+      )
+      console.dir(`nodeContent`)
+      console.dir(nodeContent)
+      // }
+      // return null
+      return (
+        <div className="w-full px-4 pt-16" key={id}>
+          <div className="w-full max-w-md p-2 mx-auto bg-info-lighter rounded-2xl">
+            <Disclosure>
+              {({ open }) => (
+                <>
+                  <Disclosure.Button className="flex flex-row">
+                    {getContentTypeDetail(content)}
+                    {` `}Open: {open ? 'yes' : 'no'}
+                    {open ? (
+                      <ChevronUpIcon className={cx('text-green-400 w-5 h-5')} />
+                    ) : (
+                      <ChevronDownIcon className={cx('text-green-400 w-5 h-5')} />
+                    )}
+                  </Disclosure.Button>
+
+                  {/*
+          Use the Transition + open render prop argument to add transitions.
+        */}
+                  <Transition
+                    show={open}
+                    enter="transition duration-100 ease-out"
+                    enterFrom="transform scale-95 opacity-0"
+                    enterTo="transform scale-100 opacity-100"
+                    leave="transition duration-75 ease-out"
+                    leaveFrom="transform scale-100 opacity-100"
+                    leaveTo="transform scale-95 opacity-0"
+                  >
+                    {/*
+            Don't forget to add `static` to your Disclosure.Panel!
+          */}
+                    <Disclosure.Panel
+                      className="px-4 pt-4 pb-2 text-sm text-gray-500"
+                      static
+                    >
+                      {nodeContent}
+                    </Disclosure.Panel>
+                  </Transition>
+                </>
+              )}
+            </Disclosure>
+          </div>
+        </div>
+      )
     default:
       console.dir(`@unsupported(notion): ${type}`)
       break

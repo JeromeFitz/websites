@@ -37,7 +37,8 @@ function getContentNodes({ content, images }) {
   let listCurrentId = ''
   let listCurrentState = false
   const nodes = {}
-  _map(content.results, (contentItem: NotionBlock) => {
+  // _map(content.results, (contentItem: NotionBlock) => {
+  _map(content, (contentItem: NotionBlock) => {
     if (contentItem.type === 'bulleted_list_item') {
       if (!listCurrentState) {
         listCurrentId = uuid()

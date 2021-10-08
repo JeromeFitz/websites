@@ -36,6 +36,7 @@
     "typescript": "tsc --noEmit --declaration"
   },
   "dependencies": {
+    "@headlessui/react": "1.4.1",
     "@heroicons/react": "1.0.4",
     "@notionhq/client": "0.4.2",
     "@plaiceholder/next": "2.1.0",
