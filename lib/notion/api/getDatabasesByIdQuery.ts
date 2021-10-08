@@ -15,6 +15,7 @@ const getDatabasesByIdQuery = async ({
   sorts = mock.sorts,
   filter = mock.filter,
 }) => {
+  if (!databaseId) return []
   await avoidRateLimit()
   return await notion.databases.query({
     database_id: databaseId,

@@ -40,6 +40,9 @@ const sites = {
       '/en/users/*',
       '/en/venues',
       '/en/venues/*',
+      '/en/playground',
+      '/en/playground/*',
+      //
       '/playground',
       '/playground/*',
     ],

@@ -68,8 +68,9 @@ const NavigationMobile = () => {
             className={cx(
               `badge`,
               'focus:ring-4',
-              `bg-black text-white`,
-              `dark:bg-white dark:text-black`,
+              'bg-secondary text-primary',
+              // `bg-black text-white`,
+              // `dark:bg-white dark:text-black`,
               'text-lg',
               'drop-shadow-lg'
             )}
@@ -94,8 +95,9 @@ const NavigationMobile = () => {
           className={cx(
             `badge`,
             'focus:ring-4',
-            `bg-black text-white`,
-            `dark:bg-white dark:text-black`,
+            'bg-secondary text-primary',
+            // `bg-black text-white`,
+            // `dark:bg-white dark:text-black`,
             'text-lg',
             'drop-shadow-xl'
           )}
@@ -189,7 +191,8 @@ const NavigationMobile = () => {
                       <a
                         className={cx(
                           `badge-sm`,
-                          'bg-black dark:bg-white text-white dark:text-black',
+                          'bg-secondary text-primary',
+                          // 'bg-black dark:bg-white text-white dark:text-black',
                           // 'text-lg font-bold',
                           'capitalize focus:ring-4'
                         )}

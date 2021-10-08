@@ -7,7 +7,6 @@ import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 import { useRef } from 'react'
 
-// import { ThemeMode } from '~components/Layout'
 // import Avatar from '~components/Avatar'
 import Icon from '~components/Icon'
 import useSticky from '~hooks/useSticky'
@@ -45,7 +44,8 @@ const Breadcrumb = ({ isIndex, title }) => {
           `flex flex-row sticky top-0 items-center`,
           `overflow-hidden`, // `bg-blur bg-opacity-50 dark:bg-opacity-50`,
           // `pointer-events-auto`,
-          `bg-white dark:bg-black`,
+          // `bg-white dark:bg-black`,
+          'bg-primary text-secondary',
           isFix && 'py-2 border-b border-black dark:border-white',
           `py-4`,
           `z-20`,

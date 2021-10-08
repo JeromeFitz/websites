@@ -1,4 +1,6 @@
-const SLUG__HOMEPAGE = 'homepage-2021'
+import IMAGE__FALLBACKS__SHOWS from '~lib/constants/images/shows'
+
+const SLUG__HOMEPAGE = 'homepage'
 
 const EMOJI_FALLBACK = '🍕️'
 
@@ -74,6 +76,7 @@ const IMAGE__PLACEHOLDER = {
 
 export {
   EMOJI_FALLBACK,
+  IMAGE__FALLBACKS__SHOWS,
   IMAGE__PLACEHOLDER,
   MOTION_PAGE_VARIANTS,
   SLUG__HOMEPAGE,

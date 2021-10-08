@@ -18,25 +18,24 @@ const isObjectEmptyDeep = (obj) =>
     )
   )
 
-const routeType = 'episodes'
-const databaseId = DATABASES[routeType]
-const icon = {
-  type: 'emoji',
-  emoji: '🦇',
-}
-
-const page = {
-  object: 'page',
-  cover: null,
-  icon,
-  parent: {
-    database_id: databaseId,
-  },
-  properties,
-  children,
-}
-
 const secretCreatePage = async (req: NextApiRequest, res: NextApiResponse) => {
+  const routeType = 'episodes'
+  const databaseId = DATABASES[routeType]
+  const icon = {
+    type: 'emoji',
+    emoji: '🦇',
+  }
+
+  const page = {
+    object: 'page',
+    cover: null,
+    icon,
+    parent: {
+      database_id: databaseId,
+    },
+    properties,
+    children,
+  }
   /**
    * @notion Check if Page Exists
    * Y: UPDATE, but only update "new" fields provided
