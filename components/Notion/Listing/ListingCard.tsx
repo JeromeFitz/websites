@@ -168,7 +168,7 @@ const Shows = () => {
     fallbackData: IMAGE__FALLBACKS__SHOWS,
   })
   useEffectOnce(() => {
-    void mutate('images', { ...images, ...IMAGE__FALLBACKS__SHOWS }, false)
+    void mutate('images', { ...images, ...IMAGE__FALLBACKS__SHOWS }, true)
   })
   return (
     <>

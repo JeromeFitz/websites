@@ -155,6 +155,45 @@ const IMAGE__FALLBACKS__SHOWS = {
       },
       url: 'https://cdn.jeromefitzgerald.com/ngop-production/wp-content/uploads/sites/2/2016/08/27164902/201605-cif-onstage_solo_no_audience.jpg',
     },
+  'httpscdnjeromefitzgeraldcomjeromefitzgeraldcomimages202001_original2020-01--sf-sketchfest--000--jerome--bob-shieldsjpg':
+    {
+      base64:
+        'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAEAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAeEAABBAIDAQAAAAAAAAAAAAABAAIDBQQhBjEyQf/EABUBAQEAAAAAAAAAAAAAAAAAAAME/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECIQMTQf/aAAwDAQACEQMRAD8AhOXVcXLbKG5t5ZnZuRjxl5a4Eda9AnrWz8REQp0T5pPY76f/2Q==',
+      id: 'httpscdnjeromefitzgeraldcomjeromefitzgeraldcomimages202001_original2020-01--sf-sketchfest--000--jerome--bob-shieldsjpg',
+      img: {
+        src: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2020/01/_original/2020-01--sf-sketchfest--000--jerome--bob-shields.jpg',
+        width: 2880,
+        height: 2880,
+        type: 'jpg',
+      },
+      url: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2020/01/_original/2020-01--sf-sketchfest--000--jerome--bob-shields.jpg',
+    },
+  'httpscdnjerandkycomjerandkycompodcastsjer-and-ky-and-guestseason-01_originals01e00--000--00jpg':
+    {
+      base64:
+        'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAEAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAf/xAAgEAABAwMFAQAAAAAAAAAAAAABAgMRAAQFBhIhMUFh/8QAFQEBAQAAAAAAAAAAAAAAAAAABAb/xAAYEQEBAAMAAAAAAAAAAAAAAAABAAIRIf/aAAwDAQACEQMRAD8AoWHZyb9s4VagyYCHFISNluqAPpaJ5Mnv2BAgBSlOxOVKhu//2Q==',
+      id: 'httpscdnjerandkycomjerandkycompodcastsjer-and-ky-and-guestseason-01_originals01e00--000--00jpg',
+      img: {
+        src: 'https://cdn.jerandky.com/jerandky.com/podcasts/jer-and-ky-and-guest/season-01/_original/s01e00--000--00.jpg',
+        width: 3000,
+        height: 3000,
+        type: 'jpg',
+      },
+      url: 'https://cdn.jerandky.com/jerandky.com/podcasts/jer-and-ky-and-guest/season-01/_original/s01e00--000--00.jpg',
+    },
+  'httpscdnjerandkycomjerandkycompodcastsknockoffsseason-01_originalknockoffs--s01e00--cover-art--finaljpg':
+    {
+      base64:
+        'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAEAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAf/xAAhEAABAwMEAwAAAAAAAAAAAAADAAIEARIhBhETFSIjQf/EABQBAQAAAAAAAAAAAAAAAAAAAAP/xAAWEQADAAAAAAAAAAAAAAAAAAAAAjH/2gAMAwEAAhEDEQA/AI9qcgy9UMUWNGbHgCB6GW8lu/m/OX1+1REQpB3p/9k=',
+      id: 'httpscdnjerandkycomjerandkycompodcastsknockoffsseason-01_originalknockoffs--s01e00--cover-art--finaljpg',
+      img: {
+        src: 'https://cdn.jerandky.com/jerandky.com/podcasts/knockoffs/season-01/_original/knockoffs--s01e00--cover-art--final.jpg',
+        width: 3000,
+        height: 3000,
+        type: 'jpg',
+      },
+      url: 'https://cdn.jerandky.com/jerandky.com/podcasts/knockoffs/season-01/_original/knockoffs--s01e00--cover-art--final.jpg',
+    },
 }
 
 export default IMAGE__FALLBACKS__SHOWS
