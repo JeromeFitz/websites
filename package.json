@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "@heroicons/react": "1.0.4",
-    "@notionhq/client": "0.4.1",
+    "@notionhq/client": "0.4.2",
     "@plaiceholder/next": "2.1.0",
     "@plaiceholder/tailwindcss": "2.1.0",
     "@reach/alert": "0.16.0",
