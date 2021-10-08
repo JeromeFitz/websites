@@ -258,6 +258,8 @@ module.exports = {
     },
     // zIndex: ['before', 'hover', 'active'],
   },
+  // Variant configuration (including order) is not respected by the JIT engine
+  // @todo(tailwind) remove this
   variants: {
     // backgroundColor: ['responsive', 'odd', 'hover', 'focus', 'dark'],
     extend: {
