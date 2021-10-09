@@ -186,8 +186,29 @@ const getContentType = (item: NotionBlock, images?: any[]) => {
       console.dir(`@todo(notion) code`)
       // console.dir(content)
       return null
+    case 'to_do':
+      console.dir(`@todo(notion) to_do`)
+      console.dir(content)
+      return (
+        <label className={cx('flex items-center space-x-3')} key={id}>
+          <input
+            disabled
+            type="checkbox"
+            className={cx(
+              'h-6 w-6',
+              'form-tick appearance-none border border-gray-300 rounded-md  focus:outline-none',
+              content.checked && 'checked:bg-blue-600 checked:border-transparent'
+            )}
+            checked={content.checked}
+          />
+          <span className={cx('text-gray-900 font-medium')}>
+            {content.text[0].plain_text}
+          </span>
+        </label>
+      )
+      return null
     default:
-      // console.dir(`@unsupported(notion): ${type}`)
+      console.dir(`@unsupported(notion): ${type}`)
       break
   }
 }

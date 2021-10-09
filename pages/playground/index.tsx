@@ -381,6 +381,21 @@ const Playground = () => {
                 <li>Fart</li>
                 <li>Knocker</li>
               </ol>
+              <label className={cx('flex items-center space-x-3')}>
+                <input
+                  disabled
+                  type="checkbox"
+                  className={cx(
+                    'h-6 w-6',
+                    'form-tick appearance-none border border-gray-300 rounded-md  focus:outline-none',
+                    true && 'checked:bg-blue-600 checked:border-transparent'
+                  )}
+                  checked={true}
+                />
+                <span className={cx('text-gray-900 font-medium')}>
+                  Checked Item (Disabled)
+                </span>
+              </label>
             </div>
 
             {/* <div>
