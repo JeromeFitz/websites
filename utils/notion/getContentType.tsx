@@ -187,8 +187,8 @@ const getContentType = (item: NotionBlock, images?: any[]) => {
       // console.dir(content)
       return null
     case 'to_do':
-      console.dir(`@todo(notion) to_do`)
-      console.dir(content)
+      // console.dir(`@todo(notion) to_do`)
+      // console.dir(content)
       return (
         <label className={cx('flex items-center space-x-3')} key={id}>
           <input
