@@ -6,6 +6,7 @@ import { useEffectOnce } from 'react-use'
 import useSWR, { useSWRConfig } from 'swr'
 
 import NotionLayout, { ImageLead } from '~components/Notion/Layout'
+import { OL, UL } from '~components/Notion/Listing'
 import { MetaTags } from '~components/Notion/Meta'
 import { Event } from '~components/Notion/Page'
 import Relations from '~components/Notion/Relations'
@@ -121,24 +122,10 @@ const Page = ({ data, props }) => {
             ? null
             : _map(getContentNodes({ content, images }), (node: any) => {
                 if (node.type === 'ul') {
-                  return (
-                    <ul
-                      className="flex flex-col list-disc list-inside"
-                      key={node.id}
-                    >
-                      {node.node}
-                    </ul>
-                  )
+                  return <UL key={node.id}>{node.node}</UL>
                 }
                 if (node.type === 'ol') {
-                  return (
-                    <ol
-                      className="flex flex-col list-decimal list-inside"
-                      key={node.id}
-                    >
-                      {node.node}
-                    </ol>
-                  )
+                  return <OL key={node.id}>{node.node}</OL>
                 }
                 // if (node.type === 'image') {
                 //   return (
