@@ -377,6 +377,10 @@ const Playground = () => {
               <p className={cx('transform rotate-180 rotate-360 duration-500')}>
                 <code>transform rotate-180 rotate-360 duration-500</code>
               </p>
+              <ol className={cx('list-decimal')}>
+                <li>Fart</li>
+                <li>Knocker</li>
+              </ol>
             </div>
 
             {/* <div>

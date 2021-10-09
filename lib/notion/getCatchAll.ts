@@ -673,6 +673,7 @@ const normalizerContentResults = (results) => {
 }
 
 const deepFetchAllChildren = async (blocks: any[]): Promise<Array<any[] | any>> => {
+  if (blocks === null || blocks === undefined) return blocks
   const fetchChildrenMap = blocks
     .filter((block) => block.has_children)
     .map((block) => {

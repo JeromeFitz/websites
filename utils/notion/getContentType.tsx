@@ -53,7 +53,6 @@ const getContentType = (item: NotionBlock, images?: any[]) => {
     case 'paragraph':
       return <p key={id}>{getContentTypeDetail(content)}</p>
     case 'bulleted_list_item':
-      return <li key={id}>{getContentTypeDetail(content)}</li>
     case 'numbered_list_item':
       return <li key={id}>{getContentTypeDetail(content)}</li>
     case 'image':
@@ -179,8 +178,16 @@ const getContentType = (item: NotionBlock, images?: any[]) => {
           {nodeContent}
         </Toggle>
       )
+    case 'embed':
+      console.dir(`@todo(notion) embed`)
+      // console.dir(content)
+      return null
+    case 'code':
+      console.dir(`@todo(notion) code`)
+      // console.dir(content)
+      return null
     default:
-      console.dir(`@unsupported(notion): ${type}`)
+      // console.dir(`@unsupported(notion): ${type}`)
       break
   }
 }

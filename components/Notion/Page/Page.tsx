@@ -130,6 +130,16 @@ const Page = ({ data, props }) => {
                     </ul>
                   )
                 }
+                if (node.type === 'ol') {
+                  return (
+                    <ol
+                      className="flex flex-col list-decimal list-inside"
+                      key={node.id}
+                    >
+                      {node.node}
+                    </ol>
+                  )
+                }
                 // if (node.type === 'image') {
                 //   return (
                 //     <>

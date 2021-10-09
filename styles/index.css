@@ -132,6 +132,7 @@
     @apply font-bold tracking-tight my-2 md:my-3;
     @apply prose prose-lg max-w-none;
   }
+  ol,
   ul {
     list-style: none;
     margin: 0;
