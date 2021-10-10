@@ -40,6 +40,12 @@ const navigation = [
     title: 's',
     titleMobile: 's',
   },
+  {
+    active: isDev,
+    href: '/playground/kitchen-sink',
+    title: 'k',
+    titleMobile: 'k',
+  },
 ]
 
 const activeLinks = _filter(navigation, 'active')

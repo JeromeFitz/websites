@@ -5,7 +5,6 @@ import { memo, useEffect, useState } from 'react'
 
 import Icon from '~components/Icon'
 
-// import NowPlaying from '~components/NowPlaying'
 const NowPlayingWithNoSSR = dynamic(() => import('~components/NowPlaying'), {
   ssr: false,
 })
@@ -69,7 +68,7 @@ const Footer = () => {
                     </span>
                   </div>
                   <div className="flex flex-row mb-2">
-                    <span className="font-semibold">Nice Group of People, LLC</span>
+                    <span className="font-semibold">Nice Group of People, LLC </span>
                   </div>
                 </div>
               </div>

@@ -61,7 +61,7 @@ const CardWithGlowProps = ({
           )}
         </p>
         <ul className={cx('h-auto mb-1 md:mb-2')}>
-          {_map(tags, (tag) => (
+          {_map(tags.slice(0, 10), (tag) => (
             <li className={cx(`badge-xs`)} key={slugger.slug(tag)}>
               {_title(tag)}
             </li>
