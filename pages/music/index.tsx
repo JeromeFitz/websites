@@ -1,9 +1,9 @@
+import { RadioGroup } from '@headlessui/react'
 import cx from 'clsx'
 import { motion } from 'framer-motion'
-import _map from 'lodash/map'
+import _find from 'lodash/find'
 import dynamic from 'next/dynamic'
-// import { useState } from 'react'
-import _title from 'title'
+import { useState } from 'react'
 import { useSound } from 'use-sound'
 
 import { CardWithGlow, CardWithGlowProps } from '~components/Card'
@@ -13,12 +13,7 @@ import { TopArtists, TopTracks } from '~components/Music'
 import Seo from '~components/Seo'
 import { useUI } from '~context/ManagedUIContext'
 import useSpotify from '~hooks/useSpotify'
-import {
-  MOTION_PAGE_VARIANTS,
-  TIME_RANGE,
-  TIME_RANGE_ITEM_PROPS,
-  WEBKIT_BACKGROUND__BREAK,
-} from '~lib/constants'
+import { MOTION_PAGE_VARIANTS, WEBKIT_BACKGROUND__BREAK } from '~lib/constants'
 import {
   spotifyFavoriteAlbums,
   spotifyFavoriteArtists,
@@ -29,9 +24,54 @@ const Emoji = dynamic(() => import('~components/Notion/Emoji'), {
   ssr: false,
 })
 
+const plans = [
+  {
+    name: 'All Time ',
+    description: 'Since March 2020',
+    time_range: 'long_term',
+  },
+  {
+    name: '~ 6 months',
+    description: 'Past six months',
+    time_range: 'medium_term',
+  },
+  {
+    name: '~ 1 Month',
+    description: 'Past month',
+    time_range: 'short_term',
+  },
+]
+
+function CheckIcon(props) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" {...props}>
+      <circle cx={12} cy={12} r={12} fill="#000" opacity="0.2" />
+      <path
+        d="M7 13l3 3 7-7"
+        stroke="#fff"
+        strokeWidth={1.5}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
+}
+
+function EmptyIcon(props) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" {...props}>
+      <circle cx={12} cy={12} r={12} fill="#000" opacity="0.2" />
+    </svg>
+  )
+}
+
 const Music = () => {
-  // const [term, termSet] = useState('medium_term')
   const { data, setSpotifyTimeRange } = useSpotify()
+  // @todo(spotify): data.time_range === plan.time_range
+  const [selected, setSelected] = useState(
+    _find(plans, { time_range: data?.time_range })
+  ) // useState(plans[1])
+
   const { audio } = useUI()
   const [playOn] = useSound('/static/audio/pop-up-on.mp3', {
     soundEnabled: audio,
@@ -54,10 +94,18 @@ const Music = () => {
     },
   }
 
-  const handleSpotifyTimeRange = async (value) => {
+  // const handleSpotifyTimeRange = async (value) => {
+  //   playOn()
+  //   // termSet(value)
+  //   await setSpotifyTimeRange(data, value)
+  //   setSelected
+  // }
+
+  const handleSpotifyTimeRange2 = async (props) => {
+    // console.dir(props)
+    setSelected(props)
     playOn()
-    // termSet(value)
-    await setSpotifyTimeRange(data, value)
+    await setSpotifyTimeRange(data, props?.time_range)
   }
   // console.dir(`data`)
   // console.dir(data)
@@ -145,64 +193,82 @@ const Music = () => {
             )}
           >
             <div className="flex flex-col">
-              <fieldset className="flex flex-col mb-4">
-                <div>
-                  <legend className="font-bold text-secondary">
-                    Change the Timing Frequency
-                  </legend>
-                  <p className="text-sm text-secondary">
-                    I’ve had Spotify since March 2020, so you can go back that far or
-                    two other options currently.
-                  </p>
-                </div>
-                <div className="mt-4 flex flex-col md:flex-row justify-center items-start">
-                  {_map(
-                    TIME_RANGE,
-                    (timeRange: TIME_RANGE_ITEM_PROPS, timeRangeIndex: number) => {
-                      const name = 'timeRange'
-                      return (
-                        <div
-                          className={cx(
-                            'mx-4 my-2 first:ml-0 last:mr-0',
-                            'flex flex-row align-middle items-center'
-                          )}
-                          key={`time-range--${timeRangeIndex}`}
-                        >
-                          <input
-                            disabled={data.disabled}
-                            checked={data.time_range === timeRange.value}
-                            className={cx(
-                              'h-4 w-4 md:h-6 md:w-6',
-                              'border-gray-700 dark:border-gray-300',
-                              'text-primary',
-                              'focus:ring-yellow-400'
-                            )}
-                            id={timeRange.title}
-                            name={name}
-                            // onChange={preserveHandleChange}
-                            onChange={() => {
-                              void handleSpotifyTimeRange(timeRange.value)
-                            }}
-                            type="radio"
-                            value={timeRange.value}
-                          />
-                          <div className="ml-3 text-sm">
-                            <label
-                              htmlFor={timeRange.title}
-                              className="font-medium text-gray-700 dark:text-gray-200"
-                            >
-                              {_title(timeRange.title)}
-                            </label>
-                            <p className="text-gray-500 dark:text-gray-300">
-                              {_title(timeRange.description)}
-                            </p>
-                          </div>
-                        </div>
-                      )
-                    }
-                  )}
-                </div>
-              </fieldset>
+              <h4>Change the Timing Frequency</h4>
+              <p className="text-sm text-secondary">
+                I’ve had Spotify since March 2020, so you can go back that far or two
+                other options currently.
+              </p>
+            </div>
+          </div>
+          <div className="flex flex-row justify-center items-start">
+            <div className="w-full">
+              <div className="w-full mx-auto">
+                <RadioGroup value={selected} onChange={handleSpotifyTimeRange2}>
+                  <RadioGroup.Label className="sr-only">
+                    Change time frequency
+                  </RadioGroup.Label>
+                  <div
+                    className={cx(
+                      'flex flex-col md:flex-row items-start justify-between w-full'
+                    )}
+                  >
+                    {plans.map((plan) => (
+                      <RadioGroup.Option
+                        key={plan.name}
+                        value={plan}
+                        className={({ active, checked }) =>
+                          cx(
+                            active
+                              ? 'ring-2 ring-offset-2 ring-offset-gray-300 ring-white ring-opacity-60'
+                              : '',
+                            checked
+                              ? 'bg-gray-500 bg-opacity-75 text-white'
+                              : 'bg-white',
+                            'relative rounded-lg shadow-md cursor-pointer',
+                            'flex focus:outline-none w-full md:w-1/3 mx-1 my-4'
+                          )
+                        }
+                      >
+                        {({ checked }) => (
+                          <>
+                            <div className="flex items-center justify-center w-full py-4">
+                              <div className="align-middle text-center w-1/4 mx-4">
+                                {checked ? (
+                                  <CheckIcon className="w-6 h-6 border border-white rounded-full" />
+                                ) : (
+                                  <EmptyIcon className="w-6 h-6" />
+                                )}
+                              </div>
+                              <div className="flex items-center w-3/4">
+                                <div className="text-sm">
+                                  <RadioGroup.Label
+                                    as="p"
+                                    className={`font-medium  ${
+                                      checked
+                                        ? 'text-white'
+                                        : 'text-secondary dark:text-primary'
+                                    }`}
+                                  >
+                                    {plan.name}
+                                  </RadioGroup.Label>
+                                  <RadioGroup.Description
+                                    as="span"
+                                    className={`inline ${
+                                      checked ? 'text-sky-100' : 'text-gray-500'
+                                    }`}
+                                  >
+                                    <span>{plan.description}</span>
+                                  </RadioGroup.Description>
+                                </div>
+                              </div>
+                            </div>
+                          </>
+                        )}
+                      </RadioGroup.Option>
+                    ))}
+                  </div>
+                </RadioGroup>
+              </div>
             </div>
           </div>
           <div className="my-4 md:my-6">

@@ -7,6 +7,7 @@ import NextImage from 'next/image'
 import React from 'react'
 
 import ImageCaption from '~components/Notion/ImageCaption'
+// import Toggle from '~components/Notion/Toggle'
 // import Quote from '~components/Notion/Quote'
 import { IMAGE__PLACEHOLDER, WEBKIT_BACKGROUND__BREAK } from '~lib/constants'
 import { NotionBlock } from '~utils/notion'
@@ -14,20 +15,24 @@ import getContentTypeDetail from '~utils/notion/getContentTypeDetail'
 import notionToTailwindColor from '~utils/notion/notionToTailwindColor'
 
 const Emoji = dynamic(() => import('~components/Notion/Emoji'), {})
+const Toggle = dynamic(() => import('~components/Notion/Toggle'), {})
 
 const getContentType = (item: NotionBlock, images?: any[]) => {
-  const { id, type } = item
+  const { has_children, id, type } = item
   const content = item[type]
   const slugger = new Slugger()
 
   // console.dir(`item`)
   // console.dir(item)
+  // // console.dir(`type: ${type}`)
 
   switch (type) {
     /**
      * @note h1 = Title (Static Content) Type, increase Notion Headings
      */
     case 'heading_1':
+      // console.dir(`heading_1`)
+      // console.dir(content)
       return (
         <h2 key={id} style={WEBKIT_BACKGROUND__BREAK}>
           {getContentTypeDetail(content)}
@@ -48,7 +53,6 @@ const getContentType = (item: NotionBlock, images?: any[]) => {
     case 'paragraph':
       return <p key={id}>{getContentTypeDetail(content)}</p>
     case 'bulleted_list_item':
-      return <li key={id}>{getContentTypeDetail(content)}</li>
     case 'numbered_list_item':
       return <li key={id}>{getContentTypeDetail(content)}</li>
     case 'image':
@@ -162,6 +166,46 @@ const getContentType = (item: NotionBlock, images?: any[]) => {
           </div>
         )
       }
+      return null
+    case 'toggle':
+      if (!has_children) return null
+      const title = getContentTypeDetail(content)
+      const nodeContent = _map(content.children, (content) =>
+        getContentType(content)
+      )
+      return (
+        <Toggle key={id} title={title}>
+          {nodeContent}
+        </Toggle>
+      )
+    case 'embed':
+      console.dir(`@todo(notion) embed`)
+      // console.dir(content)
+      return null
+    case 'code':
+      console.dir(`@todo(notion) code`)
+      // console.dir(content)
+      return null
+    case 'to_do':
+      // console.dir(`@todo(notion) to_do`)
+      // console.dir(content)
+      return (
+        <label className={cx('flex items-center space-x-3')} key={id}>
+          <input
+            disabled
+            type="checkbox"
+            className={cx(
+              'h-6 w-6',
+              'form-tick appearance-none border border-gray-300 rounded-md  focus:outline-none',
+              content.checked && 'checked:bg-blue-600 checked:border-transparent'
+            )}
+            checked={content.checked}
+          />
+          <span className={cx('text-gray-900 font-medium')}>
+            {content.text[0].plain_text}
+          </span>
+        </label>
+      )
       return null
     default:
       console.dir(`@unsupported(notion): ${type}`)

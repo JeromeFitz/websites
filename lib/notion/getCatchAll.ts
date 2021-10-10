@@ -27,13 +27,14 @@ import _omit from 'lodash/omit'
 import _size from 'lodash/size'
 
 // import isUndefined from '~utils/isUndefined'
+// import asyncForEach from '~lib/asyncForEach'
 import getBlocksByIdChildren from '~lib/notion/api/getBlocksByIdChildren'
 import getDatabasesByIdQuery from '~lib/notion/api/getDatabasesByIdQuery'
 import getPagesById from '~lib/notion/api/getPagesById'
 import { getCache, setCache } from '~lib/notion/getCache'
 import getPathVariables from '~lib/notion/getPathVariables'
 import getQuery from '~lib/notion/getQuery'
-import { DATABASES, SEO, QUERIES, PROPERTIES } from '~utils/notion/helper'
+import { DATABASES, SEO, QUERIES, PROPERTIES, notion } from '~utils/notion/helper'
 
 const useCache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE
 
@@ -671,6 +672,36 @@ const normalizerContentResults = (results) => {
   return normalizedResults
 }
 
+const deepFetchAllChildren = async (blocks: any[]): Promise<Array<any[] | any>> => {
+  if (blocks === null || blocks === undefined) return blocks
+  const fetchChildrenMap = blocks
+    .filter((block) => block.has_children)
+    .map((block) => {
+      return {
+        promise: notion.blocks.children.list({
+          block_id: block.id,
+          page_size: 100,
+        }),
+        parent_block: block,
+      }
+    })
+
+  const results = await Promise.all<any>(
+    fetchChildrenMap.map((value) => value.promise)
+  )
+
+  for (let i = 0; i < results.length; i++) {
+    const childBlocks = results[i].results
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    await deepFetchAllChildren(childBlocks)
+    if (fetchChildrenMap[i]) {
+      const parent: any = fetchChildrenMap[i].parent_block
+      parent[parent.type].children = childBlocks
+    }
+  }
+  return blocks
+}
+
 // @todo(next) preview
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const getCatchAll = async ({ cache = false, catchAll, clear, preview }) => {
@@ -742,6 +773,8 @@ const getCatchAll = async ({ cache = false, catchAll, clear, preview }) => {
     // @todo(date-fns) make this the first date of the year dynamically
     const dateTimestampBlog = new Date('2020-01-01').toISOString()
 
+    // const contentChildren = []
+
     switch (dataType) {
       case 1:
       case 5:
@@ -759,6 +792,31 @@ const getCatchAll = async ({ cache = false, catchAll, clear, preview }) => {
         const info1a = info1?.object === 'list' && info1.results[0]
         info = normalizerContent(info1a)
         content = await getBlocksByIdChildren({ blockId: info.id })
+        // // @todo(notion) do we need to do a children?
+        // await asyncForEach(content.results, async (item: any) => {
+        //   if (item.has_children) {
+        //     console.dir(`has_children: ${item?.id}`)
+        //     const blockChildren = await getBlocksByIdChildren({ blockId: item?.id })
+        //     console.dir(blockChildren)
+        //     contentChildren.push({
+        //       [item?.id]: blockChildren,
+        //     })
+        //   }
+        // }).catch(() => {})
+        // //
+        const blocks = [...(await deepFetchAllChildren(content.results))]
+        content = blocks
+
+        // while (content.has_more && content.next_cursor) {
+        //   content = await notion.blocks.children.list({
+        //     block_id: page.id,
+        //     page_size: 50,
+        //     start_cursor: content.next_cursor,
+        //   })
+
+        //   const results = content.results
+        //   blocks = blocks.concat(await deepFetchAllChildren(results))
+        // }
         break
       case 2:
         const info2 = await getPagesById({ pageId: SEO[routeType] })

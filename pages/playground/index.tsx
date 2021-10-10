@@ -367,6 +367,36 @@ const Playground = () => {
                 </div>
               </fieldset>
             </div>
+            <div>
+              <h1>Tailwind Cheat</h1>
+              <p>If these values are here, they will not be purged.</p>
+              <p>
+                Also... if we are generating dynamic content for Notion, then having
+                them “here”pre-renders in a dynamic trick.
+              </p>
+              <p className={cx('transform rotate-180 rotate-360 duration-500')}>
+                <code>transform rotate-180 rotate-360 duration-500</code>
+              </p>
+              <ol className={cx('list-decimal')}>
+                <li>Fart</li>
+                <li>Knocker</li>
+              </ol>
+              <label className={cx('flex items-center space-x-3')}>
+                <input
+                  disabled
+                  type="checkbox"
+                  className={cx(
+                    'h-6 w-6',
+                    'form-tick appearance-none border border-gray-300 rounded-md  focus:outline-none',
+                    true && 'checked:bg-blue-600 checked:border-transparent'
+                  )}
+                  checked={true}
+                />
+                <span className={cx('text-gray-900 font-medium')}>
+                  Checked Item (Disabled)
+                </span>
+              </label>
+            </div>
 
             {/* <div>
             <div>

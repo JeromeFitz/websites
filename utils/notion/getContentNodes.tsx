@@ -37,13 +37,20 @@ function getContentNodes({ content, images }) {
   let listCurrentId = ''
   let listCurrentState = false
   const nodes = {}
-  _map(content.results, (contentItem: NotionBlock) => {
-    if (contentItem.type === 'bulleted_list_item') {
+  // _map(content.results, (contentItem: NotionBlock) => {
+  _map(content, (contentItem: NotionBlock) => {
+    if (contentItem === undefined || contentItem === null) return null
+    if (
+      contentItem?.type === 'bulleted_list_item' ||
+      contentItem?.type === 'numbered_list_item'
+    ) {
+      // console.dir(`> contentItem`)
+      // console.dir(contentItem)
       if (!listCurrentState) {
         listCurrentId = uuid()
         nodes[listCurrentId] = {
           id: listCurrentId,
-          type: 'ul',
+          type: contentItem?.type === 'numbered_list_item' ? 'ol' : 'ul',
           node: [],
         }
       }
@@ -53,9 +60,9 @@ function getContentNodes({ content, images }) {
     } else {
       listCurrentState = false
     }
-    nodes[contentItem.id] = {
-      id: contentItem.id,
-      type: contentItem.type,
+    nodes[contentItem?.id] = {
+      id: contentItem?.id,
+      type: contentItem?.type,
       node: getContentType(contentItem, images),
     }
   })
