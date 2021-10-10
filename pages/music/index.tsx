@@ -1,6 +1,7 @@
 import { RadioGroup } from '@headlessui/react'
 import cx from 'clsx'
 import { motion } from 'framer-motion'
+import _find from 'lodash/find'
 import dynamic from 'next/dynamic'
 import { useState } from 'react'
 import { useSound } from 'use-sound'
@@ -44,7 +45,7 @@ const plans = [
 function CheckIcon(props) {
   return (
     <svg viewBox="0 0 24 24" fill="none" {...props}>
-      <circle cx={12} cy={12} r={12} fill="#fff" opacity="0.2" />
+      <circle cx={12} cy={12} r={12} fill="#000" opacity="0.2" />
       <path
         d="M7 13l3 3 7-7"
         stroke="#fff"
@@ -56,10 +57,20 @@ function CheckIcon(props) {
   )
 }
 
+function EmptyIcon(props) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" {...props}>
+      <circle cx={12} cy={12} r={12} fill="#000" opacity="0.2" />
+    </svg>
+  )
+}
+
 const Music = () => {
   const { data, setSpotifyTimeRange } = useSpotify()
   // @todo(spotify): data.time_range === plan.time_range
-  const [selected, setSelected] = useState(plans[1])
+  const [selected, setSelected] = useState(
+    _find(plans, { time_range: data?.time_range })
+  ) // useState(plans[1])
 
   const { audio } = useUI()
   const [playOn] = useSound('/static/audio/pop-up-on.mp3', {
@@ -189,7 +200,7 @@ const Music = () => {
               </p>
             </div>
           </div>
-          <div className="mt-2 flex flex-row justify-center items-start">
+          <div className="flex flex-row justify-center items-start">
             <div className="w-full">
               <div className="w-full mx-auto">
                 <RadioGroup value={selected} onChange={handleSpotifyTimeRange2}>
@@ -208,10 +219,10 @@ const Music = () => {
                         className={({ active, checked }) =>
                           cx(
                             active
-                              ? 'ring-2 ring-offset-2 ring-offset-sky-300 ring-white ring-opacity-60'
+                              ? 'ring-2 ring-offset-2 ring-offset-gray-300 ring-white ring-opacity-60'
                               : '',
                             checked
-                              ? 'bg-sky-900 bg-opacity-75 text-white'
+                              ? 'bg-gray-500 bg-opacity-75 text-white'
                               : 'bg-white',
                             'relative rounded-lg shadow-md cursor-pointer',
                             'flex focus:outline-none w-full md:w-1/3 mx-1 my-4'
@@ -220,11 +231,15 @@ const Music = () => {
                       >
                         {({ checked }) => (
                           <>
-                            <div className="flex items-center justify-evenly w-full py-4">
-                              <div className="align-middle text-center">
-                                {checked && <CheckIcon className="w-6 h-6" />}
+                            <div className="flex items-center justify-center w-full py-4">
+                              <div className="align-middle text-center w-1/4 mx-4">
+                                {checked ? (
+                                  <CheckIcon className="w-6 h-6 border border-white rounded-full" />
+                                ) : (
+                                  <EmptyIcon className="w-6 h-6" />
+                                )}
                               </div>
-                              <div className="flex items-center">
+                              <div className="flex items-center w-3/4">
                                 <div className="text-sm">
                                   <RadioGroup.Label
                                     as="p"

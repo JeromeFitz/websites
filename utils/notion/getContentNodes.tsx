@@ -44,8 +44,8 @@ function getContentNodes({ content, images }) {
       contentItem?.type === 'bulleted_list_item' ||
       contentItem?.type === 'numbered_list_item'
     ) {
-      console.dir(`> contentItem`)
-      console.dir(contentItem)
+      // console.dir(`> contentItem`)
+      // console.dir(contentItem)
       if (!listCurrentState) {
         listCurrentId = uuid()
         nodes[listCurrentId] = {
