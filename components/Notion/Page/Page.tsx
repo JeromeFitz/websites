@@ -96,9 +96,11 @@ const Page = ({ data, props }) => {
       break
   }
 
+  // console.dir(`data`)
+  // console.dir(data)
   // console.dir(`content`)
   // console.dir(content)
-  // const nodes = getContentNodes({ content, images })
+  // // const nodes = getContentNodes({ content, images })
 
   const isEventListing = routeType === 'events' && !isIndex
   const isEpisodeListing = routeType === 'podcasts' && !isIndex

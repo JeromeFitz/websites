@@ -56,12 +56,20 @@ const ListingItem = ({ index, item }) => {
   const { data: images } = useSWR('images')
 
   // @todo(external)
-  const imageSlug = slugger.slug(seoImage?.url)
+  const imageSlug = slugger.slug(seoImage)
   const imageData = !!images && images[imageSlug]
 
   const hasImage = !!imageData && !!imageData.base64
 
   const blurDataURL = hasImage ? imageData.base64 : IMAGE__PLACEHOLDER?.meta?.base64
+
+  // // @notion(api) fucking changed on us what the fuck
+  // console.dir(`images`)
+  // console.dir(images)
+  // console.dir(`imageSlug`)
+  // console.dir(imageSlug)
+  // console.dir(`imageData`)
+  // console.dir(imageData)
 
   return (
     <>
@@ -99,22 +107,24 @@ const ListingItem = ({ index, item }) => {
                     : {}
                 }
               />
-              <NextImage
-                alt={`image for ${title}`}
-                blurDataURL={blurDataURL}
-                className={cx('rounded-xl')}
-                placeholder="blur"
-                priority={index < 4 ? true : false}
-                // layout="responsive"
-                // {...IMAGE__PLACEHOLDER?.meta?.img}
-                sizes="25vw"
-                layout="fill"
-                // objectFit="contain"
-                objectFit="cover"
-                objectPosition={'50% 50%'}
-                // src={IMAGE__PLACEHOLDER?.meta?.url}
-                src={hasImage ? imageData?.img?.src : seoImage?.url}
-              />
+              {hasImage && (
+                <NextImage
+                  alt={`image for ${title}`}
+                  blurDataURL={blurDataURL}
+                  className={cx('rounded-xl')}
+                  placeholder="blur"
+                  priority={index < 4 ? true : false}
+                  // layout="responsive"
+                  // {...IMAGE__PLACEHOLDER?.meta?.img}
+                  sizes="25vw"
+                  layout="fill"
+                  // objectFit="contain"
+                  objectFit="cover"
+                  objectPosition={'50% 50%'}
+                  // src={IMAGE__PLACEHOLDER?.meta?.url}
+                  src={hasImage ? imageData?.img?.src : seoImage?.url}
+                />
+              )}
             </motion.div>
 
             <div className={cx('py-2 px-2')}>

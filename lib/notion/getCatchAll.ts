@@ -239,20 +239,26 @@ const getTypeCheckboxNormalized = (data: any) => data.checkbox || false
 
 const getTypeDateNormalized = (data: any) => data.date || null
 
-const getTypeFilesNormalized = (data: any) =>
-  _size(data.files) > 0 &&
-  // @todo(zeroArray)
-  (data.files[0].type === 'external'
-    ? {
-        name: data.files[0].name,
-        url: data.files[0].external.url,
-        expiryTime: null,
-      }
-    : {
-        name: data.files[0].name,
-        url: data.files[0].file.url,
-        expiryTime: data.files[0].file.expiry_time,
-      })
+const getTypeFilesNormalized = (data: any) => {
+  // console.dir(`> getTypeFilesNormalized`)
+  // console.dir(data)
+  const returnData = _size(data.files) > 0 ? data?.files[0]?.name : null
+  // console.dir(`> returnData`)
+  // console.dir(returnData)
+  return returnData
+  // // @todo(zeroArray)
+  // (data.files[0].type === 'external'
+  //   ? {
+  //       name: data.files[0].name,
+  //       url: data.files[0].external.url,
+  //       expiryTime: null,
+  //     }
+  //   : {
+  //       name: data.files[0].name,
+  //       url: data.files[0].file.url,
+  //       expiryTime: data.files[0].file.expiry_time,
+  //     })
+}
 
 const getTypeMultiSelectNormalized = (data: any) => {
   const dataReturn = {}
@@ -330,6 +336,8 @@ const getTypeTitleNormalized = (data: any) => {
 }
 
 const getTypeUrlNormalized = (data: any) => {
+  // console.dir(`getTypeUrlNormalized`)
+  // console.dir(data)
   return data.url || null
 }
 
