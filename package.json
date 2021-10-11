@@ -103,7 +103,7 @@
   "devDependencies": {
     "@jeromefitz/codestyle": "4.0.8",
     "@jeromefitz/git-cz": "10.0.9",
-    "@jeromefitz/semantic": "4.0.8",
+    "@jeromefitz/semantic": "4.0.9",
     "@next/bundle-analyzer": "11.1.2",
     "@types/body-scroll-lock": "3.1.0",
     "@types/jest": "27.0.2",
