@@ -17,8 +17,17 @@ const ImageLead = ({ description, image, imagesFallback }) => {
     void mutate('images', { ...images, ...imagesFallback }, true)
   })
   // @todo(external)
-  const imageSlug = slugger.slug(image?.url)
+  const imageSlug = slugger.slug(image)
   const imageData = !!images && images[imageSlug]
+
+  // console.dir(`images`)
+  // console.dir(images)
+  // console.dir(`imagesFallback`)
+  // console.dir(imagesFallback)
+  // console.dir(`image`)
+  // console.dir(image)
+  // console.dir(`imageData`)
+  // console.dir(imageData)
 
   const hasImage = !!imageData && !!imageData.base64
 

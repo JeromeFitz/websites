@@ -61,7 +61,7 @@ const Link = ({ item, itemIndex, routeType }) => {
   const slugger = new Slugger()
   const { data: images } = useSWR('images')
   // @todo(external)
-  const imageSlug = slugger.slug(seoImage?.url)
+  const imageSlug = slugger.slug(seoImage)
   const imageData = !!images && images[imageSlug]
 
   // console.dir(`imageData`)

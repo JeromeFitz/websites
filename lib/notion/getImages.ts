@@ -24,6 +24,8 @@ const getImages = async ({ data, pathVariables }) => {
       if (!imageResult) {
         return null
       }
+      // console.dir(`>> imageResult: infoImagesFilter`)
+      // console.dir(imageResult)
       const url = !!imageResult && imageResult?.url
 
       if (!url) {
@@ -49,16 +51,17 @@ const getImages = async ({ data, pathVariables }) => {
       if (!imageResult) {
         return null
       }
-      // console.dir(`imageResult`)
+      // console.dir(`>> imageResult: contentImagesAwait`)
       // console.dir(imageResult)
-      const imageExternalUrl =
-        imageResult.image.type === 'external'
-          ? imageResult.image.external.url
-          : imageResult.image.file.url
+      const url = !!imageResult && imageResult?.url
+      // const imageExternalUrl = imageResult
+      // imageResult.image.type === 'external'
+      //   ? imageResult.image.external.url
+      //   : imageResult.image.file.url
 
-      const { base64, img } = await getPlaiceholder(imageExternalUrl)
-      const id = slugger.slug(imageExternalUrl)
-      return { base64, id, img, url: imageExternalUrl }
+      const { base64, img } = await getPlaiceholder(url)
+      const id = slugger.slug(url)
+      return { base64, id, img, url }
     })
   const contentImages =
     !!contentImagesAwait && (await Promise.all(contentImagesAwait))
@@ -75,6 +78,8 @@ const getImages = async ({ data, pathVariables }) => {
       if (!imageResult) {
         return null
       }
+      // console.dir(`>> imageResult: itemsImagesAwait`)
+      // console.dir(imageResult)
       const url = !!imageResult && imageResult?.url
 
       if (!url) {

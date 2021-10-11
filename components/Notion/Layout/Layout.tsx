@@ -19,7 +19,7 @@ const Layout = ({ id, children, data, routeType, url }) => {
   } = data
 
   // @todo(external)
-  const seoImageSlug = slugger.slug(seoImage?.url)
+  const seoImageSlug = slugger.slug(seoImage)
   const seoImageData = !!images && images[seoImageSlug]
 
   const seoUrl = `https://jeromefitzgerald.com/${url}`

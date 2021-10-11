@@ -61,7 +61,7 @@ const ListingItem = ({ index, item }) => {
   const { data: images } = useSWR('images')
 
   // @todo(external)
-  const imageSlug = slugger.slug(seoImage?.url)
+  const imageSlug = slugger.slug(seoImage)
   const imageData = !!images && images[imageSlug]
 
   const hasImage = !!imageData && !!imageData.base64

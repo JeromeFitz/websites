@@ -16,6 +16,9 @@ updates:
       prefix-development: '⬆️ (deps-dev) '
     target-branch: 'main'
     ignore:
+      - dependency-name: '@notionhq/client'
+        versions:
+          - '<=1'
       - dependency-name: '@types/node'
         versions:
           - '>=13'

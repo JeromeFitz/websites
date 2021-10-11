@@ -55,45 +55,6 @@ const getContentType = (item: NotionBlock, images?: any[]) => {
     case 'bulleted_list_item':
     case 'numbered_list_item':
       return <li key={id}>{getContentTypeDetail(content)}</li>
-    case 'image':
-      const imageSlug = slugger.slug(content?.external?.url)
-      const imageData = !!imageSlug && !!images && images[imageSlug]
-      const caption = _size(content?.caption) > 0 && content?.caption[0]?.plain_text
-      // console.dir(`getContentType`)
-      // console.dir(`imageSlug: ${imageSlug}`)
-      // console.dir(images)
-      // console.dir(`imageData`)
-      // console.dir(imageData)
-
-      return !!imageData ? (
-        <div className="w-2/3 mx-auto" key={id}>
-          <NextImage
-            alt={!!caption ? caption : ''}
-            blurDataURL={imageData.base64}
-            key={imageSlug}
-            placeholder="blur"
-            title={!!caption ? caption : ''}
-            {...imageData.img}
-          />
-          {!!caption && <ImageCaption caption={caption} />}
-        </div>
-      ) : (
-        <div className="w-2/3 h-full mx-auto overflow-hidden" key={id}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            alt={!!caption ? caption : ''}
-            className="nonNextNoStaticProps"
-            src={content?.external?.url}
-            style={{
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat',
-              backgroundSize: '100%',
-              backgroundImage: `url(${IMAGE__PLACEHOLDER.meta.base64})`,
-            }}
-          />
-          {!!caption && <ImageCaption caption={caption} />}
-        </div>
-      )
     case 'text':
     case 'title':
     case 'rich_text':
@@ -206,9 +167,53 @@ const getContentType = (item: NotionBlock, images?: any[]) => {
           </span>
         </label>
       )
-      return null
+    case 'image':
     default:
       console.dir(`@unsupported(notion): ${type}`)
+      // console.dir(item)
+      if (!!item && item.hasOwnProperty('image')) {
+        const contentHack = item.image
+        const imageSlug = slugger.slug(contentHack?.external?.url)
+        const imageData = !!imageSlug && !!images && images[imageSlug]
+        const caption =
+          _size(contentHack?.caption) > 0 && contentHack?.caption[0]?.plain_text
+        // console.dir(`getContentType`)
+        // console.dir(`imageSlug: ${imageSlug}`)
+        // console.dir(images)
+        // console.dir(`imageData`)
+        // console.dir(imageData)
+
+        return !!imageData ? (
+          <div className="w-2/3 mx-auto" key={id}>
+            <NextImage
+              alt={!!caption ? caption : ''}
+              blurDataURL={imageData.base64}
+              key={imageSlug}
+              placeholder="blur"
+              title={!!caption ? caption : ''}
+              {...imageData.img}
+            />
+            {!!caption && <ImageCaption caption={caption} />}
+          </div>
+        ) : (
+          <div className="w-2/3 h-full mx-auto overflow-hidden" key={id}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              alt={!!caption ? caption : ''}
+              className="nonNextNoStaticProps"
+              src={contentHack?.external?.url}
+              style={{
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: '100%',
+                backgroundImage: `url(${IMAGE__PLACEHOLDER.meta.base64})`,
+              }}
+            />
+            {!!caption && <ImageCaption caption={caption} />}
+          </div>
+        )
+      }
+
       break
   }
 }
