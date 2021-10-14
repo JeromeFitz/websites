@@ -59,6 +59,7 @@
     "csv-parser": "3.0.0",
     "date-fns": "2.25.0",
     "date-fns-tz": "1.1.6",
+    "emoji-api": "2.0.1",
     "fathom-client": "3.2.0",
     "firebase": "9.1.2",
     "firebase-admin": "9.12.0",
@@ -72,7 +73,7 @@
     "keen-slider": "5.5.1",
     "lodash": "4.17.21",
     "ms": "3.0.0-canary.1",
-    "next": "11.1.3-canary.64",
+    "next": "11.1.3-canary.70",
     "next-seo": "4.28.1",
     "next-themes": "0.0.15",
     "node-emoji": "1.11.0",
@@ -109,7 +110,7 @@
     "@types/jest": "27.0.2",
     "@types/lodash": "4.14.175",
     "@types/ms": "0.7.31",
-    "@types/node": "16.10.3",
+    "@types/node": "16.11.0",
     "@types/nprogress": "0.2.0",
     "@types/reach__skip-nav": "0.1.3",
     "@types/react": "17.0.30",
@@ -137,8 +138,8 @@
     "postcss-nested": "5.0.6",
     "postcss-page-break": "3.0.4",
     "rimraf": "3.0.2",
-    "ts-jest": "27.0.5",
-    "typescript": "4.4.3"
+    "ts-jest": "27.0.6",
+    "typescript": "4.4.4"
   },
   "next-unused": {
     "alias": {
