@@ -57,14 +57,17 @@ const CatchAll = (props) => {
   /**
    * @error or @loading
    */
-  if (error || !data || data?.content === undefined || data?.info === undefined)
-    return (
-      <>
-        <Layout>
-          <Breadcrumb isIndex={true} title={error ? 'Error...' : 'Loading...'} />
-        </Layout>
-      </>
-    )
+  const isError = error !== undefined
+  const isDataUndefined =
+    data === undefined || data?.content === undefined || data?.info === undefined
+  // const isLoading = !isError && isDataUndefined
+
+  if (isError && isDataUndefined)
+    <>
+      <Layout>
+        <Breadcrumb isIndex={true} title={error ? 'Error...' : 'Loading...'} />
+      </Layout>
+    </>
 
   return (
     <>

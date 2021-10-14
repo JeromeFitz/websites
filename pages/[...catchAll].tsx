@@ -50,27 +50,12 @@ const CatchAll = (props) => {
   /**
    * @error or @loading
    */
-  const isError = error
-  const isLoading = !error && !data
+  const isError = error !== undefined
+  const isDataUndefined =
+    data === undefined || data?.content === undefined || data?.info === undefined
+  // const isLoading = !isError && isDataUndefined
 
-  if (isError && data === undefined) {
-    console.dir(`error`)
-    console.dir(`If this is: notionhq_client_request_timeout`)
-    console.dir(`We should show fallback data`)
-    console.dir(error)
-    return (
-      <>
-        <Layout>
-          <Breadcrumb isIndex={true} title={'Error...'} />
-        </Layout>
-      </>
-    )
-  }
-
-  if (
-    !isError &&
-    (isLoading || !data || data?.content === undefined || data?.info === undefined)
-  )
+  if (isError && isDataUndefined)
     return (
       <>
         <Layout>
