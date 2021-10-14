@@ -12,8 +12,8 @@ method = "squash"
 optimistic_updates = true
 
 [merge.automerge_dependencies]
-versions=["minor", "patch"]
-usernames=["dependabot","dependabot[bot]","dependabot%5Bbot%5D"]
+#versions=["minor", "patch"]
+#usernames=["dependabot","dependabot[bot]","dependabot%5Bbot%5D"]
 
 [merge.message]
 title = "pull_request_title"

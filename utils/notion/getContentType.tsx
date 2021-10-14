@@ -170,7 +170,7 @@ const getContentType = (item: NotionBlock, images?: any[]) => {
     case 'image':
     default:
       console.dir(`@unsupported(notion): ${type}`)
-      // console.dir(item)
+      console.dir(item)
       if (!!item && item.hasOwnProperty('image')) {
         const contentHack = item.image
         const imageSlug = slugger.slug(contentHack?.external?.url)
