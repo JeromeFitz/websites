@@ -1,8 +1,6 @@
 import cx from 'clsx'
 import nodeEmoji from 'node-emoji'
 
-import { EMOJI_FALLBACK } from '~lib/constants'
-
 const emojiParser = (text: string) => {
   const emojiFound = nodeEmoji.find(text.trim())
 
@@ -13,18 +11,7 @@ const emojiParser = (text: string) => {
   return <Emoji character={emojiFound.emoji} />
 }
 
-const Emoji = ({ character, margin = false }) => {
-  // @hack(emoji) emojis that are made up of more than one not supported yet
-  const emojiTemp = !!character && character.length > 3 ? EMOJI_FALLBACK : character
-  const emojiFound = nodeEmoji.find(emojiTemp)
-
-  if (emojiFound === undefined) {
-    return null
-  }
-
-  const { emoji, key } = emojiFound
-  const label = `emoji ${key.replace(/_/gi, ' ')}`
-
+const EmojiHtml = ({ emoji, label, margin }) => {
   return (
     <span
       aria-label={label}
@@ -34,7 +21,7 @@ const Emoji = ({ character, margin = false }) => {
       style={{
         WebkitBackgroundClip: 'text',
         // @note(WebkitTextFillColor) any color will break out of transparency
-        WebkitTextFillColor: 'yellow',
+        WebkitTextFillColor: 'inherit',
       }}
     >
       {emoji}
@@ -43,6 +30,21 @@ const Emoji = ({ character, margin = false }) => {
       {` `}
     </span>
   )
+}
+
+const Emoji = ({ character, margin = false }) => {
+  const emojiFound = nodeEmoji.find(character)
+
+  if (emojiFound === undefined) {
+    return (
+      <EmojiHtml emoji={character} label={'emoji unsupported'} margin={margin} />
+    )
+  }
+
+  const { emoji, key } = emojiFound
+  const label = `emoji ${key.replace(/_/gi, ' ')}`
+
+  return <EmojiHtml emoji={emoji} label={label} margin={margin} />
 }
 
 export { emojiParser }
