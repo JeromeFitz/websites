@@ -1,16 +1,6 @@
 import cx from 'clsx'
 import nodeEmoji from 'node-emoji'
 
-const emojiParser = (text: string) => {
-  const emojiFound = nodeEmoji.find(text.trim())
-
-  if (emojiFound === undefined) {
-    return text
-  }
-
-  return <Emoji character={emojiFound.emoji} />
-}
-
 const EmojiHtml = ({ emoji, label, margin }) => {
   return (
     <span
@@ -47,5 +37,4 @@ const Emoji = ({ character, margin = false }) => {
   return <EmojiHtml emoji={emoji} label={label} margin={margin} />
 }
 
-export { emojiParser }
 export default Emoji
