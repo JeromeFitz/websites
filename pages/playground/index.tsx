@@ -381,6 +381,7 @@ const Playground = () => {
                 <li>Fart</li>
                 <li>Knocker</li>
               </ol>
+              <p className={cx('italic')}>Italicized Text</p>
               <label className={cx('flex items-center space-x-3')}>
                 <input
                   disabled
