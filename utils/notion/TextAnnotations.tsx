@@ -26,7 +26,7 @@ const Emoji = dynamic(() => import('~components/Notion/Emoji'), {
 //   return <Emoji character={text.trim()} />
 // }
 
-const emojiParser = (text) => {
+const emojiParser = ({ id, text }) => {
   if (!text) return null
   const regex = emojiRegex()
   // const textLength = text.length
@@ -76,9 +76,13 @@ const emojiParser = (text) => {
   }
   const emojiMappingStitch = []
   if (_size(emojiMapping) > 0) {
-    _map(_orderBy(emojiMapping, ['index'], ['asc']), (item: any) => {
+    _map(_orderBy(emojiMapping, ['index'], ['asc']), (item: any, itemId) => {
       emojiMappingStitch.push(
-        item.emoji ? <Emoji character={item.text.trim()} /> : item.text
+        item.emoji ? (
+          <Emoji character={item.text.trim()} key={`${id}--emoji--${itemId}`} />
+        ) : (
+          item.text
+        )
       )
       if (
         _size(emojiMapping) === _size(emojiMappingStitch) &&
@@ -157,9 +161,9 @@ const TextAnnotationLink = ({ children, href }) => {
   }
 }
 
-const TextAnnotation = ({ href, plain_text, annotations }) => {
+const TextAnnotation = ({ href, id, plain_text, annotations }) => {
   if (!plain_text) return null
-  const text = emojiParser(plain_text)
+  const text = emojiParser({ id, text: plain_text })
   const { bold, code, color, italic, strikethrough, underline } = annotations
   return (
     <span
