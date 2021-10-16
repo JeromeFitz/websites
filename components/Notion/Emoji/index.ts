@@ -1,4 +1,4 @@
-import { emojiParser } from './Emoji'
+import EmojiParser from './EmojiParser'
 
-export { emojiParser }
+export { EmojiParser }
 export { default } from './Emoji'

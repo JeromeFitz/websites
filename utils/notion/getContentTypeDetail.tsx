@@ -1,8 +1,7 @@
 import _map from 'lodash/map'
 
 import { NotionText } from '~utils/notion'
-// import TextAnnotations from '~utils/notion/TextAnnotations'
-import { TextAnnotation } from '~utils/notion/TextAnnotations'
+import TextAnnotations from '~utils/notion/TextAnnotations'
 
 const getContentTypeDetail = ({ content, id = null }) =>
   _map(content.text, (text: NotionText, textId) => {
@@ -10,7 +9,7 @@ const getContentTypeDetail = ({ content, id = null }) =>
     const key = `${id}--text-annotations--${textId}`
     // console.dir(`key: ${key}`)
     return (
-      <TextAnnotation
+      <TextAnnotations
         annotations={annotations}
         href={href}
         id={id}
