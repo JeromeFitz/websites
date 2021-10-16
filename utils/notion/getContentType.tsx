@@ -59,10 +59,14 @@ const getContentType = (item: NotionBlock, images?: any[]) => {
     case 'title':
     case 'rich_text':
       // @todo(notion)
-      return _size(content) > 0 ? content[0].plain_text : ''
+      return _size(content) > 0 ? (
+        <React.Fragment key={id}>content[0].plain_text</React.Fragment>
+      ) : null
     case 'files':
       // @todo(notion)
-      return _size(content) > 0 ? content[0].external.url : ''
+      return _size(content) > 0 ? (
+        <React.Fragment key={id}>content[0].external.url</React.Fragment>
+      ) : null
     case 'url':
       // @todo(notion)
       return content
@@ -168,9 +172,6 @@ const getContentType = (item: NotionBlock, images?: any[]) => {
         </label>
       )
     case 'image':
-    default:
-      console.dir(`@unsupported(notion): ${type}`)
-      console.dir(item)
       if (!!item && item.hasOwnProperty('image')) {
         const contentHack = item.image
         const imageSlug = slugger.slug(contentHack?.external?.url)
@@ -213,8 +214,15 @@ const getContentType = (item: NotionBlock, images?: any[]) => {
           </div>
         )
       }
-
       break
+    case 'divider':
+      return (
+        <div className={cx('spacer bg-gray-600 dark:bg-gray-300 my-6')} key={id} />
+      )
+    default:
+      console.dir(`@unsupported(notion): ${type}`)
+      // console.dir(item)
+      return <React.Fragment key={id} />
   }
 }
 
