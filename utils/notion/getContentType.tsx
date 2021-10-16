@@ -35,26 +35,26 @@ const getContentType = (item: NotionBlock, images?: any[]) => {
       // console.dir(content)
       return (
         <h2 key={id} style={WEBKIT_BACKGROUND__BREAK}>
-          {getContentTypeDetail(content)}
+          {getContentTypeDetail({ content, id })}
         </h2>
       )
     case 'heading_2':
       return (
         <h3 key={id} style={WEBKIT_BACKGROUND__BREAK}>
-          {getContentTypeDetail(content)}
+          {getContentTypeDetail({ content, id })}
         </h3>
       )
     case 'heading_3':
       return (
         <h4 key={id} style={WEBKIT_BACKGROUND__BREAK}>
-          {getContentTypeDetail(content)}
+          {getContentTypeDetail({ content, id })}
         </h4>
       )
     case 'paragraph':
-      return <p key={id}>{getContentTypeDetail(content)}</p>
+      return <p key={id}>{getContentTypeDetail({ content, id })}</p>
     case 'bulleted_list_item':
     case 'numbered_list_item':
-      return <li key={id}>{getContentTypeDetail(content)}</li>
+      return <li key={id}>{getContentTypeDetail({ content, id })}</li>
     case 'text':
     case 'title':
     case 'rich_text':
@@ -103,7 +103,7 @@ const getContentType = (item: NotionBlock, images?: any[]) => {
                 <Emoji character={`📰️`} />
               </span>
               <blockquote className={cx('ml-4')}>
-                {getContentTypeDetail(content)}
+                {getContentTypeDetail({ content, id })}
               </blockquote>
             </div>
           </div>
@@ -127,14 +127,14 @@ const getContentType = (item: NotionBlock, images?: any[]) => {
             <span className={cx('mb-0 pb-0')}>
               {emoji && <Emoji character={emoji} />}
             </span>
-            <h6 className={cx('ml-4')}>{getContentTypeDetail(content)}</h6>
+            <h6 className={cx('ml-4')}>{getContentTypeDetail({ content, id })}</h6>
           </div>
         )
       }
       return null
     case 'toggle':
       if (!has_children) return null
-      const title = getContentTypeDetail(content)
+      const title = getContentTypeDetail({ content, id })
       const nodeContent = _map(content.children, (content) =>
         getContentType(content)
       )
@@ -155,10 +155,15 @@ const getContentType = (item: NotionBlock, images?: any[]) => {
       // console.dir(`@todo(notion) to_do`)
       // console.dir(content)
       return (
-        <label className={cx('flex items-center space-x-3')} key={id}>
+        <label
+          className={cx('flex items-center space-x-3')}
+          key={`${id}--to_do`}
+          htmlFor={id}
+        >
           <input
             disabled
             type="checkbox"
+            id={id}
             className={cx(
               'h-6 w-6',
               'form-tick appearance-none border border-gray-300 rounded-md  focus:outline-none',
@@ -174,7 +179,11 @@ const getContentType = (item: NotionBlock, images?: any[]) => {
     case 'image':
       if (!!item && item.hasOwnProperty('image')) {
         const contentHack = item.image
-        const imageSlug = slugger.slug(contentHack?.external?.url)
+        const imageSrc =
+          contentHack?.type === 'external'
+            ? contentHack?.external.url
+            : contentHack?.file.url
+        const imageSlug = slugger.slug(imageSrc)
         const imageData = !!imageSlug && !!images && images[imageSlug]
         const caption =
           _size(contentHack?.caption) > 0 && contentHack?.caption[0]?.plain_text
