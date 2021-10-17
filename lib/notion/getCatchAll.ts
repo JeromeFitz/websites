@@ -32,6 +32,7 @@ import getBlocksByIdChildren from '~lib/notion/api/getBlocksByIdChildren'
 import getDatabasesByIdQuery from '~lib/notion/api/getDatabasesByIdQuery'
 import getPagesById from '~lib/notion/api/getPagesById'
 import { getCache, setCache } from '~lib/notion/getCache'
+import getImages from '~lib/notion/getImages'
 import getPathVariables from '~lib/notion/getPathVariables'
 import getQuery from '~lib/notion/getQuery'
 import { DATABASES, SEO, QUERIES, PROPERTIES, notion } from '~utils/notion/helper'
@@ -711,8 +712,15 @@ const deepFetchAllChildren = async (blocks: any[]): Promise<Array<any[] | any>> 
 }
 
 // @todo(next) preview
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const getCatchAll = async ({ cache = false, catchAll, clear, preview }) => {
+const getCatchAll = async ({
+  cache = false,
+  catchAll,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  clear,
+  pathVariables,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  preview,
+}) => {
   // console.dir(`> getCatchAll`)
   // console.dir(catchAll)
   const isCache = useCache && cache
@@ -1090,6 +1098,14 @@ const getCatchAll = async ({ cache = false, catchAll, clear, preview }) => {
     }
 
     data = { info, content, items }
+    // console.dir(`data`)
+    // console.dir(data)
+    // console.dir(`pathVariables`)
+    // console.dir(pathVariables)
+    const images = !!data ? await getImages({ data, pathVariables }) : {}
+    // console.dir(`images`)
+    // console.dir(images)
+    data = { ...data, images }
 
     /**
      * @cache post

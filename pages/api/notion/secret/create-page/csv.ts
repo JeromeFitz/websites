@@ -11,6 +11,7 @@ import createPage from '~lib/notion/api/createPage'
 import getChildren from '~lib/notion/create/children'
 import getProperties from '~lib/notion/create/properties'
 import getCatchAll from '~lib/notion/getCatchAll'
+import getPathVariables from '~lib/notion/getPathVariables'
 import { DATABASES } from '~utils/notion/helper'
 
 const dataDirectory = path.join(
@@ -89,11 +90,13 @@ const csvApi = (req: NextApiRequest, res: NextApiResponse) => {
         const slug = properties['Slug'].rich_text[0].plain_text
         // @todo(notion) DRY
         const catchAll = ['podcasts', 'knockoffs', slug]
+        const pathVariables = getPathVariables(catchAll)
         data = await getCatchAll({
-          preview: false,
           cache: false,
-          clear: false,
           catchAll,
+          clear: false,
+          pathVariables,
+          preview: false,
         })
         if (
           !data ||
@@ -107,10 +110,11 @@ const csvApi = (req: NextApiRequest, res: NextApiResponse) => {
 
           // Get Latest Data
           data = await getCatchAll({
-            preview: false,
             cache: false,
-            clear: false,
             catchAll,
+            clear: false,
+            pathVariables,
+            preview: false,
           })
         } else {
           // _id = data.info.id
