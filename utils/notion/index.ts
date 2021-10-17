@@ -25,8 +25,9 @@ interface NotionUrl {
 }
 
 interface NotionImage {
-  caption: NotionText
-  external: NotionUrl
+  file?: NotionUrl
+  caption?: NotionText
+  external?: NotionUrl
   type: string
 }
 

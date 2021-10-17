@@ -5,6 +5,10 @@ import _filter from 'lodash/filter'
 import _map from 'lodash/map'
 
 const filterImages = (data, type) => {
+  // console.dir(`data`)
+  // console.dir(data)
+  // console.dir(`type`)
+  // console.dir(type)
   switch (type) {
     case 'info':
       return !!data && [data?.seoImage]
