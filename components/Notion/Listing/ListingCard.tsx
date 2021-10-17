@@ -81,7 +81,7 @@ const ListingItem = ({ index, item }) => {
         whileTap="hover"
         animate="rest"
       >
-        <NextLink href={`/shows/${slug}`}>
+        <NextLink as={`/shows/${slug}`} href={`/[...catchAll]`}>
           <a className={cx('', 'p-2')}>
             <motion.div
               className={cx('relative h-48 md:h-72', 'rounded-xl')}
