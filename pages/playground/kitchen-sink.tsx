@@ -6,7 +6,6 @@ import Layout from '~components/Layout'
 import Page from '~components/Notion/Page'
 import fetcher from '~lib/fetcher'
 import getCatchAll from '~lib/notion/getCatchAll'
-import getImages from '~lib/notion/getImages'
 import getPathVariables from '~lib/notion/getPathVariables'
 
 const Breadcrumb = dynamic(() => import('~components/Notion/Breadcrumb'), {})
@@ -78,10 +77,9 @@ export const getStaticProps = async ({ preview = false, ...props }) => {
    * @cache
    */
   const cache = true
-  const data = await getCatchAll({ cache, catchAll, clear, preview })
-  const images = !!data ? await getImages({ data, pathVariables }) : []
+  const data = await getCatchAll({ cache, catchAll, clear, pathVariables, preview })
 
-  const dataReturn = { ...data, images }
+  const dataReturn = { ...data }
   return { props: { preview, ...dataReturn, ...pathVariables, ...props } }
 }
 

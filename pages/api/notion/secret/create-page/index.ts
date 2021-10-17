@@ -7,7 +7,7 @@ import children from '~lib/notion/create/children'
 // @todo(notion) this no longer works!
 import properties from '~lib/notion/create/properties'
 import getCatchAll from '~lib/notion/getCatchAll'
-// import getPathVariables from '~lib/notion/getPathVariables'
+import getPathVariables from '~lib/notion/getPathVariables'
 import { DATABASES } from '~utils/notion/helper'
 // const isObjectEmpty = '~utils/isObjectEmpty'
 
@@ -48,11 +48,13 @@ const secretCreatePage = async (req: NextApiRequest, res: NextApiResponse) => {
   // @todo(notion) this no longer works!
   const slug = 'am-i-dracula-greg-gillotti'
   const catchAll = ['podcasts', 'jer-and-ky-and-guest', slug]
+  const pathVariables = getPathVariables(catchAll)
   data = await getCatchAll({
-    preview: false,
     cache: false,
-    clear: false,
     catchAll,
+    clear: false,
+    pathVariables,
+    preview: false,
   })
   if (
     !data ||
@@ -66,10 +68,11 @@ const secretCreatePage = async (req: NextApiRequest, res: NextApiResponse) => {
 
     // Get Latest Data
     data = await getCatchAll({
-      preview: false,
       cache: false,
-      clear: false,
       catchAll,
+      clear: false,
+      pathVariables,
+      preview: false,
     })
   } else {
     _id = data.info.id
