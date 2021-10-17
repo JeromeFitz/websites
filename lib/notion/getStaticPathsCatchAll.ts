@@ -5,6 +5,7 @@ import _uniqWith from 'lodash/uniqWith'
 
 import asyncForEach from '~lib/asyncForEach'
 import getCatchAll from '~lib/notion/getCatchAll'
+import getPathVariables from '~lib/notion/getPathVariables'
 
 const getStaticPathsDefault = ({ items, routeType }) => {
   const data = []
@@ -52,11 +53,13 @@ const getStaticPathsCatchAll = async () => {
   await asyncForEach(routeTypes, async (routeType: any) => {
     if (routeType !== 'episodes') paths.push(`/${routeType}`)
     const catchAll = [routeType]
+    const pathVariables = getPathVariables(catchAll)
     const data = await getCatchAll({
-      preview: false,
       cache: false,
-      clear: false,
       catchAll,
+      clear: false,
+      pathVariables,
+      preview: false,
     })
     const items = data?.items?.results
     const slugs = getStaticPathsDefault({ items, routeType })

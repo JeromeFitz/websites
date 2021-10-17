@@ -3,7 +3,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
 import getCatchAll from '~lib/notion/getCatchAll'
-// import getPathVariables from '~lib/notion/getPathVariables'
+import getPathVariables from '~lib/notion/getPathVariables'
 // import omitFields from '~lib/notion/omitFields'
 
 const notionCatchAll = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -21,8 +21,14 @@ const notionCatchAll = async (req: NextApiRequest, res: NextApiResponse) => {
     const cache = false
 
     // http://localhost:3000/api/notion/blog/2020/12/28/preview-blog-post?preview=true
-    // const { routeType } = getPathVariables(catchAll)
-    const data = await getCatchAll({ preview, cache, clear, catchAll })
+    const pathVariables = getPathVariables(catchAll)
+    const data = await getCatchAll({
+      cache,
+      clear,
+      catchAll,
+      pathVariables,
+      preview,
+    })
     // const dataOmittted = _omit(data, omitFields[routeType])
     const dataOmittted = data
 

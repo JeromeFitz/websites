@@ -10,6 +10,11 @@ const getImages = async ({ data, pathVariables }) => {
   const slugger = new Slugger()
   const mergeImages = {}
 
+  // console.dir(`data`)
+  // console.dir(data)
+  // console.dir(`pathVariables`)
+  // console.dir(pathVariables)
+
   /**
    * @info
    */
@@ -26,7 +31,8 @@ const getImages = async ({ data, pathVariables }) => {
       }
       // console.dir(`>> imageResult: infoImagesFilter`)
       // console.dir(imageResult)
-      const url = !!imageResult && imageResult?.url
+      const url =
+        !!imageResult && !!imageResult?.url ? imageResult?.url : imageResult
 
       if (!url) {
         return null
@@ -43,7 +49,7 @@ const getImages = async ({ data, pathVariables }) => {
    * @content
    */
   const contentImagesFilter =
-    !pathVariables.isIndex && filterImages(data.content?.results, 'content')
+    !pathVariables.isIndex && filterImages(data?.content, 'content')
 
   const contentImagesAwait =
     !!contentImagesFilter &&
@@ -53,11 +59,10 @@ const getImages = async ({ data, pathVariables }) => {
       }
       // console.dir(`>> imageResult: contentImagesAwait`)
       // console.dir(imageResult)
-      const url = !!imageResult && imageResult?.url
-      // const imageExternalUrl = imageResult
-      // imageResult.image.type === 'external'
-      //   ? imageResult.image.external.url
-      //   : imageResult.image.file.url
+      const url =
+        !!imageResult && imageResult?.image?.type === 'external'
+          ? imageResult?.image?.external.url
+          : imageResult?.image?.file.url
 
       const { base64, img } = await getPlaiceholder(url)
       const id = slugger.slug(url)
@@ -80,7 +85,8 @@ const getImages = async ({ data, pathVariables }) => {
       }
       // console.dir(`>> imageResult: itemsImagesAwait`)
       // console.dir(imageResult)
-      const url = !!imageResult && imageResult?.url
+      const url =
+        !!imageResult && !!imageResult?.url ? imageResult?.url : imageResult
 
       if (!url) {
         return null

@@ -39,7 +39,6 @@ const Track = (item) => {
                 <>
                   Off of “<span className={cx('font-bold')}>{album.name}</span>”
                   released in <span className={cx('font-bold')}>{album.year}</span>.
-                  .
                 </>
               }
               share={
