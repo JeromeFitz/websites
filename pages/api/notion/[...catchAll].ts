@@ -12,6 +12,10 @@ const notionCatchAll = async (req: NextApiRequest, res: NextApiResponse) => {
     const preview = req.query?.preview || false
     const clear = req.query?.clear || false
     const catchAll = req.query?.catchAll
+
+    // console.dir(`catchAll`)
+    // console.dir(catchAll)
+    if (catchAll[0] === 'true') return res.status(200).json({})
     /**
      * @cache
      */

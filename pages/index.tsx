@@ -83,8 +83,13 @@ const CatchAll = (props) => {
 export const getStaticProps = async ({ preview = false, ...props }) => {
   // const { catchAll } = props.params
   const catchAll = [SLUG__HOMEPAGE]
+  // @hack(notion) no idea what is causing this
+  // look at commit hash: b2afe38c5e1f2d095dc085a17eedc181466b3372
+  // and the one after
+  if (catchAll[0] === 'true') return { props: {} }
   const clear = false
   const pathVariables = getPathVariables(catchAll)
+
   /**
    * @cache
    */

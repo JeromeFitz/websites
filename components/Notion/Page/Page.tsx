@@ -59,11 +59,13 @@ const Page = ({ data, props }) => {
 
   const isInfoObjectPage = !!info && info?.object === 'page'
 
-  const {
-    icon = null,
-    id,
-    data: properties,
-  } = isInfoObjectPage ? info : info?.results[0]
+  // console.dir(`isInfoObjectPage: ${isInfoObjectPage}`)
+  // console.dir(`> info`)
+  // console.dir(info)
+
+  if (info === null) return null
+
+  const { icon, id, data: properties } = isInfoObjectPage ? info : info?.results[0]
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
