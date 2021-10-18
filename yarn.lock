@@ -1775,6 +1775,15 @@
     "@reach/utils" "0.16.0"
     tslib "^2.3.0"
 
+"@reach/portal@0.16.2":
+  version "0.16.2"
+  resolved "https://registry.yarnpkg.com/@reach/portal/-/portal-0.16.2.tgz#ca83696215ee03acc2bb25a5ae5d8793eaaf2f64"
+  integrity sha512-9ur/yxNkuVYTIjAcfi46LdKUvH0uYZPfEp4usWcpt6PIp+WDF57F/5deMe/uGi/B/nfDweQu8VVwuMVrCb97JQ==
+  dependencies:
+    "@reach/utils" "0.16.0"
+    tiny-warning "^1.0.3"
+    tslib "^2.3.0"
+
 "@reach/rect@0.16.0":
   version "0.16.0"
   resolved "https://registry.yarnpkg.com/@reach/rect/-/rect-0.16.0.tgz#78cf6acefe2e83d3957fa84f938f6e1fc5700f16"
@@ -1794,13 +1803,13 @@
     "@reach/utils" "0.16.0"
     tslib "^2.3.0"
 
-"@reach/tooltip@0.16.0":
-  version "0.16.0"
-  resolved "https://registry.yarnpkg.com/@reach/tooltip/-/tooltip-0.16.0.tgz#364179853d37432796ec242d987e28bde1037e19"
-  integrity sha512-kZr/OqfmmBQVBxJh+OQRCq++T5f6iQaWinpLnwD5FlG5HRKPwNzTnsy+hpyY9pR2mabk+96POp/TsT4Dv3K/qQ==
+"@reach/tooltip@0.16.2":
+  version "0.16.2"
+  resolved "https://registry.yarnpkg.com/@reach/tooltip/-/tooltip-0.16.2.tgz#8448cee341476e4f795fa7192f7a0864f06b8085"
+  integrity sha512-wtJPnbJ6l4pmudMpQHGU9v1NS4ncDgcwRNi9re9KsIdsM525zccZvHQLteBKYiaW4ib7k09t2dbwhyNU9oa0Iw==
   dependencies:
     "@reach/auto-id" "0.16.0"
-    "@reach/portal" "0.16.0"
+    "@reach/portal" "0.16.2"
     "@reach/rect" "0.16.0"
     "@reach/utils" "0.16.0"
     "@reach/visually-hidden" "0.16.0"

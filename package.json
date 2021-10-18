@@ -45,7 +45,7 @@
     "@reach/auto-id": "0.16.0",
     "@reach/portal": "0.16.0",
     "@reach/skip-nav": "0.16.0",
-    "@reach/tooltip": "0.16.0",
+    "@reach/tooltip": "0.16.2",
     "@reach/visually-hidden": "0.16.0",
     "@sindresorhus/is": "4.2.0",
     "@tailwindcss/aspect-ratio": "0.3.0",
