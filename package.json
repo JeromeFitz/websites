@@ -43,7 +43,7 @@
     "@plaiceholder/tailwindcss": "2.1.0",
     "@reach/alert": "0.16.0",
     "@reach/auto-id": "0.16.0",
-    "@reach/portal": "0.16.0",
+    "@reach/portal": "0.16.2",
     "@reach/skip-nav": "0.16.0",
     "@reach/tooltip": "0.16.0",
     "@reach/visually-hidden": "0.16.0",
