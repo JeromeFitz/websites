@@ -4,11 +4,62 @@ import _map from 'lodash/map'
 import NextImage from 'next/image'
 import _title from 'title'
 
+const LocalImage = ({ imageData, imageSlug, loading, meta }) => {
+  return (
+    <>
+      {!!imageData && !loading ? (
+        <NextImage
+          alt={`Image for ${meta?.name}`}
+          blurDataURL={imageData.base64}
+          className={cx('rounded')}
+          key={imageSlug}
+          layout="intrinsic"
+          placeholder="blur"
+          title={`Image for ${meta?.name}`}
+          {...imageData.img}
+        />
+      ) : (
+        <div
+          className={cx('rounded animate-pulse bg-black')}
+          style={{
+            height: imageData.img.height,
+            width: imageData.img.width,
+          }}
+        />
+      )}
+      {/* <ImageCaption caption={seoImageDescription} /> */}
+    </>
+  )
+}
+
+const AnimatePulse = ({ loading, type }) => {
+  if (!loading) return null
+
+  if (type === 'headline') {
+    return (
+      <span className="animate-pulse bg-black dark:bg-black rounded h-5/6 w-full inline-flex ml-1 mt-0.5" />
+    )
+  }
+
+  if (type === 'subline') {
+    return (
+      <span className="inline-flex animate-pulse ml-1 mt-0.5 h-16 w-full flex-col justify-between">
+        <span className="bg-black dark:bg-black rounded h-4 w-5/6" />
+        <span className="bg-black dark:bg-black rounded h-4 w-4/6" />
+        <span className="bg-black dark:bg-black rounded h-4 w-3/6" />
+      </span>
+    )
+  }
+
+  return null
+}
+
 const CardWithGlowProps = ({
   description,
   headline,
   loading = false,
   meta,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   reverse = false,
   share,
   slug,
@@ -21,12 +72,16 @@ const CardWithGlowProps = ({
   const imageSlug = slug
   const imageData = meta?.meta
 
+  // const styleReverse = reverse ? 'md:flex-row-reverse' : ''
+  // const styleReverse = ''
+
   return (
     <div
       className={cx(
         'flex flex-col md:flex-row w-full min-h-full',
         // 'h-80',
-        reverse && 'md:flex-row-reverse'
+        // reverse ? 'md:flex-row-reverse' : ''
+        ''
         //'mb-0'
       )}
     >
@@ -40,9 +95,7 @@ const CardWithGlowProps = ({
           )}
         >
           <span>{headline}</span>
-          {loading && (
-            <span className="animate-pulse bg-black dark:bg-black rounded h-5/6 w-full inline-flex ml-1 mt-0.5" />
-          )}
+          <AnimatePulse loading={loading} type={'headline'} />
         </p>
         <div className={cx('spacer bg-gray-600 dark:bg-gray-300')} />
         <p
@@ -52,13 +105,7 @@ const CardWithGlowProps = ({
           )}
         >
           <span>{subline}</span>
-          {loading && (
-            <span className="inline-flex animate-pulse ml-1 mt-0.5 h-16 w-full flex-col justify-between">
-              <span className="bg-black dark:bg-black rounded h-4 w-5/6" />
-              <span className="bg-black dark:bg-black rounded h-4 w-4/6" />
-              <span className="bg-black dark:bg-black rounded h-4 w-3/6" />
-            </span>
-          )}
+          <AnimatePulse loading={loading} type={'subline'} />
         </p>
         <ul className={cx('h-auto mb-1 md:mb-2')}>
           {_map(tags.slice(0, 10), (tag) => (
@@ -80,7 +127,8 @@ const CardWithGlowProps = ({
         className={cx(
           'flex flex-col md:w-3/5 justify-center',
           'rounded-xl overflow-hidden',
-          reverse ? 'rounded-r-none' : 'rounded-l-none'
+          // reverse ? 'rounded-r-none' : 'rounded-l-none'
+          'rounded-l-none'
           // 'md:drop-shadow-xl md:scale-105'
         )}
         style={{
@@ -88,27 +136,12 @@ const CardWithGlowProps = ({
           backgroundSize: 'cover',
         }}
       >
-        {!!imageData && !loading ? (
-          <NextImage
-            alt={`Image for ${meta?.name}`}
-            blurDataURL={imageData.base64}
-            className={cx('rounded')}
-            key={imageSlug}
-            layout="intrinsic"
-            placeholder="blur"
-            title={`Image for ${meta?.name}`}
-            {...imageData.img}
-          />
-        ) : (
-          <div
-            className={cx('rounded animate-pulse bg-black')}
-            style={{
-              height: imageData.img.height,
-              width: imageData.img.width,
-            }}
-          />
-        )}
-        {/* <ImageCaption caption={seoImageDescription} /> */}
+        <LocalImage
+          imageData={imageData}
+          imageSlug={imageSlug}
+          loading={loading}
+          meta={meta}
+        />
       </div>
     </div>
   )

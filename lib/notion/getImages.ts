@@ -6,6 +6,8 @@ import filterImages from '~lib/notion/filterImages'
 /**
  * @plaiceholder/next
  */
+// @todo(complexity) 15
+// eslint-disable-next-line complexity
 const getImages = async ({ data, pathVariables }) => {
   const slugger = new Slugger()
   const mergeImages = {}
