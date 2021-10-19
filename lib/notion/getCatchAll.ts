@@ -684,8 +684,12 @@ const normalizerProperties = (properties) => {
   const getProperties = new Properties('')
   const PROPERTIES_INVERT = _invert(PROPERTIES)
   _map(properties, (value, key) => {
+    // if (value === null || value === undefined) return null
+
     if (getProperties[key]) {
-      data[PROPERTIES_INVERT[key]] = getProperties[key](value)
+      const _propertyValue = getProperties[key](value)
+      data[PROPERTIES_INVERT[key]] =
+        _propertyValue === undefined ? null : _propertyValue
     }
   })
 
