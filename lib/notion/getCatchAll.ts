@@ -21,6 +21,7 @@ import _addYears from 'date-fns/addYears'
 import Slugger from 'github-slugger'
 import _ from 'lodash'
 import _filter from 'lodash/filter'
+import _invert from 'lodash/invert'
 import _map from 'lodash/map'
 import _omit from 'lodash/omit'
 // import _pick from 'lodash/pick'
@@ -40,13 +41,7 @@ import { DATABASES, SEO, QUERIES, PROPERTIES, notion } from '~utils/notion/helpe
 const useCache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE
 
 const slugger = new Slugger()
-
-// @note(notion) need to set keys of objects that will get specific subkeys
-const dataInitial = {
-  address: {},
-  name: {},
-  social: {},
-}
+const dataInitial = {}
 
 const addTime = (date, type) => {
   switch (type) {
@@ -313,9 +308,12 @@ const getTypeRelationNormalized = (data: any) => {
 //   // }
 // }
 
-const getTypeRichTextNormalized = (data: any) =>
-  // @todo(zeroArray)
-  data?.rich_text[0]?.plain_text || null
+const getTypeRichTextNormalized = (data: any) => {
+  // // @todo(zeroArray)
+  // console.dir(`data`)
+  // console.dir(data)
+  return !!data?.rich_text ? data?.rich_text[0]?.plain_text : null
+}
 
 const getTypeSelectNormalized = (data: any) => {
   const s: any = data.select
@@ -332,8 +330,8 @@ const getTypeSelectNormalized = (data: any) => {
 const getTypeTitleNormalized = (data: any) => {
   // console.dir(`getTypeTitleNormalized`)
   // console.dir(data)
-  // @todo(zeroArray)
-  return data?.title[0]?.plain_text || null
+  // // @todo(zeroArray)
+  return !!data?.title ? data?.title[0]?.plain_text : null
 }
 
 const getTypeUrlNormalized = (data: any) => {
@@ -342,309 +340,352 @@ const getTypeUrlNormalized = (data: any) => {
   return data.url || null
 }
 
+class Properties {
+  constructor(private contentType: string) {}
+
+  getProperty(): string {
+    return this.contentType
+  }
+
+  /**
+   * @checkbox
+   */
+  checkbox(value) {
+    return getTypeCheckboxNormalized(value)
+  }
+  [PROPERTIES.explicit](value) {
+    return this.checkbox(value)
+  }
+  [PROPERTIES.noIndex](value) {
+    return this.checkbox(value)
+  }
+  [PROPERTIES.published](value) {
+    return this.checkbox(value)
+  }
+  /**
+   * @date
+   */
+  date(value) {
+    return getTypeDateNormalized(value)
+  }
+  [PROPERTIES.date](value) {
+    return this.date(value)
+  }
+  [PROPERTIES.datePublished](value) {
+    return this.date(value)
+  }
+  [PROPERTIES.dateRecorded](value) {
+    return this.date(value)
+  }
+  /**
+   * @files
+   */
+  files(value) {
+    return getTypeFilesNormalized(value)
+  }
+  [PROPERTIES.seoImage](value) {
+    return this.files(value)
+  }
+  [PROPERTIES.mp3](value) {
+    return this.files(value)
+  }
+  /**
+   * @multi_select
+   */
+  multiSelect(value) {
+    return getTypeMultiSelectNormalized(value)
+  }
+  [PROPERTIES.categories](value) {
+    return this.multiSelect(value)
+  }
+  [PROPERTIES.festivals](value) {
+    return this.multiSelect(value)
+  }
+  [PROPERTIES.tags](value) {
+    return this.multiSelect(value)
+  }
+  /**
+   * @number
+   */
+  number(value) {
+    return getTypeNumberNormalized(value)
+  }
+  [PROPERTIES.addressLatitude](value) {
+    return this.number(value)
+  }
+  [PROPERTIES.addressLongitude](value) {
+    return this.number(value)
+  }
+  [PROPERTIES.addressZipCode](value) {
+    return this.number(value)
+  }
+  [PROPERTIES.season](value) {
+    return this.number(value)
+  }
+  [PROPERTIES.episode](value) {
+    return this.number(value)
+  }
+  /**
+   * @phone_number
+   */
+  phoneNumber(value) {
+    return getTypePhoneNumberNormalized(value)
+  }
+  [PROPERTIES.phoneNumber](value) {
+    return this.phoneNumber(value)
+  }
+  /**
+   * @relation
+   */
+  relation(value) {
+    return getTypeRelationNormalized(value)
+  }
+  /**
+   * @relation @__SHARED
+   */
+  /**
+   * @relation @_EPISODES
+   */
+  [PROPERTIES.peopleGuest](value) {
+    return this.relation(value)
+  }
+  [PROPERTIES.peopleSoundEngineer](value) {
+    return this.relation(value)
+  }
+  [PROPERTIES.peopleThanks](value) {
+    return this.relation(value)
+  }
+  [PROPERTIES.podcasts](value) {
+    return this.relation(value)
+  }
+  [PROPERTIES.venuesRecordedAt](value) {
+    return this.relation(value)
+  }
+  /**
+   * @relation @_EVENTS
+   */
+  [PROPERTIES.shows](value) {
+    return this.relation(value)
+  }
+  [PROPERTIES.venues](value) {
+    return this.relation(value)
+  }
+  [PROPERTIES.eventsLineupShowIds](value) {
+    return this.relation(value)
+  }
+  [PROPERTIES.venuesSlugs](value) {
+    return this.relation(value)
+  }
+  /**
+   * @relation @_PEOPLE
+   */
+  [PROPERTIES.episodesPeopleGuest](value) {
+    return this.relation(value)
+  }
+  [PROPERTIES.episodesPeopleSoundEngineer](value) {
+    return this.relation(value)
+  }
+  [PROPERTIES.episodesPeopleThanks](value) {
+    return this.relation(value)
+  }
+  [PROPERTIES.podcastsPeopleHost](value) {
+    return this.relation(value)
+  }
+  [PROPERTIES.showsPeopleCast](value) {
+    return this.relation(value)
+  }
+  [PROPERTIES.showsPeopleCastPast](value) {
+    return this.relation(value)
+  }
+  [PROPERTIES.showsPeopleCrew](value) {
+    return this.relation(value)
+  }
+  [PROPERTIES.showsPeopleDirector](value) {
+    return this.relation(value)
+  }
+  [PROPERTIES.showsPeopleDirectorMusical](value) {
+    return this.relation(value)
+  }
+  [PROPERTIES.showsPeopleDirectorTechnical](value) {
+    return this.relation(value)
+  }
+  [PROPERTIES.showsPeopleMusic](value) {
+    return this.relation(value)
+  }
+  [PROPERTIES.showsPeopleProducer](value) {
+    return this.relation(value)
+  }
+  [PROPERTIES.showsPeopleThanks](value) {
+    return this.relation(value)
+  }
+  [PROPERTIES.showsPeopleWriter](value) {
+    return this.relation(value)
+  }
+  [PROPERTIES.showsTags](value) {
+    return this.relation(value)
+  }
+  /**
+   * @relation @_PODCASTS
+   */
+  [PROPERTIES.episodes](value) {
+    return this.relation(value)
+  }
+  [PROPERTIES.peopleHost](value) {
+    return this.relation(value)
+  }
+  /**
+   * @relation @_SHOWS
+   */
+  // @todo(specify)
+  [PROPERTIES.events](value) {
+    return this.relation(value)
+  }
+  [PROPERTIES.peopleCast](value) {
+    return this.relation(value)
+  }
+  [PROPERTIES.peopleCastPast](value) {
+    return this.relation(value)
+  }
+  [PROPERTIES.peopleCrew](value) {
+    return this.relation(value)
+  }
+  [PROPERTIES.peopleCrewPast](value) {
+    return this.relation(value)
+  }
+  [PROPERTIES.peopleDirector](value) {
+    return this.relation(value)
+  }
+  [PROPERTIES.peopleDirectorMusical](value) {
+    return this.relation(value)
+  }
+  [PROPERTIES.peopleDirectorTechnical](value) {
+    return this.relation(value)
+  }
+  [PROPERTIES.peopleMusic](value) {
+    return this.relation(value)
+  }
+  [PROPERTIES.peopleProducer](value) {
+    return this.relation(value)
+  }
+  [PROPERTIES.peopleWriter](value) {
+    return this.relation(value)
+  }
+  /**
+   * @relation @_VENUES
+   */
+  [PROPERTIES.episodesVenues](value) {
+    return this.relation(value)
+  }
+  /**
+   * @rich_text
+   */
+  richText(value) {
+    return getTypeRichTextNormalized(value)
+  }
+  [PROPERTIES.slug](value) {
+    return this.richText(value)
+  }
+  [PROPERTIES.seoDescription](value) {
+    return this.richText(value)
+  }
+  [PROPERTIES.seoImageDescription](value) {
+    return this.richText(value)
+  }
+  [PROPERTIES.spotifyShow](value) {
+    return this.richText(value)
+  }
+  [PROPERTIES.addressCity](value) {
+    return this.richText(value)
+  }
+  [PROPERTIES.addressNeighborhood](value) {
+    return this.richText(value)
+  }
+  [PROPERTIES.addressStreet](value) {
+    return this.richText(value)
+  }
+  // @todo(specify)
+  [PROPERTIES.podcastAuthor](value) {
+    return this.richText(value)
+  }
+  // @todo(specify)
+  [PROPERTIES.podcastAuthorEmail](value) {
+    return this.richText(value)
+  }
+  [PROPERTIES.email](value) {
+    return this.richText(value)
+  }
+  [PROPERTIES.food](value) {
+    return this.richText(value)
+  }
+  [PROPERTIES.nameFirst](value) {
+    return this.richText(value)
+  }
+  [PROPERTIES.nameLast](value) {
+    return this.richText(value)
+  }
+  [PROPERTIES.namePreferred](value) {
+    return this.richText(value)
+  }
+  [PROPERTIES.duration](value) {
+    return this.richText(value)
+  }
+  [PROPERTIES.tailwindColorBackground](value) {
+    return this.richText(value)
+  }
+  /**
+   * @select
+   */
+  select(value) {
+    return getTypeSelectNormalized(value)
+  }
+  // @question(object) w/in object
+  [PROPERTIES.addressState](value) {
+    return this.select(value)
+  }
+  // @todo(specify)
+  [PROPERTIES.type](value) {
+    return this.select(value)
+  }
+  /**
+   * @title
+   */
+  title(value) {
+    return getTypeTitleNormalized(value)
+  }
+  [PROPERTIES.title](value) {
+    return this.title(value)
+  }
+  ['Name'](value) {
+    return this.title(value)
+  }
+  /**
+   * @url
+   */
+  url(value) {
+    return getTypeUrlNormalized(value)
+  }
+  [PROPERTIES.socialFacebook](value) {
+    return this.url(value)
+  }
+  [PROPERTIES.socialInstagram](value) {
+    return this.url(value)
+  }
+  [PROPERTIES.socialTwitter](value) {
+    return this.url(value)
+  }
+  [PROPERTIES.ticketUrl](value) {
+    return this.url(value)
+  }
+}
+
 const normalizerProperties = (properties) => {
   const data: NormalizerProperties = dataInitial
+  // @question(constructor) this needs to be reset each time
+  const getProperties = new Properties('')
+  const PROPERTIES_INVERT = _invert(PROPERTIES)
   _map(properties, (value, key) => {
-    switch (key) {
-      /**
-       * @checkbox
-       */
-      case PROPERTIES.explicit:
-        data.explicit = getTypeCheckboxNormalized(value)
-        break
-      case PROPERTIES.noIndex:
-        data.noIndex = getTypeCheckboxNormalized(value)
-        break
-      case PROPERTIES.published:
-        data.published = getTypeCheckboxNormalized(value)
-        break
-      /**
-       * @date
-       */
-      case PROPERTIES.date:
-        data.date = getTypeDateNormalized(value)
-        break
-      case PROPERTIES.datePublished:
-        data.datePublished = getTypeDateNormalized(value)
-        break
-      case PROPERTIES.dateRecorded:
-        data.dateRecorded = getTypeDateNormalized(value)
-        break
-      /**
-       * @files
-       */
-      case PROPERTIES.seoImage:
-        data.seoImage = getTypeFilesNormalized(value)
-        break
-      case PROPERTIES.mp3:
-        data.mp3 = getTypeFilesNormalized(value)
-        break
-      /**
-       * @multi_select
-       */
-      case PROPERTIES.categories:
-        data.categories = getTypeMultiSelectNormalized(value)
-        break
-      case PROPERTIES.festivals:
-        data.festivals = getTypeMultiSelectNormalized(value)
-        break
-      case PROPERTIES.tags:
-        // // data.tags = getTypeMultiSelectNormalized(value)
-        data.tags = getTypeRelationNormalized(value)
-        // data.tags = null
-        break
-      /**
-       * @number
-       */
-      case PROPERTIES.address.lat:
-        data.address.lat = getTypeNumberNormalized(value)
-        break
-      case PROPERTIES.address.lng:
-        data.address.lng = getTypeNumberNormalized(value)
-        break
-      case PROPERTIES.address.zipCode:
-        data.address.zipCode = getTypeNumberNormalized(value)
-        break
-      case PROPERTIES.season:
-        data.season = getTypeNumberNormalized(value)
-        break
-      case PROPERTIES.episode:
-        data.episode = getTypeNumberNormalized(value)
-        break
-      /**
-       * @phone_number
-       */
-      case PROPERTIES.phoneNumber:
-        data.phoneNumber = getTypePhoneNumberNormalized(value)
-        break
-
-      /**
-       * @relation
-       */
-      /**
-       * @relation @__SHARED
-       */
-      /**
-       * @relation @_EPISODES
-       */
-      case PROPERTIES.peopleGuest:
-        data.peopleGuest = getTypeRelationNormalized(value)
-        break
-      case PROPERTIES.peopleSoundEngineer:
-        data.peopleSoundEngineer = getTypeRelationNormalized(value)
-        break
-      case PROPERTIES.peopleThanks:
-        data.peopleThanks = getTypeRelationNormalized(value)
-        break
-      case PROPERTIES.podcasts:
-        data.podcasts = getTypeRelationNormalized(value)
-        break
-      case PROPERTIES.venuesRecordedAt:
-        data.venuesRecordedAt = getTypeRelationNormalized(value)
-        break
-      /**
-       * @relation @_EVENTS
-       */
-      case PROPERTIES.shows:
-        data.shows = getTypeRelationNormalized(value)
-        break
-      case PROPERTIES.venues:
-        data.venues = getTypeRelationNormalized(value)
-        break
-      case PROPERTIES.eventsLineupShowIds:
-        data.eventsLineupShowIds = getTypeRelationNormalized(value)
-        break
-      case PROPERTIES.venuesSlugs:
-        data.venuesSlugs = getTypeRelationNormalized(value)
-        break
-      /**
-       * @relation @_PEOPLE
-       */
-      case PROPERTIES.episodesPeopleGuest:
-        data.episodesPeopleGuest = getTypeRelationNormalized(value)
-        break
-      case PROPERTIES.episodesPeopleSoundEngineer:
-        data.episodesPeopleSoundEngineer = getTypeRelationNormalized(value)
-        break
-      case PROPERTIES.episodesPeopleThanks:
-        data.episodesPeopleThanks = getTypeRelationNormalized(value)
-        break
-      case PROPERTIES.podcastsPeopleHost:
-        data.podcastsPeopleHost = getTypeRelationNormalized(value)
-        break
-      case PROPERTIES.showsPeopleCast:
-        data.showsPeopleCast = getTypeRelationNormalized(value)
-        break
-      case PROPERTIES.showsPeopleCastPast:
-        data.showsPeopleCastPast = getTypeRelationNormalized(value)
-        break
-      case PROPERTIES.showsPeopleCrew:
-        data.showsPeopleCrew = getTypeRelationNormalized(value)
-        break
-      case PROPERTIES.showsPeopleDirector:
-        data.showsPeopleDirector = getTypeRelationNormalized(value)
-        break
-      case PROPERTIES.showsPeopleDirectorMusical:
-        data.showsPeopleDirectorMusical = getTypeRelationNormalized(value)
-        break
-      case PROPERTIES.showsPeopleDirectorTechnical:
-        data.showsPeopleDirectorTechnical = getTypeRelationNormalized(value)
-        break
-      case PROPERTIES.showsPeopleMusic:
-        data.showsPeopleMusic = getTypeRelationNormalized(value)
-        break
-      case PROPERTIES.showsPeopleProducer:
-        data.showsPeopleProducer = getTypeRelationNormalized(value)
-        break
-      case PROPERTIES.showsPeopleThanks:
-        data.showsPeopleThanks = getTypeRelationNormalized(value)
-        break
-      case PROPERTIES.showsPeopleWriter:
-        data.showsPeopleWriter = getTypeRelationNormalized(value)
-        break
-      case PROPERTIES.showsTags:
-        // data.showsTags = getTypeRollupNormalized(value)
-        data.showsTags = getTypeRelationNormalized(value)
-        break
-      /**
-       * @relation @_PODCASTS
-       */
-      case PROPERTIES.episodes:
-        data.episodes = getTypeRelationNormalized(value)
-        break
-      case PROPERTIES.peopleHost:
-        data.peopleHost = getTypeRelationNormalized(value)
-        break
-      /**
-       * @relation @_SHOWS
-       */
-      // @todo(specify)
-      case PROPERTIES.events:
-        data.events = getTypeRelationNormalized(value)
-        break
-      case PROPERTIES.peopleCast:
-        data.peopleCast = getTypeRelationNormalized(value)
-        break
-      case PROPERTIES.peopleCastPast:
-        data.peopleCastPast = getTypeRelationNormalized(value)
-        break
-      case PROPERTIES.peopleCrew:
-        data.peopleCrew = getTypeRelationNormalized(value)
-        break
-      case PROPERTIES.peopleCrewPast:
-        data.peopleCrewPast = getTypeRelationNormalized(value)
-        break
-      case PROPERTIES.peopleDirector:
-        data.peopleDirector = getTypeRelationNormalized(value)
-        break
-      case PROPERTIES.peopleDirectorMusical:
-        data.peopleDirectorMusical = getTypeRelationNormalized(value)
-        break
-      case PROPERTIES.peopleDirectorTechnical:
-        data.peopleDirectorTechnical = getTypeRelationNormalized(value)
-        break
-      case PROPERTIES.peopleMusic:
-        data.peopleMusic = getTypeRelationNormalized(value)
-        break
-      case PROPERTIES.peopleProducer:
-        data.peopleProducer = getTypeRelationNormalized(value)
-        break
-      case PROPERTIES.peopleWriter:
-        data.peopleWriter = getTypeRelationNormalized(value)
-        break
-      /**
-       * @relation @_VENUES
-       */
-      case PROPERTIES.episodesVenues:
-        data.episodesVenues = getTypeRelationNormalized(value)
-        break
-      /**
-       * @rich_text
-       */
-      case PROPERTIES.slug:
-        data.slug = getTypeRichTextNormalized(value)
-        break
-      case PROPERTIES.seoDescription:
-        data.seoDescription = getTypeRichTextNormalized(value)
-        break
-      case PROPERTIES.seoImageDescription:
-        data.seoImageDescription = getTypeRichTextNormalized(value)
-        break
-      case PROPERTIES.spotifyShow:
-        data.spotifyShow = getTypeRichTextNormalized(value)
-        break
-      case PROPERTIES.address.city:
-        data.address.city = getTypeRichTextNormalized(value)
-        break
-      case PROPERTIES.address.neighborhood:
-        data.address.neighborhood = getTypeRichTextNormalized(value)
-        break
-      case PROPERTIES.address.street:
-        data.address.street = getTypeRichTextNormalized(value)
-        break
-      // @todo(specify)
-      case PROPERTIES.podcastAuthor:
-        data.podcastAuthor = getTypeRichTextNormalized(value)
-        break
-      // @todo(specify)
-      case PROPERTIES.podcastAuthorEmail:
-        data.podcastAuthorEmail = getTypeRichTextNormalized(value)
-        break
-      case PROPERTIES.email:
-        data.email = getTypeRichTextNormalized(value)
-        break
-      case PROPERTIES.food:
-        data.food = getTypeRichTextNormalized(value)
-        break
-      case PROPERTIES.name.first:
-        data.name.first = getTypeRichTextNormalized(value)
-        break
-      case PROPERTIES.name.last:
-        data.name.last = getTypeRichTextNormalized(value)
-        break
-      case PROPERTIES.name.preferred:
-        data.name.preferred = getTypeRichTextNormalized(value)
-        break
-      case PROPERTIES.duration:
-        data.duration = getTypeRichTextNormalized(value)
-        break
-      case PROPERTIES.tailwindColorBackground:
-        data.tailwindColorBackground = getTypeRichTextNormalized(value)
-        break
-      /**
-       * @select
-       */
-      case PROPERTIES.address.state:
-        data.address.state = getTypeSelectNormalized(value)
-        break
-      // @todo(specify)
-      case PROPERTIES.type:
-        data.type = getTypeSelectNormalized(value)
-        break
-      /**
-       * @title
-       */
-      case PROPERTIES.title:
-      case 'Name':
-        data.title = getTypeTitleNormalized(value)
-        break
-      /**
-       * @url
-       */
-      case PROPERTIES.social.facebook:
-        data.social.facebook = getTypeUrlNormalized(value)
-        break
-      case PROPERTIES.social.instagram:
-        data.social.instagram = getTypeUrlNormalized(value)
-        break
-      case PROPERTIES.social.twitter:
-        data.social.twitter = getTypeUrlNormalized(value)
-        break
-      case PROPERTIES.ticketUrl:
-        data.ticketUrl = getTypeUrlNormalized(value)
-        break
-      default:
-        break
+    if (getProperties[key]) {
+      data[PROPERTIES_INVERT[key]] = getProperties[key](value)
     }
   })
 
@@ -712,6 +753,8 @@ const deepFetchAllChildren = async (blocks: any[]): Promise<Array<any[] | any>> 
 }
 
 // @todo(next) preview
+// @todo(complexity) 56
+// eslint-disable-next-line complexity
 const getCatchAll = async ({
   cache = false,
   catchAll,

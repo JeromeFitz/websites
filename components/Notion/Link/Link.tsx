@@ -38,6 +38,8 @@ const Emoji = dynamic(() => import('~components/Notion/Emoji'), {
 const bgLight = 'from-gray-200 via-gray-400 to-gray-600'
 const bgDark = 'dark:from-gray-300 dark:via-gray-500 dark:to-gray-300'
 
+// @todo(complexity) 21
+// eslint-disable-next-line complexity
 const Link = ({ item, itemIndex, routeType }) => {
   const { audio } = useUI()
   const { theme } = useTheme()

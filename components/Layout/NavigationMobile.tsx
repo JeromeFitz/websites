@@ -140,9 +140,12 @@ const NavigationMobile = () => {
               // variants={list}
             >
               {activeLinks.map((link, linkIndex) => {
-                if (!link.active) {
-                  return null
-                }
+                if (!link.active) return null
+
+                const displayNavigation10 = displayNavigation ? 1 : 0
+                // const displayNavigation01 = displayNavigation ? 0 : 1
+                // const displayNavigation00 = displayNavigation ? 0 : 0
+                const displayNavigation00 = 0
 
                 // const delay = [
                 //   'delay-75',
@@ -170,9 +173,9 @@ const NavigationMobile = () => {
                     key={key}
                     initial={{ scale: 0, y: 0 }}
                     animate={{
-                      scale: displayNavigation ? 1 : 0,
-                      y: displayNavigation ? 0 : 0,
-                      opacity: displayNavigation ? 1 : 0,
+                      scale: displayNavigation10,
+                      y: displayNavigation00,
+                      opacity: displayNavigation10,
                     }}
                     exit={{ scale: 0, y: 0 }}
                     transition={{
