@@ -35,20 +35,18 @@ const copy = {
     cost: 15,
   },
   venue: {
-    address: {
-      city: 'Pittsburgh',
-      lat: 40.4434627,
-      lng: -79.9987216,
-      neighborhood: 'Downtown',
-      zipCode: 15222,
-      street: '943 Liberty Ave.',
-      state: {
-        '2ca5af40-41c8-40fc-8967-051641bb1012': {
-          id: '2ca5af40-41c8-40fc-8967-051641bb1012',
-          name: 'PA',
-          color: 'purple',
-          slug: 'pa-1',
-        },
+    addressCity: 'Pittsburgh',
+    addressLatitude: 40.4434627,
+    addressLongitude: -79.9987216,
+    addressNeighborhood: 'Downtown',
+    addressZipCode: 15222,
+    addressStreet: '943 Liberty Ave.',
+    addressState: {
+      '2ca5af40-41c8-40fc-8967-051641bb1012': {
+        id: '2ca5af40-41c8-40fc-8967-051641bb1012',
+        name: 'PA',
+        color: 'purple',
+        slug: 'pa-1',
       },
     },
     title: 'Arcade Comedy Theater',
@@ -224,10 +222,10 @@ const Event = ({ data: dataEvent }) => {
               >
                 <Icon className="h-4 w-4 mr-2" icon={'LocationMarkerIcon'} />
                 <span>
-                  {venue?.address?.street}
+                  {venue?.addressStreet}
                   <br />
-                  {venue?.address?.city}, PA{` `}
-                  {venue?.address?.zipCode}
+                  {venue?.addressCity}, PA{` `}
+                  {venue?.addressZipCode}
                 </span>
               </div>
               {/* <div
