@@ -22,6 +22,8 @@ const routeTypesArray = [
   'venues',
 ]
 
+// @todo(complexity) 16
+// eslint-disable-next-line complexity
 const getPathVariables = (catchAll: any) => {
   const size: number = _size(catchAll)
   const first: string = _first(catchAll)
@@ -41,7 +43,39 @@ const getPathVariables = (catchAll: any) => {
 
   const url = isPage && first === SLUG__HOMEPAGE ? '' : _join(catchAll, '/')
 
-  const pathVariables = { hasMeta, isPage, isIndex, meta, routeType, slug, url }
+  /**
+   * @test cases
+   */
+  // 1 = /colophon
+  // 2 = /blog, /events, /podcasts
+  // 3 = /blog/2020, /blog/2020/05, /blog/2020/05/09
+  //     /events/2020, /events/2020/05, /events/2020/05/09,
+  // 4 = /blog/2020/05/09/title, /events/2020/05/09/title,
+  //     /podcasts/knockoffs/i-know-what-you-did-last-summer
+  // 5 = /shows/alex-o-jerome, /events/2020/05/09/jerome-and, /podcasts/knockoffs
+  let dataType = 0
+  if (isPage) {
+    dataType = 1
+  } else if (isIndex && !hasMeta) {
+    dataType = 2
+  } else if (isIndex && hasMeta) {
+    dataType = 3
+  } else if (hasMeta) {
+    dataType = 4
+  } else {
+    dataType = 5
+  }
+
+  const pathVariables = {
+    dataType,
+    hasMeta,
+    isPage,
+    isIndex,
+    meta,
+    routeType,
+    slug,
+    url,
+  }
 
   return pathVariables
 }

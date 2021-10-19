@@ -15,6 +15,81 @@ const SORTS: any[] = [
   },
 ]
 
+class RELATIONS_TYPES {
+  constructor(private relationType: string) {}
+
+  getRelationType(): string {
+    return this.relationType
+  }
+
+  ['peopleCast']({ reqQuery: { value } }) {
+    return {
+      k: 'Shows.People.Cast',
+      v: value,
+    }
+  }
+  ['peopleCrew']({ reqQuery: { value } }) {
+    return {
+      k: 'Shows.People.Crew',
+      v: value,
+    }
+  }
+  ['peopleDirector']({ reqQuery: { value } }) {
+    return {
+      k: 'Shows.People.Director',
+      v: value,
+    }
+  }
+  ['peopleDirectorMusical']({ reqQuery: { value } }) {
+    return {
+      k: 'Shows.People.DirectorMusical',
+      v: value,
+    }
+  }
+  ['peopleDirectorTechnical']({ reqQuery: { value } }) {
+    return {
+      k: 'Shows.People.DirectorTechnical',
+      v: value,
+    }
+  }
+  ['peopleHost']({ reqQuery: { value } }) {
+    return {
+      k: 'Podcasts.People.Host',
+      v: value,
+    }
+  }
+  ['peopleMusic']({ reqQuery: { value } }) {
+    return {
+      k: 'Shows.People.Music',
+      v: value,
+    }
+  }
+  ['peopleProducer']({ reqQuery: { routeType, value } }) {
+    return {
+      k: routeType === 'podcasts' ? 'Podcasts.Producer' : 'Shows.People.Producer',
+      v: value,
+    }
+  }
+  ['peopleThanks']({ reqQuery: { routeType, value } }) {
+    return {
+      k: routeType === 'podcasts' ? 'Podcasts.People.Thanks' : 'Shows.People.Thanks',
+      v: value,
+    }
+  }
+  ['peopleGuest']({ reqQuery: { value } }) {
+    return {
+      k: 'Episodes.People.Guest',
+      v: value,
+    }
+  }
+  ['peopleWriter']({ reqQuery: { value } }) {
+    return {
+      k: 'Shows.People.Writer',
+      v: value,
+    }
+  }
+}
+
 class DATABASE_TYPES {
   constructor(private databaseType: string) {}
 
@@ -58,71 +133,26 @@ class DATABASE_TYPES {
     }
   }
 
-  // @todo(complexity) 16
-  // eslint-disable-next-line complexity
   ['people']({ reqQuery }) {
     let filter = {}
     const sorts = SORTS
 
-    const { routeType, key, value } = reqQuery
-    let k: string, v: any
+    let k = null,
+      v = null
 
-    switch (key) {
-      /**
-       * @shows
-       */
-      case 'peopleCast':
-        k = 'Shows.People.Cast'
-        v = value
-        break
-      case 'peopleCrew':
-        k = 'Shows.People.Crew'
-        v = value
-        break
-        v = value
-        break
-      case 'peopleDirector':
-        k = 'Shows.People.Director'
-        v = value
-        break
-      case 'peopleDirectorMusical':
-        k = 'Shows.People.DirectorMusical'
-        v = value
-        break
-      case 'peopleDirectorTechnical':
-        k = 'Shows.People.DirectorTechnical'
-        v = value
-        break
-      case 'peopleHost':
-        k = 'Podcasts.People.Host'
-        v = value
-        break
-      case 'peopleMusic':
-        k = 'Shows.People.Music'
-        v = value
-        break
-      case 'peopleProducer':
-        k = routeType === 'podcasts' ? 'Podcasts.Producer' : 'Shows.People.Producer'
-        v = value
-        break
-      case 'peopleThanks':
-        k =
-          routeType === 'podcasts' ? 'Podcasts.People.Thanks' : 'Shows.People.Thanks'
-        v = value
-        break
-      // @todo(notion) dry
-      case 'peopleGuest':
-        k = 'Episodes.People.Guest'
-        v = value
-        break
-      case 'peopleWriter':
-        k = 'Shows.People.Writer'
-        v = value
-        break
-      default:
+    // @question(constructor) this needs to be reset each time
+    const getRELATIONSTYPES = new RELATIONS_TYPES('')
+    const { key } = reqQuery
+    if (key) {
+      if (getRELATIONSTYPES[key]) {
+        const RELATIONSTYPE_DATA = getRELATIONSTYPES[key]({ reqQuery })
+        k = RELATIONSTYPE_DATA?.k
+        v = RELATIONSTYPE_DATA?.v
+      } else {
         // hasError = true
-        break
+      }
     }
+
     const filterPeopleShows = []
     !!k &&
       !!v &&
