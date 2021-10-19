@@ -81,6 +81,8 @@ export const UIContext = React.createContext<State | any>(initialState)
 
 UIContext.displayName = 'UIContext'
 
+// @todo(complexity) 16
+// eslint-disable-next-line complexity
 function uiReducer(state: State, action: Action) {
   switch (action.type) {
     case 'OPEN_SIDEBAR': {

@@ -19,6 +19,8 @@ const Listing = dynamic(() => import('~components/Notion/Listing'), {})
 //   {}
 // )
 
+// @todo(complexity) 25
+// eslint-disable-next-line complexity
 const Page = ({ data, props }) => {
   const {
     // content: contentFallback,
@@ -177,6 +179,7 @@ const Page = ({ data, props }) => {
                   ? ['shows', 'eventsLineupShowIds']
                   : [
                       'peopleCast',
+                      'peopleGuest',
                       'peopleHost',
                       'peopleWriter',
                       'peopleProducer',
