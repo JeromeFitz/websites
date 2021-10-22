@@ -24,8 +24,8 @@ import _filter from 'lodash/filter'
 import _invert from 'lodash/invert'
 import _map from 'lodash/map'
 import _omit from 'lodash/omit'
-// import _pick from 'lodash/pick'
 import _size from 'lodash/size'
+import _sortBy from 'lodash/sortBy'
 
 // import isUndefined from '~utils/isUndefined'
 // import asyncForEach from '~lib/asyncForEach'
@@ -313,6 +313,17 @@ const getTypeRichTextNormalized = (data: any) => {
   // console.dir(`data`)
   // console.dir(data)
   return !!data?.rich_text ? data?.rich_text[0]?.plain_text : null
+}
+
+const getTypeRollupNormalized = (data: any) => {
+  // console.dir(`> getTypeRollupNormalized`)
+  // console.dir(`data`)
+  // console.dir(data?.rollup?.array)
+  // _map(data?.rollup?.array, (item) => {
+  //   // console.dir(item)
+  //   // console.dir(item?.title[0]?.plain_text)
+  // })
+  return _sortBy(_map(data?.rollup?.array, (item) => getTypeTitleNormalized(item)))
 }
 
 const getTypeSelectNormalized = (data: any) => {
@@ -631,6 +642,15 @@ class Properties {
   }
   [PROPERTIES.tailwindColorBackground](value) {
     return this.richText(value)
+  }
+  /**
+   * @rollup
+   */
+  rollup(value) {
+    return getTypeRollupNormalized(value)
+  }
+  [PROPERTIES.rollupCast](value) {
+    return this.rollup(value)
   }
   /**
    * @select
