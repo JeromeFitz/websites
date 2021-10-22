@@ -203,7 +203,25 @@ interface NormalizerProperties {
   seoImageDescription?: string
   spotifyShow?: string
   slug?: string
-  tailwindColorBackground?: string
+  /**
+   * @rollup
+   */
+  rollupCast?: any[string]
+  rollupCastPast?: any[string]
+  rollupCrew?: any[string]
+  rollupDirector?: any[string]
+  rollupDirectorMusical?: any[string]
+  rollupDirectorTechnical?: any[string]
+  rollupGuest?: any[string]
+  rollupHost?: any[string]
+  rollupLineup?: any[string]
+  rollupMusic?: any[string]
+  rollupProducer?: any[string]
+  rollupShow?: any[string]
+  rollupSoundEngineer?: any[string]
+  rollupTags?: any[string]
+  rollupThanks?: any[string]
+  rollupWriter?: any[string]
   /**
    * @select
    */
@@ -320,7 +338,7 @@ const getTypeRollupNormalized = (data: any) => {
   // console.dir(`data`)
   // console.dir(data?.rollup?.array)
   // _map(data?.rollup?.array, (item) => {
-  //   // console.dir(item)
+  //   console.dir(item)
   //   // console.dir(item?.title[0]?.plain_text)
   // })
   return _sortBy(_map(data?.rollup?.array, (item) => getTypeTitleNormalized(item)))
@@ -649,9 +667,59 @@ class Properties {
   rollup(value) {
     return getTypeRollupNormalized(value)
   }
+  // show
   [PROPERTIES.rollupCast](value) {
     return this.rollup(value)
   }
+  [PROPERTIES.rollupCastPast](value) {
+    return this.rollup(value)
+  }
+  [PROPERTIES.rollupCrew](value) {
+    return this.rollup(value)
+  }
+  [PROPERTIES.rollupDirector](value) {
+    return this.rollup(value)
+  }
+  [PROPERTIES.rollupDirectorMusical](value) {
+    return this.rollup(value)
+  }
+  [PROPERTIES.rollupDirectorTechnical](value) {
+    return this.rollup(value)
+  }
+  [PROPERTIES.rollupGuest](value) {
+    return this.rollup(value)
+  }
+  [PROPERTIES.rollupHost](value) {
+    return this.rollup(value)
+  }
+  [PROPERTIES.rollupLineup](value) {
+    return this.rollup(value)
+  }
+  [PROPERTIES.rollupMusic](value) {
+    return this.rollup(value)
+  }
+  [PROPERTIES.rollupProducer](value) {
+    return this.rollup(value)
+  }
+  [PROPERTIES.rollupShow](value) {
+    return this.rollup(value)
+  }
+  [PROPERTIES.rollupSoundEngineer](value) {
+    return this.rollup(value)
+  }
+  [PROPERTIES.rollupTags](value) {
+    return this.rollup(value)
+  }
+  [PROPERTIES.rollupTagsSecondary](value) {
+    return this.rollup(value)
+  }
+  [PROPERTIES.rollupThanks](value) {
+    return this.rollup(value)
+  }
+  [PROPERTIES.rollupWriter](value) {
+    return this.rollup(value)
+  }
+
   /**
    * @select
    */
@@ -698,9 +766,13 @@ class Properties {
   }
 }
 
-const normalizerProperties = (properties) => {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const normalizerProperties = (properties, _id) => {
   const data: NormalizerProperties = dataInitial
   // @question(constructor) this needs to be reset each time
+  // console.dir(`> properties`)
+  // console.dir(properties)
+  // const getProperties = new Properties(_id)
   const getProperties = new Properties('')
   const PROPERTIES_INVERT = _invert(PROPERTIES)
   _map(properties, (value, key) => {
@@ -732,7 +804,7 @@ const normalizerProperties = (properties) => {
 
 const normalizerContent = (data) => {
   const normalizedData = _omit(data, 'properties')
-  normalizedData.data = normalizerProperties(data?.properties)
+  normalizedData.data = normalizerProperties(data?.properties, data?.id)
   return normalizedData
 }
 
@@ -740,7 +812,7 @@ const normalizerContentResults = (results) => {
   const normalizedResults = results
   _map(results, (result, index) => {
     const normalizedResult = _omit(result, 'properties')
-    normalizedResult.data = normalizerProperties(result?.properties)
+    normalizedResult.data = normalizerProperties(result?.properties, result?.id)
     normalizedResults[index] = normalizedResult
   })
   return normalizedResults
