@@ -54,6 +54,7 @@ const PROPERTIES = {
   podcastsPeopleHost: 'Podcasts.People.Host',
   published: 'Published',
   // rollupLineupTitle: 'Rollup.Lineup.Titles',
+  rollupCast: 'Rollup.Cast',
   season: 'Season',
   seoDescription: 'SEO.Description',
   seoImage: 'SEO.Image',
