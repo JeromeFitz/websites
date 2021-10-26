@@ -8,13 +8,15 @@ import getTitle from '~lib/notion/getTitle'
 
 const Rollups = (props) => {
   // // const { cache } = useSWRConfig()
-  // console.dir(`props`)
+  // console.dir(`props:`)
   // console.dir(props)
   const { properties, routeType } = props
   //
   const rollupMap =
     routeType === 'events'
       ? ['rollupShow', 'rollupLineup']
+      : routeType === 'podcasts'
+      ? ['rollupGuest', 'rollupHost', 'rollupProducer', 'rollupThanks']
       : [
           'rollupCast',
           'rollupGuest',
