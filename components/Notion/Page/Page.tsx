@@ -9,11 +9,16 @@ import NotionLayout, { ImageLead } from '~components/Notion/Layout'
 import { OL, UL } from '~components/Notion/Listing'
 import { MetaTags } from '~components/Notion/Meta'
 import { Event } from '~components/Notion/Page'
-import Relations from '~components/Notion/Relations'
 import getContentNodes from '~utils/notion/getContentNodes'
 
 const Breadcrumb = dynamic(() => import('~components/Notion/Breadcrumb'), {})
 const Listing = dynamic(() => import('~components/Notion/Listing'), {})
+// const Relations = dynamic(() => import('~components/Notion/Relations'), {})
+const Rollups = dynamic(() => import('~components/Notion/Rollups'), {})
+// const RollupsTags = dynamic(
+//   () => import('~components/Notion/Rollups/RollupsTags'),
+//   {}
+// )
 // const ListingEpisodes = dynamic(
 //   () => import('~components/Notion/Listing').then((mod) => mod.ListingEpisodes),
 //   {}
@@ -165,32 +170,16 @@ const Page = ({ data, props }) => {
           {!!tagParams && !isIndex && (
             <>
               <MetaTags key={`meta-tags--${id}`} tagParams={tagParams} />
+              {/* <RollupsTags key={`rollup-tags--${id}`} properties={properties} /> */}
               {/* <div className="spacer--h" /> */}
             </>
           )}
           {!isIndex && (
-            <Relations
+            <Rollups
               id={id}
               isIndex={isIndex}
               key={`relations--${id}`}
               properties={properties}
-              relationsMap={
-                routeType === 'events'
-                  ? ['shows', 'eventsLineupShowIds']
-                  : [
-                      'peopleCast',
-                      'peopleGuest',
-                      'peopleHost',
-                      'peopleWriter',
-                      'peopleProducer',
-                      'peopleDirector',
-                      'peopleDirectorMusical',
-                      'peopleMusic',
-                      'peopleDirectorTechnical',
-                      'peopleCrew',
-                      'peopleThanks',
-                    ]
-              }
               routeType={routeType}
               slug={slug}
             />
