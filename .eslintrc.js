@@ -1,10 +1,5 @@
-const config = require('@jeromefitz/codestyle/.eslintrc.js')
+const config = require('@jeromefitz/codestyle/.eslintrc.next.js')
 
 module.exports = {
   ...config,
-  extends: [...config.extends, 'next'],
-  rules: {
-    ...config.rules,
-    complexity: [2, 10],
-  },
 }
