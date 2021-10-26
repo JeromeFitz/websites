@@ -125,6 +125,7 @@ const nextConfig = {
   // rewrites() {
   //   return getRedirects
   // },
+  swcMinify: true,
   useFileSystemPublicRoutes: true, // false will block './pages' as router
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
