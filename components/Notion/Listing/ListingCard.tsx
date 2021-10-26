@@ -11,6 +11,7 @@ import useSWR, { useSWRConfig } from 'swr'
 import { Breakout } from '~components/Layout'
 import { IMAGE__FALLBACKS__SHOWS, IMAGE__PLACEHOLDER } from '~lib/constants'
 import fetcher from '~lib/fetcher'
+import rangeMap from '~utils/rangeMap'
 
 const bgLight = 'from-gray-700 via-gray-900 to-black'
 const bgDark = 'dark:from-gray-700 dark:via-gray-900 dark:to-gray-500'
@@ -159,7 +160,43 @@ const Listing = () => {
     !isError &&
     (isLoading || !data || data?.content === undefined || data?.info === undefined)
   ) {
-    return null
+    return (
+      <>
+        {rangeMap(3, (i) => (
+          <div className={cx('flex flex-col')} key={`ghost-${i}`}>
+            <div className={cx('relative h-48 md:h-72 p-2 w-full', 'rounded-xl')}>
+              <div
+                className={cx(
+                  'rounded-xl animate-pulse bg-black dark:bg-white w-full h-full'
+                )}
+              />
+            </div>
+
+            <div className={cx('py-2 px-2')}>
+              <div
+                className={cx(
+                  'animate-pulse rounded-xl h-7 w-1/2 animate-pulse bg-black dark:bg-white my-2 md:my-3'
+                )}
+              />
+              <div
+                className={cx(
+                  'animate-pulse rounded-xl h-5 w-full animate-pulse bg-black dark:bg-white my-2 md:my-3'
+                )}
+              />
+              <div
+                className={cx(
+                  'animate-pulse rounded-xl h-5 w-3/4 animate-pulse bg-black dark:bg-white'
+                )}
+              />
+              <p className={cx('invisible')}>
+                Jerome Fitzgerald rules, however, this hack does not rule. This hack
+                is very hacky. No likey the hackey.
+              </p>
+            </div>
+          </div>
+        ))}
+      </>
+    )
   }
 
   return (
@@ -214,6 +251,8 @@ const Shows = () => {
             'overflow-hidden',
             'w-full max-w-max',
             'py-4 md:py-6 px-0 md:px-6 my-0 mx-auto',
+            '',
+            'auto-cols-max',
             ''
           )}
         >

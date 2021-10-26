@@ -3,8 +3,10 @@ require('dotenv').config({ path: './.env.build' })
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
-const { withPlaiceholder } = require('@plaiceholder/next')
+// const { withPlaiceholder } = require('@plaiceholder/next')
 const { withPlugins } = require('next-compose-plugins')
+
+const { withPlaiceholder } = require('./patches/@plaiceholder/next/dist')
 // const withPWA = require('next-pwa')
 
 // const getRedirects = require('./config/notion/website/getRedirects')
@@ -125,6 +127,7 @@ const nextConfig = {
   // rewrites() {
   //   return getRedirects
   // },
+  swcMinify: false,
   useFileSystemPublicRoutes: true, // false will block './pages' as router
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
