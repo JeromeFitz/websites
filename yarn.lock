@@ -1701,18 +1701,18 @@
   resolved "https://registry.yarnpkg.com/@panva/asn1.js/-/asn1.js-1.0.0.tgz#dd55ae7b8129e02049f009408b97c61ccf9032f6"
   integrity sha512-UdkG3mLEqXgnlKsWanWcgb6dOjUzJ+XC5f+aWw30qrtjxeNUSfKX1cd5FBzOaXQumoe9nIqeZUvrRJS03HCCtw==
 
-"@plaiceholder/next@2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@plaiceholder/next/-/next-2.1.0.tgz#0bf2dff97b3f2208be3d88a3162013794ccc0745"
-  integrity sha512-7iTw4Oxh0eLkAZnAl5zNkwnXjzhn3WSuuPIsGe9EszLa01eLv/vFwnG7etnX5hKNWhQ48x9vM/smltrfF3DTQw==
+"@plaiceholder/next@2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@plaiceholder/next/-/next-2.2.0.tgz#e75338ec861cba62713c8876714bd602f0bf7c47"
+  integrity sha512-RRn6nivDVK5ibtcaYX50TClIS6gXVTClRp1PWaZfXvvdowTR+MRKjFSA2K4FAAk0O65pxPYLz1O2VaHiGN/6DA==
 
-"@plaiceholder/tailwindcss@2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@plaiceholder/tailwindcss/-/tailwindcss-2.1.0.tgz#1132499d79e5b314156b8de570a2bef942577990"
-  integrity sha512-u+a8p9BhkMC2kGpTT+UOHCHeO29bKwpGh+fAzlD8w1PBbhlqLC5K1wAogqbQvxz4CEZghPj/aVXrWXpT69JhWA==
+"@plaiceholder/tailwindcss@2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@plaiceholder/tailwindcss/-/tailwindcss-2.2.0.tgz#5968a4560f8eade3c7dade040431510a1382bce7"
+  integrity sha512-OI46IjQvvavkSCHxtYY5s9GG9xZ2ZfZ+4TZdQ5tNXwx7it6YWxuoK0L2z8x/Utue8F6818gP/rMsjxBxFL7Sfg==
   dependencies:
     make-synchronous "0.1.1"
-    plaiceholder "^2.0.1"
+    plaiceholder "^2.2.0"
 
 "@polka/url@^1.0.0-next.9":
   version "1.0.0-next.11"
@@ -3199,10 +3199,10 @@ blork@^9.3.0:
   resolved "https://registry.yarnpkg.com/blork/-/blork-9.3.0.tgz#6c0b4fbb6b754998ae5460c26463d95c635e4a35"
   integrity sha512-9naBrHS2bwCQeGqGR9ptcoll6utsox9jtk1E0SwOAFa4RCV/IQHoBJARdi8AhHQTPPoWkjixMrzHvQKAV5Fx2A==
 
-blurhash@1.1.3:
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/blurhash/-/blurhash-1.1.3.tgz#dc325af7da836d07a0861d830bdd63694382483e"
-  integrity sha512-yUhPJvXexbqbyijCIE/T2NCXcj9iNPhWmOKbPTuR/cm7Q5snXYIfnVnz6m7MWOXxODMz/Cr3UcVkRdHiuDVRDw==
+blurhash@1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/blurhash/-/blurhash-1.1.4.tgz#a7010ceb3019cd2c9809b17c910ebf6175d29244"
+  integrity sha512-MXIPz6zwYUKayju+Uidf83KhH0vodZfeRl6Ich8Gu+KGl0JgKiFq9LsfqV7cVU5fKD/AotmduZqvOfrGKOfTaA==
 
 bn.js@^4.0.0, bn.js@^4.1.0, bn.js@^4.11.9:
   version "4.12.0"
@@ -8660,6 +8660,11 @@ node-fetch@2.6.1:
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.1.tgz#045bd323631f76ed2e2b55573394416b639a0052"
   integrity sha512-V4aYg89jEoVRxRb2fJdAg8FHvI7cEyYdVAh94HH0UIK8oJxUfkjlDQN9RbMx+bEjP7+ggMiFRprSti032Oipxw==
 
+node-fetch@2.6.2:
+  version "2.6.2"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.2.tgz#986996818b73785e47b1965cc34eb093a1d464d0"
+  integrity sha512-aLoxToI6RfZ+0NOjmWAgn9+LEd30YCkJKFSyWacNZdEKTit/ZMcKjGkTRo8uWEsnIb/hfKecNPEbln02PdWbcA==
+
 node-fetch@2.6.5, node-fetch@^2.3.0, node-fetch@^2.6.1, node-fetch@^2.6.2:
   version "2.6.5"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.5.tgz#42735537d7f080a7e5f78b6c549b7146be1742fd"
@@ -9442,15 +9447,15 @@ pkg-dir@^4.1.0, pkg-dir@^4.2.0:
   dependencies:
     find-up "^4.0.0"
 
-plaiceholder@2.0.1, plaiceholder@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/plaiceholder/-/plaiceholder-2.0.1.tgz#7f23ba36c49671d94061fb1268a8988c6c522e2d"
-  integrity sha512-qB1duTU59c9H2pvUP99cnoqtK74cnVXTsB4VSJnOIFnc5bZlY+D54y6gf6+XgWpDeRKtHG2tMPt+kfwGV+d7RQ==
+plaiceholder@2.2.0, plaiceholder@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/plaiceholder/-/plaiceholder-2.2.0.tgz#70e97b010fdeea0303095a2e190aa7e65b7d98f3"
+  integrity sha512-tsfQ/Uz/vkKQCF+FFFVeqhbvmna57fjv/JKc2Fzs1Tz1S2vF70R7/YQpCFdmsVpPkrU/sZtLnxNNvopzv03Yhw==
   dependencies:
-    blurhash "1.1.3"
+    blurhash "1.1.4"
     image-size "1.0.0"
     node-cache "5.1.2"
-    node-fetch "2.6.1"
+    node-fetch "2.6.2"
 
 platform@1.3.6:
   version "1.3.6"
