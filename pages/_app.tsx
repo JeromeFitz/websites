@@ -3,7 +3,6 @@ import '~styles/index.css'
 import '~styles/chrome.css'
 
 // // import { AnimatePresence } from 'framer-motion'
-// import { AnimateSharedLayout } from 'framer-motion'
 // import Inspect from 'inspx'
 import type { AppProps, NextWebVitalsMetric } from 'next/app'
 import dynamic from 'next/dynamic'
@@ -63,9 +62,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
           <NotificationProvider>
             <Layout pageProps={pageProps}>
               <NavigationMobileWithNoSSR />
-              {/* <AnimateSharedLayout type="crossfade"> */}
               <Component {...pageProps} key={router.route} />
-              {/* </AnimateSharedLayout> */}
             </Layout>
             <NProgress />
           </NotificationProvider>
