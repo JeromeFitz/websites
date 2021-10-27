@@ -114,6 +114,7 @@ const nextConfig = {
       'tailwindcss.com', // Tailwind
       'images.unsplash.com', // Unsplash
     ],
+    formats: ['image/avif', 'image/webp'],
     imageSizes: [24, 64, 300],
   },
   i18n: {
@@ -126,7 +127,7 @@ const nextConfig = {
   // rewrites() {
   //   return getRedirects
   // },
-  swcMinify: false,
+  swcMinify: true,
   useFileSystemPublicRoutes: true, // false will block './pages' as router
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
