@@ -83,11 +83,13 @@ const nextConfig = {
   experimental: {
     cacheUnaffected: false,
     catchAllRouting: true,
+    concurrentFeatures: false,
     enableBlurryPlaceholder: true,
     jsconfigPaths: true,
     modern: true,
     polyfillsOptimization: true,
     productionBrowserSourceMaps: false,
+    serverComponents: false,
   },
   future: { strictPostcssConfiguration: true },
   async headers() {
