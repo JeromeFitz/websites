@@ -203,7 +203,7 @@ const books = {
   'will-not-attend': {
     id: 'will-not-attend',
     slug: 'will-not-attend',
-    title: 'The Stench of Honolulu',
+    title: 'Will Not Attend',
     subtitle: 'Lively Stories of Detachment and Isolation',
     status: 'Complete',
     author: 'Adam Resnick',
@@ -260,7 +260,7 @@ const books = {
     id: 'life-happens',
     slug: 'life-happens',
     title: 'Life Happens',
-    subtitle: 'and other unavoidable truths',
+    subtitle: 'And Other Unavoidable Truths',
     status: 'Complete',
     author: 'Connie Schultz',
   },
@@ -444,11 +444,14 @@ const Music = () => {
             <span className={cx('font-bold')}>Robert A. Caro</span> and not just
             because I spent a large chunk of my past year with their words (and his
             wife <span className={cx('font-bold')}>Ina Caro</span>, her books on
-            France and Parise should be in up next but am holding until we can travel
-            again). While <span className={cx('font-bold')}>Madeline Miller</span>{' '}
-            has jump-started me back into the world of fiction after many years of
-            unexplainable avoidance. My main focus are memoirs, biographies, and
-            history I guess looking this over somewhat quickly.
+            France and Paris should be in{' '}
+            <span className={cx('italic')}>up next</span> but am holding until we can
+            travel again).{` `}
+            <span className={cx('font-bold')}>Madeline Miller</span> has jump-started
+            me back into the world of fiction after many years of unexplainable
+            avoidance. My main focus are memoirs, biographies, and history I guess
+            after looking this over somewhat quickly.{' '}
+            <Emoji character={`😆️`} margin={true} />
           </p>
           <h2 className="my-4">
             <Emoji character={`📚️`} margin={true} />
