@@ -50,7 +50,6 @@ const ItemMemo = memo(Item)
 const Navigation = () => {
   return (
     <>
-      {/* <AnimateSharedLayout> */}
       <nav className={cx('flex flex-col md:flex-row')}>
         <ul>
           {links.map((link, linkIndex) => {
@@ -61,7 +60,6 @@ const Navigation = () => {
           })}
         </ul>
       </nav>
-      {/* </AnimateSharedLayout> */}
     </>
   )
 }
