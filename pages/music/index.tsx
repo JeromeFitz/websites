@@ -3,6 +3,7 @@ import cx from 'clsx'
 import { motion } from 'framer-motion'
 import _find from 'lodash/find'
 import dynamic from 'next/dynamic'
+import NextLink from 'next/link'
 import { useState } from 'react'
 import { useSound } from 'use-sound'
 
@@ -145,7 +146,23 @@ const Music = () => {
               Music
             </span>
             ” library is at over 50 days, and am continuing an ever growing vinyl
-            collection (have not yet made the leap to first editions, heh).
+            collection (have not yet made the leap to first editions, heh). Also am
+            working on a{' '}
+            <NextLink href="/books">
+              <a className="font-black _text-black underline-style-solid underline-offset-md underline-thickness-md">
+                books
+              </a>
+            </NextLink>{' '}
+            section, which does not have a cool API like the aforementioned{` `}
+            <span
+              className={cx(
+                'font-bold text-transparent bg-clip-text bg-gradient-to-t',
+                'from-green-500 via-green-500 to-green-500'
+              )}
+            >
+              Spotify
+            </span>
+            {` `}so will take some time.
           </p>
           <p className="prose font-medium">
             Please support artists by going to shows (when we can again), purchasing
