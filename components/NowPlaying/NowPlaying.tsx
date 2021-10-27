@@ -135,7 +135,13 @@ const NowPlaying = () => {
               music
             </a>
           </NextLink>{' '}
-          section.
+          section. (Though full disclosure, I also like to{' '}
+          <NextLink href="/books">
+            <a className="font-black _text-black underline-style-solid underline-offset-md underline-thickness-md">
+              read
+            </a>
+          </NextLink>
+          .)
         </p>
         <div className="flex align-center my-6 w-full">
           <CardWithGlow blurDataURL={album.meta.base64}>
