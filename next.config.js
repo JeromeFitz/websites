@@ -123,6 +123,7 @@ const nextConfig = {
     locales: ['en'],
     defaultLocale: 'en',
   },
+  outputFileTracing: false,
   pageExtensions: ['jsx', 'js', 'tsx', 'ts'],
   poweredByHeader: false,
   // reactStrictMode: true,
