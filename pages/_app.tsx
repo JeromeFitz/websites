@@ -4,6 +4,7 @@ import '~styles/chrome.css'
 
 // // import { AnimatePresence } from 'framer-motion'
 // import Inspect from 'inspx'
+import { IdProvider } from '@radix-ui/react-id'
 import type { AppProps, NextWebVitalsMetric } from 'next/app'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
@@ -45,30 +46,32 @@ function MyApp({ Component, pageProps, router }: AppProps) {
 
   return (
     <>
-      <SWRConfig
-        value={{
-          fallback: { images: IMAGE__FALLBACKS__SHOWS },
-          provider: () => new Map(),
-        }}
-      >
-        {/* <Inspect disabled={process.env.NODE_ENV === 'production'}> */}
-        <Head>
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0,viewport-fit=cover"
-          />
-        </Head>
-        <ManagedUIContext>
-          <NotificationProvider>
-            <Layout pageProps={pageProps}>
-              <NavigationMobileWithNoSSR />
-              <Component {...pageProps} key={router.route} />
-            </Layout>
-            <NProgress />
-          </NotificationProvider>
-        </ManagedUIContext>
-        {/* </Inspect> */}
-      </SWRConfig>
+      <IdProvider>
+        <SWRConfig
+          value={{
+            fallback: { images: IMAGE__FALLBACKS__SHOWS },
+            provider: () => new Map(),
+          }}
+        >
+          {/* <Inspect disabled={process.env.NODE_ENV === 'production'}> */}
+          <Head>
+            <meta
+              name="viewport"
+              content="width=device-width, initial-scale=1.0,viewport-fit=cover"
+            />
+          </Head>
+          <ManagedUIContext>
+            <NotificationProvider>
+              <Layout pageProps={pageProps}>
+                <NavigationMobileWithNoSSR />
+                <Component {...pageProps} key={router.route} />
+              </Layout>
+              <NProgress />
+            </NotificationProvider>
+          </ManagedUIContext>
+          {/* </Inspect> */}
+        </SWRConfig>
+      </IdProvider>
     </>
   )
 }

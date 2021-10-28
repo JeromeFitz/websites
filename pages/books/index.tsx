@@ -1,3 +1,7 @@
+// // import { styled, keyframes } from '@stitches/react'
+// import { violet, blackA, mauve } from '@radix-ui/colors'
+// import * as Accordion from '@radix-ui/react-accordion'
+// import { ChevronDownIcon } from '@radix-ui/react-icons'
 import cx from 'clsx'
 import { motion } from 'framer-motion'
 import _filter from 'lodash/filter'
@@ -5,6 +9,7 @@ import _map from 'lodash/map'
 import _orderBy from 'lodash/orderBy'
 import _size from 'lodash/size'
 import dynamic from 'next/dynamic'
+import React from 'react'
 
 import Layout from '~components/Layout'
 import Seo from '~components/Seo'
@@ -344,6 +349,14 @@ const books = {
     status: 'Pending',
     author: 'Barack Obama',
   },
+  'all-about-me': {
+    id: 'all-about-me',
+    slug: 'all-about-me',
+    title: 'All about Me',
+    subtitle: 'My Remarkable Life in Show Business',
+    status: 'Pending',
+    author: 'Mel Brooks',
+  },
   'me-myself-and-why': {
     id: 'me-myself-and-why',
     slug: 'me-myself-and-why',
@@ -360,6 +373,62 @@ const books = {
     status: 'Complete',
     author: 'Colin Quinn',
   },
+  'the-woman-of-troy': {
+    id: 'the-woman-of-troy',
+    slug: 'the-woman-of-troy',
+    title: 'The Woman of Troy',
+    subtitle: 'A Novel',
+    status: 'Pending',
+    author: 'Pat Barker',
+  },
+  lavinia: {
+    id: 'lavinia',
+    slug: 'lavinia',
+    title: 'Lavinia',
+    subtitle: '',
+    status: 'Pending',
+    author: 'Ursula K. Le Guin',
+  },
+  'the-silence-of-the-girls': {
+    id: 'the-silence-of-the-girls',
+    slug: 'the-silence-of-the-girls',
+    title: 'The Silence of the Girls',
+    subtitle: '',
+    status: 'Pending',
+    author: 'Pat Barker',
+  },
+  'a-thousand-ships': {
+    id: 'a-thousand-ships',
+    slug: 'a-thousand-ships',
+    title: 'A Thousand Ships',
+    subtitle: 'A Novel',
+    status: 'Pending',
+    author: 'Natalie Haynes',
+  },
+  mythos: {
+    id: 'mythos',
+    slug: 'mythos',
+    title: 'Mythos',
+    subtitle: 'The Greek Myths Reimagined',
+    status: 'Pending',
+    author: 'Stephen Fry',
+  },
+  heroes: {
+    id: 'heroes',
+    slug: 'heroes',
+    title: 'Heroes',
+    subtitle: 'The Greek Myths Reimagined',
+    status: 'Pending',
+    author: 'Stephen Fry',
+  },
+  troy: {
+    id: 'troy',
+    slug: 'troy',
+    title: 'Troy',
+    subtitle: 'The Greek Myths Reimagined',
+    status: 'Pending',
+    author: 'Stephen Fry',
+  },
 }
 
 const inProgress = _filter(_orderBy(books, ['author', 'slug'], ['asc']), [
@@ -374,6 +443,160 @@ const complete = _filter(_orderBy(books, ['author', 'slug'], ['asc']), [
   'status',
   'Complete',
 ])
+
+// // const slideDown = keyframes({
+// //   from: { height: 0 },
+// //   to: { height: 'var(--radix-accordion-content-height)' },
+// // });
+
+// // const slideUp = keyframes({
+// //   from: { height: 'var(--radix-accordion-content-height)' },
+// //   to: { height: 0 },
+// // });
+
+// // eslint-disable-next-line react/display-name
+// export const AccordionRoot = React.forwardRef(
+//   ({ children, ...props }, forwardedRef) => (
+//     <Accordion.Root
+//       {...props}
+//       className={cx(`rounded-xl w-full`, 'shadow-2xl')}
+//       ref={forwardedRef}
+//     >
+//       {children}
+//     </Accordion.Root>
+//   )
+// )
+
+// // eslint-disable-next-line react/display-name
+// export const AccordionItem = React.forwardRef(
+//   ({ children, ...props }, forwardedRef) => (
+//     <Accordion.Item
+//       {...props}
+//       className={cx(`rounded-xl w-full`, 'shadow-2xl')}
+//       ref={forwardedRef}
+//       style={{
+//         overflow: 'hidden',
+//         marginTop: 1,
+
+//         // '&:first-child': {
+//         //   marginTop: 0,
+//         //   borderTopLeftRadius: 4,
+//         //   borderTopRightRadius: 4,
+//         // },
+
+//         // '&:last-child': {
+//         //   borderBottomLeftRadius: 4,
+//         //   borderBottomRightRadius: 4,
+//         // },
+
+//         // '&:focus-within': {
+//         //   position: 'relative',
+//         //   zIndex: 1,
+//         //   boxShadow: `0 0 0 2px ${mauve.mauve12}`,
+//         // },
+//       }}
+//     >
+//       {children}
+//     </Accordion.Item>
+//   )
+// )
+
+// // eslint-disable-next-line react/display-name
+// export const AccordionContent = React.forwardRef(
+//   ({ children, ...props }, forwardedRef) => (
+//     <Accordion.Content
+//       {...props}
+//       className={cx(
+//         'overflow-hidden text-base',
+//         'text-black bg-white dark:text-white dark:bg-black'
+//       )}
+//       ref={forwardedRef}
+//       style={
+//         {
+//           // overflow: 'hidden',
+//           // fontSize: 15,
+//           // color: 'black',
+//           // backgroundColor: 'white',
+//           // // '&[data-state="open"]': {
+//           // //   animation: `${slideDown} 300ms cubic-bezier(0.87, 0, 0.13, 1)`,
+//           // // },
+//           // // '&[data-state="closed"]': {
+//           // //   animation: `${slideUp} 300ms cubic-bezier(0.87, 0, 0.13, 1)`,
+//           // // },
+//         }
+//       }
+//     >
+//       <div className={cx('px-4 py-6')}>{children}</div>
+//     </Accordion.Content>
+//   )
+// )
+
+// // eslint-disable-next-line react/display-name
+// export const AccordionTrigger = React.forwardRef(
+//   ({ children, ...props }, forwardedRef) => (
+//     <Accordion.Header
+//       className={cx('flex')}
+//       style={{
+//         all: 'unset',
+//         // display: 'flex',
+//       }}
+//     >
+//       <Accordion.Trigger
+//         {...props}
+//         className={cx(
+//           'flex items-center justify-between',
+//           'h-[45px] px-0 py-6 bg-transparent',
+//           'text-base leading-none',
+//           `color-[${violet.violet11}]`,
+//           `hover:cursor-pointer hover:bg-[${mauve.mauve6}]`
+//         )}
+//         ref={forwardedRef}
+//         style={{
+//           all: 'unset',
+//           // fontFamily: 'inherit',
+//           // backgroundColor: 'transparent',
+//           // padding: '0 20px',
+//           // height: 45,
+//           // flex: 1,
+//           // display: 'flex',
+//           // alignItems: 'center',
+//           // justifyContent: 'space-between',
+//           // fontSize: 15,
+//           // lineHeight: 1,
+//           // color: violet.violet11,
+//           // boxShadow: `0 1px 0 ${mauve.mauve6}`,
+//           // '&[data-state="closed"]': { backgroundColor: 'white' },
+//           // '&[data-state="open"]': { backgroundColor: 'white' },
+//           // '&:hover': { backgroundColor: mauve.mauve2 },
+//         }}
+//       >
+//         {children}
+//         <ChevronDownIcon
+//           // aria-hidden
+//           className={cx(`color-[${violet.violet10}] transform`)}
+//           style={
+//             {
+//               // color: violet.violet10,
+//               // transition: 'transform 300ms cubic-bezier(0.87, 0, 0.13, 1)',
+//               // '[data-state=open] &': { transform: 'rotate(180deg)' },
+//             }
+//           }
+//         />
+//       </Accordion.Trigger>
+//     </Accordion.Header>
+//   )
+// )
+
+const HEADING = ({ emoji, size, title }) => {
+  return (
+    <h2 className="my-4">
+      <Emoji character={emoji} margin={true} />
+      {` `}
+      {title}
+      <sup className={cx('ml-3')}>{size}</sup>
+    </h2>
+  )
+}
 
 const UL = ({ children }) => {
   return <ul className={cx('flex flex-col')}>{children}</ul>
@@ -422,6 +645,16 @@ const Music = () => {
         className={cx('flex flex-col')}
       >
         <motion.div id="content">
+          {/* <AccordionRoot collapsible defaultValue="item-1" type="single">
+            <AccordionItem value="item-1">
+              <AccordionTrigger>Trigger 1</AccordionTrigger>
+              <AccordionContent>Content 1</AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-2">
+              <AccordionTrigger>Trigger 2</AccordionTrigger>
+              <AccordionContent>Content 2</AccordionContent>
+            </AccordionItem>
+          </AccordionRoot> */}
           <h4
             className={cx(
               'rounded-xl  p-4',
@@ -437,7 +670,7 @@ const Music = () => {
           <p className={cx('my-6 prose text-2xl')}>
             They say a CEO reads ~60 books a year. Here is a quick rundown of some of
             the books I am currently reading, have read in the past year, and am
-            looking forward. (Spoiler: I am not a CEO.)
+            looking forward to. (Spoiler: I am not a CEO.)
           </p>
           <p className={cx('my-6 prose text-2xl')}>
             My favorite author is{' '}
@@ -453,30 +686,29 @@ const Music = () => {
             after looking this over somewhat quickly.{' '}
             <Emoji character={`😆️`} margin={true} />
           </p>
-          <h2 className="my-4">
-            <Emoji character={`📚️`} margin={true} />
-            {` `}Currently Reading ({_size(inProgress)}):
-          </h2>
+          <HEADING
+            emoji={`📚️`}
+            title={`Currently Reading`}
+            size={_size(inProgress)}
+          />
           <UL>
             {_map(inProgress, (book, bookIndex) => (
               <ListItem book={book} key={`book--inProgress--${bookIndex}`} />
             ))}
           </UL>
           <div className={cx('spacer my-4 bg-gray-600 dark:bg-gray-300')} />
-          <h2 className="my-4">
-            <Emoji character={`🏁️`} margin={true} />
-            {` `}Recently Finished ({_size(complete)}):
-          </h2>
+          <HEADING
+            emoji={`🏁️`}
+            title={`Recently Finished`}
+            size={_size(complete)}
+          />
           <UL>
             {_map(complete, (book, bookIndex) => (
               <ListItem book={book} key={`book--complete--${bookIndex}`} />
             ))}
           </UL>
           <div className={cx('spacer my-4 bg-gray-600 dark:bg-gray-300')} />
-          <h2 className="my-4">
-            <Emoji character={`🔜️`} margin={true} />
-            {` `}Up Next ({_size(pending)}):
-          </h2>
+          <HEADING emoji={`🔜️`} title={`Up Next`} size={_size(pending)} />
           <UL>
             {_map(pending, (book, bookIndex) => (
               <ListItem book={book} key={`book--pending--${bookIndex}`} />
