@@ -129,7 +129,7 @@
     "is-ci": "3.0.1",
     "jest": "27.3.1",
     "next-compose-plugins": "2.2.1",
-    "next-sitemap": "1.6.192",
+    "next-sitemap": "1.6.199",
     "next-unused": "0.0.6",
     "pinst": "2.1.6",
     "postcss": "8.3.11",
