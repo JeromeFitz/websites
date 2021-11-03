@@ -53,9 +53,6 @@ class ContentTypes {
     const nodeContent = _map(content.column.children, (content) =>
       getContentType(content)
     )
-    console.dir(`> nodeContent`)
-    console.dir(nodeContent)
-    // return <React.Fragment key={id}>{nodeContent}</React.Fragment>
     return (
       <div key={id} className={cx('column flex flex-col my-8 md:my-0')}>
         {nodeContent}
@@ -64,13 +61,9 @@ class ContentTypes {
   }
 
   columnList({ content, id }) {
-    console.dir(`> columnList`)
-    console.dir(id)
-    console.dir(content)
     const nodeContentParent = _map(content.children, (child) =>
       this.column({ content: child, has_children: child.has_children, id: child.id })
     )
-    console.dir(`> nodeContentParent`)
     return (
       <div key={id} className={cx('columns flex flex-col md:flex-row my-8')}>
         {nodeContentParent}
@@ -288,6 +281,13 @@ class ContentTypes {
   }
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const getUnsupportedType = ({ content, id, type }) => {
+  console.dir(`@unsupported(notion): ${type}`)
+  // console.dir(content)
+  return <React.Fragment key={id} />
+}
+
 const getContentType = (item: NotionBlock, images?: any[]) => {
   const { has_children, id, type } = item
   const content = item[type]
@@ -298,12 +298,9 @@ const getContentType = (item: NotionBlock, images?: any[]) => {
   // @question(constructor) this needs to be reset each time
   const getContentTypes = new ContentTypes('')
 
-  return getContentTypes[type] ? (
-    getContentTypes[type]({ content, has_children, id, images, item })
-  ) : (
-    // console.dir(`@unsupported(notion): ${type}`)
-    <React.Fragment key={id} />
-  )
+  return getContentTypes[type]
+    ? getContentTypes[type]({ content, has_children, id, images, item })
+    : getUnsupportedType({ content, id, type })
 }
 
 export default getContentType
