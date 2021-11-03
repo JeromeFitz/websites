@@ -48,6 +48,39 @@ class ContentTypes {
     return null
   }
 
+  column({ content, has_children, id }) {
+    if (!has_children) return null
+    const nodeContent = _map(content.column.children, (content) =>
+      getContentType(content)
+    )
+    console.dir(`> nodeContent`)
+    console.dir(nodeContent)
+    // return <React.Fragment key={id}>{nodeContent}</React.Fragment>
+    return (
+      <div key={id} className={cx('column flex flex-col my-8 md:my-0')}>
+        {nodeContent}
+      </div>
+    )
+  }
+
+  columnList({ content, id }) {
+    console.dir(`> columnList`)
+    console.dir(id)
+    console.dir(content)
+    const nodeContentParent = _map(content.children, (child) =>
+      this.column({ content: child, has_children: child.has_children, id: child.id })
+    )
+    console.dir(`> nodeContentParent`)
+    return (
+      <div key={id} className={cx('columns flex flex-col md:flex-row my-8')}>
+        {nodeContentParent}
+      </div>
+    )
+  }
+  ['column_list']({ content, id }) {
+    return this.columnList({ content, id })
+  }
+
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   content({ content, id }) {
     return content

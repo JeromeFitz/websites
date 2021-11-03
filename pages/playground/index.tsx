@@ -1,3 +1,4 @@
+// import { BigHead } from '@bigheads/core'
 import cx from 'clsx'
 import { motion, useReducedMotion } from 'framer-motion'
 import dynamic from 'next/dynamic'
@@ -12,7 +13,11 @@ import Seo from '~components/Seo'
 import { Container, Grid, Skeleton, Button } from '~components/UI'
 import { useUI } from '~context/ManagedUIContext'
 import { useNotification } from '~context/Notification'
-import { MOTION_PAGE_VARIANTS, WEBKIT_BACKGROUND } from '~lib/constants'
+import {
+  // BIG_HEAD_PROPS,
+  MOTION_PAGE_VARIANTS,
+  WEBKIT_BACKGROUND,
+} from '~lib/constants'
 import rangeMap from '~utils/rangeMap'
 
 const Breadcrumb = dynamic(() => import('~components/Notion/Breadcrumb'), {})
@@ -190,6 +195,22 @@ const Playground = () => {
           Halo <WavingHand />
         </h4>
         <BackgroundColorMotion />
+
+        <div
+          className={cx(
+            'h-36 w-36 rounded-full border overflow-hidden',
+            'border-black dark:border-white',
+            'bg-gradient-to-b dark:bg-gradient-to-b',
+            ' from-indigo-200 via-red-200 to-yellow-100'
+            // 'from-blue-gray-100 via-blue-gray-200 to-blue-gray-300',
+            // 'dark:from-blue-gray-100 dark:via-blue-gray-200 dark:to-blue-gray-300'
+          )}
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={`/static/images/bighead--jerome.svg`} alt={`bighead--jerome`} />
+        </div>
+        {/* <BigHead {...BIG_HEAD_PROPS} /> */}
+
         <motion.div
           key={`page-playground`}
           initial="hidden"
