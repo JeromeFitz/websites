@@ -74,7 +74,32 @@ const IMAGE__PLACEHOLDER = {
   },
 }
 
+// ref: https://bigheads.io/editor?accessory=none&body=chest&circleColor=blue&clothing=dressShirt&clothingColor=black&eyebrows=leftLowered&eyes=dizzy&faceMask=true&faceMaskColor=black&facialHair=stubble&graphic=none&hair=short&hairColor=blonde&hat=none&hatColor=black&lashes=true&lipColor=red&mask=false&mouth=grin&skinTone=light
+const BIG_HEAD_PROPS = {
+  accessory: 'none',
+  body: 'chest',
+  circleColor: 'blue',
+  clothing: 'dressShirt',
+  clothingColor: 'black',
+  eyebrows: 'leftLowered',
+  eyes: 'dizzy',
+  faceMask: true,
+  faceMaskColor: 'black',
+  facialHair: 'stubble',
+  graphic: 'none',
+  hair: 'short',
+  hairColor: 'blonde',
+  hat: 'none',
+  hatColor: 'black',
+  lashes: true,
+  lipColor: 'red',
+  mask: false,
+  mouth: 'grin',
+  skinTone: 'light',
+}
+
 export {
+  BIG_HEAD_PROPS,
   EMOJI_FALLBACK,
   IMAGE__FALLBACKS__SHOWS,
   IMAGE__PLACEHOLDER,
