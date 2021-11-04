@@ -10,11 +10,11 @@ import getCatchAll from '~lib/notion/getCatchAll'
 import getPathVariables from '~lib/notion/getPathVariables'
 
 const Breadcrumb = dynamic(() => import('~components/Notion/Breadcrumb'), {})
-const ListingShows = dynamic(
-  () => import('~components/Notion/Listing/ListingCard'),
-  {}
-)
-const Quote = dynamic(() => import('~components/Notion/Quote'), {})
+// const ListingShows = dynamic(
+//   () => import('~components/Notion/Listing/ListingCard'),
+//   {}
+// )
+// const Quote = dynamic(() => import('~components/Notion/Quote'), {})
 
 const CatchAll = (props) => {
   const {
@@ -70,12 +70,11 @@ const CatchAll = (props) => {
 
   return (
     <>
-      <Layout>
-        <Page data={data} props={props} />
-        <ListingShows />
-        <div className="spacer--h mb-4" />
-        <Quote />
-      </Layout>
+      <Page data={data} props={props} />
+      {/* <ListingShows /> */}
+      {/* <div className="spacer--h mb-4" /> */}
+      {/* <Quote /> */}
+      {/* </Layout> */}
     </>
   )
 }

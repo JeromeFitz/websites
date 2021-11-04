@@ -1,12 +1,48 @@
-import cx from 'clsx'
+import {
+  // darkTheme,
+  styled,
+  // Box,
+  Container,
+  // Text,
+  // Heading,
+  // Flex,
+  // Link,
+  // Separator,
+} from '@modulz/design-system'
+// import * as AspectRatioPrimitive from '@radix-ui/react-aspect-ratio'
+// import { styled } from '@stitches/react'
+// import { darkTheme, styled } from '@modulz/design-system'
+// import cx from 'clsx'
 import Slugger from 'github-slugger'
 import NextImage from 'next/image'
 import { useEffectOnce } from 'react-use'
 import useSWR, { useSWRConfig } from 'swr'
 
-import { CardWithGlow } from '~components/Card'
 import { Breakout } from '~components/Layout'
 import ImageCaption from '~components/Notion/ImageCaption'
+
+// // Exports
+// const AspectRatio = AspectRatioPrimitive
+
+const StyledDiv = styled('div', { position: 'relative' })
+
+const StyledImageBackground = styled('div', {
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  width: '99.9%',
+  height: '99.9%',
+  borderRadius: '$4',
+  filter: 'blur(0.25rem) saturate(160%)',
+  opacity: '.5',
+  transform: 'scale(1.01)',
+})
+
+const StyledImage = styled(NextImage, {
+  // all: 'unset',
+  borderRadius: '$4',
+  position: 'relative',
+})
 
 const ImageLead = ({ description, image, imagesFallback }) => {
   const { mutate } = useSWRConfig()
@@ -37,35 +73,32 @@ const ImageLead = ({ description, image, imagesFallback }) => {
 
   return (
     <Breakout>
-      <div
-        className={cx(
-          `min-h-full py-6`,
-          // `bg-gradient-to-b`,
-          // `from-white via-gray-300 to-white`,
-          // `dark:from-black dark:via-gray-700 dark:to-black`,
-          ''
-        )}
-      >
-        <div
-          className={cx(`flex flex-col w-full max-w-4xl`, `px-2 mx-auto md:px-8`)}
-        >
-          <div className="w-11/12 md:w-2/3 mx-auto py-4 mt-4">
-            <CardWithGlow blurDataURL={imageData.base64} isImage={true}>
-              <NextImage
-                alt={description}
-                blurDataURL={imageData?.base64}
-                className={cx('rounded-xl')}
-                key={imageSlug}
-                placeholder="blur"
-                priority={true}
-                title={description}
-                {...imageData?.img}
-              />
-            </CardWithGlow>
-            <ImageCaption caption={description} />
-          </div>
+      {/* <CardWithGlow blurDataURL={imageData.base64} isImage={true}> */}
+      <Container size="2">
+        <StyledDiv>
+          <StyledImageBackground
+            css={{
+              backgroundImage: `url(${imageData.base64})`,
+              backgroundSize: 'cover',
+            }}
+          />
+          <StyledImage
+            alt={description}
+            blurDataURL={imageData?.base64}
+            key={imageSlug}
+            placeholder="blur"
+            priority={true}
+            title={description}
+            {...imageData?.img}
+          />
+        </StyledDiv>
+        <ImageCaption caption={description} />
+      </Container>
+      {/* </CardWithGlow> */}
+
+      {/* </div>
         </div>
-      </div>
+      </div> */}
     </Breakout>
   )
 }

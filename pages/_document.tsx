@@ -1,4 +1,4 @@
-import cx from 'clsx'
+import { getCssText } from '@modulz/design-system'
 import Document, {
   DocumentContext,
   Html,
@@ -16,6 +16,7 @@ class MyDocument extends Document<DocumentContext> {
           <meta name="msapplication-tap-highlight" content="no" />
           <meta name="superfish" content="nofish" />
           <meta content="origin-when-cross-origin" name="referrer" />
+          <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} />
           <link
             rel="preload"
             href="/static/fonts/inter/inter-var-latin.woff2"
@@ -52,15 +53,7 @@ class MyDocument extends Document<DocumentContext> {
           <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
           <meta name="theme-color" content="#f4f4f4" />
         </Head>
-        <body
-          className={cx(
-            `loading`,
-            // `bg-white dark:bg-black`,
-            // `text-black dark:text-white`,
-            'bg-primary text-secondary',
-            ``
-          )}
-        >
+        <body>
           <Main />
           <NextScript />
         </body>

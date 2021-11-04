@@ -11,7 +11,7 @@ import { MetaTags } from '~components/Notion/Meta'
 import { Event } from '~components/Notion/Page'
 import getContentNodes from '~utils/notion/getContentNodes'
 
-const Breadcrumb = dynamic(() => import('~components/Notion/Breadcrumb'), {})
+// const Breadcrumb = dynamic(() => import('~components/Notion/Breadcrumb'), {})
 const Listing = dynamic(() => import('~components/Notion/Listing'), {})
 // const Relations = dynamic(() => import('~components/Notion/Relations'), {})
 const Rollups = dynamic(() => import('~components/Notion/Rollups'), {})
@@ -120,7 +120,7 @@ const Page = ({ data, props }) => {
 
   return (
     <>
-      <Breadcrumb isIndex={isIndex} title={title} />
+      {/* <Breadcrumb isIndex={isIndex} title={title} /> */}
       <NotionLayout id={id} data={properties} routeType={routeType} url={url}>
         <ImageLead
           description={properties?.seoImageDescription}
