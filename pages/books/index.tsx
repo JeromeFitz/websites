@@ -555,13 +555,13 @@ const Music = () => {
         animate="enter"
         exit="exit"
         variants={MOTION_PAGE_VARIANTS}
-        transition={{ delay: 0.25, duration: 1, type: 'linear' }}
+        transition={{ duration: 1, type: 'linear' }}
         className={cx('flex flex-col')}
       >
         <motion.div id="content">
           <Heading size="4">{seo.title}</Heading>
           <Paragraph size="2" as="p" css={{ mt: '$2', mb: '$7' }}>
-            {`Description`}
+            {seo.description}
           </Paragraph>
           <Text
             as="p"

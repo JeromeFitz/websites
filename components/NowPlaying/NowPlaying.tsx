@@ -46,9 +46,8 @@ const Container = styled('div', {
   width: '100%',
   maxWidth: '56rem',
   margin: '0 auto',
-  px: '$2',
-  py: '$2',
-  '@bp1': { px: '$8', py: '$3' },
+  padding: '1rem',
+  '@bp1': { padding: 0 },
 })
 
 const Header = styled('h3', {
@@ -244,13 +243,20 @@ const NowPlaying = () => {
                   as="div"
                   css={{
                     borderRadius: '$4',
-                    borderTopRightRadius: 0,
+                    borderBottomLeftRadius: 0,
                     borderBottomRightRadius: 0,
                     bc: '$colors$gray1',
                     display: 'flex',
                     flexDirection: 'column',
-                    p: '$4',
-                    '@bp1': { width: '40%', p: '$5' },
+                    px: '$2',
+                    py: '$4',
+                    '@bp1': {
+                      borderTopRightRadius: 0,
+                      borderBottomRightRadius: 0,
+                      width: '40%',
+                      px: '$4',
+                      py: '$7',
+                    },
                   }}
                 >
                   <Paragraph size="2" css={{ fontWeight: 'bold', fontSize: '$7' }}>

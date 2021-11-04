@@ -27,7 +27,6 @@ import ImageCaption from '~components/Notion/ImageCaption'
 const ImageContainer = styled('div', {
   position: 'relative',
   borderRadius: '$4',
-  overflow: 'hidden',
 })
 
 const ImageBlur = styled('div', {
@@ -45,6 +44,7 @@ const ImageBlur = styled('div', {
 const Image = styled(NextImage, {
   borderRadius: '$4',
   position: 'relative',
+  overflow: 'hidden',
 })
 
 const ImageLead = ({ description, image, imagesFallback }) => {
