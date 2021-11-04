@@ -7,6 +7,7 @@ const ImageCaption = ({ caption }) => {
       as="p"
       css={{
         fontSize: '$2',
+        lineHeight: '1.25',
         ml: '$1',
         py: '$3',
       }}

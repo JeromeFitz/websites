@@ -1,3 +1,4 @@
+import { Heading, Paragraph } from '@modulz/design-system'
 import cx from 'clsx'
 import { motion } from 'framer-motion'
 import Slugger from 'github-slugger'
@@ -57,6 +58,10 @@ const Layout = ({ id, children, data, routeType, url }) => {
         transition={{ delay: 0, duration: 0.25, type: 'linear' }}
         className={cx(routeType, 'flex flex-col')}
       >
+        <Heading size="4">{seo.title}</Heading>
+        <Paragraph size="2" as="p" css={{ mt: '$2', mb: '$7' }}>
+          {seo.description}
+        </Paragraph>
         {children}
       </motion.div>
     </>

@@ -3,14 +3,12 @@ import {
   // Avatar,
   // Box,
   // Grid,
-  // Paragraph,
+  Heading,
+  Paragraph,
   Text,
   Flex,
   // Link,
 } from '@modulz/design-system'
-import * as AccordionPrimitive from '@radix-ui/react-accordion'
-import { ChevronDownIcon } from '@radix-ui/react-icons'
-import { styled, keyframes } from '@stitches/react'
 import cx from 'clsx'
 import { motion } from 'framer-motion'
 import _filter from 'lodash/filter'
@@ -20,6 +18,12 @@ import _size from 'lodash/size'
 import dynamic from 'next/dynamic'
 import React from 'react'
 
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '~components/Accordion'
 import Seo from '~components/Seo'
 import { MOTION_PAGE_VARIANTS } from '~lib/constants'
 
@@ -472,125 +476,15 @@ const types = {
   },
 }
 
-const slideDown = keyframes({
-  from: { height: 0 },
-  to: { height: 'var(--radix-accordion-content-height)' },
-})
-
-const slideUp = keyframes({
-  from: { height: 'var(--radix-accordion-content-height)' },
-  to: { height: 0 },
-})
-
-const StyledAccordion = styled(AccordionPrimitive.Root, {
-  borderRadius: 6,
-  width: '100%',
-  backgroundColor: '$colors$gray1',
-  boxShadow: `0 2px 10px $colors$gray12`,
-})
-
-const StyledItem = styled(AccordionPrimitive.Item, {
-  overflow: 'hidden',
-  marginTop: 1,
-
-  '&:first-child': {
-    marginTop: 0,
-    borderTopLeftRadius: 4,
-    borderTopRightRadius: 4,
-  },
-
-  '&:last-child': {
-    borderBottomLeftRadius: 4,
-    borderBottomRightRadius: 4,
-  },
-
-  '&:focus-within': {
-    position: 'relative',
-    zIndex: 1,
-    boxShadow: `0 0 0 2px $colors$gray12`,
-  },
-})
-
-const StyledHeader = styled(AccordionPrimitive.Header, {
-  all: 'unset',
-  display: 'flex',
-})
-
-const StyledTrigger = styled(AccordionPrimitive.Trigger, {
-  all: 'unset',
-  fontFamily: 'inherit',
-  backgroundColor: 'transparent',
-  padding: '0 20px',
-  height: 45,
-  flex: 1,
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  fontSize: 15,
-  lineHeight: 1,
-  color: '$colors$gray12',
-  boxShadow: `0 1px 0 $colors$gray9`,
-  '&[data-state="closed"]': { backgroundColor: '$colors$gray1' },
-  '&[data-state="open"]': { backgroundColor: '$colors$gray3' },
-  '&:hover': { backgroundColor: '$colors$gray2', cursor: 'pointer' },
-})
-
-const StyledContent = styled(AccordionPrimitive.Content, {
-  overflow: 'hidden',
-  fontSize: 15,
-  color: '$colors$gray12',
-  backgroundColor: 'inherit',
-  '&[data-state="open"]': {
-    animation: `${slideDown} 300ms cubic-bezier(0.87, 0, 0.13, 1)`,
-  },
-  '&[data-state="closed"]': {
-    animation: `${slideUp} 300ms cubic-bezier(0.87, 0, 0.13, 1)`,
-  },
-})
-
-const StyledContentText = styled('div', {})
-
-const StyledChevron = styled(ChevronDownIcon, {
-  color: '$colors$gray12',
-  transition: 'transform 300ms cubic-bezier(0.87, 0, 0.13, 1)',
-  '[data-state=open] &': { transform: 'rotate(180deg)' },
-})
-
-// Exports
-export const Accordion = StyledAccordion
-export const AccordionItem = StyledItem
-// eslint-disable-next-line react/display-name
-export const AccordionTrigger = React.forwardRef(
-  ({ children, ...props }, forwardedRef) => (
-    <StyledHeader>
-      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-      {/* @ts-ignore */}
-      <StyledTrigger {...props} ref={forwardedRef}>
-        <div>{children}</div>
-        <StyledChevron aria-hidden />
-      </StyledTrigger>
-    </StyledHeader>
-  )
-)
-// eslint-disable-next-line react/display-name
-export const AccordionContent = React.forwardRef(
-  ({ children, ...props }, forwardedRef) => (
-    <>
-      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-      {/* @ts-ignore */}
-      <StyledContent {...props} ref={forwardedRef}>
-        <StyledContentText>{children}</StyledContentText>
-      </StyledContent>
-    </>
-  )
-)
-
 const HEADING = ({ emoji, size, title }) => {
   return (
     <Flex css={{ flexDirection: 'row', gap: 7 }}>
-      <Text as="h4" css={{ display: 'flex', color: '$colors$gray12' }}>
+      <Text
+        as="h4"
+        css={{ display: 'flex', color: '$colors$gray12', fontWeight: '500' }}
+      >
         <Emoji character={emoji} margin={true} />
-        <Text as="span" css={{ ml: '$2', color: 'inherit' }}>
+        <Text as="span" css={{ ml: '$2', color: 'inherit', fontWeight: 'inherit' }}>
           {title}
         </Text>
         <Text
@@ -611,16 +505,12 @@ const HEADING = ({ emoji, size, title }) => {
 }
 
 const UL = ({ children }) => {
-  return (
-    <Text as="ul" css={{ padding: '5px', '@bp1': { padding: '10px' } }}>
-      {children}
-    </Text>
-  )
+  return <Text as="ul">{children}</Text>
 }
 
 const ListItem = ({ book }) => {
   return (
-    <Text as="li" css={{ my: '$3', color: '$colors$gray12' }}>
+    <Text as="li" css={{ my: '$3', color: '$colors$gray12', '@bp1': { my: '$5' } }}>
       <Text as="p" css={{ fontWeight: '500', color: 'inherit' }}>
         “{book.title}
         {book?.subtitle && `: ${book?.subtitle}`}”
@@ -669,6 +559,10 @@ const Music = () => {
         className={cx('flex flex-col')}
       >
         <motion.div id="content">
+          <Heading size="4">{seo.title}</Heading>
+          <Paragraph size="2" as="p" css={{ mt: '$2', mb: '$7' }}>
+            {`Description`}
+          </Paragraph>
           <Text
             as="p"
             css={{
@@ -694,7 +588,17 @@ const Music = () => {
             >
               up next
             </Text>{' '}
-            but am holding until we can travel again).{` `}
+            but am holding until we can travel again).
+          </Text>
+          <Text
+            as="p"
+            css={{
+              my: '$6',
+              fontSize: '$6',
+              letterSpacing: '-.015em',
+              lineHeight: '1.5',
+            }}
+          >
             <Text
               as="span"
               css={{ display: 'inline', fontSize: 'inherit', fontWeight: '500' }}

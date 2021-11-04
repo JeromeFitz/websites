@@ -12,13 +12,19 @@ import {
   Text,
 } from '@modulz/design-system'
 import { PlusIcon } from '@radix-ui/react-icons'
+import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
-import React from 'react'
 
 import BoxLink from '~components/BoxLink'
 import Emoji from '~components/Notion/Emoji'
 import { ToggleAudio, ToggleTheme } from '~components/Toggle'
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+  TooltipArrow,
+} from '~components/Tooltip'
 
 const HighlightLink = styled('a', {
   display: 'block',
@@ -66,7 +72,7 @@ const shows = [
   { emoji: '🐭️', url: '/shows/jfle', title: 'JFLE', text: 'Jerome & Jesse LE' },
   {
     emoji: '😆️',
-    url: '/shows/justin-jerome-experience',
+    url: '/shows/justin-and-jerome-experience',
     title: 'JJE',
     text: 'Justin & Jerome Experience',
   },
@@ -82,28 +88,41 @@ const shows = [
 // eslint-disable-next-line complexity
 const Header = () => {
   const router = useRouter()
-  const isColors =
-    router.asPath.includes('/colors') || router.asPath.includes('/docs/colors')
+  const isHompage = router.asPath === '/'
 
   return (
     <Box as="header">
       <Container size="4">
         <Flex align="center" justify="between" css={{ height: '$8' }}>
-          <NextLink href={isColors ? '/colors' : '/'} passHref>
+          <NextLink href={'/'} passHref>
             <BoxLink>
-              <Flex align="center" gap="3" css={{ mt: '$7' }}>
-                <Avatar
-                  size="5"
-                  src={`/static/images/bighead--jerome.svg`}
-                  aria-describedby="logoHeader"
-                />
-                <Box id="logoHeader">
-                  <Paragraph css={{ fontWeight: 500 }}>Jerome</Paragraph>
-                </Box>
+              <Flex align="center" gap="3" css={{}}>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Avatar
+                      src={`/static/images/bighead--jerome--dizzy.svg`}
+                      aria-describedby="logoHeader"
+                      size="4"
+                      css={{
+                        '@bp1': { mr: '$1', width: '$7', height: '$7' },
+                      }}
+                    />
+                  </TooltipTrigger>
+                  {!isHompage && (
+                    <TooltipContent align="start" sideOffset={5}>
+                      {`Go back to homepage`}
+                      <TooltipArrow offset={15} />
+                    </TooltipContent>
+                  )}
+                </Tooltip>
+                <VisuallyHidden.Root>
+                  <Box id="logoHeader">
+                    <Paragraph css={{ fontWeight: 500 }}>Jerome</Paragraph>
+                  </Box>
+                </VisuallyHidden.Root>
               </Flex>
             </BoxLink>
           </NextLink>
-
           <Flex
             align="center"
             gap={{ '@initial': 4, '@bp2': 5 }}
@@ -123,7 +142,6 @@ const Header = () => {
                 </NextLink>
               ))}
             </Box>
-
             <Popover>
               <PopoverTrigger asChild>
                 <Link

@@ -48,6 +48,7 @@ const routeTypes = ['blog', 'episodes', 'events', 'podcasts', 'shows']
 
 const getStaticPathsCatchAll = async () => {
   const paths = []
+  paths.push('/about')
   paths.push('/colophon')
 
   await asyncForEach(routeTypes, async (routeType: any) => {

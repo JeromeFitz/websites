@@ -1,25 +1,37 @@
 import { IconButton, Tooltip } from '@modulz/design-system'
 import { SpeakerOffIcon, SpeakerModerateIcon } from '@radix-ui/react-icons'
-import React from 'react'
+import Mousetrap from 'mousetrap'
+import { useCallback, useEffect } from 'react'
 import { useSound } from 'use-sound'
 
 import { useUI } from '~context/ManagedUIContext'
 
 const ThemeToggle = (props) => {
   const { audio, toggleAudio } = useUI()
+  const content = `Toggle audio ${audio ? 'on' : 'off'}`
+
   const [playEnableSound] = useSound('/static/audio/enable-sound.mp3', {
     soundEnabled: true,
     volume: 0.25,
   })
+
   const [playDisableSound] = useSound('/static/audio/disable-sound.mp3', {
     soundEnabled: true,
     volume: 0.25,
   })
-  const handleClick = () => {
+
+  const handleClick = useCallback(() => {
     audio ? playDisableSound() : playEnableSound()
     toggleAudio()
-  }
-  const content = `Toggle audio ${audio ? 'on' : 'off'}`
+  }, [audio, playDisableSound, playEnableSound, toggleAudio])
+
+  useEffect(() => {
+    Mousetrap.bind(['ctrl+a'], () => handleClick())
+
+    return () => {
+      Mousetrap.unbind(['ctrl+a'])
+    }
+  }, [handleClick])
 
   return (
     <Tooltip content={content} side="bottom" align="end">

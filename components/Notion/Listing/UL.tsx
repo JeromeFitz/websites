@@ -1,5 +1,19 @@
+import { Flex } from '@modulz/design-system'
+
 const UL = ({ children }) => {
-  return <ul className="flex flex-col list-disc list-inside">{children}</ul>
+  return (
+    <Flex
+      as="ul"
+      css={{
+        display: 'flex',
+        flexDirection: 'column',
+        listStyleType: 'disc',
+        listStylePosition: 'outside',
+      }}
+    >
+      {children}
+    </Flex>
+  )
 }
 
 export default UL

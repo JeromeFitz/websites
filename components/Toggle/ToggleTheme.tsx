@@ -1,26 +1,40 @@
 import { darkTheme, IconButton, Tooltip } from '@modulz/design-system'
 import { MoonIcon, SunIcon } from '@radix-ui/react-icons'
+import Mousetrap from 'mousetrap'
 import { useTheme } from 'next-themes'
-import React from 'react'
+import { useCallback, useEffect } from 'react'
+import { useSound } from 'use-sound'
 
-const ThemeToggle = (props) => {
+import { useUI } from '~context/ManagedUIContext'
+
+const ThemeToggle = () => {
   const { theme, setTheme } = useTheme()
   const content = `Toggle theme to ${theme === 'light' ? 'dark' : 'light'}`
 
+  const { audio } = useUI()
+
+  const [playBleep] = useSound('/static/audio/bleep.mp3', { soundEnabled: audio })
+
+  const handleClick = useCallback(() => {
+    const newTheme = theme === 'dark' ? 'light' : 'dark'
+    document.documentElement.classList.toggle(darkTheme.className)
+    document.documentElement.classList.toggle('light-theme')
+    document.documentElement.style.setProperty('color-scheme', newTheme)
+    setTheme(newTheme)
+    playBleep()
+  }, [playBleep, setTheme, theme])
+
+  useEffect(() => {
+    Mousetrap.bind(['ctrl+t'], () => handleClick())
+
+    return () => {
+      Mousetrap.unbind(['ctrl+t'])
+    }
+  }, [handleClick])
+
   return (
     <Tooltip content={content} side="bottom" align="end">
-      <IconButton
-        aria-label={content}
-        onClick={() => {
-          const newTheme = theme === 'dark' ? 'light' : 'dark'
-          document.documentElement.classList.toggle(darkTheme.className)
-          document.documentElement.classList.toggle('light-theme')
-          document.documentElement.style.setProperty('color-scheme', newTheme)
-          setTheme(newTheme)
-        }}
-        variant="ghost"
-        {...props}
-      >
+      <IconButton aria-label={content} onClick={() => handleClick()} variant="ghost">
         {theme === 'light' ? <MoonIcon /> : <SunIcon />}
       </IconButton>
     </Tooltip>
