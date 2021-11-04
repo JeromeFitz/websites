@@ -286,10 +286,10 @@ module.exports = {
     typography: ['dark'],
   },
   plugins: [
-    require('@tailwindcss/typography'),
-    require('@tailwindcss/aspect-ratio'),
-    require('tailwind-underline-utils'),
-    // require('@plaiceholder/tailwindcss'),
-    require('./patches/@plaiceholder/tailwindcss/dist/plugin'),
+    // require('@tailwindcss/typography'),
+    // require('@tailwindcss/aspect-ratio'),
+    // require('tailwind-underline-utils'),
+    // // require('@plaiceholder/tailwindcss'),
+    // require('./patches/@plaiceholder/tailwindcss/dist/plugin'),
   ],
 }

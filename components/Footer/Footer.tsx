@@ -265,7 +265,7 @@ const Footer = () => {
                 <Flex align="center" gap="3" css={{ mt: '$7' }}>
                   <Avatar
                     size="5"
-                    src={`/static/images/bighead--jerome.svg`}
+                    src={`/static/images/bighead--jerome--dizzy.svg`}
                     aria-describedby="logoFooter"
                   />
                   <Box id="logoFooter">

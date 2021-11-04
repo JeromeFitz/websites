@@ -1,4 +1,4 @@
-import { Portal } from '@reach/portal'
+import * as Portal from '@radix-ui/react-portal'
 import {
   disableBodyScroll,
   enableBodyScroll,
@@ -52,7 +52,7 @@ const Modal: FC<Props> = ({ children, open, onClose, onEnter = null }) => {
   }, [open, handleKey])
 
   return (
-    <Portal>
+    <Portal.Root>
       {open ? (
         <div
           className={cx(
@@ -73,7 +73,7 @@ const Modal: FC<Props> = ({ children, open, onClose, onEnter = null }) => {
           </div>
         </div>
       ) : null}
-    </Portal>
+    </Portal.Root>
   )
 }
 

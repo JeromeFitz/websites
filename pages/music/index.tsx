@@ -5,54 +5,57 @@ import { motion } from 'framer-motion'
 import _find from 'lodash/find'
 import _map from 'lodash/map'
 import _size from 'lodash/size'
-import dynamic from 'next/dynamic'
-import React, { useState } from 'react'
-import { useSound } from 'use-sound'
+// import dynamic from 'next/dynamic'
+// import { useState } from 'react'
+// import { useSound } from 'use-sound'
 
-import { TopArtists, TopTracks } from '~components/Music'
+// import { TopArtists, TopTracks } from '~components/Music'
 import Seo from '~components/Seo'
-import { useUI } from '~context/ManagedUIContext'
-import useSpotify from '~hooks/useSpotify'
-import { MOTION_PAGE_VARIANTS, WEBKIT_BACKGROUND__BREAK } from '~lib/constants'
+// import { useUI } from '~context/ManagedUIContext'
+// import useSpotify from '~hooks/useSpotify'
 import {
-  spotifyFavoriteAlbums,
-  spotifyFavoriteArtists,
-} from '~lib/spotify/favorites'
+  MOTION_PAGE_VARIANTS,
+  // WEBKIT_BACKGROUND__BREAK
+} from '~lib/constants'
+// import {
+//   spotifyFavoriteAlbums,
+//   spotifyFavoriteArtists,
+// } from '~lib/spotify/favorites'
 
-const Emoji = dynamic(() => import('~components/Notion/Emoji'), {
-  ssr: false,
-})
+// const Emoji = dynamic(() => import('~components/Notion/Emoji'), {
+//   ssr: false,
+// })
 
-const plans = [
-  {
-    name: 'All Time ',
-    description: 'Since March 2020',
-    time_range: 'long_term',
-  },
-  {
-    name: '~ 6 months',
-    description: 'Past six months',
-    time_range: 'medium_term',
-  },
-  {
-    name: '~ 1 Month',
-    description: 'Past month',
-    time_range: 'short_term',
-  },
-]
+// const plans = [
+//   {
+//     name: 'All Time ',
+//     description: 'Since March 2020',
+//     time_range: 'long_term',
+//   },
+//   {
+//     name: '~ 6 months',
+//     description: 'Past six months',
+//     time_range: 'medium_term',
+//   },
+//   {
+//     name: '~ 1 Month',
+//     description: 'Past month',
+//     time_range: 'short_term',
+//   },
+// ]
 
 const Music = () => {
-  const { data, setSpotifyTimeRange } = useSpotify()
-  // @todo(spotify): data.time_range === plan.time_range
-  const [selected, setSelected] = useState(
-    _find(plans, { time_range: data?.time_range })
-  ) // useState(plans[1])
+  // const { data, setSpotifyTimeRange } = useSpotify()
+  // // @todo(spotify): data.time_range === plan.time_range
+  // const [selected, setSelected] = useState(
+  //   _find(plans, { time_range: data?.time_range })
+  // ) // useState(plans[1])
 
-  const { audio } = useUI()
-  const [playOn] = useSound('/static/audio/pop-up-on.mp3', {
-    soundEnabled: audio,
-    volume: 0.25,
-  })
+  // const { audio } = useUI()
+  // const [playOn] = useSound('/static/audio/pop-up-on.mp3', {
+  //   soundEnabled: audio,
+  //   volume: 0.25,
+  // })
 
   const url = 'https://jeromefitzgerald.com/music'
   const title = 'Music'

@@ -10,7 +10,6 @@ import { useSound } from 'use-sound'
 import { Banner as AlertBanner } from '~components/Alert'
 import Layout from '~components/Layout'
 import Seo from '~components/Seo'
-import { Container, Grid, Skeleton, Button } from '~components/UI'
 import { useUI } from '~context/ManagedUIContext'
 import { useNotification } from '~context/Notification'
 import {
@@ -18,7 +17,7 @@ import {
   MOTION_PAGE_VARIANTS,
   WEBKIT_BACKGROUND,
 } from '~lib/constants'
-import rangeMap from '~utils/rangeMap'
+// import rangeMap from '~utils/rangeMap'
 
 const Breadcrumb = dynamic(() => import('~components/Notion/Breadcrumb'), {})
 
@@ -120,9 +119,10 @@ const BackgroundColorMotion = () => {
 }
 
 const Playground = () => {
-  const { audio, openModal, setModalView } = useUI()
-  const [loading] = useState(false)
-  const [disabled] = useState(false)
+  const { audio } = useUI()
+  // const { audio, openModal, setModalView } = useUI()
+  // const [loading] = useState(false)
+  // const [disabled] = useState(false)
 
   const { addNotification } = useNotification()
   const [text, textSet] = useState('foo')
@@ -167,10 +167,10 @@ const Playground = () => {
     },
   }
 
-  const handleModalTest = () => {
-    setModalView('MODAL_TEST_VIEW')
-    openModal()
-  }
+  // const handleModalTest = () => {
+  //   setModalView('MODAL_TEST_VIEW')
+  //   openModal()
+  // }
 
   /**
    * @error or @loading
@@ -207,7 +207,10 @@ const Playground = () => {
           )}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={`/static/images/bighead--jerome.svg`} alt={`bighead--jerome`} />
+          <img
+            src={`/static/images/bighead--jerome--dizzy.svg`}
+            alt={`bighead--jerome`}
+          />
         </div>
         {/* <BigHead {...BIG_HEAD_PROPS} /> */}
 
@@ -223,27 +226,6 @@ const Playground = () => {
           <h2 style={WEBKIT_BACKGROUND}>{description}</h2>
           <div id="content">
             <Link href="/playground/event">Event Template</Link>
-            <Button
-              variant="slim"
-              type="submit"
-              loading={loading}
-              disabled={disabled}
-              onClick={() => handleModalTest()}
-            >
-              Modal Test
-            </Button>
-            <Container>
-              <Grid layout="normal">
-                {rangeMap(9, (i) => (
-                  <Skeleton
-                    key={i}
-                    className="w-full animated fadeIn"
-                    height={9}
-                    width={9}
-                  />
-                ))}
-              </Grid>
-            </Container>
             <h3 className="w-full bg-success text-black dark:text-white rounded pl-2 py-2">
               Notification
             </h3>
