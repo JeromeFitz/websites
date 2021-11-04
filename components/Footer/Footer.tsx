@@ -15,6 +15,7 @@ import {
   InfoCircledIcon,
   ArrowTopRightIcon,
 } from '@radix-ui/react-icons'
+import dynamic from 'next/dynamic'
 import NextLink from 'next/link'
 import React from 'react'
 
@@ -27,6 +28,10 @@ import {
   TooltipContent,
   TooltipArrow,
 } from '~components/Tooltip'
+
+const NowPlayingWithNoSSR = dynamic(() => import('~components/NowPlaying'), {
+  ssr: false,
+})
 
 const pages = [
   {
@@ -122,6 +127,9 @@ const Footer = () => {
       <Box css={{ width: '100%', my: '$6' }}>
         <Separator css={{ margin: '0', width: '100% !important' }} />
       </Box>
+      {process.env.NEXT_PUBLIC__SITE === 'jeromefitzgerald.com' && (
+        <NowPlayingWithNoSSR />
+      )}
       <Box as="footer" css={{ pb: '$9', mx: '$3' }}>
         <Grid
           css={{

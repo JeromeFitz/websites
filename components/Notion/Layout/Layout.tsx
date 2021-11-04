@@ -6,6 +6,7 @@ import useSWR from 'swr'
 
 import Seo from '~components/Seo'
 import { MOTION_PAGE_VARIANTS } from '~lib/constants'
+
 const Layout = ({ id, children, data, routeType, url }) => {
   const slugger = new Slugger()
   const { data: images } = useSWR('images')

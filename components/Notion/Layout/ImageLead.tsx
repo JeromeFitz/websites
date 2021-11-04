@@ -24,9 +24,13 @@ import ImageCaption from '~components/Notion/ImageCaption'
 // // Exports
 // const AspectRatio = AspectRatioPrimitive
 
-const StyledDiv = styled('div', { position: 'relative' })
+const ImageContainer = styled('div', {
+  position: 'relative',
+  borderRadius: '$4',
+  overflow: 'hidden',
+})
 
-const StyledImageBackground = styled('div', {
+const ImageBlur = styled('div', {
   position: 'absolute',
   top: 0,
   left: 0,
@@ -38,8 +42,7 @@ const StyledImageBackground = styled('div', {
   transform: 'scale(1.01)',
 })
 
-const StyledImage = styled(NextImage, {
-  // all: 'unset',
+const Image = styled(NextImage, {
   borderRadius: '$4',
   position: 'relative',
 })
@@ -75,14 +78,15 @@ const ImageLead = ({ description, image, imagesFallback }) => {
     <Breakout>
       {/* <CardWithGlow blurDataURL={imageData.base64} isImage={true}> */}
       <Container size="2">
-        <StyledDiv>
-          <StyledImageBackground
+        <ImageContainer>
+          <ImageBlur
             css={{
               backgroundImage: `url(${imageData.base64})`,
               backgroundSize: 'cover',
+              borderRadius: '$4',
             }}
           />
-          <StyledImage
+          <Image
             alt={description}
             blurDataURL={imageData?.base64}
             key={imageSlug}
@@ -91,7 +95,7 @@ const ImageLead = ({ description, image, imagesFallback }) => {
             title={description}
             {...imageData?.img}
           />
-        </StyledDiv>
+        </ImageContainer>
         <ImageCaption caption={description} />
       </Container>
       {/* </CardWithGlow> */}

@@ -61,9 +61,7 @@ const CatchAll = (props) => {
 
   return (
     <>
-      <Layout>
-        <Page data={data} props={props} />
-      </Layout>
+      <Page data={data} props={props} />
     </>
   )
 }
