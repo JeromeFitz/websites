@@ -1,14 +1,9 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { Badge, Box, Flex, Paragraph, Separator } from '@modulz/design-system'
-// ExternalLinkIcon
 import { ExternalLinkIcon } from '@radix-ui/react-icons'
-import { styled } from '@stitches/react'
 import cx from 'clsx'
 // import { useAnimation, motion } from 'framer-motion'
 import Slugger from 'github-slugger'
 import _map from 'lodash/map'
 import _slice from 'lodash/slice'
-import NextImage from 'next/image'
 import NextLink from 'next/link'
 // import { useEffect } from 'react'
 // import { useInView } from 'react-intersection-observer'
@@ -21,6 +16,10 @@ import _title from 'title'
 import { WEBKIT_BACKGROUND__BREAK } from '~lib/constants'
 import fetcher from '~lib/fetcher'
 import { spotifyFavoriteTracks } from '~lib/spotify/favorites'
+import { Badge, Flex, Paragraph, Separator } from '~styles/system/components'
+import { CardSpotify } from '~styles/system/components/Card/Spotify'
+import { styled } from '~styles/system/stitches.config'
+
 // const HOUR = 3600000
 const MINUTE = 60000
 // const SECOND = 1000
@@ -34,8 +33,6 @@ const initialData = spotifyFavoriteTracks[0]
 //
 const Section = styled('section', {
   minHeight: '100%',
-  // py: '$9',
-  // mb: '$9',
   borderTopWidth: '1px',
   borderColor: '$colors$gray12',
 })
@@ -65,32 +62,6 @@ const Header = styled('h3', {
 //   height: '0.125rem',
 //   '@bp1': { height: '1px' },
 // })
-
-const CardContainer = styled('div', {
-  display: 'flex',
-  width: '100%',
-})
-
-const ImageContainer = styled('div', { position: 'relative', borderRadius: '$4' })
-
-const ImageBlur = styled('div', {
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  width: '99.9%',
-  height: '99.9%',
-  borderRadius: '$4',
-  filter: 'blur(0.25rem) saturate(160%)',
-  opacity: '.5',
-  transform: 'scale(1.01)',
-})
-
-const Image = styled(NextImage, {
-  borderRadius: '$4',
-  borderTopLeftRadius: 0,
-  borderBottomLeftRadius: 0,
-  position: 'relative',
-})
 
 // const LocalImage = ({ imageData, imageSlug, loading, meta }) => {
 //   return (
@@ -137,6 +108,7 @@ const NowPlaying = () => {
   // @refactor(swr) This a little convulated
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { album, artist, artists, genres, isPlaying, meta, track } =
     data.isPlaying || !!data.artist ? data : initialData
   // const { album, artist, genres, isPlaying, meta, track } = initialData
@@ -183,19 +155,12 @@ const NowPlaying = () => {
   const slugger = new Slugger()
   // const imageSlug = slugger.slug(album?.imageUrl)
   // const imageData = !!imageSlug && !!images && images[imageSlug]
-  const image64 = album?.meta?.base64
+  const base64 = album?.meta?.base64
   const imageSlug = album?.meta?.slug
   const imageData = album?.meta
 
   return (
-    <Section
-    // className={cx(
-    //   `min-h-full py-12`,
-    //   'border-t border-black dark:border-white',
-    //   `bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400`,
-    //   ''
-    // )}
-    >
+    <Section>
       <Container>
         <Header style={WEBKIT_BACKGROUND__BREAK}>{title}</Header>
         <Separator css={{ margin: '0', width: '100% !important' }} />
@@ -216,147 +181,73 @@ const NowPlaying = () => {
           </NextLink>
           .)
         </Paragraph>
-        <CardContainer>
-          <ImageContainer>
-            <Box as="div" css={{ borderRadius: '$4', position: 'relative' }}>
-              <ImageBlur
-                css={{
-                  borderRadius: '$4',
-                  backgroundImage: `url(${image64})`,
-                  backgroundSize: 'cover',
-                }}
-              />
-              <Flex
-                as="div"
-                css={{
-                  borderRadius: '$4',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  minHeight: '100%',
-                  overflow: 'hidden',
-                  position: 'relative',
-                  width: '100%',
-                  '@bp1': { flexDirection: 'row' },
-                }}
-              >
-                <Flex
-                  as="div"
+        <CardSpotify base64={base64} image={imageData?.img} slug={imageSlug}>
+          <Paragraph size="2" css={{ fontWeight: 'bold', fontSize: '$7' }}>
+            <span>{artist.name}</span>
+          </Paragraph>
+          <Separator css={{ my: '1rem !important', width: '100% !important' }} />
+          <Paragraph size="2" css={{ fontWeight: 'bold', fontSize: '$6' }}>
+            <span>{`“${track.name}”`}</span>
+          </Paragraph>
+          <Flex
+            as="ul"
+            css={{
+              all: 'unset',
+              display: 'flex',
+              flexDirection: 'row',
+              flexWrap: 'wrap',
+              height: 'auto',
+              my: '$1',
+              '@bp1': { my: '$2' },
+            }}
+          >
+            {_map(genresData.slice(0, 10), (tag) => (
+              <Flex as="li" key={slugger.slug(tag)} css={{ p: '$2' }}>
+                <Badge
+                  size="2"
                   css={{
-                    borderRadius: '$4',
-                    borderBottomLeftRadius: 0,
-                    borderBottomRightRadius: 0,
-                    bc: '$colors$gray1',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    px: '$2',
-                    py: '$4',
-                    '@bp1': {
-                      borderTopRightRadius: 0,
-                      borderBottomRightRadius: 0,
-                      width: '40%',
-                      px: '$4',
-                      py: '$7',
-                    },
+                    fontFamily: '$mono',
                   }}
                 >
-                  <Paragraph size="2" css={{ fontWeight: 'bold', fontSize: '$7' }}>
-                    <span>{artist.name}</span>
-                  </Paragraph>
-                  <Separator
-                    css={{ my: '1rem !important', width: '100% !important' }}
-                  />
-                  <Paragraph size="2" css={{ fontWeight: 'bold', fontSize: '$6' }}>
-                    <span>{`“${track.name}”`}</span>
-                  </Paragraph>
-                  <Flex
-                    as="ul"
-                    css={{
-                      all: 'unset',
-                      display: 'flex',
-                      flexDirection: 'row',
-                      flexWrap: 'wrap',
-                      height: 'auto',
-                      my: '$1',
-                      '@bp1': { my: '$2' },
-                    }}
-                  >
-                    {_map(genresData.slice(0, 10), (tag) => (
-                      <Flex as="li" key={slugger.slug(tag)} css={{ p: '$2' }}>
-                        <Badge
-                          size="2"
-                          css={{
-                            fontFamily: '$mono',
-                          }}
-                        >
-                          {_title(tag)}
-                        </Badge>
-                      </Flex>
-                    ))}
-                  </Flex>
-                  <Paragraph size="2" css={{ pb: '$1' }}>
-                    <>
-                      Off of “<span className={cx('font-bold')}>{album.name}</span>”
-                      released in{' '}
-                      <span className={cx('font-bold')}>{album.year}</span>.
-                    </>
-                  </Paragraph>
-                  <Paragraph size="1" css={{ pb: '$1' }}>
-                    <>
-                      <a
-                        aria-label={`Link to ${track.name}`}
-                        className={cx(
-                          'underline-style-solid underline-offset-md underline-thickness-md',
-                          '_text-black'
-                        )}
-                        href={track.uri}
-                        rel="noopener noreferrer"
-                        target="_blank"
-                        title={`Link to ${track.name}`}
-                      >
-                        Join along here.
-                        <Flex
-                          as="span"
-                          css={{
-                            color: '$slate8',
-                            display: 'inline-block',
-                            ml: '$1',
-                          }}
-                        >
-                          <ExternalLinkIcon />
-                        </Flex>
-                      </a>
-                    </>
-                  </Paragraph>
-                </Flex>
-                <Flex
-                  as="div"
-                  css={{
-                    // borderRadius: '0.75rem',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    overflow: 'hidden',
-                    '@bp1': { width: '60%' },
-                  }}
-                  style={{
-                    backgroundImage: `url(${imageData.base64})`,
-                    backgroundSize: 'cover',
-                  }}
-                >
-                  <Image
-                    alt={`description`}
-                    blurDataURL={image64}
-                    key={imageSlug}
-                    placeholder="blur"
-                    priority={true}
-                    title={`description`}
-                    {...imageData?.img}
-                  />
-                </Flex>
+                  {_title(tag)}
+                </Badge>
               </Flex>
-            </Box>
-          </ImageContainer>
-        </CardContainer>
+            ))}
+          </Flex>
+          <Paragraph size="2" css={{ pb: '$1' }}>
+            <>
+              Off of “<span className={cx('font-bold')}>{album.name}</span>” released
+              in <span className={cx('font-bold')}>{album.year}</span>.
+            </>
+          </Paragraph>
+          <Paragraph size="1" css={{ pb: '$1' }}>
+            <>
+              <a
+                aria-label={`Link to ${track.name}`}
+                className={cx(
+                  'underline-style-solid underline-offset-md underline-thickness-md',
+                  '_text-black'
+                )}
+                href={track.uri}
+                rel="noopener noreferrer"
+                target="_blank"
+                title={`Link to ${track.name}`}
+              >
+                Join along here.
+                <Flex
+                  as="span"
+                  css={{
+                    color: '$slate8',
+                    display: 'inline-block',
+                    ml: '$1',
+                  }}
+                >
+                  <ExternalLinkIcon />
+                </Flex>
+              </a>
+            </>
+          </Paragraph>
+        </CardSpotify>
         <Separator css={{ margin: '0 auto $9', width: '1% !important' }} />
       </Container>
     </Section>

@@ -1,4 +1,4 @@
-import ImageLead from './ImageLead'
+import ImageLead, { ImageWithBackgroundBlur } from './ImageLead'
 
-export { ImageLead }
+export { ImageLead, ImageWithBackgroundBlur }
 export { default } from './Layout'

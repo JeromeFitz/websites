@@ -1,14 +1,4 @@
 import {
-  Avatar,
-  Box,
-  Grid,
-  Paragraph,
-  Text,
-  Flex,
-  Link,
-  Separator,
-} from '@modulz/design-system'
-import {
   GitHubLogoIcon,
   TwitterLogoIcon,
   ImageIcon,
@@ -28,6 +18,16 @@ import {
   TooltipContent,
   TooltipArrow,
 } from '~components/Tooltip'
+import {
+  Avatar,
+  Box,
+  Flex,
+  Grid,
+  Link,
+  Paragraph,
+  Separator,
+  Text,
+} from '~styles/system/components'
 
 const NowPlayingWithNoSSR = dynamic(() => import('~components/NowPlaying'), {
   ssr: false,
@@ -142,7 +142,7 @@ const Footer = () => {
           }}
         >
           {/* <Box>
-          <Text as="h6" size="3" css={{ fontWeight: 500, lineHeight: '20px' }}>
+          <Text as="h6" size="3" css={{ fontWeight: 700, lineHeight: '20px' }}>
             Upcoming Events
           </Text>
           <ul>
@@ -161,7 +161,7 @@ const Footer = () => {
           </ul>
         </Box> */}
           <Box>
-            <Text as="h6" size="3" css={{ fontWeight: 500, lineHeight: '20px' }}>
+            <Text as="h6" size="3" css={{ fontWeight: 700, lineHeight: '20px' }}>
               Pages
             </Text>
             <ul>
@@ -171,7 +171,7 @@ const Footer = () => {
             </ul>
           </Box>
           <Box>
-            <Text as="h6" size="3" css={{ fontWeight: 500, lineHeight: '20px' }}>
+            <Text as="h6" size="3" css={{ fontWeight: 700, lineHeight: '20px' }}>
               Shows
             </Text>
             <ul>
@@ -181,7 +181,7 @@ const Footer = () => {
             </ul>
           </Box>
           <Box>
-            <Text as="h6" size="3" css={{ fontWeight: 500, lineHeight: '20px' }}>
+            <Text as="h6" size="3" css={{ fontWeight: 700, lineHeight: '20px' }}>
               Social
             </Text>
             <ul>
@@ -269,7 +269,7 @@ const Footer = () => {
                     aria-describedby="logoFooter"
                   />
                   <Box id="logoFooter">
-                    <Paragraph css={{ fontWeight: 500 }}>Jerome</Paragraph>
+                    <Paragraph css={{ fontWeight: 700 }}>Jerome</Paragraph>
                     <Paragraph>Fitzgerald</Paragraph>
                   </Box>
                 </Flex>
@@ -285,9 +285,9 @@ const Footer = () => {
                 mt: '$5',
               }}
             >
-              <span>Copyright</span> © 2021
+              Site by
               <br />
-              Nice Group of People
+              <strong>Nice Group of People, LLC</strong>
             </Text>
           </Flex>
         </Grid>

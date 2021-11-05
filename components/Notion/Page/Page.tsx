@@ -120,7 +120,6 @@ const Page = ({ data, props }) => {
 
   return (
     <>
-      {/* <Breadcrumb isIndex={isIndex} title={title} /> */}
       <NotionLayout id={id} data={properties} routeType={routeType} url={url}>
         <ImageLead
           description={properties?.seoImageDescription}

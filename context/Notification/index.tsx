@@ -9,8 +9,8 @@ let id = 1
 const NotificationProvider = ({ children }) => {
   const [notifications, setNotifications] = useState([])
 
-  console.dir(`> NotificationProvider`)
-  console.dir(notifications)
+  // console.dir(`> NotificationProvider`)
+  // console.dir(notifications)
 
   const addNotification = useCallback(
     ({

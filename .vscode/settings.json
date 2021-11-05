@@ -4,7 +4,8 @@
     "titleBar.inactiveForeground": "#0f0f0f",
     "titleBar.activeBackground": "#fff999",
     "titleBar.inactiveBackground": "#aaa999"
-  }
+  },
   // "tslint.alwaysShowRuleFailuresAsWarnings": true,
   // "typescript.tsdk": "node_modules/typescript/lib"
+  "tailwindCSS.validate": false
 }

@@ -1,10 +1,10 @@
-import { Flex, Link } from '@modulz/design-system'
 import { ArrowTopRightIcon } from '@radix-ui/react-icons'
 import NextLink from 'next/link'
 import { useSound } from 'use-sound'
 
 import { EmojiParser } from '~components/Notion/Emoji'
 import { useUI } from '~context/ManagedUIContext'
+import { Flex, Link } from '~styles/system/components'
 import getNextLink from '~utils/notion/getNextLink'
 
 const TextAnnotationLink = ({ children, href }) => {

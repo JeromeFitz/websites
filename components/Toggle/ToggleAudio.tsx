@@ -1,10 +1,10 @@
-import { IconButton, Tooltip } from '@modulz/design-system'
 import { SpeakerOffIcon, SpeakerModerateIcon } from '@radix-ui/react-icons'
 import Mousetrap from 'mousetrap'
 import { useCallback, useEffect } from 'react'
 import { useSound } from 'use-sound'
 
 import { useUI } from '~context/ManagedUIContext'
+import { IconButton, Tooltip } from '~styles/system/components'
 
 const ThemeToggle = (props) => {
   const { audio, toggleAudio } = useUI()

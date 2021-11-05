@@ -1,16 +1,4 @@
-import {
-  // darkTheme,
-  // Avatar,
-  // Box,
-  // Grid,
-  Heading,
-  Paragraph,
-  Text,
-  Flex,
-  // Link,
-} from '@modulz/design-system'
 import cx from 'clsx'
-import { motion } from 'framer-motion'
 import _filter from 'lodash/filter'
 import _map from 'lodash/map'
 import _orderBy from 'lodash/orderBy'
@@ -24,8 +12,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '~components/Accordion'
+import Heading from '~components/Heading'
 import Seo from '~components/Seo'
-import { MOTION_PAGE_VARIANTS } from '~lib/constants'
+import { Flex, Note, Text } from '~styles/system/components'
 
 const Emoji = dynamic(() => import('~components/Notion/Emoji'), {
   ssr: false,
@@ -481,7 +470,7 @@ const HEADING = ({ emoji, size, title }) => {
     <Flex css={{ flexDirection: 'row', gap: 7 }}>
       <Text
         as="h4"
-        css={{ display: 'flex', color: '$colors$gray12', fontWeight: '500' }}
+        css={{ display: 'flex', color: '$colors$gray12', fontWeight: '700' }}
       >
         <Emoji character={emoji} margin={true} />
         <Text as="span" css={{ ml: '$2', color: 'inherit', fontWeight: 'inherit' }}>
@@ -492,7 +481,7 @@ const HEADING = ({ emoji, size, title }) => {
           css={{
             color: 'inherit',
             display: 'inline-flex',
-            fontWeight: '500',
+            fontWeight: '700',
             fontSize: '$2',
             ml: '$1',
           }}
@@ -511,7 +500,7 @@ const UL = ({ children }) => {
 const ListItem = ({ book }) => {
   return (
     <Text as="li" css={{ my: '$3', color: '$colors$gray12', '@bp1': { my: '$5' } }}>
-      <Text as="p" css={{ fontWeight: '500', color: 'inherit' }}>
+      <Text as="p" css={{ fontWeight: '700', color: 'inherit' }}>
         “{book.title}
         {book?.subtitle && `: ${book?.subtitle}`}”
         <Text
@@ -549,117 +538,97 @@ const Music = () => {
   return (
     <>
       <Seo {...seo} />
-      <motion.div
-        key={`page-books`}
-        initial="hidden"
-        animate="enter"
-        exit="exit"
-        variants={MOTION_PAGE_VARIANTS}
-        transition={{ duration: 1, type: 'linear' }}
-        className={cx('flex flex-col')}
+      <Heading title={seo.title} description={seo.description} />
+      <Note>This page is in-progress.</Note>
+      <Text
+        as="p"
+        css={{
+          my: '$6',
+          fontSize: '$6',
+          letterSpacing: '-.015em',
+          lineHeight: '1.5',
+        }}
       >
-        <motion.div id="content">
-          <Heading size="4">{seo.title}</Heading>
-          <Paragraph size="2" as="p" css={{ mt: '$2', mb: '$7' }}>
-            {seo.description}
-          </Paragraph>
-          <Text
-            as="p"
-            css={{
-              my: '$6',
-              fontSize: '$6',
-              letterSpacing: '-.015em',
-              lineHeight: '1.5',
-            }}
-          >
-            My favorite author is{' '}
-            <Text
-              as="span"
-              css={{ display: 'inline', fontSize: 'inherit', fontWeight: '500' }}
-            >
-              Robert A. Caro
-            </Text>{' '}
-            and not just because I spent a large chunk of my past year with their
-            words (and his wife <span className={cx('font-bold')}>Ina Caro</span>,
-            her books on France and Paris should be in{' '}
-            <Text
-              as="span"
-              css={{ display: 'inline', fontSize: 'inherit', fontWeight: '500' }}
-            >
-              up next
-            </Text>{' '}
-            but am holding until we can travel again).
-          </Text>
-          <Text
-            as="p"
-            css={{
-              my: '$6',
-              fontSize: '$6',
-              letterSpacing: '-.015em',
-              lineHeight: '1.5',
-            }}
-          >
-            <Text
-              as="span"
-              css={{ display: 'inline', fontSize: 'inherit', fontWeight: '500' }}
-            >
-              Madeline Miller
-            </Text>{' '}
-            has jump-started me back into the world of fiction after many years of
-            unexplainable avoidance.
-          </Text>
-          <Text as="p" css={{ my: '$6', fontSize: '$5', lineHeight: '1.5' }}>
-            They say a CEO reads ~60 books a year. Here is a quick rundown of some of
-            the books I am currently reading, have read in the past year, and am
-            looking forward to. (Spoiler: I am not a CEO.)
-          </Text>
-          <Accordion type="single" defaultValue="inProgress" collapsible>
-            {_map(types, (type, typeIndex) => {
-              return (
-                <AccordionItem key={`types-${typeIndex}`} value={typeIndex}>
-                  {/* eslint-disable @typescript-eslint/ban-ts-comment */}
-                  {/* @ts-ignore */}
-                  <AccordionTrigger>
-                    <HEADING
-                      emoji={type.emoji}
-                      title={type.title}
-                      size={_size(type.data)}
-                    />
-                  </AccordionTrigger>
-                  {/* eslint-disable @typescript-eslint/ban-ts-comment */}
-                  {/* @ts-ignore */}
-                  <AccordionContent>
-                    <UL>
-                      {_map(type.data, (book, bookIndex) => (
-                        <ListItem
-                          book={book}
-                          key={`book--${typeIndex}--${bookIndex}`}
-                        />
-                      ))}
-                    </UL>
-                  </AccordionContent>
-                </AccordionItem>
-              )
-            })}
-          </Accordion>
-          <Text
-            as="p"
-            css={{ pt: '$4', my: '$3', fontSize: '$5', lineHeight: '1.5' }}
-          >
-            <Emoji character={`📖️`} margin={true} />
-            Throughout the past year plus I have been gifting a pal a random book a
-            month. I do not know if they will ever read them, but I try to pick ones
-            I think people would like.
-          </Text>
-          <Text as="p" css={{ mb: '$6', fontSize: '$4', lineHeight: '1.5' }}>
-            <Emoji character={`🥘️`} margin={true} />
-            Including cookbooks, which are a favorite of mine too which will be
-            separate in its own ‘cooking’ section on this website at some point as
-            Sarah and I have over 20.
-            <Emoji character={`😅️`} margin={true} />
-          </Text>
-        </motion.div>
-      </motion.div>
+        My favorite author is{' '}
+        <Text
+          as="span"
+          css={{ display: 'inline', fontSize: 'inherit', fontWeight: '700' }}
+        >
+          Robert A. Caro
+        </Text>{' '}
+        and not just because I spent a large chunk of my past year with their words
+        (and his wife <span className={cx('font-bold')}>Ina Caro</span>, her books on
+        France and Paris should be in{' '}
+        <Text
+          as="span"
+          css={{ display: 'inline', fontSize: 'inherit', fontWeight: '700' }}
+        >
+          up next
+        </Text>{' '}
+        but am holding until we can travel again).
+      </Text>
+      <Text
+        as="p"
+        css={{
+          my: '$6',
+          fontSize: '$6',
+          letterSpacing: '-.015em',
+          lineHeight: '1.5',
+        }}
+      >
+        <Text
+          as="span"
+          css={{ display: 'inline', fontSize: 'inherit', fontWeight: '700' }}
+        >
+          Madeline Miller
+        </Text>{' '}
+        has jump-started me back into the world of fiction after many years of
+        unexplainable avoidance.
+      </Text>
+      <Text as="p" css={{ my: '$6', fontSize: '$5', lineHeight: '1.5' }}>
+        They say a CEO reads ~60 books a year. Here is a quick rundown of some of the
+        books I am currently reading, have read in the past year, and am looking
+        forward to. (Spoiler: I am not a CEO.)
+      </Text>
+      <Accordion type="single" defaultValue="inProgress" collapsible>
+        {_map(types, (type, typeIndex) => {
+          return (
+            <AccordionItem key={`types-${typeIndex}`} value={typeIndex}>
+              {/* eslint-disable @typescript-eslint/ban-ts-comment */}
+              {/* @ts-ignore */}
+              <AccordionTrigger>
+                <HEADING
+                  emoji={type.emoji}
+                  title={type.title}
+                  size={_size(type.data)}
+                />
+              </AccordionTrigger>
+              {/* eslint-disable @typescript-eslint/ban-ts-comment */}
+              {/* @ts-ignore */}
+              <AccordionContent>
+                <UL>
+                  {_map(type.data, (book, bookIndex) => (
+                    <ListItem book={book} key={`book--${typeIndex}--${bookIndex}`} />
+                  ))}
+                </UL>
+              </AccordionContent>
+            </AccordionItem>
+          )
+        })}
+      </Accordion>
+      <Text as="p" css={{ pt: '$4', my: '$3', fontSize: '$5', lineHeight: '1.5' }}>
+        <Emoji character={`📖️`} margin={true} />
+        Throughout the past year plus I have been gifting a pal a random book a
+        month. I do not know if they will ever read them, but I try to pick ones I
+        think people would like.
+      </Text>
+      <Text as="p" css={{ mb: '$6', fontSize: '$4', lineHeight: '1.5' }}>
+        <Emoji character={`🥘️`} margin={true} />
+        Including cookbooks, which are a favorite of mine too which will be separate
+        in its own ‘cooking’ section on this website at some point as Sarah and I
+        have over 20.
+        <Emoji character={`😅️`} margin={true} />
+      </Text>
     </>
   )
 }

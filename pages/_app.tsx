@@ -1,13 +1,5 @@
 import '~styles/chrome.css'
 
-import {
-  globalCss,
-  darkTheme,
-  DesignSystemProvider,
-  Container,
-  Section,
-} from '@modulz/design-system'
-import { IdProvider } from '@radix-ui/react-id'
 import { ThemeProvider } from 'next-themes'
 import type { AppProps, NextWebVitalsMetric } from 'next/app'
 // import dynamic from 'next/dynamic'
@@ -25,6 +17,8 @@ import { ManagedUIContext } from '~context/ManagedUIContext'
 import NotificationProvider from '~context/Notification'
 import { useAnalytics } from '~lib/analytics'
 import { IMAGE__FALLBACKS__SHOWS } from '~lib/constants'
+import { Container, DesignSystemProvider, Section } from '~styles/system/components'
+import { globalCss, darkTheme } from '~styles/system/stitches.config'
 
 // const NavigationMobileWithNoSSR = dynamic(
 //   () => import('~components/Layout').then((mod) => mod.NavigationMobile),
@@ -51,7 +45,7 @@ const globalStyles = globalCss({
     margin: 0,
     color: '$hiContrast',
     backgroundColor: '$loContrast',
-    fontFamily: '$untitled',
+    fontFamily: '$sans',
     WebkitFontSmoothing: 'antialiased',
     MozOsxFontSmoothing: 'grayscale',
     WebkitTextSizeAdjust: '100%',
@@ -69,8 +63,8 @@ const globalStyles = globalCss({
   'pre, code': { margin: 0, fontFamily: '$mono' },
 
   '::selection': {
-    backgroundColor: '$violetA5',
-    color: '$violet12',
+    backgroundColor: '$slateA5',
+    color: '$slate12',
   },
 
   '#__next': {
@@ -78,7 +72,7 @@ const globalStyles = globalCss({
     zIndex: 0,
   },
 
-  'h1, h2, h3, h4, h5': { fontWeight: 500 },
+  'h1, h2, h3, h4, h5': { fontWeight: 700 },
 
   'html.nprogress-busy': {
     cursor: 'wait',
@@ -135,50 +129,45 @@ function MyApp({ Component, pageProps, router }: AppProps) {
 
   return (
     <>
-      <IdProvider>
-        <SWRConfig
-          value={{
-            fallback: { images: IMAGE__FALLBACKS__SHOWS },
-            provider: () => new Map(),
-          }}
-        >
-          <Head>
-            <meta
-              name="viewport"
-              content="width=device-width, initial-scale=1.0,viewport-fit=cover"
-            />
-          </Head>
-          <ManagedUIContext>
-            <NotificationProvider>
-              {/* <Layout pageProps={pageProps}>
+      <SWRConfig
+        value={{
+          fallback: { images: IMAGE__FALLBACKS__SHOWS },
+          provider: () => new Map(),
+        }}
+      >
+        <Head>
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0,viewport-fit=cover"
+          />
+        </Head>
+        <ManagedUIContext>
+          <NotificationProvider>
+            {/* <Layout pageProps={pageProps}>
                 <NavigationMobileWithNoSSR />
                 <Component {...pageProps} key={router.route} />
               </Layout>
               <NProgress /> */}
-              <DesignSystemProvider>
-                <ThemeProvider
-                  disableTransitionOnChange
-                  attribute="class"
-                  value={{ light: 'light-theme', dark: darkTheme.className }}
-                  defaultTheme="system"
-                >
-                  <NProgress />
-                  <Header />
-                  <Container
-                    as="main"
-                    size={{ '@initial': 2, '@bp1': 3, '@bp2': 4 }}
-                  >
-                    <Section>
-                      <Component {...pageProps} key={router.route} />
-                    </Section>
-                  </Container>
-                  <Footer />
-                </ThemeProvider>
-              </DesignSystemProvider>
-            </NotificationProvider>
-          </ManagedUIContext>
-        </SWRConfig>
-      </IdProvider>
+            <DesignSystemProvider>
+              <ThemeProvider
+                disableTransitionOnChange
+                attribute="class"
+                value={{ light: 'light-theme', dark: darkTheme.className }}
+                defaultTheme="system"
+              >
+                <NProgress />
+                <Header />
+                <Container as="main" size={{ '@initial': 2, '@bp1': 3, '@bp2': 4 }}>
+                  <Section>
+                    <Component {...pageProps} key={router.route} />
+                  </Section>
+                </Container>
+                <Footer />
+              </ThemeProvider>
+            </DesignSystemProvider>
+          </NotificationProvider>
+        </ManagedUIContext>
+      </SWRConfig>
     </>
   )
 }

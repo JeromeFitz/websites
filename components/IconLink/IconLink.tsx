@@ -1,7 +1,7 @@
-import { styled } from '@modulz/design-system'
 import _startsWith from 'lodash/startsWith'
 import NextLink from 'next/link'
 
+import { styled } from '~styles/system/stitches.config'
 import getNextLink from '~utils/getNextLink'
 import isObject from '~utils/isObject'
 

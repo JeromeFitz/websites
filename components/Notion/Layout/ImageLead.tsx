@@ -1,18 +1,3 @@
-import {
-  // darkTheme,
-  styled,
-  // Box,
-  Container,
-  // Text,
-  // Heading,
-  // Flex,
-  // Link,
-  // Separator,
-} from '@modulz/design-system'
-// import * as AspectRatioPrimitive from '@radix-ui/react-aspect-ratio'
-// import { styled } from '@stitches/react'
-// import { darkTheme, styled } from '@modulz/design-system'
-// import cx from 'clsx'
 import Slugger from 'github-slugger'
 import NextImage from 'next/image'
 import { useEffectOnce } from 'react-use'
@@ -20,9 +5,8 @@ import useSWR, { useSWRConfig } from 'swr'
 
 import { Breakout } from '~components/Layout'
 import ImageCaption from '~components/Notion/ImageCaption'
-
-// // Exports
-// const AspectRatio = AspectRatioPrimitive
+import { Container } from '~styles/system/components/Container'
+import { styled } from '~styles/system/stitches.config'
 
 const ImageContainer = styled('div', {
   position: 'relative',
@@ -46,6 +30,29 @@ const Image = styled(NextImage, {
   position: 'relative',
   overflow: 'hidden',
 })
+
+const ImageWithBackgroundBlur = ({ base64, description, image, slug }) => {
+  return (
+    <ImageContainer>
+      <ImageBlur
+        css={{
+          backgroundImage: `url(${base64})`,
+          backgroundSize: 'cover',
+          borderRadius: '$4',
+        }}
+      />
+      <Image
+        alt={description}
+        blurDataURL={base64}
+        key={slug}
+        placeholder="blur"
+        priority={true}
+        title={description}
+        {...image}
+      />
+    </ImageContainer>
+  )
+}
 
 const ImageLead = ({ description, image, imagesFallback }) => {
   const { mutate } = useSWRConfig()
@@ -76,35 +83,18 @@ const ImageLead = ({ description, image, imagesFallback }) => {
 
   return (
     <Breakout>
-      {/* <CardWithGlow blurDataURL={imageData.base64} isImage={true}> */}
       <Container size="2">
-        <ImageContainer>
-          <ImageBlur
-            css={{
-              backgroundImage: `url(${imageData.base64})`,
-              backgroundSize: 'cover',
-              borderRadius: '$4',
-            }}
-          />
-          <Image
-            alt={description}
-            blurDataURL={imageData?.base64}
-            key={imageSlug}
-            placeholder="blur"
-            priority={true}
-            title={description}
-            {...imageData?.img}
-          />
-        </ImageContainer>
+        <ImageWithBackgroundBlur
+          base64={imageData?.base64}
+          description={description}
+          image={imageData?.img}
+          slug={imageSlug}
+        />
         <ImageCaption caption={description} />
       </Container>
-      {/* </CardWithGlow> */}
-
-      {/* </div>
-        </div>
-      </div> */}
     </Breakout>
   )
 }
 
+export { ImageWithBackgroundBlur }
 export default ImageLead

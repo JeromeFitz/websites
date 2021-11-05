@@ -1,4 +1,4 @@
-import { Flex } from '@modulz/design-system'
+import { Flex } from '~styles/system/components/Flex'
 
 const UL = ({ children }) => {
   return (

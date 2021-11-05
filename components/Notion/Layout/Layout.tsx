@@ -1,12 +1,10 @@
-import { Heading, Paragraph } from '@modulz/design-system'
-import cx from 'clsx'
-import { motion } from 'framer-motion'
 import Slugger from 'github-slugger'
 import useSWR from 'swr'
 
+import Heading from '~components/Heading'
 import Seo from '~components/Seo'
-import { MOTION_PAGE_VARIANTS } from '~lib/constants'
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Layout = ({ id, children, data, routeType, url }) => {
   const slugger = new Slugger()
   const { data: images } = useSWR('images')
@@ -48,23 +46,9 @@ const Layout = ({ id, children, data, routeType, url }) => {
 
   return (
     <>
-      {/* SEO Content */}
       <Seo {...seo} />
-      <motion.div
-        key={id}
-        initial="enter"
-        animate="enter"
-        exit="exit"
-        variants={MOTION_PAGE_VARIANTS}
-        transition={{ delay: 0, duration: 0.25, type: 'linear' }}
-        className={cx(routeType, 'flex flex-col')}
-      >
-        <Heading size="4">{seo.title}</Heading>
-        <Paragraph size="2" as="p" css={{ mt: '$2', mb: '$7' }}>
-          {seo.description}
-        </Paragraph>
-        {children}
-      </motion.div>
+      <Heading title={seo.title} description={seo.description} />
+      {children}
     </>
   )
 }

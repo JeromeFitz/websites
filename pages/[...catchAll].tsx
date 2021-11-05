@@ -1,16 +1,12 @@
-import dynamic from 'next/dynamic'
-// import { useEffect, useState } from 'react'
 import useSWR from 'swr'
 
-import Layout from '~components/Layout'
+import Heading, { SkeletonHeading } from '~components/Heading'
 import Page from '~components/Notion/Page'
 // import { SLUG__HOMEPAGE } from '~lib/constants'
 import fetcher from '~lib/fetcher'
 import getCatchAll from '~lib/notion/getCatchAll'
 import getPathVariables from '~lib/notion/getPathVariables'
 import getStaticPathsCatchAll from '~lib/notion/getStaticPathsCatchAll'
-
-const Breadcrumb = dynamic(() => import('~components/Notion/Breadcrumb'), {})
 
 const CatchAll = (props) => {
   const {
@@ -27,14 +23,8 @@ const CatchAll = (props) => {
     url,
   } = props
 
-  // console.dir(`props`)
-  // console.dir(props)
-
-  // const [mounted, setMounted] = useState(true)
-  // useEffect(() => setMounted(false), [])
   const { data, error } = useSWR(
     () => (!!url ? `/api/notion/${url}` : null),
-    // () => (!!url ? `/api/notion/${url}?cache=${mounted}` : null),
     fetcher,
     {
       fallbackData: {
@@ -52,29 +42,11 @@ const CatchAll = (props) => {
   const isError = error !== undefined
   const isDataUndefined =
     data === undefined || data?.content === undefined || data?.info === undefined
-  // const isLoading = !isError && isDataUndefined
+  const isLoading = !isError && isDataUndefined
 
   if (isError && isDataUndefined)
-    return (
-      <>
-        <Layout>
-          <Breadcrumb isIndex={true} title={'Loading...'} />
-        </Layout>
-      </>
-    )
-  // if (
-  //   (error && data === undefined) ||
-  //   !data ||
-  //   data?.content === undefined ||
-  //   data?.info === undefined
-  // )
-  //   return (
-  //     <>
-  //       <Layout>
-  //         <h1 key={`error-loading-h1`}>{error ? <>Error</> : <>Loading...</>}</h1>
-  //       </Layout>
-  //     </>
-  //   )
+    return <Heading description={`Whoops`} title={`Well, that is not good.`} />
+  if (isLoading) return <SkeletonHeading />
 
   return (
     <>

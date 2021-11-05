@@ -15,8 +15,8 @@ const NotificationContainer = ({ notifications }) => {
   const cssProperties = {}
   cssProperties[`--offset-bottom`] = '0px'
 
-  console.dir(`> NotificationContainer`)
-  console.dir(notifications)
+  // console.dir(`> NotificationContainer`)
+  // console.dir(notifications)
 
   // @todo(notification) change to: https://uiplaybook.dev/play/notification
   return (

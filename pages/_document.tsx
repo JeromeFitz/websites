@@ -1,4 +1,3 @@
-import { getCssText } from '@modulz/design-system'
 import Document, {
   DocumentContext,
   Html,
@@ -6,6 +5,8 @@ import Document, {
   Main,
   NextScript,
 } from 'next/document'
+
+import { getCssText } from '~styles/system/stitches.config'
 
 class MyDocument extends Document<DocumentContext> {
   render() {

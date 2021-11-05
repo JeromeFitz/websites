@@ -1,5 +1,7 @@
-import { Heading, Paragraph, Skeleton, Separator } from '@modulz/design-system'
 import { useState } from 'react'
+
+import Heading, { SkeletonHeading } from '~components/Heading'
+import { Separator } from '~styles/system/components/Separator'
 
 const text = {
   error: {
@@ -12,34 +14,6 @@ const properties = {
   title: 'Page Title',
   seoDescription: 'Page Description',
 }
-
-const SkeletonHeading = () => (
-  <Skeleton
-    as="span"
-    variant="heading"
-    css={{
-      fontSize: '$8',
-      height: '$fontSizes$8',
-      mb: '$1',
-      pr: 'var(--width-1_4)',
-    }}
-  >
-    &nbsp;
-  </Skeleton>
-)
-const SkeletonDescription = () => (
-  <Skeleton
-    as="span"
-    variant="text"
-    css={{
-      height: '$fontSizes$5',
-      width: '50%',
-      mb: '$7',
-      mt: '$2',
-      pr: 'var(--width-2_4)',
-    }}
-  />
-)
 
 const Loading = () => {
   const [loading, loadingSet] = useState(true)
@@ -68,10 +42,7 @@ const Loading = () => {
   if (isError && isDataUndefined)
     return (
       <>
-        <Heading size="4">{text.error.title}</Heading>
-        <Paragraph size="2" as="p" css={{ mt: '$2', mb: '$7' }}>
-          {text.error.text}
-        </Paragraph>
+        <Heading description={text.error.text} title={text.error.title} />
         <Separator
           css={{ margin: '1rem 0', padding: '0', width: '100% !important' }}
         />
@@ -88,12 +59,7 @@ const Loading = () => {
   if (loading && isDataUndefined)
     return (
       <>
-        <Heading size="4">
-          <SkeletonHeading />
-        </Heading>
-        <Paragraph size="2" as="p" css={{ mt: '$2', mb: '$7' }}>
-          <SkeletonDescription />
-        </Paragraph>
+        <SkeletonHeading />
         <Separator
           css={{ margin: '1rem 0', padding: '0', width: '100% !important' }}
         />
@@ -109,10 +75,7 @@ const Loading = () => {
 
   return (
     <>
-      <Heading size="4">{properties.title}</Heading>
-      <Paragraph size="2" as="p" css={{ mt: '$2', mb: '$7' }}>
-        {properties.seoDescription}
-      </Paragraph>
+      <Heading description={properties.title} title={properties.seoDescription} />
       <Separator
         css={{ margin: '1rem 0', padding: '0', width: '100% !important' }}
       />

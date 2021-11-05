@@ -1,20 +1,5 @@
-import {
-  darkTheme,
-  // Avatar,
-  Box,
-  // Checkbox,
-  // Grid,
-  Heading,
-  // Label,
-  Paragraph,
-  Text,
-  Flex,
-  // Link,
-  Separator,
-} from '@modulz/design-system'
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox'
 import { CheckIcon } from '@radix-ui/react-icons'
-import { styled, keyframes } from '@stitches/react'
 import cx from 'clsx'
 import Slugger from 'github-slugger'
 import _map from 'lodash/map'
@@ -30,9 +15,18 @@ import {
   AccordionTrigger,
 } from '~components/Accordion'
 import ImageCaption from '~components/Notion/ImageCaption'
+import { IMAGE__PLACEHOLDER, WEBKIT_BACKGROUND__BREAK } from '~lib/constants'
+import {
+  Box,
+  Flex,
+  Heading,
+  Paragraph,
+  Separator,
+  Text,
+} from '~styles/system/components'
+import { darkTheme, styled, keyframes } from '~styles/system/stitches.config'
 // import Toggle from '~components/Notion/Toggle'
 // import Quote from '~components/Notion/Quote'
-import { IMAGE__PLACEHOLDER, WEBKIT_BACKGROUND__BREAK } from '~lib/constants'
 import { NotionBlock } from '~utils/notion'
 import getContentTypeDetail from '~utils/notion/getContentTypeDetail'
 import notionToTailwindColor from '~utils/notion/notionToTailwindColor'
@@ -222,7 +216,7 @@ class ContentTypes {
     return (
       <Heading
         as="h2"
-        css={{ fontWeight: '500', mb: '$4' }}
+        css={{ fontWeight: '700', mb: '$4' }}
         key={id}
         size="3"
         style={WEBKIT_BACKGROUND__BREAK}

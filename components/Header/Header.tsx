@@ -1,16 +1,3 @@
-import {
-  Avatar,
-  Box,
-  Container,
-  Flex,
-  Link,
-  Paragraph,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-  styled,
-  Text,
-} from '@modulz/design-system'
 import { PlusIcon } from '@radix-ui/react-icons'
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
 import NextLink from 'next/link'
@@ -25,6 +12,19 @@ import {
   TooltipContent,
   TooltipArrow,
 } from '~components/Tooltip'
+import {
+  Avatar,
+  Box,
+  Container,
+  Flex,
+  Link,
+  Paragraph,
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+  Text,
+} from '~styles/system/components'
+import { styled } from '~styles/system/stitches.config'
 
 const HighlightLink = styled('a', {
   display: 'block',
@@ -84,6 +84,23 @@ const shows = [
   },
 ]
 
+const isDev = process.env.NODE_ENV !== 'production'
+const dev = [
+  { emoji: '▶️', url: '/playground', title: 'P', text: 'Playground' },
+  {
+    emoji: '▶️',
+    url: '/playground/kitchen-sink',
+    title: 'KS',
+    text: 'Kithcen Sink',
+  },
+  {
+    emoji: '▶️',
+    url: '/playground/loading',
+    title: 'L',
+    text: 'Loading',
+  },
+]
+
 // @todo(complexity) 11
 // eslint-disable-next-line complexity
 const Header = () => {
@@ -117,7 +134,7 @@ const Header = () => {
                 </Tooltip>
                 <VisuallyHidden.Root>
                   <Box id="logoHeader">
-                    <Paragraph css={{ fontWeight: 500 }}>Jerome</Paragraph>
+                    <Paragraph css={{ fontWeight: 700 }}>Jerome</Paragraph>
                   </Box>
                 </VisuallyHidden.Root>
               </Flex>
@@ -196,7 +213,7 @@ const Header = () => {
                               size="3"
                               as="h3"
                               css={{
-                                fontWeight: 500,
+                                fontWeight: 700,
                                 lineHeight: 1.5,
                                 letterSpacing: '-0.02em',
                               }}
@@ -219,7 +236,87 @@ const Header = () => {
                 </Box>
               </PopoverContent>
             </Popover>
-
+            {isDev && (
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Link
+                    variant={
+                      router.asPath.includes('/playground') ? 'contrast' : 'subtle'
+                    }
+                    as="button"
+                    css={{
+                      bc: 'transparent',
+                      cursor: 'pointer',
+                      appearance: 'none',
+                      fontFamily: '$untitled',
+                      border: 0,
+                      p: 0,
+                      m: 0,
+                      mr: '-$1',
+                    }}
+                  >
+                    <Text css={{ display: 'flex', gap: '$1', ai: 'center' }}>
+                      DEV
+                      <PlusIcon />
+                    </Text>
+                  </Link>
+                </PopoverTrigger>
+                <PopoverContent hideArrow sideOffset={15} alignOffset={-15}>
+                  <Box css={{ p: '$1' }}>
+                    {dev.map((show, showId) => (
+                      <NextLink
+                        key={`header-shows-${showId}`}
+                        href={show.url}
+                        passHref
+                      >
+                        <HighlightLink
+                          variant={
+                            show.url !== '/shows' && router.asPath.includes(show.url)
+                              ? 'contrast'
+                              : 'subtle'
+                          }
+                        >
+                          <Flex gap="3">
+                            <Text
+                              size="3"
+                              as="span"
+                              css={{
+                                fontSize: '1.5rem',
+                                lineHeight: 1.5,
+                              }}
+                              style={{ flex: 'none', marginTop: 2 }}
+                            >
+                              <Emoji character={show.emoji} margin={true} />
+                            </Text>
+                            <Box>
+                              <Text
+                                size="3"
+                                as="h3"
+                                css={{
+                                  fontWeight: 700,
+                                  lineHeight: 1.5,
+                                  letterSpacing: '-0.02em',
+                                }}
+                              >
+                                {show.title}
+                              </Text>
+                              <Text
+                                size="2"
+                                as="p"
+                                variant="gray"
+                                css={{ lineHeight: 1.4 }}
+                              >
+                                {show.text}
+                              </Text>
+                            </Box>
+                          </Flex>
+                        </HighlightLink>
+                      </NextLink>
+                    ))}
+                  </Box>
+                </PopoverContent>
+              </Popover>
+            )}
             <ToggleAudio />
             <ToggleTheme />
           </Flex>

@@ -1,8 +1,8 @@
-import { Flex } from '@modulz/design-system'
 import { AccessibleIcon } from '@radix-ui/react-accessible-icon'
 import React from 'react'
 
 import { LogoIcon } from '~components/Logo'
+import { Flex } from '~styles/system/components/Flex'
 
 const Logo = ({ label = 'Homepage' }: { label?: string }) => (
   <AccessibleIcon label={label}>

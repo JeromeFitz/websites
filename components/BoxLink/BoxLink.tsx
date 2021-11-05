@@ -1,4 +1,4 @@
-import { styled } from '@modulz/design-system'
+import { styled } from '~styles/system/stitches.config'
 
 const BoxLink = styled('a', {
   display: 'block',

@@ -1,7 +1,8 @@
 import * as AccordionPrimitive from '@radix-ui/react-accordion'
 import { ChevronDownIcon } from '@radix-ui/react-icons'
-import { styled, keyframes } from '@stitches/react'
 import { forwardRef } from 'react'
+
+import { styled, keyframes } from '~styles/system/stitches.config'
 
 const slideDown = keyframes({
   from: { height: 0 },
@@ -61,9 +62,9 @@ const StyledTrigger = styled(AccordionPrimitive.Trigger, {
   lineHeight: 1,
   color: '$colors$gray12',
   boxShadow: `0 1px 0 $colors$gray9`,
-  '&[data-state="closed"]': { backgroundColor: '$colors$gray1' },
-  '&[data-state="open"]': { backgroundColor: '$colors$gray3' },
-  '&:hover': { backgroundColor: '$colors$gray2', cursor: 'pointer' },
+  '&[data-state="closed"]': { backgroundColor: '$colors$gray3' },
+  '&[data-state="open"]': { backgroundColor: '$colors$gray5' },
+  '&:hover': { backgroundColor: '$colors$gray4', cursor: 'pointer' },
 })
 
 const StyledContent = styled(AccordionPrimitive.Content, {

@@ -1,4 +1,4 @@
-import { Text } from '@modulz/design-system'
+import { Text } from '~styles/system/components/Text'
 // import Emoji from '~components/Notion/Emoji'
 
 const ImageCaption = ({ caption }) => {

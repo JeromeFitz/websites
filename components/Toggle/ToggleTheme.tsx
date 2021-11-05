@@ -1,4 +1,3 @@
-import { darkTheme, IconButton, Tooltip } from '@modulz/design-system'
 import { MoonIcon, SunIcon } from '@radix-ui/react-icons'
 import Mousetrap from 'mousetrap'
 import { useTheme } from 'next-themes'
@@ -6,6 +5,8 @@ import { useCallback, useEffect } from 'react'
 import { useSound } from 'use-sound'
 
 import { useUI } from '~context/ManagedUIContext'
+import { IconButton, Tooltip } from '~styles/system/components'
+import { darkTheme } from '~styles/system/stitches.config'
 
 const ThemeToggle = () => {
   const { theme, setTheme } = useTheme()
