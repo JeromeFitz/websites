@@ -27,17 +27,57 @@ class MyDocument extends Document<DocumentContext> {
           />
           <link
             rel="preload"
-            href="/noprecache/fonts/name-sans/Name_Sans_Variable.woff2"
+            href="/noprecache/fonts/name-sans/statics/Name_Sans_Variable.woff2"
             as="font"
             type="font/woff2"
             crossOrigin="anonymous"
           /> */}
           <link
             rel="preload"
-            href="/noprecache/fonts/name-sans/Name_Sans_Text-Regular.woff2"
+            href="/noprecache/fonts/name-sans/statics/Name_Sans_Standard-Regular.woff"
+            as="font"
+            type="font/woff"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preload"
+            href="/noprecache/fonts/name-sans/statics/Name_Sans_Standard-Regular.woff2"
             as="font"
             type="font/woff2"
             crossOrigin="anonymous"
+          />
+          <link
+            rel="preload"
+            href="/noprecache/fonts/name-sans/statics/Name_Sans_Standard-Bold.woff"
+            as="font"
+            type="font/woff"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preload"
+            href="/noprecache/fonts/name-sans/statics/Name_Sans_Standard-Bold.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
+          <style
+            dangerouslySetInnerHTML={{
+              __html: `
+@font-face {
+  font-family: 'Name Sans';
+  font-weight: 400;
+  font-display: swap;
+  src: url(/noprecache/fonts/name-sans/statics/Name_Sans_Standard-Regular.woff2) format('woff2'), url(/noprecache/fonts/name-sans/statics/Name_Sans_Standard-Regular.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Name Sans';
+  font-weight: 700;
+  font-display: swap;
+  src: url(/noprecache/fonts/name-sans/statics/Name_Sans_Standard-Bold.woff2) format('woff2'), url(/noprecache/fonts/name-sans/statics/Name_Sans_Standard-Bold.woff) format('woff');
+}
+`,
+            }}
           />
           {/*  */}
           {/* <link rel="preconnect" href="https://cdn.usefathom.com" crossOrigin="" /> */}
