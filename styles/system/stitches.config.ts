@@ -148,6 +148,7 @@ const fontFamily = {
   serif: ['ui-serif', 'Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
 }
 const sans = ['Inter', ...fontFamily.sans].join(',')
+const name = ['Name Sans', ...fontFamily.sans].join(',')
 const mono = [...fontFamily.mono].join(',')
 const serif = [...fontFamily.serif].join(',')
 
@@ -234,6 +235,7 @@ export const {
     },
     fonts: {
       mono,
+      name,
       sans,
       serif,
     },

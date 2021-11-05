@@ -18,13 +18,28 @@ class MyDocument extends Document<DocumentContext> {
           <meta name="superfish" content="nofish" />
           <meta content="origin-when-cross-origin" name="referrer" />
           <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} />
-          <link
+          {/* <link
             rel="preload"
             href="/static/fonts/inter/inter-var-latin.woff2"
             as="font"
             type="font/woff2"
             crossOrigin="anonymous"
           />
+          <link
+            rel="preload"
+            href="/noprecache/fonts/name-sans/Name_Sans_Variable.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          /> */}
+          <link
+            rel="preload"
+            href="/noprecache/fonts/name-sans/Name_Sans_Text-Regular.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
+          {/*  */}
           {/* <link rel="preconnect" href="https://cdn.usefathom.com" crossOrigin="" /> */}
           <link
             rel="apple-touch-icon"

@@ -45,7 +45,7 @@ const globalStyles = globalCss({
     margin: 0,
     color: '$hiContrast',
     backgroundColor: '$loContrast',
-    fontFamily: '$sans',
+    fontFamily: '$name',
     WebkitFontSmoothing: 'antialiased',
     MozOsxFontSmoothing: 'grayscale',
     WebkitTextSizeAdjust: '100%',
