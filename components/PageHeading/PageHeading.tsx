@@ -1,4 +1,4 @@
-import { Heading as _Heading, Paragraph, Skeleton } from '~styles/system/components'
+import { Heading, Paragraph, Skeleton } from '~styles/system/components'
 
 const SkeletonTitle = () => (
   <Skeleton
@@ -34,9 +34,9 @@ const SkeletonDescription = () => (
 const SkeletonHeading = () => {
   return (
     <>
-      <_Heading size="4">
+      <Heading size="4">
         <SkeletonTitle />
-      </_Heading>
+      </Heading>
       <Paragraph size="2" as="p" css={{ mt: '$2', mb: '$7' }}>
         <SkeletonDescription />
       </Paragraph>
@@ -44,10 +44,10 @@ const SkeletonHeading = () => {
   )
 }
 
-const Heading = ({ title, description }) => {
+const PageHeading = ({ title, description }) => {
   return (
     <>
-      <_Heading size="4">{title}</_Heading>
+      <Heading size="4">{title}</Heading>
       <Paragraph size="2" as="p" css={{ mt: '$2', mb: '$7' }}>
         {description}
       </Paragraph>
@@ -56,4 +56,4 @@ const Heading = ({ title, description }) => {
 }
 
 export { SkeletonHeading, SkeletonTitle, SkeletonDescription }
-export default Heading
+export default PageHeading

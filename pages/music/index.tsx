@@ -7,15 +7,15 @@ import _size from 'lodash/size'
 import React, { useState } from 'react'
 import { useSound } from 'use-sound'
 
-import Heading from '~components/Heading'
 import { TopArtists } from '~components/Music'
+import PageHeading from '~components/PageHeading'
 import Seo from '~components/Seo'
 import { useUI } from '~context/ManagedUIContext'
 import useSpotify from '~hooks/useSpotify'
 import {
   Container,
   Flex,
-  Heading as _Heading,
+  Heading,
   Note,
   RadioCard,
   RadioCardGroup,
@@ -92,7 +92,7 @@ const Music = () => {
   return (
     <>
       <Seo {...seo} />
-      <Heading title={seo.title} description={seo.description} />
+      <PageHeading title={seo.title} description={seo.description} />
       <Note>This page is in-progress.</Note>
       <Text
         as="p"
@@ -125,9 +125,9 @@ const Music = () => {
       </Text>
       <Section size="3">
         <Container size="2">
-          <_Heading id="radiocard" css={{ mb: '$6', scrollMarginTop: '$7' }}>
+          <Heading id="radiocard" css={{ mb: '$6', scrollMarginTop: '$7' }}>
             Change time frequency
-          </_Heading>
+          </Heading>
           <Text as="p">
             I’ve had Spotify since March 2020, so you can go back that far or two
             other options currently.

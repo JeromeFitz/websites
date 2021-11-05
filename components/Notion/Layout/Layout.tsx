@@ -1,7 +1,7 @@
 import Slugger from 'github-slugger'
 import useSWR from 'swr'
 
-import Heading from '~components/Heading'
+import PageHeading from '~components/PageHeading'
 import Seo from '~components/Seo'
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -47,7 +47,7 @@ const Layout = ({ id, children, data, routeType, url }) => {
   return (
     <>
       <Seo {...seo} />
-      <Heading title={seo.title} description={seo.description} />
+      <PageHeading title={seo.title} description={seo.description} />
       {children}
     </>
   )

@@ -1,8 +1,8 @@
-import Heading, {
+import PageHeading, {
   SkeletonHeading,
   SkeletonTitle,
   SkeletonDescription,
-} from './Heading'
+} from './PageHeading'
 
 export { SkeletonHeading, SkeletonTitle, SkeletonDescription }
-export default Heading
+export default PageHeading

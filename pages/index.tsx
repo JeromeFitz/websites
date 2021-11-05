@@ -1,8 +1,8 @@
 // import dynamic from 'next/dynamic'
 import useSWR from 'swr'
 
-import Heading, { SkeletonHeading } from '~components/Heading'
 import Page from '~components/Notion/Page'
+import PageHeading, { SkeletonHeading } from '~components/PageHeading'
 import { SLUG__HOMEPAGE } from '~lib/constants'
 import fetcher from '~lib/fetcher'
 import getCatchAll from '~lib/notion/getCatchAll'
@@ -54,7 +54,7 @@ const CatchAll = (props) => {
   const isLoading = !isError && isDataUndefined
 
   if (isError && isDataUndefined)
-    return <Heading description={`Whoops`} title={`Well, that is not good.`} />
+    return <PageHeading description={`Whoops`} title={`Well, that is not good.`} />
   if (isLoading) return <SkeletonHeading />
 
   return (

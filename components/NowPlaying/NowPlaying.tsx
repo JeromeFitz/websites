@@ -11,12 +11,15 @@ import NextLink from 'next/link'
 import useSWR from 'swr'
 import _title from 'title'
 
-// import { CardWithGlow, CardWithGlowProps } from '~components/Card'
-// import Icon from '~components/Icon'
-import { WEBKIT_BACKGROUND__BREAK } from '~lib/constants'
 import fetcher from '~lib/fetcher'
 import { spotifyFavoriteTracks } from '~lib/spotify/favorites'
-import { Badge, Flex, Paragraph, Separator } from '~styles/system/components'
+import {
+  Badge,
+  Flex,
+  Heading,
+  Paragraph,
+  Separator,
+} from '~styles/system/components'
 import { CardSpotify } from '~styles/system/components/Card/Spotify'
 import { styled } from '~styles/system/stitches.config'
 
@@ -47,15 +50,15 @@ const Container = styled('div', {
   '@bp1': { padding: 0 },
 })
 
-const Header = styled('h3', {
-  display: 'flex',
-  flexDirection: 'row',
-  alignItems: 'center',
-  fontSize: '$8',
-  lineHeight: 1.25,
-  mt: 0,
-  mb: 3,
-})
+// const Header = styled('h3', {
+//   display: 'flex',
+//   flexDirection: 'row',
+//   alignItems: 'center',
+//   fontSize: '$8',
+//   lineHeight: 1.25,
+//   mt: 0,
+//   mb: 3,
+// })
 
 // const Separator = styled('div', {
 //   width: '100%',
@@ -162,7 +165,8 @@ const NowPlaying = () => {
   return (
     <Section>
       <Container>
-        <Header style={WEBKIT_BACKGROUND__BREAK}>{title}</Header>
+        {/* <Header style={WEBKIT_BACKGROUND__BREAK}>{title}</Header> */}
+        <Heading size="2">{title}</Heading>
         <Separator css={{ margin: '0', width: '100% !important' }} />
         <Paragraph css={{ my: '$4' }}>
           I listen to a lot of music. I do not think that makes me unique, however, I

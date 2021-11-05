@@ -12,7 +12,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '~components/Accordion'
-import Heading from '~components/Heading'
+import PageHeading from '~components/PageHeading'
 import Seo from '~components/Seo'
 import { Flex, Note, Text } from '~styles/system/components'
 
@@ -538,7 +538,7 @@ const Music = () => {
   return (
     <>
       <Seo {...seo} />
-      <Heading title={seo.title} description={seo.description} />
+      <PageHeading title={seo.title} description={seo.description} />
       <Note>This page is in-progress.</Note>
       <Text
         as="p"

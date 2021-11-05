@@ -19,6 +19,7 @@ import {
   CarouselNext,
   CarouselPrevious,
   Flex,
+  Heading,
   Text,
 } from '~styles/system/components'
 import { CardSpotify } from '~styles/system/components/Card/Spotify'
@@ -372,7 +373,9 @@ const TA = () => {
 
   return (
     <Box css={{ position: 'relative', mt: '$8' }}>
-      <h2>Top Artists</h2>
+      <Heading size="2" as="h2">
+        Top Artists
+      </Heading>
       <Carousel>
         <CarouselSlideList
           css={{

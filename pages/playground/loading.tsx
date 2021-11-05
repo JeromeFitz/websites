@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import Heading, { SkeletonHeading } from '~components/Heading'
+import PageHeading, { SkeletonHeading } from '~components/PageHeading'
 import { Separator } from '~styles/system/components/Separator'
 
 const text = {
@@ -42,7 +42,7 @@ const Loading = () => {
   if (isError && isDataUndefined)
     return (
       <>
-        <Heading description={text.error.text} title={text.error.title} />
+        <PageHeading description={text.error.text} title={text.error.title} />
         <Separator
           css={{ margin: '1rem 0', padding: '0', width: '100% !important' }}
         />
@@ -75,7 +75,10 @@ const Loading = () => {
 
   return (
     <>
-      <Heading description={properties.title} title={properties.seoDescription} />
+      <PageHeading
+        description={properties.title}
+        title={properties.seoDescription}
+      />
       <Separator
         css={{ margin: '1rem 0', padding: '0', width: '100% !important' }}
       />

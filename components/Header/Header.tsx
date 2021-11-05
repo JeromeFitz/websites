@@ -88,16 +88,23 @@ const isDev = process.env.NODE_ENV !== 'production'
 const dev = [
   { emoji: '▶️', url: '/playground', title: 'P', text: 'Playground' },
   {
-    emoji: '▶️',
+    emoji: '🛁️',
     url: '/playground/kitchen-sink',
     title: 'KS',
     text: 'Kithcen Sink',
   },
   {
-    emoji: '▶️',
+    emoji: '⏸️',
     url: '/playground/loading',
     title: 'L',
     text: 'Loading',
+  },
+  ,
+  {
+    emoji: '🟧️',
+    url: '/playground/grid',
+    title: 'G',
+    text: 'Grid',
   },
 ]
 
