@@ -45,7 +45,12 @@ const globalStyles = globalCss({
     margin: 0,
     color: '$hiContrast',
     backgroundColor: '$loContrast',
-    fontFamily: '$name',
+    // fontFamily: '$f37bella',
+    // fontFamily: '$f37bolton',
+    // fontFamily: '$f37ginger',
+    // fontFamily: '$f37gingerRound',
+    fontFamily: '$inter',
+    // fontFamily: '$name',
     WebkitFontSmoothing: 'antialiased',
     MozOsxFontSmoothing: 'grayscale',
     WebkitTextSizeAdjust: '100%',
@@ -60,7 +65,10 @@ const globalStyles = globalCss({
     verticalAlign: 'middle',
   },
 
-  'pre, code': { margin: 0, fontFamily: '$mono' },
+  'pre, code': {
+    margin: 0,
+    fontFamily: '$mono',
+  },
 
   '::selection': {
     backgroundColor: '$slateA5',

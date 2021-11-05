@@ -147,8 +147,13 @@ const fontFamily = {
   ],
   serif: ['ui-serif', 'Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
 }
-const sans = ['Inter', ...fontFamily.sans].join(',')
-const name = ['Name Sans', ...fontFamily.sans].join(',')
+
+const f37bella = ['"F37 Bella"', ...fontFamily.serif].join(',')
+const f37bolton = ['"F37 Bolton"', ...fontFamily.sans].join(',')
+const f37ginger = ['"F37 Ginger"', ...fontFamily.sans].join(',')
+const f37gingerRound = ['"F37 Ginger Round"', ...fontFamily.sans].join(',')
+const inter = ['Inter', ...fontFamily.sans].join(',')
+const name = ['"Name Sans"', ...fontFamily.sans].join(',')
 const mono = [...fontFamily.mono].join(',')
 const serif = [...fontFamily.serif].join(',')
 
@@ -234,9 +239,14 @@ export const {
       shadowDark: 'hsl(206 22% 7% / 20%)',
     },
     fonts: {
+      f37bella,
+      f37bolton,
+      f37ginger,
+      f37gingerRound,
+      inter,
       mono,
       name,
-      sans,
+      sans: name,
       serif,
     },
     space: {

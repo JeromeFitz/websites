@@ -1,3 +1,4 @@
+import _map from 'lodash/map'
 import Document, {
   DocumentContext,
   Html,
@@ -6,6 +7,12 @@ import Document, {
   NextScript,
 } from 'next/document'
 
+// import { info, fontFace } from '~styles/fonts/F37Bella'
+// import { info, fontFace } from '~styles/fonts/F37Bolton'
+// import { info, fontFace } from '~styles/fonts/F37Ginger'
+// import { info, fontFace } from '~styles/fonts/F37GingerRound'
+import { info, fontFace } from '~styles/fonts/Inter'
+// import { info, fontFace } from '~styles/fonts/NameSans'
 import { getCssText } from '~styles/system/stitches.config'
 
 class MyDocument extends Document<DocumentContext> {
@@ -18,69 +25,27 @@ class MyDocument extends Document<DocumentContext> {
           <meta name="superfish" content="nofish" />
           <meta content="origin-when-cross-origin" name="referrer" />
           <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} />
-          {/* <link
-            rel="preload"
-            href="/static/fonts/inter/inter-var-latin.woff2"
-            as="font"
-            type="font/woff2"
-            crossOrigin="anonymous"
-          />
-          <link
-            rel="preload"
-            href="/noprecache/fonts/name-sans/statics/Name_Sans_Variable.woff2"
-            as="font"
-            type="font/woff2"
-            crossOrigin="anonymous"
-          /> */}
-          <link
-            rel="preload"
-            href="/noprecache/fonts/name-sans/statics/Name_Sans_Standard-Regular.woff"
-            as="font"
-            type="font/woff"
-            crossOrigin="anonymous"
-          />
-          <link
-            rel="preload"
-            href="/noprecache/fonts/name-sans/statics/Name_Sans_Standard-Regular.woff2"
-            as="font"
-            type="font/woff2"
-            crossOrigin="anonymous"
-          />
-          <link
-            rel="preload"
-            href="/noprecache/fonts/name-sans/statics/Name_Sans_Standard-Bold.woff"
-            as="font"
-            type="font/woff"
-            crossOrigin="anonymous"
-          />
-          <link
-            rel="preload"
-            href="/noprecache/fonts/name-sans/statics/Name_Sans_Standard-Bold.woff2"
-            as="font"
-            type="font/woff2"
-            crossOrigin="anonymous"
-          />
+          {/* START: custom typeface */}
+          {_map(info.weights, (weight) => {
+            return _map(weight, (file) => {
+              const { href, type } = file
+              return (
+                <link
+                  rel="preload"
+                  href={href}
+                  as="font"
+                  type={type}
+                  crossOrigin="anonymous"
+                />
+              )
+            })
+          })}
           <style
             dangerouslySetInnerHTML={{
-              __html: `
-@font-face {
-  font-family: 'Name Sans';
-  font-weight: 400;
-  font-display: swap;
-  src: url(/noprecache/fonts/name-sans/statics/Name_Sans_Standard-Regular.woff2) format('woff2'), url(/noprecache/fonts/name-sans/statics/Name_Sans_Standard-Regular.woff) format('woff');
-}
-
-@font-face {
-  font-family: 'Name Sans';
-  font-weight: 700;
-  font-display: swap;
-  src: url(/noprecache/fonts/name-sans/statics/Name_Sans_Standard-Bold.woff2) format('woff2'), url(/noprecache/fonts/name-sans/statics/Name_Sans_Standard-Bold.woff) format('woff');
-}
-`,
+              __html: fontFace,
             }}
           />
-          {/*  */}
-          {/* <link rel="preconnect" href="https://cdn.usefathom.com" crossOrigin="" /> */}
+          {/* END: custom typeface */}
           <link
             rel="apple-touch-icon"
             sizes="180x180"
