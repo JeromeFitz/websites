@@ -1,4 +1,4 @@
-import { Heading, Paragraph, Skeleton } from '~styles/system/components'
+import { Heading, Note, Paragraph, Skeleton } from '~styles/system/components'
 
 const SkeletonTitle = () => (
   <Skeleton
@@ -51,6 +51,7 @@ const PageHeading = ({ title, description }) => {
       <Paragraph size="2" as="p" css={{ mt: '$2', mb: '$7' }}>
         {description}
       </Paragraph>
+      <Note>This page is in-progress.</Note>
     </>
   )
 }

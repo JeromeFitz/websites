@@ -7,7 +7,7 @@ import _size from 'lodash/size'
 import React, { useState } from 'react'
 import { useSound } from 'use-sound'
 
-import { TopArtists } from '~components/Music'
+import { TopArtists, TopTracks } from '~components/Music'
 import PageHeading from '~components/PageHeading'
 import Seo from '~components/Seo'
 import { useUI } from '~context/ManagedUIContext'
@@ -16,9 +16,9 @@ import {
   Container,
   Flex,
   Heading,
-  Note,
   RadioCard,
   RadioCardGroup,
+  Paragraph,
   Section,
   Text,
 } from '~styles/system/components'
@@ -35,19 +35,19 @@ import {
 const plans = [
   {
     id: 0,
-    name: 'All Time',
+    name: '* All Time',
     description: 'Since March 2020',
     time_range: 'long_term',
   },
   {
     id: 1,
-    name: '~ 6 months',
+    name: '~ 6 month',
     description: 'Past six months',
     time_range: 'medium_term',
   },
   {
     id: 2,
-    name: '~ 1 Month',
+    name: '~ 1 month',
     description: 'Past month',
     time_range: 'short_term',
   },
@@ -93,7 +93,6 @@ const Music = () => {
     <>
       <Seo {...seo} />
       <PageHeading title={seo.title} description={seo.description} />
-      <Note>This page is in-progress.</Note>
       <Text
         as="p"
         css={{
@@ -123,15 +122,15 @@ const Music = () => {
         at over 50 days, and am continuing an ever growing vinyl collection [have not
         yet made the leap to first editions, heh].)
       </Text>
-      <Section size="3">
-        <Container size="2">
-          <Heading id="radiocard" css={{ mb: '$6', scrollMarginTop: '$7' }}>
+      <Section size="1">
+        <Container size="5" css={{ position: 'sticky' }}>
+          <Heading as="h4" id="radiocard" css={{ mb: '$3', scrollMarginTop: '$7' }}>
             Change time frequency
           </Heading>
-          <Text as="p">
-            I’ve had Spotify since March 2020, so you can go back that far or two
-            other options currently.
-          </Text>
+          <Paragraph css={{ mb: '$3' }}>
+            I’ve had <strong>Spotify</strong> since March 2020, so you can go back
+            that far or two other options currently.
+          </Paragraph>
           <RadioCardGroup
             value={selected?.time_range}
             onValueChange={handleSpotifyTimeRange2}
@@ -141,7 +140,11 @@ const Music = () => {
                 <RadioCard
                   key={plan.name}
                   value={plan.time_range}
-                  css={{ mb: '$2' }}
+                  css={{
+                    mb: '$2',
+                    width: 'var(--width-11_12)',
+                    fontFamily: '$mono',
+                  }}
                 >
                   <Flex css={{ alignItems: 'center' }}>
                     <Text
@@ -159,8 +162,9 @@ const Music = () => {
             })}
           </RadioCardGroup>
         </Container>
+        <TopArtists />
+        <TopTracks />
       </Section>
-      <TopArtists />
     </>
   )
 }

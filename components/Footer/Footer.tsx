@@ -285,7 +285,7 @@ const Footer = () => {
                 mt: '$5',
               }}
             >
-              Site by
+              (In-progress) Site by
               <br />
               <strong>Nice Group of People, LLC</strong>
             </Text>

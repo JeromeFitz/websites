@@ -7,6 +7,7 @@ import React, { useEffect, useState } from 'react'
 import useSWR from 'swr'
 import _title from 'title'
 
+import { ImageWithBackgroundBlur } from '~components/Notion/Layout/ImageLead'
 import useSpotify from '~hooks/useSpotify'
 import fetcher from '~lib/fetcher'
 import {
@@ -18,8 +19,11 @@ import {
   CarouselSlide,
   CarouselNext,
   CarouselPrevious,
+  Container,
   Flex,
+  Grid,
   Heading,
+  // Paragraph,
   Text,
 } from '~styles/system/components'
 import { CardSpotify } from '~styles/system/components/Card/Spotify'
@@ -367,16 +371,62 @@ const TA = () => {
 
   const slugger = new Slugger()
 
-  // const artists = _reverse(data?.artists)
   const artists = data?.artists
-  // console.dir(artists)
 
   return (
     <Box css={{ position: 'relative', mt: '$8' }}>
-      <Heading size="2" as="h2">
+      <Heading size="2" as="h2" css={{ my: '$5' }}>
         Top Artists
       </Heading>
-      <Carousel>
+      <Grid
+        align="start"
+        css={{
+          gridTemplateColumns: '1fr',
+          columnGap: '$6  ',
+          rowGap: '$6',
+          '@bp1': { gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 2fr))' },
+        }}
+      >
+        {_map(artists, (item, itemIdx: number) => {
+          const { genres, name } = item
+          const { base64, img, slug } = item.meta
+          const description = name
+
+          return (
+            <Box key={`top10artists--${itemIdx}`}>
+              <ImageWithBackgroundBlur
+                base64={base64}
+                description={description}
+                image={img}
+                slug={slug}
+              />
+              <Container css={{ my: '$3' }}>
+                <Heading size="2">
+                  {lpad(itemIdx + 1)}. {name}
+                </Heading>
+              </Container>
+              <Container as="ul">
+                {_map(genres.slice(0, 10), (genre) => (
+                  <Badge
+                    as="li"
+                    size="2"
+                    css={{
+                      p: '$3',
+                      m: '$1',
+                      c: '$hiContrast',
+                      border: '1px solid $hiContrast',
+                      fontWeight: '700',
+                    }}
+                  >
+                    {_title(genre)}
+                  </Badge>
+                ))}
+              </Container>
+            </Box>
+          )
+        })}
+      </Grid>
+      <Carousel css={{ display: 'none' }}>
         <CarouselSlideList
           css={{
             display: 'grid',

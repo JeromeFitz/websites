@@ -60,7 +60,7 @@ const CardSpotify = ({ base64, children, image, slug }) => {
                 borderRadius: '$4',
                 borderBottomLeftRadius: 0,
                 borderBottomRightRadius: 0,
-                bc: '$colors$gray1',
+                bc: '$colors$gray3',
                 display: 'flex',
                 flexDirection: 'column',
                 px: '$2',

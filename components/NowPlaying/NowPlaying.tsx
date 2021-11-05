@@ -17,6 +17,7 @@ import {
   Badge,
   Flex,
   Heading,
+  Link,
   Paragraph,
   Separator,
 } from '~styles/system/components'
@@ -166,31 +167,45 @@ const NowPlaying = () => {
     <Section>
       <Container>
         {/* <Header style={WEBKIT_BACKGROUND__BREAK}>{title}</Header> */}
-        <Heading size="2">{title}</Heading>
+        <Heading size="2" css={{ mb: '$3' }}>
+          {title}
+        </Heading>
         <Separator css={{ margin: '0', width: '100% !important' }} />
         <Paragraph css={{ my: '$4' }}>
           I listen to a lot of music. I do not think that makes me unique, however, I
           enjoy it all the same. If you’d like to see more of my listening habits
           please check out the{' '}
           <NextLink href="/music" passHref>
-            <a className="font-black _text-black underline-style-solid underline-offset-md underline-thickness-md">
+            <Link
+              className="font-black _text-black underline-style-solid underline-offset-md underline-thickness-md"
+              css={{ fontWeight: '700' }}
+            >
               music
-            </a>
+            </Link>
           </NextLink>{' '}
           section. (Though full disclosure, I also like to{' '}
           <NextLink href="/books" passHref>
-            <a className="font-black _text-black underline-style-solid underline-offset-md underline-thickness-md">
+            <Link
+              className="font-black _text-black underline-style-solid underline-offset-md underline-thickness-md"
+              css={{ fontWeight: '700' }}
+            >
               read
-            </a>
+            </Link>
           </NextLink>
           .)
         </Paragraph>
         <CardSpotify base64={base64} image={imageData?.img} slug={imageSlug}>
-          <Paragraph size="2" css={{ fontWeight: 'bold', fontSize: '$7' }}>
+          <Paragraph
+            size="2"
+            css={{ color: '$hiContrast', fontWeight: 'bold', fontSize: '$7' }}
+          >
             <span>{artist.name}</span>
           </Paragraph>
           <Separator css={{ my: '1rem !important', width: '100% !important' }} />
-          <Paragraph size="2" css={{ fontWeight: 'bold', fontSize: '$6' }}>
+          <Paragraph
+            size="2"
+            css={{ color: '$hiContrast', fontWeight: 'bold', fontSize: '$6' }}
+          >
             <span>{`“${track.name}”`}</span>
           </Paragraph>
           <Flex
@@ -210,7 +225,9 @@ const NowPlaying = () => {
                 <Badge
                   size="2"
                   css={{
+                    border: '1px solid $hiContrast',
                     fontFamily: '$mono',
+                    color: '$hiContrast',
                   }}
                 >
                   {_title(tag)}
@@ -218,7 +235,7 @@ const NowPlaying = () => {
               </Flex>
             ))}
           </Flex>
-          <Paragraph size="2" css={{ pb: '$1' }}>
+          <Paragraph size="2" css={{ color: '$hiContrast', pb: '$1' }}>
             <>
               Off of “<span className={cx('font-bold')}>{album.name}</span>” released
               in <span className={cx('font-bold')}>{album.year}</span>.
@@ -226,7 +243,7 @@ const NowPlaying = () => {
           </Paragraph>
           <Paragraph size="1" css={{ pb: '$1' }}>
             <>
-              <a
+              <Link
                 aria-label={`Link to ${track.name}`}
                 className={cx(
                   'underline-style-solid underline-offset-md underline-thickness-md',
@@ -248,7 +265,7 @@ const NowPlaying = () => {
                 >
                   <ExternalLinkIcon />
                 </Flex>
-              </a>
+              </Link>
             </>
           </Paragraph>
         </CardSpotify>

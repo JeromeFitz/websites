@@ -272,13 +272,14 @@ const Header = () => {
                   <Box css={{ p: '$1' }}>
                     {dev.map((show, showId) => (
                       <NextLink
-                        key={`header-shows-${showId}`}
+                        key={`header-playground-${showId}`}
                         href={show.url}
                         passHref
                       >
                         <HighlightLink
                           variant={
-                            show.url !== '/shows' && router.asPath.includes(show.url)
+                            show.url !== '/playground' &&
+                            router.asPath.includes(show.url)
                               ? 'contrast'
                               : 'subtle'
                           }

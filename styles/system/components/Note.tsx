@@ -26,11 +26,12 @@ const Note = ({ children, label = 'Note:' }) => {
           borderRadius: '$4',
           color: '$colors$gray12',
           backgroundColor: '$colors$gray1',
-          border: '1px solid black',
-          fontSize: '14px',
-          lineHeight: '24px',
+          border: '1px solid $colors$gray12',
+          fontSize: '1rem',
+          lineHeight: '1.5',
           wordBreak: 'break-work',
           boxSizing: 'border-box',
+          my: '$6',
         }}
       >
         <span>
