@@ -24,7 +24,7 @@ const info = {
     ],
   },
 }
-// const fontFace = _fontFace(fontFaceTemplateWoff2,
-const fontFace = getFontFace(templateWoff2, info.name, info.weights)
+
+const fontFace = getFontFace(templateWoff2, info)
 
 export { info, fontFace }

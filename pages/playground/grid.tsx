@@ -177,6 +177,8 @@ const Playground = () => {
             }}
           >
             {rangeMap(4, (i) => (
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
               <Heading size={4 - i}>Heading Size {4 - i}</Heading>
             ))}
           </Grid>
