@@ -147,7 +147,11 @@ function MyApp({ Component, pageProps, router }: AppProps) {
               <NotificationProvider>
                 <NProgress />
                 <Header />
-                <Container as="main" size={{ '@initial': 2, '@bp1': 3, '@bp2': 4 }}>
+                <Container
+                  as="main"
+                  id="main"
+                  size={{ '@initial': 2, '@bp1': 3, '@bp2': 4 }}
+                >
                   <Section>
                     <Component {...pageProps} key={router.route} />
                   </Section>

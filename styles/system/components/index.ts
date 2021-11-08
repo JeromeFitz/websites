@@ -1,6 +1,7 @@
 export { Avatar } from './Avatar'
 export { Badge } from './Badge'
 export { Box } from './Box'
+export { Button } from './Button'
 export {
   Carousel,
   CarouselArrowButton,
@@ -27,5 +28,7 @@ export { Separator } from './Separator'
 export { Spacer } from './Spacer'
 export { Skeleton } from './Skeleton'
 export { Status } from './Status'
+export { TabLink } from './TabLink'
+export { Tabs, TabsList, TabsContent, TabsTrigger } from './Tabs'
 export { Text } from './Text'
 export { Tooltip } from './Tooltip'

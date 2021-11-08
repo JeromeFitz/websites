@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Heading, Note, Paragraph, Skeleton } from '~styles/system/components'
 
 const SkeletonTitle = () => (
@@ -51,7 +52,7 @@ const PageHeading = ({ title, description }) => {
       <Paragraph size="2" as="p" css={{ mt: '$2', mb: '$7' }}>
         {description}
       </Paragraph>
-      <Note>This page is in-progress.</Note>
+      {/* <Note>This page is in-progress.</Note> */}
     </>
   )
 }

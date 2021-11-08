@@ -1,6 +1,6 @@
 import * as Announce from '@radix-ui/react-announce'
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
-import { format, getDate, getMonth, getYear, parseISO } from 'date-fns'
+import { format, getDate, getDay, getMonth, getYear, parseISO } from 'date-fns'
 import Slugger from 'github-slugger'
 import _filter from 'lodash/filter'
 import _map from 'lodash/map'
@@ -13,7 +13,7 @@ import PageHeading from '~components/PageHeading'
 import mockData from '~data/mock/notion/events'
 import {
   Box,
-  Container,
+  // Container,
   Flex,
   Grid,
   Heading,
@@ -24,7 +24,7 @@ import { styled } from '~styles/system/stitches.config'
 import getInfoType from '~utils/notion/getInfoType'
 
 const properties = {
-  title: 'Events',
+  title: mockData?.info?.data?.title,
   seoDescription: 'Playground for Layout Purposes',
 }
 
@@ -55,9 +55,11 @@ const PlaygroundEvents = () => {
     // @note(date-fns) zero-based month is confusing when year/date are not
     const isoMonth = getMonth(iso) + 1
     const isoDate = getDate(iso)
+    const isoDay = getDay(iso)
     const formatYear = format(iso, 'yyyy')
     const formatMonth = format(iso, 'MM')
     const formatDate = format(iso, 'dd')
+    const formatDay = format(iso, 'EEEE')
 
     aYears.push(isoYear)
 
@@ -67,12 +69,14 @@ const PlaygroundEvents = () => {
         year: formatYear,
         month: formatMonth,
         date: formatDate,
+        day: formatDay,
       },
       iso: {
         full: iso,
         year: isoYear,
         month: isoMonth,
         date: isoDate,
+        day: isoDay,
       },
     }
   })
@@ -104,8 +108,8 @@ const PlaygroundEvents = () => {
   return (
     <>
       <PageHeading
-        description={properties.title}
-        title={properties.seoDescription}
+        description={properties.seoDescription}
+        title={properties.title}
       />
       {_map(data, (dataYear, yearIndex) => {
         return (
@@ -156,53 +160,64 @@ const PlaygroundEvents = () => {
   )
 }
 
-const DateHeader = () => {
-  return (
-    <Box as="header">
-      <Container>
-        <Grid columns="6" gap="5">
-          <Box>Date</Box>
-          <Box
-            css={{
-              gridRowStart: 'span 1',
-              gridRowEnd: 'span 1',
-              gridColumnStart: 'span 5',
-              gridColumnEnd: 'span 5',
-              // offset
-              // px: '24px',
-            }}
-          >
-            <Grid columns="5" gap="5">
-              <Box
-                css={{
-                  gridRowStart: 'span 1',
-                  gridRowEnd: 'span 1',
-                  gridColumnStart: 'span 2',
-                  gridColumnEnd: 'span 2',
-                }}
-              >
-                Title
-              </Box>
-              <Box>Tickets</Box>
-              <Box>Venue</Box>
-              <Box>Tag</Box>
-            </Grid>
-          </Box>
-        </Grid>
-      </Container>
-    </Box>
-  )
-}
+// const DateHeader = () => {
+//   return (
+//     <Box
+//       as="header"
+//       css={
+//         {
+//           // position: 'sticky',
+//           // top: 20,
+//           // backgroundColor: 'white',
+//         }
+//       }
+//     >
+//       <Container>
+//         <Grid columns="6" gap="5">
+//           <Box>Date</Box>
+//           <Box
+//             css={{
+//               gridRowStart: 'span 1',
+//               gridRowEnd: 'span 1',
+//               gridColumnStart: 'span 5',
+//               gridColumnEnd: 'span 5',
+//               // offset
+//               // px: '24px',
+//             }}
+//           >
+//             <Grid columns="5" gap="5">
+//               <Box
+//                 css={{
+//                   gridRowStart: 'span 1',
+//                   gridRowEnd: 'span 1',
+//                   gridColumnStart: 'span 2',
+//                   gridColumnEnd: 'span 2',
+//                 }}
+//               >
+//                 Title
+//               </Box>
+//               <Box>Lineup</Box>
+//               <Box>Venue</Box>
+//               <Box>Tag</Box>
+//             </Grid>
+//           </Box>
+//         </Grid>
+//       </Container>
+//     </Box>
+//   )
+// }
 const Year = ({ children, title }) => {
   return (
     <Section size="1">
-      <DateHeader />
+      {/* <DateHeader /> */}
       <Box
-        css={{
-          mt: '$6',
-          pt: '$6',
-          borderTop: '1px solid $colors$mauve12',
-        }}
+        css={
+          {
+            // mt: '$6',
+            // pt: '$6',
+            // borderTop: '1px solid $colors$mauve12',
+          }
+        }
       >
         <Heading as="h2" size="2">
           {title}
@@ -229,14 +244,40 @@ const Month = ({ children, data }) => {
 const Date = ({ children, title }) => {
   return (
     <Box role="listitem">
-      <Box css={{ mt: '$6', pt: '$6', borderTop: '1px solid $colors$mauve10' }}>
-        <Grid columns="6" gap="5">
+      <Box
+        css={{
+          mt: '$2',
+          pt: '$2',
+          // borderTop: '1px solid $colors$mauve10',
+          '@bp1': {
+            mt: '$3',
+            pt: '$3',
+          },
+        }}
+      >
+        {/* <DateHeader /> */}
+        <Grid
+          css={{
+            gridTemplateColumns: 'repeat(1, 1fr)',
+            gap: 5,
+            '@bp1': { gridTemplateColumns: 'repeat(6, 1fr)' },
+          }}
+        >
           <Box>
-            <Heading as="h4" size="4">
+            <Heading
+              as="h4"
+              css={{
+                lineHeight: '1.3!important',
+                fontSize: '2rem',
+                '@bp1': { fontSize: '3rem' },
+              }}
+            >
               {title}
             </Heading>
+            <Box css={{ display: 'none' }}>10</Box>
           </Box>
           <Box
+            className="mergeList"
             css={{
               gridRowStart: 'span 1',
               gridRowEnd: 'span 1',
@@ -276,44 +317,84 @@ const Event = ({ data, keyPrefix }) => {
   // const dateISO = formatISO(date?.iso?.full)
   const { title } = data?.data
   return (
-    <Box role="listitem">
+    <Box role="listitem" css={{ mb: '1rem' }}>
       <Box css={{ display: 'none' }}>Category</Box>
       <Box
         className="cardEvent"
         css={{
           position: 'relative',
-          mb: '4px',
-          padding: '28px 32px',
-          backgroundColor: '$colors$mauve12',
-          color: '$colors$mauve1',
+          mb: '8px',
+          padding: '16px 20px',
           transition: 'background-color .2s cubic-bezier(.165, .84, .44, 1)',
-          lineHeight: '1.3',
+          '@bp1': {
+            mb: '4px',
+            padding: '20px 24px',
+          },
+          backgroundColor: 'black',
+          color: 'white',
+          '@hover': {
+            '&:hover': {
+              backgroundColor: '$colors$pink11',
+            },
+          },
+          '.dark-theme &': {
+            backgroundColor: 'white',
+            color: 'black',
+            '@hover': {
+              '&:hover': {
+                backgroundColor: '$colors$pink12',
+              },
+            },
+          },
         }}
       >
-        <Grid columns="5" gap="5" css={{}}>
+        <Grid
+          css={{
+            gridTemplateColumns: 'repeat(1, 1fr)',
+            gap: 5,
+            '@bp1': { gridTemplateColumns: 'repeat(5, 1fr)' },
+          }}
+        >
           <Box
             css={{
               gridRowStart: 'span 1',
               gridRowEnd: 'span 1',
               gridColumnStart: 'span 2',
               gridColumnEnd: 'span 2',
-              pr: '8%',
+              // pr: '4%',
+              // '@bp1': {
+              //   pr: '8%',
+              // },
             }}
           >
             <Heading
               as="h4"
               css={{
                 color: 'inherit',
-                fontSize: '2rem',
+                fontSize: '1.5rem',
                 lineHeight: '1.25!important',
                 position: 'relative',
                 '&::selection': css_invertSelection,
+                '@bp1': { fontSize: '2rem' },
               }}
             >
               {title}
             </Heading>
           </Box>
-          <Box>
+          <Box
+            css={{
+              gridRowStart: 'span 1',
+              gridRowEnd: 'span 1',
+              gridColumnStart: 'span 2',
+              gridColumnEnd: 'span 2',
+              // pr: '4%',
+              '@bp1': {
+                // pr: '8%',
+                gridColumnStart: 'span 1',
+                gridColumnEnd: 'span 1',
+              },
+            }}
+          >
             {_size(data?.data?.rollupLineup) > 0 &&
               _map(data?.data?.rollupLineup, (title) => (
                 <ListItem
@@ -322,35 +403,71 @@ const Event = ({ data, keyPrefix }) => {
                 />
               ))}
           </Box>
-          <Box>
-            {_size(data?.data?.rollupVenue) > 0 &&
-              _map(data?.data?.rollupVenue, (title) => (
-                <ListItem
-                  key={`${keyPrefix}--${slugger.slug(title)}`}
-                  title={title}
-                />
-              ))}
-          </Box>
-          <Box>
-            <Flex align="center">
-              <Box
+          <Grid
+            css={{
+              gridRowStart: 'span 1',
+              gridRowEnd: 'span 1',
+              gridColumnStart: 'span 2',
+              gridColumnEnd: 'span 2',
+              // pr: '4%',
+              pt: '1rem',
+              borderTop: '1px solid green',
+              gridTemplateColumns: 'repeat(3, 1fr)',
+              gap: 5,
+              '@bp1': {
+                gridTemplateColumns: 'repeat(2, 1fr)',
+                // pr: '8%',
+                borderTop: 'none',
+                pt: 0,
+              },
+            }}
+          >
+            <Box
+              css={{
+                gridRowStart: 'span 1',
+                gridRowEnd: 'span 1',
+                gridColumnStart: 'span 2',
+                gridColumnEnd: 'span 2',
+                '@bp1': {
+                  gridColumnStart: 'span 1',
+                  gridColumnEnd: 'span 1',
+                },
+              }}
+            >
+              {_size(data?.data?.rollupVenue) > 0 &&
+                _map(data?.data?.rollupVenue, (title) => (
+                  <ListItem
+                    key={`${keyPrefix}--${slugger.slug(title)}`}
+                    title={title}
+                  />
+                ))}
+            </Box>
+            <Box>
+              <Flex
                 css={{
-                  position: 'relative',
-                  bottom: '1px',
-                  width: '1rem',
-                  height: '1rem',
-                  mr: '8px',
-                  flex: '0 0 auto',
-                  br: '18px',
-                  backgroundColor:
-                    'hsla(221.90954773869345, 100.00%, 60.98%, 1.00);',
+                  alignItems: 'center',
+                  justifyContent: 'flex-end',
+                  '@bp1': { justifyContent: 'flex-start' },
                 }}
-              />
-              <Box>
-                <ListItem title={'Improv'} />
-              </Box>
-            </Flex>
-          </Box>
+              >
+                <Box
+                  css={{
+                    position: 'relative',
+                    bottom: '1px',
+                    width: '1rem',
+                    height: '1rem',
+                    mr: '8px',
+                    flex: '0 0 auto',
+                    br: '18px',
+                    backgroundColor: '$colors$pink6',
+                  }}
+                />
+                <Box>
+                  <ListItem title={'Improv'} />
+                </Box>
+              </Flex>
+            </Box>
+          </Grid>
         </Grid>
         {/* bg */}
         <Box
@@ -401,7 +518,7 @@ const StyledBorder = styled('div', {
   top: 0,
   right: 0,
   bottom: 0,
-  border: '2px solid $colors$mauve1',
+  border: '2px solid $colors$pink8',
   // borderColor: 'hsla(221.90954773869345, 100.00%, 60.98%, 1.00)',
   opacity: 0,
   zIndex: 1,
@@ -422,6 +539,11 @@ const StyledLink = styled('a', {
       },
     },
   },
+  '&:focus': {
+    [`+ ${StyledBorder}`]: {
+      opacity: 1,
+    },
+  },
 })
 
 const ListItem = ({ title }) => {
@@ -430,7 +552,7 @@ const ListItem = ({ title }) => {
       <Paragraph
         css={{
           fontSize: '0.8rem',
-          color: '$colors$gray1',
+          color: 'inherit',
           '&::selection': css_invertSelection,
         }}
       >

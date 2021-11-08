@@ -1,4 +1,4 @@
-import { PlusIcon } from '@radix-ui/react-icons'
+import { ArrowTopRightIcon, PlusIcon } from '@radix-ui/react-icons'
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
@@ -17,6 +17,7 @@ import {
   Box,
   Container,
   Flex,
+  // Grid,
   Link,
   Paragraph,
   Popover,
@@ -109,10 +110,104 @@ const dev = [
   {
     emoji: '🗓️',
     url: '/playground/events',
-    title: 'E',
+    title: 'E+',
     text: 'Events',
   },
+  {
+    emoji: '🎟️',
+    url: '/playground/events/event',
+    title: 'E',
+    text: 'Event',
+  },
 ]
+
+const Banner = () => {
+  const href = '/playground/events'
+  const title = 'New Website released!'
+  const textButton = 'Blog'
+  const hasBanner = true
+  if (!hasBanner) return null
+  return (
+    <NextLink href={href} passHref>
+      <Box
+        as="a"
+        css={{
+          bc: '$colors$pink9',
+          color: 'white',
+          py: '0.5rem',
+          display: 'block',
+          position: 'relative',
+          fontSize: '0.95rem',
+          fontWeight: '700',
+          lineHeight: '1.4',
+          letterSpacing: '0.04rem',
+          textTransform: 'uppercase',
+          textDecoration: 'none',
+          '@hover': {
+            '&:hover': {
+              bc: '$colors$pink10',
+            },
+          },
+        }}
+      >
+        <Container size="4">
+          <Flex align="center" justify="between">
+            <Box as="p">{title}</Box>
+            <Flex css={{ ml: '20px', alignItems: 'center' }}>
+              <Box
+                as="p"
+                css={{ display: 'none', '@bp1': { display: 'inline-block' } }}
+              >
+                {textButton}
+              </Box>
+              <Box css={{ ml: '2px' }}>
+                <ArrowTopRightIcon />
+              </Box>
+            </Flex>
+          </Flex>
+        </Container>
+      </Box>
+    </NextLink>
+  )
+}
+
+const NavSkip = () => {
+  return (
+    <Box
+      as="a"
+      href="#main"
+      id="skip-link"
+      css={{
+        position: 'relative',
+        left: '0',
+        top: '0',
+        right: 'auto',
+        bottom: 'auto',
+        zIndex: '10',
+        display: 'block',
+        width: '100%',
+        height: '40px',
+        marginTop: '-40px',
+        padding: '8px',
+        bc: '$colors$pink9',
+        color: 'white',
+        fontSize: '.9rem',
+        lineHeight: '1.5',
+        fontWeight: '500',
+        textAlign: 'center',
+        '&:focus': {
+          mt: 0,
+          outline: 0,
+        },
+        '&:focus:not(:focus-visible)': {
+          outline: 0,
+        },
+      }}
+    >
+      Skip to main content
+    </Box>
+  )
+}
 
 // @todo(complexity) 11
 // eslint-disable-next-line complexity
@@ -121,7 +216,24 @@ const Header = () => {
   const isHompage = router.asPath === '/'
 
   return (
-    <Box as="header">
+    <Box
+      as="header"
+      css={{
+        '&::before, &::after': {
+          content: ' ',
+          display: 'table',
+          gridColumnStart: 1,
+          gridRowStart: 1,
+          gridColumnEnd: 2,
+          gridRowEnd: 2,
+        },
+        '&::after': {
+          clear: 'both',
+        },
+      }}
+    >
+      <NavSkip />
+      <Banner />
       <Container size="4">
         <Flex align="center" justify="between" css={{ height: '$8' }}>
           <NextLink href={'/'} passHref>
