@@ -6,12 +6,12 @@ const templateWoff2 = `@font-face {
   font-display: swap;
   src: url(#woff2#) format('woff2');
 }`
-const templateWoff = `@font-face {
-  font-family: '#name#';
-  font-weight: #weight#;
-  font-display: swap;
-  src: url(#woff2#) format('woff2'), url(#woff#) format('woff');
-}`
+// const templateWoff = `@font-face {
+//   font-family: '#name#';
+//   font-weight: #weight#;
+//   font-display: swap;
+//   src: url(#woff2#) format('woff2'), url(#woff#) format('woff');
+// }`
 const getFontFace = (template, info) => {
   const { fontFace, name, weights } = info
   return fontFace
@@ -27,4 +27,4 @@ const getFontFace = (template, info) => {
     : ''
 }
 
-export { getFontFace, templateWoff, templateWoff2 }
+export { getFontFace, templateWoff2 }

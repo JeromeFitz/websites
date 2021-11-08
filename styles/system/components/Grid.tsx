@@ -66,6 +66,12 @@ export const Grid = styled('div', {
       4: {
         gridTemplateColumns: 'repeat(4, 1fr)',
       },
+      5: {
+        gridTemplateColumns: 'repeat(5, 1fr)',
+      },
+      6: {
+        gridTemplateColumns: 'repeat(6, 1fr)',
+      },
     },
     gap: {
       1: {

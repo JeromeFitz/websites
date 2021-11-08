@@ -7,21 +7,23 @@ import Notification from './Notification'
 import styles from './Notification.module.css'
 
 const NotificationContainer = ({ notifications }) => {
-  // if (typeof document === 'undefined') {
+  const count = _size(notifications)
+  // if (typeof document === 'undefined' || count === 0) {
   //   return null
   // }
-
+  if (count === 0) {
+    return null
+  }
   const notificationSize = notifications.length
   const cssProperties = {}
   cssProperties[`--offset-bottom`] = '0px'
 
-  // console.dir(`> NotificationContainer`)
-  // console.dir(notifications)
+  console.dir(`> NotificationContainer`)
+  console.dir(notifications)
 
-  // @todo(notification) change to: https://uiplaybook.dev/play/notification
   return (
     <Portal.Root>
-      {_size(notifications) > 0 ? (
+      {count > 0 ? (
         <div className={cx(styles.notificationArea, 'group')} style={cssProperties}>
           {notifications.map((notification, notificationIndex) => {
             const indexReverse = notificationSize - notificationIndex

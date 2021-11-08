@@ -25,14 +25,11 @@ import {
   Text,
 } from '~styles/system/components'
 import { darkTheme, styled, keyframes } from '~styles/system/stitches.config'
-// import Toggle from '~components/Notion/Toggle'
-// import Quote from '~components/Notion/Quote'
 import { NotionBlock } from '~utils/notion'
 import getContentTypeDetail from '~utils/notion/getContentTypeDetail'
 import notionToTailwindColor from '~utils/notion/notionToTailwindColor'
 
 const Emoji = dynamic(() => import('~components/Notion/Emoji'), {})
-// const Toggle = dynamic(() => import('~components/Notion/Toggle'), {})
 
 const focusInNonNext = keyframes({
   '0%': {
@@ -479,9 +476,6 @@ class ContentTypes {
             <AccordionContent>{nodeContent}</AccordionContent>
           </AccordionItem>
         </Accordion>
-        {/* <Toggle key={id} title={title}>
-          {nodeContent}
-        </Toggle> */}
       </>
     )
   }

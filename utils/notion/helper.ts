@@ -70,6 +70,7 @@ const PROPERTIES = {
   rollupTags: 'Rollup.Tags',
   rollupTagsSecondary: 'Rollup.Tags.Secondary',
   rollupThanks: 'Rollup.Thanks',
+  rollupVenue: 'Rollup.Venue',
   rollupWriter: 'Rollup.Writer',
   season: 'Season',
   seoDescription: 'SEO.Description',

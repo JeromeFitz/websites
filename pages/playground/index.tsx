@@ -1,7 +1,6 @@
 // import { BigHead } from '@bigheads/core'
 import cx from 'clsx'
 import { motion, useReducedMotion } from 'framer-motion'
-import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { useState } from 'react'
 import _title from 'title'
@@ -9,6 +8,7 @@ import { useSound } from 'use-sound'
 
 import { Banner as AlertBanner } from '~components/Alert'
 import Layout from '~components/Layout'
+import PageHeading from '~components/PageHeading'
 import Seo from '~components/Seo'
 import { useUI } from '~context/ManagedUIContext'
 import { useNotification } from '~context/Notification'
@@ -19,7 +19,10 @@ import {
 } from '~lib/constants'
 // import rangeMap from '~utils/rangeMap'
 
-const Breadcrumb = dynamic(() => import('~components/Notion/Breadcrumb'), {})
+const properties = {
+  title: 'Playground',
+  seoDescription: 'Sheer Random',
+}
 
 const mockTrueFalse = [
   { value: true, title: 'true ' },
@@ -180,7 +183,7 @@ const Playground = () => {
     return (
       <>
         <Layout>
-          <Breadcrumb isIndex={true} title={'Loading...'} />
+          <h1>Loading</h1>
         </Layout>
       </>
     )
@@ -189,8 +192,10 @@ const Playground = () => {
     <>
       <Layout>
         <Seo {...seo} />
-        {/* <Title emoji={``} id={`fdsajklfads`} title={title} /> */}
-        <Breadcrumb isIndex={true} title={title} />
+        <PageHeading
+          description={properties.title}
+          title={properties.seoDescription}
+        />
         <h4>
           Halo <WavingHand />
         </h4>

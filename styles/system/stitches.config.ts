@@ -122,6 +122,7 @@ const fontFamily = {
   mono: [
     'ui-monospace',
     'SFMono-Regular',
+    'SF Mono',
     'Menlo',
     'Monaco',
     'Consolas',

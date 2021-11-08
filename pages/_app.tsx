@@ -2,16 +2,13 @@ import '~styles/chrome.css'
 
 import { ThemeProvider } from 'next-themes'
 import type { AppProps, NextWebVitalsMetric } from 'next/app'
-// import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import pluralize from 'pluralize'
-// import { FC, useEffect } from 'react'
 import { useEffect } from 'react'
 import { SWRConfig } from 'swr'
 
 import Footer from '~components/Footer'
 import Header from '~components/Header'
-// // import Navigation from '~components/Notion/Navigation'
 import NProgress from '~components/NProgress'
 import { ManagedUIContext } from '~context/ManagedUIContext'
 import NotificationProvider from '~context/Notification'
@@ -20,21 +17,12 @@ import { IMAGE__FALLBACKS__SHOWS } from '~lib/constants'
 import { Container, DesignSystemProvider, Section } from '~styles/system/components'
 import { globalCss, darkTheme } from '~styles/system/stitches.config'
 
-// const NavigationMobileWithNoSSR = dynamic(
-//   () => import('~components/Layout').then((mod) => mod.NavigationMobile),
-//   {
-//     ssr: false,
-//   }
-// )
-
 pluralize.addPluralRule(/cast$/i, 'cast')
 pluralize.addPluralRule(/crew$/i, 'crew')
 pluralize.addPluralRule(/lineup$/i, 'lineup')
 pluralize.addSingularRule(/music$/i, 'music')
 pluralize.addSingularRule(/thanks$/i, 'thanks')
 // pluralize.addSingularRule(/tags$/i, 'Tags')
-
-// const Noop: FC = ({ children }) => <>{children}</>
 
 const globalStyles = globalCss({
   '*, *::before, *::after': {
@@ -130,8 +118,6 @@ function MyApp({ Component, pageProps, router }: AppProps) {
   globalStyles()
   useAnalytics()
 
-  // const Layout = (Component as any).Layout || Noop
-
   useEffect(() => {
     document.body.classList?.remove('loading')
   }, [])
@@ -151,19 +137,14 @@ function MyApp({ Component, pageProps, router }: AppProps) {
           />
         </Head>
         <ManagedUIContext>
-          <NotificationProvider>
-            {/* <Layout pageProps={pageProps}>
-                <NavigationMobileWithNoSSR />
-                <Component {...pageProps} key={router.route} />
-              </Layout>
-              <NProgress /> */}
-            <DesignSystemProvider>
-              <ThemeProvider
-                disableTransitionOnChange
-                attribute="class"
-                value={{ light: 'light-theme', dark: darkTheme.className }}
-                defaultTheme="system"
-              >
+          <DesignSystemProvider>
+            <ThemeProvider
+              disableTransitionOnChange
+              attribute="class"
+              value={{ light: 'light-theme', dark: darkTheme.className }}
+              defaultTheme="system"
+            >
+              <NotificationProvider>
                 <NProgress />
                 <Header />
                 <Container as="main" size={{ '@initial': 2, '@bp1': 3, '@bp2': 4 }}>
@@ -172,9 +153,9 @@ function MyApp({ Component, pageProps, router }: AppProps) {
                   </Section>
                 </Container>
                 <Footer />
-              </ThemeProvider>
-            </DesignSystemProvider>
-          </NotificationProvider>
+              </NotificationProvider>
+            </ThemeProvider>
+          </DesignSystemProvider>
         </ManagedUIContext>
       </SWRConfig>
     </>

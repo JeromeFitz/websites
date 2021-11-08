@@ -99,12 +99,18 @@ const dev = [
     title: 'L',
     text: 'Loading',
   },
-  ,
+
   {
     emoji: '🟧️',
     url: '/playground/grid',
     title: 'G',
     text: 'Grid',
+  },
+  {
+    emoji: '🗓️',
+    url: '/playground/events',
+    title: 'E',
+    text: 'Events',
   },
 ]
 

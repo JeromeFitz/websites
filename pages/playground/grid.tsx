@@ -4,7 +4,7 @@ import _title from 'title'
 import { ImageWithBackgroundBlur } from '~components/Notion/Layout/ImageLead'
 import PageHeading from '~components/PageHeading'
 // import { IMAGE__PLACEHOLDER } from '~lib/constants'
-import { artists, tracks } from '~lib/spotify/mock/top10'
+import { artists, tracks } from '~data/mock/spotify/top10'
 import {
   Badge,
   Box,
@@ -71,7 +71,7 @@ const Playground = () => {
             </Container>
           </Box>
         ))} */}
-        {_map(artists?.artists, (artist, artistIdx) => {
+        {_map(artists, (artist, artistIdx) => {
           const { name } = artist
           const { base64, img, slug } = artist.meta
           const description = name
@@ -119,7 +119,7 @@ const Playground = () => {
           '@bp1': { gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 2fr))' },
         }}
       >
-        {_map(tracks.tracks, (item, itemIdx) => {
+        {_map(tracks, (item, itemIdx) => {
           const { base64, img, slug } = item.album.meta
           const description = item.album.name
 

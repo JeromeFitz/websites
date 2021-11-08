@@ -335,11 +335,13 @@ const getTypeRichTextNormalized = (data: any) => {
 
 const getTypeRollupNormalized = (data: any) => {
   // console.dir(`> getTypeRollupNormalized`)
-  // console.dir(`data`)
+  // console.dir(data)
   // console.dir(data?.rollup?.array)
   // _map(data?.rollup?.array, (item) => {
   //   console.dir(item)
   //   // console.dir(item?.title[0]?.plain_text)
+  //   console.dir(getTypeTitleNormalized(item))
+  //   console.dir(`---`)
   // })
   return _sortBy(_map(data?.rollup?.array, (item) => getTypeTitleNormalized(item)))
 }
@@ -714,6 +716,9 @@ class Properties {
     return this.rollup(value)
   }
   [PROPERTIES.rollupThanks](value) {
+    return this.rollup(value)
+  }
+  [PROPERTIES.rollupVenue](value) {
     return this.rollup(value)
   }
   [PROPERTIES.rollupWriter](value) {
