@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "@bigheads/core": "0.3.3",
-    "@headlessui/react": "1.4.1",
+    "@headlessui/react": "1.4.2",
     "@heroicons/react": "1.0.5",
     "@notionhq/client": "0.4.5",
     "@plaiceholder/next": "2.2.0",
