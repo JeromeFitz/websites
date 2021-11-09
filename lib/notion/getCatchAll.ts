@@ -1298,5 +1298,5 @@ const getCatchAll = async ({
   return data
 }
 
-export { normalizerContent, normalizerContentResults }
+export { deepFetchAllChildren, normalizerContent, normalizerContentResults }
 export default getCatchAll

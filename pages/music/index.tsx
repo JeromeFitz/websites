@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-
+import { ArrowTopRightIcon } from '@radix-ui/react-icons'
 import _find from 'lodash/find'
 import _map from 'lodash/map'
 import _size from 'lodash/size'
@@ -16,9 +16,10 @@ import {
   Container,
   Flex,
   Heading,
+  Link,
+  Paragraph,
   RadioCard,
   RadioCardGroup,
-  Paragraph,
   Section,
   Text,
 } from '~styles/system/components'
@@ -114,8 +115,19 @@ const Music = () => {
         }}
       >
         Please support artists by going to shows (when we can again), purchasing
-        music, especially local and indie. Like Nice Rec’s, “Drink The Blue Sky” on
-        Bandcamp.
+        music, especially local and indie. Like{' '}
+        <Link
+          href="https://nicerec.bandcamp.com/album/drink-the-blue-sky"
+          target="_blank"
+          css={{ display: 'inline-flex', alignItems: 'center' }}
+          variant="subtle"
+        >
+          Nice Rec’s, “Drink The Blue Sky” on Bandcamp
+          <Flex as="span" css={{ color: '$slate8', ml: '$1' }}>
+            <ArrowTopRightIcon />
+          </Flex>
+        </Link>
+        .
       </Text>
       <Text as="p" css={{ my: '$6', fontSize: '$5', lineHeight: '1.5' }}>
         Links will open in, and all data comes from Spotify. (My “Music” library is

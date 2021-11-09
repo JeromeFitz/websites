@@ -40,7 +40,7 @@ const properties = {
 //         css={{
 //           mt: '$3',
 //           pt: '$3',
-//           borderTop: '1px solid $colors$mauve12',
+//           borderTop: '1px solid $colors$gray12',
 //         }}
 //       >
 //         <Heading as="h2" size="2">
@@ -65,9 +65,10 @@ const Foo = ({ children, title }) => {
       css={{
         // my: '$6',
         // py: '$6',
-        // borderTop: '1px solid $colors$mauve11',
+        // borderTop: '1px solid $colors$gray11',
         gridTemplateColumns: 'repeat(1, 1fr)',
         minHeight: '20rem',
+        minWidth: '50%',
         // gap: 5,
         // '@bp1': { gridTemplateColumns: 'repeat(1, 1fr)' },
       }}
@@ -93,6 +94,8 @@ const css_icon = {
 }
 const css_gridListItems = {
   alignContent: 'flex-start',
+  position: 'absolute',
+  width: '100%',
   '& > :first-child': {
     marginTop: '$8',
   },
@@ -162,7 +165,7 @@ const PlaygroundEvent = () => {
           flexDirection: 'column',
           gap: '$1',
           maxWidth: '75%',
-          '@bp1': { flexDirection: 'row', justifyContent: 'space-between' },
+          '@bp1': { flexDirection: 'row' },
         }}
       >
         <Foo title={'Info'}>

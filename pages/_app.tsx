@@ -45,7 +45,7 @@ const globalStyles = globalCss({
     WebkitTextSizeAdjust: '100%',
 
     '.dark-theme &': {
-      backgroundColor: '$mauve1',
+      backgroundColor: '$gray1',
     },
   },
 
@@ -119,7 +119,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
   useAnalytics()
 
   useEffect(() => {
-    document.body.classList?.remove('loading')
+    document?.body?.classList?.remove('loading')
   }, [])
 
   return (

@@ -1,6 +1,9 @@
+import { LocationMarkerIcon, TagIcon } from '@heroicons/react/outline'
 import * as Announce from '@radix-ui/react-announce'
+import { ClockIcon } from '@radix-ui/react-icons'
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
-import { format, getDate, getDay, getMonth, getYear, parseISO } from 'date-fns'
+import { getDate, getDay, getMonth, getYear, parseISO } from 'date-fns'
+import { format } from 'date-fns-tz'
 import Slugger from 'github-slugger'
 import _filter from 'lodash/filter'
 import _map from 'lodash/map'
@@ -38,6 +41,70 @@ const css_invertSelection = {
   backgroundColor: '$colors$gray1',
   color: '$colors$gray12',
 }
+
+const StyledBox = styled('div', {
+  position: 'relative',
+  mb: '8px',
+  padding: '16px 20px',
+  transition: 'background-color .2s cubic-bezier(.165, .84, .44, 1)',
+  '@bp1': {
+    mb: '4px',
+    padding: '20px 24px',
+  },
+  backgroundColor: '$colors$pink3',
+  // color: 'white',
+  color: '$colores$pink12',
+  '@hover': {
+    '&:hover': {
+      backgroundColor: '$colors$pink4',
+    },
+  },
+  '&:focus': {
+    backgroundColor: '$colors$pink4',
+  },
+})
+
+const StyledBorder = styled('div', {
+  position: 'absolute',
+  left: 0,
+  top: 0,
+  right: 0,
+  bottom: 0,
+  border: '2px solid $colors$pink8',
+  opacity: 0,
+  zIndex: 1,
+  transition: 'opacity .25s cubic-bezier(.165, .84, .44, 1)',
+  '&:focus': {
+    opacity: 1,
+  },
+})
+
+const StyledLink = styled('a', {
+  position: 'absolute',
+  left: 0,
+  top: 0,
+  right: 0,
+  bottom: 0,
+  zIndex: 100,
+  '@hover': {
+    '&:hover': {
+      [`+ ${StyledBorder}`]: {
+        opacity: 1,
+      },
+      [`+ ${StyledBox}`]: {
+        backgroundColor: '$colors$pink4',
+      },
+    },
+  },
+  '&:focus': {
+    [`+ ${StyledBorder}`]: {
+      opacity: 1,
+    },
+    [`+ ${StyledBox}`]: {
+      backgroundColor: '$colors$pink4',
+    },
+  },
+})
 
 const PlaygroundEvents = () => {
   // const slugger = new Slugger()
@@ -215,7 +282,7 @@ const Year = ({ children, title }) => {
           {
             // mt: '$6',
             // pt: '$6',
-            // borderTop: '1px solid $colors$mauve12',
+            // borderTop: '1px solid $colors$gray12',
           }
         }
       >
@@ -232,7 +299,7 @@ const Month = ({ children, data }) => {
   const month = format(date, 'MMMM')
 
   return (
-    <Box css={{ mt: '$6', pt: '$6', borderTop: '1px solid $colors$mauve11' }}>
+    <Box css={{ mt: '$6', pt: '$6', borderTop: '1px solid $colors$gray11' }}>
       <Heading as="h3" size="4">
         {month}
       </Heading>
@@ -248,7 +315,7 @@ const Date = ({ children, title }) => {
         css={{
           mt: '$2',
           pt: '$2',
-          // borderTop: '1px solid $colors$mauve10',
+          // borderTop: '1px solid $colors$gray10',
           '@bp1': {
             mt: '$3',
             pt: '$3',
@@ -315,39 +382,12 @@ const Event = ({ data, keyPrefix }) => {
    *  TO:   2020-01-25T23:00:00-05:00
    */
   // const dateISO = formatISO(date?.iso?.full)
-  const { title } = data?.data
+  const { date, seoDescription: description, title } = data?.data
+  const iso = parseISO(date?.start)
   return (
     <Box role="listitem" css={{ mb: '1rem' }}>
       <Box css={{ display: 'none' }}>Category</Box>
-      <Box
-        className="cardEvent"
-        css={{
-          position: 'relative',
-          mb: '8px',
-          padding: '16px 20px',
-          transition: 'background-color .2s cubic-bezier(.165, .84, .44, 1)',
-          '@bp1': {
-            mb: '4px',
-            padding: '20px 24px',
-          },
-          backgroundColor: 'black',
-          color: 'white',
-          '@hover': {
-            '&:hover': {
-              backgroundColor: '$colors$pink11',
-            },
-          },
-          '.dark-theme &': {
-            backgroundColor: 'white',
-            color: 'black',
-            '@hover': {
-              '&:hover': {
-                backgroundColor: '$colors$pink12',
-              },
-            },
-          },
-        }}
-      >
+      <StyledBox className="cardEvent">
         <Grid
           css={{
             gridTemplateColumns: 'repeat(1, 1fr)',
@@ -359,14 +399,30 @@ const Event = ({ data, keyPrefix }) => {
             css={{
               gridRowStart: 'span 1',
               gridRowEnd: 'span 1',
-              gridColumnStart: 'span 2',
-              gridColumnEnd: 'span 2',
+              gridColumnStart: 'span 5',
+              gridColumnEnd: 'span 5',
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
               // pr: '4%',
               // '@bp1': {
               //   pr: '8%',
               // },
             }}
           >
+            {/* <Box
+              css={{
+                position: 'relative',
+                bottom: '1px',
+                width: '1rem',
+                height: '1rem',
+                mr: '8px',
+                flex: '0 0 auto',
+                br: '18px',
+                backgroundColor: '$colors$pink6',
+                border: '1px solid $hiContrast',
+              }}
+            /> */}
             <Heading
               as="h4"
               css={{
@@ -381,8 +437,22 @@ const Event = ({ data, keyPrefix }) => {
               {title}
             </Heading>
           </Box>
+
           <Box
             css={{
+              gridRowStart: 'span 1',
+              gridRowEnd: 'span 1',
+              gridColumnStart: 'span 5',
+              gridColumnEnd: 'span 5',
+              my: '$2',
+              pr: '$4',
+            }}
+          >
+            <Paragraph>{description}</Paragraph>
+          </Box>
+          <Box
+            css={{
+              display: 'none',
               gridRowStart: 'span 1',
               gridRowEnd: 'span 1',
               gridColumnStart: 'span 2',
@@ -429,20 +499,11 @@ const Event = ({ data, keyPrefix }) => {
                 gridColumnStart: 'span 2',
                 gridColumnEnd: 'span 2',
                 '@bp1': {
-                  gridColumnStart: 'span 1',
-                  gridColumnEnd: 'span 1',
+                  gridColumnStart: 'span 2',
+                  gridColumnEnd: 'span 2',
                 },
               }}
             >
-              {_size(data?.data?.rollupVenue) > 0 &&
-                _map(data?.data?.rollupVenue, (title) => (
-                  <ListItem
-                    key={`${keyPrefix}--${slugger.slug(title)}`}
-                    title={title}
-                  />
-                ))}
-            </Box>
-            <Box>
               <Flex
                 css={{
                   alignItems: 'center',
@@ -450,20 +511,81 @@ const Event = ({ data, keyPrefix }) => {
                   '@bp1': { justifyContent: 'flex-start' },
                 }}
               >
-                <Box
-                  css={{
-                    position: 'relative',
-                    bottom: '1px',
+                <ClockIcon
+                  style={{
                     width: '1rem',
-                    height: '1rem',
-                    mr: '8px',
-                    flex: '0 0 auto',
-                    br: '18px',
-                    backgroundColor: '$colors$pink6',
+                    marginRight: '0.25rem',
                   }}
                 />
                 <Box>
-                  <ListItem title={'Improv'} />
+                  <ListItem title={format(iso, `hh:mma z`)} />
+                </Box>
+              </Flex>
+            </Box>
+            <Box
+              css={{
+                gridRowStart: 'span 1',
+                gridRowEnd: 'span 1',
+                gridColumnStart: 'span 2',
+                gridColumnEnd: 'span 2',
+                '@bp1': {
+                  gridColumnStart: 'span 2',
+                  gridColumnEnd: 'span 2',
+                },
+              }}
+            >
+              <Flex
+                css={{
+                  alignItems: 'center',
+                  justifyContent: 'flex-end',
+                  '@bp1': { justifyContent: 'flex-start' },
+                }}
+              >
+                <LocationMarkerIcon
+                  style={{
+                    width: '1rem',
+                    marginRight: '0.25rem',
+                  }}
+                />
+                <Box>
+                  {_size(data?.data?.rollupVenue) > 0 &&
+                    _map(data?.data?.rollupVenue, (title) => (
+                      <ListItem
+                        key={`${keyPrefix}--${slugger.slug(title)}`}
+                        title={title}
+                      />
+                    ))}
+                </Box>
+              </Flex>
+            </Box>
+
+            <Box
+              css={{
+                gridRowStart: 'span 1',
+                gridRowEnd: 'span 1',
+                gridColumnStart: 'span 2',
+                gridColumnEnd: 'span 2',
+                '@bp1': {
+                  gridColumnStart: 'span 2',
+                  gridColumnEnd: 'span 2',
+                },
+              }}
+            >
+              <Flex
+                css={{
+                  alignItems: 'center',
+                  justifyContent: 'flex-end',
+                  '@bp1': { justifyContent: 'flex-start' },
+                }}
+              >
+                <TagIcon
+                  style={{
+                    width: '1rem',
+                    marginRight: '0.25rem',
+                  }}
+                />
+                <Box>
+                  <ListItem title={'Improv, Sketch, Stand-up'} />
                 </Box>
               </Flex>
             </Box>
@@ -502,7 +624,7 @@ const Event = ({ data, keyPrefix }) => {
           </StyledLink>
         </NextLink>
         <StyledBorder />
-      </Box>
+      </StyledBox>
       <VisuallyHidden.Root asChild={true}>
         <Announce.Root>
           <Heading as="h4">{title}</Heading>
@@ -511,40 +633,6 @@ const Event = ({ data, keyPrefix }) => {
     </Box>
   )
 }
-
-const StyledBorder = styled('div', {
-  position: 'absolute',
-  left: 0,
-  top: 0,
-  right: 0,
-  bottom: 0,
-  border: '2px solid $colors$pink8',
-  // borderColor: 'hsla(221.90954773869345, 100.00%, 60.98%, 1.00)',
-  opacity: 0,
-  zIndex: 1,
-  transition: 'opacity .25s cubic-bezier(.165, .84, .44, 1)',
-})
-
-const StyledLink = styled('a', {
-  position: 'absolute',
-  left: 0,
-  top: 0,
-  right: 0,
-  bottom: 0,
-  zIndex: 100,
-  '@hover': {
-    '&:hover': {
-      [`+ ${StyledBorder}`]: {
-        opacity: 1,
-      },
-    },
-  },
-  '&:focus': {
-    [`+ ${StyledBorder}`]: {
-      opacity: 1,
-    },
-  },
-})
 
 const ListItem = ({ title }) => {
   return (

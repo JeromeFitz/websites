@@ -29,11 +29,11 @@ const Image = styled(NextImage, {
   borderRadius: '$4',
   position: 'relative',
   overflow: 'hidden',
-  '@hover': {
-    '&:hover': {
-      transform: 'scale(0.99)',
-    },
-  },
+  // '@hover': {
+  //   '&:hover': {
+  //     transform: 'scale(0.99)',
+  //   },
+  // },
 })
 
 const ImageWithBackgroundBlur = ({ base64, description, image, slug }) => {

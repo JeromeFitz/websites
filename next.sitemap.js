@@ -36,6 +36,9 @@ const sites = {
       '/en/people/*',
       // @note(sitemap) turn off episodes for the moment
       '/en/podcasts/*/*',
+      '/en/refactor',
+      '/en/refactor/*',
+      '/en/refactor/*/*',
       '/en/users',
       '/en/users/*',
       '/en/venues',

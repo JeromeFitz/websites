@@ -1,5 +1,4 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { Heading, Note, Paragraph, Skeleton } from '~styles/system/components'
+import { Heading, Paragraph, Skeleton } from '~styles/system/components'
 
 const SkeletonTitle = () => (
   <Skeleton

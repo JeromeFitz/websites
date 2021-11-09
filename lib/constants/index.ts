@@ -98,12 +98,23 @@ const BIG_HEAD_PROPS = {
   skinTone: 'light',
 }
 
+const ROUTE_TYPES = {
+  SHOWS: 'shows',
+}
+
+const ERROR__FALLBACK = {
+  title: 'Whoops',
+  description: 'Seems to be an error.',
+}
+
 export {
   BIG_HEAD_PROPS,
   EMOJI_FALLBACK,
+  ERROR__FALLBACK,
   IMAGE__FALLBACKS__SHOWS,
   IMAGE__PLACEHOLDER,
   MOTION_PAGE_VARIANTS,
+  ROUTE_TYPES,
   SLUG__HOMEPAGE,
   TIME_RANGE,
   WEBKIT_BACKGROUND,

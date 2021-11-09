@@ -119,6 +119,18 @@ const dev = [
     title: 'E',
     text: 'Event',
   },
+  {
+    emoji: '🚿️',
+    url: '/playground/shows',
+    title: 'S+',
+    text: 'Shows',
+  },
+  {
+    emoji: '🎭️',
+    url: '/playground/shows/show',
+    title: 'S',
+    text: 'Show',
+  },
 ]
 
 const Banner = () => {
