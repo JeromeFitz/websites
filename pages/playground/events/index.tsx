@@ -632,7 +632,7 @@ const Event = ({ data, keyPrefix }) => {
         </NextLink>
         <StyledBorder />
       </StyledBox>
-      <VisuallyHidden.Root asChild={true}>
+      <VisuallyHidden.Root>
         <Announce>
           <Heading as="h4">{title}</Heading>
         </Announce>
