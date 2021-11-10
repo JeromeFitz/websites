@@ -10,6 +10,7 @@ import { OL, UL } from '~components/Notion/Listing'
 import { MetaTags } from '~components/Notion/Meta'
 import { Event } from '~components/Notion/Page'
 import getContentNodes from '~utils/notion/getContentNodes'
+import { ROUTE_TYPES } from '~utils/notion/helper'
 
 // const Breadcrumb = dynamic(() => import('~components/Notion/Breadcrumb'), {})
 const Listing = dynamic(() => import('~components/Notion/Listing'), {})
@@ -115,8 +116,8 @@ const Page = ({ data, props }) => {
   // console.dir(content)
   // // const nodes = getContentNodes({ content, images })
 
-  const isEventListing = routeType === 'events' && !isIndex
-  const isEpisodeListing = routeType === 'podcasts' && !isIndex
+  const isEventListing = routeType === ROUTE_TYPES.events && !isIndex
+  const isEpisodeListing = routeType === ROUTE_TYPES.podcasts && !isIndex
 
   return (
     <>

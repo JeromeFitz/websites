@@ -3,10 +3,15 @@ import useSWR from 'swr'
 
 import Page from '~components/Notion/Page'
 import PageHeading, { SkeletonHeading } from '~components/PageHeading'
-import { SLUG__HOMEPAGE } from '~lib/constants'
+import { ERROR__FALLBACK } from '~lib/constants'
 import fetcher from '~lib/fetcher'
 import getCatchAll from '~lib/notion/getCatchAll'
 import getPathVariables from '~lib/notion/getPathVariables'
+import getNextPageStatus from '~utils/next/getNextPageStatus'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { ROUTE_TYPES, SLUG__HOMEPAGE } from '~utils/notion/helper'
 
 // const ListingShows = dynamic(
 //   () => import('~components/Notion/Listing/ListingCard'),
@@ -45,16 +50,14 @@ const CatchAll = (props) => {
     }
   )
 
-  /**
-   * @error or @loading
-   */
-  const isError = error !== undefined
-  const isDataUndefined =
-    data === undefined || data?.content === undefined || data?.info === undefined
-  const isLoading = !isError && isDataUndefined
-
+  const { isDataUndefined, isError, isLoading } = getNextPageStatus(data, error)
   if (isError && isDataUndefined)
-    return <PageHeading description={`Whoops`} title={`Well, that is not good.`} />
+    return (
+      <PageHeading
+        description={ERROR__FALLBACK.description}
+        title={ERROR__FALLBACK.title}
+      />
+    )
   if (isLoading) return <SkeletonHeading />
 
   return (

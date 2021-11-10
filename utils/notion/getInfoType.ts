@@ -1,3 +1,5 @@
+import { ROUTE_TYPES } from '~utils/notion/helper'
+
 const getInfoType = (item: any, routeType, meta = null) => {
   const date = item.data?.date?.start.slice(0, 10)
   const slug = item.data?.slug
@@ -8,19 +10,19 @@ const getInfoType = (item: any, routeType, meta = null) => {
   const href = `/[...catchAll]`
 
   switch (routeType) {
-    case 'blog':
-    case 'events':
+    case ROUTE_TYPES.blog:
+    case ROUTE_TYPES.events:
       as = `/${routeType}/${year}/${month}/${day}/${slug}`
       break
-    case 'podcasts':
-    case 'episodes':
+    case ROUTE_TYPES.podcasts:
+    case ROUTE_TYPES.episodes:
       as = `/${meta.join('/')}/${slug}`
       break
-    case 'people':
+    case ROUTE_TYPES.people:
 
-    case 'shows':
-    case 'users':
-    case 'venues':
+    case ROUTE_TYPES.shows:
+    case ROUTE_TYPES.users:
+    case ROUTE_TYPES.venues:
     default:
       as = `/${routeType}/${slug}`
       break

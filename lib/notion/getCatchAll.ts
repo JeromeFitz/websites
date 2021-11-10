@@ -36,7 +36,14 @@ import { getCache, setCache } from '~lib/notion/getCache'
 import getImages from '~lib/notion/getImages'
 import getPathVariables from '~lib/notion/getPathVariables'
 import getQuery from '~lib/notion/getQuery'
-import { DATABASES, SEO, QUERIES, PROPERTIES, notion } from '~utils/notion/helper'
+import {
+  DATABASES,
+  notion,
+  PROPERTIES,
+  QUERIES,
+  ROUTE_TYPES,
+  SEO,
+} from '~utils/notion/helper'
 
 const useCache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE
 
@@ -941,10 +948,12 @@ class DATA_TYPES {
         and: [
           {
             property:
-              routeType === 'events' ? PROPERTIES.date : PROPERTIES.datePublished,
+              routeType === ROUTE_TYPES.events
+                ? PROPERTIES.date
+                : PROPERTIES.datePublished,
             date: {
               on_or_after:
-                routeType === 'events' ? dateTimestamp : dateTimestampBlog,
+                routeType === ROUTE_TYPES.events ? dateTimestamp : dateTimestampBlog,
             },
           },
         ],
@@ -1007,14 +1016,18 @@ class DATA_TYPES {
           and: [
             {
               property:
-                routeType === 'events' ? PROPERTIES.date : PROPERTIES.datePublished,
+                routeType === ROUTE_TYPES.events
+                  ? PROPERTIES.date
+                  : PROPERTIES.datePublished,
               date: {
                 on_or_after: addTime(timestampQuery3, ''),
               },
             },
             {
               property:
-                routeType === 'events' ? PROPERTIES.date : PROPERTIES.datePublished,
+                routeType === ROUTE_TYPES.events
+                  ? PROPERTIES.date
+                  : PROPERTIES.datePublished,
               date: {
                 before: addTime(timestampQuery3, 'year'),
               },
@@ -1027,14 +1040,18 @@ class DATA_TYPES {
           and: [
             {
               property:
-                routeType === 'events' ? PROPERTIES.date : PROPERTIES.datePublished,
+                routeType === ROUTE_TYPES.events
+                  ? PROPERTIES.date
+                  : PROPERTIES.datePublished,
               date: {
                 on_or_after: addTime(timestampQuery3, ''),
               },
             },
             {
               property:
-                routeType === 'events' ? PROPERTIES.date : PROPERTIES.datePublished,
+                routeType === ROUTE_TYPES.events
+                  ? PROPERTIES.date
+                  : PROPERTIES.datePublished,
               date: {
                 before: addTime(timestampQuery3, 'month'),
               },
@@ -1047,14 +1064,18 @@ class DATA_TYPES {
           and: [
             {
               property:
-                routeType === 'events' ? PROPERTIES.date : PROPERTIES.datePublished,
+                routeType === ROUTE_TYPES.events
+                  ? PROPERTIES.date
+                  : PROPERTIES.datePublished,
               date: {
                 on_or_after: addTime(timestampQuery3, ''),
               },
             },
             {
               property:
-                routeType === 'events' ? PROPERTIES.date : PROPERTIES.datePublished,
+                routeType === ROUTE_TYPES.events
+                  ? PROPERTIES.date
+                  : PROPERTIES.datePublished,
               date: {
                 before: addTime(timestampQuery3, 'day'),
               },
@@ -1067,14 +1088,18 @@ class DATA_TYPES {
           and: [
             {
               property:
-                routeType === 'events' ? PROPERTIES.date : PROPERTIES.datePublished,
+                routeType === ROUTE_TYPES.events
+                  ? PROPERTIES.date
+                  : PROPERTIES.datePublished,
               date: {
                 on_or_after: addTime(timestampQuery3, ''),
               },
             },
             {
               property:
-                routeType === 'events' ? PROPERTIES.date : PROPERTIES.datePublished,
+                routeType === ROUTE_TYPES.events
+                  ? PROPERTIES.date
+                  : PROPERTIES.datePublished,
               date: {
                 before: addTime(timestampQuery3, 'day'),
               },
@@ -1120,11 +1145,11 @@ class DATA_TYPES {
       items = null
     const dateTimestamp = new Date().toISOString()
 
-    if (routeType === 'podcasts') {
+    if (routeType === ROUTE_TYPES.events) {
       const [podcastSlug, episodeSlug] = meta
       const hasEpisode = _size(meta) === 2
       const info4__p: any = await getDatabasesByIdQuery({
-        databaseId: DATABASES[hasEpisode ? 'episodes' : routeType],
+        databaseId: DATABASES[hasEpisode ? ROUTE_TYPES.events : routeType],
         filter: {
           and: [
             {
@@ -1140,11 +1165,11 @@ class DATA_TYPES {
       // @hack(podcasts)
       if (!hasEpisode) {
         let items4__p = null
-        if (routeType === 'podcasts') {
+        if (routeType === ROUTE_TYPES.events) {
           items4__p = await getQuery({
             reqQuery: {
               podcasts: info.id,
-              databaseType: 'episodes',
+              databaseType: DATABASES.episodes,
             },
           })
           const items4__pData = {}
@@ -1156,7 +1181,7 @@ class DATA_TYPES {
         }
       }
     }
-    if (routeType === 'events' || routeType === 'blog') {
+    if (routeType === ROUTE_TYPES.events || routeType === ROUTE_TYPES.events) {
       const [year, month, day] = meta
       const timestampQuery = new Date(
         `${!!year ? year : dateTimestamp.slice(0, 4)}-${!!month ? month : '01'}-${
@@ -1169,14 +1194,18 @@ class DATA_TYPES {
           and: [
             {
               property:
-                routeType === 'events' ? PROPERTIES.date : PROPERTIES.datePublished,
+                routeType === ROUTE_TYPES.events
+                  ? PROPERTIES.date
+                  : PROPERTIES.datePublished,
               date: {
                 on_or_after: addTime(timestampQuery, ''),
               },
             },
             {
               property:
-                routeType === 'events' ? PROPERTIES.date : PROPERTIES.datePublished,
+                routeType === ROUTE_TYPES.events
+                  ? PROPERTIES.date
+                  : PROPERTIES.datePublished,
               date: {
                 before: addTime(timestampQuery, 'day'),
               },

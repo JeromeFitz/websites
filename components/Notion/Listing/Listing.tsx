@@ -15,6 +15,7 @@ import fetcher from '~lib/fetcher'
 import getTimestamp from '~utils/getTimestamp'
 import lpad from '~utils/lpad'
 import getInfoType from '~utils/notion/getInfoType'
+import { ROUTE_TYPES } from '~utils/notion/helper'
 
 const Emoji = dynamic(() => import('~components/Notion/Emoji'), {
   ssr: false,
@@ -286,10 +287,10 @@ const Listing = ({ items, routeType }) => {
 
   if (itemsSize > 0) {
     switch (routeType) {
-      case 'events':
+      case ROUTE_TYPES.events:
         itemsData = _orderBy(items.results, ['data.date.start'], ['asc'])
         break
-      case 'podcasts':
+      case ROUTE_TYPES.podcasts:
         itemsData = _orderBy(
           items.results,
           ['data.season', 'data.episode'],
@@ -309,7 +310,7 @@ const Listing = ({ items, routeType }) => {
           {_map(itemsData, (item, itemIndex) => {
             // const item = itemsData[iIndex]
             switch (routeType) {
-              case 'events':
+              case ROUTE_TYPES.events:
                 return (
                   <ListingItemEvent
                     item={item}
@@ -317,7 +318,7 @@ const Listing = ({ items, routeType }) => {
                     routeType={routeType}
                   />
                 )
-              case 'podcasts':
+              case ROUTE_TYPES.podcasts:
                 return (
                   <ListingItemEpisode
                     item={item}

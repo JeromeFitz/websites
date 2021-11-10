@@ -7,20 +7,9 @@ import _join from 'lodash/join'
 import _last from 'lodash/last'
 import _size from 'lodash/size'
 
-import { SLUG__HOMEPAGE } from '~lib/constants'
+import { ROUTE_TYPES, SLUG__HOMEPAGE } from '~utils/notion/helper'
 
-const routeTypesArray = [
-  'blog',
-  'episodes',
-  'events',
-  'pages',
-  'people',
-  'podcasts',
-  'seo',
-  'shows',
-  'users',
-  'venues',
-]
+const routeTypesArray = Object.keys(ROUTE_TYPES)
 
 // @todo(complexity) 16
 // eslint-disable-next-line complexity
@@ -30,7 +19,8 @@ const getPathVariables = (catchAll: any) => {
   const last: string = _last(catchAll)
 
   const meta =
-    size > 1 && _includes(['blog', 'events', 'podcasts'], first)
+    size > 1 &&
+    _includes([ROUTE_TYPES.blog, ROUTE_TYPES.events, ROUTE_TYPES.podcasts], first)
       ? _drop(catchAll)
       : _drop(_dropRight(catchAll))
   const routeType =

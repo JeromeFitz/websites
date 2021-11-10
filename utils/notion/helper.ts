@@ -133,7 +133,7 @@ const QUERIES = {
   },
 }
 
-const TYPES = {
+const ROUTE_TYPES = {
   blog: 'blog',
   episodes: 'episodes',
   events: 'events',
@@ -146,6 +146,8 @@ const TYPES = {
   users: 'users',
   venues: 'venues',
 }
+
+const SLUG__HOMEPAGE = 'homepage'
 
 const DATABASES = {
   blog: 'baee64b0-8851-4522-8afb-e15a9ea5a910',
@@ -176,4 +178,4 @@ const SEO = {
   venues: 'd79444f6-8158-4bae-9b75-285e0b5f85b2',
 }
 
-export { notion, DATABASES, PROPERTIES, QUERIES, SEO, TYPES }
+export { notion, DATABASES, PROPERTIES, QUERIES, SEO, SLUG__HOMEPAGE, ROUTE_TYPES }

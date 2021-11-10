@@ -5,6 +5,7 @@ import pluralize from 'pluralize'
 
 import { MetaUL } from '~components/Notion/Meta'
 import getTitle from '~lib/notion/getTitle'
+import { ROUTE_TYPES } from '~utils/notion/helper'
 
 const Rollups = (props) => {
   // // const { cache } = useSWRConfig()
@@ -13,9 +14,9 @@ const Rollups = (props) => {
   const { properties, routeType } = props
   //
   const rollupMap =
-    routeType === 'events'
+    routeType === ROUTE_TYPES.events
       ? ['rollupShow', 'rollupLineup']
-      : routeType === 'podcasts'
+      : routeType === ROUTE_TYPES.podcasts
       ? ['rollupGuest', 'rollupHost', 'rollupProducer', 'rollupThanks']
       : [
           'rollupCast',

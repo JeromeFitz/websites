@@ -6,6 +6,7 @@ import _uniqWith from 'lodash/uniqWith'
 import asyncForEach from '~lib/asyncForEach'
 import getCatchAll from '~lib/notion/getCatchAll'
 import getPathVariables from '~lib/notion/getPathVariables'
+import { ROUTE_TYPES } from '~utils/notion/helper'
 
 const isDev = process.env.NODE_ENV !== 'production'
 
@@ -46,7 +47,14 @@ const getStaticPathsDefault = ({ items, routeType }) => {
   return data
 }
 
-const routeTypes = ['blog', 'episodes', 'events', 'podcasts', 'shows']
+// @todo(notion) have this coupled with helper or within CMS
+const routeTypes = [
+  ROUTE_TYPES.blog,
+  ROUTE_TYPES.episodes,
+  ROUTE_TYPES.events,
+  ROUTE_TYPES.podcasts,
+  ROUTE_TYPES.shows,
+]
 
 const getStaticPathsCatchAll = async () => {
   const paths = []
@@ -55,8 +63,9 @@ const getStaticPathsCatchAll = async () => {
 
   // @note(next) yo, this was KILLING local development. only on builds please.
   if (!isDev) {
+    // const routeTypesSingular = [routeType]
     await asyncForEach(routeTypes, async (routeType: any) => {
-      if (routeType !== 'episodes') paths.push(`/${routeType}`)
+      // if (routeType !== 'episodes') paths.push(`/${routeType}`)
       const catchAll = [routeType]
       const pathVariables = getPathVariables(catchAll)
       const data = await getCatchAll({
