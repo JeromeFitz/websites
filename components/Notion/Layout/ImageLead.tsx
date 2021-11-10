@@ -5,7 +5,7 @@ import useSWR, { useSWRConfig } from 'swr'
 
 import { Breakout } from '~components/Layout'
 import ImageCaption from '~components/Notion/ImageCaption'
-import { Container } from '~styles/system/components/Container'
+import { Container, Section } from '~styles/system/components'
 import { styled } from '~styles/system/stitches.config'
 
 const ImageContainer = styled('div', {
@@ -36,7 +36,20 @@ const Image = styled(NextImage, {
   // },
 })
 
+// const myLoader = ({ src, width, quality }) => {
+//   console.dir(`src`)
+//   console.dir(src)
+//   console.dir(`width`)
+//   console.dir(width)
+//   console.dir(`quality`)
+//   console.dir(quality)
+//   const widthCustom = width > 2000 ? width / 3 : width
+//   return `${src}?w=${widthCustom}&q=${quality || 75}`
+// }
+
 const ImageWithBackgroundBlur = ({ base64, description, image, slug }) => {
+  // console.dir(`image`)
+  // console.dir(image)
   return (
     <ImageContainer>
       <ImageBlur
@@ -49,9 +62,10 @@ const ImageWithBackgroundBlur = ({ base64, description, image, slug }) => {
       <Image
         alt={description}
         blurDataURL={base64}
+        layout="intrinsic"
         key={slug}
         placeholder="blur"
-        priority={true}
+        priority={false}
         title={description}
         {...image}
       />
@@ -59,7 +73,7 @@ const ImageWithBackgroundBlur = ({ base64, description, image, slug }) => {
   )
 }
 
-const ImageLead = ({ description, image, imagesFallback }) => {
+const ImageLead = ({ breakout = true, description, image, imagesFallback }) => {
   const { mutate } = useSWRConfig()
   const slugger = new Slugger()
   const { data: images } = useSWR('images', null)
@@ -86,8 +100,10 @@ const ImageLead = ({ description, image, imagesFallback }) => {
     return null
   }
 
+  const WrapComponent = breakout ? Breakout : Section
+
   return (
-    <Breakout>
+    <WrapComponent>
       <Container size="2">
         <ImageWithBackgroundBlur
           base64={imageData?.base64}
@@ -97,7 +113,7 @@ const ImageLead = ({ description, image, imagesFallback }) => {
         />
         <ImageCaption caption={description} />
       </Container>
-    </Breakout>
+    </WrapComponent>
   )
 }
 

@@ -135,6 +135,7 @@ const Page = ({ data, props }) => {
           imagesFallback={imagesFallback}
           key={`image-lead--${id}`}
         />
+
         {/* Content */}
         {/* @todo(content) */}
         <AnimatePresence key={`animate-presence--${id}`}>
