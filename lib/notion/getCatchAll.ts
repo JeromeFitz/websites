@@ -861,6 +861,9 @@ class DATA_TYPES {
   }
 
   async ['getBySlug']({ routeType, slug }) {
+    // console.dir(`routeType: ${routeType}`)
+    // console.dir(`slug: ${slug}`)
+
     let content = null,
       info = null,
       // eslint-disable-next-line prefer-const

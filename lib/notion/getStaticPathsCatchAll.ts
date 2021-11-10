@@ -7,6 +7,8 @@ import asyncForEach from '~lib/asyncForEach'
 import getCatchAll from '~lib/notion/getCatchAll'
 import getPathVariables from '~lib/notion/getPathVariables'
 
+const isDev = process.env.NODE_ENV !== 'production'
+
 const getStaticPathsDefault = ({ items, routeType }) => {
   const data = []
   // console.dir(`getStaticPathsDefault: ${routeType}`)
@@ -51,22 +53,24 @@ const getStaticPathsCatchAll = async () => {
   paths.push('/about')
   paths.push('/colophon')
 
-  await asyncForEach(routeTypes, async (routeType: any) => {
-    if (routeType !== 'episodes') paths.push(`/${routeType}`)
-    const catchAll = [routeType]
-    const pathVariables = getPathVariables(catchAll)
-    const data = await getCatchAll({
-      cache: false,
-      catchAll,
-      clear: false,
-      pathVariables,
-      preview: false,
-    })
-    const items = data?.items?.results
-    const slugs = getStaticPathsDefault({ items, routeType })
-    paths.push(...slugs)
-  }).catch(_noop)
-
+  // @note(next) yo, this was KILLING local development. only on builds please.
+  if (!isDev) {
+    await asyncForEach(routeTypes, async (routeType: any) => {
+      if (routeType !== 'episodes') paths.push(`/${routeType}`)
+      const catchAll = [routeType]
+      const pathVariables = getPathVariables(catchAll)
+      const data = await getCatchAll({
+        cache: false,
+        catchAll,
+        clear: false,
+        pathVariables,
+        preview: false,
+      })
+      const items = data?.items?.results
+      const slugs = getStaticPathsDefault({ items, routeType })
+      paths.push(...slugs)
+    }).catch(_noop)
+  }
   // console.dir(`paths:`)
   // console.dir(paths)
 
