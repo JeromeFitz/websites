@@ -17,6 +17,7 @@ import {
   Flex,
   Heading,
   Link,
+  Note,
   Paragraph,
   RadioCard,
   RadioCardGroup,
@@ -94,17 +95,7 @@ const Music = () => {
     <>
       <Seo {...seo} />
       <PageHeading title={seo.title} description={seo.description} />
-      <Text
-        as="p"
-        css={{
-          my: '$6',
-          fontSize: '$6',
-          letterSpacing: '-.015em',
-          lineHeight: '1.5',
-        }}
-      >
-        Musical Taste
-      </Text>
+      <Note>This page is in-progress.</Note>
       <Text
         as="p"
         css={{

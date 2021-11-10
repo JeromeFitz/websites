@@ -1,4 +1,3 @@
-import { AnimatePresence } from 'framer-motion'
 import _map from 'lodash/map'
 import _size from 'lodash/size'
 import dynamic from 'next/dynamic'
@@ -8,25 +7,30 @@ import useSWR, { useSWRConfig } from 'swr'
 
 import NotionLayout, { ImageLead } from '~components/Notion/Layout'
 import { OL, UL } from '~components/Notion/Listing'
-import { MetaTags } from '~components/Notion/Meta'
-import { Event } from '~components/Notion/Page'
+// import { MetaTags } from '~components/Notion/Meta'
+// import { Event } from '~components/Notion/Page'
 import getContentNodes from '~utils/notion/getContentNodes'
 import { ROUTE_TYPES } from '~utils/notion/helper'
 
-// const Breadcrumb = dynamic(() => import('~components/Notion/Breadcrumb'), {})
 const Listing = dynamic(() => import('~components/Notion/Listing'), {})
-// const Relations = dynamic(() => import('~components/Notion/Relations'), {})
-const Rollups = dynamic(() => import('~components/Notion/Rollups'), {})
-// const RollupsTags = dynamic(
-//   () => import('~components/Notion/Rollups/RollupsTags'),
-//   {}
-// )
-// const ListingEpisodes = dynamic(
-//   () => import('~components/Notion/Listing').then((mod) => mod.ListingEpisodes),
-//   {}
-// )
+const ListingEvent = dynamic(
+  () => import('~components/Notion/Listing/ListingEvent'),
+  {
+    ssr: true,
+  }
+)
+// // const Relations = dynamic(() => import('~components/Notion/Relations'), {})
+// const Rollups = dynamic(() => import('~components/Notion/Rollups'), {})
+// // const RollupsTags = dynamic(
+// //   () => import('~components/Notion/Rollups/RollupsTags'),
+// //   {}
+// // )
+// // const ListingEpisodes = dynamic(
+// //   () => import('~components/Notion/Listing').then((mod) => mod.ListingEpisodes),
+// //   {}
+// // )
 
-// @todo(complexity) 25
+// @todo(complexity) 15
 // eslint-disable-next-line complexity
 const Page = ({ data, props }) => {
   const {
@@ -39,7 +43,7 @@ const Page = ({ data, props }) => {
     isIndex,
     meta,
     routeType,
-    slug,
+    // slug,
     url,
   } = props
 
@@ -103,19 +107,19 @@ const Page = ({ data, props }) => {
    * @tags
    */
   // @todo(notion) dry
-  let tagParams
-  switch (routeType) {
-    case 'events':
-      tagParams = `events=${id || ''}&shows=${
-        info?.data?.shows?.join(',') || ''
-      }&eventsLineupShowIds=${info?.data?.eventsLineupShowIds?.join(',') || ''}`
-      break
-    case 'shows':
-      tagParams = `shows=${id || ''}`
-      break
-    default:
-      break
-  }
+  // let tagParams
+  // switch (routeType) {
+  //   case 'events':
+  //     tagParams = `events=${id || ''}&shows=${
+  //       info?.data?.shows?.join(',') || ''
+  //     }&eventsLineupShowIds=${info?.data?.eventsLineupShowIds?.join(',') || ''}`
+  //     break
+  //   case 'shows':
+  //     tagParams = `shows=${id || ''}`
+  //     break
+  //   default:
+  //     break
+  // }
 
   // console.dir(`data`)
   // console.dir(data)
@@ -129,45 +133,42 @@ const Page = ({ data, props }) => {
   return (
     <>
       <NotionLayout id={id} data={properties} routeType={routeType} url={url}>
-        <ImageLead
-          description={properties?.seoImageDescription}
-          image={properties?.seoImage}
-          imagesFallback={imagesFallback}
-          key={`image-lead--${id}`}
-        />
+        {isEventListing ? null : (
+          <ImageLead
+            description={properties?.seoImageDescription}
+            image={properties?.seoImage}
+            imagesFallback={imagesFallback}
+            key={`image-lead--${id}`}
+          />
+        )}
+        {isEventListing ? <ListingEvent data={data} /> : null}
+        {/* // node: NotionBlock (w/ id/type) */}
+        {isEventListing || hasMeta
+          ? null
+          : _map(getContentNodes({ content, images }), (node: any) => {
+              if (node.type === 'ul') {
+                return <UL key={node.id}>{node.node}</UL>
+              }
+              if (node.type === 'ol') {
+                return <OL key={node.id}>{node.node}</OL>
+              }
+              // if (node.type === 'image') {
+              //   return (
+              //     <>
+              //       <h5 key="image-here">Image Here</h5>
+              //       {node.node}
+              //     </>
+              //   )
+              // }
+              return node.node
+            })}
 
-        {/* Content */}
-        {/* @todo(content) */}
-        <AnimatePresence key={`animate-presence--${id}`}>
-          {isEventListing ? <Event data={data} /> : null}
-          {/* // node: NotionBlock (w/ id/type) */}
-          {isEventListing || hasMeta
-            ? null
-            : _map(getContentNodes({ content, images }), (node: any) => {
-                if (node.type === 'ul') {
-                  return <UL key={node.id}>{node.node}</UL>
-                }
-                if (node.type === 'ol') {
-                  return <OL key={node.id}>{node.node}</OL>
-                }
-                // if (node.type === 'image') {
-                //   return (
-                //     <>
-                //       <h5 key="image-here">Image Here</h5>
-                //       {node.node}
-                //     </>
-                //   )
-                // }
-                return node.node
-              })}
-        </AnimatePresence>
         {/* @note(switch) */}
         {isIndex && !isPage && (
           <Listing items={items} key={`listing--${id}`} routeType={routeType} />
         )}
-        {/* {isEvent && showId && <Meta id={showId} />} */}
         <>
-          {!isIndex && (
+          {/* {!isIndex && (
             <h2 className="text-3xl md:text-4xl" key={`h2-information--${id}`}>
               Information
             </h2>
@@ -178,8 +179,6 @@ const Page = ({ data, props }) => {
           {!!tagParams && !isIndex && (
             <>
               <MetaTags key={`meta-tags--${id}`} tagParams={tagParams} />
-              {/* <RollupsTags key={`rollup-tags--${id}`} properties={properties} /> */}
-              {/* <div className="spacer--h" /> */}
             </>
           )}
           {!isIndex && (
@@ -191,19 +190,9 @@ const Page = ({ data, props }) => {
               routeType={routeType}
               slug={slug}
             />
-          )}
+          )} */}
           {isEpisodeListing ? (
             <>
-              {/* {!!spotifyShow && (
-                <iframe
-                  src={`https://open.spotify.com/embed/show/${spotifyShow}`}
-                  width="100%"
-                  height="232"
-                  frameBorder="0"
-                  allowFullScreen={true}
-                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                ></iframe>
-              )} */}
               <Listing
                 items={items}
                 key={`listing--episodes--${id}`}

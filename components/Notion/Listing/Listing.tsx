@@ -21,6 +21,13 @@ const Emoji = dynamic(() => import('~components/Notion/Emoji'), {
   ssr: false,
 })
 
+const ListingEvents = dynamic(
+  () => import('~components/Notion/Listing/ListingEvents'),
+  {
+    ssr: true,
+  }
+)
+
 const ListingItemEpisode = ({ item, routeType }) => {
   const { audio } = useUI()
   const router = useRouter()
@@ -283,6 +290,8 @@ const ListingItem = ({ item, routeType }) => {
 const Listing = ({ items, routeType }) => {
   const itemsSize = _size(items?.results)
 
+  if (itemsSize === 0) return null
+
   let itemsData
 
   if (itemsSize > 0) {
@@ -301,6 +310,15 @@ const Listing = ({ items, routeType }) => {
         itemsData = items.results
         break
     }
+  }
+
+  if (routeType === ROUTE_TYPES.events) {
+    // console.dir(itemsData)
+    return (
+      <>
+        <ListingEvents items={itemsData} />
+      </>
+    )
   }
 
   return (

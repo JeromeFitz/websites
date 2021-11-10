@@ -14,7 +14,7 @@ import {
 } from '~components/Accordion'
 import PageHeading from '~components/PageHeading'
 import Seo from '~components/Seo'
-import { Flex, Text } from '~styles/system/components'
+import { Flex, Note, Text } from '~styles/system/components'
 
 const Emoji = dynamic(() => import('~components/Notion/Emoji'), {
   ssr: false,
@@ -539,6 +539,7 @@ const Music = () => {
     <>
       <Seo {...seo} />
       <PageHeading title={seo.title} description={seo.description} />
+      <Note>This page is in-progress.</Note>
       <Text
         as="p"
         css={{

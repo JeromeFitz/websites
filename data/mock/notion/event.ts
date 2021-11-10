@@ -39,8 +39,11 @@ const data = {
         'Suzanne Lawrence',
       ],
       rollupShow: ['Jerome &'],
-      rollupTags: [null],
-      rollupTagsSecondary: [null, null, null, null, null, null, null, null],
+      rollupTags: [
+        '60dd326d-687e-4e64-a49b-46bfba218ffb',
+        '4bf09af2-078e-4101-8519-3500c2d68244',
+      ],
+      rollupTagsSecondary: [],
       rollupVenue: ['Arcade Comedy Theater'],
       seoDescription:
         'Jerome is joined by very special guests Pallavi Gunalan (LA), Casually Dope (BMORE), and more from Chicago, Pittsburgh, all safe inside your home via the internet.',
@@ -48,10 +51,16 @@ const data = {
         'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2020/05/jerome-and--2020-05-08.png',
       seoImageDescription: null,
       shows: ['2cc25eed-12e6-4ccb-b949-21391d0e3174'],
-      showsTags: [],
+      showsTags: [
+        '60dd326d-687e-4e64-a49b-46bfba218ffb',
+        '4bf09af2-078e-4101-8519-3500c2d68244',
+      ],
       slug: 'jerome-and',
       socialFacebook: null,
-      tags: {},
+      tags: [
+        '60dd326d-687e-4e64-a49b-46bfba218ffb',
+        '4bf09af2-078e-4101-8519-3500c2d68244',
+      ],
       ticketUrl: null,
       title: 'Jerome &: A Comedic Variety Show',
       venues: ['5390e501-1351-4f13-a581-86736eff5fe1'],
@@ -660,4 +669,5 @@ const data = {
       },
   },
 }
+
 export default data

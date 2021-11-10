@@ -112,6 +112,12 @@ const globalStyles = globalCss({
     '--width-11_12': '91.66666667%',
     '--width-full': '100%',
   },
+
+  '.hi2ri': {
+    '& > path': {
+      strokeWidth: '1.5 !important',
+    },
+  },
 })
 
 function MyApp({ Component, pageProps, router }: AppProps) {

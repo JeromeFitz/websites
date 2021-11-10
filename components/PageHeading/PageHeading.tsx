@@ -55,7 +55,6 @@ const PageHeading = ({ title, description }) => {
       >
         {description}
       </Paragraph>
-      {/* <Note>This page is in-progress.</Note> */}
     </>
   )
 }

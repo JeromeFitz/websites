@@ -406,9 +406,10 @@ const TA = () => {
                 </Heading>
               </Container>
               <Container as="ul">
-                {_map(genres.slice(0, 10), (genre) => (
+                {_map(genres.slice(0, 10), (genre, genreIdx) => (
                   <Badge
                     as="li"
+                    key={`genre-${genreIdx}`}
                     size="2"
                     css={{
                       p: '$3',
