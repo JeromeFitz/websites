@@ -2,7 +2,7 @@ import { Box, Flex } from '~styles/system/components'
 import { styled } from '~styles/system/stitches.config'
 const css_card = {
   backgroundColor: '$colors$gray4',
-  border: '1px solid $colors$pink7',
+  border: '1px solid $colors$violet7',
   borderRadius: '12px',
   cursor: 'pointer',
   height: '100%',
@@ -54,12 +54,12 @@ const CardImage = styled(Box, {
   maxHeight: 'none ',
   height: '200px ',
   border: 'none',
-  // border: '1px solid $colors$pink10',
+  // border: '1px solid $colors$violet10',
   overflow: 'hidden',
   mb: '0.5rem',
 })
-const CardTitle = styled(Flex, { minHeight: '4rem' })
-const CardContent = styled(Box, { mb: '1.5rem' })
+const CardTitle = styled(Flex, {})
+const CardContent = styled(Box, { mb: '1.5rem', pb: '1rem' })
 const CardMeta = styled(Flex, {
   position: 'absolute',
   bottom: 0,

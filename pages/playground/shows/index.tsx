@@ -3,6 +3,7 @@ import _map from 'lodash/map'
 import NextLink from 'next/link'
 import React from 'react'
 
+import { Breakout } from '~components/Layout'
 import { ImageWithBackgroundBlur } from '~components/Notion/Layout/ImageLead'
 import PageHeading from '~components/PageHeading'
 import mockData from '~data/mock/notion/shows'
@@ -86,7 +87,7 @@ const Shows = ({ data }) => {
                     size="3"
                     as="h3"
                     css={{
-                      fontSize: '2rem',
+                      fontSize: '1.5rem',
                       fontWeight: 700,
                       lineHeight: 1,
                       letterSpacing: '-0.02em',
@@ -105,9 +106,9 @@ const Shows = ({ data }) => {
                     <Badge
                       key={`badge-${itemIdx}`}
                       size="2"
-                      variant="pink"
+                      variant="violet"
                       css={{
-                        border: '1px solid $colors$pink11',
+                        border: '1px solid $colors$violet11',
                         fontWeight: '700',
                         mr: '$4',
                       }}
@@ -134,8 +135,8 @@ const PlaygroundShows = () => {
         description={properties.seoDescription}
         title={properties.title}
       />
-      <Box>
-        <Box>
+      <Breakout>
+        <Box css={{ px: '$2' }}>
           <Grid
             css={{
               rowGap: '$6',
@@ -149,7 +150,7 @@ const PlaygroundShows = () => {
             <Shows data={data} />
           </Grid>
         </Box>
-      </Box>
+      </Breakout>
     </>
   )
 }

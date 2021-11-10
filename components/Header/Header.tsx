@@ -144,8 +144,8 @@ const Banner = () => {
       <Box
         as="a"
         css={{
-          bc: '$colors$pink9',
-          color: '$hiContrast',
+          bc: '$colors$violet9',
+          color: 'white',
           py: '0.5rem',
           display: 'block',
           position: 'relative',
@@ -157,7 +157,7 @@ const Banner = () => {
           textDecoration: 'none',
           '@hover': {
             '&:hover': {
-              bc: '$colors$pink10',
+              bc: '$colors$violet10',
             },
           },
         }}
@@ -201,8 +201,8 @@ const NavSkip = () => {
         height: '40px',
         marginTop: '-40px',
         padding: '8px',
-        bc: '$colors$pink9',
-        color: '$hiContrast',
+        bc: '$colors$violet9',
+        color: '$colors$violet12',
         fontSize: '.9rem',
         lineHeight: '1.5',
         fontWeight: '500',
@@ -253,15 +253,29 @@ const Header = () => {
               <Flex align="center" gap="3" css={{}}>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Avatar
-                      alt={`Avatar for Jerome (Bighead Dizzy)`}
-                      src={`/static/images/bighead--jerome--dizzy.svg`}
-                      aria-describedby="logoHeader"
-                      size="4"
+                    <Text
+                      as="button"
                       css={{
-                        '@bp1': { mr: '$1', width: '$7', height: '$7' },
+                        backgroundColor: 'inherit',
+                        boxShadow: 'none',
+                        border: 'none',
+                        m: 0,
+                        p: 0,
+                        '&:hover': { cursor: 'pointer' },
                       }}
-                    />
+                    >
+                      <Avatar
+                        alt={`Avatar for Jerome (Bighead Dizzy)`}
+                        src={`/static/images/bighead--jerome--dizzy.svg`}
+                        aria-describedby="logoHeader"
+                        size="4"
+                        css={{
+                          '@bp1': { mr: '$1', width: '$7', height: '$7' },
+                        }}
+                        variant="violet"
+                        border="solid"
+                      />
+                    </Text>
                   </TooltipTrigger>
                   {!isHompage && (
                     <TooltipContent align="start" sideOffset={5}>

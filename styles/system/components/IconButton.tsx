@@ -45,6 +45,10 @@ export const IconButton = styled('button', {
   },
 
   variants: {
+    cursor: {
+      arrow: { cursor: 'arrow' },
+      pointer: { cursor: 'pointer' },
+    },
     size: {
       '1': {
         borderRadius: '$1',
@@ -134,6 +138,7 @@ export const IconButton = styled('button', {
     },
   },
   defaultVariants: {
+    cursor: 'arrow',
     size: '1',
     variant: 'ghost',
   },

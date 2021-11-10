@@ -4,11 +4,17 @@ import { useTheme } from 'next-themes'
 import { useCallback, useEffect } from 'react'
 import { useSound } from 'use-sound'
 
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+  TooltipArrow,
+} from '~components/Tooltip'
 import { useUI } from '~context/ManagedUIContext'
-import { IconButton, Tooltip } from '~styles/system/components'
+import { IconButton } from '~styles/system/components'
 import { darkTheme } from '~styles/system/stitches.config'
 
-const ThemeToggle = () => {
+const ThemeToggle = (props) => {
   const { theme, setTheme } = useTheme()
   const content = `Toggle theme to ${theme === 'light' ? 'dark' : 'light'}`
 
@@ -34,10 +40,22 @@ const ThemeToggle = () => {
   }, [handleClick])
 
   return (
-    <Tooltip content={content} side="bottom" align="end">
-      <IconButton aria-label={content} onClick={() => handleClick()} variant="ghost">
-        {theme === 'light' ? <MoonIcon /> : <SunIcon />}
-      </IconButton>
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <IconButton
+          aria-label={content}
+          onClick={() => handleClick()}
+          cursor="pointer"
+          variant="ghost"
+          {...props}
+        >
+          {theme === 'light' ? <MoonIcon /> : <SunIcon />}
+        </IconButton>
+      </TooltipTrigger>
+      <TooltipContent align="end" sideOffset={5}>
+        {content}
+        <TooltipArrow offset={15} />
+      </TooltipContent>
     </Tooltip>
   )
 }

@@ -67,8 +67,8 @@ const ImageWithBackgroundBlur = ({ base64, description, image, slug }) => {
         key={slug}
         placeholder="blur"
         priority={true}
-        quality={90}
-        sizes="(min-width: 1920px) 100vh, (min-width: 1280) 75vh, 50vh"
+        quality={100}
+        sizes="(min-width: 1920px) 100vh, (min-width: 1280) 90vh, 75vh"
         title={description}
         {...image}
       />

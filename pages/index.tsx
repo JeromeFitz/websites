@@ -3,7 +3,7 @@ import useSWR from 'swr'
 
 import Page from '~components/Notion/Page'
 import PageHeading, { SkeletonHeading } from '~components/PageHeading'
-import { ERROR__FALLBACK } from '~lib/constants'
+import { revalidate, ERROR__FALLBACK } from '~lib/constants'
 import fetcher from '~lib/fetcher'
 import getCatchAll from '~lib/notion/getCatchAll'
 import getPathVariables from '~lib/notion/getPathVariables'
@@ -88,7 +88,10 @@ export const getStaticProps = async ({ preview = false, ...props }) => {
   const data = await getCatchAll({ cache, catchAll, clear, pathVariables, preview })
 
   const dataReturn = { ...data }
-  return { props: { preview, ...dataReturn, ...pathVariables, ...props } }
+  return {
+    props: { preview, ...dataReturn, ...pathVariables, ...props },
+    revalidate,
+  }
 }
 
 export default CatchAll

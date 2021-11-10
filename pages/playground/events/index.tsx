@@ -7,6 +7,7 @@ import Slugger from 'github-slugger'
 import _filter from 'lodash/filter'
 import _map from 'lodash/map'
 import _size from 'lodash/size'
+import _union from 'lodash/union'
 import _uniqWith from 'lodash/uniqWith'
 import dynamic from 'next/dynamic'
 import NextLink from 'next/link'
@@ -25,6 +26,7 @@ import {
 } from '~styles/system/components'
 import { styled } from '~styles/system/stitches.config'
 import getInfoType from '~utils/notion/getInfoType'
+import { TAGS } from '~utils/notion/helper'
 
 const Announce = dynamic(
   () => import('~styles/system/components/Announce').then((mod) => mod.Announce),
@@ -58,16 +60,16 @@ const StyledBox = styled('div', {
     mb: '4px',
     padding: '20px 24px',
   },
-  backgroundColor: '$colors$pink3',
+  backgroundColor: '$colors$violet3',
   // color: 'white',
-  color: '$colores$pink12',
+  color: '$colors$violet12',
   '@hover': {
     '&:hover': {
-      backgroundColor: '$colors$pink4',
+      backgroundColor: '$colors$violet4',
     },
   },
   '&:focus': {
-    backgroundColor: '$colors$pink4',
+    backgroundColor: '$colors$violet4',
   },
 })
 
@@ -77,7 +79,7 @@ const StyledBorder = styled('div', {
   top: 0,
   right: 0,
   bottom: 0,
-  border: '2px solid $colors$pink8',
+  border: '2px solid $colors$violet8',
   opacity: 0,
   zIndex: 1,
   transition: 'opacity .25s cubic-bezier(.165, .84, .44, 1)',
@@ -99,7 +101,7 @@ const StyledLink = styled('a', {
         opacity: 1,
       },
       [`+ ${StyledBox}`]: {
-        backgroundColor: '$colors$pink4',
+        backgroundColor: '$colors$violet4',
       },
     },
   },
@@ -108,7 +110,7 @@ const StyledLink = styled('a', {
       opacity: 1,
     },
     [`+ ${StyledBox}`]: {
-      backgroundColor: '$colors$pink4',
+      backgroundColor: '$colors$violet4',
     },
   },
 })
@@ -373,9 +375,9 @@ const Date = ({ children, title }) => {
 
 const Event = ({ data, keyPrefix }) => {
   const slugger = new Slugger()
-  // console.dir(`Event`)
-  // console.dir(`> data`)
-  // console.dir(data)
+  console.dir(`Event`)
+  console.dir(`> data`)
+  console.dir(data)
   // return null
   if (data === null || data === undefined) return null
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -391,6 +393,12 @@ const Event = ({ data, keyPrefix }) => {
   // const dateISO = formatISO(date?.iso?.full)
   const { seoDescription: description, title } = data?.data
   const iso = parseISO(data?.data?.date?.start)
+  const tags =
+    _map(
+      _union(data?.data?.rollupTags, data?.data?.rollupTagsSecondary),
+      (tag: string) => TAGS[tag].title
+    ).join(', ') || 'Comedy'
+
   return (
     <Box role="listitem" css={{ mb: '1rem' }}>
       <Box css={{ display: 'none' }}>Category</Box>
@@ -399,7 +407,7 @@ const Event = ({ data, keyPrefix }) => {
           css={{
             gridTemplateColumns: 'repeat(1, 1fr)',
             gap: 5,
-            '@bp1': { gridTemplateColumns: 'repeat(5, 1fr)' },
+            '@bp1': { gridTemplateColumns: 'repeat(6, 1fr)' },
           }}
         >
           <Box
@@ -426,7 +434,7 @@ const Event = ({ data, keyPrefix }) => {
                 mr: '8px',
                 flex: '0 0 auto',
                 br: '18px',
-                backgroundColor: '$colors$pink6',
+                backgroundColor: '$colors$violet6',
                 border: '1px solid $hiContrast',
               }}
             /> */}
@@ -592,7 +600,7 @@ const Event = ({ data, keyPrefix }) => {
                   }}
                 />
                 <Box>
-                  <ListItem title={'Improv, Sketch, Stand-up'} />
+                  <ListItem title={tags} />
                 </Box>
               </Flex>
             </Box>

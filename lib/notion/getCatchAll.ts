@@ -297,23 +297,20 @@ const getTypePhoneNumberNormalized = (data: any) => data?.phone_number || null
 const getTypeRelationNormalized = (data: any) => {
   // console.dir(`getTypeRelationNormalized`)
   // console.dir(data)
-  return _map(data.relation, (relation: any) => relation.id)
-  // if (data.type === 'rollup') {
-  //   // console.dir(`rollup`)
-  //   // console.dir(data.rollup.array)
-  //   // // @note(notion) This brings back the ID of the Relation
-  //   // const foo = _map(data.rollup.array, (item) =>
-  //   //   _map(item.type === 'relation' && item.relation, (relation: any) => relation.id)
-  //   // )[0]
-  //   // console.dir(foo)
-  //   return []
-  //   // return (
-  //   //   data.rollup.type === 'array' &&
-  //   //   _map(data.rollup.array, (relation: any) => relation.id)
-  //   // )
-  // } else {
-  //   return _map(data.relation, (relation: any) => relation.id)
-  // }
+
+  // @note(notion) This brings back the ID of the Relation
+  if (data.type === 'rollup') {
+    // console.dir(`rollup via relation?`)
+    // console.dir(data.rollup.array)
+    return (
+      data.rollup.type === 'array' &&
+      _map(data.rollup.array, (r: any) => {
+        return r?.type === 'relation' ? getTypeRelationNormalized(r) : null
+      })[0]
+    )
+  } else {
+    return _map(data.relation, (relation: any) => relation.id)
+  }
 }
 
 // const getTypeRollupNormalized = (data: RollupPropertyValue) => {
@@ -439,9 +436,6 @@ class Properties {
   [PROPERTIES.festivals](value) {
     return this.multiSelect(value)
   }
-  [PROPERTIES.tags](value) {
-    return this.multiSelect(value)
-  }
   /**
    * @number
    */
@@ -481,6 +475,9 @@ class Properties {
   /**
    * @relation @__SHARED
    */
+  [PROPERTIES.tags](value) {
+    return this.relation(value)
+  }
   /**
    * @relation @_EPISODES
    */
@@ -717,10 +714,10 @@ class Properties {
     return this.rollup(value)
   }
   [PROPERTIES.rollupTags](value) {
-    return this.rollup(value)
+    return this.relation(value)
   }
   [PROPERTIES.rollupTagsSecondary](value) {
-    return this.rollup(value)
+    return this.relation(value)
   }
   [PROPERTIES.rollupThanks](value) {
     return this.rollup(value)

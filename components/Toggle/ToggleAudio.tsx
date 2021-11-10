@@ -3,8 +3,14 @@ import Mousetrap from 'mousetrap'
 import { useCallback, useEffect } from 'react'
 import { useSound } from 'use-sound'
 
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+  TooltipArrow,
+} from '~components/Tooltip'
 import { useUI } from '~context/ManagedUIContext'
-import { IconButton, Tooltip } from '~styles/system/components'
+import { IconButton } from '~styles/system/components'
 
 const ThemeToggle = (props) => {
   const { audio, toggleAudio } = useUI()
@@ -34,15 +40,22 @@ const ThemeToggle = (props) => {
   }, [handleClick])
 
   return (
-    <Tooltip content={content} side="bottom" align="end">
-      <IconButton
-        aria-label={content}
-        onClick={() => handleClick()}
-        variant="ghost"
-        {...props}
-      >
-        {audio ? <SpeakerModerateIcon /> : <SpeakerOffIcon />}
-      </IconButton>
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <IconButton
+          aria-label={content}
+          onClick={() => handleClick()}
+          cursor="pointer"
+          variant="ghost"
+          {...props}
+        >
+          {audio ? <SpeakerModerateIcon /> : <SpeakerOffIcon />}
+        </IconButton>
+      </TooltipTrigger>
+      <TooltipContent align="end" sideOffset={5}>
+        {content}
+        <TooltipArrow offset={15} />
+      </TooltipContent>
     </Tooltip>
   )
 }

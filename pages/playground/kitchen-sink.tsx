@@ -4,6 +4,7 @@ import useSWR from 'swr'
 
 import Layout from '~components/Layout'
 import Page from '~components/Notion/Page'
+import { revalidate } from '~lib/constants'
 import fetcher from '~lib/fetcher'
 import getCatchAll from '~lib/notion/getCatchAll'
 import getPathVariables from '~lib/notion/getPathVariables'
@@ -78,7 +79,10 @@ export const getStaticProps = async ({ preview = false, ...props }) => {
   const data = await getCatchAll({ cache, catchAll, clear, pathVariables, preview })
 
   const dataReturn = { ...data }
-  return { props: { preview, ...dataReturn, ...pathVariables, ...props } }
+  return {
+    props: { preview, ...dataReturn, ...pathVariables, ...props },
+    revalidate,
+  }
 }
 
 export default CatchAll

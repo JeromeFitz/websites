@@ -77,7 +77,7 @@ export const Badge = styled('span', {
         backgroundColor: '$pink3',
         color: '$pink11',
         '&:focus': {
-          boxShadow: 'inset 0 0 0 1px $colors$pink8, 0 0 0 1px $colors$pink8',
+          boxShadow: 'inset 0 0 0 1px $colors$violet8, 0 0 0 1px $colors$violet8',
         },
       },
       purple: {

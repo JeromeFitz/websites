@@ -268,6 +268,8 @@ const Footer = () => {
                     size="5"
                     src={`/static/images/bighead--jerome--dizzy.svg`}
                     aria-describedby="logoFooter"
+                    variant="violet"
+                    border="solid"
                   />
                   <Box id="logoFooter">
                     <Paragraph css={{ fontWeight: 700 }}>Jerome</Paragraph>
