@@ -1145,11 +1145,11 @@ class DATA_TYPES {
       items = null
     const dateTimestamp = new Date().toISOString()
 
-    if (routeType === ROUTE_TYPES.events) {
+    if (routeType === ROUTE_TYPES.podcasts) {
       const [podcastSlug, episodeSlug] = meta
       const hasEpisode = _size(meta) === 2
       const info4__p: any = await getDatabasesByIdQuery({
-        databaseId: DATABASES[hasEpisode ? ROUTE_TYPES.events : routeType],
+        databaseId: DATABASES[hasEpisode ? ROUTE_TYPES.episodes : routeType],
         filter: {
           and: [
             {
@@ -1165,11 +1165,11 @@ class DATA_TYPES {
       // @hack(podcasts)
       if (!hasEpisode) {
         let items4__p = null
-        if (routeType === ROUTE_TYPES.events) {
+        if (routeType === ROUTE_TYPES.podcasts) {
           items4__p = await getQuery({
             reqQuery: {
               podcasts: info.id,
-              databaseType: DATABASES.episodes,
+              databaseType: ROUTE_TYPES.episodes,
             },
           })
           const items4__pData = {}
@@ -1181,7 +1181,7 @@ class DATA_TYPES {
         }
       }
     }
-    if (routeType === ROUTE_TYPES.events || routeType === ROUTE_TYPES.events) {
+    if ([ROUTE_TYPES.blog, ROUTE_TYPES.events].includes(routeType)) {
       const [year, month, day] = meta
       const timestampQuery = new Date(
         `${!!year ? year : dateTimestamp.slice(0, 4)}-${!!month ? month : '01'}-${

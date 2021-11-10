@@ -14,8 +14,8 @@ const getStaticPathsDefault = ({ items, routeType }) => {
   const data = []
   // console.dir(`getStaticPathsDefault: ${routeType}`)
   switch (routeType) {
-    case 'blog':
-    case 'events':
+    case ROUTE_TYPES.blog:
+    case ROUTE_TYPES.events:
       const dates = []
       _map(items, (item) => {
         const date =
@@ -30,14 +30,14 @@ const getStaticPathsDefault = ({ items, routeType }) => {
       })
       _uniqWith(dates, _isEqual).map((route) => data.push(route))
       break
-    case 'episodes':
+    case ROUTE_TYPES.episodes:
       _map(items, (item) => {
         // @todo(notion) what if there is more than two? make dynamic please
         const podcastSlug =
           item?.data?.podcasts[0] === 'fff1042d-3403-4210-991e-678c6820fe68'
             ? 'knockoffs'
             : 'jer-and-ky-and-guest'
-        data.push(`/podcasts/${podcastSlug}/${item?.data?.slug}`)
+        data.push(`/${ROUTE_TYPES.podcasts}/${podcastSlug}/${item?.data?.slug}`)
       })
       break
     default:
@@ -65,7 +65,7 @@ const getStaticPathsCatchAll = async () => {
   if (!isDev) {
     // const routeTypesSingular = [routeType]
     await asyncForEach(routeTypes, async (routeType: any) => {
-      // if (routeType !== 'episodes') paths.push(`/${routeType}`)
+      if (routeType !== 'episodes') paths.push(`/${routeType}`)
       const catchAll = [routeType]
       const pathVariables = getPathVariables(catchAll)
       const data = await getCatchAll({

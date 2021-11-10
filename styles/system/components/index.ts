@@ -1,3 +1,4 @@
+export { Announce } from './Announce'
 export { Avatar } from './Avatar'
 export { Badge } from './Badge'
 export { Box } from './Box'

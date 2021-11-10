@@ -1,5 +1,4 @@
 import { LocationMarkerIcon, TagIcon } from '@heroicons/react/outline'
-import * as Announce from '@radix-ui/react-announce'
 import { ClockIcon } from '@radix-ui/react-icons'
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
 import { getDate, getDay, getMonth, getYear, parseISO } from 'date-fns'
@@ -9,6 +8,7 @@ import _filter from 'lodash/filter'
 import _map from 'lodash/map'
 import _size from 'lodash/size'
 import _uniqWith from 'lodash/uniqWith'
+import dynamic from 'next/dynamic'
 import NextLink from 'next/link'
 import React from 'react'
 
@@ -25,6 +25,13 @@ import {
 } from '~styles/system/components'
 import { styled } from '~styles/system/stitches.config'
 import getInfoType from '~utils/notion/getInfoType'
+
+const Announce = dynamic(
+  () => import('~styles/system/components/Announce').then((mod) => mod.Announce),
+  {
+    ssr: false,
+  }
+)
 
 const properties = {
   title: mockData?.info?.data?.title,
@@ -382,8 +389,8 @@ const Event = ({ data, keyPrefix }) => {
    *  TO:   2020-01-25T23:00:00-05:00
    */
   // const dateISO = formatISO(date?.iso?.full)
-  const { date, seoDescription: description, title } = data?.data
-  const iso = parseISO(date?.start)
+  const { seoDescription: description, title } = data?.data
+  const iso = parseISO(data?.data?.date?.start)
   return (
     <Box role="listitem" css={{ mb: '1rem' }}>
       <Box css={{ display: 'none' }}>Category</Box>
@@ -626,9 +633,9 @@ const Event = ({ data, keyPrefix }) => {
         <StyledBorder />
       </StyledBox>
       <VisuallyHidden.Root asChild={true}>
-        <Announce.Root>
+        <Announce>
           <Heading as="h4">{title}</Heading>
-        </Announce.Root>
+        </Announce>
       </VisuallyHidden.Root>
     </Box>
   )

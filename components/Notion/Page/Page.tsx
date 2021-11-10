@@ -1,5 +1,6 @@
 import { AnimatePresence } from 'framer-motion'
 import _map from 'lodash/map'
+import _size from 'lodash/size'
 import dynamic from 'next/dynamic'
 // import { useEffect } from 'react'
 import { useEffectOnce } from 'react-use'
@@ -36,11 +37,17 @@ const Page = ({ data, props }) => {
     // hasMeta,
     isPage,
     isIndex,
-    // meta,
+    meta,
     routeType,
     slug,
     url,
   } = props
+
+  // console.dir(`props`)
+  // console.dir(props)
+
+  const hasMeta =
+    _size(meta) > 0 && [ROUTE_TYPES.blog, ROUTE_TYPES.events].includes(routeType)
 
   /**
    * @images
@@ -133,7 +140,7 @@ const Page = ({ data, props }) => {
         <AnimatePresence key={`animate-presence--${id}`}>
           {isEventListing ? <Event data={data} /> : null}
           {/* // node: NotionBlock (w/ id/type) */}
-          {isEventListing
+          {isEventListing || hasMeta
             ? null
             : _map(getContentNodes({ content, images }), (node: any) => {
                 if (node.type === 'ul') {
