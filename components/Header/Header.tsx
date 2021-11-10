@@ -36,7 +36,7 @@ const HighlightLink = styled('a', {
   br: '$2',
   '@hover': {
     '&:hover': {
-      bc: '$slateA3',
+      backgroundColor: '$slateA3',
     },
   },
   '&:focus': {
@@ -48,7 +48,7 @@ const HighlightLink = styled('a', {
   variants: {
     variant: {
       contrast: {
-        bc: '$slateA2',
+        backgroundColor: '$slateA2',
         boxShadow: '0 0 0 2px $colors$slateA7',
         // color: '$slate12',
       },
@@ -145,7 +145,7 @@ const Banner = () => {
       <Box
         as="a"
         css={{
-          bc: '$colors$violet9',
+          backgroundColor: '$colors$violet9',
           color: 'white',
           py: '0.5rem',
           display: 'block',
@@ -158,7 +158,7 @@ const Banner = () => {
           textDecoration: 'none',
           '@hover': {
             '&:hover': {
-              bc: '$colors$violet10',
+              backgroundColor: '$colors$violet10',
             },
           },
         }}
@@ -202,8 +202,8 @@ const NavSkip = () => {
         height: '40px',
         marginTop: '-40px',
         padding: '8px',
-        bc: '$colors$violet9',
-        color: '$colors$violet12',
+        backgroundColor: '$colors$violet9',
+        color: '$colors$violet1',
         fontSize: '.9rem',
         lineHeight: '1.5',
         fontWeight: '500',
@@ -318,7 +318,7 @@ const Header = () => {
                   variant={router.asPath.includes('/shows') ? 'contrast' : 'subtle'}
                   as="button"
                   css={{
-                    bc: 'transparent',
+                    backgroundColor: 'transparent',
                     cursor: 'pointer',
                     appearance: 'none',
                     fontFamily: '$untitled',
@@ -398,7 +398,7 @@ const Header = () => {
                     }
                     as="button"
                     css={{
-                      bc: 'transparent',
+                      backgroundColor: 'transparent',
                       cursor: 'pointer',
                       appearance: 'none',
                       fontFamily: '$untitled',

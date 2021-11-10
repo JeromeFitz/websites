@@ -2,7 +2,7 @@ import {
   LocationMarkerIcon,
   MapIcon,
   TagIcon,
-  TicketIcon,
+  // TicketIcon,
 } from '@heroicons/react/outline'
 import {
   CalendarIcon,
@@ -101,10 +101,10 @@ const Info = ({ data }) => {
           <LocationMarkerIcon className="hi2ri" style={css_icon} />
           <Paragraph>{venue}</Paragraph>
         </Box>
-        <Box role="listitem" css={css_info}>
+        {/* <Box role="listitem" css={css_info}>
           <TicketIcon className="hi2ri" style={css_icon} />
           <Paragraph>$12.00</Paragraph>
-        </Box>
+        </Box> */}
         <Box role="listitem" css={css_info}>
           <TagIcon className="hi2ri" style={css_icon} />
           <Paragraph>{tags}</Paragraph>
