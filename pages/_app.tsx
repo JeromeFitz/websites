@@ -31,8 +31,8 @@ const globalStyles = globalCss({
 
   body: {
     margin: 0,
-    color: '$hiContrast',
-    backgroundColor: '$loContrast',
+    color: '$colors$gray12',
+    backgroundColor: '$colors$gray1',
     // fontFamily: '$f37bella',
     // fontFamily: '$f37bolton',
     // fontFamily: '$f37ginger',

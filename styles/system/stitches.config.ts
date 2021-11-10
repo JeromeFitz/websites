@@ -250,6 +250,7 @@ export const {
       mono,
       // name,
       sans: inter,
+      // sans: name,
       serif,
     },
     space: {

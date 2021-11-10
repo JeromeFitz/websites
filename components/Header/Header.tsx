@@ -145,7 +145,7 @@ const Banner = () => {
         as="a"
         css={{
           bc: '$colors$pink9',
-          color: 'white',
+          color: '$hiContrast',
           py: '0.5rem',
           display: 'block',
           position: 'relative',
@@ -202,7 +202,7 @@ const NavSkip = () => {
         marginTop: '-40px',
         padding: '8px',
         bc: '$colors$pink9',
-        color: 'white',
+        color: '$hiContrast',
         fontSize: '.9rem',
         lineHeight: '1.5',
         fontWeight: '500',
@@ -254,6 +254,7 @@ const Header = () => {
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <Avatar
+                      alt={`Avatar for Jerome (Bighead Dizzy)`}
                       src={`/static/images/bighead--jerome--dizzy.svg`}
                       aria-describedby="logoHeader"
                       size="4"

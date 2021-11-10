@@ -142,7 +142,7 @@ const Footer = () => {
           }}
         >
           {/* <Box>
-          <Text as="h6" size="3" css={{ fontWeight: 700, lineHeight: '20px' }}>
+          <Text as="p" size="3" css={{ fontWeight: 700, lineHeight: '20px' }}>
             Upcoming Events
           </Text>
           <ul>
@@ -161,7 +161,7 @@ const Footer = () => {
           </ul>
         </Box> */}
           <Box>
-            <Text as="h6" size="3" css={{ fontWeight: 700, lineHeight: '20px' }}>
+            <Text as="span" size="3" css={{ fontWeight: 700, lineHeight: '20px' }}>
               Pages
             </Text>
             <ul>
@@ -171,7 +171,7 @@ const Footer = () => {
             </ul>
           </Box>
           <Box>
-            <Text as="h6" size="3" css={{ fontWeight: 700, lineHeight: '20px' }}>
+            <Text as="span" size="3" css={{ fontWeight: 700, lineHeight: '20px' }}>
               Shows
             </Text>
             <ul>
@@ -181,7 +181,7 @@ const Footer = () => {
             </ul>
           </Box>
           <Box>
-            <Text as="h6" size="3" css={{ fontWeight: 700, lineHeight: '20px' }}>
+            <Text as="span" size="3" css={{ fontWeight: 700, lineHeight: '20px' }}>
               Social
             </Text>
             <ul>
@@ -276,11 +276,11 @@ const Footer = () => {
               </BoxLink>
             </NextLink>
             <Text
-              as="h6"
+              as="p"
               size="1"
               css={{
                 lineHeight: '20px',
-                color: '$gray10',
+                color: '$gray11',
                 pr: '$8',
                 mt: '$5',
               }}
