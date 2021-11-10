@@ -264,6 +264,7 @@ const Footer = () => {
               <BoxLink>
                 <Flex align="center" gap="3" css={{ mt: '$7' }}>
                   <Avatar
+                    alt={`Avatar for Jerome (Bighead Dizzy)`}
                     size="5"
                     src={`/static/images/bighead--jerome--dizzy.svg`}
                     aria-describedby="logoFooter"

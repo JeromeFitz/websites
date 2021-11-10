@@ -62,10 +62,13 @@ const ImageWithBackgroundBlur = ({ base64, description, image, slug }) => {
       <Image
         alt={description}
         blurDataURL={base64}
-        layout="intrinsic"
+        // layout="intrinsic"
+        layout="responsive"
         key={slug}
         placeholder="blur"
-        priority={false}
+        priority={true}
+        quality={90}
+        sizes="(min-width: 1920px) 100vh, (min-width: 1280) 75vh, 50vh"
         title={description}
         {...image}
       />
