@@ -106,6 +106,7 @@ const nextConfig = {
     domains: [
       'cdn.jerandky.com', // CDN
       'cdn.jeromefitzgerald.com', // CDN
+      'og.jeromefitzgerald.com', // CDN for Open Graph
       'notion.so', // Notion
       'www.notion.so', // Notion
       's3-us-west-2.amazonaws.com', // AWS

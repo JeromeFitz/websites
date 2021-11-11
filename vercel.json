@@ -15,11 +15,6 @@
       "NPM_TOKEN": "@npm--jeromefitz--read-token"
     }
   },
-  "functions": {
-    "api/file/**": {
-      "memory": 3008
-    }
-  },
   "trailingSlash": false,
   "headers": [
     {
