@@ -199,6 +199,7 @@ const Page = ({ data, props }) => {
           {isEpisodeListing ? (
             <>
               <Listing
+                images={images}
                 items={items}
                 key={`listing--episodes--${id}`}
                 routeType={routeType}
