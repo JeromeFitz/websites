@@ -1,15 +1,13 @@
-import _map from 'lodash/map'
 import _size from 'lodash/size'
 import dynamic from 'next/dynamic'
 // import { useEffect } from 'react'
 import { useEffectOnce } from 'react-use'
 import useSWR, { useSWRConfig } from 'swr'
 
+import ContentNodes from '~components/Notion/ContentNodes'
 import NotionLayout, { ImageLead } from '~components/Notion/Layout'
-import { OL, UL } from '~components/Notion/Listing'
 // import { MetaTags } from '~components/Notion/Meta'
 // import { Event } from '~components/Notion/Page'
-import getContentNodes from '~utils/notion/getContentNodes'
 import { ROUTE_TYPES } from '~utils/notion/helper'
 
 const Listing = dynamic(() => import('~components/Notion/Listing'), {})
@@ -143,25 +141,9 @@ const Page = ({ data, props }) => {
         )}
         {isEventListing ? <ListingEvent data={data} /> : null}
         {/* // node: NotionBlock (w/ id/type) */}
-        {isEventListing || hasMeta
-          ? null
-          : _map(getContentNodes({ content, images }), (node: any) => {
-              if (node.type === 'ul') {
-                return <UL key={node.id}>{node.node}</UL>
-              }
-              if (node.type === 'ol') {
-                return <OL key={node.id}>{node.node}</OL>
-              }
-              // if (node.type === 'image') {
-              //   return (
-              //     <>
-              //       <h5 key="image-here">Image Here</h5>
-              //       {node.node}
-              //     </>
-              //   )
-              // }
-              return node.node
-            })}
+        {isEventListing || hasMeta ? null : (
+          <ContentNodes content={content} images={images} />
+        )}
 
         {/* @note(switch) */}
         {isIndex && !isPage && (

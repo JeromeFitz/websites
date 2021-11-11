@@ -95,12 +95,12 @@ const CardSpotify = ({ base64, children, image, slug }) => {
             }}
           >
             <Image
-              alt={`description`}
+              alt={`Spotify Description Coming Soon`}
               blurDataURL={base64}
               key={slug}
               placeholder="blur"
-              priority={true}
-              title={`description`}
+              priority={false}
+              title={`Spotify Description Coming Soon`}
               {...image}
             />
           </Flex>
