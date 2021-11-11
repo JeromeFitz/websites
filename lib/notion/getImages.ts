@@ -45,7 +45,7 @@ const getImages = async ({ data, pathVariables }) => {
 
       return { base64, id, img, url }
     })
-  const infoImages = await Promise.all(infoImagesAwait)
+  const infoImages = !!infoImagesAwait ? await Promise.all(infoImagesAwait) : []
 
   /**
    * @content
@@ -70,8 +70,9 @@ const getImages = async ({ data, pathVariables }) => {
       const id = slugger.slug(url)
       return { base64, id, img, url }
     })
-  const contentImages =
-    !!contentImagesAwait && (await Promise.all(contentImagesAwait))
+  const contentImages = !!contentImagesAwait
+    ? await Promise.all(contentImagesAwait)
+    : []
 
   /**
    * @items

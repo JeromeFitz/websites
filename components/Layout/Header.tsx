@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { SkipNavLink } from '@reach/skip-nav'
+// import { SkipNavLink } from '@reach/skip-nav'
 import cx from 'clsx'
 
 // @ts-ignore
@@ -33,7 +33,7 @@ const Header = () => {
         ``
       )}
     >
-      <SkipNavLink />
+      {/* <SkipNavLink /> */}
       <Blur />
       <div
         className={cx(

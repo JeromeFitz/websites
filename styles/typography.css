@@ -1,9 +1,0 @@
-#content .inline-p {
-  @apply my-1;
-}
-
-.inline-p > a,
-.inline-p > strong,
-.inline-p > em {
-  @apply mx-1;
-}

@@ -15,8 +15,7 @@ import useSWR from 'swr'
 // import useRelation, { setRelation } from '~hooks/notion/useRelation'
 import Icon from '~components/Icon'
 import fetcher from '~lib/fetcher'
-// import FacebookIcon from '~styles/icons/Facebook'
-// import TwitterIcon from '~styles/icons/Twitter'
+import { Box, Container } from '~styles/system/components'
 import getTimestamp from '~utils/getTimestamp'
 import { NotionBlock } from '~utils/notion'
 import getContentType from '~utils/notion/getContentType'
@@ -62,6 +61,7 @@ const copy = {
 //   return null
 // }
 
+// eslint-disable-next-line complexity
 const Event = ({ data: dataEvent }) => {
   // console.dir(`Event:`)
   // const { data: relations } = useRelation()
@@ -118,25 +118,38 @@ const Event = ({ data: dataEvent }) => {
     <>
       {/* @hack(notion) */}
       {/* <MetaTags tagParams={tagParams} /> */}
-      <div id="event--container" className={cx('w-11/12 md:w-full', 'my-4')}>
-        <div id="event--header" className={cx('')}>
+      <Container
+        id="event--container"
+        className={cx('w-11/12 md:w-full', 'my-4')}
+        css={{ width: 'var(--width-11_12)', my: '$4', '@bp1': { width: '100%' } }}
+      >
+        <div id="event--header">
           <div id="event--header--content">
-            <div id="event--header--content--date" className={cx('mb-4 text-xl')}>
+            <Box
+              id="event--header--content--date"
+              className={cx('mb-4 text-xl')}
+              css={{ mb: '$4' }}
+            >
               {timestamp.full}
-            </div>
+            </Box>
             {/* <div
               id="event--header--content--title"
               className={cx('mb-4 text-3xl font-semibold md:truncate')}
             >
               <h3 id="events--listing--title">{title}</h3>
             </div> */}
-            <div
+            <Box
               id="event--header--content--ticket-info"
               className={cx('mb-4 text-lg', isEventPast && 'hidden md:block')}
+              css={{
+                mb: '$4',
+                display: isEventPast ? 'hidden' : 'inline-block',
+                '@bp1': { display: isEventPast ? 'block' : 'hidden' },
+              }}
             >
               {/* {isEventPast ? 'This event has passed.' : `$${copy.ticket.cost}.00`} */}
               {isEventPast ? 'This event has passed.' : ``}
-            </div>
+            </Box>
           </div>
         </div>
         <div
@@ -272,7 +285,7 @@ const Event = ({ data: dataEvent }) => {
         </div>
         <div id="event--related"></div>
         <div id="event--footer"></div>
-      </div>
+      </Container>
       {/* @hack(notion) */}
       {/* {!!relationsMap && (
         <>

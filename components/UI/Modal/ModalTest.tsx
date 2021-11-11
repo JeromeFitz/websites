@@ -1,13 +1,12 @@
 import { FC, useState } from 'react'
 
-import { Button, Skeleton } from '~components/UI'
 import { useUI } from '~context/ManagedUIContext'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface Props {}
 
 const ModalTest: FC<Props> = () => {
-  const [loading] = useState(false)
+  // const [loading] = useState(false)
   const [disabled] = useState(false)
   const [message] = useState('Call out title')
 
@@ -18,9 +17,7 @@ const ModalTest: FC<Props> = () => {
 
   return (
     <form className="w-80 flex flex-col justify-between p-3">
-      <div className="flex justify-center pb-12 ">
-        <Skeleton className="w-full animated fadeIn" height={64} width={64} />
-      </div>
+      <div className="flex justify-center pb-12 ">SkeletonTODO</div>
       <div className="flex flex-col space-y-4">
         {message && (
           <div className="text-secondary-2 border border-secondary-2 p-3">
@@ -28,14 +25,9 @@ const ModalTest: FC<Props> = () => {
           </div>
         )}
         <div className="pt-2 w-full flex flex-col">
-          <Button
-            disabled={disabled}
-            loading={loading}
-            onClick={() => closeModal()}
-            variant="slim"
-          >
+          <button disabled={disabled} onClick={() => closeModal()}>
             Close Modal
-          </Button>
+          </button>
         </div>
 
         <span className="pt-3 text-center text-sm">

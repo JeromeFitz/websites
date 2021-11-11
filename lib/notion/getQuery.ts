@@ -3,7 +3,7 @@ import _size from 'lodash/size'
 
 import { normalizerContentResults } from '~lib/notion/getCatchAll'
 import avoidRateLimit from '~utils/avoidRateLimit'
-import { DATABASES, notion } from '~utils/notion/helper'
+import { DATABASES, ROUTE_TYPES, notion } from '~utils/notion/helper'
 
 // const useCache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE
 // const useCache = false
@@ -66,13 +66,19 @@ class RELATIONS_TYPES {
   }
   ['peopleProducer']({ reqQuery: { routeType, value } }) {
     return {
-      k: routeType === 'podcasts' ? 'Podcasts.Producer' : 'Shows.People.Producer',
+      k:
+        routeType === ROUTE_TYPES.podcasts
+          ? 'Podcasts.Producer'
+          : 'Shows.People.Producer',
       v: value,
     }
   }
   ['peopleThanks']({ reqQuery: { routeType, value } }) {
     return {
-      k: routeType === 'podcasts' ? 'Podcasts.People.Thanks' : 'Shows.People.Thanks',
+      k:
+        routeType === ROUTE_TYPES.podcasts
+          ? 'Podcasts.People.Thanks'
+          : 'Shows.People.Thanks',
       v: value,
     }
   }

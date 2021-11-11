@@ -101,9 +101,12 @@ const nextConfig = {
     ]
   },
   images: {
+    // deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    deviceSizes: [640, 1200, 1920],
     domains: [
       'cdn.jerandky.com', // CDN
       'cdn.jeromefitzgerald.com', // CDN
+      'og.jeromefitzgerald.com', // CDN for Open Graph
       'notion.so', // Notion
       'www.notion.so', // Notion
       's3-us-west-2.amazonaws.com', // AWS
@@ -117,12 +120,15 @@ const nextConfig = {
       'images.unsplash.com', // Unsplash
     ],
     formats: ['image/avif', 'image/webp'],
-    imageSizes: [24, 64, 300],
+    // imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    imageSizes: [24, 64, 384],
   },
   i18n: {
     locales: ['en'],
     defaultLocale: 'en',
   },
+  // minimumCacheTTL: 31536000, // 1 year
+  minimumCacheTTL: 86400, // 1 day
   outputFileTracing: false,
   pageExtensions: ['jsx', 'js', 'tsx', 'ts'],
   poweredByHeader: false,

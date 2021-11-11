@@ -1,14 +1,98 @@
-import cx from 'clsx'
 import Slugger from 'github-slugger'
 import NextImage from 'next/image'
 import { useEffectOnce } from 'react-use'
 import useSWR, { useSWRConfig } from 'swr'
 
-import { CardWithGlow } from '~components/Card'
 import { Breakout } from '~components/Layout'
 import ImageCaption from '~components/Notion/ImageCaption'
+import { Container, Section, Skeleton } from '~styles/system/components'
+import { styled } from '~styles/system/stitches.config'
 
-const ImageLead = ({ description, image, imagesFallback }) => {
+const ImageContainer = styled('div', {
+  position: 'relative',
+  borderRadius: '$4',
+})
+
+const ImageBlur = styled('div', {
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  width: '99.9%',
+  height: '99.9%',
+  borderRadius: '$4',
+  filter: 'blur(0.25rem) saturate(160%)',
+  opacity: '.5',
+  transform: 'scale(1.01)',
+})
+
+const Image = styled(NextImage, {
+  borderRadius: '$4',
+  position: 'relative',
+  overflow: 'hidden',
+  // '@hover': {
+  //   '&:hover': {
+  //     transform: 'scale(0.99)',
+  //   },
+  // },
+})
+
+// const myLoader = ({ src, width, quality }) => {
+//   console.dir(`src`)
+//   console.dir(src)
+//   console.dir(`width`)
+//   console.dir(width)
+//   console.dir(`quality`)
+//   console.dir(quality)
+//   const widthCustom = width > 2000 ? width / 3 : width
+//   return `${src}?w=${widthCustom}&q=${quality || 75}`
+// }
+
+const ImageWithBackgroundBlur = ({ base64, description, image, slug }) => {
+  // console.dir(`image`)
+  // console.dir(image)
+  return (
+    <ImageContainer>
+      <ImageBlur
+        css={{
+          backgroundImage: `url(${base64})`,
+          backgroundSize: 'cover',
+          borderRadius: '$4',
+        }}
+      />
+      <Image
+        alt={description}
+        blurDataURL={base64}
+        // layout="intrinsic"
+        layout="responsive"
+        key={slug}
+        placeholder="blur"
+        priority={true}
+        quality={100}
+        sizes="(min-width: 1920px) 100vh, (min-width: 1280) 90vh, 75vh"
+        title={description}
+        {...image}
+      />
+    </ImageContainer>
+  )
+}
+
+const ImageSkeleton = () => {
+  return (
+    <ImageContainer css={{ height: '250px', width: '250px' }}>
+      <Skeleton
+        as="div"
+        css={{
+          height: '100%',
+          width: '100%',
+        }}
+      >
+        &nbsp;
+      </Skeleton>
+    </ImageContainer>
+  )
+}
+
+const ImageLead = ({ breakout = true, description, image, imagesFallback }) => {
   const { mutate } = useSWRConfig()
   const slugger = new Slugger()
   const { data: images } = useSWR('images', null)
@@ -35,39 +119,22 @@ const ImageLead = ({ description, image, imagesFallback }) => {
     return null
   }
 
+  const WrapComponent = breakout ? Breakout : Section
+
   return (
-    <Breakout>
-      <div
-        className={cx(
-          `min-h-full py-6`,
-          // `bg-gradient-to-b`,
-          // `from-white via-gray-300 to-white`,
-          // `dark:from-black dark:via-gray-700 dark:to-black`,
-          ''
-        )}
-      >
-        <div
-          className={cx(`flex flex-col w-full max-w-4xl`, `px-2 mx-auto md:px-8`)}
-        >
-          <div className="w-11/12 md:w-2/3 mx-auto py-4 mt-4">
-            <CardWithGlow blurDataURL={imageData.base64} isImage={true}>
-              <NextImage
-                alt={description}
-                blurDataURL={imageData?.base64}
-                className={cx('rounded-xl')}
-                key={imageSlug}
-                placeholder="blur"
-                priority={true}
-                title={description}
-                {...imageData?.img}
-              />
-            </CardWithGlow>
-            <ImageCaption caption={description} />
-          </div>
-        </div>
-      </div>
-    </Breakout>
+    <WrapComponent>
+      <Container size="2">
+        <ImageWithBackgroundBlur
+          base64={imageData?.base64}
+          description={description}
+          image={imageData?.img}
+          slug={imageSlug}
+        />
+        <ImageCaption caption={description} />
+      </Container>
+    </WrapComponent>
   )
 }
 
+export { ImageSkeleton, ImageWithBackgroundBlur }
 export default ImageLead

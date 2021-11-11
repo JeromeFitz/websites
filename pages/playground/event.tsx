@@ -13,8 +13,6 @@ import Meta from '~components/Notion/Meta'
 // import Title from '~components/Notion/Title'
 import { MOTION_PAGE_VARIANTS } from '~lib/constants'
 import fetcher from '~lib/fetcher'
-import FacebookIcon from '~styles/icons/Facebook'
-import TwitterIcon from '~styles/icons/Twitter'
 import getTimestamp from '~utils/getTimestamp'
 import { NotionBlock } from '~utils/notion'
 import getContentType from '~utils/notion/getContentType'
@@ -231,13 +229,14 @@ const Event = () => {
                     id="event--content--sidebar--social--facebook"
                     className={cx('')}
                   >
-                    <FacebookIcon className="h-5 w-5 mx-2" />
+                    {/* <FacebookIcon className="h-5 w-5 mx-2" /> */}
+                    FB
                   </div>
                   <div
                     id="event--content--sidebar--social--twitter"
                     className={cx('')}
                   >
-                    <TwitterIcon className="h-5 w-5 mx-2" />
+                    {/* <TwitterIcon className="h-5 w-5 mx-2" /> */}T
                   </div>
                 </div>
                 <div id="event--content--sidebar--policy"></div>
