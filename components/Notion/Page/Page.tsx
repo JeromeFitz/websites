@@ -165,7 +165,12 @@ const Page = ({ data, props }) => {
 
         {/* @note(switch) */}
         {isIndex && !isPage && (
-          <Listing items={items} key={`listing--${id}`} routeType={routeType} />
+          <Listing
+            images={images}
+            items={items}
+            key={`listing--${id}`}
+            routeType={routeType}
+          />
         )}
         <>
           {/* {!isIndex && (

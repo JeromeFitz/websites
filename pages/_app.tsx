@@ -80,7 +80,7 @@ const globalStyles = globalCss({
   },
 
   '#nprogress .bar': {
-    backgroundColor: '$colors$gray7',
+    backgroundColor: '$hiContrast',
     position: 'fixed',
     zIndex: '1001',
     top: 0,

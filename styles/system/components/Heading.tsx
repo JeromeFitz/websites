@@ -35,25 +35,25 @@ export const Heading = React.forwardRef<
   const textCss: Record<HeadingSizeVariants, CSS> = {
     1: {
       fontWeight: 700,
-      letterSpacing: '-0.02rem',
+      letterSpacing: '-0.02em',
       lineHeight: '20px',
       '@bp2': { lineHeight: '23px' },
     },
     2: {
       fontWeight: 700,
-      letterSpacing: '-0.03rem',
+      letterSpacing: '-0.03em',
       lineHeight: '25px',
       '@bp2': { lineHeight: '30px' },
     },
     3: {
       fontWeight: 700,
-      letterSpacing: '-0.04rem',
+      letterSpacing: '-0.04em',
       lineHeight: '33px',
       '@bp2': { lineHeight: '41px' },
     },
     4: {
       fontWeight: 700,
-      letterSpacing: '-0.05rem',
+      letterSpacing: '-0.05em',
       lineHeight: '35px',
       '@bp2': { lineHeight: '55px' },
     },

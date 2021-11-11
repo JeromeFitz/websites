@@ -1,4 +1,4 @@
-import { ArrowTopRightIcon, PlusIcon } from '@radix-ui/react-icons'
+import { ArrowTopRightIcon, DropdownMenuIcon, PlusIcon } from '@radix-ui/react-icons'
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
@@ -63,9 +63,9 @@ const HighlightLink = styled('a', {
 })
 
 const links = [
-  { emoji: '', url: '/events', title: 'Upcoming Events', text: '' },
-  { emoji: '', url: '/books', title: 'Books', text: '' },
-  { emoji: '', url: '/music', title: 'Music', text: '' },
+  { emoji: '🗓️', url: '/events', title: 'Upcoming Events', text: 'Live on Stage' },
+  { emoji: '📚️', url: '/books', title: 'Books', text: 'Currently Reading' },
+  { emoji: '🎹️', url: '/music', title: 'Music', text: 'Currently Listening To' },
 ]
 
 const shows = [
@@ -203,7 +203,7 @@ const NavSkip = () => {
         marginTop: '-40px',
         padding: '8px',
         backgroundColor: '$colors$violet9',
-        color: '$colors$violet1',
+        color: '$white',
         fontSize: '.9rem',
         lineHeight: '1.5',
         fontWeight: '500',
@@ -311,6 +311,87 @@ const Header = () => {
                   </Link>
                 </NextLink>
               ))}
+            </Box>
+            <Box css={{ display: 'contents', '@bp1': { display: 'none' } }}>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Link
+                    variant={
+                      router.asPath.includes('/shows') ? 'contrast' : 'subtle'
+                    }
+                    as="button"
+                    css={{
+                      backgroundColor: 'transparent',
+                      cursor: 'pointer',
+                      appearance: 'none',
+                      fontFamily: '$untitled',
+                      border: 0,
+                      p: 0,
+                      m: 0,
+                      mr: '-$1',
+                    }}
+                  >
+                    <Text css={{ display: 'flex', gap: '$1', ai: 'center' }}>
+                      Menu
+                      <DropdownMenuIcon />
+                    </Text>
+                  </Link>
+                </PopoverTrigger>
+                <PopoverContent hideArrow sideOffset={15} alignOffset={-15}>
+                  <Box css={{ p: '$1' }}>
+                    {links.map((show, showId) => (
+                      <NextLink
+                        key={`header-shows-${showId}`}
+                        href={show.url}
+                        passHref
+                      >
+                        <HighlightLink
+                          variant={
+                            show.url !== '/shows' && router.asPath.includes(show.url)
+                              ? 'contrast'
+                              : 'subtle'
+                          }
+                        >
+                          <Flex gap="3">
+                            <Text
+                              size="3"
+                              as="span"
+                              css={{
+                                fontSize: '1.5rem',
+                                lineHeight: 1.5,
+                              }}
+                              style={{ flex: 'none', marginTop: 2 }}
+                            >
+                              <Emoji character={show.emoji} margin={true} />
+                            </Text>
+                            <Box>
+                              <Text
+                                size="3"
+                                as="h3"
+                                css={{
+                                  fontWeight: 700,
+                                  lineHeight: 1.5,
+                                  letterSpacing: '-0.02em',
+                                }}
+                              >
+                                {show.title}
+                              </Text>
+                              <Text
+                                size="2"
+                                as="p"
+                                variant="gray"
+                                css={{ lineHeight: 1.4 }}
+                              >
+                                {show.text}
+                              </Text>
+                            </Box>
+                          </Flex>
+                        </HighlightLink>
+                      </NextLink>
+                    ))}
+                  </Box>
+                </PopoverContent>
+              </Popover>
             </Box>
             <Popover>
               <PopoverTrigger asChild>

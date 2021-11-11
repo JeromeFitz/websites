@@ -58,11 +58,13 @@ const routeTypes = [
 
 const getStaticPathsCatchAll = async () => {
   const paths = []
-  paths.push('/about')
-  paths.push('/colophon')
 
   // @note(next) yo, this was KILLING local development. only on builds please.
   if (!isDev) {
+    // @todo(notion) api this up somehow please
+    paths.push('/about')
+    paths.push('/colophon')
+    paths.push('/contact')
     // const routeTypesSingular = [routeType]
     await asyncForEach(routeTypes, async (routeType: any) => {
       if (routeType !== 'episodes') paths.push(`/${routeType}`)

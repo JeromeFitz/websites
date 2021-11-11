@@ -1,8 +1,10 @@
 import {
   ArrowTopRightIcon,
+  // ChatBubbleIcon,
   GitHubLogoIcon,
   ImageIcon,
   InfoCircledIcon,
+  Link1Icon,
   TwitterLogoIcon,
 } from '@radix-ui/react-icons'
 import dynamic from 'next/dynamic'
@@ -58,6 +60,12 @@ const pages = [
     tooltip: false,
     tooltipContent: 'Podcasts Jerome does/did',
   },
+  {
+    url: '/events',
+    title: 'Upcoming Events',
+    tooltip: true,
+    tooltipContent: 'Live on Stage',
+  },
 ]
 const shows = [
   {
@@ -65,6 +73,12 @@ const shows = [
     title: 'Alex O’Jerome',
     tooltip: false,
     tooltipContent: 'Little more about ol’ Jerome',
+  },
+  {
+    url: '/shows/jerome-and',
+    title: 'Jerome &',
+    tooltip: false,
+    tooltipContent: 'What is Jerome reading?',
   },
   {
     url: '/shows/jfle',
@@ -199,6 +213,20 @@ const Footer = () => {
                   </IconLink>
                 </Text>
               </li>
+              {/* <li>
+                <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
+                  <IconLink
+                    href="/contact"
+                    css={{ display: 'inline-flex', alignItems: 'center' }}
+                    variant="subtle"
+                  >
+                    <Box as="span" css={{ mr: '$2' }}>
+                      <ChatBubbleIcon />
+                    </Box>
+                    Contact
+                  </IconLink>
+                </Text>
+              </li> */}
               <li>
                 <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
                   <IconLink
@@ -238,6 +266,24 @@ const Footer = () => {
               <li>
                 <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
                   <IconLink
+                    href="https://www.linkedin.com/in/jeromefitzgerald/"
+                    target="_blank"
+                    css={{ display: 'inline-flex', alignItems: 'center' }}
+                    variant="subtle"
+                  >
+                    <Box as="span" css={{ mr: '$2' }}>
+                      <Link1Icon />
+                    </Box>
+                    LinkedIn
+                    <Flex as="span" css={{ color: '$slate8', ml: '$1' }}>
+                      <ArrowTopRightIcon />
+                    </Flex>
+                  </IconLink>
+                </Text>
+              </li>
+              <li>
+                <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
+                  <IconLink
                     href="https://twitter.com/JeromeFitz"
                     target="_blank"
                     css={{ display: 'inline-flex', alignItems: 'center' }}
@@ -258,7 +304,12 @@ const Footer = () => {
           <Flex
             align="start"
             direction="column"
-            css={{ gridColumn: '1 / -1', '@bp2': { gridColumn: 'auto', order: -1 } }}
+            css={{
+              justifyContent: 'center',
+              gridColumn: '1 / -1',
+              gridColumnStart: 'span 2',
+              '@bp2': { gridColumn: 'auto', order: -1 },
+            }}
           >
             <NextLink href={'/'} passHref>
               <BoxLink>
@@ -284,8 +335,9 @@ const Footer = () => {
               css={{
                 lineHeight: '20px',
                 color: '$gray11',
-                pr: '$8',
+
                 mt: '$5',
+                '@bp1': { pr: '$8' },
               }}
             >
               (In-progress) Site by

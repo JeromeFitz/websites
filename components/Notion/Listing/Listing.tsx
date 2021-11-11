@@ -27,6 +27,12 @@ const ListingEvents = dynamic(
     ssr: true,
   }
 )
+const ListingShows = dynamic(
+  () => import('~components/Notion/Listing/ListingShows'),
+  {
+    ssr: true,
+  }
+)
 
 const ListingItemEpisode = ({ item, routeType }) => {
   const { audio } = useUI()
@@ -287,7 +293,7 @@ const ListingItem = ({ item, routeType }) => {
   )
 }
 
-const Listing = ({ items, routeType }) => {
+const Listing = ({ images, items, routeType }) => {
   const itemsSize = _size(items?.results)
 
   if (itemsSize === 0) return null
@@ -317,6 +323,15 @@ const Listing = ({ items, routeType }) => {
     return (
       <>
         <ListingEvents items={itemsData} />
+      </>
+    )
+  }
+
+  if (routeType === ROUTE_TYPES.shows) {
+    // console.dir(itemsData)
+    return (
+      <>
+        <ListingShows images={images} items={itemsData} />
       </>
     )
   }
