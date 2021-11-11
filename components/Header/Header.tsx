@@ -203,7 +203,7 @@ const NavSkip = () => {
         marginTop: '-40px',
         padding: '8px',
         backgroundColor: '$colors$violet9',
-        color: '$white',
+        color: 'white',
         fontSize: '.9rem',
         lineHeight: '1.5',
         fontWeight: '500',

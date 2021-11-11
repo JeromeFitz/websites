@@ -1,8 +1,10 @@
 // import dynamic from 'next/dynamic'
 import useSWR from 'swr'
 
+import ListingShows from '~components/Notion/Listing/ListingShows'
 import Page from '~components/Notion/Page'
 import PageHeading, { SkeletonHeading } from '~components/PageHeading'
+import mockData from '~data/mock/notion/shows'
 import { revalidate, ERROR__FALLBACK } from '~lib/constants'
 import fetcher from '~lib/fetcher'
 import getCatchAll from '~lib/notion/getCatchAll'
@@ -60,13 +62,12 @@ const CatchAll = (props) => {
     )
   if (isLoading) return <SkeletonHeading />
 
+  // @todo(notion) make dynamic w/ skeleton
+  const { images, items } = mockData
   return (
     <>
       <Page data={data} props={props} />
-      {/* <ListingShows /> */}
-      {/* <div className="spacer--h mb-4" /> */}
-      {/* <Quote /> */}
-      {/* </Layout> */}
+      <ListingShows images={images} items={items?.results} />
     </>
   )
 }
