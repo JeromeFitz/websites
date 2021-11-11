@@ -21,6 +21,12 @@ const Emoji = dynamic(() => import('~components/Notion/Emoji'), {
   ssr: false,
 })
 
+const ListingEpisodes = dynamic(
+  () => import('~components/Notion/Listing/ListingEpisodes'),
+  {
+    ssr: true,
+  }
+)
 const ListingEvents = dynamic(
   () => import('~components/Notion/Listing/ListingEvents'),
   {
@@ -316,6 +322,15 @@ const Listing = ({ images, items, routeType }) => {
         itemsData = items.results
         break
     }
+  }
+
+  if (routeType === ROUTE_TYPES.podcasts) {
+    // console.dir(itemsData)
+    return (
+      <>
+        <ListingEpisodes images={images} items={itemsData} />
+      </>
+    )
   }
 
   if (routeType === ROUTE_TYPES.events) {
