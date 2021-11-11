@@ -29,7 +29,9 @@ const Seo = memo(({ ...seo }: any) => {
     const oImages = encodeURIComponent(`${image}`)
     const oWidths = encodeURIComponent(`300`)
     const oHeights = encodeURIComponent(`300`)
-    const oImage = `${oDomain}/${oTitle}.png?theme=${oTheme}&md=${oMarkdown}&fontSize=${oFontSize}&images=${oImages}&widths=${oWidths}&heights=${oHeights}`
+    const oImage = encodeURI(
+      `${oDomain}/${oTitle}.png?theme=${oTheme}&md=${oMarkdown}&fontSize=${oFontSize}&images=${oImages}&widths=${oWidths}&heights=${oHeights}`
+    )
     seo.image = oImage
     const newImage = {
       alt: title,
