@@ -36,7 +36,14 @@ import { getCache, setCache } from '~lib/notion/getCache'
 import getImages from '~lib/notion/getImages'
 import getPathVariables from '~lib/notion/getPathVariables'
 import getQuery from '~lib/notion/getQuery'
-import { DATABASES, SEO, QUERIES, PROPERTIES, notion } from '~utils/notion/helper'
+import {
+  DATABASES,
+  notion,
+  PROPERTIES,
+  QUERIES,
+  ROUTE_TYPES,
+  SEO,
+} from '~utils/notion/helper'
 
 const useCache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE
 
@@ -290,23 +297,20 @@ const getTypePhoneNumberNormalized = (data: any) => data?.phone_number || null
 const getTypeRelationNormalized = (data: any) => {
   // console.dir(`getTypeRelationNormalized`)
   // console.dir(data)
-  return _map(data.relation, (relation: any) => relation.id)
-  // if (data.type === 'rollup') {
-  //   // console.dir(`rollup`)
-  //   // console.dir(data.rollup.array)
-  //   // // @note(notion) This brings back the ID of the Relation
-  //   // const foo = _map(data.rollup.array, (item) =>
-  //   //   _map(item.type === 'relation' && item.relation, (relation: any) => relation.id)
-  //   // )[0]
-  //   // console.dir(foo)
-  //   return []
-  //   // return (
-  //   //   data.rollup.type === 'array' &&
-  //   //   _map(data.rollup.array, (relation: any) => relation.id)
-  //   // )
-  // } else {
-  //   return _map(data.relation, (relation: any) => relation.id)
-  // }
+
+  // @note(notion) This brings back the ID of the Relation
+  if (data.type === 'rollup') {
+    // console.dir(`rollup via relation?`)
+    // console.dir(data.rollup.array)
+    return (
+      data.rollup.type === 'array' &&
+      _map(data.rollup.array, (r: any) => {
+        return r?.type === 'relation' ? getTypeRelationNormalized(r) : null
+      })[0]
+    )
+  } else {
+    return _map(data.relation, (relation: any) => relation.id)
+  }
 }
 
 // const getTypeRollupNormalized = (data: RollupPropertyValue) => {
@@ -335,11 +339,13 @@ const getTypeRichTextNormalized = (data: any) => {
 
 const getTypeRollupNormalized = (data: any) => {
   // console.dir(`> getTypeRollupNormalized`)
-  // console.dir(`data`)
+  // console.dir(data)
   // console.dir(data?.rollup?.array)
   // _map(data?.rollup?.array, (item) => {
   //   console.dir(item)
   //   // console.dir(item?.title[0]?.plain_text)
+  //   console.dir(getTypeTitleNormalized(item))
+  //   console.dir(`---`)
   // })
   return _sortBy(_map(data?.rollup?.array, (item) => getTypeTitleNormalized(item)))
 }
@@ -430,9 +436,6 @@ class Properties {
   [PROPERTIES.festivals](value) {
     return this.multiSelect(value)
   }
-  [PROPERTIES.tags](value) {
-    return this.multiSelect(value)
-  }
   /**
    * @number
    */
@@ -472,6 +475,9 @@ class Properties {
   /**
    * @relation @__SHARED
    */
+  [PROPERTIES.tags](value) {
+    return this.relation(value)
+  }
   /**
    * @relation @_EPISODES
    */
@@ -708,12 +714,15 @@ class Properties {
     return this.rollup(value)
   }
   [PROPERTIES.rollupTags](value) {
-    return this.rollup(value)
+    return this.relation(value)
   }
   [PROPERTIES.rollupTagsSecondary](value) {
-    return this.rollup(value)
+    return this.relation(value)
   }
   [PROPERTIES.rollupThanks](value) {
+    return this.rollup(value)
+  }
+  [PROPERTIES.rollupVenue](value) {
     return this.rollup(value)
   }
   [PROPERTIES.rollupWriter](value) {
@@ -856,6 +865,9 @@ class DATA_TYPES {
   }
 
   async ['getBySlug']({ routeType, slug }) {
+    // console.dir(`routeType: ${routeType}`)
+    // console.dir(`slug: ${slug}`)
+
     let content = null,
       info = null,
       // eslint-disable-next-line prefer-const
@@ -933,10 +945,12 @@ class DATA_TYPES {
         and: [
           {
             property:
-              routeType === 'events' ? PROPERTIES.date : PROPERTIES.datePublished,
+              routeType === ROUTE_TYPES.events
+                ? PROPERTIES.date
+                : PROPERTIES.datePublished,
             date: {
               on_or_after:
-                routeType === 'events' ? dateTimestamp : dateTimestampBlog,
+                routeType === ROUTE_TYPES.events ? dateTimestamp : dateTimestampBlog,
             },
           },
         ],
@@ -999,14 +1013,18 @@ class DATA_TYPES {
           and: [
             {
               property:
-                routeType === 'events' ? PROPERTIES.date : PROPERTIES.datePublished,
+                routeType === ROUTE_TYPES.events
+                  ? PROPERTIES.date
+                  : PROPERTIES.datePublished,
               date: {
                 on_or_after: addTime(timestampQuery3, ''),
               },
             },
             {
               property:
-                routeType === 'events' ? PROPERTIES.date : PROPERTIES.datePublished,
+                routeType === ROUTE_TYPES.events
+                  ? PROPERTIES.date
+                  : PROPERTIES.datePublished,
               date: {
                 before: addTime(timestampQuery3, 'year'),
               },
@@ -1019,14 +1037,18 @@ class DATA_TYPES {
           and: [
             {
               property:
-                routeType === 'events' ? PROPERTIES.date : PROPERTIES.datePublished,
+                routeType === ROUTE_TYPES.events
+                  ? PROPERTIES.date
+                  : PROPERTIES.datePublished,
               date: {
                 on_or_after: addTime(timestampQuery3, ''),
               },
             },
             {
               property:
-                routeType === 'events' ? PROPERTIES.date : PROPERTIES.datePublished,
+                routeType === ROUTE_TYPES.events
+                  ? PROPERTIES.date
+                  : PROPERTIES.datePublished,
               date: {
                 before: addTime(timestampQuery3, 'month'),
               },
@@ -1039,14 +1061,18 @@ class DATA_TYPES {
           and: [
             {
               property:
-                routeType === 'events' ? PROPERTIES.date : PROPERTIES.datePublished,
+                routeType === ROUTE_TYPES.events
+                  ? PROPERTIES.date
+                  : PROPERTIES.datePublished,
               date: {
                 on_or_after: addTime(timestampQuery3, ''),
               },
             },
             {
               property:
-                routeType === 'events' ? PROPERTIES.date : PROPERTIES.datePublished,
+                routeType === ROUTE_TYPES.events
+                  ? PROPERTIES.date
+                  : PROPERTIES.datePublished,
               date: {
                 before: addTime(timestampQuery3, 'day'),
               },
@@ -1059,14 +1085,18 @@ class DATA_TYPES {
           and: [
             {
               property:
-                routeType === 'events' ? PROPERTIES.date : PROPERTIES.datePublished,
+                routeType === ROUTE_TYPES.events
+                  ? PROPERTIES.date
+                  : PROPERTIES.datePublished,
               date: {
                 on_or_after: addTime(timestampQuery3, ''),
               },
             },
             {
               property:
-                routeType === 'events' ? PROPERTIES.date : PROPERTIES.datePublished,
+                routeType === ROUTE_TYPES.events
+                  ? PROPERTIES.date
+                  : PROPERTIES.datePublished,
               date: {
                 before: addTime(timestampQuery3, 'day'),
               },
@@ -1112,11 +1142,11 @@ class DATA_TYPES {
       items = null
     const dateTimestamp = new Date().toISOString()
 
-    if (routeType === 'podcasts') {
+    if (routeType === ROUTE_TYPES.podcasts) {
       const [podcastSlug, episodeSlug] = meta
       const hasEpisode = _size(meta) === 2
       const info4__p: any = await getDatabasesByIdQuery({
-        databaseId: DATABASES[hasEpisode ? 'episodes' : routeType],
+        databaseId: DATABASES[hasEpisode ? ROUTE_TYPES.episodes : routeType],
         filter: {
           and: [
             {
@@ -1132,11 +1162,11 @@ class DATA_TYPES {
       // @hack(podcasts)
       if (!hasEpisode) {
         let items4__p = null
-        if (routeType === 'podcasts') {
+        if (routeType === ROUTE_TYPES.podcasts) {
           items4__p = await getQuery({
             reqQuery: {
               podcasts: info.id,
-              databaseType: 'episodes',
+              databaseType: ROUTE_TYPES.episodes,
             },
           })
           const items4__pData = {}
@@ -1148,7 +1178,7 @@ class DATA_TYPES {
         }
       }
     }
-    if (routeType === 'events' || routeType === 'blog') {
+    if ([ROUTE_TYPES.blog, ROUTE_TYPES.events].includes(routeType)) {
       const [year, month, day] = meta
       const timestampQuery = new Date(
         `${!!year ? year : dateTimestamp.slice(0, 4)}-${!!month ? month : '01'}-${
@@ -1161,14 +1191,18 @@ class DATA_TYPES {
           and: [
             {
               property:
-                routeType === 'events' ? PROPERTIES.date : PROPERTIES.datePublished,
+                routeType === ROUTE_TYPES.events
+                  ? PROPERTIES.date
+                  : PROPERTIES.datePublished,
               date: {
                 on_or_after: addTime(timestampQuery, ''),
               },
             },
             {
               property:
-                routeType === 'events' ? PROPERTIES.date : PROPERTIES.datePublished,
+                routeType === ROUTE_TYPES.events
+                  ? PROPERTIES.date
+                  : PROPERTIES.datePublished,
               date: {
                 before: addTime(timestampQuery, 'day'),
               },
@@ -1293,5 +1327,5 @@ const getCatchAll = async ({
   return data
 }
 
-export { normalizerContent, normalizerContentResults }
+export { deepFetchAllChildren, normalizerContent, normalizerContentResults }
 export default getCatchAll

@@ -194,13 +194,13 @@ const spotifyFavoriteTracks = [
         uri: 'spotify:artist:0e9uinKl2aVSSUtaGfmTAY',
       },
     ],
-    genres: [''],
+    genres: [],
     isPlaying: false,
     track: {
       id: '"6LgL97ErFZ9aXwvmw5x1h6"',
       name: 'Earthen',
-      uri: 'spotify:track:"6LgL97ErFZ9aXwvmw5x1h6"',
-      url: 'https://open.spotify.com/track/"6LgL97ErFZ9aXwvmw5x1h6"',
+      uri: 'spotify:track:6LgL97ErFZ9aXwvmw5x1h6',
+      url: 'https://open.spotify.com/track/6LgL97ErFZ9aXwvmw5x1h6',
     },
   },
   {

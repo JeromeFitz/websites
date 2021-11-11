@@ -1,20 +1,12 @@
-import { SkipNavContent } from '@reach/skip-nav'
+// import { SkipNavContent } from '@reach/skip-nav'
 import cx from 'clsx'
 import dynamic from 'next/dynamic'
 import React, { FC } from 'react'
 
-import { LoadingDots } from '~components/UI'
 import { useUI } from '~context/ManagedUIContext'
 
-const Loading = () => (
-  <div className="flex items-center text-center justify-center p-3 w-24 h-24">
-    <LoadingDots />
-  </div>
-)
-
 const dynamicProps = {
-  // eslint-disable-next-line react/display-name
-  loading: () => <Loading />,
+  loading: () => null,
 }
 
 const Modal = dynamic(() => import('~components/UI').then((mod) => mod.Modal), {
@@ -60,7 +52,7 @@ const Layout: FC<any> = ({ children }) => {
             ``
           )}
         >
-          <SkipNavContent />
+          {/* <SkipNavContent /> */}
           {children}
         </article>
         {/* <CTA /> */}

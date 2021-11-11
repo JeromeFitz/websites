@@ -1,20 +1,23 @@
-import dynamic from 'next/dynamic'
-// import { useEffect, useState } from 'react'
+// import dynamic from 'next/dynamic'
 import useSWR from 'swr'
 
-import Layout from '~components/Layout'
 import Page from '~components/Notion/Page'
-import { SLUG__HOMEPAGE } from '~lib/constants'
+import PageHeading, { SkeletonHeading } from '~components/PageHeading'
+import { revalidate, ERROR__FALLBACK } from '~lib/constants'
 import fetcher from '~lib/fetcher'
 import getCatchAll from '~lib/notion/getCatchAll'
 import getPathVariables from '~lib/notion/getPathVariables'
+import getNextPageStatus from '~utils/next/getNextPageStatus'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { ROUTE_TYPES, SLUG__HOMEPAGE } from '~utils/notion/helper'
 
-const Breadcrumb = dynamic(() => import('~components/Notion/Breadcrumb'), {})
-const ListingShows = dynamic(
-  () => import('~components/Notion/Listing/ListingCard'),
-  {}
-)
-const Quote = dynamic(() => import('~components/Notion/Quote'), {})
+// const ListingShows = dynamic(
+//   () => import('~components/Notion/Listing/ListingCard'),
+//   {}
+// )
+// const Quote = dynamic(() => import('~components/Notion/Quote'), {})
 
 const CatchAll = (props) => {
   const {
@@ -34,14 +37,8 @@ const CatchAll = (props) => {
   // console.dir(`props`)
   // console.dir(props)
 
-  /**
-   * @info Odd behavior, but if listing page we need data swapped
-   */
-  // const [mounted, setMounted] = useState(true)
-  // useEffect(() => setMounted(false), [])
   const { data, error } = useSWR(
     () => (!!slug ? `/api/notion/${slug}` : null),
-    // () => (!!slug ? `/api/notion/${slug}?cache=${mounted}` : null),
     fetcher,
     {
       fallbackData: {
@@ -53,29 +50,23 @@ const CatchAll = (props) => {
     }
   )
 
-  /**
-   * @error or @loading
-   */
-  const isError = error !== undefined
-  const isDataUndefined =
-    data === undefined || data?.content === undefined || data?.info === undefined
-  // const isLoading = !isError && isDataUndefined
-
+  const { isDataUndefined, isError, isLoading } = getNextPageStatus(data, error)
   if (isError && isDataUndefined)
-    <>
-      <Layout>
-        <Breadcrumb isIndex={true} title={error ? 'Error...' : 'Loading...'} />
-      </Layout>
-    </>
+    return (
+      <PageHeading
+        description={ERROR__FALLBACK.description}
+        title={ERROR__FALLBACK.title}
+      />
+    )
+  if (isLoading) return <SkeletonHeading />
 
   return (
     <>
-      <Layout>
-        <Page data={data} props={props} />
-        <ListingShows />
-        <div className="spacer--h mb-4" />
-        <Quote />
-      </Layout>
+      <Page data={data} props={props} />
+      {/* <ListingShows /> */}
+      {/* <div className="spacer--h mb-4" /> */}
+      {/* <Quote /> */}
+      {/* </Layout> */}
     </>
   )
 }
@@ -97,7 +88,10 @@ export const getStaticProps = async ({ preview = false, ...props }) => {
   const data = await getCatchAll({ cache, catchAll, clear, pathVariables, preview })
 
   const dataReturn = { ...data }
-  return { props: { preview, ...dataReturn, ...pathVariables, ...props } }
+  return {
+    props: { preview, ...dataReturn, ...pathVariables, ...props },
+    revalidate,
+  }
 }
 
 export default CatchAll

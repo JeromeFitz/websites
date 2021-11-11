@@ -1,4 +1,4 @@
-import cx from 'clsx'
+import _map from 'lodash/map'
 import Document, {
   DocumentContext,
   Html,
@@ -6,6 +6,14 @@ import Document, {
   Main,
   NextScript,
 } from 'next/document'
+
+// import { info, fontFace } from '~styles/fonts/F37Bella'
+// import { info, fontFace } from '~styles/fonts/F37Bolton'
+// import { info, fontFace } from '~styles/fonts/F37Ginger'
+// import { info, fontFace } from '~styles/fonts/F37GingerRound'
+import { info, fontFace } from '~styles/fonts/Inter'
+// import { info, fontFace } from '~styles/fonts/NameSans'
+import { getCssText } from '~styles/system/stitches.config'
 
 class MyDocument extends Document<DocumentContext> {
   render() {
@@ -16,14 +24,28 @@ class MyDocument extends Document<DocumentContext> {
           <meta name="msapplication-tap-highlight" content="no" />
           <meta name="superfish" content="nofish" />
           <meta content="origin-when-cross-origin" name="referrer" />
-          <link
-            rel="preload"
-            href="/static/fonts/inter/inter-var-latin.woff2"
-            as="font"
-            type="font/woff2"
-            crossOrigin="anonymous"
+          <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} />
+          {/* START: custom typeface */}
+          {_map(info.weights, (weight) => {
+            return _map(weight, (file) => {
+              const { href, type } = file
+              return (
+                <link
+                  rel="preload"
+                  href={href}
+                  as="font"
+                  type={type}
+                  crossOrigin="anonymous"
+                />
+              )
+            })
+          })}
+          <style
+            dangerouslySetInnerHTML={{
+              __html: fontFace,
+            }}
           />
-          {/* <link rel="preconnect" href="https://cdn.usefathom.com" crossOrigin="" /> */}
+          {/* END: custom typeface */}
           <link
             rel="apple-touch-icon"
             sizes="180x180"
@@ -52,15 +74,7 @@ class MyDocument extends Document<DocumentContext> {
           <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
           <meta name="theme-color" content="#f4f4f4" />
         </Head>
-        <body
-          className={cx(
-            `loading`,
-            // `bg-white dark:bg-black`,
-            // `text-black dark:text-white`,
-            'bg-primary text-secondary',
-            ``
-          )}
-        >
+        <body>
           <Main />
           <NextScript />
         </body>

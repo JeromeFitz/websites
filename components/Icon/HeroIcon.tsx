@@ -9,9 +9,11 @@ const HeroIcon = ({ className = 'h-5 w-5', icon }) => {
     }
   )
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  return <Icon className={className} />
+  return (
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    <Icon className={className} style={{ height: '1.25rem', width: '1.25rem' }} />
+  )
 }
 
 export default HeroIcon

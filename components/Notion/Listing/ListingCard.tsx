@@ -123,7 +123,8 @@ const ListingItem = ({ index, item }) => {
                   objectFit="cover"
                   objectPosition={'50% 50%'}
                   // src={IMAGE__PLACEHOLDER?.meta?.url}
-                  src={hasImage ? imageData?.img?.src : seoImage?.url}
+                  // src={hasImage ? imageData?.img?.src : seoImage?.url}
+                  src={hasImage ? imageData?.img?.src : seoImage}
                 />
               )}
             </motion.div>

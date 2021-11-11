@@ -1,6 +1,6 @@
 import React, { useState, useContext, useCallback } from 'react'
 
-import NotificationContainer from '~components/Alert/NotifcationContainer'
+import NotificationContainer from '~components/Alert/NotificationContainer'
 
 const NotificationContext = React.createContext(null)
 
@@ -8,6 +8,9 @@ let id = 1
 
 const NotificationProvider = ({ children }) => {
   const [notifications, setNotifications] = useState([])
+
+  // console.dir(`> NotificationProvider`)
+  // console.dir(notifications)
 
   const addNotification = useCallback(
     ({

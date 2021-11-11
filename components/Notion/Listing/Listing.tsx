@@ -15,10 +15,30 @@ import fetcher from '~lib/fetcher'
 import getTimestamp from '~utils/getTimestamp'
 import lpad from '~utils/lpad'
 import getInfoType from '~utils/notion/getInfoType'
+import { ROUTE_TYPES } from '~utils/notion/helper'
 
 const Emoji = dynamic(() => import('~components/Notion/Emoji'), {
   ssr: false,
 })
+
+const ListingEpisodes = dynamic(
+  () => import('~components/Notion/Listing/ListingEpisodes'),
+  {
+    ssr: true,
+  }
+)
+const ListingEvents = dynamic(
+  () => import('~components/Notion/Listing/ListingEvents'),
+  {
+    ssr: true,
+  }
+)
+const ListingShows = dynamic(
+  () => import('~components/Notion/Listing/ListingShows'),
+  {
+    ssr: true,
+  }
+)
 
 const ListingItemEpisode = ({ item, routeType }) => {
   const { audio } = useUI()
@@ -279,17 +299,19 @@ const ListingItem = ({ item, routeType }) => {
   )
 }
 
-const Listing = ({ items, routeType }) => {
+const Listing = ({ images, items, routeType }) => {
   const itemsSize = _size(items?.results)
+
+  if (itemsSize === 0) return null
 
   let itemsData
 
   if (itemsSize > 0) {
     switch (routeType) {
-      case 'events':
+      case ROUTE_TYPES.events:
         itemsData = _orderBy(items.results, ['data.date.start'], ['asc'])
         break
-      case 'podcasts':
+      case ROUTE_TYPES.podcasts:
         itemsData = _orderBy(
           items.results,
           ['data.season', 'data.episode'],
@@ -302,6 +324,33 @@ const Listing = ({ items, routeType }) => {
     }
   }
 
+  if (routeType === ROUTE_TYPES.podcasts) {
+    // console.dir(itemsData)
+    return (
+      <>
+        <ListingEpisodes images={images} items={itemsData} />
+      </>
+    )
+  }
+
+  if (routeType === ROUTE_TYPES.events) {
+    // console.dir(itemsData)
+    return (
+      <>
+        <ListingEvents items={itemsData} />
+      </>
+    )
+  }
+
+  if (routeType === ROUTE_TYPES.shows) {
+    // console.dir(itemsData)
+    return (
+      <>
+        <ListingShows images={images} items={itemsData} />
+      </>
+    )
+  }
+
   return (
     <>
       {itemsSize > 0 && (
@@ -309,7 +358,7 @@ const Listing = ({ items, routeType }) => {
           {_map(itemsData, (item, itemIndex) => {
             // const item = itemsData[iIndex]
             switch (routeType) {
-              case 'events':
+              case ROUTE_TYPES.events:
                 return (
                   <ListingItemEvent
                     item={item}
@@ -317,7 +366,7 @@ const Listing = ({ items, routeType }) => {
                     routeType={routeType}
                   />
                 )
-              case 'podcasts':
+              case ROUTE_TYPES.podcasts:
                 return (
                   <ListingItemEpisode
                     item={item}

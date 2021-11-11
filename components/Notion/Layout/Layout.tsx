@@ -1,10 +1,10 @@
-import cx from 'clsx'
-import { motion } from 'framer-motion'
 import Slugger from 'github-slugger'
 import useSWR from 'swr'
 
+import PageHeading from '~components/PageHeading'
 import Seo from '~components/Seo'
-import { MOTION_PAGE_VARIANTS } from '~lib/constants'
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Layout = ({ id, children, data, routeType, url }) => {
   const slugger = new Slugger()
   const { data: images } = useSWR('images')
@@ -26,7 +26,7 @@ const Layout = ({ id, children, data, routeType, url }) => {
   const seo = {
     canonical: seoUrl,
     description: seoDescription,
-    image: seoImage?.url,
+    image: seoImage,
     noindex: !published || noIndex,
     openGraph: {
       description: seoDescription,
@@ -34,7 +34,7 @@ const Layout = ({ id, children, data, routeType, url }) => {
         {
           alt: seoImageDescription,
           height: seoImageData?.img?.height,
-          url: seoImage?.url,
+          url: seoImage,
           width: seoImageData?.img?.width,
         },
       ],
@@ -46,19 +46,9 @@ const Layout = ({ id, children, data, routeType, url }) => {
 
   return (
     <>
-      {/* SEO Content */}
       <Seo {...seo} />
-      <motion.div
-        key={id}
-        initial="enter"
-        animate="enter"
-        exit="exit"
-        variants={MOTION_PAGE_VARIANTS}
-        transition={{ delay: 0, duration: 0.25, type: 'linear' }}
-        className={cx(routeType, 'flex flex-col')}
-      >
-        {children}
-      </motion.div>
+      <PageHeading title={seo.title} description={seo.description} />
+      {children}
     </>
   )
 }
