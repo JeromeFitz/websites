@@ -5,7 +5,7 @@ import useSWR, { useSWRConfig } from 'swr'
 
 import { Breakout } from '~components/Layout'
 import ImageCaption from '~components/Notion/ImageCaption'
-import { Container, Section } from '~styles/system/components'
+import { Container, Section, Skeleton } from '~styles/system/components'
 import { styled } from '~styles/system/stitches.config'
 
 const ImageContainer = styled('div', {
@@ -76,6 +76,22 @@ const ImageWithBackgroundBlur = ({ base64, description, image, slug }) => {
   )
 }
 
+const ImageSkeleton = () => {
+  return (
+    <ImageContainer css={{ height: '250px', width: '250px' }}>
+      <Skeleton
+        as="div"
+        css={{
+          height: '100%',
+          width: '100%',
+        }}
+      >
+        &nbsp;
+      </Skeleton>
+    </ImageContainer>
+  )
+}
+
 const ImageLead = ({ breakout = true, description, image, imagesFallback }) => {
   const { mutate } = useSWRConfig()
   const slugger = new Slugger()
@@ -120,5 +136,5 @@ const ImageLead = ({ breakout = true, description, image, imagesFallback }) => {
   )
 }
 
-export { ImageWithBackgroundBlur }
+export { ImageSkeleton, ImageWithBackgroundBlur }
 export default ImageLead
