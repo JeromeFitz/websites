@@ -1,6 +1,7 @@
 import IMAGE__FALLBACKS__SHOWS from '~lib/constants/images/shows'
 
-const revalidate = 60
+// @question(next) do we even need to revalidate?
+const revalidate = 60 * 60
 
 // ref: https://bigheads.io/editor?accessory=none&body=chest&circleColor=blue&clothing=dressShirt&clothingColor=black&eyebrows=leftLowered&eyes=dizzy&faceMask=true&faceMaskColor=black&facialHair=stubble&graphic=none&hair=short&hairColor=blonde&hat=none&hatColor=black&lashes=true&lipColor=red&mask=false&mouth=grin&skinTone=light
 const BIG_HEAD_PROPS = {

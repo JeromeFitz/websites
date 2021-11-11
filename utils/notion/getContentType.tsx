@@ -146,7 +146,7 @@ class ContentTypes {
       <Flex
         key={id}
         direction="column"
-        css={{ flex: '1 1', my: '$8', '@bp1': { my: 0, paddingRight: '.75rem' } }}
+        css={{ flex: '1 1', my: '$2', '@bp1': { my: '$2', paddingRight: '.75rem' } }}
       >
         {nodeContent}
       </Flex>
@@ -164,7 +164,7 @@ class ContentTypes {
         css={{
           display: 'flex',
           flexDirection: 'column',
-          my: '$8',
+          my: '$3',
           '@bp1': { flexDirection: 'row' },
         }}
       >
@@ -376,10 +376,12 @@ class ContentTypes {
           <Flex
             css={{
               br: '0.75rem',
-              bc: '$colors$gray11',
-              color: '$colors$gray1',
-              m: '$6',
-              p: '$6',
+              backgroundColor: '$colors$violet9',
+              color: 'white',
+              m: '$1',
+              mb: '$2',
+              p: '$3',
+              pb: '$4',
               dispaly: 'flex',
               verticalAlign: 'middle',
               justifyContent: 'flex-start',
@@ -390,13 +392,24 @@ class ContentTypes {
           >
             <Text
               as="span"
-              css={{ mb: 0, pb: 0, color: 'inherit', fontSize: 'inherit' }}
+              css={{
+                mb: 0,
+                pb: 0,
+                color: 'inherit',
+                fontSize: 'inherit',
+                lineHeight: 'inherit',
+              }}
             >
               <Emoji character={`📰️`} />
             </Text>
             <Text
               as="blockquote"
-              css={{ ml: '$4', color: 'inherit', fontSize: 'inherit' }}
+              css={{
+                ml: '$4',
+                color: 'inherit',
+                fontSize: 'inherit',
+                lineHeight: 'inherit',
+              }}
             >
               {getContentTypeDetail({ content, id })}
             </Text>
