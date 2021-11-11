@@ -17,7 +17,7 @@ const image =
 // @todo(any)
 const Seo = memo(({ ...seo }: any) => {
   let newSeo: any = {}
-  if (!!seo.openGraph.images[0].url) {
+  if (!!seo?.openGraph?.images && !!seo?.openGraph?.images[0]?.url) {
     newSeo = _merge({}, getNextSeo, seo)
   } else {
     const title = seo?.title || 'Jerome'
@@ -31,10 +31,13 @@ const Seo = memo(({ ...seo }: any) => {
     const oHeights = encodeURIComponent(`300`)
     const oImage = `${oDomain}/${oTitle}.png?theme=${oTheme}&md=${oMarkdown}&fontSize=${oFontSize}&images=${oImages}&widths=${oWidths}&heights=${oHeights}`
     seo.image = oImage
-    seo.openGraph.images[0].alt = title
-    seo.openGraph.images[0].url = oImage
-    seo.openGraph.images[0].width = 2048
-    seo.openGraph.images[0].height = 1170
+    const newImage = {
+      alt: title,
+      url: oImage,
+      width: 2048,
+      height: 1170,
+    }
+    seo.openGraph.images = [newImage]
     newSeo = _merge({}, getNextSeo, seo)
   }
 

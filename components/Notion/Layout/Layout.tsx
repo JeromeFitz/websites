@@ -26,7 +26,7 @@ const Layout = ({ id, children, data, routeType, url }) => {
   const seo = {
     canonical: seoUrl,
     description: seoDescription,
-    image: seoImage?.url,
+    image: seoImage,
     noindex: !published || noIndex,
     openGraph: {
       description: seoDescription,
@@ -34,7 +34,7 @@ const Layout = ({ id, children, data, routeType, url }) => {
         {
           alt: seoImageDescription,
           height: seoImageData?.img?.height,
-          url: seoImage?.url,
+          url: seoImage,
           width: seoImageData?.img?.width,
         },
       ],
