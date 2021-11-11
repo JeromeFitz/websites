@@ -47,7 +47,14 @@ const Image = styled(NextImage, {
 //   return `${src}?w=${widthCustom}&q=${quality || 75}`
 // }
 
-const ImageWithBackgroundBlur = ({ base64, description, image, slug }) => {
+const ImageWithBackgroundBlur = ({
+  base64,
+  description,
+  image,
+  priority = false,
+  sizes = '(min-width: 1280) 75vh, 50vh',
+  slug,
+}) => {
   // console.dir(`image`)
   // console.dir(image)
   return (
@@ -66,9 +73,9 @@ const ImageWithBackgroundBlur = ({ base64, description, image, slug }) => {
         layout="responsive"
         key={slug}
         placeholder="blur"
-        priority={true}
+        priority={priority}
         quality={100}
-        sizes="(min-width: 1920px) 100vh, (min-width: 1280) 90vh, 75vh"
+        sizes={sizes}
         title={description}
         {...image}
       />
@@ -128,6 +135,7 @@ const ImageLead = ({ breakout = true, description, image, imagesFallback }) => {
           base64={imageData?.base64}
           description={description}
           image={imageData?.img}
+          priority={true}
           slug={imageSlug}
         />
         <ImageCaption caption={description} />

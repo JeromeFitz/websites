@@ -68,6 +68,7 @@ const Shows = ({ images, items }) => {
                       base64={base64}
                       description={description}
                       image={img}
+                      sizes="(min-width: 1280) 50vh, 25vh"
                       slug={imgSlug}
                     />
                   </CardImage>

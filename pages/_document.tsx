@@ -70,6 +70,7 @@ class MyDocument extends Document<DocumentContext> {
             color="#848484"
           />
           <link rel="shortcut icon" href="/favicon/favicon.ico" />
+          <link rel="preconnect" href="https://crane.jeromefitzgerald.com" />
           <meta name="msapplication-TileColor" content="#f4f4f4" />
           <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
           <meta name="theme-color" content="#f4f4f4" />

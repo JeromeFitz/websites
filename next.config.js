@@ -122,13 +122,15 @@ const nextConfig = {
     formats: ['image/avif', 'image/webp'],
     // imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     imageSizes: [24, 64, 384],
+    // minimumCacheTTL: 31536000, // 1 year
+    // minimumCacheTTL: 18144000, // 1 month
+    minimumCacheTTL: 604800, // 1 week
+    // minimumCacheTTL: 86400, // 1 day
   },
   i18n: {
     locales: ['en'],
     defaultLocale: 'en',
   },
-  // minimumCacheTTL: 31536000, // 1 year
-  minimumCacheTTL: 86400, // 1 day
   outputFileTracing: false,
   pageExtensions: ['jsx', 'js', 'tsx', 'ts'],
   poweredByHeader: false,
