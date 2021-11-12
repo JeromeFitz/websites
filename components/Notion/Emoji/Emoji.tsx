@@ -1,10 +1,10 @@
 import nodeEmoji from 'node-emoji'
 
-import { Text } from '~styles/system/components'
+import { Box } from '~styles/system/components'
 
 const EmojiHtml = ({ emoji, label, margin }) => {
   return (
-    <Text
+    <Box
       as="span"
       aria-label={label}
       // @hack(emoji) this breaks the underline on links
@@ -23,7 +23,7 @@ const EmojiHtml = ({ emoji, label, margin }) => {
       {/* @hack(emoji) force two spaces */}
       {` `}
       {` `}
-    </Text>
+    </Box>
   )
 }
 

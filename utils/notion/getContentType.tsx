@@ -125,7 +125,7 @@ class ContentTypes {
               as="span"
               css={{ mb: 0, pb: 0, color: 'inherit', fontSize: 'inherit' }}
             >
-              {emoji && <Emoji character={emoji} />}
+              {emoji && <Emoji character={emoji} margin={true} />}
             </Text>
             <Text as="h6" css={{ ml: '$4', color: 'inherit', fontSize: 'inherit' }}>
               {getContentTypeDetail({ content, id })}
