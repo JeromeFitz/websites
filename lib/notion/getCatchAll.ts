@@ -629,6 +629,9 @@ class Properties {
   [PROPERTIES.spotifyShow](value) {
     return this.richText(value)
   }
+  [PROPERTIES.subtitle](value) {
+    return this.richText(value)
+  }
   [PROPERTIES.addressCity](value) {
     return this.richText(value)
   }
