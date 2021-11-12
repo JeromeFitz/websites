@@ -1,15 +1,13 @@
-import dynamic from 'next/dynamic'
 // import { useEffect, useState } from 'react'
 import useSWR from 'swr'
 
-import Layout from '~components/Layout'
 import Page from '~components/Notion/Page'
-import { revalidate } from '~lib/constants'
+import PageHeading, { SkeletonHeading } from '~components/PageHeading'
+import { revalidate, ERROR__FALLBACK } from '~lib/constants'
 import fetcher from '~lib/fetcher'
 import getCatchAll from '~lib/notion/getCatchAll'
 import getPathVariables from '~lib/notion/getPathVariables'
-
-const Breadcrumb = dynamic(() => import('~components/Notion/Breadcrumb'), {})
+import getNextPageStatus from '~utils/next/getNextPageStatus'
 
 const CatchAll = (props) => {
   const {
@@ -48,17 +46,15 @@ const CatchAll = (props) => {
     }
   )
 
-  /**
-   * @error or @loading
-   */
-  if (error || !data || data?.content === undefined || data?.info === undefined)
+  const { isDataUndefined, isError, isLoading } = getNextPageStatus(data, error)
+  if (isError && isDataUndefined)
     return (
-      <>
-        <Layout>
-          <Breadcrumb isIndex={true} title={error ? 'Error...' : 'Loading...'} />
-        </Layout>
-      </>
+      <PageHeading
+        description={ERROR__FALLBACK.description}
+        title={ERROR__FALLBACK.title}
+      />
     )
+  if (isLoading) return <SkeletonHeading />
 
   return (
     <>
