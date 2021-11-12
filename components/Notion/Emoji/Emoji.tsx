@@ -1,12 +1,17 @@
-import cx from 'clsx'
 import nodeEmoji from 'node-emoji'
+
+import { Box } from '~styles/system/components'
 
 const EmojiHtml = ({ emoji, label, margin }) => {
   return (
-    <span
+    <Box
+      as="span"
       aria-label={label}
       // @hack(emoji) this breaks the underline on links
-      className={cx('not-italic', margin && 'mr-1.5')}
+      css={{
+        fontStyle: 'normal',
+        mr: margin ? '$1' : '0',
+      }}
       role="img"
       style={{
         WebkitBackgroundClip: 'text',
@@ -18,7 +23,7 @@ const EmojiHtml = ({ emoji, label, margin }) => {
       {/* @hack(emoji) force two spaces */}
       {` `}
       {` `}
-    </span>
+    </Box>
   )
 }
 
