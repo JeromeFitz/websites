@@ -10044,10 +10044,10 @@ pluralize@8.0.0, pluralize@^8.0.0:
   resolved "https://registry.yarnpkg.com/pluralize/-/pluralize-8.0.0.tgz#1a6fa16a38d12a1901e0320fa017051c539ce3b1"
   integrity sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==
 
-podcast@1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/podcast/-/podcast-1.3.0.tgz#6099ea3c991e8087363306c3b90737e18c6155ff"
-  integrity sha512-L0UNP8SMdoihxgpdXCaXZEKZBBCGzld5PSy8QbQYsk83bdzq14cdW8flJduZjQNbB2If5frwVIC5VpMq9CHchA==
+podcast@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/podcast/-/podcast-2.0.0.tgz#5d98cb7d8b8567f4df99645fe4173963bc2ff2a1"
+  integrity sha512-1NZe7cVabfkcMe39yOOhBMJrXC6OROLOIBkfEPayiJL59ncyJmOeO5bxolSCSGroho8jQ0zURMczyICI1U/xbw==
   dependencies:
     rss "^1.2.2"
 

@@ -34,7 +34,7 @@ import getDatabasesByIdQuery from '~lib/notion/api/getDatabasesByIdQuery'
 import getPagesById from '~lib/notion/api/getPagesById'
 import { getCache, setCache } from '~lib/notion/getCache'
 import getImages from '~lib/notion/getImages'
-import getPathVariables from '~lib/notion/getPathVariables'
+// import getPathVariables from '~lib/notion/getPathVariables'
 import getQuery from '~lib/notion/getQuery'
 import {
   DATABASES,
@@ -1240,16 +1240,19 @@ const getCatchAll = async ({
   pathVariables,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   preview,
+  retrieveImages = true,
 }) => {
-  // console.dir(`> getCatchAll`)
-  // console.dir(catchAll)
   const isCache = useCache && cache
-  const { dataType, meta, routeType, slug } = getPathVariables(catchAll)
-
+  // const { dataType, meta, routeType, slug } = getPathVariables(catchAll)
+  const { dataType, meta, routeType, slug } = pathVariables
   /**
    * @hack some reason everything is coming here, is it `notion/index.ts`?
    */
   if (slug === 'favicon.ico') return null
+
+  // console.dir(`> getCatchAll`)
+  // console.dir(catchAll)
+  // console.dir(pathVariables)
 
   /**
    * @resume
@@ -1301,14 +1304,11 @@ const getCatchAll = async ({
     }
 
     data = { info, content, items }
-    // console.dir(`data`)
-    // console.dir(data)
-    // console.dir(`pathVariables`)
-    // console.dir(pathVariables)
-    const images = !!data ? await getImages({ data, pathVariables }) : {}
-    // console.dir(`images`)
-    // console.dir(images)
-    data = { ...data, images }
+
+    if (retrieveImages) {
+      const images = !!data ? await getImages({ data, pathVariables }) : {}
+      data = { ...data, images }
+    }
 
     /**
      * @cache post
