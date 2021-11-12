@@ -36,6 +36,9 @@ export const Carousel = (props) => {
       '[data-slide-intersected]'
     )
     if (slides) {
+      // Property 'values' does not exist on type 'NodeListOf<HTMLElement>'.
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       return Array.from(slides.values()).find((slide: HTMLElement, index) => {
         const slideBefore = slides.item(index - direction)
         return (
@@ -50,6 +53,9 @@ export const Carousel = (props) => {
     const nextSlide = getSlideInDirection(1)
     if (nextSlide) {
       const { scrollLeft, scrollWidth, clientWidth } = slideListRef.current
+      // Property 'clientWidth' does not exist on type 'unknown'.
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       const itemWidth = nextSlide.clientWidth
       const nextPos = Math.floor(scrollLeft / itemWidth) * itemWidth + itemWidth * 2
       slideListRef.current.scrollTo({ left: nextPos, behavior: 'smooth' })
@@ -66,6 +72,9 @@ export const Carousel = (props) => {
     const prevSlide = getSlideInDirection(-1)
     if (prevSlide) {
       const { scrollLeft, scrollWidth, clientWidth } = slideListRef.current
+      // Property 'clientWidth' does not exist on type 'unknown'.
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       const itemWidth = prevSlide.clientWidth
       const nextPos = Math.ceil(scrollLeft / itemWidth) * itemWidth - itemWidth * 2
       slideListRef.current.scrollTo({ left: nextPos, behavior: 'smooth' })

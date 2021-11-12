@@ -1,9 +1,5 @@
-const sitename = 'Jerome Fitzgerald',
-  title = 'Jerome Fitzgerald | Comedian. Human. Nice.',
-  description =
-    'Jerome Fitzgerald is an actor, comedian, & writer hailing from Pittsburgh, PA.',
-  url = 'https://jeromefitzgerald.com',
-  twitter = '@JeromeFitz'
+import seo from '~config/websites'
+const { description, sitename, title, twitter, url } = seo
 
 const getNextSeo = {
   noindex: false,
