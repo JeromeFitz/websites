@@ -98,8 +98,7 @@ const rssApi = async (req: NextApiRequest, res: NextApiResponse) => {
       // pubDate: pubDate,
       // ttl: 60, // @int Number of minutes feed can be cached before refreshing from source
       itunesAuthor: author,
-      // @todo(podcast) subtitle?
-      itunesSubtitle: title,
+      itunesSubtitle: description,
       itunesSummary: description,
       itunesOwner: {
         name: author,
@@ -197,8 +196,7 @@ const rssApi = async (req: NextApiRequest, res: NextApiResponse) => {
         content: description,
         itunesAuthor: author,
         itunesExplicit,
-        // @todo(rss) subtitle
-        itunesSubtitle: title,
+        itunesSubtitle: description,
         itunesSummary: description,
         itunesDuration,
         itunesImage,
