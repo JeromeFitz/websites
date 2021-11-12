@@ -13,7 +13,6 @@ import React from 'react'
 
 import BoxLink from '~components/BoxLink'
 import IconLink from '~components/IconLink'
-// import Logo from '~components/Logo'
 import {
   Tooltip,
   TooltipTrigger,

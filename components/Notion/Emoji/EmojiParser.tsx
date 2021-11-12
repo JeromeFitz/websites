@@ -72,7 +72,11 @@ const EmojiParser = ({ id, text }) => {
     _map(_orderBy(emojiMapping, ['index'], ['asc']), (item: any, itemId) => {
       emojiMappingStitch.push(
         item.emoji ? (
-          <Emoji character={item.text.trim()} key={`${id}--emoji--${itemId}`} />
+          <Emoji
+            character={item.text.trim()}
+            key={`${id}--emoji--${itemId}`}
+            margin={true}
+          />
         ) : (
           item.text
         )

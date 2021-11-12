@@ -142,50 +142,40 @@
   },
   "next-unused": {
     "alias": {
-      "~components/*": [
-        "components/*"
-      ],
-      "~config/*": [
-        "config/*"
-      ],
-      "~context/*": [
-        "context/*"
-      ],
-      "~lib/*": [
-        "lib/*"
-      ],
-      "~styles/*": [
-        "styles/*"
-      ],
-      "~utils/*": [
-        "utils/*"
-      ]
+      "~components": "components/",
+      "~config": "config/",
+      "~context": "context/",
+      "~hooks": "hooks/",
+      "~lib": "lib/",
+      "~styles": "styles/",
+      "~utils": "utils/"
     },
-    "debug": true,
+    "debug": false,
+    "exclude": [
+      "config/websites/*",
+      "data/*",
+      "lib/firebase.ts",
+      "lib/pubsub.ts",
+      "styles/fonts/index.ts",
+      "styles/fonts/F37Bella.tsx",
+      "styles/fonts/F37Bolton.tsx",
+      "styles/fonts/F37Ginger.tsx",
+      "styles/fonts/F37GingerRound.tsx",
+      "styles/fonts/Inter.tsx",
+      "styles/fonts/NameSans.tsx",
+      "utils/isElementOfType.ts",
+      "utils/next/getByListing.ts",
+      "utils/next/getBySlug.ts",
+      "utils/isObjectEmpty.ts"
+    ],
     "include": [
       "components",
       "config",
       "context",
       "hooks",
       "lib",
-      "pages",
       "styles",
       "utils"
-    ],
-    "exclude": [
-      "components/Modal/*",
-      "components/NowPlaying/NowPlaying.module.css",
-      "components/NowPlaying/NowPlayingWithControls.tsx",
-      "config/notion/schema/defaults.ts",
-      "config/notion/website/*",
-      "data/mock/**",
-      "lib/firebase.ts",
-      "lib/notion/init/*",
-      "utils/isObjectEmpty.ts",
-      "zzz/*"
-    ],
-    "entrypoints": [
-      "pages"
     ]
   }
 }
