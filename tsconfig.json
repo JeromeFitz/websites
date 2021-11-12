@@ -3,7 +3,7 @@
   "compilerOptions": {
     // // w/ extends
     // "baseUrl": ".",
-    // "incremental": true,
+    "incremental": true,
     // "noUnusedParameters": false, // @todo(lint)
     // "outDir": "./.dist",
     // "rootDir": ".",
