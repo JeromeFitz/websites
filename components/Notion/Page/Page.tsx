@@ -31,7 +31,7 @@ const ListingEvent = dynamic(
 
 // @todo(complexity) 15
 // eslint-disable-next-line complexity
-const Page = ({ data, props }) => {
+const Page = ({ data, ...props }) => {
   const {
     // content: contentFallback,
     // info: infoFallback,
@@ -157,7 +157,9 @@ const Page = ({ data, props }) => {
           />
         )}
         <>
-          {(isEventListing || isShowListing) && <MetaShow data={data} />}
+          {(isEventListing || isShowListing) && (
+            <MetaShow data={data} key={`${id}--metashow`} />
+          )}
           {/* {!isIndex && (
             <h2 className="text-3xl md:text-4xl" key={`h2-information--${id}`}>
               Information

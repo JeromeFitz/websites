@@ -53,7 +53,7 @@ const CatchAll = (props) => {
 
   return (
     <>
-      <Page data={data} props={props} />
+      <Page data={data} {...props} />
     </>
   )
 }

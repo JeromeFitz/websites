@@ -7,26 +7,35 @@ import _startsWith from 'lodash/startsWith'
 // import _union from 'lodash/union'
 // import _uniqWith from 'lodash/uniqWith'
 import pluralize from 'pluralize'
-import { Fragment } from 'react'
 
 import getTitle from '~lib/notion/getTitle'
 import { Box, Flex, Grid, Heading, Paragraph, Text } from '~styles/system/components'
 import { MarketingButton } from '~styles/system/components/Button/MarketingButton'
-const MetaShow = ({ data }) => {
+
+const rollupExclude = [
+  'rollupVenue',
+  'rollupTags',
+  'rollupTagsSecondary',
+  'rollupShow',
+]
+
+const MetaShow = ({ data, key }) => {
   const { id } = data?.info
   const _data = data?.info?.data
   const rollupKeys = []
   _map(
     Object.keys(_data),
     (k) =>
-      _startsWith(k, 'rollup') &&
-      !['rollupVenue', 'rollupTags', 'rollupShow'].includes(k) &&
-      rollupKeys.push(k)
+      _startsWith(k, 'rollup') && !rollupExclude.includes(k) && rollupKeys.push(k)
   )
+
+  let size = 0
+  _map(rollupKeys, (r) => (size = size + _size(_data[r])))
+  if (size === 0) return null
 
   return (
     <>
-      <Box key={`ms-${id}`} css={{ my: '$8' }}>
+      <Box css={{ my: '$8' }} key={`${key}--box`}>
         <Flex justify={{ '@initial': 'start' }} gap="5">
           {_data?.ticketUrl ? (
             <MarketingButton as="a" href={_data?.ticketUrl} icon={ArrowRightIcon}>
@@ -70,7 +79,8 @@ const MetaShow = ({ data }) => {
           {_map(rollupKeys, (rollupKey, rollupKeyIdx) => {
             const meta = _data[rollupKey]
             const metaSize = _size(meta)
-            if (!meta || metaSize === 0) return null
+            if (!meta || metaSize === 0 || rollupExclude.includes(rollupKey))
+              return null
 
             const key = `${id}-rollupKey-${rollupKeyIdx}`
             const title = pluralize(getTitle(rollupKey), metaSize)
@@ -80,32 +90,31 @@ const MetaShow = ({ data }) => {
             // }
 
             return (
-              <Fragment key={key}>
-                <Flex
-                  direction="column"
-                  css={{
-                    gridColumnStart: 'span 2',
-                    '@bp1': { gridColumnStart: metaSize > 4 ? 'span 2' : 'span 1' },
-                  }}
+              <Flex
+                direction="column"
+                css={{
+                  gridColumnStart: 'span 2',
+                  '@bp1': { gridColumnStart: metaSize > 4 ? 'span 2' : 'span 1' },
+                }}
+                key={key}
+              >
+                <Heading
+                  size="3"
+                  css={{ borderTop: '1px solid $hiContrast', py: '$3' }}
                 >
-                  <Heading
-                    size="3"
-                    css={{ borderTop: '1px solid $hiContrast', py: '$3' }}
-                  >
-                    {title}
-                  </Heading>
-                  <Box as="ul">
-                    {_map(meta, (item, itemIdx) => {
-                      const keySub = `${key}-${itemIdx}`
-                      return (
-                        <Box as="li" key={keySub} css={{}}>
-                          <Paragraph size="2">{item}</Paragraph>
-                        </Box>
-                      )
-                    })}
-                  </Box>
-                </Flex>
-              </Fragment>
+                  {title}
+                </Heading>
+                <Box as="ul">
+                  {_map(meta, (item, itemIdx) => {
+                    const keySub = `${key}-${itemIdx}`
+                    return (
+                      <Box as="li" key={keySub} css={{}}>
+                        <Paragraph size="2">{item}</Paragraph>
+                      </Box>
+                    )
+                  })}
+                </Box>
+              </Flex>
             )
           })}
         </Grid>
