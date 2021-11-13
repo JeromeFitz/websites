@@ -1,16 +1,10 @@
-import { ArrowRightIcon } from '@radix-ui/react-icons'
-// import _filter from 'lodash/filter'
-// import _includes from 'lodash/includes'
 import _map from 'lodash/map'
 import _size from 'lodash/size'
 import _startsWith from 'lodash/startsWith'
-// import _union from 'lodash/union'
-// import _uniqWith from 'lodash/uniqWith'
 import pluralize from 'pluralize'
 
 import getTitle from '~lib/notion/getTitle'
 import { Box, Flex, Grid, Heading, Paragraph, Text } from '~styles/system/components'
-import { MarketingButton } from '~styles/system/components/Button/MarketingButton'
 
 const rollupExclude = [
   'rollupVenue',
@@ -36,23 +30,6 @@ const MetaShow = ({ data, key }) => {
   return (
     <>
       <Box css={{ my: '$8' }} key={`${key}--box`}>
-        <Flex justify={{ '@initial': 'start' }} gap="5">
-          {_data?.ticketUrl ? (
-            <MarketingButton as="a" href={_data?.ticketUrl} icon={ArrowRightIcon}>
-              Get Tickets
-            </MarketingButton>
-          ) : (
-            <MarketingButton
-              as="button"
-              css={{ cursor: 'not-allowed !important' }}
-              disabled={true}
-              icon={ArrowRightIcon}
-            >
-              Get Tickets
-            </MarketingButton>
-          )}
-        </Flex>
-
         <Text
           css={{
             borderTop: '1px solid $hiContrast',

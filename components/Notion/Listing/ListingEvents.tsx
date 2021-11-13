@@ -1,5 +1,5 @@
 import { LocationMarkerIcon, TagIcon } from '@heroicons/react/outline'
-import { ClockIcon } from '@radix-ui/react-icons'
+import { ArrowRightIcon, ClockIcon } from '@radix-ui/react-icons'
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
 import { getDate, getDay, getMonth, getYear, parseISO } from 'date-fns'
 import { format } from 'date-fns-tz'
@@ -22,6 +22,7 @@ import {
   Paragraph,
   Section,
 } from '~styles/system/components'
+import { MarketingButton } from '~styles/system/components/Button/MarketingButton'
 import { styled } from '~styles/system/stitches.config'
 import getInfoType from '~utils/notion/getInfoType'
 import { TAGS } from '~utils/notion/helper'
@@ -48,7 +49,7 @@ const StyledBox = styled('div', {
   position: 'relative',
   mb: '8px',
   padding: '16px 20px',
-  transition: 'background-color .2s cubic-bezier(.165, .84, .44, 1)',
+  // transition: 'background-color .2s cubic-bezier(.165, .84, .44, 1)',
   '@bp1': {
     mb: '4px',
     padding: '20px 24px',
@@ -56,13 +57,21 @@ const StyledBox = styled('div', {
   backgroundColor: '$colors$violet3',
   // color: 'white',
   color: '$colors$violet12',
+  border: '2px solid transparent',
+  transition: 'all .25s cubic-bezier(.165, .84, .44, 1)',
   '@hover': {
     '&:hover': {
       backgroundColor: '$colors$violet4',
+      border: '2px solid $colors$violet8',
     },
+  },
+  '&:active': {
+    backgroundColor: '$colors$violet4',
+    border: '2px solid $colors$violet8',
   },
   '&:focus': {
     backgroundColor: '$colors$violet4',
+    border: '2px solid $colors$violet8',
   },
 })
 
@@ -75,9 +84,15 @@ const StyledBorder = styled('div', {
   border: '2px solid $colors$violet8',
   opacity: 0,
   zIndex: 1,
+  display: 'none',
   transition: 'opacity .25s cubic-bezier(.165, .84, .44, 1)',
+  '@hover': {
+    '&:hover': {
+      opacity: 0,
+    },
+  },
   '&:focus': {
-    opacity: 1,
+    opacity: 0,
   },
 })
 
@@ -87,7 +102,7 @@ const StyledLink = styled('a', {
   top: 0,
   right: 0,
   bottom: 0,
-  zIndex: 100,
+  zIndex: 2,
   '@hover': {
     '&:hover': {
       [`+ ${StyledBorder}`]: {
@@ -95,7 +110,17 @@ const StyledLink = styled('a', {
       },
       [`+ ${StyledBox}`]: {
         backgroundColor: '$colors$violet4',
+        border: '2px solid $colors$violet8',
       },
+    },
+  },
+  '&:active': {
+    [`+ ${StyledBorder}`]: {
+      opacity: 1,
+    },
+    [`+ ${StyledBox}`]: {
+      backgroundColor: '$colors$violet4',
+      border: '2px solid $colors$violet8',
     },
   },
   '&:focus': {
@@ -104,6 +129,7 @@ const StyledLink = styled('a', {
     },
     [`+ ${StyledBox}`]: {
       backgroundColor: '$colors$violet4',
+      border: '2px solid $colors$violet8',
     },
   },
 })
@@ -271,6 +297,8 @@ const ListingEvents = ({ items }) => {
 //     </Box>
 //   )
 // }
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Year = ({ children, title }) => {
   return (
     <Section size="1">
@@ -284,9 +312,9 @@ const Year = ({ children, title }) => {
           }
         }
       >
-        <Heading as="h2" size="2">
+        {/* <Heading as="h2" size="2">
           {title}
-        </Heading>
+        </Heading> */}
         {children}
       </Box>
     </Section>
@@ -596,6 +624,40 @@ const Event = ({ data, keyPrefix }) => {
               </Flex>
             </Box>
           </Grid>
+          <Box
+            css={{
+              gridRowStart: 'span 1',
+              gridRowEnd: 'span 1',
+              gridColumnStart: 'span 2',
+              gridColumnEnd: 'span 2',
+            }}
+          >
+            <Flex
+              // css={{ bc: 'transparent' }}
+              justify={{ '@initial': 'start' }}
+              gap="5"
+            >
+              {data?.data.ticketUrl ? (
+                <MarketingButton
+                  as="a"
+                  css={{ zIndex: '3' }}
+                  href={data?.data.ticketUrl}
+                  icon={ArrowRightIcon}
+                >
+                  Get Tickets
+                </MarketingButton>
+              ) : (
+                <MarketingButton
+                  as="button"
+                  css={{ cursor: 'not-allowed !important' }}
+                  disabled={true}
+                  icon={ArrowRightIcon}
+                >
+                  Get Tickets
+                </MarketingButton>
+              )}
+            </Flex>
+          </Box>
         </Grid>
         {/* bg */}
         <Box
