@@ -509,16 +509,21 @@ const Event = ({ data, keyPrefix }) => {
             css={{
               gridRowStart: 'span 1',
               gridRowEnd: 'span 1',
-              gridColumnStart: 'span 2',
-              gridColumnEnd: 'span 2',
+              gridColumnStart: 'span 5',
+              gridColumnEnd: 'span 5',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'start',
               // pr: '4%',
-              pt: '1rem',
-              borderTop: '1px solid green',
+              py: '1rem',
+              borderTop: '1px solid $colors$violet6',
               gridTemplateColumns: 'repeat(3, 1fr)',
               gap: 5,
               '@bp1': {
+                gridColumnStart: 'span 3',
+                gridColumnEnd: 'span 3',
                 gridTemplateColumns: 'repeat(2, 1fr)',
-                // pr: '8%',
+                flexDirection: 'column',
                 borderTop: 'none',
                 pt: 0,
               },
@@ -599,8 +604,8 @@ const Event = ({ data, keyPrefix }) => {
                 gridColumnStart: 'span 2',
                 gridColumnEnd: 'span 2',
                 '@bp1': {
-                  gridColumnStart: 'span 2',
-                  gridColumnEnd: 'span 2',
+                  gridColumnStart: 'span 1',
+                  gridColumnEnd: 'span 1',
                 },
               }}
             >
@@ -628,12 +633,23 @@ const Event = ({ data, keyPrefix }) => {
             css={{
               gridRowStart: 'span 1',
               gridRowEnd: 'span 1',
-              gridColumnStart: 'span 2',
-              gridColumnEnd: 'span 2',
+              gridColumnStart: 'span 6',
+              gridColumnEnd: 'span 6',
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              pb: '1rem',
+              width: '100%',
+              '@bp1': {
+                alignItems: 'flex-end',
+                gridColumnStart: 'span 3',
+                gridColumnEnd: 'span 3',
+                width: 'inherit',
+              },
             }}
           >
             <Flex
-              // css={{ bc: 'transparent' }}
+              css={{ width: 'inherit' }}
               justify={{ '@initial': 'start' }}
               gap="5"
             >
@@ -641,7 +657,11 @@ const Event = ({ data, keyPrefix }) => {
                 data?.data.ticketUrl ? (
                   <MarketingButton
                     as="a"
-                    css={{ zIndex: '3' }}
+                    css={{
+                      zIndex: '3',
+                      width: 'inherit',
+                      justifyContent: 'center',
+                    }}
                     href={data?.data.ticketUrl}
                     icon={ArrowRightIcon}
                   >

@@ -121,31 +121,6 @@ const Info = ({ data }) => {
           <TagIcon className="hi2ri" style={css_icon} />
           <Paragraph>{tags}</Paragraph>
         </Box>
-        <Flex
-          // css={{ bc: 'transparent' }}
-          justify={{ '@initial': 'start' }}
-          gap="5"
-        >
-          {
-            info?.data?.ticketUrl ? (
-              <MarketingButton
-                as="a"
-                href={info?.data?.ticketUrl}
-                icon={ArrowRightIcon}
-              >
-                Get Tickets
-              </MarketingButton>
-            ) : null
-            // <MarketingButton
-            //   as="button"
-            //   css={{ cursor: 'not-allowed !important' }}
-            //   disabled={true}
-            //   icon={ArrowRightIcon}
-            // >
-            //   Get Tickets
-            // </MarketingButton>
-          }
-        </Flex>
       </Grid>
     </>
   )
@@ -177,12 +152,44 @@ const ListingEvent = ({ data }) => {
         css={{
           flexDirection: 'column',
           gap: '$1',
-          maxWidth: '75%',
-          '@bp1': { flexDirection: 'row' },
+          // maxWidth: '75%',
+          '@bp1': { flexDirection: 'column' },
         }}
       >
         {/* <Foo title={'Venue'}> */}
         <Info data={data} />
+        <Flex
+          css={{ flexDirection: 'column' }}
+          justify={{ '@initial': 'start' }}
+          gap="5"
+        >
+          {
+            data?.info?.data?.ticketUrl ? (
+              <MarketingButton
+                as="a"
+                css={{
+                  zIndex: '3',
+                  my: '$4',
+                  py: '$4',
+                  width: '100%',
+                  justifyContent: 'center',
+                }}
+                href={data?.info?.data?.ticketUrl}
+                icon={ArrowRightIcon}
+              >
+                Get Tickets
+              </MarketingButton>
+            ) : null
+            // <MarketingButton
+            //   as="button"
+            //   css={{ cursor: 'not-allowed !important' }}
+            //   disabled={true}
+            //   icon={ArrowRightIcon}
+            // >
+            //   Get Tickets
+            // </MarketingButton>
+          }
+        </Flex>
         {/* </Foo> */}
         {/* <Foo title={'Lineup'}>
           <Lineup data={lineup} />
