@@ -7,7 +7,7 @@ import {
 import {
   CalendarIcon,
   ClockIcon,
-  DotIcon,
+  // DotIcon,
   // PlusCircledIcon,
   // MinusCircledIcon,
 } from '@radix-ui/react-icons'
@@ -21,7 +21,7 @@ import {
   // Container,
   Flex,
   Grid,
-  Heading,
+  // Heading,
   Note,
   Paragraph,
   // Section,
@@ -30,29 +30,39 @@ import {
 // import { styled } from '~styles/system/stitches.config'
 import { TAGS } from '~utils/notion/helper'
 
-const Foo = ({ children, title }) => {
-  return (
-    <Grid
-      css={{
-        // my: '$6',
-        // py: '$6',
-        // borderTop: '1px solid $colors$gray11',
-        gridTemplateColumns: 'repeat(1, 1fr)',
-        minHeight: '20rem',
-        minWidth: '50%',
-        // gap: 5,
-        // '@bp1': { gridTemplateColumns: 'repeat(1, 1fr)' },
-      }}
-    >
-      <Box>
-        <Heading as="h3" size="3">
-          {title}
-        </Heading>
-      </Box>
-      {children}
-    </Grid>
-  )
-}
+// const Foo = ({ children, title }) => {
+//   return (
+//     <Grid
+//       css={{
+//         // my: '$6',
+//         // py: '$6',
+//         // borderTop: '1px solid $colors$gray11',
+//         gridTemplateColumns: 'repeat(1, 1fr)',
+//         minHeight: '20rem',
+//         minWidth: '50%',
+//         // gap: 5,
+//         // '@bp1': { gridTemplateColumns: 'repeat(1, 1fr)' },
+//       }}
+//     >
+//       <Box>
+//         <Text
+//           css={{
+//             borderTop: '1px solid $hiContrast',
+//             fontSize: '$9',
+//             fontWeight: 700,
+//             mt: '$6',
+//             mb: '$4',
+//             pt: '$6',
+//             pb: '$4',
+//           }}
+//         >
+//           {title}
+//         </Text>
+//       </Box>
+//       {children}
+//     </Grid>
+//   )
+// }
 const css_info = {
   display: 'flex',
   flexDirection: 'row',
@@ -66,11 +76,11 @@ const css_icon = {
 
 const css_gridListItems = {
   alignContent: 'flex-start',
-  position: 'absolute',
-  width: '100%',
-  '& > :first-child': {
-    marginTop: '$8',
-  },
+  // position: 'absolute',
+  // width: '100%',
+  // '& > :first-child': {
+  //   marginTop: '$8',
+  // },
 }
 const Info = ({ data }) => {
   // const data = mockData
@@ -114,25 +124,25 @@ const Info = ({ data }) => {
   )
 }
 
-const Lineup = ({ data }) => {
-  const items = data
-  if (items.length === 0) return null
-  return (
-    <>
-      <Grid columns="1" gap="3" css={css_gridListItems}>
-        {items.map((item, itemIdx) => (
-          <Box key={`der-${itemIdx}`} role="listitem" css={css_info}>
-            <DotIcon style={css_icon} />
-            <Paragraph>{item}</Paragraph>
-          </Box>
-        ))}
-      </Grid>
-    </>
-  )
-}
+// const Lineup = ({ data }) => {
+//   const items = data
+//   if (items.length === 0) return null
+//   return (
+//     <>
+//       <Grid columns="1" gap="3" css={css_gridListItems}>
+//         {items.map((item, itemIdx) => (
+//           <Box key={`der-${itemIdx}`} role="listitem" css={css_info}>
+//             <DotIcon style={css_icon} />
+//             <Paragraph>{item}</Paragraph>
+//           </Box>
+//         ))}
+//       </Grid>
+//     </>
+//   )
+// }
 
 const ListingEvent = ({ data }) => {
-  const lineup = _union(data?.info?.data.rollupShow, data?.info?.data.rollupLineup)
+  // const lineup = _union(data?.info?.data.rollupShow, data?.info?.data.rollupLineup)
   return (
     <>
       <Note>This page is in-progress.</Note>
@@ -144,12 +154,12 @@ const ListingEvent = ({ data }) => {
           '@bp1': { flexDirection: 'row' },
         }}
       >
-        <Foo title={'Info'}>
-          <Info data={data} />
-        </Foo>
-        <Foo title={'Lineup'}>
+        {/* <Foo title={'Venue'}> */}
+        <Info data={data} />
+        {/* </Foo> */}
+        {/* <Foo title={'Lineup'}>
           <Lineup data={lineup} />
-        </Foo>
+        </Foo> */}
       </Flex>
     </>
   )

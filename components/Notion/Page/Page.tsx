@@ -6,6 +6,7 @@ import useSWR, { useSWRConfig } from 'swr'
 
 import ContentNodes from '~components/Notion/ContentNodes'
 import NotionLayout, { ImageLead } from '~components/Notion/Layout'
+import { MetaShow } from '~components/Notion/Meta'
 // import { MetaTags } from '~components/Notion/Meta'
 // import { Event } from '~components/Notion/Page'
 import { ROUTE_TYPES } from '~utils/notion/helper'
@@ -127,6 +128,7 @@ const Page = ({ data, props }) => {
 
   const isEventListing = routeType === ROUTE_TYPES.events && !isIndex
   const isEpisodeListing = routeType === ROUTE_TYPES.podcasts && !isIndex
+  const isShowListing = routeType === ROUTE_TYPES.shows && !isIndex
 
   return (
     <>
@@ -155,6 +157,7 @@ const Page = ({ data, props }) => {
           />
         )}
         <>
+          {(isEventListing || isShowListing) && <MetaShow data={data} />}
           {/* {!isIndex && (
             <h2 className="text-3xl md:text-4xl" key={`h2-information--${id}`}>
               Information
