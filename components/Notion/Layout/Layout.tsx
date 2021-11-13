@@ -1,8 +1,10 @@
+import { format, parseISO } from 'date-fns'
 import Slugger from 'github-slugger'
 import useSWR from 'swr'
 
 import PageHeading from '~components/PageHeading'
 import Seo from '~components/Seo'
+import { ROUTE_TYPES } from '~utils/notion/helper'
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Layout = ({ id, children, data, routeType, url }) => {
@@ -12,7 +14,7 @@ const Layout = ({ id, children, data, routeType, url }) => {
   const {
     noIndex,
     published,
-    seoDescription,
+    seoDescription: description,
     seoImage,
     seoImageDescription,
     title,
@@ -23,6 +25,17 @@ const Layout = ({ id, children, data, routeType, url }) => {
   const seoImageData = !!images && images[seoImageSlug]
 
   const seoUrl = `https://jeromefitzgerald.com/${url}`
+
+  let seoDescription = description
+  if (routeType === ROUTE_TYPES.events && data?.slug !== ROUTE_TYPES.events) {
+    // const date = format(parseISO(data?.date?.start), `EEEE, MMMM do`)
+    const date = format(
+      parseISO(data?.date?.start),
+      `EEE MM/dd hh:mma`
+    ).toUpperCase()
+    seoDescription = `${date} – ${seoDescription}`
+  }
+
   const seo = {
     canonical: seoUrl,
     description: seoDescription,
@@ -47,7 +60,7 @@ const Layout = ({ id, children, data, routeType, url }) => {
   return (
     <>
       <Seo {...seo} />
-      <PageHeading title={seo.title} description={seo.description} />
+      <PageHeading title={seo.title} description={description} />
       {children}
     </>
   )

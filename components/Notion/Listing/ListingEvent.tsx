@@ -1,4 +1,5 @@
 import {
+  ArrowRightIcon,
   LocationMarkerIcon,
   MapIcon,
   TagIcon,
@@ -27,6 +28,7 @@ import {
   // Section,
   // Text,
 } from '~styles/system/components'
+import { MarketingButton } from '~styles/system/components/Button/MarketingButton'
 // import { styled } from '~styles/system/stitches.config'
 import { TAGS } from '~utils/notion/helper'
 
@@ -119,6 +121,31 @@ const Info = ({ data }) => {
           <TagIcon className="hi2ri" style={css_icon} />
           <Paragraph>{tags}</Paragraph>
         </Box>
+        <Flex
+          // css={{ bc: 'transparent' }}
+          justify={{ '@initial': 'start' }}
+          gap="5"
+        >
+          {
+            info?.data?.ticketUrl ? (
+              <MarketingButton
+                as="a"
+                href={info?.data?.ticketUrl}
+                icon={ArrowRightIcon}
+              >
+                Get Tickets
+              </MarketingButton>
+            ) : null
+            // <MarketingButton
+            //   as="button"
+            //   css={{ cursor: 'not-allowed !important' }}
+            //   disabled={true}
+            //   icon={ArrowRightIcon}
+            // >
+            //   Get Tickets
+            // </MarketingButton>
+          }
+        </Flex>
       </Grid>
     </>
   )

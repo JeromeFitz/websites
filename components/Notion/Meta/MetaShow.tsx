@@ -13,7 +13,7 @@ const rollupExclude = [
   'rollupShow',
 ]
 
-const MetaShow = ({ data, key }) => {
+const MetaShow = ({ data }) => {
   const { id } = data?.info
   const _data = data?.info?.data
   const rollupKeys = []
@@ -29,7 +29,7 @@ const MetaShow = ({ data, key }) => {
 
   return (
     <>
-      <Box css={{ my: '$8' }} key={`${key}--box`}>
+      <Box css={{ my: '$8' }}>
         <Text
           css={{
             borderTop: '1px solid $hiContrast',

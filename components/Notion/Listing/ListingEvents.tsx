@@ -637,25 +637,26 @@ const Event = ({ data, keyPrefix }) => {
               justify={{ '@initial': 'start' }}
               gap="5"
             >
-              {data?.data.ticketUrl ? (
-                <MarketingButton
-                  as="a"
-                  css={{ zIndex: '3' }}
-                  href={data?.data.ticketUrl}
-                  icon={ArrowRightIcon}
-                >
-                  Get Tickets
-                </MarketingButton>
-              ) : (
-                <MarketingButton
-                  as="button"
-                  css={{ cursor: 'not-allowed !important' }}
-                  disabled={true}
-                  icon={ArrowRightIcon}
-                >
-                  Get Tickets
-                </MarketingButton>
-              )}
+              {
+                data?.data.ticketUrl ? (
+                  <MarketingButton
+                    as="a"
+                    css={{ zIndex: '3' }}
+                    href={data?.data.ticketUrl}
+                    icon={ArrowRightIcon}
+                  >
+                    Get Tickets
+                  </MarketingButton>
+                ) : null
+                // <MarketingButton
+                //   as="button"
+                //   css={{ cursor: 'not-allowed !important' }}
+                //   disabled={true}
+                //   icon={ArrowRightIcon}
+                // >
+                //   Get Tickets
+                // </MarketingButton>
+              }
             </Flex>
           </Box>
         </Grid>
