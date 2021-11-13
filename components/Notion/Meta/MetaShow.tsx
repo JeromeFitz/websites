@@ -13,6 +13,7 @@ import getTitle from '~lib/notion/getTitle'
 import { Box, Flex, Grid, Heading, Paragraph, Text } from '~styles/system/components'
 import { MarketingButton } from '~styles/system/components/Button/MarketingButton'
 const MetaShow = ({ data }) => {
+  const { id } = data?.info
   const _data = data?.info?.data
   const rollupKeys = []
   _map(
@@ -25,7 +26,7 @@ const MetaShow = ({ data }) => {
 
   return (
     <>
-      <Box css={{ my: '$8' }}>
+      <Box key={`ms-${id}`} css={{ my: '$8' }}>
         <Flex justify={{ '@initial': 'start' }} gap="5">
           {_data?.ticketUrl ? (
             <MarketingButton as="a" href={_data?.ticketUrl} icon={ArrowRightIcon}>
@@ -71,7 +72,7 @@ const MetaShow = ({ data }) => {
             const metaSize = _size(meta)
             if (!meta || metaSize === 0) return null
 
-            const key = `rollupKey-${rollupKeyIdx}`
+            const key = `${id}-rollupKey-${rollupKeyIdx}`
             const title = pluralize(getTitle(rollupKey), metaSize)
 
             // if (rollupKey === 'rollupLineup') {
