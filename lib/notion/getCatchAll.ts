@@ -48,7 +48,6 @@ import {
 const useCache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE
 
 const slugger = new Slugger()
-const dataInitial = {}
 
 const addTime = (date, type) => {
   switch (type) {
@@ -780,8 +779,8 @@ class Properties {
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const normalizerProperties = (properties, _id) => {
-  const data: NormalizerProperties = dataInitial
   // @question(constructor) this needs to be reset each time
+  const data: NormalizerProperties = {}
   // console.dir(`> properties`)
   // console.dir(properties)
   // const getProperties = new Properties(_id)
