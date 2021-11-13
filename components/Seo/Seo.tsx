@@ -1,5 +1,5 @@
-// import { useRouter } from 'next/router'
 import _merge from 'lodash/merge'
+// import { useRouter } from 'next/router'
 import { NextSeo } from 'next-seo'
 import { memo } from 'react'
 
