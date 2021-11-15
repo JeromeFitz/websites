@@ -10,6 +10,8 @@ export const Link = styled('a', {
   textDecorationLine: 'none',
   textUnderlineOffset: '3px',
   textDecorationColor: '$slate4',
+  transition: 'all 0.25s ease-in-out',
+  '& > strong': { transition: 'all 0.25s ease-in-out' },
   WebkitTapHighlightColor: 'rgba(0,0,0,0)',
   lineHeight: 'inherit',
   '@hover': {
@@ -45,14 +47,33 @@ export const Link = styled('a', {
       contrast: {
         color: '$hiContrast',
         textDecoration: 'underline',
-        textDecorationColor: '$slate4',
+        textDecorationColor: '$slate7',
         '@hover': {
           '&:hover': {
-            textDecorationColor: '$slate7',
+            textDecorationColor: '$slate8',
           },
         },
         '&:focus': {
           outlineColor: '$slate8',
+        },
+      },
+      spotify: {
+        color: '$spotify-black',
+        textDecoration: 'underline',
+        textDecorationColor: '$spotify-black',
+        '.dark-theme &': {
+          color: '$spotify-white',
+          textDecorationColor: '$spotify-white',
+        },
+        '@hover': {
+          '&:hover': {
+            '& > strong': { color: '$spotify-green' },
+            color: '$slate12',
+            textDecorationColor: '$spotify-green',
+          },
+        },
+        '&:focus': {
+          outlineColor: '$spotify-green',
         },
       },
     },

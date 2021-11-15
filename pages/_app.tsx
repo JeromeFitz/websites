@@ -90,6 +90,9 @@ const globalStyles = globalCss({
   },
 
   ':root': {
+    '--colors-spotify-black': '#191414',
+    '--colors-spotify-green': '#1DB954',
+    '--colors-spotify-white': '#ffffff',
     '--width-1_3': '33.333333%',
     '--width-2_3': '66.666667%',
     '--width-1_4': '25%',
