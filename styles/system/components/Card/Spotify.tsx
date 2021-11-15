@@ -33,7 +33,13 @@ const Image = styled(NextImage, {
   position: 'relative',
 })
 
-const CardSpotify = ({ base64, children, image, slug }) => {
+const CardSpotify = ({
+  base64,
+  children,
+  image,
+  imageLabel = 'Spotify Description Coming Soon',
+  slug,
+}) => {
   return (
     <CardOuter>
       <Box as="div" css={{ borderRadius: '$4', position: 'relative' }}>
@@ -95,12 +101,11 @@ const CardSpotify = ({ base64, children, image, slug }) => {
             }}
           >
             <Image
-              alt={`Spotify Description Coming Soon`}
+              alt={imageLabel}
               blurDataURL={base64}
               key={slug}
               placeholder="blur"
               priority={false}
-              title={`Spotify Description Coming Soon`}
               {...image}
             />
           </Flex>

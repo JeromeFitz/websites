@@ -76,7 +76,6 @@ const ImageWithBackgroundBlur = ({
         priority={priority}
         quality={100}
         sizes={sizes}
-        title={description}
         {...image}
       />
     </ImageContainer>

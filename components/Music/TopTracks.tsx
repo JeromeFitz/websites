@@ -81,13 +81,15 @@ const TT = () => {
       {_map(data?.tracks, (item, itemIdx: number) => {
         const { base64, img, slug } = item.album.meta
         const description = item.album.name
-        const linkLabel = `Link to ${item.artist.name}’s “${item.album.name}” on Spotify`
+
+        const imageLabel = `Image of ${item.artist.name}’s “${item.album.name}” album cover`
+        // const linkLabel = `Link to ${item.artist.name}’s “${item.album.name}” on Spotify`
 
         return (
           <Box key={`top10tracks--${itemIdx}`}>
             <ImageWithBackgroundBlur
               base64={base64}
-              description={description}
+              description={imageLabel}
               image={img}
               slug={slug}
             />
@@ -108,11 +110,9 @@ const TT = () => {
               <Paragraph size="1" css={{ py: '$2' }}>
                 <>
                   <Link
-                    aria-label={linkLabel}
                     href={item.album.url}
                     rel="noopener noreferrer"
                     target="_blank"
-                    title={linkLabel}
                     variant="spotify"
                   >
                     Join on <strong>Spotify</strong>.
