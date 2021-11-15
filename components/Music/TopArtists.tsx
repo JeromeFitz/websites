@@ -86,14 +86,15 @@ const TA = () => {
       {_map(artists, (item, itemIdx: number) => {
         const { genres, name } = item
         const { base64, img, slug } = item.meta
-        const description = name
-        const linkLabel = `Link to ${name}” on Spotify`
+
+        const imageLabel = `Photo of ${name}`
+        // const linkLabel = `Link to ${name}” on Spotify`
 
         return (
           <Box key={`top10artists--${itemIdx}`}>
             <ImageWithBackgroundBlur
               base64={base64}
-              description={description}
+              description={imageLabel}
               image={img}
               slug={slug}
             />
@@ -129,11 +130,9 @@ const TA = () => {
               <Paragraph size="1" css={{ py: '$2' }}>
                 <>
                   <Link
-                    aria-label={linkLabel}
                     href={item.url}
                     rel="noopener noreferrer"
                     target="_blank"
-                    title={linkLabel}
                     variant="spotify"
                   >
                     Join on <strong>Spotify</strong>.

@@ -163,7 +163,8 @@ const NowPlaying = () => {
   const imageSlug = album?.meta?.slug
   const imageData = album?.meta
 
-  const linkLabel = `Link to ${artist.name}’s “${track.name}” on Spotify`
+  const imageLabel = `Image of ${artist.name}’s “${track.name}” album cover`
+  // const linkLabel = `Link to ${artist.name}’s “${track.name}” on Spotify`
 
   return (
     <Section>
@@ -196,7 +197,12 @@ const NowPlaying = () => {
           </NextLink>
           .)
         </Paragraph>
-        <CardSpotify base64={base64} image={imageData?.img} slug={imageSlug}>
+        <CardSpotify
+          base64={base64}
+          image={imageData?.img}
+          imageLabel={imageLabel}
+          slug={imageSlug}
+        >
           <Paragraph
             size="2"
             css={{ color: '$hiContrast', fontWeight: 'bold', fontSize: '$7' }}
@@ -246,11 +252,9 @@ const NowPlaying = () => {
           <Paragraph size="1" css={{ py: '$2' }}>
             <>
               <Link
-                aria-label={linkLabel}
                 href={track.url}
                 rel="noopener noreferrer"
                 target="_blank"
-                title={linkLabel}
                 variant="spotify"
               >
                 Join on <strong>Spotify</strong>.

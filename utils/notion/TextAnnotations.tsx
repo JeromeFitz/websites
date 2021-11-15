@@ -1,4 +1,4 @@
-import { ArrowTopRightIcon } from '@radix-ui/react-icons'
+import { ExternalLinkIcon } from '@radix-ui/react-icons'
 import NextLink from 'next/link'
 import { useSound } from 'use-sound'
 
@@ -52,7 +52,7 @@ const TextAnnotationLink = ({ children, href }) => {
       >
         {children}
         <Flex as="span" css={{ color: '$slate8', display: 'inline-flex', mx: '$1' }}>
-          <ArrowTopRightIcon />
+          <ExternalLinkIcon />
         </Flex>
       </Link>
     )
