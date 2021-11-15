@@ -110,7 +110,7 @@
   },
   "devDependencies": {
     "@jeromefitz/codestyle": "5.1.3",
-    "@jeromefitz/git-cz": "11.1.3",
+    "@jeromefitz/git-cz": "11.2.0",
     "@jeromefitz/semantic": "5.1.3",
     "@next/bundle-analyzer": "12.0.3",
     "@types/body-scroll-lock": "3.1.0",
