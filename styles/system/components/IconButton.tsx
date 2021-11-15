@@ -81,7 +81,9 @@ export const IconButton = styled('button', {
           },
         },
         '&:focus': {
-          boxShadow: 'inset 0 0 0 1px $colors$slateA8, 0 0 0 1px $colors$slateA8',
+          // boxShadow: 'inset 0 0 0 1px $colors$slateA8, 0 0 0 1px $colors$slateA8',
+          borderRadius: '$1',
+          boxShadow: '0 0 0 2px $colors$gray1, 0 0 0 3px $colors$hiContrast',
         },
         '&:active': {
           backgroundColor: '$slateA4',

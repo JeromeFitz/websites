@@ -46,7 +46,6 @@ const ThemeToggle = (props) => {
           aria-label={content}
           onClick={() => handleClick()}
           cursor="pointer"
-          variant="ghost"
           {...props}
         >
           {audio ? <SpeakerModerateIcon /> : <SpeakerOffIcon />}

@@ -32,7 +32,7 @@ const globalStyles = globalCss({
   body: {
     margin: 0,
     color: '$colors$gray12',
-    backgroundColor: '$colors$gray1',
+
     // fontFamily: '$f37bella',
     // fontFamily: '$f37bolton',
     // fontFamily: '$f37ginger',
@@ -40,12 +40,14 @@ const globalStyles = globalCss({
     // fontFamily: '$inter',
     // fontFamily: '$name',
     fontFamily: '$sans',
+
     WebkitFontSmoothing: 'antialiased',
     MozOsxFontSmoothing: 'grayscale',
     WebkitTextSizeAdjust: '100%',
 
+    backgroundColor: '$colors$gray1',
     '.dark-theme &': {
-      backgroundColor: '$gray1',
+      backgroundColor: '$colors$gray1',
     },
   },
 

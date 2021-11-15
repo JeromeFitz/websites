@@ -6,11 +6,12 @@ export const Link = styled('a', {
   alignItems: 'center',
   gap: '$1',
   flexShrink: 0,
+  border: 'none',
   outline: 'none',
   textDecorationLine: 'none',
   textUnderlineOffset: '3px',
   textDecorationColor: '$slate4',
-  transition: 'all 0.25s ease-in-out',
+  transition: 'color 0.25s, text-decoration-color 0.25s ease-in-out',
   '& > strong': { transition: 'all 0.25s ease-in-out' },
   WebkitTapHighlightColor: 'rgba(0,0,0,0)',
   lineHeight: 'inherit',
@@ -20,10 +21,9 @@ export const Link = styled('a', {
     },
   },
   '&:focus': {
-    outlineWidth: '2px',
-    outlineStyle: 'solid',
-    outlineOffset: '2px',
     textDecorationLine: 'none',
+    borderRadius: '$1',
+    boxShadow: '0 0 0 2px $colors$gray1, 0 0 0 3px $colors$hiContrast',
   },
   [`& ${Text}`]: {
     color: 'inherit',
@@ -35,6 +35,7 @@ export const Link = styled('a', {
         textDecorationColor: '$blue4',
         '&:focus': {
           outlineColor: '$blue8',
+          boxShadow: '0 0 0 2px $colors$gray1, 0 0 0 3px $colors$blue4',
         },
       },
       subtle: {
@@ -74,6 +75,7 @@ export const Link = styled('a', {
         },
         '&:focus': {
           outlineColor: '$spotify-green',
+          boxShadow: '0 0 0 2px $colors$gray1, 0 0 0 3px $colors$spotify-green',
         },
       },
     },
