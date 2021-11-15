@@ -555,7 +555,7 @@ const Event = ({ data, keyPrefix }) => {
                   }}
                 />
                 <Box>
-                  <ListItem title={format(iso, `hh:mma z`)} />
+                  <ListItem title={format(iso, `hh:mma z (EEEE)`)} />
                 </Box>
               </Flex>
             </Box>

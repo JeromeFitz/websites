@@ -1,3 +1,4 @@
+import { ExternalLinkIcon } from '@radix-ui/react-icons'
 import _map from 'lodash/map'
 import { useEffect, useState } from 'react'
 import useSWR from 'swr'
@@ -12,7 +13,9 @@ import {
   Box,
   Container,
   Grid,
+  Flex,
   Heading,
+  Link,
   Paragraph,
   Skeleton,
 } from '~styles/system/components'
@@ -78,6 +81,7 @@ const TT = () => {
       {_map(data?.tracks, (item, itemIdx: number) => {
         const { base64, img, slug } = item.album.meta
         const description = item.album.name
+        const linkLabel = `Link to ${item.artist.name}’s “${item.album.name}” on Spotify`
 
         return (
           <Box key={`top10tracks--${itemIdx}`}>
@@ -87,12 +91,12 @@ const TT = () => {
               image={img}
               slug={slug}
             />
-            <Container css={{ my: '$3' }}>
-              <Heading size="2" css={{ my: '$1' }}>
-                {lpad(itemIdx + 1)}. “{item.track.name}”
+            <Container css={{ my: '$3', mx: '-$3' }}>
+              <Heading size="3" css={{ my: '$2' }}>
+                {lpad(itemIdx + 1)}. {item.artist.name}
               </Heading>
-              <Heading size="1" css={{ my: '$1' }}>
-                {item.artist.name}
+              <Heading size="2" css={{ my: '$2' }}>
+                “{item.track.name}”
               </Heading>
 
               <Paragraph>
@@ -100,6 +104,30 @@ const TT = () => {
                   <em>Off of... </em>
                 </small>
                 {description} ({item.album.year})
+              </Paragraph>
+              <Paragraph size="1" css={{ py: '$2' }}>
+                <>
+                  <Link
+                    aria-label={linkLabel}
+                    href={item.album.url}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    title={linkLabel}
+                    variant="spotify"
+                  >
+                    Join on <strong>Spotify</strong>.
+                    <Flex
+                      as="span"
+                      css={{
+                        // color: '$slate8',
+                        display: 'inline-block',
+                        ml: '$1',
+                      }}
+                    >
+                      <ExternalLinkIcon />
+                    </Flex>
+                  </Link>
+                </>
               </Paragraph>
             </Container>
           </Box>
@@ -113,7 +141,7 @@ const TopTracks = () => {
   return (
     <>
       <Box css={{ position: 'relative', mt: '$8' }}>
-        <Heading size="2" as="h2" css={{ my: '$5' }}>
+        <Heading size="3" as="h2" css={{ my: '$5' }}>
           Top Tracks
         </Heading>
         <Grid

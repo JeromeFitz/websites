@@ -163,11 +163,13 @@ const NowPlaying = () => {
   const imageSlug = album?.meta?.slug
   const imageData = album?.meta
 
+  const linkLabel = `Link to ${artist.name}’s “${track.name}” on Spotify`
+
   return (
     <Section>
       <Container>
         {/* <Header style={WEBKIT_BACKGROUND__BREAK}>{title}</Header> */}
-        <Heading size="2" css={{ mb: '$3' }}>
+        <Heading as="h3" size="4" css={{ mb: '$3' }}>
           {title}
         </Heading>
         <Separator css={{ margin: '0', width: '100% !important' }} />
@@ -235,30 +237,27 @@ const NowPlaying = () => {
               </Flex>
             ))}
           </Flex>
-          <Paragraph size="2" css={{ color: '$hiContrast', pb: '$1' }}>
+          <Paragraph size="2" css={{ color: '$hiContrast', py: '$1' }}>
             <>
               Off of “<span className={cx('font-bold')}>{album.name}</span>” released
               in <span className={cx('font-bold')}>{album.year}</span>.
             </>
           </Paragraph>
-          <Paragraph size="1" css={{ pb: '$1' }}>
+          <Paragraph size="1" css={{ py: '$2' }}>
             <>
               <Link
-                aria-label={`Link to ${track.name}`}
-                className={cx(
-                  'underline-style-solid underline-offset-md underline-thickness-md',
-                  '_text-black'
-                )}
-                href={track.uri}
+                aria-label={linkLabel}
+                href={track.url}
                 rel="noopener noreferrer"
                 target="_blank"
-                title={`Link to ${track.name}`}
+                title={linkLabel}
+                variant="spotify"
               >
-                Join along here.
+                Join on <strong>Spotify</strong>.
                 <Flex
                   as="span"
                   css={{
-                    color: '$slate8',
+                    // color: '$slate8',
                     display: 'inline-block',
                     ml: '$1',
                   }}

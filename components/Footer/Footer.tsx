@@ -1,5 +1,5 @@
 import {
-  ArrowTopRightIcon,
+  ExternalLinkIcon,
   // ChatBubbleIcon,
   GitHubLogoIcon,
   ImageIcon,
@@ -239,7 +239,7 @@ const Footer = () => {
                     </Box>
                     GitHub
                     <Flex as="span" css={{ color: '$slate8', ml: '$1' }}>
-                      <ArrowTopRightIcon />
+                      <ExternalLinkIcon />
                     </Flex>
                   </IconLink>
                 </Text>
@@ -257,7 +257,7 @@ const Footer = () => {
                     </Box>
                     Instagram
                     <Flex as="span" css={{ color: '$slate8', ml: '$1' }}>
-                      <ArrowTopRightIcon />
+                      <ExternalLinkIcon />
                     </Flex>
                   </IconLink>
                 </Text>
@@ -275,7 +275,7 @@ const Footer = () => {
                     </Box>
                     LinkedIn
                     <Flex as="span" css={{ color: '$slate8', ml: '$1' }}>
-                      <ArrowTopRightIcon />
+                      <ExternalLinkIcon />
                     </Flex>
                   </IconLink>
                 </Text>
@@ -293,7 +293,7 @@ const Footer = () => {
                     </Box>
                     Twitter
                     <Flex as="span" css={{ color: '$slate8', ml: '$1' }}>
-                      <ArrowTopRightIcon />
+                      <ExternalLinkIcon />
                     </Flex>
                   </IconLink>
                 </Text>

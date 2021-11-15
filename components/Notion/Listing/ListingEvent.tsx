@@ -103,7 +103,7 @@ const Info = ({ data }) => {
         </Box>
         <Box role="listitem" css={css_info}>
           <ClockIcon style={css_icon} />
-          <Paragraph>{format(iso, `hh:mma z`)}</Paragraph>
+          <Paragraph>{format(iso, `hh:mma z (EEEE)`)}</Paragraph>
         </Box>
         <Box role="listitem" css={css_info}>
           <MapIcon className="hi2ri" style={css_icon} />

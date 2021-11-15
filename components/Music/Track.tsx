@@ -11,10 +11,10 @@ import lpad from '~utils/lpad'
 const Track = (item) => {
   const { album, artist, genres, loading, ranking, track } = item
   const handleClick = () => {
-    window.open(track.uri, '_blank', 'noopener,noreferrer')
+    window.open(track.url, '_blank', 'noopener,noreferrer')
   }
   // const handleClick = () => {
-  //   window.open(artist.uri, '_blank', 'noopener,noreferrer')
+  //   window.open(artist.url, '_blank', 'noopener,noreferrer')
   // }
 
   // console.dir(`item`)
@@ -49,7 +49,7 @@ const Track = (item) => {
                       'underline-style-solid underline-offset-md underline-thickness-md',
                       '_text-black'
                     )}
-                    href={track.uri}
+                    href={track.url}
                     target="_blank"
                     title={`Link to ${track.name}`}
                     rel="noopener noreferrer"

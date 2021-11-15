@@ -1,3 +1,4 @@
+import { ExternalLinkIcon } from '@radix-ui/react-icons'
 import _map from 'lodash/map'
 // import _reverse from 'lodash/reverse'
 import React, { useEffect, useState } from 'react'
@@ -14,8 +15,11 @@ import {
   Badge,
   Box,
   Container,
+  Flex,
   Grid,
   Heading,
+  Link,
+  Paragraph,
   Skeleton,
 } from '~styles/system/components'
 import lpad from '~utils/lpad'
@@ -83,6 +87,7 @@ const TA = () => {
         const { genres, name } = item
         const { base64, img, slug } = item.meta
         const description = name
+        const linkLabel = `Link to ${name}” on Spotify`
 
         return (
           <Box key={`top10artists--${itemIdx}`}>
@@ -92,13 +97,13 @@ const TA = () => {
               image={img}
               slug={slug}
             />
-            <Container css={{ my: '$3' }}>
-              <Heading size="2">
+            <Container css={{ my: '$3', mx: '-$3' }}>
+              <Heading size="3" css={{ my: '$2' }}>
                 {lpad(itemIdx + 1)}. {name}
               </Heading>
             </Container>
-            <Container as="ul">
-              {_map(genres.slice(0, 10), (genre, genreIdx) => (
+            <Container as="ul" css={{ unset: 'all', mx: '-$3' }}>
+              {_map(genres.slice(0, 4), (genre, genreIdx) => (
                 <Badge
                   as="li"
                   key={`genre-${genreIdx}`}
@@ -115,6 +120,37 @@ const TA = () => {
                 </Badge>
               ))}
             </Container>
+            <Container css={{ my: '$3', mx: '-$1' }}>
+              {genres.length > 4 && (
+                <Paragraph size="1" css={{ mt: '-$3', pb: '$2' }}>
+                  <small>+ {genres.length - 4} more</small>
+                </Paragraph>
+              )}
+              <Paragraph size="1" css={{ py: '$2' }}>
+                <>
+                  <Link
+                    aria-label={linkLabel}
+                    href={item.url}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    title={linkLabel}
+                    variant="spotify"
+                  >
+                    Join on <strong>Spotify</strong>.
+                    <Flex
+                      as="span"
+                      css={{
+                        // color: '$slate8',
+                        display: 'inline-block',
+                        ml: '$1',
+                      }}
+                    >
+                      <ExternalLinkIcon />
+                    </Flex>
+                  </Link>
+                </>
+              </Paragraph>
+            </Container>
           </Box>
         )
       })}
@@ -125,7 +161,7 @@ const TA = () => {
 const TAContainer = () => {
   return (
     <Box css={{ position: 'relative', mt: '$8' }}>
-      <Heading size="2" as="h2" css={{ my: '$5' }}>
+      <Heading size="3" as="h2" css={{ my: '$5' }}>
         Top Artists
       </Heading>
       <Grid

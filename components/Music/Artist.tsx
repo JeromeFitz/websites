@@ -12,7 +12,7 @@ import lpad from '~utils/lpad'
 const Artist = (artist) => {
   const { loading, ranking } = artist
   const handleClick = () => {
-    window.open(artist.uri, '_blank', 'noopener,noreferrer')
+    window.open(artist.url, '_blank', 'noopener,noreferrer')
   }
 
   // console.dir(`artistd`)
@@ -79,7 +79,7 @@ const Artist = (artist) => {
                       'underline-style-solid underline-offset-md underline-thickness-md',
                       '_text-black'
                     )}
-                    href={artist.uri}
+                    href={artist.url}
                     rel="noopener noreferrer"
                     target="_blank"
                     title={`Link to ${artist.name}`}
