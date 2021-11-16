@@ -176,6 +176,7 @@ interface NormalizerProperties {
    */
   events?: string[]
   peopleCast?: string[]
+  peopleCastGuest?: string[]
   peopleCastPast?: string[]
   peopleCrew?: string[]
   peopleCrewPast?: string[]
@@ -213,6 +214,7 @@ interface NormalizerProperties {
    * @rollup
    */
   rollupCast?: any[string]
+  rollupCastGuest?: any[string]
   rollupCastPast?: any[string]
   rollupCrew?: any[string]
   rollupDirector?: any[string]
@@ -337,15 +339,20 @@ const getTypeRichTextNormalized = (data: any) => {
 }
 
 const getTypeRollupNormalized = (data: any) => {
-  // console.dir(`> getTypeRollupNormalized`)
+  // // console.dir(`> getTypeRollupNormalized`)
   // console.dir(data)
-  // console.dir(data?.rollup?.array)
+  // // console.dir(data?.rollup?.array)
   // _map(data?.rollup?.array, (item) => {
-  //   console.dir(item)
-  //   // console.dir(item?.title[0]?.plain_text)
-  //   console.dir(getTypeTitleNormalized(item))
-  //   console.dir(`---`)
+  //   // console.dir(item)
+  //   if (item?.type === 'rollup') {
+  //     console.dir(item)
+  //     const foo = getTypeRollupNormalized(item)
+  //     console.dir(`foo`)
+  //     console.dir(foo)
+  //     console.dir(`---`)
+  //   }
   // })
+
   return _sortBy(_map(data?.rollup?.array, (item) => getTypeTitleNormalized(item)))
 }
 
@@ -577,6 +584,9 @@ class Properties {
   [PROPERTIES.peopleCast](value) {
     return this.relation(value)
   }
+  [PROPERTIES.peopleCastGuest](value) {
+    return this.relation(value)
+  }
   [PROPERTIES.peopleCastPast](value) {
     return this.relation(value)
   }
@@ -677,6 +687,9 @@ class Properties {
   }
   // show
   [PROPERTIES.rollupCast](value) {
+    return this.rollup(value)
+  }
+  [PROPERTIES.rollupCastGuest](value) {
     return this.rollup(value)
   }
   [PROPERTIES.rollupCastPast](value) {

@@ -5,6 +5,7 @@ import React from 'react'
 
 import { Breakout } from '~components/Layout'
 import { ImageWithBackgroundBlur } from '~components/Notion/Layout/ImageLead'
+import { IMAGE__PLACEHOLDER } from '~lib/constants'
 import { Badge, Box, Grid, Paragraph, Spacer, Text } from '~styles/system/components'
 import { Card } from '~styles/system/components/Card'
 import {
@@ -38,8 +39,25 @@ const Shows = ({ images, items }) => {
         //   ? imageData.base64
         //   : IMAGE__PLACEHOLDER?.meta?.base64
 
-        if (!hasImage) return null
-        const { base64, img, slug: imgSlug } = imageData
+        let base64, img, imgSlug
+        if (!hasImage) {
+          // console.dir(item)
+          // console.dir(`imageSlug`)
+          // console.dir(imageSlug)
+          /**
+           * @hack fallback
+           */
+          base64 = IMAGE__PLACEHOLDER.meta.base64
+          img = IMAGE__PLACEHOLDER.meta.img
+          imgSlug = IMAGE__PLACEHOLDER.meta.slug
+          img = { ...img, src: seoImage }
+          return null
+        } else {
+          // const { base64, img, slug: imgSlug } = imageData
+          base64 = imageData?.base64
+          img = imageData?.img
+          imgSlug = imageData?.slug
+        }
 
         return (
           <CardOuter key={`s-${itemIdx}`}>

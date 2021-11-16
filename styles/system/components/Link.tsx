@@ -25,6 +25,10 @@ export const Link = styled('a', {
     borderRadius: '$1',
     boxShadow: '0 0 0 2px $colors$gray1, 0 0 0 3px $colors$hiContrast',
   },
+  '&:focus:not(:focus-visible)': {
+    boxShadow: 'none',
+    textDecorationLine: 'underline',
+  },
   [`& ${Text}`]: {
     color: 'inherit',
   },

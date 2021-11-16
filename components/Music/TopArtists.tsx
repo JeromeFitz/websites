@@ -1,4 +1,4 @@
-import { ExternalLinkIcon } from '@radix-ui/react-icons'
+import { CrossCircledIcon, ExternalLinkIcon } from '@radix-ui/react-icons'
 import _map from 'lodash/map'
 // import _reverse from 'lodash/reverse'
 import React, { useEffect, useState } from 'react'
@@ -48,6 +48,25 @@ const TA = () => {
   }, [time_range])
 
   const loading = !data && !error
+
+  if (!data?.isPlaying)
+    return (
+      <Flex justify="start" align="center">
+        <Paragraph>
+          <Flex
+            as="span"
+            css={{
+              // color: '$slate8',
+              display: 'inline-block',
+              mr: '$1',
+            }}
+          >
+            <CrossCircledIcon />
+          </Flex>
+          Spotify API is currently down
+        </Paragraph>
+      </Flex>
+    )
 
   if (loading) {
     return (

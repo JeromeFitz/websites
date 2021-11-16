@@ -1,19 +1,24 @@
 import _map from 'lodash/map'
 import _size from 'lodash/size'
+// import _sortBy from 'lodash/sortBy'
 import _startsWith from 'lodash/startsWith'
 import pluralize from 'pluralize'
+// import useSWR from 'swr'
+import useSWRImmutable from 'swr/immutable'
 
+import fetcher from '~lib/fetcher'
 import getTitle from '~lib/notion/getTitle'
 import { Box, Flex, Grid, Heading, Paragraph, Text } from '~styles/system/components'
 
 const rollupExclude = [
+  // 'rollupCastPast',
   'rollupVenue',
   'rollupTags',
   'rollupTagsSecondary',
   'rollupShow',
 ]
 
-const MetaShow = ({ data }) => {
+const MetaShow = ({ data, routeType }) => {
   const { id } = data?.info
   const _data = data?.info?.data
   const rollupKeys = []
@@ -25,6 +30,10 @@ const MetaShow = ({ data }) => {
 
   let size = 0
   _map(rollupKeys, (r) => (size = size + _size(_data[r])))
+
+  // console.dir(`rollupKeys`)
+  // console.dir(rollupKeys)
+
   if (size === 0) return null
 
   return (
@@ -60,42 +69,75 @@ const MetaShow = ({ data }) => {
               return null
 
             const key = `${id}-rollupKey-${rollupKeyIdx}`
-            const title = pluralize(getTitle(rollupKey), metaSize)
-
-            // if (rollupKey === 'rollupLineup') {
-            //   meta.unshift(_data['rollupShow'])
-            // }
 
             return (
-              <Flex
-                direction="column"
-                css={{
-                  gridColumnStart: 'span 2',
-                  '@bp1': { gridColumnStart: metaSize > 4 ? 'span 2' : 'span 1' },
-                }}
+              <Rollup
+                _key={key}
+                data={_data}
                 key={key}
-              >
-                <Heading
-                  size="3"
-                  css={{ borderTop: '1px solid $hiContrast', py: '$3' }}
-                >
-                  {title}
-                </Heading>
-                <Box as="ul">
-                  {_map(meta, (item, itemIdx) => {
-                    const keySub = `${key}-${itemIdx}`
-                    return (
-                      <Box as="li" key={keySub} css={{}}>
-                        <Paragraph size="2">{item}</Paragraph>
-                      </Box>
-                    )
-                  })}
-                </Box>
-              </Flex>
+                rollupKey={rollupKey}
+                routeType={routeType}
+              />
             )
           })}
         </Grid>
       </Box>
+    </>
+  )
+}
+
+const Rollup = ({ _key, data, rollupKey, routeType }) => {
+  const meta = data[rollupKey]
+  const metaSize = _size(meta)
+  const title = pluralize(getTitle(rollupKey), metaSize)
+
+  return (
+    <>
+      <Flex
+        direction="column"
+        css={{
+          gridColumnStart: 'span 2',
+          '@bp1': { gridColumnStart: metaSize > 4 ? 'span 2' : 'span 1' },
+        }}
+      >
+        <Heading size="3" css={{ borderTop: '1px solid $hiContrast', py: '$3' }}>
+          {title}
+        </Heading>
+        <Box as="ul">
+          {_map(meta, (item, itemIdx) => {
+            const keySub = `${_key}-${itemIdx}`
+            if (rollupKey === 'rollupCast' && routeType === 'events') {
+              return <Cast data={data} key={keySub} />
+            }
+            return (
+              <Box as="li" key={keySub} css={{}}>
+                <Paragraph size="2">{item}</Paragraph>
+              </Box>
+            )
+          })}
+        </Box>
+      </Flex>
+    </>
+  )
+}
+
+const Cast = ({ data }) => {
+  const { data: showData } = useSWRImmutable(
+    [`/api/notion/pages/${data?.shows[0]}`],
+    (url) => fetcher(url),
+    {}
+  )
+  const cast = showData?.data?.rollupCast
+  if (!cast) return null
+  return (
+    <>
+      {_map(cast, (item, itemIdx) => {
+        return (
+          <Box as="li" css={{}} key={`iiii-${itemIdx}`}>
+            <Paragraph size="2">{item}</Paragraph>
+          </Box>
+        )
+      })}
     </>
   )
 }

@@ -135,10 +135,10 @@ const dev = [
 
 // @todo(dynamic) notion api, upcoming event or evergreen info
 const Banner = () => {
-  const href = '/playground/events'
-  const title = 'New Website released!'
-  const textButton = 'Blog'
-  const hasBanner = false
+  const href = '/events/2021/11/20/the-playlist'
+  const title = 'Next Show: SAT 11/20 09:30PM, The Playlist!'
+  const textButton = 'Info'
+  const hasBanner = true
   if (!hasBanner) return null
   return (
     <NextLink href={href} passHref>

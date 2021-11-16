@@ -158,7 +158,7 @@ const Page = ({ data, ...props }) => {
         )}
         <>
           {(isEventListing || isShowListing) && (
-            <MetaShow data={data} key={`${id}--metashow`} />
+            <MetaShow data={data} key={`${id}--metashow`} routeType={routeType} />
           )}
           {/* {!isIndex && (
             <h2 className="text-3xl md:text-4xl" key={`h2-information--${id}`}>
