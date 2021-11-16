@@ -1,6 +1,6 @@
 import { CrossCircledIcon, ExternalLinkIcon } from '@radix-ui/react-icons'
 import _map from 'lodash/map'
-// import _reverse from 'lodash/reverse'
+import _size from 'lodash/size'
 import React, { useEffect, useState } from 'react'
 import useSWR from 'swr'
 import _title from 'title'
@@ -49,24 +49,7 @@ const TA = () => {
 
   const loading = !data && !error
 
-  if (!data?.isPlaying)
-    return (
-      <Flex justify="start" align="center">
-        <Paragraph>
-          <Flex
-            as="span"
-            css={{
-              // color: '$slate8',
-              display: 'inline-block',
-              mr: '$1',
-            }}
-          >
-            <CrossCircledIcon />
-          </Flex>
-          Spotify API is currently down
-        </Paragraph>
-      </Flex>
-    )
+  const artists = data?.artists || []
 
   if (loading) {
     return (
@@ -98,7 +81,24 @@ const TA = () => {
     )
   }
 
-  const artists = data?.artists
+  if (_size(artists) === 0)
+    return (
+      <Flex justify="start" align="center">
+        <Paragraph>
+          <Flex
+            as="span"
+            css={{
+              // color: '$slate8',
+              display: 'inline-block',
+              mr: '$1',
+            }}
+          >
+            <CrossCircledIcon />
+          </Flex>
+          Spotify API is currently down for: <code>./v1/me/top/artists</code>
+        </Paragraph>
+      </Flex>
+    )
 
   return (
     <>

@@ -1,5 +1,6 @@
 import { CrossCircledIcon, ExternalLinkIcon } from '@radix-ui/react-icons'
 import _map from 'lodash/map'
+import _size from 'lodash/size'
 import { useEffect, useState } from 'react'
 import useSWR from 'swr'
 
@@ -10,6 +11,7 @@ import {
 import useSpotify from '~hooks/useSpotify'
 import fetcher from '~lib/fetcher'
 import {
+  // Badge,
   Box,
   Container,
   Grid,
@@ -45,25 +47,7 @@ const TT = () => {
   }, [time_range])
 
   const loading = !data && !error
-
-  if (!data?.isPlaying)
-    return (
-      <Flex justify="start" align="center">
-        <Paragraph>
-          <Flex
-            as="span"
-            css={{
-              // color: '$slate8',
-              display: 'inline-block',
-              mr: '$1',
-            }}
-          >
-            <CrossCircledIcon />
-          </Flex>
-          Spotify API is currently down
-        </Paragraph>
-      </Flex>
-    )
+  const tracks = data?.tracks || []
 
   if (loading) {
     return (
@@ -95,9 +79,28 @@ const TT = () => {
     )
   }
 
+  if (_size(tracks) === 0)
+    return (
+      <Flex justify="start" align="center">
+        <Paragraph>
+          <Flex
+            as="span"
+            css={{
+              // color: '$slate8',
+              display: 'inline-block',
+              mr: '$1',
+            }}
+          >
+            <CrossCircledIcon />
+          </Flex>
+          Spotify API is currently down for: <code>./v1/me/top/tracks</code>
+        </Paragraph>
+      </Flex>
+    )
+
   return (
     <>
-      {_map(data?.tracks, (item, itemIdx: number) => {
+      {_map(tracks, (item, itemIdx: number) => {
         const { base64, img, slug } = item.album.meta
         const description = item.album.name
 
