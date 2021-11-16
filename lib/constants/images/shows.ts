@@ -194,6 +194,19 @@ const IMAGE__FALLBACKS__SHOWS = {
       },
       url: 'https://cdn.jerandky.com/jerandky.com/podcasts/knockoffs/season-01/_original/knockoffs--s01e00--cover-art--final.jpg',
     },
+  'httpscdnjeromefitzgeraldcomjeromefitzgeraldcomimages201912_originalwz--squatters--mike-rubinojpg':
+    {
+      base64:
+        'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAADAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAf/xAAgEAABAwQCAwAAAAAAAAAAAAABAAIDBAUGEQcxEhNB/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/EABURAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIRAxEAPwCFu5Dy21ksteQV9FHOTPJHTSephe4nZ8W6A6HQ+IiIWP/Z',
+      img: {
+        src: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2019/12/_original/wz--squatters--mike-rubino.jpg',
+        width: 2048,
+        height: 1367,
+        type: 'jpg',
+      },
+      slug: 'httpscdnjeromefitzgeraldcomjeromefitzgeraldcomimages201912_originalwz--squatters--mike-rubinojpg',
+      url: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2019/12/_original/wz--squatters--mike-rubino.jpg',
+    },
 }
 
 export default IMAGE__FALLBACKS__SHOWS

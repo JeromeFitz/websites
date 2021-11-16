@@ -18,10 +18,12 @@ import { Container, DesignSystemProvider, Section } from '~styles/system/compone
 import { globalCss, darkTheme } from '~styles/system/stitches.config'
 
 pluralize.addPluralRule(/cast$/i, 'cast')
+pluralize.addPluralRule(/emeritus$/i, 'emeritus')
 pluralize.addPluralRule(/crew$/i, 'crew')
 pluralize.addPluralRule(/lineup$/i, 'lineup')
 pluralize.addSingularRule(/music$/i, 'music')
 pluralize.addSingularRule(/thanks$/i, 'thanks')
+
 // pluralize.addSingularRule(/tags$/i, 'Tags')
 
 const globalStyles = globalCss({

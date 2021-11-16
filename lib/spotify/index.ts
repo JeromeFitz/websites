@@ -83,11 +83,14 @@ const getAccessToken = async () => {
     }),
   })
 
-  return response.json()
+  // console.dir(response)
+  return response
 }
 
 export const getNowPlaying = async () => {
-  const { access_token } = await getAccessToken()
+  const response = await getAccessToken()
+  if (response.status > 400) return response
+  const { access_token } = await response.json()
 
   return fetch(ENDPOINT.NOW_PLAYING, {
     headers: {
@@ -100,7 +103,9 @@ export const getTopArtists = async ({
   limit = LIMIT,
   time_range = TIME_RANGE.medium,
 }) => {
-  const { access_token } = await getAccessToken()
+  const response = await getAccessToken()
+  if (response.status > 400) return response
+  const { access_token } = await response.json()
 
   const url = getSpotifyUrlWithParams({
     limit,
@@ -119,7 +124,9 @@ export const getTopTracks = async ({
   limit = LIMIT,
   time_range = TIME_RANGE.medium,
 }) => {
-  const { access_token } = await getAccessToken()
+  const response = await getAccessToken()
+  if (response.status > 400) return response
+  const { access_token } = await response.json()
 
   const url = getSpotifyUrlWithParams({
     limit,
@@ -135,7 +142,9 @@ export const getTopTracks = async ({
 }
 
 export const getGenres = async ({ ids }) => {
-  const { access_token } = await getAccessToken()
+  const response = await getAccessToken()
+  if (response.status > 400) return response
+  const { access_token } = await response.json()
 
   const url = ENDPOINT.ARTISTS
   const urlCustom = url + `?ids=${ids.replace(',', '%2C')}`

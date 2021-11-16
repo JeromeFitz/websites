@@ -11,8 +11,11 @@ const getText = (text: any) => (isObject(text) ? text.props.children : text)
 const IconLink = styled('a', {
   display: 'flex',
   alignItems: 'center',
-  textDecoration: 'none',
+  textDecorationLine: 'none',
+  textUnderlineOffset: '3px',
+  textDecorationColor: '$slate4',
   color: 'inherit',
+  transition: 'color 0.25s, text-decoration-color 0.25s ease-in-out',
   borderRadius: '$1',
   outline: 0,
   padding: '0 $1',
@@ -20,12 +23,18 @@ const IconLink = styled('a', {
   '& + &': {
     marginTop: '$2',
   },
-  '&:hover': {
-    textDecoration: 'underline',
+  '@hover': {
+    '&:hover': {
+      textDecorationLine: 'underline',
+    },
   },
   '&:focus': {
     boxShadow: '0 0 0 1px',
     textDecoration: 'none',
+  },
+  '&:focus:not(:focus-visible)': {
+    boxShadow: 'none',
+    textDecorationLine: 'underline',
   },
   variants: {
     variant: {
