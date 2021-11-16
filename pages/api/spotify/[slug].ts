@@ -87,7 +87,7 @@ const spotifyApi = async ({ query: { limit, slug, time_range } }, res) => {
     case 'top-artists':
       const responseTopArtists = await getTopArtists({ limit, time_range })
       if (responseTopArtists.status === 204 || responseTopArtists.status > 400) {
-        return res.status(200).json({ isPlaying: false })
+        return res.status(200).json({ artists: [] })
       }
       const { items: itemsArtists } = await responseTopArtists?.json()
 
@@ -143,7 +143,7 @@ const spotifyApi = async ({ query: { limit, slug, time_range } }, res) => {
     case 'top-tracks':
       const responseTopTracks = await getTopTracks({ limit, time_range })
       if (responseTopTracks.status === 204 || responseTopTracks.status > 400) {
-        return res.status(200).json({ isPlaying: false })
+        return res.status(200).json({ tracks: [] })
       }
       const { items: itemsTracks } = await responseTopTracks?.json()
 
