@@ -44,6 +44,7 @@ yarn-error.log*
 ## Custom
 .cache
 .idea
+tsconfig.tsbuildinfo
 
 ## ZZZ
 zzz
