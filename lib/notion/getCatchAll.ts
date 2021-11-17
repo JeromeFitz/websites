@@ -184,6 +184,7 @@ interface NormalizerProperties {
   peopleDirectorMusical?: string[]
   peopleDirectorTechnical?: string[]
   peopleMusic?: string[]
+  peopleMusicGuest?: string[]
   peopleProducer?: string[]
   // peopleThanks?: string[]
   peopleWriter?: string[]
@@ -224,6 +225,7 @@ interface NormalizerProperties {
   rollupHost?: any[string]
   rollupLineup?: any[string]
   rollupMusic?: any[string]
+  rollupMusicGuest?: any[string]
   rollupProducer?: any[string]
   rollupShow?: any[string]
   rollupSoundEngineer?: any[string]
@@ -608,6 +610,9 @@ class Properties {
   [PROPERTIES.peopleMusic](value) {
     return this.relation(value)
   }
+  [PROPERTIES.peopleMusicGuest](value) {
+    return this.relation(value)
+  }
   [PROPERTIES.peopleProducer](value) {
     return this.relation(value)
   }
@@ -717,6 +722,9 @@ class Properties {
     return this.rollup(value)
   }
   [PROPERTIES.rollupMusic](value) {
+    return this.rollup(value)
+  }
+  [PROPERTIES.rollupMusicGuest](value) {
     return this.rollup(value)
   }
   [PROPERTIES.rollupProducer](value) {
