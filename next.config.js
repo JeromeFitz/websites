@@ -16,6 +16,7 @@ if (!process.env.NEXT_PUBLIC__SITE) {
 
 // @hack(dynamic) hack way to ensure when we build we are doing the right site
 const urlBaseCheck = 'jeromefitzgerald.com'
+// const urlBaseCheck = 'jerandky.com'
 if (process.env.NEXT_PUBLIC__SITE !== urlBaseCheck) {
   throw new Error(`process.env.NEXT_PUBLIC__SITE is not: ${urlBaseCheck}`)
 }
@@ -23,7 +24,7 @@ if (process.env.NEXT_PUBLIC__SITE !== urlBaseCheck) {
 // https://securityheaders.com
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' *.youtube.com *.twitter.com cdn.usefathom.com *.jeromefitzgerald.com;
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' *.youtube.com *.twitter.com cdn.usefathom.com *.jerandky.com *.jeromefitzgerald.com;
   child-src *.youtube.com *.google.com *.twitter.com *.spotify.com;
   style-src 'self' 'unsafe-inline' *.googleapis.com;
   img-src 'self' * blob: data:;

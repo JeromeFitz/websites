@@ -70,7 +70,7 @@ const Banner = () => {
   const href = '/events/2021/11/20/the-playlist'
   const title = 'Next Show: SAT 11/20 09:30PM, The Playlist!'
   const textButton = 'Info'
-  const hasBanner = true
+  const hasBanner = false
   if (!hasBanner) return null
   return (
     <NextLink href={href} passHref>

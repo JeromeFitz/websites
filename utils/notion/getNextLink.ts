@@ -1,8 +1,9 @@
+import { nextSeo } from '~config/websites'
 import { ROUTE_TYPES } from '~utils/notion/helper'
 
 const getNextLink = (url: string) => {
   const urlTemp = url
-    .replace('https://jeromefitzgerald.com', '')
+    .replace(nextSeo.url, '')
     // .replace('/playground/notion', '')
     .replace('//', '/')
   const [, routeType] = urlTemp.split('/')

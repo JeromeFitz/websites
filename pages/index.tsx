@@ -65,10 +65,14 @@ const CatchAll = (props) => {
 
   // @todo(notion) make dynamic w/ skeleton
   const { images, items } = mockData
+
+  // @todo(config) dynamic site selection
+  const hasShows = process.env.NEXT_PUBLIC__SITE === 'jeromefitzgerald.com'
+
   return (
     <>
       <Page data={data} props={props} />
-      <ListingShows images={images} items={items?.results} />
+      {hasShows && <ListingShows images={images} items={items?.results} />}
     </>
   )
 }

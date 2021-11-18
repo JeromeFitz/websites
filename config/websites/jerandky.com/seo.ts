@@ -1,4 +1,4 @@
-const seo = {
+const nextSeo = {
   sitename: 'Jer & Ky',
   title: 'Jer & Ky | Podcast Shrimpire. ',
   description:
@@ -23,4 +23,4 @@ const sitemapExcludes = [
   'venues',
 ]
 
-export { seo, sitemapExcludes }
+export { nextSeo, sitemapExcludes }
