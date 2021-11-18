@@ -1,19 +1,18 @@
 const DATABASES = {
-  blog: 'baee64b0-8851-4522-8afb-e15a9ea5a910',
-  episodes: 'd67380f6-8492-4fb5-9b1d-b4ed8880155b',
-  events: '781c7375-e20e-487f-a5d9-6e565f7a2d07',
-  pages: '3e9add0f-399c-4ae5-a48f-fb13f23e6992',
-  people: '13540a89-ef44-4aec-85ba-1bc05e9a7123',
-  podcasts: '22e65a94-72eb-4fc0-abe2-b1f9da3e3433',
-  seo: '810db8a2-71b6-4087-b61c-212bc81dbabe',
-  shows: '2a8cf797-1eae-4dc4-991f-b6b5ac981f51',
-  tags: 'c5fc362f-b8cc-4593-a220-89c8974e9750',
-  // tag:   '60dd326d-687e-4e64-a49b-46bfba218ffb'
-  users: 'ddfc7897-eb59-442e-a64e-578d8ae8bee9',
-  venues: '8b3f4ae6-ecf7-48ad-8ae9-8b69528e2110',
+  blog: '27789ca1-49e8-4490-bb29-5a3fdec0ec77',
+  episodes: 'f09fac69-3045-46cc-9209-44b13665bada',
+  events: '23e3954d-c714-4279-9f81-a8a51c9087ba',
+  pages: '96432799-6f4c-46e2-a618-d0d0eb2a79f2',
+  people: '6cedcf32-de09-4e81-a658-1aea384821e5',
+  podcasts: 'daed70c1-43b2-4177-986b-fe874d346b4e',
+  seo: '07dd136e-92cd-49a3-a99d-f409ac3ca87b',
+  shows: '552ca1a6-4729-4950-9cd4-cebbec996b91',
+  tags: '',
+  users: '4579aa0d-1ce2-4175-93d7-5e513f60e82c',
+  venues: 'e7bac7a0-e489-4e97-a242-c9934f645621',
 }
 
-const PAGES = ['about', 'colophon', 'contact']
+const PAGES = ['about']
 
 const ROUTE_TYPES = {
   blog: 'blog',
@@ -30,17 +29,17 @@ const ROUTE_TYPES = {
 }
 
 const SEO = {
-  blog: 'd9a4d872-1274-4657-a5b0-ca3a085e4b9e',
-  episodes: 'b3c98bd5-b168-46d9-b4b6-bdf01612890d',
-  events: '7bc401a6-5f36-409a-8e33-dcd05653d73c',
-  pages: '',
-  people: 'a94187ce-498c-4beb-88b2-78d56097d9f6',
-  podcasts: '535c2582-ac66-4a6f-8216-6df092d4fbc2',
+  blog: 'bf958989-7433-4701-8896-61377571cd1f',
+  episodes: 'feb5acb5-2890-41e9-897c-878054228eab',
+  events: '73764c77-b623-445f-ac75-63ddaeefea20',
+  pages: 'bcfba6bd-5877-4df6-88aa-126d9c73bacb',
+  people: 'bf25bb0a-6078-42bc-9cc6-6fbf756ae141',
+  podcasts: '5391b1d2-a347-47df-a574-efb7a90f18cf',
   seo: '',
-  shows: '9e13be55-72c0-4964-b32e-f0ada3c9a082',
+  shows: 'decdf268-7988-4afd-90fc-de165cabe68d',
   tags: '',
-  users: '41500e18-d97d-406d-8ca5-42cece7dafb5',
-  venues: 'd79444f6-8158-4bae-9b75-285e0b5f85b2',
+  users: 'b9efac47-92ea-4598-9574-16e4161c6ec5',
+  venues: 'be79732f-d9f3-4855-866b-6f0f4573410b',
 }
 
 const SLUG__HOMEPAGE = 'homepage'
@@ -89,4 +88,4 @@ const TAGS = {
   },
 }
 
-export { DATABASES, PAGES, ROUTE_TYPES, SEO, SLUG__HOMEPAGE, TAGS }
+export { DATABASES, ROUTE_TYPES, PAGES, SEO, SLUG__HOMEPAGE, TAGS }

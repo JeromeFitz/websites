@@ -12,6 +12,7 @@ import {
   TooltipContent,
   TooltipArrow,
 } from '~components/Tooltip'
+import { navigationHeader } from '~config/websites'
 import {
   Avatar,
   Box,
@@ -62,76 +63,7 @@ const HighlightLink = styled('a', {
   },
 })
 
-const links = [
-  { emoji: '🗓️', url: '/events', title: 'Upcoming Events', text: 'Live on Stage' },
-  { emoji: '📚️', url: '/books', title: 'Books', text: 'Currently Reading' },
-  { emoji: '🎹️', url: '/music', title: 'Music', text: 'Currently Listening To' },
-]
-
-const shows = [
-  { emoji: '🤮️', url: '/shows/alex-o-jerome', title: 'AOJ', text: 'Alex O’Jerome' },
-  { emoji: '🐭️', url: '/shows/jfle', title: 'JFLE', text: 'Jerome & Jesse LE' },
-  {
-    emoji: '😆️',
-    url: '/shows/justin-and-jerome-experience',
-    title: 'JJE',
-    text: 'Justin & Jerome Experience',
-  },
-  {
-    emoji: '🎭️',
-    url: '/shows',
-    title: 'View All',
-    text: 'Improv, Musical, Sketch...',
-  },
-]
-
 const isDev = process.env.NODE_ENV !== 'production'
-const dev = [
-  { emoji: '▶️', url: '/playground', title: 'P', text: 'Playground' },
-  {
-    emoji: '🛁️',
-    url: '/playground/kitchen-sink',
-    title: 'KS',
-    text: 'Kithcen Sink',
-  },
-  {
-    emoji: '⏸️',
-    url: '/playground/loading',
-    title: 'L',
-    text: 'Loading',
-  },
-
-  {
-    emoji: '🟧️',
-    url: '/playground/grid',
-    title: 'G',
-    text: 'Grid',
-  },
-  {
-    emoji: '🗓️',
-    url: '/playground/events',
-    title: 'E+',
-    text: 'Events',
-  },
-  {
-    emoji: '🎟️',
-    url: '/playground/events/event',
-    title: 'E',
-    text: 'Event',
-  },
-  {
-    emoji: '🚿️',
-    url: '/playground/shows',
-    title: 'S+',
-    text: 'Shows',
-  },
-  {
-    emoji: '🎭️',
-    url: '/playground/shows/show',
-    title: 'S',
-    text: 'Show',
-  },
-]
 
 // @todo(dynamic) notion api, upcoming event or evergreen info
 const Banner = () => {
@@ -300,7 +232,7 @@ const Header = () => {
             css={{ mb: -2 }}
           >
             <Box css={{ display: 'none', '@bp1': { display: 'contents' } }}>
-              {links.map((link, linkId) => (
+              {navigationHeader?.links.map((link, linkId) => (
                 <NextLink href={link.url} key={`header-links-${linkId}`} passHref>
                   <Link
                     variant={
@@ -339,9 +271,9 @@ const Header = () => {
                 </PopoverTrigger>
                 <PopoverContent hideArrow sideOffset={15} alignOffset={-15}>
                   <Box css={{ p: '$1' }}>
-                    {links.map((show, showId) => (
+                    {navigationHeader?.links.map((show, showId) => (
                       <NextLink
-                        key={`header-shows-${showId}`}
+                        key={`header-popover-${showId}`}
                         href={show.url}
                         passHref
                       >
@@ -417,9 +349,9 @@ const Header = () => {
               </PopoverTrigger>
               <PopoverContent hideArrow sideOffset={15} alignOffset={-15}>
                 <Box css={{ p: '$1' }}>
-                  {shows.map((show, showId) => (
+                  {navigationHeader?.popover.map((show, showId) => (
                     <NextLink
-                      key={`header-shows-${showId}`}
+                      key={`header-popover-${showId}`}
                       href={show.url}
                       passHref
                     >
@@ -497,7 +429,7 @@ const Header = () => {
                 </PopoverTrigger>
                 <PopoverContent hideArrow sideOffset={15} alignOffset={-15}>
                   <Box css={{ p: '$1' }}>
-                    {dev.map((show, showId) => (
+                    {navigationHeader?.dev.map((show, showId) => (
                       <NextLink
                         key={`header-playground-${showId}`}
                         href={show.url}

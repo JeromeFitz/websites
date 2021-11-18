@@ -6,7 +6,7 @@ import _uniqWith from 'lodash/uniqWith'
 import asyncForEach from '~lib/asyncForEach'
 import getCatchAll from '~lib/notion/getCatchAll'
 import getPathVariables from '~lib/notion/getPathVariables'
-import { ROUTE_TYPES } from '~utils/notion/helper'
+import { PAGES, ROUTE_TYPES } from '~utils/notion/helper'
 
 const isDev = process.env.NODE_ENV !== 'production'
 
@@ -62,9 +62,7 @@ const getStaticPathsCatchAll = async () => {
   // @note(next) yo, this was KILLING local development. only on builds please.
   if (!isDev) {
     // @todo(notion) api this up somehow please
-    paths.push('/about')
-    paths.push('/colophon')
-    paths.push('/contact')
+    _map(PAGES, (p) => paths.push(`/${p}`))
     // const routeTypesSingular = [routeType]
     await asyncForEach(routeTypes, async (routeType: any) => {
       if (routeType !== 'episodes') paths.push(`/${routeType}`)

@@ -9,10 +9,13 @@
 
 export {
   DATABASES,
+  // navigationFooter,
+  navigationHeader,
+  nextSeo,
+  PAGES,
   ROUTE_TYPES,
   SEO,
+  sitemapExcludes,
   SLUG__HOMEPAGE,
   TAGS,
-} from '~config/websites/jeromefitzgerald.com/notion'
-
-export { default } from '~config/websites/jeromefitzgerald.com/seo'
+} from '~config/websites/jeromefitzgerald.com'

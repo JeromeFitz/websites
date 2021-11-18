@@ -1,6 +1,13 @@
 import { Client } from '@notionhq/client'
 
-import { DATABASES, ROUTE_TYPES, SEO, SLUG__HOMEPAGE, TAGS } from '~config/websites'
+export {
+  DATABASES,
+  PAGES,
+  ROUTE_TYPES,
+  SEO,
+  SLUG__HOMEPAGE,
+  TAGS,
+} from '~config/websites'
 
 const notion = new Client({ auth: process.env.NOTION_API_KEY })
 
@@ -141,13 +148,4 @@ const QUERIES = {
   },
 }
 
-export {
-  notion,
-  DATABASES,
-  PROPERTIES,
-  QUERIES,
-  SEO,
-  SLUG__HOMEPAGE,
-  ROUTE_TYPES,
-  TAGS,
-}
+export { notion, PROPERTIES, QUERIES }
