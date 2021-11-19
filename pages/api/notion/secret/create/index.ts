@@ -1,6 +1,9 @@
-// import _map from 'lodash/map'
+import _find from 'lodash/find'
+import _map from 'lodash/map'
 import _noop from 'lodash/noop'
+import _startsWith from 'lodash/startsWith'
 import { NextApiRequest, NextApiResponse } from 'next'
+import _title from 'title'
 // import { v4 as uuid } from 'uuid'
 
 import asyncForEach from '~lib/asyncForEach'
@@ -29,15 +32,15 @@ const DATA_GROUPING = {
 }
 
 const DATABASES__INIT = {
-  BLOG: { emoji: '🤢', emojiNew: '📝️' },
-  EPISODES: { emoji: '🤢', emojiNew: '📇️' },
-  EVENTS: { emoji: '🤢', emojiNew: '🗓️' },
-  PAGES: { emoji: '🤢', emojiNew: '📜️' },
-  PEOPLE: { emoji: '🤢', emojiNew: '🧑‍🤝‍🧑️' },
-  PODCASTS: { emoji: '🤢', emojiNew: '🎙️' },
-  SEO: { emoji: '🤢', emojiNew: '🌐️' },
-  SHOWS: { emoji: '🤢', emojiNew: '🎭️' },
-  VENUES: { emoji: '🤢', emojiNew: '🏛️' },
+  BLOG: { id: '', emoji: '🤢', emojiNew: '📝️', name: 'BLOG' },
+  EPISODES: { id: '', emoji: '🤢', emojiNew: '📇️', name: 'EPISODES' },
+  EVENTS: { id: '', emoji: '🤢', emojiNew: '🗓️', name: 'EVENTS' },
+  PAGES: { id: '', emoji: '🤢', emojiNew: '📜️', name: 'PAGES' },
+  PEOPLE: { id: '', emoji: '🤢', emojiNew: '🧑‍🤝‍🧑️', name: 'PEOPLE' },
+  PODCASTS: { id: '', emoji: '🤢', emojiNew: '🎙️', name: 'PODCASTS' },
+  SEO: { id: '', emoji: '🤢', emojiNew: '🌐️', name: 'SEO' },
+  SHOWS: { id: '', emoji: '🤢', emojiNew: '🎭️', name: 'SHOWS' },
+  VENUES: { id: '', emoji: '🤢', emojiNew: '🏛️', name: 'VENUES' },
 }
 
 // const created = {
@@ -91,6 +94,27 @@ const getPropertiesRelations = (items) => {
         },
       }
     }
+
+    continue
+  }
+
+  return properties
+}
+
+const getPropertiesRollups = (items) => {
+  const properties = {}
+
+  for (let i = 0; i < items.length; i++) {
+    const key = items[i].notion
+    const type = items[i].type
+
+    if (['rollup'].includes(type)) {
+      properties[key] = {
+        name: key,
+        type: type,
+        [type]: items[i].rollup,
+      }
+    }
     continue
   }
 
@@ -123,14 +147,7 @@ const Create = async (req: NextApiRequest, res: NextApiResponse) => {
    * ex) Website => Blog, Episodes, Events, Pages, People, Podcasts, Shows, ...
    */
 
-  // console.dir(INIT.BLOG)
-  // console.dir(getProperties(INIT.BLOG))
-
   // !!! CREATE ALL DATABASE w/o RELATIONS or ROLLUPS
-  // _map(INIT, (item) => {
-  //   console.dir
-  //   console.dir(getPropertiesInitial(item))
-  // })
   const loopItems = []
   Object.keys(INIT).map((db) => loopItems.push(db))
 
@@ -169,44 +186,94 @@ const Create = async (req: NextApiRequest, res: NextApiResponse) => {
       properties: getPropertiesInitial(INIT[DATABASE]),
     }
 
-    // console.dir(getPropertiesInitial(INIT[DATABASE]))
-    // console.dir(data)
     const dbData = await createDatabase({ ...data })
-    console.dir(`---`)
-    console.dir(`${DATABASE} (${dbData.id})`)
+
+    // console.dir(`---`)
+    // console.dir(`${DATABASE} (${dbData.id})`)
+
     DATABASES__INIT[DATABASE].id = dbData.id
   }).catch(_noop)
 
-  // !!! CYCLE BACK AND THEN UPDATE EACH w/ RELATIONS & ROLLUPS
+  // !!! CYCLE BACK AND THEN UPDATE EACH w/ RELATIONS
   await asyncForEach(loopItems, async (DATABASE) => {
-    console.dir(`>>>`)
     const { id } = DATABASES__INIT[DATABASE]
-    console.dir(`${DATABASE} (${id})`)
+
+    // console.dir(`>>>`)
+    // console.dir(`${DATABASE} (${id})`)
+
     const data = {
       database_id: id,
       properties: getPropertiesRelations(INIT[DATABASE]),
     }
+
     await updateDatabase(data)
-
-    // console.dir(getPropertiesRelations(INIT[DATABASE]))
   }).catch(_noop)
 
-  // !!! ONE MORE TIME TO FIX SYNC NAMES JFC
+  // !!! CYCLE BACK AND FIX THE NAMES FOR RELATIONS
   await asyncForEach(loopItems, async (DATABASE) => {
-    console.dir(`___`)
-    const { id } = DATABASES__INIT[DATABASE]
-    console.dir(`${DATABASE} (${id})`)
-    const test = await getDatabasesById({ databaseId: id })
-    console.dir(test)
+    const { id, name } = DATABASES__INIT[DATABASE]
+
+    // console.dir(`___`)
+    // console.dir(`${DATABASE} (${id})`)
+
+    // todo(any)
+    const _dataTemp: any = await getDatabasesById({ databaseId: id })
+    const loopProperties = []
+    _map(_dataTemp.properties, (property) => loopProperties.push(property))
+
+    await asyncForEach(loopProperties, async (property) => {
+      if (_startsWith(property.name, 'Related to')) {
+        const relation_id = property.id
+        const relation_databaseId = property.relation.database_id
+        const relation_syncedPropertyName = property.relation.synced_property_name
+        const found = _find(DATABASES__INIT, { id: relation_databaseId })
+
+        const swap = _title(
+          relation_syncedPropertyName.toUpperCase().replace(name, found.name)
+        )
+
+        // console.dir(`***`)
+        // console.dir(`FROM: ${property.name} (${property.id})`)
+        // console.dir(`TO: ${swap}`)
+
+        const properties = {
+          [relation_id]: {
+            name: swap,
+          },
+        }
+
+        const data = {
+          database_id: id,
+          properties,
+        }
+        // console.dir(data)
+        await updateDatabase(data)
+      }
+    }).catch(_noop)
   }).catch(_noop)
 
-  console.dir(DATABASES__INIT)
+  // !!! CYCLE BACK AND THEN UPDATE EACH w/ ROLLUPS since RELATIONS are updated
+  await asyncForEach(loopItems, async (DATABASE) => {
+    const { id } = DATABASES__INIT[DATABASE]
+
+    // console.dir(`>>>`)
+    // console.dir(`${DATABASE} (${id})`)
+
+    const data = {
+      database_id: id,
+      properties: getPropertiesRollups(INIT[DATABASE]),
+    }
+
+    await updateDatabase(data)
+  }).catch(_noop)
+
+  const output = DATABASES__INIT
 
   /**
    * @step 03. Database Content
    */
 
-  res.status(200).json({})
+  res.status(200).json(output)
 }
 
 export default Create
