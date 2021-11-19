@@ -114,7 +114,7 @@
     "@jeromefitz/semantic": "5.2.0",
     "@next/bundle-analyzer": "12.0.4",
     "@types/body-scroll-lock": "3.1.0",
-    "@types/jest": "27.0.2",
+    "@types/jest": "27.0.3",
     "@types/lodash": "4.14.177",
     "@types/ms": "0.7.31",
     "@types/node": "16.11.7",
