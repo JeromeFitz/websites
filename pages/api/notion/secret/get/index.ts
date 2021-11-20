@@ -20,6 +20,7 @@ const A_GET = async (req: NextApiRequest, res: NextApiResponse) => {
   const DATA = {}
   KEYS.map((key) => {
     const found = _find(PROPERTIES, { notion: key })
+    if (!found) return
 
     /**
      * @todo type is not ready yet
@@ -40,6 +41,7 @@ const A_GET = async (req: NextApiRequest, res: NextApiResponse) => {
       )
         return
     }
+
     /**
      * @hack limit posisble relations
      */
