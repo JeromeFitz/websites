@@ -14,8 +14,8 @@ const getBySlug = async ({ pathVariables, routeType, slug }) => {
   let content = null,
     info = null,
     items = null
-  const info1: any = await getDatabasesByIdQuery({
-    databaseId: DB[routeType.toUpperCase()].id,
+  const infoInit: any = await getDatabasesByIdQuery({
+    databaseId: DB[routeType.toUpperCase()].database_id,
     filter: {
       and: [
         {
@@ -26,9 +26,9 @@ const getBySlug = async ({ pathVariables, routeType, slug }) => {
     },
   })
 
-  const info1a = info1?.object === 'list' && info1.results[0]
-  info = _omit(info1a, 'properties')
-  info['properties'] = dataSorted(dataNormalized(info1a, routeType, info.id))
+  const _info = infoInit?.object === 'list' && infoInit.results[0]
+  info = _omit(_info, 'properties')
+  info['properties'] = dataSorted(dataNormalized(_info, routeType, info.id))
 
   content = await getBlocksByIdChildren({ blockId: info.id })
 

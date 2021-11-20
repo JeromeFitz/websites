@@ -19,18 +19,15 @@ const getByRouteType = async ({ pathVariables, routeType }) => {
   // @todo(date-fns) make this the first date of the year dynamically
   const dateTimestampBlog = new Date('2020-01-01').toISOString()
 
-  const info2 = await getPagesById({ pageId: DB[routeType.toUpperCase()].seo })
-  // eslint-disable-next-line prefer-const
-  // info = info2.object === 'page' && dataNormalized(info2)
-  if (info2.object === 'page') {
-    info = _omit(info2, 'properties')
-    info['properties'] = dataSorted(dataNormalized(info2, routeType, info.id))
+  const infoInit = await getPagesById({ pageId: DB[routeType.toUpperCase()].seo })
+  if (infoInit.object === 'page') {
+    info = _omit(infoInit, 'properties')
+    info['properties'] = dataSorted(dataNormalized(infoInit, routeType, info.id))
   }
 
-  // eslint-disable-next-line prefer-const
   content = await getBlocksByIdChildren({ blockId: info.id })
-  const items2: any = await getDatabasesByIdQuery({
-    databaseId: DB[routeType.toUpperCase()].id,
+  const itemsInit: any = await getDatabasesByIdQuery({
+    databaseId: DB[routeType.toUpperCase()].database_id,
     filter: {
       and: [
         {
@@ -45,23 +42,16 @@ const getByRouteType = async ({ pathVariables, routeType }) => {
       ],
     },
   })
-  const items2Data = []
-
-  // _map(items2.results, (item) => (items2Data[item.id] = dataNormalized(item)))
-  // const items2Omit = _omit(items2, 'results')
-  // items2Omit.results = items2Data
-  // items = _omit(items2Omit, 'data')
-
-  _map(items2.results, (item) => {
-    let item2 = item
-    item2 = _omit(item2, 'properties')
-    item2['properties'] = dataSorted(dataNormalized(item, routeType, item.id))
-    // items2Data[item.id] = item2
-    items2Data.push(item2)
+  const _itemData = []
+  _map(itemsInit.results, (item) => {
+    let itemInit = item
+    itemInit = _omit(itemInit, 'properties')
+    itemInit['properties'] = dataSorted(dataNormalized(item, routeType, item.id))
+    _itemData.push(itemInit)
   })
-  const items2Omit = _omit(items2, 'results')
-  items2Omit.results = items2Data
-  items = items2Omit
+  const _items = _omit(itemsInit, 'results')
+  _items.results = _itemData
+  items = _items
 
   let data = { info, content, items, images: {} }
   const images = !!data ? await getImages({ data, pathVariables }) : {}

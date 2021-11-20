@@ -8,7 +8,7 @@ import children from '~lib/notion/create/children'
 import properties from '~lib/notion/create/properties'
 import getCatchAll from '~lib/notion/getCatchAll'
 import getPathVariables from '~lib/notion/getPathVariables'
-import { DATABASES } from '~utils/notion/helper'
+import { DB } from '~utils/notion/helper'
 // const isObjectEmpty = '~utils/isObjectEmpty'
 
 const isObjectEmptyDeep = (obj) =>
@@ -20,7 +20,7 @@ const isObjectEmptyDeep = (obj) =>
 
 const secretCreatePage = async (req: NextApiRequest, res: NextApiResponse) => {
   const routeType = 'episodes'
-  const databaseId = DATABASES[routeType]
+  const databaseId = DB[routeType.toUpperCase()].database_id
   const icon = {
     type: 'emoji',
     emoji: '🦇',

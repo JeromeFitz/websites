@@ -150,7 +150,7 @@ const getByListingWithDate = async ({ meta, routeType, slug }) => {
       break
   }
   const items3: any = await getDatabasesByIdQuery({
-    databaseId: DB[routeType.toUpperCase()].id,
+    databaseId: DB[routeType.toUpperCase()].database_id,
     filter,
     sorts: sorts3,
   })
@@ -176,6 +176,8 @@ const getByListingWithDate = async ({ meta, routeType, slug }) => {
    */
   return {
     content,
+    // @todo(images)
+    images: null,
     info,
     items,
   }

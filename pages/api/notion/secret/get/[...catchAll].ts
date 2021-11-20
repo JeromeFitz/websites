@@ -7,7 +7,7 @@ import getByListingWithDate from '~lib/notion/queries/getByListingWithDate'
 import getBySlug from '~lib/notion/queries/getBySlug'
 import getBySlugWithRouteType from '~lib/notion/queries/getBySlugWithRouteType'
 
-// complexity 24
+// complexity 14
 // eslint-disable-next-line complexity
 const A_GET = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
@@ -40,58 +40,43 @@ const A_GET = async (req: NextApiRequest, res: NextApiResponse) => {
     const pathVariables = getPathVariables(catchAll)
     // console.dir(pathVariables)
 
-    let _newData = null
+    let dataReturn = null
     let content = null,
       images = null,
       info = null,
       items = null
 
-    const { dataType, routeType, slug } = pathVariables
-    if (dataType === 1 || dataType === 5) {
-      const DATATYPE_DATA = await getBySlug({ pathVariables, routeType, slug })
-      content = DATATYPE_DATA?.content || null
-      images = DATATYPE_DATA?.images || null
-      info = DATATYPE_DATA?.info || null
-      items = DATATYPE_DATA?.items || null
-    }
-    if (dataType === 2) {
-      const DATATYPE_DATA = await getByListing({ pathVariables, routeType })
-      content = DATATYPE_DATA?.content || null
-      images = DATATYPE_DATA?.images || null
-      info = DATATYPE_DATA?.info || null
-      items = DATATYPE_DATA?.items || null
-    }
-    if (dataType === 3) {
-      const { meta } = pathVariables
-      const DATATYPE_DATA = await getByListingWithDate({ meta, routeType, slug })
-      content = DATATYPE_DATA?.content || null
-      // images = DATATYPE_DATA?.images || null
-      info = DATATYPE_DATA?.info || null
-      items = DATATYPE_DATA?.items || null
-    }
-    if (dataType === 4) {
-      const { meta } = pathVariables
-      const DATATYPE_DATA = await getBySlugWithRouteType({ meta, routeType, slug })
-      content = DATATYPE_DATA?.content || null
-      // images = DATATYPE_DATA?.images || null
-      info = DATATYPE_DATA?.info || null
-      items = DATATYPE_DATA?.items || null
+    const { dataType, meta, routeType, slug } = pathVariables
+
+    let DATATYPE_DATA
+
+    // @todo(switch)
+    switch (dataType) {
+      case 1:
+      case 5:
+        DATATYPE_DATA = await getBySlug({ pathVariables, routeType, slug })
+        break
+      case 2:
+        DATATYPE_DATA = await getByListing({ pathVariables, routeType })
+        break
+      case 3:
+        DATATYPE_DATA = await getByListingWithDate({ meta, routeType, slug })
+        break
+      case 4:
+        DATATYPE_DATA = await getBySlugWithRouteType({ meta, routeType, slug })
+        break
+      default:
+        break
     }
 
-    // _newData = { content, images, info, items }
-    _newData = { info, content, items, images }
-    /**
-     * @new
-     */
-    // const data = await getPagesById({ pageId: PAGE_ID })
-    // const propertiesNew = dataNormalized(data)
+    content = DATATYPE_DATA?.content || null
+    images = DATATYPE_DATA?.images || null
+    info = DATATYPE_DATA?.info || null
+    items = DATATYPE_DATA?.items || null
 
-    // const output = _omit(data, 'properties')
-    // output['properties'] = dataSorted(propertiesNew)
-    // output['_newData'] = _newData
+    dataReturn = { info, content, items, images }
 
-    // res.status(200).json(dataSorted(_newData))
-    res.status(200).json(_newData)
+    res.status(200).json(dataReturn)
   } catch (e) {
     // eslint-disable-next-line no-console
     console.log(e)

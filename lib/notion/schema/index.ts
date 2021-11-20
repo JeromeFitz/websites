@@ -1,98 +1,17 @@
 import _filter from 'lodash/filter'
 
-interface Relation {
-  database_id: string
-  synced_property_name: string
-  synced_property_id?: string
-}
+import type { Property } from './types'
 
-interface Rollup {
-  relation_property_id?: string
-  relation_property_name?: string
-  rollup_property_id?: string
-  rollup_property_name?: string
-  function:
-    | 'average'
-    | 'count_all'
-    | 'count_empty'
-    | 'count_not_empty'
-    | 'count_unique_values'
-    | 'count_values'
-    | 'max'
-    | 'median'
-    | 'min'
-    | 'percent_empty'
-    | 'percent_not_empty'
-    | 'range'
-    | 'show_original'
-    | 'sum'
-}
+const getLookup = ({ key, notion, type }) => ({
+  key,
+  notion,
+  type,
+})
 
-interface Property {
-  init: boolean
-  key: string
-  notion: string
-  format?:
-    | 'baht'
-    | 'canadian_dollar'
-    | 'chilean_peso'
-    | 'colombian_peso'
-    | 'danish_krone'
-    | 'dirham'
-    | 'dollar'
-    | 'euro'
-    | 'forint'
-    | 'franc'
-    | 'hong_kong_dollar'
-    | 'koruna'
-    | 'krona'
-    | 'leu'
-    | 'lira'
-    | 'mexican_peso'
-    | 'new_taiwan_dollar'
-    | 'new_zealand_dollar'
-    | 'norwegian_krone'
-    | 'number_with_commas'
-    | 'number'
-    | 'percent'
-    | 'philippine_peso'
-    | 'pound'
-    | 'rand'
-    | 'real'
-    | 'ringgit'
-    | 'riyal'
-    | 'ruble'
-    | 'rupee'
-    | 'rupiah'
-    | 'shekel'
-    | 'won'
-    | 'yen'
-    | 'yuan'
-    | 'zloty'
-  relation?: Relation
-  rollup?: Rollup
-  type:
-    | 'checkbox'
-    | 'created_by'
-    | 'created_time'
-    | 'date'
-    | 'email'
-    | 'files'
-    | 'formula'
-    | 'last_edited_by'
-    | 'last_edited_time'
-    | 'multi_select'
-    | 'number'
-    | 'people'
-    | 'phone_number'
-    | 'relation'
-    | 'rich_text'
-    | 'rollup'
-    | 'select'
-    | 'title'
-    | 'url'
-}
-
+/**
+ * @note
+ * Valid Notion Property Types mapped to Normalizer w/ init info
+ */
 const PROPERTIES: Record<string, Property> = {
   addressCity: {
     init: true,
@@ -955,30 +874,11 @@ const PROPERTIES: Record<string, Property> = {
   },
 }
 
-interface TYPE__DEFAULT {
-  // authors: any
-  date: any
-  datePublished: any
-  isIndexed: any
-  isPublished: any
-  slug: any
-  seoDescription: any
-  seoImage: any
-  seoImageDescription: any
-}
-
-// const propertiesDefaultKeys = {
-//   authors: PROPERTIES.authors,
-//   date: PROPERTIES.date,
-//   datePublished: PROPERTIES.datePublished,
-//   isIndexed: PROPERTIES.isIndexed,
-//   isPublished: PROPERTIES.isPublished,
-//   slug: PROPERTIES.slug,
-//   seoDescription: PROPERTIES.seoDescription,
-//   seoImage: PROPERTIES.seoImage,
-//   seoImageDescription: PROPERTIES.seoImageDescription,
-// }
-// const propertiesDefault2 = Object.keys(propertiesDefaultKeys)
+/**
+ * @note
+ * Limit Each Database (Route Type) to _only_
+ *  have valid data for its schema
+ */
 
 const PROPERTIES_DEFAULT = [
   PROPERTIES.authors,
@@ -1027,17 +927,16 @@ const EVENTS = [
 
 const PAGES = [...PROPERTIES_DEFAULT]
 
-export interface PEOPLE_TYPE extends TYPE__DEFAULT {
-  relationPeople__Episodes_Guest: any
-}
-
 const PEOPLE = [
   ...PROPERTIES_DEFAULT,
   PROPERTIES.email,
   PROPERTIES.nameFirst,
   PROPERTIES.nameLast,
   PROPERTIES.namePreferred,
-  // @custom(INIT) handled via: ./pages/api/notion/secret/init
+  /**
+   * @note(notion)
+   * do not init/seed these values, they are updated _after_ init
+   */
   PROPERTIES.relationPeople__Episodes_Guest,
   PROPERTIES.relationPeople__Episodes_Sound_Engineer,
   PROPERTIES.relationPeople__Episodes_Thanks,
@@ -1054,7 +953,9 @@ const PEOPLE = [
   PROPERTIES.relationPeople__Shows_Producer,
   PROPERTIES.relationPeople__Shows_Thanks,
   PROPERTIES.relationPeople__Shows_Writer,
-  //
+  /**
+   * -------------------------------------
+   */
 ]
 
 const PODCASTS = [
@@ -1063,9 +964,14 @@ const PODCASTS = [
   PROPERTIES.explicit,
   PROPERTIES.podcastAuthor,
   PROPERTIES.podcastAuthorEmail,
-  // @custom(INIT) handled via: ./pages/api/notion/secret/init
+  /**
+   * @note(notion)
+   * do not init/seed these values, they are updated _after_ init
+   */
   PROPERTIES.relationPodcasts__Episodes,
-  //
+  /**
+   * -------------------------------------
+   */
   PROPERTIES.relationPodcasts__People_Host,
   PROPERTIES.relationPodcasts__People_Sound_Engineer,
   PROPERTIES.socialApple,
@@ -1075,31 +981,17 @@ const PODCASTS = [
 
 const SEO = [...PROPERTIES_DEFAULT]
 
-export interface SHOWS_TYPE extends TYPE__DEFAULT {
-  relationShows__Events: any
-  relationShows__Events_Lineup: any
-  relationShows__People_Cast: any
-  relationShows__People_Cast_Past: any
-  relationShows__People_Director: any
-  relationShows__People_Director_Musical: any
-  relationShows__People_Director_Technical: any
-  relationShows__People_Producer: any
-  relationShows__People_Thanks: any
-  relationShows__People_Writer: any
-  rollupShows__People_Cast: any
-  rollupShows__People_Cast_Slug: any
-  socialFacebook: string
-  socialInstagram: string
-  socialTwitter: string
-  socialWebsite: string
-}
-
 const SHOWS = [
   ...PROPERTIES_DEFAULT,
-  // @custom(INIT) handled via: ./pages/api/notion/secret/init
+  /**
+   * @note(notion)
+   * do not init/seed these values, they are updated _after_ init
+   */
   PROPERTIES.relationShows__Events,
   PROPERTIES.relationShows__Events_Lineup,
-  //
+  /**
+   * -------------------------------------
+   */
   PROPERTIES.relationShows__People_Cast,
   PROPERTIES.relationShows__People_Cast_Past,
   PROPERTIES.relationShows__People_Director,
@@ -1126,28 +1018,30 @@ const VENUES = [
   PROPERTIES.addressStreet,
   PROPERTIES.addressZipCode,
   PROPERTIES.phoneNumber,
-  // @custom(INIT) handled via: ./pages/api/notion/secret/init
+  /**
+   * @note(notion)
+   * do not init/seed these values, they are updated _after_ init
+   */
   PROPERTIES.relationVenues__Episodes,
   PROPERTIES.relationVenues__Events,
-  //
+  /**
+   * -------------------------------------
+   */
   PROPERTIES.socialFacebook,
   PROPERTIES.socialInstagram,
   PROPERTIES.socialTwitter,
   PROPERTIES.socialWebsite,
 ]
 
-const API_FILTER = {
-  BLOG,
-  EPISODES,
-  EVENTS,
-  PAGES,
-  PEOPLE,
-  PODCASTS,
-  SEO,
-  SHOWS,
-  VENUES,
-}
-
+/**
+ * @note
+ * hyper-specific for the init / see (secret/create/init)
+ *
+ * 0. Create DB w/o Relations|Rollups
+ * 1. Update DB w/ Relations
+ * 2. Update DB w/ Relation Naming Preference
+ * 3. update DB w/ Rollups
+ */
 const INIT = {
   BLOG: _filter(BLOG, { init: true }),
   EPISODES: _filter(EPISODES, { init: true }),
@@ -1160,16 +1054,16 @@ const INIT = {
   VENUES: _filter(VENUES, { init: true }),
 }
 
-const KEYS = {
-  BLOG: Object.keys(BLOG),
-  EPISODES: Object.keys(EPISODES),
-  EVENTS: Object.keys(EVENTS),
-  PAGES: Object.keys(PAGES),
-  PEOPLE: Object.keys(PEOPLE),
-  PODCASTS: Object.keys(PODCASTS),
-  SEO: Object.keys(SEO),
-  SHOWS: Object.keys(SHOWS),
-  VENUES: Object.keys(VENUES),
+const LOOKUP = {
+  BLOG: BLOG.map((item) => getLookup(item)),
+  EPISODES: EPISODES.map((item) => getLookup(item)),
+  EVENTS: EVENTS.map((item) => getLookup(item)),
+  PAGES: PAGES.map((item) => getLookup(item)),
+  PEOPLE: PEOPLE.map((item) => getLookup(item)),
+  PODCASTS: PODCASTS.map((item) => getLookup(item)),
+  SEO: SEO.map((item) => getLookup(item)),
+  SHOWS: SHOWS.map((item) => getLookup(item)),
+  VENUES: VENUES.map((item) => getLookup(item)),
 }
 
-export { API_FILTER, INIT, KEYS, PROPERTIES }
+export { INIT, LOOKUP, PROPERTIES }

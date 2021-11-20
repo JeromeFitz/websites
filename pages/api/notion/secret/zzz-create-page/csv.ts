@@ -12,7 +12,7 @@ import getChildren from '~lib/notion/create/children'
 import getProperties from '~lib/notion/create/properties'
 import getCatchAll from '~lib/notion/getCatchAll'
 import getPathVariables from '~lib/notion/getPathVariables'
-import { DATABASES } from '~utils/notion/helper'
+import { DB } from '~utils/notion/helper'
 
 const dataDirectory = path.join(
   __dirname,
@@ -58,7 +58,7 @@ const csvApi = (req: NextApiRequest, res: NextApiResponse) => {
          */
         // @todo(notion) DRY
         const routeType = 'episodes'
-        const databaseId = DATABASES[routeType]
+        const databaseId = DB[routeType.toUpperCase()].database_id
         if (!databaseId) res.status(404).json({ _csv: false })
 
         // @todo(notion) DRY

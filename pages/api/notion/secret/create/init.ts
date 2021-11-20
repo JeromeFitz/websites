@@ -17,15 +17,15 @@ const DATA_GROUPING = {
 }
 
 const DATABASES__INIT = {
-  BLOG: { id: '', emoji: '🤢', emojiNew: '📝️', name: 'BLOG' },
-  EPISODES: { id: '', emoji: '🤢', emojiNew: '📇️', name: 'EPISODES' },
-  EVENTS: { id: '', emoji: '🤢', emojiNew: '🗓️', name: 'EVENTS' },
-  PAGES: { id: '', emoji: '🤢', emojiNew: '📜️', name: 'PAGES' },
-  PEOPLE: { id: '', emoji: '🤢', emojiNew: '🧑‍🤝‍🧑️', name: 'PEOPLE' },
-  PODCASTS: { id: '', emoji: '🤢', emojiNew: '🎙️', name: 'PODCASTS' },
-  SEO: { id: '', emoji: '🤢', emojiNew: '🌐️', name: 'SEO' },
-  SHOWS: { id: '', emoji: '🤢', emojiNew: '🎭️', name: 'SHOWS' },
-  VENUES: { id: '', emoji: '🤢', emojiNew: '🏛️', name: 'VENUES' },
+  BLOG: { id: '', emoji: '🤢', name: 'BLOG' },
+  EPISODES: { id: '', emoji: '🤢', name: 'EPISODES' },
+  EVENTS: { id: '', emoji: '🤢', name: 'EVENTS' },
+  PAGES: { id: '', emoji: '🤢', name: 'PAGES' },
+  PEOPLE: { id: '', emoji: '🤢', name: 'PEOPLE' },
+  PODCASTS: { id: '', emoji: '🤢', name: 'PODCASTS' },
+  SEO: { id: '', emoji: '🤢', name: 'SEO' },
+  SHOWS: { id: '', emoji: '🤢', name: 'SHOWS' },
+  VENUES: { id: '', emoji: '🤢', name: 'VENUES' },
 }
 
 // @todo(types)
@@ -123,11 +123,19 @@ const Create = async (req: NextApiRequest, res: NextApiResponse) => {
    * ex) Website => Blog, Episodes, Events, Pages, People, Podcasts, Shows, ...
    */
 
-  // !!! CREATE ALL DATABASE w/o RELATIONS or ROLLUPS
+  /**
+   * @note
+   * hyper-specific for the init / see (secret/create/init)
+   *
+   * 0. Create DB w/o Relations|Rollups
+   * 1. Update DB w/ Relations
+   * 2. Update DB w/ Relation Naming Preference
+   * 3. Update DB w/ Rollups
+   */
+
+  // 0. Create DB w/o Relations|Rollups
   const loopItems = []
   Object.keys(INIT).map((db) => loopItems.push(db))
-
-  // CREATE
   await asyncForEach(loopItems, async (DATABASE) => {
     const { emoji } = DATABASES__INIT[DATABASE.toUpperCase()]
 
@@ -170,7 +178,7 @@ const Create = async (req: NextApiRequest, res: NextApiResponse) => {
     DATABASES__INIT[DATABASE].id = dbData.id
   }).catch(_noop)
 
-  // !!! CYCLE BACK AND THEN UPDATE EACH w/ RELATIONS
+  // 1. Update DB w/ Relations
   await asyncForEach(loopItems, async (DATABASE) => {
     const { id } = DATABASES__INIT[DATABASE]
 
@@ -185,7 +193,7 @@ const Create = async (req: NextApiRequest, res: NextApiResponse) => {
     await updateDatabase(data)
   }).catch(_noop)
 
-  // !!! CYCLE BACK AND FIX THE NAMES FOR RELATIONS
+  // 2. Update DB w/ Relation Naming Preference
   await asyncForEach(loopItems, async (DATABASE) => {
     const { id, name } = DATABASES__INIT[DATABASE]
 
@@ -228,7 +236,7 @@ const Create = async (req: NextApiRequest, res: NextApiResponse) => {
     }).catch(_noop)
   }).catch(_noop)
 
-  // !!! CYCLE BACK AND THEN UPDATE EACH w/ ROLLUPS since RELATIONS are updated
+  // 3. Update DB w/ Rollups
   await asyncForEach(loopItems, async (DATABASE) => {
     const { id } = DATABASES__INIT[DATABASE]
 

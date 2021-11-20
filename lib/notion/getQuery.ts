@@ -292,7 +292,7 @@ const getQuery = async ({ reqQuery }) => {
    * @setup
    */
 
-  const database_id = DB[databaseType.toUpperCase()].id
+  const database_id = DB[databaseType.toUpperCase()].database_id
   if (!database_id) return []
 
   let data, items

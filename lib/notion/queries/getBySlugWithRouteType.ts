@@ -24,7 +24,7 @@ const getBySlugWithRouteType = async ({ meta, routeType, slug }) => {
     const info4__p: any = await getDatabasesByIdQuery({
       databaseId:
         DB[hasEpisode ? ROUTE_TYPES.episodes.toUpperCase() : routeType.toUpperCase()]
-          .id,
+          .database_id,
       filter: {
         and: [
           {
@@ -63,7 +63,7 @@ const getBySlugWithRouteType = async ({ meta, routeType, slug }) => {
       }`
     )
     const info4__be: any = await getDatabasesByIdQuery({
-      databaseId: DB[routeType.toUpperCase()].id,
+      databaseId: DB[routeType.toUpperCase()].database_id,
       filter: {
         and: [
           {
@@ -99,6 +99,8 @@ const getBySlugWithRouteType = async ({ meta, routeType, slug }) => {
   }
   return {
     content,
+    // @todo(images)
+    images: null,
     info,
     items,
   }

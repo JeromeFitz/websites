@@ -1,60 +1,31 @@
-import _find from 'lodash/find'
-import _startsWith from 'lodash/startsWith'
-import _title from 'title'
+import _map from 'lodash/map'
 
 import getTypes from '~lib/notion/api/getTypes'
-import { PROPERTIES } from '~lib/notion/schema'
+import { LOOKUP } from '~lib/notion/schema'
 
 const dataNormalized = (data: any, routeType = null, pageId = null) => {
-  if (routeType === null) {
-    console.dir(`dataNormalized(routeType is null)`)
-  }
-  if (pageId === null) {
-    console.dir(`dataNormalized(pageId is null)`)
-  }
+  const DATA_NORMALIZED = {}
+  if (!data?.properties) return DATA_NORMALIZED
 
   const { properties } = data
 
-  const KEYS = Object.keys(properties)
-  const DATA = {}
+  _map(LOOKUP[routeType.toUpperCase()], (item) => {
+    let dataToNormalize = null
 
-  KEYS.map((key) => {
-    const found = _find(PROPERTIES, { notion: key })
-    if (!found) {
-      return
-    }
+    const dataFromNotion = properties[item.notion]
 
     /**
-     * @hack limit possible relations
+     * @note(notion)
+     * ensure data from cms exists before normalizing
      */
-    if (_startsWith(found.key, 'relation')) {
-      if (
-        !_startsWith(
-          found.key.toUpperCase(),
-          `relation${_title(routeType)}__`.toUpperCase()
-        )
-      )
-        return
-    }
-    /**
-     * @hack limit possible rollups
-     */
-    if (_startsWith(found.key, 'rollup')) {
-      if (
-        !_startsWith(
-          found.key.toUpperCase(),
-          `rollup${_title(routeType)}__`.toUpperCase()
-        )
-      )
-        return
+    if (!!dataFromNotion) {
+      dataToNormalize = getTypes[item.type](dataFromNotion, pageId)
     }
 
-    const _data = getTypes[found.type](properties[key], pageId)
-
-    DATA[found.key] = _data
+    DATA_NORMALIZED[item.key] = dataToNormalize
   })
 
-  return DATA
+  return DATA_NORMALIZED
 }
 
 export default dataNormalized

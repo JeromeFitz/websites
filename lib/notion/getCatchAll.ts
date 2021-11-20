@@ -37,7 +37,7 @@ import getImages from '~lib/notion/getImages'
 // import getPathVariables from '~lib/notion/getPathVariables'
 import getQuery from '~lib/notion/getQuery'
 import {
-  DATABASES,
+  DB,
   notion,
   PROPERTIES,
   QUERIES,
@@ -896,7 +896,7 @@ class DATA_TYPES {
       // eslint-disable-next-line prefer-const
       items = null
     const info1: any = await getDatabasesByIdQuery({
-      databaseId: DATABASES[routeType],
+      databaseId: DB[routeType.toUpperCase()].database_id,
       filter: {
         and: [
           {
@@ -963,7 +963,7 @@ class DATA_TYPES {
     // eslint-disable-next-line prefer-const
     content = await getBlocksByIdChildren({ blockId: info.id })
     const items2: any = await getDatabasesByIdQuery({
-      databaseId: DATABASES[routeType],
+      databaseId: DB[routeType.toUpperCase()].database_id,
       filter: {
         and: [
           {
@@ -1133,7 +1133,7 @@ class DATA_TYPES {
         break
     }
     const items3: any = await getDatabasesByIdQuery({
-      databaseId: DATABASES[routeType],
+      databaseId: DB[routeType.toUpperCase()].database_id,
       filter,
       sorts: sorts3,
     })
@@ -1169,7 +1169,10 @@ class DATA_TYPES {
       const [podcastSlug, episodeSlug] = meta
       const hasEpisode = _size(meta) === 2
       const info4__p: any = await getDatabasesByIdQuery({
-        databaseId: DATABASES[hasEpisode ? ROUTE_TYPES.episodes : routeType],
+        databaseId:
+          DB[
+            hasEpisode ? ROUTE_TYPES.episodes.toUpperCase() : routeType.toUpperCase()
+          ].database_id,
         filter: {
           and: [
             {
@@ -1209,7 +1212,7 @@ class DATA_TYPES {
         }`
       )
       const info4__be: any = await getDatabasesByIdQuery({
-        databaseId: DATABASES[routeType],
+        databaseId: DB[routeType.toUpperCase()].database_id,
         filter: {
           and: [
             {

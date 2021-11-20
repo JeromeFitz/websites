@@ -1,11 +1,3 @@
 export { navigationHeader } from './navigation'
-export {
-  DATABASES,
-  DB,
-  PAGES,
-  ROUTE_TYPES,
-  SEO,
-  SLUG__HOMEPAGE,
-  TAGS,
-} from './notion'
+export { DB, PAGES, ROUTE_TYPES, SEO, SLUG__HOMEPAGE } from './notion'
 export { nextSeo, sitemapExcludes } from './seo'
