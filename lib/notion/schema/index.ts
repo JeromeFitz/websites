@@ -666,8 +666,8 @@ const PROPERTIES: Record<string, Property> = {
   /**
    * @rollup
    */
-  rollupShows_People_Cast: {
-    key: 'rollupShows_People_Cast',
+  rollupShows__People_Cast: {
+    key: 'rollupShows__People_Cast',
     notion: 'People.Cast.Rollup',
     type: 'rollup',
     rollup: {
@@ -676,8 +676,8 @@ const PROPERTIES: Record<string, Property> = {
       function: 'show_original',
     },
   },
-  rollupShows_People_Cast_Slug: {
-    key: 'rollupShows_People_Cast_Slug',
+  rollupShows__People_Cast_Slug: {
+    key: 'rollupShows__People_Cast_Slug',
     notion: 'People.Cast.Rollup.Slug',
     type: 'rollup',
     rollup: {
@@ -937,6 +937,7 @@ const PEOPLE = [
   PROPERTIES.nameFirst,
   PROPERTIES.nameLast,
   PROPERTIES.namePreferred,
+  // @custom(INIT) handled via: ./pages/api/notion/secret/init
   // PROPERTIES.relationPeople__Episodes_Guest,
   // PROPERTIES.relationPeople__Episodes_Sound_Engineer,
   // PROPERTIES.relationPeople__Episodes_Thanks,
@@ -961,6 +962,7 @@ const PODCASTS = [
   PROPERTIES.explicit,
   PROPERTIES.podcastAuthor,
   PROPERTIES.podcastAuthorEmail,
+  // @custom(INIT) handled via: ./pages/api/notion/secret/init
   // PROPERTIES.relationPodcasts__Episodes,
   PROPERTIES.relationPodcasts__People_Host,
   PROPERTIES.relationPodcasts__People_Sound_Engineer,
@@ -973,6 +975,7 @@ const SEO = [...PROPERTIES_DEFAULT]
 
 const SHOWS = [
   ...PROPERTIES_DEFAULT,
+  // @custom(INIT) handled via: ./pages/api/notion/secret/init
   // PROPERTIES.relationShows__Events,
   // PROPERTIES.relationShows__Events_Lineup,
   PROPERTIES.relationShows__People_Cast,
@@ -983,8 +986,8 @@ const SHOWS = [
   PROPERTIES.relationShows__People_Producer,
   PROPERTIES.relationShows__People_Thanks,
   PROPERTIES.relationShows__People_Writer,
-  PROPERTIES.rollupShows_People_Cast,
-  PROPERTIES.rollupShows_People_Cast_Slug,
+  PROPERTIES.rollupShows__People_Cast,
+  PROPERTIES.rollupShows__People_Cast_Slug,
   PROPERTIES.socialFacebook,
   PROPERTIES.socialInstagram,
   PROPERTIES.socialTwitter,
@@ -1001,6 +1004,7 @@ const VENUES = [
   PROPERTIES.addressStreet,
   PROPERTIES.addressZipCode,
   PROPERTIES.phoneNumber,
+  // @custom(INIT) handled via: ./pages/api/notion/secret/init
   // PROPERTIES.relationVenues__Episodes,
   // PROPERTIES.relationVenues__Events,
   PROPERTIES.socialFacebook,
