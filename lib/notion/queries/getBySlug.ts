@@ -27,6 +27,10 @@ const getBySlug = async ({ pathVariables, routeType, slug }) => {
   })
 
   const _info = infoInit?.object === 'list' && infoInit.results[0]
+  // @refactor(404)
+  if (!_info) {
+    return {}
+  }
   info = _omit(_info, 'properties')
   info['properties'] = dataSorted(dataNormalized(_info, routeType, info.id))
 
@@ -44,9 +48,11 @@ const getBySlug = async ({ pathVariables, routeType, slug }) => {
   // console.dir(data)
   // console.dir(`pathVariables`)
   // console.dir(pathVariables)
+
   const images = !!data ? await getImages({ data, pathVariables }) : {}
   // console.dir(`images`)
   // console.dir(images)
+  // data = { ...data }
   data = { ...data, images }
 
   return data

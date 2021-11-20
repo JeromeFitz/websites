@@ -3,6 +3,7 @@ import checkbox from '~lib/notion/api/getTypes/checkbox'
 import date from '~lib/notion/api/getTypes/date'
 import email from '~lib/notion/api/getTypes/email'
 import files from '~lib/notion/api/getTypes/files'
+// import images from '~lib/notion/api/getTypes/images'
 import multi_select from '~lib/notion/api/getTypes/multi_select'
 import number from '~lib/notion/api/getTypes/number'
 import people from '~lib/notion/api/getTypes/people'
@@ -22,6 +23,7 @@ const getTypes = {
   email,
   files,
   formula: _todo,
+  image: files,
   last_edited_by: _todo,
   last_edited_time: date,
   multi_select,

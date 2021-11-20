@@ -30,6 +30,11 @@ const files = (data: any, pageId: string) => {
         const externalSlug = slugger.slug(externalUrl)
         _files[externalSlug] = { type: file?.type, url: externalUrl }
       }
+      // if (file?.type === 'image') {
+      //   const externalUrl = file?.external?.url.split('?')[0]
+      //   const externalSlug = slugger.slug(externalUrl)
+      //   _files[externalSlug] = { type: file?.type, url: externalUrl }
+      // }
 
       return
     }

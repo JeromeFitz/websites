@@ -50,6 +50,16 @@ const A_GET = async (req: NextApiRequest, res: NextApiResponse) => {
 
     let DATATYPE_DATA
 
+    /**
+     * @test cases
+     */
+    // 1 = /colophon
+    // 2 = /blog, /events, /podcasts
+    // 3 = /blog/2020, /blog/2020/05, /blog/2020/05/09
+    //     /events/2020, /events/2020/05, /events/2020/05/09,
+    // 4 = /blog/2020/05/09/title, /events/2020/05/09/title,
+    //     /podcasts/knockoffs/i-know-what-you-did-last-summer
+    // 5 = /shows/alex-o-jerome, /events/2020/05/09/jerome-and, /podcasts/knockoffs
     // @todo(switch)
     switch (dataType) {
       case 1:

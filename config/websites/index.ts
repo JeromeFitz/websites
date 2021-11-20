@@ -17,7 +17,7 @@ export {
   SEO,
   sitemapExcludes,
   SLUG__HOMEPAGE,
-} from '~config/websites/test.com'
+} from '~config/websites/jeromefitzgerald.com'
 
 // @todo(notion) uh, make this dynamic please haha
 export const TAGS = {

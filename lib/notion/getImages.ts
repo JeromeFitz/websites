@@ -32,6 +32,9 @@ const getImages = async ({ data, pathVariables }) => {
         return null
       }
 
+      // console.dir(`>> imageResult: infoImagesFilter`)
+      // console.dir(imageResult)
+
       const url =
         !!imageResult && !!imageResult?.url ? imageResult?.url : imageResult
 
@@ -39,8 +42,6 @@ const getImages = async ({ data, pathVariables }) => {
         return null
       }
 
-      // console.dir(`>> imageResult: infoImagesFilter`)
-      // console.dir(imageResult)
       // console.dir(url)
 
       const { base64, img } = await getPlaiceholder(url)
@@ -63,15 +64,20 @@ const getImages = async ({ data, pathVariables }) => {
         return null
       }
 
+      // console.dir(`>> imageResult: contentImagesAwait`)
+      // console.dir(imageResult)
+
+      const { type } = imageResult
+      const image = imageResult[type]
+
+      // @todo(notion) rework content after refactor: getTypes[image]
       const url =
-        !!imageResult && !!imageResult?.url ? imageResult?.url : imageResult
+        !!imageResult && !!image?.external?.url ? image?.external?.url : null
 
       if (!url) {
         return null
       }
 
-      // console.dir(`>> imageResult: contentImagesAwait`)
-      // console.dir(imageResult)
       // console.dir(url)
 
       const { base64, img } = await getPlaiceholder(url)
@@ -94,14 +100,18 @@ const getImages = async ({ data, pathVariables }) => {
       if (!imageResult) {
         return null
       }
+
       // console.dir(`>> imageResult: itemsImagesAwait`)
       // console.dir(imageResult)
+
       const url =
         !!imageResult && !!imageResult?.url ? imageResult?.url : imageResult
 
       if (!url) {
         return null
       }
+
+      // console.dir(url)
 
       const { base64, img } = await getPlaiceholder(url)
       const id = slugger.slug(url)

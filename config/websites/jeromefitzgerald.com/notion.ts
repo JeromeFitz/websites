@@ -1,16 +1,58 @@
-const DATABASES = {
-  blog: 'baee64b0-8851-4522-8afb-e15a9ea5a910',
-  episodes: 'd67380f6-8492-4fb5-9b1d-b4ed8880155b',
-  events: '781c7375-e20e-487f-a5d9-6e565f7a2d07',
-  pages: '3e9add0f-399c-4ae5-a48f-fb13f23e6992',
-  people: '13540a89-ef44-4aec-85ba-1bc05e9a7123',
-  podcasts: '22e65a94-72eb-4fc0-abe2-b1f9da3e3433',
-  seo: '810db8a2-71b6-4087-b61c-212bc81dbabe',
-  shows: '2a8cf797-1eae-4dc4-991f-b6b5ac981f51',
-  tags: 'c5fc362f-b8cc-4593-a220-89c8974e9750',
-  // tag:   '60dd326d-687e-4e64-a49b-46bfba218ffb'
-  users: 'ddfc7897-eb59-442e-a64e-578d8ae8bee9',
-  venues: '8b3f4ae6-ecf7-48ad-8ae9-8b69528e2110',
+const DB = {
+  BLOG: {
+    database_id: '27360d9b5f274dc2ac19ad09837b6860',
+    name: 'BLOG',
+    routeType: true,
+    seo: '31d8d3edb6844789a4fcd8dd4a1d488c',
+  },
+  EPISODES: {
+    database_id: '2dbb52e80e5d49bfbf5ac1a98f6c07d4',
+    name: 'EPISODES',
+    routeType: true,
+    seo: '08fadd3ea6294d0eaf57c3e79123b420',
+  },
+  EVENTS: {
+    database_id: '9248dbc7a4c141aab16551bc87ed5422',
+    name: 'EVENTS',
+    routeType: true,
+    seo: 'dd10d84d6d934a69ba25963a8c52a95b',
+  },
+  PAGES: {
+    database_id: 'c6ef23945c684e10a5f6aafb4c7ad115',
+    name: 'PAGES',
+    routeType: true,
+    seo: '',
+  },
+  PEOPLE: {
+    database_id: '66dedc454721449790255de1dbe49472',
+    name: 'PEOPLE',
+    routeType: true,
+    seo: 'c3ef887b3577408aa14616ee84d948f9',
+  },
+  PODCASTS: {
+    database_id: '601679d51dba4dd1b0bc1efc20800e5a',
+    name: 'PODCASTS',
+    routeType: true,
+    seo: '52de0748cd4d4152a803f0b1fac9465d',
+  },
+  SEO: {
+    database_id: 'dc09ee3b04da4fad859a26113df607ba',
+    name: 'SEO',
+    routeType: true,
+    seo: '',
+  },
+  SHOWS: {
+    database_id: '30471ded18b34af982d2f0064c4bcbf1',
+    name: 'SHOWS',
+    routeType: true,
+    seo: '7f18c17dc86e429a850580cdf874022b',
+  },
+  VENUES: {
+    database_id: 'ab2134096d7f48ad9c86c576b59b6c0e',
+    name: 'VENUES',
+    routeType: true,
+    seo: '92d703d8c9d94e61bed37b205c928bfb',
+  },
 }
 
 const PAGES = ['about', 'colophon', 'contact']
@@ -45,48 +87,4 @@ const SEO = {
 
 const SLUG__HOMEPAGE = 'homepage'
 
-// @todo(notion) uh, make this dynamic please haha
-const TAGS = {
-  '60dd326d-687e-4e64-a49b-46bfba218ffb': {
-    id: '60dd326d-687e-4e64-a49b-46bfba218ffb',
-    icon: {
-      emoji: '🎭️',
-    },
-    slug: 'improv',
-    title: 'Improv',
-  },
-  '9ae68a2d-44d0-44c2-8e73-81c3018bbc71': {
-    id: '9ae68a2d-44d0-44c2-8e73-81c3018bbc71',
-    icon: {
-      emoji: '🎼️',
-    },
-    slug: 'music',
-    title: 'Music',
-  },
-  'd31c1ac1-3f1a-4931-9841-c7fcffaabdf8': {
-    id: 'd31c1ac1-3f1a-4931-9841-c7fcffaabdf8',
-    icon: {
-      emoji: '🧑‍🎤️',
-    },
-    slug: 'musical',
-    title: 'Musical',
-  },
-  '7093497b-4869-4d2f-8803-a26f4fc871d6': {
-    id: '7093497b-4869-4d2f-8803-a26f4fc871d6',
-    icon: {
-      emoji: '🖊️',
-    },
-    slug: 'sketch',
-    title: 'Sketch',
-  },
-  '4bf09af2-078e-4101-8519-3500c2d68244': {
-    id: '4bf09af2-078e-4101-8519-3500c2d68244',
-    icon: {
-      emoji: '🎤️',
-    },
-    slug: 'stand-up',
-    title: 'Stand-Up',
-  },
-}
-
-export { DATABASES, PAGES, ROUTE_TYPES, SEO, SLUG__HOMEPAGE, TAGS }
+export { DB, PAGES, ROUTE_TYPES, SEO, SLUG__HOMEPAGE }

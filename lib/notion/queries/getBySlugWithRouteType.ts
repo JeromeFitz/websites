@@ -21,7 +21,7 @@ const getBySlugWithRouteType = async ({ meta, routeType, slug }) => {
   if (routeType === ROUTE_TYPES.podcasts) {
     const [podcastSlug, episodeSlug] = meta
     const hasEpisode = _size(meta) === 2
-    const info4__p: any = await getDatabasesByIdQuery({
+    const infoInit: any = await getDatabasesByIdQuery({
       databaseId:
         DB[hasEpisode ? ROUTE_TYPES.episodes.toUpperCase() : routeType.toUpperCase()]
           .database_id,
@@ -35,23 +35,26 @@ const getBySlugWithRouteType = async ({ meta, routeType, slug }) => {
       },
     })
 
-    const info4__pa = info4__p?.object === 'list' && info4__p.results[0]
-    info = _omit(info4__pa, 'properties')
-    info['properties'] = dataSorted(dataNormalized(info4__pa, routeType, info.id))
+    const _info = infoInit?.object === 'list' && infoInit.results[0]
+    // @refactor(404)
+    if (!_info) {
+      return {}
+    }
+    info = _omit(_info, 'properties')
+    info['properties'] = dataSorted(dataNormalized(_info, routeType, info.id))
     content = await getBlocksByIdChildren({ blockId: info.id })
 
-    content = await getBlocksByIdChildren({ blockId: info.id })
     // @hack(podcasts)
     if (!hasEpisode) {
-      let items4__p = null
+      let itemsInit = null
       if (routeType === ROUTE_TYPES.podcasts) {
-        items4__p = await getQuery({
+        itemsInit = await getQuery({
           reqQuery: {
             podcasts: info.id,
             databaseType: ROUTE_TYPES.episodes,
           },
         })
-        items = items4__p
+        items = itemsInit
       }
     }
   }
@@ -97,6 +100,7 @@ const getBySlugWithRouteType = async ({ meta, routeType, slug }) => {
     info['properties'] = dataSorted(dataNormalized(info4__bea, routeType, info.id))
     content = await getBlocksByIdChildren({ blockId: info.id })
   }
+
   return {
     content,
     // @todo(images)
