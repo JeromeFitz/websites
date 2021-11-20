@@ -4,27 +4,12 @@ import _noop from 'lodash/noop'
 import _startsWith from 'lodash/startsWith'
 import { NextApiRequest, NextApiResponse } from 'next'
 import _title from 'title'
-// import { v4 as uuid } from 'uuid'
 
 import asyncForEach from '~lib/asyncForEach'
 import createDatabase from '~lib/notion/api/createDatabase'
-// import createPage from '~lib/notion/api/createPage'
 import getDatabasesById from '~lib/notion/api/getDatabasesById'
 import updateDatabase from '~lib/notion/api/updateDatabase'
 import { INIT } from '~lib/notion/schema'
-
-// // https://developers.notion.com/reference/page#page-parent
-// const WORKSPACE = {
-//   object: 'string',
-//   id: 'c65675aae0474f05bcd8c93a122128fc',
-//   icon: {
-//     type: 'emoji',
-//     emoji: '⚗️',
-//   },
-//   properties: {
-//     title: 'test.com',
-//   },
-// }
 
 const DATA_GROUPING = {
   global: '8bc8a899-e57b-4fa9-b2de-8b08aec95608',
@@ -43,19 +28,8 @@ const DATABASES__INIT = {
   VENUES: { id: '', emoji: '🤢', emojiNew: '🏛️', name: 'VENUES' },
 }
 
-// const created = {
-//   BLOG: { emoji: '😀', id: '6e6f90ff-a889-42a3-b6cc-58ecdf39b6bb' },
-//   EPISODES: { emoji: '😀', id: 'e9e9de47-f797-456c-b943-fdddbc3ba836' },
-//   EVENTS: { emoji: '😀', id: '477f7390-07ba-476c-8286-8f4734a99629' },
-//   PAGES: { emoji: '😀', id: '36dc57b9-dc66-48f0-871e-dc21131a7ba6' },
-//   PEOPLE: { emoji: '😀', id: 'ba284beb-1eed-4eca-9acc-5c59eac9804f' },
-//   PODCASTS: { emoji: '😀', id: '5e152168-561f-432d-85af-6a5bbf4873df' },
-//   SEO: { emoji: '😀', id: '5a4ed54e-eae8-4817-8095-e3a583cf4bf1' },
-//   SHOWS: { emoji: '😀', id: '40486ad0-1ae3-45df-b45a-e77565575b05' },
-//   VENUES: { emoji: '😀', id: '9dad85b3-6cf7-4f30-9397-8b889aceedc6' },
-// }
-
-const getPropertiesInitial = (items) => {
+// @todo(types)
+const getPropertiesInitial = (items: string | any[]) => {
   const properties = {}
   for (let i = 0; i < items.length; i++) {
     const key = items[i].notion
@@ -74,7 +48,8 @@ const getPropertiesInitial = (items) => {
   return properties
 }
 
-const getPropertiesRelations = (items) => {
+// @todo(types)
+const getPropertiesRelations = (items: string | any[]) => {
   const properties = {}
   for (let i = 0; i < items.length; i++) {
     const key = items[i].notion
@@ -101,7 +76,8 @@ const getPropertiesRelations = (items) => {
   return properties
 }
 
-const getPropertiesRollups = (items) => {
+// @todo(types)
+const getPropertiesRollups = (items: string | any[]) => {
   const properties = {}
 
   for (let i = 0; i < items.length; i++) {

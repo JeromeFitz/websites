@@ -1,7 +1,9 @@
+import _ from 'lodash'
 import _find from 'lodash/find'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 import getPagesById from '~lib/notion/api/getPagesById'
+import getTypes from '~lib/notion/api/getTypes'
 import { PROPERTIES } from '~lib/notion/schema'
 
 const PAGE_ID = '77d3a22ae6f84bc8a6f34de53a8c88e2'
@@ -13,18 +15,23 @@ const A_GET = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const KEYS = Object.keys(properties)
 
-  const FOO = {}
+  const DATA = {}
   KEYS.map((key) => {
-    console.dir(`---`)
-    console.dir(`key: ${key}`)
     const found = _find(PROPERTIES, { notion: key })
-    console.dir(`found: ${found ? 'y' : 'n'}`)
-    console.dir(found)
 
-    FOO[found.key] = properties[key]
+    // @todo(notion)
+    if (['people'].includes(found.type)) {
+      return
+    }
+
+    const _data = getTypes[found.type](properties[key])
+
+    DATA[found.key] = _data
   })
 
-  const output = { properties, FOO }
+  const dataSorted = (data: any) => _(data).toPairs().sortBy(0).fromPairs().value()
+
+  const output = { properties, data: dataSorted(DATA) }
 
   res.status(200).json(output)
 }
