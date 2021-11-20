@@ -13,6 +13,7 @@ import {
 import addTime from '~utils/next/addTime'
 import { DB, QUERIES, ROUTE_TYPES } from '~utils/notion/helper'
 
+// complexity 14
 // eslint-disable-next-line complexity
 const getBySlugWithRouteType = async ({ meta, routeType, slug }) => {
   let content = null,
@@ -21,8 +22,10 @@ const getBySlugWithRouteType = async ({ meta, routeType, slug }) => {
   const dateTimestamp = new Date().toISOString()
 
   if (routeType === ROUTE_TYPES.podcasts) {
+    console.dir(`!!podcast`)
     const [podcastSlug, episodeSlug] = meta
     const hasEpisode = _size(meta) === 2
+    console.dir(meta)
     const info4__p: any = await getDatabasesByIdQuery({
       databaseId:
         DB[hasEpisode ? ROUTE_TYPES.episodes.toUpperCase() : routeType.toUpperCase()]
@@ -45,6 +48,7 @@ const getBySlugWithRouteType = async ({ meta, routeType, slug }) => {
     content = await getBlocksByIdChildren({ blockId: info.id })
     // @hack(podcasts)
     if (!hasEpisode) {
+      console.dir(`!hasEpisode`)
       let items4__p = null
       if (routeType === ROUTE_TYPES.podcasts) {
         items4__p = await getQuery({
@@ -58,6 +62,8 @@ const getBySlugWithRouteType = async ({ meta, routeType, slug }) => {
         // const items4__pOmit = _omit(items4__p, 'results')
         // items4__pOmit.results = items4__pData
         // items = _omit(items4__pOmit, 'data')
+        console.dir(items4__p)
+
         _map(items4__p.results, (item) => {
           let item4__p = item
           item4__p = _omit(item4__p, 'properties')

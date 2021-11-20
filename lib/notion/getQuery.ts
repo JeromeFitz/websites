@@ -1,9 +1,9 @@
 import _map from 'lodash/map'
 import _size from 'lodash/size'
 
-import { normalizerContentResults } from '~lib/notion/getCatchAll'
+import { dataNormalizedResults } from '~pages/api/notion/secret/get/[...catchAll]'
 import avoidRateLimit from '~utils/avoidRateLimit'
-import { DATABASES, ROUTE_TYPES, notion } from '~utils/notion/helper'
+import { DB, ROUTE_TYPES, notion } from '~utils/notion/helper'
 
 // const useCache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE
 // const useCache = false
@@ -114,7 +114,7 @@ class DATABASE_TYPES {
     _size(e__podcastIds) > 0 &&
       _map(e__podcastIds, (id) =>
         filterTagEpisodesByPodcasts.push({
-          property: 'PodcastIDs',
+          property: 'Podcasts',
           relation: {
             contains: id,
           },
@@ -132,7 +132,7 @@ class DATABASE_TYPES {
       filter: {},
       sorts: [
         {
-          property: 'Date',
+          property: 'Date.Event',
           direction: 'ascending',
         },
       ],
@@ -290,7 +290,7 @@ const getQuery = async ({ reqQuery }) => {
    * @setup
    */
 
-  const database_id = DATABASES[databaseType]
+  const database_id = DB[databaseType.toUpperCase()].id
   if (!database_id) return []
 
   let data, items
@@ -343,15 +343,14 @@ const getQuery = async ({ reqQuery }) => {
         }
       }
       contentData = await notion.databases.query({
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
         database_id,
         filter,
         sorts,
       })
       // data = normalizerContent(contentData)
       data = contentData
-      items = normalizerContentResults(contentData.results)
+      // @hack(notion) routeType should be dynamic
+      items = dataNormalizedResults(contentData.results, 'episodes')
       // console.dir(`items`)
       // console.dir(items)
       data.results = items

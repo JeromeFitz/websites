@@ -3,12 +3,13 @@ const DB = {
     id: '0c81e72d-671e-4eac-b315-06471e11c864',
     name: 'BLOG',
     routeType: true,
+    seo: 'fcd68c2321f3424ca3611d5d6e4fd4f0',
   },
   EPISODES: {
     id: '1833c951-6ad5-4b5b-a990-15a491b94f6c',
     name: 'EPISODES',
     routeType: true,
-    seo: '',
+    seo: '3e53adb6b0ac4d398557d32d37719d60',
   },
   EVENTS: {
     id: 'e059561c-b9be-42fe-8b6d-c9e794da90f6',
@@ -20,19 +21,19 @@ const DB = {
     id: '4ff1d22e-f38e-46a3-96f7-90553b44c996',
     name: 'PAGES',
     routeType: true,
-    seo: '',
+    seo: 'd74da2d0ea074dc4805f84f398695ae5',
   },
   PEOPLE: {
     id: '2d0cf92c-8eee-4376-8487-7e9d3207ed8a',
     name: 'PEOPLE',
     routeType: true,
-    seo: '',
+    seo: '4aef087a75b6493f94ebd2fda8a62a5d',
   },
   PODCASTS: {
     id: '9789db38-f995-4984-afc7-3d6b6739b3c0',
     name: 'PODCASTS',
     routeType: true,
-    seo: '',
+    seo: 'a68e0a9ff2a14ee6943df9018669bfd1',
   },
   SEO: {
     id: 'f076737c-9191-4c7b-b81a-7717fe1e4944',
@@ -44,13 +45,13 @@ const DB = {
     id: 'c49ab102-c34b-419a-bf02-30506df47d97',
     name: 'SHOWS',
     routeType: true,
-    seo: 'd74da2d0ea074dc4805f84f398695ae5',
+    seo: '7cbeabcc3f5748a1af2a91eb2e7bcda2',
   },
   VENUES: {
     id: 'cf178d0e-4ec2-4c21-b826-a469f8735579',
     name: 'VENUES',
     routeType: true,
-    seo: '',
+    seo: '385b9747e2c940a882e328c231becb51',
   },
 }
 

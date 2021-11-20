@@ -13,6 +13,7 @@ import {
 import addTime from '~utils/next/addTime'
 import { DB, QUERIES, ROUTE_TYPES } from '~utils/notion/helper'
 
+// complexity 16
 // eslint-disable-next-line complexity
 const getByListingWithDate = async ({ meta, routeType, slug }) => {
   let content = null,

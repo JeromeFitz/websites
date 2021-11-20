@@ -1,5 +1,7 @@
 import _find from 'lodash/find'
 import _fromPairs from 'lodash/fromPairs'
+import _map from 'lodash/map'
+import _omit from 'lodash/omit'
 import _sortBy from 'lodash/sortBy'
 import _startsWith from 'lodash/startsWith'
 import _toPairs from 'lodash/toPairs'
@@ -71,6 +73,18 @@ export const dataNormalized = (data: any, routeType = null, pageId = null) => {
   return DATA
 }
 
+// @todo(eject)
+export const dataNormalizedResults = (results, routeType) => {
+  const normalizedResults = results
+  _map(results, (result, index) => {
+    const normalizedResult = _omit(result, 'properties')
+    normalizedResult['properties'] = dataNormalized(result, routeType, result?.id)
+    normalizedResults[index] = normalizedResult
+  })
+  return normalizedResults
+}
+
+// complexity 24
 // eslint-disable-next-line complexity
 const A_GET = async (req: NextApiRequest, res: NextApiResponse) => {
   try {

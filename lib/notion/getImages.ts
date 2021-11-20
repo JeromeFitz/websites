@@ -6,7 +6,7 @@ import filterImages from '~lib/notion/filterImages'
 /**
  * @plaiceholder/next
  */
-// @todo(complexity) 15
+// @todo(complexity) 16
 // eslint-disable-next-line complexity
 const getImages = async ({ data, pathVariables }) => {
   const slugger = new Slugger()
