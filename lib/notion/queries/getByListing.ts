@@ -6,11 +6,9 @@ import getBlocksByIdChildren from '~lib/notion/api/getBlocksByIdChildren'
 import getDatabasesByIdQuery from '~lib/notion/api/getDatabasesByIdQuery'
 import getPagesById from '~lib/notion/api/getPagesById'
 import getImages from '~lib/notion/getImages'
+import dataNormalized from '~lib/notion/queries/dataNormalized'
+import dataSorted from '~lib/notion/queries/dataSorted'
 import { PROPERTIES } from '~lib/notion/schema'
-import {
-  dataNormalized,
-  dataSorted,
-} from '~pages/api/notion/secret/get/[...catchAll]'
 import { DB } from '~utils/notion/helper'
 
 const getByRouteType = async ({ pathVariables, routeType }) => {

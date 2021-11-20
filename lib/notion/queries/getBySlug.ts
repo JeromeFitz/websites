@@ -6,10 +6,8 @@ import getBlocksByIdChildren from '~lib/notion/api/getBlocksByIdChildren'
 import getDatabasesByIdQuery from '~lib/notion/api/getDatabasesByIdQuery'
 import { deepFetchAllChildren } from '~lib/notion/getCatchAll'
 import getImages from '~lib/notion/getImages'
-import {
-  dataNormalized,
-  dataSorted,
-} from '~pages/api/notion/secret/get/[...catchAll]'
+import dataNormalized from '~lib/notion/queries/dataNormalized'
+import dataSorted from '~lib/notion/queries/dataSorted'
 import { DB, QUERIES } from '~utils/notion/helper'
 
 const getBySlug = async ({ pathVariables, routeType, slug }) => {

@@ -1,7 +1,8 @@
 import _map from 'lodash/map'
+import _omit from 'lodash/omit'
 import _size from 'lodash/size'
 
-import { dataNormalizedResults } from '~pages/api/notion/secret/get/[...catchAll]'
+import dataNormalizedResults from '~lib/notion/queries/dataNormalizedResults'
 import avoidRateLimit from '~utils/avoidRateLimit'
 import { DB, ROUTE_TYPES, notion } from '~utils/notion/helper'
 
@@ -277,6 +278,7 @@ class DATABASE_TYPES {
 
 const getQuery = async ({ reqQuery }) => {
   const { databaseType } = reqQuery
+  const routeType = databaseType
   /**
    * @debug
    */
@@ -347,13 +349,11 @@ const getQuery = async ({ reqQuery }) => {
         filter,
         sorts,
       })
-      // data = normalizerContent(contentData)
+
       data = contentData
-      // @hack(notion) routeType should be dynamic
-      items = dataNormalizedResults(contentData.results, 'episodes')
-      // console.dir(`items`)
-      // console.dir(items)
-      data.results = items
+      items = dataNormalizedResults(contentData.results, routeType)
+      data = _omit(data, 'results')
+      data['results'] = items
     } else {
       // console.dir(`no filter`)
       hasError = true

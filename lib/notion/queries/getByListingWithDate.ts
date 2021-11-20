@@ -5,12 +5,10 @@ import _size from 'lodash/size'
 import getBlocksByIdChildren from '~lib/notion/api/getBlocksByIdChildren'
 import getDatabasesByIdQuery from '~lib/notion/api/getDatabasesByIdQuery'
 import getPagesById from '~lib/notion/api/getPagesById'
+import addTime from '~lib/notion/queries/addTime'
+import dataNormalized from '~lib/notion/queries/dataNormalized'
+import dataSorted from '~lib/notion/queries/dataSorted'
 import { PROPERTIES } from '~lib/notion/schema'
-import {
-  dataNormalized,
-  dataSorted,
-} from '~pages/api/notion/secret/get/[...catchAll]'
-import addTime from '~utils/next/addTime'
 import { DB, QUERIES, ROUTE_TYPES } from '~utils/notion/helper'
 
 // complexity 16
