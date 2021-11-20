@@ -160,6 +160,7 @@
       "lib/notion/api/getDatabasesById.ts",
       "lib/notion/api/getPages.ts",
       "lib/notion/api/getSearch.ts",
+      "lib/notion/api/getTypes/*",
       "styles/fonts/index.ts",
       "styles/fonts/F37Bella.tsx",
       "styles/fonts/F37Bolton.tsx",
