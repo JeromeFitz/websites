@@ -15,8 +15,9 @@ if (!process.env.NEXT_PUBLIC__SITE) {
 }
 
 // @hack(dynamic) hack way to ensure when we build we are doing the right site
-const urlBaseCheck = 'jeromefitzgerald.com'
+// const urlBaseCheck = 'jeromefitzgerald.com'
 // const urlBaseCheck = 'jerandky.com'
+const urlBaseCheck = 'test.com'
 if (process.env.NEXT_PUBLIC__SITE !== urlBaseCheck) {
   throw new Error(`process.env.NEXT_PUBLIC__SITE is not: ${urlBaseCheck}`)
 }

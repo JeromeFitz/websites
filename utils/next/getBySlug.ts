@@ -1,18 +1,23 @@
 /* eslint-disable prefer-const */
 import _filter from 'lodash/filter'
+import _omit from 'lodash/omit'
 
 import getBlocksByIdChildren from '~lib/notion/api/getBlocksByIdChildren'
 import getDatabasesByIdQuery from '~lib/notion/api/getDatabasesByIdQuery'
-import { deepFetchAllChildren, normalizerContent } from '~lib/notion/getCatchAll'
+import { deepFetchAllChildren } from '~lib/notion/getCatchAll'
 import getImages from '~lib/notion/getImages'
-import { DATABASES, QUERIES } from '~utils/notion/helper'
+import {
+  dataNormalized,
+  dataSorted,
+} from '~pages/api/notion/secret/get/[...catchAll]'
+import { DB, QUERIES } from '~utils/notion/helper'
 
 const getBySlug = async ({ pathVariables, routeType, slug }) => {
   let content = null,
     info = null,
     items = null
   const info1: any = await getDatabasesByIdQuery({
-    databaseId: DATABASES[routeType],
+    databaseId: DB[routeType.toUpperCase()].id,
     filter: {
       and: [
         {
@@ -22,15 +27,18 @@ const getBySlug = async ({ pathVariables, routeType, slug }) => {
       ],
     },
   })
+
   const info1a = info1?.object === 'list' && info1.results[0]
-  info = normalizerContent(info1a)
+  info = _omit(info1a, 'properties')
+  info['properties'] = dataSorted(dataNormalized(info1a, routeType, info.id))
+
   content = await getBlocksByIdChildren({ blockId: info.id })
 
   const blocks = [...(await deepFetchAllChildren(content.results))]
   content = blocks
 
   if (!!items) {
-    items.results = _filter(items.results, { data: { published: true } })
+    items.results = _filter(items.results, { data: { isPublished: true } })
   }
 
   let data = { info, content, items, images: {} }

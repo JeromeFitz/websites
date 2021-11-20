@@ -1,3 +1,6 @@
-const date = (data: any) => data.date || null
+const date = (data: any) => {
+  const { type } = data
+  return data[type]
+}
 
 export default date

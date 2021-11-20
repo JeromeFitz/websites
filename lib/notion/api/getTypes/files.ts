@@ -1,24 +1,41 @@
+import Slugger from 'github-slugger'
 import _size from 'lodash/size'
 
-const files = (data: any) => {
-  // console.dir(`> getTypeFilesNormalized`)
-  // console.dir(data)
-  const returnData = _size(data.files) > 0 ? data?.files[0]?.name : null
-  // console.dir(`> returnData`)
-  // console.dir(returnData)
-  return returnData
-  // // @todo(zeroArray)
-  // (data.files[0].type === 'external'
-  //   ? {
-  //       name: data.files[0].name,
-  //       url: data.files[0].external.url,
-  //       expiryTime: null,
-  //     }
-  //   : {
-  //       name: data.files[0].name,
-  //       url: data.files[0].file.url,
-  //       expiryTime: data.files[0].file.expiry_time,
-  //     })
+import stringToUUID from '~utils/stringToUUID'
+
+const notionImageHosted = `https://www.notion.so/image/{{FILENAME}}?table=block&id={{PAGE_ID}}&cache=v2&w1dth=600`
+
+const getNotionHostedUrl = (url: string | number | boolean, pageId: string) =>
+  notionImageHosted
+    .replace('{{FILENAME}}', encodeURIComponent(url))
+    .replace('{{PAGE_ID}}', stringToUUID(pageId))
+
+const files = (data: any, pageId: string) => {
+  const slugger = new Slugger()
+  const _files = {}
+
+  if (_size(data.files) <= 0) return _files
+  data.files.map(
+    (file: { type: string; file: { url: string }; external: { url: string } }) => {
+      if (file?.type === 'file') {
+        const internalUrl = file?.file?.url.split('?')[0]
+        const internalSlug = slugger.slug(internalUrl)
+        _files[internalSlug] = {
+          type: file?.type,
+          url: getNotionHostedUrl(internalUrl, pageId),
+        }
+      }
+      if (file?.type === 'external') {
+        const externalUrl = file?.external?.url.split('?')[0]
+        const externalSlug = slugger.slug(externalUrl)
+        _files[externalSlug] = { type: file?.type, url: externalUrl }
+      }
+
+      return
+    }
+  )
+
+  return _files
 }
 
 export default files

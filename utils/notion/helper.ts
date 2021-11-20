@@ -1,6 +1,7 @@
 import { Client } from '@notionhq/client'
 
 export {
+  DB,
   DATABASES,
   PAGES,
   ROUTE_TYPES,

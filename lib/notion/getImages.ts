@@ -22,7 +22,7 @@ const getImages = async ({ data, pathVariables }) => {
    */
   const infoImagesFilter =
     data.info?.object === 'page'
-      ? filterImages(data.info?.data, 'info')
+      ? filterImages(data.info?.properties, 'info')
       : !!data.info?.results &&
         filterImages(data.info?.results[0]?.properties, 'info')
   const infoImagesAwait =
@@ -31,14 +31,17 @@ const getImages = async ({ data, pathVariables }) => {
       if (!imageResult) {
         return null
       }
-      // console.dir(`>> imageResult: infoImagesFilter`)
-      // console.dir(imageResult)
+
       const url =
         !!imageResult && !!imageResult?.url ? imageResult?.url : imageResult
 
       if (!url) {
         return null
       }
+
+      // console.dir(`>> imageResult: infoImagesFilter`)
+      // console.dir(imageResult)
+      // console.dir(url)
 
       const { base64, img } = await getPlaiceholder(url)
       const id = slugger.slug(url)
@@ -59,12 +62,17 @@ const getImages = async ({ data, pathVariables }) => {
       if (!imageResult) {
         return null
       }
+
+      const url =
+        !!imageResult && !!imageResult?.url ? imageResult?.url : imageResult
+
+      if (!url) {
+        return null
+      }
+
       // console.dir(`>> imageResult: contentImagesAwait`)
       // console.dir(imageResult)
-      const url =
-        !!imageResult && imageResult?.image?.type === 'external'
-          ? imageResult?.image?.external.url
-          : imageResult?.image?.file.url
+      // console.dir(url)
 
       const { base64, img } = await getPlaiceholder(url)
       const id = slugger.slug(url)

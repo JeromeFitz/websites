@@ -9,6 +9,7 @@
 
 export {
   DATABASES,
+  DB,
   // navigationFooter,
   navigationHeader,
   nextSeo,
@@ -18,4 +19,4 @@ export {
   sitemapExcludes,
   SLUG__HOMEPAGE,
   TAGS,
-} from '~config/websites/jeromefitzgerald.com'
+} from '~config/websites/test.com'

@@ -168,8 +168,6 @@
       "styles/fonts/Inter.tsx",
       "styles/fonts/NameSans.tsx",
       "utils/isElementOfType.ts",
-      "utils/next/getByListing.ts",
-      "utils/next/getBySlug.ts",
       "utils/isObjectEmpty.ts"
     ],
     "include": [
