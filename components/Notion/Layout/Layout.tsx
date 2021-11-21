@@ -12,8 +12,8 @@ const Layout = ({ id, children, data, routeType, url }) => {
   const { data: images } = useSWR('images')
 
   const {
-    noIndex,
-    published,
+    isIndexed,
+    isPublished,
     seoDescription: description,
     seoImage,
     seoImageDescription,
@@ -40,7 +40,7 @@ const Layout = ({ id, children, data, routeType, url }) => {
     canonical: seoUrl,
     description: seoDescription,
     image: seoImage,
-    noindex: !published || noIndex,
+    noindex: !isPublished || !isIndexed,
     openGraph: {
       description: seoDescription,
       images: [

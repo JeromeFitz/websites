@@ -44,7 +44,7 @@ const Episodes = ({ images, items }) => {
           // slug,
           // rollupTags: tags,
           title,
-        } = item?.data
+        } = item?.properties
         const imageSlug = slugger.slug(seoImage)
         const imageData = !!images && images[imageSlug]
         const hasImage = !!imageData && !!imageData.base64
@@ -55,7 +55,7 @@ const Episodes = ({ images, items }) => {
         if (!hasImage) return null
         const { base64, img, slug: imgSlug } = imageData
 
-        const { episode, season } = item?.data
+        const { episode, season } = item?.properties
         const meta = router.asPath.split('/').slice(1)
         const isEpisode = _size(meta) === 2
         const { as, href } = getInfoType(item, ROUTE_TYPES.podcasts, meta)

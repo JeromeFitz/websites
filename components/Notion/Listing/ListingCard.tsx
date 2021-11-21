@@ -52,7 +52,7 @@ const motionGlow = {
 }
 
 const ListingItem = ({ index, item }) => {
-  const { seoDescription, seoImage, slug, title } = item?.data
+  const { seoDescription, seoImage, slug, title } = item?.properties
   const slugger = new Slugger()
   const { data: images } = useSWR('images')
 

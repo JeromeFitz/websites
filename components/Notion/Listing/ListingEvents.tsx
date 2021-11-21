@@ -138,7 +138,7 @@ const ListingEvents = ({ items }) => {
   // const slugger = new Slugger()
   const _dates = _uniqWith(
     _map(items, (item) => {
-      return item?.data?.date?.start
+      return item?.properties?.date?.start
     })
   )
   // console.dir(_dates)

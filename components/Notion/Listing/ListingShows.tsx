@@ -1,4 +1,3 @@
-import Slugger from 'github-slugger'
 import _map from 'lodash/map'
 import NextLink from 'next/link'
 import React from 'react'
@@ -19,8 +18,6 @@ import {
 import { CardOuter, ImageBlur } from '~styles/system/components/Card/Spotify'
 
 const Shows = ({ images, items }) => {
-  const slugger = new Slugger()
-
   return (
     <>
       {_map(items, (item, itemIdx) => {
@@ -31,8 +28,11 @@ const Shows = ({ images, items }) => {
           slug,
           rollupTags: tags,
           title,
-        } = item?.data
-        const imageSlug = slugger.slug(seoImage)
+        } = item?.properties
+        // @note(notion) this is slugified upstream in data collection
+        //               take "first" one
+        // @todo(notion) allow for more than one // choose external only
+        const imageSlug = Object.keys(seoImage)[0]
         const imageData = !!images && images[imageSlug]
         const hasImage = !!imageData && !!imageData.base64
         // const blurDataURL = hasImage
@@ -41,9 +41,6 @@ const Shows = ({ images, items }) => {
 
         let base64, img, imgSlug
         if (!hasImage) {
-          // console.dir(item)
-          // console.dir(`imageSlug`)
-          // console.dir(imageSlug)
           /**
            * @hack fallback
            */

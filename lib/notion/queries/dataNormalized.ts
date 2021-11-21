@@ -5,6 +5,8 @@ import { LOOKUP } from '~lib/notion/schema'
 
 const dataNormalized = (data: any, routeType = null, pageId = null) => {
   const DATA_NORMALIZED = {}
+  // @todo(notion) handle direct call from: ./pages/api/notion/pages/[id]/index.ts
+  if (routeType === null) return DATA_NORMALIZED
   if (!data?.properties) return DATA_NORMALIZED
 
   const { properties } = data

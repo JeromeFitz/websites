@@ -3,7 +3,8 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
 import { getCache, setCache } from '~lib/notion/getCache'
-import { normalizerContent } from '~lib/notion/getCatchAll'
+import dataNormalized from '~lib/notion/queries/dataNormalized'
+import dataSorted from '~lib/notion/queries/dataSorted'
 // import omitFields from '~lib/notion/omitFields'
 import avoidRateLimit from '~utils/avoidRateLimit'
 import { notion } from '~utils/notion/helper'
@@ -34,7 +35,7 @@ const notionPagesId = async (req: NextApiRequest, res: NextApiResponse) => {
       // @ts-ignore
       page_id,
     })
-    data = normalizerContent(contentData)
+    data = dataSorted(dataNormalized(contentData, null, page_id))
     /**
      * @cache post
      */

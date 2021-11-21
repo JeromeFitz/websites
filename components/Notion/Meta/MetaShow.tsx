@@ -16,23 +16,26 @@ const rollupExclude = [
   'rollupTags',
   'rollupTagsSecondary',
   'rollupShow',
+  // @refactor() remove above once below is solidified
+  'rollupShows__People_Cast_Slug',
 ]
 
 const MetaShow = ({ data, routeType }) => {
   const { id } = data?.info
-  const _data = data?.info?.data
+  const properties = data?.info?.properties
   const rollupKeys = []
   _map(
-    Object.keys(_data),
+    Object.keys(properties),
     (k) =>
       _startsWith(k, 'rollup') && !rollupExclude.includes(k) && rollupKeys.push(k)
   )
 
   let size = 0
-  _map(rollupKeys, (r) => (size = size + _size(_data[r])))
+  _map(rollupKeys, (r) => (size = size + _size(properties[r])))
 
   // console.dir(`rollupKeys`)
   // console.dir(rollupKeys)
+  // console.dir(`size: ${size}`)
 
   if (size === 0) return null
 
@@ -63,7 +66,7 @@ const MetaShow = ({ data, routeType }) => {
           }}
         >
           {_map(rollupKeys, (rollupKey, rollupKeyIdx) => {
-            const meta = _data[rollupKey]
+            const meta = properties[rollupKey]
             const metaSize = _size(meta)
             if (!meta || metaSize === 0 || rollupExclude.includes(rollupKey))
               return null
@@ -73,7 +76,7 @@ const MetaShow = ({ data, routeType }) => {
             return (
               <Rollup
                 _key={key}
-                data={_data}
+                data={properties}
                 key={key}
                 rollupKey={rollupKey}
                 routeType={routeType}

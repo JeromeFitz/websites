@@ -23,7 +23,7 @@ const getStaticPathsDefault = ({ items, routeType }) => {
             ? item.data.date.start
             : item.data.datePublished.start
         const [year, month, day] = date.slice(0, 10).split('-')
-        data.push(`/${routeType}/${year}/${month}/${day}/${item?.data?.slug}`)
+        data.push(`/${routeType}/${year}/${month}/${day}/${item?.properties?.slug}`)
         dates.push(`/${routeType}/${year}/${month}/${day}`)
         dates.push(`/${routeType}/${year}/${month}`)
         dates.push(`/${routeType}/${year}`)
@@ -34,14 +34,16 @@ const getStaticPathsDefault = ({ items, routeType }) => {
       _map(items, (item) => {
         // @todo(notion) what if there is more than two? make dynamic please
         const podcastSlug =
-          item?.data?.podcasts[0] === 'fff1042d-3403-4210-991e-678c6820fe68'
+          item?.properties?.podcasts[0] === 'fff1042d-3403-4210-991e-678c6820fe68'
             ? 'knockoffs'
             : 'jer-and-ky-and-guest'
-        data.push(`/${ROUTE_TYPES.podcasts}/${podcastSlug}/${item?.data?.slug}`)
+        data.push(
+          `/${ROUTE_TYPES.podcasts}/${podcastSlug}/${item?.properties?.slug}`
+        )
       })
       break
     default:
-      _map(items, (item) => data.push(`/${routeType}/${item?.data?.slug}`))
+      _map(items, (item) => data.push(`/${routeType}/${item?.properties?.slug}`))
       break
   }
   return data

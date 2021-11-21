@@ -29,7 +29,7 @@ const CatchAll = (props) => {
   } = props
 
   const { data, error } = useSWR(
-    () => (!!url ? `/api/notion/${url}` : null),
+    () => (!!url ? `/api/notion/secret/get/${url}` : null),
     fetcher,
     {
       fallbackData: {

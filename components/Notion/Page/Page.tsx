@@ -46,8 +46,8 @@ const Page = ({ data, ...props }) => {
     url,
   } = props
 
-  // console.dir(`props`)
-  // console.dir(props)
+  console.dir(`> props`)
+  console.dir(props)
 
   const hasMeta =
     _size(meta) > 0 && [ROUTE_TYPES.blog, ROUTE_TYPES.events].includes(routeType)
@@ -55,20 +55,11 @@ const Page = ({ data, ...props }) => {
   /**
    * @images
    */
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { cache, mutate } = useSWRConfig()
+  const { mutate } = useSWRConfig()
   const { data: images } = useSWR('images', { fallbackData: imagesFallback })
   useEffectOnce(() => {
-    // console.dir(`useEffectOnce`)
     void mutate('images', { ...images, ...imagesFallback }, true)
   })
-
-  // // console.dir(`images`)
-  // // console.dir(images)
-  // console.dir(`cache`)
-  // console.dir(cache)
 
   /**
    * @data
@@ -83,25 +74,11 @@ const Page = ({ data, ...props }) => {
 
   if (info === null) return null
 
-  const { icon, id, data: properties } = isInfoObjectPage ? info : info?.results[0]
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const emoji = !!icon?.emoji ? icon.emoji : ''
-
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { spotifyShow, tags, title } = properties
-
-  // console.dir(`properties`)
+  const { id, properties } = isInfoObjectPage ? info : info?.results[0]
+  // console.dir(`> properties`)
   // console.dir(properties)
 
-  // // console.dir(`id`)
-  // // console.dir(id)
-
   // @todo(switch)
-
   /**
    * @tags
    */
@@ -120,12 +97,11 @@ const Page = ({ data, ...props }) => {
   //     break
   // }
 
-  // console.dir(`data`)
-  // console.dir(data)
   // console.dir(`content`)
   // console.dir(content)
   // // const nodes = getContentNodes({ content, images })
 
+  // @refactor(confusing)
   const isEventListing = routeType === ROUTE_TYPES.events && !isIndex
   const isEpisodeListing = routeType === ROUTE_TYPES.podcasts && !isIndex
   const isShowListing = routeType === ROUTE_TYPES.shows && !isIndex

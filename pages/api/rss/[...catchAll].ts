@@ -158,7 +158,7 @@ const rssApi = async (req: NextApiRequest, res: NextApiResponse) => {
         slug,
         title,
         type,
-      } = item?.data
+      } = item?.properties
 
       const isAvailable = _isBefore(_parseISO(datePublished), timestampNow)
       // @todo(rss) handle this in filter above

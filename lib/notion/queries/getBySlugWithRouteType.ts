@@ -10,7 +10,7 @@ import dataSorted from '~lib/notion/queries/dataSorted'
 import { PROPERTIES } from '~lib/notion/schema'
 import { DB, QUERIES, ROUTE_TYPES } from '~utils/notion/helper'
 
-// complexity 14
+// complexity 15
 // eslint-disable-next-line complexity
 const getBySlugWithRouteType = async ({ meta, routeType, slug }) => {
   let content = null,

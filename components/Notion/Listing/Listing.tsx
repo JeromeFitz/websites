@@ -52,7 +52,7 @@ const ListingItemEpisode = ({ item, routeType }) => {
     return null
   }
 
-  const { episode, season, seoDescription, title } = item?.data
+  const { episode, season, seoDescription, title } = item?.properties
   const meta = router.asPath.split('/').slice(1)
   const isEpisode = _size(meta) === 2
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -142,7 +142,7 @@ const ListingItemEvent = ({ item, routeType }) => {
     date: { start: dateStart },
     seoDescription,
     title,
-  } = item?.data
+  } = item?.properties
   const timestamp = getTimestamp(dateStart)
   // // console.dir(`item`)
   // // console.dir(item)
@@ -158,8 +158,8 @@ const ListingItemEvent = ({ item, routeType }) => {
   // console.dir(venue)
 
   const tagParams = `events=${item?.id || ''}&shows=${
-    item?.data?.shows?.join(',') || ''
-  }&eventsLineupShowIds=${item?.data?.eventsLineupShowIds?.join(',') || ''}`
+    item?.properties?.shows?.join(',') || ''
+  }&eventsLineupShowIds=${item?.properties?.eventsLineupShowIds?.join(',') || ''}`
 
   return (
     <NextLink as={as} href={href}>
@@ -237,7 +237,7 @@ const ListingItem = ({ item, routeType }) => {
     return null
   }
 
-  const { seoDescription, title } = item?.data
+  const { seoDescription, title } = item?.properties
   const { icon } = item
   const emoji = !!icon?.emoji ? icon.emoji : ''
   // const timestamp = getTimestamp(dateStart)

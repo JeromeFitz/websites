@@ -4,7 +4,7 @@ import _omit from 'lodash/omit'
 
 import getBlocksByIdChildren from '~lib/notion/api/getBlocksByIdChildren'
 import getDatabasesByIdQuery from '~lib/notion/api/getDatabasesByIdQuery'
-import { deepFetchAllChildren } from '~lib/notion/getCatchAll'
+import deepFetchAllChildren from '~lib/notion/deepFetchAllChildren'
 import getImages from '~lib/notion/getImages'
 import dataNormalized from '~lib/notion/queries/dataNormalized'
 import dataSorted from '~lib/notion/queries/dataSorted'

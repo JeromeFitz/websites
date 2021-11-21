@@ -9,5 +9,8 @@ const getTitle = (title) =>
     .replace('MusicGuest', 'Musical Guest')
     .replace('eventsLineupShowIds', 'Lineup')
     .replace('tags', 'Tag')
+    // @refactor() remove above once below is solidified
+    .replace('Shows__People_Cast', 'Cast')
+    .replace('Shows__People_Cast_Slugs', 'Cast Slug')
 
 export default getTitle
