@@ -48,11 +48,11 @@ const ListingItemEpisode = ({ item, routeType }) => {
     volume: 0.25,
   })
 
-  if (item.data.slug === null || item.data.slug === undefined) {
+  if (item?.properties?.slug === null || item?.properties?.slug === undefined) {
     return null
   }
 
-  const { episode, season, seoDescription, title } = item?.data
+  const { episode, season, seoDescription, title } = item?.properties
   const meta = router.asPath.split('/').slice(1)
   const isEpisode = _size(meta) === 2
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -134,7 +134,7 @@ const ListingItemEvent = ({ item, routeType }) => {
     {}
   )
 
-  if (item.data.slug === null || item.data.slug === undefined) {
+  if (item?.properties?.slug === null || item?.properties?.slug === undefined) {
     return null
   }
 
@@ -142,7 +142,7 @@ const ListingItemEvent = ({ item, routeType }) => {
     date: { start: dateStart },
     seoDescription,
     title,
-  } = item?.data
+  } = item?.properties
   const timestamp = getTimestamp(dateStart)
   // // console.dir(`item`)
   // // console.dir(item)
@@ -158,8 +158,8 @@ const ListingItemEvent = ({ item, routeType }) => {
   // console.dir(venue)
 
   const tagParams = `events=${item?.id || ''}&shows=${
-    item?.data?.shows?.join(',') || ''
-  }&eventsLineupShowIds=${item?.data?.eventsLineupShowIds?.join(',') || ''}`
+    item?.properties?.shows?.join(',') || ''
+  }&eventsLineupShowIds=${item?.properties?.eventsLineupShowIds?.join(',') || ''}`
 
   return (
     <NextLink as={as} href={href}>
@@ -233,11 +233,11 @@ const ListingItem = ({ item, routeType }) => {
   //   {}
   // )
 
-  if (item.data.slug === null || item.data.slug === undefined) {
+  if (item?.properties?.slug === null || item?.properties?.slug === undefined) {
     return null
   }
 
-  const { seoDescription, title } = item?.data
+  const { seoDescription, title } = item?.properties
   const { icon } = item
   const emoji = !!icon?.emoji ? icon.emoji : ''
   // const timestamp = getTimestamp(dateStart)
@@ -302,6 +302,10 @@ const ListingItem = ({ item, routeType }) => {
 const Listing = ({ images, items, routeType }) => {
   const itemsSize = _size(items?.results)
 
+  // console.dir(`> Listing`)
+  // console.dir(`> itemsSize: ${itemsSize}`)
+  // console.dir(items)
+
   if (itemsSize === 0) return null
 
   let itemsData
@@ -309,12 +313,12 @@ const Listing = ({ images, items, routeType }) => {
   if (itemsSize > 0) {
     switch (routeType) {
       case ROUTE_TYPES.events:
-        itemsData = _orderBy(items.results, ['data.date.start'], ['asc'])
+        itemsData = _orderBy(items.results, ['properties.dateEvent.start'], ['asc'])
         break
       case ROUTE_TYPES.podcasts:
         itemsData = _orderBy(
           items.results,
-          ['data.season', 'data.episode'],
+          ['properties.season', 'properties.episode'],
           ['desc', 'desc']
         )
         break
@@ -324,8 +328,10 @@ const Listing = ({ images, items, routeType }) => {
     }
   }
 
-  if (routeType === ROUTE_TYPES.podcasts) {
+  if (routeType === ROUTE_TYPES.podcasts && itemsData.length > 0) {
+    // console.dir(`> itemsData`)
     // console.dir(itemsData)
+    // @todo(what) this if statement is not correct.
     return (
       <>
         <ListingEpisodes images={images} items={itemsData} />

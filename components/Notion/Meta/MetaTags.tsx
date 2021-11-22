@@ -34,15 +34,15 @@ const MetaTags = ({ tagParams }) => {
           <li
             className={cx(
               `badge`,
-              // !!item?.data?.tailwindColorBackground &&
-              //   `badge-${item?.data?.tailwindColorBackground}`
+              // !!item?.properties?.tailwindColorBackground &&
+              //   `badge-${item?.properties?.tailwindColorBackground}`
               `bg-black text-white`,
               `dark:bg-white dark:text-black`,
               ``
             )}
             key={item?.id}
           >
-            {item?.data?.name || item?.data?.title}
+            {item?.properties?.name || item?.properties?.title}
           </li>
         )
       })}

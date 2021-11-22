@@ -6,7 +6,7 @@ import filterImages from '~lib/notion/filterImages'
 /**
  * @plaiceholder/next
  */
-// @todo(complexity) 15
+// @todo(complexity) 16
 // eslint-disable-next-line complexity
 const getImages = async ({ data, pathVariables }) => {
   const slugger = new Slugger()
@@ -22,7 +22,7 @@ const getImages = async ({ data, pathVariables }) => {
    */
   const infoImagesFilter =
     data.info?.object === 'page'
-      ? filterImages(data.info?.data, 'info')
+      ? filterImages(data.info?.properties, 'info')
       : !!data.info?.results &&
         filterImages(data.info?.results[0]?.properties, 'info')
   const infoImagesAwait =
@@ -31,14 +31,18 @@ const getImages = async ({ data, pathVariables }) => {
       if (!imageResult) {
         return null
       }
+
       // console.dir(`>> imageResult: infoImagesFilter`)
       // console.dir(imageResult)
+
       const url =
         !!imageResult && !!imageResult?.url ? imageResult?.url : imageResult
 
       if (!url) {
         return null
       }
+
+      // console.dir(url)
 
       const { base64, img } = await getPlaiceholder(url)
       const id = slugger.slug(url)
@@ -59,12 +63,22 @@ const getImages = async ({ data, pathVariables }) => {
       if (!imageResult) {
         return null
       }
+
       // console.dir(`>> imageResult: contentImagesAwait`)
       // console.dir(imageResult)
+
+      const { type } = imageResult
+      const image = imageResult[type]
+
+      // @todo(notion) rework content after refactor: getTypes[image]
       const url =
-        !!imageResult && imageResult?.image?.type === 'external'
-          ? imageResult?.image?.external.url
-          : imageResult?.image?.file.url
+        !!imageResult && !!image?.external?.url ? image?.external?.url : null
+
+      if (!url) {
+        return null
+      }
+
+      // console.dir(url)
 
       const { base64, img } = await getPlaiceholder(url)
       const id = slugger.slug(url)
@@ -86,14 +100,18 @@ const getImages = async ({ data, pathVariables }) => {
       if (!imageResult) {
         return null
       }
+
       // console.dir(`>> imageResult: itemsImagesAwait`)
       // console.dir(imageResult)
+
       const url =
         !!imageResult && !!imageResult?.url ? imageResult?.url : imageResult
 
       if (!url) {
         return null
       }
+
+      // console.dir(url)
 
       const { base64, img } = await getPlaiceholder(url)
       const id = slugger.slug(url)

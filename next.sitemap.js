@@ -1,53 +1,44 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const _replace = require('lodash/replace')
 
+// const { nextSeo, sitemapExcludes } = require('./config/websites/index')
+// const excludes = sitemapExcludes
+// const siteUrl = nextSeo.url
+
 const sites = {
   'jerandky.com': {
     excludes: [
-      '/en/blog',
-      '/en/blog/*',
-      '/en/colophon',
-      '/en/colophon/*',
-      '/en/comedy',
-      '/en/comedy/*',
-      '/en/music',
-      '/en/music/*',
-      '/en/shows',
-      '/en/shows/*',
-      //
-      '/blog',
-      '/blog/*',
-      '/colophon',
-      '/colophon/*',
-      '/comedy',
-      '/comedy/*',
-      '/music',
-      '/music/*',
-      '/shows',
-      '/shows/*',
+      'blog',
+      'books',
+      'colophon',
+      'episodes',
+      'events',
+      'music',
+      'people',
+      'playground',
+      // 'podcasts/*/**',
+      'refactor',
+      'shows',
+      'users',
+      'venues',
     ],
     siteUrl: 'https://jerandky.com',
   },
   'jeromefitzgerald.com': {
     excludes: [
-      '/en/episodes',
-      '/en/episodes/*',
-      '/en/people',
-      '/en/people/*',
-      // @note(sitemap) turn off episodes for the moment
-      '/en/podcasts/*/*',
-      '/en/refactor',
-      '/en/refactor/*',
-      '/en/refactor/*/*',
-      '/en/users',
-      '/en/users/*',
-      '/en/venues',
-      '/en/venues/*',
-      '/en/playground',
-      '/en/playground/*',
-      //
-      '/playground',
-      '/playground/*',
+      // 'blog',
+      // 'books',
+      // 'colophon',
+      'episodes',
+      // 'events',
+      // 'music',
+      'people',
+      'playground',
+      'podcasts/*/**',
+      'refactor',
+      // 'shows',
+      'users',
+      'venues',
     ],
     siteUrl: 'https://jeromefitzgerald.com',
   },
@@ -65,9 +56,20 @@ const removeEn = (config, url) => {
   }
 }
 
-module.exports = {
+const getExcludes = (excludes) => {
+  const _excludes = []
+  excludes.map((e) => {
+    _excludes.push(`/${e}/*`)
+    _excludes.push(`/${e}`)
+    _excludes.push(`/en/${e}/*`)
+    _excludes.push(`/en/${e}`)
+  })
+  return _excludes
+}
+
+const config = {
   changefreq: 'weekly',
-  exclude: [...excludes],
+  exclude: getExcludes(excludes),
   generateRobotsTxt: true,
   siteUrl,
   sites,
@@ -97,3 +99,6 @@ module.exports = {
     // }
   },
 }
+
+// export default config
+module.exports = config

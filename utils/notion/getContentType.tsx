@@ -288,7 +288,6 @@ class ContentTypes {
           blurDataURL={imageData.base64}
           key={imageSlug}
           placeholder="blur"
-          title={caption}
           {...imageData.img}
         />
         {!!caption && <ImageCaption caption={caption} />}

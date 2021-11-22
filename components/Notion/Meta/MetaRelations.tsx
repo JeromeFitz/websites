@@ -41,7 +41,7 @@ const MetaRelations = ({ id, ids, relationKey, routeType }) => {
     <MetaUL id={`relations--container--${relationKey.toLowerCase()}`} title={title}>
       {_map(data?.results, (item) => (
         <li className={cx('first:pt-2')} key={item?.id}>
-          {item?.data?.title}
+          {item?.properties?.title}
         </li>
       ))}
     </MetaUL>

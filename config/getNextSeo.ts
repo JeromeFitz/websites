@@ -1,4 +1,4 @@
-import seo from '~config/websites'
+import { nextSeo as seo } from '~config/websites'
 const { description, sitename, title, twitter, url } = seo
 
 const getNextSeo = {

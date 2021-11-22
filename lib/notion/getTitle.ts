@@ -1,13 +1,9 @@
-const getTitle = (title) =>
-  title
-    .replace('people', '')
-    .replace('rollup', '')
-    .replace('CastGuest', 'Guest Performer')
-    .replace('CastPast', 'Cast Emeritus')
-    .replace('DirectorMusical', 'Musical Director')
-    .replace('DirectorTechnical', 'Technical Director')
-    .replace('MusicGuest', 'Musical Guest')
-    .replace('eventsLineupShowIds', 'Lineup')
-    .replace('tags', 'Tag')
+import _last from 'lodash/last'
+
+const getTitle = (title: string) =>
+  _last(title.split('_'))
+    .replace('Past', 'Cast Emeritus')
+    .replace('Musical', 'Musical Director')
+    .replace('Technical', 'Technical Director')
 
 export default getTitle

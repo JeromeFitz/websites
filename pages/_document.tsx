@@ -13,8 +13,20 @@ import Document, {
 // import { info, fontFace } from '~styles/fonts/F37GingerRound'
 import { info, fontFace } from '~styles/fonts/Inter'
 // import { info, fontFace } from '~styles/fonts/NameSans'
-import { getCssText } from '~styles/system/stitches.config'
+import { getCssText, reset } from '~styles/system/stitches.config'
 
+/**
+ * Get the css and reset the internal css representation.
+ * This is very *IMPORTANT* to do as the server might handle multiple requests
+ * and we don't want to have the css accumulated from previous requests
+ *
+ * ref: https://github.com/radix-ui/design-system/pull/360
+ */
+const getCssAndReset = () => {
+  const css = getCssText()
+  reset()
+  return css
+}
 class MyDocument extends Document<DocumentContext> {
   render() {
     return (
@@ -24,7 +36,10 @@ class MyDocument extends Document<DocumentContext> {
           <meta name="msapplication-tap-highlight" content="no" />
           <meta name="superfish" content="nofish" />
           <meta content="origin-when-cross-origin" name="referrer" />
-          <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} />
+          <style
+            id="stitches"
+            dangerouslySetInnerHTML={{ __html: getCssAndReset() }}
+          />
           {/* START: custom typeface */}
           {_map(info.weights, (weight) => {
             return _map(weight, (file) => {

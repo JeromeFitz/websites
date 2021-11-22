@@ -165,6 +165,7 @@ export const {
   getCssText,
   globalCss,
   keyframes,
+  reset,
   styled,
   theme,
 } = createStitches({

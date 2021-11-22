@@ -1,11 +1,14 @@
-// import dynamic from 'next/dynamic'
 import useSWR from 'swr'
 
 import ListingShows from '~components/Notion/Listing/ListingShows'
 import Page from '~components/Notion/Page'
 import PageHeading, { SkeletonHeading } from '~components/PageHeading'
 import mockData from '~data/mock/notion/shows'
-import { revalidate, ERROR__FALLBACK } from '~lib/constants'
+import {
+  nextWeirdRoutingSkipData,
+  revalidate,
+  ERROR__FALLBACK,
+} from '~lib/constants'
 import fetcher from '~lib/fetcher'
 import getCatchAll from '~lib/notion/getCatchAll'
 import getPathVariables from '~lib/notion/getPathVariables'
@@ -13,15 +16,9 @@ import getNextPageStatus from '~utils/next/getNextPageStatus'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { ROUTE_TYPES, SLUG__HOMEPAGE } from '~utils/notion/helper'
+import { SLUG__HOMEPAGE } from '~utils/notion/helper'
 
-// const ListingShows = dynamic(
-//   () => import('~components/Notion/Listing/ListingCard'),
-//   {}
-// )
-// const Quote = dynamic(() => import('~components/Notion/Quote'), {})
-
-const CatchAll = (props) => {
+const Index = (props) => {
   const {
     content: contentFallback,
     info: infoFallback,
@@ -33,7 +30,7 @@ const CatchAll = (props) => {
     // meta,
     // routeType,
     slug,
-    // url,
+    url,
   } = props
 
   // console.dir(`props`)
@@ -52,7 +49,10 @@ const CatchAll = (props) => {
     }
   )
 
-  const { isDataUndefined, isError, isLoading } = getNextPageStatus(data, error)
+  const { is404, isDataUndefined, isError, isLoading } = getNextPageStatus(
+    data,
+    error
+  )
   if (isError && isDataUndefined)
     return (
       <PageHeading
@@ -61,13 +61,24 @@ const CatchAll = (props) => {
       />
     )
   if (isLoading) return <SkeletonHeading />
+  if (is404)
+    return (
+      <PageHeading
+        description={`Hrm, sorry about this. This page is not found: ./${url}`}
+        title={'404'}
+      />
+    )
 
   // @todo(notion) make dynamic w/ skeleton
   const { images, items } = mockData
+
+  // @todo(config) dynamic site selection
+  const hasShows = process.env.NEXT_PUBLIC__SITE === 'jeromefitzgerald.com'
+
   return (
     <>
       <Page data={data} props={props} />
-      <ListingShows images={images} items={items?.results} />
+      {hasShows && <ListingShows images={images} items={items?.results} />}
     </>
   )
 }
@@ -78,7 +89,7 @@ export const getStaticProps = async ({ preview = false, ...props }) => {
   // @hack(notion) no idea what is causing this
   // look at commit hash: b2afe38c5e1f2d095dc085a17eedc181466b3372
   // and the one after
-  if (catchAll[0] === 'true') return { props: {} }
+  if (nextWeirdRoutingSkipData.includes(catchAll[0])) return { props: {} }
   const clear = false
   const pathVariables = getPathVariables(catchAll)
 
@@ -95,4 +106,4 @@ export const getStaticProps = async ({ preview = false, ...props }) => {
   }
 }
 
-export default CatchAll
+export default Index
