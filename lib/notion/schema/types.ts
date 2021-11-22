@@ -108,6 +108,7 @@ type Blog = Record<string, BlogPost>
 
 interface Episode extends Default {
   dateRecorded: any
+  duration: any
   episode: any
   mp3: any
   season: any

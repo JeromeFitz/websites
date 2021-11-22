@@ -12,7 +12,7 @@ const isDev = process.env.NODE_ENV !== 'production'
 
 const getStaticPathsDefault = ({ items, routeType }) => {
   const data = []
-  console.dir(`getStaticPathsDefault: ${routeType}`)
+  // console.dir(`getStaticPathsDefault: ${routeType}`)
   switch (routeType) {
     case ROUTE_TYPES.blog:
     case ROUTE_TYPES.events:

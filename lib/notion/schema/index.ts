@@ -105,8 +105,7 @@ const PROPERTIES: Record<string, Property> = {
     init: true,
     key: 'duration',
     notion: 'Duration',
-    type: 'number',
-    format: 'number',
+    type: 'rich_text',
   },
   email: {
     init: true,
@@ -1071,6 +1070,7 @@ const BLOG = [...PROPERTIES_DEFAULT]
 const EPISODES = [
   ...PROPERTIES_DEFAULT,
   PROPERTIES.dateRecorded,
+  PROPERTIES.duration,
   PROPERTIES.episode,
   PROPERTIES.mp3,
   PROPERTIES.season,
