@@ -1,4 +1,4 @@
-const seo = {
+const nextSeo = {
   sitename: 'Jerome Fitzgerald',
   title: 'Jerome Fitzgerald | Comedian. Human. Nice. ',
   description:
@@ -7,4 +7,20 @@ const seo = {
   twitter: '@JeromeFitz',
 }
 
-export default seo
+const sitemapExcludes = [
+  // 'blog',
+  // 'books',
+  // 'colophon',
+  'episodes',
+  // 'events',
+  // 'music',
+  'people',
+  'playground',
+  'podcasts/*/**',
+  'refactor',
+  // 'shows',
+  'users',
+  'venues',
+]
+
+export { nextSeo, sitemapExcludes }

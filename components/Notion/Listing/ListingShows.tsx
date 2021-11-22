@@ -1,9 +1,8 @@
-import Slugger from 'github-slugger'
 import _map from 'lodash/map'
 import NextLink from 'next/link'
 import React from 'react'
 
-import { Breakout } from '~components/Layout'
+import { Breakout } from '~components/Container'
 import { ImageWithBackgroundBlur } from '~components/Notion/Layout/ImageLead'
 import { IMAGE__PLACEHOLDER } from '~lib/constants'
 import { Badge, Box, Grid, Paragraph, Spacer, Text } from '~styles/system/components'
@@ -19,8 +18,6 @@ import {
 import { CardOuter, ImageBlur } from '~styles/system/components/Card/Spotify'
 
 const Shows = ({ images, items }) => {
-  const slugger = new Slugger()
-
   return (
     <>
       {_map(items, (item, itemIdx) => {
@@ -31,8 +28,11 @@ const Shows = ({ images, items }) => {
           slug,
           rollupTags: tags,
           title,
-        } = item?.data
-        const imageSlug = slugger.slug(seoImage)
+        } = item?.properties
+        // @note(notion) this is slugified upstream in data collection
+        //               take "first" one
+        // @todo(notion) allow for more than one // choose external only
+        const imageSlug = Object.keys(seoImage)[0]
         const imageData = !!images && images[imageSlug]
         const hasImage = !!imageData && !!imageData.base64
         // const blurDataURL = hasImage
@@ -41,16 +41,13 @@ const Shows = ({ images, items }) => {
 
         let base64, img, imgSlug
         if (!hasImage) {
-          // console.dir(item)
-          // console.dir(`imageSlug`)
-          // console.dir(imageSlug)
           /**
            * @hack fallback
            */
           base64 = IMAGE__PLACEHOLDER.meta.base64
           img = IMAGE__PLACEHOLDER.meta.img
           imgSlug = IMAGE__PLACEHOLDER.meta.slug
-          img = { ...img, src: seoImage }
+          img = { ...img, src: seoImage[imageSlug]?.url }
           return null
         } else {
           // const { base64, img, slug: imgSlug } = imageData

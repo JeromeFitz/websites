@@ -31,7 +31,6 @@ const rssApi = async (req: NextApiRequest, res: NextApiResponse) => {
   const clear = req.query?.clear || false
   const catchAll = req.query?.catchAll
 
-  if (catchAll[0] === 'true') return res.status(200).json({})
   /**
    * @cache
    */
@@ -71,14 +70,15 @@ const rssApi = async (req: NextApiRequest, res: NextApiResponse) => {
       podcastAuthor: author,
       podcastAuthorEmail: email,
       seoDescription: description,
-      seoImage: imageUrl,
+      seoImage,
       title,
       type,
-    } = info?.data
+    } = info?.properties
     const categories = _map(_categories, (c) => c.name)
     const feedUrl = `${url}/api/rss/${routeType}/${slug}`
     const itunesType = _map(type, (t) => t.name)[0]
     const podcastUrl = `${url}/${routeType}/${slug}`
+    const imageUrl = seoImage[Object.keys(seoImage)[0]]?.url
 
     const feedOptions: FeedOptions = {
       title,
@@ -138,8 +138,8 @@ const rssApi = async (req: NextApiRequest, res: NextApiResponse) => {
     // @todo(rss) published
     // @todo(rss) reverse sort on published
     const items = _orderBy(
-      _filter(_items?.results, { data: { published: true } }),
-      ['data.datePublished.start'],
+      _filter(_items?.results, { properties: { isPublished: true } }),
+      ['properties.datePublished.start'],
       ['desc']
     )
     let i = 0
@@ -151,16 +151,18 @@ const rssApi = async (req: NextApiRequest, res: NextApiResponse) => {
         duration,
         episode: itunesEpisode,
         explicit: itunesExplicit,
-        mp3,
+        mp3: _mp3,
         season: itunesSeason,
         seoDescription: description,
-        seoImage: itunesImage,
+        seoImage,
         slug,
         title,
         type,
-      } = item?.data
+      } = item?.properties
 
       const isAvailable = _isBefore(_parseISO(datePublished), timestampNow)
+      const itunesImage = seoImage[Object.keys(seoImage)[0]]?.url
+      const mp3 = _mp3[Object.keys(_mp3)[0]]?.url
       // @todo(rss) handle this in filter above
       if (!isAvailable) return
       /**

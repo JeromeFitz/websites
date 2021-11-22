@@ -1,5 +1,10 @@
 import IMAGE__FALLBACKS__SHOWS from '~lib/constants/images/shows'
 
+/**
+ * @hack some reason everything is coming here, is it `notion/index.ts`?
+ */
+const nextWeirdRoutingSkipData = ['favicon.ico', 'true']
+
 // @question(next) do we even need to revalidate?
 const revalidate = 60 * 60
 
@@ -105,6 +110,7 @@ const WEBKIT_BACKGROUND__BREAK = {
 }
 
 export {
+  nextWeirdRoutingSkipData,
   revalidate,
   BIG_HEAD_PROPS,
   EMOJI_FALLBACK,

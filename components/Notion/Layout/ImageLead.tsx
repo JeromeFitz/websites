@@ -1,9 +1,8 @@
-import Slugger from 'github-slugger'
 import NextImage from 'next/image'
 import { useEffectOnce } from 'react-use'
 import useSWR, { useSWRConfig } from 'swr'
 
-import { Breakout } from '~components/Layout'
+import { Breakout } from '~components/Container'
 import ImageCaption from '~components/Notion/ImageCaption'
 import { Container, Section, Skeleton } from '~styles/system/components'
 import { styled } from '~styles/system/stitches.config'
@@ -29,23 +28,7 @@ const Image = styled(NextImage, {
   borderRadius: '$4',
   position: 'relative',
   overflow: 'hidden',
-  // '@hover': {
-  //   '&:hover': {
-  //     transform: 'scale(0.99)',
-  //   },
-  // },
 })
-
-// const myLoader = ({ src, width, quality }) => {
-//   console.dir(`src`)
-//   console.dir(src)
-//   console.dir(`width`)
-//   console.dir(width)
-//   console.dir(`quality`)
-//   console.dir(quality)
-//   const widthCustom = width > 2000 ? width / 3 : width
-//   return `${src}?w=${widthCustom}&q=${quality || 75}`
-// }
 
 const ImageWithBackgroundBlur = ({
   base64,
@@ -100,24 +83,14 @@ const ImageSkeleton = () => {
 
 const ImageLead = ({ breakout = true, description, image, imagesFallback }) => {
   const { mutate } = useSWRConfig()
-  const slugger = new Slugger()
   const { data: images } = useSWR('images', null)
   useEffectOnce(() => {
-    // console.dir(`useEffectOnce`)
     void mutate('images', { ...images, ...imagesFallback }, true)
   })
   // @todo(external)
-  const imageSlug = slugger.slug(image)
+  // @note(notion) this is based off of seoImage only at the moment
+  const imageSlug = Object.keys(image)[0]
   const imageData = !!images && images[imageSlug]
-
-  // console.dir(`images`)
-  // console.dir(images)
-  // console.dir(`imagesFallback`)
-  // console.dir(imagesFallback)
-  // console.dir(`image`)
-  // console.dir(image)
-  // console.dir(`imageData`)
-  // console.dir(imageData)
 
   const hasImage = !!imageData && !!imageData.base64
 

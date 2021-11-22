@@ -6,7 +6,7 @@ import _uniqWith from 'lodash/uniqWith'
 import asyncForEach from '~lib/asyncForEach'
 import getCatchAll from '~lib/notion/getCatchAll'
 import getPathVariables from '~lib/notion/getPathVariables'
-import { ROUTE_TYPES } from '~utils/notion/helper'
+import { PAGES, ROUTE_TYPES } from '~utils/notion/helper'
 
 const isDev = process.env.NODE_ENV !== 'production'
 
@@ -20,10 +20,10 @@ const getStaticPathsDefault = ({ items, routeType }) => {
       _map(items, (item) => {
         const date =
           routeType === 'events'
-            ? item.data.date.start
-            : item.data.datePublished.start
+            ? item.properties.dateEvent.start
+            : item.properties.datePublished.start
         const [year, month, day] = date.slice(0, 10).split('-')
-        data.push(`/${routeType}/${year}/${month}/${day}/${item?.data?.slug}`)
+        data.push(`/${routeType}/${year}/${month}/${day}/${item?.properties?.slug}`)
         dates.push(`/${routeType}/${year}/${month}/${day}`)
         dates.push(`/${routeType}/${year}/${month}`)
         dates.push(`/${routeType}/${year}`)
@@ -34,14 +34,20 @@ const getStaticPathsDefault = ({ items, routeType }) => {
       _map(items, (item) => {
         // @todo(notion) what if there is more than two? make dynamic please
         const podcastSlug =
-          item?.data?.podcasts[0] === 'fff1042d-3403-4210-991e-678c6820fe68'
+          item?.properties?.relationEpisodes__Podcast[0] ===
+          '24f593ca-1ea5-4f2f-9e5f-39bd44342021'
             ? 'knockoffs'
             : 'jer-and-ky-and-guest'
-        data.push(`/${ROUTE_TYPES.podcasts}/${podcastSlug}/${item?.data?.slug}`)
+        !!podcastSlug &&
+          data.push(
+            `/${ROUTE_TYPES.podcasts}/${podcastSlug}/${item?.properties?.slug}`
+          )
       })
       break
     default:
-      _map(items, (item) => data.push(`/${routeType}/${item?.data?.slug}`))
+      _map(items, (item) => {
+        data.push(`/${routeType}/${item?.properties?.slug}`)
+      })
       break
   }
   return data
@@ -62,11 +68,9 @@ const getStaticPathsCatchAll = async () => {
   // @note(next) yo, this was KILLING local development. only on builds please.
   if (!isDev) {
     // @todo(notion) api this up somehow please
-    paths.push('/about')
-    paths.push('/colophon')
-    paths.push('/contact')
+    _map(PAGES, (p) => paths.push(`/${p}`))
     // const routeTypesSingular = [routeType]
-    await asyncForEach(routeTypes, async (routeType: any) => {
+    await asyncForEach(routeTypes, async (routeType: string) => {
       if (routeType !== 'episodes') paths.push(`/${routeType}`)
       const catchAll = [routeType]
       const pathVariables = getPathVariables(catchAll)

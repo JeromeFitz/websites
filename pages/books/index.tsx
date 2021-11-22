@@ -131,7 +131,7 @@ const books = {
     title: 'Wenger',
     subtitle: 'My Life and Lessons in Red and White',
     status: 'Complete',
-    author: 'Arsene Wenger',
+    author: 'Arsène Wenger',
   },
   'the-path-to-power': {
     id: 'the-path-to-power',
@@ -428,6 +428,22 @@ const books = {
     subtitle: 'The Greek Myths Reimagined',
     status: 'Pending',
     author: 'Stephen Fry',
+  },
+  'say-nothing': {
+    id: 'say-nothing',
+    slug: 'say-nothing',
+    title: 'Say Nothing',
+    subtitle: 'A True Story of Murder and Memory in Northern Ireland',
+    status: 'Pending',
+    author: 'Patrick Radden Keefe',
+  },
+  'empire-of-pain': {
+    id: 'empire-of-pain',
+    slug: 'empire-of-pain',
+    title: 'Empire of Pain',
+    subtitle: 'The Secret History of the Sackler Dynasty',
+    status: 'Pending',
+    author: 'Patrick Radden Keefe',
   },
 }
 

@@ -8,31 +8,35 @@ import useSWRImmutable from 'swr/immutable'
 
 import fetcher from '~lib/fetcher'
 import getTitle from '~lib/notion/getTitle'
+import type { Show } from '~lib/notion/schema/types'
 import { Box, Flex, Grid, Heading, Paragraph, Text } from '~styles/system/components'
 
 const rollupExclude = [
-  // 'rollupCastPast',
-  'rollupVenue',
   'rollupTags',
   'rollupTagsSecondary',
   'rollupShow',
+  // @refactor() remove above once below is solidified
+  'rollupShows__People_Cast_Slug',
+  // 'rollupEvents__People_Guest_Music',
+  'rollupEvents__Venues',
 ]
 
 const MetaShow = ({ data, routeType }) => {
   const { id } = data?.info
-  const _data = data?.info?.data
+  const properties = data?.info?.properties
   const rollupKeys = []
   _map(
-    Object.keys(_data),
+    Object.keys(properties),
     (k) =>
       _startsWith(k, 'rollup') && !rollupExclude.includes(k) && rollupKeys.push(k)
   )
 
   let size = 0
-  _map(rollupKeys, (r) => (size = size + _size(_data[r])))
+  _map(rollupKeys, (r) => (size = size + _size(properties[r])))
 
   // console.dir(`rollupKeys`)
   // console.dir(rollupKeys)
+  // console.dir(`size: ${size}`)
 
   if (size === 0) return null
 
@@ -63,7 +67,7 @@ const MetaShow = ({ data, routeType }) => {
           }}
         >
           {_map(rollupKeys, (rollupKey, rollupKeyIdx) => {
-            const meta = _data[rollupKey]
+            const meta = properties[rollupKey]
             const metaSize = _size(meta)
             if (!meta || metaSize === 0 || rollupExclude.includes(rollupKey))
               return null
@@ -73,7 +77,7 @@ const MetaShow = ({ data, routeType }) => {
             return (
               <Rollup
                 _key={key}
-                data={_data}
+                data={properties}
                 key={key}
                 rollupKey={rollupKey}
                 routeType={routeType}
@@ -106,7 +110,10 @@ const Rollup = ({ _key, data, rollupKey, routeType }) => {
         <Box as="ul">
           {_map(meta, (item, itemIdx) => {
             const keySub = `${_key}-${itemIdx}`
-            if (rollupKey === 'rollupCast' && routeType === 'events') {
+            if (
+              rollupKey === 'rollupEvents__People_Cast' &&
+              routeType === 'events'
+            ) {
               return <Cast data={data} key={keySub} />
             }
             return (
@@ -122,13 +129,15 @@ const Rollup = ({ _key, data, rollupKey, routeType }) => {
 }
 
 const Cast = ({ data }) => {
-  const { data: showData } = useSWRImmutable(
-    [`/api/notion/pages/${data?.shows[0]}`],
+  const { data: showData } = useSWRImmutable<Show>(
+    [`/api/notion/pages/${data?.relationEvents__Shows[0]}`],
     (url) => fetcher(url),
     {}
   )
-  const cast = showData?.data?.rollupCast
+
+  const cast = showData?.rollupShows__People_Cast
   if (!cast) return null
+
   return (
     <>
       {_map(cast, (item, itemIdx) => {
