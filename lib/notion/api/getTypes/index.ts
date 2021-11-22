@@ -1,4 +1,4 @@
-import _todo from '~lib/notion/api/getTypes/_todo'
+import _unsupported from '~lib/notion/api/getTypes/_unsupported'
 import checkbox from '~lib/notion/api/getTypes/checkbox'
 import date from '~lib/notion/api/getTypes/date'
 import email from '~lib/notion/api/getTypes/email'
@@ -17,14 +17,14 @@ import url from '~lib/notion/api/getTypes/url'
 
 const getTypes = {
   checkbox,
-  created_by: _todo,
+  created_by: _unsupported,
   created_time: date,
   date,
   email,
   files,
-  formula: _todo,
+  formula: _unsupported,
   image: files,
-  last_edited_by: _todo,
+  last_edited_by: _unsupported,
   last_edited_time: date,
   multi_select,
   number,

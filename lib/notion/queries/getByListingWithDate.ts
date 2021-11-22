@@ -5,13 +5,13 @@ import _size from 'lodash/size'
 import getBlocksByIdChildren from '~lib/notion/api/getBlocksByIdChildren'
 import getDatabasesByIdQuery from '~lib/notion/api/getDatabasesByIdQuery'
 import getPagesById from '~lib/notion/api/getPagesById'
+import { DB, QUERIES, ROUTE_TYPES } from '~lib/notion/helper'
 import addTime from '~lib/notion/queries/addTime'
 import dataNormalized from '~lib/notion/queries/dataNormalized'
 import dataSorted from '~lib/notion/queries/dataSorted'
 import { PROPERTIES } from '~lib/notion/schema'
-import { DB, QUERIES, ROUTE_TYPES } from '~utils/notion/helper'
 
-// complexity 16
+// @todo(complexity) 16
 // eslint-disable-next-line complexity
 const getByListingWithDate = async ({ pathVariables, routeType, slug }) => {
   const { meta } = pathVariables

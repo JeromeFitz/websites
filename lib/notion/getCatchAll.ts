@@ -9,7 +9,7 @@ import getImages from '~lib/notion/getImages'
 const useCache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE
 
 // @todo(next) preview
-// @todo(complexity) 16
+// @todo(complexity) 19
 // eslint-disable-next-line complexity
 const getCatchAll = async ({
   cache = false,

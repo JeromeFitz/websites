@@ -2,9 +2,9 @@ import _map from 'lodash/map'
 import _omit from 'lodash/omit'
 import _size from 'lodash/size'
 
+import { DB, ROUTE_TYPES, notion } from '~lib/notion/helper'
 import dataNormalizedResults from '~lib/notion/queries/dataNormalizedResults'
 import avoidRateLimit from '~utils/avoidRateLimit'
-import { DB, ROUTE_TYPES, notion } from '~utils/notion/helper'
 
 // const useCache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE
 // const useCache = false

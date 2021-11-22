@@ -1,8 +1,8 @@
 import _map from 'lodash/map'
 import _title from 'title'
 
-import { ImageWithBackgroundBlur } from '~components/Notion/Layout/ImageLead'
-import PageHeading from '~components/PageHeading'
+import { PageHeading } from '~components/Layout'
+import { ImageWithBackgroundBlur } from '~components/Layout/ImageLead'
 // import { IMAGE__PLACEHOLDER } from '~lib/constants'
 import { artists, tracks } from '~data/mock/spotify/top10'
 import {

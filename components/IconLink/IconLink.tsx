@@ -16,6 +16,9 @@ const IconLink = styled('a', {
   textDecorationColor: '$slate4',
   color: 'inherit',
   transition: 'color 0.25s, text-decoration-color 0.25s ease-in-out',
+  '@media (prefers-reduced-motion)': {
+    transition: 'none',
+  },
   borderRadius: '$1',
   outline: 0,
   padding: '0 $1',

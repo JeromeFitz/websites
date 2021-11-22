@@ -12,11 +12,11 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '~components/Accordion'
-import PageHeading from '~components/PageHeading'
+import { PageHeading } from '~components/Layout'
 import Seo from '~components/Seo'
 import { Flex, Note, Text } from '~styles/system/components'
 
-const Emoji = dynamic(() => import('~components/Notion/Emoji'), {
+const Emoji = dynamic(() => import('~components/Emoji'), {
   ssr: false,
 })
 

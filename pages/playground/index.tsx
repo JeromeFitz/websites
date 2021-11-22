@@ -5,15 +5,12 @@ import { useState } from 'react'
 import _title from 'title'
 import { useSound } from 'use-sound'
 
-import PageHeading from '~components/PageHeading'
+import AlertDialogDemo from '~components/Alert/Dialog'
+import { PageHeading } from '~components/Layout'
 import Seo from '~components/Seo'
 import { useUI } from '~context/ManagedUIContext'
 import { useNotification } from '~context/Notification'
-import {
-  // BIG_HEAD_PROPS,
-  MOTION_PAGE_VARIANTS,
-  WEBKIT_BACKGROUND,
-} from '~lib/constants'
+import { WEBKIT_BACKGROUND } from '~lib/constants'
 // import rangeMap from '~utils/rangeMap'
 import { Box } from '~styles/system/components'
 
@@ -105,17 +102,29 @@ const Playground = () => {
     },
   }
 
+  const dialogText = {
+    dialogTrigger: 'Trigger Alert',
+    //
+    dialogTitle: 'Are you absolutely sure?',
+    dialogDescription: 'This action cannot be undone. ',
+    //
+    dialogCancel: 'Cancel',
+    dialogAction: 'Action',
+  }
+
   return (
     <>
       <Seo {...seo} />
       <PageHeading
-        description={properties.title}
-        title={properties.seoDescription}
+        description={properties.seoDescription}
+        title={properties.title}
       />
       <h4>
         Halo <WavingHand />
       </h4>
-
+      <Box css={{ my: '$5' }}>
+        <AlertDialogDemo dialogText={dialogText} />
+      </Box>
       <Box
         css={{
           backgroundColor: '$loContrast',
@@ -132,16 +141,7 @@ const Playground = () => {
         />
       </Box>
       {/* <BigHead {...BIG_HEAD_PROPS} /> */}
-
-      <motion.div
-        key={`page-playground`}
-        initial="hidden"
-        animate="enter"
-        exit="exit"
-        variants={MOTION_PAGE_VARIANTS}
-        transition={{ delay: 0.25, duration: 1, type: 'linear' }}
-        className={cx('flex flex-col')}
-      >
+      <Box>
         <h2 style={WEBKIT_BACKGROUND}>{description}</h2>
         <div id="content">
           <h3 className="w-full bg-success text-black dark:text-white rounded pl-2 py-2">
@@ -320,7 +320,7 @@ const Playground = () => {
             </label>
           </div>
         </div>
-      </motion.div>
+      </Box>
     </>
   )
 }
