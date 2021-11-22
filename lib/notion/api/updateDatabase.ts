@@ -1,5 +1,5 @@
+import { notion } from '~lib/notion/helper'
 import avoidRateLimit from '~utils/avoidRateLimit'
-import { notion } from '~utils/notion/helper'
 
 const updateDatabase = async ({ database_id, properties }) => {
   if (!database_id) return []

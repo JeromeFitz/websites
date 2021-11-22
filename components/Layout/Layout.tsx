@@ -1,9 +1,9 @@
 import { format, parseISO } from 'date-fns'
 import useSWR from 'swr'
 
-import PageHeading from '~components/PageHeading'
+import { PageHeading } from '~components/Layout'
 import Seo from '~components/Seo'
-import { ROUTE_TYPES } from '~utils/notion/helper'
+import { ROUTE_TYPES } from '~lib/notion/helper'
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Layout = ({ id, children, properties, routeType, url }) => {

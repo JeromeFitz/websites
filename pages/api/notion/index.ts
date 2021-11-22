@@ -4,7 +4,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 
 import getCatchAll from '~lib/notion/getCatchAll'
 import getPathVariables from '~lib/notion/getPathVariables'
-import { SLUG__HOMEPAGE } from '~utils/notion/helper'
+import { SLUG__HOMEPAGE } from '~lib/notion/helper'
 // import omitFields from '~lib/notion/omitFields'
 
 const notionCatchAll = async (req: NextApiRequest, res: NextApiResponse) => {

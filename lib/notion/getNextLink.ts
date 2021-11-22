@@ -1,5 +1,5 @@
 import { nextSeo } from '~config/websites'
-import { ROUTE_TYPES } from '~utils/notion/helper'
+import { ROUTE_TYPES } from '~lib/notion/helper'
 
 const getNextLink = (url: string) => {
   const urlTemp = url

@@ -12,7 +12,7 @@ import getChildren from '~lib/notion/create/children'
 import getProperties from '~lib/notion/create/properties'
 import getCatchAll from '~lib/notion/getCatchAll'
 import getPathVariables from '~lib/notion/getPathVariables'
-import { DB } from '~utils/notion/helper'
+import { DB } from '~lib/notion/helper'
 
 const isDev = process.env.NODE_ENV === 'development'
 

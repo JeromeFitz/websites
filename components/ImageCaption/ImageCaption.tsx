@@ -1,5 +1,4 @@
 import { Text } from '~styles/system/components/Text'
-// import Emoji from '~components/Emoji'
 
 const ImageCaption = ({ caption }) => {
   return (
@@ -12,7 +11,6 @@ const ImageCaption = ({ caption }) => {
         py: '$3',
       }}
     >
-      {/* <Emoji character={`📸️`} margin={true} /> */}
       {caption}
     </Text>
   )

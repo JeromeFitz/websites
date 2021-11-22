@@ -3,11 +3,11 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
 import { getCache, setCache } from '~lib/notion/getCache'
+import { notion } from '~lib/notion/helper'
 import dataNormalized from '~lib/notion/queries/dataNormalized'
 import dataSorted from '~lib/notion/queries/dataSorted'
 // import omitFields from '~lib/notion/omitFields'
 import avoidRateLimit from '~utils/avoidRateLimit'
-import { notion } from '~utils/notion/helper'
 
 // const useCache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE
 const useCache = false

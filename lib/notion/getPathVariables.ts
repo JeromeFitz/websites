@@ -7,7 +7,7 @@ import _join from 'lodash/join'
 import _last from 'lodash/last'
 import _size from 'lodash/size'
 
-import { ROUTE_TYPES, SLUG__HOMEPAGE } from '~utils/notion/helper'
+import { ROUTE_TYPES, SLUG__HOMEPAGE } from '~lib/notion/helper'
 
 const routeTypesArray = Object.keys(ROUTE_TYPES)
 

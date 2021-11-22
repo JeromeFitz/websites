@@ -1,4 +1,4 @@
-import { ROUTE_TYPES } from '~utils/notion/helper'
+import { ROUTE_TYPES } from '~lib/notion/helper'
 
 const getInfoType = (item: any, routeType, meta = null) => {
   let date = null

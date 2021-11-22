@@ -1,7 +1,8 @@
 import _map from 'lodash/map'
 
-import { NotionText } from '~utils/notion'
-import TextAnnotations from '~utils/notion/TextAnnotations'
+import { NotionText } from '~lib/notion'
+
+import TextAnnotations from './TextAnnotations'
 
 const getContentTypeDetail = ({ content, id = null }) =>
   _map(content.text, (text: NotionText, textId) => {

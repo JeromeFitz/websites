@@ -17,6 +17,7 @@ import { format } from 'date-fns-tz'
 import _map from 'lodash/map'
 import _union from 'lodash/union'
 
+import { TAGS } from '~lib/notion/helper'
 import {
   Box,
   // Container,
@@ -30,7 +31,6 @@ import {
 } from '~styles/system/components'
 import { MarketingButton } from '~styles/system/components/Button/MarketingButton'
 // import { styled } from '~styles/system/stitches.config'
-import { TAGS } from '~utils/notion/helper'
 
 // const Foo = ({ children, title }) => {
 //   return (

@@ -1,6 +1,6 @@
+import { notion } from '~lib/notion/helper'
 import avoidRateLimit from '~utils/avoidRateLimit'
 import isUndefined from '~utils/isUndefined'
-import { notion } from '~utils/notion/helper'
 
 const getBlocksByIdChildren = async ({ blockId }) => {
   if (isUndefined(blockId)) return []

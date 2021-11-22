@@ -1,7 +1,8 @@
 import _map from 'lodash/map'
 
 import { OL, UL } from '~components/Notion/Listing'
-import getContentNodes from '~utils/notion/getContentNodes'
+
+import getContentNodes from './utils/getContentNodes'
 
 const ContentNodes = ({ content, images }) => {
   return (

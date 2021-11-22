@@ -4,8 +4,8 @@ import { useSound } from 'use-sound'
 
 import { EmojiParser } from '~components/Emoji'
 import { useUI } from '~context/ManagedUIContext'
+import getNextLink from '~lib/notion/getNextLink'
 import { Flex, Link } from '~styles/system/components'
-import getNextLink from '~utils/notion/getNextLink'
 
 const TextAnnotationLink = ({ children, href }) => {
   const { audio } = useUI()

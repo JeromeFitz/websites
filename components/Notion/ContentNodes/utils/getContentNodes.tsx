@@ -3,8 +3,8 @@
 import _map from 'lodash/map'
 import { v4 as uuid } from 'uuid'
 
-import { NotionBlock } from '~utils/notion'
-import getContentType from '~utils/notion/getContentType'
+import getContentType from '~components/Notion/ContentNodes/utils/getContentType'
+import { NotionBlock } from '~lib/notion'
 
 /**
  * @hack

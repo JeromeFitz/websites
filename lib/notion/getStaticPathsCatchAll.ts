@@ -6,7 +6,7 @@ import _uniqWith from 'lodash/uniqWith'
 import asyncForEach from '~lib/asyncForEach'
 import getCatchAll from '~lib/notion/getCatchAll'
 import getPathVariables from '~lib/notion/getPathVariables'
-import { PAGES, ROUTE_TYPES } from '~utils/notion/helper'
+import { PAGES, ROUTE_TYPES } from '~lib/notion/helper'
 
 const isDev = process.env.NODE_ENV !== 'production'
 

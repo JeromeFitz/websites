@@ -154,8 +154,6 @@ const NavSkip = () => {
   )
 }
 
-// @todo(complexity) 11
-// eslint-disable-next-line complexity
 const Header = () => {
   const router = useRouter()
   const isHompage = router.asPath === '/'
