@@ -4,13 +4,13 @@ import _size from 'lodash/size'
 import getBlocksByIdChildren from '~lib/notion/api/getBlocksByIdChildren'
 import getDatabasesByIdQuery from '~lib/notion/api/getDatabasesByIdQuery'
 import getQuery from '~lib/notion/getQuery'
+import { DB, QUERIES, ROUTE_TYPES } from '~lib/notion/helper'
 import addTime from '~lib/notion/queries/addTime'
 import dataNormalized from '~lib/notion/queries/dataNormalized'
 import dataSorted from '~lib/notion/queries/dataSorted'
 import { PROPERTIES } from '~lib/notion/schema'
-import { DB, QUERIES, ROUTE_TYPES } from '~utils/notion/helper'
 
-// complexity 15
+// @todo(complexity) 16
 // eslint-disable-next-line complexity
 const getBySlugWithRouteType = async ({ pathVariables, routeType, slug }) => {
   const { meta } = pathVariables

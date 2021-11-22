@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import PageHeading, { SkeletonHeading } from '~components/PageHeading'
+import { PageHeading, SkeletonHeading } from '~components/Layout'
 import { Separator } from '~styles/system/components/Separator'
 
 const text = {

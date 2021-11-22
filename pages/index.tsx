@@ -1,8 +1,7 @@
 import useSWR from 'swr'
 
+import { Page, PageHeading, SkeletonHeading } from '~components/Layout'
 import ListingShows from '~components/Notion/Listing/ListingShows'
-import Page from '~components/Notion/Page'
-import PageHeading, { SkeletonHeading } from '~components/PageHeading'
 import mockData from '~data/mock/notion/shows'
 import {
   nextWeirdRoutingSkipData,
@@ -12,11 +11,11 @@ import {
 import fetcher from '~lib/fetcher'
 import getCatchAll from '~lib/notion/getCatchAll'
 import getPathVariables from '~lib/notion/getPathVariables'
-import getNextPageStatus from '~utils/next/getNextPageStatus'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { SLUG__HOMEPAGE } from '~utils/notion/helper'
+import { SLUG__HOMEPAGE } from '~lib/notion/helper'
+import getNextPageStatus from '~utils/getNextPageStatus'
 
 const Index = (props) => {
   const {

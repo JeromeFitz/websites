@@ -89,6 +89,9 @@ const StyledChevron = styled(ChevronDownIcon, {
   color: '$colors$gray12',
   transition: 'transform 300ms cubic-bezier(0.87, 0, 0.13, 1)',
   '[data-state=open] &': { transform: 'rotate(180deg)' },
+  '@media (prefers-reduced-motion)': {
+    transition: 'none',
+  },
 })
 
 // Exports

@@ -4,7 +4,7 @@ import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 
 import BoxLink from '~components/BoxLink'
-import Emoji from '~components/Notion/Emoji'
+import Emoji from '~components/Emoji'
 import { ToggleAudio, ToggleTheme } from '~components/Toggle'
 import {
   Tooltip,
@@ -154,8 +154,6 @@ const NavSkip = () => {
   )
 }
 
-// @todo(complexity) 11
-// eslint-disable-next-line complexity
 const Header = () => {
   const router = useRouter()
   const isHompage = router.asPath === '/'

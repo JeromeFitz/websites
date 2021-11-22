@@ -7,8 +7,8 @@ import _size from 'lodash/size'
 import React, { useState } from 'react'
 import { useSound } from 'use-sound'
 
+import { PageHeading } from '~components/Layout'
 import { TopArtists, TopTracks } from '~components/Music'
-import PageHeading from '~components/PageHeading'
 import Seo from '~components/Seo'
 import { useUI } from '~context/ManagedUIContext'
 import useSpotify from '~hooks/useSpotify'
@@ -31,7 +31,7 @@ import {
 //   spotifyFavoriteArtists,
 // } from '~lib/spotify/favorites'
 
-// const Emoji = dynamic(() => import('~components/Notion/Emoji'), {
+// const Emoji = dynamic(() => import('~components/Emoji'), {
 //   ssr: false,
 // })
 

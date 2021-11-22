@@ -15,8 +15,8 @@ import { Podcast, Item, FeedOptions } from 'podcast'
 
 import getCatchAll from '~lib/notion/getCatchAll'
 import getPathVariables from '~lib/notion/getPathVariables'
+import { ROUTE_TYPES } from '~lib/notion/helper'
 import getTimeInSeconds from '~utils/getTimeInSeconds'
-import { ROUTE_TYPES } from '~utils/notion/helper'
 import setCharAt from '~utils/setCharAt'
 
 const url = `https://jeromefitzgerald.com`

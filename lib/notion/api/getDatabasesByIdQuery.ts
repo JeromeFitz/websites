@@ -1,6 +1,6 @@
+import { notion } from '~lib/notion/helper'
 import { PROPERTIES } from '~lib/notion/schema'
 import avoidRateLimit from '~utils/avoidRateLimit'
-import { notion } from '~utils/notion/helper'
 
 const mock: any = {
   sorts: [

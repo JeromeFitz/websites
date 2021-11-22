@@ -12,7 +12,15 @@ export const Link = styled('a', {
   textUnderlineOffset: '3px',
   textDecorationColor: '$slate4',
   transition: 'color 0.25s, text-decoration-color 0.25s ease-in-out',
-  '& > strong': { transition: 'all 0.25s ease-in-out' },
+  '@media (prefers-reduced-motion)': {
+    transition: 'none',
+  },
+  '& > strong': {
+    transition: 'all 0.25s ease-in-out',
+    '@media (prefers-reduced-motion)': {
+      transition: 'none',
+    },
+  },
   WebkitTapHighlightColor: 'rgba(0,0,0,0)',
   lineHeight: 'inherit',
   '@hover': {

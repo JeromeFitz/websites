@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 
-const useSticky = (fixRef) => {
+const useSticky = (fixRef: {
+  current: { getBoundingClientRect: () => { (): any; new (): any; top: any } }
+}) => {
   const [isFix, setIsFix] = useState(false)
 
   useEffect(() => {

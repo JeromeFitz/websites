@@ -8,7 +8,7 @@ import children from '~lib/notion/create/children'
 import properties from '~lib/notion/create/properties'
 import getCatchAll from '~lib/notion/getCatchAll'
 import getPathVariables from '~lib/notion/getPathVariables'
-import { DB } from '~utils/notion/helper'
+import { DB } from '~lib/notion/helper'
 // const isObjectEmpty = '~utils/isObjectEmpty'
 
 const isDev = process.env.NODE_ENV === 'development'

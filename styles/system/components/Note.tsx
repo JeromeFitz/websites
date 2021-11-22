@@ -1,4 +1,4 @@
-import Emoji from '~components/Notion/Emoji'
+import Emoji from '~components/Emoji'
 import { Box } from '~styles/system/components/Box'
 
 const Note = ({ children, label = 'Note:' }) => {
