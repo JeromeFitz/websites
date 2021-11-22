@@ -3,9 +3,9 @@ import dynamic from 'next/dynamic'
 import { useEffectOnce } from 'react-use'
 import useSWR, { useSWRConfig } from 'swr'
 
+import Layout, { ImageLead } from '~components/Layout'
+import Meta from '~components/Meta'
 import ContentNodes from '~components/Notion/ContentNodes'
-import NotionLayout, { ImageLead } from '~components/Notion/Layout'
-import { MetaShow } from '~components/Notion/Meta'
 import { ROUTE_TYPES } from '~utils/notion/helper'
 
 const Listing = dynamic(() => import('~components/Notion/Listing'), {})
@@ -72,7 +72,7 @@ const Page = ({ data, ...props }) => {
 
   return (
     <>
-      <NotionLayout id={id} properties={properties} routeType={routeType} url={url}>
+      <Layout id={id} properties={properties} routeType={routeType} url={url}>
         {isEventListing ? null : (
           // @note(notion) this is based off of seoImage only at the moment
           <ImageLead
@@ -99,7 +99,7 @@ const Page = ({ data, ...props }) => {
         )}
         <>
           {(isEventListing || isShowListing) && (
-            <MetaShow data={data} key={`${id}--metashow`} routeType={routeType} />
+            <Meta data={data} key={`${id}--meta`} routeType={routeType} />
           )}
           {isEpisodeListing ? (
             <>
@@ -112,7 +112,7 @@ const Page = ({ data, ...props }) => {
             </>
           ) : null}
         </>
-      </NotionLayout>
+      </Layout>
     </>
   )
 }

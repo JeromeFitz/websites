@@ -6,7 +6,7 @@ import _orderBy from 'lodash/orderBy'
 import _size from 'lodash/size'
 import dynamic from 'next/dynamic'
 
-const Emoji = dynamic(() => import('~components/Notion/Emoji'), {
+const Emoji = dynamic(() => import('~components/Emoji'), {
   ssr: false,
 })
 

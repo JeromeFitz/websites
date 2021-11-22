@@ -1,6 +1,6 @@
 import useSWR from 'swr'
 
-import Page from '~components/Notion/Page'
+import { Page } from '~components/Layout'
 import PageHeading, { SkeletonHeading } from '~components/PageHeading'
 import {
   nextWeirdRoutingSkipData,

@@ -4,10 +4,7 @@ import _size from 'lodash/size'
 import { useEffect, useState } from 'react'
 import useSWR from 'swr'
 
-import {
-  ImageSkeleton,
-  ImageWithBackgroundBlur,
-} from '~components/Notion/Layout/ImageLead'
+import { ImageSkeleton, ImageWithBackgroundBlur } from '~components/Layout/ImageLead'
 import useSpotify from '~hooks/useSpotify'
 import fetcher from '~lib/fetcher'
 import {

@@ -3,7 +3,7 @@ import { useEffectOnce } from 'react-use'
 import useSWR, { useSWRConfig } from 'swr'
 
 import { Breakout } from '~components/Container'
-import ImageCaption from '~components/Notion/ImageCaption'
+import ImageCaption from '~components/ImageCaption'
 import { Container, Section, Skeleton } from '~styles/system/components'
 import { styled } from '~styles/system/stitches.config'
 

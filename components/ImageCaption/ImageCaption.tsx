@@ -1,5 +1,5 @@
 import { Text } from '~styles/system/components/Text'
-// import Emoji from '~components/Notion/Emoji'
+// import Emoji from '~components/Emoji'
 
 const ImageCaption = ({ caption }) => {
   return (

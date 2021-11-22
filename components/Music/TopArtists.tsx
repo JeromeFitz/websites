@@ -5,10 +5,7 @@ import React, { useEffect, useState } from 'react'
 import useSWR from 'swr'
 import _title from 'title'
 
-import {
-  ImageSkeleton,
-  ImageWithBackgroundBlur,
-} from '~components/Notion/Layout/ImageLead'
+import { ImageSkeleton, ImageWithBackgroundBlur } from '~components/Layout/ImageLead'
 import useSpotify from '~hooks/useSpotify'
 import fetcher from '~lib/fetcher'
 import {

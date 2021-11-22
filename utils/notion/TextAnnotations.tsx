@@ -2,7 +2,7 @@ import { ExternalLinkIcon } from '@radix-ui/react-icons'
 import NextLink from 'next/link'
 import { useSound } from 'use-sound'
 
-import { EmojiParser } from '~components/Notion/Emoji'
+import { EmojiParser } from '~components/Emoji'
 import { useUI } from '~context/ManagedUIContext'
 import { Flex, Link } from '~styles/system/components'
 import getNextLink from '~utils/notion/getNextLink'

@@ -14,7 +14,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '~components/Accordion'
-import ImageCaption from '~components/Notion/ImageCaption'
+import ImageCaption from '~components/ImageCaption'
 import { IMAGE__PLACEHOLDER, WEBKIT_BACKGROUND__BREAK } from '~lib/constants'
 import {
   Box,
@@ -29,7 +29,7 @@ import { NotionBlock } from '~utils/notion'
 import getContentTypeDetail from '~utils/notion/getContentTypeDetail'
 import notionToTailwindColor from '~utils/notion/notionToTailwindColor'
 
-const Emoji = dynamic(() => import('~components/Notion/Emoji'), {})
+const Emoji = dynamic(() => import('~components/Emoji'), {})
 
 const focusInNonNext = keyframes({
   '0%': {
@@ -190,10 +190,8 @@ class ContentTypes {
     return this.content({ content, id })
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  divider({ content, id }) {
+  divider({ id }) {
     return (
-      // <div className={cx('spacer bg-gray-600 dark:bg-gray-300 my-6')} key={id} />
       <Box css={{ width: '100%', my: '$6' }} key={id}>
         <Separator css={{ margin: '0', width: '100% !important' }} />
       </Box>
@@ -448,27 +446,6 @@ class ContentTypes {
           {content.text[0].plain_text}
         </Label>
       </Flex>
-
-      // <label
-      //   className={cx('flex items-center space-x-3')}
-      //   key={`${id}--to_do`}
-      //   htmlFor={id}
-      // >
-      //   <input
-      //     disabled
-      //     type="checkbox"
-      //     id={id}
-      //     className={cx(
-      //       'h-6 w-6',
-      //       'form-tick appearance-none border border-gray-300 rounded-md  focus:outline-none',
-      //       content.checked && 'checked:bg-blue-600 checked:border-transparent'
-      //     )}
-      //     checked={content.checked}
-      //   />
-      //   <span className={cx('text-gray-900 font-medium')}>
-      //     {content.text[0].plain_text}
-      //   </span>
-      // </label>
     )
   }
 

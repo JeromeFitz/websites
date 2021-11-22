@@ -1,7 +1,7 @@
 import useSWR from 'swr'
 
+import { Page } from '~components/Layout'
 import ListingShows from '~components/Notion/Listing/ListingShows'
-import Page from '~components/Notion/Page'
 import PageHeading, { SkeletonHeading } from '~components/PageHeading'
 import mockData from '~data/mock/notion/shows'
 import {

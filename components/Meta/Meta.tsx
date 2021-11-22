@@ -21,7 +21,7 @@ const rollupExclude = [
   'rollupEvents__Venues',
 ]
 
-const MetaShow = ({ data, routeType }) => {
+const Meta = ({ data, routeType }) => {
   const { id } = data?.info
   const properties = data?.info?.properties
   const rollupKeys = []
@@ -151,4 +151,4 @@ const Cast = ({ data }) => {
   )
 }
 
-export default MetaShow
+export default Meta

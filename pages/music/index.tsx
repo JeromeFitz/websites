@@ -31,7 +31,7 @@ import {
 //   spotifyFavoriteArtists,
 // } from '~lib/spotify/favorites'
 
-// const Emoji = dynamic(() => import('~components/Notion/Emoji'), {
+// const Emoji = dynamic(() => import('~components/Emoji'), {
 //   ssr: false,
 // })
 

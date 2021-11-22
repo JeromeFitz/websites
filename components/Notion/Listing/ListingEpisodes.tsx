@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 import React from 'react'
 
 import { Breakout } from '~components/Container'
-import { ImageWithBackgroundBlur } from '~components/Notion/Layout/ImageLead'
+import { ImageWithBackgroundBlur } from '~components/Layout/ImageLead'
 import { IMAGE__PLACEHOLDER } from '~lib/constants'
 import { Badge, Box, Grid, Paragraph, Spacer, Text } from '~styles/system/components'
 import { Card } from '~styles/system/components/Card'
@@ -23,7 +23,7 @@ import lpad from '~utils/lpad'
 import getInfoType from '~utils/notion/getInfoType'
 import { ROUTE_TYPES } from '~utils/notion/helper'
 
-const Emoji = dynamic(() => import('~components/Notion/Emoji'), {
+const Emoji = dynamic(() => import('~components/Emoji'), {
   ssr: false,
 })
 

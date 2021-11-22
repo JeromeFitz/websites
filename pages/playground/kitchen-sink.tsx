@@ -1,7 +1,7 @@
 // import { useEffect, useState } from 'react'
 import useSWR from 'swr'
 
-import Page from '~components/Notion/Page'
+import { Page } from '~components/Layout'
 import PageHeading, { SkeletonHeading } from '~components/PageHeading'
 import { revalidate, ERROR__FALLBACK } from '~lib/constants'
 import fetcher from '~lib/fetcher'

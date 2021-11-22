@@ -4,7 +4,7 @@ import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 
 import BoxLink from '~components/BoxLink'
-import Emoji from '~components/Notion/Emoji'
+import Emoji from '~components/Emoji'
 import { ToggleAudio, ToggleTheme } from '~components/Toggle'
 import {
   Tooltip,

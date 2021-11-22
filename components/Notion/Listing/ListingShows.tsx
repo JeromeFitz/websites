@@ -3,7 +3,7 @@ import NextLink from 'next/link'
 import React from 'react'
 
 import { Breakout } from '~components/Container'
-import { ImageWithBackgroundBlur } from '~components/Notion/Layout/ImageLead'
+import { ImageWithBackgroundBlur } from '~components/Layout/ImageLead'
 import { IMAGE__PLACEHOLDER } from '~lib/constants'
 import { Badge, Box, Grid, Paragraph, Spacer, Text } from '~styles/system/components'
 import { Card } from '~styles/system/components/Card'
