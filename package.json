@@ -57,7 +57,7 @@
     "@sindresorhus/is": "4.2.0",
     "@stitches/react": "1.2.5",
     "@vercel/fetch": "6.1.1",
-    "ajv": "8.8.1",
+    "ajv": "8.8.2",
     "autoprefixer": "10.4.0",
     "body-scroll-lock": "4.0.0-beta.0",
     "clsx": "1.1.1",
@@ -109,9 +109,9 @@
     "uuid": "8.3.2"
   },
   "devDependencies": {
-    "@jeromefitz/codestyle": "5.2.0",
-    "@jeromefitz/git-cz": "11.2.0",
-    "@jeromefitz/semantic": "5.2.0",
+    "@jeromefitz/codestyle": "5.2.1",
+    "@jeromefitz/git-cz": "11.2.1",
+    "@jeromefitz/semantic": "5.2.1",
     "@next/bundle-analyzer": "12.0.4",
     "@types/body-scroll-lock": "3.1.0",
     "@types/jest": "27.0.3",
