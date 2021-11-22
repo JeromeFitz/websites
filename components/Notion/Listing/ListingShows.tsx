@@ -47,7 +47,7 @@ const Shows = ({ images, items }) => {
           base64 = IMAGE__PLACEHOLDER.meta.base64
           img = IMAGE__PLACEHOLDER.meta.img
           imgSlug = IMAGE__PLACEHOLDER.meta.slug
-          img = { ...img, src: seoImage }
+          img = { ...img, src: seoImage[imageSlug]?.url }
           return null
         } else {
           // const { base64, img, slug: imgSlug } = imageData

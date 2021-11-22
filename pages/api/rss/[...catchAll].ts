@@ -74,7 +74,7 @@ const rssApi = async (req: NextApiRequest, res: NextApiResponse) => {
       seoImage: imageUrl,
       title,
       type,
-    } = info?.data
+    } = info?.properties
     const categories = _map(_categories, (c) => c.name)
     const feedUrl = `${url}/api/rss/${routeType}/${slug}`
     const itunesType = _map(type, (t) => t.name)[0]
@@ -138,7 +138,7 @@ const rssApi = async (req: NextApiRequest, res: NextApiResponse) => {
     // @todo(rss) published
     // @todo(rss) reverse sort on published
     const items = _orderBy(
-      _filter(_items?.results, { data: { published: true } }),
+      _filter(_items?.results, { properties: { published: true } }),
       ['data.datePublished.start'],
       ['desc']
     )

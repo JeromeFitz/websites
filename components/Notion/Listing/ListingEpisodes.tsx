@@ -1,4 +1,3 @@
-import Slugger from 'github-slugger'
 import _map from 'lodash/map'
 import _size from 'lodash/size'
 import dynamic from 'next/dynamic'
@@ -8,6 +7,7 @@ import React from 'react'
 
 import { Breakout } from '~components/Layout'
 import { ImageWithBackgroundBlur } from '~components/Notion/Layout/ImageLead'
+import { IMAGE__PLACEHOLDER } from '~lib/constants'
 import { Badge, Box, Grid, Paragraph, Spacer, Text } from '~styles/system/components'
 import { Card } from '~styles/system/components/Card'
 import {
@@ -29,12 +29,16 @@ const Emoji = dynamic(() => import('~components/Notion/Emoji'), {
 
 const Episodes = ({ images, items }) => {
   const router = useRouter()
-  const slugger = new Slugger()
 
   return (
     <>
       {_map(items, (item, itemIdx) => {
-        if (item.data.slug === null || item.data.slug === undefined) {
+        // console.dir(`> item`)
+        // console.dir(item)
+        if (
+          item?.properties?.slug === null ||
+          item?.properties?.slug === undefined
+        ) {
           return null
         }
         const {
@@ -45,15 +49,32 @@ const Episodes = ({ images, items }) => {
           // rollupTags: tags,
           title,
         } = item?.properties
-        const imageSlug = slugger.slug(seoImage)
+        // @note(notion) this is slugified upstream in data collection
+        //               take "first" one
+        // @todo(notion) allow for more than one // choose external only
+        const imageSlug = Object.keys(seoImage)[0]
         const imageData = !!images && images[imageSlug]
         const hasImage = !!imageData && !!imageData.base64
         // const blurDataURL = hasImage
         //   ? imageData.base64
         //   : IMAGE__PLACEHOLDER?.meta?.base64
 
-        if (!hasImage) return null
-        const { base64, img, slug: imgSlug } = imageData
+        let base64, img, imgSlug
+        if (!hasImage) {
+          /**
+           * @hack fallback
+           */
+          base64 = IMAGE__PLACEHOLDER.meta.base64
+          img = IMAGE__PLACEHOLDER.meta.img
+          imgSlug = IMAGE__PLACEHOLDER.meta.slug
+          img = { ...img, src: seoImage[imageSlug]?.url }
+          return null
+        } else {
+          // const { base64, img, slug: imgSlug } = imageData
+          base64 = imageData?.base64
+          img = imageData?.img
+          imgSlug = imageData?.slug
+        }
 
         const { episode, season } = item?.properties
         const meta = router.asPath.split('/').slice(1)

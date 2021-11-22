@@ -23,6 +23,7 @@ class DATA_TYPES {
   }
 
   async ['getBySlug']({ pathVariables, routeType, slug }) {
+    // console.dir(`1|5 => getBySlug`)
     return await getBySlug({ pathVariables, routeType, slug })
   }
   1(props) {
@@ -33,6 +34,7 @@ class DATA_TYPES {
   }
 
   async ['getByListing']({ pathVariables, routeType }) {
+    console.dir(`2 => getByListing`)
     return await getByListing({ pathVariables, routeType })
   }
   2(props) {
@@ -40,17 +42,19 @@ class DATA_TYPES {
   }
 
   async ['getByListingWithDate']({ meta, routeType, slug }) {
+    // console.dir(`3 => getByListingWithDate`)
     return await getByListingWithDate({ meta, routeType, slug })
   }
   3(props) {
-    return this.getByListing(props)
+    return this.getByListingWithDate(props)
   }
 
   async ['getBySlugWithRouteType']({ meta, routeType, slug }) {
+    // console.dir(`4 => getBySlugWithRouteType`)
     return await getBySlugWithRouteType({ meta, routeType, slug })
   }
   4(props) {
-    return this.getByListing(props)
+    return this.getBySlugWithRouteType(props)
   }
 }
 

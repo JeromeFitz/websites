@@ -1,4 +1,5 @@
 import _filter from 'lodash/filter'
+import _map from 'lodash/map'
 
 import type { Property } from './types'
 
@@ -224,7 +225,7 @@ const PROPERTIES: Record<string, Property> = {
   relationEpisodes__People_Guest: {
     init: true,
     key: 'relationEpisodes__People_Guest',
-    notion: 'People.Guest',
+    notion: 'Guest',
     type: 'relation',
     relation: {
       database_id: 'People',
@@ -238,13 +239,13 @@ const PROPERTIES: Record<string, Property> = {
     type: 'relation',
     relation: {
       database_id: 'Episodes',
-      synced_property_name: 'People.Guest',
+      synced_property_name: 'Guest',
     },
   },
   relationEpisodes__People_Sound_Engineer: {
     init: true,
     key: 'relationEpisodes__People_Sound_Engineer',
-    notion: 'People.Sound.Engineer',
+    notion: 'Sound.Engineer',
     type: 'relation',
     relation: {
       database_id: 'People',
@@ -258,13 +259,13 @@ const PROPERTIES: Record<string, Property> = {
     type: 'relation',
     relation: {
       database_id: 'Episodes',
-      synced_property_name: 'People.Sound.Engineer',
+      synced_property_name: 'Sound.Engineer',
     },
   },
   relationEpisodes__People_Thanks: {
     init: true,
     key: 'relationEpisodes__People_Thanks',
-    notion: 'People.Thanks',
+    notion: 'Thanks',
     type: 'relation',
     relation: {
       database_id: 'People',
@@ -278,7 +279,7 @@ const PROPERTIES: Record<string, Property> = {
     type: 'relation',
     relation: {
       database_id: 'Episodes',
-      synced_property_name: 'People.Thanks',
+      synced_property_name: 'Thanks',
     },
   },
   relationEpisodes__Venues: {
@@ -364,7 +365,7 @@ const PROPERTIES: Record<string, Property> = {
   relationShows__People_Cast: {
     init: true,
     key: 'relationShows__People_Cast',
-    notion: 'People.Cast',
+    notion: 'Cast',
     type: 'relation',
     relation: {
       database_id: 'People',
@@ -378,13 +379,13 @@ const PROPERTIES: Record<string, Property> = {
     type: 'relation',
     relation: {
       database_id: 'Shows',
-      synced_property_name: 'People.Cast',
+      synced_property_name: 'Cast',
     },
   },
   relationShows__People_Cast_Past: {
     init: true,
     key: 'relationShows__People_Cast_Past',
-    notion: 'People.Cast.Past',
+    notion: 'Cast.Past',
     type: 'relation',
     relation: {
       database_id: 'People',
@@ -398,13 +399,13 @@ const PROPERTIES: Record<string, Property> = {
     type: 'relation',
     relation: {
       database_id: 'Shows',
-      synced_property_name: 'People.Cast.Past',
+      synced_property_name: 'Cast.Past',
     },
   },
   relationShows_People_Crew: {
     init: true,
     key: 'relationShows_People_Crew',
-    notion: 'People.Crew',
+    notion: 'Crew',
     type: 'relation',
     relation: {
       database_id: 'People',
@@ -418,13 +419,13 @@ const PROPERTIES: Record<string, Property> = {
     type: 'relation',
     relation: {
       database_id: 'Shows',
-      synced_property_name: 'People.Crew',
+      synced_property_name: 'Crew',
     },
   },
   relationShows__People_Director: {
     init: true,
     key: 'relationShows__People_Director',
-    notion: 'People.Director',
+    notion: 'Director',
     type: 'relation',
     relation: {
       database_id: 'People',
@@ -438,13 +439,13 @@ const PROPERTIES: Record<string, Property> = {
     type: 'relation',
     relation: {
       database_id: 'Shows',
-      synced_property_name: 'People.Director',
+      synced_property_name: 'Director',
     },
   },
   relationShows__People_Director_Musical: {
     init: true,
     key: 'relationShows__People_Director_Musical',
-    notion: 'People.Director.Musical',
+    notion: 'Director.Musical',
     type: 'relation',
     relation: {
       database_id: 'People',
@@ -458,13 +459,13 @@ const PROPERTIES: Record<string, Property> = {
     type: 'relation',
     relation: {
       database_id: 'Shows',
-      synced_property_name: 'People.Director.Musical',
+      synced_property_name: 'Director.Musical',
     },
   },
   relationShows__People_Director_Technical: {
     init: true,
     key: 'relationShows__People_Director_Technical',
-    notion: 'People.Director.Technical',
+    notion: 'Director.Technical',
     type: 'relation',
     relation: {
       database_id: 'People',
@@ -478,13 +479,13 @@ const PROPERTIES: Record<string, Property> = {
     type: 'relation',
     relation: {
       database_id: 'Shows',
-      synced_property_name: 'People.Director.Technical',
+      synced_property_name: 'Director.Technical',
     },
   },
   relationEvents__People_Guest: {
     init: true,
     key: 'relationEvents__People_Guest',
-    notion: 'People.Guest',
+    notion: 'Guest',
     type: 'relation',
     relation: {
       database_id: 'People',
@@ -498,13 +499,13 @@ const PROPERTIES: Record<string, Property> = {
     type: 'relation',
     relation: {
       database_id: 'Events',
-      synced_property_name: 'People.Guest',
+      synced_property_name: 'Guest',
     },
   },
   relationPodcasts__People_Host: {
     init: true,
     key: 'relationPodcasts__People_Host',
-    notion: 'People.Host',
+    notion: 'Host',
     type: 'relation',
     relation: {
       database_id: 'People',
@@ -518,13 +519,13 @@ const PROPERTIES: Record<string, Property> = {
     type: 'relation',
     relation: {
       database_id: 'Podcasts',
-      synced_property_name: 'People.Host',
+      synced_property_name: 'Host',
     },
   },
   relationEvents__People_Host: {
     init: true,
     key: 'relationEvents__People_Host',
-    notion: 'People.Host',
+    notion: 'Host',
     type: 'relation',
     relation: {
       database_id: 'People',
@@ -538,13 +539,13 @@ const PROPERTIES: Record<string, Property> = {
     type: 'relation',
     relation: {
       database_id: 'Events',
-      synced_property_name: 'People.Host',
+      synced_property_name: 'Host',
     },
   },
   relationShows__People_Producer: {
     init: true,
     key: 'relationShows__People_Producer',
-    notion: 'People.Producer',
+    notion: 'Producer',
     type: 'relation',
     relation: {
       database_id: 'People',
@@ -558,13 +559,13 @@ const PROPERTIES: Record<string, Property> = {
     type: 'relation',
     relation: {
       database_id: 'Shows',
-      synced_property_name: 'People.Producer',
+      synced_property_name: 'Producer',
     },
   },
   relationEvents__People_Guest_Music: {
     init: true,
     key: 'relationEvents__People_Guest_Music',
-    notion: 'People.Guest.Music',
+    notion: 'Guest.Music',
     type: 'relation',
     relation: {
       database_id: 'People',
@@ -578,13 +579,13 @@ const PROPERTIES: Record<string, Property> = {
     type: 'relation',
     relation: {
       database_id: 'Events',
-      synced_property_name: 'People.Guest.Music',
+      synced_property_name: 'Guest.Music',
     },
   },
   relationPodcasts__People_Sound_Engineer: {
     init: true,
     key: 'relationPodcasts__People_Sound_Engineer',
-    notion: 'People.Sound.Engineer',
+    notion: 'Sound.Engineer',
     type: 'relation',
     relation: {
       database_id: 'Podcasts',
@@ -598,13 +599,13 @@ const PROPERTIES: Record<string, Property> = {
     type: 'relation',
     relation: {
       database_id: 'Podcasts',
-      synced_property_name: 'People.Sound.Engineer',
+      synced_property_name: 'Sound.Engineer',
     },
   },
   relationShows__People_Thanks: {
     init: true,
     key: 'relationShows__People_Thanks',
-    notion: 'People.Thanks',
+    notion: 'Thanks',
     type: 'relation',
     relation: {
       database_id: 'People',
@@ -618,13 +619,13 @@ const PROPERTIES: Record<string, Property> = {
     type: 'relation',
     relation: {
       database_id: 'Shows',
-      synced_property_name: 'People.Thanks',
+      synced_property_name: 'Thanks',
     },
   },
   relationShows__People_Writer: {
     init: true,
     key: 'relationShows__People_Writer',
-    notion: 'People.Writer',
+    notion: 'Writer',
     type: 'relation',
     relation: {
       database_id: 'People',
@@ -638,7 +639,7 @@ const PROPERTIES: Record<string, Property> = {
     type: 'relation',
     relation: {
       database_id: 'Shows',
-      synced_property_name: 'People.Writer',
+      synced_property_name: 'Writer',
     },
   },
   relationShows__Tags: {
@@ -665,24 +666,190 @@ const PROPERTIES: Record<string, Property> = {
    * @rollup
    */
   rollupShows__People_Cast: {
-    init: true,
+    init: false,
     key: 'rollupShows__People_Cast',
-    notion: 'People.Cast.Rollup',
+    notion: 'Cast.Rollup',
     type: 'rollup',
     rollup: {
-      relation_property_name: 'People.Cast',
+      relation_property_name: 'Cast',
       rollup_property_id: 'Title',
       function: 'show_original',
     },
   },
   rollupShows__People_Cast_Slug: {
-    init: true,
+    init: false,
     key: 'rollupShows__People_Cast_Slug',
-    notion: 'People.Cast.Rollup.Slug',
+    notion: 'Cast.Rollup.Slug',
     type: 'rollup',
     rollup: {
-      relation_property_name: 'People.Cast',
+      relation_property_name: 'Cast',
       rollup_property_name: 'Slug',
+      function: 'show_original',
+    },
+  },
+  rollupShows__People_Cast_Past: {
+    init: false,
+    key: 'rollupShows__People_Cast_Past',
+    notion: 'Cast.Past.Rollup',
+    type: 'rollup',
+    rollup: {
+      relation_property_name: 'Cast.Past',
+      rollup_property_id: 'Title',
+      function: 'show_original',
+    },
+  },
+  rollupShows__People_Crew: {
+    init: false,
+    key: 'rollupShows__People_Crew',
+    notion: 'Crew.Rollup',
+    type: 'rollup',
+    rollup: {
+      relation_property_name: 'Crew',
+      rollup_property_name: 'Title',
+      function: 'show_original',
+    },
+  },
+  rollupShows__People_Director: {
+    init: false,
+    key: 'rollupShows__People_Director',
+    notion: 'Director.Rollup',
+    type: 'rollup',
+    rollup: {
+      relation_property_name: 'Director',
+      rollup_property_name: 'Title',
+      function: 'show_original',
+    },
+  },
+  rollupShows__People_Director_Musical: {
+    init: false,
+    key: 'rollupShows__People_Director_Musical',
+    notion: 'Director.Musical.Rollup',
+    type: 'rollup',
+    rollup: {
+      relation_property_name: 'Director.Musical',
+      rollup_property_name: 'Title',
+      function: 'show_original',
+    },
+  },
+  rollupShows__People_Director_Technical: {
+    init: false,
+    key: 'rollupShows__People_Director_Technical',
+    notion: 'Director.Technical.Rollup',
+    type: 'rollup',
+    rollup: {
+      relation_property_name: 'Director.Technical',
+      rollup_property_name: 'Title',
+      function: 'show_original',
+    },
+  },
+  rollupShows__People_Producer: {
+    init: false,
+    key: 'rollupShows__People_Producer',
+    notion: 'Producer.Rollup',
+    type: 'rollup',
+    rollup: {
+      relation_property_name: 'Producer',
+      rollup_property_name: 'Title',
+      function: 'show_original',
+    },
+  },
+  rollupShows__People_Thanks: {
+    init: false,
+    key: 'rollupShows__People_Thanks',
+    notion: 'Thanks.Rollup',
+    type: 'rollup',
+    rollup: {
+      relation_property_name: 'Thanks',
+      rollup_property_name: 'Title',
+      function: 'show_original',
+    },
+  },
+  rollupShows__People_Writer: {
+    init: false,
+    key: 'rollupShows__People_Writer',
+    notion: 'Writer.Rollup',
+    type: 'rollup',
+    rollup: {
+      relation_property_name: 'Writer',
+      rollup_property_name: 'Title',
+      function: 'show_original',
+    },
+  },
+  //
+  rollupEvents__People_Cast: {
+    init: false,
+    key: 'rollupEvents__People_Cast',
+    notion: 'Cast.Rollup',
+    type: 'rollup',
+    rollup: {
+      relation_property_name: 'Shows',
+      rollup_property_id: 'Cast',
+      function: 'show_original',
+    },
+  },
+  rollupEvents__People_Guest: {
+    init: false,
+    key: 'rollupEvents__People_Guest',
+    notion: 'Guest.Rollup',
+    type: 'rollup',
+    rollup: {
+      relation_property_name: 'Guest',
+      rollup_property_id: 'Title',
+      function: 'show_original',
+    },
+  },
+  rollupEvents__People_Guest_Music: {
+    init: false,
+    key: 'rollupEvents__People_Guest_Music',
+    notion: 'Guest.Music.Rollup',
+    type: 'rollup',
+    rollup: {
+      relation_property_name: 'Guest.Music',
+      rollup_property_id: 'Title',
+      function: 'show_original',
+    },
+  },
+  rollupEvents__People_Host: {
+    init: false,
+    key: 'rollupEvents__People_Host',
+    notion: 'Host.Rollup',
+    type: 'rollup',
+    rollup: {
+      relation_property_name: 'Host',
+      rollup_property_id: 'Title',
+      function: 'show_original',
+    },
+  },
+  rollupEvents__Shows: {
+    init: false,
+    key: 'rollupEvents__Shows',
+    notion: 'Shows.Rollup',
+    type: 'rollup',
+    rollup: {
+      relation_property_name: 'Shows',
+      rollup_property_id: 'Title',
+      function: 'show_original',
+    },
+  },
+  rollupEvents__Shows_Lineup: {
+    init: false,
+    key: 'rollupEvents__Shows_Lineup',
+    notion: 'Shows.Lineup.Rollup',
+    type: 'rollup',
+    rollup: {
+      relation_property_name: 'Shows.Lineup',
+      rollup_property_id: 'Title',
+      function: 'show_original',
+    },
+  },
+  rollupEvents__Venues: {
+    init: false,
+    key: 'rollupEvents__Venues',
+    notion: 'Venues.Rollup',
+    type: 'rollup',
+    rollup: {
+      relation_property_name: 'Venues',
+      rollup_property_id: 'Title',
       function: 'show_original',
     },
   },
@@ -769,11 +936,6 @@ const PROPERTIES: Record<string, Property> = {
   // rollupThanks: {
   //   key: 'rollupThanks',
   //   notion: 'Rollup.Thanks',
-  //   type: 'rollup',
-  // },
-  // rollupVenue: {
-  //   key: 'rollupVenue',
-  //   notion: 'Rollup.Venue',
   //   type: 'rollup',
   // },
   // rollupWriter: {
@@ -914,8 +1076,8 @@ const EPISODES = [
 const EVENTS = [
   ...PROPERTIES_DEFAULT,
   PROPERTIES.dateEvent,
-  PROPERTIES.relationEvents__People_Guest,
   PROPERTIES.relationEvents__People_Guest_Music,
+  PROPERTIES.relationEvents__People_Guest,
   PROPERTIES.relationEvents__People_Host,
   PROPERTIES.relationEvents__Shows_Lineup,
   PROPERTIES.relationEvents__Shows,
@@ -923,6 +1085,20 @@ const EVENTS = [
   PROPERTIES.socialFacebook,
   PROPERTIES.socialWebsite,
   PROPERTIES.ticketUrl,
+  /**
+   * @note(notion)
+   * do not init/seed these values, they are updated _after_ init
+   */
+  PROPERTIES.rollupEvents__People_Cast,
+  PROPERTIES.rollupEvents__People_Guest_Music,
+  PROPERTIES.rollupEvents__People_Guest,
+  PROPERTIES.rollupEvents__People_Host,
+  PROPERTIES.rollupEvents__Shows_Lineup,
+  PROPERTIES.rollupEvents__Shows,
+  PROPERTIES.rollupEvents__Venues,
+  /**
+   * -------------------------------------
+   */
 ]
 
 const PAGES = [...PROPERTIES_DEFAULT]
@@ -964,6 +1140,11 @@ const PODCASTS = [
   PROPERTIES.explicit,
   PROPERTIES.podcastAuthor,
   PROPERTIES.podcastAuthorEmail,
+  PROPERTIES.relationPodcasts__People_Host,
+  PROPERTIES.relationPodcasts__People_Sound_Engineer,
+  PROPERTIES.socialApple,
+  PROPERTIES.socialSpotify,
+  PROPERTIES.type,
   /**
    * @note(notion)
    * do not init/seed these values, they are updated _after_ init
@@ -972,26 +1153,12 @@ const PODCASTS = [
   /**
    * -------------------------------------
    */
-  PROPERTIES.relationPodcasts__People_Host,
-  PROPERTIES.relationPodcasts__People_Sound_Engineer,
-  PROPERTIES.socialApple,
-  PROPERTIES.socialSpotify,
-  PROPERTIES.type,
 ]
 
 const SEO = [...PROPERTIES_DEFAULT]
 
 const SHOWS = [
   ...PROPERTIES_DEFAULT,
-  /**
-   * @note(notion)
-   * do not init/seed these values, they are updated _after_ init
-   */
-  PROPERTIES.relationShows__Events,
-  PROPERTIES.relationShows__Events_Lineup,
-  /**
-   * -------------------------------------
-   */
   PROPERTIES.relationShows__People_Cast,
   PROPERTIES.relationShows__People_Cast_Past,
   PROPERTIES.relationShows__People_Director,
@@ -1000,12 +1167,29 @@ const SHOWS = [
   PROPERTIES.relationShows__People_Producer,
   PROPERTIES.relationShows__People_Thanks,
   PROPERTIES.relationShows__People_Writer,
-  PROPERTIES.rollupShows__People_Cast,
-  PROPERTIES.rollupShows__People_Cast_Slug,
   PROPERTIES.socialFacebook,
   PROPERTIES.socialInstagram,
   PROPERTIES.socialTwitter,
   PROPERTIES.socialWebsite,
+  /**
+   * @note(notion)
+   * do not init/seed these values, they are updated _after_ init
+   */
+  PROPERTIES.relationShows__Events,
+  PROPERTIES.relationShows__Events_Lineup,
+  PROPERTIES.rollupShows__People_Cast,
+  PROPERTIES.rollupShows__People_Cast_Slug,
+  PROPERTIES.rollupShows__People_Cast_Past,
+  PROPERTIES.rollupShows__People_Crew,
+  PROPERTIES.rollupShows__People_Director,
+  PROPERTIES.rollupShows__People_Director_Musical,
+  PROPERTIES.rollupShows__People_Director_Technical,
+  PROPERTIES.rollupShows__People_Producer,
+  PROPERTIES.rollupShows__People_Thanks,
+  PROPERTIES.rollupShows__People_Writer,
+  /**
+   * -------------------------------------
+   */
 ]
 
 const VENUES = [
@@ -1018,6 +1202,10 @@ const VENUES = [
   PROPERTIES.addressStreet,
   PROPERTIES.addressZipCode,
   PROPERTIES.phoneNumber,
+  PROPERTIES.socialFacebook,
+  PROPERTIES.socialInstagram,
+  PROPERTIES.socialTwitter,
+  PROPERTIES.socialWebsite,
   /**
    * @note(notion)
    * do not init/seed these values, they are updated _after_ init
@@ -1027,10 +1215,6 @@ const VENUES = [
   /**
    * -------------------------------------
    */
-  PROPERTIES.socialFacebook,
-  PROPERTIES.socialInstagram,
-  PROPERTIES.socialTwitter,
-  PROPERTIES.socialWebsite,
 ]
 
 /**
@@ -1066,4 +1250,6 @@ const LOOKUP = {
   VENUES: VENUES.map((item) => getLookup(item)),
 }
 
-export { INIT, LOOKUP, PROPERTIES }
+const PROPERTIES_LOOKUP = _map(PROPERTIES, (item) => getLookup(item))
+
+export { INIT, LOOKUP, PROPERTIES, PROPERTIES_LOOKUP }

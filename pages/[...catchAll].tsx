@@ -29,7 +29,7 @@ const CatchAll = (props) => {
   } = props
 
   const { data, error } = useSWR(
-    () => (!!url ? `/api/notion/secret/get/${url}` : null),
+    () => (!!url ? `/api/notion/${url}` : null),
     fetcher,
     {
       fallbackData: {
@@ -58,12 +58,17 @@ const CatchAll = (props) => {
   )
 }
 
+/**
+ * @hack some reason everything is coming here, is it `notion/index.ts`?
+ */
+const nextWeirdRoutingSkipData = ['favicon.ico', 'true']
+
 export const getStaticProps = async ({ preview = false, ...props }) => {
   const { catchAll } = props.params
   // @hack(notion) no idea what is causing this
   // look at commit hash: b2afe38c5e1f2d095dc085a17eedc181466b3372
   // and the one after
-  if (catchAll[0] === 'true') return { props: {} }
+  if (nextWeirdRoutingSkipData.includes(catchAll[0])) return { props: {} }
   // const catchAll = [SLUG__HOMEPAGE]
   const clear = false
   const pathVariables = getPathVariables(catchAll)

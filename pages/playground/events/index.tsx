@@ -3,7 +3,7 @@ import PageHeading from '~components/PageHeading'
 import mockData from '~data/mock/notion/events'
 
 const properties = {
-  title: mockData?.info?.data?.title,
+  title: mockData?.info?.properties?.title,
   seoDescription: 'Playground for Layout Purposes',
 }
 

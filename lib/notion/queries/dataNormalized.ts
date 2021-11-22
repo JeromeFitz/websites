@@ -1,30 +1,29 @@
 import _map from 'lodash/map'
 
 import getTypes from '~lib/notion/api/getTypes'
-import { LOOKUP } from '~lib/notion/schema'
+import { LOOKUP, PROPERTIES_LOOKUP } from '~lib/notion/schema'
 
 const dataNormalized = (data: any, routeType = null, pageId = null) => {
   const DATA_NORMALIZED = {}
-  // @todo(notion) handle direct call from: ./pages/api/notion/pages/[id]/index.ts
-  if (routeType === null) return DATA_NORMALIZED
   if (!data?.properties) return DATA_NORMALIZED
 
   const { properties } = data
 
-  _map(LOOKUP[routeType.toUpperCase()], (item) => {
+  const items = !!routeType ? LOOKUP[routeType.toUpperCase()] : PROPERTIES_LOOKUP
+  _map(items, (item) => {
     let dataToNormalize = null
 
     const dataFromNotion = properties[item.notion]
-
     /**
      * @note(notion)
-     * ensure data from cms exists before normalizing
+     * ensure key populates in api
+     * only populate w/ data if exists in notion
      */
+    DATA_NORMALIZED[item.key] = null
     if (!!dataFromNotion) {
       dataToNormalize = getTypes[item.type](dataFromNotion, pageId)
+      DATA_NORMALIZED[item.key] = !!dataToNormalize ? dataToNormalize : null
     }
-
-    DATA_NORMALIZED[item.key] = dataToNormalize
   })
 
   return DATA_NORMALIZED

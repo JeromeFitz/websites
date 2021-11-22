@@ -3,8 +3,8 @@ import PageHeading from '~components/PageHeading'
 import mockData from '~data/mock/notion/event'
 
 const properties = {
-  title: mockData?.info?.data?.title,
-  seoDescription: mockData?.info?.data?.seoDescription,
+  title: mockData?.info?.properties?.title,
+  seoDescription: mockData?.info?.properties?.seoDescription,
 }
 
 const PlaygroundEvent = () => {

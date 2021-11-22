@@ -129,6 +129,13 @@ interface Event extends Default {
   relationEvents__Shows_Lineup: any
   relationEvents__Shows: any
   relationEvents__Venues: any
+  rollupEvents__People_Cast: any
+  rollupEvents__People_Guest: any
+  rollupEvents__People_Guest_Music: any
+  rollupEvents__People_Host: any
+  rollupEvents__Shows_Lineup: any
+  rollupEvents__Shows: any
+  rollupEvents__Venues: any
   socialFacebook: any
   socialWebsite: any
   ticketUrl: any
@@ -181,6 +188,7 @@ interface Show extends Default {
   relationShows__Events_Lineup: any
   relationShows__People_Cast: any
   relationShows__People_Cast_Past: any
+  relationShows__People_Crew: any
   relationShows__People_Director: any
   relationShows__People_Director_Musical: any
   relationShows__People_Director_Technical: any
@@ -189,6 +197,14 @@ interface Show extends Default {
   relationShows__People_Writer: any
   rollupShows__People_Cast: any
   rollupShows__People_Cast_Slug: any
+  rollupShows__People_Cast_Past: any
+  rollupShows__People_Crew: any
+  rollupShows__People_Director: any
+  rollupShows__People_Director_Musical: any
+  rollupShows__People_Director_Technical: any
+  rollupShows__People_Producer: any
+  rollupShows__People_Thanks: any
+  rollupShows__People_Writer: any
   socialFacebook: string
   socialInstagram: string
   socialTwitter: string

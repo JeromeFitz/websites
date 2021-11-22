@@ -9,8 +9,8 @@ import dataSorted from '~lib/notion/queries/dataSorted'
 import avoidRateLimit from '~utils/avoidRateLimit'
 import { notion } from '~utils/notion/helper'
 
-const useCache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE
-// const useCache = false
+// const useCache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE
+const useCache = false
 
 const notionPagesId = async (req: NextApiRequest, res: NextApiResponse) => {
   // console.dir(`notionPagesId`)

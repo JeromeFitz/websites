@@ -87,11 +87,13 @@ const css_gridListItems = {
 const Info = ({ data }) => {
   // const data = mockData
   const { info } = data
-  const iso = parseISO(info?.data?.date?.start)
-  const venue = info?.data?.rollupVenue[0]
+  const iso = parseISO(info?.properties?.dateEvent?.start)
+  const venue =
+    !!info?.properties?.rollupEvents__Venues &&
+    info?.properties?.rollupEvents__Venues[0]
   const tags =
     _map(
-      _union(info?.data?.rollupTags, info?.data?.rollupTagsSecondary),
+      _union(info?.properties?.rollupTags, info?.properties?.rollupTagsSecondary),
       (tag: string) => TAGS[tag]?.title
     ).join(', ') || 'Comedy'
   return (
@@ -144,7 +146,7 @@ const Info = ({ data }) => {
 // }
 
 const ListingEvent = ({ data }) => {
-  // const lineup = _union(data?.info?.data.rollupShow, data?.info?.data.rollupLineup)
+  // const lineup = _union(data?.info?.properties.rollupShow, data?.info?.properties.rollupLineup)
   return (
     <>
       <Note>This page is in-progress.</Note>
@@ -164,7 +166,7 @@ const ListingEvent = ({ data }) => {
           gap="5"
         >
           {
-            data?.info?.data?.ticketUrl ? (
+            data?.info?.properties?.ticketUrl ? (
               <MarketingButton
                 as="a"
                 css={{
@@ -174,7 +176,7 @@ const ListingEvent = ({ data }) => {
                   width: '100%',
                   justifyContent: 'center',
                 }}
-                href={data?.info?.data?.ticketUrl}
+                href={data?.info?.properties?.ticketUrl}
                 icon={ArrowRightIcon}
               >
                 Get Tickets

@@ -43,6 +43,21 @@ const getPathVariables = (catchAll: any) => {
   // 4 = /blog/2020/05/09/title, /events/2020/05/09/title,
   //     /podcasts/knockoffs/i-know-what-you-did-last-summer
   // 5 = /shows/alex-o-jerome, /events/2020/05/09/jerome-and, /podcasts/knockoffs
+  /**
+   * @debug
+   */
+  console.dir(`------`)
+  console.dir(`routeType: ${routeType}`)
+  console.dir(`slug: ${slug}`)
+  console.dir(`isPage:  ${isPage}`)
+  console.dir(`isIndex:  ${isIndex}`)
+  console.dir(`hasMeta: ${hasMeta}`)
+  console.dir(`meta:`)
+  console.dir(meta)
+
+  /**
+   * ------
+   */
   let dataType = 0
   if (isPage) {
     dataType = 1

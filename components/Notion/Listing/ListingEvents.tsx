@@ -138,7 +138,7 @@ const ListingEvents = ({ items }) => {
   // const slugger = new Slugger()
   const _dates = _uniqWith(
     _map(items, (item) => {
-      return item?.properties?.date?.start
+      return item?.properties?.dateEvent?.start
     })
   )
   // console.dir(_dates)
@@ -222,10 +222,10 @@ const ListingEvents = ({ items }) => {
                               {/* @ts-ignore */}
                               {_map(dataDate, (_date, _di) => {
                                 const event = _filter(items, {
-                                  data: {
+                                  properties: {
                                     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                                     // @ts-ignore
-                                    date: { start: _date?.date?.full },
+                                    dateEvent: { start: _date?.date?.full },
                                   },
                                 })[0]
                                 const key = `data--${yearIndex}--${monthIndex}--${dateIndex}--${_di}`
@@ -408,11 +408,11 @@ const Event = ({ data, keyPrefix }) => {
    *  TO:   2020-01-25T23:00:00-05:00
    */
   // const dateISO = formatISO(date?.iso?.full)
-  const { seoDescription: description, title } = data?.data
-  const iso = parseISO(data?.data?.date?.start)
+  const { seoDescription: description, title } = data?.properties
+  const iso = parseISO(data?.properties?.dateEvent?.start)
   const tags =
     _map(
-      _union(data?.data?.rollupTags, data?.data?.rollupTagsSecondary),
+      _union(data?.properties?.rollupTags, data?.properties?.rollupTagsSecondary),
       (tag: string) => TAGS[tag]?.title
     ).join(', ') || 'Comedy'
 
@@ -497,8 +497,8 @@ const Event = ({ data, keyPrefix }) => {
               },
             }}
           >
-            {_size(data?.data?.rollupLineup) > 0 &&
-              _map(data?.data?.rollupLineup, (title) => (
+            {_size(data?.properties?.rollupLineup) > 0 &&
+              _map(data?.properties?.rollupLineup, (title) => (
                 <ListItem
                   key={`${keyPrefix}--${slugger.slug(title)}`}
                   title={title}
@@ -586,8 +586,8 @@ const Event = ({ data, keyPrefix }) => {
                   }}
                 />
                 <Box>
-                  {_size(data?.data?.rollupVenue) > 0 &&
-                    _map(data?.data?.rollupVenue, (title) => (
+                  {_size(data?.properties?.rollupEvents__Venues) > 0 &&
+                    _map(data?.properties?.rollupEvents__Venues, (title) => (
                       <ListItem
                         key={`${keyPrefix}--${slugger.slug(title)}`}
                         title={title}
@@ -654,7 +654,7 @@ const Event = ({ data, keyPrefix }) => {
               gap="5"
             >
               {
-                data?.data.ticketUrl ? (
+                data?.properties.ticketUrl ? (
                   <MarketingButton
                     as="a"
                     css={{
@@ -662,7 +662,7 @@ const Event = ({ data, keyPrefix }) => {
                       width: 'inherit',
                       justifyContent: 'center',
                     }}
-                    href={data?.data.ticketUrl}
+                    href={data?.properties.ticketUrl}
                     icon={ArrowRightIcon}
                   >
                     Get Tickets

@@ -191,7 +191,7 @@ class DATABASE_TYPES {
         v = value
         break
       case 'shows':
-        k = 'EventIDs'
+        k = 'Events'
         v = value
         break
     }
@@ -222,7 +222,7 @@ class DATABASE_TYPES {
     _size(eventVIds) > 0 &&
       _map(eventVIds, (id) =>
         filterTagEventsV.push({
-          property: 'EventIDs',
+          property: 'Events',
           relation: {
             contains: id,
           },

@@ -32,7 +32,7 @@ const MetaSwr = ({ id }) => {
         <LiGhost />
       </li>
     )
-  return <li>{data?.data?.title}</li>
+  return <li>{data?.properties?.title}</li>
 }
 
 const Meta = ({ ids, swrKey, title }) => {

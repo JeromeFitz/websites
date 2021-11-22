@@ -46,8 +46,8 @@ const Page = ({ data, ...props }) => {
     url,
   } = props
 
-  console.dir(`> props`)
-  console.dir(props)
+  // console.dir(`> props`)
+  // console.dir(props)
 
   const hasMeta =
     _size(meta) > 0 && [ROUTE_TYPES.blog, ROUTE_TYPES.events].includes(routeType)
@@ -87,8 +87,8 @@ const Page = ({ data, ...props }) => {
   // switch (routeType) {
   //   case 'events':
   //     tagParams = `events=${id || ''}&shows=${
-  //       info?.data?.shows?.join(',') || ''
-  //     }&eventsLineupShowIds=${info?.data?.eventsLineupShowIds?.join(',') || ''}`
+  //       info?.properties?.shows?.join(',') || ''
+  //     }&eventsLineupShowIds=${info?.properties?.eventsLineupShowIds?.join(',') || ''}`
   //     break
   //   case 'shows':
   //     tagParams = `shows=${id || ''}`
@@ -108,10 +108,10 @@ const Page = ({ data, ...props }) => {
 
   return (
     <>
-      <NotionLayout id={id} data={properties} routeType={routeType} url={url}>
+      <NotionLayout id={id} properties={properties} routeType={routeType} url={url}>
         {isEventListing ? null : (
           <ImageLead
-            description={properties?.seoImageDescription}
+            description={properties?.seoImageDescription || ''}
             image={properties?.seoImage}
             imagesFallback={imagesFallback}
             key={`image-lead--${id}`}

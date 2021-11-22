@@ -8,16 +8,17 @@ import useSWRImmutable from 'swr/immutable'
 
 import fetcher from '~lib/fetcher'
 import getTitle from '~lib/notion/getTitle'
+import type { Show } from '~lib/notion/schema/types'
 import { Box, Flex, Grid, Heading, Paragraph, Text } from '~styles/system/components'
 
 const rollupExclude = [
-  // 'rollupCastPast',
-  'rollupVenue',
   'rollupTags',
   'rollupTagsSecondary',
   'rollupShow',
   // @refactor() remove above once below is solidified
   'rollupShows__People_Cast_Slug',
+  // 'rollupEvents__People_Guest_Music',
+  'rollupEvents__Venues',
 ]
 
 const MetaShow = ({ data, routeType }) => {
@@ -109,7 +110,10 @@ const Rollup = ({ _key, data, rollupKey, routeType }) => {
         <Box as="ul">
           {_map(meta, (item, itemIdx) => {
             const keySub = `${_key}-${itemIdx}`
-            if (rollupKey === 'rollupCast' && routeType === 'events') {
+            if (
+              rollupKey === 'rollupEvents__People_Cast' &&
+              routeType === 'events'
+            ) {
               return <Cast data={data} key={keySub} />
             }
             return (
@@ -125,13 +129,15 @@ const Rollup = ({ _key, data, rollupKey, routeType }) => {
 }
 
 const Cast = ({ data }) => {
-  const { data: showData } = useSWRImmutable(
-    [`/api/notion/pages/${data?.shows[0]}`],
+  const { data: showData } = useSWRImmutable<Show>(
+    [`/api/notion/pages/${data?.relationEvents__Shows[0]}`],
     (url) => fetcher(url),
     {}
   )
-  const cast = showData?.data?.rollupCast
+
+  const cast = showData?.rollupShows__People_Cast
   if (!cast) return null
+
   return (
     <>
       {_map(cast, (item, itemIdx) => {

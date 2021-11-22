@@ -40,7 +40,7 @@ const getBySlug = async ({ pathVariables, routeType, slug }) => {
   content = blocks
 
   if (!!items) {
-    items.results = _filter(items.results, { data: { isPublished: true } })
+    items.results = _filter(items.results, { properties: { isPublished: true } })
   }
 
   let data = { info, content, items, images: {} }

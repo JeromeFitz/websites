@@ -7,7 +7,7 @@ import Seo from '~components/Seo'
 import { ROUTE_TYPES } from '~utils/notion/helper'
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const Layout = ({ id, children, data, routeType, url }) => {
+const Layout = ({ id, children, properties, routeType, url }) => {
   const slugger = new Slugger()
   const { data: images } = useSWR('images')
 
@@ -17,8 +17,9 @@ const Layout = ({ id, children, data, routeType, url }) => {
     seoDescription: description,
     seoImage,
     seoImageDescription,
+    slug,
     title,
-  } = data
+  } = properties
 
   // @todo(external)
   const seoImageSlug = slugger.slug(seoImage)
@@ -27,10 +28,9 @@ const Layout = ({ id, children, data, routeType, url }) => {
   const seoUrl = `https://jeromefitzgerald.com/${url}`
 
   let seoDescription = description
-  if (routeType === ROUTE_TYPES.events && data?.slug !== ROUTE_TYPES.events) {
-    // const date = format(parseISO(data?.date?.start), `EEEE, MMMM do`)
+  if (routeType === ROUTE_TYPES.events && slug !== ROUTE_TYPES.events) {
     const date = format(
-      parseISO(data?.date?.start),
+      parseISO(properties?.dateEvent?.start),
       `EEE MM/dd hh:mma`
     ).toUpperCase()
     seoDescription = `${date} – ${seoDescription}`

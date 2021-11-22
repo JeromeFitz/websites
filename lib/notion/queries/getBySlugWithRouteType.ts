@@ -46,15 +46,13 @@ const getBySlugWithRouteType = async ({ meta, routeType, slug }) => {
 
     // @hack(podcasts)
     if (!hasEpisode) {
-      let itemsInit = null
       if (routeType === ROUTE_TYPES.podcasts) {
-        itemsInit = await getQuery({
+        items = await getQuery({
           reqQuery: {
             podcasts: info.id,
             databaseType: ROUTE_TYPES.episodes,
           },
         })
-        items = itemsInit
       }
     }
   }
@@ -96,9 +94,11 @@ const getBySlugWithRouteType = async ({ meta, routeType, slug }) => {
     })
 
     const info4__bea = info4__be?.object === 'list' && info4__be.results[0]
-    info = _omit(info4__bea, 'properties')
-    info['properties'] = dataSorted(dataNormalized(info4__bea, routeType, info.id))
-    content = await getBlocksByIdChildren({ blockId: info.id })
+    if (!!info4__bea) {
+      info = _omit(info4__bea, 'properties')
+      info['properties'] = dataSorted(dataNormalized(info4__bea, routeType, info.id))
+      content = await getBlocksByIdChildren({ blockId: info.id })
+    }
   }
 
   return {

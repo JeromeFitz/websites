@@ -1,6 +1,5 @@
 import cx from 'clsx'
 import { motion } from 'framer-motion'
-import Slugger from 'github-slugger'
 import _map from 'lodash/map'
 // import dynamic from 'next/dynamic'
 import NextImage from 'next/image'
@@ -53,11 +52,13 @@ const motionGlow = {
 
 const ListingItem = ({ index, item }) => {
   const { seoDescription, seoImage, slug, title } = item?.properties
-  const slugger = new Slugger()
   const { data: images } = useSWR('images')
 
   // @todo(external)
-  const imageSlug = slugger.slug(seoImage)
+  // @note(notion) this is slugified upstream in data collection
+  //               take "first" one
+  // @todo(notion) allow for more than one // choose external only
+  const imageSlug = Object.keys(seoImage)[0]
   const imageData = !!images && images[imageSlug]
 
   const hasImage = !!imageData && !!imageData.base64

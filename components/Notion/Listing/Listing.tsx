@@ -48,7 +48,7 @@ const ListingItemEpisode = ({ item, routeType }) => {
     volume: 0.25,
   })
 
-  if (item.data.slug === null || item.data.slug === undefined) {
+  if (item?.properties?.slug === null || item?.properties?.slug === undefined) {
     return null
   }
 
@@ -134,7 +134,7 @@ const ListingItemEvent = ({ item, routeType }) => {
     {}
   )
 
-  if (item.data.slug === null || item.data.slug === undefined) {
+  if (item?.properties?.slug === null || item?.properties?.slug === undefined) {
     return null
   }
 
@@ -233,7 +233,7 @@ const ListingItem = ({ item, routeType }) => {
   //   {}
   // )
 
-  if (item.data.slug === null || item.data.slug === undefined) {
+  if (item?.properties?.slug === null || item?.properties?.slug === undefined) {
     return null
   }
 
@@ -302,6 +302,10 @@ const ListingItem = ({ item, routeType }) => {
 const Listing = ({ images, items, routeType }) => {
   const itemsSize = _size(items?.results)
 
+  // console.dir(`> Listing`)
+  // console.dir(`> itemsSize: ${itemsSize}`)
+  // console.dir(items)
+
   if (itemsSize === 0) return null
 
   let itemsData
@@ -309,12 +313,12 @@ const Listing = ({ images, items, routeType }) => {
   if (itemsSize > 0) {
     switch (routeType) {
       case ROUTE_TYPES.events:
-        itemsData = _orderBy(items.results, ['data.date.start'], ['asc'])
+        itemsData = _orderBy(items.results, ['properties.dateEvent.start'], ['asc'])
         break
       case ROUTE_TYPES.podcasts:
         itemsData = _orderBy(
           items.results,
-          ['data.season', 'data.episode'],
+          ['properties.season', 'properties.episode'],
           ['desc', 'desc']
         )
         break
@@ -324,8 +328,10 @@ const Listing = ({ images, items, routeType }) => {
     }
   }
 
-  if (routeType === ROUTE_TYPES.podcasts) {
+  if (routeType === ROUTE_TYPES.podcasts && itemsData.length > 0) {
+    // console.dir(`> itemsData`)
     // console.dir(itemsData)
+    // @todo(what) this if statement is not correct.
     return (
       <>
         <ListingEpisodes images={images} items={itemsData} />

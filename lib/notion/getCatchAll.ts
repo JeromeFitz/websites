@@ -3,6 +3,7 @@ import _filter from 'lodash/filter'
 import deepFetchAllChildren from '~lib/notion/deepFetchAllChildren'
 import { getCache, setCache } from '~lib/notion/getCache'
 import { DATA_TYPES } from '~lib/notion/getDataType'
+import getImages from '~lib/notion/getImages'
 
 const useCache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE
 
@@ -29,6 +30,8 @@ const getCatchAll = async ({
   const { slug } = pathVariables
   if (nextWeirdRoutingSkipData.includes(slug)) return null
 
+  console.dir(`isCache: ${isCache}`)
+
   let data
   /**
    * @cache pre
@@ -48,6 +51,8 @@ const getCatchAll = async ({
       items = null
 
     const { dataType, meta, routeType, slug } = pathVariables
+
+    // console.dir(`dataType: ${dataType}`)
 
     // @question(js) does this need to go w/in function?
     const getDATATYPES = new DATA_TYPES('')
@@ -69,14 +74,12 @@ const getCatchAll = async ({
       items.results = _filter(items.results, { properties: { isPublished: true } })
     }
 
-    // data = { info, content, items }
-
-    // if (retrieveImages) {
-    //   const images = !!data ? await getImages({ data, pathVariables }) : {}
-    //   data = { ...data, images }
-    // }
-
     data = { info, content, items, images }
+
+    if (retrieveImages && !images) {
+      const images = !!data ? await getImages({ data, pathVariables }) : {}
+      data = { ...data, images }
+    }
 
     /**
      * @cache post
