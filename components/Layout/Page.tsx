@@ -5,7 +5,7 @@ import useSWR, { useSWRConfig } from 'swr'
 
 import Layout, { ImageLead } from '~components/Layout'
 import Meta from '~components/Meta'
-import { ContentNodes } from '~components/Notion/ContentNodes'
+import ContentNodes from '~components/Notion/ContentNodes'
 import { ROUTE_TYPES } from '~lib/notion/helper'
 
 const Listing = dynamic(() => import('~components/Notion/Listing'), {})

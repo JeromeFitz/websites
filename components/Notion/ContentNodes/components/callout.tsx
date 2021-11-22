@@ -1,9 +1,9 @@
 import _size from 'lodash/size'
 import dynamic from 'next/dynamic'
 
-import { Box, Flex, Text } from '~styles/system/components'
+import getContentTypeDetail from '../utils/getContentTypeDetail'
 
-import getContentTypeDetail from './utils/getContentTypeDetail'
+import { Box, Flex, Text } from '~styles/system/components'
 
 const Emoji = dynamic(() => import('~components/Emoji'), {})
 

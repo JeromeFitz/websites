@@ -1,13 +1,13 @@
 import { Flex } from '~styles/system/components/Flex'
 
-const OL = ({ children }) => {
+const bulleted_list = ({ children }) => {
   return (
     <Flex
-      as="ol"
+      as="ul"
       css={{
         display: 'flex',
         flexDirection: 'column',
-        listStyleType: 'decimal',
+        listStyleType: 'disc',
         listStylePosition: 'outside',
       }}
     >
@@ -16,4 +16,4 @@ const OL = ({ children }) => {
   )
 }
 
-export default OL
+export default bulleted_list

@@ -1,6 +1,6 @@
-import { Text } from '~styles/system/components'
+import getContentTypeDetail from '../utils/getContentTypeDetail'
 
-import getContentTypeDetail from './utils/getContentTypeDetail'
+import { Text } from '~styles/system/components'
 
 const numbered_list_item = ({ content, id }) => {
   return (

@@ -1,52 +1,34 @@
-import _unsupported from './_unsupported'
-import bulleted_list_item from './bulleted_list_item'
-import callout from './callout'
-import checkbox from './checkbox'
-import column from './column'
-import column_list from './column_list'
+import dynamic from 'next/dynamic'
+
 import ContentNodes from './ContentNodes'
-import date from './date'
-import divider from './divider'
-import files from './files'
-import heading_1 from './heading_1'
-import heading_2 from './heading_2'
-import heading_3 from './heading_3'
-import image from './image'
-import multi_select from './multi_select'
-import numbered_list_item from './numbered_list_item'
-import paragraph from './paragraph'
-import quote from './quote'
-import relation from './relation'
-import rich_text from './rich_text'
-import title from './title'
-import to_do from './to_do'
-import toggle from './toggle'
-import url from './url'
 
 const getContentNode = {
-  _unsupported,
-  bulleted_list_item,
-  callout,
-  checkbox,
-  column_list,
-  column,
-  date,
-  divider,
-  files,
-  heading_1,
-  heading_2,
-  heading_3,
-  image,
-  multi_select,
-  numbered_list_item,
-  paragraph,
-  quote,
-  relation,
-  rich_text,
-  title,
-  to_do,
-  toggle,
-  url,
+  _unsupported: dynamic(() => import('./components/_unsupported')),
+  bulleted_list_item: dynamic(() => import('./components/bulleted_list_item')),
+  bulleted_list: dynamic(() => import('./components/bulleted_list')),
+  callout: dynamic(() => import('./components/callout')),
+  checkbox: dynamic(() => import('./components/checkbox')),
+  column_list: dynamic(() => import('./components/column_list')),
+  column: dynamic(() => import('./components/column')),
+  date: dynamic(() => import('./components/date')),
+  divider: dynamic(() => import('./components/divider')),
+  files: dynamic(() => import('./components/files')),
+  heading_1: dynamic(() => import('./components/heading_1')),
+  heading_2: dynamic(() => import('./components/heading_2')),
+  heading_3: dynamic(() => import('./components/heading_3')),
+  image: dynamic(() => import('./components/image')),
+  multi_select: dynamic(() => import('./components/multi_select')),
+  numbered_list_item: dynamic(() => import('./components/numbered_list_item')),
+  numbered_list: dynamic(() => import('./components/numbered_list')),
+  paragraph: dynamic(() => import('./components/paragraph')),
+  quote: dynamic(() => import('./components/quote')),
+  relation: dynamic(() => import('./components/relation')),
+  rich_text: dynamic(() => import('./components/rich_text')),
+  title: dynamic(() => import('./components/title')),
+  to_do: dynamic(() => import('./components/to_do')),
+  toggle: dynamic(() => import('./components/toggle')),
+  url: dynamic(() => import('./components/url')),
 }
 
-export { getContentNode, ContentNodes }
+export { getContentNode }
+export default ContentNodes

@@ -1,14 +1,14 @@
 import _map from 'lodash/map'
 
+import getContentType from '../utils/getContentType'
+import getContentTypeDetail from '../utils/getContentTypeDetail'
+
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from '~components/Accordion'
-
-import getContentType from './utils/getContentType'
-import getContentTypeDetail from './utils/getContentTypeDetail'
 
 const toggle = ({ content, has_children, id }) => {
   if (!has_children) return null

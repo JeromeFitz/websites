@@ -1,13 +1,13 @@
 import { Flex } from '~styles/system/components/Flex'
 
-const UL = ({ children }) => {
+const numbered_list = ({ children }) => {
   return (
     <Flex
-      as="ul"
+      as="ol"
       css={{
         display: 'flex',
         flexDirection: 'column',
-        listStyleType: 'disc',
+        listStyleType: 'decimal',
         listStylePosition: 'outside',
       }}
     >
@@ -16,4 +16,4 @@ const UL = ({ children }) => {
   )
 }
 
-export default UL
+export default numbered_list

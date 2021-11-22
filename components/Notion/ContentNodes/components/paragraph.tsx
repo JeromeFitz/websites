@@ -1,6 +1,6 @@
-import { Paragraph } from '~styles/system/components'
+import getContentTypeDetail from '../utils/getContentTypeDetail'
 
-import getContentTypeDetail from './utils/getContentTypeDetail'
+import { Paragraph } from '~styles/system/components'
 
 const paragraph = ({ content, id }) => {
   return (

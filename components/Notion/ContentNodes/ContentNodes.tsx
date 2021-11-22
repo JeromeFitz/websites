@@ -1,6 +1,6 @@
 import _map from 'lodash/map'
 
-import { OL, UL } from '~components/Notion/Listing'
+import { getContentNode } from '~components/Notion/ContentNodes'
 
 import getContentNodes from './utils/getContentNodes'
 
@@ -9,19 +9,13 @@ const ContentNodes = ({ content, images }) => {
     <>
       {_map(getContentNodes({ content, images }), (node: any) => {
         if (node.type === 'ul') {
+          const UL = getContentNode['bulleted_list']
           return <UL key={node.id}>{node.node}</UL>
         }
         if (node.type === 'ol') {
+          const OL = getContentNode['numbered_list']
           return <OL key={node.id}>{node.node}</OL>
         }
-        // if (node.type === 'image') {
-        //   return (
-        //     <>
-        //       <h5 key="image-here">Image Here</h5>
-        //       {node.node}
-        //     </>
-        //   )
-        // }
         return node.node
       })}
     </>
