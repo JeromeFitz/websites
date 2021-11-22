@@ -12,7 +12,8 @@ import { DB, QUERIES, ROUTE_TYPES } from '~utils/notion/helper'
 
 // complexity 15
 // eslint-disable-next-line complexity
-const getBySlugWithRouteType = async ({ meta, routeType, slug }) => {
+const getBySlugWithRouteType = async ({ pathVariables, routeType, slug }) => {
+  const { meta } = pathVariables
   let content = null,
     info = null,
     items = null
@@ -41,7 +42,7 @@ const getBySlugWithRouteType = async ({ meta, routeType, slug }) => {
       return {}
     }
     info = _omit(_info, 'properties')
-    info['properties'] = dataSorted(dataNormalized(_info, routeType, info.id))
+    info['properties'] = dataSorted(dataNormalized(_info, pathVariables, info.id))
     content = await getBlocksByIdChildren({ blockId: info.id })
 
     // @hack(podcasts)
@@ -96,7 +97,9 @@ const getBySlugWithRouteType = async ({ meta, routeType, slug }) => {
     const info4__bea = info4__be?.object === 'list' && info4__be.results[0]
     if (!!info4__bea) {
       info = _omit(info4__bea, 'properties')
-      info['properties'] = dataSorted(dataNormalized(info4__bea, routeType, info.id))
+      info['properties'] = dataSorted(
+        dataNormalized(info4__bea, pathVariables, info.id)
+      )
       content = await getBlocksByIdChildren({ blockId: info.id })
     }
   }

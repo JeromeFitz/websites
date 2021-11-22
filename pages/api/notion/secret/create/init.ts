@@ -11,6 +11,8 @@ import getDatabasesById from '~lib/notion/api/getDatabasesById'
 import updateDatabase from '~lib/notion/api/updateDatabase'
 import { INIT } from '~lib/notion/schema'
 
+const isDev = process.env.NODE_ENV === 'development'
+
 const DATA_GROUPING = {
   global: '8bc8a899-e57b-4fa9-b2de-8b08aec95608',
   website: 'd5a81133-b481-4efd-9b96-ea7d11ccc5ae',
@@ -98,6 +100,9 @@ const getPropertiesRollups = (items: string | any[]) => {
 }
 
 const Create = async (req: NextApiRequest, res: NextApiResponse) => {
+  if (!isDev) {
+    return res.status(200).json({})
+  }
   /**
    * @step 00. WORKSPACE
    *

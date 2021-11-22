@@ -11,6 +11,8 @@ import getPathVariables from '~lib/notion/getPathVariables'
 import { DB } from '~utils/notion/helper'
 // const isObjectEmpty = '~utils/isObjectEmpty'
 
+const isDev = process.env.NODE_ENV === 'development'
+
 const isObjectEmptyDeep = (obj) =>
   Object.values(obj).every((x) =>
     Object.values(x).every(
@@ -19,6 +21,9 @@ const isObjectEmptyDeep = (obj) =>
   )
 
 const secretCreatePage = async (req: NextApiRequest, res: NextApiResponse) => {
+  if (!isDev) {
+    return res.status(200).json({})
+  }
   const routeType = 'episodes'
   const databaseId = DB[routeType.toUpperCase()].database_id
   const icon = {

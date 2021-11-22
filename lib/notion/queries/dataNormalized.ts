@@ -1,15 +1,23 @@
 import _map from 'lodash/map'
 
+import { ROUTE_TYPES } from '~config/websites'
 import getTypes from '~lib/notion/api/getTypes'
 import { LOOKUP, PROPERTIES_LOOKUP } from '~lib/notion/schema'
 
-const dataNormalized = (data: any, routeType = null, pageId = null) => {
+const dataNormalized = (data: any, pathVariables = null, pageId = null) => {
   const DATA_NORMALIZED = {}
   if (!data?.properties) return DATA_NORMALIZED
-
   const { properties } = data
 
+  // @hack(notion) not great
+  const { meta, routeType: _routeType } = pathVariables
+  const routeType =
+    _routeType === ROUTE_TYPES?.podcasts && meta.length > 1
+      ? ROUTE_TYPES?.episodes
+      : _routeType
+
   const items = !!routeType ? LOOKUP[routeType.toUpperCase()] : PROPERTIES_LOOKUP
+
   _map(items, (item) => {
     let dataToNormalize = null
 

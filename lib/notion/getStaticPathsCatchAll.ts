@@ -12,7 +12,7 @@ const isDev = process.env.NODE_ENV !== 'production'
 
 const getStaticPathsDefault = ({ items, routeType }) => {
   const data = []
-  // console.dir(`getStaticPathsDefault: ${routeType}`)
+  console.dir(`getStaticPathsDefault: ${routeType}`)
   switch (routeType) {
     case ROUTE_TYPES.blog:
     case ROUTE_TYPES.events:
@@ -20,8 +20,8 @@ const getStaticPathsDefault = ({ items, routeType }) => {
       _map(items, (item) => {
         const date =
           routeType === 'events'
-            ? item.data.date.start
-            : item.data.datePublished.start
+            ? item.properties.dateEvent.start
+            : item.properties.datePublished.start
         const [year, month, day] = date.slice(0, 10).split('-')
         data.push(`/${routeType}/${year}/${month}/${day}/${item?.properties?.slug}`)
         dates.push(`/${routeType}/${year}/${month}/${day}`)
@@ -34,16 +34,20 @@ const getStaticPathsDefault = ({ items, routeType }) => {
       _map(items, (item) => {
         // @todo(notion) what if there is more than two? make dynamic please
         const podcastSlug =
-          item?.properties?.podcasts[0] === 'fff1042d-3403-4210-991e-678c6820fe68'
+          item?.properties?.relationEpisodes__Podcast[0] ===
+          '24f593ca-1ea5-4f2f-9e5f-39bd44342021'
             ? 'knockoffs'
             : 'jer-and-ky-and-guest'
-        data.push(
-          `/${ROUTE_TYPES.podcasts}/${podcastSlug}/${item?.properties?.slug}`
-        )
+        !!podcastSlug &&
+          data.push(
+            `/${ROUTE_TYPES.podcasts}/${podcastSlug}/${item?.properties?.slug}`
+          )
       })
       break
     default:
-      _map(items, (item) => data.push(`/${routeType}/${item?.properties?.slug}`))
+      _map(items, (item) => {
+        data.push(`/${routeType}/${item?.properties?.slug}`)
+      })
       break
   }
   return data
@@ -66,7 +70,7 @@ const getStaticPathsCatchAll = async () => {
     // @todo(notion) api this up somehow please
     _map(PAGES, (p) => paths.push(`/${p}`))
     // const routeTypesSingular = [routeType]
-    await asyncForEach(routeTypes, async (routeType: any) => {
+    await asyncForEach(routeTypes, async (routeType: string) => {
       if (routeType !== 'episodes') paths.push(`/${routeType}`)
       const catchAll = [routeType]
       const pathVariables = getPathVariables(catchAll)

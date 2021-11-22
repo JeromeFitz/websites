@@ -13,7 +13,8 @@ import { DB, QUERIES, ROUTE_TYPES } from '~utils/notion/helper'
 
 // complexity 16
 // eslint-disable-next-line complexity
-const getByListingWithDate = async ({ meta, routeType, slug }) => {
+const getByListingWithDate = async ({ pathVariables, routeType, slug }) => {
+  const { meta } = pathVariables
   let content = null,
     info = null,
     items = null
@@ -23,7 +24,7 @@ const getByListingWithDate = async ({ meta, routeType, slug }) => {
   // const info3a = info3.object === 'page' && normalizerContent(info3)
   if (info3.object === 'page') {
     info = _omit(info3, 'properties')
-    info['properties'] = dataSorted(dataNormalized(info3, routeType, info.id))
+    info['properties'] = dataSorted(dataNormalized(info3, pathVariables, info.id))
   }
 
   // eslint-disable-next-line prefer-const
@@ -161,7 +162,7 @@ const getByListingWithDate = async ({ meta, routeType, slug }) => {
   _map(items3.results, (item) => {
     let item2 = item
     item2 = _omit(item2, 'properties')
-    item2['properties'] = dataSorted(dataNormalized(item, routeType, item.id))
+    item2['properties'] = dataSorted(dataNormalized(item, pathVariables, item.id))
     // items3Data[item.id] = item2
     items3Data.push(item2)
   })

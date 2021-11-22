@@ -74,6 +74,7 @@ const Page = ({ data, ...props }) => {
     <>
       <NotionLayout id={id} properties={properties} routeType={routeType} url={url}>
         {isEventListing ? null : (
+          // @note(notion) this is based off of seoImage only at the moment
           <ImageLead
             description={properties?.seoImageDescription || ''}
             image={properties?.seoImage}

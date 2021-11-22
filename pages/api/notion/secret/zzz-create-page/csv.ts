@@ -14,6 +14,8 @@ import getCatchAll from '~lib/notion/getCatchAll'
 import getPathVariables from '~lib/notion/getPathVariables'
 import { DB } from '~utils/notion/helper'
 
+const isDev = process.env.NODE_ENV === 'development'
+
 const dataDirectory = path.join(
   __dirname,
   '..',
@@ -40,6 +42,9 @@ const isObjectEmptyDeep = (obj) =>
 
 const results = []
 const csvApi = (req: NextApiRequest, res: NextApiResponse) => {
+  if (!isDev) {
+    return res.status(200).json({})
+  }
   fs.createReadStream(dataFilename)
     .pipe(csv())
     .on('data', (data) => results.push(data))

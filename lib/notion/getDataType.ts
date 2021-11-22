@@ -41,17 +41,17 @@ class DATA_TYPES {
     return this.getByListing(props)
   }
 
-  async ['getByListingWithDate']({ meta, routeType, slug }) {
+  async ['getByListingWithDate']({ pathVariables, routeType, slug }) {
     // console.dir(`3 => getByListingWithDate`)
-    return await getByListingWithDate({ meta, routeType, slug })
+    return await getByListingWithDate({ pathVariables, routeType, slug })
   }
   3(props) {
     return this.getByListingWithDate(props)
   }
 
-  async ['getBySlugWithRouteType']({ meta, routeType, slug }) {
+  async ['getBySlugWithRouteType']({ pathVariables, routeType, slug }) {
     // console.dir(`4 => getBySlugWithRouteType`)
-    return await getBySlugWithRouteType({ meta, routeType, slug })
+    return await getBySlugWithRouteType({ pathVariables, routeType, slug })
   }
   4(props) {
     return this.getBySlugWithRouteType(props)

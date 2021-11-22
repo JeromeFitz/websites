@@ -1,10 +1,11 @@
+import { PROPERTIES } from '~lib/notion/schema'
 import avoidRateLimit from '~utils/avoidRateLimit'
-import { notion, PROPERTIES } from '~utils/notion/helper'
+import { notion } from '~utils/notion/helper'
 
 const mock: any = {
   sorts: [
     {
-      property: PROPERTIES.slug,
+      property: PROPERTIES.slug.notion,
       direction: 'ascending',
     },
   ],

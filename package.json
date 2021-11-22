@@ -169,7 +169,8 @@
       "styles/fonts/Inter.tsx",
       "styles/fonts/NameSans.tsx",
       "utils/isElementOfType.ts",
-      "utils/isObjectEmpty.ts"
+      "utils/isObjectEmpty.ts",
+      "tils/stringToUUID.ts"
     ],
     "include": [
       "components",

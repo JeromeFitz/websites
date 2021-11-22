@@ -23,13 +23,19 @@ const navigationHeader = {
       title: 'L',
       text: 'Loading',
     },
-
     {
       active: isDev,
       emoji: '🟧️',
       url: '/playground/grid',
       title: 'G',
       text: 'Grid',
+    },
+    {
+      active: isDev,
+      emoji: '💥️',
+      url: '/404',
+      title: '404',
+      text: '404',
     },
   ],
   links: [

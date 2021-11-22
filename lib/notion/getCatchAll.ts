@@ -19,7 +19,6 @@ const getCatchAll = async ({
   pathVariables,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   preview,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   retrieveImages = true,
 }) => {
   const isCache = useCache && cache

@@ -22,7 +22,7 @@ const getByRouteType = async ({ pathVariables, routeType }) => {
   const infoInit = await getPagesById({ pageId: DB[routeType.toUpperCase()].seo })
   if (infoInit.object === 'page') {
     info = _omit(infoInit, 'properties')
-    info['properties'] = dataSorted(dataNormalized(infoInit, routeType, info.id))
+    info['properties'] = dataSorted(dataNormalized(infoInit, pathVariables, info.id))
   }
 
   content = await getBlocksByIdChildren({ blockId: info.id })
@@ -46,7 +46,7 @@ const getByRouteType = async ({ pathVariables, routeType }) => {
   _map(itemsInit.results, (item) => {
     let itemInit = item
     itemInit = _omit(itemInit, 'properties')
-    itemInit['properties'] = dataSorted(dataNormalized(item, routeType, item.id))
+    itemInit['properties'] = dataSorted(dataNormalized(item, pathVariables, item.id))
     _itemData.push(itemInit)
   })
   const _items = _omit(itemsInit, 'results')

@@ -37,7 +37,7 @@ const getBySlug = async ({ pathVariables, routeType, slug }) => {
     return {}
   }
   info = _omit(_info, 'properties')
-  info['properties'] = dataSorted(dataNormalized(_info, routeType, info.id))
+  info['properties'] = dataSorted(dataNormalized(_info, pathVariables, info.id))
 
   content = await getBlocksByIdChildren({ blockId: info.id })
 
