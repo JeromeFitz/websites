@@ -46,14 +46,14 @@ const getPathVariables = (catchAll: any) => {
   /**
    * @debug
    */
-  console.dir(`------`)
-  console.dir(`routeType: ${routeType}`)
-  console.dir(`slug: ${slug}`)
-  console.dir(`isPage:  ${isPage}`)
-  console.dir(`isIndex:  ${isIndex}`)
-  console.dir(`hasMeta: ${hasMeta}`)
-  console.dir(`meta:`)
-  console.dir(meta)
+  // console.dir(`------`)
+  // console.dir(`routeType: ${routeType}`)
+  // console.dir(`slug: ${slug}`)
+  // console.dir(`isPage:  ${isPage}`)
+  // console.dir(`isIndex:  ${isIndex}`)
+  // console.dir(`hasMeta: ${hasMeta}`)
+  // console.dir(`meta:`)
+  // console.dir(meta)
 
   /**
    * ------

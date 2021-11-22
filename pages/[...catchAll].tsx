@@ -2,7 +2,11 @@ import useSWR from 'swr'
 
 import Page from '~components/Notion/Page'
 import PageHeading, { SkeletonHeading } from '~components/PageHeading'
-import { revalidate, ERROR__FALLBACK } from '~lib/constants'
+import {
+  nextWeirdRoutingSkipData,
+  revalidate,
+  ERROR__FALLBACK,
+} from '~lib/constants'
 import fetcher from '~lib/fetcher'
 import getCatchAll from '~lib/notion/getCatchAll'
 import getPathVariables from '~lib/notion/getPathVariables'
@@ -41,7 +45,10 @@ const CatchAll = (props) => {
     }
   )
 
-  const { isDataUndefined, isError, isLoading } = getNextPageStatus(data, error)
+  const { is404, isDataUndefined, isError, isLoading } = getNextPageStatus(
+    data,
+    error
+  )
   if (isError && isDataUndefined)
     return (
       <PageHeading
@@ -50,6 +57,13 @@ const CatchAll = (props) => {
       />
     )
   if (isLoading) return <SkeletonHeading />
+  if (is404)
+    return (
+      <PageHeading
+        description={`Hrm, sorry about this. This page is not found: ./${url}`}
+        title={'404'}
+      />
+    )
 
   return (
     <>
@@ -57,11 +71,6 @@ const CatchAll = (props) => {
     </>
   )
 }
-
-/**
- * @hack some reason everything is coming here, is it `notion/index.ts`?
- */
-const nextWeirdRoutingSkipData = ['favicon.ico', 'true']
 
 export const getStaticProps = async ({ preview = false, ...props }) => {
   const { catchAll } = props.params

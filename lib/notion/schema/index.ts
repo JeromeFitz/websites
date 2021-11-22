@@ -742,6 +742,17 @@ const PROPERTIES: Record<string, Property> = {
       function: 'show_original',
     },
   },
+  rollupShows__People_Music: {
+    init: false,
+    key: 'rollupShows__People_Music',
+    notion: 'Music.Rollup',
+    type: 'rollup',
+    rollup: {
+      relation_property_name: 'Music',
+      rollup_property_name: 'Title',
+      function: 'show_original',
+    },
+  },
   rollupShows__People_Producer: {
     init: false,
     key: 'rollupShows__People_Producer',
@@ -1184,6 +1195,7 @@ const SHOWS = [
   PROPERTIES.rollupShows__People_Director,
   PROPERTIES.rollupShows__People_Director_Musical,
   PROPERTIES.rollupShows__People_Director_Technical,
+  PROPERTIES.rollupShows__People_Music,
   PROPERTIES.rollupShows__People_Producer,
   PROPERTIES.rollupShows__People_Thanks,
   PROPERTIES.rollupShows__People_Writer,

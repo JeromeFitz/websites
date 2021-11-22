@@ -14,8 +14,13 @@ const getBySlug = async ({ pathVariables, routeType, slug }) => {
   let content = null,
     info = null,
     items = null
+
+  const DB_TYPE = routeType?.toUpperCase()
+  const isValid = Object.keys(DB).includes(DB_TYPE)
+  if (!isValid) return { info, content, items, images: {} }
+
   const infoInit: any = await getDatabasesByIdQuery({
-    databaseId: DB[routeType.toUpperCase()].database_id,
+    databaseId: DB[DB_TYPE].database_id,
     filter: {
       and: [
         {

@@ -7,7 +7,7 @@ import _title from 'title'
 import { useSound } from 'use-sound'
 
 import Avatar from '~components/Avatar'
-import links from '~config/navigation'
+import { navigationHeader } from '~config/websites'
 import { useUI } from '~context/ManagedUIContext'
 import isActiveLink from '~utils/isActiveLink'
 
@@ -52,7 +52,7 @@ const Navigation = () => {
     <>
       <nav className={cx('flex flex-col md:flex-row')}>
         <ul>
-          {links.map((link, linkIndex) => {
+          {navigationHeader?.links.map((link, linkIndex) => {
             if (!link.active) {
               return null
             }

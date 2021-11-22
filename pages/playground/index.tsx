@@ -1,7 +1,6 @@
 // import { BigHead } from '@bigheads/core'
 import cx from 'clsx'
-import { motion, useReducedMotion } from 'framer-motion'
-import Link from 'next/link'
+import { motion } from 'framer-motion'
 import { useState } from 'react'
 import _title from 'title'
 import { useSound } from 'use-sound'
@@ -18,6 +17,7 @@ import {
   WEBKIT_BACKGROUND,
 } from '~lib/constants'
 // import rangeMap from '~utils/rangeMap'
+import { Box } from '~styles/system/components'
 
 const properties = {
   title: 'Playground',
@@ -58,68 +58,6 @@ const WavingHand = () => (
     👋
   </motion.div>
 )
-
-const BackgroundColorMotion = () => {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const shouldReduceMotion = useReducedMotion()
-  return (
-    <div className="h-5/6 w-5/6 mx-0 my-auto p-4">
-      <div
-        className={cx(
-          'transition-all duration-500 bg-gradient-to-tl',
-          'from-pink-500 via-red-500 to-yellow-400 ',
-          'bg-pos-0 hover:bg-pos-100 bg-size-200',
-          // 'hover:bg-gradient-to-tr',
-          ''
-          //   'relative z-10 duration-500 bg-gradient-to-l from-pink-500 via-red-500 to-yellow-500',
-          //   'before:contents before:absolute before:top-0 before:left-0 before:w-full before:h-full before:-z-1 before:bg-gradient-to-l before:from-pink-600 before:via-red-600 before:to-yellow-600',
-          //   'hover:bg-gradient-to-l hover:from-pink-700 hover:via-red-700 hover:to-yellow-700',
-          //   'transition-all'
-        )}
-        // // initial={{ '--rotate': '0deg' } as any}
-        // // animate={{ '--rotate': shouldReduceMotion ? '0deg' : '360deg' } as any}
-        // // transition={{ duration: 2, repeat: Infinity }}
-        // // style={{ transform: 'rotate(var(--rotate))' }}
-      >
-        <h1>Uh Hello.</h1>
-      </div>
-      <h1
-        className={cx(
-          'font-bold text-transparent bg-clip-text bg-gradient-to-l',
-          'transition-all duration-500',
-          // 'from-green-100 via-green-300 to-green-500',
-          'from-green-200 via-green-400 to-purple-700',
-          'bg-pos-0 hover:bg-pos-100',
-          'bg-size-100 hover:bg-size-175'
-        )}
-      >
-        Uh Goodbye.
-      </h1>
-      <button className="m-2 p-10 text-white rounded-xl transition-all duration-500 bg-gradient-to-t to-white via-black from-red-500 bg-size-200 bg-pos-0 hover:bg-pos-100">
-        Hover me
-      </button>
-
-      <button className="m-2 p-10 text-white rounded-xl transition-all duration-500 bg-gradient-to-tl to-white via-black from-red-500 bg-size-200 bg-pos-0 hover:bg-pos-100">
-        Hover me
-      </button>
-      <button className="m-2 p-10 text-white rounded-xl transition-all duration-500 bg-gradient-to-br to-white via-black from-red-500 bg-size-200 bg-pos-0 hover:bg-pos-100">
-        Hover me
-      </button>
-      <br />
-      <button className="m-2 p-10 text-white rounded-xl transition-all duration-500 bg-gradient-to-t from-red-800 via-red-500 to-red-200 bg-size-200 bg-pos-0 hover:bg-pos-100">
-        Hover me
-      </button>
-      <button className="m-2 p-10 text-white rounded-xl transition-all duration-500 bg-gradient-to-tl from-purple-800 via-purple-600 to-purple-400 bg-size-200 bg-pos-0 hover:bg-pos-100">
-        Hover me
-      </button>
-      <button className="m-2 p-10 text-white rounded-xl transition-all duration-500 bg-gradient-to-tl from-pink-500 via-red-500 to-yellow-400 bg-size-200 bg-pos-0 hover:bg-pos-100">
-        Hover me
-      </button>
-    </div>
-  )
-}
 
 const Playground = () => {
   const { audio } = useUI()
@@ -199,24 +137,22 @@ const Playground = () => {
         <h4>
           Halo <WavingHand />
         </h4>
-        <BackgroundColorMotion />
 
-        <div
-          className={cx(
-            'h-36 w-36 rounded-full border overflow-hidden',
-            'border-black dark:border-white',
-            'bg-gradient-to-b dark:bg-gradient-to-b',
-            ' from-indigo-200 via-red-200 to-yellow-100'
-            // 'from-blue-gray-100 via-blue-gray-200 to-blue-gray-300',
-            // 'dark:from-blue-gray-100 dark:via-blue-gray-200 dark:to-blue-gray-300'
-          )}
+        <Box
+          css={{
+            backgroundColor: '$loContrast',
+            border: '1px solid $hiContrast',
+            borderRadius: '$round',
+            height: '8rem',
+            width: '8rem',
+          }}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={`/static/images/bighead--jerome--dizzy.svg`}
             alt={`bighead--jerome`}
           />
-        </div>
+        </Box>
         {/* <BigHead {...BIG_HEAD_PROPS} /> */}
 
         <motion.div
@@ -230,7 +166,6 @@ const Playground = () => {
         >
           <h2 style={WEBKIT_BACKGROUND}>{description}</h2>
           <div id="content">
-            <Link href="/playground/event">Event Template</Link>
             <h3 className="w-full bg-success text-black dark:text-white rounded pl-2 py-2">
               Notification
             </h3>

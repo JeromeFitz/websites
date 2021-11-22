@@ -6,7 +6,7 @@ import { useSound } from 'use-sound'
 
 import Icon from '~components/Icon'
 import { ThemeMode } from '~components/Layout'
-import { activeLinks } from '~config/navigation'
+import { navigationHeader } from '~config/websites'
 import { useUI } from '~context/ManagedUIContext'
 
 // const ThemeMode = dynamic(
@@ -139,7 +139,7 @@ const NavigationMobile = () => {
               // exit="hidden"
               // variants={list}
             >
-              {activeLinks.map((link, linkIndex) => {
+              {navigationHeader.links.map((link, linkIndex) => {
                 if (!link.active) return null
 
                 const displayNavigation10 = displayNavigation ? 1 : 0
@@ -181,7 +181,7 @@ const NavigationMobile = () => {
                     transition={{
                       delay: displayNavigation
                         ? linkIndex * 0.125
-                        : (activeLinks.length - linkIndex) * 0.125,
+                        : (navigationHeader.links.length - linkIndex) * 0.125,
                       duration: displayNavigation ? 0.5 : 0.5,
                     }}
                     // // @framer(variants)
@@ -190,7 +190,7 @@ const NavigationMobile = () => {
                     whileTap={{ scale: 0.8 }}
                     onClick={() => handleClickLink()}
                   >
-                    <NextLink href={link.href}>
+                    <NextLink href={link.url}>
                       <a
                         className={cx(
                           `badge-sm`,

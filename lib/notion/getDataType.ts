@@ -34,7 +34,7 @@ class DATA_TYPES {
   }
 
   async ['getByListing']({ pathVariables, routeType }) {
-    console.dir(`2 => getByListing`)
+    // console.dir(`2 => getByListing`)
     return await getByListing({ pathVariables, routeType })
   }
   2(props) {

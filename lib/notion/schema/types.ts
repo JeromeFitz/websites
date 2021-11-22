@@ -202,6 +202,7 @@ interface Show extends Default {
   rollupShows__People_Director: any
   rollupShows__People_Director_Musical: any
   rollupShows__People_Director_Technical: any
+  rollupShows__People_Music: any
   rollupShows__People_Producer: any
   rollupShows__People_Thanks: any
   rollupShows__People_Writer: any

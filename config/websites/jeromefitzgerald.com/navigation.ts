@@ -1,13 +1,23 @@
+const isDev = process.env.NODE_ENV === 'development'
+
 const navigationHeader = {
   dev: [
-    { emoji: '▶️', url: '/playground', title: 'P', text: 'Playground' },
     {
+      active: isDev,
+      emoji: '▶️',
+      url: '/playground',
+      title: 'P',
+      text: 'Playground',
+    },
+    {
+      active: isDev,
       emoji: '🛁️',
       url: '/playground/kitchen-sink',
       title: 'KS',
       text: 'Kithcen Sink',
     },
     {
+      active: isDev,
       emoji: '⏸️',
       url: '/playground/loading',
       title: 'L',
@@ -15,56 +25,60 @@ const navigationHeader = {
     },
 
     {
+      active: isDev,
       emoji: '🟧️',
       url: '/playground/grid',
       title: 'G',
       text: 'Grid',
     },
-    {
-      emoji: '🗓️',
-      url: '/playground/events',
-      title: 'E+',
-      text: 'Events',
-    },
-    {
-      emoji: '🎟️',
-      url: '/playground/events/event',
-      title: 'E',
-      text: 'Event',
-    },
-    {
-      emoji: '🚿️',
-      url: '/playground/shows',
-      title: 'S+',
-      text: 'Shows',
-    },
-    {
-      emoji: '🎭️',
-      url: '/playground/shows/show',
-      title: 'S',
-      text: 'Show',
-    },
   ],
   links: [
-    { emoji: '🗓️', url: '/events', title: 'Upcoming Events', text: 'Live on Stage' },
-    { emoji: '📚️', url: '/books', title: 'Books', text: 'Currently Reading' },
-    { emoji: '🎹️', url: '/music', title: 'Music', text: 'Currently Listening To' },
+    {
+      active: true,
+      emoji: '🗓️',
+      url: '/events',
+      title: 'Upcoming Events',
+      text: 'Live on Stage',
+    },
+    {
+      active: true,
+      emoji: '📚️',
+      url: '/books',
+      title: 'Books',
+      text: 'Currently Reading',
+    },
+    {
+      active: true,
+      emoji: '🎹️',
+      url: '/music',
+      title: 'Music',
+      text: 'Currently Listening To',
+    },
   ],
   popover: [
     {
+      active: true,
       emoji: '🤮️',
       url: '/shows/alex-o-jerome',
       title: 'AOJ',
       text: 'Alex O’Jerome',
     },
-    { emoji: '🐭️', url: '/shows/jfle', title: 'JFLE', text: 'Jerome & Jesse LE' },
     {
+      active: true,
+      emoji: '🐭️',
+      url: '/shows/jfle',
+      title: 'JFLE',
+      text: 'Jerome & Jesse LE',
+    },
+    {
+      active: true,
       emoji: '😆️',
       url: '/shows/justin-and-jerome-experience',
       title: 'JJE',
       text: 'Justin & Jerome Experience',
     },
     {
+      active: true,
       emoji: '🎭️',
       url: '/shows',
       title: 'View All',

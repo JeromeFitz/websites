@@ -1,16 +1,12 @@
 import _filter from 'lodash/filter'
 
+import { nextWeirdRoutingSkipData } from '~lib/constants'
 import deepFetchAllChildren from '~lib/notion/deepFetchAllChildren'
 import { getCache, setCache } from '~lib/notion/getCache'
 import { DATA_TYPES } from '~lib/notion/getDataType'
 import getImages from '~lib/notion/getImages'
 
 const useCache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE
-
-/**
- * @hack some reason everything is coming here, is it `notion/index.ts`?
- */
-const nextWeirdRoutingSkipData = ['favicon.ico', 'true']
 
 // @todo(next) preview
 // @todo(complexity) 16
@@ -30,7 +26,7 @@ const getCatchAll = async ({
   const { slug } = pathVariables
   if (nextWeirdRoutingSkipData.includes(slug)) return null
 
-  console.dir(`isCache: ${isCache}`)
+  // console.dir(`isCache: ${isCache}`)
 
   let data
   /**

@@ -1,14 +1,11 @@
 import _size from 'lodash/size'
 import dynamic from 'next/dynamic'
-// import { useEffect } from 'react'
 import { useEffectOnce } from 'react-use'
 import useSWR, { useSWRConfig } from 'swr'
 
 import ContentNodes from '~components/Notion/ContentNodes'
 import NotionLayout, { ImageLead } from '~components/Notion/Layout'
 import { MetaShow } from '~components/Notion/Meta'
-// import { MetaTags } from '~components/Notion/Meta'
-// import { Event } from '~components/Notion/Page'
 import { ROUTE_TYPES } from '~utils/notion/helper'
 
 const Listing = dynamic(() => import('~components/Notion/Listing'), {})
@@ -18,18 +15,8 @@ const ListingEvent = dynamic(
     ssr: true,
   }
 )
-// // const Relations = dynamic(() => import('~components/Notion/Relations'), {})
-// const Rollups = dynamic(() => import('~components/Notion/Rollups'), {})
-// // const RollupsTags = dynamic(
-// //   () => import('~components/Notion/Rollups/RollupsTags'),
-// //   {}
-// // )
-// // const ListingEpisodes = dynamic(
-// //   () => import('~components/Notion/Listing').then((mod) => mod.ListingEpisodes),
-// //   {}
-// // )
 
-// @todo(complexity) 15
+// @todo(complexity) 18
 // eslint-disable-next-line complexity
 const Page = ({ data, ...props }) => {
   const {
@@ -78,29 +65,6 @@ const Page = ({ data, ...props }) => {
   // console.dir(`> properties`)
   // console.dir(properties)
 
-  // @todo(switch)
-  /**
-   * @tags
-   */
-  // @todo(notion) dry
-  // let tagParams
-  // switch (routeType) {
-  //   case 'events':
-  //     tagParams = `events=${id || ''}&shows=${
-  //       info?.properties?.shows?.join(',') || ''
-  //     }&eventsLineupShowIds=${info?.properties?.eventsLineupShowIds?.join(',') || ''}`
-  //     break
-  //   case 'shows':
-  //     tagParams = `shows=${id || ''}`
-  //     break
-  //   default:
-  //     break
-  // }
-
-  // console.dir(`content`)
-  // console.dir(content)
-  // // const nodes = getContentNodes({ content, images })
-
   // @refactor(confusing)
   const isEventListing = routeType === ROUTE_TYPES.events && !isIndex
   const isEpisodeListing = routeType === ROUTE_TYPES.podcasts && !isIndex
@@ -136,29 +100,6 @@ const Page = ({ data, ...props }) => {
           {(isEventListing || isShowListing) && (
             <MetaShow data={data} key={`${id}--metashow`} routeType={routeType} />
           )}
-          {/* {!isIndex && (
-            <h2 className="text-3xl md:text-4xl" key={`h2-information--${id}`}>
-              Information
-            </h2>
-          )}
-          {!!tagParams && !isIndex && (
-            <div className="spacer--h mb-4" key={`spacer-0--${id}`} />
-          )}
-          {!!tagParams && !isIndex && (
-            <>
-              <MetaTags key={`meta-tags--${id}`} tagParams={tagParams} />
-            </>
-          )}
-          {!isIndex && (
-            <Rollups
-              id={id}
-              isIndex={isIndex}
-              key={`relations--${id}`}
-              properties={properties}
-              routeType={routeType}
-              slug={slug}
-            />
-          )} */}
           {isEpisodeListing ? (
             <>
               <Listing
