@@ -10,11 +10,14 @@ const dataNormalized = (data: any, pathVariables = null, pageId = null) => {
   const { properties } = data
 
   // @hack(notion) not great
-  const { meta, routeType: _routeType } = pathVariables
-  const routeType =
-    _routeType === ROUTE_TYPES?.podcasts && meta.length > 1
-      ? ROUTE_TYPES?.episodes
-      : _routeType
+  let routeType = null
+  if (!!pathVariables) {
+    const { meta, routeType: _routeType } = pathVariables
+    routeType =
+      _routeType === ROUTE_TYPES?.podcasts && meta.length > 1
+        ? ROUTE_TYPES?.episodes
+        : _routeType
+  }
 
   const items = !!routeType ? LOOKUP[routeType.toUpperCase()] : PROPERTIES_LOOKUP
 
