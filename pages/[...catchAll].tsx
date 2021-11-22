@@ -15,7 +15,7 @@ import getNextPageStatus from '~utils/next/getNextPageStatus'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { ROUTE_TYPES, SLUG__HOMEPAGE } from '~utils/notion/helper'
+import { SLUG__HOMEPAGE } from '~utils/notion/helper'
 
 const CatchAll = (props) => {
   const {

@@ -1,5 +1,4 @@
 import { format, parseISO } from 'date-fns'
-import Slugger from 'github-slugger'
 import useSWR from 'swr'
 
 import PageHeading from '~components/PageHeading'
@@ -8,7 +7,6 @@ import { ROUTE_TYPES } from '~utils/notion/helper'
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Layout = ({ id, children, properties, routeType, url }) => {
-  const slugger = new Slugger()
   const { data: images } = useSWR('images')
 
   const {
@@ -22,10 +20,9 @@ const Layout = ({ id, children, properties, routeType, url }) => {
   } = properties
 
   // @todo(external)
-  const seoImageSlug = slugger.slug(seoImage)
+  const seoImageSlug = Object.keys(seoImage)[0] || ''
   const seoImageData = !!images && images[seoImageSlug]
-
-  const seoUrl = `https://jeromefitzgerald.com/${url}`
+  const seoUrl = `https://jeromefitzgerald.com/${!!url ? url : ''}`
 
   let seoDescription = description
   if (routeType === ROUTE_TYPES.events && slug !== ROUTE_TYPES.events) {
@@ -39,7 +36,7 @@ const Layout = ({ id, children, properties, routeType, url }) => {
   const seo = {
     canonical: seoUrl,
     description: seoDescription,
-    image: seoImage,
+    image: seoImage[seoImageSlug]?.url,
     noindex: !isPublished || !isIndexed,
     openGraph: {
       description: seoDescription,
@@ -47,7 +44,7 @@ const Layout = ({ id, children, properties, routeType, url }) => {
         {
           alt: seoImageDescription,
           height: seoImageData?.img?.height,
-          url: seoImage,
+          url: seoImage[seoImageSlug]?.url,
           width: seoImageData?.img?.width,
         },
       ],

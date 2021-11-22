@@ -1,5 +1,3 @@
-// import dynamic from 'next/dynamic'
-// import { useRouter } from 'next/router'
 import useSWR from 'swr'
 
 import ListingShows from '~components/Notion/Listing/ListingShows'
@@ -18,13 +16,7 @@ import getNextPageStatus from '~utils/next/getNextPageStatus'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { ROUTE_TYPES, SLUG__HOMEPAGE } from '~utils/notion/helper'
-
-// const ListingShows = dynamic(
-//   () => import('~components/Notion/Listing/ListingCard'),
-//   {}
-// )
-// const Quote = dynamic(() => import('~components/Notion/Quote'), {})
+import { SLUG__HOMEPAGE } from '~utils/notion/helper'
 
 const Index = (props) => {
   const {

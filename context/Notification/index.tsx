@@ -1,6 +1,6 @@
 import React, { useState, useContext, useCallback } from 'react'
 
-import NotificationContainer from '~components/Alert/NotificationContainer'
+import { NotificationContainer } from '~components/Alert'
 
 const NotificationContext = React.createContext(null)
 
