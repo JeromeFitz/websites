@@ -49,7 +49,6 @@ const StyledBox = styled('div', {
   position: 'relative',
   mb: '8px',
   padding: '16px 20px',
-  // transition: 'background-color .2s cubic-bezier(.165, .84, .44, 1)',
   '@bp1': {
     mb: '4px',
     padding: '20px 24px',
@@ -59,6 +58,9 @@ const StyledBox = styled('div', {
   color: '$colors$violet12',
   border: '2px solid transparent',
   transition: 'all .25s cubic-bezier(.165, .84, .44, 1)',
+  '@media (prefers-reduced-motion)': {
+    transition: 'none',
+  },
   '@hover': {
     '&:hover': {
       backgroundColor: '$colors$violet4',
@@ -86,6 +88,9 @@ const StyledBorder = styled('div', {
   zIndex: 1,
   display: 'none',
   transition: 'opacity .25s cubic-bezier(.165, .84, .44, 1)',
+  '@media (prefers-reduced-motion)': {
+    transition: 'none',
+  },
   '@hover': {
     '&:hover': {
       opacity: 0,

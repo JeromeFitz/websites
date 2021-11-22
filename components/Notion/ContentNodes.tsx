@@ -1,6 +1,6 @@
 import _map from 'lodash/map'
 
-import { getContentNode } from '~components/Notion/ContentNodes'
+import { getContentNode } from '~components/Notion'
 
 import getContentNodes from './utils/getContentNodes'
 

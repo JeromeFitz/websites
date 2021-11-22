@@ -24,12 +24,7 @@ const MINUTE = 60000
 // const SECOND = 1000
 
 const initialData = spotifyFavoriteTracks[0]
-// const variants = {
-//   visible: { opacity: 1, transition: { duration: 1 } },
-//   hidden: { opacity: 0 },
-// }
 
-//
 const Section = styled('section', {
   minHeight: '100%',
   borderTopWidth: '1px',

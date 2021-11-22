@@ -122,6 +122,9 @@ const StyledAvatar = styled(AvatarPrimitive.Root, {
           opacity: '0',
           pointerEvents: 'none',
           transition: 'opacity 25ms linear',
+          '@media (prefers-reduced-motion)': {
+            transition: 'none',
+          },
         },
         '@hover': {
           '&:hover': {

@@ -1,4 +1,4 @@
-import { getContentNode } from '~components/Notion/ContentNodes'
+import { getContentNode } from '~components/Notion'
 import { NotionBlock } from '~lib/notion'
 
 const getContentType = (item: NotionBlock, images?: any[]) => {

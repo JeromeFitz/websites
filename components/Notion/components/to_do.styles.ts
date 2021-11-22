@@ -1,7 +1,5 @@
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox'
-import { CheckIcon } from '@radix-ui/react-icons'
 
-import { Flex } from '~styles/system/components'
 import { darkTheme, styled } from '~styles/system/stitches.config'
 
 const StyledCheckbox = styled(CheckboxPrimitive.Root, {
@@ -38,7 +36,7 @@ const StyledCheckbox = styled(CheckboxPrimitive.Root, {
 const StyledIndicator = styled(CheckboxPrimitive.Indicator, {
   color: '$colors$gray12',
 })
-const Label = styled('label', {
+const StyledLabel = styled('label', {
   color: '$colors$gray12',
   fontSize: 15,
   lineHeight: 1,
@@ -48,20 +46,6 @@ const Label = styled('label', {
 // Exports
 const Checkbox = StyledCheckbox
 const CheckboxIndicator = StyledIndicator
+const CheckboxLabel = StyledLabel
 
-const to_do = ({ content, id }) => {
-  return (
-    <Flex css={{ alignItems: 'center', my: '$2' }}>
-      <Checkbox disabled checked={content.checked} id={id}>
-        <CheckboxIndicator>
-          <CheckIcon />
-        </CheckboxIndicator>
-      </Checkbox>
-      <Label css={{ paddingLeft: 15 }} htmlFor={id}>
-        {content.text[0].plain_text}
-      </Label>
-    </Flex>
-  )
-}
-
-export default to_do
+export { Checkbox, CheckboxIndicator, CheckboxLabel }

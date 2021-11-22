@@ -8,32 +8,36 @@ import { Box, Flex, Text } from '~styles/system/components'
 const quote = ({ content, id }) => {
   if (_size(content) > 0) {
     return (
-      <Box css={{ py: '$4' }}>
+      <Box
+        css={{
+          py: '$4',
+        }}
+      >
         <Flex
           css={{
-            br: '0.75rem',
-            backgroundColor: '$colors$violet9',
-            color: 'white',
-            m: '$1',
-            mb: '$2',
-            p: '$3',
-            pb: '$4',
-            dispaly: 'flex',
-            verticalAlign: 'middle',
-            justifyContent: 'flex-start',
             alignItems: 'flex-start',
-            lineHeight: '1.5',
+            backgroundColor: '$colors$violet9',
+            borderRadius: '0.75rem',
+            color: 'white',
+            display: 'flex',
             fontSize: '$6',
+            justifyContent: 'flex-start',
+            lineHeight: '1.5',
+            margin: '$1',
+            marginBottom: '$2',
+            padding: '$3',
+            paddingBottom: '$4',
+            verticalAlign: 'middle',
           }}
         >
           <Text
             as="span"
             css={{
-              mb: 0,
-              pb: 0,
+              mb: '0',
+              pb: '0',
               color: 'inherit',
-              fontSize: 'inherit',
               lineHeight: 'inherit',
+              fontSize: 'inherit',
             }}
           >
             <Emoji character={`📰️`} />
@@ -43,8 +47,8 @@ const quote = ({ content, id }) => {
             css={{
               ml: '$4',
               color: 'inherit',
-              fontSize: 'inherit',
               lineHeight: 'inherit',
+              fontSize: 'inherit',
             }}
           >
             {getContentTypeDetail({ content, id })}

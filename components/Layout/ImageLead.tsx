@@ -35,7 +35,7 @@ const ImageWithBackgroundBlur = ({
   description,
   image,
   priority = false,
-  sizes = '(min-width: 1280) 75vh, 50vh',
+  sizes = '(min-width: 1280) 80vh, 60vh',
   slug,
 }) => {
   // console.dir(`image`)

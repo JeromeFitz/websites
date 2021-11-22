@@ -30,5 +30,4 @@ const getContentNode = {
   url: dynamic(() => import('./components/url')),
 }
 
-export { getContentNode }
-export default ContentNodes
+export { getContentNode, ContentNodes }
