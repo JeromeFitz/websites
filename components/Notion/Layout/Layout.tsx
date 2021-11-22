@@ -33,11 +33,14 @@ const Layout = ({ id, children, properties, routeType, url }) => {
     seoDescription = `${date} – ${seoDescription}`
   }
 
+  const noindex = !isPublished || !isIndexed
+  // console.dir(`noindex: ${noindex}`)
+
   const seo = {
     canonical: seoUrl,
     description: seoDescription,
     image: seoImage[seoImageSlug]?.url,
-    noindex: !isPublished || !isIndexed,
+    noindex,
     openGraph: {
       description: seoDescription,
       images: [
