@@ -406,6 +406,11 @@ const Event = ({ data, keyPrefix }) => {
   // @ts-ignore
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { as, date, href, slug } = getInfoType(data, 'events')
+  // console.dir(`---`)
+  // console.dir(`as:   ${as}`)
+  // console.dir(`date: ${date}`)
+  // console.dir(`href: ${href}`)
+  // console.dir(`slug: ${slug}`)
 
   /**
    * @note(date-fns) this formats into the server time zone

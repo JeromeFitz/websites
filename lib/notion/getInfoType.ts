@@ -9,8 +9,12 @@ const getInfoType = (item: any, routeType, meta = null) => {
 
   switch (routeType) {
     case NOTION.BLOG.routeType:
-    case NOTION.EVENTS.routeType:
       date = item.properties?.datePublished?.start.slice(0, 10)
+      const [yearB, monthB, dayB] = date?.split('-')
+      as = `/${routeType}/${yearB}/${monthB}/${dayB}/${slug}`
+      break
+    case NOTION.EVENTS.routeType:
+      date = item.properties?.dateEvent?.start.slice(0, 10)
       const [year, month, day] = date?.split('-')
       as = `/${routeType}/${year}/${month}/${day}/${slug}`
       break
