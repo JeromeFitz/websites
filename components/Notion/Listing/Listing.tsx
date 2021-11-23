@@ -3,7 +3,7 @@ import _size from 'lodash/size'
 import dynamic from 'next/dynamic'
 import React from 'react'
 
-import { ROUTE_TYPES } from '~lib/notion/helper'
+import { NOTION } from '~config/websites'
 
 const ListingEpisodes = dynamic(
   () => import('~components/Notion/Listing/ListingEpisodes'),
@@ -43,10 +43,10 @@ const Listing = ({ images, items, routeType }) => {
 
   if (itemsSize > 0) {
     switch (routeType) {
-      case ROUTE_TYPES.events:
+      case NOTION.EVENTS.routeType:
         itemsData = _orderBy(items.results, ['properties.dateEvent.start'], ['asc'])
         break
-      case ROUTE_TYPES.podcasts:
+      case NOTION.PODCASTS.routeType:
         itemsData = _orderBy(
           items.results,
           ['properties.season', 'properties.episode'],
@@ -59,7 +59,7 @@ const Listing = ({ images, items, routeType }) => {
     }
   }
 
-  if (routeType === ROUTE_TYPES.podcasts && itemsData.length > 0) {
+  if (routeType === NOTION.PODCASTS.routeType && itemsData.length > 0) {
     // console.dir(`> itemsData`)
     // console.dir(itemsData)
     // @todo(what) this if statement is not correct.
@@ -70,7 +70,7 @@ const Listing = ({ images, items, routeType }) => {
     )
   }
 
-  if (routeType === ROUTE_TYPES.events) {
+  if (routeType === NOTION.EVENTS.routeType) {
     // console.dir(itemsData)
     return (
       <>
@@ -79,7 +79,7 @@ const Listing = ({ images, items, routeType }) => {
     )
   }
 
-  if (routeType === ROUTE_TYPES.shows) {
+  if (routeType === NOTION.SHOWS.routeType) {
     // console.dir(itemsData)
     return (
       <>

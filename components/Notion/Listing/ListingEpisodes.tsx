@@ -7,9 +7,9 @@ import React from 'react'
 
 import { Breakout } from '~components/Container'
 import { ImageWithBackgroundBlur } from '~components/Layout/ImageLead'
+import { NOTION } from '~config/websites'
 import { IMAGE__PLACEHOLDER } from '~lib/constants'
 import getInfoType from '~lib/notion/getInfoType'
-import { ROUTE_TYPES } from '~lib/notion/helper'
 import { Badge, Box, Grid, Paragraph, Spacer, Text } from '~styles/system/components'
 import { Card } from '~styles/system/components/Card'
 import {
@@ -79,7 +79,7 @@ const Episodes = ({ images, items }) => {
         const { episode, season } = item?.properties
         const meta = router.asPath.split('/').slice(1)
         const isEpisode = _size(meta) === 2
-        const { as, href } = getInfoType(item, ROUTE_TYPES.podcasts, meta)
+        const { as, href } = getInfoType(item, NOTION.PODCASTS.slug, meta)
 
         const { icon } = item
         const emoji = !!icon?.emoji ? icon.emoji : ''

@@ -1,6 +1,7 @@
 import _size from 'lodash/size'
 import { NextApiRequest, NextApiResponse } from 'next'
 
+import { NOTION } from '~config/websites'
 import createPage from '~lib/notion/api/createPage'
 // @todo(notion) this no longer works!
 import children from '~lib/notion/create/children'
@@ -8,7 +9,6 @@ import children from '~lib/notion/create/children'
 import properties from '~lib/notion/create/properties'
 import getCatchAll from '~lib/notion/getCatchAll'
 import getPathVariables from '~lib/notion/getPathVariables'
-import { DB } from '~lib/notion/helper'
 // const isObjectEmpty = '~utils/isObjectEmpty'
 
 const isDev = process.env.NODE_ENV === 'development'
@@ -25,7 +25,7 @@ const secretCreatePage = async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(200).json({})
   }
   const routeType = 'episodes'
-  const databaseId = DB[routeType.toUpperCase()].database_id
+  const databaseId = NOTION[routeType.toUpperCase()].database_id
   const icon = {
     type: 'emoji',
     emoji: '🦇',
