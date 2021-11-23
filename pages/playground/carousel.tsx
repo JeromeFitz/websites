@@ -1,7 +1,8 @@
+import { TagIcon } from '@heroicons/react/outline'
 import {
   ArrowLeftIcon,
   ArrowRightIcon,
-  ExternalLinkIcon,
+  // ExternalLinkIcon,
 } from '@radix-ui/react-icons'
 import _map from 'lodash/map'
 import _size from 'lodash/size'
@@ -12,14 +13,18 @@ import _title from 'title'
 import { CarouselArrowButton, GrabBox, FocusArea } from '~components/Carousel'
 import { Breakout } from '~components/Container'
 import { PageHeading } from '~components/Layout'
-import { artists } from '~data/mock/spotify/top10'
+// import { ImageWithBackgroundBlur } from '~components/Layout/ImageLead'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { artists, tracks } from '~data/mock/spotify/top10'
 import {
-  Badge,
+  // Badge,
   Box,
-  Container,
+  // Container,
   Flex,
   Link,
-  Paragraph,
+  // Paragraph,
   Section,
   Text,
 } from '~styles/system/components'
@@ -41,7 +46,16 @@ const properties = {
   title: 'Carousel',
   seoDescription: 'Example',
 }
-
+const css_info = {
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'flex-start',
+  justifyContent: 'flex-start',
+  gap: '0.5rem',
+}
+const css_icon = {
+  width: '1rem',
+}
 const backgrounds = [
   {
     light: 'linear-gradient(120deg, $indigo6, $crimson5)',
@@ -86,7 +100,7 @@ const backgrounds = [
 ]
 const backgroundsSize = _size(backgrounds)
 
-const DemoContainer = styled('div', {
+const DemoContainer = styled('a', {
   display: 'flex',
   position: 'relative',
   ai: 'center',
@@ -101,7 +115,7 @@ const DemoContainer = styled('div', {
 
   // Can't select text because the carousel is draggable
   userSelect: 'none',
-  cursor: 'default',
+  // cursor: 'default',
 
   '@bp1': {
     width: 400,
@@ -329,9 +343,32 @@ const CarouselWithImages = () => {
               }}
             >
               {/* {rangeMap(10, (i) => { */}
-              {_map(artists, (artist, i) => {
+              {/* {_map(artists, (artist, i) => { */}
+              {_map(tracks, (track, i) => {
                 const bgIndex = i > backgroundsSize ? backgroundsSize : i
 
+                // @hack for testing
+                // const _href = artist.url
+                // const _title1 = artist.name
+                // const _title2 = 'Invasion'
+                // const _title3 = 'Invasion'
+                // const _meta = artist.meta
+                // const _genres = artist.genres
+                const _href = track.track.url
+                const _title1 = track.artist.name
+                const _title2 = `“${track.track.name}”`
+                const _title3 = `${track.album.name} (${track.album.year})`
+                const _meta = track.album.meta
+                const _genres = track.genres
+
+                const genres = _map(_genres.slice(0, 5), (genre) =>
+                  _title(genre)
+                ).join(', ')
+
+                const genresExtra =
+                  _genres.length > 4 &&
+                  _genres.length - 5 > 0 &&
+                  `, + ${_genres.length - 5} more`
                 return (
                   <CarouselSlide key={`cs-${i}`}>
                     <FocusArea
@@ -347,18 +384,59 @@ const CarouselWithImages = () => {
                             background: backgrounds[bgIndex].dark,
                           },
                           overflow: 'hidden',
+                          ai: 'end',
+                          jc: 'center',
+                          ac: 'center',
+
+                          // backgroundImage: `url(${artist.meta.base64})`,
+                          backgroundSize: 'cover',
+                          // backgroundColor: 'rgba(0, 0, 0, 0.61)',
+                          backdropFilter: 'blur(10px)',
+                          backgroundColor: 'rgba(255, 255, 255, 0.5)',
+                          boxShadow: '0px 5px 30px -5px rgba(0, 0, 0, 0.1)',
+                          [`.${darkTheme} &`]: {
+                            boxShadow: '0px 5px 30px -5px rgba(255, 255, 255, 0.1)',
+                          },
+                          '@hover': {
+                            '&:hover': {
+                              boxShadow: '0px 5px 30px -5px rgba(0, 0, 0, 0.5)',
+                              [`.${darkTheme} &`]: {
+                                boxShadow:
+                                  '0px 5px 30px -5px rgba(255, 255, 255, 0.3)',
+                              },
+                              '& img': {
+                                transform: 'scale(1.02)',
+                              },
+                            },
+                          },
+                          '&:focus': {
+                            boxShadow: '0px 5px 30px -5px rgba(0, 0, 0, 0.5)',
+                            [`.${darkTheme} &`]: {
+                              boxShadow:
+                                '0px 5px 30px -5px rgba(255, 255, 255, 0.3)',
+                            },
+                            '& img': {
+                              transform: 'scale(1.02)',
+                            },
+                          },
+                          transition: 'all 0.2s ease-in-out',
+                          mt: '$4',
                         }}
+                        href={_href}
+                        rel="noopener noreferrer"
+                        target="_blank"
                       >
-                        <HeroImage meta={artist.meta} />
+                        <HeroImage meta={_meta} />
                       </DemoContainer>
                     </FocusArea>
-                    <GrabBox>
+                    <GrabBox css={{ mx: '$1' }}>
                       <Text
                         as="h3"
-                        size="3"
+                        size="4"
                         css={{ fontWeight: 500, lineHeight: '25px' }}
                       >
-                        {lpad(i + 1)}. {artist.name}
+                        {/* {lpad(i + 1)}. */}
+                        {_title1}
                       </Text>
                       <Text
                         as="p"
@@ -366,9 +444,20 @@ const CarouselWithImages = () => {
                         variant="gray"
                         css={{ lineHeight: '23px' }}
                       >
-                        Invasion
+                        {_title2}
+                        <br />
+                        <small>{_title3}</small>
                       </Text>
-                      <Container css={{ my: '$3', mx: '-$1' }}>
+                      {genres && (
+                        <Box role="listitem" css={{ ...css_info, my: '$2' }}>
+                          <TagIcon className="hi2ri" style={css_icon} />
+                          <Text as="p" size="2" variant="gray">
+                            {genres}
+                            {genresExtra}
+                          </Text>
+                        </Box>
+                      )}
+                      {/* <Container css={{ my: '$3', mx: '-$1' }}>
                         <Paragraph size="1" css={{ py: '$2' }}>
                           <>
                             <Link
@@ -392,31 +481,7 @@ const CarouselWithImages = () => {
                           </>
                         </Paragraph>
                       </Container>
-                      <Container as="ul" css={{ m: 0, p: 0 }}>
-                        {_map(artist.genres.slice(0, 5), (genre, genreIdx) => (
-                          <Badge
-                            as="li"
-                            key={`genre-${genreIdx}`}
-                            size="2"
-                            css={{
-                              p: '$3',
-                              m: '$1',
-                              c: '$hiContrast',
-                              border: '1px solid $hiContrast',
-                              fontWeight: '700',
-                            }}
-                          >
-                            {_title(genre)}
-                          </Badge>
-                        ))}
-                      </Container>
-                      <Container css={{ my: '$3', mx: '-$1' }}>
-                        {artist.genres.length > 4 && artist.genres.length - 5 > 0 && (
-                          <Paragraph size="1" css={{ mt: '-$3', pb: '$2' }}>
-                            <small>+ {artist.genres.length - 5} more</small>
-                          </Paragraph>
-                        )}
-                      </Container>
+                              */}
                     </GrabBox>
                   </CarouselSlide>
                 )
@@ -430,6 +495,7 @@ const CarouselWithImages = () => {
                       [`.${darkTheme} &`]: {
                         backgroundColor: '$blackA4',
                       },
+                      mt: '$4',
                     }}
                   >
                     <Flex align="center" direction="column" gap="2">
@@ -667,6 +733,7 @@ const CarouselWithText = () => {
   return (
     <Section
       css={{
+        display: 'none',
         paddingTop: '$4',
         // Starting at 850px viewport height, grow the padding top from $5 until it's $9.
         '@media (min-width: 900px) and (min-height: 850px)': {

@@ -652,13 +652,24 @@ const PROPERTIES: Record<string, Property> = {
     },
   },
   relationTags__Shows: {
-    init: true,
+    init: false,
     key: 'relationTags__Shows',
     notion: 'Shows',
     type: 'relation',
     relation: {
       database_id: 'Shows',
       synced_property_name: 'Tags',
+    },
+  },
+  rollupShows__Tags: {
+    init: false,
+    key: 'rollupShows__Tags',
+    notion: 'Tags.Rollup',
+    type: 'rollup',
+    rollup: {
+      relation_property_name: 'Tags',
+      rollup_property_id: 'Title',
+      function: 'show_original',
     },
   },
   /**
@@ -1088,6 +1099,7 @@ const SHOWS = [
   PROPERTIES.relationShows__People_Producer,
   PROPERTIES.relationShows__People_Thanks,
   PROPERTIES.relationShows__People_Writer,
+  PROPERTIES.relationShows__Tags,
   PROPERTIES.socialFacebook,
   PROPERTIES.socialInstagram,
   PROPERTIES.socialTwitter,
@@ -1109,6 +1121,7 @@ const SHOWS = [
   PROPERTIES.rollupShows__People_Producer,
   PROPERTIES.rollupShows__People_Thanks,
   PROPERTIES.rollupShows__People_Writer,
+  PROPERTIES.rollupShows__Tags,
   /**
    * -------------------------------------
    */
