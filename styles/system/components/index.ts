@@ -5,7 +5,7 @@ export { Box } from './Box'
 export { Button } from './Button'
 export {
   Carousel,
-  CarouselArrowButton,
+  // CarouselArrowButton,
   CarouselSlideList,
   CarouselSlide,
   CarouselNext,
@@ -24,6 +24,7 @@ export { Panel } from './Panel'
 export { Paragraph } from './Paragraph'
 export { Popover, PopoverContent, PopoverTrigger } from './Popover'
 export { RadioCard, RadioCardGroup } from './RadioCard'
+export { ScrollArea } from './ScrollArea'
 export { Section } from './Section'
 export { Separator } from './Separator'
 export { Spacer } from './Spacer'

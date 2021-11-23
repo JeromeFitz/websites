@@ -140,7 +140,7 @@ const Music = () => {
         vinyl collection (have not yet made the leap to first editions, heh).
       </Text>
       <Section size="1">
-        <Box css={{ position: 'sticky' }}>
+        <Box css={{ position: 'sticky', mb: '$3', pb: '$3' }}>
           <Heading
             as="h4"
             size="3"

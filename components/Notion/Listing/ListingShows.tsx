@@ -21,12 +21,13 @@ const Shows = ({ images, items }) => {
   return (
     <>
       {_map(items, (item, itemIdx) => {
+        // console.dir(item)
         const {
           seoDescription,
           seoImage,
           seoImageDescription: description,
           slug,
-          rollupTags: tags,
+          rollupShows__Tags: tags,
           title,
         } = item?.properties
         // @note(notion) this is slugified upstream in data collection

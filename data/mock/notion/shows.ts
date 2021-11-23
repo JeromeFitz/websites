@@ -4,7 +4,7 @@ const data = {
     object: 'page',
     id: '7f18c17d-c86e-429a-8505-80cdf874022b',
     created_time: '2021-11-20T15:35:00.000Z',
-    last_edited_time: '2021-11-20T15:59:00.000Z',
+    last_edited_time: '2021-11-22T04:50:00.000Z',
     cover: null,
     icon: { type: 'emoji', emoji: '🎭' },
     parent: {
@@ -36,6 +36,7 @@ const data = {
       relationShows__People_Producer: null,
       relationShows__People_Thanks: null,
       relationShows__People_Writer: null,
+      relationShows__Tags: null,
       rollupShows__People_Cast: null,
       rollupShows__People_Cast_Past: null,
       rollupShows__People_Cast_Slug: null,
@@ -43,9 +44,11 @@ const data = {
       rollupShows__People_Director: null,
       rollupShows__People_Director_Musical: null,
       rollupShows__People_Director_Technical: null,
+      rollupShows__People_Music: null,
       rollupShows__People_Producer: null,
       rollupShows__People_Thanks: null,
       rollupShows__People_Writer: null,
+      rollupShows__Tags: null,
       seoDescription:
         'Shows that comedian Jerome Fitzgerald is in. Maybe these should be Acts. He does not know, SEO and Online Content eludes him. He is glad you found this page in spite of this.',
       seoImage: {
@@ -72,37 +75,7 @@ const data = {
         object: 'block',
         id: '73ca8290-1b28-413a-b79e-95d3b1d373d2',
         created_time: '2021-11-20T15:35:00.000Z',
-        last_edited_time: '2021-11-20T15:35:00.000Z',
-        has_children: false,
-        archived: false,
-        type: 'heading_1',
-        heading_1: {
-          text: [
-            {
-              type: 'text',
-              text: {
-                content: 'Shows that comedian Jerome Fitzgerald is in.',
-                link: null,
-              },
-              annotations: {
-                bold: false,
-                italic: false,
-                strikethrough: false,
-                underline: false,
-                code: false,
-                color: 'default',
-              },
-              plain_text: 'Shows that comedian Jerome Fitzgerald is in.',
-              href: null,
-            },
-          ],
-        },
-      },
-      {
-        object: 'block',
-        id: 'c953d2bc-f4f7-4f81-bb24-e6976e0fc238',
-        created_time: '2021-11-20T15:35:00.000Z',
-        last_edited_time: '2021-11-20T15:35:00.000Z',
+        last_edited_time: '2021-11-22T04:49:00.000Z',
         has_children: false,
         archived: false,
         type: 'paragraph',
@@ -146,36 +119,9 @@ const data = {
       },
       {
         object: 'block',
-        id: '25bde682-c34d-4cf6-bb78-16fb8bdc7646',
-        created_time: '2021-11-20T15:35:00.000Z',
-        last_edited_time: '2021-11-20T15:35:00.000Z',
-        has_children: false,
-        archived: false,
-        type: 'paragraph',
-        paragraph: {
-          text: [
-            {
-              type: 'text',
-              text: { content: '😇', link: null },
-              annotations: {
-                bold: false,
-                italic: false,
-                strikethrough: false,
-                underline: false,
-                code: false,
-                color: 'default',
-              },
-              plain_text: '😇',
-              href: null,
-            },
-          ],
-        },
-      },
-      {
-        object: 'block',
         id: '0e3f9823-d1ab-49d5-8c48-92ff488f7c01',
         created_time: '2021-11-20T15:35:00.000Z',
-        last_edited_time: '2021-11-20T15:35:00.000Z',
+        last_edited_time: '2021-11-22T04:50:00.000Z',
         has_children: false,
         archived: false,
         type: 'paragraph',
@@ -184,7 +130,7 @@ const data = {
             {
               type: 'text',
               text: {
-                content: 'He is glad you found this page in spite of this.',
+                content: 'He is glad you found this page in spite of this. 😇',
                 link: null,
               },
               annotations: {
@@ -195,7 +141,7 @@ const data = {
                 code: false,
                 color: 'default',
               },
-              plain_text: 'He is glad you found this page in spite of this.',
+              plain_text: 'He is glad you found this page in spite of this. 😇',
               href: null,
             },
           ],
@@ -260,6 +206,7 @@ const data = {
           relationShows__People_Producer: [],
           relationShows__People_Thanks: [],
           relationShows__People_Writer: [],
+          relationShows__Tags: ['0545aac0-e957-4bac-919a-c1171e1ab432'],
           rollupShows__People_Cast: ['Alex O’Brien', 'Jerome Fitzgerald'],
           rollupShows__People_Cast_Past: [],
           rollupShows__People_Cast_Slug: ['alex-o-brien', 'jerome-fitzgerald'],
@@ -267,9 +214,11 @@ const data = {
           rollupShows__People_Director: [],
           rollupShows__People_Director_Musical: [],
           rollupShows__People_Director_Technical: [],
+          rollupShows__People_Music: [],
           rollupShows__People_Producer: [],
           rollupShows__People_Thanks: [],
           rollupShows__People_Writer: [],
+          rollupShows__Tags: ['Improv'],
           seoDescription:
             'LAX to CHI to to PIT Connection. The Vomit Twinz. AOJ are Alex O’Brien and Jerome Fitzgerald. In 2019 they performed at the Detroit Improv Festival & San Diego Improv Festival.',
           seoImage: {
@@ -341,6 +290,7 @@ const data = {
             'fa42b0c7-67d3-4e24-b8b6-f66ef68bb776',
             'd3a634bb-6425-4029-9f22-3d4265fe2cfc',
           ],
+          relationShows__Tags: ['698d51fb-5fe6-4673-bdd4-f2dd8689eee5'],
           rollupShows__People_Cast: [
             'Brett Goodnack',
             'Emily Chin',
@@ -366,6 +316,11 @@ const data = {
           rollupShows__People_Director: ['Greg Gillotti'],
           rollupShows__People_Director_Musical: ['Alexei Plotincov'],
           rollupShows__People_Director_Technical: ['Aaron Tarnow'],
+          rollupShows__People_Music: [
+            'Alexei Plotincov',
+            'Justin Brown',
+            'Matty Mo Mihalcin',
+          ],
           rollupShows__People_Producer: ['Jerome Fitzgerald'],
           rollupShows__People_Thanks: [],
           rollupShows__People_Writer: [
@@ -373,6 +328,7 @@ const data = {
             'Jerome Fitzgerald',
             'Tessa Karel',
           ],
+          rollupShows__Tags: ['Musical'],
           seoDescription:
             'Boo Humbag: Musical: The most celebrated morality tale of all-time was transformed by local comedians and musicians into a hilarious send-up complete with original song and dance numbers.',
           seoImage: {
@@ -448,6 +404,7 @@ const data = {
             '8a8c4bb6-5e2d-4a03-875c-2f3018fc7b6d',
             '67c3e3bb-7375-428d-a87f-9400b7dcf6b0',
           ],
+          relationShows__Tags: ['698d51fb-5fe6-4673-bdd4-f2dd8689eee5'],
           rollupShows__People_Cast: [
             'Alex Manalo',
             'Brad Stephenson',
@@ -481,9 +438,16 @@ const data = {
           rollupShows__People_Director: ['Don DiGiulio'],
           rollupShows__People_Director_Musical: ['Joseph Stamerra'],
           rollupShows__People_Director_Technical: ['Char'],
+          rollupShows__People_Music: [
+            'Jojo Gustafson',
+            'Joseph Stamerra',
+            'Tracey Whorton',
+            'Zoob',
+          ],
           rollupShows__People_Producer: ['Michael Rubino'],
           rollupShows__People_Thanks: [],
           rollupShows__People_Writer: ['Cinco Paul', 'Ken Daurio'],
+          rollupShows__Tags: ['Musical'],
           seoDescription:
             'Bubble Boy: The Musical ran for a month at Arcade Comedy Theater in September 2019 to sold out audiences. Written by Cinco Paul.',
           seoImage: {
@@ -541,6 +505,10 @@ const data = {
           relationShows__People_Producer: ['1f3a43e1-66a5-41d9-b334-b65e459c174d'],
           relationShows__People_Thanks: [],
           relationShows__People_Writer: [],
+          relationShows__Tags: [
+            '0545aac0-e957-4bac-919a-c1171e1ab432',
+            '3f3b4284-972e-4a8d-b1c4-98508c704228',
+          ],
           rollupShows__People_Cast: ['Jerome Fitzgerald', 'Kyle Long'],
           rollupShows__People_Cast_Past: [],
           rollupShows__People_Cast_Slug: ['jerome-fitzgerald', 'kyle-long'],
@@ -548,9 +516,11 @@ const data = {
           rollupShows__People_Director: [],
           rollupShows__People_Director_Musical: [],
           rollupShows__People_Director_Technical: [],
+          rollupShows__People_Music: [],
           rollupShows__People_Producer: ['Jerome Fitzgerald'],
           rollupShows__People_Thanks: [],
           rollupShows__People_Writer: [],
+          rollupShows__Tags: ['Improv', 'Sketch'],
           seoDescription:
             'Jer (Jer) and Ky (Ky) invite guests into The Jelly Jar to talk-it-out. Who is Dracula? Who is a B*tch? Who has the best Memories? And what goes on in Cabot Cove when no one is looking? Jer & Ky are inviting guests to answer most of these questions every weak ass weekday. (MON-THU)',
           seoImage: {
@@ -611,6 +581,11 @@ const data = {
           relationShows__People_Producer: ['1f3a43e1-66a5-41d9-b334-b65e459c174d'],
           relationShows__People_Thanks: [],
           relationShows__People_Writer: [],
+          relationShows__Tags: [
+            '0545aac0-e957-4bac-919a-c1171e1ab432',
+            '3f3b4284-972e-4a8d-b1c4-98508c704228',
+            '4e903755-d7bc-4055-aca6-6aab34660154',
+          ],
           rollupShows__People_Cast: ['Jerome Fitzgerald'],
           rollupShows__People_Cast_Past: [],
           rollupShows__People_Cast_Slug: ['jerome-fitzgerald'],
@@ -618,9 +593,11 @@ const data = {
           rollupShows__People_Director: [],
           rollupShows__People_Director_Musical: [],
           rollupShows__People_Director_Technical: [],
+          rollupShows__People_Music: [],
           rollupShows__People_Producer: ['Jerome Fitzgerald'],
           rollupShows__People_Thanks: [],
           rollupShows__People_Writer: [],
+          rollupShows__Tags: ['Improv', 'Sketch', 'Stand-Up'],
           seoDescription:
             'Jerome &: A Comedic Variety Show. Past Guests have included: Anna C. Reilly, Alex O’Brien, Chanel Ali, Erica Sera, Missy Moreno, Nia Johnson, & Pallavi Gunalan',
           seoImage: {
@@ -644,7 +621,7 @@ const data = {
         object: 'page',
         id: 'fcddeb55-5d7f-4418-ae05-a29ae394cacd',
         created_time: '2021-11-20T15:35:00.000Z',
-        last_edited_time: '2021-11-20T16:00:00.000Z',
+        last_edited_time: '2021-11-22T06:38:00.000Z',
         cover: {
           type: 'external',
           external: {
@@ -695,6 +672,10 @@ const data = {
             '1f3a43e1-66a5-41d9-b334-b65e459c174d',
             '140002e4-b278-44ed-9548-6b28825fc2d1',
           ],
+          relationShows__Tags: [
+            '3f3b4284-972e-4a8d-b1c4-98508c704228',
+            '698d51fb-5fe6-4673-bdd4-f2dd8689eee5',
+          ],
           rollupShows__People_Cast: ['Jerome Fitzgerald', 'Jesse LE'],
           rollupShows__People_Cast_Past: [],
           rollupShows__People_Cast_Slug: ['jerome-fitzgerald', 'jesse-le'],
@@ -702,9 +683,11 @@ const data = {
           rollupShows__People_Director: ['Jesse LE'],
           rollupShows__People_Director_Musical: [],
           rollupShows__People_Director_Technical: ['Aaron Tarnow'],
+          rollupShows__People_Music: [],
           rollupShows__People_Producer: ['Jerome Fitzgerald'],
           rollupShows__People_Thanks: [],
           rollupShows__People_Writer: ['Jerome Fitzgerald', 'Jesse LE'],
+          rollupShows__Tags: ['Musical', 'Sketch'],
           seoDescription:
             'JFLE is a sketch comedy duo that combines delightful absurdity with dark whimsy and musical skill. They are Jerome Fitzgerald & Jesse LE with two sold-out shows at SF Sketchfest 2020.',
           seoImage: {
@@ -784,6 +767,10 @@ const data = {
             '1f3a43e1-66a5-41d9-b334-b65e459c174d',
             '140002e4-b278-44ed-9548-6b28825fc2d1',
           ],
+          relationShows__Tags: [
+            '698d51fb-5fe6-4673-bdd4-f2dd8689eee5',
+            '3f3b4284-972e-4a8d-b1c4-98508c704228',
+          ],
           rollupShows__People_Cast: [
             'Addi Twigg',
             'Beth Geatches',
@@ -815,9 +802,11 @@ const data = {
           rollupShows__People_Director: ['Jesse LE'],
           rollupShows__People_Director_Musical: ['Jesse LE'],
           rollupShows__People_Director_Technical: ['Aaron Tarnow'],
+          rollupShows__People_Music: ['Jesse LE'],
           rollupShows__People_Producer: ['Jerome Fitzgerald'],
           rollupShows__People_Thanks: [],
           rollupShows__People_Writer: ['Jerome Fitzgerald', 'Jesse LE'],
+          rollupShows__Tags: ['Musical', 'Sketch'],
           seoDescription:
             'The Muppets Take Manhattan, JFLE (Jerome & Jesse LE) Take Broadway. Spanning from Classic to Current to Future Broadway, JFLE and friends take you on a joyous laugh-filled non-stop ride the only way they know how: with everyone on board.',
           seoImage: {
@@ -881,6 +870,7 @@ const data = {
             '1f3a43e1-66a5-41d9-b334-b65e459c174d',
             'e57abe3d-5367-49e9-9a7e-518af0a4d70a',
           ],
+          relationShows__Tags: ['3f3b4284-972e-4a8d-b1c4-98508c704228'],
           rollupShows__People_Cast: ['Jerome Fitzgerald', 'Justin Vetter'],
           rollupShows__People_Cast_Past: [],
           rollupShows__People_Cast_Slug: ['jerome-fitzgerald', 'justin-vetter'],
@@ -888,9 +878,11 @@ const data = {
           rollupShows__People_Director: [],
           rollupShows__People_Director_Musical: [],
           rollupShows__People_Director_Technical: ['Aaron Tarnow'],
+          rollupShows__People_Music: [],
           rollupShows__People_Producer: ['Jerome Fitzgerald'],
           rollupShows__People_Thanks: [],
           rollupShows__People_Writer: ['Jerome Fitzgerald', 'Justin Vetter'],
+          rollupShows__Tags: ['Sketch'],
           seoDescription:
             'Jerome Fitzgerald & Justin Vetter bring their acclaimed improv and heralded sketch to life on-and-off stage.',
           seoImage: {
@@ -960,6 +952,10 @@ const data = {
             '7dd6662a-915f-4053-a8e2-fdb8b4ba7cb0',
           ],
           relationShows__People_Writer: ['1f3a43e1-66a5-41d9-b334-b65e459c174d'],
+          relationShows__Tags: [
+            '698d51fb-5fe6-4673-bdd4-f2dd8689eee5',
+            '3f3b4284-972e-4a8d-b1c4-98508c704228',
+          ],
           rollupShows__People_Cast: [
             'Alex O’Brien',
             'Brett Goodnack',
@@ -983,6 +979,7 @@ const data = {
           rollupShows__People_Director: [],
           rollupShows__People_Director_Musical: ['Jesse LE'],
           rollupShows__People_Director_Technical: [],
+          rollupShows__People_Music: ['Jesse LE'],
           rollupShows__People_Producer: ['Jerome Fitzgerald'],
           rollupShows__People_Thanks: [
             'André Gregory',
@@ -990,6 +987,7 @@ const data = {
             'Wallace Shawn',
           ],
           rollupShows__People_Writer: ['Jerome Fitzgerald'],
+          rollupShows__Tags: ['Musical', 'Sketch'],
           seoDescription:
             'My Dinner With André: The Musical: “If there were a Tony for off-Broadway, short-form sketch musicals, this would win it... among the funniest things I’ve ever seen” - Pittsburgh Magazine’s Sean Collier ',
           seoImage: {
@@ -1057,6 +1055,7 @@ const data = {
           relationShows__People_Producer: ['a1aeeda8-59ec-42b4-bbe7-5511a5215396'],
           relationShows__People_Thanks: [],
           relationShows__People_Writer: [],
+          relationShows__Tags: ['0545aac0-e957-4bac-919a-c1171e1ab432'],
           rollupShows__People_Cast: [
             'Ayne Terceria',
             'Brian Gray',
@@ -1080,9 +1079,11 @@ const data = {
           rollupShows__People_Director: [],
           rollupShows__People_Director_Musical: [],
           rollupShows__People_Director_Technical: ['Aaron Tarnow'],
+          rollupShows__People_Music: [],
           rollupShows__People_Producer: ['Greg Gillotti'],
           rollupShows__People_Thanks: [],
           rollupShows__People_Writer: [],
+          rollupShows__Tags: ['Improv'],
           seoDescription:
             'Pittsburgh’s longest running death themed improv show. More of a celebration of life, than death itself. Let this experienced crew and their special guests take you on a journey to the other side as we put the YOU in eulogy, the FUN in funeral, and the FU in fun.',
           seoImage: {
@@ -1153,6 +1154,10 @@ const data = {
           relationShows__People_Producer: ['9ce872cb-4e25-45d2-94b7-3fb6e3cc8c9b'],
           relationShows__People_Thanks: [],
           relationShows__People_Writer: [],
+          relationShows__Tags: [
+            '0545aac0-e957-4bac-919a-c1171e1ab432',
+            '0775e1b6-6580-4c84-b777-8d81157959fd',
+          ],
           rollupShows__People_Cast: [
             'Hannah Levinson',
             'Jerome Fitzgerald',
@@ -1176,9 +1181,11 @@ const data = {
           rollupShows__People_Director: [],
           rollupShows__People_Director_Musical: [],
           rollupShows__People_Director_Technical: [],
+          rollupShows__People_Music: [],
           rollupShows__People_Producer: ['Matt Solter'],
           rollupShows__People_Thanks: [],
           rollupShows__People_Writer: [],
+          rollupShows__Tags: ['Improv', 'Music'],
           seoDescription:
             'The monthly gig that gets you grooving. Live musicians and bands inspire improve comedy. For over 2 years this show has had audiences getting out of their seats dancing, and on the floor laughing.',
           seoImage: {
@@ -1247,6 +1254,7 @@ const data = {
           relationShows__People_Producer: [],
           relationShows__People_Thanks: [],
           relationShows__People_Writer: [],
+          relationShows__Tags: ['0545aac0-e957-4bac-919a-c1171e1ab432'],
           rollupShows__People_Cast: [
             'Abby Fudor',
             'Erica Sera',
@@ -1276,9 +1284,11 @@ const data = {
           rollupShows__People_Director: [],
           rollupShows__People_Director_Musical: [],
           rollupShows__People_Director_Technical: [],
+          rollupShows__People_Music: [],
           rollupShows__People_Producer: [],
           rollupShows__People_Thanks: [],
           rollupShows__People_Writer: [],
+          rollupShows__Tags: ['Improv'],
           seoDescription:
             'Warp Zone was one of Arcade Comedy Theater‘s premier long-form teams for over 5 years. They had weekly and monthly shows while playing coast-to-coast. J.T.S Brown fast paced action, the Bonerz.',
           seoImage: {
@@ -1472,5 +1482,4 @@ const data = {
       },
   },
 }
-
 export default data

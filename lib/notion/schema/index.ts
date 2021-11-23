@@ -652,13 +652,24 @@ const PROPERTIES: Record<string, Property> = {
     },
   },
   relationTags__Shows: {
-    init: true,
+    init: false,
     key: 'relationTags__Shows',
     notion: 'Shows',
     type: 'relation',
     relation: {
       database_id: 'Shows',
       synced_property_name: 'Tags',
+    },
+  },
+  rollupShows__Tags: {
+    init: false,
+    key: 'rollupShows__Tags',
+    notion: 'Tags.Rollup',
+    type: 'rollup',
+    rollup: {
+      relation_property_name: 'Tags',
+      rollup_property_id: 'Title',
+      function: 'show_original',
     },
   },
   /**
@@ -863,96 +874,6 @@ const PROPERTIES: Record<string, Property> = {
       function: 'show_original',
     },
   },
-  // rollupCastGuest: {
-  //   key: 'rollupCastGuest',
-  //   notion: 'Rollup.CastGuest',
-  //   type: 'rollup',
-  // },
-  // rollupCast.Past: {
-  //   key: 'rollupCast.Past',
-  //   notion: 'Rollup.Cast.Past',
-  //   type: 'rollup',
-  // },
-  // rollupCrew: {
-  //   key: 'rollupCrew',
-  //   notion: 'Rollup.Crew',
-  //   type: 'rollup',
-  // },
-  // rollupDirector: {
-  //   key: 'rollupDirector',
-  //   notion: 'Rollup.Director',
-  //   type: 'rollup',
-  // },
-  // rollupDirector.Musical: {
-  //   key: 'rollupDirector.Musical',
-  //   notion: 'Rollup.Director.Musical',
-  //   type: 'rollup',
-  // },
-  // rollupDirector.Technical: {
-  //   key: 'rollupDirector.Technical',
-  //   notion: 'Rollup.Director.Technical',
-  //   type: 'rollup',
-  // },
-  // rollupGuest: {
-  //   key: 'rollupGuest',
-  //   notion: 'Rollup.Guest',
-  //   type: 'rollup',
-  // },
-  // rollupHost: {
-  //   key: 'rollupHost',
-  //   notion: 'Rollup.Host',
-  //   type: 'rollup',
-  // },
-  // rollupLineup: {
-  //   key: 'rollupLineup',
-  //   notion: 'Rollup.Lineup',
-  //   type: 'rollup',
-  // },
-  // rollupMusic: {
-  //   key: 'rollupMusic',
-  //   notion: 'Rollup.Music',
-  //   type: 'rollup',
-  // },
-  // rollupMusicGuest: {
-  //   key: 'rollupMusicGuest',
-  //   notion: 'Rollup.MusicGuest',
-  //   type: 'rollup',
-  // },
-  // rollupProducer: {
-  //   key: 'rollupProducer',
-  //   notion: 'Rollup.Producer',
-  //   type: 'rollup',
-  // },
-  // rollupShow: {
-  //   key: 'rollupShow',
-  //   notion: 'Rollup.Show',
-  //   type: 'rollup',
-  // },
-  // rollupSound.Engineer: {
-  //   key: 'rollupSound.Engineer',
-  //   notion: 'Rollup.Sound.Engineer',
-  //   type: 'rollup',
-  // },
-  // rollupTags: {
-  //   key: 'rollupTags',
-  //   notion: 'Rollup.Tags',
-  //   type: 'rollup',
-  // },
-  // rollupTagsSecondary: {
-  //   key: 'rollupTagsSecondary',
-  //   notion: 'Rollup.Tags.Secondary',
-  //   type: 'rollup',
-  // },
-  // rollupThanks: {
-  //   key: 'rollupThanks',
-  //   notion: 'Rollup.Thanks',
-  //   type: 'rollup',
-  // },
-  // rollupWriter: {
-  //   key: 'rollupWriter',
-  //   notion: 'Rollup.Writer',
-  //   type: 'rollup',
-  // },
   season: {
     init: true,
     key: 'season',
@@ -1178,6 +1099,7 @@ const SHOWS = [
   PROPERTIES.relationShows__People_Producer,
   PROPERTIES.relationShows__People_Thanks,
   PROPERTIES.relationShows__People_Writer,
+  PROPERTIES.relationShows__Tags,
   PROPERTIES.socialFacebook,
   PROPERTIES.socialInstagram,
   PROPERTIES.socialTwitter,
@@ -1199,6 +1121,7 @@ const SHOWS = [
   PROPERTIES.rollupShows__People_Producer,
   PROPERTIES.rollupShows__People_Thanks,
   PROPERTIES.rollupShows__People_Writer,
+  PROPERTIES.rollupShows__Tags,
   /**
    * -------------------------------------
    */
