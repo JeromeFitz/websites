@@ -196,6 +196,7 @@ interface Show extends Default {
   relationShows__People_Producer: any
   relationShows__People_Thanks: any
   relationShows__People_Writer: any
+  relationShows__Tags: any
   rollupShows__People_Cast: any
   rollupShows__People_Cast_Slug: any
   rollupShows__People_Cast_Past: any
@@ -207,6 +208,7 @@ interface Show extends Default {
   rollupShows__People_Producer: any
   rollupShows__People_Thanks: any
   rollupShows__People_Writer: any
+  rollupShows__Tags: any
   socialFacebook: string
   socialInstagram: string
   socialTwitter: string
