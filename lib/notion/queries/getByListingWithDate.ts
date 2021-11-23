@@ -2,10 +2,11 @@ import _map from 'lodash/map'
 import _omit from 'lodash/omit'
 import _size from 'lodash/size'
 
+import { NOTION } from '~config/websites'
 import getBlocksByIdChildren from '~lib/notion/api/getBlocksByIdChildren'
 import getDatabasesByIdQuery from '~lib/notion/api/getDatabasesByIdQuery'
 import getPagesById from '~lib/notion/api/getPagesById'
-import { DB, QUERIES, ROUTE_TYPES } from '~lib/notion/helper'
+import { QUERIES } from '~lib/notion/helper'
 import addTime from '~lib/notion/queries/addTime'
 import dataNormalized from '~lib/notion/queries/dataNormalized'
 import dataSorted from '~lib/notion/queries/dataSorted'
@@ -20,7 +21,9 @@ const getByListingWithDate = async ({ pathVariables, routeType, slug }) => {
     items = null
   const dateTimestamp = new Date().toISOString()
 
-  const info3 = await getPagesById({ pageId: DB[routeType.toUpperCase()].seo })
+  const info3 = await getPagesById({
+    pageId: NOTION[routeType.toUpperCase()].page_id__seo,
+  })
   // const info3a = info3.object === 'page' && normalizerContent(info3)
   if (info3.object === 'page') {
     info = _omit(info3, 'properties')
@@ -54,7 +57,7 @@ const getByListingWithDate = async ({ pathVariables, routeType, slug }) => {
         and: [
           {
             property:
-              routeType === ROUTE_TYPES.events
+              routeType === NOTION.EVENTS.routeType
                 ? PROPERTIES.dateEvent.notion
                 : PROPERTIES.datePublished.notion,
             date: {
@@ -63,7 +66,7 @@ const getByListingWithDate = async ({ pathVariables, routeType, slug }) => {
           },
           {
             property:
-              routeType === ROUTE_TYPES.events
+              routeType === NOTION.EVENTS.routeType
                 ? PROPERTIES.dateEvent.notion
                 : PROPERTIES.datePublished.notion,
             date: {
@@ -78,7 +81,7 @@ const getByListingWithDate = async ({ pathVariables, routeType, slug }) => {
         and: [
           {
             property:
-              routeType === ROUTE_TYPES.events
+              routeType === NOTION.EVENTS.routeType
                 ? PROPERTIES.dateEvent.notion
                 : PROPERTIES.datePublished.notion,
             date: {
@@ -87,7 +90,7 @@ const getByListingWithDate = async ({ pathVariables, routeType, slug }) => {
           },
           {
             property:
-              routeType === ROUTE_TYPES.events
+              routeType === NOTION.EVENTS.routeType
                 ? PROPERTIES.dateEvent.notion
                 : PROPERTIES.datePublished.notion,
             date: {
@@ -102,7 +105,7 @@ const getByListingWithDate = async ({ pathVariables, routeType, slug }) => {
         and: [
           {
             property:
-              routeType === ROUTE_TYPES.events
+              routeType === NOTION.EVENTS.routeType
                 ? PROPERTIES.dateEvent.notion
                 : PROPERTIES.datePublished.notion,
             date: {
@@ -111,7 +114,7 @@ const getByListingWithDate = async ({ pathVariables, routeType, slug }) => {
           },
           {
             property:
-              routeType === ROUTE_TYPES.events
+              routeType === NOTION.EVENTS.routeType
                 ? PROPERTIES.dateEvent.notion
                 : PROPERTIES.datePublished.notion,
             date: {
@@ -126,7 +129,7 @@ const getByListingWithDate = async ({ pathVariables, routeType, slug }) => {
         and: [
           {
             property:
-              routeType === ROUTE_TYPES.events
+              routeType === NOTION.EVENTS.routeType
                 ? PROPERTIES.dateEvent.notion
                 : PROPERTIES.datePublished.notion,
             date: {
@@ -135,7 +138,7 @@ const getByListingWithDate = async ({ pathVariables, routeType, slug }) => {
           },
           {
             property:
-              routeType === ROUTE_TYPES.events
+              routeType === NOTION.EVENTS.routeType
                 ? PROPERTIES.dateEvent.notion
                 : PROPERTIES.datePublished.notion,
             date: {
@@ -151,7 +154,7 @@ const getByListingWithDate = async ({ pathVariables, routeType, slug }) => {
       break
   }
   const items3: any = await getDatabasesByIdQuery({
-    databaseId: DB[routeType.toUpperCase()].database_id,
+    databaseId: NOTION[routeType.toUpperCase()].database_id,
     filter,
     sorts: sorts3,
   })

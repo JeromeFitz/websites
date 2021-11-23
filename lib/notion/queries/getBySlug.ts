@@ -2,11 +2,12 @@
 import _filter from 'lodash/filter'
 import _omit from 'lodash/omit'
 
+import { NOTION } from '~config/websites'
 import getBlocksByIdChildren from '~lib/notion/api/getBlocksByIdChildren'
 import getDatabasesByIdQuery from '~lib/notion/api/getDatabasesByIdQuery'
 import deepFetchAllChildren from '~lib/notion/deepFetchAllChildren'
 import getImages from '~lib/notion/getImages'
-import { DB, QUERIES } from '~lib/notion/helper'
+import { QUERIES } from '~lib/notion/helper'
 import dataNormalized from '~lib/notion/queries/dataNormalized'
 import dataSorted from '~lib/notion/queries/dataSorted'
 
@@ -16,11 +17,11 @@ const getBySlug = async ({ pathVariables, routeType, slug }) => {
     items = null
 
   const DB_TYPE = routeType?.toUpperCase()
-  const isValid = Object.keys(DB).includes(DB_TYPE)
+  const isValid = Object.keys(NOTION).includes(DB_TYPE)
   if (!isValid) return { info, content, items, images: {} }
 
   const infoInit: any = await getDatabasesByIdQuery({
-    databaseId: DB[DB_TYPE].database_id,
+    databaseId: NOTION[DB_TYPE].database_id,
     filter: {
       and: [
         {

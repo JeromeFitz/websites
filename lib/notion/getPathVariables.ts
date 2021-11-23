@@ -7,9 +7,7 @@ import _join from 'lodash/join'
 import _last from 'lodash/last'
 import _size from 'lodash/size'
 
-import { ROUTE_TYPES, SLUG__HOMEPAGE } from '~lib/notion/helper'
-
-const routeTypesArray = Object.keys(ROUTE_TYPES)
+import { NOTION, PAGES__HOMEPAGE, ROUTE_TYPES } from '~config/websites'
 
 // @todo(complexity) 16
 // eslint-disable-next-line complexity
@@ -20,18 +18,21 @@ const getPathVariables = (catchAll: any) => {
 
   const meta =
     size > 1 &&
-    _includes([ROUTE_TYPES.blog, ROUTE_TYPES.events, ROUTE_TYPES.podcasts], first)
+    _includes(
+      [NOTION.BLOG.routeType, NOTION.EVENTS.routeType, NOTION.PODCASTS.routeType],
+      first
+    )
       ? _drop(catchAll)
       : _drop(_dropRight(catchAll))
   const routeType =
-    first === last && !_includes(routeTypesArray, first) ? 'pages' : first
+    first === last && !_includes(ROUTE_TYPES, first) ? 'pages' : first
   const slug = first !== last && !_isInteger(parseInt(last)) ? last : first
 
   const isPage = routeType === 'pages'
   const isIndex = slug === first
   const hasMeta = !!meta && _size(meta) !== 0
 
-  const url = isPage && first === SLUG__HOMEPAGE ? '' : _join(catchAll, '/')
+  const url = isPage && first === PAGES__HOMEPAGE ? '' : _join(catchAll, '/')
 
   /**
    * @test cases

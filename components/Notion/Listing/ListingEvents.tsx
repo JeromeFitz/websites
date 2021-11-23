@@ -13,8 +13,8 @@ import dynamic from 'next/dynamic'
 import NextLink from 'next/link'
 import React from 'react'
 
+import { TAGS } from '~config/websites'
 import getInfoType from '~lib/notion/getInfoType'
-import { TAGS } from '~lib/notion/helper'
 import {
   Box,
   // Container,

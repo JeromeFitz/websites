@@ -1,3 +1,29 @@
+type DatabaseType =
+  | 'BLOG'
+  | 'EPISODES'
+  | 'EVENTS'
+  | 'PAGES'
+  | 'PEOPLE'
+  | 'PODCASTS'
+  | 'SEO'
+  | 'SHOWS'
+  | 'VENUES'
+
+type DatabaseInfo = {
+  [key in DatabaseType]: {
+    active: boolean
+    database_id: string
+    name: string
+    page_id__seo: string
+    routeType: string
+    slug: string
+  }
+}
+
+type Databases = {
+  [key in DatabaseType]: DatabaseType
+}
+
 interface Relation {
   database_id: string
   synced_property_name: string
@@ -237,6 +263,9 @@ type Venues = Record<string, Venue>
 export type {
   Blog,
   BlogPost,
+  DatabaseInfo,
+  Databases,
+  DatabaseType,
   Episode,
   Episodes,
   Event,

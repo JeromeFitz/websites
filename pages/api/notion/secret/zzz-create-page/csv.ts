@@ -7,12 +7,12 @@ import _size from 'lodash/size'
 import { NextApiRequest, NextApiResponse } from 'next'
 import nodeEmoji from 'node-emoji'
 
+import { NOTION } from '~config/websites'
 import createPage from '~lib/notion/api/createPage'
 import getChildren from '~lib/notion/create/children'
 import getProperties from '~lib/notion/create/properties'
 import getCatchAll from '~lib/notion/getCatchAll'
 import getPathVariables from '~lib/notion/getPathVariables'
-import { DB } from '~lib/notion/helper'
 
 const isDev = process.env.NODE_ENV === 'development'
 
@@ -63,7 +63,7 @@ const csvApi = (req: NextApiRequest, res: NextApiResponse) => {
          */
         // @todo(notion) DRY
         const routeType = 'episodes'
-        const databaseId = DB[routeType.toUpperCase()].database_id
+        const databaseId = NOTION[routeType.toUpperCase()].database_id
         if (!databaseId) res.status(404).json({ _csv: false })
 
         // @todo(notion) DRY

@@ -7,17 +7,52 @@
  * [ ] arcadecomedytheater.com
  */
 
-export {
-  DB,
+import {
+  /**
+   * @navigation
+   */
   // navigationFooter,
   navigationHeader,
+  /**
+   * @notion
+   */
+  NOTION,
+  PAGES__HOMEPAGE,
+  PAGES,
+  /**
+   * @seo
+   */
   nextSeo,
+  sitemapExcludes,
+} from '~config/websites/jeromefitzgerald.com'
+import { DatabaseInfo, Databases } from '~lib/notion/schema/types'
+
+const getDynamicDatabases = (obj: DatabaseInfo) =>
+  Object.keys(obj).reduce((acc, key) => {
+    acc[key] = key
+    return acc
+  }, {})
+
+// @note(ts) dynamically generated via: getDynamicDatabases
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
+const DATABASES: Databases = getDynamicDatabases(NOTION)
+
+const ROUTE_TYPES = Object.keys(NOTION)
+  .map((k) => !!NOTION[k].active && NOTION[k].routeType)
+  .filter(Boolean)
+
+export {
+  navigationHeader,
+  nextSeo,
+  sitemapExcludes,
+  //
+  DATABASES,
+  NOTION,
+  PAGES__HOMEPAGE,
   PAGES,
   ROUTE_TYPES,
-  SEO,
-  sitemapExcludes,
-  SLUG__HOMEPAGE,
-} from '~config/websites/jeromefitzgerald.com'
+}
 
 // @todo(notion) uh, make this dynamic please haha
 export const TAGS = {

@@ -3,10 +3,10 @@ import _map from 'lodash/map'
 import _noop from 'lodash/noop'
 import _uniqWith from 'lodash/uniqWith'
 
+import { NOTION, PAGES, ROUTE_TYPES } from '~config/websites'
 import asyncForEach from '~lib/asyncForEach'
 import getCatchAll from '~lib/notion/getCatchAll'
 import getPathVariables from '~lib/notion/getPathVariables'
-import { PAGES, ROUTE_TYPES } from '~lib/notion/helper'
 
 const isDev = process.env.NODE_ENV !== 'production'
 
@@ -14,8 +14,8 @@ const getStaticPathsDefault = ({ items, routeType }) => {
   const data = []
   // console.dir(`getStaticPathsDefault: ${routeType}`)
   switch (routeType) {
-    case ROUTE_TYPES.blog:
-    case ROUTE_TYPES.events:
+    case NOTION.BLOG.routeType:
+    case NOTION.EVENTS.routeType:
       const dates = []
       _map(items, (item) => {
         const date =
@@ -30,7 +30,7 @@ const getStaticPathsDefault = ({ items, routeType }) => {
       })
       _uniqWith(dates, _isEqual).map((route) => data.push(route))
       break
-    case ROUTE_TYPES.episodes:
+    case NOTION.EPISODES.routeType:
       _map(items, (item) => {
         // @todo(notion) what if there is more than two? make dynamic please
         const podcastSlug =
@@ -40,7 +40,7 @@ const getStaticPathsDefault = ({ items, routeType }) => {
             : 'jer-and-ky-and-guest'
         !!podcastSlug &&
           data.push(
-            `/${ROUTE_TYPES.podcasts}/${podcastSlug}/${item?.properties?.slug}`
+            `/${NOTION.PODCASTS.routeType}/${podcastSlug}/${item?.properties?.slug}`
           )
       })
       break
@@ -53,15 +53,6 @@ const getStaticPathsDefault = ({ items, routeType }) => {
   return data
 }
 
-// @todo(notion) have this coupled with helper or within CMS
-const routeTypes = [
-  ROUTE_TYPES.blog,
-  ROUTE_TYPES.episodes,
-  ROUTE_TYPES.events,
-  ROUTE_TYPES.podcasts,
-  ROUTE_TYPES.shows,
-]
-
 const getStaticPathsCatchAll = async () => {
   const paths = []
 
@@ -70,7 +61,7 @@ const getStaticPathsCatchAll = async () => {
     // @todo(notion) api this up somehow please
     _map(PAGES, (p) => paths.push(`/${p}`))
     // const routeTypesSingular = [routeType]
-    await asyncForEach(routeTypes, async (routeType: string) => {
+    await asyncForEach(ROUTE_TYPES, async (routeType: string) => {
       if (routeType !== 'episodes') paths.push(`/${routeType}`)
       const catchAll = [routeType]
       const pathVariables = getPathVariables(catchAll)

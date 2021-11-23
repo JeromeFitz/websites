@@ -6,7 +6,7 @@ import useSWR, { useSWRConfig } from 'swr'
 import Layout, { ImageLead } from '~components/Layout'
 import Meta from '~components/Meta'
 import { ContentNodes } from '~components/Notion'
-import { ROUTE_TYPES } from '~lib/notion/helper'
+import { NOTION } from '~config/websites'
 
 const Listing = dynamic(() => import('~components/Notion/Listing'), {})
 const ListingEvent = dynamic(
@@ -37,7 +37,8 @@ const Page = ({ data, ...props }) => {
   // console.dir(props)
 
   const hasMeta =
-    _size(meta) > 0 && [ROUTE_TYPES.blog, ROUTE_TYPES.events].includes(routeType)
+    _size(meta) > 0 &&
+    [NOTION.BLOG.routeType, NOTION.EVENTS.routeType].includes(routeType)
 
   /**
    * @images
@@ -66,9 +67,9 @@ const Page = ({ data, ...props }) => {
   // console.dir(properties)
 
   // @refactor(confusing)
-  const isEventListing = routeType === ROUTE_TYPES.events && !isIndex
-  const isEpisodeListing = routeType === ROUTE_TYPES.podcasts && !isIndex
-  const isShowListing = routeType === ROUTE_TYPES.shows && !isIndex
+  const isEventListing = routeType === NOTION.EVENTS.routeType && !isIndex
+  const isEpisodeListing = routeType === NOTION.PODCASTS.routeType && !isIndex
+  const isShowListing = routeType === NOTION.SHOWS.routeType && !isIndex
 
   return (
     <>

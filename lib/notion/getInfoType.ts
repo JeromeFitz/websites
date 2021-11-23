@@ -1,4 +1,4 @@
-import { ROUTE_TYPES } from '~lib/notion/helper'
+import { NOTION } from '~config/websites'
 
 const getInfoType = (item: any, routeType, meta = null) => {
   let date = null
@@ -8,21 +8,21 @@ const getInfoType = (item: any, routeType, meta = null) => {
   const href = `/[...catchAll]`
 
   switch (routeType) {
-    case ROUTE_TYPES.blog:
-    case ROUTE_TYPES.events:
+    case NOTION.BLOG.routeType:
+    case NOTION.EVENTS.routeType:
       date = item.properties?.datePublished?.start.slice(0, 10)
       const [year, month, day] = date?.split('-')
       as = `/${routeType}/${year}/${month}/${day}/${slug}`
       break
-    case ROUTE_TYPES.podcasts:
-    case ROUTE_TYPES.episodes:
+    case NOTION.PODCASTS.routeType:
+    case NOTION.EPISODES.routeType:
       as = `/${meta.join('/')}/${slug}`
       break
-    case ROUTE_TYPES.people:
+    case NOTION.PEOPLE.routeType:
 
-    case ROUTE_TYPES.shows:
-    case ROUTE_TYPES.users:
-    case ROUTE_TYPES.venues:
+    case NOTION.SHOWS.routeType:
+    // case NOTION.USERS.routeType:
+    case NOTION.VENUES.routeType:
     default:
       as = `/${routeType}/${slug}`
       break

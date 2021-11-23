@@ -38,4 +38,5 @@ const getNextSeo = {
   },
 }
 
+export { url }
 export default getNextSeo

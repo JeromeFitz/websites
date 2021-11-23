@@ -3,7 +3,7 @@ import IMAGE__FALLBACKS__SHOWS from '~lib/constants/images/shows'
 /**
  * @hack some reason everything is coming here, is it `notion/index.ts`?
  */
-const nextWeirdRoutingSkipData = ['favicon.ico', 'true']
+const nextWeirdRoutingSkipData = ['favicon.ico', 'false', 'true', 'undefined']
 
 // @question(next) do we even need to revalidate?
 const revalidate = 60 * 60
