@@ -13,13 +13,12 @@ import _slice from 'lodash/slice'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { Podcast, Item, FeedOptions } from 'podcast'
 
+import { url } from '~config/getNextSeo'
+import { NOTION } from '~config/websites'
 import getCatchAll from '~lib/notion/getCatchAll'
 import getPathVariables from '~lib/notion/getPathVariables'
-import { ROUTE_TYPES } from '~lib/notion/helper'
 import getTimeInSeconds from '~utils/getTimeInSeconds'
 import setCharAt from '~utils/setCharAt'
-
-const url = `https://jeromefitzgerald.com`
 
 const rssApi = async (req: NextApiRequest, res: NextApiResponse) => {
   let feed: any
@@ -56,7 +55,7 @@ const rssApi = async (req: NextApiRequest, res: NextApiResponse) => {
    * 2. Get the Podcast Episodes Information
    */
   const { routeType, slug } = pathVariables
-  if (routeType === ROUTE_TYPES.podcasts && slug) {
+  if (routeType === NOTION.PODCASTS.routeType && slug) {
     // const _id = routeTypeData.props.item.id
     // const podcast = routeTypeData.props.item
     const { info, items: _items } = data

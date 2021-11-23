@@ -1,6 +1,5 @@
 import { Client } from '@notionhq/client'
 
-export { DB, PAGES, ROUTE_TYPES, SEO, SLUG__HOMEPAGE, TAGS } from '~config/websites'
 import { PROPERTIES } from '~lib/notion/schema'
 
 const notion = new Client({ auth: process.env.NOTION_API_KEY })

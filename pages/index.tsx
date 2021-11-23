@@ -2,6 +2,10 @@ import useSWR from 'swr'
 
 import { Page, PageHeading, SkeletonHeading } from '~components/Layout'
 import ListingShows from '~components/Notion/Listing/ListingShows'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { PAGES__HOMEPAGE } from '~config/websites'
 import mockData from '~data/mock/notion/shows'
 import {
   nextWeirdRoutingSkipData,
@@ -11,10 +15,6 @@ import {
 import fetcher from '~lib/fetcher'
 import getCatchAll from '~lib/notion/getCatchAll'
 import getPathVariables from '~lib/notion/getPathVariables'
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { SLUG__HOMEPAGE } from '~lib/notion/helper'
 import getNextPageStatus from '~utils/getNextPageStatus'
 
 const Index = (props) => {
@@ -84,7 +84,7 @@ const Index = (props) => {
 
 export const getStaticProps = async ({ preview = false, ...props }) => {
   // const { catchAll } = props.params
-  const catchAll = [SLUG__HOMEPAGE]
+  const catchAll = [PAGES__HOMEPAGE]
   // @hack(notion) no idea what is causing this
   // look at commit hash: b2afe38c5e1f2d095dc085a17eedc181466b3372
   // and the one after

@@ -3,7 +3,7 @@ import useSWR from 'swr'
 
 import { PageHeading } from '~components/Layout'
 import Seo from '~components/Seo'
-import { ROUTE_TYPES } from '~lib/notion/helper'
+import { NOTION } from '~config/websites'
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Layout = ({ id, children, properties, routeType, url }) => {
@@ -25,7 +25,7 @@ const Layout = ({ id, children, properties, routeType, url }) => {
   const seoUrl = `https://jeromefitzgerald.com/${!!url ? url : ''}`
 
   let seoDescription = description
-  if (routeType === ROUTE_TYPES.events && slug !== ROUTE_TYPES.events) {
+  if (routeType === NOTION.EVENTS.routeType && slug !== NOTION.EVENTS.routeType) {
     const date = format(
       parseISO(properties?.dateEvent?.start),
       `EEE MM/dd hh:mma`

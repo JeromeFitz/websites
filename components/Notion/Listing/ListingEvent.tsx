@@ -17,7 +17,7 @@ import { format } from 'date-fns-tz'
 import _map from 'lodash/map'
 import _union from 'lodash/union'
 
-import { TAGS } from '~lib/notion/helper'
+import { TAGS } from '~config/websites'
 import {
   Box,
   // Container,

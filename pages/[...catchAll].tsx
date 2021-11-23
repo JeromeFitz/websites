@@ -1,6 +1,10 @@
 import useSWR from 'swr'
 
 import { Page, PageHeading, SkeletonHeading } from '~components/Layout'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { PAGES__HOMEPAGE } from '~config/websites'
 import {
   nextWeirdRoutingSkipData,
   revalidate,
@@ -10,10 +14,6 @@ import fetcher from '~lib/fetcher'
 import getCatchAll from '~lib/notion/getCatchAll'
 import getPathVariables from '~lib/notion/getPathVariables'
 import getStaticPathsCatchAll from '~lib/notion/getStaticPathsCatchAll'
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { SLUG__HOMEPAGE } from '~lib/notion/helper'
 import getNextPageStatus from '~utils/getNextPageStatus'
 
 const CatchAll = (props) => {
@@ -77,7 +77,7 @@ export const getStaticProps = async ({ preview = false, ...props }) => {
   // look at commit hash: b2afe38c5e1f2d095dc085a17eedc181466b3372
   // and the one after
   if (nextWeirdRoutingSkipData.includes(catchAll[0])) return { props: {} }
-  // const catchAll = [SLUG__HOMEPAGE]
+  // const catchAll = [PAGES__HOMEPAGE]
   const clear = false
   const pathVariables = getPathVariables(catchAll)
   /**

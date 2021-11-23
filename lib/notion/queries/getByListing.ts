@@ -2,11 +2,11 @@
 import _map from 'lodash/map'
 import _omit from 'lodash/omit'
 
+import { NOTION } from '~config/websites'
 import getBlocksByIdChildren from '~lib/notion/api/getBlocksByIdChildren'
 import getDatabasesByIdQuery from '~lib/notion/api/getDatabasesByIdQuery'
 import getPagesById from '~lib/notion/api/getPagesById'
 import getImages from '~lib/notion/getImages'
-import { DB } from '~lib/notion/helper'
 import dataNormalized from '~lib/notion/queries/dataNormalized'
 import dataSorted from '~lib/notion/queries/dataSorted'
 import { PROPERTIES } from '~lib/notion/schema'
@@ -19,7 +19,9 @@ const getByRouteType = async ({ pathVariables, routeType }) => {
   // @todo(date-fns) make this the first date of the year dynamically
   const dateTimestampBlog = new Date('2020-01-01').toISOString()
 
-  const infoInit = await getPagesById({ pageId: DB[routeType.toUpperCase()].seo })
+  const infoInit = await getPagesById({
+    pageId: NOTION[routeType.toUpperCase()].page_id__seo,
+  })
   if (infoInit.object === 'page') {
     info = _omit(infoInit, 'properties')
     info['properties'] = dataSorted(dataNormalized(infoInit, pathVariables, info.id))
@@ -27,7 +29,7 @@ const getByRouteType = async ({ pathVariables, routeType }) => {
 
   content = await getBlocksByIdChildren({ blockId: info.id })
   const itemsInit: any = await getDatabasesByIdQuery({
-    databaseId: DB[routeType.toUpperCase()].database_id,
+    databaseId: NOTION[routeType.toUpperCase()].database_id,
     filter: {
       and: [
         {

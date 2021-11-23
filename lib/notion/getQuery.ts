@@ -2,8 +2,10 @@ import _map from 'lodash/map'
 import _omit from 'lodash/omit'
 import _size from 'lodash/size'
 
-import { DB, ROUTE_TYPES, notion } from '~lib/notion/helper'
+import { NOTION } from '~config/websites'
+import { notion } from '~lib/notion/helper'
 import dataNormalizedResults from '~lib/notion/queries/dataNormalizedResults'
+// import type { DatabaseType } from '~lib/notion/schema/types'
 import avoidRateLimit from '~utils/avoidRateLimit'
 
 // const useCache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE
@@ -68,7 +70,7 @@ class RELATIONS_TYPES {
   ['peopleProducer']({ reqQuery: { routeType, value } }) {
     return {
       k:
-        routeType === ROUTE_TYPES.podcasts
+        routeType === NOTION.PODCASTS.routeType
           ? 'Podcasts.Producer'
           : 'Shows.People.Producer',
       v: value,
@@ -77,7 +79,7 @@ class RELATIONS_TYPES {
   ['peopleThanks']({ reqQuery: { routeType, value } }) {
     return {
       k:
-        routeType === ROUTE_TYPES.podcasts
+        routeType === NOTION.PODCASTS.routeType
           ? 'Podcasts.People.Thanks'
           : 'Shows.People.Thanks',
       v: value,
@@ -292,7 +294,7 @@ const getQuery = async ({ reqQuery }) => {
    * @setup
    */
 
-  const database_id = DB[databaseType.toUpperCase()].database_id
+  const database_id = NOTION[databaseType.toUpperCase()].database_id
   if (!database_id) return []
 
   let data, items

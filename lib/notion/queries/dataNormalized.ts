@@ -1,6 +1,6 @@
 import _map from 'lodash/map'
 
-import { ROUTE_TYPES } from '~config/websites'
+import { NOTION } from '~config/websites'
 import getTypes from '~lib/notion/api/getTypes'
 import { LOOKUP, PROPERTIES_LOOKUP } from '~lib/notion/schema'
 
@@ -14,8 +14,8 @@ const dataNormalized = (data: any, pathVariables = null, pageId = null) => {
   if (!!pathVariables) {
     const { meta, routeType: _routeType } = pathVariables
     routeType =
-      _routeType === ROUTE_TYPES?.podcasts && meta.length > 1
-        ? ROUTE_TYPES?.episodes
+      _routeType === NOTION?.PODCASTS?.routeType && meta.length > 1
+        ? NOTION?.EPISODES?.routeType
         : _routeType
   }
 

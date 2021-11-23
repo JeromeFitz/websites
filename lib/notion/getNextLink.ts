@@ -1,5 +1,4 @@
-import { nextSeo } from '~config/websites'
-import { ROUTE_TYPES } from '~lib/notion/helper'
+import { nextSeo, NOTION } from '~config/websites'
 
 const getNextLink = (url: string) => {
   const urlTemp = url
@@ -10,13 +9,13 @@ const getNextLink = (url: string) => {
   let link: any = {}
 
   switch (routeType) {
-    case ROUTE_TYPES.blog:
-    case ROUTE_TYPES.events:
-    case ROUTE_TYPES.people:
-    case ROUTE_TYPES.podcasts:
-    case ROUTE_TYPES.shows:
-    case ROUTE_TYPES.users:
-    case ROUTE_TYPES.venues:
+    case NOTION.BLOG.routeType:
+    case NOTION.EVENTS.routeType:
+    case NOTION.PEOPLE.routeType:
+    case NOTION.PODCASTS.routeType:
+    case NOTION.SHOWS.routeType:
+    // case NOTION.USERS.routeType:
+    case NOTION.VENUES.routeType:
       link = {
         as: `/${urlTemp}`,
         // href: !slug ? `/${routeType}` : `/${routeType}/[slug]`,
