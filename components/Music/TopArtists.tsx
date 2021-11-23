@@ -426,8 +426,22 @@ const TA = () => {
                               transform: 'scale(1.02)',
                             },
                           },
+                          '&:active': {
+                            boxShadow: '0px 5px 30px -5px rgba(0, 0, 0, 0.5)',
+                            [`.${darkTheme} &`]: {
+                              boxShadow:
+                                '0px 5px 30px -5px rgba(255, 255, 255, 0.3)',
+                            },
+                            '& img': {
+                              transform: 'scale(1.02)',
+                            },
+                          },
                           transition: 'all 0.2s ease-in-out',
                           mt: '$4',
+                          '@media (prefers-reduced-motion)': {
+                            transition: 'none',
+                            transform: 'none',
+                          },
                         }}
                         href={_href}
                         rel="noopener noreferrer"
