@@ -1,6 +1,8 @@
-const release = require('@jeromefitz/semantic/release.config.js')
+const release = require('@jeromefitz/semantic/release.config.cjs')
 const isCI = require('is-ci')
-!isCI && require('dotenv').config({ path: './.env.build' })
+const _map = require('lodash/map.js')
+
+!isCI && require('dotenv').config({ path: './.env' })
 
 const releaseBranchTypes = require('./config/release-branch-types/index.cjs')
 const { name } = require('./package.json')
