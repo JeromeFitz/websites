@@ -8,6 +8,7 @@
     "url": "https://jeromefitzgerald.com"
   },
   "license": "MIT",
+  "type": "module",
   "scripts": {
     "analyze": "ANALYZE=true yarn build",
     "build": "next build",
