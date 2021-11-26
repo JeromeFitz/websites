@@ -1,9 +1,11 @@
-const config = require('@jeromefitz/semantic/src/changelog.config.js')
+import config, {
+  commit as _commit,
+} from '@jeromefitz/semantic/src/changelog.config.js'
 
 const changelog = {
   ...config,
   commit: {
-    ...config.commit,
+    ..._commit,
     questions: [
       'branchFlag',
       'commitBreakingFlag',
@@ -17,4 +19,4 @@ const changelog = {
   },
 }
 
-module.exports = changelog
+export default changelog

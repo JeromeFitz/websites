@@ -1,4 +1,4 @@
-const config = require('@jeromefitz/codestyle/.eslintrc.next.js')
+const config = require('@jeromefitz/codestyle/.eslintrc.next.cjs')
 
 module.exports = {
   ...config,
