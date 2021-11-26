@@ -74,4 +74,5 @@ const Seo = memo(({ ...seo }: any) => {
   return <NextSeo {...newSeo} />
 })
 
+Seo.displayName = 'Seo'
 export default Seo
