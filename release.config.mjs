@@ -1,10 +1,10 @@
-const release = require('@jeromefitz/semantic/release.config.js')
-const isCI = require('is-ci')
+import release, { plugins as _plugins } from '@jeromefitz/semantic/release.config.js'
+import isCI from 'is-ci'
 !isCI && require('dotenv').config({ path: './.env.build' })
 
-const { name } = require('./package.json')
+import { name } from './package.json'
 
-const plugins = release.plugins
+const plugins = _plugins
 
 const branches = [{ name: 'main' }, { name: 'develop', prerelease: 'develop' }]
 
@@ -35,7 +35,7 @@ plugins.map((plugin, pluginIndex) => {
   })
 })
 
-module.exports = {
+const config = {
   ...release,
   branches,
   // ci,
@@ -45,3 +45,5 @@ module.exports = {
   repositoryUrl: `https://github.com/${name.replace('@', '')}`,
   tagFormat: 'website-v${version}',
 }
+
+export default config
