@@ -86,7 +86,6 @@ const nextConfig = {
     catchAllRouting: true,
     concurrentFeatures: false,
     enableBlurryPlaceholder: true,
-    esmExternals: false,
     jsconfigPaths: true,
     modern: true,
     polyfillsOptimization: true,
