@@ -1,12 +1,33 @@
-const release = require('@jeromefitz/semantic/release.config.js')
+const release = require('@jeromefitz/semantic/release.config.cjs')
 const isCI = require('is-ci')
-!isCI && require('dotenv').config({ path: './.env.build' })
+const _map = require('lodash/map.js')
 
+!isCI && require('dotenv').config({ path: './.env' })
+
+const releaseBranchTypes = require('./config/release-branch-types/index.cjs')
 const { name } = require('./package.json')
 
 const plugins = release.plugins
 
-const branches = [{ name: 'main' }, { name: 'develop', prerelease: 'develop' }]
+const branchTypes = _map(
+  releaseBranchTypes,
+  (releaseBranchType, releaseBranchTypeIndex) => {
+    return _map(releaseBranchType, (branchType) => {
+      return (
+        !!branchType && {
+          name: `${releaseBranchTypeIndex}/${branchType}`,
+          prerelease: branchType,
+        }
+      )
+    })[0]
+  }
+).filter((branchType) => !!branchType)
+
+const branches = [
+  { name: 'main' },
+  { name: 'canary', prerelease: 'canary' },
+  ...branchTypes,
+]
 
 // const ci = true
 // const dryRun = false
@@ -35,7 +56,7 @@ plugins.map((plugin, pluginIndex) => {
   })
 })
 
-module.exports = {
+const config = {
   ...release,
   branches,
   // ci,
@@ -45,3 +66,5 @@ module.exports = {
   repositoryUrl: `https://github.com/${name.replace('@', '')}`,
   tagFormat: 'website-v${version}',
 }
+
+module.exports = config
