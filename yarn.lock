@@ -1136,10 +1136,10 @@
   resolved "https://registry.yarnpkg.com/@istanbuljs/schema/-/schema-0.1.3.tgz#e45e384e4b8ec16bce2fd903af78450f6bf7ec98"
   integrity sha512-ZXRY4jNvVgSVQ8DL3LTcakaAtXwTVUxE81hslsyD2AtoXW/wVob10HkOJ1X/pAlcI7D+2YoZKg5do8G/w6RYgA==
 
-"@jeromefitz/codestyle@6.0.0-canary.4":
-  version "6.0.0-canary.4"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/codestyle/-/codestyle-6.0.0-canary.4.tgz#faf2a6b907606641540820d1a6184eefcf94d979"
-  integrity sha512-piA5rDyc1ZNZAQa3Yj7/4G5rrb8OzgsWg07/07wyi44VFkGVCq5fZow6KEmL0EnQPqJzYLrF6Twyt4tjvGXBjw==
+"@jeromefitz/codestyle@6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/codestyle/-/codestyle-6.0.0.tgz#752868b16a6032e407dc4c3e1bf4bc0f1d19c12e"
+  integrity sha512-sTwo0rws6S54Uzc6wil8cuXMS1unrx2HUIWu30nHRU+Dry1ZPiADX9yFy6X3jqsErMUxvUapfJL9gGWODzB6Kg==
   dependencies:
     "@babel/core" "7.16.0"
     "@babel/eslint-parser" "7.16.3"
@@ -1158,10 +1158,10 @@
     pretty-quick "3.1.2"
     typescript "4.5.2"
 
-"@jeromefitz/git-cz@12.0.0-canary.4":
-  version "12.0.0-canary.4"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/git-cz/-/git-cz-12.0.0-canary.4.tgz#eb871e50a3fde3fccff1a0980bd7570dbb662ce3"
-  integrity sha512-euHy2z15zTE+UlNHDJvIWWpQW7Ca4vPSZEnMHVlX5X0KGpPoOQF6MJRyhV5xcTM9ewRjXDGNFQldsuqXuS0A1g==
+"@jeromefitz/git-cz@12.0.0":
+  version "12.0.0"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/git-cz/-/git-cz-12.0.0.tgz#26258e3411254476433dc6e3af061a574a6fb765"
+  integrity sha512-5lCcKB9l6ToQeaAXvhYUZ6aoGd9g0aqF/45p8R9KPPis6kltIlirAbAbosOycGsdOeCHXMK30VFp1JrG0jvARQ==
   dependencies:
     "@types/chalk-pipe" "2.0.0"
     chalk "5.0.0"
@@ -1189,10 +1189,10 @@
     micromatch "^4.0.0"
     p-reduce "^2.0.0"
 
-"@jeromefitz/semantic@6.0.0-canary.4":
-  version "6.0.0-canary.4"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/semantic/-/semantic-6.0.0-canary.4.tgz#d0bce47c0dd6863df4b33cf3e4d1dcfa619b0f64"
-  integrity sha512-YZQOKNWNBTDQG8sIyBVTRzCz+UGpdS5vvZ2bILOBbud294ihbvYt3F4bjn0GOWPVLH3F6v1a2ORjgCRSi7SA3A==
+"@jeromefitz/semantic@6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/semantic/-/semantic-6.0.0.tgz#e112bb8d11535f391c2620744a0fab193f8ad957"
+  integrity sha512-8y2T57BiygLzD1ce/LXjyomrDh6rpLqxWXzK8sxSpUl2HQG1/vMIwZT/HvwIWw9y8D7qVcG4x9I6Ybwzdwm6kQ==
   dependencies:
     "@jeromefitz/semantic-release-git" "10.0.0-develop.2"
     "@octokit/core" "3.5.1"
