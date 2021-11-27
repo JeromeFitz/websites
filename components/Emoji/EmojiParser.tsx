@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
 import emojiRegex from 'emoji-regex'
-// import hasEmoji from 'has-emoji'
 import _map from 'lodash/map'
 import _orderBy from 'lodash/orderBy'
 import _size from 'lodash/size'
@@ -9,15 +8,6 @@ import dynamic from 'next/dynamic'
 const Emoji = dynamic(() => import('~components/Emoji'), {
   ssr: false,
 })
-
-// const emojiParser2 = (text) => {
-//   const emojiFound = hasEmoji(text.trim()) && text.trim().length <= 3
-//   if (emojiFound === undefined || emojiFound === false) {
-//     return text
-//   }
-
-//   return <Emoji character={text.trim()} />
-// }
 
 const EmojiParser = ({ id, text }) => {
   if (!text) return null
