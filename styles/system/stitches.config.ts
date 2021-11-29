@@ -153,6 +153,8 @@ const fontFamily = {
 // const f37bolton = ['"F37 Bolton"', ...fontFamily.sans].join(',')
 // const f37ginger = ['"F37 Ginger"', ...fontFamily.sans].join(',')
 // const f37gingerRound = ['"F37 Ginger Round"', ...fontFamily.sans].join(',')
+// const iiIncrementalSans = ['II Incremental Sans', ...fontFamily.sans].join(',')
+// const iiVorkurs = ['II Vorkurs', ...fontFamily.sans].join(',')
 const inter = ['Inter', ...fontFamily.sans].join(',')
 // const name = ['"Name Sans"', ...fontFamily.sans].join(',')
 const mono = [...fontFamily.mono].join(',')
@@ -247,9 +249,13 @@ export const {
       // f37bolton,
       // f37ginger,
       // f37gingerRound,
+      // iiIncrementalSans,
+      // iiVorkurs,
       // inter,
       mono,
       // name,
+      // sans: iiIncrementalSans,
+      // sans: iiVorkurs,
       sans: inter,
       // sans: name,
       serif,
