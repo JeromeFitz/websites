@@ -1892,10 +1892,10 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha1-p3c2C1s5oaLlEG+OhY8v0tBgxXA=
 
-"@radix-ui/colors@0.1.7":
-  version "0.1.7"
-  resolved "https://registry.yarnpkg.com/@radix-ui/colors/-/colors-0.1.7.tgz#055cdf104f92ae58a7d6a7f1c7327c635b90747f"
-  integrity sha512-E6+ZPQ+FFn1/NZ4c/KRvZTu9KjC/MXrbJNETYs1HKe96gyxQivPu65FkhOsRnPigvJ0YJ9ZxYGxayqDNmaC1cQ==
+"@radix-ui/colors@0.1.8":
+  version "0.1.8"
+  resolved "https://registry.yarnpkg.com/@radix-ui/colors/-/colors-0.1.8.tgz#b08c62536fc462a87632165fb28e9b18f9bd047e"
+  integrity sha512-jwRMXYwC0hUo0mv6wGpuw254Pd9p/R6Td5xsRpOmaWkUHlooNWqVcadgyzlRumMq3xfOTXwJReU0Jv+EIy4Jbw==
 
 "@radix-ui/number@0.1.0":
   version "0.1.0"
