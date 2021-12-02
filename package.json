@@ -62,7 +62,7 @@
     "@radix-ui/react-tabs": "0.1.1",
     "@radix-ui/react-tooltip": "0.1.1",
     "@radix-ui/react-visually-hidden": "0.1.1",
-    "@stitches/react": "1.2.5",
+    "@stitches/react": "1.2.6",
     "@vercel/fetch": "6.1.1",
     "clsx": "1.1.1",
     "csv-parser": "3.0.0",
