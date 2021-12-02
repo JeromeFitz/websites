@@ -96,8 +96,8 @@ const info = {
     cta: 'Please check back later',
   },
   loading: {
-    text: 'Content is loading.',
-    cta: 'Please hold tight',
+    text: 'Computers ‘puting....',
+    cta: '– Cam’ron',
   },
   success: {
     text: 'Click any link to the left',
@@ -511,7 +511,7 @@ const TA = () => {
                     }}
                   >
                     <Flex align="center" direction="column" gap="2">
-                      <Text size="2" css={{ color: '$spotify-black' }}>
+                      <Text size="3" css={{ color: '$spotify-black' }}>
                         {loading
                           ? info.loading.text
                           : hasError

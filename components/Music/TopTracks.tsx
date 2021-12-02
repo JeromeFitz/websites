@@ -96,8 +96,8 @@ const info = {
     cta: 'Please check back later',
   },
   loading: {
-    text: 'Content is loading.',
-    cta: 'Please hold tight',
+    text: 'Computers ‘puting....',
+    cta: '– Cam’ron',
   },
   success: {
     text: 'Click any link to the left',
