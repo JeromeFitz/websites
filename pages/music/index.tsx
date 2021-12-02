@@ -8,7 +8,7 @@ import React, { useState } from 'react'
 import { useSound } from 'use-sound'
 
 import { PageHeading } from '~components/Layout'
-import { TopArtists, TopTracks } from '~components/Music'
+import { TopArtists, TopTracks, YearInReview } from '~components/Music'
 import Seo from '~components/Seo'
 import { useUI } from '~context/ManagedUIContext'
 import useSpotify from '~hooks/useSpotify'
@@ -205,6 +205,7 @@ const Music = () => {
         </Box>
         <TopArtists />
         <TopTracks />
+        <YearInReview />
       </Section>
     </>
   )
