@@ -1,1 +1,3 @@
-export { default } from './NProgress'
+import NProgress from './NProgress'
+
+export default NProgress

@@ -1,1 +1,3 @@
-export { default } from './ImageCaption'
+import ImageCaption from './ImageCaption'
+
+export default ImageCaption

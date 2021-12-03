@@ -1,4 +1,5 @@
 import ImageLead, { ImageWithBackgroundBlur } from './ImageLead'
+import Layout from './Layout'
 import Page from './Page'
 import PageHeading, {
   SkeletonHeading,
@@ -15,4 +16,4 @@ export {
   SkeletonTitle,
   SkeletonDescription,
 }
-export { default } from './Layout'
+export default Layout
