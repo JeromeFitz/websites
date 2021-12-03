@@ -1436,10 +1436,10 @@
   dependencies:
     glob "7.1.7"
 
-"@next/eslint-plugin-next@12.0.5-canary.13":
-  version "12.0.5-canary.13"
-  resolved "https://registry.yarnpkg.com/@next/eslint-plugin-next/-/eslint-plugin-next-12.0.5-canary.13.tgz#6782e6c55cb3d8edd805e32ccc8064c8d2c173dd"
-  integrity sha512-b0gdEenDTEKOgdn/1N5+F2hZs4mxejeF289/9OHs+j172rqt0qyyDk0a4ktc/hSSqOKqj8NRBbwfCSp++FOepQ==
+"@next/eslint-plugin-next@12.0.5-canary.16":
+  version "12.0.5-canary.16"
+  resolved "https://registry.yarnpkg.com/@next/eslint-plugin-next/-/eslint-plugin-next-12.0.5-canary.16.tgz#3d34796865401134432fa5278f78e5ac49dca2a7"
+  integrity sha512-pWH8lOgYyRFLWA4u+W0dN2UnoZ1QJALxeCcY2XDkcE/n4FkWuLhqt9a2NmUSDtoDbCDk3e0aMmKRYCV3u30ozA==
   dependencies:
     glob "7.1.7"
 
@@ -5378,12 +5378,12 @@ eslint-config-next@12.0.4:
     eslint-plugin-react "^7.23.1"
     eslint-plugin-react-hooks "^4.2.0"
 
-eslint-config-next@12.0.5-canary.13:
-  version "12.0.5-canary.13"
-  resolved "https://registry.yarnpkg.com/eslint-config-next/-/eslint-config-next-12.0.5-canary.13.tgz#f8626c1c2595d82fd561b0158217529ad41ca0d2"
-  integrity sha512-SgkDnB8tP5fpObrpwkOUG5ldu6MUrDP/8MuabS2lM6a1u9ldGAcvS5kGrA2tTIfmzt3epsq7l29PL+NwGDz6KA==
+eslint-config-next@12.0.5-canary.16:
+  version "12.0.5-canary.16"
+  resolved "https://registry.yarnpkg.com/eslint-config-next/-/eslint-config-next-12.0.5-canary.16.tgz#1b3a393a9f7293202ac8f4acfc24c2a2f4205fd5"
+  integrity sha512-36euMR1eCKy2ZF0RWCrhyCIz9dIM+LHN6lnI393Cdg4/Io+LsKnO+j8IgGLL0lAFWJVSfS6PCnl3ISK0hn5/Uw==
   dependencies:
-    "@next/eslint-plugin-next" "12.0.5-canary.13"
+    "@next/eslint-plugin-next" "12.0.5-canary.16"
     "@rushstack/eslint-patch" "^1.0.8"
     "@typescript-eslint/parser" "^5.0.0"
     eslint-import-resolver-node "^0.3.4"
