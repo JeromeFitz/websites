@@ -28,31 +28,35 @@ export const Carousel = (props) => {
   const navigationUpdateDelay = useRef(100)
   useEffect(() => smoothscroll.polyfill(), [])
 
-  const getSlideInDirection = useCallbackRef((direction) => {
-    const slides = ref.current?.querySelectorAll<HTMLElement>(
-      '[data-slide-intersected]'
+  const getSlideInDirection = useCallbackRef((direction: 1 | -1) => {
+    // @todo(any)
+    const slides: any = ref.current?.querySelectorAll<HTMLElement>(
+      '[data-slide-intersection-ratio]'
     )
     if (slides) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      return Array.from(slides.values()).find((slide: HTMLElement, index) => {
-        const slideBefore = slides.item(index - direction)
-        return (
-          slide.dataset.slideIntersected === 'false' &&
-          slideBefore?.dataset.slideIntersected === 'true'
-        )
-      })
+      // @todo(any)
+      const slidesArray: any = Array.from(slides.values())
+
+      if (direction === 1) {
+        slidesArray.reverse()
+      }
+      return slidesArray.find(
+        // @todo(any)
+        (slide: any) => slide.dataset.slideIntersectionRatio !== '0'
+      )
     }
   })
 
   const handleNextClick = useCallback(() => {
-    const nextSlide = getSlideInDirection(1)
+    // @todo(any)
+    const nextSlide: any = getSlideInDirection(1)
     if (nextSlide) {
       const { scrollLeft, scrollWidth, clientWidth } = slideListRef.current
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
       const itemWidth = nextSlide.clientWidth
-      const nextPos = Math.floor(scrollLeft / itemWidth) * itemWidth + itemWidth * 2
+      const itemsToScroll =
+        itemWidth * 2.5 < document.documentElement.offsetWidth ? 2 : 1
+      const nextPos =
+        Math.floor(scrollLeft / itemWidth) * itemWidth + itemWidth * itemsToScroll
       slideListRef.current.scrollTo({ left: nextPos, behavior: 'smooth' })
 
       // Disable previous & next buttons immediately
@@ -64,13 +68,15 @@ export const Carousel = (props) => {
   }, [getSlideInDirection, setPrevDisabled])
 
   const handlePrevClick = useCallback(() => {
-    const prevSlide = getSlideInDirection(-1)
+    // @todo(any)
+    const prevSlide: any = getSlideInDirection(-1)
     if (prevSlide) {
       const { scrollLeft, scrollWidth, clientWidth } = slideListRef.current
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
       const itemWidth = prevSlide.clientWidth
-      const nextPos = Math.ceil(scrollLeft / itemWidth) * itemWidth - itemWidth * 2
+      const itemsToScroll =
+        itemWidth * 2.5 < document.documentElement.offsetWidth ? 2 : 1
+      const nextPos =
+        Math.ceil(scrollLeft / itemWidth) * itemWidth - itemWidth * itemsToScroll
       slideListRef.current.scrollTo({ left: nextPos, behavior: 'smooth' })
 
       // Disable previous & next buttons immediately
@@ -192,16 +198,13 @@ export const CarouselSlide = (props) => {
   const { as: Comp = Box, ...slideProps } = props
   const context = useCarouselContext('CarouselSlide')
   const ref = useRef<React.ElementRef<typeof Box>>(null)
-  const [isIntersected, setIsIntersected] = useState(false)
+  const [intersectionRatio, setIntersectionRatio] = useState(0)
   const isDraggingRef = useRef(false)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => setIsIntersected(entry.isIntersecting),
-      {
-        root: context.slideListRef.current,
-        threshold: 1.0,
-      }
+      ([entry]) => setIntersectionRatio(entry.intersectionRatio),
+      { root: context.slideListRef.current, threshold: [0, 0.5, 1] }
     )
     observer.observe(ref.current)
     return () => observer.disconnect()
@@ -211,7 +214,7 @@ export const CarouselSlide = (props) => {
     <Comp
       {...slideProps}
       ref={ref}
-      data-slide-intersected={isIntersected}
+      data-slide-intersection-ratio={intersectionRatio}
       onDragStart={(event) => {
         event.preventDefault()
         isDraggingRef.current = true
