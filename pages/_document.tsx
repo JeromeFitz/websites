@@ -29,6 +29,10 @@ const getCssAndReset = () => {
   reset()
   return css
 }
+
+// @note(ts) Type '() => any' is not a constructor function type
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 class MyDocument extends Document<DocumentContext> {
   render() {
     return (
