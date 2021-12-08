@@ -98,7 +98,7 @@
   },
   "devDependencies": {
     "@jeromefitz/codestyle": "6.0.2",
-    "@jeromefitz/git-cz": "12.0.1",
+    "@jeromefitz/git-cz": "12.0.2",
     "@jeromefitz/semantic": "6.0.1",
     "@next/bundle-analyzer": "12.0.7",
     "@types/jest": "27.0.3",
