@@ -14,7 +14,7 @@ import { ManagedUIContext } from '~context/ManagedUIContext'
 import NotificationProvider from '~context/Notification'
 import { useAnalytics } from '~lib/analytics'
 import { IMAGE__FALLBACKS__SHOWS } from '~lib/constants'
-import { Container, DesignSystemProvider, Section } from '~styles/system/components'
+import { Container, Section } from '~styles/system/components'
 import { globalCss, darkTheme } from '~styles/system/stitches.config'
 
 pluralize.addPluralRule(/cast$/i, 'cast')
@@ -150,29 +150,27 @@ function MyApp({ Component, pageProps, router }: AppProps) {
           />
         </Head>
         <ManagedUIContext>
-          <DesignSystemProvider>
-            <ThemeProvider
-              disableTransitionOnChange
-              attribute="class"
-              value={{ light: 'light-theme', dark: darkTheme.className }}
-              defaultTheme="system"
-            >
-              <NotificationProvider>
-                <NProgress />
-                <Header />
-                <Container
-                  as="main"
-                  id="main"
-                  size={{ '@initial': 2, '@bp1': 3, '@bp2': 4 }}
-                >
-                  <Section>
-                    <Component {...pageProps} key={router.route} />
-                  </Section>
-                </Container>
-                <Footer />
-              </NotificationProvider>
-            </ThemeProvider>
-          </DesignSystemProvider>
+          <ThemeProvider
+            disableTransitionOnChange
+            attribute="class"
+            value={{ light: 'light-theme', dark: darkTheme.className }}
+            defaultTheme="system"
+          >
+            <NotificationProvider>
+              <NProgress />
+              <Header />
+              <Container
+                as="main"
+                id="main"
+                size={{ '@initial': 2, '@bp1': 3, '@bp2': 4 }}
+              >
+                <Section>
+                  <Component {...pageProps} key={router.route} />
+                </Section>
+              </Container>
+              <Footer />
+            </NotificationProvider>
+          </ThemeProvider>
         </ManagedUIContext>
       </SWRConfig>
     </>

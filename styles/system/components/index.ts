@@ -13,7 +13,6 @@ export {
 } from './Carousel'
 export { Checkbox } from './Checkbox'
 export { Container } from './Container'
-export { DesignSystemProvider } from './DesignSystemProvider'
 export { Flex } from './Flex'
 export { Grid } from './Grid'
 export { Heading } from './Heading'
