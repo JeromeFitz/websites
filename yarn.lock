@@ -2064,6 +2064,14 @@
     "@babel/runtime" "^7.13.10"
     "@radix-ui/react-use-layout-effect" "0.1.0"
 
+"@radix-ui/react-id@0.1.3":
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-id/-/react-id-0.1.3.tgz#007c41749628ec6c2c801ad0b8f0a454bb181ae3"
+  integrity sha512-kA7erDg8S/bad9O6RTC+laW11gm2pvmEqlZA+rvzI+WEkQXStIgnVp+wA420be4q20UiLQw9cmIP01AIhDVdZQ==
+  dependencies:
+    "@babel/runtime" "^7.13.10"
+    "@radix-ui/react-use-layout-effect" "0.1.0"
+
 "@radix-ui/react-label@0.1.2":
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/@radix-ui/react-label/-/react-label-0.1.2.tgz#58f481ccb3403770971043949bef6263fbd94e9c"
@@ -2239,16 +2247,16 @@
     "@radix-ui/react-use-callback-ref" "0.1.0"
     "@radix-ui/react-use-controllable-state" "0.1.0"
 
-"@radix-ui/react-tooltip@0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-tooltip/-/react-tooltip-0.1.2.tgz#172bce2a539e43f5c74646f2dda9092e612d9a51"
-  integrity sha512-fgUxtqERDLZMZajp9Jv839qonfEnhTlsx+l0j9wzHkVkZv4pRT5XxiVe9ujBzntxNul1V+FnAIOXsPneA6cGyg==
+"@radix-ui/react-tooltip@0.1.3":
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-tooltip/-/react-tooltip-0.1.3.tgz#89c0665fe95d7a804651e151ae03ee2667b10aa3"
+  integrity sha512-cSIuEoS7F6py5D04iABUNVQLiTyFI5MU8stj3XyB5T+Yrd0zCwj4aqsxpe/6EYiiFsqdpUz6+88Lhv70RMSHeg==
   dependencies:
     "@babel/runtime" "^7.13.10"
     "@radix-ui/primitive" "0.1.0"
     "@radix-ui/react-compose-refs" "0.1.0"
     "@radix-ui/react-context" "0.1.1"
-    "@radix-ui/react-id" "0.1.2"
+    "@radix-ui/react-id" "0.1.3"
     "@radix-ui/react-popper" "0.1.2"
     "@radix-ui/react-portal" "0.1.2"
     "@radix-ui/react-presence" "0.1.1"
