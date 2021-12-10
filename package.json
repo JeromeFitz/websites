@@ -44,7 +44,7 @@
     "@plaiceholder/next": "2.2.0",
     "@radix-ui/colors": "0.1.8",
     "@radix-ui/react-accessible-icon": "0.1.2",
-    "@radix-ui/react-accordion": "0.1.2",
+    "@radix-ui/react-accordion": "0.1.4",
     "@radix-ui/react-alert-dialog": "0.1.2",
     "@radix-ui/react-announce": "0.1.2",
     "@radix-ui/react-aspect-ratio": "0.1.2",
