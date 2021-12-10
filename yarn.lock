@@ -2064,6 +2064,14 @@
     "@babel/runtime" "^7.13.10"
     "@radix-ui/react-use-layout-effect" "0.1.0"
 
+"@radix-ui/react-id@0.1.3":
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-id/-/react-id-0.1.3.tgz#007c41749628ec6c2c801ad0b8f0a454bb181ae3"
+  integrity sha512-kA7erDg8S/bad9O6RTC+laW11gm2pvmEqlZA+rvzI+WEkQXStIgnVp+wA420be4q20UiLQw9cmIP01AIhDVdZQ==
+  dependencies:
+    "@babel/runtime" "^7.13.10"
+    "@radix-ui/react-use-layout-effect" "0.1.0"
+
 "@radix-ui/react-label@0.1.2":
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/@radix-ui/react-label/-/react-label-0.1.2.tgz#58f481ccb3403770971043949bef6263fbd94e9c"
@@ -2099,10 +2107,10 @@
     aria-hidden "^1.1.1"
     react-remove-scroll "^2.4.0"
 
-"@radix-ui/react-popover@0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-popover/-/react-popover-0.1.2.tgz#1d12796ca034d2aa2a2ff142299631556667860e"
-  integrity sha512-xqdgBb0vHLyYJIIjg8w1Jz0xowm9a2rzvrltGoSJJlEAeI+M5sRtU52ZgDzPLcDNba8Go7Rl6oLEp466jLhjCA==
+"@radix-ui/react-popover@0.1.3":
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-popover/-/react-popover-0.1.3.tgz#54b650631048cd24d727be71433a28786b53c1c9"
+  integrity sha512-oKeyz52rCMtmnUtdZA1ub0XHrpzYGb8Q66VYMJBJqHPGbsavDRvu3/rmmWQYf5Vm9NdauobZEq/3UuAvgd6dXw==
   dependencies:
     "@babel/runtime" "^7.13.10"
     "@radix-ui/primitive" "0.1.0"
@@ -2111,7 +2119,7 @@
     "@radix-ui/react-dismissable-layer" "0.1.2"
     "@radix-ui/react-focus-guards" "0.1.0"
     "@radix-ui/react-focus-scope" "0.1.2"
-    "@radix-ui/react-id" "0.1.2"
+    "@radix-ui/react-id" "0.1.3"
     "@radix-ui/react-popper" "0.1.2"
     "@radix-ui/react-portal" "0.1.2"
     "@radix-ui/react-presence" "0.1.1"
