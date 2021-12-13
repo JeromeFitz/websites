@@ -1082,10 +1082,10 @@
   resolved "https://registry.yarnpkg.com/@istanbuljs/schema/-/schema-0.1.3.tgz#e45e384e4b8ec16bce2fd903af78450f6bf7ec98"
   integrity sha512-ZXRY4jNvVgSVQ8DL3LTcakaAtXwTVUxE81hslsyD2AtoXW/wVob10HkOJ1X/pAlcI7D+2YoZKg5do8G/w6RYgA==
 
-"@jeromefitz/codestyle@6.0.4":
-  version "6.0.4"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/codestyle/-/codestyle-6.0.4.tgz#0d94812c91cc98d26e15057b7e15e7450378f749"
-  integrity sha512-GGiJJCVPSXFS+bD1pucJLWTNQ9kDmeAlAwSwaokHcsMPArHjhjzm5F6R04MyRaTJgxAuF7qVDFC+8qN4Zcix/A==
+"@jeromefitz/codestyle@6.0.5":
+  version "6.0.5"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/codestyle/-/codestyle-6.0.5.tgz#0c9a62eec02836fb7abd11677ce01b8b4b368ef3"
+  integrity sha512-TeUbVjSkJHjbAb6TshhgHaS7lM9I6JnTkzh90DfcpAPvJzH6UFIeO4KHU/Cy4oaz8IvCBkhK+91SE7lOdhlnUw==
   dependencies:
     "@babel/core" "7.16.0"
     "@babel/eslint-parser" "7.16.3"
@@ -11770,12 +11770,12 @@ typedarray-to-buffer@^3.1.5:
   dependencies:
     is-typedarray "^1.0.0"
 
-typescript@4.5.2, typescript@^4.2.3:
+typescript@4.5.2:
   version "4.5.2"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.5.2.tgz#8ac1fba9f52256fdb06fb89e4122fa6a346c2998"
   integrity sha512-5BlMof9H1yGt0P8/WF+wPNw6GfctgGjXp5hkblpyT+8rkASSmkUKMXrxR0Xg8ThVCi/JnHQiKXeBaEwCeQwMFw==
 
-typescript@4.5.3:
+typescript@4.5.3, typescript@^4.2.3:
   version "4.5.3"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.5.3.tgz#afaa858e68c7103317d89eb90c5d8906268d353c"
   integrity sha512-eVYaEHALSt+s9LbvgEv4Ef+Tdq7hBiIZgii12xXJnukryt3pMgJf6aKhoCZ3FWQsu6sydEnkg11fYXLzhLBjeQ==
