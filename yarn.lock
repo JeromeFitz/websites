@@ -1135,10 +1135,10 @@
     micromatch "^4.0.0"
     p-reduce "^2.0.0"
 
-"@jeromefitz/semantic@6.0.3":
-  version "6.0.3"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/semantic/-/semantic-6.0.3.tgz#ab293971326138695acdb8ec2eb1a0720a2543c8"
-  integrity sha512-jhO3VsFY1S3vxBOazmsm4c+C+W50bxUfMMMG8hozNwuRHBqBINM7Bkt4lywB3uf8rjJ8YD/6qkTydWEWdNa/dg==
+"@jeromefitz/semantic@6.0.4":
+  version "6.0.4"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/semantic/-/semantic-6.0.4.tgz#c8966e8651b198efda0116cdc6becac3c505ecd5"
+  integrity sha512-Vw4LCxqOhQeiSjA3kWSAtJoVUKDg/df8oyaiusPtR+S9XPVwniVIrgHXvAzjgEamAfd/LvocDxgl5uHmpcd6ew==
   dependencies:
     "@jeromefitz/semantic-release-git" "10.0.0-develop.2"
     "@octokit/core" "3.5.1"
@@ -2477,7 +2477,7 @@
     semver "^7.1.2"
     tempy "^1.0.0"
 
-"@semantic-release/release-notes-generator@10.0.3":
+"@semantic-release/release-notes-generator@10.0.3", "@semantic-release/release-notes-generator@^10.0.0":
   version "10.0.3"
   resolved "https://registry.yarnpkg.com/@semantic-release/release-notes-generator/-/release-notes-generator-10.0.3.tgz#85f7ca78bfa6b01fb5fda0ac48112855d69171dc"
   integrity sha512-k4x4VhIKneOWoBGHkx0qZogNjCldLPRiAjnIpMnlUh6PtaWXp/T+C9U7/TaNDDtgDa5HMbHl4WlREdxHio6/3w==
@@ -2486,22 +2486,6 @@
     conventional-changelog-writer "^5.0.0"
     conventional-commits-filter "^2.0.0"
     conventional-commits-parser "^3.2.3"
-    debug "^4.0.0"
-    get-stream "^6.0.0"
-    import-from "^4.0.0"
-    into-stream "^6.0.0"
-    lodash "^4.17.4"
-    read-pkg-up "^7.0.0"
-
-"@semantic-release/release-notes-generator@^10.0.0":
-  version "10.0.2"
-  resolved "https://registry.yarnpkg.com/@semantic-release/release-notes-generator/-/release-notes-generator-10.0.2.tgz#944068c6ba0cf5d7779bdfeb537db29a4d295622"
-  integrity sha512-I4eavIcDan8fNQHskZ2cbWkFMimvgxNkqR2UfuYNwYBgswEl3SJsN8XMf9gZWObt6nXDc2QfDwhjy8DjTZqS3w==
-  dependencies:
-    conventional-changelog-angular "^5.0.0"
-    conventional-changelog-writer "^5.0.0"
-    conventional-commits-filter "^2.0.0"
-    conventional-commits-parser "^3.0.0"
     debug "^4.0.0"
     get-stream "^6.0.0"
     import-from "^4.0.0"
