@@ -4,4 +4,4 @@ const Announce = ({ children }) => {
   return <ReactAnnounce.Root>{children}</ReactAnnounce.Root>
 }
 
-export { Announce }
+export default Announce

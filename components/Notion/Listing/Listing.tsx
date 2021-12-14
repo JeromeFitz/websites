@@ -23,12 +23,6 @@ const ListingShows = dynamic(
     ssr: true,
   }
 )
-const ListingFallback = dynamic(
-  () => import('~components/Notion/Listing/ListingFallback'),
-  {
-    ssr: true,
-  }
-)
 
 const Listing = ({ images, items, routeType }) => {
   const itemsSize = _size(items?.results)
@@ -88,11 +82,8 @@ const Listing = ({ images, items, routeType }) => {
     )
   }
 
-  return (
-    <>
-      {itemsSize > 0 && <ListingFallback items={itemsData} routeType={routeType} />}
-    </>
-  )
+  console.dir(`@todo(ListingFallback)`)
+  return <>{itemsSize > 0 && null}</>
 }
 
 export default Listing

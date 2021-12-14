@@ -1,36 +1,97 @@
 // import { BigHead } from '@bigheads/core'
-import cx from 'clsx'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
+import { toast } from 'react-hot-toast'
 import _title from 'title'
 import { useSound } from 'use-sound'
+import { v4 as uuid } from 'uuid'
 
-import AlertDialogDemo from '~components/Alert/Dialog'
+import { Dialog } from '~components/Alert'
 import { PageHeading } from '~components/Layout'
 import Seo from '~components/Seo'
 import { useUI } from '~context/ManagedUIContext'
-import { useNotification } from '~context/Notification'
-import { WEBKIT_BACKGROUND } from '~lib/constants'
-// import rangeMap from '~utils/rangeMap'
-import { Box } from '~styles/system/components'
+// import { BIG_HEAD_PROPS } from '~lib/constants'
+import {
+  Box,
+  // Container,
+  Flex,
+  Heading,
+  // RadioGroup,
+  // Radio,
+  RadioCardGroup,
+  RadioCard,
+  Section,
+  Switch,
+  Text,
+} from '~styles/system/components'
+import { DemoButton } from '~styles/system/components/Button/DemoButton'
+import {
+  ToastData,
+  ToastType,
+  useToastDispatchers,
+} from '~styles/system/components/Toast'
+import { styled } from '~styles/system/stitches.config'
 
 const properties = {
   title: 'Playground',
   seoDescription: 'Sheer Random',
 }
 
-const mockTrueFalse = [
-  { value: true, title: 'true ' },
-  { value: false, title: 'false' },
-]
-
+// ToastType
 const mockTypes = [
   { description: 'Description of ', value: 'error', title: 'error' },
+  // { description: 'Description of ', value: 'generic', title: 'generic' },
   { description: 'Description of ', value: 'info', title: 'info' },
-  { description: 'Description of ', value: 'success', title: 'error' },
+  // { description: 'Description of ', value: 'loading', title: 'loading' },
+  { description: 'Description of ', value: 'success', title: 'success' },
   { description: 'Description of ', value: 'warning', title: 'warning' },
 ]
+const defaultType = 'error'
 
+const message =
+  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum'
+const mockMessages = {
+  25: message.substring(0, 25),
+  // 50: message.substring(0, 50),
+  // 75: message.substring(0, 75),
+  100: message.substring(0, 100),
+  200: message.substring(0, 200),
+  // 300: message.substring(0, 300),
+  400: message.substring(0, 400),
+}
+
+const Fieldset = styled('fieldset', {
+  all: 'unset',
+  display: 'flex',
+  gap: 20,
+  alignItems: 'flex-start',
+  marginBottom: 15,
+})
+
+const Label = styled('label', {
+  fontWeight: 700,
+  color: '$hiContrast',
+  width: 120,
+  textAlign: 'right',
+})
+
+const Input = styled('input', {
+  all: 'unset',
+  width: '100%',
+  flex: '1',
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  borderRadius: 4,
+  padding: '0 10px',
+  fontSize: 15,
+  lineHeight: 1,
+  color: '$colors$hiContrast',
+  boxShadow: `0 0 0 1px $colors$hiContrast`,
+  height: 35,
+
+  '&:focus': { boxShadow: `0 0 0 2px $colors$hiContrast` },
+})
 const WavingHand = () => (
   <motion.div
     style={{
@@ -54,16 +115,25 @@ const WavingHand = () => (
   </motion.div>
 )
 
-const Playground = () => {
+const PlaygroundDialog = () => {
+  const dialogText = {
+    dialogTrigger: 'Trigger Alert',
+    //
+    dialogTitle: 'Are you absolutely sure?',
+    dialogDescription: 'This action cannot be undone. ',
+    //
+    dialogCancel: 'Cancel',
+    dialogAction: 'Action',
+  }
+  return (
+    <Box css={{ my: '$5' }}>
+      <Dialog dialogText={dialogText} />
+    </Box>
+  )
+}
+
+const PlaygroundToast = () => {
   const { audio } = useUI()
-  // const [loading] = useState(false)
-  // const [disabled] = useState(false)
-
-  const { addNotification } = useNotification()
-  const [text, textSet] = useState('foo')
-  const [type, typeSet] = useState('info')
-  const [preserve, preserveSet] = useState(false)
-
   const [playActive] = useSound('/static/audio/pop-down.mp3', {
     soundEnabled: audio,
     volume: 0.25,
@@ -77,14 +147,202 @@ const Playground = () => {
     volume: 0.25,
   })
 
-  const typeHandleChange = (e) => {
-    typeSet(e.target.value)
+  const [text, textSet] = useState(mockMessages[25])
+  const [type, typeSet] = useState<ToastType>(defaultType)
+  const [preserve, preserveSet] = useState(false)
+
+  const setTextSet = (v) => {
+    textSet(mockMessages[v])
+  }
+
+  const typeHandleChange = (type) => {
+    // console.dir(`typeHandleChange`)
+    // console.dir(type)
+    typeSet(type)
   }
 
   const preserveHandleChange = () => {
+    // console.dir(`preserveHandleChange`)
     preserveSet(!preserve)
   }
 
+  // eslint-disable-next-line @typescript-eslint/unbound-method
+  const { addToast } = useToastDispatchers()
+
+  const notify = () => {
+    toast(text, {
+      duration: 3000,
+      position: 'top-right',
+      // Styling
+      style: {},
+      className: '',
+      // Custom Icon
+      icon: '👏',
+      // Change colors of success/error/loading icon
+      iconTheme: {
+        primary: '#000',
+        secondary: '#fff',
+      },
+    })
+  }
+
+  const handleToast = () => {
+    const toastItem: ToastData = {
+      active: true,
+      createdAt: Date.now(),
+      duration: 30000,
+      id: uuid(),
+      message: text,
+      pauseDuration: 30000,
+      type,
+    }
+    addToast(toastItem)
+  }
+
+  const handleHotToast = () => {
+    notify()
+  }
+
+  return (
+    <Box css={{ my: '$4' }}>
+      <Heading
+        size="3"
+        css={{ backgroundColor: '$teal11', borderRadius: '5px', m: '$3', p: '$3' }}
+      >
+        🍞️ Toast
+      </Heading>
+      <Section size="1">
+        <Fieldset>
+          <Flex css={{ alignItems: 'center' }}>
+            <Label htmlFor="preserve">Preserve</Label>
+            <Switch
+              id="preserve"
+              name="preserve"
+              onClick={preserveHandleChange}
+              css={{ marginLeft: '$4' }}
+            />
+          </Flex>
+        </Fieldset>
+        <Fieldset>
+          <Label htmlFor="name">Message</Label>
+          <Input
+            type="text"
+            name="message"
+            id="message"
+            // defaultValue={text}
+            value={text}
+            onChange={(e) => textSet(e.target.value)}
+          />
+        </Fieldset>
+        <Fieldset>
+          <Label>Set Text</Label>
+          {Object.keys(mockMessages).map((v) => {
+            return (
+              <DemoButton
+                key={`db-${v}`}
+                onClick={() => {
+                  setTextSet(v)
+                }}
+                onMouseDown={() => playActive}
+                onMouseUp={() => {
+                  playOff()
+                }}
+                css={{ ml: '$2' }}
+              >
+                {v}
+              </DemoButton>
+            )
+          })}
+        </Fieldset>
+        <Fieldset>
+          <Label htmlFor="name">Type</Label>
+          <RadioCardGroup
+            defaultValue={defaultType}
+            onValueChange={typeHandleChange}
+          >
+            {mockTypes.map((item, itemIdx) => {
+              return (
+                <RadioCard
+                  key={`r-${itemIdx}`}
+                  value={item.value}
+                  css={{ mb: '$2' }}
+                  onMouseDown={() => playActive}
+                  onMouseUp={() => {
+                    type === item.value ? playOff() : playOn()
+                  }}
+                >
+                  <Flex css={{ alignItems: 'center' }}>
+                    <Text
+                      size="3"
+                      css={{ fontWeight: '500', lineHeight: '1.2', mr: '$6' }}
+                    >
+                      {_title(item.title)}
+                    </Text>
+                  </Flex>
+                </RadioCard>
+              )
+            })}
+          </RadioCardGroup>
+        </Fieldset>
+        <Fieldset>
+          <Label htmlFor="name">Radix Toast</Label>
+          <DemoButton
+            onClick={() => {
+              handleToast()
+            }}
+            onMouseDown={() => playActive}
+            onMouseUp={() => {
+              playOff()
+            }}
+          >
+            Create
+          </DemoButton>
+        </Fieldset>{' '}
+        <Fieldset>
+          <Label htmlFor="name">Hot Toast</Label>
+          <DemoButton
+            variant="gray"
+            onClick={() => {
+              handleHotToast()
+            }}
+            onMouseDown={() => playActive}
+            onMouseUp={() => {
+              playOff()
+            }}
+          >
+            Create
+          </DemoButton>
+        </Fieldset>
+      </Section>
+    </Box>
+  )
+}
+
+const PlaygroundAvatar = () => {
+  return (
+    <>
+      <Box
+        css={{
+          backgroundColor: '$loContrast',
+          border: '1px solid $hiContrast',
+          borderRadius: '$round',
+          height: '3rem',
+          width: '3rem',
+          overflow: 'hidden',
+        }}
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={`/static/images/bighead--jerome--dizzy.svg`}
+          alt={`bighead--jerome`}
+        />
+      </Box>
+      {/* <BigHead {...BIG_HEAD_PROPS} /> */}
+    </>
+  )
+}
+
+const Playground = () => {
   const url = 'https://jeromefitzgerald.com/playground'
   const title = 'Playground'
   const description =
@@ -102,16 +360,6 @@ const Playground = () => {
     },
   }
 
-  const dialogText = {
-    dialogTrigger: 'Trigger Alert',
-    //
-    dialogTitle: 'Are you absolutely sure?',
-    dialogDescription: 'This action cannot be undone. ',
-    //
-    dialogCancel: 'Cancel',
-    dialogAction: 'Action',
-  }
-
   return (
     <>
       <Seo {...seo} />
@@ -122,205 +370,9 @@ const Playground = () => {
       <h4>
         Halo <WavingHand />
       </h4>
-      <Box css={{ my: '$5' }}>
-        <AlertDialogDemo dialogText={dialogText} />
-      </Box>
-      <Box
-        css={{
-          backgroundColor: '$loContrast',
-          border: '1px solid $hiContrast',
-          borderRadius: '$round',
-          height: '8rem',
-          width: '8rem',
-        }}
-      >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={`/static/images/bighead--jerome--dizzy.svg`}
-          alt={`bighead--jerome`}
-        />
-      </Box>
-      {/* <BigHead {...BIG_HEAD_PROPS} /> */}
-      <Box>
-        <h2 style={WEBKIT_BACKGROUND}>{description}</h2>
-        <div id="content">
-          <h3 className="w-full bg-success text-black dark:text-white rounded pl-2 py-2">
-            Notification
-          </h3>
-          <div className="flex flex-col md:flex-row items-start justify-items-start justify-between mt-4 mb-6 w-full overflow-hidden">
-            <div className="flex flex-col md:flex-col">
-              <fieldset className="flex flex-col mb-4">
-                <div>
-                  <legend className="text-base font-medium text-secondary">
-                    Preserved
-                  </legend>
-                  <p className="text-sm text-secondary">
-                    Should the notification be preserved until User Action?
-                  </p>
-                </div>
-                <div className="mt-4 space-y-4">
-                  {mockTrueFalse.map((item, itemIdx) => {
-                    return (
-                      <div
-                        className="flex items-center"
-                        key={`mockTrueFalse--${itemIdx}`}
-                      >
-                        <input
-                          checked={preserve === item.value}
-                          className={cx(
-                            'h-4 w-4 ',
-                            'border-gray-700 dark:border-gray-300',
-                            'text-secondary',
-                            'focus:ring-yellow-400'
-                          )}
-                          id={item.title}
-                          name="preserve"
-                          onChange={preserveHandleChange}
-                          type="radio"
-                          value={item.value.toString()}
-                        />
-                        <label
-                          className="ml-3 block text-sm font-medium text-secondary"
-                          htmlFor={item.title}
-                        >
-                          {_title(item.title)}
-                        </label>
-                      </div>
-                    )
-                  })}
-                </div>
-              </fieldset>
-              <fieldset className="flex flex-col mb-4">
-                <div>
-                  <legend className="text-base font-medium text-secondary">
-                    Message
-                  </legend>
-                  <p className="text-sm text-secondary">
-                    Text that should be displayed to User
-                  </p>
-                </div>
-                <div className="mt-4 space-y-4">
-                  <div className="w-full">
-                    <label
-                      htmlFor="text"
-                      className="block text-sm font-medium text-gray-700 dark:text-gray-400"
-                    >
-                      Text
-                    </label>
-                    <input
-                      type="text"
-                      name="message"
-                      id="message"
-                      className={cx(
-                        `mt-1 p-4 focus:ring-yellow-500 focus:border-yellow-500 block shadow-sm sm:text-sm border border-gray-800 dark:border-gray-300 rounded-md`
-                      )}
-                      value={text}
-                      onChange={(e) => textSet(e.target.value)}
-                    />
-                  </div>
-                  <div className="py-3 text-left sm:px-6">
-                    <button
-                      className={cx(
-                        `inline-flex justify-center py-2 px-4 border border-transparent`,
-                        `shadow-sm text-sm font-medium rounded-md`,
-                        `dark:text-black dark:bg-white text-white bg-black`,
-                        `focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500`
-                      )}
-                      onClick={() => {
-                        if (text) {
-                          addNotification({ preserve, text, type })
-                          // setValue('')
-                        }
-                      }}
-                      onMouseDown={() => playActive}
-                      onMouseUp={() => {
-                        playOff()
-                      }}
-                    >
-                      Save
-                    </button>
-                  </div>
-                </div>
-              </fieldset>
-            </div>
-            <fieldset className="flex flex-col">
-              <div>
-                <legend className="text-base font-medium text-secondary">
-                  Types
-                </legend>
-                <p className="text-sm text-secondary">
-                  What type of Notification should be shown to User?
-                </p>
-              </div>
-              <div className="mt-4 space-y-4">
-                {mockTypes.map((item, itemIdx) => {
-                  return (
-                    <div className="flex items-start" key={`mockType--${itemIdx}`}>
-                      <div className="flex items-center h-5">
-                        <input
-                          id={item.title}
-                          name="types"
-                          type="checkbox"
-                          className="focus:ring-yellow-500 h-4 w-4 text-yellow-600 border-gray-300 rounded"
-                          onChange={typeHandleChange}
-                          onMouseDown={() => playActive}
-                          onMouseUp={() => {
-                            type === item.value ? playOff() : playOn()
-                          }}
-                          checked={type === item.value}
-                          value={item.value}
-                        />
-                      </div>
-                      <div className="ml-3 text-sm">
-                        <label
-                          htmlFor={item.title}
-                          className="font-medium text-gray-700 dark:text-gray-200"
-                        >
-                          {_title(item.title)}
-                        </label>
-                        <p className="text-gray-500 dark:text-gray-300">
-                          {_title(item.description + item.title)}
-                        </p>
-                      </div>
-                    </div>
-                  )
-                })}
-              </div>
-            </fieldset>
-          </div>
-          <div>
-            <h1>Tailwind Cheat</h1>
-            <p>If these values are here, they will not be purged.</p>
-            <p>
-              Also... if we are generating dynamic content for Notion, then having
-              them “here”pre-renders in a dynamic trick.
-            </p>
-            <p className={cx('transform rotate-180 rotate-360 duration-500')}>
-              <code>transform rotate-180 rotate-360 duration-500</code>
-            </p>
-            <ol className={cx('list-decimal')}>
-              <li>Fart</li>
-              <li>Knocker</li>
-            </ol>
-            <p className={cx('italic')}>Italicized Text</p>
-            <label className={cx('flex items-center space-x-3')}>
-              <input
-                disabled
-                type="checkbox"
-                className={cx(
-                  'h-6 w-6',
-                  'form-tick appearance-none border border-gray-300 rounded-md  focus:outline-none',
-                  true && 'checked:bg-blue-600 checked:border-transparent'
-                )}
-                checked={true}
-              />
-              <span className={cx('text-gray-900 font-medium')}>
-                Checked Item (Disabled)
-              </span>
-            </label>
-          </div>
-        </div>
-      </Box>
+      <PlaygroundDialog />
+      <PlaygroundToast />
+      <PlaygroundAvatar />
     </>
   )
 }
