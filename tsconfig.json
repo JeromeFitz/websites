@@ -51,6 +51,6 @@
       "~utils/*": ["src/utils/*"]
     }
   },
-  "include": ["src", "index.d.ts", "next-env.d.ts", "jest.config.ts"],
+  "include": ["src", "index.d.ts", "next-env.d.ts"],
   "exclude": ["node_modules", "**/*.test.ts"]
 }
