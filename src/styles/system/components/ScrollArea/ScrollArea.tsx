@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { Flex, Box } from '~styles/system/components'
+import { Flex, Box } from '@jeromefitz/design-system/components'
 
 function canUseDOM() {
   return !!(

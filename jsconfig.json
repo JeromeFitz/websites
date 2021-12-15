@@ -2,6 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+      "@jeromefitz/design-system/*": ["src/styles/system/*"],
       "~components/*": ["src/components/*"],
       "~config/*": ["src/config/*"],
       "~containers/*": ["src/containers/*"],

@@ -17,7 +17,6 @@ import { format } from 'date-fns-tz'
 import _map from 'lodash/map'
 import _union from 'lodash/union'
 
-import { TAGS } from '~config/websites'
 import {
   Box,
   ButtonMarketing,
@@ -29,9 +28,11 @@ import {
   Paragraph,
   // Section,
   // Text,
-} from '~styles/system/components'
+} from '@jeromefitz/design-system/components'
 
-// import { styled } from '~styles/system/stitches.config'
+import { TAGS } from '~config/websites'
+
+// import { styled } from '@jeromefitz/design-system/stitches.config'
 
 // const Foo = ({ children, title }) => {
 //   return (

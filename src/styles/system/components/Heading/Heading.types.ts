@@ -1,7 +1,7 @@
 import * as React from 'react'
 
-import { Text } from '~styles/system/components'
-import { CSS, VariantProps } from '~styles/system/stitches.config'
+import { Text } from '@jeromefitz/design-system/components'
+import { CSS, VariantProps } from '@jeromefitz/design-system/stitches.config'
 
 const DEFAULT_TAG = 'h1'
 

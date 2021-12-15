@@ -1,5 +1,5 @@
-import { Text } from '~styles/system/components'
-import { styled } from '~styles/system/stitches.config'
+import { Text } from '@jeromefitz/design-system/components'
+import { styled } from '@jeromefitz/design-system/stitches.config'
 
 const Link = styled('a', {
   alignItems: 'center',

@@ -3,6 +3,8 @@ import _size from 'lodash/size'
 import dynamic from 'next/dynamic'
 import * as React from 'react'
 
+import { Flex, Note, Text } from '@jeromefitz/design-system/components'
+
 import {
   Accordion,
   AccordionContent,
@@ -12,7 +14,6 @@ import {
 import { PageHeading } from '~components/Layout'
 import Seo from '~components/Seo'
 import booksByStatus, { STATUS } from '~data/books'
-import { Flex, Note, Text } from '~styles/system/components'
 
 const Emoji = dynamic(() => import('~components/Emoji'), {
   ssr: false,

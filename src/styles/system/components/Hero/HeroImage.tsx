@@ -1,8 +1,9 @@
 import NextImage from 'next/image'
 
+import { Box } from '@jeromefitz/design-system/components'
+import { styled } from '@jeromefitz/design-system/stitches.config'
+
 import { IMAGE__PLACEHOLDER } from '~lib/constants'
-import { Box } from '~styles/system/components'
-import { styled } from '~styles/system/stitches.config'
 
 const EmptyContent = styled('div', {
   position: 'absolute',

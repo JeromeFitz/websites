@@ -2,10 +2,11 @@ import NextImage from 'next/image'
 import { useEffectOnce } from 'react-use'
 import useSWR, { useSWRConfig } from 'swr'
 
+import { Container, Section, Skeleton } from '@jeromefitz/design-system/components'
+import { styled } from '@jeromefitz/design-system/stitches.config'
+
 import { Breakout } from '~components/Container'
 import ImageCaption from '~components/ImageCaption'
-import { Container, Section, Skeleton } from '~styles/system/components'
-import { styled } from '~styles/system/stitches.config'
 
 const ImageContainer = styled('div', {
   position: 'relative',

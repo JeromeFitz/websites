@@ -1,8 +1,11 @@
 import * as React from 'react'
 import { useHoverDirty, useMeasure, useMethods } from 'react-use'
 
-import { ARIA_LIVE_BY_TYPE, ROLES_BY_TYPE } from '~styles/system/components/Toast'
-import { darkTheme, styled } from '~styles/system/stitches.config'
+import {
+  ARIA_LIVE_BY_TYPE,
+  ROLES_BY_TYPE,
+} from '@jeromefitz/design-system/components/Toast'
+import { darkTheme, styled } from '@jeromefitz/design-system/stitches.config'
 
 // const slideDown = keyframes({
 //   from: { height: 0 },

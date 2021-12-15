@@ -1,10 +1,6 @@
 import _map from 'lodash/map'
 import _title from 'title'
 
-import { PageHeading } from '~components/Layout'
-import { ImageWithBackgroundBlur } from '~components/Layout/ImageLead'
-// import { IMAGE__PLACEHOLDER } from '~lib/constants'
-import { artists, tracks } from '~data/mock/spotify/top10'
 import {
   Badge,
   Box,
@@ -15,7 +11,12 @@ import {
   Section,
   Spacer,
   Text,
-} from '~styles/system/components'
+} from '@jeromefitz/design-system/components'
+
+import { PageHeading } from '~components/Layout'
+import { ImageWithBackgroundBlur } from '~components/Layout/ImageLead'
+// import { IMAGE__PLACEHOLDER } from '~lib/constants'
+import { artists, tracks } from '~data/mock/spotify/top10'
 import lpad from '~utils/lpad'
 import rangeMap from '~utils/rangeMap'
 
