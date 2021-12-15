@@ -13,8 +13,6 @@ import dynamic from 'next/dynamic'
 import NextLink from 'next/link'
 import * as React from 'react'
 
-import { TAGS } from '~config/websites'
-import getInfoType from '~lib/notion/getInfoType'
 import {
   Box,
   ButtonMarketing,
@@ -24,11 +22,14 @@ import {
   Heading,
   Paragraph,
   Section,
-} from '~styles/system/components'
-import { styled } from '~styles/system/stitches.config'
+} from '@jeromefitz/design-system/components'
+import { styled } from '@jeromefitz/design-system/stitches.config'
+
+import { TAGS } from '~config/websites'
+import getInfoType from '~lib/notion/getInfoType'
 
 const Announce = dynamic(
-  () => import('~styles/system/components').then((mod) => mod.Announce),
+  () => import('@jeromefitz/design-system/components').then((mod) => mod.Announce),
   {
     ssr: false,
   }

@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { Box } from '~styles/system/components'
+import { Box } from '@jeromefitz/design-system/components'
 
 import { StyledButton } from './ButtonMarketing.styles'
 import { ButtonMarketingProps } from './ButtonMarketing.types'

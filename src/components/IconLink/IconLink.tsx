@@ -1,7 +1,8 @@
 import _startsWith from 'lodash/startsWith'
 import NextLink from 'next/link'
 
-import { styled } from '~styles/system/stitches.config'
+import { styled } from '@jeromefitz/design-system/stitches.config'
+
 import getNextLink from '~utils/getNextLink'
 import isObject from '~utils/isObject'
 

@@ -1,9 +1,10 @@
 import _size from 'lodash/size'
 
+import { Box, Flex, Text } from '@jeromefitz/design-system/components'
+
 import getContentTypeDetail from '../utils/getContentTypeDetail'
 
 import Emoji from '~components/Emoji'
-import { Box, Flex, Text } from '~styles/system/components'
 
 const quote = ({ content, id }) => {
   if (_size(content) > 0) {

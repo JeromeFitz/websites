@@ -5,13 +5,15 @@ import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 import * as React from 'react'
 
-import { Breakout } from '~components/Container'
-import { ImageWithBackgroundBlur } from '~components/Layout/ImageLead'
-import { NOTION } from '~config/websites'
-import { IMAGE__PLACEHOLDER } from '~lib/constants'
-import getInfoType from '~lib/notion/getInfoType'
-import { Badge, Box, Grid, Paragraph, Spacer, Text } from '~styles/system/components'
-import { Card } from '~styles/system/components/Card'
+import {
+  Badge,
+  Box,
+  Grid,
+  Paragraph,
+  Spacer,
+  Text,
+} from '@jeromefitz/design-system/components'
+import { Card } from '@jeromefitz/design-system/components/Card'
 import {
   css_card,
   CardContent,
@@ -19,8 +21,17 @@ import {
   CardImageContainer,
   CardMeta,
   CardTitle,
-} from '~styles/system/components/Card/Show'
-import { CardOuter, ImageBlur } from '~styles/system/components/Card/Spotify'
+} from '@jeromefitz/design-system/components/Card/Show'
+import {
+  CardOuter,
+  ImageBlur,
+} from '@jeromefitz/design-system/components/Card/Spotify'
+
+import { Breakout } from '~components/Container'
+import { ImageWithBackgroundBlur } from '~components/Layout/ImageLead'
+import { NOTION } from '~config/websites'
+import { IMAGE__PLACEHOLDER } from '~lib/constants'
+import getInfoType from '~lib/notion/getInfoType'
 import lpad from '~utils/lpad'
 
 const Emoji = dynamic(() => import('~components/Emoji'), {

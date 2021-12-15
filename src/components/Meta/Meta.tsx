@@ -6,10 +6,18 @@ import pluralize from 'pluralize'
 // import useSWR from 'swr'
 import useSWRImmutable from 'swr/immutable'
 
+import {
+  Box,
+  Flex,
+  Grid,
+  Heading,
+  Paragraph,
+  Text,
+} from '@jeromefitz/design-system/components'
+
 import fetcher from '~lib/fetcher'
 import getTitle from '~lib/notion/getTitle'
 import type { Show } from '~lib/notion/schema/types'
-import { Box, Flex, Grid, Heading, Paragraph, Text } from '~styles/system/components'
 
 const rollupExclude = [
   'rollupTags',

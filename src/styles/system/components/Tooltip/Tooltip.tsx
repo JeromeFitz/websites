@@ -1,30 +1,10 @@
 import * as TooltipPrimitive from '@radix-ui/react-tooltip'
 import * as React from 'react'
 
-import { Box, Text } from '~styles/system/components'
-import { styled } from '~styles/system/stitches.config'
+import { Box, Text } from '@jeromefitz/design-system/components'
 
-type TooltipProps = React.ComponentProps<typeof TooltipPrimitive.Root> &
-  React.ComponentProps<typeof TooltipPrimitive.Content> & {
-    children: React.ReactElement
-    content: React.ReactNode
-    multiline?: boolean
-  }
-
-const Content = styled(TooltipPrimitive.Content, {
-  backgroundColor: '$transparentPanel',
-  borderRadius: '$1',
-  padding: '$1 $2',
-
-  variants: {
-    multiline: {
-      true: {
-        maxWidth: 250,
-        pb: 7,
-      },
-    },
-  },
-})
+import { TooltipContent } from './Tooltip.styles'
+import type { TooltipProps } from './Tooltip.types'
 
 function Tooltip({
   children,
@@ -42,8 +22,7 @@ function Tooltip({
       onOpenChange={onOpenChange}
     >
       <TooltipPrimitive.Trigger asChild>{children}</TooltipPrimitive.Trigger>
-
-      <Content
+      <TooltipContent
         side="top"
         align="center"
         sideOffset={5}
@@ -70,7 +49,7 @@ function Tooltip({
             }}
           />
         </Box>
-      </Content>
+      </TooltipContent>
     </TooltipPrimitive.Root>
   )
 }

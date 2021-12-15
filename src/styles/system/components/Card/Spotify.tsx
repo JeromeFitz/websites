@@ -1,7 +1,7 @@
 import NextImage from 'next/image'
 
-import { Box, Flex } from '~styles/system/components'
-import { styled } from '~styles/system/stitches.config'
+import { Box, Flex } from '@jeromefitz/design-system/components'
+import { styled } from '@jeromefitz/design-system/stitches.config'
 
 const CardContainer = styled('div', {
   display: 'flex',

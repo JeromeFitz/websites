@@ -10,14 +10,10 @@ import NextLink from 'next/link'
 import * as React from 'react'
 import _title from 'title'
 
-import { CarouselArrowButton, GrabBox, FocusArea } from '~components/Carousel'
-import { Breakout } from '~components/Container'
-import { PageHeading } from '~components/Layout'
 // import { ImageWithBackgroundBlur } from '~components/Layout/ImageLead'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { artists, tracks } from '~data/mock/spotify/top10'
 import {
   // Badge,
   Box,
@@ -32,11 +28,19 @@ import {
   // Paragraph,
   Section,
   Text,
-} from '~styles/system/components'
-import { Empty } from '~styles/system/components/Hero/Empty'
-import { HeroImage } from '~styles/system/components/Hero/HeroImage'
-import { MainHeroDialog } from '~styles/system/components/Hero/MainHeroDialog'
-import { darkTheme, styled } from '~styles/system/stitches.config'
+} from '@jeromefitz/design-system/components'
+import { Empty } from '@jeromefitz/design-system/components/Hero/Empty'
+import { HeroImage } from '@jeromefitz/design-system/components/Hero/HeroImage'
+import { MainHeroDialog } from '@jeromefitz/design-system/components/Hero/MainHeroDialog'
+import { darkTheme, styled } from '@jeromefitz/design-system/stitches.config'
+
+import { CarouselArrowButton, GrabBox, FocusArea } from '~components/Carousel'
+import { Breakout } from '~components/Container'
+import { PageHeading } from '~components/Layout'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { artists, tracks } from '~data/mock/spotify/top10'
 import lpad from '~utils/lpad'
 import rangeMap from '~utils/rangeMap'
 

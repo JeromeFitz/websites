@@ -1,4 +1,4 @@
-import { css, styled } from '~styles/system/stitches.config'
+import { css, styled } from '@jeromefitz/design-system/stitches.config'
 
 const panelStyles = css({
   backgroundColor: '$panel',

@@ -7,15 +7,16 @@ import pluralize from 'pluralize'
 import { useEffect } from 'react'
 import { SWRConfig } from 'swr'
 
+import { Container, Section } from '@jeromefitz/design-system/components'
+import { ToastProvider } from '@jeromefitz/design-system/components/Toast'
+import { globalCss, darkTheme } from '@jeromefitz/design-system/stitches.config'
+
 import Footer from '~components/Footer'
 import Header from '~components/Header'
 import NProgress from '~components/NProgress'
 import { ManagedUIContext } from '~context/ManagedUIContext'
 import { useAnalytics } from '~lib/analytics'
 import { IMAGE__FALLBACKS__SHOWS } from '~lib/constants'
-import { Container, Section } from '~styles/system/components'
-import { ToastProvider } from '~styles/system/components/Toast'
-import { globalCss, darkTheme } from '~styles/system/stitches.config'
 
 pluralize.addPluralRule(/cast$/i, 'cast')
 pluralize.addPluralRule(/emeritus$/i, 'emeritus')

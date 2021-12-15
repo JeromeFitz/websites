@@ -1,6 +1,6 @@
-import getContentTypeDetail from '../utils/getContentTypeDetail'
+import { Heading } from '@jeromefitz/design-system/components'
 
-import { Heading } from '~styles/system/components'
+import getContentTypeDetail from '../utils/getContentTypeDetail'
 
 const heading_1 = ({ content, id }) => {
   return (

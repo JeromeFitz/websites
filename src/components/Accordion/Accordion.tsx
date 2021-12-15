@@ -2,7 +2,7 @@ import * as AccordionPrimitive from '@radix-ui/react-accordion'
 import { ChevronDownIcon } from '@radix-ui/react-icons'
 import { forwardRef } from 'react'
 
-import { styled, keyframes } from '~styles/system/stitches.config'
+import { styled, keyframes } from '@jeromefitz/design-system/stitches.config'
 
 const slideDown = keyframes({
   from: { height: 0 },

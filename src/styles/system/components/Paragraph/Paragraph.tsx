@@ -1,8 +1,8 @@
 import merge from 'lodash/merge'
 import * as React from 'react'
 
-import { Text } from '~styles/system/components'
-import { CSS } from '~styles/system/stitches.config'
+import { Text } from '@jeromefitz/design-system/components'
+import { CSS } from '@jeromefitz/design-system/stitches.config'
 
 import type {
   ParagraphProps,

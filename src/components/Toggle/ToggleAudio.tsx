@@ -3,6 +3,8 @@ import Mousetrap from 'mousetrap'
 import { useCallback, useEffect } from 'react'
 import { useSound } from 'use-sound'
 
+import { ButtonIcon } from '@jeromefitz/design-system/components'
+
 import {
   Tooltip,
   TooltipTrigger,
@@ -10,7 +12,6 @@ import {
   TooltipArrow,
 } from '~components/Tooltip'
 import { useUI } from '~context/ManagedUIContext'
-import { ButtonIcon } from '~styles/system/components'
 
 const ThemeToggle = (props) => {
   const { audio, toggleAudio } = useUI()

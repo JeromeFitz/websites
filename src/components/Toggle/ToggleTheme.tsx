@@ -4,6 +4,9 @@ import { useTheme } from 'next-themes'
 import { useCallback, useEffect } from 'react'
 import { useSound } from 'use-sound'
 
+import { ButtonIcon } from '@jeromefitz/design-system/components'
+import { darkTheme } from '@jeromefitz/design-system/stitches.config'
+
 import {
   Tooltip,
   TooltipTrigger,
@@ -11,8 +14,6 @@ import {
   TooltipArrow,
 } from '~components/Tooltip'
 import { useUI } from '~context/ManagedUIContext'
-import { ButtonIcon } from '~styles/system/components'
-import { darkTheme } from '~styles/system/stitches.config'
 
 const ThemeToggle = (props) => {
   const { theme, setTheme } = useTheme()

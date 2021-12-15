@@ -3,16 +3,6 @@ import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 
-import BoxLink from '~components/BoxLink'
-import Emoji from '~components/Emoji'
-import { ToggleAudio, ToggleTheme } from '~components/Toggle'
-import {
-  Tooltip,
-  TooltipTrigger,
-  TooltipContent,
-  TooltipArrow,
-} from '~components/Tooltip'
-import { navigationHeader } from '~config/websites'
 import {
   Avatar,
   Box,
@@ -25,8 +15,19 @@ import {
   PopoverContent,
   PopoverTrigger,
   Text,
-} from '~styles/system/components'
-import { styled } from '~styles/system/stitches.config'
+} from '@jeromefitz/design-system/components'
+import { styled } from '@jeromefitz/design-system/stitches.config'
+
+import BoxLink from '~components/BoxLink'
+import Emoji from '~components/Emoji'
+import { ToggleAudio, ToggleTheme } from '~components/Toggle'
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+  TooltipArrow,
+} from '~components/Tooltip'
+import { navigationHeader } from '~config/websites'
 
 const HighlightLink = styled('a', {
   display: 'block',
