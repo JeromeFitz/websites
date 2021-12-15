@@ -4,5 +4,7 @@
 
 yarn pretty-quick --staged
 exec < /dev/tty
-# yarn git-cz --hook || true
-node ./node_modules/@jeromefitz/git-cz/dist/cli.js --hook || true
+# @note(git-cz) publish w/ this
+yarn git-cz --hook || true
+# @note(git-cz) yarn link w/ this
+# node ./node_modules/@jeromefitz/git-cz/dist/cli.js --hook || true
