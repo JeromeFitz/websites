@@ -136,6 +136,9 @@
       "~utils": "src/utils/"
     },
     "debug": false,
+    "entrypoints": [
+      "src/pages"
+    ],
     "exclude": [
       "src/config/websites/*",
       "src/data/*",
@@ -164,6 +167,7 @@
       "src/context",
       "src/hooks",
       "src/lib",
+      "src/pages",
       "src/styles",
       "src/utils"
     ]
