@@ -11,10 +11,10 @@ import Footer from '~components/Footer'
 import Header from '~components/Header'
 import NProgress from '~components/NProgress'
 import { ManagedUIContext } from '~context/ManagedUIContext'
-import NotificationProvider from '~context/Notification'
 import { useAnalytics } from '~lib/analytics'
 import { IMAGE__FALLBACKS__SHOWS } from '~lib/constants'
 import { Container, Section } from '~styles/system/components'
+import { ToastProvider } from '~styles/system/components/Toast'
 import { globalCss, darkTheme } from '~styles/system/stitches.config'
 
 pluralize.addPluralRule(/cast$/i, 'cast')
@@ -156,7 +156,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
             value={{ light: 'light-theme', dark: darkTheme.className }}
             defaultTheme="system"
           >
-            <NotificationProvider>
+            <ToastProvider>
               <NProgress />
               <Header />
               <Container
@@ -169,7 +169,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
                 </Section>
               </Container>
               <Footer />
-            </NotificationProvider>
+            </ToastProvider>
           </ThemeProvider>
         </ManagedUIContext>
       </SWRConfig>

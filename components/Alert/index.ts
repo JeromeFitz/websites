@@ -1,4 +1,3 @@
-import Notification from './Notification'
-import NotificationContainer from './NotificationContainer'
+import Dialog from './Dialog'
 
-export { Notification, NotificationContainer }
+export { Dialog }

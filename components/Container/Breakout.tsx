@@ -1,9 +1,7 @@
-import cx from 'clsx'
-
 const Breakout = ({ children }) => {
   return (
     <div
-      className={cx('breakout')}
+      className={'breakout'}
       style={{
         position: 'relative',
         left: 'calc(-50vw + 50%)',
