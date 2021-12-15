@@ -119,7 +119,7 @@ const PlaygroundDialog = () => {
   const dialogText = {
     dialogTrigger: 'Trigger Alert',
     //
-    dialogTitle: 'Are you absolutely sure?',
+    dialogTitle: 'Are you absolutely sure doo doo head?',
     dialogDescription: 'This action cannot be undone. ',
     //
     dialogCancel: 'Cancel',
