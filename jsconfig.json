@@ -2,19 +2,19 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "~components/*": ["components/*"],
-      "~config/*": ["config/*"],
-      "~containers/*": ["containers/*"],
-      "~context/*": ["context/*"],
-      "~data/*": ["data/*"],
-      "~hooks/*": ["hooks/*"],
-      "~lib/*": ["lib/*"],
-      "~pages/*": ["pages/*"],
-      "~scripts/*": ["scripts/*"],
-      "~styles/*": ["styles/*"],
-      "~svg/*": ["svg/*"],
-      "~theme/*": ["theme/*"],
-      "~utils/*": ["utils/*"]
+      "~components/*": ["src/components/*"],
+      "~config/*": ["src/config/*"],
+      "~containers/*": ["src/containers/*"],
+      "~context/*": ["src/context/*"],
+      "~data/*": ["src/data/*"],
+      "~hooks/*": ["src/hooks/*"],
+      "~lib/*": ["src/lib/*"],
+      "~pages/*": ["src/pages/*"],
+      "~scripts/*": ["src/scripts/*"],
+      "~styles/*": ["src/styles/*"],
+      "~svg/*": ["src/svg/*"],
+      "~theme/*": ["src/theme/*"],
+      "~utils/*": ["src/utils/*"]
     }
   }
 }

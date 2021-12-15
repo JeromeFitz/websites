@@ -5,8 +5,8 @@
     // "baseUrl": ".",
     "incremental": true,
     // "noUnusedParameters": false, // @todo(lint)
-    // "outDir": "./.dist",
-    // "rootDir": ".",
+    "rootDir": "src",
+    "outDir": "dist",
     // "strict": false,
     // //
     // // w/ next-unused
@@ -36,30 +36,21 @@
     "strictPropertyInitialization": false, // @todo(lint)
     "target": "esnext",
     "paths": {
-      "~components/*": ["components/*"],
-      "~config/*": ["config/*"],
-      "~containers/*": ["containers/*"],
-      "~context/*": ["context/*"],
-      "~data/*": ["data/*"],
-      "~hooks/*": ["hooks/*"],
-      "~lib/*": ["lib/*"],
-      "~pages/*": ["pages/*"],
-      "~scripts/*": ["scripts/*"],
-      "~styles/*": ["styles/*"],
-      "~svg/*": ["svg/*"],
-      "~theme/*": ["theme/*"],
-      "~utils/*": ["utils/*"]
+      "~components/*": ["src/components/*"],
+      "~config/*": ["src/config/*"],
+      "~containers/*": ["src/containers/*"],
+      "~context/*": ["src/context/*"],
+      "~data/*": ["src/data/*"],
+      "~hooks/*": ["src/hooks/*"],
+      "~lib/*": ["src/lib/*"],
+      "~pages/*": ["src/pages/*"],
+      "~scripts/*": ["src/scripts/*"],
+      "~styles/*": ["src/styles/*"],
+      "~svg/*": ["src/svg/*"],
+      "~theme/*": ["src/theme/*"],
+      "~utils/*": ["src/utils/*"]
     }
   },
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    // "config/notion/website/getRedirects.js",
-    "index.d.ts",
-    "lint-staged.config.mjs",
-    "next-env.d.ts",
-    "next.config.js",
-    "next.sitemap.js"
-  ],
-  "exclude": ["node_modules", "zzz/", "**/*.test.ts"]
+  "include": ["src", "index.d.ts", "next-env.d.ts"],
+  "exclude": ["node_modules", "**/*.test.ts"]
 }
