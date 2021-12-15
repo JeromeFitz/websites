@@ -1,7 +1,7 @@
 import _orderBy from 'lodash/orderBy'
 import _size from 'lodash/size'
 import dynamic from 'next/dynamic'
-import React from 'react'
+import * as React from 'react'
 
 import { NOTION } from '~config/websites'
 

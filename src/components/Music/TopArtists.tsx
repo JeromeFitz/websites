@@ -12,19 +12,17 @@ import useSpotify from '~hooks/useSpotify'
 import fetcher from '~lib/fetcher'
 import {
   Box,
+  Carousel,
+  CarouselSlideList,
+  CarouselSlide,
+  CarouselNext,
+  CarouselPrevious,
   Flex,
   Heading,
   Paragraph,
   Section,
   Text,
 } from '~styles/system/components'
-import {
-  Carousel,
-  CarouselSlideList,
-  CarouselSlide,
-  CarouselNext,
-  CarouselPrevious,
-} from '~styles/system/components/Carousel'
 import { HeroImage } from '~styles/system/components/Hero/HeroImage'
 import { darkTheme, styled } from '~styles/system/stitches.config'
 

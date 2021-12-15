@@ -1,5 +1,5 @@
 import _size from 'lodash/size'
-import React from 'react'
+import * as React from 'react'
 
 const title = ({ content }) => {
   return _size(content) > 0 ? (
