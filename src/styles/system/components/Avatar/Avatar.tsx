@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { Box, Status } from '~styles/system/components'
+import { Box, Status } from '@jeromefitz/design-system/components'
 
 import {
   StyledAvatar,

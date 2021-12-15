@@ -2,10 +2,11 @@ import { ExternalLinkIcon } from '@radix-ui/react-icons'
 import NextLink from 'next/link'
 import { useSound } from 'use-sound'
 
+import { Flex, Link } from '@jeromefitz/design-system/components'
+
 import { EmojiParser } from '~components/Emoji'
 import { useUI } from '~context/ManagedUIContext'
 import getNextLink from '~lib/notion/getNextLink'
-import { Flex, Link } from '~styles/system/components'
 
 const TextAnnotationLink = ({ children, href }) => {
   const { audio } = useUI()

@@ -7,11 +7,6 @@ import _size from 'lodash/size'
 import React, { useState } from 'react'
 import { useSound } from 'use-sound'
 
-import { PageHeading } from '~components/Layout'
-import { TopArtists, TopTracks, YearInReview } from '~components/Music'
-import Seo from '~components/Seo'
-import { useUI } from '~context/ManagedUIContext'
-import useSpotify from '~hooks/useSpotify'
 import {
   Box,
   // Container,
@@ -24,7 +19,13 @@ import {
   RadioCardGroup,
   Section,
   Text,
-} from '~styles/system/components'
+} from '@jeromefitz/design-system/components'
+
+import { PageHeading } from '~components/Layout'
+import { TopArtists, TopTracks, YearInReview } from '~components/Music'
+import Seo from '~components/Seo'
+import { useUI } from '~context/ManagedUIContext'
+import useSpotify from '~hooks/useSpotify'
 
 // import {
 //   spotifyFavoriteAlbums,

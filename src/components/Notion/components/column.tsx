@@ -1,8 +1,8 @@
 import _map from 'lodash/map'
 
-import getContentType from '../utils/getContentType'
+import { Flex } from '@jeromefitz/design-system/components'
 
-import { Flex } from '~styles/system/components'
+import getContentType from '../utils/getContentType'
 
 const column = ({ content, has_children }) => {
   if (!has_children) return null

@@ -2,11 +2,15 @@ import _map from 'lodash/map'
 import NextLink from 'next/link'
 import * as React from 'react'
 
-import { Breakout } from '~components/Container'
-import { ImageWithBackgroundBlur } from '~components/Layout/ImageLead'
-import { IMAGE__PLACEHOLDER } from '~lib/constants'
-import { Badge, Box, Grid, Paragraph, Spacer, Text } from '~styles/system/components'
-import { Card } from '~styles/system/components/Card'
+import {
+  Badge,
+  Box,
+  Grid,
+  Paragraph,
+  Spacer,
+  Text,
+} from '@jeromefitz/design-system/components'
+import { Card } from '@jeromefitz/design-system/components/Card'
 import {
   css_card,
   CardContent,
@@ -14,8 +18,15 @@ import {
   CardImageContainer,
   CardMeta,
   CardTitle,
-} from '~styles/system/components/Card/Show'
-import { CardOuter, ImageBlur } from '~styles/system/components/Card/Spotify'
+} from '@jeromefitz/design-system/components/Card/Show'
+import {
+  CardOuter,
+  ImageBlur,
+} from '@jeromefitz/design-system/components/Card/Spotify'
+
+import { Breakout } from '~components/Container'
+import { ImageWithBackgroundBlur } from '~components/Layout/ImageLead'
+import { IMAGE__PLACEHOLDER } from '~lib/constants'
 
 const Shows = ({ images, items }) => {
   return (

@@ -6,8 +6,6 @@ import NextLink from 'next/link'
 import useSWR from 'swr'
 import _title from 'title'
 
-import fetcher from '~lib/fetcher'
-import { spotifyFavoriteTracks } from '~lib/spotify/favorites'
 import {
   Badge,
   Flex,
@@ -15,9 +13,12 @@ import {
   Link,
   Paragraph,
   Separator,
-} from '~styles/system/components'
-import { CardSpotify } from '~styles/system/components/Card/Spotify'
-import { styled } from '~styles/system/stitches.config'
+} from '@jeromefitz/design-system/components'
+import { CardSpotify } from '@jeromefitz/design-system/components/Card/Spotify'
+import { styled } from '@jeromefitz/design-system/stitches.config'
+
+import fetcher from '~lib/fetcher'
+import { spotifyFavoriteTracks } from '~lib/spotify/favorites'
 
 // const HOUR = 3600000
 const MINUTE = 60000

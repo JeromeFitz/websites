@@ -1,4 +1,4 @@
-import { styled, keyframes } from '~styles/system/stitches.config'
+import { styled, keyframes } from '@jeromefitz/design-system/stitches.config'
 
 const pulse = keyframes({
   '0%': { opacity: 0 },

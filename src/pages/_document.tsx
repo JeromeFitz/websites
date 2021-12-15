@@ -7,6 +7,8 @@ import Document, {
   NextScript,
 } from 'next/document'
 
+import { getCssText, reset } from '@jeromefitz/design-system/stitches.config'
+
 // import { info, fontFace } from '~styles/fonts/F37Bella'
 // import { info, fontFace } from '~styles/fonts/F37Bolton'
 // import { info, fontFace } from '~styles/fonts/F37Ginger'
@@ -15,7 +17,6 @@ import Document, {
 // import { info, fontFace } from '~styles/fonts/IIVorkurs'
 import { info, fontFace } from '~styles/fonts/Inter'
 // import { info, fontFace } from '~styles/fonts/NameSans'
-import { getCssText, reset } from '~styles/system/stitches.config'
 
 /**
  * Get the css and reset the internal css representation.

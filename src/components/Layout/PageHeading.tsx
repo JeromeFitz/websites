@@ -1,4 +1,4 @@
-import { Heading, Paragraph, Skeleton } from '~styles/system/components'
+import { Heading, Paragraph, Skeleton } from '@jeromefitz/design-system/components'
 
 const SkeletonTitle = () => (
   <Skeleton

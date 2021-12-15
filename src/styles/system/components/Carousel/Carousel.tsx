@@ -6,7 +6,7 @@ import debounce from 'lodash/debounce'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import smoothscroll from 'smoothscroll-polyfill'
 
-import { Box } from '~styles/system/components'
+import { Box } from '@jeromefitz/design-system/components'
 
 const [CarouselProvider, useCarouselContext] = createContext<{
   _: any

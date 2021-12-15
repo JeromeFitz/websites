@@ -11,14 +11,6 @@ import dynamic from 'next/dynamic'
 import NextLink from 'next/link'
 import * as React from 'react'
 
-import BoxLink from '~components/BoxLink'
-import IconLink from '~components/IconLink'
-import {
-  Tooltip,
-  TooltipTrigger,
-  TooltipContent,
-  TooltipArrow,
-} from '~components/Tooltip'
 import {
   Avatar,
   Box,
@@ -28,7 +20,16 @@ import {
   Paragraph,
   Separator,
   Text,
-} from '~styles/system/components'
+} from '@jeromefitz/design-system/components'
+
+import BoxLink from '~components/BoxLink'
+import IconLink from '~components/IconLink'
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+  TooltipArrow,
+} from '~components/Tooltip'
 
 const NowPlayingWithNoSSR = dynamic(() => import('~components/NowPlaying'), {
   ssr: false,

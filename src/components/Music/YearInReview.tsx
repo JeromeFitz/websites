@@ -4,10 +4,6 @@ import _map from 'lodash/map'
 import _title from 'title'
 
 import {
-  spotifyFavoriteAlbums,
-  spotifyFavoriteArtists,
-} from '~lib/spotify/favorites'
-import {
   Badge,
   Box,
   Flex,
@@ -15,9 +11,14 @@ import {
   Link,
   Paragraph,
   Separator,
-} from '~styles/system/components'
-import { CardSpotify } from '~styles/system/components/Card/Spotify'
-import { styled } from '~styles/system/stitches.config'
+} from '@jeromefitz/design-system/components'
+import { CardSpotify } from '@jeromefitz/design-system/components/Card/Spotify'
+import { styled } from '@jeromefitz/design-system/stitches.config'
+
+import {
+  spotifyFavoriteAlbums,
+  spotifyFavoriteArtists,
+} from '~lib/spotify/favorites'
 
 const Section = styled('section', {
   minHeight: '100%',

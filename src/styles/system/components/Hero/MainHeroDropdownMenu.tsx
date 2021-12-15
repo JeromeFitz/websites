@@ -9,9 +9,9 @@ import {
 } from '@radix-ui/react-icons'
 import * as React from 'react'
 
-import { Box } from '~styles/system/components'
-import { DemoButton } from '~styles/system/components/Button/DemoButton'
-import { styled } from '~styles/system/stitches.config'
+import { Box } from '@jeromefitz/design-system/components'
+import { DemoButton } from '@jeromefitz/design-system/components/Button/DemoButton'
+import { styled } from '@jeromefitz/design-system/stitches.config'
 
 const DropdownMenuArrow = styled(DropdownMenuPrimitive.Arrow, {
   fill: '$loContrast',

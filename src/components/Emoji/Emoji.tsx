@@ -1,6 +1,6 @@
 import nodeEmoji from 'node-emoji'
 
-import { Box } from '~styles/system/components'
+import { Box } from '@jeromefitz/design-system/components'
 
 const EmojiHtml = ({ emoji, label, margin }) => {
   return (

@@ -1,8 +1,8 @@
 import * as AvatarPrimitive from '@radix-ui/react-avatar'
 import * as React from 'react'
 
-import { Status } from '~styles/system/components'
-import { VariantProps, CSS } from '~styles/system/stitches.config'
+import { Status } from '@jeromefitz/design-system/components'
+import { VariantProps, CSS } from '@jeromefitz/design-system/stitches.config'
 
 import { StyledAvatar } from './Avatar.styles'
 

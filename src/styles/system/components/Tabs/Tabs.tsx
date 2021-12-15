@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { Separator } from '~styles/system/components'
+import { Separator } from '@jeromefitz/design-system/components'
 
 import { StyledTabsList } from './Tabs.styles'
 import type { TabsListProps } from './Tabs.types'

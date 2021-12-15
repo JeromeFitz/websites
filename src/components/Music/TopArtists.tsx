@@ -6,10 +6,6 @@ import React, { useEffect, useState } from 'react'
 import useSWR from 'swr'
 import _title from 'title'
 
-import { CarouselArrowButton, GrabBox, FocusArea } from '~components/Carousel'
-import { Breakout } from '~components/Container'
-import useSpotify from '~hooks/useSpotify'
-import fetcher from '~lib/fetcher'
 import {
   Box,
   Carousel,
@@ -22,9 +18,14 @@ import {
   Paragraph,
   Section,
   Text,
-} from '~styles/system/components'
-import { HeroImage } from '~styles/system/components/Hero/HeroImage'
-import { darkTheme, styled } from '~styles/system/stitches.config'
+} from '@jeromefitz/design-system/components'
+import { HeroImage } from '@jeromefitz/design-system/components/Hero/HeroImage'
+import { darkTheme, styled } from '@jeromefitz/design-system/stitches.config'
+
+import { CarouselArrowButton, GrabBox, FocusArea } from '~components/Carousel'
+import { Breakout } from '~components/Container'
+import useSpotify from '~hooks/useSpotify'
+import fetcher from '~lib/fetcher'
 
 const HOUR = 3600000
 // const MINUTE = 60000

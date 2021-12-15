@@ -1,6 +1,6 @@
 import _map from 'lodash/map'
 
-import { Flex } from '~styles/system/components'
+import { Flex } from '@jeromefitz/design-system/components'
 
 import Column from './column'
 

@@ -1,7 +1,8 @@
 import { useState } from 'react'
 
+import { Separator } from '@jeromefitz/design-system/components'
+
 import { PageHeading, SkeletonHeading } from '~components/Layout'
-import { Separator } from '~styles/system/components'
 
 const text = {
   error: {

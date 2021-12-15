@@ -6,11 +6,6 @@ import _title from 'title'
 import { useSound } from 'use-sound'
 import { v4 as uuid } from 'uuid'
 
-import { Dialog } from '~components/Alert'
-import { PageHeading } from '~components/Layout'
-import Seo from '~components/Seo'
-import { useUI } from '~context/ManagedUIContext'
-// import { BIG_HEAD_PROPS } from '~lib/constants'
 import {
   Box,
   // Container,
@@ -23,14 +18,20 @@ import {
   Section,
   Switch,
   Text,
-} from '~styles/system/components'
-import { DemoButton } from '~styles/system/components/Button/DemoButton'
+} from '@jeromefitz/design-system/components'
+import { DemoButton } from '@jeromefitz/design-system/components/Button/DemoButton'
 import {
   ToastData,
   ToastType,
   useToastDispatchers,
-} from '~styles/system/components/Toast'
-import { styled } from '~styles/system/stitches.config'
+} from '@jeromefitz/design-system/components/Toast'
+import { styled } from '@jeromefitz/design-system/stitches.config'
+
+import { Dialog } from '~components/Alert'
+import { PageHeading } from '~components/Layout'
+import Seo from '~components/Seo'
+import { useUI } from '~context/ManagedUIContext'
+// import { BIG_HEAD_PROPS } from '~lib/constants'
 
 const properties = {
   title: 'Playground',

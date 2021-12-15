@@ -1,7 +1,7 @@
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group'
 import * as React from 'react'
 
-import { CSS } from '~styles/system/stitches.config'
+import { CSS } from '@jeromefitz/design-system/stitches.config'
 
 type RadioGroupItemPrimitiveProps = React.ComponentProps<
   typeof RadioGroupPrimitive.Item

@@ -1,5 +1,6 @@
+import { Box } from '@jeromefitz/design-system/components'
+
 import Emoji from '~components/Emoji'
-import { Box } from '~styles/system/components'
 
 const Note = ({ children, label = 'Note:' }) => {
   return (
