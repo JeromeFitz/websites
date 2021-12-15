@@ -28,7 +28,7 @@ import { MarketingButton } from '~styles/system/components/Button/MarketingButto
 import { styled } from '~styles/system/stitches.config'
 
 const Announce = dynamic(
-  () => import('~styles/system/components/Announce').then((mod) => mod.Announce),
+  () => import('~styles/system/components').then((mod) => mod.Announce),
   {
     ssr: false,
   }
