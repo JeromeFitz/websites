@@ -1,5 +1,5 @@
 {
-  "extends": "@jeromefitz/codestyle/tsconfig.react.json",
+  "extends": "@jeromefitz/codestyle/tsconfig.next.json",
   "compilerOptions": {
     // // w/ extends
     // "baseUrl": ".",
@@ -56,7 +56,7 @@
     "**/*.tsx",
     // "config/notion/website/getRedirects.js",
     "index.d.ts",
-    "lint-staged.config.js",
+    "lint-staged.config.mjs",
     "next-env.d.ts",
     "next.config.js",
     "next.sitemap.js"

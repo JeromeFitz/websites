@@ -40,7 +40,7 @@
   "dependencies": {
     "@bigheads/core": "0.3.3",
     "@heroicons/react": "1.0.5",
-    "@notionhq/client": "0.4.9",
+    "@notionhq/client": "0.4.10",
     "@plaiceholder/next": "2.2.0",
     "@radix-ui/colors": "0.1.8",
     "@radix-ui/react-accessible-icon": "0.1.3",

@@ -1,4 +1,4 @@
-const release = require('@jeromefitz/semantic/release.config.cjs')
+const release = require('@jeromefitz/semantic/release.config.cjs').default
 const isCI = require('is-ci')
 const _map = require('lodash/map.js')
 
