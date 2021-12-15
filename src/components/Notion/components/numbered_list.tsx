@@ -1,4 +1,4 @@
-import { Flex } from '~styles/system/components/Flex'
+import { Flex } from '~styles/system/components'
 
 const numbered_list = ({ children }) => {
   return (

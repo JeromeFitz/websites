@@ -1,5 +1,5 @@
 import { useViewportScroll } from 'framer-motion'
-import React from 'react'
+import * as React from 'react'
 
 const useProgress = () => {
   const [readingProgress, setReadingProgress] = React.useState(0)

@@ -1,6 +1,6 @@
 import * as DialogPrimitive from '@radix-ui/react-dialog'
 import { Cross2Icon } from '@radix-ui/react-icons'
-import React from 'react'
+import * as React from 'react'
 
 import { DemoButton } from '../Button/DemoButton'
 import { DemoIconButton } from '../Button/DemoIconButton'

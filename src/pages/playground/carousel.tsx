@@ -7,7 +7,7 @@ import {
 import _map from 'lodash/map'
 import _size from 'lodash/size'
 import NextLink from 'next/link'
-import React from 'react'
+import * as React from 'react'
 import _title from 'title'
 
 import { CarouselArrowButton, GrabBox, FocusArea } from '~components/Carousel'
@@ -21,6 +21,11 @@ import { artists, tracks } from '~data/mock/spotify/top10'
 import {
   // Badge,
   Box,
+  Carousel,
+  CarouselSlideList,
+  CarouselSlide,
+  CarouselNext,
+  CarouselPrevious,
   // Container,
   Flex,
   Link,
@@ -28,13 +33,6 @@ import {
   Section,
   Text,
 } from '~styles/system/components'
-import {
-  Carousel,
-  CarouselSlideList,
-  CarouselSlide,
-  CarouselNext,
-  CarouselPrevious,
-} from '~styles/system/components/Carousel'
 import { Empty } from '~styles/system/components/Hero/Empty'
 import { HeroImage } from '~styles/system/components/Hero/HeroImage'
 import { MainHeroDialog } from '~styles/system/components/Hero/MainHeroDialog'

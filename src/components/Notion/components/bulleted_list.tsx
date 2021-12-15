@@ -1,4 +1,4 @@
-import { Flex } from '~styles/system/components/Flex'
+import { Flex } from '~styles/system/components'
 
 const bulleted_list = ({ children }) => {
   return (

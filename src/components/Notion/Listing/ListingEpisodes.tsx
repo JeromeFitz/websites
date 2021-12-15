@@ -3,7 +3,7 @@ import _size from 'lodash/size'
 import dynamic from 'next/dynamic'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
-import React from 'react'
+import * as React from 'react'
 
 import { Breakout } from '~components/Container'
 import { ImageWithBackgroundBlur } from '~components/Layout/ImageLead'

@@ -7,9 +7,9 @@ import {
   ModulzLogoIcon,
   StitchesLogoIcon,
 } from '@radix-ui/react-icons'
-import React from 'react'
+import * as React from 'react'
 
-import { Box } from '~styles/system/components/Box'
+import { Box } from '~styles/system/components'
 import { DemoButton } from '~styles/system/components/Button/DemoButton'
 import { styled } from '~styles/system/stitches.config'
 

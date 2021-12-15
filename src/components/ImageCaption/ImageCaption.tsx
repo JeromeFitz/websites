@@ -1,4 +1,4 @@
-import { Text } from '~styles/system/components/Text'
+import { Text } from '~styles/system/components'
 
 const ImageCaption = ({ caption }) => {
   return (

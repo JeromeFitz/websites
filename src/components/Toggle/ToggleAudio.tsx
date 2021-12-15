@@ -10,7 +10,7 @@ import {
   TooltipArrow,
 } from '~components/Tooltip'
 import { useUI } from '~context/ManagedUIContext'
-import { IconButton } from '~styles/system/components'
+import { ButtonIcon } from '~styles/system/components'
 
 const ThemeToggle = (props) => {
   const { audio, toggleAudio } = useUI()
@@ -42,14 +42,14 @@ const ThemeToggle = (props) => {
   return (
     <Tooltip>
       <TooltipTrigger asChild>
-        <IconButton
+        <ButtonIcon
           aria-label={content}
           onClick={() => handleClick()}
           cursor="pointer"
           {...props}
         >
           {audio ? <SpeakerModerateIcon /> : <SpeakerOffIcon />}
-        </IconButton>
+        </ButtonIcon>
       </TooltipTrigger>
       <TooltipContent align="end" sideOffset={5}>
         {content}

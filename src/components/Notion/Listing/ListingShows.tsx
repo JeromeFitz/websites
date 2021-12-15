@@ -1,6 +1,6 @@
 import _map from 'lodash/map'
 import NextLink from 'next/link'
-import React from 'react'
+import * as React from 'react'
 
 import { Breakout } from '~components/Container'
 import { ImageWithBackgroundBlur } from '~components/Layout/ImageLead'
