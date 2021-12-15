@@ -20,6 +20,7 @@ import _union from 'lodash/union'
 import { TAGS } from '~config/websites'
 import {
   Box,
+  ButtonMarketing,
   // Container,
   Flex,
   Grid,
@@ -29,7 +30,7 @@ import {
   // Section,
   // Text,
 } from '~styles/system/components'
-import { MarketingButton } from '~styles/system/components/Button/MarketingButton'
+
 // import { styled } from '~styles/system/stitches.config'
 
 // const Foo = ({ children, title }) => {
@@ -167,7 +168,7 @@ const ListingEvent = ({ data }) => {
         >
           {
             data?.info?.properties?.ticketUrl ? (
-              <MarketingButton
+              <ButtonMarketing
                 as="a"
                 css={{
                   zIndex: '3',
@@ -180,16 +181,16 @@ const ListingEvent = ({ data }) => {
                 icon={ArrowRightIcon}
               >
                 Get Tickets
-              </MarketingButton>
+              </ButtonMarketing>
             ) : null
-            // <MarketingButton
+            // <ButtonMarketing
             //   as="button"
             //   css={{ cursor: 'not-allowed !important' }}
             //   disabled={true}
             //   icon={ArrowRightIcon}
             // >
             //   Get Tickets
-            // </MarketingButton>
+            // </ButtonMarketing>
           }
         </Flex>
         {/* </Foo> */}

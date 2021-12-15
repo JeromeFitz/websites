@@ -9,7 +9,7 @@ import {
 } from '@radix-ui/react-icons'
 import dynamic from 'next/dynamic'
 import NextLink from 'next/link'
-import React from 'react'
+import * as React from 'react'
 
 import BoxLink from '~components/BoxLink'
 import IconLink from '~components/IconLink'

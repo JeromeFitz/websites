@@ -1,5 +1,5 @@
 import _size from 'lodash/size'
-import React from 'react'
+import * as React from 'react'
 
 const rich_text = ({ content }) => {
   return _size(content) > 0 ? (

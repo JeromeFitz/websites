@@ -11,7 +11,7 @@ import {
   TooltipArrow,
 } from '~components/Tooltip'
 import { useUI } from '~context/ManagedUIContext'
-import { IconButton } from '~styles/system/components'
+import { ButtonIcon } from '~styles/system/components'
 import { darkTheme } from '~styles/system/stitches.config'
 
 const ThemeToggle = (props) => {
@@ -42,7 +42,7 @@ const ThemeToggle = (props) => {
   return (
     <Tooltip>
       <TooltipTrigger asChild>
-        <IconButton
+        <ButtonIcon
           aria-label={content}
           onClick={() => handleClick()}
           cursor="pointer"
@@ -50,7 +50,7 @@ const ThemeToggle = (props) => {
           {...props}
         >
           {theme === 'light' ? <MoonIcon /> : <SunIcon />}
-        </IconButton>
+        </ButtonIcon>
       </TooltipTrigger>
       <TooltipContent align="end" sideOffset={5}>
         {content}

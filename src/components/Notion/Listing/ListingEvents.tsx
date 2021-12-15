@@ -11,12 +11,13 @@ import _union from 'lodash/union'
 import _uniqWith from 'lodash/uniqWith'
 import dynamic from 'next/dynamic'
 import NextLink from 'next/link'
-import React from 'react'
+import * as React from 'react'
 
 import { TAGS } from '~config/websites'
 import getInfoType from '~lib/notion/getInfoType'
 import {
   Box,
+  ButtonMarketing,
   // Container,
   Flex,
   Grid,
@@ -24,7 +25,6 @@ import {
   Paragraph,
   Section,
 } from '~styles/system/components'
-import { MarketingButton } from '~styles/system/components/Button/MarketingButton'
 import { styled } from '~styles/system/stitches.config'
 
 const Announce = dynamic(
@@ -665,7 +665,7 @@ const Event = ({ data, keyPrefix }) => {
             >
               {
                 data?.properties.ticketUrl ? (
-                  <MarketingButton
+                  <ButtonMarketing
                     as="a"
                     css={{
                       zIndex: '3',
@@ -676,16 +676,16 @@ const Event = ({ data, keyPrefix }) => {
                     icon={ArrowRightIcon}
                   >
                     Get Tickets
-                  </MarketingButton>
+                  </ButtonMarketing>
                 ) : null
-                // <MarketingButton
+                // <ButtonMarketing
                 //   as="button"
                 //   css={{ cursor: 'not-allowed !important' }}
                 //   disabled={true}
                 //   icon={ArrowRightIcon}
                 // >
                 //   Get Tickets
-                // </MarketingButton>
+                // </ButtonMarketing>
               }
             </Flex>
           </Box>
