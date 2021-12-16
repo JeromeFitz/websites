@@ -73,7 +73,7 @@
     "emoji-regex": "10.0.0",
     "fathom-client": "3.2.0",
     "firebase": "9.6.1",
-    "firebase-admin": "10.0.0",
+    "firebase-admin": "10.0.1",
     "framer-motion": "5.5.3",
     "github-slugger": "1.4.0",
     "lodash": "4.17.21",
