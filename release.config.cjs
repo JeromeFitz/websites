@@ -4,8 +4,8 @@ const _map = require('lodash/map.js')
 
 !isCI && require('dotenv').config({ path: './.env' })
 
-const releaseBranchTypes = require('./config/release-branch-types/index.cjs')
 const { name } = require('./package.json')
+const releaseBranchTypes = require('./src/config/release-branch-types/index.cjs')
 
 const plugins = release.plugins
 
