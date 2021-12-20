@@ -50,12 +50,11 @@ const artist = {
     },
   ],
   total: 50,
-  limit: 2,
+  limit: 1,
   offset: 0,
-  href: 'https://api.spotify.com/v1/me/top/artists?limit=10&offset=10&time_range=long_term',
-  previous:
-    'https://api.spotify.com/v1/me/top/artists?limit=10&offset=0&time_range=long_term',
-  next: 'https://api.spotify.com/v1/me/top/artists?limit=10&offset=20&time_range=long_term',
+  previous: null,
+  href: 'https://api.spotify.com/v1/me/top/artists?time_range=short_term',
+  next: 'https://api.spotify.com/v1/me/top/artists?limit=20&offset=20&time_range=short_term',
 }
 const track = {
   timestamp: 1639954978415,

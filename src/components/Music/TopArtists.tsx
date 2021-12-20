@@ -105,7 +105,9 @@ const info = {
 }
 
 const TA = () => {
-  const [url, urlSet] = useState(DEFAULT_URL + `?limit=20&time_range=medium_term`)
+  const [url, urlSet] = useState(
+    DEFAULT_URL + `?limit=20&offset=0&time_range=medium_term`
+  )
   const {
     data: { time_range },
   } = useSpotify()
@@ -116,7 +118,7 @@ const TA = () => {
   })
 
   useEffect(() => {
-    urlSet(DEFAULT_URL + `?limit=20&time_range=${time_range}`)
+    urlSet(DEFAULT_URL + `?limit=20&offset=0&time_range=${time_range}`)
     return () => {}
   }, [time_range])
 
