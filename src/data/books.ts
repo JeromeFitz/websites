@@ -462,7 +462,7 @@ const data = {
     slug: 'domain-driven-design',
     title: 'Domain-Driven Design',
     subtitle: 'Tackling Complexity in the Heart of Software',
-    status: STATUS.IN_PROGRESS.id,
+    status: STATUS.COMPLETE.id,
     author: 'Eric Evans',
   },
   'the-managers-path': {
@@ -470,7 +470,7 @@ const data = {
     slug: 'the-managers-path',
     title: 'The Manager’s Path',
     subtitle: 'A Guide for Tech Leaders Navigating Growth and Change',
-    status: STATUS.IN_PROGRESS.id,
+    status: STATUS.COMPLETE.id,
     author: 'Camille Fournier',
   },
 }
