@@ -66,7 +66,7 @@ const info = {
 
 const TA = () => {
   const [url, urlSet] = useState(
-    DEFAULT_URL + `?limit=20&offset=0&time_range=medium_term`
+    DEFAULT_URL + `?limit=20&offset=0&time_range=short_term`
   )
   const {
     data: { time_range },
