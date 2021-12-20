@@ -27,6 +27,8 @@ import { Breakout } from '~components/Container'
 import useSpotify from '~hooks/useSpotify'
 import fetcher from '~lib/fetcher'
 
+import { backgrounds } from './index.props'
+
 const HOUR = 3600000
 // const MINUTE = 60000
 // const SECOND = 1000
@@ -46,48 +48,6 @@ const css_icon = {
   width: '1rem',
 }
 
-const backgrounds = [
-  {
-    light: 'linear-gradient(120deg, $indigo6, $crimson5)',
-    dark: 'linear-gradient(120deg, $indigo4, $plum3)',
-  },
-  {
-    light: 'linear-gradient(120deg, $crimson5, $blue5)',
-    dark: 'linear-gradient(120deg, $plum3, $blue3)',
-  },
-  {
-    light: 'linear-gradient(120deg, $blue5, $lime3)',
-    dark: 'linear-gradient(120deg, $blue3, $sand6)',
-  },
-  {
-    light: 'linear-gradient(120deg, $lime3, $pink4)',
-    dark: 'linear-gradient(120deg, $sand6, $pink3)',
-  },
-  {
-    light: 'linear-gradient(120deg, $pink4, $gold5)',
-    dark: 'linear-gradient(120deg, $pink3, $gold4)',
-  },
-  {
-    light: 'linear-gradient(120deg, $gold5, $tomato5)',
-    dark: 'linear-gradient(120deg, $gold4, $crimson4)',
-  },
-  {
-    light: 'linear-gradient(120deg, $tomato5, $indigo7)',
-    dark: 'linear-gradient(120deg, $crimson4, $indigo5)',
-  },
-  {
-    light: 'linear-gradient(120deg, $indigo7, $cyan3)',
-    dark: 'linear-gradient(120deg, $indigo5, $cyan7)',
-  },
-  {
-    light: 'linear-gradient(120deg, $cyan3, $mint5)',
-    dark: 'linear-gradient(120deg, $cyan7, $teal6)',
-  },
-  {
-    light: 'linear-gradient(120deg, $mint5, $red3)',
-    dark: 'linear-gradient(120deg, $teal6, $plum4)',
-  },
-]
 const backgroundsSize = _size(backgrounds)
 const info = {
   error: {
@@ -105,7 +65,9 @@ const info = {
 }
 
 const TA = () => {
-  const [url, urlSet] = useState(DEFAULT_URL + `?limit=20&time_range=medium_term`)
+  const [url, urlSet] = useState(
+    DEFAULT_URL + `?limit=20&offset=0&time_range=medium_term`
+  )
   const {
     data: { time_range },
   } = useSpotify()
@@ -116,12 +78,12 @@ const TA = () => {
   })
 
   useEffect(() => {
-    urlSet(DEFAULT_URL + `?limit=20&time_range=${time_range}`)
+    urlSet(DEFAULT_URL + `?limit=20&offset=0&time_range=${time_range}`)
     return () => {}
   }, [time_range])
 
   const loading = !data && !error
-  const artists = data?.artists || []
+  const artists = data?.items || []
   const hasError = !loading && _size(artists) === 0
 
   const lastUsedFocusArea = React.useRef<HTMLElement>(null)
@@ -351,11 +313,11 @@ const TA = () => {
                 const bgIndex = i > backgroundsSize ? backgroundsSize : i
 
                 // @hack for testing
-                const _href = artist.url
+                const _href = artist.external_urls.spotify
                 const _title1 = artist.name
                 const _title2 = ''
                 const _title3 = ''
-                const _meta = artist.meta
+                const _meta = artist.image
                 const _genres = artist.genres
                 const _alt = `Photo of ${artist.name}`
                 //
@@ -385,9 +347,9 @@ const TA = () => {
                       <SlideContainer
                         aria-hidden
                         css={{
-                          background: backgrounds[bgIndex].light,
+                          background: backgrounds[bgIndex]?.light,
                           [`.${darkTheme} &`]: {
-                            background: backgrounds[bgIndex].dark,
+                            background: backgrounds[bgIndex]?.dark,
                           },
                           overflow: 'hidden',
                           ai: 'end',

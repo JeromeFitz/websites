@@ -37,13 +37,6 @@ const navigationHeader = {
       title: '404',
       text: '404',
     },
-    {
-      active: isDev,
-      emoji: '🎡️',
-      url: '/playground/carousel',
-      title: 'Carousel',
-      text: 'Useful?',
-    },
   ],
   links: [
     {
