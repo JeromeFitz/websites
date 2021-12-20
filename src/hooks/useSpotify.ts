@@ -4,7 +4,7 @@ const key = 'spotify'
 const initialStore = {
   disabled: false,
   limit: 10,
-  time_range: 'medium_term',
+  time_range: 'short_term',
   short_term: { topArtists: {}, topSongs: {} },
   medium_term: { topArtists: {}, topSongs: {} },
   long_term: { topArtists: {}, topSongs: {} },
