@@ -121,7 +121,7 @@ const TA = () => {
   }, [time_range])
 
   const loading = !data && !error
-  const tracks = data?.tracks || []
+  const tracks = data?.items || []
   const hasError = !loading && _size(tracks) === 0
 
   const lastUsedFocusArea = React.useRef<HTMLElement>(null)
@@ -349,21 +349,23 @@ const TA = () => {
                 const bgIndex = i > backgroundsSize ? backgroundsSize : i
 
                 // @hack for testing
-                // const _href = artist.url
+                // const _href = artist.external_urls.spotify
                 // const _title1 = artist.name
                 // const _title2 = ''
                 // const _title3 = ''
-                // const _meta = artist.meta
+                // const _meta = artist.image
                 // const _genres = artist.genres
                 // const _alt = `Photo of ${artist.name}`
-                //
-                const _href = track.track.url
-                const _title1 = track.artist.name
-                const _title2 = `“${track.track.name}”`
-                const _title3 = `${track.album.name} (${track.album.year})`
-                const _meta = track.album.meta
+                console.dir(track)
+                const _href = track.external_urls.spotify
+                const _title1 = track.artist
+                const _title2 = `“${track.name}”`
+                const _title3 = `${
+                  track.album.name
+                } (${track.album.release_date.slice(0, 4)})`
+                const _meta = track.album.image
                 const _genres = track.genres
-                const _alt = `Image of ${track.artist.name}’s “${track.album.name}” album cover`
+                const _alt = `Image of ${track.artist}’s “${track.album.name}” album cover`
 
                 const genres = _map(_genres.slice(0, 5), (genre) =>
                   _title(genre)
@@ -383,9 +385,9 @@ const TA = () => {
                       <SlideContainer
                         aria-hidden
                         css={{
-                          background: backgrounds[bgIndex].light,
+                          background: backgrounds[bgIndex]?.light,
                           [`.${darkTheme} &`]: {
-                            background: backgrounds[bgIndex].dark,
+                            background: backgrounds[bgIndex]?.dark,
                           },
                           overflow: 'hidden',
                           ai: 'end',

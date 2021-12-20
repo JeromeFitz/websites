@@ -381,9 +381,9 @@ const CarouselWithImages = () => {
                       <DemoContainer
                         aria-hidden
                         css={{
-                          background: backgrounds[bgIndex].light,
+                          background: backgrounds[bgIndex]?.light,
                           [`.${darkTheme} &`]: {
-                            background: backgrounds[bgIndex].dark,
+                            background: backgrounds[bgIndex]?.dark,
                           },
                           overflow: 'hidden',
                           ai: 'end',
@@ -791,9 +791,9 @@ const CarouselWithText = () => {
                       <DemoContainer
                         aria-hidden
                         css={{
-                          background: backgrounds[bgIndex].light,
+                          background: backgrounds[bgIndex]?.light,
                           [`.${darkTheme} &`]: {
-                            background: backgrounds[bgIndex].dark,
+                            background: backgrounds[bgIndex]?.dark,
                           },
                           overflow: 'hidden',
                         }}

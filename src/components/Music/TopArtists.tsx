@@ -121,7 +121,7 @@ const TA = () => {
   }, [time_range])
 
   const loading = !data && !error
-  const artists = data?.artists || []
+  const artists = data?.items || []
   const hasError = !loading && _size(artists) === 0
 
   const lastUsedFocusArea = React.useRef<HTMLElement>(null)
@@ -351,11 +351,11 @@ const TA = () => {
                 const bgIndex = i > backgroundsSize ? backgroundsSize : i
 
                 // @hack for testing
-                const _href = artist.url
+                const _href = artist.external_urls.spotify
                 const _title1 = artist.name
                 const _title2 = ''
                 const _title3 = ''
-                const _meta = artist.meta
+                const _meta = artist.image
                 const _genres = artist.genres
                 const _alt = `Photo of ${artist.name}`
                 //
@@ -385,9 +385,9 @@ const TA = () => {
                       <SlideContainer
                         aria-hidden
                         css={{
-                          background: backgrounds[bgIndex].light,
+                          background: backgrounds[bgIndex]?.light,
                           [`.${darkTheme} &`]: {
-                            background: backgrounds[bgIndex].dark,
+                            background: backgrounds[bgIndex]?.dark,
                           },
                           overflow: 'hidden',
                           ai: 'end',

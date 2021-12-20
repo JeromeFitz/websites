@@ -1,4 +1,4 @@
-import { Text } from '@jeromefitz/design-system/components'
+// import { Text } from '@jeromefitz/design-system/components'
 import { styled } from '@jeromefitz/design-system/stitches.config'
 
 const Link = styled('a', {
@@ -36,9 +36,9 @@ const Link = styled('a', {
     boxShadow: 'none',
     textDecorationLine: 'underline',
   },
-  [`& ${Text}`]: {
-    color: 'inherit',
-  },
+  // [`& ${Text}`]: {
+  //   color: 'inherit',
+  // },
   variants: {
     variant: {
       blue: {

@@ -15,10 +15,7 @@ import {
 import { CardSpotify } from '@jeromefitz/design-system/components/Card/Spotify'
 import { styled } from '@jeromefitz/design-system/stitches.config'
 
-import {
-  spotifyFavoriteAlbums,
-  spotifyFavoriteArtists,
-} from '~lib/spotify/favorites'
+import { wrapped2020 } from '~data/spotify'
 
 const Section = styled('section', {
   minHeight: '100%',
@@ -38,16 +35,16 @@ const Container = styled('div', {
 
 const Artist = () => {
   const slugger = new Slugger()
-  const base64 = spotifyFavoriteArtists[0]?.artists[0].meta.base64
-  const imageSlug = spotifyFavoriteArtists[0]?.artists[0]?.meta?.slug
-  const imageData = spotifyFavoriteArtists[0]?.artists[0]?.meta
-  const genresData = spotifyFavoriteArtists[0].genres
-  const artist = {
-    name: spotifyFavoriteArtists[0].artist.name,
-  }
-  const url = spotifyFavoriteArtists[0]?.artists[0]?.url
+  const artist = wrapped2020.artist.items[0]
 
-  const imageLabel = `Image of ${artist.name}`
+  const base64 = artist.image.base64
+  const imageSlug = artist.image.slug
+  const imageData = artist.image
+  const genresData = artist.genres
+  const artistName = artist.name
+  const url = artist.external_urls.spotify
+
+  const imageLabel = `Image of ${artistName}`
   return (
     <CardSpotify
       base64={base64}
@@ -59,7 +56,7 @@ const Artist = () => {
         size="2"
         css={{ color: '$hiContrast', fontWeight: 'bold', fontSize: '$7' }}
       >
-        <span>{artist.name}</span>
+        <span>{artistName}</span>
       </Paragraph>
       <Separator css={{ my: '1rem !important', width: '100% !important' }} />
       <Paragraph
@@ -129,16 +126,15 @@ const Artist = () => {
 
 const Song = () => {
   const slugger = new Slugger()
-  const base64 = spotifyFavoriteAlbums[0]?.album.meta.base64
-  const imageSlug = spotifyFavoriteAlbums[0]?.artists[0]?.meta?.slug
-  const imageData = spotifyFavoriteAlbums[0]?.artists[0]?.meta
-  const genresData = spotifyFavoriteAlbums[0].genres
-  const artist = {
-    name: spotifyFavoriteAlbums[0].artist.name,
-  }
-  const url = spotifyFavoriteAlbums[0]?.track?.url
+  const track = wrapped2020.track.item
+  const base64 = track.album.image.base64
+  const imageSlug = track.album.image.slug
+  const imageData = track.album.image
+  const genresData = track.genres
+  const artistName = track.artist
+  const url = track.external_urls.spotify
 
-  const imageLabel = `Image of ${artist.name}`
+  const imageLabel = `Image of ${artistName}`
   return (
     <CardSpotify
       base64={base64}
@@ -150,14 +146,14 @@ const Song = () => {
         size="2"
         css={{ color: '$hiContrast', fontWeight: 'bold', fontSize: '$7' }}
       >
-        <span>{artist.name}</span>
+        <span>{artistName}</span>
       </Paragraph>
       <Separator css={{ my: '1rem !important', width: '100% !important' }} />
       <Paragraph
         size="2"
         css={{ color: '$hiContrast', fontWeight: 'bold', fontSize: '$6' }}
       >
-        “{spotifyFavoriteAlbums[0].track.name}”
+        “{track.name}”
       </Paragraph>
       <Flex
         as="ul"
@@ -187,8 +183,8 @@ const Song = () => {
         ))}
       </Flex>
       <Paragraph size="2" css={{ color: '$hiContrast', py: '$1' }}>
-        Off of “<strong>{spotifyFavoriteAlbums[0].album.name}</strong>” released in{' '}
-        <strong>{spotifyFavoriteAlbums[0].album.year}</strong>.
+        Off of “<strong>{track.album.name}</strong>” released in{' '}
+        <strong>{track.album.release_date.slice(0, 4)}</strong>.
       </Paragraph>
       <Paragraph size="1" css={{ py: '$2' }}>
         <>

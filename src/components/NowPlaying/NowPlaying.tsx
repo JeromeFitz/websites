@@ -17,14 +17,14 @@ import {
 import { CardSpotify } from '@jeromefitz/design-system/components/Card/Spotify'
 import { styled } from '@jeromefitz/design-system/stitches.config'
 
+import { nowPlaying } from '~data/spotify'
 import fetcher from '~lib/fetcher'
-import { spotifyFavoriteTracks } from '~lib/spotify/favorites'
 
 // const HOUR = 3600000
 const MINUTE = 60000
 // const SECOND = 1000
 
-const initialData = spotifyFavoriteTracks[0]
+const initialData = nowPlaying
 
 const Section = styled('section', {
   minHeight: '100%',
@@ -43,28 +43,29 @@ const Container = styled('div', {
 })
 
 const NowPlaying = () => {
+  const slugger = new Slugger()
   const { data } = useSWR('/api/spotify/now-playing', fetcher, {
     fallbackData: initialData,
     refreshInterval: MINUTE,
     revalidateOnFocus: true,
   })
-  // @refactor(swr) This a little convulated
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { album, artist, artists, genres, isPlaying, meta, track } =
-    data.isPlaying || !!data.artist ? data : initialData
-  // const { album, artist, genres, isPlaying, meta, track } = initialData
+
+  const { is_playing: isPlaying, item } =
+    data?.is_playing || !!data?.item?.artist ? data : initialData
+
+  const track = item
+
+  const { album, artist, genres } = track
+
+  const albumYear = album.release_date.slice(0, 4)
+  const base64 = album?.image?.base64
+  const imageSlug = album?.image?.slug
+  const imageData = album?.image
+  const imageLabel = `Image of ${artist}’s “${track.name}” album cover`
+
   const genresData = _slice(genres, 0, 3)
 
   const title = isPlaying ? 'Listening To' : 'Listening To'
-
-  const slugger = new Slugger()
-  const base64 = album?.meta?.base64
-  const imageSlug = album?.meta?.slug
-  const imageData = album?.meta
-
-  const imageLabel = `Image of ${artist.name}’s “${track.name}” album cover`
 
   return (
     <Section>
@@ -106,7 +107,7 @@ const NowPlaying = () => {
             size="2"
             css={{ color: '$hiContrast', fontWeight: 'bold', fontSize: '$7' }}
           >
-            <span>{artist.name}</span>
+            <span>{artist}</span>
           </Paragraph>
           <Separator css={{ my: '1rem !important', width: '100% !important' }} />
           <Paragraph
@@ -145,13 +146,13 @@ const NowPlaying = () => {
           <Paragraph size="2" css={{ color: '$hiContrast', py: '$1' }}>
             <>
               Off of “<strong>{album.name}</strong>” released in{' '}
-              <strong>{album.year}</strong>.
+              <strong>{albumYear}</strong>.
             </>
           </Paragraph>
           <Paragraph size="1" css={{ py: '$2' }}>
             <>
               <Link
-                href={track.url}
+                href={track.external_urls.spotify}
                 rel="noopener noreferrer"
                 target="_blank"
                 variant="spotify"
