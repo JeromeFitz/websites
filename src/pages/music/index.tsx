@@ -158,7 +158,7 @@ const Music = () => {
             that far or two other options currently.
           </Paragraph>
           <RadioCardGroup
-            value={selected?.time_range}
+            defaultValue={selected?.time_range}
             onValueChange={handleSpotifyTimeRange2}
           >
             {plans.map((plan) => {
