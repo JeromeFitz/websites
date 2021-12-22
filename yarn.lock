@@ -914,6 +914,11 @@
     pretty-quick "3.1.2"
     typescript "4.5.4"
 
+"@jeromefitz/conventional-gitmoji@*":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/conventional-gitmoji/-/conventional-gitmoji-1.0.0.tgz#39a06d0d88cae8be3f5403ff9b6a3d3cfde7e745"
+  integrity sha512-c30l7X3/Rf+CD+ot9AD91c67G8HSZ81ovHVNsG+EgW2n9RMmwDzpgK6AekXpggubM3uWXzMG7znOjX9lW4bECg==
+
 "@jeromefitz/git-cz@13.1.1":
   version "13.1.1"
   resolved "https://registry.yarnpkg.com/@jeromefitz/git-cz/-/git-cz-13.1.1.tgz#97bd59c35886a3dd76c64618c969039e0e265d88"
@@ -930,29 +935,16 @@
     shellsync "0.2.2"
     word-wrap "1.2.3"
 
-"@jeromefitz/semantic-release-git@10.0.0-develop.2":
-  version "10.0.0-develop.2"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/semantic-release-git/-/semantic-release-git-10.0.0-develop.2.tgz#b1874acc0c02b615621c6cc2dba14ea2ddf7951f"
-  integrity sha512-jAN4opjh8Q9GpGtR9/UX5KmvQWmyK+AgJgJu5gKlh4b+HIF+n118bBOQ1VPOUkw3TMJW3EDsiLBku4FCMMbrEA==
+"@jeromefitz/semantic@7.3.0":
+  version "7.3.0"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/semantic/-/semantic-7.3.0.tgz#0345618a54b65417a824c8b339cd3204b79c2d4c"
+  integrity sha512-iQn2K67GZph8n9/KiP2nVE0PZOJaWtZ5J1+rLQRqJ7YnOPYgAg+xqbtN3cw2fIRNniEdiZYUURjsmW+f4X690A==
   dependencies:
-    "@semantic-release/error" "^2.1.0"
-    aggregate-error "^3.0.0"
-    debug "^4.0.0"
-    dir-glob "^3.0.0"
-    execa "^4.0.0"
-    lodash "^4.17.4"
-    micromatch "^4.0.0"
-    p-reduce "^2.0.0"
-
-"@jeromefitz/semantic@7.1.2":
-  version "7.1.2"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/semantic/-/semantic-7.1.2.tgz#df7f079ed64ef4c2d2c0ff106dfc53c7568ee203"
-  integrity sha512-WnOFO9l7fzg2EcFrX/b4wur+wu2ROhO5tSuqMeOlrOYlOIDs11ef09j6vH9tKlbvtT3YBWlaghryJR+rslGAfg==
-  dependencies:
-    "@jeromefitz/semantic-release-git" "10.0.0-develop.2"
+    "@jeromefitz/conventional-gitmoji" "*"
     "@octokit/core" "3.5.1"
     "@semantic-release/commit-analyzer" "9.0.2"
     "@semantic-release/exec" "6.0.3"
+    "@semantic-release/git" "10.0.1"
     "@semantic-release/github" "8.0.2"
     "@semantic-release/npm" "8.0.3"
     "@semantic-release/release-notes-generator" "10.0.3"
@@ -2166,7 +2158,7 @@
     lodash "^4.17.4"
     micromatch "^4.0.2"
 
-"@semantic-release/error@^2.1.0", "@semantic-release/error@^2.2.0":
+"@semantic-release/error@^2.2.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@semantic-release/error/-/error-2.2.0.tgz#ee9d5a09c9969eade1ec864776aeda5c5cddbbf0"
   integrity sha512-9Tj/qn+y2j+sjCI3Jd+qseGtHjOAeg7dU2/lVcqIQ9TV3QDaDXDYXcoOHU+7o2Hwh8L8ymL4gfuO7KxDs3q2zg==
@@ -2187,6 +2179,20 @@
     execa "^5.0.0"
     lodash "^4.17.4"
     parse-json "^5.0.0"
+
+"@semantic-release/git@10.0.1":
+  version "10.0.1"
+  resolved "https://registry.yarnpkg.com/@semantic-release/git/-/git-10.0.1.tgz#c646e55d67fae623875bf3a06a634dd434904498"
+  integrity sha512-eWrx5KguUcU2wUPaO6sfvZI0wPafUKAMNC18aXY4EnNcrZL86dEmpNVnC9uMpGZkmZJ9EfCVJBQx4pV4EMGT1w==
+  dependencies:
+    "@semantic-release/error" "^3.0.0"
+    aggregate-error "^3.0.0"
+    debug "^4.0.0"
+    dir-glob "^3.0.0"
+    execa "^5.0.0"
+    lodash "^4.17.4"
+    micromatch "^4.0.0"
+    p-reduce "^2.0.0"
 
 "@semantic-release/github@8.0.2", "@semantic-release/github@^8.0.0":
   version "8.0.2"
