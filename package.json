@@ -109,7 +109,7 @@
     "@types/ms": "0.7.31",
     "@types/node": "16.11.13",
     "@types/nprogress": "0.2.0",
-    "@types/react": "17.0.37",
+    "@types/react": "17.0.38",
     "@types/uuid": "8.3.3",
     "dotenv": "10.0.0",
     "eslint-config-next": "12.0.7",
