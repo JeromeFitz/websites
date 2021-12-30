@@ -68,7 +68,7 @@
     "@vercel/fetch": "6.1.1",
     "clsx": "1.1.1",
     "csv-parser": "3.0.0",
-    "date-fns": "2.27.0",
+    "date-fns": "2.28.0",
     "date-fns-tz": "1.2.2",
     "emoji-api": "2.0.1",
     "emoji-regex": "10.0.0",
