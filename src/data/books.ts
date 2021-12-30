@@ -85,7 +85,7 @@ const data = {
     slug: 'mike-nichols',
     title: 'Mike Nichols',
     subtitle: 'A Life',
-    status: STATUS.PENDING.id,
+    status: STATUS.COMPLETE.id,
     author: 'Mark Harris',
   },
   'an-elegant-puzzle': {
@@ -358,7 +358,7 @@ const data = {
     slug: 'all-about-me',
     title: 'All About Me',
     subtitle: 'My Remarkable Life in Show Business',
-    status: STATUS.PENDING.id,
+    status: STATUS.COMPLETE.id,
     author: 'Mel Brooks',
   },
   'me-myself-and-why': {
@@ -472,6 +472,22 @@ const data = {
     subtitle: 'A Guide for Tech Leaders Navigating Growth and Change',
     status: STATUS.COMPLETE.id,
     author: 'Camille Fournier',
+  },
+  'metropolitan-life': {
+    id: 'metropolitan-life',
+    slug: 'metropolitan-life',
+    title: 'Metropolitan Life',
+    subtitle: '',
+    status: STATUS.IN_PROGRESS.id,
+    author: 'Fran Lebowitz',
+  },
+  'social-studies': {
+    id: 'social-studies',
+    slug: 'social-studies',
+    title: 'Social Studies',
+    subtitle: '',
+    status: STATUS.IN_PROGRESS.id,
+    author: 'Fran Lebowitz',
   },
 }
 
