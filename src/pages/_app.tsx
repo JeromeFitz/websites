@@ -14,7 +14,8 @@ import { globalCss, darkTheme } from '@jeromefitz/design-system/stitches.config'
 import Footer from '~components/Footer'
 import Header from '~components/Header'
 import NProgress from '~components/NProgress'
-import { ManagedUIContext } from '~context/ManagedUIContext'
+import { ManagedUIContext } from '~context/ManagedUI'
+import { MediaContextProvider } from '~context/Media'
 import { useAnalytics } from '~lib/analytics'
 import { IMAGE__FALLBACKS__SHOWS } from '~lib/constants'
 
@@ -150,29 +151,31 @@ function MyApp({ Component, pageProps, router }: AppProps) {
             content="width=device-width, initial-scale=1.0,viewport-fit=cover"
           />
         </Head>
-        <ManagedUIContext>
-          <ThemeProvider
-            disableTransitionOnChange
-            attribute="class"
-            value={{ light: 'light-theme', dark: darkTheme.className }}
-            defaultTheme="system"
-          >
-            <ToastProvider>
-              <NProgress />
-              <Header />
-              <Container
-                as="main"
-                id="main"
-                size={{ '@initial': 2, '@bp1': 3, '@bp2': 4 }}
-              >
-                <Section>
-                  <Component {...pageProps} key={router.route} />
-                </Section>
-              </Container>
-              <Footer />
-            </ToastProvider>
-          </ThemeProvider>
-        </ManagedUIContext>
+        <MediaContextProvider>
+          <ManagedUIContext>
+            <ThemeProvider
+              disableTransitionOnChange
+              attribute="class"
+              value={{ light: 'light-theme', dark: darkTheme.className }}
+              defaultTheme="system"
+            >
+              <ToastProvider>
+                <NProgress />
+                <Header />
+                <Container
+                  as="main"
+                  id="main"
+                  size={{ '@initial': 2, '@bp1': 3, '@bp2': 4 }}
+                >
+                  <Section>
+                    <Component {...pageProps} key={router.route} />
+                  </Section>
+                </Container>
+                <Footer />
+              </ToastProvider>
+            </ThemeProvider>
+          </ManagedUIContext>
+        </MediaContextProvider>
       </SWRConfig>
     </>
   )

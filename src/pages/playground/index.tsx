@@ -30,7 +30,8 @@ import { styled } from '@jeromefitz/design-system/stitches.config'
 import { Dialog } from '~components/Alert'
 import { PageHeading } from '~components/Layout'
 import Seo from '~components/Seo'
-import { useUI } from '~context/ManagedUIContext'
+import { useUI } from '~context/ManagedUI'
+import { Media } from '~context/Media'
 // import { BIG_HEAD_PROPS } from '~lib/constants'
 
 const properties = {
@@ -368,8 +369,44 @@ const Playground = () => {
         description={properties.seoDescription}
         title={properties.title}
       />
+
       <h4>
-        Halo <WavingHand />
+        <>
+          <Media at="xs">
+            {(className, renderChildren) => {
+              // fresnel-at-xs
+              // console.dir(`className: ${className}`)
+              return (
+                <>
+                  {renderChildren ? (
+                    <>
+                      <Text>
+                        Hello <code>{className}</code>! <WavingHand />
+                      </Text>
+                    </>
+                  ) : null}
+                </>
+              )
+            }}
+          </Media>
+          <Media greaterThan="xs">
+            {(className, renderChildren) => {
+              // fresnel-greaterThan-xs
+              // console.dir(`!className: ${className}`)
+              return (
+                <>
+                  {renderChildren ? (
+                    <>
+                      <Text>
+                        Hello <code>{className}</code>! <WavingHand />
+                      </Text>
+                    </>
+                  ) : null}
+                </>
+              )
+            }}
+          </Media>
+        </>
       </h4>
       <PlaygroundDialog />
       <PlaygroundToast />

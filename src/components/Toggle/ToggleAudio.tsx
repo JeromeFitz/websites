@@ -11,7 +11,7 @@ import {
   TooltipContent,
   TooltipArrow,
 } from '~components/Tooltip'
-import { useUI } from '~context/ManagedUIContext'
+import { useUI } from '~context/ManagedUI'
 
 const ThemeToggle = (props) => {
   const { audio, toggleAudio } = useUI()

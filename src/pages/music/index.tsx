@@ -24,7 +24,7 @@ import {
 import { PageHeading } from '~components/Layout'
 import { TopArtists, TopTracks, YearInReview } from '~components/Music'
 import Seo from '~components/Seo'
-import { useUI } from '~context/ManagedUIContext'
+import { useUI } from '~context/ManagedUI'
 import useSpotify from '~hooks/useSpotify'
 
 // import {

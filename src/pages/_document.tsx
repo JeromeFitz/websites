@@ -9,6 +9,7 @@ import Document, {
 
 import { getCssText, reset } from '@jeromefitz/design-system/stitches.config'
 
+import { mediaStyles } from '~context/Media'
 // import { info, fontFace } from '~styles/fonts/F37Bella'
 // import { info, fontFace } from '~styles/fonts/F37Bolton'
 // import { info, fontFace } from '~styles/fonts/F37Ginger'
@@ -46,6 +47,11 @@ class MyDocument extends Document<DocumentContext> {
           <style
             id="stitches"
             dangerouslySetInnerHTML={{ __html: getCssAndReset() }}
+          />
+          <style
+            id="appmedia"
+            type="text/css"
+            dangerouslySetInnerHTML={{ __html: mediaStyles }}
           />
           {/* START: custom typeface */}
           {_map(info.weights, (weight) => {
