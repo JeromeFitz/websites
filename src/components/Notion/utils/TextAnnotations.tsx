@@ -5,7 +5,7 @@ import { useSound } from 'use-sound'
 import { Flex, Link } from '@jeromefitz/design-system/components'
 
 import { EmojiParser } from '~components/Emoji'
-import { useUI } from '~context/ManagedUIContext'
+import { useUI } from '~context/ManagedUI'
 import getNextLink from '~lib/notion/getNextLink'
 
 const TextAnnotationLink = ({ children, href }) => {
