@@ -22,7 +22,7 @@ import {
 } from '@jeromefitz/design-system/components'
 
 import { PageHeading } from '~components/Layout'
-import { TopArtists, TopTracks, YearInReview } from '~components/Music'
+import { Top, YearInReview } from '~components/Music'
 import Seo from '~components/Seo'
 import { useUI } from '~context/ManagedUI'
 import useSpotify from '~hooks/useSpotify'
@@ -204,8 +204,8 @@ const Music = () => {
             })}
           </RadioCardGroup>
         </Box>
-        <TopArtists />
-        <TopTracks />
+        <Top key="top-artists" type="top-artists" />
+        <Top key="top-tracks" type="top-tracks" />
         <YearInReview />
       </Section>
     </>

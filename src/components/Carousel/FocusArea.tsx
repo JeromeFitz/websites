@@ -21,6 +21,17 @@ const FocusArea = React.forwardRef<
   const ownRef = React.useRef<HTMLDivElement>(null)
   const composedRef = useComposedRefs(ownRef, forwardedRef)
 
+  const entryProps = {
+    [props['data-focus-area-type'] === 'top-artists'
+      ? 'data-focus-area-top-artists-entry'
+      : 'data-focus-area-top-tracks-entry']: true,
+  }
+  const exitProps = {
+    [props['data-focus-area-type'] === 'top-artists'
+      ? 'data-focus-area-top-artists-exit'
+      : 'data-focus-area-top-tracks-exit']: true,
+  }
+
   return (
     <StyledFocusArea
       {...props}
@@ -39,11 +50,13 @@ const FocusArea = React.forwardRef<
           const tier1 =
             '[role="menu"], [role="dialog"] input, [role="dialog"] button, [tabindex="0"]'
           const tier2 = 'a, button, input, select, textarea'
+          // const tier3 = 'div.afc'
 
           // Search for tier 1 and tier 2 elements, prioritising
           const elementToFocus = [
             event.currentTarget.querySelector<HTMLElement>(tier1),
             event.currentTarget.querySelector<HTMLElement>(tier2),
+            // event.currentTarget.querySelector<HTMLElement>(tier3),
           ].filter((el) => Boolean(el))[0]
 
           if (elementToFocus) {
@@ -63,9 +76,9 @@ const FocusArea = React.forwardRef<
         }
       }}
     >
-      <div data-focus-area-entry />
+      <div data-focus-area-entry {...entryProps} />
       {children}
-      <div data-focus-area-exit />
+      <div data-focus-area-exit {...exitProps} />
     </StyledFocusArea>
   )
 })
