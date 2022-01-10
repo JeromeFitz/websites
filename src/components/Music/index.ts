@@ -1,5 +1,4 @@
-import TopArtists from './TopArtists'
-import TopTracks from './TopTracks'
+import Top from './Top'
 import YearInReview from './YearInReview'
 
-export { TopArtists, TopTracks, YearInReview }
+export { Top, YearInReview }
