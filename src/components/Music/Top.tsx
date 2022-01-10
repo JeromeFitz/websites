@@ -2,8 +2,8 @@ import { TagIcon } from '@heroicons/react/outline'
 import { ArrowLeftIcon, ArrowRightIcon } from '@radix-ui/react-icons'
 import _map from 'lodash/map'
 import _size from 'lodash/size'
-import React, { useEffect, useState } from 'react'
-import useSWR from 'swr'
+import React, { useEffect, useRef, useState } from 'react'
+import useSWRInfinite from 'swr/infinite'
 import _title from 'title'
 
 import {
@@ -24,6 +24,7 @@ import { darkTheme, styled } from '@jeromefitz/design-system/stitches.config'
 
 import { CarouselArrowButton, GrabBox, FocusArea } from '~components/Carousel'
 import { Breakout } from '~components/Container'
+import useOnScreen from '~hooks/useOnScreen'
 import useSpotify from '~hooks/useSpotify'
 import fetcher from '~lib/fetcher'
 
@@ -33,7 +34,47 @@ const HOUR = 3600000
 // const MINUTE = 60000
 // const SECOND = 1000
 
-const DEFAULT_URL = '/api/spotify/top-tracks'
+type CONTENT_PROPS = {
+  [key: string]: {
+    title: string
+    description: string
+  }
+}
+
+const CONTENT: CONTENT_PROPS = {
+  'top-artists': {
+    title: 'Top Artists',
+    description:
+      'Though I feel I have an eclectic taste, it is obvious I listen to a lot of my personal heavy hitters a lot.',
+  },
+  'top-tracks': {
+    title: 'Top Tracks',
+    description:
+      'Sometimes I tend to play the same song over and over again (and over and over again).',
+  },
+}
+
+const INIT = {
+  limit: 10,
+  offset: 0,
+  time_range: 'short_term',
+  type: 'top-artists',
+  url: '/api/spotify',
+}
+
+const getKey = (
+  pageIndex: number,
+  props: {
+    limit: number
+    time_range: string
+    type: string
+    url: string
+  }
+) => {
+  const { limit, time_range, type, url } = props
+  const offset = pageIndex === 0 ? 0 : 10 * pageIndex
+  return `${url}/${type}?limit=${limit}&offset=${offset}&time_range=${time_range}`
+}
 
 const css_info = {
   display: 'flex',
@@ -64,34 +105,88 @@ const info = {
   },
 }
 
-const TA = () => {
-  const [url, urlSet] = useState(
-    DEFAULT_URL + `?limit=20&offset=0&time_range=short_term`
-  )
+// eslint-disable-next-line complexity
+const TopItem = ({ type }) => {
+  const ref = useRef()
+
+  const dataFocusAreaType =
+    type === 'top-artists'
+      ? 'data-focus-area-top-artists'
+      : 'data-focus-area-top-tracks'
+  const dataFocusAreaTypeEntry =
+    type === 'top-artists'
+      ? 'data-focus-area-top-artists-entry'
+      : 'data-focus-area-top-tracks-entry'
+  const dataFocusAreaTypeExit =
+    type === 'top-artists'
+      ? 'data-focus-area-top-artists-exit'
+      : 'data-focus-area-top-tracks-exit'
+
+  // const [url, urlSet] = useState(
+  //   DEFAULT_URL + `?limit=20&offset=0&time_range=short_term`
+  // )
   const {
     data: { time_range },
   } = useSpotify()
 
-  const { data, error } = useSWR(url, fetcher, {
-    refreshInterval: HOUR,
-    revalidateOnFocus: false,
-  })
+  // const { data, error } = useSWR(url, fetcher, {
+  //   refreshInterval: HOUR,
+  //   revalidateOnFocus: false,
+  // })
+
+  // useEffect(() => {
+  //   urlSet(DEFAULT_URL + `?limit=20&offset=0&time_range=${time_range}`)
+  //   return () => {}
+  // }, [time_range])
+  const [limit] = useState(10)
+  // const [offset] = useState(0)
+  // const [time_range, time_rangeSet] = useState('long_term')
+  // const [type] = useState('top-artists')
+  const [url] = useState(INIT.url)
+  const isVisible = useOnScreen(ref)
+
+  const { data, error, size, setSize, isValidating } = useSWRInfinite(
+    (pageIndex) => {
+      const props = {
+        limit,
+        time_range,
+        type,
+        url,
+      }
+      return getKey(pageIndex, props)
+    },
+    fetcher,
+    { refreshInterval: HOUR, revalidateOnFocus: false, revalidateFirstPage: false }
+  )
+
+  // const items = data ? data.map((d) => d?.items).flat() : []
+  const isLoadingInitialData = !data && !error
+  const isLoadingMore =
+    isLoadingInitialData ||
+    (size > 0 && data && typeof data[size - 1] === 'undefined')
+  const isEmpty = data?.[0]?.length === 0
+  const isReachingEnd =
+    isEmpty || (data && data[data.length - 1]?.items?.length < INIT.limit)
+  const isRefreshing = isValidating && data && data.length === size
 
   useEffect(() => {
-    urlSet(DEFAULT_URL + `?limit=20&offset=0&time_range=${time_range}`)
-    return () => {}
-  }, [time_range])
+    if (isVisible && !isReachingEnd && !isRefreshing) {
+      void setSize(size + 1)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isVisible, isRefreshing])
 
   const loading = !data && !error
-  const tracks = data?.items || []
-  const hasError = !loading && _size(tracks) === 0
+  // const artists = data?.items || []
+  const items = data ? data.map((d) => d?.items).flat() : []
+  const hasError = !loading && _size(items) === 0
 
   const lastUsedFocusArea = React.useRef<HTMLElement>(null)
   const isRoving = React.useRef(false)
 
   React.useEffect(() => {
-    lastUsedFocusArea.current = document.querySelector('[data-focus-area]')
-  }, [])
+    lastUsedFocusArea.current = document.querySelector(`[${dataFocusAreaType}]`)
+  }, [dataFocusAreaType])
 
   const onFocusAreaFocus = React.useCallback(
     (event: React.FocusEvent<HTMLElement>) => {
@@ -107,7 +202,7 @@ const TA = () => {
         if (event.key === 'ArrowRight') {
           event.preventDefault()
           const allAreas = Array.from(
-            document.querySelectorAll<HTMLElement>('[data-focus-area]')
+            document.querySelectorAll<HTMLElement>(`[${dataFocusAreaType}]`)
           )
           const thisIndex = allAreas.findIndex((el) => el === event.currentTarget)
           const nextIndex = Math.min(thisIndex + 1, allAreas.length - 1)
@@ -122,7 +217,7 @@ const TA = () => {
         if (event.key === 'ArrowLeft') {
           event.preventDefault()
           const allAreas = Array.from(
-            document.querySelectorAll<HTMLElement>('[data-focus-area]')
+            document.querySelectorAll<HTMLElement>(`[${dataFocusAreaType}]`)
           )
           const thisIndex = allAreas.findIndex((el) => el === event.currentTarget)
           const prevIndex = Math.max(thisIndex - 1, 0) // thisIndex - 1 >= 0 ? thisIndex - 1 : allAreas.length - 1;
@@ -136,19 +231,19 @@ const TA = () => {
 
         // Tab key press moves focus to the next element after the carousel
         if (event.key === 'Tab' && event.shiftKey === false) {
-          const selector =
-            'a, button, input, select, textarea, [data-focus-area-exit]'
+          const selector = `a, button, input, select, textarea, [${dataFocusAreaTypeExit}], div.afc2`
+          // const selector = `a, button, input, select, textarea, [data-focus-area-top-artists-exit], [data-focus-area-top-tracks-exit]`
           const elements = Array.from(
             document.querySelectorAll<HTMLElement>(selector)
           ).filter(
             (element) =>
-              element.tabIndex !== -1 || element.hasAttribute('data-focus-area-exit')
+              element.tabIndex !== -1 || element.hasAttribute(dataFocusAreaTypeExit)
           )
 
           // Find last exit guard
           elements.reverse()
           const lastExit = elements.find((el) =>
-            el.matches('[data-focus-area-exit]')
+            el.matches(`[${dataFocusAreaTypeExit}]`)
           )
           elements.reverse()
           const lastExitIndex = elements.indexOf(lastExit)
@@ -162,22 +257,21 @@ const TA = () => {
 
         // Shift + Tab key press moves focus to the previous element before the carousel
         if (event.key === 'Tab' && event.shiftKey) {
-          const selector =
-            'a, button, input, select, textarea, [data-focus-area-entry]'
+          const selector = `a, button, input, select, textarea, [${dataFocusAreaTypeEntry}], div.afc2`
+          // const selector = `a, button, input, select, textarea, [data-focus-area-top-artists-entry], [data-focus-area-top-tracks-entry]`
           const elements = Array.from(
             document.querySelectorAll<HTMLElement>(selector)
           ).filter(
             (element) =>
-              element.tabIndex !== -1 ||
-              element.hasAttribute('data-focus-area-entry')
+              element.tabIndex !== -1 || element.hasAttribute(dataFocusAreaTypeEntry)
           )
 
           // Find first entry guard
           const firstEntry = elements.find((el) =>
-            el.matches('[data-focus-area-entry]')
+            el.matches(`[${dataFocusAreaTypeEntry}]`)
           )
           const firstEntryIndex = elements.indexOf(firstEntry)
-          const prevElement = elements[firstEntryIndex - 1]
+          const prevElement = elements[firstEntryIndex - 2]
 
           if (prevElement) {
             event.preventDefault()
@@ -186,7 +280,7 @@ const TA = () => {
         }
       }
     },
-    []
+    [dataFocusAreaType, dataFocusAreaTypeEntry, dataFocusAreaTypeExit]
   )
 
   React.useEffect(() => {
@@ -199,22 +293,24 @@ const TA = () => {
         event.key === 'Tab' &&
         event.shiftKey === false &&
         event.target instanceof HTMLElement &&
-        !event.target.hasAttribute('data-focus-area')
+        !event.target.hasAttribute(dataFocusAreaType)
       ) {
-        const selector =
-          'a, button, input, select, textarea, [data-focus-area-entry]'
+        const selector = `a, button, input, select, textarea, [${dataFocusAreaTypeEntry}], div.afc2`
+        // const selector = `a, button, input, select, textarea, [data-focus-area-top-artists-entry], [data-focus-area-top-tracks-entry]`
         const elements = Array.from(
           document.querySelectorAll<HTMLElement>(selector)
         ).filter(
           (element) =>
             element.tabIndex !== -1 ||
             element === event.target ||
-            element.hasAttribute('data-focus-area-entry')
+            element.hasAttribute(dataFocusAreaTypeEntry)
+          // element.hasAttribute('data-focus-area-top-artists-entry') ||
+          // element.hasAttribute('data-focus-area-top-tracks-entry')
         )
 
         // Find first entry guard
         const firstEntryIndex = elements.findIndex((el) =>
-          el.hasAttribute('data-focus-area-entry')
+          el.hasAttribute(dataFocusAreaTypeEntry)
         )
 
         if (elements.indexOf(event.target) + 1 === firstEntryIndex) {
@@ -229,27 +325,30 @@ const TA = () => {
         event.key === 'Tab' &&
         event.shiftKey &&
         event.target instanceof HTMLElement &&
-        !event.target.hasAttribute('data-focus-area')
+        !event.target.hasAttribute(dataFocusAreaType)
       ) {
-        const selector = 'a, button, input, select, textarea, [data-focus-area-exit]'
+        const selector = `a, button, input, select, textarea, [${dataFocusAreaTypeExit}], div.afc2`
+        // const selector = `a, button, input, select, textarea, [data-focus-area-top-artists-exit], [data-focus-area-top-tracks-exit]`
         const elements = Array.from(
           document.querySelectorAll<HTMLElement>(selector)
         ).filter(
           (element) =>
             element.tabIndex !== -1 ||
             element === event.target ||
-            element.hasAttribute('data-focus-area-exit')
+            element.hasAttribute(dataFocusAreaTypeExit)
+          // element.hasAttribute('data-focus-area-top-artists-exit') ||
+          // element.hasAttribute('data-focus-area-top-tracks-exit')
         )
 
         // Find last exit guard
         elements.reverse()
         const lastExit = elements.find((el) =>
-          el.hasAttribute('data-focus-area-exit')
+          el.hasAttribute(dataFocusAreaTypeExit)
         )
         elements.reverse()
         const lastExitIndex = elements.indexOf(lastExit)
 
-        if (elements.indexOf(event.target) - 1 === lastExitIndex) {
+        if (elements.indexOf(event.target) - 2 === lastExitIndex) {
           event.preventDefault()
           lastUsedFocusArea.current?.focus()
         }
@@ -258,7 +357,7 @@ const TA = () => {
 
     document.addEventListener('keydown', tabListener)
     return () => document.removeEventListener('keydown', tabListener)
-  }, [])
+  }, [dataFocusAreaType, dataFocusAreaTypeEntry, dataFocusAreaTypeExit])
 
   return (
     <Section
@@ -272,7 +371,7 @@ const TA = () => {
     >
       <Breakout>
         <Box css={{ position: 'relative' }}>
-          <Carousel>
+          <Carousel className={`afc ${type}`}>
             <CarouselSlideList
               css={{
                 display: 'grid',
@@ -305,29 +404,44 @@ const TA = () => {
                 },
               }}
             >
-              {/* {rangeMap(10, (i) => { */}
-              {/* {_map(artists, (artist, i) => { */}
-              {_map(tracks, (track, i: number) => {
+              {_map(items, (item, i: number) => {
                 const bgIndex = i > backgroundsSize ? backgroundsSize : i
 
-                // @hack for testing
-                // const _href = artist.external_urls.spotify
-                // const _title1 = artist.name
-                // const _title2 = ''
-                // const _title3 = ''
-                // const _meta = artist.image
-                // const _genres = artist.genres
-                // const _alt = `Photo of ${artist.name}`
-                console.dir(track)
-                const _href = track.external_urls.spotify
-                const _title1 = track.artist
-                const _title2 = `“${track.name}”`
-                const _title3 = `${
-                  track.album.name
-                } (${track.album.release_date.slice(0, 4)})`
-                const _meta = track.album.image
-                const _genres = track.genres
-                const _alt = `Image of ${track.artist}’s “${track.album.name}” album cover`
+                // @hack
+                let _href: string,
+                  _title1: string,
+                  _title2: string,
+                  _title3: string,
+                  _meta: any,
+                  _genres: string[],
+                  _alt: string
+
+                if (type === 'top-artists') {
+                  _href = item.external_urls.spotify
+                  _title1 = item.name
+                  _title2 = ''
+                  _title3 = ''
+                  _meta = item.image
+                  _genres = item.genres
+                  _alt = `Photo of ${item.name}`
+                } else {
+                  _href = item.external_urls.spotify
+                  _title1 = item.artist
+                  _title2 = `“${item.name}”`
+                  _title3 = `${item.album.name} (${item.album.release_date.slice(
+                    0,
+                    4
+                  )})`
+                  _meta = item.album.image
+                  _genres = item.genres
+                  _alt = `Image of ${item.artist}’s “${item.album.name}” album cover`
+                }
+
+                // @hack(fuck ariel pink)
+                if (
+                  _href === 'https://open.spotify.com/artist/5H0YoDsPDi9fObFmJtTjfN'
+                )
+                  return null
 
                 const genres = _map(_genres.slice(0, 5), (genre) =>
                   _title(genre)
@@ -337,12 +451,22 @@ const TA = () => {
                   _genres.length > 4 &&
                   _genres.length - 5 > 0 &&
                   `, + ${_genres.length - 5} more`
+
+                const focusAreas = {
+                  [type === 'top-artists'
+                    ? 'data-focus-area-top-artists'
+                    : 'data-focus-area-top-tracks']: true,
+                  className: 'afc2',
+                }
+
                 return (
-                  <CarouselSlide key={`tt-${i}`}>
+                  <CarouselSlide key={`ta-${i}`}>
                     <FocusArea
-                      aria-label="Dialog component demo"
+                      aria-label={_title1}
                       onKeyDown={onFocusAreaKeyDown}
                       onFocus={onFocusAreaFocus}
+                      data-focus-area-type={type}
+                      {...focusAreas}
                     >
                       <SlideContainer
                         aria-hidden
@@ -407,6 +531,8 @@ const TA = () => {
                         href={_href}
                         rel="noopener noreferrer"
                         target="_blank"
+                        className="a-no-focus"
+                        tabIndex={-1}
                       >
                         <HeroImage alt={_alt} meta={_meta} />
                       </SlideContainer>
@@ -458,6 +584,7 @@ const TA = () => {
                   </CarouselSlide>
                 )
               })}
+              <div ref={ref} />
               <CarouselSlide>
                 <FocusArea onKeyDown={onFocusAreaKeyDown} onFocus={onFocusAreaFocus}>
                   <SlideContainer
@@ -470,10 +597,12 @@ const TA = () => {
                       backgroundColor: '$spotify-green',
                       mt: '$4',
                     }}
+                    className="a-no-focus"
+                    tabIndex={-1}
                   >
                     <Flex align="center" direction="column" gap="2">
-                      <Text size="2" css={{ color: '$spotify-black' }}>
-                        {loading
+                      <Text size="3" css={{ color: '$spotify-black' }}>
+                        {isLoadingMore // ? 'loading' : isReachingEnd ? 'no more' :''
                           ? info.loading.text
                           : hasError
                           ? info.error.text
@@ -484,7 +613,7 @@ const TA = () => {
                           <Link
                             css={{ display: 'inline-flex', alignItems: 'center' }}
                           > */}
-                        {loading
+                        {isLoadingMore // ? 'loading' : isReachingEnd ? 'no more' :''
                           ? info.loading.cta
                           : hasError
                           ? info.error.cta
@@ -507,7 +636,7 @@ const TA = () => {
               }}
             >
               <CarouselPrevious
-                aria-label="Show next demo"
+                aria-label="Show next"
                 tabIndex={-1}
                 as={CarouselArrowButton}
               >
@@ -522,7 +651,7 @@ const TA = () => {
               }}
             >
               <CarouselNext
-                aria-label="Show previous demo"
+                aria-label="Show previous"
                 tabIndex={-1}
                 as={CarouselArrowButton}
               >
@@ -536,21 +665,21 @@ const TA = () => {
   )
 }
 
-const TAContainer = () => {
+const Top = ({ type = 'top-artists' }) => {
+  const { description, title } = CONTENT[type]
   return (
     <Box css={{ position: 'relative', mt: '$2' }}>
       <Heading size="3" as="h2" css={{ my: '$2' }}>
-        Top Tracks
+        {title}
       </Heading>
       <Paragraph
         size="2"
         as="p"
         css={{ color: '$colors$gray11', mt: '$1', mb: '$3' }}
       >
-        Sometimes I tend to play the same song over and over again (and over and over
-        again).
+        {description}
       </Paragraph>
-      <TA />
+      <TopItem type={type} />
     </Box>
   )
 }
@@ -578,4 +707,4 @@ const SlideContainer = styled('a', {
   },
 })
 
-export default TAContainer
+export default Top
