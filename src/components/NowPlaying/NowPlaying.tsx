@@ -128,7 +128,7 @@ const NowPlaying = () => {
               '@bp1': { my: '$2' },
             }}
           >
-            {_map(genresData.slice(0, 10), (tag) => (
+            {_map(genresData.slice(0, 10), (tag: string) => (
               <Flex as="li" key={slugger.slug(tag)} css={{ p: '$2' }}>
                 <Badge
                   size="2"
