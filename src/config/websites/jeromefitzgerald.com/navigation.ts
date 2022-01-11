@@ -37,6 +37,13 @@ const navigationHeader = {
       title: '404',
       text: '404',
     },
+    {
+      active: isDev,
+      emoji: '🔺',
+      url: '/playground/swr/get',
+      title: 'SWR',
+      text: 'SWR',
+    },
   ],
   links: [
     {

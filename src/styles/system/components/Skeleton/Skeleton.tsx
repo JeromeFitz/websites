@@ -12,7 +12,7 @@ const Skeleton = styled('div', {
 
   '&::after': {
     animationName: `${pulse}`,
-    animationDuration: '500ms',
+    animationDuration: '750ms',
     animationDirection: 'alternate',
     animationIterationCount: 'infinite',
     animationTimingFunction: 'ease-in-out',

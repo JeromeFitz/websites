@@ -5,10 +5,12 @@ import {
   Badge,
   Box,
   Container,
+  Flex,
   Grid,
   Heading,
   Paragraph,
   Section,
+  Skeleton,
   Spacer,
   Text,
 } from '@jeromefitz/design-system/components'
@@ -42,6 +44,107 @@ const Playground = () => {
         description={properties.title}
         title={properties.seoDescription}
       />
+      <Box
+        css={{
+          display: 'grid',
+          gridAutoFlow: 'column',
+          gridAutoColumns: 'min-content',
+          ox: 'auto',
+          oy: 'hidden',
+          py: '$1',
+          WebkitOverflowScrolling: 'touch',
+
+          // Gap between slides
+          $$gap: '$space$5',
+
+          // calculate the left padding to apply to the scrolling list
+          // so that the carousel starts aligned with the container component
+          // the "1145" and "$5" values comes from the <Container /> component
+          '$$scroll-padding': 'max($$gap, calc((100% - 1145px) / 2 + $$gap))',
+          pl: '$$scroll-padding',
+
+          // hide scrollbar
+          MsOverflowStyle: 'none',
+          scrollbarWidth: 'none',
+          '&::-webkit-scrollbar': {
+            display: 'none',
+          },
+
+          // Can't have nice grid gap because Safari butchers scroll padding with it
+          '& > *': {
+            pr: '$$gap',
+          },
+        }}
+      >
+        <Skeleton
+          css={{
+            boxShadow: '0 0 0 1px $colors$slateA5',
+            backgroundColor: '$spotify-green',
+            mt: '$4',
+            minHeight: '200px',
+            minWidth: '200px',
+          }}
+        />
+        <Box
+          css={{
+            boxShadow: '0 0 0 1px $colors$slateA5',
+            backgroundColor: '$spotify-green',
+            mt: '$4',
+            minHeight: '200px',
+            minWidth: '200px',
+          }}
+          className="a-no-focus"
+          tabIndex={-1}
+        >
+          <Flex align="center" direction="column" gap="2">
+            <Text size="3" css={{ color: '$spotify-black' }}>
+              Text
+            </Text>
+            <Text size="3">More Text</Text>
+          </Flex>
+        </Box>
+      </Box>
+      <Section as="div" size="3">
+        <Box>
+          <Grid
+            align="start"
+            css={{
+              gridTemplateColumns: '1fr',
+              columnGap: '$2',
+              rowGap: '$2',
+            }}
+          >
+            {rangeMap(9, (i) => (
+              <Text size={9 - i}>Text Size {9 - i}</Text>
+            ))}
+          </Grid>
+          <Container css={{ minHeight: '3rem' }}>
+            <Spacer />
+          </Container>
+          <Grid
+            align="start"
+            css={{
+              gridTemplateColumns: '1fr',
+              columnGap: '$2',
+              rowGap: '$2',
+            }}
+          >
+            {rangeMap(4, (i) => (
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
+              <Heading size={4 - i}>Heading Size {4 - i}</Heading>
+            ))}
+          </Grid>
+        </Box>
+      </Section>
+      <Spotify />
+    </>
+  )
+}
+
+const Spotify = () => {
+  return (
+    <>
       <Grid
         align="start"
         css={{
@@ -151,40 +254,6 @@ const Playground = () => {
           )
         })}
       </Grid>
-      {/*  */}
-      <Section as="div" size="3">
-        <Box>
-          <Grid
-            align="start"
-            css={{
-              gridTemplateColumns: '1fr',
-              columnGap: '$2',
-              rowGap: '$2',
-            }}
-          >
-            {rangeMap(9, (i) => (
-              <Text size={9 - i}>Text Size {9 - i}</Text>
-            ))}
-          </Grid>
-          <Container css={{ minHeight: '3rem' }}>
-            <Spacer />
-          </Container>
-          <Grid
-            align="start"
-            css={{
-              gridTemplateColumns: '1fr',
-              columnGap: '$2',
-              rowGap: '$2',
-            }}
-          >
-            {rangeMap(4, (i) => (
-              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-              // @ts-ignore
-              <Heading size={4 - i}>Heading Size {4 - i}</Heading>
-            ))}
-          </Grid>
-        </Box>
-      </Section>
     </>
   )
 }
