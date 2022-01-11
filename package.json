@@ -79,7 +79,7 @@
     "firebase-admin": "10.0.1",
     "framer-motion": "5.5.7",
     "github-slugger": "1.4.0",
-    "immer": "9.0.7",
+    "immer": "9.0.12",
     "lodash": "4.17.21",
     "mousetrap": "1.6.5",
     "ms": "3.0.0-canary.1",
