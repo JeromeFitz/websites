@@ -3,7 +3,6 @@ import { ArrowLeftIcon, ArrowRightIcon } from '@radix-ui/react-icons'
 import _map from 'lodash/map'
 import _size from 'lodash/size'
 import React, { useEffect, useRef, useState } from 'react'
-import useSWRInfinite from 'swr/infinite'
 import _title from 'title'
 
 import {
@@ -26,6 +25,7 @@ import { CarouselArrowButton, GrabBox, FocusArea } from '~components/Carousel'
 import { Breakout } from '~components/Container'
 import useOnScreen from '~hooks/useOnScreen'
 import useSpotify from '~hooks/useSpotify'
+import useSWRInfinitePages from '~hooks/useSWRInfinitePages'
 import fetcher from '~lib/fetcher'
 
 import { backgrounds } from './index.props'
@@ -62,18 +62,9 @@ const INIT = {
   url: '/api/spotify',
 }
 
-const getKey = (
-  pageIndex: number,
-  props: {
-    limit: number
-    time_range: string
-    type: string
-    url: string
-  }
-) => {
-  const { limit, time_range, type, url } = props
+const getKey = (pageIndex, { limit, time_range, type, url }) => {
   const offset = pageIndex === 0 ? 0 : 10 * pageIndex
-  return `${url}/${type}?limit=${limit}&offset=${offset}&time_range=${time_range}`
+  return [`${url}/${type}?limit=${limit}&offset=${offset}&time_range=${time_range}`]
 }
 
 const css_info = {
@@ -105,7 +96,11 @@ const info = {
   },
 }
 
-// eslint-disable-next-line complexity
+/**
+ * @spotify fuck ariel pink
+ */
+const spotifyRemoveIds = ['5H0YoDsPDi9fObFmJtTjfN']
+
 const TopItem = ({ type }) => {
   const ref = useRef()
 
@@ -122,64 +117,48 @@ const TopItem = ({ type }) => {
       ? 'data-focus-area-top-artists-exit'
       : 'data-focus-area-top-tracks-exit'
 
-  // const [url, urlSet] = useState(
-  //   DEFAULT_URL + `?limit=20&offset=0&time_range=short_term`
-  // )
   const {
     data: { time_range },
   } = useSpotify()
 
-  // const { data, error } = useSWR(url, fetcher, {
-  //   refreshInterval: HOUR,
-  //   revalidateOnFocus: false,
-  // })
-
-  // useEffect(() => {
-  //   urlSet(DEFAULT_URL + `?limit=20&offset=0&time_range=${time_range}`)
-  //   return () => {}
-  // }, [time_range])
   const [limit] = useState(10)
-  // const [offset] = useState(0)
-  // const [time_range, time_rangeSet] = useState('long_term')
-  // const [type] = useState('top-artists')
   const [url] = useState(INIT.url)
   const isVisible = useOnScreen(ref)
 
-  const { data, error, size, setSize, isValidating } = useSWRInfinite(
-    (pageIndex) => {
-      const props = {
+  const {
+    canFetchMore,
+    data,
+    error,
+    fetchMore,
+    // isEmpty,
+    isFetchingMore,
+    // isLoadingInitialData,
+    isLoadingMore,
+  } = useSWRInfinitePages(
+    (pageIndex) =>
+      getKey(pageIndex, {
         limit,
         time_range,
         type,
         url,
-      }
-      return getKey(pageIndex, props)
-    },
+      }),
     fetcher,
-    { refreshInterval: HOUR, revalidateOnFocus: false, revalidateFirstPage: false }
+    {
+      dataPath: 'items',
+      limit: 10,
+      //
+      refreshInterval: HOUR,
+      revalidateAll: false,
+      revalidateOnFocus: false,
+      revalidateFirstPage: false,
+    }
   )
 
-  // const items = data ? data.map((d) => d?.items).flat() : []
-  const isLoadingInitialData = !data && !error
-  const isLoadingMore =
-    isLoadingInitialData ||
-    (size > 0 && data && typeof data[size - 1] === 'undefined')
-  const isEmpty = data?.[0]?.length === 0
-  const isReachingEnd =
-    isEmpty || (data && data[data.length - 1]?.items?.length < INIT.limit)
-  const isRefreshing = isValidating && data && data.length === size
-
   useEffect(() => {
-    if (isVisible && !isReachingEnd && !isRefreshing) {
-      void setSize(size + 1)
+    if (canFetchMore && !isFetchingMore && !isLoadingMore && isVisible) {
+      void fetchMore()
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isVisible, isRefreshing])
-
-  const loading = !data && !error
-  // const artists = data?.items || []
-  const items = data ? data.map((d) => d?.items).flat() : []
-  const hasError = !loading && _size(items) === 0
+  }, [canFetchMore, fetchMore, isFetchingMore, isLoadingMore, isVisible])
 
   const lastUsedFocusArea = React.useRef<HTMLElement>(null)
   const isRoving = React.useRef(false)
@@ -404,7 +383,9 @@ const TopItem = ({ type }) => {
                 },
               }}
             >
-              {_map(items, (item, i: number) => {
+              {data?.map((item: any, i: number) => {
+                if (spotifyRemoveIds.includes(item.id)) return null
+
                 const bgIndex = i > backgroundsSize ? backgroundsSize : i
 
                 // @hack
@@ -436,12 +417,6 @@ const TopItem = ({ type }) => {
                   _genres = item.genres
                   _alt = `Image of ${item.artist}’s “${item.album.name}” album cover`
                 }
-
-                // @hack(fuck ariel pink)
-                if (
-                  _href === 'https://open.spotify.com/artist/5H0YoDsPDi9fObFmJtTjfN'
-                )
-                  return null
 
                 const genres = _map(_genres.slice(0, 5), (genre) =>
                   _title(genre)
@@ -541,7 +516,7 @@ const TopItem = ({ type }) => {
                       <Text
                         as="h3"
                         size="5"
-                        css={{ fontWeight: 500, lineHeight: '1.75' }}
+                        css={{ fontWeight: 500, lineHeight: '1.25', mb: 3 }}
                       >
                         {/* {lpad(i + 1)}. */}
                         {_title1}
@@ -552,7 +527,7 @@ const TopItem = ({ type }) => {
                             as="p"
                             size="4"
                             variant="gray"
-                            css={{ lineHeight: '1.5' }}
+                            css={{ lineHeight: '1.25', my: 2 }}
                           >
                             {_title2}
                           </Text>
@@ -560,7 +535,7 @@ const TopItem = ({ type }) => {
                             as="p"
                             size="3"
                             variant="gray"
-                            css={{ lineHeight: '1.25' }}
+                            css={{ lineHeight: '1.25', my: 2 }}
                           >
                             {_title3}
                           </Text>
@@ -604,7 +579,7 @@ const TopItem = ({ type }) => {
                       <Text size="3" css={{ color: '$spotify-black' }}>
                         {isLoadingMore // ? 'loading' : isReachingEnd ? 'no more' :''
                           ? info.loading.text
-                          : hasError
+                          : !!error
                           ? info.error.text
                           : info.success.text}
                       </Text>
@@ -615,7 +590,7 @@ const TopItem = ({ type }) => {
                           > */}
                         {isLoadingMore // ? 'loading' : isReachingEnd ? 'no more' :''
                           ? info.loading.cta
-                          : hasError
+                          : !!error
                           ? info.error.cta
                           : info.success.cta}
                         {/* <ArrowRightIcon />

@@ -44,7 +44,8 @@ const Container = styled('div', {
 
 const NowPlaying = () => {
   const slugger = new Slugger()
-  const { data } = useSWR('/api/spotify/now-playing', fetcher, {
+  // @todo(swr) SWRHook
+  const { data } = useSWR<any>('/api/spotify/now-playing', fetcher, {
     fallbackData: initialData,
     refreshInterval: MINUTE,
     revalidateOnFocus: true,
