@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "regions": ["iad", "sfo"],
+  "regions": ["iad"],
   "public": false,
   "cleanUrls": true,
   "build": {
