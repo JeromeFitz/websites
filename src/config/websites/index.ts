@@ -6,6 +6,9 @@
  * [ ] jerandky.com
  * [ ] arcadecomedytheater.com
  */
+// import uniq from 'lodash/uniqWith'
+
+import { DatabaseInfo, Databases } from '@jeromefitz/notion/schema/types'
 
 import {
   /**
@@ -25,7 +28,7 @@ import {
   nextSeo,
   sitemapExcludes,
 } from '~config/websites/jeromefitzgerald.com'
-import { DatabaseInfo, Databases } from '~lib/notion/schema/types'
+// import { getDataTypes } from '@jeromefitz/notion/helper'
 
 const getDynamicDatabases = (obj: DatabaseInfo) =>
   Object.keys(obj).reduce((acc, key) => {
@@ -37,10 +40,28 @@ const getDynamicDatabases = (obj: DatabaseInfo) =>
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
 const DATABASES: Databases = getDynamicDatabases(NOTION)
+// console.dir(`____ DATABASES `)
+// console.dir(DATABASES)
+
+/**
+ * @refactor lol, this is not even used.
+ */
+// const GET_DATA_TYPES = new Object()
+// getDataTypes.map((type: any) => (GET_DATA_TYPES[type] = []))
+// Object.keys(NOTION).map((k) => {
+//   if (!!NOTION[k].active) {
+//     NOTION[k].dataTypes.map((dataType) => GET_DATA_TYPES[dataType].push(k))
+//   }
+// })
+// console.dir(`____ GET_DATA_TYPES`)
+// console.dir(GET_DATA_TYPES)
 
 const ROUTE_TYPES = Object.keys(NOTION)
   .map((k) => !!NOTION[k].active && NOTION[k].routeType)
   .filter(Boolean)
+
+// console.dir(`____ ROUTE_TYPES `)
+// console.dir(ROUTE_TYPES)
 
 export {
   navigationHeader,
@@ -48,6 +69,7 @@ export {
   sitemapExcludes,
   //
   DATABASES,
+  // GET_DATA_TYPES,
   NOTION,
   PAGES__HOMEPAGE,
   PAGES,

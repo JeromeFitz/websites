@@ -1,5 +1,8 @@
 import useSWR from 'swr'
 
+import getCatchAll from '@jeromefitz/notion/getCatchAll'
+import getPathVariables from '@jeromefitz/notion/getPathVariables'
+
 import { Page, PageHeading, SkeletonHeading } from '~components/Layout'
 import ListingShows from '~components/Notion/Listing/ListingShows'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -13,8 +16,6 @@ import {
   ERROR__FALLBACK,
 } from '~lib/constants'
 import fetcher from '~lib/fetcher'
-import getCatchAll from '~lib/notion/getCatchAll'
-import getPathVariables from '~lib/notion/getPathVariables'
 import getNextPageStatus from '~utils/getNextPageStatus'
 
 const Index = (props) => {

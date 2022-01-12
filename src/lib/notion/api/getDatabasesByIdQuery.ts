@@ -1,5 +1,6 @@
-import { notion } from '~lib/notion/helper'
-import { PROPERTIES } from '~lib/notion/schema'
+import { notion } from '@jeromefitz/notion/helper'
+import { PROPERTIES } from '@jeromefitz/notion/schema'
+
 import avoidRateLimit from '~utils/avoidRateLimit'
 
 const mock: any = {

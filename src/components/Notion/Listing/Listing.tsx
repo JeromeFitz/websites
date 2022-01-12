@@ -5,6 +5,12 @@ import * as React from 'react'
 
 import { NOTION } from '~config/websites'
 
+const ListingDefault = dynamic(
+  () => import('~components/Notion/Listing/ListingDefault'),
+  {
+    ssr: true,
+  }
+)
 const ListingEpisodes = dynamic(
   () => import('~components/Notion/Listing/ListingEpisodes'),
   {
@@ -33,7 +39,7 @@ const Listing = ({ images, items, routeType }) => {
 
   if (itemsSize === 0) return null
 
-  let itemsData
+  let itemsData: string | any[]
 
   if (itemsSize > 0) {
     switch (routeType) {
@@ -82,8 +88,11 @@ const Listing = ({ images, items, routeType }) => {
     )
   }
 
-  console.dir(`@todo(ListingFallback)`)
-  return <>{itemsSize > 0 && null}</>
+  return (
+    <>
+      <ListingDefault items={itemsData} />
+    </>
+  )
 }
 
 export default Listing

@@ -1,7 +1,8 @@
-import getByListing from '~lib/notion/queries/getByListing'
-import getByListingWithDate from '~lib/notion/queries/getByListingWithDate'
-import getBySlug from '~lib/notion/queries/getBySlug'
-import getBySlugWithRouteType from '~lib/notion/queries/getBySlugWithRouteType'
+import { DATA_TYPES as DT } from '@jeromefitz/notion/helper'
+import getNotionListing from '@jeromefitz/notion/queries/getNotionListing'
+import getNotionListingByDate from '@jeromefitz/notion/queries/getNotionListingByDate'
+import getNotionSlug from '@jeromefitz/notion/queries/getNotionSlug'
+import getNotionSlugByRoute from '@jeromefitz/notion/queries/getNotionSlugByRoute'
 
 /**
  * @info
@@ -22,39 +23,24 @@ class DATA_TYPES {
     return this.dataType
   }
 
-  async ['getBySlug']({ pathVariables, routeType, slug }) {
-    // console.dir(`1|5 => getBySlug`)
-    return await getBySlug({ pathVariables, routeType, slug })
-  }
-  1(props) {
-    return this.getBySlug(props)
-  }
-  5(props) {
-    return this.getBySlug(props)
+  async [DT.SLUG]({ pathVariables, routeType, slug }) {
+    // console.dir(`1|5 => getNotionSlug`)
+    return await getNotionSlug({ pathVariables, routeType, slug })
   }
 
-  async ['getByListing']({ pathVariables, routeType }) {
-    // console.dir(`2 => getByListing`)
-    return await getByListing({ pathVariables, routeType })
-  }
-  2(props) {
-    return this.getByListing(props)
+  async [DT.LISTING]({ pathVariables, routeType }) {
+    // console.dir(`2 => getNotionListing`)
+    return await getNotionListing({ pathVariables, routeType })
   }
 
-  async ['getByListingWithDate']({ pathVariables, routeType, slug }) {
-    // console.dir(`3 => getByListingWithDate`)
-    return await getByListingWithDate({ pathVariables, routeType, slug })
-  }
-  3(props) {
-    return this.getByListingWithDate(props)
+  async [DT.LISTING_BY_DATE]({ pathVariables, routeType, slug }) {
+    // console.dir(`3 => getNotionListingByDate`)
+    return await getNotionListingByDate({ pathVariables, routeType, slug })
   }
 
-  async ['getBySlugWithRouteType']({ pathVariables, routeType, slug }) {
-    // console.dir(`4 => getBySlugWithRouteType`)
-    return await getBySlugWithRouteType({ pathVariables, routeType, slug })
-  }
-  4(props) {
-    return this.getBySlugWithRouteType(props)
+  async [DT.SLUG_BY_ROUTE]({ pathVariables, routeType, slug }) {
+    // console.dir(`4 => getNotionSlugByRoute`)
+    return await getNotionSlugByRoute({ pathVariables, routeType, slug })
   }
 }
 

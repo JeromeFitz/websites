@@ -16,18 +16,41 @@ import {
 import { CardSpotify } from '@jeromefitz/design-system/components/Card/Spotify'
 import { styled } from '@jeromefitz/design-system/stitches.config'
 
+import TextAnnotations from '~components/Notion/utils/TextAnnotations'
 import { wrapped2020, wrapped2021 } from '~data/spotify'
 
 const years = {
   2021: {
     title: '2021',
-    description:
-      'I think it is understated how much music got me through the year that was 2021.',
+    description: (
+      <>
+        I think it is{' '}
+        <TextAnnotations
+          annotations={{}}
+          href={`https://www.theonion.com/shitty-music-has-helped-moron-through-hardest-times-in-1848340506`}
+          id={1848340506}
+          key={1848340506}
+          plain_text={`understated how much music got me through the year`}
+        />{' '}
+        that was 2021.
+      </>
+    ),
   },
   2020: {
     title: '2020',
-    description:
-      'I think it is also incredibly understated how much music got me through the year that was 2020.',
+    description: (
+      <>
+        I think it is also{' '}
+        <TextAnnotations
+          annotations={{}}
+          href={`https://www.theonion.com/shitty-music-has-helped-moron-through-hardest-times-in-1848340506`}
+          id={1848340506}
+          key={1848340506}
+          plain_text={`understated how much music got me through the year`}
+        />{' '}
+        that was 2020.
+      </>
+    ),
   },
 }
 

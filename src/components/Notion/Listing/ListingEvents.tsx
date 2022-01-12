@@ -24,9 +24,9 @@ import {
   Section,
 } from '@jeromefitz/design-system/components'
 import { styled } from '@jeromefitz/design-system/stitches.config'
+import getInfoType from '@jeromefitz/notion/getInfoType'
 
 import { TAGS } from '~config/websites'
-import getInfoType from '~lib/notion/getInfoType'
 
 const Announce = dynamic(
   () => import('@jeromefitz/design-system/components').then((mod) => mod.Announce),

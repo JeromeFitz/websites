@@ -2,16 +2,17 @@
 import _filter from 'lodash/filter'
 import _omit from 'lodash/omit'
 
-import { NOTION } from '~config/websites'
-import getBlocksByIdChildren from '~lib/notion/api/getBlocksByIdChildren'
-import getDatabasesByIdQuery from '~lib/notion/api/getDatabasesByIdQuery'
-import deepFetchAllChildren from '~lib/notion/deepFetchAllChildren'
-import getImages from '~lib/notion/getImages'
-import { QUERIES } from '~lib/notion/helper'
-import dataNormalized from '~lib/notion/queries/dataNormalized'
-import dataSorted from '~lib/notion/queries/dataSorted'
+import getBlocksByIdChildren from '@jeromefitz/notion/api/getBlocksByIdChildren'
+import getDatabasesByIdQuery from '@jeromefitz/notion/api/getDatabasesByIdQuery'
+import deepFetchAllChildren from '@jeromefitz/notion/deepFetchAllChildren'
+import getImages from '@jeromefitz/notion/getImages'
+import { QUERIES } from '@jeromefitz/notion/helper'
+import dataNormalized from '@jeromefitz/notion/queries/dataNormalized'
+import dataSorted from '@jeromefitz/notion/queries/dataSorted'
 
-const getBySlug = async ({ pathVariables, routeType, slug }) => {
+import { NOTION } from '~config/websites'
+
+const getNotionSlug = async ({ pathVariables, routeType, slug }) => {
   let content = null,
     info = null,
     items = null
@@ -64,4 +65,4 @@ const getBySlug = async ({ pathVariables, routeType, slug }) => {
   return data
 }
 
-export default getBySlug
+export default getNotionSlug

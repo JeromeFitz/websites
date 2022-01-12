@@ -2,21 +2,24 @@
 import _map from 'lodash/map'
 import _omit from 'lodash/omit'
 
-import { NOTION } from '~config/websites'
-import getBlocksByIdChildren from '~lib/notion/api/getBlocksByIdChildren'
-import getDatabasesByIdQuery from '~lib/notion/api/getDatabasesByIdQuery'
-import getPagesById from '~lib/notion/api/getPagesById'
-import getImages from '~lib/notion/getImages'
-import dataNormalized from '~lib/notion/queries/dataNormalized'
-import dataSorted from '~lib/notion/queries/dataSorted'
-import { PROPERTIES } from '~lib/notion/schema'
+import getBlocksByIdChildren from '@jeromefitz/notion/api/getBlocksByIdChildren'
+import getDatabasesByIdQuery from '@jeromefitz/notion/api/getDatabasesByIdQuery'
+import getPagesById from '@jeromefitz/notion/api/getPagesById'
+import getImages from '@jeromefitz/notion/getImages'
+import dataNormalized from '@jeromefitz/notion/queries/dataNormalized'
+import dataSorted from '@jeromefitz/notion/queries/dataSorted'
+import { PROPERTIES } from '@jeromefitz/notion/schema'
 
-const getByRouteType = async ({ pathVariables, routeType }) => {
+import { NOTION } from '~config/websites'
+
+const getNotionListing = async ({ pathVariables, routeType }) => {
   let content = null,
     info = null,
     items = null
   const dateTimestamp = new Date().toISOString()
   // @todo(date-fns) make this the first date of the year dynamically
+  // const year = new Date().getFullYear.toString()
+  // const dateTimestampBlog = new Date(`${year}-01-01`).toISOString()
   const dateTimestampBlog = new Date('2020-01-01').toISOString()
 
   const infoInit = await getPagesById({
@@ -34,11 +37,14 @@ const getByRouteType = async ({ pathVariables, routeType }) => {
       and: [
         {
           property:
-            routeType === 'events'
+            routeType === NOTION.EVENTS.routeType
               ? PROPERTIES.dateEvent.notion
               : PROPERTIES.datePublished.notion,
           date: {
-            on_or_after: routeType === 'events' ? dateTimestamp : dateTimestampBlog,
+            on_or_after:
+              routeType === NOTION.EVENTS.routeType
+                ? dateTimestamp
+                : dateTimestampBlog,
           },
         },
       ],
@@ -62,4 +68,4 @@ const getByRouteType = async ({ pathVariables, routeType }) => {
   return data
 }
 
-export default getByRouteType
+export default getNotionListing

@@ -2,7 +2,7 @@
 
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import getQuery from '~lib/notion/getQuery'
+import getQuery from '@jeromefitz/notion/getQuery'
 
 interface RequestQueryProps {
   databaseType?: string

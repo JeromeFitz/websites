@@ -1159,7 +1159,7 @@ const VENUES = [
  * 0. Create DB w/o Relations|Rollups
  * 1. Update DB w/ Relations
  * 2. Update DB w/ Relation Naming Preference
- * 3. update DB w/ Rollups
+ * 3. Update DB w/ Rollups
  */
 const INIT = {
   BLOG: _filter(BLOG, { init: true }),

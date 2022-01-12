@@ -2,10 +2,11 @@
 // import _omit from 'lodash/omit'
 import { NextApiRequest, NextApiResponse } from 'next'
 
+import getCatchAll from '@jeromefitz/notion/getCatchAll'
+import getPathVariables from '@jeromefitz/notion/getPathVariables'
+
 import { PAGES__HOMEPAGE } from '~config/websites'
-import getCatchAll from '~lib/notion/getCatchAll'
-import getPathVariables from '~lib/notion/getPathVariables'
-// import omitFields from '~lib/notion/omitFields'
+// import omitFields from '@jeromefitz/notion/omitFields'
 
 const notionCatchAll = async (req: NextApiRequest, res: NextApiResponse) => {
   try {

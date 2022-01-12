@@ -1,8 +1,9 @@
 import _map from 'lodash/map'
 
+import getTypes from '@jeromefitz/notion/api/getTypes'
+import { LOOKUP, PROPERTIES_LOOKUP } from '@jeromefitz/notion/schema'
+
 import { NOTION } from '~config/websites'
-import getTypes from '~lib/notion/api/getTypes'
-import { LOOKUP, PROPERTIES_LOOKUP } from '~lib/notion/schema'
 
 const dataNormalized = (data: any, pathVariables = null, pageId = null) => {
   const DATA_NORMALIZED = {}

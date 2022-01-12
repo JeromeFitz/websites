@@ -1,10 +1,11 @@
 import _filter from 'lodash/filter'
 
+import deepFetchAllChildren from '@jeromefitz/notion/deepFetchAllChildren'
+import { getCache, setCache } from '@jeromefitz/notion/getCache'
+import { DATA_TYPES } from '@jeromefitz/notion/getDataType'
+import getImages from '@jeromefitz/notion/getImages'
+
 import { nextWeirdRoutingSkipData } from '~lib/constants'
-import deepFetchAllChildren from '~lib/notion/deepFetchAllChildren'
-import { getCache, setCache } from '~lib/notion/getCache'
-import { DATA_TYPES } from '~lib/notion/getDataType'
-import getImages from '~lib/notion/getImages'
 
 const useCache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE
 

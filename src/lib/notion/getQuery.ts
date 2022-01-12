@@ -2,19 +2,28 @@ import _map from 'lodash/map'
 import _omit from 'lodash/omit'
 import _size from 'lodash/size'
 
-import { NOTION } from '~config/websites'
-import { notion } from '~lib/notion/helper'
-import dataNormalizedResults from '~lib/notion/queries/dataNormalizedResults'
-// import type { DatabaseType } from '~lib/notion/schema/types'
+import { notion } from '@jeromefitz/notion/helper'
+import dataNormalizedResults from '@jeromefitz/notion/queries/dataNormalizedResults'
+import { PROPERTIES } from '@jeromefitz/notion/schema'
+
+import { DATABASES, NOTION } from '~config/websites'
+// import type { DatabaseType } from '@jeromefitz/notion/schema/types'
 import avoidRateLimit from '~utils/avoidRateLimit'
 
 // const useCache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE
 // const useCache = false
 
+// console.dir(NOTION)
+
+const SORT = {
+  ASCENDING: 'ascending',
+  DESCENDING: 'descending',
+}
+
 const SORTS: any[] = [
   {
-    property: 'Slug',
-    direction: 'ascending',
+    property: PROPERTIES.slug.notion,
+    direction: SORT.ASCENDING,
   },
 ]
 
@@ -99,6 +108,8 @@ class RELATIONS_TYPES {
   }
 }
 
+// console.dir(`getQuery:`)
+
 class DATABASE_TYPES {
   constructor(private databaseType: string) {}
 
@@ -106,7 +117,7 @@ class DATABASE_TYPES {
     return this.databaseType
   }
 
-  ['episodes']({ reqQuery }) {
+  [DATABASES.EPISODES]({ reqQuery }) {
     let filter = {}
     const sorts = SORTS
     const { podcasts: e__podcasts } = reqQuery
@@ -117,7 +128,7 @@ class DATABASE_TYPES {
     _size(e__podcastIds) > 0 &&
       _map(e__podcastIds, (id) =>
         filterTagEpisodesByPodcasts.push({
-          property: 'Podcasts',
+          property: PROPERTIES.relationEpisodes__Podcast.notion,
           relation: {
             contains: id,
           },
@@ -130,7 +141,7 @@ class DATABASE_TYPES {
     }
   }
 
-  ['events']() {
+  [DATABASES.EVENTS]() {
     return {
       filter: {},
       sorts: [
@@ -142,7 +153,7 @@ class DATABASE_TYPES {
     }
   }
 
-  ['people']({ reqQuery }) {
+  [DATABASES.PEOPLE]({ reqQuery }) {
     let filter = {}
     const sorts = SORTS
 
@@ -178,7 +189,7 @@ class DATABASE_TYPES {
     }
   }
 
-  ['shows']({ reqQuery }) {
+  [DATABASES.SHOWS]({ reqQuery }) {
     let filter = {}
     const sorts = SORTS
 
@@ -189,11 +200,13 @@ class DATABASE_TYPES {
        * @events
        */
       case 'eventsLineupShowIds':
-        k = 'Events.Lineup'
+        console.dir(`> eventsLineupShowIds: Events.Lineup`)
+        k = PROPERTIES.relationShows__Events_Lineup.notion
         v = value
         break
       case 'shows':
-        k = 'Events'
+        console.dir(`> shows: Events`)
+        k = PROPERTIES.relationVenues__Events.notion
         v = value
         break
     }
@@ -213,7 +226,7 @@ class DATABASE_TYPES {
     }
   }
 
-  ['venues']({ reqQuery }) {
+  [DATABASES.VENUES]({ reqQuery }) {
     let filter = {}
     const sorts = SORTS
     const { events: eventsV } = reqQuery
@@ -224,7 +237,7 @@ class DATABASE_TYPES {
     _size(eventVIds) > 0 &&
       _map(eventVIds, (id) =>
         filterTagEventsV.push({
-          property: 'Events',
+          property: PROPERTIES.relationVenues__Events.notion,
           relation: {
             contains: id,
           },
@@ -237,45 +250,45 @@ class DATABASE_TYPES {
     }
   }
 
-  ['tags']({ reqQuery }) {
-    let filter = {}
-    const sorts = SORTS
-    const { events, eventsLineupShowIds: showLineup, shows } = reqQuery
+  // [DATABASES.TAGS]({ reqQuery }) {
+  //   let filter = {}
+  //   const sorts = SORTS
+  //   const { events, eventsLineupShowIds: showLineup, shows } = reqQuery
 
-    const filterTagShows = []
-    const filterTagEvents = []
+  //   const filterTagShows = []
+  //   const filterTagEvents = []
 
-    const showIds = []
-    !!shows && showIds.push(...shows?.split(','))
-    !!showLineup && showIds.push(...showLineup?.split(','))
-    _size(showIds) > 0 &&
-      _map(showIds, (id) =>
-        filterTagShows.push({
-          property: 'Tags.Shows',
-          relation: {
-            contains: id,
-          },
-        })
-      )
+  //   const showIds = []
+  //   !!shows && showIds.push(...shows?.split(','))
+  //   !!showLineup && showIds.push(...showLineup?.split(','))
+  //   _size(showIds) > 0 &&
+  //     _map(showIds, (id) =>
+  //       filterTagShows.push({
+  //         property: 'Tags.Shows',
+  //         relation: {
+  //           contains: id,
+  //         },
+  //       })
+  //     )
 
-    const eventIds = []
-    !!events && eventIds.push(...events?.split(','))
-    _size(eventIds) > 0 &&
-      _map(eventIds, (id) =>
-        filterTagEvents.push({
-          property: 'Tags.Events',
-          relation: {
-            contains: id,
-          },
-        })
-      )
+  //   const eventIds = []
+  //   !!events && eventIds.push(...events?.split(','))
+  //   _size(eventIds) > 0 &&
+  //     _map(eventIds, (id) =>
+  //       filterTagEvents.push({
+  //         property: 'Tags.Events',
+  //         relation: {
+  //           contains: id,
+  //         },
+  //       })
+  //     )
 
-    filter = { or: [...filterTagEvents, ...filterTagShows] }
-    return {
-      filter,
-      sorts,
-    }
-  }
+  //   filter = { or: [...filterTagEvents, ...filterTagShows] }
+  //   return {
+  //     filter,
+  //     sorts,
+  //   }
+  // }
 }
 
 const getQuery = async ({ reqQuery }) => {
@@ -293,22 +306,23 @@ const getQuery = async ({ reqQuery }) => {
   /**
    * @setup
    */
-
-  const database_id = NOTION[databaseType.toUpperCase()].database_id
+  const DATABASE_TYPE = databaseType.toUpperCase()
+  const database_id = NOTION[DATABASE_TYPE].database_id
   if (!database_id) return []
 
-  let data, items
-  let filter, sorts
+  // @todo(types) any
+  let data: Pick<any, string | number | symbol>, items: any[]
+  let filter: any, sorts: any
 
   // console.dir(`reqQuery`)
   // console.dir(reqQuery)
 
-  // @question(constructor) this needs to be reset each time
+  // @question(constructor) needs to be reset each time
   const getDBTYPE = new DATABASE_TYPES('')
 
   if (databaseType) {
     if (getDBTYPE[databaseType]) {
-      const DBTYPE_DATA = getDBTYPE[databaseType]({ reqQuery })
+      const DBTYPE_DATA = getDBTYPE[DATABASE_TYPE]({ reqQuery })
       filter = DBTYPE_DATA?.filter
       sorts = DBTYPE_DATA?.sorts
     } else {
@@ -329,7 +343,8 @@ const getQuery = async ({ reqQuery }) => {
 
   if (!hasError && (!data || data === undefined)) {
     await avoidRateLimit()
-    let contentData
+    // @todo(types) any
+    let contentData: Pick<any, string | number | symbol>
     if (!!filter) {
       // console.dir(`filter`)
       // console.dir(filter)
@@ -340,7 +355,7 @@ const getQuery = async ({ reqQuery }) => {
         filter = {
           and: [
             {
-              property: 'Slug',
+              property: PROPERTIES.slug.notion,
               rich_text: { equals: '@hack(notion)-do-not-return' },
             },
           ],

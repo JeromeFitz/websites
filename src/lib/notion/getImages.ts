@@ -2,7 +2,7 @@ import Slugger from 'github-slugger'
 import _map from 'lodash/map'
 import { getPlaiceholder } from 'plaiceholder'
 
-import filterImages from '~lib/notion/filterImages'
+import filterImages from '@jeromefitz/notion/filterImages'
 /**
  * @plaiceholder/next
  */

@@ -5,8 +5,11 @@ import { useSound } from 'use-sound'
 import { Flex, Link } from '@jeromefitz/design-system/components'
 
 import { EmojiParser } from '~components/Emoji'
+import { nextSeo } from '~config/websites'
 import { useUI } from '~context/ManagedUI'
-import getNextLink from '~lib/notion/getNextLink'
+import getNextLink from '~utils/getNextLink'
+
+const domain = new URL(nextSeo.url)
 
 const TextAnnotationLink = ({ children, href }) => {
   const { audio } = useUI()
@@ -14,7 +17,8 @@ const TextAnnotationLink = ({ children, href }) => {
     soundEnabled: audio,
     volume: 0.25,
   })
-  const isExternal = !href.includes('jerome')
+
+  const isExternal = !href.includes(domain.hostname.replace('www.', ''))
 
   if (!isExternal) {
     const link = getNextLink(href)
