@@ -1,5 +1,9 @@
-// ref: https://www.joshwcomeau.com/snippets/react-hooks/use-prefers-reduced-motion/
-// note: can be replaced by useReducedMotion via framer-motion
+/**
+ * @ref https://www.joshwcomeau.com/snippets/react-hooks/use-prefers-reduced-motion/
+ * { @joshwcomeau } = props
+ *
+ * @note can be replaced by useReducedMotion via framer-motion
+ */
 import { useEffect, useState } from 'react'
 
 const QUERY = '(prefers-reduced-motion: no-preference)'

@@ -1,4 +1,5 @@
-import { notion } from '~lib/notion/helper'
+import { notion } from '@jeromefitz/notion/helper'
+
 import avoidRateLimit from '~utils/avoidRateLimit'
 
 const getDatabasesById = async ({ databaseId }) => {

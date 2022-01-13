@@ -14,19 +14,17 @@ import {
   Paragraph,
   Text,
 } from '@jeromefitz/design-system/components'
+import getTitle from '@jeromefitz/notion/getTitle'
+import { PROPERTIES } from '@jeromefitz/notion/schema'
+import type { Show } from '@jeromefitz/notion/schema/types'
 
+import { NOTION } from '~config/websites'
 import fetcher from '~lib/fetcher'
-import getTitle from '~lib/notion/getTitle'
-import type { Show } from '~lib/notion/schema/types'
 
 const rollupExclude = [
-  'rollupTags',
-  'rollupTagsSecondary',
-  'rollupShow',
-  // @refactor() remove above once below is solidified
-  'rollupShows__People_Cast_Slug',
-  // 'rollupEvents__People_Guest_Music',
-  'rollupEvents__Venues',
+  PROPERTIES.rollupShows__People_Cast_Slug.key,
+  // PROPERTIES.rollupEvents__People_Guest_Music.key,
+  PROPERTIES.rollupEvents__Venues.key,
 ]
 
 const Meta = ({ data, routeType }) => {
@@ -119,8 +117,8 @@ const Rollup = ({ _key, data, rollupKey, routeType }) => {
           {_map(meta, (item, itemIdx) => {
             const keySub = `${_key}-${itemIdx}`
             if (
-              rollupKey === 'rollupEvents__People_Cast' &&
-              routeType === 'events'
+              rollupKey === PROPERTIES.rollupEvents__People_Cast.key &&
+              routeType === NOTION.EVENTS.routeType
             ) {
               return <Cast data={data} key={keySub} />
             }
@@ -136,6 +134,9 @@ const Rollup = ({ _key, data, rollupKey, routeType }) => {
   )
 }
 
+/**
+ * @custom(notion) get the cast of the "first" show
+ */
 const Cast = ({ data }) => {
   const { data: showData } = useSWRImmutable<Show>(
     [`/api/notion/pages/${data?.relationEvents__Shows[0]}`],

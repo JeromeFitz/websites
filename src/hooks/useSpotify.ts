@@ -1,14 +1,15 @@
 import useSWR from 'swr'
 
+type TimeRange = 'long_term' | 'medium_term' | 'short_term'
+interface InitialStoreProps {
+  limit: number
+  time_range: TimeRange
+}
+
 const key = 'spotify'
-const initialStore = {
-  disabled: false,
+const initialStore: InitialStoreProps = {
   limit: 10,
   time_range: 'short_term',
-  short_term: { topArtists: {}, topSongs: {} },
-  medium_term: { topArtists: {}, topSongs: {} },
-  long_term: { topArtists: {}, topSongs: {} },
-  nowPlaying: {},
 }
 
 function useSpotify() {
@@ -16,11 +17,11 @@ function useSpotify() {
     fallbackData: initialStore,
   })
 
-  const setSpotifyLimit = async (data, value) => {
+  const setSpotifyLimit = async (data: any, value: number) => {
     await mutate({ ...data, limit: value })
   }
 
-  const setSpotifyTimeRange = async (data, value) => {
+  const setSpotifyTimeRange = async (data: any, value: TimeRange) => {
     await mutate({ ...data, time_range: value })
   }
 

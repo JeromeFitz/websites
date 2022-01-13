@@ -1,14 +1,15 @@
 import _size from 'lodash/size'
 import { NextApiRequest, NextApiResponse } from 'next'
 
+import createPage from '@jeromefitz/notion/api/createPage'
+// @todo(notion) this no longer works!
+import children from '@jeromefitz/notion/create/children'
+// @todo(notion) this no longer works!
+import properties from '@jeromefitz/notion/create/properties'
+import getCatchAll from '@jeromefitz/notion/getCatchAll'
+import getPathVariables from '@jeromefitz/notion/getPathVariables'
+
 import { NOTION } from '~config/websites'
-import createPage from '~lib/notion/api/createPage'
-// @todo(notion) this no longer works!
-import children from '~lib/notion/create/children'
-// @todo(notion) this no longer works!
-import properties from '~lib/notion/create/properties'
-import getCatchAll from '~lib/notion/getCatchAll'
-import getPathVariables from '~lib/notion/getPathVariables'
 // const isObjectEmpty = '~utils/isObjectEmpty'
 
 const isDev = process.env.NODE_ENV === 'development'

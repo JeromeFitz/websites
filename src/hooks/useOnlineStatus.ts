@@ -1,4 +1,7 @@
-// copyright: https://github.com/rehooks/online-status
+/**
+ * @ref https://github.com/rehooks/online-status
+ * @license https://raw.githubusercontent.com/rehooks/online-status/master/LICENSE
+ */
 import { useState, useEffect } from 'react'
 
 function getOnlineStatus() {

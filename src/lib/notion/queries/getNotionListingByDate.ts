@@ -2,19 +2,20 @@ import _map from 'lodash/map'
 import _omit from 'lodash/omit'
 import _size from 'lodash/size'
 
+import getBlocksByIdChildren from '@jeromefitz/notion/api/getBlocksByIdChildren'
+import getDatabasesByIdQuery from '@jeromefitz/notion/api/getDatabasesByIdQuery'
+import getPagesById from '@jeromefitz/notion/api/getPagesById'
+import { QUERIES } from '@jeromefitz/notion/helper'
+import addTime from '@jeromefitz/notion/queries/addTime'
+import dataNormalized from '@jeromefitz/notion/queries/dataNormalized'
+import dataSorted from '@jeromefitz/notion/queries/dataSorted'
+import { PROPERTIES } from '@jeromefitz/notion/schema'
+
 import { NOTION } from '~config/websites'
-import getBlocksByIdChildren from '~lib/notion/api/getBlocksByIdChildren'
-import getDatabasesByIdQuery from '~lib/notion/api/getDatabasesByIdQuery'
-import getPagesById from '~lib/notion/api/getPagesById'
-import { QUERIES } from '~lib/notion/helper'
-import addTime from '~lib/notion/queries/addTime'
-import dataNormalized from '~lib/notion/queries/dataNormalized'
-import dataSorted from '~lib/notion/queries/dataSorted'
-import { PROPERTIES } from '~lib/notion/schema'
 
 // @todo(complexity) 16
 // eslint-disable-next-line complexity
-const getByListingWithDate = async ({ pathVariables, routeType, slug }) => {
+const getNotionListingByDate = async ({ pathVariables, routeType, slug }) => {
   const { meta } = pathVariables
   let content = null,
     info = null,
@@ -187,4 +188,4 @@ const getByListingWithDate = async ({ pathVariables, routeType, slug }) => {
   }
 }
 
-export default getByListingWithDate
+export default getNotionListingByDate

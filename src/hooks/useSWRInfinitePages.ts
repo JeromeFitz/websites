@@ -1,5 +1,9 @@
-import get from 'lodash/get'
-import last from 'lodash/last'
+/**
+ * @ref https://gist.github.com/nandorojo/c93f00c2a378264addfea3777174ccfe
+ * { @nandorojo } = props
+ */
+import _get from 'lodash/get'
+import _last from 'lodash/last'
 import { useMemo, useCallback, useRef } from 'react'
 import type { SWRInfiniteConfiguration } from 'swr/infinite'
 import useSWRInfinite from 'swr/infinite'
@@ -41,7 +45,7 @@ const useSWRInfinitePages = <
 
   const { data, error, isValidating, mutate, size, setSize } = useSWRInfinite<Page>(
     (index, previousPage) => {
-      const previousPageData = get(previousPage, dataPath)
+      const previousPageData = _get(previousPage, dataPath)
       // we've reached the last page, no more fetching
       if (previousPageData?.length === 0) return null
       // @todo(swr) is this correct?
@@ -74,9 +78,9 @@ const useSWRInfinitePages = <
     { revalidateAll: false, revalidateFirstPage: false, ...options }
   )
 
-  const firstPageData = get(data?.[0], dataPath)
-  const lastPage = last(data)
-  const lastPageData = get(lastPage, dataPath)
+  const firstPageData = _get(data?.[0], dataPath)
+  const lastPage = _last(data)
+  const lastPageData = _get(lastPage, dataPath)
   const canFetchMore = lastPageData?.length && lastPageData.length === limit
 
   const isLoadingInitialData = !data && !error
@@ -91,18 +95,13 @@ const useSWRInfinitePages = <
     if (isLoadingMore || isFetching.current) return null
 
     void setSize((size) => {
-      // console.dir('🍔 [useSWRInfinitePages] is fetching more', {
-      //   currentPage: size,
-      // })
       return size + 1
     })
   }, [isLoadingMore, setSize])
 
   const flat = useMemo(() => {
-    // console.dir(`🍔 [useSWRInfinitePages] flat`)
-    // console.dir(data)
     return data
-      ?.map((page) => get(page, dataPath) as Data)
+      ?.map((page) => _get(page, dataPath) as Data)
       ?.flat(1)
       .filter(Boolean) as
       | (Data extends readonly (infer InnerArr)[] ? InnerArr : Data)[]

@@ -13,10 +13,11 @@ import _slice from 'lodash/slice'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { Podcast, Item, FeedOptions } from 'podcast'
 
+import getCatchAll from '@jeromefitz/notion/getCatchAll'
+import getPathVariables from '@jeromefitz/notion/getPathVariables'
+
 import { url } from '~config/getNextSeo'
 import { NOTION } from '~config/websites'
-import getCatchAll from '~lib/notion/getCatchAll'
-import getPathVariables from '~lib/notion/getPathVariables'
 import getTimeInSeconds from '~utils/getTimeInSeconds'
 import setCharAt from '~utils/setCharAt'
 

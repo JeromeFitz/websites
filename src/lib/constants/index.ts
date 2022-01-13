@@ -1,7 +1,7 @@
 import IMAGE__FALLBACKS__SHOWS from '~lib/constants/images/shows'
 
 /**
- * @hack some reason everything is coming here, is it `notion/index.ts`?
+ * @hack some reason everything is coming here, is it `api/notion/index.ts`?
  */
 const nextWeirdRoutingSkipData = ['favicon.ico', 'false', 'true', 'undefined']
 

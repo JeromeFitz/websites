@@ -1,11 +1,11 @@
 import { useViewportScroll } from 'framer-motion'
-import * as React from 'react'
+import { useEffect, useState } from 'react'
 
 const useProgress = () => {
-  const [readingProgress, setReadingProgress] = React.useState(0)
+  const [readingProgress, setReadingProgress] = useState(0)
   const { scrollYProgress } = useViewportScroll()
 
-  React.useEffect(
+  useEffect(
     () =>
       /**
        * Use Framer Motion's useViewportScroll to get the current scroll

@@ -1,4 +1,7 @@
-const isActiveLink = (link, router): boolean => {
+const isActiveLink = (
+  link: { href: string; title: string },
+  router: { asPath: string }
+): boolean => {
   return (
     (router.asPath.length > 1 &&
       router.asPath.startsWith(link.href) &&

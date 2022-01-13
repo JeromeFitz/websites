@@ -3,23 +3,35 @@ import _map from 'lodash/map'
 import _noop from 'lodash/noop'
 import _uniqWith from 'lodash/uniqWith'
 
+import getCatchAll from '@jeromefitz/notion/getCatchAll'
+import getPathVariables from '@jeromefitz/notion/getPathVariables'
+
 import { NOTION, PAGES, ROUTE_TYPES } from '~config/websites'
 import asyncForEach from '~lib/asyncForEach'
-import getCatchAll from '~lib/notion/getCatchAll'
-import getPathVariables from '~lib/notion/getPathVariables'
 
 const isDev = process.env.NODE_ENV !== 'production'
 
+/**
+ * @note(notion)
+ *
+ * For each `DATA_TYPES.LISTING` return,
+ *  create the `next` route dynamically
+ *
+ */
 const getStaticPathsDefault = ({ items, routeType }) => {
   const data = []
-  // console.dir(`getStaticPathsDefault: ${routeType}`)
+  /**
+   * @refactor(notion)
+   *
+   * Can we utilize `dataTypes` somehow to be more generic?
+   */
   switch (routeType) {
     case NOTION.BLOG.routeType:
     case NOTION.EVENTS.routeType:
       const dates = []
       _map(items, (item) => {
         const date =
-          routeType === 'events'
+          routeType === NOTION.EVENTS.routeType
             ? item.properties.dateEvent.start
             : item.properties.datePublished.start
         const [year, month, day] = date.slice(0, 10).split('-')
@@ -32,7 +44,13 @@ const getStaticPathsDefault = ({ items, routeType }) => {
       break
     case NOTION.EPISODES.routeType:
       _map(items, (item) => {
-        // @todo(notion) what if there is more than two? make dynamic please
+        /**
+         * @todo(notion)
+         *
+         * What if there is more than two?
+         * Make dynamic please
+         *
+         */
         const podcastSlug =
           item?.properties?.relationEpisodes__Podcast[0] ===
           '24f593ca-1ea5-4f2f-9e5f-39bd44342021'
@@ -53,16 +71,29 @@ const getStaticPathsDefault = ({ items, routeType }) => {
   return data
 }
 
+/**
+ * @note(notion)
+ *
+ *
+ */
 const getStaticPathsCatchAll = async () => {
   const paths = []
 
-  // @note(next) yo, this was KILLING local development. only on builds please.
+  /**
+   * @note(next) do _not_ run in development mode
+   */
   if (!isDev) {
-    // @todo(notion) api this up somehow please
+    /**
+     * @todo(notion) api this up somehow please
+     */
     _map(PAGES, (p) => paths.push(`/${p}`))
-    // const routeTypesSingular = [routeType]
+
     await asyncForEach(ROUTE_TYPES, async (routeType: string) => {
+      /**
+       * @hack(notion) handle `episodes` separately
+       */
       if (routeType !== 'episodes') paths.push(`/${routeType}`)
+
       const catchAll = [routeType]
       const pathVariables = getPathVariables(catchAll)
       const data = await getCatchAll({
@@ -82,6 +113,7 @@ const getStaticPathsCatchAll = async () => {
 
   return {
     paths,
+    // @question(next) verify
     fallback: 'blocking',
   }
 }

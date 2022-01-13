@@ -1,19 +1,20 @@
 import _omit from 'lodash/omit'
 import _size from 'lodash/size'
 
+import getBlocksByIdChildren from '@jeromefitz/notion/api/getBlocksByIdChildren'
+import getDatabasesByIdQuery from '@jeromefitz/notion/api/getDatabasesByIdQuery'
+import getQuery from '@jeromefitz/notion/getQuery'
+import { QUERIES } from '@jeromefitz/notion/helper'
+import addTime from '@jeromefitz/notion/queries/addTime'
+import dataNormalized from '@jeromefitz/notion/queries/dataNormalized'
+import dataSorted from '@jeromefitz/notion/queries/dataSorted'
+import { PROPERTIES } from '@jeromefitz/notion/schema'
+
 import { NOTION } from '~config/websites'
-import getBlocksByIdChildren from '~lib/notion/api/getBlocksByIdChildren'
-import getDatabasesByIdQuery from '~lib/notion/api/getDatabasesByIdQuery'
-import getQuery from '~lib/notion/getQuery'
-import { QUERIES } from '~lib/notion/helper'
-import addTime from '~lib/notion/queries/addTime'
-import dataNormalized from '~lib/notion/queries/dataNormalized'
-import dataSorted from '~lib/notion/queries/dataSorted'
-import { PROPERTIES } from '~lib/notion/schema'
 
 // @todo(complexity) 16
 // eslint-disable-next-line complexity
-const getBySlugWithRouteType = async ({ pathVariables, routeType, slug }) => {
+const getNotionSlugByRoute = async ({ pathVariables, routeType, slug }) => {
   const { meta } = pathVariables
   let content = null,
     info = null,
@@ -55,12 +56,13 @@ const getBySlugWithRouteType = async ({ pathVariables, routeType, slug }) => {
         items = await getQuery({
           reqQuery: {
             podcasts: info.id,
-            databaseType: NOTION.EPISODES.routeType,
+            databaseType: NOTION.EPISODES.routeType.toUpperCase(),
           },
         })
       }
     }
   }
+
   if ([NOTION.BLOG.routeType, NOTION.EVENTS.routeType].includes(routeType)) {
     const [year, month, day] = meta
     const timestampQuery = new Date(
@@ -117,4 +119,4 @@ const getBySlugWithRouteType = async ({ pathVariables, routeType, slug }) => {
   }
 }
 
-export default getBySlugWithRouteType
+export default getNotionSlugByRoute

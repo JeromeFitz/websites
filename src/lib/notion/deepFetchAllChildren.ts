@@ -1,4 +1,4 @@
-import { notion } from '~lib/notion/helper'
+import { notion } from '@jeromefitz/notion/helper'
 
 const deepFetchAllChildren = async (blocks: any[]): Promise<Array<any[] | any>> => {
   if (blocks === null || blocks === undefined) return blocks
