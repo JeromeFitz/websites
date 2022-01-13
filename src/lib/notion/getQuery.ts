@@ -146,8 +146,8 @@ class DATABASE_TYPES {
       filter: {},
       sorts: [
         {
-          property: 'Date.Event',
-          direction: 'ascending',
+          property: PROPERTIES.dateEvent.notion,
+          direction: SORT.ASCENDING,
         },
       ],
     }
@@ -200,12 +200,12 @@ class DATABASE_TYPES {
        * @events
        */
       case 'eventsLineupShowIds':
-        console.dir(`> eventsLineupShowIds: Events.Lineup`)
+        // console.dir(`> eventsLineupShowIds: Events.Lineup`)
         k = PROPERTIES.relationShows__Events_Lineup.notion
         v = value
         break
       case 'shows':
-        console.dir(`> shows: Events`)
+        // console.dir(`> shows: Events`)
         k = PROPERTIES.relationVenues__Events.notion
         v = value
         break

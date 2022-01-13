@@ -33,14 +33,14 @@ const Page = ({ data, ...props }) => {
     url,
   } = props
 
-  console.dir(`> props`)
-  console.dir(props)
+  // console.dir(`> props`)
+  // console.dir(props)
 
   const hasMeta =
     _size(meta) > 0 &&
     [NOTION.BLOG.routeType, NOTION.EVENTS.routeType].includes(routeType)
 
-  console.dir(`> hasMeta: ${hasMeta}`)
+  // console.dir(`> hasMeta: ${hasMeta}`)
 
   /**
    * @images

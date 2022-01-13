@@ -6,8 +6,6 @@
  * [ ] jerandky.com
  * [ ] arcadecomedytheater.com
  */
-// import uniq from 'lodash/uniqWith'
-
 import { DatabaseInfo, Databases } from '@jeromefitz/notion/schema/types'
 
 import {

@@ -44,8 +44,8 @@ const years = {
         <TextAnnotations
           annotations={{}}
           href={`https://www.theonion.com/shitty-music-has-helped-moron-through-hardest-times-in-1848340506`}
-          id={1848340506}
-          key={1848340506}
+          id={18483405061}
+          key={18483405061}
           plain_text={`understated how much music got me through the year`}
         />{' '}
         that was 2020.
