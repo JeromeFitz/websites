@@ -7,6 +7,8 @@ import _join from 'lodash/join'
 import _last from 'lodash/last'
 import _size from 'lodash/size'
 
+import { DATA_TYPES } from '@jeromefitz/notion/helper'
+
 import { NOTION, PAGES__HOMEPAGE, ROUTE_TYPES } from '~config/websites'
 
 // @todo(complexity) 16
@@ -35,15 +37,30 @@ const getPathVariables = (catchAll: any) => {
   const url = isPage && first === PAGES__HOMEPAGE ? '' : _join(catchAll, '/')
 
   /**
-   * @test cases
+   * @info
+   *
+   * 1 = /about, /colophon, /contact
+   * 2 = /blog, /events, /podcasts
+   * 3 = /blog/2020, /blog/2020/05, /blog/2020/05/09
+   *     /events/2020, /events/2020/05, /events/2020/05/09,
+   * 4 = /blog/2020/05/09/title, /events/2020/05/09/title,
+   *     /podcasts/knockoffs/i-know-what-you-did-last-summer
+   * 5 = /shows/alex-o-jerome, /events/2020/05/09/jerome-and,
+   *     /podcasts/knockoffs
    */
-  // 1 = /colophon
-  // 2 = /blog, /events, /podcasts
-  // 3 = /blog/2020, /blog/2020/05, /blog/2020/05/09
-  //     /events/2020, /events/2020/05, /events/2020/05/09,
-  // 4 = /blog/2020/05/09/title, /events/2020/05/09/title,
-  //     /podcasts/knockoffs/i-know-what-you-did-last-summer
-  // 5 = /shows/alex-o-jerome, /events/2020/05/09/jerome-and, /podcasts/knockoffs
+  let dataType = DATA_TYPES.SLUG
+  if (isPage) {
+    dataType = DATA_TYPES.SLUG
+  } else if (isIndex && !hasMeta) {
+    dataType = DATA_TYPES.LISTING
+  } else if (isIndex && hasMeta) {
+    dataType = DATA_TYPES.LISTING_BY_DATE
+  } else if (hasMeta) {
+    dataType = DATA_TYPES.SLUG_BY_ROUTE
+  } else {
+    dataType = DATA_TYPES.SLUG
+  }
+
   /**
    * @debug
    */
@@ -53,24 +70,9 @@ const getPathVariables = (catchAll: any) => {
   // console.dir(`isPage:  ${isPage}`)
   // console.dir(`isIndex:  ${isIndex}`)
   // console.dir(`hasMeta: ${hasMeta}`)
+  // console.dir(`dataType: ${dataType}`)
   // console.dir(`meta:`)
   // console.dir(meta)
-
-  /**
-   * ------
-   */
-  let dataType = 0
-  if (isPage) {
-    dataType = 1
-  } else if (isIndex && !hasMeta) {
-    dataType = 2
-  } else if (isIndex && hasMeta) {
-    dataType = 3
-  } else if (hasMeta) {
-    dataType = 4
-  } else {
-    dataType = 5
-  }
 
   const pathVariables = {
     dataType,

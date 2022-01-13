@@ -1,5 +1,6 @@
+import { NotionBlock } from '@jeromefitz/notion/schema/types'
+
 import { getContentNode } from '~components/Notion'
-import { NotionBlock } from '~lib/notion'
 
 const getContentType = (item: NotionBlock, images?: any[]) => {
   const { has_children, id, type } = item

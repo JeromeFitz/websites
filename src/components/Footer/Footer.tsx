@@ -9,7 +9,7 @@ import {
 } from '@radix-ui/react-icons'
 import dynamic from 'next/dynamic'
 import NextLink from 'next/link'
-import * as React from 'react'
+import { memo } from 'react'
 
 import {
   Avatar,
@@ -135,7 +135,7 @@ const LinkFooter = ({ url, title, tooltip, tooltipContent }) => {
   )
 }
 
-const Footer = () => {
+const FooterImpl = () => {
   return (
     <>
       <Box css={{ width: '100%', my: '$6' }}>
@@ -350,5 +350,7 @@ const Footer = () => {
     </>
   )
 }
+
+const Footer = memo(FooterImpl)
 
 export default Footer

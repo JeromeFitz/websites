@@ -5,11 +5,12 @@ import _startsWith from 'lodash/startsWith'
 import { NextApiRequest, NextApiResponse } from 'next'
 import _title from 'title'
 
+import createDatabase from '@jeromefitz/notion/api/createDatabase'
+import getDatabasesById from '@jeromefitz/notion/api/getDatabasesById'
+import updateDatabase from '@jeromefitz/notion/api/updateDatabase'
+import { INIT } from '@jeromefitz/notion/schema'
+
 import asyncForEach from '~lib/asyncForEach'
-import createDatabase from '~lib/notion/api/createDatabase'
-import getDatabasesById from '~lib/notion/api/getDatabasesById'
-import updateDatabase from '~lib/notion/api/updateDatabase'
-import { INIT } from '~lib/notion/schema'
 
 const isDev = process.env.NODE_ENV === 'development'
 

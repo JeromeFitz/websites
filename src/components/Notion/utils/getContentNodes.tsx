@@ -3,7 +3,7 @@
 import _map from 'lodash/map'
 import { v4 as uuid } from 'uuid'
 
-import { NotionBlock } from '~lib/notion'
+import { NotionBlock } from '@jeromefitz/notion/schema/types'
 
 import getContentType from './getContentType'
 

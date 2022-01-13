@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, MutableRefObject } from 'react'
 
-function useOnScreen(ref) {
+function useOnScreen(ref: MutableRefObject<undefined>) {
   const [isIntersecting, setIntersecting] = useState(false)
 
   useEffect(() => {
@@ -11,7 +11,7 @@ function useOnScreen(ref) {
     )
 
     observer.observe(ref.current)
-    // Remove the observer as soon as the component is unmounted
+
     return () => {
       observer.disconnect()
     }

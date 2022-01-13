@@ -26,12 +26,12 @@ import {
   CardOuter,
   ImageBlur,
 } from '@jeromefitz/design-system/components/Card/Spotify'
+import getInfoType from '@jeromefitz/notion/getInfoType'
 
 import { Breakout } from '~components/Container'
 import { ImageWithBackgroundBlur } from '~components/Layout/ImageLead'
 import { NOTION } from '~config/websites'
 import { IMAGE__PLACEHOLDER } from '~lib/constants'
-import getInfoType from '~lib/notion/getInfoType'
 import lpad from '~utils/lpad'
 
 const Emoji = dynamic(() => import('~components/Emoji'), {

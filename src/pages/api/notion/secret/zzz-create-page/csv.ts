@@ -7,12 +7,13 @@ import _size from 'lodash/size'
 import { NextApiRequest, NextApiResponse } from 'next'
 import nodeEmoji from 'node-emoji'
 
+import createPage from '@jeromefitz/notion/api/createPage'
+import getChildren from '@jeromefitz/notion/create/children'
+import getProperties from '@jeromefitz/notion/create/properties'
+import getCatchAll from '@jeromefitz/notion/getCatchAll'
+import getPathVariables from '@jeromefitz/notion/getPathVariables'
+
 import { NOTION } from '~config/websites'
-import createPage from '~lib/notion/api/createPage'
-import getChildren from '~lib/notion/create/children'
-import getProperties from '~lib/notion/create/properties'
-import getCatchAll from '~lib/notion/getCatchAll'
-import getPathVariables from '~lib/notion/getPathVariables'
 
 const isDev = process.env.NODE_ENV === 'development'
 

@@ -1,8 +1,8 @@
 import _map from 'lodash/map'
 import _omit from 'lodash/omit'
 
-import dataNormalized from '~lib/notion/queries/dataNormalized'
-import dataSorted from '~lib/notion/queries/dataSorted'
+import dataNormalized from '@jeromefitz/notion/queries/dataNormalized'
+import dataSorted from '@jeromefitz/notion/queries/dataSorted'
 
 const dataNormalizedResults = (results, routeType) => {
   const normalizedResults = []

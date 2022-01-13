@@ -2,11 +2,12 @@
 // import _omit from 'lodash/omit'
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import { getCache, setCache } from '~lib/notion/getCache'
-import { notion } from '~lib/notion/helper'
-import dataNormalized from '~lib/notion/queries/dataNormalized'
-import dataSorted from '~lib/notion/queries/dataSorted'
-// import omitFields from '~lib/notion/omitFields'
+import { getCache, setCache } from '@jeromefitz/notion/getCache'
+import { notion } from '@jeromefitz/notion/helper'
+import dataNormalized from '@jeromefitz/notion/queries/dataNormalized'
+import dataSorted from '@jeromefitz/notion/queries/dataSorted'
+
+// import omitFields from '@jeromefitz/notion/omitFields'
 import avoidRateLimit from '~utils/avoidRateLimit'
 
 // const useCache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE

@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import getCatchAll from '~lib/notion/getCatchAll'
-import getPathVariables from '~lib/notion/getPathVariables'
+import getCatchAll from '@jeromefitz/notion/getCatchAll'
+import getPathVariables from '@jeromefitz/notion/getPathVariables'
 
 const CatchAll = async (req: NextApiRequest, res: NextApiResponse) => {
   try {

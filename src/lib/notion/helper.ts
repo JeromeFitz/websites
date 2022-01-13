@@ -1,6 +1,8 @@
 import { Client } from '@notionhq/client'
 
-import { PROPERTIES } from '~lib/notion/schema'
+import { PROPERTIES } from '@jeromefitz/notion/schema'
+
+import { DataTypes, DataTypesObject } from './schema/types'
 
 const notion = new Client({ auth: process.env.NOTION_API_KEY })
 
@@ -36,4 +38,16 @@ const QUERIES = {
   },
 }
 
-export { notion, QUERIES }
+const LISTING: DataTypes = 'LISTING'
+const LISTING_BY_DATE: DataTypes = 'LISTING_BY_DATE'
+const SLUG: DataTypes = 'SLUG'
+const SLUG_BY_ROUTE: DataTypes = 'SLUG_BY_ROUTE'
+
+const getDataTypes: DataTypes[] = [LISTING, LISTING_BY_DATE, SLUG, SLUG_BY_ROUTE]
+
+const DATA_TYPES: DataTypesObject = Object.assign(
+  {},
+  ...getDataTypes.map((d) => ({ [d]: d })).flat(1)
+)
+
+export { getDataTypes, notion, DATA_TYPES, QUERIES }

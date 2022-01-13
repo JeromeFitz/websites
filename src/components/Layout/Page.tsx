@@ -40,6 +40,8 @@ const Page = ({ data, ...props }) => {
     _size(meta) > 0 &&
     [NOTION.BLOG.routeType, NOTION.EVENTS.routeType].includes(routeType)
 
+  // console.dir(`> hasMeta: ${hasMeta}`)
+
   /**
    * @images
    */
@@ -84,8 +86,8 @@ const Page = ({ data, ...props }) => {
           />
         )}
         {isEventListing ? <ListingEvent data={data} /> : null}
-        {/* // node: NotionBlock (w/ id/type) */}
-        {isEventListing || hasMeta ? null : (
+        {/* @hack(notion) no ListingBlog so this circumvents*/}
+        {isEventListing || (hasMeta && isIndex) ? null : (
           <ContentNodes content={content} images={images} />
         )}
 

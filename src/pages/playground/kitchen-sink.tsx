@@ -1,11 +1,12 @@
 // import { useEffect, useState } from 'react'
 import useSWR from 'swr'
 
+import getCatchAll from '@jeromefitz/notion/getCatchAll'
+import getPathVariables from '@jeromefitz/notion/getPathVariables'
+
 import { Page, PageHeading, SkeletonHeading } from '~components/Layout'
 import { revalidate, ERROR__FALLBACK } from '~lib/constants'
 import fetcher from '~lib/fetcher'
-import getCatchAll from '~lib/notion/getCatchAll'
-import getPathVariables from '~lib/notion/getPathVariables'
 import getNextPageStatus from '~utils/getNextPageStatus'
 
 const CatchAll = (props) => {
