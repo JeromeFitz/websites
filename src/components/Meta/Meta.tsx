@@ -14,12 +14,14 @@ import {
   Paragraph,
   Text,
 } from '@jeromefitz/design-system/components'
-import getTitle from '@jeromefitz/notion/getTitle'
-import { PROPERTIES } from '@jeromefitz/notion/schema'
-import type { Show } from '@jeromefitz/notion/schema/types'
+import { PROPERTIES } from '@jeromefitz/temp/package/schema'
+import type { Show } from '@jeromefitz/temp/package/schema/types'
+import getTitle from '@jeromefitz/temp/package/utils/getTitle'
 
-import { NOTION } from '~config/websites'
+import { notionConfig } from '~config/websites'
 import fetcher from '~lib/fetcher'
+
+const { NOTION } = notionConfig
 
 const rollupExclude = [
   PROPERTIES.rollupShows__People_Cast_Slug.key,

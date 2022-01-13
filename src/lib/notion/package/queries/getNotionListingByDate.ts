@@ -2,37 +2,41 @@ import _map from 'lodash/map'
 import _omit from 'lodash/omit'
 import _size from 'lodash/size'
 
-import getBlocksByIdChildren from '@jeromefitz/notion/api/getBlocksByIdChildren'
-import getDatabasesByIdQuery from '@jeromefitz/notion/api/getDatabasesByIdQuery'
-import getPagesById from '@jeromefitz/notion/api/getPagesById'
-import { QUERIES } from '@jeromefitz/notion/helper'
-import addTime from '@jeromefitz/notion/queries/addTime'
-import dataNormalized from '@jeromefitz/notion/queries/dataNormalized'
-import dataSorted from '@jeromefitz/notion/queries/dataSorted'
-import { PROPERTIES } from '@jeromefitz/notion/schema'
-
-import { NOTION } from '~config/websites'
+import { QUERIES } from '../helper'
+import { PROPERTIES } from '../schema'
+import { addTime, dataNormalized, dataSorted } from '../utils'
 
 // @todo(complexity) 16
 // eslint-disable-next-line complexity
-const getNotionListingByDate = async ({ pathVariables, routeType, slug }) => {
+const getNotionListingByDate = async ({
+  config,
+  getBlocksByIdChildren,
+  getDatabasesByIdQuery,
+  getPagesById,
+  pathVariables,
+  routeType,
+  slug,
+}) => {
+  const { NOTION } = config
   const { meta } = pathVariables
   let content = null,
     info = null,
     items = null
   const dateTimestamp = new Date().toISOString()
 
+  const page_id = NOTION[routeType.toUpperCase()].page_id__seo
   const info3 = await getPagesById({
-    pageId: NOTION[routeType.toUpperCase()].page_id__seo,
+    page_id,
   })
   // const info3a = info3.object === 'page' && normalizerContent(info3)
   if (info3.object === 'page') {
     info = _omit(info3, 'properties')
-    info['properties'] = dataSorted(dataNormalized(info3, pathVariables, info.id))
+    info['properties'] = dataSorted(
+      dataNormalized({ config, data: info3, pathVariables, pageId: info.id })
+    )
   }
 
-  // eslint-disable-next-line prefer-const
-  content = await getBlocksByIdChildren({ blockId: info.id })
+  content = await getBlocksByIdChildren({ block_id: info.id })
   /**
    * @filter
    * @note events|blog only for now
@@ -154,8 +158,9 @@ const getNotionListingByDate = async ({ pathVariables, routeType, slug }) => {
       }
       break
   }
+  const database_id = NOTION[routeType.toUpperCase()].database_id
   const items3: any = await getDatabasesByIdQuery({
-    databaseId: NOTION[routeType.toUpperCase()].database_id,
+    database_id,
     filter,
     sorts: sorts3,
   })
@@ -166,7 +171,9 @@ const getNotionListingByDate = async ({ pathVariables, routeType, slug }) => {
   _map(items3.results, (item) => {
     let item2 = item
     item2 = _omit(item2, 'properties')
-    item2['properties'] = dataSorted(dataNormalized(item, pathVariables, item.id))
+    item2['properties'] = dataSorted(
+      dataNormalized({ config, data: item, pathVariables, pageId: item.id })
+    )
     // items3Data[item.id] = item2
     items3Data.push(item2)
   })
@@ -176,16 +183,13 @@ const getNotionListingByDate = async ({ pathVariables, routeType, slug }) => {
 
   // eslint-disable-next-line prefer-const
   items = _omit(items3Omit, 'data')
-  /***
-   * @hack
-   */
-  return {
-    content,
-    // @todo(images)
-    images: null,
-    info,
-    items,
-  }
+
+  let data = { info, content, items, images: {} }
+  // @todo(images)
+  const images = null
+  data = { ...data, images }
+
+  return data
 }
 
 export default getNotionListingByDate

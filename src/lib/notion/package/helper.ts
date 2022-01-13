@@ -1,14 +1,15 @@
 import { Client } from '@notionhq/client'
 
-import { PROPERTIES } from '@jeromefitz/notion/schema'
-
+import { PROPERTIES } from './schema'
 import { DataTypes, DataTypesObject } from './schema/types'
 
-const notion = new Client({ auth: process.env.NOTION_API_KEY })
-
+const notionPleaseDeprecate = new Client({ auth: process.env.NOTION_API_KEY })
 const dateTimestamp = new Date().toISOString()
 // const dateTimestampBlog = new Date('2020-01-01').toISOString()
 
+/**
+ * @note(notion) right now we are only using `QUERIES.slug`
+ */
 const QUERIES = {
   // @todo(notion) Published or Event?
   dateBefore: {
@@ -50,4 +51,4 @@ const DATA_TYPES: DataTypesObject = Object.assign(
   ...getDataTypes.map((d) => ({ [d]: d })).flat(1)
 )
 
-export { getDataTypes, notion, DATA_TYPES, QUERIES }
+export { getDataTypes, notionPleaseDeprecate, DATA_TYPES, QUERIES }

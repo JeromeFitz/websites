@@ -1,7 +1,7 @@
-import { NOTION } from '~config/websites'
+const getInfoType = ({ config, item, routeType, meta = [] }) => {
+  const { NOTION } = config
 
-const getInfoType = (item: any, routeType, meta = null) => {
-  let date = null
+  let date = ''
   const slug = item.properties?.slug
 
   let as = ''
@@ -20,7 +20,7 @@ const getInfoType = (item: any, routeType, meta = null) => {
       break
     case NOTION.PODCASTS.routeType:
     case NOTION.EPISODES.routeType:
-      as = `/${meta.join('/')}/${slug}`
+      as = `/${meta?.join('/')}/${slug}`
       break
     case NOTION.PEOPLE.routeType:
 

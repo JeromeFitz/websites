@@ -2,12 +2,13 @@
 // import _omit from 'lodash/omit'
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import { getCache, setCache } from '@jeromefitz/notion/getCache'
-import { notion } from '@jeromefitz/notion/helper'
-import dataNormalized from '@jeromefitz/notion/queries/dataNormalized'
-import dataSorted from '@jeromefitz/notion/queries/dataSorted'
+import { getCache, setCache } from '@jeromefitz/temp/getCache'
+import { notionPleaseDeprecate as notion } from '@jeromefitz/temp/package/helper'
+import dataNormalized from '@jeromefitz/temp/package/utils/dataNormalized'
+import dataSorted from '@jeromefitz/temp/package/utils/dataSorted'
 
-// import omitFields from '@jeromefitz/notion/omitFields'
+// import omitFields from '@jeromefitz/temp/omitFields'
+import { notionConfig as config } from '~config/websites'
 import avoidRateLimit from '~utils/avoidRateLimit'
 
 // const useCache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE
@@ -36,7 +37,14 @@ const notionPagesId = async (req: NextApiRequest, res: NextApiResponse) => {
       // @ts-ignore
       page_id,
     })
-    data = dataSorted(dataNormalized(contentData, null, page_id))
+    data = dataSorted(
+      dataNormalized({
+        config,
+        data: contentData,
+        pathVariables: null,
+        pageId: page_id,
+      })
+    )
     /**
      * @cache post
      */

@@ -6,8 +6,8 @@
  * => ex) GET SEO first _then_ dynamicaly generate/store info
  *
  */
-import { DATA_TYPES } from '@jeromefitz/notion/helper'
-import { DatabaseInfo } from '@jeromefitz/notion/schema/types'
+import { DATA_TYPES } from '@jeromefitz/temp/package/helper'
+import { DatabaseInfo } from '@jeromefitz/temp/package/schema/types'
 
 const PAGES__HOMEPAGE = 'homepage'
 const PAGES = ['about', 'colophon', 'contact']

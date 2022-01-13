@@ -2,37 +2,42 @@
 import _map from 'lodash/map'
 import _omit from 'lodash/omit'
 
-import getBlocksByIdChildren from '@jeromefitz/notion/api/getBlocksByIdChildren'
-import getDatabasesByIdQuery from '@jeromefitz/notion/api/getDatabasesByIdQuery'
-import getPagesById from '@jeromefitz/notion/api/getPagesById'
-import getImages from '@jeromefitz/notion/getImages'
-import dataNormalized from '@jeromefitz/notion/queries/dataNormalized'
-import dataSorted from '@jeromefitz/notion/queries/dataSorted'
-import { PROPERTIES } from '@jeromefitz/notion/schema'
+import { PROPERTIES } from '../schema'
+import { dataNormalized, dataSorted, getImages } from '../utils'
 
-import { NOTION } from '~config/websites'
-
-const getNotionListing = async ({ pathVariables, routeType }) => {
-  let content = null,
-    info = null,
-    items = null
+const getNotionListing = async ({
+  config,
+  getBlocksByIdChildren,
+  getDatabasesByIdQuery,
+  getPagesById,
+  pathVariables,
+  routeType,
+}) => {
+  const { NOTION } = config
+  let content, info, items
   const dateTimestamp = new Date().toISOString()
   // @todo(date-fns) make this the first date of the year dynamically
   // const year = new Date().getFullYear.toString()
   // const dateTimestampBlog = new Date(`${year}-01-01`).toISOString()
   const dateTimestampBlog = new Date('2020-01-01').toISOString()
-
+  const page_id = NOTION[routeType.toUpperCase()].page_id__seo
   const infoInit = await getPagesById({
-    pageId: NOTION[routeType.toUpperCase()].page_id__seo,
+    page_id,
   })
-  if (infoInit.object === 'page') {
+  // @refactor(404)
+  if (!infoInit) {
+    return {}
+  }
+  if (infoInit?.object === 'page') {
     info = _omit(infoInit, 'properties')
-    info['properties'] = dataSorted(dataNormalized(infoInit, pathVariables, info.id))
+    info['properties'] = dataSorted(
+      dataNormalized({ config, data: infoInit, pathVariables, pageId: info.id })
+    )
   }
 
-  content = await getBlocksByIdChildren({ blockId: info.id })
+  content = await getBlocksByIdChildren({ block_id: info.id })
   const itemsInit: any = await getDatabasesByIdQuery({
-    databaseId: NOTION[routeType.toUpperCase()].database_id,
+    database_id: NOTION[routeType.toUpperCase()].database_id,
     filter: {
       and: [
         {
@@ -54,7 +59,9 @@ const getNotionListing = async ({ pathVariables, routeType }) => {
   _map(itemsInit.results, (item) => {
     let itemInit = item
     itemInit = _omit(itemInit, 'properties')
-    itemInit['properties'] = dataSorted(dataNormalized(item, pathVariables, item.id))
+    itemInit['properties'] = dataSorted(
+      dataNormalized({ config, data: item, pathVariables, pageId: item.id })
+    )
     _itemData.push(itemInit)
   })
   const _items = _omit(itemsInit, 'results')

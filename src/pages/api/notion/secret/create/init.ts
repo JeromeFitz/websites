@@ -5,10 +5,10 @@ import _startsWith from 'lodash/startsWith'
 import { NextApiRequest, NextApiResponse } from 'next'
 import _title from 'title'
 
-import createDatabase from '@jeromefitz/notion/api/createDatabase'
-import getDatabasesById from '@jeromefitz/notion/api/getDatabasesById'
-import updateDatabase from '@jeromefitz/notion/api/updateDatabase'
-import { INIT } from '@jeromefitz/notion/schema'
+import createDatabase from '@jeromefitz/temp/api/createDatabase'
+import getDatabasesById from '@jeromefitz/temp/api/getDatabasesById'
+import updateDatabase from '@jeromefitz/temp/api/updateDatabase'
+import { INIT } from '@jeromefitz/temp/package/schema'
 
 import asyncForEach from '~lib/asyncForEach'
 

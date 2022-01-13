@@ -1,4 +1,4 @@
-import { notion } from '@jeromefitz/notion/helper'
+import { notionPleaseDeprecate as notion } from '@jeromefitz/temp/package/helper'
 
 import avoidRateLimit from '~utils/avoidRateLimit'
 

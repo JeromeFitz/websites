@@ -1,6 +1,6 @@
 import _map from 'lodash/map'
 
-import getTypes from '@jeromefitz/notion/api/getTypes'
+import getTypes from '../../utils/getTypes'
 
 const relation = (data: any) => {
   if (data.type === 'rollup') {

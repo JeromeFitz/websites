@@ -7,16 +7,15 @@ import _join from 'lodash/join'
 import _last from 'lodash/last'
 import _size from 'lodash/size'
 
-import { DATA_TYPES } from '@jeromefitz/notion/helper'
-
-import { NOTION, PAGES__HOMEPAGE, ROUTE_TYPES } from '~config/websites'
+import { DATA_TYPES } from '../helper'
 
 // @todo(complexity) 16
 // eslint-disable-next-line complexity
-const getPathVariables = (catchAll: any) => {
+const getPathVariables = ({ config, catchAll }) => {
+  const { NOTION, PAGES__HOMEPAGE, ROUTE_TYPES } = config
   const size: number = _size(catchAll)
-  const first: string = _first(catchAll)
-  const last: string = _last(catchAll)
+  const first: any = _first(catchAll)
+  const last: any = _last(catchAll)
 
   const meta =
     size > 1 &&

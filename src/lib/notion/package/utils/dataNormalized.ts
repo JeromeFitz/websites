@@ -1,17 +1,16 @@
 import _map from 'lodash/map'
 
-import getTypes from '@jeromefitz/notion/api/getTypes'
-import { LOOKUP, PROPERTIES_LOOKUP } from '@jeromefitz/notion/schema'
+import { LOOKUP, PROPERTIES_LOOKUP } from '../schema'
+import { getTypes } from '../utils'
 
-import { NOTION } from '~config/websites'
-
-const dataNormalized = (data: any, pathVariables = null, pageId = null) => {
+const dataNormalized = ({ config, data, pathVariables, pageId }) => {
+  const { NOTION } = config
   const DATA_NORMALIZED = {}
   if (!data?.properties) return DATA_NORMALIZED
   const { properties } = data
 
   // @hack(notion) not great
-  let routeType = null
+  let routeType
   if (!!pathVariables) {
     const { meta, routeType: _routeType } = pathVariables
     routeType =
@@ -23,7 +22,7 @@ const dataNormalized = (data: any, pathVariables = null, pageId = null) => {
   const items = !!routeType ? LOOKUP[routeType.toUpperCase()] : PROPERTIES_LOOKUP
 
   _map(items, (item) => {
-    let dataToNormalize = null
+    let dataToNormalize
 
     const dataFromNotion = properties[item.notion]
     /**

@@ -3,7 +3,9 @@ import useSWR from 'swr'
 
 import { PageHeading } from '~components/Layout'
 import Seo from '~components/Seo'
-import { NOTION } from '~config/websites'
+import { notionConfig } from '~config/websites'
+
+const { NOTION } = notionConfig
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Layout = ({ id, children, properties, routeType, url }) => {

@@ -1,12 +1,13 @@
-import { notion } from '@jeromefitz/notion/helper'
-
-const deepFetchAllChildren = async (blocks: any[]): Promise<Array<any[] | any>> => {
+const getDeepFetchAllChildren = async (
+  callbackFunction: any,
+  { blocks }
+): Promise<Array<any[] | any>> => {
   if (blocks === null || blocks === undefined) return blocks
   const fetchChildrenMap = blocks
     .filter((block) => block.has_children)
     .map((block) => {
       return {
-        promise: notion.blocks.children.list({
+        promise: callbackFunction({
           block_id: block.id,
           page_size: 100,
         }),
@@ -21,7 +22,7 @@ const deepFetchAllChildren = async (blocks: any[]): Promise<Array<any[] | any>> 
   for (let i = 0; i < results.length; i++) {
     const childBlocks = results[i].results
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    await deepFetchAllChildren(childBlocks)
+    await getDeepFetchAllChildren(callbackFunction, { blocks: childBlocks })
     if (fetchChildrenMap[i]) {
       const parent: any = fetchChildrenMap[i].parent_block
       parent[parent.type].children = childBlocks
@@ -30,4 +31,4 @@ const deepFetchAllChildren = async (blocks: any[]): Promise<Array<any[] | any>> 
   return blocks
 }
 
-export default deepFetchAllChildren
+export default getDeepFetchAllChildren

@@ -2,7 +2,9 @@
 
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import getQuery from '@jeromefitz/notion/getQuery'
+import getQuery from '@jeromefitz/temp/package/queries/getQuery'
+
+import { notionConfig as config } from '~config/websites'
 
 interface RequestQueryProps {
   databaseType?: string
@@ -24,7 +26,7 @@ const notionQueryRouteType = async (req: NextApiRequest, res: NextApiResponse) =
   // console.dir(`notionQueryRouteType`)
   // console.dir(req.query)
   const reqQuery: RequestQueryProps = req?.query
-  const data = await getQuery({ reqQuery })
+  const data = await getQuery({ config, reqQuery })
 
   try {
     /**

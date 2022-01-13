@@ -133,7 +133,7 @@
   "next-unused": {
     "alias": {
       "@jeromefitz/design-system": "src/styles/system/",
-      "@jeromefitz/notion": "src/lib/notion/",
+      "@jeromefitz/temp": "src/lib/notion/",
       "~components": "src/components/",
       "~config": "src/config/",
       "~context": "src/context/",
@@ -162,7 +162,7 @@
       "src/lib/notion/api/getDatabasesById.ts",
       "src/lib/notion/api/getPages.ts",
       "src/lib/notion/api/getSearch.ts",
-      "src/lib/notion/api/getTypes/*",
+      "src/lib/notion/getTypes/*",
       "src/styles/fonts/*",
       "src/utils/isElementOfType.ts",
       "src/utils/isObjectEmpty.ts",

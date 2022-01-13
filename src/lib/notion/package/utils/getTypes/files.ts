@@ -2,7 +2,7 @@ import Slugger from 'github-slugger'
 import _size from 'lodash/size'
 // import { getPlaiceholder } from 'plaiceholder'
 
-import stringToUUID from '~utils/stringToUUID'
+import stringToUUID from '../../utils/stringToUUID'
 
 const notionImageHosted = `https://www.notion.so/image/{{FILENAME}}?table=block&id={{PAGE_ID}}&cache=v2&w1dth=600`
 

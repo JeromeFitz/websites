@@ -6,7 +6,9 @@ import useSWR, { useSWRConfig } from 'swr'
 import Layout, { ImageLead } from '~components/Layout'
 import Meta from '~components/Meta'
 import { ContentNodes } from '~components/Notion'
-import { NOTION } from '~config/websites'
+import { notionConfig } from '~config/websites'
+
+const { NOTION } = notionConfig
 
 const Listing = dynamic(() => import('~components/Notion/Listing'), {})
 const ListingEvent = dynamic(

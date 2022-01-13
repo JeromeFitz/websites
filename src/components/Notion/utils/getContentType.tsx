@@ -1,4 +1,4 @@
-import { NotionBlock } from '@jeromefitz/notion/schema/types'
+import { NotionBlock } from '@jeromefitz/temp/package/schema/types'
 
 import { getContentNode } from '~components/Notion'
 

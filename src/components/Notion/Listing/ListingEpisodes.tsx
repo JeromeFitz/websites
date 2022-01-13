@@ -26,13 +26,15 @@ import {
   CardOuter,
   ImageBlur,
 } from '@jeromefitz/design-system/components/Card/Spotify'
-import getInfoType from '@jeromefitz/notion/getInfoType'
+import getInfoType from '@jeromefitz/temp/package/queries/getInfoType'
 
 import { Breakout } from '~components/Container'
 import { ImageWithBackgroundBlur } from '~components/Layout/ImageLead'
-import { NOTION } from '~config/websites'
+import { notionConfig } from '~config/websites'
 import { IMAGE__PLACEHOLDER } from '~lib/constants'
 import lpad from '~utils/lpad'
+
+const { NOTION } = notionConfig
 
 const Emoji = dynamic(() => import('~components/Emoji'), {
   ssr: false,
@@ -90,7 +92,12 @@ const Episodes = ({ images, items }) => {
         const { episode, season } = item?.properties
         const meta = router.asPath.split('/').slice(1)
         const isEpisode = _size(meta) === 2
-        const { as, href } = getInfoType(item, NOTION.PODCASTS.slug, meta)
+        const { as, href } = getInfoType({
+          config: notionConfig,
+          item,
+          routeType: NOTION.PODCASTS.slug,
+          meta,
+        })
 
         const { icon } = item
         const emoji = !!icon?.emoji ? icon.emoji : ''

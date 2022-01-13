@@ -1,15 +1,19 @@
 import _map from 'lodash/map'
 import _omit from 'lodash/omit'
 
-import dataNormalized from '@jeromefitz/notion/queries/dataNormalized'
-import dataSorted from '@jeromefitz/notion/queries/dataSorted'
+import { dataNormalized, dataSorted } from '../utils'
 
-const dataNormalizedResults = (results, routeType) => {
+const dataNormalizedResults = ({ config, results, routeType }) => {
   const normalizedResults = []
   _map(results, (result) => {
     const normalizedResult = _omit(result, 'properties')
     normalizedResult['properties'] = dataSorted(
-      dataNormalized(result, routeType, result?.id)
+      dataNormalized({
+        config,
+        data: result,
+        pathVariables: routeType,
+        pageId: result?.id,
+      })
     )
     normalizedResults.push(normalizedResult)
   })

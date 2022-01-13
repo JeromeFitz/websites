@@ -1,6 +1,6 @@
 import _map from 'lodash/map'
 
-import { NotionText } from '@jeromefitz/notion/schema/types'
+import { NotionText } from '@jeromefitz/temp/package/schema/types'
 
 import TextAnnotations from './TextAnnotations'
 

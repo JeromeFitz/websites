@@ -13,13 +13,15 @@ import _slice from 'lodash/slice'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { Podcast, Item, FeedOptions } from 'podcast'
 
-import getCatchAll from '@jeromefitz/notion/getCatchAll'
-import getPathVariables from '@jeromefitz/notion/getPathVariables'
+import getCatchAll from '@jeromefitz/temp/getCatchAll'
+import getPathVariables from '@jeromefitz/temp/package/queries/getPathVariables'
 
 import { url } from '~config/getNextSeo'
-import { NOTION } from '~config/websites'
+import { notionConfig } from '~config/websites'
 import getTimeInSeconds from '~utils/getTimeInSeconds'
 import setCharAt from '~utils/setCharAt'
+
+const { NOTION } = notionConfig
 
 const rssApi = async (req: NextApiRequest, res: NextApiResponse) => {
   let feed: any
@@ -40,7 +42,7 @@ const rssApi = async (req: NextApiRequest, res: NextApiResponse) => {
   const cache = false
 
   // http://localhost:3000/api/notion/blog/2020/12/28/preview-blog-post?preview=true
-  const pathVariables = getPathVariables(catchAll)
+  const pathVariables = getPathVariables({ config: notionConfig, catchAll })
   const data = await getCatchAll({
     cache,
     clear,

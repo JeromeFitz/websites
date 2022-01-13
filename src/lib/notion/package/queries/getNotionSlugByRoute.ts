@@ -1,20 +1,22 @@
 import _omit from 'lodash/omit'
 import _size from 'lodash/size'
 
-import getBlocksByIdChildren from '@jeromefitz/notion/api/getBlocksByIdChildren'
-import getDatabasesByIdQuery from '@jeromefitz/notion/api/getDatabasesByIdQuery'
-import getQuery from '@jeromefitz/notion/getQuery'
-import { QUERIES } from '@jeromefitz/notion/helper'
-import addTime from '@jeromefitz/notion/queries/addTime'
-import dataNormalized from '@jeromefitz/notion/queries/dataNormalized'
-import dataSorted from '@jeromefitz/notion/queries/dataSorted'
-import { PROPERTIES } from '@jeromefitz/notion/schema'
-
-import { NOTION } from '~config/websites'
+import { QUERIES } from '../helper'
+import { PROPERTIES } from '../schema'
+import { addTime, dataNormalized, dataSorted } from '../utils'
 
 // @todo(complexity) 16
 // eslint-disable-next-line complexity
-const getNotionSlugByRoute = async ({ pathVariables, routeType, slug }) => {
+const getNotionSlugByRoute = async ({
+  config,
+  getBlocksByIdChildren,
+  getDatabasesByIdQuery,
+  getQuery,
+  pathVariables,
+  routeType,
+  slug,
+}) => {
+  const { NOTION } = config
   const { meta } = pathVariables
   let content = null,
     info = null,
@@ -25,7 +27,7 @@ const getNotionSlugByRoute = async ({ pathVariables, routeType, slug }) => {
     const [podcastSlug, episodeSlug] = meta
     const hasEpisode = _size(meta) === 2
     const infoInit: any = await getDatabasesByIdQuery({
-      databaseId:
+      database_id:
         NOTION[
           hasEpisode
             ? NOTION.EPISODES.routeType.toUpperCase()
@@ -47,13 +49,17 @@ const getNotionSlugByRoute = async ({ pathVariables, routeType, slug }) => {
       return {}
     }
     info = _omit(_info, 'properties')
-    info['properties'] = dataSorted(dataNormalized(_info, pathVariables, info.id))
-    content = await getBlocksByIdChildren({ blockId: info.id })
+    info['properties'] = dataSorted(
+      dataNormalized({ config, data: _info, pathVariables, pageId: info.id })
+    )
+    content = await getBlocksByIdChildren({ block_id: info.id })
 
     // @hack(podcasts)
     if (!hasEpisode) {
       if (routeType === NOTION.PODCASTS.routeType) {
+        console.dir(`@todo(notion-packageAAA) getQuery (gNSBR)`)
         items = await getQuery({
+          config,
           reqQuery: {
             podcasts: info.id,
             databaseType: NOTION.EPISODES.routeType.toUpperCase(),
@@ -71,7 +77,7 @@ const getNotionSlugByRoute = async ({ pathVariables, routeType, slug }) => {
       }`
     )
     const info4__be: any = await getDatabasesByIdQuery({
-      databaseId: NOTION[routeType.toUpperCase()].database_id,
+      database_id: NOTION[routeType.toUpperCase()].database_id,
       filter: {
         and: [
           {
@@ -104,19 +110,18 @@ const getNotionSlugByRoute = async ({ pathVariables, routeType, slug }) => {
     if (!!info4__bea) {
       info = _omit(info4__bea, 'properties')
       info['properties'] = dataSorted(
-        dataNormalized(info4__bea, pathVariables, info.id)
+        dataNormalized({ config, data: info4__bea, pathVariables, pageId: info.id })
       )
-      content = await getBlocksByIdChildren({ blockId: info.id })
+      content = await getBlocksByIdChildren({ block_id: info.id })
     }
   }
 
-  return {
-    content,
-    // @todo(images)
-    images: null,
-    info,
-    items,
-  }
+  let data = { info, content, items, images: {} }
+  // @todo(images)
+  const images = null
+  data = { ...data, images }
+
+  return data
 }
 
 export default getNotionSlugByRoute

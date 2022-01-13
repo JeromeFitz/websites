@@ -6,7 +6,7 @@
  * [ ] jerandky.com
  * [ ] arcadecomedytheater.com
  */
-import { DatabaseInfo, Databases } from '@jeromefitz/notion/schema/types'
+import { DatabaseInfo, Databases } from '@jeromefitz/temp/package/schema/types'
 
 import {
   /**
@@ -26,7 +26,7 @@ import {
   nextSeo,
   sitemapExcludes,
 } from '~config/websites/jeromefitzgerald.com'
-// import { getDataTypes } from '@jeromefitz/notion/helper'
+// import { getDataTypes } from '@jeromefitz/temp/package/helper'
 
 const getDynamicDatabases = (obj: DatabaseInfo) =>
   Object.keys(obj).reduce((acc, key) => {
@@ -61,11 +61,7 @@ const ROUTE_TYPES = Object.keys(NOTION)
 // console.dir(`____ ROUTE_TYPES `)
 // console.dir(ROUTE_TYPES)
 
-export {
-  navigationHeader,
-  nextSeo,
-  sitemapExcludes,
-  //
+const notionConfig = {
   DATABASES,
   // GET_DATA_TYPES,
   NOTION,
@@ -73,6 +69,8 @@ export {
   PAGES,
   ROUTE_TYPES,
 }
+
+export { navigationHeader, nextSeo, notionConfig, sitemapExcludes }
 
 // @todo(notion) uh, make this dynamic please haha
 export const TAGS = {

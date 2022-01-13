@@ -1,11 +1,15 @@
+import { Client, utils } from '@jeromefitz/notion'
 import _filter from 'lodash/filter'
 
-import deepFetchAllChildren from '@jeromefitz/notion/deepFetchAllChildren'
-import { getCache, setCache } from '@jeromefitz/notion/getCache'
-import { DATA_TYPES } from '@jeromefitz/notion/getDataType'
-import getImages from '@jeromefitz/notion/getImages'
+import { getCache, setCache } from '@jeromefitz/temp/getCache'
+// import { Client } from '@jeromefitz/temp/package/index'
+// import getImages from '@jeromefitz/temp/package/utils/getImages'
 
+import { notionConfig as config } from '~config/websites'
 import { nextWeirdRoutingSkipData } from '~lib/constants'
+
+const notion = new Client({ auth: process.env.NOTION_API_KEY, config })
+const { getImages } = utils
 
 const useCache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE
 
@@ -22,6 +26,9 @@ const getCatchAll = async ({
   preview,
   retrieveImages = true,
 }) => {
+  // console.dir(`> pathVariables`)
+  // console.dir(pathVariables)
+
   const isCache = useCache && cache
   const { slug } = pathVariables
   if (nextWeirdRoutingSkipData.includes(slug)) return null
@@ -46,16 +53,10 @@ const getCatchAll = async ({
       info = null,
       items = null
 
-    const { dataType, meta, routeType, slug } = pathVariables
+    const { dataType, routeType, slug } = pathVariables
 
-    // console.dir(`dataType: ${dataType}`)
-
-    // @question(js) does this need to go w/in function?
-    const getDATATYPES = new DATA_TYPES('')
-
-    if (getDATATYPES[dataType]) {
-      const DATATYPE_DATA = await getDATATYPES[dataType]({
-        meta,
+    if (notion.dataTypes[dataType]) {
+      const DATATYPE_DATA: any = await notion.dataTypes[dataType]({
         pathVariables,
         routeType,
         slug,
@@ -94,5 +95,4 @@ const getCatchAll = async ({
   return data
 }
 
-export { deepFetchAllChildren }
 export default getCatchAll
