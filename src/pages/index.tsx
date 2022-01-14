@@ -1,7 +1,6 @@
+import { queries } from '@jeromefitz/notion'
+// import getPathVariables from '@jeromefitz/notion/queries/getPathVariables'
 import useSWR from 'swr'
-
-import getCatchAll from '@jeromefitz/temp/getCatchAll'
-import getPathVariables from '@jeromefitz/temp/package/queries/getPathVariables'
 
 import { Page, PageHeading, SkeletonHeading } from '~components/Layout'
 import ListingShows from '~components/Notion/Listing/ListingShows'
@@ -13,6 +12,7 @@ import {
   ERROR__FALLBACK,
 } from '~lib/constants'
 import fetcher from '~lib/fetcher'
+import getCatchAll from '~lib/notion/getCatchAll'
 import getNextPageStatus from '~utils/getNextPageStatus'
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -93,7 +93,7 @@ export const getStaticProps = async ({ preview = false, ...props }) => {
   // and the one after
   if (nextWeirdRoutingSkipData.includes(catchAll[0])) return { props: {} }
   const clear = false
-  const pathVariables = getPathVariables({ config: notionConfig, catchAll })
+  const pathVariables = queries.getPathVariables({ config: notionConfig, catchAll })
 
   /**
    * @cache

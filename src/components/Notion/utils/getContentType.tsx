@@ -1,8 +1,8 @@
-import { NotionBlock } from '@jeromefitz/temp/package/schema/types'
+import type { TYPES } from '@jeromefitz/notion'
 
 import { getContentNode } from '~components/Notion'
 
-const getContentType = (item: NotionBlock, images?: any[]) => {
+const getContentType = (item: TYPES.NotionBlock, images?: any[]) => {
   const { has_children, id, type } = item
   const content = item[type]
 

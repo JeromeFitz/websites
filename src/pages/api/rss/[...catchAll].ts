@@ -4,6 +4,7 @@
  * Down the line perhaps this could be the API to the API, haha
  *
  */
+import { queries } from '@jeromefitz/notion'
 import _isBefore from 'date-fns/isBefore'
 import _parseISO from 'date-fns/parseISO'
 import _filter from 'lodash/filter'
@@ -13,11 +14,9 @@ import _slice from 'lodash/slice'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { Podcast, Item, FeedOptions } from 'podcast'
 
-import getCatchAll from '@jeromefitz/temp/getCatchAll'
-import getPathVariables from '@jeromefitz/temp/package/queries/getPathVariables'
-
 import { url } from '~config/getNextSeo'
 import { notionConfig } from '~config/websites'
+import getCatchAll from '~lib/notion/getCatchAll'
 import getTimeInSeconds from '~utils/getTimeInSeconds'
 import setCharAt from '~utils/setCharAt'
 
@@ -42,7 +41,7 @@ const rssApi = async (req: NextApiRequest, res: NextApiResponse) => {
   const cache = false
 
   // http://localhost:3000/api/notion/blog/2020/12/28/preview-blog-post?preview=true
-  const pathVariables = getPathVariables({ config: notionConfig, catchAll })
+  const pathVariables = queries.getPathVariables({ config: notionConfig, catchAll })
   const data = await getCatchAll({
     cache,
     clear,

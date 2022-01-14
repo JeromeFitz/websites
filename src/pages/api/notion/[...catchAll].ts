@@ -1,9 +1,9 @@
+// import { queries } from '@jeromefitz/notion'
+import getPathVariables from '@jeromefitz/notion/queries/getPathVariables'
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import getCatchAll from '@jeromefitz/temp/getCatchAll'
-import getPathVariables from '@jeromefitz/temp/package/queries/getPathVariables'
-
 import { notionConfig } from '~config/websites'
+import getCatchAll from '~lib/notion/getCatchAll'
 
 const CatchAll = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
@@ -20,7 +20,11 @@ const CatchAll = async (req: NextApiRequest, res: NextApiResponse) => {
     const cache = false
 
     // http://localhost:3000/api/notion/blog/2020/12/28/preview-blog-post?preview=true
-    const pathVariables = getPathVariables({ config: notionConfig, catchAll })
+    // const pathVariables = queries.getPathVariables({
+    const pathVariables = getPathVariables({
+      config: notionConfig,
+      catchAll,
+    })
 
     const data = await getCatchAll({
       cache,

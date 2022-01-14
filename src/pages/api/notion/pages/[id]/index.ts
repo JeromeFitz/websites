@@ -1,15 +1,14 @@
 // 4fd37202-ec62-4897-a0dd-5ed8ab8b4b53
 // import _omit from 'lodash/omit'
+import avoidRateLimit from '@jeromefitz/notion/utils/avoidRateLimit'
+import dataNormalized from '@jeromefitz/notion/utils/dataNormalized'
+import dataSorted from '@jeromefitz/notion/utils/dataSorted'
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import { getCache, setCache } from '@jeromefitz/temp/getCache'
-import { notionPleaseDeprecate as notion } from '@jeromefitz/temp/package/helper'
-import dataNormalized from '@jeromefitz/temp/package/utils/dataNormalized'
-import dataSorted from '@jeromefitz/temp/package/utils/dataSorted'
-
-// import omitFields from '@jeromefitz/temp/omitFields'
 import { notionConfig as config } from '~config/websites'
-import avoidRateLimit from '~utils/avoidRateLimit'
+import { getCache, setCache } from '~lib/notion/getCache'
+import { notion } from '~lib/notion/helper'
+// import omitFields from '~lib/notion/omitFields'
 
 // const useCache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE
 const useCache = false

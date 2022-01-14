@@ -1,15 +1,9 @@
-import { Client, utils } from '@jeromefitz/notion'
+import getImages from '@jeromefitz/notion/utils/getImages'
 import _filter from 'lodash/filter'
 
-import { getCache, setCache } from '@jeromefitz/temp/getCache'
-// import { Client } from '@jeromefitz/temp/package/index'
-// import getImages from '@jeromefitz/temp/package/utils/getImages'
-
-import { notionConfig as config } from '~config/websites'
 import { nextWeirdRoutingSkipData } from '~lib/constants'
-
-const notion = new Client({ auth: process.env.NOTION_API_KEY, config })
-const { getImages } = utils
+import { getCache, setCache } from '~lib/notion/getCache'
+import { notion } from '~lib/notion/helper'
 
 const useCache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE
 

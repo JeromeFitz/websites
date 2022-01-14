@@ -1,19 +1,18 @@
 import fs from 'fs'
 import path from 'path'
 
+import getPathVariables from '@jeromefitz/notion/queries/getPathVariables'
 import csv from 'csv-parser'
 import _map from 'lodash/map'
 import _size from 'lodash/size'
 import { NextApiRequest, NextApiResponse } from 'next'
 import nodeEmoji from 'node-emoji'
 
-import createPage from '@jeromefitz/temp/api/createPage'
-import getChildren from '@jeromefitz/temp/create/children'
-import getProperties from '@jeromefitz/temp/create/properties'
-import getCatchAll from '@jeromefitz/temp/getCatchAll'
-import getPathVariables from '@jeromefitz/temp/package/queries/getPathVariables'
-
 import { notionConfig } from '~config/websites'
+import createPage from '~lib/notion/api/createPage'
+import getChildren from '~lib/notion/create/children'
+import getProperties from '~lib/notion/create/properties'
+import getCatchAll from '~lib/notion/getCatchAll'
 
 const { NOTION } = notionConfig
 
@@ -98,7 +97,10 @@ const csvApi = (req: NextApiRequest, res: NextApiResponse) => {
         const slug = properties['Slug'].rich_text[0].plain_text
         // @todo(notion) DRY
         const catchAll = ['podcasts', 'knockoffs', slug]
-        const pathVariables = getPathVariables({ config: notionConfig, catchAll })
+        const pathVariables = getPathVariables({
+          config: notionConfig,
+          catchAll,
+        })
         data = await getCatchAll({
           cache: false,
           catchAll,

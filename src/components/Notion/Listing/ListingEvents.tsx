@@ -1,4 +1,5 @@
 import { LocationMarkerIcon, TagIcon } from '@heroicons/react/outline'
+import getInfoType from '@jeromefitz/notion/queries/getInfoType'
 import { ArrowRightIcon, ClockIcon } from '@radix-ui/react-icons'
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
 import { getDate, getDay, getMonth, getYear, parseISO } from 'date-fns'
@@ -24,7 +25,6 @@ import {
   Section,
 } from '@jeromefitz/design-system/components'
 import { styled } from '@jeromefitz/design-system/stitches.config'
-import getInfoType from '@jeromefitz/temp/package/queries/getInfoType'
 
 import { notionConfig, TAGS } from '~config/websites'
 

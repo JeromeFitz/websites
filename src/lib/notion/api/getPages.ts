@@ -1,8 +1,9 @@
-import { notionPleaseDeprecate as notion } from '@jeromefitz/temp/package/helper'
+import avoidRateLimit from '@jeromefitz/notion/utils/avoidRateLimit'
 
-import avoidRateLimit from '~utils/avoidRateLimit'
+import { notion } from '~lib/notion/helper'
 
 const getPages = async ({ pageId }) => {
+  if (!pageId) return []
   await avoidRateLimit()
   return await notion.pages.retrieve({
     page_id: pageId,

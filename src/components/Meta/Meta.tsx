@@ -1,9 +1,11 @@
+import { TYPES } from '@jeromefitz/notion'
+import { PROPERTIES } from '@jeromefitz/notion/schema'
+import getTitle from '@jeromefitz/notion/utils/getTitle'
 import _map from 'lodash/map'
 import _size from 'lodash/size'
 // import _sortBy from 'lodash/sortBy'
 import _startsWith from 'lodash/startsWith'
 import pluralize from 'pluralize'
-// import useSWR from 'swr'
 import useSWRImmutable from 'swr/immutable'
 
 import {
@@ -14,14 +16,16 @@ import {
   Paragraph,
   Text,
 } from '@jeromefitz/design-system/components'
-import { PROPERTIES } from '@jeromefitz/temp/package/schema'
-import type { Show } from '@jeromefitz/temp/package/schema/types'
-import getTitle from '@jeromefitz/temp/package/utils/getTitle'
 
 import { notionConfig } from '~config/websites'
 import fetcher from '~lib/fetcher'
+// import { notion } from '~lib/notion/helper'
 
 const { NOTION } = notionConfig
+// const { getTitle } = utils
+
+// console.dir(`PROPERTIES`)
+// console.dir(PROPERTIES)
 
 const rollupExclude = [
   PROPERTIES.rollupShows__People_Cast_Slug.key,
@@ -101,6 +105,9 @@ const Meta = ({ data, routeType }) => {
 const Rollup = ({ _key, data, rollupKey, routeType }) => {
   const meta = data[rollupKey]
   const metaSize = _size(meta)
+  // const title = rollupKey
+  // const foo = getTitle(rollupKey)
+  // console.dir(`foo: ${foo}`)
   const title = pluralize(getTitle(rollupKey), metaSize)
 
   return (
@@ -140,7 +147,8 @@ const Rollup = ({ _key, data, rollupKey, routeType }) => {
  * @custom(notion) get the cast of the "first" show
  */
 const Cast = ({ data }) => {
-  const { data: showData } = useSWRImmutable<Show>(
+  const { data: showData } = useSWRImmutable<TYPES.Show>(
+    // const { data: showData } = useSWRImmutable<any>(
     [`/api/notion/pages/${data?.relationEvents__Shows[0]}`],
     (url) => fetcher(url),
     {}

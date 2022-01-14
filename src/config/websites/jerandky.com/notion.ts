@@ -1,10 +1,17 @@
-import { DATA_TYPES } from '@jeromefitz/temp/package/helper'
-import { DatabaseInfo } from '@jeromefitz/temp/package/schema/types'
+// import { DATA_TYPES } from '@jeromefitz/notion'
+import type { TYPES } from '@jeromefitz/notion'
+
+const DATA_TYPES: TYPES.DataTypesObject = {
+  LISTING: 'LISTING',
+  LISTING_BY_DATE: 'LISTING_BY_DATE',
+  SLUG: 'SLUG',
+  SLUG_BY_ROUTE: 'SLUG_BY_ROUTE',
+}
 
 const PAGES__HOMEPAGE = 'homepage'
 const PAGES: string[] = ['about']
 
-const NOTION: DatabaseInfo = {
+const NOTION: TYPES.DatabaseInfo = {
   BLOG: {
     active: true,
     database_id: '27789ca1-49e8-4490-bb29-5a3fdec0ec77',

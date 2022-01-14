@@ -1,3 +1,4 @@
+import getInfoType from '@jeromefitz/notion/queries/getInfoType'
 import _map from 'lodash/map'
 import _size from 'lodash/size'
 import dynamic from 'next/dynamic'
@@ -26,12 +27,12 @@ import {
   CardOuter,
   ImageBlur,
 } from '@jeromefitz/design-system/components/Card/Spotify'
-import getInfoType from '@jeromefitz/temp/package/queries/getInfoType'
 
 import { Breakout } from '~components/Container'
 import { ImageWithBackgroundBlur } from '~components/Layout/ImageLead'
 import { notionConfig } from '~config/websites'
 import { IMAGE__PLACEHOLDER } from '~lib/constants'
+// import { notion } from '~lib/notion/helper'
 import lpad from '~utils/lpad'
 
 const { NOTION } = notionConfig
@@ -72,6 +73,9 @@ const Episodes = ({ images, items }) => {
         //   ? imageData.base64
         //   : IMAGE__PLACEHOLDER?.meta?.base64
 
+        /**
+         * @todo(notion) new return is messing this up.
+         */
         let base64, img, imgSlug
         if (!hasImage) {
           /**
@@ -81,7 +85,7 @@ const Episodes = ({ images, items }) => {
           img = IMAGE__PLACEHOLDER.meta.img
           imgSlug = IMAGE__PLACEHOLDER.meta.slug
           img = { ...img, src: seoImage[imageSlug]?.url }
-          return null
+          // return null
         } else {
           // const { base64, img, slug: imgSlug } = imageData
           base64 = imageData?.base64

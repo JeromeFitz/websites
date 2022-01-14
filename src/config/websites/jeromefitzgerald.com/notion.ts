@@ -6,13 +6,23 @@
  * => ex) GET SEO first _then_ dynamicaly generate/store info
  *
  */
-import { DATA_TYPES } from '@jeromefitz/temp/package/helper'
-import { DatabaseInfo } from '@jeromefitz/temp/package/schema/types'
+// import { DATA_TYPES } from '@jeromefitz/notion'
+import type { TYPES } from '@jeromefitz/notion'
+
+const DATA_TYPES: TYPES.DataTypesObject = {
+  LISTING: 'LISTING',
+  LISTING_BY_DATE: 'LISTING_BY_DATE',
+  SLUG: 'SLUG',
+  SLUG_BY_ROUTE: 'SLUG_BY_ROUTE',
+}
+
+// console.dir(`DATA_TYPES`)
+// console.dir(DATA_TYPES)
 
 const PAGES__HOMEPAGE = 'homepage'
 const PAGES = ['about', 'colophon', 'contact']
 
-const NOTION: DatabaseInfo = {
+const NOTION: TYPES.DatabaseInfo = {
   BLOG: {
     active: true,
     database_id: '27360d9b5f274dc2ac19ad09837b6860',

@@ -1,8 +1,5 @@
+import getPathVariables from '@jeromefitz/notion/queries/getPathVariables'
 import useSWR from 'swr'
-
-import getCatchAll from '@jeromefitz/temp/getCatchAll'
-import getStaticPathsCatchAll from '@jeromefitz/temp/getStaticPathsCatchAll'
-import getPathVariables from '@jeromefitz/temp/package/queries/getPathVariables'
 
 import { Page, PageHeading, SkeletonHeading } from '~components/Layout'
 import { notionConfig } from '~config/websites'
@@ -12,6 +9,8 @@ import {
   ERROR__FALLBACK,
 } from '~lib/constants'
 import fetcher from '~lib/fetcher'
+import getCatchAll from '~lib/notion/getCatchAll'
+import getStaticPathsCatchAll from '~lib/notion/getStaticPathsCatchAll'
 import getNextPageStatus from '~utils/getNextPageStatus'
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment

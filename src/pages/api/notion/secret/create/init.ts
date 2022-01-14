@@ -1,3 +1,4 @@
+import { INIT } from '@jeromefitz/notion'
 import _find from 'lodash/find'
 import _map from 'lodash/map'
 import _noop from 'lodash/noop'
@@ -5,12 +6,10 @@ import _startsWith from 'lodash/startsWith'
 import { NextApiRequest, NextApiResponse } from 'next'
 import _title from 'title'
 
-import createDatabase from '@jeromefitz/temp/api/createDatabase'
-import getDatabasesById from '@jeromefitz/temp/api/getDatabasesById'
-import updateDatabase from '@jeromefitz/temp/api/updateDatabase'
-import { INIT } from '@jeromefitz/temp/package/schema'
-
 import asyncForEach from '~lib/asyncForEach'
+import createDatabase from '~lib/notion/api/createDatabase'
+import getDatabasesById from '~lib/notion/api/getDatabasesById'
+import updateDatabase from '~lib/notion/api/updateDatabase'
 
 const isDev = process.env.NODE_ENV === 'development'
 
@@ -176,12 +175,13 @@ const Create = async (req: NextApiRequest, res: NextApiResponse) => {
       properties: getPropertiesInitial(INIT[DATABASE]),
     }
 
-    const dbData = await createDatabase({ ...data })
+    // @todo(types)
+    const dbData: any = await createDatabase({ ...data })
 
     // console.dir(`---`)
     // console.dir(`${DATABASE} (${dbData.id})`)
 
-    DATABASES__INIT[DATABASE].id = dbData.id
+    DATABASES__INIT[DATABASE].id = dbData?.id
   }).catch(_noop)
 
   // 1. Update DB w/ Relations
