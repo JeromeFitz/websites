@@ -1,8 +1,8 @@
 // 4fd37202-ec62-4897-a0dd-5ed8ab8b4b53
 // import _omit from 'lodash/omit'
-import avoidRateLimit from '@jeromefitz/notion/utils/avoidRateLimit'
-import dataNormalized from '@jeromefitz/notion/utils/dataNormalized'
-import dataSorted from '@jeromefitz/notion/utils/dataSorted'
+import avoidRateLimit from '@jeromefitz/notion/dist/utils/avoidRateLimit'
+import dataNormalized from '@jeromefitz/notion/dist/utils/dataNormalized'
+import dataSorted from '@jeromefitz/notion/dist/utils/dataSorted'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 import { notionConfig as config } from '~config/websites'

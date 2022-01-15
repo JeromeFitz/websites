@@ -1,4 +1,4 @@
-import getInfoType from '@jeromefitz/notion/queries/getInfoType'
+import getInfoType from '@jeromefitz/notion/dist/queries/getInfoType'
 import _map from 'lodash/map'
 import _size from 'lodash/size'
 import dynamic from 'next/dynamic'

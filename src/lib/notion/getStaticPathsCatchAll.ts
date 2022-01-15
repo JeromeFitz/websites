@@ -1,4 +1,4 @@
-import getPathVariables from '@jeromefitz/notion/queries/getPathVariables'
+import getPathVariables from '@jeromefitz/notion/dist/queries/getPathVariables'
 import _isEqual from 'lodash/isEqual'
 import _map from 'lodash/map'
 import _noop from 'lodash/noop'

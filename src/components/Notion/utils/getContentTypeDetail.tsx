@@ -1,10 +1,10 @@
-import type { TYPES } from '@jeromefitz/notion'
+import type { NotionText } from '@jeromefitz/notion/dist/schema'
 import _map from 'lodash/map'
 
 import TextAnnotations from './TextAnnotations'
 
 const getContentTypeDetail = ({ content, id = null }) =>
-  _map(content.text, (text: TYPES.NotionText, textId) => {
+  _map(content.text, (text: NotionText, textId) => {
     const { href, plain_text, annotations } = text
     const key = `${id}--text-annotations--${textId}`
     // console.dir(`key: ${key}`)

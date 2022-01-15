@@ -1,4 +1,4 @@
-import { Client } from '@jeromefitz/notion'
+import { Client } from '@jeromefitz/notion/dist/index'
 
 import { notionConfig as config } from '~config/websites'
 

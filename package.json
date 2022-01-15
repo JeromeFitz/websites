@@ -134,7 +134,6 @@
   "next-unused": {
     "alias": {
       "@jeromefitz/design-system": "src/styles/system/",
-      "@jeromefitz/temp": "src/lib/notion/",
       "~components": "src/components/",
       "~config": "src/config/",
       "~context": "src/context/",

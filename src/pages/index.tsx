@@ -1,5 +1,4 @@
-import { queries } from '@jeromefitz/notion'
-// import getPathVariables from '@jeromefitz/notion/queries/getPathVariables'
+import getPathVariables from '@jeromefitz/notion/dist/queries/getPathVariables'
 import useSWR from 'swr'
 
 import { Page, PageHeading, SkeletonHeading } from '~components/Layout'
@@ -93,7 +92,7 @@ export const getStaticProps = async ({ preview = false, ...props }) => {
   // and the one after
   if (nextWeirdRoutingSkipData.includes(catchAll[0])) return { props: {} }
   const clear = false
-  const pathVariables = queries.getPathVariables({ config: notionConfig, catchAll })
+  const pathVariables = getPathVariables({ config: notionConfig, catchAll })
 
   /**
    * @cache

@@ -1,4 +1,4 @@
-import getPathVariables from '@jeromefitz/notion/queries/getPathVariables'
+import getPathVariables from '@jeromefitz/notion/dist/queries/getPathVariables'
 import _size from 'lodash/size'
 import { NextApiRequest, NextApiResponse } from 'next'
 

@@ -1,4 +1,4 @@
-import getPathVariables from '@jeromefitz/notion/queries/getPathVariables'
+import getPathVariables from '@jeromefitz/notion/dist/queries/getPathVariables'
 import useSWR from 'swr'
 
 import { Page, PageHeading, SkeletonHeading } from '~components/Layout'

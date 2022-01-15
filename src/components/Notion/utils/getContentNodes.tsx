@@ -1,6 +1,6 @@
 // import Slugger from 'github-slugger'
 // import _filter from 'lodash/filter'
-import type { TYPES } from '@jeromefitz/notion'
+import type { NotionBlock } from '@jeromefitz/notion/dist/schema'
 import _map from 'lodash/map'
 import { v4 as uuid } from 'uuid'
 
@@ -39,7 +39,7 @@ function getContentNodes({ content, images }) {
   const nodes = {}
   _map(
     content.hasOwnProperty('results') ? content.results : content,
-    (contentItem: TYPES.NotionBlock) => {
+    (contentItem: NotionBlock) => {
       if (contentItem === undefined || contentItem === null) return null
       if (
         contentItem?.type === 'bulleted_list_item' ||

@@ -6,7 +6,7 @@
  * [ ] jerandky.com
  * [ ] arcadecomedytheater.com
  */
-import type { TYPES } from '@jeromefitz/notion'
+import type { DatabaseInfo, Databases } from '@jeromefitz/notion/dist/schema'
 
 import {
   /**
@@ -27,7 +27,7 @@ import {
   sitemapExcludes,
 } from '~config/websites/jeromefitzgerald.com'
 
-const getDynamicDatabases = (obj: TYPES.DatabaseInfo) =>
+const getDynamicDatabases = (obj: DatabaseInfo) =>
   Object.keys(obj).reduce((acc, key) => {
     acc[key] = key
     return acc
@@ -36,7 +36,7 @@ const getDynamicDatabases = (obj: TYPES.DatabaseInfo) =>
 // @note(ts) dynamically generated via: getDynamicDatabases
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
-const DATABASES: TYPES.Databases = getDynamicDatabases(NOTION)
+const DATABASES: Databases = getDynamicDatabases(NOTION)
 // console.dir(`____ DATABASES `)
 // console.dir(DATABASES)
 

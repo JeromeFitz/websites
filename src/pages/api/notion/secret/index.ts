@@ -1,5 +1,5 @@
 /* eslint-disable prefer-const */
-import { Client } from '@jeromefitz/notion'
+import { Client } from '@jeromefitz/notion/dist/index'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 import { notionConfig as config } from '~config/websites'

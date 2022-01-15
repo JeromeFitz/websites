@@ -4,7 +4,7 @@
  * Down the line perhaps this could be the API to the API, haha
  *
  */
-import { queries } from '@jeromefitz/notion'
+import getPathVariables from '@jeromefitz/notion/dist/queries/getPathVariables'
 import _isBefore from 'date-fns/isBefore'
 import _parseISO from 'date-fns/parseISO'
 import _filter from 'lodash/filter'
@@ -41,7 +41,7 @@ const rssApi = async (req: NextApiRequest, res: NextApiResponse) => {
   const cache = false
 
   // http://localhost:3000/api/notion/blog/2020/12/28/preview-blog-post?preview=true
-  const pathVariables = queries.getPathVariables({ config: notionConfig, catchAll })
+  const pathVariables = getPathVariables({ config: notionConfig, catchAll })
   const data = await getCatchAll({
     cache,
     clear,

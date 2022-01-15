@@ -1,6 +1,6 @@
 // import _isBoolean from 'lodash/isBoolean'
 // import _omit from 'lodash/omit'
-import getPathVariables from '@jeromefitz/notion/queries/getPathVariables'
+import getPathVariables from '@jeromefitz/notion/dist/queries/getPathVariables'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 import { notionConfig } from '~config/websites'

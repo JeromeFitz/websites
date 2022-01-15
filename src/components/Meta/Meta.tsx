@@ -1,6 +1,6 @@
-import { TYPES } from '@jeromefitz/notion'
-import { PROPERTIES } from '@jeromefitz/notion/schema'
-import getTitle from '@jeromefitz/notion/utils/getTitle'
+import { PROPERTIES } from '@jeromefitz/notion/dist/constants'
+import type { Show } from '@jeromefitz/notion/dist/schema'
+import getTitle from '@jeromefitz/notion/dist/utils/getTitle'
 import _map from 'lodash/map'
 import _size from 'lodash/size'
 // import _sortBy from 'lodash/sortBy'
@@ -21,7 +21,10 @@ import { notionConfig } from '~config/websites'
 import fetcher from '~lib/fetcher'
 // import { notion } from '~lib/notion/helper'
 
+// const { PROPERTIES } = constants
 const { NOTION } = notionConfig
+// console.dir(`utils`)
+// console.dir(utils.getTitle)
 // const { getTitle } = utils
 
 // console.dir(`PROPERTIES`)
@@ -147,7 +150,7 @@ const Rollup = ({ _key, data, rollupKey, routeType }) => {
  * @custom(notion) get the cast of the "first" show
  */
 const Cast = ({ data }) => {
-  const { data: showData } = useSWRImmutable<TYPES.Show>(
+  const { data: showData } = useSWRImmutable<Show>(
     // const { data: showData } = useSWRImmutable<any>(
     [`/api/notion/pages/${data?.relationEvents__Shows[0]}`],
     (url) => fetcher(url),
