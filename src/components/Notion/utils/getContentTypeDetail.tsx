@@ -1,4 +1,4 @@
-import type { NotionText } from '@jeromefitz/notion/dist/schema'
+import type { NotionText } from '@jeromefitz/notion/schema'
 import _map from 'lodash/map'
 
 import TextAnnotations from './TextAnnotations'

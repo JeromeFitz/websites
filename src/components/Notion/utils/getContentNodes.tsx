@@ -1,6 +1,6 @@
 // import Slugger from 'github-slugger'
 // import _filter from 'lodash/filter'
-import type { NotionBlock } from '@jeromefitz/notion/dist/schema'
+import type { NotionBlock } from '@jeromefitz/notion/schema'
 import _map from 'lodash/map'
 import { v4 as uuid } from 'uuid'
 

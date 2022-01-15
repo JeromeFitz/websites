@@ -1,4 +1,4 @@
-import getImages from '@jeromefitz/notion/dist/utils/getImages'
+import getImages from '@jeromefitz/notion/utils/getImages'
 import _filter from 'lodash/filter'
 
 import { nextWeirdRoutingSkipData } from '~lib/constants'

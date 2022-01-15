@@ -4,7 +4,7 @@
  * Down the line perhaps this could be the API to the API, haha
  *
  */
-import getPathVariables from '@jeromefitz/notion/dist/queries/getPathVariables'
+import getPathVariables from '@jeromefitz/notion/queries/getPathVariables'
 import _isBefore from 'date-fns/isBefore'
 import _parseISO from 'date-fns/parseISO'
 import _filter from 'lodash/filter'

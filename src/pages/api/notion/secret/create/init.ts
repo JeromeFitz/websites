@@ -1,4 +1,4 @@
-import { INIT } from '@jeromefitz/notion/dist/constants'
+import { INIT } from '@jeromefitz/notion/constants'
 import _find from 'lodash/find'
 import _map from 'lodash/map'
 import _noop from 'lodash/noop'

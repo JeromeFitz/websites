@@ -1,4 +1,4 @@
-import getPathVariables from '@jeromefitz/notion/dist/queries/getPathVariables'
+import getPathVariables from '@jeromefitz/notion/queries/getPathVariables'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 import { notionConfig } from '~config/websites'

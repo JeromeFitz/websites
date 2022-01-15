@@ -6,8 +6,8 @@
  * => ex) GET SEO first _then_ dynamicaly generate/store info
  *
  */
-import { DATA_TYPES } from '@jeromefitz/notion/dist/constants'
-import type { DatabaseInfo } from '@jeromefitz/notion/dist/schema'
+import { DATA_TYPES } from '@jeromefitz/notion/constants'
+import type { DatabaseInfo } from '@jeromefitz/notion/schema'
 
 // const DATA_TYPES: DataTypesObject = {
 //   LISTING: 'LISTING',

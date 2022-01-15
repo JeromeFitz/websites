@@ -6,7 +6,7 @@
  * [ ] jerandky.com
  * [ ] arcadecomedytheater.com
  */
-import type { DatabaseInfo, Databases } from '@jeromefitz/notion/dist/schema'
+import type { DatabaseInfo, Databases } from '@jeromefitz/notion/schema'
 
 import {
   /**

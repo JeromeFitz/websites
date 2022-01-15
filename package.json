@@ -41,7 +41,7 @@
     "@artsy/fresnel": "3.2.1",
     "@bigheads/core": "0.3.3",
     "@heroicons/react": "1.0.5",
-    "@jeromefitz/notion": "1.0.0-notion.4",
+    "@jeromefitz/notion": "1.0.0-notion.8",
     "@jeromefitz/spotify": "1.0.2",
     "@notionhq/client": "0.4.12",
     "@plaiceholder/next": "2.2.0",

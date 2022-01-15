@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 
-import getPathVariables from '@jeromefitz/notion/dist/queries/getPathVariables'
+import getPathVariables from '@jeromefitz/notion/queries/getPathVariables'
 import csv from 'csv-parser'
 import _map from 'lodash/map'
 import _size from 'lodash/size'
