@@ -42,7 +42,12 @@ const pluginsOverride = [
   ],
   [
     '@semantic-release/github',
-    { labels: false, releasedLabels: false, successComment: false },
+    {
+      addReleases: false,
+      labels: false,
+      releasedLabels: false,
+      successComment: false,
+    },
   ],
 ]
 
