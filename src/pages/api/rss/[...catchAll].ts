@@ -5,6 +5,7 @@
  *
  */
 import getPathVariables from '@jeromefitz/notion/queries/getPathVariables'
+import { setCharAt } from '@jeromefitz/utils'
 import _isBefore from 'date-fns/isBefore'
 import _parseISO from 'date-fns/parseISO'
 import _filter from 'lodash/filter'
@@ -18,7 +19,6 @@ import { url } from '~config/getNextSeo'
 import { notionConfig } from '~config/websites'
 import getCatchAll from '~lib/notion/getCatchAll'
 import getTimeInSeconds from '~utils/getTimeInSeconds'
-import setCharAt from '~utils/setCharAt'
 
 const { NOTION } = notionConfig
 

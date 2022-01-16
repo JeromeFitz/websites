@@ -1,4 +1,5 @@
 import getInfoType from '@jeromefitz/notion/queries/getInfoType'
+import { lpad } from '@jeromefitz/utils'
 import _map from 'lodash/map'
 import _size from 'lodash/size'
 import dynamic from 'next/dynamic'
@@ -33,7 +34,6 @@ import { ImageWithBackgroundBlur } from '~components/Layout/ImageLead'
 import { notionConfig } from '~config/websites'
 import { IMAGE__PLACEHOLDER } from '~lib/constants'
 // import { notion } from '~lib/notion/helper'
-import lpad from '~utils/lpad'
 
 const { NOTION } = notionConfig
 

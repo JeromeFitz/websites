@@ -1,11 +1,11 @@
 import getPathVariables from '@jeromefitz/notion/queries/getPathVariables'
+import { asyncForEach } from '@jeromefitz/utils'
 import _isEqual from 'lodash/isEqual'
 import _map from 'lodash/map'
 import _noop from 'lodash/noop'
 import _uniqWith from 'lodash/uniqWith'
 
 import { notionConfig } from '~config/websites'
-import asyncForEach from '~lib/asyncForEach'
 import getCatchAll from '~lib/notion/getCatchAll'
 
 const isDev = process.env.NODE_ENV !== 'production'

@@ -1,10 +1,10 @@
+import { isObject } from '@jeromefitz/utils'
 import _startsWith from 'lodash/startsWith'
 import NextLink from 'next/link'
 
 import { styled } from '@jeromefitz/design-system/stitches.config'
 
 import getNextLink from '~utils/getNextLink'
-import isObject from '~utils/isObject'
 
 // @hack(notion) too much customization
 const getText = (text: any) => (isObject(text) ? text.props.children : text)
