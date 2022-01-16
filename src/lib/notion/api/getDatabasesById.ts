@@ -1,7 +1,8 @@
-import { notion } from '@jeromefitz/notion/helper'
+import avoidRateLimit from '@jeromefitz/notion/utils/avoidRateLimit'
 
-import avoidRateLimit from '~utils/avoidRateLimit'
+import { notion } from '~lib/notion/helper'
 
+// @todo(tyoes)
 const getDatabasesById = async ({ databaseId }) => {
   if (!databaseId) return []
   await avoidRateLimit()

@@ -1079,6 +1079,18 @@
     shellsync "0.2.2"
     word-wrap "1.2.3"
 
+"@jeromefitz/notion@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/notion/-/notion-1.0.0.tgz#f424c2b30d7bb0c9cfe182b3c05ed8929b94905e"
+  integrity sha512-v6iQtdeui6uK3LkSbuxaT+Fzox5M2azEM8BrKl5GMgfE+Yq8EHwoMHme4DfTP0DhT1a/LM6txhNCIhbiEQYw4g==
+  dependencies:
+    "@notionhq/client" "0.4.12"
+    date-fns "2.28.0"
+    date-fns-tz "1.2.2"
+    github-slugger "1.4.0"
+    lodash "4.17.21"
+    plaiceholder "2.2.0"
+
 "@jeromefitz/semantic@7.3.0":
   version "7.3.0"
   resolved "https://registry.yarnpkg.com/@jeromefitz/semantic/-/semantic-7.3.0.tgz#0345618a54b65417a824c8b339cd3204b79c2d4c"

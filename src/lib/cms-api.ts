@@ -15,7 +15,7 @@ import type {
   Shows,
   Venue,
   Venues,
-} from '@jeromefitz/notion/schema/types'
+} from '@jeromefitz/notion/schema'
 
 // import * as notionApi from './notion'
 const notionApi = false

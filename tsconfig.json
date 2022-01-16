@@ -37,7 +37,6 @@
     "target": "esnext",
     "paths": {
       "@jeromefitz/design-system/*": ["src/styles/system/*"],
-      "@jeromefitz/notion/*": ["src/lib/notion/*"],
       "~components/*": ["src/components/*"],
       "~config/*": ["src/config/*"],
       "~containers/*": ["src/containers/*"],

@@ -1,9 +1,11 @@
+import { PROPERTIES } from '@jeromefitz/notion/constants'
+import type { Show } from '@jeromefitz/notion/schema'
+import getTitle from '@jeromefitz/notion/utils/getTitle'
 import _map from 'lodash/map'
 import _size from 'lodash/size'
 // import _sortBy from 'lodash/sortBy'
 import _startsWith from 'lodash/startsWith'
 import pluralize from 'pluralize'
-// import useSWR from 'swr'
 import useSWRImmutable from 'swr/immutable'
 
 import {
@@ -14,12 +16,19 @@ import {
   Paragraph,
   Text,
 } from '@jeromefitz/design-system/components'
-import getTitle from '@jeromefitz/notion/getTitle'
-import { PROPERTIES } from '@jeromefitz/notion/schema'
-import type { Show } from '@jeromefitz/notion/schema/types'
 
-import { NOTION } from '~config/websites'
+import { notionConfig } from '~config/websites'
 import fetcher from '~lib/fetcher'
+// import { notion } from '~lib/notion/helper'
+
+// const { PROPERTIES } = constants
+const { NOTION } = notionConfig
+// console.dir(`utils`)
+// console.dir(utils.getTitle)
+// const { getTitle } = utils
+
+// console.dir(`PROPERTIES`)
+// console.dir(PROPERTIES)
 
 const rollupExclude = [
   PROPERTIES.rollupShows__People_Cast_Slug.key,
@@ -99,6 +108,9 @@ const Meta = ({ data, routeType }) => {
 const Rollup = ({ _key, data, rollupKey, routeType }) => {
   const meta = data[rollupKey]
   const metaSize = _size(meta)
+  // const title = rollupKey
+  // const foo = getTitle(rollupKey)
+  // console.dir(`foo: ${foo}`)
   const title = pluralize(getTitle(rollupKey), metaSize)
 
   return (
@@ -139,6 +151,7 @@ const Rollup = ({ _key, data, rollupKey, routeType }) => {
  */
 const Cast = ({ data }) => {
   const { data: showData } = useSWRImmutable<Show>(
+    // const { data: showData } = useSWRImmutable<any>(
     [`/api/notion/pages/${data?.relationEvents__Shows[0]}`],
     (url) => fetcher(url),
     {}

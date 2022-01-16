@@ -1,4 +1,5 @@
 import { LocationMarkerIcon, TagIcon } from '@heroicons/react/outline'
+import getInfoType from '@jeromefitz/notion/queries/getInfoType'
 import { ArrowRightIcon, ClockIcon } from '@radix-ui/react-icons'
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
 import { getDate, getDay, getMonth, getYear, parseISO } from 'date-fns'
@@ -24,9 +25,8 @@ import {
   Section,
 } from '@jeromefitz/design-system/components'
 import { styled } from '@jeromefitz/design-system/stitches.config'
-import getInfoType from '@jeromefitz/notion/getInfoType'
 
-import { TAGS } from '~config/websites'
+import { notionConfig, TAGS } from '~config/websites'
 
 const Announce = dynamic(
   () => import('@jeromefitz/design-system/components').then((mod) => mod.Announce),
@@ -406,7 +406,11 @@ const Event = ({ data, keyPrefix }) => {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { as, date, href, slug } = getInfoType(data, 'events')
+  const { as, date, href, slug } = getInfoType({
+    config: notionConfig,
+    item: data,
+    routeType: 'events',
+  })
   // console.dir(`---`)
   // console.dir(`as:   ${as}`)
   // console.dir(`date: ${date}`)

@@ -1,21 +1,22 @@
+import getPathVariables from '@jeromefitz/notion/queries/getPathVariables'
 import useSWR from 'swr'
 
-import getCatchAll from '@jeromefitz/notion/getCatchAll'
-import getPathVariables from '@jeromefitz/notion/getPathVariables'
-import getStaticPathsCatchAll from '@jeromefitz/notion/getStaticPathsCatchAll'
-
 import { Page, PageHeading, SkeletonHeading } from '~components/Layout'
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { PAGES__HOMEPAGE } from '~config/websites'
+import { notionConfig } from '~config/websites'
 import {
   nextWeirdRoutingSkipData,
   revalidate,
   ERROR__FALLBACK,
 } from '~lib/constants'
 import fetcher from '~lib/fetcher'
+import getCatchAll from '~lib/notion/getCatchAll'
+import getStaticPathsCatchAll from '~lib/notion/getStaticPathsCatchAll'
 import getNextPageStatus from '~utils/getNextPageStatus'
+
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const { PAGES__HOMEPAGE } = notionConfig
 
 const CatchAll = (props) => {
   const {
@@ -80,7 +81,7 @@ export const getStaticProps = async ({ preview = false, ...props }) => {
   if (nextWeirdRoutingSkipData.includes(catchAll[0])) return { props: {} }
   // const catchAll = [PAGES__HOMEPAGE]
   const clear = false
-  const pathVariables = getPathVariables(catchAll)
+  const pathVariables = getPathVariables({ config: notionConfig, catchAll })
   /**
    * @cache
    */
