@@ -1,6 +1,4 @@
-import config, {
-  commit as _commit,
-} from '@jeromefitz/semantic/src/changelog.config.js'
+import config, { commit as _commit } from '@jeromefitz/semantic/changelog.config.js'
 
 const changelog = {
   ...config,
