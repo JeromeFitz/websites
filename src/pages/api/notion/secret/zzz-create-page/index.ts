@@ -1,15 +1,16 @@
+import getPathVariables from '@jeromefitz/notion/queries/getPathVariables'
 import _size from 'lodash/size'
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import createPage from '@jeromefitz/notion/api/createPage'
+import { notionConfig } from '~config/websites'
+import createPage from '~lib/notion/api/createPage'
 // @todo(notion) this no longer works!
-import children from '@jeromefitz/notion/create/children'
+import children from '~lib/notion/create/children'
 // @todo(notion) this no longer works!
-import properties from '@jeromefitz/notion/create/properties'
-import getCatchAll from '@jeromefitz/notion/getCatchAll'
-import getPathVariables from '@jeromefitz/notion/getPathVariables'
+import properties from '~lib/notion/create/properties'
+import getCatchAll from '~lib/notion/getCatchAll'
 
-import { NOTION } from '~config/websites'
+const { NOTION } = notionConfig
 // const isObjectEmpty = '~utils/isObjectEmpty'
 
 const isDev = process.env.NODE_ENV === 'development'
@@ -54,7 +55,7 @@ const secretCreatePage = async (req: NextApiRequest, res: NextApiResponse) => {
   // @todo(notion) this no longer works!
   const slug = 'am-i-dracula-greg-gillotti'
   const catchAll = ['podcasts', 'jer-and-ky-and-guest', slug]
-  const pathVariables = getPathVariables(catchAll)
+  const pathVariables = getPathVariables({ config: notionConfig, catchAll })
   data = await getCatchAll({
     cache: false,
     catchAll,

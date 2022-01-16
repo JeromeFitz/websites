@@ -1,15 +1,15 @@
+import getPathVariables from '@jeromefitz/notion/queries/getPathVariables'
 import _isEqual from 'lodash/isEqual'
 import _map from 'lodash/map'
 import _noop from 'lodash/noop'
 import _uniqWith from 'lodash/uniqWith'
 
-import getCatchAll from '@jeromefitz/notion/getCatchAll'
-import getPathVariables from '@jeromefitz/notion/getPathVariables'
-
-import { NOTION, PAGES, ROUTE_TYPES } from '~config/websites'
+import { notionConfig } from '~config/websites'
 import asyncForEach from '~lib/asyncForEach'
+import getCatchAll from '~lib/notion/getCatchAll'
 
 const isDev = process.env.NODE_ENV !== 'production'
+const { NOTION, PAGES, ROUTE_TYPES } = notionConfig
 
 /**
  * @note(notion)
@@ -95,7 +95,10 @@ const getStaticPathsCatchAll = async () => {
       if (routeType !== 'episodes') paths.push(`/${routeType}`)
 
       const catchAll = [routeType]
-      const pathVariables = getPathVariables(catchAll)
+      const pathVariables = getPathVariables({
+        config: notionConfig,
+        catchAll,
+      })
       const data = await getCatchAll({
         cache: false,
         catchAll,

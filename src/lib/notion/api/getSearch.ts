@@ -1,6 +1,6 @@
-import { notion } from '@jeromefitz/notion/helper'
+import avoidRateLimit from '@jeromefitz/notion/utils/avoidRateLimit'
 
-import avoidRateLimit from '~utils/avoidRateLimit'
+import { notion } from '~lib/notion/helper'
 
 const mock = {
   filter: {
@@ -16,6 +16,7 @@ const mock = {
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const getSearch = async ({ query, sort = mock.sort, filter = mock.filter }) => {
+  if (!query) return []
   await avoidRateLimit()
   return await notion.search({
     query,

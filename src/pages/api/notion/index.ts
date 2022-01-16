@@ -1,12 +1,14 @@
 // import _isBoolean from 'lodash/isBoolean'
 // import _omit from 'lodash/omit'
+import getPathVariables from '@jeromefitz/notion/queries/getPathVariables'
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import getCatchAll from '@jeromefitz/notion/getCatchAll'
-import getPathVariables from '@jeromefitz/notion/getPathVariables'
+import { notionConfig } from '~config/websites'
+import getCatchAll from '~lib/notion/getCatchAll'
 
-import { PAGES__HOMEPAGE } from '~config/websites'
-// import omitFields from '@jeromefitz/notion/omitFields'
+// import omitFields from '~lib/notion/omitFields'
+
+const { PAGES__HOMEPAGE } = notionConfig
 
 const notionCatchAll = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
@@ -23,7 +25,10 @@ const notionCatchAll = async (req: NextApiRequest, res: NextApiResponse) => {
     const cache = false
 
     // http://localhost:3000/api/notion/blog/2020/12/28/preview-blog-post?preview=true
-    const pathVariables = getPathVariables(catchAll)
+    const pathVariables = getPathVariables({
+      config: notionConfig,
+      catchAll,
+    })
     const data = await getCatchAll({
       cache,
       clear,

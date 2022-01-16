@@ -3,7 +3,9 @@ import _size from 'lodash/size'
 import dynamic from 'next/dynamic'
 import * as React from 'react'
 
-import { NOTION } from '~config/websites'
+import { notionConfig } from '~config/websites'
+
+const { NOTION } = notionConfig
 
 const ListingDefault = dynamic(
   () => import('~components/Notion/Listing/ListingDefault'),

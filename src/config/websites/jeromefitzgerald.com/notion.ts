@@ -6,8 +6,18 @@
  * => ex) GET SEO first _then_ dynamicaly generate/store info
  *
  */
-import { DATA_TYPES } from '@jeromefitz/notion/helper'
-import { DatabaseInfo } from '@jeromefitz/notion/schema/types'
+import { DATA_TYPES } from '@jeromefitz/notion/constants'
+import type { DatabaseInfo } from '@jeromefitz/notion/schema'
+
+// const DATA_TYPES: DataTypesObject = {
+//   LISTING: 'LISTING',
+//   LISTING_BY_DATE: 'LISTING_BY_DATE',
+//   SLUG: 'SLUG',
+//   SLUG_BY_ROUTE: 'SLUG_BY_ROUTE',
+// }
+
+// console.dir(`DATA_TYPES`)
+// console.dir(DATA_TYPES)
 
 const PAGES__HOMEPAGE = 'homepage'
 const PAGES = ['about', 'colophon', 'contact']

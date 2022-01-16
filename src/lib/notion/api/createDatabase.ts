@@ -1,8 +1,9 @@
-import { notion } from '@jeromefitz/notion/helper'
+import avoidRateLimit from '@jeromefitz/notion/utils/avoidRateLimit'
 
-import avoidRateLimit from '~utils/avoidRateLimit'
+import { notion } from '~lib/notion/helper'
 
 const createDatabase = async (data) => {
+  if (!data) return []
   await avoidRateLimit()
   return await notion.databases.create({ ...data })
 }

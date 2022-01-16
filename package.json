@@ -41,6 +41,7 @@
     "@artsy/fresnel": "3.2.1",
     "@bigheads/core": "0.3.3",
     "@heroicons/react": "1.0.5",
+    "@jeromefitz/notion": "1.0.0",
     "@jeromefitz/spotify": "1.0.2",
     "@notionhq/client": "0.4.12",
     "@plaiceholder/next": "2.2.0",
@@ -133,7 +134,6 @@
   "next-unused": {
     "alias": {
       "@jeromefitz/design-system": "src/styles/system/",
-      "@jeromefitz/notion": "src/lib/notion/",
       "~components": "src/components/",
       "~config": "src/config/",
       "~context": "src/context/",
@@ -158,14 +158,10 @@
       "src/hooks/usePrefersReducedMotion.ts",
       "src/lib/firebase.ts",
       "src/lib/pubsub.ts",
-      "src/lib/notion/api/getBlocks.ts",
-      "src/lib/notion/api/getDatabasesById.ts",
-      "src/lib/notion/api/getPages.ts",
-      "src/lib/notion/api/getSearch.ts",
-      "src/lib/notion/api/getTypes/*",
       "src/styles/fonts/*",
       "src/utils/isElementOfType.ts",
       "src/utils/isObjectEmpty.ts",
+      "src/utils/isUndefined.ts",
       "src/utils/stringToUUID.ts"
     ],
     "include": [
