@@ -123,7 +123,7 @@
     "is-ci": "3.0.1",
     "jest": "27.4.7",
     "next-compose-plugins": "2.2.1",
-    "next-sitemap": "1.9.5",
+    "next-sitemap": "1.9.9",
     "next-unused": "0.0.6",
     "pinst": "2.1.6",
     "rimraf": "3.0.2",
