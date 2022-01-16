@@ -1015,10 +1015,10 @@
   resolved "https://registry.yarnpkg.com/@jeromefitz/conventional-gitmoji/-/conventional-gitmoji-1.0.0.tgz#39a06d0d88cae8be3f5403ff9b6a3d3cfde7e745"
   integrity sha512-c30l7X3/Rf+CD+ot9AD91c67G8HSZ81ovHVNsG+EgW2n9RMmwDzpgK6AekXpggubM3uWXzMG7znOjX9lW4bECg==
 
-"@jeromefitz/git-cz@14.0.0":
-  version "14.0.0"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/git-cz/-/git-cz-14.0.0.tgz#c8e7c58d0ab26fc09012f1a0599883d0eccd83ad"
-  integrity sha512-kgi6G72kt87T41XYlVkQWlclnWQqVb5q8roQNECorZU8dQrKV05o/hKmXgjZTJhZOpO3Dx/rDfTlh48scU1/tA==
+"@jeromefitz/git-cz@14.0.1":
+  version "14.0.1"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/git-cz/-/git-cz-14.0.1.tgz#c4c8d738cfa10768fadc2541ae65d0302a577af3"
+  integrity sha512-onHbdyZbN+fzK0f50/93H6ADfg3t9N0UY3Uoi6bNmF0NAPH48Q+nMY4DbqoQUbH69Ll9m1s+ORYOTSS1VO6+VA==
   dependencies:
     "@jeromefitz/conventional-gitmoji" "*"
     chalk "5.0.0"
@@ -1032,10 +1032,10 @@
     shellsync "0.2.2"
     word-wrap "1.2.3"
 
-"@jeromefitz/notion@2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/notion/-/notion-2.0.0.tgz#e66b0123aa35ae40126b5c327c1b9e37d0c97352"
-  integrity sha512-gh16Q1oRXq6vg24EoYpTJNT1iqpBCppA+stE79pTGgZfUymvVTa/xYyCr6UlG0bdzFUzSu9+JL5AdkP9Sj9yrw==
+"@jeromefitz/notion@2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/notion/-/notion-2.0.1.tgz#1f742298c15a2b0b7b7b4eba487bb3ec44c8c2cb"
+  integrity sha512-8lx8mXSccEboA/IteLKoMNwDDniZdgYf6CV9rGQcM7nirGZENc5hIfhDNdW2Xl20fGCBIo7k0O4tJIH6xMcMhA==
   dependencies:
     "@notionhq/client" "0.4.12"
     date-fns "2.28.0"
@@ -1044,10 +1044,10 @@
     lodash "4.17.21"
     plaiceholder "2.2.0"
 
-"@jeromefitz/semantic@8.0.0":
-  version "8.0.0"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/semantic/-/semantic-8.0.0.tgz#836e65d2f3c51426e3a16e40ff60538d4d0674f9"
-  integrity sha512-nWn4DodBXD4pnjZyiXa5LwGHMVuhZNbwyY5onsKrKGFTpIyH0GnR2Q1N4wXrpU++WVbg6Qbd7Z/YyR/N9yuB3A==
+"@jeromefitz/semantic@8.0.1":
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/semantic/-/semantic-8.0.1.tgz#eb9bc329fe6af73a65f5f6843f24366efcfffd10"
+  integrity sha512-o2qKUDDn5Zj8WYxW3RhQlk5SzLpPXiMezTs41QwvNabKVrCtHRcOtwq7Z27NXtKZOvpVP3clxXk3YKR08dck9A==
   dependencies:
     "@jeromefitz/conventional-gitmoji" "*"
     "@octokit/core" "3.5.1"
@@ -1063,14 +1063,21 @@
     semantic-release-commit-filter "1.0.2"
     title "3.4.3"
 
-"@jeromefitz/spotify@2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/spotify/-/spotify-2.0.0.tgz#bf6aa83a33fb65751f68706275575b2d265a9a49"
-  integrity sha512-HfoOUk8R34tUDeuzUw3atumLi11Ehz8aNbC34wrqZK8LiHmsnGrDDBazLqzkJYtrZzqxrL0K2CH6EwbFeiikGw==
+"@jeromefitz/spotify@2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/spotify/-/spotify-2.1.0.tgz#09fba47899f6abb44a4550178e063d7c9d2d1cd3"
+  integrity sha512-maTukJQs4TMy+cw9hDgjvzFvV3aH/DlWSXZYHyIRiUyiWV3BnvGzPtWziXneBnzA6y0I7tFrmjh0I1kctCEqbA==
   dependencies:
     github-slugger "1.4.0"
     isomorphic-unfetch "3.1.0"
     plaiceholder "2.2.0"
+
+"@jeromefitz/utils@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/utils/-/utils-1.0.0.tgz#f4c7d15f1b27a2c28572cd23c508a508bbcbe208"
+  integrity sha512-FfKOeR7HPl7fr4cs01NRw852kw547FW0ujald/IeEd0aLbuAW/HsYXTwUzpPZ7xYvGJe57wDXoAxppKr+5ByvQ==
+  dependencies:
+    lodash "4.17.21"
 
 "@jest/console@^27.4.6":
   version "27.4.6"

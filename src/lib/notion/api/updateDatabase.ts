@@ -1,4 +1,4 @@
-import avoidRateLimit from '@jeromefitz/notion/utils/avoidRateLimit'
+import { avoidRateLimit } from '@jeromefitz/utils'
 
 import { notion } from '~lib/notion/helper'
 
