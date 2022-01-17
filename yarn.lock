@@ -1063,10 +1063,10 @@
     semantic-release-commit-filter "1.0.2"
     title "3.4.3"
 
-"@jeromefitz/spotify@2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/spotify/-/spotify-2.0.0.tgz#bf6aa83a33fb65751f68706275575b2d265a9a49"
-  integrity sha512-HfoOUk8R34tUDeuzUw3atumLi11Ehz8aNbC34wrqZK8LiHmsnGrDDBazLqzkJYtrZzqxrL0K2CH6EwbFeiikGw==
+"@jeromefitz/spotify@2.1.1":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/spotify/-/spotify-2.1.1.tgz#f332a83c86f97672b214448d861f502560268498"
+  integrity sha512-+N2Vxo/6OkzvJMEuNsxlmTMY5Fm/lHLDcUzuG/aoQkqGbHnEH0F0tEyJ8yW8p37Lfp5MLKxfeK7ZqHaywdXQww==
   dependencies:
     github-slugger "1.4.0"
     isomorphic-unfetch "3.1.0"

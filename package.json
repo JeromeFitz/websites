@@ -42,7 +42,7 @@
     "@bigheads/core": "0.3.3",
     "@heroicons/react": "1.0.5",
     "@jeromefitz/notion": "2.0.0",
-    "@jeromefitz/spotify": "2.0.0",
+    "@jeromefitz/spotify": "2.1.1",
     "@notionhq/client": "0.4.12",
     "@plaiceholder/next": "2.2.0",
     "@radix-ui/colors": "0.1.8",
