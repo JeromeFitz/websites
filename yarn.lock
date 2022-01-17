@@ -1044,10 +1044,10 @@
     lodash "4.17.21"
     plaiceholder "2.2.0"
 
-"@jeromefitz/semantic@8.0.0":
-  version "8.0.0"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/semantic/-/semantic-8.0.0.tgz#836e65d2f3c51426e3a16e40ff60538d4d0674f9"
-  integrity sha512-nWn4DodBXD4pnjZyiXa5LwGHMVuhZNbwyY5onsKrKGFTpIyH0GnR2Q1N4wXrpU++WVbg6Qbd7Z/YyR/N9yuB3A==
+"@jeromefitz/semantic@8.0.1":
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/semantic/-/semantic-8.0.1.tgz#eb9bc329fe6af73a65f5f6843f24366efcfffd10"
+  integrity sha512-o2qKUDDn5Zj8WYxW3RhQlk5SzLpPXiMezTs41QwvNabKVrCtHRcOtwq7Z27NXtKZOvpVP3clxXk3YKR08dck9A==
   dependencies:
     "@jeromefitz/conventional-gitmoji" "*"
     "@octokit/core" "3.5.1"
