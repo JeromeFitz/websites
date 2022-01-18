@@ -1032,17 +1032,16 @@
     shellsync "0.2.2"
     word-wrap "1.2.3"
 
-"@jeromefitz/notion@2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/notion/-/notion-2.0.1.tgz#1f742298c15a2b0b7b7b4eba487bb3ec44c8c2cb"
-  integrity sha512-8lx8mXSccEboA/IteLKoMNwDDniZdgYf6CV9rGQcM7nirGZENc5hIfhDNdW2Xl20fGCBIo7k0O4tJIH6xMcMhA==
+"@jeromefitz/notion@2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/notion/-/notion-2.0.2.tgz#d79917451bd73646b95a2dbd7894c17637d5aa14"
+  integrity sha512-ulCNiNhmzhM2fn/mj90Rseeken4Alsm3Sj1n+00atCPOO1zyCRdIgRg6g7Qe+Va0Pzq9kr05Svn/6VjCE2EDOA==
   dependencies:
     "@notionhq/client" "0.4.12"
     date-fns "2.28.0"
     date-fns-tz "1.2.2"
     github-slugger "1.4.0"
     lodash "4.17.21"
-    plaiceholder "2.2.0"
 
 "@jeromefitz/semantic@8.0.1":
   version "8.0.1"
@@ -1063,10 +1062,10 @@
     semantic-release-commit-filter "1.0.2"
     title "3.4.3"
 
-"@jeromefitz/spotify@2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/spotify/-/spotify-2.1.1.tgz#f332a83c86f97672b214448d861f502560268498"
-  integrity sha512-+N2Vxo/6OkzvJMEuNsxlmTMY5Fm/lHLDcUzuG/aoQkqGbHnEH0F0tEyJ8yW8p37Lfp5MLKxfeK7ZqHaywdXQww==
+"@jeromefitz/spotify@2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/spotify/-/spotify-2.1.2.tgz#b4bed2871c9b7e54b4fd6cd0f65ff5c29b08c047"
+  integrity sha512-4fd9sOa8WxeKwo/cS/0Fby6r6duzKgUKpIi30ib6+U8NwCftmUsNiNQRbQgm34RglljvYsyLjc7OF91N89Ajnw==
   dependencies:
     github-slugger "1.4.0"
     isomorphic-unfetch "3.1.0"
