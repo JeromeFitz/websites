@@ -1,7 +1,6 @@
 import fs from 'fs'
 import path from 'path'
 
-import getPathVariables from '@jeromefitz/notion/queries/getPathVariables'
 import csv from 'csv-parser'
 import _map from 'lodash/map'
 import _size from 'lodash/size'
@@ -13,6 +12,7 @@ import createPage from '~lib/notion/api/createPage'
 import getChildren from '~lib/notion/create/children'
 import getProperties from '~lib/notion/create/properties'
 import getCatchAll from '~lib/notion/getCatchAll'
+import { notion } from '~lib/notion/helper'
 
 const { NOTION } = notionConfig
 
@@ -97,8 +97,7 @@ const csvApi = (req: NextApiRequest, res: NextApiResponse) => {
         const slug = properties['Slug'].rich_text[0].plain_text
         // @todo(notion) DRY
         const catchAll = ['podcasts', 'knockoffs', slug]
-        const pathVariables = getPathVariables({
-          config: notionConfig,
+        const pathVariables = notion.custom.getPathVariables({
           catchAll,
         })
         data = await getCatchAll({

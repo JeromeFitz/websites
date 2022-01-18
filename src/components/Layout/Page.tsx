@@ -53,6 +53,9 @@ const Page = ({ data, ...props }) => {
     void mutate('images', { ...images, ...imagesFallback }, true)
   })
 
+  // console.dir(`images`)
+  // console.dir(images)
+
   /**
    * @data
    */

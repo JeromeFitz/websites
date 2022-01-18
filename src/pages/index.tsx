@@ -1,4 +1,3 @@
-import getPathVariables from '@jeromefitz/notion/queries/getPathVariables'
 import useSWR from 'swr'
 
 import { Page, PageHeading, SkeletonHeading } from '~components/Layout'
@@ -12,6 +11,8 @@ import {
 } from '~lib/constants'
 import fetcher from '~lib/fetcher'
 import getCatchAll from '~lib/notion/getCatchAll'
+import getDataReturn from '~lib/notion/getDataReturn'
+import { notion } from '~lib/notion/helper'
 import getNextPageStatus from '~utils/getNextPageStatus'
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -92,17 +93,24 @@ export const getStaticProps = async ({ preview = false, ...props }) => {
   // and the one after
   if (nextWeirdRoutingSkipData.includes(catchAll[0])) return { props: {} }
   const clear = false
-  const pathVariables = getPathVariables({ config: notionConfig, catchAll })
+  const pathVariables = notion.custom.getPathVariables({ catchAll })
 
   /**
    * @cache
    */
   const cache = true
-  const data = await getCatchAll({ cache, catchAll, clear, pathVariables, preview })
-
-  const dataReturn = { ...data }
+  const data = await getDataReturn({
+    data: await getCatchAll({
+      cache,
+      catchAll,
+      clear,
+      pathVariables,
+      preview,
+    }),
+    pathVariables,
+  })
   return {
-    props: { preview, ...dataReturn, ...pathVariables, ...props },
+    props: { preview, ...data, ...pathVariables, ...props },
     revalidate,
   }
 }

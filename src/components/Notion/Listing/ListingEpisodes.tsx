@@ -1,4 +1,3 @@
-import getInfoType from '@jeromefitz/notion/queries/getInfoType'
 import { lpad } from '@jeromefitz/utils'
 import _map from 'lodash/map'
 import _size from 'lodash/size'
@@ -33,7 +32,7 @@ import { Breakout } from '~components/Container'
 import { ImageWithBackgroundBlur } from '~components/Layout/ImageLead'
 import { notionConfig } from '~config/websites'
 import { IMAGE__PLACEHOLDER } from '~lib/constants'
-// import { notion } from '~lib/notion/helper'
+import { notion } from '~lib/notion/helper'
 
 const { NOTION } = notionConfig
 
@@ -96,8 +95,10 @@ const Episodes = ({ images, items }) => {
         const { episode, season } = item?.properties
         const meta = router.asPath.split('/').slice(1)
         const isEpisode = _size(meta) === 2
-        const { as, href } = getInfoType({
-          config: notionConfig,
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const { as, date, href, slug } = notion.custom.getInfoType({
           item,
           routeType: NOTION.PODCASTS.slug,
           meta,
