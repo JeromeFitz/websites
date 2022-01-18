@@ -6,6 +6,7 @@
  * [ ] jerandky.com
  * [ ] arcadecomedytheater.com
  */
+import { getDataTypes } from '@jeromefitz/notion/constants'
 import type { DatabaseInfo, Databases } from '@jeromefitz/notion/schema'
 
 import {
@@ -33,41 +34,61 @@ const getDynamicDatabases = (obj: DatabaseInfo) =>
     return acc
   }, {})
 
-// @note(ts) dynamically generated via: getDynamicDatabases
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
 const DATABASES: Databases = getDynamicDatabases(NOTION)
 // console.dir(`____ DATABASES `)
 // console.dir(DATABASES)
 
-/**
- * @refactor lol, this is not even used.
- */
-// const GET_DATA_TYPES = new Object()
-// getDataTypes.map((type: any) => (GET_DATA_TYPES[type] = []))
-// Object.keys(NOTION).map((k) => {
-//   if (!!NOTION[k].active) {
-//     NOTION[k].dataTypes.map((dataType) => GET_DATA_TYPES[dataType].push(k))
-//   }
-// })
-// console.dir(`____ GET_DATA_TYPES`)
-// console.dir(GET_DATA_TYPES)
-
 const ROUTE_TYPES = Object.keys(NOTION)
-  .map((k) => !!NOTION[k].active && NOTION[k].routeType)
+  .map((k) => !!NOTION[k].active && NOTION[k].routeType.toUpperCase())
   .filter(Boolean)
 
 // console.dir(`____ ROUTE_TYPES `)
 // console.dir(ROUTE_TYPES)
 
+const ROUTE_TYPES_BY_DATA_TYPES = new Object()
+getDataTypes.map((type: any) => (ROUTE_TYPES_BY_DATA_TYPES[type] = []))
+Object.keys(NOTION).map((k) => {
+  if (!!NOTION[k].active) {
+    NOTION[k].dataTypes.map((dataType) =>
+      ROUTE_TYPES_BY_DATA_TYPES[dataType].push(k.toUpperCase())
+    )
+  }
+})
+
+// console.dir(`____ ROUTE_TYPES_BY_DATA_TYPES`)
+// console.dir(ROUTE_TYPES_BY_DATA_TYPES)
+
+const ROUTE_META = Object.keys(NOTION)
+  .map(
+    (k) =>
+      !!NOTION[k].active &&
+      !!NOTION[k].routeMeta &&
+      NOTION[k].routeType.toUpperCase()
+  )
+  .filter(Boolean)
+
+// console.dir(`____ ROUTE_META `)
+// console.dir(ROUTE_META)
+
 const notionConfig = {
   DATABASES,
-  // GET_DATA_TYPES,
   NOTION,
   PAGES__HOMEPAGE,
   PAGES,
+  ROUTE_META,
+  ROUTE_TYPES_BY_DATA_TYPES,
   ROUTE_TYPES,
 }
+
+// console.dir(`____ notionConfig`)
+// console.dir(notionConfig)
+
+// console.dir(NOTION['PODCASTS'].hasChild)
+// console.dir(!!NOTION['PODCASTS'].hasChild)
+// console.dir(NOTION['EPISODES'].hasChild)
+// console.dir(!!NOTION['EPISODES'].hasChild)
 
 export { navigationHeader, nextSeo, notionConfig, sitemapExcludes }
 

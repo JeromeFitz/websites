@@ -90,9 +90,12 @@ const ImageLead = ({ breakout = true, description, image, imagesFallback }) => {
   })
   // @todo(external)
   // @note(notion) this is based off of seoImage only at the moment
+  // @note(image) check against the first key in `images` only (seoImage)
   const imageSlug = Object.keys(image)[0]
   const imageData = !!images && images[imageSlug]
 
+  // @note(image) verify it has been optimized
+  // @todo(image) fallback base64
   const hasImage = !!imageData && !!imageData.base64
 
   if (!hasImage) {

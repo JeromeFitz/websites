@@ -1,8 +1,8 @@
-import getPathVariables from '@jeromefitz/notion/queries/getPathVariables'
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import { notionConfig } from '~config/websites'
 import getCatchAll from '~lib/notion/getCatchAll'
+import getDataReturn from '~lib/notion/getDataReturn'
+import { notion } from '~lib/notion/helper'
 
 const CatchAll = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
@@ -10,6 +10,8 @@ const CatchAll = async (req: NextApiRequest, res: NextApiResponse) => {
     const preview = req.query?.preview || false
     const clear = req.query?.clear || false
     const catchAll = req.query?.catchAll
+    const _images = req.query?.images || 'true'
+    const images = _images === 'true' ? true : false
 
     if (catchAll[0] === 'true') return res.status(200).json({})
     /**
@@ -19,21 +21,25 @@ const CatchAll = async (req: NextApiRequest, res: NextApiResponse) => {
     const cache = false
 
     // http://localhost:3000/api/notion/blog/2020/12/28/preview-blog-post?preview=true
-    // const pathVariables = queries.getPathVariables({
-    const pathVariables = getPathVariables({
-      config: notionConfig,
+    const pathVariables = notion.custom.getPathVariables({
       catchAll,
     })
 
-    const data = await getCatchAll({
-      cache,
-      catchAll,
-      clear,
-      pathVariables,
-      preview,
+    const data = await getDataReturn({
+      data: await getCatchAll({
+        cache,
+        catchAll,
+        clear,
+        pathVariables,
+        preview,
+      }),
+      pathVariables: {
+        ...pathVariables,
+        images,
+      },
     })
 
-    res.status(200).json(data)
+    res.status(200).json({ ...data })
   } catch (e) {
     // eslint-disable-next-line no-console
     console.log(e)

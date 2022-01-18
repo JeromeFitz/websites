@@ -1,12 +1,11 @@
 // import { useEffect, useState } from 'react'
-import getPathVariables from '@jeromefitz/notion/queries/getPathVariables'
 import useSWR from 'swr'
 
 import { Page, PageHeading, SkeletonHeading } from '~components/Layout'
-import { notionConfig } from '~config/websites'
 import { revalidate, ERROR__FALLBACK } from '~lib/constants'
 import fetcher from '~lib/fetcher'
 import getCatchAll from '~lib/notion/getCatchAll'
+import { notion } from '~lib/notion/helper'
 import getNextPageStatus from '~utils/getNextPageStatus'
 
 const CatchAll = (props) => {
@@ -67,7 +66,7 @@ export const getStaticProps = async ({ preview = false, ...props }) => {
   // const { catchAll } = props.params
   const catchAll = ['kitchen-sink']
   const clear = false
-  const pathVariables = getPathVariables({ config: notionConfig, catchAll })
+  const pathVariables = notion.custom.getPathVariables({ catchAll })
   /**
    * @cache
    */

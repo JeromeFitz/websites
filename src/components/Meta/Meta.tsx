@@ -31,9 +31,11 @@ const { NOTION } = notionConfig
 // console.dir(PROPERTIES)
 
 const rollupExclude = [
-  PROPERTIES.rollupShows__People_Cast_Slug.key,
   // PROPERTIES.rollupEvents__People_Guest_Music.key,
+  PROPERTIES.rollupEvents__Shows.key,
   PROPERTIES.rollupEvents__Venues.key,
+  PROPERTIES.rollupShows__People_Cast_Slug.key,
+  PROPERTIES.rollupShows__Tags.key,
 ]
 
 const Meta = ({ data, routeType }) => {
