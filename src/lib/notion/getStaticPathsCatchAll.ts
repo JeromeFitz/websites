@@ -92,7 +92,7 @@ const getStaticPathsCatchAll = async () => {
       /**
        * @hack(notion) handle `episodes` separately
        */
-      if (routeType !== 'episodes') paths.push(`/${routeType}`)
+      if (routeType !== 'episodes') paths.push(`/${routeType.toLowerCase()}`)
 
       const catchAll = [routeType]
       const pathVariables = notion.custom.getPathVariables({
@@ -106,7 +106,10 @@ const getStaticPathsCatchAll = async () => {
         preview: false,
       })
       const items = data?.items?.results
-      const slugs = getStaticPathsDefault({ items, routeType })
+      const slugs = getStaticPathsDefault({
+        items,
+        routeType: routeType.toLowerCase(),
+      })
       paths.push(...slugs)
     }).catch(_noop)
   }

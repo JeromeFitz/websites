@@ -12,7 +12,7 @@ const getDataReturn = async ({ data, pathVariables }) => {
    */
   let images = !!data?.images ? {} : data?.images
   // if (_isEmpty(data?.images) || _size(data?.images) === 0) {
-  console.dir(`> ${pathVariables.url}: getImages`)
+  // console.dir(`> ${pathVariables.url}: getImages`)
   const { getImages } = await import('~lib/notion/getImages')
   images = await getImages({ data, pathVariables })
   // }
