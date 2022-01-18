@@ -1,5 +1,5 @@
-import SpotifyApi from '@jeromefitz/spotify'
-import type { QueryProps as _QueryProps, SpotifyApiProps } from '@jeromefitz/spotify'
+import Client from '@jeromefitz/spotify'
+import type { CredentialProps, ClientProps } from '@jeromefitz/spotify'
 
 const {
   SPOTIFY_CLIENT_ID: clientId,
@@ -7,25 +7,17 @@ const {
   SPOTIFY_REFRESH_TOKEN: refreshToken,
 } = process.env
 
-const credentials = {
+const credentials: CredentialProps = {
   clientId,
   clientSecret,
   refreshToken,
 }
 
-const SPOTIFY: SpotifyApiProps = new SpotifyApi()
-SPOTIFY.setCredentials(credentials)
-
-interface QueryProps extends _QueryProps {
-  slug: 'now-playing' | 'top-artists' | 'top-tracks'
-}
-interface ReqProps {
-  query: QueryProps
-}
+const spotify: ClientProps = new Client({ accessToken: '', ...credentials })
 
 const spotifyApi = async (
-  { query: { limit = 10, offset = 10, slug, time_range = 'medium_term' } }: ReqProps,
-  res
+  { query: { limit = 10, offset = 0, slug, time_range = 'medium_term' } }: any,
+  res: any
 ) => {
   /**
    * @vars
@@ -34,10 +26,10 @@ const spotifyApi = async (
   let data: any
   switch (slug) {
     case 'now-playing':
-      data = await SPOTIFY.getNowPlaying({ withImages: true })
+      data = await spotify.get.nowPlaying({ withImages: true })
       break
     case 'top-artists':
-      data = await SPOTIFY.getTopArtists({
+      data = await spotify.get.topArtists({
         limit,
         offset,
         time_range,
@@ -45,7 +37,7 @@ const spotifyApi = async (
       })
       break
     case 'top-tracks':
-      data = await SPOTIFY.getTopTracks({
+      data = await spotify.get.topTracks({
         limit,
         offset,
         time_range,
@@ -57,7 +49,7 @@ const spotifyApi = async (
       break
   }
 
-  // @hack(spotify)
+  // @hack(spotify) lol, error handling, wut
   if (data?.status === 204 || data?.status > 400) {
     return res?.status(200).json({ is_playing: false })
   }

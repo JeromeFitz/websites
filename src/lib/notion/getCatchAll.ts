@@ -1,4 +1,3 @@
-import getImages from '@jeromefitz/notion/utils/getImages'
 import _filter from 'lodash/filter'
 
 import { nextWeirdRoutingSkipData } from '~lib/constants'
@@ -67,8 +66,11 @@ const getCatchAll = async ({
 
     data = { info, content, items, images }
 
+    /**
+     * @refactor
+     */
     if (retrieveImages && !images) {
-      const images = !!data ? await getImages({ data, pathVariables }) : {}
+      const images = {}
       data = { ...data, images }
     }
 

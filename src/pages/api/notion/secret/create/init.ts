@@ -1,4 +1,5 @@
 import { INIT } from '@jeromefitz/notion/constants'
+import { asyncForEach } from '@jeromefitz/utils'
 import _find from 'lodash/find'
 import _map from 'lodash/map'
 import _noop from 'lodash/noop'
@@ -6,7 +7,6 @@ import _startsWith from 'lodash/startsWith'
 import { NextApiRequest, NextApiResponse } from 'next'
 import _title from 'title'
 
-import asyncForEach from '~lib/asyncForEach'
 import createDatabase from '~lib/notion/api/createDatabase'
 import getDatabasesById from '~lib/notion/api/getDatabasesById'
 import updateDatabase from '~lib/notion/api/updateDatabase'

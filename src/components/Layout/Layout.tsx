@@ -21,7 +21,7 @@ const Layout = ({ id, children, properties, routeType, url }) => {
     title,
   } = properties
 
-  // @todo(external)
+  // @todo(external) first key is image slug
   const seoImageSlug = Object.keys(seoImage)[0] || ''
   const seoImageData = !!images && images[seoImageSlug]
   const seoUrl = `https://jeromefitzgerald.com/${!!url ? url : ''}`
