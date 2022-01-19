@@ -1,7 +1,3 @@
-import { lpad, rangeMap } from '@jeromefitz/utils'
-import _map from 'lodash/map'
-import _title from 'title'
-
 import {
   Badge,
   Box,
@@ -15,6 +11,9 @@ import {
   Spacer,
   Text,
 } from '@jeromefitz/design-system/components'
+import { lpad, rangeMap } from '@jeromefitz/utils'
+import _map from 'lodash/map'
+import _title from 'title'
 
 import { PageHeading } from '~components/Layout'
 import { ImageWithBackgroundBlur } from '~components/Layout/ImageLead'

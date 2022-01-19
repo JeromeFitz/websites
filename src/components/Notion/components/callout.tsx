@@ -1,11 +1,10 @@
+import { Box, Emoji, Flex, Text } from '@jeromefitz/design-system/components'
 import _size from 'lodash/size'
-import dynamic from 'next/dynamic'
-
-import { Box, Flex, Text } from '@jeromefitz/design-system/components'
+// import dynamic from 'next/dynamic'
 
 import getContentTypeDetail from '../utils/getContentTypeDetail'
 
-const Emoji = dynamic(() => import('~components/Emoji'), {})
+// const Emoji = dynamic(() => import('@jeromefitz/design-system/components'), {})
 
 const callout = ({ content, id }) => {
   if (_size(content) > 0) {

@@ -1,11 +1,10 @@
+import { ButtonIcon } from '@jeromefitz/design-system/components'
+import { darkTheme } from '@jeromefitz/design-system/stitches.config'
 import { MoonIcon, SunIcon } from '@radix-ui/react-icons'
 import Mousetrap from 'mousetrap'
 import { useTheme } from 'next-themes'
 import { useCallback, useEffect } from 'react'
 import { useSound } from 'use-sound'
-
-import { ButtonIcon } from '@jeromefitz/design-system/components'
-import { darkTheme } from '@jeromefitz/design-system/stitches.config'
 
 import {
   Tooltip,

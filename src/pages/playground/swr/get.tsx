@@ -1,6 +1,5 @@
-import { useEffect, useRef, useState } from 'react'
-
 import { Box, Text } from '@jeromefitz/design-system/components'
+import { useEffect, useRef, useState } from 'react'
 
 import { PageHeading } from '~components/Layout'
 import useOnScreen from '~hooks/useOnScreen'

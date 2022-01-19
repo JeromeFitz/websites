@@ -1,7 +1,6 @@
+import { styled } from '@jeromefitz/design-system/stitches.config'
 import { useComposedRefs } from '@radix-ui/react-compose-refs'
 import * as React from 'react'
-
-import { styled } from '@jeromefitz/design-system/stitches.config'
 
 const StyledFocusArea = styled('div', {
   outline: 0,
@@ -15,10 +14,11 @@ const StyledFocusArea = styled('div', {
 })
 
 const FocusArea = React.forwardRef<
-  HTMLDivElement,
+  any, // HTMLDivElement, // @todo(types)
   React.ComponentProps<typeof StyledFocusArea>
 >(({ children, onKeyDown, ...props }, forwardedRef) => {
-  const ownRef = React.useRef<HTMLDivElement>(null)
+  // const ownRef = React.useRef<HTMLDivElement>(null)
+  const ownRef = React.useRef<any>(null)
   const composedRef = useComposedRefs(ownRef, forwardedRef)
 
   const entryProps = {
@@ -53,9 +53,13 @@ const FocusArea = React.forwardRef<
           // const tier3 = 'div.afc'
 
           // Search for tier 1 and tier 2 elements, prioritising
-          const elementToFocus = [
-            event.currentTarget.querySelector<HTMLElement>(tier1),
-            event.currentTarget.querySelector<HTMLElement>(tier2),
+          const elementToFocus: any = [
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            event?.currentTarget.querySelector<HTMLElement>(tier1),
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            event?.currentTarget.querySelector<HTMLElement>(tier2),
             // event.currentTarget.querySelector<HTMLElement>(tier3),
           ].filter((el) => Boolean(el))[0]
 

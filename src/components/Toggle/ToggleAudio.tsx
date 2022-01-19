@@ -1,9 +1,8 @@
+import { ButtonIcon } from '@jeromefitz/design-system/components'
 import { SpeakerOffIcon, SpeakerModerateIcon } from '@radix-ui/react-icons'
 import Mousetrap from 'mousetrap'
 import { useCallback, useEffect } from 'react'
 import { useSound } from 'use-sound'
-
-import { ButtonIcon } from '@jeromefitz/design-system/components'
 
 import {
   Tooltip,

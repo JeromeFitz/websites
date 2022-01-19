@@ -1,14 +1,18 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 require('dotenv').config({ path: './.env.build' })
+const path = require('path')
+
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
 const { withPlaiceholder } = require('@plaiceholder/next')
 const { withPlugins } = require('next-compose-plugins')
+const withTM = require('next-transpile-modules')(['@jeromefitz/design-system'])
 
 // const withPWA = require('next-pwa')
 
 // const getRedirects = require('./config/notion/website/getRedirects')
+const isLocal = process.env.DESIGN_SYSTEM__LINK || true
 
 if (!process.env.NEXT_PUBLIC__SITE) {
   throw new Error('process.env.NEXT_PUBLIC__SITE is not set in env')
@@ -150,6 +154,30 @@ const nextConfig = {
     //     fs: 'empty',
     //   }
     // }
+    if (isLocal) {
+      console.debug(`warn  - [@note]
+warn  - yarn link:
+warn  - -  🖼️  @jeromefitz/design-system
+warn  -`)
+      if (isServer) {
+        config.externals = ['react', 'react-hot-toast', ...config.externals]
+      }
+
+      config.resolve.alias['react'] = path.resolve(
+        __dirname,
+        '.',
+        'node_modules',
+        'react'
+      )
+
+      config.resolve.alias['react-hot-toast'] = path.resolve(
+        __dirname,
+        '.',
+        'node_modules',
+        'react-hot-toast'
+      )
+    }
+
     return config
   },
 }
@@ -173,6 +201,7 @@ module.exports = withPlugins(
     //     },
     //   }),
     // ],
+    [withTM],
   ],
   nextConfig
 )

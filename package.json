@@ -87,6 +87,7 @@
     "ms": "3.0.0-canary.1",
     "next": "12.0.8",
     "next-seo": "4.28.1",
+    "next-transpile-modules": "9.0.0",
     "next-themes": "0.0.15",
     "node-emoji": "1.11.0",
     "nprogress": "0.2.0",
@@ -134,7 +135,6 @@
   },
   "next-unused": {
     "alias": {
-      "@jeromefitz/design-system": "src/styles/system/",
       "~components": "src/components/",
       "~config": "src/config/",
       "~context": "src/context/",

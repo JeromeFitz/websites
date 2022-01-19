@@ -1,12 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { ExternalLinkIcon } from '@radix-ui/react-icons'
-import _find from 'lodash/find'
-import _map from 'lodash/map'
-import _size from 'lodash/size'
-// import dynamic from 'next/dynamic'
-import React, { useState } from 'react'
-import { useSound } from 'use-sound'
-
 import {
   Box,
   // Container,
@@ -20,21 +12,19 @@ import {
   Section,
   Text,
 } from '@jeromefitz/design-system/components'
+import { ExternalLinkIcon } from '@radix-ui/react-icons'
+import _find from 'lodash/find'
+import _map from 'lodash/map'
+import _size from 'lodash/size'
+// import dynamic from 'next/dynamic'
+import React, { useState } from 'react'
+import { useSound } from 'use-sound'
 
 import { PageHeading } from '~components/Layout'
 import { Top, YearInReview } from '~components/Music'
 import Seo from '~components/Seo'
 import { useUI } from '~context/ManagedUI'
 import useSpotify from '~hooks/useSpotify'
-
-// import {
-//   spotifyFavoriteAlbums,
-//   spotifyFavoriteArtists,
-// } from '~lib/spotify/favorites'
-
-// const Emoji = dynamic(() => import('~components/Emoji'), {
-//   ssr: false,
-// })
 
 const plans = [
   {

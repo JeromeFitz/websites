@@ -1,11 +1,4 @@
 // import { BigHead } from '@bigheads/core'
-import { motion } from 'framer-motion'
-import { useState } from 'react'
-import { toast } from 'react-hot-toast'
-import _title from 'title'
-import { useSound } from 'use-sound'
-import { v4 as uuid } from 'uuid'
-
 import {
   Box,
   // Container,
@@ -18,18 +11,22 @@ import {
   Section,
   Switch,
   Text,
-} from '@jeromefitz/design-system/components'
-import { DemoButton } from '@jeromefitz/design-system/components/Button/DemoButton'
-import {
-  ToastData,
-  ToastType,
+  ButtonDemo,
   useToastDispatchers,
-} from '@jeromefitz/design-system/components/Toast'
+  AlertDialog,
+} from '@jeromefitz/design-system/components'
+import type { ToastData, ToastType } from '@jeromefitz/design-system/components'
 import { styled } from '@jeromefitz/design-system/stitches.config'
+import { motion } from 'framer-motion'
+import { useState } from 'react'
+import { toast } from 'react-hot-toast'
+import _title from 'title'
+import { useSound } from 'use-sound'
+import { v4 as uuid } from 'uuid'
 
-import { Dialog } from '~components/Alert'
 import { PageHeading } from '~components/Layout'
 import Seo from '~components/Seo'
+// import { ToastData, ToastType, useToastDispatchers } from '~components/Toast'
 import { useUI } from '~context/ManagedUI'
 import { Media } from '~context/Media'
 // import { BIG_HEAD_PROPS } from '~lib/constants'
@@ -117,7 +114,7 @@ const WavingHand = () => (
   </motion.div>
 )
 
-const PlaygroundDialog = () => {
+const PlaygroundAlertDialog = () => {
   const dialogText = {
     dialogTrigger: 'Trigger Alert',
     //
@@ -129,7 +126,7 @@ const PlaygroundDialog = () => {
   }
   return (
     <Box css={{ my: '$5' }}>
-      <Dialog dialogText={dialogText} />
+      <AlertDialog dialogText={dialogText} />
     </Box>
   )
 }
@@ -202,6 +199,7 @@ const PlaygroundToast = () => {
   }
 
   const handleHotToast = () => {
+    // console.dir(`handleHotToast please`)
     notify()
   }
 
@@ -240,7 +238,7 @@ const PlaygroundToast = () => {
           <Label>Set Text</Label>
           {Object.keys(mockMessages).map((v) => {
             return (
-              <DemoButton
+              <ButtonDemo
                 key={`db-${v}`}
                 onClick={() => {
                   setTextSet(v)
@@ -252,7 +250,7 @@ const PlaygroundToast = () => {
                 css={{ ml: '$2' }}
               >
                 {v}
-              </DemoButton>
+              </ButtonDemo>
             )
           })}
         </Fieldset>
@@ -288,7 +286,7 @@ const PlaygroundToast = () => {
         </Fieldset>
         <Fieldset>
           <Label htmlFor="name">Radix Toast</Label>
-          <DemoButton
+          <ButtonDemo
             onClick={() => {
               handleToast()
             }}
@@ -298,11 +296,11 @@ const PlaygroundToast = () => {
             }}
           >
             Create
-          </DemoButton>
+          </ButtonDemo>
         </Fieldset>{' '}
         <Fieldset>
           <Label htmlFor="name">Hot Toast</Label>
-          <DemoButton
+          <ButtonDemo
             variant="gray"
             onClick={() => {
               handleHotToast()
@@ -313,7 +311,7 @@ const PlaygroundToast = () => {
             }}
           >
             Create
-          </DemoButton>
+          </ButtonDemo>
         </Fieldset>
       </Section>
     </Box>
@@ -408,7 +406,7 @@ const Playground = () => {
           </Media>
         </>
       </h4>
-      <PlaygroundDialog />
+      <PlaygroundAlertDialog />
       <PlaygroundToast />
       <PlaygroundAvatar />
     </>

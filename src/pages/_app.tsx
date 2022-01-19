@@ -1,5 +1,11 @@
 import '~styles/chrome.css'
 
+import {
+  Container,
+  Section,
+  ToastProvider,
+} from '@jeromefitz/design-system/components'
+import { globalCss, darkTheme } from '@jeromefitz/design-system/stitches.config'
 import { ThemeProvider } from 'next-themes'
 import type { AppProps, NextWebVitalsMetric } from 'next/app'
 import Head from 'next/head'
@@ -7,13 +13,10 @@ import pluralize from 'pluralize'
 import { useEffect } from 'react'
 import { SWRConfig } from 'swr'
 
-import { Container, Section } from '@jeromefitz/design-system/components'
-import { ToastProvider } from '@jeromefitz/design-system/components/Toast'
-import { globalCss, darkTheme } from '@jeromefitz/design-system/stitches.config'
-
 import Footer from '~components/Footer'
 import Header from '~components/Header'
 import NProgress from '~components/NProgress'
+// import { ToastProvider } from '~components/Toast'
 import { ManagedUIContext } from '~context/ManagedUI'
 import { MediaContextProvider } from '~context/Media'
 import { useAnalytics } from '~lib/analytics'

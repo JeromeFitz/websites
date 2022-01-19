@@ -1,9 +1,8 @@
+import { Box } from '@jeromefitz/design-system/components'
+import { keyframes } from '@jeromefitz/design-system/stitches.config'
 import Slugger from 'github-slugger'
 import _size from 'lodash/size'
 import NextImage from 'next/image'
-
-import { Box } from '@jeromefitz/design-system/components'
-import { keyframes } from '@jeromefitz/design-system/stitches.config'
 
 import ImageCaption from '~components/ImageCaption'
 import { IMAGE__PLACEHOLDER } from '~lib/constants'

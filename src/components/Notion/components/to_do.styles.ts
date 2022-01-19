@@ -1,6 +1,5 @@
-import * as CheckboxPrimitive from '@radix-ui/react-checkbox'
-
 import { darkTheme, styled } from '@jeromefitz/design-system/stitches.config'
+import * as CheckboxPrimitive from '@radix-ui/react-checkbox'
 
 const StyledCheckbox = styled(CheckboxPrimitive.Root, {
   all: 'unset',

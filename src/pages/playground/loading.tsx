@@ -1,6 +1,5 @@
-import { useState } from 'react'
-
 import { Separator } from '@jeromefitz/design-system/components'
+import { useState } from 'react'
 
 import { PageHeading, SkeletonHeading } from '~components/Layout'
 

@@ -1,10 +1,4 @@
 import { TagIcon } from '@heroicons/react/outline'
-import { ArrowLeftIcon, ArrowRightIcon } from '@radix-ui/react-icons'
-import _map from 'lodash/map'
-import _size from 'lodash/size'
-import React, { useEffect, useRef, useState } from 'react'
-import _title from 'title'
-
 import {
   Box,
   Carousel,
@@ -20,6 +14,11 @@ import {
 } from '@jeromefitz/design-system/components'
 import { HeroImage } from '@jeromefitz/design-system/components/Hero/HeroImage'
 import { darkTheme, styled } from '@jeromefitz/design-system/stitches.config'
+import { ArrowLeftIcon, ArrowRightIcon } from '@radix-ui/react-icons'
+import _map from 'lodash/map'
+import _size from 'lodash/size'
+import React, { useEffect, useRef, useState } from 'react'
+import _title from 'title'
 
 import { CarouselArrowButton, GrabBox, FocusArea } from '~components/Carousel'
 import { Breakout } from '~components/Container'
@@ -438,7 +437,11 @@ const TopItem = ({ type }) => {
                   <CarouselSlide key={`ta-${i}`}>
                     <FocusArea
                       aria-label={_title1}
+                      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                      // @ts-ignore
                       onKeyDown={onFocusAreaKeyDown}
+                      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                      // @ts-ignore
                       onFocus={onFocusAreaFocus}
                       data-focus-area-type={type}
                       {...focusAreas}
@@ -561,6 +564,8 @@ const TopItem = ({ type }) => {
               })}
               <div ref={ref} />
               <CarouselSlide>
+                {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+                {/* @ts-ignore */}
                 <FocusArea onKeyDown={onFocusAreaKeyDown} onFocus={onFocusAreaFocus}>
                   <SlideContainer
                     css={{

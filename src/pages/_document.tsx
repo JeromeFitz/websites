@@ -1,3 +1,4 @@
+import { getCssText, reset } from '@jeromefitz/design-system/stitches.config'
 import _map from 'lodash/map'
 import Document, {
   DocumentContext,
@@ -6,8 +7,6 @@ import Document, {
   Main,
   NextScript,
 } from 'next/document'
-
-import { getCssText, reset } from '@jeromefitz/design-system/stitches.config'
 
 import { mediaStyles } from '~context/Media'
 // import { info, fontFace } from '~styles/fonts/F37Bella'

@@ -1,3 +1,11 @@
+import {
+  Box,
+  Flex,
+  Grid,
+  Heading,
+  Paragraph,
+  Text,
+} from '@jeromefitz/design-system/components'
 import { PROPERTIES } from '@jeromefitz/notion/constants'
 import type { Show } from '@jeromefitz/notion/schema'
 import getTitle from '@jeromefitz/notion/utils/getTitle'
@@ -7,15 +15,6 @@ import _size from 'lodash/size'
 import _startsWith from 'lodash/startsWith'
 import pluralize from 'pluralize'
 import useSWRImmutable from 'swr/immutable'
-
-import {
-  Box,
-  Flex,
-  Grid,
-  Heading,
-  Paragraph,
-  Text,
-} from '@jeromefitz/design-system/components'
 
 import { notionConfig } from '~config/websites'
 import fetcher from '~lib/fetcher'

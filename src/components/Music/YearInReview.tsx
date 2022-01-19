@@ -1,20 +1,19 @@
-import { ExternalLinkIcon } from '@radix-ui/react-icons'
-import Slugger from 'github-slugger'
-import _map from 'lodash/map'
-import { Fragment } from 'react'
-import _title from 'title'
-
 import {
   Badge,
   Box,
+  CardSpotify,
   Flex,
   Heading,
   Link,
   Paragraph,
   Separator,
 } from '@jeromefitz/design-system/components'
-import { CardSpotify } from '@jeromefitz/design-system/components/Card/Spotify'
 import { styled } from '@jeromefitz/design-system/stitches.config'
+import { ExternalLinkIcon } from '@radix-ui/react-icons'
+import Slugger from 'github-slugger'
+import _map from 'lodash/map'
+import { Fragment } from 'react'
+import _title from 'title'
 
 import TextAnnotations from '~components/Notion/utils/TextAnnotations'
 import { wrapped2020, wrapped2021 } from '~data/spotify'
