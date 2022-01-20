@@ -1,10 +1,9 @@
+import { Flex, Link, EmojiParser } from '@jeromefitz/design-system/components'
 import { ExternalLinkIcon } from '@radix-ui/react-icons'
 import NextLink from 'next/link'
+import * as React from 'react'
 import { useSound } from 'use-sound'
 
-import { Flex, Link } from '@jeromefitz/design-system/components'
-
-import { EmojiParser } from '~components/Emoji'
 import { nextSeo } from '~config/websites'
 import { useUI } from '~context/ManagedUI'
 import getNextLink from '~utils/getNextLink'

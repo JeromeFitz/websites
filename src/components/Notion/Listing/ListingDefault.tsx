@@ -1,5 +1,3 @@
-import NextLink from 'next/link'
-
 import {
   Badge,
   Box,
@@ -8,6 +6,7 @@ import {
   Note,
   Paragraph,
 } from '@jeromefitz/design-system/components'
+import NextLink from 'next/link'
 
 const Item = ({ item }) => {
   // console.dir(`>> Item`)

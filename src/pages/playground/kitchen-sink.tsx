@@ -1,7 +1,8 @@
-// import { useEffect, useState } from 'react'
+// import* as React from 'react'
+import { PageHeading, SkeletonHeading } from '@jeromefitz/design-system/components'
 import useSWR from 'swr'
 
-import { Page, PageHeading, SkeletonHeading } from '~components/Layout'
+import { Page } from '~components/Layout'
 import { revalidate, ERROR__FALLBACK } from '~lib/constants'
 import fetcher from '~lib/fetcher'
 import getCatchAll from '~lib/notion/getCatchAll'
@@ -29,8 +30,8 @@ const CatchAll = (props) => {
   /**
    * @info Odd behavior, but if listing page we need data swapped
    */
-  // const [mounted, setMounted] = useState(true)
-  // useEffect(() => setMounted(false), [])
+  // const [mounted, setMounted] = React.useState(true)
+  // React.useEffect(() => setMounted(false), [])
   const { data, error } = useSWR(
     () => (!!slug ? `/api/notion/${slug}` : null),
     // () => (!!slug ? `/api/notion/${slug}?cache=${mounted}` : null),

@@ -6,18 +6,6 @@ import {
   // TicketIcon,
 } from '@heroicons/react/outline'
 import {
-  CalendarIcon,
-  ClockIcon,
-  // DotIcon,
-  // PlusCircledIcon,
-  // MinusCircledIcon,
-} from '@radix-ui/react-icons'
-import { parseISO } from 'date-fns'
-import { format } from 'date-fns-tz'
-import _map from 'lodash/map'
-import _union from 'lodash/union'
-
-import {
   Box,
   ButtonMarketing,
   // Container,
@@ -29,6 +17,17 @@ import {
   // Section,
   // Text,
 } from '@jeromefitz/design-system/components'
+import {
+  CalendarIcon,
+  ClockIcon,
+  // DotIcon,
+  // PlusCircledIcon,
+  // MinusCircledIcon,
+} from '@radix-ui/react-icons'
+import { parseISO } from 'date-fns'
+import { format } from 'date-fns-tz'
+import _map from 'lodash/map'
+import _union from 'lodash/union'
 
 import { TAGS } from '~config/websites'
 

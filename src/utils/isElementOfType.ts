@@ -4,6 +4,8 @@
  * @param {React.ComponentType<P>} ComponentType
  * @returns {boolean}
  */
+import * as React from 'react'
+
 // eslint-disable-next-line @typescript-eslint/ban-types
 export function isElementOfType<P = {}>(
   element: unknown,

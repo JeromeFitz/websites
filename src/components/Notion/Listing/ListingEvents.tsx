@@ -1,4 +1,15 @@
 import { LocationMarkerIcon, TagIcon } from '@heroicons/react/outline'
+import {
+  Box,
+  ButtonMarketing,
+  // Container,
+  Flex,
+  Grid,
+  Heading,
+  Paragraph,
+  Section,
+} from '@jeromefitz/design-system/components'
+import { styled } from '@jeromefitz/design-system/stitches.config'
 import { ArrowRightIcon, ClockIcon } from '@radix-ui/react-icons'
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
 import { getDate, getDay, getMonth, getYear, parseISO } from 'date-fns'
@@ -12,18 +23,6 @@ import _uniqWith from 'lodash/uniqWith'
 import dynamic from 'next/dynamic'
 import NextLink from 'next/link'
 import * as React from 'react'
-
-import {
-  Box,
-  ButtonMarketing,
-  // Container,
-  Flex,
-  Grid,
-  Heading,
-  Paragraph,
-  Section,
-} from '@jeromefitz/design-system/components'
-import { styled } from '@jeromefitz/design-system/stitches.config'
 
 import { TAGS } from '~config/websites'
 import { notion } from '~lib/notion/helper'

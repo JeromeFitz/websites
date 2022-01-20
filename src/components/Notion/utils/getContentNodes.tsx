@@ -1,5 +1,3 @@
-// import Slugger from 'github-slugger'
-// import _filter from 'lodash/filter'
 import type { NotionBlock } from '@jeromefitz/notion/schema'
 import _map from 'lodash/map'
 import { v4 as uuid } from 'uuid'
@@ -17,23 +15,6 @@ import getContentType from './getContentType'
  *
  */
 function getContentNodes({ content, images }) {
-  /**
-   * @images
-   */
-  // const slugger = new Slugger()
-  // const nodesImages = _filter(content.results, { type: 'image' })
-  // const nodesImagesSlugs = _map(nodesImages, (node) => ({
-  //   slug: slugger.slug(node?.image?.external?.url),
-  //   url: node?.image?.external?.url,
-  // }))
-  // console.dir(`nodesImages`)
-  // console.dir(nodesImages)
-  // console.dir(`nodesImagesSlugs`)
-  // console.dir(nodesImagesSlugs)
-
-  /**
-   * @nodes
-   */
   let listCurrentId = ''
   let listCurrentState = false
   const nodes = {}
@@ -45,8 +26,6 @@ function getContentNodes({ content, images }) {
         contentItem?.type === 'bulleted_list_item' ||
         contentItem?.type === 'numbered_list_item'
       ) {
-        // console.dir(`> contentItem`)
-        // console.dir(contentItem)
         if (!listCurrentState) {
           listCurrentId = uuid()
           nodes[listCurrentId] = {
@@ -61,8 +40,6 @@ function getContentNodes({ content, images }) {
       } else {
         listCurrentState = false
       }
-      // console.dir(`> contentItem`)
-      // console.dir(contentItem)
       nodes[contentItem?.id] = {
         id: contentItem?.id,
         type: contentItem?.type,
@@ -70,9 +47,6 @@ function getContentNodes({ content, images }) {
       }
     }
   )
-
-  // console.dir(`nodes`)
-  // console.dir(nodes)
 
   return nodes
 }

@@ -1,4 +1,21 @@
 import {
+  Avatar,
+  Box,
+  BoxLink,
+  Flex,
+  Grid,
+  Link,
+  Paragraph,
+  Separator,
+  Text,
+} from '@jeromefitz/design-system/components'
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+  TooltipArrow,
+} from '@jeromefitz/design-system/custom/Tooltip'
+import {
   ExternalLinkIcon,
   // ChatBubbleIcon,
   GitHubLogoIcon,
@@ -9,27 +26,9 @@ import {
 } from '@radix-ui/react-icons'
 import dynamic from 'next/dynamic'
 import NextLink from 'next/link'
-import { memo } from 'react'
+import * as React from 'react'
 
-import {
-  Avatar,
-  Box,
-  Flex,
-  Grid,
-  Link,
-  Paragraph,
-  Separator,
-  Text,
-} from '@jeromefitz/design-system/components'
-
-import BoxLink from '~components/BoxLink'
 import IconLink from '~components/IconLink'
-import {
-  Tooltip,
-  TooltipTrigger,
-  TooltipContent,
-  TooltipArrow,
-} from '~components/Tooltip'
 
 const NowPlayingWithNoSSR = dynamic(() => import('~components/NowPlaying'), {
   ssr: false,
@@ -136,6 +135,7 @@ const LinkFooter = ({ url, title, tooltip, tooltipContent }) => {
 }
 
 const FooterImpl = () => {
+  const ref = React.useRef()
   return (
     <>
       <Box css={{ width: '100%', my: '$6' }}>
@@ -321,6 +321,7 @@ const FooterImpl = () => {
                     aria-describedby="logoFooter"
                     variant="violet"
                     border="solid"
+                    ref={ref}
                   />
                   <Box id="logoFooter">
                     <Paragraph css={{ fontWeight: 700 }}>Jerome</Paragraph>
@@ -351,6 +352,6 @@ const FooterImpl = () => {
   )
 }
 
-const Footer = memo(FooterImpl)
+const Footer = React.memo(FooterImpl)
 
 export default Footer

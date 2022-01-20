@@ -1,7 +1,3 @@
-import _map from 'lodash/map'
-import NextLink from 'next/link'
-import * as React from 'react'
-
 import {
   Badge,
   Box,
@@ -9,8 +5,10 @@ import {
   Paragraph,
   Spacer,
   Text,
+  CardOuter,
+  ImageBlur,
+  Card,
 } from '@jeromefitz/design-system/components'
-import { Card } from '@jeromefitz/design-system/components/Card'
 import {
   css_card,
   CardContent,
@@ -19,10 +17,9 @@ import {
   CardMeta,
   CardTitle,
 } from '@jeromefitz/design-system/components/Card/Show'
-import {
-  CardOuter,
-  ImageBlur,
-} from '@jeromefitz/design-system/components/Card/Spotify'
+import _map from 'lodash/map'
+import NextLink from 'next/link'
+import * as React from 'react'
 
 import { Breakout } from '~components/Container'
 import { ImageWithBackgroundBlur } from '~components/Layout/ImageLead'

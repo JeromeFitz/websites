@@ -1,6 +1,5 @@
-import { CheckIcon } from '@radix-ui/react-icons'
-
 import { Flex } from '@jeromefitz/design-system/components'
+import { CheckIcon } from '@radix-ui/react-icons'
 
 import { Checkbox, CheckboxIndicator, CheckboxLabel } from './to_do.styles'
 

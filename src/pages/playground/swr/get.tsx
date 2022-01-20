@@ -1,8 +1,6 @@
-import { useEffect, useRef, useState } from 'react'
+import { Box, Text, PageHeading } from '@jeromefitz/design-system/components'
+import * as React from 'react'
 
-import { Box, Text } from '@jeromefitz/design-system/components'
-
-import { PageHeading } from '~components/Layout'
 import useOnScreen from '~hooks/useOnScreen'
 import useSWRInfinitePages from '~hooks/useSWRInfinitePages'
 import fetcher from '~lib/fetcher'
@@ -34,9 +32,9 @@ const SwrPage = () => {
   /**
    * @vars
    */
-  const ref = useRef()
+  const ref = React.useRef()
   const isVisible = useOnScreen(ref)
-  const [total, totalSet] = useState(0)
+  const [total, totalSet] = React.useState(0)
   // const [totalRange, totalRangeSet] = useState(spotifyRange(total))
   // const [canFetchMoreSpotify, canFetchMoreSpotifySet] = useState(false)
   /**
@@ -65,12 +63,12 @@ const SwrPage = () => {
     revalidateFirstPage: false,
   })
 
-  useEffect(() => {
+  React.useEffect(() => {
     !isLoadingInitialData && totalSet(pages[0]?.total)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoadingInitialData])
 
-  useEffect(() => {
+  React.useEffect(() => {
     /**
      * @hack override for `canFetchMore`
      * @spotify !!next => you can fetch more

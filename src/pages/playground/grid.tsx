@@ -1,7 +1,3 @@
-import { lpad, rangeMap } from '@jeromefitz/utils'
-import _map from 'lodash/map'
-import _title from 'title'
-
 import {
   Badge,
   Box,
@@ -14,9 +10,12 @@ import {
   Skeleton,
   Spacer,
   Text,
+  PageHeading,
 } from '@jeromefitz/design-system/components'
+import { lpad, rangeMap } from '@jeromefitz/utils'
+import _map from 'lodash/map'
+import _title from 'title'
 
-import { PageHeading } from '~components/Layout'
 import { ImageWithBackgroundBlur } from '~components/Layout/ImageLead'
 // import { IMAGE__PLACEHOLDER } from '~lib/constants'
 import { artists, tracks } from '~data/mock/spotify/top10'
