@@ -1071,10 +1071,10 @@
     isomorphic-unfetch "3.1.0"
     plaiceholder "2.2.0"
 
-"@jeromefitz/utils@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/utils/-/utils-1.0.0.tgz#f4c7d15f1b27a2c28572cd23c508a508bbcbe208"
-  integrity sha512-FfKOeR7HPl7fr4cs01NRw852kw547FW0ujald/IeEd0aLbuAW/HsYXTwUzpPZ7xYvGJe57wDXoAxppKr+5ByvQ==
+"@jeromefitz/utils@1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/utils/-/utils-1.0.1.tgz#50673f01c35f32421e15d4935eb82422313f60c9"
+  integrity sha512-/JjEN/AtAWmSRdXUvZXvYG02p4B0UQc26fKaXouQ6JDvSRh3V/RbFrdIBZGfR83cUxN/4MxjaFT7ZhzBkzHA0w==
   dependencies:
     lodash "4.17.21"
 
