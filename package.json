@@ -35,7 +35,7 @@
     "branch": "git-cz -m branch --allow-empty",
     "find:unused": "next-unused",
     "--------": "",
-    "test": "jest"
+    "test": "echo # jest"
   },
   "dependencies": {
     "@artsy/fresnel": "3.2.1",
@@ -107,6 +107,7 @@
     "uuid": "8.3.2"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "7.16.5",
     "@jeromefitz/codestyle": "8.0.2",
     "@jeromefitz/git-cz": "14.0.2",
     "@jeromefitz/semantic": "8.0.3",
