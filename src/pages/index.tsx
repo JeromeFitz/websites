@@ -1,6 +1,7 @@
+import { PageHeading, SkeletonHeading } from '@jeromefitz/design-system/components'
 import useSWR from 'swr'
 
-import { Page, PageHeading, SkeletonHeading } from '~components/Layout'
+import { Page } from '~components/Layout'
 import ListingShows from '~components/Notion/Listing/ListingShows'
 import { notionConfig } from '~config/websites'
 import mockData from '~data/mock/notion/shows'

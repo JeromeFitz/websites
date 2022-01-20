@@ -6,6 +6,7 @@ import {
   Heading,
   Link,
   Note,
+  PageHeading,
   Paragraph,
   RadioCard,
   RadioCardGroup,
@@ -20,7 +21,6 @@ import _size from 'lodash/size'
 import React, { useState } from 'react'
 import { useSound } from 'use-sound'
 
-import { PageHeading } from '~components/Layout'
 import { Top, YearInReview } from '~components/Music'
 import Seo from '~components/Seo'
 import { useUI } from '~context/ManagedUI'

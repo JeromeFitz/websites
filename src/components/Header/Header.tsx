@@ -13,6 +13,12 @@ import {
   Text,
   Emoji,
 } from '@jeromefitz/design-system/components'
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+  TooltipArrow,
+} from '@jeromefitz/design-system/custom/Tooltip'
 import { styled } from '@jeromefitz/design-system/stitches.config'
 import { ArrowTopRightIcon, DropdownMenuIcon, PlusIcon } from '@radix-ui/react-icons'
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
@@ -21,12 +27,6 @@ import { useRouter } from 'next/router'
 import * as React from 'react'
 
 import { ToggleAudio, ToggleTheme } from '~components/Toggle'
-import {
-  Tooltip,
-  TooltipTrigger,
-  TooltipContent,
-  TooltipArrow,
-} from '~components/Tooltip'
 import { navigationHeader } from '~config/websites'
 
 const HighlightLink = styled('a', {

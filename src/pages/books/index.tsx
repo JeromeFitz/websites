@@ -7,13 +7,13 @@ import {
   Flex,
   Note,
   Text,
+  PageHeading,
 } from '@jeromefitz/design-system/components'
 import _map from 'lodash/map'
 import _size from 'lodash/size'
 // import dynamic from 'next/dynamic'
 import * as React from 'react'
 
-import { PageHeading } from '~components/Layout'
 import Seo from '~components/Seo'
 import booksByStatus, { STATUS } from '~data/books'
 

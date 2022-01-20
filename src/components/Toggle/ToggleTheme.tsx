@@ -1,17 +1,17 @@
 import { ButtonIcon } from '@jeromefitz/design-system/components'
-import { darkTheme } from '@jeromefitz/design-system/stitches.config'
-import { MoonIcon, SunIcon } from '@radix-ui/react-icons'
-import Mousetrap from 'mousetrap'
-import { useTheme } from 'next-themes'
-import { useCallback, useEffect } from 'react'
-import { useSound } from 'use-sound'
-
 import {
   Tooltip,
   TooltipTrigger,
   TooltipContent,
   TooltipArrow,
-} from '~components/Tooltip'
+} from '@jeromefitz/design-system/custom/Tooltip'
+import { darkTheme } from '@jeromefitz/design-system/stitches.config'
+import { MoonIcon, SunIcon } from '@radix-ui/react-icons'
+import Mousetrap from 'mousetrap'
+import { useTheme } from 'next-themes'
+import * as React from 'react'
+import { useSound } from 'use-sound'
+
 import { useUI } from '~context/ManagedUI'
 
 const ThemeToggle = (props) => {
@@ -22,7 +22,7 @@ const ThemeToggle = (props) => {
 
   const [playBleep] = useSound('/static/audio/bleep.mp3', { soundEnabled: audio })
 
-  const handleClick = useCallback(() => {
+  const handleClick = React.useCallback(() => {
     const newTheme = theme === 'dark' ? 'light' : 'dark'
     document.documentElement.classList.toggle(darkTheme.className)
     document.documentElement.classList.toggle('light-theme')
@@ -31,7 +31,7 @@ const ThemeToggle = (props) => {
     playBleep()
   }, [playBleep, setTheme, theme])
 
-  useEffect(() => {
+  React.useEffect(() => {
     Mousetrap.bind(['ctrl+t'], () => handleClick())
 
     return () => {

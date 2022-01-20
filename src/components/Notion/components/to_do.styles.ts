@@ -1,5 +1,6 @@
 import { darkTheme, styled } from '@jeromefitz/design-system/stitches.config'
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox'
+import type * as Stitches from '@stitches/react'
 
 const StyledCheckbox = styled(CheckboxPrimitive.Root, {
   all: 'unset',
@@ -35,14 +36,18 @@ const StyledCheckbox = styled(CheckboxPrimitive.Root, {
 const StyledIndicator = styled(CheckboxPrimitive.Indicator, {
   color: '$colors$gray12',
 })
-const StyledLabel = styled('label', {
+
+const cssLabel: Stitches.CSS = {
   color: '$colors$gray12',
   fontSize: 15,
   lineHeight: 1,
   userSelect: 'none',
-})
+}
+const StyledLabel = styled('label', cssLabel)
 
-// Exports
+/**
+ * @exports
+ */
 const Checkbox = StyledCheckbox
 const CheckboxIndicator = StyledIndicator
 const CheckboxLabel = StyledLabel

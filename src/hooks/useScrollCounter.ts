@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react'
+import * as React from 'react'
 
 const useScrollCounter = (offset: number) => {
-  const [reached, setReached] = useState(false)
+  const [reached, setReached] = React.useState(false)
 
-  useEffect(() => {
+  React.useEffect(() => {
     const showTitle = () => setReached(window.scrollY > offset)
     window.addEventListener('scroll', showTitle)
     return () => {

@@ -10,6 +10,12 @@ import {
   Text,
 } from '@jeromefitz/design-system/components'
 import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+  TooltipArrow,
+} from '@jeromefitz/design-system/custom/Tooltip'
+import {
   ExternalLinkIcon,
   // ChatBubbleIcon,
   GitHubLogoIcon,
@@ -23,12 +29,6 @@ import NextLink from 'next/link'
 import * as React from 'react'
 
 import IconLink from '~components/IconLink'
-import {
-  Tooltip,
-  TooltipTrigger,
-  TooltipContent,
-  TooltipArrow,
-} from '~components/Tooltip'
 
 const NowPlayingWithNoSSR = dynamic(() => import('~components/NowPlaying'), {
   ssr: false,

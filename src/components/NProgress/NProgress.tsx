@@ -1,11 +1,11 @@
 import { useRouter } from 'next/router'
 import NProgress from 'nprogress'
-import { useEffect } from 'react'
+import * as React from 'react'
 
 const Progress = () => {
   const router = useRouter()
 
-  useEffect(() => {
+  React.useEffect(() => {
     let timeout: NodeJS.Timeout
 
     const start = () => {

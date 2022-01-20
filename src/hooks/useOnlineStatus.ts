@@ -2,7 +2,7 @@
  * @ref https://github.com/rehooks/online-status
  * @license https://raw.githubusercontent.com/rehooks/online-status/master/LICENSE
  */
-import { useState, useEffect } from 'react'
+import * as React from 'react'
 
 function getOnlineStatus() {
   return typeof navigator !== 'undefined' && typeof navigator.onLine === 'boolean'
@@ -11,13 +11,13 @@ function getOnlineStatus() {
 }
 
 function useOnlineStatus() {
-  const [onlineStatus, setOnlineStatus] = useState(getOnlineStatus())
+  const [onlineStatus, setOnlineStatus] = React.useState(getOnlineStatus())
 
   const goOnline = () => setOnlineStatus(true)
 
   const goOffline = () => setOnlineStatus(false)
 
-  useEffect(() => {
+  React.useEffect(() => {
     window.addEventListener('online', goOnline)
     window.addEventListener('offline', goOffline)
 

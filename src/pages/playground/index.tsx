@@ -1,4 +1,5 @@
 // import { BigHead } from '@bigheads/core'
+import type { ToastData, ToastType } from '@jeromefitz/design-system/components'
 import {
   Box,
   // Container,
@@ -13,9 +14,9 @@ import {
   Text,
   ButtonDemo,
   useToastDispatchers,
-  AlertDialog,
+  AlertDialogDemo,
+  PageHeading,
 } from '@jeromefitz/design-system/components'
-import type { ToastData, ToastType } from '@jeromefitz/design-system/components'
 import { styled } from '@jeromefitz/design-system/stitches.config'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
@@ -24,7 +25,6 @@ import _title from 'title'
 import { useSound } from 'use-sound'
 import { v4 as uuid } from 'uuid'
 
-import { PageHeading } from '~components/Layout'
 import Seo from '~components/Seo'
 // import { ToastData, ToastType, useToastDispatchers } from '~components/Toast'
 import { useUI } from '~context/ManagedUI'
@@ -126,7 +126,7 @@ const PlaygroundAlertDialog = () => {
   }
   return (
     <Box css={{ my: '$5' }}>
-      <AlertDialog dialogText={dialogText} />
+      <AlertDialogDemo dialogText={dialogText} />
     </Box>
   )
 }

@@ -1,6 +1,7 @@
+import { PageHeading, SkeletonHeading } from '@jeromefitz/design-system/components'
 import useSWR from 'swr'
 
-import { Page, PageHeading, SkeletonHeading } from '~components/Layout'
+import { Page } from '~components/Layout'
 import { notionConfig } from '~config/websites'
 import {
   nextWeirdRoutingSkipData,

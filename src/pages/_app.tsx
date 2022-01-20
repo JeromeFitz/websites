@@ -10,7 +10,7 @@ import { ThemeProvider } from 'next-themes'
 import type { AppProps, NextWebVitalsMetric } from 'next/app'
 import Head from 'next/head'
 import pluralize from 'pluralize'
-import { useEffect } from 'react'
+import * as React from 'react'
 import { SWRConfig } from 'swr'
 
 import Footer from '~components/Footer'
@@ -136,7 +136,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
   globalStyles()
   useAnalytics()
 
-  useEffect(() => {
+  React.useEffect(() => {
     document?.body?.classList?.remove('loading')
   }, [])
 

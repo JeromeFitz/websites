@@ -6,13 +6,31 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
 const { withPlaiceholder } = require('@plaiceholder/next')
+const isCI = require('is-ci')
 const { withPlugins } = require('next-compose-plugins')
 const withTM = require('next-transpile-modules')(['@jeromefitz/design-system'])
 
 // const withPWA = require('next-pwa')
 
 // const getRedirects = require('./config/notion/website/getRedirects')
-const isLocal = process.env.DESIGN_SYSTEM__LINK || true
+
+/**
+ * @note this is probably no longer needed with:
+ *       tsconfig.json => preserveSymlinks
+ */
+const isLocal = process.env.DESIGN_SYSTEM__LINK || false
+
+/**
+ * @yarn link stuff
+ */
+const externals = [
+  '@radix-ui/colors',
+  '@stitches/react',
+  '@types/react',
+  'react',
+  'react-dom',
+  'react-hot-toast',
+]
 
 if (!process.env.NEXT_PUBLIC__SITE) {
   throw new Error('process.env.NEXT_PUBLIC__SITE is not set in env')
@@ -157,25 +175,20 @@ const nextConfig = {
     if (isLocal) {
       console.debug(`warn  - [@note]
 warn  - yarn link:
-warn  - -  🖼️  @jeromefitz/design-system
-warn  -`)
+warn  - 🖼️  @jeromefitz/design-system`)
       if (isServer) {
-        config.externals = ['react', 'react-hot-toast', ...config.externals]
+        config.externals = [...externals, ...config.externals]
       }
 
-      config.resolve.alias['react'] = path.resolve(
-        __dirname,
-        '.',
-        'node_modules',
-        'react'
-      )
-
-      config.resolve.alias['react-hot-toast'] = path.resolve(
-        __dirname,
-        '.',
-        'node_modules',
-        'react-hot-toast'
-      )
+      externals.map((_external) => {
+        console.debug(`warn  - ›  📦️ ${_external}`)
+        config.resolve.alias[_external] = path.resolve(
+          __dirname,
+          '.',
+          'node_modules',
+          _external
+        )
+      })
     }
 
     return config

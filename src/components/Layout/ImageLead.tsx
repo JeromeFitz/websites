@@ -1,11 +1,15 @@
-import { Container, Section, Skeleton } from '@jeromefitz/design-system/components'
+import {
+  Caption,
+  Container,
+  Section,
+  Skeleton,
+} from '@jeromefitz/design-system/components'
 import { styled } from '@jeromefitz/design-system/stitches.config'
 import NextImage from 'next/image'
 import { useEffectOnce } from 'react-use'
 import useSWR, { useSWRConfig } from 'swr'
 
 import { Breakout } from '~components/Container'
-import ImageCaption from '~components/ImageCaption'
 
 const ImageContainer = styled('div', {
   position: 'relative',
@@ -113,7 +117,7 @@ const ImageLead = ({ breakout = true, description, image, imagesFallback }) => {
           priority={true}
           slug={imageSlug}
         />
-        <ImageCaption caption={description} />
+        <Caption>{description}</Caption>
       </Container>
     </WrapComponent>
   )
