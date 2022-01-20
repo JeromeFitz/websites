@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from 'react'
+import { PageHeading } from '@jeromefitz/design-system/components'
+import * as React from 'react'
 import useSWRInfinite from 'swr/infinite'
 
-import { PageHeading } from '~components/Layout'
 import useOnScreen from '~hooks/useOnScreen'
 import fetcher from '~lib/fetcher'
 
@@ -32,15 +32,15 @@ const getKey = (
 
 // eslint-disable-next-line complexity
 const SwrPage = () => {
-  const ref = useRef()
+  const ref = React.useRef()
 
-  const [limit] = useState(10)
-  // const [offset] = useState(0)
-  const [time_range, time_rangeSet] = useState('long_term')
-  const [type, typeSet] = useState('top-tracks')
-  const [url] = useState(INIT.url)
+  const [limit] = React.useState(10)
+  // const [offset] = React.useState(0)
+  const [time_range, time_rangeSet] = React.useState('long_term')
+  const [type, typeSet] = React.useState('top-tracks')
+  const [url] = React.useState(INIT.url)
 
-  const [total, totalSet] = useState(0)
+  const [total, totalSet] = React.useState(0)
   const isVisible = useOnScreen(ref)
 
   const { data, error, mutate, size, setSize, isValidating } = useSWRInfinite(
@@ -67,14 +67,14 @@ const SwrPage = () => {
     isEmpty || (data && data[data.length - 1]?.items?.length < INIT.limit)
   const isRefreshing = isValidating && data && data.length === size
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (isVisible && !isReachingEnd && !isRefreshing) {
       void setSize(size + 1)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isVisible, isRefreshing])
 
-  useEffect(() => {
+  React.useEffect(() => {
     !!data && totalSet(data[0]?.total)
   }, [data])
 

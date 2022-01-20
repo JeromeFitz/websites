@@ -1,18 +1,15 @@
 import { TagIcon } from '@heroicons/react/outline'
-import { ArrowLeftIcon, ArrowRightIcon } from '@radix-ui/react-icons'
-import _map from 'lodash/map'
-import _size from 'lodash/size'
-import React, { useEffect, useRef, useState } from 'react'
-import _title from 'title'
-
 import {
   Box,
+  BoxGrab,
   Carousel,
   CarouselSlideList,
   CarouselSlide,
   CarouselNext,
   CarouselPrevious,
+  CarouselArrowButton,
   Flex,
+  FocusArea,
   Heading,
   Paragraph,
   Section,
@@ -20,8 +17,12 @@ import {
 } from '@jeromefitz/design-system/components'
 import { HeroImage } from '@jeromefitz/design-system/components/Hero/HeroImage'
 import { darkTheme, styled } from '@jeromefitz/design-system/stitches.config'
+import { ArrowLeftIcon, ArrowRightIcon } from '@radix-ui/react-icons'
+import _map from 'lodash/map'
+import _size from 'lodash/size'
+import * as React from 'react'
+import _title from 'title'
 
-import { CarouselArrowButton, GrabBox, FocusArea } from '~components/Carousel'
 import { Breakout } from '~components/Container'
 import useOnScreen from '~hooks/useOnScreen'
 import useSpotify from '~hooks/useSpotify'
@@ -102,7 +103,7 @@ const info = {
 const spotifyRemoveIds = ['5H0YoDsPDi9fObFmJtTjfN']
 
 const TopItem = ({ type }) => {
-  const ref = useRef()
+  const ref = React.useRef()
 
   const dataFocusAreaType =
     type === 'top-artists'
@@ -121,8 +122,8 @@ const TopItem = ({ type }) => {
     data: { time_range },
   } = useSpotify()
 
-  const [limit] = useState(10)
-  const [url] = useState(INIT.url)
+  const [limit] = React.useState(10)
+  const [url] = React.useState(INIT.url)
   const isVisible = useOnScreen(ref)
 
   const {
@@ -154,7 +155,7 @@ const TopItem = ({ type }) => {
     }
   )
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (canFetchMore && !isFetchingMore && !isLoadingMore && isVisible) {
       void fetchMore()
     }
@@ -438,7 +439,11 @@ const TopItem = ({ type }) => {
                   <CarouselSlide key={`ta-${i}`}>
                     <FocusArea
                       aria-label={_title1}
+                      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                      // @ts-ignore
                       onKeyDown={onFocusAreaKeyDown}
+                      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                      // @ts-ignore
                       onFocus={onFocusAreaFocus}
                       data-focus-area-type={type}
                       {...focusAreas}
@@ -512,7 +517,7 @@ const TopItem = ({ type }) => {
                         <HeroImage alt={_alt} meta={_meta} />
                       </SlideContainer>
                     </FocusArea>
-                    <GrabBox css={{ m: '$1', pt: '$1' }}>
+                    <BoxGrab css={{ m: '$1', pt: '$1' }}>
                       <Text
                         as="h3"
                         size="5"
@@ -555,12 +560,14 @@ const TopItem = ({ type }) => {
                           </Text>
                         </Box>
                       )}
-                    </GrabBox>
+                    </BoxGrab>
                   </CarouselSlide>
                 )
               })}
               <div ref={ref} />
               <CarouselSlide>
+                {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+                {/* @ts-ignore */}
                 <FocusArea onKeyDown={onFocusAreaKeyDown} onFocus={onFocusAreaFocus}>
                   <SlideContainer
                     css={{

@@ -1,11 +1,11 @@
 import * as Fathom from 'fathom-client'
 import { useRouter } from 'next/router'
-import { useEffect } from 'react'
+import * as React from 'react'
 
 export const useAnalytics = () => {
   const router = useRouter()
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (process.env.NODE_ENV === 'production') {
       Fathom.load(process.env.NEXT_PUBLIC__FATHOM_SITE_ID, {
         // honorDNT: true,

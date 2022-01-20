@@ -1,11 +1,9 @@
+import { Box, Caption } from '@jeromefitz/design-system/components'
+import { keyframes } from '@jeromefitz/design-system/stitches.config'
 import Slugger from 'github-slugger'
 import _size from 'lodash/size'
 import NextImage from 'next/image'
 
-import { Box } from '@jeromefitz/design-system/components'
-import { keyframes } from '@jeromefitz/design-system/stitches.config'
-
-import ImageCaption from '~components/ImageCaption'
 import { IMAGE__PLACEHOLDER } from '~lib/constants'
 
 const focusInNonNext = keyframes({
@@ -60,7 +58,7 @@ const image = ({ images, item }) => {
         placeholder="blur"
         {...imageData.img}
       />
-      {!!caption && <ImageCaption caption={caption} />}
+      {!!caption && <Caption>{caption}</Caption>}
     </Box>
   ) : (
     <Box
@@ -88,7 +86,7 @@ const image = ({ images, item }) => {
           backgroundImage: `url(${IMAGE__PLACEHOLDER.meta.base64})`,
         }}
       />
-      {!!caption && <ImageCaption caption={caption} />}
+      {!!caption && <Caption>{caption}</Caption>}
     </Box>
   )
 }

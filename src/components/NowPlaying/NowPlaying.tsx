@@ -1,11 +1,3 @@
-import { ExternalLinkIcon } from '@radix-ui/react-icons'
-import Slugger from 'github-slugger'
-import _map from 'lodash/map'
-import _slice from 'lodash/slice'
-import NextLink from 'next/link'
-import useSWR from 'swr'
-import _title from 'title'
-
 import {
   Badge,
   Flex,
@@ -13,9 +5,16 @@ import {
   Link,
   Paragraph,
   Separator,
+  CardSpotify,
 } from '@jeromefitz/design-system/components'
-import { CardSpotify } from '@jeromefitz/design-system/components/Card/Spotify'
 import { styled } from '@jeromefitz/design-system/stitches.config'
+import { ExternalLinkIcon } from '@radix-ui/react-icons'
+import Slugger from 'github-slugger'
+import _map from 'lodash/map'
+import _slice from 'lodash/slice'
+import NextLink from 'next/link'
+import useSWR from 'swr'
+import _title from 'title'
 
 import { nowPlaying } from '~data/spotify'
 import fetcher from '~lib/fetcher'

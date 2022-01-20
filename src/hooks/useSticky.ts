@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react'
+import * as React from 'react'
 
 const useSticky = (fixRef: {
   current: { getBoundingClientRect: () => { (): any; new (): any; top: any } }
 }) => {
-  const [isFix, setIsFix] = useState(false)
+  const [isFix, setIsFix] = React.useState(false)
 
-  useEffect(() => {
+  React.useEffect(() => {
     const stickyPosY = fixRef.current.getBoundingClientRect().top
 
     const onScroll = () => {

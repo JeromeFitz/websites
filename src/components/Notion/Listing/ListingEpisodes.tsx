@@ -1,20 +1,15 @@
-import { lpad } from '@jeromefitz/utils'
-import _map from 'lodash/map'
-import _size from 'lodash/size'
-import dynamic from 'next/dynamic'
-import NextLink from 'next/link'
-import { useRouter } from 'next/router'
-import * as React from 'react'
-
 import {
   Badge,
   Box,
   Grid,
+  Emoji,
   Paragraph,
   Spacer,
   Text,
+  CardOuter,
+  ImageBlur,
+  Card,
 } from '@jeromefitz/design-system/components'
-import { Card } from '@jeromefitz/design-system/components/Card'
 import {
   css_card,
   CardContent,
@@ -23,10 +18,13 @@ import {
   CardMeta,
   CardTitle,
 } from '@jeromefitz/design-system/components/Card/Show'
-import {
-  CardOuter,
-  ImageBlur,
-} from '@jeromefitz/design-system/components/Card/Spotify'
+import { lpad } from '@jeromefitz/utils'
+import _map from 'lodash/map'
+import _size from 'lodash/size'
+// import dynamic from 'next/dynamic'
+import NextLink from 'next/link'
+import { useRouter } from 'next/router'
+import * as React from 'react'
 
 import { Breakout } from '~components/Container'
 import { ImageWithBackgroundBlur } from '~components/Layout/ImageLead'
@@ -36,9 +34,9 @@ import { notion } from '~lib/notion/helper'
 
 const { NOTION } = notionConfig
 
-const Emoji = dynamic(() => import('~components/Emoji'), {
-  ssr: false,
-})
+// const { Emoji } = dynamic(() => import('@jeromefitz/design-system/components'), {
+//   ssr: false,
+// })
 
 const Episodes = ({ images, items }) => {
   const router = useRouter()

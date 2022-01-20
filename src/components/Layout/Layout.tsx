@@ -1,7 +1,7 @@
+import { PageHeading } from '@jeromefitz/design-system/components'
 import { format, parseISO } from 'date-fns'
 import useSWR from 'swr'
 
-import { PageHeading } from '~components/Layout'
 import Seo from '~components/Seo'
 import { notionConfig } from '~config/websites'
 

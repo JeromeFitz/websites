@@ -3,5 +3,5 @@
     "baseUrl": "./",
     "rootDir": "./"
   },
-  "include": ["**/*.test.ts"]
+  "exclude": ["**/*.test.ts"]
 }
