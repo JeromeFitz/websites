@@ -13,6 +13,7 @@ import {
   Section,
   Text,
 } from '@jeromefitz/design-system/components'
+import useSpotify from '@jeromefitz/design-system/hooks/useSpotify'
 import { ExternalLinkIcon } from '@radix-ui/react-icons'
 import _find from 'lodash/find'
 import _map from 'lodash/map'
@@ -24,7 +25,6 @@ import { useSound } from 'use-sound'
 import { Top, YearInReview } from '~components/Music'
 import Seo from '~components/Seo'
 import { useUI } from '~context/ManagedUI'
-import useSpotify from '~hooks/useSpotify'
 
 const plans = [
   {

@@ -30,6 +30,7 @@ const externals = [
   'react',
   'react-dom',
   'react-hot-toast',
+  'swr',
 ]
 
 if (!process.env.NEXT_PUBLIC__SITE) {

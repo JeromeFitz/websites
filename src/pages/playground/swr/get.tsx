@@ -1,8 +1,8 @@
 import { Box, Text, PageHeading } from '@jeromefitz/design-system/components'
+import useOnScreen from '@jeromefitz/design-system/hooks/useOnScreen'
+import useSWRInfinitePages from '@jeromefitz/design-system/hooks/useSWRInfinitePages'
 import * as React from 'react'
 
-import useOnScreen from '~hooks/useOnScreen'
-import useSWRInfinitePages from '~hooks/useSWRInfinitePages'
 import fetcher from '~lib/fetcher'
 
 const INIT = {

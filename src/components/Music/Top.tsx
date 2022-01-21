@@ -16,6 +16,9 @@ import {
   Text,
 } from '@jeromefitz/design-system/components'
 import { HeroImage } from '@jeromefitz/design-system/components/Hero/HeroImage'
+import useOnScreen from '@jeromefitz/design-system/hooks/useOnScreen'
+import useSpotify from '@jeromefitz/design-system/hooks/useSpotify'
+import useSWRInfinitePages from '@jeromefitz/design-system/hooks/useSWRInfinitePages'
 import { darkTheme, styled } from '@jeromefitz/design-system/stitches.config'
 import { ArrowLeftIcon, ArrowRightIcon } from '@radix-ui/react-icons'
 import _map from 'lodash/map'
@@ -24,9 +27,6 @@ import * as React from 'react'
 import _title from 'title'
 
 import { Breakout } from '~components/Container'
-import useOnScreen from '~hooks/useOnScreen'
-import useSpotify from '~hooks/useSpotify'
-import useSWRInfinitePages from '~hooks/useSWRInfinitePages'
 import fetcher from '~lib/fetcher'
 
 import { backgrounds } from './index.props'
