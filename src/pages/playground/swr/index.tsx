@@ -1,8 +1,8 @@
 import { PageHeading } from '@jeromefitz/design-system/components'
+import useOnScreen from '@jeromefitz/design-system/hooks/useOnScreen'
 import * as React from 'react'
 import useSWRInfinite from 'swr/infinite'
 
-import useOnScreen from '~hooks/useOnScreen'
 import fetcher from '~lib/fetcher'
 
 const INIT = {
