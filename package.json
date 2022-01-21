@@ -80,7 +80,7 @@
     "fathom-client": "3.3.1",
     "firebase": "9.6.4",
     "firebase-admin": "10.0.1",
-    "framer-motion": "6.0.0",
+    "framer-motion": "6.2.1",
     "github-slugger": "1.4.0",
     "immer": "9.0.12",
     "lodash": "4.17.21",
