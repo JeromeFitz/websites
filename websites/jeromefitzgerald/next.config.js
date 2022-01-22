@@ -169,28 +169,28 @@ const nextConfig = {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     // if (!isServer) {
-    //   config.node = {
-    //     fs: 'empty',
-    //   }
-    // }
-    if (isLocal) {
-      console.debug(`warn  - [@note]
-warn  - yarn link:
-warn  - 🖼️  @jeromefitz/design-system`)
-      if (isServer) {
-        config.externals = [...externals, ...config.externals]
-      }
+    //     //   config.node = {
+    //     //     fs: 'empty',
+    //     //   }
+    //     // }
+    //     if (isLocal) {
+    //       console.debug(`warn  - [@note]
+    // warn  - yarn link:
+    // warn  - 🖼️  @jeromefitz/design-system`)
+    //       if (isServer) {
+    //         config.externals = [...externals, ...config.externals]
+    //       }
 
-      externals.map((_external) => {
-        console.debug(`warn  - ›  📦️ ${_external}`)
-        config.resolve.alias[_external] = path.resolve(
-          __dirname,
-          '.',
-          'node_modules',
-          _external
-        )
-      })
-    }
+    //       externals.map((_external) => {
+    //         console.debug(`warn  - ›  📦️ ${_external}`)
+    //         config.resolve.alias[_external] = path.resolve(
+    //           __dirname,
+    //           '.',
+    //           'node_modules',
+    //           _external
+    //         )
+    //       })
+    //     }
 
     return config
   },

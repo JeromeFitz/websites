@@ -1,16 +1,16 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
-/.pnp
+node_modules
+.pnp
 .pnp.js
 
 # testing
-/coverage
+coverage
 
-# next.js
-/.next/
-/out/
+# vercel
+.next
+.turbo
 
 # next-pwa
 /public/fallback-*.js
@@ -18,8 +18,7 @@
 /public/workbox-*.js
 
 # production
-/.dist
-/build
+dist/**
 
 # misc
 .DS_Store
@@ -46,7 +45,7 @@ yarn-error.log*
 ## Custom
 .cache
 .idea
-tsconfig.tsbuildinfo
+.tsbuildinfo
 
 ## ZZZ
 zzz
