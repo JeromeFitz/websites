@@ -14,7 +14,7 @@
   },
   "workspaces": {
     "packages": [
-      "websites/*"
+      "packages/*"
     ],
     "nohoist": []
   },
@@ -42,7 +42,8 @@
     "semantic-release": "turbo run semantic-release:mono --no-cache --parallel --continue",
     "----    ": "# @development",
     "branch": "git-cz -m branch --allow-empty",
-    "j:build": "turbo run build --scope=*jeromefitzgerald*"
+    "j:dev": "turbo run dev --scope=*jeromefitzgerald* --include-dependencies",
+    "j:start": "turbo run start --scope=*jeromefitzgerald* --include-dependencies"
   },
   "dependencies": {
     "lodash": "4.17.21"
@@ -91,6 +92,9 @@
         "dependsOn": [
           "build"
         ]
+      },
+      "start": {
+        "cache": false
       },
       "test": {
         "outputs": [

@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "noImplicitAny": false
+  },
+  "extends": "@jeromefitz/codestyle/tsconfig.next.json",
+  "exclude": ["./@work-in-progress/**"]
+}
