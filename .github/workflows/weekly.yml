@@ -1,22 +1,21 @@
-name: '🔀️ Push'
+name: '🌃️ Weekly'
 on:
-  push:
-    branches:
-      - main
-      # prerelease branches
-      - canary
-      - develop
-      - ci/**
-      - feature/**
-      - fix/**
-      - refactor/**
-      - release/**
-concurrency:
-  group: push-${{ github.ref }}-1
-  cancel-in-progress: true
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    # ref: https://docs.github.com/en/actions/reference/events-that-trigger-workflows#schedule
+    #        ┌───────────── minute (0 - 59)
+    #        │ ┌───────────── hour (0 - 23)
+    #        │ │ ┌───────────── day of the month (1 - 31)
+    #        │ │ │ ┌───────────── month (1 - 12 or JAN-DEC)
+    #        │ │ │ │ ┌───────────── day of the week (0 - 6 or SUN-SAT)
+    #        │ │ │ │ │
+    #        │ │ │ │ │
+    #        │ │ │ │ │
+    #        * * * * *
+    - cron: '0 0 * * 1'
 jobs:
   release:
-    name: '👷️  Push'
+    name: '👷️ Weekly'
     timeout-minutes: 5
     runs-on: ubuntu-latest
     env:
@@ -87,13 +86,13 @@ jobs:
 
       # - name: '🏗️  Build'
       #   id: build
-      #   if: contains(github.event.head_commit.message , '[build]') || contains(github.event.head_commit.message , '[b]')
+      #   # if: contains(github.event.head_commit.message , '[build]') || contains(github.event.head_commit.message , '[b]')
       #   run: |
       #     yarn build --cache-dir=".cache-turbo"
 
       - name: '🚀️  Release'
         id: release
-        if: contains(github.event.head_commit.message , '[build]') || contains(github.event.head_commit.message , '[b]')
+        # if: contains(github.event.head_commit.message , '[build]') || contains(github.event.head_commit.message , '[b]')
         run: |
           echo "registry=http://registry.npmjs.org/" >> .npmrc
           echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> .npmrc
