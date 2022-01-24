@@ -73,6 +73,9 @@
   },
   "turbo": {
     "baseBranch": "origin/main",
+    "globalDependencies": [
+      ".env.*"
+    ],
     "pipeline": {
       "build": {
         "outputs": [
@@ -81,7 +84,8 @@
           ".next/**"
         ],
         "dependsOn": [
-          "^build"
+          "^build",
+          "$NEXT_PUBLIC__SITE"
         ]
       },
       "clean": {
