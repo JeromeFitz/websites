@@ -20,7 +20,7 @@ import getNextPageStatus from '~utils/getNextPageStatus'
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const { PAGES__HOMEPAGE } = notionConfig
 
-const CatchAll = (props) => {
+const PagesCatchAll = (props) => {
   const {
     content: contentFallback,
     info: infoFallback,
@@ -109,4 +109,4 @@ export const getStaticPaths = () => {
   return getStaticPathsCatchAll()
 }
 
-export default CatchAll
+export default PagesCatchAll

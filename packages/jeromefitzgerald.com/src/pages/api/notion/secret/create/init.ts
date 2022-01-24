@@ -20,6 +20,7 @@ const DATA_GROUPING = {
 
 const DATABASES__INIT = {
   BLOG: { id: '', emoji: '🤢', name: 'BLOG' },
+  BOOKS: { id: '', emoji: '🤢', name: 'BOOKS' },
   EPISODES: { id: '', emoji: '🤢', name: 'EPISODES' },
   EVENTS: { id: '', emoji: '🤢', name: 'EVENTS' },
   PAGES: { id: '', emoji: '🤢', name: 'PAGES' },

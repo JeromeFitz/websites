@@ -15,14 +15,14 @@ const Layout = ({ id, children, properties, routeType, url }) => {
     isIndexed,
     isPublished,
     seoDescription: description,
-    seoImage,
+    seoImage: _seoImage,
     seoImageDescription,
     slug,
     title,
   } = properties
 
   // @todo(external) first key is image slug
-  const seoImageSlug = Object.keys(seoImage)[0] || ''
+  const seoImageSlug = !!_seoImage ? Object.keys(_seoImage)[0] : ''
   const seoImageData = !!images && images[seoImageSlug]
   const seoUrl = `https://jeromefitzgerald.com/${!!url ? url : ''}`
 
@@ -38,21 +38,26 @@ const Layout = ({ id, children, properties, routeType, url }) => {
   const noindex = !isPublished || !isIndexed
   // console.dir(`noindex: ${noindex}`)
 
-  const seo = {
-    canonical: seoUrl,
-    description: seoDescription,
-    image: seoImage[seoImageSlug]?.url,
-    noindex,
-    openGraph: {
-      description: seoDescription,
-      images: [
+  const seoImage = !!_seoImage ? _seoImage[seoImageSlug]?.url : null
+  const openGraphImages = !!seoImage
+    ? [
         {
           alt: seoImageDescription,
           height: seoImageData?.img?.height,
-          url: seoImage[seoImageSlug]?.url,
+          url: _seoImage[seoImageSlug]?.url,
           width: seoImageData?.img?.width,
         },
-      ],
+      ]
+    : null
+
+  const seo = {
+    canonical: seoUrl,
+    description: seoDescription,
+    image: seoImage,
+    noindex,
+    openGraph: {
+      description: seoDescription,
+      images: openGraphImages,
       title,
       url: seoUrl,
     },

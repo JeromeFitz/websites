@@ -13,6 +13,12 @@ const ListingDefault = dynamic(
     ssr: true,
   }
 )
+const ListingBooks = dynamic(
+  () => import('~components/Notion/Listing/ListingBooks'),
+  {
+    ssr: true,
+  }
+)
 const ListingEpisodes = dynamic(
   () => import('~components/Notion/Listing/ListingEpisodes'),
   {
@@ -32,6 +38,8 @@ const ListingShows = dynamic(
   }
 )
 
+// @todo(complexity) 11
+//  eslint-disable-next-line complexity
 const Listing = ({ images, items, routeType }) => {
   const itemsSize = _size(items?.results)
 
@@ -45,6 +53,9 @@ const Listing = ({ images, items, routeType }) => {
 
   if (itemsSize > 0) {
     switch (routeType) {
+      // case NOTION.BOOKS.routeType:
+      //   itemsData = _orderBy(items.results, ['properties.status'], ['asc'])
+      //   break
       case NOTION.EVENTS.routeType:
         itemsData = _orderBy(items.results, ['properties.dateEvent.start'], ['asc'])
         break
@@ -59,6 +70,15 @@ const Listing = ({ images, items, routeType }) => {
         itemsData = items.results
         break
     }
+  }
+
+  if (routeType === NOTION.BOOKS.routeType) {
+    // console.dir(itemsData)
+    return (
+      <>
+        <ListingBooks items={itemsData} />
+      </>
+    )
   }
 
   if (routeType === NOTION.PODCASTS.routeType && itemsData.length > 0) {

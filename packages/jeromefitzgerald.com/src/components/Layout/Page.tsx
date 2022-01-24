@@ -9,6 +9,12 @@ import { notionConfig } from '~config/websites'
 const { NOTION } = notionConfig
 
 const Listing = dynamic(() => import('~components/Notion/Listing'), {})
+// const ListingBooks = dynamic(
+//   () => import('~components/Notion/Listing/ListingBooks'),
+//   {
+//     ssr: true,
+//   }
+// )
 const ListingEvent = dynamic(
   () => import('~components/Notion/Listing/ListingEvent'),
   {
@@ -72,6 +78,7 @@ const Page = ({ data, ...props }) => {
   // console.dir(properties)
 
   // @refactor(confusing)
+  // const isBookListing = routeType === NOTION.BOOKS.routeType && !isIndex
   const isEventListing = routeType === NOTION.EVENTS.routeType && !isIndex
   const isEpisodeListing = routeType === NOTION.PODCASTS.routeType && !isIndex
   const isShowListing = routeType === NOTION.SHOWS.routeType && !isIndex

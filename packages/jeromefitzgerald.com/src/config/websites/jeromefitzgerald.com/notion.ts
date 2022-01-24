@@ -45,6 +45,21 @@ const NOTION: DatabaseInfo = {
     infoType: PROPERTIES.datePublished,
     ttl: getTimeInSeconds(ms('1d')),
   },
+  BOOKS: {
+    active: true,
+    database_id: 'cff5175d-c317-4af4-b2b2-0826eb409291',
+    dataTypes: [DATA_TYPES.LISTING, DATA_TYPES.SLUG],
+    hasChild: null,
+    name: 'BOOKS',
+    page_id__seo: 'b61655ff-3881-4bd9-9ea9-92b847b49b70',
+    routeMeta: true,
+    routeType: 'books',
+    slug: 'books',
+    //
+    //
+    infoType: PROPERTIES.datePublished,
+    ttl: getTimeInSeconds(ms('1d')),
+  },
   EPISODES: {
     active: true,
     database_id: '2dbb52e80e5d49bfbf5ac1a98f6c07d4',
