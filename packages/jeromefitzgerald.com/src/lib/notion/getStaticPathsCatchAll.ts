@@ -90,27 +90,31 @@ const getStaticPathsCatchAll = async () => {
 
     await asyncForEach(ROUTE_TYPES, async (routeType: string) => {
       /**
-       * @hack(notion) handle `episodes` separately
+       * @hack(notion) handle `books|episodes` separately
        */
-      if (routeType !== 'episodes') paths.push(`/${routeType.toLowerCase()}`)
-
-      const catchAll = [routeType]
-      const pathVariables = notion.custom.getPathVariables({
-        catchAll,
-      })
-      const data = await getCatchAll({
-        cache: false,
-        catchAll,
-        clear: false,
-        pathVariables,
-        preview: false,
-      })
-      const items = data?.items?.results
-      const slugs = getStaticPathsDefault({
-        items,
-        routeType: routeType.toLowerCase(),
-      })
-      paths.push(...slugs)
+      if (routeType !== NOTION.EPISODES.routeType)
+        paths.push(`/${routeType.toLowerCase()}`)
+      if (routeType.toLowerCase() === NOTION.BOOKS.routeType) {
+        console.dir(`@todo(notion) skip books`)
+      } else {
+        const catchAll = [routeType]
+        const pathVariables = notion.custom.getPathVariables({
+          catchAll,
+        })
+        const data = await getCatchAll({
+          cache: false,
+          catchAll,
+          clear: false,
+          pathVariables,
+          preview: false,
+        })
+        const items = data?.items?.results
+        const slugs = getStaticPathsDefault({
+          items,
+          routeType: routeType.toLowerCase(),
+        })
+        paths.push(...slugs)
+      }
     }).catch(_noop)
   }
   // console.dir(`paths:`)

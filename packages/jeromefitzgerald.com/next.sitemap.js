@@ -48,10 +48,28 @@ const { excludes, siteUrl } = sites[process.env.NEXT_PUBLIC__SITE]
 
 const removeEn = (config, url) => {
   // console.dir(`url: ${url}`)
+  // console.dir(config)
+
+  let changefreq = config.changefreq
+  let priority = config.priority
+
+  if (url === '/') {
+    priority = '1.0'
+  }
+
+  if (
+    url.includes('blog') ||
+    url.includes('events/2021') ||
+    url.includes('events/2020')
+  ) {
+    changefreq = 'weekly'
+    priority = '0.5'
+  }
+
   return {
     loc: _replace(url, '/en', ''),
-    // changefreq: config.changefreq,
-    // priority: config.priority,
+    changefreq,
+    priority,
     // lastmod: config.autoLastmod ? new Date().toISOString() : undefined,
   }
 }
@@ -71,32 +89,12 @@ const config = {
   changefreq: 'weekly',
   exclude: getExcludes(excludes),
   generateRobotsTxt: true,
+  priority: 0.7,
+  sitemapSize: 5000,
   siteUrl,
   sites,
   transform: (config, url) => {
     return removeEn(config, url)
-    // // custom function to ignore the url
-    // if (customIgnoreFunction(url)) {
-    //   return null
-    // }
-
-    // // only create changefreq along with url
-    // // returning partial properties will result in generation of XML field with only returned values.
-    // if (customLimitedField(url)) {
-    //   // This returns `url` & `changefreq`. Hence it will result in the generation of XML field with `url` and  `changefreq` properties only.
-    //   return {
-    //     loc: url,
-    //     changefreq: 'weekly',
-    //   }
-    // }
-
-    // // Use default transformation for all other cases
-    // return {
-    //   loc: url,
-    //   changefreq: config.changefreq,
-    //   priority: config.priority,
-    //   lastmod: config.autoLastmod ? new Date().toISOString() : undefined,
-    // }
   },
 }
 
