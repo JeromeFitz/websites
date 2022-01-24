@@ -39,8 +39,8 @@ const CatchAll = async (req: any, res: NextApiResponse) => {
       },
     })
     const debug = {
-      type: cache ? 'cache' : 'api',
       latency: Date.now() - start,
+      type: cache ? 'cache' : 'api',
     }
 
     res.status(200).json({ ...data, debug })

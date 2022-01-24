@@ -25,8 +25,9 @@ const imagesApi = async (req: any, res: NextApiResponse) => {
   if (cache) {
     data = cache
     const debug = {
-      type: cache ? 'cache' : 'api',
+      key,
       latency: Date.now() - start,
+      type: cache ? 'cache' : 'api',
     }
     return res.status(200).json({ ...data, debug })
   }
@@ -39,8 +40,9 @@ const imagesApi = async (req: any, res: NextApiResponse) => {
     const data = JSON.parse(cache)
     setCacheJson(data, key)
     const debug = {
-      type: cache ? 'cache' : 'api',
+      key,
       latency: Date.now() - start,
+      type: cache ? 'cache' : 'api',
     }
     return res.status(200).json({ ...data, debug })
   }
@@ -52,8 +54,9 @@ const imagesApi = async (req: any, res: NextApiResponse) => {
   setCacheJson(data, key)
   void redis.set(key, JSON.stringify(data))
   const debug = {
-    type: cache ? 'cache' : 'api',
+    key,
     latency: Date.now() - start,
+    type: cache ? 'cache' : 'api',
   }
   return res.status(200).json({ ...data, debug })
 }

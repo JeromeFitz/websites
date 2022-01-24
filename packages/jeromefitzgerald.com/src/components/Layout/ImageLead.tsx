@@ -4,6 +4,7 @@ import {
   Section,
   Skeleton,
 } from '@jeromefitz/design-system/components'
+import _isEmpty from 'lodash/isEmpty'
 import useSWR from 'swr'
 
 import { Breakout } from '~components/Container'
@@ -67,8 +68,10 @@ const ImageLead = ({ breakout = true, description, image, images }) => {
   // @note(image) check against the first key in `images` only (seoImage)
   const imageSlug = Object.keys(image)[0]
   const url = image[imageSlug]?.url
-  const urlApi = !!url ? `/api/images?url=${url}` : null
   const fallbackData = !!url && !!images ? images[imageSlug] : {}
+  // @note(image) do not call if we do not need to
+  const urlApi = !!url && _isEmpty(fallbackData) ? `/api/images?url=${url}` : null
+
   const { data } = useSWR<any>(urlApi, fetcher, {
     fallbackData,
   })
