@@ -73,9 +73,6 @@
   },
   "turbo": {
     "baseBranch": "origin/main",
-    "globalDependencies": [
-      ".env.*"
-    ],
     "pipeline": {
       "build": {
         "outputs": [
@@ -85,7 +82,7 @@
         ],
         "dependsOn": [
           "^build",
-          "$NEXT_PUBLIC__SITE"
+          "$VERCEL_ENV"
         ]
       },
       "clean": {
@@ -101,7 +98,7 @@
       "semantic-release:mono": {
         "cache": false,
         "dependsOn": [
-          "build"
+          "lint"
         ]
       },
       "start": {
@@ -112,8 +109,7 @@
           "coverage/**"
         ],
         "dependsOn": [
-          "lint",
-          "build"
+          "lint"
         ]
       }
     }
