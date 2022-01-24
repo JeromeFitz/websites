@@ -28,28 +28,7 @@
   resolved "https://registry.yarnpkg.com/@babel/compat-data/-/compat-data-7.16.8.tgz#31560f9f29fdf1868de8cb55049538a1b9732a60"
   integrity sha512-m7OkX0IdKLKPpBlJtF561YJal5y/jyI5fNfWbPxh2D/nbzzGI4qRyrD8xO2jB24u7l+5I2a43scCG2IrfjC50Q==
 
-"@babel/core@7.16.10", "@babel/core@^7.1.0", "@babel/core@^7.12.3", "@babel/core@^7.7.2", "@babel/core@^7.8.0":
-  version "7.16.10"
-  resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.16.10.tgz#ebd034f8e7ac2b6bfcdaa83a161141a646f74b50"
-  integrity sha512-pbiIdZbCiMx/MM6toR+OfXarYix3uz0oVsnNtfdAGTcCTu3w/JGF8JhirevXLBJUu0WguSZI12qpKnx7EeMyLA==
-  dependencies:
-    "@babel/code-frame" "^7.16.7"
-    "@babel/generator" "^7.16.8"
-    "@babel/helper-compilation-targets" "^7.16.7"
-    "@babel/helper-module-transforms" "^7.16.7"
-    "@babel/helpers" "^7.16.7"
-    "@babel/parser" "^7.16.10"
-    "@babel/template" "^7.16.7"
-    "@babel/traverse" "^7.16.10"
-    "@babel/types" "^7.16.8"
-    convert-source-map "^1.7.0"
-    debug "^4.1.0"
-    gensync "^1.0.0-beta.2"
-    json5 "^2.1.2"
-    semver "^6.3.0"
-    source-map "^0.5.0"
-
-"@babel/core@^7.11.1":
+"@babel/core@7.16.12", "@babel/core@^7.11.1":
   version "7.16.12"
   resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.16.12.tgz#5edc53c1b71e54881315923ae2aedea2522bb784"
   integrity sha512-dK5PtG1uiN2ikk++5OzSYsitZKny4wOCD0nrO4TqnW4BVBTQ2NGS3NgilvT/TEyxTST7LNyWV/T4tXDoD3fOgg==
@@ -60,6 +39,27 @@
     "@babel/helper-module-transforms" "^7.16.7"
     "@babel/helpers" "^7.16.7"
     "@babel/parser" "^7.16.12"
+    "@babel/template" "^7.16.7"
+    "@babel/traverse" "^7.16.10"
+    "@babel/types" "^7.16.8"
+    convert-source-map "^1.7.0"
+    debug "^4.1.0"
+    gensync "^1.0.0-beta.2"
+    json5 "^2.1.2"
+    semver "^6.3.0"
+    source-map "^0.5.0"
+
+"@babel/core@^7.1.0", "@babel/core@^7.12.3", "@babel/core@^7.7.2", "@babel/core@^7.8.0":
+  version "7.16.10"
+  resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.16.10.tgz#ebd034f8e7ac2b6bfcdaa83a161141a646f74b50"
+  integrity sha512-pbiIdZbCiMx/MM6toR+OfXarYix3uz0oVsnNtfdAGTcCTu3w/JGF8JhirevXLBJUu0WguSZI12qpKnx7EeMyLA==
+  dependencies:
+    "@babel/code-frame" "^7.16.7"
+    "@babel/generator" "^7.16.8"
+    "@babel/helper-compilation-targets" "^7.16.7"
+    "@babel/helper-module-transforms" "^7.16.7"
+    "@babel/helpers" "^7.16.7"
+    "@babel/parser" "^7.16.10"
     "@babel/template" "^7.16.7"
     "@babel/traverse" "^7.16.10"
     "@babel/types" "^7.16.8"
@@ -1515,12 +1515,12 @@
   resolved "https://registry.yarnpkg.com/@istanbuljs/schema/-/schema-0.1.3.tgz#e45e384e4b8ec16bce2fd903af78450f6bf7ec98"
   integrity sha512-ZXRY4jNvVgSVQ8DL3LTcakaAtXwTVUxE81hslsyD2AtoXW/wVob10HkOJ1X/pAlcI7D+2YoZKg5do8G/w6RYgA==
 
-"@jeromefitz/codestyle@8.0.4":
-  version "8.0.4"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/codestyle/-/codestyle-8.0.4.tgz#3c7e3607d1a3abb6380675d028d101b4e373564f"
-  integrity sha512-xhY6TO1KXXU7RkD+o1fvDaNyZaXpzxUyKmJeIAnWXl5latbNODgmRwMZDXb7bxR+luqEyq84nudEEP96Gn4xiQ==
+"@jeromefitz/codestyle@8.0.5":
+  version "8.0.5"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/codestyle/-/codestyle-8.0.5.tgz#ee9038435040360996f64e1ca5c3828147e966be"
+  integrity sha512-gWPw1pAg9B9EscQo55c972NcL32wzqCH9eD7wx17zgNXkwc9zETJ9KcEDwfYHfdFPYxki5JJw5A3mlvFbC1DAQ==
   dependencies:
-    "@babel/core" "7.16.10"
+    "@babel/core" "7.16.12"
     "@babel/eslint-parser" "7.16.5"
     "@typescript-eslint/eslint-plugin" "5.10.0"
     "@typescript-eslint/parser" "5.10.0"
@@ -1532,7 +1532,7 @@
     eslint-plugin-jsx-a11y "6.5.1"
     eslint-plugin-react "7.28.0"
     eslint-plugin-react-hooks "4.3.0"
-    lint-staged "12.2.2"
+    lint-staged "12.3.1"
     prettier "2.5.1"
     pretty-quick "3.1.3"
     typescript "4.5.5"
@@ -1579,10 +1579,10 @@
     smoothscroll-polyfill "0.4.4"
     swr "1.1.2"
 
-"@jeromefitz/git-cz@14.0.6":
-  version "14.0.6"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/git-cz/-/git-cz-14.0.6.tgz#d535b72b17950a9bd1968bc54b9912b40c3fca54"
-  integrity sha512-CSzODpy/hxziAZUC3suCH7Xl1TXjDwZYO2ShvFkCGIG9tMseCvj43tiaSQePgn5hPDhzaihDgbIT+0aHHl/7UA==
+"@jeromefitz/git-cz@14.0.7":
+  version "14.0.7"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/git-cz/-/git-cz-14.0.7.tgz#5830d3f0bf063a42c1fa269d1ddcb84e5c08c732"
+  integrity sha512-HZNsOYvudQU4PXnkAesD3u6IDFFO9g2KagprRI2Uw/BgPbtkBdWjNBtI/Ipj/57aoTbaC3LLKRzAABh4Mko7qA==
   dependencies:
     chalk "5.0.0"
     chalk-pipe "5.1.1"
@@ -1595,10 +1595,10 @@
     shellsync "0.2.2"
     word-wrap "1.2.3"
 
-"@jeromefitz/notion@2.0.5":
-  version "2.0.5"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/notion/-/notion-2.0.5.tgz#9c0fcba8d870f564aa3e0957841063b4aeeeceb2"
-  integrity sha512-IJ8qXSe7y5RqLMkvflAEIntcYDN+tLh8EQRz32kZcknW5hLQizrWVVt/6XixD5zEiNvUdAdp1R0XqDTO04LkZw==
+"@jeromefitz/notion@2.0.6":
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/notion/-/notion-2.0.6.tgz#fcc43f994279472a9bc68fa396127b868aac4e6d"
+  integrity sha512-tBInGb6RZoggP2/xDhnPceqGcGg0nyP3uGpzWw+SpWJH0LDi5sa4P4E3O1WROxR2lbBohChOS0az+nFM5Po/aA==
   dependencies:
     "@notionhq/client" "0.4.12"
     date-fns "2.28.0"
@@ -8041,10 +8041,10 @@ lines-and-columns@^1.1.6:
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.2.4.tgz#eca284f75d2965079309dc0ad9255abb2ebc1632"
   integrity sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==
 
-lint-staged@12.2.2:
-  version "12.2.2"
-  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-12.2.2.tgz#e03d93b41092316e0f38b37c9630da807aae3cca"
-  integrity sha512-bcHEoM1M/f+K1BYdHcEuIn8K+zMOSJR3mkny6PAuQiTgcSUcRbUWaUD6porAYypxF4k1vYZZ2HutZt1p94Z1jQ==
+lint-staged@12.3.1:
+  version "12.3.1"
+  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-12.3.1.tgz#d475b0c0d0a12d91dde58a429ac6268dea485f06"
+  integrity sha512-Ocht/eT+4/siWOZDJpNUKcKX2UeWW/pDbohJ4gRsrafAjBi79JK8kiNVk2ciIVNKdw0Q4ABptl2nr6uQAlRImw==
   dependencies:
     cli-truncate "^3.1.0"
     colorette "^2.0.16"
@@ -8052,25 +8052,25 @@ lint-staged@12.2.2:
     debug "^4.3.3"
     execa "^5.1.1"
     lilconfig "2.0.4"
-    listr2 "^3.13.5"
+    listr2 "^4.0.1"
     micromatch "^4.0.4"
     normalize-path "^3.0.0"
-    object-inspect "^1.11.1"
+    object-inspect "^1.12.0"
     string-argv "^0.3.1"
     supports-color "^9.2.1"
     yaml "^1.10.2"
 
-listr2@^3.13.5:
-  version "3.14.0"
-  resolved "https://registry.yarnpkg.com/listr2/-/listr2-3.14.0.tgz#23101cc62e1375fd5836b248276d1d2b51fdbe9e"
-  integrity sha512-TyWI8G99GX9GjE54cJ+RrNMcIFBfwMPxc3XTFiAYGN4s10hWROGtOg7+O6u6LE3mNkyld7RSLE6nrKBvTfcs3g==
+listr2@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/listr2/-/listr2-4.0.1.tgz#e050c1fd390276e191f582603d6e3531cd6fd2b3"
+  integrity sha512-D65Nl+zyYHL2jQBGmxtH/pU8koPZo5C8iCNE8EoB04RwPgQG1wuaKwVbeZv9LJpiH4Nxs0FCp+nNcG8OqpniiA==
   dependencies:
     cli-truncate "^2.1.0"
     colorette "^2.0.16"
     log-update "^4.0.0"
     p-map "^4.0.0"
     rfdc "^1.3.0"
-    rxjs "^7.5.1"
+    rxjs "^7.5.2"
     through "^2.3.8"
     wrap-ansi "^7.0.0"
 
@@ -9116,7 +9116,7 @@ object-hash@^2.1.1:
   resolved "https://registry.yarnpkg.com/object-hash/-/object-hash-2.2.0.tgz#5ad518581eefc443bd763472b8ff2e9c2c0d54a5"
   integrity sha512-gScRMn0bS5fH+IuwyIFgnh9zBdo4DV+6GhygmWM9HyNJSgS0hScp1f5vjtm7oIIOiT9trXrShAkLFSc2IqKNgw==
 
-object-inspect@^1.11.0, object-inspect@^1.11.1, object-inspect@^1.9.0:
+object-inspect@^1.11.0, object-inspect@^1.12.0, object-inspect@^1.9.0:
   version "1.12.0"
   resolved "https://registry.yarnpkg.com/object-inspect/-/object-inspect-1.12.0.tgz#6e2c120e868fd1fd18cb4f18c31741d0d6e776f0"
   integrity sha512-Ho2z80bVIvJloH+YzRmpZVQe87+qASmBUKZDWgx9cu+KDrX2ZDH/3tMy+gXbZETVGs2M8YdxObOh7XAtim9Y0g==
@@ -10312,7 +10312,7 @@ rxjs@^6.6.2:
   dependencies:
     tslib "^1.9.0"
 
-rxjs@^7.2.0, rxjs@^7.5.1:
+rxjs@^7.2.0, rxjs@^7.5.2:
   version "7.5.2"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-7.5.2.tgz#11e4a3a1dfad85dbf7fb6e33cbba17668497490b"
   integrity sha512-PwDt186XaL3QN5qXj/H9DGyHhP3/RYYgZZwqBv9Tv8rsAaiwFH1IsJJlcgD37J7UW5a6O67qX0KWKS3/pu0m4w==
