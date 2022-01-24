@@ -23,8 +23,8 @@
   },
   "scripts": {
     "----": "# @turbo scripts",
-    "build": "turbo run build",
-    "dev": "turbo run dev --no-cache --parallel --continue",
+    "build": "turbo run build --include-dependencies --no-deps",
+    "dev": "turbo run dev --no-cache --parallel --continue --include-dependencies --no-deps",
     "test": "turbo run test",
     "clean": "turbo run clean",
     "clean:install": "turbo run clean && ./scripts/clean.sh",
@@ -42,8 +42,8 @@
     "semantic-release": "turbo run semantic-release:mono --no-cache --parallel --continue",
     "----    ": "# @development",
     "branch": "git-cz -m branch --allow-empty",
-    "j:dev": "turbo run dev --scope=*jeromefitzgerald* --include-dependencies",
-    "j:start": "turbo run start --scope=*jeromefitzgerald* --include-dependencies"
+    "j:dev": "turbo run dev --scope=*jeromefitzgerald* --include-dependencies --no-deps",
+    "j:start": "turbo run start --scope=*jeromefitzgerald* --include-dependencies --no-deps"
   },
   "dependencies": {
     "lodash": "4.17.21"
