@@ -26,7 +26,9 @@ const isBranchMain = branchCurrent === 'main'
 //   latestCommitSubject.includes('[build]') ||
 //   latestCommitSubject.includes('[b]')
 
-const gitRemote = isCI ? 'origin' : 'origin'
+const gitRemote = isCI ? 'upstream' : 'origin'
+const debuggingGit = childProcess.execSync(`git remote -v`).toString().trim()
+
 const tag = childProcess
   .execSync(`git fetch ${gitRemote} --tags -f -q && git describe --tags --abbrev=0`)
   .toString()
@@ -45,4 +47,5 @@ const getReleaseInfo = (tag) => {
 module.exports.branchCurrent = branchCurrent
 module.exports.isBranchMain = isBranchMain
 module.exports.getReleaseInfo = getReleaseInfo
+module.exports.debuggingGit = debuggingGit
 module.exports.tag = tag

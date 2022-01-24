@@ -15,10 +15,14 @@ const withTM = require('next-transpile-modules')(['@jeromefitz/design-system'])
 
 const {
   branchCurrent,
+  debuggingGit,
   getReleaseInfo,
   isBranchMain,
   tag,
 } = require('../../config/versionInfo')
+
+console.dir(`debuggingGit`)
+console.dir(debuggingGit)
 
 // const getRedirects = require('./config/notion/website/getRedirects')
 
