@@ -44,57 +44,57 @@ if (process.env.NEXT_PUBLIC__SITE !== urlBaseCheck) {
   throw new Error(`process.env.NEXT_PUBLIC__SITE is not: ${urlBaseCheck}`)
 }
 
-// https://securityheaders.com
-const ContentSecurityPolicy = `
-  default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' *.youtube.com *.twitter.com cdn.usefathom.com *.jerandky.com *.jeromefitzgerald.com;
-  child-src *.youtube.com *.google.com *.twitter.com *.spotify.com;
-  style-src 'self' 'unsafe-inline' *.googleapis.com;
-  img-src 'self' * blob: data:;
-  object-src 'self' * blob: data:;
-  media-src 'none';
-  connect-src *;
-  font-src 'self';
-`
+// // https://securityheaders.com
+// const ContentSecurityPolicy = `
+//   default-src 'self';
+//   script-src 'self' 'unsafe-eval' 'unsafe-inline' *.youtube.com *.twitter.com cdn.usefathom.com *.jerandky.com *.jeromefitzgerald.com;
+//   child-src *.youtube.com *.google.com *.twitter.com *.spotify.com;
+//   style-src 'self' 'unsafe-inline' *.googleapis.com;
+//   img-src 'self' * blob: data:;
+//   object-src 'self' * blob: data:;
+//   media-src 'none';
+//   connect-src *;
+//   font-src 'self';
+// `
 
-const securityHeaders = [
-  // https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
-  {
-    key: 'Content-Security-Policy',
-    value: ContentSecurityPolicy.replace(/\n/g, ''),
-  },
-  // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy
-  {
-    key: 'Referrer-Policy',
-    value: 'origin-when-cross-origin',
-  },
-  // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
-  {
-    key: 'X-Frame-Options',
-    value: 'DENY',
-  },
-  // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options
-  {
-    key: 'X-Content-Type-Options',
-    value: 'nosniff',
-  },
-  // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-DNS-Prefetch-Control
-  {
-    key: 'X-DNS-Prefetch-Control',
-    value: 'on',
-  },
-  // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security
-  {
-    key: 'Strict-Transport-Security',
-    value: 'max-age=31536000; includeSubDomains; preload',
-  },
-  // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy
-  // Opt-out of Google FLoC: https://amifloced.org/
-  {
-    key: 'Permissions-Policy',
-    value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()',
-  },
-]
+// const securityHeaders = [
+//   // https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
+//   {
+//     key: 'Content-Security-Policy',
+//     value: ContentSecurityPolicy.replace(/\n/g, ''),
+//   },
+//   // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy
+//   {
+//     key: 'Referrer-Policy',
+//     value: 'origin-when-cross-origin',
+//   },
+//   // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
+//   {
+//     key: 'X-Frame-Options',
+//     value: 'DENY',
+//   },
+//   // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options
+//   {
+//     key: 'X-Content-Type-Options',
+//     value: 'nosniff',
+//   },
+//   // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-DNS-Prefetch-Control
+//   {
+//     key: 'X-DNS-Prefetch-Control',
+//     value: 'on',
+//   },
+//   // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security
+//   {
+//     key: 'Strict-Transport-Security',
+//     value: 'max-age=31536000; includeSubDomains; preload',
+//   },
+//   // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy
+//   // Opt-out of Google FLoC: https://amifloced.org/
+//   {
+//     key: 'Permissions-Policy',
+//     value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()',
+//   },
+// ]
 
 /**
  * @type {import('next').NextConfig}
@@ -119,14 +119,14 @@ const nextConfig = {
     serverComponents: false,
   },
   future: { strictPostcssConfiguration: true },
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: securityHeaders,
-      },
-    ]
-  },
+  // async headers() {
+  //   return [
+  //     {
+  //       source: '/(.*)',
+  //       headers: securityHeaders,
+  //     },
+  //   ]
+  // },
   images: {
     // deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     deviceSizes: [640, 1200, 1920],
@@ -149,9 +149,9 @@ const nextConfig = {
     formats: ['image/avif', 'image/webp'],
     // imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     imageSizes: [24, 64, 384],
-    // minimumCacheTTL: 31536000, // 1 year
+    minimumCacheTTL: 31536000, // 1 year
     // minimumCacheTTL: 18144000, // 1 month
-    minimumCacheTTL: 604800, // 1 week
+    // minimumCacheTTL: 604800, // 1 week
     // minimumCacheTTL: 86400, // 1 day
   },
   i18n: {

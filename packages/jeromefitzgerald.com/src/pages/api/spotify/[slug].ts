@@ -101,7 +101,7 @@ const spotifyApi = async (req: any, res: NextApiResponse) => {
           type: 'api',
         }
         // @cache(set) redis
-        if (result.data.is_playing || !!result?.data?.item?.artist) {
+        if (result.data.is_playing) {
           void redis.set(key, JSON.stringify(result.data), 'EX', evictionPolicy)
         }
         break
