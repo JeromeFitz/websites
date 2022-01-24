@@ -1111,12 +1111,11 @@
     smoothscroll-polyfill "0.4.4"
     swr "1.1.2"
 
-"@jeromefitz/git-cz@14.0.2":
-  version "14.0.2"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/git-cz/-/git-cz-14.0.2.tgz#95f4fffd05fd8b684039c72c594896cbdbbf0867"
-  integrity sha512-L/pjdVu9akHKigoeoDsj305n/zmPULaC0208Lz3cQdYf5ZSDxZ52jfnSeMjwhIJp6j9UHvcqLS2qrd/aWsssWQ==
+"@jeromefitz/git-cz@14.0.4":
+  version "14.0.4"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/git-cz/-/git-cz-14.0.4.tgz#4c25aa674a5409101735fc43ccd904753e34c451"
+  integrity sha512-v6azEcnrFbXOtB1Pzekg1UPsQn6irn52KewiEpb3rT5ifLeDiFKG9S+drDfnKRRT3XMuSTZRLD2fo2rkQCNlIA==
   dependencies:
-    "@jeromefitz/conventional-gitmoji" "*"
     chalk "5.0.0"
     chalk-pipe "5.1.1"
     fast-json-stable-stringify "2.1.0"
