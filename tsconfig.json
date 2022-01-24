@@ -52,6 +52,6 @@
       "~utils/*": ["src/utils/*"]
     }
   },
-  "include": ["src", "index.d.ts", "next-env.d.ts"],
+  "include": ["packages/**/*.ts", "packages/**/*.tsx"],
   "exclude": ["node_modules", "tests/*.test.ts"]
 }
