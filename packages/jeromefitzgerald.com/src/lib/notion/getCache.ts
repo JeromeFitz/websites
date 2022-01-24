@@ -34,6 +34,7 @@ const setCacheJson = (data, url) => {
 
 const setCacheRedis = (data, url) => {
   const key = `notion/${url}`
+  // console.dir(`key: ${key}`)
   void redis.set(key, JSON.stringify(data), 'EX', getTimeInSeconds(ms('30d')))
 }
 
@@ -56,5 +57,5 @@ const getCache = async (url) => {
   return cacheData
 }
 
-export { getCache, setCache }
+export { getCache, setCache, setCacheJson, setCacheRedis }
 export default getCache
