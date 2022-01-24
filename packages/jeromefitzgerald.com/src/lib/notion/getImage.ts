@@ -1,7 +1,7 @@
 import Slugger from 'github-slugger'
 import Redis from 'ioredis'
 
-import { getCache, setCacheJson } from './getCache'
+import { getCache, setCacheJson } from '~lib/notion/getCache'
 
 const redis = new Redis(process.env.REDIS_URL)
 const keyPrefix = 'image'
@@ -23,7 +23,6 @@ const getImage = async (url: string) => {
   // console.dir(`@cache(get) json`)
   cache = await getCache(key)
   if (cache) {
-    console.dir(cache)
     return cache
   }
 
@@ -31,7 +30,6 @@ const getImage = async (url: string) => {
   cache = await redis.get(key)
   if (cache) {
     // console.dir(`@cache(set) json`)
-    console.dir(cache)
     const data = JSON.parse(cache)
     setCacheJson(data, key)
     return data

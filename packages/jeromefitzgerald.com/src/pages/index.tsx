@@ -25,7 +25,7 @@ const Index = (props) => {
   const {
     content: contentFallback,
     info: infoFallback,
-    // images: imagesFallback,
+    images: imagesFallback,
     items: itemsFallback,
     // hasMeta,
     // isPage,
@@ -47,6 +47,7 @@ const Index = (props) => {
         info: infoFallback,
         content: contentFallback,
         items: itemsFallback,
+        images: imagesFallback,
       },
       revalidateOnFocus: true,
     }

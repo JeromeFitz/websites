@@ -4,7 +4,7 @@ const data = {
     object: 'page',
     id: '7f18c17d-c86e-429a-8505-80cdf874022b',
     created_time: '2021-11-20T15:35:00.000Z',
-    last_edited_time: '2021-11-22T04:50:00.000Z',
+    last_edited_time: '2021-12-14T20:25:00.000Z',
     cover: null,
     icon: { type: 'emoji', emoji: '🎭' },
     parent: {
@@ -23,7 +23,7 @@ const data = {
           name: 'Jerome Fitzgerald',
         },
       },
-      datePublished: { start: '2020-03-15', end: null },
+      datePublished: { start: '2020-03-15', end: null, time_zone: null },
       isIndexed: true,
       isPublished: true,
       relationShows__Events: null,
@@ -50,7 +50,7 @@ const data = {
       rollupShows__People_Writer: null,
       rollupShows__Tags: null,
       seoDescription:
-        'Shows that comedian Jerome Fitzgerald is in. Maybe these should be Acts. He does not know, SEO and Online Content eludes him. He is glad you found this page in spite of this.',
+        'Shows that comedian Jerome Fitzgerald is in. Maybe these should be Acts? Online content, when it is his, eludes him. (He is glad you found this page in spite of this.)',
       seoImage: {
         'httpscdnjeromefitzgeraldcomngop-productionwp-contentuploadssites220160827164902201605-cif-onstage_solo_no_audiencejpg':
           {
@@ -160,7 +160,7 @@ const data = {
         object: 'page',
         id: 'b7686689-cf19-41f6-a760-4cd7a04712a7',
         created_time: '2021-11-20T15:35:00.000Z',
-        last_edited_time: '2021-11-20T15:48:00.000Z',
+        last_edited_time: '2022-01-22T22:12:00.000Z',
         cover: {
           type: 'external',
           external: {
@@ -184,7 +184,11 @@ const data = {
               name: 'Jerome Fitzgerald',
             },
           },
-          datePublished: { start: '2020-03-08T00:22:00.000-05:00', end: null },
+          datePublished: {
+            start: '2020-03-08T00:22:00.000-05:00',
+            end: null,
+            time_zone: null,
+          },
           isIndexed: true,
           isPublished: true,
           relationShows__Events: [
@@ -260,7 +264,11 @@ const data = {
               name: 'Jerome Fitzgerald',
             },
           },
-          datePublished: { start: '2020-03-08T00:22:00.000-05:00', end: null },
+          datePublished: {
+            start: '2020-03-08T00:22:00.000-05:00',
+            end: null,
+            time_zone: null,
+          },
           isIndexed: true,
           isPublished: true,
           relationShows__Events: [],
@@ -352,7 +360,7 @@ const data = {
         object: 'page',
         id: '72acdd5e-ba6c-4271-97fb-7d4f7de2508a',
         created_time: '2021-11-20T15:35:00.000Z',
-        last_edited_time: '2021-11-20T16:00:00.000Z',
+        last_edited_time: '2021-11-23T19:17:00.000Z',
         cover: null,
         icon: { type: 'emoji', emoji: '💭' },
         parent: {
@@ -371,7 +379,11 @@ const data = {
               name: 'Jerome Fitzgerald',
             },
           },
-          datePublished: { start: '2020-03-08T00:22:00.000-05:00', end: null },
+          datePublished: {
+            start: '2020-03-08T00:22:00.000-05:00',
+            end: null,
+            time_zone: null,
+          },
           isIndexed: true,
           isPublished: true,
           relationShows__Events: [],
@@ -489,7 +501,11 @@ const data = {
               name: 'Jerome Fitzgerald',
             },
           },
-          datePublished: { start: '2020-03-08T00:22:00.000-05:00', end: null },
+          datePublished: {
+            start: '2020-03-08T00:22:00.000-05:00',
+            end: null,
+            time_zone: null,
+          },
           isIndexed: true,
           isPublished: true,
           relationShows__Events: [],
@@ -562,7 +578,11 @@ const data = {
               name: 'Jerome Fitzgerald',
             },
           },
-          datePublished: { start: '2020-03-08T00:22:00.000-05:00', end: null },
+          datePublished: {
+            start: '2020-03-08T00:22:00.000-05:00',
+            end: null,
+            time_zone: null,
+          },
           isIndexed: true,
           isPublished: true,
           relationShows__Events: [
@@ -645,7 +665,11 @@ const data = {
               name: 'Jerome Fitzgerald',
             },
           },
-          datePublished: { start: '2020-03-08T00:22:00.000-05:00', end: null },
+          datePublished: {
+            start: '2020-03-08T00:22:00.000-05:00',
+            end: null,
+            time_zone: null,
+          },
           isIndexed: true,
           isPublished: true,
           relationShows__Events: [
@@ -735,7 +759,11 @@ const data = {
               name: 'Jerome Fitzgerald',
             },
           },
-          datePublished: { start: '2020-03-08T00:22:00.000-05:00', end: null },
+          datePublished: {
+            start: '2020-03-08T00:22:00.000-05:00',
+            end: null,
+            time_zone: null,
+          },
           isIndexed: true,
           isPublished: true,
           relationShows__Events: [],
@@ -849,7 +877,11 @@ const data = {
               name: 'Jerome Fitzgerald',
             },
           },
-          datePublished: { start: '2020-03-08T00:22:00.000-05:00', end: null },
+          datePublished: {
+            start: '2020-03-08T00:22:00.000-05:00',
+            end: null,
+            time_zone: null,
+          },
           isIndexed: true,
           isPublished: true,
           relationShows__Events: [],
@@ -925,7 +957,11 @@ const data = {
               name: 'Jerome Fitzgerald',
             },
           },
-          datePublished: { start: '2020-03-08T00:22:00.000-05:00', end: null },
+          datePublished: {
+            start: '2020-03-08T00:22:00.000-05:00',
+            end: null,
+            time_zone: null,
+          },
           isIndexed: true,
           isPublished: true,
           relationShows__Events: [],
@@ -1030,10 +1066,17 @@ const data = {
               name: 'Jerome Fitzgerald',
             },
           },
-          datePublished: { start: '2020-03-08T00:22:00.000-05:00', end: null },
+          datePublished: {
+            start: '2020-03-08T00:22:00.000-05:00',
+            end: null,
+            time_zone: null,
+          },
           isIndexed: true,
           isPublished: true,
-          relationShows__Events: [],
+          relationShows__Events: [
+            '4e33d34e-6a1d-4a96-80e8-8edc8fdc319f',
+            '9b523949-b535-4fc1-af6e-c1cc021cde10',
+          ],
           relationShows__Events_Lineup: [],
           relationShows__People_Cast: [
             '1f3a43e1-66a5-41d9-b334-b65e459c174d',
@@ -1125,7 +1168,11 @@ const data = {
               name: 'Jerome Fitzgerald',
             },
           },
-          datePublished: { start: '2020-03-08T00:22:00.000-05:00', end: null },
+          datePublished: {
+            start: '2020-03-08T00:22:00.000-05:00',
+            end: null,
+            time_zone: null,
+          },
           isIndexed: true,
           isPublished: true,
           relationShows__Events: [
@@ -1227,7 +1274,11 @@ const data = {
               name: 'Jerome Fitzgerald',
             },
           },
-          datePublished: { start: '2020-03-08T00:22:00.000-05:00', end: null },
+          datePublished: {
+            start: '2020-03-08T00:22:00.000-05:00',
+            end: null,
+            time_zone: null,
+          },
           isIndexed: true,
           isPublished: true,
           relationShows__Events: ['4ff3a05a-6f56-483c-9a8a-8cd7068503db'],
@@ -1481,5 +1532,6 @@ const data = {
         url: 'https://cdn.jeromefitzgerald.com/ngop-production/wp-content/uploads/sites/2/2016/08/27164902/201605-cif-onstage_solo_no_audience.jpg',
       },
   },
+  debug: { type: 'cache', latency: 5 },
 }
 export default data

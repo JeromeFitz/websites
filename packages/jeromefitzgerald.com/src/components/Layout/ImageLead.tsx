@@ -4,10 +4,10 @@ import {
   Section,
   Skeleton,
 } from '@jeromefitz/design-system/components'
-import { useEffectOnce } from 'react-use'
-import useSWR, { useSWRConfig } from 'swr'
+import useSWR from 'swr'
 
 import { Breakout } from '~components/Container'
+import fetcher from '~lib/fetcher'
 
 import { Image, ImageBlur, ImageContainer } from './ImageLead.styles'
 
@@ -62,21 +62,20 @@ const ImageSkeleton = () => {
   )
 }
 
-const ImageLead = ({ breakout = true, description, image, imagesFallback }) => {
-  const { mutate } = useSWRConfig()
-  const { data: images } = useSWR('images', null)
-  useEffectOnce(() => {
-    void mutate('images', { ...images, ...imagesFallback }, true)
-  })
-  // @todo(external)
+const ImageLead = ({ breakout = true, description, image, images }) => {
   // @note(notion) this is based off of seoImage only at the moment
   // @note(image) check against the first key in `images` only (seoImage)
   const imageSlug = Object.keys(image)[0]
-  const imageData = !!images && images[imageSlug]
+  const url = image[imageSlug]?.url
+  const urlApi = !!url ? `/api/images?url=${url}` : null
+  const fallbackData = !!url && !!images ? images[imageSlug] : {}
+  const { data } = useSWR<any>(urlApi, fetcher, {
+    fallbackData,
+  })
 
   // @note(image) verify it has been optimized
   // @todo(image) fallback base64
-  const hasImage = !!imageData && !!imageData.base64
+  const hasImage = !!data && !!data?.base64
 
   if (!hasImage) {
     return null
@@ -88,9 +87,9 @@ const ImageLead = ({ breakout = true, description, image, imagesFallback }) => {
     <WrapComponent>
       <Container size="2">
         <ImageWithBackgroundBlur
-          base64={imageData?.base64}
+          base64={data?.base64}
           description={description}
-          image={imageData?.img}
+          image={data?.img}
           priority={true}
           slug={imageSlug}
         />

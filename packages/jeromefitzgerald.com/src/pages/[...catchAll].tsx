@@ -24,7 +24,7 @@ const CatchAll = (props) => {
   const {
     content: contentFallback,
     info: infoFallback,
-    // images: imagesFallback,
+    images: imagesFallback,
     items: itemsFallback,
     // hasMeta,
     // isPage,
@@ -42,6 +42,7 @@ const CatchAll = (props) => {
       fallbackData: {
         info: infoFallback,
         content: contentFallback,
+        images: imagesFallback,
         items: itemsFallback,
       },
       revalidateOnFocus: true,

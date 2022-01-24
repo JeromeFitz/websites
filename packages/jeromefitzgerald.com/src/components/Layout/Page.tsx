@@ -1,7 +1,5 @@
 import _size from 'lodash/size'
 import dynamic from 'next/dynamic'
-import { useEffectOnce } from 'react-use'
-import useSWR, { useSWRConfig } from 'swr'
 
 import Layout, { ImageLead } from '~components/Layout'
 import Meta from '~components/Meta'
@@ -24,7 +22,7 @@ const Page = ({ data, ...props }) => {
   const {
     // content: contentFallback,
     // info: infoFallback,
-    images: imagesFallback,
+    // images: imagesFallback,
     // items: itemsFallback,
     // hasMeta,
     isPage,
@@ -47,11 +45,11 @@ const Page = ({ data, ...props }) => {
   /**
    * @images
    */
-  const { mutate } = useSWRConfig()
-  const { data: images } = useSWR('images', { fallbackData: imagesFallback })
-  useEffectOnce(() => {
-    void mutate('images', { ...images, ...imagesFallback }, true)
-  })
+  // const { mutate } = useSWRConfig()
+  // const { data: images } = useSWR('images', { fallbackData: imagesFallback })
+  // useEffectOnce(() => {
+  //   void mutate('images', { ...images, ...imagesFallback }, true)
+  // })
 
   // console.dir(`images`)
   // console.dir(images)
@@ -59,7 +57,7 @@ const Page = ({ data, ...props }) => {
   /**
    * @data
    */
-  const { info = null, content = null, items = null } = data
+  const { info = null, content = null, items = null, images = null } = data
 
   const isInfoObjectPage = !!info && info?.object === 'page'
 
@@ -86,7 +84,7 @@ const Page = ({ data, ...props }) => {
           <ImageLead
             description={properties?.seoImageDescription || ''}
             image={properties?.seoImage}
-            imagesFallback={imagesFallback}
+            images={images}
             key={`image-lead--${id}`}
           />
         )}
