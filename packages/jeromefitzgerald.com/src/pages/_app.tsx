@@ -132,6 +132,24 @@ const globalStyles = globalCss({
   },
 })
 
+const message = [
+  ``,
+  `[ 👋️ ] Hiya and Welcome`,
+  ``,
+  `[ 🏷️ ] v${process.env.NEXT_PUBLIC__GIT_VERSION}`,
+  !process.env.NEXT_PUBLIC__GIT_IS_BRANCH_MAIN
+    ? `[ 🧪️ ] ${
+        !!process.env.NEXT_PUBLIC__GIT_PRERELEASE
+          ? process.env.NEXT_PUBLIC__GIT_PRERELEASE
+          : process.env.NEXT_PUBLIC__GIT_BRANCH_CURRENT
+      }`
+    : ``,
+  ` `,
+  `[ 🐙️ ] https://github.com/JeromeFitz`,
+  `[ 🐦️ ] https://twitter.com/JeromeFitz`,
+  ``,
+]
+
 function MyApp({ Component, pageProps, router }: AppProps) {
   globalStyles()
   useAnalytics()
@@ -139,6 +157,8 @@ function MyApp({ Component, pageProps, router }: AppProps) {
   React.useEffect(() => {
     document?.body?.classList?.remove('loading')
   }, [])
+
+  message.map((msg) => console.log(msg))
 
   return (
     <>

@@ -2,6 +2,7 @@ import {
   Avatar,
   Box,
   BoxLink,
+  Emoji,
   Flex,
   Grid,
   Link,
@@ -344,6 +345,35 @@ const FooterImpl = () => {
               (In-progress) Site by
               <br />
               <strong>Nice Group of People, LLC</strong>
+              <Text
+                size="1"
+                as="span"
+                css={{
+                  color: '$gray11',
+                  fontFamily: '$mono',
+                  my: '$1',
+                }}
+              >
+                <Emoji character={`🏷️`} margin={true} />
+                {` `}v{process.env.NEXT_PUBLIC__GIT_VERSION}
+              </Text>
+              {!process.env.NEXT_PUBLIC__GIT_IS_BRANCH_MAIN && (
+                <Text
+                  size="1"
+                  as="span"
+                  css={{
+                    color: '$gray11',
+                    fontFamily: '$mono',
+                    my: '$1',
+                  }}
+                >
+                  <Emoji character={`🧪️`} margin={true} />
+                  {` `}
+                  {!!process.env.NEXT_PUBLIC__GIT_PRERELEASE
+                    ? process.env.NEXT_PUBLIC__GIT_PRERELEASE
+                    : process.env.NEXT_PUBLIC__GIT_BRANCH_CURRENT}
+                </Text>
+              )}
             </Text>
           </Flex>
         </Grid>

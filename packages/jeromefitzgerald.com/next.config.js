@@ -7,10 +7,18 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 })
 const { withPlaiceholder } = require('@plaiceholder/next')
 const isCI = require('is-ci')
+const _size = require('lodash/size')
 const { withPlugins } = require('next-compose-plugins')
 const withTM = require('next-transpile-modules')(['@jeromefitz/design-system'])
 
 !isCI && require('dotenv').config({ path: './.env' })
+
+const {
+  branchCurrent,
+  getReleaseInfo,
+  isBranchMain,
+  tag,
+} = require('../../config/versionInfo')
 
 // const getRedirects = require('./config/notion/website/getRedirects')
 
@@ -99,10 +107,20 @@ const securityHeaders = [
 /**
  * @type {import('next').NextConfig}
  **/
+const { prerelease, version } = getReleaseInfo(tag)
 const nextConfig = {
   amp: false,
   assetPrefix: '',
   distDir: './.next',
+  env: {
+    NEXT_PUBLIC__GIT_VERSION: version,
+    NEXT_PUBLIC__GIT_PRERELEASE: !!prerelease ? prerelease : null,
+    NEXT_PUBLIC__GIT_IS_BRANCH_MAIN: isBranchMain,
+    NEXT_PUBLIC__GIT_BRANCH_CURRENT:
+      _size(branchCurrent.split('/')) > 1
+        ? branchCurrent.split('/')[1]
+        : branchCurrent,
+  },
   eslint: {
     // @note(eslint) we use @jeromefitz/codestyle opt out of next.js
     build: false,
