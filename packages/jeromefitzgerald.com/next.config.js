@@ -12,41 +12,44 @@ const _size = require('lodash/size')
 const { withPlugins } = require('next-compose-plugins')
 const withTM = require('next-transpile-modules')(['@jeromefitz/design-system'])
 
-// const { getReleaseInfo } = require('../../config/getReleaseInfo')
-
-// function getBranch(branch) {
-//   if (_size(branch.split('/')) > 1) {
-//     return branch.split('/')[1]
-//   }
-
-//   return branch
-// }
-
-// const branch = getBranch(
-//   process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF || 'chore/develop'
-// )
-
-// function isBranchMain(branch) {
-//   return branch === 'main'
-// }
-
 /**
  * @hack not great ... but it works
  * @ref https://github.com/vercel/next.js/discussions/12097
  */
-// let buildInfo = {}
-// let hack = (async () => {
-//   let info = await getReleaseInfo()
-//   buildInfo.branch = branch
-//   buildInfo.isBranchMain = isBranchMain(branch)
-//   buildInfo.prerelease = info.prerelease
-//   buildInfo.updateTime = Date.now()
-//   buildInfo.version = info.version
-//   //
-//   buildInfo.major = info.major
-//   buildInfo.minor = info.version
-//   buildInfo.patch = info.patch
-// })()
+const { getReleaseInfo } = require('../../config/getReleaseInfo')
+
+function getBranch(branch) {
+  if (_size(branch.split('/')) > 1) {
+    return branch.split('/')[1]
+  }
+
+  return branch
+}
+
+const branch = getBranch(
+  process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF || 'chore/develop'
+)
+
+function isBranchMain(branch) {
+  return branch === 'main'
+}
+let buildInfo = {}
+// @ts-ignore
+let hack = (async () => {
+  let info = await getReleaseInfo()
+  buildInfo.branch = branch
+  buildInfo.isBranchMain = isBranchMain(branch)
+  buildInfo.prerelease = info.prerelease
+  buildInfo.updateTime = Date.now()
+  buildInfo.version = info.version
+  //
+  buildInfo.major = info.major
+  buildInfo.minor = info.version
+  buildInfo.patch = info.patch
+})().catch(() => {})
+/**
+ * ----------------------------------------------
+ */
 
 // const getRedirects = require('./config/notion/website/getRedirects')
 
@@ -203,9 +206,9 @@ const nextConfig = {
   // rewrites() {
   //   return getRedirects
   // },
-  // publicRuntimeConfig: {
-  //   buildInfo,
-  // },
+  publicRuntimeConfig: {
+    buildInfo,
+  },
   // serverRuntimeConfig: {},
   swcMinify: true,
   useFileSystemPublicRoutes: true, // false will block './pages' as router

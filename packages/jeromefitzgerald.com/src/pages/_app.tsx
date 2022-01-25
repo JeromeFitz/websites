@@ -8,7 +8,7 @@ import {
 import { globalCss, darkTheme } from '@jeromefitz/design-system/stitches.config'
 import { ThemeProvider } from 'next-themes'
 import type { AppProps, NextWebVitalsMetric } from 'next/app'
-// import getConfig from 'next/config'
+import getConfig from 'next/config'
 import Head from 'next/head'
 import pluralize from 'pluralize'
 import * as React from 'react'
@@ -23,7 +23,7 @@ import { MediaContextProvider } from '~context/Media'
 import { useAnalytics } from '~lib/analytics'
 import { IMAGE__FALLBACKS__SHOWS } from '~lib/constants'
 
-// const { publicRuntimeConfig } = getConfig()
+const { publicRuntimeConfig } = getConfig()
 // const { branch, isBranchMain, prerelease, version } = publicRuntimeConfig?.buildInfo
 
 pluralize.addPluralRule(/cast$/i, 'cast')
@@ -136,24 +136,25 @@ const globalStyles = globalCss({
   },
 })
 
-const message = [
-  ``,
-  `[ 👋️ ] Hiya`,
-  // ``,
-  // `[ 🏷️ ] v${version}`,
-  // !isBranchMain ? `[ 🧪️ ] ${!!prerelease ? prerelease : branch}` : ``,
-  // ` `,
-  `[ 🐙️ ] https://github.com/JeromeFitz`,
-  `[ 🐦️ ] https://twitter.com/JeromeFitz`,
-  ``,
-]
-
 function MyApp({ Component, pageProps, router }: AppProps) {
   globalStyles()
   useAnalytics()
 
   React.useEffect(() => {
     document?.body?.classList?.remove('loading')
+    const { branch, isBranchMain, prerelease, version } =
+      publicRuntimeConfig?.buildInfo
+    const message = [
+      ``,
+      `[ 👋️ ] Hiya`,
+      ``,
+      `[ 🏷️ ] v${version}`,
+      !isBranchMain ? `[ 🧪️ ] ${!!prerelease ? prerelease : branch}` : ``,
+      ` `,
+      `[ 🐙️ ] https://github.com/JeromeFitz`,
+      `[ 🐦️ ] https://twitter.com/JeromeFitz`,
+      ``,
+    ]
     message.map((msg) => console.log(msg))
   }, [])
 
