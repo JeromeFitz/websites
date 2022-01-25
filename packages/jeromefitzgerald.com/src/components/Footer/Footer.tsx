@@ -30,7 +30,7 @@ import dynamic from 'next/dynamic'
 import NextLink from 'next/link'
 import * as React from 'react'
 
-import IconLinked from '~components/IconLinked'
+import IconLink from '~components/IconLink'
 
 const NowPlayingWithNoSSR = dynamic(() => import('~components/NowPlaying'), {
   ssr: false,
@@ -206,7 +206,7 @@ const FooterImpl = () => {
             <ul>
               <li>
                 <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <IconLinked
+                  <IconLink
                     href="/colophon"
                     css={{ display: 'inline-flex', alignItems: 'center' }}
                     variant="subtle"
@@ -215,12 +215,12 @@ const FooterImpl = () => {
                       <InfoCircledIcon />
                     </Box>
                     Colophon
-                  </IconLinked>
+                  </IconLink>
                 </Text>
               </li>
               {/* <li>
                 <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <IconLinked
+                  <IconLink
                     href="/contact"
                     css={{ display: 'inline-flex', alignItems: 'center' }}
                     variant="subtle"
@@ -229,12 +229,12 @@ const FooterImpl = () => {
                       <ChatBubbleIcon />
                     </Box>
                     Contact
-                  </IconLinked>
+                  </IconLink>
                 </Text>
               </li> */}
               <li>
                 <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <IconLinked
+                  <IconLink
                     href="https://github.com/JeromeFitz"
                     target="_blank"
                     css={{ display: 'inline-flex', alignItems: 'center' }}
@@ -247,12 +247,12 @@ const FooterImpl = () => {
                     <Flex as="span" css={{ color: '$slate8', ml: '$1' }}>
                       <ExternalLinkIcon />
                     </Flex>
-                  </IconLinked>
+                  </IconLink>
                 </Text>
               </li>
               <li>
                 <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <IconLinked
+                  <IconLink
                     href="https://instagram.com/JeromeFitz"
                     target="_blank"
                     css={{ display: 'inline-flex', alignItems: 'center' }}
@@ -265,12 +265,12 @@ const FooterImpl = () => {
                     <Flex as="span" css={{ color: '$slate8', ml: '$1' }}>
                       <ExternalLinkIcon />
                     </Flex>
-                  </IconLinked>
+                  </IconLink>
                 </Text>
               </li>
               <li>
                 <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <IconLinked
+                  <IconLink
                     href="https://www.linkedin.com/in/jeromefitzgerald/"
                     target="_blank"
                     css={{ display: 'inline-flex', alignItems: 'center' }}
@@ -283,12 +283,12 @@ const FooterImpl = () => {
                     <Flex as="span" css={{ color: '$slate8', ml: '$1' }}>
                       <ExternalLinkIcon />
                     </Flex>
-                  </IconLinked>
+                  </IconLink>
                 </Text>
               </li>
               <li>
                 <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <IconLinked
+                  <IconLink
                     href="https://twitter.com/JeromeFitz"
                     target="_blank"
                     css={{ display: 'inline-flex', alignItems: 'center' }}
@@ -301,7 +301,7 @@ const FooterImpl = () => {
                     <Flex as="span" css={{ color: '$slate8', ml: '$1' }}>
                       <ExternalLinkIcon />
                     </Flex>
-                  </IconLinked>
+                  </IconLink>
                 </Text>
               </li>
             </ul>

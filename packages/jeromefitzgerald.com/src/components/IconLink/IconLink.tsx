@@ -1,5 +1,5 @@
 // import { isObject } from '@jeromefitz/utils'
-import { IconLink } from '@jeromefitz/design-system/components'
+import { Link } from '@jeromefitz/design-system/components'
 import _startsWith from 'lodash/startsWith'
 import NextLink from 'next/link'
 
@@ -14,9 +14,9 @@ const getText = (text: any) => (isObject(text) ? text.props.children : text)
 const LinkExternal = (props: any) => {
   const { children, target } = props
   return (
-    <IconLink rel="noopener" target={target || '_blank'} {...props}>
+    <Link rel="noopener" target={target || '_blank'} type="icon" {...props}>
       {children}
-    </IconLink>
+    </Link>
   )
 }
 
@@ -26,7 +26,9 @@ const LinkInternal = (props: any) => {
   const text = getText(children)
   return (
     <NextLink as={link.as} href={link.href}>
-      <IconLink {...props}>{text}</IconLink>
+      <Link type="icon" {...props}>
+        {text}
+      </Link>
     </NextLink>
   )
 }
