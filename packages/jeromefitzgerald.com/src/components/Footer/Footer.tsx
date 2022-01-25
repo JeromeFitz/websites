@@ -2,6 +2,7 @@ import {
   Avatar,
   Box,
   BoxLink,
+  Emoji,
   Flex,
   Grid,
   Link,
@@ -24,6 +25,7 @@ import {
   Link1Icon,
   TwitterLogoIcon,
 } from '@radix-ui/react-icons'
+import getConfig from 'next/config'
 import dynamic from 'next/dynamic'
 import NextLink from 'next/link'
 import * as React from 'react'
@@ -33,6 +35,9 @@ import IconLink from '~components/IconLink'
 const NowPlayingWithNoSSR = dynamic(() => import('~components/NowPlaying'), {
   ssr: false,
 })
+
+const { publicRuntimeConfig } = getConfig()
+const { branch, isBranchMain, prerelease, version } = publicRuntimeConfig?.buildInfo
 
 const pages = [
   {
@@ -344,6 +349,33 @@ const FooterImpl = () => {
               (In-progress) Site by
               <br />
               <strong>Nice Group of People, LLC</strong>
+              <Text
+                size="1"
+                as="span"
+                css={{
+                  color: '$gray11',
+                  fontFamily: '$mono',
+                  my: '$1',
+                }}
+              >
+                <Emoji character={`🏷️`} margin={true} />
+                {` `}v{version}
+              </Text>
+              {!isBranchMain && (
+                <Text
+                  size="1"
+                  as="span"
+                  css={{
+                    color: '$gray11',
+                    fontFamily: '$mono',
+                    my: '$1',
+                  }}
+                >
+                  <Emoji character={`🧪️`} margin={true} />
+                  {` `}
+                  {!!prerelease ? prerelease : branch}
+                </Text>
+              )}
             </Text>
           </Flex>
         </Grid>

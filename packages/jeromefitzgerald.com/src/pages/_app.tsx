@@ -8,6 +8,7 @@ import {
 import { globalCss, darkTheme } from '@jeromefitz/design-system/stitches.config'
 import { ThemeProvider } from 'next-themes'
 import type { AppProps, NextWebVitalsMetric } from 'next/app'
+import getConfig from 'next/config'
 import Head from 'next/head'
 import pluralize from 'pluralize'
 import * as React from 'react'
@@ -21,6 +22,9 @@ import { ManagedUIContext } from '~context/ManagedUI'
 import { MediaContextProvider } from '~context/Media'
 import { useAnalytics } from '~lib/analytics'
 import { IMAGE__FALLBACKS__SHOWS } from '~lib/constants'
+
+const { publicRuntimeConfig } = getConfig()
+// const { branch, isBranchMain, prerelease, version } = publicRuntimeConfig?.buildInfo
 
 pluralize.addPluralRule(/cast$/i, 'cast')
 pluralize.addPluralRule(/emeritus$/i, 'emeritus')
@@ -138,7 +142,25 @@ function MyApp({ Component, pageProps, router }: AppProps) {
 
   React.useEffect(() => {
     document?.body?.classList?.remove('loading')
+    const { branch, isBranchMain, prerelease, version } =
+      publicRuntimeConfig?.buildInfo
+    const message = [
+      ``,
+      `[ 👋️ ] Hiya`,
+      ``,
+      `[ 🏷️ ] v${version}`,
+      !isBranchMain ? `[ 🧪️ ] ${!!prerelease ? prerelease : branch}` : ``,
+      ` `,
+      `[ 🐙️ ] https://github.com/JeromeFitz`,
+      `[ 🐦️ ] https://twitter.com/JeromeFitz`,
+      ``,
+    ]
+    message.map((msg) => console.log(msg))
   }, [])
+
+  // if (typeof window !== undefined) {
+  //   message.map((msg) => console.log(msg))
+  // }
 
   return (
     <>

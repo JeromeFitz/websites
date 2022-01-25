@@ -1,3 +1,3 @@
-const refactor = ['esm-from-packages']
+const refactor = []
 
 module.exports = refactor
