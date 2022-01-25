@@ -1531,10 +1531,10 @@
   resolved "https://registry.yarnpkg.com/@jeromefitz/conventional-gitmoji/-/conventional-gitmoji-2.0.6.tgz#0d5f110d634a548e58e8e5017273544f2fa2a3de"
   integrity sha512-dCOq+MJlbBamw0O6MiE5o/Zao6SMeo3uEXxrSHW2Ok9IvU6jrXYFjL2uB9UXSQETpMCpMj1bBwrk1ClGN2GxBw==
 
-"@jeromefitz/design-system@1.1.2":
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/design-system/-/design-system-1.1.2.tgz#793e03140b6ee390f65b73acd5bfcb4a9398ccee"
-  integrity sha512-BCVYtuvnmksoTWGOANou7a1UmX0dmmW1voHTtYG3mO6vYml5M/6juRkzpj0rIZgj9AN1I3/fTkQuEDiOwE3lng==
+"@jeromefitz/design-system@1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/design-system/-/design-system-1.2.0.tgz#96aa5a6d3067880c815c9586f6b8585e6407c2a1"
+  integrity sha512-heq0JKmWw8B1pg1um5WdyzjypkSfuNWda3KaKkuKBMLiRW6kYAWKCeUDAUpiLMCHNfa2PFICHITDpg1wQDQl9g==
   dependencies:
     "@radix-ui/colors" "0.1.8"
     "@radix-ui/react-accessible-icon" "0.1.3"

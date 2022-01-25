@@ -2,6 +2,7 @@ import { TagIcon } from '@heroicons/react/outline'
 import {
   Box,
   BoxGrab,
+  Breakout,
   Carousel,
   CarouselSlideList,
   CarouselSlide,
@@ -26,7 +27,6 @@ import _size from 'lodash/size'
 import * as React from 'react'
 import _title from 'title'
 
-import { Breakout } from '~components/Container'
 import fetcher from '~lib/fetcher'
 
 import { backgrounds } from './index.props'

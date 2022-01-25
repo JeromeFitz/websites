@@ -1,4 +1,5 @@
 import {
+  Breakout,
   Caption,
   Container,
   Section,
@@ -7,7 +8,6 @@ import {
 import _isEmpty from 'lodash/isEmpty'
 import useSWR from 'swr'
 
-import { Breakout } from '~components/Container'
 import fetcher from '~lib/fetcher'
 
 import { Image, ImageBlur, ImageContainer } from './ImageLead.styles'
@@ -84,7 +84,8 @@ const ImageLead = ({ breakout = true, description, image, images }) => {
     return null
   }
 
-  const WrapComponent = breakout ? Breakout : Section
+  // @todo(types)
+  const WrapComponent: any = breakout ? Breakout : Section
 
   return (
     <WrapComponent>

@@ -1,6 +1,7 @@
 import {
   Badge,
   Box,
+  Breakout,
   Grid,
   Emoji,
   Paragraph,
@@ -26,7 +27,6 @@ import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 import * as React from 'react'
 
-import { Breakout } from '~components/Container'
 import { ImageWithBackgroundBlur } from '~components/Layout/ImageLead'
 import { notionConfig } from '~config/websites'
 import { IMAGE__PLACEHOLDER } from '~lib/constants'
