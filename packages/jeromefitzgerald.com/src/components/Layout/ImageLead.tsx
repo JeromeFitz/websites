@@ -84,7 +84,8 @@ const ImageLead = ({ breakout = true, description, image, images }) => {
     return null
   }
 
-  const WrapComponent = breakout ? Breakout : Section
+  // @todo(types)
+  const WrapComponent: any = breakout ? Breakout : Section
 
   return (
     <WrapComponent>
