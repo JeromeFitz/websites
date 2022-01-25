@@ -41,7 +41,7 @@
     "@artsy/fresnel": "3.2.1",
     "@bigheads/core": "0.3.3",
     "@heroicons/react": "1.0.5",
-    "@jeromefitz/design-system": "1.1.2",
+    "@jeromefitz/design-system": "1.2.0",
     "@jeromefitz/notion": "2.0.6",
     "@jeromefitz/spotify": "2.1.5",
     "@jeromefitz/utils": "1.0.4",
