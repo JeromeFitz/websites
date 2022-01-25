@@ -1,6 +1,7 @@
 import {
   Badge,
   Box,
+  Breakout,
   Grid,
   Paragraph,
   Spacer,
@@ -21,7 +22,6 @@ import _map from 'lodash/map'
 import NextLink from 'next/link'
 import * as React from 'react'
 
-import { Breakout } from '~components/Container'
 import { ImageWithBackgroundBlur } from '~components/Layout/ImageLead'
 import { IMAGE__PLACEHOLDER } from '~lib/constants'
 
