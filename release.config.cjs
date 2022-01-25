@@ -4,8 +4,8 @@ const _map = require('lodash/map.js')
 
 !isCI && require('dotenv').config({ path: './.env' })
 
+const releaseBranchTypes = require('./config/release-branch-types/index.cjs')
 const { name } = require('./package.json')
-const releaseBranchTypes = require('./src/config/release-branch-types/index.cjs')
 
 const plugins = release.plugins
 
@@ -61,15 +61,16 @@ plugins.map((plugin, pluginIndex) => {
   })
 })
 
-const config = {
+const releaseConfig = {
   ...release,
   branches,
   // ci,
   // dryRun,
   extends: _extends,
   plugins,
-  repositoryUrl: `https://github.com/${name.replace('@', '')}`,
+  // repositoryUrl: `https://github.com/${name.replace('@', '')}`,
+  repositoryUrl: `https://github.com/jeromefitz/jeromefitzgerald.com`,
   tagFormat: 'website-v${version}',
 }
 
-module.exports = config
+module.exports = { releaseConfig }
