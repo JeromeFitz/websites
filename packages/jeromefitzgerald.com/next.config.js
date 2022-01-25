@@ -12,40 +12,41 @@ const _size = require('lodash/size')
 const { withPlugins } = require('next-compose-plugins')
 const withTM = require('next-transpile-modules')(['@jeromefitz/design-system'])
 
-const { getReleaseInfo } = require('../../config/versionInfo')
+// const { getReleaseInfo } = require('../../config/getReleaseInfo')
 
-function getBranch(branch) {
-  if (_size(branch.split('/')) > 1) {
-    return branch.split('/')[1]
-  }
+// function getBranch(branch) {
+//   if (_size(branch.split('/')) > 1) {
+//     return branch.split('/')[1]
+//   }
 
-  return branch
-}
+//   return branch
+// }
 
-const branch = getBranch(
-  process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF || 'chore/develop'
-)
+// const branch = getBranch(
+//   process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF || 'chore/develop'
+// )
 
-function isBranchMain(branch) {
-  return branch === 'main'
-}
+// function isBranchMain(branch) {
+//   return branch === 'main'
+// }
 
 /**
- * @hack this is disgusting but ... it works.
+ * @hack not great ... but it works
+ * @ref https://github.com/vercel/next.js/discussions/12097
  */
-const buildInfo = {}
-let hack = (async () => {
-  let info = await getReleaseInfo()
-  buildInfo.branch = branch
-  buildInfo.isBranchMain = isBranchMain(branch)
-  buildInfo.prerelease = info.prerelease
-  buildInfo.updateTime = Date.now()
-  buildInfo.version = info.version
-  //
-  buildInfo.major = info.major
-  buildInfo.minor = info.version
-  buildInfo.patch = info.patch
-})()
+// let buildInfo = {}
+// let hack = (async () => {
+//   let info = await getReleaseInfo()
+//   buildInfo.branch = branch
+//   buildInfo.isBranchMain = isBranchMain(branch)
+//   buildInfo.prerelease = info.prerelease
+//   buildInfo.updateTime = Date.now()
+//   buildInfo.version = info.version
+//   //
+//   buildInfo.major = info.major
+//   buildInfo.minor = info.version
+//   buildInfo.patch = info.patch
+// })()
 
 // const getRedirects = require('./config/notion/website/getRedirects')
 
@@ -202,10 +203,10 @@ const nextConfig = {
   // rewrites() {
   //   return getRedirects
   // },
-  publicRuntimeConfig: {
-    ...buildInfo,
-  },
-  serverRuntimeConfig: {},
+  // publicRuntimeConfig: {
+  //   buildInfo,
+  // },
+  // serverRuntimeConfig: {},
   swcMinify: true,
   useFileSystemPublicRoutes: true, // false will block './pages' as router
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
