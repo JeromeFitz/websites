@@ -25,6 +25,7 @@ import {
   Link1Icon,
   TwitterLogoIcon,
 } from '@radix-ui/react-icons'
+import getConfig from 'next/config'
 import dynamic from 'next/dynamic'
 import NextLink from 'next/link'
 import * as React from 'react'
@@ -34,6 +35,9 @@ import IconLink from '~components/IconLink'
 const NowPlayingWithNoSSR = dynamic(() => import('~components/NowPlaying'), {
   ssr: false,
 })
+
+const { publicRuntimeConfig } = getConfig()
+const { branch, isBranchMain, prerelease, version } = publicRuntimeConfig
 
 const pages = [
   {
@@ -355,9 +359,9 @@ const FooterImpl = () => {
                 }}
               >
                 <Emoji character={`🏷️`} margin={true} />
-                {` `}v{process.env.NEXT_PUBLIC__GIT_VERSION}
+                {` `}v{version}
               </Text>
-              {!process.env.NEXT_PUBLIC__GIT_IS_BRANCH_MAIN && (
+              {!isBranchMain && (
                 <Text
                   size="1"
                   as="span"
@@ -369,9 +373,7 @@ const FooterImpl = () => {
                 >
                   <Emoji character={`🧪️`} margin={true} />
                   {` `}
-                  {!!process.env.NEXT_PUBLIC__GIT_PRERELEASE
-                    ? process.env.NEXT_PUBLIC__GIT_PRERELEASE
-                    : process.env.NEXT_PUBLIC__GIT_BRANCH_CURRENT}
+                  {!!prerelease ? prerelease : branch}
                 </Text>
               )}
             </Text>

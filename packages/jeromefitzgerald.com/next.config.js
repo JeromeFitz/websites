@@ -1,28 +1,51 @@
 /* eslint-disable import/order */
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path')
+const isCI = require('is-ci')
+!isCI && require('dotenv').config({ path: './.env' })
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
 const { withPlaiceholder } = require('@plaiceholder/next')
-const isCI = require('is-ci')
 const _size = require('lodash/size')
 const { withPlugins } = require('next-compose-plugins')
 const withTM = require('next-transpile-modules')(['@jeromefitz/design-system'])
 
-!isCI && require('dotenv').config({ path: './.env' })
+const { getReleaseInfo } = require('../../config/versionInfo')
 
-const {
-  branchCurrent,
-  debuggingGit,
-  getReleaseInfo,
-  isBranchMain,
-  tag,
-} = require('../../config/versionInfo')
+function getBranch(branch) {
+  if (_size(branch.split('/')) > 1) {
+    return branch.split('/')[1]
+  }
 
-console.dir(`debuggingGit`)
-console.dir(debuggingGit)
+  return branch
+}
+
+const branch = getBranch(
+  process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF || 'chore/develop'
+)
+
+function isBranchMain(branch) {
+  return branch === 'main'
+}
+
+/**
+ * @hack this is disgusting but ... it works.
+ */
+const buildInfo = {}
+let hack = (async () => {
+  let info = await getReleaseInfo()
+  buildInfo.branch = branch
+  buildInfo.isBranchMain = isBranchMain(branch)
+  buildInfo.prerelease = info.prerelease
+  buildInfo.updateTime = Date.now()
+  buildInfo.version = info.version
+  //
+  buildInfo.major = info.major
+  buildInfo.minor = info.version
+  buildInfo.patch = info.patch
+})()
 
 // const getRedirects = require('./config/notion/website/getRedirects')
 
@@ -111,20 +134,12 @@ const securityHeaders = [
 /**
  * @type {import('next').NextConfig}
  **/
-const { prerelease, version } = getReleaseInfo(tag)
+
 const nextConfig = {
   amp: false,
   assetPrefix: '',
   distDir: './.next',
-  env: {
-    NEXT_PUBLIC__GIT_VERSION: version,
-    NEXT_PUBLIC__GIT_PRERELEASE: !!prerelease ? prerelease : null,
-    NEXT_PUBLIC__GIT_IS_BRANCH_MAIN: isBranchMain,
-    NEXT_PUBLIC__GIT_BRANCH_CURRENT:
-      _size(branchCurrent.split('/')) > 1
-        ? branchCurrent.split('/')[1]
-        : branchCurrent,
-  },
+
   eslint: {
     // @note(eslint) we use @jeromefitz/codestyle opt out of next.js
     build: false,
@@ -187,6 +202,10 @@ const nextConfig = {
   // rewrites() {
   //   return getRedirects
   // },
+  publicRuntimeConfig: {
+    ...buildInfo,
+  },
+  serverRuntimeConfig: {},
   swcMinify: true,
   useFileSystemPublicRoutes: true, // false will block './pages' as router
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
