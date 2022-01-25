@@ -17,7 +17,7 @@ concurrency:
 jobs:
   release:
     name: '👷️  Push'
-    if: contains(github.event.head_commit.message , '[build]') || contains(github.event.head_commit.message , '[b]')
+    if: contains(github.event.head_commit.message , '[build]') || contains(github.event.head_commit.message , '[b]') || github.ref == 'refs/heads/main'
     timeout-minutes: 5
     runs-on: ubuntu-latest
     env:
@@ -34,7 +34,6 @@ jobs:
     steps:
       - name: '🐙️  Checkout'
         id: checkout
-        if: contains(github.event.head_commit.message , '[build]') || contains(github.event.head_commit.message , '[b]')
         uses: actions/checkout@v2
         with:
           # Number of commits to fetch. 0 indicates all history for all branches and tags.
@@ -43,7 +42,6 @@ jobs:
 
       - name: '💽️  Node (${{ matrix.node }})'
         id: node-setup
-        if: contains(github.event.head_commit.message , '[build]') || contains(github.event.head_commit.message , '[b]')
         uses: actions/setup-node@v2
         with:
           # architecture: 'x64'
@@ -63,7 +61,6 @@ jobs:
 
       - name: '📦️  Dependecies'
         id: dependecies
-        if: contains(github.event.head_commit.message , '[build]') || contains(github.event.head_commit.message , '[b]')
         run: |
           yarn install --frozen-lockfile --ignore-engines --network-concurrency 1
 
@@ -81,12 +78,10 @@ jobs:
 
       - name: '🚨️  Lint'
         id: lint
-        if: contains(github.event.head_commit.message , '[build]') || contains(github.event.head_commit.message , '[b]')
         run: |
           yarn lint --cache-dir=".cache-turbo"
 
       - name: '🧪️  Test'
-        if: contains(github.event.head_commit.message , '[build]') || contains(github.event.head_commit.message , '[b]')
         id: test
         # @note(ci) comment out right now as this requires `build`
         run: |
@@ -100,7 +95,7 @@ jobs:
 
       - name: '🚀️  Release'
         id: release
-        if: contains(github.event.head_commit.message , '[build]') || contains(github.event.head_commit.message , '[b]')
+        if: contains(github.event.head_commit.message , '[build]') || contains(github.event.head_commit.message , '[b]') || github.ref == 'refs/heads/main'
         run: |
           echo "registry=http://registry.npmjs.org/" >> .npmrc
           echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> .npmrc

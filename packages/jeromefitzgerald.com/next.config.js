@@ -231,9 +231,13 @@ const nextConfig = {
 
       externals.map((_external) => {
         console.debug(`warn  - ›  📦️ ${_external}`)
+        /**
+         * @note(monorepo) node_modules resides at root
+         */
         config.resolve.alias[_external] = path.resolve(
           __dirname,
-          '.',
+          '..',
+          '..',
           'node_modules',
           _external
         )
