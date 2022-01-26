@@ -1584,12 +1584,12 @@
     shellsync "0.2.2"
     word-wrap "1.2.3"
 
-"@jeromefitz/notion@2.0.6":
-  version "2.0.6"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/notion/-/notion-2.0.6.tgz#fcc43f994279472a9bc68fa396127b868aac4e6d"
-  integrity sha512-tBInGb6RZoggP2/xDhnPceqGcGg0nyP3uGpzWw+SpWJH0LDi5sa4P4E3O1WROxR2lbBohChOS0az+nFM5Po/aA==
+"@jeromefitz/notion@2.0.7-notion--website-oss.1":
+  version "2.0.7-notion--website-oss.1"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/notion/-/notion-2.0.7-notion--website-oss.1.tgz#f72e9f2f87c2e38914fa486c06f41706c81cd8e5"
+  integrity sha512-Zevrvy6IdrrAgRIDZmeHpkRZQnSekm8mgI0CAEKkuGDVqEBPkLYMtYZeP0RxptaNvH/ZnvnzVjSm1TdiC5lbyw==
   dependencies:
-    "@notionhq/client" "0.4.12"
+    "@notionhq/client" "0.4.13"
     date-fns "2.28.0"
     date-fns-tz "1.2.2"
     github-slugger "1.4.0"
@@ -1902,6 +1902,14 @@
   version "0.4.12"
   resolved "https://registry.yarnpkg.com/@notionhq/client/-/client-0.4.12.tgz#aef2817d119e4fc7cfd01dbdf71814cb9cf3fa09"
   integrity sha512-HM8eiZRG5PAo9Iu+r0p9FRNwxrMrYPUUf94AdEhqwAEk3u6OfjnKfnp9+dmlJtva73pw3kkeJuAVrldA0RstEQ==
+  dependencies:
+    "@types/node-fetch" "^2.5.10"
+    node-fetch "^2.6.1"
+
+"@notionhq/client@0.4.13":
+  version "0.4.13"
+  resolved "https://registry.yarnpkg.com/@notionhq/client/-/client-0.4.13.tgz#b29c2ecc8c25508119f9b2875c2dda6c12f1c889"
+  integrity sha512-tHC95h4JZYteHmIL49xdta0Yb9q0peXySqo9cqTQEVzpPwUdcPNgWQljMqfrSVKqlpGNX+DhXztY0LR6f3Iw6A==
   dependencies:
     "@types/node-fetch" "^2.5.10"
     node-fetch "^2.6.1"
