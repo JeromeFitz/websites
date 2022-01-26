@@ -2,7 +2,6 @@ import { PageHeading, SkeletonHeading } from '@jeromefitz/design-system/componen
 import useSWR from 'swr'
 
 import { Page } from '~components/Layout'
-import ShowsListing from '~components/Notion/routes/Shows/Listing'
 import { notionConfig } from '~config/websites'
 import mockData from '~data/mock/notion/shows'
 import {
@@ -11,6 +10,7 @@ import {
   ERROR__FALLBACK,
 } from '~lib/constants'
 import fetcher from '~lib/fetcher'
+import ShowsListing from '~lib/notion/app/routes/Shows/Listing'
 import getCatchAll from '~lib/notion/getCatchAll'
 import getDataReturn from '~lib/notion/getDataReturn'
 import { notion } from '~lib/notion/helper'

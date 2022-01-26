@@ -1,5 +1,5 @@
 import Layout from '~components/Layout'
-import { getRouterNode } from '~components/Notion/routes'
+import { getRouterNode } from '~lib/notion/app/routes'
 
 const Page = ({ ...props }) => {
   const {

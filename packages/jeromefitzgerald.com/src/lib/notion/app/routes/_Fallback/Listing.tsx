@@ -1,6 +1,6 @@
 import { Box } from '@jeromefitz/design-system/components'
 
-import { ContentNodes } from '~components/Notion'
+import { ContentNodes } from '~lib/notion/app'
 
 const FallbackListing = ({ ...props }) => {
   const { content, images } = props

@@ -42,6 +42,12 @@ const getRouterNode = {
   ['SHOWS/LISTING']: dynamic(() => import('./Shows/Listing')),
   ['SHOWS/SLUG']: dynamic(() => import('./Shows/Slug')),
   /**
+   * @todo
+   */
+  ['BLOG/LISTING']: dynamic(() => import('./_Fallback/Listing')),
+  ['BLOG/LISTING_BY_DATE']: dynamic(() => import('./_Fallback/Listing')),
+  ['BLOG/SLUG_BY_ROUTE']: dynamic(() => import('./_Fallback/Slug')),
+  /**
    * @catchAll
    */
   _unsupported: dynamic(() => import('./_Fallback/Unsupported')),

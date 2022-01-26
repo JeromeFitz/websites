@@ -1,9 +1,10 @@
 import { Box } from '@jeromefitz/design-system/components'
-import type { Show } from '@jeromefitz/notion/schema'
+import type { Podcast as PodcastProperties } from '@jeromefitz/notion/schema'
+
+import Episodes from '../Episodes/Listing'
 
 import { ImageLead } from '~components/Layout'
-import Meta from '~components/Meta'
-import { ContentNodes } from '~components/Notion'
+import { ContentNodes } from '~lib/notion/app'
 
 // @refactor(types)
 interface Icon {
@@ -22,13 +23,15 @@ interface ItemDefault {
 interface Item extends ItemDefault {
   object: 'page'
   parent: any
-  properties: Show
+  properties: PodcastProperties
 }
 
 // @todo(types)
-const ShowsSlug = (props: { data: any; images: any; routeType: any }) => {
-  const { data, images, routeType } = props
-  const { content, info }: { content: any; info: Item } = data
+const PodcastsSlug = (props) => {
+  // console.dir(`> PodcastsSlug`)
+  // console.dir(props)
+  const { data, images } = props
+  const { content, info, items }: { content: any; info: Item; items: any } = data
   const { id, properties } = info
 
   return (
@@ -40,9 +43,9 @@ const ShowsSlug = (props: { data: any; images: any; routeType: any }) => {
         key={`image-lead--${id}`}
       />
       <ContentNodes content={content} images={images} />
-      <Meta data={data} key={`${id}--meta`} routeType={routeType} />
+      <Episodes images={images} items={items?.results} />
     </Box>
   )
 }
 
-export default ShowsSlug
+export default PodcastsSlug
