@@ -31,7 +31,7 @@ const Index = (props) => {
     // isPage,
     // isIndex,
     // meta,
-    routeType,
+    // routeType,
     slug,
     url,
   } = props
@@ -73,20 +73,36 @@ const Index = (props) => {
       />
     )
 
-  // @todo(notion) make dynamic w/ skeleton
+  /**
+   * @hack(notion)
+   * Since Notion does not have an embed currently,
+   *  this page is very hacked. However, due to this
+   *  being the index/homepage this is acceptable
+   *  (well to me I guess heh)
+   *
+   * @todo(notion)
+   * - Production:  Pull from `./cache/shows.json`
+   * - Development: Pull from `mockData`
+   */
   const { images, items } = mockData
-  const dataShows = {
+  const dataSHows = {
     items,
   }
+  const routeTypeShows = 'shows'
 
-  // @todo(config) dynamic site selection
+  /**
+   * @todo(config) dynamic site selection
+   *
+   * With the move to `turborepo` this is probably not needed
+   * as each `website` will have its own homepage
+   */
   const hasShows = process.env.NEXT_PUBLIC__SITE === 'jeromefitzgerald.com'
 
   return (
     <>
       <Page data={data} {...props} />
       {hasShows && (
-        <ShowsListing data={dataShows} images={images} routeType={routeType} />
+        <ShowsListing data={dataSHows} images={images} routeType={routeTypeShows} />
       )}
     </>
   )
