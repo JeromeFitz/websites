@@ -2,7 +2,7 @@ import { PageHeading, SkeletonHeading } from '@jeromefitz/design-system/componen
 import useSWR from 'swr'
 
 import { Page } from '~components/Layout'
-import ListingShows from '~components/Notion/Listing/ListingShows'
+import ShowsListing from '~components/Notion/routes/Shows/Listing'
 import { notionConfig } from '~config/websites'
 import mockData from '~data/mock/notion/shows'
 import {
@@ -31,7 +31,7 @@ const Index = (props) => {
     // isPage,
     // isIndex,
     // meta,
-    // routeType,
+    routeType,
     slug,
     url,
   } = props
@@ -75,14 +75,19 @@ const Index = (props) => {
 
   // @todo(notion) make dynamic w/ skeleton
   const { images, items } = mockData
+  const dataShows = {
+    items,
+  }
 
   // @todo(config) dynamic site selection
   const hasShows = process.env.NEXT_PUBLIC__SITE === 'jeromefitzgerald.com'
 
   return (
     <>
-      <Page data={data} props={props} />
-      {hasShows && <ListingShows images={images} items={items?.results} />}
+      <Page data={data} {...props} />
+      {hasShows && (
+        <ShowsListing data={dataShows} images={images} routeType={routeType} />
+      )}
     </>
   )
 }
