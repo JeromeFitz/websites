@@ -78,7 +78,7 @@
     "date-fns-tz": "1.2.2",
     "emoji-api": "2.0.1",
     "emoji-regex": "10.0.0",
-    "fathom-client": "3.3.1",
+    "fathom-client": "3.4.0",
     "firebase": "9.6.4",
     "firebase-admin": "10.0.2",
     "framer-motion": "6.2.3",
