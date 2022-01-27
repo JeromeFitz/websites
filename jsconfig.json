@@ -2,19 +2,19 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "~components/*": ["src/components/*"],
-      "~config/*": ["src/config/*"],
-      "~containers/*": ["src/containers/*"],
-      "~context/*": ["src/context/*"],
-      "~data/*": ["src/data/*"],
-      "~hooks/*": ["src/hooks/*"],
-      "~lib/*": ["src/lib/*"],
-      "~pages/*": ["src/pages/*"],
-      "~scripts/*": ["src/scripts/*"],
-      "~styles/*": ["src/styles/*"],
-      "~svg/*": ["src/svg/*"],
-      "~theme/*": ["src/theme/*"],
-      "~utils/*": ["src/utils/*"]
+      "~components/*": ["./sites/jeromefitzgerald.com/src/components/*"],
+      "~config/*": ["./sites/jeromefitzgerald.com/src/config/*"],
+      "~containers/*": ["./sites/jeromefitzgerald.com/src/containers/*"],
+      "~context/*": ["./sites/jeromefitzgerald.com/src/context/*"],
+      "~data/*": ["./sites/jeromefitzgerald.com/src/data/*"],
+      "~hooks/*": ["./sites/jeromefitzgerald.com/src/hooks/*"],
+      "~lib/*": ["./sites/jeromefitzgerald.com/src/lib/*"],
+      "~pages/*": ["./sites/jeromefitzgerald.com/src/pages/*"],
+      "~scripts/*": ["./sites/jeromefitzgerald.com/src/scripts/*"],
+      "~styles/*": ["./sites/jeromefitzgerald.com/src/styles/*"],
+      "~svg/*": ["./sites/jeromefitzgerald.com/src/svg/*"],
+      "~theme/*": ["./sites/jeromefitzgerald.com/src/theme/*"],
+      "~utils/*": ["./sites/jeromefitzgerald.com/src/utils/*"]
     }
   }
 }
