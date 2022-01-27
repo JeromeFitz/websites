@@ -25,7 +25,6 @@ import {
   Link1Icon,
   TwitterLogoIcon,
 } from '@radix-ui/react-icons'
-// import getConfig from 'next/config'
 import dynamic from 'next/dynamic'
 import NextLink from 'next/link'
 import * as React from 'react'
@@ -38,9 +37,6 @@ const { branch, isBranchMain, prerelease, version } = buildInfo
 const NowPlayingWithNoSSR = dynamic(() => import('~components/NowPlaying'), {
   ssr: false,
 })
-
-// const { publicRuntimeConfig } = getConfig()
-// const { branch, isBranchMain, prerelease, version } = publicRuntimeConfig?.buildInfo
 
 const pages = [
   {

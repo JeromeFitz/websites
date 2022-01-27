@@ -3,23 +3,22 @@ const { writeFile } = require('fs/promises')
 const { join } = require('path')
 
 const { Octokit } = require('@octokit/core')
+const _filter = require('lodash/filter')
+const _orderBy = require('lodash/orderBy')
+const _pick = require('lodash/pick')
 const _size = require('lodash/size')
 const prettier = require('prettier')
 
 const octokit = new Octokit({ auth: process.env.GH_TOKEN })
 
-const branch = childProcess
-  // @note(git>=2.22)
-  // .execSync(`git branch --show-current`)
-  .execSync(`git rev-parse --abbrev-ref HEAD`)
-  .toString()
-  .trim()
-const isBranchMain = branch === 'main'
-
-const tag = childProcess
-  .execSync(`git fetch --tags -f -q && git describe --tags --abbrev=0`)
-  .toString()
-  .trim()
+const branch =
+  process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF ||
+  childProcess
+    // @note(git>=2.22)
+    // .execSync(`git branch --show-current`)
+    .execSync(`git rev-parse --abbrev-ref HEAD`)
+    .toString()
+    .trim()
 
 function getBranch(branch) {
   if (_size(branch.split('/')) > 1) {
@@ -37,24 +36,36 @@ async function setupBuildInfo() {
     per_page: 20,
   })
 
-  const tags = await octokit.request('GET /repos/{owner}/{repo}/tags', {
-    owner: 'jeromefitz',
-    repo: 'jeromefitzgerald.com',
-  })
+  const ___data = _orderBy(releases.data, ['published_at'], ['desc'])
 
-  const [version, prerelease] = tag.replace('website-v', '').split('-')
+  const dataBranch = _filter(___data, {
+    target_commitish: branch,
+  })
+  const dataRelease = _filter(___data, { prerelease: false })
+
+  const __data = _size(dataBranch) > 0 ? dataBranch[0] : dataRelease[0]
+
+  const _data = _pick(__data, [
+    'body',
+    'tag_name',
+    'target_commitish',
+    'name',
+    'prerelease',
+    'published_at',
+  ])
+
+  const [version, prerelease] = _data.tag_name.replace('website-v', '').split('-')
   const [major, minor, patch] = version.split('.')
+
   const data = {
-    branch,
-    isBranchMain,
+    branch: getBranch(branch),
+    branchFull: branch,
+    isBranchMain: branch === 'main',
     major,
     minor,
     patch,
     prerelease: !!prerelease ? prerelease : getBranch(branch),
     version,
-    //
-    tags,
-    releases,
   }
 
   const filePath = join(process.cwd(), './src/config/buildInfo.json')
