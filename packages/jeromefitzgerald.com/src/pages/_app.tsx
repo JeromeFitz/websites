@@ -8,7 +8,7 @@ import {
 import { globalCss, darkTheme } from '@jeromefitz/design-system/stitches.config'
 import { ThemeProvider } from 'next-themes'
 import type { AppProps, NextWebVitalsMetric } from 'next/app'
-import getConfig from 'next/config'
+// import getConfig from 'next/config'
 import Head from 'next/head'
 import pluralize from 'pluralize'
 import * as React from 'react'
@@ -17,13 +17,14 @@ import { SWRConfig } from 'swr'
 import Footer from '~components/Footer'
 import Header from '~components/Header'
 import NProgress from '~components/NProgress'
+import buildInfo from '~config/buildInfo.json'
 // import { ToastProvider } from '~components/Toast'
 import { ManagedUIContext } from '~context/ManagedUI'
 import { MediaContextProvider } from '~context/Media'
 import { useAnalytics } from '~lib/analytics'
 import { IMAGE__FALLBACKS__SHOWS } from '~lib/constants'
 
-const { publicRuntimeConfig } = getConfig()
+// const { publicRuntimeConfig } = getConfig()
 // const { branch, isBranchMain, prerelease, version } = publicRuntimeConfig?.buildInfo
 
 pluralize.addPluralRule(/cast$/i, 'cast')
@@ -142,8 +143,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
 
   React.useEffect(() => {
     document?.body?.classList?.remove('loading')
-    const { branch, isBranchMain, prerelease, version } =
-      publicRuntimeConfig?.buildInfo
+    const { branch, isBranchMain, prerelease, version } = buildInfo
     const message = [
       ``,
       `[ 👋️ ] Hiya`,

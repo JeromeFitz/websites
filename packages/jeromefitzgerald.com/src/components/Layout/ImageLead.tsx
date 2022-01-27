@@ -29,8 +29,8 @@ const ImageWithBackgroundBlur = ({
   description,
   image,
   priority = false,
-  sizes = '(max-width: 1280) 10vh, 30vh',
-  // sizes = '256px',
+  // sizes = '(max-width: 1280) 10vh, 30vh',
+  // // sizes = '256px',
   slug,
 }) => {
   // console.dir(`image`)
@@ -88,7 +88,7 @@ const ImageWithBackgroundBlur = ({
         // sizes="256px"
         // layout="fixed"
         layout="intrinsic"
-        sizes={sizes}
+        // sizes={sizes}
         key={slug}
         placeholder="blur"
         priority={priority}

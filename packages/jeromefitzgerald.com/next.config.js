@@ -12,41 +12,8 @@ const _size = require('lodash/size')
 const { withPlugins } = require('next-compose-plugins')
 const withTM = require('next-transpile-modules')(['@jeromefitz/design-system'])
 
-/**
- * @hack not great ... but it works
- * @ref https://github.com/vercel/next.js/discussions/12097
- */
-const { getReleaseInfo } = require('../../config/getReleaseInfo')
+const { withBuildInfo } = require('./scripts/buildInfo')
 
-function getBranch(branch) {
-  if (_size(branch.split('/')) > 1) {
-    return branch.split('/')[1]
-  }
-
-  return branch
-}
-
-const branch = getBranch(
-  process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF || 'chore/develop'
-)
-
-function isBranchMain(branch) {
-  return branch === 'main'
-}
-let buildInfo = {}
-// @ts-ignore
-let hack = (async () => {
-  let info = await getReleaseInfo()
-  buildInfo.branch = branch
-  buildInfo.isBranchMain = isBranchMain(branch)
-  buildInfo.prerelease = info.prerelease
-  buildInfo.updateTime = Date.now()
-  buildInfo.version = info.version
-  //
-  buildInfo.major = info.major
-  buildInfo.minor = info.version
-  buildInfo.patch = info.patch
-})().catch(() => {})
 /**
  * ----------------------------------------------
  */
@@ -194,8 +161,8 @@ const nextConfig = {
     formats: ['image/avif', 'image/webp'],
     // imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     imageSizes: [24, 64, 384],
-    minimumCacheTTL: 31536000, // 1 year
-    // minimumCacheTTL: 18144000, // 1 month
+    // minimumCacheTTL: 31536000, // 1 year
+    minimumCacheTTL: 18144000, // 1 month
     // minimumCacheTTL: 604800, // 1 week
     // minimumCacheTTL: 86400, // 1 day
   },
@@ -210,9 +177,7 @@ const nextConfig = {
   // rewrites() {
   //   return getRedirects
   // },
-  publicRuntimeConfig: {
-    buildInfo,
-  },
+  // publicRuntimeConfig: {},
   // serverRuntimeConfig: {},
   swcMinify: true,
   useFileSystemPublicRoutes: true, // false will block './pages' as router
@@ -269,6 +234,7 @@ module.exports = withPlugins(
     //     },
     //   }),
     // ],
+    [withBuildInfo()],
     [withTM],
   ],
   nextConfig
