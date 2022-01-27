@@ -1,10 +1,12 @@
 import _map from 'lodash/map'
 
-import { getContentNode } from '~components/Notion'
+import { getContentNode } from '~lib/notion/app'
 
 import getContentNodes from './utils/getContentNodes'
 
 const ContentNodes = ({ content, images }) => {
+  // console.dir(`> ContentNodes`)
+  // console.dir(content)
   return (
     <>
       {_map(getContentNodes({ content, images }), (node: any) => {

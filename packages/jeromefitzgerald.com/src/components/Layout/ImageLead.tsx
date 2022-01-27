@@ -64,8 +64,11 @@ const ImageSkeleton = () => {
 }
 
 const ImageLead = ({ breakout = true, description, image, images }) => {
-  // @note(notion) this is based off of seoImage only at the moment
-  // @note(image) check against the first key in `images` only (seoImage)
+  /**
+   * @refactor(images) passing images from SSR is not ideal
+   * @note(notion) this is based off of seoImage only at the moment
+   * @note(image) check against the first key in `images` only (seoImage)
+   */
   const imageSlug = !!image && Object.keys(image)[0]
   const url = !!imageSlug && image[imageSlug]?.url
   const fallbackData = !!url && !!images ? images[imageSlug] : {}

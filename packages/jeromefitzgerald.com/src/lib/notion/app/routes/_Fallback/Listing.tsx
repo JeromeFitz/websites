@@ -8,7 +8,9 @@ import {
 } from '@jeromefitz/design-system/components'
 import NextLink from 'next/link'
 
-const Item = ({ item }) => {
+import { ContentNodes } from '~lib/notion/app'
+
+const Item = ({ item, routeType }) => {
   // console.dir(`>> Item`)
   const { datePublished, seoDescription, slug, title } = item.properties
   const date = datePublished?.start.slice(0, 10).split('-').join('/')
@@ -16,7 +18,7 @@ const Item = ({ item }) => {
   return (
     <Box as="li" css={{ my: '$2', py: '$2' }}>
       <Heading as="h3" size="3" css={{ my: '$1' }}>
-        <NextLink href={`/blog/${date}/${slug}`} passHref>
+        <NextLink href={`/${routeType}/${date}/${slug}`} passHref>
           <a>{title}</a>
         </NextLink>
       </Heading>
@@ -40,34 +42,34 @@ const Item = ({ item }) => {
   )
 }
 
-const Items = ({ items }) => {
-  // console.dir(`>> Items`)
-  if (items.length < 1) return null
+const FallbackListing = ({ ...props }) => {
+  /**
+   * @verify data
+   */
+  const { data, images, routeType } = props
+  const { content } = data
+  const { results: _items } = data?.items
+  const items: any = _items
+  // @todo(404) fallback|404
+  if (!items) return null
+
   return (
-    <Box as="ul">
-      {items.map((item) => {
-        return <Item key={item.id} item={item} />
-      })}
+    <Box>
+      <Note>This page is in-progress. ({props.routerNode})</Note>
+      <ContentNodes content={content} images={images} />
+      <Grid
+        css={{
+          '& ul': { listStyle: 'none', margin: '0', padding: '0' },
+        }}
+      >
+        <ul>
+          {items.map((item: any) => {
+            return <Item key={item.id} item={item} routeType={routeType} />
+          })}
+        </ul>
+      </Grid>
     </Box>
   )
 }
 
-const ListingDefault = ({ items }) => {
-  // console.dir(ListingDefault)
-  // console.dir(items)
-  return (
-    <>
-      <Note>This page is in-progress.</Note>
-      <Box css={{ px: '$2' }}>
-        <Grid
-          css={{
-            '& ul': { listStyle: 'none', margin: '0', padding: '0' },
-          }}
-        >
-          <Items items={items} />
-        </Grid>
-      </Box>
-    </>
-  )
-}
-export default ListingDefault
+export default FallbackListing

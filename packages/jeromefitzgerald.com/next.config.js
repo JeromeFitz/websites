@@ -71,6 +71,11 @@ const externals = [
   'react-hot-toast',
   'swr',
 ]
+const messagesDebug = [
+  `warn  - [@note]`,
+  `warn  - yarn link:`,
+  `warn  - 🖼️  @jeromefitz/design-system`,
+]
 
 if (!process.env.NEXT_PUBLIC__SITE) {
   throw new Error('process.env.NEXT_PUBLIC__SITE is not set in env')
@@ -143,7 +148,6 @@ const nextConfig = {
   amp: false,
   assetPrefix: '',
   distDir: './.next',
-
   eslint: {
     // @note(eslint) we use @jeromefitz/codestyle opt out of next.js
     build: false,
@@ -222,9 +226,7 @@ const nextConfig = {
     //   }
     // }
     if (isLocal) {
-      console.debug(`warn  - [@note]
- warn  - yarn link:
- warn  - 🖼️  @jeromefitz/design-system`)
+      messagesDebug.map((msg) => console.debug(msg))
       if (isServer) {
         config.externals = [...externals, ...config.externals]
       }

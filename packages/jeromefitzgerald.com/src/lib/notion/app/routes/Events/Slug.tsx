@@ -1,3 +1,6 @@
+/**
+ * @refactor Massive Component(s)
+ */
 import {
   ArrowRightIcon,
   LocationMarkerIcon,
@@ -8,15 +11,12 @@ import {
 import {
   Box,
   ButtonMarketing,
-  // Container,
   Flex,
   Grid,
-  // Heading,
   Note,
   Paragraph,
-  // Section,
-  // Text,
 } from '@jeromefitz/design-system/components'
+import type { Event as EventProperties } from '@jeromefitz/notion/schema'
 import {
   CalendarIcon,
   ClockIcon,
@@ -26,46 +26,37 @@ import {
 } from '@radix-ui/react-icons'
 import { parseISO } from 'date-fns'
 import { format } from 'date-fns-tz'
+import _isBefore from 'date-fns/isBefore'
 import _map from 'lodash/map'
 import _union from 'lodash/union'
 
+import Meta from '~components/Meta'
+// import { ContentNodes } from '~lib/notion/app'
 import { TAGS } from '~config/websites'
 
-// import { styled } from '@jeromefitz/design-system/stitches.config'
+// @refactor(types)
+interface Icon {
+  type: 'emoji'
+  emoji: string
+}
+interface ItemDefault {
+  archived: boolean
+  cover: any
+  created_time: string // date
+  icon: Icon
+  id: string
+  last_edited_time: string // date
+  url: string
+}
+interface Item extends ItemDefault {
+  object: 'page'
+  parent: any
+  properties: EventProperties
+}
 
-// const Foo = ({ children, title }) => {
-//   return (
-//     <Grid
-//       css={{
-//         // my: '$6',
-//         // py: '$6',
-//         // borderTop: '1px solid $colors$gray11',
-//         gridTemplateColumns: 'repeat(1, 1fr)',
-//         minHeight: '20rem',
-//         minWidth: '50%',
-//         // gap: 5,
-//         // '@bp1': { gridTemplateColumns: 'repeat(1, 1fr)' },
-//       }}
-//     >
-//       <Box>
-//         <Text
-//           css={{
-//             borderTop: '1px solid $hiContrast',
-//             fontSize: '$9',
-//             fontWeight: 700,
-//             mt: '$6',
-//             mb: '$4',
-//             pt: '$6',
-//             pb: '$4',
-//           }}
-//         >
-//           {title}
-//         </Text>
-//       </Box>
-//       {children}
-//     </Grid>
-//   )
-// }
+/**
+ * @eject ?
+ */
 const css_info = {
   display: 'flex',
   flexDirection: 'row',
@@ -87,8 +78,13 @@ const css_gridListItems = {
 }
 const Info = ({ data }) => {
   // const data = mockData
+  const timestampNow = new Date()
   const { info } = data
   const iso = parseISO(info?.properties?.dateEvent?.start)
+  const isAvailable = _isBefore(
+    timestampNow,
+    parseISO(info?.properties?.dateEvent?.start)
+  )
   const venue =
     !!info?.properties?.rollupEvents__Venues &&
     info?.properties?.rollupEvents__Venues[0]
@@ -125,32 +121,44 @@ const Info = ({ data }) => {
           <Paragraph>{tags}</Paragraph>
         </Box>
       </Grid>
+      <Flex
+        css={{ flexDirection: 'column' }}
+        justify={{ '@initial': 'start' }}
+        gap="5"
+      >
+        {info?.properties?.ticketUrl && isAvailable ? (
+          <ButtonMarketing
+            as="a"
+            css={{
+              zIndex: '3',
+              my: '$4',
+              py: '$4',
+              width: '100%',
+              justifyContent: 'center',
+            }}
+            href={info?.properties?.ticketUrl}
+            icon={ArrowRightIcon}
+          >
+            Get Tickets
+          </ButtonMarketing>
+        ) : (
+          <Note>This event has passed.</Note>
+        )}
+      </Flex>
     </>
   )
 }
 
-// const Lineup = ({ data }) => {
-//   const items = data
-//   if (items.length === 0) return null
-//   return (
-//     <>
-//       <Grid columns="1" gap="3" css={css_gridListItems}>
-//         {items.map((item, itemIdx) => (
-//           <Box key={`der-${itemIdx}`} role="listitem" css={css_info}>
-//             <DotIcon style={css_icon} />
-//             <Paragraph>{item}</Paragraph>
-//           </Box>
-//         ))}
-//       </Grid>
-//     </>
-//   )
-// }
+// @todo(types)
+const EventsSlug = (props) => {
+  const { data, routeType } = props
+  const { info }: { content: any; info: Item } = data
+  const { id } = info
 
-const ListingEvent = ({ data }) => {
-  // const lineup = _union(data?.info?.properties.rollupShow, data?.info?.properties.rollupLineup)
   return (
     <>
       <Note>This page is in-progress.</Note>
+      {/* <ContentNodes content={content} images={images} /> */}
       <Flex
         css={{
           flexDirection: 'column',
@@ -159,47 +167,11 @@ const ListingEvent = ({ data }) => {
           '@bp1': { flexDirection: 'column' },
         }}
       >
-        {/* <Foo title={'Venue'}> */}
         <Info data={data} />
-        <Flex
-          css={{ flexDirection: 'column' }}
-          justify={{ '@initial': 'start' }}
-          gap="5"
-        >
-          {
-            data?.info?.properties?.ticketUrl ? (
-              <ButtonMarketing
-                as="a"
-                css={{
-                  zIndex: '3',
-                  my: '$4',
-                  py: '$4',
-                  width: '100%',
-                  justifyContent: 'center',
-                }}
-                href={data?.info?.properties?.ticketUrl}
-                icon={ArrowRightIcon}
-              >
-                Get Tickets
-              </ButtonMarketing>
-            ) : null
-            // <ButtonMarketing
-            //   as="button"
-            //   css={{ cursor: 'not-allowed !important' }}
-            //   disabled={true}
-            //   icon={ArrowRightIcon}
-            // >
-            //   Get Tickets
-            // </ButtonMarketing>
-          }
-        </Flex>
-        {/* </Foo> */}
-        {/* <Foo title={'Lineup'}>
-          <Lineup data={lineup} />
-        </Foo> */}
       </Flex>
+      <Meta data={data} key={`${id}--meta`} routeType={routeType} />
     </>
   )
 }
 
-export default ListingEvent
+export default EventsSlug
