@@ -188,6 +188,7 @@ const Spotify = () => {
               />
               <Container css={{ my: '$3' }}>
                 <Heading size="2">
+                  {/* eslint-disable-next-line @typescript-eslint/restrict-plus-operands */}
                   {lpad(artistIdx + 1)}. {name}
                 </Heading>
               </Container>
@@ -235,6 +236,7 @@ const Spotify = () => {
               />
               <Container css={{ my: '$3' }}>
                 <Heading size="2" css={{ my: '$1' }}>
+                  {/* eslint-disable-next-line @typescript-eslint/restrict-plus-operands */}
                   {lpad(itemIdx + 1)}. “{item.track.name}”
                 </Heading>
                 <Heading size="1" css={{ my: '$1' }}>

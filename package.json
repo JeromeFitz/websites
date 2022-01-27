@@ -14,7 +14,7 @@
   },
   "workspaces": {
     "packages": [
-      "packages/*"
+      "sites/*"
     ],
     "nohoist": []
   },

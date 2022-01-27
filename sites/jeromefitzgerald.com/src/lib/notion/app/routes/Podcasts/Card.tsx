@@ -1,6 +1,5 @@
 import {
-  Badge,
-  // Emoji,
+  // Badge,
   Paragraph,
   Spacer,
   Text,
@@ -16,21 +15,15 @@ import {
   CardMeta,
   CardTitle,
 } from '@jeromefitz/design-system/components/Card/Show'
-import type { Episode as EpisodeProperties } from '@jeromefitz/notion/schema'
-import { lpad } from '@jeromefitz/utils'
+import type { Podcast as PodcastProperties } from '@jeromefitz/notion/schema'
 import _isEmpty from 'lodash/isEmpty'
 // import _map from 'lodash/map'
 import NextLink from 'next/link'
-import { useRouter } from 'next/router'
 import useSWR from 'swr'
 
 import { ImageWithBackgroundBlur } from '~components/Layout/ImageLead'
-import { notionConfig } from '~config/websites'
 import { IMAGE__PLACEHOLDER } from '~lib/constants'
 import fetcher from '~lib/fetcher'
-import { notion } from '~lib/notion/helper'
-
-const { NOTION } = notionConfig
 
 // @refactor(types)
 interface Icon {
@@ -49,38 +42,24 @@ interface ItemDefault {
 interface Item extends ItemDefault {
   object: 'page'
   parent: any
-  properties: EpisodeProperties
+  properties: PodcastProperties
 }
-const EpisodesCard = ({
+const PodcastsCard = ({
   images,
   item,
-}: // routeType,
-{
+  routeType,
+}: {
   images: any
   item: Item
-  // routeType: string
+  routeType: string
 }) => {
-  const router = useRouter()
-  const meta = router.asPath.split('/').slice(1)
-
   const {
-    episode,
-    season,
     seoDescription,
     seoImage,
     seoImageDescription: description,
-    // slug,
+    slug,
     title,
   } = item?.properties
-
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { as, date, href, slug } = notion.custom.getInfoType({
-    item,
-    routeType: NOTION.PODCASTS.slug,
-    meta,
-  })
 
   /**
    * @refactor(images) passing images from SSR is not ideal
@@ -116,7 +95,7 @@ const EpisodesCard = ({
         }}
       />
 
-      <NextLink as={as} href={href} passHref>
+      <NextLink href={`/${routeType.toLowerCase()}/${slug}`} passHref>
         <Card variant="interactive" as="a" css={css_card}>
           <CardImageContainer>
             <ImageBlur
@@ -133,7 +112,7 @@ const EpisodesCard = ({
                 base64={base64}
                 description={description}
                 image={img}
-                sizes="(min-width: 1280) 50vh, 25vh"
+                // sizes="(min-width: 1280) 50vh, 25vh"
                 slug={slugImage}
               />
             </CardImage>
@@ -159,17 +138,20 @@ const EpisodesCard = ({
           </CardContent>
           <Spacer />
           <CardMeta>
-            <Badge
-              size="2"
-              variant="violet"
-              css={{
-                border: '1px solid $colors$violet11',
-                fontWeight: '700',
-                mr: '$4',
-              }}
-            >
-              S{lpad(season)}${lpad(episode)}
-            </Badge>
+            {/* {_map(tags, (item, itemIdx) => (
+              <Badge
+                key={`badge-${itemIdx}`}
+                size="2"
+                variant="violet"
+                css={{
+                  border: '1px solid $colors$violet11',
+                  fontWeight: '700',
+                  mr: '$4',
+                }}
+              >
+                {item}
+              </Badge>
+            ))} */}
           </CardMeta>
         </Card>
       </NextLink>
@@ -177,4 +159,4 @@ const EpisodesCard = ({
   )
 }
 
-export default EpisodesCard
+export default PodcastsCard

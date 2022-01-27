@@ -1,5 +1,5 @@
 import {
-  // Badge,
+  Badge,
   Paragraph,
   Spacer,
   Text,
@@ -15,9 +15,9 @@ import {
   CardMeta,
   CardTitle,
 } from '@jeromefitz/design-system/components/Card/Show'
-import type { Podcast as PodcastProperties } from '@jeromefitz/notion/schema'
+import type { Show } from '@jeromefitz/notion/schema'
 import _isEmpty from 'lodash/isEmpty'
-// import _map from 'lodash/map'
+import _map from 'lodash/map'
 import NextLink from 'next/link'
 import useSWR from 'swr'
 
@@ -42,9 +42,9 @@ interface ItemDefault {
 interface Item extends ItemDefault {
   object: 'page'
   parent: any
-  properties: PodcastProperties
+  properties: Show
 }
-const PodcastsCard = ({
+const ShowsCard = ({
   images,
   item,
   routeType,
@@ -58,6 +58,7 @@ const PodcastsCard = ({
     seoImage,
     seoImageDescription: description,
     slug,
+    rollupShows__Tags: tags,
     title,
   } = item?.properties
 
@@ -112,7 +113,7 @@ const PodcastsCard = ({
                 base64={base64}
                 description={description}
                 image={img}
-                sizes="(min-width: 1280) 50vh, 25vh"
+                // sizes="(min-width: 1280) 50vh, 25vh"
                 slug={slugImage}
               />
             </CardImage>
@@ -138,7 +139,7 @@ const PodcastsCard = ({
           </CardContent>
           <Spacer />
           <CardMeta>
-            {/* {_map(tags, (item, itemIdx) => (
+            {_map(tags, (item, itemIdx) => (
               <Badge
                 key={`badge-${itemIdx}`}
                 size="2"
@@ -151,7 +152,7 @@ const PodcastsCard = ({
               >
                 {item}
               </Badge>
-            ))} */}
+            ))}
           </CardMeta>
         </Card>
       </NextLink>
@@ -159,4 +160,4 @@ const PodcastsCard = ({
   )
 }
 
-export default PodcastsCard
+export default ShowsCard
