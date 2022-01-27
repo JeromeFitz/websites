@@ -148,7 +148,15 @@ const Items = ({ items: _items }) => {
   )
 }
 
-const ListingItems = ({ items }) => {
+const ListingItems = (props) => {
+  /**
+   * @verify data
+   */
+  const { data } = props
+  const { results: _items } = data?.items
+  const items: any = _items
+  // @todo(404) fallback|404
+  if (!items) return null
   return (
     <>
       <Note>This page is in-progress.</Note>

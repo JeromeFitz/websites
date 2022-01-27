@@ -2,7 +2,6 @@ import { PageHeading, SkeletonHeading } from '@jeromefitz/design-system/componen
 import useSWR from 'swr'
 
 import { Page } from '~components/Layout'
-import ListingShows from '~components/Notion/Listing/ListingShows'
 import { notionConfig } from '~config/websites'
 import mockData from '~data/mock/notion/shows'
 import {
@@ -11,6 +10,7 @@ import {
   ERROR__FALLBACK,
 } from '~lib/constants'
 import fetcher from '~lib/fetcher'
+import ShowsListing from '~lib/notion/app/routes/Shows/Listing'
 import getCatchAll from '~lib/notion/getCatchAll'
 import getDataReturn from '~lib/notion/getDataReturn'
 import { notion } from '~lib/notion/helper'
@@ -73,16 +73,37 @@ const Index = (props) => {
       />
     )
 
-  // @todo(notion) make dynamic w/ skeleton
+  /**
+   * @hack(notion)
+   * Since Notion does not have an embed currently,
+   *  this page is very hacked. However, due to this
+   *  being the index/homepage this is acceptable
+   *  (well to me I guess heh)
+   *
+   * @todo(notion)
+   * - Production:  Pull from `./cache/shows.json`
+   * - Development: Pull from `mockData`
+   */
   const { images, items } = mockData
+  const dataSHows = {
+    items,
+  }
+  const routeTypeShows = 'shows'
 
-  // @todo(config) dynamic site selection
+  /**
+   * @todo(config) dynamic site selection
+   *
+   * With the move to `turborepo` this is probably not needed
+   * as each `website` will have its own homepage
+   */
   const hasShows = process.env.NEXT_PUBLIC__SITE === 'jeromefitzgerald.com'
 
   return (
     <>
-      <Page data={data} props={props} />
-      {hasShows && <ListingShows images={images} items={items?.results} />}
+      <Page data={data} {...props} />
+      {hasShows && (
+        <ShowsListing data={dataSHows} images={images} routeType={routeTypeShows} />
+      )}
     </>
   )
 }

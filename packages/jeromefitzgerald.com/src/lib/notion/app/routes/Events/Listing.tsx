@@ -1,8 +1,10 @@
+/**
+ * @refactor Massive Component(s)
+ */
 import { LocationMarkerIcon, TagIcon } from '@heroicons/react/outline'
 import {
   Box,
   ButtonMarketing,
-  // Container,
   Flex,
   Grid,
   Heading,
@@ -10,13 +12,16 @@ import {
   Section,
 } from '@jeromefitz/design-system/components'
 import { styled } from '@jeromefitz/design-system/stitches.config'
+import type { Event as EventProperties } from '@jeromefitz/notion/schema'
 import { ArrowRightIcon, ClockIcon } from '@radix-ui/react-icons'
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
 import { getDate, getDay, getMonth, getYear, parseISO } from 'date-fns'
-import { format } from 'date-fns-tz'
+import { format as _format } from 'date-fns-tz'
 import Slugger from 'github-slugger'
 import _filter from 'lodash/filter'
+import _isEmpty from 'lodash/isEmpty'
 import _map from 'lodash/map'
+import _orderBy from 'lodash/orderBy'
 import _size from 'lodash/size'
 import _union from 'lodash/union'
 import _uniqWith from 'lodash/uniqWith'
@@ -25,6 +30,7 @@ import NextLink from 'next/link'
 import * as React from 'react'
 
 import { TAGS } from '~config/websites'
+import { ContentNodes } from '~lib/notion/app'
 import { notion } from '~lib/notion/helper'
 
 const Announce = dynamic(
@@ -34,12 +40,33 @@ const Announce = dynamic(
   }
 )
 
-// const css_sticky = {
-//   position: 'sticky',
-//   top: 0,
-//   mb: '-2px',
-//   py: '20px'
-// }
+/**
+ * @refactor types
+ */
+interface Icon {
+  type: 'emoji'
+  emoji: string
+}
+interface ItemDefault {
+  archived: boolean
+  cover: any
+  created_time: string // date
+  icon: Icon
+  id: string
+  last_edited_time: string // date
+  url: string
+}
+interface Item extends ItemDefault {
+  object: 'page'
+  parent: any
+  properties: EventProperties
+}
+// type Items = Record<string, Item>
+type Items = Item[]
+
+/**
+ * @todo eject styles
+ */
 const css_invertSelection = {
   backgroundColor: '$colors$gray1',
   color: '$colors$gray12',
@@ -138,184 +165,19 @@ const StyledLink = styled('a', {
     },
   },
 })
-
-const ListingEvents = ({ items }) => {
-  // const slugger = new Slugger()
-  const _dates = _uniqWith(
-    _map(items, (item) => {
-      return item?.properties?.dateEvent?.start
-    })
-  )
-  // console.dir(_dates)
-
-  let aYears = []
-  const dates = _map(_dates, (date) => {
-    const iso = parseISO(date)
-    const isoYear = getYear(iso)
-    // @note(date-fns) zero-based month is confusing when year/date are not
-    const isoMonth = getMonth(iso) + 1
-    const isoDate = getDate(iso)
-    const isoDay = getDay(iso)
-    const formatYear = format(iso, 'yyyy')
-    const formatMonth = format(iso, 'MM')
-    const formatDate = format(iso, 'dd')
-    const formatDay = format(iso, 'EEEE')
-
-    aYears.push(isoYear)
-
-    return {
-      date: {
-        full: date,
-        year: formatYear,
-        month: formatMonth,
-        date: formatDate,
-        day: formatDay,
-      },
-      iso: {
-        full: iso,
-        year: isoYear,
-        month: isoMonth,
-        date: isoDate,
-        day: isoDay,
-      },
-    }
-  })
-  const data = {}
-  aYears = _uniqWith(aYears)
-  _map(aYears, (ay) => {
-    const dataByYear = _filter(dates, { iso: { year: ay } })
-    data[ay] = {}
-    let aMonths = []
-    _map(dataByYear, (d) => aMonths.push(d.iso.month))
-    aMonths = _uniqWith(aMonths)
-    _map(aMonths, (am) => {
-      const dataByMonth = _filter(dates, { iso: { year: ay, month: am } })
-      data[ay][am] = {}
-      let aDates = []
-      _map(dataByMonth, (d) => aDates.push(d.iso.date))
-      aDates = _uniqWith(aDates)
-      _map(aDates, (ad) => {
-        const dataByDate = _filter(dates, {
-          iso: { year: ay, month: am, date: ad },
-        })
-        data[ay][am][ad] = dataByDate
-      })
-    })
-  })
-  // console.dir(`> data`)
-  // console.dir(data)
-
-  return (
-    <>
-      {_map(data, (dataYear, yearIndex) => {
-        return (
-          <React.Fragment key={`data--${yearIndex}`}>
-            <Year title={yearIndex}>
-              {_map(dataYear, (dataMonth, monthIndex) => {
-                return (
-                  <React.Fragment key={`data--${yearIndex}--${monthIndex}`}>
-                    <Month data={dataMonth}>
-                      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-                      {/* @ts-ignore */}
-                      {_map(dataMonth, (dataDate, dateIndex) => {
-                        return (
-                          <React.Fragment
-                            key={`data--${yearIndex}--${monthIndex}--${dateIndex}`}
-                          >
-                            <Date title={dateIndex}>
-                              {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-                              {/* @ts-ignore */}
-                              {_map(dataDate, (_date, _di) => {
-                                const event = _filter(items, {
-                                  properties: {
-                                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                                    // @ts-ignore
-                                    dateEvent: { start: _date?.date?.full },
-                                  },
-                                })[0]
-                                const key = `data--${yearIndex}--${monthIndex}--${dateIndex}--${_di}`
-                                return (
-                                  <React.Fragment key={key}>
-                                    <Event data={event} keyPrefix={key} />
-                                  </React.Fragment>
-                                )
-                              })}
-                            </Date>
-                          </React.Fragment>
-                        )
-                      })}
-                    </Month>
-                  </React.Fragment>
-                )
-              })}
-            </Year>
-          </React.Fragment>
-        )
-      })}
-    </>
-  )
-}
-
-// const DateHeader = () => {
-//   return (
-//     <Box
-//       as="header"
-//       css={
-//         {
-//           // position: 'sticky',
-//           // top: 20,
-//           // backgroundColor: 'white',
-//         }
-//       }
-//     >
-//       <Container>
-//         <Grid columns="6" gap="5">
-//           <Box>Date</Box>
-//           <Box
-//             css={{
-//               gridRowStart: 'span 1',
-//               gridRowEnd: 'span 1',
-//               gridColumnStart: 'span 5',
-//               gridColumnEnd: 'span 5',
-//               // offset
-//               // px: '24px',
-//             }}
-//           >
-//             <Grid columns="5" gap="5">
-//               <Box
-//                 css={{
-//                   gridRowStart: 'span 1',
-//                   gridRowEnd: 'span 1',
-//                   gridColumnStart: 'span 2',
-//                   gridColumnEnd: 'span 2',
-//                 }}
-//               >
-//                 Title
-//               </Box>
-//               <Box>Lineup</Box>
-//               <Box>Venue</Box>
-//               <Box>Tag</Box>
-//             </Grid>
-//           </Box>
-//         </Grid>
-//       </Container>
-//     </Box>
-//   )
-// }
-
+/**
+ * @todo eject sub components
+ */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Year = ({ children, title }) => {
   return (
     <Section size="1">
-      {/* <DateHeader /> */}
       <Box
-        css={
-          {
-            // mt: '$6',
-            // pt: '$6',
-            // borderTop: '1px solid $colors$gray12',
-          }
-        }
+        css={{
+          mt: '0',
+          pt: '0',
+          // borderTop: '1px solid $colors$gray12',
+        }}
       >
         {/* <Heading as="h2" size="2">
           {title}
@@ -327,14 +189,21 @@ const Year = ({ children, title }) => {
 }
 const Month = ({ children, data }) => {
   const date = data[Object.keys(data)[0]][0]?.iso?.full
-  const month = format(date, 'MMMM')
+  const month = _format(date, 'MMMM')
 
   return (
-    <Box css={{ mt: '$6', pt: '$6', borderTop: '1px solid $colors$gray11' }}>
+    <Box
+      css={{
+        mb: '$1',
+        pb: '$1',
+        mt: '$4',
+        pt: '$4',
+        borderTop: '1px solid $colors$gray11',
+      }}
+    >
       <Heading as="h3" size="4">
         {month}
       </Heading>
-      {/* <DateHeader /> */}
       {children}
     </Box>
   )
@@ -344,16 +213,15 @@ const Date = ({ children, title }) => {
     <Box role="listitem">
       <Box
         css={{
+          // borderTop: '1px solid $colors$gray10',
           mt: '$2',
           pt: '$2',
-          // borderTop: '1px solid $colors$gray10',
           '@bp1': {
             mt: '$3',
             pt: '$3',
           },
         }}
       >
-        {/* <DateHeader /> */}
         <Grid
           css={{
             gridTemplateColumns: 'repeat(1, 1fr)',
@@ -381,13 +249,9 @@ const Date = ({ children, title }) => {
               gridRowEnd: 'span 1',
               gridColumnStart: 'span 5',
               gridColumnEnd: 'span 5',
-              // offset
-              // px: '24px',
             }}
           >
-            {/* <Grid columns="5" gap="5"> */}
             {children}
-            {/* </Grid> */}
           </Box>
         </Grid>
       </Box>
@@ -395,10 +259,14 @@ const Date = ({ children, title }) => {
   )
 }
 
-const Event = ({ data, keyPrefix }) => {
+/**
+ * @todo eject these too or make them more readable please
+ */
+const EventItem = ({ data, keyPrefix }: { data: Item; keyPrefix: string }) => {
+  // @question(slugger) do we need unique?
   const slugger = new Slugger()
-  // console.dir(`Event`)
-  // console.dir(`> data`)
+  // console.dir(`> Item`)
+  // console.dir(`>> data`)
   // console.dir(data)
   // return null
   if (data === null || data === undefined) return null
@@ -407,8 +275,10 @@ const Event = ({ data, keyPrefix }) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { as, date, href, slug } = notion.custom.getInfoType({
     item: data,
+    // @todo(dynamic)
     routeType: 'events',
   })
+
   // console.dir(`---`)
   // console.dir(`as:   ${as}`)
   // console.dir(`date: ${date}`)
@@ -568,7 +438,7 @@ const Event = ({ data, keyPrefix }) => {
                   }}
                 />
                 <Box>
-                  <ListItem title={format(iso, `hh:mma z (EEEE)`)} />
+                  <ListItem title={_format(iso, `hh:mma z (EEEE)`)} />
                 </Box>
               </Flex>
             </Box>
@@ -751,5 +621,151 @@ const ListItem = ({ title }) => {
     </Box>
   )
 }
+/**
+ * @refactor
+ * This date stuff is wild, haha
+ */
+const EventsListing = (props) => {
+  // console.dir(`> EventsListing`)
+  // console.dir(props)
+  /**
+   * @verify data
+   */
+  const { data, images } = props
+  const { content } = data
+  const { results: _items } = data?.items
+  const items: Items = _items
 
-export default ListingEvents
+  /**
+   * @fallback
+   *
+   * If no `/events` show content
+   * If no `/events/[yyy/mm/dd]` show blank (or return to /events)
+   */
+  if (_isEmpty(items)) return <ContentNodes content={content} images={images} />
+
+  /**
+   * @sort items
+   */
+  const itemsSorted = _orderBy(items, ['properties.dateEvent.start'], ['asc'])
+
+  /**
+   * @refactor uh...
+   */
+  const _dates = _uniqWith(
+    _map(itemsSorted, (item) => {
+      return item?.properties?.dateEvent?.start
+    })
+  )
+  // console.dir(_dates)
+
+  let aYears = []
+  const dates = _map(_dates, (date) => {
+    const iso = parseISO(date)
+    const isoYear = getYear(iso)
+    // @note(date-fns) zero-based month is confusing when year/date are not
+    const isoMonth = getMonth(iso) + 1
+    const isoDate = getDate(iso)
+    const isoDay = getDay(iso)
+    const formatYear = _format(iso, 'yyyy')
+    const formatMonth = _format(iso, 'MM')
+    const formatDate = _format(iso, 'dd')
+    const formatDay = _format(iso, 'EEEE')
+
+    aYears.push(isoYear)
+
+    return {
+      date: {
+        full: date,
+        year: formatYear,
+        month: formatMonth,
+        date: formatDate,
+        day: formatDay,
+      },
+      iso: {
+        full: iso,
+        year: isoYear,
+        month: isoMonth,
+        date: isoDate,
+        day: isoDay,
+      },
+    }
+  })
+  const _data = {}
+  aYears = _uniqWith(aYears)
+  _map(aYears, (ay) => {
+    const dataByYear = _filter(dates, { iso: { year: ay } })
+    _data[ay] = {}
+    let aMonths = []
+    _map(dataByYear, (d) => aMonths.push(d.iso.month))
+    aMonths = _uniqWith(aMonths)
+    _map(aMonths, (am) => {
+      const dataByMonth = _filter(dates, { iso: { year: ay, month: am } })
+      _data[ay][am] = {}
+      let aDates = []
+      _map(dataByMonth, (d) => aDates.push(d.iso.date))
+      aDates = _uniqWith(aDates)
+      _map(aDates, (ad) => {
+        const dataByDate = _filter(dates, {
+          iso: { year: ay, month: am, date: ad },
+        })
+        _data[ay][am][ad] = dataByDate
+      })
+    })
+  })
+
+  // console.dir(`> _data`)
+  // console.dir(_data)
+
+  return (
+    <>
+      {_map(_data, (dataYear, yearIndex) => {
+        return (
+          <React.Fragment key={`data--${yearIndex}`}>
+            <Year title={yearIndex}>
+              {_map(dataYear, (dataMonth, monthIndex) => {
+                return (
+                  <React.Fragment key={`data--${yearIndex}--${monthIndex}`}>
+                    <Month data={dataMonth}>
+                      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+                      {/* @ts-ignore */}
+                      {_map(dataMonth, (dataDate, dateIndex) => {
+                        return (
+                          <React.Fragment
+                            key={`data--${yearIndex}--${monthIndex}--${dateIndex}`}
+                          >
+                            <Date title={dateIndex}>
+                              {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+                              {/* @ts-ignore */}
+                              {_map(dataDate, (_date, _di) => {
+                                const event = _filter(itemsSorted, {
+                                  properties: {
+                                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                                    // @ts-ignore
+                                    dateEvent: { start: _date?.date?.full },
+                                  },
+                                })[0]
+                                const key = `data--${yearIndex}--${monthIndex}--${dateIndex}--${_di}`
+                                return (
+                                  <React.Fragment key={key}>
+                                    <EventItem data={event} keyPrefix={key} />
+                                  </React.Fragment>
+                                )
+                              })}
+                            </Date>
+                          </React.Fragment>
+                        )
+                      })}
+                    </Month>
+                  </React.Fragment>
+                )
+              })}
+            </Year>
+          </React.Fragment>
+        )
+      })}
+    </>
+  )
+}
+
+export default EventsListing
