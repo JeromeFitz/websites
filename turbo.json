@@ -1,0 +1,31 @@
+{
+  "baseBranch": "origin/main",
+  "globalDependencies": ["yarn.lock"],
+  "pipeline": {
+    "build": {
+      "outputs": [".cache/**", ".next/**"],
+      "dependsOn": ["^build", "$VERCEL_ENV"]
+    },
+    "clean": {
+      "cache": false
+    },
+    "dev": {
+      "cache": false
+    },
+    "lint": { "dependsOn": ["^lint"] },
+    "lint:fix": {
+      "cache": false
+    },
+    "semantic-release:mono": {
+      "cache": false,
+      "dependsOn": ["lint"]
+    },
+    "start": {
+      "cache": false
+    },
+    "test": {
+      "outputs": ["coverage/**"],
+      "dependsOn": ["lint"]
+    }
+  }
+}

@@ -14,13 +14,14 @@
   },
   "workspaces": {
     "packages": [
-      "packages/*"
+      "sites/*"
     ],
     "nohoist": []
   },
   "engines": {
     "node": ">=14"
   },
+  "packageManager": "yarn@1.22.17",
   "scripts": {
     "----": "# @turbo scripts",
     "build": "turbo run build --include-dependencies --no-deps",
@@ -70,48 +71,6 @@
     "rimraf": "3.0.2",
     "semantic-release-monorepo": "7.0.5",
     "tsup": "5.11.11",
-    "turbo": "1.0.28"
-  },
-  "turbo": {
-    "baseBranch": "origin/main",
-    "pipeline": {
-      "build": {
-        "outputs": [
-          ".cache/**",
-          ".next/**"
-        ],
-        "dependsOn": [
-          "^build",
-          "$VERCEL_ENV"
-        ]
-      },
-      "clean": {
-        "cache": false
-      },
-      "dev": {
-        "cache": false
-      },
-      "lint": {},
-      "lint:fix": {
-        "cache": false
-      },
-      "semantic-release:mono": {
-        "cache": false,
-        "dependsOn": [
-          "lint"
-        ]
-      },
-      "start": {
-        "cache": false
-      },
-      "test": {
-        "outputs": [
-          "coverage/**"
-        ],
-        "dependsOn": [
-          "lint"
-        ]
-      }
-    }
+    "turbo": "1.1.1"
   }
 }

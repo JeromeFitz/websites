@@ -52,6 +52,6 @@
       "~utils/*": ["src/utils/*"]
     }
   },
-  "include": ["packages/**/*.ts", "packages/**/*.tsx"],
+  "include": ["sites/**/*.ts", "sites/**/*.tsx"],
   "exclude": ["node_modules", "tests/*.test.ts"]
 }

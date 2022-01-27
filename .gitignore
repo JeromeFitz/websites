@@ -46,6 +46,7 @@ yarn-error.log*
 .cache
 .idea
 .tsbuildinfo
+buildInfo.json
 
 ## ZZZ
 zzz
