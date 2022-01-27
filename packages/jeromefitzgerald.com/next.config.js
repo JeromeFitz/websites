@@ -173,8 +173,8 @@ const nextConfig = {
     ]
   },
   images: {
-    // // deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-    // deviceSizes: [640, 1200, 1920],
+    // deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    deviceSizes: [640, 1200, 1920],
     domains: [
       'cdn.jerandky.com', // CDN
       'cdn.jeromefitzgerald.com', // CDN
@@ -191,12 +191,12 @@ const nextConfig = {
       'tailwindcss.com', // Tailwind
       'images.unsplash.com', // Unsplash
     ],
-    // formats: ['image/avif', 'image/webp'],
-    // // imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    // imageSizes: [24, 64, 384],
-    // minimumCacheTTL: 31536000, // 1 year
+    formats: ['image/avif', 'image/webp'],
+    // imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    imageSizes: [24, 64, 384],
+    minimumCacheTTL: 31536000, // 1 year
     // minimumCacheTTL: 18144000, // 1 month
-    minimumCacheTTL: 604800, // 1 week
+    // minimumCacheTTL: 604800, // 1 week
     // minimumCacheTTL: 86400, // 1 day
   },
   i18n: {
