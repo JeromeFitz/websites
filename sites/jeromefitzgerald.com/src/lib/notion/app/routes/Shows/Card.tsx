@@ -114,6 +114,7 @@ const ShowsCard = ({
                 description={description}
                 image={img}
                 // sizes="(min-width: 1280) 50vh, 25vh"
+                priority={false}
                 slug={slugImage}
               />
             </CardImage>

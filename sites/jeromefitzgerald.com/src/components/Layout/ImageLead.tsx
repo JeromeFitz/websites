@@ -5,7 +5,6 @@ import {
   Section,
   Skeleton,
 } from '@jeromefitz/design-system/components'
-// import * as AspectRatioPrimitive from '@radix-ui/react-aspect-ratio'
 import _isEmpty from 'lodash/isEmpty'
 import useSWR from 'swr'
 
@@ -21,9 +20,6 @@ import { Image, ImageBlur, ImageContainer } from './ImageLead.styles'
  *
  *
  */
-
-// const AspectRatio = AspectRatioPrimitive
-
 const ImageWithBackgroundBlur = ({
   base64,
   description,
@@ -33,45 +29,10 @@ const ImageWithBackgroundBlur = ({
   // // sizes = '256px',
   slug,
 }) => {
-  // console.dir(`image`)
-  // console.dir(image)
-  const { src } = image
-  // console.dir(`src:     ${src}`)
-  // console.dir(`width:   ${image.width}`)
-  // console.dir(`height:  ${image.height}`)
-
-  const width = image.width
-  const height = image.height
-
-  // console.dir(`width:   ${width}`)
-  // console.dir(`height:  ${height}`)
-
-  // const width = 256
-  // const height = 256
-
-  // const width = 665
-  // const height = 665
+  const { height, src, width } = image
 
   return (
-    <ImageContainer
-      // className="w-2/3 mx-auto"
-      css={
-        {
-          // height: '250px',
-          // maxHeight: '375px',
-          // height: '100%',
-          // ml: 'auto',
-          // mr: 'auto',
-          // overflow: 'hidden',
-          // width: '75%',
-          // maxWidth: '100%',
-          // height: 'auto',
-          // '@bp1': { height: '375px' },
-          // '@bp2': { height: '375px' },
-        }
-      }
-    >
-      {/* <AspectRatio.Root ratio={4 / 3}> */}
+    <ImageContainer>
       <ImageBlur
         css={{
           backgroundImage: `url(${base64})`,
@@ -79,26 +40,19 @@ const ImageWithBackgroundBlur = ({
           borderRadius: '$4',
         }}
       />
-      {/* <AspectRatio.Root ratio={16 / 9}> */}
+
       <Image
         alt={description}
         blurDataURL={base64}
-        // layout="fill"
-        // layout="responsive"
-        // sizes="256px"
-        // layout="fixed"
         layout="intrinsic"
-        // sizes={sizes}
         key={slug}
         placeholder="blur"
         priority={priority}
-        quality={100}
+        quality={90}
         src={src}
         height={height}
         width={width}
-        // {...image}
       />
-      {/* </AspectRatio.Root> */}
     </ImageContainer>
   )
 }

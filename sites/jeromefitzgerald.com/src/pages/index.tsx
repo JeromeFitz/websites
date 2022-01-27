@@ -1,4 +1,5 @@
 import { PageHeading, SkeletonHeading } from '@jeromefitz/design-system/components'
+import dynamic from 'next/dynamic'
 import useSWR from 'swr'
 
 import { Page } from '~components/Layout'
@@ -10,11 +11,15 @@ import {
   ERROR__FALLBACK,
 } from '~lib/constants'
 import fetcher from '~lib/fetcher'
-import ShowsListing from '~lib/notion/app/routes/Shows/Listing'
+// import ShowsListing from '~lib/notion/app/routes/Shows/Listing'
 import getCatchAll from '~lib/notion/getCatchAll'
 import getDataReturn from '~lib/notion/getDataReturn'
 import { notion } from '~lib/notion/helper'
 import getNextPageStatus from '~utils/getNextPageStatus'
+
+const ShowsListing = dynamic(() => import('~lib/notion/app/routes/Shows/Listing'), {
+  ssr: false,
+})
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -85,7 +90,7 @@ const Index = (props) => {
    * - Development: Pull from `mockData`
    */
   const { images, items } = mockData
-  const dataSHows = {
+  const dataShows = {
     items,
   }
   const routeTypeShows = 'shows'
@@ -102,7 +107,7 @@ const Index = (props) => {
     <>
       <Page data={data} {...props} />
       {hasShows && (
-        <ShowsListing data={dataSHows} images={images} routeType={routeTypeShows} />
+        <ShowsListing data={dataShows} images={images} routeType={routeTypeShows} />
       )}
     </>
   )
