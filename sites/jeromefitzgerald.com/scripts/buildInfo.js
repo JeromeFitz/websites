@@ -2,8 +2,11 @@ const childProcess = require('child_process')
 const { writeFile } = require('fs/promises')
 const { join } = require('path')
 
+const { Octokit } = require('@octokit/core')
 const _size = require('lodash/size')
 const prettier = require('prettier')
+
+const octokit = new Octokit({ auth: process.env.GH_TOKEN })
 
 const branch = childProcess
   // @note(git>=2.22)
@@ -27,6 +30,18 @@ function getBranch(branch) {
 }
 
 async function setupBuildInfo() {
+  const releases = await octokit.request('GET /repos/{owner}/{repo}/releases', {
+    owner: 'jeromefitz',
+    repo: 'jeromefitzgerald.com',
+    page: 1,
+    per_page: 20,
+  })
+
+  const tags = await octokit.request('GET /repos/{owner}/{repo}/tags', {
+    owner: 'jeromefitz',
+    repo: 'jeromefitzgerald.com',
+  })
+
   const [version, prerelease] = tag.replace('website-v', '').split('-')
   const [major, minor, patch] = version.split('.')
   const data = {
@@ -37,6 +52,9 @@ async function setupBuildInfo() {
     patch,
     prerelease: !!prerelease ? prerelease : getBranch(branch),
     version,
+    //
+    tags,
+    releases,
   }
 
   const filePath = join(process.cwd(), './src/config/buildInfo.json')
