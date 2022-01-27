@@ -14,7 +14,7 @@ const ImageBlur = styled('div', {
   height: '99.9%',
   borderRadius: '$4',
   filter: 'blur(0.25rem) saturate(160%)',
-  opacity: '.5',
+  opacity: '0.81',
   transform: 'scale(1.01)',
 })
 
