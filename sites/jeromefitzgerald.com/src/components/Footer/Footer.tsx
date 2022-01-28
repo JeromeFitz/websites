@@ -34,7 +34,7 @@ import buildInfo from '~config/buildInfo.json'
 
 const { branch, isBranchMain, prerelease, version } = buildInfo
 
-const NowPlayingWithNoSSR = dynamic(() => import('~components/NowPlaying'), {
+const NowPlaying = dynamic(() => import('~components/NowPlaying'), {
   ssr: false,
 })
 
@@ -145,9 +145,7 @@ const FooterImpl = () => {
       <Box css={{ width: '100%', my: '$6' }}>
         <Separator css={{ margin: '0', width: '100% !important' }} />
       </Box>
-      {process.env.NEXT_PUBLIC__SITE === 'jeromefitzgerald.com' && (
-        <NowPlayingWithNoSSR />
-      )}
+      {process.env.NEXT_PUBLIC__SITE === 'jeromefitzgerald.com' && <NowPlaying />}
       <Box as="footer" css={{ pb: '$9', mx: '$3' }}>
         <Grid
           css={{

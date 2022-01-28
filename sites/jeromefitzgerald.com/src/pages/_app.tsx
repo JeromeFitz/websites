@@ -8,13 +8,13 @@ import {
 import { globalCss, darkTheme } from '@jeromefitz/design-system/stitches.config'
 import { ThemeProvider } from 'next-themes'
 import type { AppProps, NextWebVitalsMetric } from 'next/app'
+import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import pluralize from 'pluralize'
 import * as React from 'react'
 import { SWRConfig } from 'swr'
 
 import { ErrorBoundary } from '~components/ErrorBoundary'
-import Footer from '~components/Footer'
 import Header from '~components/Header'
 import NProgress from '~components/NProgress'
 import buildInfo from '~config/buildInfo.json'
@@ -22,6 +22,10 @@ import { ManagedUIContext } from '~context/ManagedUI'
 import { MediaContextProvider } from '~context/Media'
 import { useAnalytics } from '~lib/analytics'
 import { IMAGE__FALLBACKS__SHOWS } from '~lib/constants'
+
+const Footer = dynamic(() => import('~components/Footer'), {
+  ssr: false,
+})
 
 pluralize.addPluralRule(/cast$/i, 'cast')
 pluralize.addPluralRule(/emeritus$/i, 'emeritus')
