@@ -11,12 +11,7 @@ import {
   PopoverTrigger,
   Text,
 } from '@jeromefitz/design-system/components'
-import {
-  Tooltip,
-  TooltipTrigger,
-  TooltipContent,
-  TooltipArrow,
-} from '@jeromefitz/design-system/custom/Tooltip'
+import { Tooltip, TooltipTrigger } from '@jeromefitz/design-system/custom/Tooltip'
 import { ArrowTopRightIcon, DropdownMenuIcon, PlusIcon } from '@radix-ui/react-icons'
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
 import dynamic from 'next/dynamic'
@@ -34,6 +29,9 @@ const PopoverMenu = dynamic(() => import('./PopoverMenu'), {
   ssr: false,
 })
 const PopoverShows = dynamic(() => import('./PopoverShows'), {
+  ssr: false,
+})
+const TooltipContent = dynamic(() => import('./TooltipContent'), {
   ssr: false,
 })
 
@@ -128,7 +126,6 @@ const NavSkip = () => {
 
 const Header = () => {
   const router = useRouter()
-  const isHompage = router.asPath === '/'
 
   return (
     <Box
@@ -180,12 +177,7 @@ const Header = () => {
                       />
                     </Text>
                   </TooltipTrigger>
-                  {!isHompage && (
-                    <TooltipContent align="start" sideOffset={5}>
-                      {`Go back to homepage`}
-                      <TooltipArrow offset={15} />
-                    </TooltipContent>
-                  )}
+                  <TooltipContent />
                 </Tooltip>
                 <VisuallyHidden.Root>
                   <Box id="logoHeader">

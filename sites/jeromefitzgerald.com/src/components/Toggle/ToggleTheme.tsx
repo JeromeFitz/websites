@@ -1,18 +1,18 @@
 import { ButtonIcon } from '@jeromefitz/design-system/components'
-import {
-  Tooltip,
-  TooltipTrigger,
-  TooltipContent,
-  TooltipArrow,
-} from '@jeromefitz/design-system/custom/Tooltip'
+import { Tooltip, TooltipTrigger } from '@jeromefitz/design-system/custom/Tooltip'
 import { darkTheme } from '@jeromefitz/design-system/stitches.config'
 import { MoonIcon, SunIcon } from '@radix-ui/react-icons'
 // import Mousetrap from 'mousetrap'
 import { useTheme } from 'next-themes'
+import dynamic from 'next/dynamic'
 import * as React from 'react'
 import { useSound } from 'use-sound'
 
 import { useUI } from '~context/ManagedUI'
+
+const TooltipContent = dynamic(() => import('./TooltipContent'), {
+  ssr: false,
+})
 
 const ThemeToggle = (props) => {
   const { theme, setTheme } = useTheme()
@@ -52,10 +52,7 @@ const ThemeToggle = (props) => {
           {theme === 'light' ? <MoonIcon /> : <SunIcon />}
         </ButtonIcon>
       </TooltipTrigger>
-      <TooltipContent align="end" sideOffset={5}>
-        {content}
-        <TooltipArrow offset={15} />
-      </TooltipContent>
+      <TooltipContent content={content} />
     </Tooltip>
   )
 }

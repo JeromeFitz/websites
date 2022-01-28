@@ -1,16 +1,16 @@
 import { ButtonIcon } from '@jeromefitz/design-system/components'
-import {
-  Tooltip,
-  TooltipTrigger,
-  TooltipContent,
-  TooltipArrow,
-} from '@jeromefitz/design-system/custom/Tooltip'
+import { Tooltip, TooltipTrigger } from '@jeromefitz/design-system/custom/Tooltip'
 import { SpeakerOffIcon, SpeakerModerateIcon } from '@radix-ui/react-icons'
 // import Mousetrap from 'mousetrap'
+import dynamic from 'next/dynamic'
 import * as React from 'react'
 import { useSound } from 'use-sound'
 
 import { useUI } from '~context/ManagedUI'
+
+const TooltipContent = dynamic(() => import('./TooltipContent'), {
+  ssr: false,
+})
 
 const ThemeToggle = (props) => {
   const { audio, toggleAudio } = useUI()
@@ -51,10 +51,7 @@ const ThemeToggle = (props) => {
           {audio ? <SpeakerModerateIcon /> : <SpeakerOffIcon />}
         </ButtonIcon>
       </TooltipTrigger>
-      <TooltipContent align="end" sideOffset={5}>
-        {content}
-        <TooltipArrow offset={15} />
-      </TooltipContent>
+      <TooltipContent content={content} />
     </Tooltip>
   )
 }
