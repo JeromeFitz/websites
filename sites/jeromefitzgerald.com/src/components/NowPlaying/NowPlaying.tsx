@@ -8,7 +8,7 @@ import {
   CardSpotify,
 } from '@jeromefitz/design-system/components'
 import { styled } from '@jeromefitz/design-system/stitches.config'
-import { ExternalLinkIcon } from '@radix-ui/react-icons'
+// import { ExternalLinkIcon } from '@radix-ui/react-icons'
 import Slugger from 'github-slugger'
 import _map from 'lodash/map'
 import _slice from 'lodash/slice'
@@ -46,7 +46,7 @@ const NowPlaying = () => {
   // @todo(swr) SWRHook
   const { data } = useSWR<any>(
     // 'http://localhost:3001/v/1/spotify/now-playing',
-    '/api/spotify/now-playing',
+    '/api/music/now-playing',
     fetcher,
     {
       fallbackData: initialData,
@@ -154,7 +154,7 @@ const NowPlaying = () => {
               <strong>{albumYear}</strong>.
             </>
           </Paragraph>
-          <Paragraph size="1" css={{ py: '$2' }}>
+          {/* <Paragraph size="1" css={{ py: '$2' }}>
             <>
               <Link
                 href={track.external_urls.spotify}
@@ -166,7 +166,6 @@ const NowPlaying = () => {
                 <Flex
                   as="span"
                   css={{
-                    // color: '$slate8',
                     display: 'inline-block',
                     ml: '$1',
                   }}
@@ -175,7 +174,7 @@ const NowPlaying = () => {
                 </Flex>
               </Link>
             </>
-          </Paragraph>
+          </Paragraph> */}
         </CardSpotify>
         <Separator css={{ margin: '0 auto $9', width: '1% !important' }} />
       </Container>

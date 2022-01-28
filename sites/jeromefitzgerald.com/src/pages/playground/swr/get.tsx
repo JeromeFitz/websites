@@ -19,7 +19,7 @@ const options = {
   limit: 10,
   time_range: 'long_term',
   type: 'top-tracks',
-  url: '/api/spotify',
+  url: '/api/music',
   // url: 'http://localhost:3001/v/1/spotify',
 }
 

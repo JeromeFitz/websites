@@ -7,7 +7,7 @@ import {
   Link,
   Note,
   PageHeading,
-  Paragraph,
+  // Paragraph,
   RadioCard,
   RadioCardGroup,
   Section,
@@ -63,7 +63,7 @@ const Music = () => {
   const url = 'https://jeromefitzgerald.com/music'
   const title = 'Music'
   const description =
-    'Jerome loves music. Here are his current top artists and tracks (all data from Spotify).'
+    'Jerome loves music. Here are his current top artists and tracks.'
 
   const seo = {
     title: title,
@@ -115,7 +115,7 @@ const Music = () => {
         </Link>
         .
       </Text>
-      <Text
+      {/* <Text
         as="p"
         css={{
           my: '$6',
@@ -125,7 +125,7 @@ const Music = () => {
         }}
       >
         Links will open in, and all data comes from <strong>Spotify</strong>.
-      </Text>
+      </Text> */}
       <Text as="p" css={{ my: '$6', fontSize: '$4', lineHeight: '1.4' }}>
         My “Music” library is at over 50 days, and am continuing an ever growing
         vinyl collection (have not yet made the leap to first editions, heh).
@@ -140,13 +140,13 @@ const Music = () => {
           >
             Change time frequency
           </Heading>
-          <Paragraph
+          {/* <Paragraph
             size="2"
             css={{ mb: '$3', '& > strong': { color: '$spotify-green' } }}
           >
             I’ve had <strong>Spotify</strong> since March 2020, so you can go back
             that far or two other options currently.
-          </Paragraph>
+          </Paragraph> */}
           <RadioCardGroup
             defaultValue={selected?.time_range}
             onValueChange={handleSpotifyTimeRange2}
