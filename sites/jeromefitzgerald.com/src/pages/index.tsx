@@ -4,7 +4,6 @@ import useSWR from 'swr'
 
 import { Page } from '~components/Layout'
 import { notionConfig } from '~config/websites'
-import mockData from '~data/mock/notion/shows'
 import {
   nextWeirdRoutingSkipData,
   revalidate,
@@ -17,7 +16,7 @@ import getDataReturn from '~lib/notion/getDataReturn'
 import { notion } from '~lib/notion/helper'
 import getNextPageStatus from '~utils/getNextPageStatus'
 
-const ShowsListing = dynamic(() => import('~lib/notion/app/routes/Shows/Listing'), {
+const MockShows = dynamic(() => import('~components/Mock/Shows'), {
   ssr: false,
 })
 
@@ -79,23 +78,6 @@ const Index = (props) => {
     )
 
   /**
-   * @hack(notion)
-   * Since Notion does not have an embed currently,
-   *  this page is very hacked. However, due to this
-   *  being the index/homepage this is acceptable
-   *  (well to me I guess heh)
-   *
-   * @todo(notion)
-   * - Production:  Pull from `./cache/shows.json`
-   * - Development: Pull from `mockData`
-   */
-  const { images, items } = mockData
-  const dataShows = {
-    items,
-  }
-  const routeTypeShows = 'shows'
-
-  /**
    * @todo(config) dynamic site selection
    *
    * With the move to `turborepo` this is probably not needed
@@ -106,9 +88,7 @@ const Index = (props) => {
   return (
     <>
       <Page data={data} {...props} />
-      {hasShows && (
-        <ShowsListing data={dataShows} images={images} routeType={routeTypeShows} />
-      )}
+      {hasShows && <MockShows />}
     </>
   )
 }
