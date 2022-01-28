@@ -49,6 +49,7 @@ yarn-error.log*
 buildInfo.json
 sitemap.xml
 sitemap-*.xml
+tsconfig.tsbuildinfo
 
 ## ZZZ
 zzz
