@@ -1,4 +1,3 @@
-// import { BigHead } from '@bigheads/core'
 import type { ToastData, ToastType } from '@jeromefitz/design-system/components'
 import {
   Box,

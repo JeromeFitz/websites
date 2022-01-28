@@ -47,6 +47,8 @@ yarn-error.log*
 .idea
 .tsbuildinfo
 buildInfo.json
+sitemap.xml
+sitemap-*.xml
 
 ## ZZZ
 zzz
