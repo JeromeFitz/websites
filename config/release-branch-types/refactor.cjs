@@ -1,3 +1,3 @@
-const refactor = ['optimizations']
+const refactor = []
 
 module.exports = refactor

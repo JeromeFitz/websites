@@ -84,7 +84,7 @@ UIContext.displayName = 'UIContext'
 // @todo(complexity) 16
 // eslint-disable-next-line complexity
 function uiReducer(state: State, action: Action) {
-  switch (action.type) {
+  switch (action?.type) {
     case 'OPEN_SIDEBAR': {
       return {
         ...state,

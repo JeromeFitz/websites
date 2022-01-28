@@ -13,11 +13,11 @@ import pluralize from 'pluralize'
 import * as React from 'react'
 import { SWRConfig } from 'swr'
 
+import { ErrorBoundary } from '~components/ErrorBoundary'
 import Footer from '~components/Footer'
 import Header from '~components/Header'
 import NProgress from '~components/NProgress'
 import buildInfo from '~config/buildInfo.json'
-// import { ToastProvider } from '~components/Toast'
 import { ManagedUIContext } from '~context/ManagedUI'
 import { MediaContextProvider } from '~context/Media'
 import { useAnalytics } from '~lib/analytics'
@@ -159,44 +159,46 @@ function MyApp({ Component, pageProps, router }: AppProps) {
 
   return (
     <>
-      <SWRConfig
-        value={{
-          fallback: { images: IMAGE__FALLBACKS__SHOWS },
-          provider: () => new Map(),
-        }}
-      >
-        <Head>
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0,viewport-fit=cover"
-          />
-        </Head>
-        <MediaContextProvider>
-          <ManagedUIContext>
-            <ThemeProvider
-              disableTransitionOnChange
-              attribute="class"
-              value={{ light: 'light-theme', dark: darkTheme.className }}
-              defaultTheme="system"
-            >
-              <ToastProvider>
-                <NProgress />
-                <Header />
-                <Container
-                  as="main"
-                  id="main"
-                  size={{ '@initial': 2, '@bp1': 3, '@bp2': 4 }}
-                >
-                  <Section>
-                    <Component {...pageProps} key={router.route} />
-                  </Section>
-                </Container>
-                <Footer />
-              </ToastProvider>
-            </ThemeProvider>
-          </ManagedUIContext>
-        </MediaContextProvider>
-      </SWRConfig>
+      <ErrorBoundary>
+        <SWRConfig
+          value={{
+            fallback: { images: IMAGE__FALLBACKS__SHOWS },
+            provider: () => new Map(),
+          }}
+        >
+          <Head>
+            <meta
+              name="viewport"
+              content="width=device-width, initial-scale=1.0,viewport-fit=cover"
+            />
+          </Head>
+          <MediaContextProvider>
+            <ManagedUIContext>
+              <ThemeProvider
+                disableTransitionOnChange
+                attribute="class"
+                value={{ light: 'light-theme', dark: darkTheme.className }}
+                defaultTheme="system"
+              >
+                <ToastProvider>
+                  <NProgress />
+                  <Header />
+                  <Container
+                    as="main"
+                    id="main"
+                    size={{ '@initial': 2, '@bp1': 3, '@bp2': 4 }}
+                  >
+                    <Section>
+                      <Component {...pageProps} key={router.route} />
+                    </Section>
+                  </Container>
+                  <Footer />
+                </ToastProvider>
+              </ThemeProvider>
+            </ManagedUIContext>
+          </MediaContextProvider>
+        </SWRConfig>
+      </ErrorBoundary>
     </>
   )
 }

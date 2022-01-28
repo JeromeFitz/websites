@@ -10,11 +10,11 @@ const ContentNodes = ({ content, images }) => {
   return (
     <>
       {_map(getContentNodes({ content, images }), (node: any) => {
-        if (node.type === 'ul') {
+        if (node?.type === 'ul') {
           const UL = getContentNode['bulleted_list']
           return <UL key={node.id}>{node.node}</UL>
         }
-        if (node.type === 'ol') {
+        if (node?.type === 'ol') {
           const OL = getContentNode['numbered_list']
           return <OL key={node.id}>{node.node}</OL>
         }
