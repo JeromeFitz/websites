@@ -55,7 +55,7 @@ const getImages = async ({ data, pathVariables }) => {
       // console.dir(imageResult)
 
       const { type } = imageResult
-      const image = imageResult[type]
+      const image = !!type && imageResult[type]
 
       // @todo(notion) rework content after refactor: getTypes[image]
       const url =

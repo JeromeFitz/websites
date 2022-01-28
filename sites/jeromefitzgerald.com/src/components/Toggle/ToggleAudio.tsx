@@ -6,7 +6,7 @@ import {
   TooltipArrow,
 } from '@jeromefitz/design-system/custom/Tooltip'
 import { SpeakerOffIcon, SpeakerModerateIcon } from '@radix-ui/react-icons'
-import Mousetrap from 'mousetrap'
+// import Mousetrap from 'mousetrap'
 import * as React from 'react'
 import { useSound } from 'use-sound'
 
@@ -31,13 +31,13 @@ const ThemeToggle = (props) => {
     toggleAudio()
   }, [audio, playDisableSound, playEnableSound, toggleAudio])
 
-  React.useEffect(() => {
-    Mousetrap.bind(['ctrl+a'], () => handleClick())
+  // React.useEffect(() => {
+  //   Mousetrap.bind(['ctrl+a'], () => handleClick())
 
-    return () => {
-      Mousetrap.unbind(['ctrl+a'])
-    }
-  }, [handleClick])
+  //   return () => {
+  //     Mousetrap.unbind(['ctrl+a'])
+  //   }
+  // }, [handleClick])
 
   return (
     <Tooltip>
