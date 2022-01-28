@@ -35,8 +35,8 @@ const DATABASES__INIT = {
 const getPropertiesInitial = (items: string | any[]) => {
   const properties = {}
   for (let i = 0; i < items.length; i++) {
-    const key = items[i].notion
-    const type = items[i].type
+    const key = items[i]?.notion
+    const type = items[i]?.type
 
     if (['formula', 'multi_select', 'relation', 'rollup', 'select'].includes(type))
       continue

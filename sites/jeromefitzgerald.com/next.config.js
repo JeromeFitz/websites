@@ -115,19 +115,13 @@ const nextConfig = {
   amp: false,
   assetPrefix: '',
   distDir: './.next',
+  compress: true,
   eslint: {
     // @note(eslint) we use @jeromefitz/codestyle opt out of next.js
     build: false,
   },
   experimental: {
-    cacheUnaffected: false,
-    catchAllRouting: true,
     concurrentFeatures: false,
-    enableBlurryPlaceholder: true,
-    jsconfigPaths: true,
-    modern: true,
-    polyfillsOptimization: true,
-    productionBrowserSourceMaps: false,
     serverComponents: false,
   },
   future: { strictPostcssConfiguration: true },
@@ -170,9 +164,11 @@ const nextConfig = {
     locales: ['en'],
     defaultLocale: 'en',
   },
+  optimizeFonts: true,
   outputFileTracing: false,
   pageExtensions: ['jsx', 'js', 'tsx', 'ts'],
   poweredByHeader: false,
+  productionBrowserSourceMaps: false,
   // reactStrictMode: true,
   // rewrites() {
   //   return getRedirects

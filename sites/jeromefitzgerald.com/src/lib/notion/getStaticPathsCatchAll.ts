@@ -87,6 +87,11 @@ const getStaticPathsCatchAll = async () => {
      * @todo(notion) api this up somehow please
      */
     _map(PAGES, (p) => paths.push(`/${p}`))
+    // // @debug(error-boundary) uncomment this when debugging builds locally
+    // return {
+    //   paths,
+    //   fallback: 'blocking',
+    // }
 
     await asyncForEach(ROUTE_TYPES, async (routeType: string) => {
       /**
