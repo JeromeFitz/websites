@@ -17,7 +17,7 @@ const PC = () => {
   return (
     <PopoverContent hideArrow sideOffset={15} alignOffset={-15}>
       <Box css={{ p: '$1' }}>
-        {navigationHeader?.links.map((show, showId) => (
+        {navigationHeader?.popover.map((show, showId) => (
           <NextLink key={`header-popover-${showId}`} href={show.url} passHref>
             <HighlightLink
               variant={
