@@ -4,12 +4,12 @@ import {
   CardSpotify,
   Flex,
   Heading,
-  Link,
+  // Link,
   Paragraph,
   Separator,
 } from '@jeromefitz/design-system/components'
 import { styled } from '@jeromefitz/design-system/stitches.config'
-import { ExternalLinkIcon } from '@radix-ui/react-icons'
+// import { ExternalLinkIcon } from '@radix-ui/react-icons'
 import Slugger from 'github-slugger'
 import _map from 'lodash/map'
 import { Fragment } from 'react'
@@ -79,7 +79,7 @@ const Artist = ({ year }) => {
   const imageData = artist.image
   const genresData = artist.genres
   const artistName = artist.name
-  const url = artist.external_urls.spotify
+  // const url = artist.external_urls.spotify
 
   const imageLabel = `Image of ${artistName}`
   return (
@@ -152,7 +152,7 @@ const Artist = ({ year }) => {
       </Flex>
       {/* <Paragraph size="2" css={{ color: '$hiContrast', py: '$1' }}>
             </Paragraph> */}
-      <Paragraph size="1" css={{ py: '$2' }}>
+      {/* <Paragraph size="1" css={{ py: '$2' }}>
         <>
           <Link
             href={url}
@@ -173,7 +173,7 @@ const Artist = ({ year }) => {
             </Flex>
           </Link>
         </>
-      </Paragraph>
+      </Paragraph> */}
     </CardSpotify>
   )
 }
@@ -186,7 +186,7 @@ const Song = ({ year }) => {
   const imageData = track.album.image
   const genresData = track.genres
   const artistName = track.artist
-  const url = track.external_urls.spotify
+  // const url = track.external_urls.spotify
 
   const imageLabel = `Image of ${artistName}`
   return (
@@ -240,7 +240,7 @@ const Song = ({ year }) => {
         Off of “<strong>{track.album.name}</strong>” released in{' '}
         <strong>{track.album.release_date.slice(0, 4)}</strong>.
       </Paragraph>
-      <Paragraph size="1" css={{ py: '$2' }}>
+      {/* <Paragraph size="1" css={{ py: '$2' }}>
         <>
           <Link
             href={url}
@@ -261,7 +261,7 @@ const Song = ({ year }) => {
             </Flex>
           </Link>
         </>
-      </Paragraph>
+      </Paragraph> */}
     </CardSpotify>
   )
 }
@@ -274,7 +274,7 @@ const YearInReview = () => {
           <Heading size="4" as="h2" css={{ my: '$2' }}>
             Year In Review
           </Heading>
-          <Paragraph
+          {/* <Paragraph
             size="2"
             as="p"
             css={{
@@ -287,7 +287,7 @@ const YearInReview = () => {
             This data is from <strong>Spotify</strong> too if you can imagine. Would
             be nice to do more of a breakdown like the{' '}
             <strong>Spotify Wrapped</strong> but here are the top of the pops baby.
-          </Paragraph>
+          </Paragraph> */}
           {Object.keys(years)
             .sort(function (a: any, b: any) {
               return b - a

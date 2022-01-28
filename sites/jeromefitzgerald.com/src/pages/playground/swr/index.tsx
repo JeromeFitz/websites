@@ -6,7 +6,7 @@ import useSWRInfinite from 'swr/infinite'
 import fetcher from '~lib/fetcher'
 
 const INIT = {
-  url: '/api/spotify',
+  url: '/api/music',
   // url: 'http://localhost:3001/v/1/spotify',
   title: 'SWR',
   description: 'Infinite Loading',

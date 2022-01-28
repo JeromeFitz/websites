@@ -60,7 +60,7 @@ const INIT = {
   offset: 0,
   time_range: 'short_term',
   type: 'top-artists',
-  url: '/api/spotify',
+  url: '/api/music',
 }
 
 const getKey = (pageIndex, { limit, time_range, type, url }) => {
@@ -84,7 +84,7 @@ const css_icon = {
 const backgroundsSize = _size(backgrounds)
 const info = {
   error: {
-    text: 'Hrm, Spotify API is down.',
+    text: 'Hrm, API is down.',
     cta: 'Please check back later',
   },
   loading: {
@@ -92,8 +92,10 @@ const info = {
     cta: '– Cam’ron',
   },
   success: {
-    text: 'Click any link to the left',
-    cta: 'Join on Spotify',
+    // text: 'Click any link to the left',
+    // cta: 'Join on Spotify',
+    text: 'Computers ‘put(ed).',
+    cta: '– Cam’ron',
   },
 }
 
@@ -390,8 +392,8 @@ const TopItem = ({ type }) => {
                 const bgIndex = i > backgroundsSize ? backgroundsSize : i
 
                 // @hack
-                let _href: string,
-                  _title1: string,
+                // let _href: string,
+                let _title1: string,
                   _title2: string,
                   _title3: string,
                   _meta: any,
@@ -399,7 +401,7 @@ const TopItem = ({ type }) => {
                   _alt: string
 
                 if (type === 'top-artists') {
-                  _href = item.external_urls.spotify
+                  // _href = item.external_urls.spotify
                   _title1 = item.name
                   _title2 = ''
                   _title3 = ''
@@ -407,7 +409,7 @@ const TopItem = ({ type }) => {
                   _genres = item.genres
                   _alt = `Photo of ${item.name}`
                 } else {
-                  _href = item.external_urls.spotify
+                  // _href = item.external_urls.spotify
                   _title1 = item.artist
                   _title2 = `“${item.name}”`
                   _title3 = `${item.album.name} (${item.album.release_date.slice(
@@ -450,6 +452,7 @@ const TopItem = ({ type }) => {
                     >
                       <SlideContainer
                         aria-hidden
+                        as={'div'}
                         css={{
                           background: backgrounds[bgIndex]?.light,
                           [`.${darkTheme} &`]: {
@@ -508,9 +511,9 @@ const TopItem = ({ type }) => {
                             transform: 'none',
                           },
                         }}
-                        href={_href}
-                        rel="noopener noreferrer"
-                        target="_blank"
+                        // href={_href}
+                        // rel="noopener noreferrer"
+                        // target="_blank"
                         className="a-no-focus"
                         tabIndex={-1}
                       >
