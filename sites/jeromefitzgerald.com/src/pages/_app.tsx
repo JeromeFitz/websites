@@ -17,6 +17,11 @@ import { ErrorBoundary } from '~components/ErrorBoundary'
 import Footer from '~components/Footer'
 import Header from '~components/Header'
 import NProgress from '~components/NProgress'
+/**
+ * @note ignore this file for CI linting (created on next build)
+ */
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import buildInfo from '~config/buildInfo.json'
 import { ManagedUIContext } from '~context/ManagedUI'
 import { MediaContextProvider } from '~context/Media'

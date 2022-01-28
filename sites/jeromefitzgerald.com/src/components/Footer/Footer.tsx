@@ -30,6 +30,11 @@ import NextLink from 'next/link'
 import * as React from 'react'
 
 import IconLink from '~components/IconLink'
+/**
+ * @note ignore this file for CI linting (created on next build)
+ */
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import buildInfo from '~config/buildInfo.json'
 
 const { branch, isBranchMain, prerelease, version } = buildInfo
