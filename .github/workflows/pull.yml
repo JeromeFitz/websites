@@ -22,8 +22,10 @@ jobs:
     timeout-minutes: 10
     runs-on: ubuntu-latest
     env:
-      GH_TOKEN: ${{ secrets.GH_TOKEN }}
-      GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+      # GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      # GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+      GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
@@ -92,7 +94,8 @@ jobs:
         uses: BetaHuhn/deploy-to-vercel-action@v1
         # if: contains(github.event.head_commit.message , '[build]') || contains(github.event.head_commit.message , '[b]') || github.ref == 'refs/heads/main'
         with:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          # GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
