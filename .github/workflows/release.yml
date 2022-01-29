@@ -1,5 +1,15 @@
-name: '▶️ Pull'
+name: ':octocat: GH'
 on:
+  push:
+    branches:
+      - main
+      # prerelease branches
+      - canary
+      - develop
+      - ci/**
+      - feature/**
+      - refactor/**
+      - release/**
   pull_request:
     branches:
       - main
@@ -13,17 +23,16 @@ on:
       - ready_for_review
       - converted_to_draft
 concurrency:
-  group: pull-${{ github.ref }}-1
+  group: gh-${{ github.ref }}-1
   cancel-in-progress: true
 jobs:
-  release:
-    name: '👷️  Pull'
-    if: github.event.pull_request.draft == false
+  ci:
+    name: '👷️  CI'
+    if: github.event.pull_request.draft == false || github.ref == 'refs/heads/main'
+    # if: contains(github.event.head_commit.message , '[build]') || contains(github.event.head_commit.message , '[b]') || github.ref == 'refs/heads/main'
     timeout-minutes: 10
     runs-on: ubuntu-latest
     env:
-      # GH_TOKEN: ${{ secrets.GH_TOKEN }}
-      # GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
       GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
       GITHUB_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -36,11 +45,12 @@ jobs:
 
     steps:
       - name: '🐙️  Checkout'
+        id: checkout
         uses: actions/checkout@v2
         with:
           # Number of commits to fetch. 0 indicates all history for all branches and tags.
           # Default: 1
-          fetch-depth: 1
+          fetch-depth: 10
 
       - name: '💽️  Node (${{ matrix.node }})'
         id: node-setup
@@ -51,17 +61,7 @@ jobs:
           cache: 'yarn'
           node-version: ${{ matrix.node }}
 
-      # - name: '🧶️  Cache (yarn)'
-      #   id: cache-yarn
-      #   uses: actions/cache@v2
-      #   with:
-      #     path: |
-      #       **/node_modules
-      #     key: modules-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      #     restore-keys: |
-      #       modules-${{ runner.os }}-
-
-      - name: '📦️  Dependecies'
+      - name: '📦️  Dependencies'
         id: dependecies
         run: |
           yarn install --frozen-lockfile --ignore-engines --network-concurrency 1
@@ -89,39 +89,48 @@ jobs:
         run: |
           echo # yarn test --cache-dir=".cache-turbo"
 
-      - name: '🔺️ Deploy'
+      - name: '🏷️  Release'
+        id: release
+        if: contains(github.event.head_commit.message , '[build]') || contains(github.event.head_commit.message , '[b]') || github.ref == 'refs/heads/main'
+        run: |
+          echo "registry=http://registry.npmjs.org/" >> .npmrc
+          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> .npmrc
+          echo "@jeromefitz:registry=https://registry.npmjs.org/" >> .npmrc
+          yarn semantic-release --cache-dir=".cache-turbo"
+
+  deploy:
+    name: '🚀️ Deploy'
+    needs: ['ci']
+    # if: github.ref == 'refs/heads/main'
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+
+    strategy:
+      matrix:
+        node: ['16']
+
+    steps:
+      - name: '🐙️  Checkout'
+        id: checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+
+      - name: '🔺️  Deploy (vercel)'
         id: deploy
         uses: BetaHuhn/deploy-to-vercel-action@v1
-        # if: contains(github.event.head_commit.message , '[build]') || contains(github.event.head_commit.message , '[b]') || github.ref == 'refs/heads/main'
         with:
-          # GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-          PRODUCTION: false
+          # PRODUCTION: true
           PR_LABELS: false
           CREATE_COMMENT: true
           DELETE_EXISTING_COMMENT: true
-      # - name: '📝️ Comment'
-      #   id: comment
-      #   uses: phulsechinmay/rewritable-pr-comment@v0.3.0
-      #   if: ${{ steps.deploy.outputs.DEPLOYMENT_CREATED }}
-      #   with:
-      #     message: |
-      #       🔺️ This pull request has been deployed to Vercel:
-
-      #       <table>
-      #         <tr>
-      #           <td><strong>✅ Preview:</strong></td>
-      #           <td><a href='${{ steps.deploy.outputs.PREVIEW_URL }}'>${{ steps.deploy.outputs.PREVIEW_URL }}</a></td>
-      #         </tr>
-      #         <tr>
-      #           <td><strong>🔍 Inspect:</strong></td>
-      #           <td><a href='${ steps.deploy.outputs.DEPLOYMENT_INSPECTOR_URL }'>${ steps.deploy.outputs.DEPLOYMENT_INSPECTOR_URL }</a></td>
-      #         </tr>
-      #       </table>
-
-      #       📝️ [View Workflow Logs](${ LOG_URL })
-      #     GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-      #     COMMENT_IDENTIFIER: 'deploy'
