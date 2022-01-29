@@ -33,25 +33,26 @@ const setCacheJson = (data, url) => {
 }
 
 const setCacheRedis = (data, url) => {
-  const key = `notion/${url}`
+  const key = `notion/${url}`.toLowerCase()
   // console.dir(`key: ${key}`)
   void redis.set(key, JSON.stringify(data), 'EX', getTimeInSeconds(ms('30d')))
 }
 
-const setCache = (data, url) => {
-  setCacheJson(data, url)
-  setCacheRedis(data, url)
+const setCache = (data: any, url: string) => {
+  setCacheJson(data, url.toLowerCase())
+  setCacheRedis(data, url.toLowerCase())
 
   return null
 }
 
 const getCache = async (url) => {
   let cacheData = false
-  const file = cacheFile(url)
+  const file = cacheFile(url.toLowerCase())
   try {
+    // console.dir(`getCache: json => ${url.toLowerCase()}`)
     cacheData = JSON.parse(await readFile(file, 'utf8'))
   } catch (_) {
-    /* not fatal */
+    // console.dir(`getCache: notFatal`)
     cacheData = false
   }
   return cacheData

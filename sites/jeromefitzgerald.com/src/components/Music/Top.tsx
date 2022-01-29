@@ -152,8 +152,13 @@ const TopItem = ({ type }) => {
       //
       refreshInterval: HOUR,
       revalidateAll: false,
-      revalidateOnFocus: false,
       revalidateFirstPage: false,
+      /**
+       * @note(swr) turning off for now until we finalize redis settings
+       */
+      revalidateIfStale: false,
+      revalidateOnFocus: false,
+      revalidateOnReconnect: false,
     }
   )
 

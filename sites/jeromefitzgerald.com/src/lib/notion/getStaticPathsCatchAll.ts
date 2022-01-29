@@ -100,14 +100,15 @@ const getStaticPathsCatchAll = async () => {
       if (routeType !== NOTION.EPISODES.routeType)
         paths.push(`/${routeType.toLowerCase()}`)
       if (routeType.toLowerCase() === NOTION.BOOKS.routeType) {
-        console.dir(`@todo(notion) skip books`)
+        isDev && console.dir(`@todo(notion) skip books`)
       } else {
         const catchAll = [routeType]
         const pathVariables = notion.custom.getPathVariables({
           catchAll,
         })
         const data = await getCatchAll({
-          cache: false,
+          // @question(cache) VERCEL PRODUCTION to false?
+          cache: true,
           catchAll,
           clear: false,
           pathVariables,

@@ -33,7 +33,7 @@ const getKey = ({ limit, offset, slug, time_range }) => {
 
   const _params = `?time_range=${time_range}&limit=${limit}&offset=${offset}`
   const params = Slugger.slug(_params)
-  const key = `${keyPrefix}/${slug}/${params}`
+  const key = `${keyPrefix}/${slug}/${params}`.toLowerCase()
 
   return {
     key,

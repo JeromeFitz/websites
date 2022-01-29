@@ -14,7 +14,7 @@ const imagesApi = async (req: any, res: NextApiResponse) => {
 
   if (!url || url === 'undefined') return res.status(404).json({})
 
-  const key = `${keyPrefix}/${slug}`
+  const key = `${keyPrefix}/${slug}`.toLowerCase()
 
   let cache: any
   let data: any = {}

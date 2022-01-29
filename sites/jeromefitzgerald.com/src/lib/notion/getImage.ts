@@ -15,7 +15,7 @@ const keyPrefix = 'image'
  */
 const getImage = async (url: string) => {
   const id = Slugger.slug(url)
-  const key = `${keyPrefix}/${id}`
+  const key = `${keyPrefix}/${id}`.toLowerCase()
 
   let cache: any
   let data: any = {}
