@@ -27,7 +27,7 @@ on:
 
 jobs:
   deploy:
-    # name: '👷️  Deploy'
+    name: '👷️  Deploy'
     timeout-minutes: 5
     runs-on: ubuntu-latest
     env:
@@ -51,7 +51,7 @@ jobs:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-          CREATE_COMMENT: ${{ inputs.CREATE_COMMENT }}
-          DELETE_EXISTING_COMMENT: ${{ inputs.DELETE_EXISTING_COMMENT }}
-          PR_LABELS: ${{ inputs.PR_LABELS }}
+          CREATE_COMMENT: false
+          DELETE_EXISTING_COMMENT: true
+          PR_LABELS: false
           PRODUCTION: ${{ inputs.PRODUCTION }}

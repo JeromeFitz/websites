@@ -4,7 +4,7 @@ on: workflow_call
 
 jobs:
   release:
-    # name: '👷️  Release'
+    name: '👷️  Release'
     timeout-minutes: 10
     runs-on: ubuntu-latest
     env:
@@ -40,4 +40,4 @@ jobs:
           echo "registry=http://registry.npmjs.org/" >> .npmrc
           echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> .npmrc
           echo "@jeromefitz:registry=https://registry.npmjs.org/" >> .npmrc
-          yarn semantic-release --cache-dir=".cache-turbo"
+          yarn semantic-release --no-cache
