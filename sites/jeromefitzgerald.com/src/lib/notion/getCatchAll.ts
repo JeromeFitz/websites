@@ -1,12 +1,11 @@
-import Redis from 'ioredis'
 import _filter from 'lodash/filter'
 
 import { nextWeirdRoutingSkipData } from '~lib/constants'
 import { getCache, setCache, setCacheJson } from '~lib/notion/getCache'
 import { notion } from '~lib/notion/helper'
+import redis from '~lib/redis'
 
 const useCache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE
-const redis = new Redis(process.env.REDIS_URL)
 
 // @todo(next) preview
 // @todo(complexity) 19

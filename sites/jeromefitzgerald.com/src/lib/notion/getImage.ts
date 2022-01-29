@@ -1,9 +1,8 @@
 import Slugger from 'github-slugger'
-import Redis from 'ioredis'
 
 import { getCache, setCacheJson } from '~lib/notion/getCache'
+import redis from '~lib/redis'
 
-const redis = new Redis(process.env.REDIS_URL)
 const keyPrefix = 'image'
 
 /**

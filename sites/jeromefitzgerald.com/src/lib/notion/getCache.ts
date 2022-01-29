@@ -1,11 +1,9 @@
 import path from 'path'
 
-import Redis from 'ioredis'
 import ms from 'ms'
 
 import { readFile, writeFileSyncRecursive } from '~lib/fs-helpers'
-
-const redis = new Redis(process.env.REDIS_URL)
+import redis from '~lib/redis'
 
 /**
  * @redis is in seconds not ms

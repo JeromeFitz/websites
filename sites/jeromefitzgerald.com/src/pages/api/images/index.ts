@@ -1,11 +1,10 @@
 import Slugger from 'github-slugger'
-import Redis from 'ioredis'
 import type { NextApiResponse } from 'next'
 import { getPlaiceholder } from 'plaiceholder'
 
 import { getCache, setCacheJson } from '~lib/notion/getCache'
+import redis from '~lib/redis'
 
-const redis = new Redis(process.env.REDIS_URL)
 const keyPrefix = 'image'
 
 const imagesApi = async (req: any, res: NextApiResponse) => {
