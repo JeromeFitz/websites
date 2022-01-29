@@ -19,7 +19,7 @@ jobs:
   release:
     name: '👷️  Pull'
     if: github.event.pull_request.draft == false
-    timeout-minutes: 5
+    timeout-minutes: 10
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
