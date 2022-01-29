@@ -52,7 +52,7 @@ jobs:
   deploy:
     name: '🚀️  Deploy'
     if: github.ref == 'refs/heads/main'
-    needs: call-lint
+    needs: call-release
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
