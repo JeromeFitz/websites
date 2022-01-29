@@ -86,3 +86,39 @@ jobs:
         # @note(ci) comment out right now as this requires `build`
         run: |
           echo # yarn test --cache-dir=".cache-turbo"
+
+      - name: '🔺️ Deploy'
+        id: deploy
+        uses: BetaHuhn/deploy-to-vercel-action@v1
+        # if: contains(github.event.head_commit.message , '[build]') || contains(github.event.head_commit.message , '[b]') || github.ref == 'refs/heads/main'
+        with:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          PRODUCTION: false
+          PR_LABELS: false
+          CREATE_COMMENT: true
+          DELETE_EXISTING_COMMENT: true
+      # - name: '📝️ Comment'
+      #   id: comment
+      #   uses: phulsechinmay/rewritable-pr-comment@v0.3.0
+      #   if: ${{ steps.deploy.outputs.DEPLOYMENT_CREATED }}
+      #   with:
+      #     message: |
+      #       🔺️ This pull request has been deployed to Vercel:
+
+      #       <table>
+      #         <tr>
+      #           <td><strong>✅ Preview:</strong></td>
+      #           <td><a href='${{ steps.deploy.outputs.PREVIEW_URL }}'>${{ steps.deploy.outputs.PREVIEW_URL }}</a></td>
+      #         </tr>
+      #         <tr>
+      #           <td><strong>🔍 Inspect:</strong></td>
+      #           <td><a href='${ steps.deploy.outputs.DEPLOYMENT_INSPECTOR_URL }'>${ steps.deploy.outputs.DEPLOYMENT_INSPECTOR_URL }</a></td>
+      #         </tr>
+      #       </table>
+
+      #       📝️ [View Workflow Logs](${ LOG_URL })
+      #     GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+      #     COMMENT_IDENTIFIER: 'deploy'
