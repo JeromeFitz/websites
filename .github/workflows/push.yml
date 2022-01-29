@@ -1,15 +1,15 @@
-name: ':octocat: GH'
+name: '▶️ PR'
 on:
-  push:
-    branches:
-      - main
-      # prerelease branches
-      - canary
-      - develop
-      - ci/**
-      - feature/**
-      - refactor/**
-      - release/**
+  # push:
+  #   branches:
+  #     - main
+  #     # prerelease branches
+  #     - canary
+  #     - develop
+  #     - ci/**
+  #     - feature/**
+  #     - refactor/**
+  #     - release/**
   pull_request:
     branches:
       - main
@@ -28,7 +28,7 @@ concurrency:
 jobs:
   ci:
     name: '👷️  CI'
-    if: github.event.pull_request.draft == false || github.ref == 'refs/heads/main'
+    if: github.event.pull_request.draft == false
     # if: contains(github.event.head_commit.message , '[build]') || contains(github.event.head_commit.message , '[b]') || github.ref == 'refs/heads/main'
     timeout-minutes: 10
     runs-on: ubuntu-latest
@@ -91,7 +91,7 @@ jobs:
 
       - name: '🏷️  Release'
         id: release
-        if: contains(github.event.head_commit.message , '[build]') || contains(github.event.head_commit.message , '[b]') || github.ref == 'refs/heads/main'
+        if: contains(github.event.head_commit.message , '[build]') || contains(github.event.head_commit.message , '[b]')
         run: |
           echo "registry=http://registry.npmjs.org/" >> .npmrc
           echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> .npmrc
@@ -101,6 +101,7 @@ jobs:
   deploy:
     name: '🚀️ Deploy'
     needs: ['ci']
+    if: github.event.pull_request.draft == false
     # if: github.ref == 'refs/heads/main'
     timeout-minutes: 10
     runs-on: ubuntu-latest
