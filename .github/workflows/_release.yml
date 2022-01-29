@@ -1,0 +1,43 @@
+name: '🏷️  Release'
+
+on: workflow_call
+
+jobs:
+  release:
+    # name: '👷️  Release'
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+
+    steps:
+      - name: '🐙️  Checkout'
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 10
+
+      - name: '💽️  Node (16)'
+        id: node-setup
+        uses: actions/setup-node@v2
+        with:
+          # architecture: 'x64'
+          cache-dependency-path: yarn.lock
+          cache: 'yarn'
+          node-version: '16'
+
+      - name: '📦️  Dependencies'
+        id: dependencies
+        run: |
+          yarn install --frozen-lockfile --ignore-engines --network-concurrency 1
+
+      - name: '🏷️  Release'
+        id: release
+        run: |
+          echo "registry=http://registry.npmjs.org/" >> .npmrc
+          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> .npmrc
+          echo "@jeromefitz:registry=https://registry.npmjs.org/" >> .npmrc
+          yarn semantic-release --cache-dir=".cache-turbo"

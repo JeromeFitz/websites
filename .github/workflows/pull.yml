@@ -1,38 +1,34 @@
-name: '🔀️ Push'
+name: '▶️ Pull'
 
 on:
-  push:
+  pull_request:
     branches:
       - main
-      # prerelease branches
+      # prerelease
       - canary
       - develop
-      - ci/**
-      - feature/**
-      - refactor/**
-      - release/**
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - ready_for_review
+      - converted_to_draft
 
 concurrency:
-  group: push-${{ github.ref }}-1
+  group: pull-${{ github.ref }}-1
   cancel-in-progress: true
 
 jobs:
   call-init:
-    # name: '🎉️  Init'
-    if: contains(github.event.head_commit.message , '[build]') || contains(github.event.head_commit.message , '[b]') || github.ref == 'refs/heads/main'
+    name: '🎉️  Init'
+    if: github.event.pull_request.draft == false
     uses: JeromeFitz/jeromefitzgerald.com/.github/workflows/_init.yml@ci/github-action-refactor
 
   call-lint:
-    # name: '🚨️  Lint'
-    if: contains(github.event.head_commit.message , '[build]') || contains(github.event.head_commit.message , '[b]') || github.ref == 'refs/heads/main'
+    name: '🚨️  Lint'
+    if: github.event.pull_request.draft == false
     needs: call-init
     uses: JeromeFitz/jeromefitzgerald.com/.github/workflows/_lint.yml@ci/github-action-refactor
-
-  call-release:
-    # name: '🏷️  Release'
-    if: contains(github.event.head_commit.message , '[build]') || contains(github.event.head_commit.message , '[b]') || github.ref == 'refs/heads/main'
-    needs: call-lint
-    uses: JeromeFitz/jeromefitzgerald.com/.github/workflows/_release.yml@ci/github-action-refactor
 
   # call-deploy:
   #   name: '🚀️  Deploy'
@@ -51,7 +47,7 @@ jobs:
 
   deploy:
     name: '🚀️  Deploy'
-    if: github.ref == 'refs/heads/main'
+    if: github.event.pull_request.draft == false
     needs: call-lint
     runs-on: ubuntu-latest
     timeout-minutes: 10
@@ -62,12 +58,12 @@ jobs:
       VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
     steps:
       - name: '🐙️  Checkout'
-        id: push-checkout
+        id: pull-checkout
         uses: actions/checkout@v2
         with:
           fetch-depth: 1
       - name: '🔺️ Deploy'
-        id: push-deploy
+        id: pull-deploy
         uses: BetaHuhn/deploy-to-vercel-action@v1
         with:
           GITHUB_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
@@ -77,4 +73,4 @@ jobs:
           CREATE_COMMENT: false
           DELETE_EXISTING_COMMENT: false
           PR_LABELS: false
-          PRODUCTION: true
+          PRODUCTION: false
