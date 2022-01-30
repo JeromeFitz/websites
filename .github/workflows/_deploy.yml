@@ -1,4 +1,4 @@
-name: '🚀️  Deploy'
+name: '🚀️  '
 
 on:
   workflow_call:
@@ -18,7 +18,7 @@ on:
 
 jobs:
   deploy:
-    name: '👷️  Deploy'
+    name: '🔺️  '
     timeout-minutes: 5
     runs-on: ubuntu-latest
     env:

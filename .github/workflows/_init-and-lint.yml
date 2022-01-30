@@ -1,0 +1,61 @@
+name: '👷️  '
+
+on:
+  workflow_call:
+    secrets:
+      TURBO_TEAM:
+        required: true
+      TURBO_TOKEN:
+        required: true
+
+jobs:
+  lint:
+    name: '💽️  +  🚨️  '
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    env:
+      TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+
+    steps:
+      - name: '🐙️  Checkout'
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+
+      - name: '💽️  Node (16)'
+        id: node-setup
+        uses: actions/setup-node@v2
+        with:
+          # architecture: 'x64'
+          cache-dependency-path: yarn.lock
+          cache: 'yarn'
+          node-version: '16'
+
+      - name: '📦️  Dependencies'
+        id: dependencies
+        run: |
+          yarn install --frozen-lockfile --ignore-engines --network-concurrency 1
+
+      - name: '🔺️  Cache (turbo)'
+        id: cache-turbo
+        uses: actions/cache@v2
+        with:
+          path: .cache-turbo
+          key: turbo-${{ github.job }}-${{ github.ref_name }}-${{ github.sha }}
+          # order of preference => turbo will re-check
+          restore-keys: |
+            turbo-${{ github.job }}-${{ github.ref_name }}-
+            turbo-${{ github.job }}-
+            turbo-
+
+      - name: '🚨️  Lint'
+        id: lint
+        run: |
+          yarn lint --cache-dir=".cache-turbo"
+
+      - name: '🧪️  Test'
+        id: test
+        # @note(ci) comment out right now as this requires `build`
+        run: |
+          echo # yarn test --cache-dir=".cache-turbo"
