@@ -1,10 +1,10 @@
 import { Box, Caption } from '@jeromefitz/design-system/components'
-import { keyframes } from '@jeromefitz/design-system/stitches.config'
+import { darkTheme, keyframes } from '@jeromefitz/design-system/stitches.config'
 import Slugger from 'github-slugger'
 import _size from 'lodash/size'
 import NextImage from 'next/image'
 
-import { IMAGE__PLACEHOLDER } from '~lib/constants'
+// import { IMAGE__PLACEHOLDER } from '~lib/constants'
 
 const focusInNonNext = keyframes({
   '0%': {
@@ -83,7 +83,14 @@ const image = ({ images, item }) => {
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
           backgroundSize: '100%',
-          backgroundImage: `url(${IMAGE__PLACEHOLDER.meta.base64})`,
+          // backgroundImage: `url(${IMAGE__PLACEHOLDER.meta.base64})`,
+          backgroundImage: `linear-gradient(40deg,#fff,#000)`,
+          // backgroundImage: `url(${IMAGE__PLACEHOLDER.meta.base64}),linear-gradient(40deg,#fff,#000)`,
+          [`.${darkTheme} &`]: {
+            // backgroundImage: `url(${IMAGE__PLACEHOLDER.meta.base64})`,
+            backgroundImage: `linear-gradient(40deg,#000,#fff)`,
+            // backgroundImage: `url(${IMAGE__PLACEHOLDER.meta.base64}),linear-gradient(40deg,#000,#fff)`,
+          },
         }}
       />
       {!!caption && <Caption>{caption}</Caption>}

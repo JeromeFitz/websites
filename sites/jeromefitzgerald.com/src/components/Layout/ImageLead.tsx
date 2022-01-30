@@ -5,6 +5,7 @@ import {
   Section,
   Skeleton,
 } from '@jeromefitz/design-system/components'
+import { darkTheme } from '@jeromefitz/design-system/stitches.config'
 import _isEmpty from 'lodash/isEmpty'
 import useSWR from 'swr'
 
@@ -35,9 +36,16 @@ const ImageWithBackgroundBlur = ({
     <ImageContainer>
       <ImageBlur
         css={{
-          backgroundImage: `url(${base64})`,
+          // backgroundImage: `url(${base64})`,
+          backgroundImage: `linear-gradient(40deg,#fff,#000)`,
+          // backgroundImage: `url(${base64}),linear-gradient(40deg,#fff,#000)`,
           backgroundSize: 'cover',
           borderRadius: '$4',
+          [`.${darkTheme} &`]: {
+            // backgroundImage: `url(${base64})`,
+            backgroundImage: `linear-gradient(40deg,#000,#fff)`,
+            // backgroundImage: `url(${base64}),linear-gradient(40deg,#000,#fff)`,
+          },
         }}
       />
 
