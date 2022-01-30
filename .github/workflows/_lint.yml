@@ -1,4 +1,4 @@
-name: '🚨️  Lint'
+name: '🚨️  '
 
 on:
   workflow_call:
@@ -10,7 +10,7 @@ on:
 
 jobs:
   lint:
-    name: '👷️  Lint'
+    name: '🚨️  '
     timeout-minutes: 5
     runs-on: ubuntu-latest
     env:

@@ -1,10 +1,10 @@
-name: '🎉️  Init'
+name: '💽️  '
 
 on: workflow_call
 
 jobs:
   init:
-    name: '👷️  Init'
+    name: '💽️  '
     timeout-minutes: 5
     runs-on: ubuntu-latest
     steps:

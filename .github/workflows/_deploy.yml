@@ -18,7 +18,7 @@ on:
 
 jobs:
   deploy:
-    name: '🔺️  '
+    name: '🚀️  '
     timeout-minutes: 5
     runs-on: ubuntu-latest
     env:
