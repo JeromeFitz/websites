@@ -42,7 +42,12 @@ const CatchAll = (props) => {
         content: contentFallback,
         items: itemsFallback,
       },
-      revalidateOnFocus: true,
+      /**
+       * @note(swr) turning off for now until we finalize redis settings
+       */
+      revalidateIfStale: false,
+      revalidateOnFocus: false,
+      revalidateOnReconnect: false,
     }
   )
 

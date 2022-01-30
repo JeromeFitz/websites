@@ -1,5 +1,6 @@
+const isDev = process.env.NODE_ENV !== 'production'
 const _unsupported = ({ type }) => {
-  console.dir(`@notion(_unsupported): ${type}`)
+  isDev && console.dir(`@notion(_unsupported): ${type}`)
   return null
 }
 

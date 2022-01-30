@@ -1,9 +1,8 @@
 import Slugger from 'github-slugger'
-import Redis from 'ioredis'
 
 import { getCache, setCacheJson } from '~lib/notion/getCache'
+import redis from '~lib/redis'
 
-const redis = new Redis(process.env.REDIS_URL)
 const keyPrefix = 'image'
 
 /**
@@ -15,7 +14,7 @@ const keyPrefix = 'image'
  */
 const getImage = async (url: string) => {
   const id = Slugger.slug(url)
-  const key = `${keyPrefix}/${id}`
+  const key = `${keyPrefix}/${id}`.toLowerCase()
 
   let cache: any
   let data: any = {}

@@ -1,6 +1,5 @@
 import { Octokit } from '@octokit/core'
 // import Slugger from 'github-slugger'
-// import Redis from 'ioredis'
 import _filter from 'lodash/filter'
 import _orderBy from 'lodash/orderBy'
 import _pick from 'lodash/pick'
@@ -8,9 +7,10 @@ import _size from 'lodash/size'
 import ms from 'ms'
 import { NextApiResponse } from 'next'
 
+// import redis from '~lib/redis'
+
 const octokit = new Octokit({ auth: process.env.GH_TOKEN })
 
-// const redis = new Redis(process.env.REDIS_URL)
 const keyPrefix = 'github'
 
 // @see(buildInfo.js)
