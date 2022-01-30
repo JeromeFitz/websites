@@ -7,6 +7,8 @@ import {
 } from '@jeromefitz/design-system/components'
 import { darkTheme } from '@jeromefitz/design-system/stitches.config'
 import _isEmpty from 'lodash/isEmpty'
+import * as React from 'react'
+import { useEffectOnce } from 'react-use'
 import useSWR from 'swr'
 
 import fetcher from '~lib/fetcher'
@@ -32,19 +34,34 @@ const ImageWithBackgroundBlur = ({
 }) => {
   const { height, src, width } = image
 
+  const [backgroundImageLoaded, backgroundImageLoadedSet] = React.useState(false)
+
+  useEffectOnce(() => {
+    backgroundImageLoadedSet(true)
+    return () => {
+      backgroundImageLoadedSet(false)
+    }
+  })
+
   return (
     <ImageContainer>
       <ImageBlur
         css={{
           // backgroundImage: `url(${base64})`,
-          // backgroundImage: `linear-gradient(40deg,#fff,#000)`,
-          backgroundImage: `url(${base64}),linear-gradient(40deg,#fff,#000)`,
+          backgroundImage: backgroundImageLoaded
+            ? `url(${base64}),linear-gradient(45deg,$colors$blackA7,$colors$blackA12)`
+            : `linear-gradient(45deg,$colors$blackA7,$colors$blackA12)`,
+          // backgroundImage: `linear-gradient(45deg,$colors$blackA7,$colors$blackA12)`,
+          // backgroundImage: `url(${base64}),linear-gradient(40deg,#fff,#000)`,
           backgroundSize: 'cover',
           borderRadius: '$4',
           [`.${darkTheme} &`]: {
             // backgroundImage: `url(${base64})`,
-            // backgroundImage: `linear-gradient(40deg,#000,#fff)`,
-            backgroundImage: `url(${base64}),linear-gradient(40deg,#000,#fff)`,
+            backgroundImage: backgroundImageLoaded
+              ? `url(${base64}),linear-gradient(45deg,$colors$whiteA7,$colors$whiteA12)`
+              : `linear-gradient(45deg,$colors$whiteA7,$colors$whiteA12)`,
+            // backgroundImage: `linear-gradient(45deg,$colors$whiteA7,$colors$whiteA12)`,
+            // backgroundImage: `url(${base64}),linear-gradient(40deg,#000,#fff)`,
           },
         }}
       />
