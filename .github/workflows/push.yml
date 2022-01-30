@@ -20,25 +20,25 @@ jobs:
   call-init:
     name: '🎉️  Init'
     if: contains(github.event.head_commit.message , '[build]') || contains(github.event.head_commit.message , '[b]') || github.ref == 'refs/heads/main'
-    uses: JeromeFitz/jeromefitzgerald.com/.github/workflows/_init.yml@ci/github-action-refactor
+    uses: ./.github/workflows/_init.yml
 
   call-lint:
     name: '🚨️  Lint'
     if: contains(github.event.head_commit.message , '[build]') || contains(github.event.head_commit.message , '[b]') || github.ref == 'refs/heads/main'
     needs: call-init
-    uses: JeromeFitz/jeromefitzgerald.com/.github/workflows/_lint.yml@ci/github-action-refactor
+    uses: ./.github/workflows/_lint.yml
 
   call-release:
     name: '🏷️  Release'
     if: contains(github.event.head_commit.message , '[build]') || contains(github.event.head_commit.message , '[b]') || github.ref == 'refs/heads/main'
     needs: call-lint
-    uses: JeromeFitz/jeromefitzgerald.com/.github/workflows/_release.yml@ci/github-action-refactor
+    uses: ./.github/workflows/_release.yml
 
   # call-deploy:
   #   name: '🚀️  Deploy'
   #   if: github.event.pull_request.draft == false
   #   needs: call-lint
-  #   uses: JeromeFitz/jeromefitzgerald.com/.github/workflows/_deploy.yml@ci/github-action-refactor
+  #   uses: ./.github/workflows/_deploy.yml
   #   with:
   #     GITHUB_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
   #     VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
@@ -50,7 +50,7 @@ jobs:
   #     PRODUCTION: false
 
   deploy:
-    name: '🚀️  Deploy'
+    name: '🚀️  Deploy (Production)'
     if: github.ref == 'refs/heads/main'
     needs: call-release
     runs-on: ubuntu-latest
@@ -66,7 +66,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 1
-      - name: '🔺️ Deploy'
+      - name: '🔺️ Deploy (Production)'
         id: push-deploy
         uses: BetaHuhn/deploy-to-vercel-action@v1
         with:
