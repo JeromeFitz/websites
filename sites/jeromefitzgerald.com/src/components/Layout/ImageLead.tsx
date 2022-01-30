@@ -37,14 +37,14 @@ const ImageWithBackgroundBlur = ({
       <ImageBlur
         css={{
           // backgroundImage: `url(${base64})`,
-          backgroundImage: `linear-gradient(40deg,#fff,#000)`,
-          // backgroundImage: `url(${base64}),linear-gradient(40deg,#fff,#000)`,
+          // backgroundImage: `linear-gradient(40deg,#fff,#000)`,
+          backgroundImage: `url(${base64}),linear-gradient(40deg,#fff,#000)`,
           backgroundSize: 'cover',
           borderRadius: '$4',
           [`.${darkTheme} &`]: {
             // backgroundImage: `url(${base64})`,
-            backgroundImage: `linear-gradient(40deg,#000,#fff)`,
-            // backgroundImage: `url(${base64}),linear-gradient(40deg,#000,#fff)`,
+            // backgroundImage: `linear-gradient(40deg,#000,#fff)`,
+            backgroundImage: `url(${base64}),linear-gradient(40deg,#000,#fff)`,
           },
         }}
       />
