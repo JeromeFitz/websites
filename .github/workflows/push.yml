@@ -19,26 +19,26 @@ concurrency:
 jobs:
   call-init:
     name: '🎉️  Init'
-    if: contains(github.event.head_commit.message , '[build]') || contains(github.event.head_commit.message , '[b]') || github.ref == 'refs/heads/main'
-    uses: ./.github/workflows/_init.yml
+    if: (contains(github.event.head_commit.message , '[build]') || contains(github.event.head_commit.message , '[b]') || github.ref == 'refs/heads/main') && !contains(github.event.head_commit.message, '[skip ci]')
+    uses: JeromeFitz/jeromefitzgerald.com/.github/workflows/_init.yml@main
 
   call-lint:
     name: '🚨️  Lint'
-    if: contains(github.event.head_commit.message , '[build]') || contains(github.event.head_commit.message , '[b]') || github.ref == 'refs/heads/main'
+    if: (contains(github.event.head_commit.message , '[build]') || contains(github.event.head_commit.message , '[b]') || github.ref == 'refs/heads/main') && !contains(github.event.head_commit.message, '[skip ci]')
     needs: call-init
-    uses: ./.github/workflows/_lint.yml
+    uses: JeromeFitz/jeromefitzgerald.com/.github/workflows/_lint.yml@main
 
   call-release:
     name: '🏷️  Release'
-    if: contains(github.event.head_commit.message , '[build]') || contains(github.event.head_commit.message , '[b]') || github.ref == 'refs/heads/main'
+    if: (contains(github.event.head_commit.message , '[build]') || contains(github.event.head_commit.message , '[b]') || github.ref == 'refs/heads/main') && !contains(github.event.head_commit.message, '[skip ci]')
     needs: call-lint
-    uses: ./.github/workflows/_release.yml
+    uses: JeromeFitz/jeromefitzgerald.com/.github/workflows/_release.yml@main
 
   # call-deploy:
   #   name: '🚀️  Deploy'
   #   if: github.event.pull_request.draft == false
   #   needs: call-lint
-  #   uses: ./.github/workflows/_deploy.yml
+  #   uses: JeromeFitz/jeromefitzgerald.com/.github/workflows/_deploy.yml@ci/github-action-refactor
   #   with:
   #     GITHUB_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
   #     VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
@@ -51,7 +51,7 @@ jobs:
 
   deploy:
     name: '🚀️  Deploy (Production)'
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, '[skip ci]')
     needs: call-release
     runs-on: ubuntu-latest
     timeout-minutes: 10
