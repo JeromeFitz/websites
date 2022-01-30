@@ -30,13 +30,13 @@ jobs:
   call-init:
     name: '🎉️  Init'
     if: (contains(github.event.head_commit.message, '[build]') || contains(github.event.head_commit.message, '[b]') || github.ref == 'refs/heads/main') && !contains(github.event.head_commit.message, '[skip ci]')
-    uses: JeromeFitz/jeromefitzgerald.com/.github/workflows/_init.yml@ci/workflow-release
+    uses: JeromeFitz/jeromefitzgerald.com/.github/workflows/_init.yml@main
 
   call-lint:
     name: '🚨️  Lint'
     if: (contains(github.event.head_commit.message, '[build]') || contains(github.event.head_commit.message, '[b]') || github.ref == 'refs/heads/main') && !contains(github.event.head_commit.message, '[skip ci]')
     needs: call-init
-    uses: JeromeFitz/jeromefitzgerald.com/.github/workflows/_lint.yml@ci/workflow-release
+    uses: JeromeFitz/jeromefitzgerald.com/.github/workflows/_lint.yml@main
     secrets:
       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
@@ -45,7 +45,7 @@ jobs:
     name: '🏷️  Release'
     if: (contains(github.event.head_commit.message, '[build]') || contains(github.event.head_commit.message, '[b]') || github.ref == 'refs/heads/main') && !contains(github.event.head_commit.message, '[skip ci]')
     needs: call-lint
-    uses: JeromeFitz/jeromefitzgerald.com/.github/workflows/_release.yml@ci/workflow-release
+    uses: JeromeFitz/jeromefitzgerald.com/.github/workflows/_release.yml@main
     secrets:
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
@@ -53,7 +53,7 @@ jobs:
     name: '🚀️  Deploy (Production)'
     if: github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, '[skip ci]')
     needs: call-lint
-    uses: JeromeFitz/jeromefitzgerald.com/.github/workflows/_deploy.yml@ci/workflow-release
+    uses: JeromeFitz/jeromefitzgerald.com/.github/workflows/_deploy.yml@main
     with:
       PRODUCTION: true
     secrets:

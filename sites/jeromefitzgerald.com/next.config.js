@@ -1,6 +1,7 @@
 /* eslint-disable import/order */
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path')
+
 const isCI = require('is-ci')
 !isCI && require('dotenv').config({ path: './.env' })
 
@@ -8,15 +9,10 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
 const { withPlaiceholder } = require('@plaiceholder/next')
-const _size = require('lodash/size')
 const { withPlugins } = require('next-compose-plugins')
 const withTM = require('next-transpile-modules')(['@jeromefitz/design-system'])
 
 const { withBuildInfo } = require('./scripts/buildInfo')
-
-/**
- * ----------------------------------------------
- */
 
 // const getRedirects = require('./config/notion/website/getRedirects')
 

@@ -60,7 +60,8 @@ async function setupBuildInfo() {
   const data = {
     branch: getBranch(branch),
     branchFull: branch,
-    isBranchMain: branch === 'main',
+    // @note(vercel) weird stuff w/ this `heads` refs?heads?
+    isBranchMain: branch === 'main' || branch.includes('heads'),
     major,
     minor,
     patch,
