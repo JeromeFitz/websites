@@ -8,11 +8,9 @@ jobs:
     timeout-minutes: 10
     runs-on: ubuntu-latest
     env:
-      GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
-      GITHUB_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-      TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
 
     steps:
       - name: '🐙️  Checkout'
@@ -40,4 +38,4 @@ jobs:
           echo "registry=http://registry.npmjs.org/" >> .npmrc
           echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> .npmrc
           echo "@jeromefitz:registry=https://registry.npmjs.org/" >> .npmrc
-          yarn semantic-release --no-cache
+          yarn semantic-release
