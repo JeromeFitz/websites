@@ -84,12 +84,12 @@ const image = ({ images, item }) => {
           backgroundRepeat: 'no-repeat',
           backgroundSize: '100%',
           // backgroundImage: `url(${IMAGE__PLACEHOLDER.meta.base64})`,
-          backgroundImage: `linear-gradient(40deg,#fff,#000)`,
-          // backgroundImage: `url(${IMAGE__PLACEHOLDER.meta.base64}),linear-gradient(40deg,#fff,#000)`,
+          backgroundImage: `linear-gradient(45deg,$colors$blackA7,$colors$blackA12)`,
+          // backgroundImage: `url(${IMAGE__PLACEHOLDER.meta.base64}),linear-gradient(45deg,$colors$blackA7,$colors$blackA12)`,
           [`.${darkTheme} &`]: {
             // backgroundImage: `url(${IMAGE__PLACEHOLDER.meta.base64})`,
-            backgroundImage: `linear-gradient(40deg,#000,#fff)`,
-            // backgroundImage: `url(${IMAGE__PLACEHOLDER.meta.base64}),linear-gradient(40deg,#000,#fff)`,
+            backgroundImage: `linear-gradient(45deg,$colors$whiteA7,$colors$whiteA12)`,
+            // backgroundImage: `url(${IMAGE__PLACEHOLDER.meta.base64}),linear-gradient(45deg,$colors$whiteA7,$colors$whiteA12)`,
           },
         }}
       />
