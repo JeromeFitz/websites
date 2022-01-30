@@ -1,16 +1,18 @@
 name: '🏷️  Release'
 
-on: workflow_call
+on:
+  workflow_call:
+    secrets:
+      GH_TOKEN:
+        required: true
 
 jobs:
   release:
     name: '👷️  Release'
-    timeout-minutes: 10
+    timeout-minutes: 5
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
-      GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
     steps:
       - name: '🐙️  Checkout'
@@ -35,7 +37,4 @@ jobs:
       - name: '🏷️  Release'
         id: release
         run: |
-          echo "registry=http://registry.npmjs.org/" >> .npmrc
-          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> .npmrc
-          echo "@jeromefitz:registry=https://registry.npmjs.org/" >> .npmrc
           yarn semantic-release
