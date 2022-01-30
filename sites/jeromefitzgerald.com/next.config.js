@@ -64,7 +64,7 @@ const ContentSecurityPolicy = `
   img-src 'self' * blob: data:;
   object-src 'self' * blob: data:;
   media-src 'none';
-  connect-src *;
+  connect-src * vitals.vercel-insights.com;
   font-src 'self';
 `
 

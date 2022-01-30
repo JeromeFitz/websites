@@ -9,6 +9,7 @@ on:
       - develop
       - ci/**
       - feature/**
+      - fix/**
       - refactor/**
       - release/**
 
@@ -16,65 +17,47 @@ concurrency:
   group: push-${{ github.ref }}-1
   cancel-in-progress: true
 
+env:
+  GH_BOT_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
+  GH_TOKEN: ${{ secrets.GH_TOKEN }}
+  TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+  VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+
 jobs:
   call-init:
     name: '🎉️  Init'
-    if: (contains(github.event.head_commit.message , '[build]') || contains(github.event.head_commit.message , '[b]') || github.ref == 'refs/heads/main') && !contains(github.event.head_commit.message, '[skip ci]')
-    uses: JeromeFitz/jeromefitzgerald.com/.github/workflows/_init.yml@main
+    if: (contains(github.event.head_commit.message, '[build]') || contains(github.event.head_commit.message, '[b]') || github.ref == 'refs/heads/main') && !contains(github.event.head_commit.message, '[skip ci]')
+    uses: JeromeFitz/jeromefitzgerald.com/.github/workflows/_init.yml@ci/workflow-release
 
   call-lint:
     name: '🚨️  Lint'
-    if: (contains(github.event.head_commit.message , '[build]') || contains(github.event.head_commit.message , '[b]') || github.ref == 'refs/heads/main') && !contains(github.event.head_commit.message, '[skip ci]')
+    if: (contains(github.event.head_commit.message, '[build]') || contains(github.event.head_commit.message, '[b]') || github.ref == 'refs/heads/main') && !contains(github.event.head_commit.message, '[skip ci]')
     needs: call-init
-    uses: JeromeFitz/jeromefitzgerald.com/.github/workflows/_lint.yml@main
+    uses: JeromeFitz/jeromefitzgerald.com/.github/workflows/_lint.yml@ci/workflow-release
+    secrets:
+      TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
 
   call-release:
     name: '🏷️  Release'
-    if: (contains(github.event.head_commit.message , '[build]') || contains(github.event.head_commit.message , '[b]') || github.ref == 'refs/heads/main') && !contains(github.event.head_commit.message, '[skip ci]')
+    if: (contains(github.event.head_commit.message, '[build]') || contains(github.event.head_commit.message, '[b]') || github.ref == 'refs/heads/main') && !contains(github.event.head_commit.message, '[skip ci]')
     needs: call-lint
-    uses: JeromeFitz/jeromefitzgerald.com/.github/workflows/_release.yml@main
+    uses: JeromeFitz/jeromefitzgerald.com/.github/workflows/_release.yml@ci/workflow-release
+    secrets:
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
-  # call-deploy:
-  #   name: '🚀️  Deploy'
-  #   if: github.event.pull_request.draft == false
-  #   needs: call-lint
-  #   uses: JeromeFitz/jeromefitzgerald.com/.github/workflows/_deploy.yml@ci/github-action-refactor
-  #   with:
-  #     GITHUB_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
-  #     VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-  #     VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-  #     VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-  #     CREATE_COMMENT: false
-  #     DELETE_EXISTING_COMMENT: false
-  #     PR_LABELS: false
-  #     PRODUCTION: false
-
-  deploy:
+  call-deploy:
     name: '🚀️  Deploy (Production)'
     if: github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, '[skip ci]')
-    needs: call-release
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    env:
-      GITHUB_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
+    needs: call-lint
+    uses: JeromeFitz/jeromefitzgerald.com/.github/workflows/_deploy.yml@ci/workflow-release
+    with:
+      PRODUCTION: true
+    secrets:
+      GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
       VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-    steps:
-      - name: '🐙️  Checkout'
-        id: push-checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 1
-      - name: '🔺️ Deploy (Production)'
-        id: push-deploy
-        uses: BetaHuhn/deploy-to-vercel-action@v1
-        with:
-          GITHUB_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-          CREATE_COMMENT: false
-          DELETE_EXISTING_COMMENT: true
-          PR_LABELS: false
-          PRODUCTION: true

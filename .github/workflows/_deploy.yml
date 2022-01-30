@@ -3,27 +3,18 @@ name: '🚀️  Deploy'
 on:
   workflow_call:
     inputs:
-      # CREATE_COMMENT:
-      #   required: true
-      #   type: boolean
-      # DELETE_EXISTING_COMMENT:
-      #   required: true
-      #   type: boolean
-      # PR_LABELS:
-      #   required: true
-      #   type: boolean
       PRODUCTION:
         required: true
         type: boolean
-    # secrets:
-    #   GITHUB_TOKEN:
-    #     required: true
-    #   VERCEL_ORG_ID:
-    #     required: true
-    #   VERCEL_PROJECT_ID:
-    #     required: true
-    #   VERCEL_TOKEN:
-    #     required: true
+    secrets:
+      GH_TOKEN:
+        required: true
+      VERCEL_ORG_ID:
+        required: true
+      VERCEL_PROJECT_ID:
+        required: true
+      VERCEL_TOKEN:
+        required: true
 
 jobs:
   deploy:
@@ -31,8 +22,7 @@ jobs:
     timeout-minutes: 5
     runs-on: ubuntu-latest
     env:
-      GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
-      GITHUB_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
       VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
@@ -47,11 +37,11 @@ jobs:
         id: wf-deploy
         uses: BetaHuhn/deploy-to-vercel-action@v1
         with:
-          GITHUB_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-          CREATE_COMMENT: false
+          CREATE_COMMENT: true
           DELETE_EXISTING_COMMENT: true
           PR_LABELS: false
           PRODUCTION: ${{ inputs.PRODUCTION }}

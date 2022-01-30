@@ -1,6 +1,12 @@
 name: '🚨️  Lint'
 
-on: workflow_call
+on:
+  workflow_call:
+    secrets:
+      TURBO_TEAM:
+        required: true
+      TURBO_TOKEN:
+        required: true
 
 jobs:
   lint:
@@ -8,18 +14,13 @@ jobs:
     timeout-minutes: 5
     runs-on: ubuntu-latest
     env:
-      GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
-      GITHUB_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
-      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
 
     steps:
       - name: '🐙️  Checkout'
         uses: actions/checkout@v2
         with:
-          # Number of commits to fetch. 0 indicates all history for all branches and tags.
-          # Default: 1
           fetch-depth: 1
 
       - name: '💽️  Node (16)'
