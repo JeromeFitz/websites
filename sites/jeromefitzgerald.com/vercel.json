@@ -9,6 +9,7 @@
       "NPM_TOKEN": "@npm--jeromefitz--read-token"
     }
   },
+  "github": { "enabled": false },
   "trailingSlash": false,
   "headers": [
     {

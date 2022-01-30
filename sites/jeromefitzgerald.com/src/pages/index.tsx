@@ -54,7 +54,12 @@ const Index = (props) => {
         items: itemsFallback,
         images: imagesFallback,
       },
-      revalidateOnFocus: true,
+      /**
+       * @note(swr) turning off for now until we finalize redis settings
+       */
+      revalidateIfStale: false,
+      revalidateOnFocus: false,
+      revalidateOnReconnect: false,
     }
   )
 

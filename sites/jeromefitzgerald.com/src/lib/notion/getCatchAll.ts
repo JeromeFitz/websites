@@ -1,8 +1,9 @@
 import _filter from 'lodash/filter'
 
 import { nextWeirdRoutingSkipData } from '~lib/constants'
-import { getCache, setCache } from '~lib/notion/getCache'
+import { getCache, setCache, setCacheJson } from '~lib/notion/getCache'
 import { notion } from '~lib/notion/helper'
+import redis from '~lib/redis'
 
 const useCache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE
 
@@ -46,6 +47,17 @@ const getCatchAll = async ({
     const cacheData = await getCache(url)
     if (!!cacheData) {
       data = cacheData
+    } else {
+      // @cache(get) redis
+      const key = `notion/${url}`.toLowerCase()
+      // console.dir(`getCache: redis => ${key}`)
+      const cache = await redis.get(key)
+      data = await JSON.parse(cache)
+      // @cache(set) json
+      if (!!data) {
+        // console.dir(`setCache: redis => json (${key})`)
+        setCacheJson(data, url)
+      }
     }
   }
 
@@ -58,6 +70,7 @@ const getCatchAll = async ({
     const { dataType, routeType, slug } = pathVariables
 
     if (notion.dataTypes[dataType]) {
+      // console.dir(`getNotion: ${dataType} => ${routeType}/${slug}`)
       const DATATYPE_DATA: any = await notion.dataTypes[dataType]({
         pathVariables,
         routeType,
