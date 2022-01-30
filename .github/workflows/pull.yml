@@ -1,4 +1,4 @@
-name: '▶️ Pull'
+name: '▶️ '
 
 on:
   pull_request:
@@ -29,18 +29,18 @@ env:
 
 jobs:
   call-init-and-lint:
-    name: '👷️  CI'
+    name: '👷️  '
     if: github.event.pull_request.draft == false && !contains(github.event.head_commit.message, '[skip ci]')
-    uses: JeromeFitz/jeromefitzgerald.com/.github/workflows/_init-and-lint.yml@ci/actions-vs-workflows
+    uses: JeromeFitz/jeromefitzgerald.com/.github/workflows/_init-and-lint.yml@main
     secrets:
       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
 
   call-deploy:
-    name: '🚀️  Deploy (Preview)'
+    name: '🚀️  (Preview)'
     if: github.event.pull_request.draft == false && !contains(github.event.head_commit.message, '[skip ci]')
     needs: call-init-and-lint
-    uses: JeromeFitz/jeromefitzgerald.com/.github/workflows/_deploy.yml@ci/actions-vs-workflows
+    uses: JeromeFitz/jeromefitzgerald.com/.github/workflows/_deploy.yml@main
     with:
       PRODUCTION: false
     secrets:
