@@ -8,7 +8,7 @@ import {
 import { darkTheme } from '@jeromefitz/design-system/stitches.config'
 import _isEmpty from 'lodash/isEmpty'
 import * as React from 'react'
-import { useEffectOnce } from 'react-use'
+import { useIsomorphicLayoutEffect } from 'react-use'
 import useSWR from 'swr'
 
 import fetcher from '~lib/fetcher'
@@ -36,7 +36,7 @@ const ImageWithBackgroundBlur = ({
 
   const [backgroundImageLoaded, backgroundImageLoadedSet] = React.useState(false)
 
-  useEffectOnce(() => {
+  useIsomorphicLayoutEffect(() => {
     backgroundImageLoadedSet(true)
     return () => {
       backgroundImageLoadedSet(false)
