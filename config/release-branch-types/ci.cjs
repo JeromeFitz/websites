@@ -1,3 +1,3 @@
-const ci = ['github-action-refactor']
+const ci = ['workflow-release']
 
 module.exports = ci
