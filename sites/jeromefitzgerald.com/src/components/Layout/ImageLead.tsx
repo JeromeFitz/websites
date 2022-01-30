@@ -5,7 +5,10 @@ import {
   Section,
   Skeleton,
 } from '@jeromefitz/design-system/components'
+import { darkTheme } from '@jeromefitz/design-system/stitches.config'
 import _isEmpty from 'lodash/isEmpty'
+// import * as React from 'react'
+// import { useIsomorphicLayoutEffect } from 'react-use'
 import useSWR from 'swr'
 
 import fetcher from '~lib/fetcher'
@@ -31,13 +34,32 @@ const ImageWithBackgroundBlur = ({
 }) => {
   const { height, src, width } = image
 
+  // const [backgroundImageLoaded, backgroundImageLoadedSet] = React.useState(false)
+  // useIsomorphicLayoutEffect(() => {
+  //   backgroundImageLoadedSet(true)
+  //   return () => {
+  //     backgroundImageLoadedSet(false)
+  //   }
+  // })
+
   return (
     <ImageContainer>
       <ImageBlur
         css={{
-          backgroundImage: `url(${base64})`,
+          // backgroundImage: `url(${base64})`,
+          // backgroundImage: backgroundImageLoaded
+          //   ? `url(${base64}),linear-gradient(45deg,$colors$blackA7,$colors$blackA12)`
+          //   : `linear-gradient(45deg,$colors$blackA7,$colors$blackA12)`,
+          backgroundImage: `linear-gradient(45deg,$colors$blackA7,$colors$blackA12)`,
           backgroundSize: 'cover',
           borderRadius: '$4',
+          [`.${darkTheme} &`]: {
+            // backgroundImage: `url(${base64})`,
+            // backgroundImage: backgroundImageLoaded
+            // ? `url(${base64}),linear-gradient(45deg,$colors$whiteA7,$colors$whiteA12)`
+            // : `linear-gradient(45deg,$colors$whiteA7,$colors$whiteA12)`,
+            backgroundImage: `linear-gradient(45deg,$colors$whiteA7,$colors$whiteA12)`,
+          },
         }}
       />
 
