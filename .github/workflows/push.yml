@@ -1,4 +1,4 @@
-name: '🔀️ '
+name: '  🔀️  '
 
 on:
   push:
@@ -36,7 +36,7 @@ jobs:
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
 
   call-release:
-    name: '🏷️  '
+    name: '👷️  '
     if: (contains(github.event.head_commit.message, '[build]') || contains(github.event.head_commit.message, '[b]') || github.ref == 'refs/heads/main') && !contains(github.event.head_commit.message, '[skip ci]')
     needs: call-init-and-lint
     uses: JeromeFitz/jeromefitzgerald.com/.github/workflows/_release.yml@main
@@ -44,7 +44,7 @@ jobs:
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
   call-deploy:
-    name: '🚀️  (Production)'
+    name: '🔺️  (Production)'
     if: github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, '[skip ci]')
     needs: call-release
     uses: JeromeFitz/jeromefitzgerald.com/.github/workflows/_deploy.yml@main

@@ -1,4 +1,4 @@
-name: '🏷️  Release'
+name: '🏷️  '
 
 on:
   workflow_call:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   release:
-    name: '👷️  Release'
+    name: '🏷️  '
     timeout-minutes: 5
     runs-on: ubuntu-latest
     env:

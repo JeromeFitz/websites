@@ -1,4 +1,4 @@
-name: '▶️ '
+name: '  ▶️  '
 
 on:
   pull_request:
@@ -37,7 +37,7 @@ jobs:
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
 
   call-deploy:
-    name: '🚀️  (Preview)'
+    name: '🔺️  (Preview)'
     if: github.event.pull_request.draft == false && !contains(github.event.head_commit.message, '[skip ci]')
     needs: call-init-and-lint
     uses: JeromeFitz/jeromefitzgerald.com/.github/workflows/_deploy.yml@main
