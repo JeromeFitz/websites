@@ -28,16 +28,10 @@ env:
   VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
 
 jobs:
-  call-init:
-    name: '🎉️  Init'
+  call-init-and-lint:
+    name: '👷️  CI'
     if: github.event.pull_request.draft == false && !contains(github.event.head_commit.message, '[skip ci]')
-    uses: JeromeFitz/jeromefitzgerald.com/.github/workflows/_init.yml@main
-
-  call-lint:
-    name: '🚨️  Lint'
-    if: github.event.pull_request.draft == false && !contains(github.event.head_commit.message, '[skip ci]')
-    needs: call-init
-    uses: JeromeFitz/jeromefitzgerald.com/.github/workflows/_lint.yml@main
+    uses: JeromeFitz/jeromefitzgerald.com/.github/workflows/_init-and-lint.yml@ci/actions-vs-workflows
     secrets:
       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
@@ -45,8 +39,8 @@ jobs:
   call-deploy:
     name: '🚀️  Deploy (Preview)'
     if: github.event.pull_request.draft == false && !contains(github.event.head_commit.message, '[skip ci]')
-    needs: call-lint
-    uses: JeromeFitz/jeromefitzgerald.com/.github/workflows/_deploy.yml@main
+    needs: call-init-and-lint
+    uses: JeromeFitz/jeromefitzgerald.com/.github/workflows/_deploy.yml@ci/actions-vs-workflows
     with:
       PRODUCTION: false
     secrets:
