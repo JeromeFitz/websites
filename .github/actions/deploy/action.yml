@@ -39,5 +39,6 @@ runs:
         VERCEL_TOKEN: ${{ inputs.VERCEL_TOKEN }}
         CREATE_COMMENT: true
         DELETE_EXISTING_COMMENT: true
+        GITHUB_DEPLOYMENT: false
         PR_LABELS: false
         PRODUCTION: ${{ inputs.PRODUCTION }}
