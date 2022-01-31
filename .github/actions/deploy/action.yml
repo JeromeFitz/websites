@@ -21,10 +21,11 @@ inputs:
     description: ''
     required: true
 
+if: |
+  !contains(github.event.head_commit.message, '[!d]')
+
 runs:
   using: 'composite'
-  if: |
-    !contains(github.event.head_commit.message, '[!d]')
   steps:
     - name: '🔺️ Deploy'
       id: wf-deploy
