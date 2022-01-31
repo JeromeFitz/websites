@@ -1,6 +1,6 @@
 # name: 'Deploy'
 name: '🚀️  '
-description: 'Localized Deploy'
+description: 'Deploy to Vercel based to Preview, or Production if `main` branch'
 author: 'JeromeFitz'
 
 inputs:
