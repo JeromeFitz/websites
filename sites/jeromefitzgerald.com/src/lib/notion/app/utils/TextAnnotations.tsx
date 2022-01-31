@@ -1,4 +1,10 @@
-import { Flex, Link, EmojiParser } from '@jeromefitz/design-system/components'
+import {
+  Box,
+  Code,
+  EmojiParser,
+  Flex,
+  Link,
+} from '@jeromefitz/design-system/components'
 import { ExternalLinkIcon } from '@radix-ui/react-icons'
 import NextLink from 'next/link'
 import * as React from 'react'
@@ -66,26 +72,45 @@ const TextAnnotationLink = ({ children, href }) => {
 const TextAnnotations = ({ href, id, plain_text, annotations }) => {
   if (!plain_text) return null
   const text = <EmojiParser id={id} text={plain_text} />
-  // @todo(code)
-  const { bold, color, italic, strikethrough, underline } = annotations
+  const { bold, code, color, italic, strikethrough, underline } = annotations
+
+  /**
+   * @note default behavior
+   */
+  let Component: any = Box
+  let as = 'span'
+  let css: any = {
+    color: color !== 'default' ? color : 'inherit',
+    fontFamily: 'inherit',
+    fontSize: 'inherit',
+    fontStyle: italic ? 'italic' : 'inherit',
+    fontWeight: bold ? 'bold' : 'inherit',
+    textDecoration: strikethrough
+      ? 'line-through'
+      : underline
+      ? 'underline'
+      : 'inherit',
+  }
+
+  /**
+   * @custom
+   */
+  if (!!code) {
+    Component = Code
+    as = 'code'
+    css = {
+      // backgroundColor: '$colors$green3',
+      fontSize: '$3',
+      py: '$1',
+      '@bp1': { fontSize: '$4' },
+    }
+  }
+
   return (
     <>
-      <span
-        style={{
-          color: color !== 'default' ? color : 'inherit',
-          fontFamily: 'inherit',
-          fontSize: 'inherit',
-          fontStyle: italic ? 'italic' : 'inherit',
-          fontWeight: bold ? 'bold' : 'inherit',
-          textDecoration: strikethrough
-            ? 'line-through'
-            : underline
-            ? 'underline'
-            : 'inherit',
-        }}
-      >
+      <Component as={as} css={css}>
         {href ? <TextAnnotationLink href={href}>{text}</TextAnnotationLink> : text}
-      </span>
+      </Component>
     </>
   )
 }
