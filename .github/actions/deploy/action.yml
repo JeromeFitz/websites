@@ -1,0 +1,49 @@
+# name: 'Deploy'
+name: '🚀️  '
+description: 'Localized Deploy'
+author: 'JeromeFitz'
+
+inputs:
+  PRODUCTION:
+    description: ''
+    required: true
+    type: boolean
+  GH_TOKEN:
+    description: ''
+    required: true
+  VERCEL_ORG_ID:
+    description: ''
+    required: true
+  VERCEL_PROJECT_ID:
+    description: ''
+    required: true
+  VERCEL_TOKEN:
+    description: ''
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - name: '🐙️  Checkout'
+      id: wf-checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 1
+
+    - name: '🔺️ Deploy'
+      id: wf-deploy
+      uses: BetaHuhn/deploy-to-vercel-action@v1
+      env:
+        GH_TOKEN: ${{ inputs.GH_TOKEN }}
+        VERCEL_ORG_ID: ${{ inputs.VERCEL_ORG_ID }}
+        VERCEL_PROJECT_ID: ${{ inputs.VERCEL_PROJECT_ID }}
+        VERCEL_TOKEN: ${{ inputs.VERCEL_TOKEN }}
+      with:
+        GITHUB_TOKEN: ${{ inputs.GH_TOKEN }}
+        VERCEL_ORG_ID: ${{ inputs.VERCEL_ORG_ID }}
+        VERCEL_PROJECT_ID: ${{ inputs.VERCEL_PROJECT_ID }}
+        VERCEL_TOKEN: ${{ inputs.VERCEL_TOKEN }}
+        CREATE_COMMENT: true
+        DELETE_EXISTING_COMMENT: true
+        PR_LABELS: false
+        PRODUCTION: ${{ inputs.PRODUCTION }}

@@ -1,0 +1,38 @@
+# name: 'Release'
+name: '🏷️  '
+description: 'Localized Release'
+author: 'JeromeFitz'
+
+inputs:
+  GH_TOKEN:
+    descirption: 'Github Personal Access Token'
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - name: '🐙️  Checkout'
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 10
+
+    - name: '💽️  Node (16)'
+      id: node-setup
+      uses: actions/setup-node@v2
+      with:
+        # architecture: 'x64'
+        cache-dependency-path: yarn.lock
+        cache: 'yarn'
+        node-version: '16'
+
+    - name: '📦️  Dependencies'
+      id: dependencies
+      run: |
+        yarn install --frozen-lockfile --ignore-engines --network-concurrency 1
+
+    - name: '🏷️  Release'
+      id: release
+      env:
+        GH_TOKEN: ${{ inputs.GH_TOKEN }}
+      run: |
+        yarn semantic-release

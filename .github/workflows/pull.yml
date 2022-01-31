@@ -28,23 +28,42 @@ env:
   VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
 
 jobs:
-  call-init-and-lint:
+  pull:
     name: '👷️  '
     if: github.event.pull_request.draft == false && !contains(github.event.head_commit.message, '[skip ci]')
-    uses: JeromeFitz/jeromefitzgerald.com/.github/workflows/_init-and-lint.yml@main
-    secrets:
-      TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
-      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-
-  call-deploy:
-    name: '🔺️  (Preview)'
-    if: github.event.pull_request.draft == false && !contains(github.event.head_commit.message, '[skip ci]')
-    needs: call-init-and-lint
-    uses: JeromeFitz/jeromefitzgerald.com/.github/workflows/_deploy.yml@main
-    with:
-      PRODUCTION: false
-    secrets:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    env:
       GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
-      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+    steps:
+      - name: '🐙️  Checkout'
+        id: pull-checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+      - name: 'a'
+        id: pull-init-and-lint
+        uses: JeromeFitz/jeromefitzgerald.com/.github/actions/init-and-lint@ci/gh-actions-localized
+        with:
+          GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
+          TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+          TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          PRODUCTION: false
+      - name: 'b'
+        id: pull-deploy
+        uses: JeromeFitz/jeromefitzgerald.com/.github/actions/deploy@ci/gh-actions-localized
+        with:
+          GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
+          TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+          TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          PRODUCTION: false
