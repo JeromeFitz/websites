@@ -5,7 +5,7 @@ import {
   AccordionItem,
   AccordionTrigger,
   Box,
-  Emoji,
+  // Emoji,
   Flex,
   Grid,
   Note,
@@ -16,7 +16,16 @@ import _filter from 'lodash/filter'
 import _map from 'lodash/map'
 import _orderBy from 'lodash/orderBy'
 import _size from 'lodash/size'
+import dynamic from 'next/dynamic'
 import * as React from 'react'
+
+const Emoji = dynamic(
+  () =>
+    import('@jeromefitz/design-system/custom/Emoji').then((mod: any) => mod.Emoji),
+  {
+    ssr: false,
+  }
+)
 
 const getItemsByStatus = (data, status) => {
   return _filter(_orderBy(data, ['author', 'slug'], ['asc']), ['status', status])
@@ -50,6 +59,9 @@ const HEADING = ({ emoji, size, title }) => {
         as="h4"
         css={{ display: 'flex', color: '$colors$gray12', fontWeight: '700' }}
       >
+        {/* @types(emoji) dynamic import ability */}
+        {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+        {/* @ts-ignore */}
         <Emoji character={emoji} margin={true} />
         <Text as="span" css={{ ml: '$2', color: 'inherit', fontWeight: 'inherit' }}>
           {title}
@@ -175,6 +187,9 @@ const ListingItems = (props) => {
         </Grid>
       </Box>
       <Text as="p" css={{ pt: '$4', my: '$3', fontSize: '$5', lineHeight: '1.5' }}>
+        {/* @types(emoji) dynamic import ability */}
+        {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+        {/* @ts-ignore */}
         <Emoji character={`📖️`} margin={true} />
         Throughout the past year plus I have been gifting a pal a random book a
         month. I do not know if they will ever read them, but I try to pick ones I

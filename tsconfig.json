@@ -41,6 +41,7 @@
       "~config/*": ["src/config/*"],
       "~containers/*": ["src/containers/*"],
       "~context/*": ["src/context/*"],
+      "~custom/*": ["src/custom/*"],
       "~data/*": ["src/data/*"],
       "~hooks/*": ["src/hooks/*"],
       "~lib/*": ["src/lib/*"],

@@ -31,6 +31,8 @@ const getCssAndReset = () => {
   return css
 }
 
+const preloadImages = ['/static/images/bighead--jerome--dizzy.svg']
+
 class MyDocument extends Document<DocumentContext> {
   render() {
     return (
@@ -98,6 +100,17 @@ class MyDocument extends Document<DocumentContext> {
           <meta name="msapplication-TileColor" content="#f4f4f4" />
           <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
           <meta name="theme-color" content="#f4f4f4" />
+          {preloadImages.map((href, imageIndex) => (
+            <link
+              key={`preload-${imageIndex}`}
+              rel="preload"
+              href={href}
+              as="image"
+              media="(min-width: 80em)"
+            />
+          ))}
+          <link rel="preconnect" href="https://cdn.jeromefitzgerald.com" />
+          <link rel="dns-prefetch" href="https://cdn.jeromefitzgerald.com" />
         </Head>
         <body>
           <Main />

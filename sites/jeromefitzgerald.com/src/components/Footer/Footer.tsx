@@ -2,7 +2,7 @@ import {
   Avatar,
   Box,
   BoxLink,
-  Emoji,
+  // Emoji,
   Flex,
   Grid,
   Link,
@@ -38,6 +38,14 @@ import IconLink from '~components/IconLink'
 import buildInfo from '~config/buildInfo.json'
 
 const { branch, isBranchMain, prerelease, version } = buildInfo
+
+const Emoji = dynamic(
+  () =>
+    import('@jeromefitz/design-system/custom/Emoji').then((mod: any) => mod.Emoji),
+  {
+    ssr: false,
+  }
+)
 
 const NowPlayingWithNoSSR = dynamic(() => import('~components/NowPlaying'), {
   ssr: false,
@@ -362,6 +370,9 @@ const FooterImpl = () => {
                   my: '$1',
                 }}
               >
+                {/* @types(emoji) dynamic import ability */}
+                {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+                {/* @ts-ignore */}
                 <Emoji character={`🏷️`} margin={true} />
                 {` `}v{version}
               </Text>
@@ -375,6 +386,9 @@ const FooterImpl = () => {
                     my: '$1',
                   }}
                 >
+                  {/* @types(emoji) dynamic import ability */}
+                  {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+                  {/* @ts-ignore */}
                   <Emoji character={`🧪️`} margin={true} />
                   {` `}
                   {!!prerelease ? prerelease : branch}

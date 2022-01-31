@@ -3,6 +3,7 @@ const { writeFile } = require('fs/promises')
 const { join } = require('path')
 
 const { Octokit } = require('@octokit/core')
+const stringify = require('fast-json-stable-stringify')
 const _filter = require('lodash/filter')
 const _orderBy = require('lodash/orderBy')
 const _pick = require('lodash/pick')
@@ -70,7 +71,7 @@ async function setupBuildInfo() {
   }
 
   const filePath = join(process.cwd(), './src/config/buildInfo.json')
-  const content = prettier.format(JSON.stringify(data), { parser: 'json' })
+  const content = prettier.format(stringify(data), { parser: 'json' })
   await writeFile(filePath, content)
 }
 

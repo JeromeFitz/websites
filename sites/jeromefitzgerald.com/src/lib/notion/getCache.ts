@@ -1,5 +1,6 @@
 import path from 'path'
 
+import stringify from 'fast-json-stable-stringify'
 import ms from 'ms'
 
 import { readFile, writeFileSyncRecursive } from '~lib/fs-helpers'
@@ -22,7 +23,7 @@ const cacheFile = (filename) =>
 
 const setCacheJson = (data, url) => {
   try {
-    writeFileSyncRecursive(cacheFile(url), JSON.stringify(data), 'utf8')
+    writeFileSyncRecursive(cacheFile(url), stringify(data), 'utf8')
   } catch (_) {
     /* not fatal */
   }
@@ -33,7 +34,7 @@ const setCacheJson = (data, url) => {
 const setCacheRedis = (data, url) => {
   const key = `notion/${url}`.toLowerCase()
   // console.dir(`key: ${key}`)
-  void redis.set(key, JSON.stringify(data), 'EX', getTimeInSeconds(ms('30d')))
+  void redis.set(key, stringify(data), 'EX', getTimeInSeconds(ms('30d')))
 }
 
 const setCache = (data: any, url: string) => {

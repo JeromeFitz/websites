@@ -6,6 +6,7 @@
       "~config/*": ["./sites/jeromefitzgerald.com/src/config/*"],
       "~containers/*": ["./sites/jeromefitzgerald.com/src/containers/*"],
       "~context/*": ["./sites/jeromefitzgerald.com/src/context/*"],
+      "~custom/*": ["./sites/jeromefitzgerald.com/src/custom/*"],
       "~data/*": ["./sites/jeromefitzgerald.com/src/data/*"],
       "~hooks/*": ["./sites/jeromefitzgerald.com/src/hooks/*"],
       "~lib/*": ["./sites/jeromefitzgerald.com/src/lib/*"],

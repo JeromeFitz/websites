@@ -1,31 +1,33 @@
-import type { ToastData, ToastType } from '@jeromefitz/design-system/components'
 import {
-  Box,
   // Container,
+  // Radio,
+  // RadioGroup,
+  AlertDialogDemo,
+  Box,
+  ButtonDemo,
   Flex,
   Heading,
-  // RadioGroup,
-  // Radio,
-  RadioCardGroup,
+  PageHeading,
   RadioCard,
+  RadioCardGroup,
   Section,
   Switch,
   Text,
-  ButtonDemo,
-  useToastDispatchers,
-  AlertDialogDemo,
-  PageHeading,
 } from '@jeromefitz/design-system/components'
+import type { ToastData, ToastType } from '@jeromefitz/design-system/custom/Toast'
+import {
+  ToastProvider,
+  useToastDispatchers,
+} from '@jeromefitz/design-system/custom/Toast'
 import { styled } from '@jeromefitz/design-system/stitches.config'
-import { motion } from 'framer-motion'
+// import { motion } from 'framer-motion'
 import { useState } from 'react'
-import { toast } from 'react-hot-toast'
+// import { toast } from 'react-hot-toast'
 import _title from 'title'
 import { useSound } from 'use-sound'
 import { v4 as uuid } from 'uuid'
 
 import Seo from '~components/Seo'
-// import { ToastData, ToastType, useToastDispatchers } from '~components/Toast'
 import { useUI } from '~context/ManagedUI'
 import { Media } from '~context/Media'
 // import { BIG_HEAD_PROPS } from '~lib/constants'
@@ -34,6 +36,10 @@ const properties = {
   title: 'Playground',
   seoDescription: 'Sheer Random',
 }
+
+/**
+ * @note Toast is not used in `_app` yet
+ */
 
 // ToastType
 const mockTypes = [
@@ -91,7 +97,7 @@ const Input = styled('input', {
   '&:focus': { boxShadow: `0 0 0 2px $colors$hiContrast` },
 })
 const WavingHand = () => (
-  <motion.div
+  <div
     style={{
       marginBottom: '-20px',
       marginRight: '-45px',
@@ -99,18 +105,20 @@ const WavingHand = () => (
       paddingRight: '45px',
       display: 'inline-block',
     }}
-    animate={{ rotate: 20 }}
-    transition={{
-      repeat: 7,
-      repeatType: 'mirror',
-      duration: 0.2,
-      delay: 0.5,
-      ease: 'easeInOut',
-      type: 'tween',
-    }}
+    // animate={{ rotate: 20 }}
+    // transition={{
+    //   repeat: 7,
+    //   repeatType: 'mirror',
+    //   duration: 0.2,
+    //   delay: 0.5,
+    //   ease: 'easeInOut',
+    //   type: 'tween',
+    // }}
   >
+    {/* <motion.div> */}
     👋
-  </motion.div>
+    {/* </motion.div> */}
+  </div>
 )
 
 const PlaygroundAlertDialog = () => {
@@ -167,22 +175,22 @@ const PlaygroundToast = () => {
   // eslint-disable-next-line @typescript-eslint/unbound-method
   const { addToast } = useToastDispatchers()
 
-  const notify = () => {
-    toast(text, {
-      duration: 3000,
-      position: 'top-right',
-      // Styling
-      style: {},
-      className: '',
-      // Custom Icon
-      icon: '👏',
-      // Change colors of success/error/loading icon
-      iconTheme: {
-        primary: '#000',
-        secondary: '#fff',
-      },
-    })
-  }
+  // const notify = () => {
+  //   toast(text, {
+  //     duration: 3000,
+  //     position: 'top-right',
+  //     // Styling
+  //     style: {},
+  //     className: '',
+  //     // Custom Icon
+  //     icon: '👏',
+  //     // Change colors of success/error/loading icon
+  //     iconTheme: {
+  //       primary: '#000',
+  //       secondary: '#fff',
+  //     },
+  //   })
+  // }
 
   const handleToast = () => {
     const toastItem: ToastData = {
@@ -198,8 +206,8 @@ const PlaygroundToast = () => {
   }
 
   const handleHotToast = () => {
-    // console.dir(`handleHotToast please`)
-    notify()
+    console.dir(`handleHotToast please`)
+    // notify()
   }
 
   return (
@@ -366,48 +374,25 @@ const Playground = () => {
         description={properties.seoDescription}
         title={properties.title}
       />
-
-      <h4>
-        <>
-          <Media at="xs">
-            {(className, renderChildren) => {
-              // fresnel-at-xs
-              // console.dir(`className: ${className}`)
-              return (
-                <>
-                  {renderChildren ? (
-                    <>
-                      <Text>
-                        Hello <code>{className}</code>! <WavingHand />
-                      </Text>
-                    </>
-                  ) : null}
-                </>
-              )
-            }}
-          </Media>
-          <Media greaterThan="xs">
-            {(className, renderChildren) => {
-              // fresnel-greaterThan-xs
-              // console.dir(`!className: ${className}`)
-              return (
-                <>
-                  {renderChildren ? (
-                    <>
-                      <Text>
-                        Hello <code>{className}</code>! <WavingHand />
-                      </Text>
-                    </>
-                  ) : null}
-                </>
-              )
-            }}
-          </Media>
-        </>
-      </h4>
-      <PlaygroundAlertDialog />
-      <PlaygroundToast />
-      <PlaygroundAvatar />
+      <ToastProvider>
+        <h4>
+          <>
+            <Media at="xs">
+              <Text>
+                Hello <code>{`xs`}</code>! <WavingHand />
+              </Text>
+            </Media>
+            <Media greaterThan="xs">
+              <Text>
+                Hello <code>{'greater-than-xs'}</code>! <WavingHand />
+              </Text>
+            </Media>
+          </>
+        </h4>
+        <PlaygroundAlertDialog />
+        <PlaygroundToast />
+        <PlaygroundAvatar />
+      </ToastProvider>
     </>
   )
 }
