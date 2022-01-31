@@ -15,13 +15,16 @@ import { nextSeo } from '~config/websites'
 import { useUI } from '~context/ManagedUI'
 import getNextLink from '~utils/getNextLink'
 
+/**
+ * @note This should be SSR to ensure Notion Content generates
+ */
 const EmojiParser = dynamic(
   () =>
     import('@jeromefitz/design-system/custom/Emoji').then(
       (mod: any) => mod.EmojiParser
     ),
   {
-    ssr: false,
+    ssr: true,
   }
 )
 
@@ -128,4 +131,5 @@ const TextAnnotations = ({ href, id, plain_text, annotations }) => {
     </>
   )
 }
+
 export default TextAnnotations
