@@ -1511,10 +1511,10 @@
   resolved "https://registry.yarnpkg.com/@jeromefitz/conventional-gitmoji/-/conventional-gitmoji-2.0.6.tgz#0d5f110d634a548e58e8e5017273544f2fa2a3de"
   integrity sha512-dCOq+MJlbBamw0O6MiE5o/Zao6SMeo3uEXxrSHW2Ok9IvU6jrXYFjL2uB9UXSQETpMCpMj1bBwrk1ClGN2GxBw==
 
-"@jeromefitz/design-system@1.2.2-notion--website-oss.1":
-  version "1.2.2-notion--website-oss.1"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/design-system/-/design-system-1.2.2-notion--website-oss.1.tgz#c0bc18b5e77400797467993191490d4d236d6b9f"
-  integrity sha512-oaSJi0fHxz8JclZ4s5bkCtxftgGH2tjnY2P9bsxvpRE1m3+LUKRsSglBWyZTQipPFcZvFPycDA2Xzcr3RL216w==
+"@jeromefitz/design-system@1.2.2":
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/design-system/-/design-system-1.2.2.tgz#5305986b5d11f0c011fd1176bd6e07edb47abf1f"
+  integrity sha512-8D4vHNOlqqAvL6IA6OfM6eH8hX0wWpa7JkMUcpi1+O1d0Q8NzcbKtRgO8cDxGaEmtxfYKFeSUFDIR8ir29iUBQ==
   dependencies:
     "@radix-ui/colors" "0.1.8"
     "@radix-ui/react-accessible-icon" "0.1.3"
@@ -1546,7 +1546,7 @@
     react-hot-toast "2.2.0"
     react-use "17.3.2"
     smoothscroll-polyfill "0.4.4"
-    swr "1.1.2"
+    swr "1.2.0"
 
 "@jeromefitz/git-cz@14.0.9":
   version "14.0.9"
@@ -11106,11 +11106,6 @@ supports-preserve-symlinks-flag@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
-
-swr@1.1.2:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/swr/-/swr-1.1.2.tgz#9f3de2541931fccf03c48f322f1fc935a7551612"
-  integrity sha512-UsM0eo5T+kRPyWFZtWRx2XR5qzohs/LS4lDC0GCyLpCYFmsfTk28UCVDbOE9+KtoXY4FnwHYiF+ZYEU3hnJ1lQ==
 
 swr@1.2.0:
   version "1.2.0"
