@@ -45,14 +45,14 @@ jobs:
         with:
           fetch-depth: 1
       - name: '💽️  Init'
-        uses: JeromeFitz/jeromefitzgerald.com/.github/actions/init@main
+        uses: JeromeFitz/jeromefitzgerald.com/.github/actions/init@ci/vercel-deployment
       - name: '🚨️  Lint'
-        uses: JeromeFitz/jeromefitzgerald.com/.github/actions/lint@main
+        uses: JeromeFitz/jeromefitzgerald.com/.github/actions/lint@ci/vercel-deployment
         with:
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
       - name: '🔺️  Deploy (Preview)'
-        uses: JeromeFitz/jeromefitzgerald.com/.github/actions/deploy@main
+        uses: JeromeFitz/jeromefitzgerald.com/.github/actions/deploy@ci/vercel-deployment
         with:
           GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
