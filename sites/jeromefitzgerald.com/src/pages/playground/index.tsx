@@ -15,7 +15,10 @@ import {
   Text,
 } from '@jeromefitz/design-system/components'
 import type { ToastData, ToastType } from '@jeromefitz/design-system/custom/Toast'
-import { useToastDispatchers } from '@jeromefitz/design-system/custom/Toast'
+import {
+  ToastProvider,
+  useToastDispatchers,
+} from '@jeromefitz/design-system/custom/Toast'
 import { styled } from '@jeromefitz/design-system/stitches.config'
 // import { motion } from 'framer-motion'
 import { useState } from 'react'
@@ -33,6 +36,10 @@ const properties = {
   title: 'Playground',
   seoDescription: 'Sheer Random',
 }
+
+/**
+ * @note Toast is not used in `_app` yet
+ */
 
 // ToastType
 const mockTypes = [
@@ -367,24 +374,25 @@ const Playground = () => {
         description={properties.seoDescription}
         title={properties.title}
       />
-
-      <h4>
-        <>
-          <Media at="xs">
-            <Text>
-              Hello <code>{`xs`}</code>! <WavingHand />
-            </Text>
-          </Media>
-          <Media greaterThan="xs">
-            <Text>
-              Hello <code>{'greater-than-xs'}</code>! <WavingHand />
-            </Text>
-          </Media>
-        </>
-      </h4>
-      <PlaygroundAlertDialog />
-      <PlaygroundToast />
-      <PlaygroundAvatar />
+      <ToastProvider>
+        <h4>
+          <>
+            <Media at="xs">
+              <Text>
+                Hello <code>{`xs`}</code>! <WavingHand />
+              </Text>
+            </Media>
+            <Media greaterThan="xs">
+              <Text>
+                Hello <code>{'greater-than-xs'}</code>! <WavingHand />
+              </Text>
+            </Media>
+          </>
+        </h4>
+        <PlaygroundAlertDialog />
+        <PlaygroundToast />
+        <PlaygroundAvatar />
+      </ToastProvider>
     </>
   )
 }

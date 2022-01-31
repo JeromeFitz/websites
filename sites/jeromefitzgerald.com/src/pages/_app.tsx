@@ -1,7 +1,7 @@
 import '~styles/chrome.css'
 
 import { Container, Section } from '@jeromefitz/design-system/components'
-import { ToastProvider } from '@jeromefitz/design-system/custom/Toast'
+// import { ToastProvider } from '@jeromefitz/design-system/custom/Toast'
 import { globalCss, darkTheme } from '@jeromefitz/design-system/stitches.config'
 import { ThemeProvider } from 'next-themes'
 import type { AppProps, NextWebVitalsMetric } from 'next/app'
@@ -13,7 +13,7 @@ import { SWRConfig } from 'swr'
 
 import { ErrorBoundary } from '~components/ErrorBoundary'
 // import Footer from '~components/Footer'
-import Header from '~components/Header'
+// import Header from '~components/Header'
 import NProgress from '~components/NProgress'
 /**
  * @note ignore this file for CI linting (created on next build)
@@ -26,6 +26,9 @@ import { MediaContextProvider } from '~context/Media'
 import { useAnalytics } from '~lib/analytics'
 import { IMAGE__FALLBACKS__SHOWS } from '~lib/constants'
 
+const Header = dynamic(() => import('~components/Header'), {
+  ssr: true,
+})
 const Footer = dynamic(() => import('~components/Footer'), {
   ssr: false,
 })
@@ -187,20 +190,20 @@ function MyApp({ Component, pageProps, router }: AppProps) {
                 value={{ light: 'light-theme', dark: darkTheme.className }}
                 defaultTheme="system"
               >
-                <ToastProvider>
-                  <NProgress />
-                  <Header />
-                  <Container
-                    as="main"
-                    id="main"
-                    size={{ '@initial': 2, '@bp1': 3, '@bp2': 4 }}
-                  >
-                    <Section>
-                      <Component {...pageProps} key={router.route} />
-                    </Section>
-                  </Container>
-                  <Footer />
-                </ToastProvider>
+                {/* <ToastProvider> */}
+                <NProgress />
+                <Header />
+                <Container
+                  as="main"
+                  id="main"
+                  size={{ '@initial': 2, '@bp1': 3, '@bp2': 4 }}
+                >
+                  <Section>
+                    <Component {...pageProps} key={router.route} />
+                  </Section>
+                </Container>
+                <Footer />
+                {/* </ToastProvider> */}
               </ThemeProvider>
             </ManagedUIContext>
           </MediaContextProvider>
