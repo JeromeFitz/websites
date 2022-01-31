@@ -27,11 +27,13 @@ runs:
 
     - name: '📦️  Dependencies'
       id: dependencies
+      shell: bash
       run: |
         yarn install --frozen-lockfile --ignore-engines --network-concurrency 1
 
     - name: '🏷️  Release'
       id: release
+      shell: bash
       env:
         GH_TOKEN: ${{ inputs.GH_TOKEN }}
       run: |

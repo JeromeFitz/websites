@@ -28,7 +28,7 @@ env:
 
 jobs:
   pull:
-    name: '👷️  '
+    name: '👷️  CI'
     if: (contains(github.event.head_commit.message, '[build]') || contains(github.event.head_commit.message, '[b]') || github.ref == 'refs/heads/main') && !contains(github.event.head_commit.message, '[skip ci]')
     timeout-minutes: 10
     runs-on: ubuntu-latest
@@ -44,7 +44,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 1
-      - name: 'a'
+      - name: '🚨️  Lint'
         id: pull-init-and-lint
         uses: ./.github/actions/init-and-lint/action.yml
         with:
@@ -55,7 +55,7 @@ jobs:
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           PRODUCTION: true
-      - name: 'b'
+      - name: '🏷️  Release'
         id: pull-release
         uses: ./.github/actions/release/action.yml
         with:
@@ -66,7 +66,7 @@ jobs:
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           PRODUCTION: true
-      - name: 'c'
+      - name: '🔺️  Deploy (Production)'
         if: github.ref == 'refs/heads/main'
         id: pull-deploy
         uses: ./.github/actions/deploy/action.yml
