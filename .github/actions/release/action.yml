@@ -11,10 +11,6 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: '🐙️  Checkout'
-      uses: actions/checkout@v2
-      with:
-        fetch-depth: 10
     - name: '🏷️  Release'
       id: release
       shell: bash

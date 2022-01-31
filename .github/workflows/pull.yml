@@ -1,4 +1,4 @@
-name: '  ▶️  '
+name: '  ▶️  Pull'
 
 on:
   pull_request:
