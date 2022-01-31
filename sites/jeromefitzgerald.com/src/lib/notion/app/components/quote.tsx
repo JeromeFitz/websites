@@ -1,7 +1,16 @@
-import { Box, Flex, Text, Emoji } from '@jeromefitz/design-system/components'
+import { Box, Flex, Text } from '@jeromefitz/design-system/components'
 import _size from 'lodash/size'
+import dynamic from 'next/dynamic'
 
 import getContentTypeDetail from '../utils/getContentTypeDetail'
+
+const Emoji = dynamic(
+  () =>
+    import('@jeromefitz/design-system/custom/Emoji').then((mod: any) => mod.Emoji),
+  {
+    ssr: false,
+  }
+)
 
 const quote = ({ content, id }) => {
   if (_size(content) > 0) {
@@ -38,6 +47,9 @@ const quote = ({ content, id }) => {
               fontSize: 'inherit',
             }}
           >
+            {/* @types(emoji) dynamic import ability */}
+            {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+            {/* @ts-ignore */}
             <Emoji character={`📰️`} />
           </Text>
           <Text

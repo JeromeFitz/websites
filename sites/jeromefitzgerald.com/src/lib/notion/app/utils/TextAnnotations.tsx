@@ -1,5 +1,12 @@
-import { Flex, Link, EmojiParser } from '@jeromefitz/design-system/components'
+import {
+  Box,
+  Code,
+  // EmojiParser,
+  Flex,
+  Link,
+} from '@jeromefitz/design-system/components'
 import { ExternalLinkIcon } from '@radix-ui/react-icons'
+import dynamic from 'next/dynamic'
 import NextLink from 'next/link'
 import * as React from 'react'
 import { useSound } from 'use-sound'
@@ -7,6 +14,19 @@ import { useSound } from 'use-sound'
 import { nextSeo } from '~config/websites'
 import { useUI } from '~context/ManagedUI'
 import getNextLink from '~utils/getNextLink'
+
+/**
+ * @note This should be SSR to ensure Notion Content generates
+ */
+const EmojiParser = dynamic(
+  () =>
+    import('@jeromefitz/design-system/custom/Emoji').then(
+      (mod: any) => mod.EmojiParser
+    ),
+  {
+    ssr: true,
+  }
+)
 
 const domain = new URL(nextSeo.url)
 
@@ -65,28 +85,51 @@ const TextAnnotationLink = ({ children, href }) => {
 
 const TextAnnotations = ({ href, id, plain_text, annotations }) => {
   if (!plain_text) return null
+  // @types(emoji) dynamic import ability
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   const text = <EmojiParser id={id} text={plain_text} />
-  // @todo(code)
-  const { bold, color, italic, strikethrough, underline } = annotations
+  const { bold, code, color, italic, strikethrough, underline } = annotations
+
+  /**
+   * @note default behavior
+   */
+  let Component: any = Box
+  let as = 'span'
+  let css: any = {
+    color: color !== 'default' ? color : 'inherit',
+    fontFamily: 'inherit',
+    fontSize: 'inherit',
+    fontStyle: italic ? 'italic' : 'inherit',
+    fontWeight: bold ? 'bold' : 'inherit',
+    textDecoration: strikethrough
+      ? 'line-through'
+      : underline
+      ? 'underline'
+      : 'inherit',
+  }
+
+  /**
+   * @custom
+   */
+  if (!!code) {
+    Component = Code
+    as = 'code'
+    css = {
+      // backgroundColor: '$colors$green3',
+      fontSize: '$3',
+      py: '$1',
+      '@bp1': { fontSize: '$4' },
+    }
+  }
+
   return (
     <>
-      <span
-        style={{
-          color: color !== 'default' ? color : 'inherit',
-          fontFamily: 'inherit',
-          fontSize: 'inherit',
-          fontStyle: italic ? 'italic' : 'inherit',
-          fontWeight: bold ? 'bold' : 'inherit',
-          textDecoration: strikethrough
-            ? 'line-through'
-            : underline
-            ? 'underline'
-            : 'inherit',
-        }}
-      >
+      <Component as={as} css={css}>
         {href ? <TextAnnotationLink href={href}>{text}</TextAnnotationLink> : text}
-      </span>
+      </Component>
     </>
   )
 }
+
 export default TextAnnotations

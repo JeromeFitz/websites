@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   Container,
   PageHeading,
@@ -17,12 +18,14 @@ class ErrorBoundary extends React.Component {
     return { hasError: true }
   }
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   componentDidCatch(error, errorInfo) {
-    // You can also log the error to an error reporting service
-    // logErrorToMyService(error, errorInfo)
-    console.dir(`> componentDidCatch`)
-    console.dir(errorInfo)
-    console.dir(error)
+    // // You can also log the error to an error reporting service
+    // // logErrorToMyService(error, errorInfo)
+    // console.dir(`> componentDidCatch`)
+    // console.dir(errorInfo)
+    // console.dir(error)
   }
 
   render() {

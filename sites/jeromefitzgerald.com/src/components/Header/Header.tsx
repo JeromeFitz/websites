@@ -3,6 +3,7 @@ import {
   Box,
   BoxLink,
   Container,
+  // Emoji,
   Flex,
   // Grid,
   Link,
@@ -11,7 +12,6 @@ import {
   PopoverContent,
   PopoverTrigger,
   Text,
-  Emoji,
 } from '@jeromefitz/design-system/components'
 import {
   Tooltip,
@@ -22,12 +22,22 @@ import {
 import { styled } from '@jeromefitz/design-system/stitches.config'
 import { ArrowTopRightIcon, DropdownMenuIcon, PlusIcon } from '@radix-ui/react-icons'
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
+import dynamic from 'next/dynamic'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 import * as React from 'react'
 
 import { ToggleAudio, ToggleTheme } from '~components/Toggle'
 import { navigationHeader } from '~config/websites'
+import { Media } from '~context/Media'
+
+const Emoji = dynamic(
+  () =>
+    import('@jeromefitz/design-system/custom/Emoji').then((mod: any) => mod.Emoji),
+  {
+    ssr: false,
+  }
+)
 
 const HighlightLink = styled('a', {
   display: 'block',
@@ -230,100 +240,126 @@ const Header = () => {
             // Baseline align with the logo
             css={{ mb: -2 }}
           >
-            <Box css={{ display: 'none', '@bp1': { display: 'contents' } }}>
-              {navigationHeader?.links.map((link, linkId) => (
-                <NextLink href={link.url} key={`header-links-${linkId}`} passHref>
-                  <Link
-                    variant={
-                      router.asPath.includes(link.url) ? 'contrast' : 'subtle'
-                    }
-                  >
-                    <Text>{link.title}</Text>
-                  </Link>
-                </NextLink>
-              ))}
-            </Box>
-            <Box css={{ display: 'contents', '@bp1': { display: 'none' } }}>
-              <Popover>
-                <PopoverTrigger asChild>
-                  <Link
-                    variant={
-                      router.asPath.includes('/shows') ? 'contrast' : 'subtle'
-                    }
-                    as="button"
-                    css={{
-                      backgroundColor: 'transparent',
-                      cursor: 'pointer',
-                      appearance: 'none',
-                      fontFamily: '$untitled',
-                      border: 0,
-                      p: 0,
-                      m: 0,
-                      mr: '-$1',
-                    }}
-                  >
-                    <Text css={{ display: 'flex', gap: '$1', ai: 'center' }}>
-                      Menu
-                      <DropdownMenuIcon />
-                    </Text>
-                  </Link>
-                </PopoverTrigger>
-                <PopoverContent hideArrow sideOffset={15} alignOffset={-15}>
-                  <Box css={{ p: '$1' }}>
-                    {navigationHeader?.links.map((show, showId) => (
-                      <NextLink
-                        key={`header-popover-${showId}`}
-                        href={show.url}
-                        passHref
+            <Media at="xs">
+              <Flex
+                align="center"
+                gap={{ '@initial': 4, '@bp2': 5 }}
+                // Baseline align with the logo
+                css={{ mb: -2 }}
+              >
+                <Box css={{ display: 'contents' }}>
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <Link
+                        variant={
+                          router.asPath.includes('/shows') ? 'contrast' : 'subtle'
+                        }
+                        as="button"
+                        css={{
+                          backgroundColor: 'transparent',
+                          cursor: 'pointer',
+                          appearance: 'none',
+                          fontFamily: '$untitled',
+                          border: 0,
+                          p: 0,
+                          m: 0,
+                          mr: '-$1',
+                        }}
                       >
-                        <HighlightLink
-                          variant={
-                            show.url !== '/shows' && router.asPath.includes(show.url)
-                              ? 'contrast'
-                              : 'subtle'
-                          }
-                        >
-                          <Flex gap="3">
-                            <Text
-                              size="3"
-                              as="span"
-                              css={{
-                                fontSize: '1.5rem',
-                                lineHeight: 1.5,
-                              }}
-                              style={{ flex: 'none', marginTop: 2 }}
+                        <Text css={{ display: 'flex', gap: '$1', ai: 'center' }}>
+                          Menu
+                          <DropdownMenuIcon />
+                        </Text>
+                      </Link>
+                    </PopoverTrigger>
+                    <PopoverContent hideArrow sideOffset={15} alignOffset={-15}>
+                      <Box css={{ p: '$1' }}>
+                        {navigationHeader?.links.map((show, showId) => (
+                          <NextLink
+                            key={`header-popover-${showId}`}
+                            href={show.url}
+                            passHref
+                          >
+                            <HighlightLink
+                              variant={
+                                show.url !== '/shows' &&
+                                router.asPath.includes(show.url)
+                                  ? 'contrast'
+                                  : 'subtle'
+                              }
                             >
-                              <Emoji character={show.emoji} margin={true} />
-                            </Text>
-                            <Box>
-                              <Text
-                                size="3"
-                                as="h3"
-                                css={{
-                                  fontWeight: 700,
-                                  lineHeight: 1.5,
-                                  letterSpacing: '-0.02em',
-                                }}
-                              >
-                                {show.title}
-                              </Text>
-                              <Text
-                                size="2"
-                                as="p"
-                                variant="gray"
-                                css={{ lineHeight: 1.4 }}
-                              >
-                                {show.text}
-                              </Text>
-                            </Box>
-                          </Flex>
-                        </HighlightLink>
-                      </NextLink>
-                    ))}
-                  </Box>
-                </PopoverContent>
-              </Popover>
-            </Box>
+                              <Flex gap="3">
+                                <Text
+                                  size="3"
+                                  as="span"
+                                  css={{
+                                    fontSize: '1.5rem',
+                                    lineHeight: 1.5,
+                                  }}
+                                  style={{ flex: 'none', marginTop: 2 }}
+                                >
+                                  {/* @types(emoji) dynamic import ability */}
+                                  {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+                                  {/* @ts-ignore */}
+                                  <Emoji character={show.emoji} margin={true} />
+                                </Text>
+                                <Box>
+                                  <Text
+                                    size="3"
+                                    as="h3"
+                                    css={{
+                                      fontWeight: 700,
+                                      lineHeight: 1.5,
+                                      letterSpacing: '-0.02em',
+                                    }}
+                                  >
+                                    {show.title}
+                                  </Text>
+                                  <Text
+                                    size="2"
+                                    as="p"
+                                    variant="gray"
+                                    css={{ lineHeight: 1.4 }}
+                                  >
+                                    {show.text}
+                                  </Text>
+                                </Box>
+                              </Flex>
+                            </HighlightLink>
+                          </NextLink>
+                        ))}
+                      </Box>
+                    </PopoverContent>
+                  </Popover>
+                </Box>
+              </Flex>
+            </Media>
+            <Media greaterThan="xs">
+              <Flex
+                align="center"
+                gap={{ '@initial': 4, '@bp2': 5 }}
+                // Baseline align with the logo
+                css={{ mb: -2 }}
+              >
+                <Box css={{ display: 'contents' }}>
+                  {navigationHeader?.links.map((link, linkId) => (
+                    <NextLink
+                      href={link.url}
+                      key={`header-links-${linkId}`}
+                      passHref
+                    >
+                      <Link
+                        variant={
+                          router.asPath.includes(link.url) ? 'contrast' : 'subtle'
+                        }
+                      >
+                        <Text>{link.title}</Text>
+                      </Link>
+                    </NextLink>
+                  ))}
+                </Box>
+              </Flex>
+            </Media>
             <Popover>
               <PopoverTrigger asChild>
                 <Link
@@ -371,6 +407,9 @@ const Header = () => {
                             }}
                             style={{ flex: 'none', marginTop: 2 }}
                           >
+                            {/* @types(emoji) dynamic import ability */}
+                            {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+                            {/* @ts-ignore */}
                             <Emoji character={show.emoji} margin={true} />
                           </Text>
                           <Box>
@@ -452,6 +491,9 @@ const Header = () => {
                               }}
                               style={{ flex: 'none', marginTop: 2 }}
                             >
+                              {/* @types(emoji) dynamic import ability */}
+                              {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+                              {/* @ts-ignore */}
                               <Emoji character={show.emoji} margin={true} />
                             </Text>
                             <Box>

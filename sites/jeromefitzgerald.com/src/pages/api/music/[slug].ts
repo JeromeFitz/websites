@@ -1,5 +1,6 @@
 import Client from '@jeromefitz/spotify'
 import type { CredentialProps, ClientProps } from '@jeromefitz/spotify'
+import stringify from 'fast-json-stable-stringify'
 import Slugger from 'github-slugger'
 import ms from 'ms'
 import { NextApiResponse } from 'next'
@@ -102,7 +103,7 @@ const spotifyApi = async (req: any, res: NextApiResponse) => {
         }
         // @cache(set) redis
         if (result.data.is_playing) {
-          void redis.set(key, JSON.stringify(result.data), 'EX', evictionPolicy)
+          void redis.set(key, stringify(result.data), 'EX', evictionPolicy)
         }
         break
       case 'top-artists':
@@ -120,7 +121,7 @@ const spotifyApi = async (req: any, res: NextApiResponse) => {
           type: 'api',
         }
         // @cache(set) redis
-        void redis.set(key, JSON.stringify(result.data), 'EX', evictionPolicy)
+        void redis.set(key, stringify(result.data), 'EX', evictionPolicy)
         break
       case 'top-tracks':
         start = Date.now()
@@ -137,7 +138,7 @@ const spotifyApi = async (req: any, res: NextApiResponse) => {
           type: 'api',
         }
         // @cache(set) redis
-        void redis.set(key, JSON.stringify(result.data), 'EX', evictionPolicy)
+        void redis.set(key, stringify(result.data), 'EX', evictionPolicy)
         break
       default:
         data = { ...dataEmpty }

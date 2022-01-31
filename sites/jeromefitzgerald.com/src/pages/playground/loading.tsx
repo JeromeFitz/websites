@@ -78,8 +78,8 @@ const Loading = () => {
   return (
     <>
       <PageHeading
-        description={properties.title}
-        title={properties.seoDescription}
+        description={properties.seoDescription}
+        title={properties.title}
       />
       <Separator
         css={{ margin: '1rem 0', padding: '0', width: '100% !important' }}
