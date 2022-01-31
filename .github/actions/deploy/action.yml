@@ -4,6 +4,10 @@ description: 'Deploy to Vercel based to Preview, or Production if `main` branch'
 author: 'JeromeFitz'
 
 inputs:
+  COMMIT_MESSAGE:
+    description: ''
+    required: true
+    type: string
   PRODUCTION:
     description: ''
     required: true
@@ -22,7 +26,7 @@ inputs:
     required: true
 
 if: |
-  !contains(github.event.head_commit.message, '[skip deploy]')
+  !contains(inputs.COMMIT_MESSAGE, '[!d]')
 
 runs:
   using: 'composite'

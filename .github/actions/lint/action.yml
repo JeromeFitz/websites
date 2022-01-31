@@ -44,4 +44,3 @@ runs:
       # @note(ci) comment out right now as this requires `build`
       run: |
         echo # yarn test --cache-dir=".cache-turbo"
-        echo ${{ github.event.head_commit.message }}

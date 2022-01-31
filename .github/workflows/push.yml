@@ -55,9 +55,10 @@ jobs:
         with:
           GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
       - name: '🔺️  Deploy (Production)'
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, '[!d]')
         uses: JeromeFitz/jeromefitzgerald.com/.github/actions/deploy@ci/vercel-deployment
         with:
+          COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
           GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
