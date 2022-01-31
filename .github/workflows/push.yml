@@ -39,52 +39,31 @@ jobs:
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
     steps:
-      # - name: '🐙️  Checkout'
-      #   id: pull-checkout
-      #   uses: actions/checkout@v2
-      #   with:
-      #     fetch-depth: 1
+      - name: '🐙️  Checkout'
+        id: pull-checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
       - name: '💽️  Init'
         id: pull-init
-        uses: ./.github/actions/init/action.yml
-        with:
-          GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
-          TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
-          TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-          PRODUCTION: true
+        uses: JeromeFitz/jeromefitzgerald.com/.github/actions/init@ci/gh-actions-localized
       - name: '🚨️  Lint'
         id: pull-lint
-        uses: ./.github/actions/lint/action.yml
+        uses: JeromeFitz/jeromefitzgerald.com/.github/actions/lint@ci/gh-actions-localized
         with:
-          GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-          PRODUCTION: true
       - name: '🏷️  Release'
         id: pull-release
-        uses: ./.github/actions/release/action.yml
+        uses: JeromeFitz/jeromefitzgerald.com/.github/actions/release@ci/gh-actions-localized
         with:
           GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
-          TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
-          TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-          PRODUCTION: true
       - name: '🔺️  Deploy (Production)'
         if: github.ref == 'refs/heads/main'
         id: pull-deploy
-        uses: ./.github/actions/deploy/action.yml
+        uses: JeromeFitz/jeromefitzgerald.com/.github/actions/deploy@ci/gh-actions-localized
         with:
           GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
-          TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
-          TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}

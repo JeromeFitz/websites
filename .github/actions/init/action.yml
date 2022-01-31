@@ -3,14 +3,6 @@ name: '💽️  '
 description: 'Localized Init'
 author: 'JeromeFitz'
 
-inputs:
-  TURBO_TEAM:
-    description: 'ID for Turbo'
-    required: true
-  TURBO_TOKEN:
-    description: 'ID for Turbo'
-    required: true
-
 runs:
   using: 'composite'
   steps:
