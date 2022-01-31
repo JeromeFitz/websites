@@ -25,6 +25,8 @@ runs:
   using: 'composite'
   steps:
     - name: '🔺️ Deploy'
+      if: |
+        !contains(github.event.head_commit.message, '[!d]')
       id: wf-deploy
       uses: BetaHuhn/deploy-to-vercel-action@v1
       env:
