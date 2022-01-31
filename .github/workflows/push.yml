@@ -27,31 +27,39 @@ env:
   VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
 
 jobs:
-  call-init-and-lint:
-    name: '👷️  '
+  pull:
+    name: '👷️  CI'
     if: (contains(github.event.head_commit.message, '[build]') || contains(github.event.head_commit.message, '[b]') || github.ref == 'refs/heads/main') && !contains(github.event.head_commit.message, '[skip ci]')
-    uses: JeromeFitz/jeromefitzgerald.com/.github/workflows/_init-and-lint.yml@main
-    secrets:
-      TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
-      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-
-  call-release:
-    name: '👷️  '
-    if: (contains(github.event.head_commit.message, '[build]') || contains(github.event.head_commit.message, '[b]') || github.ref == 'refs/heads/main') && !contains(github.event.head_commit.message, '[skip ci]')
-    needs: call-init-and-lint
-    uses: JeromeFitz/jeromefitzgerald.com/.github/workflows/_release.yml@main
-    secrets:
-      GH_TOKEN: ${{ secrets.GH_TOKEN }}
-
-  call-deploy:
-    name: '🔺️  (Production)'
-    if: github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, '[skip ci]')
-    needs: call-release
-    uses: JeromeFitz/jeromefitzgerald.com/.github/workflows/_deploy.yml@main
-    with:
-      PRODUCTION: true
-    secrets:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    env:
       GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
-      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+    steps:
+      - name: '🐙️  Checkout'
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+      - name: '💽️  Init'
+        uses: JeromeFitz/jeromefitzgerald.com/.github/actions/init@main
+      - name: '🚨️  Lint'
+        uses: JeromeFitz/jeromefitzgerald.com/.github/actions/lint@main
+        with:
+          TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+          TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      - name: '🏷️  Release'
+        uses: JeromeFitz/jeromefitzgerald.com/.github/actions/release@main
+        with:
+          GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
+      - name: '🔺️  Deploy (Production)'
+        if: github.ref == 'refs/heads/main'
+        uses: JeromeFitz/jeromefitzgerald.com/.github/actions/deploy@main
+        with:
+          GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          PRODUCTION: true
