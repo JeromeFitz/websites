@@ -39,14 +39,25 @@ jobs:
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
     steps:
-      - name: '🐙️  Checkout'
-        id: pull-checkout
-        uses: actions/checkout@v2
+      # - name: '🐙️  Checkout'
+      #   id: pull-checkout
+      #   uses: actions/checkout@v2
+      #   with:
+      #     fetch-depth: 1
+      - name: '💽️  Init'
+        id: pull-init
+        uses: ./.github/actions/init/action.yml
         with:
-          fetch-depth: 1
+          GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
+          TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+          TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          PRODUCTION: true
       - name: '🚨️  Lint'
-        id: pull-init-and-lint
-        uses: ./.github/actions/init-and-lint/action.yml
+        id: pull-lint
+        uses: ./.github/actions/lint/action.yml
         with:
           GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}

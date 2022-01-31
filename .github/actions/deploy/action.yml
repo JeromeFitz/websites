@@ -24,12 +24,6 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: '🐙️  Checkout'
-      id: wf-checkout
-      uses: actions/checkout@v2
-      with:
-        fetch-depth: 1
-
     - name: '🔺️ Deploy'
       id: wf-deploy
       uses: BetaHuhn/deploy-to-vercel-action@v1
