@@ -1,11 +1,12 @@
 import {
   Box,
   Code,
-  EmojiParser,
+  // EmojiParser,
   Flex,
   Link,
 } from '@jeromefitz/design-system/components'
 import { ExternalLinkIcon } from '@radix-ui/react-icons'
+import dynamic from 'next/dynamic'
 import NextLink from 'next/link'
 import * as React from 'react'
 import { useSound } from 'use-sound'
@@ -13,6 +14,16 @@ import { useSound } from 'use-sound'
 import { nextSeo } from '~config/websites'
 import { useUI } from '~context/ManagedUI'
 import getNextLink from '~utils/getNextLink'
+
+const EmojiParser = dynamic(
+  () =>
+    import('@jeromefitz/design-system/custom/Emoji').then(
+      (mod: any) => mod.EmojiParser
+    ),
+  {
+    ssr: false,
+  }
+)
 
 const domain = new URL(nextSeo.url)
 
@@ -71,6 +82,9 @@ const TextAnnotationLink = ({ children, href }) => {
 
 const TextAnnotations = ({ href, id, plain_text, annotations }) => {
   if (!plain_text) return null
+  // @types(emoji) dynamic import ability
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   const text = <EmojiParser id={id} text={plain_text} />
   const { bold, code, color, italic, strikethrough, underline } = annotations
 

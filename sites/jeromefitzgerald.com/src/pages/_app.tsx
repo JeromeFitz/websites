@@ -1,10 +1,7 @@
 import '~styles/chrome.css'
 
-import {
-  Container,
-  Section,
-  ToastProvider,
-} from '@jeromefitz/design-system/components'
+import { Container, Section } from '@jeromefitz/design-system/components'
+import { ToastProvider } from '@jeromefitz/design-system/custom/Toast'
 import { globalCss, darkTheme } from '@jeromefitz/design-system/stitches.config'
 import { ThemeProvider } from 'next-themes'
 import type { AppProps, NextWebVitalsMetric } from 'next/app'

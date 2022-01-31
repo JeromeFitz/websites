@@ -3,6 +3,7 @@ import {
   Box,
   BoxLink,
   Container,
+  // Emoji,
   Flex,
   // Grid,
   Link,
@@ -11,7 +12,6 @@ import {
   PopoverContent,
   PopoverTrigger,
   Text,
-  Emoji,
 } from '@jeromefitz/design-system/components'
 import {
   Tooltip,
@@ -22,6 +22,7 @@ import {
 import { styled } from '@jeromefitz/design-system/stitches.config'
 import { ArrowTopRightIcon, DropdownMenuIcon, PlusIcon } from '@radix-ui/react-icons'
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
+import dynamic from 'next/dynamic'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 import * as React from 'react'
@@ -29,6 +30,14 @@ import * as React from 'react'
 import { ToggleAudio, ToggleTheme } from '~components/Toggle'
 import { navigationHeader } from '~config/websites'
 import { Media } from '~context/Media'
+
+const Emoji = dynamic(
+  () =>
+    import('@jeromefitz/design-system/custom/Emoji').then((mod: any) => mod.Emoji),
+  {
+    ssr: false,
+  }
+)
 
 const HighlightLink = styled('a', {
   display: 'block',
@@ -289,6 +298,9 @@ const Header = () => {
                                   }}
                                   style={{ flex: 'none', marginTop: 2 }}
                                 >
+                                  {/* @types(emoji) dynamic import ability */}
+                                  {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+                                  {/* @ts-ignore */}
                                   <Emoji character={show.emoji} margin={true} />
                                 </Text>
                                 <Box>
@@ -395,6 +407,9 @@ const Header = () => {
                             }}
                             style={{ flex: 'none', marginTop: 2 }}
                           >
+                            {/* @types(emoji) dynamic import ability */}
+                            {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+                            {/* @ts-ignore */}
                             <Emoji character={show.emoji} margin={true} />
                           </Text>
                           <Box>
@@ -476,6 +491,9 @@ const Header = () => {
                               }}
                               style={{ flex: 'none', marginTop: 2 }}
                             >
+                              {/* @types(emoji) dynamic import ability */}
+                              {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+                              {/* @ts-ignore */}
                               <Emoji character={show.emoji} margin={true} />
                             </Text>
                             <Box>

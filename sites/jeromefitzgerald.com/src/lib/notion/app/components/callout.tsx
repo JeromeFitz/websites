@@ -1,10 +1,16 @@
-import { Box, Emoji, Flex, Text } from '@jeromefitz/design-system/components'
+import { Box, Flex, Text } from '@jeromefitz/design-system/components'
 import _size from 'lodash/size'
-// import dynamic from 'next/dynamic'
+import dynamic from 'next/dynamic'
 
 import getContentTypeDetail from '../utils/getContentTypeDetail'
 
-// const Emoji = dynamic(() => import('@jeromefitz/design-system/components'), {})
+const Emoji = dynamic(
+  () =>
+    import('@jeromefitz/design-system/custom/Emoji').then((mod: any) => mod.Emoji),
+  {
+    ssr: false,
+  }
+)
 
 const callout = ({ content, id }) => {
   if (_size(content) > 0) {
@@ -40,6 +46,9 @@ const callout = ({ content, id }) => {
               fontSize: 'inherit',
             }}
           >
+            {/* @types(emoji) dynamic import ability */}
+            {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+            {/* @ts-ignore */}
             {emoji && <Emoji character={emoji} margin={true} />}
           </Text>
           <Text
