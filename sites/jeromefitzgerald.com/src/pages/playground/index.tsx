@@ -370,38 +370,14 @@ const Playground = () => {
       <h4>
         <>
           <Media at="xs">
-            {(className, renderChildren) => {
-              // fresnel-at-xs
-              // console.dir(`className: ${className}`)
-              return (
-                <>
-                  {renderChildren ? (
-                    <>
-                      <Text>
-                        Hello <code>{className}</code>! <WavingHand />
-                      </Text>
-                    </>
-                  ) : null}
-                </>
-              )
-            }}
+            <Text>
+              Hello <code>{`xs`}</code>! <WavingHand />
+            </Text>
           </Media>
           <Media greaterThan="xs">
-            {(className, renderChildren) => {
-              // fresnel-greaterThan-xs
-              // console.dir(`!className: ${className}`)
-              return (
-                <>
-                  {renderChildren ? (
-                    <>
-                      <Text>
-                        Hello <code>{className}</code>! <WavingHand />
-                      </Text>
-                    </>
-                  ) : null}
-                </>
-              )
-            }}
+            <Text>
+              Hello <code>{'greater-than-xs'}</code>! <WavingHand />
+            </Text>
           </Media>
         </>
       </h4>

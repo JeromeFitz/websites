@@ -42,6 +42,9 @@ const ImageWithBackgroundBlur = ({
   //   }
   // })
 
+  // console.dir(`src:     ${src}`)
+  // console.dir(`priority: ${priority}`)
+
   return (
     <ImageContainer>
       <ImageBlur
@@ -70,7 +73,7 @@ const ImageWithBackgroundBlur = ({
         key={slug}
         placeholder="blur"
         priority={priority}
-        quality={90}
+        quality={80}
         src={src}
         height={height}
         width={width}

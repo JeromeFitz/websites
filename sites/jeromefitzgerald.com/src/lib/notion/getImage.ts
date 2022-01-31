@@ -1,3 +1,4 @@
+import stringify from 'fast-json-stable-stringify'
 import Slugger from 'github-slugger'
 
 import { getCache, setCacheJson } from '~lib/notion/getCache'
@@ -41,7 +42,7 @@ const getImage = async (url: string) => {
 
   // console.dir(`@cache(set) json|redis`)
   setCacheJson(data, key)
-  void redis.set(key, JSON.stringify(data))
+  void redis.set(key, stringify(data))
 
   return data
 }

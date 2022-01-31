@@ -1,3 +1,4 @@
+import stringify from 'fast-json-stable-stringify'
 import Slugger from 'github-slugger'
 import type { NextApiResponse } from 'next'
 import { getPlaiceholder } from 'plaiceholder'
@@ -51,7 +52,7 @@ const imagesApi = async (req: any, res: NextApiResponse) => {
   data = { base64, img, slug, url }
 
   setCacheJson(data, key)
-  void redis.set(key, JSON.stringify(data))
+  void redis.set(key, stringify(data))
   const debug = {
     key,
     latency: Date.now() - start,
