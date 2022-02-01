@@ -129,6 +129,8 @@
       "~components": "src/components/",
       "~config": "src/config/",
       "~context": "src/context/",
+      "~custom": "src/custom/",
+      "~data": "src/data/",
       "~hooks": "src/hooks/",
       "~lib": "src/lib/",
       "~styles": "src/styles/",
@@ -139,11 +141,9 @@
       "src/pages"
     ],
     "exclude": [
-      "src/config/websites/*",
       "src/data/*",
       "src/hooks/useProgress.ts",
-      "src/lib/cms-api.ts",
-      "src/lib/firebase.ts",
+      "src/lib/notion/*",
       "src/styles/fonts/*",
       "src/utils/isActiveLink.ts",
       "src/utils/isElementOfType.ts"
@@ -152,6 +152,8 @@
       "src/components",
       "src/config",
       "src/context",
+      "src/custom",
+      "src/data",
       "src/hooks",
       "src/lib",
       "src/pages",

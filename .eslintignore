@@ -17,3 +17,7 @@ next-env.d.ts
 
 # ts
 jest.config.ts
+
+
+# transition
+todo/**

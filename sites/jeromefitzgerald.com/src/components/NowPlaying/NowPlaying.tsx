@@ -46,7 +46,7 @@ const NowPlaying = () => {
   // @todo(swr) SWRHook
   const { data } = useSWR<any>(
     // 'http://localhost:3001/v/1/spotify/now-playing',
-    '/api/music/now-playing',
+    '/api/v1/music/now-playing',
     fetcher,
     {
       fallbackData: initialData,

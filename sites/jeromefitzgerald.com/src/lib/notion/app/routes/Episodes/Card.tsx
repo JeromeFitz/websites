@@ -25,7 +25,7 @@ import { useRouter } from 'next/router'
 import useSWR from 'swr'
 
 import { ImageWithBackgroundBlur } from '~components/Layout/ImageLead'
-import { notionConfig } from '~config/websites'
+import { notionConfig } from '~config/index'
 import { IMAGE__PLACEHOLDER } from '~lib/constants'
 import fetcher from '~lib/fetcher'
 import { notion } from '~lib/notion/helper'
@@ -99,7 +99,7 @@ const EpisodesCard = ({
         }
   // @note(image) limit api calls
   // @refactor(lodash) _isEmpty
-  const urlApi = !!url && _isEmpty(fallbackData) ? `/api/images?url=${url}` : null
+  const urlApi = !!url && _isEmpty(fallbackData) ? `/api/v1/images?url=${url}` : null
   const {
     data: { base64, img, slug: slugImage },
   } = useSWR<any>(urlApi, fetcher, {

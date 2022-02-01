@@ -4,7 +4,7 @@ import dataNormalized from '@jeromefitz/notion/utils/dataNormalized'
 import { avoidRateLimit, sortObject } from '@jeromefitz/utils'
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import { notionConfig as config } from '~config/websites'
+import { notionConfig as config } from '~config/index'
 import { getCache, setCache } from '~lib/notion/getCache'
 import { notion } from '~lib/notion/helper'
 // import omitFields from '~lib/notion/omitFields'

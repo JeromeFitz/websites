@@ -3,7 +3,7 @@ import { format, parseISO } from 'date-fns'
 import useSWR from 'swr'
 
 import Seo from '~components/Seo'
-import { notionConfig } from '~config/websites'
+import { notionConfig } from '~config/index'
 
 const { NOTION } = notionConfig
 

@@ -11,8 +11,8 @@ import NextLink from 'next/link'
 import * as React from 'react'
 import { useSound } from 'use-sound'
 
-import { nextSeo } from '~config/websites'
-import { useUI } from '~context/ManagedUI'
+import { nextSeo } from '~config/index'
+import { useUI } from '~context/UI'
 import getNextLink from '~utils/getNextLink'
 
 /**

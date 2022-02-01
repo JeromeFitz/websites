@@ -1,7 +1,7 @@
 import { ThemeProvider } from 'next-themes'
 import React, { FC, useMemo } from 'react'
 
-export interface State {
+interface State {
   audio: boolean
   displayDropdown: boolean
   displayModal: boolean
@@ -77,7 +77,7 @@ type Action =
 type MODAL_VIEWS = 'SIGNUP_VIEW' | 'LOGIN_VIEW' | 'FORGOT_VIEW' | 'MODAL_TEST_VIEW'
 type NotificationText = string
 
-export const UIContext = React.createContext<State | any>(initialState)
+const UIContext = React.createContext<State | any>(initialState)
 
 UIContext.displayName = 'UIContext'
 
@@ -178,7 +178,7 @@ function uiReducer(state: State, action: Action) {
   }
 }
 
-export const UIProvider: FC = (props) => {
+const UIProvider: FC = (props) => {
   const [state, dispatch] = React.useReducer(uiReducer, initialState)
 
   const openSidebar = () => dispatch({ type: 'OPEN_SIDEBAR' })
@@ -245,7 +245,7 @@ export const UIProvider: FC = (props) => {
   return <UIContext.Provider value={value} {...props} />
 }
 
-export const useUI = () => {
+const useUI = () => {
   const context = React.useContext(UIContext)
   if (context === undefined) {
     throw new Error(`useUI must be used within a UIProvider`)
@@ -253,8 +253,11 @@ export const useUI = () => {
   return context
 }
 
-export const ManagedUIContext: FC = ({ children }) => (
+const ManagedUIContext: FC = ({ children }) => (
   <UIProvider>
     <ThemeProvider attribute="class">{children}</ThemeProvider>
   </UIProvider>
 )
+
+export { useUI, ManagedUIContext, UIContext, UIProvider }
+export type { State }

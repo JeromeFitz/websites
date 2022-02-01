@@ -1,32 +1,9 @@
-/**
- * @hack
- * This choose what website we are using.
- *
- * [x] jeromefitzgerald.com
- * [ ] jerandky.com
- * [ ] arcadecomedytheater.com
- */
 import { getDataTypes } from '@jeromefitz/notion/constants'
 import type { DatabaseInfo, Databases } from '@jeromefitz/notion/schema'
 
-import {
-  /**
-   * @navigation
-   */
-  // navigationFooter,
-  navigationHeader,
-  /**
-   * @notion
-   */
-  NOTION,
-  PAGES__HOMEPAGE,
-  PAGES,
-  /**
-   * @seo
-   */
-  nextSeo,
-  sitemapExcludes,
-} from '~config/websites/jeromefitzgerald.com'
+import { navigationHeader } from './navigation'
+import { NOTION, PAGES__HOMEPAGE, PAGES } from './notion'
+import { nextSeo, sitemapExcludes } from './seo'
 
 const getDynamicDatabases = (obj: DatabaseInfo) =>
   Object.keys(obj).reduce((acc, key) => {

@@ -29,7 +29,7 @@ import dynamic from 'next/dynamic'
 import NextLink from 'next/link'
 import * as React from 'react'
 
-import { TAGS } from '~config/websites'
+import { TAGS } from '~config/index'
 import { ContentNodes } from '~lib/notion/app'
 import { notion } from '~lib/notion/helper'
 

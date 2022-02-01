@@ -2,7 +2,7 @@
 // import _omit from 'lodash/omit'
 import { NextApiResponse } from 'next'
 
-import { notionConfig } from '~config/websites'
+import { notionConfig } from '~config/index'
 import getCatchAll from '~lib/notion/getCatchAll'
 import getDataReturn from '~lib/notion/getDataReturn'
 import { notion } from '~lib/notion/helper'
@@ -20,7 +20,7 @@ const notionCatchAll = async (req: any, res: NextApiResponse) => {
      */
     const cache = !!req.query?.cache ? JSON.parse(req?.query?.cache) : true
 
-    // http://localhost:3000/api/notion/blog/2020/12/28/preview-blog-post?preview=true
+    // http://localhost:3000/api/v1/cms/blog/2020/12/28/preview-blog-post?preview=true
     const pathVariables = notion.custom.getPathVariables({
       catchAll,
     })
