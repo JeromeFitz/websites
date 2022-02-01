@@ -9,14 +9,7 @@ import Document, {
 } from 'next/document'
 
 import { mediaStyles } from '~context/Media'
-// import { info, fontFace } from '~styles/fonts/F37Bella'
-// import { info, fontFace } from '~styles/fonts/F37Bolton'
-// import { info, fontFace } from '~styles/fonts/F37Ginger'
-// import { info, fontFace } from '~styles/fonts/F37GingerRound'
-// import { info, fontFace } from '~styles/fonts/IIIncrementalSans'
-// import { info, fontFace } from '~styles/fonts/IIVorkurs'
 import { info, fontFace } from '~styles/fonts/Inter'
-// import { info, fontFace } from '~styles/fonts/NameSans'
 
 /**
  * Get the css and reset the internal css representation.
