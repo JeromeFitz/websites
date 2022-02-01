@@ -4,7 +4,7 @@ import _map from 'lodash/map'
 import _noop from 'lodash/noop'
 import _uniqWith from 'lodash/uniqWith'
 
-import { notionConfig } from '~config/websites'
+import { notionConfig } from '~config/index'
 import getCatchAll from '~lib/notion/getCatchAll'
 import { notion } from '~lib/notion/helper'
 

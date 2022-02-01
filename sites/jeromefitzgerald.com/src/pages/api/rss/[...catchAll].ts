@@ -16,7 +16,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { Podcast, Item, FeedOptions } from 'podcast'
 
 import { url } from '~config/getNextSeo'
-import { notionConfig } from '~config/websites'
+import { notionConfig } from '~config/index'
 import getCatchAll from '~lib/notion/getCatchAll'
 import { notion } from '~lib/notion/helper'
 import getTimeInSeconds from '~utils/getTimeInSeconds'
@@ -41,7 +41,7 @@ const rssApi = async (req: NextApiRequest, res: NextApiResponse) => {
   // const cache = !!req.query?.cache ? JSON.parse(req.query?.cache) : true
   const cache = false
 
-  // http://localhost:3000/api/notion/blog/2020/12/28/preview-blog-post?preview=true
+  // http://localhost:3000/api/v1/cms/blog/2020/12/28/preview-blog-post?preview=true
   const pathVariables = notion.custom.getPathVariables({ catchAll })
   const data = await getCatchAll({
     cache,

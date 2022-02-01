@@ -1,50 +1,28 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const _replace = require('lodash/replace')
 
-// const { nextSeo, sitemapExcludes } = require('./config/websites/index')
-// const excludes = sitemapExcludes
-// const siteUrl = nextSeo.url
-
-const sites = {
-  'jerandky.com': {
-    excludes: [
-      'blog',
-      'books',
-      'colophon',
-      'episodes',
-      'events',
-      'music',
-      'people',
-      'playground',
-      // 'podcasts/*/**',
-      'refactor',
-      'shows',
-      'users',
-      'venues',
-    ],
-    siteUrl: 'https://jerandky.com',
-  },
-  'jeromefitzgerald.com': {
-    excludes: [
-      // 'blog',
-      // 'books',
-      // 'colophon',
-      'episodes',
-      // 'events',
-      // 'music',
-      'people',
-      'playground',
-      'podcasts/*/**',
-      'refactor',
-      // 'shows',
-      'users',
-      'venues',
-    ],
-    siteUrl: 'https://jeromefitzgerald.com',
-  },
+/**
+ * @hack see: ~config/seo
+ */
+const configInlineBecauseThisIsOldJS = {
+  excludes: [
+    // 'blog',
+    // 'books',
+    // 'colophon',
+    'episodes',
+    // 'events',
+    // 'music',
+    'people',
+    'playground',
+    'podcasts/*/**',
+    // 'shows',
+    'users',
+    'venues',
+  ],
+  siteUrl: 'https://jeromefitzgerald.com',
 }
 
-const { excludes, siteUrl } = sites[process.env.NEXT_PUBLIC__SITE]
+const { excludes, siteUrl } = configInlineBecauseThisIsOldJS
 
 const removeEn = (config, url) => {
   // console.dir(`url: ${url}`)
@@ -92,7 +70,6 @@ const config = {
   priority: 0.7,
   sitemapSize: 5000,
   siteUrl,
-  sites,
   transform: (config, url) => {
     return removeEn(config, url)
   },

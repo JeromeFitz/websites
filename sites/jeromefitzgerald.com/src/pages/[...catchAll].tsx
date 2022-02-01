@@ -2,7 +2,7 @@ import { PageHeading, SkeletonHeading } from '@jeromefitz/design-system/componen
 import useSWR from 'swr'
 
 import { Page } from '~components/Layout'
-import { notionConfig } from '~config/websites'
+import { notionConfig } from '~config/index'
 import {
   nextWeirdRoutingSkipData,
   revalidate,
@@ -36,7 +36,7 @@ const PagesCatchAll = (props) => {
   } = props
 
   const { data, error } = useSWR(
-    () => (!!url ? `/api/notion/${url}` : null),
+    () => (!!url ? `/api/v1/cms/${url}` : null),
     fetcher,
     {
       fallbackData: {

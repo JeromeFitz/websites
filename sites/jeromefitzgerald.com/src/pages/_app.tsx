@@ -21,8 +21,8 @@ import NProgress from '~components/NProgress'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import buildInfo from '~config/buildInfo.json'
-import { ManagedUIContext } from '~context/ManagedUI'
 import { MediaContextProvider } from '~context/Media'
+import { ManagedUIContext } from '~context/UI'
 import { useAnalytics } from '~lib/analytics'
 import { IMAGE__FALLBACKS__SHOWS } from '~lib/constants'
 

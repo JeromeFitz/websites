@@ -24,7 +24,7 @@ import { useSound } from 'use-sound'
 
 import { Top, YearInReview } from '~components/Music'
 import Seo from '~components/Seo'
-import { useUI } from '~context/ManagedUI'
+import { useUI } from '~context/UI'
 
 const plans = [
   {

@@ -16,7 +16,7 @@ import _startsWith from 'lodash/startsWith'
 import pluralize from 'pluralize'
 import useSWRImmutable from 'swr/immutable'
 
-import { notionConfig } from '~config/websites'
+import { notionConfig } from '~config/index'
 import fetcher from '~lib/fetcher'
 // import { notion } from '~lib/notion/helper'
 
@@ -153,7 +153,7 @@ const Rollup = ({ _key, data, rollupKey, routeType }) => {
 const Cast = ({ data }) => {
   const { data: showData } = useSWRImmutable<Show>(
     // const { data: showData } = useSWRImmutable<any>(
-    [`/api/notion/pages/${data?.relationEvents__Shows[0]}`],
+    [`/api/v1/cms/pages/${data?.relationEvents__Shows[0]}`],
     (url) => fetcher(url),
     {}
   )

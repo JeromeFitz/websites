@@ -52,9 +52,9 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "7.16.5",
-    "@jeromefitz/codestyle": "8.0.6",
+    "@jeromefitz/codestyle": "8.0.7",
     "@jeromefitz/conventional-gitmoji": "2.0.6",
-    "@jeromefitz/git-cz": "14.0.9",
+    "@jeromefitz/git-cz": "14.0.10",
     "@jeromefitz/semantic": "8.0.7",
     "@types/is-ci": "3.0.0",
     "@types/lodash": "4.14.178",
@@ -62,7 +62,7 @@
     "@types/react": "17.0.38",
     "@types/title": "3.4.1",
     "@types/uuid": "8.3.4",
-    "dotenv": "14.3.2",
+    "dotenv": "15.0.0",
     "gitmojis": "3.8.0",
     "husky": "7.0.4",
     "is-ci": "3.0.1",
@@ -70,7 +70,7 @@
     "pinst": "2.1.6",
     "rimraf": "3.0.2",
     "semantic-release-monorepo": "7.0.5",
-    "tsup": "5.11.11",
-    "turbo": "1.1.1"
+    "tsup": "5.11.13",
+    "turbo": "1.1.2"
   }
 }

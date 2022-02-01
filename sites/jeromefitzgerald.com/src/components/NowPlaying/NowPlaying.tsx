@@ -16,7 +16,7 @@ import NextLink from 'next/link'
 import useSWR from 'swr'
 import _title from 'title'
 
-import { nowPlaying } from '~data/spotify'
+import { nowPlaying } from '~data/mock/music'
 import fetcher from '~lib/fetcher'
 
 // const HOUR = 3600000
@@ -46,7 +46,7 @@ const NowPlaying = () => {
   // @todo(swr) SWRHook
   const { data } = useSWR<any>(
     // 'http://localhost:3001/v/1/spotify/now-playing',
-    '/api/music/now-playing',
+    '/api/v1/music/now-playing',
     fetcher,
     {
       fallbackData: initialData,

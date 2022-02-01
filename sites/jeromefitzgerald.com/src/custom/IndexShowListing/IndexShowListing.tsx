@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic'
 
-import mockData from '~data/mock/notion/shows'
+import mockData from '~data/mock/cms/shows'
 
 const ShowsListing = dynamic(() => import('~lib/notion/app/routes/Shows/Listing'), {
   ssr: false,
