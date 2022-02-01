@@ -16,7 +16,7 @@ import NextLink from 'next/link'
 import useSWR from 'swr'
 import _title from 'title'
 
-import { nowPlaying } from '~data/spotify'
+import { nowPlaying } from '~data/mock/music'
 import fetcher from '~lib/fetcher'
 
 // const HOUR = 3600000
