@@ -12,7 +12,7 @@ import { useTheme } from 'next-themes'
 import * as React from 'react'
 import { useSound } from 'use-sound'
 
-import { useUI } from '~context/ManagedUI'
+import { useUI } from '~context/UI'
 
 const ThemeToggle = (props) => {
   const { theme, setTheme } = useTheme()

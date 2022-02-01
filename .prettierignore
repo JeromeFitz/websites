@@ -27,3 +27,6 @@ next-env.d.ts
 /public/fallback-*.js
 /public/sw.js
 /public/workbox-*.js
+
+# transition
+todo/**

@@ -60,7 +60,7 @@ const INIT = {
   offset: 0,
   time_range: 'short_term',
   type: 'top-artists',
-  url: '/api/music',
+  url: '/api/v1/music',
 }
 
 const getKey = (pageIndex, { limit, time_range, type, url }) => {

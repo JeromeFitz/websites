@@ -11,8 +11,8 @@ import NextLink from 'next/link'
 import * as React from 'react'
 import { useSound } from 'use-sound'
 
-import { nextSeo } from '~config/websites'
-import { useUI } from '~context/ManagedUI'
+import { nextSeo } from '~config/index'
+import { useUI } from '~context/UI'
 import getNextLink from '~utils/getNextLink'
 
 /**
@@ -32,10 +32,11 @@ const domain = new URL(nextSeo.url)
 
 const TextAnnotationLink = ({ children, href }) => {
   const { audio } = useUI()
-  const [playActive] = useSound('/static/audio/pop-down.mp3', {
+  const [playPopDown] = useSound('/static/audio/pop-down.mp3', {
     soundEnabled: audio,
-    volume: 0.25,
+    volume: 0.5,
   })
+  const handleClickLink = () => playPopDown()
 
   const isExternal = !href.includes(domain.hostname.replace('www.', ''))
 
@@ -48,9 +49,7 @@ const TextAnnotationLink = ({ children, href }) => {
             css={{
               display: 'inline-flex',
             }}
-            onClick={() => {
-              playActive()
-            }}
+            onClick={handleClickLink}
           >
             {children}
           </Link>
@@ -69,9 +68,7 @@ const TextAnnotationLink = ({ children, href }) => {
         href={href}
         rel="noreferrer"
         target={'_blank'}
-        onClick={() => {
-          playActive()
-        }}
+        onClick={handleClickLink}
         variant="contrast"
       >
         {children}

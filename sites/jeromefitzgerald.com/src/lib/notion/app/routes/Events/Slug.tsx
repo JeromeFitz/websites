@@ -32,7 +32,7 @@ import _union from 'lodash/union'
 
 import Meta from '~components/Meta'
 // import { ContentNodes } from '~lib/notion/app'
-import { TAGS } from '~config/websites'
+import { TAGS } from '~config/index'
 
 // @refactor(types)
 interface Icon {

@@ -1,7 +1,7 @@
 import { Client } from '@jeromefitz/notion'
 import type { CredentialProps } from '@jeromefitz/notion'
 
-import { notionConfig as config } from '~config/websites'
+import { notionConfig as config } from '~config/index'
 
 const credentials: CredentialProps = {
   auth: process.env.NOTION_API_KEY,

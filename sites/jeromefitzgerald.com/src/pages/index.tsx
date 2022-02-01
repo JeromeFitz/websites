@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic'
 import useSWR from 'swr'
 
 import { Page } from '~components/Layout'
-import { notionConfig } from '~config/websites'
+import { notionConfig } from '~config/index'
 import {
   nextWeirdRoutingSkipData,
   revalidate,
@@ -44,7 +44,7 @@ const Index = (props) => {
   // console.dir(props)
 
   const { data, error } = useSWR(
-    () => (!!slug ? `/api/notion/${slug}` : null),
+    () => (!!slug ? `/api/v1/cms/${slug}` : null),
     fetcher,
     {
       fallbackData: {

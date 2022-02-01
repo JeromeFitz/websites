@@ -10,7 +10,7 @@ import { SpeakerOffIcon, SpeakerModerateIcon } from '@radix-ui/react-icons'
 import * as React from 'react'
 import { useSound } from 'use-sound'
 
-import { useUI } from '~context/ManagedUI'
+import { useUI } from '~context/UI'
 
 const ThemeToggle = (props) => {
   const { audio, toggleAudio } = useUI()
