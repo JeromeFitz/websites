@@ -26,10 +26,12 @@ import dynamic from 'next/dynamic'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 import * as React from 'react'
+import { useSound } from 'use-sound'
 
 import { ToggleAudio, ToggleTheme } from '~components/Toggle'
 import { navigationHeader } from '~config/index'
 import { Media } from '~context/Media'
+import { useUI } from '~context/UI'
 
 const Emoji = dynamic(
   () =>
@@ -167,6 +169,18 @@ const Header = () => {
   const router = useRouter()
   const isHompage = router.asPath === '/'
 
+  const { audio } = useUI()
+  const [playPopDown] = useSound('/static/audio/pop-down.mp3', {
+    soundEnabled: audio,
+    volume: 0.5,
+  })
+  const handleClickLink = () => playPopDown()
+  const [playPopUp] = useSound('/static/audio/pop.mp3', {
+    soundEnabled: audio,
+    volume: 0.5,
+  })
+  const handleClickMenu = () => playPopUp()
+
   return (
     <Box
       as="header"
@@ -214,6 +228,7 @@ const Header = () => {
                         }}
                         variant="violet"
                         border="solid"
+                        onClick={handleClickLink}
                       />
                     </Text>
                   </TooltipTrigger>
@@ -263,6 +278,7 @@ const Header = () => {
                           m: 0,
                           mr: '-$1',
                         }}
+                        onClick={handleClickMenu}
                       >
                         <Text css={{ display: 'flex', gap: '$1', ai: 'center' }}>
                           Menu
@@ -285,6 +301,7 @@ const Header = () => {
                                   ? 'contrast'
                                   : 'subtle'
                               }
+                              onClick={handleClickLink}
                             >
                               <Flex gap="3">
                                 <Text
@@ -350,6 +367,7 @@ const Header = () => {
                         variant={
                           router.asPath.includes(link.url) ? 'contrast' : 'subtle'
                         }
+                        onClick={handleClickLink}
                       >
                         <Text>{link.title}</Text>
                       </Link>
@@ -373,6 +391,7 @@ const Header = () => {
                     m: 0,
                     mr: '-$1',
                   }}
+                  onClick={handleClickMenu}
                 >
                   <Text css={{ display: 'flex', gap: '$1', ai: 'center' }}>
                     Shows
@@ -394,6 +413,7 @@ const Header = () => {
                             ? 'contrast'
                             : 'subtle'
                         }
+                        onClick={handleClickLink}
                       >
                         <Flex gap="3">
                           <Text

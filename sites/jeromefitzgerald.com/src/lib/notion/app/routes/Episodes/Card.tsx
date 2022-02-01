@@ -99,7 +99,7 @@ const EpisodesCard = ({
         }
   // @note(image) limit api calls
   // @refactor(lodash) _isEmpty
-  const urlApi = !!url && _isEmpty(fallbackData) ? `/api/v1/images?url=${url}` : null
+  const urlApi = !!url && _isEmpty(fallbackData) ? `/api/v1/img?url=${url}` : null
   const {
     data: { base64, img, slug: slugImage },
   } = useSWR<any>(urlApi, fetcher, {

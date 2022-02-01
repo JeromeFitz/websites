@@ -20,8 +20,10 @@ import _isEmpty from 'lodash/isEmpty'
 import _map from 'lodash/map'
 import NextLink from 'next/link'
 import useSWR from 'swr'
+import { useSound } from 'use-sound'
 
 import { ImageWithBackgroundBlur } from '~components/Layout/ImageLead'
+import { useUI } from '~context/UI'
 import { IMAGE__PLACEHOLDER } from '~lib/constants'
 import fetcher from '~lib/fetcher'
 
@@ -79,85 +81,97 @@ const ShowsCard = ({
         }
   // @note(image) limit api calls
   // @refactor(lodash) _isEmpty
-  const urlApi = !!url && _isEmpty(fallbackData) ? `/api/v1/images?url=${url}` : null
+  const urlApi = !!url && _isEmpty(fallbackData) ? `/api/v1/img?url=${url}` : null
   const {
     data: { base64, img, slug: slugImage },
   } = useSWR<any>(urlApi, fetcher, {
     fallbackData,
   })
 
-  return (
-    <CardOuter>
-      <ImageBlur
-        css={{
-          borderRadius: '$4',
-          backgroundImage: `url(${base64})`,
-          backgroundSize: 'cover',
-        }}
-      />
+  const { audio } = useUI()
+  const [playOn] = useSound('/static/audio/pop-down.mp3', {
+    soundEnabled: audio,
+    volume: 0.5,
+  })
+  const handleClick = () => playOn()
 
-      <NextLink href={`/${routeType.toLowerCase()}/${slug}`} passHref>
-        <Card variant="interactive" as="a" css={css_card}>
-          <CardImageContainer>
-            <ImageBlur
-              css={{
-                borderRadius: '$4',
-                backgroundImage: `url(${base64})`,
-                backgroundSize: 'cover',
-                opacity: '1',
-                transform: 'scale(1.02)',
-              }}
-            />
-            <CardImage>
-              <ImageWithBackgroundBlur
-                base64={base64}
-                description={description}
-                image={img}
-                // sizes="(min-width: 1280) 50vh, 25vh"
-                priority={false}
-                slug={slugImage}
-              />
-            </CardImage>
-          </CardImageContainer>
-          <Spacer />
-          <CardTitle>
-            <Text
-              size="3"
-              as="h3"
-              css={{
-                fontSize: '1.5rem',
-                fontWeight: 700,
-                lineHeight: 1,
-                letterSpacing: '-0.02em',
-              }}
-            >
-              {title}
-            </Text>
-          </CardTitle>
-          <Spacer />
-          <CardContent>
-            <Paragraph>{seoDescription}</Paragraph>
-          </CardContent>
-          <Spacer />
-          <CardMeta>
-            {_map(tags, (item, itemIdx) => (
-              <Badge
-                key={`badge-${itemIdx}`}
-                size="2"
-                variant="violet"
-                css={{
-                  border: '1px solid $colors$violet11',
-                  fontWeight: '700',
-                  mr: '$4',
-                }}
-              >
-                {item}
-              </Badge>
-            ))}
-          </CardMeta>
-        </Card>
-      </NextLink>
-    </CardOuter>
+  return (
+    <>
+      {/* <button onClick={handleClick}>WUT</button> */}
+      <CardOuter>
+        <ImageBlur
+          css={{
+            borderRadius: '$4',
+            backgroundImage: `url(${base64})`,
+            backgroundSize: 'cover',
+          }}
+        />
+
+        <NextLink href={`/${routeType.toLowerCase()}/${slug}`} passHref>
+          <a onClick={handleClick}>
+            <Card variant="interactive" as="a" css={css_card}>
+              <CardImageContainer>
+                <ImageBlur
+                  css={{
+                    borderRadius: '$4',
+                    backgroundImage: `url(${base64})`,
+                    backgroundSize: 'cover',
+                    opacity: '1',
+                    transform: 'scale(1.02)',
+                  }}
+                />
+                <CardImage>
+                  <ImageWithBackgroundBlur
+                    base64={base64}
+                    description={description}
+                    image={img}
+                    // sizes="(min-width: 1280) 50vh, 25vh"
+                    priority={false}
+                    slug={slugImage}
+                  />
+                </CardImage>
+              </CardImageContainer>
+              <Spacer />
+              <CardTitle>
+                <Text
+                  size="3"
+                  as="h3"
+                  css={{
+                    fontSize: '1.5rem',
+                    fontWeight: 700,
+                    lineHeight: 1,
+                    letterSpacing: '-0.02em',
+                  }}
+                >
+                  {title}
+                </Text>
+              </CardTitle>
+              <Spacer />
+              <CardContent>
+                <Paragraph>{seoDescription}</Paragraph>
+              </CardContent>
+              <Spacer />
+              <CardMeta>
+                {_map(tags, (item, itemIdx) => (
+                  <Badge
+                    key={`badge-${itemIdx}`}
+                    size="2"
+                    variant="violet"
+                    css={{
+                      border: '1px solid $colors$violet11',
+                      fontWeight: '700',
+                      mr: '$4',
+                    }}
+                  >
+                    {item}
+                  </Badge>
+                ))}
+              </CardMeta>
+            </Card>
+          </a>
+        </NextLink>
+      </CardOuter>
+    </>
   )
 }
 

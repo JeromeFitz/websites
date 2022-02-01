@@ -28,6 +28,7 @@ import {
 import dynamic from 'next/dynamic'
 import NextLink from 'next/link'
 import * as React from 'react'
+import { useSound } from 'use-sound'
 
 import IconLink from '~components/IconLink'
 /**
@@ -36,6 +37,7 @@ import IconLink from '~components/IconLink'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import buildInfo from '~config/buildInfo.json'
+import { useUI } from '~context/UI'
 
 const { branch, isBranchMain, prerelease, version } = buildInfo
 
@@ -117,10 +119,20 @@ const shows = [
 ]
 
 const LinkFooter = ({ url, title, tooltip, tooltipContent }) => {
+  const { audio } = useUI()
+  const [playPopDown] = useSound('/static/audio/pop-down.mp3', {
+    soundEnabled: audio,
+    volume: 0.5,
+  })
+  const handleClickLink = () => playPopDown()
   return (
     <li>
       <NextLink href={url} passHref>
-        <Link variant="subtle" css={{ display: 'inline-flex' }}>
+        <Link
+          variant="subtle"
+          css={{ display: 'inline-flex' }}
+          onClick={handleClickLink}
+        >
           {tooltip ? (
             <Tooltip>
               <TooltipTrigger asChild>
@@ -153,6 +165,12 @@ const LinkFooter = ({ url, title, tooltip, tooltipContent }) => {
 
 const FooterImpl = () => {
   const ref = React.useRef()
+  const { audio } = useUI()
+  const [playPopDown] = useSound('/static/audio/pop-down.mp3', {
+    soundEnabled: audio,
+    volume: 0.5,
+  })
+  const handleClickLink = () => playPopDown()
   return (
     <>
       <Box css={{ width: '100%', my: '$6' }}>
@@ -222,6 +240,7 @@ const FooterImpl = () => {
                     href="/colophon"
                     css={{ display: 'inline-flex', alignItems: 'center' }}
                     variant="subtle"
+                    onClick={handleClickLink}
                   >
                     <Box as="span" css={{ mr: '$2' }}>
                       <InfoCircledIcon />
@@ -251,6 +270,7 @@ const FooterImpl = () => {
                     target="_blank"
                     css={{ display: 'inline-flex', alignItems: 'center' }}
                     variant="subtle"
+                    onClick={handleClickLink}
                   >
                     <Box as="span" css={{ mr: '$2' }}>
                       <GitHubLogoIcon />
@@ -269,6 +289,7 @@ const FooterImpl = () => {
                     target="_blank"
                     css={{ display: 'inline-flex', alignItems: 'center' }}
                     variant="subtle"
+                    onClick={handleClickLink}
                   >
                     <Box as="span" css={{ mr: '$2' }}>
                       <ImageIcon />
@@ -287,6 +308,7 @@ const FooterImpl = () => {
                     target="_blank"
                     css={{ display: 'inline-flex', alignItems: 'center' }}
                     variant="subtle"
+                    onClick={handleClickLink}
                   >
                     <Box as="span" css={{ mr: '$2' }}>
                       <Link1Icon />
@@ -305,6 +327,7 @@ const FooterImpl = () => {
                     target="_blank"
                     css={{ display: 'inline-flex', alignItems: 'center' }}
                     variant="subtle"
+                    onClick={handleClickLink}
                   >
                     <Box as="span" css={{ mr: '$2' }}>
                       <TwitterLogoIcon />
@@ -329,7 +352,7 @@ const FooterImpl = () => {
             }}
           >
             <NextLink href={'/'} passHref>
-              <BoxLink>
+              <BoxLink onClick={handleClickLink}>
                 <Flex align="center" gap="3" css={{ mt: '$7' }}>
                   <Avatar
                     alt={`Avatar for Jerome (Bighead Dizzy)`}

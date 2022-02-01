@@ -108,7 +108,7 @@ const ImageLead = ({ breakout = true, description, image, images }) => {
   const url = !!imageSlug && image[imageSlug]?.url
   const fallbackData = !!url && !!images ? images[imageSlug] : {}
   // @note(image) do not call if we do not need to
-  const urlApi = !!url && _isEmpty(fallbackData) ? `/api/v1/images?url=${url}` : null
+  const urlApi = !!url && _isEmpty(fallbackData) ? `/api/v1/img?url=${url}` : null
 
   const { data } = useSWR<any>(urlApi, fetcher, {
     fallbackData,
