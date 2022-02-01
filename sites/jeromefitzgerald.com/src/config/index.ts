@@ -70,7 +70,17 @@ const notionConfig = {
 // console.dir(NOTION['EPISODES'].hasChild)
 // console.dir(!!NOTION['EPISODES'].hasChild)
 
-export { navigationHeader, nextSeo, notionConfig, sitemapExcludes }
+const pluralRules = [
+  { rule: /cast$/i, replacement: 'cast' },
+  { rule: /emeritus$/i, replacement: 'emeritus' },
+  { rule: /crew$/i, replacement: 'crew' },
+  { rule: /lineup$/i, replacement: 'lineup' },
+  { rule: /music$/i, replacement: 'music' },
+  { rule: /thanks$/i, replacement: 'thanks' },
+  // { rule: /tags$/i, replacement: 'Tags' },
+]
+
+export { navigationHeader, nextSeo, notionConfig, pluralRules, sitemapExcludes }
 
 // @todo(notion) uh, make this dynamic please haha
 export const TAGS = {
