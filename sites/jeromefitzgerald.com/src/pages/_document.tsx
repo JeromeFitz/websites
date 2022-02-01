@@ -12,6 +12,7 @@ import { mediaStyles } from '~context/Media'
 import { info, fontFace } from '~styles/fonts/Inter'
 
 /**
+ * @note
  * Get the css and reset the internal css representation.
  * This is very *IMPORTANT* to do as the server might handle multiple requests
  * and we don't want to have the css accumulated from previous requests
@@ -42,7 +43,10 @@ class MyDocument extends Document<DocumentContext> {
           <style
             id="appmedia"
             type="text/css"
-            dangerouslySetInnerHTML={{ __html: mediaStyles }}
+            dangerouslySetInnerHTML={{
+              __html: mediaStyles.replace(/[\r\n]+/g, ' '),
+              // .replace(/fresnel/g, 'f'),
+            }}
           />
           {/* START: custom typeface */}
           {_map(info.weights, (weight) => {

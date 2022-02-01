@@ -22,6 +22,10 @@ import { Image, ImageBlur, ImageContainer } from './ImageLead.styles'
  *  we shoudl be passing them to `Image` (next/image`)
  *
  *
+ * Also big __update__ needed as we are no longer using `sizes`
+ * Please adjust when you can
+ *
+ *
  */
 const ImageWithBackgroundBlur = ({
   base64,

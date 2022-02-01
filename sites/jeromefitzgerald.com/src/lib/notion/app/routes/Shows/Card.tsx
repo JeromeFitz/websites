@@ -108,8 +108,8 @@ const ShowsCard = ({
         />
 
         <NextLink href={`/${routeType.toLowerCase()}/${slug}`} passHref>
-          <a onClick={handleClick}>
-            <Card variant="interactive" as="a" css={css_card}>
+          <a onClick={handleClick} style={{ textDecoration: 'none' }}>
+            <Card variant="interactive" css={css_card}>
               <CardImageContainer>
                 <ImageBlur
                   css={{

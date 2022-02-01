@@ -16,6 +16,7 @@ const AppMedia = createMedia({
 })
 
 // Make styles for injection into the header of the page
+// customizations in: _document
 const mediaStyles = AppMedia.createMediaStyle()
 const { Media, MediaContextProvider } = AppMedia
 
