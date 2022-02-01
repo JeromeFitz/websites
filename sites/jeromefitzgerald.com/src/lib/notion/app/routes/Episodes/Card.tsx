@@ -116,7 +116,7 @@ const EpisodesCard = ({
         }}
       />
 
-      <NextLink as={as} href={href} passHref>
+      <NextLink as={as} href={href} passHref prefetch={false}>
         <Card variant="interactive" as="a" css={css_card}>
           <CardImageContainer>
             <ImageBlur

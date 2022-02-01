@@ -107,7 +107,11 @@ const ShowsCard = ({
           }}
         />
 
-        <NextLink href={`/${routeType.toLowerCase()}/${slug}`} passHref>
+        <NextLink
+          href={`/${routeType.toLowerCase()}/${slug}`}
+          passHref
+          prefetch={false}
+        >
           <a onClick={handleClick} style={{ textDecoration: 'none' }}>
             <Card variant="interactive" css={css_card}>
               <CardImageContainer>
