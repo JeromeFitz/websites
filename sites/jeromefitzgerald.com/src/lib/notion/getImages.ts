@@ -3,6 +3,10 @@ import _map from 'lodash/map'
 import filterImages from './filterImages'
 import getImage from './getImage'
 
+/**
+ * @refactor
+ */
+
 // @todo(complexity) 18
 // eslint-disable-next-line complexity
 const getImages = async ({ data, pathVariables }) => {

@@ -12,8 +12,6 @@ import * as React from 'react'
 import { SWRConfig } from 'swr'
 
 import { ErrorBoundary } from '~components/ErrorBoundary'
-// import Footer from '~components/Footer'
-// import Header from '~components/Header'
 import NProgress from '~components/NProgress'
 /**
  * @note ignore this file for CI linting (created on next build)
@@ -27,6 +25,7 @@ import { ManagedUIContext } from '~context/UI'
 import { useAnalytics } from '~lib/analytics'
 import { IMAGE__FALLBACKS__SHOWS } from '~lib/constants'
 import globalStyles from '~styles/global'
+
 const Header = dynamic(() => import('~components/Header'), {
   ssr: true,
 })
@@ -58,10 +57,6 @@ function MyApp({ Component, pageProps, router }: AppProps) {
     ]
     message.map((msg) => console.log(msg))
   }, [])
-
-  // if (typeof window !== undefined) {
-  //   message.map((msg) => console.log(msg))
-  // }
 
   return (
     <>

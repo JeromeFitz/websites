@@ -7,7 +7,6 @@ const getContentTypeDetail = ({ content, id = null }) =>
   _map(content.text, (text: NotionText, textId) => {
     const { href, plain_text, annotations } = text
     const key = `${id}--text-annotations--${textId}`
-    // console.dir(`key: ${key}`)
     return (
       <TextAnnotations
         annotations={annotations}

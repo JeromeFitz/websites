@@ -1,10 +1,4 @@
-import {
-  Box,
-  Code,
-  // EmojiParser,
-  Flex,
-  Link,
-} from '@jeromefitz/design-system/components'
+import { Box, Code, Flex, Link } from '@jeromefitz/design-system/components'
 import { ExternalLinkIcon } from '@radix-ui/react-icons'
 import dynamic from 'next/dynamic'
 import NextLink from 'next/link'

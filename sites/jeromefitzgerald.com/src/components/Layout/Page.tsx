@@ -2,23 +2,7 @@ import Layout from '~components/Layout'
 import { getRouterNode } from '~lib/notion/app/routes'
 
 const Page = ({ ...props }) => {
-  const {
-    // content: contentFallback,
-    // info: infoFallback,
-    // images: imagesFallback,
-    // items: itemsFallback,
-    //
-    dataType,
-    // hasMeta,
-    // isPage,
-    // isIndex,
-    routeType,
-    // slug,
-    url,
-  } = props
-  // console.dir(`*** Page`)
-  // console.dir(`> props`)
-  // console.dir(props)
+  const { dataType, routeType, url } = props
 
   /**
    * @data
@@ -33,11 +17,6 @@ const Page = ({ ...props }) => {
   }
 
   routerNode = `${routeType}/${dataType}`.toUpperCase()
-
-  // const isInfoObjectPage = !!info && info?.object === 'page'
-  // console.dir(`isInfoObjectPage: ${isInfoObjectPage}`)
-  // console.dir(`dataType:         ${dataType}`)
-  // console.dir(`routerNode:       ${routerNode}`)
 
   /**
    * @refactor

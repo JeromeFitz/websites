@@ -18,16 +18,8 @@ import useSWRImmutable from 'swr/immutable'
 
 import { notionConfig } from '~config/index'
 import fetcher from '~lib/fetcher'
-// import { notion } from '~lib/notion/helper'
 
-// const { PROPERTIES } = constants
 const { NOTION } = notionConfig
-// console.dir(`utils`)
-// console.dir(utils.getTitle)
-// const { getTitle } = utils
-
-// console.dir(`PROPERTIES`)
-// console.dir(PROPERTIES)
 
 const rollupExclude = [
   // PROPERTIES.rollupEvents__People_Guest_Music.key,
@@ -49,10 +41,6 @@ const Meta = ({ data, routeType }) => {
 
   let size = 0
   _map(rollupKeys, (r) => (size = size + _size(properties[r])))
-
-  // console.dir(`rollupKeys`)
-  // console.dir(rollupKeys)
-  // console.dir(`size: ${size}`)
 
   if (size === 0) return null
 
@@ -109,9 +97,6 @@ const Meta = ({ data, routeType }) => {
 const Rollup = ({ _key, data, rollupKey, routeType }) => {
   const meta = data[rollupKey]
   const metaSize = _size(meta)
-  // const title = rollupKey
-  // const foo = getTitle(rollupKey)
-  // console.dir(`foo: ${foo}`)
   const title = pluralize(getTitle(rollupKey), metaSize)
 
   return (
@@ -152,7 +137,6 @@ const Rollup = ({ _key, data, rollupKey, routeType }) => {
  */
 const Cast = ({ data }) => {
   const { data: showData } = useSWRImmutable<Show>(
-    // const { data: showData } = useSWRImmutable<any>(
     [`/api/v1/cms/pages/${data?.relationEvents__Shows[0]}`],
     (url) => fetcher(url),
     {}

@@ -46,7 +46,7 @@ const Seo = memo(({ ...seo }: any) => {
   }
 
   /**
-   * @note This is stupid.
+   * @note This is ridiculous.
    */
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore

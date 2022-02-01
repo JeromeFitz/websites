@@ -1,5 +1,10 @@
 import _map from 'lodash/map'
 
+/**
+ * @note Remnant from when ther were
+ *  mutliple fonts to choose from.
+ */
+
 const templateWoff2 = `@font-face {
   font-family: '#name#';
   font-weight: #weight#;

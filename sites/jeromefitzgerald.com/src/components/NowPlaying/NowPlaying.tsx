@@ -45,7 +45,7 @@ const NowPlaying = () => {
   const slugger = new Slugger()
   // @todo(swr) SWRHook
   const { data } = useSWR<any>(
-    // 'http://localhost:3001/v/1/spotify/now-playing',
+    // 'http://localhost:3001/v/1/music/now-playing',
     '/api/v1/music/now-playing',
     fetcher,
     {

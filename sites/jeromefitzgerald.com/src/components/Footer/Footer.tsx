@@ -2,7 +2,6 @@ import {
   Avatar,
   Box,
   BoxLink,
-  // Emoji,
   Flex,
   Grid,
   Link,
@@ -49,10 +48,13 @@ const Emoji = dynamic(
   }
 )
 
-const NowPlayingWithNoSSR = dynamic(() => import('~components/NowPlaying'), {
+const NowPlaying = dynamic(() => import('~components/NowPlaying'), {
   ssr: false,
 })
 
+/**
+ * @note inline navigation data
+ */
 const pages = [
   {
     url: '/about',
@@ -117,6 +119,56 @@ const shows = [
     tooltipContent: 'Podcasts Jerome does/did',
   },
 ]
+const socials = [
+  {
+    url: '/colophon',
+    title: 'Colophon',
+    tooltip: false,
+    tooltipContent: '',
+    icon: <InfoCircledIcon />,
+    isExternal: false,
+  },
+  // {
+  //   url: '/contact',
+  //   title: 'Contact',
+  //   tooltip: false,
+  //   tooltipContent: '',
+  //   icon: <ChatBubbleIcon />,
+  //   isExternal: false,
+  // },
+  {
+    url: 'https://github.com/JeromeFitz',
+    title: 'GitHub',
+    tooltip: false,
+    tooltipContent: '',
+    icon: <GitHubLogoIcon />,
+    isExternal: true,
+  },
+  {
+    url: 'https://instagram.com/JeromeFitz',
+    title: 'Instagram',
+    tooltip: false,
+    tooltipContent: '',
+    icon: <ImageIcon />,
+    isExternal: true,
+  },
+  {
+    url: 'https://www.linkedin.com/in/jeromefitzgerald/',
+    title: 'LinkedIn',
+    tooltip: false,
+    tooltipContent: '',
+    icon: <Link1Icon />,
+    isExternal: true,
+  },
+  {
+    url: 'https://twitter.com/JeromeFitz',
+    title: 'Twitter',
+    tooltip: false,
+    tooltipContent: '',
+    icon: <TwitterLogoIcon />,
+    isExternal: true,
+  },
+]
 
 const LinkFooter = ({ url, title, tooltip, tooltipContent }) => {
   const { audio } = useUI()
@@ -176,9 +228,7 @@ const FooterImpl = () => {
       <Box css={{ width: '100%', my: '$6' }}>
         <Separator css={{ margin: '0', width: '100% !important' }} />
       </Box>
-      {process.env.NEXT_PUBLIC__SITE === 'jeromefitzgerald.com' && (
-        <NowPlayingWithNoSSR />
-      )}
+      <NowPlaying />
       <Box as="footer" css={{ pb: '$9', mx: '$3' }}>
         <Grid
           css={{
@@ -234,111 +284,32 @@ const FooterImpl = () => {
               Social
             </Text>
             <ul>
-              <li>
-                <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <IconLink
-                    href="/colophon"
-                    css={{ display: 'inline-flex', alignItems: 'center' }}
-                    variant="subtle"
-                    onClick={handleClickLink}
-                  >
-                    <Box as="span" css={{ mr: '$2' }}>
-                      <InfoCircledIcon />
-                    </Box>
-                    Colophon
-                  </IconLink>
-                </Text>
-              </li>
-              {/* <li>
-                <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <IconLink
-                    href="/contact"
-                    css={{ display: 'inline-flex', alignItems: 'center' }}
-                    variant="subtle"
-                  >
-                    <Box as="span" css={{ mr: '$2' }}>
-                      <ChatBubbleIcon />
-                    </Box>
-                    Contact
-                  </IconLink>
-                </Text>
-              </li> */}
-              <li>
-                <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <IconLink
-                    href="https://github.com/JeromeFitz"
-                    target="_blank"
-                    css={{ display: 'inline-flex', alignItems: 'center' }}
-                    variant="subtle"
-                    onClick={handleClickLink}
-                  >
-                    <Box as="span" css={{ mr: '$2' }}>
-                      <GitHubLogoIcon />
-                    </Box>
-                    GitHub
-                    <Flex as="span" css={{ color: '$slate8', ml: '$1' }}>
-                      <ExternalLinkIcon />
-                    </Flex>
-                  </IconLink>
-                </Text>
-              </li>
-              <li>
-                <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <IconLink
-                    href="https://instagram.com/JeromeFitz"
-                    target="_blank"
-                    css={{ display: 'inline-flex', alignItems: 'center' }}
-                    variant="subtle"
-                    onClick={handleClickLink}
-                  >
-                    <Box as="span" css={{ mr: '$2' }}>
-                      <ImageIcon />
-                    </Box>
-                    Instagram
-                    <Flex as="span" css={{ color: '$slate8', ml: '$1' }}>
-                      <ExternalLinkIcon />
-                    </Flex>
-                  </IconLink>
-                </Text>
-              </li>
-              <li>
-                <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <IconLink
-                    href="https://www.linkedin.com/in/jeromefitzgerald/"
-                    target="_blank"
-                    css={{ display: 'inline-flex', alignItems: 'center' }}
-                    variant="subtle"
-                    onClick={handleClickLink}
-                  >
-                    <Box as="span" css={{ mr: '$2' }}>
-                      <Link1Icon />
-                    </Box>
-                    LinkedIn
-                    <Flex as="span" css={{ color: '$slate8', ml: '$1' }}>
-                      <ExternalLinkIcon />
-                    </Flex>
-                  </IconLink>
-                </Text>
-              </li>
-              <li>
-                <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <IconLink
-                    href="https://twitter.com/JeromeFitz"
-                    target="_blank"
-                    css={{ display: 'inline-flex', alignItems: 'center' }}
-                    variant="subtle"
-                    onClick={handleClickLink}
-                  >
-                    <Box as="span" css={{ mr: '$2' }}>
-                      <TwitterLogoIcon />
-                    </Box>
-                    Twitter
-                    <Flex as="span" css={{ color: '$slate8', ml: '$1' }}>
-                      <ExternalLinkIcon />
-                    </Flex>
-                  </IconLink>
-                </Text>
-              </li>
+              {socials.map((item, itemIdx) => {
+                const { icon, isExternal, title, url } = item
+                return (
+                  <li key={`socials--${itemIdx}`}>
+                    <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
+                      <IconLink
+                        href={url}
+                        target={isExternal ? '_blank' : '_self'}
+                        css={{ display: 'inline-flex', alignItems: 'center' }}
+                        variant="subtle"
+                        onClick={handleClickLink}
+                      >
+                        <Box as="span" css={{ mr: '$2' }}>
+                          {icon}
+                        </Box>
+                        {title}
+                        {isExternal && (
+                          <Flex as="span" css={{ color: '$slate8', ml: '$1' }}>
+                            <ExternalLinkIcon />
+                          </Flex>
+                        )}
+                      </IconLink>
+                    </Text>
+                  </li>
+                )
+              })}
             </ul>
           </Box>
           <Flex

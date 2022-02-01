@@ -3,9 +3,7 @@ import {
   Box,
   BoxLink,
   Container,
-  // Emoji,
   Flex,
-  // Grid,
   Link,
   Paragraph,
   Popover,
@@ -247,19 +245,9 @@ const Header = () => {
               </Flex>
             </BoxLink>
           </NextLink>
-          <Flex
-            align="center"
-            gap={{ '@initial': 4, '@bp2': 5 }}
-            // Baseline align with the logo
-            css={{ mb: -2 }}
-          >
+          <Flex align="center" gap={{ '@initial': 4, '@bp2': 5 }}>
             <Media at="xs">
-              <Flex
-                align="center"
-                gap={{ '@initial': 4, '@bp2': 5 }}
-                // Baseline align with the logo
-                css={{ mb: -2 }}
-              >
+              <Flex align="center" gap={{ '@initial': 4, '@bp2': 5 }}>
                 <Box css={{ display: 'contents' }}>
                   <Popover>
                     <PopoverTrigger asChild>
@@ -350,12 +338,7 @@ const Header = () => {
               </Flex>
             </Media>
             <Media greaterThan="xs">
-              <Flex
-                align="center"
-                gap={{ '@initial': 4, '@bp2': 5 }}
-                // Baseline align with the logo
-                css={{ mb: -2 }}
-              >
+              <Flex align="center" gap={{ '@initial': 4, '@bp2': 5 }}>
                 <Box css={{ display: 'contents' }}>
                   {navigationHeader?.links.map((link, linkId) => (
                     <NextLink
