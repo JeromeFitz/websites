@@ -24,19 +24,9 @@ const IndexShowLising = () => {
   }
   const routeTypeShows = 'shows'
 
-  /**
-   * @todo(config) dynamic site selection
-   *
-   * With the move to `turborepo` this is probably not needed
-   * as each `website` will have its own homepage
-   */
-  const hasShows = process.env.NEXT_PUBLIC__SITE === 'jeromefitzgerald.com'
-
   return (
     <>
-      {hasShows && (
-        <ShowsListing data={dataShows} images={images} routeType={routeTypeShows} />
-      )}
+      <ShowsListing data={dataShows} images={images} routeType={routeTypeShows} />
     </>
   )
 }

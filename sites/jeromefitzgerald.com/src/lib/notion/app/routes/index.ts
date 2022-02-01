@@ -1,15 +1,4 @@
-// import { DATA_TYPES } from '@jeromefitz/notion/constants'
 import dynamic from 'next/dynamic'
-
-// const init = () => {
-//   Object.keys(DATA_TYPES).map((DATA_TYPE) => {
-//     console.dir(`DATA_TYPE: ${DATA_TYPE}`)
-//   })
-// }
-
-/**
- * Do one statically, then implement dynamic
- */
 
 /**
  * @note This is done by a combination of:
@@ -19,6 +8,9 @@ import dynamic from 'next/dynamic'
  * Both coming from DatabaseInfo which enables:
  * - specificty for routes that need it
  * - generalization for routes that do not
+ *
+ *
+ * @todo Make this a bit more typesafe and dynamic
  */
 const getRouterNode = {
   /**

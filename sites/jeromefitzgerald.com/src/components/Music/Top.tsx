@@ -100,9 +100,9 @@ const info = {
 }
 
 /**
- * @spotify fuck ariel pink
+ * @note fuck ariel pink
  */
-const spotifyRemoveIds = ['5H0YoDsPDi9fObFmJtTjfN']
+const removeItems = ['5H0YoDsPDi9fObFmJtTjfN']
 
 const TopItem = ({ type }) => {
   const ref = React.useRef()
@@ -392,7 +392,7 @@ const TopItem = ({ type }) => {
               }}
             >
               {data?.map((item: any, i: number) => {
-                if (spotifyRemoveIds.includes(item.id)) return null
+                if (removeItems.includes(item.id)) return null
 
                 const bgIndex = i > backgroundsSize ? backgroundsSize : i
 

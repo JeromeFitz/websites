@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import * as React from 'react'
 
 const NoSSR = ({ children, onSSR = <React.Fragment /> }) => {
-  const [canRender, setCanRender] = useState(false)
-  useEffect(() => {
+  const [canRender, setCanRender] = React.useState(false)
+  React.useEffect(() => {
     if (!canRender) {
       setCanRender(true)
     }

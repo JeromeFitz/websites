@@ -7,7 +7,6 @@ import {
 } from '@jeromefitz/design-system/custom/Tooltip'
 import { darkTheme } from '@jeromefitz/design-system/stitches.config'
 import { MoonIcon, SunIcon } from '@radix-ui/react-icons'
-// import Mousetrap from 'mousetrap'
 import { useTheme } from 'next-themes'
 import * as React from 'react'
 import { useSound } from 'use-sound'
@@ -30,14 +29,6 @@ const ThemeToggle = (props) => {
     setTheme(newTheme)
     playBleep()
   }, [playBleep, setTheme, theme])
-
-  // React.useEffect(() => {
-  //   Mousetrap.bind(['ctrl+t'], () => handleClick())
-
-  //   return () => {
-  //     Mousetrap.unbind(['ctrl+t'])
-  //   }
-  // }, [handleClick])
 
   return (
     <Tooltip>

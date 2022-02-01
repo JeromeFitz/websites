@@ -15,7 +15,7 @@ const ContentNodes = ({ content, images }) => {
       {_map(getContentNodes({ content, images }), (node: any) => {
         /**
          * @hack(ssr)
-         * Only load the first X elements that would be in viewport
+         * X elements that would (probably) be in viewport
          */
         if (i > 9) {
           WrapComponent = NoSSR

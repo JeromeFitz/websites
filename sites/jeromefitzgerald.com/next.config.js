@@ -13,18 +13,12 @@ const { withPlugins } = require('next-compose-plugins')
 const withTM = require('next-transpile-modules')(['@jeromefitz/design-system'])
 
 const { withBuildInfo } = require('./scripts/buildInfo')
-
 // const getRedirects = require('./config/notion/website/getRedirects')
 
 /**
- * @note this is probably no longer needed with:
- *       tsconfig.json => preserveSymlinks
+ * @note when developing with @jeromefitz/design-system locally
  */
 const isLocal = process.env.DESIGN_SYSTEM__LINK === 'true' ? true : false
-
-/**
- * @yarn link stuff
- */
 const externals = [
   '@radix-ui/colors',
   '@stitches/react',
@@ -106,7 +100,6 @@ const securityHeaders = [
 /**
  * @type {import('next').NextConfig}
  **/
-
 const nextConfig = {
   amp: false,
   assetPrefix: '',

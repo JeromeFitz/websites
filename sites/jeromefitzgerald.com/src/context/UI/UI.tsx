@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { ThemeProvider } from 'next-themes'
 import React, { FC, useMemo } from 'react'
 
@@ -81,101 +82,60 @@ const UIContext = React.createContext<State | any>(initialState)
 
 UIContext.displayName = 'UIContext'
 
-// @todo(complexity) 16
-// eslint-disable-next-line complexity
+const uiReducerReturn = {
+  ['OPEN_SIDEBAR']: (state: State, action: Action | any) => {
+    return { ...state, displaySidebar: true }
+  },
+  ['CLOSE_SIDEBAR']: (state: State, action: Action | any) => {
+    return { ...state, displaySidebar: false }
+  },
+  ['OPEN_DROPDOWN']: (state: State, action: Action | any) => {
+    return { ...state, displayDropdown: true }
+  },
+  ['CLOSE_DROPDOWN']: (state: State, action: Action | any) => {
+    return { ...state, displayDropdown: false }
+  },
+  ['OPEN_MODAL']: (state: State, action: Action | any) => {
+    return { ...state, displayModal: true }
+  },
+  ['CLOSE_MODAL']: (state: State, action: Action | any) => {
+    return { ...state, displayModal: false }
+  },
+  ['OPEN_NAVIGATION']: (state: State, action: Action | any) => {
+    return { ...state, displayNavigation: true }
+  },
+  ['CLOSE_NAVIGATION']: (state: State, action: Action | any) => {
+    return { ...state, displayNavigation: false }
+  },
+  ['OPEN_TOAST']: (state: State, action: Action | any) => {
+    return { ...state, displayNotification: true }
+  },
+  ['CLOSE_TOAST']: (state: State, action: Action | any) => {
+    return { ...state, displayNotification: false }
+  },
+  ['SET_MODAL_VIEW']: (state: State, action: Action | any) => {
+    return { ...state, modalView: action.view }
+  },
+  ['SET_TOAST_TEXT']: (state: State, action: Action | any) => {
+    return { ...state, notificationText: action.text }
+  },
+  ['AUDIO_ENABLE']: (state: State, action: Action | any) => {
+    return { ...state, audio: true }
+  },
+  ['AUDIO_DISABLE']: (state: State, action: Action | any) => {
+    return { ...state, audio: false }
+  },
+  ['SET_BACKGROUND_COLOR']: (state: State, action: Action | any) => {
+    return { ...state, backgroundColor: action.backgroundColor }
+  },
+}
+
 function uiReducer(state: State, action: Action) {
-  switch (action?.type) {
-    case 'OPEN_SIDEBAR': {
-      return {
-        ...state,
-        displaySidebar: true,
-      }
-    }
-    case 'CLOSE_SIDEBAR': {
-      return {
-        ...state,
-        displaySidebar: false,
-      }
-    }
-    case 'OPEN_DROPDOWN': {
-      return {
-        ...state,
-        displayDropdown: true,
-      }
-    }
-    case 'CLOSE_DROPDOWN': {
-      return {
-        ...state,
-        displayDropdown: false,
-      }
-    }
-    case 'OPEN_MODAL': {
-      return {
-        ...state,
-        displayModal: true,
-      }
-    }
-    case 'CLOSE_MODAL': {
-      return {
-        ...state,
-        displayModal: false,
-      }
-    }
-    case 'OPEN_NAVIGATION': {
-      return {
-        ...state,
-        displayNavigation: true,
-      }
-    }
-    case 'CLOSE_NAVIGATION': {
-      return {
-        ...state,
-        displayNavigation: false,
-      }
-    }
-    case 'OPEN_TOAST': {
-      return {
-        ...state,
-        displayNotification: true,
-      }
-    }
-    case 'CLOSE_TOAST': {
-      return {
-        ...state,
-        displayNotification: false,
-      }
-    }
-    case 'SET_MODAL_VIEW': {
-      return {
-        ...state,
-        modalView: action.view,
-      }
-    }
-    case 'SET_TOAST_TEXT': {
-      return {
-        ...state,
-        notificationText: action.text,
-      }
-    }
-    case 'AUDIO_ENABLE': {
-      return {
-        ...state,
-        audio: true,
-      }
-    }
-    case 'AUDIO_DISABLE': {
-      return {
-        ...state,
-        audio: false,
-      }
-    }
-    case 'SET_BACKGROUND_COLOR': {
-      return {
-        ...state,
-        backgroundColor: action.backgroundColor,
-      }
-    }
+  const uiReducerData = uiReducerReturn[action?.type]
+  if (!!uiReducerData) {
+    return uiReducerData(state, action)
   }
+  return state
 }
 
 const UIProvider: FC = (props) => {
@@ -248,7 +208,7 @@ const UIProvider: FC = (props) => {
 const useUI = () => {
   const context = React.useContext(UIContext)
   if (context === undefined) {
-    throw new Error(`useUI must be used within a UIProvider`)
+    throw new Error(`useUI must be used within UIProvider`)
   }
   return context
 }

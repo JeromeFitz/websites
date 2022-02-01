@@ -3,7 +3,7 @@ import { format, parseISO } from 'date-fns'
 import useSWR from 'swr'
 
 import Seo from '~components/Seo'
-import { notionConfig } from '~config/index'
+import { nextSeo, notionConfig } from '~config/index'
 
 const { NOTION } = notionConfig
 
@@ -24,7 +24,7 @@ const Layout = ({ id, children, properties, routeType, url }) => {
   // @todo(external) first key is image slug
   const seoImageSlug = !!_seoImage ? Object.keys(_seoImage)[0] : ''
   const seoImageData = !!images && images[seoImageSlug]
-  const seoUrl = `https://jeromefitzgerald.com/${!!url ? url : ''}`
+  const seoUrl = `${nextSeo.url}/${!!url ? url : ''}`
 
   let seoDescription = description
   if (routeType === NOTION.EVENTS.routeType && slug !== NOTION.EVENTS.routeType) {
