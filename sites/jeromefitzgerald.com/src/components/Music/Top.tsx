@@ -599,7 +599,7 @@ const TopItem = ({ type }) => {
                           : info.success.text}
                       </Text>
                       <Text size="3">
-                        {/* <NextLink href="/shows" passHref>
+                        {/* <NextLink href="/shows" passHref prefetch={false}>
                           <Link
                             css={{ display: 'inline-flex', alignItems: 'center' }}
                           > */}

@@ -82,7 +82,7 @@ const Banner = () => {
   const hasBanner = false
   if (!hasBanner) return null
   return (
-    <NextLink href={href} passHref>
+    <NextLink href={href} passHref prefetch={false}>
       <Box
         as="a"
         css={{
@@ -200,7 +200,7 @@ const Header = () => {
       <Banner />
       <Container size="4">
         <Flex align="center" justify="between" css={{ height: '$8' }}>
-          <NextLink href={'/'} passHref>
+          <NextLink href={'/'} passHref prefetch={false}>
             <BoxLink>
               <Flex align="center" gap="3" css={{}}>
                 <Tooltip>
@@ -281,6 +281,7 @@ const Header = () => {
                             key={`header-popover-${showId}`}
                             href={show.url}
                             passHref
+                            prefetch={false}
                           >
                             <HighlightLink
                               variant={
@@ -345,6 +346,7 @@ const Header = () => {
                       href={link.url}
                       key={`header-links-${linkId}`}
                       passHref
+                      prefetch={false}
                     >
                       <Link
                         variant={
@@ -389,6 +391,7 @@ const Header = () => {
                       key={`header-popover-${showId}`}
                       href={show.url}
                       passHref
+                      prefetch={false}
                     >
                       <HighlightLink
                         variant={
