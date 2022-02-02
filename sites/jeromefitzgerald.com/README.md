@@ -2,6 +2,10 @@
 
 📝️ Note: This README is in-progress.
 
+- [`jeromefitzgerald.com`](https://jeromefitzgerald.com)
+
+This website utilizes Notion as its CMS, and its intent is to keep up-to-date with React and for me to proof of concept toolings and ideas.
+
 ## Uses
 
 ### Design System
@@ -34,10 +38,10 @@ Uses:
 
 🗃️ One workspace. Every team.
 
-- [`notion.so](https://www.notion.so)
+- [`notion.so`](https://www.notion.so)
   - Note: This is not a referral code.
 
-This also heavily uses:
+CMS through:
 
 - [`@jeromefitz/notion`](https://github.com/JeromeFitz/packages/tree/main/packages/notion)
 
@@ -45,8 +49,12 @@ This also heavily uses:
 
 🔺️ Develop. Preview. Ship.
 
-## Dislcaimer
+- [`vercel.com`](https://vercel.com)
+  - Note: This is not a referral code.
 
-Let’s get this out of the way – I use `lodash` because I do not care to remember all the nuances of everything between `arrays|hashes|objects|etc.` at all times of my life.
+## Disclaimer
 
-Most everything written here could be vastly improved upon.
+Let’s get this out of the way: Most everything written here could be vastly improved upon.
+
+- I use `lodash` because I do not care to remember all the nuances of everything between `arrays|hashes|objects|etc.` at all times of my life.
+- I also tend to use `any` a lot with TypeScript. You will see a lot of `@todo(types)`, they will come with time (or not).
