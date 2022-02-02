@@ -42,7 +42,7 @@ const TextAnnotationLink = ({ children, href }) => {
           as={link.as.replace('//', '/')}
           href={link.href}
           passHref
-          prefetch={false}
+          prefetch={true}
         >
           <Link
             css={{
