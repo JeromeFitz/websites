@@ -18,7 +18,7 @@ const Item = ({ item, routeType }) => {
   return (
     <Box as="li" css={{ my: '$2', py: '$2' }}>
       <Heading as="h3" size="3" css={{ my: '$1' }}>
-        <NextLink href={`/${routeType}/${date}/${slug}`} passHref prefetch={false}>
+        <NextLink href={`/${routeType}/${date}/${slug}`} passHref prefetch={true}>
           <a>{title}</a>
         </NextLink>
       </Heading>

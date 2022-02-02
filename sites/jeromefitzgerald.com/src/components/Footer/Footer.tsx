@@ -179,7 +179,7 @@ const LinkFooter = ({ url, title, tooltip, tooltipContent }) => {
   const handleClickLink = () => playPopDown()
   return (
     <li>
-      <NextLink href={url} passHref prefetch={false}>
+      <NextLink href={url} passHref prefetch={true}>
         <Link
           variant="subtle"
           css={{ display: 'inline-flex' }}
@@ -322,7 +322,7 @@ const FooterImpl = () => {
               '@bp2': { gridColumn: 'auto', order: -1 },
             }}
           >
-            <NextLink href={'/'} passHref prefetch={false}>
+            <NextLink href={'/'} passHref prefetch={true}>
               <BoxLink onClick={handleClickLink}>
                 <Flex align="center" gap="3" css={{ mt: '$7' }}>
                   <Avatar
