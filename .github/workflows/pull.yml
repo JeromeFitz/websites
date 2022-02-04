@@ -51,11 +51,38 @@ jobs:
         with:
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-      - name: '🔺️  Deploy (Preview)'
-        uses: JeromeFitz/websites/.github/actions/deploy@main
+      - name: '🐛️  Debug'
+        id: pull-debug
+        shell: bash
+        run: |
+          echo "actor:        ${{ github.actor }}"
+          echo "isActorValid: null"
+          echo "ref:          ${{ context.payload.pull_request.head.ref }}"
+          echo "repo:         ${{ context.payload.pull_request.head.repo.full_name }}"
+      - name: '🐛️  Debug II'
+        id: pull-debug-ii
+        uses: actions/github-script@v3
         with:
-          GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-          PRODUCTION: false
+          script: |
+            const isPr = [ 'pull_request', 'pull_request_target' ].includes(context.eventName)
+            core.setOutput('ref', isPr ? context.payload.pull_request.head.ref : context.ref)
+            core.setOutput('repo', isPr ? context.payload.pull_request.head.repo.full_name : context.repo.full_name)
+            const isActorValid = ['jeromefitz','JeromeFitz', 'dependabot', 'dependabot[bot]'].includes(github.actor)
+            core.setOutput('isActorValid', isActorValid)
+            core.setOutput('actor', github.actor)
+      - name: '🐛️  Debug III'
+        id: pull-debug-iii
+        shell: bash
+        run: |
+          echo "actor:        ${{ steps.pull-debug-ii.outputs.actor }}"
+          echo "isActorValid: ${{ steps.pull-debug-ii.outputs.isActorValid }}"
+          echo "ref:          ${{ steps.pull-debug-ii.outputs.ref }}"
+          echo "repo:         ${{ steps.pull-debug-ii.outputs.repo }}"
+      # - name: '🔺️  Deploy (Preview)'
+      #   uses: JeromeFitz/websites/.github/actions/deploy@main
+      #   with:
+      #     GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
+      #     VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      #     VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      #     VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      #     PRODUCTION: false
