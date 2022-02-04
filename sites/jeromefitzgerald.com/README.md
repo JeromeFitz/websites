@@ -56,5 +56,6 @@ CMS through:
 
 Let’s get this out of the way: Most everything written here could be vastly improved upon.
 
-- I use `lodash` because I do not care to remember all the nuances of everything between `arrays|hashes|objects|etc.` at all times of my life.
-- I also tend to use `any` a lot with TypeScript. You will see a lot of `@todo(types)`, they will come with time (or not).
+- There is a lot of `lodash` (which I use because I have not commited every thing about `arrays|hashes|objects` to my memory, heh)
+- There is a lot `any` w/ TS (you will see a lot of `@todo(types)`, they will come with time [or not])
+- I think there is a MIT on this, but truly do whatever you want I will get that altered. Right now looking at `UNLICENSE`
