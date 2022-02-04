@@ -40,21 +40,26 @@ jobs:
       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
     steps:
       - name: '🐙️  Checkout'
+        id: push-checkout
         uses: actions/checkout@v2
         with:
           fetch-depth: 10
       - name: '💽️  Init'
+        id: push-init
         uses: JeromeFitz/websites/.github/actions/init@main
       - name: '🚨️  Lint'
+        id: push-lint
         uses: JeromeFitz/websites/.github/actions/lint@main
         with:
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
       - name: '🏷️  Release'
+        id: push-release
         uses: JeromeFitz/websites/.github/actions/release@main
         with:
           GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
       - name: '🔺️  Deploy (Production)'
+        id: push-deploy
         if: github.ref == 'refs/heads/main'
         uses: JeromeFitz/websites/.github/actions/deploy@main
         with:
@@ -62,4 +67,5 @@ jobs:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          DEPLOY_PR_FROM_FORK: false
           PRODUCTION: true

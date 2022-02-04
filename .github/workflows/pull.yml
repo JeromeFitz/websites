@@ -41,24 +41,21 @@ jobs:
       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
     steps:
       - name: '🐙️  Checkout'
+        id: pull-checkout
         uses: actions/checkout@v2
         with:
           fetch-depth: 1
       - name: '💽️  Init'
+        id: pull-init
         uses: JeromeFitz/websites/.github/actions/init@main
       - name: '🚨️  Lint'
+        id: pull-lint
         uses: JeromeFitz/websites/.github/actions/lint@main
         with:
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
       - name: '🐛️  Debug'
         id: pull-debug
-        shell: bash
-        run: |
-          echo "actor:        ${{ github.actor }}"
-          echo "isActorValid: null"
-      - name: '🐛️  Debug II'
-        id: pull-debug-ii
         if: github.actor == 'JeromeFitz' || github.actor == 'dependabot' || github.actor == 'dependabot[bot]'
         uses: actions/github-script@v3
         with:
@@ -66,25 +63,27 @@ jobs:
             const isPr = [ 'pull_request', 'pull_request_target' ].includes(context.eventName)
             core.setOutput('ref', isPr ? context.payload.pull_request.head.ref : context.ref)
             core.setOutput('repo', isPr ? context.payload.pull_request.head.repo.full_name : context.repo.full_name)
-      - name: '🐛️  Debug III'
-        id: pull-debug-iii
+      - name: '🐛️  Debug II'
+        id: pull-debug-ii
         if: github.actor == 'JeromeFitz' || github.actor == 'dependabot' || github.actor == 'dependabot[bot]'
         shell: bash
         run: |
           echo "actor:        ${{ github.actor }}"
           echo "isActorValid: true"
-          echo "ref:          ${{ steps.pull-debug-ii.outputs.ref }}"
-          echo "repo:         ${{ steps.pull-debug-ii.outputs.repo }}"
+          echo "ref:          ${{ steps.pull-debug.outputs.ref }}"
+          echo "repo:         ${{ steps.pull-debug.outputs.repo }}"
       - name: '🐙️  Checkout II'
+        id: pull-checkout-ii
         uses: actions/checkout@v2
         if: github.actor == 'JeromeFitz' || github.actor == 'dependabot' || github.actor == 'dependabot[bot]'
         with:
-          ref: ${{ steps.pull-debug-ii.outputs.ref }}
-          repository: ${{ steps.pull-debug-ii.outputs.repo }}
+          ref: ${{ steps.pull-debug.outputs.ref }}
+          repository: ${{ steps.pull-debug.outputs.repo }}
           fetch-depth: 1
       - name: '🔺️  Deploy (Preview)'
+        id: pull-deploy
         if: github.actor == 'JeromeFitz' || github.actor == 'dependabot' || github.actor == 'dependabot[bot]'
-        uses: JeromeFitz/websites/.github/actions/deploy@dependabot/npm_and_yarn/main/next-seo-5.1.0
+        uses: JeromeFitz/websites/.github/actions/deploy@main
         with:
           GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
