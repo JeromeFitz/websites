@@ -44,7 +44,7 @@
     "@jeromefitz/design-system": "2.0.0",
     "@jeromefitz/notion": "2.0.8-notion--website-oss.1",
     "@jeromefitz/spotify": "2.1.5",
-    "@jeromefitz/utils": "1.0.5-notion--website-oss.1",
+    "@jeromefitz/utils": "2.0.0",
     "@notionhq/client": "0.4.13",
     "@octokit/core": "3.5.1",
     "@plaiceholder/next": "2.2.0",
