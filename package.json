@@ -51,7 +51,7 @@
     "lodash": "4.17.21"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "7.16.5",
+    "@babel/eslint-parser": "7.17.0",
     "@jeromefitz/codestyle": "8.0.7",
     "@jeromefitz/conventional-gitmoji": "2.0.6",
     "@jeromefitz/git-cz": "14.0.10",
