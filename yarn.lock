@@ -1148,10 +1148,10 @@
     shellsync "0.2.2"
     word-wrap "1.2.3"
 
-"@jeromefitz/notion@2.0.8-notion--website-oss.1":
-  version "2.0.8-notion--website-oss.1"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/notion/-/notion-2.0.8-notion--website-oss.1.tgz#30acb841622a1fed3629c02e8f42268bbf66822c"
-  integrity sha512-p3wosHfI6+JtNY9AF1em6cKN1XhgBc4NOZTfLmuWwVQuhxtcbkjOue2jFRa8hb2ejKHjHHm3wxO4QuMyVAIzVg==
+"@jeromefitz/notion@3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/notion/-/notion-3.0.0.tgz#d602eed00c0e7ed8980aa2272f41789cdd8df445"
+  integrity sha512-U8JzZlcKQcjzMvrYBbQQAU0KOQolik8fNaXod62O19vBJJvtipR+in2sMb4umLNiGn7QOPannyl7ynAkxvmOoQ==
   dependencies:
     "@notionhq/client" "0.4.13"
     date-fns "2.28.0"
