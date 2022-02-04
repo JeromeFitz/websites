@@ -35,6 +35,8 @@ jobs:
     timeout-minutes: 10
     runs-on: ubuntu-latest
     env:
+      GH_BOT_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
+      GH_DEPLOY_TOKEN: ${{ secrets.GH_DEPLOY_TOKEN }}
       GH_TOKEN: ${{ secrets.GH_DEPLOY_TOKEN }}
       GITHUB_TOKEN: ${{ secrets.GH_DEPLOY_TOKEN }}
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
