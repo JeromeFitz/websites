@@ -57,8 +57,6 @@ jobs:
         run: |
           echo "actor:        ${{ github.actor }}"
           echo "isActorValid: null"
-          echo "ref:          ${{ context.payload.pull_request.head.ref }}"
-          echo "repo:         ${{ context.payload.pull_request.head.repo.full_name }}"
       - name: '🐛️  Debug II'
         id: pull-debug-ii
         uses: actions/github-script@v3
