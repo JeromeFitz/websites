@@ -20,6 +20,7 @@ concurrency:
 
 env:
   GH_BOT_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
+  GH_DEPLOY_TOKEN: ${{ secrets.GH_DEPLOY_TOKEN }}
   GH_TOKEN: ${{ secrets.GH_TOKEN }}
   TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
   TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
@@ -54,38 +55,29 @@ jobs:
         with:
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-      - name: '🐛️  Debug'
-        id: pull-debug
+      - name: '🛠️  Deploy (Config)'
+        id: pull-deploy-config
         if: github.actor == 'JeromeFitz' || github.actor == 'dependabot' || github.actor == 'dependabot[bot]'
         uses: actions/github-script@v3
         with:
           script: |
-            const isPr = [ 'pull_request', 'pull_request_target' ].includes(context.eventName)
-            core.setOutput('ref', isPr ? context.payload.pull_request.head.ref : context.ref)
-            core.setOutput('repo', isPr ? context.payload.pull_request.head.repo.full_name : context.repo.full_name)
-      - name: '🐛️  Debug II'
-        id: pull-debug-ii
-        if: github.actor == 'JeromeFitz' || github.actor == 'dependabot' || github.actor == 'dependabot[bot]'
-        shell: bash
-        run: |
-          echo "actor:        ${{ github.actor }}"
-          echo "isActorValid: true"
-          echo "ref:          ${{ steps.pull-debug.outputs.ref }}"
-          echo "repo:         ${{ steps.pull-debug.outputs.repo }}"
-      - name: '🐙️  Checkout II'
-        id: pull-checkout-ii
+            core.setOutput('ref', context.payload.pull_request.head.ref
+            core.setOutput('repo', context.payload.pull_request.head.repo.full_name)
+      - name: '🐙️  Deploy (Checkout)'
+        id: pull-deploy-checkout
         uses: actions/checkout@v2
         if: github.actor == 'JeromeFitz' || github.actor == 'dependabot' || github.actor == 'dependabot[bot]'
         with:
-          ref: ${{ steps.pull-debug.outputs.ref }}
-          repository: ${{ steps.pull-debug.outputs.repo }}
+          GH_TOKEN: ${{ secrets.GH_DEPLOY_TOKEN }}
+          ref: ${{ steps.pull-deploy-config.outputs.ref }}
+          repository: ${{ steps.pull-deploy-config.outputs.repo }}
           fetch-depth: 1
       - name: '🔺️  Deploy (Preview)'
-        id: pull-deploy
+        id: pull-deploy-preview
         if: github.actor == 'JeromeFitz' || github.actor == 'dependabot' || github.actor == 'dependabot[bot]'
         uses: JeromeFitz/websites/.github/actions/deploy@main
         with:
-          GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_DEPLOY_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
