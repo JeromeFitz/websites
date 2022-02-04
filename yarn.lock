@@ -1149,10 +1149,10 @@
     isomorphic-unfetch "3.1.0"
     plaiceholder "2.2.0"
 
-"@jeromefitz/utils@1.0.5-notion--website-oss.1":
-  version "1.0.5-notion--website-oss.1"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/utils/-/utils-1.0.5-notion--website-oss.1.tgz#b00a96bf762d2445e9dda1395f1f707eddfe5ec1"
-  integrity sha512-35Xf9bg0WhY19k+4FdEqSZUvEFVs3KJi5rFbRWW932qdSGOgDOGzFi/pUewDfyiyx+khZS9wyFXm+8rvBgeo9w==
+"@jeromefitz/utils@2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/utils/-/utils-2.0.0.tgz#72b6b24595c8e10012424541336477b973b32c12"
+  integrity sha512-gUcfb+tf7KMhOEwXL+AY5nZ/yTSg3HaJdkfM/RcHK32iw/bCLdATClxqt+2tunBcV1wkaVFhfrhXXzyEWL122g==
   dependencies:
     lodash "4.17.21"
 
