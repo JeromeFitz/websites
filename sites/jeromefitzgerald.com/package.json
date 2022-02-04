@@ -93,7 +93,7 @@
     "react-use": "17.3.2",
     "sharp": "0.29.3",
     "smoothscroll-polyfill": "0.4.4",
-    "swr": "1.2.0",
+    "swr": "1.2.1",
     "title": "3.4.3",
     "use-sound": "4.0.1",
     "uuid": "8.3.2"
