@@ -44,19 +44,19 @@ jobs:
         with:
           fetch-depth: 10
       - name: '💽️  Init'
-        uses: JeromeFitz/jeromefitzgerald.com/.github/actions/init@main
+        uses: JeromeFitz/websites/.github/actions/init@main
       - name: '🚨️  Lint'
-        uses: JeromeFitz/jeromefitzgerald.com/.github/actions/lint@main
+        uses: JeromeFitz/websites/.github/actions/lint@main
         with:
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
       - name: '🏷️  Release'
-        uses: JeromeFitz/jeromefitzgerald.com/.github/actions/release@main
+        uses: JeromeFitz/websites/.github/actions/release@main
         with:
           GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
       - name: '🔺️  Deploy (Production)'
         if: github.ref == 'refs/heads/main'
-        uses: JeromeFitz/jeromefitzgerald.com/.github/actions/deploy@main
+        uses: JeromeFitz/websites/.github/actions/deploy@main
         with:
           GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
