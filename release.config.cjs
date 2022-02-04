@@ -69,7 +69,7 @@ const releaseConfig = {
   extends: _extends,
   plugins,
   // repositoryUrl: `https://github.com/${name.replace('@', '')}`,
-  repositoryUrl: `https://github.com/jeromefitz/jeromefitzgerald.com`,
+  repositoryUrl: `https://github.com/JeromeFitz/websites`,
   tagFormat: 'website-v${version}',
 }
 
