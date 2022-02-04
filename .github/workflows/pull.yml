@@ -61,7 +61,7 @@ jobs:
         uses: actions/github-script@v3
         with:
           script: |
-            core.setOutput('ref', context.payload.pull_request.head.ref
+            core.setOutput('ref', context.payload.pull_request.head.ref)
             core.setOutput('repo', context.payload.pull_request.head.repo.full_name)
       - name: '🐙️  Deploy (Checkout)'
         id: pull-deploy-checkout
@@ -69,6 +69,7 @@ jobs:
         if: github.actor == 'JeromeFitz' || github.actor == 'dependabot' || github.actor == 'dependabot[bot]'
         with:
           GH_TOKEN: ${{ secrets.GH_DEPLOY_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_DEPLOY_TOKEN }}
           ref: ${{ steps.pull-deploy-config.outputs.ref }}
           repository: ${{ steps.pull-deploy-config.outputs.repo }}
           fetch-depth: 1
@@ -77,7 +78,7 @@ jobs:
         if: github.actor == 'JeromeFitz' || github.actor == 'dependabot' || github.actor == 'dependabot[bot]'
         uses: JeromeFitz/websites/.github/actions/deploy@main
         with:
-          GH_TOKEN: ${{ secrets.GH_DEPLOY_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}

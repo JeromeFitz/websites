@@ -22,8 +22,11 @@ const branch =
     .trim()
 
 function getBranch(branch) {
-  if (_size(branch.split('/')) > 1) {
+  if (_size(branch.split('/')) === 2) {
     return branch.split('/')[1]
+  }
+  if (_size(branch.split('/')) > 2) {
+    return branch.split('/')[_size(branch.split('/') - 1)]
   }
 
   return branch
