@@ -4,6 +4,11 @@ description: 'Deploy to Vercel based to Preview, or Production if `main` branch'
 author: 'JeromeFitz'
 
 inputs:
+  DEPLOY_PR_FROM_FORK:
+    description: ''
+    required: false
+    default: false
+    type: boolean
   PRODUCTION:
     description: ''
     required: true
@@ -41,3 +46,4 @@ runs:
         DELETE_EXISTING_COMMENT: true
         PR_LABELS: false
         PRODUCTION: ${{ inputs.PRODUCTION }}
+        DEPLOY_PR_FROM_FORK: ${{ inputs.DEPLOY_PR_FROM_FORK }}
