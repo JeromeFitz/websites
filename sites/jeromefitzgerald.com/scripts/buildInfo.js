@@ -22,11 +22,7 @@ const branch =
     .trim()
 
 function getBranch(branch) {
-  if (_size(branch.split('/')) > 1) {
-    return branch.split('/')[1]
-  }
-
-  return branch
+  return branch.split('/')[branch.split('/').length - 1]
 }
 
 async function setupBuildInfo() {
@@ -61,8 +57,8 @@ async function setupBuildInfo() {
   const data = {
     branch: getBranch(branch),
     branchFull: branch,
-    // @note(vercel) weird stuff w/ this `heads` refs?heads?
-    isBranchMain: branch === 'main' || branch.includes('heads'),
+    // @note(vercel) weird stuff w/ this `refs/heads/main`
+    isBranchMain: branch === 'main' || branch.includes('main'),
     major,
     minor,
     patch,
