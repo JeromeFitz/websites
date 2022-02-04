@@ -59,28 +59,36 @@ jobs:
           echo "isActorValid: null"
       - name: '🐛️  Debug II'
         id: pull-debug-ii
+        if: github.actor == 'JeromeFitz' || github.actor == 'dependabot' || github.actor == 'dependabot[bot]'
         uses: actions/github-script@v3
         with:
           script: |
             const isPr = [ 'pull_request', 'pull_request_target' ].includes(context.eventName)
             core.setOutput('ref', isPr ? context.payload.pull_request.head.ref : context.ref)
             core.setOutput('repo', isPr ? context.payload.pull_request.head.repo.full_name : context.repo.full_name)
-            const isActorValid = ['jeromefitz','JeromeFitz', 'dependabot', 'dependabot[bot]'].includes(github.actor)
-            core.setOutput('isActorValid', isActorValid)
-            core.setOutput('actor', github.actor)
       - name: '🐛️  Debug III'
         id: pull-debug-iii
+        if: github.actor == 'JeromeFitz' || github.actor == 'dependabot' || github.actor == 'dependabot[bot]'
         shell: bash
         run: |
-          echo "actor:        ${{ steps.pull-debug-ii.outputs.actor }}"
-          echo "isActorValid: ${{ steps.pull-debug-ii.outputs.isActorValid }}"
+          echo "actor:        ${{ github.actor }}"
+          echo "isActorValid: true"
           echo "ref:          ${{ steps.pull-debug-ii.outputs.ref }}"
           echo "repo:         ${{ steps.pull-debug-ii.outputs.repo }}"
-      # - name: '🔺️  Deploy (Preview)'
-      #   uses: JeromeFitz/websites/.github/actions/deploy@main
-      #   with:
-      #     GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
-      #     VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-      #     VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-      #     VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-      #     PRODUCTION: false
+      - name: '🐙️  Checkout II'
+        uses: actions/checkout@v2
+        if: github.actor == 'JeromeFitz' || github.actor == 'dependabot' || github.actor == 'dependabot[bot]'
+        with:
+          ref: ${{ steps.pull-debug-ii.outputs.ref }}
+          repository: ${{ steps.pull-debug-ii.outputs.repo }}
+          fetch-depth: 1
+      - name: '🔺️  Deploy (Preview)'
+        if: github.actor == 'JeromeFitz' || github.actor == 'dependabot' || github.actor == 'dependabot[bot]'
+        uses: JeromeFitz/websites/.github/actions/deploy@dependabot/npm_and_yarn/main/next-seo-5.1.0
+        with:
+          GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          PRODUCTION: false
+          DEPLOY_PR_FROM_FORK: true
