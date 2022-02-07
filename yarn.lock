@@ -1132,10 +1132,10 @@
     smoothscroll-polyfill "0.4.4"
     swr "1.2.1"
 
-"@jeromefitz/git-cz@14.0.10":
-  version "14.0.10"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/git-cz/-/git-cz-14.0.10.tgz#bb1efe1c5a7e8837afbb9cb43444cd5626a683f5"
-  integrity sha512-EnJd8Qhn1CG5tgZkAoJMES0M34CjRgHJtd2yv8YV7OpX0J7U7lbX22/JL+xOuXHo/b8GVqzQ7V1M0x5N7sWVWA==
+"@jeromefitz/git-cz@14.1.0":
+  version "14.1.0"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/git-cz/-/git-cz-14.1.0.tgz#81c69b14b94511bff5abd23e86abfe2a24f77ba8"
+  integrity sha512-Jor9EJ2bayypE3kUfVxHe5UJhDTdIL7X18RmFQ+wFBtm1UQqUyXxdqwCg1xI2v03d4TSwAL8ygqMIBzn2Rd0+A==
   dependencies:
     chalk "5.0.0"
     chalk-pipe "5.1.1"
