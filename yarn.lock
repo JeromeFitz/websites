@@ -1090,10 +1090,10 @@
     pretty-quick "3.1.3"
     typescript "4.5.5"
 
-"@jeromefitz/conventional-gitmoji@2.0.6":
-  version "2.0.6"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/conventional-gitmoji/-/conventional-gitmoji-2.0.6.tgz#0d5f110d634a548e58e8e5017273544f2fa2a3de"
-  integrity sha512-dCOq+MJlbBamw0O6MiE5o/Zao6SMeo3uEXxrSHW2Ok9IvU6jrXYFjL2uB9UXSQETpMCpMj1bBwrk1ClGN2GxBw==
+"@jeromefitz/conventional-gitmoji@2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/conventional-gitmoji/-/conventional-gitmoji-2.1.0.tgz#393b33b7e348614f549bda5bb4de97182e53e1f8"
+  integrity sha512-17MciqOGhyiljA8PzTKnbdxY2Fh86VQnecGxHIn/ph9+7TG1Y1VRftXPf6EeuiSL+Rj55IEsb0LQN+kZDwBZGw==
 
 "@jeromefitz/design-system@2.0.0":
   version "2.0.0"
