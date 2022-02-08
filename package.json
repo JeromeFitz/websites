@@ -52,9 +52,9 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "7.17.0",
-    "@jeromefitz/codestyle": "8.0.10",
+    "@jeromefitz/codestyle": "8.0.11",
     "@jeromefitz/conventional-gitmoji": "2.1.0",
-    "@jeromefitz/git-cz": "14.1.0",
+    "@jeromefitz/git-cz": "14.1.1",
     "@jeromefitz/semantic": "8.1.0",
     "@types/is-ci": "3.0.0",
     "@types/jest": "27.4.0",

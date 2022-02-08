@@ -1,5 +1,4 @@
 import {
-  Breakout,
   Caption,
   Container,
   Section,
@@ -127,11 +126,11 @@ const ImageLead = ({ breakout = true, description, image, images }) => {
   }
 
   // @todo(types)
-  const WrapComponent: any = breakout ? Breakout : Section
+  const WrapComponent: any = breakout ? Container : Section
 
   return (
     <>
-      <WrapComponent>
+      <WrapComponent breakout={breakout}>
         <Container size="2">
           <ImageWithBackgroundBlur
             base64={data?.base64}

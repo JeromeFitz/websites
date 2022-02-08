@@ -2,16 +2,17 @@ import { TagIcon } from '@heroicons/react/outline'
 import {
   Box,
   BoxGrab,
-  Breakout,
   Carousel,
-  CarouselSlideList,
-  CarouselSlide,
+  CarouselArrowButton,
   CarouselNext,
   CarouselPrevious,
-  CarouselArrowButton,
+  CarouselSlide,
+  CarouselSlideList,
+  Container,
   Flex,
   FocusArea,
   Heading,
+  LoadingDots,
   Paragraph,
   Section,
   Text,
@@ -88,13 +89,31 @@ const info = {
     cta: 'Please check back later',
   },
   loading: {
-    text: 'Computers ‘puting....',
+    text: (
+      <>
+        <>Computers ‘puting</>
+        <LoadingDots
+          css={{
+            '& span': { backgroundColor: '$colors$gray1' },
+          }}
+          size="2"
+        >
+          <span />
+          <span />
+          <span />
+        </LoadingDots>
+      </>
+    ),
     cta: '– Cam’ron',
   },
   success: {
     // text: 'Click any link to the left',
     // cta: 'Join on Spotify',
-    text: 'Computers ‘put(ed).',
+    text: (
+      <>
+        <>Computers ‘put(ed).</>
+      </>
+    ),
     cta: '– Cam’ron',
   },
 }
@@ -356,7 +375,7 @@ const TopItem = ({ type }) => {
         },
       }}
     >
-      <Breakout>
+      <Container breakout>
         <Box css={{ position: 'relative' }}>
           <Carousel className={`afc ${type}`}>
             <CarouselSlideList
@@ -599,7 +618,7 @@ const TopItem = ({ type }) => {
                           : info.success.text}
                       </Text>
                       <Text size="3">
-                        {/* <NextLink href="/shows" passHref prefetch={true}>
+                        {/* <NextLink href="/shows" passHref >
                           <Link
                             css={{ display: 'inline-flex', alignItems: 'center' }}
                           > */}
@@ -650,7 +669,7 @@ const TopItem = ({ type }) => {
             </Box>
           </Carousel>
         </Box>
-      </Breakout>
+      </Container>
     </Section>
   )
 }

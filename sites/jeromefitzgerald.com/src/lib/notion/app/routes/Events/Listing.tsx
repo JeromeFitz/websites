@@ -577,7 +577,7 @@ const EventItem = ({ data, keyPrefix }: { data: Item; keyPrefix: string }) => {
             backgroundImage: 'linear-gradient(40deg,#ff80ed,#fec810)',
           }}
         />
-        <NextLink href={href} as={as} passHref prefetch={true}>
+        <NextLink href={href} as={as} passHref>
           <StyledLink>
             <Box
               css={{
