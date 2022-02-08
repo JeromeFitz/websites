@@ -39,7 +39,7 @@
     "---      ": ""
   },
   "dependencies": {
-    "@artsy/fresnel": "3.2.1",
+    "@artsy/fresnel": "3.2.2",
     "@heroicons/react": "1.0.5",
     "@jeromefitz/design-system": "2.0.0",
     "@jeromefitz/notion": "3.0.0",
