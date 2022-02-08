@@ -5,8 +5,9 @@ author: 'JeromeFitz'
 
 inputs:
   GH_TOKEN:
-    descirption: 'Github Personal Access Token'
+    descirption: 'Provide GitHub Token'
     required: true
+    type: string
 
 runs:
   using: 'composite'

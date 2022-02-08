@@ -50,10 +50,10 @@ jobs:
           fetch-depth: 1
       - name: '💽️  Init'
         id: pull-init
-        uses: JeromeFitz/websites/.github/actions/init@main
+        uses: JeromeFitz/websites/.github/actions/init@dependabot/npm_and_yarn/main/next-sitemap-2.1.13
       - name: '🚨️  Lint'
         id: pull-lint
-        uses: JeromeFitz/websites/.github/actions/lint@main
+        uses: JeromeFitz/websites/.github/actions/lint@dependabot/npm_and_yarn/main/next-sitemap-2.1.13
         with:
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
@@ -76,7 +76,7 @@ jobs:
       - name: '🔺️  Deploy (Preview)'
         id: pull-deploy-preview
         if: github.actor == 'JeromeFitz' || github.actor == 'dependabot' || github.actor == 'dependabot[bot]'
-        uses: JeromeFitz/websites/.github/actions/deploy@main
+        uses: JeromeFitz/websites/.github/actions/deploy@dependabot/npm_and_yarn/main/next-sitemap-2.1.13
         with:
           GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
