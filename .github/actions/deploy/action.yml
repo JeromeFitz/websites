@@ -35,7 +35,7 @@ runs:
   steps:
     - name: '🔺️ Deploy'
       id: wf-deploy
-      uses: BetaHuhn/deploy-to-vercel-action@v1
+      uses: JeromeFitz/deploy-to-vercel-action@ci/vercel-deploy-commit-limits
       with:
         GITHUB_TOKEN: ${{ inputs.GH_TOKEN }}
         VERCEL_ORG_ID: ${{ inputs.VERCEL_ORG_ID }}
