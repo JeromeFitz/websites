@@ -38,12 +38,7 @@ const TextAnnotationLink = ({ children, href }) => {
     const link = getNextLink(href)
     if (!!link) {
       return (
-        <NextLink
-          as={link.as.replace('//', '/')}
-          href={link.href}
-          passHref
-          prefetch={true}
-        >
+        <NextLink as={link.as.replace('//', '/')} href={link.href} passHref>
           <Link
             css={{
               display: 'inline-flex',

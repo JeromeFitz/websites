@@ -95,11 +95,7 @@ const PodcastsCard = ({
         }}
       />
 
-      <NextLink
-        href={`/${routeType.toLowerCase()}/${slug}`}
-        passHref
-        prefetch={true}
-      >
+      <NextLink href={`/${routeType.toLowerCase()}/${slug}`} passHref>
         <Card variant="interactive" as="a" css={css_card}>
           <CardImageContainer>
             <ImageBlur
