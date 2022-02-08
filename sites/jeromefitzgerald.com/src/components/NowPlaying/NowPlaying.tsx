@@ -83,7 +83,7 @@ const NowPlaying = () => {
           I listen to a lot of music. I do not think that makes me unique, however, I
           enjoy it all the same. If you’d like to see more of my listening habits
           please check out the{' '}
-          <NextLink href="/music" passHref prefetch={true}>
+          <NextLink href="/music" passHref>
             <Link
               className="font-black _text-black underline-style-solid underline-offset-md underline-thickness-md"
               css={{ fontWeight: '700' }}
@@ -92,7 +92,7 @@ const NowPlaying = () => {
             </Link>
           </NextLink>{' '}
           section. (Though full disclosure, I also like to{' '}
-          <NextLink href="/books" passHref prefetch={true}>
+          <NextLink href="/books" passHref>
             <Link
               className="font-black _text-black underline-style-solid underline-offset-md underline-thickness-md"
               css={{ fontWeight: '700' }}

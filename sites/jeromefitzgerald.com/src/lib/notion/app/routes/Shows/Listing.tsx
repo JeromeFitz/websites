@@ -1,4 +1,4 @@
-import { Breakout, Box, Grid } from '@jeromefitz/design-system/components'
+import { Box, Container, Grid } from '@jeromefitz/design-system/components'
 import type { Show } from '@jeromefitz/notion/schema'
 
 import Card from './Card'
@@ -38,7 +38,7 @@ const ShowsListing = (props) => {
   if (!items) return null
 
   return (
-    <Breakout>
+    <Container breakout>
       <Box css={{ px: '$2', py: '$6' }}>
         <Grid
           css={{
@@ -62,7 +62,7 @@ const ShowsListing = (props) => {
           })}
         </Grid>
       </Box>
-    </Breakout>
+    </Container>
   )
 }
 
