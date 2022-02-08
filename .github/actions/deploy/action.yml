@@ -5,26 +5,30 @@ author: 'JeromeFitz'
 
 inputs:
   DEPLOY_PR_FROM_FORK:
-    description: ''
+    description: 'Flag to allow Vercel to deploy from fork. (Not recommended.)'
     required: false
     default: false
     type: boolean
   PRODUCTION:
-    description: ''
-    required: true
+    description: 'Flag to request Vercel to deploy to Production (true) or Preview (false)'
+    default: false
     type: boolean
   GH_TOKEN:
-    description: ''
+    description: 'Provide GitHub Token for Vercel to connect and verify with.'
     required: true
+    type: string
   VERCEL_ORG_ID:
-    description: ''
+    description: 'Provide Organization ID for Vercel.'
     required: true
+    type: string
   VERCEL_PROJECT_ID:
-    description: ''
+    description: 'Provide Project ID for Vercel.'
     required: true
+    type: string
   VERCEL_TOKEN:
-    description: ''
+    description: 'Provide Token for Vercel.'
     required: true
+    type: string
 
 runs:
   using: 'composite'
@@ -32,11 +36,6 @@ runs:
     - name: '🔺️ Deploy'
       id: wf-deploy
       uses: BetaHuhn/deploy-to-vercel-action@v1
-      env:
-        GH_TOKEN: ${{ inputs.GH_TOKEN }}
-        VERCEL_ORG_ID: ${{ inputs.VERCEL_ORG_ID }}
-        VERCEL_PROJECT_ID: ${{ inputs.VERCEL_PROJECT_ID }}
-        VERCEL_TOKEN: ${{ inputs.VERCEL_TOKEN }}
       with:
         GITHUB_TOKEN: ${{ inputs.GH_TOKEN }}
         VERCEL_ORG_ID: ${{ inputs.VERCEL_ORG_ID }}
