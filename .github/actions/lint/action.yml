@@ -5,11 +5,13 @@ author: 'JeromeFitz'
 
 inputs:
   TURBO_TEAM:
-    description: 'ID for Turbo'
+    description: 'Provide Team ID for Turbo'
     required: true
+    type: string
   TURBO_TOKEN:
-    description: 'ID for Turbo'
+    description: 'Provide Token for Turbo'
     required: true
+    type: string
 
 runs:
   using: 'composite'
