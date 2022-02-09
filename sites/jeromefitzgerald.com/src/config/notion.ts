@@ -91,7 +91,7 @@ const NOTION: DatabaseInfo = {
     slug: 'events',
     //
     //
-    infoType: PROPERTIES.datePublished,
+    infoType: PROPERTIES.dateEvent,
     ttl: getTimeInSeconds(ms('1d')),
   },
   PAGES: {

@@ -10,6 +10,7 @@ import {
   Heading,
   Paragraph,
   Section,
+  Separator,
 } from '@jeromefitz/design-system/components'
 import { styled } from '@jeromefitz/design-system/stitches.config'
 import type { Event as EventProperties } from '@jeromefitz/notion/schema'
@@ -761,6 +762,8 @@ const EventsListing = (props) => {
                 )
               })}
             </Year>
+            <Separator css={{ my: '2rem !important', width: '100% !important' }} />
+            <ContentNodes content={content} images={images} />
           </React.Fragment>
         )
       })}

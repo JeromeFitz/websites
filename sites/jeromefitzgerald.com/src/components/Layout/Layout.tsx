@@ -10,6 +10,7 @@ const { NOTION } = notionConfig
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Layout = ({ id, children, properties, routeType, url }) => {
   const { data: images } = useSWR('images')
+  if (properties === undefined) return null
 
   const {
     isIndexed,
