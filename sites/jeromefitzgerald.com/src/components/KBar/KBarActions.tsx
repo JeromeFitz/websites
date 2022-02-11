@@ -1,4 +1,4 @@
-import { TicketIcon } from '@heroicons/react/outline'
+import { BookOpenIcon, MusicNoteIcon, TicketIcon } from '@heroicons/react/outline'
 import { useToast } from '@jeromefitz/design-system/components'
 import {
   CalendarIcon,
@@ -11,7 +11,8 @@ import {
   Link1Icon,
   ListBulletIcon,
   MoonIcon,
-  Pencil2Icon,
+  // Pencil2Icon,
+  Share1Icon,
   SpeakerModerateIcon,
   SpeakerOffIcon,
   StarIcon,
@@ -25,6 +26,7 @@ import type { Action } from 'kbar'
 import { useTheme } from 'next-themes'
 import { useRouter } from 'next/router'
 import * as React from 'react'
+import { useSound } from 'use-sound'
 
 /**
  * @note ignore this file for CI linting (created on next build)
@@ -35,6 +37,8 @@ import eventsData from '../../../.cache/events.json'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import showsData from '../../../.cache/shows.json'
+
+import { useUI } from '~context/UI'
 
 const showsItems = showsData?.items?.results
 const eventsItems = eventsData?.items?.results
@@ -86,13 +90,14 @@ const KBarActions = () => {
   const router = useRouter()
   const { setTheme } = useTheme()
   const toasts = useToast()
+  const { setAudioDisable, setAudioEnable } = useUI()
 
   const handleToastInfo = (path) => {
     if (toasts && toasts.current) {
       toasts.current.message({
         duration: 2000,
         text: `Route change: ${path}`,
-        type: 'info',
+        type: 'default',
       })
     }
   }
@@ -105,9 +110,23 @@ const KBarActions = () => {
     [setTheme]
   )
 
-  const handleAudioSet = React.useCallback((flag) => {
-    console.dir(`> audio: ${flag}`)
-  }, [])
+  const [playEnableSound] = useSound('/static/audio/enable-sound.mp3', {
+    soundEnabled: true,
+    volume: 0.25,
+  })
+
+  const [playDisableSound] = useSound('/static/audio/disable-sound.mp3', {
+    soundEnabled: true,
+    volume: 0.25,
+  })
+
+  const handleAudioSet = React.useCallback(
+    (flag) => {
+      flag ? playEnableSound() : playDisableSound()
+      flag ? setAudioEnable() : setAudioDisable()
+    },
+    [playDisableSound, playEnableSound, setAudioDisable, setAudioEnable]
+  )
 
   React.useEffect(() => {
     /**
@@ -120,24 +139,44 @@ const KBarActions = () => {
         icon: <HomeIcon />,
         name: 'Home',
         shortcut: ['j', 'h'],
+        subtitle: '‎',
         keywords: 'Dip Set',
         url: '/',
       },
-      {
-        id: 'blog',
-        icon: <Pencil2Icon />,
-        name: 'Blog',
-        shortcut: ['j', 'b'],
-        keywords: 'Byrd Gang',
-        url: '/about',
-      },
+      // {
+      //   id: 'blog',
+      //   icon: <Pencil2Icon />,
+      //   name: 'Blog',
+      //   shortcut: ['j', 'b'],
+      //   keywords: 'Byrd Gang',
+      //   url: '/blog',
+      // },
       {
         id: 'about',
         icon: <IdCardIcon />,
         name: 'About',
         shortcut: ['j', 'a'],
-        keywords: 'Jerome',
+        subtitle: '‎',
+        keywords: 'About Jerome',
         url: '/about',
+      },
+      {
+        id: 'books',
+        icon: <BookOpenIcon className="hi2ri" style={cssIconHeroToRadix} />,
+        name: 'Books',
+        shortcut: ['j', 'b'],
+        subtitle: '‎',
+        keywords: 'books reading',
+        url: '/books',
+      },
+      {
+        id: 'music',
+        icon: <MusicNoteIcon className="hi2ri" style={cssIconHeroToRadix} />,
+        name: 'Music',
+        shortcut: ['j', 'm'],
+        subtitle: '‎',
+        keywords: 'music',
+        url: '/music',
       },
     ]
 
@@ -168,6 +207,7 @@ const KBarActions = () => {
 
       const iso = parseISO(dateEvent?.start)
       const date = format(iso, `EEEE MM/dd hh:mma z`)
+      const dateRoute = format(iso, `yyyy/MM/dd`)
       return {
         id: `kbar-events-${id}`,
         name: title,
@@ -191,8 +231,9 @@ const KBarActions = () => {
         // ),
         keywords: slug.split('-').join(' '),
         perform: () => {
-          console.dir(`> events: ${slug}`)
-          void handleToastInfo(`> events: ${slug}`)
+          const url = `/events/${dateRoute}/${slug}`
+          void handleToastInfo(url)
+          void router.push(url)
         },
         icon: <CalendarIcon />,
         parent: parents.events,
@@ -205,8 +246,9 @@ const KBarActions = () => {
       subtitle: 'Go to listing page for Events',
       keywords: 'view all events',
       perform: () => {
-        console.dir(`> events: /events`)
-        void handleToastInfo(`> events: /events}`)
+        const url = `/events`
+        void handleToastInfo(url)
+        void router.push(url)
       },
       icon: <ListBulletIcon />,
       parent: parents.events,
@@ -218,6 +260,7 @@ const KBarActions = () => {
         name: 'Events',
         shortcut: ['j', 'e'],
         keywords: 'Events',
+        subtitle: '‎',
       },
       /**
        * @hack `subtitle` accepts string not JSX.element
@@ -261,8 +304,9 @@ const KBarActions = () => {
         // ),
         keywords: slug.split('-').join(' '),
         perform: () => {
-          console.dir(`> shows: ${slug}`)
-          void handleToastInfo(`> shows: ${slug}`)
+          const url = `/shows/${slug}`
+          void handleToastInfo(url)
+          void router.push(url)
         },
         icon: <StarIcon />,
         // icon: (
@@ -282,8 +326,9 @@ const KBarActions = () => {
       subtitle: 'Go to listing page for Shows',
       keywords: 'view all shows',
       perform: () => {
-        console.dir(`> shows: /shows`)
-        void handleToastInfo(`> shows: /shows}`)
+        const url = `/shows`
+        void handleToastInfo(url)
+        void router.push(url)
       },
       icon: <ListBulletIcon />,
       parent: parents.shows,
@@ -295,6 +340,7 @@ const KBarActions = () => {
         name: 'Shows',
         shortcut: ['j', 's'],
         keywords: 'Shows',
+        subtitle: '‎',
       },
       /**
        * @hack `subtitle` accepts string not JSX.element
@@ -313,6 +359,7 @@ const KBarActions = () => {
         id: parents.settings,
         name: 'Settings',
         section: sections.other,
+        subtitle: '‎',
         icon: <GearIcon />,
       },
       {
@@ -323,6 +370,7 @@ const KBarActions = () => {
         icon: <SunIcon />,
         parent: parents.settings,
         shortcut: ['t', 'l'],
+        subtitle: '‎',
       },
       {
         id: 'settings-theme-dark',
@@ -332,6 +380,7 @@ const KBarActions = () => {
         icon: <MoonIcon />,
         parent: parents.settings,
         shortcut: ['t', 'd'],
+        subtitle: '‎',
       },
       {
         id: 'settings-audio-on',
@@ -340,6 +389,8 @@ const KBarActions = () => {
         perform: () => handleAudioSet(true),
         icon: <SpeakerModerateIcon />,
         parent: parents.settings,
+        shortcut: ['a', 'e'],
+        subtitle: '‎',
       },
       {
         id: 'settings-audio-off',
@@ -348,6 +399,8 @@ const KBarActions = () => {
         perform: () => handleAudioSet(false),
         icon: <SpeakerOffIcon />,
         parent: parents.settings,
+        shortcut: ['a', 'd'],
+        subtitle: '‎',
       },
     ])
 
@@ -359,7 +412,8 @@ const KBarActions = () => {
         id: parents.social,
         name: 'Social',
         section: sections.other,
-        icon: <CalendarIcon />,
+        icon: <Share1Icon />,
+        subtitle: '‎',
       },
       {
         id: 'social-email',
