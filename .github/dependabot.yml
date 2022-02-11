@@ -18,9 +18,10 @@ updates:
     ignore:
       - dependency-name: '@notionhq/client'
         versions:
-          - '<=1'
+          - '<1'
+      - dependency-name: '@radix-ui/*'
       - dependency-name: '@types/node'
         versions:
-          - '>=13'
+          - '<17'
+      - dependency-name: 'kbar'
       - dependency-name: 'typescript'
-      - dependency-name: '@radix-ui/*'
