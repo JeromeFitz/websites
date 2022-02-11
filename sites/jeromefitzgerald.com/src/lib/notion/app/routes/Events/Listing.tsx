@@ -762,7 +762,7 @@ const EventsListing = (props) => {
                 )
               })}
             </Year>
-            <Separator css={{ my: '2rem !important', width: '100% !important' }} />
+            <Separator decorative margin="my8" size="full" />
             <ContentNodes content={content} images={images} />
           </React.Fragment>
         )
