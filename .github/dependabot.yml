@@ -21,7 +21,5 @@ updates:
           - '<1'
       - dependency-name: '@radix-ui/*'
       - dependency-name: '@types/node'
-        versions:
-          - '<17'
       - dependency-name: 'kbar'
       - dependency-name: 'typescript'
