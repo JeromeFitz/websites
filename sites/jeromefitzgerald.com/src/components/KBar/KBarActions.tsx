@@ -26,22 +26,10 @@ import type { Action } from 'kbar'
 import { useTheme } from 'next-themes'
 import { useRouter } from 'next/router'
 import * as React from 'react'
+import { useEffectOnce } from 'react-use'
 import { useSound } from 'use-sound'
 
-/**
- * @note ignore this file for CI linting (created on next build)
- */
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import eventsData from '../../../.cache/events.json'
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import showsData from '../../../.cache/shows.json'
-
 import { useUI } from '~context/UI'
-
-const showsItems = showsData?.items?.results
-const eventsItems = eventsData?.items?.results
 
 interface IAction extends Action {
   url?: string
@@ -128,7 +116,24 @@ const KBarActions = () => {
     [playDisableSound, playEnableSound, setAudioDisable, setAudioEnable]
   )
 
-  React.useEffect(() => {
+  useEffectOnce(() => {
+    /**
+     * @hack this is just for proof of concept for now
+     */
+    /**
+     * @note ignore this file for CI linting (created on next build)
+     */
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const _e = require('../../../.cache/events.json')
+    const eventsItems = _e?.items?.results
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const _s = require('../../../.cache/shows.json')
+    const showsItems = _s?.items?.results
+
     /**
      * @actions
      * @todo put this _outside_ the component when production time
@@ -201,44 +206,46 @@ const KBarActions = () => {
     /**
      * @events
      */
-    const events = eventsItems.map((item) => {
-      const { id, properties } = item
-      const { dateEvent, slug, title } = properties
+    const events = []
+    !!eventsItems &&
+      eventsItems.map((item) => {
+        const { id, properties } = item
+        const { dateEvent, slug, title } = properties
 
-      const iso = parseISO(dateEvent?.start)
-      const date = format(iso, `EEEE MM/dd hh:mma z`)
-      const dateRoute = format(iso, `yyyy/MM/dd`)
-      return {
-        id: `kbar-events-${id}`,
-        name: title,
-        // subtitle: id,
-        subtitle: date,
-        // subtitle: (
-        //   <React.Fragment key={`kbar-events-${id}`}>
-        //     {rollupShows__Tags.map((tag) => {
-        //       return (
-        //         <Badge
-        //           css={{ mr: '$1' }}
-        //           key={`kbar-events-${id}-badge-${tag}`}
-        //           size="2"
-        //           variant="violet"
-        //         >
-        //           {tag}
-        //         </Badge>
-        //       )
-        //     })}
-        //   </React.Fragment>
-        // ),
-        keywords: slug.split('-').join(' '),
-        perform: () => {
-          const url = `/events/${dateRoute}/${slug}`
-          void handleToastInfo(url)
-          void router.push(url)
-        },
-        icon: <CalendarIcon />,
-        parent: parents.events,
-      }
-    })
+        const iso = parseISO(dateEvent?.start)
+        const date = format(iso, `EEEE MM/dd hh:mma z`)
+        const dateRoute = format(iso, `yyyy/MM/dd`)
+        events.push({
+          id: `kbar-events-${id}`,
+          name: title,
+          // subtitle: id,
+          subtitle: date,
+          // subtitle: (
+          //   <React.Fragment key={`kbar-events-${id}`}>
+          //     {rollupShows__Tags.map((tag) => {
+          //       return (
+          //         <Badge
+          //           css={{ mr: '$1' }}
+          //           key={`kbar-events-${id}-badge-${tag}`}
+          //           size="2"
+          //           variant="violet"
+          //         >
+          //           {tag}
+          //         </Badge>
+          //       )
+          //     })}
+          //   </React.Fragment>
+          // ),
+          keywords: slug.split('-').join(' '),
+          perform: () => {
+            const url = `/events/${dateRoute}/${slug}`
+            void handleToastInfo(url)
+            void router.push(url)
+          },
+          icon: <CalendarIcon />,
+          parent: parents.events,
+        })
+      })
     // @hack(kbar) remember to add the listing itself
     events.push({
       id: `kbar-events-view-all`,
@@ -274,51 +281,53 @@ const KBarActions = () => {
     /**
      * @shows
      */
-    const shows = showsItems.map((item) => {
-      const {
-        id,
-        // icon: { emoji },
-        properties,
-      } = item
-      const { rollupShows__Tags, slug, title } = properties
-      return {
-        id: `kbar-shows-${id}`,
-        name: title,
-        // subtitle: id,
-        subtitle: rollupShows__Tags.join(', '),
-        // subtitle: (
-        //   <React.Fragment key={`kbar-shows-${id}`}>
-        //     {rollupShows__Tags.map((tag) => {
-        //       return (
-        //         <Badge
-        //           css={{ mr: '$1' }}
-        //           key={`kbar-shows-${id}-badge-${tag}`}
-        //           size="2"
-        //           variant="violet"
-        //         >
-        //           {tag}
-        //         </Badge>
-        //       )
-        //     })}
-        //   </React.Fragment>
-        // ),
-        keywords: slug.split('-').join(' '),
-        perform: () => {
-          const url = `/shows/${slug}`
-          void handleToastInfo(url)
-          void router.push(url)
-        },
-        icon: <StarIcon />,
-        // icon: (
-        //   <Text css={{ fontSize: '1.75rem' }}>
-        //     {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-        //     {/* @ts-ignore */}
-        //     <Emoji character={emoji} margin={true} />
-        //   </Text>
-        // ),
-        parent: parents.shows,
-      }
-    })
+    const shows = []
+    !!showsItems &&
+      showsItems.map((item) => {
+        const {
+          id,
+          // icon: { emoji },
+          properties,
+        } = item
+        const { rollupShows__Tags, slug, title } = properties
+        shows.push({
+          id: `kbar-shows-${id}`,
+          name: title,
+          // subtitle: id,
+          subtitle: rollupShows__Tags.join(', '),
+          // subtitle: (
+          //   <React.Fragment key={`kbar-shows-${id}`}>
+          //     {rollupShows__Tags.map((tag) => {
+          //       return (
+          //         <Badge
+          //           css={{ mr: '$1' }}
+          //           key={`kbar-shows-${id}-badge-${tag}`}
+          //           size="2"
+          //           variant="violet"
+          //         >
+          //           {tag}
+          //         </Badge>
+          //       )
+          //     })}
+          //   </React.Fragment>
+          // ),
+          keywords: slug.split('-').join(' '),
+          perform: () => {
+            const url = `/shows/${slug}`
+            void handleToastInfo(url)
+            void router.push(url)
+          },
+          icon: <StarIcon />,
+          // icon: (
+          //   <Text css={{ fontSize: '1.75rem' }}>
+          //     {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+          //     {/* @ts-ignore */}
+          //     <Emoji character={emoji} margin={true} />
+          //   </Text>
+          // ),
+          parent: parents.shows,
+        })
+      })
     // @hack(kbar) remember to add the listing itself
     shows.push({
       id: `kbar-shows-view-all`,
@@ -464,7 +473,7 @@ const KBarActions = () => {
 
     // @refactor(kbar) Change to `useEffectOnce`?
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  })
 
   return null
 }
