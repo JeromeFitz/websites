@@ -1,5 +1,6 @@
 import { BookOpenIcon, MusicNoteIcon, TicketIcon } from '@heroicons/react/outline'
 import { useToast } from '@jeromefitz/design-system/components'
+// import type { Event, Show } from '@jeromefitz/notion/schema'
 import {
   CalendarIcon,
   EnvelopeOpenIcon,
@@ -26,10 +27,11 @@ import type { Action } from 'kbar'
 import { useTheme } from 'next-themes'
 import { useRouter } from 'next/router'
 import * as React from 'react'
-import { useEffectOnce } from 'react-use'
+import useSWRImmutable from 'swr/immutable'
 import { useSound } from 'use-sound'
 
 import { useUI } from '~context/UI'
+import fetcher from '~lib/fetcher'
 
 interface IAction extends Action {
   url?: string
@@ -116,24 +118,21 @@ const KBarActions = () => {
     [playDisableSound, playEnableSound, setAudioDisable, setAudioEnable]
   )
 
-  useEffectOnce(() => {
-    /**
-     * @hack this is just for proof of concept for now
-     */
-    /**
-     * @note ignore this file for CI linting (created on next build)
-     */
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const _e = require('../../../.cache/events.json')
-    const eventsItems = _e?.items?.results
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const _s = require('../../../.cache/shows.json')
-    const showsItems = _s?.items?.results
+  const { data: _e } = useSWRImmutable<any>(
+    [`/api/v1/cms/events`],
+    (url) => fetcher(url),
+    {}
+  )
+  const eventsItems = _e?.items?.results ?? []
 
+  const { data: _s } = useSWRImmutable<any>(
+    [`/api/v1/cms/shows`],
+    (url) => fetcher(url),
+    {}
+  )
+  const showsItems = _s?.items?.results ?? []
+
+  React.useEffect(() => {
     /**
      * @actions
      * @todo put this _outside_ the component when production time
@@ -473,7 +472,7 @@ const KBarActions = () => {
 
     // @refactor(kbar) Change to `useEffectOnce`?
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  })
+  }, [eventsItems, showsItems])
 
   return null
 }
