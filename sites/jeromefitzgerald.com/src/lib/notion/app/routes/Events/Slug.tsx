@@ -130,11 +130,11 @@ const Info = ({ data }) => {
           <ButtonMarketing
             as="a"
             css={{
-              zIndex: '3',
+              justifyContent: 'center',
               my: '$4',
               py: '$4',
               width: '100%',
-              justifyContent: 'center',
+              zIndex: '$3',
             }}
             href={info?.properties?.ticketUrl}
             icon={ArrowRightIcon}

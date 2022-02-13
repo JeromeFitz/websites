@@ -11,6 +11,7 @@ import _isEmpty from 'lodash/isEmpty'
 import useSWR from 'swr'
 
 import fetcher from '~lib/fetcher'
+import { Gradients } from '~styles/const'
 
 import { Image, ImageBlur, ImageContainer } from './ImageLead.styles'
 
@@ -49,23 +50,48 @@ const ImageWithBackgroundBlur = ({
   // console.dir(`priority: ${priority}`)
 
   return (
-    <ImageContainer>
+    <ImageContainer
+      css={{
+        [` & ${ImageBlur}`]: {
+          backgroundImage: Gradients.light.active,
+          [`.${darkTheme} &`]: { backgroundImage: Gradients.dark.active },
+        },
+        // '@hover': {
+        //   [`&:hover ${ImageBlur}`]: {
+        //     backgroundImage: Gradients.pinkHover,
+        //     [`.${darkTheme} &`]: { backgroundImage: Gradients.orangeHover },
+        //   },
+        // },
+      }}
+    >
       <ImageBlur
         css={{
-          // backgroundImage: `url(${base64})`,
-          // backgroundImage: backgroundImageLoaded
-          //   ? `url(${base64}),linear-gradient(45deg,$colors$blackA7,$colors$blackA12)`
-          //   : `linear-gradient(45deg,$colors$blackA7,$colors$blackA12)`,
-          backgroundImage: `linear-gradient(45deg,$colors$blackA7,$colors$blackA12)`,
-          backgroundSize: 'cover',
-          borderRadius: '$4',
-          [`.${darkTheme} &`]: {
-            // backgroundImage: `url(${base64})`,
-            // backgroundImage: backgroundImageLoaded
-            // ? `url(${base64}),linear-gradient(45deg,$colors$whiteA7,$colors$whiteA12)`
-            // : `linear-gradient(45deg,$colors$whiteA7,$colors$whiteA12)`,
-            backgroundImage: `linear-gradient(45deg,$colors$whiteA7,$colors$whiteA12)`,
-          },
+          // // // backgroundImage: `url(${base64})`,
+          // // // backgroundImage: backgroundImageLoaded
+          // // //   ? `url(${base64}),linear-gradient(45deg,$colors$blackA7,$colors$blackA12)`
+          // // //   : `linear-gradient(45deg,$colors$blackA7,$colors$blackA12)`,
+          // // backgroundImage: `linear-gradient(45deg,$colors$blackA7,$colors$blackA12)`,
+          // // backgroundSize: 'cover',
+          // // borderRadius: '$4',
+          // // [`.${darkTheme} &`]: {
+          // //   // backgroundImage: `url(${base64})`,
+          // //   // backgroundImage: backgroundImageLoaded
+          // //   // ? `url(${base64}),linear-gradient(45deg,$colors$whiteA7,$colors$whiteA12)`
+          // //   // : `linear-gradient(45deg,$colors$whiteA7,$colors$whiteA12)`,
+          // //   backgroundImage: `linear-gradient(45deg,$colors$whiteA7,$colors$whiteA12)`,
+          // // },
+          // // boxShadow: Shadows[2],
+          // backgroundImage: Gradients.pink,
+          // boxShadow: Shadows[2],
+          // '&:hover': {
+          //   backgroundImage: Gradients.pinkHover,
+          //   boxShadow: Shadows[3],
+          // },
+          // [`.${darkTheme} &`]: { backgroundImage: Gradients.pink2 },
+          transition: 'all 0.1s ease-in-out',
+          // '@media (prefers-reduced-motion)': {
+          //   transition: 'none',
+          // },
         }}
       />
 

@@ -90,6 +90,7 @@ const global = {
     '--width-10_12': '83.33333333%',
     '--width-11_12': '91.66666667%',
     '--width-full': '100%',
+    '--shadow-color': 'var(--local-shadow-color, 45deg 5% 80%)',
   },
 
   '.hi2ri': {
