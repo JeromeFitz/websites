@@ -6,7 +6,6 @@ import {
 import { darkTheme } from '@jeromefitz/design-system/stitches.config'
 import { ThemeProvider } from 'next-themes'
 
-import { KBarPortal } from '~components/KBar'
 import { MediaContextProvider } from '~context/Media'
 import { ManagedUIContext } from '~context/UI'
 
@@ -23,7 +22,7 @@ const Providers = ({ children }) => {
           <ToastProvider>
             <KBarProvider>
               {children}
-              <KBarPortal />
+
               <Toaster />
             </KBarProvider>
           </ToastProvider>

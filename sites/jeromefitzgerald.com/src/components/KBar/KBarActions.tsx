@@ -1,30 +1,11 @@
-import { BookOpenIcon, MusicNoteIcon, TicketIcon } from '@heroicons/react/outline'
+import { TicketIcon } from '@heroicons/react/outline'
 import { useToast } from '@jeromefitz/design-system/components'
 import { darkTheme } from '@jeromefitz/design-system/stitches.config'
-// import type { Event, Show } from '@jeromefitz/notion/schema'
-import {
-  CalendarIcon,
-  EnvelopeOpenIcon,
-  GearIcon,
-  GitHubLogoIcon,
-  HomeIcon,
-  IdCardIcon,
-  ImageIcon,
-  Link1Icon,
-  ListBulletIcon,
-  MoonIcon,
-  // Pencil2Icon,
-  Share1Icon,
-  SpeakerModerateIcon,
-  SpeakerOffIcon,
-  StarIcon,
-  SunIcon,
-  TwitterLogoIcon,
-} from '@radix-ui/react-icons'
+import { CalendarIcon, ListBulletIcon, StarIcon } from '@radix-ui/react-icons'
 import { parseISO } from 'date-fns'
 import { format } from 'date-fns-tz'
 import { useKBar } from 'kbar'
-import type { Action } from 'kbar'
+import _pick from 'lodash/pick'
 import { useTheme } from 'next-themes'
 import { useRouter } from 'next/router'
 import * as React from 'react'
@@ -33,451 +14,8 @@ import { useSound } from 'use-sound'
 
 import { navigation } from '~config/navigation'
 import { useUI } from '~context/UI'
+import { cssIconHeroToRadix } from '~lib/constants'
 import fetcher from '~lib/fetcher'
-
-interface IAction extends Action {
-  url?: string
-}
-
-// const trimHttp = (str) => {
-//   return str.replace(/https?:\/\//, '')
-// }
-const getAccountHandle = (str) => {
-  // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
-  return `@` + str.split('/')[str.split('/').length - 1]
-}
-
-const cssIconHeroToRadix = {
-  marginTop: '3px',
-}
-
-/**
- * @todo(kbar) put into configuration file
- */
-const meta = {
-  links: {
-    email: 'j@jeromefitzgerald.com',
-    github: 'https://github.com/JeromeFitz',
-    instagram: 'https://instagram.com/JeromeFitz',
-    twitter: 'https://twitter.com/JeromeFitz',
-    linkedIn: 'https://www.linkedin.com/in/jeromefitzgerald',
-  },
-}
-
-const parents = {
-  events: 'events',
-  shows: 'shows',
-  settings: 'settings',
-  social: 'social',
-}
-
-const sections = {
-  settings: '',
-  social: '',
-  other: '',
-}
-
-const KBarActionsOLD = () => {
-  const kbar = useKBar()
-  const router = useRouter()
-  const { setTheme } = useTheme()
-  const toasts = useToast()
-  const { setAudioDisable, setAudioEnable } = useUI()
-
-  const handleToastInfo = (path) => {
-    if (toasts && toasts.current) {
-      toasts.current.message({
-        duration: 2000,
-        text: `Route change: ${path}`,
-        type: 'default',
-      })
-    }
-  }
-
-  const handleThemeSet = React.useCallback(
-    (theme) => {
-      document.documentElement.style.setProperty('color-scheme', theme)
-      setTheme(theme)
-    },
-    [setTheme]
-  )
-
-  const [playEnableSound] = useSound('/static/audio/enable-sound.mp3', {
-    soundEnabled: true,
-    volume: 0.25,
-  })
-
-  const [playDisableSound] = useSound('/static/audio/disable-sound.mp3', {
-    soundEnabled: true,
-    volume: 0.25,
-  })
-
-  const handleAudioSet = React.useCallback(
-    (flag) => {
-      flag ? playEnableSound() : playDisableSound()
-      flag ? setAudioEnable() : setAudioDisable()
-    },
-    [playDisableSound, playEnableSound, setAudioDisable, setAudioEnable]
-  )
-
-  const { data: _e } = useSWRImmutable<any>(
-    [`/api/v1/cms/events`],
-    (url) => fetcher(url),
-    {}
-  )
-  const eventsItems = _e?.items?.results ?? []
-
-  const { data: _s } = useSWRImmutable<any>(
-    [`/api/v1/cms/shows`],
-    (url) => fetcher(url),
-    {}
-  )
-  const showsItems = _s?.items?.results ?? []
-
-  React.useEffect(() => {
-    /**
-     * @actions
-     * @todo put this _outside_ the component when production time
-     */
-    const _actions: IAction[] = [
-      {
-        id: 'home',
-        icon: <HomeIcon />,
-        name: 'Home',
-        shortcut: ['j', 'h'],
-        subtitle: '‎',
-        keywords: 'Dip Set',
-        url: '/',
-      },
-      // {
-      //   id: 'blog',
-      //   icon: <Pencil2Icon />,
-      //   name: 'Blog',
-      //   shortcut: ['j', 'b'],
-      //   keywords: 'Byrd Gang',
-      //   url: '/blog',
-      // },
-      {
-        id: 'about',
-        icon: <IdCardIcon />,
-        name: 'About',
-        shortcut: ['j', 'a'],
-        subtitle: '‎',
-        keywords: 'About Jerome',
-        url: '/about',
-      },
-      {
-        id: 'books',
-        icon: <BookOpenIcon className="hi2ri" style={cssIconHeroToRadix} />,
-        name: 'Books',
-        shortcut: ['j', 'b'],
-        subtitle: '‎',
-        keywords: 'books reading',
-        url: '/books',
-      },
-      {
-        id: 'music',
-        icon: <MusicNoteIcon className="hi2ri" style={cssIconHeroToRadix} />,
-        name: 'Music',
-        shortcut: ['j', 'm'],
-        subtitle: '‎',
-        keywords: 'music',
-        url: '/music',
-      },
-    ]
-
-    /**
-     * @default
-     * @todo make dynamic from existing cache from build
-     *       that gives us the whole sitemap basically
-     */
-    const actions = _actions.map((action) => {
-      return {
-        ...action,
-        perform: () => {
-          if (!!action?.url) {
-            void handleToastInfo(action.url)
-            void router.push(action.url)
-          }
-        },
-      }
-    })
-    kbar.query.registerActions(actions)
-
-    /**
-     * @events
-     */
-    const events = []
-    !!eventsItems &&
-      eventsItems.map((item) => {
-        const { id, properties } = item
-        const { dateEvent, slug, title } = properties
-
-        const iso = parseISO(dateEvent?.start)
-        const date = format(iso, `EEEE MM/dd hh:mma z`)
-        const dateRoute = format(iso, `yyyy/MM/dd`)
-        events.push({
-          id: `kbar-events-${id}`,
-          name: title,
-          // subtitle: id,
-          subtitle: date,
-          // subtitle: (
-          //   <React.Fragment key={`kbar-events-${id}`}>
-          //     {rollupShows__Tags.map((tag) => {
-          //       return (
-          //         <Badge
-          //           css={{ mr: '$1' }}
-          //           key={`kbar-events-${id}-badge-${tag}`}
-          //           size="2"
-          //           variant="violet"
-          //         >
-          //           {tag}
-          //         </Badge>
-          //       )
-          //     })}
-          //   </React.Fragment>
-          // ),
-          keywords: slug.split('-').join(' '),
-          perform: () => {
-            const url = `/events/${dateRoute}/${slug}`
-            void handleToastInfo(url)
-            void router.push(url)
-          },
-          icon: <CalendarIcon />,
-          parent: parents.events,
-        })
-      })
-    // @hack(kbar) remember to add the listing itself
-    events.push({
-      id: `kbar-events-view-all`,
-      name: 'View All Events',
-      subtitle: 'Go to listing page for Events',
-      keywords: 'view all events',
-      perform: () => {
-        const url = `/events`
-        void handleToastInfo(url)
-        void router.push(url)
-      },
-      icon: <ListBulletIcon />,
-      parent: parents.events,
-    })
-    kbar.query.registerActions([
-      {
-        id: parents.events,
-        icon: <CalendarIcon />,
-        name: 'Events',
-        shortcut: ['j', 'e'],
-        keywords: 'Events',
-        subtitle: '‎',
-      },
-      /**
-       * @hack `subtitle` accepts string not JSX.element
-       *        so this is a no no :X
-       */
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      ...events,
-    ])
-
-    /**
-     * @shows
-     */
-    const shows = []
-    !!showsItems &&
-      showsItems.map((item) => {
-        const {
-          id,
-          // icon: { emoji },
-          properties,
-        } = item
-        const { rollupShows__Tags, slug, title } = properties
-        shows.push({
-          id: `kbar-shows-${id}`,
-          name: title,
-          // subtitle: id,
-          subtitle: rollupShows__Tags.join(', '),
-          // subtitle: (
-          //   <React.Fragment key={`kbar-shows-${id}`}>
-          //     {rollupShows__Tags.map((tag) => {
-          //       return (
-          //         <Badge
-          //           css={{ mr: '$1' }}
-          //           key={`kbar-shows-${id}-badge-${tag}`}
-          //           size="2"
-          //           variant="violet"
-          //         >
-          //           {tag}
-          //         </Badge>
-          //       )
-          //     })}
-          //   </React.Fragment>
-          // ),
-          keywords: slug.split('-').join(' '),
-          perform: () => {
-            const url = `/shows/${slug}`
-            void handleToastInfo(url)
-            void router.push(url)
-          },
-          icon: <StarIcon />,
-          // icon: (
-          //   <Text css={{ fontSize: '1.75rem' }}>
-          //     {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-          //     {/* @ts-ignore */}
-          //     <Emoji character={emoji} margin={true} />
-          //   </Text>
-          // ),
-          parent: parents.shows,
-        })
-      })
-    // @hack(kbar) remember to add the listing itself
-    shows.push({
-      id: `kbar-shows-view-all`,
-      name: 'View All Shows',
-      subtitle: 'Go to listing page for Shows',
-      keywords: 'view all shows',
-      perform: () => {
-        const url = `/shows`
-        void handleToastInfo(url)
-        void router.push(url)
-      },
-      icon: <ListBulletIcon />,
-      parent: parents.shows,
-    })
-    kbar.query.registerActions([
-      {
-        id: parents.shows,
-        icon: <TicketIcon className="hi2ri" style={cssIconHeroToRadix} />,
-        name: 'Shows',
-        keywords: 'Shows',
-        shortcut: ['j', 's'],
-        subtitle: '‎',
-      },
-      /**
-       * @hack `subtitle` accepts string not JSX.element
-       *        so this is a no no :X
-       */
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      ...shows,
-    ])
-
-    /**
-     * @settings
-     */
-    kbar.query.registerActions([
-      {
-        id: parents.settings,
-        name: 'Settings',
-        section: sections.other,
-        subtitle: '‎',
-        icon: <GearIcon />,
-      },
-      {
-        id: 'settings-theme-light',
-        name: 'Set Theme to Light',
-        keywords: 'set change theme light',
-        perform: () => handleThemeSet('light'),
-        icon: <SunIcon />,
-        parent: parents.settings,
-        shortcut: ['t', 'l'],
-        subtitle: '‎',
-      },
-      {
-        id: 'settings-theme-dark',
-        name: 'Set Theme to Dark',
-        keywords: 'set change theme dark',
-        perform: () => handleThemeSet('dark'),
-        icon: <MoonIcon />,
-        parent: parents.settings,
-        shortcut: ['t', 'd'],
-        subtitle: '‎',
-      },
-      {
-        id: 'settings-audio-on',
-        name: 'Turn Sound On',
-        keywords: 'turn change audio on',
-        perform: () => handleAudioSet(true),
-        icon: <SpeakerModerateIcon />,
-        parent: parents.settings,
-        shortcut: ['a', 'e'],
-        subtitle: '‎',
-      },
-      {
-        id: 'settings-audio-off',
-        name: 'Turn Sound Off',
-        keywords: 'turn change audio off',
-        perform: () => handleAudioSet(false),
-        icon: <SpeakerOffIcon />,
-        parent: parents.settings,
-        shortcut: ['a', 'd'],
-        subtitle: '‎',
-      },
-    ])
-
-    /**
-     * @social
-     */
-    kbar.query.registerActions([
-      {
-        id: parents.social,
-        name: 'Social',
-        section: sections.other,
-        icon: <Share1Icon />,
-        subtitle: '‎',
-      },
-      {
-        id: 'social-email',
-        name: 'Email',
-        subtitle: meta.links.email,
-        keywords: 'social email',
-        parent: parents.social,
-        perform: () => window.open(meta.links.email),
-        icon: <EnvelopeOpenIcon />,
-      },
-      {
-        id: 'social-github',
-        name: 'GitHub',
-        subtitle: getAccountHandle(meta.links.github),
-        keywords: 'social github',
-        parent: parents.social,
-        perform: () => window.open(meta.links.github, '_blank'),
-        icon: <GitHubLogoIcon />,
-      },
-      {
-        id: 'social-instagram',
-        name: 'Instagram',
-        subtitle: getAccountHandle(meta.links.instagram),
-        keywords: 'social instagram',
-        parent: parents.social,
-        perform: () => window.open(meta.links.instagram, '_blank'),
-        icon: <ImageIcon />,
-      },
-      {
-        id: 'social-linkedIn',
-        name: 'LinkedIn',
-        subtitle: getAccountHandle(meta.links.linkedIn),
-        keywords: 'social linkedIn',
-        parent: parents.social,
-        perform: () => window.open(meta.links.linkedIn, '_blank'),
-        icon: <Link1Icon />,
-      },
-      {
-        id: 'social-twitter',
-        name: 'Twitter',
-        subtitle: getAccountHandle(meta.links.twitter),
-        keywords: 'social twitter',
-        parent: parents.social,
-        perform: () => window.open(meta.links.twitter, '_blank'),
-        icon: <TwitterLogoIcon />,
-      },
-    ])
-
-    // @refactor(kbar) Change to `useEffectOnce`?
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [eventsItems, showsItems])
-
-  return null
-}
 
 const KBarActions = () => {
   const kbar = useKBar()
@@ -504,7 +42,7 @@ const KBarActions = () => {
     if (toasts && toasts.current) {
       toasts.current.message({
         duration: 2000,
-        text: `Debug: ${title}`,
+        text: `Routing to: ${title}`,
         type: 'default',
       })
     }
@@ -522,9 +60,6 @@ const KBarActions = () => {
 
   const handleToggleTheme = React.useCallback(() => {
     const newTheme = theme === 'dark' ? 'light' : 'dark'
-    console.dir(`> handleToggleTheme`)
-    console.dir(`>> theme:     ${theme}`)
-    console.dir(`>> newTheme: ${newTheme}`)
     document.documentElement.classList.toggle(darkTheme.className)
     document.documentElement.classList.toggle('light-theme')
     document.documentElement.style.setProperty('color-scheme', newTheme)
@@ -537,21 +72,37 @@ const KBarActions = () => {
     toggleAudio()
   }, [audio, playDisableSound, playEnableSound, toggleAudio])
 
-  React.useEffect(() => {
+  /**
+   * @note for each picked section move to different useEffect
+   * @refactor create a `type` to filter by instead please
+   */
+  const navigationStatic = _pick(navigation, [
+    'events', // load default incase swr data return breaks
+    'shows', // load default incase swr data return breaks
+    'podcasts',
+    'pages',
+    'social',
+  ])
+  const navigationSettings = _pick(navigation, ['settings'])
+
+  const getRegisterActions = (data) => {
     const registerActions = []
-    Object.keys(navigation).map((k) => {
-      const section = navigation[k]
+    Object.keys(data).map((k) => {
+      const section = data[k]
       if (!section?.active) return null
+      const { items } = section
       const settings = section.settings.dropdown
 
       if (settings.inline) {
-        if (section.items) {
-          section.items.map((item, itemIdx) => {
+        if (items) {
+          // @hack(kbar) next event needs itemIdx for now
+          items.map((item, itemIdx) => {
             registerActions.push({
-              id: `${section.id}-${itemIdx}`,
+              id: `${section.id}-${item.id}`,
               icon: item?.iconKbarOverride ?? item?.icon,
               name: item?.title,
               subtitle: item?.subtitle,
+              // subtitle: `${section.id}-${item.id}`,
               // parent: section.id,
               section:
                 section.id.toLowerCase() === 'events'
@@ -593,13 +144,14 @@ const KBarActions = () => {
           // },
         })
 
-        if (section.items) {
-          section.items.map((item, itemIdx) => {
+        if (items) {
+          items.map((item) => {
             registerActions.push({
-              id: `${section.id}-${itemIdx}`,
+              id: `${section.id}-${item.id}`,
               icon: item?.iconKbarOverride ?? item?.icon,
               name: item?.title,
               subtitle: item?.subtitle,
+              // subtitle: `${section.id}-${item.id}`,
               parent: section.id,
               keywords: item?.keywords,
               shortcut: item?.shortcut,
@@ -627,18 +179,143 @@ const KBarActions = () => {
         }
       }
     })
+    return registerActions
+  }
 
+  React.useEffect(() => {
+    console.dir(`useEffect: navigationStatic`)
+    const registerActions = getRegisterActions(navigationStatic)
     kbar.query.registerActions(registerActions)
-
-    /**
-     * @todo separate out certain registerActions:
-     * - any data backed up by `swr`
-     * - any setting: audio|theme
-     */
+    // @note(hooks) only execute once
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+  React.useEffect(() => {
+    console.dir(`useEffect: navigationSettings`)
+    const registerActions = getRegisterActions(navigationSettings)
+    kbar.query.registerActions(registerActions)
+    // @note(hooks) only execute if audio|theme change
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [audio, theme])
+
+  /**
+   * dynamic: shows
+   */
+  const { data: _s } = useSWRImmutable<any>(
+    [`/api/v1/cms/shows`],
+    (url) => fetcher(url),
+    {}
+  )
+  React.useEffect(() => {
+    // console.dir(`useEffect: _s => `)
+    const items = _s?.items?.results ?? []
+    const data = []
+    !!items &&
+      items.map((item) => {
+        const { properties } = item
+        const { rollupShows__Tags, slug, title } = properties
+        data.push({
+          icon: <StarIcon />,
+          id: slug,
+          keywords: slug.split('-').join(' '),
+          subtitle: rollupShows__Tags.join(', '),
+          // title: `${title} *`,
+          title,
+          type: 'url.internal',
+          url: `/shows/${slug}`,
+        })
+      })
+    // // data.push(navigation.shows.items[3])
+    // console.dir(`navigation.shows.items[3]`)
+    // console.dir(navigation.shows.items[3])
+    data.push({
+      id: 'view-all-shows',
+      title: 'View All',
+      url: '/shows',
+      icon: <ListBulletIcon />,
+      subtitle: 'Go to listing pages for Shows',
+      keywords: 'view all shows',
+      type: 'url.internal',
+    })
+
+    const navigationType = 'shows'
+    const navigationTemp = _pick(navigation, [navigationType])
+    const navigationData = Object.assign(
+      {},
+      {
+        [navigationType]: {
+          ...navigationTemp[navigationType],
+          items: data,
+        },
+      }
+    )
+    const registerActions = getRegisterActions(navigationData)
+    kbar.query.registerActions(registerActions)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [_s])
+
+  /**
+   * dynamic events
+   */
+  const { data: _e } = useSWRImmutable<any>(
+    [`/api/v1/cms/events`],
+    (url) => fetcher(url),
+    {}
+  )
+  React.useEffect(() => {
+    // console.dir(`useEffect: _e => `)
+    const items = _e?.items?.results ?? []
+    const data = []
+    !!items &&
+      items.map((item) => {
+        const { properties } = item
+
+        const { dateEvent, slug, title } = properties
+
+        const iso = parseISO(dateEvent?.start)
+        const date = format(iso, `EEEE MM/dd hh:mma z`)
+        const dateRoute = format(iso, `yyyy/MM/dd`)
+        data.push({
+          icon: <TicketIcon className="hi2ri" style={cssIconHeroToRadix} />,
+          id: slug,
+          keywords: slug.split('-').join(' '),
+          subtitle: date,
+          // title: `${title} *`,
+          title,
+          type: 'url.internal',
+          url: `/events/${dateRoute}/${slug}`,
+        })
+      })
+    // // data.push(navigation.events.items[1])
+    // console.dir(`navigation.events.items[1]`)
+    // console.dir(navigation.events.items[1])
+    data.push({
+      id: 'events',
+      title: 'Events',
+      url: '/events',
+      rightSlot: 'View All',
+      icon: <CalendarIcon />,
+      keywords: 'Events',
+      // subtitle: 'Listing page for all Events',
+      type: 'url.internal',
+    })
+
+    const navigationType = 'events'
+    const navigationTemp = _pick(navigation, [navigationType])
+    const navigationData = Object.assign(
+      {},
+      {
+        [navigationType]: {
+          ...navigationTemp[navigationType],
+          items: data,
+        },
+      }
+    )
+    const registerActions = getRegisterActions(navigationData)
+    kbar.query.registerActions(registerActions)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [_e])
 
   return null
 }
 
-export { KBarActions, KBarActionsOLD }
+export { KBarActions }

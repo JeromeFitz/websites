@@ -33,13 +33,7 @@ import {
 import * as React from 'react'
 
 // import { useUI } from '~context/UI'
-const cssIconHeroToRadix = {
-  marginTop: '1px',
-}
-const cssIconHeroToRadix1 = {
-  marginTop: '1px',
-  width: '1rem',
-}
+import { cssIconHeroToRadix, cssIconHeroToRadix1 } from '~lib/constants'
 
 interface INavigationItem {
   icon?: React.ReactElement
@@ -98,6 +92,7 @@ const navigation: INavigation = {
     },
     items: [
       {
+        id: 'the-playlist',
         title: 'The Playlist',
         titleExtended: 'The Playlist: Kalyani Singh',
         url: '/events/2022/02/25/the-playlist',
@@ -108,10 +103,11 @@ const navigation: INavigation = {
         iconKbarOverride: (
           <MusicNoteIcon className="hi2ri" style={cssIconHeroToRadix} />
         ),
-        subtitle: 'FRI 02/25 09:30PM',
+        subtitle: 'FRI 02/25 09:30PM (default)',
         type: 'url.internal',
       },
       {
+        id: 'events',
         title: 'Events',
         url: '/events',
         rightSlot: 'View All',
@@ -139,6 +135,7 @@ const navigation: INavigation = {
     },
     items: [
       {
+        id: 'alex-o-jerome',
         title: 'Alex O’Jerome',
         url: '/shows/alex-o-jerome',
         icon: <StarIcon />,
@@ -147,6 +144,7 @@ const navigation: INavigation = {
         type: 'url.internal',
       },
       {
+        id: 'jfle',
         title: 'JFLE (Jerome & Jesse LE)',
         url: '/shows/jfle',
         icon: <StarIcon />,
@@ -154,6 +152,7 @@ const navigation: INavigation = {
         type: 'url.internal',
       },
       {
+        id: 'justin-and-jerome-experience',
         title: 'Justin & Jerome Experience',
         url: '/shows/justin-and-jerome-experience',
         separator: true,
@@ -163,6 +162,7 @@ const navigation: INavigation = {
         type: 'url.internal',
       },
       {
+        id: 'view-all-shows',
         title: 'View All',
         url: '/shows',
         icon: <ListBulletIcon />,
@@ -189,6 +189,7 @@ const navigation: INavigation = {
     },
     items: [
       {
+        id: 'knockoffs',
         title: 'Knockoffs',
         url: '/podcasts/knockoffs',
         icon: <MicrophoneIcon className="hi2ri" style={cssIconHeroToRadix1} />,
@@ -199,6 +200,7 @@ const navigation: INavigation = {
         type: 'url.internal',
       },
       {
+        id: 'jer-and-ky-and-guest',
         title: 'tHe Jer Ky BoyZ',
         url: '/podcasts/jer-and-ky-and-guest',
         icon: <MicrophoneIcon className="hi2ri" style={cssIconHeroToRadix1} />,
@@ -231,6 +233,7 @@ const navigation: INavigation = {
     },
     items: [
       {
+        id: 'about',
         title: 'About',
         url: '/about',
         icon: <IdCardIcon />,
@@ -238,6 +241,7 @@ const navigation: INavigation = {
         type: 'url.internal',
       },
       {
+        id: 'books',
         title: 'Books',
         url: '/books',
         icon: <BookOpenIcon className="hi2ri" style={cssIconHeroToRadix1} />,
@@ -248,25 +252,24 @@ const navigation: INavigation = {
         type: 'url.internal',
       },
       {
+        id: 'colophon',
         title: 'Colophon',
         url: '/colophon',
         icon: <InfoCircledIcon />,
         subtitle: '‎',
         type: 'url.internal',
       },
-      // {
-      //   title: 'Contact',
-      //   url: '/contact',
-      // },
       {
-        title: 'Home',
+        id: 'homepage',
+        title: 'Homepage',
         url: '/',
         icon: <HomeIcon />,
         subtitle: '‎',
-        keywords: 'home',
+        keywords: 'home index',
         type: 'url.internal',
       },
       {
+        id: 'music',
         title: 'Music',
         url: '/music',
         icon: <MusicNoteIcon className="hi2ri" style={cssIconHeroToRadix1} />,
@@ -291,6 +294,7 @@ const navigation: INavigation = {
     },
     items: [
       {
+        id: 'email',
         title: 'Email',
         url: 'mailto:j@jeromefitzgerald.com',
         icon: <EnvelopeOpenIcon />,
@@ -299,6 +303,7 @@ const navigation: INavigation = {
         type: 'url.external',
       },
       {
+        id: 'github',
         title: 'GitHub',
         url: 'https://github.com/JeromeFitz',
         icon: <GitHubLogoIcon />,
@@ -308,6 +313,7 @@ const navigation: INavigation = {
         type: 'url.external',
       },
       {
+        id: 'instagarm',
         title: 'Instagram',
         url: 'https://instagram.com/JeromeFitz',
         icon: <ImageIcon />,
@@ -317,6 +323,7 @@ const navigation: INavigation = {
         type: 'url.external',
       },
       {
+        id: 'twitter',
         title: 'Twitter',
         url: 'https://twitter.com/JeromeFitz',
         icon: <TwitterLogoIcon />,
@@ -326,6 +333,7 @@ const navigation: INavigation = {
         type: 'url.external',
       },
       {
+        id: 'linkedin',
         title: 'LinkedIn',
         url: 'https://www.linkedin.com/in/jeromefitzgerald',
         icon: <Link1Icon />,
@@ -349,6 +357,7 @@ const navigation: INavigation = {
     },
     items: [
       {
+        id: 'settings-sound',
         title: 'Toggle Sound',
         url: '/',
         icon: <SpeakerModerateIcon />,
@@ -359,6 +368,7 @@ const navigation: INavigation = {
         type: 'audio',
       },
       {
+        id: 'settings-theme',
         title: 'Toggle Theme',
         url: '/',
         icon: <MoonIcon />,
