@@ -30,6 +30,7 @@ import * as React from 'react'
 import useSWRImmutable from 'swr/immutable'
 import { useSound } from 'use-sound'
 
+import { navigation } from '~config/navigation'
 import { useUI } from '~context/UI'
 import fetcher from '~lib/fetcher'
 
@@ -75,7 +76,7 @@ const sections = {
   other: '',
 }
 
-const KBarActions = () => {
+const KBarActionsOLD = () => {
   const kbar = useKBar()
   const router = useRouter()
   const { setTheme } = useTheme()
@@ -346,8 +347,8 @@ const KBarActions = () => {
         id: parents.shows,
         icon: <TicketIcon className="hi2ri" style={cssIconHeroToRadix} />,
         name: 'Shows',
-        shortcut: ['j', 's'],
         keywords: 'Shows',
+        shortcut: ['j', 's'],
         subtitle: '‎',
       },
       /**
@@ -477,4 +478,109 @@ const KBarActions = () => {
   return null
 }
 
-export { KBarActions }
+const KBarActions = () => {
+  const kbar = useKBar()
+  // const router = useRouter()
+  // const { setTheme } = useTheme()
+  const toasts = useToast()
+
+  // const actions = _actions.map((action) => {
+  //   return {
+  //     ...action,
+  //     perform: () => {
+  //       if (!!action?.url) {
+  //         void handleToastInfo(action.url)
+  //         void router.push(action.url)
+  //       }
+  //     },
+  //   }
+  // })
+
+  const handleToast = (props) => {
+    const { title } = props
+    if (toasts && toasts.current) {
+      toasts.current.message({
+        duration: 2000,
+        text: `Debug: ${title}`,
+        type: 'default',
+      })
+    }
+  }
+
+  React.useEffect(() => {
+    const registerActions = []
+    Object.keys(navigation).map((k) => {
+      const section = navigation[k]
+      if (!section?.active) return null
+      const settings = section.settings.dropdown
+
+      if (settings.inline) {
+        if (section.items) {
+          section.items.map((item, itemIdx) => {
+            registerActions.push({
+              id: `${section.id}-${itemIdx}`,
+              icon: item?.iconKbarOverride ?? item?.icon,
+              name: item?.title,
+              subtitle: item?.subtitle,
+              // parent: section.id,
+              section:
+                section.id.toLowerCase() === 'events'
+                  ? itemIdx === 0
+                    ? 'Next Event'
+                    : 'Routes'
+                  : section.id,
+              keywords: item?.keywords,
+              //
+              perform: () => {
+                void handleToast({ title: `(items) ${item?.title} (${section.id})` })
+              },
+            })
+          })
+        }
+      }
+
+      if (!settings.inline) {
+        registerActions.push({
+          id: section.id,
+          icon: section?.iconKbarOverride ?? section?.icon,
+          keywords: section?.keywords,
+          name: section?.title,
+          subtitle: section?.subtitle,
+          section: ['social', 'settings'].includes(section.id.toLocaleLowerCase())
+            ? 'Social & Settings'
+            : null,
+          // //
+          // perform: () => {
+          //   void handleToast({ title: `(parent) ${section?.title} (${section.id})` })
+          // },
+        })
+
+        if (section.items) {
+          section.items.map((item, itemIdx) => {
+            registerActions.push({
+              id: `${section.id}-${itemIdx}`,
+              icon: item?.iconKbarOverride ?? item?.icon,
+              name: item?.title,
+              subtitle: item?.subtitle,
+              parent: section.id,
+              keywords: item?.keywords,
+              //
+              perform: () => {
+                void handleToast({
+                  title: `(items) ${item?.title} (${section.id})`,
+                })
+              },
+            })
+          })
+        }
+      }
+    })
+
+    kbar.query.registerActions(registerActions)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  return null
+}
+
+export { KBarActions, KBarActionsOLD }

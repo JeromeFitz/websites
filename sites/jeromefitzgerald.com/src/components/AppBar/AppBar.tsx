@@ -47,7 +47,7 @@ import * as Portal from '@radix-ui/react-portal'
 import * as React from 'react'
 // import useSWRImmutable from 'swr/immutable'
 
-import { navigationData, sections } from '~config/navigation'
+import { navigation } from '~config/navigation'
 // import fetcher from '~lib/fetcher'
 import { Shadows } from '~styles/const'
 
@@ -75,7 +75,14 @@ const itemStyles = {
     color: '$colors$violet1',
   },
 }
-
+/**
+ * @hack ts-ignore
+ *
+ * Not sure why all of a sudden this is happening
+ *  on custom `styled` components
+ */
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 // const DropdownMenuItemIndicator = styled(DropdownMenuPrimitive.ItemIndicator, {
 //   position: 'absolute',
 //   left: 0,
@@ -84,6 +91,8 @@ const itemStyles = {
 //   alignItems: 'center',
 //   justifyContent: 'center',
 // })
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const DropdownMenuTriggerItem = styled(DropdownMenuPrimitive.TriggerItem, {
   '&[data-state="open"]': {
     backgroundColor: '$colors$violet4',
@@ -91,10 +100,14 @@ const DropdownMenuTriggerItem = styled(DropdownMenuPrimitive.TriggerItem, {
   },
   ...itemStyles,
 })
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const DropdownMenuArrow = styled(DropdownMenuPrimitive.Arrow, {
   mx: '$3',
   fill: 'white',
 })
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const RightSlot = styled('div', {
   marginLeft: 'auto',
   marginRight: '$1',
@@ -104,32 +117,21 @@ const RightSlot = styled('div', {
   '[data-disabled] &': { color: '$colors$slate8' },
 })
 
-export const DropdownMenuDemo = () => {
+const MenuDesktop = () => {
   return (
     <Box>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <IconButton aria-label="Customise options">
-            {/* <HamburgerMenuIcon /> */}
             <Button css={{ '&:hover': { cursor: 'pointer' } }} size="1">
               <HamburgerMenuIcon />
             </Button>
           </IconButton>
         </DropdownMenuTrigger>
-
         <DropdownMenuContent css={{ pl: '$1' }} alignOffset={-5} sideOffset={6}>
-          {/* <DropdownMenuLabel>Next Show</DropdownMenuLabel>
-          <DropdownMenuCheckboxItem
-            checked={bookmarksChecked}
-            onCheckedChange={setBookmarksChecked}
-          >
-            <DropdownMenuItemIndicator>
-              <CheckIcon />
-            </DropdownMenuItemIndicator>
-            The Playlist <RightSlot>FRI 02/25</RightSlot>
-          </DropdownMenuCheckboxItem> */}
-          {Object.keys(sections).map((k) => {
-            const section = sections[k]
+          {Object.keys(navigation).map((k) => {
+            const section = navigation[k]
+            const { items } = section
             const settings = section.settings.dropdown
 
             return (
@@ -139,8 +141,10 @@ export const DropdownMenuDemo = () => {
                     {settings.label && (
                       <DropdownMenuLabel>{section.title}</DropdownMenuLabel>
                     )}
-                    {!!navigationData[k] &&
-                      navigationData[k].map((item, itemIdx) => {
+                    {!!items &&
+                      items?.map((item, itemIdx) => {
+                        // console.dir(`item:`)
+                        // console.dir(item)
                         return (
                           <React.Fragment key={`dml-${k}-${itemIdx}`}>
                             <DropdownMenuItem>
@@ -172,8 +176,8 @@ export const DropdownMenuDemo = () => {
                         </RightSlot>
                       </DropdownMenuTriggerItem>
                       <DropdownMenuContent alignOffset={-5} sideOffset={6}>
-                        {!!navigationData[k] &&
-                          navigationData[k].map((item, itemIdx) => {
+                        {!!items &&
+                          items.map((item, itemIdx) => {
                             return (
                               <React.Fragment key={`dml-${k}-${itemIdx}`}>
                                 <DropdownMenuItem>
@@ -191,10 +195,6 @@ export const DropdownMenuDemo = () => {
                               </React.Fragment>
                             )
                           })}
-                        {/* <DropdownMenuItem>JerKy BoyZ</DropdownMenuItem> */}
-                        {/* <DropdownMenuItem>Knockoffs</DropdownMenuItem> */}
-                        {/* <DropdownMenuSeparator /> */}
-                        {/* <DropdownMenuItem>View All Podcasts</DropdownMenuItem> */}
                       </DropdownMenuContent>
                     </DropdownMenu>
                   </>
@@ -203,114 +203,6 @@ export const DropdownMenuDemo = () => {
               </React.Fragment>
             )
           })}
-
-          {/* <DropdownMenuCheckboxItem
-            checked={urlsChecked}
-            onCheckedChange={setUrlsChecked}
-          >
-            <DropdownMenuItemIndicator>
-              <CheckIcon />
-            </DropdownMenuItemIndicator>
-            Upcoming Events
-          </DropdownMenuCheckboxItem> */}
-          {/* <DropdownMenuSeparator /> */}
-          {/* <DropdownMenuItem>
-            <Flex css={{ ml: '-1.25rem' }} gap="2">
-              <HomeIcon />
-              Home
-            </Flex>
-          </DropdownMenuItem>
-          <DropdownMenuItem>Books</DropdownMenuItem>
-          <DropdownMenuItem disabled>Music</DropdownMenuItem> */}
-          {/* <DropdownMenu>
-            <DropdownMenuTriggerItem>
-              Podcasts
-              <RightSlot>
-                <ChevronRightIcon />
-              </RightSlot>
-            </DropdownMenuTriggerItem>
-            <DropdownMenuContent alignOffset={-5} sideOffset={6}>
-              <DropdownMenuItem>JerKy BoyZ</DropdownMenuItem>
-              <DropdownMenuItem>Knockoffs</DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>View All Podcasts</DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-          <DropdownMenu>
-            <DropdownMenuTriggerItem>
-              Settings
-              <RightSlot>
-                <ChevronRightIcon />
-              </RightSlot>
-            </DropdownMenuTriggerItem>
-            <DropdownMenuContent alignOffset={-5} sideOffset={6}>
-              <DropdownMenuRadioGroup value={person} onValueChange={setPerson}>
-                <DropdownMenuRadioItem value="light">
-                  <DropdownMenuItemIndicator>
-                    <DotFilledIcon />
-                  </DropdownMenuItemIndicator>
-                  Light Theme
-                </DropdownMenuRadioItem>
-              </DropdownMenuRadioGroup>
-              <DropdownMenuRadioGroup value={person} onValueChange={setPerson}>
-                <DropdownMenuRadioItem value="enable">
-                  <DropdownMenuItemIndicator>
-                    <DotFilledIcon />
-                  </DropdownMenuItemIndicator>
-                  Sound Enabled
-                </DropdownMenuRadioItem>
-              </DropdownMenuRadioGroup>
-            </DropdownMenuContent>
-          </DropdownMenu>
-          <DropdownMenu>
-            <DropdownMenuTriggerItem>
-              Shows
-              <RightSlot>
-                <ChevronRightIcon />
-              </RightSlot>
-            </DropdownMenuTriggerItem>
-            <DropdownMenuContent alignOffset={-5} sideOffset={6}>
-              <DropdownMenuItem>Alex O’Jerome</DropdownMenuItem>
-              <DropdownMenuItem>JFLE (Jerome & Jesse LE)</DropdownMenuItem>
-              <DropdownMenuItem>Justin & Jerome Experience</DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>View All Shows</DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-          <DropdownMenuSeparator />
-          <DropdownMenuLabel>Pages</DropdownMenuLabel>
-          <DropdownMenuRadioGroup value={person} onValueChange={setPerson}>
-            <DropdownMenuRadioItem value="a">
-              <DropdownMenuItemIndicator>
-                <DotFilledIcon />
-              </DropdownMenuItemIndicator>
-              About
-            </DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value="b">
-              <DropdownMenuItemIndicator>
-                <DotFilledIcon />
-              </DropdownMenuItemIndicator>
-              Books
-            </DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value="c">
-              <DropdownMenuItemIndicator>
-                <DotFilledIcon />
-              </DropdownMenuItemIndicator>
-              Colophon
-            </DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value="d">
-              <DropdownMenuItemIndicator>
-                <DotFilledIcon />
-              </DropdownMenuItemIndicator>
-              Home
-            </DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value="d">
-              <DropdownMenuItemIndicator>
-                <DotFilledIcon />
-              </DropdownMenuItemIndicator>
-              Music
-            </DropdownMenuRadioItem>
-          </DropdownMenuRadioGroup> */}
           <DropdownMenuArrow />
         </DropdownMenuContent>
       </DropdownMenu>
@@ -318,25 +210,7 @@ export const DropdownMenuDemo = () => {
   )
 }
 
-const MobileMenu = () => {
-  // const { theme, setTheme } = useTheme()
-  // // const  content = `Toggle Theme to: ${theme === 'light' ? 'Dark' : 'Light'}`
-
-  // const handleThemeSet = React.useCallback(
-  //   (theme) => {
-  //     document.documentElement.style.setProperty('color-scheme', theme)
-  //     setTheme(theme)
-  //   },
-  //   [setTheme]
-  // )
-
-  // const { data: _s } = useSWRImmutable<any>(
-  //   [`/api/v1/cms/shows`],
-  //   (url) => fetcher(url),
-  //   {}
-  // )
-  // const showsItems = _s?.items?.results ?? []
-
+const MenuMobile = () => {
   return (
     <>
       <Sheet>
@@ -357,41 +231,13 @@ const MobileMenu = () => {
             }}
             side="bottom"
           >
-            {/* <Flex direction="column" justify="start" align="start">
-              <Label
-                htmlFor="shows"
-                css={{ fontWeight: 'bold', lineHeight: '35px', marginRight: 15 }}
-              >
-                Shows
-              </Label>
-              <Box
-                as="ul"
-                css={{ m: 0, p: 0, '& li': { listStyleType: 'none', my: '$2' } }}
-                id="shows"
-              >
-                {showsItems.map((item, itemIdx) => {
-                  const {
-                    id,
-                    // icon: { emoji },
-                    properties,
-                  } = item
-                  const { rollupShows__Tags, slug, title } = properties
-                  return (
-                    <Box as="li" css={{}} key={`menu-shows-${itemIdx}`}>
-                      <Text id="message">{title}</Text>
-                    </Box>
-                  )
-                })}
-              </Box>
-            </Flex> */}
-            {/* <Separator margin="my2" size="full" /> */}
-            {Object.keys(sections).map((k) => {
-              const section = sections[k]
+            {Object.keys(navigation).map((k) => {
+              const section = navigation[k]
+              const { items } = section
               const settings = section.settings.sheet
               if (!settings.active) {
                 return null
               }
-              // console.dir(settings)
 
               return (
                 <React.Fragment key={`sheet-${k}`}>
@@ -429,9 +275,9 @@ const MobileMenu = () => {
                         </Box>
                       </Box>
                     )}
-                    {!!navigationData[k] && settings.children && (
+                    {!!items && settings.children && (
                       <Box as="ul" css={{ m: 0, px: '$1' }}>
-                        {navigationData[k].map((item, itemIdx) => {
+                        {items.map((item, itemIdx) => {
                           return (
                             <React.Fragment key={`dml-${k}-${itemIdx}`}>
                               <Box
@@ -613,8 +459,8 @@ const _AppBar = ({}) => {
             direction="column"
             justify="center"
           >
-            <MobileMenu />
-            <DropdownMenuDemo />
+            <MenuMobile />
+            <MenuDesktop />
           </Flex>
         </Flex>
       </Flex>
