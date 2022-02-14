@@ -1771,10 +1771,10 @@
   dependencies:
     "@octokit/openapi-types" "^11.2.0"
 
-"@plaiceholder/next@2.2.0":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@plaiceholder/next/-/next-2.2.0.tgz#e75338ec861cba62713c8876714bd602f0bf7c47"
-  integrity sha512-RRn6nivDVK5ibtcaYX50TClIS6gXVTClRp1PWaZfXvvdowTR+MRKjFSA2K4FAAk0O65pxPYLz1O2VaHiGN/6DA==
+"@plaiceholder/next@2.3.0":
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/@plaiceholder/next/-/next-2.3.0.tgz#e97bf825eb94e4c747153a1cee6ef5de537dd813"
+  integrity sha512-u3yJOxyEMxf70D0HdePLEm9UGrTkGXSfhqY0o2H5GtR37/lcMKZco5saTyLqo6vU6s4s+NgxMnohWOpYFA84oA==
 
 "@polka/url@^1.0.0-next.20":
   version "1.0.0-next.21"
