@@ -1134,10 +1134,10 @@
     github-slugger "1.4.0"
     lodash "4.17.21"
 
-"@jeromefitz/semantic@8.1.0":
-  version "8.1.0"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/semantic/-/semantic-8.1.0.tgz#df10783f0806501f2e22158ea7f8ab81e349e565"
-  integrity sha512-xOhr6zDsFPtIbISwywuPXfR3eGNXliQny1WNGkeWPVpJwuGfzw5Z3vW4GP2dNfn0QOc/j6KQGUByenVYRjdeeg==
+"@jeromefitz/semantic@8.1.1":
+  version "8.1.1"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/semantic/-/semantic-8.1.1.tgz#2ffdc6ca8b107d9c30d9f21bc8e56002a460f1dd"
+  integrity sha512-B6HETvqEfwmo1qLSxHwTeHO6HkNe/s1gVfoZIz3JaohjwBmDBgMSEp969avYggauWjBz0Y0QMfQw5EL9LnZuEQ==
   dependencies:
     "@octokit/core" "3.5.1"
     "@semantic-release/commit-analyzer" "9.0.2"
