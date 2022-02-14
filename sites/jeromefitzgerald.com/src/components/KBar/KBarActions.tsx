@@ -1,5 +1,6 @@
 import { BookOpenIcon, MusicNoteIcon, TicketIcon } from '@heroicons/react/outline'
 import { useToast } from '@jeromefitz/design-system/components'
+import { darkTheme } from '@jeromefitz/design-system/stitches.config'
 // import type { Event, Show } from '@jeromefitz/notion/schema'
 import {
   CalendarIcon,
@@ -480,21 +481,23 @@ const KBarActionsOLD = () => {
 
 const KBarActions = () => {
   const kbar = useKBar()
-  // const router = useRouter()
-  // const { setTheme } = useTheme()
+  const router = useRouter()
+  const { theme, setTheme } = useTheme()
   const toasts = useToast()
+  const { audio, toggleAudio } = useUI()
 
-  // const actions = _actions.map((action) => {
-  //   return {
-  //     ...action,
-  //     perform: () => {
-  //       if (!!action?.url) {
-  //         void handleToastInfo(action.url)
-  //         void router.push(action.url)
-  //       }
-  //     },
-  //   }
-  // })
+  const [playBleep] = useSound('/static/audio/bleep.mp3', {
+    soundEnabled: audio,
+    volume: 0.25,
+  })
+  const [playDisableSound] = useSound('/static/audio/disable-sound.mp3', {
+    soundEnabled: true,
+    volume: 0.25,
+  })
+  const [playEnableSound] = useSound('/static/audio/enable-sound.mp3', {
+    soundEnabled: true,
+    volume: 0.25,
+  })
 
   const handleToast = (props) => {
     const { title } = props
@@ -506,6 +509,33 @@ const KBarActions = () => {
       })
     }
   }
+
+  const handleRouteInternal = (url) => {
+    playBleep()
+    void router.push(url)
+  }
+
+  const handleRouteExternal = (url) => {
+    playBleep()
+    void window.open(url)
+  }
+
+  const handleToggleTheme = React.useCallback(() => {
+    const newTheme = theme === 'dark' ? 'light' : 'dark'
+    console.dir(`> handleToggleTheme`)
+    console.dir(`>> theme:     ${theme}`)
+    console.dir(`>> newTheme: ${newTheme}`)
+    document.documentElement.classList.toggle(darkTheme.className)
+    document.documentElement.classList.toggle('light-theme')
+    document.documentElement.style.setProperty('color-scheme', newTheme)
+    setTheme(newTheme)
+    playBleep()
+  }, [playBleep, setTheme, theme])
+
+  const handleToggleAudio = React.useCallback(() => {
+    audio ? playDisableSound() : playEnableSound()
+    toggleAudio()
+  }, [audio, playDisableSound, playEnableSound, toggleAudio])
 
   React.useEffect(() => {
     const registerActions = []
@@ -530,9 +560,16 @@ const KBarActions = () => {
                     : 'Routes'
                   : section.id,
               keywords: item?.keywords,
+              shortcut: item?.shortcut,
               //
               perform: () => {
                 void handleToast({ title: `(items) ${item?.title} (${section.id})` })
+                if (item?.type === 'url.internal' && !!item.url) {
+                  void handleRouteInternal(item.url)
+                }
+                if (item?.type === 'url.external' && !!item.url) {
+                  void handleRouteExternal(item.url)
+                }
               },
             })
           })
@@ -545,6 +582,7 @@ const KBarActions = () => {
           icon: section?.iconKbarOverride ?? section?.icon,
           keywords: section?.keywords,
           name: section?.title,
+          shortcut: section?.shortcut,
           subtitle: section?.subtitle,
           section: ['social', 'settings'].includes(section.id.toLocaleLowerCase())
             ? 'Social & Settings'
@@ -564,11 +602,25 @@ const KBarActions = () => {
               subtitle: item?.subtitle,
               parent: section.id,
               keywords: item?.keywords,
+              shortcut: item?.shortcut,
               //
               perform: () => {
                 void handleToast({
                   title: `(items) ${item?.title} (${section.id})`,
                 })
+                // @todo turn into function return
+                if (item?.type === 'url.internal' && !!item.url) {
+                  void handleRouteInternal(item.url)
+                }
+                if (item?.type === 'url.external' && !!item.url) {
+                  void handleRouteExternal(item.url)
+                }
+                if (item?.type === 'audio') {
+                  void handleToggleAudio()
+                }
+                if (item?.type === 'theme') {
+                  void handleToggleTheme()
+                }
               },
             })
           })
@@ -577,8 +629,14 @@ const KBarActions = () => {
     })
 
     kbar.query.registerActions(registerActions)
+
+    /**
+     * @todo separate out certain registerActions:
+     * - any data backed up by `swr`
+     * - any setting: audio|theme
+     */
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [audio, theme])
 
   return null
 }

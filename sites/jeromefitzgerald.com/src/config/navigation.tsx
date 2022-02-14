@@ -57,6 +57,7 @@ interface INavigationItem {
   title: string
   titleExtended?: string
   url?: string
+  type: 'url.internal' | 'url.external' | 'audio' | 'theme'
 }
 
 interface INavigation {
@@ -108,6 +109,7 @@ const navigation: INavigation = {
           <MusicNoteIcon className="hi2ri" style={cssIconHeroToRadix} />
         ),
         subtitle: 'FRI 02/25 09:30PM',
+        type: 'url.internal',
       },
       {
         title: 'Events',
@@ -119,6 +121,7 @@ const navigation: INavigation = {
         ),
         keywords: 'Events',
         subtitle: 'Listing page for all Events',
+        type: 'url.internal',
       },
     ],
   },
@@ -141,12 +144,14 @@ const navigation: INavigation = {
         icon: <StarIcon />,
         subtitle: '(improv) The Vomit Twinz',
         keywords: 'AOJ',
+        type: 'url.internal',
       },
       {
         title: 'JFLE (Jerome & Jesse LE)',
         url: '/shows/jfle',
         icon: <StarIcon />,
         subtitle: '(sketch, musical)',
+        type: 'url.internal',
       },
       {
         title: 'Justin & Jerome Experience',
@@ -155,6 +160,7 @@ const navigation: INavigation = {
         icon: <StarIcon />,
         subtitle: '(sketch) with Aaron Tarnow',
         keywords: 'JJE',
+        type: 'url.internal',
       },
       {
         title: 'View All',
@@ -162,6 +168,7 @@ const navigation: INavigation = {
         icon: <ListBulletIcon />,
         subtitle: 'Go to listing pages for Shows',
         keywords: 'view all shows',
+        type: 'url.internal',
       },
     ],
   },
@@ -189,6 +196,7 @@ const navigation: INavigation = {
           <MicrophoneIcon className="hi2ri" style={cssIconHeroToRadix} />
         ),
         subtitle: '‎',
+        type: 'url.internal',
       },
       {
         title: 'tHe Jer Ky BoyZ',
@@ -199,12 +207,14 @@ const navigation: INavigation = {
         ),
         separator: true,
         subtitle: '‎',
+        type: 'url.internal',
       },
       {
         title: 'View All',
         url: '/podcasts',
         icon: <ListBulletIcon />,
         subtitle: 'Listing page for all Podcasts',
+        type: 'url.internal',
       },
     ],
   },
@@ -225,6 +235,7 @@ const navigation: INavigation = {
         url: '/about',
         icon: <IdCardIcon />,
         subtitle: '‎',
+        type: 'url.internal',
       },
       {
         title: 'Books',
@@ -234,12 +245,14 @@ const navigation: INavigation = {
           <BookOpenIcon className="hi2ri" style={cssIconHeroToRadix} />
         ),
         subtitle: '‎',
+        type: 'url.internal',
       },
       {
         title: 'Colophon',
         url: '/colophon',
         icon: <InfoCircledIcon />,
         subtitle: '‎',
+        type: 'url.internal',
       },
       // {
       //   title: 'Contact',
@@ -251,6 +264,7 @@ const navigation: INavigation = {
         icon: <HomeIcon />,
         subtitle: '‎',
         keywords: 'home',
+        type: 'url.internal',
       },
       {
         title: 'Music',
@@ -260,6 +274,7 @@ const navigation: INavigation = {
           <MusicNoteIcon className="hi2ri" style={cssIconHeroToRadix} />
         ),
         subtitle: '‎',
+        type: 'url.internal',
       },
     ],
   },
@@ -277,10 +292,11 @@ const navigation: INavigation = {
     items: [
       {
         title: 'Email',
-        url: 'j@jeromefitzgerald.com',
+        url: 'mailto:j@jeromefitzgerald.com',
         icon: <EnvelopeOpenIcon />,
         subtitle: 'j [at] jeromefitzgerald.com',
         keywords: 'social email mail',
+        type: 'url.external',
       },
       {
         title: 'GitHub',
@@ -289,6 +305,7 @@ const navigation: INavigation = {
         rightSlot: <ExternalLinkIcon />,
         subtitle: '@JeromeFitz',
         keywords: 'social github gh git',
+        type: 'url.external',
       },
       {
         title: 'Instagram',
@@ -297,6 +314,7 @@ const navigation: INavigation = {
         rightSlot: <ExternalLinkIcon />,
         subtitle: '@JeromeFitz',
         keywords: 'social instagram ig',
+        type: 'url.external',
       },
       {
         title: 'Twitter',
@@ -305,6 +323,7 @@ const navigation: INavigation = {
         rightSlot: <ExternalLinkIcon />,
         subtitle: '@JeromeFitz',
         keywords: 'social twitter',
+        type: 'url.external',
       },
       {
         title: 'LinkedIn',
@@ -313,6 +332,7 @@ const navigation: INavigation = {
         rightSlot: <ExternalLinkIcon />,
         subtitle: '@jeromefitzgerald',
         keywords: 'social linkedin',
+        type: 'url.external',
       },
     ],
   },
@@ -336,6 +356,7 @@ const navigation: INavigation = {
         keywords: 'Sound Off On',
         shortcut: ['t', 'a'],
         subtitle: '‎',
+        type: 'audio',
       },
       {
         title: 'Toggle Theme',
@@ -345,6 +366,7 @@ const navigation: INavigation = {
         keywords: 'Theme Light Dark Off On',
         shortcut: ['t', 't'],
         subtitle: '‎',
+        type: 'theme',
       },
     ],
   },

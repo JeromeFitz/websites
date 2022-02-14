@@ -48,6 +48,7 @@ import * as React from 'react'
 // import useSWRImmutable from 'swr/immutable'
 
 import { navigation } from '~config/navigation'
+import { Media } from '~context/Media'
 // import fetcher from '~lib/fetcher'
 import { Shadows } from '~styles/const'
 
@@ -459,8 +460,12 @@ const _AppBar = ({}) => {
             direction="column"
             justify="center"
           >
-            <MenuMobile />
-            <MenuDesktop />
+            <Media at="xs">
+              <MenuMobile />
+            </Media>
+            <Media greaterThan="xs">
+              <MenuDesktop />
+            </Media>
           </Flex>
         </Flex>
       </Flex>
