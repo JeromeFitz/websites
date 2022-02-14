@@ -1,7 +1,13 @@
 import { TicketIcon } from '@heroicons/react/outline'
 import { useToast } from '@jeromefitz/design-system/components'
 import { darkTheme } from '@jeromefitz/design-system/stitches.config'
-import { CalendarIcon, ListBulletIcon, StarIcon } from '@radix-ui/react-icons'
+import {
+  MoonIcon,
+  SpeakerModerateIcon,
+  SpeakerOffIcon,
+  StarIcon,
+  SunIcon,
+} from '@radix-ui/react-icons'
 import { parseISO } from 'date-fns'
 import { format } from 'date-fns-tz'
 import { useKBar } from 'kbar'
@@ -82,8 +88,9 @@ const KBarActions = () => {
     'podcasts',
     'pages',
     'social',
+    'settings',
   ])
-  const navigationSettings = _pick(navigation, ['settings'])
+  // const navigationSettings = _pick(navigation, ['settings'])
 
   const getRegisterActions = (data) => {
     const registerActions = []
@@ -183,15 +190,52 @@ const KBarActions = () => {
   }
 
   React.useEffect(() => {
-    console.dir(`useEffect: navigationStatic`)
+    // console.dir(`useEffect: navigationStatic`)
     const registerActions = getRegisterActions(navigationStatic)
     kbar.query.registerActions(registerActions)
     // @note(hooks) only execute once
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   React.useEffect(() => {
-    console.dir(`useEffect: navigationSettings`)
-    const registerActions = getRegisterActions(navigationSettings)
+    // console.dir(`useEffect: navigationSettings`)
+    // console.dir(`audio: ${audio}`)
+    // console.dir(`theme: ${theme}`)
+    // console.dir(navigationSettings)
+
+    const data = []
+    data.push({
+      id: 'settings-sound',
+      title: 'Toggle Sound',
+      url: '/',
+      icon: audio ? <SpeakerOffIcon /> : <SpeakerModerateIcon />,
+      keywords: 'Sound Off On',
+      shortcut: ['t', 'a'],
+      subtitle: '‎',
+      type: 'audio',
+    })
+    data.push({
+      id: 'settings-theme',
+      title: 'Toggle Theme',
+      url: '/',
+      icon: theme === 'light' ? <MoonIcon /> : <SunIcon />,
+      keywords: 'Theme Light Dark Off On',
+      shortcut: ['t', 't'],
+      subtitle: '‎',
+      type: 'theme',
+    })
+
+    const navigationType = 'settings'
+    const navigationTemp = _pick(navigation, [navigationType])
+    const navigationData = Object.assign(
+      {},
+      {
+        [navigationType]: {
+          ...navigationTemp[navigationType],
+          items: data,
+        },
+      }
+    )
+    const registerActions = getRegisterActions(navigationData)
     kbar.query.registerActions(registerActions)
     // @note(hooks) only execute if audio|theme change
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -224,18 +268,18 @@ const KBarActions = () => {
           url: `/shows/${slug}`,
         })
       })
-    // // data.push(navigation.shows.items[3])
+    data.push(navigation.shows.items[3])
     // console.dir(`navigation.shows.items[3]`)
     // console.dir(navigation.shows.items[3])
-    data.push({
-      id: 'view-all-shows',
-      title: 'View All',
-      url: '/shows',
-      icon: <ListBulletIcon />,
-      subtitle: 'Go to listing pages for Shows',
-      keywords: 'view all shows',
-      type: 'url.internal',
-    })
+    // data.push({
+    //   id: 'view-all-shows',
+    //   title: 'View All',
+    //   url: '/shows',
+    //   icon: <ListBulletIcon />,
+    //   subtitle: 'Go to listing pages for Shows',
+    //   keywords: 'view all shows',
+    //   type: 'url.internal',
+    // })
 
     const navigationType = 'shows'
     const navigationTemp = _pick(navigation, [navigationType])
@@ -285,19 +329,19 @@ const KBarActions = () => {
           url: `/events/${dateRoute}/${slug}`,
         })
       })
-    // // data.push(navigation.events.items[1])
+    data.push(navigation.events.items[1])
     // console.dir(`navigation.events.items[1]`)
     // console.dir(navigation.events.items[1])
-    data.push({
-      id: 'events',
-      title: 'Events',
-      url: '/events',
-      rightSlot: 'View All',
-      icon: <CalendarIcon />,
-      keywords: 'Events',
-      // subtitle: 'Listing page for all Events',
-      type: 'url.internal',
-    })
+    // data.push({
+    //   id: 'events',
+    //   title: 'Events',
+    //   url: '/events',
+    //   rightSlot: 'View All',
+    //   icon: <CalendarIcon />,
+    //   keywords: 'Events',
+    //   // subtitle: 'Listing page for all Events',
+    //   type: 'url.internal',
+    // })
 
     const navigationType = 'events'
     const navigationTemp = _pick(navigation, [navigationType])
