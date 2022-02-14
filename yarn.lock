@@ -9,10 +9,10 @@
   dependencies:
     "@jridgewell/trace-mapping" "^0.3.0"
 
-"@artsy/fresnel@3.2.2":
-  version "3.2.2"
-  resolved "https://registry.yarnpkg.com/@artsy/fresnel/-/fresnel-3.2.2.tgz#09958a62434dad1368829f8a4235f6c4f27d6686"
-  integrity sha512-UN3bFVaQD5FsvtiYDHbrU0/Vo82ynFKVg6SKCd00Xp5GGWsA3hTDN5S3ZIpPxMGsSF9s3exDs38CnAX0cLC09w==
+"@artsy/fresnel@3.3.0":
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/@artsy/fresnel/-/fresnel-3.3.0.tgz#1a89b2e053611d8a040015b1eeab12ce358411ba"
+  integrity sha512-7SwkDAuji0XutpIF/gLcdWNKnR58gU2Jl4E/2ypkgpq3xu7hr8JXMeGr3RbkZU2YStw/y7M1zOmuuYLO71nUng==
 
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.12.13", "@babel/code-frame@^7.16.7":
   version "7.16.7"
@@ -1145,10 +1145,10 @@
   dependencies:
     "@octokit/openapi-types" "^11.2.0"
 
-"@plaiceholder/next@2.2.0":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@plaiceholder/next/-/next-2.2.0.tgz#e75338ec861cba62713c8876714bd602f0bf7c47"
-  integrity sha512-RRn6nivDVK5ibtcaYX50TClIS6gXVTClRp1PWaZfXvvdowTR+MRKjFSA2K4FAAk0O65pxPYLz1O2VaHiGN/6DA==
+"@plaiceholder/next@2.3.0":
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/@plaiceholder/next/-/next-2.3.0.tgz#e97bf825eb94e4c747153a1cee6ef5de537dd813"
+  integrity sha512-u3yJOxyEMxf70D0HdePLEm9UGrTkGXSfhqY0o2H5GtR37/lcMKZco5saTyLqo6vU6s4s+NgxMnohWOpYFA84oA==
 
 "@polka/url@^1.0.0-next.20":
   version "1.0.0-next.21"
@@ -4598,10 +4598,10 @@ fastq@^1.6.0:
   dependencies:
     reusify "^1.0.4"
 
-fathom-client@3.4.0:
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/fathom-client/-/fathom-client-3.4.0.tgz#424b6732d035b68fa1139f0317d10fd4106dc75f"
-  integrity sha512-9ZgVLSP5GLXrIOLqY2ipar2Pw2/Dw6YNsqix9SbbrK9XpFA318VYf0GeKUBqZQQM+z7fbyDTWkBjl+UMe+eQwA==
+fathom-client@3.4.1:
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/fathom-client/-/fathom-client-3.4.1.tgz#b50fcb0381b846d3dcf5af0f81ea60a8e5675bcf"
+  integrity sha512-iQFKx9B9RDeGLzgNqsaXWg3Fvu7yfq1Z8GjpAG3DP8IoGoPRWOOktpM7DUKiUzoE3d37hdvDQvkqUHfNzVwimg==
 
 fb-watchman@^2.0.0:
   version "2.0.1"
@@ -7462,7 +7462,7 @@ node-fetch@2.6.2:
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.2.tgz#986996818b73785e47b1965cc34eb093a1d464d0"
   integrity sha512-aLoxToI6RfZ+0NOjmWAgn9+LEd30YCkJKFSyWacNZdEKTit/ZMcKjGkTRo8uWEsnIb/hfKecNPEbln02PdWbcA==
 
-node-fetch@^2.6.1, node-fetch@^2.6.2, node-fetch@^2.6.7:
+node-fetch@2.6.7, node-fetch@^2.6.1, node-fetch@^2.6.2, node-fetch@^2.6.7:
   version "2.6.7"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.7.tgz#24de9fba827e3b4ae44dc8b20256a379160052ad"
   integrity sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==
@@ -8196,6 +8196,16 @@ plaiceholder@2.2.0:
     image-size "1.0.0"
     node-cache "5.1.2"
     node-fetch "2.6.2"
+
+plaiceholder@2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/plaiceholder/-/plaiceholder-2.3.0.tgz#741974b8a55d3816ac9ec49c20fc3503bb598396"
+  integrity sha512-wy9UzjfZiDjk+QU8S5S30+AKnL4+hNtqELtTk0JD+4kCwkq0M7Po0YG1CU4E83WykW7f/ssVmEJq3hb3ZNqkbA==
+  dependencies:
+    blurhash "1.1.4"
+    image-size "1.0.0"
+    node-cache "5.1.2"
+    node-fetch "2.6.7"
 
 pluralize@8.0.0, pluralize@^8.0.0:
   version "8.0.0"
@@ -9826,6 +9836,16 @@ title@3.4.3:
   version "3.4.3"
   resolved "https://registry.yarnpkg.com/title/-/title-3.4.3.tgz#76ef6b398310a7814120634620e47849481485d3"
   integrity sha512-h7KKI5jNaAjGtym8ukn4IrIF3Uae19rlhGmpMst/mB7Ipi/vkNEJkeNfDJwUXi0h+AdGmldcUYQnO+9XMcunjg==
+  dependencies:
+    arg "1.0.0"
+    chalk "2.3.0"
+    clipboardy "1.2.2"
+    titleize "1.0.0"
+
+title@3.4.4:
+  version "3.4.4"
+  resolved "https://registry.yarnpkg.com/title/-/title-3.4.4.tgz#5c0ab11fd69643bc05dc006bba52aaf5c1630f5e"
+  integrity sha512-ViLJMyg5TFwWQ7Aqrs3e0IPINA99++cOLzQFIuBw6rKPhn8Cz7J7sdsag0BQPCf4ip7bHY1/docykbQe2R4N6Q==
   dependencies:
     arg "1.0.0"
     chalk "2.3.0"
