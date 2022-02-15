@@ -71,7 +71,7 @@ const StyledCloseButton = styled(DialogClose, {
   zIndex: '9999',
 })
 const StyledLink = styled('a', Flex, {
-  py: '$2',
+  py: '$1',
   textDecoration: 'none',
   width: '100%',
   '& span, & svg': {
@@ -260,8 +260,8 @@ const MenuMobile = () => {
                             as="li"
                             css={{
                               listStyleType: 'none',
-                              // my: '$1',
-                              // py: '$1'
+                              my: '0',
+                              py: '$1',
                             }}
                           >
                             <Flex align="center" justify="start" gap="2">
@@ -294,8 +294,8 @@ const MenuMobile = () => {
                                     as="li"
                                     css={{
                                       listStyleType: 'none',
-                                      // my: '$1',
-                                      // py: '$1',
+                                      my: '0',
+                                      py: '$1',
                                     }}
                                   >
                                     <Flex align="center" justify="start" gap="2">
@@ -359,8 +359,8 @@ const MenuMobile = () => {
                                     as="li"
                                     css={{
                                       listStyleType: 'none',
-                                      // my: '$1',
-                                      // py: '$1',
+                                      my: '0',
+                                      py: '$1',
                                     }}
                                   >
                                     <Flex align="center" justify="start" gap="2">
@@ -416,7 +416,11 @@ const MenuMobile = () => {
                               <React.Fragment key={`dml-${k}-${itemIdx}`}>
                                 <Box
                                   as="li"
-                                  css={{ listStyleType: 'none', my: '$1', py: '$1' }}
+                                  css={{
+                                    listStyleType: 'none',
+                                    my: '0',
+                                    py: '$1',
+                                  }}
                                 >
                                   <Flex align="center" justify="start" gap="2">
                                     <NextLink href={item.url} passHref>
