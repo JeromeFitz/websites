@@ -1,60 +1,75 @@
-# `jeromefitzgerald.com`
-
-📝️ Note: This README is in-progress.
-
-- [`jeromefitzgerald.com`](https://jeromefitzgerald.com)
+# jeromefitzgerald.com
 
 This website utilizes Notion as its CMS, and its intent is to keep up-to-date with React and for me to proof of concept toolings and ideas.
 
-## Uses
+Oh, and to get people to come to comedy shows. 🤣️
 
-### Design System
+## Highlights
 
-- [`@jeromefitz/design-system`](https://github.com/JeromeFitz/packages/tree/main/packages/design-system)
+Further breakdown from the root `README`:
+
+- **CMS**: Notion w/ [`@jeromefitz/notion`](https://github.com/JeromeFitz/packages/tree/main/packages/notion)
+- **Design System**: [`@jeromefitz/design-system`](https://github.com/JeromeFitz/packages/tree/main/packages/design-system)
   - `stitches`
   - `radix-ui`
-
-### Fathom
-
-📈️ Website analytics that are respectful of privacy laws.
-
-- [`usefathom.com`](https://usefathom.com/ref/GKTEFP)
+- **Analytics**: [Fathom](https://usefathom.com/ref/GKTEFP)
   - Note: This is a referral code.
-
-### Next
-
-🔺️ The React Framework for Production
-
-Uses:
-
-- `next-seo`
-- `next-sitemap`
-- `next-themes`
-- `plaiceholder`
-- `swr`
-- `>` “...and more!”
+- **Packages**:
+  - `date-fns`
+  - `kbar`
+  - `lodash`
+  - `next-seo`
+  - `next-sitemap`
+  - `next-themes`
+  - `next-transpile-modules`
+  - `plaiceholder`
+  - `swr`
+  - `>` “...and more!”
 
 ### Notion
 
-🗃️ One workspace. Every team.
+This is probably why you are here. I am still in the midst of organizing the documentation for `@jeromefitz/notion` which is a Notion API Wrapper that assists with Route Management within `next`.
 
-- [`notion.so`](https://www.notion.so)
-  - Note: This is not a referral code.
+#### Configuration
 
-CMS through:
+- `./src/config/notion.ts`
+  - `PAGES__HOMEPAGE`: Currently need to hard-code the `slug` for the hompage of your app
+  - `PAGES`: Currently need to hard-code which `PAGES` you want `@jeromefitz/notion` to query against when generating SSG via `next`
+  - `NOTION`: This holds all of your Notion Database Connection Information and is the setup you need to do to interfac with `@jeromefitz/notion`. For each Database Type (Notion) aka Route Type (Next):
+    - `active`:
+    - `database_id`: Notion UUID
+    - `dataTypes`: `'LISTING' | 'LISTING_BY_DATE' | 'SLUG' | 'SLUG_BY_ROUTE'`
+    - `hasChild`: Does this route have a route underneath it? `PODCASTS => EPISODES`
+    - `name`
+    - `page_id__seo`: Notion Page UUID from specific Data Item from `SEO` Database
+    - `routeMeta`: Does the `next` route contain meta that is useful to Notion? (`blog|events|podcasts`)
+    - `routeType`: What is the `routeType` called in `next` (`/shows`)
+    - `slug`: Very similar to `routeType`, this matches the `slug` or `Slug` in Notion. (Please note: This _does not_ attempt to discern `slugs` from Notion Titles, this is a specific field you set in Notion.)
+    - `infoType`: Is there a specific field that informs what type this is for Notion Querying purposes? (`EVENTS => dateEvent`, `BLOG => datePublished`)
+    - `ttl`: How long should the cache be set for
 
-- [`@jeromefitz/notion`](https://github.com/JeromeFitz/packages/tree/main/packages/notion)
+#### Localized Functions
 
-### Vercel
+- `getCatchAll`: This receives values from `next` to determine what the route structure is so it can query:
+- `getStaticPathsCatchAll`: Custom function to generate paths based on `next` `[...catchAll]` routing data
+  - `getStaticPathsDefault`: Custom function to generate paths from CMS data
 
-🔺️ Develop. Preview. Ship.
+#### Interfaces With
 
-- [`vercel.com`](https://vercel.com)
-  - Note: This is not a referral code.
+- `notion.custom.getPathVariables`: Determine the query structure based on `next` routing to get content from.
+  - `Cache (JSON => Redis) => Notion => Fallback (404)`
+- `notion.custom.getInfoType`: Assist function to generate links for `next` routing strategy
+
+### Caching
+
+Two forms of caching at the moment:
+
+- Localized `json` generated during build
+- Edge Key Value Storage via `Upstash`
 
 ## Disclaimer
 
-Let’s get this out of the way: Most everything written here could be vastly improved upon.
+Let’s get this out of the way: Most everything written here could be vastly improved upon. 🥳️
 
 - There is a lot of `lodash` (which I use because I have not commited every thing about `arrays|hashes|objects` to my memory, heh)
 - There is a lot `any` w/ TS (you will see a lot of `@todo(types)`, they will come with time [or not])
