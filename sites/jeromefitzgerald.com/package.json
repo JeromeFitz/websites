@@ -41,9 +41,9 @@
   "dependencies": {
     "@artsy/fresnel": "3.4.0",
     "@heroicons/react": "1.0.5",
-    "@jeromefitz/design-system": "2.1.2-kbar-from-website.3",
-    "@jeromefitz/notion": "3.0.1-kbar-from-website.1",
-    "@jeromefitz/spotify": "2.1.6-kbar-from-website.1",
+    "@jeromefitz/design-system": "2.1.2",
+    "@jeromefitz/notion": "3.0.1",
+    "@jeromefitz/spotify": "2.1.6",
     "@jeromefitz/utils": "2.0.0",
     "@mantine/hooks": "3.6.7",
     "@notionhq/client": "0.4.13",
