@@ -46,3 +46,4 @@ runs:
         PR_LABELS: false
         PRODUCTION: ${{ inputs.PRODUCTION }}
         DEPLOY_PR_FROM_FORK: ${{ inputs.DEPLOY_PR_FROM_FORK }}
+        TRIM_COMMIT_MESSAGE: true

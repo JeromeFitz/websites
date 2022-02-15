@@ -171,6 +171,9 @@ const UIProvider: FC = (props) => {
       ? dispatch({ type: 'AUDIO_DISABLE' })
       : dispatch({ type: 'AUDIO_ENABLE' })
 
+  const setAudioEnable = () => dispatch({ type: 'AUDIO_ENABLE' })
+  const setAudioDisable = () => dispatch({ type: 'AUDIO_DISABLE' })
+
   const setModalView = (view: MODAL_VIEWS) => {
     return dispatch({ type: 'SET_MODAL_VIEW', view })
   }
@@ -192,6 +195,8 @@ const UIProvider: FC = (props) => {
       openNavigation,
       openNotification,
       openSidebar,
+      setAudioEnable,
+      setAudioDisable,
       setBackgroundColor,
       setModalView,
       toggleAudio,

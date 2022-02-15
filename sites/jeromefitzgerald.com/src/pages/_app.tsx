@@ -1,9 +1,7 @@
 import '~styles/chrome.css'
 
 import { Container, Section } from '@jeromefitz/design-system/components'
-// import { ToastProvider } from '@jeromefitz/design-system/custom/Toast'
-import { globalCss, darkTheme } from '@jeromefitz/design-system/stitches.config'
-import { ThemeProvider } from 'next-themes'
+import { globalCss } from '@jeromefitz/design-system/stitches.config'
 import type { AppProps, NextWebVitalsMetric } from 'next/app'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
@@ -20,8 +18,7 @@ import NProgress from '~components/NProgress'
 // @ts-ignore
 import buildInfo from '~config/buildInfo.json'
 import { pluralRules } from '~config/index'
-import { MediaContextProvider } from '~context/Media'
-import { ManagedUIContext } from '~context/UI'
+import { Providers } from '~context/Providers'
 import { useAnalytics } from '~lib/analytics'
 import { IMAGE__FALLBACKS__SHOWS } from '~lib/constants'
 import globalStyles from '~styles/global'
@@ -73,31 +70,20 @@ function MyApp({ Component, pageProps, router }: AppProps) {
               content="width=device-width, initial-scale=1.0,viewport-fit=cover"
             />
           </Head>
-          <MediaContextProvider>
-            <ManagedUIContext>
-              <ThemeProvider
-                disableTransitionOnChange
-                attribute="class"
-                value={{ light: 'light-theme', dark: darkTheme.className }}
-                defaultTheme="system"
-              >
-                {/* <ToastProvider> */}
-                <NProgress />
-                <Header />
-                <Container
-                  as="main"
-                  id="main"
-                  size={{ '@initial': 2, '@bp1': 3, '@bp2': 4 }}
-                >
-                  <Section>
-                    <Component {...pageProps} key={router.route} />
-                  </Section>
-                </Container>
-                <Footer />
-                {/* </ToastProvider> */}
-              </ThemeProvider>
-            </ManagedUIContext>
-          </MediaContextProvider>
+          <Providers>
+            <NProgress />
+            <Header />
+            <Container
+              as="main"
+              id="main"
+              size={{ '@initial': 2, '@bp1': 3, '@bp2': 4 }}
+            >
+              <Section>
+                <Component {...pageProps} key={router.route} />
+              </Section>
+            </Container>
+            <Footer />
+          </Providers>
         </SWRConfig>
       </ErrorBoundary>
     </>

@@ -226,7 +226,7 @@ const FooterImpl = () => {
   return (
     <>
       <Box css={{ width: '100%', my: '$6' }}>
-        <Separator css={{ margin: '0', width: '100% !important' }} />
+        <Separator decorative size="full" />
       </Box>
       <NowPlaying />
       <Box as="footer" css={{ pb: '$9', mx: '$3' }}>
