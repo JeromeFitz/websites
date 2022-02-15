@@ -1,13 +1,6 @@
 import { TicketIcon } from '@heroicons/react/outline'
 import { Box, Flex } from '@jeromefitz/design-system/components'
 import { darkTheme, styled } from '@jeromefitz/design-system/stitches.config'
-import {
-  MoonIcon,
-  SpeakerModerateIcon,
-  SpeakerOffIcon,
-  StarIcon,
-  SunIcon,
-} from '@radix-ui/react-icons'
 import { parseISO } from 'date-fns'
 import { format } from 'date-fns-tz'
 import { useKBar } from 'kbar'
@@ -226,7 +219,7 @@ const KBarActions = () => {
       id: 'settings-audio',
       title: 'Toggle Sound',
       url: '/',
-      icon: audio ? <SpeakerOffIcon /> : <SpeakerModerateIcon />,
+      icon: navigationStatic.settings.items[0].icons[audio],
       keywords: 'Sound Off On',
       shortcut: ['t', 'a'],
       subtitle: '‎',
@@ -236,7 +229,7 @@ const KBarActions = () => {
       id: 'settings-theme',
       title: 'Toggle Theme',
       url: '/',
-      icon: theme === 'light' ? <MoonIcon /> : <SunIcon />,
+      icon: navigationStatic.settings.items[1].icons[theme],
       keywords: 'Theme Light Dark Off On',
       shortcut: ['t', 't'],
       subtitle: '‎',
@@ -275,11 +268,19 @@ const KBarActions = () => {
     !!items &&
       items.map((item) => {
         const { properties } = item
-        const { rollupShows__Tags, slug, title } = properties
+        const { rollupShows__Tags, seoKeywords, slug, title } = properties
+        const keywordsArr = slug.split('-')
+        if (seoKeywords) {
+          keywordsArr.push(seoKeywords)
+        }
+        const keywords = keywordsArr.join(' ')
+
         data.push({
-          icon: <StarIcon />,
+          icon:
+            navigationStatic.shows.iconKbarOverride ?? navigationStatic.shows.icon,
           id: slug,
-          keywords: slug.split('-').join(' '),
+          // keywords: slug.split('-').join(' '),
+          keywords,
           subtitle: rollupShows__Tags.join(', '),
           // title: `${title} *`,
           title,
@@ -332,15 +333,22 @@ const KBarActions = () => {
       items.map((item) => {
         const { properties } = item
 
-        const { dateEvent, slug, title } = properties
+        const { dateEvent, seoKeywords, slug, title } = properties
 
         const iso = parseISO(dateEvent?.start)
         const date = format(iso, `EEEE MM/dd hh:mma z`)
         const dateRoute = format(iso, `yyyy/MM/dd`)
+
+        const keywordsArr = slug.split('-')
+        if (seoKeywords) {
+          keywordsArr.push(seoKeywords)
+        }
+        const keywords = keywordsArr.join(' ')
+
         data.push({
           icon: <TicketIcon className="hi2ri" style={cssIconHeroToRadix} />,
           id: slug,
-          keywords: slug.split('-').join(' '),
+          keywords,
           subtitle: date,
           // title: `${title} *`,
           title,

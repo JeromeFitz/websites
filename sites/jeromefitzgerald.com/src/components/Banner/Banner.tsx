@@ -38,7 +38,7 @@ const _Banner = () => {
               py: '$2',
               width: '100%',
             }}
-            variant="blue"
+            variant="violet"
           >
             <CalendarIcon />
             <Media at="xs">

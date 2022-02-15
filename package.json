@@ -49,10 +49,10 @@
   },
   "dependencies": {
     "@babel/eslint-parser": "7.17.0",
-    "@jeromefitz/codestyle": "8.0.11",
-    "@jeromefitz/conventional-gitmoji": "2.1.1",
+    "@jeromefitz/codestyle": "8.0.12",
+    "@jeromefitz/conventional-gitmoji": "2.1.2",
     "@jeromefitz/git-cz": "14.1.2",
-    "@jeromefitz/semantic": "8.1.1",
+    "@jeromefitz/semantic": "8.1.2",
     "@manypkg/cli": "0.19.1",
     "@types/is-ci": "3.0.0",
     "@types/jest": "27.4.0",
