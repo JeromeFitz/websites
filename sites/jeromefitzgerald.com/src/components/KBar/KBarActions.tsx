@@ -204,7 +204,7 @@ const KBarActions = () => {
 
     const data = []
     data.push({
-      id: 'settings-sound',
+      id: 'settings-audio',
       title: 'Toggle Sound',
       url: '/',
       icon: audio ? <SpeakerOffIcon /> : <SpeakerModerateIcon />,

@@ -5,6 +5,7 @@ import {
   // @todo(kbar) this should move to Separator
   DropdownMenuSeparator,
   Flex,
+  IconButton,
   Sheet,
   SheetContent,
   SheetTrigger,
@@ -12,15 +13,24 @@ import {
   // SheetTitle,
   // SheetDescription,
 } from '@jeromefitz/design-system/components'
-import { keyframes } from '@jeromefitz/design-system/stitches.config'
 import {
+  darkTheme,
+  keyframes,
+  styled,
+} from '@jeromefitz/design-system/stitches.config'
+import {
+  Close as DialogClose,
+  Overlay as DialogOverlay,
+  Portal as DialogPortal,
+} from '@radix-ui/react-dialog'
+import {
+  Cross1Icon,
   HamburgerMenuIcon,
   // MoonIcon,
   // SpeakerModerateIcon,
   // SpeakerOffIcon,
   // SunIcon,
 } from '@radix-ui/react-icons'
-import * as Portal from '@radix-ui/react-portal'
 import { useTheme } from 'next-themes'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
@@ -39,6 +49,34 @@ const slideIn = keyframes({
 const slideOut = keyframes({
   from: { transform: 'translate3d(0,0,0)' },
   to: { transform: '$$transformValue' },
+})
+
+const overlayShow = keyframes({
+  '0%': { opacity: 0 },
+  '100%': { opacity: 1 },
+})
+
+const StyledOverlay = styled(DialogOverlay, {
+  backgroundColor: '$colors$blackA9',
+  position: 'fixed',
+  inset: 0,
+  '@media (prefers-reduced-motion: no-preference)': {
+    animation: `${overlayShow} 150ms cubic-bezier(0.16, 1, 0.3, 1)`,
+  },
+})
+const StyledCloseButton = styled(DialogClose, {
+  backgroundColor: 'green',
+  position: 'absolute',
+  top: '$2',
+  right: '$2',
+  zIndex: '9999',
+})
+const StyledLink = styled('a', Flex, {
+  // fontFamily: '$mono',
+  textDecoration: 'none',
+  '& span': {
+    color: '$hiContrast',
+  },
 })
 
 const MenuMobile = () => {
@@ -109,9 +147,9 @@ const MenuMobile = () => {
   const [open, openSet] = React.useState(false)
 
   const handleSelect = (event, item) => {
-    console.dir(`> handleSelect`)
-    console.dir(event)
-    console.dir(item)
+    // console.dir(`> handleSelect`)
+    // console.dir(event)
+    // console.dir(item)
     void handleToast({ title: item?.titleExtended ?? item?.title })
     // @todo turn into function return
     if (item?.type === 'url.internal' && !!item.url) {
@@ -143,7 +181,8 @@ const MenuMobile = () => {
             <HamburgerMenuIcon />
           </Button>
         </SheetTrigger>
-        <Portal.Root id="testing">
+        <DialogPortal>
+          <StyledOverlay />
           <SheetContent
             aria-label="Menu"
             css={{
@@ -162,11 +201,16 @@ const MenuMobile = () => {
                 animation: `${slideOut} 350ms cubic-bezier(0.22, 1, 0.36, 1)`,
               },
             }}
-            id="testing-content"
             side="bottom"
             onInteractOutside={() => openSet(false)}
             onPointerDownOutside={() => openSet(false)}
+            onEscapeKeyDown={() => openSet(false)}
           >
+            <StyledCloseButton asChild>
+              <IconButton variant="ghost" onClick={() => openSet(false)}>
+                <Cross1Icon />
+              </IconButton>
+            </StyledCloseButton>
             {navigationNonMutated &&
               Object.keys(navigationNonMutated).map((k) => {
                 const section = navigationNonMutated[k]
@@ -211,10 +255,15 @@ const MenuMobile = () => {
                             <Flex align="center" justify="start" gap="2">
                               {/* <DialogClose> */}
                               <NextLink href={section.url} passHref>
-                                <a onClick={(event) => handleSelect(event, section)}>
+                                <StyledLink
+                                  align="center"
+                                  justify="start"
+                                  gap="2"
+                                  onClick={(event) => handleSelect(event, section)}
+                                >
                                   {section.icon && section.icon}
-                                  {section.title}
-                                </a>
+                                  <Box as="span">{section.title}</Box>
+                                </StyledLink>
                               </NextLink>
                               {/* </DialogClose> */}
                             </Flex>
@@ -239,7 +288,10 @@ const MenuMobile = () => {
                                   >
                                     {/* <DialogClose> */}
                                     <NextLink href={item.url} passHref>
-                                      <a
+                                      <StyledLink
+                                        align="center"
+                                        justify="start"
+                                        gap="2"
                                         onClick={(event) =>
                                           handleSelect(event, item)
                                         }
@@ -272,7 +324,7 @@ const MenuMobile = () => {
                                             </Box>
                                           )}
                                         </Box>
-                                      </a>
+                                      </StyledLink>
                                     </NextLink>
                                     {/* </DialogClose> */}
                                   </Flex>
@@ -312,7 +364,7 @@ const MenuMobile = () => {
               </Select>
             </Flex> */}
           </SheetContent>
-        </Portal.Root>
+        </DialogPortal>
       </Sheet>
     </>
   )

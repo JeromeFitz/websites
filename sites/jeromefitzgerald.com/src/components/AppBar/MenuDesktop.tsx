@@ -185,7 +185,10 @@ const MenuDesktop = () => {
     if (item?.type === 'theme') {
       void handleToggleTheme()
     }
-    event.preventDefault()
+
+    if (item.id === 'settings-audio' || item.id === 'settings-theme') {
+      event.preventDefault()
+    }
   }
 
   return (
@@ -285,7 +288,7 @@ const MenuDesktop = () => {
                                   </React.Fragment>
                                 )
                               }
-                              if (item.id === 'settings-sound') {
+                              if (item.id === 'settings-audio') {
                                 const icon = audio ? (
                                   <SpeakerOffIcon />
                                 ) : (

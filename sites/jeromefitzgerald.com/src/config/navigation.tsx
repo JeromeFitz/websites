@@ -70,7 +70,7 @@ interface INavigation {
     subtitle?: string
     //
     items?: INavigationItem[]
-    type: 'url.internal' | 'url.external' | 'audio' | 'theme'
+    type: 'url.internal' | 'url.external' | 'audio' | 'theme' | 'settings' | 'social'
   }
 }
 
@@ -193,20 +193,21 @@ const navigation: INavigation = {
     },
     items: [
       {
-        id: 'knockoffs',
-        title: 'Knockoffs',
-        url: '/podcasts/knockoffs',
+        id: 'jer-and-ky-and-guest',
+        title: 'Jer & Ky (& Guest)',
+        url: '/podcasts/jer-and-ky-and-guest',
         icon: <MicrophoneIcon className="hi2ri" style={cssIconHeroToRadix1} />,
         iconKbarOverride: (
           <MicrophoneIcon className="hi2ri" style={cssIconHeroToRadix} />
         ),
+        separator: false,
         subtitle: '‎',
         type: 'url.internal',
       },
       {
-        id: 'jer-and-ky-and-guest',
-        title: 'tHe Jer Ky BoyZ',
-        url: '/podcasts/jer-and-ky-and-guest',
+        id: 'knockoffs',
+        title: 'Knockoffs',
+        url: '/podcasts/knockoffs',
         icon: <MicrophoneIcon className="hi2ri" style={cssIconHeroToRadix1} />,
         iconKbarOverride: (
           <MicrophoneIcon className="hi2ri" style={cssIconHeroToRadix} />
@@ -292,6 +293,7 @@ const navigation: INavigation = {
     icon: <Share1Icon />,
     order: 40,
     title: 'Social',
+    type: 'social',
     subtitle: '‎',
     settings: {
       sheet: { active: false, children: false },
@@ -355,6 +357,7 @@ const navigation: INavigation = {
     icon: <GearIcon />,
     order: 50,
     title: 'Settings',
+    type: 'settings',
     subtitle: '‎',
     settings: {
       sheet: { active: false, children: false },
@@ -362,7 +365,7 @@ const navigation: INavigation = {
     },
     items: [
       {
-        id: 'settings-sound',
+        id: 'settings-audio',
         title: 'Toggle Sound',
         url: '/',
         icon: <SpeakerModerateIcon />,
