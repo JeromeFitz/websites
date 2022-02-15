@@ -64,7 +64,7 @@ jobs:
       - name: '🔺️  Deploy (Production)'
         id: push-deploy
         if: github.ref == 'refs/heads/main'
-        uses: JeromeFitz/websites/.github/actions/deploy@feature/kbar-ii
+        uses: JeromeFitz/websites/.github/actions/deploy@main
         with:
           GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
