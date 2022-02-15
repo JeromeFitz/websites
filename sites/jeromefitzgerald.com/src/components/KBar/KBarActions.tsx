@@ -1,6 +1,6 @@
 import { TicketIcon } from '@heroicons/react/outline'
-import { useToast } from '@jeromefitz/design-system/components'
-import { darkTheme } from '@jeromefitz/design-system/stitches.config'
+import { Box, Flex } from '@jeromefitz/design-system/components'
+import { darkTheme, styled } from '@jeromefitz/design-system/stitches.config'
 import {
   MoonIcon,
   SpeakerModerateIcon,
@@ -23,11 +23,22 @@ import { useUI } from '~context/UI'
 import { cssIconHeroToRadix } from '~lib/constants'
 import fetcher from '~lib/fetcher'
 
+const RightSlot = styled('div', {
+  verticalAlign: 'center',
+  display: 'inline-flex',
+  marginLeft: 'auto',
+  marginRight: '$1',
+  paddingLeft: 16,
+  color: '$colors$slate11',
+  ':focus > &': { color: '$colors$hiContrast' },
+  '[data-disabled] &': { color: '$colors$slate8' },
+})
+
 const KBarActions = () => {
   const kbar = useKBar()
   const router = useRouter()
   const { theme, setTheme } = useTheme()
-  const toasts = useToast()
+  // const toasts = useToast()
   const { audio, toggleAudio } = useUI()
 
   const [playBleep] = useSound('/static/audio/bleep.mp3', {
@@ -43,16 +54,16 @@ const KBarActions = () => {
     volume: 0.25,
   })
 
-  const handleToast = (props) => {
-    const { title } = props
-    if (toasts && toasts.current) {
-      toasts.current.message({
-        duration: 2000,
-        text: `Routing to: ${title}`,
-        type: 'default',
-      })
-    }
-  }
+  // const handleToast = (props) => {
+  //   const { title } = props
+  //   if (toasts && toasts.current) {
+  //     toasts.current.message({
+  //       duration: 2000,
+  //       text: `Routing to: ${title}`,
+  //       type: 'default',
+  //     })
+  //   }
+  // }
 
   const handleRouteInternal = (url) => {
     playBleep()
@@ -121,7 +132,7 @@ const KBarActions = () => {
               shortcut: item?.shortcut,
               //
               perform: () => {
-                void handleToast({ title: `(items) ${item?.title} (${section.id})` })
+                // void handleToast({ title: `(items) ${item?.title} (${section.id})` })
                 if (item?.type === 'url.internal' && !!item.url) {
                   void handleRouteInternal(item.url)
                 }
@@ -153,10 +164,18 @@ const KBarActions = () => {
 
         if (items) {
           items.map((item) => {
+            const name = item.rightSlot ? (
+              <Flex align="center" gap="1" justify="start">
+                <Box as="span">{item?.title}</Box>
+                <RightSlot>{item.rightSlot}</RightSlot>
+              </Flex>
+            ) : (
+              <Box as="span">{item?.title}</Box>
+            )
             registerActions.push({
               id: `${section.id}-${item.id}`,
               icon: item?.iconKbarOverride ?? item?.icon,
-              name: item?.title,
+              name,
               subtitle: item?.subtitle,
               // subtitle: `${section.id}-${item.id}`,
               parent: section.id,
@@ -164,9 +183,9 @@ const KBarActions = () => {
               shortcut: item?.shortcut,
               //
               perform: () => {
-                void handleToast({
-                  title: `(items) ${item?.title} (${section.id})`,
-                })
+                // void handleToast({
+                //   title: `(items) ${item?.title} (${section.id})`,
+                // })
                 // @todo turn into function return
                 if (item?.type === 'url.internal' && !!item.url) {
                   void handleRouteInternal(item.url)

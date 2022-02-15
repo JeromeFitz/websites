@@ -360,7 +360,7 @@ const navigation: INavigation = {
     type: 'settings',
     subtitle: '‎',
     settings: {
-      sheet: { active: false, children: false },
+      sheet: { active: true, children: true },
       dropdown: { inline: false, label: true, separator: false },
     },
     items: [

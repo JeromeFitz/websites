@@ -1,5 +1,5 @@
 import {
-  useToast,
+  // useToast,
   Box,
   Button,
   DropdownMenu,
@@ -95,7 +95,7 @@ const MenuDesktop = () => {
   // const kbar = useKBar()
   const router = useRouter()
   const { theme, setTheme } = useTheme()
-  const toasts = useToast()
+  // const toasts = useToast()
   const { audio, toggleAudio } = useUI()
 
   const [playBleep] = useSound('/static/audio/bleep.mp3', {
@@ -111,16 +111,16 @@ const MenuDesktop = () => {
     volume: 0.25,
   })
 
-  const handleToast = (props) => {
-    const { title } = props
-    if (toasts && toasts.current) {
-      toasts.current.message({
-        duration: 2000,
-        text: `Routing to: ${title}`,
-        type: 'default',
-      })
-    }
-  }
+  // const handleToast = (props) => {
+  //   const { title } = props
+  //   if (toasts && toasts.current) {
+  //     toasts.current.message({
+  //       duration: 2000,
+  //       text: `Routing to: ${title}`,
+  //       type: 'default',
+  //     })
+  //   }
+  // }
 
   const handleRouteInternal = (url) => {
     playBleep()
@@ -158,7 +158,7 @@ const MenuDesktop = () => {
     // console.dir(`> handleSelect`)
     // console.dir(event)
     // console.dir(item)
-    void handleToast({ title: item?.titleExtended ?? item?.title })
+    // void handleToast({ title: item?.titleExtended ?? item?.title })
     // @todo turn into function return
     if (item?.type === 'url.internal' && !!item.url) {
       void handleRouteInternal(item.url)
@@ -182,7 +182,7 @@ const MenuDesktop = () => {
     <Box>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <IconButton aria-label="Customise options">
+          <IconButton aria-label="Open Menu">
             <Button css={{ '&:hover': { cursor: 'pointer' } }} size="1">
               <HamburgerMenuIcon />
             </Button>

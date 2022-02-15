@@ -1,4 +1,5 @@
 import { AppBar, Avatar, Flex } from '@jeromefitz/design-system/components'
+import NextLink from 'next/link'
 import * as React from 'react'
 
 import { Media } from '~context/Media'
@@ -57,25 +58,30 @@ const _AppBar = ({}) => {
           }}
           justify="between"
         >
-          <Avatar
-            alt={`Avatar for Jerome (Bighead Dizzy)`}
-            src={`/static/images/bighead--jerome--dizzy.svg`}
-            aria-describedby="logoHeader"
-            size="4"
-            css={{
-              '@bp1': {
-                mr: '$1',
-                width: '$7',
-                height: '$7',
-                '& span': {
-                  boxShadow: `inset ${Shadows[2]}`,
-                },
-              },
-            }}
-            variant="violet"
-            border="solid"
-            // onClick={handleClickLink}
-          />
+          <NextLink href="/" passHref>
+            <a>
+              <Avatar
+                alt={`Avatar for Jerome (Bighead Dizzy)`}
+                src={`/static/images/bighead--jerome--dizzy.svg`}
+                aria-describedby="logoHeader"
+                size="4"
+                css={{
+                  '@bp1': {
+                    mr: '$1',
+                    width: '$7',
+                    height: '$7',
+                    '& span': {
+                      boxShadow: `inset ${Shadows[2]}`,
+                    },
+                  },
+                }}
+                variant="violet"
+                border="solid"
+                // onClick={handleClickLink}
+              />
+            </a>
+          </NextLink>
+
           {/* <Flex direction="column" justify="center">
             <Button
               css={{

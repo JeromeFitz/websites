@@ -1,11 +1,10 @@
 import {
-  useToast,
+  // useToast,
   Box,
   Button,
-  // @todo(kbar) this should move to Separator
-  DropdownMenuSeparator,
   Flex,
   IconButton,
+  Separator,
   Sheet,
   SheetContent,
   SheetTrigger,
@@ -26,10 +25,10 @@ import {
 import {
   Cross1Icon,
   HamburgerMenuIcon,
-  // MoonIcon,
-  // SpeakerModerateIcon,
-  // SpeakerOffIcon,
-  // SunIcon,
+  MoonIcon,
+  SpeakerModerateIcon,
+  SpeakerOffIcon,
+  SunIcon,
 } from '@radix-ui/react-icons'
 import { useTheme } from 'next-themes'
 import NextLink from 'next/link'
@@ -72,9 +71,10 @@ const StyledCloseButton = styled(DialogClose, {
   zIndex: '9999',
 })
 const StyledLink = styled('a', Flex, {
-  // fontFamily: '$mono',
+  py: '$2',
   textDecoration: 'none',
-  '& span': {
+  width: '100%',
+  '& span, & svg': {
     color: '$hiContrast',
   },
 })
@@ -86,7 +86,7 @@ const MenuMobile = () => {
   // const kbar = useKBar()
   const router = useRouter()
   const { theme, setTheme } = useTheme()
-  const toasts = useToast()
+  // const toasts = useToast()
   const { audio, toggleAudio } = useUI()
 
   const [playBleep] = useSound('/static/audio/bleep.mp3', {
@@ -102,16 +102,16 @@ const MenuMobile = () => {
     volume: 0.25,
   })
 
-  const handleToast = (props) => {
-    const { title } = props
-    if (toasts && toasts.current) {
-      toasts.current.message({
-        duration: 2000,
-        text: `Routing to: ${title}`,
-        type: 'default',
-      })
-    }
-  }
+  // const handleToast = (props) => {
+  //   const { title } = props
+  //   if (toasts && toasts.current) {
+  //     toasts.current.message({
+  //       duration: 2000,
+  //       text: `Routing to: ${title}`,
+  //       type: 'default',
+  //     })
+  //   }
+  // }
 
   const handleRouteInternal = (url) => {
     playBleep()
@@ -150,7 +150,7 @@ const MenuMobile = () => {
     // console.dir(`> handleSelect`)
     // console.dir(event)
     // console.dir(item)
-    void handleToast({ title: item?.titleExtended ?? item?.title })
+    // void handleToast({ title: item?.titleExtended ?? item?.title })
     // @todo turn into function return
     if (item?.type === 'url.internal' && !!item.url) {
       void handleRouteInternal(item.url)
@@ -165,8 +165,11 @@ const MenuMobile = () => {
       void handleToggleTheme()
     }
     // event.preventDefault()
+    if (item.id === 'settings-audio' || item.id === 'settings-theme') {
+      event.preventDefault()
+      return
+    }
     void openSet(false)
-    console.dir(`open: ${open}`)
   }
 
   return (
@@ -174,6 +177,7 @@ const MenuMobile = () => {
       <Sheet open={open}>
         <SheetTrigger asChild>
           <Button
+            aria-label="Open Menu"
             css={{ '&:hover': { cursor: 'pointer' } }}
             size="1"
             onClick={() => openSet(true)}
@@ -184,7 +188,7 @@ const MenuMobile = () => {
         <DialogPortal>
           <StyledOverlay />
           <SheetContent
-            aria-label="Menu"
+            aria-label="Menu Content"
             css={{
               // textAlign: 'center',
               borderTopLeftRadius: '$4',
@@ -207,7 +211,11 @@ const MenuMobile = () => {
             onEscapeKeyDown={() => openSet(false)}
           >
             <StyledCloseButton asChild>
-              <IconButton variant="ghost" onClick={() => openSet(false)}>
+              <IconButton
+                aria-label="Close Menu"
+                variant="ghost"
+                onClick={() => openSet(false)}
+              >
                 <Cross1Icon />
               </IconButton>
             </StyledCloseButton>
@@ -250,10 +258,13 @@ const MenuMobile = () => {
                         <Box as="ul" css={{ m: 0, px: '$1' }}>
                           <Box
                             as="li"
-                            css={{ listStyleType: 'none', my: '$1', py: '$1' }}
+                            css={{
+                              listStyleType: 'none',
+                              // my: '$1',
+                              // py: '$1'
+                            }}
                           >
                             <Flex align="center" justify="start" gap="2">
-                              {/* <DialogClose> */}
                               <NextLink href={section.url} passHref>
                                 <StyledLink
                                   align="center"
@@ -265,28 +276,149 @@ const MenuMobile = () => {
                                   <Box as="span">{section.title}</Box>
                                 </StyledLink>
                               </NextLink>
-                              {/* </DialogClose> */}
                             </Flex>
                           </Box>
                         </Box>
                       )}
                       {!!items && settings.children && (
                         <Box as="ul" css={{ m: 0, px: '$1' }}>
+                          {/* @todo(complexity) 16 */}
+                          {/* eslint-disable-next-line complexity */}
                           {items.map((item, itemIdx) => {
+                            if (item.id === 'settings-theme') {
+                              const icon =
+                                theme === 'light' ? <MoonIcon /> : <SunIcon />
+                              return (
+                                <React.Fragment key={`dml-${k}-${itemIdx}`}>
+                                  <Box
+                                    as="li"
+                                    css={{
+                                      listStyleType: 'none',
+                                      // my: '$1',
+                                      // py: '$1',
+                                    }}
+                                  >
+                                    <Flex align="center" justify="start" gap="2">
+                                      {/* <NextLink href={item.url} passHref> */}
+                                      <StyledLink
+                                        align="center"
+                                        justify="start"
+                                        gap="2"
+                                        onClick={(event) =>
+                                          handleSelect(event, item)
+                                        }
+                                      >
+                                        {/* {item.icon && item.icon} */}
+                                        {item.icon && icon}
+                                        <Box as="div">
+                                          <Box
+                                            as="span"
+                                            css={{
+                                              fontWeight: item.rightSlotExtended
+                                                ? '700'
+                                                : '400',
+                                            }}
+                                          >
+                                            {item.titleExtended ?? item.title}
+                                          </Box>
+                                          {/* @hack only want first one */}
+                                          {item.rightSlot && itemIdx === 0 && (
+                                            <Box
+                                              as="span"
+                                              css={{
+                                                display: 'block',
+                                                // fontFamily: '$mono',
+                                                fontSize: '0.8rem',
+                                                mt: '$1',
+                                              }}
+                                            >
+                                              {item.rightSlotExtended ??
+                                                item.rightSlot}
+                                            </Box>
+                                          )}
+                                        </Box>
+                                      </StyledLink>
+                                      {/* </NextLink> */}
+                                    </Flex>
+                                  </Box>
+                                  {item.separator && (
+                                    <Separator margin="my1" size="full" />
+                                  )}
+                                </React.Fragment>
+                              )
+                            }
+                            if (item.id === 'settings-audio') {
+                              const icon = audio ? (
+                                <SpeakerOffIcon />
+                              ) : (
+                                <SpeakerModerateIcon />
+                              )
+                              return (
+                                <React.Fragment key={`dml-${k}-${itemIdx}`}>
+                                  <Box
+                                    as="li"
+                                    css={{
+                                      listStyleType: 'none',
+                                      // my: '$1',
+                                      // py: '$1',
+                                    }}
+                                  >
+                                    <Flex align="center" justify="start" gap="2">
+                                      {/* <NextLink href={item.url} passHref> */}
+                                      <StyledLink
+                                        align="center"
+                                        justify="start"
+                                        gap="2"
+                                        onClick={(event) =>
+                                          handleSelect(event, item)
+                                        }
+                                      >
+                                        {/* {item.icon && item.icon} */}
+                                        {item.icon && icon}
+                                        <Box as="div">
+                                          <Box
+                                            as="span"
+                                            css={{
+                                              fontWeight: item.rightSlotExtended
+                                                ? '700'
+                                                : '400',
+                                            }}
+                                          >
+                                            {item.titleExtended ?? item.title}
+                                          </Box>
+                                          {/* @hack only want first one */}
+                                          {item.rightSlot && itemIdx === 0 && (
+                                            <Box
+                                              as="span"
+                                              css={{
+                                                display: 'block',
+                                                // fontFamily: '$mono',
+                                                fontSize: '0.8rem',
+                                                mt: '$1',
+                                              }}
+                                            >
+                                              {item.rightSlotExtended ??
+                                                item.rightSlot}
+                                            </Box>
+                                          )}
+                                        </Box>
+                                      </StyledLink>
+                                      {/* </NextLink> */}
+                                    </Flex>
+                                  </Box>
+                                  {item.separator && (
+                                    <Separator margin="my2" size="full" />
+                                  )}
+                                </React.Fragment>
+                              )
+                            }
                             return (
                               <React.Fragment key={`dml-${k}-${itemIdx}`}>
                                 <Box
                                   as="li"
                                   css={{ listStyleType: 'none', my: '$1', py: '$1' }}
                                 >
-                                  <Flex
-                                    align="center"
-                                    justify="start"
-                                    gap="2"
-                                    // columns="2"
-                                    // flow="row"
-                                  >
-                                    {/* <DialogClose> */}
+                                  <Flex align="center" justify="start" gap="2">
                                     <NextLink href={item.url} passHref>
                                       <StyledLink
                                         align="center"
@@ -326,11 +458,10 @@ const MenuMobile = () => {
                                         </Box>
                                       </StyledLink>
                                     </NextLink>
-                                    {/* </DialogClose> */}
                                   </Flex>
                                 </Box>
                                 {item.separator && (
-                                  <DropdownMenuSeparator css={{ my: '$2' }} />
+                                  <Separator margin="my2" size="full" />
                                 )}
                               </React.Fragment>
                             )
