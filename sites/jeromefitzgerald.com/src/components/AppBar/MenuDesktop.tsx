@@ -87,7 +87,6 @@ const MenuDesktop = ({ handleSelect, navigationNonMutated }) => {
             aria-label="Open Menu"
             css={{ '&:hover': { cursor: 'pointer' } }}
             size="1"
-            variant=""
           >
             <HamburgerMenuIcon />
           </IconButton>
