@@ -1,7 +1,6 @@
 import {
   // useToast,
   Box,
-  Button,
   DropdownMenu,
   DropdownMenuTrigger,
   DropdownMenuContent,
@@ -182,10 +181,13 @@ const MenuDesktop = () => {
     <Box>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <IconButton aria-label="Open Menu">
-            <Button css={{ '&:hover': { cursor: 'pointer' } }} size="1">
-              <HamburgerMenuIcon />
-            </Button>
+          <IconButton
+            aria-label="Open Menu"
+            css={{ '&:hover': { cursor: 'pointer' } }}
+            size="1"
+            variant="raised"
+          >
+            <HamburgerMenuIcon />
           </IconButton>
         </DropdownMenuTrigger>
         <DropdownMenuContent css={{ pl: '$1' }} alignOffset={-5} sideOffset={6}>
