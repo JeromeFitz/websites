@@ -8,20 +8,17 @@ import {
   Sheet,
   SheetContent,
   SheetTrigger,
-  // SheetClose,
+  SheetClose,
   // SheetTitle,
   // SheetDescription,
+  // SheetPortal,
+  // StyledOverlay,
 } from '@jeromefitz/design-system/components'
 import {
   darkTheme,
   keyframes,
   styled,
 } from '@jeromefitz/design-system/stitches.config'
-import {
-  Close as DialogClose,
-  Overlay as DialogOverlay,
-  Portal as DialogPortal,
-} from '@radix-ui/react-dialog'
 import {
   Cross1Icon,
   HamburgerMenuIcon,
@@ -34,6 +31,7 @@ import { useTheme } from 'next-themes'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 import * as React from 'react'
+import { useSwipeable } from 'react-swipeable'
 import { useEffectOnce } from 'react-use'
 import { useSound } from 'use-sound'
 
@@ -44,26 +42,11 @@ const slideIn = keyframes({
   from: { transform: '$$transformValue' },
   to: { transform: 'translate3d(0,0,0)' },
 })
-
 const slideOut = keyframes({
   from: { transform: 'translate3d(0,0,0)' },
   to: { transform: '$$transformValue' },
 })
-
-const overlayShow = keyframes({
-  '0%': { opacity: 0 },
-  '100%': { opacity: 1 },
-})
-
-const StyledOverlay = styled(DialogOverlay, {
-  backgroundColor: '$colors$blackA9',
-  position: 'fixed',
-  inset: 0,
-  '@media (prefers-reduced-motion: no-preference)': {
-    animation: `${overlayShow} 150ms cubic-bezier(0.16, 1, 0.3, 1)`,
-  },
-})
-const StyledCloseButton = styled(DialogClose, {
+const StyledCloseButton = styled(SheetClose, {
   backgroundColor: 'green',
   position: 'absolute',
   top: '$2',
@@ -84,6 +67,8 @@ const MenuMobile = () => {
    * @question can we lift this and not duplicate
    */
   // const kbar = useKBar()
+  const [swipeDownTransitionTime, swipeDownTransitionTimeSet] =
+    React.useState('250ms')
   const router = useRouter()
   const { theme, setTheme } = useTheme()
   // const toasts = useToast()
@@ -172,311 +157,325 @@ const MenuMobile = () => {
     void openSet(false)
   }
 
+  /**
+   * @hack please instead do this correctly 🤣️
+   */
+  const handlers = useSwipeable({
+    // onSwiping: (event) => {
+    //   if (event.dir === 'Down') {
+    //     console.log('onSwiping: Down')
+    //     console.dir(event)
+    //   }
+    // },
+    onSwipedDown: () => {
+      void swipeDownTransitionTimeSet(`350ms`)
+      void openSet(false)
+      void setTimeout(() => {
+        void swipeDownTransitionTimeSet(`250ms`)
+      }, 350)
+    },
+  })
+  const myRef = React.useRef()
+  const refPassthrough = (el) => {
+    handlers.ref(el)
+    myRef.current = el
+  }
+
   return (
-    <>
-      <Sheet open={open}>
-        <SheetTrigger asChild>
-          <Button
-            aria-label="Open Menu"
-            css={{ '&:hover': { cursor: 'pointer' } }}
-            size="1"
-            onClick={() => openSet(true)}
+    <Sheet open={open}>
+      <SheetTrigger asChild>
+        <Button
+          aria-label="Open Menu"
+          css={{ '&:hover': { cursor: 'pointer' } }}
+          size="1"
+          onClick={() => openSet(true)}
+        >
+          <HamburgerMenuIcon />
+        </Button>
+      </SheetTrigger>
+
+      <SheetContent
+        aria-label="Menu Content"
+        css={{
+          // textAlign: 'center',
+          borderTopLeftRadius: '$4',
+          borderTopRightRadius: '$4',
+          p: '$4',
+          pb: '$6',
+          height: 'auto',
+
+          '&[data-state="open"]': {
+            animation: `${slideIn} 250ms cubic-bezier(0.22, 1, 0.36, 1)`,
+          },
+
+          '&[data-state="closed"]': {
+            animation: `${slideOut} ${swipeDownTransitionTime} cubic-bezier(0.22, 1, 0.36, 1)`,
+          },
+        }}
+        side="bottom"
+        onInteractOutside={() => openSet(false)}
+        onPointerDownOutside={() => openSet(false)}
+        onEscapeKeyDown={() => openSet(false)}
+        ref={refPassthrough}
+        {...handlers}
+      >
+        <StyledCloseButton asChild>
+          <IconButton
+            aria-label="Close Menu"
+            variant="ghost"
+            onClick={() => openSet(false)}
           >
-            <HamburgerMenuIcon />
-          </Button>
-        </SheetTrigger>
-        <DialogPortal>
-          <StyledOverlay />
-          <SheetContent
-            aria-label="Menu Content"
-            css={{
-              // textAlign: 'center',
-              borderTopLeftRadius: '$4',
-              borderTopRightRadius: '$4',
-              p: '$4',
-              pb: '$6',
-              height: 'auto',
+            <Cross1Icon />
+          </IconButton>
+        </StyledCloseButton>
+        {navigationNonMutated &&
+          Object.keys(navigationNonMutated).map((k) => {
+            const section = navigationNonMutated[k]
+            const { items } = section
+            const settings = section.settings.sheet
+            if (!settings.active) {
+              return null
+            }
 
-              '&[data-state="open"]': {
-                animation: `${slideIn} 250ms cubic-bezier(0.22, 1, 0.36, 1)`,
-              },
+            // console.dir(`> section`)
+            // console.dir(section)
 
-              '&[data-state="closed"]': {
-                animation: `${slideOut} 350ms cubic-bezier(0.22, 1, 0.36, 1)`,
-              },
-            }}
-            side="bottom"
-            onInteractOutside={() => openSet(false)}
-            onPointerDownOutside={() => openSet(false)}
-            onEscapeKeyDown={() => openSet(false)}
-          >
-            <StyledCloseButton asChild>
-              <IconButton
-                aria-label="Close Menu"
-                variant="ghost"
-                onClick={() => openSet(false)}
-              >
-                <Cross1Icon />
-              </IconButton>
-            </StyledCloseButton>
-            {navigationNonMutated &&
-              Object.keys(navigationNonMutated).map((k) => {
-                const section = navigationNonMutated[k]
-                const { items } = section
-                const settings = section.settings.sheet
-                if (!settings.active) {
-                  return null
-                }
-
-                // console.dir(`> section`)
-                // console.dir(section)
-
-                return (
-                  <React.Fragment key={`sheet-${k}`}>
+            return (
+              <React.Fragment key={`sheet-${k}`}>
+                <Box
+                  as="li"
+                  role="presentation"
+                  css={{ listStyleType: 'none', m: 0, p: 0 }}
+                >
+                  {settings.children ? (
                     <Box
-                      as="li"
-                      role="presentation"
-                      css={{ listStyleType: 'none', m: 0, p: 0 }}
+                      as="span"
+                      aria-hidden="true"
+                      css={{
+                        display: 'block',
+                        color: '$slate11',
+                        fontSize: '0.75rem',
+                        fontWeight: '700',
+                        padding: '$1',
+                        // pt: '$2',
+                        textTransform: 'uppercase',
+                      }}
                     >
-                      {settings.children ? (
-                        <Box
-                          as="span"
-                          aria-hidden="true"
-                          css={{
-                            display: 'block',
-                            color: '$slate11',
-                            fontSize: '0.75rem',
-                            fontWeight: '700',
-                            padding: '$1',
-                            // pt: '$2',
-                            textTransform: 'uppercase',
-                          }}
-                        >
-                          {section.title}
-                        </Box>
-                      ) : (
-                        <Box as="ul" css={{ m: 0, px: '$1' }}>
-                          <Box
-                            as="li"
-                            css={{
-                              listStyleType: 'none',
-                              my: '0',
-                              py: '$1',
-                            }}
-                          >
-                            <Flex align="center" justify="start" gap="2">
-                              <NextLink href={section.url} passHref>
-                                <StyledLink
-                                  align="center"
-                                  justify="start"
-                                  gap="2"
-                                  onClick={(event) => handleSelect(event, section)}
-                                >
-                                  {section.icon && section.icon}
-                                  <Box as="span">{section.title}</Box>
-                                </StyledLink>
-                              </NextLink>
-                            </Flex>
-                          </Box>
-                        </Box>
-                      )}
-                      {!!items && settings.children && (
-                        <Box as="ul" css={{ m: 0, px: '$1' }}>
-                          {/* @todo(complexity) 16 */}
-                          {/* eslint-disable-next-line complexity */}
-                          {items.map((item, itemIdx) => {
-                            if (item.id === 'settings-theme') {
-                              const icon =
-                                theme === 'light' ? <MoonIcon /> : <SunIcon />
-                              return (
-                                <React.Fragment key={`dml-${k}-${itemIdx}`}>
-                                  <Box
-                                    as="li"
-                                    css={{
-                                      listStyleType: 'none',
-                                      my: '0',
-                                      py: '$1',
-                                    }}
-                                  >
-                                    <Flex align="center" justify="start" gap="2">
-                                      {/* <NextLink href={item.url} passHref> */}
-                                      <StyledLink
-                                        align="center"
-                                        justify="start"
-                                        gap="2"
-                                        onClick={(event) =>
-                                          handleSelect(event, item)
-                                        }
-                                      >
-                                        {/* {item.icon && item.icon} */}
-                                        {item.icon && icon}
-                                        <Box as="div">
-                                          <Box
-                                            as="span"
-                                            css={{
-                                              fontWeight: item.rightSlotExtended
-                                                ? '700'
-                                                : '400',
-                                            }}
-                                          >
-                                            {item.titleExtended ?? item.title}
-                                          </Box>
-                                          {/* @hack only want first one */}
-                                          {item.rightSlot && itemIdx === 0 && (
-                                            <Box
-                                              as="span"
-                                              css={{
-                                                display: 'block',
-                                                // fontFamily: '$mono',
-                                                fontSize: '0.8rem',
-                                                mt: '$1',
-                                              }}
-                                            >
-                                              {item.rightSlotExtended ??
-                                                item.rightSlot}
-                                            </Box>
-                                          )}
-                                        </Box>
-                                      </StyledLink>
-                                      {/* </NextLink> */}
-                                    </Flex>
-                                  </Box>
-                                  {item.separator && (
-                                    <Separator margin="my1" size="full" />
-                                  )}
-                                </React.Fragment>
-                              )
-                            }
-                            if (item.id === 'settings-audio') {
-                              const icon = audio ? (
-                                <SpeakerOffIcon />
-                              ) : (
-                                <SpeakerModerateIcon />
-                              )
-                              return (
-                                <React.Fragment key={`dml-${k}-${itemIdx}`}>
-                                  <Box
-                                    as="li"
-                                    css={{
-                                      listStyleType: 'none',
-                                      my: '0',
-                                      py: '$1',
-                                    }}
-                                  >
-                                    <Flex align="center" justify="start" gap="2">
-                                      {/* <NextLink href={item.url} passHref> */}
-                                      <StyledLink
-                                        align="center"
-                                        justify="start"
-                                        gap="2"
-                                        onClick={(event) =>
-                                          handleSelect(event, item)
-                                        }
-                                      >
-                                        {/* {item.icon && item.icon} */}
-                                        {item.icon && icon}
-                                        <Box as="div">
-                                          <Box
-                                            as="span"
-                                            css={{
-                                              fontWeight: item.rightSlotExtended
-                                                ? '700'
-                                                : '400',
-                                            }}
-                                          >
-                                            {item.titleExtended ?? item.title}
-                                          </Box>
-                                          {/* @hack only want first one */}
-                                          {item.rightSlot && itemIdx === 0 && (
-                                            <Box
-                                              as="span"
-                                              css={{
-                                                display: 'block',
-                                                // fontFamily: '$mono',
-                                                fontSize: '0.8rem',
-                                                mt: '$1',
-                                              }}
-                                            >
-                                              {item.rightSlotExtended ??
-                                                item.rightSlot}
-                                            </Box>
-                                          )}
-                                        </Box>
-                                      </StyledLink>
-                                      {/* </NextLink> */}
-                                    </Flex>
-                                  </Box>
-                                  {item.separator && (
-                                    <Separator margin="my2" size="full" />
-                                  )}
-                                </React.Fragment>
-                              )
-                            }
-                            return (
-                              <React.Fragment key={`dml-${k}-${itemIdx}`}>
-                                <Box
-                                  as="li"
-                                  css={{
-                                    listStyleType: 'none',
-                                    my: '0',
-                                    py: '$1',
-                                  }}
-                                >
-                                  <Flex align="center" justify="start" gap="2">
-                                    <NextLink href={item.url} passHref>
-                                      <StyledLink
-                                        align="center"
-                                        justify="start"
-                                        gap="2"
-                                        onClick={(event) =>
-                                          handleSelect(event, item)
-                                        }
-                                      >
-                                        {item.icon && item.icon}
-                                        <Box as="div">
-                                          <Box
-                                            as="span"
-                                            css={{
-                                              fontWeight: item.rightSlotExtended
-                                                ? '700'
-                                                : '400',
-                                            }}
-                                          >
-                                            {item.titleExtended ?? item.title}
-                                          </Box>
-                                          {/* @hack only want first one */}
-                                          {item.rightSlot && itemIdx === 0 && (
-                                            <Box
-                                              as="span"
-                                              css={{
-                                                display: 'block',
-                                                // fontFamily: '$mono',
-                                                fontSize: '0.8rem',
-                                                mt: '$1',
-                                              }}
-                                            >
-                                              {item.rightSlotExtended ??
-                                                item.rightSlot}
-                                            </Box>
-                                          )}
-                                        </Box>
-                                      </StyledLink>
-                                    </NextLink>
-                                  </Flex>
-                                </Box>
-                                {item.separator && (
-                                  <Separator margin="my2" size="full" />
-                                )}
-                              </React.Fragment>
-                            )
-                          })}
-                        </Box>
-                      )}
+                      {section.title}
                     </Box>
-                  </React.Fragment>
-                )
-              })}
-            {/* <Flex direction="row" justify="between" align="center">
+                  ) : (
+                    <Box as="ul" css={{ m: 0, px: '$1' }}>
+                      <Box
+                        as="li"
+                        css={{
+                          listStyleType: 'none',
+                          my: '0',
+                          py: '$1',
+                        }}
+                      >
+                        <Flex align="center" justify="start" gap="2">
+                          <NextLink href={section.url} passHref>
+                            <StyledLink
+                              align="center"
+                              justify="start"
+                              gap="2"
+                              onClick={(event) => handleSelect(event, section)}
+                            >
+                              {section.icon && section.icon}
+                              <Box as="span">{section.title}</Box>
+                            </StyledLink>
+                          </NextLink>
+                        </Flex>
+                      </Box>
+                    </Box>
+                  )}
+                  {!!items && settings.children && (
+                    <Box as="ul" css={{ m: 0, px: '$1' }}>
+                      {/* @todo(complexity) 16 */}
+                      {/* eslint-disable-next-line complexity */}
+                      {items.map((item, itemIdx) => {
+                        if (item.id === 'settings-theme') {
+                          const icon = theme === 'light' ? <MoonIcon /> : <SunIcon />
+                          return (
+                            <React.Fragment key={`dml-${k}-${itemIdx}`}>
+                              <Box
+                                as="li"
+                                css={{
+                                  listStyleType: 'none',
+                                  my: '0',
+                                  py: '$1',
+                                }}
+                              >
+                                <Flex align="center" justify="start" gap="2">
+                                  {/* <NextLink href={item.url} passHref> */}
+                                  <StyledLink
+                                    align="center"
+                                    justify="start"
+                                    gap="2"
+                                    onClick={(event) => handleSelect(event, item)}
+                                  >
+                                    {/* {item.icon && item.icon} */}
+                                    {item.icon && icon}
+                                    <Box as="div">
+                                      <Box
+                                        as="span"
+                                        css={{
+                                          fontWeight: item.rightSlotExtended
+                                            ? '700'
+                                            : '400',
+                                        }}
+                                      >
+                                        {item.titleExtended ?? item.title}
+                                      </Box>
+                                      {/* @hack only want first one */}
+                                      {item.rightSlot && itemIdx === 0 && (
+                                        <Box
+                                          as="span"
+                                          css={{
+                                            display: 'block',
+                                            // fontFamily: '$mono',
+                                            fontSize: '0.8rem',
+                                            mt: '$1',
+                                          }}
+                                        >
+                                          {item.rightSlotExtended ?? item.rightSlot}
+                                        </Box>
+                                      )}
+                                    </Box>
+                                  </StyledLink>
+                                  {/* </NextLink> */}
+                                </Flex>
+                              </Box>
+                              {item.separator && (
+                                <Separator margin="my1" size="full" />
+                              )}
+                            </React.Fragment>
+                          )
+                        }
+                        if (item.id === 'settings-audio') {
+                          const icon = audio ? (
+                            <SpeakerOffIcon />
+                          ) : (
+                            <SpeakerModerateIcon />
+                          )
+                          return (
+                            <React.Fragment key={`dml-${k}-${itemIdx}`}>
+                              <Box
+                                as="li"
+                                css={{
+                                  listStyleType: 'none',
+                                  my: '0',
+                                  py: '$1',
+                                }}
+                              >
+                                <Flex align="center" justify="start" gap="2">
+                                  {/* <NextLink href={item.url} passHref> */}
+                                  <StyledLink
+                                    align="center"
+                                    justify="start"
+                                    gap="2"
+                                    onClick={(event) => handleSelect(event, item)}
+                                  >
+                                    {/* {item.icon && item.icon} */}
+                                    {item.icon && icon}
+                                    <Box as="div">
+                                      <Box
+                                        as="span"
+                                        css={{
+                                          fontWeight: item.rightSlotExtended
+                                            ? '700'
+                                            : '400',
+                                        }}
+                                      >
+                                        {item.titleExtended ?? item.title}
+                                      </Box>
+                                      {/* @hack only want first one */}
+                                      {item.rightSlot && itemIdx === 0 && (
+                                        <Box
+                                          as="span"
+                                          css={{
+                                            display: 'block',
+                                            // fontFamily: '$mono',
+                                            fontSize: '0.8rem',
+                                            mt: '$1',
+                                          }}
+                                        >
+                                          {item.rightSlotExtended ?? item.rightSlot}
+                                        </Box>
+                                      )}
+                                    </Box>
+                                  </StyledLink>
+                                  {/* </NextLink> */}
+                                </Flex>
+                              </Box>
+                              {item.separator && (
+                                <Separator margin="my2" size="full" />
+                              )}
+                            </React.Fragment>
+                          )
+                        }
+                        return (
+                          <React.Fragment key={`dml-${k}-${itemIdx}`}>
+                            <Box
+                              as="li"
+                              css={{
+                                listStyleType: 'none',
+                                my: '0',
+                                py: '$1',
+                              }}
+                            >
+                              <Flex align="center" justify="start" gap="2">
+                                <NextLink href={item.url} passHref>
+                                  <StyledLink
+                                    align="center"
+                                    justify="start"
+                                    gap="2"
+                                    onClick={(event) => handleSelect(event, item)}
+                                  >
+                                    {item.icon && item.icon}
+                                    <Box as="div">
+                                      <Box
+                                        as="span"
+                                        css={{
+                                          fontWeight: item.rightSlotExtended
+                                            ? '700'
+                                            : '400',
+                                        }}
+                                      >
+                                        {item.titleExtended ?? item.title}
+                                      </Box>
+                                      {/* @hack only want first one */}
+                                      {item.rightSlot && itemIdx === 0 && (
+                                        <Box
+                                          as="span"
+                                          css={{
+                                            display: 'block',
+                                            // fontFamily: '$mono',
+                                            fontSize: '0.8rem',
+                                            mt: '$1',
+                                          }}
+                                        >
+                                          {item.rightSlotExtended ?? item.rightSlot}
+                                        </Box>
+                                      )}
+                                    </Box>
+                                  </StyledLink>
+                                </NextLink>
+                              </Flex>
+                            </Box>
+                            {item.separator && (
+                              <Separator margin="my2" size="full" />
+                            )}
+                          </React.Fragment>
+                        )
+                      })}
+                    </Box>
+                  )}
+                </Box>
+              </React.Fragment>
+            )
+          })}
+        {/* <Flex direction="row" justify="between" align="center">
               <Label
                 htmlFor="theme"
                 css={{ fontWeight: 'bold', lineHeight: '35px', marginRight: 15 }}
@@ -498,10 +497,8 @@ const MenuMobile = () => {
                 <option value="dark">Dark</option>
               </Select>
             </Flex> */}
-          </SheetContent>
-        </DialogPortal>
-      </Sheet>
-    </>
+      </SheetContent>
+    </Sheet>
   )
 }
 

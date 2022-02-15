@@ -275,11 +275,18 @@ const KBarActions = () => {
     !!items &&
       items.map((item) => {
         const { properties } = item
-        const { rollupShows__Tags, slug, title } = properties
+        const { rollupShows__Tags, seoKeywords, slug, title } = properties
+        const keywordsArr = slug.split('-')
+        if (seoKeywords) {
+          keywordsArr.push(seoKeywords)
+        }
+        const keywords = keywordsArr.join(' ')
+
         data.push({
           icon: <StarIcon />,
           id: slug,
-          keywords: slug.split('-').join(' '),
+          // keywords: slug.split('-').join(' '),
+          keywords,
           subtitle: rollupShows__Tags.join(', '),
           // title: `${title} *`,
           title,
@@ -332,15 +339,22 @@ const KBarActions = () => {
       items.map((item) => {
         const { properties } = item
 
-        const { dateEvent, slug, title } = properties
+        const { dateEvent, seoKeywords, slug, title } = properties
 
         const iso = parseISO(dateEvent?.start)
         const date = format(iso, `EEEE MM/dd hh:mma z`)
         const dateRoute = format(iso, `yyyy/MM/dd`)
+
+        const keywordsArr = slug.split('-')
+        if (seoKeywords) {
+          keywordsArr.push(seoKeywords)
+        }
+        const keywords = keywordsArr.join(' ')
+
         data.push({
           icon: <TicketIcon className="hi2ri" style={cssIconHeroToRadix} />,
           id: slug,
-          keywords: slug.split('-').join(' '),
+          keywords,
           subtitle: date,
           // title: `${title} *`,
           title,

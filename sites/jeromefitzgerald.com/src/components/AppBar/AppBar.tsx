@@ -111,7 +111,10 @@ const _AppBar = ({}) => {
             justify="center"
           >
             <Media at="xs">
-              <MenuMobile />
+              <>
+                {/* <h1>WUT</h1> */}
+                <MenuMobile />
+              </>
             </Media>
             <Media greaterThan="xs">
               <MenuDesktop />

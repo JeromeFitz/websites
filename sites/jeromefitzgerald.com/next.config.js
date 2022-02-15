@@ -21,8 +21,12 @@ const { withBuildInfo } = require('./scripts/buildInfo')
 const isLocal = process.env.DESIGN_SYSTEM__LINK === 'true' ? true : false
 const externals = [
   '@radix-ui/colors',
+  '@radix-ui/react-context',
+  '@radix-ui/react-dialog',
+  '@radix-ui/react-menu',
   '@stitches/react',
   '@types/react',
+  'kbar',
   'react',
   'react-dom',
   'react-hot-toast',

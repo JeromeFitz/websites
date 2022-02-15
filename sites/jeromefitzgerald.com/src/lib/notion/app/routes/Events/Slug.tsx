@@ -2,7 +2,6 @@
  * @refactor Massive Component(s)
  */
 import {
-  ArrowRightIcon,
   LocationMarkerIcon,
   MapIcon,
   TagIcon,
@@ -18,6 +17,7 @@ import {
 } from '@jeromefitz/design-system/components'
 import type { Event as EventProperties } from '@jeromefitz/notion/schema'
 import {
+  ArrowRightIcon,
   CalendarIcon,
   ClockIcon,
   // DotIcon,
