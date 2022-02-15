@@ -1,9 +1,14 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
   "regions": ["iad"],
   "public": false,
   "cleanUrls": true,
-  "github": { "enabled": false },
+  "github": {
+    "autoJobCancelation": true,
+    "enabled": false,
+    "silent": false
+  },
   "trailingSlash": false,
   "headers": [
     {

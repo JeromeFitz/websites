@@ -109,7 +109,17 @@ const WEBKIT_BACKGROUND__BREAK = {
   WebkitTextFillColor: 'inherit',
 }
 
+const cssIconHeroToRadix = {
+  marginTop: '1px',
+}
+const cssIconHeroToRadix1 = {
+  marginTop: '1px',
+  width: '1rem',
+}
+
 export {
+  cssIconHeroToRadix,
+  cssIconHeroToRadix1,
   nextWeirdRoutingSkipData,
   revalidate,
   BIG_HEAD_PROPS,

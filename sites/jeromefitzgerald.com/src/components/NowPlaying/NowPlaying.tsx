@@ -78,7 +78,7 @@ const NowPlaying = () => {
         <Heading as="h3" size="4" css={{ mb: '$3' }}>
           {title}
         </Heading>
-        <Separator css={{ margin: '0', width: '100% !important' }} />
+        <Separator decorative size="full" />
         <Paragraph css={{ my: '$4' }}>
           I listen to a lot of music. I do not think that makes me unique, however, I
           enjoy it all the same. If you’d like to see more of my listening habits
@@ -114,7 +114,7 @@ const NowPlaying = () => {
           >
             <span>{artist}</span>
           </Paragraph>
-          <Separator css={{ my: '1rem !important', width: '100% !important' }} />
+          <Separator decorative margin="my5" size="full" />
           <Paragraph
             size="2"
             css={{ color: '$hiContrast', fontWeight: 'bold', fontSize: '$6' }}
