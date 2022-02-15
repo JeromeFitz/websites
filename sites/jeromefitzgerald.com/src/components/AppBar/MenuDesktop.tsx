@@ -59,14 +59,7 @@ const itemStyles = {
     color: '$colors$violet1',
   },
 }
-/**
- * @hack ts-ignore
- *
- * Not sure why all of a sudden this is happening
- *  on custom `styled` components
- */
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
+
 // const DropdownMenuItemIndicator = styled(DropdownMenuPrimitive.ItemIndicator, {
 //   position: 'absolute',
 //   left: 0,
@@ -75,8 +68,6 @@ const itemStyles = {
 //   alignItems: 'center',
 //   justifyContent: 'center',
 // })
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 const DropdownMenuTriggerItem = styled(DropdownMenuPrimitive.TriggerItem, {
   '&[data-state="open"]': {
     backgroundColor: '$colors$violet4',
@@ -84,14 +75,10 @@ const DropdownMenuTriggerItem = styled(DropdownMenuPrimitive.TriggerItem, {
   },
   ...itemStyles,
 })
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 const DropdownMenuArrow = styled(DropdownMenuPrimitive.Arrow, {
   mx: '$3',
   fill: '$panel',
 })
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 const RightSlot = styled('div', {
   marginLeft: 'auto',
   marginRight: '$1',
