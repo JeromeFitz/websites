@@ -25,9 +25,9 @@ import {
   // Pencil2Icon,
   Share1Icon,
   SpeakerModerateIcon,
-  // SpeakerOffIcon,
+  SpeakerOffIcon,
   StarIcon,
-  // SunIcon,
+  SunIcon,
   TwitterLogoIcon,
 } from '@radix-ui/react-icons'
 import * as React from 'react'
@@ -37,6 +37,8 @@ import { cssIconHeroToRadix, cssIconHeroToRadix1 } from '~lib/constants'
 
 interface INavigationItem {
   icon?: React.ReactElement
+  // @todo
+  icons?: any
   iconKbarOverride?: React.ReactElement
   id?: string
   // dropdown
@@ -59,6 +61,8 @@ interface INavigation {
     active: boolean
     id: string
     icon?: React.ReactElement
+    // @todo
+    icons?: any
     iconKbarOverride?: React.ReactElement
     order: number
     title: string
@@ -369,7 +373,11 @@ const navigation: INavigation = {
         title: 'Toggle Sound',
         url: '/',
         icon: <SpeakerModerateIcon />,
-        // icon: <SpeakerOffIcon />,
+        icons: {
+          // @note this is reversed
+          true: <SpeakerOffIcon />,
+          false: <SpeakerModerateIcon />,
+        },
         keywords: 'Sound Off On',
         shortcut: ['t', 'a'],
         subtitle: '‎',
@@ -380,7 +388,11 @@ const navigation: INavigation = {
         title: 'Toggle Theme',
         url: '/',
         icon: <MoonIcon />,
-        // icon: <SunIcon />,
+        icons: {
+          // @note this is reversed
+          light: <MoonIcon />,
+          dark: <SunIcon />,
+        },
         keywords: 'Theme Light Dark Off On',
         shortcut: ['t', 't'],
         subtitle: '‎',

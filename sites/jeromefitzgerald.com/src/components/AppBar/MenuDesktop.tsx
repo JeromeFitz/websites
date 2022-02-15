@@ -16,14 +16,7 @@ import {
 } from '@jeromefitz/design-system/components'
 import { styled } from '@jeromefitz/design-system/stitches.config'
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
-import {
-  ChevronRightIcon,
-  HamburgerMenuIcon,
-  MoonIcon,
-  SpeakerModerateIcon,
-  SpeakerOffIcon,
-  SunIcon,
-} from '@radix-ui/react-icons'
+import { ChevronRightIcon, HamburgerMenuIcon } from '@radix-ui/react-icons'
 import { useTheme } from 'next-themes'
 import * as React from 'react'
 
@@ -94,7 +87,7 @@ const MenuDesktop = ({ handleSelect, navigationNonMutated }) => {
             aria-label="Open Menu"
             css={{ '&:hover': { cursor: 'pointer' } }}
             size="1"
-            variant="raised"
+            variant=""
           >
             <HamburgerMenuIcon />
           </IconButton>
@@ -163,8 +156,7 @@ const MenuDesktop = ({ handleSelect, navigationNonMutated }) => {
                                * @hack until this is all dynamic
                                */
                               if (item.id === 'settings-theme') {
-                                const icon =
-                                  theme === 'light' ? <MoonIcon /> : <SunIcon />
+                                const icon = item.icons[theme]
                                 return (
                                   <React.Fragment key={`dml-${k}-${itemIdx}`}>
                                     <DropdownMenuItem
@@ -187,11 +179,7 @@ const MenuDesktop = ({ handleSelect, navigationNonMutated }) => {
                                 )
                               }
                               if (item.id === 'settings-audio') {
-                                const icon = audio ? (
-                                  <SpeakerOffIcon />
-                                ) : (
-                                  <SpeakerModerateIcon />
-                                )
+                                const icon = item.icons[audio]
                                 return (
                                   <React.Fragment key={`dml-${k}-${itemIdx}`}>
                                     <DropdownMenuItem

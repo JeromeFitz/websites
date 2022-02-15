@@ -1,13 +1,10 @@
-import { AppBar, Avatar, Flex } from '@jeromefitz/design-system/components'
+import {
+  AppBar,
+  Avatar,
+  Container,
+  Flex,
+} from '@jeromefitz/design-system/components'
 import { darkTheme } from '@jeromefitz/design-system/stitches.config'
-// import {
-//   Cross1Icon,
-//   HamburgerMenuIcon,
-//   MoonIcon,
-//   SpeakerModerateIcon,
-//   SpeakerOffIcon,
-//   SunIcon,
-// } from '@radix-ui/react-icons'
 import { useTheme } from 'next-themes'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
@@ -149,42 +146,48 @@ const _AppBar = ({}) => {
       border
       glass
     >
-      <Flex css={{ width: '100%' }} direction="row" justify="between" align="start">
+      <Container size="4">
         <Flex
-          css={{
-            ml: '$2',
-            width: '100%',
-            '@bp1': {
-              ml: '$6',
-            },
-          }}
+          css={{ width: '100%' }}
+          direction="row"
           justify="between"
+          align="start"
         >
-          <NextLink href="/" passHref>
-            <a>
-              <Avatar
-                alt={`Avatar for Jerome (Bighead Dizzy)`}
-                src={`/static/images/bighead--jerome--dizzy.svg`}
-                aria-describedby="logoHeader"
-                size="4"
-                css={{
-                  '@bp1': {
-                    mr: '$1',
-                    width: '$7',
-                    height: '$7',
-                    '& span': {
-                      boxShadow: `inset ${Shadows[2]}`,
+          <Flex
+            css={{
+              ml: '$2',
+              width: '100%',
+              '@bp1': {
+                ml: '$6',
+              },
+            }}
+            justify="between"
+          >
+            <NextLink href="/" passHref>
+              <a>
+                <Avatar
+                  alt={`Avatar for Jerome (Bighead Dizzy)`}
+                  src={`/static/images/bighead--jerome--dizzy.svg`}
+                  aria-describedby="logoHeader"
+                  size="4"
+                  css={{
+                    '@bp1': {
+                      mr: '$1',
+                      width: '$7',
+                      height: '$7',
+                      '& span': {
+                        boxShadow: `inset ${Shadows[2]}`,
+                      },
                     },
-                  },
-                }}
-                variant="violet"
-                border="solid"
-                // onClick={handleClickLink}
-              />
-            </a>
-          </NextLink>
+                  }}
+                  variant="violet"
+                  border="solid"
+                  // onClick={handleClickLink}
+                />
+              </a>
+            </NextLink>
 
-          {/* <Flex direction="column" justify="center">
+            {/* <Flex direction="column" justify="center">
             <Button
               css={{
                 py: '$2',
@@ -202,35 +205,36 @@ const _AppBar = ({}) => {
               Menu: KBar
             </Button>
           </Flex> */}
-          <Flex
-            css={{
-              mr: '$2',
-              '@bp1': {
-                mr: '$6',
-              },
-            }}
-            direction="column"
-            justify="center"
-          >
-            <Media at="xs">
-              <>
-                {/* <h1>WUT</h1> */}
-                <MenuMobile
+            <Flex
+              css={{
+                mr: '$2',
+                '@bp1': {
+                  mr: '$6',
+                },
+              }}
+              direction="column"
+              justify="center"
+            >
+              <Media at="xs">
+                <>
+                  {/* <h1>WUT</h1> */}
+                  <MenuMobile
+                    handleSelect={handleSelect}
+                    navigationNonMutated={navigationNonMutated}
+                  />
+                </>
+              </Media>
+              <Media greaterThan="xs">
+                <MenuDesktop
                   handleSelect={handleSelect}
                   navigationNonMutated={navigationNonMutated}
                 />
-              </>
-            </Media>
-            <Media greaterThan="xs">
-              <MenuDesktop
-                handleSelect={handleSelect}
-                navigationNonMutated={navigationNonMutated}
-              />
-            </Media>
-            <MenuKBar />
+              </Media>
+              <MenuKBar />
+            </Flex>
           </Flex>
         </Flex>
-      </Flex>
+      </Container>
     </AppBar>
   )
 }

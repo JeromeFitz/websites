@@ -3,7 +3,7 @@ import {
   Box,
   Button,
   Flex,
-  IconButton,
+  // IconButton,
   Separator,
   Sheet,
   SheetContent,
@@ -19,14 +19,7 @@ import {
   keyframes,
   styled,
 } from '@jeromefitz/design-system/stitches.config'
-import {
-  Cross1Icon,
-  HamburgerMenuIcon,
-  MoonIcon,
-  SpeakerModerateIcon,
-  SpeakerOffIcon,
-  SunIcon,
-} from '@radix-ui/react-icons'
+import { Cross1Icon, HamburgerMenuIcon } from '@radix-ui/react-icons'
 import { useTheme } from 'next-themes'
 import NextLink from 'next/link'
 import * as React from 'react'
@@ -45,8 +38,8 @@ const slideOut = keyframes({
 const StyledCloseButton = styled(SheetClose, {
   backgroundColor: 'green',
   position: 'absolute',
-  top: '$2',
-  right: '$2',
+  bottom: '$4',
+  right: '$6',
   zIndex: '9999',
 })
 const StyledLink = styled('a', Flex, {
@@ -138,13 +131,14 @@ const MenuMobile = ({ handleSelect, navigationNonMutated }) => {
         {...handlers}
       >
         <StyledCloseButton asChild>
-          <IconButton
-            aria-label="Close Menu"
-            variant="ghost"
+          <Button
+            aria-label="Open Menu"
+            css={{ '&:hover': { cursor: 'pointer' } }}
+            size="1"
             onClick={() => openSet(false)}
           >
             <Cross1Icon />
-          </IconButton>
+          </Button>
         </StyledCloseButton>
         {navigationNonMutated &&
           Object.keys(navigationNonMutated).map((k) => {
@@ -215,7 +209,7 @@ const MenuMobile = ({ handleSelect, navigationNonMutated }) => {
                       {/* eslint-disable-next-line complexity */}
                       {items.map((item, itemIdx) => {
                         if (item.id === 'settings-theme') {
-                          const icon = theme === 'light' ? <MoonIcon /> : <SunIcon />
+                          const icon = item.icons[theme]
                           return (
                             <React.Fragment key={`dml-${k}-${itemIdx}`}>
                               <Box
@@ -275,11 +269,7 @@ const MenuMobile = ({ handleSelect, navigationNonMutated }) => {
                           )
                         }
                         if (item.id === 'settings-audio') {
-                          const icon = audio ? (
-                            <SpeakerOffIcon />
-                          ) : (
-                            <SpeakerModerateIcon />
-                          )
+                          const icon = item.icons[audio]
                           return (
                             <React.Fragment key={`dml-${k}-${itemIdx}`}>
                               <Box

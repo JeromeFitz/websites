@@ -9,10 +9,10 @@
   dependencies:
     "@jridgewell/trace-mapping" "^0.3.0"
 
-"@artsy/fresnel@3.3.0":
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/@artsy/fresnel/-/fresnel-3.3.0.tgz#1a89b2e053611d8a040015b1eeab12ce358411ba"
-  integrity sha512-7SwkDAuji0XutpIF/gLcdWNKnR58gU2Jl4E/2ypkgpq3xu7hr8JXMeGr3RbkZU2YStw/y7M1zOmuuYLO71nUng==
+"@artsy/fresnel@3.4.0":
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/@artsy/fresnel/-/fresnel-3.4.0.tgz#513f139e1d2326fd8a07e32c6fc9c03167cce91f"
+  integrity sha512-wK1pmOEm38oHfwlcyO26n2vr2QTMnn9AawfrJsixT4K4IjyGlI+aa8vS6osUiw2fIdaNIvBqPmXlsCVN+5/kNw==
 
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.12.13", "@babel/code-frame@^7.16.7":
   version "7.16.7"
@@ -436,10 +436,10 @@
   resolved "https://registry.yarnpkg.com/@jeromefitz/conventional-gitmoji/-/conventional-gitmoji-2.1.2-kbar-from-website.1.tgz#65963d5fcae76dac702749b77f009280bd6e7905"
   integrity sha512-5b7PtlavdqNUvVQ/knIJeHZnNQqAosypyUqsz6NFTdQxslJwvnfLsomWh2N+xBPcIRycepdM6w24i7iaE5TuRg==
 
-"@jeromefitz/design-system@2.1.2-kbar-from-website.2":
-  version "2.1.2-kbar-from-website.2"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/design-system/-/design-system-2.1.2-kbar-from-website.2.tgz#440e525cabfee04a646d8d06cb154d4085c3b5ec"
-  integrity sha512-tUpoxV+K9s2On4GjPXqrRH/V2K7pojt0cnJVyUrb6fUmLeGBq9nEB3zXa9HpVsHgoCvq+jPVd7MwTFZZqrmQ/A==
+"@jeromefitz/design-system@2.1.2-kbar-from-website.3":
+  version "2.1.2-kbar-from-website.3"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/design-system/-/design-system-2.1.2-kbar-from-website.3.tgz#e7c11890283dec4c63d0b2cea272b287461ff40a"
+  integrity sha512-ImAsUMN4E8gSnPUa1Li3rNPZpMbIMKd3WUuckX4vyED12Zr5KMnHS/cVeLUbV4kTOGzzzBSGrd/GnWmvOALJmA==
   dependencies:
     "@mantine/hooks" "3.6.7"
     "@radix-ui/colors" "0.1.8"
