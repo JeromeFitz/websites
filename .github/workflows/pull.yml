@@ -76,7 +76,7 @@ jobs:
       - name: '🔺️  Deploy (Preview)'
         id: pull-deploy-preview
         if: github.actor == 'JeromeFitz' || github.actor == 'dependabot' || github.actor == 'dependabot[bot]'
-        uses: JeromeFitz/websites/.github/actions/deploy@feature/kbar-ii
+        uses: JeromeFitz/websites/.github/actions/deploy@main
         with:
           GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
