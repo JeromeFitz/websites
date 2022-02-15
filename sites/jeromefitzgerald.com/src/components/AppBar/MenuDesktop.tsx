@@ -14,7 +14,7 @@ import {
   Flex,
   IconButton,
 } from '@jeromefitz/design-system/components'
-import { darkTheme, styled } from '@jeromefitz/design-system/stitches.config'
+import { styled } from '@jeromefitz/design-system/stitches.config'
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
 import {
   ChevronRightIcon,
@@ -25,13 +25,8 @@ import {
   SunIcon,
 } from '@radix-ui/react-icons'
 import { useTheme } from 'next-themes'
-// import NextLink from 'next/link'
-import { useRouter } from 'next/router'
 import * as React from 'react'
-import { useEffectOnce } from 'react-use'
-import { useSound } from 'use-sound'
 
-import { navigation } from '~config/navigation'
 import { useUI } from '~context/UI'
 
 const itemStyles = {
@@ -87,95 +82,9 @@ const RightSlot = styled('div', {
   '[data-disabled] &': { color: '$colors$slate8' },
 })
 
-const MenuDesktop = () => {
-  /**
-   * @question can we lift this and not duplicate
-   */
-  // const kbar = useKBar()
-  const router = useRouter()
-  const { theme, setTheme } = useTheme()
-  // const toasts = useToast()
-  const { audio, toggleAudio } = useUI()
-
-  const [playBleep] = useSound('/static/audio/bleep.mp3', {
-    soundEnabled: audio,
-    volume: 0.25,
-  })
-  const [playDisableSound] = useSound('/static/audio/disable-sound.mp3', {
-    soundEnabled: true,
-    volume: 0.25,
-  })
-  const [playEnableSound] = useSound('/static/audio/enable-sound.mp3', {
-    soundEnabled: true,
-    volume: 0.25,
-  })
-
-  // const handleToast = (props) => {
-  //   const { title } = props
-  //   if (toasts && toasts.current) {
-  //     toasts.current.message({
-  //       duration: 2000,
-  //       text: `Routing to: ${title}`,
-  //       type: 'default',
-  //     })
-  //   }
-  // }
-
-  const handleRouteInternal = (url) => {
-    playBleep()
-    void router.push(url)
-  }
-
-  const handleRouteExternal = (url) => {
-    playBleep()
-    void window.open(url)
-  }
-
-  const handleToggleTheme = React.useCallback(() => {
-    const newTheme = theme === 'dark' ? 'light' : 'dark'
-    document.documentElement.classList.toggle(darkTheme.className)
-    document.documentElement.classList.toggle('light-theme')
-    document.documentElement.style.setProperty('color-scheme', newTheme)
-    setTheme(newTheme)
-    playBleep()
-  }, [playBleep, setTheme, theme])
-
-  const handleToggleAudio = React.useCallback(() => {
-    audio ? playDisableSound() : playEnableSound()
-    toggleAudio()
-  }, [audio, playDisableSound, playEnableSound, toggleAudio])
-
-  /**
-   * @custom to dropdown
-   */
-  const [navigationNonMutated, navigationNonMutatedSet] = React.useState(null)
-  useEffectOnce(() => {
-    navigationNonMutatedSet(navigation)
-  })
-
-  const handleSelect = (event, item) => {
-    // console.dir(`> handleSelect`)
-    // console.dir(event)
-    // console.dir(item)
-    // void handleToast({ title: item?.titleExtended ?? item?.title })
-    // @todo turn into function return
-    if (item?.type === 'url.internal' && !!item.url) {
-      void handleRouteInternal(item.url)
-    }
-    if (item?.type === 'url.external' && !!item.url) {
-      void handleRouteExternal(item.url)
-    }
-    if (item?.type === 'audio') {
-      void handleToggleAudio()
-    }
-    if (item?.type === 'theme') {
-      void handleToggleTheme()
-    }
-
-    if (item.id === 'settings-audio' || item.id === 'settings-theme') {
-      event.preventDefault()
-    }
-  }
+const MenuDesktop = ({ handleSelect, navigationNonMutated }) => {
+  const { theme } = useTheme()
+  const { audio } = useUI()
 
   return (
     <Box>

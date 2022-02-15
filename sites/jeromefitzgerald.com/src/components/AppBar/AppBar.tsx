@@ -1,8 +1,23 @@
 import { AppBar, Avatar, Flex } from '@jeromefitz/design-system/components'
+import { darkTheme } from '@jeromefitz/design-system/stitches.config'
+// import {
+//   Cross1Icon,
+//   HamburgerMenuIcon,
+//   MoonIcon,
+//   SpeakerModerateIcon,
+//   SpeakerOffIcon,
+//   SunIcon,
+// } from '@radix-ui/react-icons'
+import { useTheme } from 'next-themes'
 import NextLink from 'next/link'
+import { useRouter } from 'next/router'
 import * as React from 'react'
+import { useEffectOnce } from 'react-use'
+import { useSound } from 'use-sound'
 
+import { navigation } from '~config/navigation'
 import { Media } from '~context/Media'
+import { useUI } from '~context/UI'
 import { Shadows } from '~styles/const'
 
 import { MenuDesktop } from './MenuDesktop'
@@ -10,6 +25,93 @@ import { MenuKBar } from './MenuKBar'
 import { MenuMobile } from './MenuMobile'
 
 const _AppBar = ({}) => {
+  /**
+   * @question can we lift this and not duplicate
+   */
+  const [navigationNonMutated, navigationNonMutatedSet] = React.useState(null)
+  useEffectOnce(() => {
+    navigationNonMutatedSet(navigation)
+  })
+  // const kbar = useKBar()
+  const router = useRouter()
+  const { theme, setTheme } = useTheme()
+  // const toasts = useToast()
+  const { audio, toggleAudio } = useUI()
+
+  const [playBleep] = useSound('/static/audio/bleep.mp3', {
+    soundEnabled: audio,
+    volume: 0.25,
+  })
+  const [playDisableSound] = useSound('/static/audio/disable-sound.mp3', {
+    soundEnabled: true,
+    volume: 0.25,
+  })
+  const [playEnableSound] = useSound('/static/audio/enable-sound.mp3', {
+    soundEnabled: true,
+    volume: 0.25,
+  })
+
+  // const handleToast = (props) => {
+  //   const { title } = props
+  //   if (toasts && toasts.current) {
+  //     toasts.current.message({
+  //       duration: 2000,
+  //       text: `Routing to: ${title}`,
+  //       type: 'default',
+  //     })
+  //   }
+  // }
+
+  const handleRouteInternal = (url) => {
+    playBleep()
+    void router.push(url)
+  }
+
+  const handleRouteExternal = (url) => {
+    playBleep()
+    void window.open(url)
+  }
+
+  const handleToggleTheme = React.useCallback(() => {
+    const newTheme = theme === 'dark' ? 'light' : 'dark'
+    document.documentElement.classList.toggle(darkTheme.className)
+    document.documentElement.classList.toggle('light-theme')
+    document.documentElement.style.setProperty('color-scheme', newTheme)
+    setTheme(newTheme)
+    playBleep()
+  }, [playBleep, setTheme, theme])
+
+  const handleToggleAudio = React.useCallback(() => {
+    audio ? playDisableSound() : playEnableSound()
+    toggleAudio()
+  }, [audio, playDisableSound, playEnableSound, toggleAudio])
+
+  const handleSelect = (event, item) => {
+    // console.dir(`> handleSelect`)
+    // console.dir(event)
+    // console.dir(item)
+    // void handleToast({ title: item?.titleExtended ?? item?.title })
+    // @todo turn into function return
+    if (item?.type === 'url.internal' && !!item.url) {
+      void handleRouteInternal(item.url)
+    }
+    if (item?.type === 'url.external' && !!item.url) {
+      void handleRouteExternal(item.url)
+    }
+    if (item?.type === 'audio') {
+      void handleToggleAudio()
+    }
+    if (item?.type === 'theme') {
+      void handleToggleTheme()
+    }
+    // event.preventDefault()
+    if (item.id === 'settings-audio' || item.id === 'settings-theme') {
+      event.preventDefault()
+      return
+    }
+    // void openSet(false)
+  }
+
   return (
     <AppBar
       css={{
@@ -113,11 +215,17 @@ const _AppBar = ({}) => {
             <Media at="xs">
               <>
                 {/* <h1>WUT</h1> */}
-                <MenuMobile />
+                <MenuMobile
+                  handleSelect={handleSelect}
+                  navigationNonMutated={navigationNonMutated}
+                />
               </>
             </Media>
             <Media greaterThan="xs">
-              <MenuDesktop />
+              <MenuDesktop
+                handleSelect={handleSelect}
+                navigationNonMutated={navigationNonMutated}
+              />
             </Media>
             <MenuKBar />
           </Flex>
