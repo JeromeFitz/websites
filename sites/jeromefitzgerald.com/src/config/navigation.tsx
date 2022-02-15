@@ -70,6 +70,7 @@ interface INavigation {
     subtitle?: string
     //
     items?: INavigationItem[]
+    type: 'url.internal' | 'url.external' | 'audio' | 'theme'
   }
 }
 
@@ -80,6 +81,7 @@ const navigation: INavigation = {
     icon: <CalendarIcon />,
     order: 0,
     title: 'Next Event',
+    type: 'url.internal',
     url: '/events',
     subtitle: '‎',
     settings: {
@@ -127,6 +129,7 @@ const navigation: INavigation = {
     icon: <StarIcon />,
     order: 10,
     title: 'Shows',
+    type: 'url.internal',
     url: '/shows',
     subtitle: '‎',
     settings: {
@@ -181,6 +184,7 @@ const navigation: INavigation = {
     ),
     order: 20,
     title: 'Podcasts',
+    type: 'url.internal',
     url: '/podcasts',
     subtitle: '‎',
     settings: {
@@ -225,6 +229,7 @@ const navigation: INavigation = {
     id: 'pages',
     order: 30,
     title: 'Pages',
+    type: 'url.internal',
     url: '/',
     subtitle: '‎',
     settings: {
