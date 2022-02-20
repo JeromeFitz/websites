@@ -18,6 +18,7 @@ function CommandKButton() {
     <Tooltip>
       <TooltipTrigger asChild>
         <Button
+          aria-label="Open Command Menu"
           css={{ '&:hover': { cursor: 'pointer' } }}
           onClick={() =>
             query.setVisualState((vs) =>
