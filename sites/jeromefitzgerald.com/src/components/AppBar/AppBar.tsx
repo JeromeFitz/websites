@@ -14,7 +14,7 @@ import { useSound } from 'use-sound'
 
 import { navigation } from '~config/navigation'
 import { Media } from '~context/Media'
-import { useUI } from '~context/UI'
+import useStore from '~store/useStore'
 import { Shadows } from '~styles/const'
 
 import { MenuDesktop } from './MenuDesktop'
@@ -33,19 +33,22 @@ const _AppBar = ({}) => {
   const router = useRouter()
   const { theme, setTheme } = useTheme()
   // const toasts = useToast()
-  const { audio, toggleAudio } = useUI()
+  const audio = useStore.use.audio()
+  const audioToggle = useStore.use.audioToggle()
+  const sounds = useStore.use.sounds()
+  const volume = useStore.use.volume()
 
-  const [playBleep] = useSound('/static/audio/bleep.mp3', {
+  const [playBleep] = useSound(sounds.bleep, {
     soundEnabled: audio,
-    volume: 0.25,
+    volume,
   })
-  const [playDisableSound] = useSound('/static/audio/disable-sound.mp3', {
+  const [playDisableSound] = useSound(sounds.disableSound, {
     soundEnabled: true,
-    volume: 0.25,
+    volume,
   })
-  const [playEnableSound] = useSound('/static/audio/enable-sound.mp3', {
+  const [playEnableSound] = useSound(sounds.enableSound, {
     soundEnabled: true,
-    volume: 0.25,
+    volume,
   })
 
   // const handleToast = (props) => {
@@ -80,8 +83,8 @@ const _AppBar = ({}) => {
 
   const handleToggleAudio = React.useCallback(() => {
     audio ? playDisableSound() : playEnableSound()
-    toggleAudio()
-  }, [audio, playDisableSound, playEnableSound, toggleAudio])
+    audioToggle()
+  }, [audio, audioToggle, playDisableSound, playEnableSound])
 
   const handleSelect = (event, item) => {
     // console.dir(`> handleSelect`)
@@ -164,7 +167,7 @@ const _AppBar = ({}) => {
             justify="between"
           >
             <NextLink href="/" passHref>
-              <a>
+              <a onClick={() => playBleep()}>
                 <Avatar
                   alt={`Avatar for Jerome (Bighead Dizzy)`}
                   src={`/static/images/bighead--jerome--dizzy.svg`}

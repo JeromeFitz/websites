@@ -24,7 +24,7 @@ import { useSound } from 'use-sound'
 
 import { Top, YearInReview } from '~components/Music'
 import Seo from '~components/Seo'
-import { useUI } from '~context/UI'
+import useStore from '~store/useStore'
 
 const plans = [
   {
@@ -54,10 +54,12 @@ const Music = () => {
     _find(plans, { time_range: data?.time_range })
   )
 
-  const { audio } = useUI()
-  const [playOn] = useSound('/static/audio/pop-up-on.mp3', {
+  const audio = useStore.use.audio()
+  const sounds = useStore.use.sounds()
+  const volume = useStore.use.volume()
+  const [playOn] = useSound(sounds.popUpOn, {
     soundEnabled: audio,
-    volume: 0.25,
+    volume,
   })
 
   const url = 'https://jeromefitzgerald.com/music'

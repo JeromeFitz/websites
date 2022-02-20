@@ -80,6 +80,7 @@
     "fast-json-stable-stringify": "2.1.0",
     "fathom-client": "3.4.1",
     "github-slugger": "1.4.0",
+    "immer": "9.0.12",
     "ioredis": "4.28.5",
     "kbar": "0.1.0-beta.27",
     "ms": "3.0.0-canary.1",
@@ -104,7 +105,8 @@
     "swr": "1.2.1",
     "title": "3.4.4",
     "use-sound": "4.0.1",
-    "uuid": "8.3.2"
+    "uuid": "8.3.2",
+    "zustand": "3.7.0"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "12.1.0",
@@ -113,6 +115,7 @@
     "@types/ms": "0.7.31",
     "@types/nprogress": "0.2.0",
     "@types/pluralize": "0.0.29",
+    "@types/ramda": "0.27.64",
     "@types/title": "3.4.1",
     "@types/uuid": "8.3.4",
     "eslint-config-next": "12.0.10",
@@ -127,6 +130,7 @@
       "~data": "src/data/",
       "~hooks": "src/hooks/",
       "~lib": "src/lib/",
+      "~store": "src/store/",
       "~styles": "src/styles/",
       "~utils": "src/utils/"
     },

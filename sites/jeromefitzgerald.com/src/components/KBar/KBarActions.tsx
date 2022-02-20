@@ -12,9 +12,9 @@ import useSWRImmutable from 'swr/immutable'
 import { useSound } from 'use-sound'
 
 import { navigation } from '~config/navigation'
-import { useUI } from '~context/UI'
 import { cssIconHeroToRadix } from '~lib/constants'
 import fetcher from '~lib/fetcher'
+import useStore from '~store/useStore'
 
 const RightSlot = styled('div', {
   verticalAlign: 'center',
@@ -32,19 +32,22 @@ const KBarActions = () => {
   const router = useRouter()
   const { theme, setTheme } = useTheme()
   // const toasts = useToast()
-  const { audio, toggleAudio } = useUI()
+  const audio = useStore.use.audio()
+  const audioToggle = useStore.use.audioToggle()
+  const sounds = useStore.use.sounds()
+  const volume = useStore.use.volume()
 
-  const [playBleep] = useSound('/static/audio/bleep.mp3', {
+  const [playBleep] = useSound(sounds.bleep, {
     soundEnabled: audio,
-    volume: 0.25,
+    volume,
   })
-  const [playDisableSound] = useSound('/static/audio/disable-sound.mp3', {
+  const [playDisableSound] = useSound(sounds.disableSound, {
     soundEnabled: true,
-    volume: 0.25,
+    volume,
   })
-  const [playEnableSound] = useSound('/static/audio/enable-sound.mp3', {
+  const [playEnableSound] = useSound(sounds.enableSound, {
     soundEnabled: true,
-    volume: 0.25,
+    volume,
   })
 
   // const handleToast = (props) => {
@@ -79,8 +82,8 @@ const KBarActions = () => {
 
   const handleToggleAudio = React.useCallback(() => {
     audio ? playDisableSound() : playEnableSound()
-    toggleAudio()
-  }, [audio, playDisableSound, playEnableSound, toggleAudio])
+    audioToggle()
+  }, [audio, audioToggle, playDisableSound, playEnableSound])
 
   /**
    * @note for each picked section move to different useEffect
@@ -217,9 +220,9 @@ const KBarActions = () => {
     const data = []
     data.push({
       id: 'settings-audio',
-      title: 'Toggle Sound',
+      title: audio ? 'Toggle Sound Off' : 'Toggle Sound On',
       url: '/',
-      icon: navigationStatic.settings.items[0].icons[audio],
+      icon: navigationStatic.settings.items[0].icons[audio.toString()],
       keywords: 'Sound Off On',
       shortcut: ['t', 'a'],
       subtitle: '‎',
@@ -227,7 +230,7 @@ const KBarActions = () => {
     })
     data.push({
       id: 'settings-theme',
-      title: 'Toggle Theme',
+      title: theme === 'light' ? 'Toggle Theme to Dark' : 'Toggle Theme to Light',
       url: '/',
       icon: navigationStatic.settings.items[1].icons[theme],
       keywords: 'Theme Light Dark Off On',

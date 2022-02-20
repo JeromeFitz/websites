@@ -9,26 +9,27 @@ import { SpeakerOffIcon, SpeakerModerateIcon } from '@radix-ui/react-icons'
 import * as React from 'react'
 import { useSound } from 'use-sound'
 
-import { useUI } from '~context/UI'
+import useStore from '~store/useStore'
 
-const ThemeToggle = (props) => {
-  const { audio, toggleAudio } = useUI()
-  const content = `Toggle audio ${audio ? 'on' : 'off'}`
-
-  const [playEnableSound] = useSound('/static/audio/enable-sound.mp3', {
+const ToggleAudio = (props) => {
+  const audio = useStore.use.audio()
+  const audioToggle = useStore.use.audioToggle()
+  const sounds = useStore.use.sounds()
+  const volume = useStore.use.volume()
+  const [playEnableSound] = useSound(sounds.enableSound, {
     soundEnabled: true,
-    volume: 0.25,
+    volume,
   })
-
-  const [playDisableSound] = useSound('/static/audio/disable-sound.mp3', {
+  const [playDisableSound] = useSound(sounds.disableSound, {
     soundEnabled: true,
-    volume: 0.25,
+    volume,
   })
+  const content = `Toggle audio ${audio ? 'off' : 'on'}`
 
   const handleClick = React.useCallback(() => {
     audio ? playDisableSound() : playEnableSound()
-    toggleAudio()
-  }, [audio, playDisableSound, playEnableSound, toggleAudio])
+    audioToggle()
+  }, [audio, audioToggle, playDisableSound, playEnableSound])
 
   return (
     <Tooltip>
@@ -50,4 +51,4 @@ const ThemeToggle = (props) => {
   )
 }
 
-export default ThemeToggle
+export default ToggleAudio

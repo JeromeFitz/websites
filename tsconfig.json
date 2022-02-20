@@ -47,6 +47,7 @@
       "~lib/*": ["src/lib/*"],
       "~pages/*": ["src/pages/*"],
       "~scripts/*": ["src/scripts/*"],
+      "~store/*": ["src/store/*"],
       "~styles/*": ["src/styles/*"],
       "~svg/*": ["src/svg/*"],
       "~theme/*": ["src/theme/*"],

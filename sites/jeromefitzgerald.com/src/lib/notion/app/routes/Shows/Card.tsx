@@ -23,9 +23,9 @@ import useSWR from 'swr'
 import { useSound } from 'use-sound'
 
 import { ImageWithBackgroundBlur } from '~components/Layout/ImageLead'
-import { useUI } from '~context/UI'
 import { IMAGE__PLACEHOLDER } from '~lib/constants'
 import fetcher from '~lib/fetcher'
+import useStore from '~store/useStore'
 
 // @refactor(types)
 interface Icon {
@@ -88,10 +88,12 @@ const ShowsCard = ({
     fallbackData,
   })
 
-  const { audio } = useUI()
-  const [playOn] = useSound('/static/audio/pop-down.mp3', {
+  const audio = useStore.use.audio()
+  const sounds = useStore.use.sounds()
+  const volume = useStore.use.volume()
+  const [playOn] = useSound(sounds.popDown, {
     soundEnabled: audio,
-    volume: 0.5,
+    volume,
   })
   const handleClick = () => playOn()
 
