@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { GetState, SetState } from 'zustand'
 
 import { StoreState } from '../useStore'
@@ -11,6 +10,7 @@ interface ICounterTest {
   counterIncrement: () => void
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const CounterTest = (set: SetState<StoreState>, get: GetState<StoreState>) => ({
   counterDecrement: () => {
     set((prev) => ({ counter: prev.counter > 1 ? prev.counter - 1 : 0 }))

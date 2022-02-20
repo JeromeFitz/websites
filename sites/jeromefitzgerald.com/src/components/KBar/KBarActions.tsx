@@ -14,7 +14,7 @@ import { useSound } from 'use-sound'
 import { navigation } from '~config/navigation'
 import { cssIconHeroToRadix } from '~lib/constants'
 import fetcher from '~lib/fetcher'
-import useStore from '~store/useStore'
+import useAudio from '~store/useAudio'
 
 const RightSlot = styled('div', {
   verticalAlign: 'center',
@@ -32,10 +32,10 @@ const KBarActions = () => {
   const router = useRouter()
   const { theme, setTheme } = useTheme()
   // const toasts = useToast()
-  const audio = useStore.use.audio()
-  const audioToggle = useStore.use.audioToggle()
-  const sounds = useStore.use.sounds()
-  const volume = useStore.use.volume()
+  const audio = useAudio.use.audio()
+  const audioToggle = useAudio.use.audioToggle()
+  const sounds = useAudio.use.sounds()
+  const volume = useAudio.use.volume()
 
   const [playBleep] = useSound(sounds.bleep, {
     soundEnabled: audio,

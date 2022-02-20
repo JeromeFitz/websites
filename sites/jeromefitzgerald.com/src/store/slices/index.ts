@@ -1,7 +1,9 @@
-import AudioSlice, { IAudio } from './audio'
-import CounterSlice, { ICounter } from './counter'
-import CounterTestSlice, { ICounterTest } from './counterTest'
-import ThemeSlice, { ITheme } from './theme'
+export { Audio } from './audio'
+export type { IAudio } from './audio'
 
-export type { IAudio, ICounter, ICounterTest, ITheme }
-export { AudioSlice, CounterSlice, CounterTestSlice, ThemeSlice }
+import Counter, { ICounter } from './counter'
+import CounterTest, { ICounterTest } from './counterTest'
+import Theme, { ITheme } from './theme'
+
+export type { ICounter, ICounterTest, ITheme }
+export { Counter, CounterTest, Theme }

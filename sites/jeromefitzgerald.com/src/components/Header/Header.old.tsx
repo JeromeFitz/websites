@@ -33,7 +33,7 @@ import { ToggleAudio, ToggleTheme } from '~components/Toggle'
  */
 import { navigationHeader } from '~config/index'
 import { Media } from '~context/Media'
-import useStore from '~store/useStore'
+import useAudio from '~store/useAudio'
 
 const Banner = dynamic(
   () => import('~components/Banner').then((mod: any) => mod.Banner),
@@ -53,9 +53,9 @@ const Header = () => {
   const router = useRouter()
   const isHompage = router.asPath === '/'
 
-  const audio = useStore.use.audio()
-  const sounds = useStore.use.sounds()
-  const volume = useStore.use.volume()
+  const audio = useAudio.use.audio()
+  const sounds = useAudio.use.sounds()
+  const volume = useAudio.use.volume()
 
   const [playPopDown] = useSound(sounds.popDown, {
     soundEnabled: audio,

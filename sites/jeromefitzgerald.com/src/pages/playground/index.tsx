@@ -9,6 +9,7 @@ import { darkTheme } from '@jeromefitz/design-system/stitches.config'
 import * as React from 'react'
 import { useSound } from 'use-sound'
 
+import useAudio from '~store/useAudio'
 import useStore from '~store/useStore'
 import useTheme from '~store/useTheme'
 
@@ -23,10 +24,10 @@ const PagesPlayground = () => {
   const counterIncrement = useStore.use.counterIncrement()
   const counterReset = useStore.use.counterReset()
 
-  const audio = useStore.use.audio()
-  const audioToggle = useStore.use.audioToggle()
-  const sounds = useStore.use.sounds()
-  const volume = useStore.use.volume()
+  const audio = useAudio.use.audio()
+  const audioToggle = useAudio.use.audioToggle()
+  const sounds = useAudio.use.sounds()
+  const volume = useAudio.use.volume()
 
   const theme = useTheme.use.theme()
   const themeSet = useTheme.use.themeSet()
@@ -52,7 +53,7 @@ const PagesPlayground = () => {
     playBleep()
   }, [playBleep, theme, themeSet])
 
-  // const state = useStore((state) => state)
+  // const state = useAudio((state) => state)
   // console.dir(`> state`)
   // console.dir(state)
 

@@ -2,22 +2,22 @@ import create from 'zustand'
 import { persist } from 'zustand/middleware'
 
 import createSelectors from './createSelectors'
-import type { ITheme } from './slices'
-import { Theme } from './slices'
+import type { IAudio } from './slices'
+import { Audio } from './slices'
 
-const useThemeBase = create<ITheme>(
+const useAudioBase = create<IAudio>(
   persist(
     (set, get) => {
       return {
-        ...Theme(set, get),
+        ...Audio(set, get),
       }
     },
     {
-      name: 'theme-storage',
+      name: 'audio',
       getStorage: () => localStorage,
     }
   )
 )
-const useTheme = createSelectors(useThemeBase)
+const useAudio = createSelectors(useAudioBase)
 
-export default useTheme
+export default useAudio

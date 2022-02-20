@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { GetState, SetState } from 'zustand'
 
 import { StoreState } from '../useStore'
@@ -12,6 +11,7 @@ const initState = {
   counter: 10,
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Counter = (set: SetState<StoreState>, get: GetState<StoreState>) => {
   const { counter } = initState
 

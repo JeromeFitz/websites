@@ -20,7 +20,7 @@ import { ChevronRightIcon, HamburgerMenuIcon } from '@radix-ui/react-icons'
 import { useTheme } from 'next-themes'
 import * as React from 'react'
 
-import useStore from '~store/useStore'
+import useAudio from '~store/useAudio'
 
 const itemStyles = {
   all: 'unset',
@@ -77,7 +77,7 @@ const RightSlot = styled('div', {
 
 const MenuDesktop = ({ handleSelect, navigationNonMutated }) => {
   const { theme } = useTheme()
-  const audio = useStore.use.audio()
+  const audio = useAudio.use.audio()
 
   return (
     <Box>

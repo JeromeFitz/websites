@@ -1,16 +1,15 @@
 import create from 'zustand'
 
 import createSelectors from './createSelectors'
-import type { IAudio, ICounter, ICounterTest } from './slices'
-import { AudioSlice, CounterSlice, CounterTestSlice } from './slices'
+import type { ICounter, ICounterTest } from './slices'
+import { Counter, CounterTest } from './slices'
 
-type StoreState = IAudio & ICounter & ICounterTest
+type StoreState = ICounter & ICounterTest
 
 const useStoreBase = create<StoreState>((set, get) => {
   return {
-    ...AudioSlice(set, get),
-    ...CounterSlice(set, get),
-    ...CounterTestSlice(set, get),
+    ...Counter(set, get),
+    ...CounterTest(set, get),
   }
 })
 const useStore = createSelectors(useStoreBase)

@@ -1,7 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { GetState, SetState } from 'zustand'
-
-import { ThemeState } from '../useTheme'
 
 type IThemeType = 'light' | 'dark'
 
@@ -14,12 +11,14 @@ const initState: Omit<ITheme, 'themeSet'> = {
   theme: 'light',
 }
 
-const Theme = (set: SetState<ThemeState>, get: GetState<ThemeState>) => {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const Theme = (set: SetState<ITheme>, get: GetState<ITheme>) => {
   const { theme } = initState
 
   return {
     theme,
     themeSet: (theme: IThemeType) => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       set((prev) => ({ theme }))
     },
   }

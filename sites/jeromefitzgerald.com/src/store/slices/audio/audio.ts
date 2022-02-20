@@ -1,44 +1,6 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { GetState, SetState } from 'zustand'
 
-import { StoreState } from '../useStore'
-
-type ISoundType =
-  | 'bite'
-  | 'bleep'
-  | 'boop'
-  | 'disableSound'
-  | 'drums909'
-  | 'dunDunDun'
-  | 'enableSound'
-  | 'fanfare'
-  | 'glugA'
-  | 'glugB'
-  | 'glug'
-  | 'guitarLoop'
-  | 'menuOpen'
-  | 'meow'
-  | 'pfff'
-  | 'plungerImmediate'
-  | 'plunger'
-  | 'popDown'
-  | 'popUpOff'
-  | 'popUpOn'
-  | 'pop'
-  | 'risingPops'
-  | 'switchOff'
-  | 'switchOn'
-
-type ISounds = {
-  [key in ISoundType]: string | undefined
-}
-
-interface IAudio {
-  audio: boolean
-  audioToggle: () => void
-  sounds: ISounds
-  volume: number
-}
+import type { IAudio } from './audio.types'
 
 // const soundBank = {
 //   bite: 'bite',
@@ -69,7 +31,12 @@ interface IAudio {
 
 const initState: Omit<IAudio, 'audioToggle'> = {
   audio: false,
-  // @hack(types) literally cannot take this.
+  /**
+   * @hack(types)
+   *
+   * okay, i forget what to do for dynamic types data, haha
+   * not a lot of data just make it static
+   */
   // sounds: Object.fromEntries(
   //   Object.keys(soundBank).map((sound) => [
   //     sound,
@@ -105,17 +72,17 @@ const initState: Omit<IAudio, 'audioToggle'> = {
   volume: 0.75,
 }
 
-const Audio = (set: SetState<StoreState>, get: GetState<StoreState>) => {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const Audio = (set: SetState<IAudio>, get: GetState<IAudio>) => {
   const { audio, sounds, volume } = initState
   return {
     audio,
     audioToggle: () => {
-      set((prev) => ({ audio: !prev.audio }))
+      set((prev: { audio: boolean }) => ({ audio: !prev.audio }))
     },
     sounds,
     volume,
   }
 }
 
-export type { IAudio }
-export default Audio
+export { Audio }
