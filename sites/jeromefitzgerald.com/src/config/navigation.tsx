@@ -32,7 +32,6 @@ import {
 } from '@radix-ui/react-icons'
 import * as React from 'react'
 
-// import { useUI } from '~context/UI'
 import { cssIconHeroToRadix, cssIconHeroToRadix1 } from '~lib/constants'
 
 interface INavigationItem {

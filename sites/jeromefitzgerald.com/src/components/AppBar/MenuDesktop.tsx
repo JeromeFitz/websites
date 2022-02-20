@@ -20,7 +20,7 @@ import { ChevronRightIcon, HamburgerMenuIcon } from '@radix-ui/react-icons'
 import { useTheme } from 'next-themes'
 import * as React from 'react'
 
-import { useUI } from '~context/UI'
+import useStore from '~store/useStore'
 
 const itemStyles = {
   all: 'unset',
@@ -77,7 +77,7 @@ const RightSlot = styled('div', {
 
 const MenuDesktop = ({ handleSelect, navigationNonMutated }) => {
   const { theme } = useTheme()
-  const { audio } = useUI()
+  const audio = useStore.use.audio()
 
   return (
     <Box>
@@ -178,7 +178,7 @@ const MenuDesktop = ({ handleSelect, navigationNonMutated }) => {
                                 )
                               }
                               if (item.id === 'settings-audio') {
-                                const icon = item.icons[audio]
+                                const icon = item.icons[audio.toString()]
                                 return (
                                   <React.Fragment key={`dml-${k}-${itemIdx}`}>
                                     <DropdownMenuItem

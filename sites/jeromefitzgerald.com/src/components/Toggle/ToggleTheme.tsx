@@ -11,15 +11,20 @@ import { useTheme } from 'next-themes'
 import * as React from 'react'
 import { useSound } from 'use-sound'
 
-import { useUI } from '~context/UI'
+import useStore from '~store/useStore'
 
 const ThemeToggle = (props) => {
   const { theme, setTheme } = useTheme()
   const content = `Toggle theme to ${theme === 'light' ? 'dark' : 'light'}`
 
-  const { audio } = useUI()
+  const audio = useStore.use.audio()
+  const sounds = useStore.use.sounds()
+  const volume = useStore.use.volume()
 
-  const [playBleep] = useSound('/static/audio/bleep.mp3', { soundEnabled: audio })
+  const [playBleep] = useSound(sounds.bleep, {
+    soundEnabled: audio,
+    volume,
+  })
 
   const handleClick = React.useCallback(() => {
     const newTheme = theme === 'dark' ? 'light' : 'dark'

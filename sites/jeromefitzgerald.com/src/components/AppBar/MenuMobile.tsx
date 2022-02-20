@@ -25,7 +25,7 @@ import NextLink from 'next/link'
 import * as React from 'react'
 import { useSwipeable } from 'react-swipeable'
 
-import { useUI } from '~context/UI'
+import useStore from '~store/useStore'
 
 const slideIn = keyframes({
   from: { transform: '$$transformValue' },
@@ -56,7 +56,7 @@ const MenuMobile = ({ handleSelect, navigationNonMutated }) => {
    * @custom to sheet
    */
   const { theme } = useTheme()
-  const { audio } = useUI()
+  const audio = useStore.use.audio()
   const [open, openSet] = React.useState(false)
   const handleSelectInternal = (event, item) => {
     void handleSelect(event, item)
@@ -269,7 +269,7 @@ const MenuMobile = ({ handleSelect, navigationNonMutated }) => {
                           )
                         }
                         if (item.id === 'settings-audio') {
-                          const icon = item.icons[audio]
+                          const icon = item.icons[audio.toString()]
                           return (
                             <React.Fragment key={`dml-${k}-${itemIdx}`}>
                               <Box
