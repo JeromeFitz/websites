@@ -14,7 +14,7 @@ const Providers = ({ children }) => {
     <MediaContextProvider>
       <ManagedUIContext>
         <ThemeProvider
-          disableTransitionOnChange
+          disableTransitionOnChange={false}
           attribute="class"
           value={{ light: 'light-theme', dark: darkTheme.className }}
           defaultTheme="system"
@@ -22,7 +22,6 @@ const Providers = ({ children }) => {
           <ToastProvider>
             <KBarProvider>
               {children}
-
               <Toaster />
             </KBarProvider>
           </ToastProvider>

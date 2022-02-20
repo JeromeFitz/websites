@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { ThemeProvider } from 'next-themes'
 import React, { FC, useMemo } from 'react'
 
 interface State {
@@ -218,11 +217,7 @@ const useUI = () => {
   return context
 }
 
-const ManagedUIContext: FC = ({ children }) => (
-  <UIProvider>
-    <ThemeProvider attribute="class">{children}</ThemeProvider>
-  </UIProvider>
-)
+const ManagedUIContext: FC = ({ children }) => <UIProvider>{children}</UIProvider>
 
 export { useUI, ManagedUIContext, UIContext, UIProvider }
 export type { State }
