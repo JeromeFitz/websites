@@ -1,6 +1,6 @@
 import {
   // useToast,
-  Box,
+  // Box,
   DropdownMenu,
   DropdownMenuTrigger,
   DropdownMenuContent,
@@ -21,6 +21,8 @@ import { useTheme } from 'next-themes'
 import * as React from 'react'
 // import useSound from 'use-sound'
 
+import { CommandKButton } from '~components/CommandKButton'
+import { ToggleAudio, ToggleTheme } from '~components/Toggle'
 import useStore from '~store/useStore'
 
 const itemStyles = {
@@ -101,8 +103,11 @@ const MenuDesktop = ({ handleSelect, navigationNonMutated }) => {
   // }
 
   return (
-    <Box>
+    <Flex gap="2">
       {/* <DropdownMenu onOpenChange={handleClick}> */}
+      <CommandKButton />
+      <ToggleTheme />
+      <ToggleAudio />
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <IconButton
@@ -264,7 +269,7 @@ const MenuDesktop = ({ handleSelect, navigationNonMutated }) => {
           <DropdownMenuArrow />
         </DropdownMenuContent>
       </DropdownMenu>
-    </Box>
+    </Flex>
   )
 }
 

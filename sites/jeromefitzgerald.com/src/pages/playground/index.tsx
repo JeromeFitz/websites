@@ -57,7 +57,7 @@ const PagesPlayground = () => {
   }
 
   const handleAudio = () => {
-    console.dir(`> sounds.bleep: ${sounds.bleep}`)
+    // console.dir(`> sounds.bleep: ${sounds.bleep}`)
     plays.playBleep()
     audioToggle()
   }

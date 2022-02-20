@@ -13,7 +13,7 @@ import { useSound } from 'use-sound'
 
 import useStore from '~store/useStore'
 
-const ThemeToggle = (props) => {
+const ToggleTheme = (props) => {
   const { theme, setTheme } = useTheme()
   const content = `Toggle theme to ${theme === 'light' ? 'dark' : 'light'}`
 
@@ -56,4 +56,4 @@ const ThemeToggle = (props) => {
   )
 }
 
-export default ThemeToggle
+export default ToggleTheme
