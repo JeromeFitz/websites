@@ -24,7 +24,7 @@ import { useSound } from 'use-sound'
 
 import { Top, YearInReview } from '~components/Music'
 import Seo from '~components/Seo'
-import useAudio from '~store/useAudio'
+import useStore from '~store/useStore'
 
 const plans = [
   {
@@ -54,9 +54,9 @@ const Music = () => {
     _find(plans, { time_range: data?.time_range })
   )
 
-  const audio = useAudio.use.audio()
-  const sounds = useAudio.use.sounds()
-  const volume = useAudio.use.volume()
+  const audio = useStore.use.audio()
+  const sounds = useStore.use.sounds()
+  const volume = useStore.use.volume()
   const [playOn] = useSound(sounds.popUpOn, {
     soundEnabled: audio,
     volume,

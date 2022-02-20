@@ -9,13 +9,13 @@ import { SpeakerOffIcon, SpeakerModerateIcon } from '@radix-ui/react-icons'
 import * as React from 'react'
 import { useSound } from 'use-sound'
 
-import useAudio from '~store/useAudio'
+import useStore from '~store/useStore'
 
 const ToggleAudio = (props) => {
-  const audio = useAudio.use.audio()
-  const audioToggle = useAudio.use.audioToggle()
-  const sounds = useAudio.use.sounds()
-  const volume = useAudio.use.volume()
+  const audio = useStore.use.audio()
+  const audioToggle = useStore.use.audioToggle()
+  const sounds = useStore.use.sounds()
+  const volume = useStore.use.volume()
   const [playEnableSound] = useSound(sounds.enableSound, {
     soundEnabled: true,
     volume,

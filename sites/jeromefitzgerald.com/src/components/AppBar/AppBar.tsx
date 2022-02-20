@@ -14,7 +14,7 @@ import { useSound } from 'use-sound'
 
 import { navigation } from '~config/navigation'
 import { Media } from '~context/Media'
-import useAudio from '~store/useAudio'
+import useStore from '~store/useStore'
 import { Shadows } from '~styles/const'
 
 import { MenuDesktop } from './MenuDesktop'
@@ -33,10 +33,10 @@ const _AppBar = ({}) => {
   const router = useRouter()
   const { theme, setTheme } = useTheme()
   // const toasts = useToast()
-  const audio = useAudio.use.audio()
-  const audioToggle = useAudio.use.audioToggle()
-  const sounds = useAudio.use.sounds()
-  const volume = useAudio.use.volume()
+  const audio = useStore.use.audio()
+  const audioToggle = useStore.use.audioToggle()
+  const sounds = useStore.use.sounds()
+  const volume = useStore.use.volume()
 
   const [playBleep] = useSound(sounds.bleep, {
     soundEnabled: audio,

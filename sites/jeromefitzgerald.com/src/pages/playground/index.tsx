@@ -5,13 +5,10 @@ import {
   Separator,
   Text,
 } from '@jeromefitz/design-system/components'
-import { darkTheme } from '@jeromefitz/design-system/stitches.config'
 import * as React from 'react'
 import { useSound } from 'use-sound'
 
-import useAudio from '~store/useAudio'
 import useStore from '~store/useStore'
-import useTheme from '~store/useTheme'
 
 const properties = {
   title: 'Playground',
@@ -24,36 +21,48 @@ const PagesPlayground = () => {
   const counterIncrement = useStore.use.counterIncrement()
   const counterReset = useStore.use.counterReset()
 
-  const audio = useAudio.use.audio()
-  const audioToggle = useAudio.use.audioToggle()
-  const sounds = useAudio.use.sounds()
-  const volume = useAudio.use.volume()
-
-  const theme = useTheme.use.theme()
-  const themeSet = useTheme.use.themeSet()
+  const audio = useStore.use.audio()
+  const audioToggle = useStore.use.audioToggle()
+  const sounds = useStore.use.sounds()
+  const volume = useStore.use.volume()
 
   const [playBleep] = useSound(sounds.bleep, {
+    soundEnabled: true,
+    volume,
+  })
+  // const [playMenuOpen] = useSound(sounds.menuOpen, {
+  //   soundEnabled: audio,
+  //   volume,
+  // })
+  const [playGlugDown] = useSound(sounds.glug, {
+    soundEnabled: audio,
+    playbackRate: 0.9,
+    volume,
+  })
+  const [playGlugUp] = useSound(sounds.glug, {
+    soundEnabled: audio,
+    playbackRate: 1.1,
+    volume,
+  })
+  const [playRisingPops] = useSound(sounds.risingPops, {
     soundEnabled: audio,
     volume,
   })
 
+  const plays = {
+    playBleep,
+    playGlugDown,
+    playGlugUp,
+    playRisingPops,
+  }
+
   const handleAudio = () => {
     console.dir(`> sounds.bleep: ${sounds.bleep}`)
-    playBleep()
+    plays.playBleep()
     audioToggle()
   }
 
-  const handleThemeToggle = React.useCallback(() => {
-    const newTheme = theme === 'dark' ? 'light' : 'dark'
-    document.documentElement.classList.toggle(darkTheme.className)
-    document.documentElement.classList.toggle('light-theme')
-    document.documentElement.style.setProperty('color-scheme', newTheme)
-    // setTheme(newTheme)
-    themeSet(newTheme)
-    playBleep()
-  }, [playBleep, theme, themeSet])
-
-  // const state = useAudio((state) => state)
+  // const state = useStore((state) => state)
   // console.dir(`> state`)
   // console.dir(state)
 
@@ -70,26 +79,37 @@ const PagesPlayground = () => {
           audioToggle
         </Button>
         <Text css={{ my: '$2' }}>Counter: {counter}</Text>
-        <Button size="2" variant="blue" onClick={counterDecrement}>
+        <Button
+          size="2"
+          variant="blue"
+          onClick={() => {
+            counterDecrement()
+            playGlugDown()
+          }}
+        >
           counterDecrement
         </Button>
-        <Button size="2" variant="blue" onClick={counterIncrement}>
+        <Button
+          size="2"
+          variant="blue"
+          onClick={() => {
+            counterIncrement()
+            playGlugUp()
+          }}
+        >
           counterIncrement
         </Button>
-        <Button size="2" variant="blue" onClick={counterReset}>
+        <Button
+          size="2"
+          variant="blue"
+          onClick={() => {
+            counterReset()
+            playRisingPops()
+          }}
+        >
           counterReset
         </Button>
         <Separator margin="my3" size="full" />
-        <Text css={{ my: '$2' }}>Theme is: {theme}</Text>
-        <Button size="2" variant="blue" onClick={handleThemeToggle}>
-          handleTheme
-        </Button>
-        <Button size="2" variant="blue" onClick={() => themeSet('dark')}>
-          themeSet(dark)
-        </Button>
-        <Button size="2" variant="blue" onClick={() => themeSet('light')}>
-          themeSet(light)
-        </Button>
       </Box>
     </>
   )

@@ -19,8 +19,9 @@ import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
 import { ChevronRightIcon, HamburgerMenuIcon } from '@radix-ui/react-icons'
 import { useTheme } from 'next-themes'
 import * as React from 'react'
+// import useSound from 'use-sound'
 
-import useAudio from '~store/useAudio'
+import useStore from '~store/useStore'
 
 const itemStyles = {
   all: 'unset',
@@ -77,10 +78,31 @@ const RightSlot = styled('div', {
 
 const MenuDesktop = ({ handleSelect, navigationNonMutated }) => {
   const { theme } = useTheme()
-  const audio = useAudio.use.audio()
+  const audio = useStore.use.audio()
+  // const sounds = useStore.use.sounds()
+  // const volume = useStore.use.volume()
+
+  // const [switchOnPlay] = useSound(sounds.popUpOn, {
+  //   soundEnabled: audio,
+  //   volume,
+  // })
+  // const [switchOffPlay] = useSound(sounds.popUpOff, {
+  //   soundEnabled: audio,
+  //   volume,
+  // })
+  // const [play, { stop }] = useSound(sounds.pop, {
+  //   soundEnabled: audio,
+  //   volume: 0.25,
+  // })
+
+  // const handleClick = (open) => {
+  //   open && switchOnPlay()
+  //   !open && switchOffPlay()
+  // }
 
   return (
     <Box>
+      {/* <DropdownMenu onOpenChange={handleClick}> */}
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <IconButton
@@ -114,6 +136,8 @@ const MenuDesktop = ({ handleSelect, navigationNonMutated }) => {
                           return (
                             <React.Fragment key={`dml-${k}-${itemIdx}`}>
                               <DropdownMenuItem
+                                // onMouseEnter={() => play()}
+                                // onMouseLeave={() => stop()}
                                 onSelect={(event) => handleSelect(event, item)}
                                 textValue={item.title}
                               >
@@ -135,7 +159,10 @@ const MenuDesktop = ({ handleSelect, navigationNonMutated }) => {
                   ) : (
                     <>
                       <DropdownMenu>
-                        <DropdownMenuTriggerItem>
+                        <DropdownMenuTriggerItem
+                        // onMouseEnter={() => play()}
+                        // onMouseLeave={() => stop()}
+                        >
                           <Flex align="center" justify="start" gap="2">
                             {section.icon && section.icon}
                             {section.title}
@@ -159,6 +186,8 @@ const MenuDesktop = ({ handleSelect, navigationNonMutated }) => {
                                 return (
                                   <React.Fragment key={`dml-${k}-${itemIdx}`}>
                                     <DropdownMenuItem
+                                      // onMouseEnter={() => play()}
+                                      // onMouseLeave={() => stop()}
                                       onSelect={(event) => handleSelect(event, item)}
                                       textValue={item.title}
                                     >
@@ -182,6 +211,8 @@ const MenuDesktop = ({ handleSelect, navigationNonMutated }) => {
                                 return (
                                   <React.Fragment key={`dml-${k}-${itemIdx}`}>
                                     <DropdownMenuItem
+                                      // onMouseEnter={() => play()}
+                                      // onMouseLeave={() => stop()}
                                       onSelect={(event) => handleSelect(event, item)}
                                       textValue={item.title}
                                     >
@@ -203,6 +234,8 @@ const MenuDesktop = ({ handleSelect, navigationNonMutated }) => {
                               return (
                                 <React.Fragment key={`dml-${k}-${itemIdx}`}>
                                   <DropdownMenuItem
+                                    // onMouseEnter={() => play()}
+                                    // onMouseLeave={() => stop()}
                                     onSelect={(event) => handleSelect(event, item)}
                                     textValue={item.title}
                                   >

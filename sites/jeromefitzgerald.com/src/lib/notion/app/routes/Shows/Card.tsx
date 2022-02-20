@@ -25,7 +25,7 @@ import { useSound } from 'use-sound'
 import { ImageWithBackgroundBlur } from '~components/Layout/ImageLead'
 import { IMAGE__PLACEHOLDER } from '~lib/constants'
 import fetcher from '~lib/fetcher'
-import useAudio from '~store/useAudio'
+import useStore from '~store/useStore'
 
 // @refactor(types)
 interface Icon {
@@ -88,9 +88,9 @@ const ShowsCard = ({
     fallbackData,
   })
 
-  const audio = useAudio.use.audio()
-  const sounds = useAudio.use.sounds()
-  const volume = useAudio.use.volume()
+  const audio = useStore.use.audio()
+  const sounds = useStore.use.sounds()
+  const volume = useStore.use.volume()
   const [playOn] = useSound(sounds.popDown, {
     soundEnabled: audio,
     volume,

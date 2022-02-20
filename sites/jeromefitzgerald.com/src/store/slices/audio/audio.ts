@@ -1,4 +1,7 @@
+import { produce } from 'immer'
 import { GetState, SetState } from 'zustand'
+
+import type { StoreState } from '~store/useStore'
 
 import type { IAudio } from './audio.types'
 
@@ -29,8 +32,8 @@ import type { IAudio } from './audio.types'
 //   switchOn: 'switch-on',
 // }
 
-const initState: Omit<IAudio, 'audioToggle'> = {
-  audio: false,
+const initialState: Omit<IAudio, 'audioToggle'> = {
+  audio: true,
   /**
    * @hack(types)
    *
@@ -69,17 +72,25 @@ const initState: Omit<IAudio, 'audioToggle'> = {
     switchOff: '/static/audio/switch-off.mp3',
     switchOn: '/static/audio/switch-on.mp3',
   },
-  volume: 0.75,
+  volume: 0.5,
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const Audio = (set: SetState<IAudio>, get: GetState<IAudio>) => {
-  const { audio, sounds, volume } = initState
+const Audio = (set: SetState<StoreState>, get: GetState<StoreState>) => {
+  const { audio, sounds, volume } = initialState
   return {
     audio,
-    audioToggle: () => {
-      set((prev: { audio: boolean }) => ({ audio: !prev.audio }))
-    },
+    audioToggle: () =>
+      set(
+        produce((state: StoreState) => {
+          state.audio = !state.audio
+        }),
+        false,
+        // @note(zustand) https://github.com/pmndrs/zustand/issues/705#issuecomment-1023693991
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        'audioToggle'
+      ),
     sounds,
     volume,
   }

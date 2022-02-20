@@ -1,6 +1,7 @@
+import { produce } from 'immer'
 import { GetState, SetState } from 'zustand'
 
-import { StoreState } from '../useStore'
+import { StoreState } from '~store/useStore'
 
 /**
  * @note testing that we can alter state outside of existing slice
@@ -12,12 +13,28 @@ interface ICounterTest {
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const CounterTest = (set: SetState<StoreState>, get: GetState<StoreState>) => ({
-  counterDecrement: () => {
-    set((prev) => ({ counter: prev.counter > 1 ? prev.counter - 1 : 0 }))
-  },
-  counterIncrement: () => {
-    set((prev) => ({ counter: prev.counter + 1 }))
-  },
+  counterDecrement: () =>
+    set(
+      produce((state: StoreState) => {
+        state.counter = state.counter > 1 ? --state.counter : 0
+      }),
+      false,
+      // @note(zustand) https://github.com/pmndrs/zustand/issues/705#issuecomment-1023693991
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      'counterDecrement'
+    ),
+  counterIncrement: () =>
+    set(
+      produce((state: StoreState) => {
+        ++state.counter
+      }),
+      false,
+      // @note(zustand) https://github.com/pmndrs/zustand/issues/705#issuecomment-1023693991
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      'counterIncrement'
+    ),
 })
 
 export type { ICounterTest }
