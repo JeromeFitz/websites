@@ -746,6 +746,13 @@
   dependencies:
     glob "7.1.7"
 
+"@next/eslint-plugin-next@12.1.0":
+  version "12.1.0"
+  resolved "https://registry.yarnpkg.com/@next/eslint-plugin-next/-/eslint-plugin-next-12.1.0.tgz#32586a11378b3ffa5a93ac40a3c44ad99d70e95a"
+  integrity sha512-WFiyvSM2G5cQmh32t/SiQuJ+I2O+FHVlK/RFw5b1565O2kEM/36EXncjt88Pa+X5oSc+1SS+tWxowWJd1lqI+g==
+  dependencies:
+    glob "7.1.7"
+
 "@next/swc-android-arm64@12.1.0":
   version "12.1.0"
   resolved "https://registry.yarnpkg.com/@next/swc-android-arm64/-/swc-android-arm64-12.1.0.tgz#865ba3a9afc204ff2bdeea49dd64d58705007a39"
@@ -2173,7 +2180,7 @@
     semver "^7.3.5"
     tsutils "^3.21.0"
 
-"@typescript-eslint/parser@5.12.0":
+"@typescript-eslint/parser@5.12.0", "@typescript-eslint/parser@^5.0.0":
   version "5.12.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-5.12.0.tgz#0ca669861813df99ce54916f66f524c625ed2434"
   integrity sha512-MfSwg9JMBojMUoGjUmX+D2stoQj1CBYTCP0qnnVtu9A+YQXVKNtLjasYh+jozOcrb/wau8TCfWOkQTiOAruBog==
@@ -2181,16 +2188,6 @@
     "@typescript-eslint/scope-manager" "5.12.0"
     "@typescript-eslint/types" "5.12.0"
     "@typescript-eslint/typescript-estree" "5.12.0"
-    debug "^4.3.2"
-
-"@typescript-eslint/parser@^5.0.0":
-  version "5.11.0"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-5.11.0.tgz#b4fcaf65513f9b34bdcbffdda055724a5efb7e04"
-  integrity sha512-x0DCjetHZYBRovJdr3U0zG9OOdNXUaFLJ82ehr1AlkArljJuwEsgnud+Q7umlGDFLFrs8tU8ybQDFocp/eX8mQ==
-  dependencies:
-    "@typescript-eslint/scope-manager" "5.11.0"
-    "@typescript-eslint/types" "5.11.0"
-    "@typescript-eslint/typescript-estree" "5.11.0"
     debug "^4.3.2"
 
 "@typescript-eslint/scope-manager@5.11.0":
@@ -3969,6 +3966,21 @@ eslint-config-next@12.0.10:
   integrity sha512-l1er6mwSo1bltjLwmd71p5BdT6k/NQxV1n4lKZI6xt3MDMrq7ChUBr+EecxOry8GC/rCRUtPpH8Ygs0BJc5YLg==
   dependencies:
     "@next/eslint-plugin-next" "12.0.10"
+    "@rushstack/eslint-patch" "^1.0.8"
+    "@typescript-eslint/parser" "^5.0.0"
+    eslint-import-resolver-node "^0.3.4"
+    eslint-import-resolver-typescript "^2.4.0"
+    eslint-plugin-import "^2.25.2"
+    eslint-plugin-jsx-a11y "^6.5.1"
+    eslint-plugin-react "^7.27.0"
+    eslint-plugin-react-hooks "^4.3.0"
+
+eslint-config-next@12.1.0:
+  version "12.1.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-next/-/eslint-config-next-12.1.0.tgz#8ace680dc5207e6ab6c915f3989adec122f582e7"
+  integrity sha512-tBhuUgoDITcdcM7xFvensi9I5WTI4dnvH4ETGRg1U8ZKpXrZsWQFdOKIDzR3RLP5HR3xXrLviaMM4c3zVoE/pA==
+  dependencies:
+    "@next/eslint-plugin-next" "12.1.0"
     "@rushstack/eslint-patch" "^1.0.8"
     "@typescript-eslint/parser" "^5.0.0"
     eslint-import-resolver-node "^0.3.4"
