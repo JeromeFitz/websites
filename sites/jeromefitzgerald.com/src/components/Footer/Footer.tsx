@@ -36,7 +36,7 @@ import IconLink from '~components/IconLink'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import buildInfo from '~config/buildInfo.json'
-import { useUI } from '~context/UI'
+import useStore from '~store/useStore'
 
 const { branch, isBranchMain, prerelease, version } = buildInfo
 
@@ -171,11 +171,14 @@ const socials = [
 ]
 
 const LinkFooter = ({ url, title, tooltip, tooltipContent }) => {
-  const { audio } = useUI()
-  const [playPopDown] = useSound('/static/audio/pop-down.mp3', {
+  const audio = useStore.use.audio()
+  const sounds = useStore.use.sounds()
+  const volume = useStore.use.volume()
+  const [playPopDown] = useSound(sounds.popDown, {
     soundEnabled: audio,
-    volume: 0.5,
+    volume,
   })
+
   const handleClickLink = () => playPopDown()
   return (
     <li>
@@ -217,10 +220,12 @@ const LinkFooter = ({ url, title, tooltip, tooltipContent }) => {
 
 const FooterImpl = () => {
   const ref = React.useRef()
-  const { audio } = useUI()
-  const [playPopDown] = useSound('/static/audio/pop-down.mp3', {
+  const audio = useStore.use.audio()
+  const sounds = useStore.use.sounds()
+  const volume = useStore.use.volume()
+  const [playPopDown] = useSound(sounds.popDown, {
     soundEnabled: audio,
-    volume: 0.5,
+    volume,
   })
   const handleClickLink = () => playPopDown()
   return (

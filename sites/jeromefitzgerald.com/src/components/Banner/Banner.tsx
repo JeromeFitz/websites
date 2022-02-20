@@ -10,8 +10,10 @@ import {
 // import { darkTheme } from '@jeromefitz/design-system/stitches.config'
 import { ArrowTopRightIcon, CalendarIcon } from '@radix-ui/react-icons'
 import NextLink from 'next/link'
+import { useSound } from 'use-sound'
 
 import { Media } from '~context/Media'
+import useStore from '~store/useStore'
 import { Shadows } from '~styles/const'
 
 // @todo(dynamic) notion api, upcoming event or evergreen info
@@ -26,10 +28,19 @@ const meta = {
 }
 
 const _Banner = () => {
+  const audio = useStore.use.audio()
+  const sounds = useStore.use.sounds()
+  const volume = useStore.use.volume()
+
+  const [playBleep] = useSound(sounds.bleep, {
+    soundEnabled: audio,
+    volume,
+  })
+
   return (
     <Container breakout css={{ zIndex: '99' }}>
       <NextLink href={meta.url} passHref>
-        <Link>
+        <Link onClick={() => playBleep()}>
           <Banner
             css={{
               // backgroundImage: Gradients.light.active,

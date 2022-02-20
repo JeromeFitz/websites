@@ -32,7 +32,6 @@ import {
 } from '@radix-ui/react-icons'
 import * as React from 'react'
 
-// import { useUI } from '~context/UI'
 import { cssIconHeroToRadix, cssIconHeroToRadix1 } from '~lib/constants'
 
 interface INavigationItem {
@@ -151,11 +150,20 @@ const navigation: INavigation = {
         type: 'url.internal',
       },
       {
+        id: 'jerome-and',
+        title: 'Jerome &',
+        url: '/shows/jerome-and',
+        icon: <StarIcon />,
+        subtitle: '(improv) Special Guests Every Show!',
+        keywords: 'And',
+        type: 'url.internal',
+      },
+      {
         id: 'jfle',
         title: 'JFLE (Jerome & Jesse LE)',
         url: '/shows/jfle',
         icon: <StarIcon />,
-        subtitle: '(sketch, musical)',
+        subtitle: '(sketch, musical) kewl doodz',
         type: 'url.internal',
       },
       {

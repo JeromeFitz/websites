@@ -6,7 +6,7 @@ import * as React from 'react'
 import { useSound } from 'use-sound'
 
 import { nextSeo } from '~config/index'
-import { useUI } from '~context/UI'
+import useStore from '~store/useStore'
 import getNextLink from '~utils/getNextLink'
 
 /**
@@ -25,10 +25,12 @@ const EmojiParser = dynamic(
 const domain = new URL(nextSeo.url)
 
 const TextAnnotationLink = ({ children, href }) => {
-  const { audio } = useUI()
-  const [playPopDown] = useSound('/static/audio/pop-down.mp3', {
+  const audio = useStore.use.audio()
+  const sounds = useStore.use.sounds()
+  const volume = useStore.use.volume()
+  const [playPopDown] = useSound(sounds.popDown, {
     soundEnabled: audio,
-    volume: 0.5,
+    volume,
   })
   const handleClickLink = () => playPopDown()
 

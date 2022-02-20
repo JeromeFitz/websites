@@ -76,6 +76,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
             <Container
               as="main"
               id="main"
+              css={{ minHeight: '100vh' }}
               size={{ '@initial': 2, '@bp1': 3, '@bp2': 4 }}
             >
               <Section>

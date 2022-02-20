@@ -12,6 +12,7 @@
       "~lib/*": ["./sites/jeromefitzgerald.com/src/lib/*"],
       "~pages/*": ["./sites/jeromefitzgerald.com/src/pages/*"],
       "~scripts/*": ["./sites/jeromefitzgerald.com/src/scripts/*"],
+      "~store/*": ["./sites/jeromefitzgerald.com/src/store/*"],
       "~styles/*": ["./sites/jeromefitzgerald.com/src/styles/*"],
       "~svg/*": ["./sites/jeromefitzgerald.com/src/svg/*"],
       "~theme/*": ["./sites/jeromefitzgerald.com/src/theme/*"],
