@@ -167,7 +167,7 @@ const _AppBar = ({}) => {
             justify="between"
           >
             <NextLink href="/" passHref>
-              <a>
+              <a onClick={() => playBleep()}>
                 <Avatar
                   alt={`Avatar for Jerome (Bighead Dizzy)`}
                   src={`/static/images/bighead--jerome--dizzy.svg`}

@@ -220,7 +220,7 @@ const KBarActions = () => {
     const data = []
     data.push({
       id: 'settings-audio',
-      title: 'Toggle Sound',
+      title: audio ? 'Toggle Sound Off' : 'Toggle Sound On',
       url: '/',
       icon: navigationStatic.settings.items[0].icons[audio.toString()],
       keywords: 'Sound Off On',
@@ -230,7 +230,7 @@ const KBarActions = () => {
     })
     data.push({
       id: 'settings-theme',
-      title: 'Toggle Theme',
+      title: theme === 'light' ? 'Toggle Theme to Dark' : 'Toggle Theme to Light',
       url: '/',
       icon: navigationStatic.settings.items[1].icons[theme],
       keywords: 'Theme Light Dark Off On',

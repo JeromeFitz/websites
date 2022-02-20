@@ -24,7 +24,7 @@ const ToggleAudio = (props) => {
     soundEnabled: true,
     volume,
   })
-  const content = `Toggle audio ${audio ? 'on' : 'off'}`
+  const content = `Toggle audio ${audio ? 'off' : 'on'}`
 
   const handleClick = React.useCallback(() => {
     audio ? playDisableSound() : playEnableSound()

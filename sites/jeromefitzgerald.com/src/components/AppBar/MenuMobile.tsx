@@ -24,6 +24,7 @@ import { useTheme } from 'next-themes'
 import NextLink from 'next/link'
 import * as React from 'react'
 import { useSwipeable } from 'react-swipeable'
+import { useSound } from 'use-sound'
 
 // import { CommandKButton } from '~components/CommandKButton'
 import { ToggleAudio, ToggleTheme } from '~components/Toggle'
@@ -59,6 +60,27 @@ const MenuMobile = ({ handleSelect, navigationNonMutated }) => {
    */
   const { theme } = useTheme()
   const audio = useStore.use.audio()
+
+  const sounds = useStore.use.sounds()
+  const volume = useStore.use.volume()
+
+  const [switchOnPlay] = useSound(sounds.popUpOn, {
+    soundEnabled: audio,
+    volume,
+  })
+  const [switchOffPlay] = useSound(sounds.popUpOff, {
+    soundEnabled: audio,
+    volume,
+  })
+
+  const handleMenuOpen = (open: boolean) => {
+    open && switchOnPlay()
+  }
+  const handleMenuClose = () => {
+    switchOffPlay()
+    openSet(false)
+  }
+
   const [open, openSet] = React.useState(false)
   const handleSelectInternal = (event, item) => {
     void handleSelect(event, item)
@@ -99,7 +121,7 @@ const MenuMobile = ({ handleSelect, navigationNonMutated }) => {
       {/* <CommandKButton /> */}
       <ToggleTheme />
       <ToggleAudio />
-      <Sheet open={open}>
+      <Sheet open={open} onOpenChange={handleMenuOpen}>
         <SheetTrigger asChild>
           <Button
             aria-label="Open Menu"
@@ -130,9 +152,8 @@ const MenuMobile = ({ handleSelect, navigationNonMutated }) => {
             },
           }}
           side="bottom"
-          onInteractOutside={() => openSet(false)}
-          onPointerDownOutside={() => openSet(false)}
-          onEscapeKeyDown={() => openSet(false)}
+          onPointerDownOutside={handleMenuClose}
+          onEscapeKeyDown={handleMenuClose}
           ref={refPassthrough}
           {...handlers}
         >
@@ -216,6 +237,10 @@ const MenuMobile = ({ handleSelect, navigationNonMutated }) => {
                         {items.map((item, itemIdx) => {
                           if (item.id === 'settings-theme') {
                             const icon = item.icons[theme]
+                            const text =
+                              theme === 'light'
+                                ? 'Toggle Theme to Dark'
+                                : 'Toggle Theme to Light'
                             return (
                               <React.Fragment key={`dml-${k}-${itemIdx}`}>
                                 <Box
@@ -247,7 +272,7 @@ const MenuMobile = ({ handleSelect, navigationNonMutated }) => {
                                               : '400',
                                           }}
                                         >
-                                          {item.titleExtended ?? item.title}
+                                          {text}
                                         </Box>
                                         {/* @hack only want first one */}
                                         {item.rightSlot && itemIdx === 0 && (
@@ -277,6 +302,9 @@ const MenuMobile = ({ handleSelect, navigationNonMutated }) => {
                           }
                           if (item.id === 'settings-audio') {
                             const icon = item.icons[audio.toString()]
+                            const text = audio
+                              ? 'Toggle Sound Off'
+                              : 'Toggle Sound On'
                             return (
                               <React.Fragment key={`dml-${k}-${itemIdx}`}>
                                 <Box
@@ -308,7 +336,7 @@ const MenuMobile = ({ handleSelect, navigationNonMutated }) => {
                                               : '400',
                                           }}
                                         >
-                                          {item.titleExtended ?? item.title}
+                                          {text}
                                         </Box>
                                         {/* @hack only want first one */}
                                         {item.rightSlot && itemIdx === 0 && (

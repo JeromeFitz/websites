@@ -45,7 +45,7 @@ const ToggleTheme = (props) => {
           variant="ghost"
           {...props}
         >
-          {theme === 'light' ? <MoonIcon /> : <SunIcon />}
+          {theme === 'light' ? <SunIcon /> : <MoonIcon />}
         </ButtonIcon>
       </TooltipTrigger>
       <TooltipContent align="end" sideOffset={5}>

@@ -19,7 +19,7 @@ import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
 import { ChevronRightIcon, HamburgerMenuIcon } from '@radix-ui/react-icons'
 import { useTheme } from 'next-themes'
 import * as React from 'react'
-// import useSound from 'use-sound'
+import { useSound } from 'use-sound'
 
 import { CommandKButton } from '~components/CommandKButton'
 import { ToggleAudio, ToggleTheme } from '~components/Toggle'
@@ -81,34 +81,35 @@ const RightSlot = styled('div', {
 const MenuDesktop = ({ handleSelect, navigationNonMutated }) => {
   const { theme } = useTheme()
   const audio = useStore.use.audio()
-  // const sounds = useStore.use.sounds()
-  // const volume = useStore.use.volume()
+  const sounds = useStore.use.sounds()
+  const volume = useStore.use.volume()
 
-  // const [switchOnPlay] = useSound(sounds.popUpOn, {
-  //   soundEnabled: audio,
-  //   volume,
-  // })
-  // const [switchOffPlay] = useSound(sounds.popUpOff, {
-  //   soundEnabled: audio,
-  //   volume,
-  // })
+  const [switchOnPlay] = useSound(sounds.popUpOn, {
+    soundEnabled: audio,
+    volume,
+  })
+  const [switchOffPlay] = useSound(sounds.popUpOff, {
+    soundEnabled: audio,
+    volume,
+  })
   // const [play, { stop }] = useSound(sounds.pop, {
   //   soundEnabled: audio,
   //   volume: 0.25,
   // })
 
-  // const handleClick = (open) => {
-  //   open && switchOnPlay()
-  //   !open && switchOffPlay()
-  // }
+  const handleMenuOpen = (open: boolean) => {
+    open && switchOnPlay()
+  }
+  const handleMenuClose = () => {
+    switchOffPlay()
+  }
 
   return (
     <Flex gap="2">
-      {/* <DropdownMenu onOpenChange={handleClick}> */}
       <CommandKButton />
       <ToggleTheme />
       <ToggleAudio />
-      <DropdownMenu>
+      <DropdownMenu onOpenChange={handleMenuOpen}>
         <DropdownMenuTrigger asChild>
           <IconButton
             aria-label="Open Menu"
@@ -118,7 +119,13 @@ const MenuDesktop = ({ handleSelect, navigationNonMutated }) => {
             <HamburgerMenuIcon />
           </IconButton>
         </DropdownMenuTrigger>
-        <DropdownMenuContent css={{ pl: '$1' }} alignOffset={-5} sideOffset={6}>
+        <DropdownMenuContent
+          css={{ pl: '$1' }}
+          alignOffset={-5}
+          sideOffset={6}
+          onEscapeKeyDown={handleMenuClose}
+          onPointerDownOutside={handleMenuClose}
+        >
           {navigationNonMutated &&
             Object.keys(navigationNonMutated).map((k) => {
               const section = navigationNonMutated[k]
@@ -188,6 +195,10 @@ const MenuDesktop = ({ handleSelect, navigationNonMutated }) => {
                                */
                               if (item.id === 'settings-theme') {
                                 const icon = item.icons[theme]
+                                const text =
+                                  theme === 'light'
+                                    ? 'Toggle Theme to Dark'
+                                    : 'Toggle Theme to Light'
                                 return (
                                   <React.Fragment key={`dml-${k}-${itemIdx}`}>
                                     <DropdownMenuItem
@@ -199,7 +210,7 @@ const MenuDesktop = ({ handleSelect, navigationNonMutated }) => {
                                       <Flex align="center" justify="start" gap="2">
                                         {/* {item.icon && item.icon} */}
                                         {item.icon && icon}
-                                        {item.title}
+                                        {text}
                                       </Flex>
                                       {item.rightSlot && (
                                         <>
@@ -213,6 +224,9 @@ const MenuDesktop = ({ handleSelect, navigationNonMutated }) => {
                               }
                               if (item.id === 'settings-audio') {
                                 const icon = item.icons[audio.toString()]
+                                const text = audio
+                                  ? 'Toggle Sound Off'
+                                  : 'Toggle Sound On'
                                 return (
                                   <React.Fragment key={`dml-${k}-${itemIdx}`}>
                                     <DropdownMenuItem
@@ -224,7 +238,7 @@ const MenuDesktop = ({ handleSelect, navigationNonMutated }) => {
                                       <Flex align="center" justify="start" gap="2">
                                         {/* {item.icon && item.icon} */}
                                         {item.icon && icon}
-                                        {item.title}
+                                        {text}
                                       </Flex>
                                       {item.rightSlot && (
                                         <>
