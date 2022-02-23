@@ -25,7 +25,7 @@ const LinkInternal = (props: any) => {
   const link = getNextLink(href)
   const text = getText(children)
   return (
-    <NextLink as={link.as} href={link.href}>
+    <NextLink as={link.as} href={link.href} passHref>
       <Link type="icon" {...props}>
         {text}
       </Link>
