@@ -1,3 +1,3 @@
-const ci = ['semantic-prerelease-20220223']
+const ci = []
 
 module.exports = ci
