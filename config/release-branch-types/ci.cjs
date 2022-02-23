@@ -1,3 +1,3 @@
-const ci = ['workflow-release']
+const ci = ['semantic-prerelease-20220223']
 
 module.exports = ci
