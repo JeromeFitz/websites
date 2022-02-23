@@ -421,17 +421,22 @@
     pretty-quick "3.1.3"
     typescript "4.5.5"
 
-"@jeromefitz/conventional-gitmoji@2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/conventional-gitmoji/-/conventional-gitmoji-2.1.2.tgz#cd3a7c725b90f9068a976e68b107b19e345758e1"
-  integrity sha512-gzZmiQWxB516nnVlecYQPWdIwEobjCCrwQbtHO8qfJ2VLbUwU9clwsVDSInUR/9l7EnPL3OZsW0x9mSaeuC9YQ==
-
-"@jeromefitz/design-system@2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/design-system/-/design-system-2.1.2.tgz#c335f863a36935cd05e23ca22fe66b019bdcf3d3"
-  integrity sha512-dOtbdhUwR1gHhrAzWrca8iqCJQIe1tk+KHoJcYrthp/25dA/gSnDwllZPEsFxma7izQ9meYU4RgMqu9AZ6UFDg==
+"@jeromefitz/conventional-gitmoji@3.0.0-contribs.2":
+  version "3.0.0-contribs.2"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/conventional-gitmoji/-/conventional-gitmoji-3.0.0-contribs.2.tgz#960eb6988d0c5a0c8df2f3becd6d460fd1a1c695"
+  integrity sha512-ZnQQ5O+B22qtytQ9Xy/qTGdnYLENsmSipe3aqKkWHtK5aaLtjox17jlvyB4l+6EmqenIFYveZECtH0FsalNEqw==
   dependencies:
-    "@mantine/hooks" "3.6.7"
+    grapheme-splitter "1.0.4"
+    lodash "4.17.21"
+    semantic-release "19.0.2"
+    title "3.4.4"
+
+"@jeromefitz/design-system@2.1.4-contribs.1":
+  version "2.1.4-contribs.1"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/design-system/-/design-system-2.1.4-contribs.1.tgz#649c24436be3b8d7a6ebdb65d24d26509014c6c9"
+  integrity sha512-kYD/uBCS878KGF+HtoNbcQzdoYKyBfdz60jz+tr+wsGQkxhV7um+K6ryJLWAR38HOVDfbQJZClO5VjtT77YrsQ==
+  dependencies:
+    "@mantine/hooks" "3.6.9"
     "@radix-ui/colors" "0.1.8"
     "@radix-ui/react-accessible-icon" "0.1.3"
     "@radix-ui/react-accordion" "0.1.5"
@@ -457,7 +462,7 @@
     "@radix-ui/react-tooltip" "0.1.6"
     "@radix-ui/react-utils" "0.0.5"
     "@radix-ui/react-visually-hidden" "0.1.3"
-    "@react-aria/interactions" "3.7.0"
+    "@react-aria/interactions" "3.8.1"
     "@stitches/react" "1.2.6"
     emoji-api "2.0.1"
     emoji-regex "10.0.0"
@@ -467,12 +472,12 @@
     react-hot-toast "2.2.0"
     react-use "17.3.2"
     smoothscroll-polyfill "0.4.4"
-    swr "1.2.1"
+    swr "1.2.2"
 
-"@jeromefitz/git-cz@14.1.2":
-  version "14.1.2"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/git-cz/-/git-cz-14.1.2.tgz#beb01b07c41539037bff2c29ff6d4faa71169443"
-  integrity sha512-Ozjf+Bu9WxaGoKYFXtGJ1Z2xnV9xRqCvHTqC0bvaXEW8rMnNgZty70KmalwHeRXKz8xzzKlzrN3cdxHdMSYvAw==
+"@jeromefitz/git-cz@14.1.3-contribs.1":
+  version "14.1.3-contribs.1"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/git-cz/-/git-cz-14.1.3-contribs.1.tgz#c9f8214077600280a04410b73a375fe1f58d4ac9"
+  integrity sha512-aL2+z8txZzvE5ts7AQxtZDEL6kM2TiIpEz5oRqKPvSEj5FfXjI9P+olwz3WmtkTaBjKn8/MvDzORskJan2k0xg==
   dependencies:
     chalk "5.0.0"
     chalk-pipe "5.1.1"
@@ -496,10 +501,23 @@
     github-slugger "1.4.0"
     lodash "4.17.21"
 
-"@jeromefitz/semantic@8.1.2":
-  version "8.1.2"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/semantic/-/semantic-8.1.2.tgz#fcdad57ff3a84f0ff8aeb6fd26560f4cdd1dbe1a"
-  integrity sha512-QOlT2aou0Xz0PcBc8ePyNmw3EvK/DABOD9wEHcp2XtQr9jaYSyASuTutVPR7MD7czvCMGrtSV0EHdJqWfE+A3g==
+"@jeromefitz/release-notes-generator@1.0.0-contribs.2":
+  version "1.0.0-contribs.2"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/release-notes-generator/-/release-notes-generator-1.0.0-contribs.2.tgz#a87b007ba9067cb757edaee4fbd356af591d8195"
+  integrity sha512-MX2LhqWnBOYcJQ0Nddz/gXsd2WIIbiK0cn++yNGcsZwqurAWBQsYHQ2+qC7f44o4xC5SwsfYIb5XIrUleh81Lw==
+  dependencies:
+    "@octokit/core" "3.5.1"
+    conventional-commits-filter "2.0.7"
+    conventional-commits-parser "3.2.4"
+    date-fns "2.28.0"
+    lodash "4.17.21"
+    read-pkg-up "7.0.1"
+    semver "7.3.5"
+
+"@jeromefitz/semantic@9.0.0-contribs.2":
+  version "9.0.0-contribs.2"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/semantic/-/semantic-9.0.0-contribs.2.tgz#02dbdeb61193b9c06378e5af16006ef0c948abf2"
+  integrity sha512-4i6ak//wrZSHeT/269+PdY9aMaQvXEveqmNJQ/RiZ8nDMP0fkAzMNbJ8H6QX9bC7/ARZEE/aBhK6stBQI/eTJA==
   dependencies:
     "@octokit/core" "3.5.1"
     "@semantic-release/commit-analyzer" "9.0.2"
@@ -716,11 +734,6 @@
   dependencies:
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
-
-"@mantine/hooks@3.6.7":
-  version "3.6.7"
-  resolved "https://registry.yarnpkg.com/@mantine/hooks/-/hooks-3.6.7.tgz#fb5b7267e118c12f2f62130439e374893014214d"
-  integrity sha512-fcCsz0KK3JK68pCf9AEj4sB0dFJTCSdSYR14uEmv1qRis0NHayNHf2xkcwrXRm28F47rgTl4o8zwub37M/A/Xg==
 
 "@mantine/hooks@3.6.9":
   version "3.6.9"
@@ -1717,44 +1730,44 @@
     tiny-warning "^1.0.3"
     tslib "^2.3.0"
 
-"@react-aria/interactions@3.7.0":
-  version "3.7.0"
-  resolved "https://registry.yarnpkg.com/@react-aria/interactions/-/interactions-3.7.0.tgz#eb19c1068b557a6b6df1e1c4abef07de719e9f25"
-  integrity sha512-Xomchjb9bqvh3ocil+QCEYFSxsTy8PHEz43mNP6z2yuu3UqTpl2FsWfyKgF/Yy0WKVkyV2dO2uz758KJTCLZhw==
+"@react-aria/interactions@3.8.1":
+  version "3.8.1"
+  resolved "https://registry.yarnpkg.com/@react-aria/interactions/-/interactions-3.8.1.tgz#d86aa8fcf93b38e2cf61dda7ef04c9e0a0527056"
+  integrity sha512-oE6Yo5BTiqInQCTnERMOALwULJy6TbBv+XXEAmifKWBvjbKSb6jN91lhWOruuYZpWAV+eAawHAk/u/KMzwVVEQ==
   dependencies:
     "@babel/runtime" "^7.6.2"
-    "@react-aria/utils" "^3.10.0"
-    "@react-types/shared" "^3.10.0"
+    "@react-aria/utils" "^3.11.2"
+    "@react-types/shared" "^3.11.1"
 
-"@react-aria/ssr@^3.1.0":
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/@react-aria/ssr/-/ssr-3.1.0.tgz#b7163e6224725c30121932a8d1422ef91d1fab22"
-  integrity sha512-RxqQKmE8sO7TGdrcSlHTcVzMP450hqowtBSd2bBS9oPlcokVkaGq28c3Rwa8ty5ctw4EBCjXqjP7xdcKMGDzug==
+"@react-aria/ssr@^3.1.2":
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/@react-aria/ssr/-/ssr-3.1.2.tgz#665a6fd56385068c7417922af2d0d71b0618e52d"
+  integrity sha512-amXY11ImpokvkTMeKRHjsSsG7v1yzzs6yeqArCyBIk60J3Yhgxwx9Cah+Uu/804ATFwqzN22AXIo7SdtIaMP+g==
   dependencies:
     "@babel/runtime" "^7.6.2"
 
-"@react-aria/utils@^3.10.0":
-  version "3.11.0"
-  resolved "https://registry.yarnpkg.com/@react-aria/utils/-/utils-3.11.0.tgz#215ea23a5435672a822cd713bdb8217972c5c80b"
-  integrity sha512-4yFA8E9xqDCUlolYSsoyp/qxrkiQrnEqx1BQOrKDuicpW7MBJ39pJC23YFMpyK2a6xEptc6xJEeIEFJXp57jJw==
+"@react-aria/utils@^3.11.2":
+  version "3.11.2"
+  resolved "https://registry.yarnpkg.com/@react-aria/utils/-/utils-3.11.2.tgz#95747fb362bfcbc591270e5c67b7a38eaa60c187"
+  integrity sha512-mbOIPJ2zXgSMQTVXUenl8A8oOUvXPQPmlJv1OqkYPXf74yI5MagpWqbekj8t9Mwrbnj87LL3dY39pWjvlHoJ+w==
   dependencies:
     "@babel/runtime" "^7.6.2"
-    "@react-aria/ssr" "^3.1.0"
-    "@react-stately/utils" "^3.3.0"
-    "@react-types/shared" "^3.10.1"
+    "@react-aria/ssr" "^3.1.2"
+    "@react-stately/utils" "^3.4.1"
+    "@react-types/shared" "^3.11.1"
     clsx "^1.1.1"
 
-"@react-stately/utils@^3.3.0":
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/@react-stately/utils/-/utils-3.3.0.tgz#99866c5788539268a06035acd5925b25bb4cedde"
-  integrity sha512-f//Y8q0+FFcS04xvCNvbba7WWRLHzj2AegLgdgwTxsnk9Gb+AyuasdRrRY7bGQhdHuEJ7OIiQZ9EQWndDbrTcg==
+"@react-stately/utils@^3.4.1":
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/@react-stately/utils/-/utils-3.4.1.tgz#56f049aa1704d338968b5973c796ee606e9c0c62"
+  integrity sha512-mjFbKklj/W8KRw1CQSpUJxHd7lhUge4i00NwJTwGxbzmiJgsTWlKKS/1rBf48ey9hUBopXT5x5vG/AxQfWTQug==
   dependencies:
     "@babel/runtime" "^7.6.2"
 
-"@react-types/shared@^3.10.0", "@react-types/shared@^3.10.1":
-  version "3.10.1"
-  resolved "https://registry.yarnpkg.com/@react-types/shared/-/shared-3.10.1.tgz#16cd3038361dee63f351fa4d0fd25d90480a149b"
-  integrity sha512-U3dLJtstvOiZ8XLrWdNv9WXuruoDyfIfSXguTs9N0naDdO+M0MIbt/1Hg7Toe43ueAe56GM14IFL+S0/jhv8ow==
+"@react-types/shared@^3.11.1":
+  version "3.11.1"
+  resolved "https://registry.yarnpkg.com/@react-types/shared/-/shared-3.11.1.tgz#fbe4f28b28f2b22461bbe88c4cce5d1d44d3ae64"
+  integrity sha512-2wwUnvLFsWPiNXK5kiKfS3+k6mtWXAtfp76haIow3OyyFLEezWD9F9ZsCtyjNG+R+JlRcmvQRgRjQaGoeUWLKg==
 
 "@rushstack/eslint-patch@^1.0.8":
   version "1.1.0"
@@ -3296,7 +3309,7 @@ conventional-changelog-writer@^5.0.0:
     split "^1.0.0"
     through2 "^4.0.0"
 
-conventional-commits-filter@^2.0.0, conventional-commits-filter@^2.0.7:
+conventional-commits-filter@2.0.7, conventional-commits-filter@^2.0.0, conventional-commits-filter@^2.0.7:
   version "2.0.7"
   resolved "https://registry.yarnpkg.com/conventional-commits-filter/-/conventional-commits-filter-2.0.7.tgz#f8d9b4f182fce00c9af7139da49365b136c8a0b3"
   integrity sha512-ASS9SamOP4TbCClsRHxIHXRfcGCnIoQqkvAzCSbZzTFLfcTqJVugB0agRgsEELsqaeWgsXv513eS116wnlSSPA==
@@ -3304,7 +3317,7 @@ conventional-commits-filter@^2.0.0, conventional-commits-filter@^2.0.7:
     lodash.ismatch "^4.4.0"
     modify-values "^1.0.0"
 
-conventional-commits-parser@^3.2.3:
+conventional-commits-parser@3.2.4, conventional-commits-parser@^3.2.3:
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/conventional-commits-parser/-/conventional-commits-parser-3.2.4.tgz#a7d3b77758a202a9b2293d2112a8d8052c740972"
   integrity sha512-nK7sAtfi+QXbxHCYfhpZsfRtaitZLIA6889kFIouLvz6repszQDgxBu7wf2WbU+Dco7sAnNCJYERCwt54WPC2Q==
@@ -7913,7 +7926,7 @@ read-package-json@^4.1.1:
     normalize-package-data "^3.0.0"
     npm-normalize-package-bin "^1.0.0"
 
-read-pkg-up@^7.0.0, read-pkg-up@^7.0.1:
+read-pkg-up@7.0.1, read-pkg-up@^7.0.0, read-pkg-up@^7.0.1:
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/read-pkg-up/-/read-pkg-up-7.0.1.tgz#f3a6135758459733ae2b95638056e1854e7ef507"
   integrity sha512-zK0TB7Xd6JpCLmlLmufqykGE+/TlOePD6qKClNW7hHDKFh/J7/7gCWGR7joEQEW1bKq3a3yUZSObOoWLFQ4ohg==
@@ -8292,7 +8305,7 @@ semver-regex@^3.1.2:
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.7.1.tgz#a954f931aeba508d307bbf069eff0c01c96116f7"
   integrity sha512-sauaDf/PZdVgrLTNYHRtpXa1iRiKcaebiKQ1BJdpQlWH2lCvexQdX55snPFyK7QzpudqbCI0qXFfOasHdyNDGQ==
 
-semver@7.x, semver@^7.1.1, semver@^7.1.2, semver@^7.1.3, semver@^7.3.2, semver@^7.3.4, semver@^7.3.5:
+semver@7.3.5, semver@7.x, semver@^7.1.1, semver@^7.1.2, semver@^7.1.3, semver@^7.3.2, semver@^7.3.4, semver@^7.3.5:
   version "7.3.5"
   resolved "https://registry.yarnpkg.com/semver/-/semver-7.3.5.tgz#0b621c879348d8998e4b0e4be94b3f12e6018ef7"
   integrity sha512-PoeGJYh8HK4BTO/a9Tf6ZG3veo/A7ZVsYrSA6J8ny9nb3B1VrpkuN+z9OE5wfE5p6H4LchYZsegiQgbJD94ZFQ==
@@ -8852,6 +8865,11 @@ swr@1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/swr/-/swr-1.2.1.tgz#c21a4fe2139cb1c4630450589b5b5add947a9d41"
   integrity sha512-1cuWXqJqXcFwbgONGCY4PHZ8v05009JdHsC3CIC6u7d00kgbMswNr1sHnnhseOBxtzVqcCNpOHEgVDciRer45w==
+
+swr@1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/swr/-/swr-1.2.2.tgz#6cae09928d30593a7980d80f85823e57468fac5d"
+  integrity sha512-ky0BskS/V47GpW8d6RU7CPsr6J8cr7mQD6+do5eky3bM0IyJaoi3vO8UhvrzJaObuTlGhPl2szodeB2dUd76Xw==
 
 symbol-tree@^3.2.4:
   version "3.2.4"
