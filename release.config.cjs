@@ -28,6 +28,10 @@ const branches = [
 
 const config = {
   branches,
+  contributorsProhibitList: {
+    email: [],
+    login: ['BotJerome', 'JeromeFitz'],
+  },
   enableNpm: false,
 }
 

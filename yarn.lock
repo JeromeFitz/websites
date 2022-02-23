@@ -501,10 +501,10 @@
     github-slugger "1.4.0"
     lodash "4.17.21"
 
-"@jeromefitz/release-notes-generator@1.0.0-contribs.2":
-  version "1.0.0-contribs.2"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/release-notes-generator/-/release-notes-generator-1.0.0-contribs.2.tgz#a87b007ba9067cb757edaee4fbd356af591d8195"
-  integrity sha512-MX2LhqWnBOYcJQ0Nddz/gXsd2WIIbiK0cn++yNGcsZwqurAWBQsYHQ2+qC7f44o4xC5SwsfYIb5XIrUleh81Lw==
+"@jeromefitz/release-notes-generator@1.0.0-contribs.3":
+  version "1.0.0-contribs.3"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/release-notes-generator/-/release-notes-generator-1.0.0-contribs.3.tgz#3cfaf6c13313190a3f633ed4b8df5c751627a10d"
+  integrity sha512-mQcfuAz0IsRyX//7C42m4/qHPwLYD3G2AhQTxb2ojiKw4L3F4UCYpuFK5fBPMXCcKN5OG92KfYVcJDP/tVc1dg==
   dependencies:
     "@octokit/core" "3.5.1"
     conventional-commits-filter "2.0.7"
