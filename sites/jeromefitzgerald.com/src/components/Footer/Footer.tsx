@@ -19,9 +19,9 @@ import {
   ExternalLinkIcon,
   // ChatBubbleIcon,
   GitHubLogoIcon,
-  ImageIcon,
   InfoCircledIcon,
-  Link1Icon,
+  InstagramLogoIcon,
+  LinkedInLogoIcon,
   TwitterLogoIcon,
 } from '@radix-ui/react-icons'
 import dynamic from 'next/dynamic'
@@ -149,7 +149,7 @@ const socials = [
     title: 'Instagram',
     tooltip: false,
     tooltipContent: '',
-    icon: <ImageIcon />,
+    icon: <InstagramLogoIcon />,
     isExternal: true,
   },
   {
@@ -157,7 +157,7 @@ const socials = [
     title: 'LinkedIn',
     tooltip: false,
     tooltipContent: '',
-    icon: <Link1Icon />,
+    icon: <LinkedInLogoIcon />,
     isExternal: true,
   },
   {
