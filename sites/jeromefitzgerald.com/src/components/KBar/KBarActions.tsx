@@ -1,8 +1,8 @@
-import { TicketIcon } from '@heroicons/react/outline'
+// import { TicketIcon } from '@heroicons/react/outline'
 import { Box, Flex } from '@jeromefitz/design-system/components'
 import { darkTheme, styled } from '@jeromefitz/design-system/stitches.config'
-import { parseISO } from 'date-fns'
-import { format } from 'date-fns-tz'
+// import { parseISO } from 'date-fns'
+// import { format } from 'date-fns-tz'
 import { useKBar } from 'kbar'
 import _pick from 'lodash/pick'
 import { useTheme } from 'next-themes'
@@ -12,7 +12,7 @@ import useSWRImmutable from 'swr/immutable'
 import { useSound } from 'use-sound'
 
 import { navigation } from '~config/navigation'
-import { cssIconHeroToRadix } from '~lib/constants'
+// import { cssIconHeroToRadix } from '~lib/constants'
 import fetcher from '~lib/fetcher'
 import useStore from '~store/useStore'
 
@@ -323,71 +323,71 @@ const KBarActions = () => {
   /**
    * dynamic events
    */
-  const { data: _e } = useSWRImmutable<any>(
-    [`/api/v1/cms/events`],
-    (url) => fetcher(url),
-    {}
-  )
-  React.useEffect(() => {
-    // console.dir(`useEffect: _e => `)
-    const items = _e?.items?.results ?? []
-    const data = []
-    !!items &&
-      items.map((item) => {
-        const { properties } = item
+  // const { data: _e } = useSWRImmutable<any>(
+  //   [`/api/v1/cms/events`],
+  //   (url) => fetcher(url),
+  //   {}
+  // )
+  // React.useEffect(() => {
+  //   // console.dir(`useEffect: _e => `)
+  //   const items = _e?.items?.results ?? []
+  //   const data = []
+  //   !!items &&
+  //     items.map((item) => {
+  //       const { properties } = item
 
-        const { dateEvent, seoKeywords, slug, title } = properties
+  //       const { dateEvent, seoKeywords, slug, title } = properties
 
-        const iso = parseISO(dateEvent?.start)
-        const date = format(iso, `EEEE MM/dd hh:mma z`)
-        const dateRoute = format(iso, `yyyy/MM/dd`)
+  //       const iso = parseISO(dateEvent?.start)
+  //       const date = format(iso, `EEEE MM/dd hh:mma z`)
+  //       const dateRoute = format(iso, `yyyy/MM/dd`)
 
-        const keywordsArr = slug.split('-')
-        if (seoKeywords) {
-          keywordsArr.push(seoKeywords)
-        }
-        const keywords = keywordsArr.join(' ')
+  //       const keywordsArr = slug.split('-')
+  //       if (seoKeywords) {
+  //         keywordsArr.push(seoKeywords)
+  //       }
+  //       const keywords = keywordsArr.join(' ')
 
-        data.push({
-          icon: <TicketIcon className="hi2ri" style={cssIconHeroToRadix} />,
-          id: slug,
-          keywords,
-          subtitle: date,
-          // title: `${title} *`,
-          title,
-          type: 'url.internal',
-          url: `/events/${dateRoute}/${slug}`,
-        })
-      })
-    data.push(navigation.events.items[1])
-    // console.dir(`navigation.events.items[1]`)
-    // console.dir(navigation.events.items[1])
-    // data.push({
-    //   id: 'events',
-    //   title: 'Events',
-    //   url: '/events',
-    //   rightSlot: 'View All',
-    //   icon: <CalendarIcon />,
-    //   keywords: 'Events',
-    //   // subtitle: 'Listing page for all Events',
-    //   type: 'url.internal',
-    // })
+  //       data.push({
+  //         icon: <TicketIcon className="hi2ri" style={cssIconHeroToRadix} />,
+  //         id: slug,
+  //         keywords,
+  //         subtitle: date,
+  //         // title: `${title} *`,
+  //         title,
+  //         type: 'url.internal',
+  //         url: `/events/${dateRoute}/${slug}`,
+  //       })
+  //     })
+  //   data.push(navigation.events.items[1])
+  //   // console.dir(`navigation.events.items[1]`)
+  //   // console.dir(navigation.events.items[1])
+  //   // data.push({
+  //   //   id: 'events',
+  //   //   title: 'Events',
+  //   //   url: '/events',
+  //   //   rightSlot: 'View All',
+  //   //   icon: <CalendarIcon />,
+  //   //   keywords: 'Events',
+  //   //   // subtitle: 'Listing page for all Events',
+  //   //   type: 'url.internal',
+  //   // })
 
-    const navigationType = 'events'
-    const navigationTemp = _pick(navigation, [navigationType])
-    const navigationData = Object.assign(
-      {},
-      {
-        [navigationType]: {
-          ...navigationTemp[navigationType],
-          items: data,
-        },
-      }
-    )
-    const registerActions = getRegisterActions(navigationData)
-    kbar.query.registerActions(registerActions)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [_e])
+  //   const navigationType = 'events'
+  //   const navigationTemp = _pick(navigation, [navigationType])
+  //   const navigationData = Object.assign(
+  //     {},
+  //     {
+  //       [navigationType]: {
+  //         ...navigationTemp[navigationType],
+  //         items: data,
+  //       },
+  //     }
+  //   )
+  //   const registerActions = getRegisterActions(navigationData)
+  //   kbar.query.registerActions(registerActions)
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [_e])
 
   return null
 }
