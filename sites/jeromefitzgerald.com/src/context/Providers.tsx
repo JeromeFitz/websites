@@ -1,8 +1,4 @@
-import {
-  KBarProvider,
-  ToastProvider,
-  Toaster,
-} from '@jeromefitz/design-system/components'
+import { KBarProvider, ToastProvider } from '@jeromefitz/design-system/components'
 import { darkTheme } from '@jeromefitz/design-system/stitches.config'
 import { ThemeProvider } from 'next-themes'
 
@@ -18,10 +14,7 @@ const Providers = ({ children }) => {
         defaultTheme="system"
       >
         <ToastProvider>
-          <KBarProvider>
-            {children}
-            <Toaster />
-          </KBarProvider>
+          <KBarProvider>{children}</KBarProvider>
         </ToastProvider>
       </ThemeProvider>
     </MediaContextProvider>
