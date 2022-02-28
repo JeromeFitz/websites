@@ -83,7 +83,8 @@ const navigation: INavigation = {
     id: 'events',
     icon: <CalendarIcon />,
     order: 0,
-    title: 'Next Event',
+    // title: 'Next Event',
+    title: 'Menu',
     type: 'url.internal',
     url: '/events',
     subtitle: '‎',
@@ -96,21 +97,21 @@ const navigation: INavigation = {
       },
     },
     items: [
-      {
-        id: 'the-playlist',
-        title: 'The Playlist',
-        titleExtended: 'The Playlist: Kalyani Singh',
-        url: '/events/2022/02/25/the-playlist',
-        rightSlot: 'FRI 02/25',
-        rightSlotExtended: 'Friday, Feb. 25th at 09:30PM',
-        separator: true,
-        icon: <MusicNoteIcon className="hi2ri" style={cssIconHeroToRadix1} />,
-        iconKbarOverride: (
-          <MusicNoteIcon className="hi2ri" style={cssIconHeroToRadix} />
-        ),
-        subtitle: 'FRI 02/25 09:30PM (default)',
-        type: 'url.internal',
-      },
+      // {
+      //   id: 'the-playlist',
+      //   title: 'The Playlist',
+      //   titleExtended: 'The Playlist: Kalyani Singh',
+      //   url: '/events/2022/02/25/the-playlist',
+      //   rightSlot: 'FRI 02/25',
+      //   rightSlotExtended: 'Friday, Feb. 25th at 09:30PM',
+      //   separator: true,
+      //   icon: <MusicNoteIcon className="hi2ri" style={cssIconHeroToRadix1} />,
+      //   iconKbarOverride: (
+      //     <MusicNoteIcon className="hi2ri" style={cssIconHeroToRadix} />
+      //   ),
+      //   subtitle: 'FRI 02/25 09:30PM (default)',
+      //   type: 'url.internal',
+      // },
       {
         id: 'events',
         title: 'Events',
