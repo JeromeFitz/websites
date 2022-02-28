@@ -106,7 +106,7 @@
     "title": "3.4.4",
     "use-sound": "4.0.1",
     "uuid": "8.3.2",
-    "zustand": "3.7.0"
+    "zustand": "3.7.1"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "12.1.0",
