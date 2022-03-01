@@ -168,7 +168,7 @@ const EpisodesCard = ({
                 mr: '$4',
               }}
             >
-              S{lpad(season)}${lpad(episode)}
+              S{lpad(season)}E{lpad(episode)}
             </Badge>
           </CardMeta>
         </Card>
