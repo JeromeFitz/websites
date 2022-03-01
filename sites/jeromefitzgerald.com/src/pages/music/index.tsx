@@ -78,8 +78,8 @@ const Music = () => {
     },
   }
 
-  const handleSpotifyTimeRange2 = async (time_range) => {
-    // console.dir(time_range)
+  const handleSpotifyTimeRange = async (time_range) => {
+    // console.dir(`time_range: ${time_range}`)
     setSelected(time_range)
     playOn()
     await setSpotifyTimeRange(data, time_range)
@@ -151,7 +151,7 @@ const Music = () => {
           </Paragraph> */}
           <RadioCardGroup
             defaultValue={selected?.time_range}
-            onValueChange={handleSpotifyTimeRange2}
+            onValueChange={(e) => void handleSpotifyTimeRange(e)}
           >
             {plans.map((plan) => {
               return (
