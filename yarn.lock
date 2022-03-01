@@ -577,17 +577,17 @@
     read-pkg-up "7.0.1"
     semver "7.3.5"
 
-"@jeromefitz/semantic@9.0.1":
-  version "9.0.1"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/semantic/-/semantic-9.0.1.tgz#e28ff6b0269fbece73ceb2b7efc6006333b5eb56"
-  integrity sha512-d44OEI1fL8Cyk8ByhnJoQ9Fj+xWKTh2sJRGJnA1Vyc4qaOMoL/MB6DNMNMhGwydj3sBdt93BRX6yJgox7NKwRg==
+"@jeromefitz/semantic@9.0.2":
+  version "9.0.2"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/semantic/-/semantic-9.0.2.tgz#c15a300066613a2827d0e5d777cac353b6097180"
+  integrity sha512-TrKbnS/8YUCRX0PiE3/4Sejy5N/qdxjOUjrHPfydBzB8nQGeH/zoPbGAN9+gNCIcbo6oVJ9o0lrx16/Tmmr7IQ==
   dependencies:
     "@octokit/core" "3.5.1"
     "@semantic-release/commit-analyzer" "9.0.2"
     "@semantic-release/exec" "6.0.3"
     "@semantic-release/git" "10.0.1"
     "@semantic-release/github" "8.0.2"
-    "@semantic-release/npm" "9.0.0"
+    "@semantic-release/npm" "9.0.1"
     "@semantic-release/release-notes-generator" "10.0.3"
     grapheme-splitter "1.0.4"
     lodash "4.17.21"
@@ -1990,10 +1990,10 @@
     p-retry "^4.0.0"
     url-join "^4.0.0"
 
-"@semantic-release/npm@9.0.0", "@semantic-release/npm@^9.0.0":
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/@semantic-release/npm/-/npm-9.0.0.tgz#b4868bb35cc64c3a040791661311398dd1fcadc0"
-  integrity sha512-hj2jqayS2SPUmFtCMCOQMX975uMDfRoymj1HvMSwYdaoI6hVZvhrTFPBgJeM85O0C+G3IFviAUar5gel/1VGDQ==
+"@semantic-release/npm@9.0.1", "@semantic-release/npm@^9.0.0":
+  version "9.0.1"
+  resolved "https://registry.yarnpkg.com/@semantic-release/npm/-/npm-9.0.1.tgz#d81828eb1fb771e2767b3a8ee989915e1af27075"
+  integrity sha512-I5nVZklxBzfMFwemhRNbSrkiN/dsH3c7K9+KSk6jUnq0rdLFUuJt7EBsysq4Ir3moajQgFkfEryEHPqiKJj20g==
   dependencies:
     "@semantic-release/error" "^3.0.0"
     aggregate-error "^3.0.0"
