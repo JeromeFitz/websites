@@ -775,6 +775,11 @@
   resolved "https://registry.yarnpkg.com/@mantine/hooks/-/hooks-3.6.11.tgz#881352e381d262711909b560a71258be52ce9744"
   integrity sha512-HojHT9FnP+mEA1idXYNVxTy7Fdzlk8aLjs/v9Mik9os3TjPiLSV9C6pSck06LepEIC6PEICQi/WSTP1rY8ZP+g==
 
+"@mantine/hooks@3.6.13":
+  version "3.6.13"
+  resolved "https://registry.yarnpkg.com/@mantine/hooks/-/hooks-3.6.13.tgz#68e7e15c441d6304321657f84a40c226a05e6bce"
+  integrity sha512-olHvJIlWKaKKZqQMnQqoyb3R6QEa81DL3dwSKAbE8zIOP9wM4yIABUy48sw02puuFYHWIBq2fp9GFnMVG3m9Og==
+
 "@next/bundle-analyzer@12.1.0":
   version "12.1.0"
   resolved "https://registry.yarnpkg.com/@next/bundle-analyzer/-/bundle-analyzer-12.1.0.tgz#9f6d6cda2a26220c936805be407243e22790f4b7"
