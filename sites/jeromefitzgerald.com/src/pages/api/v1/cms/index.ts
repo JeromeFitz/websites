@@ -14,6 +14,8 @@ const notionCatchAll = async (req: any, res: NextApiResponse) => {
     // @todo(next) preview
     const preview = req.query?.preview || false
     const clear = req.query?.clear || false
+    const _revalidate = req.query?.revalidate || 'false'
+    const revalidate = _revalidate === 'true' ? true : false
     const catchAll = [PAGES__HOMEPAGE]
     /**
      * @cache
@@ -33,6 +35,7 @@ const notionCatchAll = async (req: any, res: NextApiResponse) => {
         clear,
         pathVariables,
         preview,
+        revalidate,
       }),
       pathVariables,
     })

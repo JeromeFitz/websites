@@ -44,7 +44,7 @@ const Index = (props) => {
   // console.dir(props)
 
   const { data, error } = useSWR(
-    () => (!!slug ? `/api/v1/cms/${slug}` : null),
+    () => (!!slug ? `/api/v1/cms/${slug}?revaldiate=true` : null),
     fetcher,
     {
       fallbackData: {
@@ -54,7 +54,11 @@ const Index = (props) => {
         images: imagesFallback,
       },
       /**
-       * @note(swr) turning off for now until we finalize redis settings
+       * @todo(swr): To reduce Notion calls at build we utilize a cache
+       * - ISR cannot accept any parameters, so right now cannot use
+       * - SWR will init on each call to revalidate once (not ideal)
+       *
+       * @note(swr): Turnign this off and manually updating cache when necessary
        */
       revalidateIfStale: false,
       revalidateOnFocus: false,
