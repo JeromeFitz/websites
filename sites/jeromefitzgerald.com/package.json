@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "@artsy/fresnel": "3.4.0",
-    "@heroicons/react": "1.0.5",
+    "@heroicons/react": "1.0.6",
     "@jeromefitz/design-system": "3.0.0",
     "@jeromefitz/notion": "3.0.4",
     "@jeromefitz/spotify": "2.1.6",
