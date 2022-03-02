@@ -3,7 +3,7 @@ import Slugger from 'github-slugger'
 import type { NextApiResponse } from 'next'
 import { getPlaiceholder } from 'plaiceholder'
 
-import { getCache, setCacheJson } from '~lib/notion/getCache'
+import { getCacheJson, setCacheJson } from '~lib/notion/getCache'
 import redis from '~lib/redis'
 
 const keyPrefix = 'image'
@@ -21,7 +21,7 @@ const imagesApi = async (req: any, res: NextApiResponse) => {
   let start = Date.now()
 
   // console.dir(`@cache(get) json`)
-  cache = await getCache(key)
+  cache = await getCacheJson(key)
   if (cache) {
     data = cache
     const debug = {
