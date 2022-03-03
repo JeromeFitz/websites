@@ -5,7 +5,7 @@ import { Page } from '~components/Layout'
 import { notionConfig } from '~config/index'
 import {
   nextWeirdRoutingSkipData,
-  revalidate,
+  // revalidate,
   ERROR__FALLBACK,
 } from '~lib/constants'
 import fetcher from '~lib/fetcher'
@@ -36,7 +36,7 @@ const PagesCatchAll = (props) => {
   } = props
 
   const { data, error } = useSWR(
-    () => (!!url ? `/api/v1/cms/${url}` : null),
+    () => (!!url ? `/api/v1/cms/${url}?revalidate=true` : null),
     fetcher,
     {
       fallbackData: {
@@ -46,7 +46,7 @@ const PagesCatchAll = (props) => {
         items: itemsFallback,
       },
       /**
-       * @note(swr) turning off for now until we finalize redis settings
+       * @note(swr): Turning this off and manually updating cache when necessary
        */
       revalidateIfStale: false,
       revalidateOnFocus: false,
@@ -87,6 +87,8 @@ export const getStaticProps = async ({ preview = false, ...props }) => {
   // look at commit hash: b2afe38c5e1f2d095dc085a17eedc181466b3372
   // and the one after
   if (nextWeirdRoutingSkipData.includes(catchAll[0])) return { props: {} }
+  // console.dir(`> getStaticProps`)
+  // console.dir(props)
   // const catchAll = [PAGES__HOMEPAGE]
   const clear = false
   const pathVariables = notion.custom.getPathVariables({ catchAll })
@@ -106,7 +108,7 @@ export const getStaticProps = async ({ preview = false, ...props }) => {
   })
   return {
     props: { preview, ...data, ...pathVariables, ...props },
-    revalidate,
+    // revalidate,
   }
 }
 

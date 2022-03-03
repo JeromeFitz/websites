@@ -6,7 +6,7 @@ import { Page } from '~components/Layout'
 import { notionConfig } from '~config/index'
 import {
   nextWeirdRoutingSkipData,
-  revalidate,
+  // revalidate,
   ERROR__FALLBACK,
 } from '~lib/constants'
 import fetcher from '~lib/fetcher'
@@ -44,7 +44,7 @@ const Index = (props) => {
   // console.dir(props)
 
   const { data, error } = useSWR(
-    () => (!!slug ? `/api/v1/cms/${slug}` : null),
+    () => (!!slug ? `/api/v1/cms/${slug}?revaldiate=true` : null),
     fetcher,
     {
       fallbackData: {
@@ -54,7 +54,7 @@ const Index = (props) => {
         images: imagesFallback,
       },
       /**
-       * @note(swr) turning off for now until we finalize redis settings
+       * @note(swr): Turning this off and manually updating cache when necessary
        */
       revalidateIfStale: false,
       revalidateOnFocus: false,
@@ -116,7 +116,7 @@ export const getStaticProps = async ({ preview = false, ...props }) => {
   })
   return {
     props: { preview, ...data, ...pathVariables, ...props },
-    revalidate,
+    // revalidate,
   }
 }
 

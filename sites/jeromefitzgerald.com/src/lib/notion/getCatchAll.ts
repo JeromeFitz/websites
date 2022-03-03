@@ -1,11 +1,15 @@
 import _filter from 'lodash/filter'
 
-import { nextWeirdRoutingSkipData } from '~lib/constants'
-import { getCache, setCache, setCacheJson } from '~lib/notion/getCache'
+import { nextWeirdRoutingSkipData, CACHE_TYPES } from '~lib/constants'
+import {
+  getCacheJson,
+  getCacheRedis,
+  setCacheJson,
+  setCacheRedis,
+} from '~lib/notion/getCache'
 import { notion } from '~lib/notion/helper'
-import redis from '~lib/redis'
 
-const useCache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE
+const cacheType = process.env.NEXT_PUBLIC__NOTION_CACHE || CACHE_TYPES.LOCAL
 
 // @todo(next) preview
 // @todo(complexity) 19
@@ -19,45 +23,64 @@ const getCatchAll = async ({
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   preview,
   retrieveImages = true,
+  revalidate = false,
 }) => {
   // console.dir(`> pathVariables`)
   // console.dir(pathVariables)
 
-  const isCache = useCache && cache
+  /**
+   * @note
+   * At Build Time we want to grab from CACHE
+   * - Notion cannot always handle the amount of requests during a Next Build
+   * - - 100s of requests per second
+   * - - https://developers.notion.com/reference/request-limits#rate-limits
+   * - Redis _can_ handle the amount of requests during a Next Build
+   * - - And most likely, the Notion Data has not changed
+   *
+   * For ISR, we can leverage the best of both worlds for speedy build-times
+   *  while not hammering Notion's API until it is more production ready.
+   *
+   * BUILD:
+   * - Use Cache
+   * ISR:
+   * - Use Direct API
+   * SWR:
+   * - Each RouteType will be unique
+   * - - Time Sensitive Data? => Direct API over Cache
+   * - - Non-Time Sensistive Data? => ISR reliance
+   */
+  const isBuildStep = process.env.CI
+  const isCache = cache && isBuildStep
   // const isServer = typeof window === 'undefined'
-  // console.dir(`useCache: ${useCache}`)
-  // console.dir(`cache:    ${cache}`)
-  // console.dir(`isCache:  ${isCache}`)
-  // console.dir(`isServer: ${isServer}`)
+  // console.dir(`cache:      ${cache}`)
+  // console.dir(`revalidate: ${revalidate}`)
+  // console.dir(`isCache:    ${isCache}`)
+  // console.dir(`isServer:   ${isServer}`)
+  // if (isBuildStep) {
+  //   console.dir(`isBuildStep: ${isBuildStep}`)
+  //   console.dir(`isCache:     ${isCache}`)
+  // }
 
   const { slug } = pathVariables
   if (nextWeirdRoutingSkipData.includes(slug)) return null
 
-  // console.dir(`isCache: ${isCache}`)
-
   let data
   const url = catchAll.join('/')
-  // console.dir(`url`)
+  // console.dir(`url: `)
   // console.dir(url)
+
   /**
    * @cache pre
+   *
    */
   if (isCache) {
-    // @cache(get) json
-    const cacheData = await getCache(url)
-    if (!!cacheData) {
-      data = cacheData
-    } else {
-      // @cache(get) redis
+    // console.dir(`isCache: ${cacheType} => ${url}`)
+    if (cacheType === CACHE_TYPES.REMOTE) {
       const key = `notion/${url}`.toLowerCase()
-      // console.dir(`getCache: redis => ${key}`)
-      const cache = await redis.get(key)
-      data = await JSON.parse(cache)
-      // @cache(set) json
-      if (!!data) {
-        // console.dir(`setCache: redis => json (${key})`)
-        setCacheJson(data, url)
-      }
+      data = await getCacheRedis(key)
+      // data = await JSON.parse(data)
+    } else {
+      data = await getCacheJson(url)
     }
   }
 
@@ -99,11 +122,14 @@ const getCatchAll = async ({
     /**
      * @cache post
      */
-    if (isCache) {
-      const isCacheExists = await getCache(url)
-      // @cache(set) json|redis
-      if (!isCacheExists || isCacheExists === undefined) {
-        setCache(data, url)
+    if (isCache || revalidate) {
+      if (cacheType === CACHE_TYPES.REMOTE) {
+        const key = `notion/${url}`.toLowerCase()
+        setCacheRedis(data, key)
+      } else {
+        if (!revalidate) {
+          setCacheJson(data, url)
+        }
       }
     }
   }
