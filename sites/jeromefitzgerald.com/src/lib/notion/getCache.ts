@@ -23,7 +23,7 @@ const cacheFile = (filename) =>
 
 const setCacheJson = (data, url) => {
   try {
-    writeFileSyncRecursive(cacheFile(url), stringify(data), 'utf8')
+    writeFileSyncRecursive(cacheFile(url.toLowerCase()), stringify(data), 'utf8')
   } catch (_) {
     /* not fatal */
   }
