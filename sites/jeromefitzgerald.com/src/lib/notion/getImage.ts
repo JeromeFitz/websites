@@ -1,11 +1,15 @@
-import stringify from 'fast-json-stable-stringify'
 import Slugger from 'github-slugger'
 
-import { getCache, setCacheJson } from '~lib/notion/getCache'
-import redis from '~lib/redis'
+import { CACHE_TYPES } from '~lib/constants'
+import {
+  getCacheJson,
+  setCacheJson,
+  setCacheRedis,
+  getCacheRedis,
+} from '~lib/notion/getCache'
 
 const keyPrefix = 'image'
-
+const cacheType = process.env.NEXT_PUBLIC__NOTION_CACHE || CACHE_TYPES.LOCAL
 /**
  * @hack(!cache)
  *
@@ -20,19 +24,19 @@ const getImage = async (url: string) => {
   let cache: any
   let data: any = {}
 
-  // console.dir(`@cache(get) json`)
-  cache = await getCache(key)
-  if (cache) {
-    return cache
-  }
-
-  // console.dir(`@cache(get) redis`)
-  cache = await redis.get(key)
-  if (cache) {
-    // console.dir(`@cache(set) json`)
-    const data = JSON.parse(cache)
-    setCacheJson(data, key)
-    return data
+  if (cacheType === CACHE_TYPES.REMOTE) {
+    // console.dir(`@cache(get) redis`)
+    cache = await getCacheRedis(key)
+    // cache = await JSON.parse(cache)
+    if (cache) {
+      return cache
+    }
+  } else {
+    // console.dir(`@cache(get) json`)
+    cache = await getCacheJson(key)
+    if (cache) {
+      return cache
+    }
   }
 
   // console.dir(`@cache(get) plaiceholder`)
@@ -40,9 +44,13 @@ const getImage = async (url: string) => {
   const { base64, img } = await getPlaiceholder(url)
   data = { base64, id, img, url }
 
-  // console.dir(`@cache(set) json|redis`)
-  setCacheJson(data, key)
-  void redis.set(key, stringify(data))
+  if (cacheType === CACHE_TYPES.REMOTE) {
+    // console.dir(`@cache(set) redis`)
+    setCacheRedis(data, key)
+  } else {
+    // console.dir(`@cache(set) json`)
+    setCacheJson(data, key)
+  }
 
   return data
 }

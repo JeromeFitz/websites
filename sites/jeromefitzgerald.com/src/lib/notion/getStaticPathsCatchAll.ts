@@ -113,6 +113,7 @@ const getStaticPathsCatchAll = async () => {
           clear: false,
           pathVariables,
           preview: false,
+          revalidate: false,
         })
         const items = data?.items?.results
         const slugs = getStaticPathsDefault({

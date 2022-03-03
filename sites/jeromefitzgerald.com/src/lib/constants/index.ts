@@ -5,8 +5,12 @@ import IMAGE__FALLBACKS__SHOWS from '~lib/constants/images/shows'
  */
 const nextWeirdRoutingSkipData = ['favicon.ico', 'false', 'true', 'undefined']
 
-// @question(next) do we even need to revalidate?
-const revalidate = 60 * 60
+const revalidate = 60
+
+const CACHE_TYPES = {
+  REMOTE: 'remote',
+  LOCAL: 'local',
+}
 
 // ref: https://bigheads.io/editor?accessory=none&body=chest&circleColor=blue&clothing=dressShirt&clothingColor=black&eyebrows=leftLowered&eyes=dizzy&faceMask=true&faceMaskColor=black&facialHair=stubble&graphic=none&hair=short&hairColor=blonde&hat=none&hatColor=black&lashes=true&lipColor=red&mask=false&mouth=grin&skinTone=light
 const BIG_HEAD_PROPS = {
@@ -123,6 +127,7 @@ export {
   nextWeirdRoutingSkipData,
   revalidate,
   BIG_HEAD_PROPS,
+  CACHE_TYPES,
   EMOJI_FALLBACK,
   ERROR__FALLBACK,
   IMAGE__FALLBACKS__SHOWS,

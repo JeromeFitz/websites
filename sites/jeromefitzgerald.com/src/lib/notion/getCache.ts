@@ -23,7 +23,7 @@ const cacheFile = (filename) =>
 
 const setCacheJson = (data, url) => {
   try {
-    writeFileSyncRecursive(cacheFile(url), stringify(data), 'utf8')
+    writeFileSyncRecursive(cacheFile(url.toLowerCase()), stringify(data), 'utf8')
   } catch (_) {
     /* not fatal */
   }
@@ -31,9 +31,8 @@ const setCacheJson = (data, url) => {
   return null
 }
 
-const setCacheRedis = (data, url) => {
-  const key = `notion/${url}`.toLowerCase()
-  // console.dir(`key: ${key}`)
+const setCacheRedis = (data, key) => {
+  // console.dir(`setCacheRedis => key: ${key}`)
   void redis.set(key, stringify(data), 'EX', getTimeInSeconds(ms('30d')))
 }
 
@@ -44,18 +43,32 @@ const setCache = (data: any, url: string) => {
   return null
 }
 
-const getCache = async (url) => {
+const getCacheJson = async (url) => {
   let cacheData = false
   const file = cacheFile(url.toLowerCase())
   try {
-    // console.dir(`getCache: json => ${url.toLowerCase()}`)
+    // console.dir(`getCacheJson: json => ${url.toLowerCase()}`)
     cacheData = JSON.parse(await readFile(file, 'utf8'))
   } catch (_) {
-    // console.dir(`getCache: notFatal`)
+    // console.dir(`getCacheJson: notFatal`)
     cacheData = false
   }
   return cacheData
 }
 
-export { getCache, setCache, setCacheJson, setCacheRedis }
-export default getCache
+const getCacheRedis = async (key) => {
+  let cacheData = false
+  // console.dir(`getCache: redis => ${key}`)
+  const cache = await redis.get(key)
+  try {
+    // console.dir(`getCacheRedis: redis => ${key}`)
+    cacheData = await JSON.parse(cache)
+  } catch (_) {
+    // console.dir(`getCacheRedis: notFatal`)
+    cacheData = false
+  }
+  return cacheData
+}
+
+export { getCacheJson, getCacheRedis, setCache, setCacheJson, setCacheRedis }
+export default getCacheJson

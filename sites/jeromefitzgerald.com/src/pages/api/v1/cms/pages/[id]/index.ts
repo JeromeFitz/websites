@@ -5,7 +5,7 @@ import { avoidRateLimit, sortObject } from '@jeromefitz/utils'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 import { notionConfig as config } from '~config/index'
-import { getCache, setCache } from '~lib/notion/getCache'
+import { getCacheJson, setCacheJson } from '~lib/notion/getCache'
 import { notion } from '~lib/notion/helper'
 // import omitFields from '~lib/notion/omitFields'
 
@@ -22,7 +22,7 @@ const notionPagesId = async (req: NextApiRequest, res: NextApiResponse) => {
   let data
   if (useCache) {
     const url = catchAll.join('/')
-    const cacheData = await getCache(url)
+    const cacheData = await getCacheJson(url)
     if (!!cacheData) {
       data = cacheData
     }
@@ -49,10 +49,10 @@ const notionPagesId = async (req: NextApiRequest, res: NextApiResponse) => {
     if (useCache && !!data) {
       const url = catchAll.join('/')
       // console.dir(url)
-      const isCacheExists = await getCache(url)
+      const isCacheExists = await getCacheJson(url)
       // console.dir(isCacheExists)
       if (!isCacheExists || isCacheExists === undefined) {
-        setCache(data, url)
+        setCacheJson(data, url)
       }
     }
   }
