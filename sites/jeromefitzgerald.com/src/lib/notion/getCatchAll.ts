@@ -56,10 +56,10 @@ const getCatchAll = async ({
   // console.dir(`revalidate: ${revalidate}`)
   // console.dir(`isCache:    ${isCache}`)
   // console.dir(`isServer:   ${isServer}`)
-  if (isBuildStep) {
-    console.dir(`isBuildStep: ${isBuildStep}`)
-    console.dir(`isCache:     ${isCache}`)
-  }
+  // if (isBuildStep) {
+  //   console.dir(`isBuildStep: ${isBuildStep}`)
+  //   console.dir(`isCache:     ${isCache}`)
+  // }
 
   const { slug } = pathVariables
   if (nextWeirdRoutingSkipData.includes(slug)) return null
@@ -74,7 +74,7 @@ const getCatchAll = async ({
    *
    */
   if (isCache) {
-    console.dir(`isCache: ${cacheType} => ${url}`)
+    // console.dir(`isCache: ${cacheType} => ${url}`)
     if (cacheType === CACHE_TYPES.REMOTE) {
       const key = `notion/${url}`.toLowerCase()
       data = await getCacheRedis(key)
@@ -93,7 +93,7 @@ const getCatchAll = async ({
     const { dataType, routeType, slug } = pathVariables
 
     if (notion.dataTypes[dataType]) {
-      console.dir(`getNotion: ${dataType} => ${routeType}/${slug}`)
+      // console.dir(`getNotion: ${dataType} => ${routeType}/${slug}`)
       const DATATYPE_DATA: any = await notion.dataTypes[dataType]({
         pathVariables,
         routeType,
