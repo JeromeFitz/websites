@@ -25,6 +25,9 @@ function getBranch(branch) {
   return branch.split('/')[branch.split('/').length - 1]
 }
 
+/**
+ * @todo(dynamic) owner/repo from package.json
+ */
 async function setupBuildInfo() {
   const releases = await octokit.request('GET /repos/{owner}/{repo}/releases', {
     owner: 'jeromefitz',
@@ -66,6 +69,9 @@ async function setupBuildInfo() {
     version,
   }
 
+  /**
+   * @todo(dynamic) determine path for multi-site
+   */
   const filePath = join(process.cwd(), './src/config/buildInfo.json')
   const content = prettier.format(stringify(data), { parser: 'json' })
   await writeFile(filePath, content)

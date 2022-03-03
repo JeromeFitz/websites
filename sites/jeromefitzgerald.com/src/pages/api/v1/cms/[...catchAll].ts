@@ -1,13 +1,19 @@
+import {
+  getCatchAll,
+  getDataReturn,
+  getNotion,
+} from '@jeromefitz/shared/src/lib/notion'
 import { NextApiResponse } from 'next'
 
-import getCatchAll from '~lib/notion/getCatchAll'
-import getDataReturn from '~lib/notion/getDataReturn'
-import { notion } from '~lib/notion/helper'
+import { notionConfig } from '~config/index'
+
+const notion = getNotion(notionConfig)
 
 // @todo(complexity) 12
 // eslint-disable-next-line complexity
 const CatchAll = async (req: any, res: NextApiResponse) => {
   try {
+    console.dir(`> CatchAll API`)
     // @todo(next) preview
     const preview = req.query?.preview || false
     const clear = req.query?.clear || false
@@ -27,6 +33,8 @@ const CatchAll = async (req: any, res: NextApiResponse) => {
     const pathVariables = notion.custom.getPathVariables({
       catchAll,
     })
+    // console.dir(`> pathVariables`)
+    // console.dir(pathVariables)
 
     const start = Date.now()
     const data = await getDataReturn({
@@ -34,6 +42,7 @@ const CatchAll = async (req: any, res: NextApiResponse) => {
         cache,
         catchAll,
         clear,
+        notionConfig,
         pathVariables,
         preview,
         revalidate,

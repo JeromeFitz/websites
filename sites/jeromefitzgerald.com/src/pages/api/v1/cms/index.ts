@@ -1,16 +1,19 @@
-// import _isBoolean from 'lodash/isBoolean'
-// import _omit from 'lodash/omit'
+import {
+  getCatchAll,
+  getDataReturn,
+  getNotion,
+} from '@jeromefitz/shared/src/lib/notion'
 import { NextApiResponse } from 'next'
 
 import { notionConfig } from '~config/index'
-import getCatchAll from '~lib/notion/getCatchAll'
-import getDataReturn from '~lib/notion/getDataReturn'
-import { notion } from '~lib/notion/helper'
+
+const notion = getNotion(notionConfig)
 
 const { PAGES__HOMEPAGE } = notionConfig
 
 const notionCatchAll = async (req: any, res: NextApiResponse) => {
   try {
+    console.dir(`> CatchAll API (Index)`)
     // @todo(next) preview
     const preview = req.query?.preview || false
     const clear = req.query?.clear || false
@@ -33,6 +36,7 @@ const notionCatchAll = async (req: any, res: NextApiResponse) => {
         cache,
         catchAll,
         clear,
+        notionConfig,
         pathVariables,
         preview,
         revalidate,

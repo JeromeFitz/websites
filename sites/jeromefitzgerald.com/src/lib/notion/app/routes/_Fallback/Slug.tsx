@@ -1,7 +1,7 @@
 import { Box } from '@jeromefitz/design-system/components'
+import { ContentNodes } from '@jeromefitz/shared/src/lib/notion/app'
 
 import { ImageLead } from '~components/Layout'
-import { ContentNodes } from '~lib/notion/app'
 
 const FallbackSlug = ({ ...props }) => {
   // console.dir(`> FallbackSlug`)

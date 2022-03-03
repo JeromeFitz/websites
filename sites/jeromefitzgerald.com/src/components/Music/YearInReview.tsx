@@ -10,13 +10,13 @@ import {
 } from '@jeromefitz/design-system/components'
 import { styled } from '@jeromefitz/design-system/stitches.config'
 // import { ExternalLinkIcon } from '@radix-ui/react-icons'
+import TextAnnotations from '@jeromefitz/shared/src/lib/notion/app/utils/TextAnnotations'
 import Slugger from 'github-slugger'
 import _map from 'lodash/map'
 import { Fragment } from 'react'
 import _title from 'title'
 
 import { wrapped2020, wrapped2021 } from '~data/mock/music'
-import TextAnnotations from '~lib/notion/app/utils/TextAnnotations'
 
 const years = {
   2021: {

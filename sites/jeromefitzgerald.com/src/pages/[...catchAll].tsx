@@ -1,19 +1,23 @@
 import { PageHeading, SkeletonHeading } from '@jeromefitz/design-system/components'
-import useSWR from 'swr'
-
-import { Page } from '~components/Layout'
-import { notionConfig } from '~config/index'
 import {
   nextWeirdRoutingSkipData,
   // revalidate,
   ERROR__FALLBACK,
-} from '~lib/constants'
-import fetcher from '~lib/fetcher'
-import getCatchAll from '~lib/notion/getCatchAll'
-import getDataReturn from '~lib/notion/getDataReturn'
-import getStaticPathsCatchAll from '~lib/notion/getStaticPathsCatchAll'
-import { notion } from '~lib/notion/helper'
-import getNextPageStatus from '~utils/getNextPageStatus'
+} from '@jeromefitz/shared/src/lib/constants'
+import fetcher from '@jeromefitz/shared/src/lib/fetcher'
+import {
+  getCatchAll,
+  getDataReturn,
+  getStaticPathsCatchAll,
+  getNotion,
+} from '@jeromefitz/shared/src/lib/notion'
+import getNextPageStatus from '@jeromefitz/shared/src/utils/getNextPageStatus'
+import useSWR from 'swr'
+
+import { Page } from '~components/Layout'
+import { notionConfig } from '~config/index'
+
+const notion = getNotion(notionConfig)
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -101,6 +105,7 @@ export const getStaticProps = async ({ preview = false, ...props }) => {
       cache,
       catchAll,
       clear,
+      notionConfig,
       pathVariables,
       preview,
     }),
@@ -113,7 +118,7 @@ export const getStaticProps = async ({ preview = false, ...props }) => {
 }
 
 export const getStaticPaths = () => {
-  return getStaticPathsCatchAll()
+  return getStaticPathsCatchAll(notionConfig)
 }
 
 export default PagesCatchAll

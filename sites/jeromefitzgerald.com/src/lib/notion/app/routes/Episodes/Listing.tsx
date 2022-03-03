@@ -2,7 +2,7 @@ import { Box, Grid } from '@jeromefitz/design-system/components'
 import type { Episode as EpisodeProperties } from '@jeromefitz/notion/schema'
 import _orderBy from 'lodash/orderBy'
 
-// import { ContentNodes } from '~lib/notion/app'
+// import { ContentNodes } from '@jeromefitz/shared/src/lib/notion/app'
 
 import Card from './Card'
 

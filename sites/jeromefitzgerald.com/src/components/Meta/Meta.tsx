@@ -9,6 +9,7 @@ import {
 import { PROPERTIES } from '@jeromefitz/notion/constants'
 import type { Show } from '@jeromefitz/notion/schema'
 import getTitle from '@jeromefitz/notion/utils/getTitle'
+import fetcher from '@jeromefitz/shared/src/lib/fetcher'
 import _map from 'lodash/map'
 import _size from 'lodash/size'
 // import _sortBy from 'lodash/sortBy'
@@ -17,7 +18,6 @@ import pluralize from 'pluralize'
 import useSWRImmutable from 'swr/immutable'
 
 import { notionConfig } from '~config/index'
-import fetcher from '~lib/fetcher'
 
 const { NOTION } = notionConfig
 

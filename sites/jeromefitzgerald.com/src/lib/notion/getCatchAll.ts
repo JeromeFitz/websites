@@ -1,15 +1,18 @@
-import _filter from 'lodash/filter'
-
-import { nextWeirdRoutingSkipData, CACHE_TYPES } from '~lib/constants'
 import {
   getCacheJson,
   getCacheRedis,
   setCacheJson,
   setCacheRedis,
-} from '~lib/notion/getCache'
-import { notion } from '~lib/notion/helper'
+} from '@jeromefitz/shared/src/lib/notion/getCache'
+import { getNotion } from '@jeromefitz/shared/src/lib/notion/helper'
+import _filter from 'lodash/filter'
+
+import { notionConfig as config } from '~config/index'
+import { nextWeirdRoutingSkipData, CACHE_TYPES } from '~lib/constants'
 
 const cacheType = process.env.NEXT_PUBLIC__NOTION_CACHE || CACHE_TYPES.LOCAL
+
+const notion = getNotion(config)
 
 // @todo(next) preview
 // @todo(complexity) 19

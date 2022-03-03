@@ -1,10 +1,10 @@
 import { Box } from '@jeromefitz/design-system/components'
 import type { Podcast as PodcastProperties } from '@jeromefitz/notion/schema'
+import { ContentNodes } from '@jeromefitz/shared/src/lib/notion/app'
 
 import Episodes from '../Episodes/Listing'
 
 import { ImageLead } from '~components/Layout'
-import { ContentNodes } from '~lib/notion/app'
 
 // @refactor(types)
 interface Icon {

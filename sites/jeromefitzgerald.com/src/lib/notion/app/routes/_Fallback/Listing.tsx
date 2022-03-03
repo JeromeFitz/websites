@@ -6,9 +6,8 @@ import {
   Note,
   Paragraph,
 } from '@jeromefitz/design-system/components'
+import { ContentNodes } from '@jeromefitz/shared/src/lib/notion/app'
 import NextLink from 'next/link'
-
-import { ContentNodes } from '~lib/notion/app'
 
 const Item = ({ item, routeType }) => {
   // console.dir(`>> Item`)

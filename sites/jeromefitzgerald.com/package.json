@@ -43,6 +43,7 @@
     "@heroicons/react": "1.0.6",
     "@jeromefitz/design-system": "3.0.1",
     "@jeromefitz/notion": "3.0.5",
+    "@jeromefitz/shared": "*",
     "@jeromefitz/spotify": "2.1.6",
     "@jeromefitz/utils": "2.0.1",
     "@mantine/hooks": "3.6.13",
