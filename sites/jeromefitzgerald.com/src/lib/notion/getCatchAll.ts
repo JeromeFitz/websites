@@ -49,13 +49,17 @@ const getCatchAll = async ({
    * - - Time Sensitive Data? => Direct API over Cache
    * - - Non-Time Sensistive Data? => ISR reliance
    */
-
-  const isCache = cache && !revalidate
+  const isBuildStep = process.env.CI
+  const isCache = cache && isBuildStep
   // const isServer = typeof window === 'undefined'
   // console.dir(`cache:      ${cache}`)
   // console.dir(`revalidate: ${revalidate}`)
   // console.dir(`isCache:    ${isCache}`)
   // console.dir(`isServer:   ${isServer}`)
+  if (isBuildStep) {
+    console.dir(`isBuildStep: ${isBuildStep}`)
+    console.dir(`isCache:     ${isCache}`)
+  }
 
   const { slug } = pathVariables
   if (nextWeirdRoutingSkipData.includes(slug)) return null
@@ -72,7 +76,9 @@ const getCatchAll = async ({
   if (isCache) {
     console.dir(`isCache: ${cacheType} => ${url}`)
     if (cacheType === CACHE_TYPES.REMOTE) {
-      data = await getCacheRedis(url)
+      const key = `notion/${url}`.toLowerCase()
+      data = await getCacheRedis(key)
+      // data = await JSON.parse(data)
     } else {
       data = await getCacheJson(url)
     }
@@ -87,7 +93,7 @@ const getCatchAll = async ({
     const { dataType, routeType, slug } = pathVariables
 
     if (notion.dataTypes[dataType]) {
-      // console.dir(`getNotion: ${dataType} => ${routeType}/${slug}`)
+      console.dir(`getNotion: ${dataType} => ${routeType}/${slug}`)
       const DATATYPE_DATA: any = await notion.dataTypes[dataType]({
         pathVariables,
         routeType,
@@ -118,7 +124,8 @@ const getCatchAll = async ({
      */
     if (isCache || revalidate) {
       if (cacheType === CACHE_TYPES.REMOTE) {
-        setCacheRedis(data, url)
+        const key = `notion/${url}`.toLowerCase()
+        setCacheRedis(data, key)
       } else {
         if (!revalidate) {
           setCacheJson(data, url)

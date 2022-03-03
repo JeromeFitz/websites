@@ -31,9 +31,8 @@ const setCacheJson = (data, url) => {
   return null
 }
 
-const setCacheRedis = (data, url) => {
-  const key = `notion/${url}`.toLowerCase()
-  console.dir(`setCacheRedis => key: ${key}`)
+const setCacheRedis = (data, key) => {
+  // console.dir(`setCacheRedis => key: ${key}`)
   void redis.set(key, stringify(data), 'EX', getTimeInSeconds(ms('30d')))
 }
 
@@ -57,13 +56,12 @@ const getCacheJson = async (url) => {
   return cacheData
 }
 
-const getCacheRedis = async (url) => {
+const getCacheRedis = async (key) => {
   let cacheData = false
-  const key = `notion/${url}`.toLowerCase()
   // console.dir(`getCache: redis => ${key}`)
   const cache = await redis.get(key)
   try {
-    console.dir(`getCacheRedis: redis => ${key}`)
+    // console.dir(`getCacheRedis: redis => ${key}`)
     cacheData = await JSON.parse(cache)
   } catch (_) {
     // console.dir(`getCacheRedis: notFatal`)

@@ -1,9 +1,12 @@
-import stringify from 'fast-json-stable-stringify'
 import Slugger from 'github-slugger'
 
 import { CACHE_TYPES } from '~lib/constants'
-import { getCacheJson, setCacheJson } from '~lib/notion/getCache'
-import redis from '~lib/redis'
+import {
+  getCacheJson,
+  setCacheJson,
+  setCacheRedis,
+  getCacheRedis,
+} from '~lib/notion/getCache'
 
 const keyPrefix = 'image'
 const cacheType = process.env.NEXT_PUBLIC__NOTION_CACHE || CACHE_TYPES.LOCAL
@@ -23,12 +26,10 @@ const getImage = async (url: string) => {
 
   if (cacheType === CACHE_TYPES.REMOTE) {
     // console.dir(`@cache(get) redis`)
-    cache = await redis.get(key)
+    cache = await getCacheRedis(key)
+    // cache = await JSON.parse(cache)
     if (cache) {
-      // console.dir(`@cache(set) json`)
-      const data = JSON.parse(cache)
-      setCacheJson(data, key)
-      return data
+      return cache
     }
   } else {
     // console.dir(`@cache(get) json`)
@@ -45,7 +46,7 @@ const getImage = async (url: string) => {
 
   if (cacheType === CACHE_TYPES.REMOTE) {
     // console.dir(`@cache(set) redis`)
-    void redis.set(key, stringify(data))
+    setCacheRedis(data, key)
   } else {
     // console.dir(`@cache(set) json`)
     setCacheJson(data, key)
