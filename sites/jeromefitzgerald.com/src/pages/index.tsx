@@ -1,24 +1,28 @@
 import { PageHeading, SkeletonHeading } from '@jeromefitz/design-system/components'
+import {
+  nextWeirdRoutingSkipData,
+  // revalidate,
+  ERROR__FALLBACK,
+} from '@jeromefitz/shared/src/lib/constants'
+import fetcher from '@jeromefitz/shared/src/lib/fetcher'
+import {
+  getCatchAll,
+  getDataReturn,
+  getNotion,
+} from '@jeromefitz/shared/src/lib/notion'
+import getNextPageStatus from '@jeromefitz/shared/src/utils/getNextPageStatus'
 import dynamic from 'next/dynamic'
 import useSWR from 'swr'
 
 import { Page } from '~components/Layout'
 import { notionConfig } from '~config/index'
-import {
-  nextWeirdRoutingSkipData,
-  // revalidate,
-  ERROR__FALLBACK,
-} from '~lib/constants'
-import fetcher from '~lib/fetcher'
 // import ShowsListing from '~lib/notion/app/routes/Shows/Listing'
-import getCatchAll from '~lib/notion/getCatchAll'
-import getDataReturn from '~lib/notion/getDataReturn'
-import { notion } from '~lib/notion/helper'
-import getNextPageStatus from '~utils/getNextPageStatus'
 
 const IndexShowListing = dynamic(() => import('~custom/IndexShowListing'), {
   ssr: false,
 })
+
+const notion = getNotion(notionConfig)
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -109,6 +113,7 @@ export const getStaticProps = async ({ preview = false, ...props }) => {
       cache,
       catchAll,
       clear,
+      notionConfig,
       pathVariables,
       preview,
     }),

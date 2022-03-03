@@ -5,13 +5,12 @@ import {
   Skeleton,
 } from '@jeromefitz/design-system/components'
 import { darkTheme } from '@jeromefitz/design-system/stitches.config'
+import fetcher from '@jeromefitz/shared/src/lib/fetcher'
+import { Gradients } from '@jeromefitz/shared/src/styles/const'
 import _isEmpty from 'lodash/isEmpty'
 // import * as React from 'react'
 // import { useIsomorphicLayoutEffect } from 'react-use'
 import useSWR from 'swr'
-
-import fetcher from '~lib/fetcher'
-import { Gradients } from '~styles/const'
 
 import { Image, ImageBlur, ImageContainer } from './ImageLead.styles'
 

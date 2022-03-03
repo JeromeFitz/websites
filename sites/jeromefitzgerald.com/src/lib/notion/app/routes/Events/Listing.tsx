@@ -14,6 +14,7 @@ import {
 } from '@jeromefitz/design-system/components'
 import { styled } from '@jeromefitz/design-system/stitches.config'
 import type { Event as EventProperties } from '@jeromefitz/notion/schema'
+import { ContentNodes } from '@jeromefitz/shared/src/lib/notion/app'
 import { ArrowRightIcon, ClockIcon } from '@radix-ui/react-icons'
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
 import { getDate, getDay, getMonth, getYear, parseISO } from 'date-fns'
@@ -31,7 +32,6 @@ import NextLink from 'next/link'
 import * as React from 'react'
 
 import { TAGS } from '~config/index'
-import { ContentNodes } from '~lib/notion/app'
 import { notion } from '~lib/notion/helper'
 
 const Announce = dynamic(

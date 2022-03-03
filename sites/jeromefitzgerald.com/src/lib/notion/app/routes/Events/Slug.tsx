@@ -31,7 +31,7 @@ import _map from 'lodash/map'
 import _union from 'lodash/union'
 
 import Meta from '~components/Meta'
-// import { ContentNodes } from '~lib/notion/app'
+// import { ContentNodes } from '@jeromefitz/shared/src/lib/notion/app'
 import { TAGS } from '~config/index'
 
 // @refactor(types)

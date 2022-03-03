@@ -1,9 +1,9 @@
 import { Box } from '@jeromefitz/design-system/components'
 import type { Show } from '@jeromefitz/notion/schema'
+import { ContentNodes } from '@jeromefitz/shared/src/lib/notion/app'
 
 import { ImageLead } from '~components/Layout'
 import Meta from '~components/Meta'
-import { ContentNodes } from '~lib/notion/app'
 
 // @refactor(types)
 interface Icon {

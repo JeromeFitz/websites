@@ -1,8 +1,10 @@
 // import { TicketIcon } from '@heroicons/react/outline'
 import { Box, Flex } from '@jeromefitz/design-system/components'
 import { darkTheme, styled } from '@jeromefitz/design-system/stitches.config'
+// import { cssIconHeroToRadix } from '@jeromefitz/shared/src/lib/constants'
 // import { parseISO } from 'date-fns'
 // import { format } from 'date-fns-tz'
+import fetcher from '@jeromefitz/shared/src/lib/fetcher'
 import { useKBar } from 'kbar'
 import _pick from 'lodash/pick'
 import { useTheme } from 'next-themes'
@@ -12,8 +14,6 @@ import useSWRImmutable from 'swr/immutable'
 import { useSound } from 'use-sound'
 
 import { navigation } from '~config/navigation'
-// import { cssIconHeroToRadix } from '~lib/constants'
-import fetcher from '~lib/fetcher'
 import useStore from '~store/useStore'
 
 const RightSlot = styled('div', {

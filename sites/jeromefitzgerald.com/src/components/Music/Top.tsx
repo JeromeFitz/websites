@@ -22,13 +22,12 @@ import useOnScreen from '@jeromefitz/design-system/hooks/useOnScreen'
 import useSpotify from '@jeromefitz/design-system/hooks/useSpotify'
 import useSWRInfinitePages from '@jeromefitz/design-system/hooks/useSWRInfinitePages'
 import { darkTheme, styled } from '@jeromefitz/design-system/stitches.config'
+import fetcher from '@jeromefitz/shared/src/lib/fetcher'
 import { ArrowLeftIcon, ArrowRightIcon } from '@radix-ui/react-icons'
 import _map from 'lodash/map'
 import _size from 'lodash/size'
 import * as React from 'react'
 import _title from 'title'
-
-import fetcher from '~lib/fetcher'
 
 import { backgrounds } from './index.props'
 

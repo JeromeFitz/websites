@@ -9,6 +9,7 @@ import {
 } from '@jeromefitz/design-system/components'
 import { styled } from '@jeromefitz/design-system/stitches.config'
 // import { ExternalLinkIcon } from '@radix-ui/react-icons'
+import fetcher from '@jeromefitz/shared/src/lib/fetcher'
 import Slugger from 'github-slugger'
 import _map from 'lodash/map'
 import _slice from 'lodash/slice'
@@ -17,7 +18,6 @@ import useSWR from 'swr'
 import _title from 'title'
 
 import { nowPlaying } from '~data/mock/music'
-import fetcher from '~lib/fetcher'
 
 // const HOUR = 3600000
 const MINUTE = 60000

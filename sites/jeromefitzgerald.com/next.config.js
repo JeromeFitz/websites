@@ -10,7 +10,10 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 })
 const { withPlaiceholder } = require('@plaiceholder/next')
 const { withPlugins } = require('next-compose-plugins')
-const withTM = require('next-transpile-modules')(['@jeromefitz/design-system'])
+const withTM = require('next-transpile-modules')([
+  '@jeromefitz/design-system',
+  '@jeromefitz/shared',
+])
 
 const { withBuildInfo } = require('./scripts/buildInfo')
 // const getRedirects = require('./config/notion/website/getRedirects')
