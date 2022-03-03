@@ -5,7 +5,7 @@ import { Page } from '~components/Layout'
 import { notionConfig } from '~config/index'
 import {
   nextWeirdRoutingSkipData,
-  revalidate,
+  // revalidate,
   ERROR__FALLBACK,
 } from '~lib/constants'
 import fetcher from '~lib/fetcher'
@@ -46,12 +46,7 @@ const PagesCatchAll = (props) => {
         items: itemsFallback,
       },
       /**
-       * @note(swr): To reduce Notion calls at build we utilize a cache
-       * - ISR cannot accept any parameters, so right now cannot use
-       * - SWR will init on each call to revalidate once (not ideal)
-       * - - If we get an error we should fallback to cache
-       *
-       * @note(swr): Turnign this off and manually updating cache when necessary
+       * @note(swr): Turning this off and manually updating cache when necessary
        */
       revalidateIfStale: false,
       revalidateOnFocus: false,
@@ -113,7 +108,7 @@ export const getStaticProps = async ({ preview = false, ...props }) => {
   })
   return {
     props: { preview, ...data, ...pathVariables, ...props },
-    revalidate,
+    // revalidate,
   }
 }
 
