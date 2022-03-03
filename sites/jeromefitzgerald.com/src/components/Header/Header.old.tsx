@@ -17,6 +17,7 @@ import {
   TooltipContent,
   TooltipArrow,
 } from '@jeromefitz/design-system/custom/Tooltip'
+import { Media } from '@jeromefitz/shared/src/context/Media'
 import { DropdownMenuIcon, PlusIcon } from '@radix-ui/react-icons'
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
 import dynamic from 'next/dynamic'
@@ -32,7 +33,6 @@ import { ToggleAudio, ToggleTheme } from '~components/Toggle'
  * @todo(deprecated) remove
  */
 import { navigationHeader } from '~config/index'
-import { Media } from '~context/Media'
 import useStore from '~store/useStore'
 
 const Banner = dynamic(

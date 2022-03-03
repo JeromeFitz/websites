@@ -13,7 +13,6 @@ const notion = getNotion(notionConfig)
 // eslint-disable-next-line complexity
 const CatchAll = async (req: any, res: NextApiResponse) => {
   try {
-    console.dir(`> CatchAll API`)
     // @todo(next) preview
     const preview = req.query?.preview || false
     const clear = req.query?.clear || false

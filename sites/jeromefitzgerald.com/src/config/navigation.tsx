@@ -10,6 +10,10 @@ import {
   TicketIcon,
 } from '@heroicons/react/outline'
 import {
+  cssIconHeroToRadix,
+  cssIconHeroToRadix1,
+} from '@jeromefitz/shared/src/lib/constants'
+import {
   CalendarIcon,
   EnvelopeOpenIcon,
   ExternalLinkIcon,
@@ -31,8 +35,6 @@ import {
   TwitterLogoIcon,
 } from '@radix-ui/react-icons'
 import * as React from 'react'
-
-import { cssIconHeroToRadix, cssIconHeroToRadix1 } from '~lib/constants'
 
 interface INavigationItem {
   icon?: React.ReactElement

@@ -16,7 +16,7 @@ import useSWR from 'swr'
 
 import { Page } from '~components/Layout'
 import { notionConfig } from '~config/index'
-// import ShowsListing from '~lib/notion/app/routes/Shows/Listing'
+// import ShowsListing from '~routes/Shows/Listing'
 
 const IndexShowListing = dynamic(() => import('~custom/IndexShowListing'), {
   ssr: false,

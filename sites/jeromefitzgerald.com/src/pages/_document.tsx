@@ -1,4 +1,6 @@
 import { getCssText, reset } from '@jeromefitz/design-system/stitches.config'
+import { mediaStyles } from '@jeromefitz/shared/src/context/Media'
+import { info, fontFace } from '@jeromefitz/shared/src/styles/fonts/Inter'
 import _map from 'lodash/map'
 import Document, {
   DocumentContext,
@@ -7,9 +9,6 @@ import Document, {
   Main,
   NextScript,
 } from 'next/document'
-
-import { mediaStyles } from '~context/Media'
-import { info, fontFace } from '~styles/fonts/Inter'
 
 /**
  * @note
@@ -49,6 +48,7 @@ class MyDocument extends Document<DocumentContext> {
             }}
           />
           {/* START: custom typeface */}
+          {/* @ref: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link */}
           {_map(info.weights, (weight) => {
             return _map(weight, (file) => {
               const { href, type } = file

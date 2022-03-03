@@ -22,8 +22,8 @@ const getCatchAll = async ({
   retrieveImages = true,
   revalidate = false,
 }) => {
-  console.dir(`> getCatchAll: pathVariables`)
-  console.dir(pathVariables)
+  // console.dir(`> getCatchAll: pathVariables`)
+  // console.dir(pathVariables)
 
   const notion = getNotion(notionConfig)
 
