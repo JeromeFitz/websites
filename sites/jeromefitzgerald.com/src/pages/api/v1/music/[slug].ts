@@ -1,11 +1,10 @@
+import redis from '@jeromefitz/shared/src/lib/redis'
 import Client from '@jeromefitz/spotify'
 import type { CredentialProps, ClientProps } from '@jeromefitz/spotify'
 import stringify from 'fast-json-stable-stringify'
 import Slugger from 'github-slugger'
 import ms from 'ms'
 import { NextApiResponse } from 'next'
-
-import redis from '~lib/redis'
 
 const keyPrefix = 'spotify'
 

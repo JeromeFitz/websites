@@ -8,12 +8,12 @@ import {
   Text,
 } from '@jeromefitz/design-system/components'
 // import { darkTheme } from '@jeromefitz/design-system/stitches.config'
+import { Media } from '@jeromefitz/shared/src/context/Media'
 import { Shadows } from '@jeromefitz/shared/src/styles/const'
 import { ArrowTopRightIcon, CalendarIcon } from '@radix-ui/react-icons'
 import NextLink from 'next/link'
 import { useSound } from 'use-sound'
 
-import { Media } from '~context/Media'
 import useStore from '~store/useStore'
 
 // @todo(dynamic) notion api, upcoming event or evergreen info

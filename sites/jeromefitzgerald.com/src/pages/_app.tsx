@@ -1,7 +1,11 @@
-import '~styles/chrome.css'
+import '@jeromefitz/shared/src/styles/chrome.css'
 
 import { Container, Section } from '@jeromefitz/design-system/components'
 import { globalCss } from '@jeromefitz/design-system/stitches.config'
+import { Providers } from '@jeromefitz/shared/src/context/Providers'
+import { useAnalytics } from '@jeromefitz/shared/src/lib/analytics'
+import { IMAGE__FALLBACKS__SHOWS } from '@jeromefitz/shared/src/lib/constants'
+import globalStyles from '@jeromefitz/shared/src/styles/global'
 import type { AppProps, NextWebVitalsMetric } from 'next/app'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
@@ -18,10 +22,6 @@ import NProgress from '~components/NProgress'
 // @ts-ignore
 import buildInfo from '~config/buildInfo.json'
 import { pluralRules } from '~config/index'
-import { Providers } from '~context/Providers'
-import { useAnalytics } from '~lib/analytics'
-import { IMAGE__FALLBACKS__SHOWS } from '~lib/constants'
-import globalStyles from '~styles/global'
 
 const Header = dynamic(() => import('~components/Header'), {
   ssr: true,

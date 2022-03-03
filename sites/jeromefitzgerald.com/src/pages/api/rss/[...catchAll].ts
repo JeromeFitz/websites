@@ -5,6 +5,8 @@
  *
  */
 
+import { getCatchAll, getNotion } from '@jeromefitz/shared/src/lib/notion'
+import getTimeInSeconds from '@jeromefitz/shared/src/utils/getTimeInSeconds'
 import { setCharAt } from '@jeromefitz/utils'
 import _isBefore from 'date-fns/isBefore'
 import _parseISO from 'date-fns/parseISO'
@@ -17,10 +19,8 @@ import { Podcast, Item, FeedOptions } from 'podcast'
 
 import { url } from '~config/getNextSeo'
 import { notionConfig } from '~config/index'
-import getCatchAll from '~lib/notion/getCatchAll'
-import { notion } from '~lib/notion/helper'
-import getTimeInSeconds from '~utils/getTimeInSeconds'
 
+const notion = getNotion(notionConfig)
 const { NOTION } = notionConfig
 
 const rssApi = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -47,6 +47,7 @@ const rssApi = async (req: NextApiRequest, res: NextApiResponse) => {
     cache,
     clear,
     catchAll,
+    notionConfig,
     pathVariables,
     preview,
     retrieveImages: false,

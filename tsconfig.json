@@ -46,6 +46,7 @@
       "~hooks/*": ["src/hooks/*"],
       "~lib/*": ["src/lib/*"],
       "~pages/*": ["src/pages/*"],
+      "~routes/*": ["src/routes/*"],
       "~scripts/*": ["src/scripts/*"],
       "~store/*": ["src/store/*"],
       "~styles/*": ["src/styles/*"],

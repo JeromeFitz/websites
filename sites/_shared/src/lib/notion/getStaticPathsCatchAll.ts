@@ -80,7 +80,6 @@ const getStaticPathsDefault = ({ items, routeType, notionConfig }) => {
  *
  */
 const getStaticPathsCatchAll = async (notionConfig) => {
-  console.dir(`> _shared: getStaticPathsCatchAll`)
   const notion = getNotion(notionConfig)
   const { NOTION, PAGES, ROUTE_TYPES } = notionConfig
 

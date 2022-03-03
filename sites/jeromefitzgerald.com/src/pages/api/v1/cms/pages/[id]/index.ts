@@ -1,16 +1,21 @@
 // 4fd37202-ec62-4897-a0dd-5ed8ab8b4b53
 // import _omit from 'lodash/omit'
 import dataNormalized from '@jeromefitz/notion/utils/dataNormalized'
+import {
+  getCacheJson,
+  getNotion,
+  setCacheJson,
+} from '@jeromefitz/shared/src/lib/notion'
 import { avoidRateLimit, sortObject } from '@jeromefitz/utils'
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import { notionConfig as config } from '~config/index'
-import { getCacheJson, setCacheJson } from '~lib/notion/getCache'
-import { notion } from '~lib/notion/helper'
+import { notionConfig } from '~config/index'
 // import omitFields from '~lib/notion/omitFields'
 
 // const useCache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE
 const useCache = false
+
+const notion = getNotion(notionConfig)
 
 const notionPagesId = async (req: NextApiRequest, res: NextApiResponse) => {
   // console.dir(`notionPagesId`)
@@ -37,7 +42,7 @@ const notionPagesId = async (req: NextApiRequest, res: NextApiResponse) => {
     })
     data = sortObject(
       dataNormalized({
-        config,
+        config: notionConfig,
         data: contentData,
         pathVariables: null,
         pageId: page_id,

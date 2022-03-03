@@ -13,7 +13,6 @@ const { PAGES__HOMEPAGE } = notionConfig
 
 const notionCatchAll = async (req: any, res: NextApiResponse) => {
   try {
-    console.dir(`> CatchAll API (Index)`)
     // @todo(next) preview
     const preview = req.query?.preview || false
     const clear = req.query?.clear || false

@@ -1,9 +1,8 @@
 // import { isObject } from '@jeromefitz/utils'
 import { Link } from '@jeromefitz/design-system/components'
+import getNextLink from '@jeromefitz/shared/src/utils/getNextLink'
 import _startsWith from 'lodash/startsWith'
 import NextLink from 'next/link'
-
-import getNextLink from '~utils/getNextLink'
 
 // @hack(notion) too much customization
 const isObject = (obj) => {
