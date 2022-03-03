@@ -35,26 +35,13 @@
     "strictFunctionTypes": false, // @todo(lint)
     "strictNullChecks": false, // @todo(lint)
     "strictPropertyInitialization": false, // @todo(lint)
-    "target": "esnext",
-    "paths": {
-      "~components/*": ["src/components/*"],
-      "~config/*": ["src/config/*"],
-      "~containers/*": ["src/containers/*"],
-      "~context/*": ["src/context/*"],
-      "~custom/*": ["src/custom/*"],
-      "~data/*": ["src/data/*"],
-      "~hooks/*": ["src/hooks/*"],
-      "~lib/*": ["src/lib/*"],
-      "~pages/*": ["src/pages/*"],
-      "~routes/*": ["src/routes/*"],
-      "~scripts/*": ["src/scripts/*"],
-      "~store/*": ["src/store/*"],
-      "~styles/*": ["src/styles/*"],
-      "~svg/*": ["src/svg/*"],
-      "~theme/*": ["src/theme/*"],
-      "~utils/*": ["src/utils/*"]
-    }
+    "target": "esnext"
   },
-  "include": ["sites/**/*.ts", "sites/**/*.tsx"],
+  "include": [
+    "packages/**/*.ts",
+    "packages/**/*.tsx",
+    "sites/**/*.ts",
+    "sites/**/*.tsx"
+  ],
   "exclude": ["node_modules", "tests/*.test.ts", "todo"]
 }

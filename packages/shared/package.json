@@ -10,7 +10,7 @@
   "repository": {
     "type": "git",
     "url": "ssh://git@github.com/jeromefitz/websites.git",
-    "directory": "sites/_shared"
+    "directory": "packages/shared"
   },
   "scripts": {
     "---": "@tsup",
