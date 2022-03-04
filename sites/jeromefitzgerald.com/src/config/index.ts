@@ -14,6 +14,7 @@ const getDynamicDatabases = (obj: DatabaseInfo) =>
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
 const DATABASES: Databases = getDynamicDatabases(NOTION)
+
 // console.dir(`____ DATABASES `)
 // console.dir(DATABASES)
 
