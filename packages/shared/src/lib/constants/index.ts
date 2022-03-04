@@ -5,7 +5,8 @@ import IMAGE__FALLBACKS__SHOWS from './images/shows'
  */
 const nextWeirdRoutingSkipData = ['favicon.ico', 'false', 'true', 'undefined']
 
-const revalidate = 60
+// @note(next) no longer used due to ISR
+const revalidate = 60 * 60 * 24 // 1 day (86,400)
 
 const CACHE_TYPES = {
   REMOTE: 'remote',

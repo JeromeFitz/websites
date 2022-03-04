@@ -8,14 +8,15 @@ import { nextSeo, notionConfig } from '~config/index'
 const { NOTION } = notionConfig
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const Layout = ({ id, children, properties, routeType, url }) => {
+const Layout = ({ id, children, info, routeType, url }) => {
   const { data: images } = useSWR('images')
+  const { properties } = info
   if (properties === undefined) return null
 
   const {
     isIndexed,
     isPublished,
-    seoDescription: description,
+    seoDescription: pageHeadingDescription,
     seoImage: _seoImage,
     seoImageDescription,
     slug,
@@ -27,7 +28,15 @@ const Layout = ({ id, children, properties, routeType, url }) => {
   const seoImageData = !!images && images[seoImageSlug]
   const seoUrl = `${nextSeo.url}/${!!url ? url : ''}`
 
-  let seoDescription = description
+  /**
+   * @note SEO Description
+   * For SEO we want some additive information for certain routes
+   * Visually we _do not_ want those additives to duplicate information
+   *
+   * - pageHeadingDescription => Visual
+   * - seoDescription => SEO
+   */
+  let seoDescription = pageHeadingDescription
   if (routeType === NOTION.EVENTS.routeType && slug !== NOTION.EVENTS.routeType) {
     const date = format(
       parseISO(properties?.dateEvent?.start),
@@ -37,8 +46,6 @@ const Layout = ({ id, children, properties, routeType, url }) => {
   }
 
   const noindex = !isPublished || !isIndexed
-  // console.dir(`noindex: ${noindex}`)
-
   const seoImage = !!_seoImage ? _seoImage[seoImageSlug]?.url : null
   const openGraphImages = !!seoImage
     ? [
@@ -68,7 +75,7 @@ const Layout = ({ id, children, properties, routeType, url }) => {
   return (
     <>
       <Seo {...seo} />
-      <PageHeading title={seo.title} description={description} />
+      <PageHeading title={seo.title} description={pageHeadingDescription} />
       {children}
     </>
   )

@@ -19,6 +19,7 @@
     "dev": "next dev",
     "postbuild": "next-sitemap --config next.sitemap.js",
     "start": "next start",
+    "start:isr": "next start -H localhost",
     "unused": "yarn next-unused",
     "--- ": "",
     "clean": "rm -rf .turbo && rm -rf ./.next",

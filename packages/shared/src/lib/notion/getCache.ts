@@ -6,6 +6,17 @@ import ms from 'ms'
 import { readFile, writeFileSyncRecursive } from '../fs-helpers'
 import redis from '../redis'
 
+// const cacheType = {
+//   remote: {
+//     get: {},
+//     set: {},
+//   },
+//   local: {
+//     get: {},
+//     set: {},
+//   },
+// }
+
 /**
  * @redis is in seconds not ms
  */

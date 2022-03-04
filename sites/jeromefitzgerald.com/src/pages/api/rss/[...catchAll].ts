@@ -33,24 +33,14 @@ const rssApi = async (req: NextApiRequest, res: NextApiResponse) => {
   const clear = req.query?.clear || false
   const catchAll = req.query?.catchAll
 
-  /**
-   * @cache
-   */
-  // // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // // @ts-ignore
-  // const cache = !!req.query?.cache ? JSON.parse(req.query?.cache) : true
-  const cache = false
-
   // http://localhost:3000/api/v1/cms/blog/2020/12/28/preview-blog-post?preview=true
   const pathVariables = notion.custom.getPathVariables({ catchAll })
   const data = await getCatchAll({
-    cache,
     clear,
     catchAll,
     notionConfig,
     pathVariables,
     preview,
-    retrieveImages: false,
   })
 
   /**
