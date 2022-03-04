@@ -6,17 +6,6 @@ import ms from 'ms'
 import { readFile, writeFileSyncRecursive } from '../fs-helpers'
 import redis from '../redis'
 
-// const cacheType = {
-//   remote: {
-//     get: {},
-//     set: {},
-//   },
-//   local: {
-//     get: {},
-//     set: {},
-//   },
-// }
-
 /**
  * @redis is in seconds not ms
  */
@@ -47,10 +36,12 @@ const setCacheRedis = (data, key) => {
   void redis.set(key, stringify(data), 'EX', getTimeInSeconds(ms('30d')))
 }
 
-const setCache = (data: any, url: string) => {
-  setCacheJson(data, url.toLowerCase())
-  setCacheRedis(data, url.toLowerCase())
-
+const setCache = ({ cacheType, data, key, url }) => {
+  if (cacheType === 'remote') {
+    setCacheRedis(data, key)
+  } else {
+    setCacheJson(data, url.toLowerCase())
+  }
   return null
 }
 
@@ -81,5 +72,20 @@ const getCacheRedis = async (key) => {
   return cacheData
 }
 
-export { getCacheJson, getCacheRedis, setCache, setCacheJson, setCacheRedis }
+const getCache = async ({ cacheType, key, url }) => {
+  if (cacheType === 'remote') {
+    return await getCacheRedis(key)
+  } else {
+    return await getCacheJson(url)
+  }
+}
+
+export {
+  getCache,
+  getCacheJson,
+  getCacheRedis,
+  setCache,
+  setCacheJson,
+  setCacheRedis,
+}
 export default getCacheJson
