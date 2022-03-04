@@ -43,6 +43,7 @@ const NOTION: DatabaseInfo = {
     //
     //
     infoType: PROPERTIES.datePublished,
+    skipStaticPaths: false,
     ttl: getTimeInSeconds(ms('1d')),
   },
   BOOKS: {
@@ -58,6 +59,7 @@ const NOTION: DatabaseInfo = {
     //
     //
     infoType: PROPERTIES.datePublished,
+    skipStaticPaths: true,
     ttl: getTimeInSeconds(ms('1d')),
   },
   EPISODES: {
@@ -73,6 +75,7 @@ const NOTION: DatabaseInfo = {
     //
     //
     infoType: PROPERTIES.datePublished,
+    skipStaticPaths: false,
     ttl: getTimeInSeconds(ms('1d')),
   },
   EVENTS: {
@@ -92,6 +95,7 @@ const NOTION: DatabaseInfo = {
     //
     //
     infoType: PROPERTIES.dateEvent,
+    skipStaticPaths: false,
     ttl: getTimeInSeconds(ms('1d')),
   },
   PAGES: {
@@ -107,6 +111,7 @@ const NOTION: DatabaseInfo = {
     //
     //
     infoType: PROPERTIES.datePublished,
+    skipStaticPaths: false,
     ttl: getTimeInSeconds(ms('1d')),
   },
   PEOPLE: {
@@ -122,6 +127,7 @@ const NOTION: DatabaseInfo = {
     //
     //
     infoType: PROPERTIES.datePublished,
+    skipStaticPaths: false,
     ttl: getTimeInSeconds(ms('1d')),
   },
   PODCASTS: {
@@ -137,6 +143,7 @@ const NOTION: DatabaseInfo = {
     //
     //
     infoType: PROPERTIES.datePublished,
+    skipStaticPaths: false,
     ttl: getTimeInSeconds(ms('1d')),
   },
   SEO: {
@@ -152,6 +159,7 @@ const NOTION: DatabaseInfo = {
     //
     //
     infoType: PROPERTIES.datePublished,
+    skipStaticPaths: false,
     ttl: getTimeInSeconds(ms('1d')),
   },
   SHOWS: {
@@ -167,6 +175,7 @@ const NOTION: DatabaseInfo = {
     //
     //
     infoType: PROPERTIES.datePublished,
+    skipStaticPaths: false,
     ttl: getTimeInSeconds(ms('1d')),
   },
   VENUES: {
@@ -182,6 +191,7 @@ const NOTION: DatabaseInfo = {
     //
     //
     infoType: PROPERTIES.datePublished,
+    skipStaticPaths: false,
     ttl: getTimeInSeconds(ms('1d')),
   },
 }
