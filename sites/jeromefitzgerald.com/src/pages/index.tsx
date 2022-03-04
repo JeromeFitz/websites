@@ -1,7 +1,6 @@
 import { PageHeading, SkeletonHeading } from '@jeromefitz/design-system/components'
 import {
   nextWeirdRoutingSkipData,
-  // revalidate,
   ERROR__FALLBACK,
 } from '@jeromefitz/shared/src/lib/constants'
 import fetcher from '@jeromefitz/shared/src/lib/fetcher'
@@ -48,7 +47,7 @@ const Index = (props) => {
   // console.dir(props)
 
   const { data, error } = useSWR(
-    () => (!!slug ? `/api/v1/cms/${slug}?revaldiate=true` : null),
+    () => (!!slug ? `/api/v1/cms/${slug}` : null),
     fetcher,
     {
       fallbackData: {
@@ -58,7 +57,7 @@ const Index = (props) => {
         images: imagesFallback,
       },
       /**
-       * @note(swr): Turning this off and manually updating cache when necessary
+       * @note(swr): Turned off for the moment for on-demand ISR
        */
       revalidateIfStale: false,
       revalidateOnFocus: false,
@@ -104,13 +103,8 @@ export const getStaticProps = async ({ preview = false, ...props }) => {
   const clear = false
   const pathVariables = notion.custom.getPathVariables({ catchAll })
 
-  /**
-   * @cache
-   */
-  const cache = true
   const data = await getDataReturn({
     data: await getCatchAll({
-      cache,
       catchAll,
       clear,
       notionConfig,
@@ -121,7 +115,12 @@ export const getStaticProps = async ({ preview = false, ...props }) => {
   })
   return {
     props: { preview, ...data, ...pathVariables, ...props },
-    // revalidate,
+    /**
+     * @note(next)
+     * On-Demand ISR, do not pass revalidate
+     *
+     * ref: https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration#on-demand-revalidation-beta
+     */
   }
 }
 

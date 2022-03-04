@@ -113,14 +113,11 @@ const getStaticPathsCatchAll = async (notionConfig) => {
           catchAll,
         })
         const data = await getCatchAll({
-          // @question(cache) VERCEL PRODUCTION to false?
-          cache: true,
           catchAll,
           clear: false,
           notionConfig,
           pathVariables,
           preview: false,
-          revalidate: false,
         })
         const items = data?.items?.results
         const slugs = getStaticPathsDefault({

@@ -2,7 +2,7 @@ import Layout from '~components/Layout'
 import { getRouterNode } from '~routes/index'
 
 const Page = ({ ...props }) => {
-  const { dataType, routeType, url } = props
+  const { data, dataType, routeType, url } = props
 
   /**
    * @data
@@ -10,7 +10,7 @@ const Page = ({ ...props }) => {
   let routerNode = '_unsupported'
   let RouterComponent = getRouterNode[routerNode]
 
-  const { info = null } = props?.data
+  const { info = null } = data
   if (info === null) {
     // @todo(404|fallback)
     return <RouterComponent routerNode={routerNode} {...props} />
@@ -32,12 +32,7 @@ const Page = ({ ...props }) => {
   /* ------------------------------------------------------ */
 
   return (
-    <Layout
-      id={props.info.id}
-      properties={props.info.properties}
-      routeType={routeType}
-      url={url}
-    >
+    <Layout id={info.id} info={info} routeType={routeType} url={url}>
       <RouterComponent routerNode={routerNode} {...props} />
     </Layout>
   )
