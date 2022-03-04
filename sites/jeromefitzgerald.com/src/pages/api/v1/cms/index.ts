@@ -11,6 +11,17 @@ const notion = getNotion(notionConfig)
 
 const { PAGES__HOMEPAGE } = notionConfig
 
+/**
+ * @ref https://vercel.com/docs/concepts/projects/environment-variables#system-environment-variables
+ */
+// const isBuildStep = process.env.CI
+// const isDev = process.env.NODE_ENV === 'development' && typeof window !== 'undefined'
+
+const cache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE === 'true' ? true : false
+// const cacheOverride =
+process.env.NEXT_PUBLIC__NOTION_USE_CACHE_OVERIDE === 'true' ? true : false
+// const cacheType = process.env.NEXT_PUBLIC__NOTION_CACHE || CACHE_TYPES.LOCAL
+
 const notionCatchAll = async (req: any, res: NextApiResponse) => {
   try {
     // @todo(next) preview
@@ -36,7 +47,7 @@ const notionCatchAll = async (req: any, res: NextApiResponse) => {
     })
     const debug = {
       latency: Date.now() - start,
-      // type: cache ? 'cache' : 'api',
+      type: cache ? 'cache' : 'api',
     }
 
     res.status(200).json({ ...data, debug })

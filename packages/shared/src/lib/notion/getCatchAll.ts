@@ -9,10 +9,17 @@ import { getNotion } from './helper'
  * @ref https://vercel.com/docs/concepts/projects/environment-variables#system-environment-variables
  */
 const isBuildStep = process.env.CI
-const cache =
-  process.env.NEXT_PUBLIC__NOTION_USE_CACHE === 'true' ? true : false || true
+const isDev = process.env.NODE_ENV === 'development' && typeof window !== 'undefined'
+
+const cache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE === 'true' ? true : false
+const cacheOverride =
+  process.env.NEXT_PUBLIC__NOTION_USE_CACHE_OVERIDE === 'true' ? true : false
 const cacheType = process.env.NEXT_PUBLIC__NOTION_CACHE || CACHE_TYPES.LOCAL
 const keyPrefix = 'notion'
+
+// console.dir(`cache:         ${cache}`)
+// console.dir(`cacheOverride: ${cacheOverride}`)
+// console.dir(`isBuildStep:   ${isBuildStep}`)
 
 /**
  * @cache
@@ -55,12 +62,20 @@ const getCatchAll = async ({
 
   /**
    * @build
-   * - cache should always be true, but may not for debugging purposes.
+   * cache should always be true, but may not for debugging purposes.
+   *
+   * Tricks:
+   * - isDev => 99/100 times we do not want to keep hitting the API when developing
+   * - cache hyrdate =>
+   * - - set: cache to false
+   * - - set: cacheOverride to true
+   * - - run `yarn build`
+   *
    */
-  if (cache && isBuildStep) {
-    // console.dir(`isBuildStep: ${cacheType} => ${url}`)
+  if ((cache && isBuildStep) || isDev) {
     const key = `${keyPrefix}/${url}`.toLowerCase()
-    data = await getCache({ cacheType, key, url })
+    // console.dir(`cache && isBuildStep: ${cacheType} => ${key}`)
+    data = await getCache({ cacheType, key })
   }
 
   /**
@@ -134,10 +149,10 @@ const getCatchAllDataFromApi = async ({
    * - Update the cache with latest data from Notion API
    *
    */
-  if (cache) {
-    // console.dir(`!isBuildStep: ${cacheType} => ${url}`)
+  if (cache || cacheOverride) {
+    // console.dir(`cache || cacheOverride: ${cacheType} => ${url}`)
     const key = `${keyPrefix}/${url}`.toLowerCase()
-    setCache({ cacheType, data, key, url })
+    setCache({ cacheType, data, key })
   }
 
   return data
