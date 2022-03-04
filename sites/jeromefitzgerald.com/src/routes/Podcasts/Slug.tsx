@@ -28,7 +28,7 @@ interface Item extends ItemDefault {
 
 // @todo(types)
 const PodcastsSlug = (props) => {
-  // console.dir(`> PodcastsSlug`)
+  // console.dir(`> PodcastsSlug: Note PODCASTS and EPISODES SLUG isthis`)
   // console.dir(props)
   const { data, images } = props
   const { content, info, items }: { content: any; info: Item; items: any } = data

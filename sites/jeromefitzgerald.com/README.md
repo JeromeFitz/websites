@@ -40,13 +40,15 @@ This is probably why you are here. I am still in the midst of organizing the doc
     - `database_id`: Notion UUID
     - `dataTypes`: `'LISTING' | 'LISTING_BY_DATE' | 'SLUG' | 'SLUG_BY_ROUTE'`
     - `hasChild`: Does this route have a route underneath it? `PODCASTS => EPISODES`
+    - `infoType`: Is there a specific field that informs what type this is for Notion Querying purposes? (`EVENTS => dateEvent`, `BLOG => datePublished`)
+    - `isChild`: Is this route a Child? If so share its Parent here: `EPISODES => PODCASTS`
+    - `isChildInfoType`: Is this route a Child? If so share specific field that informs where we should get its Parent slug for `getStaticPaths` (`EPISODES -> PROPERTIES.rollupEpisodes__PodcastsSlugs`)
     - `name`
     - `page_id__seo`: Notion Page UUID from specific Data Item from `SEO` Database
     - `routeMeta`: Does the `next` route contain meta that is useful to Notion? (`blog|events|podcasts`)
     - `routeType`: What is the `routeType` called in `next` (`/shows`)
     - `slug`: Very similar to `routeType`, this matches the `slug` or `Slug` in Notion. (Please note: This _does not_ attempt to discern `slugs` from Notion Titles, this is a specific field you set in Notion.)
-    - `infoType`: Is there a specific field that informs what type this is for Notion Querying purposes? (`EVENTS => dateEvent`, `BLOG => datePublished`)
-    - `ttl`: How long should the cache be set for
+    - `ttl`: How long should the cache be set for (`tbd: right now everything is 30d`)
 
 #### Localized Functions
 

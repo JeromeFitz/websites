@@ -66,11 +66,6 @@ const notionConfig = {
 // console.dir(`____ NOTION `)
 // console.dir(NOTION)
 
-// console.dir(NOTION['PODCASTS'].hasChild)
-// console.dir(!!NOTION['PODCASTS'].hasChild)
-// console.dir(NOTION['EPISODES'].hasChild)
-// console.dir(!!NOTION['EPISODES'].hasChild)
-
 const pluralRules = [
   { rule: /cast$/i, replacement: 'cast' },
   { rule: /emeritus$/i, replacement: 'emeritus' },

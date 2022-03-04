@@ -16,7 +16,7 @@ const cacheType = process.env.NEXT_PUBLIC__NOTION_CACHE || CACHE_TYPES.LOCAL
 const getImage = async (url: string) => {
   const id = Slugger.slug(url)
   const key = `${keyPrefix}/${id}`.toLowerCase()
-  const cache = await getCache({ cacheType, key, url })
+  const cache = await getCache({ cacheType, key })
 
   if (cache) {
     return cache
@@ -27,7 +27,7 @@ const getImage = async (url: string) => {
   const { base64, img } = await getPlaiceholder(url)
   data = { base64, id, img, url }
 
-  setCache({ cacheType, data, key, url })
+  setCache({ cacheType, data, key })
 
   return data
 }

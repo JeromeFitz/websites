@@ -32,30 +32,18 @@ const getStaticPathsDefault = ({
    * @hack
    *
    * - !!routeParentInfo => isChild
-   * - - ex.) Episode (still hacky)
+   * - - ex.) PODCAST (Parent) => EPISODE (Child)
    * - isListingByDate
-   * - - ex.) Blog|Event
+   * - - ex.) BLOG|EVENT
    *
    * If neither of those return default
    *
-   * @todo
-   * refactor this into something cleaner once logic
-   *  with mutliple podcasts is figured out please
    */
   if (!!routeParentInfo) {
     _map(items, (item) => {
-      /**
-       * @todo(notion)
-       *
-       * What if there is more than two?
-       * Make dynamic please
-       *
-       */
       const childSlug =
-        item?.properties?.relationEpisodes__Podcast[0] ===
-        '24f593ca-1ea5-4f2f-9e5f-39bd44342021'
-          ? 'knockoffs'
-          : 'jer-and-ky-and-guest'
+        item?.properties[NOTION[routeType.toUpperCase()].isChildInfoType.key][0]
+
       !!childSlug &&
         data.push(
           `/${routeParentInfo.routeType}/${childSlug}/${item?.properties?.slug}`
@@ -94,6 +82,7 @@ const getStaticPathsCatchAll = async (notionConfig) => {
   const notion = getNotion(notionConfig)
   const { NOTION, PAGES, ROUTE_TYPES } = notionConfig
   const getParentRouteInfo = (routeTypeName: string) => {
+    // @todo(next-notion) move to `isChild`
     return _find(NOTION, { hasChild: routeTypeName })
   }
   const paths = []

@@ -21,9 +21,9 @@ const cacheFile = (filename) =>
     // `${filename === '/' ? 'index' : filename}.js`
   )
 
-const setCacheJson = (data, url) => {
+const setCacheJson = (data, key) => {
   try {
-    writeFileSyncRecursive(cacheFile(url.toLowerCase()), stringify(data), 'utf8')
+    writeFileSyncRecursive(cacheFile(key), stringify(data), 'utf8')
   } catch (_) {
     /* not fatal */
   }
@@ -36,20 +36,20 @@ const setCacheRedis = (data, key) => {
   void redis.set(key, stringify(data), 'EX', getTimeInSeconds(ms('30d')))
 }
 
-const setCache = ({ cacheType, data, key, url }) => {
+const setCache = ({ cacheType, data, key }) => {
   if (cacheType === 'remote') {
     setCacheRedis(data, key)
   } else {
-    setCacheJson(data, url.toLowerCase())
+    setCacheJson(data, key)
   }
   return null
 }
 
-const getCacheJson = async (url) => {
+const getCacheJson = async (key) => {
   let cacheData = false
-  const file = cacheFile(url.toLowerCase())
+  const file = cacheFile(key)
   try {
-    // console.dir(`getCacheJson: json => ${url.toLowerCase()}`)
+    // console.dir(`getCacheJson: json => ${key}`)
     cacheData = JSON.parse(await readFile(file, 'utf8'))
   } catch (_) {
     // console.dir(`getCacheJson: notFatal`)
@@ -72,11 +72,11 @@ const getCacheRedis = async (key) => {
   return cacheData
 }
 
-const getCache = async ({ cacheType, key, url }) => {
+const getCache = async ({ cacheType, key }) => {
   if (cacheType === 'remote') {
     return await getCacheRedis(key)
   } else {
-    return await getCacheJson(url)
+    return await getCacheJson(key)
   }
 }
 
