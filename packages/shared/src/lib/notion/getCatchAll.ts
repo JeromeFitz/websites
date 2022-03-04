@@ -2,15 +2,18 @@ import _filter from 'lodash/filter'
 
 import { nextWeirdRoutingSkipData, CACHE_TYPES } from '../constants'
 
-import { getCacheJson, getCacheRedis, setCacheJson, setCacheRedis } from './getCache'
+import { getCache, setCache } from './getCache'
 import { getNotion } from './helper'
 
+/**
+ * @ref https://vercel.com/docs/concepts/projects/environment-variables#system-environment-variables
+ */
+const isBuildStep = process.env.CI
 const cache =
   process.env.NEXT_PUBLIC__NOTION_USE_CACHE === 'true' ? true : false || true
 const cacheType = process.env.NEXT_PUBLIC__NOTION_CACHE || CACHE_TYPES.LOCAL
+const keyPrefix = 'notion'
 
-// @todo(next) preview
-// @todo(complexity) 16
 /**
  * @cache
  *
@@ -35,27 +38,14 @@ const cacheType = process.env.NEXT_PUBLIC__NOTION_CACHE || CACHE_TYPES.LOCAL
  * - - Time Sensitive Data? => Direct API over Cache
  * - - Non-Time Sensistive Data? => ISR reliance
  */
-// eslint-disable-next-line complexity
+// @todo(next) preview
 const getCatchAll = async ({
   catchAll,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   clear,
   notionConfig,
   pathVariables,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   preview,
 }) => {
-  // console.dir(`> getCatchAll: pathVariables`)
-  // console.dir(pathVariables)
-
-  const notion = getNotion(notionConfig)
-
-  // @ref: https://vercel.com/docs/concepts/projects/environment-variables#system-environment-variables
-  const isBuildStep = process.env.CI
-  // console.dir(`cache:       ${cache}`)
-  // console.dir(`cacheType:   ${cacheType}`)
-  // console.dir(`isBuildStep: ${isBuildStep}`)
-
   const { slug } = pathVariables
   if (nextWeirdRoutingSkipData.includes(slug)) return null
 
@@ -65,81 +55,89 @@ const getCatchAll = async ({
 
   /**
    * @build
-   *
-   * cache should always be true, but may not for debugging purposes.
-   *
-   * @todo can we lift this to not have REDIS/JSON logic here?
-   *
+   * - cache should always be true, but may not for debugging purposes.
    */
   if (cache && isBuildStep) {
-    console.dir(`isBuildStep: ${cacheType} => ${url}`)
-    if (cacheType === CACHE_TYPES.REMOTE) {
-      const key = `notion/${url}`.toLowerCase()
-      data = await getCacheRedis(key)
-    } else {
-      data = await getCacheJson(url)
-    }
+    // console.dir(`isBuildStep: ${cacheType} => ${url}`)
+    const key = `${keyPrefix}/${url}`.toLowerCase()
+    data = await getCache({ cacheType, key, url })
   }
 
   /**
    * @verify
-   *
-   * Does the data exist from CACHE
+   * - Does the data exist from CACHE
    *
    * Y => Skip, no more to do
    * N => Get latest directly from Notion API, set Cache
    *
    */
   if (!data || data === undefined) {
-    let content = null,
-      images = {},
-      info = null,
-      items = null
+    data = getCatchAllDataFromApi({
+      catchAll,
+      clear,
+      notionConfig,
+      pathVariables,
+      preview,
+      url,
+    })
+  }
 
-    const { dataType, routeType, slug } = pathVariables
+  return data
+}
 
-    if (notion.dataTypes[dataType]) {
-      console.dir(`getNotion: ${dataType} => ${routeType}/${slug}`)
-      const DATATYPE_DATA: any = await notion.dataTypes[dataType]({
-        pathVariables,
-        routeType,
-        slug,
-      })
-      content = DATATYPE_DATA?.content || null
-      images = DATATYPE_DATA?.images || {}
-      info = DATATYPE_DATA?.info || null
-      items = DATATYPE_DATA?.items || null
-    }
+const getCatchAllDataFromApi = async ({
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  catchAll,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  clear,
+  notionConfig,
+  pathVariables,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  preview,
+  url,
+}) => {
+  const notion = getNotion(notionConfig)
 
-    /**
-     * @filter to ensure only active items (isPublished) appear in results
-     */
-    if (!!items) {
-      items.results = _filter(items.results, { properties: { isPublished: true } })
-    }
+  let content = null,
+    images = {},
+    info = null,
+    items = null
 
-    data = { info, content, items, images }
+  const { dataType, routeType, slug } = pathVariables
 
-    /**
-     * @cache
-     *
-     * This only gets hit by live app when we are not in `isBuildStep`
-     * Update the cache with latest data from Notion API
-     *
-     * @todo can we lift this to not have REDIS/JSON logic here?
-     *
-     */
-    if (cache) {
-      console.dir(`revalidate: ${cacheType} => ${url}`)
-      if (cacheType === CACHE_TYPES.REMOTE) {
-        const key = `notion/${url}`.toLowerCase()
-        setCacheRedis(data, key)
-      } else {
-        if (cache) {
-          setCacheJson(data, url)
-        }
-      }
-    }
+  if (notion.dataTypes[dataType]) {
+    // console.dir(`getNotion: ${dataType} => ${routeType}/${slug}`)
+    const DATATYPE_DATA: any = await notion.dataTypes[dataType]({
+      pathVariables,
+      routeType,
+      slug,
+    })
+    content = DATATYPE_DATA?.content || null
+    images = DATATYPE_DATA?.images || {}
+    info = DATATYPE_DATA?.info || null
+    items = DATATYPE_DATA?.items || null
+  }
+
+  /**
+   * @filter
+   * - to ensure only active items (isPublished) appear in results
+   */
+  if (!!items) {
+    items.results = _filter(items.results, { properties: { isPublished: true } })
+  }
+
+  const data = { info, content, items, images }
+
+  /**
+   * @cache
+   * - This only gets hit by live app when we are not in `isBuildStep`
+   * - Update the cache with latest data from Notion API
+   *
+   */
+  if (cache) {
+    // console.dir(`!isBuildStep: ${cacheType} => ${url}`)
+    const key = `${keyPrefix}/${url}`.toLowerCase()
+    setCache({ cacheType, data, key, url })
   }
 
   return data
