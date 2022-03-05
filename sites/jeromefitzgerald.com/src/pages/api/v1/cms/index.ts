@@ -1,6 +1,5 @@
 import { NextApiResponse } from 'next'
-import { getCatchAll } from 'next-notion/src/getCatchAll'
-import { getDataReturn } from 'next-notion/src/getDataReturn'
+import { getStaticPropsCatchAll } from 'next-notion/src/getStaticPropsCatchAll'
 import { getNotion } from 'next-notion/src/helper'
 
 import { notionConfig } from '~config/index'
@@ -33,15 +32,12 @@ const notionCatchAll = async (req: any, res: NextApiResponse) => {
     })
 
     const start = Date.now()
-    const data = await getDataReturn({
-      data: await getCatchAll({
-        catchAll,
-        clear,
-        notionConfig,
-        pathVariables,
-        preview,
-      }),
+    const data = await getStaticPropsCatchAll({
+      catchAll,
+      clear,
+      notionConfig,
       pathVariables,
+      preview,
     })
     const debug = {
       latency: Date.now() - start,

@@ -1,7 +1,6 @@
 import { NextApiResponse } from 'next'
 import { nextWeirdRoutingSkipData } from 'next-notion/src/constants'
-import { getCatchAll } from 'next-notion/src/getCatchAll'
-import { getDataReturn } from 'next-notion/src/getDataReturn'
+import { getStaticPropsCatchAll } from 'next-notion/src/getStaticPropsCatchAll'
 import { getNotion } from 'next-notion/src/helper'
 
 import { notionConfig } from '~config/index'
@@ -45,17 +44,12 @@ const CatchAll = async (req: any, res: NextApiResponse) => {
     // console.dir(pathVariables)
 
     const start = Date.now()
-    const data = await getDataReturn({
-      data: await getCatchAll({
-        catchAll,
-        clear,
-        notionConfig,
-        pathVariables,
-        preview,
-      }),
-      pathVariables: {
-        ...pathVariables,
-      },
+    const data = await getStaticPropsCatchAll({
+      catchAll,
+      clear,
+      notionConfig,
+      pathVariables,
+      preview,
     })
     const debug = {
       latency: Date.now() - start,

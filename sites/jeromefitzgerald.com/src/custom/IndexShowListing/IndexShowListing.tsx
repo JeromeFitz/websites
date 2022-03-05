@@ -1,5 +1,11 @@
 import dynamic from 'next/dynamic'
 
+/**
+ * @hack
+ *
+ * I understand why, however, this will cause massive headaches
+ *  if you change any data architecdture. BE ADVISED.
+ */
 import mockData from '~data/mock/cms/shows'
 
 const ShowsListing = dynamic(() => import('~routes/Shows/Listing'), {

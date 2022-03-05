@@ -134,7 +134,7 @@ const ImageLead = ({ breakout = true, description, image, images }) => {
    */
   const imageSlug = !!image && Object.keys(image)[0]
   const url = !!imageSlug && image[imageSlug]?.url
-  const fallbackData = !!url && !!images ? images[imageSlug] : {}
+  const fallbackData = !!url && !!images ? images[`image/${imageSlug}`] : {}
   // @note(image) do not call if we do not need to
   const urlApi = !!url && _isEmpty(fallbackData) ? `/api/v1/img?url=${url}` : null
 
