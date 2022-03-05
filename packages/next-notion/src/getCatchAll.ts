@@ -58,6 +58,7 @@ const getCatchAll = async ({
   // @todo(types)
   let data
   const url = catchAll.join('/')
+  const key = `${keyPrefix}/${url}`.toLowerCase()
 
   /**
    * @build
@@ -72,7 +73,6 @@ const getCatchAll = async ({
    *
    */
   if ((cache && isBuildStep) || isDev) {
-    const key = `${keyPrefix}/${url}`.toLowerCase()
     // console.dir(`cache && isBuildStep: ${cacheType} => ${key}`)
     data = await getCache({ cacheType, key })
   }
@@ -89,10 +89,10 @@ const getCatchAll = async ({
     data = getCatchAllDataFromApi({
       catchAll,
       clear,
+      key,
       notionConfig,
       pathVariables,
       preview,
-      url,
     })
   }
 
@@ -104,11 +104,11 @@ const getCatchAllDataFromApi = async ({
   catchAll,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   clear,
+  key,
   notionConfig,
   pathVariables,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   preview,
-  url,
 }) => {
   const notion = getNotion(notionConfig)
 
@@ -149,8 +149,7 @@ const getCatchAllDataFromApi = async ({
    *
    */
   if (cache || cacheOverride) {
-    // console.dir(`cache || cacheOverride: ${cacheType} => ${url}`)
-    const key = `${keyPrefix}/${url}`.toLowerCase()
+    // console.dir(`cache || cacheOverride: ${cacheType} => ${key}`)
     setCache({ cacheType, data, key })
   }
 

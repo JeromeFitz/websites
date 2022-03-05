@@ -1,4 +1,5 @@
 import { NextApiResponse } from 'next'
+import { nextWeirdRoutingSkipData } from 'next-notion/src/constants'
 import { getCatchAll } from 'next-notion/src/getCatchAll'
 import { getDataReturn } from 'next-notion/src/getDataReturn'
 import { getNotion } from 'next-notion/src/helper'
@@ -26,10 +27,15 @@ const CatchAll = async (req: any, res: NextApiResponse) => {
     const preview = req.query?.preview || false
     const clear = req.query?.clear || false
     const catchAll = req.query?.catchAll
-    const _images = req.query?.images || 'true'
-    const images = _images === 'true' ? true : false
 
-    if (catchAll[0] === 'true') return res.status(200).json({})
+    if (nextWeirdRoutingSkipData.includes(catchAll[0])) {
+      return res.status(403).json({
+        error: {
+          code: 'forbidden',
+          message: 'Pound sand',
+        },
+      })
+    }
 
     // http://localhost:3000/api/v1/cms/blog/2020/12/28/preview-blog-post?preview=true
     const pathVariables = notion.custom.getPathVariables({
@@ -49,7 +55,6 @@ const CatchAll = async (req: any, res: NextApiResponse) => {
       }),
       pathVariables: {
         ...pathVariables,
-        images,
       },
     })
     const debug = {

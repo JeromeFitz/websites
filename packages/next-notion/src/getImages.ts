@@ -1,7 +1,15 @@
 import _map from 'lodash/map'
+import _size from 'lodash/size'
+import _uniqWith from 'lodash/uniqWith'
 
 import { filterImages } from './filterImages'
-import { getImage } from './getImage'
+
+const FILTER_TYPES = {
+  CONTENT: 'content',
+  INFO: 'info',
+  ITEMS: 'items',
+  PAGE: 'page',
+}
 
 /**
  * @refactor
@@ -9,36 +17,34 @@ import { getImage } from './getImage'
 
 // @todo(complexity) 18
 // eslint-disable-next-line complexity
-const getImages = async ({ data, pathVariables }) => {
-  if (typeof window !== 'undefined') return {}
+const getImages = async ({ data, pathVariables }): Promise<any[]> => {
+  if (typeof window !== 'undefined') return []
   const mergeImages = {}
+  let urls = []
 
   /**
    * @info
    */
   const infoImagesFilter =
-    data.info?.object === 'page'
-      ? filterImages(data.info?.properties, 'info')
-      : !!data.info?.results &&
-        filterImages(data.info?.results[0]?.properties, 'info')
+    data?.info?.object === FILTER_TYPES.PAGE
+      ? filterImages(data?.info?.properties, FILTER_TYPES.INFO)
+      : !!data?.info?.results &&
+        filterImages(data?.info?.results[0]?.properties, FILTER_TYPES.INFO)
   const infoImagesAwait =
     !!infoImagesFilter &&
-    infoImagesFilter.map(async (imageResult) => {
+    infoImagesFilter.map((imageResult) => {
       if (!imageResult) {
         return null
       }
 
-      // console.dir(`>> imageResult: infoImagesFilter`)
-      // console.dir(imageResult)
-
-      const url =
+      const url: string =
         !!imageResult && !!imageResult?.url ? imageResult?.url : imageResult
 
       if (!url) {
         return null
       }
-
-      return getImage(url)
+      urls.push(url)
+      return null
     })
   const infoImages = !!infoImagesAwait ? await Promise.all(infoImagesAwait) : []
 
@@ -46,30 +52,28 @@ const getImages = async ({ data, pathVariables }) => {
    * @content
    */
   const contentImagesFilter =
-    !pathVariables.isIndex && filterImages(data?.content, 'content')
+    !pathVariables.isIndex && filterImages(data?.content, FILTER_TYPES.CONTENT)
 
   const contentImagesAwait =
     !!contentImagesFilter &&
-    contentImagesFilter.map(async (imageResult) => {
+    contentImagesFilter.map((imageResult) => {
       if (!imageResult) {
         return null
       }
-
-      // console.dir(`>> imageResult: contentImagesAwait`)
-      // console.dir(imageResult)
 
       const { type } = imageResult
       const image = !!type && imageResult[type]
 
       // @todo(notion) rework content after refactor: getTypes[image]
-      const url =
+      const url: string =
         !!imageResult && !!image?.external?.url ? image?.external?.url : null
 
       if (!url) {
         return null
       }
+      urls.push(url)
 
-      return getImage(url)
+      return null
     })
   const contentImages = !!contentImagesAwait
     ? await Promise.all(contentImagesAwait)
@@ -78,29 +82,27 @@ const getImages = async ({ data, pathVariables }) => {
   /**
    * @items
    */
-  if (!!data.items) {
+  if (!!data?.items) {
     const itemsImagesFilter =
-      data.items.object === 'page'
-        ? filterImages(data.items?.data, 'items')
-        : filterImages(data.items?.results, 'items')
+      data?.items.object === FILTER_TYPES.PAGE
+        ? filterImages(data?.items?.data, FILTER_TYPES.ITEMS)
+        : filterImages(data?.items?.results, FILTER_TYPES.ITEMS)
     const itemsImagesAwait: any =
       !!itemsImagesFilter &&
-      itemsImagesFilter.map(async (imageResult) => {
+      itemsImagesFilter.map((imageResult) => {
         if (!imageResult) {
           return null
         }
 
-        // console.dir(`>> imageResult: itemsImagesAwait`)
-        // console.dir(imageResult)
-
-        const url =
+        const url: string =
           !!imageResult && !!imageResult?.url ? imageResult?.url : imageResult
 
         if (!url) {
           return null
         }
+        urls.push(url)
 
-        return getImage(url)
+        return null
       })
     const itemsImages = await Promise.all(itemsImagesAwait)
     !!itemsImages &&
@@ -115,10 +117,14 @@ const getImages = async ({ data, pathVariables }) => {
     contentImages[0] &&
     _map(contentImages, (image: any) => (mergeImages[image.id] = image))
 
-  // console.dir(`mergeImages`)
-  // console.dir(mergeImages)
+  // @note(lodash) does not mutate
+  urls = _uniqWith(
+    _map(urls, (url) => {
+      return url
+    })
+  )
 
-  return mergeImages
+  return _size(urls) < 1 ? [] : urls
 }
 
 export { getImages }
