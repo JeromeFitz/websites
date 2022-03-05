@@ -1,7 +1,6 @@
 import { nextWeirdRoutingSkipData } from 'next-notion/src/constants'
-import { getCatchAll } from 'next-notion/src/getCatchAll'
-import { getDataReturn } from 'next-notion/src/getDataReturn'
 import { getStaticPathsCatchAll } from 'next-notion/src/getStaticPathsCatchAll'
+import { getStaticPropsCatchAll } from 'next-notion/src/getStaticPropsCatchAll'
 import { getNotion } from 'next-notion/src/helper'
 import { fetcher } from 'next-notion/src/lib/fetcher'
 import useSWR from 'swr'
@@ -56,19 +55,15 @@ export const getStaticProps = async ({ preview = false, ...props }) => {
 
   const clear = false
   const pathVariables = notion.custom.getPathVariables({ catchAll })
-
-  const data = await getDataReturn({
-    data: await getCatchAll({
-      catchAll,
-      clear,
-      notionConfig,
-      pathVariables,
-      preview,
-    }),
-    pathVariables,
-  })
-
   const isHomepage = pathVariables?.slug === PAGES__HOMEPAGE
+
+  const data = await getStaticPropsCatchAll({
+    catchAll,
+    clear,
+    notionConfig,
+    pathVariables,
+    preview,
+  })
 
   return {
     props: { isHomepage, preview, ...data, ...pathVariables, ...props },
