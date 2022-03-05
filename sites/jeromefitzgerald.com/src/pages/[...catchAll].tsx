@@ -1,12 +1,9 @@
-import { PageHeading, SkeletonHeading } from '@jeromefitz/design-system/components'
-import { ERROR__FALLBACK } from '@jeromefitz/shared/src/lib/constants'
 import { nextWeirdRoutingSkipData } from 'next-notion/src/constants'
 import { getCatchAll } from 'next-notion/src/getCatchAll'
 import { getDataReturn } from 'next-notion/src/getDataReturn'
 import { getStaticPathsCatchAll } from 'next-notion/src/getStaticPathsCatchAll'
 import { getNotion } from 'next-notion/src/helper'
 import { fetcher } from 'next-notion/src/lib/fetcher'
-import { getNextPageStatus } from 'next-notion/src/utils'
 import useSWR from 'swr'
 
 import { Page } from '~components/Layout'
@@ -14,9 +11,6 @@ import { notionConfig } from '~config/index'
 
 const notion = getNotion(notionConfig)
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const { PAGES__HOMEPAGE } = notionConfig
 
 const PagesCatchAll = (props) => {
@@ -25,11 +19,6 @@ const PagesCatchAll = (props) => {
     info: infoFallback,
     images: imagesFallback,
     items: itemsFallback,
-    // hasMeta,
-    // isPage,
-    // isIndex,
-    // meta,
-    // routeType,
     // slug,
     url,
   } = props
@@ -53,31 +42,9 @@ const PagesCatchAll = (props) => {
     }
   )
 
-  const { is404, isDataUndefined, isError, isLoading } = getNextPageStatus(
-    data,
-    error,
-    url
-  )
-
-  if (isLoading) return <SkeletonHeading />
-  if (is404)
-    return (
-      <PageHeading
-        description={`Hrm, this page does not seem to want to be found.`}
-        title={'404'}
-      />
-    )
-  if (isError && isDataUndefined)
-    return (
-      <PageHeading
-        description={ERROR__FALLBACK.description}
-        title={ERROR__FALLBACK.title}
-      />
-    )
-
   return (
     <>
-      <Page data={data} {...props} />
+      <Page data={data} error={error} {...props} />
     </>
   )
 }
@@ -100,8 +67,11 @@ export const getStaticProps = async ({ preview = false, ...props }) => {
     }),
     pathVariables,
   })
+
+  const isHomepage = pathVariables?.slug === PAGES__HOMEPAGE
+
   return {
-    props: { preview, ...data, ...pathVariables, ...props },
+    props: { isHomepage, preview, ...data, ...pathVariables, ...props },
     /**
      * @note(next)
      * On-Demand ISR, do not pass revalidate
