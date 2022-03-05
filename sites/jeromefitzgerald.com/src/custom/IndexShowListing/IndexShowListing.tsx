@@ -1,38 +1,42 @@
+import { fetcher } from 'next-notion/src/lib/fetcher'
+import { getNextPageStatus } from 'next-notion/src/utils'
 import dynamic from 'next/dynamic'
-
-/**
- * @hack
- *
- * I understand why, however, this will cause massive headaches
- *  if you change any data architecdture. BE ADVISED.
- */
-import mockData from '~data/mock/cms/shows'
+import useSWR from 'swr'
 
 const ShowsListing = dynamic(() => import('~routes/Shows/Listing'), {
   ssr: false,
 })
 
 const IndexShowLising = () => {
-  /**
-   * @hack(notion)
-   * Since Notion does not have an embed currently,
-   *  this page is very hacked. However, due to this
-   *  being the index/homepage this is acceptable
-   *  (well to me I guess heh)
-   *
-   * @todo(notion)
-   * - Production:  Pull from `./cache/shows.json`
-   * - Development: Pull from `mockData`
-   */
-  const { images, items } = mockData
-  const dataShows = {
-    items,
-  }
-  const routeTypeShows = 'shows'
+  const routeType = 'shows'
+  const { data, error } = useSWR<any>(() => `/api/v1/cms/${routeType}`, fetcher, {
+    fallbackData: {
+      info: undefined,
+      content: undefined,
+      images: undefined,
+      items: undefined,
+    },
+    revalidateIfStale: true,
+    revalidateOnFocus: false,
+    revalidateOnReconnect: false,
+  })
+
+  const { is404, isDataUndefined, isError, isLoading } = getNextPageStatus(
+    data,
+    error,
+    `/${routeType}`
+  )
+
+  if (isLoading) return null
+  if (is404) return null
+  if (isError && isDataUndefined) return null
+
+  console.dir(`> IndexShowListing:`)
+  console.dir(data)
 
   return (
     <>
-      <ShowsListing data={dataShows} images={images} routeType={routeTypeShows} />
+      <ShowsListing routeType={routeType} data={data} images={data.images} />
     </>
   )
 }

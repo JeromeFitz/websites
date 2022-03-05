@@ -7,8 +7,6 @@ import _size from 'lodash/size'
 
 import { nextWeirdRoutingSkipData, CACHE_TYPES } from './constants'
 import { getCache, setCache } from './getCache'
-// import { getCatchAll } from './getCatchAll'
-// import { getDataReturn } from './getDataReturn'
 import { getNotion } from './helper'
 
 /**
@@ -25,8 +23,8 @@ const cacheType = process.env.NEXT_PUBLIC__NOTION_CACHE || CACHE_TYPES.LOCAL
 const getKeysBySlugger = ({ keyData, keyPrefix }) =>
   `${keyPrefix}/${Slugger.slug(keyData)}`.toLowerCase()
 
-const getKeysByJoin = ({ keyData, keyPrefix }) =>
-  `${keyPrefix}/${keyData.join('/')}`.toLowerCase()
+const getKeysByJoin = ({ keyData, keyJoin = '/', keyPrefix }) =>
+  `${keyPrefix}/${keyData.join(keyJoin)}`.toLowerCase()
 
 // eslint-disable-next-line complexity
 const getStaticPropsCatchAll = async ({
