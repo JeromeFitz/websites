@@ -1,4 +1,13 @@
-const getStaticPropsCatchAll = () => {
+import { getCatchAll } from 'next-notion/src/getCatchAll'
+import { getDataReturn } from 'next-notion/src/getDataReturn'
+
+const getStaticPropsCatchAll = async ({
+  catchAll,
+  clear,
+  notionConfig,
+  pathVariables,
+  preview,
+}) => {
   /**
    * @todo
    *
@@ -26,7 +35,16 @@ const getStaticPropsCatchAll = () => {
    *
    */
 
-  return null
+  return await getDataReturn({
+    data: await getCatchAll({
+      catchAll,
+      clear,
+      notionConfig,
+      pathVariables,
+      preview,
+    }),
+    pathVariables,
+  })
 }
 
 export { getStaticPropsCatchAll }
