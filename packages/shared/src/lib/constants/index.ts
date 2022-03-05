@@ -1,10 +1,5 @@
 import IMAGE__FALLBACKS__SHOWS from './images/shows'
 
-/**
- * @hack some reason everything is coming here, is it `api/v1/cms/index.ts`?
- */
-const nextWeirdRoutingSkipData = ['favicon.ico', 'false', 'true', 'undefined']
-
 // @note(next) no longer used due to ISR
 const revalidate = 60 * 60 * 24 // 1 day (86,400)
 
@@ -125,7 +120,6 @@ const cssIconHeroToRadix1 = {
 export {
   cssIconHeroToRadix,
   cssIconHeroToRadix1,
-  nextWeirdRoutingSkipData,
   revalidate,
   BIG_HEAD_PROPS,
   CACHE_TYPES,

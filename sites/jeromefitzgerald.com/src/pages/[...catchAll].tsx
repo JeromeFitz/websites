@@ -1,8 +1,6 @@
 import { PageHeading, SkeletonHeading } from '@jeromefitz/design-system/components'
-import {
-  nextWeirdRoutingSkipData,
-  ERROR__FALLBACK,
-} from '@jeromefitz/shared/src/lib/constants'
+import { ERROR__FALLBACK } from '@jeromefitz/shared/src/lib/constants'
+import { nextWeirdRoutingSkipData } from 'next-notion/src/constants'
 import { getCatchAll } from 'next-notion/src/getCatchAll'
 import { getDataReturn } from 'next-notion/src/getDataReturn'
 import { getStaticPathsCatchAll } from 'next-notion/src/getStaticPathsCatchAll'
@@ -57,21 +55,23 @@ const PagesCatchAll = (props) => {
 
   const { is404, isDataUndefined, isError, isLoading } = getNextPageStatus(
     data,
-    error
+    error,
+    url
   )
+
+  if (isLoading) return <SkeletonHeading />
+  if (is404)
+    return (
+      <PageHeading
+        description={`Hrm, this page does not seem to want to be found.`}
+        title={'404'}
+      />
+    )
   if (isError && isDataUndefined)
     return (
       <PageHeading
         description={ERROR__FALLBACK.description}
         title={ERROR__FALLBACK.title}
-      />
-    )
-  if (isLoading) return <SkeletonHeading />
-  if (is404)
-    return (
-      <PageHeading
-        description={`Hrm, sorry about this. This page is not found: ./${url}`}
-        title={'404'}
       />
     )
 
@@ -83,14 +83,10 @@ const PagesCatchAll = (props) => {
 }
 
 export const getStaticProps = async ({ preview = false, ...props }) => {
-  const { catchAll } = props.params
-  // @hack(notion) no idea what is causing this
-  // look at commit hash: b2afe38c5e1f2d095dc085a17eedc181466b3372
-  // and the one after
-  if (nextWeirdRoutingSkipData.includes(catchAll[0])) return { props: {} }
-  // console.dir(`> getStaticProps`)
-  // console.dir(props)
   // const catchAll = [PAGES__HOMEPAGE]
+  const { catchAll } = props.params
+  if (nextWeirdRoutingSkipData.includes(catchAll[0])) return { props: {} }
+
   const clear = false
   const pathVariables = notion.custom.getPathVariables({ catchAll })
 
