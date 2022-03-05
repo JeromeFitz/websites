@@ -18,7 +18,7 @@ const FILTER_TYPES = {
 // @todo(complexity) 18
 // eslint-disable-next-line complexity
 const getImages = async ({ data, pathVariables }): Promise<any[]> => {
-  if (typeof window !== 'undefined') return []
+  // if (typeof window !== 'undefined') return []
   const mergeImages = {}
   let urls = []
 

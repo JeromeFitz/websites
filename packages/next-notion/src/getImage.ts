@@ -29,17 +29,17 @@ const getImage = async (url: string) => {
   let data
 
   if ((cache && isBuildStep) || isDev) {
-    // console.dir(`cache && isBuildStep: ${cacheType} => ${key}`)
+    console.dir(`getImage => cache && isBuildStep: ${cacheType} => ${key}`)
     data = await getCache({ cacheType, key })
   }
 
   if (!data || data === undefined) {
     const { getPlaiceholder } = await import('plaiceholder')
     const { base64, img } = await getPlaiceholder(url)
-    data = { base64, id, img, url }
+    data = { base64, id: key, img, url }
 
     if (cache || cacheOverride) {
-      // console.dir(`cache || cacheOverride: ${cacheType} => ${key}`)
+      console.dir(`getImage => cache || cacheOverride: ${cacheType} => ${key}`)
       setCache({ cacheType, data, key })
     }
   }

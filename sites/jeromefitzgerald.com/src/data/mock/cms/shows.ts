@@ -1,10 +1,12 @@
-// http://localhost:3000/api/notion/shows
+// http://localhost:3000/api/v1/cms/shows
 const data = {
   info: {
     object: 'page',
     id: '7f18c17d-c86e-429a-8505-80cdf874022b',
     created_time: '2021-11-20T15:35:00.000Z',
     last_edited_time: '2021-12-14T20:25:00.000Z',
+    created_by: { object: 'user', id: 'd8d106ae-2f52-4317-96c9-8b0609bf5336' },
+    last_edited_by: { object: 'user', id: 'd8d106ae-2f52-4317-96c9-8b0609bf5336' },
     cover: null,
     icon: { type: 'emoji', emoji: '🎭' },
     parent: {
@@ -60,6 +62,7 @@ const data = {
       },
       seoImageDescription:
         'Photo by Mike Rubino (This was a rehearsal not a real audience, there were at least 2 people in attendance for the actual show [including Mike])',
+      seoKeywords: null,
       slug: 'shows',
       socialFacebook: null,
       socialInstagram: null,
@@ -76,11 +79,16 @@ const data = {
         id: '73ca8290-1b28-413a-b79e-95d3b1d373d2',
         created_time: '2021-11-20T15:35:00.000Z',
         last_edited_time: '2021-11-22T04:49:00.000Z',
+        created_by: { object: 'user', id: 'd8d106ae-2f52-4317-96c9-8b0609bf5336' },
+        last_edited_by: {
+          object: 'user',
+          id: 'd8d106ae-2f52-4317-96c9-8b0609bf5336',
+        },
         has_children: false,
         archived: false,
         type: 'paragraph',
         paragraph: {
-          text: [
+          rich_text: [
             {
               type: 'text',
               text: {
@@ -122,11 +130,16 @@ const data = {
         id: '0e3f9823-d1ab-49d5-8c48-92ff488f7c01',
         created_time: '2021-11-20T15:35:00.000Z',
         last_edited_time: '2021-11-22T04:50:00.000Z',
+        created_by: { object: 'user', id: 'd8d106ae-2f52-4317-96c9-8b0609bf5336' },
+        last_edited_by: {
+          object: 'user',
+          id: 'd8d106ae-2f52-4317-96c9-8b0609bf5336',
+        },
         has_children: false,
         archived: false,
         type: 'paragraph',
         paragraph: {
-          text: [
+          rich_text: [
             {
               type: 'text',
               text: {
@@ -150,17 +163,26 @@ const data = {
     ],
     next_cursor: null,
     has_more: false,
+    type: 'block',
+    block: {},
   },
   items: {
     object: 'list',
     next_cursor: null,
     has_more: false,
+    type: 'page',
+    page: {},
     results: [
       {
         object: 'page',
         id: 'b7686689-cf19-41f6-a760-4cd7a04712a7',
         created_time: '2021-11-20T15:35:00.000Z',
-        last_edited_time: '2022-01-22T22:12:00.000Z',
+        last_edited_time: '2022-03-04T19:44:00.000Z',
+        created_by: { object: 'user', id: 'd8d106ae-2f52-4317-96c9-8b0609bf5336' },
+        last_edited_by: {
+          object: 'user',
+          id: 'd8d106ae-2f52-4317-96c9-8b0609bf5336',
+        },
         cover: {
           type: 'external',
           external: {
@@ -233,6 +255,7 @@ const data = {
               },
           },
           seoImageDescription: 'Photo by PJ Jacokes',
+          seoKeywords: 'AOJ Alex O Brien Vomit Twinz',
           slug: 'alex-o-jerome',
           socialFacebook: 'https://facebook.com/jerome.fitzgerald',
           socialInstagram: 'https://instagram.com/JeromeFitz',
@@ -246,6 +269,11 @@ const data = {
         id: '32743ba5-3c38-4e9a-b306-b4bcea5fc3a8',
         created_time: '2021-11-20T15:35:00.000Z',
         last_edited_time: '2021-11-20T16:00:00.000Z',
+        created_by: { object: 'user', id: 'd8d106ae-2f52-4317-96c9-8b0609bf5336' },
+        last_edited_by: {
+          object: 'user',
+          id: 'd8d106ae-2f52-4317-96c9-8b0609bf5336',
+        },
         cover: null,
         icon: { type: 'emoji', emoji: '🎄' },
         parent: {
@@ -348,6 +376,7 @@ const data = {
           },
           seoImageDescription:
             'The Young Dog (Tim) informing the Gold Tooth Scrooge the true meaning of Christmas with family and friends looking on. (Photo by Nico Segall Tobon)',
+          seoKeywords: null,
           slug: 'boo-humbag',
           socialFacebook: null,
           socialInstagram: null,
@@ -361,6 +390,11 @@ const data = {
         id: '72acdd5e-ba6c-4271-97fb-7d4f7de2508a',
         created_time: '2021-11-20T15:35:00.000Z',
         last_edited_time: '2021-11-23T19:17:00.000Z',
+        created_by: { object: 'user', id: 'd8d106ae-2f52-4317-96c9-8b0609bf5336' },
+        last_edited_by: {
+          object: 'user',
+          id: 'd8d106ae-2f52-4317-96c9-8b0609bf5336',
+        },
         cover: null,
         icon: { type: 'emoji', emoji: '💭' },
         parent: {
@@ -470,6 +504,7 @@ const data = {
               },
           },
           seoImageDescription: 'I’m always thinking nachos. (Photo by Louis Stein)',
+          seoKeywords: null,
           slug: 'bubble-boy-the-musical',
           socialFacebook: null,
           socialInstagram: null,
@@ -483,6 +518,11 @@ const data = {
         id: 'ff1e6907-c4e4-431a-9c01-28ff8a50758b',
         created_time: '2021-11-20T15:35:00.000Z',
         last_edited_time: '2021-11-20T16:00:00.000Z',
+        created_by: { object: 'user', id: 'd8d106ae-2f52-4317-96c9-8b0609bf5336' },
+        last_edited_by: {
+          object: 'user',
+          id: 'd8d106ae-2f52-4317-96c9-8b0609bf5336',
+        },
         cover: null,
         icon: { type: 'emoji', emoji: '🦐' },
         parent: {
@@ -547,6 +587,7 @@ const data = {
               },
           },
           seoImageDescription: 'Jer (Jer) & Ky (Ky)',
+          seoKeywords: null,
           slug: 'jer-and-ky',
           socialFacebook: null,
           socialInstagram: null,
@@ -560,6 +601,11 @@ const data = {
         id: '961e8626-5b91-4703-8629-25f2a0c82159',
         created_time: '2021-11-20T15:35:00.000Z',
         last_edited_time: '2021-11-20T16:00:00.000Z',
+        created_by: { object: 'user', id: 'd8d106ae-2f52-4317-96c9-8b0609bf5336' },
+        last_edited_by: {
+          object: 'user',
+          id: 'd8d106ae-2f52-4317-96c9-8b0609bf5336',
+        },
         cover: null,
         icon: { type: 'emoji', emoji: '👱🏻' },
         parent: {
@@ -629,6 +675,7 @@ const data = {
           },
           seoImageDescription:
             'A special show where I get to perform with a special someone who has me smitten specially abound on their comedic talents. A joyous show where improv, stand-up, and music collide. And even Jerome and a audience member doing a set. (Photo ?)',
+          seoKeywords: null,
           slug: 'jerome-and',
           socialFacebook: null,
           socialInstagram: 'https://instagram.com/JeromeFitz',
@@ -642,6 +689,11 @@ const data = {
         id: 'fcddeb55-5d7f-4418-ae05-a29ae394cacd',
         created_time: '2021-11-20T15:35:00.000Z',
         last_edited_time: '2021-11-22T06:38:00.000Z',
+        created_by: { object: 'user', id: 'd8d106ae-2f52-4317-96c9-8b0609bf5336' },
+        last_edited_by: {
+          object: 'user',
+          id: 'd8d106ae-2f52-4317-96c9-8b0609bf5336',
+        },
         cover: {
           type: 'external',
           external: {
@@ -723,6 +775,7 @@ const data = {
           },
           seoImageDescription:
             'Charles Entertainment Cheese Jr. selling pizza the only way he farting knows how. (Photo by Bob Shields)',
+          seoKeywords: null,
           slug: 'jfle',
           socialFacebook: null,
           socialInstagram: null,
@@ -736,6 +789,11 @@ const data = {
         id: 'ea0e49e5-9665-4247-ab8e-3e0b5f27310c',
         created_time: '2021-11-20T15:35:00.000Z',
         last_edited_time: '2021-11-20T16:00:00.000Z',
+        created_by: { object: 'user', id: 'd8d106ae-2f52-4317-96c9-8b0609bf5336' },
+        last_edited_by: {
+          object: 'user',
+          id: 'd8d106ae-2f52-4317-96c9-8b0609bf5336',
+        },
         cover: {
           type: 'external',
           external: {
@@ -846,6 +904,7 @@ const data = {
           },
           seoImageDescription:
             'Jesse "Lobster Claw" LE, Jerome "Entertainment" Cheese, Aaron "Aaron Tarnow" Tarnow and many, many talented friends. (Poster by Josie Norton)',
+          seoKeywords: null,
           slug: 'jfle-take-broadway',
           socialFacebook: null,
           socialInstagram: null,
@@ -858,7 +917,12 @@ const data = {
         object: 'page',
         id: '52582a9b-1f29-4c82-8747-cbfa61bfa912',
         created_time: '2021-11-20T15:35:00.000Z',
-        last_edited_time: '2021-11-20T16:00:00.000Z',
+        last_edited_time: '2022-02-15T17:56:00.000Z',
+        created_by: { object: 'user', id: 'd8d106ae-2f52-4317-96c9-8b0609bf5336' },
+        last_edited_by: {
+          object: 'user',
+          id: 'd8d106ae-2f52-4317-96c9-8b0609bf5336',
+        },
         cover: null,
         icon: { type: 'emoji', emoji: '😂' },
         parent: {
@@ -926,6 +990,7 @@ const data = {
           },
           seoImageDescription:
             'The Worm shouts out Your Show of Shows while getting shouted at and out in the process. The Retirement Show to retire all retirements. (Photo by William Lardinois)',
+          seoKeywords: 'JJE Aaron Tarnow Finnegan',
           slug: 'justin-and-jerome-experience',
           socialFacebook: null,
           socialInstagram: null,
@@ -939,6 +1004,11 @@ const data = {
         id: 'ae04c70f-7ffa-4356-92df-685f24a953ee',
         created_time: '2021-11-20T15:35:00.000Z',
         last_edited_time: '2021-11-20T16:00:00.000Z',
+        created_by: { object: 'user', id: 'd8d106ae-2f52-4317-96c9-8b0609bf5336' },
+        last_edited_by: {
+          object: 'user',
+          id: 'd8d106ae-2f52-4317-96c9-8b0609bf5336',
+        },
         cover: null,
         icon: { type: 'emoji', emoji: '🍽️' },
         parent: {
@@ -1035,6 +1105,7 @@ const data = {
           },
           seoImageDescription:
             'Jerome as Wallace Shawn, Justin as André Gregory (Photo by Louis Stein)',
+          seoKeywords: null,
           slug: 'my-dinner-with-andre-the-musical',
           socialFacebook: null,
           socialInstagram: null,
@@ -1048,6 +1119,11 @@ const data = {
         id: '9b513666-9305-4cd6-91d3-ff899f762deb',
         created_time: '2021-11-20T15:35:00.000Z',
         last_edited_time: '2021-11-20T16:00:00.000Z',
+        created_by: { object: 'user', id: 'd8d106ae-2f52-4317-96c9-8b0609bf5336' },
+        last_edited_by: {
+          object: 'user',
+          id: 'd8d106ae-2f52-4317-96c9-8b0609bf5336',
+        },
         cover: null,
         icon: { type: 'emoji', emoji: '💀' },
         parent: {
@@ -1137,6 +1213,7 @@ const data = {
               },
           },
           seoImageDescription: 'The Deadies. (Illustration by Caitlin Rose Boyle)',
+          seoKeywords: null,
           slug: 'the-death-show',
           socialFacebook: null,
           socialInstagram: null,
@@ -1150,6 +1227,11 @@ const data = {
         id: '2f070ad6-845d-4910-991d-e77a3043aab9',
         created_time: '2021-11-20T15:35:00.000Z',
         last_edited_time: '2021-11-20T16:00:00.000Z',
+        created_by: { object: 'user', id: 'd8d106ae-2f52-4317-96c9-8b0609bf5336' },
+        last_edited_by: {
+          object: 'user',
+          id: 'd8d106ae-2f52-4317-96c9-8b0609bf5336',
+        },
         cover: null,
         icon: { type: 'emoji', emoji: '🎼' },
         parent: {
@@ -1179,6 +1261,7 @@ const data = {
             '228b020a-8e1e-4091-9c9d-ea22299815a3',
             'a2930287-4c8c-4740-9324-581f90f83ad0',
             '5f282aed-c1a1-4fa6-b8f5-0a14cc9cbfa6',
+            'dce4170a-1dfd-4ff8-8f95-2cd885bf8bed',
           ],
           relationShows__Events_Lineup: [
             '228b020a-8e1e-4091-9c9d-ea22299815a3',
@@ -1243,6 +1326,7 @@ const data = {
               },
           },
           seoImageDescription: 'Playlist crew backstage (Photo by Byron Nash)',
+          seoKeywords: null,
           slug: 'the-playlist',
           socialFacebook: null,
           socialInstagram: null,
@@ -1256,6 +1340,11 @@ const data = {
         id: '5dfa94c2-3774-4f05-9abd-166da1e3f8f9',
         created_time: '2021-11-20T15:35:00.000Z',
         last_edited_time: '2021-11-20T16:00:00.000Z',
+        created_by: { object: 'user', id: 'd8d106ae-2f52-4317-96c9-8b0609bf5336' },
+        last_edited_by: {
+          object: 'user',
+          id: 'd8d106ae-2f52-4317-96c9-8b0609bf5336',
+        },
         cover: null,
         icon: { type: 'emoji', emoji: '🎮' },
         parent: {
@@ -1351,6 +1440,7 @@ const data = {
           },
           seoImageDescription:
             'Thee classic improv troupe in an abandoned building.  (📸️ Photo by Mike Rubino)',
+          seoKeywords: null,
           slug: 'warp-zone',
           socialFacebook: null,
           socialInstagram: null,
@@ -1362,167 +1452,11 @@ const data = {
     ],
   },
   images: {
-    'httpscdnjeromefitzgeraldcomjeromefitzgeraldcomimages201912_originalaoj--dif--080--pj-jacokesjpg':
+    'image/httpscdnjeromefitzgeraldcomngop-productionwp-contentuploadssites220160827164902201605-cif-onstage_solo_no_audiencejpg':
       {
         base64:
-          'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAADAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAX/xAAgEAACAQQBBQAAAAAAAAAAAAABAgMABAUGBxESITGB/8QAFQEBAQAAAAAAAAAAAAAAAAAAAwX/xAAZEQADAAMAAAAAAAAAAAAAAAAAAQISITH/2gAMAwEAAhEDEQA/AInE+x5XC6RZQYq7NrDIzyuscajucsQWPj30AHwUpSqMSsVoVXSXT//Z',
-        id: 'httpscdnjeromefitzgeraldcomjeromefitzgeraldcomimages201912_originalaoj--dif--080--pj-jacokesjpg',
-        img: {
-          src: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2019/12/_original/aoj--dif--080--pj-jacokes.jpg',
-          width: 2000,
-          height: 1333,
-          type: 'jpg',
-        },
-        url: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2019/12/_original/aoj--dif--080--pj-jacokes.jpg',
-      },
-    'httpscdnjeromefitzgeraldcomjeromefitzgeraldcomimages201912_originalboo--020--cast--nico-segall-tobon--7z3a3125jpg':
-      {
-        base64:
-          'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAADAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAP/xAAgEAABBAIBBQAAAAAAAAAAAAABAAIDBAURBhIhIjFR/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AI884jgIrOIfHiagdYxsNmTw3t7+pziPg2T2GgPQACIiD//Z',
-        id: 'httpscdnjeromefitzgeraldcomjeromefitzgeraldcomimages201912_originalboo--020--cast--nico-segall-tobon--7z3a3125jpg',
-        img: {
-          src: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2019/12/_original/boo--020--cast--nico-segall-tobon--7Z3A3125.jpg',
-          width: 1600,
-          height: 1067,
-          type: 'jpg',
-        },
-        url: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2019/12/_original/boo--020--cast--nico-segall-tobon--7Z3A3125.jpg',
-      },
-    'httpscdnjeromefitzgeraldcomjeromefitzgeraldcomimages201912_originalbubble-boy--2019-09--ls--061--dress--and-me--louis-steinjpg':
-      {
-        base64:
-          'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAADAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAf/xAAgEAABAwQCAwAAAAAAAAAAAAABAAIDBAUGERIhIkFh/8QAFQEBAQAAAAAAAAAAAAAAAAAABAX/xAAXEQEBAQEAAAAAAAAAAAAAAAABAAMy/9oADAMBAAIRAxEAPwCQ5Vf7nc8grJayp5yRlsQLY2s8WsaBviBs69nv6iIqOnTLAv/Z',
-        id: 'httpscdnjeromefitzgeraldcomjeromefitzgeraldcomimages201912_originalbubble-boy--2019-09--ls--061--dress--and-me--louis-steinjpg',
-        img: {
-          src: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2019/12/_original/bubble-boy--2019-09--ls--061--dress--and-me--louis-stein.jpg',
-          width: 1840,
-          height: 1228,
-          type: 'jpg',
-        },
-        url: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2019/12/_original/bubble-boy--2019-09--ls--061--dress--and-me--louis-stein.jpg',
-      },
-    'httpscdnjerandkycomjerandkycompodcastsjer-and-ky-and-guestseason-01_originals01e00--aid--00jpg':
-      {
-        base64:
-          'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAEAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAL/xAAeEAEAAQQCAwAAAAAAAAAAAAABBAACAxEFIRIxgf/EABUBAQEAAAAAAAAAAAAAAAAAAAQG/8QAGREAAQUAAAAAAAAAAAAAAAAAAAECAxEh/9oADAMBAAIRAxEAPwCYMzlZ8cyZ+YkeVmsZuNGvUA7brsSr969GgAUpRqQvY8af/9k=',
-        id: 'httpscdnjerandkycomjerandkycompodcastsjer-and-ky-and-guestseason-01_originals01e00--aid--00jpg',
-        img: {
-          src: 'https://cdn.jerandky.com/jerandky.com/podcasts/jer-and-ky-and-guest/season-01/_original/s01e00--aid--00.jpg',
-          width: 1200,
-          height: 1200,
-          type: 'jpg',
-        },
-        url: 'https://cdn.jerandky.com/jerandky.com/podcasts/jer-and-ky-and-guest/season-01/_original/s01e00--aid--00.jpg',
-      },
-    'httpscdnjeromefitzgeraldcomjeromefitzgeraldcomimages201912_originaljand--coverjpg':
-      {
-        base64:
-          'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAADAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAf/xAAhEAAABQMFAQAAAAAAAAAAAAAAAQIDBAYRIQUSEyJRYf/EABUBAQEAAAAAAAAAAAAAAAAAAAEF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAIBBDIzcf/aAAwDAQACEQMRAD8AjFfOK1CoeSZtcU3Fjtp6kmySZRjFvTO/0AAUUxgLG1un/9k=',
-        id: 'httpscdnjeromefitzgeraldcomjeromefitzgeraldcomimages201912_originaljand--coverjpg',
-        img: {
-          src: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2019/12/_original/jand--cover.jpg',
-          width: 1000,
-          height: 668,
-          type: 'jpg',
-        },
-        url: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2019/12/_original/jand--cover.jpg',
-      },
-    'httpscdnjeromefitzgeraldcomjeromefitzgeraldcomimages201912_originaljfle--sketchville-2019--cec-jr--bob-shieldsjpg':
-      {
-        base64:
-          'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAADAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAf/xAAfEAABBAICAwAAAAAAAAAAAAABAAIDBQQGBxEiMWH/xAAUAQEAAAAAAAAAAAAAAAAAAAAB/8QAFhEBAQEAAAAAAAAAAAAAAAAAAAER/9oADAMBAAIRAxEAPwCRafyVtes0UNZS2UePhRlzmxnDgk6JPZ8nsJ9/URE7Q//Z',
-        id: 'httpscdnjeromefitzgeraldcomjeromefitzgeraldcomimages201912_originaljfle--sketchville-2019--cec-jr--bob-shieldsjpg',
-        img: {
-          src: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2019/12/_original/jfle--sketchville-2019--cec-jr--bob-shields.jpg',
-          width: 1728,
-          height: 1296,
-          type: 'jpg',
-        },
-        url: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2019/12/_original/jfle--sketchville-2019--cec-jr--bob-shields.jpg',
-      },
-    'httpscdnjeromefitzgeraldcomjeromefitzgeraldcomimages2021jfle201200x628--no-textpng':
-      {
-        base64:
-          'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAIAAADwyuo0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAI0lEQVQImWP4PntNY3EaLwPDn9lLGP6/u99WkJlh5/r/7DMAqaYNqVeq4sQAAAAASUVORK5CYII=',
-        id: 'httpscdnjeromefitzgeraldcomjeromefitzgeraldcomimages2021jfle201200x628--no-textpng',
-        img: {
-          src: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2021/JFLE%201200x628--no-text.png',
-          width: 2400,
-          height: 1256,
-          type: 'png',
-        },
-        url: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2021/JFLE%201200x628--no-text.png',
-      },
-    'httpscdnjeromefitzgeraldcomjeromefitzgeraldcomimages201912_originaljje--2018-06--this-is-your-story--0090--will-lardinoisjpg':
-      {
-        base64:
-          'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAADAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAf/xAAdEAACAgIDAQAAAAAAAAAAAAABAgADBCEFERMU/8QAFQEBAQAAAAAAAAAAAAAAAAAAAwT/xAAWEQEBAQAAAAAAAAAAAAAAAAABABH/2gAMAwEAAhEDEQA/AJxjWpySscvD45vnIor88GmsBAAQOlUd7Y7O4iIKu1WF/9k=',
-        id: 'httpscdnjeromefitzgeraldcomjeromefitzgeraldcomimages201912_originaljje--2018-06--this-is-your-story--0090--will-lardinoisjpg',
-        img: {
-          src: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2019/12/_original/jje--2018-06--this-is-your-story--0090--will-lardinois.jpg',
-          width: 2348,
-          height: 1560,
-          type: 'jpg',
-        },
-        url: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2019/12/_original/jje--2018-06--this-is-your-story--0090--will-lardinois.jpg',
-      },
-    'httpscdnjeromefitzgeraldcomjeromefitzgeraldcomimages201912_originaljje--cover--william-lardinoisjpg':
-      {
-        base64:
-          'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAEAAMDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAj/xAAdEAACAQUBAQAAAAAAAAAAAAABAgQAAxESIQYx/8QAFQEBAQAAAAAAAAAAAAAAAAAAAQL/xAAYEQADAQEAAAAAAAAAAAAAAAAAAQIxMv/aAAwDAQACEQMRAD8Anj2YjD005YkGPDsKyqtmxtouFAyNmJ6env0nGBylKVMcoa1n/9k=',
-        id: 'httpscdnjeromefitzgeraldcomjeromefitzgeraldcomimages201912_originaljje--cover--william-lardinoisjpg',
-        img: {
-          src: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2019/12/_original/jje--cover--william-lardinois.jpg',
-          width: 1478,
-          height: 2225,
-          type: 'jpg',
-        },
-        url: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2019/12/_original/jje--cover--william-lardinois.jpg',
-      },
-    'httpscdnjeromefitzgeraldcomjeromefitzgeraldcomimages201912_originaltds--2016--poster-by-caitlin-rose-boylejpg':
-      {
-        base64:
-          'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAEAAMDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAfEAACAgIBBQAAAAAAAAAAAAACAwABBAUxBhITFSH/xAAUAQEAAAAAAAAAAAAAAAAAAAAD/8QAGxEAAgEFAAAAAAAAAAAAAAAAAAECAxESIVH/2gAMAwEAAhEDEQA/AKXpZXvNMvYbbw5Ga1rhNt4yRsu1pDXwQquBquIiIuK4LGpKy2f/2Q==',
-        id: 'httpscdnjeromefitzgeraldcomjeromefitzgeraldcomimages201912_originaltds--2016--poster-by-caitlin-rose-boylejpg',
-        img: {
-          src: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2019/12/_original/tds--2016--poster-by-caitlin-rose-boyle.jpg',
-          width: 792,
-          height: 1224,
-          type: 'jpg',
-        },
-        url: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2019/12/_original/tds--2016--poster-by-caitlin-rose-boyle.jpg',
-      },
-    'httpscdnjeromefitzgeraldcomjeromefitzgeraldcomimages201912_originalplaylist--2019-11--byron-nash-selfie--byron-nashjpg':
-      {
-        base64:
-          'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAEAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAT/xAAgEAABBAIBBQAAAAAAAAAAAAABAgMEBQAGERITITFB/8QAFAEBAAAAAAAAAAAAAAAAAAAABP/EABYRAQEBAAAAAAAAAAAAAAAAAAEAEf/aAAwDAQACEQMRAD8Alt9pOvW1jDiUlE80J0tCe/D5KUtyHGUgcEADpaST49lR+4xjC6zgL//Z',
-        id: 'httpscdnjeromefitzgeraldcomjeromefitzgeraldcomimages201912_originalplaylist--2019-11--byron-nash-selfie--byron-nashjpg',
-        img: {
-          src: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2019/12/_original/playlist--2019-11--byron-nash-selfie--byron-nash.jpg',
-          width: 1440,
-          height: 1440,
-          type: 'jpg',
-        },
-        url: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2019/12/_original/playlist--2019-11--byron-nash-selfie--byron-nash.jpg',
-      },
-    'httpscdnjeromefitzgeraldcomjeromefitzgeraldcomimages201912_originalwz--squatters--mike-rubinojpg':
-      {
-        base64:
-          'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAADAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAf/xAAgEAABAwQCAwAAAAAAAAAAAAABAAIDBAUGEQcxEhNB/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/EABURAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIRAxEAPwCFu5Dy21ksteQV9FHOTPJHTSephe4nZ8W6A6HQ+IiIWP/Z',
-        id: 'httpscdnjeromefitzgeraldcomjeromefitzgeraldcomimages201912_originalwz--squatters--mike-rubinojpg',
-        img: {
-          src: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2019/12/_original/wz--squatters--mike-rubino.jpg',
-          width: 2048,
-          height: 1367,
-          type: 'jpg',
-        },
-        url: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2019/12/_original/wz--squatters--mike-rubino.jpg',
-      },
-    'httpscdnjeromefitzgeraldcomngop-productionwp-contentuploadssites220160827164902201605-cif-onstage_solo_no_audiencejpg':
-      {
-        base64:
-          'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAADAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAj/xAAdEAACAQUBAQAAAAAAAAAAAAABAgMABBESIQVh/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AJ/9mVruPzUmCa21mkMYjRY8Llm7qBscsenJ+8FKUoP/2Q==',
-        id: 'httpscdnjeromefitzgeraldcomngop-productionwp-contentuploadssites220160827164902201605-cif-onstage_solo_no_audiencejpg',
+          'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAACAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAf/xAAfEAACAQIHAAAAAAAAAAAAAAABAgADBgQFERMxgZH/xAAUAQEAAAAAAAAAAAAAAAAAAAAC/8QAFREBAQAAAAAAAAAAAAAAAAAAAAH/2gAMAwEAAhEDEQA/AITfjM2CtEMSQuSU1UE8DerHQdk+xERDH//Z',
+        id: 'image/httpscdnjeromefitzgeraldcomngop-productionwp-contentuploadssites220160827164902201605-cif-onstage_solo_no_audiencejpg',
         img: {
           src: 'https://cdn.jeromefitzgerald.com/ngop-production/wp-content/uploads/sites/2/2016/08/27164902/201605-cif-onstage_solo_no_audience.jpg',
           width: 1504,
@@ -1531,7 +1465,163 @@ const data = {
         },
         url: 'https://cdn.jeromefitzgerald.com/ngop-production/wp-content/uploads/sites/2/2016/08/27164902/201605-cif-onstage_solo_no_audience.jpg',
       },
+    'image/httpscdnjeromefitzgeraldcomjeromefitzgeraldcomimages201912_originalaoj--dif--080--pj-jacokesjpg':
+      {
+        base64:
+          'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAACAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAiEAABAgMJAAAAAAAAAAAAAAABAAIDERIEBQcIIiMkMYH/xAAVAQEBAAAAAAAAAAAAAAAAAAAEBf/EABkRAAIDAQAAAAAAAAAAAAAAAAABAgMxMv/aAAwDAQACEQMRAD8Aq8vXGwtu0WfaD4kZ7hD01GsiZl2ZADxERNjiKNXCP//Z',
+        id: 'image/httpscdnjeromefitzgeraldcomjeromefitzgeraldcomimages201912_originalaoj--dif--080--pj-jacokesjpg',
+        img: {
+          src: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2019/12/_original/aoj--dif--080--pj-jacokes.jpg',
+          width: 2000,
+          height: 1333,
+          type: 'jpg',
+        },
+        url: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2019/12/_original/aoj--dif--080--pj-jacokes.jpg',
+      },
+    'image/httpscdnjeromefitzgeraldcomjeromefitzgeraldcomimages201912_originalboo--020--cast--nico-segall-tobon--7z3a3125jpg':
+      {
+        base64:
+          'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAADAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAT/xAAfEAABAwUAAwAAAAAAAAAAAAABAAIDBAUGESEiMVH/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8Alz7EMfgrLU6K00rTPbYaiTx3t79ucR8GyeDg9AAIiIP/2Q==',
+        id: 'image/httpscdnjeromefitzgeraldcomjeromefitzgeraldcomimages201912_originalboo--020--cast--nico-segall-tobon--7z3a3125jpg',
+        img: {
+          src: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2019/12/_original/boo--020--cast--nico-segall-tobon--7Z3A3125.jpg',
+          width: 1600,
+          height: 1067,
+          type: 'jpg',
+        },
+        url: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2019/12/_original/boo--020--cast--nico-segall-tobon--7Z3A3125.jpg',
+      },
+    'image/httpscdnjeromefitzgeraldcomjeromefitzgeraldcomimages201912_originalbubble-boy--2019-09--ls--061--dress--and-me--louis-steinjpg':
+      {
+        base64:
+          'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAACAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAf/xAAdEAACAgEFAAAAAAAAAAAAAAABAgADBAYHEhQh/8QAFQEBAQAAAAAAAAAAAAAAAAAAAwT/xAAYEQACAwAAAAAAAAAAAAAAAAAAAQIxMv/aAAwDAQACEQMRAD8Aje7mVkXatV7b7XfqUDkzknxBERL56Y7s/9k=',
+        id: 'image/httpscdnjeromefitzgeraldcomjeromefitzgeraldcomimages201912_originalbubble-boy--2019-09--ls--061--dress--and-me--louis-steinjpg',
+        img: {
+          src: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2019/12/_original/bubble-boy--2019-09--ls--061--dress--and-me--louis-stein.jpg',
+          width: 1840,
+          height: 1228,
+          type: 'jpg',
+        },
+        url: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2019/12/_original/bubble-boy--2019-09--ls--061--dress--and-me--louis-stein.jpg',
+      },
+    'image/httpscdnjerandkycomjerandkycompodcastsjer-and-ky-and-guestseason-01_originals01e00--aid--00jpg':
+      {
+        base64:
+          'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAEAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAX/xAAdEAEAAQQDAQAAAAAAAAAAAAABAgADBAUREzGR/8QAFQEBAQAAAAAAAAAAAAAAAAAABAb/xAAWEQEBAQAAAAAAAAAAAAAAAAABADH/2gAMAwEAAhEDEQA/AJeBnbTYWezI2cpSg9YywcS4oB7Kdlk/eDw4AKUpRHaxFL//2Q==',
+        id: 'image/httpscdnjerandkycomjerandkycompodcastsjer-and-ky-and-guestseason-01_originals01e00--aid--00jpg',
+        img: {
+          src: 'https://cdn.jerandky.com/jerandky.com/podcasts/jer-and-ky-and-guest/season-01/_original/s01e00--aid--00.jpg',
+          width: 1200,
+          height: 1200,
+          type: 'jpg',
+        },
+        url: 'https://cdn.jerandky.com/jerandky.com/podcasts/jer-and-ky-and-guest/season-01/_original/s01e00--aid--00.jpg',
+      },
+    'image/httpscdnjeromefitzgeraldcomjeromefitzgeraldcomimages201912_originaljand--coverjpg':
+      {
+        base64:
+          'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAADAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAf/xAAeEAABBAEFAAAAAAAAAAAAAAADAAECEQUEBjJhcf/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGREBAAIDAAAAAAAAAAAAAAAAAQACAxIy/9oADAMBAAIRAxEAPwCS7xjHLZiBsgzGIPSgFF+NRYUaamrv27REVCnJFyhuz//Z',
+        id: 'image/httpscdnjeromefitzgeraldcomjeromefitzgeraldcomimages201912_originaljand--coverjpg',
+        img: {
+          src: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2019/12/_original/jand--cover.jpg',
+          width: 1000,
+          height: 668,
+          type: 'jpg',
+        },
+        url: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2019/12/_original/jand--cover.jpg',
+      },
+    'image/httpscdnjeromefitzgeraldcomjeromefitzgeraldcomimages201912_originaljfle--sketchville-2019--cec-jr--bob-shieldsjpg':
+      {
+        base64:
+          'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAADAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAf/xAAfEAABBAICAwAAAAAAAAAAAAABAAIDBQQGBxEiMVH/xAAUAQEAAAAAAAAAAAAAAAAAAAAB/8QAFhEBAQEAAAAAAAAAAAAAAAAAAAER/9oADAMBAAIRAxEAPwCRafyVtes0UNZS2UePhRlzmxnDgk6JPZ8nsJ9n6iInaH//2Q==',
+        id: 'image/httpscdnjeromefitzgeraldcomjeromefitzgeraldcomimages201912_originaljfle--sketchville-2019--cec-jr--bob-shieldsjpg',
+        img: {
+          src: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2019/12/_original/jfle--sketchville-2019--cec-jr--bob-shields.jpg',
+          width: 1728,
+          height: 1296,
+          type: 'jpg',
+        },
+        url: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2019/12/_original/jfle--sketchville-2019--cec-jr--bob-shields.jpg',
+      },
+    'image/httpscdnjeromefitzgeraldcomjeromefitzgeraldcomimages2021jfle201200x628--no-textpng':
+      {
+        base64:
+          'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAIAAADwyuo0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAI0lEQVQImWP4PntNY3EaLwPDn9lLGP6/u99WkJlh5/r/7DMAqaYNqVeq4sQAAAAASUVORK5CYII=',
+        id: 'image/httpscdnjeromefitzgeraldcomjeromefitzgeraldcomimages2021jfle201200x628--no-textpng',
+        img: {
+          src: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2021/JFLE%201200x628--no-text.png',
+          width: 2400,
+          height: 1256,
+          type: 'png',
+        },
+        url: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2021/JFLE%201200x628--no-text.png',
+      },
+    'image/httpscdnjeromefitzgeraldcomjeromefitzgeraldcomimages201912_originaljje--2018-06--this-is-your-story--0090--will-lardinoisjpg':
+      {
+        base64:
+          'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAACAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAdEAABBAMBAQAAAAAAAAAAAAACAAEDBQQRIQYH/8QAFQEBAQAAAAAAAAAAAAAAAAAAAQP/xAAWEQADAAAAAAAAAAAAAAAAAAAAATH/2gAMAwEAAhEDEQA/AKv6T5+mksqyOSpryjgwI4ohLGB2jBiPQi2uM2343OoiJULOn//Z',
+        id: 'image/httpscdnjeromefitzgeraldcomjeromefitzgeraldcomimages201912_originaljje--2018-06--this-is-your-story--0090--will-lardinoisjpg',
+        img: {
+          src: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2019/12/_original/jje--2018-06--this-is-your-story--0090--will-lardinois.jpg',
+          width: 2348,
+          height: 1560,
+          type: 'jpg',
+        },
+        url: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2019/12/_original/jje--2018-06--this-is-your-story--0090--will-lardinois.jpg',
+      },
+    'image/httpscdnjeromefitzgeraldcomjeromefitzgeraldcomimages201912_originaljje--cover--william-lardinoisjpg':
+      {
+        base64:
+          'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAEAAIDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAf/xAAeEAABBAEFAAAAAAAAAAAAAAABAAIDBQQGEiEjMf/EABQBAQAAAAAAAAAAAAAAAAAAAAP/xAAWEQEBAQAAAAAAAAAAAAAAAAABABH/2gAMAwEAAhEDEQA/AIhbZNa20zBHp6qjYJnhrGmcBo3HgdniIiAXJ8L/2Q==',
+        id: 'image/httpscdnjeromefitzgeraldcomjeromefitzgeraldcomimages201912_originaljje--cover--william-lardinoisjpg',
+        img: {
+          src: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2019/12/_original/jje--cover--william-lardinois.jpg',
+          width: 1478,
+          height: 2225,
+          type: 'jpg',
+        },
+        url: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2019/12/_original/jje--cover--william-lardinois.jpg',
+      },
+    'image/httpscdnjeromefitzgeraldcomjeromefitzgeraldcomimages201912_originaltds--2016--poster-by-caitlin-rose-boylejpg':
+      {
+        base64:
+          'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAEAAIDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAX/xAAcEAACAwADAQAAAAAAAAAAAAACAwABBAUGESH/xAAVAQEBAAAAAAAAAAAAAAAAAAAEBf/EABwRAAEDBQAAAAAAAAAAAAAAAAABAgMREjJRkf/aAAwDAQACEQMRAD8Al5+wcroQtz9KDawaMzvBm9Irr27+LiIirG6JqzSVyXp//9k=',
+        id: 'image/httpscdnjeromefitzgeraldcomjeromefitzgeraldcomimages201912_originaltds--2016--poster-by-caitlin-rose-boylejpg',
+        img: {
+          src: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2019/12/_original/tds--2016--poster-by-caitlin-rose-boyle.jpg',
+          width: 792,
+          height: 1224,
+          type: 'jpg',
+        },
+        url: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2019/12/_original/tds--2016--poster-by-caitlin-rose-boyle.jpg',
+      },
+    'image/httpscdnjeromefitzgeraldcomjeromefitzgeraldcomimages201912_originalplaylist--2019-11--byron-nash-selfie--byron-nashjpg':
+      {
+        base64:
+          'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAEAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAT/xAAeEAABBAIDAQAAAAAAAAAAAAABAgMEBQAREhNBYv/EABQBAQAAAAAAAAAAAAAAAAAAAAT/xAAWEQEBAQAAAAAAAAAAAAAAAAABABH/2gAMAwEAAhEDEQA/AIry/RRW06LHo6R9sTJSE98XZSlqS6wkDRAA4tJJ+io+6xjGG1mgX//Z',
+        id: 'image/httpscdnjeromefitzgeraldcomjeromefitzgeraldcomimages201912_originalplaylist--2019-11--byron-nash-selfie--byron-nashjpg',
+        img: {
+          src: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2019/12/_original/playlist--2019-11--byron-nash-selfie--byron-nash.jpg',
+          width: 1440,
+          height: 1440,
+          type: 'jpg',
+        },
+        url: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2019/12/_original/playlist--2019-11--byron-nash-selfie--byron-nash.jpg',
+      },
+    'image/httpscdnjeromefitzgeraldcomjeromefitzgeraldcomimages201912_originalwz--squatters--mike-rubinojpg':
+      {
+        base64:
+          'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAADAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAf/xAAgEAABAwMFAQAAAAAAAAAAAAABAAIDBAURBhITFzFR/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/EABURAQEAAAAAAAAAAAAAAAAAAAEA/9oADAMBAAIRAxEAPwCFdg6stGYrTf6+hhmJnfHTScbC8k5O1uAPB58RESIX/9k=',
+        id: 'image/httpscdnjeromefitzgeraldcomjeromefitzgeraldcomimages201912_originalwz--squatters--mike-rubinojpg',
+        img: {
+          src: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2019/12/_original/wz--squatters--mike-rubino.jpg',
+          width: 2048,
+          height: 1367,
+          type: 'jpg',
+        },
+        url: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2019/12/_original/wz--squatters--mike-rubino.jpg',
+      },
   },
-  debug: { type: 'cache', latency: 5 },
+  debug: { latency: 5, type: 'cache' },
 }
 export default data

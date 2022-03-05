@@ -49,7 +49,7 @@ const getCacheJson = async (key) => {
   let cacheData = false
   const file = cacheFile(key)
   try {
-    // console.dir(`getCacheJson: json => ${key}`)
+    console.dir(`getCacheJson: json => ${key}`)
     cacheData = JSON.parse(await readFile(file, 'utf8'))
   } catch (_) {
     // console.dir(`getCacheJson: notFatal`)
@@ -73,6 +73,7 @@ const getCacheRedis = async (key) => {
 }
 
 const getCache = async ({ cacheType, key }) => {
+  console.dir(`getCache: ${key}`)
   if (cacheType === 'remote') {
     return await getCacheRedis(key)
   } else {

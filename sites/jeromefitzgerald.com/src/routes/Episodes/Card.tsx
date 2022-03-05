@@ -93,7 +93,7 @@ const EpisodesCard = ({
   const url = !!imageSlug && seoImage[imageSlug]?.url
   const fallbackData =
     !!url && !!images
-      ? images[imageSlug]
+      ? images[`image/${imageSlug}`]
       : {
           base64: IMAGE__PLACEHOLDER.meta.base64,
           img: { ...IMAGE__PLACEHOLDER.meta.img, src: url },

@@ -73,7 +73,7 @@ const ShowsCard = ({
   const url = !!imageSlug && seoImage[imageSlug]?.url
   const fallbackData =
     !!url && !!images
-      ? images[imageSlug]
+      ? images[`image/${imageSlug}`]
       : {
           base64: IMAGE__PLACEHOLDER.meta.base64,
           img: { ...IMAGE__PLACEHOLDER.meta.img, src: url },
@@ -81,6 +81,11 @@ const ShowsCard = ({
         }
   // @note(image) limit api calls
   // @refactor(lodash) _isEmpty
+  // console.dir(`fallbackData`)
+  // console.dir(fallbackData)
+  // console.dir(`url: ${url}`)
+  // console.dir(images)
+  // console.dir(imageSlug)
   const urlApi = !!url && _isEmpty(fallbackData) ? `/api/v1/img?url=${url}` : null
   const {
     data: { base64, img, slug: slugImage },
