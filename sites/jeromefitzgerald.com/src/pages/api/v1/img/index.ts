@@ -1,11 +1,8 @@
-import {
-  getCacheJson,
-  setCacheJson,
-} from '@jeromefitz/shared/src/lib/notion/getCache'
-import redis from '@jeromefitz/shared/src/lib/redis'
 import stringify from 'fast-json-stable-stringify'
 import Slugger from 'github-slugger'
 import type { NextApiResponse } from 'next'
+import { getCacheJson, setCacheJson } from 'next-notion/src/getCache'
+import redis from 'next-notion/src/lib/redis'
 import { getPlaiceholder } from 'plaiceholder'
 
 const keyPrefix = 'image'

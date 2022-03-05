@@ -1,9 +1,7 @@
-import {
-  getCatchAll,
-  getDataReturn,
-  getNotion,
-} from '@jeromefitz/shared/src/lib/notion'
 import { NextApiResponse } from 'next'
+import { getCatchAll } from 'next-notion/src/getCatchAll'
+import { getDataReturn } from 'next-notion/src/getDataReturn'
+import { getNotion } from 'next-notion/src/helper'
 
 import { notionConfig } from '~config/index'
 

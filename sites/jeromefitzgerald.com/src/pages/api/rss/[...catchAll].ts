@@ -5,8 +5,6 @@
  *
  */
 
-import { getCatchAll, getNotion } from '@jeromefitz/shared/src/lib/notion'
-import getTimeInSeconds from '@jeromefitz/shared/src/utils/getTimeInSeconds'
 import { setCharAt } from '@jeromefitz/utils'
 import _isBefore from 'date-fns/isBefore'
 import _parseISO from 'date-fns/parseISO'
@@ -15,6 +13,9 @@ import _map from 'lodash/map'
 import _orderBy from 'lodash/orderBy'
 import _slice from 'lodash/slice'
 import type { NextApiRequest, NextApiResponse } from 'next'
+import { getCatchAll } from 'next-notion/src/getCatchAll'
+import { getNotion } from 'next-notion/src/helper'
+import { getTimeInSeconds } from 'next-notion/src/utils'
 import { Podcast, Item, FeedOptions } from 'podcast'
 
 import { url } from '~config/getNextSeo'

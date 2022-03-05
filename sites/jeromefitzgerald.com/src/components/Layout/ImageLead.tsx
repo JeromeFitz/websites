@@ -5,9 +5,9 @@ import {
   Skeleton,
 } from '@jeromefitz/design-system/components'
 import { darkTheme } from '@jeromefitz/design-system/stitches.config'
-import fetcher from '@jeromefitz/shared/src/lib/fetcher'
 import { Gradients } from '@jeromefitz/shared/src/styles/const'
 import _isEmpty from 'lodash/isEmpty'
+import { fetcher } from 'next-notion/src/lib/fetcher'
 // import * as React from 'react'
 // import { useIsomorphicLayoutEffect } from 'react-use'
 import useSWR from 'swr'

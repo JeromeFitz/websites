@@ -7,4 +7,4 @@ const fetcher = async function <JSON = any>(
   return res.json()
 }
 
-export default fetcher
+export { fetcher }

@@ -2,9 +2,9 @@
 import fs from 'fs'
 import { promisify } from 'util'
 
-export const readFile = promisify(fs.readFile)
-export const writeFile = promisify(fs.writeFile)
-export const writeFileSyncRecursive = (filename, content, charset) => {
+const readFile = promisify(fs.readFile)
+const writeFile = promisify(fs.writeFile)
+const writeFileSyncRecursive = (filename, content, charset) => {
   // create folder path if not exists
   filename
     .split('/')
@@ -19,3 +19,5 @@ export const writeFileSyncRecursive = (filename, content, charset) => {
 
   fs.writeFileSync(filename, content, charset)
 }
+
+export { readFile, writeFile, writeFileSyncRecursive }

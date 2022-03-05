@@ -13,6 +13,7 @@ const { withPlugins } = require('next-compose-plugins')
 const withTM = require('next-transpile-modules')([
   '@jeromefitz/design-system',
   '@jeromefitz/shared',
+  'next-notion',
 ])
 
 const { withBuildInfo } = require('./scripts/buildInfo')
@@ -178,9 +179,10 @@ const nextConfig = {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     // if (!isServer) {
-    //   config.node = {
-    //     fs: 'empty',
-    //   }
+    //   config.externals = [
+    //     ...config.externals,
+    //     ...['child_process', 'dns', 'fs', 'net', 'tls'],
+    //   ]
     // }
     if (isLocal) {
       messagesDebug.map((msg) => console.debug(msg))

@@ -1,7 +1,6 @@
 import _filter from 'lodash/filter'
 
-import { nextWeirdRoutingSkipData, CACHE_TYPES } from '../constants'
-
+import { nextWeirdRoutingSkipData, CACHE_TYPES } from './constants'
 import { getCache, setCache } from './getCache'
 import { getNotion } from './helper'
 

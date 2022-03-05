@@ -1,7 +1,6 @@
 import Slugger from 'github-slugger'
 
-import { CACHE_TYPES } from '../constants'
-
+import { CACHE_TYPES } from './constants'
 import { getCache, setCache } from './getCache'
 
 const keyPrefix = 'image'

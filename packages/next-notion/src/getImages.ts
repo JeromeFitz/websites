@@ -1,6 +1,7 @@
 import _map from 'lodash/map'
 
-import { getImage, filterImages } from './index'
+import { filterImages } from './filterImages'
+import { getImage } from './getImage'
 
 /**
  * @refactor

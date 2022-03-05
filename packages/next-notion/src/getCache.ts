@@ -3,8 +3,8 @@ import path from 'path'
 import stringify from 'fast-json-stable-stringify'
 import ms from 'ms'
 
-import { readFile, writeFileSyncRecursive } from '../fs-helpers'
-import redis from '../redis'
+import { readFile, writeFileSyncRecursive } from './lib/fs-helpers'
+import redis from './lib/redis'
 
 /**
  * @redis is in seconds not ms

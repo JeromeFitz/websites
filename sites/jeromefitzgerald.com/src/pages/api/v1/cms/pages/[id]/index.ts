@@ -1,13 +1,10 @@
 // 4fd37202-ec62-4897-a0dd-5ed8ab8b4b53
 // import _omit from 'lodash/omit'
 import dataNormalized from '@jeromefitz/notion/utils/dataNormalized'
-import {
-  getCacheJson,
-  getNotion,
-  setCacheJson,
-} from '@jeromefitz/shared/src/lib/notion'
 import { avoidRateLimit, sortObject } from '@jeromefitz/utils'
 import { NextApiRequest, NextApiResponse } from 'next'
+import { getCacheJson, setCacheJson } from 'next-notion/src/getCache'
+import { getNotion } from 'next-notion/src/helper'
 
 import { notionConfig } from '~config/index'
 // import omitFields from '~lib/notion/omitFields'
