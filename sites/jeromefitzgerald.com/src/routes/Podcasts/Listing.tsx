@@ -1,6 +1,6 @@
 import { Box, Grid } from '@jeromefitz/design-system/components'
 import type { Podcast as PodcastProperties } from '@jeromefitz/notion/schema'
-import { ContentNodes } from '@jeromefitz/shared/src/lib/notion/app'
+import { ContentNodes } from 'next-notion/src/app'
 
 import Card from './Card'
 

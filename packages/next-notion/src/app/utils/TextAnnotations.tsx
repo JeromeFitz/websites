@@ -12,7 +12,7 @@ import NextLink from 'next/link'
 
 // import { nextSeo } from '~config/index'
 // import useStore from '~store/useStore'
-import getNextLink from '../../../../utils/getNextLink'
+import { getNextLink } from '../../utils'
 
 /**
  * @note This should be SSR to ensure Notion Content generates

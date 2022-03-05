@@ -16,7 +16,7 @@ import {
   Paragraph,
 } from '@jeromefitz/design-system/components'
 import type { Event as EventProperties } from '@jeromefitz/notion/schema'
-// import { ContentNodes } from '@jeromefitz/shared/src/lib/notion/app'
+// import { ContentNodes } from 'next-notion/src/app'
 import {
   ArrowRightIcon,
   CalendarIcon,

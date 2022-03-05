@@ -7,7 +7,7 @@
 import * as React from 'react'
 
 // eslint-disable-next-line @typescript-eslint/ban-types
-export function isElementOfType<P = {}>(
+function isElementOfType<P = {}>(
   element: unknown,
   ComponentType: React.ComponentType<P>
 ): element is React.ReactElement<P> {
@@ -24,3 +24,5 @@ export function isElementOfType<P = {}>(
     reactElement.type.displayName === ComponentType.displayName
   )
 }
+
+export { isElementOfType }

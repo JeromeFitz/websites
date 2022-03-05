@@ -5,7 +5,8 @@ import _map from 'lodash/map'
 import _noop from 'lodash/noop'
 import _uniqWith from 'lodash/uniqWith'
 
-import { getCatchAll, getNotion } from './index'
+import { getCatchAll } from './getCatchAll'
+import { getNotion } from './helper'
 
 const isDev = process.env.NODE_ENV !== 'production'
 
@@ -144,8 +145,8 @@ const getStaticPathsCatchAll = async (notionConfig) => {
     }).catch(_noop)
   }
 
-  console.dir(`paths:`)
-  console.dir(paths)
+  // console.dir(`paths:`)
+  // console.dir(paths)
 
   return {
     paths,

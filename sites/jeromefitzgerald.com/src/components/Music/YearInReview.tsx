@@ -10,9 +10,9 @@ import {
 } from '@jeromefitz/design-system/components'
 import { styled } from '@jeromefitz/design-system/stitches.config'
 // import { ExternalLinkIcon } from '@radix-ui/react-icons'
-import TextAnnotations from '@jeromefitz/shared/src/lib/notion/app/utils/TextAnnotations'
 import Slugger from 'github-slugger'
 import _map from 'lodash/map'
+import TextAnnotations from 'next-notion/src/app/utils/TextAnnotations'
 import { Fragment } from 'react'
 import _title from 'title'
 

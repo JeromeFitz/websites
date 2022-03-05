@@ -1,7 +1,7 @@
 // import { isObject } from '@jeromefitz/utils'
 import { Link } from '@jeromefitz/design-system/components'
-import getNextLink from '@jeromefitz/shared/src/utils/getNextLink'
 import _startsWith from 'lodash/startsWith'
+import { getNextLink } from 'next-notion/src/utils'
 import NextLink from 'next/link'
 
 // @hack(notion) too much customization

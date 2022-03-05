@@ -9,11 +9,11 @@ import {
 import { PROPERTIES } from '@jeromefitz/notion/constants'
 import type { Show } from '@jeromefitz/notion/schema'
 import getTitle from '@jeromefitz/notion/utils/getTitle'
-import fetcher from '@jeromefitz/shared/src/lib/fetcher'
 import _map from 'lodash/map'
 import _size from 'lodash/size'
 // import _sortBy from 'lodash/sortBy'
 import _startsWith from 'lodash/startsWith'
+import { fetcher } from 'next-notion/src/lib/fetcher'
 import pluralize from 'pluralize'
 import useSWRImmutable from 'swr/immutable'
 

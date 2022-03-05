@@ -1,6 +1,6 @@
 import { Box, Grid } from '@jeromefitz/design-system/components'
 import type { Episode as EpisodeProperties } from '@jeromefitz/notion/schema'
-// import { ContentNodes } from '@jeromefitz/shared/src/lib/notion/app'
+// import { ContentNodes } from 'next-notion/src/app'
 import _orderBy from 'lodash/orderBy'
 
 import Card from './Card'

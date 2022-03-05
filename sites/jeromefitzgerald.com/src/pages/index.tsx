@@ -3,13 +3,11 @@ import {
   nextWeirdRoutingSkipData,
   ERROR__FALLBACK,
 } from '@jeromefitz/shared/src/lib/constants'
-import fetcher from '@jeromefitz/shared/src/lib/fetcher'
-import {
-  getCatchAll,
-  getDataReturn,
-  getNotion,
-} from '@jeromefitz/shared/src/lib/notion'
-import getNextPageStatus from '@jeromefitz/shared/src/utils/getNextPageStatus'
+import { getCatchAll } from 'next-notion/src/getCatchAll'
+import { getDataReturn } from 'next-notion/src/getDataReturn'
+import { getNotion } from 'next-notion/src/helper'
+import { fetcher } from 'next-notion/src/lib/fetcher'
+import { getNextPageStatus } from 'next-notion/src/utils'
 import dynamic from 'next/dynamic'
 import useSWR from 'swr'
 
