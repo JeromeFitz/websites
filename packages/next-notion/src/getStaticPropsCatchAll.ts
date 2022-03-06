@@ -1,5 +1,4 @@
 import { asyncForEach } from '@jeromefitz/utils'
-import Slugger from 'github-slugger'
 import _filter from 'lodash/filter'
 import _isEmpty from 'lodash/isEmpty'
 import _noop from 'lodash/noop'
@@ -8,24 +7,40 @@ import _size from 'lodash/size'
 import { nextWeirdRoutingSkipData, CACHE_TYPES } from './constants'
 import { getCache, setCache } from './getCache'
 import { getNotion } from './helper'
-
+import { getKeysByJoin, getKeysBySlugger } from './utils'
 /**
  * @ref https://vercel.com/docs/concepts/projects/environment-variables#system-environment-variables
  */
 const isBuildStep = process.env.CI
 const isDev = process.env.NODE_ENV === 'development'
 
+/**
+ * @question
+ * Why do we have `cache` as a variable?
+ * Don’t we want to use it all the time?
+ *
+ * @answer
+ * C.R.E.A.M. CACHE RULES EVERYTHING AROUND ME
+ *
+ * However, this is also an example repo and people may
+ *  not want to incur the extra-ness of layering cache
+ *  with Next with their CMS of choice.
+ *
+ * If Notion did not have the rate limiting and occassional
+ *  Bad Gateways as a result of too many calls, we probably
+ *  would not here. (Though the build times boosts are nice.)
+ *
+ * Ideally there would be more of an opt-in feature that
+ *  would be a tinch more elegant down the line
+ *  and someone could pass their cache option (or none)
+ *
+ */
 const cache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE === 'true' ? true : false
 const cacheOverride =
   process.env.NEXT_PUBLIC__NOTION_USE_CACHE_OVERIDE === 'true' ? true : false
 const cacheType = process.env.NEXT_PUBLIC__NOTION_CACHE || CACHE_TYPES.LOCAL
 
-const getKeysBySlugger = ({ keyData, keyPrefix }) =>
-  `${keyPrefix}/${Slugger.slug(keyData)}`.toLowerCase()
-
-const getKeysByJoin = ({ keyData, keyJoin = '/', keyPrefix }) =>
-  `${keyPrefix}/${keyData.join(keyJoin)}`.toLowerCase()
-
+// @todo(complexity) 13
 // eslint-disable-next-line complexity
 const getStaticPropsCatchAll = async ({
   catchAll,
@@ -35,29 +50,31 @@ const getStaticPropsCatchAll = async ({
   preview,
 }) => {
   const { slug } = pathVariables
-  if (nextWeirdRoutingSkipData.includes(slug)) return null
+  if (nextWeirdRoutingSkipData.includes(slug)) return {}
 
-  let data
+  // @todo(types)
+  let data: any
+  let shouldUpdateCache = false
 
   const key = getKeysByJoin({
     keyData: catchAll,
     keyPrefix: 'notion',
   })
 
+  /**
+   * @note(cache)
+   * - Only use cache for next build (`isBuildStep`)
+   * - As we hand over app cache internally to Next SSG + ISR
+   * - - => Exception: development
+   *
+   */
   if ((cache && isBuildStep) || isDev) {
     // console.dir(`cache && isBuildStep: ${cacheType} => ${key}`)
     data = await getCache({ cacheType, key })
   }
 
-  /**
-   * @verify
-   * - Does the data exist from CACHE
-   *
-   * Y => Skip, no more to do
-   * N => Get latest directly from Notion API, set Cache
-   *
-   */
   if (!data || data === undefined) {
+    shouldUpdateCache = true
     data = await getCatchAllDataFromApi({
       catchAll,
       clear,
@@ -69,39 +86,39 @@ const getStaticPropsCatchAll = async ({
   }
 
   /**
-   * @images
+   * @note(cache) Custom check for any images within Notion Content
    *
-   * Not the _best_ but this gets the job done.
+   * `image/*` cache is indefinite (that should change, heh)
    *
-   * If `images` object on data has already been cached
-   *  along with `notion/...` key we do not have to redo this.
+   * Use `images` key for CMS to lift any images within its content
+   *  (`info|content|items`)
    *
-   * Also of note ... any key that starts with `image/`
-   *  should always check cache first. We already did
-   *  the blurData most likely via plaiceholder
+   * For each, check against the existing cache to see if `image/*`
+   *  already exists
+   *
+   * Then update `data.images` object and update `cache`
+   *
+   * If we have an `images` object already it means we already
+   *  cached the additional images information
    *
    */
   let images = !!data?.images ? data?.images : {}
   if (_isEmpty(images) || _size(images) === 0) {
+    shouldUpdateCache = true
     images = await getCatchAllImagesFromApi({ data, pathVariables })
-  }
-
-  /**
-   * @fallback
-   */
-  if (!images || images === undefined) {
-    images = {}
   }
 
   data = { ...data, images }
 
   /**
-   * @cache
-   * - This only gets hit by live app when we are not in `isBuildStep`
-   * - Update the cache with latest data from Notion API
+   * @note(cache) Update the cache with latest data
+   *
+   * This only gets hit by live app when we are not in `isBuildStep`:
+   * - SWR is turned off
+   * - ISR to occur via webhooks for content updates (i.e., “you are here”)
    *
    */
-  if (cache || cacheOverride) {
+  if ((cache || cacheOverride) && shouldUpdateCache) {
     // console.dir(`cache || cacheOverride: ${cacheType} => ${key}`)
     setCache({ cacheType, data, key })
   }
@@ -115,6 +132,11 @@ const getCatchAllImagesFromApi = async ({ data, pathVariables }) => {
 
   const { getImages } = await import('./getImages')
   const urls = await getImages({ data, pathVariables })
+
+  if (_isEmpty(urls) || _size(urls) === 0) {
+    return images
+  }
+
   urls.map((url) =>
     keys.push([
       getKeysBySlugger({
@@ -125,15 +147,6 @@ const getCatchAllImagesFromApi = async ({ data, pathVariables }) => {
     ])
   )
 
-  /**
-   * @note(cache) build or no build, images are 100% c.r.e.a.m. (!isBuild)
-   * Cache
-   * Rules
-   * Everything
-   * Around
-   * Me
-   *
-   */
   if (cache) {
     // console.dir(`cache && isBuildStep: ${cacheType} => ${key}`)
     await asyncForEach(keys, async ([key, url]) => {
@@ -145,8 +158,6 @@ const getCatchAllImagesFromApi = async ({ data, pathVariables }) => {
         const image = await getImage(url)
         if (!!image) {
           images[image.id] = image
-          // @note(cache) getImage sets this
-          // setCache({ cacheType, data: image, key })
         }
       }
     }).catch(_noop)
@@ -189,8 +200,10 @@ const getCatchAllDataFromApi = async ({
   }
 
   /**
-   * @filter
-   * - to ensure only active items (isPublished) appear in results
+   * @todo(next) preview
+   * @note(filter)
+   * - ensure only published items (isPublished)
+   *
    */
   if (!!items) {
     items.results = _filter(items.results, { properties: { isPublished: true } })
@@ -199,9 +212,11 @@ const getCatchAllDataFromApi = async ({
   const data = { info, content, items, images }
 
   /**
-   * @cache
-   * - This only gets hit by live app when we are not in `isBuildStep`
-   * - Update the cache with latest data from Notion API
+   * @note(cache) Update the cache with latest data
+   *
+   * This only gets hit by live app when we are not in `isBuildStep`:
+   * - SWR is turned off
+   * - ISR to occur via webhooks for content updates (i.e., “you are here”)
    *
    */
   if (cache || cacheOverride) {

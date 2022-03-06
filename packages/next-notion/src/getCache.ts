@@ -1,15 +1,10 @@
 import path from 'path'
 
 import stringify from 'fast-json-stable-stringify'
-import ms from 'ms'
 
+import { TIME } from './constants'
 import { readFile, writeFileSyncRecursive } from './lib/fs-helpers'
 import redis from './lib/redis'
-
-/**
- * @redis is in seconds not ms
- */
-const getTimeInSeconds = (time: number) => time / 1000 ?? 0
 
 const cacheFile = (filename) =>
   path.join(
@@ -33,7 +28,8 @@ const setCacheJson = (data, key) => {
 
 const setCacheRedis = (data, key) => {
   // console.dir(`setCacheRedis => key: ${key}`)
-  void redis.set(key, stringify(data), 'EX', getTimeInSeconds(ms('30d')))
+  // @todo(redis) get the TTL by the routeType
+  void redis.set(key, stringify(data), 'EX', TIME.MONTH)
 }
 
 const setCache = ({ cacheType, data, key }) => {

@@ -1,7 +1,10 @@
+import ms from 'ms'
+
 /**
- * @hack some reason everything is coming here, is it `api/v1/cms/index.ts`?
+ * @question Why is `false|true|undefined` happening specifically?
+ * @hack Is this occuring because of `api/v1/cms/index.ts`?
+ * @hack Checking logs, we have some bots crashing the party
  *
- * WHOA ... okay we have some curious people hitting this up all over.
  */
 const nextWeirdRoutingSkipData = [
   'favicon.ico',
@@ -9,9 +12,9 @@ const nextWeirdRoutingSkipData = [
   'true',
   'undefined',
   /**
-   * @note
+   * @note This will grow slowly probably. 🤖️
+   *       Keep checking logs for bots and add.
    *
-   * Well, these are from the logs of bots attempting whatever bots do
    */
   '.env',
   '.git',
@@ -141,12 +144,27 @@ const nextWeirdRoutingSkipData = [
   'wp-blog.php',
 ]
 
+/**
+ * @redis is in seconds not ms
+ */
+const getTimeInSeconds = (time: number) => time / 1000 ?? 0
+
+/**
+ * @note in seconds
+ *       ...probably could be hard-coded
+ */
+const TIME = {
+  DAY: getTimeInSeconds(ms('1d')),
+  MONTH: getTimeInSeconds(ms('1m')),
+  YEAR: getTimeInSeconds(ms('1y')),
+}
+
 // @note(next) no longer used due to ISR
-const revalidate = 60 * 60 * 24 // 1 day (86,400)
+const revalidate = TIME.DAY
 
 const CACHE_TYPES = {
   REMOTE: 'remote',
   LOCAL: 'local',
 }
 
-export { nextWeirdRoutingSkipData, revalidate, CACHE_TYPES }
+export { nextWeirdRoutingSkipData, revalidate, CACHE_TYPES, TIME }

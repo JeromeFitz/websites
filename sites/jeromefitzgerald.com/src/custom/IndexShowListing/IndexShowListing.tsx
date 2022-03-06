@@ -8,9 +8,11 @@ const ShowsListing = dynamic(() => import('~routes/Shows/Listing'), {
   ssr: false,
 })
 
+const routeType = 'shows'
+
 const IndexShowLising = () => {
-  const routeType = 'shows'
   const { data, error } = useSWR<any>(() => `/api/v1/cms/${routeType}`, fetcher, {
+    // @question(swr) do we need to mock to this extent?
     fallbackData: {
       info: undefined,
       content: undefined,
@@ -31,14 +33,11 @@ const IndexShowLising = () => {
   if (isLoading) return null
   if (is404) return null
   if (isError && isDataUndefined) return null
-  if (isObjectEmpty(data.images)) return null
-
-  console.dir(`> IndexShowListing:`)
-  console.dir(data)
+  if (isObjectEmpty(data?.images)) return null
 
   return (
     <>
-      <ShowsListing routeType={routeType} data={data} images={data.images} />
+      <ShowsListing routeType={routeType} data={data} images={data?.images} />
     </>
   )
 }
