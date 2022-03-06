@@ -8,9 +8,7 @@
  */
 import { DATA_TYPES, PROPERTIES } from '@jeromefitz/notion/constants'
 import type { DatabaseInfo } from '@jeromefitz/notion/schema'
-import ms from 'ms'
-
-const getTimeInSeconds = (time: number) => time / 1000 ?? 0
+import { TIME } from 'next-notion/src/constants'
 
 // const DATA_TYPES: DataTypesObject = {
 //   LISTING: 'LISTING',
@@ -47,7 +45,7 @@ const NOTION: DatabaseInfo = {
     //
     infoType: PROPERTIES.datePublished,
     skipStaticPaths: false,
-    ttl: getTimeInSeconds(ms('1d')),
+    ttl: TIME.MONTH,
   },
   BOOKS: {
     active: true,
@@ -65,7 +63,7 @@ const NOTION: DatabaseInfo = {
     //
     infoType: PROPERTIES.datePublished,
     skipStaticPaths: true,
-    ttl: getTimeInSeconds(ms('1d')),
+    ttl: TIME.MONTH,
   },
   EPISODES: {
     active: true,
@@ -83,7 +81,7 @@ const NOTION: DatabaseInfo = {
     //
     infoType: PROPERTIES.datePublished,
     skipStaticPaths: false,
-    ttl: getTimeInSeconds(ms('1d')),
+    ttl: TIME.MONTH,
   },
   EVENTS: {
     active: true,
@@ -105,7 +103,7 @@ const NOTION: DatabaseInfo = {
     //
     infoType: PROPERTIES.dateEvent,
     skipStaticPaths: false,
-    ttl: getTimeInSeconds(ms('1d')),
+    ttl: TIME.MONTH,
   },
   PAGES: {
     active: false,
@@ -123,7 +121,7 @@ const NOTION: DatabaseInfo = {
     //
     infoType: PROPERTIES.datePublished,
     skipStaticPaths: false,
-    ttl: getTimeInSeconds(ms('1d')),
+    ttl: TIME.MONTH,
   },
   PEOPLE: {
     active: false,
@@ -141,7 +139,7 @@ const NOTION: DatabaseInfo = {
     //
     infoType: PROPERTIES.datePublished,
     skipStaticPaths: false,
-    ttl: getTimeInSeconds(ms('1d')),
+    ttl: TIME.MONTH,
   },
   PODCASTS: {
     active: true,
@@ -159,7 +157,7 @@ const NOTION: DatabaseInfo = {
     //
     infoType: PROPERTIES.datePublished,
     skipStaticPaths: false,
-    ttl: getTimeInSeconds(ms('1d')),
+    ttl: TIME.MONTH,
   },
   SEO: {
     active: false,
@@ -177,7 +175,7 @@ const NOTION: DatabaseInfo = {
     //
     infoType: PROPERTIES.datePublished,
     skipStaticPaths: false,
-    ttl: getTimeInSeconds(ms('1d')),
+    ttl: TIME.MONTH,
   },
   SHOWS: {
     active: true,
@@ -195,7 +193,7 @@ const NOTION: DatabaseInfo = {
     //
     infoType: PROPERTIES.datePublished,
     skipStaticPaths: false,
-    ttl: getTimeInSeconds(ms('1d')),
+    ttl: TIME.MONTH,
   },
   VENUES: {
     active: true,
@@ -213,7 +211,7 @@ const NOTION: DatabaseInfo = {
     //
     infoType: PROPERTIES.datePublished,
     skipStaticPaths: false,
-    ttl: getTimeInSeconds(ms('1d')),
+    ttl: TIME.MONTH,
   },
 }
 

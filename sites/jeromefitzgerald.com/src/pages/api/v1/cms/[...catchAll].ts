@@ -2,30 +2,28 @@ import { NextApiResponse } from 'next'
 import { nextWeirdRoutingSkipData } from 'next-notion/src/constants'
 import { getStaticPropsCatchAll } from 'next-notion/src/getStaticPropsCatchAll'
 import { getNotion } from 'next-notion/src/helper'
+import { getKeysByJoin } from 'next-notion/src/utils'
 
 import { notionConfig } from '~config/index'
 
 const notion = getNotion(notionConfig)
 
-/**
- * @ref https://vercel.com/docs/concepts/projects/environment-variables#system-environment-variables
- */
-// const isBuildStep = process.env.CI
-// const isDev = process.env.NODE_ENV === 'development' && typeof window !== 'undefined'
-
 const cache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE === 'true' ? true : false
-// const cacheOverride =
-process.env.NEXT_PUBLIC__NOTION_USE_CACHE_OVERIDE === 'true' ? true : false
-// const cacheType = process.env.NEXT_PUBLIC__NOTION_CACHE || CACHE_TYPES.LOCAL
+const isBuildStep = process.env.CI
+const isDev = process.env.NODE_ENV === 'development'
 
-// @todo(complexity) 12
-// eslint-disable-next-line complexity
+const debugType = (cache && isBuildStep) || isDev ? 'cache' : 'api'
+
 const CatchAll = async (req: any, res: NextApiResponse) => {
   try {
     // @todo(next) preview
     const preview = req.query?.preview || false
     const clear = req.query?.clear || false
     const catchAll = req.query?.catchAll
+    const key = getKeysByJoin({
+      keyData: catchAll,
+      keyPrefix: 'notion',
+    })
 
     if (nextWeirdRoutingSkipData.includes(catchAll[0])) {
       return res.status(403).json({
@@ -52,8 +50,9 @@ const CatchAll = async (req: any, res: NextApiResponse) => {
       preview,
     })
     const debug = {
+      key,
       latency: Date.now() - start,
-      type: cache ? 'cache' : 'api',
+      type: debugType,
     }
 
     res.status(200).json({ ...data, debug })

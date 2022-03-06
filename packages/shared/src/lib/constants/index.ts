@@ -1,8 +1,5 @@
 import IMAGE__FALLBACKS__SHOWS from './images/shows'
 
-// @note(next) no longer used due to ISR
-const revalidate = 60 * 60 * 24 // 1 day (86,400)
-
 const CACHE_TYPES = {
   REMOTE: 'remote',
   LOCAL: 'local',
@@ -120,7 +117,6 @@ const cssIconHeroToRadix1 = {
 export {
   cssIconHeroToRadix,
   cssIconHeroToRadix1,
-  revalidate,
   BIG_HEAD_PROPS,
   CACHE_TYPES,
   EMOJI_FALLBACK,

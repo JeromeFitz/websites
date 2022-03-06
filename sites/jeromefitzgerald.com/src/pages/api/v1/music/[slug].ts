@@ -25,8 +25,9 @@ const dataEmpty = { is_playing: false, debug: { type: 'api', latency: 0 } }
 
 const getKey = ({ limit, offset, slug, time_range }) => {
   if (slug === 'now-playing') {
+    const key = `${keyPrefix}/${slug}`
     return {
-      key: `${keyPrefix}/${slug}`,
+      key,
       evictionPolicy: evictionPolicyTiming['now_playing'],
     }
   }
