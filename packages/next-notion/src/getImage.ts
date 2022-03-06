@@ -29,7 +29,7 @@ const getImage = async (url: string) => {
   let data
 
   if ((cache && isBuildStep) || isDev) {
-    console.dir(`getImage => cache && isBuildStep: ${cacheType} => ${key}`)
+    // console.dir(`getImage => cache && isBuildStep: ${cacheType} => ${key}`)
     data = await getCache({ cacheType, key })
   }
 
@@ -39,7 +39,7 @@ const getImage = async (url: string) => {
     data = { base64, id: key, img, url }
 
     if (cache || cacheOverride) {
-      console.dir(`getImage => cache || cacheOverride: ${cacheType} => ${key}`)
+      // console.dir(`getImage => cache || cacheOverride: ${cacheType} => ${key}`)
       setCache({ cacheType, data, key })
     }
   }

@@ -13,7 +13,7 @@ import _map from 'lodash/map'
 import _orderBy from 'lodash/orderBy'
 import _slice from 'lodash/slice'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { getCatchAll } from 'next-notion/src/getCatchAll'
+import { getStaticPropsCatchAll } from 'next-notion/src/getStaticPropsCatchAll'
 import { getNotion } from 'next-notion/src/helper'
 import { getTimeInSeconds } from 'next-notion/src/utils'
 import { Podcast, Item, FeedOptions } from 'podcast'
@@ -36,7 +36,7 @@ const rssApi = async (req: NextApiRequest, res: NextApiResponse) => {
 
   // http://localhost:3000/api/v1/cms/blog/2020/12/28/preview-blog-post?preview=true
   const pathVariables = notion.custom.getPathVariables({ catchAll })
-  const data = await getCatchAll({
+  const data = await getStaticPropsCatchAll({
     clear,
     catchAll,
     notionConfig,

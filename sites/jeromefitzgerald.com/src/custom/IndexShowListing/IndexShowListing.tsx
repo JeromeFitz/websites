@@ -1,3 +1,4 @@
+import { isObjectEmpty } from '@jeromefitz/utils'
 import { fetcher } from 'next-notion/src/lib/fetcher'
 import { getNextPageStatus } from 'next-notion/src/utils'
 import dynamic from 'next/dynamic'
@@ -30,6 +31,7 @@ const IndexShowLising = () => {
   if (isLoading) return null
   if (is404) return null
   if (isError && isDataUndefined) return null
+  if (isObjectEmpty(data.images)) return null
 
   console.dir(`> IndexShowListing:`)
   console.dir(data)
