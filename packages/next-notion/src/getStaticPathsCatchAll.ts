@@ -5,7 +5,7 @@ import _map from 'lodash/map'
 import _noop from 'lodash/noop'
 import _uniqWith from 'lodash/uniqWith'
 
-import { getCatchAll } from './getCatchAll'
+import { getStaticPropsCatchAll } from './getStaticPropsCatchAll'
 import { getNotion } from './helper'
 
 const isDev = process.env.NODE_ENV !== 'production'
@@ -126,7 +126,7 @@ const getStaticPathsCatchAll = async (notionConfig) => {
         const pathVariables = notion.custom.getPathVariables({
           catchAll,
         })
-        const data = await getCatchAll({
+        const data = await getStaticPropsCatchAll({
           catchAll,
           clear: false,
           notionConfig,

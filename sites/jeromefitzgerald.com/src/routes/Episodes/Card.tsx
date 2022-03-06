@@ -92,7 +92,7 @@ const EpisodesCard = ({
   const imageSlug = !!seoImage && Object.keys(seoImage)[0]
   const url = !!imageSlug && seoImage[imageSlug]?.url
   const fallbackData =
-    !!url && !!images
+    !!url && !!images && !!imageSlug
       ? images[`image/${imageSlug}`]
       : {
           base64: IMAGE__PLACEHOLDER.meta.base64,
@@ -101,6 +101,8 @@ const EpisodesCard = ({
         }
   // @note(image) limit api calls
   // @refactor(lodash) _isEmpty
+  // console.dir(`Shows > Episodes > fallbackData`)
+  // console.dir(fallbackData)
   const urlApi = !!url && _isEmpty(fallbackData) ? `/api/v1/img?url=${url}` : null
   const {
     data: { base64, img, slug: slugImage },

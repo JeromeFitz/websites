@@ -13,7 +13,7 @@ import { getNotion } from './helper'
  * @ref https://vercel.com/docs/concepts/projects/environment-variables#system-environment-variables
  */
 const isBuildStep = process.env.CI
-const isDev = process.env.NODE_ENV === 'development' // && typeof window !== 'undefined'
+const isDev = process.env.NODE_ENV === 'production' // && typeof window !== 'undefined'
 
 const cache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE === 'true' ? true : false
 const cacheOverride =
@@ -83,10 +83,7 @@ const getStaticPropsCatchAll = async ({
    */
   let images = !!data?.images ? data?.images : {}
   if (_isEmpty(images) || _size(images) === 0) {
-    console.dir(`Images: Get from API`)
     images = await getCatchAllImagesFromApi({ data, pathVariables })
-  } else {
-    console.dir(`Images: Skip, already Cached.`)
   }
 
   /**
@@ -105,9 +102,7 @@ const getStaticPropsCatchAll = async ({
    *
    */
   if (cache || cacheOverride) {
-    console.dir(
-      `getStaticPropsCatchAll => cache || cacheOverride: ${cacheType} => ${key}`
-    )
+    // console.dir(`cache || cacheOverride: ${cacheType} => ${key}`)
     setCache({ cacheType, data, key })
   }
 
@@ -130,23 +125,28 @@ const getCatchAllImagesFromApi = async ({ data, pathVariables }) => {
     ])
   )
 
-  console.dir(`keys:`)
-  console.dir(keys)
-
-  if ((cache && isBuildStep) || isDev) {
+  /**
+   * @note(cache) build or no build, images are 100% c.r.e.a.m. (!isBuild)
+   * Cache
+   * Rules
+   * Everything
+   * Around
+   * Me
+   *
+   */
+  if (cache) {
     // console.dir(`cache && isBuildStep: ${cacheType} => ${key}`)
     await asyncForEach(keys, async ([key, url]) => {
-      console.dir(`key: ${key}`)
-      console.dir(`url: ${url}`)
       const image: any = await getCache({ cacheType, key })
       if (!!image) {
         images[key] = image
       } else {
-        // get IMage and set Cache`
         const { getImage } = await import('./getImage')
         const image = await getImage(url)
         if (!!image) {
           images[image.id] = image
+          // @note(cache) getImage sets this
+          // setCache({ cacheType, data: image, key })
         }
       }
     }).catch(_noop)
