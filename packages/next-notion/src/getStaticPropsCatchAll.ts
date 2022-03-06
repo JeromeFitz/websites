@@ -13,7 +13,7 @@ import { getNotion } from './helper'
  * @ref https://vercel.com/docs/concepts/projects/environment-variables#system-environment-variables
  */
 const isBuildStep = process.env.CI
-const isDev = process.env.NODE_ENV === 'production' // && typeof window !== 'undefined'
+const isDev = process.env.NODE_ENV === 'development'
 
 const cache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE === 'true' ? true : false
 const cacheOverride =
