@@ -68,7 +68,7 @@ const getCacheRedis = async (key) => {
   return cacheData
 }
 
-const getCache = async ({ cacheType, key }) => {
+const getCache: any = async ({ cacheType, key }) => {
   // console.dir(`getCache: ${key}`)
   if (cacheType === 'remote') {
     return await getCacheRedis(key)
