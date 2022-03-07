@@ -36,13 +36,13 @@
   },
   "dependencies": {
     "@artsy/fresnel": "3.4.0",
-    "@jeromefitz/design-system": "3.0.1",
+    "@jeromefitz/design-system": "3.0.2",
     "@stitches/react": "1.2.7",
     "fathom-client": "3.4.1",
-    "plaiceholder": "2.3.0",
     "lodash": "4.17.21",
     "next": "12.1.1-canary.6",
     "next-themes": "0.1.1",
+    "plaiceholder": "2.3.0",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   },
