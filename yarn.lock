@@ -461,12 +461,12 @@
     semantic-release "19.0.2"
     title "3.4.4"
 
-"@jeromefitz/design-system@3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/design-system/-/design-system-3.0.1.tgz#20ab10bb060391d8f2e4f585689c8577fd4d5b95"
-  integrity sha512-It/xMbBz5opxyK1n4jMpt6nMawX4bsjNdigZQ4Fl6XaXh5Hdhp6NzFTQRC4Hk2A72cMFD9KLxamAO5erO37c0Q==
+"@jeromefitz/design-system@3.0.2":
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/design-system/-/design-system-3.0.2.tgz#7034027704a069b05c0892cd355893a6217479cb"
+  integrity sha512-HUKv9BrqPd0hEZnAVOsIQKEL/ZKo0qRyWLAvEqSVSPN5ANKMNgyxKafOV0Zng+f7P/GlI+1XK3EmagjW12U8aw==
   dependencies:
-    "@mantine/hooks" "3.6.13"
+    "@mantine/hooks" "3.6.14"
     "@radix-ui/colors" "0.1.8"
     "@radix-ui/react-accessible-icon" "0.1.4"
     "@radix-ui/react-accordion" "0.1.6"
@@ -774,6 +774,11 @@
   version "3.6.13"
   resolved "https://registry.yarnpkg.com/@mantine/hooks/-/hooks-3.6.13.tgz#68e7e15c441d6304321657f84a40c226a05e6bce"
   integrity sha512-olHvJIlWKaKKZqQMnQqoyb3R6QEa81DL3dwSKAbE8zIOP9wM4yIABUy48sw02puuFYHWIBq2fp9GFnMVG3m9Og==
+
+"@mantine/hooks@3.6.14":
+  version "3.6.14"
+  resolved "https://registry.yarnpkg.com/@mantine/hooks/-/hooks-3.6.14.tgz#31f4d937384acbdae34ca0ca84056fc191eae85e"
+  integrity sha512-ob6FdjG7/plSpp2VOUvfEQb8a02hlLFo8Qp/EFU8OHn3lfp8PEKGxWQznPPQ9Zay53ZFm05ixrFq9z7+M5jEdQ==
 
 "@next/bundle-analyzer@12.1.0":
   version "12.1.0"
