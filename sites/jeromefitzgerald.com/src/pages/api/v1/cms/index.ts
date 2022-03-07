@@ -1,11 +1,8 @@
 import { NextApiResponse } from 'next'
 import { getStaticPropsCatchAll } from 'next-notion/src/getStaticPropsCatchAll'
-import { getNotion } from 'next-notion/src/helper'
 import { getKeysByJoin } from 'next-notion/src/utils'
 
 import { notionConfig } from '~config/index'
-
-const notion = getNotion(notionConfig)
 
 const { PAGES__HOMEPAGE } = notionConfig
 
@@ -17,7 +14,6 @@ const debugType = (cache && isBuildStep) || isDev ? 'cache' : 'api'
 
 const notionCatchAll = async (req: any, res: NextApiResponse) => {
   try {
-    // @todo(next) preview
     const preview = req.query?.preview || false
     const clear = req.query?.clear || false
     const catchAll = [PAGES__HOMEPAGE]
@@ -26,17 +22,16 @@ const notionCatchAll = async (req: any, res: NextApiResponse) => {
       keyPrefix: 'notion',
     })
 
-    // http://localhost:3000/api/v1/cms/blog/2020/12/28/preview-blog-post?preview=true
-    const pathVariables = notion.custom.getPathVariables({
-      catchAll,
-    })
+    if (clear) {
+      res.clearPreviewData()
+      res.writeHead(307, { Location: '/' })
+      res.end()
+    }
 
     const start = Date.now()
-    const data = await getStaticPropsCatchAll({
+    const { data } = await getStaticPropsCatchAll({
       catchAll,
-      clear,
       notionConfig,
-      pathVariables,
       preview,
     })
     const debug = {

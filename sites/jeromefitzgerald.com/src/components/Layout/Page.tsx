@@ -11,7 +11,7 @@ const IndexShowListing = dynamic(() => import('~custom/IndexShowListing'), {
 })
 
 const Page = ({ ...props }) => {
-  const { data, dataType, error, isHomepage, routeType, url } = props
+  const { data, dataType, error, isHomepage, preview, routeType, url } = props
 
   const { is404, isDataUndefined, isError, isLoading } = getNextPageStatus(
     data,
@@ -63,7 +63,13 @@ const Page = ({ ...props }) => {
   /* ------------------------------------------------------ */
 
   return (
-    <Layout id={info.id} info={info} routeType={routeType} url={url}>
+    <Layout
+      id={info.id}
+      info={info}
+      preview={preview}
+      routeType={routeType}
+      url={url}
+    >
       <RouterComponent routerNode={routerNode} {...props} />
       {isHomepage && <IndexShowListing />}
     </Layout>

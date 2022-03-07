@@ -1,29 +1,47 @@
 import { NextApiResponse } from 'next'
-import { nextWeirdRoutingSkipData } from 'next-notion/src/constants'
+import { nextWeirdRoutingSkipData, TIME } from 'next-notion/src/constants'
 import { getStaticPropsCatchAll } from 'next-notion/src/getStaticPropsCatchAll'
-import { getNotion } from 'next-notion/src/helper'
 import { getKeysByJoin } from 'next-notion/src/utils'
 
 import { notionConfig } from '~config/index'
 
-const notion = getNotion(notionConfig)
-
-const cache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE === 'true' ? true : false
+const cache = process.env.NOTION_USE_CACHE === 'true' ? true : false
 const isBuildStep = process.env.CI
 const isDev = process.env.NODE_ENV === 'development'
 
 const debugType = (cache && isBuildStep) || isDev ? 'cache' : 'api'
 
+/**
+ * @todo(security) can we improve this?
+ */
+const token = process.env.PREVIEW_TOKEN
+
+// @todo(complexity) 12
+// eslint-disable-next-line complexity
 const CatchAll = async (req: any, res: NextApiResponse) => {
   try {
-    // @todo(next) preview
-    const preview = req.query?.preview || false
-    const clear = req.query?.clear || false
+    const preview = req.query?.preview === 'true' ? true : false || false
+    const clear = req.query?.clear === 'true' ? true : false || false
     const catchAll = req.query?.catchAll
     const key = getKeysByJoin({
       keyData: catchAll,
       keyPrefix: 'notion',
     })
+
+    if (clear) {
+      res.clearPreviewData()
+      res.writeHead(307, { Location: '/' })
+      res.end()
+    }
+
+    if (preview && req.query.secret !== token) {
+      return res.status(401).json({
+        error: {
+          code: 'unauthorized',
+          message: 'Invalid token',
+        },
+      })
+    }
 
     if (nextWeirdRoutingSkipData.includes(catchAll[0])) {
       return res.status(403).json({
@@ -34,19 +52,10 @@ const CatchAll = async (req: any, res: NextApiResponse) => {
       })
     }
 
-    // http://localhost:3000/api/v1/cms/blog/2020/12/28/preview-blog-post?preview=true
-    const pathVariables = notion.custom.getPathVariables({
-      catchAll,
-    })
-    // console.dir(`> pathVariables`)
-    // console.dir(pathVariables)
-
     const start = Date.now()
-    const data = await getStaticPropsCatchAll({
+    const { data, pathVariables } = await getStaticPropsCatchAll({
       catchAll,
-      clear,
       notionConfig,
-      pathVariables,
       preview,
     })
     const debug = {
@@ -55,7 +64,14 @@ const CatchAll = async (req: any, res: NextApiResponse) => {
       type: debugType,
     }
 
-    res.status(200).json({ ...data, debug })
+    if (preview && !!data?.info) {
+      const { url } = pathVariables
+      res.setPreviewData({}, { maxAge: TIME.HOUR })
+      res.writeHead(307, { Location: `/${url}` })
+      res.end()
+    } else {
+      return res.status(200).json({ ...data, debug })
+    }
   } catch (e) {
     // eslint-disable-next-line no-console
     console.log(e)

@@ -6,7 +6,6 @@ import _noop from 'lodash/noop'
 import _uniqWith from 'lodash/uniqWith'
 
 import { getStaticPropsCatchAll } from './getStaticPropsCatchAll'
-import { getNotion } from './helper'
 
 const isDev = process.env.NODE_ENV !== 'production'
 
@@ -80,7 +79,6 @@ const getStaticPathsDefault = ({
 }
 
 const getStaticPathsCatchAll = async (notionConfig) => {
-  const notion = getNotion(notionConfig)
   const { NOTION, PAGES, ROUTE_TYPES } = notionConfig
   const getParentRouteInfo = (routeTypeName: string) => {
     // @todo(next-notion) move to `isChild`
@@ -123,14 +121,9 @@ const getStaticPathsCatchAll = async (notionConfig) => {
         console.dir(`@todo(notion) skipStaticPaths: ${routeType}`)
       } else {
         const catchAll = [routeType]
-        const pathVariables = notion.custom.getPathVariables({
+        const { data } = await getStaticPropsCatchAll({
           catchAll,
-        })
-        const data = await getStaticPropsCatchAll({
-          catchAll,
-          clear: false,
           notionConfig,
-          pathVariables,
           preview: false,
         })
         const items = data?.items?.results
