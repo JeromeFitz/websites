@@ -1,63 +1,48 @@
-import stringify from 'fast-json-stable-stringify'
-import Slugger from 'github-slugger'
 import type { NextApiResponse } from 'next'
-import { getCacheJson, setCacheJson } from 'next-notion/src/getCache'
-import redis from 'next-notion/src/lib/redis'
-import { getPlaiceholder } from 'plaiceholder'
+import { getImage } from 'next-notion/src/getImage'
 
-const keyPrefix = 'image'
+const cache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE === 'true' ? true : false
+const isBuildStep = process.env.CI
+const isDev = process.env.NODE_ENV === 'development'
+
+const debugType = (cache && isBuildStep) || isDev ? 'cache' : 'api'
 
 const imagesApi = async (req: any, res: NextApiResponse) => {
-  const { url } = req.query
-  const slug = Slugger.slug(url.toString())
+  try {
+    const { url } = req.query
 
-  if (!url || url === 'undefined') return res.status(404).json({})
+    if (!url || url === 'undefined') return res.status(404).json({})
 
-  const key = `${keyPrefix}/${slug}`.toLowerCase()
+    const start = Date.now()
+    const data = await getImage(url)
+    if (!!data) {
+      const key = data.id
+      const debug = {
+        key,
+        latency: Date.now() - start,
+        type: debugType,
+      }
 
-  let cache: any
-  let data: any = {}
-  let start = Date.now()
-
-  // console.dir(`@cache(get) json`)
-  cache = await getCacheJson(key)
-  if (cache) {
-    data = cache
-    const debug = {
-      key,
-      latency: Date.now() - start,
-      type: cache ? 'cache' : 'api',
+      return res.status(200).json({ ...data, debug })
+    } else {
+      return res.status(400).json({
+        error: {
+          code: 'server_error',
+          message: 'Bad request',
+        },
+      })
     }
-    return res.status(200).json({ ...data, debug })
-  }
+  } catch (e) {
+    // eslint-disable-next-line no-console
+    console.log(e)
 
-  // console.dir(`@cache(get) redis`)
-  start = Date.now()
-  cache = await redis.get(key)
-  if (cache) {
-    // console.dir(`@cache(set) json`)
-    const data = JSON.parse(cache)
-    setCacheJson(data, key)
-    const debug = {
-      key,
-      latency: Date.now() - start,
-      type: cache ? 'cache' : 'api',
-    }
-    return res.status(200).json({ ...data, debug })
+    return res.status(500).json({
+      error: {
+        code: 'server_error',
+        message: 'Internal server error',
+      },
+    })
   }
-
-  start = Date.now()
-  const { base64, img } = await getPlaiceholder(url)
-  data = { base64, img, slug, url }
-
-  setCacheJson(data, key)
-  void redis.set(key, stringify(data))
-  const debug = {
-    key,
-    latency: Date.now() - start,
-    type: cache ? 'cache' : 'api',
-  }
-  return res.status(200).json({ ...data, debug })
 }
 
 export default imagesApi
