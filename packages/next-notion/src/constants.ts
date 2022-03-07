@@ -155,6 +155,8 @@ const getTimeInSeconds = (time: number) => time / 1000 ?? 0
  */
 const TIME = {
   DAY: getTimeInSeconds(ms('1d')),
+  HOUR: getTimeInSeconds(ms('1h')),
+  MINUTE: getTimeInSeconds(ms('1m')),
   MONTH: getTimeInSeconds(ms('1m')),
   YEAR: getTimeInSeconds(ms('1y')),
 }

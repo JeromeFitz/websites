@@ -40,15 +40,13 @@ const cacheOverride =
   process.env.NEXT_PUBLIC__NOTION_USE_CACHE_OVERIDE === 'true' ? true : false
 const cacheType = process.env.NEXT_PUBLIC__NOTION_CACHE || CACHE_TYPES.LOCAL
 
-// @todo(complexity) 13
+// @todo(complexity) 17
 // eslint-disable-next-line complexity
-const getStaticPropsCatchAll = async ({
-  catchAll,
-  clear,
-  notionConfig,
-  pathVariables,
-  preview,
-}) => {
+const getStaticPropsCatchAll = async ({ catchAll, notionConfig, preview }) => {
+  const notion = getNotion(notionConfig)
+  // http://localhost:3000/api/v1/cms/blog/2020/12/28/preview-blog-post?preview=true
+  const pathVariables = notion.custom.getPathVariables({ catchAll })
+
   const { slug } = pathVariables
   if (nextWeirdRoutingSkipData.includes(slug)) return {}
 
@@ -68,7 +66,7 @@ const getStaticPropsCatchAll = async ({
    * - - => Exception: development
    *
    */
-  if ((cache && isBuildStep) || isDev) {
+  if (((cache && isBuildStep) || isDev) && !preview) {
     // console.dir(`cache && isBuildStep: ${cacheType} => ${key}`)
     data = await getCache({ cacheType, key })
   }
@@ -77,9 +75,8 @@ const getStaticPropsCatchAll = async ({
     shouldUpdateCache = true
     data = await getCatchAllDataFromApi({
       catchAll,
-      clear,
       key,
-      notionConfig,
+      notion,
       pathVariables,
       preview,
     })
@@ -102,6 +99,7 @@ const getStaticPropsCatchAll = async ({
    *  cached the additional images information
    *
    */
+
   let images = !!data?.images ? data?.images : {}
   if (_isEmpty(images) || _size(images) === 0) {
     shouldUpdateCache = true
@@ -118,12 +116,15 @@ const getStaticPropsCatchAll = async ({
    * - ISR to occur via webhooks for content updates (i.e., “you are here”)
    *
    */
+  if (!data.info || data.info === undefined || preview) {
+    shouldUpdateCache = false
+  }
   if ((cache || cacheOverride) && shouldUpdateCache) {
-    // console.dir(`cache || cacheOverride: ${cacheType} => ${key}`)
+    // console.dir(`1) cache || cacheOverride: ${cacheType} => ${key}`)
     setCache({ cacheType, data, key })
   }
 
-  return data
+  return { data, pathVariables }
 }
 
 const getCatchAllImagesFromApi = async ({ data, pathVariables }) => {
@@ -166,19 +167,15 @@ const getCatchAllImagesFromApi = async ({ data, pathVariables }) => {
   return images
 }
 
+// eslint-disable-next-line complexity
 const getCatchAllDataFromApi = async ({
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   catchAll,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  clear,
   key,
-  notionConfig,
+  notion,
   pathVariables,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   preview,
 }) => {
-  const notion = getNotion(notionConfig)
-
   let content = null,
     images = {},
     info = null,
@@ -200,13 +197,25 @@ const getCatchAllDataFromApi = async ({
   }
 
   /**
-   * @todo(next) preview
    * @note(filter)
-   * - ensure only published items (isPublished)
+   * - Only return published item (isPublished)
+   * - Preview bypass
+   *
+   */
+  if (!info.properties?.isPublished && !preview) {
+    return { info: null, content: null, items: null, images: {} }
+  }
+  /**
+   * @note(filter)
+   * - Only return published items (isPublished)
+   * - Preview bypass
    *
    */
   if (!!items) {
-    items.results = _filter(items.results, { properties: { isPublished: true } })
+    items.results = _filter(
+      items.results,
+      preview ? {} : { properties: { isPublished: true } }
+    )
   }
 
   const data = { info, content, items, images }
@@ -219,8 +228,8 @@ const getCatchAllDataFromApi = async ({
    * - ISR to occur via webhooks for content updates (i.e., “you are here”)
    *
    */
-  if (cache || cacheOverride) {
-    // console.dir(`cache || cacheOverride: ${cacheType} => ${key}`)
+  if ((cache || cacheOverride) && !preview) {
+    // console.dir(`2) cache || cacheOverride: ${cacheType} => ${key}`)
     setCache({ cacheType, data, key })
   }
 

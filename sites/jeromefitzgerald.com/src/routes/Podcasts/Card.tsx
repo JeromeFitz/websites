@@ -17,6 +17,7 @@ import {
 } from '@jeromefitz/design-system/components/Card/Show'
 import type { Podcast as PodcastProperties } from '@jeromefitz/notion/schema'
 import { IMAGE__PLACEHOLDER } from '@jeromefitz/shared/src/lib/constants'
+import type { IGetPlaiceholderReturnCustom } from '@jeromefitz/shared/src/lib/types'
 import _isEmpty from 'lodash/isEmpty'
 import { fetcher } from 'next-notion/src/lib/fetcher'
 // import _map from 'lodash/map'
@@ -68,13 +69,13 @@ const PodcastsCard = ({
    */
   const imageSlug = !!seoImage && Object.keys(seoImage)[0]
   const url = !!imageSlug && seoImage[imageSlug]?.url
-  const fallbackData =
+  const fallbackData: IGetPlaiceholderReturnCustom =
     !!url && !!images && !!imageSlug
       ? images[`image/${imageSlug}`]
       : {
           base64: IMAGE__PLACEHOLDER.base64,
+          id: IMAGE__PLACEHOLDER.id,
           img: { ...IMAGE__PLACEHOLDER.img, src: url },
-          slug: IMAGE__PLACEHOLDER.slug,
         }
   // @note(image) limit api calls
   // @refactor(lodash) _isEmpty
@@ -82,8 +83,8 @@ const PodcastsCard = ({
   // console.dir(fallbackData)
   const urlApi = !!url && _isEmpty(fallbackData) ? `/api/v1/img?url=${url}` : null
   const {
-    data: { base64, img, slug: slugImage },
-  } = useSWR<any>(urlApi, fetcher, {
+    data: { base64, id: slugImage, img },
+  } = useSWR<IGetPlaiceholderReturnCustom>(urlApi, fetcher, {
     fallbackData,
   })
 

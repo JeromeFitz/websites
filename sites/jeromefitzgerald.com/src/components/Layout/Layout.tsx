@@ -1,4 +1,5 @@
-import { PageHeading } from '@jeromefitz/design-system/components'
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { Button, Note, PageHeading } from '@jeromefitz/design-system/components'
 import { format, parseISO } from 'date-fns'
 import useSWR from 'swr'
 
@@ -7,8 +8,8 @@ import { nextSeo, notionConfig } from '~config/index'
 
 const { NOTION } = notionConfig
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const Layout = ({ id, children, info, routeType, url }) => {
+// eslint-disable-next-line complexity
+const Layout = ({ id, children, info, preview = false, routeType, url }) => {
   const { data: images } = useSWR('images')
   const { properties } = info
   if (properties === undefined) return null
@@ -75,6 +76,26 @@ const Layout = ({ id, children, info, routeType, url }) => {
   return (
     <>
       <Seo {...seo} />
+      {preview && (
+        <Note>
+          Preview Mode.{' '}
+          <Button
+            as="a"
+            css={{
+              cursor: 'pointer',
+              ml: '$8',
+              mt: '$1',
+              '@bp1': { ml: '$3', mt: '0' },
+            }}
+            ghost
+            href="/api/v1/cms/preview-clear?clear=true"
+            size="2"
+            variant="red"
+          >
+            Exit Preview Mode
+          </Button>
+        </Note>
+      )}
       <PageHeading title={seo.title} description={pageHeadingDescription} />
       {children}
     </>

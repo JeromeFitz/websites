@@ -1,5 +1,3 @@
-// import { createHmac } from 'crypto'
-
 async function handleRevalidate(req, res) {
   const body: any = await getRawBody(req)
   if (!body) {
@@ -10,15 +8,14 @@ async function handleRevalidate(req, res) {
   const jsonBody = JSON.parse(body)
 
   /**
-   * @todo(security) uh, this is not the way to do it haha
+   * @todo(security) can we improve this?
    */
-  const token = process.env.NEXT_PUBLIC__REVALIDATE_TOKEN
+  const token = process.env.REVALIDATE_TOKEN
   const signature = req.headers['x-revalidate-signature-256']
 
   if (token === signature) {
-    const path = jsonBody.path
+    const { path } = jsonBody
     if (path) {
-      // console.dir(`revalidating: ${path}`)
       await res.unstable_revalidate(`${path}`)
     }
     return res.status(200).send({ status: 200, message: 'success' })

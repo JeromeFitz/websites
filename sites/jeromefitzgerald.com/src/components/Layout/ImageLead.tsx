@@ -20,7 +20,7 @@ import { Image, ImageBlur, ImageContainer } from './ImageLead.styles'
  * @optimization
  *
  * Just because we know the WIDTH/HEIGHT of images, does not mean
- *  we shoudl be passing them to `Image` (next/image`)
+ *  we should be passing them to `Image` (next/image`)
  *
  *
  * Also big __update__ needed as we are no longer using `sizes`
@@ -136,6 +136,15 @@ const ImageLead = ({ breakout = true, description, image, images }) => {
    */
   const imageSlug = !!image && Object.keys(image)[0]
   const url = !!imageSlug && image[imageSlug]?.url
+  /**
+   * @note(image)
+   * Earlier we returned an empty object if image was not within `images`
+   * With the way the render happens now, this should never happen
+   * So we've removed that for now, but if this starts showing weird images
+   *  aka the fallback, then look to put `: {}` back along with a return of
+   *  null if the `data` does not exist as this entire sequence is probably
+   *  not hit anymore.
+   */
   const fallbackData: IGetPlaiceholderReturnCustom =
     !!url && !!images ? images[`image/${imageSlug}`] : IMAGE__PLACEHOLDER
   const urlApi = !!url && _isEmpty(fallbackData) ? `/api/v1/img?url=${url}` : null
