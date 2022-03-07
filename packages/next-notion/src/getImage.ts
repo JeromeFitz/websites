@@ -6,7 +6,8 @@ import validUrl from 'valid-url'
 import { CACHE_TYPES } from './constants'
 import { getCache, setCache } from './getCache'
 
-interface IGetPlaiceholderReturnCustom extends IGetPlaiceholderReturn {
+interface IGetPlaiceholderReturnCustom
+  extends Omit<IGetPlaiceholderReturn, 'blurhash' | 'css' | 'svg'> {
   id: string
   url: string
 }
@@ -31,11 +32,11 @@ const keyPrefix = 'image'
  *
  */
 const getImage = async (_url: string) => {
-  // @todo(types)
   let data: IGetPlaiceholderReturnCustom | undefined,
     id: string,
     key: string,
     url: string
+
   /**
    * @note(cache) if we are passed `image/` we are being passed a key to check
    */
@@ -59,8 +60,8 @@ const getImage = async (_url: string) => {
 
   if (!data || data === undefined) {
     const { getPlaiceholder } = await import('plaiceholder')
-    const image = await getPlaiceholder(url)
-    data = { id: key, url, ...image }
+    const { base64, img } = await getPlaiceholder(url)
+    data = { base64, id: key, img, url }
 
     if (cache || cacheOverride) {
       // console.dir(`getImage => cache || cacheOverride: ${cacheType} => ${key}`)

@@ -5,10 +5,12 @@ import {
   Skeleton,
 } from '@jeromefitz/design-system/components'
 import { darkTheme } from '@jeromefitz/design-system/stitches.config'
+import { IMAGE__PLACEHOLDER } from '@jeromefitz/shared/src/lib/constants'
+import type { IGetPlaiceholderReturnCustom } from '@jeromefitz/shared/src/lib/types'
 import { Gradients } from '@jeromefitz/shared/src/styles/const'
 import _isEmpty from 'lodash/isEmpty'
 import { fetcher } from 'next-notion/src/lib/fetcher'
-// import * as React from 'react'
+import * as React from 'react'
 // import { useIsomorphicLayoutEffect } from 'react-use'
 import useSWR from 'swr'
 
@@ -126,8 +128,6 @@ const ImageSkeleton = () => {
   )
 }
 
-// @todo(complexity) 11
-// eslint-disable-next-line complexity
 const ImageLead = ({ breakout = true, description, image, images }) => {
   /**
    * @refactor(images) passing images from SSR is not ideal
@@ -136,34 +136,24 @@ const ImageLead = ({ breakout = true, description, image, images }) => {
    */
   const imageSlug = !!image && Object.keys(image)[0]
   const url = !!imageSlug && image[imageSlug]?.url
-  const fallbackData =
-    !!url && !!images && !!imageSlug ? images[`image/${imageSlug}`] : {}
-  // @note(image) do not call if we do not need to
+  const fallbackData: IGetPlaiceholderReturnCustom =
+    !!url && !!images ? images[`image/${imageSlug}`] : IMAGE__PLACEHOLDER
   const urlApi = !!url && _isEmpty(fallbackData) ? `/api/v1/img?url=${url}` : null
 
-  const { data } = useSWR<any>(urlApi, fetcher, {
+  const { data } = useSWR<IGetPlaiceholderReturnCustom>(urlApi, fetcher, {
     fallbackData,
   })
 
-  // @note(image) verify it has been optimized
-  // @todo(image) fallback base64
-  const hasImage = !!data && !!data?.base64
-
-  if (!hasImage) {
-    return null
-  }
-
-  // @todo(types)
-  const WrapComponent: any = breakout ? Container : Section
+  const WrapComponent: React.ElementType = breakout ? Container : Section
 
   return (
     <>
       <WrapComponent breakout={breakout}>
         <Container size="2">
           <ImageWithBackgroundBlur
-            base64={data?.base64}
+            base64={data.base64}
             description={description}
-            image={data?.img}
+            image={data.img}
             priority={true}
             slug={imageSlug}
           />
