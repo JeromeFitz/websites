@@ -75,9 +75,9 @@ const ShowsCard = ({
     !!url && !!images && !!imageSlug
       ? images[`image/${imageSlug}`]
       : {
-          base64: IMAGE__PLACEHOLDER.meta.base64,
-          img: { ...IMAGE__PLACEHOLDER.meta.img, src: url },
-          slug: IMAGE__PLACEHOLDER.meta.slug,
+          base64: IMAGE__PLACEHOLDER.base64,
+          img: { ...IMAGE__PLACEHOLDER.img, src: url },
+          slug: IMAGE__PLACEHOLDER.slug,
         }
   // @note(image) limit api calls
   // @refactor(lodash) _isEmpty

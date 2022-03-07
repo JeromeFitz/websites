@@ -1,3 +1,5 @@
+import type { IGetPlaiceholderReturnCustom } from '../types'
+
 import IMAGE__FALLBACKS__SHOWS from './images/shows'
 
 const CACHE_TYPES = {
@@ -36,19 +38,18 @@ const ERROR__FALLBACK = {
   description: 'Seems to be an error.',
 }
 
-const IMAGE__PLACEHOLDER = {
-  meta: {
-    base64:
-      'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAEAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAX/xAAeEAABBAIDAQAAAAAAAAAAAAABAAMEBQIGEyIxYf/EABUBAQEAAAAAAAAAAAAAAAAAAAEF/8QAGREBAQEBAQEAAAAAAAAAAAAAAQIDABGR/9oADAMBAAIRAxEAPwCfGlwqbX9eZZoaWSXq1mQ47LjczmWeYJPYnz4iIquet1ItPDlA+Enzv//Z',
-    img: {
-      src: 'https://i.scdn.co/image/ab67616d0000b273a33ac83de4bc24bbf75c8b60',
-      width: 640,
-      height: 640,
-      type: 'jpg',
-    },
-    slug: 'httpsiscdncoimageab67616d0000b273a33ac83de4bc24bbf75c8b60',
-    url: 'https://i.scdn.co/image/ab67616d0000b273a33ac83de4bc24bbf75c8b60',
+const IMAGE__PLACEHOLDER: IGetPlaiceholderReturnCustom = {
+  id: 'image/httpsiscdncoimageab67616d0000b273a33ac83de4bc24bbf75c8b60',
+  url: 'https://i.scdn.co/image/ab67616d0000b273a33ac83de4bc24bbf75c8b60',
+  img: {
+    src: 'https://i.scdn.co/image/ab67616d0000b273a33ac83de4bc24bbf75c8b60',
+    width: 640,
+    height: 640,
+    type: 'jpg',
   },
+  base64:
+    'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAEAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAX/xAAeEAABBQACAwAAAAAAAAAAAAADAAECBAUGERMxYf/EABUBAQEAAAAAAAAAAAAAAAAAAAEF/8QAGREBAAMBAQAAAAAAAAAAAAAAAQACAxGR/9oADAMBAAIRAxEAPwCfVt0sbj/HghwcWy5s0NghbdbzElObO79yk/r4iIquet7VFWDlQeFTyf/Z',
+  blurhash: { width: 4, height: 4, hash: 'U:FPm;tAMyxwXrS8n$o#EUS%oyWYtUozWUWs' },
 }
 
 const MOTION_PAGE_VARIANTS = {
