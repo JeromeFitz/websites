@@ -5,13 +5,11 @@ import {
   Skeleton,
 } from '@jeromefitz/design-system/components'
 import { darkTheme } from '@jeromefitz/design-system/stitches.config'
-import { IMAGE__PLACEHOLDER } from '@jeromefitz/shared/src/lib/constants'
 import type { IGetPlaiceholderReturnCustom } from '@jeromefitz/shared/src/lib/types'
 import { Gradients } from '@jeromefitz/shared/src/styles/const'
 import _isEmpty from 'lodash/isEmpty'
 import { fetcher } from 'next-notion/src/lib/fetcher'
 import * as React from 'react'
-// import { useIsomorphicLayoutEffect } from 'react-use'
 import useSWR from 'swr'
 
 import { Image, ImageBlur, ImageContainer } from './ImageLead.styles'
@@ -136,22 +134,23 @@ const ImageLead = ({ breakout = true, description, image, images }) => {
    */
   const imageSlug = !!image && Object.keys(image)[0]
   const url = !!imageSlug && image[imageSlug]?.url
-  /**
-   * @note(image)
-   * Earlier we returned an empty object if image was not within `images`
-   * With the way the render happens now, this should never happen
-   * So we've removed that for now, but if this starts showing weird images
-   *  aka the fallback, then look to put `: {}` back along with a return of
-   *  null if the `data` does not exist as this entire sequence is probably
-   *  not hit anymore.
-   */
+
   const fallbackData: IGetPlaiceholderReturnCustom =
-    !!url && !!images ? images[`image/${imageSlug}`] : IMAGE__PLACEHOLDER
+    !!url && !!images ? images[`image/${imageSlug}`] : {}
   const urlApi = !!url && _isEmpty(fallbackData) ? `/api/v1/img?url=${url}` : null
 
   const { data } = useSWR<IGetPlaiceholderReturnCustom>(urlApi, fetcher, {
     fallbackData,
   })
+
+  /**
+   * @note Verify Image Exists and is Optimized
+   */
+  const hasImage = !!data && !!data?.base64
+
+  if (!hasImage) {
+    return null
+  }
 
   const WrapComponent: React.ElementType = breakout ? Container : Section
 
