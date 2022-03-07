@@ -525,10 +525,10 @@
     shellsync "0.2.2"
     word-wrap "1.2.3"
 
-"@jeromefitz/notion@3.0.5":
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/notion/-/notion-3.0.5.tgz#f767f4e4435d86bfb527122d0c1b341116e2adcf"
-  integrity sha512-AS57UbUHy1CjEh9qpfufQ7FmIbjJdCfduIbGQi/Etc5UrinfqyRC30pgbDxzwDNC1DkbWUIIz9ClGdosp51qfQ==
+"@jeromefitz/notion@3.1.0-next-notion.2":
+  version "3.1.0-next-notion.2"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/notion/-/notion-3.1.0-next-notion.2.tgz#42f54aa7183888a1981754c2b339883101ba2df2"
+  integrity sha512-DerlfM5riB9xBSGGh7/SoIWHuoCwhjsn1TQalbiZUoG/ZrwY1rbx0YlQc8ejvG59E5+SEQ0pxpwRNLUCFlR4MQ==
   dependencies:
     "@notionhq/client" "1.0.1"
     date-fns "2.28.0"
