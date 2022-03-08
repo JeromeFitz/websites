@@ -16,6 +16,7 @@ import {
   CardTitle,
 } from '@jeromefitz/design-system/components/Card/Show'
 import type { Show } from '@jeromefitz/notion/schema'
+import { ImageWithBackgroundBlur } from '@jeromefitz/shared/src/components'
 import { IMAGE__PLACEHOLDER } from '@jeromefitz/shared/src/lib/constants'
 import type { IGetPlaiceholderReturnCustom } from '@jeromefitz/shared/src/lib/types'
 import _isEmpty from 'lodash/isEmpty'
@@ -25,7 +26,6 @@ import NextLink from 'next/link'
 import useSWR from 'swr'
 import { useSound } from 'use-sound'
 
-import { ImageWithBackgroundBlur } from '~components/Layout/ImageLead'
 import useStore from '~store/useStore'
 
 // @refactor(types)

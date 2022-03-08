@@ -172,5 +172,4 @@ const ImageLead = ({ breakout = true, description, image, images }) => {
   )
 }
 
-export { ImageSkeleton, ImageWithBackgroundBlur }
-export default ImageLead
+export { ImageLead, ImageSkeleton, ImageWithBackgroundBlur }

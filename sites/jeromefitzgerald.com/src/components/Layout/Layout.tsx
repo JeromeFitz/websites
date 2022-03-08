@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Button, Note, PageHeading } from '@jeromefitz/design-system/components'
 import { format, parseISO } from 'date-fns'
 import useSWR from 'swr'
@@ -8,8 +7,9 @@ import { nextSeo, notionConfig } from '~config/index'
 
 const { NOTION } = notionConfig
 
+// @todo(complexity) 11
 // eslint-disable-next-line complexity
-const Layout = ({ id, children, info, preview = false, routeType, url }) => {
+const Layout = ({ children, info, preview = false, routeType, url }) => {
   const { data: images } = useSWR('images')
   const { properties } = info
   if (properties === undefined) return null

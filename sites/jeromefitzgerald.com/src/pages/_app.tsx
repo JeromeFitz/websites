@@ -2,6 +2,7 @@ import '@jeromefitz/shared/src/styles/chrome.css'
 
 import { Container, Section } from '@jeromefitz/design-system/components'
 import { globalCss } from '@jeromefitz/design-system/stitches.config'
+import { ErrorBoundary, NProgress } from '@jeromefitz/shared/src/components'
 import { Providers } from '@jeromefitz/shared/src/context/Providers'
 import { useAnalytics } from '@jeromefitz/shared/src/lib/analytics'
 import { IMAGE__FALLBACKS__SHOWS } from '@jeromefitz/shared/src/lib/constants'
@@ -13,8 +14,6 @@ import pluralize from 'pluralize'
 import * as React from 'react'
 import { SWRConfig } from 'swr'
 
-import { ErrorBoundary } from '~components/ErrorBoundary'
-import NProgress from '~components/NProgress'
 /**
  * @note ignore this file for CI linting (created on next build)
  */

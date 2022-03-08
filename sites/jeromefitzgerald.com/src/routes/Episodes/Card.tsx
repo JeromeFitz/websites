@@ -17,6 +17,7 @@ import {
   CardTitle,
 } from '@jeromefitz/design-system/components/Card/Show'
 import type { Episode as EpisodeProperties } from '@jeromefitz/notion/schema'
+import { ImageWithBackgroundBlur } from '@jeromefitz/shared/src/components'
 import { IMAGE__PLACEHOLDER } from '@jeromefitz/shared/src/lib/constants'
 import type { IGetPlaiceholderReturnCustom } from '@jeromefitz/shared/src/lib/types'
 import { lpad } from '@jeromefitz/utils'
@@ -28,7 +29,6 @@ import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
 
-import { ImageWithBackgroundBlur } from '~components/Layout/ImageLead'
 import { notionConfig } from '~config/index'
 
 const notion = getNotion(notionConfig)
