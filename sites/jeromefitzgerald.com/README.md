@@ -28,14 +28,15 @@ Further breakdown from the root `README`:
 
 ### Notion
 
-This is probably why you are here. I am still in the midst of organizing the documentation for `@jeromefitz/notion` which is a Notion API Wrapper that assists with Route Management within `next`.
+This is probably why you are here. I am still in the midst of organizing the documentation for `@jeromefitz/notion` and `next-notion` which is a Notion API Wrapper that assists with Route Management within `next`.
 
 #### Configuration
 
 - `./src/config/notion.ts`
   - `PAGES__HOMEPAGE`: Currently need to hard-code the `slug` for the hompage of your app
   - `PAGES`: Currently need to hard-code which `PAGES` you want `@jeromefitz/notion` to query against when generating SSG via `next`
-  - `NOTION`: This holds all of your Notion Database Connection Information and is the setup you need to do to interfac with `@jeromefitz/notion`. For each Database Type (Notion) aka Route Type (Next):
+    - A `PAGE` in this parlance is a route-type like `website.com/[this-path]`
+  - `NOTION`: This holds all of your Notion Database Connection Information and is the setup you need to do to interface with `@jeromefitz/notion`. For each Database Type (Notion) aka Route Type (Next):
     - `active`:
     - `database_id`: Notion UUID
     - `dataTypes`: `'LISTING' | 'LISTING_BY_DATE' | 'SLUG' | 'SLUG_BY_ROUTE'`
@@ -50,24 +51,21 @@ This is probably why you are here. I am still in the midst of organizing the doc
     - `slug`: Very similar to `routeType`, this matches the `slug` or `Slug` in Notion. (Please note: This _does not_ attempt to discern `slugs` from Notion Titles, this is a specific field you set in Notion.)
     - `ttl`: How long should the cache be set for (`tbd: right now everything is 30d`)
 
+This is still being finalized and cleaned up. Like, why have `hasChild` and `isChild`? Well ... moving to `isChild` identified a pretty intense `hasChild` section that I do not want to refactor right now, haha.
+
 #### Localized Functions
 
-- `getCatchAll`: This receives values from `next` to determine what the route structure is so it can query:
-- `getStaticPathsCatchAll`: Custom function to generate paths based on `next` `[...catchAll]` routing data
-  - `getStaticPathsDefault`: Custom function to generate paths from CMS data
+Through [`next-notion`](../../packages/next-notion/README.md) we have:
+
+- `getStaticPropsCatchAll`
+- `getStaticPathsCatchAll`
+- `getPodcastFeed`
+
+“Documentation” lies with [`next-notion`](../../packages/next-notion/README.md)
 
 #### Interfaces With
 
-- `notion.custom.getPathVariables`: Determine the query structure based on `next` routing to get content from.
-  - `Cache (JSON => Redis) => Notion => Fallback (404)`
 - `notion.custom.getInfoType`: Assist function to generate links for `next` routing strategy
-
-### Caching
-
-Two forms of caching at the moment:
-
-- Localized `json` generated during build
-- Edge Key Value Storage via `Upstash`
 
 ## Disclaimer
 

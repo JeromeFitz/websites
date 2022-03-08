@@ -5,8 +5,8 @@
 ###
 
 cp package.json ./dist/
-# cp README.md ./dist/
-# cp ../../LICENSE ./dist/
+cp README.md ./dist/
+cp ../../LICENSE ./dist/
 
 ###
 # @note(build): Replace `dist/index` w/ `index`
