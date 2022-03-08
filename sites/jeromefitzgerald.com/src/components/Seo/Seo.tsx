@@ -3,7 +3,7 @@ import _merge from 'lodash/merge'
 import { NextSeo } from 'next-seo'
 import { memo } from 'react'
 
-import getNextSeo from '~config/getNextSeo'
+import { nextSeo } from '~config/seo'
 
 // @todo(multi-site)
 const url = 'https://og.jeromefitzgerald.com'
@@ -35,7 +35,7 @@ const getSeoImage = ({ image, title }) => {
 const Seo = memo(({ ...seo }: any) => {
   let newSeo: any = {}
   if (!!seo?.openGraph?.images && !!seo?.openGraph?.images[0]?.url) {
-    newSeo = _merge({}, getNextSeo, seo)
+    newSeo = _merge({}, nextSeo, seo)
   } else {
     const title = seo?.title || 'Jerome'
 
@@ -47,7 +47,7 @@ const Seo = memo(({ ...seo }: any) => {
       height: 1170,
     }
     seo.openGraph.images = [newImage]
-    newSeo = _merge({}, getNextSeo, seo)
+    newSeo = _merge({}, nextSeo, seo)
   }
 
   /**
