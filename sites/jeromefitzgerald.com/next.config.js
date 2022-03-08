@@ -146,6 +146,7 @@ const nextConfig = {
     deviceSizes: [640, 1200, 1920],
     domains: [
       `cdn.${process.env.NEXT_PUBLIC__SITE}`, // CDN
+      'cdn.jerandky.com', // CDN fallback
       'cdn.jeromefitzgerald.com', // CDN fallback
       'og.jeromefitzgerald.com', // CDN fallback for Open Graph
       'notion.so', // Notion
