@@ -38,13 +38,12 @@ const isDev = process.env.NODE_ENV === 'development'
 const cache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE === 'true' ? true : false
 const cacheOverride =
   process.env.NEXT_PUBLIC__NOTION_USE_CACHE_OVERIDE === 'true' ? true : false
-const cacheType = process.env.NEXT_PUBLIC__NOTION_CACHE || CACHE_TYPES.LOCAL
+const cacheType = process.env.NEXT_PUBLIC__NOTION_CACHE_TYPE || CACHE_TYPES.LOCAL
 
 // @todo(complexity) 17
 // eslint-disable-next-line complexity
 const getStaticPropsCatchAll = async ({ catchAll, notionConfig, preview }) => {
   const notion = getNotion(notionConfig)
-  // http://localhost:3000/api/v1/cms/blog/2020/12/28/preview-blog-post?preview=true
   const pathVariables = notion.custom.getPathVariables({ catchAll })
 
   const { slug } = pathVariables

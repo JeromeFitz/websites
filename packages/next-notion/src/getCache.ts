@@ -10,10 +10,8 @@ const cacheFile = (filename) =>
   path.join(
     process.cwd(),
     '.cache',
-    // @cache(note) add this if multi-site within same repo / folder
-    // process.env.NEXT_PUBLIC__SITE,
+    process.env.NEXT_PUBLIC__SITE,
     `${filename === '/' ? 'index' : filename}.json`
-    // `${filename === '/' ? 'index' : filename}.js`
   )
 
 const setCacheJson = (data, key) => {
