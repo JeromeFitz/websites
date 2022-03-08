@@ -32,10 +32,10 @@ const LinkInternal = (props: any) => {
   )
 }
 
-const IconLinked = (props: any) => {
+const IconLink = (props: any) => {
   const isExternal =
     _startsWith(props.href, 'http', 0) || _startsWith(props.href, 'spotify', 0)
   return isExternal ? <LinkExternal {...props} /> : <LinkInternal {...props} />
 }
 
-export default IconLinked
+export { IconLink }

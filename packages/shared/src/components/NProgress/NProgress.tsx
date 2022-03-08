@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import NProgress from 'nprogress'
 import * as React from 'react'
 
-const Progress = () => {
+const NProgressImpl = () => {
   const router = useRouter()
 
   React.useEffect(() => {
@@ -27,7 +27,7 @@ const Progress = () => {
       router.events.off('routeChangeError', done)
     }
   }, [router.events])
-  return <></>
+  return <React.Fragment />
 }
 
-export default Progress
+export { NProgressImpl as NProgress }

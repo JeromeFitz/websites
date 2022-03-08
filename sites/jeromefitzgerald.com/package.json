@@ -148,12 +148,7 @@
       "src/pages"
     ],
     "exclude": [
-      "src/data/*",
-      "src/hooks/useProgress.ts",
-      "src/lib/notion/*",
-      "src/styles/fonts/*",
-      "src/utils/isActiveLink.ts",
-      "src/utils/isElementOfType.ts"
+      "src/data/*"
     ],
     "include": [
       "src/components",
@@ -162,8 +157,9 @@
       "src/custom",
       "src/data",
       "src/hooks",
-      "src/lib",
       "src/pages",
+      "src/routes",
+      "src/store",
       "src/styles",
       "src/utils"
     ]

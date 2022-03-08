@@ -1,3 +1,5 @@
+import { Gradients } from './const'
+
 const global = {
   '*, *::before, *::after': {
     boxSizing: 'border-box',
@@ -56,7 +58,7 @@ const global = {
   },
 
   '#nprogress .bar': {
-    backgroundColor: '$hiContrast',
+    // backgroundColor: '$hiContrast',
     position: 'fixed',
     zIndex: '1001',
     top: 0,
@@ -64,6 +66,8 @@ const global = {
     width: '100%',
     height: '2px',
   },
+  '.light-theme #nprogress .bar': { backgroundImage: Gradients.light.active },
+  '.dark-theme #nprogress .bar': { backgroundImage: Gradients.dark.active },
 
   ':root': {
     '--colors-spotify-black': '#191414',
