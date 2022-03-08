@@ -165,8 +165,8 @@ const TIME = {
 const revalidate = TIME.DAY
 
 const CACHE_TYPES = {
-  REMOTE: 'remote',
-  LOCAL: 'local',
+  REDIS: 'redis',
+  JSON: 'json',
 }
 
 export { nextWeirdRoutingSkipData, revalidate, CACHE_TYPES, TIME }

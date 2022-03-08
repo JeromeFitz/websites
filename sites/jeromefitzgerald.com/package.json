@@ -15,7 +15,7 @@
   "scripts": {
     "---": "@next",
     "analyze": "ANALYZE=true yarn build",
-    "build": "CI=1 NEXT_TELEMETRY_DISABLED=1 next build",
+    "build": "CI=1 next build",
     "dev": "next dev",
     "postbuild": "next-sitemap --config next.sitemap.js",
     "start": "next start",

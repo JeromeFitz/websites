@@ -53,10 +53,10 @@ const envRequired = [
   'NOTION_API_KEY',
   'PREVIEW_TOKEN',
   'REDIS_URL',
+  'REVALIDATE_TOKEN',
   'SPOTIFY_CLIENT_ID',
   'SPOTIFY_CLIENT_SECRET',
   'SPOTIFY_REFRESH_TOKEN',
-  'VALIDATE_TOKEN',
 ]
 envRequired.map((item) => {
   if (!process.env[item]) {
