@@ -2,7 +2,7 @@ import path from 'path'
 
 import stringify from 'fast-json-stable-stringify'
 
-import { TIME } from './constants'
+import { CACHE_TYPES, TIME } from './constants'
 import { readFile, writeFileSyncRecursive } from './lib/fs-helpers'
 import redis from './lib/redis'
 
@@ -31,7 +31,7 @@ const setCacheRedis = (data, key) => {
 }
 
 const setCache = ({ cacheType, data, key }) => {
-  if (cacheType === 'remote') {
+  if (cacheType === CACHE_TYPES.REDIS) {
     setCacheRedis(data, key)
   } else {
     setCacheJson(data, key)
@@ -68,7 +68,7 @@ const getCacheRedis = async (key) => {
 
 const getCache: any = async ({ cacheType, key }) => {
   // console.dir(`getCache: ${key}`)
-  if (cacheType === 'remote') {
+  if (cacheType === CACHE_TYPES.REDIS) {
     return await getCacheRedis(key)
   } else {
     return await getCacheJson(key)
