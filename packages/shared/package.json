@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "@artsy/fresnel": "3.4.0",
-    "@jeromefitz/design-system": "3.1.0-next-notion.1",
+    "@jeromefitz/design-system": "3.1.0-next-notion.3",
     "@stitches/react": "1.2.7",
     "fathom-client": "3.4.1",
     "lodash": "4.17.21",
@@ -49,7 +49,7 @@
   },
   "devDependencies": {
     "@types/lodash": "4.14.179",
-    "@types/react": "17.0.39",
+    "@types/react": "17.0.40",
     "@types/react-dom": "17.0.13"
   },
   "type": "module",
