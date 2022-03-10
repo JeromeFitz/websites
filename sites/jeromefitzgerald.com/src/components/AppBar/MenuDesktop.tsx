@@ -1,21 +1,16 @@
 import {
-  // useToast,
-  // Box,
   DropdownMenu,
-  DropdownMenuTrigger,
+  DropdownMenuArrow,
   DropdownMenuContent,
-  DropdownMenuSeparator,
   DropdownMenuItem,
-  // DropdownMenuRadioItem,
-  // DropdownMenuCheckboxItem,
+  // DropdownMenuItemIndicator,
   DropdownMenuLabel,
-  // DropdownMenuRadioGroup,
-  // DropdownMenuGroup,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+  DropdownMenuTriggerItem,
   Flex,
   IconButton,
 } from '@jeromefitz/design-system/components'
-import { styled } from '@jeromefitz/design-system/stitches.config'
-import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
 import { ChevronRightIcon, HamburgerMenuIcon } from '@radix-ui/react-icons'
 import { useTheme } from 'next-themes'
 import * as React from 'react'
@@ -25,58 +20,7 @@ import { CommandKButton } from '~components/CommandKButton'
 import { ToggleAudio, ToggleTheme } from '~components/Toggle'
 import useStore from '~store/useStore'
 
-const itemStyles = {
-  all: 'unset',
-  fontSize: 13,
-  lineHeight: 1,
-  color: '$colors$violet11',
-  borderRadius: 3,
-  display: 'flex',
-  alignItems: 'center',
-  height: 25,
-  padding: '0 5px',
-  position: 'relative',
-  paddingLeft: 25,
-  userSelect: 'none',
-
-  '&[data-disabled]': {
-    color: '$colores$slate3',
-    pointerEvents: 'none',
-  },
-
-  '&:focus': {
-    backgroundColor: '$colors$violet9',
-    color: '$colors$violet1',
-  },
-}
-
-// const DropdownMenuItemIndicator = styled(DropdownMenuPrimitive.ItemIndicator, {
-//   position: 'absolute',
-//   left: 0,
-//   width: 25,
-//   display: 'inline-flex',
-//   alignItems: 'center',
-//   justifyContent: 'center',
-// })
-const DropdownMenuTriggerItem = styled(DropdownMenuPrimitive.TriggerItem, {
-  '&[data-state="open"]': {
-    backgroundColor: '$colors$violet4',
-    color: '$colors$violet11',
-  },
-  ...itemStyles,
-})
-const DropdownMenuArrow = styled(DropdownMenuPrimitive.Arrow, {
-  mx: '$3',
-  fill: '$panel',
-})
-const RightSlot = styled('div', {
-  marginLeft: 'auto',
-  marginRight: '$1',
-  paddingLeft: 16,
-  color: '$colors$slate11',
-  ':focus > &': { color: '$colors$hiContrast' },
-  '[data-disabled] &': { color: '$colors$slate8' },
-})
+import { RightSlot } from './Menu.styles'
 
 const MenuDesktop = ({ handleSelect, navigationNonMutated }) => {
   const { theme } = useTheme()

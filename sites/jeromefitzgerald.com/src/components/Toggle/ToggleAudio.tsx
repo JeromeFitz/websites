@@ -1,4 +1,4 @@
-import { ButtonIcon } from '@jeromefitz/design-system/components'
+import { Button, Flex, Kbd } from '@jeromefitz/design-system/components'
 import {
   Tooltip,
   TooltipTrigger,
@@ -25,6 +25,9 @@ const ToggleAudio = (props) => {
     volume,
   })
   const content = `Toggle audio ${audio ? 'off' : 'on'}`
+  const icon = audio ? <SpeakerModerateIcon /> : <SpeakerOffIcon />
+  const key1 = 't'
+  const key2 = 'a'
 
   const handleClick = React.useCallback(() => {
     audio ? playDisableSound() : playEnableSound()
@@ -34,17 +37,26 @@ const ToggleAudio = (props) => {
   return (
     <Tooltip>
       <TooltipTrigger asChild>
-        <ButtonIcon
+        <Button
           aria-label={content}
+          css={{ '&:hover': { cursor: 'pointer' } }}
           onClick={() => handleClick()}
-          cursor="pointer"
+          ghost
           {...props}
         >
-          {audio ? <SpeakerModerateIcon /> : <SpeakerOffIcon />}
-        </ButtonIcon>
+          {icon}
+        </Button>
       </TooltipTrigger>
-      <TooltipContent align="end" sideOffset={5}>
-        {content}
+      <TooltipContent
+        align="end"
+        css={{ display: 'none', '@bp1': { display: 'inline-flex' } }}
+        sideOffset={5}
+      >
+        <Flex align="center" gap="1" justify="center">
+          <span>{content}</span>
+          <Kbd>{key1}</Kbd>
+          <Kbd>{key2}</Kbd>
+        </Flex>
         <TooltipArrow offset={15} />
       </TooltipContent>
     </Tooltip>

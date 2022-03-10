@@ -1,4 +1,4 @@
-import { ButtonIcon } from '@jeromefitz/design-system/components'
+import { Button, Flex, Kbd } from '@jeromefitz/design-system/components'
 import {
   Tooltip,
   TooltipTrigger,
@@ -16,6 +16,9 @@ import useStore from '~store/useStore'
 const ToggleTheme = (props) => {
   const { theme, setTheme } = useTheme()
   const content = `Toggle theme to ${theme === 'light' ? 'dark' : 'light'}`
+  const icon = theme === 'light' ? <SunIcon /> : <MoonIcon />
+  const key1 = 't'
+  const key2 = 't'
 
   const audio = useStore.use.audio()
   const sounds = useStore.use.sounds()
@@ -38,18 +41,26 @@ const ToggleTheme = (props) => {
   return (
     <Tooltip>
       <TooltipTrigger asChild>
-        <ButtonIcon
+        <Button
           aria-label={content}
+          css={{ '&:hover': { cursor: 'pointer' } }}
           onClick={() => handleClick()}
-          cursor="pointer"
-          variant="ghost"
+          ghost
           {...props}
         >
-          {theme === 'light' ? <SunIcon /> : <MoonIcon />}
-        </ButtonIcon>
+          {icon}
+        </Button>
       </TooltipTrigger>
-      <TooltipContent align="end" sideOffset={5}>
-        {content}
+      <TooltipContent
+        align="end"
+        css={{ display: 'none', '@bp1': { display: 'inline-flex' } }}
+        sideOffset={5}
+      >
+        <Flex align="center" gap="1" justify="center">
+          <span>{content}</span>
+          <Kbd>{key1}</Kbd>
+          <Kbd>{key2}</Kbd>
+        </Flex>
         <TooltipArrow offset={15} />
       </TooltipContent>
     </Tooltip>
