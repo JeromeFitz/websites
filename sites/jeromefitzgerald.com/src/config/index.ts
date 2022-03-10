@@ -14,6 +14,7 @@ const getDynamicDatabases = (obj: DatabaseInfo) =>
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
 const DATABASES: Databases = getDynamicDatabases(NOTION)
+
 // console.dir(`____ DATABASES `)
 // console.dir(DATABASES)
 
@@ -64,11 +65,6 @@ const notionConfig = {
 
 // console.dir(`____ NOTION `)
 // console.dir(NOTION)
-
-// console.dir(NOTION['PODCASTS'].hasChild)
-// console.dir(!!NOTION['PODCASTS'].hasChild)
-// console.dir(NOTION['EPISODES'].hasChild)
-// console.dir(!!NOTION['EPISODES'].hasChild)
 
 const pluralRules = [
   { rule: /cast$/i, replacement: 'cast' },

@@ -25,10 +25,9 @@ import { darkTheme, styled } from '@jeromefitz/design-system/stitches.config'
 import { ArrowLeftIcon, ArrowRightIcon } from '@radix-ui/react-icons'
 import _map from 'lodash/map'
 import _size from 'lodash/size'
+import { fetcher } from 'next-notion/src/lib/fetcher'
 import * as React from 'react'
 import _title from 'title'
-
-import fetcher from '~lib/fetcher'
 
 import { backgrounds } from './index.props'
 

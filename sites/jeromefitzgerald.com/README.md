@@ -26,46 +26,95 @@ Further breakdown from the root `README`:
   - `swr`
   - `>` “...and more!”
 
+## Configuration
+
+Ideally, this would be a more direct configuration `json` or root file. For now, it is not.
+
+```sh
+.
+└── ./src/config/
+    ├── index.ts
+    ├── navigation.tsx
+    ├── notion.ts
+    └── seo.ts
+```
+
+### Navigation
+
+`./src/config/navigation.tsx`
+
+Kind of 🤮️ 🤮️ 🤮️ at the moment, haha.
+
+This is doing too much and is attempting to set up three modes of navigation (with links, toggles, icons, ...):
+
+- `kbar` aka Command Center Navigation (not available on Mobile)
+  - In process of design refactor with potential for Mobile use
+- `mobile` which is a Sheet Component for Mobile Devices
+- `desktop` which is a Dropdown Menu for non-Mobile Devices
+  - In process of moving to new Navigation Menu
+
 ### Notion
 
-This is probably why you are here. I am still in the midst of organizing the documentation for `@jeromefitz/notion` which is a Notion API Wrapper that assists with Route Management within `next`.
+`./src/config/notion.ts`
 
-#### Configuration
+This is probably why you are here. I am still in the midst of organizing the documentation for `@jeromefitz/notion` and `next-notion` which is a Notion API Wrapper that assists with Route Management within `next`.
 
-- `./src/config/notion.ts`
-  - `PAGES__HOMEPAGE`: Currently need to hard-code the `slug` for the hompage of your app
-  - `PAGES`: Currently need to hard-code which `PAGES` you want `@jeromefitz/notion` to query against when generating SSG via `next`
-  - `NOTION`: This holds all of your Notion Database Connection Information and is the setup you need to do to interfac with `@jeromefitz/notion`. For each Database Type (Notion) aka Route Type (Next):
-    - `active`:
-    - `database_id`: Notion UUID
-    - `dataTypes`: `'LISTING' | 'LISTING_BY_DATE' | 'SLUG' | 'SLUG_BY_ROUTE'`
-    - `hasChild`: Does this route have a route underneath it? `PODCASTS => EPISODES`
-    - `name`
-    - `page_id__seo`: Notion Page UUID from specific Data Item from `SEO` Database
-    - `routeMeta`: Does the `next` route contain meta that is useful to Notion? (`blog|events|podcasts`)
-    - `routeType`: What is the `routeType` called in `next` (`/shows`)
-    - `slug`: Very similar to `routeType`, this matches the `slug` or `Slug` in Notion. (Please note: This _does not_ attempt to discern `slugs` from Notion Titles, this is a specific field you set in Notion.)
-    - `infoType`: Is there a specific field that informs what type this is for Notion Querying purposes? (`EVENTS => dateEvent`, `BLOG => datePublished`)
-    - `ttl`: How long should the cache be set for
+The eventual export is:
+
+```tsx
+export { NOTION, PAGES__HOMEPAGE, PAGES }
+```
+
+We get there through:
+
+- `PAGES__HOMEPAGE`: Currently need to hard-code the `slug` for the hompage of your app
+- `PAGES`: Currently need to hard-code which `PAGES` you want `@jeromefitz/notion` to query against when generating SSG via `next`
+  - A `PAGE` in this parlance is a route-type like `website.com/[this-path]`
+- `NOTION`: This holds all of your Notion Database Connection Information and is the setup you need to do to interface with `@jeromefitz/notion`. For each Database Type (Notion) aka Route Type (Next):
+  - `active`:
+  - `database_id`: Notion UUID
+  - `dataTypes`: `'LISTING' | 'LISTING_BY_DATE' | 'SLUG' | 'SLUG_BY_ROUTE'`
+  - `hasChild`: Does this route have a route underneath it? `PODCASTS => EPISODES`
+  - `infoType`: Is there a specific field that informs what type this is for Notion Querying purposes? (`EVENTS => dateEvent`, `BLOG => datePublished`)
+  - `isChild`: Is this route a Child? If so share its Parent here: `EPISODES => PODCASTS`
+  - `isChildInfoType`: Is this route a Child? If so share specific field that informs where we should get its Parent slug for `getStaticPaths` (`EPISODES -> PROPERTIES.rollupEpisodes__PodcastsSlugs`)
+  - `name`
+  - `page_id__seo`: Notion Page UUID from specific Data Item from `SEO` Database
+  - `routeMeta`: Does the `next` route contain meta that is useful to Notion? (`blog|events|podcasts`)
+  - `routeType`: What is the `routeType` called in `next` (`/shows`)
+  - `slug`: Very similar to `routeType`, this matches the `slug` or `Slug` in Notion. (Please note: This _does not_ attempt to discern `slugs` from Notion Titles, this is a specific field you set in Notion.)
+  - `ttl`: How long should the cache be set for (`tbd: right now everything is 30d`)
+
+This is still being finalized and cleaned up. Like, why have `hasChild` and `isChild`? Well ... moving to `isChild` identified a pretty intense `hasChild` section that I do not want to refactor right now, haha.
+
+Would be good to introduce dynamic generation of this if possible. There are kind of two modes to this:
+
+1. New Notion Sites with Next
+2. Existing Notion Sites with Next
+
+The former you can use to generate and get all the `UUIDs` in an instant, the latter you have to do some manual setup.
+
+This was available in the earliest rendition of all of this pre-Notion API.
 
 #### Localized Functions
 
-- `getCatchAll`: This receives values from `next` to determine what the route structure is so it can query:
-- `getStaticPathsCatchAll`: Custom function to generate paths based on `next` `[...catchAll]` routing data
-  - `getStaticPathsDefault`: Custom function to generate paths from CMS data
+Through [`next-notion`](../../packages/next-notion/README.md) we have:
+
+- `getStaticPropsCatchAll`
+- `getStaticPathsCatchAll`
+- `getPodcastFeed`
+
+“Documentation” lies with [`next-notion`](../../packages/next-notion/README.md)
 
 #### Interfaces With
 
-- `notion.custom.getPathVariables`: Determine the query structure based on `next` routing to get content from.
-  - `Cache (JSON => Redis) => Notion => Fallback (404)`
 - `notion.custom.getInfoType`: Assist function to generate links for `next` routing strategy
 
-### Caching
+### Seo
 
-Two forms of caching at the moment:
+`./src/config/seo.ts`
 
-- Localized `json` generated during build
-- Edge Key Value Storage via `Upstash`
+We use `next-seo` and this sets the base for use within the `Seo` component.
 
 ## Disclaimer
 

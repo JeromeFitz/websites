@@ -13,11 +13,11 @@ import _map from 'lodash/map'
 import _size from 'lodash/size'
 // import _sortBy from 'lodash/sortBy'
 import _startsWith from 'lodash/startsWith'
+import { fetcher } from 'next-notion/src/lib/fetcher'
 import pluralize from 'pluralize'
 import useSWRImmutable from 'swr/immutable'
 
 import { notionConfig } from '~config/index'
-import fetcher from '~lib/fetcher'
 
 const { NOTION } = notionConfig
 

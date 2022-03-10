@@ -15,6 +15,7 @@ import {
   TooltipContent,
   TooltipArrow,
 } from '@jeromefitz/design-system/custom/Tooltip'
+import { IconLink } from '@jeromefitz/shared/src/components'
 import {
   ExternalLinkIcon,
   // ChatBubbleIcon,
@@ -29,7 +30,6 @@ import NextLink from 'next/link'
 import * as React from 'react'
 import { useSound } from 'use-sound'
 
-import IconLink from '~components/IconLink'
 /**
  * @note ignore this file for CI linting (created on next build)
  */
@@ -48,9 +48,12 @@ const Emoji = dynamic(
   }
 )
 
-const NowPlaying = dynamic(() => import('~components/NowPlaying'), {
-  ssr: false,
-})
+const NowPlaying = dynamic(
+  () => import('~components/Music').then((mod: any) => mod.NowPlaying),
+  {
+    ssr: false,
+  }
+)
 
 /**
  * @note inline navigation data

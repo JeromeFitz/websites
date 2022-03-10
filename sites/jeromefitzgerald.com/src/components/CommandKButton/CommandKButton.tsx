@@ -1,4 +1,4 @@
-import { Button, Kbd } from '@jeromefitz/design-system/components'
+import { Button, Flex, Kbd, Text } from '@jeromefitz/design-system/components'
 import {
   Tooltip,
   TooltipTrigger,
@@ -13,7 +13,11 @@ function CommandKButton() {
   const { query } = useKBar()
   const os = useOs()
 
-  const commandKey = os == 'macos' ? '⌘' : 'ctrl'
+  const content = 'Command Menu'
+  const icon = <Text as="span">⌘</Text>
+  const key1 = os === 'macos' ? '⌘' : 'ctrl'
+  const key2 = 'k'
+
   return (
     <Tooltip>
       <TooltipTrigger asChild>
@@ -29,30 +33,19 @@ function CommandKButton() {
           }
           ghost
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            // className="h-3.5 w-3.5 text-gray-600 dark:text-gray-300"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            style={{
-              height: '1rem',
-              width: '1rem',
-            }}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"
-            ></path>
-          </svg>
+          {icon}
         </Button>
       </TooltipTrigger>
-      <TooltipContent align="end" sideOffset={5}>
-        <>
-          Command Menu <Kbd>{commandKey}</Kbd> + <Kbd>k</Kbd>
-        </>
+      <TooltipContent
+        align="end"
+        css={{ display: 'none', '@bp1': { display: 'inline-flex' } }}
+        sideOffset={5}
+      >
+        <Flex align="center" gap="1" justify="center">
+          <span>{content}</span>
+          <Kbd>{key1}</Kbd>
+          <Kbd>{key2}</Kbd>
+        </Flex>
         <TooltipArrow offset={15} />
       </TooltipContent>
     </Tooltip>

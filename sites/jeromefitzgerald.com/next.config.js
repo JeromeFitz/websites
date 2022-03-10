@@ -10,7 +10,11 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 })
 const { withPlaiceholder } = require('@plaiceholder/next')
 const { withPlugins } = require('next-compose-plugins')
-const withTM = require('next-transpile-modules')(['@jeromefitz/design-system'])
+const withTM = require('next-transpile-modules')([
+  '@jeromefitz/design-system',
+  '@jeromefitz/shared',
+  'next-notion',
+])
 
 const { withBuildInfo } = require('./scripts/buildInfo')
 // const getRedirects = require('./config/notion/website/getRedirects')
@@ -29,7 +33,6 @@ const externals = [
   'kbar',
   'react',
   'react-dom',
-  'react-hot-toast',
   'swr',
 ]
 const messagesDebug = [
@@ -38,21 +41,32 @@ const messagesDebug = [
   `warn  - 🖼️  @jeromefitz/design-system`,
 ]
 
-if (!process.env.NEXT_PUBLIC__SITE) {
-  throw new Error('process.env.NEXT_PUBLIC__SITE is not set in env')
-}
-
-// @hack(dynamic) hack way to ensure when we build we are doing the right site
-const urlBaseCheck = 'jeromefitzgerald.com'
-// const urlBaseCheck = 'jerandky.com'
-if (process.env.NEXT_PUBLIC__SITE !== urlBaseCheck) {
-  throw new Error(`process.env.NEXT_PUBLIC__SITE is not: ${urlBaseCheck}`)
-}
+/**
+ * @note The following environment variables are required
+ */
+const envRequired = [
+  'GH_TOKEN',
+  'NEXT_PUBLIC__FATHOM_CUSTOM_DOMAIN',
+  'NEXT_PUBLIC__FATHOM_SITE_ID',
+  'NEXT_PUBLIC__SITE',
+  'NOTION_API_KEY',
+  'PREVIEW_TOKEN',
+  'REDIS_URL',
+  'REVALIDATE_TOKEN',
+  'SPOTIFY_CLIENT_ID',
+  'SPOTIFY_CLIENT_SECRET',
+  'SPOTIFY_REFRESH_TOKEN',
+]
+envRequired.map((item) => {
+  if (!process.env[item]) {
+    throw new Error(`process.env.${item} is not set in env`)
+  }
+})
 
 // https://securityheaders.com
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' *.youtube.com *.twitter.com cdn.usefathom.com *.jerandky.com *.jeromefitzgerald.com;
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' data: *.youtube.com *.twitter.com cdn.usefathom.com *.${process.env.NEXT_PUBLIC__SITE};
   child-src *.youtube.com *.google.com *.twitter.com *.spotify.com;
   style-src 'self' 'unsafe-inline' *.googleapis.com;
   img-src 'self' * blob: data:;
@@ -130,19 +144,15 @@ const nextConfig = {
     // deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     deviceSizes: [640, 1200, 1920],
     domains: [
-      'cdn.jerandky.com', // CDN
-      'cdn.jeromefitzgerald.com', // CDN
-      'og.jeromefitzgerald.com', // CDN for Open Graph
+      `cdn.${process.env.NEXT_PUBLIC__SITE}`, // CDN
+      'cdn.jerandky.com', // CDN fallback
+      'cdn.jeromefitzgerald.com', // CDN fallback
+      'og.jeromefitzgerald.com', // CDN fallback for Open Graph
       'notion.so', // Notion
       'www.notion.so', // Notion
       's3-us-west-2.amazonaws.com', // AWS
-      'cdn.aglty.io', // Agility
-      'i.scdn.co', // Spotify Album Art
-      'images.ctfassets.net', // Contentful
-      'images.prismic.io', // Prismic
-      'pbs.twimg.com', // Twitter Profile Picture
-      'www.datocms-assets.com', // DataO
-      'tailwindcss.com', // Tailwind
+      'i.scdn.co', // Spotify
+      'pbs.twimg.com', // Twitter
       'images.unsplash.com', // Unsplash
     ],
     formats: ['image/avif', 'image/webp'],
@@ -175,9 +185,10 @@ const nextConfig = {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     // if (!isServer) {
-    //   config.node = {
-    //     fs: 'empty',
-    //   }
+    //   config.externals = [
+    //     ...config.externals,
+    //     ...['child_process', 'dns', 'fs', 'net', 'tls'],
+    //   ]
     // }
     if (isLocal) {
       messagesDebug.map((msg) => console.debug(msg))

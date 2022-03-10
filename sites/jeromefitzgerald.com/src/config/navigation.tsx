@@ -10,6 +10,10 @@ import {
   TicketIcon,
 } from '@heroicons/react/outline'
 import {
+  cssIconHeroToRadix,
+  cssIconHeroToRadix1,
+} from '@jeromefitz/shared/src/lib/constants'
+import {
   CalendarIcon,
   EnvelopeOpenIcon,
   ExternalLinkIcon,
@@ -31,8 +35,6 @@ import {
   TwitterLogoIcon,
 } from '@radix-ui/react-icons'
 import * as React from 'react'
-
-import { cssIconHeroToRadix, cssIconHeroToRadix1 } from '~lib/constants'
 
 interface INavigationItem {
   icon?: React.ReactElement
@@ -87,7 +89,8 @@ const navigation: INavigation = {
     title: 'Menu',
     type: 'url.internal',
     url: '/events',
-    subtitle: '‎',
+    // subtitle: '‎',
+    subtitle: null,
     settings: {
       sheet: { active: true, children: true },
       dropdown: {
@@ -135,7 +138,8 @@ const navigation: INavigation = {
     title: 'Shows',
     type: 'url.internal',
     url: '/shows',
-    subtitle: '‎',
+    // subtitle: '‎',
+    subtitle: null,
     settings: {
       sheet: { active: true, children: false },
       dropdown: { inline: false, label: true, separator: false },
@@ -199,7 +203,8 @@ const navigation: INavigation = {
     title: 'Podcasts',
     type: 'url.internal',
     url: '/podcasts',
-    subtitle: '‎',
+    // subtitle: '‎',
+    subtitle: null,
     settings: {
       sheet: { active: true, children: false },
       dropdown: { inline: false, label: true, separator: true },
@@ -214,7 +219,8 @@ const navigation: INavigation = {
           <MicrophoneIcon className="hi2ri" style={cssIconHeroToRadix} />
         ),
         separator: false,
-        subtitle: '‎',
+        // subtitle: '‎',
+        subtitle: null,
         type: 'url.internal',
       },
       {
@@ -226,7 +232,8 @@ const navigation: INavigation = {
           <MicrophoneIcon className="hi2ri" style={cssIconHeroToRadix} />
         ),
         separator: true,
-        subtitle: '‎',
+        // subtitle: '‎',
+        subtitle: null,
         type: 'url.internal',
       },
       {
@@ -245,7 +252,8 @@ const navigation: INavigation = {
     title: 'Pages',
     type: 'url.internal',
     url: '/',
-    subtitle: '‎',
+    // subtitle: '‎',
+    subtitle: null,
     settings: {
       sheet: { active: true, children: true },
       dropdown: { inline: true, label: false, separator: true },
@@ -256,7 +264,8 @@ const navigation: INavigation = {
         title: 'About',
         url: '/about',
         icon: <IdCardIcon />,
-        subtitle: '‎',
+        // subtitle: '‎',
+        subtitle: null,
         type: 'url.internal',
       },
       {
@@ -267,7 +276,8 @@ const navigation: INavigation = {
         iconKbarOverride: (
           <BookOpenIcon className="hi2ri" style={cssIconHeroToRadix} />
         ),
-        subtitle: '‎',
+        // subtitle: '‎',
+        subtitle: null,
         type: 'url.internal',
       },
       {
@@ -275,7 +285,8 @@ const navigation: INavigation = {
         title: 'Colophon',
         url: '/colophon',
         icon: <InfoCircledIcon />,
-        subtitle: '‎',
+        // subtitle: '‎',
+        subtitle: null,
         type: 'url.internal',
       },
       {
@@ -283,7 +294,8 @@ const navigation: INavigation = {
         title: 'Homepage',
         url: '/',
         icon: <HomeIcon />,
-        subtitle: '‎',
+        // subtitle: '‎',
+        subtitle: null,
         keywords: 'home index',
         type: 'url.internal',
       },
@@ -295,7 +307,8 @@ const navigation: INavigation = {
         iconKbarOverride: (
           <MusicNoteIcon className="hi2ri" style={cssIconHeroToRadix} />
         ),
-        subtitle: '‎',
+        // subtitle: '‎',
+        subtitle: null,
         type: 'url.internal',
       },
     ],
@@ -307,7 +320,8 @@ const navigation: INavigation = {
     order: 40,
     title: 'Social',
     type: 'social',
-    subtitle: '‎',
+    // subtitle: '‎',
+    subtitle: null,
     settings: {
       sheet: { active: false, children: false },
       dropdown: { inline: false, label: true, separator: false },
@@ -371,7 +385,8 @@ const navigation: INavigation = {
     order: 50,
     title: 'Settings',
     type: 'settings',
-    subtitle: '‎',
+    // subtitle: '‎',
+    subtitle: null,
     settings: {
       sheet: { active: true, children: true },
       dropdown: { inline: false, label: true, separator: false },
@@ -389,7 +404,8 @@ const navigation: INavigation = {
         },
         keywords: 'Sound Off On',
         shortcut: ['t', 'a'],
-        subtitle: '‎',
+        // subtitle: '‎',
+        subtitle: null,
         type: 'audio',
       },
       {
@@ -404,7 +420,8 @@ const navigation: INavigation = {
         },
         keywords: 'Theme Light Dark Off On',
         shortcut: ['t', 't'],
-        subtitle: '‎',
+        // subtitle: '‎',
+        subtitle: null,
         type: 'theme',
       },
     ],

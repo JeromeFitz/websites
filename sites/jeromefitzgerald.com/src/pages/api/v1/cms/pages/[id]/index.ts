@@ -3,14 +3,16 @@
 import dataNormalized from '@jeromefitz/notion/utils/dataNormalized'
 import { avoidRateLimit, sortObject } from '@jeromefitz/utils'
 import { NextApiRequest, NextApiResponse } from 'next'
+import { getCacheJson, setCacheJson } from 'next-notion/src/getCache'
+import { getNotion } from 'next-notion/src/helper'
 
-import { notionConfig as config } from '~config/index'
-import { getCacheJson, setCacheJson } from '~lib/notion/getCache'
-import { notion } from '~lib/notion/helper'
+import { notionConfig } from '~config/index'
 // import omitFields from '~lib/notion/omitFields'
 
 // const useCache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE
 const useCache = false
+
+const notion = getNotion(notionConfig)
 
 const notionPagesId = async (req: NextApiRequest, res: NextApiResponse) => {
   // console.dir(`notionPagesId`)
@@ -37,7 +39,7 @@ const notionPagesId = async (req: NextApiRequest, res: NextApiResponse) => {
     })
     data = sortObject(
       dataNormalized({
-        config,
+        config: notionConfig,
         data: contentData,
         pathVariables: null,
         pageId: page_id,

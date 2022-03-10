@@ -1,0 +1,66 @@
+{
+  "name": "@jeromefitz/shared",
+  "version": "0.0.0",
+  "author": {
+    "name": "Jerome Fitzgerald",
+    "email": "j@jeromefitzgerald.com",
+    "url": "https://jeromefitzgerald.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com/jeromefitz/websites.git",
+    "directory": "packages/shared"
+  },
+  "scripts": {
+    "---": "@tsup",
+    "build": "tsup-node",
+    "dev": "tsup-node --watch",
+    "--- ": "",
+    "clean": "rm -rf .turbo && rm -rf dist",
+    "clean:install": "yarn clean && rm -rf node_modules",
+    "copy": "mkdir -p ./dist && ./scripts/copy.sh",
+    "---  ": "@lint",
+    "lint:eslint": "eslint ./src --ext cjs,js,jsx,mjs,ts,tsx --max-warnings=0",
+    "lint:prettier": "prettier \"./src/**/*.{cjs,js,jsx,mjs,ts,tsx,json,md,mdx,css,html,yml,yaml,scss}\" --ignore-unknown --loglevel warn",
+    "lint:typescript": "tsc --noEmit --declaration",
+    "lint": "yarn lint:prettier --check && yarn lint:eslint && yarn lint:typescript",
+    "lint:fix": "yarn lint:eslint --fix && yarn lint:prettier --write",
+    "---   ": "@release",
+    "semantic-release": "echo semantic-release",
+    "semantic-release:mono": "echo semantic-release -e semantic-release-monorepo",
+    "---    ": "",
+    "---     ": "",
+    "test": "echo # jest",
+    "---      ": ""
+  },
+  "dependencies": {
+    "@artsy/fresnel": "3.4.0",
+    "@jeromefitz/design-system": "3.1.0-next-notion.3",
+    "@stitches/react": "1.2.7",
+    "fathom-client": "3.4.1",
+    "lodash": "4.17.21",
+    "next": "12.1.1-canary.6",
+    "next-themes": "0.1.1",
+    "plaiceholder": "2.3.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "swr": "1.2.2"
+  },
+  "devDependencies": {
+    "@types/lodash": "4.14.179",
+    "@types/react": "17.0.40",
+    "@types/react-dom": "17.0.13"
+  },
+  "type": "module",
+  "sideEffects": false,
+  "typings": "./dist/index.d.ts",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist/**"
+  ]
+}
