@@ -4,7 +4,7 @@ import { getStaticPropsCatchAll } from 'next-notion/src/getStaticPropsCatchAll'
 import { fetcher } from 'next-notion/src/lib/fetcher'
 import useSWR from 'swr'
 
-import { Page } from '~components/Layout'
+import { Page } from '~components/Page'
 import { notionConfig } from '~config/index'
 
 const { PAGES__HOMEPAGE } = notionConfig

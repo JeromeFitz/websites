@@ -3,7 +3,7 @@ import { ERROR__FALLBACK } from '@jeromefitz/shared/src/lib/constants'
 import { getNextPageStatus } from 'next-notion/src/utils'
 import dynamic from 'next/dynamic'
 
-import Layout from '~components/Layout'
+import { Layout } from '~components/Layout'
 import { getRouterNode } from '~routes/index'
 
 const IndexShowListing = dynamic(() => import('~custom/IndexShowListing'), {
@@ -64,7 +64,7 @@ const Page = ({ ...props }) => {
 
   return (
     <Layout
-      id={info.id}
+      // id={info.id}
       info={info}
       preview={preview}
       routeType={routeType}
@@ -76,4 +76,4 @@ const Page = ({ ...props }) => {
   )
 }
 
-export default Page
+export { Page }
