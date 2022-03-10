@@ -369,6 +369,18 @@
   dependencies:
     "@cspotcode/source-map-consumer" "0.8.0"
 
+"@emotion/is-prop-valid@^0.8.2":
+  version "0.8.8"
+  resolved "https://registry.yarnpkg.com/@emotion/is-prop-valid/-/is-prop-valid-0.8.8.tgz#db28b1c4368a259b60a97311d6a952d4fd01ac1a"
+  integrity sha512-u5WtneEAr5IDG2Wv65yhunPSMLIpuKsbuOktRojfrEiEvRyC85LgPMZI63cr7NUqT8ZIGdSVg8ZKGxIug4lXcA==
+  dependencies:
+    "@emotion/memoize" "0.7.4"
+
+"@emotion/memoize@0.7.4":
+  version "0.7.4"
+  resolved "https://registry.yarnpkg.com/@emotion/memoize/-/memoize-0.7.4.tgz#19bf0f5af19149111c40d98bb0cf82119f5d9eeb"
+  integrity sha512-Ja/Vfqe3HpuzRsG1oBtWTHk2PGZ7GR+2Vz5iYGelAw8dx32K0y7PjVuxK6z1nMpZOqAFsRUPCkK1YjJ56qJlgw==
+
 "@eslint/eslintrc@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@eslint/eslintrc/-/eslintrc-1.2.0.tgz#7ce1547a5c46dfe56e1e45c3c9ed18038c721c6a"
@@ -461,10 +473,10 @@
     semantic-release "19.0.2"
     title "3.4.4"
 
-"@jeromefitz/design-system@3.0.2":
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/design-system/-/design-system-3.0.2.tgz#7034027704a069b05c0892cd355893a6217479cb"
-  integrity sha512-HUKv9BrqPd0hEZnAVOsIQKEL/ZKo0qRyWLAvEqSVSPN5ANKMNgyxKafOV0Zng+f7P/GlI+1XK3EmagjW12U8aw==
+"@jeromefitz/design-system@3.1.0-next-notion.1":
+  version "3.1.0-next-notion.1"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/design-system/-/design-system-3.1.0-next-notion.1.tgz#63a566bb3926b7dff4b30fab63e609b8da615b51"
+  integrity sha512-zK07qIeawnqXj6udyLtVxkoqP6HkxTYJpUxrbpIrzoUqN+jSmHIKWtgOQSpzY+KNiEh+fOmpiCua6jdDwyYU4Q==
   dependencies:
     "@mantine/hooks" "3.6.14"
     "@radix-ui/colors" "0.1.8"
@@ -499,12 +511,11 @@
     "@radix-ui/react-visually-hidden" "0.1.4"
     "@react-aria/interactions" "3.8.1"
     "@stitches/react" "1.2.7"
-    emoji-api "2.0.1"
     emoji-regex "10.0.0"
-    kbar "0.1.0-beta.27"
+    framer-motion "6.2.8"
+    kbar "0.1.0-beta.28"
     lodash "4.17.21"
     node-emoji "1.11.0"
-    react-hot-toast "2.2.0"
     react-use "17.3.2"
     smoothscroll-polyfill "0.4.4"
     swr "1.2.2"
@@ -4765,6 +4776,26 @@ form-data@^4.0.0:
     combined-stream "^1.0.8"
     mime-types "^2.1.12"
 
+framer-motion@6.2.8:
+  version "6.2.8"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-6.2.8.tgz#02abb529191af7e2df444185fe27e932215b715d"
+  integrity sha512-4PtBWFJ6NqR350zYVt9AsFDtISTqsdqna79FvSYPfYDXuuqFmiKtZdkTnYPslnsOMedTW0pEvaQ7eqjD+sA+HA==
+  dependencies:
+    framesync "6.0.1"
+    hey-listen "^1.0.8"
+    popmotion "11.0.3"
+    style-value-types "5.0.0"
+    tslib "^2.1.0"
+  optionalDependencies:
+    "@emotion/is-prop-valid" "^0.8.2"
+
+framesync@6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/framesync/-/framesync-6.0.1.tgz#5e32fc01f1c42b39c654c35b16440e07a25d6f20"
+  integrity sha512-fUY88kXvGiIItgNC7wcTOl0SNRCVXMKSWW2Yzfmn7EKNc+MpCzcz9DhdHcdjbrtN3c6R4H5dTY2jiCpPdysEjA==
+  dependencies:
+    tslib "^2.1.0"
+
 from2@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/from2/-/from2-2.3.0.tgz#8bfb5502bde4a4d36cfdeea007fcca21d7e382af"
@@ -5023,11 +5054,6 @@ gonzales-pe@^4.2.3:
   dependencies:
     minimist "^1.2.5"
 
-goober@^2.1.1:
-  version "2.1.7"
-  resolved "https://registry.yarnpkg.com/goober/-/goober-2.1.7.tgz#5b1e742a9c7014ba8586a49f2df18d539410e679"
-  integrity sha512-aCR8u3A/tTgSrZAHfJObhYC0xgdKoYm4GvE/UFmxmzgvj3TSF+3oFYWtmJ459WBewjOIoEsoOG81sDs1rn+W5w==
-
 graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.2.0, graceful-fs@^4.2.4, graceful-fs@^4.2.6, graceful-fs@^4.2.8, graceful-fs@^4.2.9:
   version "4.2.9"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.9.tgz#041b05df45755e587a24942279b9d113146e1c96"
@@ -5112,6 +5138,11 @@ has@^1.0.3:
   integrity sha512-f2dvO0VU6Oej7RkWJGrehjbzMAjFp5/VKPp5tTpWIV4JHHZK1/BxbFRtf/siA2SWTe09caDmVtYYzWEIbBS4zw==
   dependencies:
     function-bind "^1.1.1"
+
+hey-listen@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/hey-listen/-/hey-listen-1.0.8.tgz#8e59561ff724908de1aa924ed6ecc84a56a9aa68"
+  integrity sha512-COpmrF2NOg4TBWUJ5UVyaCU2A88wEMkUPK4hNqyCkqHbxT92BbvfjoSozkAIIm6XhicGlJHhFdullInrdhwU8Q==
 
 hook-std@^2.0.0:
   version "2.0.0"
@@ -6319,10 +6350,10 @@ just-diff@^5.0.1:
   resolved "https://registry.yarnpkg.com/just-diff/-/just-diff-5.0.1.tgz#db8fe1cfeea1156f2374bfb289826dca28e7e390"
   integrity sha512-X00TokkRIDotUIf3EV4xUm6ELc/IkqhS/vPSHdWnsM5y0HoNMfEqrazizI7g78lpHvnRSRt/PFfKtRqJCOGIuQ==
 
-kbar@0.1.0-beta.27:
-  version "0.1.0-beta.27"
-  resolved "https://registry.yarnpkg.com/kbar/-/kbar-0.1.0-beta.27.tgz#6fec637054599dc4c6aa5a0cfc4042a50b3e32d1"
-  integrity sha512-4knRJxDQqx3LUduhjuJh9EDGxnFpaQKjXt11UOsjKQ4ByXTTQpPjfAaKagVcTp9uVwEXGDhvGrsGbMfrI+6/Kg==
+kbar@0.1.0-beta.28:
+  version "0.1.0-beta.28"
+  resolved "https://registry.yarnpkg.com/kbar/-/kbar-0.1.0-beta.28.tgz#35bcf1d45996f5b0cf32f4f70f673c97dc67a1f8"
+  integrity sha512-JmwZUO8fG1irDWqYIUKnoaAXT6t0QxCbmAEBNgHgXWeYFmk9CvhFWwAiFxtSfVX7d+efSTUf93KVrcd2Y61Zaw==
   dependencies:
     "@reach/portal" "^0.16.0"
     fast-equals "^2.0.3"
@@ -7892,6 +7923,16 @@ podcast@2.0.0:
   dependencies:
     rss "^1.2.2"
 
+popmotion@11.0.3:
+  version "11.0.3"
+  resolved "https://registry.yarnpkg.com/popmotion/-/popmotion-11.0.3.tgz#565c5f6590bbcddab7a33a074bb2ba97e24b0cc9"
+  integrity sha512-Y55FLdj3UxkR7Vl3s7Qr4e9m0onSnP8W7d/xQLsoJM40vs6UKHFdygs6SWryasTZYqugMjm3BepCF4CWXDiHgA==
+  dependencies:
+    framesync "6.0.1"
+    hey-listen "^1.0.8"
+    style-value-types "5.0.0"
+    tslib "^2.1.0"
+
 postcss-load-config@^3.0.1:
   version "3.1.3"
   resolved "https://registry.yarnpkg.com/postcss-load-config/-/postcss-load-config-3.1.3.tgz#21935b2c43b9a86e6581a576ca7ee1bde2bd1d23"
@@ -8167,13 +8208,6 @@ react-dom@17.0.2:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     scheduler "^0.20.2"
-
-react-hot-toast@2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/react-hot-toast/-/react-hot-toast-2.2.0.tgz#ab6f4caed4214b9534f94bb8cfaaf21b051e62b9"
-  integrity sha512-248rXw13uhf/6TNDVzagX+y7R8J183rp7MwUMNkcrBRyHj/jWOggfXTGlM8zAOuh701WyVW+eUaWG2LeSufX9g==
-  dependencies:
-    goober "^2.1.1"
 
 react-is@^16.13.1:
   version "16.13.1"
@@ -9158,6 +9192,14 @@ strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
   integrity sha1-PFMZQukIwml8DsNEhYwobHygpgo=
+
+style-value-types@5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/style-value-types/-/style-value-types-5.0.0.tgz#76c35f0e579843d523187989da866729411fc8ad"
+  integrity sha512-08yq36Ikn4kx4YU6RD7jWEv27v4V+PUsOGa4n/as8Et3CuODMJQ00ENeAVXAeydX4Z2j1XHZF1K2sX4mGl18fA==
+  dependencies:
+    hey-listen "^1.0.8"
+    tslib "^2.1.0"
 
 styled-jsx@5.0.0:
   version "5.0.0"

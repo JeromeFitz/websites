@@ -42,7 +42,7 @@
   "dependencies": {
     "@artsy/fresnel": "3.4.0",
     "@heroicons/react": "1.0.6",
-    "@jeromefitz/design-system": "3.0.2",
+    "@jeromefitz/design-system": "3.1.0-next-notion.1",
     "@jeromefitz/notion": "3.1.0-next-notion.2",
     "@jeromefitz/shared": "*",
     "@jeromefitz/spotify": "2.1.6",
@@ -90,7 +90,7 @@
     "github-slugger": "1.4.0",
     "immer": "9.0.12",
     "ioredis": "4.28.5",
-    "kbar": "0.1.0-beta.27",
+    "kbar": "0.1.0-beta.28",
     "ms": "3.0.0-canary.1",
     "next": "12.1.1-canary.6",
     "next-compose-plugins": "2.2.1",

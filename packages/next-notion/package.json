@@ -35,7 +35,7 @@
     "---      ": ""
   },
   "dependencies": {
-    "@jeromefitz/design-system": "3.0.2",
+    "@jeromefitz/design-system": "3.1.0-next-notion.1",
     "@jeromefitz/notion": "3.1.0-next-notion.2",
     "@jeromefitz/utils": "2.0.1",
     "@radix-ui/react-checkbox": "0.1.5",
