@@ -1,4 +1,4 @@
-import { Button, Kbd, Text } from '@jeromefitz/design-system/components'
+import { Button, Flex, Kbd, Text } from '@jeromefitz/design-system/components'
 import {
   Tooltip,
   TooltipTrigger,
@@ -13,7 +13,11 @@ function CommandKButton() {
   const { query } = useKBar()
   const os = useOs()
 
-  const commandKey = os == 'macos' ? '⌘' : 'ctrl'
+  const content = 'Command Menu'
+  const icon = <Text as="span">⌘</Text>
+  const key1 = os === 'macos' ? '⌘' : 'ctrl'
+  const key2 = 'k'
+
   return (
     <Tooltip>
       <TooltipTrigger asChild>
@@ -29,15 +33,19 @@ function CommandKButton() {
           }
           ghost
         >
-          <Text as="span">⌘</Text>
+          {icon}
         </Button>
       </TooltipTrigger>
-      <TooltipContent align="end" sideOffset={5}>
-        <>
-          Command Menu <Kbd>{commandKey}</Kbd>
-          {` `}
-          <Kbd>k</Kbd>
-        </>
+      <TooltipContent
+        align="end"
+        css={{ display: 'none', '@bp1': { display: 'inline-flex' } }}
+        sideOffset={5}
+      >
+        <Flex align="center" gap="1" justify="center">
+          <span>{content}</span>
+          <Kbd>{key1}</Kbd>
+          <Kbd>{key2}</Kbd>
+        </Flex>
         <TooltipArrow offset={15} />
       </TooltipContent>
     </Tooltip>

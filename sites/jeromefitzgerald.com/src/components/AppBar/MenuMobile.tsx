@@ -1,24 +1,12 @@
 import {
-  // useToast,
   Box,
   Button,
   Flex,
-  // IconButton,
   Separator,
   Sheet,
   SheetContent,
   SheetTrigger,
-  SheetClose,
-  // SheetTitle,
-  // SheetDescription,
-  // SheetPortal,
-  // StyledOverlay,
 } from '@jeromefitz/design-system/components'
-import {
-  // darkTheme,
-  keyframes,
-  styled,
-} from '@jeromefitz/design-system/stitches.config'
 import { Cross1Icon, HamburgerMenuIcon } from '@radix-ui/react-icons'
 import { useTheme } from 'next-themes'
 import NextLink from 'next/link'
@@ -26,33 +14,11 @@ import * as React from 'react'
 import { useSwipeable } from 'react-swipeable'
 import { useSound } from 'use-sound'
 
-// import { CommandKButton } from '~components/CommandKButton'
+import { CommandKButton } from '~components/CommandKButton'
 import { ToggleAudio, ToggleTheme } from '~components/Toggle'
 import useStore from '~store/useStore'
 
-const slideIn = keyframes({
-  from: { transform: '$$transformValue' },
-  to: { transform: 'translate3d(0,0,0)' },
-})
-const slideOut = keyframes({
-  from: { transform: 'translate3d(0,0,0)' },
-  to: { transform: '$$transformValue' },
-})
-const StyledCloseButton = styled(SheetClose, {
-  backgroundColor: 'green',
-  position: 'absolute',
-  bottom: '$4',
-  right: '$6',
-  zIndex: '9999',
-})
-const StyledLink = styled('a', Flex, {
-  py: '$1',
-  textDecoration: 'none',
-  width: '100%',
-  '& span, & svg': {
-    color: '$hiContrast',
-  },
-})
+import { slideIn, slideOut, StyledCloseButton, StyledLink } from './Menu.styles'
 
 const MenuMobile = ({ handleSelect, navigationNonMutated }) => {
   /**
@@ -118,7 +84,7 @@ const MenuMobile = ({ handleSelect, navigationNonMutated }) => {
 
   return (
     <Flex gap="2">
-      {/* <CommandKButton /> */}
+      <CommandKButton />
       <ToggleTheme />
       <ToggleAudio />
       <Sheet open={open} onOpenChange={handleMenuOpen}>

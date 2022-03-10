@@ -20,6 +20,7 @@ const KBar = () => {
   return (
     <>
       <Box css={{ py: '$1', px: '$2' }} ref={trap}>
+        {/* <KBarSearch defaultPlaceholder="Type to search menu" /> */}
         <KBarSearch />
       </Box>
       <Separator decorative margin="my2" size="full" />
