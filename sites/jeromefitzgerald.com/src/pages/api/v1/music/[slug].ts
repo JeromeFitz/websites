@@ -4,8 +4,7 @@ import stringify from 'fast-json-stable-stringify'
 import Slugger from 'github-slugger'
 import ms from 'ms'
 import { NextApiResponse } from 'next'
-
-import redis from '~lib/redis'
+import redis from 'next-notion/src/lib/redis'
 
 const keyPrefix = 'spotify'
 
@@ -26,8 +25,9 @@ const dataEmpty = { is_playing: false, debug: { type: 'api', latency: 0 } }
 
 const getKey = ({ limit, offset, slug, time_range }) => {
   if (slug === 'now-playing') {
+    const key = `${keyPrefix}/${slug}`
     return {
-      key: `${keyPrefix}/${slug}`,
+      key,
       evictionPolicy: evictionPolicyTiming['now_playing'],
     }
   }

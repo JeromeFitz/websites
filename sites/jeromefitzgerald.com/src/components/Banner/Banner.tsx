@@ -5,29 +5,23 @@ import {
   // IconButton,
   Link,
   Separator,
+  // Skeleton,
   Text,
 } from '@jeromefitz/design-system/components'
 // import { darkTheme } from '@jeromefitz/design-system/stitches.config'
+import { Media } from '@jeromefitz/shared/src/context/Media'
+import { Shadows } from '@jeromefitz/shared/src/styles/const'
 import { ArrowTopRightIcon, CalendarIcon } from '@radix-ui/react-icons'
+// import { format, parseISO } from 'date-fns'
+import { fetcher } from 'next-notion/src/lib/fetcher'
+import { getNextPageStatus } from 'next-notion/src/utils'
 import NextLink from 'next/link'
+import useSWR from 'swr'
 import { useSound } from 'use-sound'
 
-import { Media } from '~context/Media'
 import useStore from '~store/useStore'
-import { Shadows } from '~styles/const'
 
-// @todo(dynamic) notion api, upcoming event or evergreen info
-const meta = {
-  left: 'FRI 02/25',
-  leftExtended: 'FRI 02/25 09:30PM',
-  leftIcon: <CalendarIcon />,
-  right: 'The Playlist',
-  rightExtended: 'The Playlist: Kalyani Singh',
-  rightIcon: <ArrowTopRightIcon />,
-  url: '/events/2022/02/25/the-playlist',
-}
-
-const _Banner = () => {
+const BannerImpl = () => {
   const audio = useStore.use.audio()
   const sounds = useStore.use.sounds()
   const volume = useStore.use.volume()
@@ -36,6 +30,72 @@ const _Banner = () => {
     soundEnabled: audio,
     volume,
   })
+
+  const url = '/events'
+  const { data, error } = useSWR<any>(
+    () => `/api/v1/cms/events?cache=false`,
+    fetcher,
+    {
+      revalidateIfStale: false,
+      revalidateOnFocus: false,
+      revalidateOnReconnect: false,
+    }
+  )
+  const { is404, isDataUndefined, isError, isLoading } = getNextPageStatus(
+    data,
+    error,
+    url
+  )
+
+  const isLoaded = !is404 && !isLoading && !isError && !isDataUndefined
+  const item = data?.items?.results[0]
+  const hasItem = isLoaded && !!item
+  if (!hasItem) return null
+
+  // console.dir(`error:`)
+  // console.dir(error)
+  // console.dir(`data:`)
+  // console.dir(data)
+  // console.dir(`item:`)
+  // console.dir(item)
+
+  {
+    /* <Skeleton
+        as="span"
+        variant="heading"
+        css={{
+          fontSize: 'inherit',
+          height: '$fontSizes$3',
+          pr: '$space$8',
+        }}
+      >
+        &nbsp;
+      </Skeleton> */
+  }
+
+  // const meta = {
+  //   left: format(
+  //     parseISO(item?.properties?.dateEvent?.start),
+  //     `EEE MM/dd`
+  //   ).toUpperCase(),
+  //   leftExtended: format(
+  //     parseISO(item?.properties?.dateEvent?.start),
+  //     `EEE MM/dd hh:mma`
+  //   ).toUpperCase(),
+  //   leftIcon: <CalendarIcon />,
+  //   rightExtended: item?.properties?.title,
+  //   rightIcon: <ArrowTopRightIcon />,
+  //   url: `/events/${format(
+  //     parseISO(item?.properties?.dateEvent?.start),
+  //     `yyyy/MM/dd`
+  //   ).toUpperCase()}/${item?.properties?.slug}`,
+  // }
+
+  const meta = {
+    url: '/',
+    left: { icon: <CalendarIcon />, text: '' },
+    right: { icon: <ArrowTopRightIcon />, text: '' },
+  }
 
   return (
     <Container breakout css={{ zIndex: '99' }}>
@@ -51,7 +111,7 @@ const _Banner = () => {
             }}
             variant="violet"
           >
-            <CalendarIcon />
+            {meta.left.icon}
             <Media at="xs">
               <Text css={{ fontWeight: 500 }} size="2">
                 {meta.left}
@@ -59,22 +119,15 @@ const _Banner = () => {
             </Media>
             <Media greaterThan="xs">
               <Text css={{ fontWeight: 500 }} size="2">
-                {meta.leftExtended}
+                {meta.left.text}
               </Text>
             </Media>
             <Separator orientation="vertical" />
             <Flex direction="row" gap="1">
-              <Media at="xs">
-                <Text css={{ fontWeight: 500 }} size="2">
-                  {meta.right}
-                </Text>
-              </Media>
-              <Media greaterThan="xs">
-                <Text css={{ fontWeight: 500 }} size="2">
-                  {meta.rightExtended}
-                </Text>
-              </Media>
-              {meta.rightIcon}
+              <Text css={{ fontWeight: 500 }} size="2">
+                {meta.right.text}
+              </Text>
+              {meta.right.icon}
             </Flex>
 
             {/* <IconButton
@@ -90,4 +143,4 @@ const _Banner = () => {
   )
 }
 
-export { _Banner as Banner }
+export { BannerImpl as Banner }

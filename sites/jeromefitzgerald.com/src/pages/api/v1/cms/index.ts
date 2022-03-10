@@ -1,47 +1,43 @@
-// import _isBoolean from 'lodash/isBoolean'
-// import _omit from 'lodash/omit'
 import { NextApiResponse } from 'next'
+import { getStaticPropsCatchAll } from 'next-notion/src/getStaticPropsCatchAll'
+import { getKeysByJoin } from 'next-notion/src/utils'
 
 import { notionConfig } from '~config/index'
-import getCatchAll from '~lib/notion/getCatchAll'
-import getDataReturn from '~lib/notion/getDataReturn'
-import { notion } from '~lib/notion/helper'
 
 const { PAGES__HOMEPAGE } = notionConfig
 
+const cache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE === 'true' ? true : false
+const isBuildStep = process.env.CI
+const isDev = process.env.NODE_ENV === 'development'
+
+const debugType = (cache && isBuildStep) || isDev ? 'cache' : 'api'
+
 const notionCatchAll = async (req: any, res: NextApiResponse) => {
   try {
-    // @todo(next) preview
     const preview = req.query?.preview || false
     const clear = req.query?.clear || false
-    const _revalidate = req.query?.revalidate || 'false'
-    const revalidate = _revalidate === 'true' ? true : false
     const catchAll = [PAGES__HOMEPAGE]
-    /**
-     * @cache
-     */
-    const cache = !!req.query?.cache ? JSON.parse(req?.query?.cache) : true
-
-    // http://localhost:3000/api/v1/cms/blog/2020/12/28/preview-blog-post?preview=true
-    const pathVariables = notion.custom.getPathVariables({
-      catchAll,
+    const key = getKeysByJoin({
+      keyData: catchAll,
+      keyPrefix: 'notion',
     })
+
+    if (clear) {
+      res.clearPreviewData()
+      res.writeHead(307, { Location: '/' })
+      res.end()
+    }
 
     const start = Date.now()
-    const data = await getDataReturn({
-      data: await getCatchAll({
-        cache,
-        catchAll,
-        clear,
-        pathVariables,
-        preview,
-        revalidate,
-      }),
-      pathVariables,
+    const { data } = await getStaticPropsCatchAll({
+      catchAll,
+      notionConfig,
+      preview,
     })
     const debug = {
+      key,
       latency: Date.now() - start,
-      type: cache ? 'cache' : 'api',
+      type: debugType,
     }
 
     res.status(200).json({ ...data, debug })

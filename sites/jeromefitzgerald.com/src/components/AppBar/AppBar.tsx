@@ -5,6 +5,8 @@ import {
   Flex,
 } from '@jeromefitz/design-system/components'
 import { darkTheme } from '@jeromefitz/design-system/stitches.config'
+import { Media } from '@jeromefitz/shared/src/context/Media'
+import { Shadows } from '@jeromefitz/shared/src/styles/const'
 import { useTheme } from 'next-themes'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
@@ -13,9 +15,7 @@ import { useEffectOnce } from 'react-use'
 import { useSound } from 'use-sound'
 
 import { navigation } from '~config/navigation'
-import { Media } from '~context/Media'
 import useStore from '~store/useStore'
-import { Shadows } from '~styles/const'
 
 import { MenuDesktop } from './MenuDesktop'
 import { MenuKBar } from './MenuKBar'
