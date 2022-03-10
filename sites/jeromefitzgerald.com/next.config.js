@@ -33,7 +33,6 @@ const externals = [
   'kbar',
   'react',
   'react-dom',
-  'react-hot-toast',
   'swr',
 ]
 const messagesDebug = [
