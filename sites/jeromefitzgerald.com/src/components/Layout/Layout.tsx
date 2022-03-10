@@ -27,7 +27,7 @@ const Layout = ({ children, info, preview = false, routeType, url }) => {
   // @todo(external) first key is image slug
   const seoImageSlug = !!_seoImage ? Object.keys(_seoImage)[0] : ''
   const seoImageData = !!images && images[seoImageSlug]
-  const seoUrl = `${nextSeo.url}/${!!url ? url : ''}`
+  const seoUrl = `${nextSeo.canonical}/${!!url ? url : ''}`
 
   /**
    * @note SEO Description
@@ -102,4 +102,4 @@ const Layout = ({ children, info, preview = false, routeType, url }) => {
   )
 }
 
-export default Layout
+export { Layout }
