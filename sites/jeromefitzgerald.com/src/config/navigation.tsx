@@ -55,11 +55,13 @@ interface INavigationItem {
   titleExtended?: string
   url?: string
   type: 'url.internal' | 'url.external' | 'audio' | 'theme'
+  description?: string
 }
 
 interface INavigation {
   [key: string]: {
     active: boolean
+    description?: string
     id: string
     icon?: React.ReactElement
     // @todo
@@ -150,7 +152,7 @@ const navigation: INavigation = {
         title: 'Alex O’Jerome',
         url: '/shows/alex-o-jerome',
         icon: <StarIcon />,
-        subtitle: '(improv) The Vomit Twinz',
+        subtitle: 'The Vomit Twinz',
         keywords: 'AOJ',
         type: 'url.internal',
       },
@@ -159,7 +161,7 @@ const navigation: INavigation = {
         title: 'Jerome &',
         url: '/shows/jerome-and',
         icon: <StarIcon />,
-        subtitle: '(improv) Special Guests Every Show!',
+        subtitle: 'Special Guests Every Show!',
         keywords: 'And',
         type: 'url.internal',
       },
@@ -168,7 +170,7 @@ const navigation: INavigation = {
         title: 'JFLE (Jerome & Jesse LE)',
         url: '/shows/jfle',
         icon: <StarIcon />,
-        subtitle: '(sketch, musical) kewl doodz',
+        subtitle: 'kewlz doodz',
         type: 'url.internal',
       },
       {
@@ -177,8 +179,18 @@ const navigation: INavigation = {
         url: '/shows/justin-and-jerome-experience',
         separator: true,
         icon: <StarIcon />,
-        subtitle: '(sketch) with Aaron Tarnow',
+        subtitle: 'with Aaron Tarnow',
         keywords: 'JJE',
+        type: 'url.internal',
+      },
+      {
+        id: 'the-playlist',
+        title: 'The Playlist',
+        url: '/shows/the-playlist',
+        separator: true,
+        icon: <StarIcon />,
+        subtitle: 'Special Musical Guests!',
+        // keywords: 'TP',
         type: 'url.internal',
       },
       {
@@ -267,6 +279,7 @@ const navigation: INavigation = {
         // subtitle: '‎',
         subtitle: null,
         type: 'url.internal',
+        description: 'About ol’ Jerome',
       },
       {
         id: 'books',
@@ -279,6 +292,7 @@ const navigation: INavigation = {
         // subtitle: '‎',
         subtitle: null,
         type: 'url.internal',
+        description: `Current Reading and Recs`,
       },
       {
         id: 'colophon',
@@ -288,6 +302,7 @@ const navigation: INavigation = {
         // subtitle: '‎',
         subtitle: null,
         type: 'url.internal',
+        description: 'How this site was made',
       },
       {
         id: 'homepage',
@@ -298,6 +313,7 @@ const navigation: INavigation = {
         subtitle: null,
         keywords: 'home index',
         type: 'url.internal',
+        description: 'Go back to homepage',
       },
       {
         id: 'music',
@@ -310,6 +326,18 @@ const navigation: INavigation = {
         // subtitle: '‎',
         subtitle: null,
         type: 'url.internal',
+        description: 'Current Tunes',
+      },
+      {
+        id: 'podcasts',
+        title: 'Podcasts',
+        url: '/podcasts',
+        icon: <MicrophoneIcon className="hi2ri" style={cssIconHeroToRadix1} />,
+        // subtitle: '‎',
+        subtitle: null,
+        keywords: 'home podcasts',
+        type: 'url.internal',
+        description: 'Knockoffs, Jer & Ky & Guest',
       },
     ],
   },
