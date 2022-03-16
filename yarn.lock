@@ -473,10 +473,10 @@
     semantic-release "19.0.2"
     title "3.4.4"
 
-"@jeromefitz/design-system@3.1.0-next-notion.3":
-  version "3.1.0-next-notion.3"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/design-system/-/design-system-3.1.0-next-notion.3.tgz#0e10ed71158dbab93df233721c286fe16f181484"
-  integrity sha512-GU4Tzjo9v9PNtbwqdNa1sIB9x/sGRWiM4I+D0dL48dnRpJxq2r71lkKkj4phQlM/COnWYF5Y8uRHnPgl5uvQqg==
+"@jeromefitz/design-system@3.1.0-next-notion.6":
+  version "3.1.0-next-notion.6"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/design-system/-/design-system-3.1.0-next-notion.6.tgz#c01560ffa5945640bcffca495c5a759e84ef7795"
+  integrity sha512-DyikC7TqOul4CmDuTR3Xtt+Cd3MSOD0KAA8UlTA73/+DinICBqp3hvPfn8RMEjPTdx1s6D7nXow0fI5Ihszlvg==
   dependencies:
     "@mantine/hooks" "3.6.14"
     "@radix-ui/colors" "0.1.8"
