@@ -170,7 +170,7 @@ const navigation: INavigation = {
         title: 'JFLE (Jerome & Jesse LE)',
         url: '/shows/jfle',
         icon: <StarIcon />,
-        subtitle: 'kewlz doodz',
+        subtitle: 'kewl doodz doin kewl sketchez',
         type: 'url.internal',
       },
       {
@@ -189,7 +189,7 @@ const navigation: INavigation = {
         url: '/shows/the-playlist',
         separator: true,
         icon: <StarIcon />,
-        subtitle: 'Special Musical Guests!',
+        subtitle: 'Special Musical Guests Every Show!',
         // keywords: 'TP',
         type: 'url.internal',
       },

@@ -21,6 +21,7 @@ import * as React from 'react'
 import { useEffectOnce } from 'react-use'
 import { useSound } from 'use-sound'
 
+import { CommandKButton } from '~components/CommandKButton'
 import { NavigationMenu } from '~components/NavigationMenu'
 import { navigation } from '~config/navigation'
 import useStore from '~store/useStore'
@@ -33,9 +34,11 @@ const AppBarImpl = ({}) => {
   /**
    * @question can we lift this and not duplicate
    */
+  // const [checkedTheme, checkedThemeSet] = React.useState(null)
   const [navigationNonMutated, navigationNonMutatedSet] = React.useState(null)
   useEffectOnce(() => {
     navigationNonMutatedSet(navigation)
+    // checkedThemeSet(theme === 'dark')
   })
 
   const router = useRouter()
@@ -74,6 +77,7 @@ const AppBarImpl = ({}) => {
     document.documentElement.classList.toggle('light-theme')
     document.documentElement.style.setProperty('color-scheme', newTheme)
     setTheme(newTheme)
+    // checkedThemeSet(newTheme === 'dark')
     playBleep()
   }, [playBleep, setTheme, theme])
 
@@ -145,6 +149,7 @@ const AppBarImpl = ({}) => {
       border
       glass
     >
+      <MenuKBar />
       <Container size="4">
         <Media at="xs">
           <Flex
@@ -256,12 +261,17 @@ const AppBarImpl = ({}) => {
               gap="3"
             >
               <Flex>
+                <CommandKButton />
+              </Flex>
+              <Flex>
                 <SwitchIcon
-                  checked={theme === 'dark'}
+                  checked={theme === 'dark' || theme == undefined}
                   onCheckedChange={() => handleToggleTheme()}
                   iconOn={<MoonIcon />}
                   iconOff={<SunIcon />}
-                  size="oversized"
+                  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                  // @ts-ignore
+                  size="3"
                 />
               </Flex>
               <Flex>
@@ -270,14 +280,15 @@ const AppBarImpl = ({}) => {
                   onCheckedChange={() => audioToggle()}
                   iconOn={<SpeakerModerateIcon />}
                   iconOff={<SpeakerOffIcon />}
-                  size="oversized"
+                  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                  // @ts-ignore
+                  size="3"
                 />
               </Flex>
             </Flex>
           </Flex>
         </Media>
       </Container>
-      <MenuKBar />
     </AppBar>
   )
 }
