@@ -2,7 +2,7 @@ import { Heading } from '@jeromefitz/design-system/components'
 
 import getContentTypeDetail from '../utils/getContentTypeDetail'
 
-const heading_1 = ({ content, id }) => {
+const heading_3 = ({ content, id }) => {
   return (
     <Heading as="h4" css={{ fontWeight: '700', mb: '$2' }} size="1">
       {getContentTypeDetail({ content, id })}
@@ -10,4 +10,4 @@ const heading_1 = ({ content, id }) => {
   )
 }
 
-export default heading_1
+export default heading_3

@@ -3,6 +3,9 @@
  * - localized const should be individually based.
  * - they will override global (or merge with?)
  */
+const replaceRegEx = /[\r\n]+/g
+const replaceRegExWith = ' '
+
 const Gradients = {
   light: {
     active: `linear-gradient(
@@ -20,7 +23,7 @@ const Gradients = {
       hsl(269deg 51% 50%) 83%,
       hsl(270deg 39% 50%) 92%,
       hsl(270deg 27% 51%) 100%
-    )`,
+    )`.replace(replaceRegEx, replaceRegExWith),
     hover: {},
   },
   dark: {
@@ -39,7 +42,7 @@ const Gradients = {
       hsl(268deg 50% 79%) 83%,
       hsl(270deg 38% 87%) 92%,
       hsl(270deg 27% 94%) 100%
-    )`,
+    )`.replace(replaceRegEx, replaceRegExWith),
     hover: {},
   },
 }
@@ -47,19 +50,19 @@ const Shadows = {
   0: 'none',
   1: `
        0.5px 1px 1px hsl(var(--shadow-color) / 0.333)
-     `,
+     `.replace(replaceRegEx, replaceRegExWith),
   2: `
        1px 2px 2px hsl(var(--shadow-color) / 0.333),
        2px 4px 4px hsl(var(--shadow-color) / 0.333),
        3px 6px 6px hsl(var(--shadow-color) / 0.333)
-     `,
+     `.replace(replaceRegEx, replaceRegExWith),
   3: `
        1px 2px 2px hsl(var(--shadow-color) / 0.2),
        2px 4px 4px hsl(var(--shadow-color) / 0.2),
        4px 8px 8px hsl(var(--shadow-color) / 0.2),
        8px 16px 16px hsl(var(--shadow-color) / 0.2),
        16px 32px 32px hsl(var(--shadow-color) / 0.2)
-     `,
+     `.replace(replaceRegEx, replaceRegExWith),
 }
 
 export { Gradients, Shadows }

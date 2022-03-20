@@ -53,7 +53,7 @@ const MenuDesktop = ({ handleSelect, navigationNonMutated }) => {
   return (
     <>
       <Container breakout>
-        <NavigationMenu />
+        <NavigationMenu navigationNonMutated={navigationNonMutated} />
       </Container>
       <Flex gap="2">
         <CommandKButton />

@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  Container,
   PageHeading,
   Separator,
   Text,
@@ -9,7 +8,6 @@ import {
 import * as React from 'react'
 import { useSound } from 'use-sound'
 
-import { NavigationMenu } from '~components/NavigationMenu'
 import useStore from '~store/useStore'
 
 const properties = {
@@ -74,9 +72,6 @@ const PagesPlayground = () => {
         description={properties.seoDescription}
         title={properties.title}
       />
-      <Container breakout>
-        <NavigationMenu />
-      </Container>
       <Separator margin="my3" size="full" />
       <Box css={{ '& button': { mr: '$2' } }}>
         <Text css={{ my: '$2' }}>Audio is: {audio ? 'ON' : 'OFF'}</Text>

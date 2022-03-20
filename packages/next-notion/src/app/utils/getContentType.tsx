@@ -8,17 +8,16 @@ const getContentType = (item: NotionBlock, images?: any[]) => {
 
   const ContentNode = getContentNode[type] || getContentNode['_unsupported']
 
-  return (
-    <ContentNode
-      content={content}
-      has_children={has_children}
-      id={id}
-      images={images}
-      item={item}
-      key={id}
-      type={type}
-    />
-  )
+  const props = {
+    content,
+    has_children,
+    id,
+    images,
+    item,
+    type,
+  }
+
+  return <ContentNode key={id} {...props} />
 }
 
 export default getContentType

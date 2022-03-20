@@ -2,15 +2,17 @@ import { TicketIcon } from '@heroicons/react/outline'
 import {
   Box,
   Flex,
+  // Label,
+  // TextField,
   // @core
   NavigationMenu,
   NavigationMenuList,
   NavigationMenuItem,
-  NavigationMenuTrigger,
+  NavigationMenuTriggerWithCaret,
   NavigationMenuLink,
   NavigationMenuContent,
   NavigationMenuViewport,
-  NavigationMenuIndicator,
+  NavigationMenuIndicatorWithArrow,
   // @custom
   NavigationMenuListContent,
   NavigationMenuListItem,
@@ -126,7 +128,7 @@ const NavigationMenuContentContainer = ({ id, items, layout }) => {
   )
 }
 
-const NavigationMenuImpl = ({ navigationNonMutated = {} }) => {
+const NavigationMenuImpl = ({ navigationNonMutated }) => {
   // console.dir(`> navigationNonMutated`)
   // console.dir(navigationNonMutated)
   const menu = [
@@ -175,13 +177,45 @@ const NavigationMenuImpl = ({ navigationNonMutated = {} }) => {
   return (
     <NavigationMenu>
       <NavigationMenuList>
+        {/* <Flex
+          css={{
+            flexWrap: 'wrap',
+            alignItems: 'center',
+            '@bp1': { maxWidth: '25%' },
+          }}
+          direction="row"
+        >
+          <Label
+            htmlFor="title"
+            css={{
+              display: 'inline-flex',
+              fontWeight: 'bold',
+              lineHeight: '35px',
+              marginRight: 15,
+            }}
+          >
+            Title
+          </Label>
+          <TextField
+            css={{
+              display: 'inline-flex',
+              fontFamily: '$mono',
+              padding: '$3 $2',
+              my: '$1',
+            }}
+            type="text"
+            id="title"
+          />
+        </Flex> */}
         {menu.map((menuItem) => {
           const { id, url, layout, title, items } = menuItem
           const hasChildren = !!items
 
           return hasChildren ? (
             <NavigationMenuItem key={`kmi-${id}`}>
-              <NavigationMenuTrigger>{title}</NavigationMenuTrigger>
+              <NavigationMenuTriggerWithCaret>
+                {title}
+              </NavigationMenuTriggerWithCaret>
               <NavigationMenuContent>
                 <NavigationMenuContentContainer
                   id={id}
@@ -197,7 +231,7 @@ const NavigationMenuImpl = ({ navigationNonMutated = {} }) => {
           )
         })}
 
-        <NavigationMenuIndicator />
+        <NavigationMenuIndicatorWithArrow />
       </NavigationMenuList>
 
       <NavigationMenuViewportPosition>
