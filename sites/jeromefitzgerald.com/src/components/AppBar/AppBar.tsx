@@ -3,10 +3,17 @@ import {
   Avatar,
   Container,
   Flex,
+  SwitchIcon,
 } from '@jeromefitz/design-system/components'
 import { darkTheme } from '@jeromefitz/design-system/stitches.config'
 import { Media } from '@jeromefitz/shared/src/context/Media'
 import { Shadows } from '@jeromefitz/shared/src/styles/const'
+import {
+  MoonIcon,
+  SpeakerOffIcon,
+  SpeakerModerateIcon,
+  SunIcon,
+} from '@radix-ui/react-icons'
 import { useTheme } from 'next-themes'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
@@ -14,25 +21,28 @@ import * as React from 'react'
 import { useEffectOnce } from 'react-use'
 import { useSound } from 'use-sound'
 
+import { CommandKButton } from '~components/CommandKButton'
+import { NavigationMenu } from '~components/NavigationMenu'
 import { navigation } from '~config/navigation'
 import useStore from '~store/useStore'
 
-import { MenuDesktop } from './MenuDesktop'
+// import { MenuDesktop } from './MenuDesktop'
 import { MenuKBar } from './MenuKBar'
 import { MenuMobile } from './MenuMobile'
 
-const _AppBar = ({}) => {
+const AppBarImpl = ({}) => {
   /**
    * @question can we lift this and not duplicate
    */
+  // const [checkedTheme, checkedThemeSet] = React.useState(null)
   const [navigationNonMutated, navigationNonMutatedSet] = React.useState(null)
   useEffectOnce(() => {
     navigationNonMutatedSet(navigation)
+    // checkedThemeSet(theme === 'dark')
   })
-  // const kbar = useKBar()
+
   const router = useRouter()
   const { theme, setTheme } = useTheme()
-  // const toasts = useToast()
   const audio = useStore.use.audio()
   const audioToggle = useStore.use.audioToggle()
   const sounds = useStore.use.sounds()
@@ -51,17 +61,6 @@ const _AppBar = ({}) => {
     volume,
   })
 
-  // const handleToast = (props) => {
-  //   const { title } = props
-  //   if (toasts && toasts.current) {
-  //     toasts.current.message({
-  //       duration: 2000,
-  //       text: `Routing to: ${title}`,
-  //       type: 'default',
-  //     })
-  //   }
-  // }
-
   const handleRouteInternal = (url) => {
     playBleep()
     void router.push(url)
@@ -78,6 +77,7 @@ const _AppBar = ({}) => {
     document.documentElement.classList.toggle('light-theme')
     document.documentElement.style.setProperty('color-scheme', newTheme)
     setTheme(newTheme)
+    // checkedThemeSet(newTheme === 'dark')
     playBleep()
   }, [playBleep, setTheme, theme])
 
@@ -149,97 +149,148 @@ const _AppBar = ({}) => {
       border
       glass
     >
+      <MenuKBar />
       <Container size="4">
-        <Flex
-          css={{ width: '100%' }}
-          direction="row"
-          justify="between"
-          align="start"
-        >
+        <Media at="xs">
           <Flex
-            css={{
-              ml: '$2',
-              width: '100%',
-              '@bp1': {
-                ml: '$6',
-              },
-            }}
+            css={{ width: '100%' }}
+            direction="row"
             justify="between"
+            align="center"
           >
-            <NextLink href="/" passHref>
-              <a onClick={() => playBleep()}>
-                <Avatar
-                  alt={`Avatar for Jerome (Bighead Dizzy)`}
-                  src={`/static/images/bighead--jerome--dizzy.svg`}
-                  aria-describedby="logoHeader"
-                  size="4"
-                  css={{
-                    '@bp1': {
-                      mr: '$1',
-                      width: '$7',
-                      height: '$7',
-                      '& span': {
-                        boxShadow: `inset ${Shadows[2]}`,
-                      },
-                    },
-                  }}
-                  variant="violet"
-                  border="solid"
-                  // onClick={handleClickLink}
-                />
-              </a>
-            </NextLink>
-
-            {/* <Flex direction="column" justify="center">
-            <Button
-              css={{
-                py: '$2',
-                mr: '$2',
-                '@hover': {
-                  '&:hover, &:hover + &': {
-                    cursor: 'pointer',
-                  },
-                },
-              }}
-              size="1"
-              onClick={kbar.query.toggle}
-              ghost
-            >
-              Menu: KBar
-            </Button>
-          </Flex> */}
             <Flex
               css={{
+                ml: '$2',
+                '@bp1': {
+                  ml: '$6',
+                },
+              }}
+            >
+              <NextLink href="/" passHref>
+                <a onClick={() => playBleep()}>
+                  <Avatar
+                    alt={`Avatar for Jerome (Bighead Dizzy)`}
+                    src={`/static/images/bighead--jerome--dizzy.svg`}
+                    aria-describedby="logoHeader"
+                    size="4"
+                    css={{
+                      '@bp1': {
+                        mr: '$1',
+                        width: '$7',
+                        height: '$7',
+                        '& span': {
+                          boxShadow: `inset ${Shadows[2]}`,
+                        },
+                      },
+                    }}
+                    variant="violet"
+                    border="solid"
+                    // onClick={handleClickLink}
+                  />
+                </a>
+              </NextLink>
+            </Flex>
+            <Flex
+              justify="end"
+              css={{
+                width: '100%',
+              }}
+            >
+              <MenuMobile
+                handleSelect={handleSelect}
+                navigationNonMutated={navigationNonMutated}
+              />
+            </Flex>
+          </Flex>
+        </Media>
+        <Media greaterThan="xs">
+          <Flex
+            css={{ width: '100%' }}
+            direction="row"
+            justify="between"
+            align="center"
+          >
+            <Flex
+              css={{
+                ml: '$2',
+                '@bp1': {
+                  ml: '$6',
+                },
+              }}
+            >
+              <NextLink href="/" passHref>
+                <a onClick={() => playBleep()}>
+                  <Avatar
+                    alt={`Avatar for Jerome (Bighead Dizzy)`}
+                    src={`/static/images/bighead--jerome--dizzy.svg`}
+                    aria-describedby="logoHeader"
+                    size="4"
+                    css={{
+                      '@bp1': {
+                        mr: '$1',
+                        width: '$7',
+                        height: '$7',
+                        '& span': {
+                          boxShadow: `inset ${Shadows[2]}`,
+                        },
+                      },
+                    }}
+                    variant="violet"
+                    border="solid"
+                    // onClick={handleClickLink}
+                  />
+                </a>
+              </NextLink>
+            </Flex>
+            <Flex
+              css={{
+                width: '100%',
+              }}
+            >
+              <NavigationMenu navigationNonMutated={navigationNonMutated} />
+            </Flex>
+            <Flex
+              css={{
+                alignItems: 'center',
                 mr: '$2',
                 '@bp1': {
                   mr: '$6',
+                  // mt: '$2',
                 },
               }}
-              direction="column"
-              justify="center"
+              gap="3"
             >
-              <Media at="xs">
-                <>
-                  {/* <h1>WUT</h1> */}
-                  <MenuMobile
-                    handleSelect={handleSelect}
-                    navigationNonMutated={navigationNonMutated}
-                  />
-                </>
-              </Media>
-              <Media greaterThan="xs">
-                <MenuDesktop
-                  handleSelect={handleSelect}
-                  navigationNonMutated={navigationNonMutated}
+              <Flex>
+                <CommandKButton />
+              </Flex>
+              <Flex>
+                <SwitchIcon
+                  checked={theme === 'dark' || theme == undefined}
+                  onCheckedChange={() => handleToggleTheme()}
+                  iconOn={<MoonIcon />}
+                  iconOff={<SunIcon />}
+                  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                  // @ts-ignore
+                  size="3"
                 />
-              </Media>
-              <MenuKBar />
+              </Flex>
+              <Flex>
+                <SwitchIcon
+                  checked={audio}
+                  onCheckedChange={() => audioToggle()}
+                  iconOn={<SpeakerModerateIcon />}
+                  iconOff={<SpeakerOffIcon />}
+                  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                  // @ts-ignore
+                  size="3"
+                />
+              </Flex>
             </Flex>
           </Flex>
-        </Flex>
+        </Media>
       </Container>
     </AppBar>
   )
 }
 
-export { _AppBar as AppBar }
+export { AppBarImpl as AppBar }

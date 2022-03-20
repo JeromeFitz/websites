@@ -107,6 +107,9 @@ const WEBKIT_BACKGROUND__BREAK = {
   WebkitTextFillColor: 'inherit',
 }
 
+/**
+ * lol okay move this to stitches please
+ */
 const cssIconHeroToRadix = {
   marginTop: '1px',
 }
@@ -114,10 +117,15 @@ const cssIconHeroToRadix1 = {
   marginTop: '1px',
   width: '1rem',
 }
+const cssIconHeroToRadix2 = {
+  marginTop: '1px',
+  width: '2rem',
+}
 
 export {
   cssIconHeroToRadix,
   cssIconHeroToRadix1,
+  cssIconHeroToRadix2,
   BIG_HEAD_PROPS,
   CACHE_TYPES,
   EMOJI_FALLBACK,

@@ -283,9 +283,9 @@ const KBarActions = () => {
           url: `/shows/${slug}`,
         })
       })
-    data.push(navigation.shows.items[4])
-    // console.dir(`navigation.shows.items[4]`)
-    // console.dir(navigation.shows.items[4])
+    data.push(navigation.shows.items[5])
+    // console.dir(`navigation.shows.items[5]`)
+    // console.dir(navigation.shows.items[5])
     // data.push({
     //   id: 'view-all-shows',
     //   title: 'View All',

@@ -40,11 +40,9 @@ const image = ({ images, item }) => {
 
   return !!imageData ? (
     <Box
-      className="w-2/3 mx-auto"
       css={{
         height: '100%',
-        ml: 'auto',
-        mr: 'auto',
+        mx: 'auto',
         overflow: 'hidden',
         width: '66.6667%',
         // maxWidth: '100%',
@@ -62,21 +60,12 @@ const image = ({ images, item }) => {
     </Box>
   ) : (
     <Box
-      className="w-2/3 h-full mx-auto overflow-hidden"
       css={{
         height: '100%',
-        ml: 'auto',
-        mr: 'auto',
+        mx: 'auto',
         overflow: 'hidden',
         width: '66.6667%',
-      }}
-    >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        alt={caption}
-        className="nonNextNoStaticProps"
-        src={contentHack?.external?.url}
-        style={{
+        img: {
           animation: `${focusInNonNext} 300ms cubic-bezier(0.87, 0, 0.13, 1)`,
           maxWidth: '100%',
           height: 'auto',
@@ -91,7 +80,14 @@ const image = ({ images, item }) => {
             backgroundImage: `linear-gradient(45deg,$colors$whiteA7,$colors$whiteA12)`,
             // backgroundImage: `url(${IMAGE__PLACEHOLDER.meta.base64}),linear-gradient(45deg,$colors$whiteA7,$colors$whiteA12)`,
           },
-        }}
+        },
+      }}
+    >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        alt={caption}
+        className="nonNextNoStaticProps"
+        src={contentHack?.external?.url}
       />
       {!!caption && <Caption>{caption}</Caption>}
     </Box>
