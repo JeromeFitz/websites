@@ -1,3 +1,5 @@
+import { darkTheme } from '@jeromefitz/design-system/stitches.config'
+
 import { Gradients } from './const'
 
 const global = {
@@ -22,7 +24,7 @@ const global = {
     WebkitTextSizeAdjust: '100%',
 
     backgroundColor: '$colors$gray1',
-    '.dark-theme &': {
+    [`.${darkTheme} &`]: {
       backgroundColor: '$colors$gray1',
     },
   },
@@ -65,9 +67,11 @@ const global = {
     left: 0,
     width: '100%',
     height: '2px',
+    backgroundImage: Gradients.light.active,
   },
-  '.light-theme #nprogress .bar': { backgroundImage: Gradients.light.active },
-  '.dark-theme #nprogress .bar': { backgroundImage: Gradients.dark.active },
+  [`.${darkTheme} #nprogress .bar`]: {
+    backgroundImage: Gradients.dark.active,
+  },
 
   ':root': {
     '--colors-spotify-black': '#191414',
