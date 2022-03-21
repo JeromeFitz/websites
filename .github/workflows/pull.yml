@@ -59,7 +59,7 @@ jobs:
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
       - name: '🛠️  Deploy (Config)'
         id: pull-deploy-config
-        if: (github.actor == 'JeromeFitz' || github.actor == 'dependabot' || github.actor == 'dependabot[bot]') && (contains(github.event.head_commit.message, '[build]') || contains(github.event.head_commit.message, '[b]')
+        if: ((github.actor == 'JeromeFitz' || github.actor == 'dependabot' || github.actor == 'dependabot[bot]') && (contains(github.event.head_commit.message, '[build]') || contains(github.event.head_commit.message, '[b]'))
         uses: actions/github-script@v3
         with:
           script: |
@@ -68,14 +68,14 @@ jobs:
       - name: '🐙️  Deploy (Checkout)'
         id: pull-deploy-checkout
         uses: actions/checkout@v2
-        if: (github.actor == 'JeromeFitz' || github.actor == 'dependabot' || github.actor == 'dependabot[bot]') && (contains(github.event.head_commit.message, '[build]') || contains(github.event.head_commit.message, '[b]')
+        if: ((github.actor == 'JeromeFitz' || github.actor == 'dependabot' || github.actor == 'dependabot[bot]') && (contains(github.event.head_commit.message, '[build]') || contains(github.event.head_commit.message, '[b]'))
         with:
           ref: ${{ steps.pull-deploy-config.outputs.ref }}
           repository: ${{ steps.pull-deploy-config.outputs.repo }}
           fetch-depth: 1
       - name: '🔺️  Deploy (Preview)'
         id: pull-deploy-preview
-        if: (github.actor == 'JeromeFitz' || github.actor == 'dependabot' || github.actor == 'dependabot[bot]') && (contains(github.event.head_commit.message, '[build]') || contains(github.event.head_commit.message, '[b]')
+        if: ((github.actor == 'JeromeFitz' || github.actor == 'dependabot' || github.actor == 'dependabot[bot]') && (contains(github.event.head_commit.message, '[build]') || contains(github.event.head_commit.message, '[b]'))
         uses: JeromeFitz/websites/.github/actions/deploy@main
         with:
           GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
