@@ -574,12 +574,12 @@
     read-pkg-up "7.0.1"
     semver "7.3.5"
 
-"@jeromefitz/semantic@9.0.2":
-  version "9.0.2"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/semantic/-/semantic-9.0.2.tgz#c15a300066613a2827d0e5d777cac353b6097180"
-  integrity sha512-TrKbnS/8YUCRX0PiE3/4Sejy5N/qdxjOUjrHPfydBzB8nQGeH/zoPbGAN9+gNCIcbo6oVJ9o0lrx16/Tmmr7IQ==
+"@jeromefitz/semantic@9.0.3":
+  version "9.0.3"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/semantic/-/semantic-9.0.3.tgz#d8faa0ed50a0a9111973c32c6ba75dfbfead1999"
+  integrity sha512-p4uERCxIxHFyiPrTu91J/5ZuL3Oz7mLJUIVuPuoZBRaOet95283EFEAYTIEuykTDaBkZffY38rBVAvJknISu0Q==
   dependencies:
-    "@octokit/core" "3.5.1"
+    "@octokit/core" "3.6.0"
     "@semantic-release/commit-analyzer" "9.0.2"
     "@semantic-release/exec" "6.0.3"
     "@semantic-release/git" "10.0.1"
@@ -1067,19 +1067,6 @@
   integrity sha512-r5FVUJCOLl19AxiuZD2VRZ/ORjp/4IN98Of6YJoJOkY75CIBuYfmiNHGrDwXr+aLGG55igl9QrxX3hbiXlLb+g==
   dependencies:
     "@octokit/types" "^6.0.3"
-
-"@octokit/core@3.5.1":
-  version "3.5.1"
-  resolved "https://registry.yarnpkg.com/@octokit/core/-/core-3.5.1.tgz#8601ceeb1ec0e1b1b8217b960a413ed8e947809b"
-  integrity sha512-omncwpLVxMP+GLpLPgeGJBF6IWJFjXDS5flY5VbppePYX9XehevbDykRH9PdCdvqt9TS5AOTiDide7h0qrkHjw==
-  dependencies:
-    "@octokit/auth-token" "^2.4.4"
-    "@octokit/graphql" "^4.5.8"
-    "@octokit/request" "^5.6.0"
-    "@octokit/request-error" "^2.0.5"
-    "@octokit/types" "^6.0.3"
-    before-after-hook "^2.2.0"
-    universal-user-agent "^6.0.0"
 
 "@octokit/core@3.6.0", "@octokit/core@^3.5.1":
   version "3.6.0"
