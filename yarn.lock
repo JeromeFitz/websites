@@ -463,10 +463,10 @@
     pretty-quick "3.1.3"
     typescript "4.5.5"
 
-"@jeromefitz/conventional-gitmoji@3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/conventional-gitmoji/-/conventional-gitmoji-3.0.1.tgz#82e69258cd95c1f0d2f711bb03e02bd51ac0ac55"
-  integrity sha512-3sLVzQ8/gHywyWp0K5TrLNjNV93bboXaizWXTS6q4+lONfgs0vm8xAn9go9LsrjpLFB8EWtuqJwe60PKf/B7Nw==
+"@jeromefitz/conventional-gitmoji@3.0.2":
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/conventional-gitmoji/-/conventional-gitmoji-3.0.2.tgz#8428eb18131295702ba38c3062824abd6041234c"
+  integrity sha512-ROKyiyxBCZJOF20vr60qM4mkih0/6x794sJmiqOzs1TMb9rswbkCYWSYfsUGniRlkBVEFN3nsxwpafwcYPc8/g==
   dependencies:
     grapheme-splitter "1.0.4"
     lodash "4.17.21"
