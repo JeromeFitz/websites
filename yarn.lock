@@ -473,12 +473,12 @@
     semantic-release "19.0.2"
     title "3.4.4"
 
-"@jeromefitz/design-system@3.1.0-next-notion.6":
-  version "3.1.0-next-notion.6"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/design-system/-/design-system-3.1.0-next-notion.6.tgz#c01560ffa5945640bcffca495c5a759e84ef7795"
-  integrity sha512-DyikC7TqOul4CmDuTR3Xtt+Cd3MSOD0KAA8UlTA73/+DinICBqp3hvPfn8RMEjPTdx1s6D7nXow0fI5Ihszlvg==
+"@jeromefitz/design-system@3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/design-system/-/design-system-3.1.0.tgz#7c3c95d30a52663baff7ca324df1290e103e4467"
+  integrity sha512-gIehgpuOtTkeHZ8FVO1a5vgH5vH3FHHN0Fs2MEjLgR25Gi398GDzvsGa4oKlMunoFXivzByUrEODQNlk1ffQ3A==
   dependencies:
-    "@mantine/hooks" "3.6.14"
+    "@mantine/hooks" "4.0.7"
     "@radix-ui/colors" "0.1.8"
     "@radix-ui/react-accessible-icon" "0.1.4"
     "@radix-ui/react-accordion" "0.1.6"
@@ -780,11 +780,6 @@
   dependencies:
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
-
-"@mantine/hooks@3.6.14":
-  version "3.6.14"
-  resolved "https://registry.yarnpkg.com/@mantine/hooks/-/hooks-3.6.14.tgz#31f4d937384acbdae34ca0ca84056fc191eae85e"
-  integrity sha512-ob6FdjG7/plSpp2VOUvfEQb8a02hlLFo8Qp/EFU8OHn3lfp8PEKGxWQznPPQ9Zay53ZFm05ixrFq9z7+M5jEdQ==
 
 "@mantine/hooks@4.0.7":
   version "4.0.7"
