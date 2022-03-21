@@ -520,10 +520,10 @@
     smoothscroll-polyfill "0.4.4"
     swr "1.2.2"
 
-"@jeromefitz/git-cz@14.2.1":
-  version "14.2.1"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/git-cz/-/git-cz-14.2.1.tgz#48a128e49a2bfaa5459257178fdf1ff6fccb51ed"
-  integrity sha512-uPx/ndre/zTEGZ9kUMB4pcX5/e4hGOR8ah6ScoJcrXXU4AhpRjk0Z4sM+nFnnG0xZiWmULvM6KFvaEenutyacw==
+"@jeromefitz/git-cz@14.2.2":
+  version "14.2.2"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/git-cz/-/git-cz-14.2.2.tgz#aa36011554da055f13b2a4d6789d73fe2b8ee257"
+  integrity sha512-LYHQ1EtMS/lSMV7NMoMkEuGuzwuPFXxn/hX9eMomZbHmEieuEJLFAv4HPkTmqgkwSdfeJe+tQhGhDymg05hwmA==
   dependencies:
     colorize-template "1.0.0"
     fast-json-stable-stringify "2.1.0"
