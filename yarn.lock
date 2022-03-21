@@ -536,10 +536,10 @@
     shellsync "0.2.2"
     word-wrap "1.2.3"
 
-"@jeromefitz/notion@3.1.0-next-notion.4":
-  version "3.1.0-next-notion.4"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/notion/-/notion-3.1.0-next-notion.4.tgz#96b2264c3b4a06adf3b4e687765863491ab1ddcc"
-  integrity sha512-+/yH0/PuKh1vuAsTkZ1fBXAKs/ypfqXTywcC1VfnCSnGMqCT0AsGKJnshlM2HOSXOzUNDcmSSF4sNLqOl/RrIA==
+"@jeromefitz/notion@3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/notion/-/notion-3.1.0.tgz#90d962a26907581db9065444749f3e7a78ae1d1d"
+  integrity sha512-9uiac55nKhAaHMWn7DZ5NNRUokNrLZ77aGCgekfj14ebLb4L89u77MnYj0hIxpYs/RpxLZRBHvq+z5b7Q1259Q==
   dependencies:
     "@notionhq/client" "1.0.3"
     date-fns "2.28.0"
