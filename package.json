@@ -51,7 +51,7 @@
   "dependencies": {
     "@babel/eslint-parser": "7.17.0",
     "@jeromefitz/codestyle": "8.0.20",
-    "@jeromefitz/conventional-gitmoji": "3.0.1",
+    "@jeromefitz/conventional-gitmoji": "3.0.2",
     "@jeromefitz/git-cz": "14.2.1",
     "@jeromefitz/release-notes-generator": "1.0.1",
     "@jeromefitz/semantic": "9.0.2",
