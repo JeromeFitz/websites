@@ -94,7 +94,7 @@
     "ms": "3.0.0-canary.1",
     "next": "12.1.1-canary.15",
     "next-compose-plugins": "2.2.1",
-    "next-seo": "5.1.0",
+    "next-seo": "5.3.0",
     "next-sitemap": "2.5.12",
     "next-themes": "0.1.1",
     "next-transpile-modules": "9.0.0",
