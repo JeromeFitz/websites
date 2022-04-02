@@ -57,7 +57,7 @@
     "@jeromefitz/semantic": "9.0.3",
     "@types/is-ci": "3.0.0",
     "@types/jest": "27.4.1",
-    "@types/lodash": "4.14.180",
+    "@types/lodash": "4.14.181",
     "@types/node": "16.11.7",
     "@types/react": "17.0.43",
     "@types/title": "3.4.1",
