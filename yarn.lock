@@ -487,12 +487,12 @@
     semantic-release "19.0.2"
     title "3.4.4"
 
-"@jeromefitz/design-system@3.1.0":
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/design-system/-/design-system-3.1.0.tgz#7c3c95d30a52663baff7ca324df1290e103e4467"
-  integrity sha512-gIehgpuOtTkeHZ8FVO1a5vgH5vH3FHHN0Fs2MEjLgR25Gi398GDzvsGa4oKlMunoFXivzByUrEODQNlk1ffQ3A==
+"@jeromefitz/design-system@3.1.1":
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/design-system/-/design-system-3.1.1.tgz#513d9afb36f8b484288f32369f9c341e044a5a0e"
+  integrity sha512-nolViL+fjgipkM6Fv49nokMqF5xjhavmsYl+ILXKBBqN7I3TspCQfEI9TH/XDfEXRxDceDH1zDGkMxjkOFIQKA==
   dependencies:
-    "@mantine/hooks" "4.0.7"
+    "@mantine/hooks" "4.0.8"
     "@radix-ui/colors" "0.1.8"
     "@radix-ui/react-accessible-icon" "0.1.4"
     "@radix-ui/react-accordion" "0.1.6"
@@ -523,7 +523,7 @@
     "@radix-ui/react-tooltip" "0.1.7"
     "@radix-ui/react-utils" "0.0.5"
     "@radix-ui/react-visually-hidden" "0.1.4"
-    "@react-aria/interactions" "3.8.2"
+    "@react-aria/interactions" "3.8.3"
     "@stitches/react" "1.2.7"
     emoji-regex "10.0.1"
     framer-motion "6.2.8"
@@ -795,10 +795,10 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@mantine/hooks@4.0.7":
-  version "4.0.7"
-  resolved "https://registry.yarnpkg.com/@mantine/hooks/-/hooks-4.0.7.tgz#7b6d12994f3bc35e653dd3054efeaef40f8af032"
-  integrity sha512-SjP6SZIgri3oMLDZBDYIo+nj9EKAN5OgvCDzREfD9k++BluPk2AfyzCpaZ7mr4+4ZskS6o5FIBvKqvUZYzr9bg==
+"@mantine/hooks@4.0.8":
+  version "4.0.8"
+  resolved "https://registry.yarnpkg.com/@mantine/hooks/-/hooks-4.0.8.tgz#4b3c62e8a136de45fafbda8c3845dbdd63860d11"
+  integrity sha512-f9DNbLB0KjVdTGxVeas/+9fNSiniv//Pm3SAm7NtaeCNX1EU3WECnjph+bnQx0YVwINCRVlLbyWwpkI64m132w==
 
 "@mantine/hooks@4.1.1":
   version "4.1.1"
@@ -1882,10 +1882,10 @@
     tiny-warning "^1.0.3"
     tslib "^2.3.0"
 
-"@react-aria/interactions@3.8.2":
-  version "3.8.2"
-  resolved "https://registry.yarnpkg.com/@react-aria/interactions/-/interactions-3.8.2.tgz#fa11833915938e2e539391b5db4670668a830e7f"
-  integrity sha512-AyTTwflthmyNcgIfjzHLdrQTcUJpLer9jMtB7IyTJ90c1eYbd+iy40WbyBZYhQhI8Zkq+q9bfeIOQFlEMDWh8A==
+"@react-aria/interactions@3.8.3":
+  version "3.8.3"
+  resolved "https://registry.yarnpkg.com/@react-aria/interactions/-/interactions-3.8.3.tgz#31a913acee8199a827fe351f7d867a10706477a1"
+  integrity sha512-zffWRqhEk4SQNbr5sv3BnMIsmQjtdhXvv3FLn9Ch0HxxGb8VStjrVPEv7r9OtVodab+ThcUehL4NJ8zU/U/4ew==
   dependencies:
     "@babel/runtime" "^7.6.2"
     "@react-aria/utils" "^3.11.3"
