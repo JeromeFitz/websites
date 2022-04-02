@@ -43,7 +43,7 @@
     "@artsy/fresnel": "3.4.0",
     "@heroicons/react": "1.0.6",
     "@jeromefitz/design-system": "3.1.0",
-    "@jeromefitz/notion": "3.1.0",
+    "@jeromefitz/notion": "3.1.1",
     "@jeromefitz/shared": "*",
     "@jeromefitz/spotify": "2.1.6",
     "@jeromefitz/utils": "2.0.2",
