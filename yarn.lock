@@ -534,18 +534,18 @@
     smoothscroll-polyfill "0.4.4"
     swr "1.2.2"
 
-"@jeromefitz/git-cz@14.2.2":
-  version "14.2.2"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/git-cz/-/git-cz-14.2.2.tgz#aa36011554da055f13b2a4d6789d73fe2b8ee257"
-  integrity sha512-LYHQ1EtMS/lSMV7NMoMkEuGuzwuPFXxn/hX9eMomZbHmEieuEJLFAv4HPkTmqgkwSdfeJe+tQhGhDymg05hwmA==
+"@jeromefitz/git-cz@14.2.3":
+  version "14.2.3"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/git-cz/-/git-cz-14.2.3.tgz#df4c8421d4c65f79101bfea0faa9fe8a92e9af82"
+  integrity sha512-EkMSR/83+fWktGKb4+XyZJW4oVna1gmwIV4AuPoeeqEwgLhK53Joapwno2/2cgZj7TUhydUtkTu43mjIj4BiGA==
   dependencies:
     colorize-template "1.0.0"
     fast-json-stable-stringify "2.1.0"
     fuzzy "0.1.3"
-    inquirer "8.2.1"
+    inquirer "8.2.2"
     inquirer-autocomplete-prompt "2.0.0"
     lodash "4.17.21"
-    minimist "1.2.5"
+    minimist "1.2.6"
     picocolors "1.0.0"
     shellsync "0.2.2"
     word-wrap "1.2.3"
@@ -5382,10 +5382,10 @@ inquirer-autocomplete-prompt@2.0.0:
     run-async "^2.4.1"
     rxjs "^7.5.4"
 
-inquirer@8.2.1:
-  version "8.2.1"
-  resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-8.2.1.tgz#e00022e3e8930a92662f760f020686530a84671d"
-  integrity sha512-pxhBaw9cyTFMjwKtkjePWDhvwzvrNGAw7En4hottzlPvz80GZaMZthdDU35aA6/f5FRZf3uhE057q8w1DE3V2g==
+inquirer@8.2.2:
+  version "8.2.2"
+  resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-8.2.2.tgz#1310517a87a0814d25336c78a20b44c3d9b7629d"
+  integrity sha512-pG7I/si6K/0X7p1qU+rfWnpTE1UIkTONN1wxtzh0d+dHXtT/JG6qBgLxoyHVsQa8cFABxAPh0pD6uUUHiAoaow==
   dependencies:
     ansi-escapes "^4.2.1"
     chalk "^4.1.1"
@@ -6953,10 +6953,10 @@ minimist-options@4.1.0:
     is-plain-obj "^1.1.0"
     kind-of "^6.0.3"
 
-minimist@1.2.5, minimist@^1.2.0, minimist@^1.2.3, minimist@^1.2.5:
-  version "1.2.5"
-  resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.5.tgz#67d66014b66a6a8aaa0c083c5fd58df4e4e97602"
-  integrity sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==
+minimist@1.2.6, minimist@^1.2.0, minimist@^1.2.3, minimist@^1.2.5:
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.6.tgz#8637a5b759ea0d6e98702cfb3a9283323c93af44"
+  integrity sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==
 
 minipass-collect@^1.0.2:
   version "1.0.2"
