@@ -805,10 +805,10 @@
   resolved "https://registry.yarnpkg.com/@mantine/hooks/-/hooks-4.1.1.tgz#af3090366fa51eef4b053aa48dd89f368dfec1e3"
   integrity sha512-uVLVT1Qc7rt3kXy25efUVc509Uv3HPNPMyJaPEGM+o9RWy0k3Mo5Zp3meVfUL7PmjY179RlHmrGtxprdpiDZaA==
 
-"@next/bundle-analyzer@12.1.0":
-  version "12.1.0"
-  resolved "https://registry.yarnpkg.com/@next/bundle-analyzer/-/bundle-analyzer-12.1.0.tgz#9f6d6cda2a26220c936805be407243e22790f4b7"
-  integrity sha512-pOtWRWaKQXff8A80Ex3E67EH8XuERHxBPn8cQgKzfhRKQwoTEareHe2nWJO1uXTQm6m7ZRhmhb4+uwp+UvmITQ==
+"@next/bundle-analyzer@12.1.4":
+  version "12.1.4"
+  resolved "https://registry.yarnpkg.com/@next/bundle-analyzer/-/bundle-analyzer-12.1.4.tgz#22afb920b769a54a8da118af0786df0a1f4fca47"
+  integrity sha512-Xw3gxBTOAS5bcayUl2hDYeCbAFIR+7poiGW4Wi/KGcsjgVRetKBS6akZ1AZsz36CUOdCxajKO45B6CeAaKtcqA==
   dependencies:
     webpack-bundle-analyzer "4.3.0"
 
