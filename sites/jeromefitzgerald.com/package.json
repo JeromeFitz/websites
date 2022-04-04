@@ -46,7 +46,7 @@
     "@jeromefitz/notion": "3.1.1",
     "@jeromefitz/shared": "*",
     "@jeromefitz/spotify": "2.1.6",
-    "@jeromefitz/utils": "2.0.2",
+    "@jeromefitz/utils": "2.0.3",
     "@mantine/hooks": "4.1.1",
     "@octokit/core": "3.6.0",
     "@plaiceholder/next": "2.3.0",

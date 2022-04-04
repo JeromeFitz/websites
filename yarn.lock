@@ -606,10 +606,10 @@
     isomorphic-unfetch "3.1.0"
     plaiceholder "2.3.0"
 
-"@jeromefitz/utils@2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/utils/-/utils-2.0.2.tgz#ed4de48386b713370bea61cb38890d8eebe00939"
-  integrity sha512-Dxo91wyrRnQ4gn1gWnYjmtTJ8LFwxd2QqOwPsGTJCvAElv7U2lvKY1VafZcJ76Gz146vlqhtTwURWmvQWixSDg==
+"@jeromefitz/utils@2.0.3":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/utils/-/utils-2.0.3.tgz#f604336b60bfdbcf1ec8eddff3d4b1bbdc0ed326"
+  integrity sha512-eYpYByeB09ghDi1bc3MFtvszehJC5kdkzrfxUQzUQWJDOD5/xSMg1MMy0UCkw1VTujeweg/a7gpFdLCnHMAEXg==
   dependencies:
     lodash "4.17.21"
 
