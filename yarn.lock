@@ -492,12 +492,12 @@
     semantic-release "19.0.2"
     title "3.4.4"
 
-"@jeromefitz/design-system@3.1.1":
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/design-system/-/design-system-3.1.1.tgz#513d9afb36f8b484288f32369f9c341e044a5a0e"
-  integrity sha512-nolViL+fjgipkM6Fv49nokMqF5xjhavmsYl+ILXKBBqN7I3TspCQfEI9TH/XDfEXRxDceDH1zDGkMxjkOFIQKA==
+"@jeromefitz/design-system@3.1.2":
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/design-system/-/design-system-3.1.2.tgz#68d8721a94b0284127e51b6f109ef48498870752"
+  integrity sha512-LngpcWrRuD0yevzBQPYdp5MXnasI0mG6hmvTfbNbTI50+8uUmTMKLUA1OzzEjGq249fDeVkKsN4WvgA9do/7dw==
   dependencies:
-    "@mantine/hooks" "4.0.8"
+    "@mantine/hooks" "4.1.1"
     "@radix-ui/colors" "0.1.8"
     "@radix-ui/react-accessible-icon" "0.1.4"
     "@radix-ui/react-accordion" "0.1.6"
@@ -530,7 +530,7 @@
     "@radix-ui/react-visually-hidden" "0.1.4"
     "@react-aria/interactions" "3.8.3"
     "@stitches/react" "1.2.7"
-    emoji-regex "10.0.1"
+    emoji-regex "10.1.0"
     framer-motion "6.2.8"
     kbar "0.1.0-beta.28"
     lodash "4.17.21"
@@ -799,11 +799,6 @@
   dependencies:
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
-
-"@mantine/hooks@4.0.8":
-  version "4.0.8"
-  resolved "https://registry.yarnpkg.com/@mantine/hooks/-/hooks-4.0.8.tgz#4b3c62e8a136de45fafbda8c3845dbdd63860d11"
-  integrity sha512-f9DNbLB0KjVdTGxVeas/+9fNSiniv//Pm3SAm7NtaeCNX1EU3WECnjph+bnQx0YVwINCRVlLbyWwpkI64m132w==
 
 "@mantine/hooks@4.1.1":
   version "4.1.1"
@@ -4071,10 +4066,10 @@ emoji-api@2.0.1:
     jsdom "^17.0.0"
     node-fetch "^2.6.2"
 
-emoji-regex@10.0.1:
-  version "10.0.1"
-  resolved "https://registry.yarnpkg.com/emoji-regex/-/emoji-regex-10.0.1.tgz#77180edb279b99510a21b79b19e1dc283d8f3991"
-  integrity sha512-cLuZzriSWVE+rllzeq4zpUEoCPfYEbQ6ZVhIq+ed6ynWST7Bw9XnOr+bKWgCup4paq72DI21gw9M3aaFkm4HAw==
+emoji-regex@10.1.0:
+  version "10.1.0"
+  resolved "https://registry.yarnpkg.com/emoji-regex/-/emoji-regex-10.1.0.tgz#d50e383743c0f7a5945c47087295afc112e3cf66"
+  integrity sha512-xAEnNCT3w2Tg6MA7ly6QqYJvEoY1tm9iIjJ3yMKK9JPlWuRHAMoe5iETwQnx3M9TVbFMfsrBgWKR+IsmswwNjg==
 
 emoji-regex@^8.0.0:
   version "8.0.0"
