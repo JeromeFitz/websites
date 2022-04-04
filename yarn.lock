@@ -566,10 +566,10 @@
     github-slugger "1.4.0"
     lodash "4.17.21"
 
-"@jeromefitz/release-notes-generator@1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/release-notes-generator/-/release-notes-generator-1.0.2.tgz#ffe434f44e94a9cb50fe1974c273e28d7194c0f6"
-  integrity sha512-QJeUgFK2PiK4y9xYxWv1IataK6ngcef012dcLhK8HiWMTOTgWUKZYdjaKSVyQs25au1Za0dVCymWUho8YZ9A9A==
+"@jeromefitz/release-notes-generator@1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/release-notes-generator/-/release-notes-generator-1.0.3.tgz#ea02d1585dddda862b488da5d788a134831a278a"
+  integrity sha512-MFOS1iGg/894Nh+VZif2+xBWfd4wQw4MK9WIPnLz+ixWIa6HbCmEQ2lV7yUU+eO8HkjsQuRcOiJWN21GKQHVXg==
   dependencies:
     "@octokit/core" "3.6.0"
     conventional-commits-filter "2.0.7"
