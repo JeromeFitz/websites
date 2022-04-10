@@ -40,6 +40,9 @@ const NavigationMenuContentContainer = ({ id, items, layout }) => {
       css={{ flexDirection: 'column' }}
       onMouseLeave={() => setFocused(null)}
     >
+      {/* @todo(react-18) */}
+      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+      {/* @ts-ignore */}
       <LayoutGroup id={`nmlc-${id}`}>
         {isCallout && (
           <NavigationMenuListItem
