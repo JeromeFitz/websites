@@ -57,9 +57,9 @@ function MyApp({ Component, pageProps, router }: AppProps) {
   return (
     <>
       <ErrorBoundary>
-        {/* @todo(react-18)  */}
-        {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment  */}
-        {/* @ts-ignore  */}
+        {/* @todo(react-18) */}
+        {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+        {/* @ts-ignore */}
         <SWRConfig
           value={{
             fallback: { images: IMAGE__FALLBACKS__SHOWS },
