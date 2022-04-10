@@ -50,16 +50,16 @@
   },
   "dependencies": {
     "@babel/eslint-parser": "7.17.0",
-    "@jeromefitz/codestyle": "8.0.22",
-    "@jeromefitz/conventional-gitmoji": "3.0.2",
-    "@jeromefitz/git-cz": "14.2.3",
-    "@jeromefitz/release-notes-generator": "1.0.2",
-    "@jeromefitz/semantic": "9.0.3",
+    "@jeromefitz/codestyle": "8.0.24",
+    "@jeromefitz/conventional-gitmoji": "3.0.3",
+    "@jeromefitz/git-cz": "14.2.4",
+    "@jeromefitz/release-notes-generator": "1.0.4",
+    "@jeromefitz/semantic": "9.0.4",
     "@types/is-ci": "3.0.0",
     "@types/jest": "27.4.1",
     "@types/lodash": "4.14.181",
     "@types/node": "16.11.7",
-    "@types/react": "17.0.43",
+    "@types/react": "18.0.1",
     "@types/title": "3.4.1",
     "@types/uuid": "8.3.4",
     "dotenv": "16.0.0",
@@ -72,8 +72,8 @@
     "semantic-release-monorepo": "7.0.5",
     "ts-jest": "27.1.4",
     "ts-node": "10.7.0",
-    "tsup": "5.12.2",
-    "turbo": "1.1.10",
+    "tsup": "5.12.4",
+    "turbo": "1.2.1",
     "typescript": "4.5.5"
   }
 }

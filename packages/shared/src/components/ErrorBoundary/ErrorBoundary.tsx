@@ -6,7 +6,11 @@ import {
 } from '@jeromefitz/design-system/components'
 import * as React from 'react'
 
-class ErrorBoundary extends React.Component {
+type PropsChildren = {
+  children?: React.ReactNode
+}
+
+class ErrorBoundary extends React.Component<PropsChildren> {
   constructor(props: any) {
     super(props)
     this.state = { hasError: false }

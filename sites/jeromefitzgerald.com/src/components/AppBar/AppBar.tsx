@@ -1,12 +1,12 @@
 import {
   AppBar,
   Avatar,
+  Box,
   Container,
   Flex,
   SwitchIcon,
 } from '@jeromefitz/design-system/components'
 import { darkTheme } from '@jeromefitz/design-system/stitches.config'
-import { Media } from '@jeromefitz/shared/src/context/Media'
 import { Shadows } from '@jeromefitz/shared/src/styles/const'
 import {
   MoonIcon,
@@ -151,7 +151,13 @@ const AppBarImpl = ({}) => {
     >
       <MenuKBar />
       <Container size="4">
-        <Media at="xs">
+        {/* equals="xs" */}
+        <Box
+          css={{
+            '@initial': { display: 'none' },
+            '@bp1': { display: 'none' },
+          }}
+        >
           <Flex
             css={{ width: '100%' }}
             direction="row"
@@ -202,8 +208,15 @@ const AppBarImpl = ({}) => {
               />
             </Flex>
           </Flex>
-        </Media>
-        <Media greaterThan="xs">
+        </Box>
+        {/* greaterThan="xs" */}
+        <Box
+          css={{
+            display: 'none',
+            '@initial': { display: 'none' },
+            '@bp1': { display: 'flex' },
+          }}
+        >
           <Flex
             css={{ width: '100%' }}
             direction="row"
@@ -287,7 +300,7 @@ const AppBarImpl = ({}) => {
               </Flex>
             </Flex>
           </Flex>
-        </Media>
+        </Box>
       </Container>
     </AppBar>
   )

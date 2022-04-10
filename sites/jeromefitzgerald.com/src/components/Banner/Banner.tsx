@@ -9,7 +9,6 @@ import {
   Text,
 } from '@jeromefitz/design-system/components'
 // import { darkTheme } from '@jeromefitz/design-system/stitches.config'
-import { Media } from '@jeromefitz/shared/src/context/Media'
 import { Shadows } from '@jeromefitz/shared/src/styles/const'
 import { ArrowTopRightIcon, CalendarIcon } from '@radix-ui/react-icons'
 // import { format, parseISO } from 'date-fns'
@@ -112,16 +111,9 @@ const BannerImpl = () => {
             variant="violet"
           >
             {meta.left.icon}
-            <Media at="xs">
-              <Text css={{ fontWeight: 500 }} size="2">
-                {meta.left}
-              </Text>
-            </Media>
-            <Media greaterThan="xs">
-              <Text css={{ fontWeight: 500 }} size="2">
-                {meta.left.text}
-              </Text>
-            </Media>
+            <Text css={{ fontWeight: 500 }} size="2">
+              {meta.left.text}
+            </Text>
             <Separator orientation="vertical" />
             <Flex direction="row" gap="1">
               <Text css={{ fontWeight: 500 }} size="2">
