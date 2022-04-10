@@ -1,5 +1,4 @@
 import { getCssText, reset } from '@jeromefitz/design-system/stitches.config'
-import { mediaStyles } from '@jeromefitz/shared/src/context/Media'
 import { info, fontFace } from '@jeromefitz/shared/src/styles/fonts/Inter'
 import _map from 'lodash/map'
 import Document, {
@@ -38,14 +37,6 @@ class MyDocument extends Document<DocumentContext> {
           <style
             id="stitches"
             dangerouslySetInnerHTML={{ __html: getCssAndReset() }}
-          />
-          <style
-            id="appmedia"
-            type="text/css"
-            dangerouslySetInnerHTML={{
-              __html: mediaStyles.replace(/[\r\n]+/g, ' '),
-              // .replace(/fresnel/g, 'f'),
-            }}
           />
           {/* START: custom typeface */}
           {/* @ref: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link */}

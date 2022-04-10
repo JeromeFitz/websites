@@ -34,6 +34,7 @@ import {
   SunIcon,
   TwitterLogoIcon,
 } from '@radix-ui/react-icons'
+import { Priority } from 'kbar'
 import * as React from 'react'
 
 interface INavigationItem {
@@ -56,6 +57,7 @@ interface INavigationItem {
   url?: string
   type: 'url.internal' | 'url.external' | 'audio' | 'theme'
   description?: string
+  priority?: any
 }
 
 interface INavigation {
@@ -78,6 +80,7 @@ interface INavigation {
     //
     items?: INavigationItem[]
     type: 'url.internal' | 'url.external' | 'audio' | 'theme' | 'settings' | 'social'
+    priority?: any
   }
 }
 
@@ -86,6 +89,7 @@ const navigation: INavigation = {
     active: true,
     id: 'events',
     icon: <CalendarIcon />,
+    priority: Priority.HIGH,
     order: 0,
     // title: 'Next Event',
     title: 'Menu',
@@ -136,6 +140,7 @@ const navigation: INavigation = {
     active: true,
     id: 'shows',
     icon: <StarIcon />,
+    priority: Priority.NORMAL,
     order: 10,
     title: 'Shows',
     type: 'url.internal',
@@ -211,6 +216,7 @@ const navigation: INavigation = {
     iconKbarOverride: (
       <MicrophoneIcon className="hi2ri" style={cssIconHeroToRadix} />
     ),
+    priority: Priority.NORMAL,
     order: 20,
     title: 'Podcasts',
     type: 'url.internal',
@@ -234,6 +240,7 @@ const navigation: INavigation = {
         // subtitle: '‎',
         subtitle: null,
         type: 'url.internal',
+        description: 'testing',
       },
       {
         id: 'knockoffs',
@@ -247,6 +254,7 @@ const navigation: INavigation = {
         // subtitle: '‎',
         subtitle: null,
         type: 'url.internal',
+        description: 'testing',
       },
       {
         title: 'View All',
@@ -254,12 +262,14 @@ const navigation: INavigation = {
         icon: <ListBulletIcon />,
         subtitle: 'Listing page for all Podcasts',
         type: 'url.internal',
+        description: 'testing',
       },
     ],
   },
   pages: {
     active: true,
     id: 'pages',
+    priority: Priority.NORMAL,
     order: 30,
     title: 'Pages',
     type: 'url.internal',
@@ -345,6 +355,7 @@ const navigation: INavigation = {
     active: true,
     id: 'social',
     icon: <Share1Icon />,
+    priority: Priority.LOW,
     order: 40,
     title: 'Social',
     type: 'social',
@@ -410,6 +421,7 @@ const navigation: INavigation = {
     active: true,
     id: 'settings',
     icon: <GearIcon />,
+    priority: Priority.LOW,
     order: 50,
     title: 'Settings',
     type: 'settings',
