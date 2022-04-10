@@ -74,7 +74,9 @@ const css_invertSelection = {
   backgroundColor: '$colors$gray1',
   color: '$colors$gray12',
 }
-
+// @todo(react-18)
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const StyledBox = styled('div', {
   position: 'relative',
   mb: '8px',
@@ -106,7 +108,9 @@ const StyledBox = styled('div', {
     border: '2px solid $colors$violet8',
   },
 })
-
+// @todo(react-18)
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const StyledBorder = styled('div', {
   position: 'absolute',
   left: 0,
@@ -130,7 +134,9 @@ const StyledBorder = styled('div', {
     opacity: 0,
   },
 })
-
+// @todo(react-18)
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const StyledLink = styled('a', {
   position: 'absolute',
   left: 0,
@@ -601,6 +607,9 @@ const EventItem = ({ data, keyPrefix }: { data: Item; keyPrefix: string }) => {
         <StyledBorder />
       </StyledBox>
       <VisuallyHidden.Root>
+        {/* @todo(react-18) */}
+        {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+        {/* @ts-ignore */}
         <Announce>
           <Heading as="h4">{title}</Heading>
         </Announce>

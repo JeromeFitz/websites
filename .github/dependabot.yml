@@ -21,3 +21,4 @@ updates:
       - dependency-name: '@types/node'
       - dependency-name: 'kbar'
       - dependency-name: 'typescript'
+      - dependency-name: 'eslint-config-next'

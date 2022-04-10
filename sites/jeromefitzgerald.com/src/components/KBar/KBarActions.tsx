@@ -4,7 +4,7 @@ import { darkTheme } from '@jeromefitz/design-system/stitches.config'
 // import { cssIconHeroToRadix } from '@jeromefitz/shared/src/lib/constants'
 // import { parseISO } from 'date-fns'
 // import { format } from 'date-fns-tz'
-import { useKBar } from 'kbar'
+import { useKBar, Priority } from 'kbar'
 import _pick from 'lodash/pick'
 import { fetcher } from 'next-notion/src/lib/fetcher'
 import { useTheme } from 'next-themes'
@@ -137,11 +137,12 @@ const KBarActions = () => {
           icon: section?.iconKbarOverride ?? section?.icon,
           keywords: section?.keywords,
           name: section?.title,
+          priority: section?.priority ?? Priority.LOW,
           shortcut: section?.shortcut,
           subtitle: section?.subtitle,
           section: ['social', 'settings'].includes(section.id.toLocaleLowerCase())
             ? 'Social & Settings'
-            : null,
+            : 'Next Event',
           // //
           // perform: () => {
           //   void handleToast({ title: `(parent) ${section?.title} (${section.id})` })
@@ -195,18 +196,12 @@ const KBarActions = () => {
   }
 
   React.useEffect(() => {
-    // console.dir(`useEffect: navigationStatic`)
     const registerActions = getRegisterActions(navigationStatic)
     kbar.query.registerActions(registerActions)
     // @note(hooks) only execute once
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   React.useEffect(() => {
-    // console.dir(`useEffect: navigationSettings`)
-    // console.dir(`audio: ${audio}`)
-    // console.dir(`theme: ${theme}`)
-    // console.dir(navigationSettings)
-
     const data = []
     data.push({
       id: 'settings-audio',
