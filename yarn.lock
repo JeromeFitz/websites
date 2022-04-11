@@ -555,10 +555,10 @@
     semantic-release "19.0.2"
     title "3.4.4"
 
-"@jeromefitz/design-system@3.1.3":
-  version "3.1.3"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/design-system/-/design-system-3.1.3.tgz#6af5d416522c0f0cf7589e4fe6f76a54d045165f"
-  integrity sha512-VcqYjrbuom+qCHfISrMcAiuas2O96PqAGnEagS/fhakZzmhdKVOXQyuaZmbtEMM6jerEvMJdNpDeVTOwDSaWYg==
+"@jeromefitz/design-system@3.1.4":
+  version "3.1.4"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/design-system/-/design-system-3.1.4.tgz#e04d7f9e6193fcf5cee0cde24c067bee6737f161"
+  integrity sha512-bNkHXKqVxSJ31p+A24IPrxNUE1s1PE65YCRGfWALL0Wg/3+tKPEpi3PWl0h6wtw7iZXw07a+lqchpu7KsdTiaw==
   dependencies:
     "@mantine/hooks" "4.1.3"
     "@radix-ui/colors" "0.1.8"
