@@ -39,7 +39,7 @@
     "@stitches/react": "1.2.7",
     "fathom-client": "3.4.1",
     "lodash": "4.17.21",
-    "next": "12.1.5-canary.4",
+    "next": "12.1.5",
     "next-themes": "0.1.1",
     "plaiceholder": "2.3.0",
     "react": "18.0.0",
