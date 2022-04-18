@@ -41,7 +41,7 @@
   },
   "dependencies": {
     "@heroicons/react": "1.0.6",
-    "@jeromefitz/design-system": "3.1.3",
+    "@jeromefitz/design-system": "3.1.5",
     "@jeromefitz/notion": "3.1.2",
     "@jeromefitz/shared": "*",
     "@jeromefitz/spotify": "2.1.6",
