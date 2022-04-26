@@ -59,7 +59,7 @@
     "@types/jest": "27.4.1",
     "@types/lodash": "4.14.181",
     "@types/node": "16.11.7",
-    "@types/react": "18.0.1",
+    "@types/react": "18.0.7",
     "@types/title": "3.4.1",
     "@types/uuid": "8.3.4",
     "dotenv": "16.0.0",
