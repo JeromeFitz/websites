@@ -122,6 +122,9 @@ const nextConfig = {
   amp: false,
   assetPrefix: '',
   distDir: './.next',
+  // compiler: {
+  //   styledComponents: true,
+  // },
   compress: true,
   eslint: {
     // @note(eslint) we use @jeromefitz/codestyle opt out of next.js
