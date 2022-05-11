@@ -3,9 +3,15 @@
 - 👱🏻️ **Website**: [`jeromefitzgerald.com`](https://jeromefitzgerald.com)
 - 🧑🏼‍💻️ **Code**: [`./sites/jeromefitzgerald.com`](https://github.com/JeromeFitz/websites/tree/main/sites/jeromefitzgerald.com)
 - 📦️ **Packages**: [`@jeromefitz/packages`](https://github.com/JeromeFitz/packages)
-  - `@jeromefitz/codestyle`
+  - `@jeromefitz/eslint-config`
+  - `@jeromefitz/lint-staged`
+  - `@jeromefitz/prettier-config`
+  - `@jeromefitz/tsconfig`
+  - ~~`@jeromefitz/codestyle`~~
+  - `@jeromefitz/design-system`
   - `@jeromefitz/git-cz`
   - `@jeromefitz/notion`
+  - `@jeromefitz/release-notes-generator`
   - `@jeromefitz/semantic`
   - `@jeromefitz/spotify`
   - `@jeromefitz/utils`
