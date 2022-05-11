@@ -413,10 +413,10 @@
     semantic-release "19.0.2"
     title "3.4.4"
 
-"@jeromefitz/design-system@3.2.0-canary.1":
-  version "3.2.0-canary.1"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/design-system/-/design-system-3.2.0-canary.1.tgz#f2105419e35ac9659a6ee357827069420326367a"
-  integrity sha512-vNlv/q3qiiIkON3i3SkapRX65hOb/P+dA00rehB1Yd21d0SF3CM6Y3cd/LJEvPdbnJflK1UZEUvb7d19E3QngQ==
+"@jeromefitz/design-system@3.2.0-canary.2":
+  version "3.2.0-canary.2"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/design-system/-/design-system-3.2.0-canary.2.tgz#03d237ddd8d1bf3b1af183c25fab7cd23a6700d6"
+  integrity sha512-dnvjGEhZk2mn3p/TVqi9sNs3TllN5mqWTkpu83s9RXQhFHPyk8ax+EFESO82IbS9LwBTwLNIFGc4Lq6UYTUBmA==
   dependencies:
     "@mantine/hooks" "4.2.4"
     "@radix-ui/colors" "0.1.8"
@@ -817,11 +817,6 @@
   dependencies:
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
-
-"@mantine/hooks@4.2.2":
-  version "4.2.2"
-  resolved "https://registry.yarnpkg.com/@mantine/hooks/-/hooks-4.2.2.tgz#b124776724caad5ec7cf2c07b8942d8a55e1998e"
-  integrity sha512-H580XCbgH0UnmaiHOvWGGFcFpNnXwl3zFTFLAH8fhp80AeLhIoYdI9+kvbg4G69UZlZrhr1h9naWCN9O8gjizg==
 
 "@mantine/hooks@4.2.4":
   version "4.2.4"
@@ -4044,10 +4039,10 @@ dot-prop@^5.1.0:
   dependencies:
     is-obj "^2.0.0"
 
-dotenv@16.0.0:
-  version "16.0.0"
-  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.0.0.tgz#c619001253be89ebb638d027b609c75c26e47411"
-  integrity sha512-qD9WU0MPM4SWLPJy/r2Be+2WgQj8plChsyrCNQzW/0WjvcJQiKQJ9mH3ZgB3fxbUUxgc/11ZJ0Fi5KiimWGz2Q==
+dotenv@16.0.1:
+  version "16.0.1"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.0.1.tgz#8f8f9d94876c35dac989876a5d3a82a267fdce1d"
+  integrity sha512-1K6hR6wtk2FviQ4kEiSjFiH5rpzEVi8WW0x96aztHVMhEspNpc4DVOUTEHtEva5VThQ8IaBX1Pe4gSzpVVUsKQ==
 
 duplexer2@~0.1.0:
   version "0.1.4"
@@ -5293,10 +5288,10 @@ humanize-ms@^1.2.1:
   dependencies:
     ms "^2.0.0"
 
-husky@7.0.4:
-  version "7.0.4"
-  resolved "https://registry.yarnpkg.com/husky/-/husky-7.0.4.tgz#242048245dc49c8fb1bf0cc7cfb98dd722531535"
-  integrity sha512-vbaCKN2QLtP/vD4yvs6iz6hBEo6wkSzs8HpRah1Z6aGmF2KW5PdYuAd7uX5a+OyBZHBhd+TFLqgjUgytQr4RvQ==
+husky@8.0.1:
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/husky/-/husky-8.0.1.tgz#511cb3e57de3e3190514ae49ed50f6bc3f50b3e9"
+  integrity sha512-xs7/chUH/CKdOCs7Zy0Aev9e/dKOMZf3K1Az1nar3tzlv0jfqnYtu235bstsWTmXOR0EfINrPa97yy4Lz6RiKw==
 
 hyphenate-style-name@^1.0.2:
   version "1.0.4"
@@ -9491,10 +9486,10 @@ ts-interface-checker@^0.1.9:
   resolved "https://registry.yarnpkg.com/ts-interface-checker/-/ts-interface-checker-0.1.13.tgz#784fd3d679722bc103b1b4b8030bcddb5db2a699"
   integrity sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==
 
-ts-jest@28.0.1:
-  version "28.0.1"
-  resolved "https://registry.yarnpkg.com/ts-jest/-/ts-jest-28.0.1.tgz#626b4d7d5c386f88f4813d959ffc4ca0a8ffef96"
-  integrity sha512-PbkbitaT/9ZYAqqzk3UYTvCq080Seo46T3m/AdwcZ0D8WH2uBhG6PvA8oOAWsZIknzPQU66fYobvFCL8IqIhmg==
+ts-jest@28.0.2:
+  version "28.0.2"
+  resolved "https://registry.yarnpkg.com/ts-jest/-/ts-jest-28.0.2.tgz#e4026357006731f96a033b94db89d01e0d3c0591"
+  integrity sha512-IOZMb3D0gx6IHO9ywPgiQxJ3Zl4ECylEFwoVpENB55aTn5sdO0Ptyx/7noNBxAaUff708RqQL4XBNxxOVjY0vQ==
   dependencies:
     bs-logger "0.x"
     fast-json-stable-stringify "2.x"
