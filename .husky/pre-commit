@@ -2,5 +2,5 @@
 [ -n "$CI" ] && exit 0
 . "$(dirname "$0")/_/husky.sh"
 
-# yarn lint-staged
-node ./node_modules/@jeromefitz/codestyle/node_modules/.bin/lint-staged
+yarn lint-staged
+# node ./node_modules/@jeromefitz/lint-staged/node_modules/.bin/lint-staged
