@@ -403,6 +403,16 @@
   resolved "https://registry.yarnpkg.com/@istanbuljs/schema/-/schema-0.1.3.tgz#e45e384e4b8ec16bce2fd903af78450f6bf7ec98"
   integrity sha512-ZXRY4jNvVgSVQ8DL3LTcakaAtXwTVUxE81hslsyD2AtoXW/wVob10HkOJ1X/pAlcI7D+2YoZKg5do8G/w6RYgA==
 
+"@jeromefitz/conventional-gitmoji@3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/conventional-gitmoji/-/conventional-gitmoji-3.1.0.tgz#e355d01ee1d5818102d5d5c1393af5e2efe8f96b"
+  integrity sha512-M/UkSA+hRgKMRNs4rC6rjOh4I/ddJa0O6Oi0qX2PiC33O2+0o6GPny+OSzKLvHHmtUok83XeGqBa4FZ5VaitfA==
+  dependencies:
+    grapheme-splitter "1.0.4"
+    lodash "4.17.21"
+    semantic-release "19.0.2"
+    title "3.4.4"
+
 "@jeromefitz/conventional-gitmoji@3.1.0-canary.1":
   version "3.1.0-canary.1"
   resolved "https://registry.yarnpkg.com/@jeromefitz/conventional-gitmoji/-/conventional-gitmoji-3.1.0-canary.1.tgz#5c55484e32785fbe1abca9bae77ee9c6c0bc6720"
@@ -413,10 +423,10 @@
     semantic-release "19.0.2"
     title "3.4.4"
 
-"@jeromefitz/design-system@3.2.0-canary.3":
-  version "3.2.0-canary.3"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/design-system/-/design-system-3.2.0-canary.3.tgz#ca1c9f3217913148eac2a75b700357be0ca2ba47"
-  integrity sha512-f7UXOQv8MWnfI2MS2vtlpmuIJJ+szMMagm2wzgtJmYK9sWuXhX2GxxTs3ouazc900In6Xz7D0x1cJGm1b2t7fA==
+"@jeromefitz/design-system@3.2.0":
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/design-system/-/design-system-3.2.0.tgz#bdfeab860ec2659abbd60cb9032156a7d2a58c2e"
+  integrity sha512-LLYbJoQNjaaasqI8+N02OCc7akZgbAkeyYdqYCOGdW80MF1st8XneIRveZzJt9lvZElf8bGL0uiSp6RLpQns7Q==
   dependencies:
     "@mantine/hooks" "4.2.4"
     "@radix-ui/colors" "0.1.8"
@@ -485,6 +495,25 @@
     smoothscroll-polyfill "0.4.4"
     swr "1.3.0"
 
+"@jeromefitz/eslint-config@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/eslint-config/-/eslint-config-1.0.0.tgz#daf5015ba4ad79746ab8bada80fa4df21c256d3a"
+  integrity sha512-6VKo7sJNtDDdeyBnX3bXzey2k+R9C2aa0KntNHf0ioiyzraFoJS3MSaO6ZyGYdt5OdLZkEiqHnNvD2FM9t+6bg==
+  dependencies:
+    "@babel/eslint-parser" "7.17.0"
+    "@typescript-eslint/eslint-plugin" "5.23.0"
+    "@typescript-eslint/parser" "5.23.0"
+    eslint "8.15.0"
+    eslint-config-next "12.1.6"
+    eslint-config-prettier "8.5.0"
+    eslint-plugin-import "2.26.0"
+    eslint-plugin-jest "26.2.1"
+    eslint-plugin-jsx-a11y "6.5.1"
+    eslint-plugin-react "7.29.4"
+    eslint-plugin-react-hooks "4.5.0"
+    prettier "2.6.2"
+    pretty-quick "3.1.3"
+
 "@jeromefitz/eslint-config@1.0.0-canary.2":
   version "1.0.0-canary.2"
   resolved "https://registry.yarnpkg.com/@jeromefitz/eslint-config/-/eslint-config-1.0.0-canary.2.tgz#6d6d8f81a93572feae22042c8f1d8307bf8e7bb8"
@@ -504,6 +533,22 @@
     prettier "2.6.2"
     pretty-quick "3.1.3"
 
+"@jeromefitz/git-cz@14.3.0":
+  version "14.3.0"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/git-cz/-/git-cz-14.3.0.tgz#e0bcc4da1c63f8e27abffcad3943f812230e8825"
+  integrity sha512-61rMEDmS2dPA3Zj4dxSYjJHomkupRScSroNFo9kwUHAFV+yiELa5ldXIFvRuEtG8yb5dHtHSv1v+L/gYZeKM9Q==
+  dependencies:
+    colorize-template "1.0.0"
+    fast-json-stable-stringify "2.1.0"
+    fuzzy "0.1.3"
+    inquirer "8.2.4"
+    inquirer-autocomplete-prompt "2.0.0"
+    lodash "4.17.21"
+    minimist "1.2.6"
+    picocolors "1.0.0"
+    shellsync "0.2.2"
+    word-wrap "1.2.3"
+
 "@jeromefitz/git-cz@14.3.0-canary.1":
   version "14.3.0-canary.1"
   resolved "https://registry.yarnpkg.com/@jeromefitz/git-cz/-/git-cz-14.3.0-canary.1.tgz#8344d5570874bacdef7934946751793b95b62997"
@@ -520,6 +565,13 @@
     shellsync "0.2.2"
     word-wrap "1.2.3"
 
+"@jeromefitz/lint-staged@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/lint-staged/-/lint-staged-1.0.0.tgz#d9237fcefb64ac8e6b85474fb1ec2d85b7a69dbb"
+  integrity sha512-S0VyaiPcBym3+Hi8zVEMNICP6j4hpy3zh9/RZVdeqXX9P1HWLPg/ylk36VxWN9jEg0WY9YX09YVG36ZbGzo+Sw==
+  dependencies:
+    lint-staged "12.4.1"
+
 "@jeromefitz/lint-staged@1.0.0-canary.1":
   version "1.0.0-canary.1"
   resolved "https://registry.yarnpkg.com/@jeromefitz/lint-staged/-/lint-staged-1.0.0-canary.1.tgz#5340e7fef155e2c9bd12add7b6e68bbb29de253c"
@@ -527,10 +579,10 @@
   dependencies:
     lint-staged "12.4.1"
 
-"@jeromefitz/notion@3.2.0-canary.2":
-  version "3.2.0-canary.2"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/notion/-/notion-3.2.0-canary.2.tgz#9defecb0539e08be7d7089c5dde751a5b7646b80"
-  integrity sha512-g3zlLNp/L+HCRDbBxJ/t+dEjeWNAHw96WgwUCnQDD9nqf86ytcf2QFJVaRisaw2017dJRACp/hJOSz9qrF75Sw==
+"@jeromefitz/notion@3.2.0":
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/notion/-/notion-3.2.0.tgz#b9b9e0290d16899861f3b74dc4e50cba3df71329"
+  integrity sha512-Zcy75tR2Q6pKhvfGvBouzB95wPyLHJ9uSlY3wtQ9PnD9pf0KptBjdn/dUbwDx60JByNxs5Kgslf3TTD0nauFbQ==
   dependencies:
     "@notionhq/client" "1.0.4"
     date-fns "2.28.0"
@@ -538,10 +590,28 @@
     github-slugger "1.4.0"
     lodash "4.17.21"
 
+"@jeromefitz/prettier-config@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/prettier-config/-/prettier-config-1.0.0.tgz#3783f0c96bd945d408d7e0bb2422c7904e8bfb25"
+  integrity sha512-8MRx4s9NqWeJbhINh9E6wRu+nZlxSmOR/2rHx4vjFZ7s8Yc1gZa00ZHFJFSzAsXudgvhhEaCvUEePWOFlPpdsQ==
+
 "@jeromefitz/prettier-config@1.0.0-canary.1":
   version "1.0.0-canary.1"
   resolved "https://registry.yarnpkg.com/@jeromefitz/prettier-config/-/prettier-config-1.0.0-canary.1.tgz#89032ce59c9567ccf3d326caccda85f148db5aed"
   integrity sha512-U2TCjQ8/+NwTG0J0FUAjTGBXGxi1Uh5gAIQRd12xA9aJN50f6jTzBGfjty59KPKEFCCaquaHWo2E4e0Qnms1Sg==
+
+"@jeromefitz/release-notes-generator@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/release-notes-generator/-/release-notes-generator-1.1.0.tgz#acbe16328aee1b8ce49acd9c23cc8b36ee5495d8"
+  integrity sha512-atbK+4j73wjaMejjqNjRyyTVr05vf7lwCiC0M+jCZOezSBvFLOB6rCtvI9OXG3tllSm1z0scQDaAt3NVJR05nA==
+  dependencies:
+    "@octokit/core" "3.6.0"
+    conventional-commits-filter "2.0.7"
+    conventional-commits-parser "3.2.4"
+    date-fns "2.28.0"
+    lodash "4.17.21"
+    read-pkg-up "7.0.1"
+    semver "7.3.7"
 
 "@jeromefitz/release-notes-generator@1.1.0-canary.1":
   version "1.1.0-canary.1"
@@ -555,6 +625,24 @@
     lodash "4.17.21"
     read-pkg-up "7.0.1"
     semver "7.3.7"
+
+"@jeromefitz/semantic@9.1.0":
+  version "9.1.0"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/semantic/-/semantic-9.1.0.tgz#8249833bdf0d7646fea9be96053ced0e4c0aad0b"
+  integrity sha512-i5hZUx5wnXGho8ZE/Pudc6Ua4C1CRu0zim/K6YfbX3VZdqoczmA7lMtnpKivKONrivrat+m7ZARM2lZ9qBBT/g==
+  dependencies:
+    "@octokit/core" "3.6.0"
+    "@semantic-release/commit-analyzer" "9.0.2"
+    "@semantic-release/exec" "6.0.3"
+    "@semantic-release/git" "10.0.1"
+    "@semantic-release/github" "8.0.4"
+    "@semantic-release/npm" "9.0.1"
+    "@semantic-release/release-notes-generator" "10.0.3"
+    grapheme-splitter "1.0.4"
+    lodash "4.17.21"
+    semantic-release "19.0.2"
+    semantic-release-commit-filter "1.0.2"
+    title "3.4.4"
 
 "@jeromefitz/semantic@9.1.0-canary.1":
   version "9.1.0-canary.1"
@@ -574,24 +662,29 @@
     semantic-release-commit-filter "1.0.2"
     title "3.4.4"
 
-"@jeromefitz/spotify@2.2.0-canary.1":
-  version "2.2.0-canary.1"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/spotify/-/spotify-2.2.0-canary.1.tgz#fbf7a97b79fb087c6cd14cb3bbab3ee6e36a2ca6"
-  integrity sha512-IzHjdlaBG/WNuEjHALLGPw0IItBUgB5UIcKhbdi9/qawSZWHjibbAZKaEUmL6OseGqDeWp/5OZ/cCeYQNBxi8A==
+"@jeromefitz/spotify@2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/spotify/-/spotify-2.2.0.tgz#05d4586b1cf526736abdf21ba7b8a00f2fb91530"
+  integrity sha512-wNZweTS31tT7SFMEa1BHPaePiDeXkMQqGN7rgASK+382VRATe03WxRIZBR9XTaq229KTqKwCMgzX6MjJaPU5hQ==
   dependencies:
     github-slugger "1.4.0"
     isomorphic-unfetch "3.1.0"
     plaiceholder "2.3.0"
+
+"@jeromefitz/tsconfig@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/tsconfig/-/tsconfig-1.0.0.tgz#c3c0809f12718de57b7a1f104a2cc6f32f89b3f6"
+  integrity sha512-KHCxPOqU+M3bQM/HDQDUU90053Qk6oYkdmaV/vxeYqtObdxBdtIfiYDChZUWe8J2UBGXNa5iwgy5cSLXlKjGwQ==
 
 "@jeromefitz/tsconfig@1.0.0-canary.1":
   version "1.0.0-canary.1"
   resolved "https://registry.yarnpkg.com/@jeromefitz/tsconfig/-/tsconfig-1.0.0-canary.1.tgz#98e0191bbd72764a911c97194f5969bc919b9b59"
   integrity sha512-vSRWrxKwzcyQJwQJsNTgKZdzil18n8EMWXd5T7r/OY0JXWjEaO7FmKvZkYNFNZMLPXhJxMi2SQYqMYjT58swRA==
 
-"@jeromefitz/utils@2.1.0-canary.1":
-  version "2.1.0-canary.1"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/utils/-/utils-2.1.0-canary.1.tgz#d62d97dd9fa242d3b2193b8cc4f9f744e746aea2"
-  integrity sha512-efBtvXL/lA69Kefgysj8FMKlR0KG8WLoZzhKRmWfc2evk7AIAH/WY1hIRvcLhK/LKXymnz8yIgUvJmwk74mTZA==
+"@jeromefitz/utils@2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/utils/-/utils-2.1.0.tgz#957ece09c7c481e13baeff805ab9cf3ebbb8411b"
+  integrity sha512-Zc28MTFGbliI4zAjXXxtttOPeZSXbKqE34yZuEpY3SAXvh1wYI046CvI1SJnccFwz0HkXRC9AZAZlOD7fCkmyw==
   dependencies:
     lodash "4.17.21"
 
