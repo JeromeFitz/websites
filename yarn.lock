@@ -527,10 +527,10 @@
   dependencies:
     lint-staged "12.4.1"
 
-"@jeromefitz/notion@3.2.0-canary.1":
-  version "3.2.0-canary.1"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/notion/-/notion-3.2.0-canary.1.tgz#c7af64f11489f564c4180034b0a38b8406c65fed"
-  integrity sha512-FSER2eHj5K0k/6qlUPJGYy669mlwuTcM3L6sDCChyVXx27Lv5tPmaVbbeLD51Lf4ZTbVzcRafglIOeZzFdcLAg==
+"@jeromefitz/notion@3.2.0-canary.2":
+  version "3.2.0-canary.2"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/notion/-/notion-3.2.0-canary.2.tgz#9defecb0539e08be7d7089c5dde751a5b7646b80"
+  integrity sha512-g3zlLNp/L+HCRDbBxJ/t+dEjeWNAHw96WgwUCnQDD9nqf86ytcf2QFJVaRisaw2017dJRACp/hJOSz9qrF75Sw==
   dependencies:
     "@notionhq/client" "1.0.4"
     date-fns "2.28.0"

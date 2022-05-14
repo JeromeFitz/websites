@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "@jeromefitz/design-system": "3.2.0-canary.3",
-    "@jeromefitz/notion": "3.2.0-canary.1",
+    "@jeromefitz/notion": "3.2.0-canary.2",
     "@jeromefitz/utils": "2.1.0-canary.1",
     "@radix-ui/react-checkbox": "0.1.5",
     "@radix-ui/react-icons": "1.1.1",
