@@ -42,7 +42,7 @@
     "@radix-ui/react-icons": "1.1.1",
     "fast-json-stable-stringify": "2.1.0",
     "github-slugger": "1.4.0",
-    "ioredis": "5.0.4",
+    "ioredis": "5.0.5",
     "ms": "3.0.0-canary.1",
     "next": "12.1.6",
     "plaiceholder": "2.3.0",
