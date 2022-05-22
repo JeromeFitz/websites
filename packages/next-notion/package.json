@@ -35,14 +35,14 @@
     "---      ": ""
   },
   "dependencies": {
-    "@jeromefitz/design-system": "3.2.0",
+    "@jeromefitz/design-system": "3.2.2-canary.1",
     "@jeromefitz/notion": "3.2.0",
     "@jeromefitz/utils": "2.1.0",
     "@radix-ui/react-checkbox": "0.1.5",
     "@radix-ui/react-icons": "1.1.1",
     "fast-json-stable-stringify": "2.1.0",
     "github-slugger": "1.4.0",
-    "ioredis": "5.0.4",
+    "ioredis": "5.0.5",
     "ms": "3.0.0-canary.1",
     "next": "12.1.6",
     "plaiceholder": "2.3.0",
