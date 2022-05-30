@@ -43,7 +43,7 @@
     "@heroicons/react": "1.0.6",
     "@jeromefitz/conventional-gitmoji": "3.1.0",
     "@jeromefitz/design-system": "3.2.0",
-    "@jeromefitz/eslint-config": "1.0.0",
+    "@jeromefitz/eslint-config": "1.0.2",
     "@jeromefitz/git-cz": "14.3.0",
     "@jeromefitz/lint-staged": "1.0.0",
     "@jeromefitz/notion": "3.2.0",
