@@ -8,7 +8,7 @@ import {
   Paragraph,
   Separator,
   Text,
-} from '@jeromefitz/design-system/components'
+} from '@jeromefitz/design-system'
 import {
   Tooltip,
   TooltipTrigger,

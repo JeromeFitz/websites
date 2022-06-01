@@ -1,4 +1,5 @@
 import {
+  // darkTheme,
   Banner,
   Container,
   Flex,
@@ -7,8 +8,7 @@ import {
   Separator,
   // Skeleton,
   Text,
-} from '@jeromefitz/design-system/components'
-// import { darkTheme } from '@jeromefitz/design-system/stitches.config'
+} from '@jeromefitz/design-system'
 import { Shadows } from '@jeromefitz/shared/src/styles/const'
 import { ArrowTopRightIcon, CalendarIcon } from '@radix-ui/react-icons'
 // import { format, parseISO } from 'date-fns'

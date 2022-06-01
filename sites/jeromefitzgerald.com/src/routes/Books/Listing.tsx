@@ -11,7 +11,7 @@ import {
   Note,
   Sup,
   Text,
-} from '@jeromefitz/design-system/components'
+} from '@jeromefitz/design-system'
 import _filter from 'lodash/filter'
 import _map from 'lodash/map'
 import _orderBy from 'lodash/orderBy'

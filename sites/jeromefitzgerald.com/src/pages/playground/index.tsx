@@ -1,10 +1,4 @@
-import {
-  Box,
-  Button,
-  PageHeading,
-  Separator,
-  Text,
-} from '@jeromefitz/design-system/components'
+import { Box, Button, PageHeading, Separator, Text } from '@jeromefitz/design-system'
 import * as React from 'react'
 import { useSound } from 'use-sound'
 

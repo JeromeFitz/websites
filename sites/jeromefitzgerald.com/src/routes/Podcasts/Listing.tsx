@@ -1,4 +1,4 @@
-import { Box, Grid } from '@jeromefitz/design-system/components'
+import { Box, Grid } from '@jeromefitz/design-system'
 import type { Podcast as PodcastProperties } from '@jeromefitz/notion/schema'
 import { ContentNodes } from 'next-notion/src/app'
 

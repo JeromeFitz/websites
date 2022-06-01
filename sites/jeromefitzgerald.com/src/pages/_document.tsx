@@ -1,4 +1,4 @@
-import { getCssText, reset } from '@jeromefitz/design-system/stitches.config'
+import { getCssText, reset } from '@jeromefitz/design-system'
 import { info, fontFace } from '@jeromefitz/shared/src/styles/fonts/Inter'
 import _map from 'lodash/map'
 import Document, {

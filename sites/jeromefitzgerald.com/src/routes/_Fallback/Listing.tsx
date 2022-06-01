@@ -5,7 +5,7 @@ import {
   Heading,
   Note,
   Paragraph,
-} from '@jeromefitz/design-system/components'
+} from '@jeromefitz/design-system'
 import { ContentNodes } from 'next-notion/src/app'
 import NextLink from 'next/link'
 

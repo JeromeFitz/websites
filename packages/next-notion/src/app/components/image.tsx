@@ -1,5 +1,4 @@
-import { Box, Caption } from '@jeromefitz/design-system/components'
-import { darkTheme, keyframes } from '@jeromefitz/design-system/stitches.config'
+import { darkTheme, keyframes, Box, Caption } from '@jeromefitz/design-system'
 import Slugger from 'github-slugger'
 import _size from 'lodash/size'
 import NextImage from 'next/image'

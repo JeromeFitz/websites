@@ -1,4 +1,4 @@
-import { Box } from '@jeromefitz/design-system/components'
+import { Box } from '@jeromefitz/design-system'
 
 const Unsupported = ({ ...props }) => {
   // console.dir(`> Unsupported`)

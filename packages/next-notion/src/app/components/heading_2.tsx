@@ -1,4 +1,4 @@
-import { Heading } from '@jeromefitz/design-system/components'
+import { Heading } from '@jeromefitz/design-system'
 
 import getContentTypeDetail from '../utils/getContentTypeDetail'
 

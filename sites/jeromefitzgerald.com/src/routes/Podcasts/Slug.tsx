@@ -1,4 +1,4 @@
-import { Box } from '@jeromefitz/design-system/components'
+import { Box } from '@jeromefitz/design-system'
 import type { Podcast as PodcastProperties } from '@jeromefitz/notion/schema'
 import { ImageLead } from '@jeromefitz/shared/src/components'
 import { ContentNodes } from 'next-notion/src/app'

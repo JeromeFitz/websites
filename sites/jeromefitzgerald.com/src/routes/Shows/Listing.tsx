@@ -1,4 +1,4 @@
-import { Box, Container, Grid } from '@jeromefitz/design-system/components'
+import { Box, Container, Grid } from '@jeromefitz/design-system'
 import type { Show } from '@jeromefitz/notion/schema'
 
 import Card from './Card'
