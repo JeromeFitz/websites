@@ -6,7 +6,7 @@ import {
   CardOuter,
   ImageBlur,
   Card,
-} from '@jeromefitz/design-system/components'
+} from '@jeromefitz/design-system'
 import {
   css_card,
   CardContent,
@@ -14,7 +14,7 @@ import {
   CardImageContainer,
   CardMeta,
   CardTitle,
-} from '@jeromefitz/design-system/components/Card/Show'
+} from '@jeromefitz/design-system/components/Card'
 import type { Podcast as PodcastProperties } from '@jeromefitz/notion/schema'
 import { ImageWithBackgroundBlur } from '@jeromefitz/shared/src/components'
 import { IMAGE__PLACEHOLDER } from '@jeromefitz/shared/src/lib/constants'
@@ -144,7 +144,7 @@ const PodcastsCard = ({
               <Badge
                 key={`badge-${itemIdx}`}
                 size="2"
-                variant="violet"
+
                 css={{
                   border: '1px solid $colors$violet11',
                   fontWeight: '700',

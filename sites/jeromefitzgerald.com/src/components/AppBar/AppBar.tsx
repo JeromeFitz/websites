@@ -1,12 +1,12 @@
 import {
+  darkTheme,
   AppBar,
   Avatar,
   Box,
   Container,
   Flex,
   SwitchIcon,
-} from '@jeromefitz/design-system/components'
-import { darkTheme } from '@jeromefitz/design-system/stitches.config'
+} from '@jeromefitz/design-system'
 import { Shadows } from '@jeromefitz/shared/src/styles/const'
 import {
   MoonIcon,
@@ -189,7 +189,6 @@ const AppBarImpl = ({}) => {
                         },
                       },
                     }}
-                    variant="violet"
                     border="solid"
                     // onClick={handleClickLink}
                   />
@@ -248,7 +247,6 @@ const AppBarImpl = ({}) => {
                         },
                       },
                     }}
-                    variant="violet"
                     border="solid"
                     // onClick={handleClickLink}
                   />

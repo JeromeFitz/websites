@@ -8,7 +8,7 @@ import {
   Paragraph,
   Separator,
   Text,
-} from '@jeromefitz/design-system/components'
+} from '@jeromefitz/design-system'
 import {
   Tooltip,
   TooltipTrigger,
@@ -338,7 +338,6 @@ const FooterImpl = () => {
                     size="5"
                     src={`/static/images/bighead--jerome--dizzy.svg`}
                     aria-describedby="logoFooter"
-                    variant="violet"
                     border="solid"
                     ref={ref}
                   />

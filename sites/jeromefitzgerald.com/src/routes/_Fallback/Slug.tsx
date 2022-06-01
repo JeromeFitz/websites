@@ -1,4 +1,4 @@
-import { Box } from '@jeromefitz/design-system/components'
+import { Box } from '@jeromefitz/design-system'
 import { ImageLead } from '@jeromefitz/shared/src/components'
 import { ContentNodes } from 'next-notion/src/app'
 

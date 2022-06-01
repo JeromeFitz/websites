@@ -1,4 +1,4 @@
-import { PageHeading, SkeletonHeading } from '@jeromefitz/design-system/components'
+import { PageHeading, SkeletonHeading } from '@jeromefitz/design-system'
 import { ERROR__FALLBACK } from '@jeromefitz/shared/src/lib/constants'
 import { getNextPageStatus } from 'next-notion/src/utils'
 import dynamic from 'next/dynamic'

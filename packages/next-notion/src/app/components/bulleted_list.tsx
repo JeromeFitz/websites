@@ -1,4 +1,4 @@
-import { Flex } from '@jeromefitz/design-system/components'
+import { Flex } from '@jeromefitz/design-system'
 
 const bulleted_list = ({ children }) => {
   return (

@@ -5,7 +5,7 @@ import {
   Heading,
   Note,
   Paragraph,
-} from '@jeromefitz/design-system/components'
+} from '@jeromefitz/design-system'
 import { ContentNodes } from 'next-notion/src/app'
 import NextLink from 'next/link'
 
@@ -24,7 +24,6 @@ const Item = ({ item, routeType }) => {
       <Badge
         key={`${item.id}--badge`}
         size="2"
-        variant="violet"
         css={{
           border: '1px solid $colors$violet11',
           fontWeight: '700',

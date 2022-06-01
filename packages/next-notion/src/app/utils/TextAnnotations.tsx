@@ -3,7 +3,7 @@
  * - Pass callback function _to_ `TextAnnotation` for Sounds
  * - Swap `nextSeo` to a process.env.NEXT_PUBLIC__SITE w/ https
  */
-import { Box, Code, Flex, Link } from '@jeromefitz/design-system/components'
+import { Box, Code, Flex, Link } from '@jeromefitz/design-system'
 import { ExternalLinkIcon } from '@radix-ui/react-icons'
 import dynamic from 'next/dynamic'
 import NextLink from 'next/link'

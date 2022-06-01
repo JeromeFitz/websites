@@ -1,12 +1,17 @@
 import '@jeromefitz/shared/src/styles/chrome.css'
 
-import { Container, Section } from '@jeromefitz/design-system/components'
-import { globalCss } from '@jeromefitz/design-system/stitches.config'
+import {
+  globalCss,
+  globalStyles as globalStylesDefault,
+  Container,
+  Section,
+} from '@jeromefitz/design-system'
 import { ErrorBoundary, NProgress } from '@jeromefitz/shared/src/components'
 import { Providers } from '@jeromefitz/shared/src/context/Providers'
 import { useAnalytics } from '@jeromefitz/shared/src/lib/analytics'
 import { IMAGE__FALLBACKS__SHOWS } from '@jeromefitz/shared/src/lib/constants'
-import globalStyles from '@jeromefitz/shared/src/styles/global'
+import { globalStyles as globalStylesLocal } from '@jeromefitz/shared/src/styles/globalStyles'
+import _merge from 'lodash/merge'
 import type { AppProps, NextWebVitalsMetric } from 'next/app'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
@@ -32,6 +37,8 @@ const Footer = dynamic(() => import('~components/Footer'), {
 pluralRules.map(({ rule, replacement }) =>
   pluralize.addPluralRule(rule, replacement)
 )
+
+const globalStyles = _merge(globalStylesDefault, globalStylesLocal)
 
 function MyApp({ Component, pageProps, router }: AppProps) {
   globalCss(globalStyles)()

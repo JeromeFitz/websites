@@ -1,4 +1,4 @@
-import { Button, Flex, Kbd } from '@jeromefitz/design-system/components'
+import { Button, Flex, Kbd } from '@jeromefitz/design-system'
 import {
   Tooltip,
   TooltipTrigger,

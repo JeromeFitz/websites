@@ -1,4 +1,4 @@
-import { Button, Note, PageHeading } from '@jeromefitz/design-system/components'
+import { Button, Note, PageHeading } from '@jeromefitz/design-system'
 import { format, parseISO } from 'date-fns'
 import useSWR from 'swr'
 
@@ -90,7 +90,6 @@ const Layout = ({ children, info, preview = false, routeType, url }) => {
             ghost
             href="/api/v1/cms/preview-clear?clear=true"
             size="2"
-            variant="red"
           >
             Exit Preview Mode
           </Button>

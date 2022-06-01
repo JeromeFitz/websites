@@ -3,6 +3,7 @@
  */
 import { LocationMarkerIcon, TagIcon } from '@heroicons/react/outline'
 import {
+  styled,
   Box,
   ButtonMarketing,
   Flex,
@@ -11,8 +12,7 @@ import {
   Paragraph,
   Section,
   Separator,
-} from '@jeromefitz/design-system/components'
-import { styled } from '@jeromefitz/design-system/stitches.config'
+} from '@jeromefitz/design-system'
 import type { Event as EventProperties } from '@jeromefitz/notion/schema'
 import { ArrowRightIcon, ClockIcon } from '@radix-ui/react-icons'
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
@@ -35,7 +35,7 @@ import * as React from 'react'
 import { notionConfig, TAGS } from '~config/index'
 
 const Announce = dynamic(
-  () => import('@jeromefitz/design-system/components').then((mod) => mod.Announce),
+  () => import('@jeromefitz/design-system').then((mod) => mod.Announce),
   {
     ssr: false,
   }

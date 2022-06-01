@@ -6,7 +6,7 @@ import {
   Sheet,
   SheetContent,
   SheetTrigger,
-} from '@jeromefitz/design-system/components'
+} from '@jeromefitz/design-system'
 import { Cross1Icon, HamburgerMenuIcon } from '@radix-ui/react-icons'
 import { useTheme } from 'next-themes'
 import NextLink from 'next/link'

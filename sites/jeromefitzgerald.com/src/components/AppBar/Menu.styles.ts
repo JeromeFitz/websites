@@ -1,9 +1,10 @@
-import { Flex, SheetClose } from '@jeromefitz/design-system/components'
 import {
   // darkTheme,
   keyframes,
   styled,
-} from '@jeromefitz/design-system/stitches.config'
+  Flex,
+  SheetClose,
+} from '@jeromefitz/design-system'
 
 const slideIn = keyframes({
   from: { transform: '$$transformValue' },

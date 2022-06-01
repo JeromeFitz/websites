@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import {
+  useSpotify,
   Box,
   // Container,
   Flex,
@@ -12,8 +13,7 @@ import {
   RadioCardGroup,
   Section,
   Text,
-} from '@jeromefitz/design-system/components'
-import useSpotify from '@jeromefitz/design-system/hooks/useSpotify'
+} from '@jeromefitz/design-system'
 import { ExternalLinkIcon } from '@radix-ui/react-icons'
 import _find from 'lodash/find'
 import _map from 'lodash/map'
