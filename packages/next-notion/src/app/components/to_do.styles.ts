@@ -1,4 +1,4 @@
-import { darkTheme, styled } from '@jeromefitz/design-system/stitches.config'
+import { darkTheme, styled } from '@jeromefitz/design-system'
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox'
 import type * as Stitches from '@stitches/react'
 

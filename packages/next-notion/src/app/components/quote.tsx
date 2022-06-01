@@ -1,4 +1,4 @@
-import { Box, Flex, Text } from '@jeromefitz/design-system/components'
+import { Box, Flex, Text } from '@jeromefitz/design-system'
 import _size from 'lodash/size'
 import dynamic from 'next/dynamic'
 

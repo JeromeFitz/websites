@@ -11,7 +11,7 @@ import {
   DropdownMenuTriggerItem,
   Flex,
   IconButton,
-} from '@jeromefitz/design-system/components'
+} from '@jeromefitz/design-system'
 import { ChevronRightIcon, HamburgerMenuIcon } from '@radix-ui/react-icons'
 import { useTheme } from 'next-themes'
 import * as React from 'react'

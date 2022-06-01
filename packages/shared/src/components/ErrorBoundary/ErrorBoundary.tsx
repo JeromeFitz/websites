@@ -1,9 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import {
-  Container,
-  PageHeading,
-  Section,
-} from '@jeromefitz/design-system/components'
+import { Container, PageHeading, Section } from '@jeromefitz/design-system'
 import * as React from 'react'
 
 type PropsChildren = {

@@ -1,6 +1,5 @@
 // import { TicketIcon } from '@heroicons/react/outline'
-import { Box, Flex } from '@jeromefitz/design-system/components'
-import { darkTheme } from '@jeromefitz/design-system/stitches.config'
+import { darkTheme, Box, Flex } from '@jeromefitz/design-system'
 // import { cssIconHeroToRadix } from '@jeromefitz/shared/src/lib/constants'
 // import { parseISO } from 'date-fns'
 // import { format } from 'date-fns-tz'

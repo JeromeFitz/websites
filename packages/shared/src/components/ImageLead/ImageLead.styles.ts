@@ -1,4 +1,4 @@
-import { styled } from '@jeromefitz/design-system/stitches.config'
+import { styled } from '@jeromefitz/design-system'
 import NextImage from 'next/image'
 
 const ImageContainer = styled('div', {

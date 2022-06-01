@@ -1,4 +1,4 @@
-import { PageHeading } from '@jeromefitz/design-system/components'
+import { PageHeading } from '@jeromefitz/design-system'
 
 const OFFLINE = {
   description: 'You are currently offline. Please check your internet connection.',

@@ -1,4 +1,4 @@
-import { Box, Separator } from '@jeromefitz/design-system/components'
+import { Box, Separator } from '@jeromefitz/design-system'
 
 const divider = () => {
   return (

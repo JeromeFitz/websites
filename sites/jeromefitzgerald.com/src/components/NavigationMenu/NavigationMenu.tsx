@@ -16,12 +16,13 @@ import {
   // @custom
   NavigationMenuListContent,
   NavigationMenuListItem,
+  NavigationMenuListItemLink,
   NavigationMenuLinkTitle,
   NavigationMenuLinkText,
   NavigationMenuViewportPosition,
   Focused,
   Selected,
-} from '@jeromefitz/design-system/components'
+} from '@jeromefitz/design-system'
 import { cssIconHeroToRadix2 } from '@jeromefitz/shared/src/lib/constants'
 import { LayoutGroup } from 'framer-motion'
 import NextLink from 'next/link'
@@ -52,7 +53,7 @@ const NavigationMenuContentContainer = ({ id, items, layout }) => {
             key={calloutId}
           >
             <NextLink href="/" passHref>
-              <NavigationMenuLink
+              <NavigationMenuListItemLink
                 onClick={() => setSelected(calloutId)}
                 onKeyDown={(event: { key: string }) =>
                   event.key === 'Enter' ? setSelected(calloutId) : null
@@ -92,14 +93,14 @@ const NavigationMenuContentContainer = ({ id, items, layout }) => {
                   <Focused color="violet" layoutId="highlight" type="callout" />
                 ) : null}
                 {selected === calloutId ? <Selected layoutId="underline" /> : null}
-              </NavigationMenuLink>
+              </NavigationMenuListItemLink>
             </NextLink>
           </NavigationMenuListItem>
         )}
         {items.map((item) => (
           <NavigationMenuListItem css={{ mb: '$2' }} key={item.id}>
             <NextLink passHref href={item.url}>
-              <NavigationMenuLink
+              <NavigationMenuListItemLink
                 onClick={() => setSelected(item.id)}
                 onKeyDown={(event: { key: string }) =>
                   event.key === 'Enter' ? setSelected(item.id) : null
@@ -122,7 +123,7 @@ const NavigationMenuContentContainer = ({ id, items, layout }) => {
                   <Focused color="violet" layoutId="highlight" />
                 ) : null}
                 {selected === item.id ? <Selected layoutId="underline" /> : null}
-              </NavigationMenuLink>
+              </NavigationMenuListItemLink>
             </NextLink>
           </NavigationMenuListItem>
         ))}

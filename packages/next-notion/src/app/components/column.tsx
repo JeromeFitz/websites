@@ -1,4 +1,4 @@
-import { Flex } from '@jeromefitz/design-system/components'
+import { Flex } from '@jeromefitz/design-system'
 import _map from 'lodash/map'
 
 import getContentType from '../utils/getContentType'
