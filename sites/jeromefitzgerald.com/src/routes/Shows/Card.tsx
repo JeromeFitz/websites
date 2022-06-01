@@ -164,7 +164,6 @@ const ShowsCard = ({
                   <Badge
                     key={`badge-${itemIdx}`}
                     size="2"
-                    variant="violet"
                     css={{
                       border: '1px solid $colors$violet11',
                       fontWeight: '700',

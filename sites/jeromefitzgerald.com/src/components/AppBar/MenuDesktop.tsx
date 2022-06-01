@@ -8,7 +8,9 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-  DropdownMenuTriggerItem,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
   Flex,
   IconButton,
 } from '@jeromefitz/design-system'
@@ -121,34 +123,98 @@ const MenuDesktop = ({ handleSelect, navigationNonMutated }) => {
                     ) : (
                       <>
                         <DropdownMenu>
-                          <DropdownMenuTriggerItem
-                          // onMouseEnter={() => play()}
-                          // onMouseLeave={() => stop()}
-                          >
-                            <Flex align="center" justify="start" gap="2">
-                              {section.icon && section.icon}
-                              {section.title}
-                            </Flex>
-                            <RightSlot>
-                              <ChevronRightIcon />
-                            </RightSlot>
-                          </DropdownMenuTriggerItem>
-                          <DropdownMenuContent alignOffset={-5} sideOffset={6}>
-                            {!!items &&
-                              // @todo(complexity) 12
-                              // eslint-disable-next-line complexity
-                              items.map((item, itemIdx) => {
-                                // console.dir(`item:`)
-                                // console.dir(item)
-                                /**
-                                 * @hack until this is all dynamic
-                                 */
-                                if (item.id === 'settings-theme') {
-                                  const icon = item.icons[theme]
-                                  const text =
-                                    theme === 'light'
-                                      ? 'Toggle Theme to Dark'
-                                      : 'Toggle Theme to Light'
+                          <DropdownMenuSub>
+                            <DropdownMenuSubTrigger
+                            // onMouseEnter={() => play()}
+                            // onMouseLeave={() => stop()}
+                            >
+                              <Flex align="center" justify="start" gap="2">
+                                {section.icon && section.icon}
+                                {section.title}
+                              </Flex>
+                              <RightSlot>
+                                <ChevronRightIcon />
+                              </RightSlot>
+                            </DropdownMenuSubTrigger>
+                            <DropdownMenuSubContent alignOffset={-5} sideOffset={6}>
+                              {!!items &&
+                                // @todo(complexity) 12
+                                // eslint-disable-next-line complexity
+                                items.map((item, itemIdx) => {
+                                  // console.dir(`item:`)
+                                  // console.dir(item)
+                                  /**
+                                   * @hack until this is all dynamic
+                                   */
+                                  if (item.id === 'settings-theme') {
+                                    const icon = item.icons[theme]
+                                    const text =
+                                      theme === 'light'
+                                        ? 'Toggle Theme to Dark'
+                                        : 'Toggle Theme to Light'
+                                    return (
+                                      <React.Fragment key={`dml-${k}-${itemIdx}`}>
+                                        <DropdownMenuItem
+                                          // onMouseEnter={() => play()}
+                                          // onMouseLeave={() => stop()}
+                                          onSelect={(event) =>
+                                            handleSelect(event, item)
+                                          }
+                                          textValue={item.title}
+                                        >
+                                          <Flex
+                                            align="center"
+                                            justify="start"
+                                            gap="2"
+                                          >
+                                            {/* {item.icon && item.icon} */}
+                                            {item.icon && icon}
+                                            {text}
+                                          </Flex>
+                                          {item.rightSlot && (
+                                            <>
+                                              <RightSlot>{item.rightSlot}</RightSlot>
+                                            </>
+                                          )}
+                                        </DropdownMenuItem>
+                                        {item.separator && <DropdownMenuSeparator />}
+                                      </React.Fragment>
+                                    )
+                                  }
+                                  if (item.id === 'settings-audio') {
+                                    const icon = item.icons[audio.toString()]
+                                    const text = audio
+                                      ? 'Toggle Sound Off'
+                                      : 'Toggle Sound On'
+                                    return (
+                                      <React.Fragment key={`dml-${k}-${itemIdx}`}>
+                                        <DropdownMenuItem
+                                          // onMouseEnter={() => play()}
+                                          // onMouseLeave={() => stop()}
+                                          onSelect={(event) =>
+                                            handleSelect(event, item)
+                                          }
+                                          textValue={item.title}
+                                        >
+                                          <Flex
+                                            align="center"
+                                            justify="start"
+                                            gap="2"
+                                          >
+                                            {/* {item.icon && item.icon} */}
+                                            {item.icon && icon}
+                                            {text}
+                                          </Flex>
+                                          {item.rightSlot && (
+                                            <>
+                                              <RightSlot>{item.rightSlot}</RightSlot>
+                                            </>
+                                          )}
+                                        </DropdownMenuItem>
+                                        {item.separator && <DropdownMenuSeparator />}
+                                      </React.Fragment>
+                                    )
+                                  }
                                   return (
                                     <React.Fragment key={`dml-${k}-${itemIdx}`}>
                                       <DropdownMenuItem
@@ -160,9 +226,8 @@ const MenuDesktop = ({ handleSelect, navigationNonMutated }) => {
                                         textValue={item.title}
                                       >
                                         <Flex align="center" justify="start" gap="2">
-                                          {/* {item.icon && item.icon} */}
-                                          {item.icon && icon}
-                                          {text}
+                                          {item.icon && item.icon}
+                                          {item.title}
                                         </Flex>
                                         {item.rightSlot && (
                                           <>
@@ -173,60 +238,9 @@ const MenuDesktop = ({ handleSelect, navigationNonMutated }) => {
                                       {item.separator && <DropdownMenuSeparator />}
                                     </React.Fragment>
                                   )
-                                }
-                                if (item.id === 'settings-audio') {
-                                  const icon = item.icons[audio.toString()]
-                                  const text = audio
-                                    ? 'Toggle Sound Off'
-                                    : 'Toggle Sound On'
-                                  return (
-                                    <React.Fragment key={`dml-${k}-${itemIdx}`}>
-                                      <DropdownMenuItem
-                                        // onMouseEnter={() => play()}
-                                        // onMouseLeave={() => stop()}
-                                        onSelect={(event) =>
-                                          handleSelect(event, item)
-                                        }
-                                        textValue={item.title}
-                                      >
-                                        <Flex align="center" justify="start" gap="2">
-                                          {/* {item.icon && item.icon} */}
-                                          {item.icon && icon}
-                                          {text}
-                                        </Flex>
-                                        {item.rightSlot && (
-                                          <>
-                                            <RightSlot>{item.rightSlot}</RightSlot>
-                                          </>
-                                        )}
-                                      </DropdownMenuItem>
-                                      {item.separator && <DropdownMenuSeparator />}
-                                    </React.Fragment>
-                                  )
-                                }
-                                return (
-                                  <React.Fragment key={`dml-${k}-${itemIdx}`}>
-                                    <DropdownMenuItem
-                                      // onMouseEnter={() => play()}
-                                      // onMouseLeave={() => stop()}
-                                      onSelect={(event) => handleSelect(event, item)}
-                                      textValue={item.title}
-                                    >
-                                      <Flex align="center" justify="start" gap="2">
-                                        {item.icon && item.icon}
-                                        {item.title}
-                                      </Flex>
-                                      {item.rightSlot && (
-                                        <>
-                                          <RightSlot>{item.rightSlot}</RightSlot>
-                                        </>
-                                      )}
-                                    </DropdownMenuItem>
-                                    {item.separator && <DropdownMenuSeparator />}
-                                  </React.Fragment>
-                                )
-                              })}
-                          </DropdownMenuContent>
+                                })}
+                            </DropdownMenuSubContent>
+                          </DropdownMenuSub>
                         </DropdownMenu>
                       </>
                     )}

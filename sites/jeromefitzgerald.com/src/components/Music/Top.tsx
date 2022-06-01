@@ -557,20 +557,10 @@ const TopItem = ({ type }) => {
                       </Text>
                       {!!_title2 && (
                         <>
-                          <Text
-                            as="p"
-                            size="4"
-                            variant="gray"
-                            css={{ lineHeight: '1.25', my: 2 }}
-                          >
+                          <Text as="p" size="4" css={{ lineHeight: '1.25', my: 2 }}>
                             {_title2}
                           </Text>
-                          <Text
-                            as="p"
-                            size="3"
-                            variant="gray"
-                            css={{ lineHeight: '1.25', my: 2 }}
-                          >
+                          <Text as="p" size="3" css={{ lineHeight: '1.25', my: 2 }}>
                             {_title3}
                           </Text>
                         </>
@@ -578,12 +568,7 @@ const TopItem = ({ type }) => {
                       {genres && (
                         <Box role="listitem" css={{ ...css_info, my: '$2' }}>
                           <TagIcon className="hi2ri" style={css_icon} />
-                          <Text
-                            as="p"
-                            size="2"
-                            variant="gray"
-                            css={{ lineHeight: '1.25' }}
-                          >
+                          <Text as="p" size="2" css={{ lineHeight: '1.25' }}>
                             {genres}
                             {genresExtra}
                           </Text>

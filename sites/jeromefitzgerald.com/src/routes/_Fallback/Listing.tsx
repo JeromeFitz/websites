@@ -24,7 +24,6 @@ const Item = ({ item, routeType }) => {
       <Badge
         key={`${item.id}--badge`}
         size="2"
-        variant="violet"
         css={{
           border: '1px solid $colors$violet11',
           fontWeight: '700',

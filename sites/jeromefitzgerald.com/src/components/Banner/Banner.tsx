@@ -108,7 +108,6 @@ const BannerImpl = () => {
               py: '$2',
               width: '100%',
             }}
-            variant="violet"
           >
             {meta.left.icon}
             <Text css={{ fontWeight: 500 }} size="2">

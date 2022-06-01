@@ -189,7 +189,6 @@ const AppBarImpl = ({}) => {
                         },
                       },
                     }}
-                    variant="violet"
                     border="solid"
                     // onClick={handleClickLink}
                   />
@@ -248,7 +247,6 @@ const AppBarImpl = ({}) => {
                         },
                       },
                     }}
-                    variant="violet"
                     border="solid"
                     // onClick={handleClickLink}
                   />
