@@ -69,13 +69,12 @@ const PagesPlayground = () => {
       <Separator margin="my3" size="full" />
       <Box css={{ '& button': { mr: '$2' } }}>
         <Text css={{ my: '$2' }}>Audio is: {audio ? 'ON' : 'OFF'}</Text>
-        <Button size="2" variant="blue" onClick={handleAudio}>
+        <Button size="2" onClick={handleAudio}>
           audioToggle
         </Button>
         <Text css={{ my: '$2' }}>Counter: {counter}</Text>
         <Button
           size="2"
-          variant="blue"
           onClick={() => {
             counterDecrement()
             playGlugDown()
@@ -85,7 +84,6 @@ const PagesPlayground = () => {
         </Button>
         <Button
           size="2"
-          variant="blue"
           onClick={() => {
             counterIncrement()
             playGlugUp()
@@ -95,7 +93,6 @@ const PagesPlayground = () => {
         </Button>
         <Button
           size="2"
-          variant="blue"
           onClick={() => {
             counterReset()
             playRisingPops()

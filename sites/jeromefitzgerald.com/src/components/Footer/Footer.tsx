@@ -338,7 +338,6 @@ const FooterImpl = () => {
                     size="5"
                     src={`/static/images/bighead--jerome--dizzy.svg`}
                     aria-describedby="logoFooter"
-                    variant="violet"
                     border="solid"
                     ref={ref}
                   />
