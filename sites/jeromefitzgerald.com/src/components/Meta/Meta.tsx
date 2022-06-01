@@ -1,11 +1,4 @@
-import {
-  Box,
-  Flex,
-  Grid,
-  Heading,
-  Paragraph,
-  Text,
-} from '@jeromefitz/design-system/components'
+import { Box, Flex, Grid, Heading, Paragraph, Text } from '@jeromefitz/design-system'
 import { PROPERTIES } from '@jeromefitz/notion/constants'
 import type { Show } from '@jeromefitz/notion/schema'
 import getTitle from '@jeromefitz/notion/utils/getTitle'

@@ -1,4 +1,4 @@
-import { Box, Grid } from '@jeromefitz/design-system/components'
+import { Box, Grid } from '@jeromefitz/design-system'
 import type { Episode as EpisodeProperties } from '@jeromefitz/notion/schema'
 // import { ContentNodes } from 'next-notion/src/app'
 import _orderBy from 'lodash/orderBy'

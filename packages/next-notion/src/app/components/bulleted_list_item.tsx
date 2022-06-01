@@ -1,4 +1,4 @@
-import { Text } from '@jeromefitz/design-system/components'
+import { Text } from '@jeromefitz/design-system'
 
 import getContentTypeDetail from '../utils/getContentTypeDetail'
 

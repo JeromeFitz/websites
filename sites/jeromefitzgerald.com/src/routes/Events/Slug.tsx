@@ -14,7 +14,7 @@ import {
   Grid,
   Note,
   Paragraph,
-} from '@jeromefitz/design-system/components'
+} from '@jeromefitz/design-system'
 import type { Event as EventProperties } from '@jeromefitz/notion/schema'
 // import { ContentNodes } from 'next-notion/src/app'
 import {

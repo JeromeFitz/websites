@@ -1,5 +1,12 @@
 import { TagIcon } from '@heroicons/react/outline'
 import {
+  darkTheme,
+  styled,
+  // hooks
+  useOnScreen,
+  useSpotify,
+  useSWRInfinitePages,
+  // components
   Box,
   BoxGrab,
   Carousel,
@@ -16,12 +23,8 @@ import {
   Paragraph,
   Section,
   Text,
-} from '@jeromefitz/design-system/components'
-import { HeroImage } from '@jeromefitz/design-system/components/Hero/HeroImage'
-import useOnScreen from '@jeromefitz/design-system/hooks/useOnScreen'
-import useSpotify from '@jeromefitz/design-system/hooks/useSpotify'
-import useSWRInfinitePages from '@jeromefitz/design-system/hooks/useSWRInfinitePages'
-import { darkTheme, styled } from '@jeromefitz/design-system/stitches.config'
+} from '@jeromefitz/design-system'
+import { HeroImage } from '@jeromefitz/design-system/components/Hero'
 import { ArrowLeftIcon, ArrowRightIcon } from '@radix-ui/react-icons'
 import _map from 'lodash/map'
 import _size from 'lodash/size'
@@ -554,20 +557,10 @@ const TopItem = ({ type }) => {
                       </Text>
                       {!!_title2 && (
                         <>
-                          <Text
-                            as="p"
-                            size="4"
-                            variant="gray"
-                            css={{ lineHeight: '1.25', my: 2 }}
-                          >
+                          <Text as="p" size="4" css={{ lineHeight: '1.25', my: 2 }}>
                             {_title2}
                           </Text>
-                          <Text
-                            as="p"
-                            size="3"
-                            variant="gray"
-                            css={{ lineHeight: '1.25', my: 2 }}
-                          >
+                          <Text as="p" size="3" css={{ lineHeight: '1.25', my: 2 }}>
                             {_title3}
                           </Text>
                         </>
@@ -575,12 +568,7 @@ const TopItem = ({ type }) => {
                       {genres && (
                         <Box role="listitem" css={{ ...css_info, my: '$2' }}>
                           <TagIcon className="hi2ri" style={css_icon} />
-                          <Text
-                            as="p"
-                            size="2"
-                            variant="gray"
-                            css={{ lineHeight: '1.25' }}
-                          >
+                          <Text as="p" size="2" css={{ lineHeight: '1.25' }}>
                             {genres}
                             {genresExtra}
                           </Text>

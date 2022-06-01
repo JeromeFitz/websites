@@ -1,4 +1,5 @@
 import {
+  styled,
   Badge,
   Flex,
   Heading,
@@ -6,8 +7,7 @@ import {
   Paragraph,
   Separator,
   CardSpotify,
-} from '@jeromefitz/design-system/components'
-import { styled } from '@jeromefitz/design-system/stitches.config'
+} from '@jeromefitz/design-system'
 // import { ExternalLinkIcon } from '@radix-ui/react-icons'
 import Slugger from 'github-slugger'
 import _map from 'lodash/map'

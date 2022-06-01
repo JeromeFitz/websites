@@ -1,11 +1,10 @@
-import { Button, Flex, Kbd } from '@jeromefitz/design-system/components'
+import { darkTheme, Button, Flex, Kbd } from '@jeromefitz/design-system'
 import {
   Tooltip,
   TooltipTrigger,
   TooltipContent,
   TooltipArrow,
 } from '@jeromefitz/design-system/custom/Tooltip'
-import { darkTheme } from '@jeromefitz/design-system/stitches.config'
 import { MoonIcon, SunIcon } from '@radix-ui/react-icons'
 import { useTheme } from 'next-themes'
 import * as React from 'react'

@@ -1,4 +1,4 @@
-import { Paragraph } from '@jeromefitz/design-system/components'
+import { Paragraph } from '@jeromefitz/design-system'
 
 import getContentTypeDetail from '../utils/getContentTypeDetail'
 

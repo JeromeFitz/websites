@@ -1,10 +1,10 @@
 import {
+  darkTheme,
   Caption,
   Container,
   Section,
   Skeleton,
-} from '@jeromefitz/design-system/components'
-import { darkTheme } from '@jeromefitz/design-system/stitches.config'
+} from '@jeromefitz/design-system'
 import type { IGetPlaiceholderReturnCustom } from '@jeromefitz/shared/src/lib/types'
 import { Gradients } from '@jeromefitz/shared/src/styles/const'
 import _isEmpty from 'lodash/isEmpty'
