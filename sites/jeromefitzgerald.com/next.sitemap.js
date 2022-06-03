@@ -63,6 +63,7 @@ const getExcludes = (excludes) => {
   return _excludes
 }
 
+/** @type {import('next-sitemap').IConfig} */
 const config = {
   changefreq: 'weekly',
   exclude: getExcludes(excludes),
