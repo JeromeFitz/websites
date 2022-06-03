@@ -59,7 +59,7 @@
     "emoji-api": "2.0.1",
     "fast-json-stable-stringify": "2.1.0",
     "fathom-client": "3.4.1",
-    "framer-motion": "6.3.6",
+    "framer-motion": "6.3.10",
     "github-slugger": "1.4.0",
     "immer": "9.0.14",
     "ioredis": "5.0.6",
