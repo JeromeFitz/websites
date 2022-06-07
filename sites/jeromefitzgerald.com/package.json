@@ -67,7 +67,7 @@
     "ioredis": "5.0.6",
     "kbar": "0.1.0-beta.35",
     "ms": "3.0.0-canary.1",
-    "next": "12.1.7-canary.29",
+    "next": "12.1.7-canary.31",
     "next-compose-plugins": "2.2.1",
     "next-seo": "5.4.0",
     "next-sitemap": "3.0.5",
