@@ -100,7 +100,7 @@
     "@types/ms": "0.7.31",
     "@types/nprogress": "0.2.0",
     "@types/pluralize": "0.0.29",
-    "@types/ramda": "0.28.13",
+    "@types/ramda": "0.28.14",
     "@types/react": "18.0.11",
     "@types/react-dom": "18.0.5",
     "@types/title": "3.4.1",
