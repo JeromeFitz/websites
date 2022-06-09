@@ -4,6 +4,7 @@ import {
   BoxLink,
   Flex,
   Grid,
+  Icon,
   Link,
   Paragraph,
   Separator,
@@ -16,15 +17,6 @@ import {
   TooltipArrow,
 } from '@jeromefitz/design-system/custom/Tooltip'
 import { IconLink } from '@jeromefitz/shared/src/components'
-import {
-  ExternalLinkIcon,
-  // ChatBubbleIcon,
-  GitHubLogoIcon,
-  InfoCircledIcon,
-  InstagramLogoIcon,
-  LinkedInLogoIcon,
-  TwitterLogoIcon,
-} from '@radix-ui/react-icons'
 import dynamic from 'next/dynamic'
 import NextLink from 'next/link'
 import * as React from 'react'
@@ -128,7 +120,7 @@ const socials = [
     title: 'Colophon',
     tooltip: false,
     tooltipContent: '',
-    icon: <InfoCircledIcon />,
+    icon: <Icon.InfoCircled />,
     isExternal: false,
   },
   // {
@@ -136,7 +128,7 @@ const socials = [
   //   title: 'Contact',
   //   tooltip: false,
   //   tooltipContent: '',
-  //   icon: <ChatBubbleIcon />,
+  //   icon: <Icon.ChatBubble />,
   //   isExternal: false,
   // },
   {
@@ -144,7 +136,7 @@ const socials = [
     title: 'GitHub',
     tooltip: false,
     tooltipContent: '',
-    icon: <GitHubLogoIcon />,
+    icon: <Icon.GitHubLogo />,
     isExternal: true,
   },
   {
@@ -152,7 +144,7 @@ const socials = [
     title: 'Instagram',
     tooltip: false,
     tooltipContent: '',
-    icon: <InstagramLogoIcon />,
+    icon: <Icon.InstagramLogo />,
     isExternal: true,
   },
   {
@@ -160,7 +152,7 @@ const socials = [
     title: 'LinkedIn',
     tooltip: false,
     tooltipContent: '',
-    icon: <LinkedInLogoIcon />,
+    icon: <Icon.LinkedInLogo />,
     isExternal: true,
   },
   {
@@ -168,7 +160,7 @@ const socials = [
     title: 'Twitter',
     tooltip: false,
     tooltipContent: '',
-    icon: <TwitterLogoIcon />,
+    icon: <Icon.TwitterLogo />,
     isExternal: true,
   },
 ]
@@ -310,7 +302,7 @@ const FooterImpl = () => {
                         {title}
                         {isExternal && (
                           <Flex as="span" css={{ color: '$slate8', ml: '$1' }}>
-                            <ExternalLinkIcon />
+                            <Icon.ExternalLink />
                           </Flex>
                         )}
                       </IconLink>

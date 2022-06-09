@@ -2,12 +2,12 @@ import {
   Box,
   Button,
   Flex,
+  Icon,
   Separator,
   Sheet,
   SheetContent,
   SheetTrigger,
 } from '@jeromefitz/design-system'
-import { Cross1Icon, HamburgerMenuIcon } from '@radix-ui/react-icons'
 import { useTheme } from 'next-themes'
 import NextLink from 'next/link'
 import * as React from 'react'
@@ -95,7 +95,7 @@ const MenuMobile = ({ handleSelect, navigationNonMutated }) => {
             size="1"
             onClick={() => openSet(true)}
           >
-            <HamburgerMenuIcon />
+            <Icon.HamburgerMenu />
           </Button>
         </SheetTrigger>
 
@@ -130,7 +130,7 @@ const MenuMobile = ({ handleSelect, navigationNonMutated }) => {
               size="1"
               onClick={() => openSet(false)}
             >
-              <Cross1Icon />
+              <Icon.Cross1 />
             </Button>
           </StyledCloseButton>
           {navigationNonMutated &&

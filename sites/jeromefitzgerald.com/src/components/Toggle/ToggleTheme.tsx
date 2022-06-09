@@ -1,11 +1,10 @@
-import { darkTheme, Button, Flex, Kbd } from '@jeromefitz/design-system'
+import { darkTheme, Button, Flex, Icon, Kbd } from '@jeromefitz/design-system'
 import {
   Tooltip,
   TooltipTrigger,
   TooltipContent,
   TooltipArrow,
 } from '@jeromefitz/design-system/custom/Tooltip'
-import { MoonIcon, SunIcon } from '@radix-ui/react-icons'
 import { useTheme } from 'next-themes'
 import * as React from 'react'
 import { useSound } from 'use-sound'
@@ -15,7 +14,7 @@ import useStore from '~store/useStore'
 const ToggleTheme = (props) => {
   const { theme, setTheme } = useTheme()
   const content = `Toggle theme to ${theme === 'light' ? 'dark' : 'light'}`
-  const icon = theme === 'light' ? <SunIcon /> : <MoonIcon />
+  const icon = theme === 'light' ? <Icon.Sun /> : <Icon.Moon />
   const key1 = 't'
   const key2 = 't'
 

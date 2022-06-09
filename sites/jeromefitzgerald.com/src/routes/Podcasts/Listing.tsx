@@ -5,8 +5,7 @@ import { ContentNodes } from 'next-notion/src/app'
 import Card from './Card'
 
 // @refactor(types)
-// @refactor(types)
-interface Icon {
+interface IconProps {
   type: 'emoji'
   emoji: string
 }
@@ -14,7 +13,7 @@ interface ItemDefault {
   archived: boolean
   cover: any
   created_time: string // date
-  icon: Icon
+  icon: IconProps
   id: string
   last_edited_time: string // date
   url: string

@@ -12,9 +12,9 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   Flex,
+  Icon,
   IconButton,
 } from '@jeromefitz/design-system'
-import { ChevronRightIcon, HamburgerMenuIcon } from '@radix-ui/react-icons'
 import { useTheme } from 'next-themes'
 import * as React from 'react'
 import { useSound } from 'use-sound'
@@ -68,7 +68,7 @@ const MenuDesktop = ({ handleSelect, navigationNonMutated }) => {
               css={{ '&:hover': { cursor: 'pointer' } }}
               size="1"
             >
-              <HamburgerMenuIcon />
+              <Icon.HamburgerMenu />
             </IconButton>
           </DropdownMenuTrigger>
           <DropdownMenuContent
@@ -133,7 +133,7 @@ const MenuDesktop = ({ handleSelect, navigationNonMutated }) => {
                                 {section.title}
                               </Flex>
                               <RightSlot>
-                                <ChevronRightIcon />
+                                <Icon.ChevronRight />
                               </RightSlot>
                             </DropdownMenuSubTrigger>
                             <DropdownMenuSubContent alignOffset={-5} sideOffset={6}>
