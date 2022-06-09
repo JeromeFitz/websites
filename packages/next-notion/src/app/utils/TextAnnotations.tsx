@@ -3,8 +3,7 @@
  * - Pass callback function _to_ `TextAnnotation` for Sounds
  * - Swap `nextSeo` to a process.env.NEXT_PUBLIC__SITE w/ https
  */
-import { Box, Code, Flex, Link } from '@jeromefitz/design-system'
-import { ExternalLinkIcon } from '@radix-ui/react-icons'
+import { Box, Code, Flex, Icon, Link } from '@jeromefitz/design-system'
 import dynamic from 'next/dynamic'
 import NextLink from 'next/link'
 // import * as React from 'react'
@@ -76,7 +75,7 @@ const TextAnnotationLink = ({ children, href }) => {
       >
         {children}
         <Flex as="span" css={{ color: '$slate8', display: 'inline-flex', mx: '$1' }}>
-          <ExternalLinkIcon />
+          <Icon.ExternalLink />
         </Flex>
       </Link>
     )

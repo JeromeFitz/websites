@@ -5,11 +5,11 @@ import {
   CardSpotify,
   Flex,
   Heading,
+  // Icon,
   // Link,
   Paragraph,
   Separator,
 } from '@jeromefitz/design-system'
-// import { ExternalLinkIcon } from '@radix-ui/react-icons'
 import Slugger from 'github-slugger'
 import _map from 'lodash/map'
 import TextAnnotations from 'next-notion/src/app/utils/TextAnnotations'
@@ -169,7 +169,7 @@ const Artist = ({ year }) => {
                 ml: '$1',
               }}
             >
-              <ExternalLinkIcon />
+              <Icon.ExternalLink />
             </Flex>
           </Link>
         </>
@@ -257,7 +257,7 @@ const Song = ({ year }) => {
                 ml: '$1',
               }}
             >
-              <ExternalLinkIcon />
+              <Icon.ExternalLink />
             </Flex>
           </Link>
         </>

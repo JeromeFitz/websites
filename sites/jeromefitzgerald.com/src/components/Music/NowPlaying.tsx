@@ -3,12 +3,12 @@ import {
   Badge,
   Flex,
   Heading,
+  // Icon,
   Link,
   Paragraph,
   Separator,
   CardSpotify,
 } from '@jeromefitz/design-system'
-// import { ExternalLinkIcon } from '@radix-ui/react-icons'
 import Slugger from 'github-slugger'
 import _map from 'lodash/map'
 import _slice from 'lodash/slice'
@@ -170,7 +170,7 @@ const NowPlaying = () => {
                     ml: '$1',
                   }}
                 >
-                  <ExternalLinkIcon />
+                  <Icon.ExternalLink />
                 </Flex>
               </Link>
             </>
