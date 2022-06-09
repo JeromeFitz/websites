@@ -1,11 +1,10 @@
-import { Button, Flex, Kbd } from '@jeromefitz/design-system'
+import { Button, Flex, Icon, Kbd } from '@jeromefitz/design-system'
 import {
   Tooltip,
   TooltipTrigger,
   TooltipContent,
   TooltipArrow,
 } from '@jeromefitz/design-system/custom/Tooltip'
-import { SpeakerOffIcon, SpeakerModerateIcon } from '@radix-ui/react-icons'
 import * as React from 'react'
 import { useSound } from 'use-sound'
 
@@ -25,7 +24,7 @@ const ToggleAudio = (props) => {
     volume,
   })
   const content = `Toggle audio ${audio ? 'off' : 'on'}`
-  const icon = audio ? <SpeakerModerateIcon /> : <SpeakerOffIcon />
+  const icon = audio ? <Icon.SpeakerModerate /> : <Icon.SpeakerOff />
   const key1 = 't'
   const key2 = 'a'
 

@@ -1,4 +1,3 @@
-import { TagIcon } from '@heroicons/react/outline'
 import {
   darkTheme,
   styled,
@@ -19,13 +18,13 @@ import {
   Flex,
   FocusArea,
   Heading,
+  Icon,
   LoadingDots,
   Paragraph,
   Section,
   Text,
 } from '@jeromefitz/design-system'
 import { HeroImage } from '@jeromefitz/design-system/components/Hero'
-import { ArrowLeftIcon, ArrowRightIcon } from '@radix-ui/react-icons'
 import _map from 'lodash/map'
 import _size from 'lodash/size'
 import { fetcher } from 'next-notion/src/lib/fetcher'
@@ -567,7 +566,7 @@ const TopItem = ({ type }) => {
                       )}
                       {genres && (
                         <Box role="listitem" css={{ ...css_info, my: '$2' }}>
-                          <TagIcon className="hi2ri" style={css_icon} />
+                          <Icon.Tag style={css_icon} />
                           <Text as="p" size="2" css={{ lineHeight: '1.25' }}>
                             {genres}
                             {genresExtra}
@@ -614,7 +613,7 @@ const TopItem = ({ type }) => {
                           : !!error
                           ? info.error.cta
                           : info.success.cta}
-                        {/* <ArrowRightIcon />
+                        {/* <Icon.ArrowRight />
                           </Link>
                         </NextLink> */}
                       </Text>
@@ -636,7 +635,7 @@ const TopItem = ({ type }) => {
                 tabIndex={-1}
                 as={CarouselArrowButton}
               >
-                <ArrowLeftIcon />
+                <Icon.ArrowLeft />
               </CarouselPrevious>
             </Box>
             <Box
@@ -651,7 +650,7 @@ const TopItem = ({ type }) => {
                 tabIndex={-1}
                 as={CarouselArrowButton}
               >
-                <ArrowRightIcon />
+                <Icon.ArrowRight />
               </CarouselNext>
             </Box>
           </Carousel>
