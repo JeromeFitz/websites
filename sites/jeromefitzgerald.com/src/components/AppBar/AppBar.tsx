@@ -5,15 +5,10 @@ import {
   Box,
   Container,
   Flex,
+  Icon,
   SwitchIcon,
 } from '@jeromefitz/design-system'
 import { Shadows } from '@jeromefitz/shared/src/styles/const'
-import {
-  MoonIcon,
-  SpeakerOffIcon,
-  SpeakerModerateIcon,
-  SunIcon,
-} from '@radix-ui/react-icons'
 import { useTheme } from 'next-themes'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
@@ -278,8 +273,8 @@ const AppBarImpl = ({}) => {
                 <SwitchIcon
                   checked={theme === 'dark' || theme == undefined}
                   onCheckedChange={() => handleToggleTheme()}
-                  iconOn={<MoonIcon />}
-                  iconOff={<SunIcon />}
+                  iconOn={<Icon.Moon />}
+                  iconOff={<Icon.Sun />}
                   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                   // @ts-ignore
                   size="3"
@@ -289,8 +284,8 @@ const AppBarImpl = ({}) => {
                 <SwitchIcon
                   checked={audio}
                   onCheckedChange={() => audioToggle()}
-                  iconOn={<SpeakerModerateIcon />}
-                  iconOff={<SpeakerOffIcon />}
+                  iconOn={<Icon.SpeakerModerate />}
+                  iconOff={<Icon.SpeakerOff />}
                   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                   // @ts-ignore
                   size="3"

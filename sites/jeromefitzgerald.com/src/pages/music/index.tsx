@@ -5,6 +5,7 @@ import {
   // Container,
   Flex,
   Heading,
+  Icon,
   Link,
   Note,
   PageHeading,
@@ -14,7 +15,6 @@ import {
   Section,
   Text,
 } from '@jeromefitz/design-system'
-import { ExternalLinkIcon } from '@radix-ui/react-icons'
 import _find from 'lodash/find'
 import _map from 'lodash/map'
 import _size from 'lodash/size'
@@ -112,7 +112,7 @@ const Music = () => {
             as="span"
             css={{ display: 'inline-block', color: '$hiContrast', ml: '$1' }}
           >
-            <ExternalLinkIcon />
+            <Icon.ExternalLink />
           </Flex>
         </Link>
         .

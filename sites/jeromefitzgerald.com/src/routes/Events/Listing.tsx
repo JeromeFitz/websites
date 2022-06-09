@@ -1,7 +1,6 @@
 /**
  * @refactor Massive Component(s)
  */
-import { LocationMarkerIcon, TagIcon } from '@heroicons/react/outline'
 import {
   styled,
   Box,
@@ -9,12 +8,12 @@ import {
   Flex,
   Grid,
   Heading,
+  Icon,
   Paragraph,
   Section,
   Separator,
 } from '@jeromefitz/design-system'
 import type { Event as EventProperties } from '@jeromefitz/notion/schema'
-import { ArrowRightIcon, ClockIcon } from '@radix-ui/react-icons'
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
 import { getDate, getDay, getMonth, getYear, parseISO } from 'date-fns'
 import { format as _format } from 'date-fns-tz'
@@ -46,7 +45,7 @@ const notion = getNotion(notionConfig)
 /**
  * @refactor types
  */
-interface Icon {
+interface IconProps {
   type: 'emoji'
   emoji: string
 }
@@ -54,7 +53,7 @@ interface ItemDefault {
   archived: boolean
   cover: any
   created_time: string // date
-  icon: Icon
+  icon: IconProps
   id: string
   last_edited_time: string // date
   url: string
@@ -440,7 +439,7 @@ const EventItem = ({ data, keyPrefix }: { data: Item; keyPrefix: string }) => {
                   '@bp1': { justifyContent: 'flex-start' },
                 }}
               >
-                <ClockIcon
+                <Icon.Clock
                   style={{
                     width: '1rem',
                     marginRight: '0.25rem',
@@ -470,8 +469,7 @@ const EventItem = ({ data, keyPrefix }: { data: Item; keyPrefix: string }) => {
                   '@bp1': { justifyContent: 'flex-start' },
                 }}
               >
-                <LocationMarkerIcon
-                  className="hi2ri"
+                <Icon.LocationMarker
                   style={{
                     width: '1rem',
                     marginRight: '0.25rem',
@@ -508,8 +506,7 @@ const EventItem = ({ data, keyPrefix }: { data: Item; keyPrefix: string }) => {
                   '@bp1': { justifyContent: 'flex-start' },
                 }}
               >
-                <TagIcon
-                  className="hi2ri"
+                <Icon.Tag
                   style={{
                     width: '1rem',
                     marginRight: '0.25rem',
@@ -555,7 +552,7 @@ const EventItem = ({ data, keyPrefix }: { data: Item; keyPrefix: string }) => {
                       justifyContent: 'center',
                     }}
                     href={data?.properties.ticketUrl}
-                    icon={ArrowRightIcon}
+                    icon={Icon.ArrowRight}
                   >
                     Get Tickets
                   </ButtonMarketing>
@@ -564,7 +561,7 @@ const EventItem = ({ data, keyPrefix }: { data: Item; keyPrefix: string }) => {
                 //   as="button"
                 //   css={{ cursor: 'not-allowed !important' }}
                 //   disabled={true}
-                //   icon={ArrowRightIcon}
+                //   icon={Icon.ArrowRight}
                 // >
                 //   Get Tickets
                 // </ButtonMarketing>

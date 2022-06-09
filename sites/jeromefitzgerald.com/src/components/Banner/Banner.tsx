@@ -3,6 +3,7 @@ import {
   Banner,
   Container,
   Flex,
+  Icon,
   // IconButton,
   Link,
   Separator,
@@ -10,7 +11,6 @@ import {
   Text,
 } from '@jeromefitz/design-system'
 import { Shadows } from '@jeromefitz/shared/src/styles/const'
-import { ArrowTopRightIcon, CalendarIcon } from '@radix-ui/react-icons'
 // import { format, parseISO } from 'date-fns'
 import { fetcher } from 'next-notion/src/lib/fetcher'
 import { getNextPageStatus } from 'next-notion/src/utils'
@@ -81,9 +81,9 @@ const BannerImpl = () => {
   //     parseISO(item?.properties?.dateEvent?.start),
   //     `EEE MM/dd hh:mma`
   //   ).toUpperCase(),
-  //   leftIcon: <CalendarIcon />,
+  //   leftIcon: <Icon.Calendar />,
   //   rightExtended: item?.properties?.title,
-  //   rightIcon: <ArrowTopRightIcon />,
+  //   rightIcon: <Icon.ArrowTopRight />,
   //   url: `/events/${format(
   //     parseISO(item?.properties?.dateEvent?.start),
   //     `yyyy/MM/dd`
@@ -92,8 +92,8 @@ const BannerImpl = () => {
 
   const meta = {
     url: '/',
-    left: { icon: <CalendarIcon />, text: '' },
-    right: { icon: <ArrowTopRightIcon />, text: '' },
+    left: { icon: <Icon.Calendar />, text: '' },
+    right: { icon: <Icon.ArrowTopRight />, text: '' },
   }
 
   return (
@@ -125,7 +125,7 @@ const BannerImpl = () => {
               css={{ mr: '$4', position: 'absolute', right: 0 }}
               variant="ghost"
             >
-              <Cross1Icon />
+              <Icon.Cross1 />
             </IconButton> */}
           </Banner>
         </Link>
