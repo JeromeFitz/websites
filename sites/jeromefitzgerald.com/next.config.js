@@ -128,7 +128,9 @@ const nextConfig = {
     build: false,
   },
   experimental: {
+    browsersListForSwc: true,
     concurrentFeatures: false,
+    legacyBrowsers: false,
     serverComponents: false,
   },
   future: { strictPostcssConfiguration: true },
