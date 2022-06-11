@@ -31,8 +31,11 @@ const AppBarImpl = ({}) => {
    */
   // const [checkedTheme, checkedThemeSet] = React.useState(null)
   const [navigationNonMutated, navigationNonMutatedSet] = React.useState(null)
+  // @hack(hydration) @todo(hydration) please make this more efficient
+  const [mounted, setMounted] = React.useState(false)
   useEffectOnce(() => {
     navigationNonMutatedSet(navigation)
+    setMounted(true)
     // checkedThemeSet(theme === 'dark')
   })
 
@@ -271,7 +274,7 @@ const AppBarImpl = ({}) => {
               </Flex>
               <Flex>
                 <SwitchIcon
-                  checked={theme === 'dark' || theme == undefined}
+                  checked={theme === 'dark' || theme == undefined || !mounted}
                   onCheckedChange={() => handleToggleTheme()}
                   iconOn={<Icon.Moon />}
                   iconOff={<Icon.Sun />}
@@ -282,7 +285,7 @@ const AppBarImpl = ({}) => {
               </Flex>
               <Flex>
                 <SwitchIcon
-                  checked={audio}
+                  checked={audio || !mounted}
                   onCheckedChange={() => audioToggle()}
                   iconOn={<Icon.SpeakerModerate />}
                   iconOff={<Icon.SpeakerOff />}
