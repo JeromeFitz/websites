@@ -12,6 +12,7 @@ import { useTheme } from 'next-themes'
 import NextLink from 'next/link'
 import * as React from 'react'
 import { useSwipeable } from 'react-swipeable'
+// import { useEffectOnce } from 'react-use'
 import { useSound } from 'use-sound'
 
 import { CommandKButton } from '~components/CommandKButton'
@@ -81,6 +82,12 @@ const MenuMobile = ({ handleSelect, navigationNonMutated }) => {
     handlers.ref(el)
     myRef.current = el
   }
+
+  // @hack(hydration) @todo(hydration) please make this more efficient
+  // const [mounted, setMounted] = React.useState(false)
+  // useEffectOnce(() => {
+  //   setMounted(true)
+  // })
 
   return (
     <Flex gap="2">
