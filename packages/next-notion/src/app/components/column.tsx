@@ -11,7 +11,7 @@ const column = ({ content, has_children }) => {
   return (
     <Flex
       direction="column"
-      css={{ flex: '1 1', my: '$2', '@bp1': { my: '$2', paddingRight: '.75rem' } }}
+      css={{ flex: '1 1', my: '$3', '@bp1': { my: '$3', paddingRight: '$5' } }}
     >
       {nodeContent}
     </Flex>

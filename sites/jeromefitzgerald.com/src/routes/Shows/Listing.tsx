@@ -39,7 +39,7 @@ const ShowsListing = (props) => {
 
   return (
     <Container breakout>
-      <Box css={{ px: '$2', py: '$6' }}>
+      <Box css={{ px: '$3', py: '$6' }}>
         <Grid
           css={{
             rowGap: '$6',

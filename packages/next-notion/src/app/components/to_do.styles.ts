@@ -7,7 +7,7 @@ const StyledCheckbox = styled(CheckboxPrimitive.Root, {
   backgroundColor: '$colors$gray12',
   width: 25,
   height: 25,
-  borderRadius: 4,
+  borderRadius: '$0',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
