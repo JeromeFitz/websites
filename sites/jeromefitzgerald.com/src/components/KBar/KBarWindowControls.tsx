@@ -6,13 +6,13 @@ const KBarWindowControls = () => {
   const { query } = useKBar()
 
   return (
-    <Flex align="center" css={{ px: '$4', pt: '$4' }} gap="2">
+    <Flex align="center" css={{ px: '$5', pt: '$5' }} gap="2">
       <Box as="a" onClick={query.toggle}>
         <Box
           css={{
             cursor: 'pointer',
-            width: '$3',
-            height: '$3',
+            width: '$4',
+            height: '$4',
             borderRadius: '$round',
             backgroundColor: '$colors$slate10',
             '&:hover': { backgroundColor: '$colors$slate11' },
@@ -23,8 +23,8 @@ const KBarWindowControls = () => {
         <Box
           css={{
             cursor: 'pointer',
-            width: '$3',
-            height: '$3',
+            width: '$4',
+            height: '$4',
             borderRadius: '$round',
             backgroundColor: '$colors$slate8',
             '&:hover': { backgroundColor: '$colors$slate9' },

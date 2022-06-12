@@ -70,14 +70,11 @@ const PagesFont = () => {
         description={properties.seoDescription}
         title={properties.title}
       />
-      <Separator margin="my3" size="full" />
+      <Separator my="3" size="full" />
       <Text
         size="8"
         css={{
           ...css,
-          fontFeatureSettings: '"calt","salt"',
-          fontVariationSettings: '"wght" 900',
-          letterSpacing: '-0.045em !important',
         }}
       >
         {text}
@@ -85,9 +82,8 @@ const PagesFont = () => {
       <Text
         size="8"
         css={{
-          fontFeatureSettings:
-            '"calt" 1,"zero" 0,"ss03" 0,"cv01" 0,"cv05" 0,"cv08" 0,"cv09" 0,"cv10" 0, "salt"',
           ...css,
+          fontFeatureSettings: '"calt", "salt", "cv10"',
         }}
       >
         {text}

@@ -44,7 +44,8 @@ const Meta = ({ data, routeType }) => {
           css={{
             borderTop: '1px solid $hiContrast',
             fontSize: '$9',
-            fontWeight: 700,
+            fontVariationSettings: '"wght" $fontWeights$6',
+            fontWeight: '$fontWeights$6',
             mt: '$6',
             mb: '$4',
             pt: '$6',
@@ -101,7 +102,15 @@ const Rollup = ({ _key, data, rollupKey, routeType }) => {
           '@bp1': { gridColumnStart: metaSize > 4 ? 'span 2' : 'span 1' },
         }}
       >
-        <Heading size="3" css={{ borderTop: '1px solid $hiContrast', py: '$3' }}>
+        <Heading
+          size="2"
+          css={{
+            borderTop: '1px solid $hiContrast',
+            fontVariationSettings: '"wght" $fontWeights$5',
+            fontWeight: '$fontWeights$5',
+            py: '$3',
+          }}
+        >
           {title}
         </Heading>
         <Box as="ul">

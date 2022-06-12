@@ -63,25 +63,24 @@ const NavigationMenuContentContainer = ({ id, items, layout }) => {
                 focus
                 type="callout"
               >
-                <Box as="span" css={{ mx: '$1' }}>
+                <Box as="span" css={{ mx: '$2' }}>
                   <NavigationMenuLinkTitle
                     css={{
-                      fontSize: '1.125rem',
+                      fontSize: '$4',
                       color: '$loContrast',
-                      my: '$2',
+                      my: '$3',
                     }}
                   >
                     <>
                       <TicketIcon
-                        className="hi2ri"
-                        style={{ ...cssIconHeroToRadix2, marginBottom: '1rem' }}
+                        style={{ ...cssIconHeroToRadix2, marginBottom: '$5' }}
                       />
                       Upcoming Event Title
                     </>
                   </NavigationMenuLinkTitle>
                   <NavigationMenuLinkText
                     css={{
-                      fontSize: '0.875rem',
+                      fontSize: '$2',
                       color: '$hiContrast',
                       lineHeight: 1.3,
                     }}
@@ -98,7 +97,7 @@ const NavigationMenuContentContainer = ({ id, items, layout }) => {
           </NavigationMenuListItem>
         )}
         {items.map((item) => (
-          <NavigationMenuListItem css={{ mb: '$2' }} key={item.id}>
+          <NavigationMenuListItem css={{ mb: '$3' }} key={item.id}>
             <NextLink passHref href={item.url}>
               <NavigationMenuListItemLink
                 onClick={() => setSelected(item.id)}
@@ -111,7 +110,7 @@ const NavigationMenuContentContainer = ({ id, items, layout }) => {
               >
                 <span>
                   <NavigationMenuLinkTitle>
-                    <Flex align="center" direction="row" gap="1" justify="start">
+                    <Flex align="center" direction="row" gap="3" justify="start">
                       {!!item?.icon && item.icon} {item.title}
                     </Flex>
                   </NavigationMenuLinkTitle>
@@ -193,9 +192,9 @@ const NavigationMenuImpl = ({ navigationNonMutated }) => {
             htmlFor="title"
             css={{
               display: 'inline-flex',
-              fontWeight: 'bold',
+              fontWeight: '$7',
               lineHeight: '35px',
-              marginRight: 15,
+              marginRight: '$5',
             }}
           >
             Title
@@ -204,8 +203,8 @@ const NavigationMenuImpl = ({ navigationNonMutated }) => {
             css={{
               display: 'inline-flex',
               fontFamily: '$mono',
-              padding: '$3 $2',
-              my: '$1',
+              padding: '$4 $3',
+              my: '$2',
             }}
             type="text"
             id="title"

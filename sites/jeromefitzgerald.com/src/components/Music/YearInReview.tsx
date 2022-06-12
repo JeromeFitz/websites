@@ -95,7 +95,7 @@ const Artist = ({ year }) => {
       >
         <span>{artistName}</span>
       </Paragraph>
-      <Separator decorative margin="my5" size="full" />
+      <Separator decorative my="5" size="full" />
       <Paragraph
         size="2"
         css={{ color: '$hiContrast', fontWeight: '400', fontSize: '$6' }}
@@ -202,7 +202,7 @@ const Song = ({ year }) => {
       >
         <span>{artistName}</span>
       </Paragraph>
-      <Separator decorative margin="my5" size="full" />
+      <Separator decorative my="5" size="full" />
       <Paragraph
         size="2"
         css={{ color: '$hiContrast', fontWeight: 'bold', fontSize: '$6' }}

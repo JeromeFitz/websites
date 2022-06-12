@@ -10,8 +10,8 @@ const bulleted_list_item = ({ content, id }) => {
         css={{
           color: '$hiContrast',
           display: 'inline-block',
-          lineHeight: '25px',
-          mb: '$2',
+          lineHeight: '1.25',
+          mb: '$3',
         }}
       >
         {getContentTypeDetail({ content, id })}

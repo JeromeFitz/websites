@@ -26,7 +26,6 @@ const Item = ({ item, routeType }) => {
         size="2"
         css={{
           border: '1px solid $colors$violet11',
-          fontWeight: '700',
           mr: '$4',
           my: '$1',
         }}
