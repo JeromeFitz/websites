@@ -201,7 +201,7 @@ const getCatchAllDataFromApi = async ({
    * - Preview bypass
    *
    */
-  if (!info.properties?.isPublished && !preview) {
+  if (!info?.properties?.isPublished && !preview) {
     return { info: null, content: null, items: null, images: {} }
   }
   /**

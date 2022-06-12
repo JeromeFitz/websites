@@ -80,7 +80,15 @@ const ListItem = ({ item }) => {
   const { author, subtitle, title } = item
   return (
     <Text as="li" css={{ my: '$3', color: '$colors$gray12', '@bp1': { my: '$5' } }}>
-      <Text as="p" css={{ fontWeight: '700', color: 'inherit' }}>
+      <Text
+        as="p"
+        css={{
+          fontVariationSettings: '"wght" 700, "slnt" 0',
+          fontWeight: '700',
+          color: 'inherit',
+        }}
+        size="5"
+      >
         “{title}
         {subtitle && `: ${subtitle}`}”
         <Text
@@ -90,6 +98,7 @@ const ListItem = ({ item }) => {
             mt: '$2',
             color: 'inherit',
           }}
+          size="4"
         >
           {author}
         </Text>

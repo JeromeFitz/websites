@@ -1,6 +1,5 @@
 import { darkTheme } from '@jeromefitz/design-system'
-
-import { Gradients } from './const'
+import { Gradients } from '@jeromefitz/shared/src/styles/const'
 
 /**
  * @lol(inter) this was ... not working before!?
@@ -36,25 +35,40 @@ const globalCss = {
   body: {
     fontFeatureSettings: '"calt","zero","ss03","cv01","cv05","cv08","cv09","cv10"',
     fontVariantNumeric: 'unset !important',
-    fontVariationSettings: '"wght" 625, "slnt" 0',
+    fontVariationSettings: '"wght" 800, "slnt" 0',
     letterSpacing: '-0.045em',
   },
 
-  'h1, h2, h3, h4, h5': {
+  'h1, h2, h3, h4, h5, h1 > span, h2 > span, h3 > span, h4 > span, h5 > span': {
     fontWeight: 800,
     fontFeatureSettings: '"calt","zero","ss03","cv01","cv05","cv08","cv09","cv10"',
     fontVariantNumeric: 'unset !important',
-    fontVariationSettings: '"wght" 625, "slnt" 0',
+    fontVariationSettings: '"wght" 800, "slnt" 0',
     letterSpacing: '-0.045em',
   },
-
-  'p, span': {
+  'h1, h1 > span': {
+    fontWeight: 800,
+    fontVariationSettings: '"wght" 800, "slnt" 0',
+    letterSpacing: '-0.045em',
+  },
+  'h2, h2 > span': {
+    fontWeight: 600,
+    fontVariationSettings: '"wght" 600, "slnt" 0',
+    letterSpacing: '-0.04em',
+  },
+  'h3, h3 > span, h4, h4 > span, h5, h5 > span, h6, h6 > span': {
     fontWeight: 500,
+    fontVariationSettings: '"wght" 500, "slnt" 0',
+    letterSpacing: '-0.035em',
+  },
+  'p, p > span': {
+    fontWeight: 400,
     fontFeatureSettings:
       '"calt","kern","zero","ss03","cv01","cv05","cv08","cv09","cv10"',
     fontVariantNumeric: 'unset !important',
-    fontVariationSettings: '"wght" 625, "slnt" 0',
-    letterSpacing: '-0.06em !important',
+    fontVariationSettings: '"wght" 400, "slnt" 0',
+    letterSpacing: '-0.045em',
+    textIndent: '0.125rem',
   },
 
   'html.nprogress-busy': {

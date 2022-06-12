@@ -1,6 +1,7 @@
 import {
   styled,
   Badge,
+  Box,
   Flex,
   Heading,
   // Icon,
@@ -75,7 +76,11 @@ const NowPlaying = () => {
   return (
     <Section>
       <Container>
-        <Heading as="h3" size="4" css={{ mb: '$3' }}>
+        <Heading
+          as="h3"
+          size="4"
+          css={{ mb: '$3', fontVariationSettings: '"wght" 700, "slnt" 0' }}
+        >
           {title}
         </Heading>
         <Separator decorative size="full" />
@@ -110,16 +115,31 @@ const NowPlaying = () => {
         >
           <Paragraph
             size="2"
-            css={{ color: '$hiContrast', fontWeight: 'bold', fontSize: '$7' }}
+            css={{
+              color: '$hiContrast',
+              fontVariationSettings: '"wght" 600, "slnt" 0',
+              fontWeight: 'bold',
+              fontSize: '$7',
+            }}
           >
-            <span>{artist}</span>
+            <Box as="span" css={{ fontVariationSettings: 'inherit' }}>
+              {artist}
+            </Box>
           </Paragraph>
           <Separator decorative margin="my5" size="full" />
           <Paragraph
             size="2"
-            css={{ color: '$hiContrast', fontWeight: 'bold', fontSize: '$6' }}
+            css={{
+              color: '$hiContrast',
+              fontVariationSettings: '"wght" 600, "slnt" 0',
+              fontWeight: 'bold',
+              fontSize: '$6',
+            }}
           >
-            <span>{`“${track.name}”`}</span>
+            <Box
+              as="span"
+              css={{ fontVariationSettings: 'inherit' }}
+            >{`“${track.name}”`}</Box>
           </Paragraph>
           <Flex
             as="ul"
@@ -150,8 +170,21 @@ const NowPlaying = () => {
           </Flex>
           <Paragraph size="2" css={{ color: '$hiContrast', py: '$1' }}>
             <>
-              Off of “<strong>{album.name}</strong>” released in{' '}
-              <strong>{albumYear}</strong>.
+              Off of{' '}
+              <Box
+                as="strong"
+                css={{ fontVariationSettings: '"wght" 775, "slnt" 0' }}
+              >
+                “{album.name}”
+              </Box>{' '}
+              released in{' '}
+              <Box
+                as="strong"
+                css={{ fontVariationSettings: '"wght" 775, "slnt" 0' }}
+              >
+                {albumYear}
+              </Box>
+              .
             </>
           </Paragraph>
           {/* <Paragraph size="1" css={{ py: '$2' }}>
