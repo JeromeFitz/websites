@@ -24,7 +24,7 @@ const globalCss = {
   //   fontStyle: 'italic',
   //   fontWeight: '100 900',
   //   src: "url(/static/fonts/inter/inter-var-italic.woff2) format('woff2')",
-  //   fontDisplay: 'optional',
+  //   fontDisplay: 'swap',
   // },
 
   '::selection': {
