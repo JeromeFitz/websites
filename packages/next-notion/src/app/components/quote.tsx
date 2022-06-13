@@ -17,7 +17,7 @@ const quote = ({ content, id }) => {
     return (
       <Box
         css={{
-          py: '$4',
+          py: '$5',
         }}
       >
         <Flex
@@ -30,10 +30,10 @@ const quote = ({ content, id }) => {
             fontSize: '$6',
             justifyContent: 'flex-start',
             lineHeight: '1.5',
-            margin: '$1',
-            marginBottom: '$2',
-            padding: '$3',
-            paddingBottom: '$4',
+            margin: '$2',
+            marginBottom: '$3',
+            padding: '$4',
+            paddingBottom: '$5',
             verticalAlign: 'middle',
           }}
         >
@@ -55,7 +55,7 @@ const quote = ({ content, id }) => {
           <Text
             as="blockquote"
             css={{
-              ml: '$4',
+              ml: '$5',
               color: 'inherit',
               lineHeight: 'inherit',
               fontSize: 'inherit',

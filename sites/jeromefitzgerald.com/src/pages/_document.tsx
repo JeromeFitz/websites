@@ -1,6 +1,5 @@
 import { getCssText, reset } from '@jeromefitz/design-system'
-import { info, fontFace } from '@jeromefitz/shared/src/styles/fonts/Inter'
-import _map from 'lodash/map'
+import { getFontFace } from '@jeromefitz/shared/src/styles/fonts'
 import Document, {
   DocumentContext,
   Html,
@@ -25,6 +24,9 @@ const getCssAndReset = () => {
 
 const preloadImages = ['/static/images/bighead--jerome--dizzy.svg']
 
+const font: any = getFontFace('inter')
+const { fontFace, href, type } = font
+
 class MyDocument extends Document<DocumentContext> {
   render() {
     return (
@@ -40,20 +42,13 @@ class MyDocument extends Document<DocumentContext> {
           />
           {/* START: custom typeface */}
           {/* @ref: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link */}
-          {_map(info.weights, (weight) => {
-            return _map(weight, (file) => {
-              const { href, type } = file
-              return (
-                <link
-                  rel="preload"
-                  href={href}
-                  as="font"
-                  type={type}
-                  crossOrigin="anonymous"
-                />
-              )
-            })
-          })}
+          <link
+            rel="preload"
+            href={href}
+            as="font"
+            type={`font/${type}`}
+            crossOrigin="anonymous"
+          />
           <style
             dangerouslySetInnerHTML={{
               __html: fontFace,

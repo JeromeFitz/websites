@@ -57,7 +57,7 @@ const EpisodesListing = ({
   return (
     <Box>
       {/* <ContentNodes content={content} images={images} /> */}
-      <Box css={{ px: '$2', py: '$6' }}>
+      <Box css={{ px: '$3', py: '$6' }}>
         <Grid
           css={{
             rowGap: '$6',

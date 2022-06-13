@@ -126,7 +126,6 @@ const PodcastsCard = ({
               as="h3"
               css={{
                 fontSize: '1.5rem',
-                fontWeight: 700,
                 lineHeight: 1,
                 letterSpacing: '-0.02em',
               }}
@@ -147,7 +146,6 @@ const PodcastsCard = ({
 
                 css={{
                   border: '1px solid $colors$violet11',
-                  fontWeight: '700',
                   mr: '$4',
                 }}
               >

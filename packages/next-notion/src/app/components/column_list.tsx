@@ -14,7 +14,7 @@ const column_list = ({ content, id }) => {
       css={{
         display: 'flex',
         flexDirection: 'column',
-        my: '$3',
+        my: '$4',
         '@bp1': { flexDirection: 'row' },
       }}
     >

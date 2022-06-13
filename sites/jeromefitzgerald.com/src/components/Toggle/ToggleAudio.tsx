@@ -6,11 +6,18 @@ import {
   TooltipArrow,
 } from '@jeromefitz/design-system/custom/Tooltip'
 import * as React from 'react'
+import { useEffectOnce } from 'react-use'
 import { useSound } from 'use-sound'
 
 import useStore from '~store/useStore'
 
 const ToggleAudio = (props) => {
+  // @hack(hydration) @todo(hydration) please make this more efficient
+  const [mounted, setMounted] = React.useState(false)
+  useEffectOnce(() => {
+    setMounted(true)
+  })
+
   const audio = useStore.use.audio()
   const audioToggle = useStore.use.audioToggle()
   const sounds = useStore.use.sounds()
@@ -23,15 +30,15 @@ const ToggleAudio = (props) => {
     soundEnabled: true,
     volume,
   })
-  const content = `Toggle audio ${audio ? 'off' : 'on'}`
-  const icon = audio ? <Icon.SpeakerModerate /> : <Icon.SpeakerOff />
+  const content = `Toggle audio ${audio || !mounted ? 'off' : 'on'}`
+  const icon = audio || !mounted ? <Icon.SpeakerModerate /> : <Icon.SpeakerOff />
   const key1 = 't'
   const key2 = 'a'
 
   const handleClick = React.useCallback(() => {
-    audio ? playDisableSound() : playEnableSound()
+    audio || !mounted ? playDisableSound() : playEnableSound()
     audioToggle()
-  }, [audio, audioToggle, playDisableSound, playEnableSound])
+  }, [audio, audioToggle, mounted, playDisableSound, playEnableSound])
 
   return (
     <Tooltip>

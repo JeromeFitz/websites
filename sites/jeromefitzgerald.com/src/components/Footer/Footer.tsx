@@ -187,10 +187,10 @@ const LinkFooter = ({ url, title, tooltip, tooltipContent }) => {
             <Tooltip>
               <TooltipTrigger asChild>
                 <Text
-                  as="span"
+                  as="p"
                   size="3"
                   css={{
-                    mt: '$3',
+                    mt: '$4',
                     lineHeight: '20px',
                   }}
                 >
@@ -203,7 +203,7 @@ const LinkFooter = ({ url, title, tooltip, tooltipContent }) => {
               </TooltipContent>
             </Tooltip>
           ) : (
-            <Text as="span" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
+            <Text as="span" size="3" css={{ mt: '$4', lineHeight: '20px' }}>
               <>{title}</>
             </Text>
           )}
@@ -241,7 +241,7 @@ const FooterImpl = () => {
           }}
         >
           {/* <Box>
-          <Text as="p" size="3" css={{ fontWeight: 700, lineHeight: '20px' }}>
+          <Text as="p" size="3" weight="7" css={{  }}>
             Upcoming Events
           </Text>
           <ul>
@@ -260,7 +260,7 @@ const FooterImpl = () => {
           </ul>
         </Box> */}
           <Box>
-            <Text as="span" size="3" css={{ fontWeight: 700, lineHeight: '20px' }}>
+            <Text as="span" size="3" weight="7" css={{}}>
               Pages
             </Text>
             <ul>
@@ -270,7 +270,7 @@ const FooterImpl = () => {
             </ul>
           </Box>
           <Box>
-            <Text as="span" size="3" css={{ fontWeight: 700, lineHeight: '20px' }}>
+            <Text as="span" size="3" weight="7" css={{}}>
               Shows
             </Text>
             <ul>
@@ -280,7 +280,7 @@ const FooterImpl = () => {
             </ul>
           </Box>
           <Box>
-            <Text as="span" size="3" css={{ fontWeight: 700, lineHeight: '20px' }}>
+            <Text as="span" size="3" weight="7" css={{}}>
               Social
             </Text>
             <ul>
@@ -288,7 +288,7 @@ const FooterImpl = () => {
                 const { icon, isExternal, title, url } = item
                 return (
                   <li key={`socials--${itemIdx}`}>
-                    <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
+                    <Text as="p" size="3" css={{ mt: '$4', lineHeight: '20px' }}>
                       <IconLink
                         href={url}
                         target={isExternal ? '_blank' : '_self'}
@@ -296,12 +296,12 @@ const FooterImpl = () => {
                         variant="subtle"
                         onClick={handleClickLink}
                       >
-                        <Box as="span" css={{ mr: '$2' }}>
+                        <Box as="span" css={{ mr: '$3' }}>
                           {icon}
                         </Box>
                         {title}
                         {isExternal && (
-                          <Flex as="span" css={{ color: '$slate8', ml: '$1' }}>
+                          <Flex as="span" css={{ color: '$slate8', ml: '$2' }}>
                             <Icon.ExternalLink />
                           </Flex>
                         )}
@@ -319,12 +319,13 @@ const FooterImpl = () => {
               justifyContent: 'center',
               gridColumn: '1 / -1',
               gridColumnStart: 'span 2',
+              ml: '$3',
               '@bp2': { gridColumn: 'auto', order: -1 },
             }}
           >
             <NextLink href={'/'} passHref>
               <BoxLink onClick={handleClickLink}>
-                <Flex align="center" gap="3" css={{ mt: '$7' }}>
+                <Flex align="center" gap="3" css={{ mt: '$8' }}>
                   <Avatar
                     alt={`Avatar for Jerome (Bighead Dizzy)`}
                     size="5"
@@ -347,8 +348,8 @@ const FooterImpl = () => {
                 lineHeight: '20px',
                 color: '$gray11',
 
-                mt: '$5',
-                '@bp1': { pr: '$8' },
+                mt: '$6',
+                '@bp1': { pr: '$9' },
               }}
             >
               (In-progress) Site by
@@ -360,7 +361,7 @@ const FooterImpl = () => {
                 css={{
                   color: '$gray11',
                   fontFamily: '$mono',
-                  my: '$1',
+                  my: '$2',
                 }}
               >
                 {/* @types(emoji) dynamic import ability */}
@@ -376,7 +377,7 @@ const FooterImpl = () => {
                   css={{
                     color: '$gray11',
                     fontFamily: '$mono',
-                    my: '$1',
+                    my: '$2',
                   }}
                 >
                   {/* @types(emoji) dynamic import ability */}

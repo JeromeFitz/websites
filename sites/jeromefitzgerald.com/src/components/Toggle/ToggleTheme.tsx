@@ -7,14 +7,23 @@ import {
 } from '@jeromefitz/design-system/custom/Tooltip'
 import { useTheme } from 'next-themes'
 import * as React from 'react'
+import { useEffectOnce } from 'react-use'
 import { useSound } from 'use-sound'
 
 import useStore from '~store/useStore'
 
 const ToggleTheme = (props) => {
+  // @hack(hydration) @todo(hydration) please make this more efficient
+  const [mounted, setMounted] = React.useState(false)
+  useEffectOnce(() => {
+    setMounted(true)
+  })
+
   const { theme, setTheme } = useTheme()
-  const content = `Toggle theme to ${theme === 'light' ? 'dark' : 'light'}`
-  const icon = theme === 'light' ? <Icon.Sun /> : <Icon.Moon />
+  const content = `Toggle theme to ${
+    theme === 'light' || !mounted ? 'dark' : 'light'
+  }`
+  const icon = theme === 'light' || !mounted ? <Icon.Sun /> : <Icon.Moon />
   const key1 = 't'
   const key2 = 't'
 
@@ -28,13 +37,13 @@ const ToggleTheme = (props) => {
   })
 
   const handleClick = React.useCallback(() => {
-    const newTheme = theme === 'dark' ? 'light' : 'dark'
+    const newTheme = theme === 'dark' || !mounted ? 'light' : 'dark'
     document.documentElement.classList.toggle(darkTheme.className)
     document.documentElement.classList.toggle('light-theme')
     document.documentElement.style.setProperty('color-scheme', newTheme)
     setTheme(newTheme)
     playBleep()
-  }, [playBleep, setTheme, theme])
+  }, [playBleep, mounted, setTheme, theme])
 
   return (
     <Tooltip>

@@ -66,7 +66,7 @@ const PagesPlayground = () => {
         description={properties.seoDescription}
         title={properties.title}
       />
-      <Separator margin="my3" size="full" />
+      <Separator my="3" size="full" />
       <Box css={{ '& button': { mr: '$2' } }}>
         <Text css={{ my: '$2' }}>Audio is: {audio ? 'ON' : 'OFF'}</Text>
         <Button size="2" onClick={handleAudio}>
@@ -100,7 +100,7 @@ const PagesPlayground = () => {
         >
           counterReset
         </Button>
-        <Separator margin="my3" size="full" />
+        <Separator my="3" size="full" />
       </Box>
     </>
   )

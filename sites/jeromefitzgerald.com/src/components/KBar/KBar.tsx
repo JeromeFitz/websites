@@ -17,19 +17,19 @@ const KBar = () => {
   const trap = useFocusTrap()
   return (
     <>
-      <Box css={{ py: '$1', px: '$2' }} ref={trap}>
+      <Box css={{ py: '$2', px: '$3' }} ref={trap}>
         {/* <KBarSearch defaultPlaceholder="Type to search menu" /> */}
         <KBarSearch />
       </Box>
-      <Separator decorative margin="my2" size="full" />
-      <Box css={{ px: '$2' }}>
+      <Separator decorative my="3" size="full" />
+      <Box css={{ px: '$4' }}>
         <KBarSearchResults />
       </Box>
       <Box css={{ display: 'none', '@bp1': { display: 'block' } }}>
-        <Separator decorative margin="my2" size="full" />
+        <Separator decorative my="3" size="full" />
         <KBarFooter />
       </Box>
-      <Box css={{ py: '$2' }} />
+      <Box css={{ py: '$3' }} />
     </>
   )
 }

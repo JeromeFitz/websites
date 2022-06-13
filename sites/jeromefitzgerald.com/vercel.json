@@ -12,7 +12,16 @@
   "trailingSlash": false,
   "headers": [
     {
-      "source": "/static/fonts/inter/inter-var-latin.woff2",
+      "source": "/static/fonts/inter/inter-var.woff2",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/static/fonts/inter/inter-var-italic.woff2",
       "headers": [
         {
           "key": "Cache-Control",
