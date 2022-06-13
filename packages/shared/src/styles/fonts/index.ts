@@ -1,6 +1,6 @@
 const fonts = {
   inter: {
-    fontDisplay: 'optional',
+    fontDisplay: 'swap',
     fontFamily: 'Inter',
     fontStyle: 'normal',
     fontWeight: '100 900',
@@ -20,10 +20,10 @@ const getFontFace = (type: string) => {
     ? {
         fontFace: `
         @font-face {
-          font-display: '${font.fontDisplay}';
+          font-display: ${font.fontDisplay};
           font-family: '${font.fontFamily}';
-          font-style: '${font.fontStyle}';
-          font-weight: '${font.fontWeight}';
+          font-style: ${font.fontStyle};
+          font-weight: ${font.fontWeight};
           src: url('${font.href}') format('${font.type}');
         }`,
         ...font,
