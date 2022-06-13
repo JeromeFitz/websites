@@ -55,10 +55,7 @@ const STATUS = {
 const HEADING = ({ emoji, size, title }) => {
   return (
     <Flex css={{ flexDirection: 'row', gap: 7 }}>
-      <Text
-        as="h4"
-        css={{ display: 'flex', color: '$colors$gray12', fontWeight: '700' }}
-      >
+      <Text as="h4" css={{ display: 'flex', color: '$colors$gray12' }}>
         {/* @types(emoji) dynamic import ability */}
         {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
         {/* @ts-ignore */}
@@ -80,7 +77,15 @@ const ListItem = ({ item }) => {
   const { author, subtitle, title } = item
   return (
     <Text as="li" css={{ my: '$3', color: '$colors$gray12', '@bp1': { my: '$5' } }}>
-      <Text as="p" css={{ fontWeight: '700', color: 'inherit' }}>
+      <Text
+        as="p"
+        css={{
+          fontVariationSettings: '"wght" $fontWeights$7, "slnt" 0',
+          fontWeight: '7',
+          color: 'inherit',
+        }}
+        size="5"
+      >
         “{title}
         {subtitle && `: ${subtitle}`}”
         <Text
@@ -90,6 +95,7 @@ const ListItem = ({ item }) => {
             mt: '$2',
             color: 'inherit',
           }}
+          size="4"
         >
           {author}
         </Text>
@@ -172,7 +178,7 @@ const ListingItems = (props) => {
   return (
     <>
       <Note>This page is in-progress.</Note>
-      <Box css={{ px: '$2', py: '$1' }}>
+      <Box css={{ px: '$3', py: '$2' }}>
         <Grid
           css={{
             rowGap: '$6',

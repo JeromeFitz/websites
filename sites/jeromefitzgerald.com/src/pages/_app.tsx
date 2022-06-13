@@ -10,7 +10,7 @@ import { ErrorBoundary, NProgress } from '@jeromefitz/shared/src/components'
 import { Providers } from '@jeromefitz/shared/src/context/Providers'
 import { useAnalytics } from '@jeromefitz/shared/src/lib/analytics'
 import { IMAGE__FALLBACKS__SHOWS } from '@jeromefitz/shared/src/lib/constants'
-import { globalStyles as globalStylesLocal } from '@jeromefitz/shared/src/styles/globalStyles'
+// import { globalStyles as globalStylesShared } from '@jeromefitz/shared/src/styles/globalStyles'
 import _merge from 'lodash/merge'
 import type { AppProps, NextWebVitalsMetric } from 'next/app'
 import dynamic from 'next/dynamic'
@@ -26,6 +26,7 @@ import { SWRConfig } from 'swr'
 // @ts-ignore
 import buildInfo from '~config/buildInfo.json'
 import { pluralRules } from '~config/index'
+import { globalStyles as globalStylesLocal } from '~styles/globalStyles'
 
 const Header = dynamic(() => import('~components/Header'), {
   ssr: true,
@@ -38,7 +39,11 @@ pluralRules.map(({ rule, replacement }) =>
   pluralize.addPluralRule(rule, replacement)
 )
 
-const globalStyles = _merge(globalStylesDefault, globalStylesLocal)
+const globalStyles = _merge(
+  globalStylesDefault,
+  // globalStylesShared,
+  globalStylesLocal
+)
 
 function MyApp({ Component, pageProps, router }: AppProps) {
   globalCss(globalStyles)()

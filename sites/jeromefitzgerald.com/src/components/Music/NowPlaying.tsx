@@ -1,6 +1,7 @@
 import {
   styled,
   Badge,
+  Box,
   Flex,
   Heading,
   // Icon,
@@ -75,18 +76,22 @@ const NowPlaying = () => {
   return (
     <Section>
       <Container>
-        <Heading as="h3" size="4" css={{ mb: '$3' }}>
+        <Heading
+          as="h3"
+          size="4"
+          css={{ mb: '$4', fontVariationSettings: '"wght" 700, "slnt" 0' }}
+        >
           {title}
         </Heading>
         <Separator decorative size="full" />
-        <Paragraph css={{ my: '$4' }}>
+        <Paragraph css={{ m: '$5 0 $7' }}>
           I listen to a lot of music. I do not think that makes me unique, however, I
           enjoy it all the same. If you’d like to see more of my listening habits
           please check out the{' '}
           <NextLink href="/music" passHref>
             <Link
               className="font-black _text-black underline-style-solid underline-offset-md underline-thickness-md"
-              css={{ fontWeight: '700' }}
+              css={{}}
             >
               music
             </Link>
@@ -95,7 +100,7 @@ const NowPlaying = () => {
           <NextLink href="/books" passHref>
             <Link
               className="font-black _text-black underline-style-solid underline-offset-md underline-thickness-md"
-              css={{ fontWeight: '700' }}
+              css={{}}
             >
               read
             </Link>
@@ -110,16 +115,39 @@ const NowPlaying = () => {
         >
           <Paragraph
             size="2"
-            css={{ color: '$hiContrast', fontWeight: 'bold', fontSize: '$7' }}
+            css={{
+              color: '$hiContrast',
+              fontVariationSettings: '"wght" $fontWeights$6',
+              fontWeight: '$fontWeights$6',
+              fontSize: '$7',
+              mx: '$3',
+              '@bp1': {
+                mx: '$2',
+              },
+            }}
           >
-            <span>{artist}</span>
+            <Box as="span" css={{ fontVariationSettings: 'inherit' }}>
+              {artist}
+            </Box>
           </Paragraph>
-          <Separator decorative margin="my5" size="full" />
+          <Separator decorative my="5" size="full" />
           <Paragraph
             size="2"
-            css={{ color: '$hiContrast', fontWeight: 'bold', fontSize: '$6' }}
+            css={{
+              color: '$hiContrast',
+              fontVariationSettings: '"wght" $fontWeights$6',
+              fontWeight: '$fontWeights$6',
+              fontSize: '$6',
+              mx: '$3',
+              '@bp1': {
+                mx: '$2',
+              },
+            }}
           >
-            <span>{`“${track.name}”`}</span>
+            <Box
+              as="span"
+              css={{ fontVariationSettings: 'inherit' }}
+            >{`“${track.name}”`}</Box>
           </Paragraph>
           <Flex
             as="ul"
@@ -129,8 +157,8 @@ const NowPlaying = () => {
               flexDirection: 'row',
               flexWrap: 'wrap',
               height: 'auto',
-              my: '$1',
-              '@bp1': { my: '$2' },
+              m: '$3',
+              '@bp1': { m: '$4' },
             }}
           >
             {_map(genresData.slice(0, 10), (tag: string) => (
@@ -148,10 +176,39 @@ const NowPlaying = () => {
               </Flex>
             ))}
           </Flex>
-          <Paragraph size="2" css={{ color: '$hiContrast', py: '$1' }}>
+          <Paragraph
+            size="2"
+            css={{
+              color: '$hiContrast',
+              py: '$2',
+              mx: '$3',
+              '@bp1': {
+                mx: '$1',
+              },
+            }}
+          >
             <>
-              Off of “<strong>{album.name}</strong>” released in{' '}
-              <strong>{albumYear}</strong>.
+              Off of{' '}
+              <Box
+                as="strong"
+                css={{
+                  fontVariationSettings: '"wght" $fontWeights$7',
+                  fontWeight: '$fontWeights$7',
+                }}
+              >
+                “{album.name}”
+              </Box>{' '}
+              released in{' '}
+              <Box
+                as="strong"
+                css={{
+                  fontVariationSettings: '"wght" $fontWeights$7',
+                  fontWeight: '$fontWeights$7',
+                }}
+              >
+                {albumYear}
+              </Box>
+              .
             </>
           </Paragraph>
           {/* <Paragraph size="1" css={{ py: '$2' }}>
@@ -176,7 +233,7 @@ const NowPlaying = () => {
             </>
           </Paragraph> */}
         </CardSpotify>
-        <Separator css={{ margin: '0 auto $9', width: '1% !important' }} />
+        <Separator css={{ margin: '0 auto $10', width: '1% !important' }} />
       </Container>
     </Section>
   )

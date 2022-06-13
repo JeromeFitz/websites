@@ -141,16 +141,7 @@ const ShowsCard = ({
               </CardImageContainer>
               <Spacer />
               <CardTitle>
-                <Text
-                  size="3"
-                  as="h3"
-                  css={{
-                    fontSize: '1.5rem',
-                    fontWeight: 700,
-                    lineHeight: 1,
-                    letterSpacing: '-0.02em',
-                  }}
-                >
+                <Text as="h3" size="6" weight="7">
                   {title}
                 </Text>
               </CardTitle>
@@ -165,8 +156,7 @@ const ShowsCard = ({
                     key={`badge-${itemIdx}`}
                     size="2"
                     css={{
-                      border: '1px solid $colors$violet11',
-                      fontWeight: '700',
+                      border: '1px solid $colors$brand',
                       mr: '$4',
                     }}
                   >

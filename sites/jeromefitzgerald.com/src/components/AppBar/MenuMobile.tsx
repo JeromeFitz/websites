@@ -12,6 +12,7 @@ import { useTheme } from 'next-themes'
 import NextLink from 'next/link'
 import * as React from 'react'
 import { useSwipeable } from 'react-swipeable'
+// import { useEffectOnce } from 'react-use'
 import { useSound } from 'use-sound'
 
 import { CommandKButton } from '~components/CommandKButton'
@@ -81,6 +82,12 @@ const MenuMobile = ({ handleSelect, navigationNonMutated }) => {
     handlers.ref(el)
     myRef.current = el
   }
+
+  // @hack(hydration) @todo(hydration) please make this more efficient
+  // const [mounted, setMounted] = React.useState(false)
+  // useEffectOnce(() => {
+  //   setMounted(true)
+  // })
 
   return (
     <Flex gap="2">
@@ -160,7 +167,7 @@ const MenuMobile = ({ handleSelect, navigationNonMutated }) => {
                           display: 'block',
                           color: '$slate11',
                           fontSize: '0.75rem',
-                          fontWeight: '700',
+
                           padding: '$1',
                           // pt: '$2',
                           textTransform: 'uppercase',
@@ -260,9 +267,7 @@ const MenuMobile = ({ handleSelect, navigationNonMutated }) => {
                                     {/* </NextLink> */}
                                   </Flex>
                                 </Box>
-                                {item.separator && (
-                                  <Separator margin="my1" size="full" />
-                                )}
+                                {item.separator && <Separator my="1" size="full" />}
                               </React.Fragment>
                             )
                           }
@@ -324,9 +329,7 @@ const MenuMobile = ({ handleSelect, navigationNonMutated }) => {
                                     {/* </NextLink> */}
                                   </Flex>
                                 </Box>
-                                {item.separator && (
-                                  <Separator margin="my2" size="full" />
-                                )}
+                                {item.separator && <Separator my="2" size="full" />}
                               </React.Fragment>
                             )
                           }
@@ -382,9 +385,7 @@ const MenuMobile = ({ handleSelect, navigationNonMutated }) => {
                                   </NextLink>
                                 </Flex>
                               </Box>
-                              {item.separator && (
-                                <Separator margin="my2" size="full" />
-                              )}
+                              {item.separator && <Separator my="2" size="full" />}
                             </React.Fragment>
                           )
                         })}
