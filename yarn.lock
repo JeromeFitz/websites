@@ -403,20 +403,20 @@
   resolved "https://registry.yarnpkg.com/@istanbuljs/schema/-/schema-0.1.3.tgz#e45e384e4b8ec16bce2fd903af78450f6bf7ec98"
   integrity sha512-ZXRY4jNvVgSVQ8DL3LTcakaAtXwTVUxE81hslsyD2AtoXW/wVob10HkOJ1X/pAlcI7D+2YoZKg5do8G/w6RYgA==
 
-"@jeromefitz/conventional-gitmoji@3.1.1":
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/conventional-gitmoji/-/conventional-gitmoji-3.1.1.tgz#99eb812adce871ae0535f2c8c8349f850e2563ba"
-  integrity sha512-inqkY1lgEnIe6wrP30p9JwAHxqX5/WS4GSOFRyjnF/HTaROYbAWtpbac0kLFPslp5qBzoeXZ4jw2/IQ/PmEShg==
+"@jeromefitz/conventional-gitmoji@3.2.0":
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/conventional-gitmoji/-/conventional-gitmoji-3.2.0.tgz#60834f19ea4076ecb56979e83fd4746bf4532a40"
+  integrity sha512-nhCZJs8fpnh9AX9UdOxVbFAdkYgncxjGanrfiKLAReKegPIYxn/IPa0UnKImxa1kFZuliIGC6XOaUcxXv40DxQ==
   dependencies:
     grapheme-splitter "1.0.4"
     lodash "4.17.21"
     semantic-release "19.0.3"
     title "3.4.4"
 
-"@jeromefitz/design-system@3.3.1":
-  version "3.3.1"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/design-system/-/design-system-3.3.1.tgz#244196741b9ea3fa5cf88ec6e29d8fb7c18a9cc1"
-  integrity sha512-cMOClAHNs7/lQgvxHlHpWdyqduWEN7PXDjBCDKBwqsdr8iConHptT6MScM6S1YSCH5HVKcDSjGqmxBJhfvgqOw==
+"@jeromefitz/design-system@3.4.0":
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/design-system/-/design-system-3.4.0.tgz#4a052325d94b772c8ce9356f4706f34a02dc0878"
+  integrity sha512-EwXjXm5JN2I6ENuD3BYYZe1ExxGrCoG06McW83blxUkvb1sme7UHQviFuKSlDsu9OxEhwb/1TlF6jGU1R+t4+Q==
   dependencies:
     "@radix-ui/react-accessible-icon" "0.1.5-rc.34"
     "@radix-ui/react-accordion" "0.1.7-rc.34"
@@ -810,10 +810,10 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@mantine/hooks@4.2.8":
-  version "4.2.8"
-  resolved "https://registry.yarnpkg.com/@mantine/hooks/-/hooks-4.2.8.tgz#eeae72da40e30b6a8497a7e6c81a61aab051ef8e"
-  integrity sha512-CZYATDBlEEazl5XsS4bpgHe9auIxgRAnshw5GL0maOE3gKiYUFuvNGbJe6wlhqIOHUyW/Bk6vKZJPbLs39iw/A==
+"@mantine/hooks@4.2.9":
+  version "4.2.9"
+  resolved "https://registry.yarnpkg.com/@mantine/hooks/-/hooks-4.2.9.tgz#ada020b0a2820dc208e8dde23374e2f260d9111c"
+  integrity sha512-oLtlSXkl99vPGBTR9yoVCWoCQ25Bc4WhPci31iERMLMM/0fz85CZayQcAC4etq6un6rDiRNu6jq0YB1S5stmPg==
 
 "@next/bundle-analyzer@12.1.6":
   version "12.1.6"
