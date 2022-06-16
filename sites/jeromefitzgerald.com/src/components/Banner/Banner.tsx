@@ -10,8 +10,8 @@ import {
   // Skeleton,
   Text,
 } from '@jeromefitz/design-system'
-// import { Shadows } from '@jeromefitz/shared/src/styles/const'
-import { Shadows, TZ } from '@jeromefitz/shared/src/styles/const'
+import { TZ } from '@jeromefitz/shared/src/lib/constants'
+import { Shadows } from '@jeromefitz/shared/src/styles/const'
 import { parseISO } from 'date-fns'
 import { formatInTimeZone as _formatInTimeZone } from 'date-fns-tz'
 import { fetcher } from 'next-notion/src/lib/fetcher'
