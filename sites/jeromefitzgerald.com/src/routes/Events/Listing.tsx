@@ -14,9 +14,10 @@ import {
   Separator,
 } from '@jeromefitz/design-system'
 import type { Event as EventProperties } from '@jeromefitz/notion/schema'
+import { TZ } from '@jeromefitz/shared/src/lib/constants'
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
 import { getDate, getDay, getMonth, getYear, parseISO } from 'date-fns'
-import { format as _format } from 'date-fns-tz'
+import { formatInTimeZone as _formatInTimeZone } from 'date-fns-tz'
 import Slugger from 'github-slugger'
 import _filter from 'lodash/filter'
 import _isEmpty from 'lodash/isEmpty'
@@ -197,7 +198,7 @@ const Year = ({ children, title }) => {
 }
 const Month = ({ children, data }) => {
   const date = data[Object.keys(data)[0]][0]?.iso?.full
-  const month = _format(date, 'MMMM')
+  const month = _formatInTimeZone(date, TZ, 'MMMM')
 
   return (
     <Box
@@ -446,7 +447,7 @@ const EventItem = ({ data, keyPrefix }: { data: Item; keyPrefix: string }) => {
                   }}
                 />
                 <Box>
-                  <ListItem title={_format(iso, `hh:mma z (EEEE)`)} />
+                  <ListItem title={_formatInTimeZone(iso, TZ, `hh:mma z (EEEE)`)} />
                 </Box>
               </Flex>
             </Box>
@@ -671,15 +672,17 @@ const EventsListing = (props) => {
   let aYears = []
   const dates = _map(_dates, (date) => {
     const iso = parseISO(date)
+    // @hack(tz) SSR needs to be US Eastern for now
+    const formatYear = _formatInTimeZone(iso, TZ, 'yyyy')
+    const formatMonth = _formatInTimeZone(iso, TZ, 'MM')
+    const formatDate = _formatInTimeZone(iso, TZ, 'dd')
+    const formatDay = _formatInTimeZone(iso, TZ, 'EEEE')
+
     const isoYear = getYear(iso)
     // @note(date-fns) zero-based month is confusing when year/date are not
     const isoMonth = getMonth(iso) + 1
     const isoDate = getDate(iso)
     const isoDay = getDay(iso)
-    const formatYear = _format(iso, 'yyyy')
-    const formatMonth = _format(iso, 'MM')
-    const formatDate = _format(iso, 'dd')
-    const formatDay = _format(iso, 'EEEE')
 
     aYears.push(isoYear)
 

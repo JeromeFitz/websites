@@ -23,7 +23,6 @@ import {
   Focused,
   Selected,
 } from '@jeromefitz/design-system'
-import { cssIconHeroToRadix2 } from '@jeromefitz/shared/src/lib/constants'
 import { LayoutGroup } from 'framer-motion'
 import NextLink from 'next/link'
 import * as React from 'react'
@@ -72,9 +71,7 @@ const NavigationMenuContentContainer = ({ id, items, layout }) => {
                     }}
                   >
                     <>
-                      <TicketIcon
-                        style={{ ...cssIconHeroToRadix2, marginBottom: '$5' }}
-                      />
+                      <TicketIcon style={{ marginBottom: '$5' }} />
                       Upcoming Event Title
                     </>
                   </NavigationMenuLinkTitle>

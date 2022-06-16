@@ -92,6 +92,12 @@ const TIME_RANGE: TIME_RANGE_PROPS = {
   },
 }
 
+/**
+ * @hack Server is UTC, most (if not all) users are US Eastern
+ *       SSR will be US Eastern, Client Side will update post.
+ */
+const TZ = process.env.NEXT_PUBLIC__TIMEZONE || 'America/New_York'
+
 const WEBKIT_BACKGROUND = {
   WebkitBackgroundClip: 'text',
   WebkitTextFillColor: 'transparent',
@@ -107,25 +113,7 @@ const WEBKIT_BACKGROUND__BREAK = {
   WebkitTextFillColor: 'inherit',
 }
 
-/**
- * lol okay move this to stitches please
- */
-const cssIconHeroToRadix = {
-  marginTop: '1px',
-}
-const cssIconHeroToRadix1 = {
-  marginTop: '1px',
-  width: '1rem',
-}
-const cssIconHeroToRadix2 = {
-  marginTop: '1px',
-  width: '2rem',
-}
-
 export {
-  cssIconHeroToRadix,
-  cssIconHeroToRadix1,
-  cssIconHeroToRadix2,
   BIG_HEAD_PROPS,
   CACHE_TYPES,
   EMOJI_FALLBACK,
@@ -134,6 +122,7 @@ export {
   IMAGE__PLACEHOLDER,
   MOTION_PAGE_VARIANTS,
   TIME_RANGE,
+  TZ,
   WEBKIT_BACKGROUND,
   WEBKIT_BACKGROUND_INHERIT,
   WEBKIT_BACKGROUND__BREAK,
