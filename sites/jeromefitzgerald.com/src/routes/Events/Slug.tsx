@@ -11,9 +11,10 @@ import {
   Paragraph,
 } from '@jeromefitz/design-system'
 import type { Event as EventProperties } from '@jeromefitz/notion/schema'
-// import { ContentNodes } from 'next-notion/src/app'
+// import { ContentNodes } from '@jeromefitz/next-notion/src/app'
+import { TZ } from '@jeromefitz/shared/src/lib/constants'
 import { parseISO } from 'date-fns'
-import { format } from 'date-fns-tz'
+import { formatInTimeZone as _formatInTimeZone } from 'date-fns-tz'
 import _isBefore from 'date-fns/isBefore'
 import _map from 'lodash/map'
 import _union from 'lodash/union'
@@ -85,11 +86,11 @@ const Info = ({ data }) => {
       <Grid columns="1" gap="3" css={css_gridListItems}>
         <Box role="listitem" css={css_info}>
           <Icon.Calendar style={css_icon} />
-          <Paragraph>{format(iso, `EEEE, MMMM do`)}</Paragraph>
+          <Paragraph>{_formatInTimeZone(iso, TZ, `EEEE, MMMM do`)}</Paragraph>
         </Box>
         <Box role="listitem" css={css_info}>
           <Icon.Clock style={css_icon} />
-          <Paragraph>{format(iso, `hh:mma z (EEEE)`)}</Paragraph>
+          <Paragraph>{_formatInTimeZone(iso, TZ, `hh:mma z (EEEE)`)}</Paragraph>
         </Box>
         <Box role="listitem" css={css_info}>
           <Icon.Map style={css_icon} />
