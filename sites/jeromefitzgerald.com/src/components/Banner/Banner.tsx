@@ -7,20 +7,48 @@ import {
   // IconButton,
   Link,
   Separator,
-  // Skeleton,
+  Skeleton,
   Text,
 } from '@jeromefitz/design-system'
 import { TZ } from '@jeromefitz/shared/src/lib/constants'
 import { Shadows } from '@jeromefitz/shared/src/styles/const'
+// import { Gradients, Shadows } from '@jeromefitz/shared/src/styles/const'
 import { parseISO } from 'date-fns'
 import { formatInTimeZone as _formatInTimeZone } from 'date-fns-tz'
 import { fetcher } from 'next-notion/src/lib/fetcher'
 import { getNextPageStatus } from 'next-notion/src/utils'
 import NextLink from 'next/link'
+import { Fragment } from 'react'
 import useSWR from 'swr'
 import { useSound } from 'use-sound'
 
 import useStore from '~store/useStore'
+
+const LinkComponent = ({ children, href }) => {
+  if (!!href)
+    return (
+      <NextLink href={href} passHref>
+        {children}
+      </NextLink>
+    )
+  return <Fragment>{children}</Fragment>
+}
+
+const SkeletonText = () => {
+  return (
+    <Skeleton
+      as="span"
+      variant="heading"
+      css={{
+        fontSize: 'inherit',
+        height: '$fontSizes$3',
+        pr: '$space$12',
+      }}
+    >
+      &nbsp;
+    </Skeleton>
+  )
+}
 
 const BannerImpl = () => {
   const audio = useStore.use.audio()
@@ -51,75 +79,64 @@ const BannerImpl = () => {
   const isLoaded = !is404 && !isLoading && !isError && !isDataUndefined
   const item = data?.items?.results[0]
   const hasItem = isLoaded && !!item
-  if (!hasItem) return null
+  // if (!hasItem) return null
 
-  // console.dir(`error:`)
-  // console.dir(error)
-  // console.dir(`data:`)
-  // console.dir(data)
-  // console.dir(`item:`)
-  // console.dir(item)
-
-  {
-    /* <Skeleton
-        as="span"
-        variant="heading"
-        css={{
-          fontSize: 'inherit',
-          height: '$fontSizes$3',
-          pr: '$space$8',
-        }}
-      >
-        &nbsp;
-      </Skeleton> */
-  }
-
-  const meta = {
-    left: _formatInTimeZone(
-      parseISO(item?.properties?.dateEvent?.start),
-      TZ,
-      `EEE MM/dd`
-    ).toUpperCase(),
-    leftExtended: _formatInTimeZone(
-      parseISO(item?.properties?.dateEvent?.start),
-      TZ,
-      `EEE MM/dd hh:mma`
-    ).toUpperCase(),
-    leftIcon: <Icon.Calendar />,
-    rightExtended: item?.properties?.title,
-    rightIcon: <Icon.ArrowTopRight />,
-    url: `/events/${_formatInTimeZone(
-      parseISO(item?.properties?.dateEvent?.start),
-      TZ,
-      `yyyy/MM/dd`
-    ).toUpperCase()}/${item?.properties?.slug}`,
-  }
-
-  // const meta = {
-  //   url: '/',
-  //   left: { icon: <Icon.Calendar />, text: '' },
-  //   right: { icon: <Icon.ArrowTopRight />, text: '' },
-  // }
-
-  // console.dir(`meta `)
-  // console.dir(meta)
+  const meta = hasItem
+    ? {
+        left: _formatInTimeZone(
+          parseISO(item?.properties?.dateEvent?.start),
+          TZ,
+          `EEE MM/dd`
+        ).toUpperCase(),
+        leftExtended: _formatInTimeZone(
+          parseISO(item?.properties?.dateEvent?.start),
+          TZ,
+          `EEE MM/dd hh:mma`
+        ).toUpperCase(),
+        leftIcon: <Icon.Calendar />,
+        rightExtended: item?.properties?.title,
+        rightIcon: <Icon.ArrowTopRight />,
+        url: `/events/${_formatInTimeZone(
+          parseISO(item?.properties?.dateEvent?.start),
+          TZ,
+          `yyyy/MM/dd`
+        ).toUpperCase()}/${item?.properties?.slug}`,
+      }
+    : {
+        left: <SkeletonText />,
+        leftExtended: <SkeletonText />,
+        leftIcon: <Icon.Calendar />,
+        right: <SkeletonText />,
+        rightExtended: <SkeletonText />,
+        rightIcon: <Icon.ArrowTopRight />,
+        url: null,
+      }
 
   return (
     <Container breakout css={{ zIndex: '$max' }}>
-      <NextLink href={meta.url} passHref>
+      <LinkComponent href={meta.url}>
         <Link onClick={() => playBleep()}>
           <Banner
             css={{
               // backgroundImage: Gradients.light.active,
               // [`.${darkTheme} &`]: { backgroundImage: Gradients.dark.active },
-              boxShadow: Shadows[1],
-              display: 'flex',
-              textAlign: 'center',
               alignContent: 'flex-start',
-              width: '100%',
+              backgroundColor: '$brand',
+              boxShadow: Shadows[1],
+              color: '$loContrast',
+              display: 'flex',
               py: '$3',
+              textAlign: 'center',
+              transition: 'all 0.5s ease-in-out',
+              width: '100%',
+
               '@bp1': {
                 py: '$4',
+              },
+              '@hover': {
+                '&:hover': {
+                  color: '$hiContrast',
+                },
               },
             }}
           >
@@ -127,7 +144,9 @@ const BannerImpl = () => {
             <Text size="2" weight="5" css={{ lineHeight: '1.5' }}>
               {meta?.leftExtended}
             </Text>
-            <Separator orientation="vertical" />
+            <Separator asChild orientation="vertical">
+              <span />
+            </Separator>
             <Flex direction="row" gap="1" align="center">
               <Text size="2" weight="5" css={{ lineHeight: '1.5' }}>
                 {meta?.rightExtended}
@@ -143,7 +162,7 @@ const BannerImpl = () => {
             </IconButton> */}
           </Banner>
         </Link>
-      </NextLink>
+      </LinkComponent>
     </Container>
   )
 }
