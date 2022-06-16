@@ -1,5 +1,7 @@
 import { Button, Note, PageHeading } from '@jeromefitz/design-system'
-import { format, parseISO } from 'date-fns'
+import { TZ } from '@jeromefitz/shared/src/lib/constants'
+import { parseISO } from 'date-fns'
+import { formatInTimeZone as _formatInTimeZone } from 'date-fns-tz'
 import useSWR from 'swr'
 
 import Seo from '~components/Seo'
@@ -39,8 +41,9 @@ const Layout = ({ children, info, preview = false, routeType, url }) => {
    */
   let seoDescription = pageHeadingDescription
   if (routeType === NOTION.EVENTS.routeType && slug !== NOTION.EVENTS.routeType) {
-    const date = format(
+    const date = _formatInTimeZone(
       parseISO(properties?.dateEvent?.start),
+      TZ,
       `EEE MM/dd hh:mma`
     ).toUpperCase()
     seoDescription = `${date} – ${seoDescription}`
