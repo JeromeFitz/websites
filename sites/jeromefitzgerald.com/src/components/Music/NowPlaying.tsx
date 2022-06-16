@@ -130,7 +130,9 @@ const NowPlaying = () => {
               {artist}
             </Box>
           </Paragraph>
-          <Separator decorative my="5" size="full" />
+          <Separator asChild decorative my="5" size="full">
+            <span />
+          </Separator>
           <Paragraph
             size="2"
             css={{
