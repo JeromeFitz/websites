@@ -229,7 +229,9 @@ const NavigationMenuImpl = ({ navigationNonMutated }) => {
             </NavigationMenuItem>
           ) : (
             <NavigationMenuItem key={`kmi-${id}`}>
-              <NavigationMenuLink href={url}>{title}</NavigationMenuLink>
+              <NextLink href={url} passHref>
+                <NavigationMenuLink href={url}>{title}</NavigationMenuLink>
+              </NextLink>
             </NavigationMenuItem>
           )
         })}
