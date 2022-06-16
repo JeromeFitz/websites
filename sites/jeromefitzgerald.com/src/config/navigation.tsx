@@ -4,10 +4,6 @@
  * Preferably this would come from NOTION or generated during the build.
  */
 import { Icon } from '@jeromefitz/design-system'
-import {
-  cssIconHeroToRadix,
-  cssIconHeroToRadix1,
-} from '@jeromefitz/shared/src/lib/constants'
 import { Priority } from 'kbar'
 import * as React from 'react'
 
@@ -88,9 +84,9 @@ const navigation: INavigation = {
       //   rightSlot: 'FRI 02/25',
       //   rightSlotExtended: 'Friday, Feb. 25th at 09:30PM',
       //   separator: true,
-      //   icon: <Icon.MusicNote style={cssIconHeroToRadix1} />,
+      //   icon: <Icon.MusicNote />,
       //   iconKbarOverride: (
-      //     <Icon.MusicNote style={cssIconHeroToRadix} />
+      //     <Icon.MusicNote  />
       //   ),
       //   subtitle: 'FRI 02/25 09:30PM (default)',
       //   type: 'url.internal',
@@ -100,8 +96,8 @@ const navigation: INavigation = {
         title: 'Events',
         url: '/events',
         rightSlot: 'View All',
-        icon: <Icon.Ticket style={cssIconHeroToRadix1} />,
-        iconKbarOverride: <Icon.Ticket style={cssIconHeroToRadix} />,
+        icon: <Icon.Ticket />,
+        iconKbarOverride: <Icon.Ticket />,
         keywords: 'Events',
         subtitle: 'Listing page for all Events',
         type: 'url.internal',
@@ -184,8 +180,8 @@ const navigation: INavigation = {
   podcasts: {
     active: true,
     id: 'podcasts',
-    icon: <Icon.Microphone style={cssIconHeroToRadix1} />,
-    iconKbarOverride: <Icon.Microphone style={cssIconHeroToRadix} />,
+    icon: <Icon.Microphone />,
+    iconKbarOverride: <Icon.Microphone />,
     priority: Priority.NORMAL,
     order: 20,
     title: 'Podcasts',
@@ -202,8 +198,8 @@ const navigation: INavigation = {
         id: 'jer-and-ky-and-guest',
         title: 'Jer & Ky (& Guest)',
         url: '/podcasts/jer-and-ky-and-guest',
-        icon: <Icon.Microphone style={cssIconHeroToRadix1} />,
-        iconKbarOverride: <Icon.Microphone style={cssIconHeroToRadix} />,
+        icon: <Icon.Microphone />,
+        iconKbarOverride: <Icon.Microphone />,
         separator: false,
         // subtitle: '‎',
         subtitle: null,
@@ -214,8 +210,8 @@ const navigation: INavigation = {
         id: 'knockoffs',
         title: 'Knockoffs',
         url: '/podcasts/knockoffs',
-        icon: <Icon.Microphone style={cssIconHeroToRadix1} />,
-        iconKbarOverride: <Icon.Microphone style={cssIconHeroToRadix} />,
+        icon: <Icon.Microphone />,
+        iconKbarOverride: <Icon.Microphone />,
         separator: true,
         // subtitle: '‎',
         subtitle: null,
@@ -261,8 +257,8 @@ const navigation: INavigation = {
         id: 'books',
         title: 'Books',
         url: '/books',
-        icon: <Icon.BookOpen style={cssIconHeroToRadix1} />,
-        iconKbarOverride: <Icon.BookOpen style={cssIconHeroToRadix} />,
+        icon: <Icon.BookOpen />,
+        iconKbarOverride: <Icon.BookOpen />,
         // subtitle: '‎',
         subtitle: null,
         type: 'url.internal',
@@ -293,8 +289,8 @@ const navigation: INavigation = {
         id: 'music',
         title: 'Music',
         url: '/music',
-        icon: <Icon.MusicNote style={cssIconHeroToRadix1} />,
-        iconKbarOverride: <Icon.MusicNote style={cssIconHeroToRadix} />,
+        icon: <Icon.MusicNote />,
+        iconKbarOverride: <Icon.MusicNote />,
         // subtitle: '‎',
         subtitle: null,
         type: 'url.internal',
@@ -304,7 +300,7 @@ const navigation: INavigation = {
         id: 'podcasts',
         title: 'Podcasts',
         url: '/podcasts',
-        icon: <Icon.Microphone style={cssIconHeroToRadix1} />,
+        icon: <Icon.Microphone />,
         // subtitle: '‎',
         subtitle: null,
         keywords: 'home podcasts',

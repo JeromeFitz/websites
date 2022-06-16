@@ -1,8 +1,7 @@
 // import { TicketIcon } from '@heroicons/react/outline'
 import { darkTheme, Box, Flex } from '@jeromefitz/design-system'
-// import { cssIconHeroToRadix } from '@jeromefitz/shared/src/lib/constants'
 // import { parseISO } from 'date-fns'
-// import { format } from 'date-fns-tz'
+// import { formatInTimeZone as _formatInTimeZone } from 'date-fns-tz'
 import { useKBar, Priority } from 'kbar'
 import _pick from 'lodash/pick'
 import { fetcher } from 'next-notion/src/lib/fetcher'
@@ -325,8 +324,8 @@ const KBarActions = () => {
   //       const { dateEvent, seoKeywords, slug, title } = properties
 
   //       const iso = parseISO(dateEvent?.start)
-  //       const date = format(iso, `EEEE MM/dd hh:mma z`)
-  //       const dateRoute = format(iso, `yyyy/MM/dd`)
+  //       const date = _formatInTimeZone(iso, TZ, `EEEE MM/dd hh:mma z`)
+  //       const dateRoute = _formatInTimeZone(iso,TZ,  `yyyy/MM/dd`)
 
   //       const keywordsArr = slug.split('-')
   //       if (seoKeywords) {
@@ -335,7 +334,7 @@ const KBarActions = () => {
   //       const keywords = keywordsArr.join(' ')
 
   //       data.push({
-  //         icon: <TicketIcon className="hi2ri" style={cssIconHeroToRadix} />,
+  //         icon: <TicketIcon />,
   //         id: slug,
   //         keywords,
   //         subtitle: date,

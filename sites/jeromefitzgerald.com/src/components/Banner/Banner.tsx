@@ -10,8 +10,10 @@ import {
   // Skeleton,
   Text,
 } from '@jeromefitz/design-system'
+import { TZ } from '@jeromefitz/shared/src/lib/constants'
 import { Shadows } from '@jeromefitz/shared/src/styles/const'
-// import { format, parseISO } from 'date-fns'
+import { parseISO } from 'date-fns'
+import { formatInTimeZone as _formatInTimeZone } from 'date-fns-tz'
 import { fetcher } from 'next-notion/src/lib/fetcher'
 import { getNextPageStatus } from 'next-notion/src/utils'
 import NextLink from 'next/link'
@@ -72,32 +74,38 @@ const BannerImpl = () => {
       </Skeleton> */
   }
 
-  // const meta = {
-  //   left: format(
-  //     parseISO(item?.properties?.dateEvent?.start),
-  //     `EEE MM/dd`
-  //   ).toUpperCase(),
-  //   leftExtended: format(
-  //     parseISO(item?.properties?.dateEvent?.start),
-  //     `EEE MM/dd hh:mma`
-  //   ).toUpperCase(),
-  //   leftIcon: <Icon.Calendar />,
-  //   rightExtended: item?.properties?.title,
-  //   rightIcon: <Icon.ArrowTopRight />,
-  //   url: `/events/${format(
-  //     parseISO(item?.properties?.dateEvent?.start),
-  //     `yyyy/MM/dd`
-  //   ).toUpperCase()}/${item?.properties?.slug}`,
-  // }
-
   const meta = {
-    url: '/',
-    left: { icon: <Icon.Calendar />, text: '' },
-    right: { icon: <Icon.ArrowTopRight />, text: '' },
+    left: _formatInTimeZone(
+      parseISO(item?.properties?.dateEvent?.start),
+      TZ,
+      `EEE MM/dd`
+    ).toUpperCase(),
+    leftExtended: _formatInTimeZone(
+      parseISO(item?.properties?.dateEvent?.start),
+      TZ,
+      `EEE MM/dd hh:mma`
+    ).toUpperCase(),
+    leftIcon: <Icon.Calendar />,
+    rightExtended: item?.properties?.title,
+    rightIcon: <Icon.ArrowTopRight />,
+    url: `/events/${_formatInTimeZone(
+      parseISO(item?.properties?.dateEvent?.start),
+      TZ,
+      `yyyy/MM/dd`
+    ).toUpperCase()}/${item?.properties?.slug}`,
   }
 
+  // const meta = {
+  //   url: '/',
+  //   left: { icon: <Icon.Calendar />, text: '' },
+  //   right: { icon: <Icon.ArrowTopRight />, text: '' },
+  // }
+
+  // console.dir(`meta `)
+  // console.dir(meta)
+
   return (
-    <Container breakout css={{ zIndex: '99' }}>
+    <Container breakout css={{ zIndex: '$max' }}>
       <NextLink href={meta.url} passHref>
         <Link onClick={() => playBleep()}>
           <Banner
@@ -105,20 +113,26 @@ const BannerImpl = () => {
               // backgroundImage: Gradients.light.active,
               // [`.${darkTheme} &`]: { backgroundImage: Gradients.dark.active },
               boxShadow: Shadows[1],
-              py: '$2',
+              display: 'flex',
+              textAlign: 'center',
+              alignContent: 'flex-start',
               width: '100%',
+              py: '$3',
+              '@bp1': {
+                py: '$4',
+              },
             }}
           >
-            {meta.left.icon}
-            <Text css={{ fontWeight: 500 }} size="2">
-              {meta.left.text}
+            {meta?.leftIcon}
+            <Text size="2" weight="5" css={{ lineHeight: '1.5' }}>
+              {meta?.leftExtended}
             </Text>
             <Separator orientation="vertical" />
-            <Flex direction="row" gap="1">
-              <Text css={{ fontWeight: 500 }} size="2">
-                {meta.right.text}
+            <Flex direction="row" gap="1" align="center">
+              <Text size="2" weight="5" css={{ lineHeight: '1.5' }}>
+                {meta?.rightExtended}
               </Text>
-              {meta.right.icon}
+              {meta?.rightIcon}
             </Flex>
 
             {/* <IconButton
