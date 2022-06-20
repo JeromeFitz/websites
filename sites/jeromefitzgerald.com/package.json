@@ -46,7 +46,7 @@
     "@jeromefitz/shared": "*",
     "@jeromefitz/spotify": "2.2.0",
     "@jeromefitz/utils": "2.1.0",
-    "@mantine/hooks": "4.2.9",
+    "@mantine/hooks": "4.2.10",
     "@octokit/core": "3.6.0",
     "@plaiceholder/next": "2.3.0",
     "@radix-ui/colors": "0.1.8",
