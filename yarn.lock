@@ -511,12 +511,12 @@
     shellsync "0.2.2"
     word-wrap "1.2.3"
 
-"@jeromefitz/lint-staged@1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@jeromefitz/lint-staged/-/lint-staged-1.0.4.tgz#1ff12519807c05f3868352cb67ebf63788f7f27e"
-  integrity sha512-juPmp828pgq3knTVIf7c334qbFv7/zuSuR+ahkisBUXD4l8/TGgBHZyq5mMkjxEL7099RDATPuXKp5mSu0I4bQ==
+"@jeromefitz/lint-staged@1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@jeromefitz/lint-staged/-/lint-staged-1.0.5.tgz#0718d60b8af1682127457dffdf8023be22c81815"
+  integrity sha512-A1U9oCqZr3pXlzTXc/Vd4UyVR8XEqerVH1E+lh0UXoB0G3mj2zt4TFjzLfHhdiH2goCb6tYPl6SdcvG81kOjSw==
   dependencies:
-    lint-staged "13.0.1"
+    lint-staged "13.0.2"
 
 "@jeromefitz/notion@3.2.1":
   version "3.2.1"
@@ -6802,10 +6802,10 @@ lines-and-columns@^1.1.6:
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.2.4.tgz#eca284f75d2965079309dc0ad9255abb2ebc1632"
   integrity sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==
 
-lint-staged@13.0.1:
-  version "13.0.1"
-  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-13.0.1.tgz#899e78065ab29b88fdd922482411121664ef66be"
-  integrity sha512-Ykaf4QTi0a02BF7cnq7JIPGOJxH4TkNMWhSlJdH9wOekd0X+gog47Jfh/0L31DqZe5AiydLGC7LkPqpaNm+Kvg==
+lint-staged@13.0.2:
+  version "13.0.2"
+  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-13.0.2.tgz#35a1c57130e9ad5b1dea784972a40777ba433dd5"
+  integrity sha512-qQLfLTh9z34eMzfEHENC+QBskZfxjomrf+snF3xJ4BzilORbD989NLqQ00ughsF/A+PT41e87+WsMFabf9++pQ==
   dependencies:
     cli-truncate "^3.1.0"
     colorette "^2.0.17"

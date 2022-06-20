@@ -91,7 +91,7 @@
   },
   "devDependencies": {
     "@jeromefitz/eslint-config": "1.0.5",
-    "@jeromefitz/lint-staged": "1.0.4",
+    "@jeromefitz/lint-staged": "1.0.5",
     "@jeromefitz/prettier-config": "1.0.0",
     "@jeromefitz/tsconfig": "1.0.0",
     "@next/bundle-analyzer": "12.1.6",

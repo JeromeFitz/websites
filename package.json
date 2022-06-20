@@ -55,7 +55,7 @@
     "@jeromefitz/conventional-gitmoji": "3.2.0",
     "@jeromefitz/eslint-config": "1.0.5",
     "@jeromefitz/git-cz": "14.3.1",
-    "@jeromefitz/lint-staged": "1.0.4",
+    "@jeromefitz/lint-staged": "1.0.5",
     "@jeromefitz/prettier-config": "1.0.0",
     "@jeromefitz/release-notes-generator": "1.1.0",
     "@jeromefitz/semantic": "9.1.1",
