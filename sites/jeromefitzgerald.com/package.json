@@ -90,7 +90,7 @@
     "zustand": "3.7.2"
   },
   "devDependencies": {
-    "@jeromefitz/eslint-config": "1.0.5",
+    "@jeromefitz/eslint-config": "1.0.6",
     "@jeromefitz/lint-staged": "1.0.4",
     "@jeromefitz/prettier-config": "1.0.0",
     "@jeromefitz/tsconfig": "1.0.0",
