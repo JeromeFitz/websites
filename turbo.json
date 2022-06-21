@@ -1,7 +1,7 @@
 {
   "$schema": "https://turborepo.org/schema.json",
   "baseBranch": "origin/main",
-  "globalDependencies": ["yarn.lock"],
+  "globalDependencies": ["pnpm-workspace.yaml"],
   "pipeline": {
     "build": {
       "outputs": [".cache/**", ".next/**"],

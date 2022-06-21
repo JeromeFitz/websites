@@ -24,7 +24,7 @@ import {
   Section,
   Text,
 } from '@jeromefitz/design-system'
-import { HeroImage } from '@jeromefitz/design-system/components/Hero'
+import { HeroImage } from '@jeromefitz/design-system/custom/Hero'
 import _map from 'lodash/map'
 import _size from 'lodash/size'
 import { fetcher } from 'next-notion/src/lib/fetcher'

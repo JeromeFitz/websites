@@ -213,6 +213,9 @@ const NavigationMenuImpl = ({ navigationNonMutated }) => {
 
           return hasChildren ? (
             <NavigationMenuItem key={`kmi-${id}`}>
+              {/* @todo(radix-ui) types */}
+              {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+              {/* @ts-ignore */}
               <NavigationMenuTriggerWithCaret>
                 {title}
               </NavigationMenuTriggerWithCaret>

@@ -12,7 +12,8 @@ import { notionConfig } from '~config/index'
 // const useCache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE
 const useCache = false
 
-const notion = getNotion(notionConfig)
+// @todo(types)
+const notion: any = getNotion(notionConfig)
 
 const notionPagesId = async (req: NextApiRequest, res: NextApiResponse) => {
   // console.dir(`notionPagesId`)
@@ -32,7 +33,7 @@ const notionPagesId = async (req: NextApiRequest, res: NextApiResponse) => {
 
   if (!data || data === undefined) {
     await avoidRateLimit()
-    const contentData = await notion.pages.retrieve({
+    const contentData = await notion?.pages?.retrieve({
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       page_id,

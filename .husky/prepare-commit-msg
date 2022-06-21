@@ -2,9 +2,9 @@
 
 [ -n "$CI" ] && exit 0
 
-yarn pretty-quick --staged
+pnpm pretty-quick --staged
 exec < /dev/tty
 # @note(git-cz) publish w/ this
-yarn git-cz --hook || true
-# @note(git-cz) yarn link w/ this
+pnpm git-cz --hook || true
+# @note(git-cz) pnpm link w/ this
 # node ./node_modules/@jeromefitz/git-cz/dist/cli.js --hook || true
