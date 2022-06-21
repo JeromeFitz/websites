@@ -172,6 +172,9 @@ const AppBarImpl = ({}) => {
             >
               <NextLink href="/" passHref>
                 <a onClick={() => playBleep()}>
+                  {/* @todo(radix-ui) types */}
+                  {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+                  {/* @ts-ignore */}
                   <Avatar
                     alt={`Avatar for Jerome (Bighead Dizzy)`}
                     src={`/static/images/bighead--jerome--dizzy.svg`}
@@ -230,6 +233,9 @@ const AppBarImpl = ({}) => {
             >
               <NextLink href="/" passHref>
                 <a onClick={() => playBleep()}>
+                  {/* @todo(radix-ui) types */}
+                  {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+                  {/* @ts-ignore */}
                   <Avatar
                     alt={`Avatar for Jerome (Bighead Dizzy)`}
                     src={`/static/images/bighead--jerome--dizzy.svg`}
@@ -273,6 +279,9 @@ const AppBarImpl = ({}) => {
                 <CommandKButton />
               </Flex>
               <Flex>
+                {/* @todo(radix-ui) types */}
+                {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+                {/* @ts-ignore */}
                 <SwitchIcon
                   checked={theme === 'dark' || theme == undefined || !mounted}
                   onCheckedChange={() => handleToggleTheme()}
@@ -284,6 +293,9 @@ const AppBarImpl = ({}) => {
                 />
               </Flex>
               <Flex>
+                {/* @todo(radix-ui) types */}
+                {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+                {/* @ts-ignore */}
                 <SwitchIcon
                   checked={audio || !mounted}
                   onCheckedChange={() => audioToggle()}

@@ -29,3 +29,8 @@ next-env.d.ts
 
 # transition
 todo/**
+
+# lock
+package-lock.json
+pnpm-lock.yaml
+yarn.lock

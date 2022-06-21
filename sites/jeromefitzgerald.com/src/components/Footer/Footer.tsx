@@ -326,6 +326,9 @@ const FooterImpl = () => {
             <NextLink href={'/'} passHref>
               <BoxLink onClick={handleClickLink}>
                 <Flex align="center" gap="3" css={{ mt: '$8' }}>
+                  {/* @todo(radix-ui) types */}
+                  {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+                  {/* @ts-ignore */}
                   <Avatar
                     alt={`Avatar for Jerome (Bighead Dizzy)`}
                     size="5"

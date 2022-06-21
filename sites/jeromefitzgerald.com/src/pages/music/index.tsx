@@ -155,6 +155,9 @@ const Music = () => {
           >
             {plans.map((plan) => {
               return (
+                //  @todo(radix-ui) types
+                //  eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                //  @ts-ignore
                 <RadioCard
                   key={plan.name}
                   value={plan.time_range}

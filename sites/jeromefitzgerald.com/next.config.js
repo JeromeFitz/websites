@@ -34,7 +34,7 @@ const externals = [
 ]
 const messagesDebug = [
   `warn  - [@note]`,
-  `warn  - yarn link:`,
+  `warn  - pnpm link:`,
   `warn  - 🖼️  @jeromefitz/design-system`,
 ]
 

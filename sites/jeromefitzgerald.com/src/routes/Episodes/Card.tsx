@@ -15,7 +15,7 @@ import {
   CardImageContainer,
   CardMeta,
   CardTitle,
-} from '@jeromefitz/design-system/components/Card'
+} from '@jeromefitz/design-system/custom/Card'
 import type { Episode as EpisodeProperties } from '@jeromefitz/notion/schema'
 import { ImageWithBackgroundBlur } from '@jeromefitz/shared/src/components'
 import { IMAGE__PLACEHOLDER } from '@jeromefitz/shared/src/lib/constants'

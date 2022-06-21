@@ -50,17 +50,17 @@ jobs:
           fetch-depth: 1
       - name: '💽️  Init'
         id: pull-init
-        uses: JeromeFitz/websites/.github/actions/init@main
+        uses: JeromeFitz/websites/.github/actions/init@feature/pnpm
       - name: '🚨️  Lint'
         id: pull-lint
-        uses: JeromeFitz/websites/.github/actions/lint@main
+        uses: JeromeFitz/websites/.github/actions/lint@feature/pnpm
         with:
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
       - name: '🛠️  Deploy (Config)'
         id: pull-deploy-config
-        if: (github.actor == 'JeromeFitz' || github.actor == 'dependabot' || github.actor == 'dependabot[bot]') && (contains(github.event.head_commit.message, '[build]') || contains(github.event.head_commit.message, '[b]'))
-        uses: actions/github-script@v3
+        if: (github.actor == 'JeromeFitz' || github.actor == 'dependabot[bot]') && (contains(github.event.head_commit.message, '[build]') || contains(github.event.head_commit.message, '[b]'))
+        uses: actions/github-script@v6
         with:
           script: |
             core.setOutput('ref', context.payload.pull_request.head.ref)
@@ -68,15 +68,15 @@ jobs:
       - name: '🐙️  Deploy (Checkout)'
         id: pull-deploy-checkout
         uses: actions/checkout@v2
-        if: (github.actor == 'JeromeFitz' || github.actor == 'dependabot' || github.actor == 'dependabot[bot]') && (contains(github.event.head_commit.message, '[build]') || contains(github.event.head_commit.message, '[b]'))
+        if: (github.actor == 'JeromeFitz' || github.actor == 'dependabot[bot]') && (contains(github.event.head_commit.message, '[build]') || contains(github.event.head_commit.message, '[b]'))
         with:
           ref: ${{ steps.pull-deploy-config.outputs.ref }}
           repository: ${{ steps.pull-deploy-config.outputs.repo }}
           fetch-depth: 1
       - name: '🔺️  Deploy (Preview)'
         id: pull-deploy-preview
-        if: (github.actor == 'JeromeFitz' || github.actor == 'dependabot' || github.actor == 'dependabot[bot]') && (contains(github.event.head_commit.message, '[build]') || contains(github.event.head_commit.message, '[b]'))
-        uses: JeromeFitz/websites/.github/actions/deploy@main
+        if: (github.actor == 'JeromeFitz' || github.actor == 'dependabot[bot]') && (contains(github.event.head_commit.message, '[build]') || contains(github.event.head_commit.message, '[b]'))
+        uses: JeromeFitz/websites/.github/actions/deploy@feature/pnpm
         with:
           GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}

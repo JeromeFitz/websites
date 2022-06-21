@@ -49,22 +49,22 @@ jobs:
           fetch-depth: 10
       - name: '💽️  Init'
         id: push-init
-        uses: JeromeFitz/websites/.github/actions/init@main
+        uses: JeromeFitz/websites/.github/actions/init@feature/pnpm
       - name: '🚨️  Lint'
         id: push-lint
-        uses: JeromeFitz/websites/.github/actions/lint@main
+        uses: JeromeFitz/websites/.github/actions/lint@feature/pnpm
         with:
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
       - name: '🏷️  Release'
         id: push-release
-        uses: JeromeFitz/websites/.github/actions/release@main
+        uses: JeromeFitz/websites/.github/actions/release@feature/pnpm
         with:
           GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
       - name: '🔺️  Deploy (Production)'
         id: push-deploy
         if: github.ref == 'refs/heads/main'
-        uses: JeromeFitz/websites/.github/actions/deploy@main
+        uses: JeromeFitz/websites/.github/actions/deploy@feature/pnpm
         with:
           GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
