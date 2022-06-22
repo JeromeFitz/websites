@@ -36,7 +36,7 @@ const globalCss = {
   body: {
     fontFeatureSettings:
       // '"calt", "zero", "ss03", "cv01", "cv05", "cv08", "cv09", "cv10", "salt"',
-      '"zero", "cv01", "cv02", "cv03", "cv04", "cv05", "cv06", "cv08", "cv09", "cv10", "cv11"',
+      '"calt", "zero", "cv01", "cv02", "cv03", "cv04", "cv05", "cv06", "cv08", "cv09", "cv10", "cv11"',
   },
 
   'html.nprogress-busy': {

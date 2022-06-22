@@ -47,9 +47,10 @@ const StyledLabel = styled('label', cssLabel)
 
 /**
  * @exports
+ * @todo(types) This is likely not portable. A type annotation is necessary.
  */
-const Checkbox = StyledCheckbox
-const CheckboxIndicator = StyledIndicator
-const CheckboxLabel = StyledLabel
+const Checkbox: any = StyledCheckbox
+const CheckboxIndicator: any = StyledIndicator
+const CheckboxLabel: any = StyledLabel
 
 export { Checkbox, CheckboxIndicator, CheckboxLabel }
