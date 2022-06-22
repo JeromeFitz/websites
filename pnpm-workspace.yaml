@@ -1,0 +1,4 @@
+packages:
+  - 'packages/*'
+  - 'sites/*'
+enable-pre-post-scripts: true

@@ -5,12 +5,13 @@ import {
   Section,
   Skeleton,
 } from '@jeromefitz/design-system'
-import type { IGetPlaiceholderReturnCustom } from '@jeromefitz/shared/src/lib/types'
-import { Gradients } from '@jeromefitz/shared/src/styles/const'
 import _isEmpty from 'lodash/isEmpty'
 import { fetcher } from 'next-notion/src/lib/fetcher'
 import * as React from 'react'
 import useSWR from 'swr'
+
+import type { IGetPlaiceholderReturnCustom } from '../../lib/types'
+import { Gradients } from '../../styles/const'
 
 import { Image, ImageBlur, ImageContainer } from './ImageLead.styles'
 

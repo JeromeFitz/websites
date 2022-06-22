@@ -1,4 +1,4 @@
-import { Button, Note, PageHeading } from '@jeromefitz/design-system'
+import { Button, Callout, PageHeading, Text } from '@jeromefitz/design-system'
 import { TZ } from '@jeromefitz/shared/src/lib/constants'
 import { parseISO } from 'date-fns'
 import { formatInTimeZone as _formatInTimeZone } from 'date-fns-tz'
@@ -80,23 +80,28 @@ const Layout = ({ children, info, preview = false, routeType, url }) => {
     <>
       <Seo {...seo} />
       {preview && (
-        <Note>
-          Preview Mode.{' '}
-          <Button
-            as="a"
-            css={{
-              cursor: 'pointer',
-              ml: '$8',
-              mt: '$1',
-              '@bp1': { ml: '$3', mt: '0' },
-            }}
-            ghost
-            href="/api/v1/cms/preview-clear?clear=true"
-            size="2"
-          >
-            Exit Preview Mode
-          </Button>
-        </Note>
+        <Callout variant="note">
+          <Text as="p" variant="note" css={{}}>
+            <Text as="strong" weight="7" css={{ display: 'inline' }}>
+              Note:{` `}
+            </Text>
+            Preview Mode.{' '}
+            <Button
+              as="a"
+              css={{
+                cursor: 'pointer',
+                ml: '$8',
+                mt: '$1',
+                '@bp1': { ml: '$3', mt: '0' },
+              }}
+              ghost
+              href="/api/v1/cms/preview-clear?clear=true"
+              size="2"
+            >
+              Exit Preview Mode
+            </Button>
+          </Text>
+        </Callout>
       )}
       <PageHeading title={seo.title} description={pageHeadingDescription} />
       {children}

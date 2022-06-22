@@ -10,17 +10,28 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 })
 const { withPlaiceholder } = require('@plaiceholder/next')
 const { withPlugins } = require('next-compose-plugins')
-const withTM = require('next-transpile-modules')([
-  '@jeromefitz/design-system',
-  '@jeromefitz/shared',
-  'next-notion',
-])
+/**
+ * @note(pnpm) pass ENV variable to determine if we should transpile
+ *            ./src  == transpile
+ *            ./dist != transpile
+ */
+const transpileModules = ['@jeromefitz/shared', 'next-notion']
+process.env.DESIGN_SYSTEM__TRANSPILE === 'true' &&
+  transpileModules.push('@jeromefitz/design-system')
+const withTM = require('next-transpile-modules')(transpileModules)
 
 const { withBuildInfo } = require('./scripts/buildInfo')
 // const getRedirects = require('./config/notion/website/getRedirects')
 
 /**
- * @note when developing with @jeromefitz/design-system locally
+ * @note(pnpm) until we move "websites" into "packages"...
+ *
+ * When developing locally:
+ * - pnpm dev:ds
+ * - OR update .env => pnpm dev
+ *
+ * This maps all the externals required for proper localized
+ *  files system path mapping.
  */
 const isLocal = process.env.DESIGN_SYSTEM__LINK === 'true' ? true : false
 const externals = [
@@ -32,10 +43,9 @@ const externals = [
   'react-dom',
   'swr',
 ]
-const messagesDebug = [
-  `warn  - [@note]`,
-  `warn  - yarn link:`,
-  `warn  - 🖼️  @jeromefitz/design-system`,
+const isLocalDebugMessages = [
+  `warn  - [ 📝 ]  pnpm link...`,
+  `warn  - [ 🔗 ]  @jeromefitz/design-system`,
 ]
 
 /**
@@ -129,7 +139,6 @@ const nextConfig = {
   },
   experimental: {
     browsersListForSwc: true,
-    concurrentFeatures: false,
     legacyBrowsers: false,
     serverComponents: false,
   },
@@ -186,29 +195,20 @@ const nextConfig = {
   // @ts-ignore
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
-    // if (!isServer) {
-    //   config.externals = [
-    //     ...config.externals,
-    //     ...['child_process', 'dns', 'fs', 'net', 'tls'],
-    //   ]
-    // }
+    /**
+     * @note(pnpm) path mapping if working locally
+     * @note(npmrc) shamefully-hoist === node_modules at root
+     */
     if (isLocal) {
-      messagesDebug.map((msg) => console.debug(msg))
-      if (isServer) {
-        config.externals = [...externals, ...config.externals]
-      }
-
-      externals.map((_external) => {
-        console.debug(`warn  - ›  📦️ ${_external}`)
-        /**
-         * @note(monorepo) node_modules resides at root
-         */
-        config.resolve.alias[_external] = path.resolve(
+      isLocalDebugMessages.map((msg) => console.debug(msg))
+      externals.map((ext) => {
+        console.debug(`warn  - [ 📦 ]  ›  ${ext}`)
+        config.resolve.alias[ext] = path.resolve(
           __dirname,
           '..',
           '..',
           'node_modules',
-          _external
+          ext
         )
       })
     }

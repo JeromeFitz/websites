@@ -3,9 +3,9 @@ import _parseISO from 'date-fns/parseISO'
 import _filter from 'lodash/filter'
 import _map from 'lodash/map'
 import _orderBy from 'lodash/orderBy'
-import { getTimeInSeconds } from 'next-notion/src/utils'
 import { Podcast, Item, FeedOptions } from 'podcast'
 
+import { getTimeInSeconds } from './utils'
 import { getXmlWithModifiedLastBuildDate } from './utils/getXmlWithModifiedLastBuildDate'
 
 const getPodcastFeed = ({ data, notionConfig, pathVariables }) => {

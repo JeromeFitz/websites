@@ -35,7 +35,8 @@ const globalCss = {
   // https://rsms.me/inter/lab/?feat-cv01=1&feat-ss01=1&feat-ss02=1&feat-ss03=1&invert-colors=1&wght=900
   body: {
     fontFeatureSettings:
-      '"calt", "zero", "ss03", "cv01", "cv05", "cv08", "cv09", "cv10", "salt"',
+      // '"calt", "zero", "ss03", "cv01", "cv05", "cv08", "cv09", "cv10", "salt"',
+      '"calt", "zero", "cv01", "cv02", "cv03", "cv04", "cv05", "cv06", "cv08", "cv09", "cv10", "cv11"',
   },
 
   'html.nprogress-busy': {

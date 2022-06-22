@@ -1,5 +1,5 @@
-import { PageHeading, Separator, Text } from '@jeromefitz/design-system'
-import * as React from 'react'
+import { Callout, PageHeading, Separator, Text } from '@jeromefitz/design-system'
+import { QuoteImpl } from 'next-notion/src/app/components/quote'
 
 const properties = {
   title: 'Variable Font 123 GOO ars',
@@ -77,18 +77,31 @@ const PagesFont = () => {
           ...css,
         }}
       >
-        {text}
+        1. {text}
       </Text>
       <Text
         size="8"
         css={{
           ...css,
-          fontFeatureSettings: '"calt", "salt", "cv10"',
+          fontFeatureSettings: '"calt", "cv10"',
         }}
       >
-        {text}
+        2. {text}
       </Text>
-      <Text size="9">{text}</Text>
+      <Text size="9">3. {text}</Text>
+      <QuoteImpl>
+        “If there were a Tony for off-Broadway, short-form sketch musicals, this
+        would win it... among the funniest things I’ve ever seen” - Pittsburgh
+        Magazine’s Sean Collier
+      </QuoteImpl>
+      <Callout variant="note">
+        <Text as="p" variant="note" css={{}}>
+          <Text as="strong" weight="7" css={{ display: 'inline' }}>
+            Note:{` `}
+          </Text>
+          This page is in-progress
+        </Text>
+      </Callout>
     </>
   )
 }

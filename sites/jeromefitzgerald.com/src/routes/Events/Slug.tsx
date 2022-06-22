@@ -4,11 +4,12 @@
 import {
   Box,
   ButtonMarketing,
+  Callout,
   Flex,
   Grid,
   Icon,
-  Note,
   Paragraph,
+  Text,
 } from '@jeromefitz/design-system'
 import type { Event as EventProperties } from '@jeromefitz/notion/schema'
 // import { ContentNodes } from '@jeromefitz/next-notion/src/app'
@@ -130,7 +131,14 @@ const Info = ({ data }) => {
             Get Tickets
           </ButtonMarketing>
         ) : (
-          <Note>This event has passed.</Note>
+          <Callout variant="note">
+            <Text as="p" variant="note" css={{}}>
+              <Text as="strong" weight="7" css={{ display: 'inline' }}>
+                Note:{` `}
+              </Text>
+              This event has passed
+            </Text>
+          </Callout>
         )}
       </Flex>
     </>
@@ -145,7 +153,14 @@ const EventsSlug = (props) => {
 
   return (
     <>
-      <Note>This page is in-progress.</Note>
+      <Callout variant="note">
+        <Text as="p" variant="note" css={{}}>
+          <Text as="strong" weight="7" css={{ display: 'inline' }}>
+            Note:{` `}
+          </Text>
+          This page is in-progress
+        </Text>
+      </Callout>
       {/* <ContentNodes content={content} images={images} /> */}
       <Flex
         css={{

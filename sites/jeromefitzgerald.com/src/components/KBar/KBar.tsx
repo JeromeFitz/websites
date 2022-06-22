@@ -1,13 +1,16 @@
-import { Box, KBarFooter, Separator } from '@jeromefitz/design-system'
+import { Box, Separator } from '@jeromefitz/design-system'
+import { KBarFooter } from '@jeromefitz/design-system/custom'
 import { useFocusTrap } from '@mantine/hooks'
 import dynamic from 'next/dynamic'
 import * as React from 'react'
 
 const KBarSearch = dynamic(() =>
-  import('@jeromefitz/design-system').then((mod: any) => mod.KBarSearch)
+  import('@jeromefitz/design-system/custom').then((mod: any) => mod.KBarSearch)
 )
 const KBarSearchResults = dynamic(() =>
-  import('@jeromefitz/design-system').then((mod: any) => mod.KBarSearchResults)
+  import('@jeromefitz/design-system/custom').then(
+    (mod: any) => mod.KBarSearchResults
+  )
 )
 
 /**

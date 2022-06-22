@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-implied-eval */
 import { useRouter } from 'next/router'
 import NProgress from 'nprogress'
 import * as React from 'react'
@@ -9,6 +10,7 @@ const NProgressImpl = () => {
     let timeout: NodeJS.Timeout
 
     const start = () => {
+      // eslint-disable-next-line @typescript-eslint/no-implied-eval
       // eslint-disable-next-line @typescript-eslint/unbound-method
       timeout = setTimeout(NProgress.start, 100)
     }

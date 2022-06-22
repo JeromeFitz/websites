@@ -2,12 +2,12 @@
 import {
   useSpotify,
   Box,
+  Callout,
   // Container,
   Flex,
   Heading,
   Icon,
   Link,
-  Note,
   PageHeading,
   // Paragraph,
   RadioCard,
@@ -29,20 +29,20 @@ import useStore from '~store/useStore'
 const plans = [
   {
     id: 0,
-    name: '* All Time',
+    name: '* AllTime',
     description: 'Since March 2020',
     time_range: 'long_term',
   },
   {
     id: 1,
     name: '~ 6 month',
-    description: 'Past six months',
+    description: `Past six months`,
     time_range: 'medium_term',
   },
   {
     id: 2,
     name: '~ 1 month',
-    description: 'Past month',
+    description: `Past month`,
     time_range: 'short_term',
   },
 ]
@@ -68,8 +68,8 @@ const Music = () => {
     'Jerome loves music. Here are his current top artists and tracks.'
 
   const seo = {
-    title: title,
-    description: description,
+    title,
+    description,
     canonical: url,
     openGraph: {
       url,
@@ -89,7 +89,14 @@ const Music = () => {
     <>
       <Seo {...seo} />
       <PageHeading title={seo.title} description={seo.description} />
-      <Note>This page is in-progress.</Note>
+      <Callout variant="note">
+        <Text as="p" variant="note" css={{}}>
+          <Text as="strong" weight="7" css={{ display: 'inline' }}>
+            Note:{` `}
+          </Text>
+          This page is in-progress
+        </Text>
+      </Callout>
       <Text
         as="p"
         css={{
@@ -155,11 +162,14 @@ const Music = () => {
           >
             {plans.map((plan) => {
               return (
+                //  @todo(radix-ui) types
+                //  eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                //  @ts-ignore
                 <RadioCard
                   key={plan.name}
                   value={plan.time_range}
                   css={{
-                    mb: '$2',
+                    mb: '$4',
                     width: 'var(--width-11_12)',
                     fontFamily: '$mono',
                   }}
@@ -185,7 +195,6 @@ const Music = () => {
                     </Text>
                     <Text
                       size="4"
-                      color="gray"
                       css={{ display: 'none', '@bp1': { display: 'block' } }}
                     >
                       {plan.description}
