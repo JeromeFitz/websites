@@ -154,10 +154,10 @@ const ShowsCard = ({
                 {_map(tags, (item, itemIdx) => (
                   <Badge
                     key={`badge-${itemIdx}`}
-                    size="2"
+                    size="1"
                     css={{
                       border: '1px solid $colors$brand',
-                      mr: '$4',
+                      mr: '$2',
                     }}
                   >
                     {item}

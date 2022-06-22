@@ -142,11 +142,10 @@ const PodcastsCard = ({
             {/* {_map(tags, (item, itemIdx) => (
               <Badge
                 key={`badge-${itemIdx}`}
-                size="2"
-
+                size="1"
                 css={{
-                  border: '1px solid $colors$violet11',
-                  mr: '$4',
+                  border: '1px solid $colors$brand',
+                  mr: '$2',
                 }}
               >
                 {item}

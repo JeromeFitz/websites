@@ -44,13 +44,12 @@ const Meta = ({ data, routeType }) => {
           css={{
             borderTop: '1px solid $hiContrast',
             fontSize: '$9',
-            fontVariationSettings: '"wght" $fontWeights$6',
-            fontWeight: '$fontWeights$6',
             mt: '$6',
             mb: '$4',
             pt: '$6',
             pb: '$4',
           }}
+          weight="7"
         >
           Info
         </Text>
@@ -106,10 +105,9 @@ const Rollup = ({ _key, data, rollupKey, routeType }) => {
           size="2"
           css={{
             borderTop: '1px solid $hiContrast',
-            fontVariationSettings: '"wght" $fontWeights$5',
-            fontWeight: '$fontWeights$5',
             py: '$3',
           }}
+          weight="6"
         >
           {title}
         </Heading>
@@ -124,7 +122,9 @@ const Rollup = ({ _key, data, rollupKey, routeType }) => {
             }
             return (
               <Box as="li" key={keySub} css={{}}>
-                <Paragraph size="2">{item}</Paragraph>
+                <Paragraph size="2" weight="5">
+                  {item}
+                </Paragraph>
               </Box>
             )
           })}
@@ -152,7 +152,9 @@ const Cast = ({ data }) => {
       {_map(cast, (item, itemIdx) => {
         return (
           <Box as="li" css={{}} key={`iiii-${itemIdx}`}>
-            <Paragraph size="2">{item}</Paragraph>
+            <Paragraph size="2" weight="5">
+              {item}
+            </Paragraph>
           </Box>
         )
       })}

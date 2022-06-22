@@ -4,11 +4,11 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
+  Callout,
   Box,
-  // Emoji,
   Flex,
   Grid,
-  Note,
+  Icon,
   Sup,
   Text,
 } from '@jeromefitz/design-system'
@@ -16,16 +16,7 @@ import _filter from 'lodash/filter'
 import _map from 'lodash/map'
 import _orderBy from 'lodash/orderBy'
 import _size from 'lodash/size'
-import dynamic from 'next/dynamic'
 import * as React from 'react'
-
-const Emoji = dynamic(
-  () =>
-    import('@jeromefitz/design-system/custom/Emoji').then((mod: any) => mod.Emoji),
-  {
-    ssr: false,
-  }
-)
 
 const getItemsByStatus = (data, status) => {
   return _filter(_orderBy(data, ['author', 'slug'], ['asc']), ['status', status])
@@ -35,35 +26,43 @@ const STATUS = {
   IN_PROGRESS: {
     id: 'IN_PROGRESS',
     emoji: '📚️',
+    icon: <Icon.Book />,
     slug: 'in-progress',
     title: 'In Progress',
   },
   COMPLETE: {
     id: 'COMPLETE',
     emoji: '🏁️',
+    icon: <Icon.CheckCircled />,
     slug: 'complete',
     title: 'Complete',
   },
   PENDING: {
     id: 'PENDING',
     emoji: '🔜️',
+    icon: <Icon.Bookmark />,
     slug: 'pending',
     title: 'Pending',
   },
 }
 
-const HEADING = ({ emoji, size, title }) => {
+const HEADING = ({ icon, size, title }) => {
   return (
     <Flex css={{ flexDirection: 'row', gap: 7 }}>
-      <Text as="h4" css={{ display: 'flex', color: '$colors$gray12' }}>
-        {/* @types(emoji) dynamic import ability */}
-        {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-        {/* @ts-ignore */}
-        <Emoji character={emoji} margin={true} />
-        <Text as="span" css={{ ml: '$2', color: 'inherit', fontWeight: 'inherit' }}>
+      <Text
+        as="h4"
+        css={{ display: 'flex', alignItems: 'center', color: '$hiContrast' }}
+      >
+        {icon}
+        <Text
+          as="span"
+          css={{ ml: '$3', color: 'inherit', fontWeight: 'inherit' }}
+          size="4"
+          weight="5"
+        >
           {title}
         </Text>
-        <Sup css={{ ml: '$1' }}>{size}</Sup>
+        <Sup css={{ ml: '$2' }}>{size}</Sup>
       </Text>
     </Flex>
   )
@@ -80,22 +79,22 @@ const ListItem = ({ item }) => {
       <Text
         as="p"
         css={{
-          fontVariationSettings: '"wght" $fontWeights$7, "slnt" 0',
-          fontWeight: '7',
           color: 'inherit',
         }}
-        size="5"
+        size="4"
+        weight="6"
       >
         “{title}
         {subtitle && `: ${subtitle}`}”
         <Text
           as="span"
           css={{
-            ml: '$2',
+            ml: '$3',
             mt: '$2',
             color: 'inherit',
           }}
-          size="4"
+          size="3"
+          weight="5"
         >
           {author}
         </Text>
@@ -145,9 +144,9 @@ const Items = ({ items: _items }) => {
               {/* @ts-ignore */}
               <AccordionTrigger>
                 <HEADING
-                  emoji={type.emoji}
-                  title={type.title}
-                  size={_size(type.data)}
+                  icon={type?.icon}
+                  title={type?.title}
+                  size={_size(type?.data)}
                 />
               </AccordionTrigger>
               {/* @ts-ignore */}
@@ -177,7 +176,14 @@ const ListingItems = (props) => {
   if (!items) return null
   return (
     <>
-      <Note>This page is in-progress.</Note>
+      <Callout variant="note">
+        <Text as="p" variant="note" css={{}}>
+          <Text as="strong" weight="7" css={{ display: 'inline' }}>
+            Note:{` `}
+          </Text>
+          This page is in-progress
+        </Text>
+      </Callout>
       <Box css={{ px: '$3', py: '$2' }}>
         <Grid
           css={{
@@ -192,11 +198,15 @@ const ListingItems = (props) => {
           <Items items={items} />
         </Grid>
       </Box>
-      <Text as="p" css={{ pt: '$4', my: '$3', fontSize: '$5', lineHeight: '1.5' }}>
-        {/* @types(emoji) dynamic import ability */}
-        {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-        {/* @ts-ignore */}
-        <Emoji character={`📖️`} margin={true} />
+      <Text
+        as="p"
+        css={{
+          pt: '$4',
+          m: '$4',
+          fontSize: '$5',
+          lineHeight: '1.5',
+        }}
+      >
         Throughout the past year plus I have been gifting a pal a random book a
         month. I do not know if they will ever read them, but I try to pick ones I
         think people would like.
