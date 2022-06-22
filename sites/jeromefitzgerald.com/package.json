@@ -15,7 +15,7 @@
   "scripts": {
     "---": "@next",
     "analyze": "ANALYZE=true pnpm build",
-    "build": "CI=1 next build",
+    "build": "CI=1 next build && pnpm postbuild",
     "dev": "next dev",
     "dev:ds": "DESIGN_SYSTEM__LINK=true next dev",
     "dev:dst": "DESIGN_SYSTEM__LINK=true DESIGN_SYSTEM__TRANSPILE=true next dev",
