@@ -89,17 +89,11 @@ const Artist = ({ year }) => {
       imageLabel={imageLabel}
       slug={imageSlug}
     >
-      <Paragraph
-        size="2"
-        css={{ color: '$hiContrast', fontWeight: 'bold', fontSize: '$7' }}
-      >
+      <Paragraph size="2" css={{ color: '$hiContrast', fontSize: '$7' }} weight="7">
         <span>{artistName}</span>
       </Paragraph>
       <Separator decorative my="5" size="full" />
-      <Paragraph
-        size="2"
-        css={{ color: '$hiContrast', fontWeight: '400', fontSize: '$6' }}
-      >
+      <Paragraph size="2" css={{ color: '$hiContrast', fontSize: '$6' }} weight="5">
         {year === '2021' ? (
           <>
             <strong>James Dewitt Yancey</strong> was an American record producer and
@@ -136,10 +130,11 @@ const Artist = ({ year }) => {
         }}
       >
         {_map(genresData.slice(0, 10), (tag) => (
-          <Flex as="li" key={slugger.slug(tag)} css={{ p: '$2' }}>
+          <Flex as="li" key={slugger.slug(tag)} css={{ p: '0 $2 $3 0' }}>
             <Badge
-              size="2"
+              size="1"
               css={{
+                backgroundColor: '$loContrast',
                 border: '1px solid $hiContrast',
                 fontFamily: '$mono',
                 color: '$hiContrast',
@@ -196,17 +191,11 @@ const Song = ({ year }) => {
       imageLabel={imageLabel}
       slug={imageSlug}
     >
-      <Paragraph
-        size="2"
-        css={{ color: '$hiContrast', fontWeight: 'bold', fontSize: '$7' }}
-      >
+      <Paragraph size="2" css={{ color: '$hiContrast', fontSize: '$7' }} weight="7">
         <span>{artistName}</span>
       </Paragraph>
       <Separator decorative my="5" size="full" />
-      <Paragraph
-        size="2"
-        css={{ color: '$hiContrast', fontWeight: 'bold', fontSize: '$6' }}
-      >
+      <Paragraph size="2" css={{ color: '$hiContrast', fontSize: '$6' }} weight="7">
         “{track.name}”
       </Paragraph>
       <Flex
@@ -222,10 +211,11 @@ const Song = ({ year }) => {
         }}
       >
         {_map(genresData.slice(0, 10), (tag) => (
-          <Flex as="li" key={slugger.slug(tag)} css={{ p: '$2' }}>
+          <Flex as="li" key={slugger.slug(tag)} css={{ p: '0 $2 $3 0' }}>
             <Badge
-              size="2"
+              size="1"
               css={{
+                backgroundColor: '$loContrast',
                 border: '1px solid $hiContrast',
                 fontFamily: '$mono',
                 color: '$hiContrast',

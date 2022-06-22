@@ -18,6 +18,10 @@ next-env.d.ts
 # ts
 jest.config.ts
 
-
 # transition
 todo/**
+
+# lock
+package-lock.json
+pnpm-lock.yaml
+yarn.lock

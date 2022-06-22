@@ -31,7 +31,7 @@ env:
 jobs:
   pull:
     name: '👷️  CI'
-    if: github.event.pull_request.draft == false && !contains(github.event.head_commit.message, '[skip ci]')
+    if: ${{ github.event.pull_request.draft == false && !contains(github.event.head_commit.message, '[skip ci]')}}
     timeout-minutes: 20
     runs-on: ubuntu-latest
     env:
@@ -45,7 +45,7 @@ jobs:
     steps:
       - name: '🐙️  Checkout'
         id: pull-checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 1
       - name: '💽️  Init'
@@ -53,30 +53,33 @@ jobs:
         uses: JeromeFitz/websites/.github/actions/init@main
       - name: '🚨️  Lint'
         id: pull-lint
-        uses: JeromeFitz/websites/.github/actions/lint@main
+        uses: JeromeFitz/websites/.github/actions/lint@feature/pnpm
         with:
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
       - name: '🛠️  Deploy (Config)'
         id: pull-deploy-config
-        if: (github.actor == 'JeromeFitz' || github.actor == 'dependabot' || github.actor == 'dependabot[bot]') && (contains(github.event.head_commit.message, '[build]') || contains(github.event.head_commit.message, '[b]'))
-        uses: actions/github-script@v3
+        # https://docs.github.com/en/actions/learn-github-actions/expressions
+        if: (${{ github.actor == 'JeromeFitz' }} || ${{ github.actor == 'dependabot[bot]' }}) && $${ contains(github.event.head_commit.message, '[b]') }}
+        uses: actions/github-script@v6
         with:
           script: |
             core.setOutput('ref', context.payload.pull_request.head.ref)
             core.setOutput('repo', context.payload.pull_request.head.repo.full_name)
       - name: '🐙️  Deploy (Checkout)'
         id: pull-deploy-checkout
-        uses: actions/checkout@v2
-        if: (github.actor == 'JeromeFitz' || github.actor == 'dependabot' || github.actor == 'dependabot[bot]') && (contains(github.event.head_commit.message, '[build]') || contains(github.event.head_commit.message, '[b]'))
+        uses: actions/checkout@v3
+        # https://docs.github.com/en/actions/learn-github-actions/expressions
+        if: (${{ github.actor == 'JeromeFitz' }} || ${{ github.actor == 'dependabot[bot]' }}) && $${ contains(github.event.head_commit.message, '[b]') }}
         with:
           ref: ${{ steps.pull-deploy-config.outputs.ref }}
           repository: ${{ steps.pull-deploy-config.outputs.repo }}
           fetch-depth: 1
       - name: '🔺️  Deploy (Preview)'
         id: pull-deploy-preview
-        if: (github.actor == 'JeromeFitz' || github.actor == 'dependabot' || github.actor == 'dependabot[bot]') && (contains(github.event.head_commit.message, '[build]') || contains(github.event.head_commit.message, '[b]'))
-        uses: JeromeFitz/websites/.github/actions/deploy@main
+        # https://docs.github.com/en/actions/learn-github-actions/expressions
+        if: (${{ github.actor == 'JeromeFitz' }} || ${{ github.actor == 'dependabot[bot]' }}) && $${ contains(github.event.head_commit.message, '[b]') }}
+        uses: JeromeFitz/websites/.github/actions/deploy@feature/pnpm
         with:
           GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}

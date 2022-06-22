@@ -40,9 +40,10 @@ const cacheOverride =
   process.env.NEXT_PUBLIC__NOTION_USE_CACHE_OVERIDE === 'true' ? true : false
 const cacheType = process.env.NEXT_PUBLIC__NOTION_CACHE_TYPE || CACHE_TYPES.JSON
 
+// @todo(types) This is likely not portable. A type annotation is necessary.
 // @todo(complexity) 17
 // eslint-disable-next-line complexity
-const getStaticPropsCatchAll = async ({ catchAll, notionConfig, preview }) => {
+const getStaticPropsCatchAll: any = async ({ catchAll, notionConfig, preview }) => {
   const notion = getNotion(notionConfig)
   const pathVariables = notion.custom.getPathVariables({ catchAll })
 

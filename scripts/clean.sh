@@ -5,6 +5,8 @@ if [[ -d ./node_modules ]]; then rm -rf ./node_modules; fi
 if [[ -d ./packages/shared/dist ]]; then rm -rf ./packages/shared/dist; fi
 if [[ -d ./packages/shared/node_modules ]]; then rm -rf ./packages/shared/node_modules; fi
 
+if [[ -d ./packages/next-notion/dist ]]; then rm -rf ./packages/next-notion/dist; fi
+if [[ -d ./packages/next-notion/node_modules ]]; then rm -rf ./packages/next-notion/node_modules; fi
 
 # if [[ -d ./sites/jeromefitzgerald.com/.cache ]]; then rm -rf ./sites/jeromefitzgerald.com/.cache; fi
 if [[ -d ./sites/jeromefitzgerald.com/.next ]]; then rm -rf ./sites/jeromefitzgerald.com/.next; fi

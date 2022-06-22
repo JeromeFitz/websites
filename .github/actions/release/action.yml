@@ -18,4 +18,4 @@ runs:
       env:
         GH_TOKEN: ${{ inputs.GH_TOKEN }}
       run: |
-        yarn semantic-release
+        pnpm semantic-release

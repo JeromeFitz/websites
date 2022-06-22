@@ -1,10 +1,11 @@
 import {
   Badge,
   Box,
+  Callout,
   Grid,
   Heading,
-  Note,
   Paragraph,
+  Text,
 } from '@jeromefitz/design-system'
 import { ContentNodes } from 'next-notion/src/app'
 import NextLink from 'next/link'
@@ -23,11 +24,10 @@ const Item = ({ item, routeType }) => {
       </Heading>
       <Badge
         key={`${item.id}--badge`}
-        size="2"
+        size="1"
         css={{
-          border: '1px solid $colors$violet11',
-          mr: '$4',
-          my: '$1',
+          border: '1px solid $colors$brand',
+          mr: '$2',
         }}
       >
         {date}
@@ -52,7 +52,14 @@ const FallbackListing = ({ ...props }) => {
 
   return (
     <Box>
-      <Note>This page is in-progress. ({props.routerNode})</Note>
+      <Callout variant="note">
+        <Text as="p" variant="note" css={{}}>
+          <Text as="strong" weight="7" css={{ display: 'inline' }}>
+            Note:{` `}
+          </Text>
+          This page is in-progress. ({props.routerNode})
+        </Text>
+      </Callout>
       <ContentNodes content={content} images={images} />
       <Grid
         css={{

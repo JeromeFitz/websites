@@ -16,7 +16,8 @@ const isDev = process.env.NODE_ENV !== 'production'
  *  create the `next` route dynamically
  *
  */
-const getStaticPathsDefault = ({
+// @todo(types) This is likely not portable. A type annotation is necessary.
+const getStaticPathsDefault: any = ({
   items,
   routeParentInfo,
   routeType,

@@ -2,7 +2,8 @@ import dynamic from 'next/dynamic'
 
 import ContentNodes from './ContentNodes'
 
-const getContentNode = {
+// @todo(types) This is likely not portable. A type annotation is necessary.
+const getContentNode: any = {
   _unsupported: dynamic(() => import('./components/_unsupported')),
   bulleted_list_item: dynamic(() => import('./components/bulleted_list_item')),
   bulleted_list: dynamic(() => import('./components/bulleted_list')),

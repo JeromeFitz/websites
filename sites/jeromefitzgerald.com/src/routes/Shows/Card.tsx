@@ -14,7 +14,7 @@ import {
   CardImageContainer,
   CardMeta,
   CardTitle,
-} from '@jeromefitz/design-system/components/Card'
+} from '@jeromefitz/design-system/custom/Card'
 import type { Show } from '@jeromefitz/notion/schema'
 import { ImageWithBackgroundBlur } from '@jeromefitz/shared/src/components'
 import { IMAGE__PLACEHOLDER } from '@jeromefitz/shared/src/lib/constants'
@@ -154,10 +154,10 @@ const ShowsCard = ({
                 {_map(tags, (item, itemIdx) => (
                   <Badge
                     key={`badge-${itemIdx}`}
-                    size="2"
+                    size="1"
                     css={{
                       border: '1px solid $colors$brand',
-                      mr: '$4',
+                      mr: '$2',
                     }}
                   >
                     {item}
