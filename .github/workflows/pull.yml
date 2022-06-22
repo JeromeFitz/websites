@@ -53,7 +53,7 @@ jobs:
         uses: JeromeFitz/websites/.github/actions/init@main
       - name: '🚨️  Lint'
         id: pull-lint
-        uses: JeromeFitz/websites/.github/actions/lint@feature/pnpm
+        uses: JeromeFitz/websites/.github/actions/lint@main
         with:
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
@@ -79,7 +79,7 @@ jobs:
         id: pull-deploy-preview
         # https://docs.github.com/en/actions/learn-github-actions/expressions
         if: (${{ github.actor == 'JeromeFitz' }} || ${{ github.actor == 'dependabot[bot]' }}) && $${ contains(github.event.head_commit.message, '[b]') }}
-        uses: JeromeFitz/websites/.github/actions/deploy@feature/pnpm
+        uses: JeromeFitz/websites/.github/actions/deploy@main
         with:
           GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
