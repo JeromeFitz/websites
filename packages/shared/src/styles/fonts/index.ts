@@ -1,3 +1,6 @@
+/**
+ * @lol(overcomplicated) how about you just do regular ol' .css file
+ */
 const fonts = {
   inter: {
     fontDisplay: 'swap',

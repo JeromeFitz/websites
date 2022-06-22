@@ -10,11 +10,15 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 })
 const { withPlaiceholder } = require('@plaiceholder/next')
 const { withPlugins } = require('next-compose-plugins')
-const withTM = require('next-transpile-modules')([
-  '@jeromefitz/design-system',
-  '@jeromefitz/shared',
-  'next-notion',
-])
+/**
+ * @note(pnpm) pass ENV variable to determine if we should transpile
+ *            ./src  == transpile
+ *            ./dist != transpile
+ */
+const transpileModules = ['@jeromefitz/shared', 'next-notion']
+process.env.DESIGN_SYSTEM__TRANSPILE === 'true' &&
+  transpileModules.push('@jeromefitz/design-system')
+const withTM = require('next-transpile-modules')(transpileModules)
 
 const { withBuildInfo } = require('./scripts/buildInfo')
 // const getRedirects = require('./config/notion/website/getRedirects')
