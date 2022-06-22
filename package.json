@@ -26,6 +26,7 @@
     "clean:install": "turbo run clean && ./scripts/clean.sh",
     "deduplicate": "npx pnpm-deduplicate",
     "deduplicate:check": "npx pnpm-deduplicate --list",
+    "deploy": "turbo run build --scope=jeromefitzgerald.com --include-dependencies --no-deps",
     "---- ": "# @lint",
     "pretty-quick": "pretty-quick",
     "lint:fix": "turbo run lint:fx ",

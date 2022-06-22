@@ -1,12 +1,13 @@
 import { styled } from '@jeromefitz/design-system'
 import NextImage from 'next/image'
 
-const ImageContainer = styled('div', {
+// @todo(types) This is likely not portable. A type annotation is necessary.
+const ImageContainer: any = styled('div', {
   position: 'relative',
   borderRadius: '$4',
 })
-
-const ImageBlur = styled('div', {
+// @todo(types) This is likely not portable. A type annotation is necessary.
+const ImageBlur: any = styled('div', {
   position: 'absolute',
   top: 0,
   left: 0,
@@ -17,8 +18,8 @@ const ImageBlur = styled('div', {
   opacity: '0.81',
   transform: 'scale(1.01)',
 })
-
-const Image = styled(NextImage, {
+// @todo(types) This is likely not portable. A type annotation is necessary.
+const Image: any = styled(NextImage, {
   borderRadius: '$4',
   position: 'relative',
   overflow: 'hidden',
