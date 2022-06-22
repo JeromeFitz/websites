@@ -164,10 +164,11 @@ const NowPlaying = () => {
             }}
           >
             {_map(genresData.slice(0, 10), (tag: string) => (
-              <Flex as="li" key={slugger.slug(tag)} css={{ p: '$2' }}>
+              <Flex as="li" key={slugger.slug(tag)} css={{ p: '0 $2 $3 0' }}>
                 <Badge
-                  size="2"
+                  size="1"
                   css={{
+                    backgroundColor: '$loContrast',
                     border: '1px solid $hiContrast',
                     fontFamily: '$mono',
                     color: '$hiContrast',

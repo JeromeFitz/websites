@@ -32,14 +32,6 @@ import useStore from '~store/useStore'
 
 const { branch, isBranchMain, prerelease, version } = buildInfo
 
-const Emoji = dynamic(
-  () =>
-    import('@jeromefitz/design-system/custom/Emoji').then((mod: any) => mod.Emoji),
-  {
-    ssr: false,
-  }
-)
-
 const NowPlaying = dynamic(
   () => import('~components/Music').then((mod: any) => mod.NowPlaying),
   {
@@ -229,7 +221,7 @@ const FooterImpl = () => {
         <Separator decorative size="full" />
       </Box>
       <NowPlaying />
-      <Box as="footer" css={{ pb: '$9', mx: '$3' }}>
+      <Box as="footer" css={{ p: '1rem 1rem 2rem', m: '0 auto' }}>
         <Grid
           css={{
             rowGap: '$7',
@@ -338,8 +330,8 @@ const FooterImpl = () => {
                     ref={ref}
                   />
                   <Box id="logoFooter">
-                    <Paragraph css={{ fontWeight: 700 }}>Jerome</Paragraph>
-                    <Paragraph>Fitzgerald</Paragraph>
+                    <Paragraph weight="8">Jerome</Paragraph>
+                    <Paragraph weight="6">Fitzgerald</Paragraph>
                   </Box>
                 </Flex>
               </BoxLink>
@@ -350,47 +342,31 @@ const FooterImpl = () => {
               css={{
                 lineHeight: '20px',
                 color: '$gray11',
-
+                fontFamily: '$mono',
                 mt: '$6',
+                mb: '$9',
                 '@bp1': { pr: '$9' },
               }}
             >
-              (In-progress) Site by
-              <br />
-              <strong>Nice Group of People, LLC</strong>
-              <Text
-                size="1"
-                as="span"
-                css={{
-                  color: '$gray11',
-                  fontFamily: '$mono',
-                  my: '$2',
-                }}
-              >
-                {/* @types(emoji) dynamic import ability */}
-                {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-                {/* @ts-ignore */}
-                <Emoji character={`🏷️`} margin={true} />
-                {` `}v{version}
-              </Text>
-              {!isBranchMain && (
-                <Text
-                  size="1"
-                  as="span"
-                  css={{
-                    color: '$gray11',
-                    fontFamily: '$mono',
-                    my: '$2',
-                  }}
-                >
-                  {/* @types(emoji) dynamic import ability */}
-                  {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-                  {/* @ts-ignore */}
-                  <Emoji character={`🧪️`} margin={true} />
-                  {` `}
-                  {!!prerelease ? prerelease : branch}
-                </Text>
-              )}
+              <>
+                (c){` `}
+                <Box as="strong" css={{ wordBreak: 'keep-all ' }}>
+                  Nice Group of People, LLC
+                </Box>
+                <br />
+                {/* <Emoji character={`🏷️`} margin={true} /> */}
+                {`(v) `}
+                {version}
+                {` `}
+                {!isBranchMain && (
+                  <>
+                    {/* <Emoji character={`🧪️`} margin={true} /> */}
+                    {`(`}
+                    {!!prerelease ? prerelease : branch}
+                    {`)`}
+                  </>
+                )}
+              </>
             </Text>
           </Flex>
         </Grid>

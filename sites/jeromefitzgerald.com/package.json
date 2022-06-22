@@ -17,6 +17,7 @@
     "analyze": "ANALYZE=true pnpm build",
     "build": "CI=1 next build",
     "dev": "next dev",
+    "dev:ds": "DESIGN_SYSTEM__LINK=true next dev",
     "postbuild": "next-sitemap --config next.sitemap.js",
     "start": "next start",
     "start:isr": "next start -H localhost",
@@ -40,7 +41,7 @@
   },
   "dependencies": {
     "@heroicons/react": "1.0.6",
-    "@jeromefitz/design-system": "3.5.0-canary.1",
+    "@jeromefitz/design-system": "3.5.0-canary.2",
     "@jeromefitz/notion": "3.3.0-canary.2",
     "@jeromefitz/spotify": "2.3.0-canary.2",
     "@jeromefitz/utils": "2.2.0-canary.1",
@@ -104,6 +105,7 @@
     "@types/react-dom": "18.0.5",
     "@types/title": "3.4.1",
     "@types/uuid": "8.3.4",
+    "encoding": "0.1.13",
     "eslint-config-next": "12.1.6",
     "next-notion": "workspace:*",
     "next-unused": "0.0.6"

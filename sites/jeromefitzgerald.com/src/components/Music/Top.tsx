@@ -530,7 +530,7 @@ const TopItem = ({ type }) => {
                             },
                           },
                           transition: 'all 0.2s ease-in-out',
-                          mt: '$4',
+                          mt: '$5',
                           '@media (prefers-reduced-motion)': {
                             transition: 'none',
                             transform: 'none',
@@ -545,27 +545,36 @@ const TopItem = ({ type }) => {
                         <HeroImage alt={_alt} meta={_meta} />
                       </SlideContainer>
                     </FocusArea>
-                    <BoxGrab css={{ m: '$1', pt: '$1' }}>
+                    <BoxGrab css={{ m: '$2', pt: '$2' }}>
                       <Text
                         as="h3"
                         size="5"
-                        css={{ fontWeight: 500, lineHeight: '1.25', mb: 3 }}
+                        css={{ lineHeight: '1.25', mb: '$2' }}
+                        weight="5"
                       >
                         {/* {lpad(i + 1)}. */}
                         {_title1}
                       </Text>
                       {!!_title2 && (
                         <>
-                          <Text as="p" size="4" css={{ lineHeight: '1.25', my: 2 }}>
+                          <Text
+                            as="p"
+                            size="4"
+                            css={{ lineHeight: '1.25', my: '$2' }}
+                          >
                             {_title2}
                           </Text>
-                          <Text as="p" size="3" css={{ lineHeight: '1.25', my: 2 }}>
+                          <Text
+                            as="p"
+                            size="3"
+                            css={{ lineHeight: '1.25', my: '$2' }}
+                          >
                             {_title3}
                           </Text>
                         </>
                       )}
                       {genres && (
-                        <Box role="listitem" css={{ ...css_info, my: '$2' }}>
+                        <Box role="listitem" css={{ ...css_info, my: '$3' }}>
                           <Icon.Tag style={css_icon} />
                           <Text as="p" size="2" css={{ lineHeight: '1.25' }}>
                             {genres}
@@ -627,7 +636,7 @@ const TopItem = ({ type }) => {
               css={{
                 position: 'absolute',
                 top: 'calc(50% - $7)',
-                left: '15px',
+                left: '$5',
               }}
             >
               <CarouselPrevious
@@ -642,7 +651,7 @@ const TopItem = ({ type }) => {
               css={{
                 position: 'absolute',
                 top: 'calc(50% - $7)',
-                right: '15px',
+                right: '$5',
               }}
             >
               <CarouselNext
@@ -663,14 +672,14 @@ const TopItem = ({ type }) => {
 const Top = ({ type = 'top-artists' }) => {
   const { description, title } = CONTENT[type]
   return (
-    <Box css={{ position: 'relative', mt: '$2' }}>
-      <Heading size="3" as="h2" css={{ my: '$2' }}>
+    <Box css={{ position: 'relative', mt: '$3' }}>
+      <Heading size="3" as="h2" css={{ my: '$3' }}>
         {title}
       </Heading>
       <Paragraph
         size="2"
         as="p"
-        css={{ color: '$colors$gray11', mt: '$1', mb: '$3' }}
+        css={{ color: '$colors$gray11', mt: '$2', mb: '$4' }}
       >
         {description}
       </Paragraph>
@@ -687,10 +696,10 @@ const SlideContainer = styled('a', {
   width: 300,
   height: 300,
   borderRadius: '$3',
-  mb: '$2',
+  mb: '$3',
 
   // Content slightly above vertical center feels perfectly centred
-  pb: '$3',
+  pb: '$4',
 
   // Can't select text because the carousel is draggable
   userSelect: 'none',
