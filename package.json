@@ -52,7 +52,7 @@
     "@jeromefitz/lint-staged": "1.1.0-canary.1",
     "@jeromefitz/prettier-config": "1.1.0-canary.1",
     "@jeromefitz/release-notes-generator": "1.2.0-canary.1",
-    "@jeromefitz/semantic": "9.2.0-canary.2",
+    "@jeromefitz/semantic": "9.2.0",
     "@jeromefitz/tsconfig": "1.1.0-canary.1",
     "@types/is-ci": "3.0.0",
     "@types/jest": "28.1.3",
