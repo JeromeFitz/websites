@@ -50,7 +50,7 @@
     "@jeromefitz/eslint-config": "1.1.0-canary.1",
     "@jeromefitz/git-cz": "14.4.0-canary.2",
     "@jeromefitz/lint-staged": "1.1.0-canary.1",
-    "@jeromefitz/prettier-config": "1.1.0-canary.1",
+    "@jeromefitz/prettier-config": "1.1.0",
     "@jeromefitz/release-notes-generator": "1.2.0-canary.1",
     "@jeromefitz/semantic": "9.2.0-canary.2",
     "@jeromefitz/tsconfig": "1.1.0-canary.1",
