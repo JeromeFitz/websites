@@ -1,4 +1,4 @@
-# name: 'Init And Lint'
+# name: 'Init'
 name: '💽️  '
 description: 'Localized Init'
 author: 'JeromeFitz'
@@ -20,9 +20,3 @@ runs:
         cache-dependency-path: pnpm-lock.yaml
         cache: 'pnpm'
         node-version: 16
-
-    - name: '📦️  Dependencies'
-      id: dependencies
-      shell: bash
-      run: |
-        pnpm install --frozen-lockfile

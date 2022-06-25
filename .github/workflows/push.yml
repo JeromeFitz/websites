@@ -50,6 +50,9 @@ jobs:
       - name: '💽️  Init'
         id: push-init
         uses: JeromeFitz/websites/.github/actions/init@main
+      - name: '📦  Install'
+        id: push-install
+        uses: JeromeFitz/websites/.github/actions/install@main
       - name: '🚨️  Lint'
         id: push-lint
         uses: JeromeFitz/websites/.github/actions/lint@main
