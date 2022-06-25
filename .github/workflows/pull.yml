@@ -42,43 +42,70 @@ jobs:
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+      IS_ACTOR_VERIFIED: ${{ github.actor == 'jeromefitz' || github.actor == 'dependabot[bot]' }}
+      IS_JEROMEFITZ: ${{ github.actor == 'jeromefitz' }}
+      IS_DEPENDABOT: ${{ github.actor == 'dependabot[bot]' }}
+      IS_LABEL_PNPM: ${{ contains( github.event.pull_request.labels.*.name, '📦 pnpm' ) }}
     steps:
       - name: '🐙️  Checkout'
         id: pull-checkout
         uses: actions/checkout@v3
         with:
+          ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 1
+
       - name: '💽️  Init'
         id: pull-init
         uses: JeromeFitz/websites/.github/actions/init@main
+
+      - name: '🔒  pnpm'
+        id: pull-pnpm
+        uses: JeromeFitz/websites/.github/actions/pnpm@main
+        if: ${{ env.IS_DEPENDABOT || env.IS_LABEL_PNPM }}
+        with:
+          IS_ACTOR_VERIFIED: ${{ env.IS_ACTOR_VERIFIED }}
+          IS_JEROMEFITZ: ${{ env.IS_JEROMEFITZ }}
+          IS_DEPENDABOT: ${{ env.IS_DEPENDABOT }}
+          IS_LABEL_PNPM: ${{ env.IS_LABEL_PNPM }}
+
+      - name: '📦  Install'
+        id: pull-install
+        uses: JeromeFitz/websites/.github/actions/install@main
+
       - name: '🚨️  Lint'
         id: pull-lint
         uses: JeromeFitz/websites/.github/actions/lint@main
         with:
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+
+      # https://docs.github.com/en/actions/learn-github-actions/expressions
+      - name: '📛  Commit Message'
+        id: pull-commit-message
+        run: |
+          echo "::set-output name=message::$(git log --no-merges -1 --oneline)"
+
       - name: '🛠️  Deploy (Config)'
         id: pull-deploy-config
-        # https://docs.github.com/en/actions/learn-github-actions/expressions
-        if: (${{ github.actor == 'JeromeFitz' }} || ${{ github.actor == 'dependabot[bot]' }}) && $${ contains(github.event.head_commit.message, '[b]') }}
+        if: ${{ contains(steps.pull-commit-message.outputs.message, '[b]') }}
         uses: actions/github-script@v6
         with:
           script: |
             core.setOutput('ref', context.payload.pull_request.head.ref)
             core.setOutput('repo', context.payload.pull_request.head.repo.full_name)
+
       - name: '🐙️  Deploy (Checkout)'
         id: pull-deploy-checkout
         uses: actions/checkout@v3
-        # https://docs.github.com/en/actions/learn-github-actions/expressions
-        if: (${{ github.actor == 'JeromeFitz' }} || ${{ github.actor == 'dependabot[bot]' }}) && $${ contains(github.event.head_commit.message, '[b]') }}
+        if: ${{ env.IS_ACTOR_VERIFIED && contains(steps.pull-commit-message.outputs.message, '[b]') }}
         with:
           ref: ${{ steps.pull-deploy-config.outputs.ref }}
           repository: ${{ steps.pull-deploy-config.outputs.repo }}
           fetch-depth: 1
+
       - name: '🔺️  Deploy (Preview)'
         id: pull-deploy-preview
-        # https://docs.github.com/en/actions/learn-github-actions/expressions
-        if: (${{ github.actor == 'JeromeFitz' }} || ${{ github.actor == 'dependabot[bot]' }}) && $${ contains(github.event.head_commit.message, '[b]') }}
+        if: ${{ env.IS_ACTOR_VERIFIED && contains(steps.pull-commit-message.outputs.message, '[b]') }}
         uses: JeromeFitz/websites/.github/actions/deploy@main
         with:
           GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
