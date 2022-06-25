@@ -34,9 +34,6 @@ jobs:
     if: ${{ github.event.pull_request.draft == false && !contains(github.event.head_commit.message, '[skip ci]') }}
     timeout-minutes: 20
     runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write
-      contents: write
     env:
       GH_BOT_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
       GH_DEPLOY_TOKEN: ${{ secrets.GH_DEPLOY_TOKEN }}
@@ -45,6 +42,7 @@ jobs:
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+      IS_ACTOR_VERIFIED: ${{ github.actor == 'jeromefitz' || github.actor == 'dependabot[bot]' }}
       IS_JEROMEFITZ: ${{ github.actor == 'jeromefitz' }}
       IS_DEPENDABOT: ${{ github.actor == 'dependabot[bot]' }}
       IS_LABEL_PNPM: ${{ contains( github.event.pull_request.labels.*.name, '📦 pnpm' ) }}
@@ -55,49 +53,64 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 1
-      - name: '📝  Debug Logs'
-        id: pull-debug
-        uses: JeromeFitz/websites/.github/actions/debug@dependabot/npm_and_yarn/main/turbo-1.3.1
-        with:
-          IS_JEROMEFITZ: ${{ env.IS_JEROMEFITZ }}
-          IS_DEPENDABOT: ${{ env.IS_DEPENDABOT }}
-          IS_LABEL_PNPM: ${{ env.IS_LABEL_PNPM }}
+
       - name: '💽️  Init'
         id: pull-init
         uses: JeromeFitz/websites/.github/actions/init@dependabot/npm_and_yarn/main/turbo-1.3.1
+
+      - name: '🔒  pnpm'
+        id: pull-pnpm
+        uses: JeromeFitz/websites/.github/actions/pnpm@dependabot/npm_and_yarn/main/turbo-1.3.1
+        if: ${{ env.IS_DEPENDABOT || env.IS_LABEL_PNPM }}
+        with:
+          IS_ACTOR_VERIFIED: ${{ env.IS_ACTOR_VERIFIED }}
+          IS_JEROMEFITZ: ${{ env.IS_JEROMEFITZ }}
+          IS_DEPENDABOT: ${{ env.IS_DEPENDABOT }}
+          IS_LABEL_PNPM: ${{ env.IS_LABEL_PNPM }}
+
+      - name: '📦  Install'
+        id: pull-install
+        uses: JeromeFitz/websites/.github/actions/install@dependabot/npm_and_yarn/main/turbo-1.3.1
+
       - name: '🚨️  Lint'
         id: pull-lint
         uses: JeromeFitz/websites/.github/actions/lint@dependabot/npm_and_yarn/main/turbo-1.3.1
         with:
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+
+      # https://docs.github.com/en/actions/learn-github-actions/expressions
+      - name: '📛  Commit Message'
+        id: pull-commit-message
+        run: |
+          echo "::set-output name=message::$(git log --no-merges -1 --oneline)"
+
       - name: '🛠️  Deploy (Config)'
         id: pull-deploy-config
-        # https://docs.github.com/en/actions/learn-github-actions/expressions
-        if: (${{ github.actor == 'JeromeFitz' }} || ${{ github.actor == 'dependabot[bot]' }}) && $${ contains(github.event.head_commit.message, '[b]') }}
+        if: ${{ contains(steps.pull-commit-message.outputs.message, '[b]') }}
         uses: actions/github-script@v6
         with:
           script: |
             core.setOutput('ref', context.payload.pull_request.head.ref)
             core.setOutput('repo', context.payload.pull_request.head.repo.full_name)
-      # - name: '🐙️  Deploy (Checkout)'
-      #   id: pull-deploy-checkout
-      #   uses: actions/checkout@v3
-      #   # https://docs.github.com/en/actions/learn-github-actions/expressions
-      #   if: (${{ github.actor == 'JeromeFitz' }} || ${{ github.actor == 'dependabot[bot]' }}) && $${ contains(github.event.head_commit.message, '[b]') }}
-      #   with:
-      #     ref: ${{ steps.pull-deploy-config.outputs.ref }}
-      #     repository: ${{ steps.pull-deploy-config.outputs.repo }}
-      #     fetch-depth: 1
-      # - name: '🔺️  Deploy (Preview)'
-      #   id: pull-deploy-preview
-      #   # https://docs.github.com/en/actions/learn-github-actions/expressions
-      #   if: (${{ github.actor == 'JeromeFitz' }} || ${{ github.actor == 'dependabot[bot]' }}) && $${ contains(github.event.head_commit.message, '[b]') }}
-      #   uses: JeromeFitz/websites/.github/actions/deploy@dependabot/npm_and_yarn/main/turbo-1.3.1
-      #   with:
-      #     GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
-      #     VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-      #     VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-      #     VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-      #     PRODUCTION: false
-      #     DEPLOY_PR_FROM_FORK: true
+
+      - name: '🐙️  Deploy (Checkout)'
+        id: pull-deploy-checkout
+        uses: actions/checkout@v3
+        if: ${{ env.IS_ACTOR_VERIFIED && contains(steps.pull-commit-message.outputs.message, '[b]') }}
+        with:
+          ref: ${{ steps.pull-deploy-config.outputs.ref }}
+          repository: ${{ steps.pull-deploy-config.outputs.repo }}
+          fetch-depth: 1
+
+      - name: '🔺️  Deploy (Preview)'
+        id: pull-deploy-preview
+        if: ${{ env.IS_ACTOR_VERIFIED && contains(steps.pull-commit-message.outputs.message, '[b]') }}
+        uses: JeromeFitz/websites/.github/actions/deploy@dependabot/npm_and_yarn/main/turbo-1.3.1
+        with:
+          GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          PRODUCTION: false
+          DEPLOY_PR_FROM_FORK: true

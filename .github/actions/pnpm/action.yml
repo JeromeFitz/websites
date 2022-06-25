@@ -1,33 +1,58 @@
-# name: 'Init And Lint'
+# name: 'pnpm'
 name: '🔒  '
-description: 'Localized PNPM Lock File Update'
+description: 'pnpm lockfile hack'
 author: 'JeromeFitz'
+
+inputs:
+  IS_ACTOR_VERIFIED:
+    description: 'Flag if GitHub Actor is verified (JeromeFitz||Dependabot) 👱🏻 || 🤖'
+    default: false
+    type: boolean
+  IS_JEROMEFITZ:
+    description: 'Flag if GitHub Actor is JeromeFitz 👱🏻'
+    required: false
+    default: false
+    type: boolean
+  IS_DEPENDABOT:
+    description: 'Flag if GitHub Actor is Dependabot 🤖'
+    required: false
+    default: false
+    type: boolean
+  IS_LABEL_PNPM:
+    description: 'Flag if Label `📦 pnpm` is applied 🏷️'
+    default: false
+    type: boolean
 
 runs:
   using: 'composite'
   steps:
-    - name: '🔧  pnpm'
-      id: pnpm-setup
-      uses: pnpm/action-setup@v2.2.2
-      with:
-        version: 7
+    - name: '🚚💨 debug'
+      id: pnpm-debug
+      shell: bash
+      run: |
+        echo 'IS_ACTOR_VERIFIED: ${{ inputs.IS_ACTOR_VERIFIED }}'
+        echo 'IS_JEROMEFITZ: ${{ inputs.IS_JEROMEFITZ }}'
+        echo 'IS_DEPENDABOT: ${{ inputs.IS_DEPENDABOT }}'
+        echo 'IS_LABEL_PNPM: ${{ inputs.IS_LABEL_PNPM }}'
 
-    - name: '💽️  Node'
-      id: node-setup
-      uses: actions/setup-node@v3
-      with:
-        # architecture: 'x64'
-        cache-dependency-path: pnpm-lock.yaml
-        cache: 'pnpm'
-        node-version: 16
+    - name: '🔧 git config'
+      id: pnpm-git-config
+      shell: bash
+      run: |
+        git --version
+        git config --global user.name BotJerome
+        git config --global user.email bot@jeromefitzgerald.com
 
-    - name: '📦️  Dependencies'
-      id: dependencies
+    - name: '📦 install'
+      id: pnpm-install
       shell: bash
       run: |
         pnpm install --lockfile-only
-        git config --global user.name BotJerome
-        git config --global user.email bot@jeromefitzgerald.com
         git add pnpm-lock.yaml
-        git commit -m "💚 (pnpm) pnpm-lock.yaml 🔒"
-        git push
+
+    - name: '🔒 git update'
+      id: pnpm-git-update
+      shell: bash
+      # note: should remove pnpm label if it exists if we create a commit
+      run: |
+        if [[ $(git status -s | egrep "^M" | wc -l) -eq 1 ]]; then git commit -m "💚 (pnpm) pnpm-lock.yaml 🔒" && git push; else git --version; fi
