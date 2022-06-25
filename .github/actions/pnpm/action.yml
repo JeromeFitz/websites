@@ -4,10 +4,6 @@ description: 'pnpm lockfile hack'
 author: 'JeromeFitz'
 
 inputs:
-  IS_ACTOR_VERIFIED:
-    description: 'Flag if GitHub Actor is verified (JeromeFitz||Dependabot) 👱🏻 || 🤖'
-    default: false
-    type: boolean
   IS_JEROMEFITZ:
     description: 'Flag if GitHub Actor is JeromeFitz 👱🏻'
     required: false
@@ -30,7 +26,6 @@ runs:
       id: pnpm-debug
       shell: bash
       run: |
-        echo 'IS_ACTOR_VERIFIED: ${{ inputs.IS_ACTOR_VERIFIED }}'
         echo 'IS_JEROMEFITZ: ${{ inputs.IS_JEROMEFITZ }}'
         echo 'IS_DEPENDABOT: ${{ inputs.IS_DEPENDABOT }}'
         echo 'IS_LABEL_PNPM: ${{ inputs.IS_LABEL_PNPM }}'
