@@ -1,18 +1,7 @@
 # name: 'Init And Lint'
-name: '💽️  '
-description: 'PNPM Hack'
+name: '🔒  '
+description: 'Localized PNPM Lock File Update'
 author: 'JeromeFitz'
-
-inputs:
-  IS_DEPENDABOT:
-    description: 'Flag if GitHub Actor is Dependabot 🤖'
-    required: false
-    default: false
-    type: boolean
-  IS_LABEL_PNPM:
-    description: 'Flag if Label `📦 pnpm` is applied 🏷️'
-    default: false
-    type: boolean
 
 runs:
   using: 'composite'
@@ -36,4 +25,9 @@ runs:
       id: dependencies
       shell: bash
       run: |
-        pnpm install --frozen-lockfile
+        pnpm install --lockfile-only
+        git config --global user.name BotJerome
+        git config --global user.email bot@jeromefitzgerald.com
+        git add pnpm-lock.yaml
+        git commit -m "💚 (pnpm) pnpm-lock.yaml 🔒"
+        git push

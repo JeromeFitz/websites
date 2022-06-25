@@ -1,0 +1,110 @@
+# name: 'Debug'
+name: '📝  '
+description: 'Debug Logs'
+author: 'JeromeFitz'
+
+inputs:
+  IS_JEROMEFITZ:
+    description: 'Flag if GitHUb Actor is JeromeFitz 👱🏻'
+    required: false
+    default: false
+    type: boolean
+  IS_DEPENDABOT:
+    description: 'Flag if GitHub Actor is Dependabot 🤖'
+    required: false
+    default: false
+    type: boolean
+  IS_LABEL_PNPM:
+    description: 'Flag if Label `📦 pnpm` is applied 🏷️'
+    default: false
+    type: boolean
+
+runs:
+  using: 'composite'
+  steps:
+    - name: '🚚💨 INPUTS'
+      id: debug-inputs
+      shell: bash
+      run: |
+        echo 'IS_JEROMEFITZ: ${{ inputs.IS_JEROMEFITZ }}'
+        echo 'IS_DEPENDABOT: ${{ inputs.IS_DEPENDABOT }}'
+        echo 'IS_LABEL_PNPM: ${{ inputs.IS_LABEL_PNPM }}'
+
+    # - name: '🚚💨 github context'
+    #   id: debug-github
+    #   shell: bash
+    #   run: |
+    #     echo '${{ toJSON(github) }}'
+
+    # - name: '🚚💨 job context'
+    #   id: debug-job
+    #   shell: bash
+    #   run: echo '${{ toJSON(job) }}'
+
+    # - name: '🚚💨 steps context'
+    #   id: debug-steps
+    #   shell: bash
+    #   run: echo '${{ toJSON(steps) }}'
+
+    # - name: '🚚💨 runner context'
+    #   id: debug-runner
+    #   shell: bash
+    #   run: echo '${{ toJSON(runner) }}'
+
+    # - name: '🚚💨 strategy context'
+    #   id: debug-strategy
+    #   shell: bash
+    #   run: echo '${{ toJSON(strategy) }}'
+
+    # - name: '🚚💨 matrix context'
+    #   id: debug-matrix
+    #   shell: bash
+    #   run: echo '${{ toJSON(matrix) }}'
+
+    - name: '🔧  pnpm'
+      id: debug-pnpm-setup
+      uses: pnpm/action-setup@v2.2.2
+      with:
+        version: 7
+
+    - name: '💽️  Node'
+      id: debug-node-setup
+      uses: actions/setup-node@v3
+      with:
+        # architecture: 'x64'
+        cache-dependency-path: pnpm-lock.yaml
+        cache: 'pnpm'
+        node-version: 16
+    - name: '🧪 git'
+      id: debug-git
+      shell: bash
+      run: |
+        git --version
+        git config --global user.name BotJerome
+        git config --global user.email bot@jeromefitzgerald.com
+    - name: '🧪 pnpm2'
+      id: debug-pnpm2
+      shell: bash
+      run: |
+        pnpm install --lockfile-only
+        git add pnpm-lock.yaml
+        git status -s | egrep "^M" | wc -l
+    - name: '🧪 pnpm3'
+      id: debug-pnpm3
+      shell: bash
+      # run: |
+      #   IS_LOCKFILE_MODIFIED=$(git status -s | egrep "^M" | wc -l)
+      #   echo 'IS_LOCKFILE_MODIFIED: $IS_LOCKFILE_MODIFIED'
+      run: |
+        if [[ $(git status -s | egrep "^M" | wc -l) -eq 1 ]]; then git commit -m "💚 (pnpm) pnpm-lock.yaml 🔒" && git push; else git --version; fi
+
+# IS_LOCKFILE_MODIFIED=$(git status -s | egrep "^M" | wc -l)
+# echo 'IS_LOCKFILE_MODIFIED: $IS_LOCKFILE_MODIFIED'
+# if [[ $IS_LOCKFILE_MODIFIED -eq 1 ]]; then echo 'y'; else echo 'n'; fi
+# echo 'IS_LOCKFILE_MODIFIED: 2'
+# if  [[ $IS_LOCKFILE_MODIFIED -eq 1 ]]
+# then
+#   echo 'y2'
+# else
+#   echo 'n2'
+# fi
