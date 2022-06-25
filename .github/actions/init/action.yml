@@ -1,18 +1,7 @@
-# name: 'Init And Lint'
+# name: 'Init'
 name: '💽️  '
-description: 'PNPM Hack'
+description: 'Localized Init'
 author: 'JeromeFitz'
-
-inputs:
-  IS_DEPENDABOT:
-    description: 'Flag if GitHub Actor is Dependabot 🤖'
-    required: false
-    default: false
-    type: boolean
-  IS_LABEL_PNPM:
-    description: 'Flag if Label `📦 pnpm` is applied 🏷️'
-    default: false
-    type: boolean
 
 runs:
   using: 'composite'
@@ -31,9 +20,3 @@ runs:
         cache-dependency-path: pnpm-lock.yaml
         cache: 'pnpm'
         node-version: 16
-
-    - name: '📦️  Dependencies'
-      id: dependencies
-      shell: bash
-      run: |
-        pnpm install --frozen-lockfile
