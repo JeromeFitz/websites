@@ -605,6 +605,9 @@ const EventItem = ({ data, keyPrefix }: { data: Item; keyPrefix: string }) => {
         <StyledBorder />
       </StyledBox>
       <VisuallyHidden>
+        {/* @todo(react-18) */}
+        {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+        {/* @ts-ignore */}
         <Announce>
           <Heading as="h4">{title}</Heading>
         </Announce>

@@ -56,11 +56,11 @@ jobs:
 
       - name: '💽️  Init'
         id: pull-init
-        uses: JeromeFitz/websites/.github/actions/init@main
+        uses: JeromeFitz/websites/.github/actions/init@renovate/configure
 
       - name: '🔒  pnpm'
         id: pull-pnpm
-        uses: JeromeFitz/websites/.github/actions/pnpm@main
+        uses: JeromeFitz/websites/.github/actions/pnpm@renovate/configure
         if: ${{ env.IS_ACTOR_RENOVATE == 'true' || env.IS_LABEL_PNPM == 'true' }}
         with:
           IS_ACTOR_VERIFIED: $${ env.IS_ACTOR_VERIFIED }}
@@ -70,18 +70,18 @@ jobs:
 
       - name: '📦  Install'
         id: pull-install
-        uses: JeromeFitz/websites/.github/actions/install@main
+        uses: JeromeFitz/websites/.github/actions/install@renovate/configure
 
       - name: '🔺️  Cache (turbo)'
         id: pull-cache-turbo
-        uses: JeromeFitz/packages/.github/actions/cache-turbo@main
+        uses: JeromeFitz/packages/.github/actions/cache-turbo@renovate/configure
         with:
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
 
       - name: '🚨️  Lint'
         id: pull-lint
-        uses: JeromeFitz/websites/.github/actions/lint@main
+        uses: JeromeFitz/websites/.github/actions/lint@renovate/configure
         with:
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
@@ -113,7 +113,7 @@ jobs:
       - name: '🔺️  Deploy (Preview)'
         id: pull-deploy-preview
         if: ${{ (env.IS_ACTOR_VERIFIED == 'true') && contains(steps.pull-commit-message.outputs.message, '[b]') }}
-        uses: JeromeFitz/websites/.github/actions/deploy@main
+        uses: JeromeFitz/websites/.github/actions/deploy@renovate/configure
         with:
           GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}

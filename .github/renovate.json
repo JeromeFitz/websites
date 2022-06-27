@@ -35,7 +35,7 @@
     {
       "groupName": "react ⚛️ ...",
       "groupSlug": "react",
-      "matchPackageNames": ["react", "react-dom"]
+      "matchPackageNames": ["@types/react", "react", "react-dom"]
     }
   ],
   "prBodyColumns": ["Package", "Update", "Type", "Change"],
