@@ -50,36 +50,36 @@ jobs:
 
       - name: '💽️  Init'
         id: push-init
-        uses: JeromeFitz/websites/.github/actions/init@renovate/configure
+        uses: JeromeFitz/websites/.github/actions/init@main
 
       - name: '📦  Install'
         id: push-install
-        uses: JeromeFitz/websites/.github/actions/install@renovate/configure
+        uses: JeromeFitz/websites/.github/actions/install@main
 
       - name: '🔺️  Cache (turbo)'
         id: push-cache-turbo
-        uses: JeromeFitz/websites/.github/actions/cache-turbo@renovate/configure
+        uses: JeromeFitz/websites/.github/actions/cache-turbo@main
         with:
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
 
       - name: '🚨️  Lint'
         id: push-lint
-        uses: JeromeFitz/websites/.github/actions/lint@renovate/configure
+        uses: JeromeFitz/websites/.github/actions/lint@main
         with:
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
 
       - name: '🏷️  Release'
         id: push-release
-        uses: JeromeFitz/websites/.github/actions/release@renovate/configure
+        uses: JeromeFitz/websites/.github/actions/release@main
         with:
           GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
 
       - name: '🔺️  Deploy (Production)'
         id: push-deploy
         if: github.ref == 'refs/heads/main'
-        uses: JeromeFitz/websites/.github/actions/deploy@renovate/configure
+        uses: JeromeFitz/websites/.github/actions/deploy@main
         with:
           GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
