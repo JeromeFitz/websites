@@ -4,13 +4,17 @@ description: 'pnpm lockfile hack'
 author: 'JeromeFitz'
 
 inputs:
-  IS_JEROMEFITZ:
+  IS_ACTOR_VERIFIED:
+    description: 'Flag if GitHub Actor is verified (JeromeFitz||Renovate) 👱🏻 || 🤖'
+    default: false
+    type: boolean
+  IS_ACTOR_JEROMEFITZ:
     description: 'Flag if GitHub Actor is JeromeFitz 👱🏻'
     required: false
     default: false
     type: boolean
-  IS_DEPENDABOT:
-    description: 'Flag if GitHub Actor is Dependabot 🤖'
+  IS_ACTOR_DEPENDABOT:
+    description: 'Flag if GitHub Actor is Renovate 🤖'
     required: false
     default: false
     type: boolean
@@ -22,16 +26,18 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: '🚚💨 debug'
-      id: pnpm-debug
-      shell: bash
-      run: |
-        echo 'IS_JEROMEFITZ: ${{ inputs.IS_JEROMEFITZ }}'
-        echo 'IS_DEPENDABOT: ${{ inputs.IS_DEPENDABOT }}'
-        echo 'IS_LABEL_PNPM: ${{ inputs.IS_LABEL_PNPM }}'
+    # - name: '🧪 debug'
+    #   id: pnpm-debug
+    #   shell: bash
+    #   run: |
+    #     echo 'IS_ACTOR_VERIFIED: ${{ inputs.IS_ACTOR_VERIFIED }}'
+    #     echo 'IS_ACTOR_JEROMEFITZ: ${{ inputs.IS_ACTOR_JEROMEFITZ }}'
+    #     echo 'IS_ACTOR_RENOVATE: ${{ inputs.IS_ACTOR_RENOVATE }}'
+    #     echo 'IS_LABEL_PNPM: ${{ inputs.IS_LABEL_PNPM }}'
 
     - name: '🔧 git config'
       id: pnpm-git-config
+      if: ${{ inputs.IS_ACTOR_RENOVATE == 'true' || inputs.IS_LABEL_PNPM == 'true' }}
       shell: bash
       run: |
         git --version
@@ -40,6 +46,7 @@ runs:
 
     - name: '📦 install'
       id: pnpm-install
+      if: ${{ inputs.IS_ACTOR_RENOVATE == 'true' || inputs.IS_LABEL_PNPM == 'true' }}
       shell: bash
       run: |
         pnpm install --lockfile-only
@@ -47,6 +54,7 @@ runs:
 
     - name: '🔒 git update'
       id: pnpm-git-update
+      if: ${{ inputs.IS_ACTOR_RENOVATE == 'true' || inputs.IS_LABEL_PNPM == 'true' }}
       shell: bash
       # note: should remove pnpm label if it exists if we create a commit
       run: |
