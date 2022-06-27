@@ -12,10 +12,10 @@ import {
   Paragraph,
   Section,
   Separator,
+  VisuallyHidden,
 } from '@jeromefitz/design-system'
 import type { Event as EventProperties } from '@jeromefitz/notion/schema'
 import { TZ } from '@jeromefitz/shared/src/lib/constants'
-import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
 import { getDate, getDay, getMonth, getYear, parseISO } from 'date-fns'
 import { formatInTimeZone as _formatInTimeZone } from 'date-fns-tz'
 import Slugger from 'github-slugger'
@@ -604,14 +604,14 @@ const EventItem = ({ data, keyPrefix }: { data: Item; keyPrefix: string }) => {
         </NextLink>
         <StyledBorder />
       </StyledBox>
-      <VisuallyHidden.Root>
+      <VisuallyHidden>
         {/* @todo(react-18) */}
         {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
         {/* @ts-ignore */}
         <Announce>
           <Heading as="h4">{title}</Heading>
         </Announce>
-      </VisuallyHidden.Root>
+      </VisuallyHidden>
     </Box>
   )
 }

@@ -5,7 +5,8 @@
   "pipeline": {
     "build": {
       "outputs": [".cache/**", ".next/**"],
-      "dependsOn": ["^build", "$VERCEL_ENV"]
+      "dependsOn": ["^build", "$VERCEL_ENV"],
+      "inputs": ["src/**", "*.cjs", "*.js", "package.json", "vercel.json"]
     },
     "clean": {
       "cache": false
@@ -13,7 +14,10 @@
     "dev": {
       "cache": false
     },
-    "lint": { "dependsOn": ["^lint"] },
+    "lint": {
+      "dependsOn": ["^lint"],
+      "inputs": ["src/**", "*.cjs", "*.js", "package.json", "vercel.json"]
+    },
     "lint:fix": {
       "cache": false
     },
@@ -26,7 +30,8 @@
     },
     "test": {
       "outputs": ["coverage/**"],
-      "dependsOn": ["lint"]
+      "dependsOn": ["lint"],
+      "inputs": ["src/**", "*.cjs", "*.js", "package.json", "vercel.json"]
     }
   }
 }
