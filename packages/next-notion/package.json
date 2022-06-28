@@ -34,9 +34,9 @@
     "---      ": ""
   },
   "dependencies": {
-    "@jeromefitz/design-system": "3.5.3",
-    "@jeromefitz/notion": "3.3.0",
-    "@jeromefitz/utils": "2.2.0",
+    "@jeromefitz/design-system": "3.5.4-peer-deps.1",
+    "@jeromefitz/notion": "3.3.1-peer-deps.1",
+    "@jeromefitz/utils": "2.2.1-peer-deps.1",
     "@radix-ui/react-icons": "1.1.1",
     "@stitches/react": "1.2.8",
     "date-fns": "2.28.0",
