@@ -11,7 +11,7 @@ importers:
       '@jeromefitz/conventional-gitmoji': 3.3.0
       '@jeromefitz/eslint-config': 1.1.2
       '@jeromefitz/git-cz': 14.4.0
-      '@jeromefitz/lint-staged': 1.1.0
+      '@jeromefitz/lint-staged': 1.1.1
       '@jeromefitz/prettier-config': 1.1.0
       '@jeromefitz/release-notes-generator': 1.2.0
       '@jeromefitz/semantic': 9.2.0
@@ -44,7 +44,7 @@ importers:
       '@jeromefitz/conventional-gitmoji': 3.3.0
       '@jeromefitz/eslint-config': 1.1.2_zv2ltmnvcc5apkdaecods742je
       '@jeromefitz/git-cz': 14.4.0_o5jashg3rtu6hdajlkuszfyba4
-      '@jeromefitz/lint-staged': 1.1.0
+      '@jeromefitz/lint-staged': 1.1.1
       '@jeromefitz/prettier-config': 1.1.0
       '@jeromefitz/release-notes-generator': 1.2.0
       '@jeromefitz/semantic': 9.2.0
@@ -170,7 +170,7 @@ importers:
       '@heroicons/react': 1.0.6
       '@jeromefitz/design-system': 3.5.3
       '@jeromefitz/eslint-config': 1.1.2
-      '@jeromefitz/lint-staged': 1.1.0
+      '@jeromefitz/lint-staged': 1.1.1
       '@jeromefitz/notion': 3.3.0
       '@jeromefitz/prettier-config': 1.1.0
       '@jeromefitz/shared': workspace:*
@@ -282,7 +282,7 @@ importers:
       zustand: 3.7.2_react@18.2.0
     devDependencies:
       '@jeromefitz/eslint-config': 1.1.2_next@12.1.7-canary.44
-      '@jeromefitz/lint-staged': 1.1.0
+      '@jeromefitz/lint-staged': 1.1.1
       '@jeromefitz/prettier-config': 1.1.0
       '@jeromefitz/shared': link:../../packages/shared
       '@jeromefitz/tsconfig': 1.1.0
@@ -1090,11 +1090,11 @@ packages:
       word-wrap: 1.2.3
     dev: false
 
-  /@jeromefitz/lint-staged/1.1.0:
-    resolution: {integrity: sha512-l5UCs0P5MPYDZCJnnUZKJANCcCHevK1kLoz/eN2jstkqda6rgbtf41IJe+Uwd81QAr2NjOYPgFjIWGJOCDY7gQ==}
+  /@jeromefitz/lint-staged/1.1.1:
+    resolution: {integrity: sha512-OT4pothSgi8szJSkdoGABVUMNtC8mg9mVWkzhzXh9Ksc9Pu+2TMOqUPWDgLX6s7dPw2J3MIRhLWCbC3Z1JlRzw==}
     engines: {node: '>=16'}
     dependencies:
-      lint-staged: 13.0.2
+      lint-staged: 13.0.3
     transitivePeerDependencies:
       - enquirer
       - supports-color
@@ -7386,28 +7386,6 @@ packages:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
     dev: false
 
-  /lint-staged/13.0.2:
-    resolution: {integrity: sha512-qQLfLTh9z34eMzfEHENC+QBskZfxjomrf+snF3xJ4BzilORbD989NLqQ00ughsF/A+PT41e87+WsMFabf9++pQ==}
-    engines: {node: ^14.13.1 || >=16.0.0}
-    hasBin: true
-    dependencies:
-      cli-truncate: 3.1.0
-      colorette: 2.0.19
-      commander: 9.3.0
-      debug: 4.3.4
-      execa: 6.1.0
-      lilconfig: 2.0.5
-      listr2: 4.0.5
-      micromatch: 4.0.5
-      normalize-path: 3.0.0
-      object-inspect: 1.12.2
-      pidtree: 0.6.0
-      string-argv: 0.3.1
-      yaml: 2.1.1
-    transitivePeerDependencies:
-      - enquirer
-      - supports-color
-
   /lint-staged/13.0.3:
     resolution: {integrity: sha512-9hmrwSCFroTSYLjflGI8Uk+GWAwMB4OlpU4bMJEAT5d/llQwtYKoim4bLOyLCuWFAhWEupE0vkIFqtw/WIsPug==}
     engines: {node: ^14.13.1 || >=16.0.0}
@@ -7429,7 +7407,6 @@ packages:
     transitivePeerDependencies:
       - enquirer
       - supports-color
-    dev: false
 
   /listr2/4.0.5:
     resolution: {integrity: sha512-juGHV1doQdpNT3GSTs9IUN43QJb7KHdF9uqg7Vufs/tG9VTzpFphqF4pm/ICdAABGQxsyNn9CiYA3StkI6jpwA==}
