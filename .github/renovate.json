@@ -25,9 +25,11 @@
       "matchPackagePatterns": ["^actions"]
     },
     {
+      "assignees": ["JeromeFitz"],
       "commitMessagePrefix": "⬆️  (deps)",
       "commitMessageSuffix": "[b]",
-      "matchPackageNames": ["next"]
+      "matchPackageNames": ["next"],
+      "reviewers": ["JeromeFitz"]
     },
     {
       "commitMessagePrefix": "⬆️  (deps)",
