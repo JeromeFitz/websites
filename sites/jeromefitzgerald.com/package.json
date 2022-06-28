@@ -90,7 +90,7 @@
     "zustand": "3.7.2"
   },
   "devDependencies": {
-    "@jeromefitz/eslint-config": "1.1.0",
+    "@jeromefitz/eslint-config": "1.1.2",
     "@jeromefitz/lint-staged": "1.1.0",
     "@jeromefitz/prettier-config": "1.1.0",
     "@jeromefitz/shared": "workspace:*",
