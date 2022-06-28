@@ -49,7 +49,7 @@
     "@jeromefitz/conventional-gitmoji": "3.3.0",
     "@jeromefitz/eslint-config": "1.1.2",
     "@jeromefitz/git-cz": "14.4.0",
-    "@jeromefitz/lint-staged": "1.1.0",
+    "@jeromefitz/lint-staged": "1.1.1",
     "@jeromefitz/prettier-config": "1.1.0",
     "@jeromefitz/release-notes-generator": "1.2.0",
     "@jeromefitz/semantic": "9.2.0",
