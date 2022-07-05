@@ -22,6 +22,9 @@ require_automerge_label = true
 [merge.message]
 body = "pull_request_body"
 body_type = "markdown"
+cut_body_after = "<!-- COMMIT_BODY_TEXT_BEGIN -->"
+cut_body_and_text = true
+cut_body_before = "<!-- COMMIT_BODY_TEXT_END -->"
 include_pr_number = true
 strip_html_comments = true
 title = "pull_request_title"
