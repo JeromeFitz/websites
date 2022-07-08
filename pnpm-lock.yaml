@@ -201,7 +201,7 @@ importers:
       eslint-config-next: 12.2.0
       fast-json-stable-stringify: 2.1.0
       fathom-client: 3.5.0
-      framer-motion: 6.4.2
+      framer-motion: 6.4.3
       github-slugger: 1.4.0
       immer: 9.0.15
       ioredis: 5.1.0
@@ -234,7 +234,7 @@ importers:
       zustand: 3.7.2
     dependencies:
       '@heroicons/react': 1.0.6_react@18.2.0
-      '@jeromefitz/design-system': 3.5.4_nz5ggcsoic3s2lxkiulfj5ypwm
+      '@jeromefitz/design-system': 3.5.4_d76pwuqdeswxs3dsoxubjicys4
       '@jeromefitz/notion': 3.3.1_cwubw3yppmn7f4gpl6k3kt7vty
       '@jeromefitz/spotify': 2.3.1_iitavrec5maiykdnzolum7fama
       '@jeromefitz/utils': 2.2.1
@@ -251,7 +251,7 @@ importers:
       emoji-api: 2.0.1_encoding@0.1.13
       fast-json-stable-stringify: 2.1.0
       fathom-client: 3.5.0
-      framer-motion: 6.4.2_biqbaboplfbrettd7655fr4n2y
+      framer-motion: 6.4.3_biqbaboplfbrettd7655fr4n2y
       github-slugger: 1.4.0
       immer: 9.0.15
       ioredis: 5.1.0
@@ -758,7 +758,7 @@ packages:
       title: 3.4.4
     dev: false
 
-  /@jeromefitz/design-system/3.5.4_nz5ggcsoic3s2lxkiulfj5ypwm:
+  /@jeromefitz/design-system/3.5.4_d76pwuqdeswxs3dsoxubjicys4:
     resolution: {integrity: sha512-vOVUIwTk9eLFZgRpFZ0+YvY5+ordIOHeSNC6DqRlL20/wyrgBhryi9LbPYh7JD0OoP91h19ynVKzsOVegvOW9A==}
     engines: {node: '>=16'}
     peerDependencies:
@@ -833,7 +833,7 @@ packages:
       '@radix-ui/react-visually-hidden': 0.1.5-rc.41_biqbaboplfbrettd7655fr4n2y
       '@stitches/react': 1.2.8_react@18.2.0
       emoji-regex: 10.1.0
-      framer-motion: 6.4.2_biqbaboplfbrettd7655fr4n2y
+      framer-motion: 6.4.3_biqbaboplfbrettd7655fr4n2y
       kbar: 0.1.0-beta.36_biqbaboplfbrettd7655fr4n2y
       next: 12.2.0_biqbaboplfbrettd7655fr4n2y
       node-emoji: 1.11.0
@@ -5792,8 +5792,8 @@ packages:
       mime-types: 2.1.13
     dev: false
 
-  /framer-motion/6.4.2_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-SmrJbPTpvWGuAAYZMkjWsMc74wOREpXq9Lkq8lhm6IxvuJJitO7E0V5v1RulmTdNIrerJIUxvIZhrYSCb7UAgw==}
+  /framer-motion/6.4.3_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-prcyOGFkGjwGEgbxObIWteVz1ihuWaDLdR03626cbA1GxTaPRpLb8ioJfWPmP5mwcWC7TlhMOjS5kBYnuiktFA==}
     peerDependencies:
       react: '>=16.8 || ^17.0.0 || ^18.0.0'
       react-dom: '>=16.8 || ^17.0.0 || ^18.0.0'
