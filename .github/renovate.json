@@ -28,7 +28,9 @@
       "assignees": ["JeromeFitz"],
       "commitMessagePrefix": "⬆️  (deps)",
       "commitMessageSuffix": "[b]",
-      "matchPackageNames": ["next"],
+      "groupName": "next 🔺 ...",
+      "groupSlug": "next",
+      "matchPackageNames": ["@next/bundle-analyzer", "eslint-config-next", "next"],
       "reviewers": ["JeromeFitz"]
     },
     {
