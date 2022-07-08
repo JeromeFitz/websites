@@ -198,7 +198,7 @@ importers:
       date-fns-tz: 1.3.5
       emoji-api: 2.0.1
       encoding: 0.1.13
-      eslint-config-next: 12.2.0
+      eslint-config-next: 12.2.1
       fast-json-stable-stringify: 2.1.0
       fathom-client: 3.5.0
       framer-motion: 6.4.2
@@ -296,7 +296,7 @@ importers:
       '@types/title': 3.4.1
       '@types/uuid': 8.3.4
       encoding: 0.1.13
-      eslint-config-next: 12.2.0
+      eslint-config-next: 12.2.1
       next-notion: link:../../packages/next-notion
       next-unused: 0.0.6
 
@@ -1523,6 +1523,12 @@ packages:
     resolution: {integrity: sha512-nIj5xV/z3dOfeBnE7qFAjUQZAi4pTlIMuusRM6s/T6lOz8x7mjY5s1ZkTUBmcjPVCb2VIv3CrMH0WZL6xfjZZg==}
     dependencies:
       glob: 7.1.7
+
+  /@next/eslint-plugin-next/12.2.1:
+    resolution: {integrity: sha512-TeixNZNtKIZl8+HSq2hioWGL7/+YVcmKCExW7p075iVNZb/wbEAgTsrfiZJfTtHwXVuyuX7dUxiaMin1yvHzjA==}
+    dependencies:
+      glob: 7.1.7
+    dev: true
 
   /@next/swc-android-arm-eabi/12.2.0:
     resolution: {integrity: sha512-hbneH8DNRB2x0Nf5fPCYoL8a0osvdTCe4pvOc9Rv5CpDsoOlf8BWBs2OWpeP0U2BktGvIsuUhmISmdYYGyrvTw==}
@@ -5043,29 +5049,6 @@ packages:
     optionalDependencies:
       source-map: 0.6.1
 
-  /eslint-config-next/12.2.0:
-    resolution: {integrity: sha512-QWzNegadFXjQ0h3hixnLacRM9Kot85vQefyNsA8IeOnERZMz0Gvays1W6DMCjSxJbnCwuWaMXj9DCpar5IahRA==}
-    peerDependencies:
-      eslint: ^7.23.0 || ^8.0.0
-      typescript: '>=3.3.1'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    dependencies:
-      '@next/eslint-plugin-next': 12.2.0
-      '@rushstack/eslint-patch': 1.1.3
-      '@typescript-eslint/parser': 5.30.0
-      eslint-import-resolver-node: 0.3.6
-      eslint-import-resolver-typescript: 2.7.1_fkfqfehjtk7sk2efaqbgxsuasa
-      eslint-plugin-import: 2.26.0_yzqcu5q7inerf5hfznhgzptjzi
-      eslint-plugin-jsx-a11y: 6.6.0
-      eslint-plugin-react: 7.30.1
-      eslint-plugin-react-hooks: 4.6.0
-    transitivePeerDependencies:
-      - eslint-import-resolver-webpack
-      - supports-color
-    dev: true
-
   /eslint-config-next/12.2.0_b5e7v2qnwxfo6hmiq56u52mz3e:
     resolution: {integrity: sha512-QWzNegadFXjQ0h3hixnLacRM9Kot85vQefyNsA8IeOnERZMz0Gvays1W6DMCjSxJbnCwuWaMXj9DCpar5IahRA==}
     peerDependencies:
@@ -5110,6 +5093,29 @@ packages:
       eslint-plugin-jsx-a11y: 6.6.0_eslint@8.18.0
       eslint-plugin-react: 7.30.1_eslint@8.18.0
       eslint-plugin-react-hooks: 4.6.0_eslint@8.18.0
+    transitivePeerDependencies:
+      - eslint-import-resolver-webpack
+      - supports-color
+    dev: true
+
+  /eslint-config-next/12.2.1:
+    resolution: {integrity: sha512-/lHPdvP1MC1ceKgH/hffjQ9IqtcAMCOPOyR4SsZ5R2/KFlra2EBW/e1tXdR+HhkkbNSkRO4N/ZgAFDmC5AYS2Q==}
+    peerDependencies:
+      eslint: ^7.23.0 || ^8.0.0
+      typescript: '>=3.3.1'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      '@next/eslint-plugin-next': 12.2.1
+      '@rushstack/eslint-patch': 1.1.3
+      '@typescript-eslint/parser': 5.30.0
+      eslint-import-resolver-node: 0.3.6
+      eslint-import-resolver-typescript: 2.7.1_fkfqfehjtk7sk2efaqbgxsuasa
+      eslint-plugin-import: 2.26.0_yzqcu5q7inerf5hfznhgzptjzi
+      eslint-plugin-jsx-a11y: 6.6.0
+      eslint-plugin-react: 7.30.1
+      eslint-plugin-react-hooks: 4.6.0
     transitivePeerDependencies:
       - eslint-import-resolver-webpack
       - supports-color
