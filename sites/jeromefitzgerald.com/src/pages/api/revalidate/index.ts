@@ -16,7 +16,11 @@ async function handleRevalidate(req, res) {
   if (token === signature) {
     const { path } = jsonBody
     if (path) {
-      await res.unstable_revalidate(`${path}`)
+      /**
+       * @note(next) i know this was "unstable_revalidate" but
+       *  removing this during a patch release is still bogus.
+       */
+      await res.revalidate(path)
     }
     return res.status(200).send({ status: 200, message: 'success' })
   } else {
