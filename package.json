@@ -1,5 +1,6 @@
 {
   "name": "@jeromefitz/websites",
+  "description": "Monorepo for series of websites for Jerome Fitzgerald (he/him).",
   "private": true,
   "version": "0.0.0",
   "author": {
