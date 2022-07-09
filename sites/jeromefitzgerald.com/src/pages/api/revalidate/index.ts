@@ -16,7 +16,7 @@ async function handleRevalidate(req, res) {
   if (token === signature) {
     const { path } = jsonBody
     if (path) {
-      await res.unstable_revalidate(`${path}`)
+      await res.revalidate(path)
     }
     return res.status(200).send({ status: 200, message: 'success' })
   } else {
