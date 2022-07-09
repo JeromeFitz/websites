@@ -16,6 +16,7 @@ async function handleRevalidate(req, res) {
   if (token === signature) {
     const { path } = jsonBody
     if (path) {
+      // @note(next) needs to be wrapped in quote 🤷🏻
       await res.revalidate(`${path}`)
     }
     return res.status(200).send({ status: 200, message: 'success' })
