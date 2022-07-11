@@ -14,7 +14,7 @@ importers:
       '@jeromefitz/lint-staged': 1.1.2
       '@jeromefitz/prettier-config': 1.1.1
       '@jeromefitz/release-notes-generator': 1.2.2
-      '@jeromefitz/semantic': 9.2.1
+      '@jeromefitz/semantic': 9.2.2
       '@jeromefitz/tsconfig': 1.1.1
       '@types/is-ci': 3.0.0
       '@types/jest': 28.1.4
@@ -47,7 +47,7 @@ importers:
       '@jeromefitz/lint-staged': 1.1.2
       '@jeromefitz/prettier-config': 1.1.1
       '@jeromefitz/release-notes-generator': 1.2.2_lodash@4.17.21
-      '@jeromefitz/semantic': 9.2.1_j2x2s2qm26pupnaj4dl4i7sgsa
+      '@jeromefitz/semantic': 9.2.2_j2x2s2qm26pupnaj4dl4i7sgsa
       '@jeromefitz/tsconfig': 1.1.1
       '@types/is-ci': 3.0.0
       '@types/jest': 28.1.4
@@ -1143,8 +1143,8 @@ packages:
       - encoding
     dev: false
 
-  /@jeromefitz/semantic/9.2.1_j2x2s2qm26pupnaj4dl4i7sgsa:
-    resolution: {integrity: sha512-MrmmL128lelUorp/Z5fwJIozMZIStHQOydLHNn/0eL11HOfz4Xqfgxl4gqIHYwJKVgbWYtBCHvIDineJmliNGQ==}
+  /@jeromefitz/semantic/9.2.2_j2x2s2qm26pupnaj4dl4i7sgsa:
+    resolution: {integrity: sha512-VhicKJm5pVackVIpl9tvgT2xZs3+dcL8Bj/34dHrkNgUz05kz226OVvETN1qPVM9RtWhui+puUL4JfU5aiCfCw==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     peerDependencies:
       '@jeromefitz/conventional-gitmoji': ^3.3.1
@@ -1153,7 +1153,7 @@ packages:
       '@semantic-release/commit-analyzer': 9.0.2_semantic-release@19.0.3
       '@semantic-release/exec': 6.0.3_semantic-release@19.0.3
       '@semantic-release/git': 10.0.1_semantic-release@19.0.3
-      '@semantic-release/github': 8.0.4_semantic-release@19.0.3
+      '@semantic-release/github': 8.0.5_semantic-release@19.0.3
       '@semantic-release/npm': 9.0.1_semantic-release@19.0.3
       '@semantic-release/release-notes-generator': 10.0.3_semantic-release@19.0.3
       semantic-release: 19.0.3
@@ -2946,6 +2946,34 @@ packages:
       semantic-release: '>=18.0.0-beta.1'
     dependencies:
       '@octokit/rest': 18.12.0
+      '@semantic-release/error': 2.2.0
+      aggregate-error: 3.1.0
+      bottleneck: 2.19.5
+      debug: 4.3.4
+      dir-glob: 3.0.1
+      fs-extra: 10.1.0
+      globby: 11.1.0
+      http-proxy-agent: 5.0.0
+      https-proxy-agent: 5.0.1
+      issue-parser: 6.0.0
+      lodash: 4.17.21
+      mime: 3.0.0
+      p-filter: 2.1.0
+      p-retry: 4.6.2
+      semantic-release: 19.0.3
+      url-join: 4.0.1
+    transitivePeerDependencies:
+      - encoding
+      - supports-color
+    dev: false
+
+  /@semantic-release/github/8.0.5_semantic-release@19.0.3:
+    resolution: {integrity: sha512-9pGxRM3gv1hgoZ/muyd4pWnykdIUVfCiev6MXE9lOyGQof4FQy95GFE26nDcifs9ZG7bBzV8ue87bo/y1zVf0g==}
+    engines: {node: '>=14.17'}
+    peerDependencies:
+      semantic-release: '>=18.0.0-beta.1'
+    dependencies:
+      '@octokit/rest': 19.0.3
       '@semantic-release/error': 2.2.0
       aggregate-error: 3.1.0
       bottleneck: 2.19.5
