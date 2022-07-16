@@ -63,7 +63,7 @@
     "framer-motion": "6.4.3",
     "github-slugger": "1.4.0",
     "immer": "9.0.15",
-    "ioredis": "5.1.0",
+    "ioredis": "5.2.1",
     "kbar": "0.1.0-beta.36",
     "ms": "3.0.0-canary.1",
     "next": "12.2.2",
