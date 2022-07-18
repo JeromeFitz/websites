@@ -26,7 +26,7 @@ const EmojiParser = dynamic(
   }
 )
 
-const nextSeo = { url: 'https://jeromefitzgerald.com' }
+const nextSeo = { url: `https://${process.env.NEXT_PUBLIC__SITE}` }
 const domain = new URL(nextSeo.url)
 
 const TextAnnotationLink = ({ children, href }) => {
