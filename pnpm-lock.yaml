@@ -231,7 +231,7 @@ importers:
       ts-node: 10.9.1
       use-sound: 4.0.1
       uuid: 8.3.2
-      zustand: 3.7.2
+      zustand: 4.0.0
     dependencies:
       '@heroicons/react': 1.0.6_react@18.2.0
       '@jeromefitz/design-system': 3.5.5_j2346b6uak4dmnzhn5ij7tpzxm
@@ -279,7 +279,7 @@ importers:
       ts-node: 10.9.1
       use-sound: 4.0.1_react@18.2.0
       uuid: 8.3.2
-      zustand: 3.7.2_react@18.2.0
+      zustand: 4.0.0_immer@9.0.15+react@18.2.0
     devDependencies:
       '@jeromefitz/eslint-config': 1.1.4
       '@jeromefitz/lint-staged': 1.1.2
@@ -10470,6 +10470,14 @@ packages:
       react: 18.2.0
     dev: false
 
+  /use-sync-external-store/1.2.0_react@18.2.0:
+    resolution: {integrity: sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+    dev: false
+
   /util-deprecate/1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
 
@@ -10794,14 +10802,19 @@ packages:
     engines: {node: '>=10'}
     dev: false
 
-  /zustand/3.7.2_react@18.2.0:
-    resolution: {integrity: sha512-PIJDIZKtokhof+9+60cpockVOq05sJzHCriyvaLBmEJixseQ1a5Kdov6fWZfWOu5SK9c+FhH1jU0tntLxRJYMA==}
+  /zustand/4.0.0_immer@9.0.15+react@18.2.0:
+    resolution: {integrity: sha512-OrsfQTnRXF1LZ9/vR/IqN9ws5EXUhb149xmPjErZnUrkgxS/gAHGy2dPNIVkVvoxrVe1sIydn4JjF0dYHmGeeQ==}
     engines: {node: '>=12.7.0'}
     peerDependencies:
+      immer: '>=9.0'
       react: '>=16.8'
     peerDependenciesMeta:
+      immer:
+        optional: true
       react:
         optional: true
     dependencies:
+      immer: 9.0.15
       react: 18.2.0
+      use-sync-external-store: 1.2.0_react@18.2.0
     dev: false
