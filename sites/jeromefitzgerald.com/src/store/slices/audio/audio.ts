@@ -1,5 +1,5 @@
 import { produce } from 'immer'
-import { GetState, SetState } from 'zustand'
+import { NamedSet } from 'zustand/middleware'
 
 import type { StoreState } from '~store/useStore'
 
@@ -76,7 +76,7 @@ const initialState: Omit<IAudio, 'audioToggle'> = {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const Audio = (set: SetState<StoreState>, get: GetState<StoreState>) => {
+const Audio = (set: NamedSet<StoreState>, get: any) => {
   const { audio, sounds, volume } = initialState
   return {
     audio,

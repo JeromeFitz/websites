@@ -1,5 +1,5 @@
 import { pipe } from 'ramda'
-import _create, { Mutate, SetState, GetState, StoreApi } from 'zustand'
+import _create, { Mutate, StoreApi } from 'zustand'
 import {
   devtools as _devtools,
   NamedSet,
@@ -17,7 +17,8 @@ const isDev = process.env.NODE_ENV === 'development' && typeof window !== 'undef
 const devtools = (
   config: (
     set: NamedSet<StoreState>,
-    get: GetState<StoreState>,
+    // @todo(types) any
+    get: any,
     api: Mutate<StoreApi<StoreState>, [['zustand/devtools', never]]>
   ) => StoreState
 ) =>
@@ -29,24 +30,29 @@ const devtools = (
 
 const persist = (
   config: (
-    set: SetState<StoreState>,
-    get: GetState<StoreState>,
-    api: Mutate<StoreApi<StoreState>, [['zustand/persist', never]]>
+    set: NamedSet<StoreState>,
+    // @todo(types) any
+    get: any,
+    api: Mutate<StoreApi<StoreState>, [['zustand/persist', Partial<StoreState>]]>
   ) => StoreState
 ) =>
   _persist(config, {
     name: 'store',
     getStorage: () => localStorage,
-    partialize: (state: StoreState) => ({ audio: state.audio }),
+    partialize: (state: StoreState) => ({
+      audio: state.audio,
+      counter: state.counter,
+    }),
   })
 
 const create = (
   config: (
-    set: SetState<StoreState>,
-    get: GetState<StoreState>,
+    set: NamedSet<StoreState>,
+    // @todo(types) any
+    get: any,
     api: Mutate<
       StoreApi<StoreState>,
-      [['zustand/devtools', never], ['zustand/persist', never]]
+      [['zustand/devtools', never], ['zustand/persist', Partial<StoreState>]]
     >
   ) => StoreState
 ) => _create<StoreState>(config)
