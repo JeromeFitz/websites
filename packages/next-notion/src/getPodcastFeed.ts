@@ -10,7 +10,7 @@ import { getXmlWithModifiedLastBuildDate } from './utils/getXmlWithModifiedLastB
 
 const getPodcastFeed = ({ data, notionConfig, pathVariables }) => {
   // @todo(multi-site)
-  const url = `https://jeromefitzgerald.com`
+  const url = `https://${process.env.NEXT_PUBLIC__SITE}`
   const { NOTION } = notionConfig
   /**
    * @note
