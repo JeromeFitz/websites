@@ -177,7 +177,7 @@ importers:
       '@jeromefitz/spotify': 2.3.1
       '@jeromefitz/tsconfig': 1.1.1
       '@jeromefitz/utils': 2.2.1
-      '@mantine/hooks': 4.2.12
+      '@mantine/hooks': 5.0.0
       '@next/bundle-analyzer': 12.2.3
       '@octokit/core': 4.0.4
       '@plaiceholder/next': 2.4.0
@@ -234,11 +234,11 @@ importers:
       zustand: 3.7.2
     dependencies:
       '@heroicons/react': 1.0.6_react@18.2.0
-      '@jeromefitz/design-system': 3.5.5_fter75gjdwjvlvccpxrjarcaze
+      '@jeromefitz/design-system': 3.5.5_mousko2m4zf4f2jm5f6a2aizbq
       '@jeromefitz/notion': 3.3.2_cwubw3yppmn7f4gpl6k3kt7vty
       '@jeromefitz/spotify': 2.3.1_iitavrec5maiykdnzolum7fama
       '@jeromefitz/utils': 2.2.1
-      '@mantine/hooks': 4.2.12_react@18.2.0
+      '@mantine/hooks': 5.0.0_react@18.2.0
       '@octokit/core': 4.0.4_encoding@0.1.13
       '@plaiceholder/next': 2.4.0_next@12.2.3+sharp@0.30.7
       '@radix-ui/colors': 0.1.8
@@ -758,7 +758,7 @@ packages:
       title: 3.4.4
     dev: false
 
-  /@jeromefitz/design-system/3.5.5_fter75gjdwjvlvccpxrjarcaze:
+  /@jeromefitz/design-system/3.5.5_mousko2m4zf4f2jm5f6a2aizbq:
     resolution: {integrity: sha512-pMcIIwlXpKujI9JG8LjucGKSHYOBQKrPnKCSSXuIqU9iy2cQCWAOQdFx99TzzPkYTwugyEQnjoxCISrkks6iCw==}
     engines: {node: '>=16'}
     peerDependencies:
@@ -775,7 +775,7 @@ packages:
       swr: ^1.2.2
     dependencies:
       '@heroicons/react': 1.0.6_react@18.2.0
-      '@mantine/hooks': 4.2.12_react@18.2.0
+      '@mantine/hooks': 5.0.0_react@18.2.0
       '@radix-ui/colors': 0.1.8
       '@radix-ui/primitive': 0.1.0
       '@radix-ui/react-accessible-icon': 0.1.5-rc.41_biqbaboplfbrettd7655fr4n2y
@@ -1451,8 +1451,8 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.13
     dev: false
 
-  /@mantine/hooks/4.2.12_react@18.2.0:
-    resolution: {integrity: sha512-/2GOsgv1tAUFBXOUV0YBZdDZHj3pHN82Sv1oI/hJMjfIT3ZkGeeiJO8Cw9cBcn76t6caP6Czi3hcuKhjz71O+A==}
+  /@mantine/hooks/5.0.0_react@18.2.0:
+    resolution: {integrity: sha512-IKqqnukPPyBMYRKz4VIhz7hNRe3p8B7RUyvFLaWc9l69ZO/b5atNuesE1ThuMQYc7tBobQbU4myHuhQc/csyLA==}
     peerDependencies:
       react: '>=16.8.0'
     dependencies:
