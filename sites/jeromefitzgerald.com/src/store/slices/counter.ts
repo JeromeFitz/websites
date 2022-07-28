@@ -1,5 +1,5 @@
 import { produce } from 'immer'
-import { GetState, SetState } from 'zustand'
+import { NamedSet } from 'zustand/middleware'
 
 import { StoreState } from '~store/useStore'
 
@@ -13,7 +13,7 @@ const initialState: Omit<ICounter, 'counterReset'> = {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const Counter = (set: SetState<StoreState>, get: GetState<StoreState>) => {
+const Counter = (set: NamedSet<StoreState>, get: any) => {
   const { counter } = initialState
 
   return {

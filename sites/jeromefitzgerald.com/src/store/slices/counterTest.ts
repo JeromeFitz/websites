@@ -1,5 +1,5 @@
 import { produce } from 'immer'
-import { GetState, SetState } from 'zustand'
+import { NamedSet } from 'zustand/middleware'
 
 import { StoreState } from '~store/useStore'
 
@@ -12,7 +12,7 @@ interface ICounterTest {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const CounterTest = (set: SetState<StoreState>, get: GetState<StoreState>) => ({
+const CounterTest = (set: NamedSet<StoreState>, get: any) => ({
   counterDecrement: () =>
     set(
       produce((state: StoreState) => {
