@@ -12,9 +12,11 @@ import {
 } from '@jeromefitz/design-system'
 import {
   Tooltip,
-  TooltipTrigger,
-  TooltipContent,
   TooltipArrow,
+  TooltipContent,
+  TooltipPortal,
+  TooltipProvider,
+  TooltipTrigger,
 } from '@jeromefitz/design-system/custom/Tooltip'
 import { IconLink } from '@jeromefitz/shared/src/components'
 import dynamic from 'next/dynamic'
@@ -176,24 +178,28 @@ const LinkFooter = ({ url, title, tooltip, tooltipContent }) => {
           onClick={handleClickLink}
         >
           {tooltip ? (
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Text
-                  as="p"
-                  size="3"
-                  css={{
-                    mt: '$4',
-                    lineHeight: '20px',
-                  }}
-                >
-                  <>{title}</>
-                </Text>
-              </TooltipTrigger>
-              <TooltipContent align="start" sideOffset={5}>
-                {tooltipContent}
-                <TooltipArrow offset={15} />
-              </TooltipContent>
-            </Tooltip>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Text
+                    as="p"
+                    size="3"
+                    css={{
+                      mt: '$4',
+                      lineHeight: '20px',
+                    }}
+                  >
+                    <>{title}</>
+                  </Text>
+                </TooltipTrigger>
+                <TooltipPortal>
+                  <TooltipContent align="start" sideOffset={5}>
+                    {tooltipContent}
+                    <TooltipArrow />
+                  </TooltipContent>
+                </TooltipPortal>
+              </Tooltip>
+            </TooltipProvider>
           ) : (
             <Text as="span" size="3" css={{ mt: '$4', lineHeight: '20px' }}>
               <>{title}</>
