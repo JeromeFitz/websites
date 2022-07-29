@@ -1,9 +1,11 @@
 import { Button, Flex, Icon, Kbd } from '@jeromefitz/design-system'
 import {
   Tooltip,
-  TooltipTrigger,
-  TooltipContent,
   TooltipArrow,
+  TooltipContent,
+  TooltipPortal,
+  TooltipProvider,
+  TooltipTrigger,
 } from '@jeromefitz/design-system/custom/Tooltip'
 import * as React from 'react'
 import { useEffectOnce } from 'react-use'
@@ -41,31 +43,35 @@ const ToggleAudio = (props) => {
   }, [audio, audioToggle, mounted, playDisableSound, playEnableSound])
 
   return (
-    <Tooltip>
-      <TooltipTrigger asChild>
-        <Button
-          aria-label={content}
-          css={{ '&:hover': { cursor: 'pointer' } }}
-          onClick={() => handleClick()}
-          ghost
-          {...props}
-        >
-          {icon}
-        </Button>
-      </TooltipTrigger>
-      <TooltipContent
-        align="end"
-        css={{ display: 'none', '@bp1': { display: 'inline-flex' } }}
-        sideOffset={5}
-      >
-        <Flex align="center" gap="1" justify="center">
-          <span>{content}</span>
-          <Kbd>{key1}</Kbd>
-          <Kbd>{key2}</Kbd>
-        </Flex>
-        <TooltipArrow offset={15} />
-      </TooltipContent>
-    </Tooltip>
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button
+            aria-label={content}
+            css={{ '&:hover': { cursor: 'pointer' } }}
+            onClick={() => handleClick()}
+            ghost
+            {...props}
+          >
+            {icon}
+          </Button>
+        </TooltipTrigger>
+        <TooltipPortal>
+          <TooltipContent
+            align="end"
+            css={{ display: 'none', '@bp1': { display: 'inline-flex' } }}
+            sideOffset={5}
+          >
+            <Flex align="center" gap="1" justify="center">
+              <span>{content}</span>
+              <Kbd>{key1}</Kbd>
+              <Kbd>{key2}</Kbd>
+            </Flex>
+            <TooltipArrow />
+          </TooltipContent>
+        </TooltipPortal>
+      </Tooltip>
+    </TooltipProvider>
   )
 }
 
