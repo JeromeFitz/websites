@@ -169,7 +169,7 @@ importers:
       '@jeromefitz/spotify': 2.3.1
       '@jeromefitz/tsconfig': 1.1.1
       '@jeromefitz/utils': 2.2.1
-      '@mantine/hooks': 5.0.0
+      '@mantine/hooks': 5.0.2
       '@next/bundle-analyzer': 12.2.3
       '@octokit/core': 4.0.4
       '@plaiceholder/next': 2.4.0
@@ -226,11 +226,11 @@ importers:
       zustand: 4.0.0
     dependencies:
       '@heroicons/react': 1.0.6_react@18.2.0
-      '@jeromefitz/design-system': 3.5.7_mousko2m4zf4f2jm5f6a2aizbq
+      '@jeromefitz/design-system': 3.5.7_ffekef2bnradienm4oigdlgcpm
       '@jeromefitz/notion': 3.3.3_cwubw3yppmn7f4gpl6k3kt7vty
       '@jeromefitz/spotify': 2.3.1_iitavrec5maiykdnzolum7fama
       '@jeromefitz/utils': 2.2.1
-      '@mantine/hooks': 5.0.0_react@18.2.0
+      '@mantine/hooks': 5.0.2_react@18.2.0
       '@octokit/core': 4.0.4_encoding@0.1.13
       '@plaiceholder/next': 2.4.0_next@12.2.3+sharp@0.30.7
       '@radix-ui/colors': 0.1.8
@@ -770,7 +770,7 @@ packages:
       title: 3.4.4
     dev: false
 
-  /@jeromefitz/design-system/3.5.7_mousko2m4zf4f2jm5f6a2aizbq:
+  /@jeromefitz/design-system/3.5.7_ffekef2bnradienm4oigdlgcpm:
     resolution: {integrity: sha512-gGAV+InODX9Vb5iQpbFxF3uH8zx8dNFe76rcIcqn3oxAKIcavRDgdcGvWlBvVWN4Lq1Jvq3n1FN7qqvT3X4vlQ==}
     engines: {node: '>=16'}
     peerDependencies:
@@ -787,7 +787,7 @@ packages:
       swr: ^1.2.2
     dependencies:
       '@heroicons/react': 1.0.6_react@18.2.0
-      '@mantine/hooks': 5.0.0_react@18.2.0
+      '@mantine/hooks': 5.0.2_react@18.2.0
       '@radix-ui/colors': 0.1.8
       '@radix-ui/primitive': 1.0.0
       '@radix-ui/react-accessible-icon': 1.0.0_biqbaboplfbrettd7655fr4n2y
@@ -1069,6 +1069,7 @@ packages:
       - jest
       - supports-color
       - typescript
+    dev: false
 
   /@jeromefitz/git-cz/14.4.1_l4emcvxg5x5dmwsscgx5ytyg2a:
     resolution: {integrity: sha512-oNZ0GM2Bh7NrV32Ylkau9YDviMfA9mEP6DUKpQA4V00k9K2m8bhPYXS1Q6RkqUJdLgVQxAA7ZODr101MR88pCg==}
@@ -1460,8 +1461,8 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.13
     dev: false
 
-  /@mantine/hooks/5.0.0_react@18.2.0:
-    resolution: {integrity: sha512-IKqqnukPPyBMYRKz4VIhz7hNRe3p8B7RUyvFLaWc9l69ZO/b5atNuesE1ThuMQYc7tBobQbU4myHuhQc/csyLA==}
+  /@mantine/hooks/5.0.2_react@18.2.0:
+    resolution: {integrity: sha512-TZsHUmsuPnl+hX6Jt5z8aPU0TWCUC2kuvr1CUBMUbQ2ff0UldcYeuOYmgb7pHlX79BXsGaRKIThLTcLHToYxbA==}
     peerDependencies:
       react: '>=16.8.0'
     dependencies:
@@ -3326,6 +3327,7 @@ packages:
       typescript: 4.7.4
     transitivePeerDependencies:
       - supports-color
+    dev: false
 
   /@typescript-eslint/parser/5.30.0_eslint@8.18.0:
     resolution: {integrity: sha512-2oYYUws5o2liX6SrFQ5RB88+PuRymaM2EU02/9Ppoyu70vllPnHVO7ioxDdq/ypXHA277R04SVjxvwI8HmZpzA==}
@@ -3344,7 +3346,6 @@ packages:
       eslint: 8.18.0
     transitivePeerDependencies:
       - supports-color
-    dev: true
 
   /@typescript-eslint/scope-manager/5.30.0:
     resolution: {integrity: sha512-3TZxvlQcK5fhTBw5solQucWSJvonXf5yua5nx8OqK94hxdrT7/6W3/CS42MLd/f1BmlmmbGEgQcTHHCktUX5bQ==}
@@ -3458,6 +3459,7 @@ packages:
       typescript: 4.7.4
     transitivePeerDependencies:
       - supports-color
+    dev: false
 
   /@typescript-eslint/utils/5.30.0_b5e7v2qnwxfo6hmiq56u52mz3e:
     resolution: {integrity: sha512-0bIgOgZflLKIcZsWvfklsaQTM3ZUbmtH0rJ1hKyV3raoUYyeZwcjQ8ZUJTzS7KnhNcsVT1Rxs7zeeMHEhGlltw==}
@@ -5261,7 +5263,7 @@ packages:
       eslint-import-resolver-webpack:
         optional: true
     dependencies:
-      '@typescript-eslint/parser': 5.30.0_b5e7v2qnwxfo6hmiq56u52mz3e
+      '@typescript-eslint/parser': 5.30.0_eslint@8.18.0
       debug: 3.2.7
       eslint-import-resolver-node: 0.3.6
       find-up: 2.1.0
@@ -5278,7 +5280,7 @@ packages:
       '@typescript-eslint/parser':
         optional: true
     dependencies:
-      '@typescript-eslint/parser': 5.30.0_b5e7v2qnwxfo6hmiq56u52mz3e
+      '@typescript-eslint/parser': 5.30.0_eslint@8.18.0
       array-includes: 3.1.5
       array.prototype.flat: 1.3.0
       debug: 2.6.9
@@ -5308,7 +5310,7 @@ packages:
       '@typescript-eslint/parser':
         optional: true
     dependencies:
-      '@typescript-eslint/parser': 5.30.0_b5e7v2qnwxfo6hmiq56u52mz3e
+      '@typescript-eslint/parser': 5.30.0_eslint@8.18.0
       array-includes: 3.1.5
       array.prototype.flat: 1.3.0
       debug: 2.6.9
@@ -10061,6 +10063,7 @@ packages:
     dependencies:
       tslib: 1.14.1
       typescript: 4.7.4
+    dev: false
 
   /tunnel-agent/0.6.0:
     resolution: {integrity: sha512-McnNiV1l8RYeY8tBgEpuodCC1mLUdbSN+CYBL7kJsJNInOP8UjDDEwdk6Mw60vdLLrr5NHKZhMAOSrR2NZuQ+w==}
