@@ -219,7 +219,7 @@ importers:
       react-use: 17.4.0
       sharp: 0.30.7
       swr: 1.3.0
-      title: 3.5.0
+      title: 3.5.1
       ts-node: 10.9.1
       use-sound: 4.0.1
       uuid: 8.3.2
@@ -267,7 +267,7 @@ importers:
       react-use: 17.4.0_biqbaboplfbrettd7655fr4n2y
       sharp: 0.30.7
       swr: 1.3.0_react@18.2.0
-      title: 3.5.0
+      title: 3.5.1
       ts-node: 10.9.1
       use-sound: 4.0.1_react@18.2.0
       uuid: 8.3.2
@@ -9779,8 +9779,8 @@ packages:
       titleize: 1.0.0
     dev: false
 
-  /title/3.5.0:
-    resolution: {integrity: sha512-9753M6e7SkDl5EqdmopGHX6+iVdwaWHtNMoTt3W2EmX4UnAK5HN2GEy9hFmlG6ArN+u/BRiz4CUyRjUeblcXMg==}
+  /title/3.5.1:
+    resolution: {integrity: sha512-tf3NFu/EXsIyEN+GKq6ZuDaOw5wiyE6nmp4Yw7BuWZPk9jgE5PpLWH40ekzDW85+8kbcBCcV+Jz2Qfw0D/Y2MQ==}
     hasBin: true
     dependencies:
       arg: 1.0.0
