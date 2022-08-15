@@ -73,7 +73,7 @@
     "rimraf": "3.0.2",
     "semantic-release": "19.0.3",
     "semantic-release-monorepo": "7.0.5",
-    "ts-jest": "28.0.7",
+    "ts-jest": "28.0.8",
     "ts-node": "10.9.1",
     "tsup": "6.2.2",
     "turbo": "1.4.3",
