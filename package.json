@@ -57,7 +57,7 @@
     "@jeromefitz/tsconfig": "1.1.1",
     "@types/is-ci": "3.0.0",
     "@types/jest": "28.1.7",
-    "@types/lodash": "4.14.182",
+    "@types/lodash": "4.14.183",
     "@types/node": "16.11.7",
     "@types/react": "18.0.17",
     "@types/title": "3.4.1",
