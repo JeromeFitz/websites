@@ -21,8 +21,6 @@ import { NavigationMenu } from '~components/NavigationMenu'
 import { navigation } from '~config/navigation'
 import useStore from '~store/useStore'
 
-// import { MenuDesktop } from './MenuDesktop'
-import { MenuKBar } from './MenuKBar'
 import { MenuMobile } from './MenuMobile'
 
 const AppBarImpl = ({}) => {
@@ -147,7 +145,6 @@ const AppBarImpl = ({}) => {
       border
       glass
     >
-      <MenuKBar />
       <Container size="4">
         {/* equals="xs" */}
         <Box

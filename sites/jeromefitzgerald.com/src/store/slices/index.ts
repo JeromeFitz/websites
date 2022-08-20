@@ -6,3 +6,6 @@ import CounterTest, { ICounterTest } from './counterTest'
 
 export type { ICounter, ICounterTest }
 export { Counter, CounterTest }
+
+export { Settings } from './settings'
+export type { ISettings } from './settings'

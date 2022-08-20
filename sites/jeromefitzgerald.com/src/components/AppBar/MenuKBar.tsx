@@ -1,7 +1,8 @@
-import { KBarPortal } from '~components/KBar'
+// import { KBarPortal } from '~components/KBar'
 
 const MenuKBar = () => {
-  return <KBarPortal />
+  // return <KBarPortal />
+  return <></>
 }
 
 export { MenuKBar }
