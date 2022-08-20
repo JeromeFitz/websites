@@ -12,7 +12,7 @@ importers:
       '@jeromefitz/git-cz': 14.4.1
       '@jeromefitz/lint-staged': 1.1.2
       '@jeromefitz/prettier-config': 1.1.1
-      '@jeromefitz/release-notes-generator': 1.2.3
+      '@jeromefitz/release-notes-generator': 1.2.4
       '@jeromefitz/semantic': 9.2.3
       '@jeromefitz/tsconfig': 1.1.1
       '@types/is-ci': 3.0.0
@@ -45,7 +45,7 @@ importers:
       '@jeromefitz/git-cz': 14.4.1_al7gb7mkou3ck5gs5scjwydyiu
       '@jeromefitz/lint-staged': 1.1.2
       '@jeromefitz/prettier-config': 1.1.1
-      '@jeromefitz/release-notes-generator': 1.2.3_lodash@4.17.21
+      '@jeromefitz/release-notes-generator': 1.2.4_lodash@4.17.21
       '@jeromefitz/semantic': 9.2.3_uugwvjforpqf2vibwhgnm3zllm
       '@jeromefitz/tsconfig': 1.1.1
       '@types/is-ci': 3.0.0
@@ -1341,19 +1341,19 @@ packages:
       }
     engines: { node: '>=16' }
 
-  /@jeromefitz/release-notes-generator/1.2.3_lodash@4.17.21:
+  /@jeromefitz/release-notes-generator/1.2.4_lodash@4.17.21:
     resolution:
       {
-        integrity: sha512-WU/in6xq7vfyq/VXWc63Yv3OhUjX8RIY3/wHSVKL1uJcP0sn0u6zLYSO9DJ7o4A7A64PQpEpP4jBXReR6Wgong==,
+        integrity: sha512-m3We2kkLTM6L9L0ae8ZkjuVf08XQE2pAKK4FVPM7ViEcNysDlb2f3nrRxlaRVgCGC6BjMoPYqSlei1B7yDDdaA==,
       }
     engines: { node: '>=16' }
     peerDependencies:
       lodash: ^4.17.21
     dependencies:
-      '@octokit/rest': 19.0.3
+      '@octokit/rest': 19.0.4
       conventional-commits-filter: 2.0.7
       conventional-commits-parser: 3.2.4
-      date-fns: 2.29.1
+      date-fns: 2.29.2
       import-from: 4.0.0
       lodash: 4.17.21
       read-pkg-up: 7.0.1
@@ -2086,10 +2086,10 @@ packages:
       - encoding
     dev: false
 
-  /@octokit/core/4.0.4:
+  /@octokit/core/4.0.5:
     resolution:
       {
-        integrity: sha512-sUpR/hc4Gc7K34o60bWC7WUH6Q7T6ftZ2dUmepSyJr9PRF76/qqkWjE2SOEzCqLA5W83SaISymwKtxks+96hPQ==,
+        integrity: sha512-4R3HeHTYVHCfzSAi0C6pbGXV8UDI5Rk+k3G7kLVNckswN9mvpOzW9oENfjfH3nEmzg8y3AmKmzs8Sg6pLCeOCA==,
       }
     engines: { node: '>= 14' }
     dependencies:
@@ -2097,7 +2097,7 @@ packages:
       '@octokit/graphql': 5.0.0
       '@octokit/request': 6.0.2
       '@octokit/request-error': 3.0.0
-      '@octokit/types': 6.38.1
+      '@octokit/types': 7.0.0
       before-after-hook: 2.2.2
       universal-user-agent: 6.0.0
     transitivePeerDependencies:
@@ -2186,13 +2186,6 @@ packages:
       - encoding
     dev: false
 
-  /@octokit/openapi-types/12.5.0:
-    resolution:
-      {
-        integrity: sha512-VatvE5wtRkJq6hAWGTBZ62WkrdlCiy0G0u27cVOYTfAWVZi7QqTurVcjpsyc5+9hXLPRP5O/DaNEs4TgAp4Mqg==,
-      }
-    dev: false
-
   /@octokit/openapi-types/12.8.0:
     resolution:
       {
@@ -2219,17 +2212,17 @@ packages:
       '@octokit/types': 6.39.0
     dev: false
 
-  /@octokit/plugin-paginate-rest/3.0.0_@octokit+core@4.0.4:
+  /@octokit/plugin-paginate-rest/4.0.0_@octokit+core@4.0.5:
     resolution:
       {
-        integrity: sha512-fvw0Q5IXnn60D32sKeLIxgXCEZ7BTSAjJd8cFAE6QU5qUp0xo7LjFUjjX1J5D7HgN355CN4EXE4+Q1/96JaNUA==,
+        integrity: sha512-g4GJMt/7VDmIMMdQenN6bmsmRoZca1c7IxOdF2yMiMwQYrE2bmmypGQeQSD5rsaffsFMCUS7Br4pMVZamareYA==,
       }
     engines: { node: '>= 14' }
     peerDependencies:
       '@octokit/core': '>=4'
     dependencies:
-      '@octokit/core': 4.0.4
-      '@octokit/types': 6.39.0
+      '@octokit/core': 4.0.5
+      '@octokit/types': 7.0.0
     dev: false
 
   /@octokit/plugin-request-log/1.0.4_@octokit+core@3.6.0:
@@ -2243,7 +2236,7 @@ packages:
       '@octokit/core': 3.6.0
     dev: false
 
-  /@octokit/plugin-request-log/1.0.4_@octokit+core@4.0.4:
+  /@octokit/plugin-request-log/1.0.4_@octokit+core@4.0.5:
     resolution:
       {
         integrity: sha512-mLUsMkgP7K/cnFEw07kWqXGF5LKrOkD+lhCrKvPHXWDywAwuDUeDwWBpc69XK3pNX0uKiVt8g5z96PJ6z9xCFA==,
@@ -2251,7 +2244,7 @@ packages:
     peerDependencies:
       '@octokit/core': '>=3'
     dependencies:
-      '@octokit/core': 4.0.4
+      '@octokit/core': 4.0.5
     dev: false
 
   /@octokit/plugin-rest-endpoint-methods/5.16.0_@octokit+core@3.6.0:
@@ -2267,7 +2260,7 @@ packages:
       deprecation: 2.3.1
     dev: false
 
-  /@octokit/plugin-rest-endpoint-methods/6.0.0_@octokit+core@4.0.4:
+  /@octokit/plugin-rest-endpoint-methods/6.0.0_@octokit+core@4.0.5:
     resolution:
       {
         integrity: sha512-9LkEvZB3WDuayEI381O5A/eM3QQioBZrwymQp5CUCNz9UMP/yZAIqBjcPhVJJFA3IRkKO1EARo98OePt9i0rkQ==,
@@ -2276,7 +2269,7 @@ packages:
     peerDependencies:
       '@octokit/core': '>=3'
     dependencies:
-      '@octokit/core': 4.0.4
+      '@octokit/core': 4.0.5
       '@octokit/types': 6.39.0
       deprecation: 2.3.1
     dev: false
@@ -2368,28 +2361,19 @@ packages:
       - encoding
     dev: false
 
-  /@octokit/rest/19.0.3:
+  /@octokit/rest/19.0.4:
     resolution:
       {
-        integrity: sha512-5arkTsnnRT7/sbI4fqgSJ35KiFaN7zQm0uQiQtivNQLI8RQx8EHwJCajcTUwmaCMNDg7tdCvqAnc7uvHHPxrtQ==,
+        integrity: sha512-LwG668+6lE8zlSYOfwPj4FxWdv/qFXYBpv79TWIQEpBLKA9D/IMcWsF/U9RGpA3YqMVDiTxpgVpEW3zTFfPFTA==,
       }
     engines: { node: '>= 14' }
     dependencies:
-      '@octokit/core': 4.0.4
-      '@octokit/plugin-paginate-rest': 3.0.0_@octokit+core@4.0.4
-      '@octokit/plugin-request-log': 1.0.4_@octokit+core@4.0.4
-      '@octokit/plugin-rest-endpoint-methods': 6.0.0_@octokit+core@4.0.4
+      '@octokit/core': 4.0.5
+      '@octokit/plugin-paginate-rest': 4.0.0_@octokit+core@4.0.5
+      '@octokit/plugin-request-log': 1.0.4_@octokit+core@4.0.5
+      '@octokit/plugin-rest-endpoint-methods': 6.0.0_@octokit+core@4.0.5
     transitivePeerDependencies:
       - encoding
-    dev: false
-
-  /@octokit/types/6.38.1:
-    resolution:
-      {
-        integrity: sha512-kWMohLCIvnwApRmxRFDOqve7puiNNdtVfgwdDOm6QyJNorWOgKv2/AodCcGqx63o28kF7Dr4/nJCatrwwqhULg==,
-      }
-    dependencies:
-      '@octokit/openapi-types': 12.5.0
     dev: false
 
   /@octokit/types/6.39.0:
@@ -3787,7 +3771,7 @@ packages:
     peerDependencies:
       semantic-release: '>=18.0.0-beta.1'
     dependencies:
-      '@octokit/rest': 19.0.3
+      '@octokit/rest': 19.0.4
       '@semantic-release/error': 2.2.0
       aggregate-error: 3.1.0
       bottleneck: 2.19.5
@@ -6000,6 +5984,14 @@ packages:
         integrity: sha512-dlLD5rKaKxpFdnjrs+5azHDFOPEu4ANy/LTh04A1DTzMM7qoajmKCBc8pkKRFT41CNzw+4gQh79X5C+Jq27HAw==,
       }
     engines: { node: '>=0.11' }
+
+  /date-fns/2.29.2:
+    resolution:
+      {
+        integrity: sha512-0VNbwmWJDS/G3ySwFSJA3ayhbURMTJLtwM2DTxf9CWondCnh6DTNlO9JgRSq6ibf4eD0lfMJNBxUdEAHHix+bA==,
+      }
+    engines: { node: '>=0.11' }
+    dev: false
 
   /dateformat/3.0.3:
     resolution:
