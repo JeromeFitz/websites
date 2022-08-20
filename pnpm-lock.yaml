@@ -75,7 +75,7 @@ importers:
 
   packages/next-notion:
     specifiers:
-      '@jeromefitz/design-system': 3.5.7
+      '@jeromefitz/design-system': 3.6.0
       '@jeromefitz/notion': 3.3.3
       '@jeromefitz/utils': 2.2.1
       '@types/github-slugger': 1.3.0
@@ -106,7 +106,7 @@ importers:
       uuid: 8.3.2
       valid-url: 1.0.9
     devDependencies:
-      '@jeromefitz/design-system': 3.5.7_hzqpspqv7hg2dgsi27ebydusw4
+      '@jeromefitz/design-system': 3.6.0_hzqpspqv7hg2dgsi27ebydusw4
       '@jeromefitz/notion': 3.3.3_@jeromefitz+utils@2.2.1
       '@types/github-slugger': 1.3.0
       '@types/ms': 0.7.31
@@ -124,7 +124,7 @@ importers:
 
   packages/shared:
     specifiers:
-      '@jeromefitz/design-system': 3.5.7
+      '@jeromefitz/design-system': 3.6.0
       '@stitches/react': 1.2.8
       '@types/lodash': 4.14.183
       '@types/react': 18.0.17
@@ -140,7 +140,7 @@ importers:
       react-dom: 18.2.0
       swr: 1.3.0
     dependencies:
-      '@jeromefitz/design-system': 3.5.7_lcaa247ocxjs4izd6giasf744i
+      '@jeromefitz/design-system': 3.6.0_lcaa247ocxjs4izd6giasf744i
       '@stitches/react': 1.2.8_react@18.2.0
       fathom-client: 3.5.0
       lodash: 4.17.21
@@ -160,7 +160,7 @@ importers:
   sites/jeromefitzgerald.com:
     specifiers:
       '@heroicons/react': 1.0.6
-      '@jeromefitz/design-system': 3.5.7
+      '@jeromefitz/design-system': 3.6.0
       '@jeromefitz/eslint-config': 1.1.4
       '@jeromefitz/lint-staged': 1.1.2
       '@jeromefitz/notion': 3.3.3
@@ -226,7 +226,7 @@ importers:
       zustand: 4.0.0
     dependencies:
       '@heroicons/react': 1.0.6_react@18.2.0
-      '@jeromefitz/design-system': 3.5.7_i42zdfzcgwi2xzu6nx72yqusbm
+      '@jeromefitz/design-system': 3.6.0_pm4ad4s2knwhikfnrashymug7a
       '@jeromefitz/notion': 3.3.3_cwubw3yppmn7f4gpl6k3kt7vty
       '@jeromefitz/spotify': 2.3.1_iitavrec5maiykdnzolum7fama
       '@jeromefitz/utils': 2.2.1
@@ -779,16 +779,15 @@ packages:
       title: 3.5.2
     dev: false
 
-  /@jeromefitz/design-system/3.5.7_hzqpspqv7hg2dgsi27ebydusw4:
-    resolution: {integrity: sha512-gGAV+InODX9Vb5iQpbFxF3uH8zx8dNFe76rcIcqn3oxAKIcavRDgdcGvWlBvVWN4Lq1Jvq3n1FN7qqvT3X4vlQ==}
+  /@jeromefitz/design-system/3.6.0_hzqpspqv7hg2dgsi27ebydusw4:
+    resolution: {integrity: sha512-P/XpJvEYrTKel6K4ST8kgv9lYZSuLG/kjcMN/iP2ZrBzaVHKYRwHze6lDuAw3YRy6fBGnXHZlemLwqvXO6wvqA==}
     engines: {node: '>=16'}
     peerDependencies:
       '@heroicons/react': ^1.0.6
-      '@mantine/hooks': ^5.0.0
       '@radix-ui/colors': ^0.1.8
       '@radix-ui/react-icons': ^1.1.1
-      framer-motion: ^6.3.3
-      kbar: ^0.1.0-beta.35
+      cmdk: ^0.1.19
+      framer-motion: ^7.0.0
       lodash: ^4.17.21
       next: ^12.1.6
       react: ^18.0.0
@@ -859,103 +858,15 @@ packages:
       - '@types/react'
     dev: true
 
-  /@jeromefitz/design-system/3.5.7_i42zdfzcgwi2xzu6nx72yqusbm:
-    resolution: {integrity: sha512-gGAV+InODX9Vb5iQpbFxF3uH8zx8dNFe76rcIcqn3oxAKIcavRDgdcGvWlBvVWN4Lq1Jvq3n1FN7qqvT3X4vlQ==}
+  /@jeromefitz/design-system/3.6.0_lcaa247ocxjs4izd6giasf744i:
+    resolution: {integrity: sha512-P/XpJvEYrTKel6K4ST8kgv9lYZSuLG/kjcMN/iP2ZrBzaVHKYRwHze6lDuAw3YRy6fBGnXHZlemLwqvXO6wvqA==}
     engines: {node: '>=16'}
     peerDependencies:
       '@heroicons/react': ^1.0.6
-      '@mantine/hooks': ^5.0.0
       '@radix-ui/colors': ^0.1.8
       '@radix-ui/react-icons': ^1.1.1
-      framer-motion: ^6.3.3
-      kbar: ^0.1.0-beta.35
-      lodash: ^4.17.21
-      next: ^12.1.6
-      react: ^18.0.0
-      react-dom: ^18.0.0
-      swr: ^1.2.2
-    dependencies:
-      '@heroicons/react': 1.0.6_react@18.2.0
-      '@mantine/hooks': 5.1.6_react@18.2.0
-      '@radix-ui/colors': 0.1.8
-      '@radix-ui/primitive': 1.0.0
-      '@radix-ui/react-accessible-icon': 1.0.0_biqbaboplfbrettd7655fr4n2y
-      '@radix-ui/react-accordion': 1.0.0_biqbaboplfbrettd7655fr4n2y
-      '@radix-ui/react-alert-dialog': 1.0.0_zxljzmqdrxwnuenbkrz77w74uy
-      '@radix-ui/react-announce': 0.1.5_biqbaboplfbrettd7655fr4n2y
-      '@radix-ui/react-arrow': 1.0.0_biqbaboplfbrettd7655fr4n2y
-      '@radix-ui/react-aspect-ratio': 1.0.0_biqbaboplfbrettd7655fr4n2y
-      '@radix-ui/react-avatar': 1.0.0_biqbaboplfbrettd7655fr4n2y
-      '@radix-ui/react-checkbox': 1.0.0_biqbaboplfbrettd7655fr4n2y
-      '@radix-ui/react-collapsible': 1.0.0_biqbaboplfbrettd7655fr4n2y
-      '@radix-ui/react-collection': 1.0.0_biqbaboplfbrettd7655fr4n2y
-      '@radix-ui/react-compose-refs': 1.0.0_react@18.2.0
-      '@radix-ui/react-context': 1.0.0_react@18.2.0
-      '@radix-ui/react-context-menu': 1.0.0_zxljzmqdrxwnuenbkrz77w74uy
-      '@radix-ui/react-dialog': 1.0.0_zxljzmqdrxwnuenbkrz77w74uy
-      '@radix-ui/react-direction': 1.0.0_react@18.2.0
-      '@radix-ui/react-dismissable-layer': 1.0.0_biqbaboplfbrettd7655fr4n2y
-      '@radix-ui/react-dropdown-menu': 1.0.0_zxljzmqdrxwnuenbkrz77w74uy
-      '@radix-ui/react-focus-guards': 1.0.0_react@18.2.0
-      '@radix-ui/react-focus-scope': 1.0.0_biqbaboplfbrettd7655fr4n2y
-      '@radix-ui/react-hover-card': 1.0.0_zxljzmqdrxwnuenbkrz77w74uy
-      '@radix-ui/react-icons': 1.1.1_react@18.2.0
-      '@radix-ui/react-id': 1.0.0_react@18.2.0
-      '@radix-ui/react-label': 1.0.0_biqbaboplfbrettd7655fr4n2y
-      '@radix-ui/react-menu': 1.0.0_zxljzmqdrxwnuenbkrz77w74uy
-      '@radix-ui/react-navigation-menu': 1.0.0_biqbaboplfbrettd7655fr4n2y
-      '@radix-ui/react-popover': 1.0.0_zxljzmqdrxwnuenbkrz77w74uy
-      '@radix-ui/react-popper': 1.0.0_zxljzmqdrxwnuenbkrz77w74uy
-      '@radix-ui/react-portal': 1.0.0_biqbaboplfbrettd7655fr4n2y
-      '@radix-ui/react-presence': 1.0.0_biqbaboplfbrettd7655fr4n2y
-      '@radix-ui/react-primitive': 1.0.0_biqbaboplfbrettd7655fr4n2y
-      '@radix-ui/react-progress': 1.0.0_biqbaboplfbrettd7655fr4n2y
-      '@radix-ui/react-radio-group': 1.0.0_biqbaboplfbrettd7655fr4n2y
-      '@radix-ui/react-roving-focus': 1.0.0_biqbaboplfbrettd7655fr4n2y
-      '@radix-ui/react-scroll-area': 1.0.0_biqbaboplfbrettd7655fr4n2y
-      '@radix-ui/react-select': 1.0.0_zxljzmqdrxwnuenbkrz77w74uy
-      '@radix-ui/react-separator': 1.0.0_biqbaboplfbrettd7655fr4n2y
-      '@radix-ui/react-slider': 1.0.0_biqbaboplfbrettd7655fr4n2y
-      '@radix-ui/react-slot': 1.0.0_react@18.2.0
-      '@radix-ui/react-switch': 1.0.0_biqbaboplfbrettd7655fr4n2y
-      '@radix-ui/react-tabs': 1.0.0_biqbaboplfbrettd7655fr4n2y
-      '@radix-ui/react-toast': 1.0.0_biqbaboplfbrettd7655fr4n2y
-      '@radix-ui/react-toggle': 1.0.0_biqbaboplfbrettd7655fr4n2y
-      '@radix-ui/react-toggle-group': 1.0.0_biqbaboplfbrettd7655fr4n2y
-      '@radix-ui/react-toolbar': 1.0.0_biqbaboplfbrettd7655fr4n2y
-      '@radix-ui/react-tooltip': 1.0.0_zxljzmqdrxwnuenbkrz77w74uy
-      '@radix-ui/react-use-callback-ref': 1.0.0_react@18.2.0
-      '@radix-ui/react-use-controllable-state': 1.0.0_react@18.2.0
-      '@radix-ui/react-use-escape-keydown': 1.0.0_react@18.2.0
-      '@radix-ui/react-use-layout-effect': 1.0.0_react@18.2.0
-      '@radix-ui/react-use-previous': 1.0.0_react@18.2.0
-      '@radix-ui/react-use-rect': 1.0.0_react@18.2.0
-      '@radix-ui/react-use-size': 1.0.0_react@18.2.0
-      '@radix-ui/react-visually-hidden': 1.0.0_biqbaboplfbrettd7655fr4n2y
-      '@stitches/react': 1.2.8_react@18.2.0
-      emoji-regex: 10.1.0
-      framer-motion: 7.1.2_biqbaboplfbrettd7655fr4n2y
-      kbar: 0.1.0-beta.36_biqbaboplfbrettd7655fr4n2y
-      next: 12.2.5_biqbaboplfbrettd7655fr4n2y
-      node-emoji: 1.11.0
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-      smoothscroll-polyfill: 0.4.4
-      swr: 1.3.0_react@18.2.0
-    transitivePeerDependencies:
-      - '@types/react'
-    dev: false
-
-  /@jeromefitz/design-system/3.5.7_lcaa247ocxjs4izd6giasf744i:
-    resolution: {integrity: sha512-gGAV+InODX9Vb5iQpbFxF3uH8zx8dNFe76rcIcqn3oxAKIcavRDgdcGvWlBvVWN4Lq1Jvq3n1FN7qqvT3X4vlQ==}
-    engines: {node: '>=16'}
-    peerDependencies:
-      '@heroicons/react': ^1.0.6
-      '@mantine/hooks': ^5.0.0
-      '@radix-ui/colors': ^0.1.8
-      '@radix-ui/react-icons': ^1.1.1
-      framer-motion: ^6.3.3
-      kbar: ^0.1.0-beta.35
+      cmdk: ^0.1.19
+      framer-motion: ^7.0.0
       lodash: ^4.17.21
       next: ^12.1.6
       react: ^18.0.0
@@ -1028,6 +939,90 @@ packages:
       - '@types/react'
     dev: false
 
+  /@jeromefitz/design-system/3.6.0_pm4ad4s2knwhikfnrashymug7a:
+    resolution: {integrity: sha512-P/XpJvEYrTKel6K4ST8kgv9lYZSuLG/kjcMN/iP2ZrBzaVHKYRwHze6lDuAw3YRy6fBGnXHZlemLwqvXO6wvqA==}
+    engines: {node: '>=16'}
+    peerDependencies:
+      '@heroicons/react': ^1.0.6
+      '@radix-ui/colors': ^0.1.8
+      '@radix-ui/react-icons': ^1.1.1
+      cmdk: ^0.1.19
+      framer-motion: ^7.0.0
+      lodash: ^4.17.21
+      next: ^12.1.6
+      react: ^18.0.0
+      react-dom: ^18.0.0
+      swr: ^1.2.2
+    dependencies:
+      '@heroicons/react': 1.0.6_react@18.2.0
+      '@radix-ui/colors': 0.1.8
+      '@radix-ui/primitive': 1.0.0
+      '@radix-ui/react-accessible-icon': 1.0.0_biqbaboplfbrettd7655fr4n2y
+      '@radix-ui/react-accordion': 1.0.0_biqbaboplfbrettd7655fr4n2y
+      '@radix-ui/react-alert-dialog': 1.0.0_zxljzmqdrxwnuenbkrz77w74uy
+      '@radix-ui/react-announce': 0.1.5_biqbaboplfbrettd7655fr4n2y
+      '@radix-ui/react-arrow': 1.0.0_biqbaboplfbrettd7655fr4n2y
+      '@radix-ui/react-aspect-ratio': 1.0.0_biqbaboplfbrettd7655fr4n2y
+      '@radix-ui/react-avatar': 1.0.0_biqbaboplfbrettd7655fr4n2y
+      '@radix-ui/react-checkbox': 1.0.0_biqbaboplfbrettd7655fr4n2y
+      '@radix-ui/react-collapsible': 1.0.0_biqbaboplfbrettd7655fr4n2y
+      '@radix-ui/react-collection': 1.0.0_biqbaboplfbrettd7655fr4n2y
+      '@radix-ui/react-compose-refs': 1.0.0_react@18.2.0
+      '@radix-ui/react-context': 1.0.0_react@18.2.0
+      '@radix-ui/react-context-menu': 1.0.0_zxljzmqdrxwnuenbkrz77w74uy
+      '@radix-ui/react-dialog': 1.0.0_zxljzmqdrxwnuenbkrz77w74uy
+      '@radix-ui/react-direction': 1.0.0_react@18.2.0
+      '@radix-ui/react-dismissable-layer': 1.0.0_biqbaboplfbrettd7655fr4n2y
+      '@radix-ui/react-dropdown-menu': 1.0.0_zxljzmqdrxwnuenbkrz77w74uy
+      '@radix-ui/react-focus-guards': 1.0.0_react@18.2.0
+      '@radix-ui/react-focus-scope': 1.0.0_biqbaboplfbrettd7655fr4n2y
+      '@radix-ui/react-hover-card': 1.0.0_zxljzmqdrxwnuenbkrz77w74uy
+      '@radix-ui/react-icons': 1.1.1_react@18.2.0
+      '@radix-ui/react-id': 1.0.0_react@18.2.0
+      '@radix-ui/react-label': 1.0.0_biqbaboplfbrettd7655fr4n2y
+      '@radix-ui/react-menu': 1.0.0_zxljzmqdrxwnuenbkrz77w74uy
+      '@radix-ui/react-navigation-menu': 1.0.0_biqbaboplfbrettd7655fr4n2y
+      '@radix-ui/react-popover': 1.0.0_zxljzmqdrxwnuenbkrz77w74uy
+      '@radix-ui/react-popper': 1.0.0_zxljzmqdrxwnuenbkrz77w74uy
+      '@radix-ui/react-portal': 1.0.0_biqbaboplfbrettd7655fr4n2y
+      '@radix-ui/react-presence': 1.0.0_biqbaboplfbrettd7655fr4n2y
+      '@radix-ui/react-primitive': 1.0.0_biqbaboplfbrettd7655fr4n2y
+      '@radix-ui/react-progress': 1.0.0_biqbaboplfbrettd7655fr4n2y
+      '@radix-ui/react-radio-group': 1.0.0_biqbaboplfbrettd7655fr4n2y
+      '@radix-ui/react-roving-focus': 1.0.0_biqbaboplfbrettd7655fr4n2y
+      '@radix-ui/react-scroll-area': 1.0.0_biqbaboplfbrettd7655fr4n2y
+      '@radix-ui/react-select': 1.0.0_zxljzmqdrxwnuenbkrz77w74uy
+      '@radix-ui/react-separator': 1.0.0_biqbaboplfbrettd7655fr4n2y
+      '@radix-ui/react-slider': 1.0.0_biqbaboplfbrettd7655fr4n2y
+      '@radix-ui/react-slot': 1.0.0_react@18.2.0
+      '@radix-ui/react-switch': 1.0.0_biqbaboplfbrettd7655fr4n2y
+      '@radix-ui/react-tabs': 1.0.0_biqbaboplfbrettd7655fr4n2y
+      '@radix-ui/react-toast': 1.0.0_biqbaboplfbrettd7655fr4n2y
+      '@radix-ui/react-toggle': 1.0.0_biqbaboplfbrettd7655fr4n2y
+      '@radix-ui/react-toggle-group': 1.0.0_biqbaboplfbrettd7655fr4n2y
+      '@radix-ui/react-toolbar': 1.0.0_biqbaboplfbrettd7655fr4n2y
+      '@radix-ui/react-tooltip': 1.0.0_zxljzmqdrxwnuenbkrz77w74uy
+      '@radix-ui/react-use-callback-ref': 1.0.0_react@18.2.0
+      '@radix-ui/react-use-controllable-state': 1.0.0_react@18.2.0
+      '@radix-ui/react-use-escape-keydown': 1.0.0_react@18.2.0
+      '@radix-ui/react-use-layout-effect': 1.0.0_react@18.2.0
+      '@radix-ui/react-use-previous': 1.0.0_react@18.2.0
+      '@radix-ui/react-use-rect': 1.0.0_react@18.2.0
+      '@radix-ui/react-use-size': 1.0.0_react@18.2.0
+      '@radix-ui/react-visually-hidden': 1.0.0_biqbaboplfbrettd7655fr4n2y
+      '@stitches/react': 1.2.8_react@18.2.0
+      emoji-regex: 10.1.0
+      framer-motion: 7.1.2_biqbaboplfbrettd7655fr4n2y
+      next: 12.2.5_biqbaboplfbrettd7655fr4n2y
+      node-emoji: 1.11.0
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      smoothscroll-polyfill: 0.4.4
+      swr: 1.3.0_react@18.2.0
+    transitivePeerDependencies:
+      - '@types/react'
+    dev: false
+
   /@jeromefitz/eslint-config/1.1.4:
     resolution: {integrity: sha512-sKi4KGmiefmHmdPinHHL9BtgCEIerq5A4S43Y+jR/NZMtV9GahgSuPY12xMjSsJIe3gPYPDwk0sxxrm4ndKsMw==}
     engines: {node: '>=16'}
@@ -1078,6 +1073,7 @@ packages:
       - jest
       - supports-color
       - typescript
+    dev: false
 
   /@jeromefitz/git-cz/14.4.1_al7gb7mkou3ck5gs5scjwydyiu:
     resolution: {integrity: sha512-oNZ0GM2Bh7NrV32Ylkau9YDviMfA9mEP6DUKpQA4V00k9K2m8bhPYXS1Q6RkqUJdLgVQxAA7ZODr101MR88pCg==}
@@ -3335,6 +3331,7 @@ packages:
       typescript: 4.7.4
     transitivePeerDependencies:
       - supports-color
+    dev: false
 
   /@typescript-eslint/parser/5.30.0_eslint@8.18.0:
     resolution: {integrity: sha512-2oYYUws5o2liX6SrFQ5RB88+PuRymaM2EU02/9Ppoyu70vllPnHVO7ioxDdq/ypXHA277R04SVjxvwI8HmZpzA==}
@@ -3353,7 +3350,6 @@ packages:
       eslint: 8.18.0
     transitivePeerDependencies:
       - supports-color
-    dev: true
 
   /@typescript-eslint/scope-manager/5.30.0:
     resolution: {integrity: sha512-3TZxvlQcK5fhTBw5solQucWSJvonXf5yua5nx8OqK94hxdrT7/6W3/CS42MLd/f1BmlmmbGEgQcTHHCktUX5bQ==}
@@ -3467,6 +3463,7 @@ packages:
       typescript: 4.7.4
     transitivePeerDependencies:
       - supports-color
+    dev: false
 
   /@typescript-eslint/utils/5.30.0_b5e7v2qnwxfo6hmiq56u52mz3e:
     resolution: {integrity: sha512-0bIgOgZflLKIcZsWvfklsaQTM3ZUbmtH0rJ1hKyV3raoUYyeZwcjQ8ZUJTzS7KnhNcsVT1Rxs7zeeMHEhGlltw==}
@@ -5276,7 +5273,7 @@ packages:
       eslint-import-resolver-webpack:
         optional: true
     dependencies:
-      '@typescript-eslint/parser': 5.30.0_b5e7v2qnwxfo6hmiq56u52mz3e
+      '@typescript-eslint/parser': 5.30.0_eslint@8.18.0
       debug: 3.2.7
       eslint-import-resolver-node: 0.3.6
       find-up: 2.1.0
@@ -5293,7 +5290,7 @@ packages:
       '@typescript-eslint/parser':
         optional: true
     dependencies:
-      '@typescript-eslint/parser': 5.30.0_b5e7v2qnwxfo6hmiq56u52mz3e
+      '@typescript-eslint/parser': 5.30.0_eslint@8.18.0
       array-includes: 3.1.5
       array.prototype.flat: 1.3.0
       debug: 2.6.9
@@ -5323,7 +5320,7 @@ packages:
       '@typescript-eslint/parser':
         optional: true
     dependencies:
-      '@typescript-eslint/parser': 5.30.0_b5e7v2qnwxfo6hmiq56u52mz3e
+      '@typescript-eslint/parser': 5.30.0_eslint@8.18.0
       array-includes: 3.1.5
       array.prototype.flat: 1.3.0
       debug: 2.6.9
@@ -10019,6 +10016,7 @@ packages:
     dependencies:
       tslib: 1.14.1
       typescript: 4.7.4
+    dev: false
 
   /tunnel-agent/0.6.0:
     resolution: {integrity: sha512-McnNiV1l8RYeY8tBgEpuodCC1mLUdbSN+CYBL7kJsJNInOP8UjDDEwdk6Mw60vdLLrr5NHKZhMAOSrR2NZuQ+w==}

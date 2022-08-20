@@ -34,7 +34,7 @@
     "---      ": ""
   },
   "dependencies": {
-    "@jeromefitz/design-system": "3.5.7",
+    "@jeromefitz/design-system": "3.6.0",
     "@stitches/react": "1.2.8",
     "fathom-client": "3.5.0",
     "lodash": "4.17.21",
