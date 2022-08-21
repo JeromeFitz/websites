@@ -76,7 +76,7 @@ importers:
   packages/next-notion:
     specifiers:
       '@jeromefitz/design-system': 4.0.0
-      '@jeromefitz/notion': 3.3.3
+      '@jeromefitz/notion': 3.3.4
       '@jeromefitz/utils': 2.2.1
       '@types/github-slugger': 1.3.0
       '@types/ms': 0.7.31
@@ -107,7 +107,7 @@ importers:
       valid-url: 1.0.9
     devDependencies:
       '@jeromefitz/design-system': 4.0.0_hzqpspqv7hg2dgsi27ebydusw4
-      '@jeromefitz/notion': 3.3.3_@jeromefitz+utils@2.2.1
+      '@jeromefitz/notion': 3.3.4_@jeromefitz+utils@2.2.1
       '@types/github-slugger': 1.3.0
       '@types/ms': 0.7.31
       '@types/react': 18.0.17
@@ -163,7 +163,7 @@ importers:
       '@jeromefitz/design-system': 4.0.0
       '@jeromefitz/eslint-config': 1.1.4
       '@jeromefitz/lint-staged': 1.1.2
-      '@jeromefitz/notion': 3.3.3
+      '@jeromefitz/notion': 3.3.4
       '@jeromefitz/prettier-config': 1.1.1
       '@jeromefitz/shared': workspace:*
       '@jeromefitz/spotify': 2.3.1
@@ -227,7 +227,7 @@ importers:
     dependencies:
       '@heroicons/react': 1.0.6_react@18.2.0
       '@jeromefitz/design-system': 4.0.0_qfv35p6zkylepsa63nl4ml3aki
-      '@jeromefitz/notion': 3.3.3_cwubw3yppmn7f4gpl6k3kt7vty
+      '@jeromefitz/notion': 3.3.4_cwubw3yppmn7f4gpl6k3kt7vty
       '@jeromefitz/spotify': 2.3.1_iitavrec5maiykdnzolum7fama
       '@jeromefitz/utils': 2.2.1
       '@mantine/hooks': 5.2.0_react@18.2.0
@@ -1106,8 +1106,8 @@ packages:
       - enquirer
       - supports-color
 
-  /@jeromefitz/notion/3.3.3_@jeromefitz+utils@2.2.1:
-    resolution: {integrity: sha512-w08szdO1GzOM3zYjJWPC+qQXBuGlGwWQaEbJ2RFV+Ug5k6d6O1L7Y7bD4CdyCMcZwTGG6a7w2TRxEY+VIVTAtQ==}
+  /@jeromefitz/notion/3.3.4_@jeromefitz+utils@2.2.1:
+    resolution: {integrity: sha512-T8tUy89YysaV6FbdieoMQbmaVrWyeuws5JA2MDW9KyXfSdPzpkv1+7U4ZaMYyxvwwtoOLESI+rvK6Xx+8IMZOw==}
     engines: {node: '>=16'}
     peerDependencies:
       '@jeromefitz/utils': ^2.1.0
@@ -1115,15 +1115,15 @@ packages:
     dependencies:
       '@jeromefitz/utils': 2.2.1
       '@notionhq/client': 1.0.4
-      date-fns: 2.29.1
-      date-fns-tz: 1.3.6_date-fns@2.29.1
+      date-fns: 2.29.2
+      date-fns-tz: 1.3.6_date-fns@2.29.2
       github-slugger: 1.4.0
     transitivePeerDependencies:
       - encoding
     dev: true
 
-  /@jeromefitz/notion/3.3.3_cwubw3yppmn7f4gpl6k3kt7vty:
-    resolution: {integrity: sha512-w08szdO1GzOM3zYjJWPC+qQXBuGlGwWQaEbJ2RFV+Ug5k6d6O1L7Y7bD4CdyCMcZwTGG6a7w2TRxEY+VIVTAtQ==}
+  /@jeromefitz/notion/3.3.4_cwubw3yppmn7f4gpl6k3kt7vty:
+    resolution: {integrity: sha512-T8tUy89YysaV6FbdieoMQbmaVrWyeuws5JA2MDW9KyXfSdPzpkv1+7U4ZaMYyxvwwtoOLESI+rvK6Xx+8IMZOw==}
     engines: {node: '>=16'}
     peerDependencies:
       '@jeromefitz/utils': ^2.1.0
@@ -1131,8 +1131,8 @@ packages:
     dependencies:
       '@jeromefitz/utils': 2.2.1
       '@notionhq/client': 1.0.4_encoding@0.1.13
-      date-fns: 2.29.1
-      date-fns-tz: 1.3.6_date-fns@2.29.1
+      date-fns: 2.29.2
+      date-fns-tz: 1.3.6_date-fns@2.29.2
       github-slugger: 1.4.0
     transitivePeerDependencies:
       - encoding
