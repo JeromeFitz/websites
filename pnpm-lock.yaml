@@ -203,7 +203,7 @@ importers:
       next-compose-plugins: 2.2.1
       next-notion: workspace:*
       next-seo: 5.5.0
-      next-sitemap: 3.1.20
+      next-sitemap: 3.1.21
       next-themes: 0.2.0
       next-transpile-modules: 9.0.0
       next-unused: 0.0.6
@@ -252,7 +252,7 @@ importers:
       next: 12.2.5_biqbaboplfbrettd7655fr4n2y
       next-compose-plugins: 2.2.1
       next-seo: 5.5.0_3xcjr4wz26biff45sz3jtokgje
-      next-sitemap: 3.1.20_next@12.2.5
+      next-sitemap: 3.1.21_next@12.2.5
       next-themes: 0.2.0_3xcjr4wz26biff45sz3jtokgje
       next-transpile-modules: 9.0.0
       node-emoji: 1.11.0
@@ -7952,8 +7952,8 @@ packages:
       react-dom: 18.2.0_react@18.2.0
     dev: false
 
-  /next-sitemap/3.1.20_next@12.2.5:
-    resolution: {integrity: sha512-ugcSQpAtwc9fk7fsr5to0yrlA/RjY0kw2wHOUqcrRXnZDwFfBwGnEVvaYbI7C4ZlhvxjJTA3G15QMpvpmvPquw==}
+  /next-sitemap/3.1.21_next@12.2.5:
+    resolution: {integrity: sha512-8upGCtI91FvjNBpeKDZzrzRBlY4BH6qjG7dMe89sdBzJ9B++PVLTzRPlpLHJYOEPukBROsxi2zVuAvePBtsrdw==}
     engines: {node: '>=14.18'}
     hasBin: true
     peerDependencies:
