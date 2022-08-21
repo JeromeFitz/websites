@@ -22,9 +22,13 @@ const devtools = (
     api: Mutate<StoreApi<StoreState>, [['zustand/devtools', never]]>
   ) => StoreState
 ) =>
+  /**
+   * @note(zustand) comment out `name` real quick
+   * ref: https://github.com/pmndrs/zustand/issues/1205
+   */
   isDev
     ? _devtools(config, {
-        name: 'zustand',
+        // name: 'zustand',
       })
     : config
 
