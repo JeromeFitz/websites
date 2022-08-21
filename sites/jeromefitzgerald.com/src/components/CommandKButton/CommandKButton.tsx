@@ -8,17 +8,19 @@ import {
   TooltipTrigger,
 } from '@jeromefitz/design-system/custom/Tooltip'
 import { useOs } from '@mantine/hooks'
-import { useKBar, VisualState } from 'kbar'
 import React from 'react'
 
+import useStore from '~store/useStore'
+
 function CommandKButton() {
-  const { query } = useKBar()
   const os = useOs()
 
   const content = 'Command Menu'
   const icon = <Text as="span">⌘</Text>
   const key1 = os === 'macos' ? '⌘' : 'ctrl'
   const key2 = 'k'
+
+  const commandMenuOpenSet = useStore.use.commandMenuOpenSet()
 
   return (
     <TooltipProvider>
@@ -27,13 +29,7 @@ function CommandKButton() {
           <Button
             aria-label="Open Command Menu"
             css={{ '&:hover': { cursor: 'pointer' } }}
-            onClick={() =>
-              query.setVisualState((vs) =>
-                [VisualState.animatingOut, VisualState.hidden].includes(vs)
-                  ? VisualState.animatingIn
-                  : VisualState.animatingOut
-              )
-            }
+            onClick={() => commandMenuOpenSet()}
             ghost
           >
             {icon}

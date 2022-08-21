@@ -7,10 +7,10 @@ import {
 } from 'zustand/middleware'
 
 import createSelectors from './createSelectors'
-import type { IAudio, ICounter, ICounterTest } from './slices'
-import { Audio, Counter, CounterTest } from './slices'
+import type { IAudio, ICounter, ICounterTest, ISettings } from './slices'
+import { Audio, Counter, CounterTest, Settings } from './slices'
 
-type StoreState = IAudio & ICounter & ICounterTest
+type StoreState = IAudio & ICounter & ICounterTest & ISettings
 
 const isDev = process.env.NODE_ENV === 'development' && typeof window !== 'undefined'
 
@@ -63,6 +63,7 @@ const useStoreBase = createStore((set, get) => {
     ...Audio(set, get),
     ...Counter(set, get),
     ...CounterTest(set, get),
+    ...Settings(set, get),
   }
 })
 const useStore = createSelectors(useStoreBase)

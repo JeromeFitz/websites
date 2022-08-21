@@ -4,8 +4,17 @@
  * Preferably this would come from NOTION or generated during the build.
  */
 import { Icon } from '@jeromefitz/design-system'
-import { Priority } from 'kbar'
 import * as React from 'react'
+
+const Priority: {
+  HIGH: number
+  NORMAL: number
+  LOW: number
+} = {
+  HIGH: 1,
+  NORMAL: 0,
+  LOW: -1,
+}
 
 interface INavigationItem {
   icon?: React.ReactElement

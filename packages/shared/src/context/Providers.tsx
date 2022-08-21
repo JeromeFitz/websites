@@ -1,4 +1,4 @@
-import { darkTheme, KBarProvider, ToastProvider } from '@jeromefitz/design-system'
+import { darkTheme, ToastProvider } from '@jeromefitz/design-system'
 import { ThemeProvider } from 'next-themes'
 
 const Providers = ({ children }) => {
@@ -9,12 +9,7 @@ const Providers = ({ children }) => {
       value={{ light: 'light-theme', dark: darkTheme.className }}
       defaultTheme="system"
     >
-      <ToastProvider>
-        {/* @todo(react-18) */}
-        {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-        {/* @ts-ignore */}
-        <KBarProvider>{children}</KBarProvider>
-      </ToastProvider>
+      <ToastProvider>{children}</ToastProvider>
     </ThemeProvider>
   )
 }
