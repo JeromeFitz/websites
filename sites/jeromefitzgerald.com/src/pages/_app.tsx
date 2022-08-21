@@ -28,6 +28,9 @@ import buildInfo from '~config/buildInfo.json'
 import { pluralRules } from '~config/index'
 import { globalStyles as globalStylesLocal } from '~styles/globalStyles'
 
+const CommandMenu = dynamic(() => import('~components/CommandMenu'), {
+  ssr: true,
+})
 const Header = dynamic(() => import('~components/Header'), {
   ssr: true,
 })
@@ -98,6 +101,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
               </Section>
             </Container>
             <Footer />
+            <CommandMenu />
           </Providers>
         </SWRConfig>
       </ErrorBoundary>

@@ -192,7 +192,7 @@ const MenuMobile = ({ handleSelect, navigationNonMutated }) => {
                               <StyledLink
                                 align="center"
                                 justify="start"
-                                gap="2"
+                                gap="3"
                                 onClick={(event) =>
                                   handleSelectInternal(event, section)
                                 }
@@ -231,7 +231,7 @@ const MenuMobile = ({ handleSelect, navigationNonMutated }) => {
                                     <StyledLink
                                       align="center"
                                       justify="start"
-                                      gap="2"
+                                      gap="3"
                                       onClick={(event) =>
                                         handleSelectInternal(event, item)
                                       }
@@ -293,7 +293,7 @@ const MenuMobile = ({ handleSelect, navigationNonMutated }) => {
                                     <StyledLink
                                       align="center"
                                       justify="start"
-                                      gap="2"
+                                      gap="3"
                                       onClick={(event) =>
                                         handleSelectInternal(event, item)
                                       }
@@ -350,7 +350,7 @@ const MenuMobile = ({ handleSelect, navigationNonMutated }) => {
                                     <StyledLink
                                       align="center"
                                       justify="start"
-                                      gap="2"
+                                      gap="3"
                                       onClick={(event) =>
                                         handleSelectInternal(event, item)
                                       }

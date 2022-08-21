@@ -16,7 +16,7 @@ Further breakdown from the root `README`:
   - Note: This is a referral code.
 - **Packages**:
   - `date-fns`
-  - `kbar`
+  - `cmdk`
   - `lodash`
   - `next-seo`
   - `next-sitemap`

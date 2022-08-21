@@ -38,7 +38,7 @@ const externals = [
   '@radix-ui/colors',
   '@stitches/react',
   '@types/react',
-  'kbar',
+  'cmdk',
   'react',
   'react-dom',
   'swr',
