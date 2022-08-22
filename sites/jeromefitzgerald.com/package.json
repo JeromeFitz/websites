@@ -88,7 +88,7 @@
     "ts-node": "10.9.1",
     "use-sound": "4.0.1",
     "uuid": "8.3.2",
-    "zustand": "4.1.0"
+    "zustand": "4.1.1"
   },
   "devDependencies": {
     "@jeromefitz/eslint-config": "1.1.4",
