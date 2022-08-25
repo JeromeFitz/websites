@@ -16,7 +16,7 @@ import * as React from 'react'
 import { useEffectOnce } from 'react-use'
 import { useSound } from 'use-sound'
 
-import { CommandKButton } from '~components/CommandKButton'
+import { CommandMenuButton } from '~components/CommandMenu'
 import { NavigationMenu } from '~components/NavigationMenu'
 import { navigation } from '~config/navigation'
 import useStore from '~store/useStore'
@@ -273,7 +273,7 @@ const AppBarImpl = ({}) => {
               gap="3"
             >
               <Flex>
-                <CommandKButton />
+                <CommandMenuButton />
               </Flex>
               <Flex>
                 {/* @todo(radix-ui) types */}

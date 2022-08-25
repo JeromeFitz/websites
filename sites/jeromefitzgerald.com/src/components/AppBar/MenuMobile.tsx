@@ -15,7 +15,7 @@ import { useSwipeable } from 'react-swipeable'
 // import { useEffectOnce } from 'react-use'
 import { useSound } from 'use-sound'
 
-import { CommandKButton } from '~components/CommandKButton'
+import { CommandMenuButton } from '~components/CommandMenu'
 import { ToggleAudio, ToggleTheme } from '~components/Toggle'
 import useStore from '~store/useStore'
 
@@ -91,7 +91,7 @@ const MenuMobile = ({ handleSelect, navigationNonMutated }) => {
 
   return (
     <Flex gap="2">
-      <CommandKButton />
+      <CommandMenuButton />
       <ToggleTheme />
       <ToggleAudio />
       <Sheet open={open} onOpenChange={handleMenuOpen}>

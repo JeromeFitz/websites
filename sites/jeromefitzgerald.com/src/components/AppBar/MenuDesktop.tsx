@@ -19,7 +19,7 @@ import { useTheme } from 'next-themes'
 import * as React from 'react'
 import { useSound } from 'use-sound'
 
-import { CommandKButton } from '~components/CommandKButton'
+import { CommandMenuButton } from '~components/CommandMenu'
 import { NavigationMenu } from '~components/NavigationMenu'
 import { ToggleAudio, ToggleTheme } from '~components/Toggle'
 import useStore from '~store/useStore'
@@ -58,7 +58,7 @@ const MenuDesktop = ({ handleSelect, navigationNonMutated }) => {
         <NavigationMenu navigationNonMutated={navigationNonMutated} />
       </Container>
       <Flex gap="2">
-        <CommandKButton />
+        <CommandMenuButton />
         <ToggleTheme />
         <ToggleAudio />
         <DropdownMenu onOpenChange={handleMenuOpen}>
