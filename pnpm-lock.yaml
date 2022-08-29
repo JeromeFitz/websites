@@ -8,7 +8,7 @@ importers:
   .:
     specifiers:
       '@babel/eslint-parser': 7.18.9
-      '@jeromefitz/conventional-gitmoji': 3.3.3
+      '@jeromefitz/conventional-gitmoji': 3.3.4
       '@jeromefitz/eslint-config': 1.1.4
       '@jeromefitz/git-cz': 14.4.1
       '@jeromefitz/lint-staged': 1.1.2
@@ -41,13 +41,13 @@ importers:
       typescript: 4.7.4
     dependencies:
       '@babel/eslint-parser': 7.18.9
-      '@jeromefitz/conventional-gitmoji': 3.3.3_lodash@4.17.21
+      '@jeromefitz/conventional-gitmoji': 3.3.4_lodash@4.17.21
       '@jeromefitz/eslint-config': 1.1.4_bi2kohzqnxavgozw3csgny5hju
-      '@jeromefitz/git-cz': 14.4.1_al7gb7mkou3ck5gs5scjwydyiu
+      '@jeromefitz/git-cz': 14.4.1_gdtyb67v4rdr5hd2vfbzfhovwm
       '@jeromefitz/lint-staged': 1.1.2
       '@jeromefitz/prettier-config': 1.1.1
       '@jeromefitz/release-notes-generator': 1.2.4_lodash@4.17.21
-      '@jeromefitz/semantic': 9.2.3_uugwvjforpqf2vibwhgnm3zllm
+      '@jeromefitz/semantic': 9.2.3_quvolgarm6wkxwbhoqbd4m4yma
       '@jeromefitz/tsconfig': 1.1.1
       '@types/is-ci': 3.0.0
       '@types/jest': 28.1.7
@@ -768,15 +768,15 @@ packages:
     engines: {node: '>=8'}
     dev: false
 
-  /@jeromefitz/conventional-gitmoji/3.3.3_lodash@4.17.21:
-    resolution: {integrity: sha512-u7n7BgflivpB4XeuM6UZQYndvoxCj0uoAnKbrvXR8qN36lzqBP44svfa+vRbPvYQPrx3w1pGqZCeYav1jwAyDQ==}
+  /@jeromefitz/conventional-gitmoji/3.3.4_lodash@4.17.21:
+    resolution: {integrity: sha512-oYfYyPRoFbEmrqngv4pz0bp3Y/UX07u30MN22JJAfqlQnTEfzpNGFMXXF/lhGvqUU67SkFpYPNVuMSqfEqOkeQ==}
     engines: {node: '>=16'}
     peerDependencies:
       lodash: ^4.17.21
     dependencies:
       grapheme-splitter: 1.0.4
       lodash: 4.17.21
-      title: 3.5.2
+      title: 3.5.3
     dev: false
 
   /@jeromefitz/design-system/4.0.0_hzqpspqv7hg2dgsi27ebydusw4:
@@ -1074,9 +1074,8 @@ packages:
       - jest
       - supports-color
       - typescript
-    dev: false
 
-  /@jeromefitz/git-cz/14.4.1_al7gb7mkou3ck5gs5scjwydyiu:
+  /@jeromefitz/git-cz/14.4.1_gdtyb67v4rdr5hd2vfbzfhovwm:
     resolution: {integrity: sha512-oNZ0GM2Bh7NrV32Ylkau9YDviMfA9mEP6DUKpQA4V00k9K2m8bhPYXS1Q6RkqUJdLgVQxAA7ZODr101MR88pCg==}
     engines: {node: '>=16'}
     hasBin: true
@@ -1084,7 +1083,7 @@ packages:
       '@jeromefitz/conventional-gitmoji': ^3.2.0
       lodash: ^4.17.21
     dependencies:
-      '@jeromefitz/conventional-gitmoji': 3.3.3_lodash@4.17.21
+      '@jeromefitz/conventional-gitmoji': 3.3.4_lodash@4.17.21
       colorize-template: 1.0.0
       fast-json-stable-stringify: 2.1.0
       fuzzy: 0.1.3
@@ -1160,13 +1159,13 @@ packages:
       - encoding
     dev: false
 
-  /@jeromefitz/semantic/9.2.3_uugwvjforpqf2vibwhgnm3zllm:
+  /@jeromefitz/semantic/9.2.3_quvolgarm6wkxwbhoqbd4m4yma:
     resolution: {integrity: sha512-zrSWmJLvZ/I7Nb1Rg+z10Ron4FVm0Zd21iU+DgxLh7EaAQ9wfA4qBSUyjagEr8p/X2mzEZjoXv1Hcah0Qh41Jg==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     peerDependencies:
       '@jeromefitz/conventional-gitmoji': ^3.3.1
     dependencies:
-      '@jeromefitz/conventional-gitmoji': 3.3.3_lodash@4.17.21
+      '@jeromefitz/conventional-gitmoji': 3.3.4_lodash@4.17.21
       '@semantic-release/commit-analyzer': 9.0.2_semantic-release@19.0.3
       '@semantic-release/exec': 6.0.3_semantic-release@19.0.3
       '@semantic-release/git': 10.0.1_semantic-release@19.0.3
@@ -3492,7 +3491,6 @@ packages:
       typescript: 4.7.4
     transitivePeerDependencies:
       - supports-color
-    dev: false
 
   /@typescript-eslint/parser/5.30.0_eslint@8.18.0:
     resolution: {integrity: sha512-2oYYUws5o2liX6SrFQ5RB88+PuRymaM2EU02/9Ppoyu70vllPnHVO7ioxDdq/ypXHA277R04SVjxvwI8HmZpzA==}
@@ -3511,6 +3509,7 @@ packages:
       eslint: 8.18.0
     transitivePeerDependencies:
       - supports-color
+    dev: true
 
   /@typescript-eslint/scope-manager/5.30.0:
     resolution: {integrity: sha512-3TZxvlQcK5fhTBw5solQucWSJvonXf5yua5nx8OqK94hxdrT7/6W3/CS42MLd/f1BmlmmbGEgQcTHHCktUX5bQ==}
@@ -3624,7 +3623,6 @@ packages:
       typescript: 4.7.4
     transitivePeerDependencies:
       - supports-color
-    dev: false
 
   /@typescript-eslint/utils/5.30.0_b5e7v2qnwxfo6hmiq56u52mz3e:
     resolution: {integrity: sha512-0bIgOgZflLKIcZsWvfklsaQTM3ZUbmtH0rJ1hKyV3raoUYyeZwcjQ8ZUJTzS7KnhNcsVT1Rxs7zeeMHEhGlltw==}
@@ -5443,7 +5441,7 @@ packages:
       eslint-import-resolver-webpack:
         optional: true
     dependencies:
-      '@typescript-eslint/parser': 5.30.0_eslint@8.18.0
+      '@typescript-eslint/parser': 5.30.0_b5e7v2qnwxfo6hmiq56u52mz3e
       debug: 3.2.7
       eslint-import-resolver-node: 0.3.6
       find-up: 2.1.0
@@ -5460,7 +5458,7 @@ packages:
       '@typescript-eslint/parser':
         optional: true
     dependencies:
-      '@typescript-eslint/parser': 5.30.0_eslint@8.18.0
+      '@typescript-eslint/parser': 5.30.0_b5e7v2qnwxfo6hmiq56u52mz3e
       array-includes: 3.1.5
       array.prototype.flat: 1.3.0
       debug: 2.6.9
@@ -5490,7 +5488,7 @@ packages:
       '@typescript-eslint/parser':
         optional: true
     dependencies:
-      '@typescript-eslint/parser': 5.30.0_eslint@8.18.0
+      '@typescript-eslint/parser': 5.30.0_b5e7v2qnwxfo6hmiq56u52mz3e
       array-includes: 3.1.5
       array.prototype.flat: 1.3.0
       debug: 2.6.9
@@ -9874,6 +9872,16 @@ packages:
       titleize: 1.0.0
     dev: false
 
+  /title/3.5.3:
+    resolution: {integrity: sha512-20JyowYglSEeCvZv3EZ0nZ046vLarO37prvV0mbtQV7C8DJPGgN967r8SJkqd3XK3K3lD3/Iyfp3avjfil8Q2Q==}
+    hasBin: true
+    dependencies:
+      arg: 1.0.0
+      chalk: 2.3.0
+      clipboardy: 1.2.2
+      titleize: 1.0.0
+    dev: false
+
   /titleize/1.0.0:
     resolution: {integrity: sha512-TARUb7z1pGvlLxgPk++7wJ6aycXF3GJ0sNSBTAsTuJrQG5QuZlkUQP+zl+nbjAh4gMX9yDw9ZYklMd7vAfJKEw==}
     engines: {node: '>=0.10.0'}
@@ -10150,7 +10158,6 @@ packages:
     dependencies:
       tslib: 1.14.1
       typescript: 4.7.4
-    dev: false
 
   /tunnel-agent/0.6.0:
     resolution: {integrity: sha512-McnNiV1l8RYeY8tBgEpuodCC1mLUdbSN+CYBL7kJsJNInOP8UjDDEwdk6Mw60vdLLrr5NHKZhMAOSrR2NZuQ+w==}
