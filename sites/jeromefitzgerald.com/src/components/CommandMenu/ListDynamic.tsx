@@ -16,10 +16,6 @@ function ListDynamic({ icon, routeType }) {
     void router.push(url)
   }
 
-  // const handleRouteExternal = (url) => {
-  //   void window.open(url)
-  // }
-
   const commandMenuOpenSet = useStore.use.commandMenuOpenSet()
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment

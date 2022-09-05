@@ -250,6 +250,16 @@ const navigation: INavigation = {
         type: URL_TYPE.INTERNAL,
         description: 'How this site was made',
       },
+      // {
+      //   id: 'events',
+      //   title: 'Events',
+      //   url: '/events',
+      //   icon: <Icon.Calendar />,
+      //   // subtitle: '‎',
+      //   subtitle: null,
+      //   type: URL_TYPE.INTERNAL,
+      //   description: 'How this site was made',
+      // },
       {
         id: 'homepage',
         title: 'Homepage',
