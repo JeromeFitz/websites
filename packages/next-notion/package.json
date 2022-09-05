@@ -39,7 +39,7 @@
     "github-slugger": "1.4.0",
     "ms": "3.0.0-canary.1",
     "podcast": "2.0.0",
-    "uuid": "8.3.2",
+    "uuid": "9.0.0",
     "valid-url": "1.0.9"
   },
   "devDependencies": {
