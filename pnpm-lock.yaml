@@ -88,7 +88,7 @@ importers:
       date-fns-tz: 1.3.7
       fast-json-stable-stringify: 2.1.0
       github-slugger: 1.4.0
-      ioredis: 5.2.2
+      ioredis: 5.2.3
       ms: 3.0.0-canary.1
       next: 12.2.5
       plaiceholder: 2.5.0
@@ -116,7 +116,7 @@ importers:
       '@types/valid-url': 1.0.3
       date-fns: 2.29.2
       date-fns-tz: 1.3.7_date-fns@2.29.2
-      ioredis: 5.2.2
+      ioredis: 5.2.3
       next: 12.2.5_biqbaboplfbrettd7655fr4n2y
       plaiceholder: 2.5.0
       react: 18.2.0
@@ -197,7 +197,7 @@ importers:
       framer-motion: 7.1.2
       github-slugger: 1.4.0
       immer: 9.0.15
-      ioredis: 5.2.2
+      ioredis: 5.2.3
       ms: 3.0.0-canary.1
       next: 12.2.5
       next-compose-plugins: 2.2.1
@@ -247,7 +247,7 @@ importers:
       framer-motion: 7.1.2_biqbaboplfbrettd7655fr4n2y
       github-slugger: 1.4.0
       immer: 9.0.15
-      ioredis: 5.2.2
+      ioredis: 5.2.3
       ms: 3.0.0-canary.1
       next: 12.2.5_biqbaboplfbrettd7655fr4n2y
       next-compose-plugins: 2.2.1
@@ -1074,6 +1074,7 @@ packages:
       - jest
       - supports-color
       - typescript
+    dev: false
 
   /@jeromefitz/git-cz/14.4.1_gdtyb67v4rdr5hd2vfbzfhovwm:
     resolution: {integrity: sha512-oNZ0GM2Bh7NrV32Ylkau9YDviMfA9mEP6DUKpQA4V00k9K2m8bhPYXS1Q6RkqUJdLgVQxAA7ZODr101MR88pCg==}
@@ -3455,6 +3456,7 @@ packages:
       typescript: 4.7.4
     transitivePeerDependencies:
       - supports-color
+    dev: false
 
   /@typescript-eslint/parser/5.30.0_eslint@8.18.0:
     resolution: {integrity: sha512-2oYYUws5o2liX6SrFQ5RB88+PuRymaM2EU02/9Ppoyu70vllPnHVO7ioxDdq/ypXHA277R04SVjxvwI8HmZpzA==}
@@ -3473,7 +3475,6 @@ packages:
       eslint: 8.18.0
     transitivePeerDependencies:
       - supports-color
-    dev: true
 
   /@typescript-eslint/scope-manager/5.30.0:
     resolution: {integrity: sha512-3TZxvlQcK5fhTBw5solQucWSJvonXf5yua5nx8OqK94hxdrT7/6W3/CS42MLd/f1BmlmmbGEgQcTHHCktUX5bQ==}
@@ -3587,6 +3588,7 @@ packages:
       typescript: 4.7.4
     transitivePeerDependencies:
       - supports-color
+    dev: false
 
   /@typescript-eslint/utils/5.30.0_b5e7v2qnwxfo6hmiq56u52mz3e:
     resolution: {integrity: sha512-0bIgOgZflLKIcZsWvfklsaQTM3ZUbmtH0rJ1hKyV3raoUYyeZwcjQ8ZUJTzS7KnhNcsVT1Rxs7zeeMHEhGlltw==}
@@ -4565,13 +4567,6 @@ packages:
       whatwg-url: 11.0.0
     dev: false
 
-  /date-fns-tz/1.3.6_date-fns@2.29.2:
-    resolution: {integrity: sha512-C8q7mErvG4INw1ZwAFmPlGjEo5Sv4udjKVbTc03zpP9cu6cp5AemFzKhz0V68LGcWEtX5mJudzzg3G04emIxLA==}
-    peerDependencies:
-      date-fns: '>=2.0.0'
-    dependencies:
-      date-fns: 2.29.2
-
   /date-fns-tz/1.3.7_date-fns@2.29.2:
     resolution: {integrity: sha512-1t1b8zyJo+UI8aR+g3iqr5fkUHWpd58VBx8J/ZSQ+w7YrGlw80Ag4sA86qkfCXRBLmMc4I2US+aPMd4uKvwj5g==}
     peerDependencies:
@@ -5416,7 +5411,7 @@ packages:
       eslint-import-resolver-webpack:
         optional: true
     dependencies:
-      '@typescript-eslint/parser': 5.30.0_b5e7v2qnwxfo6hmiq56u52mz3e
+      '@typescript-eslint/parser': 5.30.0_eslint@8.18.0
       debug: 3.2.7
       eslint-import-resolver-node: 0.3.6
       find-up: 2.1.0
@@ -5433,7 +5428,7 @@ packages:
       '@typescript-eslint/parser':
         optional: true
     dependencies:
-      '@typescript-eslint/parser': 5.30.0_b5e7v2qnwxfo6hmiq56u52mz3e
+      '@typescript-eslint/parser': 5.30.0_eslint@8.18.0
       array-includes: 3.1.5
       array.prototype.flat: 1.3.0
       debug: 2.6.9
@@ -5463,7 +5458,7 @@ packages:
       '@typescript-eslint/parser':
         optional: true
     dependencies:
-      '@typescript-eslint/parser': 5.30.0_b5e7v2qnwxfo6hmiq56u52mz3e
+      '@typescript-eslint/parser': 5.30.0_eslint@8.18.0
       array-includes: 3.1.5
       array.prototype.flat: 1.3.0
       debug: 2.6.9
@@ -6546,8 +6541,8 @@ packages:
     dependencies:
       loose-envify: 1.4.0
 
-  /ioredis/5.2.2:
-    resolution: {integrity: sha512-wryKc1ur8PcCmNwfcGkw5evouzpbDXxxkMkzPK8wl4xQfQf7lHe11Jotell5ikMVAtikXJEu/OJVaoV51BggRQ==}
+  /ioredis/5.2.3:
+    resolution: {integrity: sha512-gQNcMF23/NpvjCaa1b5YycUyQJ9rBNH2xP94LWinNpodMWVUPP5Ai/xXANn/SM7gfIvI62B5CCvZxhg5pOgyMw==}
     engines: {node: '>=12.22.0'}
     dependencies:
       '@ioredis/commands': 1.1.1
@@ -10190,6 +10185,7 @@ packages:
     dependencies:
       tslib: 1.14.1
       typescript: 4.7.4
+    dev: false
 
   /tunnel-agent/0.6.0:
     resolution: {integrity: sha512-McnNiV1l8RYeY8tBgEpuodCC1mLUdbSN+CYBL7kJsJNInOP8UjDDEwdk6Mw60vdLLrr5NHKZhMAOSrR2NZuQ+w==}
