@@ -17,7 +17,7 @@ importers:
       '@jeromefitz/semantic': 9.2.3
       '@jeromefitz/tsconfig': 1.1.1
       '@types/is-ci': 3.0.0
-      '@types/jest': 28.1.7
+      '@types/jest': 28.1.8
       '@types/lodash': 4.14.184
       '@types/node': 16.11.7
       '@types/react': 18.0.17
@@ -50,7 +50,7 @@ importers:
       '@jeromefitz/semantic': 9.2.3_quvolgarm6wkxwbhoqbd4m4yma
       '@jeromefitz/tsconfig': 1.1.1
       '@types/is-ci': 3.0.0
-      '@types/jest': 28.1.7
+      '@types/jest': 28.1.8
       '@types/lodash': 4.14.184
       '@types/node': 16.11.7
       '@types/react': 18.0.17
@@ -3227,8 +3227,8 @@ packages:
       '@types/istanbul-lib-report': 3.0.0
     dev: false
 
-  /@types/jest/28.1.7:
-    resolution: {integrity: sha512-acDN4VHD40V24tgu0iC44jchXavRNVFXQ/E6Z5XNsswgoSO/4NgsXoEYmPUGookKldlZQyIpmrEXsHI9cA3ZTA==}
+  /@types/jest/28.1.8:
+    resolution: {integrity: sha512-8TJkV++s7B6XqnDrzR1m/TT0A0h948Pnl/097veySPN67VRAgQ4gZ7n2KfJo2rVq6njQjdxU3GCCyDvAeuHoiw==}
     dependencies:
       expect: 28.1.3
       pretty-format: 28.1.3
