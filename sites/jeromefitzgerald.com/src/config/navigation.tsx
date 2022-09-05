@@ -4,9 +4,19 @@
  * Preferably this would come from NOTION or generated during the build.
  */
 import { Icon } from '@jeromefitz/design-system'
-import * as React from 'react'
 
-const Priority: {
+import type { INavigation, IURL_TYPE } from './navigation.types'
+
+const URL_TYPE: IURL_TYPE = {
+  EXTERNAL: 'url.external',
+  INTERNAL: 'url.internal',
+  AUDIO: 'audio',
+  THEME: 'theme',
+  SETTINGS: 'settings',
+  SOCIAL: 'social',
+}
+
+const PRIORITY: {
   HIGH: number
   NORMAL: number
   LOW: number
@@ -16,63 +26,17 @@ const Priority: {
   LOW: -1,
 }
 
-interface INavigationItem {
-  icon?: React.ReactElement
-  // @todo
-  icons?: any
-  iconKbarOverride?: React.ReactElement
-  id?: string
-  // dropdown
-  rightSlot?: string | React.ReactElement
-  rightSlotExtended?: string | React.ReactElement
-  separator?: boolean
-  // kbar
-  keywords?: string
-  shortcut?: string[]
-  subtitle?: string
-  // custom
-  title: string
-  titleExtended?: string
-  url?: string
-  type: 'url.internal' | 'url.external' | 'audio' | 'theme'
-  description?: string
-  priority?: any
-}
-
-interface INavigation {
-  [key: string]: {
-    active: boolean
-    description?: string
-    id: string
-    icon?: React.ReactElement
-    // @todo
-    icons?: any
-    iconKbarOverride?: React.ReactElement
-    order: number
-    title: string
-    url?: string
-    settings?: any
-    // kbar
-    keywords?: string
-    shortcut?: string[]
-    subtitle?: string
-    //
-    items?: INavigationItem[]
-    type: 'url.internal' | 'url.external' | 'audio' | 'theme' | 'settings' | 'social'
-    priority?: any
-  }
-}
-
 const navigation: INavigation = {
   events: {
     active: true,
+    hasDynamicSubItems: false,
     id: 'events',
     icon: <Icon.Calendar />,
-    priority: Priority.HIGH,
+    priority: PRIORITY.HIGH,
     order: 0,
     // title: 'Next Event',
     title: 'Menu',
-    type: 'url.internal',
+    type: URL_TYPE.INTERNAL,
     url: '/events',
     // subtitle: '‎',
     subtitle: null,
@@ -109,18 +73,19 @@ const navigation: INavigation = {
         iconKbarOverride: <Icon.Ticket />,
         keywords: 'Events',
         subtitle: 'Listing page for all Events',
-        type: 'url.internal',
+        type: URL_TYPE.INTERNAL,
       },
     ],
   },
   shows: {
     active: true,
+    hasDynamicSubItems: true,
     id: 'shows',
     icon: <Icon.Star />,
-    priority: Priority.NORMAL,
+    priority: PRIORITY.NORMAL,
     order: 10,
     title: 'Shows',
-    type: 'url.internal',
+    type: URL_TYPE.INTERNAL,
     url: '/shows',
     // subtitle: '‎',
     subtitle: null,
@@ -136,7 +101,7 @@ const navigation: INavigation = {
         icon: <Icon.Star />,
         subtitle: 'The Vomit Twinz',
         keywords: 'AOJ',
-        type: 'url.internal',
+        type: URL_TYPE.INTERNAL,
       },
       {
         id: 'jerome-and',
@@ -145,7 +110,7 @@ const navigation: INavigation = {
         icon: <Icon.Star />,
         subtitle: 'Special Guests Every Show!',
         keywords: 'And',
-        type: 'url.internal',
+        type: URL_TYPE.INTERNAL,
       },
       {
         id: 'jfle',
@@ -153,7 +118,7 @@ const navigation: INavigation = {
         url: '/shows/jfle',
         icon: <Icon.Star />,
         subtitle: 'kewl doodz doin kewl sketchez',
-        type: 'url.internal',
+        type: URL_TYPE.INTERNAL,
       },
       {
         id: 'justin-and-jerome-experience',
@@ -163,7 +128,7 @@ const navigation: INavigation = {
         icon: <Icon.Star />,
         subtitle: 'with Aaron Tarnow',
         keywords: 'JJE',
-        type: 'url.internal',
+        type: URL_TYPE.INTERNAL,
       },
       {
         id: 'the-playlist',
@@ -173,7 +138,7 @@ const navigation: INavigation = {
         icon: <Icon.Star />,
         subtitle: 'Special Musical Guests Every Show!',
         // keywords: 'TP',
-        type: 'url.internal',
+        type: URL_TYPE.INTERNAL,
       },
       {
         id: 'view-all-shows',
@@ -182,19 +147,20 @@ const navigation: INavigation = {
         icon: <Icon.ListBullet />,
         subtitle: 'Go to listing pages for Shows',
         keywords: 'view all shows',
-        type: 'url.internal',
+        type: URL_TYPE.INTERNAL,
       },
     ],
   },
   podcasts: {
     active: true,
+    hasDynamicSubItems: true,
     id: 'podcasts',
     icon: <Icon.Microphone />,
     iconKbarOverride: <Icon.Microphone />,
-    priority: Priority.NORMAL,
+    priority: PRIORITY.NORMAL,
     order: 20,
     title: 'Podcasts',
-    type: 'url.internal',
+    type: URL_TYPE.INTERNAL,
     url: '/podcasts',
     // subtitle: '‎',
     subtitle: null,
@@ -212,7 +178,7 @@ const navigation: INavigation = {
         separator: false,
         // subtitle: '‎',
         subtitle: null,
-        type: 'url.internal',
+        type: URL_TYPE.INTERNAL,
         description: 'testing',
       },
       {
@@ -224,7 +190,7 @@ const navigation: INavigation = {
         separator: true,
         // subtitle: '‎',
         subtitle: null,
-        type: 'url.internal',
+        type: URL_TYPE.INTERNAL,
         description: 'testing',
       },
       {
@@ -232,18 +198,19 @@ const navigation: INavigation = {
         url: '/podcasts',
         icon: <Icon.ListBullet />,
         subtitle: 'Listing page for all Podcasts',
-        type: 'url.internal',
+        type: URL_TYPE.INTERNAL,
         description: 'testing',
       },
     ],
   },
   pages: {
     active: true,
+    hasDynamicSubItems: false,
     id: 'pages',
-    priority: Priority.NORMAL,
+    priority: PRIORITY.NORMAL,
     order: 30,
     title: 'Pages',
-    type: 'url.internal',
+    type: URL_TYPE.INTERNAL,
     url: '/',
     // subtitle: '‎',
     subtitle: null,
@@ -259,7 +226,7 @@ const navigation: INavigation = {
         icon: <Icon.IdCard />,
         // subtitle: '‎',
         subtitle: null,
-        type: 'url.internal',
+        type: URL_TYPE.INTERNAL,
         description: 'About ol’ Jerome',
       },
       {
@@ -270,7 +237,7 @@ const navigation: INavigation = {
         iconKbarOverride: <Icon.BookOpen />,
         // subtitle: '‎',
         subtitle: null,
-        type: 'url.internal',
+        type: URL_TYPE.INTERNAL,
         description: `Current Reading and Recs`,
       },
       {
@@ -280,9 +247,19 @@ const navigation: INavigation = {
         icon: <Icon.InfoCircled />,
         // subtitle: '‎',
         subtitle: null,
-        type: 'url.internal',
+        type: URL_TYPE.INTERNAL,
         description: 'How this site was made',
       },
+      // {
+      //   id: 'events',
+      //   title: 'Events',
+      //   url: '/events',
+      //   icon: <Icon.Calendar />,
+      //   // subtitle: '‎',
+      //   subtitle: null,
+      //   type: URL_TYPE.INTERNAL,
+      //   description: 'How this site was made',
+      // },
       {
         id: 'homepage',
         title: 'Homepage',
@@ -291,7 +268,7 @@ const navigation: INavigation = {
         // subtitle: '‎',
         subtitle: null,
         keywords: 'home index',
-        type: 'url.internal',
+        type: URL_TYPE.INTERNAL,
         description: 'Go back to homepage',
       },
       {
@@ -302,7 +279,7 @@ const navigation: INavigation = {
         iconKbarOverride: <Icon.MusicNote />,
         // subtitle: '‎',
         subtitle: null,
-        type: 'url.internal',
+        type: URL_TYPE.INTERNAL,
         description: 'Current Tunes',
       },
       {
@@ -313,19 +290,31 @@ const navigation: INavigation = {
         // subtitle: '‎',
         subtitle: null,
         keywords: 'home podcasts',
-        type: 'url.internal',
+        type: URL_TYPE.INTERNAL,
+        description: 'Knockoffs, Jer & Ky & Guest',
+      },
+      {
+        id: 'shows',
+        title: 'Shows',
+        url: '/shows',
+        icon: <Icon.Star />,
+        // subtitle: '‎',
+        subtitle: null,
+        keywords: 'home shows',
+        type: URL_TYPE.INTERNAL,
         description: 'Knockoffs, Jer & Ky & Guest',
       },
     ],
   },
   social: {
     active: true,
+    hasDynamicSubItems: false,
     id: 'social',
     icon: <Icon.SocialShare />,
-    priority: Priority.LOW,
+    priority: PRIORITY.LOW,
     order: 40,
     title: 'Social',
-    type: 'social',
+    type: URL_TYPE.SOCIAL,
     // subtitle: '‎',
     subtitle: null,
     settings: {
@@ -340,7 +329,7 @@ const navigation: INavigation = {
         icon: <Icon.EnvelopeOpen />,
         subtitle: 'j [at] jeromefitzgerald.com',
         keywords: 'social email mail',
-        type: 'url.external',
+        type: URL_TYPE.EXTERNAL,
       },
       {
         id: 'github',
@@ -350,7 +339,7 @@ const navigation: INavigation = {
         rightSlot: <Icon.ExternalLink />,
         subtitle: '@JeromeFitz',
         keywords: 'social github gh git',
-        type: 'url.external',
+        type: URL_TYPE.EXTERNAL,
       },
       {
         id: 'instagarm',
@@ -360,7 +349,7 @@ const navigation: INavigation = {
         rightSlot: <Icon.ExternalLink />,
         subtitle: '@JeromeFitz',
         keywords: 'social instagram ig',
-        type: 'url.external',
+        type: URL_TYPE.EXTERNAL,
       },
       {
         id: 'twitter',
@@ -370,7 +359,7 @@ const navigation: INavigation = {
         rightSlot: <Icon.ExternalLink />,
         subtitle: '@JeromeFitz',
         keywords: 'social twitter',
-        type: 'url.external',
+        type: URL_TYPE.EXTERNAL,
       },
       {
         id: 'linkedin',
@@ -380,18 +369,19 @@ const navigation: INavigation = {
         rightSlot: <Icon.ExternalLink />,
         subtitle: '@jeromefitzgerald',
         keywords: 'social linkedin',
-        type: 'url.external',
+        type: URL_TYPE.EXTERNAL,
       },
     ],
   },
   settings: {
     active: true,
+    hasDynamicSubItems: false,
     id: 'settings',
     icon: <Icon.Gear />,
-    priority: Priority.LOW,
+    priority: PRIORITY.LOW,
     order: 50,
     title: 'Settings',
-    type: 'settings',
+    type: URL_TYPE.SETTINGS,
     // subtitle: '‎',
     subtitle: null,
     settings: {
@@ -413,7 +403,7 @@ const navigation: INavigation = {
         shortcut: ['t', 'a'],
         // subtitle: '‎',
         subtitle: null,
-        type: 'audio',
+        type: URL_TYPE.AUDIO,
       },
       {
         id: 'settings-theme',
@@ -429,14 +419,10 @@ const navigation: INavigation = {
         shortcut: ['t', 't'],
         // subtitle: '‎',
         subtitle: null,
-        type: 'theme',
+        type: URL_TYPE.THEME,
       },
     ],
   },
 }
 
-export { navigation }
-
-// @todo(deprecated) remove
-const navigationHeader: any = []
-export { navigationHeader }
+export { navigation, URL_TYPE }
