@@ -95,7 +95,7 @@ importers:
       podcast: 2.0.0
       react: 18.2.0
       react-dom: 18.2.0
-      uuid: 8.3.2
+      uuid: 9.0.0
       valid-url: 1.0.9
     dependencies:
       '@jeromefitz/utils': 2.2.1
@@ -103,7 +103,7 @@ importers:
       github-slugger: 1.4.0
       ms: 3.0.0-canary.1
       podcast: 2.0.0
-      uuid: 8.3.2
+      uuid: 9.0.0
       valid-url: 1.0.9
     devDependencies:
       '@jeromefitz/design-system': 4.0.0_yjvfkwpefh5d7dzngtleqmz54q
@@ -222,7 +222,7 @@ importers:
       title: 3.5.3
       ts-node: 10.9.1
       use-sound: 4.0.1
-      uuid: 8.3.2
+      uuid: 9.0.0
       zustand: 4.1.1
     dependencies:
       '@heroicons/react': 1.0.6_react@18.2.0
@@ -270,7 +270,7 @@ importers:
       title: 3.5.3
       ts-node: 10.9.1
       use-sound: 4.0.1_react@18.2.0
-      uuid: 8.3.2
+      uuid: 9.0.0
       zustand: 4.1.1_immer@9.0.15+react@18.2.0
     devDependencies:
       '@jeromefitz/eslint-config': 1.1.4
@@ -10423,8 +10423,8 @@ packages:
   /util-deprecate/1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
 
-  /uuid/8.3.2:
-    resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
+  /uuid/9.0.0:
+    resolution: {integrity: sha512-MXcSTerfPa4uqyzStbRoTgt5XIe3x5+42+q1sDuy3R5MDk66URdLMOZe5aPX/SQd+kuYAh0FdP/pO28IkQyTeg==}
     hasBin: true
     dev: false
 
