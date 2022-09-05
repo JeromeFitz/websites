@@ -28,7 +28,7 @@ import buildInfo from '~config/buildInfo.json'
 import { pluralRules } from '~config/index'
 import { globalStyles as globalStylesLocal } from '~styles/globalStyles'
 
-const CommandMenu = dynamic(() => import('~components/CommandMenu'), {
+const CommandMenu = dynamic(() => import('~components/Menu/CommandMenu'), {
   ssr: true,
 })
 const Header = dynamic(() => import('~components/Header'), {
@@ -88,6 +88,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
             />
           </Head>
           <Providers>
+            <CommandMenu />
             <NProgress />
             <Header />
             <Container
@@ -101,7 +102,6 @@ function MyApp({ Component, pageProps, router }: AppProps) {
               </Section>
             </Container>
             <Footer />
-            <CommandMenu />
           </Providers>
         </SWRConfig>
       </ErrorBoundary>

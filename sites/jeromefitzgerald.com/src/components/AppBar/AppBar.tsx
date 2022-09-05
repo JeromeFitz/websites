@@ -16,12 +16,9 @@ import * as React from 'react'
 import { useEffectOnce } from 'react-use'
 import { useSound } from 'use-sound'
 
-import { CommandKButton } from '~components/CommandKButton'
-import { NavigationMenu } from '~components/NavigationMenu'
-import { navigation } from '~config/navigation'
+import { CommandMenuButton, MenuMobile, NavigationMenu } from '~components/Menu'
+import { navigation, URL_TYPE } from '~config/navigation'
 import useStore from '~store/useStore'
-
-import { MenuMobile } from './MenuMobile'
 
 const AppBarImpl = ({}) => {
   /**
@@ -88,16 +85,16 @@ const AppBarImpl = ({}) => {
     // console.dir(item)
     // void handleToast({ title: item?.titleExtended ?? item?.title })
     // @todo turn into function return
-    if (item?.type === 'url.internal' && !!item.url) {
+    if (item?.type === URL_TYPE.INTERNAL && !!item.url) {
       void handleRouteInternal(item.url)
     }
-    if (item?.type === 'url.external' && !!item.url) {
+    if (item?.type === URL_TYPE.EXTERNAL && !!item.url) {
       void handleRouteExternal(item.url)
     }
-    if (item?.type === 'audio') {
+    if (item?.type === URL_TYPE.AUDIO) {
       void handleToggleAudio()
     }
-    if (item?.type === 'theme') {
+    if (item?.type === URL_TYPE.THEME) {
       void handleToggleTheme()
     }
     // event.preventDefault()
@@ -273,7 +270,7 @@ const AppBarImpl = ({}) => {
               gap="3"
             >
               <Flex>
-                <CommandKButton />
+                <CommandMenuButton />
               </Flex>
               <Flex>
                 {/* @todo(radix-ui) types */}

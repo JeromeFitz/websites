@@ -12,7 +12,7 @@ import React from 'react'
 
 import useStore from '~store/useStore'
 
-function CommandKButton() {
+function CommandMenuButton() {
   const os = useOs()
 
   const content = 'Command Menu'
@@ -54,4 +54,4 @@ function CommandKButton() {
   )
 }
 
-export { CommandKButton }
+export { CommandMenuButton }
