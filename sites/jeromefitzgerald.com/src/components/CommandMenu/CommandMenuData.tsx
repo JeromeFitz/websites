@@ -1,6 +1,8 @@
 import {
+  darkTheme,
+  //
   Box,
-  Command,
+  Command as CommandMenu,
   CommandInput,
   CommandTopShine,
   CommandBadge,
@@ -15,20 +17,26 @@ import {
   Flex,
   Icon,
 } from '@jeromefitz/design-system'
-import { useCommandState } from 'cmdk'
+import { useCommandState, Command } from 'cmdk'
 // import _filter from 'lodash/filter'
+import _map from 'lodash/map'
 // import _merge from 'lodash/merge'
 // import { fetcher, fetcherMulti } from 'next-notion/src/lib/fetcher'
 import { fetcher } from 'next-notion/src/lib/fetcher'
 // import { getNextPageStatus } from 'next-notion/src/utils'
+import { useTheme } from 'next-themes'
 import { useRouter } from 'next/router'
 import React from 'react'
+import { useEffectOnce } from 'react-use'
 import useSWRImmutable from 'swr/immutable'
 import _title from 'title'
+import { useSound } from 'use-sound'
 
+import { navigation } from '~config/navigation'
+import { useThemeToggle } from '~hooks/useThemeToggle'
 import useStore from '~store/useStore'
 
-import { ListDynamic } from './ListDynamic'
+// import { ListDynamic } from './ListDynamic'
 import { Settings } from './Settings'
 // import { SubItem } from './SubItem'
 
@@ -135,6 +143,7 @@ const SubItemTest = (props) => {
   return <CommandItem {...props} />
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const ListSubItems = React.memo((props: any) => {
   const { commandMenuOpenSet, handleRouteInternal, icon, items, page, routeType } =
     props
@@ -169,11 +178,48 @@ const CommandMenuData = () => {
   const ref = React.useRef<HTMLDivElement | null>(null)
   const [inputValue, setInputValue] = React.useState('')
 
+  const audio = useStore.use.audio()
+  const audioToggle = useStore.use.audioToggle()
+  const sounds = useStore.use.sounds()
+  const volume = useStore.use.volume()
+
+  const [playBleep] = useSound(sounds.bleep, {
+    soundEnabled: audio,
+    volume,
+  })
+  const [playDisableSound] = useSound(sounds.disableSound, {
+    soundEnabled: true,
+    volume,
+  })
+  const [playEnableSound] = useSound(sounds.enableSound, {
+    soundEnabled: true,
+    volume,
+  })
+  const { resolvedTheme: theme, setTheme } = useTheme()
   const router = useRouter()
+
   const handleRouteInternal = (url) => {
     void router.push(url)
+    void playBleep()
   }
+  const handleRouteExternal = (url) => {
+    void window.open(url)
+    void playBleep()
+  }
+  const handleThemeToggle = useThemeToggle({ darkTheme, setTheme, theme })
+  const handleAudioToggle = React.useCallback(() => {
+    audio ? playDisableSound() : playEnableSound()
+    audioToggle()
+  }, [audio, audioToggle, playDisableSound, playEnableSound])
+
   const commandMenuOpenSet = useStore.use.commandMenuOpenSet()
+
+  const [navigationNonMutated, navigationNonMutatedSet] = React.useState(null)
+  const [loading, setLoading] = React.useState(true)
+  useEffectOnce(() => {
+    navigationNonMutatedSet(navigation)
+    setLoading(false)
+  })
 
   const [pages, setPages] = React.useState<string[]>(['home'])
   const activePage = pages[pages.length - 1]
@@ -200,6 +246,7 @@ const CommandMenuData = () => {
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const searchProps = {
     searchShows: () => setPages([...pages, 'shows']),
     searchPodcasts: () => setPages([...pages, 'podcasts']),
@@ -217,9 +264,13 @@ const CommandMenuData = () => {
     {}
   )
   const podcasts = _podcasts?.items?.results
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const items = React.useMemo(() => {
     return { podcasts, shows }
   }, [podcasts, shows])
+
+  // console.dir(`navigationNonMutated: ${loading}`)
+  // console.dir(navigationNonMutated)
 
   return (
     <Box
@@ -236,7 +287,7 @@ const CommandMenuData = () => {
       }}
       cmdk-wrapper=""
     >
-      <Command
+      <CommandMenu
         ref={ref}
         onKeyDown={(e: React.KeyboardEvent) => {
           if (e.key === 'Enter') {
@@ -261,7 +312,7 @@ const CommandMenuData = () => {
         }}
       >
         <CommandTopShine cmdk-top-shine="" />
-        <div>
+        <Box as="div" cmdk-badge-container="">
           {pages.map((p) => {
             /**
              * @hack(cmdk) tidy this up please
@@ -287,7 +338,7 @@ const CommandMenuData = () => {
               </CommandBadge>
             )
           })}
-        </div>
+        </Box>
         <CommandInput
           autoFocus
           placeholder="Type a command or search…"
@@ -296,13 +347,95 @@ const CommandMenuData = () => {
           }}
         />
         <CommandLoader cmdk-loader="" />
-        <CommandList css={{ maxHeight: '100%', '@bp1': { maxHeight: '400px' } }}>
-          {activePage === 'home' && (
-            <Home
-              // searchSettings={() => setPages([...pages, 'settings'])}
-              {...searchProps}
-            />
+        <CommandList
+          css={{
+            maxHeight: '100%',
+            '@bp1': {
+              maxHeight: '400px',
+            },
+          }}
+        >
+          {loading && (
+            <Command.Loading>
+              <CommandMenuItem>
+                <Flex gap="3">
+                  <Icon.Clock />
+                  One moment…
+                </Flex>
+              </CommandMenuItem>
+            </Command.Loading>
           )}
+          {_map(navigationNonMutated, (menuItem) => {
+            console.dir(`menuItem: ${menuItem?.id}`)
+            console.dir(menuItem)
+            const {
+              hasDynamicSubItems,
+              // icon,
+              id,
+              items,
+              // settings,
+              // title,
+              // type,
+              // url,
+            } = menuItem
+            return (
+              <React.Fragment key={`cmdk-menu--${id}`}>
+                {!hasDynamicSubItems && (
+                  <CommandGroup heading={menuItem?.title}>
+                    {!!items &&
+                      items?.map((item) => {
+                        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+                        const { icon, icons, id, title, type, url } = item
+                        // @todo(cmdk) yuck
+
+                        // @todo(cmdk) yuck turn into function return
+                        let iconNew = icon
+                        let handleItemLink
+                        if (item?.type === 'url.internal' && !!item.url) {
+                          handleItemLink = () => {
+                            void handleRouteInternal(item.url)
+                            void commandMenuOpenSet()
+                          }
+                        }
+                        if (item?.type === 'url.external' && !!item.url) {
+                          handleItemLink = () => {
+                            void handleRouteExternal(item.url)
+                            void commandMenuOpenSet()
+                          }
+                        }
+                        if (item?.type === 'audio') {
+                          // Type 'boolean' cannot be used as an index type.ts(2538)
+                          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                          // @ts-ignore
+                          iconNew = !!icons ? icons[audio] : icon
+                          handleItemLink = () => void handleAudioToggle()
+                        }
+                        if (item?.type === 'theme') {
+                          iconNew = !!icons ? icons[theme] : icon
+                          handleItemLink = () => void handleThemeToggle()
+                        }
+
+                        return (
+                          <CommandMenuItem
+                            key={id}
+                            value={id}
+                            onSelect={() => {
+                              handleItemLink()
+                            }}
+                          >
+                            <Flex gap="3">
+                              {iconNew}
+                              {title}
+                            </Flex>
+                          </CommandMenuItem>
+                        )
+                      })}
+                  </CommandGroup>
+                )}
+              </React.Fragment>
+            )
+          })}
+          {/* {activePage === 'home' && <Home {...searchProps} />}
           {activePage === 'shows' && (
             <ListDynamic icon={<Icon.Star />} routeType="shows" />
           )}
@@ -324,49 +457,16 @@ const CommandMenuData = () => {
             routeType="podcasts"
             handleRouteInternal={handleRouteInternal}
             commandMenuOpenSet={commandMenuOpenSet}
-          />
-          {/* {menuPages?.map((item) => {
-            const { icon, id, hasSubItems } = item
-            if (hasSubItems) {
-              console.dir(`hasSubItems: ${id} (${icon})`)
-              const _items = items[id]
-              console.dir(`_items`)
-              console.dir(_items)
-              _items?.map((_item) => {
-                const { id, properties } = _item
-                const { slug, title } = properties
-                console.dir(`_item`)
-                console.dir(_item)
-                return (
-                  <SubItemTest
-                    key={`cmd-sub-item-${id}`}
-                    onSelect={() => {
-                      handleRouteInternal(`/${id}/${slug}`)
-                      commandMenuOpenSet()
-                    }}
-                    page={activePage}
-                    value={title}
-                  >
-                    <Flex gap="3">
-                      {icon}
-                      {title}
-                    </Flex>
-                  </SubItemTest>
-                )
-              })
-              // return <SubItems key={`sub-item--${id}`} icon={icon} routeType={id} />
-            }
-            return null
-          })} */}
-
+          /> */}
           <CommandEmpty>No results found.</CommandEmpty>
         </CommandList>
-      </Command>
+      </CommandMenu>
     </Box>
   )
 }
 
 /* eslint-disable @typescript-eslint/ban-types */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Home = ({
   searchPodcasts,
   searchShows,

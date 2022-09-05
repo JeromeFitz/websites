@@ -19,12 +19,15 @@ import { CommandMenuButton } from '~components/CommandMenu'
 import { ToggleAudio, ToggleTheme } from '~components/Toggle'
 import useStore from '~store/useStore'
 
-import { slideIn, slideOut, StyledCloseButton, StyledLink } from './Menu.styles'
+import { slideIn, slideOut, StyledLink } from './Menu.styles'
 
 const MenuMobile = ({ handleSelect, navigationNonMutated }) => {
   /**
    * @custom to sheet
    */
+  // console.dir(`navigationNonMutated`)
+  // console.dir(navigationNonMutated)
+
   const { theme } = useTheme()
   const audio = useStore.use.audio()
 
@@ -114,8 +117,8 @@ const MenuMobile = ({ handleSelect, navigationNonMutated }) => {
             // textAlign: 'center',
             borderTopLeftRadius: '$4',
             borderTopRightRadius: '$4',
-            p: '$4',
-            pb: '$6',
+            p: '$5',
+            pb: '$7',
             height: 'auto',
 
             '&[data-state="open"]': {
@@ -132,16 +135,6 @@ const MenuMobile = ({ handleSelect, navigationNonMutated }) => {
           ref={refPassthrough}
           {...handlers}
         >
-          <StyledCloseButton asChild>
-            <Button
-              aria-label="Open Menu"
-              css={{ '&:hover': { cursor: 'pointer' } }}
-              size="1"
-              onClick={() => openSet(false)}
-            >
-              <Icon.Cross1 />
-            </Button>
-          </StyledCloseButton>
           {navigationNonMutated &&
             Object.keys(navigationNonMutated).map((k) => {
               const section = navigationNonMutated[k]
@@ -151,8 +144,11 @@ const MenuMobile = ({ handleSelect, navigationNonMutated }) => {
                 return null
               }
 
-              // console.dir(`> section`)
+              // console.dir(`> section (${section?.id})`)
               // console.dir(section)
+              // console.dir(`> settings`)
+              // console.dir(settings)
+              // console.dir(`---`)
 
               return (
                 <React.Fragment key={`sheet-${k}`}>
@@ -170,21 +166,21 @@ const MenuMobile = ({ handleSelect, navigationNonMutated }) => {
                           color: '$slate11',
                           fontSize: '0.75rem',
 
-                          padding: '$1',
-                          // pt: '$2',
+                          padding: '$2',
+                          // pt: '$4',
                           textTransform: 'uppercase',
                         }}
                       >
                         {section.title}
                       </Box>
                     ) : (
-                      <Box as="ul" css={{ m: 0, px: '$1' }}>
+                      <Box as="ul" css={{ m: 0, px: '$2' }}>
                         <Box
                           as="li"
                           css={{
                             listStyleType: 'none',
                             my: '0',
-                            py: '$1',
+                            py: '$2',
                           }}
                         >
                           <Flex align="center" justify="start" gap="2">
@@ -206,10 +202,13 @@ const MenuMobile = ({ handleSelect, navigationNonMutated }) => {
                       </Box>
                     )}
                     {!!items && settings.children && (
-                      <Box as="ul" css={{ m: 0, px: '$1' }}>
-                        {/* @todo(complexity) 16 */}
+                      <Box as="ul" css={{ m: 0, px: '$2' }}>
+                        {/* @todo(complexity) 26 */}
                         {/* eslint-disable-next-line complexity */}
                         {items.map((item, itemIdx) => {
+                          if (item.id === 'podcasts' || item.id === 'shows') {
+                            return null
+                          }
                           if (item.id === 'settings-theme') {
                             const icon = item.icons[theme]
                             const text =
@@ -223,7 +222,7 @@ const MenuMobile = ({ handleSelect, navigationNonMutated }) => {
                                   css={{
                                     listStyleType: 'none',
                                     my: '0',
-                                    py: '$1',
+                                    py: '$2',
                                   }}
                                 >
                                   <Flex align="center" justify="start" gap="2">
@@ -257,7 +256,7 @@ const MenuMobile = ({ handleSelect, navigationNonMutated }) => {
                                               display: 'block',
                                               // fontFamily: '$mono',
                                               fontSize: '0.8rem',
-                                              mt: '$1',
+                                              mt: '$2',
                                             }}
                                           >
                                             {item.rightSlotExtended ??
@@ -285,7 +284,7 @@ const MenuMobile = ({ handleSelect, navigationNonMutated }) => {
                                   css={{
                                     listStyleType: 'none',
                                     my: '0',
-                                    py: '$1',
+                                    py: '$2',
                                   }}
                                 >
                                   <Flex align="center" justify="start" gap="2">
@@ -319,7 +318,7 @@ const MenuMobile = ({ handleSelect, navigationNonMutated }) => {
                                               display: 'block',
                                               // fontFamily: '$mono',
                                               fontSize: '0.8rem',
-                                              mt: '$1',
+                                              mt: '$2',
                                             }}
                                           >
                                             {item.rightSlotExtended ??
@@ -342,7 +341,7 @@ const MenuMobile = ({ handleSelect, navigationNonMutated }) => {
                                 css={{
                                   listStyleType: 'none',
                                   my: '0',
-                                  py: '$1',
+                                  py: '$2',
                                 }}
                               >
                                 <Flex align="center" justify="start" gap="2">
@@ -375,7 +374,7 @@ const MenuMobile = ({ handleSelect, navigationNonMutated }) => {
                                               display: 'block',
                                               // fontFamily: '$mono',
                                               fontSize: '0.8rem',
-                                              mt: '$1',
+                                              mt: '$2',
                                             }}
                                           >
                                             {item.rightSlotExtended ??

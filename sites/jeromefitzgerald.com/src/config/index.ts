@@ -1,7 +1,6 @@
 import { getDataTypes } from '@jeromefitz/notion/constants'
 import type { DatabaseInfo, Databases } from '@jeromefitz/notion/schema'
 
-import { navigationHeader } from './navigation'
 import { NOTION, PAGES__HOMEPAGE, PAGES } from './notion'
 import { nextSeo, sitemapExcludes } from './seo'
 
@@ -76,7 +75,7 @@ const pluralRules = [
   // { rule: /tags$/i, replacement: 'Tags' },
 ]
 
-export { navigationHeader, nextSeo, notionConfig, pluralRules, sitemapExcludes }
+export { nextSeo, notionConfig, pluralRules, sitemapExcludes }
 
 // @todo(notion) uh, make this dynamic please haha
 export const TAGS = {

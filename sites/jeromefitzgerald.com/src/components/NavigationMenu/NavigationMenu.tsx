@@ -93,36 +93,42 @@ const NavigationMenuContentContainer = ({ id, items, layout }) => {
             </NextLink>
           </NavigationMenuListItem>
         )}
-        {items.map((item) => (
-          <NavigationMenuListItem css={{ mb: '$3' }} key={item.id}>
-            <NextLink passHref href={item.url}>
-              <NavigationMenuListItemLink
-                onClick={() => setSelected(item.id)}
-                onKeyDown={(event: { key: string }) =>
-                  event.key === 'Enter' ? setSelected(item.id) : null
-                }
-                onFocus={() => setFocused(item.id)}
-                onMouseEnter={() => setFocused(item.id)}
-                focus
-              >
-                <span>
-                  <NavigationMenuLinkTitle>
-                    <Flex align="center" direction="row" gap="3" justify="start">
-                      {!!item?.icon && item.icon} {item.title}
-                    </Flex>
-                  </NavigationMenuLinkTitle>
-                  <NavigationMenuLinkText>
-                    {item.subtitle ?? item.description}
-                  </NavigationMenuLinkText>
-                </span>
-                {focused === item.id ? (
-                  <Focused color="violet" layoutId="highlight" />
-                ) : null}
-                {selected === item.id ? <Selected layoutId="underline" /> : null}
-              </NavigationMenuListItemLink>
-            </NextLink>
-          </NavigationMenuListItem>
-        ))}
+        {items.map((item) => {
+          // @todo(cmdk) hack, let us do one for all somehow
+          if (item?.id === 'shows') {
+            return null
+          }
+          return (
+            <NavigationMenuListItem css={{ mb: '$3' }} key={item.id}>
+              <NextLink passHref href={item.url}>
+                <NavigationMenuListItemLink
+                  onClick={() => setSelected(item.id)}
+                  onKeyDown={(event: { key: string }) =>
+                    event.key === 'Enter' ? setSelected(item.id) : null
+                  }
+                  onFocus={() => setFocused(item.id)}
+                  onMouseEnter={() => setFocused(item.id)}
+                  focus
+                >
+                  <span>
+                    <NavigationMenuLinkTitle>
+                      <Flex align="center" direction="row" gap="3" justify="start">
+                        {!!item?.icon && item.icon} {item.title}
+                      </Flex>
+                    </NavigationMenuLinkTitle>
+                    <NavigationMenuLinkText>
+                      {item.subtitle ?? item.description}
+                    </NavigationMenuLinkText>
+                  </span>
+                  {focused === item.id ? (
+                    <Focused color="violet" layoutId="highlight" />
+                  ) : null}
+                  {selected === item.id ? <Selected layoutId="underline" /> : null}
+                </NavigationMenuListItemLink>
+              </NextLink>
+            </NavigationMenuListItem>
+          )
+        })}
       </LayoutGroup>
     </NavigationMenuListContent>
   )
