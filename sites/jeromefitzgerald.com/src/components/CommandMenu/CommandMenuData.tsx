@@ -388,31 +388,30 @@ const CommandMenuData = () => {
                       <CommandGroup heading={menuItem?.title}>
                         {!!items &&
                           items?.map((item) => {
-                            // eslint-disable-next-line @typescript-eslint/no-unused-vars
-                            const { icon, icons, id, title, type, url } = item
                             // @todo(cmdk) yuck turn into function return
+                            const { icon, icons, id, title, type, url } = item
                             let iconNew = icon
-                            let handleItemLink
-                            if (item?.type === 'url.internal' && !!item.url) {
+                            let handleItemLink: () => void = () => {}
+                            if (type === 'url.internal' && !!url) {
                               handleItemLink = () => {
-                                void handleRouteInternal(item.url)
+                                void handleRouteInternal(url)
                                 void commandMenuOpenSet()
                               }
                             }
-                            if (item?.type === 'url.external' && !!item.url) {
+                            if (type === 'url.external' && !!url) {
                               handleItemLink = () => {
-                                void handleRouteExternal(item.url)
+                                void handleRouteExternal(url)
                                 void commandMenuOpenSet()
                               }
                             }
-                            if (item?.type === 'audio') {
+                            if (type === 'audio') {
                               // Type 'boolean' cannot be used as an index type.ts(2538)
                               // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                               // @ts-ignore
                               iconNew = !!icons ? icons[audio] : icon
                               handleItemLink = () => void handleAudioToggle()
                             }
-                            if (item?.type === 'theme') {
+                            if (type === 'theme') {
                               iconNew = !!icons ? icons[theme] : icon
                               handleItemLink = () => void handleThemeToggle()
                             }
