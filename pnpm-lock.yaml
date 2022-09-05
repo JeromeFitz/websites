@@ -172,7 +172,7 @@ importers:
       '@mantine/hooks': 5.2.0
       '@next/bundle-analyzer': 12.2.5
       '@octokit/core': 4.0.5
-      '@plaiceholder/next': 2.4.0
+      '@plaiceholder/next': 2.5.0
       '@radix-ui/colors': 0.1.8
       '@radix-ui/react-icons': 1.1.1
       '@stitches/react': 1.2.8
@@ -232,7 +232,7 @@ importers:
       '@jeromefitz/utils': 2.2.1
       '@mantine/hooks': 5.2.0_react@18.2.0
       '@octokit/core': 4.0.5_encoding@0.1.13
-      '@plaiceholder/next': 2.4.0_next@12.2.5+sharp@0.30.7
+      '@plaiceholder/next': 2.5.0_next@12.2.5+sharp@0.30.7
       '@radix-ui/colors': 0.1.8
       '@radix-ui/react-icons': 1.1.1_react@18.2.0
       '@stitches/react': 1.2.8_react@18.2.0
@@ -1948,8 +1948,8 @@ packages:
       '@octokit/openapi-types': 13.0.1
     dev: false
 
-  /@plaiceholder/next/2.4.0_next@12.2.5+sharp@0.30.7:
-    resolution: {integrity: sha512-/8fL7zlC6P1YxSxDymAGFt84szDaFQUWOVWrN8BcESroicx8HMCJ50TcmOqr2sInda2wNQ1lcqhEYcxdwytqFQ==}
+  /@plaiceholder/next/2.5.0_next@12.2.5+sharp@0.30.7:
+    resolution: {integrity: sha512-vT8YtPpgQEKFtz0QiiCnH3NfyVlldYpnxR6X2sqCJvHk+pi/Be1nb62CdYQ7RoNePPcjBQoRDSPpZpGmg8mEdw==}
     peerDependencies:
       next: '>= 10.0.0'
       sharp: '>= 0.30.6'

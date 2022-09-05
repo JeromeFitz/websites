@@ -49,7 +49,7 @@
     "@jeromefitz/utils": "2.2.1",
     "@mantine/hooks": "5.2.0",
     "@octokit/core": "4.0.5",
-    "@plaiceholder/next": "2.4.0",
+    "@plaiceholder/next": "2.5.0",
     "@radix-ui/colors": "0.1.8",
     "@radix-ui/react-icons": "1.1.1",
     "@stitches/react": "1.2.8",
