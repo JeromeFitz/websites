@@ -18,12 +18,8 @@ import {
   Icon,
 } from '@jeromefitz/design-system'
 import { useCommandState, Command } from 'cmdk'
-// import _filter from 'lodash/filter'
 import _map from 'lodash/map'
-// import _merge from 'lodash/merge'
-// import { fetcher, fetcherMulti } from 'next-notion/src/lib/fetcher'
 import { fetcher } from 'next-notion/src/lib/fetcher'
-// import { getNextPageStatus } from 'next-notion/src/utils'
 import { useTheme } from 'next-themes'
 import { useRouter } from 'next/router'
 import React from 'react'
@@ -31,88 +27,11 @@ import { useEffectOnce } from 'react-use'
 import useSWRImmutable from 'swr/immutable'
 import { useSound } from 'use-sound'
 
-import { navigation } from '~config/navigation'
+import { navigation, URL_TYPE } from '~config/navigation'
 import { useThemeToggle } from '~hooks/useThemeToggle'
 import useStore from '~store/useStore'
 
 import { ListDynamic } from './ListDynamic'
-
-// const SwrFetcher = () => {
-//   return null
-// }
-
-// const SubItems = ({ icon, routeType }) => {
-//   const getUrl = `/api/v1/cms/${routeType}`
-//   const router = useRouter()
-//   const handleRouteInternal = (url) => {
-//     void router.push(url)
-//   }
-//   const commandMenuOpenSet = useStore.use.commandMenuOpenSet()
-//   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-//   // @ts-ignore
-//   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-//   const { data, error, isValidating } = useSWRImmutable<any>(
-//     [getUrl],
-//     (url) => fetcher(url),
-//     {}
-//   )
-//   const { isDataUndefined, isError, isLoading } = getNextPageStatus(
-//     data,
-//     error,
-//     // url
-//     getUrl
-//   )
-
-//   const items = data?.items?.results
-
-//   // console.dir(`SubItems: ${routeType}`)
-//   // console.dir(items)
-
-//   if (isLoading && !isDataUndefined) return null
-//   if (isError && isDataUndefined) return null
-//   if (!!items) {
-//     items?.map((item) => {
-//       const { id, properties } = item
-//       const { slug, title } = properties
-//       // console.dir(`SubItem (Mapped): ${slug} (${routeType})`)
-//       return null
-//       return (
-//         <SubItemTest
-//           key={`sub-item-item-${id}`}
-//           // onSelect={() => {
-//           //   handleRouteInternal(`/${routeType}/${slug}`)
-//           //   commandMenuOpenSet()
-//           // }}
-//           // value={slug}
-//         >
-//           {/* <Flex gap="3">
-//             {icon}
-//             {title}
-//           </Flex> */}
-//           {title}
-//         </SubItemTest>
-//       )
-//       // return (
-//       //   <SubItem
-//       //     key={`sub-item-item-${id}`}
-//       //     onSelect={() => {
-//       //       handleRouteInternal(`/${routeType}/${slug}`)
-//       //       commandMenuOpenSet()
-//       //     }}
-//       //     value={slug}
-//       //   >
-//       //     <Flex gap="3">
-//       //       {icon}
-//       //       {title}
-//       //     </Flex>
-//       //   </SubItem>
-//       // )
-//     })
-//   } else {
-//     // console.dir(`SubItems (none) => ${routeType}`)
-//     return null
-//   }
-// }
 
 const SubItemTest = (props) => {
   const commandState = useCommandState((state) => state)
@@ -392,26 +311,26 @@ const CommandMenuData = () => {
                             const { icon, icons, id, title, type, url } = item
                             let iconNew = icon
                             let handleItemLink: () => void = () => {}
-                            if (type === 'url.internal' && !!url) {
+                            if (type === URL_TYPE.INTERNAL && !!url) {
                               handleItemLink = () => {
                                 void handleRouteInternal(url)
                                 void commandMenuOpenSet()
                               }
                             }
-                            if (type === 'url.external' && !!url) {
+                            if (type === URL_TYPE.EXTERNAL && !!url) {
                               handleItemLink = () => {
                                 void handleRouteExternal(url)
                                 void commandMenuOpenSet()
                               }
                             }
-                            if (type === 'audio') {
+                            if (type === URL_TYPE.AUDIO) {
                               // Type 'boolean' cannot be used as an index type.ts(2538)
                               // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                               // @ts-ignore
                               iconNew = !!icons ? icons[audio] : icon
                               handleItemLink = () => void handleAudioToggle()
                             }
-                            if (type === 'theme') {
+                            if (type === URL_TYPE.THEME) {
                               iconNew = !!icons ? icons[theme] : icon
                               handleItemLink = () => void handleThemeToggle()
                             }

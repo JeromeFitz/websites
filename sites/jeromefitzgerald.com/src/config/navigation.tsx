@@ -425,4 +425,4 @@ const navigation: INavigation = {
   },
 }
 
-export { navigation }
+export { navigation, URL_TYPE }

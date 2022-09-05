@@ -16,12 +16,9 @@ import * as React from 'react'
 import { useEffectOnce } from 'react-use'
 import { useSound } from 'use-sound'
 
-import { CommandMenuButton } from '~components/CommandMenu'
-import { NavigationMenu } from '~components/NavigationMenu'
+import { CommandMenuButton, MenuMobile, NavigationMenu } from '~components/Menu'
 import { navigation } from '~config/navigation'
 import useStore from '~store/useStore'
-
-import { MenuMobile } from './MenuMobile'
 
 const AppBarImpl = ({}) => {
   /**
