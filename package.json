@@ -56,7 +56,7 @@
     "@jeromefitz/semantic": "9.2.3",
     "@jeromefitz/tsconfig": "1.1.1",
     "@types/is-ci": "3.0.0",
-    "@types/jest": "28.1.7",
+    "@types/jest": "28.1.8",
     "@types/lodash": "4.14.184",
     "@types/node": "16.11.7",
     "@types/react": "18.0.17",
