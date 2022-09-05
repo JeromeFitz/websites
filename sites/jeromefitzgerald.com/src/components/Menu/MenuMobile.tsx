@@ -15,7 +15,7 @@ import { useSwipeable } from 'react-swipeable'
 // import { useEffectOnce } from 'react-use'
 import { useSound } from 'use-sound'
 
-import { CommandMenuButton } from '~components/CommandMenu'
+import { CommandMenuButton } from '~components/Menu'
 import { ToggleAudio, ToggleTheme } from '~components/Toggle'
 import useStore from '~store/useStore'
 
