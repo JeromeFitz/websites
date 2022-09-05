@@ -88,6 +88,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
             />
           </Head>
           <Providers>
+            <CommandMenu />
             <NProgress />
             <Header />
             <Container
@@ -101,7 +102,6 @@ function MyApp({ Component, pageProps, router }: AppProps) {
               </Section>
             </Container>
             <Footer />
-            <CommandMenu />
           </Providers>
         </SWRConfig>
       </ErrorBoundary>
