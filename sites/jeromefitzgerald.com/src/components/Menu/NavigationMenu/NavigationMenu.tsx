@@ -1,7 +1,7 @@
-import { TicketIcon } from '@heroicons/react/outline'
 import {
   Box,
   Flex,
+  Icon,
   // Label,
   // TextField,
   // @core
@@ -71,7 +71,7 @@ const NavigationMenuContentContainer = ({ id, items, layout }) => {
                     }}
                   >
                     <>
-                      <TicketIcon style={{ marginBottom: '$5' }} />
+                      <Icon.Ticket style={{ marginBottom: '$5' }} />
                       Upcoming Event Title
                     </>
                   </NavigationMenuLinkTitle>
