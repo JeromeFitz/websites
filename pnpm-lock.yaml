@@ -75,7 +75,7 @@ importers:
   packages/next-notion:
     specifiers:
       '@jeromefitz/design-system': 4.1.1
-      '@jeromefitz/notion': 3.3.5
+      '@jeromefitz/notion': 3.3.6-notion-2.1
       '@jeromefitz/utils': 2.2.1
       '@types/github-slugger': 1.3.0
       '@types/ms': 0.7.31
@@ -106,7 +106,7 @@ importers:
       valid-url: 1.0.9
     devDependencies:
       '@jeromefitz/design-system': 4.1.1_yjvfkwpefh5d7dzngtleqmz54q
-      '@jeromefitz/notion': 3.3.5_@jeromefitz+utils@2.2.1
+      '@jeromefitz/notion': 3.3.6-notion-2.1_@jeromefitz+utils@2.2.1
       '@types/github-slugger': 1.3.0
       '@types/ms': 0.7.31
       '@types/react': 18.0.18
@@ -162,7 +162,7 @@ importers:
       '@jeromefitz/design-system': 4.1.1
       '@jeromefitz/eslint-config': 1.1.5
       '@jeromefitz/lint-staged': 1.1.2
-      '@jeromefitz/notion': 3.3.5
+      '@jeromefitz/notion': 3.3.6-notion-2.1
       '@jeromefitz/prettier-config': 1.1.1
       '@jeromefitz/shared': workspace:*
       '@jeromefitz/spotify': 2.3.2
@@ -226,7 +226,7 @@ importers:
     dependencies:
       '@heroicons/react': 2.0.10_react@18.2.0
       '@jeromefitz/design-system': 4.1.1_ei36ku4ysp254asowfdeop7gne
-      '@jeromefitz/notion': 3.3.5_cwubw3yppmn7f4gpl6k3kt7vty
+      '@jeromefitz/notion': 3.3.6-notion-2.1_cwubw3yppmn7f4gpl6k3kt7vty
       '@jeromefitz/spotify': 2.3.2_e7wwjxwfri7csat2jnp5oxzonq
       '@jeromefitz/utils': 2.2.1
       '@mantine/hooks': 5.2.5_react@18.2.0
@@ -1317,10 +1317,10 @@ packages:
       - enquirer
       - supports-color
 
-  /@jeromefitz/notion/3.3.5_@jeromefitz+utils@2.2.1:
+  /@jeromefitz/notion/3.3.6-notion-2.1_@jeromefitz+utils@2.2.1:
     resolution:
       {
-        integrity: sha512-6PlXdJzKvwyGS29feg40jqqd3NCVqPulr16fipVAZU0YxVjtmJMuKyiYIjCewhdJ8gMOjiqwjblrlutOLEdW+w==,
+        integrity: sha512-ZCvMNmNXXicLJveyabUfWIiaG1EAt75dHUrf0wX1e4r1GuZKr4U55QdP0K8PBgnWn2ukWCh+eJochbkZO22gLg==,
       }
     engines: { node: '>=16' }
     peerDependencies:
@@ -1328,7 +1328,7 @@ packages:
       lodash: ^4.17.21
     dependencies:
       '@jeromefitz/utils': 2.2.1
-      '@notionhq/client': 1.0.4
+      '@notionhq/client': 2.2.0
       date-fns: 2.29.2
       date-fns-tz: 1.3.7_date-fns@2.29.2
       github-slugger: 1.4.0
@@ -1336,10 +1336,10 @@ packages:
       - encoding
     dev: true
 
-  /@jeromefitz/notion/3.3.5_cwubw3yppmn7f4gpl6k3kt7vty:
+  /@jeromefitz/notion/3.3.6-notion-2.1_cwubw3yppmn7f4gpl6k3kt7vty:
     resolution:
       {
-        integrity: sha512-6PlXdJzKvwyGS29feg40jqqd3NCVqPulr16fipVAZU0YxVjtmJMuKyiYIjCewhdJ8gMOjiqwjblrlutOLEdW+w==,
+        integrity: sha512-ZCvMNmNXXicLJveyabUfWIiaG1EAt75dHUrf0wX1e4r1GuZKr4U55QdP0K8PBgnWn2ukWCh+eJochbkZO22gLg==,
       }
     engines: { node: '>=16' }
     peerDependencies:
@@ -1347,7 +1347,7 @@ packages:
       lodash: ^4.17.21
     dependencies:
       '@jeromefitz/utils': 2.2.1
-      '@notionhq/client': 1.0.4_encoding@0.1.13
+      '@notionhq/client': 2.2.0_encoding@0.1.13
       date-fns: 2.29.2
       date-fns-tz: 1.3.7_date-fns@2.29.2
       github-slugger: 1.4.0
@@ -2070,10 +2070,10 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.13.0
 
-  /@notionhq/client/1.0.4:
+  /@notionhq/client/2.2.0:
     resolution:
       {
-        integrity: sha512-m7zZ5l3RUktayf1lRBV1XMb8HSKsmWTv/LZPqP7UGC1NMzOlc+bbTOPNQ4CP/c1P4cP61VWLb/zBq7a3c0nMaw==,
+        integrity: sha512-wJwGajJjdy3GDI5HpomulhYuxo5j8t1Conm9HkpHqkHnj4qrc+6N//qRXrogsUU2sn60kSHpRcPB4P6L0799tg==,
       }
     engines: { node: '>=12' }
     dependencies:
@@ -2083,10 +2083,10 @@ packages:
       - encoding
     dev: true
 
-  /@notionhq/client/1.0.4_encoding@0.1.13:
+  /@notionhq/client/2.2.0_encoding@0.1.13:
     resolution:
       {
-        integrity: sha512-m7zZ5l3RUktayf1lRBV1XMb8HSKsmWTv/LZPqP7UGC1NMzOlc+bbTOPNQ4CP/c1P4cP61VWLb/zBq7a3c0nMaw==,
+        integrity: sha512-wJwGajJjdy3GDI5HpomulhYuxo5j8t1Conm9HkpHqkHnj4qrc+6N//qRXrogsUU2sn60kSHpRcPB4P6L0799tg==,
       }
     engines: { node: '>=12' }
     dependencies:
@@ -3777,16 +3777,6 @@ packages:
       }
     dev: true
 
-  /@types/node-fetch/2.6.1:
-    resolution:
-      {
-        integrity: sha512-oMqjURCaxoSIsHSr1E47QHzbmzNR5rK8McHuNb11BOM9cHcIK3Avy0s/b2JlXHoQGTYS3NsvWzV1M0iK7l0wbA==,
-      }
-    dependencies:
-      '@types/node': 16.11.7
-      form-data: 3.0.1
-    dev: false
-
   /@types/node-fetch/2.6.2:
     resolution:
       {
@@ -4403,7 +4393,7 @@ packages:
     peerDependencies:
       node-fetch: ^2.6.1
     dependencies:
-      '@types/node-fetch': 2.6.1
+      '@types/node-fetch': 2.6.2
       '@zeit/dns-cached-resolve': 2.1.2
     dev: false
 
@@ -7692,7 +7682,7 @@ packages:
     dependencies:
       asynckit: 0.4.0
       combined-stream: 1.0.8
-      mime-types: 2.1.13
+      mime-types: 2.1.35
     dev: false
 
   /framer-motion/7.2.1_biqbaboplfbrettd7655fr4n2y:
