@@ -135,7 +135,7 @@ importers:
       lodash: 4.17.21
       next: 12.3.0
       next-notion: workspace:*
-      next-themes: 0.2.0
+      next-themes: 0.2.1
       nprogress: 0.2.0
       plaiceholder: 2.5.0
       react: 18.2.0
@@ -147,7 +147,7 @@ importers:
       fathom-client: 3.5.0
       lodash: 4.17.21
       next: 12.3.0_biqbaboplfbrettd7655fr4n2y
-      next-themes: 0.2.0_c3hne4hwj64hb7tofigd3bvkji
+      next-themes: 0.2.1_c3hne4hwj64hb7tofigd3bvkji
       nprogress: 0.2.0
       plaiceholder: 2.5.0
       react: 18.2.0
@@ -206,7 +206,7 @@ importers:
       next-notion: workspace:*
       next-seo: 5.5.0
       next-sitemap: 3.1.21
-      next-themes: 0.2.0
+      next-themes: 0.2.1
       next-transpile-modules: 9.0.0
       next-unused: 0.0.6
       node-emoji: 1.11.0
@@ -255,7 +255,7 @@ importers:
       next-compose-plugins: 2.2.1
       next-seo: 5.5.0_c3hne4hwj64hb7tofigd3bvkji
       next-sitemap: 3.1.21_next@12.3.0
-      next-themes: 0.2.0_c3hne4hwj64hb7tofigd3bvkji
+      next-themes: 0.2.1_c3hne4hwj64hb7tofigd3bvkji
       next-transpile-modules: 9.0.0
       node-emoji: 1.11.0
       nprogress: 0.2.0
@@ -7867,8 +7867,8 @@ packages:
       next: 12.3.0_biqbaboplfbrettd7655fr4n2y
     dev: false
 
-  /next-themes/0.2.0_c3hne4hwj64hb7tofigd3bvkji:
-    resolution: {integrity: sha512-myhpDL4vadBD9YDSHiewqvzorGzB03N84e+3LxCwHRlM/hiBOaW+UsKsQojQAzC7fdcJA0l2ppveXcYaVV+hxQ==}
+  /next-themes/0.2.1_c3hne4hwj64hb7tofigd3bvkji:
+    resolution: {integrity: sha512-B+AKNfYNIzh0vqQQKqQItTS8evEouKD7H5Hj3kmuPERwddR2TxvDSFZuTj6T7Jfn1oyeUyJMydPl1Bkxkh0W7A==}
     peerDependencies:
       next: '*'
       react: '*'
