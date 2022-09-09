@@ -18,7 +18,7 @@
       "dependsOn": ["^lint"],
       "inputs": ["src/**", "*.cjs", "*.js", "package.json", "vercel.json"]
     },
-    "lint:fix": {
+    "format:lint": {
       "cache": false
     },
     "semantic-release:mono": {
