@@ -1,37 +1,37 @@
 {
-  "name": "@jeromefitz/shared",
+  "license": "MIT",
   "version": "0.0.0",
+  "name": "@jeromefitz/shared",
   "author": {
     "name": "Jerome Fitzgerald",
     "email": "j@jeromefitzgerald.com",
     "url": "https://jeromefitzgerald.com"
   },
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "ssh://git@github.com/jeromefitz/websites.git",
-    "directory": "packages/shared"
+  "repository": "jeromefitz/websites.git",
+  "publishConfig": {
+    "access": "public"
   },
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "files": [
+    "dist/**"
+  ],
+  "sideEffects": false,
   "scripts": {
-    "---": "@tsup",
     "build": "tsup-node",
-    "dev": "tsup-node --watch",
-    "--- ": "",
     "clean": "rm -rf .turbo && rm -rf dist",
     "clean:install": "pnpm clean && rm -rf node_modules",
     "copy": "mkdir -p ./dist && ./scripts/copy.sh",
-    "---  ": "@lint",
+    "dev": "tsup-node --watch",
+    "format:lint": "pnpm lint:eslint --fix && pnpm format:prettier --write",
+    "format:prettier": "prettier \"./src/**/*.{cjs,js,jsx,mjs,ts,tsx,json,md,mdx,css,html,yml,yaml,scss}\" --ignore-unknown --loglevel warn",
+    "lint": "pnpm format:prettier --check && pnpm lint:eslint && pnpm lint:typescript",
     "lint:eslint": "eslint ./src --ext cjs,js,jsx,mjs,ts,tsx --max-warnings=0",
-    "lint:prettier": "prettier \"./src/**/*.{cjs,js,jsx,mjs,ts,tsx,json,md,mdx,css,html,yml,yaml,scss}\" --ignore-unknown --loglevel warn",
     "lint:typescript": "tsc --noEmit --declaration",
-    "lint": "pnpm lint:prettier --check && pnpm lint:eslint && pnpm lint:typescript",
-    "lint:fix": "pnpm lint:eslint --fix && pnpm lint:prettier --write",
-    "---   ": "@release",
     "semantic-release": "echo semantic-release",
-    "---    ": "",
-    "---     ": "",
-    "test": "echo # jest",
-    "---      ": ""
+    "test": "echo # jest"
   },
   "dependencies": {
     "@jeromefitz/design-system": "4.1.2",
@@ -51,16 +51,5 @@
     "@types/react": "18.0.18",
     "@types/react-dom": "18.0.6",
     "next-notion": "workspace:*"
-  },
-  "type": "module",
-  "sideEffects": false,
-  "typings": "./dist/index.d.ts",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
-  "publishConfig": {
-    "access": "public"
-  },
-  "files": [
-    "dist/**"
-  ]
+  }
 }
