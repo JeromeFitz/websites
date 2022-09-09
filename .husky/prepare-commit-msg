@@ -2,7 +2,7 @@
 
 [ -n "$CI" ] && exit 0
 
-pnpm pretty-quick --staged
+pnpm run format:prettier --staged
 exec < /dev/tty
 # @note(git-cz) publish w/ this
 pnpm git-cz --hook || true
