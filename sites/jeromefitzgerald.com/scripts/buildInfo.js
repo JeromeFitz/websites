@@ -12,6 +12,11 @@ const prettier = require('prettier')
 
 const octokit = new Octokit({ auth: process.env.GH_TOKEN })
 
+const config = {
+  owner: 'jeromefitz',
+  repo: 'jeromefitzgerald.com',
+}
+
 const branch =
   process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF ||
   childProcess
@@ -30,8 +35,8 @@ function getBranch(branch) {
  */
 async function setupBuildInfo() {
   const releases = await octokit.request('GET /repos/{owner}/{repo}/releases', {
-    owner: 'jeromefitz',
-    repo: 'jeromefitzgerald.com',
+    owner: config.owner,
+    repo: config.repo,
     page: 1,
     per_page: 20,
   })
