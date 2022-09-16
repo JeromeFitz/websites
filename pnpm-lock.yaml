@@ -94,7 +94,7 @@ importers:
       ms: 3.0.0-canary.1
       next: 12.3.0
       plaiceholder: 2.5.0
-      podcast: 2.0.0
+      podcast: 2.0.1
       react: 18.2.0
       react-dom: 18.2.0
       uuid: 9.0.0
@@ -104,7 +104,7 @@ importers:
       fast-json-stable-stringify: 2.1.0
       github-slugger: 1.4.0
       ms: 3.0.0-canary.1
-      podcast: 2.0.0
+      podcast: 2.0.1
       uuid: 9.0.0
       valid-url: 1.0.9
     devDependencies:
@@ -213,7 +213,7 @@ importers:
       nprogress: 0.2.0
       plaiceholder: 2.5.0
       pluralize: 8.0.0
-      podcast: 2.0.0
+      podcast: 2.0.1
       ramda: 0.28.0
       react: 18.2.0
       react-dom: 18.2.0
@@ -261,7 +261,7 @@ importers:
       nprogress: 0.2.0
       plaiceholder: 2.5.0_sharp@0.31.0
       pluralize: 8.0.0
-      podcast: 2.0.0
+      podcast: 2.0.1
       ramda: 0.28.0
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -5866,7 +5866,7 @@ packages:
     dependencies:
       asynckit: 0.4.0
       combined-stream: 1.0.8
-      mime-types: 2.1.13
+      mime-types: 2.1.35
     dev: false
 
   /fp-ts/2.12.1:
@@ -8452,8 +8452,8 @@ packages:
     resolution: {integrity: sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==}
     engines: {node: '>=4'}
 
-  /podcast/2.0.0:
-    resolution: {integrity: sha512-1NZe7cVabfkcMe39yOOhBMJrXC6OROLOIBkfEPayiJL59ncyJmOeO5bxolSCSGroho8jQ0zURMczyICI1U/xbw==}
+  /podcast/2.0.1:
+    resolution: {integrity: sha512-TWXe/zVziwJNksAn7RLkSre+Z6VQgbs/+gC7qQCKdkyw0hv2hdFGOY9rHgKqa4LI+UP+yZBa6Wr+b9a9vrYDYQ==}
     dependencies:
       rss: 1.2.2
     dev: false
