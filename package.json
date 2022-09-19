@@ -48,7 +48,7 @@
     "@jeromefitz/git-cz": "14.4.2",
     "@jeromefitz/lint-staged": "1.1.2",
     "@jeromefitz/prettier-config": "1.1.1",
-    "@jeromefitz/release-notes-generator": "1.2.4",
+    "@jeromefitz/release-notes-generator": "1.2.5",
     "@jeromefitz/semantic": "9.2.5",
     "@jeromefitz/tsconfig": "1.1.1",
     "@types/is-ci": "3.0.0",

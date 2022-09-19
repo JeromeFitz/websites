@@ -13,7 +13,7 @@ importers:
       '@jeromefitz/git-cz': 14.4.2
       '@jeromefitz/lint-staged': 1.1.2
       '@jeromefitz/prettier-config': 1.1.1
-      '@jeromefitz/release-notes-generator': 1.2.4
+      '@jeromefitz/release-notes-generator': 1.2.5
       '@jeromefitz/semantic': 9.2.5
       '@jeromefitz/tsconfig': 1.1.1
       '@types/is-ci': 3.0.0
@@ -47,7 +47,7 @@ importers:
       '@jeromefitz/git-cz': 14.4.2_loyh45g3nz6qeasp3vfhtyihru
       '@jeromefitz/lint-staged': 1.1.2
       '@jeromefitz/prettier-config': 1.1.1
-      '@jeromefitz/release-notes-generator': 1.2.4_lodash@4.17.21
+      '@jeromefitz/release-notes-generator': 1.2.5_lodash@4.17.21
       '@jeromefitz/semantic': 9.2.5_pvq26naxwnzthnvk276bghdxlq
       '@jeromefitz/tsconfig': 1.1.1
       '@types/is-ci': 3.0.0
@@ -1166,8 +1166,8 @@ packages:
     resolution: {integrity: sha512-Mv7TcLf6aHBsigTxpKHmjtEmGt+Zm3XFdVPVXHE6riWiuegYtrfe4gguqSuQK6XLltHWSNeNJyVo+7Nx515laQ==}
     engines: {node: '>=16'}
 
-  /@jeromefitz/release-notes-generator/1.2.4_lodash@4.17.21:
-    resolution: {integrity: sha512-m3We2kkLTM6L9L0ae8ZkjuVf08XQE2pAKK4FVPM7ViEcNysDlb2f3nrRxlaRVgCGC6BjMoPYqSlei1B7yDDdaA==}
+  /@jeromefitz/release-notes-generator/1.2.5_lodash@4.17.21:
+    resolution: {integrity: sha512-Oc/dSPBWtUX8/meFozNb8iFuNfv/zfRMzfLkhuyzMJIiSyLDYVQR5PH7IunWRSI0naGpb+gM7Oaj8lRhV5UkHw==}
     engines: {node: '>=16'}
     peerDependencies:
       lodash: ^4.17.21
@@ -1175,7 +1175,7 @@ packages:
       '@octokit/rest': 19.0.4
       conventional-commits-filter: 2.0.7
       conventional-commits-parser: 3.2.4
-      date-fns: 2.29.2
+      date-fns: 2.29.3
       import-from: 4.0.0
       lodash: 4.17.21
       read-pkg-up: 7.0.1
@@ -4403,6 +4403,11 @@ packages:
   /date-fns/2.29.2:
     resolution: {integrity: sha512-0VNbwmWJDS/G3ySwFSJA3ayhbURMTJLtwM2DTxf9CWondCnh6DTNlO9JgRSq6ibf4eD0lfMJNBxUdEAHHix+bA==}
     engines: {node: '>=0.11'}
+
+  /date-fns/2.29.3:
+    resolution: {integrity: sha512-dDCnyH2WnnKusqvZZ6+jA1O51Ibt8ZMRNkDZdyAyK4YfbDwa/cEmuztzG5pk6hqlp9aSBPYcjOlktquahGwGeA==}
+    engines: {node: '>=0.11'}
+    dev: false
 
   /dateformat/3.0.3:
     resolution: {integrity: sha512-jyCETtSl3VMZMWeRo7iY1FL19ges1t55hMo5yaam4Jrsm5EPL89UQkoQRyiI+Yf4k8r2ZpdngkV8hr1lIdjb3Q==}
