@@ -23,6 +23,11 @@ const withTM = require('next-transpile-modules')(transpileModules)
 const { withBuildInfo } = require('./scripts/buildInfo')
 // const getRedirects = require('./config/notion/website/getRedirects')
 
+const PROTOCOL = {
+  HTTP: 'http',
+  HTTPS: 'https',
+}
+const protocol = PROTOCOL.HTTPS
 /**
  * @note(pnpm) until we move "websites" into "packages"...
  *
@@ -126,23 +131,33 @@ const securityHeaders = [
  * @type {import('next').NextConfig}
  **/
 const nextConfig = {
-  amp: false,
-  assetPrefix: '',
-  distDir: './.next',
-  // compiler: {
-  //   styledComponents: true,
-  // },
-  compress: true,
-  eslint: {
-    // @note(eslint) we use @jeromefitz/codestyle opt out of next.js
-    build: false,
+  amp: {
+    canonicalBase: undefined,
   },
+  // analyticsId: 'SELF_HOSTED_ONLY',
+  assetPrefix: undefined,
+  basePath: '',
+  cleanDistDir: true,
+  compiler: {},
+  compress: true,
+  // crossOrigin: 'same-origin',
+  devIndicators: { buildActivity: true, buildActivityPosition: 'bottom-right' },
+  distDir: './.next',
+  // env,
+  eslint: {
+    // @note(eslint) handled outside of next
+    ignoreDuringBuilds: true,
+  },
+  excludeDefaultMomentLocales: true,
   experimental: {
     browsersListForSwc: true,
     legacyBrowsers: false,
     serverComponents: false,
   },
-  future: { strictPostcssConfiguration: true },
+  // exportPathMap,
+  future: {},
+  // generateBuildId,
+  // generateEtags,
   async headers() {
     return [
       {
@@ -151,21 +166,16 @@ const nextConfig = {
       },
     ]
   },
+  httpAgentOptions: {
+    keepAlive: true,
+  },
+  i18n: {
+    locales: ['en'],
+    defaultLocale: 'en',
+  },
   images: {
     // deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     deviceSizes: [640, 1200, 1920],
-    domains: [
-      `cdn.${process.env.NEXT_PUBLIC__SITE}`, // CDN
-      'cdn.jerandky.com', // CDN fallback
-      'cdn.jeromefitzgerald.com', // CDN fallback
-      'og.jeromefitzgerald.com', // CDN fallback for Open Graph
-      'notion.so', // Notion
-      'www.notion.so', // Notion
-      's3-us-west-2.amazonaws.com', // AWS
-      'i.scdn.co', // Spotify
-      'pbs.twimg.com', // Twitter
-      'images.unsplash.com', // Unsplash
-    ],
     formats: ['image/avif', 'image/webp'],
     // imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     imageSizes: [24, 64, 384],
@@ -173,36 +183,101 @@ const nextConfig = {
     minimumCacheTTL: 18144000, // 1 month
     // minimumCacheTTL: 604800, // 1 week
     // minimumCacheTTL: 86400, // 1 day
+    remotePatterns: [
+      {
+        protocol,
+        hostname: `**.${process.env.NEXT_PUBLIC__SITE}`,
+      },
+      // @note(remotePattern) Podcast Imagery
+      {
+        protocol,
+        hostname: `**.jerandky.com`,
+      },
+      // @note(remotePattern) Future proofing "other" websites
+      {
+        protocol,
+        hostname: `**.jeromefitzgerald.com`,
+      },
+      // @note(remotePattern) AWS
+      {
+        protocol,
+        hostname: `**.amazonws.com`,
+      },
+      // @note(remotePattern) Notion
+      {
+        protocol,
+        hostname: `**.notion.so`,
+      },
+      // @note(remotePattern) Spotify
+      {
+        protocol,
+        hostname: `i.scdn.co`,
+      },
+      // @note(remotePattern) Twitter
+      {
+        protocol,
+        hostname: `pbs.twimg.com`,
+      },
+      // @note(remotePattern) Unsplash
+      {
+        protocol,
+        hostname: `images.unsplash.com`,
+      },
+    ],
   },
-  i18n: {
-    locales: ['en'],
-    defaultLocale: 'en',
+  onDemandEntries: {
+    /**
+     * @note(next)
+     * period (in ms) where the server will keep pages in the buffer
+     */
+    maxInactiveAge: 15 * 1000,
+    /**
+     * @note(next)
+     * number of pages that should be kept simultaneously without being disposed
+     */
+    pagesBufferLength: 2,
   },
   optimizeFonts: true,
+  output: undefined,
   outputFileTracing: false,
   pageExtensions: ['jsx', 'js', 'tsx', 'ts'],
   poweredByHeader: false,
   productionBrowserSourceMaps: false,
+  publicRuntimeConfig: {
+    // @note(next) available on server and client
+  },
+  // @todo(react) https://nextjs.org/docs/api-reference/next.config.js/react-strict-mode
   // reactStrictMode: true,
+  // @note(next) redirect an incoming request path to a different destination path
+  // redirects,
+  // @note(next) map an incoming request path to a different destination path
   // rewrites() {
   //   return getRedirects
   // },
-  // publicRuntimeConfig: {},
-  // serverRuntimeConfig: {},
+  sassOptions: {},
+  serverRuntimeConfig: {
+    // @note(next) available on the server
+  },
+  staticPageGenerationTimeout: 60,
   swcMinify: true,
-  useFileSystemPublicRoutes: true, // false will block './pages' as router
+  trailingSlash: false,
+  typescript: {
+    // @note(typescript) handled outside of next
+    ignoreBuildErrors: true,
+  },
+  // @note(next) false will block: ./pages
+  useFileSystemPublicRoutes: true,
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
-    /**
-     * @note(pnpm) path mapping if working locally
-     * @note(npmrc) shamefully-hoist === node_modules at root
-     */
+    // @note(pnpm)  path mapping if working locally
     if (isLocal) {
       isLocalDebugMessages.map((msg) => console.debug(msg))
       externals.map((ext) => {
         console.debug(`warn  - [ 📦 ]  ›  ${ext}`)
+        // @note(npmrc) shamefully-hoist === node_modules at root
+        // @todo(npmrc) would be nice to not shamefully-hoist
         config.resolve.alias[ext] = path.resolve(
           __dirname,
           '..',
@@ -223,10 +298,18 @@ const nextConfig = {
  */
 module.exports = withPlugins(
   [
-    // @next/bundle-analyzer
+    /**
+     * @note(next) @next/bundle-analyzer
+     */
     [withBundleAnalyzer],
-    // @plaiceholder/next
+    /**
+     * @note(next) @plaiceholder/next
+     */
     [withPlaiceholder],
+    /**
+     * @note(next) next-pwa
+     * @todo(pwa)  ref: https://github.com/shadowwalker/next-pwa
+     */
     // [
     //   withPWA({
     //     pwa: {
@@ -236,7 +319,13 @@ module.exports = withPlugins(
     //     },
     //   }),
     // ],
+    /**
+     * @hack(next) hijack redirects => ./config/buildInfo.js
+     */
     [withBuildInfo()],
+    /**
+     * @note(next) next-transpile-modules
+     */
     [withTM],
   ],
   nextConfig
