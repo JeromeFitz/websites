@@ -63,6 +63,9 @@ const Shadows = {
        8px 16px 16px hsl(var(--shadow-color) / 0.2),
        16px 32px 32px hsl(var(--shadow-color) / 0.2)
      `.replace(replaceRegEx, replaceRegExWith),
+  image: `
+     1px 1px 9px 5px var(--shadow-color)
+   `.replace(replaceRegEx, replaceRegExWith),
 }
 
 export { Gradients, Shadows }

@@ -15,40 +15,29 @@ import { Gradients } from '../../styles/const'
 
 import { Image, ImageBlur, ImageContainer } from './ImageLead.styles'
 
-/**
- * @optimization
- *
- * Just because we know the WIDTH/HEIGHT of images, does not mean
- *  we should be passing them to `Image` (next/image`)
- *
- *
- * Also big __update__ needed as we are no longer using `sizes`
- * Please adjust when you can
- *
- *
- */
 const ImageWithBackgroundBlur = ({
   base64,
   description,
   image,
-  priority = false,
-  // sizes = '(max-width: 1280) 10vh, 30vh',
-  // // sizes = '256px',
+  priority = true,
+  quality = 90,
+  sizes = '(max-width: 1280) 10vh, 30vh',
   slug,
 }) => {
   const { height, src, width } = image
 
-  // const [backgroundImageLoaded, backgroundImageLoadedSet] = React.useState(false)
-  // useIsomorphicLayoutEffect(() => {
-  //   backgroundImageLoadedSet(true)
-  //   return () => {
-  //     backgroundImageLoadedSet(false)
-  //   }
-  // })
-
-  // console.dir(`src:     ${src}`)
-  // console.dir(`priority: ${priority}`)
-
+  const props = {
+    alt: description,
+    blurDataURL: base64,
+    height,
+    key: slug,
+    placeholder: 'blur',
+    priority,
+    quality,
+    sizes,
+    src,
+    width,
+  }
   return (
     <ImageContainer
       css={{
@@ -56,57 +45,14 @@ const ImageWithBackgroundBlur = ({
           backgroundImage: Gradients.light.active,
           [`.${darkTheme} &`]: { backgroundImage: Gradients.dark.active },
         },
-        // '@hover': {
-        //   [`&:hover ${ImageBlur}`]: {
-        //     backgroundImage: Gradients.pinkHover,
-        //     [`.${darkTheme} &`]: { backgroundImage: Gradients.orangeHover },
-        //   },
-        // },
       }}
     >
       <ImageBlur
         css={{
-          // // // backgroundImage: `url(${base64})`,
-          // // // backgroundImage: backgroundImageLoaded
-          // // //   ? `url(${base64}),linear-gradient(45deg,$colors$blackA7,$colors$blackA12)`
-          // // //   : `linear-gradient(45deg,$colors$blackA7,$colors$blackA12)`,
-          // // backgroundImage: `linear-gradient(45deg,$colors$blackA7,$colors$blackA12)`,
-          // // backgroundSize: 'cover',
-          // // borderRadius: '$4',
-          // // [`.${darkTheme} &`]: {
-          // //   // backgroundImage: `url(${base64})`,
-          // //   // backgroundImage: backgroundImageLoaded
-          // //   // ? `url(${base64}),linear-gradient(45deg,$colors$whiteA7,$colors$whiteA12)`
-          // //   // : `linear-gradient(45deg,$colors$whiteA7,$colors$whiteA12)`,
-          // //   backgroundImage: `linear-gradient(45deg,$colors$whiteA7,$colors$whiteA12)`,
-          // // },
-          // // boxShadow: Shadows[2],
-          // backgroundImage: Gradients.pink,
-          // boxShadow: Shadows[2],
-          // '&:hover': {
-          //   backgroundImage: Gradients.pinkHover,
-          //   boxShadow: Shadows[3],
-          // },
-          // [`.${darkTheme} &`]: { backgroundImage: Gradients.pink2 },
           transition: 'all 0.1s ease-in-out',
-          // '@media (prefers-reduced-motion)': {
-          //   transition: 'none',
-          // },
         }}
       />
-
-      <Image
-        alt={description}
-        blurDataURL={base64}
-        layout="intrinsic"
-        key={slug}
-        placeholder="blur"
-        priority={priority}
-        quality={80}
-        src={src}
-        height={height}
-        width={width}
-      />
+      <Image {...props} />
     </ImageContainer>
   )
 }
