@@ -1,4 +1,5 @@
 import '@jeromefitz/shared/src/styles/chrome.css'
+import '@jeromefitz/shared/src/styles/safari.css'
 
 import {
   globalCss,
