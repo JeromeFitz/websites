@@ -38,7 +38,7 @@ importers:
       ts-jest: 29.0.2
       ts-node: 10.9.1
       tsup: 6.2.3
-      turbo: 1.5.3
+      turbo: 1.5.4
       typescript: 4.7.4
     dependencies:
       '@babel/eslint-parser': 7.19.1
@@ -72,7 +72,7 @@ importers:
       ts-jest: 29.0.2_rhk3lyc2djtkaczoqhyu56xgee
       ts-node: 10.9.1_t4lrjbt3sxauai4t5o275zsepa
       tsup: 6.2.3_6oasmw356qmm23djlsjgkwvrtm
-      turbo: 1.5.3
+      turbo: 1.5.4
       typescript: 4.7.4
 
   packages/next-notion:
@@ -3226,6 +3226,7 @@ packages:
       eslint: 8.24.0
     transitivePeerDependencies:
       - supports-color
+    dev: true
 
   /@typescript-eslint/parser/5.38.0_oma37ntcsyoxqn5sr4l7ekf4na:
     resolution: {integrity: sha512-/F63giJGLDr0ms1Cr8utDAxP2SPiglaD6V+pCOcG35P2jCqdfR7uuEhz1GIC3oy4hkUF8xA1XSXmd9hOh/a5EA==}
@@ -3245,7 +3246,6 @@ packages:
       typescript: 4.7.4
     transitivePeerDependencies:
       - supports-color
-    dev: false
 
   /@typescript-eslint/parser/5.38.1_eslint@8.24.0:
     resolution: {integrity: sha512-LDqxZBVFFQnQRz9rUZJhLmox+Ep5kdUmLatLQnCRR6523YV+XhRjfYzStQ4MheFA8kMAfUlclHSbu+RKdRwQKw==}
@@ -3264,6 +3264,7 @@ packages:
       eslint: 8.24.0
     transitivePeerDependencies:
       - supports-color
+    dev: true
 
   /@typescript-eslint/parser/5.38.1_oma37ntcsyoxqn5sr4l7ekf4na:
     resolution: {integrity: sha512-LDqxZBVFFQnQRz9rUZJhLmox+Ep5kdUmLatLQnCRR6523YV+XhRjfYzStQ4MheFA8kMAfUlclHSbu+RKdRwQKw==}
@@ -3283,7 +3284,6 @@ packages:
       typescript: 4.7.4
     transitivePeerDependencies:
       - supports-color
-    dev: false
 
   /@typescript-eslint/scope-manager/5.38.0:
     resolution: {integrity: sha512-ByhHIuNyKD9giwkkLqzezZ9y5bALW8VNY6xXcP+VxoH4JBDKjU5WNnsiD4HJdglHECdV+lyaxhvQjTUbRboiTA==}
@@ -3390,6 +3390,7 @@ packages:
       tsutils: 3.21.0
     transitivePeerDependencies:
       - supports-color
+    dev: true
 
   /@typescript-eslint/typescript-estree/5.38.0_typescript@4.7.4:
     resolution: {integrity: sha512-6P0RuphkR+UuV7Avv7MU3hFoWaGcrgOdi8eTe1NwhMp2/GjUJoODBTRWzlHpZh6lFOaPmSvgxGlROa0Sg5Zbyg==}
@@ -3410,7 +3411,6 @@ packages:
       typescript: 4.7.4
     transitivePeerDependencies:
       - supports-color
-    dev: false
 
   /@typescript-eslint/typescript-estree/5.38.1:
     resolution: {integrity: sha512-99b5e/Enoe8fKMLdSuwrfH/C0EIbpUWmeEKHmQlGZb8msY33qn1KlkFww0z26o5Omx7EVjzVDCWEfrfCDHfE7g==}
@@ -3430,6 +3430,7 @@ packages:
       tsutils: 3.21.0
     transitivePeerDependencies:
       - supports-color
+    dev: true
 
   /@typescript-eslint/typescript-estree/5.38.1_typescript@4.7.4:
     resolution: {integrity: sha512-99b5e/Enoe8fKMLdSuwrfH/C0EIbpUWmeEKHmQlGZb8msY33qn1KlkFww0z26o5Omx7EVjzVDCWEfrfCDHfE7g==}
@@ -3450,7 +3451,6 @@ packages:
       typescript: 4.7.4
     transitivePeerDependencies:
       - supports-color
-    dev: false
 
   /@typescript-eslint/utils/5.38.1_eslint@8.24.0:
     resolution: {integrity: sha512-oIuUiVxPBsndrN81oP8tXnFa/+EcZ03qLqPDfSZ5xIJVm7A9V0rlkQwwBOAGtrdN70ZKDlKv+l1BeT4eSFxwXA==}
@@ -5271,7 +5271,7 @@ packages:
       eslint-import-resolver-webpack:
         optional: true
     dependencies:
-      '@typescript-eslint/parser': 5.38.1_eslint@8.24.0
+      '@typescript-eslint/parser': 5.38.1_oma37ntcsyoxqn5sr4l7ekf4na
       debug: 3.2.7
       eslint: 8.24.0
       eslint-import-resolver-node: 0.3.6
@@ -5328,7 +5328,7 @@ packages:
       eslint-import-resolver-webpack:
         optional: true
     dependencies:
-      '@typescript-eslint/parser': 5.38.0_eslint@8.24.0
+      '@typescript-eslint/parser': 5.38.0_oma37ntcsyoxqn5sr4l7ekf4na
       debug: 3.2.7
       eslint: 8.24.0
       eslint-import-resolver-node: 0.3.6
@@ -5346,7 +5346,7 @@ packages:
       '@typescript-eslint/parser':
         optional: true
     dependencies:
-      '@typescript-eslint/parser': 5.38.0_eslint@8.24.0
+      '@typescript-eslint/parser': 5.38.0_oma37ntcsyoxqn5sr4l7ekf4na
       array-includes: 3.1.5
       array.prototype.flat: 1.3.0
       debug: 2.6.9
@@ -5376,7 +5376,7 @@ packages:
       '@typescript-eslint/parser':
         optional: true
     dependencies:
-      '@typescript-eslint/parser': 5.38.1_eslint@8.24.0
+      '@typescript-eslint/parser': 5.38.1_oma37ntcsyoxqn5sr4l7ekf4na
       array-includes: 3.1.5
       array.prototype.flat: 1.3.0
       debug: 2.6.9
@@ -10066,6 +10066,7 @@ packages:
       typescript: '>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta'
     dependencies:
       tslib: 1.14.1
+    dev: true
 
   /tsutils/3.21.0_typescript@3.9.10:
     resolution: {integrity: sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA==}
@@ -10085,7 +10086,6 @@ packages:
     dependencies:
       tslib: 1.14.1
       typescript: 4.7.4
-    dev: false
 
   /tunnel-agent/0.6.0:
     resolution: {integrity: sha512-McnNiV1l8RYeY8tBgEpuodCC1mLUdbSN+CYBL7kJsJNInOP8UjDDEwdk6Mw60vdLLrr5NHKZhMAOSrR2NZuQ+w==}
@@ -10093,65 +10093,65 @@ packages:
       safe-buffer: 5.2.1
     dev: false
 
-  /turbo-darwin-64/1.5.3:
-    resolution: {integrity: sha512-MBS8b/3DuMY6v3ljEX9qssHGQXnI4VDWLqvQ6FGfZFMp8lqa7mfoXv1U/MNR9OhSczaftsIS1e9mnD9m/qv7TQ==}
+  /turbo-darwin-64/1.5.4:
+    resolution: {integrity: sha512-Bdxnwf+m0bnRb5HsVZLe+GRer+MOUgLNjOxluwD7POETgH8CTWu99DXfIMAVDWNILVmPCZbWv8Qh2XwhmPlBqw==}
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
     dev: false
     optional: true
 
-  /turbo-darwin-arm64/1.5.3:
-    resolution: {integrity: sha512-XNSV6SaxS8dAvGx2BF3H7MsKZ4zchj2kP/eXTss/vUcSRsS+zx0urZcEgxeGUeMk7V7fJq/5Ow7thApNojpwpw==}
+  /turbo-darwin-arm64/1.5.4:
+    resolution: {integrity: sha512-1Jdv6bl0v9TITEYDxwNFXdWMlYOifWdnrzkTDyaUV/IM0iL1oGiuD4ZdM9VfbR1D7y573dCmVPvbzgV3GQbJZA==}
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
     dev: false
     optional: true
 
-  /turbo-linux-64/1.5.3:
-    resolution: {integrity: sha512-YhYu50CUvy5m80l6dEXEgC3CvjjTelQb14fknAzIXoKztbWhBZqUCucR6jLRZpKgODwP4Fo4LUzz478EMwqy/Q==}
+  /turbo-linux-64/1.5.4:
+    resolution: {integrity: sha512-FbsXHOIkFnjX4Qu7ZtoCimmy5GlnTYuy66TO2re3i+jy+a59XOAnhU8tT/+FcA73oDAnSv/SAbz1gbsknCU4PA==}
     cpu: [x64]
     os: [linux]
     requiresBuild: true
     dev: false
     optional: true
 
-  /turbo-linux-arm64/1.5.3:
-    resolution: {integrity: sha512-JjJjxy0kkr/xAWAAE8t7UaTBc3GUc5Tz/Bupbve2VzG0w75md0LqXUV34WpyxMiNTNLmK8Dq7bIczG6OkJ29xQ==}
+  /turbo-linux-arm64/1.5.4:
+    resolution: {integrity: sha512-dYX2ekvYsHGSEsLI+NdoYskr1IEmUES+rup3vc9fFziYX+qOoQuttB7VYA9z6+E4fPpLCxAShPwzxmaXhplCNg==}
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
     dev: false
     optional: true
 
-  /turbo-windows-64/1.5.3:
-    resolution: {integrity: sha512-PS7+Isy7OX9xWWvtg2FKmh/eN4fTNR2r6RW5m+b+zR7t04QLWYOya1R8CeqgA6GyeFpn4KUxC+AeZ0wOi8RSPw==}
+  /turbo-windows-64/1.5.4:
+    resolution: {integrity: sha512-xMmmfplaPrN2Bac+tmOo7bncKhcjv2a/6UGXobNspWzwf6dEboHtxbsP0kIfqoi/22gyj66jg/K/gFJgX08pnw==}
     cpu: [x64]
     os: [win32]
     requiresBuild: true
     dev: false
     optional: true
 
-  /turbo-windows-arm64/1.5.3:
-    resolution: {integrity: sha512-DQzjFbPRd/Db5kkJtCER5DNcbY4ez5Bh8usemNlPZQ7I/5XwEUl9Rn3ss2LJsiv/pR7PkY92TUvmyFtBnqao8Q==}
+  /turbo-windows-arm64/1.5.4:
+    resolution: {integrity: sha512-6/DfBdUK+FrbRavQQY9XnxW+1SHPMsuooVjrW8nSh9KFXxTccbFvslUO38usl/lZ0EMKu7MC8D7Vf/zQ9pYGyw==}
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
     dev: false
     optional: true
 
-  /turbo/1.5.3:
-    resolution: {integrity: sha512-/94cswfhXr6wWD6CFyF7E8bjEdjar4O+gzCJ3d49X9t9u9aDYFoQH/TlYTSNbAwXYiGqzJoodhf3kXRyrAiqSg==}
+  /turbo/1.5.4:
+    resolution: {integrity: sha512-8txVfU6J4H5ZkSxr6N6Qn7H+W2Cpr0Uh67VeCH4/ZIbH4u24qPFZA9emlGcss0tI1pZHKGJ0+KjoSzC7vWqN2g==}
     hasBin: true
     requiresBuild: true
     optionalDependencies:
-      turbo-darwin-64: 1.5.3
-      turbo-darwin-arm64: 1.5.3
-      turbo-linux-64: 1.5.3
-      turbo-linux-arm64: 1.5.3
-      turbo-windows-64: 1.5.3
-      turbo-windows-arm64: 1.5.3
+      turbo-darwin-64: 1.5.4
+      turbo-darwin-arm64: 1.5.4
+      turbo-linux-64: 1.5.4
+      turbo-linux-arm64: 1.5.4
+      turbo-windows-64: 1.5.4
+      turbo-windows-arm64: 1.5.4
     dev: false
 
   /type-check/0.3.2:
