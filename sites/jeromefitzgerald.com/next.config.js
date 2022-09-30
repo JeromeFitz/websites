@@ -58,6 +58,7 @@ const isLocalDebugMessages = [
  */
 const envRequired = [
   'GH_TOKEN',
+  'NEXT_PUBLIC__EVENT_UPCOMING_FLAG',
   'NEXT_PUBLIC__FATHOM_CUSTOM_DOMAIN',
   'NEXT_PUBLIC__FATHOM_SITE_ID',
   'NEXT_PUBLIC__SITE',

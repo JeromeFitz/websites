@@ -15,6 +15,7 @@ import { Shadows } from '@jeromefitz/shared/src/styles/const'
 // import { Gradients, Shadows } from '@jeromefitz/shared/src/styles/const'
 import { parseISO } from 'date-fns'
 import { formatInTimeZone as _formatInTimeZone } from 'date-fns-tz'
+import _orderBy from 'lodash/orderBy'
 import { fetcher } from 'next-notion/src/lib/fetcher'
 import { getNextPageStatus } from 'next-notion/src/utils'
 import NextLink from 'next/link'
@@ -77,7 +78,9 @@ const BannerImpl = () => {
   )
 
   const isLoaded = !is404 && !isLoading && !isError && !isDataUndefined
-  const item = data?.items?.results[0]
+  const items = data?.items?.results
+  const itemsSorted = _orderBy(items, ['properties.dateEvent.start'], ['asc'])
+  const item = itemsSorted[0]
   const hasItem = isLoaded && !!item
   // if (!hasItem) return null
 
