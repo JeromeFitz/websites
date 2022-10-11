@@ -33,7 +33,7 @@
   "dependencies": {
     "@heroicons/react": "2.0.11",
     "@jeromefitz/design-system": "4.1.3",
-    "@jeromefitz/notion": "3.3.7",
+    "@jeromefitz/notion": "3.3.8",
     "@jeromefitz/spotify": "2.3.2",
     "@jeromefitz/utils": "2.2.1",
     "@mantine/hooks": "5.5.5",
