@@ -31,7 +31,7 @@
     "unused": "pnpm next-unused"
   },
   "dependencies": {
-    "@heroicons/react": "2.0.11",
+    "@heroicons/react": "2.0.12",
     "@jeromefitz/design-system": "4.1.3",
     "@jeromefitz/notion": "3.3.8",
     "@jeromefitz/spotify": "2.3.2",
