@@ -37,7 +37,7 @@ importers:
       syncpack: 8.2.4
       ts-jest: 29.0.3
       ts-node: 10.9.1
-      tsup: 6.2.3
+      tsup: 6.3.0
       turbo: 1.5.6
       typescript: 4.7.4
     dependencies:
@@ -71,7 +71,7 @@ importers:
       syncpack: 8.2.4
       ts-jest: 29.0.3_cgm5npjf53nz5ecfti4ssld6dm
       ts-node: 10.9.1_t4lrjbt3sxauai4t5o275zsepa
-      tsup: 6.2.3_6oasmw356qmm23djlsjgkwvrtm
+      tsup: 6.3.0_6oasmw356qmm23djlsjgkwvrtm
       turbo: 1.5.6
       typescript: 4.7.4
 
@@ -10122,8 +10122,8 @@ packages:
   /tslib/2.4.0:
     resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==}
 
-  /tsup/6.2.3_6oasmw356qmm23djlsjgkwvrtm:
-    resolution: {integrity: sha512-J5Pu2Dx0E1wlpIEsVFv9ryzP1pZ1OYsJ2cBHZ7GrKteytNdzaSz5hmLX7/nAxtypq+jVkVvA79d7S83ETgHQ5w==}
+  /tsup/6.3.0_6oasmw356qmm23djlsjgkwvrtm:
+    resolution: {integrity: sha512-IaNQO/o1rFgadLhNonVKNCT2cks+vvnWX3DnL8sB87lBDqRvJXHENr5lSPJlqwplUlDxSwZK8dSg87rgBu6Emw==}
     engines: {node: '>=14'}
     hasBin: true
     peerDependencies:
