@@ -37,7 +37,7 @@
     "@jeromefitz/spotify": "2.3.2",
     "@jeromefitz/utils": "2.2.1",
     "@mantine/hooks": "5.5.5",
-    "@octokit/core": "4.0.5",
+    "@octokit/core": "4.1.0",
     "@plaiceholder/next": "2.5.0",
     "@radix-ui/colors": "0.1.8",
     "@radix-ui/react-icons": "1.1.1",
