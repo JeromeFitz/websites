@@ -171,7 +171,7 @@ importers:
       '@jeromefitz/spotify': 2.3.2
       '@jeromefitz/tsconfig': 1.1.1
       '@jeromefitz/utils': 2.2.1
-      '@mantine/hooks': 5.5.5
+      '@mantine/hooks': 5.6.0
       '@next/bundle-analyzer': 12.3.1
       '@octokit/core': 4.1.0
       '@plaiceholder/next': 2.5.0
@@ -232,7 +232,7 @@ importers:
       '@jeromefitz/notion': 3.3.8_cwubw3yppmn7f4gpl6k3kt7vty
       '@jeromefitz/spotify': 2.3.2_ib3mwgorawl3dzu4ptducd5i74
       '@jeromefitz/utils': 2.2.1
-      '@mantine/hooks': 5.5.5_react@18.2.0
+      '@mantine/hooks': 5.6.0_react@18.2.0
       '@octokit/core': 4.1.0_encoding@0.1.13
       '@plaiceholder/next': 2.5.0_next@12.3.1+sharp@0.31.1
       '@radix-ui/colors': 0.1.8
@@ -1496,8 +1496,8 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: false
 
-  /@mantine/hooks/5.5.5_react@18.2.0:
-    resolution: {integrity: sha512-qWZAZm203s0knYk6Ut4VPvur9H5BMul02cCb9E09s60iSjnLRHDC3f73VmSzmLZNVfgE+7hXUhguR/1lC7js4Q==}
+  /@mantine/hooks/5.6.0_react@18.2.0:
+    resolution: {integrity: sha512-If1+yJKpMzzZuiSn6orX+ZaM2KLKeupE4GnI76tAVWRwDhsd/pqTXY5GbrJXSd59BgggXmTm5pifcJVOGyhHvA==}
     peerDependencies:
       react: '>=16.8.0'
     dependencies:
