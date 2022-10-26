@@ -51,7 +51,7 @@
     "fast-json-stable-stringify": "2.1.0",
     "fathom-client": "3.5.0",
     "framer-motion": "7.6.1",
-    "github-slugger": "1.4.0",
+    "github-slugger": "1.5.0",
     "immer": "9.0.16",
     "ioredis": "5.2.3",
     "ms": "3.0.0-canary.1",
