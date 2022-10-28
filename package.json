@@ -69,7 +69,7 @@
     "rimraf": "3.0.2",
     "semantic-release": "19.0.5",
     "semantic-release-monorepo": "7.0.5",
-    "syncpack": "8.2.4",
+    "syncpack": "8.3.9",
     "ts-jest": "29.0.3",
     "ts-node": "10.9.1",
     "tsup": "6.3.0",
