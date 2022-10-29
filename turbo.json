@@ -1,12 +1,12 @@
 {
   "$schema": "https://turborepo.org/schema.json",
-  "baseBranch": "origin/main",
   "globalDependencies": ["pnpm-workspace.yaml"],
   "pipeline": {
     "build": {
       "outputs": [".cache/**", ".next/**"],
-      "dependsOn": ["^build", "$VERCEL_ENV"],
-      "inputs": ["src/**", "*.cjs", "*.js", "package.json", "vercel.json"]
+      "dependsOn": ["^build"],
+      "inputs": ["src/**", "*.cjs", "*.js", "package.json", "vercel.json"],
+      "env": ["VERCEL_ENV"]
     },
     "clean": {
       "cache": false
