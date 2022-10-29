@@ -1,7 +1,7 @@
 import Client from '@jeromefitz/spotify'
 import type { CredentialProps, ClientProps } from '@jeromefitz/spotify'
 import stringify from 'fast-json-stable-stringify'
-import Slugger from 'github-slugger'
+import { slug as _slug } from 'github-slugger'
 import ms from 'ms'
 import { NextApiResponse } from 'next'
 import redis from 'next-notion/src/lib/redis'
@@ -33,7 +33,7 @@ const getKey = ({ limit, offset, slug, time_range }) => {
   }
 
   const _params = `?time_range=${time_range}&limit=${limit}&offset=${offset}`
-  const params = Slugger.slug(_params)
+  const params = _slug(_params)
   const key = `${keyPrefix}/${slug}/${params}`.toLowerCase()
 
   return {
