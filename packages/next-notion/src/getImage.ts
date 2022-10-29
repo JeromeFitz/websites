@@ -1,4 +1,4 @@
-import Slugger from 'github-slugger'
+import { slug as _slug } from 'github-slugger'
 import _startsWith from 'lodash/startsWith'
 import type { IGetPlaiceholderReturn } from 'plaiceholder'
 import validUrl from 'valid-url'
@@ -45,7 +45,7 @@ const getImage = async (_url: string) => {
   } else {
     url = _url
     if (validUrl.isHttpsUri(url)) {
-      id = Slugger.slug(url)
+      id = _slug(url)
       key = `${keyPrefix}/${id}`.toLowerCase()
     } else {
       data = undefined

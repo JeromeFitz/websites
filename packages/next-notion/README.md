@@ -160,7 +160,7 @@ So maybe for now this only works with `Next` if we move it over early.
 
 #### image
 
-Currently tied to `next/future/image`
+Currently tied to `next/image`
 
 #### TextAnnotations
 
