@@ -167,7 +167,7 @@ importers:
       '@jeromefitz/notion': 4.0.0
       '@jeromefitz/prettier-config': 1.1.1
       '@jeromefitz/shared': workspace:*
-      '@jeromefitz/spotify': 3.0.0
+      '@jeromefitz/spotify': 3.0.1
       '@jeromefitz/tsconfig': 1.1.1
       '@jeromefitz/utils': 2.2.1
       '@mantine/hooks': 5.6.3
@@ -228,7 +228,7 @@ importers:
       '@heroicons/react': 2.0.12_react@18.2.0
       '@jeromefitz/design-system': 4.1.5_i3carmykep2gmyxutv7lgctpoa
       '@jeromefitz/notion': 4.0.0_cwubw3yppmn7f4gpl6k3kt7vty
-      '@jeromefitz/spotify': 3.0.0_ib3mwgorawl3dzu4ptducd5i74
+      '@jeromefitz/spotify': 3.0.1_ib3mwgorawl3dzu4ptducd5i74
       '@jeromefitz/utils': 2.2.1
       '@mantine/hooks': 5.6.3_react@18.2.0
       '@octokit/core': 4.1.0_encoding@0.1.13
@@ -1420,10 +1420,10 @@ packages:
       - supports-color
     dev: false
 
-  /@jeromefitz/spotify/3.0.0_ib3mwgorawl3dzu4ptducd5i74:
+  /@jeromefitz/spotify/3.0.1_ib3mwgorawl3dzu4ptducd5i74:
     resolution:
       {
-        integrity: sha512-ENdFto8nRD6wOLVxStjDQvb5OFubsvIwTeQZP5SvRLaG20VdE6XP309imoQbedIlSCV7P4tT1eJlvR5VMNEe1g==,
+        integrity: sha512-NJ/1VixSwyLRNH1nj29W+UwsUpoTOnXbtl5OfD3BhNA0oRau1Re4y6tzSk2nqpmgZiwbU3O/etAqOQNi8V1RtQ==,
       }
     engines: { node: '>=16' }
     peerDependencies:
