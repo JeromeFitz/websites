@@ -183,11 +183,9 @@ importers:
       '@types/react-dom': 18.0.8
       '@types/title': 3.4.1
       '@types/uuid': 8.3.4
-      '@vercel/fetch': 6.2.0
       cmdk: 0.1.20
       date-fns: 2.29.3
       date-fns-tz: 1.3.7
-      encoding: 0.1.13
       eslint-config-next: 13.0.0
       fast-json-stable-stringify: 2.1.0
       fathom-client: 3.5.0
@@ -221,17 +219,16 @@ importers:
     dependencies:
       '@heroicons/react': 2.0.12_react@18.2.0
       '@jeromefitz/design-system': 4.1.5_i3carmykep2gmyxutv7lgctpoa
-      '@jeromefitz/notion': 4.0.0_cwubw3yppmn7f4gpl6k3kt7vty
-      '@jeromefitz/spotify': 3.0.1_ib3mwgorawl3dzu4ptducd5i74
+      '@jeromefitz/notion': 4.0.0_@jeromefitz+utils@2.2.1
+      '@jeromefitz/spotify': 3.0.1_2o6u4k2dexmocbsr2o3k36tnau
       '@jeromefitz/utils': 2.2.1
       '@mantine/hooks': 5.6.3_react@18.2.0
-      '@octokit/core': 4.1.0_encoding@0.1.13
+      '@octokit/core': 4.1.0
       '@plaiceholder/next': 2.5.0_next@13.0.0+sharp@0.31.1
       '@radix-ui/colors': 0.1.8
       '@radix-ui/react-icons': 1.1.1_react@18.2.0
       '@stitches/react': 1.2.8_react@18.2.0
       '@types/react': 18.0.24
-      '@vercel/fetch': 6.2.0
       cmdk: 0.1.20_knhnagtyfncgg2hpin7s37uixq
       date-fns: 2.29.3
       date-fns-tz: 1.3.7_date-fns@2.29.3
@@ -276,7 +273,6 @@ importers:
       '@types/react-dom': 18.0.8
       '@types/title': 3.4.1
       '@types/uuid': 8.3.4
-      encoding: 0.1.13
       eslint-config-next: 13.0.0
       next-notion: link:../../packages/next-notion
       next-unused: 0.0.6
@@ -1337,26 +1333,6 @@ packages:
       github-slugger: 2.0.0
     transitivePeerDependencies:
       - encoding
-    dev: true
-
-  /@jeromefitz/notion/4.0.0_cwubw3yppmn7f4gpl6k3kt7vty:
-    resolution:
-      {
-        integrity: sha512-Eh7AIXFE27d7UKu+O5OUSzWWRtYL4vDkJNI7Lw//Ri2pwALh3Es8dQV/U/AiapYzZf/+RAQaS4S23XbI6AI0Ug==,
-      }
-    engines: { node: '>=16' }
-    peerDependencies:
-      '@jeromefitz/utils': ^2.1.0
-      lodash: ^4.17.21
-    dependencies:
-      '@jeromefitz/utils': 2.2.1
-      '@notionhq/client': 2.2.1_encoding@0.1.13
-      date-fns: 2.29.3
-      date-fns-tz: 1.3.7_date-fns@2.29.3
-      github-slugger: 2.0.0
-    transitivePeerDependencies:
-      - encoding
-    dev: false
 
   /@jeromefitz/prettier-config/1.1.1:
     resolution:
@@ -1410,7 +1386,7 @@ packages:
       - supports-color
     dev: false
 
-  /@jeromefitz/spotify/3.0.1_ib3mwgorawl3dzu4ptducd5i74:
+  /@jeromefitz/spotify/3.0.1_2o6u4k2dexmocbsr2o3k36tnau:
     resolution:
       {
         integrity: sha512-NJ/1VixSwyLRNH1nj29W+UwsUpoTOnXbtl5OfD3BhNA0oRau1Re4y6tzSk2nqpmgZiwbU3O/etAqOQNi8V1RtQ==,
@@ -1423,7 +1399,7 @@ packages:
     dependencies:
       '@jeromefitz/utils': 2.2.1
       github-slugger: 2.0.0
-      isomorphic-unfetch: 3.1.0_encoding@0.1.13
+      isomorphic-unfetch: 3.1.0
       plaiceholder: 2.5.0_sharp@0.31.1
       sharp: 0.31.1
     transitivePeerDependencies:
@@ -2058,20 +2034,6 @@ packages:
       node-fetch: 2.6.7
     transitivePeerDependencies:
       - encoding
-    dev: true
-
-  /@notionhq/client/2.2.1_encoding@0.1.13:
-    resolution:
-      {
-        integrity: sha512-EExR8gCWuqvYQsNw5Z9kvZhRTy7wgioI4ypr5y0dPclvxBXZ7I7Yy509ZbCbeAFes33eLFV8Heu0svQwg8ZSZQ==,
-      }
-    engines: { node: '>=12' }
-    dependencies:
-      '@types/node-fetch': 2.6.2
-      node-fetch: 2.6.7_encoding@0.1.13
-    transitivePeerDependencies:
-      - encoding
-    dev: false
 
   /@octokit/auth-token/3.0.0:
     resolution:
@@ -2101,24 +2063,6 @@ packages:
       - encoding
     dev: false
 
-  /@octokit/core/4.1.0_encoding@0.1.13:
-    resolution:
-      {
-        integrity: sha512-Czz/59VefU+kKDy+ZfDwtOIYIkFjExOKf+HA92aiTZJ6EfWpFzYQWw0l54ji8bVmyhc+mGaLUbSUmXazG7z5OQ==,
-      }
-    engines: { node: '>= 14' }
-    dependencies:
-      '@octokit/auth-token': 3.0.0
-      '@octokit/graphql': 5.0.0_encoding@0.1.13
-      '@octokit/request': 6.0.2_encoding@0.1.13
-      '@octokit/request-error': 3.0.0
-      '@octokit/types': 8.0.0
-      before-after-hook: 2.2.2
-      universal-user-agent: 6.0.0
-    transitivePeerDependencies:
-      - encoding
-    dev: false
-
   /@octokit/endpoint/7.0.0:
     resolution:
       {
@@ -2139,20 +2083,6 @@ packages:
     engines: { node: '>= 14' }
     dependencies:
       '@octokit/request': 6.0.2
-      '@octokit/types': 6.41.0
-      universal-user-agent: 6.0.0
-    transitivePeerDependencies:
-      - encoding
-    dev: false
-
-  /@octokit/graphql/5.0.0_encoding@0.1.13:
-    resolution:
-      {
-        integrity: sha512-1ZZ8tX4lUEcLPvHagfIVu5S2xpHYXAmgN0+95eAOPoaVPzCfUXJtA5vASafcpWcO86ze0Pzn30TAx72aB2aguQ==,
-      }
-    engines: { node: '>= 14' }
-    dependencies:
-      '@octokit/request': 6.0.2_encoding@0.1.13
       '@octokit/types': 6.41.0
       universal-user-agent: 6.0.0
     transitivePeerDependencies:
@@ -2235,23 +2165,6 @@ packages:
       '@octokit/types': 6.41.0
       is-plain-object: 5.0.0
       node-fetch: 2.6.7
-      universal-user-agent: 6.0.0
-    transitivePeerDependencies:
-      - encoding
-    dev: false
-
-  /@octokit/request/6.0.2_encoding@0.1.13:
-    resolution:
-      {
-        integrity: sha512-WPMcm8nUET2v6P5AbTIhNzEorMLFPbFnzfP/VMAaRFwNzaqHmVvS+YLvqtWyKq0vnZ6a9ImQuCHNb3L4oNovRw==,
-      }
-    engines: { node: '>= 14' }
-    dependencies:
-      '@octokit/endpoint': 7.0.0
-      '@octokit/request-error': 3.0.0
-      '@octokit/types': 6.41.0
-      is-plain-object: 5.0.0
-      node-fetch: 2.6.7_encoding@0.1.13
       universal-user-agent: 6.0.0
     transitivePeerDependencies:
       - encoding
@@ -3692,22 +3605,6 @@ packages:
       }
     dev: false
 
-  /@types/async-retry/1.2.1:
-    resolution:
-      {
-        integrity: sha512-yMQ6CVgICWtyFNBqJT3zqOc+TnqqEPLo4nKJNPFwcialiylil38Ie6q1ENeFTjvaLOkVim9K5LisHgAKJWidGQ==,
-      }
-    dev: false
-
-  /@types/async-retry/1.4.4:
-    resolution:
-      {
-        integrity: sha512-IGT+yESLPYje0MV8MfOpT5V5oH9lAKLwlosQRyq75tYJmntkkWcfEThHLxsgYjGmYXJEY7ZZkYPb4xuW+NA6GA==,
-      }
-    dependencies:
-      '@types/retry': 0.12.2
-    dev: false
-
   /@types/babel__core/7.1.19:
     resolution:
       {
@@ -3827,13 +3724,6 @@ packages:
         integrity: sha512-eHcVlLXP0c2FlMPm56ITode2AgLMSa6aJ05JTTbYbI+7EMkCEE5qk2E41d5g2lCVTqRe0GnnRFurmlCsDODrPw==,
       }
 
-  /@types/lru-cache/4.1.1:
-    resolution:
-      {
-        integrity: sha512-8mNEUG6diOrI6pMqOHrHPDBB1JsrpedeMK9AWGzVCQ7StRRribiT9BRvUmF8aUws9iBbVlgVekOT5Sgzc1MTKw==,
-      }
-    dev: false
-
   /@types/minimatch/3.0.5:
     resolution:
       {
@@ -3862,13 +3752,6 @@ packages:
     dependencies:
       '@types/node': 18.11.7
       form-data: 3.0.1
-
-  /@types/node/10.12.18:
-    resolution:
-      {
-        integrity: sha512-fh+pAqt4xRzPfqA6eh3Z2y6fyZavRIumvjhaCL753+TVkGKGhpPeyrJG2JftD0T9q4GF00KjefsQ+PQNDdWQaQ==,
-      }
-    dev: false
 
   /@types/node/16.11.7:
     resolution:
@@ -3963,13 +3846,6 @@ packages:
     resolution:
       {
         integrity: sha512-wWKOClTTiizcZhXnPY4wikVAwmdYHp8q6DmC+EJUzAMsycb7HB32Kh9RN4+0gExjmPmZSAQjgURXIGATPegAvA==,
-      }
-    dev: false
-
-  /@types/retry/0.12.2:
-    resolution:
-      {
-        integrity: sha512-XISRgDJ2Tc5q4TRqvgJtzsRkFYNJzZrhTdtMoGVBttwzzQJkPnS3WWTFc7kuDRoPtPakl+T+OfdEUjYJj7Jbow==,
       }
     dev: false
 
@@ -4515,68 +4391,11 @@ packages:
       '@typescript-eslint/types': 5.41.0
       eslint-visitor-keys: 3.3.0
 
-  /@vercel/fetch-cached-dns/2.1.0:
-    resolution:
-      {
-        integrity: sha512-dIQWF+bG2EOYeCCCeT3E77qZZa7VgW2quEKw4k8/keeoD8lRMjiNi//Ww7LJ8wXecfv7XXtprwN5uLLLGo/ktg==,
-      }
-    peerDependencies:
-      node-fetch: ^2.6.1
-    dependencies:
-      '@types/node-fetch': 2.6.2
-      '@zeit/dns-cached-resolve': 2.1.2
-    dev: false
-
-  /@vercel/fetch-retry/5.1.3:
-    resolution:
-      {
-        integrity: sha512-UIbFc4VsEZHOr6dWuE+kxY4NxnOLXFMCWm0fSKRRHUEtrIzaJLzHpWk2QskCXTSzFgFvhkLAvSrBK2XZg7NSzg==,
-      }
-    peerDependencies:
-      node-fetch: ^2.6.7
-    dependencies:
-      async-retry: 1.3.3
-      debug: 4.3.4
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
-
-  /@vercel/fetch/6.2.0:
-    resolution:
-      {
-        integrity: sha512-MU+Mzh06NIAXxwdnyHmBFg+/lTKBbzDkCSNhAwWTFJ4rHuBc4pHc8E6XP+qnwqaWugjOBQgFfQCGDLnV820c9A==,
-      }
-    peerDependencies:
-      '@types/node-fetch': ^2.6.1
-      node-fetch: ^2.6.7
-    dependencies:
-      '@types/async-retry': 1.4.4
-      '@vercel/fetch-cached-dns': 2.1.0
-      '@vercel/fetch-retry': 5.1.3
-      agentkeepalive: 4.2.1
-      debug: 4.3.4
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
-
   /@xobotyi/scrollbar-width/1.9.5:
     resolution:
       {
         integrity: sha512-N8tkAACJx2ww8vFMneJmaAgmjAG1tnVBZJRLRcx061tmsLRZHSEZSLuGWnwPtunsSLvSqXQ2wfp7Mgqg1I+2dQ==,
       }
-    dev: false
-
-  /@zeit/dns-cached-resolve/2.1.2:
-    resolution:
-      {
-        integrity: sha512-A/5gbBskKPETTBqHwvlaW1Ri2orO62yqoFoXdxna1SQ7A/lXjpWgpJ1wdY3IQEcz5LydpS4sJ8SzI2gFyyLEhg==,
-      }
-    dependencies:
-      '@types/async-retry': 1.2.1
-      '@types/lru-cache': 4.1.1
-      '@types/node': 10.12.18
-      async-retry: 1.2.3
-      lru-cache: 5.1.1
     dev: false
 
   /JSONStream/1.3.5:
@@ -4632,20 +4451,6 @@ packages:
     engines: { node: '>= 6.0.0' }
     dependencies:
       debug: 4.3.4
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
-
-  /agentkeepalive/4.2.1:
-    resolution:
-      {
-        integrity: sha512-Zn4cw2NEqd+9fiSVWMscnjyQ1a8Yfoc5oBajLeo5w+YBHgDUcEBY2hS4YpTz6iN5f/2zQiktcuM6tS8x1p9dpA==,
-      }
-    engines: { node: '>= 8.0.0' }
-    dependencies:
-      debug: 4.3.4
-      depd: 1.1.2
-      humanize-ms: 1.2.1
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -4946,24 +4751,6 @@ packages:
         integrity: sha512-Z7tMw1ytTXt5jqMcOP+OQteU1VuNK9Y02uuJtKQ1Sv69jXQKKg5cibLwGJow8yzZP+eAc18EmLGPal0bp36rvQ==,
       }
     engines: { node: '>=8' }
-
-  /async-retry/1.2.3:
-    resolution:
-      {
-        integrity: sha512-tfDb02Th6CE6pJUF2gjW5ZVjsgwlucVXOEQMvEX9JgSJMs9gAX+Nz3xRuJBKuUYjTSYORqvDBORdAQ3LU59g7Q==,
-      }
-    dependencies:
-      retry: 0.12.0
-    dev: false
-
-  /async-retry/1.3.3:
-    resolution:
-      {
-        integrity: sha512-wfr/jstw9xNi/0teMHrRW7dsz3Lt5ARhYNZ2ewpadnhaIp5mbALhOAP+EAdsC7t4Z6wqsDVv9+W6gm1Dk9mEyw==,
-      }
-    dependencies:
-      retry: 0.13.1
-    dev: false
 
   /asynckit/0.4.0:
     resolution:
@@ -6023,14 +5810,6 @@ packages:
         integrity: sha512-tfiWc6BQLXNLpNiR5iGd0Ocu3P3VpxfzFiqubLgMfhfOw9WyvgJBd46CClNn9k3qfbjvT//0cf7AlYRX/OslMQ==,
       }
     engines: { node: '>=0.10' }
-
-  /depd/1.1.2:
-    resolution:
-      {
-        integrity: sha512-7emPTl6Dpo6JRXOXjLRxck+FlLRX5847cLKEn00PLAgc3g2hTZZgr+e4c2v6QpSmLeFP3n5yUo7ft6avBK/5jQ==,
-      }
-    engines: { node: '>= 0.6' }
-    dev: false
 
   /dependency-tree/8.1.2:
     resolution:
@@ -8363,15 +8142,6 @@ packages:
       }
     engines: { node: '>=12.20.0' }
 
-  /humanize-ms/1.2.1:
-    resolution:
-      {
-        integrity: sha512-Fl70vYtsAFb/C06PTS9dZBo7ihau+Tu/DNCk/OyHhea07S+aeMWpFFkUaXRa8fI+ScZbEI8dfSxwY7gxZ9SAVQ==,
-      }
-    dependencies:
-      ms: 2.1.2
-    dev: false
-
   /husky/8.0.1:
     resolution:
       {
@@ -8925,13 +8695,13 @@ packages:
     engines: { node: '>=0.10.0' }
     dev: false
 
-  /isomorphic-unfetch/3.1.0_encoding@0.1.13:
+  /isomorphic-unfetch/3.1.0:
     resolution:
       {
         integrity: sha512-geDJjpoZ8N0kWexiwkX8F9NkTsXhetLPVbZFQ+JTW239QNOwvB0gniuR1Wc6f0AMTn7/mFGyXvHTifrCp/GH8Q==,
       }
     dependencies:
-      node-fetch: 2.6.7_encoding@0.1.13
+      node-fetch: 2.6.7
       unfetch: 4.2.0
     transitivePeerDependencies:
       - encoding
@@ -9959,15 +9729,6 @@ packages:
     dependencies:
       pseudomap: 1.0.2
       yallist: 2.1.2
-    dev: false
-
-  /lru-cache/5.1.1:
-    resolution:
-      {
-        integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==,
-      }
-    dependencies:
-      yallist: 3.1.1
     dev: false
 
   /lru-cache/6.0.0:
@@ -12056,14 +11817,6 @@ packages:
     dependencies:
       onetime: 5.1.2
       signal-exit: 3.0.7
-
-  /retry/0.12.0:
-    resolution:
-      {
-        integrity: sha512-9LkiTwjUh6rT555DtE9rTX+BKByPfrMzEAtnlEtdEwr3Nkffwiihqe2bWADg+OQRjt9gl6ICdmB/ZFDCGAtSow==,
-      }
-    engines: { node: '>= 4' }
-    dev: false
 
   /retry/0.13.1:
     resolution:
@@ -14165,13 +13918,6 @@ packages:
     resolution:
       {
         integrity: sha512-ncTzHV7NvsQZkYe1DW7cbDLm0YpzHmZF5r/iyP3ZnQtMiJ+pjzisCiMNI+Sj+xQF5pXhSHxSB3uDbsBTzY/c2A==,
-      }
-    dev: false
-
-  /yallist/3.1.1:
-    resolution:
-      {
-        integrity: sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g==,
       }
     dev: false
 
