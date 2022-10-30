@@ -151,13 +151,10 @@ const nextConfig = {
   excludeDefaultMomentLocales: true,
   experimental: {
     appDir: false,
-    browsersListForSwc: true,
     legacyBrowsers: false,
-    serverComponents: false,
     transpilePackages,
   },
   // exportPathMap,
-  future: {},
   // generateBuildId,
   // generateEtags,
   async headers() {
