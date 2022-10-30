@@ -111,11 +111,11 @@ const NavigationMenuContentContainer = ({ id, items, layout }) => {
                   focus
                 >
                   <span>
-                    <NavigationMenuLinkTitle>
-                      <Flex align="center" direction="row" gap="3" justify="start">
-                        {!!item?.icon && item.icon} {item.title}
-                      </Flex>
-                    </NavigationMenuLinkTitle>
+                    <Flex align="baseline" direction="row" gap="3" justify="start">
+                      {!!item?.icon && item.icon}
+                      <NavigationMenuLinkTitle>{item.title}</NavigationMenuLinkTitle>
+                    </Flex>
+
                     <NavigationMenuLinkText>
                       {item.subtitle ?? item.description}
                     </NavigationMenuLinkText>
