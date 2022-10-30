@@ -121,7 +121,7 @@ const EpisodesCard = ({
         }}
       />
 
-      <NextLink as={as} href={href} passHref>
+      <NextLink as={as} href={href} legacyBehavior passHref>
         <Card variant="interactive" as="a" css={css_card}>
           <CardImageContainer>
             <ImageBlur

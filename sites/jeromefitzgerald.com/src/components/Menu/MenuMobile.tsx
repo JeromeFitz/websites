@@ -184,7 +184,7 @@ const MenuMobile = ({ handleSelect, navigationNonMutated }) => {
                           }}
                         >
                           <Flex align="center" justify="start" gap="2">
-                            <NextLink href={section.url} passHref>
+                            <NextLink href={section.url} legacyBehavior passHref>
                               <StyledLink
                                 align="center"
                                 justify="start"
@@ -226,7 +226,7 @@ const MenuMobile = ({ handleSelect, navigationNonMutated }) => {
                                   }}
                                 >
                                   <Flex align="center" justify="start" gap="2">
-                                    {/* <NextLink href={item.url} passHref> */}
+                                    {/* <NextLink href={item.url} legacyBehavior passHref> */}
                                     <StyledLink
                                       align="center"
                                       justify="start"
@@ -288,7 +288,7 @@ const MenuMobile = ({ handleSelect, navigationNonMutated }) => {
                                   }}
                                 >
                                   <Flex align="center" justify="start" gap="2">
-                                    {/* <NextLink href={item.url} passHref> */}
+                                    {/* <NextLink href={item.url} legacyBehavior passHref> */}
                                     <StyledLink
                                       align="center"
                                       justify="start"
@@ -345,7 +345,7 @@ const MenuMobile = ({ handleSelect, navigationNonMutated }) => {
                                 }}
                               >
                                 <Flex align="center" justify="start" gap="2">
-                                  <NextLink href={item.url} passHref>
+                                  <NextLink href={item.url} legacyBehavior passHref>
                                     <StyledLink
                                       align="center"
                                       justify="start"
