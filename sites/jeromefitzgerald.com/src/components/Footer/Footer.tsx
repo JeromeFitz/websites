@@ -29,7 +29,7 @@ import { useSound } from 'use-sound'
  */
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import buildInfo from '~config/buildInfo.json'
+import buildInfo from '~config/build-info.json'
 import useStore from '~store/useStore'
 
 const { branch, isBranchMain, prerelease, version } = buildInfo
