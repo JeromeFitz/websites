@@ -28,7 +28,7 @@ import useStore from '~store/useStore'
 const LinkComponent = ({ children, href }) => {
   if (!!href)
     return (
-      <NextLink href={href} passHref>
+      <NextLink href={href} legacyBehavior passHref>
         {children}
       </NextLink>
     )

@@ -1,5 +1,5 @@
 import { styled } from '@jeromefitz/design-system'
-import NextImage from 'next/future/image'
+import NextImage from 'next/image'
 
 // @todo(types) This is likely not portable. A type annotation is necessary.
 const ImageContainer: any = styled('div', {
