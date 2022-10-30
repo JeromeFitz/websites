@@ -25,7 +25,7 @@ import { SWRConfig } from 'swr'
  */
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import buildInfo from '~config/buildInfo.json'
+import buildInfo from '~config/build-info.json'
 import { pluralRules } from '~config/index'
 import { globalStyles as globalStylesLocal } from '~styles/globalStyles'
 

@@ -46,7 +46,7 @@ yarn-error.log*
 .cache
 .idea
 .tsbuildinfo
-buildInfo.json
+build-info.json
 robots.txt
 sitemap.xml
 sitemap-*.xml
@@ -54,3 +54,7 @@ tsconfig.tsbuildinfo
 
 ## ZZZ
 zzz
+
+# pnpm
+# # Note sure why this started happening :X
+~/*

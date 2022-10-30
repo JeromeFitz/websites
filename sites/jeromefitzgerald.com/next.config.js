@@ -9,7 +9,6 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
 const { withPlaiceholder } = require('@plaiceholder/next')
-const { withPlugins } = require('next-compose-plugins')
 /**
  * @note(pnpm) pass ENV variable to determine if we should transpile
  *            ./src  == transpile
@@ -19,8 +18,7 @@ const transpilePackages = ['@jeromefitz/shared', 'next-notion']
 process.env.DESIGN_SYSTEM__TRANSPILE === 'true' &&
   transpilePackages.push('@jeromefitz/design-system')
 
-const { withBuildInfo } = require('./scripts/buildInfo')
-// const getRedirects = require('./config/notion/website/getRedirects')
+const { setupBuildInfo } = require('./scripts/build-info')
 
 const PROTOCOL = {
   HTTP: 'http',
@@ -48,8 +46,8 @@ const externals = [
   'swr',
 ]
 const isLocalDebugMessages = [
-  `warn  - [ 📝 ]  pnpm link...`,
-  `warn  - [ 🔗 ]  @jeromefitz/design-system`,
+  `[ 📝 ] pnpm link...`,
+  `[ 🔗 ] @jeromefitz/design-system`,
 ]
 
 /**
@@ -151,13 +149,10 @@ const nextConfig = {
   excludeDefaultMomentLocales: true,
   experimental: {
     appDir: false,
-    browsersListForSwc: true,
     legacyBrowsers: false,
-    serverComponents: false,
     transpilePackages,
   },
   // exportPathMap,
-  future: {},
   // generateBuildId,
   // generateEtags,
   async headers() {
@@ -253,9 +248,16 @@ const nextConfig = {
   // @note(next) redirect an incoming request path to a different destination path
   // redirects,
   // @note(next) map an incoming request path to a different destination path
-  // rewrites() {
-  //   return getRedirects
-  // },
+  async rewrites() {
+    /**
+     * @note
+     * hack way to get repository data via GitHub
+     */
+    await setupBuildInfo()
+
+    // return getRedirects
+    return {}
+  },
   sassOptions: {},
   serverRuntimeConfig: {
     // @note(next) available on the server
@@ -275,9 +277,11 @@ const nextConfig = {
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     // @note(pnpm)  path mapping if working locally
     if (isLocal) {
-      isLocalDebugMessages.map((msg) => console.debug(msg))
+      isLocalDebugMessages.map((msg) =>
+        console.debug('\x1b[33m%s\x1b[0m', 'warn', ' - ', msg)
+      )
       externals.map((ext) => {
-        console.debug(`warn  - [ 📦 ]  ›  ${ext}`)
+        console.debug('\x1b[33m%s\x1b[0m', 'warn', ' - [ 📦 ] ›  ', ext)
         // @note(npmrc) shamefully-hoist === node_modules at root
         // @todo(npmrc) would be nice to not shamefully-hoist
         config.resolve.alias[ext] = path.resolve(
@@ -296,35 +300,7 @@ const nextConfig = {
 
 /**
  * @note
- * [plugin, pluginConfig]
+ * Plugins cannot handle their own Configuration at this time.
  */
-module.exports = withPlugins(
-  [
-    /**
-     * @note(next) @next/bundle-analyzer
-     */
-    [withBundleAnalyzer],
-    /**
-     * @note(next) @plaiceholder/next
-     */
-    [withPlaiceholder],
-    /**
-     * @note(next) next-pwa
-     * @todo(pwa)  ref: https://github.com/shadowwalker/next-pwa
-     */
-    // [
-    //   withPWA({
-    //     pwa: {
-    //       // disable: process.env.NODE_ENV === 'development',
-    //       disable: true,
-    //       dest: 'public',
-    //     },
-    //   }),
-    // ],
-    /**
-     * @hack(next) hijack redirects => ./config/buildInfo.js
-     */
-    [withBuildInfo()],
-  ],
-  nextConfig
-)
+const plugins = [withBundleAnalyzer, withPlaiceholder]
+module.exports = plugins.reduce((config, plugin) => plugin(config), nextConfig)

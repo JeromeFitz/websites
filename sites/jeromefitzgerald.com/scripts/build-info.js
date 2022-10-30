@@ -77,9 +77,17 @@ async function setupBuildInfo() {
   /**
    * @todo(dynamic) determine path for multi-site
    */
-  const filePath = join(process.cwd(), './src/config/buildInfo.json')
+  const filePath = join(process.cwd(), './src/config/build-info.json')
   const content = prettier.format(stringify(data), { parser: 'json' })
   await writeFile(filePath, content)
+
+  const message = [
+    'build-info.json generated:',
+    `›  v${version}`,
+    `›  ${!data?.isBranchMain ? (!!prerelease ? prerelease : branch) : 'main'}`,
+  ]
+  message.map((msg) => console.debug('\x1b[36m%s\x1b[0m', 'info', ' - [ 📦 ] ', msg))
+  console.debug()
 }
 
 /**
@@ -98,4 +106,4 @@ function withBuildInfo(nextConfig = {}) {
   return nextConfig
 }
 
-module.exports = { withBuildInfo }
+module.exports = { setupBuildInfo, withBuildInfo }
