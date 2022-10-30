@@ -1,7 +1,7 @@
 import { darkTheme, keyframes, Box, Caption } from '@jeromefitz/design-system'
 import Slugger from 'github-slugger'
 import _size from 'lodash/size'
-import NextImage from 'next/future/image'
+import NextImage from 'next/image'
 
 // import { IMAGE__PLACEHOLDER } from '~lib/constants'
 

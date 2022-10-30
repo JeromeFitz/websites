@@ -51,7 +51,7 @@ const NavigationMenuContentContainer = ({ id, items, layout }) => {
             }}
             key={calloutId}
           >
-            <NextLink href="/" passHref>
+            <NextLink href="/" legacyBehavior passHref>
               <NavigationMenuListItemLink
                 onClick={() => setSelected(calloutId)}
                 onKeyDown={(event: { key: string }) =>
@@ -100,7 +100,7 @@ const NavigationMenuContentContainer = ({ id, items, layout }) => {
           }
           return (
             <NavigationMenuListItem css={{ mb: '$3' }} key={item.id}>
-              <NextLink passHref href={item.url}>
+              <NextLink legacyBehavior passHref href={item.url}>
                 <NavigationMenuListItemLink
                   onClick={() => setSelected(item.id)}
                   onKeyDown={(event: { key: string }) =>
@@ -235,7 +235,7 @@ const NavigationMenuImpl = ({ navigationNonMutated }) => {
             </NavigationMenuItem>
           ) : (
             <NavigationMenuItem key={`kmi-${id}`}>
-              <NextLink href={url} passHref>
+              <NextLink href={url} legacyBehavior passHref>
                 <NavigationMenuLink href={url}>{title}</NavigationMenuLink>
               </NextLink>
             </NavigationMenuItem>

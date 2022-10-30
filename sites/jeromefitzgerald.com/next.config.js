@@ -15,10 +15,9 @@ const { withPlugins } = require('next-compose-plugins')
  *            ./src  == transpile
  *            ./dist != transpile
  */
-const transpileModules = ['@jeromefitz/shared', 'next-notion']
+const transpilePackages = ['@jeromefitz/shared', 'next-notion']
 process.env.DESIGN_SYSTEM__TRANSPILE === 'true' &&
-  transpileModules.push('@jeromefitz/design-system')
-const withTM = require('next-transpile-modules')(transpileModules)
+  transpilePackages.push('@jeromefitz/design-system')
 
 const { withBuildInfo } = require('./scripts/buildInfo')
 // const getRedirects = require('./config/notion/website/getRedirects')
@@ -151,9 +150,11 @@ const nextConfig = {
   },
   excludeDefaultMomentLocales: true,
   experimental: {
+    appDir: false,
     browsersListForSwc: true,
     legacyBrowsers: false,
     serverComponents: false,
+    transpilePackages,
   },
   // exportPathMap,
   future: {},
@@ -324,10 +325,6 @@ module.exports = withPlugins(
      * @hack(next) hijack redirects => ./config/buildInfo.js
      */
     [withBuildInfo()],
-    /**
-     * @note(next) next-transpile-modules
-     */
-    [withTM],
   ],
   nextConfig
 )
