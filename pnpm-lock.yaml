@@ -77,7 +77,7 @@ importers:
   packages/next-notion:
     specifiers:
       '@jeromefitz/design-system': 4.1.5
-      '@jeromefitz/notion': 3.3.9
+      '@jeromefitz/notion': 4.0.0
       '@jeromefitz/utils': 2.2.1
       '@types/github-slugger': 2.0.0
       '@types/ms': 0.7.31
@@ -108,7 +108,7 @@ importers:
       valid-url: 1.0.9
     devDependencies:
       '@jeromefitz/design-system': 4.1.5_rtwudwnkd2wtzmgcjutcptyi2a
-      '@jeromefitz/notion': 3.3.9_@jeromefitz+utils@2.2.1
+      '@jeromefitz/notion': 4.0.0_@jeromefitz+utils@2.2.1
       '@types/github-slugger': 2.0.0
       '@types/ms': 0.7.31
       '@types/react': 18.0.24
@@ -164,10 +164,10 @@ importers:
       '@jeromefitz/design-system': 4.1.5
       '@jeromefitz/eslint-config': 1.1.10
       '@jeromefitz/lint-staged': 1.1.2
-      '@jeromefitz/notion': 3.3.9
+      '@jeromefitz/notion': 4.0.0
       '@jeromefitz/prettier-config': 1.1.1
       '@jeromefitz/shared': workspace:*
-      '@jeromefitz/spotify': 2.3.3
+      '@jeromefitz/spotify': 3.0.0
       '@jeromefitz/tsconfig': 1.1.1
       '@jeromefitz/utils': 2.2.1
       '@mantine/hooks': 5.6.3
@@ -206,7 +206,6 @@ importers:
       next-seo: 5.11.1
       next-sitemap: 3.1.29
       next-themes: 0.2.1
-      next-transpile-modules: 9.1.0
       next-unused: 0.0.6
       node-emoji: 1.11.0
       nprogress: 0.2.0
@@ -228,8 +227,8 @@ importers:
     dependencies:
       '@heroicons/react': 2.0.12_react@18.2.0
       '@jeromefitz/design-system': 4.1.5_i3carmykep2gmyxutv7lgctpoa
-      '@jeromefitz/notion': 3.3.9_cwubw3yppmn7f4gpl6k3kt7vty
-      '@jeromefitz/spotify': 2.3.3_ib3mwgorawl3dzu4ptducd5i74
+      '@jeromefitz/notion': 4.0.0_cwubw3yppmn7f4gpl6k3kt7vty
+      '@jeromefitz/spotify': 3.0.0_ib3mwgorawl3dzu4ptducd5i74
       '@jeromefitz/utils': 2.2.1
       '@mantine/hooks': 5.6.3_react@18.2.0
       '@octokit/core': 4.1.0_encoding@0.1.13
@@ -255,7 +254,6 @@ importers:
       next-seo: 5.11.1_r5sq4deac3rmm2d5onhwvomqve
       next-sitemap: 3.1.29_next@13.0.0
       next-themes: 0.2.1_r5sq4deac3rmm2d5onhwvomqve
-      next-transpile-modules: 9.1.0
       node-emoji: 1.11.0
       nprogress: 0.2.0
       plaiceholder: 2.5.0_sharp@0.31.1
@@ -1332,10 +1330,10 @@ packages:
       - enquirer
       - supports-color
 
-  /@jeromefitz/notion/3.3.9_@jeromefitz+utils@2.2.1:
+  /@jeromefitz/notion/4.0.0_@jeromefitz+utils@2.2.1:
     resolution:
       {
-        integrity: sha512-6KydhxkyVa55f/q1kXo/N0Tvykx6CBsRrmakzF51dveMh5H6Az6Z4sdLXaVr/oXTjjzoqSjZmg/Tvr6XLx4Yfw==,
+        integrity: sha512-Eh7AIXFE27d7UKu+O5OUSzWWRtYL4vDkJNI7Lw//Ri2pwALh3Es8dQV/U/AiapYzZf/+RAQaS4S23XbI6AI0Ug==,
       }
     engines: { node: '>=16' }
     peerDependencies:
@@ -1351,10 +1349,10 @@ packages:
       - encoding
     dev: true
 
-  /@jeromefitz/notion/3.3.9_cwubw3yppmn7f4gpl6k3kt7vty:
+  /@jeromefitz/notion/4.0.0_cwubw3yppmn7f4gpl6k3kt7vty:
     resolution:
       {
-        integrity: sha512-6KydhxkyVa55f/q1kXo/N0Tvykx6CBsRrmakzF51dveMh5H6Az6Z4sdLXaVr/oXTjjzoqSjZmg/Tvr6XLx4Yfw==,
+        integrity: sha512-Eh7AIXFE27d7UKu+O5OUSzWWRtYL4vDkJNI7Lw//Ri2pwALh3Es8dQV/U/AiapYzZf/+RAQaS4S23XbI6AI0Ug==,
       }
     engines: { node: '>=16' }
     peerDependencies:
@@ -1422,10 +1420,10 @@ packages:
       - supports-color
     dev: false
 
-  /@jeromefitz/spotify/2.3.3_ib3mwgorawl3dzu4ptducd5i74:
+  /@jeromefitz/spotify/3.0.0_ib3mwgorawl3dzu4ptducd5i74:
     resolution:
       {
-        integrity: sha512-EkIBGr3EcsCZt7m/6AMQhoa21OB+epuLQMduEH/CG52Z1rXdDpXLEc4JVfosKNJ/tVfaYNTKbyM2IWvIDPCLJg==,
+        integrity: sha512-ENdFto8nRD6wOLVxStjDQvb5OFubsvIwTeQZP5SvRLaG20VdE6XP309imoQbedIlSCV7P4tT1eJlvR5VMNEe1g==,
       }
     engines: { node: '>=16' }
     peerDependencies:
@@ -6502,6 +6500,7 @@ packages:
     dependencies:
       graceful-fs: 4.2.10
       tapable: 2.2.1
+    dev: true
 
   /env-ci/5.5.0:
     resolution:
@@ -10703,16 +10702,6 @@ packages:
       react-dom: 18.2.0_react@18.2.0
     dev: false
 
-  /next-transpile-modules/9.1.0:
-    resolution:
-      {
-        integrity: sha512-yzJji65xDqcIqjvx5vPJcs1M+MYQTzLM1pXH/qf8Q88ohx+bwVGDc1AeV+HKr1NwvMCNTpwVPSFI7cA5WdyeWA==,
-      }
-    dependencies:
-      enhanced-resolve: 5.10.0
-      escalade: 3.1.1
-    dev: false
-
   /next-unused/0.0.6:
     resolution:
       {
@@ -13342,6 +13331,7 @@ packages:
         integrity: sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ==,
       }
     engines: { node: '>=6' }
+    dev: true
 
   /tar-fs/2.1.1:
     resolution:

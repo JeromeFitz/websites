@@ -613,7 +613,7 @@ const TopItem = ({ type }) => {
                           : info.success.text}
                       </Text>
                       <Text size="3">
-                        {/* <NextLink href="/shows" passHref >
+                        {/* <NextLink href="/shows" legacyBehavior passHref >
                           <Link
                             css={{ display: 'inline-flex', alignItems: 'center' }}
                           > */}

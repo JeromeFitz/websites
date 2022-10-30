@@ -171,7 +171,7 @@ const LinkFooter = ({ url, title, tooltip, tooltipContent }) => {
   const handleClickLink = () => playPopDown()
   return (
     <li>
-      <NextLink href={url} passHref>
+      <NextLink href={url} legacyBehavior passHref>
         <Link
           variant="subtle"
           css={{ display: 'inline-flex' }}
@@ -250,7 +250,7 @@ const FooterImpl = () => {
             </li>
             <li>
               <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                <NextLink href="/events/2021" passHref >
+                <NextLink href="/events/2021" legacyBehavior passHref >
                   <Link variant="subtle">... View Past Events</Link>
                 </NextLink>
               </Text>
@@ -321,7 +321,7 @@ const FooterImpl = () => {
               '@bp2': { gridColumn: 'auto', order: -1 },
             }}
           >
-            <NextLink href={'/'} passHref>
+            <NextLink href={'/'} legacyBehavior passHref>
               <BoxLink onClick={handleClickLink}>
                 <Flex align="center" gap="3" css={{ mt: '$8' }}>
                   {/* @todo(radix-ui) types */}

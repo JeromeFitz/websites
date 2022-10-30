@@ -88,7 +88,7 @@ const NowPlaying = () => {
           I listen to a lot of music. I do not think that makes me unique, however, I
           enjoy it all the same. If you’d like to see more of my listening habits
           please check out the{' '}
-          <NextLink href="/music" passHref>
+          <NextLink href="/music" legacyBehavior passHref>
             <Link
               className="font-black _text-black underline-style-solid underline-offset-md underline-thickness-md"
               css={{}}
@@ -97,7 +97,7 @@ const NowPlaying = () => {
             </Link>
           </NextLink>{' '}
           section. (Though full disclosure, I also like to{' '}
-          <NextLink href="/books" passHref>
+          <NextLink href="/books" legacyBehavior passHref>
             <Link
               className="font-black _text-black underline-style-solid underline-offset-md underline-thickness-md"
               css={{}}

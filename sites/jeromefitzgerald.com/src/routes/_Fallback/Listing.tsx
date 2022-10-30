@@ -18,7 +18,7 @@ const Item = ({ item, routeType }) => {
   return (
     <Box as="li" css={{ my: '$2', py: '$2' }}>
       <Heading as="h3" size="3" css={{ my: '$1' }}>
-        <NextLink href={`/${routeType}/${date}/${slug}`} passHref>
+        <NextLink href={`/${routeType}/${date}/${slug}`} legacyBehavior passHref>
           <a>{title}</a>
         </NextLink>
       </Heading>

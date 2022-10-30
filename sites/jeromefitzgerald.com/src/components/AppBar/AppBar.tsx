@@ -164,7 +164,7 @@ const AppBarImpl = ({}) => {
                 },
               }}
             >
-              <NextLink href="/" passHref>
+              <NextLink href="/" legacyBehavior passHref>
                 <a onClick={() => playBleep()}>
                   {/* @todo(radix-ui) types */}
                   {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
@@ -225,7 +225,7 @@ const AppBarImpl = ({}) => {
                 },
               }}
             >
-              <NextLink href="/" passHref>
+              <NextLink href="/" legacyBehavior passHref>
                 <a onClick={() => playBleep()}>
                   {/* @todo(radix-ui) types */}
                   {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
