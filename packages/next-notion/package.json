@@ -44,7 +44,7 @@
   },
   "devDependencies": {
     "@jeromefitz/design-system": "4.1.5",
-    "@jeromefitz/notion": "4.0.0",
+    "@jeromefitz/notion": "4.0.1",
     "@types/ms": "0.7.31",
     "@types/react": "18.0.24",
     "@types/react-dom": "18.0.8",
