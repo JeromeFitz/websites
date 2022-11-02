@@ -51,7 +51,7 @@
     "framer-motion": "7.6.4",
     "github-slugger": "2.0.0",
     "immer": "9.0.16",
-    "ioredis": "5.2.3",
+    "ioredis": "5.2.4",
     "ms": "3.0.0-canary.1",
     "next": "13.0.1",
     "next-seo": "5.13.0",
