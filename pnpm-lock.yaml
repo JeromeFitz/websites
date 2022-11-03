@@ -37,7 +37,7 @@ importers:
       syncpack: 8.3.9
       ts-jest: 29.0.3
       ts-node: 10.9.1
-      tsup: 6.3.0
+      tsup: 6.4.0
       turbo: 1.6.3
       typescript: 4.8.4
     dependencies:
@@ -71,7 +71,7 @@ importers:
       syncpack: 8.3.9
       ts-jest: 29.0.3_r7gdwuj75x2gz25bauak3xcnbm
       ts-node: 10.9.1_o3cqn7e5gjtu3y7kauu454ca2y
-      tsup: 6.3.0_mwhvu7sfp6vq5ryuwb6hlbjfka
+      tsup: 6.4.0_mwhvu7sfp6vq5ryuwb6hlbjfka
       turbo: 1.6.3
       typescript: 4.8.4
 
@@ -3799,8 +3799,8 @@ packages:
       base64-js: 1.5.1
       ieee754: 1.2.1
 
-  /bundle-require/3.1.0_esbuild@0.15.1:
-    resolution: {integrity: sha512-IIXtAO7fKcwPHNPt9kY/WNVJqy7NDy6YqJvv6ENH0TOZoJ+yjpEsn1w40WKZbR2ibfu5g1rfgJTvmFHpm5aOMA==}
+  /bundle-require/3.1.2_esbuild@0.15.1:
+    resolution: {integrity: sha512-Of6l6JBAxiyQ5axFxUM6dYeP/W7X2Sozeo/4EYB9sJhL+dqL7TKjg+shwxp6jlu/6ZSERfsYtIpSJ1/x3XkAEA==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     peerDependencies:
       esbuild: '>=0.13'
@@ -8747,9 +8747,9 @@ packages:
     dependencies:
       glob: 7.2.3
 
-  /rollup/2.75.7:
-    resolution: {integrity: sha512-VSE1iy0eaAYNCxEXaleThdFXqZJ42qDBatAwrfnPlENEZ8erQ+0LYX4JXOLPceWfZpV1VtZwZ3dFCuOZiSyFtQ==}
-    engines: {node: '>=10.0.0'}
+  /rollup/3.2.5:
+    resolution: {integrity: sha512-/Ha7HhVVofduy+RKWOQJrxe4Qb3xyZo+chcpYiD8SoQa4AG7llhupUtyfKSSrdBM2mWJjhM8wZwmbY23NmlIYw==}
+    engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
     optionalDependencies:
       fsevents: 2.3.2
@@ -9711,8 +9711,8 @@ packages:
   /tslib/2.4.0:
     resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==}
 
-  /tsup/6.3.0_mwhvu7sfp6vq5ryuwb6hlbjfka:
-    resolution: {integrity: sha512-IaNQO/o1rFgadLhNonVKNCT2cks+vvnWX3DnL8sB87lBDqRvJXHENr5lSPJlqwplUlDxSwZK8dSg87rgBu6Emw==}
+  /tsup/6.4.0_mwhvu7sfp6vq5ryuwb6hlbjfka:
+    resolution: {integrity: sha512-4OlbqIK/SF+cJp0mMqPM2pKULvgj/1S2Gm3I1aFoFGIryUOyIqPZBoqKkqVQT6uFtWJ5AHftIv0riXKfHox1zQ==}
     engines: {node: '>=14'}
     hasBin: true
     peerDependencies:
@@ -9727,7 +9727,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      bundle-require: 3.1.0_esbuild@0.15.1
+      bundle-require: 3.1.2_esbuild@0.15.1
       cac: 6.7.12
       chokidar: 3.5.3
       debug: 4.3.4
@@ -9737,7 +9737,7 @@ packages:
       joycon: 3.1.1
       postcss-load-config: 3.1.4_ts-node@10.9.1
       resolve-from: 5.0.0
-      rollup: 2.75.7
+      rollup: 3.2.5
       source-map: 0.8.0-beta.0
       sucrase: 3.21.1
       tree-kill: 1.2.2
