@@ -159,7 +159,7 @@ importers:
 
   sites/jeromefitzgerald.com:
     specifiers:
-      '@heroicons/react': 2.0.12
+      '@heroicons/react': 2.0.13
       '@jeromefitz/design-system': 4.1.5
       '@jeromefitz/eslint-config': 1.1.11
       '@jeromefitz/lint-staged': 1.1.2
@@ -218,8 +218,8 @@ importers:
       uuid: 9.0.0
       zustand: 4.1.4
     dependencies:
-      '@heroicons/react': 2.0.12_react@18.2.0
-      '@jeromefitz/design-system': 4.1.5_aev65bxvlhs6kgfg4kda2ewkum
+      '@heroicons/react': 2.0.13_react@18.2.0
+      '@jeromefitz/design-system': 4.1.5_6r7txokxmezio3xyasscmvszoe
       '@jeromefitz/notion': 4.0.1_@jeromefitz+utils@2.2.1
       '@jeromefitz/spotify': 3.0.2_2o6u4k2dexmocbsr2o3k36tnau
       '@jeromefitz/utils': 2.2.1
@@ -729,8 +729,8 @@ packages:
     transitivePeerDependencies:
       - '@types/react'
 
-  /@heroicons/react/2.0.12_react@18.2.0:
-    resolution: {integrity: sha512-FZxKh3i9aKIDxyALTgIpSF2t6V6/eZfF5mRu41QlwkX3Oxzecdm1u6dpft6PQGxIBwO7TKYWaMAYYL8mp/EaOg==}
+  /@heroicons/react/2.0.13_react@18.2.0:
+    resolution: {integrity: sha512-iSN5XwmagrnirWlYEWNPdCDj9aRYVD/lnK3JlsC9/+fqGF80k8C7rl+1HCvBX0dBoagKqOFBs6fMhJJ1hOg1EQ==}
     peerDependencies:
       react: '>= 16'
     dependencies:
@@ -785,7 +785,7 @@ packages:
       title: 3.5.3
     dev: false
 
-  /@jeromefitz/design-system/4.1.5_aev65bxvlhs6kgfg4kda2ewkum:
+  /@jeromefitz/design-system/4.1.5_6r7txokxmezio3xyasscmvszoe:
     resolution: {integrity: sha512-IID8iTALlE30yanQdvQ/+XRMfJsP23yY6UUpU2lI4OHXfqSwGCQiMBFAGCbSNOM5UU9Geq+NvAV/W0IRTvG3TA==}
     engines: {node: '>=16'}
     peerDependencies:
@@ -800,7 +800,7 @@ packages:
       react-dom: ^18.0.0
       swr: ^1.2.2
     dependencies:
-      '@heroicons/react': 2.0.12_react@18.2.0
+      '@heroicons/react': 2.0.13_react@18.2.0
       '@radix-ui/colors': 0.1.8
       '@radix-ui/primitive': 1.0.0
       '@radix-ui/react-accessible-icon': 1.0.1_biqbaboplfbrettd7655fr4n2y
