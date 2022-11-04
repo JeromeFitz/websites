@@ -197,7 +197,7 @@ importers:
       ms: 3.0.0-canary.1
       next: 13.0.2
       next-notion: workspace:*
-      next-seo: 5.13.0
+      next-seo: 5.14.0
       next-sitemap: 3.1.30
       next-themes: 0.2.1
       next-unused: 0.0.6
@@ -241,7 +241,7 @@ importers:
       ioredis: 5.2.4
       ms: 3.0.0-canary.1
       next: 13.0.2_biqbaboplfbrettd7655fr4n2y
-      next-seo: 5.13.0_pknogjuzx4bv7zxtatcb2ahtsq
+      next-seo: 5.14.0_pknogjuzx4bv7zxtatcb2ahtsq
       next-sitemap: 3.1.30_next@13.0.2
       next-themes: 0.2.1_pknogjuzx4bv7zxtatcb2ahtsq
       nprogress: 0.2.0
@@ -7547,8 +7547,8 @@ packages:
     resolution: {integrity: sha512-EZSPZB70jiVsivaBLYDCyntd5eH8NTSMOn3rB+HxwdmKThGELLdYv8qVIMWvZEFy9w8ZZpW9h9OB32l1rGtj7g==}
     dev: false
 
-  /next-seo/5.13.0_pknogjuzx4bv7zxtatcb2ahtsq:
-    resolution: {integrity: sha512-3n6cOjXydxXlrbMIWcU+D6TllKj72C2rg7IdgoxoKOnfC8ah3U0VUIGRApKXK0wi5ME1m+TBq9isAFFbFdbWXQ==}
+  /next-seo/5.14.0_pknogjuzx4bv7zxtatcb2ahtsq:
+    resolution: {integrity: sha512-VpbVFXbDzy31qoKBH7xoxtzh+nDhEWYOBnlc18zkXmypRd3X9vxdwh7rlr3q2BQTfbfk2J/a6Y2vEb+oTcCW0w==}
     peerDependencies:
       next: ^8.1.1-canary.54 || >=9.0.0
       react: '>=16.0.0'
