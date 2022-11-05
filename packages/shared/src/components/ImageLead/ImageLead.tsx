@@ -21,7 +21,9 @@ const ImageWithBackgroundBlur = ({
   image,
   priority = true,
   quality = 90,
-  sizes = '(max-width: 1280) 10vh, 30vh',
+  // sizes = '(max-width: 1280) 10vh, 30vh',
+  sizes = '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw',
+  // sizes= '',
   slug,
 }) => {
   const { height, src, width } = image
