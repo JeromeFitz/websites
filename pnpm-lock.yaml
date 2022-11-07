@@ -78,7 +78,7 @@ importers:
   packages/next-notion:
     specifiers:
       '@jeromefitz/design-system': 4.1.6
-      '@jeromefitz/notion': 4.0.1
+      '@jeromefitz/notion': 4.0.2
       '@jeromefitz/utils': 2.2.1
       '@types/ms': 0.7.31
       '@types/react': 18.0.25
@@ -108,7 +108,7 @@ importers:
       valid-url: 1.0.9
     devDependencies:
       '@jeromefitz/design-system': 4.1.6_v2c6ymq2vs4lfdkcexqyyi5pmi
-      '@jeromefitz/notion': 4.0.1_@jeromefitz+utils@2.2.1
+      '@jeromefitz/notion': 4.0.2_@jeromefitz+utils@2.2.1
       '@types/ms': 0.7.31
       '@types/react': 18.0.25
       '@types/react-dom': 18.0.8
@@ -163,7 +163,7 @@ importers:
       '@jeromefitz/design-system': 4.1.6
       '@jeromefitz/eslint-config': 1.1.11
       '@jeromefitz/lint-staged': 1.1.2
-      '@jeromefitz/notion': 4.0.1
+      '@jeromefitz/notion': 4.0.2
       '@jeromefitz/prettier-config': 1.1.1
       '@jeromefitz/shared': workspace:*
       '@jeromefitz/spotify': 3.0.2
@@ -220,7 +220,7 @@ importers:
     dependencies:
       '@heroicons/react': 2.0.13_react@18.2.0
       '@jeromefitz/design-system': 4.1.6_sjke7tusacppzcmn4da55i4k74
-      '@jeromefitz/notion': 4.0.1_@jeromefitz+utils@2.2.1
+      '@jeromefitz/notion': 4.0.2_@jeromefitz+utils@2.2.1
       '@jeromefitz/spotify': 3.0.2_rjrp4ufg6fmebxuglw4ap4buxq
       '@jeromefitz/utils': 2.2.1
       '@mantine/hooks': 5.7.1_react@18.2.0
@@ -1111,15 +1111,15 @@ packages:
       - enquirer
       - supports-color
 
-  /@jeromefitz/notion/4.0.1_@jeromefitz+utils@2.2.1:
-    resolution: {integrity: sha512-tD92ju0P7o4ZdzPeKYA5eV+Ji3tuWoO8q2qGwnzCPgd8Ci+RggV1gJWmhDm64dyVA2AhE5HTKU5Aa4mXekka5Q==}
+  /@jeromefitz/notion/4.0.2_@jeromefitz+utils@2.2.1:
+    resolution: {integrity: sha512-VAfKyFFNbUD450eIGxa9TnZ2xTG1arTteKok0t352ejAeobSCX/cNVafwlVXcWVOKhG7Qb9wOW35KUZZGYohTQ==}
     engines: {node: '>=16'}
     peerDependencies:
       '@jeromefitz/utils': ^2.1.0
       lodash: ^4.17.21
     dependencies:
       '@jeromefitz/utils': 2.2.1
-      '@notionhq/client': 2.2.1
+      '@notionhq/client': 2.2.2
       date-fns: 2.29.3
       date-fns-tz: 1.3.7_date-fns@2.29.3
       github-slugger: 2.0.0
@@ -1659,8 +1659,8 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.13.0
 
-  /@notionhq/client/2.2.1:
-    resolution: {integrity: sha512-EExR8gCWuqvYQsNw5Z9kvZhRTy7wgioI4ypr5y0dPclvxBXZ7I7Yy509ZbCbeAFes33eLFV8Heu0svQwg8ZSZQ==}
+  /@notionhq/client/2.2.2:
+    resolution: {integrity: sha512-L7TB+UyhnWTSv1ek7xzGr9+mS9o76qMKnZ8Ag8H2q6QgvywAiPOFcE3ulWI/1AnMewGVRqwb30agPHMVRY/K/w==}
     engines: {node: '>=12'}
     dependencies:
       '@types/node-fetch': 2.6.2
