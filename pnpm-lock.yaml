@@ -179,7 +179,7 @@ importers:
       '@types/ms': 0.7.31
       '@types/nprogress': 0.2.0
       '@types/pluralize': 0.0.29
-      '@types/ramda': 0.28.18
+      '@types/ramda': 0.28.19
       '@types/react': 18.0.25
       '@types/react-dom': 18.0.8
       '@types/title': 3.4.1
@@ -270,7 +270,7 @@ importers:
       '@types/ms': 0.7.31
       '@types/nprogress': 0.2.0
       '@types/pluralize': 0.0.29
-      '@types/ramda': 0.28.18
+      '@types/ramda': 0.28.19
       '@types/react-dom': 18.0.8
       '@types/title': 3.4.1
       '@types/uuid': 8.3.4
@@ -3066,8 +3066,8 @@ packages:
   /@types/prop-types/15.7.5:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
 
-  /@types/ramda/0.28.18:
-    resolution: {integrity: sha512-DlhIC80d1ArfB1jz8C5OzavJfIj6hmEOQzCzy7Nt0FRqXJbmWTt05vI+f3rfC+3AR1VQwvyCMaCyZv++HGk+6w==}
+  /@types/ramda/0.28.19:
+    resolution: {integrity: sha512-RCrYC/dg8K67QtIOACIpSriN1BdcC8a3mV4wLTUVafaY00MKBjuOSI+8fHRV92embUsZ67bZlzmgtO5wBsxcmg==}
     dependencies:
       ts-toolbelt: 6.15.5
     dev: true
