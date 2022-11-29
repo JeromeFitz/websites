@@ -36,7 +36,7 @@
     "@jeromefitz/notion": "4.0.2",
     "@jeromefitz/spotify": "3.0.2",
     "@jeromefitz/utils": "2.2.1",
-    "@mantine/hooks": "5.8.3",
+    "@mantine/hooks": "5.8.4",
     "@octokit/core": "4.1.0",
     "@plaiceholder/next": "2.5.0",
     "@radix-ui/colors": "0.1.8",
