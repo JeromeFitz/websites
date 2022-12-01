@@ -34,7 +34,7 @@ importers:
       rimraf: 3.0.2
       semantic-release: 19.0.5
       semantic-release-monorepo: 7.0.5
-      syncpack: 8.4.10
+      syncpack: 8.4.11
       ts-jest: 29.0.3
       ts-node: 10.9.1
       tsup: 6.5.0
@@ -68,7 +68,7 @@ importers:
       rimraf: 3.0.2
       semantic-release: 19.0.5
       semantic-release-monorepo: 7.0.5_semantic-release@19.0.5
-      syncpack: 8.4.10
+      syncpack: 8.4.11
       ts-jest: 29.0.3_r24ewcothphvclnu77pxb4u4se
       ts-node: 10.9.1_o3cqn7e5gjtu3y7kauu454ca2y
       tsup: 6.5.0_mwhvu7sfp6vq5ryuwb6hlbjfka
@@ -9573,8 +9573,8 @@ packages:
       tslib: 2.4.0
     dev: true
 
-  /syncpack/8.4.10:
-    resolution: {integrity: sha512-Yt7mYGEAz8uLPDQdgd5YrfO+B/y7RuZhPJ07GQhnaEIuuTeseM58z+Z3SEBunq3uTeV3qlRhIoC3uIeXkanVFQ==}
+  /syncpack/8.4.11:
+    resolution: {integrity: sha512-qYhkDvPr0goemEqykGaUKF4TD9sRlPQXNy0wn60SXsatAVaZPrNn/nFtfYBLGBp4gNlrpVzixnzBOTihQZxhmg==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
