@@ -51,6 +51,7 @@ robots.txt
 sitemap.xml
 sitemap-*.xml
 tsconfig.tsbuildinfo
+.vscode/settings.json
 
 ## ZZZ
 zzz
