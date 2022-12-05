@@ -14,7 +14,7 @@ importers:
       '@jeromefitz/lint-staged': 1.1.3
       '@jeromefitz/prettier-config': 1.1.1
       '@jeromefitz/release-notes-generator': 1.2.7
-      '@jeromefitz/semantic': 9.2.5
+      '@jeromefitz/semantic': 9.2.6
       '@jeromefitz/tsconfig': 1.1.1
       '@types/is-ci': 3.0.0
       '@types/jest': 29.2.3
@@ -48,7 +48,7 @@ importers:
       '@jeromefitz/lint-staged': 1.1.3
       '@jeromefitz/prettier-config': 1.1.1
       '@jeromefitz/release-notes-generator': 1.2.7_lodash@4.17.21
-      '@jeromefitz/semantic': 9.2.5_pvq26naxwnzthnvk276bghdxlq
+      '@jeromefitz/semantic': 9.2.6_pvq26naxwnzthnvk276bghdxlq
       '@jeromefitz/tsconfig': 1.1.1
       '@types/is-ci': 3.0.0
       '@types/jest': 29.2.3
@@ -1148,8 +1148,8 @@ packages:
       - encoding
     dev: false
 
-  /@jeromefitz/semantic/9.2.5_pvq26naxwnzthnvk276bghdxlq:
-    resolution: {integrity: sha512-tTNdcSmll8sM4fGaS7zMYzGGQYdHp0JI9wTtMOHri1qxjXT8lL9BYYi086PUVQbmyxwovR2T7MdbROnkMnKEqg==}
+  /@jeromefitz/semantic/9.2.6_pvq26naxwnzthnvk276bghdxlq:
+    resolution: {integrity: sha512-k/XhaXt0FzgAU1rboyiF4+rF+POaqQDkiAfixmKDE6a22dT9BKxHmHivOIJuTrBEkOcaHhlxS0T6pKbfTeFZhg==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     peerDependencies:
       '@jeromefitz/conventional-gitmoji': ^3.3.1
@@ -1158,7 +1158,7 @@ packages:
       '@semantic-release/commit-analyzer': 9.0.2_semantic-release@19.0.5
       '@semantic-release/exec': 6.0.3_semantic-release@19.0.5
       '@semantic-release/git': 10.0.1_semantic-release@19.0.5
-      '@semantic-release/github': 8.0.6_semantic-release@19.0.5
+      '@semantic-release/github': 8.0.7_semantic-release@19.0.5
       '@semantic-release/npm': 9.0.1_semantic-release@19.0.5
       '@semantic-release/release-notes-generator': 10.0.3_semantic-release@19.0.5
       semantic-release: 19.0.5
@@ -2830,8 +2830,8 @@ packages:
       - supports-color
     dev: false
 
-  /@semantic-release/github/8.0.6_semantic-release@19.0.5:
-    resolution: {integrity: sha512-ZxgaxYCeqt9ylm2x3OPqUoUqBw1p60LhxzdX6BqJlIBThupGma98lttsAbK64T6L6AlNa2G5T66BbiG8y0PIHQ==}
+  /@semantic-release/github/8.0.7_semantic-release@19.0.5:
+    resolution: {integrity: sha512-VtgicRIKGvmTHwm//iqTh/5NGQwsncOMR5vQK9pMT92Aem7dv37JFKKRuulUsAnUOIlO4G8wH3gPiBAA0iW0ww==}
     engines: {node: '>=14.17'}
     peerDependencies:
       semantic-release: '>=18.0.0-beta.1'
@@ -2842,7 +2842,7 @@ packages:
       bottleneck: 2.19.5
       debug: 4.3.4
       dir-glob: 3.0.1
-      fs-extra: 10.1.0
+      fs-extra: 11.1.0
       globby: 11.1.0
       http-proxy-agent: 5.0.0
       https-proxy-agent: 5.0.1
@@ -5838,6 +5838,15 @@ packages:
   /fs-extra/10.1.0:
     resolution: {integrity: sha512-oRXApq54ETRj4eMiFzGnHWGy+zo5raudjuxN0b8H7s/RU2oW0Wvsx9O0ACRN/kRq9E8Vu/ReskGB5o3ji+FzHQ==}
     engines: {node: '>=12'}
+    dependencies:
+      graceful-fs: 4.2.10
+      jsonfile: 6.1.0
+      universalify: 2.0.0
+    dev: false
+
+  /fs-extra/11.1.0:
+    resolution: {integrity: sha512-0rcTq621PD5jM/e0a3EJoGC/1TC5ZBCERW82LQuwfGnCa1V8w7dpYH1yNu+SLb6E5dkeCBzKEyLGlFrnr+dUyw==}
+    engines: {node: '>=14.14'}
     dependencies:
       graceful-fs: 4.2.10
       jsonfile: 6.1.0
