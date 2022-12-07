@@ -216,7 +216,7 @@ importers:
       ts-node: 10.9.1
       use-sound: 4.0.1
       uuid: 9.0.0
-      zustand: 4.1.4
+      zustand: 4.1.5
     dependencies:
       '@heroicons/react': 2.0.13_react@18.2.0
       '@jeromefitz/design-system': 4.1.6_obfdrioa52ht5uzvstzyeft4ui
@@ -259,7 +259,7 @@ importers:
       ts-node: 10.9.1
       use-sound: 4.0.1_react@18.2.0
       uuid: 9.0.0
-      zustand: 4.1.4_immer@9.0.16+react@18.2.0
+      zustand: 4.1.5_immer@9.0.16+react@18.2.0
     devDependencies:
       '@jeromefitz/eslint-config': 1.1.11
       '@jeromefitz/lint-staged': 1.1.4
@@ -10451,8 +10451,8 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
 
-  /zustand/4.1.4_immer@9.0.16+react@18.2.0:
-    resolution: {integrity: sha512-k2jVOlWo8p4R83mQ+/uyB8ILPO2PCJOf+QVjcL+1PbMCk1w5OoPYpAIxy9zd93FSfmJqoH6lGdwzzjwqJIRU5A==}
+  /zustand/4.1.5_immer@9.0.16+react@18.2.0:
+    resolution: {integrity: sha512-PsdRT8Bvq22Yyh1tvpgdHNE7OAeFKqJXUxtJvj1Ixw2B9O2YZ1M34ImQ+xyZah4wZrR4lENMoDUutKPpyXCQ/Q==}
     engines: {node: '>=12.7.0'}
     peerDependencies:
       immer: '>=9.0'
