@@ -9,7 +9,7 @@
     - `@jeromefitz/prettier-config`
     - `@jeromefitz/tsconfig`
   - ⚡ Release Management
-    - `@jeromefitz/git-cz`
+    - `ccommit`
     - `@jeromefitz/release-notes-generator`
     - `@jeromefitz/semantic`
   - 🖼️ Design System, Notion, etc.
@@ -39,4 +39,10 @@ You may be here for the implementation with `@jeromefitz/notion`, you can find m
 - 🔺️ [`turborepo`](https://github.com/vercel/turborepo) for monorepo management
 - 🤖️ [`Renovate`](https://github.com/renovatebot/renovate) for Patch + Minor Package Management
 - 🤖️ [`Kodiak`](https://kodiakhq.com) to “Automate (our) GitHub Pull Requests”
-- 🤖️ Automatic [`Semantic Versioning`](https://semver.org) w/ [`Conventional Commits`](https://www.conventionalcommits.org) for release management ([`@jeromefitz/git-cz`](https://github.com/JeromeFitz/packages)|[`@jeromefitz/semantic`](https://github.com/JeromeFitz/packages))
+- 🤖️ Automatic [`Semantic Versioning`](https://semver.org) w/ [`Conventional Commits`](https://www.conventionalcommits.org) for release management ([`ccommit`](https://github.com/JeromeFitz/packages)|[`@jeromefitz/semantic`](https://github.com/JeromeFitz/packages))
+
+## Contributing
+
+If you would like to opt-out of the `git hooks` please look at `.env.example`.
+
+Normally, these would be opt-in and may change to that in the future.
