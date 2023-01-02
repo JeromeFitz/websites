@@ -1,10 +1,21 @@
 #!/bin/sh
 
+#!/bin/sh
 [ -n "$CI" ] && exit 0
+# shellcheck source=/dev/null
+. "$(dirname "$0")/_/husky.sh"
 
-pnpm run format:prettier --staged
-exec < /dev/tty
-# @note(git-cz) publish w/ this
-pnpm git-cz --hook || true
-# @note(git-cz) pnpm link w/ this
-# node ./node_modules/@jeromefitz/git-cz/dist/cli.js --hook || true
+FILE_ENV=.env
+if [ -f "$FILE_ENV" ]; then
+    # shellcheck disable=SC2046
+    [ ! -f "$FILE_ENV" ] || export $(grep -v '^#' $FILE_ENV | xargs)
+fi
+
+if [ "$HUSKY" = "0" ]; then
+    exit 0
+fi
+
+if [ ! "$HUSKY__PREPARE_COMMITMSG__CONVENTIONAL" = "0" ]; then
+    exec < /dev/tty
+    pnpm ccommit --hook || true
+fi
