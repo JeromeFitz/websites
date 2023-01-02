@@ -15,7 +15,6 @@
   },
   "packageManager": "^pnpm@7.11.0",
   "scripts": {
-    "branch": "git-cz -m branch --allow-empty",
     "build": "turbo run build --include-dependencies --no-deps",
     "clean": "turbo run clean",
     "clean:install": "turbo run clean && ./scripts/clean.sh",
@@ -45,7 +44,7 @@
     "@babel/eslint-parser": "7.19.1",
     "@jeromefitz/conventional-gitmoji": "3.3.5",
     "@jeromefitz/eslint-config": "1.1.11",
-    "@jeromefitz/git-cz": "14.4.3",
+    "ccommit": "1.0.0-ccommit.4",
     "@jeromefitz/lint-staged": "1.1.4",
     "@jeromefitz/prettier-config": "1.1.1",
     "@jeromefitz/release-notes-generator": "1.2.7",
