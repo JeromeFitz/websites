@@ -50,7 +50,7 @@
     "fathom-client": "3.5.0",
     "framer-motion": "8.0.2",
     "github-slugger": "2.0.0",
-    "immer": "9.0.16",
+    "immer": "9.0.17",
     "ioredis": "5.2.4",
     "ms": "3.0.0-canary.1",
     "next": "13.0.6",
