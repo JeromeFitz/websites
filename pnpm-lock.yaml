@@ -192,7 +192,7 @@ importers:
       fathom-client: 3.5.0
       framer-motion: 8.1.4
       github-slugger: 2.0.0
-      immer: 9.0.16
+      immer: 9.0.17
       ioredis: 5.2.4
       ms: 3.0.0-canary.1
       next: 13.0.6
@@ -237,7 +237,7 @@ importers:
       fathom-client: 3.5.0
       framer-motion: 8.1.4_biqbaboplfbrettd7655fr4n2y
       github-slugger: 2.0.0
-      immer: 9.0.16
+      immer: 9.0.17
       ioredis: 5.2.4
       ms: 3.0.0-canary.1
       next: 13.0.6_biqbaboplfbrettd7655fr4n2y
@@ -259,7 +259,7 @@ importers:
       ts-node: 10.9.1
       use-sound: 4.0.1_react@18.2.0
       uuid: 9.0.0
-      zustand: 4.1.5_immer@9.0.16+react@18.2.0
+      zustand: 4.1.5_immer@9.0.17+react@18.2.0
     devDependencies:
       '@jeromefitz/eslint-config': 1.1.12
       '@jeromefitz/lint-staged': 1.1.5
@@ -6310,8 +6310,8 @@ packages:
     dependencies:
       queue: 6.0.2
 
-  /immer/9.0.16:
-    resolution: {integrity: sha512-qenGE7CstVm1NrHQbMh8YaSzTZTFNP3zPqr3YU0S0UY441j4bJTg4A2Hh5KAhwgaiU6ZZ1Ar6y/2f4TblnMReQ==}
+  /immer/9.0.17:
+    resolution: {integrity: sha512-+hBruaLSQvkPfxRiTLK/mi4vLH+/VQS6z2KJahdoxlleFOI8ARqzOF17uy12eFDlqWmPoygwc5evgwcp+dlHhg==}
     dev: false
 
   /import-fresh/3.3.0:
@@ -10679,7 +10679,7 @@ packages:
     engines: {node: '>=12.20'}
     dev: false
 
-  /zustand/4.1.5_immer@9.0.16+react@18.2.0:
+  /zustand/4.1.5_immer@9.0.17+react@18.2.0:
     resolution: {integrity: sha512-PsdRT8Bvq22Yyh1tvpgdHNE7OAeFKqJXUxtJvj1Ixw2B9O2YZ1M34ImQ+xyZah4wZrR4lENMoDUutKPpyXCQ/Q==}
     engines: {node: '>=12.7.0'}
     peerDependencies:
@@ -10691,7 +10691,7 @@ packages:
       react:
         optional: true
     dependencies:
-      immer: 9.0.16
+      immer: 9.0.17
       react: 18.2.0
       use-sync-external-store: 1.2.0_react@18.2.0
     dev: false
