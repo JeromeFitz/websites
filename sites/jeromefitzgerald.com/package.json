@@ -77,7 +77,7 @@
   "devDependencies": {
     "@jeromefitz/eslint-config": "1.1.12",
     "@jeromefitz/lint-staged": "1.1.5",
-    "@jeromefitz/prettier-config": "1.1.2",
+    "@jeromefitz/prettier-config": "1.1.4",
     "@jeromefitz/shared": "workspace:*",
     "@jeromefitz/tsconfig": "1.1.2",
     "@next/bundle-analyzer": "13.0.6",
