@@ -1,386 +1,271 @@
-import {
-  Avatar,
-  Box,
-  BoxLink,
-  Flex,
-  Grid,
-  Icon,
-  Link,
-  Paragraph,
-  Separator,
-  Text,
-} from '@jeromefitz/design-system'
-import {
-  Tooltip,
-  TooltipArrow,
-  TooltipContent,
-  TooltipPortal,
-  TooltipProvider,
-  TooltipTrigger,
-} from '@jeromefitz/design-system/custom/Tooltip'
-import { IconLink } from '@jeromefitz/shared/src/components'
-import dynamic from 'next/dynamic'
-import NextLink from 'next/link'
-import * as React from 'react'
-import { useSound } from 'use-sound'
+'use client'
+// import {
+//   EnvelopeOpenIcon,
+//   ExternalLinkIcon,
+//   GitHubLogoIcon,
+//   InstagramLogoIcon,
+//   LinkedInLogoIcon,
+//   TwitterLogoIcon,
+// } from '@radix-ui/react-icons'
+import * as Separator from '@radix-ui/react-separator'
 
+import { Anchor } from '~components/Anchor'
+import { NowPlaying } from '~components/Music'
 /**
  * @note ignore this file for CI linting (created on next build)
  */
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import buildInfo from '~config/build-info.json'
-import useStore from '~store/useStore'
+import { Icon } from '~ui/Icon'
+import { Tooltip } from '~ui/Tooltip'
+import { cx } from '~utils/cx'
 
-const { branch, isBranchMain, prerelease, version } = buildInfo
+const { version } = buildInfo
 
-const NowPlaying = dynamic(
-  () => import('~components/Music').then((mod: any) => mod.NowPlaying),
-  {
-    ssr: false,
-  }
-)
-
-/**
- * @note inline navigation data
- */
-const pages = [
-  {
-    url: '/about',
-    title: 'About',
-    tooltip: true,
-    tooltipContent: 'Little more about ol’ Jerome',
-  },
-  {
-    url: '/books',
-    title: 'Books',
-    tooltip: false,
-    tooltipContent: 'What is Jerome reading?',
-  },
-  {
-    url: '/music',
-    title: 'Music',
-    tooltip: false,
-    tooltipContent: 'What is Jerome listening to?',
-  },
-  {
-    url: '/podcasts',
-    title: 'Podcasts',
-    tooltip: false,
-    tooltipContent: 'Podcasts Jerome does/did',
-  },
-  {
-    url: '/events',
-    title: 'Upcoming Events',
-    tooltip: true,
-    tooltipContent: 'Live on Stage',
-  },
-]
-const shows = [
-  {
-    url: '/shows/alex-o-jerome',
-    title: 'Alex O’Jerome',
-    tooltip: false,
-    tooltipContent: 'Little more about ol’ Jerome',
-  },
-  {
-    url: '/shows/jerome-and',
-    title: 'Jerome &',
-    tooltip: false,
-    tooltipContent: 'What is Jerome reading?',
-  },
-  {
-    url: '/shows/jfle',
-    title: 'JFLE (Jesse LE & Jerome)',
-    tooltip: false,
-    tooltipContent: 'What is Jerome reading?',
-  },
-  {
-    url: '/shows/justin-and-jerome-experience',
-    title: 'Justin & Jerome Experience',
-    tooltip: false,
-    tooltipContent: 'What is Jerome listening to?',
-  },
-  {
-    url: '/shows',
-    title: '... View All',
-    tooltip: false,
-    tooltipContent: 'Podcasts Jerome does/did',
-  },
-]
+const URL_TYPE = {
+  EXTERNAL: 'url.external',
+  INTERNAL: 'url.internal',
+  AUDIO: 'audio',
+  THEME: 'theme',
+  SETTINGS: 'settings',
+  SOCIAL: 'social',
+}
 const socials = [
-  {
-    url: '/colophon',
-    title: 'Colophon',
-    tooltip: false,
-    tooltipContent: '',
-    icon: <Icon.InfoCircled />,
-    isExternal: false,
-  },
   // {
-  //   url: '/contact',
-  //   title: 'Contact',
-  //   tooltip: false,
-  //   tooltipContent: '',
-  //   icon: <Icon.ChatBubble />,
-  //   isExternal: false,
+  //   id: 'email',
+  //   title: 'Email',
+  //   url: 'mailto:j@jeromefitzgerald.com',
+  //   icon: <Icon.EnvelopeOpen />,
+  //   subtitle: 'j [at] jeromefitzgerald.com',
+  //   keywords: 'social email mail',
+  //   type: URL_TYPE.EXTERNAL,
   // },
   {
-    url: 'https://github.com/JeromeFitz',
+    id: 'colophon',
+    className: 'hover:text-black/60 dark:hover:text-white/60',
+    title: 'Colophon',
+    url: '/colophon',
+    icon: <Icon.InfoCircled className="text-inherit" />,
+    subtitle: 'Colophon',
+    keywords: 'social colophon',
+    type: URL_TYPE.INTERNAL,
+  },
+  {
+    id: 'github',
+    className: 'hover:text-black/60 dark:hover:text-white/60',
     title: 'GitHub',
-    tooltip: false,
-    tooltipContent: '',
-    icon: <Icon.GitHubLogo />,
-    isExternal: true,
+    url: 'https://github.com/JeromeFitz',
+    icon: <Icon.GitHubLogo className="text-inherit" />,
+    rightSlot: <Icon.ExternalLink />,
+    subtitle: '@JeromeFitz',
+    keywords: 'social github gh git',
+    type: URL_TYPE.EXTERNAL,
   },
   {
-    url: 'https://instagram.com/JeromeFitz',
+    id: 'instagram',
+    className: 'hover:text-instagram',
     title: 'Instagram',
-    tooltip: false,
-    tooltipContent: '',
-    icon: <Icon.InstagramLogo />,
-    isExternal: true,
+    url: 'https://instagram.com/JeromeFitz',
+    icon: <Icon.InstagramLogo className="text-inherit" />,
+    rightSlot: <Icon.ExternalLink />,
+    subtitle: '@JeromeFitz',
+    keywords: 'social instagram ig',
+    type: URL_TYPE.EXTERNAL,
   },
   {
-    url: 'https://www.linkedin.com/in/jeromefitzgerald/',
-    title: 'LinkedIn',
-    tooltip: false,
-    tooltipContent: '',
-    icon: <Icon.LinkedInLogo />,
-    isExternal: true,
-  },
-  {
-    url: 'https://twitter.com/JeromeFitz',
+    id: 'twitter',
+    className: 'hover:text-twitter',
     title: 'Twitter',
-    tooltip: false,
-    tooltipContent: '',
-    icon: <Icon.TwitterLogo />,
-    isExternal: true,
+    url: 'https://twitter.com/JeromeFitz',
+    icon: <Icon.TwitterLogo className="text-inherit" />,
+    rightSlot: <Icon.ExternalLink />,
+    subtitle: '@JeromeFitz',
+    keywords: 'social twitter',
+    type: URL_TYPE.EXTERNAL,
+  },
+  {
+    id: 'linkedin',
+    className: 'hover:text-linkedin',
+    title: 'LinkedIn',
+    url: 'https://www.linkedin.com/in/jeromefitzgerald',
+    icon: <Icon.LinkedInLogo className="text-inherit" />,
+    rightSlot: <Icon.ExternalLink />,
+    subtitle: '@jeromefitzgerald',
+    keywords: 'social linkedin',
+    type: URL_TYPE.EXTERNAL,
+  },
+  {
+    id: 'spotify',
+    className: 'hover:text-spotify dark:hover:text-spotify-dark',
+    title: 'Spotify',
+    url: 'https://open.spotify.com/user/jyxdd2oc2koozvbs7gk7omnwc',
+    icon: <Icon.SpotifyLogo className="text-inherit" />,
+    rightSlot: <Icon.ExternalLink />,
+    subtitle: 'some wild username spotify is odd',
+    keywords: 'social spotify',
+    type: URL_TYPE.EXTERNAL,
   },
 ]
 
-const LinkFooter = ({ url, title, tooltip, tooltipContent }) => {
-  const audio = useStore.use.audio()
-  const sounds = useStore.use.sounds()
-  const volume = useStore.use.volume()
-  const [playPopDown] = useSound(sounds.popDown, {
-    soundEnabled: audio,
-    volume,
-  })
-
-  const handleClickLink = () => playPopDown()
+function Footer() {
   return (
-    <li>
-      <NextLink href={url} legacyBehavior passHref>
-        <Link
-          variant="subtle"
-          css={{ display: 'inline-flex' }}
-          onClick={handleClickLink}
-        >
-          {tooltip ? (
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Text
-                    as="p"
-                    size="3"
-                    css={{
-                      mt: '$4',
-                      lineHeight: '20px',
-                    }}
-                  >
-                    <>{title}</>
-                  </Text>
-                </TooltipTrigger>
-                <TooltipPortal>
-                  <TooltipContent align="start" sideOffset={5}>
-                    {tooltipContent}
-                    <TooltipArrow />
-                  </TooltipContent>
-                </TooltipPortal>
-              </Tooltip>
-            </TooltipProvider>
-          ) : (
-            <Text as="span" size="3" css={{ mt: '$4', lineHeight: '20px' }}>
-              <>{title}</>
-            </Text>
-          )}
-        </Link>
-      </NextLink>
-    </li>
-  )
-}
-
-const FooterImpl = () => {
-  const ref = React.useRef()
-  const audio = useStore.use.audio()
-  const sounds = useStore.use.sounds()
-  const volume = useStore.use.volume()
-  const [playPopDown] = useSound(sounds.popDown, {
-    soundEnabled: audio,
-    volume,
-  })
-  const handleClickLink = () => playPopDown()
-  return (
-    <>
-      <Box css={{ width: '100%', my: '$6' }}>
-        <Separator decorative size="full" />
-      </Box>
-      <NowPlaying />
-      <Box as="footer" css={{ p: '1rem 1rem 2rem', m: '0 auto' }}>
-        <Grid
-          css={{
-            rowGap: '$7',
-            columnGap: '$3',
-            gridTemplateColumns: 'repeat(2, 1fr)',
-            '@bp1': { gridTemplateColumns: 'repeat(3, 1fr)' },
-            '@bp2': { gridTemplateColumns: 'repeat(4, 1fr)' },
-            '& ul': { listStyle: 'none', margin: '0', padding: '0' },
-          }}
-        >
-          {/* <Box>
-          <Text as="p" size="3" weight="7" css={{  }}>
-            Upcoming Events
-          </Text>
-          <ul>
-            <li>
-              <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                No Events Scheduled
-              </Text>
-            </li>
-            <li>
-              <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                <NextLink href="/events/2021" legacyBehavior passHref >
-                  <Link variant="subtle">... View Past Events</Link>
-                </NextLink>
-              </Text>
-            </li>
-          </ul>
-        </Box> */}
-          <Box>
-            <Text as="span" size="3" weight="7" css={{}}>
-              Pages
-            </Text>
-            <ul>
-              {pages.map((props, id) => (
-                <LinkFooter key={`pages-${id}`} {...props} />
-              ))}
-            </ul>
-          </Box>
-          <Box>
-            <Text as="span" size="3" weight="7" css={{}}>
-              Shows
-            </Text>
-            <ul>
-              {shows.map((props, id) => (
-                <LinkFooter key={`shows-${id}`} {...props} />
-              ))}
-            </ul>
-          </Box>
-          <Box>
-            <Text as="span" size="3" weight="7" css={{}}>
-              Social
-            </Text>
-            <ul>
-              {socials.map((item, itemIdx) => {
-                const { icon, isExternal, title, url } = item
-                return (
-                  <li key={`socials--${itemIdx}`}>
-                    <Text as="p" size="3" css={{ mt: '$4', lineHeight: '20px' }}>
-                      <IconLink
-                        href={url}
-                        target={isExternal ? '_blank' : '_self'}
-                        css={{ display: 'inline-flex', alignItems: 'center' }}
-                        variant="subtle"
-                        onClick={handleClickLink}
-                      >
-                        <Box as="span" css={{ mr: '$3' }}>
-                          {icon}
-                        </Box>
-                        {title}
-                        {isExternal && (
-                          <Flex as="span" css={{ color: '$slate8', ml: '$2' }}>
-                            <Icon.ExternalLink />
-                          </Flex>
-                        )}
-                      </IconLink>
-                    </Text>
-                  </li>
-                )
-              })}
-            </ul>
-          </Box>
-          <Flex
-            align="start"
-            direction="column"
-            css={{
-              justifyContent: 'center',
-              gridColumn: '1 / -1',
-              gridColumnStart: 'span 2',
-              ml: '$3',
-              '@bp2': { gridColumn: 'auto', order: -1 },
-            }}
+    <footer
+      className={cx(
+        // 'footer_footer__LV2HF',
+        // 'bg-zinc-100 text-zinc-900',
+        // 'dark:bg-zinc-800 dark:text-zinc-100',
+        // 'mint-bg text-radix-mauve12',
+        'transition-colors duration-150 ease-in-out',
+        // 'bg-white dark:bg-black text-black',
+        '',
+        ''
+      )}
+    >
+      <div
+        className={cx(
+          // 'layout-block-inner footer_inner__nOFwt',
+          'relative z-10 ',
+          // 'dark:bg-zinc-100 dark:text-zinc-900',
+          // 'bg-zinc-800 text-zinc-100',
+          'px-[6.4vw] pt-[72vw] pb-[8.2667vw]',
+          // 'mt-[0.26667vw] md:mt-[-.0694444444vw]',
+          'md:pt-[23.3056vw] md:pr-[2.2222vw] md:pb-[6.25vw] md:pl-[2.222vw]',
+          'rounded-b-3xl md:rounded-b-2xl',
+          '',
+          'text-radix-mauve12',
+          'bg-gradient-to-b',
+          'to-radix-mint7 from-white',
+          'dark:to-radix-mint7 dark:from-black',
+          ''
+        )}
+      >
+        <NowPlaying />
+        {/* @todo(remove) at some point in the next few weeks would be cool to remove this haha */}
+        <div id="footer--construction" className={cx('my-8 w-full py-8')}>
+          <h1
+            className={cx(
+              'text-3xl font-black',
+              'flex flex-row items-center',
+              'mb-2 pb-2'
+            )}
           >
-            <NextLink href={'/'} legacyBehavior passHref>
-              <BoxLink onClick={handleClickLink}>
-                <Flex align="center" gap="3" css={{ mt: '$8' }}>
-                  {/* @todo(radix-ui) types */}
-                  {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-                  {/* @ts-ignore */}
-                  <Avatar
-                    alt={`Avatar for Jerome (Bighead Dizzy)`}
-                    size="5"
-                    src={`/static/images/bighead--jerome--dizzy.svg`}
-                    aria-describedby="logoFooter"
-                    border="solid"
-                    ref={ref}
-                  />
-                  <Box id="logoFooter">
-                    <Paragraph weight="8">Jerome</Paragraph>
-                    <Paragraph weight="6">Fitzgerald</Paragraph>
-                  </Box>
-                </Flex>
-              </BoxLink>
-            </NextLink>
-            <Text
-              as="p"
-              size="1"
-              css={{
-                lineHeight: '20px',
-                color: '$gray11',
-                fontFamily: '$mono',
-                mt: '$6',
-                mb: '$9',
-                '@bp1': { pr: '$9' },
-              }}
-            >
-              <>
-                (c){` `}
-                <Box as="strong" css={{ wordBreak: 'keep-all ' }}>
-                  Nice Group of People, LLC
-                </Box>
-                <br />
-                {/* <Emoji character={`🏷️`} margin={true} /> */}
-                {`(v) `}
-                {version}
-                {` `}
-                {!isBranchMain && (
-                  <>
-                    {/* <Emoji character={`🧪️`} margin={true} /> */}
-                    {`(`}
-                    {!!prerelease ? prerelease : branch}
-                    {`)`}
-                  </>
+            <span className="mr-2">
+              <Icon.PencilWithPaper className="h-6 w-6" />
+            </span>
+            <span>
+              {` `}
+              Please Note
+            </span>
+          </h1>
+          <p className="mx-0 mt-5 mb-7 text-lg">
+            This site is being actively developed. So though it is nowhere perfect,
+            it is shippable, heh. So consider this eternally under construction I
+            guess.
+          </p>
+        </div>
+      </div>
+      <div
+        className={cx(
+          // 'footer_bottom__VigXf layout-grid',
+          'sticky inset-x-0 bottom-0 z-0 overflow-hidden py-10',
+          // 'bg-zinc-100 py-10 text-black',
+          'md:w-screen md:py-[3.125vw]',
+          // 'rounded-b-3xl md:rounded-b-2xl',
+          'mx-auto grid w-full grid-cols-4 gap-7 px-12',
+          // 'mix-blend-difference',
+          'text-radix-mauve12',
+          ''
+        )}
+      >
+        <div
+          className={cx(
+            // 'footer_social__L0_TJ',
+            'col-start-1 col-end-12 w-full text-start',
+            'md:col-start-1 md:col-end-2 md:flex md:select-none',
+            'gap-2',
+            'flex flex-row',
+            'items-center'
+          )}
+        >
+          {socials.map((social) => {
+            return (
+              <Anchor
+                aria-label={`A link to ${social?.subtitle} on ${social?.title}`}
+                className={cx(
+                  'cursor-pointer items-center justify-center',
+                  // 'mr-[2.1333vw] height-[10.993vw] width-[10.993vw]',
+                  // 'md:mr-[.5555555556vw] md:height-[2.7777777778vw] md:width-[2.7777777778vw]',
+                  // 'h-[2rem] ',
+                  'h-6 w-6',
+                  'icon-custom',
+                  'mr-5',
+                  social?.className,
+                  'transition-colors duration-200'
                 )}
-              </>
-            </Text>
-          </Flex>
-        </Grid>
-      </Box>
-    </>
+                href={social.url}
+                key={`social-${social.id}`}
+                // style={{ '& svg': 'inherit' }}
+                // target="_blank"
+                // rel="noopener noreferrer"
+              >
+                <Tooltip content={social.title} trigger={social.icon} />
+              </Anchor>
+            )
+          })}
+        </div>
+        <div
+          className={cx(
+            // 'footer_social__L0_TJ',
+            'mb-14 md:mb-0 ',
+            'col-start-1 col-end-12 w-full',
+            'md:col-start-9 md:col-end-[-1] md:row-start-1 md:row-end-auto md:text-end',
+            'items-center text-center',
+            ''
+          )}
+        >
+          <p
+            className={cx(
+              // // 'footer_address__p_BIK p-s',
+              // 'col-start-1 col-end-2 row-start-2 row-end-auto text-start',
+              // 'md:col-end-[-1] md:col-start-9 md:row-start-1 md:row-end-auto md:text-end',
+              '',
+              ''
+            )}
+          >
+            Nice Group of People, LLC
+          </p>
+          <p
+            className={cx(
+              // // 'footer_date__Nnwwa p-s',
+              // 'col-start-3 col-end-3 row-start-2 row-end-auto text-start',
+              // 'md:col-end-[-1] md:col-start-12 md:row-start-1 md:row-end-auto md:text-end',
+              'flex flex-row md:items-center md:justify-end',
+              'items-center justify-center text-center'
+            )}
+          >
+            v{version}
+            <Separator.Root
+              asChild
+              className={cx(
+                'bg-radix-mauve12',
+                'data-[orientation=horizontal]:h-[1px]',
+                'data-[orientation=horizontal]:w-full',
+                'data-[orientation=vertical]:h-full',
+                'data-[orientation=vertical]:w-[1px]',
+                'my-0 mx-3 min-h-[0.75rem]'
+              )}
+              decorative
+              orientation="vertical"
+            >
+              <span />
+            </Separator.Root>
+            ©2023
+          </p>
+        </div>
+      </div>
+    </footer>
   )
 }
 
-const Footer = React.memo(FooterImpl)
-
-export default Footer
+export { Footer }

@@ -1,5 +1,3 @@
-import NowPlaying from './NowPlaying'
-import Top from './Top'
-import YearInReview from './YearInReview'
-
-export { NowPlaying, Top, YearInReview }
+export { Music } from './Music'
+export { NowPlaying } from './NowPlaying'
+export { Top } from './Top'

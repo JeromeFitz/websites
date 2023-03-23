@@ -1,19 +1,5 @@
-import { Flex } from '@jeromefitz/design-system'
-
 const bulleted_list = ({ children }) => {
-  return (
-    <Flex
-      as="ul"
-      css={{
-        display: 'flex',
-        flexDirection: 'column',
-        listStyleType: 'disc',
-        listStylePosition: 'outside',
-      }}
-    >
-      {children}
-    </Flex>
-  )
+  return <ul className="flex list-inside list-disc flex-col">{children}</ul>
 }
 
 export default bulleted_list

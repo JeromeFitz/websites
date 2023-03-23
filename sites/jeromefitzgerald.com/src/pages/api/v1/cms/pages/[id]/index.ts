@@ -70,7 +70,6 @@ const notionPagesId = async (req: NextApiRequest, res: NextApiResponse) => {
       ...dataOmittted,
     })
   } catch (e) {
-    // eslint-disable-next-line no-console
     console.log(e)
 
     return res.status(404).json({

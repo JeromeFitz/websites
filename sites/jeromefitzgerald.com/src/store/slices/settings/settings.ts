@@ -14,10 +14,10 @@ const Settings = (set: NamedSet<StoreState>, get: any) => {
   const { commandMenuOpen } = initialState
   return {
     commandMenuOpen,
-    commandMenuOpenSet: () =>
+    commandMenuOpenSet: (s?: boolean) =>
       set(
         produce((state: StoreState) => {
-          state.commandMenuOpen = !state.commandMenuOpen
+          state.commandMenuOpen = !!s ? s : !state.commandMenuOpen
         }),
         false,
         // @note(zustand) https://github.com/pmndrs/zustand/issues/705#issuecomment-1023693991

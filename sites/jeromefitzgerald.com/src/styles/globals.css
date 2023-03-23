@@ -1,0 +1,18 @@
+@tailwind base;
+
+@tailwind components;
+@tailwind utilities;
+
+@import url('./chrome.css');
+@import url('./safari.css');
+
+.icon-custom svg {
+  height: inherit;
+  width: inherit;
+  /* height: 2rem; */
+  /* width: 2rem; */
+}
+
+.icon-custom.hero svg path {
+  stroke-width: '1.5 !important';
+}

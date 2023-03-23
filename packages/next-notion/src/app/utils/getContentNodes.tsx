@@ -2,7 +2,11 @@ import type { NotionBlock } from '@jeromefitz/notion/schema'
 import _map from 'lodash/map'
 import { v4 as uuid } from 'uuid'
 
+import { CONTENT_NODE_TYPES } from '../constants'
+
 import getContentType from './getContentType'
+
+const { BULLETED_LIST_ITEM, NUMBERED_LIST_ITEM, OL, UL } = CONTENT_NODE_TYPES
 
 /**
  * @hack
@@ -10,8 +14,6 @@ import getContentType from './getContentType'
  * @todo
  * (notion) other elements that rely on parent element
  * (notion) can we lift the images out of this earlier for cache state?
- * @question
- * can this somehow be SSR'd?
  *
  */
 function getContentNodes({ content, images }) {
@@ -23,14 +25,14 @@ function getContentNodes({ content, images }) {
     (contentItem: NotionBlock) => {
       if (contentItem === undefined || contentItem === null) return null
       if (
-        contentItem?.type === 'bulleted_list_item' ||
-        contentItem?.type === 'numbered_list_item'
+        contentItem?.type === BULLETED_LIST_ITEM ||
+        contentItem?.type === NUMBERED_LIST_ITEM
       ) {
         if (!listCurrentState) {
           listCurrentId = uuid()
           nodes[listCurrentId] = {
             id: listCurrentId,
-            type: contentItem?.type === 'numbered_list_item' ? 'ol' : 'ul',
+            type: contentItem?.type === NUMBERED_LIST_ITEM ? OL : UL,
             node: [],
           }
         }
@@ -45,6 +47,7 @@ function getContentNodes({ content, images }) {
         type: contentItem?.type,
         node: getContentType(contentItem, images),
       }
+      return
     }
   )
 

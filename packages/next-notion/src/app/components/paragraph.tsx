@@ -1,12 +1,12 @@
-import { Paragraph } from '@jeromefitz/design-system'
+// import { Paragraph } from '@jeromefitz/design-system'
 
 import getContentTypeDetail from '../utils/getContentTypeDetail'
 
 const paragraph = ({ content, id }) => {
   return (
-    <Paragraph css={{ mb: '$4', lineHeight: '1.5' }} size="1">
+    <p className="mb-4 text-lg font-normal leading-normal">
       {getContentTypeDetail({ content, id })}
-    </Paragraph>
+    </p>
   )
 }
 

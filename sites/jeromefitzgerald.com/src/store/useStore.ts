@@ -1,6 +1,7 @@
 import { pipe } from 'ramda'
-import _create, { Mutate, StoreApi } from 'zustand'
+import { create, Mutate, StoreApi } from 'zustand'
 import {
+  createJSONStorage,
   devtools as _devtools,
   NamedSet,
   persist as _persist,
@@ -42,14 +43,15 @@ const persist = (
 ) =>
   _persist(config, {
     name: 'store',
-    getStorage: () => localStorage,
+    // getStorage: () => localStorage,
+    storage: createJSONStorage(() => localStorage),
     partialize: (state: StoreState) => ({
       audio: state.audio,
       counter: state.counter,
     }),
   })
 
-const create = (
+const createImpl = (
   config: (
     set: NamedSet<StoreState>,
     // @todo(types) any
@@ -59,9 +61,9 @@ const create = (
       [['zustand/devtools', never], ['zustand/persist', Partial<StoreState>]]
     >
   ) => StoreState
-) => _create<StoreState>(config)
+) => create<StoreState>(config)
 
-const createStore = pipe(devtools, persist, create)
+const createStore = pipe(devtools, persist, createImpl)
 const useStoreBase = createStore((set, get) => {
   return {
     ...Audio(set, get),
@@ -73,4 +75,4 @@ const useStoreBase = createStore((set, get) => {
 const useStore = createSelectors(useStoreBase)
 
 export type { StoreState }
-export default useStore
+export { useStore }

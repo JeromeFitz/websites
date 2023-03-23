@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import Client from '@jeromefitz/spotify'
 import type { CredentialProps, ClientProps } from '@jeromefitz/spotify'
 import stringify from 'fast-json-stable-stringify'
@@ -6,7 +7,7 @@ import ms from 'ms'
 import { NextApiResponse } from 'next'
 import redis from 'next-notion/src/lib/redis'
 
-const keyPrefix = 'spotify'
+const keyPrefixSpotify = `${process.env.NEXT_PUBLIC__SITE}/spotify`
 
 /**
  * @redis is in seconds not ms
@@ -25,7 +26,7 @@ const dataEmpty = { is_playing: false, debug: { type: 'api', latency: 0 } }
 
 const getKey = ({ limit, offset, slug, time_range }) => {
   if (slug === 'now-playing') {
-    const key = `${keyPrefix}/${slug}`
+    const key = `${keyPrefixSpotify}/${slug}`
     return {
       key,
       evictionPolicy: evictionPolicyTiming['now_playing'],
@@ -34,7 +35,7 @@ const getKey = ({ limit, offset, slug, time_range }) => {
 
   const _params = `?time_range=${time_range}&limit=${limit}&offset=${offset}`
   const params = _slug(_params)
-  const key = `${keyPrefix}/${slug}/${params}`.toLowerCase()
+  const key = `${keyPrefixSpotify}/${slug}/${params}`.toLowerCase()
 
   return {
     key,
@@ -48,9 +49,16 @@ const {
   SPOTIFY_REFRESH_TOKEN: refreshToken,
 } = process.env
 
+/**
+ * @todo(types) how did i mess this up so bad haha
+ * eslint-disable @typescript-eslint/ban-ts-comment
+ */
 const credentials: CredentialProps = {
+  // @ts-ignore
   clientId,
+  // @ts-ignore
   clientSecret,
+  // @ts-ignore
   refreshToken,
 }
 
@@ -78,8 +86,13 @@ const spotifyApi = async (req: any, res: NextApiResponse) => {
   const { key, evictionPolicy } = getKey({ limit, offset, slug, time_range })
 
   let start = Date.now()
-  let cache = await redis.get(key)
-  cache = JSON.parse(cache)
+  //
+  // let cache = await redis.get(key)
+  const cache: any = await redis.get(key)
+
+  // console.dir(cache)
+
+  // cache = !!cache && JSON?.parse(cache)
   const result: any = {}
   let data: any = {}
 
@@ -103,7 +116,8 @@ const spotifyApi = async (req: any, res: NextApiResponse) => {
         }
         // @cache(set) redis
         if (result.data.is_playing) {
-          void redis.set(key, stringify(result.data), 'EX', evictionPolicy)
+          // void redis.set(key, stringify(result.data), 'EX', evictionPolicy)
+          void redis.set(key, stringify(result.data), { ex: evictionPolicy })
         }
         break
       case 'top-artists':
@@ -121,7 +135,8 @@ const spotifyApi = async (req: any, res: NextApiResponse) => {
           type: 'api',
         }
         // @cache(set) redis
-        void redis.set(key, stringify(result.data), 'EX', evictionPolicy)
+        // void redis.set(key, stringify(result.data), 'EX', evictionPolicy)
+        void redis.set(key, stringify(result.data), { ex: evictionPolicy })
         break
       case 'top-tracks':
         start = Date.now()
@@ -138,7 +153,8 @@ const spotifyApi = async (req: any, res: NextApiResponse) => {
           type: 'api',
         }
         // @cache(set) redis
-        void redis.set(key, stringify(result.data), 'EX', evictionPolicy)
+        // void redis.set(key, stringify(result.data), 'EX', evictionPolicy)
+        void redis.set(key, stringify(result.data), { ex: evictionPolicy })
         break
       default:
         data = { ...dataEmpty }

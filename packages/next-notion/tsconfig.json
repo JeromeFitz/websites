@@ -5,7 +5,8 @@
     // "baseUrl": ".",
     "incremental": true,
     // "noUnusedParameters": false, // @todo(lint)
-    "rootDir": "./src",
+    // @todo(typescript) until figure out config stuff this has to go here
+    // "rootDir": "./src",
     "outDir": "./dist",
     // "strict": false,
     // //

@@ -28,7 +28,7 @@ async function handleRevalidate(req, res) {
 function getRawBody(req) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   return new Promise((resolve, reject) => {
-    const bodyChunks = []
+    const bodyChunks: any[] = []
     req.on('end', () => {
       const rawBody = Buffer.concat(bodyChunks).toString('utf8')
       resolve(rawBody)

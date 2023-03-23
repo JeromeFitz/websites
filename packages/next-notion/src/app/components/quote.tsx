@@ -1,4 +1,4 @@
-import { Box, Callout, Flex, Text } from '@jeromefitz/design-system'
+// import { Box, Callout, Flex, Text } from '@jeromefitz/design-system'
 import _map from 'lodash/map'
 import _size from 'lodash/size'
 
@@ -29,35 +29,28 @@ const splitter = (children = '') => {
         closeQuote: delimiter,
       }
 }
+
 const QuoteImpl = ({ children }) => {
   const { closeQuote, isQuote, text } = splitter(children)
   return (
-    <Box
-      css={{
-        p: '$2',
-        '@bp1': {
-          p: '$4',
-        },
-      }}
-    >
-      <Callout variant="quote">
+    <div id="quote-container" className="p-2 md:p-4">
+      <div id="quote-wrapper" className="green-border mr-4 border-l-8 p-4">
         {isQuote ? (
-          <Flex direction="column" gap="3">
-            <Text size="5" weight="7" variant="quote">
+          <div id="quote" className="flex flex-col gap-3">
+            <p className="text-xl font-black md:text-3xl">
               {text[0]}
               {closeQuote}
-            </Text>
-            <Text size="4" weight="5" css={{ color: '$colors$quoteTextHover' }}>
-              {text[1]}
-            </Text>
-          </Flex>
+            </p>
+            <p className="text-base font-bold md:text-xl">{text[1]}</p>
+          </div>
         ) : (
-          <Text variant="quote">{children}</Text>
+          <p>{children}</p>
         )}
-      </Callout>
-    </Box>
+      </div>
+    </div>
   )
 }
+
 const quote = ({ content, id }) => {
   if (_size(content) > 0) {
     const text = getContentTypeDetail({ content, id })
@@ -67,5 +60,5 @@ const quote = ({ content, id }) => {
   }
 }
 
-export { QuoteImpl }
+// export { QuoteImpl }
 export default quote

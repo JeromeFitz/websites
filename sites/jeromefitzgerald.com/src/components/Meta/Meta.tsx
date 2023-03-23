@@ -1,4 +1,5 @@
-import { Box, Flex, Grid, Heading, Paragraph, Text } from '@jeromefitz/design-system'
+'use client'
+// import { Box, Flex, Grid, Heading, Paragraph, Text } from '@jeromefitz/design-system'
 import { PROPERTIES } from '@jeromefitz/notion/constants'
 import type { Show } from '@jeromefitz/notion/schema'
 import getTitle from '@jeromefitz/notion/utils/getTitle'
@@ -11,25 +12,37 @@ import pluralize from 'pluralize'
 import useSWRImmutable from 'swr/immutable'
 
 import { notionConfig } from '~config/index'
+import { cx } from '~utils/cx'
+// import { log } from '~utils/log'
 
 const { NOTION } = notionConfig
 
 const rollupExclude = [
   // PROPERTIES.rollupEvents__People_Guest_Music.key,
+  PROPERTIES.rollupEvents__People_Cast.key,
   PROPERTIES.rollupEvents__Shows.key,
   PROPERTIES.rollupEvents__Venues.key,
   PROPERTIES.rollupShows__People_Cast_Slug.key,
   PROPERTIES.rollupShows__Tags.key,
 ]
+const rollupExcludeEvent = [PROPERTIES.rollupShows__People_Cast_Past.key]
 
-const Meta = ({ data, routeType }) => {
+const Meta = ({ data, isTitleHidden = false, routeType }) => {
+  // log(`Meta > data`, data)
+  // if (!data) return null
   const { id } = data?.info
   const properties = data?.info?.properties
-  const rollupKeys = []
+  const rollupKeys: any[] = []
   _map(
     Object.keys(properties),
-    (k) =>
-      _startsWith(k, 'rollup') && !rollupExclude.includes(k) && rollupKeys.push(k)
+    (k: any) =>
+      _startsWith(k, 'rollup') &&
+      !rollupExclude.includes(k) &&
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      [NOTION.EVENTS.routeType, NOTION.SHOWS.routeType].includes(routeType) &&
+      !rollupExcludeEvent.includes(k) &&
+      rollupKeys.push(k)
   )
 
   let size = 0
@@ -39,29 +52,26 @@ const Meta = ({ data, routeType }) => {
 
   return (
     <>
-      <Box css={{ my: '$8' }}>
-        <Text
-          css={{
-            borderTop: '1px solid $hiContrast',
-            fontSize: '$9',
-            mt: '$6',
-            mb: '$4',
-            pt: '$6',
-            pb: '$4',
-          }}
-          weight="7"
+      <div className="my-8">
+        <p
+          className={cx(
+            isTitleHidden && 'hidden',
+            'my-2 py-2',
+            'md:my-6 md:py-6',
+            'border-t-[1px] border-solid font-extrabold',
+            'mauve-border',
+            'text-2xl leading-tight',
+            'md:text-4xl md:leading-tight'
+          )}
         >
           Info
-        </Text>
+        </p>
 
-        <Grid
-          css={{
-            rowGap: '$7',
-            columnGap: '$4',
-            gridTemplateColumns: 'repeat(2, 1fr)',
-            '@bp1': { gridTemplateColumns: 'repeat(3, 1fr)' },
+        <div
+          style={{
             '& ul': { listStyle: 'none', margin: '0', padding: '0' },
           }}
+          className="m-auto grid grid-cols-6 gap-8"
         >
           {_map(rollupKeys, (rollupKey, rollupKeyIdx) => {
             const meta = properties[rollupKey]
@@ -81,12 +91,15 @@ const Meta = ({ data, routeType }) => {
               />
             )
           })}
-        </Grid>
-      </Box>
+        </div>
+      </div>
     </>
   )
 }
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Rollup = ({ _key, data, rollupKey, routeType }) => {
   const meta = data[rollupKey]
   const metaSize = _size(meta)
@@ -94,42 +107,40 @@ const Rollup = ({ _key, data, rollupKey, routeType }) => {
 
   return (
     <>
-      <Flex
-        direction="column"
-        css={{
-          gridColumnStart: 'span 2',
-          '@bp1': { gridColumnStart: metaSize > 4 ? 'span 2' : 'span 1' },
-        }}
+      <div
+        className={cx(
+          'col-span-3 mb-4 flex flex-col md:col-start-[span_2] md:mb-8'
+          // metaSize > 4 ? 'md:col-start-[span_2]' : 'md:col-start-[span_1]'
+        )}
       >
-        <Heading
-          size="2"
-          css={{
-            borderTop: '1px solid $hiContrast',
-            py: '$3',
-          }}
-          weight="6"
+        <h4
+          className={cx(
+            'border-t-[1px] border-solid py-3 font-extrabold uppercase tracking-tight',
+            // 'border-zinc-900 dark:border-zinc-50',
+            'mauve-border'
+          )}
         >
           {title}
-        </Heading>
-        <Box as="ul">
+        </h4>
+        <ul>
           {_map(meta, (item, itemIdx) => {
             const keySub = `${_key}-${itemIdx}`
-            if (
-              rollupKey === PROPERTIES.rollupEvents__People_Cast.key &&
-              routeType === NOTION.EVENTS.routeType
-            ) {
-              return <Cast data={data} key={keySub} />
-            }
+            // if (
+            //   rollupKey === PROPERTIES.rollupEvents__People_Cast.key &&
+            //   routeType === NOTION.EVENTS.routeType
+            // ) {
+            //   return <Cast data={data} key={keySub} />
+            // }
             return (
-              <Box as="li" key={keySub} css={{}}>
-                <Paragraph size="2" weight="5">
+              <li key={keySub} className="my-2 md:my-0.5">
+                <p className="text-base font-normal tracking-tight md:text-xl">
                   {item}
-                </Paragraph>
-              </Box>
+                </p>
+              </li>
             )
           })}
-        </Box>
-      </Flex>
+        </ul>
+      </div>
     </>
   )
 }
@@ -137,6 +148,9 @@ const Rollup = ({ _key, data, rollupKey, routeType }) => {
 /**
  * @custom(notion) get the cast of the "first" show
  */
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Cast = ({ data }) => {
   const { data: showData } = useSWRImmutable<Show>(
     [`/api/v1/cms/pages/${data?.relationEvents__Shows[0]}`],
@@ -151,15 +165,13 @@ const Cast = ({ data }) => {
     <>
       {_map(cast, (item, itemIdx) => {
         return (
-          <Box as="li" css={{}} key={`iiii-${itemIdx}`}>
-            <Paragraph size="2" weight="5">
-              {item}
-            </Paragraph>
-          </Box>
+          <li key={`iiii-${itemIdx}`}>
+            <p className="text-base font-normal md:text-xl">{item}</p>
+          </li>
         )
       })}
     </>
   )
 }
 
-export default Meta
+export { Meta }

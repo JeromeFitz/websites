@@ -10,7 +10,8 @@ const _pick = require('lodash/pick')
 const _size = require('lodash/size')
 const prettier = require('prettier')
 
-const octokit = new Octokit({ auth: process.env.GH_TOKEN })
+// const octokit = new Octokit({ auth: process.env.GH_TOKEN })
+const octokit = new Octokit({})
 
 const config = {
   owner: 'jeromefitz',
@@ -82,9 +83,11 @@ async function setupBuildInfo() {
   await writeFile(filePath, content)
 
   const message = [
+    '',
     'build-info.json generated:',
     `›  v${version}`,
     `›  ${!data?.isBranchMain ? (!!prerelease ? prerelease : branch) : 'main'}`,
+    '',
   ]
   message.map((msg) => console.debug('\x1b[36m%s\x1b[0m', 'info', ' - [ 📦 ] ', msg))
   console.debug()
