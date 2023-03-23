@@ -38,8 +38,8 @@
     "next": "13.2.5-canary.14",
     "next-themes": "0.2.1",
     "plaiceholder": "2.5.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "react": "18.3.0-next-12a1d140e-20230321",
+    "react-dom": "18.3.0-next-12a1d140e-20230321",
     "swr": "2.1.1"
   },
   "devDependencies": {
