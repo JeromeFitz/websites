@@ -26,8 +26,14 @@ const setCacheJson = (data, key) => {
 
 const setCacheRedis = (data, key) => {
   // console.dir(`setCacheRedis => key: ${key}`)
-  // @todo(redis) get the TTL by the routeType
-  void redis.set(key, stringify(data), 'EX', TIME.MONTH)
+  // console.dir(`setCacheRedis => data`)
+  // // console.dir(data)
+  // console.dir(`---`)
+  // // @todo(redis) get the TTL by the routeType
+  // // void redis.set(key, stringify(data), 'EX', TIME.MONTH)
+  void redis.set(key, stringify(data), {
+    ex: TIME.MONTH,
+  })
 }
 
 const setCache = ({ cacheType, data, key }) => {
@@ -54,14 +60,31 @@ const getCacheJson = async (key) => {
 
 const getCacheRedis = async (key) => {
   let cacheData = false
-  // console.dir(`getCache: redis => ${key}`)
-  const cache = await redis.get(key)
+  // console.dir(`getCacheRedis => key: ${key}`)
+  // console.dir(`getCacheRedis => data`)
+  // // console.dir(data)
+  // console.dir(`---`)
+  // // const cache = await redis.get(key)
+  const cache: any = await redis.get(key)
+  // console.dir(`getCacheRedis => cache`)
+  // console.dir(cache)
+
   try {
     // console.dir(`getCacheRedis: redis => ${key}`)
-    cacheData = await JSON.parse(cache)
+    /**
+     * @note(redis) hey ... this is already a json object!!!!
+     */
+    // cacheData = await JSON.parse(cache)
+    cacheData = cache
+    // console.dir(`getCacheRedis => cacheData`)
+    // console.dir(cacheData)
   } catch (_) {
     // console.dir(`getCacheRedis: notFatal`)
     cacheData = false
+    // console.dir(`getCacheRedis: notFatal => cacheData`)
+    // console.dir(cacheData)
+    // console.dir(`____`)
+    // console.dir(_)
   }
   return cacheData
 }

@@ -1,12 +1,17 @@
-import { Heading } from '@jeromefitz/design-system'
+// @todo(lint)
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import Balancer from 'react-wrap-balancer'
 
 import getContentTypeDetail from '../utils/getContentTypeDetail'
 
 const heading_3 = ({ content, id }) => {
   return (
-    <Heading as="h4" css={{ mb: '$3' }} size="1">
+    <h4 className="mb-3 text-lg font-black md:text-2xl">
+      {/* <Balancer>{getContentTypeDetail({ content, id })}</Balancer> */}
       {getContentTypeDetail({ content, id })}
-    </Heading>
+    </h4>
   )
 }
 

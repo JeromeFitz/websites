@@ -1,4 +1,4 @@
-import type { NotionText } from '@jeromefitz/notion/schema'
+// import type { NotionText } from '@jeromefitz/notion/schema'
 import _map from 'lodash/map'
 
 import TextAnnotations from './TextAnnotations'
@@ -9,7 +9,8 @@ const getContentTypeDetail = ({ content, id = null }) => {
    * - rich_text (heading_1, heading_2, heading_3, paragraph, ...)
    * - text (the actual `type` of a `rich_text` element)
    */
-  return _map(content.rich_text ?? content.text, (text: NotionText, textId) => {
+  // return _map(content.rich_text ?? content.text, (text: NotionText, textId) => {
+  return _map(content.rich_text ?? content.text, (text: any, textId) => {
     const { href, plain_text, annotations } = text
     const key = `${id}--text-annotations--${textId}`
     return (

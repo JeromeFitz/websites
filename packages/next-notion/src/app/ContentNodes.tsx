@@ -1,37 +1,27 @@
 import _map from 'lodash/map'
-import * as React from 'react'
+import React from 'react'
 
-// import NoSSR from './components/NoSSR'
+import { CONTENT_NODE_TYPES } from './constants'
 import getContentNodes from './utils/getContentNodes'
 
 import { getContentNode } from './index'
 
+const { OL, UL, NUMBERED_LIST, BULLETED_LIST } = CONTENT_NODE_TYPES
+
 const ContentNodes = ({ content, images }) => {
-  // let i = 0
-  // @todo(types)
-  const WrapComponent: any = React.Fragment
+  // console.dir(`ContentNodes`)
+  const WrapComponent = React.Fragment
 
   return (
     <>
       {_map(getContentNodes({ content, images }), (node: any) => {
-        /**
-         * @hack(ssr)
-         * X elements that would (probably) be in viewport
-         *
-         * @note(ssr)
-         * With SSG/ISG there is not enough gain to do this, especially
-         *  if the user has JS turned off.
-         */
-        // if (i > 9) {
-        //   WrapComponent = NoSSR
-        // }
-        // i++
-
-        if (node?.type === 'ol' || node?.type === 'ul') {
+        // console.dir(`map > getContentNodes (${node?.type})`)
+        // console.dir(node)
+        if (node?.type === OL || node?.type === UL) {
           const ListType =
-            node?.type === 'ol'
-              ? getContentNode['numbered_list']
-              : getContentNode['bulleted_list']
+            node?.type === OL
+              ? getContentNode[NUMBERED_LIST]
+              : getContentNode[BULLETED_LIST]
           return (
             <WrapComponent key={node.id}>
               <ListType>{node.node}</ListType>

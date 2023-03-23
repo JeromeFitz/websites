@@ -1,17 +1,14 @@
-/**
- * @todo(design-system) Checkbox props changed
- */
-// import { Checkbox, Flex, Label } from '@jeromefitz/design-system'
-import { Flex, Label } from '@jeromefitz/design-system'
-
 const to_do = ({ content, id }) => {
+  // console.dir(`to_do`)
+  // console.dir(content)
   return (
-    <Flex css={{ alignItems: 'center', my: '$3' }}>
+    <div className="my-3 items-center">
       {/* <Checkbox disabled checked={content.checked} id={id} /> */}
-      <Label css={{ paddingLeft: '$5' }} htmlFor={id}>
-        {content.text[0].plain_text}
-      </Label>
-    </Flex>
+      <input type="checkbox" value={content.checked} id={id} />
+      <label className="pl-5" htmlFor={id}>
+        {content?.rich_text[0]?.plain_text}
+      </label>
+    </div>
   )
 }
 

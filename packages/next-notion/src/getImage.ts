@@ -15,14 +15,14 @@ interface IGetPlaiceholderReturnCustom
 /**
  * @ref https://vercel.com/docs/concepts/projects/environment-variables#system-environment-variables
  */
-const isBuildStep = process.env.CI
-const isDev = process.env.NODE_ENV === 'development'
+// const isBuildStep = process.env.CI
+// const isDev = process.env.NODE_ENV === 'development'
 
 const cache = process.env.NEXT_PUBLIC__NOTION_USE_CACHE === 'true' ? true : false
 const cacheOverride =
   process.env.NEXT_PUBLIC__NOTION_USE_CACHE_OVERIDE === 'true' ? true : false
 const cacheType = process.env.NEXT_PUBLIC__NOTION_CACHE_TYPE || CACHE_TYPES.JSON
-const keyPrefix = 'image'
+const keyPrefixImage = `${process.env.NEXT_PUBLIC__SITE}/image`
 
 /**
  * @note(!cache)
@@ -38,25 +38,35 @@ const getImage = async (_url: string) => {
     url: string
 
   /**
-   * @note(cache) if we are passed `image/` we are being passed a key to check
+   * @note(cache) if we are passed `[website]/image/` we are being passed a key to check
    */
-  if (_startsWith(_url, 'image/')) {
+  if (_startsWith(_url, `${keyPrefixImage}`)) {
     key = _url
   } else {
     url = _url
     if (validUrl.isHttpsUri(url)) {
       id = _slug(url)
-      key = `${keyPrefix}/${id}`.toLowerCase()
+      key = `${keyPrefixImage}/${id}`.toLowerCase()
     } else {
       data = undefined
       return data
     }
   }
 
-  if ((cache && isBuildStep) || isDev) {
-    // console.dir(`getImage => cache && isBuildStep: ${cacheType} => ${key}`)
-    data = await getCache({ cacheType, key })
-  }
+  // if ((cache && isBuildStep) || isDev) {
+  //   console.dir(`getImage => cache && isBuildStep: ${cacheType} => ${key}`)
+  //   data = await getCache({ cacheType, key })
+  // }
+  /**
+   * @todo(cache) with new data fetching, let us rethink the above
+   *
+   * ref: https://beta.nextjs.org/docs/data-fetching/revalidating
+   *
+   * For now, always use cache. And determine how we can revalidate
+   *  through API calls, or Timing / Cron.
+   *
+   */
+  data = await getCache({ cacheType, key })
 
   if (!data || data === undefined) {
     const { getPlaiceholder } = await import('plaiceholder')

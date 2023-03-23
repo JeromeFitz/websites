@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
-import fs from 'fs'
-import { promisify } from 'util'
+import fs from 'node:fs'
+import { promisify } from 'node:util'
 
 const readFile = promisify(fs.readFile)
 const writeFile = promisify(fs.writeFile)

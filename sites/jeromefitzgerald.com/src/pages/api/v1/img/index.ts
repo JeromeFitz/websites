@@ -33,7 +33,6 @@ const imagesApi = async (req: any, res: NextApiResponse) => {
       })
     }
   } catch (e) {
-    // eslint-disable-next-line no-console
     console.log(e)
 
     return res.status(500).json({

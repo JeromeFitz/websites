@@ -11,7 +11,7 @@ const config: Options = {
   silent: true,
   sourcemap: false,
   splitting: false,
-  target: ['node16'],
+  target: ['node18'],
   treeshake: false,
 }
 
