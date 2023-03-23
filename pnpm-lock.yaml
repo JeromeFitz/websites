@@ -28,7 +28,7 @@ importers:
       lint-staged: 13.2.0
       lodash: 4.17.21
       pinst: 3.0.0
-      rimraf: 4.4.0
+      rimraf: 4.4.1
       semantic-release: 19.0.5
       semantic-release-monorepo: 7.0.5
       syncpack: 9.8.4
@@ -62,7 +62,7 @@ importers:
       lint-staged: 13.2.0
       lodash: 4.17.21
       pinst: 3.0.0
-      rimraf: 4.4.0
+      rimraf: 4.4.1
       semantic-release: 19.0.5
       semantic-release-monorepo: 7.0.5_semantic-release@19.0.5
       syncpack: 9.8.4
@@ -10750,8 +10750,8 @@ packages:
     dependencies:
       glob: 7.2.3
 
-  /rimraf/4.4.0:
-    resolution: {integrity: sha512-X36S+qpCUR0HjXlkDe4NAOhS//aHH0Z+h8Ckf2auGJk3PTnx5rLmrHkwNdbVQuCSUhOyFrlRvFEllZOYE+yZGQ==}
+  /rimraf/4.4.1:
+    resolution: {integrity: sha512-Gk8NlF062+T9CqNGn6h4tls3k6T1+/nXdOcSZVikNVtlRdYpA7wRJJMoXmuvOnLW844rPjdQ7JgXCYM6PPC/og==}
     engines: {node: '>=14'}
     hasBin: true
     dependencies:
