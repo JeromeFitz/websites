@@ -1,4 +1,3 @@
-import { Flex } from '@jeromefitz/design-system'
 import _map from 'lodash/map'
 
 import Column from './column'
@@ -8,18 +7,9 @@ const column_list = ({ content, id }) => {
     <Column key={child.id} content={child} has_children={child.has_children} />
   ))
   return (
-    <Flex
-      key={id}
-      justify="between"
-      css={{
-        display: 'flex',
-        flexDirection: 'column',
-        my: '$4',
-        '@bp1': { flexDirection: 'row' },
-      }}
-    >
+    <div key={id} className="my-4 flex flex-col justify-between md:flex-row">
       {nodeContentParent}
-    </Flex>
+    </div>
   )
 }
 

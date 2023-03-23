@@ -42,7 +42,6 @@ const notionCatchAll = async (req: any, res: NextApiResponse) => {
 
     res.status(200).json({ ...data, debug })
   } catch (e) {
-    // eslint-disable-next-line no-console
     console.log(e)
 
     return res.status(500).json({

@@ -2,10 +2,14 @@
   "$schema": "https://turborepo.org/schema.json",
   "globalDependencies": ["pnpm-workspace.yaml"],
   "pipeline": {
+    "//#format": {
+      "dependsOn": [],
+      "inputs": ["*.cjs", "*.js", "*.json", "*.md", "*.mjs", "*.ts"]
+    },
     "build": {
       "outputs": [".cache/**", ".next/**"],
       "dependsOn": ["^build"],
-      "inputs": ["src/**", "*.cjs", "*.js", "package.json", "vercel.json"],
+      "inputs": ["src/**", "*.cjs", "*.js", "*.mjs", "package.json", "vercel.json"],
       "env": ["VERCEL_ENV"]
     },
     "clean": {
@@ -14,12 +18,13 @@
     "dev": {
       "cache": false
     },
+    "format": {
+      "dependsOn": ["^//#format"],
+      "cache": false
+    },
     "lint": {
       "dependsOn": ["^lint"],
-      "inputs": ["src/**", "*.cjs", "*.js", "package.json", "vercel.json"]
-    },
-    "format:lint": {
-      "cache": false
+      "inputs": ["src/**", "*.cjs", "*.js", "*.mjs", "package.json", "vercel.json"]
     },
     "semantic-release:mono": {
       "cache": false,
@@ -31,7 +36,7 @@
     "test": {
       "outputs": ["coverage/**"],
       "dependsOn": ["lint"],
-      "inputs": ["src/**", "*.cjs", "*.js", "package.json", "vercel.json"]
+      "inputs": ["src/**", "*.cjs", "*.js", "*.mjs", "package.json", "vercel.json"]
     }
   }
 }

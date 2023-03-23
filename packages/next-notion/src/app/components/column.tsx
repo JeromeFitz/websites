@@ -1,4 +1,3 @@
-import { Flex } from '@jeromefitz/design-system'
 import _map from 'lodash/map'
 
 import getContentType from '../utils/getContentType'
@@ -9,12 +8,9 @@ const column = ({ content, has_children }) => {
     getContentType(content)
   )
   return (
-    <Flex
-      direction="column"
-      css={{ flex: '1 1', my: '$3', '@bp1': { my: '$3', paddingRight: '$5' } }}
-    >
+    <div className="my-3 flex flex-[1_1] flex-col md:my-3 md:pr-5">
       {nodeContent}
-    </Flex>
+    </div>
   )
 }
 

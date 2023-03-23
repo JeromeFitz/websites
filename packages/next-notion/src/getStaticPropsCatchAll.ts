@@ -11,8 +11,8 @@ import { getKeysByJoin, getKeysBySlugger } from './utils'
 /**
  * @ref https://vercel.com/docs/concepts/projects/environment-variables#system-environment-variables
  */
-const isBuildStep = process.env.CI
-const isDev = process.env.NODE_ENV === 'development'
+// const isBuildStep = process.env.CI
+// const isDev = process.env.NODE_ENV === 'development'
 
 /**
  * @question
@@ -46,6 +46,11 @@ const cacheType = process.env.NEXT_PUBLIC__NOTION_CACHE_TYPE || CACHE_TYPES.JSON
 const getStaticPropsCatchAll: any = async ({ catchAll, notionConfig, preview }) => {
   const notion = getNotion(notionConfig)
   const pathVariables = notion.custom.getPathVariables({ catchAll })
+  // console.dir(`>> getStaticPropsCatchAll`)
+  // console.dir(`>  catchAll`)
+  // console.dir(catchAll)
+  // console.dir(`>  pathVariables`)
+  // console.dir(pathVariables)
 
   const { slug } = pathVariables
   if (nextWeirdRoutingSkipData.includes(slug)) return {}
@@ -56,7 +61,7 @@ const getStaticPropsCatchAll: any = async ({ catchAll, notionConfig, preview }) 
 
   const key = getKeysByJoin({
     keyData: catchAll,
-    keyPrefix: 'notion',
+    keyPrefix: `${process.env.NEXT_PUBLIC__SITE}/notion`,
   })
 
   /**
@@ -66,10 +71,22 @@ const getStaticPropsCatchAll: any = async ({ catchAll, notionConfig, preview }) 
    * - - => Exception: development
    *
    */
-  if (((cache && isBuildStep) || isDev) && !preview) {
-    // console.dir(`cache && isBuildStep: ${cacheType} => ${key}`)
-    data = await getCache({ cacheType, key })
-  }
+  // if (((cache && isBuildStep) || isDev) && !preview) {
+  //   // console.dir(`cache && isBuildStep: ${cacheType} => ${key}`)
+  //   data = await getCache({ cacheType, key })
+  // }
+  /**
+   * @todo(cache) with new data fetching, let us rethink the above
+   *
+   * ref: https://beta.nextjs.org/docs/data-fetching/revalidating
+   *
+   * For now, always use cache. And determine how we can revalidate
+   *  through API calls, or Timing / Cron.
+   *
+   */
+  data = await getCache({ cacheType, key })
+  // console.dir(`>  data (0)`)
+  // console.dir(!!data?.images)
 
   if (!data || data === undefined) {
     shouldUpdateCache = true
@@ -81,16 +98,18 @@ const getStaticPropsCatchAll: any = async ({ catchAll, notionConfig, preview }) 
       preview,
     })
   }
+  // console.dir(`>  data (1)`)
+  // console.dir(!!data?.images)
 
   /**
    * @note(cache) Custom check for any images within Notion Content
    *
-   * `image/*` cache is indefinite (that should change, heh)
+   * `[website]/image/*` cache is indefinite (that should change, heh)
    *
    * Use `images` key for CMS to lift any images within its content
    *  (`info|content|items`)
    *
-   * For each, check against the existing cache to see if `image/*`
+   * For each, check against the existing cache to see if `[website]/image/*`
    *  already exists
    *
    * Then update `data.images` object and update `cache`
@@ -101,9 +120,13 @@ const getStaticPropsCatchAll: any = async ({ catchAll, notionConfig, preview }) 
    */
 
   let images = !!data?.images ? data?.images : {}
+  // console.dir(`>  images (0)`)
+  // console.dir(!!images)
   if (_isEmpty(images) || _size(images) === 0) {
     shouldUpdateCache = true
     images = await getCatchAllImagesFromApi({ data, pathVariables })
+    // console.dir(`>  images (1)`)
+    // console.dir(!!images)
   }
 
   data = { ...data, images }
@@ -142,7 +165,7 @@ const getCatchAllImagesFromApi = async ({ data, pathVariables }) => {
     keys.push([
       getKeysBySlugger({
         keyData: url,
-        keyPrefix: 'image',
+        keyPrefix: `${process.env.NEXT_PUBLIC__SITE}/image`,
       }),
       url,
     ])

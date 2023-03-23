@@ -2,7 +2,7 @@ import { getDataTypes } from '@jeromefitz/notion/constants'
 import type { DatabaseInfo, Databases } from '@jeromefitz/notion/schema'
 
 import { NOTION, PAGES__HOMEPAGE, PAGES } from './notion'
-import { nextSeo, sitemapExcludes } from './seo'
+import { sitemapExcludes } from './seo'
 
 const getDynamicDatabases = (obj: DatabaseInfo) =>
   Object.keys(obj).reduce((acc, key) => {
@@ -75,7 +75,7 @@ const pluralRules = [
   // { rule: /tags$/i, replacement: 'Tags' },
 ]
 
-export { nextSeo, notionConfig, pluralRules, sitemapExcludes }
+export { notionConfig, pluralRules, sitemapExcludes }
 
 // @todo(notion) uh, make this dynamic please haha
 export const TAGS = {

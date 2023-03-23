@@ -10,18 +10,16 @@ Further breakdown from the root `README`:
 
 - **CMS**: Notion w/ [`@jeromefitz/notion`](https://github.com/JeromeFitz/packages/tree/main/packages/notion)
 - **Design System**: [`@jeromefitz/design-system`](https://github.com/JeromeFitz/packages/tree/main/packages/design-system)
-  - `stitches`
   - `radix-ui`
+  - `tailwind`
 - **Analytics**: [Fathom](https://usefathom.com/ref/GKTEFP)
   - Note: This is a referral code.
 - **Packages**:
   - `date-fns`
   - `cmdk`
   - `lodash`
-  - `next-seo`
   - `next-sitemap`
   - `next-themes`
-  - `next-transpile-modules`
   - `plaiceholder`
   - `swr`
   - `>` “...and more!”
@@ -109,12 +107,6 @@ Through [`next-notion`](../../packages/next-notion/README.md) we have:
 #### Interfaces With
 
 - `notion.custom.getInfoType`: Assist function to generate links for `next` routing strategy
-
-### Seo
-
-`./src/config/seo.ts`
-
-We use `next-seo` and this sets the base for use within the `Seo` component.
 
 ## Disclaimer
 

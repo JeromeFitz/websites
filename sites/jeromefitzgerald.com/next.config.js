@@ -1,5 +1,5 @@
 /* eslint-disable import/order */
-/* eslint-disable @typescript-eslint/no-var-requires */
+
 const path = require('path')
 
 const isCI = require('is-ci')
@@ -60,12 +60,15 @@ const envRequired = [
   'NEXT_PUBLIC__FATHOM_SITE_ID',
   'NEXT_PUBLIC__SITE',
   'NOTION_API_KEY',
+  'OG_API_KEY',
   'PREVIEW_TOKEN',
   'REDIS_URL',
   'REVALIDATE_TOKEN',
   'SPOTIFY_CLIENT_ID',
   'SPOTIFY_CLIENT_SECRET',
   'SPOTIFY_REFRESH_TOKEN',
+  'UPSTASH_REDIS_REST_URL',
+  'UPSTASH_REDIS_REST_TOKEN',
 ]
 envRequired.map((item) => {
   if (!process.env[item]) {
@@ -76,8 +79,8 @@ envRequired.map((item) => {
 // https://securityheaders.com
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' data: *.youtube.com *.twitter.com cdn.usefathom.com *.${process.env.NEXT_PUBLIC__SITE};
-  child-src *.youtube.com *.google.com *.twitter.com *.spotify.com;
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' data: *.youtube.com *.twitter.com cdn.usefathom.com cdn.vercel-insights.com vercel.live *.${process.env.NEXT_PUBLIC__SITE};
+  child-src *.youtube.com *.google.com *.twitter.com *.spotify.com vercel.live;
   style-src 'self' 'unsafe-inline' *.googleapis.com;
   img-src 'self' * blob: data:;
   object-src 'self' * blob: data:;
@@ -126,6 +129,25 @@ const securityHeaders = [
 ]
 
 /**
+ * @note(turbopack) can only use the following configuration options
+ *                  please see .npmrc, keep using webpack for now (sharp)
+ * - configFileName
+ * - env
+ * - experimental.appDir
+ * - experimental.serverComponentsExternalPackages
+ * - experimental.turbo
+ * - headers
+ * - images
+ * - onDemandEntries
+ * - pageExtensions
+ * - reactStrictMode
+ * - redirects
+ * - rewrites
+ * - swcMinify
+ * - transpilePackages
+ */
+
+/**
  * @type {import('next').NextConfig}
  **/
 const nextConfig = {
@@ -138,6 +160,7 @@ const nextConfig = {
   cleanDistDir: true,
   compiler: {},
   compress: true,
+  // configFileName: ''
   // crossOrigin: 'same-origin',
   devIndicators: { buildActivity: true, buildActivityPosition: 'bottom-right' },
   distDir: './.next',
@@ -148,9 +171,15 @@ const nextConfig = {
   },
   excludeDefaultMomentLocales: true,
   experimental: {
-    appDir: false,
+    appDir: true,
     legacyBrowsers: false,
-    transpilePackages,
+    // outputFileTracingRoot: path.join(__dirname, '../../../..'),
+    outputFileTracingRoot: path.join(__dirname, '../../'),
+    serverComponentsExternalPackages: [
+      '@jeromefitz/notion',
+      '@notionhq/client',
+      'plaiceholder',
+    ],
   },
   // exportPathMap,
   // generateBuildId,
@@ -166,10 +195,13 @@ const nextConfig = {
   httpAgentOptions: {
     keepAlive: true,
   },
-  i18n: {
-    locales: ['en'],
-    defaultLocale: 'en',
-  },
+  // @note(next) something changed canary.9-13
+  // leads me to believe this was incorrect config
+  // comment out for now
+  // i18n: {
+  //   locales: ['en'],
+  //   defaultLocale: 'en',
+  // },
   images: {
     // deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     deviceSizes: [640, 1200, 1920],
@@ -199,6 +231,10 @@ const nextConfig = {
       {
         protocol,
         hostname: `**.amazonws.com`,
+      },
+      {
+        protocol,
+        hostname: `**.**.amazonws.com`,
       },
       // @note(remotePattern) Notion
       {
@@ -235,10 +271,11 @@ const nextConfig = {
     pagesBufferLength: 2,
   },
   optimizeFonts: true,
-  output: undefined,
-  outputFileTracing: false,
+  // output: undefined,
+  // outputFileTracing: false,
+  output: 'standalone',
   pageExtensions: ['jsx', 'js', 'tsx', 'ts'],
-  poweredByHeader: false,
+  poweredByHeader: true,
   productionBrowserSourceMaps: false,
   publicRuntimeConfig: {
     // @note(next) available on server and client
@@ -265,15 +302,16 @@ const nextConfig = {
   staticPageGenerationTimeout: 60,
   swcMinify: true,
   trailingSlash: false,
+  transpilePackages,
   typescript: {
     // @note(typescript) handled outside of next
     ignoreBuildErrors: true,
   },
   // @note(next) false will block: ./pages
   useFileSystemPublicRoutes: true,
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+
   // @ts-ignore
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     // @note(pnpm)  path mapping if working locally
     if (isLocal) {

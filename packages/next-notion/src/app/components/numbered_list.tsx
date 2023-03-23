@@ -1,19 +1,5 @@
-import { Flex } from '@jeromefitz/design-system'
-
 const numbered_list = ({ children }) => {
-  return (
-    <Flex
-      as="ol"
-      css={{
-        display: 'flex',
-        flexDirection: 'column',
-        listStyleType: 'decimal',
-        listStylePosition: 'outside',
-      }}
-    >
-      {children}
-    </Flex>
-  )
+  return <ol className="flex list-inside list-decimal flex-col">{children}</ol>
 }
 
 export default numbered_list

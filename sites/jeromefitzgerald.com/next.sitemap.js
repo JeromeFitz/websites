@@ -1,4 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const _replace = require('lodash/replace')
 
 /**
@@ -37,6 +36,7 @@ const removeEn = (config, url) => {
 
   if (
     url.includes('blog') ||
+    url.includes('events/2022') ||
     url.includes('events/2021') ||
     url.includes('events/2020')
   ) {
