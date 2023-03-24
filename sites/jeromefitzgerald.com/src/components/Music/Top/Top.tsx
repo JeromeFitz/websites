@@ -26,7 +26,14 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '~ui/Carousel'
-import { Icon } from '~ui/Icon'
+// @todo(next) https://github.com/vercel/next.js/issues/46756
+// import { Icon } from '~ui/Icon'
+import {
+  ArrowLeftIcon as ArrowLeft,
+  ArrowRightIcon as ArrowRight,
+  ExternalLinkIcon as ExternalLink,
+  TagIcon as Tag,
+} from '~ui/Icon/Icon.list'
 import { cx } from '~utils/cx'
 // import { log } from '~utils/log'
 
@@ -679,7 +686,7 @@ const TopItem = ({ type }) => {
                           )}
                         >
                           <p className={cx('items-center text-sm')}>
-                            <Icon.Tag className={cx('mt-1')} />
+                            <Tag className={cx('mt-1')} />
                           </p>
                           <p className={cx('items-center text-sm')}>
                             {genres}
@@ -700,7 +707,7 @@ const TopItem = ({ type }) => {
                           target="_blank"
                         >
                           <span className="items-center">
-                            <Icon.ExternalLink className={cx('mt-1')} />
+                            <ExternalLink className={cx('mt-1')} />
                           </span>
                           <span className="">Spotify</span>
                         </a>
@@ -750,7 +757,7 @@ const TopItem = ({ type }) => {
                         : !!error
                         ? info.error.cta
                         : info.success.cta}
-                      {/* <Icon.ArrowRight />
+                      {/* <ArrowRight />
                           </Link>
                         </NextLink> */}
                     </p>
@@ -776,7 +783,7 @@ const TopItem = ({ type }) => {
                 tabIndex={-1}
                 // as={CarouselArrowButton}
               >
-                <Icon.ArrowLeft className="mt-1 h-8 w-10 text-white dark:text-black" />
+                <ArrowLeft className="mt-1 h-8 w-10 text-white dark:text-black" />
               </CarouselPrevious>
             </div>
             <div
@@ -795,7 +802,7 @@ const TopItem = ({ type }) => {
                 tabIndex={-1}
                 // as={CarouselArrowButton}
               >
-                <Icon.ArrowRight className="mt-1 h-8 w-10 text-white dark:text-black" />
+                <ArrowRight className="mt-1 h-8 w-10 text-white dark:text-black" />
               </CarouselNext>
             </div>
           </Carousel>

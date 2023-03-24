@@ -3,13 +3,16 @@ import { ContentNodes } from 'next-notion/src/app'
 import { Suspense } from 'react'
 
 import { Debug } from '~components/Debug'
+import { PAGES__HOMEPAGE } from '~config/notion'
 import { PageHeading } from '~ui/PageHeading'
 import { getNotionData, preload } from '~utils/getNotionData'
 // import { log } from '~utils/log'
+
+import { ListingShows } from './ListingShows'
 //
 // const DEBUG_KEY = 'page.tsx >> '
 
-const ROUTE_TYPE = 'homepage'
+const ROUTE_TYPE = PAGES__HOMEPAGE
 
 export async function generateMetadata() {
   const catchAll = [ROUTE_TYPE]
@@ -49,7 +52,11 @@ export default async function Page({ preview = false, ...props }) {
       <Debug data={data} pathVariables={pathVariables} />
       <PageHeading overline="" title={title} />
       <Suspense fallback={<p>Loading...</p>}>
-        {!!content && <ContentNodes content={content} images={images} />}
+        <>
+          {!!content && <ContentNodes content={content} images={images} />}
+          <PageHeading overline="shows" title={'Shows'} />
+          <ListingShows />
+        </>
       </Suspense>
     </>
   )
