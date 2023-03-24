@@ -13,7 +13,7 @@ import { Meta } from '~components/Meta'
 import { useNotion } from '~hooks/useNotion'
 import { ExternalLinkIcon as ExternalLink } from '~ui/Icon/Icon.list'
 import { cx } from '~utils/cx'
-import { log } from '~utils/log'
+// import { log } from '~utils/log'
 
 function Rollup({ title, items }) {
   // log(`${DEBUG_KEY} title`, title)
@@ -97,10 +97,10 @@ function Slug({ data, pathVariables }) {
     addressStreet,
     addressZipCode,
   } = venueInfo
-  log(
-    `addressState`,
-    !!addressState && addressState[Object.keys(addressState)[0]].name
-  )
+  // log(
+  //   `addressState`,
+  //   !!addressState && addressState[Object.keys(addressState)[0]].name
+  // )
 
   const temp = [
     { title: 'Date', items: [date1, date2] },
