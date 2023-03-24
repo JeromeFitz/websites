@@ -1,12 +1,10 @@
 'use client'
 import _filter from 'lodash/filter'
 
-import { Anchor } from '~components/Anchor'
+import { Listing } from '~app/(notion)/events/[[...catchAll]]/Listing'
 import { useNotion } from '~hooks/useNotion'
 import { cx } from '~utils/cx'
-import { formatDateForSlug } from '~utils/formatDateForSlug'
 import { isEventInFuture } from '~utils/isEventInFuture'
-// import { log } from '~utils/log'
 
 const ROUTE_TYPE = 'events'
 
@@ -15,7 +13,6 @@ function UpcomingEvents({ id }) {
   const upcomingEvents = upcomingEventsProps?.isLoading
     ? []
     : upcomingEventsProps?.data?.items?.results
-  // log(`upcomingEvents`, upcomingEvents)
 
   if (!upcomingEvents) {
     return null
@@ -27,46 +24,40 @@ function UpcomingEvents({ id }) {
       item?.properties?.relationEvents__Shows?.includes(id) &&
       isEventInFuture(item?.properties?.dateEvent?.start)
   )
-  // log(`items`, items)
+
   const hasUpcomingEvents = !!items && items.length > 0
+  const data = { items: { results: items } }
 
   return (
-    <>
-      <h6
-        className={cx(
-          'text-3xl font-bold',
-          'uppercase tracking-tight',
-          'my-4 border-b border-white py-4',
-          !hasUpcomingEvents && 'line-through'
-        )}
+    <div className="my-8">
+      <div
+        style={{
+          '& ul': { listStyle: 'none', margin: '0', padding: '0' },
+        }}
+        className="m-auto grid grid-cols-6 gap-8"
       >
-        Upcoming Events
-      </h6>
-      <ul className={cx('')}>
-        {hasUpcomingEvents ? (
-          items.map((item) => {
-            const yyyymmdd = formatDateForSlug(item?.properties?.dateEvent.start)
-            const url = `/${ROUTE_TYPE}/${yyyymmdd}/${item?.properties?.slug}`
-            const t = `${item?.properties?.title} (${yyyymmdd})`
-
-            return (
-              <li
-                className={cx('my-2 ')}
-                key={`shows--upcoming-events--${item?.id}`}
-              >
-                <Anchor className={cx('my-2')} href={url}>
-                  {t}
-                </Anchor>
+        <div className={cx('col-span-6 mb-4 flex flex-col  md:mb-8')}>
+          <h4
+            className={cx(
+              'border-t-[1px] border-solid py-3 font-extrabold uppercase tracking-tight',
+              'mauve-border',
+              !hasUpcomingEvents && 'line-through'
+            )}
+          >
+            Upcoming Events
+          </h4>
+          <ul>
+            {hasUpcomingEvents ? (
+              <Listing data={data} pathVariables={''} />
+            ) : (
+              <li className={cx('my-2 ')} key={`shows--upcoming-events--na`}>
+                No upcoming events
               </li>
-            )
-          })
-        ) : (
-          <li className={cx('my-2 ')} key={`shows--upcoming-events--na`}>
-            No upcoming events for {}
-          </li>
-        )}
-      </ul>
-    </>
+            )}
+          </ul>
+        </div>
+      </div>
+    </div>
   )
 }
 

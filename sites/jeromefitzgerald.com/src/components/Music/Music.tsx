@@ -5,8 +5,12 @@ import { useState } from 'react'
 import { Anchor } from '~components/Anchor'
 import { Top } from '~components/Music'
 import { useSpotify } from '~hooks/useSpotify'
-import { Icon } from '~ui/Icon'
-import { ExternalLinkIcon } from '~ui/Icon/Icon.list'
+// @todo(next) https://github.com/vercel/next.js/issues/46756
+// import { Icon } from '~ui/Icon'
+import {
+  ExternalLinkIcon as ExternalLink,
+  Pencil2Icon as PencilWithPaper,
+} from '~ui/Icon/Icon.list'
 import { RadioGroup } from '~ui/RadioGroup'
 import { cx } from '~utils/cx'
 // import { log } from '~utils/log'
@@ -66,7 +70,7 @@ function Music({ preview = false, ...props }) {
           className={cx('text-3xl font-black', 'flex flex-row items-center', 'my-2')}
         >
           <span className="mr-2">
-            <Icon.PencilWithPaper className="h-6 w-6" />
+            <PencilWithPaper className="h-6 w-6" />
           </span>
           <span>
             {` `}
@@ -95,7 +99,7 @@ function Music({ preview = false, ...props }) {
         >
           Nice Rec’s, “Drink The Blue Sky”
           <span className={cx('mx-1 inline-block text-inherit')}>
-            <ExternalLinkIcon />
+            <ExternalLink />
           </span>
         </Anchor>
         {` `}or{` `}
@@ -113,7 +117,7 @@ function Music({ preview = false, ...props }) {
         >
           Tory Silver’s “Slowly”
           <span className={cx('mx-1 inline-block text-inherit')}>
-            <ExternalLinkIcon />
+            <ExternalLink />
           </span>
         </Anchor>{' '}
         on Bandcamp.

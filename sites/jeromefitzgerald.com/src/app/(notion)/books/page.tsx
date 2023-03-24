@@ -4,7 +4,14 @@ import _map from 'lodash/map'
 import _orderBy from 'lodash/orderBy'
 
 import { Debug } from '~components/Debug'
-import { Icon } from '~ui/Icon'
+// @todo(next) https://github.com/vercel/next.js/issues/46756
+// import { Icon } from '~ui/Icon'
+import {
+  BookmarkIcon as Bookmark,
+  BookOpenIcon as BookOpen,
+  CheckCircledIcon as CheckCircled,
+  Pencil2Icon as PencilWithPaper,
+} from '~ui/Icon/Icon.list'
 import { PageHeading } from '~ui/PageHeading'
 import { cx } from '~utils/cx'
 import { getNotionData } from '~utils/getNotionData'
@@ -21,21 +28,21 @@ const STATUS = {
   IN_PROGRESS: {
     id: 'IN_PROGRESS',
     emoji: '📚️',
-    icon: <Icon.Book />,
+    icon: <BookOpen />,
     slug: 'in-progress',
     title: 'In Progress',
   },
   COMPLETE: {
     id: 'COMPLETE',
     emoji: '🏁️',
-    icon: <Icon.CheckCircled />,
+    icon: <CheckCircled />,
     slug: 'complete',
     title: 'Complete',
   },
   PENDING: {
     id: 'PENDING',
     emoji: '🔜️',
-    icon: <Icon.Bookmark />,
+    icon: <Bookmark />,
     slug: 'pending',
     title: 'Pending',
   },
@@ -104,7 +111,7 @@ export default async function Page({ preview = false, ...props }) {
           className={cx('text-3xl font-black', 'flex flex-row items-center', 'my-2')}
         >
           <span className="mr-2">
-            <Icon.PencilWithPaper className="h-6 w-6" />
+            <PencilWithPaper className="h-6 w-6" />
           </span>
           <span>
             {` `}
@@ -118,7 +125,7 @@ export default async function Page({ preview = false, ...props }) {
           className={cx('text-3xl font-black', 'flex flex-row items-center', 'my-2')}
         >
           <span className="mr-2">
-            <Icon.BookOpen className="h-6 w-6" />
+            <BookOpen className="h-6 w-6" />
           </span>
           <span>
             {` `}
