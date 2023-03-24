@@ -14,6 +14,8 @@ import { ListingShows } from './ListingShows'
 
 const ROUTE_TYPE = PAGES__HOMEPAGE
 
+export const revalidate = 0
+
 export async function generateMetadata() {
   const catchAll = [ROUTE_TYPE]
   const { metadata } = await getNotionData({
