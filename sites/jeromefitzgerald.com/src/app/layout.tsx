@@ -4,9 +4,10 @@ import '~styles/globals.css'
 // import '~styles/output.css'
 
 import localFont from 'next/font/local'
+
 // import { usePathname } from 'next/navigation'
 // import { useEffect } from 'react'
-
+import { Analytics } from '~components/Analytics'
 import { CommandMenu } from '~components/CommandMenu'
 import { Footer } from '~components/Footer'
 import { Navigation } from '~components/Navigation'
@@ -61,6 +62,7 @@ function RootLayout({ children }: RootLayoutProps) {
           fontSans.variable
         )}
       >
+        <Analytics />
         <Providers>
           <>
             <Navigation />
