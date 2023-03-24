@@ -12,7 +12,6 @@ import { SWRConfig } from 'swr'
 // @ts-ignore
 import { createStore, useStore } from 'zustand'
 
-import { Analytics } from '~components/Analytics'
 import { ErrorBoundary } from '~components/ErrorBoundary'
 import { Loading } from '~components/Loading'
 import { pluralRules } from '~config/index'
@@ -69,7 +68,6 @@ function Providers({ children }) {
           }}
         >
           <RouterEventWrapper>
-            <Analytics />
             <ReactWrapBalancerProvider>{children}</ReactWrapBalancerProvider>
           </RouterEventWrapper>
         </SWRConfig>
