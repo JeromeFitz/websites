@@ -280,7 +280,7 @@ importers:
       react-use: 17.4.0
       react-wrap-balancer: 0.4.0
       server-only: 0.0.1
-      sharp: 0.31.3
+      sharp: 0.32.0
       smoothscroll-polyfill: 0.4.4
       swr: 2.1.1
       tailwind-merge: 1.10.0
@@ -297,11 +297,11 @@ importers:
       '@heroicons/react': 2.0.16_nieeduocc4ehhhwo3fbmbvmyq4
       '@jeromefitz/design-system': 4.1.7_vkkbrxfgjhoar6ktet6m7pvx4q
       '@jeromefitz/notion': 4.0.3_@jeromefitz+utils@2.2.1
-      '@jeromefitz/spotify': 3.0.2_6ypoj6ssxxd7htsbizfxdvaggu
+      '@jeromefitz/spotify': 3.0.2_gf44v23p5xltky3vzahp7iqwvq
       '@jeromefitz/utils': 2.2.1
       '@mantine/hooks': 6.0.4_nieeduocc4ehhhwo3fbmbvmyq4
       '@octokit/core': 4.2.0
-      '@plaiceholder/next': 2.5.0_lmg6o3nkt3kuhia4ne5ry7rwum
+      '@plaiceholder/next': 2.5.0_asjn6pkhsayfu4wfjpfix47q4e
       '@radix-ui/colors': 0.1.8
       '@radix-ui/primitive': 1.0.0
       '@radix-ui/react-accessible-icon': 1.0.2_bd3zuhdxijgzrao7xsvp67z3xm
@@ -380,7 +380,7 @@ importers:
       next: 13.2.5-canary.15_bd3zuhdxijgzrao7xsvp67z3xm
       next-sitemap: 4.0.6_next@13.2.5-canary.15
       next-themes: 0.2.1_cnvaj7tzsrrywbf4n5f5xtiraq
-      plaiceholder: 2.5.0_sharp@0.31.3
+      plaiceholder: 2.5.0_sharp@0.32.0
       pluralize: 8.0.0
       podcast: 2.0.1
       ramda: 0.28.0
@@ -390,7 +390,7 @@ importers:
       react-use: 17.4.0_bd3zuhdxijgzrao7xsvp67z3xm
       react-wrap-balancer: 0.4.0_nieeduocc4ehhhwo3fbmbvmyq4
       server-only: 0.0.1
-      sharp: 0.31.3
+      sharp: 0.32.0
       smoothscroll-polyfill: 0.4.4
       swr: 2.1.1_nieeduocc4ehhhwo3fbmbvmyq4
       title: 3.5.3
@@ -403,7 +403,7 @@ importers:
       '@jeromefitz/shared': link:../../packages/shared
       '@jeromefitz/tsconfig': 1.1.3
       '@next/bundle-analyzer': 13.2.5-canary.15
-      '@plaiceholder/tailwindcss': 2.5.0_mlg6aeizhjxnbkj25x32hepc6y
+      '@plaiceholder/tailwindcss': 2.5.0_fd4ffpzxsdfzh2rklybfawueyi
       '@tailwindcss/aspect-ratio': 0.4.2_tailwindcss@3.2.7
       '@tailwindcss/typography': 0.5.9_tailwindcss@3.2.7
       '@types/ms': 0.7.31
@@ -1508,7 +1508,7 @@ packages:
       - supports-color
     dev: false
 
-  /@jeromefitz/spotify/3.0.2_6ypoj6ssxxd7htsbizfxdvaggu:
+  /@jeromefitz/spotify/3.0.2_gf44v23p5xltky3vzahp7iqwvq:
     resolution: {integrity: sha512-mu/rQ0yeTJRUED6pyCo7Oten4kQTlDx5UkdjdQjgzQW/fivZvi+TjvJrSUa04zxfRdzTl8g4apV1Jz+dtTy87A==}
     engines: {node: '>=16'}
     peerDependencies:
@@ -1519,8 +1519,8 @@ packages:
       '@jeromefitz/utils': 2.2.1
       github-slugger: 2.0.0
       isomorphic-unfetch: 3.1.0
-      plaiceholder: 2.5.0_sharp@0.31.3
-      sharp: 0.31.3
+      plaiceholder: 2.5.0_sharp@0.32.0
+      sharp: 0.32.0
     transitivePeerDependencies:
       - encoding
     dev: false
@@ -2054,25 +2054,25 @@ packages:
       tslib: 2.5.0
     dev: false
 
-  /@plaiceholder/next/2.5.0_lmg6o3nkt3kuhia4ne5ry7rwum:
+  /@plaiceholder/next/2.5.0_asjn6pkhsayfu4wfjpfix47q4e:
     resolution: {integrity: sha512-vT8YtPpgQEKFtz0QiiCnH3NfyVlldYpnxR6X2sqCJvHk+pi/Be1nb62CdYQ7RoNePPcjBQoRDSPpZpGmg8mEdw==}
     peerDependencies:
       next: '>= 10.0.0'
       sharp: '>= 0.30.6'
     dependencies:
       next: 13.2.5-canary.15_bd3zuhdxijgzrao7xsvp67z3xm
-      sharp: 0.31.3
+      sharp: 0.32.0
     dev: false
 
-  /@plaiceholder/tailwindcss/2.5.0_mlg6aeizhjxnbkj25x32hepc6y:
+  /@plaiceholder/tailwindcss/2.5.0_fd4ffpzxsdfzh2rklybfawueyi:
     resolution: {integrity: sha512-V3iSX6ToFC9Lno29z73JuKH+CbtG4qYAyVGotOSNEUZBUzgxxTqiO/3rB5mzFfuZMZ2MLtCO3w1KOaJhYKZxSg==}
     peerDependencies:
       sharp: '>= 0.30.6'
       tailwindcss: '>=3'
     dependencies:
       make-synchronous: 0.1.1
-      plaiceholder: 2.5.0_sharp@0.31.3
-      sharp: 0.31.3
+      plaiceholder: 2.5.0_sharp@0.32.0
+      sharp: 0.32.0
       tailwindcss: 3.2.7_aesdjsunmf4wiehhujt67my7tu
     dev: true
 
@@ -9037,8 +9037,8 @@ packages:
     dependencies:
       semver: 7.3.8
 
-  /node-addon-api/5.0.0:
-    resolution: {integrity: sha512-CvkDw2OEnme7ybCykJpVcKH+uAOLV2qLqiyla128dN9TkEWfrYmxG6C2boDe5KcNQqZF3orkqzGgOMvZ/JNekA==}
+  /node-addon-api/6.0.0:
+    resolution: {integrity: sha512-GyHvgPvUXBvAkXa0YvYnhilSB1A+FRYMpIVggKzPZqdaZfevZOuzfWzyvgzOwRLHBeo/MMswmJFsrNF4Nw1pmA==}
 
   /node-cache/5.1.2:
     resolution: {integrity: sha512-t1QzWwnk4sjLWaQAS8CHgOJ+RAfmHpxFWmc36IWTiWHQfs0w5JDMBS1b1ZxQteo0vVVuWJvIUKHDkkeK7vIGCg==}
@@ -9652,7 +9652,7 @@ packages:
       node-cache: 5.1.2
       node-fetch: 2.6.7_encoding@0.1.13
 
-  /plaiceholder/2.5.0_sharp@0.31.3:
+  /plaiceholder/2.5.0_sharp@0.32.0:
     resolution: {integrity: sha512-rygdNSWuYzs1GxxGjq2FiJdJB1AUaKhUHP/M7PIrSjAAGuoJC5ACiJx+cZZ+hDmMalxsxOMw0Sbbx3LF8jemGg==}
     peerDependencies:
       sharp: '>= 0.30.6'
@@ -9662,7 +9662,7 @@ packages:
       image-size: 1.0.2
       node-cache: 5.1.2
       node-fetch: 2.6.7_encoding@0.1.13
-      sharp: 0.31.3
+      sharp: 0.32.0
 
   /pluralize/8.0.0:
     resolution: {integrity: sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==}
@@ -10957,14 +10957,14 @@ packages:
     engines: {node: '>=6.9'}
     dev: false
 
-  /sharp/0.31.3:
-    resolution: {integrity: sha512-XcR4+FCLBFKw1bdB+GEhnUNXNXvnt0tDo4WsBsraKymuo/IAuPuCBVAL2wIkUw2r/dwFW5Q5+g66Kwl2dgDFVg==}
+  /sharp/0.32.0:
+    resolution: {integrity: sha512-yLAypVcqj1toSAqRSwbs86nEzfyZVDYqjuUX8grhFpeij0DDNagKJXELS/auegDBRDg1XBtELdOGfo2X1cCpeA==}
     engines: {node: '>=14.15.0'}
     requiresBuild: true
     dependencies:
       color: 4.2.3
       detect-libc: 2.0.1
-      node-addon-api: 5.0.0
+      node-addon-api: 6.0.0
       prebuild-install: 7.1.1
       semver: 7.3.8
       simple-get: 4.0.1
