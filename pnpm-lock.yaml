@@ -260,7 +260,7 @@ importers:
       focus-trap-react: 10.1.1
       framer-motion: 10.8.5
       github-slugger: 2.0.0
-      immer: 9.0.19
+      immer: 9.0.21
       ioredis: 5.3.1
       ms: 3.0.0-canary.1
       next: 13.2.5-canary.15
@@ -374,7 +374,7 @@ importers:
       focus-trap-react: 10.1.1_bd3zuhdxijgzrao7xsvp67z3xm
       framer-motion: 10.8.5_bd3zuhdxijgzrao7xsvp67z3xm
       github-slugger: 2.0.0
-      immer: 9.0.19
+      immer: 9.0.21
       ioredis: 5.3.1
       ms: 3.0.0-canary.1
       next: 13.2.5-canary.15_bd3zuhdxijgzrao7xsvp67z3xm
@@ -398,7 +398,7 @@ importers:
       use-sound: 4.0.1_nieeduocc4ehhhwo3fbmbvmyq4
       uuid: 9.0.0
       zod: 3.21.4
-      zustand: 4.3.6_2hbmcnokts3kqxjcwtrzmu3ai4
+      zustand: 4.3.6_lmws45mqa5jjxrp2gm4o3yeiiy
     devDependencies:
       '@jeromefitz/shared': link:../../packages/shared
       '@jeromefitz/tsconfig': 1.1.3
@@ -7313,8 +7313,8 @@ packages:
     dependencies:
       queue: 6.0.2
 
-  /immer/9.0.19:
-    resolution: {integrity: sha512-eY+Y0qcsB4TZKwgQzLaE/lqYMlKhv5J9dyd2RhhtGhNo2njPXDqU9XPfcNfa3MIDsdtZt5KlkIsirlo4dHsWdQ==}
+  /immer/9.0.21:
+    resolution: {integrity: sha512-bc4NBHqOqSfRW7POMkHd51LvClaeMXpm8dx0e8oE2GORbq5aRK7Bxl4FyzVLdGtLmvLKL7BTDBG5ACQm4HWjTA==}
     dev: false
 
   /import-fresh/3.3.0:
@@ -12570,7 +12570,7 @@ packages:
     resolution: {integrity: sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==}
     dev: false
 
-  /zustand/4.3.6_2hbmcnokts3kqxjcwtrzmu3ai4:
+  /zustand/4.3.6_lmws45mqa5jjxrp2gm4o3yeiiy:
     resolution: {integrity: sha512-6J5zDxjxLE+yukC2XZWf/IyWVKnXT9b9HUv09VJ/bwGCpKNcaTqp7Ws28Xr8jnbvnZcdRaidztAPsXFBIqufiw==}
     engines: {node: '>=12.7.0'}
     peerDependencies:
@@ -12582,7 +12582,7 @@ packages:
       react:
         optional: true
     dependencies:
-      immer: 9.0.19
+      immer: 9.0.21
       react: 18.3.0-next-12a1d140e-20230321
       use-sync-external-store: 1.2.0_nieeduocc4ehhhwo3fbmbvmyq4
     dev: false
