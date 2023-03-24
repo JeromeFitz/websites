@@ -9,7 +9,13 @@ import _title from 'title'
 
 import { Anchor } from '~components/Anchor'
 import { nowPlaying } from '~data/mock/music'
-import { Icon } from '~ui/Icon'
+// @todo(next) https://github.com/vercel/next.js/issues/46756
+// import { Icon } from '~ui/Icon'
+import {
+  ExternalLinkIcon as ExternalLink,
+  MusicalNoteIcon as MusicalNote,
+  TagIcon as Tag,
+} from '~ui/Icon/Icon.list'
 import { cx } from '~utils/cx'
 // import { log } from '~utils/log'
 
@@ -74,7 +80,7 @@ function NowPlaying() {
         )}
       >
         <span className="mr-2">
-          <Icon.MusicalNote className="h-6 w-6" />
+          <MusicalNote className="h-6 w-6" />
         </span>
         <span>
           {` `}
@@ -182,7 +188,7 @@ function NowPlaying() {
               )}
             >
               <p className={cx('items-center text-sm')}>
-                <Icon.Tag className={cx('mt-1')} />
+                <Tag className={cx('mt-1')} />
               </p>
               <p className={cx('items-center text-sm')}>
                 {genres}
@@ -204,7 +210,7 @@ function NowPlaying() {
               target="_blank"
             >
               <span className="items-center">
-                <Icon.ExternalLink className={cx('mt-1')} />
+                <ExternalLink className={cx('mt-1')} />
               </span>
               <span className="">Spotify</span>
             </a>

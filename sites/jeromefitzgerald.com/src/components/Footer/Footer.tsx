@@ -1,12 +1,4 @@
 'use client'
-// import {
-//   EnvelopeOpenIcon,
-//   ExternalLinkIcon,
-//   GitHubLogoIcon,
-//   InstagramLogoIcon,
-//   LinkedInLogoIcon,
-//   TwitterLogoIcon,
-// } from '@radix-ui/react-icons'
 import * as Separator from '@radix-ui/react-separator'
 
 import { Anchor } from '~components/Anchor'
@@ -17,7 +9,19 @@ import { NowPlaying } from '~components/Music'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import buildInfo from '~config/build-info.json'
-import { Icon } from '~ui/Icon'
+// @todo(next) https://github.com/vercel/next.js/issues/46756
+// import { Icon } from '~ui/Icon'
+import {
+  // EnvelopeOpenIcon as EnvelopeOpen,
+  ExternalLinkIcon as ExternalLink,
+  GitHubLogoIcon as GitHubLogo,
+  InfoCircledIcon as InfoCircled,
+  InstagramLogoIcon as InstagramLogo,
+  LinkedInLogoIcon as LinkedInLogo,
+  Pencil2Icon as PencilWithPaper,
+  SpotifyLogoIcon as SpotifyLogo,
+  TwitterLogoIcon as TwitterLogo,
+} from '~ui/Icon/Icon.list'
 import { Tooltip } from '~ui/Tooltip'
 import { cx } from '~utils/cx'
 
@@ -36,7 +40,7 @@ const socials = [
   //   id: 'email',
   //   title: 'Email',
   //   url: 'mailto:j@jeromefitzgerald.com',
-  //   icon: <Icon.EnvelopeOpen />,
+  //   icon: <EnvelopeOpen />,
   //   subtitle: 'j [at] jeromefitzgerald.com',
   //   keywords: 'social email mail',
   //   type: URL_TYPE.EXTERNAL,
@@ -46,7 +50,7 @@ const socials = [
     className: 'hover:text-black/60 dark:hover:text-white/60',
     title: 'Colophon',
     url: '/colophon',
-    icon: <Icon.InfoCircled className="text-inherit" />,
+    icon: <InfoCircled className="text-inherit" />,
     subtitle: 'Colophon',
     keywords: 'social colophon',
     type: URL_TYPE.INTERNAL,
@@ -56,8 +60,8 @@ const socials = [
     className: 'hover:text-black/60 dark:hover:text-white/60',
     title: 'GitHub',
     url: 'https://github.com/JeromeFitz',
-    icon: <Icon.GitHubLogo className="text-inherit" />,
-    rightSlot: <Icon.ExternalLink />,
+    icon: <GitHubLogo className="text-inherit" />,
+    rightSlot: <ExternalLink />,
     subtitle: '@JeromeFitz',
     keywords: 'social github gh git',
     type: URL_TYPE.EXTERNAL,
@@ -67,8 +71,8 @@ const socials = [
     className: 'hover:text-instagram',
     title: 'Instagram',
     url: 'https://instagram.com/JeromeFitz',
-    icon: <Icon.InstagramLogo className="text-inherit" />,
-    rightSlot: <Icon.ExternalLink />,
+    icon: <InstagramLogo className="text-inherit" />,
+    rightSlot: <ExternalLink />,
     subtitle: '@JeromeFitz',
     keywords: 'social instagram ig',
     type: URL_TYPE.EXTERNAL,
@@ -78,8 +82,8 @@ const socials = [
     className: 'hover:text-twitter',
     title: 'Twitter',
     url: 'https://twitter.com/JeromeFitz',
-    icon: <Icon.TwitterLogo className="text-inherit" />,
-    rightSlot: <Icon.ExternalLink />,
+    icon: <TwitterLogo className="text-inherit" />,
+    rightSlot: <ExternalLink />,
     subtitle: '@JeromeFitz',
     keywords: 'social twitter',
     type: URL_TYPE.EXTERNAL,
@@ -89,8 +93,8 @@ const socials = [
     className: 'hover:text-linkedin',
     title: 'LinkedIn',
     url: 'https://www.linkedin.com/in/jeromefitzgerald',
-    icon: <Icon.LinkedInLogo className="text-inherit" />,
-    rightSlot: <Icon.ExternalLink />,
+    icon: <LinkedInLogo className="text-inherit" />,
+    rightSlot: <ExternalLink />,
     subtitle: '@jeromefitzgerald',
     keywords: 'social linkedin',
     type: URL_TYPE.EXTERNAL,
@@ -100,8 +104,8 @@ const socials = [
     className: 'hover:text-spotify dark:hover:text-spotify-dark',
     title: 'Spotify',
     url: 'https://open.spotify.com/user/jyxdd2oc2koozvbs7gk7omnwc',
-    icon: <Icon.SpotifyLogo className="text-inherit" />,
-    rightSlot: <Icon.ExternalLink />,
+    icon: <SpotifyLogo className="text-inherit" />,
+    rightSlot: <ExternalLink />,
     subtitle: 'some wild username spotify is odd',
     keywords: 'social spotify',
     type: URL_TYPE.EXTERNAL,
@@ -151,7 +155,7 @@ function Footer() {
             )}
           >
             <span className="mr-2">
-              <Icon.PencilWithPaper className="h-6 w-6" />
+              <PencilWithPaper className="h-6 w-6" />
             </span>
             <span>
               {` `}
