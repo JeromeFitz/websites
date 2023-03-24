@@ -39,8 +39,8 @@
     "ioredis": "^5.2.1",
     "next": "^13.0.0",
     "plaiceholder": "^2.4.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": "^18.3.0-next-12a1d140e-20230321",
+    "react-dom": "^18.3.0-next-12a1d140e-20230321"
   },
   "dependencies": {
     "@jeromefitz/utils": "2.2.1",
@@ -66,10 +66,10 @@
     "date-fns": "2.29.3",
     "date-fns-tz": "2.0.0",
     "ioredis": "5.3.1",
-    "next": "13.2.5-canary.12",
+    "next": "13.2.5-canary.15",
     "plaiceholder": "2.5.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "react": "18.3.0-next-12a1d140e-20230321",
+    "react-dom": "18.3.0-next-12a1d140e-20230321",
     "tailwind-merge": "1.10.0"
   },
   "publishConfig": {
