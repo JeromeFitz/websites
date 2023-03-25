@@ -5,7 +5,7 @@ import _filter from 'lodash/filter'
 function isEventInPast(ts) {
   const timestampNow = new Date()
   const iso = parseISO(ts)
-  return _isBefore(timestampNow, iso)
+  return _isBefore(iso, timestampNow)
 }
 
 function filterForEventsInPast(items) {

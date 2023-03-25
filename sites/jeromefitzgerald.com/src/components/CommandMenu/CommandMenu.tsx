@@ -50,6 +50,7 @@ function CommandMenuWrapper() {
 
   const TYPES = {
     EVENTS: 'events',
+    PAGES: 'pages',
     PODCASTS: 'podcasts',
     ROOT: 'root',
     SHOWS: 'shows',
@@ -78,6 +79,20 @@ function CommandMenuWrapper() {
         title: `Title: Homepage`,
         type: TYPES.ROOT,
         url: '/',
+      },
+      {
+        active: true,
+        close: true,
+        icon: '',
+        label: `About`,
+        onSelect: () => {
+          handleRouterChange('/about', startChange)
+          router.push('/about')
+        },
+        subitem: false,
+        title: `Title: About`,
+        type: TYPES.ROOT,
+        url: '/about',
       },
       {
         active: true,
