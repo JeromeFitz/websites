@@ -8,14 +8,18 @@ import { Anchor } from '~components/Anchor'
 import { cx } from '~utils/cx'
 import { formatDateForSlug } from '~utils/formatDateForSlug'
 import { filterForEventsInFuture } from '~utils/isEventInFuture'
+import { filterForEventsInPast } from '~utils/isEventInPast'
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-function Listing({ data, pathVariables }) {
+function Listing({ data, pathVariables, isUpcoming = true }) {
   const { items } = data
 
-  const events = _orderBy(filterForEventsInFuture(items?.results), [
-    'properties.dateEvent.start',
-  ])
+  const eventsFiltered = isUpcoming
+    ? filterForEventsInFuture(items?.results)
+    : filterForEventsInPast(items?.results)
+  const sortBy = isUpcoming ? 'asc' : 'desc'
+
+  const events = _orderBy(eventsFiltered, ['properties.dateEvent.start'], [sortBy])
 
   return (
     <>

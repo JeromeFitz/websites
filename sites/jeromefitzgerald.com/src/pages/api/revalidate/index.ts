@@ -17,7 +17,8 @@ async function handleRevalidate(req, res) {
     const { path } = jsonBody
     if (path) {
       // @note(next) needs to be wrapped in quote 🤷🏻
-      await res.revalidate(`${path}`)
+      console.dir(`path: ${path}`)
+      await res.revalidate(`${path}?revalidate=1`)
     }
     return res.status(200).send({ status: 200, message: 'success' })
   } else {
