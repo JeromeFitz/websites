@@ -43,7 +43,18 @@ const cacheType = process.env.NEXT_PUBLIC__NOTION_CACHE_TYPE || CACHE_TYPES.JSON
 // @todo(types) This is likely not portable. A type annotation is necessary.
 // @todo(complexity) 17
 // eslint-disable-next-line complexity
-const getStaticPropsCatchAll: any = async ({ catchAll, notionConfig, preview }) => {
+const getStaticPropsCatchAll: any = async ({
+  catchAll,
+  notionConfig,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  options = {},
+  preview,
+}: {
+  catchAll: any
+  notionConfig: any
+  options?: any
+  preview: any
+}) => {
   const notion = getNotion(notionConfig)
   const pathVariables = notion.custom.getPathVariables({ catchAll })
   // console.dir(`>> getStaticPropsCatchAll`)
@@ -58,6 +69,8 @@ const getStaticPropsCatchAll: any = async ({ catchAll, notionConfig, preview }) 
   // @todo(types)
   let data: any
   let shouldUpdateCache = false
+  // let shouldUpdateCache = !!options?.revalidate ? true : false
+  // console.dir(`>  shouldUpdateCache: ${shouldUpdateCache}`)
 
   const key = getKeysByJoin({
     keyData: catchAll,
@@ -84,9 +97,17 @@ const getStaticPropsCatchAll: any = async ({ catchAll, notionConfig, preview }) 
    *  through API calls, or Timing / Cron.
    *
    */
-  data = await getCache({ cacheType, key })
+  // @note(next) this is always false until we figure out ISR => App Dir
+  // may end up just doing the old-school pull SSR data from Cache
+  // use SWR to pull directly from original data source
+  // annoying because i would rather just go direct from cache
+  // but have the option to bust it (probably just need to draw it out)
+  if (!shouldUpdateCache) {
+    data = await getCache({ cacheType, key })
+  }
   // console.dir(`>  data (0)`)
-  // console.dir(!!data?.images)
+  // console.dir(!!data && data)
+  // console.dir(options)
 
   if (!data || data === undefined) {
     shouldUpdateCache = true
@@ -99,7 +120,7 @@ const getStaticPropsCatchAll: any = async ({ catchAll, notionConfig, preview }) 
     })
   }
   // console.dir(`>  data (1)`)
-  // console.dir(!!data?.images)
+  // console.dir(!!data && data)
 
   /**
    * @note(cache) Custom check for any images within Notion Content
@@ -144,6 +165,7 @@ const getStaticPropsCatchAll: any = async ({ catchAll, notionConfig, preview }) 
   }
   if ((cache || cacheOverride) && shouldUpdateCache) {
     // console.dir(`1) cache || cacheOverride: ${cacheType} => ${key}`)
+    // console.dir(data)
     setCache({ cacheType, data, key })
   }
 
