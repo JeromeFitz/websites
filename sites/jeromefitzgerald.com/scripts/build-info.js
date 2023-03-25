@@ -4,6 +4,7 @@ const { join } = require('path')
 
 const { Octokit } = require('@octokit/core')
 const stringify = require('fast-json-stable-stringify')
+const isCI = require('is-ci')
 const _filter = require('lodash/filter')
 const _orderBy = require('lodash/orderBy')
 const _pick = require('lodash/pick')
@@ -89,7 +90,8 @@ async function setupBuildInfo() {
     `›  ${!data?.isBranchMain ? (!!prerelease ? prerelease : branch) : 'main'}`,
     '',
   ]
-  message.map((msg) => console.debug('\x1b[36m%s\x1b[0m', 'info', ' - [ 📦 ] ', msg))
+  const prefix = isCI ? '\x1b[0m%s\x1b[0m' : '\x1b[36m%s\x1b[0m'
+  message.map((msg) => console.debug(prefix, 'info', ' - [ 📦 ] ', msg))
   console.debug()
 }
 
