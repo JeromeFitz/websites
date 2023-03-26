@@ -35,16 +35,16 @@
     "@tanem/react-nprogress": "5.0.32",
     "fathom-client": "3.5.0",
     "lodash": "4.17.21",
-    "next": "13.2.5-canary.17",
+    "next": "13.2.5-canary.18",
     "next-themes": "0.2.1",
     "plaiceholder": "2.5.0",
-    "react": "18.3.0-next-12a1d140e-20230321",
-    "react-dom": "18.3.0-next-12a1d140e-20230321",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "swr": "2.1.1"
   },
   "devDependencies": {
     "@types/lodash": "4.14.191",
-    "@types/react": "18.0.28",
+    "@types/react": "18.0.29",
     "@types/react-dom": "18.0.11",
     "next-notion": "workspace:*"
   },

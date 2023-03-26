@@ -39,8 +39,8 @@
     "ioredis": "^5.2.1",
     "next": "^13.0.0",
     "plaiceholder": "^2.4.0",
-    "react": "^18.3.0-next-12a1d140e-20230321",
-    "react-dom": "^18.3.0-next-12a1d140e-20230321"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "dependencies": {
     "@jeromefitz/utils": "2.2.1",
@@ -55,9 +55,9 @@
   },
   "devDependencies": {
     "@jeromefitz/design-system": "4.1.7",
-    "@jeromefitz/notion": "4.0.3",
+    "@jeromefitz/notion": "4.0.4",
     "@types/ms": "0.7.31",
-    "@types/react": "18.0.28",
+    "@types/react": "18.0.29",
     "@types/react-dom": "18.0.11",
     "@types/uuid": "9.0.1",
     "@types/valid-url": "1.0.4",
@@ -66,10 +66,10 @@
     "date-fns": "2.29.3",
     "date-fns-tz": "2.0.0",
     "ioredis": "5.3.1",
-    "next": "13.2.5-canary.17",
+    "next": "13.2.5-canary.18",
     "plaiceholder": "2.5.0",
-    "react": "18.3.0-next-12a1d140e-20230321",
-    "react-dom": "18.3.0-next-12a1d140e-20230321",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "tailwind-merge": "1.10.0"
   },
   "publishConfig": {

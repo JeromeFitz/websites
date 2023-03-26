@@ -1,4 +1,4 @@
-import dynamic from 'next/dynamic'
+import { lazy } from 'react'
 
 import { CONTENT_NODE_TYPES } from './constants'
 import ContentNodes from './ContentNodes'
@@ -35,34 +35,34 @@ const {
 
 // @todo(types) This is likely not portable. A type annotation is necessary.
 const getContentNode: any = {
-  [UNSUPPORTED]: dynamic(() => import('./components/_unsupported')),
+  [UNSUPPORTED]: lazy(() => import('./components/_unsupported')),
   //
-  [BULLETED_LIST_ITEM]: dynamic(() => import('./components/bulleted_list_item')),
-  [BULLETED_LIST]: dynamic(() => import('./components/bulleted_list')),
-  [CALLOUT]: dynamic(() => import('./components/callout')),
-  [CHECKBOX]: dynamic(() => import('./components/checkbox')),
-  [CODE]: dynamic(() => import('./components/code')),
-  [COLUMN_LIST]: dynamic(() => import('./components/column_list')),
-  [COLUMN]: dynamic(() => import('./components/column')),
-  [DATE]: dynamic(() => import('./components/date')),
-  [DIVIDER]: dynamic(() => import('./components/divider')),
-  [FILES]: dynamic(() => import('./components/files')),
-  [HEADING_1]: dynamic(() => import('./components/heading_1')),
-  [HEADING_2]: dynamic(() => import('./components/heading_2')),
-  [HEADING_3]: dynamic(() => import('./components/heading_3')),
-  [IMAGE]: dynamic(() => import('./components/image')),
-  [LINK]: dynamic(() => import('./components/link')),
-  [MULTI_SELECT]: dynamic(() => import('./components/multi_select')),
-  [NUMBERED_LIST_ITEM]: dynamic(() => import('./components/numbered_list_item')),
-  [NUMBERED_LIST]: dynamic(() => import('./components/numbered_list')),
-  [PARAGRAPH]: dynamic(() => import('./components/paragraph')),
-  [QUOTE]: dynamic(() => import('./components/quote')),
-  [RELATION]: dynamic(() => import('./components/relation')),
-  [RICH_TEXT]: dynamic(() => import('./components/rich_text')),
-  [TITLE]: dynamic(() => import('./components/title')),
-  [TO_DO]: dynamic(() => import('./components/to_do')),
-  [TOGGLE]: dynamic(() => import('./components/toggle')),
-  [URL]: dynamic(() => import('./components/url')),
+  [BULLETED_LIST_ITEM]: lazy(() => import('./components/bulleted_list_item')),
+  [BULLETED_LIST]: lazy(() => import('./components/bulleted_list')),
+  [CALLOUT]: lazy(() => import('./components/callout')),
+  [CHECKBOX]: lazy(() => import('./components/checkbox')),
+  [CODE]: lazy(() => import('./components/code')),
+  [COLUMN_LIST]: lazy(() => import('./components/column_list')),
+  [COLUMN]: lazy(() => import('./components/column')),
+  [DATE]: lazy(() => import('./components/date')),
+  [DIVIDER]: lazy(() => import('./components/divider')),
+  [FILES]: lazy(() => import('./components/files')),
+  [HEADING_1]: lazy(() => import('./components/heading_1')),
+  [HEADING_2]: lazy(() => import('./components/heading_2')),
+  [HEADING_3]: lazy(() => import('./components/heading_3')),
+  [IMAGE]: lazy(() => import('./components/image')),
+  [LINK]: lazy(() => import('./components/link')),
+  [MULTI_SELECT]: lazy(() => import('./components/multi_select')),
+  [NUMBERED_LIST_ITEM]: lazy(() => import('./components/numbered_list_item')),
+  [NUMBERED_LIST]: lazy(() => import('./components/numbered_list')),
+  [PARAGRAPH]: lazy(() => import('./components/paragraph')),
+  [QUOTE]: lazy(() => import('./components/quote')),
+  [RELATION]: lazy(() => import('./components/relation')),
+  [RICH_TEXT]: lazy(() => import('./components/rich_text')),
+  [TITLE]: lazy(() => import('./components/title')),
+  [TO_DO]: lazy(() => import('./components/to_do')),
+  [TOGGLE]: lazy(() => import('./components/toggle')),
+  [URL]: lazy(() => import('./components/url')),
 }
 
 const getObjectReturn = {}

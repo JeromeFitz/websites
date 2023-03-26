@@ -3,7 +3,7 @@
 import dataNormalized from '@jeromefitz/notion/utils/dataNormalized'
 import { avoidRateLimit, sortObject } from '@jeromefitz/utils'
 import { NextApiRequest, NextApiResponse } from 'next'
-import { getCacheJson, setCacheJson } from 'next-notion/src/getCache'
+import { getCacheRedis, setCacheRedis } from 'next-notion/src/getCache'
 import { getNotion } from 'next-notion/src/helper'
 
 import { notionConfig } from '~config/index'
@@ -25,7 +25,7 @@ const notionPagesId = async (req: NextApiRequest, res: NextApiResponse) => {
   let data
   if (useCache) {
     const url = catchAll.join('/')
-    const cacheData = await getCacheJson(url)
+    const cacheData = await getCacheRedis(url)
     if (!!cacheData) {
       data = cacheData
     }
@@ -52,10 +52,10 @@ const notionPagesId = async (req: NextApiRequest, res: NextApiResponse) => {
     if (useCache && !!data) {
       const url = catchAll.join('/')
       // console.dir(url)
-      const isCacheExists = await getCacheJson(url)
+      const isCacheExists = await getCacheRedis(url)
       // console.dir(isCacheExists)
       if (!isCacheExists || isCacheExists === undefined) {
-        setCacheJson(data, url)
+        setCacheRedis(data, url)
       }
     }
   }

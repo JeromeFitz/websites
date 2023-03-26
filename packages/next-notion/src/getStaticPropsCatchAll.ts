@@ -46,8 +46,8 @@ const cacheType = process.env.NEXT_PUBLIC__NOTION_CACHE_TYPE || CACHE_TYPES.JSON
 const getStaticPropsCatchAll: any = async ({
   catchAll,
   notionConfig,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  options = {},
+
+  options = { revalidate: false },
   preview,
 }: {
   catchAll: any
@@ -62,6 +62,8 @@ const getStaticPropsCatchAll: any = async ({
   // console.dir(catchAll)
   // console.dir(`>  pathVariables`)
   // console.dir(pathVariables)
+  // console.dir(`>  options`)
+  // console.dir(options)
 
   const { slug } = pathVariables
   if (nextWeirdRoutingSkipData.includes(slug)) return {}
@@ -69,8 +71,8 @@ const getStaticPropsCatchAll: any = async ({
   // @todo(types)
   let data: any
   let shouldUpdateCache = false
-  // let shouldUpdateCache = !!options?.revalidate ? true : false
-  // console.dir(`>  shouldUpdateCache: ${shouldUpdateCache}`)
+  const revalidateCache = options?.revalidate || false
+  // console.dir(`>  revalidateCache: ${revalidateCache}`)
 
   const key = getKeysByJoin({
     keyData: catchAll,
@@ -102,7 +104,7 @@ const getStaticPropsCatchAll: any = async ({
   // use SWR to pull directly from original data source
   // annoying because i would rather just go direct from cache
   // but have the option to bust it (probably just need to draw it out)
-  if (!shouldUpdateCache) {
+  if (!revalidateCache) {
     data = await getCache({ cacheType, key })
   }
   // console.dir(`>  data (0)`)
@@ -163,8 +165,11 @@ const getStaticPropsCatchAll: any = async ({
   if (!data.info || data.info === undefined || preview) {
     shouldUpdateCache = false
   }
-  if ((cache || cacheOverride) && shouldUpdateCache) {
+  // if ((cache || cacheOverride) && shouldUpdateCache) {
+  if (shouldUpdateCache || revalidateCache) {
     // console.dir(`1) cache || cacheOverride: ${cacheType} => ${key}`)
+    // console.dir(`1) shouldUpdateCache:      ${shouldUpdateCache}`)
+    // console.dir(`1) revalidateCache:        ${revalidateCache}`)
     // console.dir(data)
     setCache({ cacheType, data, key })
   }
