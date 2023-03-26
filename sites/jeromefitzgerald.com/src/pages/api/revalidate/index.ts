@@ -39,10 +39,10 @@ async function handleRevalidate(req, res) {
       // console.dir(data)
       // console.dir(`> pathVariables`)
       // console.dir(pathVariables)
-      // await res.revalidate(`${path}`)
-      await res.revalidate(path)
+      await res.revalidate(`${path}`)
+      // await res.revalidate(path)
     }
-    return res.status(200).send({ status: 200, message: 'success' })
+    return res.status(200).send({ status: 200, message: 'success', path })
   } else {
     return res.status(403).send({ status: 403, message: 'forbidden' })
   }

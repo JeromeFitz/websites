@@ -152,7 +152,7 @@ async function getComments(blockId): Promise<any[]> {
 }
 
 // @todo(lint)
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+// eslint-disable-next-line @typescript-eslint/no-unused-vars, complexity
 const image: any = async ({ images, item, priority = false, order = 99 }) => {
   const isPriority = priority ? priority : order < 6 ? true : false
   // console.dir(`> images`)
@@ -205,8 +205,8 @@ const image: any = async ({ images, item, priority = false, order = 99 }) => {
   // console.dir(altData)
   image.alt = (!!altData && getImageAlt(altData?.results)) || ''
   image.priority = isPriority
-
-  // console.dir(image)
+  image.fetchPriority = isPriority ? 'high' : 'auto'
+  image.loading = isPriority ? 'eager' : 'lazy'
 
   return (
     <>

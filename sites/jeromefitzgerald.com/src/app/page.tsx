@@ -53,9 +53,9 @@ export default async function Page({ preview = false, ...props }) {
     <>
       <Debug data={data} pathVariables={pathVariables} />
       <PageHeading overline="" title={title} />
+      {!!content && <ContentNodes content={content} images={images} />}
       <Suspense fallback={<p>Loading...</p>}>
         <>
-          {!!content && <ContentNodes content={content} images={images} />}
           <PageHeading overline="shows" title={'Shows'} />
           <ListingShows />
         </>
