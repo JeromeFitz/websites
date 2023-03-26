@@ -153,11 +153,17 @@ async function getComments(blockId): Promise<any[]> {
 
 // @todo(lint)
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const image: any = async ({ images, item }) => {
+const image: any = async ({ images, item, priority = false, order = 99 }) => {
+  const isPriority = priority ? priority : order < 6 ? true : false
   // console.dir(`> images`)
   // console.dir(images)
   // console.dir(`> item`)
   // console.dir(item)
+  // console.dir(`> order`)
+  // console.dir(order)
+  // console.dir(`> isPriority`)
+  // console.dir(isPriority)
+
   // const contentHack = item.image
   // const imageSrc =
   //   contentHack?.type === 'external'
@@ -198,10 +204,13 @@ const image: any = async ({ images, item }) => {
   // console.dir(`> altData`)
   // console.dir(altData)
   image.alt = (!!altData && getImageAlt(altData?.results)) || ''
+  image.priority = isPriority
+
+  // console.dir(image)
 
   return (
     <>
-      <Image {...image} placeholder="blur" className="flex w-full justify-center" />
+      <Image placeholder="blur" className="flex w-full justify-center" {...image} />
       {!!caption && (
         <p className="my-4 ml-2 rounded border-l-4 border-l-orange-500 py-4 pl-4 font-mono text-sm font-bold">
           {caption}
