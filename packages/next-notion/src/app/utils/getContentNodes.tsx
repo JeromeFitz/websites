@@ -20,9 +20,11 @@ function getContentNodes({ content, images }) {
   let listCurrentId = ''
   let listCurrentState = false
   const nodes = {}
+  let i = 0
   _map(
     content.hasOwnProperty('results') ? content.results : content,
     (contentItem: NotionBlock) => {
+      i++
       if (contentItem === undefined || contentItem === null) return null
       if (
         contentItem?.type === BULLETED_LIST_ITEM ||
@@ -37,15 +39,17 @@ function getContentNodes({ content, images }) {
           }
         }
         listCurrentState = true
-        nodes[listCurrentId].node.push(getContentType(contentItem, images))
+        const d = getContentType(contentItem, images)
+        nodes[listCurrentId].node.push({ ...d, props: { ...d.props, order: i } })
         return
       } else {
         listCurrentState = false
       }
+      const d = getContentType(contentItem, images)
       nodes[contentItem?.id] = {
         id: contentItem?.id,
         type: contentItem?.type,
-        node: getContentType(contentItem, images),
+        node: { ...d, props: { ...d.props, order: i } },
       }
       return
     }

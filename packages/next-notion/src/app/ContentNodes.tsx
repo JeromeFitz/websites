@@ -16,7 +16,7 @@ const ContentNodes = ({ content, images }) => {
     <>
       {_map(getContentNodes({ content, images }), (node: any) => {
         // console.dir(`map > getContentNodes (${node?.type})`)
-        // console.dir(node)
+        // console.dir(node?.type === 'image' && node?.node)
         if (node?.type === OL || node?.type === UL) {
           const ListType =
             node?.type === OL

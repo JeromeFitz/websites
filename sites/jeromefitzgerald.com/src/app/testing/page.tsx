@@ -99,14 +99,14 @@ async function Page() {
           </li>
         </ul>
       </nav>
-      <div className="">
+      <div className="mb-24">
         <div className="fixed">
           <h1 className="text-6xl font-black tracking-tight md:text-9xl">
             Jerome Fitzgerald
           </h1>
         </div>
         <div className="fixed">
-          <Image {...img} alt="alter" />
+          <Image {...img} alt="alt3r" priority={true} />
         </div>
       </div>
     </>
