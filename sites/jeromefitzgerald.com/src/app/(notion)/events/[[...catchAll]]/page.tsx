@@ -28,8 +28,8 @@ export function generateStaticParams() {
   }))
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export async function generateMetadata({ searchParams, ...props }) {
+// // eslint-disable-next-line @typescript-eslint/no-unused-vars
+export async function generateMetadata({ ...props }) {
   const catchAll = [ROUTE_TYPE]
   !!props.params?.catchAll && catchAll.push(...props.params?.catchAll)
   const { metadata } = await getNotionData({
@@ -39,17 +39,15 @@ export async function generateMetadata({ searchParams, ...props }) {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export default async function Page({ preview = false, searchParams, ...props }) {
-  // log(`${DEBUG_KEY} !!searchParams`, !!searchParams)
-  // log(`${DEBUG_KEY} searchParams`, searchParams)
+export default async function Page({ preview = false, ...props }) {
   // log(`${DEBUG_KEY} props`, props)
   const catchAll = [ROUTE_TYPE]
   !!props.params?.catchAll && catchAll.push(...props.params?.catchAll)
 
-  preload({ catchAll, options: searchParams })
+  preload({ catchAll, options: {} })
   const { data, pathVariables } = await getNotionData({
     catchAll,
-    options: searchParams,
+    options: {},
   })
   const { isIndex } = pathVariables
   const { content, images, info } = data
