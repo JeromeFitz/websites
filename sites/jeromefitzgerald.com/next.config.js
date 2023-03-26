@@ -273,7 +273,7 @@ const nextConfig = {
   optimizeFonts: true,
   // output: undefined,
   // outputFileTracing: false,
-  output: 'standalone',
+  output: undefined,
   pageExtensions: ['jsx', 'js', 'tsx', 'ts'],
   poweredByHeader: true,
   productionBrowserSourceMaps: false,

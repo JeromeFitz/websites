@@ -1,3 +1,8 @@
+import { getStaticPropsCatchAll } from 'next-notion/src/getStaticPropsCatchAll'
+
+import { notionConfig } from '~config/index'
+// import { HOST_API } from '~lib/constants'
+
 async function handleRevalidate(req, res) {
   const body: any = await getRawBody(req)
   if (!body) {
@@ -17,8 +22,25 @@ async function handleRevalidate(req, res) {
     const { path } = jsonBody
     if (path) {
       // @note(next) needs to be wrapped in quote 🤷🏻
-      console.dir(`path: ${path}`)
-      await res.revalidate(`${path}?revalidate=1`)
+      // console.dir(`path: ${path}`)
+      const catchAll = path
+        .split('/')
+        .reduce((acc, i) => (i ? [...acc, i] : acc), [])
+      const options = { revalidate: true }
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { data } = await getStaticPropsCatchAll({
+        catchAll,
+        notionConfig,
+        options,
+      })
+      // console.dir(`> data`)
+      // console.dir(data)
+      // console.dir(`> pathVariables`)
+      // console.dir(pathVariables)
+      // await res.revalidate(`${path}`)
+      await res.revalidate(path)
     }
     return res.status(200).send({ status: 200, message: 'success' })
   } else {
