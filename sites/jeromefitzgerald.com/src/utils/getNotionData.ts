@@ -13,10 +13,15 @@ import { formatDateForSlug } from '~utils/formatDateForSlug'
 
 // const DEBUG_KEY = 'getNotionData >> '
 
+/**
+ * @todo(next) this is running on `next build` which do not want
+ */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const preload = ({ catchAll, options = {} }: { catchAll: any; options?: any }) => {
   // log(`${DEBUG_KEY} preload`, catchAll)
   // log(`${DEBUG_KEY} preload (options)`, options)
-  void getNotionData({ catchAll, options })
+  // void getNotionData({ catchAll, options })
+  return
 }
 
 const getNotionData = cache(

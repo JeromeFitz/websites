@@ -63,7 +63,7 @@ export default async function Page({ preview = false, ...props }) {
   const catchAll = [ROUTE_TYPE]
   !!props.params?.catchAll && catchAll.push(...props.params?.catchAll)
 
-  preload({ catchAll })
+  preload({ catchAll, options: {} })
   const { data, pathVariables } = await getNotionData({
     catchAll,
   })
