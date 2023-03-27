@@ -105,6 +105,7 @@ const getStaticPropsCatchAll: any = async ({
   // annoying because i would rather just go direct from cache
   // but have the option to bust it (probably just need to draw it out)
   if (!revalidateCache) {
+    // console.dir(`!revalidateCache: ${cacheType} => ${key}`)
     data = await getCache({ cacheType, key })
   }
   // console.dir(`>  data (0)`)
@@ -113,6 +114,7 @@ const getStaticPropsCatchAll: any = async ({
 
   if (!data || data === undefined) {
     shouldUpdateCache = true
+    // console.dir(`!data (getCatchAllDataFromApi): ${cacheType} => ${key}`)
     data = await getCatchAllDataFromApi({
       catchAll,
       key,
