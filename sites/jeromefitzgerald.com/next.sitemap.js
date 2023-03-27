@@ -5,16 +5,17 @@ const _replace = require('lodash/replace')
  */
 const configInlineBecauseThisIsOldJS = {
   excludes: [
+    'api/crypted',
     // 'blog',
     // 'books',
     // 'colophon',
-    'crypted/**',
+    'encrypted',
     'episodes',
     // 'events',
     // 'music',
     'people',
     'playground',
-    'podcasts/**',
+    'podcasts/*',
     // 'shows',
     'testing',
     'users',
@@ -38,6 +39,7 @@ const removeEn = (config, url) => {
 
   if (
     url.includes('blog') ||
+    // url.includes('events/2023') ||
     url.includes('events/2022') ||
     url.includes('events/2021') ||
     url.includes('events/2020')
@@ -47,7 +49,7 @@ const removeEn = (config, url) => {
   }
 
   return {
-    loc: _replace(url, '/en', ''),
+    loc: _replace(url, '/en/', ''),
     changefreq,
     priority,
     // lastmod: config.autoLastmod ? new Date().toISOString() : undefined,
@@ -57,16 +59,28 @@ const removeEn = (config, url) => {
 const getExcludes = (excludes) => {
   const _excludes = []
   excludes.map((e) => {
+    // _excludes.push(`/${e}/**/*`)
     _excludes.push(`/${e}/*`)
     _excludes.push(`/${e}`)
+    // _excludes.push(`/en/${e}/**/*`)
     _excludes.push(`/en/${e}/*`)
     _excludes.push(`/en/${e}`)
   })
   return _excludes
 }
 
+const paths = ['', 'events', 'podcasts', 'shows']
+const additionalPaths = async (config) => {
+  const result = []
+
+  paths.map(async (p) => result.push(await config.transform(config, `/${p}`)))
+
+  return result
+}
+
 /** @type {import('next-sitemap').IConfig} */
 const config = {
+  additionalPaths,
   changefreq: 'weekly',
   exclude: getExcludes(excludes),
   generateRobotsTxt: true,
