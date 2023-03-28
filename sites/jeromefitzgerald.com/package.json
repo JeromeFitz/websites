@@ -106,7 +106,7 @@
     "@vercel/og": "0.4.1",
     "clsx": "1.2.1",
     "cmdk": "0.2.0",
-    "cssnano": "5.1.15",
+    "cssnano": "6.0.0",
     "date-fns": "2.29.3",
     "date-fns-tz": "2.0.0",
     "fast-json-stable-stringify": "2.1.0",
