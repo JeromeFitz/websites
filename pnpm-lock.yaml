@@ -82,7 +82,7 @@ importers:
       '@types/react-dom': 18.0.11
       '@types/uuid': 9.0.1
       '@types/valid-url': 1.0.4
-      '@upstash/ratelimit': 0.4.0
+      '@upstash/ratelimit': 0.4.1
       '@upstash/redis': 1.20.1
       clsx: 1.2.1
       date-fns: 2.29.3
@@ -118,7 +118,7 @@ importers:
       '@types/react-dom': 18.0.11
       '@types/uuid': 9.0.1
       '@types/valid-url': 1.0.4
-      '@upstash/ratelimit': 0.4.0_@upstash+redis@1.20.1
+      '@upstash/ratelimit': 0.4.1_@upstash+redis@1.20.1
       '@upstash/redis': 1.20.1
       date-fns: 2.29.3
       date-fns-tz: 2.0.0_date-fns@2.29.3
@@ -245,7 +245,7 @@ importers:
       '@types/react-dom': 18.0.11
       '@types/title': 3.4.1
       '@types/uuid': 9.0.1
-      '@upstash/ratelimit': 0.4.0
+      '@upstash/ratelimit': 0.4.1
       '@upstash/redis': 1.20.1
       '@vercel/analytics': 0.1.11
       '@vercel/og': 0.4.1
@@ -360,7 +360,7 @@ importers:
       '@stitches/react': 1.3.1-1_react@18.2.0
       '@tailwindcss/forms': 0.5.3_tailwindcss@3.2.7
       '@tanem/react-nprogress': 5.0.32_biqbaboplfbrettd7655fr4n2y
-      '@upstash/ratelimit': 0.4.0_@upstash+redis@1.20.1
+      '@upstash/ratelimit': 0.4.1_@upstash+redis@1.20.1
       '@upstash/redis': 1.20.1
       '@vercel/analytics': 0.1.11_react@18.2.0
       '@vercel/og': 0.4.1
@@ -4329,8 +4329,8 @@ packages:
     transitivePeerDependencies:
       - encoding
 
-  /@upstash/ratelimit/0.4.0_@upstash+redis@1.20.1:
-    resolution: {integrity: sha512-727GI50EoK0PjSLZn4mHdFhZsdMWBb/HYm/vMqsYMdtKtC3hZW8NhN51IZqZWVqziLci2VEptZtTAK4AOmGIsg==}
+  /@upstash/ratelimit/0.4.1_@upstash+redis@1.20.1:
+    resolution: {integrity: sha512-NdL4E8jOrqSIOuDFVx5TLdh0/2tefgnrzBeqx+soy1cjGnx8sKdCZpOi4xhG5rm6F9ch89ZzIcBm6iRhx+tLgA==}
     peerDependencies:
       '@upstash/redis': ^1.20.1
     dependencies:
