@@ -20,7 +20,7 @@
       "commitMessagePrefix": "👷  (actions)",
       "commitMessageExtra": "@{{depName}}{{#if isPinDigest}}{{{newDigestShort}}}{{else}}{{#if isMajor}}v{{{newMajor}}} 💥 {{else}}{{#if isSingleVersion}}v{{{newVersion}}}{{else}}{{#if newValue}}{{{newValue}}}{{else}}v{{{newDigestShort}}}{{/if}}{{/if}}{{/if}}{{/if}}",
       "commitMessageTopic": " {{depName}}",
-      "groupName": "github actions :octocat: ...",
+      "groupName": "github actions :octocat: ",
       "groupSlug": "github-actions",
       "matchPackagePatterns": ["^actions"]
     },
@@ -28,20 +28,20 @@
       "assignees": ["JeromeFitz"],
       "commitMessagePrefix": "⬆️  (deps)",
       "commitMessageSuffix": "[b]",
-      "groupName": "next 🔺 ...",
+      "groupName": "next 🔺 ",
       "groupSlug": "next",
-      "matchPackageNames": ["@next/bundle-analyzer", "eslint-config-next", "next"],
+      "matchPackageNames": ["@next/bundle-analyzer", "next"],
       "reviewers": ["JeromeFitz"]
     },
     {
       "commitMessagePrefix": "⬆️  (deps)",
-      "groupName": "radix-ui 🌐 ...",
+      "groupName": "radix-ui 🌐 ",
       "groupSlug": "radix-ui",
       "matchPackagePatterns": ["^@radix-ui/"]
     },
     {
       "commitMessagePrefix": "⬆️  (deps)",
-      "groupName": "react ⚛️ ...",
+      "groupName": "react ⚛️ ",
       "groupSlug": "react",
       "matchPackageNames": ["@types/react", "react", "react-dom"]
     },
