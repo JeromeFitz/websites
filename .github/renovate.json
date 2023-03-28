@@ -46,16 +46,20 @@
       "matchPackageNames": ["@types/react", "react", "react-dom"]
     },
     {
-      "commitMessagePrefix": "⬆️  (deps)",
-      "matchDepTypes": ["dependencies"]
-    },
-    {
       "commitMessagePrefix": "📦  (deps-peer)",
       "matchDepTypes": ["peerDependencies"]
     },
     {
       "commitMessagePrefix": "📦  (deps-dev)",
+      "matchPackageNames": ["@types/*"]
+    },
+    {
+      "commitMessagePrefix": "📦  (deps-dev)",
       "matchDepTypes": ["devDependencies"]
+    },
+    {
+      "commitMessagePrefix": "⬆️  (deps)",
+      "matchDepTypes": ["dependencies"]
     },
     {
       "assignees": ["JeromeFitz"],
