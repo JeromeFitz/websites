@@ -42,7 +42,7 @@
     "@types/jest": "29.5.0",
     "@types/lodash": "4.14.192",
     "@types/node": "18.15.10",
-    "@types/react": "18.0.29",
+    "@types/react": "18.0.30",
     "@types/title": "3.4.1",
     "@types/uuid": "9.0.1",
     "ccommit": "1.1.2",

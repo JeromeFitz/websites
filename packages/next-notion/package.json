@@ -57,7 +57,7 @@
     "@jeromefitz/design-system": "4.1.7",
     "@jeromefitz/notion": "4.0.4",
     "@types/ms": "0.7.31",
-    "@types/react": "18.0.29",
+    "@types/react": "18.0.30",
     "@types/react-dom": "18.0.11",
     "@types/uuid": "9.0.1",
     "@types/valid-url": "1.0.4",
