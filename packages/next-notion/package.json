@@ -62,7 +62,7 @@
     "@types/uuid": "9.0.1",
     "@types/valid-url": "1.0.4",
     "@upstash/ratelimit": "0.4.1",
-    "@upstash/redis": "1.20.1",
+    "@upstash/redis": "1.20.2",
     "date-fns": "2.29.3",
     "date-fns-tz": "2.0.0",
     "ioredis": "5.3.1",
