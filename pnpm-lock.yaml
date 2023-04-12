@@ -253,8 +253,8 @@ importers:
         specifier: 2.2.1
         version: 2.2.1(lodash@4.17.21)
       '@mantine/hooks':
-        specifier: 6.0.4
-        version: 6.0.4(react@18.2.0)
+        specifier: 6.0.7
+        version: 6.0.7(react@18.2.0)
       '@octokit/core':
         specifier: 4.2.0
         version: 4.2.0
@@ -1828,8 +1828,8 @@ packages:
       '@jridgewell/resolve-uri': 3.1.0
       '@jridgewell/sourcemap-codec': 1.4.14
 
-  /@mantine/hooks@6.0.4(react@18.2.0):
-    resolution: {integrity: sha512-rG+P18vOJcMQGo/3XAzR3f7rtmzjuccTIc10I9F2J49cRKem4wQZQdYeA8Wnxx95SRmVTQtf2hYXjbUliqgmAA==}
+  /@mantine/hooks@6.0.7(react@18.2.0):
+    resolution: {integrity: sha512-+Axk3hiSeqzSAtEqJR3C1PDW1YYl0ph4zBS8DAhFueXXtsjJOVRoGBbyc/gXovpjRM3llFtLqpwqxxbOJogx0g==}
     peerDependencies:
       react: '>=16.8.0'
     dependencies:
