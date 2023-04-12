@@ -490,8 +490,8 @@ importers:
         specifier: 13.2.5-canary.19
         version: 13.2.5-canary.19(react-dom@18.2.0)(react@18.2.0)
       next-sitemap:
-        specifier: 4.0.6
-        version: 4.0.6(next@13.2.5-canary.19)
+        specifier: 4.0.7
+        version: 4.0.7(next@13.2.5-canary.19)
       next-themes:
         specifier: 0.2.1
         version: 0.2.1(next@13.2.5-canary.19)(react-dom@18.2.0)(react@18.2.0)
@@ -8886,8 +8886,8 @@ packages:
     resolution: {integrity: sha512-EZSPZB70jiVsivaBLYDCyntd5eH8NTSMOn3rB+HxwdmKThGELLdYv8qVIMWvZEFy9w8ZZpW9h9OB32l1rGtj7g==}
     dev: false
 
-  /next-sitemap@4.0.6(next@13.2.5-canary.19):
-    resolution: {integrity: sha512-pZ9tynYe6mRR189qZqcOlWVgM1Gxo07BJQW0AjerKmLwQOt+6FQMdaDgifgCt6jDT3Y3EG/+NUDDZRcd0gbPkA==}
+  /next-sitemap@4.0.7(next@13.2.5-canary.19):
+    resolution: {integrity: sha512-S2g5IwJeO0+ecmFq981fb+Mw9YWmntOuN/qTCxclSkUibOJ8qKIOye0vn6NEJ1S4tKhbY+MTYKgJpNdFZYxLoA==}
     engines: {node: '>=14.18'}
     hasBin: true
     peerDependencies:
