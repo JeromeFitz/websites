@@ -103,7 +103,7 @@
     "@upstash/ratelimit": "0.4.1",
     "@upstash/redis": "1.20.2",
     "@vercel/analytics": "0.1.11",
-    "@vercel/og": "0.4.1",
+    "@vercel/og": "0.5.1",
     "clsx": "1.2.1",
     "cmdk": "0.2.0",
     "cssnano": "6.0.0",
