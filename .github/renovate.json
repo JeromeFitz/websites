@@ -10,7 +10,7 @@
   "commitMessageSuffix": "",
   "commitMessageTopic": " {{depName}}{{#if isPinDigest}}{{{newDigestShort}}}{{else}}{{#if isMajor}}@{{{newMajor}}} 💥 {{else}}{{#if isSingleVersion}}@{{{newVersion}}}{{else}}{{#if newValue}}{{{newValue}}}{{else}}@{{{newDigestShort}}}{{/if}}{{/if}}{{/if}}{{/if}}",
   "dependencyDashboard": false,
-  "ignoreDeps": ["typescript"],
+  "ignoreDeps": ["@next/bundle-analyzer", "next", "typescript"],
   "labels": ["📦️ Dependencies"],
   "node": {
     "enabled": false
@@ -23,15 +23,6 @@
       "groupName": "github actions :octocat: ",
       "groupSlug": "github-actions",
       "matchPackagePatterns": ["^actions"]
-    },
-    {
-      "assignees": ["JeromeFitz"],
-      "commitMessagePrefix": "⬆️  (deps)",
-      "commitMessageSuffix": "[b]",
-      "groupName": "next 🔺 ",
-      "groupSlug": "next",
-      "matchPackageNames": ["@next/bundle-analyzer", "next"],
-      "reviewers": ["JeromeFitz"]
     },
     {
       "commitMessagePrefix": "⬆️  (deps)",
@@ -63,11 +54,21 @@
     },
     {
       "assignees": ["JeromeFitz"],
+      "commitMessagePrefix": "⬆️  (deps)",
+      "commitMessageSuffix": "[b]",
+      "groupName": "next 🔺 ",
+      "groupSlug": "next",
+      "matchPackageNames": ["@next/bundle-analyzer", "next"],
+      "reviewers": ["JeromeFitz"]
+    },
+    {
+      "assignees": ["JeromeFitz"],
       "matchUpdateTypes": ["major"],
       "labels": ["📦 Dependencies 💥 Breaking 💥", "🛑️ Do Not Merge"],
       "reviewers": ["JeromeFitz"]
     }
   ],
+  "postUpdateOptions": ["pnpmDedupe"],
   "prBodyColumns": ["Package", "Update", "Type", "Change"],
   "prFooter": "<!-- COMMIT_BODY_TEXT_END -->",
   "prHeader": "<!-- COMMIT_BODY_TEXT_BEGIN -->",
