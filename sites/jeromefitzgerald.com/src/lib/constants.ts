@@ -30,6 +30,7 @@ const GENERATE = {
     ['2023', '03', '24', 'arcade-hootenanny'],
     ['2023', '03', '24', 'jerome-and'],
     ['2023', '03', '31', 'the-playlist'],
+    ['2023', '04', '15', 'arcade-hootenanny'],
     ['2023', '04', '29', 'the-playlist'],
     ['2023', '05', '27', 'the-playlist'],
   ],
