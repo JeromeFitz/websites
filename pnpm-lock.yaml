@@ -157,10 +157,10 @@ importers:
         version: 1.0.4
       '@upstash/ratelimit':
         specifier: 0.4.1
-        version: 0.4.1(@upstash/redis@1.20.1)
+        version: 0.4.1(@upstash/redis@1.20.2)
       '@upstash/redis':
-        specifier: 1.20.1
-        version: 1.20.1
+        specifier: 1.20.2
+        version: 1.20.2
       date-fns:
         specifier: 2.29.3
         version: 2.29.3
@@ -437,10 +437,10 @@ importers:
         version: 5.0.33(react-dom@18.2.0)(react@18.2.0)
       '@upstash/ratelimit':
         specifier: 0.4.1
-        version: 0.4.1(@upstash/redis@1.20.1)
+        version: 0.4.1(@upstash/redis@1.20.2)
       '@upstash/redis':
-        specifier: 1.20.1
-        version: 1.20.1
+        specifier: 1.20.2
+        version: 1.20.2
       '@vercel/analytics':
         specifier: 0.1.11
         version: 0.1.11(react@18.2.0)
@@ -4355,22 +4355,22 @@ packages:
     resolution: {integrity: sha512-cpPSR0XJAJs4Ddz9nq3tINlPS5aLfWVCqhhtHnXt4p7qr5+/Znlt1Es736poB/9rnl1hAHrOsOvVj46NEXcVqA==}
     engines: {node: '>=16.0.0'}
     dependencies:
-      '@upstash/redis': 1.20.1
+      '@upstash/redis': 1.20.2
     transitivePeerDependencies:
       - encoding
 
-  /@upstash/ratelimit@0.4.1(@upstash/redis@1.20.1):
+  /@upstash/ratelimit@0.4.1(@upstash/redis@1.20.2):
     resolution: {integrity: sha512-NdL4E8jOrqSIOuDFVx5TLdh0/2tefgnrzBeqx+soy1cjGnx8sKdCZpOi4xhG5rm6F9ch89ZzIcBm6iRhx+tLgA==}
     peerDependencies:
       '@upstash/redis': ^1.20.1
     dependencies:
       '@upstash/core-analytics': 0.0.6
-      '@upstash/redis': 1.20.1
+      '@upstash/redis': 1.20.2
     transitivePeerDependencies:
       - encoding
 
-  /@upstash/redis@1.20.1:
-    resolution: {integrity: sha512-mYwV8uvQROJnq5aOxmQH3KDa0E8+DRdU0zJ/VGQV84HrhQQNy0IsLFFTo97WEhZAlHcJnVbrbwqUK9disWqx/w==}
+  /@upstash/redis@1.20.2:
+    resolution: {integrity: sha512-9QS/SypDxeeh672H7dEEmuYOX5TtPYnaDLlhxWJEPd8LzcEQ6hohwDJuojpqGkvvvrK58mlWOkN1GrMxbXPTeQ==}
     dependencies:
       isomorphic-fetch: 3.0.0
     transitivePeerDependencies:
