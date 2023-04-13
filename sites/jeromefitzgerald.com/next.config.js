@@ -18,7 +18,7 @@ const transpilePackages = ['@jeromefitz/shared', 'next-notion']
 process.env.DESIGN_SYSTEM__TRANSPILE === 'true' &&
   transpilePackages.push('@jeromefitz/design-system')
 
-const { setupBuildInfo } = require('./scripts/build-info')
+// const { setupBuildInfo } = require('./scripts/build-info')
 
 const PROTOCOL = {
   HTTP: 'http',
@@ -290,7 +290,7 @@ const nextConfig = {
      * @note
      * hack way to get repository data via GitHub
      */
-    await setupBuildInfo()
+    // await setupBuildInfo()
 
     // return getRedirects
     return {}
