@@ -1,3 +1,7 @@
+/**
+ * @todo(delete) this is fixed in react@next
+ * For now leaving in until official offish 18.3.0, or 19.0.0
+ */
 'use client'
 /**
  * @hack(next-themes)

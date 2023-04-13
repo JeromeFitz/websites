@@ -1,4 +1,5 @@
 import type { Page } from '@jeromefitz/notion/schema'
+import { Suspense } from 'react'
 
 import { Debug } from '~components/Debug'
 import { Music } from '~components/Music'
@@ -35,7 +36,11 @@ export default function Page({ preview = false, ...props }) {
 
   return (
     <>
-      <Debug data={empty} pathVariables={empty} />
+      {/* @note(next) Debug does not cause: deopted into client-side rendering */}
+      {/* @todo(next) Debug could be Suspensed */}
+      <Suspense>
+        <Debug data={empty} pathVariables={empty} />
+      </Suspense>
       <PageHeading overline={`music`} title={'Music'} />
       <Music />
     </>

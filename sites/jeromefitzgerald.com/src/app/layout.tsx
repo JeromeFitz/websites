@@ -6,8 +6,6 @@ import '~styles/globals.css'
 import localFont from 'next/font/local'
 import { Suspense } from 'react'
 
-// import { usePathname } from 'next/navigation'
-// import { useEffect } from 'react'
 import { Analytics } from '~components/Analytics'
 import { CommandMenu } from '~components/CommandMenu'
 import { Footer } from '~components/Footer'
@@ -17,7 +15,6 @@ import { Providers } from '~components/Providers'
 import { ScrollToTopHack } from '~components/ScrollToTopHack'
 import { metadata as seo } from '~config/metadata'
 import { cx } from '~utils/cx'
-// import { getNotionData, preload } from '~utils/getNotionData'
 // import { log } from '~utils/log'
 
 // const DEBUG_KEY = 'layout.ts >> (root) > '
@@ -45,11 +42,6 @@ interface RootLayoutProps {
 export const metadata = seo
 
 function RootLayoutHOC({ children }: RootLayoutProps) {
-  // const pathname = usePathname()
-  // useEffect(() => {
-  //   window.scroll(0, 0)
-  // }, [pathname])
-
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
@@ -68,9 +60,6 @@ function RootLayoutHOC({ children }: RootLayoutProps) {
     </html>
   )
 }
-
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 
 function RootLayoutKitchenSink({ children }: RootLayoutProps) {
   return (
@@ -99,7 +88,6 @@ function RootLayoutKitchenSink({ children }: RootLayoutProps) {
 }
 
 function RootLayout({ children }: RootLayoutProps) {
-  // return <RootLayoutHOC>{children}</RootLayoutHOC>
   return <RootLayoutKitchenSink>{children}</RootLayoutKitchenSink>
 }
 

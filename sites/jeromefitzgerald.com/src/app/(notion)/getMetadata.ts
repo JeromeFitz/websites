@@ -23,8 +23,9 @@ async function getDataCms(catchAll) {
   return res.json()
 }
 
+// @todo(types)
 // eslint-disable-next-line complexity
-const getMetadata = ({ catchAll, data }) => {
+const getMetadata = ({ catchAll, data }): any => {
   const notion = getNotion(notionConfig)
   const pathVariables = notion.custom.getPathVariables({ catchAll })
 

@@ -2,10 +2,9 @@ import type { Page } from '@jeromefitz/notion/schema'
 import { ContentNodes } from 'next-notion/src/app'
 import { Suspense } from 'react'
 
+import { getDataCms, getMetadata } from '~app/(notion)/getMetadata'
 import { Debug } from '~components/Debug'
 import { PageHeading } from '~ui/PageHeading'
-// import { cx } from '~utils/cx'
-import { getNotionData } from '~utils/getNotionData'
 // import { log } from '~utils/log'
 
 const ROUTE_TYPE = 'about'
@@ -13,19 +12,17 @@ const ROUTE_TYPE = 'about'
 
 export async function generateMetadata() {
   const catchAll = [ROUTE_TYPE]
-  const { metadata } = await getNotionData({
-    catchAll,
-  })
+  const data = await getDataCms(catchAll)
+  const { metadata } = getMetadata({ catchAll, data })
   return metadata
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default async function Page({ preview = false, ...props }) {
   const catchAll = [ROUTE_TYPE]
-  const { data, pathVariables } = await getNotionData({
-    catchAll,
-  })
+  const data = await getDataCms(catchAll)
   const { content, images } = data
+  const { pathVariables } = getMetadata({ catchAll, data })
 
   return (
     <>
