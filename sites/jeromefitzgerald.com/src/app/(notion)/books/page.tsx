@@ -2,7 +2,9 @@ import type { Page } from '@jeromefitz/notion/schema'
 import _filter from 'lodash/filter'
 import _map from 'lodash/map'
 import _orderBy from 'lodash/orderBy'
+import { Suspense } from 'react'
 
+import { getDataCms, getMetadata } from '~app/(notion)/getMetadata'
 import { Debug } from '~components/Debug'
 // @todo(next) https://github.com/vercel/next.js/issues/46756
 // import { Icon } from '~ui/Icon'
@@ -14,7 +16,6 @@ import {
 } from '~ui/Icon/Icon.list'
 import { PageHeading } from '~ui/PageHeading'
 import { cx } from '~utils/cx'
-import { getNotionData } from '~utils/getNotionData'
 // import { log } from '~utils/log'
 
 const ROUTE_TYPE = 'books'
@@ -50,18 +51,22 @@ const STATUS = {
 
 export async function generateMetadata() {
   const catchAll = [ROUTE_TYPE]
-  const { metadata } = await getNotionData({
-    catchAll,
-  })
+  const data = await getDataCms(catchAll)
+  const { metadata } = getMetadata({ catchAll, data })
   return metadata
+}
+
+export const preload = () => {
+  const catchAll = [ROUTE_TYPE]
+  void getDataCms(catchAll)
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default async function Page({ preview = false, ...props }) {
   const catchAll = [ROUTE_TYPE]
-  const { data, pathVariables } = await getNotionData({
-    catchAll,
-  })
+  const data = await getDataCms(catchAll)
+  // const { content, images } = data
+  const { pathVariables } = getMetadata({ catchAll, data })
 
   // const { items } = data
   // log(`${DEBUG_KEY} items`, items)
@@ -100,7 +105,11 @@ export default async function Page({ preview = false, ...props }) {
 
   return (
     <>
-      <Debug data={data} pathVariables={pathVariables} />
+      {/* @note(next) Debug does not cause: deopted into client-side rendering */}
+      {/* @todo(next) Debug could be Suspensed */}
+      <Suspense>
+        <Debug data={data} pathVariables={pathVariables} />
+      </Suspense>
       <PageHeading overline={`books`} title={'Books'} />
       {/* @todo(remove) at some point in the next few weeks would be cool to remove this haha */}
       <div
@@ -118,7 +127,7 @@ export default async function Page({ preview = false, ...props }) {
             Please Note
           </span>
         </h3>
-        <p className="my-4 mx-0 text-lg">Still working on this page.</p>
+        <p className="mx-0 my-4 text-lg">Still working on this page.</p>
       </div>
       <div id="footer--construction-1" className={cx('my-4 w-full p-4')}>
         <h3
@@ -132,7 +141,7 @@ export default async function Page({ preview = false, ...props }) {
             Currently Reading
           </span>
         </h3>
-        <p className="my-4 mx-0 text-lg">
+        <p className="mx-0 my-4 text-lg">
           Trying to capture some of the books I want to read and help spur me on a
           bit here, heh.
         </p>
