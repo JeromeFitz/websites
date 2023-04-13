@@ -4,9 +4,8 @@ import '~styles/globals.css'
 // import '~styles/output.css'
 
 import localFont from 'next/font/local'
+import { Suspense } from 'react'
 
-// import { usePathname } from 'next/navigation'
-// import { useEffect } from 'react'
 import { Analytics } from '~components/Analytics'
 import { CommandMenu } from '~components/CommandMenu'
 import { Footer } from '~components/Footer'
@@ -16,7 +15,6 @@ import { Providers } from '~components/Providers'
 import { ScrollToTopHack } from '~components/ScrollToTopHack'
 import { metadata as seo } from '~config/metadata'
 import { cx } from '~utils/cx'
-// import { getNotionData, preload } from '~utils/getNotionData'
 // import { log } from '~utils/log'
 
 // const DEBUG_KEY = 'layout.ts >> (root) > '
@@ -43,12 +41,7 @@ interface RootLayoutProps {
 
 export const metadata = seo
 
-function RootLayout({ children }: RootLayoutProps) {
-  // const pathname = usePathname()
-  // useEffect(() => {
-  //   window.scroll(0, 0)
-  // }, [pathname])
-
+function RootLayoutHOC({ children }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
@@ -62,23 +55,40 @@ function RootLayout({ children }: RootLayoutProps) {
           fontSans.variable
         )}
       >
-        <Analytics />
-        <Providers>
-          <>
-            <Navigation />
-            <main className="relative m-0 min-h-screen w-full p-0">
-              <NavigationBar />
-              <div className="z-10 mx-4 my-6 max-w-screen-sm md:mx-4 md:my-9   md:max-w-screen-lg lg:mx-auto">
-                <ScrollToTopHack>{children}</ScrollToTopHack>
-              </div>
-            </main>
-            <Footer />
-            <CommandMenu />
-          </>
-        </Providers>
+        {children}
       </body>
     </html>
   )
+}
+
+function RootLayoutKitchenSink({ children }: RootLayoutProps) {
+  return (
+    <RootLayoutHOC>
+      <Suspense>
+        <Analytics />
+      </Suspense>
+      <Providers>
+        <>
+          <Navigation />
+          <main className="relative m-0 min-h-screen w-full p-0">
+            <NavigationBar />
+            <div className="z-10 mx-4 my-6 max-w-screen-sm md:mx-4 md:my-9   md:max-w-screen-lg lg:mx-auto">
+              {/* @note(next) does not cause: deopted into client-side rendering  */}
+              <ScrollToTopHack>{children}</ScrollToTopHack>
+            </div>
+          </main>
+          <Footer />
+          <Suspense>
+            <CommandMenu />
+          </Suspense>
+        </>
+      </Providers>
+    </RootLayoutHOC>
+  )
+}
+
+function RootLayout({ children }: RootLayoutProps) {
+  return <RootLayoutKitchenSink>{children}</RootLayoutKitchenSink>
 }
 
 export default RootLayout

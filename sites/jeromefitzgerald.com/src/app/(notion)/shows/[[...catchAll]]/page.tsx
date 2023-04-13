@@ -2,12 +2,12 @@ import type { Show } from '@jeromefitz/notion/schema'
 import { ContentNodes } from 'next-notion/src/app'
 import { Suspense } from 'react'
 
+import { getDataCms, getMetadata } from '~app/(notion)/getMetadata'
 import { Debug } from '~components/Debug'
 import { Meta } from '~components/Meta'
 import { notionConfig } from '~config/index'
 import { GENERATE } from '~lib/constants'
 import { PageHeading } from '~ui/PageHeading'
-import { getNotionData, preload } from '~utils/getNotionData'
 
 // import { log } from '~utils/log'
 import { Listing } from './Listing'
@@ -51,10 +51,15 @@ export function generateStaticParams() {
 export async function generateMetadata({ ...props }) {
   const catchAll = [ROUTE_TYPE]
   !!props.params?.catchAll && catchAll.push(...props.params?.catchAll)
-  const { metadata } = await getNotionData({
-    catchAll,
-  })
+  const data = await getDataCms(catchAll)
+  const { metadata } = getMetadata({ catchAll, data })
   return metadata
+}
+
+export const preload = ({ ...props }) => {
+  const catchAll = [ROUTE_TYPE]
+  !!props.params?.catchAll && catchAll.push(...props.params?.catchAll)
+  void getDataCms(catchAll)
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -63,13 +68,10 @@ export default async function Page({ preview = false, ...props }) {
   const catchAll = [ROUTE_TYPE]
   !!props.params?.catchAll && catchAll.push(...props.params?.catchAll)
 
-  preload({ catchAll, options: {} })
-  const { data, pathVariables } = await getNotionData({
-    catchAll,
-  })
-
-  const { isIndex } = pathVariables
+  const data = await getDataCms(catchAll)
   const { info } = data
+  const { pathVariables } = getMetadata({ catchAll, data })
+  const { isIndex } = pathVariables
   const { properties }: { id: string; properties: Show } = info
   const { title } = properties
 
@@ -77,7 +79,11 @@ export default async function Page({ preview = false, ...props }) {
 
   return (
     <>
-      <Debug data={data} pathVariables={pathVariables} />
+      {/* @note(next) Debug does not cause: deopted into client-side rendering */}
+      {/* @todo(next) Debug could be Suspensed */}
+      <Suspense>
+        <Debug data={data} pathVariables={pathVariables} />
+      </Suspense>
       <PageHeading overline={ROUTE_TYPE} title={isIndex ? 'Viewing All' : title} />
       <Suspense fallback={<p>Loading...</p>}>
         <Component data={data} pathVariables={pathVariables} />

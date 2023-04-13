@@ -2,10 +2,10 @@ import type { Page } from '@jeromefitz/notion/schema'
 import { ContentNodes } from 'next-notion/src/app'
 import { Suspense } from 'react'
 
+import { getDataCms, getMetadata } from '~app/(notion)/getMetadata'
 import { Debug } from '~components/Debug'
 import { PAGES__HOMEPAGE } from '~config/notion'
 import { PageHeading } from '~ui/PageHeading'
-import { getNotionData, preload } from '~utils/getNotionData'
 // import { log } from '~utils/log'
 
 import { ListingShows } from './ListingShows'
@@ -18,9 +18,8 @@ export const revalidate = 0
 
 export async function generateMetadata() {
   const catchAll = [ROUTE_TYPE]
-  const { metadata } = await getNotionData({
-    catchAll,
-  })
+  const data = await getDataCms(catchAll)
+  const { metadata } = getMetadata({ catchAll, data })
   // log(`${DEBUG_KEY} metadata`, metadata)
   return {
     ...metadata,
@@ -30,18 +29,20 @@ export async function generateMetadata() {
   }
 }
 
+export const preload = ({ ...props }) => {
+  const catchAll = [ROUTE_TYPE]
+  !!props.params?.catchAll && catchAll.push(...props.params?.catchAll)
+  void getDataCms(catchAll)
+}
+
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default async function Page({ preview = false, ...props }) {
   // log(`${DEBUG_KEY} props`, props)
   const catchAll = [ROUTE_TYPE]
   !!props.params?.catchAll && catchAll.push(...props.params?.catchAll)
-
-  preload({ catchAll, options: {} })
-  const { data, pathVariables } = await getNotionData({
-    catchAll,
-  })
-
+  const data = await getDataCms(catchAll)
   const { content, images, info } = data
+  const { pathVariables } = getMetadata({ catchAll, data })
   const { properties }: { properties: Page } = info
   const { title } = properties
 
@@ -51,7 +52,11 @@ export default async function Page({ preview = false, ...props }) {
 
   return (
     <>
-      <Debug data={data} pathVariables={pathVariables} />
+      {/* @note(next) Debug does not cause: deopted into client-side rendering */}
+      {/* @todo(next) Debug could be Suspensed */}
+      <Suspense>
+        <Debug data={data} pathVariables={pathVariables} />
+      </Suspense>
       <PageHeading overline="" title={title} />
       {!!content && <ContentNodes content={content} images={images} />}
       <Suspense fallback={<p>Loading...</p>}>
