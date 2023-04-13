@@ -4,6 +4,7 @@ import '~styles/globals.css'
 // import '~styles/output.css'
 
 import localFont from 'next/font/local'
+import { Suspense } from 'react'
 
 // import { usePathname } from 'next/navigation'
 // import { useEffect } from 'react'
@@ -43,7 +44,7 @@ interface RootLayoutProps {
 
 export const metadata = seo
 
-function RootLayout({ children }: RootLayoutProps) {
+function RootLayoutHOC({ children }: RootLayoutProps) {
   // const pathname = usePathname()
   // useEffect(() => {
   //   window.scroll(0, 0)
@@ -62,23 +63,44 @@ function RootLayout({ children }: RootLayoutProps) {
           fontSans.variable
         )}
       >
-        <Analytics />
-        <Providers>
-          <>
-            <Navigation />
-            <main className="relative m-0 min-h-screen w-full p-0">
-              <NavigationBar />
-              <div className="z-10 mx-4 my-6 max-w-screen-sm md:mx-4 md:my-9   md:max-w-screen-lg lg:mx-auto">
-                <ScrollToTopHack>{children}</ScrollToTopHack>
-              </div>
-            </main>
-            <Footer />
-            <CommandMenu />
-          </>
-        </Providers>
+        {children}
       </body>
     </html>
   )
+}
+
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+
+function RootLayoutKitchenSink({ children }: RootLayoutProps) {
+  return (
+    <RootLayoutHOC>
+      <Suspense>
+        <Analytics />
+      </Suspense>
+      <Providers>
+        <>
+          <Navigation />
+          <main className="relative m-0 min-h-screen w-full p-0">
+            <NavigationBar />
+            <div className="z-10 mx-4 my-6 max-w-screen-sm md:mx-4 md:my-9   md:max-w-screen-lg lg:mx-auto">
+              {/* @note(next) does not cause: deopted into client-side rendering  */}
+              <ScrollToTopHack>{children}</ScrollToTopHack>
+            </div>
+          </main>
+          <Footer />
+          <Suspense>
+            <CommandMenu />
+          </Suspense>
+        </>
+      </Providers>
+    </RootLayoutHOC>
+  )
+}
+
+function RootLayout({ children }: RootLayoutProps) {
+  // return <RootLayoutHOC>{children}</RootLayoutHOC>
+  return <RootLayoutKitchenSink>{children}</RootLayoutKitchenSink>
 }
 
 export default RootLayout

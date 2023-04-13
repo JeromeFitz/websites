@@ -32,7 +32,11 @@ export default async function Page({ preview = false, ...props }) {
 
   return (
     <>
-      <Debug data={data} pathVariables={pathVariables} />
+      {/* @note(next) Debug does not cause: deopted into client-side rendering */}
+      {/* @todo(next) Debug could be Suspensed */}
+      <Suspense>
+        <Debug data={data} pathVariables={pathVariables} />
+      </Suspense>
       <PageHeading overline={`testing`} title={'Playground'} />
       <Suspense fallback={<p>Loading...</p>}>
         {!!content && <ContentNodes content={content} images={images} />}
