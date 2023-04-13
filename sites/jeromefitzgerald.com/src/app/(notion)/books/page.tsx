@@ -4,6 +4,7 @@ import _map from 'lodash/map'
 import _orderBy from 'lodash/orderBy'
 import { Suspense } from 'react'
 
+import { getDataCms, getMetadata } from '~app/(notion)/getMetadata'
 import { Debug } from '~components/Debug'
 // @todo(next) https://github.com/vercel/next.js/issues/46756
 // import { Icon } from '~ui/Icon'
@@ -15,7 +16,6 @@ import {
 } from '~ui/Icon/Icon.list'
 import { PageHeading } from '~ui/PageHeading'
 import { cx } from '~utils/cx'
-import { getNotionData } from '~utils/getNotionData'
 // import { log } from '~utils/log'
 
 const ROUTE_TYPE = 'books'
@@ -49,20 +49,19 @@ const STATUS = {
   },
 }
 
-// export async function generateMetadata() {
-//   const catchAll = [ROUTE_TYPE]
-//   const { metadata } = await getNotionData({
-//     catchAll,
-//   })
-//   return metadata
-// }
+export async function generateMetadata() {
+  const catchAll = [ROUTE_TYPE]
+  const data = await getDataCms(catchAll)
+  const { metadata } = getMetadata({ catchAll, data })
+  return metadata
+}
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default async function Page({ preview = false, ...props }) {
   const catchAll = [ROUTE_TYPE]
-  const { data, pathVariables } = await getNotionData({
-    catchAll,
-  })
+  const data = await getDataCms(catchAll)
+  // const { content, images } = data
+  const { pathVariables } = getMetadata({ catchAll, data })
 
   // const { items } = data
   // log(`${DEBUG_KEY} items`, items)

@@ -4,8 +4,24 @@ import { getNotion } from 'next-notion/src/helper'
 import _title from 'title'
 
 import { notionConfig } from '~config/index'
-import { BASE_URL } from '~lib/constants'
+import { HOST_APIS, BASE_URL } from '~lib/constants'
 import { formatDateForSlug } from '~utils/formatDateForSlug'
+import { log } from '~utils/log'
+
+const DEBUG_KEY = `getMetadata >> `
+
+async function getDataCms(catchAll) {
+  const url = `${HOST_APIS.CMS}/${catchAll.join('/')}`
+  log(`${DEBUG_KEY} getDataCms > url`, url)
+
+  const res = await fetch(url)
+  if (!res.ok) {
+    // @note(next) activates closest `error.js` Error Boundary
+    throw new Error('Failed to fetch data')
+  }
+
+  return res.json()
+}
 
 // eslint-disable-next-line complexity
 const getMetadata = ({ catchAll, data }) => {
@@ -119,4 +135,4 @@ const getMetadata = ({ catchAll, data }) => {
   return { metadata, pathVariables }
 }
 
-export { getMetadata }
+export { getDataCms, getMetadata }
