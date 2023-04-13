@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { Suspense } from 'react'
 
 // import { Anchor } from '~components/Anchor'
 import { Debug } from '~components/Debug'

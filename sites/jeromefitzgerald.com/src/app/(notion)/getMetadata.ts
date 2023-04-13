@@ -6,13 +6,13 @@ import _title from 'title'
 import { notionConfig } from '~config/index'
 import { HOST_APIS, BASE_URL } from '~lib/constants'
 import { formatDateForSlug } from '~utils/formatDateForSlug'
-import { log } from '~utils/log'
+// import { log } from '~utils/log'
 
-const DEBUG_KEY = `getMetadata >> `
+// const DEBUG_KEY = `getMetadata >> `
 
 async function getDataCms(catchAll) {
   const url = `${HOST_APIS.CMS}/${catchAll.join('/')}`
-  log(`${DEBUG_KEY} getDataCms > url`, url)
+  // log(`${DEBUG_KEY} getDataCms > url`, url)
 
   const res = await fetch(url)
   if (!res.ok) {

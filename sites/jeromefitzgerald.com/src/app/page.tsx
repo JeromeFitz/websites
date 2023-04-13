@@ -29,6 +29,12 @@ export async function generateMetadata() {
   }
 }
 
+export const preload = ({ ...props }) => {
+  const catchAll = [ROUTE_TYPE]
+  !!props.params?.catchAll && catchAll.push(...props.params?.catchAll)
+  void getDataCms(catchAll)
+}
+
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default async function Page({ preview = false, ...props }) {
   // log(`${DEBUG_KEY} props`, props)

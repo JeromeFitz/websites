@@ -17,6 +17,11 @@ export async function generateMetadata() {
   return metadata
 }
 
+export const preload = () => {
+  const catchAll = [ROUTE_TYPE]
+  void getDataCms(catchAll)
+}
+
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default async function Page({ preview = false, ...props }) {
   const catchAll = [ROUTE_TYPE]

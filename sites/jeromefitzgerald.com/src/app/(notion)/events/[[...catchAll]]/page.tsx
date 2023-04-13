@@ -7,13 +7,13 @@ import { Debug } from '~components/Debug'
 import { notionConfig } from '~config/index'
 import { GENERATE } from '~lib/constants'
 import { PageHeading } from '~ui/PageHeading'
-import { log } from '~utils/log'
+// import { log } from '~utils/log'
 
 import { EventsPast } from './EventsPast'
 import { Listing } from './Listing'
 import { Slug } from './Slug'
 
-const DEBUG_KEY = '(notion)/events/[[..catchAll]]/page.tsx >> '
+// const DEBUG_KEY = '(notion)/events/[[..catchAll]]/page.tsx >> '
 
 // @todo(types)
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -37,6 +37,12 @@ export async function generateMetadata({ ...props }) {
   return metadata
 }
 
+export const preload = ({ ...props }) => {
+  const catchAll = [ROUTE_TYPE]
+  !!props.params?.catchAll && catchAll.push(...props.params?.catchAll)
+  void getDataCms(catchAll)
+}
+
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default async function Page({ preview = false, ...props }) {
   // log(`${DEBUG_KEY} props`, props)
@@ -51,7 +57,7 @@ export default async function Page({ preview = false, ...props }) {
 
   const Component = isIndex ? Listing : Slug
 
-  log(`${DEBUG_KEY} pathVariables`, pathVariables)
+  // log(`${DEBUG_KEY} pathVariables`, pathVariables)
 
   return (
     <>
