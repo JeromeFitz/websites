@@ -151,8 +151,8 @@ async function getComments(blockId): Promise<any[]> {
   // You can return Date, Map, Set, etc.
 }
 
-// @todo(lint)
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+// @todo(lint), @todo(complexity) 11
+// eslint-disable-next-line @typescript-eslint/no-unused-vars, complexity
 const image: any = async ({ images, item, priority = false, order = 99 }) => {
   const isPriority = priority ? priority : order < 6 ? true : false
   // console.dir(`> images`)
@@ -207,9 +207,16 @@ const image: any = async ({ images, item, priority = false, order = 99 }) => {
   image.priority = isPriority
   image.fetchPriority = isPriority ? 'high' : 'auto'
   // image.loading = isPriority ? 'eager' : 'lazy'
+  image.quality = 90
+  const preload = `/_next/image?url=${encodeURIComponent(image.src)}&w=1920&q=${
+    image.quality
+  }`
 
   return (
     <>
+      {/* @hack(next) NEXT-811 */}
+      {/* https://github.com/vercel/next.js/issues/43134 */}
+      {!!image.priority && <link rel="preload" href={preload} as="image" />}
       <Image placeholder="blur" className="flex w-full justify-center" {...image} />
       {!!caption && (
         <p className="my-4 ml-2 rounded border-l-4 border-l-orange-500 py-4 pl-4 font-mono text-sm font-bold">
