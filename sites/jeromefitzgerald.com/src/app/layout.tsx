@@ -41,10 +41,21 @@ interface RootLayoutProps {
 
 export const metadata = seo
 
+const preconnects = [
+  'https://jeromefitzgerald.com',
+  'https://vitals.vercel-insights.com',
+  'https://cdn.jeromefitzgerald.com',
+  'https://crane.jeromefitzgerald.com',
+]
+
 function RootLayoutHOC({ children }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head />
+      <head>
+        {preconnects.map((preconnect, idx) => (
+          <link rel="preconnect" href={preconnect} key={`preconnect-${idx}`} />
+        ))}
+      </head>
       <body
         className={cx(
           'overflow-y-auto overflow-x-hidden',
