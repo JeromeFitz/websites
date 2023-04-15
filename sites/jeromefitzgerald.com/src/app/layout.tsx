@@ -4,7 +4,7 @@ import '~styles/globals.css'
 // import '~styles/output.css'
 
 import localFont from 'next/font/local'
-import { Suspense } from 'react'
+import { Fragment, Suspense } from 'react'
 
 import { Analytics } from '~components/Analytics'
 import { CommandMenu } from '~components/CommandMenu'
@@ -42,10 +42,11 @@ interface RootLayoutProps {
 export const metadata = seo
 
 const preconnects = [
-  'https://jeromefitzgerald.com',
-  'https://vitals.vercel-insights.com',
+  // https://web.dev/preconnect-and-dns-prefetch/#how-to-implement-rel=preconnect
+  // 'https://jeromefitzgerald.com',
   'https://cdn.jeromefitzgerald.com',
   'https://crane.jeromefitzgerald.com',
+  'https://vitals.vercel-insights.com',
 ]
 
 function RootLayoutHOC({ children }: RootLayoutProps) {
@@ -53,7 +54,10 @@ function RootLayoutHOC({ children }: RootLayoutProps) {
     <html lang="en" suppressHydrationWarning>
       <head>
         {preconnects.map((preconnect, idx) => (
-          <link rel="preconnect" href={preconnect} key={`preconnect-${idx}`} />
+          <Fragment key={`preconnect-${idx}`}>
+            <link rel="preconnect" href={preconnect} crossOrigin="anonymous" />
+            <link rel="dns-prefetch" href={preconnect} />
+          </Fragment>
         ))}
       </head>
       <body
