@@ -58,7 +58,7 @@
     "semantic-release": "19.0.5",
     "semantic-release-monorepo": "7.0.5",
     "syncpack": "9.8.4",
-    "ts-jest": "29.0.5",
+    "ts-jest": "29.1.0",
     "ts-node": "10.9.1",
     "tsup": "6.7.0",
     "turbo": "1.9.1",
