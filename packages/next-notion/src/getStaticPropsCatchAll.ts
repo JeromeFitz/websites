@@ -181,7 +181,7 @@ const getStaticPropsCatchAll: any = async ({
 
 const getCatchAllImagesFromApi = async ({ data, pathVariables }) => {
   const images = {}
-  const keys = []
+  const keys: any = []
 
   const { getImages } = await import('./getImages')
   const urls = await getImages({ data, pathVariables })
@@ -228,10 +228,10 @@ const getCatchAllDataFromApi = async ({
   pathVariables,
   preview,
 }) => {
-  let content = null,
-    images = {},
-    info = null,
-    items = null
+  let content: any = null,
+    images: any = {},
+    info: any = null,
+    items: any = null
 
   const { dataType, routeType, slug } = pathVariables
 

@@ -35,7 +35,7 @@ const getImage = async (_url: string) => {
   let data: IGetPlaiceholderReturnCustom | undefined,
     id: string,
     key: string,
-    url: string
+    url = ''
 
   /**
    * @note(cache) if we are passed `[website]/image/` we are being passed a key to check
