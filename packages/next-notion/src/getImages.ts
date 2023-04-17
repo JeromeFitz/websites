@@ -20,7 +20,7 @@ const FILTER_TYPES = {
 const getImages = async ({ data, pathVariables }): Promise<any[]> => {
   // if (typeof window !== 'undefined') return []
   const mergeImages = {}
-  let urls = []
+  let urls: any = []
 
   /**
    * @info
