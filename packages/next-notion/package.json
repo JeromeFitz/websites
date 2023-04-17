@@ -43,7 +43,7 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "@jeromefitz/utils": "2.2.1",
+    "@jeromefitz/utils": "2.2.2",
     "clsx": "1.2.1",
     "fast-json-stable-stringify": "2.1.0",
     "github-slugger": "2.0.0",
@@ -54,7 +54,7 @@
     "valid-url": "1.0.9"
   },
   "devDependencies": {
-    "@jeromefitz/design-system": "4.1.7",
+    "@jeromefitz/design-system": "4.2.0",
     "@jeromefitz/notion": "4.0.4",
     "@types/ms": "0.7.31",
     "@types/react": "18.0.34",
@@ -70,7 +70,7 @@
     "plaiceholder": "2.5.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "tailwind-merge": "1.10.0"
+    "tailwind-merge": "1.12.0"
   },
   "publishConfig": {
     "access": "public"
