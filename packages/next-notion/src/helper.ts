@@ -6,8 +6,10 @@ import type { CredentialProps } from '@jeromefitz/notion'
  */
 // import { notionConfig as config } from '~config/index'
 
+const auth: string = process.env.NOTION_API_KEY || ''
+
 const credentials: CredentialProps = {
-  auth: process.env.NOTION_API_KEY,
+  auth,
   // config,
   config: {},
 }
