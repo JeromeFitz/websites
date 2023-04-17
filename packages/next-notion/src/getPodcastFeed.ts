@@ -108,7 +108,7 @@ const getPodcastFeed = ({ data, notionConfig, pathVariables }) => {
       ['desc']
     )
     let i = 0
-    const episodes = []
+    const episodes: any = []
     _map(items, (item) => {
       const {
         datePublished: { start: datePublished },
@@ -174,7 +174,7 @@ const getPodcastFeed = ({ data, notionConfig, pathVariables }) => {
         itunesEpisode,
         itunesTitle: title,
         itunesEpisodeType,
-        itunesNewFeedUrl: null,
+        itunesNewFeedUrl: undefined,
         // customNamespaces: [],
         customElements: [
           {

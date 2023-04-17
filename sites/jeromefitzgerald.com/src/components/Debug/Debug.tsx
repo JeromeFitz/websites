@@ -6,7 +6,6 @@ import { AnimatePresence, motion, useAnimationControls } from 'framer-motion'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
-import { ReduxDevTools } from '~components/ReduxDevTools'
 import { cx } from '~utils/cx'
 // import { log } from '~utils/log'
 
@@ -31,7 +30,6 @@ function Debug({ data, pathVariables }) {
 
   return (
     <>
-      <ReduxDevTools />
       <HoverCard.Root open={open} onOpenChange={setOpen}>
         <HoverCard.Trigger asChild>
           <div

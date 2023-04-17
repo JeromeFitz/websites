@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { Suspense } from 'react'
 
 // import { Anchor } from '~components/Anchor'
 import { Debug } from '~components/Debug'
@@ -27,7 +28,11 @@ async function Page() {
 
   return (
     <>
-      <Debug data={data} pathVariables={pathVariables} />
+      {/* @note(next) Debug does not cause: deopted into client-side rendering */}
+      {/* @todo(next) Debug could be Suspensed */}
+      <Suspense>
+        <Debug data={data} pathVariables={pathVariables} />
+      </Suspense>
       <PageHeading overline={`testing`} title={'Testing'} />
       <div
         className={cx(
@@ -45,7 +50,7 @@ async function Page() {
       </div>
       <nav
         className={cx(
-          'top-12 left-14 max-w-full font-black',
+          'left-14 top-12 max-w-full font-black',
           'text-radix-mauve12 fixed mix-blend-difference',
           'text-4xl md:text-8xl',
           // 'hidden',

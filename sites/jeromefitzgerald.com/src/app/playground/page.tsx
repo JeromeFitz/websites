@@ -2,12 +2,9 @@ import type { Page } from '@jeromefitz/notion/schema'
 import { ContentNodes } from 'next-notion/src/app'
 import { Suspense } from 'react'
 
+import { getDataCms, getMetadata } from '~app/(notion)/getMetadata'
 import { Debug } from '~components/Debug'
-// import { Header } from '~components/Header'
-// import { Carousel, Carousel2 } from '~playground/Carousel'
 import { PageHeading } from '~ui/PageHeading'
-// import { cx } from '~utils/cx'
-import { getNotionData } from '~utils/getNotionData'
 // import { log } from '~utils/log'
 
 const ROUTE_TYPE = 'kitchen-sink'
@@ -15,24 +12,30 @@ const ROUTE_TYPE = 'kitchen-sink'
 
 export async function generateMetadata() {
   const catchAll = [ROUTE_TYPE]
-  const { metadata } = await getNotionData({
-    catchAll,
-  })
-  // log(`${DEBUG_KEY} metadata`, metadata)
+  const data = await getDataCms(catchAll)
+  const { metadata } = getMetadata({ catchAll, data })
   return metadata
+}
+
+export const preload = () => {
+  const catchAll = [ROUTE_TYPE]
+  void getDataCms(catchAll)
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default async function Page({ preview = false, ...props }) {
   const catchAll = [ROUTE_TYPE]
-  const { data, pathVariables } = await getNotionData({
-    catchAll,
-  })
+  const data = await getDataCms(catchAll)
   const { content, images } = data
+  const { pathVariables } = getMetadata({ catchAll, data })
 
   return (
     <>
-      <Debug data={data} pathVariables={pathVariables} />
+      {/* @note(next) Debug does not cause: deopted into client-side rendering */}
+      {/* @todo(next) Debug could be Suspensed */}
+      <Suspense>
+        <Debug data={data} pathVariables={pathVariables} />
+      </Suspense>
       <PageHeading overline={`testing`} title={'Playground'} />
       <Suspense fallback={<p>Loading...</p>}>
         {!!content && <ContentNodes content={content} images={images} />}

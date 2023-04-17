@@ -64,24 +64,15 @@ function NavigationBar() {
           'bottom-8 ',
           'z-10',
           'flex items-center justify-between',
-          // 'bg-white/40 hover:bg-white',
-          // 'dark:bg-black/40 hover:bg-black',
           'transition-all duration-300',
           'backdrop-blur-xl',
           'rounded-full',
           'shadow-lg',
-          'mix-blend-difference',
+          'bg-gradient-to-tl ',
           'border-[1px]',
-          'hover:mix-blend-normal',
-          // // 'bg-white/95 dark:bg-black/95',
-          'hover:from-radix-mauve1 hover:to-radix-mauve3 bg-gradient-to-tl',
-          // 'hover:bg-white dark:hover:bg-black',
-          // 'active:bg-white dark:active:hover:bg-black',
-          // 'focus:bg-white dark:focus:hover:bg-black',
-          // 'hover:opacity-100 hover:mix-blend-normal',
-          // // 'border-zinc-50 text-zinc-50',
+          'md:mix-blend-difference md:hover:mix-blend-normal',
+          'md:hover:from-radix-mauve1 md:hover:to-radix-mauve3',
           'mauve-border-int text-radix-mauve11',
-          // // 'text-radix-mauve11',
           'group'
         )}
         id="navigation-bar"
@@ -97,7 +88,7 @@ function NavigationBar() {
         /> */}
         <ul
           className={cx(
-            'flex w-full list-none gap-x-1 py-0 px-1 md:px-4',
+            'flex w-full list-none gap-x-1 px-1 py-0 md:px-4',
             // 'text-black dark:text-red-500',
             'place-content-center items-center',
             ''
@@ -120,7 +111,7 @@ function NavigationBar() {
               //   'transition-opacity duration-300'
               // )}
               className={cx(
-                'relative py-0 px-2',
+                'relative px-2 py-0',
                 'font-mono text-sm tracking-wider',
                 'no-underline',
                 'transition-all duration-300'
@@ -146,7 +137,7 @@ function NavigationBar() {
                 <Anchor
                   href={`/${item}`}
                   className={cx(
-                    'relative py-0 px-2 ',
+                    'relative px-2 py-0 ',
                     'font-mono text-sm tracking-wider',
                     'no-underline',
                     'transition-all duration-300',
@@ -179,7 +170,7 @@ function NavigationBar() {
               //   'transition-opacity duration-300'
               // )}
               className={cx(
-                'relative py-0 px-2',
+                'relative px-2 py-0',
                 'h-24 font-mono text-lg leading-8 tracking-wider',
                 'no-underline',
                 'transition-all duration-300',
