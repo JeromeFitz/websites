@@ -1,9 +1,11 @@
 # folders
 .cache
+.lighthouseci
 .next
 .vercel
 coverage
 node_modules
+out
 zzz
 
 # public

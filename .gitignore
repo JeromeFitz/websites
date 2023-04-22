@@ -45,8 +45,10 @@ yarn-error.log*
 ## Custom
 .cache
 .idea
+.lighthouseci
 .tsbuildinfo
 build-info.json
+out
 robots.txt
 sitemap.xml
 sitemap-*.xml

@@ -35,6 +35,12 @@
     ],
     "strictNullChecks": true
   },
-  "include": ["src", "index.d.ts", "next-env.d.ts", "./.next/types/**/*.ts"],
+  "include": [
+    "./.next/types/**/*.ts",
+    ".next/types/**/*.ts",
+    "index.d.ts",
+    "next-env.d.ts",
+    "src"
+  ],
   "exclude": ["node_modules", "tests/*.test.ts"]
 }

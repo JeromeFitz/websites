@@ -80,7 +80,7 @@ module.exports = ({
     transpilePackages.push('@jeromefitz/design-system')
 
   /** @type {import('next').NextConfig} */
-  const nextConfig = {
+  let nextConfig = {
     amp: {
       canonicalBase: undefined,
     },
@@ -94,6 +94,7 @@ module.exports = ({
     // crossOrigin: 'same-origin',
     devIndicators: { buildActivity: true, buildActivityPosition: 'bottom-right' },
     distDir: './.next',
+    // distDir: './out',
     // env,
     eslint: {
       // @note(eslint) handled outside of next
@@ -198,6 +199,7 @@ module.exports = ({
     },
     optimizeFonts: true,
     output: undefined,
+    // output: 'export',
     // output: 'standalone',
     // outputFileTracing: false,
     pageExtensions: ['jsx', 'js', 'tsx', 'ts'],

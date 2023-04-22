@@ -104,6 +104,8 @@ importers:
         specifier: 5.0.4
         version: 5.0.4
 
+  packages/lighthouse-config: {}
+
   packages/next-config:
     devDependencies:
       '@jeromefitz/prettier-config':
@@ -568,6 +570,9 @@ importers:
         specifier: 4.3.7
         version: 4.3.7(immer@10.0.1)(react@18.2.0)
     devDependencies:
+      '@jeromefitz/lighthouse-config':
+        specifier: workspace:*
+        version: link:../../packages/lighthouse-config
       '@jeromefitz/next-config':
         specifier: workspace:*
         version: link:../../packages/next-config

@@ -5,6 +5,7 @@ coverage
 **/_next/**
 **/.cache/**
 **/.dist/**
+**/.lighthouseci/**
 **/.next/**
 **/.now/**
 **/.types/**

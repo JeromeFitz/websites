@@ -1,0 +1,56 @@
+# name: 'Test'
+name: '🧪  '
+description: 'Localized Test'
+author: 'JeromeFitz'
+
+inputs:
+  TURBO_TEAM:
+    description: 'Provide Team ID for Turbo'
+    required: true
+    type: string
+  TURBO_TOKEN:
+    description: 'Provide Token for Turbo'
+    required: true
+    type: string
+  WEBSITE:
+    description: 'Provide Website for Lighthouse'
+    required: true
+    type: string
+    default: 'jeromefitzgerald.com'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: '📄  Configure Pages'
+      id: pages
+      uses: actions/configure-pages@v3
+
+    - name: '🧪  Test: Build'
+      id: test
+      shell: bash
+      env:
+        TURBO_TEAM: ${{ inputs.TURBO_TEAM }}
+        TURBO_TOKEN: ${{ inputs.TURBO_TOKEN }}
+      run: |
+        pnpm turbo run build --filter="${{ inputs.WEBSITE }}" --cache-dir=".cache-turbo"
+
+    # - name: '🚚 Move output of website'
+    #   run: |
+    #     mkdir -p out
+    #     mv sites/${{ inputs.WEBSITE }}/out out${{ steps.pages.outputs.base_path }}
+    #     mv out sites/${{ inputs.WEBSITE }}/
+
+    - name: '💡 Run Lighthouse on: ${{ inputs.WEBSITE }}'
+      run: |
+        # cd sites/${{ inputs.WEBSITE }}
+        # lhci autorun --config=lighthouse.config.js
+        pnpm turbo run lhci --filter="${{ inputs.WEBSITE }}"
+      env:
+        LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+
+    # - name: '⬆️  Upload: ${{ inputs.WEBSITE }}'
+    #   uses: actions/upload-artifact@v3
+    #   with:
+    #     name: website
+    #     path: sites/${{ inputs.WEBSITE }}/out${{ steps.pages.outputs.base_path }}
+    #     retention-days: 1

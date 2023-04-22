@@ -3,6 +3,16 @@ name: '💽️  '
 description: 'Localized Init'
 author: 'JeromeFitz'
 
+inputs:
+  node-version:
+    description: 'Node version'
+    required: true
+    default: '18'
+  pnpm-version:
+    description: 'pnpm version'
+    required: true
+    default: '8'
+
 runs:
   using: 'composite'
   steps:
@@ -10,13 +20,19 @@ runs:
       id: pnpm-setup
       uses: pnpm/action-setup@v2.2.4
       with:
-        version: 7
+        version: ${{ inputs.pnpm-version }}
 
-    - name: '💽️  Node'
+    - name: '💽️  Node ${{ inputs.node-version }}'
       id: node-setup
       uses: actions/setup-node@v3
       with:
         # architecture: 'x64'
         cache-dependency-path: pnpm-lock.yaml
         cache: 'pnpm'
-        node-version: 18
+        node-version: ${{ inputs.node-version }}
+
+    # @todo(actions) may not need to install this _every_ time
+    - name: '💡  Lighthouse'
+      id: lighthouse-setup
+      shell: bash
+      run: pnpm add @lhci/cli -g
