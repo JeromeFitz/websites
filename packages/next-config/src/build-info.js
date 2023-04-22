@@ -11,13 +11,10 @@ const _pick = require('lodash/pick')
 const _size = require('lodash/size')
 const prettier = require('prettier')
 
-// const octokit = new Octokit({ auth: process.env.GH_TOKEN })
-const octokit = new Octokit({})
+!isCI && require('dotenv').config({ path: './.env' })
 
-// const buildInfoConfig = {
-//   owner: 'jeromefitz',
-//   repo: 'jeromefitzgerald.com',
-// }
+// const octokit = new Octokit({ auth: process.env.OCTOKIT_TOKEN })
+const octokit = new Octokit({})
 
 const branch =
   process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF ||

@@ -22,6 +22,9 @@
       "dependsOn": ["^//#format"],
       "cache": false
     },
+    "lhci": {
+      "cache": false
+    },
     "lint": {
       "dependsOn": ["^lint"],
       "inputs": ["src/**", "*.cjs", "*.js", "*.mjs", "package.json", "vercel.json"]
