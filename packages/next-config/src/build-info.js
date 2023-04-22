@@ -14,10 +14,10 @@ const prettier = require('prettier')
 // const octokit = new Octokit({ auth: process.env.GH_TOKEN })
 const octokit = new Octokit({})
 
-const config = {
-  owner: 'jeromefitz',
-  repo: 'jeromefitzgerald.com',
-}
+// const buildInfoConfig = {
+//   owner: 'jeromefitz',
+//   repo: 'jeromefitzgerald.com',
+// }
 
 const branch =
   process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF ||
@@ -35,10 +35,10 @@ function getBranch(branch) {
 /**
  * @todo(dynamic) owner/repo from package.json
  */
-async function setupBuildInfo() {
+async function setupBuildInfo({ buildInfoConfig, pathDirName }) {
   const releases = await octokit.request('GET /repos/{owner}/{repo}/releases', {
-    owner: config.owner,
-    repo: config.repo,
+    owner: buildInfoConfig.owner,
+    repo: buildInfoConfig.repo,
     page: 1,
     per_page: 20,
   })
@@ -79,7 +79,7 @@ async function setupBuildInfo() {
   /**
    * @todo(dynamic) determine path for multi-site
    */
-  const filePath = join(process.cwd(), './src/config/build-info.json')
+  const filePath = join(pathDirName, './src/config/build-info.json')
   const content = prettier.format(stringify(data), { parser: 'json' })
   await writeFile(filePath, content)
 

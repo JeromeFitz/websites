@@ -25,7 +25,7 @@ import {
 import { Tooltip } from '~ui/Tooltip'
 import { cx } from '~utils/cx'
 
-const { version } = buildInfo
+const { isBranchMain, prerelease, version } = buildInfo
 
 const URL_TYPE = {
   EXTERNAL: 'url.external',
@@ -132,9 +132,9 @@ function Footer() {
           'relative z-10 ',
           // 'dark:bg-zinc-100 dark:text-zinc-900',
           // 'bg-zinc-800 text-zinc-100',
-          'px-[6.4vw] pt-[72vw] pb-[8.2667vw]',
+          'px-[6.4vw] pb-[8.2667vw] pt-[72vw]',
           // 'mt-[0.26667vw] md:mt-[-.0694444444vw]',
-          'md:pt-[23.3056vw] md:pr-[2.2222vw] md:pb-[6.25vw] md:pl-[2.222vw]',
+          'md:pb-[6.25vw] md:pl-[2.222vw] md:pr-[2.2222vw] md:pt-[23.3056vw]',
           'rounded-b-3xl md:rounded-b-2xl',
           '',
           'text-radix-mauve12',
@@ -162,7 +162,7 @@ function Footer() {
               Please Note
             </span>
           </h1>
-          <p className="mx-0 mt-5 mb-7 text-lg">
+          <p className="mx-0 mb-7 mt-5 text-lg">
             This site is being actively developed. So though it is nowhere perfect,
             it is shippable, heh. So consider this eternally under construction I
             guess.
@@ -248,7 +248,7 @@ function Footer() {
               'items-center justify-center text-center'
             )}
           >
-            v{version}
+            v{isBranchMain ? version : `${version}-${prerelease}`}
             <Separator.Root
               asChild
               className={cx(
@@ -257,7 +257,7 @@ function Footer() {
                 'data-[orientation=horizontal]:w-full',
                 'data-[orientation=vertical]:h-full',
                 'data-[orientation=vertical]:w-[1px]',
-                'my-0 mx-3 min-h-[0.75rem]'
+                'mx-3 my-0 min-h-[0.75rem]'
               )}
               decorative
               orientation="vertical"
