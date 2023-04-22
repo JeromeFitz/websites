@@ -24,7 +24,6 @@ envRequired()
 const isLocal = process.env.DESIGN_SYSTEM__LINK === 'true' ? true : false
 const externals = [
   '@radix-ui/colors',
-  '@stitches/react',
   '@types/react',
   'cmdk',
   'react',
