@@ -277,7 +277,7 @@ const UpcomingToggle = ({ isOpen, toggle }) => {
           // 'flex flex-row  items-center',
           isOpen ? 'w-1/2 pr-3' : 'w-3/4 pr-5',
           isOpen && 'left-[1px]',
-          'top-[1px] right-0',
+          'right-0 top-[1px]',
           '',
           'focus-visible:outline-radix-yellow5',
           'bg-radix-mauve3 text-radix-mauve12',

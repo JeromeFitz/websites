@@ -21,13 +21,11 @@
     "clean:install": "pnpm clean && rm -rf ./node_modules",
     "copy": "mkdir -p ./dist && ./scripts/copy.sh",
     "dev": "tsup-node --watch",
-    "format:lint": "pnpm lint:eslint --fix && pnpm format:prettier --write",
-    "format:prettier": "prettier \"./src/**/*.{cjs,js,jsx,mjs,ts,tsx,json,md,mdx,css,html,yml,yaml,scss}\" --ignore-unknown --loglevel warn",
-    "lint": "pnpm format:prettier --check && pnpm lint:eslint && pnpm lint:typescript",
+    "format:lint": "pnpm lint:eslint --fix",
+    "lint": "pnpm lint:eslint && pnpm lint:typescript",
     "lint:eslint": "eslint ./src --ext cjs,js,jsx,mjs,ts,tsx --max-warnings=0",
     "lint:typescript": "tsc --noEmit --declaration",
-    "semantic-release": "echo semantic-release",
-    "test": "echo # jest"
+    "semantic-release": "echo semantic-release"
   },
   "dependencies": {
     "@jeromefitz/design-system": "4.2.0",

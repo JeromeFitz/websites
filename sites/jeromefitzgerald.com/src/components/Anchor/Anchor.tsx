@@ -35,7 +35,6 @@ function Anchor({
   style,
   children,
   className,
-   
   ...props
 }: React.ComponentProps<'a'>) {
   const startChange: any = useContext(LinkRouterChangeContext)

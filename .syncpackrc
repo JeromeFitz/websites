@@ -1,10 +1,12 @@
 {
   "dependencyTypes": [
     "dev",
-    "prod",
     "overrides",
+    "peer",
     "pnpmOverrides",
-    "resolutions"
+    "prod",
+    "resolutions",
+    "workspace"
   ],
   "filter": ".",
   "indent": "  ",
@@ -12,6 +14,7 @@
     {
       "range": "",
       "dependencyTypes": [
+        "dev",
         "prod",
         "resolutions",
         "overrides",
@@ -28,7 +31,6 @@
     {
       "range": "^",
       "dependencyTypes": [
-        "dev",
         "peer"
       ],
       "dependencies": [
@@ -39,6 +41,8 @@
       ]
     }
   ],
-  "source": [],
+  "source": [
+    "./pnpm-workspace.yaml"
+  ],
   "versionGroups": []
 }

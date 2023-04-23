@@ -33,7 +33,6 @@
     "start:isr": "next start -H localhost",
     "storybook:build": "storybook build",
     "storybook:dev": "storybook dev --quiet --port 6002",
-    "test": "echo # jest",
     "test:e2e": "playwright test",
     "test:unit": "jest --ci --coverage",
     "test:watch": "jest --watch",

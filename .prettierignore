@@ -4,6 +4,7 @@ coverage
 .yarn
 **/_next/**
 **/.cache/**
+**/.cache-turbo/**
 **/.dist/**
 **/.lighthouseci/**
 **/.next/**
@@ -41,3 +42,4 @@ todo/**
 package-lock.json
 pnpm-lock.yaml
 yarn.lock
+.pnpm-store
