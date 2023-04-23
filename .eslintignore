@@ -4,6 +4,8 @@
 .next
 .vercel
 coverage
+e2e-report
+e2e-results
 node_modules
 out
 storybook-static

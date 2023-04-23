@@ -34,6 +34,7 @@
     "storybook:build": "storybook build",
     "storybook:dev": "storybook dev --quiet --port 6002",
     "test": "echo # jest",
+    "test:e2e": "playwright test",
     "unused": "pnpm next-unused"
   },
   "dependencies": {
@@ -140,6 +141,7 @@
   "devDependencies": {
     "@jeromefitz/lighthouse-config": "workspace:*",
     "@jeromefitz/next-config": "workspace:*",
+    "@jeromefitz/playwright-config": "workspace:*",
     "@jeromefitz/shared": "workspace:*",
     "@jeromefitz/storybook-config": "workspace:*",
     "@jeromefitz/tailwind-config": "workspace:*",

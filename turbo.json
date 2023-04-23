@@ -49,6 +49,10 @@
       "outputs": ["coverage/**"],
       "dependsOn": ["lint"],
       "inputs": ["src/**", "*.cjs", "*.js", "*.mjs", "package.json", "vercel.json"]
+    },
+    "test:e2e": {
+      "cache": false,
+      "dependsOn": ["^build"]
     }
   }
 }
