@@ -12,9 +12,13 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
+const values = {
+  button: { name: 'GOODIE MOB arsenal 0123456789' },
+}
+
 export const Default: Story = {
   args: {
-    children: 'GOODIE MOB arsenal 0123456789',
+    children: values.button.name,
   },
   argTypes: {
     onClick: {

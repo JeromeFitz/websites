@@ -48,6 +48,7 @@ yarn-error.log*
 .lighthouseci
 .tsbuildinfo
 build-info.json
+coverage
 e2e-report
 e2e-results
 out
