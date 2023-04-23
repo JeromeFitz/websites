@@ -2,6 +2,13 @@
 
 if [[ -d ./node_modules ]]; then rm -rf ./node_modules; fi
 
+if [[ -d ./packages/jest-config/node_modules ]]; then rm -rf ./packages/jest-config/node_modules; fi
+if [[ -d ./packages/lighthouse-config/node_modules ]]; then rm -rf ./packages/lighthouse-config/node_modules; fi
+if [[ -d ./packages/next-config/node_modules ]]; then rm -rf ./packages/next-config/node_modules; fi
+if [[ -d ./packages/playwright-config/node_modules ]]; then rm -rf ./packages/playwright-config/node_modules; fi
+if [[ -d ./packages/storybook-config/node_modules ]]; then rm -rf ./packages/storybook-config/node_modules; fi
+if [[ -d ./packages/tailwind-config/node_modules ]]; then rm -rf ./packages/tailwind-config/node_modules; fi
+
 if [[ -d ./packages/shared/dist ]]; then rm -rf ./packages/shared/dist; fi
 if [[ -d ./packages/shared/node_modules ]]; then rm -rf ./packages/shared/node_modules; fi
 

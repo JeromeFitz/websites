@@ -17,8 +17,8 @@
   ],
   "scripts": {
     "build": "tsup-node",
-    "clean": "rm -rf .turbo && rm -rf dist",
-    "clean:install": "pnpm clean && rm -rf node_modules",
+    "clean": "rm -rf ./.turbo ./dist",
+    "clean:install": "pnpm clean && rm -rf ./node_modules",
     "copy": "mkdir -p ./dist && ./scripts/copy.sh",
     "dev": "tsup-node --watch",
     "format:lint": "pnpm lint:eslint --fix && pnpm format:prettier --write",

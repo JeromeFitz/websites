@@ -37,6 +37,6 @@
     "skipLibCheck": true,
     "strictNullChecks": true
   },
-  "include": ["e2e", "src", "index.d.ts", "next-env.d.ts"],
+  "include": ["src", "index.d.ts", "next-env.d.ts"],
   "exclude": ["node_modules", "tests/*.test.ts"]
 }

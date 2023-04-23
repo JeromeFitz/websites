@@ -2,6 +2,7 @@
 .cache
 .lighthouseci
 .next
+.swc
 .vercel
 coverage
 e2e-report

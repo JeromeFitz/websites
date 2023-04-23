@@ -6,7 +6,7 @@ const config = ({ basePath = '', port, website = 'jeromefitzgerald.com' }) => {
   /** @type {import('@playwright/test').PlaywrightTestConfig} */
   const config = {
     testMatch: '**/*.e2e.{js,jsx,ts,tsx}',
-    testDir: 'e2e',
+    testDir: 'src/e2e',
     outputDir: 'e2e-results',
     retries: 2,
 
