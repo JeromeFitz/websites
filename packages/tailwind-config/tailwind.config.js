@@ -4,6 +4,8 @@ const theme = require('tailwindcss/defaultTheme')
 const flattenColorPalette =
   require('tailwindcss/lib/util/flattenColorPalette').default
 
+const hocusPlugin = require('./hocus.plugin')
+
 // function px(pixels) {
 //   return `${pixels / 16}rem`
 // }
@@ -229,6 +231,7 @@ const config = ({}) => ({
     },
   },
   plugins: [
+    hocusPlugin,
     require('tailwindcss-animate'),
     require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/typography'),
@@ -283,20 +286,22 @@ const config = ({}) => ({
         'even',
         'first',
         'group-hover',
+        'group-hocus',
+        'hocus',
         'hover',
         'last',
         'odd',
       ],
       backgroundOpacity: ['dark'],
       borderColor: ['dark'],
-      borderWidth: ['group-hover', 'first', 'last'],
+      borderWidth: ['group-hover', 'group-hocus', 'first', 'last'],
       boxShadow: ['dark'],
-      opacity: ['group-hover'],
-      pointerEvents: ['hover', 'focus'],
+      opacity: ['group-hover', 'group-hocus'],
+      pointerEvents: ['hover', 'focus', 'hocus'],
       ringColor: ['dark'],
-      scale: ['group-hover'],
-      transform: ['group-hover'],
-      translate: ['group-hover'],
+      scale: ['group-hover', 'group-hocus'],
+      transform: ['group-hover', 'group-hocus'],
+      translate: ['group-hover', 'group-hocus'],
     },
     typography: ['dark'],
   },

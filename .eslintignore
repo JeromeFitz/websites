@@ -6,6 +6,7 @@
 coverage
 node_modules
 out
+storybook-static
 zzz
 
 # public
