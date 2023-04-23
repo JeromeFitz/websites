@@ -77,7 +77,7 @@ function Music({ preview = false, ...props }) {
             Please Note
           </span>
         </h3>
-        <p className="my-4 mx-0 text-lg">Still working on this page.</p>
+        <p className="mx-0 my-4 text-lg">Still working on this page.</p>
       </div>
       <p className={cx('my-2 items-center text-xl')}>
         Please support artists by going to shows and purchasing music, especially

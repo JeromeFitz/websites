@@ -1,9 +1,16 @@
 # folders
 .cache
+.cache-turbo
+.lighthouseci
 .next
+.swc
 .vercel
 coverage
+e2e-report
+e2e-results
 node_modules
+out
+storybook-static
 zzz
 
 # public

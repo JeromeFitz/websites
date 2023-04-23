@@ -117,7 +117,7 @@ function Carousel2() {
         onScroll={handleScroll}
         className={cx(
           'cursor-grab active:cursor-grabbing',
-          'mx-auto flex h-96 list-none overflow-x-scroll py-20 px-0',
+          'mx-auto flex h-96 list-none overflow-x-scroll px-0 py-20',
           'flex-[0_0_600px]',
           ''
         )}

@@ -72,7 +72,7 @@ function Steps() {
               onClick={() => setStep(step > 4 ? step : step + 1)}
               className={`${
                 step > 4 ? 'pointer-events-none opacity-50' : ''
-              } bg-radix-blue5 hover:bg-radix-blue6 active:bg-radix-blue7 flex items-center justify-center rounded-full py-1.5 px-3.5 font-medium tracking-tight text-white`}
+              } bg-radix-blue5 hover:bg-radix-blue6 active:bg-radix-blue7 flex items-center justify-center rounded-full px-3.5 py-1.5 font-medium tracking-tight text-white`}
             >
               Continue
             </button>

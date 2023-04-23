@@ -1,7 +1,0 @@
-{
-  "compilerOptions": {
-    "baseUrl": "./",
-    "rootDir": "./"
-  },
-  "exclude": ["**/*.test.ts"]
-}

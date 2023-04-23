@@ -1,6 +1,6 @@
 // 'use client'
 
-import '~styles/globals.css'
+import '@jeromefitz/tailwind-config/styles/globals.css'
 // import '~styles/output.css'
 
 import localFont from 'next/font/local'
