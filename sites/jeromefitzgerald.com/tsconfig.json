@@ -38,6 +38,7 @@
   "include": [
     "./.next/types/**/*.ts",
     ".next/types/**/*.ts",
+    "e2e",
     "index.d.ts",
     "next-env.d.ts",
     "src"

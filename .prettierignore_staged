@@ -13,6 +13,8 @@ coverage
 **/.vercel*/**
 **/bundles/**
 **/dist/**
+**/e2e-report/**
+**/e2e-results/**
 **/out/**
 **/storybook-static/**
 

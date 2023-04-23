@@ -31,7 +31,12 @@ runs:
         cache: 'pnpm'
         node-version: ${{ inputs.node-version }}
 
-    # @todo(actions) may not need to install this _every_ time
+    # @todo(actions) may not need to install these _every_ time
+    - name: '🎭  Playwright'
+      id: playwright-setup
+      shell: bash
+      run: pnpm playwright install --with-deps
+
     - name: '💡  Lighthouse'
       id: lighthouse-setup
       shell: bash

@@ -28,6 +28,9 @@ importers:
       '@jeromefitz/tsconfig':
         specifier: 1.1.3
         version: 1.1.3
+      '@playwright/test':
+        specifier: 1.32.3
+        version: 1.32.3
       '@storybook/blocks':
         specifier: 7.0.6
         version: 7.0.6(react-dom@18.2.0)(react@18.2.0)
@@ -67,6 +70,9 @@ importers:
       dotenv:
         specifier: 16.0.3
         version: 16.0.3
+      eslint-plugin-playwright:
+        specifier: 0.12.0
+        version: 0.12.0
       eslint-plugin-storybook:
         specifier: 0.6.11
         version: 0.6.11(typescript@5.0.4)
@@ -226,6 +232,8 @@ importers:
       tailwind-merge:
         specifier: 1.12.0
         version: 1.12.0
+
+  packages/playwright-config: {}
 
   packages/shared:
     dependencies:
@@ -657,6 +665,9 @@ importers:
       '@jeromefitz/next-config':
         specifier: workspace:*
         version: link:../../packages/next-config
+      '@jeromefitz/playwright-config':
+        specifier: workspace:*
+        version: link:../../packages/playwright-config
       '@jeromefitz/shared':
         specifier: workspace:*
         version: link:../../packages/shared
@@ -3088,6 +3099,17 @@ packages:
       plaiceholder: 2.5.0(sharp@0.32.0)
       tailwindcss: 3.3.1(postcss@8.4.23)(ts-node@10.9.1)
     dev: true
+
+  /@playwright/test@1.32.3:
+    resolution: {integrity: sha512-BvWNvK0RfBriindxhLVabi8BRe3X0J9EVjKlcmhxjg4giWBD/xleLcg2dz7Tx0agu28rczjNIPQWznwzDwVsZQ==}
+    engines: {node: '>=14'}
+    hasBin: true
+    dependencies:
+      '@types/node': 18.15.13
+      playwright-core: 1.32.3
+    optionalDependencies:
+      fsevents: 2.3.2
+    dev: false
 
   /@pmmmwh/react-refresh-webpack-plugin@0.5.10(react-refresh@0.11.0)(webpack@5.80.0):
     resolution: {integrity: sha512-j0Ya0hCFZPd4x40qLzbhGsh9TMtdb+CJQiso+WxLOPNasohq9cc5SNUcwsZaRH6++Xh91Xkm/xHCkuIiIu0LUA==}
@@ -8566,6 +8588,16 @@ packages:
       semver: 6.3.0
     dev: false
 
+  /eslint-plugin-playwright@0.12.0:
+    resolution: {integrity: sha512-KXuzQjVzca5irMT/7rvzJKsVDGbQr43oQPc8i+SLEBqmfrTxlwMwRqfv9vtZqh4hpU0jmrnA/EOfwtls+5QC1w==}
+    peerDependencies:
+      eslint: '>=7'
+      eslint-plugin-jest: '>=24'
+    peerDependenciesMeta:
+      eslint-plugin-jest:
+        optional: true
+    dev: false
+
   /eslint-plugin-react-hooks@4.6.0(eslint@8.38.0):
     resolution: {integrity: sha512-oFc7Itz9Qxh2x4gNHStv3BqJq54ExXmfC+a1NjAta66IAN87Wu0R/QArgIS9qKzX3dXKPI9H5crl9QchNMY9+g==}
     engines: {node: '>=10'}
@@ -12486,6 +12518,12 @@ packages:
       node-cache: 5.1.2
       node-fetch: 2.6.7(encoding@0.1.13)
       sharp: 0.32.0
+
+  /playwright-core@1.32.3:
+    resolution: {integrity: sha512-SB+cdrnu74ZIn5Ogh/8278ngEh9NEEV0vR4sJFmK04h2iZpybfbqBY0bX6+BLYWVdV12JLLI+JEFtSnYgR+mWg==}
+    engines: {node: '>=14'}
+    hasBin: true
+    dev: false
 
   /pluralize@8.0.0:
     resolution: {integrity: sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==}

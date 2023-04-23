@@ -48,5 +48,10 @@ module.exports = {
         },
       },
     },
+    // ⚙️ e2e
+    {
+      extends: ['plugin:playwright/playwright-test'],
+      files: ['**/*.e2e.{js,jsx,ts,tsx}'],
+    },
   ],
 }
