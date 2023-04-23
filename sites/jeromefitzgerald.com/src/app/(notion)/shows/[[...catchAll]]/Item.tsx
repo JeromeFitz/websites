@@ -1,4 +1,5 @@
 'use client'
+import * as AspectRatio from '@radix-ui/react-aspect-ratio'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { useState } from 'react'
@@ -40,6 +41,7 @@ function Item({ item }) {
         'inline-block align-top',
         'left-0 top-0 h-64 w-full md:h-72',
         '!absolute'
+        // 'overflow-hidden'
       )}
     >
       <div className={cx('block max-w-[3584px]')}>
@@ -78,22 +80,32 @@ function Item({ item }) {
           'transition-all duration-500'
         )}
       />
-
-      <Image
-        {...image}
-        alt=""
-        placeholder="blur"
+      <div
         className={cx(
-          'h-full overflow-hidden',
           'inline-block align-top',
-          'left-0 top-0 w-full',
-          '!absolute rounded',
-          'group-hover:-translate-y-1.5 group-hover:scale-[1.01]',
-          'transition-all duration-500',
-          effect && 'animate-scaleOut',
-          ''
+          'left-0 top-0 h-64 w-full md:h-72',
+          '!absolute',
+          'overflow-hidden'
         )}
-      />
+      >
+        <AspectRatio.Root asChild ratio={image?.width / image?.height}>
+          <Image
+            {...image}
+            alt=""
+            placeholder="blur"
+            className={cx(
+              'h-full overflow-hidden',
+              'inline-block align-top',
+              'left-0 top-0 w-full',
+              '!absolute rounded',
+              'group-hover:-translate-y-1.5 group-hover:scale-[1.01]',
+              'transition-all duration-500',
+              effect && 'animate-scaleOut',
+              ''
+            )}
+          />
+        </AspectRatio.Root>
+      </div>
     </motion.div>
     // </div>
   )

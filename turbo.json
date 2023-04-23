@@ -4,13 +4,27 @@
   "pipeline": {
     "//#format": {
       "dependsOn": [],
-      "inputs": ["*.cjs", "*.js", "*.json", "*.md", "*.mjs", "*.ts"]
+      "inputs": [
+        "*.cjs",
+        "*.js",
+        "*.jsx",
+        "*.json",
+        "*.md",
+        "*.mjs",
+        "*.ts",
+        "*.tsx"
+      ]
     },
     "build": {
-      "outputs": [".cache/**", ".next/**"],
       "dependsOn": ["^build"],
-      "inputs": ["src/**", "*.cjs", "*.js", "*.mjs", "package.json", "vercel.json"],
-      "env": ["VERCEL_ENV"]
+      "inputs": ["src/**", "*.cjs", "*.js", "*.mjs", "tsconfig.json"],
+      "outputs": [".cache/**", ".next/**", "!.next/cache/**"]
+    },
+    "build#jeromefitzgerald.com": {
+      "dependsOn": ["^build"],
+      "env": ["VERCEL_ENV"],
+      "inputs": ["src/**", "*.cjs", "*.js", "*.mjs", "tsconfig.json", "vercel.json"],
+      "outputs": [".cache/**", ".next/**", "!.next/cache/**"]
     },
     "clean": {
       "cache": false
@@ -19,12 +33,17 @@
       "cache": false
     },
     "format": {
-      "dependsOn": ["^//#format"],
-      "cache": false
+      "cache": false,
+      "dependsOn": ["^//#format"]
+    },
+    "lhci": {
+      "dependsOn": ["^build"],
+      "inputs": ["src/**/*.ts", "src/**/*.tsx"],
+      "outputs": [".lighthouseci/**"]
     },
     "lint": {
       "dependsOn": ["^lint"],
-      "inputs": ["src/**", "*.cjs", "*.js", "*.mjs", "package.json", "vercel.json"]
+      "inputs": ["src/**", "*.cjs", "*.js", "*.mjs", "vercel.json"]
     },
     "semantic-release:mono": {
       "cache": false,
@@ -33,10 +52,23 @@
     "start": {
       "cache": false
     },
-    "test": {
-      "outputs": ["coverage/**"],
-      "dependsOn": ["lint"],
-      "inputs": ["src/**", "*.cjs", "*.js", "*.mjs", "package.json", "vercel.json"]
+    "storybook:dev": {
+      "cache": false,
+      "dependsOn": ["^build"],
+      "persistent": true
+    },
+    "storybook:build": {
+      "dependsOn": ["^build"],
+      "inputs": [".storybook/**", "src/**"],
+      "outputs": ["storybook-static/**"]
+    },
+    "test:e2e": {
+      "dependsOn": ["^build"],
+      "inputs": ["src/e2e/**"],
+      "outputs": ["e2e-report/**", "e2e-results/**"]
+    },
+    "test:unit": {
+      "dependsOn": ["^build"]
     }
   }
 }

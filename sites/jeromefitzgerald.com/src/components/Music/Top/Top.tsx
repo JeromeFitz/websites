@@ -680,13 +680,12 @@ const TopItem = ({ type }) => {
                       )}
                       {genres && (
                         <div
-                          role="listitem"
                           className={cx(
                             'my-2 flex flex-row content-center items-start justify-start gap-[0.5rem]'
                           )}
                         >
-                          <p className={cx('items-center text-sm')}>
-                            <Tag className={cx('mt-1')} />
+                          <p className={cx('items-center text-sm')} role="list">
+                            <Tag className={cx('mt-1')} role="listitem" />
                           </p>
                           <p className={cx('items-center text-sm')}>
                             {genres}

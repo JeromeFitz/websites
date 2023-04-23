@@ -101,20 +101,20 @@ function Header({ avatar, emoji, url }) {
   return (
     <div
       tw={cx(
-        'flex flex-col items-center justify-center w-full p-4 absolute top-0 left-0'
+        'absolute left-0 top-0 flex w-full flex-col items-center justify-center p-4'
       )}
     >
       <div
         tw={cx(
-          'flex text-center font-bold tracking-tight absolute top-4 items-center',
+          'absolute top-4 flex items-center text-center font-bold tracking-tight',
           'left-4'
         )}
       >
-        <span tw={cx('w-24 h-24')}>
+        <span tw={cx('h-24 w-24')}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={avatar}
-            tw={cx('w-24 h-24', 'border border-solid border-black rounded-full')}
+            tw={cx('h-24 w-24', 'rounded-full border border-solid border-black')}
           />
         </span>
         <span
@@ -127,7 +127,7 @@ function Header({ avatar, emoji, url }) {
       {url !== 'homepage' ? (
         <div
           tw={cx(
-            'flex text-center font-bold tracking-tight absolute top-4 items-center',
+            'absolute top-4 flex items-center text-center font-bold tracking-tight',
             'right-4'
           )}
         >
@@ -137,12 +137,12 @@ function Header({ avatar, emoji, url }) {
           >
             {url}
           </span>
-          <span tw={cx('w-24 h-24', '')}>
+          <span tw={cx('h-24 w-24', '')}>
             <span
               tw={cx(
-                'w-24 h-24',
-                'border border-solid border-black rounded-full',
-                'text-6xl text-center pl-4 pt-5'
+                'h-24 w-24',
+                'rounded-full border border-solid border-black',
+                'pl-4 pt-5 text-center text-6xl'
               )}
             >
               {emoji}
@@ -207,17 +207,17 @@ async function handler(req: NextRequest) {
           fontFamily: '"Inter"',
         }}
         tw={cx(
-          'flex flex-col items-center justify-center w-full h-full p-4 absolute top-0 left-0',
+          'absolute left-0 top-0 flex h-full w-full flex-col items-center justify-center p-4',
           'bg-white'
         )}
       >
         <Header avatar={avatar} emoji={type.emoji} url={type.name} />
         <Spacer />
-        <div tw={cx('flex flex-wrap flex-col justify-center items-center ')}>
+        <div tw={cx('flex flex-col flex-wrap items-center justify-center ')}>
           <div
             // style={{ fontSize: 56, fontWeight: 900 }}
             tw={cx(
-              'flex flex-wrap flex-col justify-center my-0 mx-4 py-4 px-6 text-center w-auto',
+              'mx-4 my-0 flex w-auto flex-col flex-wrap justify-center px-6 py-4 text-center',
               'tracking-tight',
               'text-6xl font-black'
             )}
@@ -227,7 +227,7 @@ async function handler(req: NextRequest) {
           <div
             // style={{ fontSize: 36, fontWeight: 700 }}
             tw={cx(
-              'flex flex-wrap justify-center my-0 mx-4 py-4 px-2 text-center w-auto',
+              'mx-4 my-0 flex w-auto flex-wrap justify-center px-2 py-4 text-center',
               'tracking-tight',
               'text-3xl font-bold'
             )}
@@ -237,7 +237,7 @@ async function handler(req: NextRequest) {
           <div
             // style={{ fontSize: 32, fontWeight: 500 }}
             tw={cx(
-              'flex flex-wrap flex-col justify-center my-0 mx-4 py-4 px-6 text-center w-auto',
+              'mx-4 my-0 flex w-auto flex-col flex-wrap justify-center px-6 py-4 text-center',
               'tracking-tight',
               'text-2xl font-normal'
             )}

@@ -228,7 +228,7 @@ function CommandMenu<T extends { label: string }>({
             }}
             className={cx(
               'z-[9999]',
-              'fixed top-[12%] left-1/2 -translate-x-1/2',
+              'fixed left-1/2 top-[12%] -translate-x-1/2',
               'w-11/12',
               'md:w-full md:max-w-xl',
               'rounded-lg shadow-lg',
@@ -239,7 +239,7 @@ function CommandMenu<T extends { label: string }>({
               ''
             )}
           >
-            <div className="relative mt-2 ml-px pl-1.5">
+            <div className="relative ml-px mt-2 pl-1.5">
               <Command.Input
                 autoFocus
                 placeholder={

@@ -87,7 +87,7 @@ function NowPlaying() {
           {title}
         </span>
       </h1>
-      <p className="mx-0 mt-5 mb-7 text-lg">
+      <p className="mx-0 mb-7 mt-5 text-lg">
         I listen to a lot of music. I do not think that makes me unique, however, I
         enjoy it all the same. If you’d like to see more of my listening habits
         please check out the{' '}
@@ -182,13 +182,12 @@ function NowPlaying() {
           <p className="mt-5 text-xs"></p>
           {genres && (
             <div
-              role="listitem"
               className={cx(
                 'my-2 flex flex-row content-center items-start justify-start gap-[0.5rem]'
               )}
             >
-              <p className={cx('items-center text-sm')}>
-                <Tag className={cx('mt-1')} />
+              <p className={cx('items-center text-sm')} role="list">
+                <Tag className={cx('mt-1')} role="listitem" />
               </p>
               <p className={cx('items-center text-sm')}>
                 {genres}

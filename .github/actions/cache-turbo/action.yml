@@ -10,21 +10,45 @@ inputs:
   TURBO_TOKEN:
     description: 'ID for Turbo'
     required: true
+  VERCEL_ENV:
+    description: 'Mock environment for Vercel / Turbo Cache'
+    required: true
+    type: string
+    default: 'preview'
 
 runs:
   using: 'composite'
   steps:
-    - name: '🔺️  Cache (turbo)'
-      id: cache-turbo
+    - name: '🔺️  Cache'
+      id: cache
       uses: actions/cache@v3
+      # - name: '🔺️  Cache (turbo)'
+      #   id: cache-turbo-restore
+      #   uses: actions/cache/restore@v3
       env:
         TURBO_TEAM: ${{ inputs.TURBO_TEAM }}
         TURBO_TOKEN: ${{ inputs.TURBO_TOKEN }}
+        VERCEL_ENV: ${{ inputs.VERCEL_ENV }}
       with:
-        path: .cache-turbo
+        path: |
+          ${{ github.workspace }}/.cache-turbo
         key: turbo-${{ github.job }}-${{ github.ref_name }}-${{ github.sha }}
         # order of preference => turbo will re-check
         restore-keys: |
           turbo-${{ github.job }}-${{ github.ref_name }}-
           turbo-${{ github.job }}-
           turbo-
+
+    # - name: '🔺️  Cache (next)'
+    #   id: cache-next-restore
+    #   uses: actions/cache/restore@v3
+    #   env:
+    #     TURBO_TEAM: ${{ inputs.TURBO_TEAM }}
+    #     TURBO_TOKEN: ${{ inputs.TURBO_TOKEN }}
+    #     VERCEL_ENV: ${{ inputs.VERCEL_ENV }}
+    #   with:
+    #     path: |
+    #       ${{ github.workspace }}/sites/jeromefitzgerald.com/.next/cache
+    #     key: ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+    #     restore-keys: |
+    #       ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-

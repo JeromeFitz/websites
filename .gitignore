@@ -44,12 +44,20 @@ yarn-error.log*
 
 ## Custom
 .cache
+.cache-turbo
 .idea
+.lighthouseci
+.swc
 .tsbuildinfo
 build-info.json
+coverage
+e2e-report
+e2e-results
+out
 robots.txt
 sitemap.xml
 sitemap-*.xml
+storybook-static
 tsconfig.tsbuildinfo
 tsconfig.*.tsbuildinfo
 .vscode/settings.json

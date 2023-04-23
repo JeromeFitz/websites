@@ -1,0 +1,97 @@
+# name: 'E2E'
+name: '🎭  '
+description: 'Localized E2E'
+author: 'JeromeFitz'
+
+inputs:
+  LHCI_GITHUB_APP_TOKEN:
+    description: 'Provide GitHub App Token for Lighthouse'
+    required: true
+    type: string
+  TURBO_TEAM:
+    description: 'Provide Team ID for Turbo'
+    required: true
+    type: string
+  TURBO_TOKEN:
+    description: 'Provide Token for Turbo'
+    required: true
+    type: string
+  VERCEL_ENV:
+    description: 'Mock environment for Vercel / Turbo Cache'
+    required: true
+    type: string
+    default: 'preview'
+  WEBSITE:
+    description: 'Provide Website for Lighthouse'
+    required: true
+    type: string
+    default: 'jeromefitzgerald.com'
+
+runs:
+  using: 'composite'
+  steps:
+    # @todo(gh-actions) Separate `main` from PR
+    - name: '🧪  Test: Build'
+      id: e2e-build
+      shell: bash
+      env:
+        TURBO_TEAM: ${{ inputs.TURBO_TEAM }}
+        TURBO_TOKEN: ${{ inputs.TURBO_TOKEN }}
+        VERCEL_ENV: ${{ inputs.VERCEL_ENV }}
+      run: |
+        pnpm turbo run build --filter="${{ inputs.WEBSITE }}" --cache-dir=".cache-turbo"
+
+    # - name: '🔺️  Cache (next)'
+    #   id: e2e-build-cache
+    #   uses: actions/cache@v3
+    #   env:
+    #     TURBO_TEAM: ${{ inputs.TURBO_TEAM }}
+    #     TURBO_TOKEN: ${{ inputs.TURBO_TOKEN }}
+    #   with:
+    #     path: |
+    #       ${{ github.workspace }}/sites/jeromefitzgerald.com/.next/cache
+    #     key: |
+    #       ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+    #     restore-keys: |
+    #       ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-
+
+    - name: '💡  Lighthouse: Install'
+      id: e2e-dependencies-lighthouse
+      shell: bash
+      run: pnpm add @lhci/cli -g
+
+    - name: '💡  Lighthouse: ${{ inputs.WEBSITE }}'
+      id: test-lighthouse
+      shell: bash
+      env:
+        LHCI_GITHUB_APP_TOKEN: ${{ inputs.LHCI_GITHUB_APP_TOKEN }}
+        TURBO_TEAM: ${{ inputs.TURBO_TEAM }}
+        TURBO_TOKEN: ${{ inputs.TURBO_TOKEN }}
+        VERCEL_ENV: ${{ inputs.VERCEL_ENV }}
+      run: |
+        pnpm turbo run lhci --filter="${{ inputs.WEBSITE }}" --cache-dir=".cache-turbo"
+
+    - name: '🎭  Playwright: Install'
+      id: e2e-dependencies-playwright
+      shell: bash
+      run: pnpm playwright install --with-deps
+
+    - name: '🎭  Playwright: ${{ inputs.WEBSITE }}'
+      id: e2e-test
+      shell: bash
+      env:
+        TURBO_TEAM: ${{ inputs.TURBO_TEAM }}
+        TURBO_TOKEN: ${{ inputs.TURBO_TOKEN }}
+        VERCEL_ENV: ${{ inputs.VERCEL_ENV }}
+      run: pnpm turbo run test:e2e --filter="${{ inputs.WEBSITE }}" --cache-dir=".cache-turbo"
+
+    # - name: '🎭  Playwright: Upload'
+    #   id: e2e-upload
+    #   uses: actions/upload-artifact@v3
+    #   if: ${{ always() }}
+    #   with:
+    #     name: e2e-reports
+    #     path: |
+    #       ${{ github.workspace }}/sites/${{ inputs.WEBSITE }}/e2e-report/
+    #       ${{ github.workspace }}/sites/${{ inputs.WEBSITE }}/e2e-results/
+    #     retention-days: 1

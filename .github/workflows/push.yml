@@ -4,14 +4,14 @@ on:
   push:
     branches:
       - main
-      # prerelease branches
-      - canary
-      - develop
-      - ci/**
-      - feature/**
-      - fix/**
-      - refactor/**
-      - release/**
+      # # prerelease branches
+      # - canary
+      # - develop
+      # - ci/**
+      # - feature/**
+      # - fix/**
+      # - refactor/**
+      # - release/**
 
 concurrency:
   group: push-${{ github.ref }}-1
@@ -20,9 +20,28 @@ concurrency:
 env:
   GH_BOT_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
   GH_DEPLOY_TOKEN: ${{ secrets.GH_DEPLOY_TOKEN }}
-  GH_TOKEN: ${{ secrets.GH_TOKEN }}
+  GH_TOKEN: ${{ secrets.GH_DEPLOY_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
+  LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+  NEXT_PUBLIC__FATHOM_CUSTOM_DOMAIN: ${{ secrets.NEXT_PUBLIC__FATHOM_CUSTOM_DOMAIN }}
+  NEXT_PUBLIC__FATHOM_SITE_ID: ${{ secrets.NEXT_PUBLIC__FATHOM_SITE_ID }}
+  NEXT_PUBLIC__SITE: ${{ vars.NEXT_PUBLIC__SITE }}
+  NEXT_TELEMETRY_DISABLED: ${{ vars.NEXT_TELEMETRY_DISABLED }}
+  NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
+  OCTOKIT_TOKEN: ${{ secrets.OCTOKIT_TOKEN }}
+  OG_API_KEY: ${{ secrets.OG_API_KEY }}
+  PREVIEW_TOKEN: ${{ secrets.PREVIEW_TOKEN }}
+  REDIS_URL: ${{ secrets.REDIS_URL }}
+  REVALIDATE_TOKEN: ${{ secrets.REVALIDATE_TOKEN }}
+  SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
+  SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
+  SPOTIFY_REFRESH_TOKEN: ${{ secrets.SPOTIFY_REFRESH_TOKEN }}
   TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
   TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+  UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN }}
+  UPSTASH_REDIS_REST_URL: ${{ secrets.UPSTASH_REDIS_REST_URL }}
+  VERCEL_ENV: ${{ vars.VERCEL_ENV }}
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
   VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
@@ -36,11 +55,31 @@ jobs:
     env:
       GH_BOT_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
       GH_DEPLOY_TOKEN: ${{ secrets.GH_DEPLOY_TOKEN }}
-      GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
+      GH_TOKEN: ${{ secrets.GH_DEPLOY_TOKEN }}
       GITHUB_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
+      LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      NEXT_PUBLIC__FATHOM_CUSTOM_DOMAIN: ${{ secrets.NEXT_PUBLIC__FATHOM_CUSTOM_DOMAIN }}
+      NEXT_PUBLIC__FATHOM_SITE_ID: ${{ secrets.NEXT_PUBLIC__FATHOM_SITE_ID }}
+      NEXT_PUBLIC__SITE: ${{ vars.NEXT_PUBLIC__SITE }}
+      NEXT_TELEMETRY_DISABLED: ${{ vars.NEXT_TELEMETRY_DISABLED }}
+      NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
+      OCTOKIT_TOKEN: ${{ secrets.OCTOKIT_TOKEN }}
+      OG_API_KEY: ${{ secrets.OG_API_KEY }}
+      PREVIEW_TOKEN: ${{ secrets.PREVIEW_TOKEN }}
+      REDIS_URL: ${{ secrets.REDIS_URL }}
+      REVALIDATE_TOKEN: ${{ secrets.REVALIDATE_TOKEN }}
+      SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
+      SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
+      SPOTIFY_REFRESH_TOKEN: ${{ secrets.SPOTIFY_REFRESH_TOKEN }}
       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN }}
+      UPSTASH_REDIS_REST_URL: ${{ secrets.UPSTASH_REDIS_REST_URL }}
+      VERCEL_ENV: ${{ vars.VERCEL_ENV }}
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
     steps:
       - name: '🐙️  Checkout'
         id: push-checkout
@@ -69,6 +108,24 @@ jobs:
         with:
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+
+      - name: '🧪  Test'
+        id: push-test
+        uses: JeromeFitz/websites/.github/actions/test@main
+        with:
+          TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+          TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+          WEBSITE: 'jeromefitzgerald.com'
+
+      - name: '🎭  E2E'
+        id: push-e2e
+        uses: JeromeFitz/websites/.github/actions/e2e@main
+        with:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+          TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+          TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+          VERCEL_ENV: ${{ vars.VERCEL_ENV }}
+          WEBSITE: 'jeromefitzgerald.com'
 
       - name: '🏷️  Release'
         id: push-release
