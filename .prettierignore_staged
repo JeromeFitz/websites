@@ -8,6 +8,7 @@ coverage
 **/.lighthouseci/**
 **/.next/**
 **/.now/**
+**/.swc/**
 **/.types/**
 **/.vercel/**
 **/.vercel*/**

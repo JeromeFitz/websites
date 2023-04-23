@@ -1,7 +1,6 @@
 {
   "extends": "./tsconfig.json",
   "include": [
-    "e2e",
     "src",
     "index.d.ts",
     "next-env.d.ts",

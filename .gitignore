@@ -46,6 +46,7 @@ yarn-error.log*
 .cache
 .idea
 .lighthouseci
+.swc
 .tsbuildinfo
 build-info.json
 coverage

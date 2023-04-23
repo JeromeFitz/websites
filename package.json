@@ -16,8 +16,6 @@
   },
   "scripts": {
     "clean:install": "turbo run clean && ./scripts/clean.sh",
-    "deduplicate": "npx pnpm-deduplicate",
-    "deduplicate:check": "npx pnpm-deduplicate --list",
     "format": "pnpm run format:prettier",
     "format:prettier": "pretty-quick",
     "lint:packages": "syncpack list-mismatches --config .syncpackrc",
