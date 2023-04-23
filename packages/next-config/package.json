@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "main": "./next.config.js",
+  "dependencies": {},
   "devDependencies": {
     "@jeromefitz/prettier-config": "1.1.6",
     "@next/bundle-analyzer": "13.3.1",

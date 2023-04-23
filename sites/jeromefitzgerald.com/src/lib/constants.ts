@@ -10,7 +10,7 @@ const HOST =
     ? `http://localhost:3000`
     : process.env.VERCEL_ENV === 'production'
     ? BASE_URL
-    : !!process.env.VERCEL_URL
+    : !!process.env.VERCE_URL
     ? `https://${process.env.VERCEL_URL}`
     : BASE_URL
 const HOST_API = `${HOST}/${API}`

@@ -2,6 +2,7 @@
   "name": "@jeromefitz/tailwind-config",
   "version": "0.0.0",
   "private": true,
+  "dependencies": {},
   "devDependencies": {
     "@plaiceholder/tailwindcss": "2.5.0",
     "@radix-ui/colors": "0.1.8",

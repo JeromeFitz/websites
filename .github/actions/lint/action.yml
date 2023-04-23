@@ -16,6 +16,17 @@ inputs:
 runs:
   using: 'composite'
   steps:
+    # @todo(gh-actions) Separate `main` from PR
+    - name: '🎨  Format'
+      id: format
+      shell: bash
+      env:
+        TURBO_TEAM: ${{ inputs.TURBO_TEAM }}
+        TURBO_TOKEN: ${{ inputs.TURBO_TOKEN }}
+      run: |
+        pnpm run format:prettier:check
+
+    # @todo(gh-actions) Separate `main` from PR
     - name: '🚨️  Lint'
       id: lint
       shell: bash
@@ -24,10 +35,3 @@ runs:
         TURBO_TOKEN: ${{ inputs.TURBO_TOKEN }}
       run: |
         pnpm turbo run lint --cache-dir=".cache-turbo"
-
-    # - name: '🧪️  Test'
-    #   id: test
-    #   shell: bash
-    #   # @note(ci) comment out right now as this requires `build`
-    #   run: |
-    #     echo # pnpm test --cache-dir=".cache-turbo"

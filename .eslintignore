@@ -1,5 +1,6 @@
 # folders
 .cache
+.cache-turbo
 .lighthouseci
 .next
 .swc

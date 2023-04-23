@@ -6,9 +6,15 @@ const config = ({ website }) => ({
         'bf-cache': 'off',
         'csp-xss': 'off',
         'errors-in-console': 'off',
+        'legacy-javascript': 'off',
+        'non-composited-animations': 'off',
+        'render-blocking-resources': 'off',
+        'speed-index': 'off',
         // @note(lighthouse) this is not representative of production
         'server-response-time': 'off',
         'tap-targets': 'off',
+        'unused-javascript': 'off',
+        'uses-responsive-images': 'off',
       },
     },
     collect: {

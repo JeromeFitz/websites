@@ -5,13 +5,13 @@ author: 'JeromeFitz'
 
 inputs:
   node-version:
-    description: 'Node version'
-    required: true
     default: '18'
-  pnpm-version:
-    description: 'pnpm version'
+    description: '🔢  Node version'
     required: true
+  pnpm-version:
     default: '8'
+    description: '🔢  pnpm version'
+    required: true
 
 runs:
   using: 'composite'
@@ -30,14 +30,3 @@ runs:
         cache-dependency-path: pnpm-lock.yaml
         cache: 'pnpm'
         node-version: ${{ inputs.node-version }}
-
-    # @todo(actions) may not need to install these _every_ time
-    - name: '🎭  Playwright'
-      id: playwright-setup
-      shell: bash
-      run: pnpm playwright install --with-deps
-
-    - name: '💡  Lighthouse'
-      id: lighthouse-setup
-      shell: bash
-      run: pnpm add @lhci/cli -g

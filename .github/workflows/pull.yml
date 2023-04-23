@@ -4,15 +4,15 @@ on:
   pull_request:
     branches:
       - main
-      # prerelease
-      - canary
-      - develop
+      # # prerelease
+      # - canary
+      # - develop
     types:
       - opened
       - synchronize
       - reopened
       - ready_for_review
-      - converted_to_draft
+      # - converted_to_draft
 
 concurrency:
   group: pull-${{ github.ref }}-1
@@ -22,8 +22,27 @@ env:
   GH_BOT_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
   GH_DEPLOY_TOKEN: ${{ secrets.GH_DEPLOY_TOKEN }}
   GH_TOKEN: ${{ secrets.GH_DEPLOY_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
+  LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+  NEXT_PUBLIC__FATHOM_CUSTOM_DOMAIN: ${{ secrets.NEXT_PUBLIC__FATHOM_CUSTOM_DOMAIN }}
+  NEXT_PUBLIC__FATHOM_SITE_ID: ${{ secrets.NEXT_PUBLIC__FATHOM_SITE_ID }}
+  NEXT_PUBLIC__SITE: ${{ vars.NEXT_PUBLIC__SITE }}
+  NEXT_TELEMETRY_DISABLED: ${{ vars.NEXT_TELEMETRY_DISABLED }}
+  NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
+  OCTOKIT_TOKEN: ${{ secrets.OCTOKIT_TOKEN }}
+  OG_API_KEY: ${{ secrets.OG_API_KEY }}
+  PREVIEW_TOKEN: ${{ secrets.PREVIEW_TOKEN }}
+  REDIS_URL: ${{ secrets.REDIS_URL }}
+  REVALIDATE_TOKEN: ${{ secrets.REVALIDATE_TOKEN }}
+  SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
+  SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
+  SPOTIFY_REFRESH_TOKEN: ${{ secrets.SPOTIFY_REFRESH_TOKEN }}
   TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
   TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+  UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN }}
+  UPSTASH_REDIS_REST_URL: ${{ secrets.UPSTASH_REDIS_REST_URL }}
+  VERCEL_ENV: ${{ vars.VERCEL_ENV }}
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
   VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
@@ -38,14 +57,31 @@ jobs:
       GH_BOT_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
       GH_DEPLOY_TOKEN: ${{ secrets.GH_DEPLOY_TOKEN }}
       GH_TOKEN: ${{ secrets.GH_DEPLOY_TOKEN }}
-      GITHUB_TOKEN: ${{ secrets.GH_DEPLOY_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
+      LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      NEXT_PUBLIC__FATHOM_CUSTOM_DOMAIN: ${{ secrets.NEXT_PUBLIC__FATHOM_CUSTOM_DOMAIN }}
+      NEXT_PUBLIC__FATHOM_SITE_ID: ${{ secrets.NEXT_PUBLIC__FATHOM_SITE_ID }}
+      NEXT_PUBLIC__SITE: ${{ vars.NEXT_PUBLIC__SITE }}
+      NEXT_TELEMETRY_DISABLED: ${{ vars.NEXT_TELEMETRY_DISABLED }}
+      NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
+      OCTOKIT_TOKEN: ${{ secrets.OCTOKIT_TOKEN }}
+      OG_API_KEY: ${{ secrets.OG_API_KEY }}
+      PREVIEW_TOKEN: ${{ secrets.PREVIEW_TOKEN }}
+      REDIS_URL: ${{ secrets.REDIS_URL }}
+      REVALIDATE_TOKEN: ${{ secrets.REVALIDATE_TOKEN }}
+      SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
+      SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
+      SPOTIFY_REFRESH_TOKEN: ${{ secrets.SPOTIFY_REFRESH_TOKEN }}
       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN }}
+      UPSTASH_REDIS_REST_URL: ${{ secrets.UPSTASH_REDIS_REST_URL }}
+      VERCEL_ENV: ${{ vars.VERCEL_ENV }}
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
       IS_ACTOR_VERIFIED: ${{ github.actor == 'jeromefitz' || github.actor == 'renovate[bot]' }}
-      IS_ACTOR_JEROMEFITZ: ${{ github.actor == 'jeromefitz' }}
-      IS_ACTOR_RENOVATE: ${{ github.actor == 'renovate[bot]' }}
-      IS_LABEL_PNPM: ${{ contains( github.event.pull_request.labels.*.name, '📦 pnpm' ) }}
     steps:
       - name: '🐙️  Checkout'
         id: pull-checkout
@@ -58,16 +94,6 @@ jobs:
         id: pull-init
         uses: JeromeFitz/websites/.github/actions/init@main
 
-      # - name: '🔒  pnpm'
-      #   id: pull-pnpm
-      #   uses: JeromeFitz/websites/.github/actions/pnpm@main
-      #   if: ${{ env.IS_ACTOR_RENOVATE == 'true' || env.IS_LABEL_PNPM == 'true' }}
-      #   with:
-      #     IS_ACTOR_VERIFIED: $${ env.IS_ACTOR_VERIFIED }}
-      #     IS_ACTOR_JEROMEFITZ: ${{ env.IS_ACTOR_JEROMEFITZ }}
-      #     IS_ACTOR_RENOVATE: ${{ env.IS_ACTOR_RENOVATE }}
-      #     IS_LABEL_PNPM: ${{ env.IS_LABEL_PNPM }}
-
       - name: '📦  Install'
         id: pull-install
         uses: JeromeFitz/websites/.github/actions/install@main
@@ -78,6 +104,7 @@ jobs:
         with:
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+          VERCEL_ENV: ${{ vars.VERCEL_ENV }}
 
       - name: '🚨️  Lint'
         id: pull-lint
@@ -86,11 +113,30 @@ jobs:
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
 
+      - name: '🧪  Test'
+        id: pull-test
+        uses: JeromeFitz/websites/.github/actions/test@main
+        with:
+          TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+          TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+          WEBSITE: 'jeromefitzgerald.com'
+
       # https://docs.github.com/en/actions/learn-github-actions/expressions
       - name: '📛  Commit Message'
         id: pull-commit-message
         run: |
           echo "message=$(git log --no-merges -1 --oneline)" >> $GITHUB_OUTPUT
+
+      - name: '🎭  E2E'
+        id: pull-e2e
+        if: ${{ contains(steps.pull-commit-message.outputs.message, '[b]') }}
+        uses: JeromeFitz/websites/.github/actions/e2e@main
+        with:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+          TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+          TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+          VERCEL_ENV: ${{ vars.VERCEL_ENV }}
+          WEBSITE: 'jeromefitzgerald.com'
 
       - name: '🛠️  Deploy (Config)'
         id: pull-deploy-config
@@ -101,23 +147,34 @@ jobs:
             core.setOutput('ref', context.payload.pull_request.head.ref)
             core.setOutput('repo', context.payload.pull_request.head.repo.full_name)
 
-      - name: '🐙️  Deploy (Checkout)'
-        id: pull-deploy-checkout
-        uses: actions/checkout@v3
-        if: ${{ (env.IS_ACTOR_VERIFIED == 'true') && contains(steps.pull-commit-message.outputs.message, '[b]') }}
-        with:
-          ref: ${{ steps.pull-deploy-config.outputs.ref }}
-          repository: ${{ steps.pull-deploy-config.outputs.repo }}
-          fetch-depth: 1
+      # @note(gh-actions)
+      # I believe we need to `save/cache@3` for `.turbo-cache`
+      #  before this step. For some reason I think it is getting
+      #  cleared out when we re-pull a Checkout
+      #
+      # Now issue here is without this re-pull of Checkout I believe
+      #  we do not pass Vercel the info it needs to determine if
+      #  it needs to run the full build again. We shall see.
+      #
+      #
+      #################################
+      # - name: '🐙️  Deploy (Checkout)'
+      #   id: pull-deploy-checkout
+      #   uses: actions/checkout@v3
+      #   if: ${{ (env.IS_ACTOR_VERIFIED == 'true') && contains(steps.pull-commit-message.outputs.message, '[b]') }}
+      #   with:
+      #     ref: ${{ steps.pull-deploy-config.outputs.ref }}
+      #     repository: ${{ steps.pull-deploy-config.outputs.repo }}
+      #     fetch-depth: 1
 
       - name: '🔺️  Deploy (Preview)'
         id: pull-deploy-preview
         if: ${{ (env.IS_ACTOR_VERIFIED == 'true') && contains(steps.pull-commit-message.outputs.message, '[b]') }}
         uses: JeromeFitz/websites/.github/actions/deploy@main
         with:
+          DEPLOY_PR_FROM_FORK: true
           GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
+          PRODUCTION: false
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-          PRODUCTION: false
-          DEPLOY_PR_FROM_FORK: true

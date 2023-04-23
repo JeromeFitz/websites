@@ -21,41 +21,7 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: '📄  Configure Pages'
-      id: test-pages
-      uses: actions/configure-pages@v3
-
-    - name: '🧪  Test: Build'
-      id: test-build
-      shell: bash
-      env:
-        TURBO_TEAM: ${{ inputs.TURBO_TEAM }}
-        TURBO_TOKEN: ${{ inputs.TURBO_TOKEN }}
-      run: |
-        pnpm turbo run build --filter="${{ inputs.WEBSITE }}" --cache-dir=".cache-turbo"
-
     - name: '🃏  Jest: unit'
       id: test-jest
-      run: pnpm turbo run test:unit --filter="${{ inputs.WEBSITE }}"
-
-    - name: '💡  Run Lighthouse on: ${{ inputs.WEBSITE }}'
-      id: test-lighthouse
-      run: |
-        pnpm turbo run lhci --filter="${{ inputs.WEBSITE }}"
-      env:
-        LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
-
-    - name: '🎭  Playwright: e2e'
-      id: test-e2e
-      run: pnpm turbo run test:e2e --filter="${{ inputs.WEBSITE }}"
-
-    - name: '🎭  Playwright: e2e upload'
-      id: test-e2e-upload
-      uses: actions/upload-artifact@v3
-      if: ${{ always() }}
-      with:
-        name: e2e-reports
-        path: |
-          sites/${{ inputs.WEBSITE }}/e2e-report/
-          sites/${{ inputs.WEBSITE }}/e2e-results/
-        retention-days: 3
+      shell: bash
+      run: pnpm turbo run test:unit --filter="${{ inputs.WEBSITE }}" --cache-dir=".cache-turbo"
