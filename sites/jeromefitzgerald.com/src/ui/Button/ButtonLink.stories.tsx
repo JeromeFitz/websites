@@ -12,10 +12,15 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
+const values = {
+  href: 'https://jeromefitzgerald.com',
+  link: { name: 'GOODIE MOB arsenal 0123456789' },
+}
+
 export const Default: Story = {
   args: {
-    children: 'GOODIE MOB arsenal 0123456789',
-    href: 'https://jeromefitzgerald.com/',
+    children: values.link.name,
+    href: values.href,
     target: '_blank',
   },
 }

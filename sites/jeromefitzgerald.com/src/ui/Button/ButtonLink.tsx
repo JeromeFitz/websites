@@ -18,7 +18,7 @@ const ButtonLinkComponent: ForwardRefRenderFunction<
 > = (props, ref) => {
   const { className, variant = 'default', ...rest } = props
   const finalClassName = cx(commonStyles, variantStyles[variant], className)
-  return <Link className={finalClassName} ref={ref} {...rest} />
+  return <Link className={finalClassName} ref={ref} role="link" {...rest} />
 }
 
 export const ButtonLink = forwardRef(ButtonLinkComponent)

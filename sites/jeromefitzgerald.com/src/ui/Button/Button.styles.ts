@@ -5,8 +5,8 @@ import { cx } from '~utils/cx'
 import type { Variant } from './Button.types'
 
 export const commonStyles = cx(
-  'group inline-flex items-center justify-center rounded-md px-4 py-2 font-semibold transition-all duration-500',
-  // 'text-3xl',
+  'group inline-flex items-center justify-center rounded-md px-4 py-2 font-semibold',
+  'transition-all duration-500',
   ''
 )
 

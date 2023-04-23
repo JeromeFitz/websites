@@ -1,1 +1,1 @@
-export type Variant = 'primary' | 'default' | 'text'
+export type Variant = 'default' | 'primary' | 'text'

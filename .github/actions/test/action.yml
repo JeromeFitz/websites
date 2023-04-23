@@ -34,6 +34,10 @@ runs:
       run: |
         pnpm turbo run build --filter="${{ inputs.WEBSITE }}" --cache-dir=".cache-turbo"
 
+    - name: '🃏  Jest: unit'
+      id: test-jest
+      run: pnpm turbo run test:unit --filter="${{ inputs.WEBSITE }}"
+
     - name: '💡  Run Lighthouse on: ${{ inputs.WEBSITE }}'
       id: test-lighthouse
       run: |

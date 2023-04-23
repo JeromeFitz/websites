@@ -26,6 +26,7 @@ module.exports = {
     '@jeromefitz/eslint-config/react.cjs',
   ],
   ignorePatterns: ['next-env.d.ts'],
+  plugins: ['testing-library'],
   root: true,
   reportUnusedDisableDirectives: true,
   overrides: [
@@ -52,6 +53,15 @@ module.exports = {
     {
       extends: ['plugin:playwright/playwright-test'],
       files: ['**/*.e2e.{js,jsx,ts,tsx}'],
+    },
+    // ⚙️ jest
+    {
+      extends: [
+        // '@jeromefitz/eslint-config/react.cjs',
+        'plugin:testing-library/react',
+        'plugin:jest-dom/recommended',
+      ],
+      files: ['**/*.{spec,test}.{js,jsx,ts,tsx}'],
     },
   ],
 }

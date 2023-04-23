@@ -35,6 +35,8 @@
     "storybook:dev": "storybook dev --quiet --port 6002",
     "test": "echo # jest",
     "test:e2e": "playwright test",
+    "test:unit": "jest --ci --coverage",
+    "test:watch": "jest --watch",
     "unused": "pnpm next-unused"
   },
   "dependencies": {
@@ -139,6 +141,7 @@
     "zustand": "4.3.7"
   },
   "devDependencies": {
+    "@jeromefitz/jest-config": "workspace:*",
     "@jeromefitz/lighthouse-config": "workspace:*",
     "@jeromefitz/next-config": "workspace:*",
     "@jeromefitz/playwright-config": "workspace:*",
