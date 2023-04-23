@@ -36,6 +36,15 @@
     "start": {
       "cache": false
     },
+    "storybook:dev": {
+      "cache": false,
+      "dependsOn": ["^build"],
+      "persistent": true
+    },
+    "storybook:build": {
+      "dependsOn": ["^build"],
+      "outputs": ["storybook-static/**"]
+    },
     "test": {
       "outputs": ["coverage/**"],
       "dependsOn": ["lint"],

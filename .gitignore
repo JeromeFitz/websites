@@ -52,6 +52,7 @@ out
 robots.txt
 sitemap.xml
 sitemap-*.xml
+storybook-static
 tsconfig.tsbuildinfo
 tsconfig.*.tsbuildinfo
 .vscode/settings.json
