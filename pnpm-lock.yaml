@@ -423,8 +423,8 @@ importers:
         specifier: 2.2.2
         version: 2.2.2(lodash@4.17.21)
       '@mantine/hooks':
-        specifier: 6.0.8
-        version: 6.0.8(react@18.2.0)
+        specifier: 6.0.9
+        version: 6.0.9(react@18.2.0)
       '@radix-ui/primitive':
         specifier: 1.0.0
         version: 1.0.0
@@ -4071,8 +4071,8 @@ packages:
     resolution: {integrity: sha512-dfLbk+PwWvFzSxwk3n5ySL0hfBog779o8h68wK/7/APo/7cgyWp5jcXockbxdk5kFRkbeXWm4Fbi9FrdN381sA==}
     dev: true
 
-  /@mantine/hooks@6.0.8(react@18.2.0):
-    resolution: {integrity: sha512-9N4/v1Pt9EWY22MkyZfdMvoQuvLGKui7RqsS29b23Gz1xXR/DrkIAblvLWWu/xE/xYhIpdYfufpC1mF8Y3RfNg==}
+  /@mantine/hooks@6.0.9(react@18.2.0):
+    resolution: {integrity: sha512-01FvXnXed0Hni4WvmtTs0HMulyd7sibEG52uS+oy4ziYumKb8eMMTnvs4Ov7meKAvtA9/pmW+Yif1pm2GB4bnw==}
     peerDependencies:
       react: '>=16.8.0'
     dependencies:
