@@ -418,7 +418,7 @@ importers:
         version: 4.0.5(@jeromefitz/utils@2.2.2)(lodash@4.17.21)
       '@jeromefitz/spotify':
         specifier: 3.0.3
-        version: 3.0.3(@jeromefitz/utils@2.2.2)(lodash@4.17.21)(sharp@0.32.0)
+        version: 3.0.3(@jeromefitz/utils@2.2.2)(lodash@4.17.21)(sharp@0.32.1)
       '@jeromefitz/utils':
         specifier: 2.2.2
         version: 2.2.2(lodash@4.17.21)
@@ -649,7 +649,7 @@ importers:
         version: 0.2.1(next@13.3.1)(react-dom@18.2.0)(react@18.2.0)
       plaiceholder:
         specifier: 2.5.0
-        version: 2.5.0(sharp@0.32.0)
+        version: 2.5.0(sharp@0.32.1)
       pluralize:
         specifier: 8.0.0
         version: 8.0.0
@@ -678,8 +678,8 @@ importers:
         specifier: 0.0.1
         version: 0.0.1
       sharp:
-        specifier: 0.32.0
-        version: 0.32.0
+        specifier: 0.32.1
+        version: 0.32.1
       smoothscroll-polyfill:
         specifier: 0.4.4
         version: 0.4.4
@@ -3768,7 +3768,7 @@ packages:
       - supports-color
     dev: false
 
-  /@jeromefitz/spotify@3.0.3(@jeromefitz/utils@2.2.2)(lodash@4.17.21)(sharp@0.32.0):
+  /@jeromefitz/spotify@3.0.3(@jeromefitz/utils@2.2.2)(lodash@4.17.21)(sharp@0.32.1):
     resolution: {integrity: sha512-opBCShWNHipEK7GbEVpX/5WK0ha7TM7c1VYzPmlOKnWJ62g7fCTnDnEc9X76ksGQeEesVyGAvPriUMP3PcXFgg==}
     engines: {node: '>=16'}
     peerDependencies:
@@ -3780,8 +3780,8 @@ packages:
       github-slugger: 2.0.0
       isomorphic-unfetch: 4.0.2
       lodash: 4.17.21
-      plaiceholder: 2.5.0(sharp@0.32.0)
-      sharp: 0.32.0
+      plaiceholder: 2.5.0(sharp@0.32.1)
+      sharp: 0.32.1
     dev: false
 
   /@jeromefitz/tsconfig@1.1.3:
@@ -13872,8 +13872,8 @@ packages:
     resolution: {integrity: sha512-AGK2yQKIjRuqnc6VkX2Xj5d+QW8xZ87pa1UK6yA6ouUyuxfHuMP6umE5QK7UmTeOAymo+Zx1Fxiuw9rVx8taHQ==}
     dev: true
 
-  /node-addon-api@6.0.0:
-    resolution: {integrity: sha512-GyHvgPvUXBvAkXa0YvYnhilSB1A+FRYMpIVggKzPZqdaZfevZOuzfWzyvgzOwRLHBeo/MMswmJFsrNF4Nw1pmA==}
+  /node-addon-api@6.1.0:
+    resolution: {integrity: sha512-+eawOlIgy680F0kBzPUNFhMZGtJ1YmqM6l4+Crf4IkImjYrO/mqPwRMh352g23uIaQKFItcQ64I7KMaJxHgAVA==}
     dev: false
 
   /node-cache@5.1.2:
@@ -14620,7 +14620,7 @@ packages:
       node-cache: 5.1.2
       node-fetch: 2.6.7(encoding@0.1.13)
 
-  /plaiceholder@2.5.0(sharp@0.32.0):
+  /plaiceholder@2.5.0(sharp@0.32.1):
     resolution: {integrity: sha512-rygdNSWuYzs1GxxGjq2FiJdJB1AUaKhUHP/M7PIrSjAAGuoJC5ACiJx+cZZ+hDmMalxsxOMw0Sbbx3LF8jemGg==}
     peerDependencies:
       sharp: '>= 0.30.6'
@@ -14630,7 +14630,7 @@ packages:
       image-size: 1.0.2
       node-cache: 5.1.2
       node-fetch: 2.6.7(encoding@0.1.13)
-      sharp: 0.32.0
+      sharp: 0.32.1
     dev: false
 
   /playwright-core@1.32.3:
@@ -16588,14 +16588,14 @@ packages:
       kind-of: 6.0.3
     dev: true
 
-  /sharp@0.32.0:
-    resolution: {integrity: sha512-yLAypVcqj1toSAqRSwbs86nEzfyZVDYqjuUX8grhFpeij0DDNagKJXELS/auegDBRDg1XBtELdOGfo2X1cCpeA==}
+  /sharp@0.32.1:
+    resolution: {integrity: sha512-kQTFtj7ldpUqSe8kDxoGLZc1rnMFU0AO2pqbX6pLy3b7Oj8ivJIdoKNwxHVQG2HN6XpHPJqCSM2nsma2gOXvOg==}
     engines: {node: '>=14.15.0'}
     requiresBuild: true
     dependencies:
       color: 4.2.3
       detect-libc: 2.0.1
-      node-addon-api: 6.0.0
+      node-addon-api: 6.1.0
       prebuild-install: 7.1.1
       semver: 7.5.0
       simple-get: 4.0.1
