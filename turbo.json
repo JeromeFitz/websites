@@ -63,7 +63,7 @@
       "outputs": ["storybook-static/**"]
     },
     "test:e2e": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["^build", "jeromefitzgerald.com#build"],
       "inputs": ["src/e2e/**"],
       "outputs": ["e2e-report/**", "e2e-results/**"]
     },
