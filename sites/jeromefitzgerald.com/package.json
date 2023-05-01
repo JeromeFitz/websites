@@ -127,7 +127,7 @@
     "react-dom": "18.2.0",
     "react-swipeable": "7.0.0",
     "react-use": "17.4.0",
-    "react-wrap-balancer": "0.4.0",
+    "react-wrap-balancer": "0.4.1",
     "server-only": "0.0.1",
     "sharp": "0.32.0",
     "smoothscroll-polyfill": "0.4.4",
