@@ -272,8 +272,8 @@ importers:
         specifier: 4.2.0
         version: 4.2.0(@types/react@18.0.38)(lodash@4.17.21)(next@13.3.1)(react-dom@18.2.0)(react@18.2.0)(swr@2.1.5)
       '@tanem/react-nprogress':
-        specifier: 5.0.34
-        version: 5.0.34(react-dom@18.2.0)(react@18.2.0)
+        specifier: 5.0.36
+        version: 5.0.36(react-dom@18.2.0)(react@18.2.0)
       fathom-client:
         specifier: 3.5.0
         version: 3.5.0
@@ -588,8 +588,8 @@ importers:
         specifier: 1.0.2
         version: 1.0.2(react-dom@18.2.0)(react@18.2.0)
       '@tanem/react-nprogress':
-        specifier: 5.0.34
-        version: 5.0.34(react-dom@18.2.0)(react@18.2.0)
+        specifier: 5.0.36
+        version: 5.0.36(react-dom@18.2.0)(react@18.2.0)
       '@upstash/ratelimit':
         specifier: 0.4.2
         version: 0.4.2(@upstash/redis@1.20.4)
@@ -6755,8 +6755,8 @@ packages:
       tailwindcss: 3.3.1(postcss@8.4.23)(ts-node@10.9.1)
     dev: true
 
-  /@tanem/react-nprogress@5.0.34(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-9/95nQbymqk8Y9B1CS9Kcpf/wpZSh2LEiIe0enIZ+XBhnn9omGYJefyTsZSFxURl4RLU1gA5ZMM92kisuQxOMg==}
+  /@tanem/react-nprogress@5.0.36(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-BMn+1aBrD2POWT5lRpYvhwfwfuvXvIIoWF5xFZ4p1y1u3A07EoOTCe67Pa5ujcbOWKEVdUS8hlriaV9RMUpFsw==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0

@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@jeromefitz/design-system": "4.2.0",
-    "@tanem/react-nprogress": "5.0.34",
+    "@tanem/react-nprogress": "5.0.36",
     "fathom-client": "3.5.0",
     "lodash": "4.17.21",
     "next": "13.3.1",

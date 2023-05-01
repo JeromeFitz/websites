@@ -99,7 +99,7 @@
     "@radix-ui/react-use-rect": "1.0.0",
     "@radix-ui/react-use-size": "1.0.0",
     "@radix-ui/react-visually-hidden": "1.0.2",
-    "@tanem/react-nprogress": "5.0.34",
+    "@tanem/react-nprogress": "5.0.36",
     "@upstash/ratelimit": "0.4.2",
     "@upstash/redis": "1.20.4",
     "@vercel/analytics": "1.0.0",
