@@ -33,7 +33,7 @@
     "@jeromefitz/eslint-config--custom": "workspace:*",
     "@jeromefitz/lint-staged-config": "workspace:*",
     "@jeromefitz/prettier-config--custom": "workspace:*",
-    "@jeromefitz/release-notes-generator": "1.2.9",
+    "@jeromefitz/release-notes-generator": "1.2.10",
     "@jeromefitz/semantic": "9.2.6",
     "@jeromefitz/tsconfig": "1.1.3",
     "@manypkg/cli": "0.20.0",
