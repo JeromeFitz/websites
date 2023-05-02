@@ -61,7 +61,7 @@
     "@types/valid-url": "1.0.4",
     "@upstash/ratelimit": "0.4.2",
     "@upstash/redis": "1.20.4",
-    "date-fns": "2.29.3",
+    "date-fns": "2.30.0",
     "date-fns-tz": "2.0.0",
     "ioredis": "5.3.2",
     "next": "13.3.4",
