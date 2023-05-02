@@ -200,8 +200,8 @@ importers:
         specifier: 18.0.38
         version: 18.0.38
       '@types/react-dom':
-        specifier: 18.0.11
-        version: 18.0.11
+        specifier: 18.2.1
+        version: 18.2.1
       '@types/uuid':
         specifier: 9.0.1
         version: 9.0.1
@@ -306,8 +306,8 @@ importers:
         specifier: 18.0.38
         version: 18.0.38
       '@types/react-dom':
-        specifier: 18.0.11
-        version: 18.0.11
+        specifier: 18.2.1
+        version: 18.2.1
       next-notion:
         specifier: workspace:*
         version: link:../next-notion
@@ -745,8 +745,8 @@ importers:
         specifier: 18.0.38
         version: 18.0.38
       '@types/react-dom':
-        specifier: 18.0.11
-        version: 18.0.11
+        specifier: 18.2.1
+        version: 18.2.1
       '@types/title':
         specifier: 3.4.1
         version: 3.4.1
@@ -7274,6 +7274,12 @@ packages:
 
   /@types/react-dom@18.0.11:
     resolution: {integrity: sha512-O38bPbI2CWtgw/OoQoY+BRelw7uysmXbWvw3nLWO21H1HSh+GOlqPuXshJfjmpNlKiiSDG9cc1JZAaMmVdcTlw==}
+    dependencies:
+      '@types/react': 18.0.38
+    dev: true
+
+  /@types/react-dom@18.2.1:
+    resolution: {integrity: sha512-8QZEV9+Kwy7tXFmjJrp3XUKQSs9LTnE0KnoUb0YCguWBiNW0Yfb2iBMYZ08WPg35IR6P3Z0s00B15SwZnO26+w==}
     dependencies:
       '@types/react': 18.0.38
     dev: true
