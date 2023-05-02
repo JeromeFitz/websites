@@ -215,11 +215,11 @@ importers:
         specifier: 1.20.4
         version: 1.20.4
       date-fns:
-        specifier: 2.29.3
-        version: 2.29.3
+        specifier: 2.30.0
+        version: 2.30.0
       date-fns-tz:
         specifier: 2.0.0
-        version: 2.0.0(date-fns@2.29.3)
+        version: 2.0.0(date-fns@2.30.0)
       ioredis:
         specifier: 5.3.2
         version: 5.3.2
@@ -609,11 +609,11 @@ importers:
         specifier: 0.2.0
         version: 0.2.0(@types/react@18.0.38)(react-dom@18.2.0)(react@18.2.0)
       date-fns:
-        specifier: 2.29.3
-        version: 2.29.3
+        specifier: 2.30.0
+        version: 2.30.0
       date-fns-tz:
         specifier: 2.0.0
-        version: 2.0.0(date-fns@2.29.3)
+        version: 2.0.0(date-fns@2.30.0)
       fast-json-stable-stringify:
         specifier: 2.1.0
         version: 2.1.0
@@ -9098,7 +9098,7 @@ packages:
     hasBin: true
     dependencies:
       chalk: 4.1.2
-      date-fns: 2.29.3
+      date-fns: 2.30.0
       lodash: 4.17.21
       rxjs: 7.8.0
       shell-quote: 1.8.0
@@ -9523,9 +9523,22 @@ packages:
     dependencies:
       date-fns: 2.29.3
 
+  /date-fns-tz@2.0.0(date-fns@2.30.0):
+    resolution: {integrity: sha512-OAtcLdB9vxSXTWHdT8b398ARImVwQMyjfYGkKD2zaGpHseG2UPHbHjXELReErZFxWdSLph3c2zOaaTyHfOhERQ==}
+    peerDependencies:
+      date-fns: '>=2.0.0'
+    dependencies:
+      date-fns: 2.30.0
+
   /date-fns@2.29.3:
     resolution: {integrity: sha512-dDCnyH2WnnKusqvZZ6+jA1O51Ibt8ZMRNkDZdyAyK4YfbDwa/cEmuztzG5pk6hqlp9aSBPYcjOlktquahGwGeA==}
     engines: {node: '>=0.11'}
+
+  /date-fns@2.30.0:
+    resolution: {integrity: sha512-fnULvOpxnC5/Vg3NCiWelDsLiUc9bRwAPs/+LfTLNvetFCtCTN+yQz15C/fs4AwX1R9K5GLtLfn8QW+dWisaAw==}
+    engines: {node: '>=0.11'}
+    dependencies:
+      '@babel/runtime': 7.21.0
 
   /dateformat@3.0.3:
     resolution: {integrity: sha512-jyCETtSl3VMZMWeRo7iY1FL19ges1t55hMo5yaam4Jrsm5EPL89UQkoQRyiI+Yf4k8r2ZpdngkV8hr1lIdjb3Q==}

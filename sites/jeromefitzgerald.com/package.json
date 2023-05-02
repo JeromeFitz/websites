@@ -106,7 +106,7 @@
     "@vercel/og": "0.5.4",
     "clsx": "1.2.1",
     "cmdk": "0.2.0",
-    "date-fns": "2.29.3",
+    "date-fns": "2.30.0",
     "date-fns-tz": "2.0.0",
     "fast-json-stable-stringify": "2.1.0",
     "fathom-client": "3.5.0",
