@@ -4,7 +4,7 @@ import type { Variant } from './Button.types'
 
 export const commonStyles = cx(
   'group inline-flex transition-all duration-500',
-  '',
+  'm-1.5 p-2',
   ''
 )
 
@@ -16,7 +16,7 @@ export const variantStyles = {
     'text-3xl font-black'
   ),
   empty: cx(),
-  ghost: cx(),
+  ghost: cx('', '', ''),
   primary: cx(
     'bg-radix-blue3 text-radix-blue11',
     'hocus:bg-radix-blue4 hocus:text-radix-blue12',

@@ -1,3 +1,4 @@
+import { Button } from '@jeromefitz/ds/components/Button'
 import type { Page } from '@jeromefitz/notion/schema'
 import { ContentNodes } from 'next-notion/src/app'
 import { Suspense } from 'react'
@@ -37,6 +38,9 @@ export default async function Page({ preview = false, ...props }) {
         <Debug data={data} pathVariables={pathVariables} />
       </Suspense>
       <PageHeading overline={`testing`} title={'Playground'} />
+      <Button className="px-24" variant="text">
+        test
+      </Button>
       <Suspense fallback={<p>Loading...</p>}>
         {!!content && <ContentNodes content={content} images={images} />}
       </Suspense>

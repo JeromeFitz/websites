@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { cx } from '../../utils/cx'
 
 import { Button } from './Button'
+import { VARIANTS } from './Button.vars'
 
 const meta = {
   // eslint-disable-next-line storybook/no-title-property-in-meta
@@ -38,11 +39,32 @@ export const Empty: Story = {
   },
 }
 
+export const Custom: Story = {
+  ...Default,
+  args: {
+    ...Default.args,
+    className: cx(
+      'm-12 p-12',
+      'bg-radix-mauve12 text-radix-mauve1',
+      'hocus:bg-radix-mauve1 hocus:text-radix-mauve12'
+    ),
+    variant: 'empty',
+  },
+}
+
+export const Ghost: Story = {
+  ...Default,
+  args: {
+    ...Default.args,
+    variant: VARIANTS.GHOST,
+  },
+}
+
 export const Primary: Story = {
   ...Default,
   args: {
     ...Default.args,
-    variant: 'primary',
+    variant: VARIANTS.PRIMARY,
   },
 }
 
@@ -50,7 +72,7 @@ export const Secondary: Story = {
   ...Default,
   args: {
     ...Default.args,
-    variant: 'secondary',
+    variant: VARIANTS.SECONDARY,
   },
 }
 
@@ -58,7 +80,7 @@ export const Tertiary: Story = {
   ...Default,
   args: {
     ...Default.args,
-    variant: 'tertiary',
+    variant: VARIANTS.TERTIARY,
   },
 }
 
@@ -66,6 +88,6 @@ export const Text: Story = {
   ...Default,
   args: {
     ...Default.args,
-    variant: 'text',
+    variant: VARIANTS.TEXT,
   },
 }

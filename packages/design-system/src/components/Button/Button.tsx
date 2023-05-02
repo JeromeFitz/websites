@@ -18,10 +18,11 @@ const ButtonComponent: ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> 
 ) => {
   const { className, variant = VARIANTS.DEFAULT, ...rest } = props
   const finalClassName =
-    // variant === VARIANTS.EMPTY
-    //   ? cx(variantStyles[variant], className)
-    //   : cx(commonStyles, variantStyles[variant], className)
-    cx(variant !== VARIANTS.EMPTY && commonStyles, variantStyles[variant], className)
+    // // variant === VARIANTS.EMPTY
+    // //   ? cx(variantStyles[variant], className)
+    // //   : cx(commonStyles, variantStyles[variant], className)
+    // cx(variant !== VARIANTS.EMPTY && commonStyles, variantStyles[variant], className)
+    cx(commonStyles, variantStyles[variant], className)
 
   return <button className={finalClassName} ref={ref} {...rest} />
 }
