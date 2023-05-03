@@ -102,7 +102,7 @@
     "@tanem/react-nprogress": "5.0.36",
     "@upstash/ratelimit": "0.4.2",
     "@upstash/redis": "1.20.5",
-    "@vercel/analytics": "1.0.0",
+    "@vercel/analytics": "1.0.1",
     "@vercel/og": "0.5.4",
     "clsx": "1.2.1",
     "cmdk": "0.2.0",
