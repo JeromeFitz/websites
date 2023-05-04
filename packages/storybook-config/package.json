@@ -4,21 +4,21 @@
   "private": true,
   "devDependencies": {
     "@jeromefitz/tailwind-config": "workspace:*",
-    "@storybook/addon-a11y": "7.0.7",
-    "@storybook/addon-essentials": "7.0.7",
-    "@storybook/addon-interactions": "7.0.7",
-    "@storybook/addon-links": "7.0.7",
-    "@storybook/addon-styling": "1.0.5",
-    "@storybook/addon-viewport": "7.0.7",
-    "@storybook/blocks": "7.0.7",
+    "@storybook/addon-a11y": "7.0.8",
+    "@storybook/addon-essentials": "7.0.8",
+    "@storybook/addon-interactions": "7.0.8",
+    "@storybook/addon-links": "7.0.8",
+    "@storybook/addon-styling": "1.0.6",
+    "@storybook/addon-viewport": "7.0.8",
+    "@storybook/blocks": "7.0.8",
     "@storybook/jest": "0.1.0",
-    "@storybook/manager-api": "7.0.7",
-    "@storybook/nextjs": "7.0.7",
-    "@storybook/react": "7.0.7",
+    "@storybook/manager-api": "7.0.8",
+    "@storybook/nextjs": "7.0.8",
+    "@storybook/react": "7.0.8",
     "@storybook/testing-library": "0.1.0",
-    "@storybook/theming": "7.0.7",
+    "@storybook/theming": "7.0.8",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "storybook": "7.0.7"
+    "storybook": "7.0.8"
   }
 }
