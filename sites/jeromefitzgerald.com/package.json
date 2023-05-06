@@ -152,7 +152,7 @@
     "@types/ms": "0.7.31",
     "@types/pluralize": "0.0.29",
     "@types/ramda": "0.29.1",
-    "@types/react": "18.2.5",
+    "@types/react": "18.2.6",
     "@types/react-dom": "18.2.4",
     "@types/title": "3.4.1",
     "@types/uuid": "9.0.1",
