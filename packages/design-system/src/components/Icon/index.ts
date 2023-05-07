@@ -1,3 +1,8 @@
+export type { IconProps } from './Icon.types'
+export * from './Icon'
+/**
+ * @note(Icon) further breakdown/customizations
+ */
 import {
   ArrowLeftIcon,
   ArrowRightIcon,
@@ -67,7 +72,7 @@ import {
   TextAlignRightIcon,
   TicketIcon,
   TwitterLogoIcon,
-} from './Icon.list'
+} from './Icon'
 
 const Icon = () => {}
 

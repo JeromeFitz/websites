@@ -1,4 +1,15 @@
 'use client'
+import {
+  // EnvelopeOpenIcon as EnvelopeOpen,
+  ExternalLinkIcon as ExternalLink,
+  GitHubLogoIcon as GitHubLogo,
+  InfoCircledIcon as InfoCircled,
+  InstagramLogoIcon as InstagramLogo,
+  LinkedInLogoIcon as LinkedInLogo,
+  Pencil2Icon as PencilWithPaper,
+  SpotifyLogoIcon as SpotifyLogo,
+  TwitterLogoIcon as TwitterLogo,
+} from '@jeromefitz/ds/components/Icon'
 import * as Separator from '@radix-ui/react-separator'
 
 import { Anchor } from '~components/Anchor'
@@ -10,18 +21,7 @@ import { NowPlaying } from '~components/Music'
 // @ts-ignore
 import buildInfo from '~config/build-info.json'
 // @todo(next) https://github.com/vercel/next.js/issues/46756
-// import { Icon } from '~ui/Icon'
-import {
-  // EnvelopeOpenIcon as EnvelopeOpen,
-  ExternalLinkIcon as ExternalLink,
-  GitHubLogoIcon as GitHubLogo,
-  InfoCircledIcon as InfoCircled,
-  InstagramLogoIcon as InstagramLogo,
-  LinkedInLogoIcon as LinkedInLogo,
-  Pencil2Icon as PencilWithPaper,
-  SpotifyLogoIcon as SpotifyLogo,
-  TwitterLogoIcon as TwitterLogo,
-} from '~ui/Icon/Icon.list'
+// import { Icon } from '@jeromefitz/ds/components/Icon'
 import { Tooltip } from '~ui/Tooltip'
 import { cx } from '~utils/cx'
 

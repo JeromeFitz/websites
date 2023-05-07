@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
+import { cx } from '../../utils/cx'
+
 import { ButtonLink } from './ButtonLink'
 
 const meta = {
@@ -22,6 +24,7 @@ export const Default: Story = {
     children: values.link.name,
     href: values.href,
     target: '_blank',
+    className: cx(),
   },
 }
 

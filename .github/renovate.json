@@ -101,7 +101,6 @@
       "excludePackageNames": [],
       "groupName": "tailwind 🌬️ ",
       "groupSlug": "tailwind",
-      "matchPackageNames": ["radix-colors-for-tailwind"],
       "matchPackagePatterns": ["^@tailwind/", "tailwind*"]
     },
     {
