@@ -1,5 +1,11 @@
 'use client'
 import { useOnScreen, useSWRInfinitePages } from '@jeromefitz/design-system'
+import {
+  ArrowLeftIcon as ArrowLeft,
+  ArrowRightIcon as ArrowRight,
+  ExternalLinkIcon as ExternalLink,
+  TagIcon as Tag,
+} from '@jeromefitz/ds/components/Icon'
 import { useComposedRefs } from '@radix-ui/react-compose-refs'
 import _map from 'lodash/map'
 // import _size from 'lodash/size'
@@ -27,13 +33,7 @@ import {
   CarouselPrevious,
 } from '~ui/Carousel'
 // @todo(next) https://github.com/vercel/next.js/issues/46756
-// import { Icon } from '~ui/Icon'
-import {
-  ArrowLeftIcon as ArrowLeft,
-  ArrowRightIcon as ArrowRight,
-  ExternalLinkIcon as ExternalLink,
-  TagIcon as Tag,
-} from '~ui/Icon/Icon.list'
+// import { Icon } from '@jeromefitz/ds/components/Icon'
 import { cx } from '~utils/cx'
 // import { log } from '~utils/log'
 

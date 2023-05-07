@@ -72,7 +72,7 @@ import {
 } from '@radix-ui/react-icons'
 // import { Slot } from '@radix-ui/react-slot'
 
-import { cx } from '~utils/cx'
+import { cx } from '../../utils/cx'
 
 import { IconProps } from './Icon.types'
 
@@ -92,7 +92,7 @@ const ArrowLeftIcon = ({ label, ...props }: IconProps) => (
   <AccessibleIcon
     label={label || 'An icon representing an arrow that is pointing to the left.'}
   >
-    <ArrowLeftIconRadix {...props} />
+    <ArrowLeftIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -100,7 +100,7 @@ const ArrowRightIcon = ({ label, ...props }: IconProps) => (
   <AccessibleIcon
     label={label || 'An icon representing an arrow that is pointing to the right.'}
   >
-    <ArrowRightIconRadix {...props} />
+    <ArrowRightIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -111,7 +111,7 @@ const ArrowTopRightIcon = ({ label, ...props }: IconProps) => (
       'An icon representing an arrow pointing diagonally towards the top right.'
     }
   >
-    <ArrowTopRightIconRadix {...props} />
+    <ArrowTopRightIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -122,7 +122,11 @@ const ArrowUturnLeftIcon = ({ className, label, ...props }: IconProps) => (
       'An icon representing a reply arrow. It is a left facing arrow with the right tail-end pointing curving down.'
     }
   >
-    <ArrowUturnLeftHero className={cx(twHeroToRadixIcon, className)} {...props} />
+    <ArrowUturnLeftHero
+      className={cx(twHeroToRadixIcon, className)}
+      role="info"
+      {...props}
+    />
   </AccessibleIcon>
 )
 
@@ -133,7 +137,7 @@ const BellIcon = ({ label, ...props }: IconProps) => (
       'An icon representing a bell. A very small outline of the Liberty Bell without the crack.'
     }
   >
-    <BellIconRadix {...props} />
+    <BellIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -144,7 +148,7 @@ const BookmarkIcon = ({ label, ...props }: IconProps) => (
       'An icon representing a bookmark. An outline of the part of the bookmark that hangs at the bottom of the book. It has a small triangle cut out at the bottom for flair.'
     }
   >
-    <BookmarkIconRadix {...props} />
+    <BookmarkIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -155,7 +159,7 @@ const BookmarkFilledIcon = ({ label, ...props }: IconProps) => (
       'An icon representing a bookmark. A filled in outline of the part of the bookmark that hangs at the bottom of the book. It has a small triangle cut out at the bottom for flair.'
     }
   >
-    <BookmarkFilledIconRadix {...props} />
+    <BookmarkFilledIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -166,7 +170,11 @@ const BookOpenIcon = ({ className, label, ...props }: IconProps) => (
       'An icon representing an open book. It has curved pages as it if is being actively read. There are no lines on the pages, this book icon is an outline.'
     }
   >
-    <BookOpenIconHero className={cx(twHeroToRadixIcon, className)} {...props} />
+    <BookOpenIconHero
+      className={cx(twHeroToRadixIcon, className)}
+      role="info"
+      {...props}
+    />
   </AccessibleIcon>
 )
 
@@ -177,7 +185,7 @@ const CalendarIcon = ({ label, ...props }: IconProps) => (
       'An icon representing a calendar. It has two hooks as if the paper is a rip-off type of calendar per month, with small shaded squares with symbolizing days of a month.'
     }
   >
-    <CalendarIconRadix {...props} />
+    <CalendarIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -185,7 +193,7 @@ const CaretDownIcon = ({ label, ...props }: IconProps) => (
   <AccessibleIcon
     label={label || 'An icon representing a caret. Its point is pointing down.'}
   >
-    <CaretDownIconRadix {...props} />
+    <CaretDownIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -193,7 +201,7 @@ const CaretLeftIcon = ({ label, ...props }: IconProps) => (
   <AccessibleIcon
     label={label || 'An icon representing a caret. Its point is pointing left.'}
   >
-    <CaretLeftIconRadix {...props} />
+    <CaretLeftIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -201,7 +209,7 @@ const CaretRightIcon = ({ label, ...props }: IconProps) => (
   <AccessibleIcon
     label={label || 'An icon representing a caret. Its point is pointing right.'}
   >
-    <CaretRightIconRadix {...props} />
+    <CaretRightIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -212,7 +220,7 @@ const CaretSortIcon = ({ label, ...props }: IconProps) => (
       'An icon representing a caret sort. It is two carets with their points away from one another, pointing in opposite directions vertically.'
     }
   >
-    <CaretSortIconRadix {...props} />
+    <CaretSortIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -220,7 +228,7 @@ const CaretUpIcon = ({ label, ...props }: IconProps) => (
   <AccessibleIcon
     label={label || 'An icon representing a caret. Its point is pointing up.'}
   >
-    <CaretUpIconRadix {...props} />
+    <CaretUpIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -231,19 +239,19 @@ const ChatBubbleIcon = ({ label, ...props }: IconProps) => (
       'An icon representing a chat bubble. It is a rounded rectangle with no text within it, and a small upside down triangle as part of the rounded rectangle outline toward the bottom right which would point to someone or something talking.'
     }
   >
-    <ChatBubbleIconRadix {...props} />
+    <ChatBubbleIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
 const CheckIcon = ({ label, ...props }: IconProps) => (
   <AccessibleIcon label={label || 'An icon representing a checkmark.'}>
-    <CheckIconRadix {...props} />
+    <CheckIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
 const CheckCircledIcon = ({ label, ...props }: IconProps) => (
   <AccessibleIcon label={label || 'An icon representing a checkmark in a circle.'}>
-    <CheckCircledIconRadix {...props} />
+    <CheckCircledIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -251,7 +259,7 @@ const ChevronDownIcon = ({ label, ...props }: IconProps) => (
   <AccessibleIcon
     label={label || 'An icon representing a chevron that is pointed down.'}
   >
-    <ChevronDownIconRadix {...props} />
+    <ChevronDownIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -262,7 +270,7 @@ const ChevronLeftIcon = ({ label, ...props }: IconProps) => (
       'An icon representing a chevron that is pointed left. So kind of like a less than sign.'
     }
   >
-    <ChevronLeftIconRadix {...props} />
+    <ChevronLeftIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -273,7 +281,7 @@ const ChevronRightIcon = ({ label, ...props }: IconProps) => (
       'An icon representing a chevron that is pointed right. So kind of like a greater than sign.'
     }
   >
-    <ChevronRightIconRadix {...props} />
+    <ChevronRightIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -281,7 +289,7 @@ const ChevronUpIcon = ({ label, ...props }: IconProps) => (
   <AccessibleIcon
     label={label || 'An icon representing a chevron that is pointed up.'}
   >
-    <ChevronUpIconRadix {...props} />
+    <ChevronUpIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -292,7 +300,7 @@ const ClockIcon = ({ label, ...props }: IconProps) => (
       'An icon representing a clock. It is a circular clock with the hour hand at the four and minute at the twelve.'
     }
   >
-    <ClockIconRadix {...props} />
+    <ClockIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -303,7 +311,7 @@ const Cross1Icon = ({ label, ...props }: IconProps) => (
       'An icon representing an -x. It is a larger -x than the letter itself.'
     }
   >
-    <Cross1IconRadix {...props} />
+    <Cross1IconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -314,13 +322,13 @@ const Cross2Icon = ({ label, ...props }: IconProps) => (
       'An icon representing an -x. It is a smaller -x than the letter itself.'
     }
   >
-    <Cross2IconRadix {...props} />
+    <Cross2IconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
 const CrossCircledIcon = ({ label, ...props }: IconProps) => (
   <AccessibleIcon label={label || 'An icon representing a crossmark in a circle.'}>
-    <CrossCircledIconRadix {...props} />
+    <CrossCircledIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -331,7 +339,7 @@ const DesktopIcon = ({ label, ...props }: IconProps) => (
       'An icon representing a desktop computer. An outline of a large computer monitor sitting on a stand.'
     }
   >
-    <DesktopIconRadix {...props} />
+    <DesktopIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -342,7 +350,7 @@ const EnterIcon = ({ label, ...props }: IconProps) => (
       'An icon representing an arrow that is pointing at an area that exhibits movement towards, or into.'
     }
   >
-    <EnterIconRadix {...props} />
+    <EnterIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -353,7 +361,7 @@ const EnvelopeOpenIcon = ({ label, ...props }: IconProps) => (
       'An icon representing an envelope that is in the process of being opened.'
     }
   >
-    <EnvelopeOpenIconRadix {...props} />
+    <EnvelopeOpenIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -364,7 +372,7 @@ const ExclamationTriangleIcon = ({ label, ...props }: IconProps) => (
       'An icon representing an exclamation mark in an octagon. Like a stop sign  with an exclamation mark.'
     }
   >
-    <ExclamationTriangleIconRadix {...props} />
+    <ExclamationTriangleIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -375,7 +383,7 @@ const ExitIcon = ({ label, ...props }: IconProps) => (
       'An icon representing an arrow that is pointing out of an area that exhibits movement away from, or out of.'
     }
   >
-    <ExitIconRadix {...props} />
+    <ExitIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -386,7 +394,7 @@ const ExternalLinkIcon = ({ label, ...props }: IconProps) => (
       'An icon representing an arrow pointing diagonally towards the top right corner of the screen.'
     }
   >
-    <ExternalLinkIconRadix {...props} />
+    <ExternalLinkIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -397,7 +405,7 @@ const FontBoldIcon = ({ label, ...props }: IconProps) => (
       'An icon representing a font bold. It is a capital letter -B with a font weight of bold or 700.'
     }
   >
-    <FontBoldIconRadix {...props} />
+    <FontBoldIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -408,7 +416,7 @@ const FontItalicIcon = ({ label, ...props }: IconProps) => (
       'An icon representing a font italic. It is a capital letter -I with that is slanted to the right, or with emphasis.'
     }
   >
-    <FontItalicIconRadix {...props} />
+    <FontItalicIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -419,7 +427,7 @@ const GearIcon = ({ label, ...props }: IconProps) => (
       'An icon representing a gear which is a cog with eight tooth like parts around the edge of its wheel.'
     }
   >
-    <GearIconRadix {...props} />
+    <GearIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -430,7 +438,7 @@ const GitHubLogoIcon = ({ label, ...props }: IconProps) => (
       'An icon that is an outline of an Octocat. An Octocat is an octopus cat hybrid with a cat head and octopus body. It is cute and not hideous despite how it may come off. This is the logo of GitHub.'
     }
   >
-    <GitHubLogoIconRadix {...props} />
+    <GitHubLogoIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -441,7 +449,7 @@ const HamburgerMenuIcon = ({ label, ...props }: IconProps) => (
       'An icon representing three horizontal lines with some equal spacing between. Kind of like a hamburger where the top and bottom one are the bun, and the middle one is the meat (or plant based product if you prefer).'
     }
   >
-    <HamburgerMenuIconRadix {...props} />
+    <HamburgerMenuIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -452,7 +460,7 @@ const HomeIcon = ({ label, ...props }: IconProps) => (
       'An icon representing a home. It is a straight forward view of a home with an angled roof, no windows, and a door slightly off-center to the right.'
     }
   >
-    <HomeIconRadix {...props} />
+    <HomeIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -463,7 +471,7 @@ const IdCardIcon = ({ label, ...props }: IconProps) => (
       'An icon representing an ID. A long rectangle like card with a shaded interior box for an image and some lines symbolizing text to its right.'
     }
   >
-    <IdCardIconRadix {...props} />
+    <IdCardIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -474,7 +482,7 @@ const ImageIcon = ({ label, ...props }: IconProps) => (
       'An icon representing an image. A square outline with two rollling hills with a sun in the sky between the crests.'
     }
   >
-    <ImageIconRadix {...props} />
+    <ImageIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -482,7 +490,7 @@ const InfoCircledIcon = ({ label, ...props }: IconProps) => (
   <AccessibleIcon
     label={label || 'An icon representing the letter &lsquo;i&lsquo; in a circle.'}
   >
-    <InfoCircledIconRadix {...props} />
+    <InfoCircledIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -493,7 +501,7 @@ const InstagramLogoIcon = ({ label, ...props }: IconProps) => (
       'An icon representing the logo of Instagram. A rounded rectangle with a circle in the middle representing a camera lens and to its upper right a small dot which would be its flash.'
     }
   >
-    <InstagramLogoIconRadix {...props} />
+    <InstagramLogoIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -504,7 +512,7 @@ const Link1Icon = ({ label, ...props }: IconProps) => (
       'An icon representing a link. An outline of two links of a chain intersecting.'
     }
   >
-    <Link1IconRadix {...props} />
+    <Link1IconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -515,7 +523,7 @@ const LinkedInLogoIcon = ({ label, ...props }: IconProps) => (
       'An icon representing the logo of LinkedIn. A solid rounded rectangle with the letters -i and -n outlined within.'
     }
   >
-    <LinkedInLogoIconRadix {...props} />
+    <LinkedInLogoIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -526,7 +534,7 @@ const ListBulletIcon = ({ label, ...props }: IconProps) => (
       'An icon representing a bulleted list. It is three bullet points with a line to the right of each symbolizing text.'
     }
   >
-    <ListBulletIconRadix {...props} />
+    <ListBulletIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -537,7 +545,11 @@ const LocationMarkerIcon = ({ className, label, ...props }: IconProps) => (
       'An icon representing a location marker. This is an outline marker that looks like a guitar pick with the bigger side at the top with a circle cut out.'
     }
   >
-    <MapPinIconHero className={cx(twHeroToRadixIcon, className)} {...props} />
+    <MapPinIconHero
+      className={cx(twHeroToRadixIcon, className)}
+      role="info"
+      {...props}
+    />
   </AccessibleIcon>
 )
 
@@ -548,7 +560,7 @@ const MagnifyingGlassIcon = ({ label, ...props }: IconProps) => (
       'An icon representing a magnifying glass. It is an outline of a diagnol mangifying glass with its handle towards the bottom right, and the glass part towards the upper left.'
     }
   >
-    <MagnifyingGlassIconRadix {...props} />
+    <MagnifyingGlassIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -559,7 +571,11 @@ const MapIcon = ({ className, label, ...props }: IconProps) => (
       'An icon representing a map. This is a page that has been folded into four equal rectangles each kind of askew a bit to show depth. There is nothing within this outline of the four rectangles.'
     }
   >
-    <MapIconHero className={cx(twHeroToRadixIcon, className)} {...props} />
+    <MapIconHero
+      className={cx(twHeroToRadixIcon, className)}
+      role="info"
+      {...props}
+    />
   </AccessibleIcon>
 )
 
@@ -570,7 +586,11 @@ const MicrophoneIcon = ({ className, label, ...props }: IconProps) => (
       'An icon representing a microphone. This type of microphone is something a podcaster would use. A pill shaped outline of a microphone cradled in a sold outlined stand.'
     }
   >
-    <MicrophoneIconHero className={cx(twHeroToRadixIcon, className)} {...props} />
+    <MicrophoneIconHero
+      className={cx(twHeroToRadixIcon, className)}
+      role="info"
+      {...props}
+    />
   </AccessibleIcon>
 )
 
@@ -581,7 +601,7 @@ const MoonIcon = ({ label, ...props }: IconProps) => (
       'An icon representing the moon. This moon is a half crescent with the left half missing. In that missing moon space towards the upper left are three stars in the distance in an isosceles triangle pattern.'
     }
   >
-    <MoonIconRadix {...props} />
+    <MoonIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -592,7 +612,11 @@ const MusicalNoteIcon = ({ className, label, ...props }: IconProps) => (
       'An icon representing a musical note. This is a beamed note, with the second note slightly higher on the scale.'
     }
   >
-    <MusicalNoteIconHero className={cx(twHeroToRadixIcon, className)} {...props} />
+    <MusicalNoteIconHero
+      className={cx(twHeroToRadixIcon, className)}
+      role="info"
+      {...props}
+    />
   </AccessibleIcon>
 )
 
@@ -603,7 +627,7 @@ const Pencil1Icon = ({ label, ...props }: IconProps) => (
       'An icon representing a pencil. An outline of a pencil that is diagonal with its tip pointing down and to the left.'
     }
   >
-    <Pencil1IconRadix {...props} />
+    <Pencil1IconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -614,7 +638,7 @@ const Pencil2Icon = ({ label, ...props }: IconProps) => (
       'An icon representing a pencil writing on a piece of paper. An outline of a pencil coming from the top right corner of the paper with no hand attached.'
     }
   >
-    <Pencil2IconRadix {...props} />
+    <Pencil2IconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -625,7 +649,7 @@ const QuoteIcon = ({ label, ...props }: IconProps) => (
       'An icon representing a quotation mark. An outline of a two quotation marks that would typically end a quote..'
     }
   >
-    <QuoteIconRadix {...props} />
+    <QuoteIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -638,6 +662,7 @@ const ReturnIcon = ({ className, label, ...props }: IconProps) => (
   >
     <ArrowUturnLeftHero
       className={cx(twHeroToRadixIcon, 'rotate-180 -scale-x-100', className)}
+      role="info"
       {...props}
     />
   </AccessibleIcon>
@@ -650,7 +675,7 @@ const Share1Icon = ({ label, ...props }: IconProps) => (
       'An icon representing a social share. An outline of a circle with two beams attached to two other circles symbolizing a share across a network.'
     }
   >
-    <Share1IconRadix {...props} />
+    <Share1IconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -661,7 +686,7 @@ const SpeakerModerateIcon = ({ label, ...props }: IconProps) => (
       'An icon representing a single speaker point to the right with single curved line symbolizing moderate noise coming from it.'
     }
   >
-    <SpeakerModerateIconRadix {...props} />
+    <SpeakerModerateIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -672,7 +697,7 @@ const SpeakerOffIcon = ({ label, ...props }: IconProps) => (
       'An icon representing a single speaker pointed to the right with an -x next to it representing that it is off, or muted.'
     }
   >
-    <SpeakerOffIconRadix {...props} />
+    <SpeakerOffIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -691,6 +716,7 @@ const SpotifyLogoIcon = ({ label, ...props }: IconProps) => (
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
+      role="info"
       {...props}
     >
       <defs></defs>
@@ -715,7 +741,7 @@ const StarIcon = ({ label, ...props }: IconProps) => (
       'An icon representing a star. It is the outline of a star that has five points.'
     }
   >
-    <StarIconRadix {...props} />
+    <StarIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -726,7 +752,7 @@ const StrikethroughIcon = ({ label, ...props }: IconProps) => (
       'An icon representing a strikethrough. It is a capital letter -U with a line drawn horizontally across its center.'
     }
   >
-    <StrikethroughIconRadix {...props} />
+    <StrikethroughIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -737,7 +763,7 @@ const SunIcon = ({ label, ...props }: IconProps) => (
       'An icon representing the sun. In this instance though the sun is a circle with eight small rays of light shining in a circlular pattern around it.'
     }
   >
-    <SunIconRadix {...props} />
+    <SunIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -748,13 +774,17 @@ const TagIcon = ({ className, label, ...props }: IconProps) => (
       'An icon representing a tag. The tag has a small hole where it would be attached to something larger, and is pointing towards the upper left.'
     }
   >
-    <TagIconHero className={cx(twHeroToRadixIcon, className)} {...props} />
+    <TagIconHero
+      className={cx(twHeroToRadixIcon, className)}
+      role="info"
+      {...props}
+    />
   </AccessibleIcon>
 )
 
 const TextAlignCenterIcon = ({ label, ...props }: IconProps) => (
   <AccessibleIcon label={label || 'An icon ...'}>
-    <TextAlignCenterIconRadix {...props} />
+    <TextAlignCenterIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -765,7 +795,7 @@ const TextAlignJustifyIcon = ({ label, ...props }: IconProps) => (
       'An icon representing text align justify. Three separate lines of equal length.'
     }
   >
-    <TextAlignJustifyIconRadix {...props} />
+    <TextAlignJustifyIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -776,7 +806,7 @@ const TextAlignLeftIcon = ({ label, ...props }: IconProps) => (
       'An icon representing text align left. Three separate lines of varying length, left aligned.'
     }
   >
-    <TextAlignLeftIconRadix {...props} />
+    <TextAlignLeftIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -787,7 +817,7 @@ const TextAlignRightIcon = ({ label, ...props }: IconProps) => (
       'An icon representing text align right. Three separate lines of varying length, right aligned.'
     }
   >
-    <TextAlignRightIconRadix {...props} />
+    <TextAlignRightIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -798,7 +828,11 @@ const TicketIcon = ({ className, label, ...props }: IconProps) => (
       'An icon representing a ticket. It is a singular ticket that looks like it is from a 50/50 raffle where the recipient keeps the larger piece, and there is a perforated top half that can be ripped off to go into the larger pool.'
     }
   >
-    <TicketIconHero className={cx(twHeroToRadixIcon, className)} {...props} />
+    <TicketIconHero
+      className={cx(twHeroToRadixIcon, className)}
+      role="info"
+      {...props}
+    />
   </AccessibleIcon>
 )
 
@@ -809,7 +843,7 @@ const TwitterLogoIcon = ({ label, ...props }: IconProps) => (
       'An icon representing the logo of Twitter. An outline of a blue bird that is facing to the right chirping.'
     }
   >
-    <TwitterLogoIconRadix {...props} />
+    <TwitterLogoIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 

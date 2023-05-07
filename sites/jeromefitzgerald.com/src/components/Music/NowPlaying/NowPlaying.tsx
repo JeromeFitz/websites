@@ -1,5 +1,10 @@
 'use client'
 // import Slugger from 'github-slugger'
+import {
+  ExternalLinkIcon as ExternalLink,
+  MusicalNoteIcon as MusicalNote,
+  TagIcon as Tag,
+} from '@jeromefitz/ds/components/Icon'
 import _map from 'lodash/map'
 // import _slice from 'lodash/slice'
 import Image from 'next/image'
@@ -10,12 +15,7 @@ import _title from 'title'
 import { Anchor } from '~components/Anchor'
 import { nowPlaying } from '~data/mock/music'
 // @todo(next) https://github.com/vercel/next.js/issues/46756
-// import { Icon } from '~ui/Icon'
-import {
-  ExternalLinkIcon as ExternalLink,
-  MusicalNoteIcon as MusicalNote,
-  TagIcon as Tag,
-} from '~ui/Icon/Icon.list'
+// import { Icon } from '@jeromefitz/ds/components/Icon'
 import { cx } from '~utils/cx'
 // import { log } from '~utils/log'
 
@@ -94,8 +94,10 @@ function NowPlaying() {
         <Anchor
           href="/music"
           className={cx(
-            'font-black underline decoration-solid decoration-2 underline-offset-4',
+            'font-black underline underline-offset-4',
             'text-radix-mauve11 hover:text-radix-mauve12',
+            'decoration-solid decoration-4',
+            'decoration-radix-orange10 hover:decoration-radix-orange11',
             'transition-all duration-200 ease-in'
           )}
         >
@@ -105,8 +107,10 @@ function NowPlaying() {
         <Anchor
           href="/books"
           className={cx(
-            'font-black underline decoration-solid decoration-2 underline-offset-4',
+            'font-black underline underline-offset-4',
             'text-radix-mauve11 hover:text-radix-mauve12',
+            'decoration-solid decoration-4',
+            'decoration-radix-orange10 hover:decoration-radix-orange11',
             'transition-all duration-200 ease-in'
           )}
         >

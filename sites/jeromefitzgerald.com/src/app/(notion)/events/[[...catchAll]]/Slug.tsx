@@ -1,4 +1,6 @@
 'use client'
+import { ButtonLink } from '@jeromefitz/ds/components/Button'
+import { ExternalLinkIcon as ExternalLink } from '@jeromefitz/ds/components/Icon'
 import type { Event } from '@jeromefitz/notion/schema'
 import { TZ } from '@jeromefitz/shared/src/lib/constants'
 import { isObject } from '@jeromefitz/utils'
@@ -6,12 +8,10 @@ import _parseISO from 'date-fns/parseISO'
 import { formatInTimeZone as _formatInTimeZone } from 'date-fns-tz'
 
 // import { HOST_API } from '~lib/constants'
-import { Anchor } from '~components/Anchor'
 import { Meta } from '~components/Meta'
 // @todo(next) https://github.com/vercel/next.js/issues/46756
-// import { Icon } from '~ui/Icon'
+// import { Icon } from '@jeromefitz/ds/components/Icon'
 import { useNotion } from '~hooks/useNotion'
-import { ExternalLinkIcon as ExternalLink } from '~ui/Icon/Icon.list'
 import { cx } from '~utils/cx'
 import { isEventInPast } from '~utils/isEventInPast'
 // import { log } from '~utils/log'
@@ -131,28 +131,13 @@ function Slug({ data, pathVariables }) {
             <p>Need a time machine.</p>
           </>
         ) : (
-          <Anchor
-            className={cx(
-              'flex flex-row items-center gap-1',
-              'underline-offset-4',
-              'underline',
-              'decoration-radix-mauve4 hover:decoration-radix-mauve5',
-              'transition-all duration-200 ease-in',
-              '',
-              'rounded-lg p-4',
-              'border-radix-green7 hover:border-radix-green8 border-4',
-              'bg-black/75 text-white hover:bg-black',
-              'dark:hover:bg-radix-mauve12 dark:bg-white dark:text-black'
-            )}
+          <ButtonLink
+            className={cx('orange-button-outline', 'flex-row items-center gap-1')}
             href={ticketUrl}
-            style={{
-              boxShadow:
-                '-15px 0 30px -10px var(--colors-orangeA7), 0 0 30px -10px var(--colors-pinkA7), 15px 0 30px -10px var(--colors-violetA7)',
-            }}
           >
             <>Available via ShowClix</>
             <ExternalLink />
-          </Anchor>
+          </ButtonLink>
         ),
       ],
     },

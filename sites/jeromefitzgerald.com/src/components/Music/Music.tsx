@@ -1,4 +1,8 @@
 'use client'
+import {
+  ExternalLinkIcon as ExternalLink,
+  Pencil2Icon as PencilWithPaper,
+} from '@jeromefitz/ds/components/Icon'
 import _find from 'lodash/find'
 import { useState } from 'react'
 
@@ -6,11 +10,7 @@ import { Anchor } from '~components/Anchor'
 import { Top } from '~components/Music'
 import { useSpotify } from '~hooks/useSpotify'
 // @todo(next) https://github.com/vercel/next.js/issues/46756
-// import { Icon } from '~ui/Icon'
-import {
-  ExternalLinkIcon as ExternalLink,
-  Pencil2Icon as PencilWithPaper,
-} from '~ui/Icon/Icon.list'
+// import { Icon } from '@jeromefitz/ds/components/Icon'
 import { RadioGroup } from '~ui/RadioGroup'
 import { cx } from '~utils/cx'
 // import { log } from '~utils/log'

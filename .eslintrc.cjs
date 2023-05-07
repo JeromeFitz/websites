@@ -49,6 +49,19 @@ module.exports = {
         },
       },
     },
+    {
+      extends: ['@jeromefitz/eslint-config/tailwind.cjs'],
+      files: 'packages/design-system/**',
+      rules: nextOverrides.rules,
+      settings: {
+        tailwindcss: {
+          config: `${fullCwd}/packages/design-system/tailwind.config.js`,
+          callees: ['cx', 'tw'],
+          // @todo(eslint-plugin-tailwindcss) submit pr for allowlist
+          whitelist: ['afc', 'afc2', 'icon-custom', 'trap'],
+        },
+      },
+    },
     // ⚙️ e2e
     {
       extends: ['plugin:playwright/playwright-test'],
