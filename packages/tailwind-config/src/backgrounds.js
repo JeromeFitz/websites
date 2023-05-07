@@ -7,9 +7,10 @@ const { colors, excludes } = require('./lib/const')
 
 const backgrounds = {}
 
-colors.map((color) => {
+colors.map((_color) => {
+  let color = _color
   if (excludes.includes(color)) {
-    return
+    color = `${color}A`
   }
   backgrounds['.' + color + '-bg'] = {
     backgroundColor: `var(--${color}3)`,
