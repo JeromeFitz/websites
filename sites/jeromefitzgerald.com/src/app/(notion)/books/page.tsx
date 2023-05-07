@@ -1,3 +1,9 @@
+import {
+  BookmarkIcon as Bookmark,
+  BookOpenIcon as BookOpen,
+  CheckCircledIcon as CheckCircled,
+  Pencil2Icon as PencilWithPaper,
+} from '@jeromefitz/ds/components/Icon'
 import type { Page } from '@jeromefitz/notion/schema'
 import _filter from 'lodash/filter'
 import _map from 'lodash/map'
@@ -7,13 +13,7 @@ import { Suspense } from 'react'
 import { getDataCms, getMetadata } from '~app/(notion)/getMetadata'
 import { Debug } from '~components/Debug'
 // @todo(next) https://github.com/vercel/next.js/issues/46756
-// import { Icon } from '~ui/Icon'
-import {
-  BookmarkIcon as Bookmark,
-  BookOpenIcon as BookOpen,
-  CheckCircledIcon as CheckCircled,
-  Pencil2Icon as PencilWithPaper,
-} from '~ui/Icon/Icon.list'
+// import { Icon } from '@jeromefitz/ds/Icon'
 import { PageHeading } from '~ui/PageHeading'
 import { cx } from '~utils/cx'
 // import { log } from '~utils/log'

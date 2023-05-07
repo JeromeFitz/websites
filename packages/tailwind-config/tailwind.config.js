@@ -1,38 +1,8 @@
-const { mauveA, mauveDarkA, blackA, whiteA } = require('@radix-ui/colors')
-const { colors } = require('tailwindcss/colors')
 const theme = require('tailwindcss/defaultTheme')
-const flattenColorPalette =
-  require('tailwindcss/lib/util/flattenColorPalette').default
 
 const hocusPlugin = require('./hocus.plugin')
-
-// function px(pixels) {
-//   return `${pixels / 16}rem`
-// }
-
-// This plugin adds each Tailwind color as a global CSS variable, e.g. var(--gray-200).
-// ref: https://github.com/fergusmeiklejohn/framer-recipes
-function addVariablesForColors({ addBase, theme }) {
-  let allColors = flattenColorPalette(theme('colors'))
-  let newVars = Object.fromEntries(
-    Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
-  )
-
-  addBase({
-    newVars,
-  })
-}
-
-function addRadixOverlays({ addBase, theme }) {
-  // let allColors = flattenColorPalette(theme('colors'))
-  let newVars = Object.fromEntries(
-    Object.entries([blackA, whiteA, mauveA]).map(([key, val]) => [`--${key}`, val])
-  )
-
-  addBase({
-    newVars,
-  })
-}
+const radixPlugin = require('./radix.plugin')
+const { colors } = require('./src/index')
 
 /** @type {import('tailwindcss').Config} */
 const config = ({}) => ({
@@ -52,8 +22,7 @@ const config = ({}) => ({
   // purge: ['./components/**/*.{js,ts,jsx,tsx}', './pages/**/*.{js,ts,jsx,tsx}'],
   theme: {
     ...theme,
-    colors,
-    // colors: {},
+    colors: {},
     container: {
       center: true,
       padding: '1.5rem',
@@ -92,20 +61,20 @@ const config = ({}) => ({
         slider: '0 0 0 5px rgba(0, 0, 0, 0.3)',
       },
       colors: {
-        ...colors,
-        brand: {
-          50: '#f3f3f3',
-          100: '#e7e7e7',
-          200: '#c4c4c4',
-          300: '#a0a0a0',
-          400: '#585858',
-          500: '#111111',
-          600: '#0f0f0f',
-          700: '#0d0d0d',
-          800: '#0a0a0a',
-          900: '#080808',
-          DEFAULT: '#111111',
-        },
+        // ...colors,
+        // brand: {
+        //   50: '#f3f3f3',
+        //   100: '#e7e7e7',
+        //   200: '#c4c4c4',
+        //   300: '#a0a0a0',
+        //   400: '#585858',
+        //   500: '#111111',
+        //   600: '#0f0f0f',
+        //   700: '#0d0d0d',
+        //   800: '#0a0a0a',
+        //   900: '#080808',
+        //   DEFAULT: '#111111',
+        // },
         current: 'current',
         inherit: 'inherit',
         transparent: 'transparent',
@@ -127,7 +96,8 @@ const config = ({}) => ({
       },
       fontFamily: {
         sans: [
-          ['var(--font-inter)', ...theme.fontFamily.sans],
+          ['var(--font-inter)'],
+          // ['var(--font-inter)', ...theme.fontFamily.sans],
           {
             // https://rsms.me/inter/lab/?feat-cv01=1&feat-ss01=1&feat-ss02=1&feat-ss03=1&invert-colors=1&wght=900
             fontFeatureSettings:
@@ -237,47 +207,8 @@ const config = ({}) => ({
     require('@tailwindcss/typography'),
     // require('@plaiceholder/tailwindcss'),
     require('@tailwindcss/forms'),
-    require('radix-colors-for-tailwind')({
-      colors: [
-        'tomato',
-        'red',
-        'crimson',
-        'pink',
-        'plum',
-        'purple',
-        'violet',
-        'indigo',
-        'blue',
-        'cyan',
-        'teal',
-        'green',
-        'grass',
-        'orange',
-        'brown',
-        // bright
-        'sky',
-        'mint',
-        'lime',
-        'yellow',
-        'amber',
-        // grays
-        'gray',
-        'mauve',
-        'slate',
-        'sage',
-        'olive',
-        'sand',
-        // metals
-        'gold',
-        'bronze',
-        // overlays
-        'blackA',
-        'whiteA',
-      ],
-    }),
+    radixPlugin({ colors }),
     require('tailwindcss-radix')({ variantPrefix: 'radix' }),
-    addVariablesForColors,
-    addRadixOverlays,
   ],
   variants: {
     extend: {

@@ -4,25 +4,20 @@ import type { Variant } from './Button.types'
 
 export const commonStyles = cx(
   'group inline-flex transition-all duration-500',
-  'm-1.5 p-2',
-  ''
+  'm-1.5 rounded-md px-4 py-2',
+  'font-sans font-medium',
+  'outline-none outline-offset-0 ',
+  'hocus:ring-1 ring-0 ring-inset',
+  'focus:shadow-md',
+  'cursor-default hover:cursor-pointer'
 )
 
 export const variantStyles = {
-  default: cx(
-    'bg-radix-mauve1 text-radix-mauve12',
-    'hocus:bg-radix-mauve12 hocus:text-radix-mauve1',
-    'ring-radix-mauve3 ring-1 ring-inset dark:ring-0',
-    'text-3xl font-black'
-  ),
+  default: cx('tomato-button'),
   empty: cx(),
-  ghost: cx('', '', ''),
-  primary: cx(
-    'bg-radix-blue3 text-radix-blue11',
-    'hocus:bg-radix-blue4 hocus:text-radix-blue12',
-    ''
-  ),
-  secondary: cx(),
-  tertiary: cx(),
-  text: cx('text-radix-mauve12', 'hocus:bg-radix-mauve2 dark:hocus:bg-radix-mauve7'),
+  ghost: cx(),
+  primary: cx('tomato-button-cta'),
+  secondary: cx('tomato-button-outline'),
+  tertiary: cx('tomato-button-solid'),
+  text: cx('tomato-button-transparent'),
 } satisfies Record<Variant, string>
