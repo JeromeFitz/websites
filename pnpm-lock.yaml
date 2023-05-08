@@ -17,8 +17,8 @@ importers:
         specifier: workspace:*
         version: link:packages/eslint-config
       '@jeromefitz/release-notes-generator':
-        specifier: 1.2.10
-        version: 1.2.10(lodash@4.17.21)
+        specifier: 1.2.11
+        version: 1.2.11(lodash@4.17.21)
       '@jeromefitz/semantic':
         specifier: 9.2.6
         version: 9.2.6(@jeromefitz/conventional-gitmoji@3.3.6)
@@ -3956,8 +3956,8 @@ packages:
       - prettier-plugin-twig-melody
     dev: true
 
-  /@jeromefitz/release-notes-generator@1.2.10(lodash@4.17.21):
-    resolution: {integrity: sha512-86btwt0Fx0AMBy3KptZ27erAxfaXEE2HXRymkdHENnzlzq3SUSNPoMX/jtiWY4jf21taufQJPvKA+x4ZFxG9tA==}
+  /@jeromefitz/release-notes-generator@1.2.11(lodash@4.17.21):
+    resolution: {integrity: sha512-1LNSK9HMnmgE85WEHgoFOE559bVpzWIGJPUbXQn5R2OVfxPqW6QgvQOdaeTEYGdqmy5yh1zhdBGLATW6U+8YuQ==}
     engines: {node: '>=16'}
     peerDependencies:
       lodash: ^4.17.21
@@ -3965,7 +3965,7 @@ packages:
       '@octokit/rest': 19.0.7
       conventional-commits-filter: 2.0.7
       conventional-commits-parser: 3.2.4
-      date-fns: 2.29.3
+      date-fns: 2.30.0
       import-from: 4.0.0
       lodash: 4.17.21
       read-pkg-up: 7.0.1
