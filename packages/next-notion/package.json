@@ -47,7 +47,7 @@
     "github-slugger": "2.0.0",
     "ms": "3.0.0-canary.1",
     "podcast": "2.0.1",
-    "react-wrap-balancer": "0.4.1",
+    "react-wrap-balancer": "0.5.0",
     "uuid": "9.0.0",
     "valid-url": "1.0.9"
   },
