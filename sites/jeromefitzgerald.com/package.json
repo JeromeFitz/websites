@@ -100,7 +100,7 @@
     "@radix-ui/react-use-size": "1.0.0",
     "@radix-ui/react-visually-hidden": "1.0.2",
     "@tanem/react-nprogress": "5.0.38",
-    "@upstash/ratelimit": "0.4.2",
+    "@upstash/ratelimit": "0.4.3",
     "@upstash/redis": "1.20.6",
     "@vercel/analytics": "1.0.1",
     "@vercel/og": "0.5.4",
