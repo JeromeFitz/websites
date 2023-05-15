@@ -474,8 +474,8 @@ importers:
         specifier: 4.2.1
         version: 4.2.1(@types/react@18.2.6)(lodash@4.17.21)(next@13.4.1)(react-dom@18.2.0)(react@18.2.0)(swr@2.1.5)
       '@tanem/react-nprogress':
-        specifier: 5.0.37
-        version: 5.0.37(react-dom@18.2.0)(react@18.2.0)
+        specifier: 5.0.38
+        version: 5.0.38(react-dom@18.2.0)(react@18.2.0)
       fathom-client:
         specifier: 3.5.0
         version: 3.5.0
@@ -787,8 +787,8 @@ importers:
         specifier: 1.0.2
         version: 1.0.2(react-dom@18.2.0)(react@18.2.0)
       '@tanem/react-nprogress':
-        specifier: 5.0.37
-        version: 5.0.37(react-dom@18.2.0)(react@18.2.0)
+        specifier: 5.0.38
+        version: 5.0.38(react-dom@18.2.0)(react@18.2.0)
       '@upstash/ratelimit':
         specifier: 0.4.2
         version: 0.4.2(@upstash/redis@1.20.6)
@@ -7517,8 +7517,8 @@ packages:
       tailwindcss: 3.3.2(ts-node@10.9.1)
     dev: true
 
-  /@tanem/react-nprogress@5.0.37(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-e7xTSsRdN7bLKyQn2SEEb9jAc+aRYDhmsyJgmeUgdTKTNVXJNIApQTVmuyIbbrzJlQmae8uY43Y0F8QYASu+eg==}
+  /@tanem/react-nprogress@5.0.38(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-iyUzLfqiXa/EZ558mV8Wp/iqy7lKT9K+6sy5SF76sYD7mgZQ67VA8nUnsQXKFdEXoMdmfIUj7dbyDHN2OOI6BQ==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
@@ -8251,7 +8251,7 @@ packages:
       '@typescript-eslint/typescript-estree': 5.59.2(typescript@5.0.4)
       eslint: 8.39.0
       eslint-scope: 5.1.1
-      semver: 7.5.1
+      semver: 7.5.0
     transitivePeerDependencies:
       - supports-color
       - typescript
