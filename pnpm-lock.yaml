@@ -285,8 +285,8 @@ importers:
         specifier: 1.1.7
         version: 1.1.7
       prettier-plugin-nativewind:
-        specifier: 0.2.2
-        version: 0.2.2
+        specifier: 0.2.3
+        version: 0.2.3
 
   packages/jest-config:
     devDependencies:
@@ -16147,9 +16147,10 @@ packages:
     engines: {node: '>=4'}
     dev: false
 
-  /prettier-plugin-nativewind@0.2.2:
-    resolution: {integrity: sha512-3ysQxdaGQC7LigMft6fiAI7sTnlb3saFRx1G75LLnPG1o5B+IWH/DDJt9IGiSvuFwPuryngdYGBYq8pauz4lPA==}
+  /prettier-plugin-nativewind@0.2.3:
+    resolution: {integrity: sha512-2XQqZFtR37Pbma3tyuDCIEUmrlybaNXHoVLOWxqXy0Cni75gDCMvBoyPN4jUxca+eeF/wLZyEu5fAVxT25cLuQ==}
     engines: {node: '>=12.17.0'}
+    requiresBuild: true
     peerDependencies:
       '@ianvs/prettier-plugin-sort-imports': '*'
       '@prettier/plugin-php': '*'
