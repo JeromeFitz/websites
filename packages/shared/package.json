@@ -28,7 +28,7 @@
     "semantic-release": "echo semantic-release"
   },
   "dependencies": {
-    "@jeromefitz/design-system": "4.2.1",
+    "@jeromefitz/design-system": "4.2.2",
     "@tanem/react-nprogress": "5.0.38",
     "fathom-client": "3.5.0",
     "lodash": "4.17.21",
