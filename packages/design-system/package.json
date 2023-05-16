@@ -79,7 +79,7 @@
     "@jeromefitz/next-config": "workspace:*",
     "@jeromefitz/storybook-config": "workspace:*",
     "@jeromefitz/tailwind-config": "workspace:*",
-    "@mantine/hooks": "6.0.10",
+    "@mantine/hooks": "6.0.11",
     "next": "13.4.2",
     "react": "18.2.0",
     "react-dom": "18.2.0"

@@ -267,8 +267,8 @@ importers:
         specifier: workspace:*
         version: link:../tailwind-config
       '@mantine/hooks':
-        specifier: 6.0.10
-        version: 6.0.10(react@18.2.0)
+        specifier: 6.0.11
+        version: 6.0.11(react@18.2.0)
       next:
         specifier: 13.4.2
         version: 13.4.2(react-dom@18.2.0)(react@18.2.0)
@@ -622,8 +622,8 @@ importers:
         specifier: 2.2.2
         version: 2.2.2(lodash@4.17.21)
       '@mantine/hooks':
-        specifier: 6.0.10
-        version: 6.0.10(react@18.2.0)
+        specifier: 6.0.11
+        version: 6.0.11(react@18.2.0)
       '@radix-ui/primitive':
         specifier: 1.0.0
         version: 1.0.0
@@ -4310,8 +4310,8 @@ packages:
     resolution: {integrity: sha512-dfLbk+PwWvFzSxwk3n5ySL0hfBog779o8h68wK/7/APo/7cgyWp5jcXockbxdk5kFRkbeXWm4Fbi9FrdN381sA==}
     dev: true
 
-  /@mantine/hooks@6.0.10(react@18.2.0):
-    resolution: {integrity: sha512-rxH5/CxmUs1mUZAj27Fza4SH07HV1XyrL7L9wwhZdMLg+oDEaAs8BMz8lsOIHOCro9ZDh+Mm7QAbEW8HcvmYJg==}
+  /@mantine/hooks@6.0.11(react@18.2.0):
+    resolution: {integrity: sha512-WM24bEqtnfPikks+92wllvHodwSBuU0tcF+IiCumyQBQTbhLWCVNHaUXYsL/bKFEZVOOwgEO4dITaxqFkdVBxA==}
     peerDependencies:
       react: '>=16.8.0'
     dependencies:
