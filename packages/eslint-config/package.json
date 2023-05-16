@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "devDependencies": {
-    "@jeromefitz/prettier-config": "1.1.7",
+    "@jeromefitz/prettier-config": "1.2.0",
     "prettier-plugin-nativewind": "0.2.3"
   }
 }
