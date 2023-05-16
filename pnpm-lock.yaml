@@ -611,7 +611,7 @@ importers:
         version: 2.0.18(react@18.2.0)
       '@jeromefitz/design-system':
         specifier: 4.2.2
-        version: 4.2.2(@heroicons/react@2.0.18)(@radix-ui/react-icons@1.3.0)(@types/react@18.2.6)(cmdk@0.2.0)(framer-motion@10.12.11)(lodash@4.17.21)(next@13.4.2)(react-dom@18.2.0)(react@18.2.0)(swr@2.1.5)(ts-node@10.9.1)(typescript@5.0.4)
+        version: 4.2.2(@heroicons/react@2.0.18)(@radix-ui/react-icons@1.3.0)(@types/react@18.2.6)(cmdk@0.2.0)(framer-motion@10.12.12)(lodash@4.17.21)(next@13.4.2)(react-dom@18.2.0)(react@18.2.0)(swr@2.1.5)(ts-node@10.9.1)(typescript@5.0.4)
       '@jeromefitz/notion':
         specifier: 4.0.5
         version: 4.0.5(@jeromefitz/utils@2.2.2)(lodash@4.17.21)
@@ -823,8 +823,8 @@ importers:
         specifier: 10.1.2
         version: 10.1.2(react-dom@18.2.0)(react@18.2.0)
       framer-motion:
-        specifier: 10.12.11
-        version: 10.12.11(react-dom@18.2.0)(react@18.2.0)
+        specifier: 10.12.12
+        version: 10.12.12(react-dom@18.2.0)(react@18.2.0)
       github-slugger:
         specifier: 2.0.0
         version: 2.0.0
@@ -3626,7 +3626,7 @@ packages:
       title: 3.5.3
     dev: false
 
-  /@jeromefitz/design-system@4.2.2(@heroicons/react@2.0.18)(@radix-ui/react-icons@1.3.0)(@types/react@18.2.6)(cmdk@0.2.0)(framer-motion@10.12.11)(lodash@4.17.21)(next@13.4.2)(react-dom@18.2.0)(react@18.2.0)(swr@2.1.5)(ts-node@10.9.1)(typescript@5.0.4):
+  /@jeromefitz/design-system@4.2.2(@heroicons/react@2.0.18)(@radix-ui/react-icons@1.3.0)(@types/react@18.2.6)(cmdk@0.2.0)(framer-motion@10.12.12)(lodash@4.17.21)(next@13.4.2)(react-dom@18.2.0)(react@18.2.0)(swr@2.1.5)(ts-node@10.9.1)(typescript@5.0.4):
     resolution: {integrity: sha512-7k7EQPfOoVsv9c4uaNfrSNd6QtttREGGAmHphq1p345BIsJc57cEUTO0Fql3/qYKCfq7DqACS3F2MaqpDw457g==}
     engines: {node: '>=16'}
     peerDependencies:
@@ -3699,7 +3699,7 @@ packages:
       '@stitches/react': 1.3.1-1(react@18.2.0)
       cmdk: 0.2.0(@types/react@18.2.6)(react-dom@18.2.0)(react@18.2.0)
       emoji-regex: 10.2.1
-      framer-motion: 10.12.11(react-dom@18.2.0)(react@18.2.0)
+      framer-motion: 10.12.12(react-dom@18.2.0)(react@18.2.0)
       lodash: 4.17.21
       next: 13.4.2(react-dom@18.2.0)(react@18.2.0)
       node-emoji: 2.0.2(ts-node@10.9.1)(typescript@5.0.4)
@@ -12108,8 +12108,8 @@ packages:
     resolution: {integrity: sha512-MhLuK+2gUcnZe8ZHlaaINnQLl0xRIGRfcGk2yl8xoQAfHrSsL3rYu6FCmBdkdbhc9EPlwyGHewaRsvwRMJtAlA==}
     dev: true
 
-  /framer-motion@10.12.11(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-uNsJAc/BQZ9V7tYgzRBXSrEdB+YrdJTtRvgn+8lNAQucGKaINJBL8I4aqXxXdw+HzwJZb/uR955jnOrxBy5sTA==}
+  /framer-motion@10.12.12(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-DDCqp60U6hR7aUrXj/BXc/t0Sd/U4ep6w/NZQkw898K+u7s+Vv/P8yxq4WTNA86kU9QCsqOgn1Qhz2DpYK0Oag==}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
