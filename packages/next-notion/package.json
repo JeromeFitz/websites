@@ -52,7 +52,7 @@
     "valid-url": "1.0.9"
   },
   "devDependencies": {
-    "@jeromefitz/design-system": "4.2.2",
+    "@jeromefitz/design-system": "4.2.3",
     "@jeromefitz/notion": "4.0.5",
     "@types/ms": "0.7.31",
     "@types/react": "18.2.6",
