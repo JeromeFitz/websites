@@ -820,8 +820,8 @@ importers:
         specifier: 3.5.0
         version: 3.5.0
       focus-trap-react:
-        specifier: 10.1.2
-        version: 10.1.2(react-dom@18.2.0)(react@18.2.0)
+        specifier: 10.1.3
+        version: 10.1.3(react-dom@18.2.0)(react@18.2.0)
       framer-motion:
         specifier: 10.12.12
         version: 10.12.12(react-dom@18.2.0)(react@18.2.0)
@@ -12015,21 +12015,21 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: true
 
-  /focus-trap-react@10.1.2(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-E419LzaENAxp95bXKvGmatPzuPQtAQ6l2o576shXV82u53WvnjogcotgcD5d9veYoqXvPZI303RP6ZysXLGVsg==}
+  /focus-trap-react@10.1.3(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-ZPkkqzA2E4ccEXwYC/PsH9qnP8tSi4eAR3ImRxNcuM+VWHSJsNoIXUil+SsIVsaPwnWveQoP0d9P45LDORWgxw==}
     peerDependencies:
       prop-types: ^15.8.1
       react: '>=16.3.0'
       react-dom: '>=16.3.0'
     dependencies:
-      focus-trap: 7.4.1
+      focus-trap: 7.4.2
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       tabbable: 6.1.2
     dev: false
 
-  /focus-trap@7.4.1:
-    resolution: {integrity: sha512-rnXP5ERIjlo1gEZp7hQb4ekYqUxRuSDQeyWvxhahH3/GkWtd8h8g1C8Eu/KGpuvbUWNVeogK0kuzzrM4u2Z9jA==}
+  /focus-trap@7.4.2:
+    resolution: {integrity: sha512-KMjf+H5uDWPkwSQVqE5r/+vOkP5zBWwVBoWPIZxU3gfg+M8IT+Y8s+vXQqZvHEIXyHPKHrSm6m4G4ceF98OZ8w==}
     dependencies:
       tabbable: 6.1.2
     dev: false
