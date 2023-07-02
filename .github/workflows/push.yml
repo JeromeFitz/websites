@@ -135,8 +135,15 @@ jobs:
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
           WEBSITE: 'jeromefitzgerald.com'
 
+      # https://docs.github.com/en/actions/learn-github-actions/expressions
+      - name: '📛  Commit Message'
+        id: push-commit-message
+        run: |
+          echo "message=$(git log --no-merges -1 --oneline)" >> $GITHUB_OUTPUT
+
       - name: '🎭  E2E'
         id: push-e2e
+        if: ${{ contains(steps.push-commit-message.outputs.message, '[e2e]') }}
         uses: JeromeFitz/websites/.github/actions/e2e@main
         with:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
