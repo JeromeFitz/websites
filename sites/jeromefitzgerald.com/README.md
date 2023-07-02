@@ -1,6 +1,6 @@
 # jeromefitzgerald.com
 
-This website utilizes Notion as its CMS, and its intent is to keep up-to-date with React and for me to proof of concept toolings and ideas.
+This website utilizes `notion` as its CMS, and its intent is to keep up-to-date with `next|react` and for me to proof of concept toolings and ideas.
 
 Oh, and to get people to come to comedy shows. 🤣️
 
@@ -13,12 +13,11 @@ Further breakdown from the root `README`:
   - `radix-ui`
   - `tailwind`
 - **Analytics**: [Fathom](https://usefathom.com/ref/GKTEFP)
-  - Note: This is a referral code.
+  - Note: Referral Link
 - **Packages**:
   - `date-fns`
   - `cmdk`
   - `lodash`
-  - `next-sitemap`
   - `next-themes`
   - `plaiceholder`
   - `swr`
@@ -26,87 +25,156 @@ Further breakdown from the root `README`:
 
 ## Configuration
 
-Ideally, this would be a more direct configuration `json` or root file. For now, it is not.
+For `v13` this has moved away from one giant `json` configuration (or multiple self-referencing ones) into smaller bite sized portions.
 
-```sh
-.
-└── ./src/config/
-    ├── index.ts
-    ├── navigation.tsx
-    ├── notion.ts
-    └── seo.ts
-```
+To hook up `notion` we have moved to **environment variables**:
 
-### Navigation
+- Check out `env-required` in `next-config`
+- Note: Will be _moving away_ from this most likely for multi-site 😑
+  - With proper API Permissions via `notion` you are good to go with public
+  - At one point was thinking of DEV/PROD variations but that is --- TOO MUCH!
 
-`./src/config/navigation.tsx`
+### Segments
 
-Kind of 🤮️ 🤮️ 🤮️ at the moment, haha.
+#### Notion
 
-This is doing too much and is attempting to set up three modes of navigation (with links, toggles, icons, ...):
+By relying on **formulas** within `notion` it is possible to greatly reduce the query logic that was in prior versions.
 
-- `kbar` aka Command Center Navigation (not available on Mobile)
-  - In process of design refactor with potential for Mobile use
-- `mobile` which is a Sheet Component for Mobile Devices
-- `desktop` which is a Dropdown Menu for non-Mobile Devices
-  - In process of moving to new Navigation Menu
+- `Slug.Preview`: Create Formula to mimic segment (route) in `next` within `notion`
+  - Use this property as the basis for any [[...catchAll]]
+    - This removes the need for a complicated `Blog|Event` Date Search
+    - Also removes the need for a `Slug` and `RouteType` Match Sequence
+    - Create `Slug` as you would before, then customize what type it is in `Slug.Preview` and call `Slug.Preview` in your `@notionhq/client` query
+- Handle `Date` formatting at `notion` level not `next`
+  - `Date.DayOfMonth`
+  - `Date.DayOfMonthOrdinal`
+  - `Date.DayOfWeek`
+  - `Date.DayOfWeekAbbr`
+  - `Date.DaysUntilEvent`
+  - `Date.HoursUntilEvent`
+  - `Date.ISO`
+  - `Date.Month`
+  - `Date.MonthName`
+  - `Date.MonthNameAbbr`
+  - `Date.Time`
+  - `Date.Timezone`
+  - `Date.WeekNumber`
+  - `Date.Year`
+- Add `ID` Formula to have direct knowledge within `properties` of a return query without any finagling
 
-### Notion
+#### Next
 
-`./src/config/notion.ts`
+For each `next` segment (routing) there is a comparable `notion` database.
 
-This is probably why you are here. I am still in the midst of organizing the documentation for `@jeromefitz/notion` and `next-notion` which is a Notion API Wrapper that assists with Route Management within `next`.
+- `[Notion-DB].constants.ts`: Outlines variables needed by `next` to query `notion`
+  - `DATABASE_ID`: The `notion` DB you want to query
+  - `SEGMENT`: The `next` segment you want to utilize
+- `[Notion-DB].types.ts`: Outlines what fields are available to `next` via `notion`
+  - Set up your own type checking via `@notionhq/client`
+  - Instead of it being hard-coded as before, you can create your own.
+  - This is manual (unlike before), but more configurable (unlike before)
 
-The eventual export is:
+##### Example
 
-```tsx
-export { NOTION, PAGES__HOMEPAGE, PAGES }
-```
+**Events:**
 
-We get there through:
+Configuration for segments (routes): `/blog` && `/blog/[...]`
 
-- `PAGES__HOMEPAGE`: Currently need to hard-code the `slug` for the hompage of your app
-- `PAGES`: Currently need to hard-code which `PAGES` you want `@jeromefitz/notion` to query against when generating SSG via `next`
-  - A `PAGE` in this parlance is a route-type like `website.com/[this-path]`
-- `NOTION`: This holds all of your Notion Database Connection Information and is the setup you need to do to interface with `@jeromefitz/notion`. For each Database Type (Notion) aka Route Type (Next):
-  - `active`:
-  - `database_id`: Notion UUID
-  - `dataTypes`: `'LISTING' | 'LISTING_BY_DATE' | 'SLUG' | 'SLUG_BY_ROUTE'`
-  - `hasChild`: Does this route have a route underneath it? `PODCASTS => EPISODES`
-  - `infoType`: Is there a specific field that informs what type this is for Notion Querying purposes? (`EVENTS => dateEvent`, `BLOG => datePublished`)
-  - `isChild`: Is this route a Child? If so share its Parent here: `EPISODES => PODCASTS`
-  - `isChildInfoType`: Is this route a Child? If so share specific field that informs where we should get its Parent slug for `getStaticPaths` (`EPISODES -> PROPERTIES.rollupEpisodes__PodcastsSlugs`)
-  - `name`
-  - `page_id__seo`: Notion Page UUID from specific Data Item from `SEO` Database
-  - `routeMeta`: Does the `next` route contain meta that is useful to Notion? (`blog|events|podcasts`)
-  - `routeType`: What is the `routeType` called in `next` (`/shows`)
-  - `slug`: Very similar to `routeType`, this matches the `slug` or `Slug` in Notion. (Please note: This _does not_ attempt to discern `slugs` from Notion Titles, this is a specific field you set in Notion.)
-  - `ttl`: How long should the cache be set for (`tbd: right now everything is 30d`)
+- `./app/(notion)/blog/[[...catchAll]]/Blog.constants.ts`
+- `./app/(notion)/blog/[[...catchAll]]/Blog.types.ts`
 
-This is still being finalized and cleaned up. Like, why have `hasChild` and `isChild`? Well ... moving to `isChild` identified a pretty intense `hasChild` section that I do not want to refactor right now, haha.
+## `next-notion`
 
-Would be good to introduce dynamic generation of this if possible. There are kind of two modes to this:
+This is still being figured out and/or `@jeromefitz/notion`. For `v13` init this is housed within `sites/jeromefitzgerald.com` in `./src/app/(notion)/(utils)` until it can be refactored away:
 
-1. New Notion Sites with Next
-2. Existing Notion Sites with Next
+### Blocks
 
-The former you can use to generate and get all the `UUIDs` in an instant, the latter you have to do some manual setup.
+Components for a `1:1` coming from `notion` into `react`. Can pass custom styling to these (most are unstyled, or are going to be).
 
-This was available in the earliest rendition of all of this pre-Notion API.
+Identified in: `./Notion.Blocks.ts`
 
-#### Localized Functions
+- [x] Callout
+- [x] Column
+- [x] ColumnList
+- [x] Divider
+- [x] Embed
+- [x] Embed.Twitter (uh... heh)
+- [x] Heading
+  - Assumes you have a `h1` elsewhere (Site Heading)
+  - `@todo` make this configurable?
+  - [x] Heading1 => `h2`
+  - [x] Heading2 => `h3`
+  - [x] Heading3 => `h4`
+- [x] Link
+- [x] ListBulleted
+- [x] ListItem
+- [x] ListNumbered
+- [x] Paragraph
+- [x] Quote
+- [x] Video
+- [x] Video.YouTube
 
-Through [`next-notion`](../../packages/next-notion/README.md) we have:
+**Custom:**
 
-- `getStaticPropsCatchAll`
-- `getStaticPathsCatchAll`
-- `getPodcastFeed`
+- [x] Emoji: Pass text and determine if `a11y` assistance can be applied
+- [x] Image
+  - [x] Alt Text: Custom Query to pull **first** comment as the `a11y` text from `notion`
+  - [x] Caption: Handle formatting through `TextAnnotions` Component
+  - [x] Expiration: Image hosted by `notion`? Determine if need to re-request
+  - [x] Plaiceholder: Get image optimizations (blurData, height, width, etc.)
+- [x] TextAnnotations: Pass text and determine what `annotations` need to be applied
 
-“Documentation” lies with [`next-notion`](../../packages/next-notion/README.md)
+### Setup
 
-#### Interfaces With
+### Queries
 
-- `notion.custom.getInfoType`: Assist function to generate links for `next` routing strategy
+Light wrapper around `@notionhq/client`
+
+Custom Callouts:
+
+- `getDatabaseQuery`: This is where we pass `Slug.Preview` to query `notion`
+  - Perhaps we can change this to be dynamic as to what you _want_ to call your field
+- `getColumnData`: Create logic for HTML rendering
+- `
+
+### Utils
+
+#### `getPropertyTypeData`
+
+You pass a typed `notion` field it does the lift to get it into a more digestible format.
+
+**Note:** Goal is to keep `getPropertyTypeData` and move the data you want back to be custom to you via `[Notion-DB].utils.ts`
+
+- If we can align on what we expect from `notion` based on its API Type
+- Then you can control how you want the return data key'ed back
+  - Though ideally -- the less custom the better or you need to re-type
+    - `notion` how are fields named?
+    - `next` how does `react` churn it out?
+    - A bit much right now
+
+### Cache
+
+Types of cache to make a distinction about:
+
+- Redis KV
+- Next Build + Deduplication
+- React Cache
+
+During building of this it used to be important to not hit `notion` about 1,000 times a second. But the refactor has limited the calls tremendously along with the deduplication of requests.
+
+You _most likely_ do not need a fail-safe Redis KV and can do all of this on the fly with `RSC`. So will want to show how you can do that soon(ish).
+
+#### `getCustom`
+
+Lol, I see it is still called `getCustom`. Nice. Well, yes, need to name this better and then find a way to bypass it if you do not want.
+
+- `getKey`: Based on `segmentInfo` what should the key be
+- `getCache`: Pass `key` get `data`
+- `setCache`: Pass `key` set `data`
+- `getCustom`: Should _not_ need this long-term but it does some customizations still about creating SEO information and more
+  - Ideally this was handled in `[Notion-DB].utils`, consider roadmap
+
+`OVERRIDE_CACHE` is an environment variable to skip `getCache` and force `setCache`.
 
 ## Disclaimer
 

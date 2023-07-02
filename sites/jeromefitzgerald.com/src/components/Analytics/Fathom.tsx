@@ -1,5 +1,4 @@
 'use client'
-
 import { load, trackPageview } from 'fathom-client'
 import { usePathname, useSearchParams } from 'next/navigation'
 import { useEffect } from 'react'
@@ -23,7 +22,7 @@ function FathomAnalytics() {
       load(process.env.NEXT_PUBLIC__FATHOM_SITE_ID, {
         honorDNT: true,
         includedDomains: [process.env.NEXT_PUBLIC__SITE],
-        url: `https://${process.env.NEXT_PUBLIC__FATHOM_CUSTOM_DOMAIN}/script.js`,
+        url: `https://cdn.usefathom.com/script.js`,
       })
     }
   }, [])

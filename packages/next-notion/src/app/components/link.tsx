@@ -1,6 +1,7 @@
+import { cx } from '@jeromefitz/shared/src/utils'
 import NextLink from 'next/link'
 
-import { cx, getNextLink } from '../../utils'
+import { getNextLink } from '../../utils'
 const nextSeo = { url: `https://${process.env.NEXT_PUBLIC__SITE}` }
 const domain = new URL(nextSeo.url)
 

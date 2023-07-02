@@ -1,6 +1,5 @@
+import { cx } from '@jeromefitz/shared/src/utils'
 import type { Meta, StoryObj } from '@storybook/react'
-
-import { cx } from '../../utils/cx'
 
 import { MapIcon } from './Icon'
 

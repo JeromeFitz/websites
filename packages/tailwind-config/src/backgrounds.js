@@ -3,11 +3,11 @@
  * https://www.radix-ui.com/docs/colors/palette-composition/understanding-the-scale
  *
  */
-const { colors, excludes } = require('./lib/const')
+const { excludes, radixColors } = require('./lib/const')
 
 const backgrounds = {}
 
-colors.map((_color) => {
+radixColors.map((_color) => {
   let color = _color
   if (excludes.includes(color)) {
     color = `${color}A`
@@ -26,6 +26,9 @@ colors.map((_color) => {
   }
   backgrounds['.' + color + '-cta'] = {
     backgroundColor: `var(--${color}4)`,
+  }
+  backgrounds['.' + color + '-cta-text'] = {
+    color: `var(--${color}11)`,
   }
   backgrounds['.' + color + '-cta-int'] = {
     backgroundColor: `var(--${color}4)`,

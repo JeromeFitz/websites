@@ -1,4 +1,5 @@
-import { cx } from '../../utils'
+import { cx } from '@jeromefitz/shared/src/utils'
+
 import getContentTypeDetail from '../utils/getContentTypeDetail'
 
 const code = ({ content, id }) => {

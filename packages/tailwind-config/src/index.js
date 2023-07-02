@@ -1,5 +1,13 @@
 const { backgrounds } = require('./backgrounds')
 const { buttons, buttonTypes } = require('./buttons')
-const { colors } = require('./lib/const')
+const { radixColors } = require('./lib/const')
+const { notion, notionColors } = require('./notion')
 
-module.exports = { backgrounds, buttons, buttonTypes, colors }
+module.exports = {
+  backgrounds,
+  buttons,
+  buttonTypes,
+  notion,
+  notionColors,
+  radixColors,
+}

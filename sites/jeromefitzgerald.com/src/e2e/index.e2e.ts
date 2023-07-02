@@ -6,7 +6,7 @@ test('has title', async ({ page }) => {
   await page.goto(basePath)
 
   await expect(page).toHaveTitle(
-    'Jerome Fitzgerald (he/him) | Comedian. Human. Nice.'
+    'Jerome Fitzgerald (he/him) | Actor, Comedian, Writer'
   )
 })
 
@@ -20,6 +20,6 @@ test('has heading', async ({ page }) => {
    * - https://www.programsbuzz.com/article/playwright-select-first-or-last-element#first-method
    *
    */
-  const heading = page.getByRole('heading', { level: 1 }).first()
+  const heading = page.getByRole('heading', { level: 2 }).first()
   await expect(heading).toContainText('Jerome Fitzgerald (he/him)')
 })

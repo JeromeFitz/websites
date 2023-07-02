@@ -1,9 +1,13 @@
 {
-  "name": "@jeromefitz/prettier-config--custom",
+  "name": "@jeromefitz/eslint-config--custom",
   "version": "0.0.0",
   "private": true,
   "devDependencies": {
-    "@jeromefitz/prettier-config": "1.2.0",
-    "prettier-plugin-nativewind": "0.2.3"
+    "@babel/eslint-parser": "7.22.5",
+    "@jeromefitz/eslint-config": "1.2.0",
+    "eslint-plugin-jest-dom": "5.0.1",
+    "eslint-plugin-playwright": "0.15.2",
+    "eslint-plugin-storybook": "0.6.12",
+    "eslint-plugin-testing-library": "5.11.0"
   }
 }

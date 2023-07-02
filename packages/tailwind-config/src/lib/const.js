@@ -1,4 +1,4 @@
-const colors = [
+const radixColors = [
   'tomato',
   'red',
   'crimson',
@@ -42,4 +42,4 @@ const colors = [
 const foregroundTextBlack = ['sky', 'mint', 'lime', 'yellow', 'amber']
 const excludes = ['white', 'black']
 
-module.exports = { colors, excludes, foregroundTextBlack }
+module.exports = { excludes, foregroundTextBlack, radixColors }

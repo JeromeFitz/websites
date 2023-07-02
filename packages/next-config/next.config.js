@@ -162,6 +162,14 @@ module.exports = ({
           protocol,
           hostname: `**.**.amazonws.com`,
         },
+        {
+          protocol,
+          hostname: 's3.us-west-2.amazonaws.com',
+        },
+        {
+          protocol,
+          hostname: 'sc-events.s3.amazonaws.com',
+        },
         // @note(remotePattern) Notion
         {
           protocol,
@@ -181,6 +189,11 @@ module.exports = ({
         {
           protocol,
           hostname: `images.unsplash.com`,
+        },
+        // @note(remotePattern) Giphy
+        {
+          protocol,
+          hostname: `**.giphy.com`,
         },
       ],
     },
