@@ -8,7 +8,7 @@ import Image from 'next/image'
 // @todo(notion) yea this is nasty haha
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import { notionConfig } from '../../../../../sites/jeromefitzgerald.com/src/config/index'
+import { notionConfig } from '../../../../../sites/old.jeromefitzgerald.com/src/config/index'
 import { getNotion } from '../../helper'
 
 // import { notionConfig } from '~config/index'

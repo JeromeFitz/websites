@@ -1,6 +1,5 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import { cx } from '../../../../../sites/jeromefitzgerald.com/src/utils/cx'
+import { cx } from '@jeromefitz/shared/src/utils'
+
 import { CONTENT_NODE_TYPES, getContentNode } from '../index'
 
 // const EmojiParser = dynamic(

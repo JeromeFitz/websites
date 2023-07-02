@@ -3,11 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "main": "./next.config.js",
-  "dependencies": {},
   "devDependencies": {
     "@jeromefitz/prettier-config": "1.2.0",
-    "@next/bundle-analyzer": "13.4.3",
-    "@octokit/core": "4.2.1",
+    "@next/bundle-analyzer": "13.4.8-canary.14",
+    "@octokit/core": "4.2.4",
     "@plaiceholder/next": "2.5.0",
     "fast-json-stable-stringify": "2.1.0",
     "lodash": "4.17.21"

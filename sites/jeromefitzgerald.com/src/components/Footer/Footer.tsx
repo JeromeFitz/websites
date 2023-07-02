@@ -1,30 +1,44 @@
-'use client'
+import { Anchor } from '@jeromefitz/ds/components/Anchor'
 import {
-  // EnvelopeOpenIcon as EnvelopeOpen,
-  ExternalLinkIcon as ExternalLink,
-  GitHubLogoIcon as GitHubLogo,
-  InfoCircledIcon as InfoCircled,
-  InstagramLogoIcon as InstagramLogo,
-  LinkedInLogoIcon as LinkedInLogo,
-  Pencil2Icon as PencilWithPaper,
-  SpotifyLogoIcon as SpotifyLogo,
-  TwitterLogoIcon as TwitterLogo,
+  ArchiveIcon,
+  BookOpenIcon,
+  CalendarIcon,
+  CloudIcon,
+  EnvelopeOpenIcon,
+  ExternalLinkIcon,
+  FileTextIcon,
+  GitHubLogoIcon,
+  HomeIcon,
+  IdCardIcon,
+  InfoCircledIcon,
+  InstagramLogoIcon,
+  LinkedInLogoIcon,
+  MicrophoneIcon,
+  MusicalNoteIcon,
+  SpotifyLogoIcon,
+  StarIcon,
+  TwitterLogoIcon,
 } from '@jeromefitz/ds/components/Icon'
-import * as Separator from '@radix-ui/react-separator'
+import { cx } from '@jeromefitz/shared/src/utils'
+import { Fragment, Suspense } from 'react'
 
-import { Anchor } from '~components/Anchor'
-import { NowPlaying } from '~components/Music'
+import {
+  SectionContent,
+  SectionHeader,
+  // SectionHeaderContent,
+  SectionHeaderTitle,
+  SectionWrapper,
+} from '~components/Section'
 /**
  * @note ignore this file for CI linting (created on next build)
  */
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import buildInfo from '~config/build-info.json'
-// @todo(next) https://github.com/vercel/next.js/issues/46756
-// import { Icon } from '@jeromefitz/ds/components/Icon'
-import { Tooltip } from '~ui/Tooltip'
-import { cx } from '~utils/cx'
 
+import { ThemeToggle } from './Footer.client'
+
+const isDev = process.env.NODE_ENV === 'development'
 const { isBranchMain, prerelease, version } = buildInfo
 
 const URL_TYPE = {
@@ -35,238 +49,360 @@ const URL_TYPE = {
   SETTINGS: 'settings',
   SOCIAL: 'social',
 }
-const socials = [
-  // {
-  //   id: 'email',
-  //   title: 'Email',
-  //   url: 'mailto:j@jeromefitzgerald.com',
-  //   icon: <EnvelopeOpen />,
-  //   subtitle: 'j [at] jeromefitzgerald.com',
-  //   keywords: 'social email mail',
-  //   type: URL_TYPE.EXTERNAL,
-  // },
+
+const pages = [
   {
+    active: true,
+    id: 'homepage',
+    className: 'hover:text-radix-pink11',
+    // className: '',
+    title: '/',
+    url: '/',
+    icon: <HomeIcon className="text-inherit" />,
+    subtitle: '/',
+    keywords: 'social homepage',
+    type: URL_TYPE.INTERNAL,
+  },
+  {
+    active: true,
+    id: 'about',
+    className: 'hover:text-radix-pink11',
+    // className: '',
+    title: 'About',
+    url: '/about',
+    icon: <IdCardIcon className="text-inherit" />,
+    subtitle: 'About',
+    keywords: 'social about',
+    type: URL_TYPE.INTERNAL,
+  },
+  {
+    active: isDev,
+    id: 'books',
+    className: 'hover:text-radix-pink11',
+    // className: '',
+    title: 'Books',
+    url: '/books',
+    icon: <BookOpenIcon className="text-inherit" />,
+    subtitle: 'Books',
+    keywords: 'social books',
+    type: URL_TYPE.INTERNAL,
+  },
+  {
+    active: true,
     id: 'colophon',
-    className: 'hover:text-black/60 dark:hover:text-white/60',
+    className: 'hover:text-radix-pink11',
+    // className: '',
     title: 'Colophon',
     url: '/colophon',
-    icon: <InfoCircled className="text-inherit" />,
+    icon: <InfoCircledIcon className="text-inherit" />,
     subtitle: 'Colophon',
     keywords: 'social colophon',
     type: URL_TYPE.INTERNAL,
   },
   {
+    active: isDev,
+    id: 'contact',
+    className: 'hover:text-radix-pink11',
+    // className: '',
+    title: 'Contact',
+    url: '/contact',
+    icon: <EnvelopeOpenIcon className="text-inherit" />,
+    subtitle: 'Contact',
+    keywords: 'social contact',
+    type: URL_TYPE.INTERNAL,
+  },
+  {
+    active: true,
+    id: 'events',
+    className: 'hover:text-radix-pink11',
+    // className: '',
+    title: 'Events',
+    url: '/events',
+    icon: <CalendarIcon className="text-inherit" />,
+    subtitle: 'Events',
+    keywords: 'social events',
+    type: URL_TYPE.INTERNAL,
+  },
+  {
+    active: isDev,
+    id: 'music',
+    className: 'hover:text-radix-pink11',
+    // className: '',
+    title: 'Music',
+    url: '/music',
+    icon: <MusicalNoteIcon className="text-inherit" />,
+    subtitle: 'Music',
+    keywords: 'social music',
+    type: URL_TYPE.INTERNAL,
+  },
+  {
+    active: isDev,
+    id: 'podcasts',
+    className: 'hover:text-radix-pink11',
+    // className: '',
+    title: 'Podcasts',
+    url: '/podcasts',
+    icon: <MicrophoneIcon className="text-inherit" />,
+    subtitle: 'Podcasts',
+    keywords: 'social podcasts',
+    type: URL_TYPE.INTERNAL,
+  },
+  {
+    active: true,
+    id: 'shows',
+    className: 'hover:text-radix-pink11',
+    // className: '',
+    title: 'Shows',
+    url: '/shows',
+    icon: <StarIcon className="text-inherit" />,
+    subtitle: 'Shows',
+    keywords: 'social shows',
+    type: URL_TYPE.INTERNAL,
+  },
+]
+const socials = [
+  {
+    active: true,
+    id: 'bluesky',
+    className: 'hover:text-[#3399FF]', // #87CEEB
+    title: 'Bluesky',
+    url: 'https://bsky.app/profile/jeromefitzgerald.com',
+    icon: <CloudIcon className="text-inherit" />,
+    rightSlot: <ExternalLinkIcon />,
+    subtitle: '@jeromefitzgerald.com',
+    keywords: 'social bluesky',
+    type: URL_TYPE.EXTERNAL,
+  },
+  {
+    active: true,
     id: 'github',
     className: 'hover:text-black/60 dark:hover:text-white/60',
     title: 'GitHub',
     url: 'https://github.com/JeromeFitz',
-    icon: <GitHubLogo className="text-inherit" />,
-    rightSlot: <ExternalLink />,
+    icon: <GitHubLogoIcon className="text-inherit" />,
+    rightSlot: <ExternalLinkIcon />,
     subtitle: '@JeromeFitz',
     keywords: 'social github gh git',
     type: URL_TYPE.EXTERNAL,
   },
   {
+    active: true,
     id: 'instagram',
     className: 'hover:text-instagram',
     title: 'Instagram',
     url: 'https://instagram.com/JeromeFitz',
-    icon: <InstagramLogo className="text-inherit" />,
-    rightSlot: <ExternalLink />,
+    icon: <InstagramLogoIcon className="text-inherit" />,
+    rightSlot: <ExternalLinkIcon />,
     subtitle: '@JeromeFitz',
     keywords: 'social instagram ig',
     type: URL_TYPE.EXTERNAL,
   },
   {
-    id: 'twitter',
-    className: 'hover:text-twitter',
-    title: 'Twitter',
-    url: 'https://twitter.com/JeromeFitz',
-    icon: <TwitterLogo className="text-inherit" />,
-    rightSlot: <ExternalLink />,
-    subtitle: '@JeromeFitz',
-    keywords: 'social twitter',
-    type: URL_TYPE.EXTERNAL,
-  },
-  {
+    active: true,
     id: 'linkedin',
     className: 'hover:text-linkedin',
     title: 'LinkedIn',
     url: 'https://www.linkedin.com/in/jeromefitzgerald',
-    icon: <LinkedInLogo className="text-inherit" />,
-    rightSlot: <ExternalLink />,
+    icon: <LinkedInLogoIcon className="text-inherit" />,
+    rightSlot: <ExternalLinkIcon />,
     subtitle: '@jeromefitzgerald',
     keywords: 'social linkedin',
     type: URL_TYPE.EXTERNAL,
   },
   {
+    active: true,
     id: 'spotify',
     className: 'hover:text-spotify dark:hover:text-spotify-dark',
     title: 'Spotify',
     url: 'https://open.spotify.com/user/jyxdd2oc2koozvbs7gk7omnwc',
-    icon: <SpotifyLogo className="text-inherit" />,
-    rightSlot: <ExternalLink />,
+    icon: <SpotifyLogoIcon className="text-inherit" />,
+    rightSlot: <ExternalLinkIcon />,
     subtitle: 'some wild username spotify is odd',
     keywords: 'social spotify',
     type: URL_TYPE.EXTERNAL,
   },
+  {
+    active: true,
+    id: 'twitter',
+    className: 'hover:text-twitter',
+    title: 'Twitter',
+    url: 'https://twitter.com/JeromeFitz',
+    icon: <TwitterLogoIcon className="text-inherit" />,
+    rightSlot: <ExternalLinkIcon />,
+    subtitle: '@JeromeFitz',
+    keywords: 'social twitter',
+    type: URL_TYPE.EXTERNAL,
+  },
+]
+
+const menus = [
+  { id: 'pages', items: pages, title: 'Pages' },
+  { id: 'socials', items: socials, title: 'Social' },
 ]
 
 function Footer() {
   return (
-    <footer
-      className={cx(
-        // 'footer_footer__LV2HF',
-        // 'bg-zinc-100 text-zinc-900',
-        // 'dark:bg-zinc-800 dark:text-zinc-100',
-        // 'mint-bg text-radix-mauve12',
-        'transition-colors duration-150 ease-in-out',
-        // 'bg-white dark:bg-black text-black',
-        '',
-        ''
-      )}
-    >
-      <div
-        className={cx(
-          // 'layout-block-inner footer_inner__nOFwt',
-          'relative z-10 ',
-          // 'dark:bg-zinc-100 dark:text-zinc-900',
-          // 'bg-zinc-800 text-zinc-100',
-          'px-[6.4vw] pb-[8.2667vw] pt-[72vw]',
-          // 'mt-[0.26667vw] md:mt-[-.0694444444vw]',
-          'md:pb-[6.25vw] md:pl-[2.222vw] md:pr-[2.2222vw] md:pt-[23.3056vw]',
-          'rounded-b-3xl md:rounded-b-2xl',
-          '',
-          'text-radix-mauve12',
-          'bg-gradient-to-b',
-          'to-radix-mint7 from-white',
-          'dark:to-radix-mint7 dark:from-black',
-          ''
-        )}
-      >
-        <NowPlaying />
-        {/* @todo(remove) at some point in the next few weeks would be cool to remove this haha */}
-        <div id="footer--construction" className={cx('my-8 w-full py-8')}>
-          <h1
-            className={cx(
-              'text-3xl font-black',
-              'flex flex-row items-center',
-              'mb-2 pb-2'
-            )}
-          >
-            <span className="mr-2">
-              <PencilWithPaper className="h-6 w-6" />
-            </span>
-            <span>
-              {` `}
-              Please Note
-            </span>
-          </h1>
-          <p className="mx-0 mb-7 mt-5 text-lg">
-            This site is being actively developed. So though it is nowhere perfect,
-            it is shippable, heh. So consider this eternally under construction I
-            guess.
-          </p>
-        </div>
-      </div>
-      <div
-        className={cx(
-          // 'footer_bottom__VigXf layout-grid',
-          'sticky inset-x-0 bottom-0 z-0 overflow-hidden py-10',
-          // 'bg-zinc-100 py-10 text-black',
-          'md:w-screen md:py-[3.125vw]',
-          // 'rounded-b-3xl md:rounded-b-2xl',
-          'mx-auto grid w-full grid-cols-4 gap-7 px-12',
-          // 'mix-blend-difference',
-          'text-radix-mauve12',
-          ''
-        )}
-      >
-        <div
-          className={cx(
-            // 'footer_social__L0_TJ',
-            'col-start-1 col-end-12 w-full text-start',
-            'md:col-start-1 md:col-end-2 md:flex md:select-none',
-            'gap-2',
-            'flex flex-row',
-            'items-center'
-          )}
-        >
-          {socials.map((social) => {
-            return (
-              <Anchor
-                aria-label={`A link to ${social?.subtitle} on ${social?.title}`}
-                className={cx(
-                  'cursor-pointer items-center justify-center',
-                  // 'mr-[2.1333vw] height-[10.993vw] width-[10.993vw]',
-                  // 'md:mr-[.5555555556vw] md:height-[2.7777777778vw] md:width-[2.7777777778vw]',
-                  // 'h-[2rem] ',
-                  'h-6 w-6',
-                  'icon-custom',
-                  'mr-5',
-                  social?.className,
-                  'transition-colors duration-200'
-                )}
-                href={social.url}
-                key={`social-${social.id}`}
-                // style={{ '& svg': 'inherit' }}
-                // target="_blank"
-                // rel="noopener noreferrer"
-              >
-                <Tooltip content={social.title} trigger={social.icon} />
-              </Anchor>
-            )
-          })}
-        </div>
-        <div
-          className={cx(
-            // 'footer_social__L0_TJ',
-            'mb-14 md:mb-0 ',
-            'col-start-1 col-end-12 w-full',
-            'md:col-start-9 md:col-end-[-1] md:row-start-1 md:row-end-auto md:text-end',
-            'items-center text-center',
-            ''
-          )}
-        >
-          <p
-            className={cx(
-              // // 'footer_address__p_BIK p-s',
-              // 'col-start-1 col-end-2 row-start-2 row-end-auto text-start',
-              // 'md:col-end-[-1] md:col-start-9 md:row-start-1 md:row-end-auto md:text-end',
-              '',
-              ''
-            )}
-          >
-            Nice Group of People, LLC
-          </p>
-          <p
-            className={cx(
-              // // 'footer_date__Nnwwa p-s',
-              // 'col-start-3 col-end-3 row-start-2 row-end-auto text-start',
-              // 'md:col-end-[-1] md:col-start-12 md:row-start-1 md:row-end-auto md:text-end',
-              'flex flex-row md:items-center md:justify-end',
-              'items-center justify-center text-center'
-            )}
-          >
-            v{isBranchMain ? version : `${version}-${prerelease}`}
-            <Separator.Root
-              asChild
+    <footer>
+      <div className={cx('m-2 px-2 md:m-6')}>
+        <SectionWrapper>
+          <SectionHeader>
+            <SectionHeaderTitle>Footer</SectionHeaderTitle>
+          </SectionHeader>
+          <SectionContent>
+            <div
               className={cx(
-                'bg-radix-mauve12',
-                'data-[orientation=horizontal]:h-[1px]',
-                'data-[orientation=horizontal]:w-full',
-                'data-[orientation=vertical]:h-full',
-                'data-[orientation=vertical]:w-[1px]',
-                'mx-3 my-0 min-h-[0.75rem]'
+                'grid w-full grid-cols-12 gap-x-4 gap-y-8',
+                // 'md:[&>*:nth-child(2)]:col-start-9',
+                ''
               )}
-              decorative
-              orientation="vertical"
             >
-              <span />
-            </Separator.Root>
-            ©2023
-          </p>
-        </div>
+              {menus.map((menu) => {
+                return (
+                  <div
+                    className={cx('col-span-12', 'md:col-span-4', '')}
+                    key={`menu-${menu.id}`}
+                  >
+                    <div
+                      aria-level={2}
+                      role="heading"
+                      className={cx(
+                        'pb-3 font-extrabold uppercase tracking-tight',
+                        ''
+                      )}
+                    >
+                      <span>{menu?.title}</span>
+                    </div>
+                    <ul>
+                      {menu?.items.map((item) => {
+                        return (
+                          <li
+                            className={cx(
+                              'mb-2 md:mb-0.5',
+                              item?.active && item?.className
+                            )}
+                            key={`menu-${menu?.id}-social-${item?.id}`}
+                          >
+                            {item?.active ? (
+                              <Anchor
+                                aria-label={`A link to ${item?.subtitle} on ${item?.title}`}
+                                className={cx(
+                                  'cursor-pointer',
+                                  // 'items-center justify-center',
+                                  // 'h-6 w-6',
+                                  'icon-custom',
+                                  // 'mr-5',
+                                  item?.className,
+                                  'transition-colors duration-200',
+                                  'flex flex-row items-center gap-1 align-middle',
+                                  'text-inherit',
+                                  'no-underline'
+                                )}
+                                href={item?.url}
+                              >
+                                <span className="mr-2 h-4 w-4">{item?.icon}</span>
+                                <span className="mr-2">{item?.title}</span>
+                              </Anchor>
+                            ) : (
+                              <span
+                                // aria-label={`A link to ${item?.subtitle} on ${item?.title}`}
+                                className={cx(
+                                  // 'cursor-pointer',
+                                  // 'items-center justify-center',
+                                  // 'h-6 w-6',
+                                  'icon-custom',
+                                  // 'mr-5',
+                                  // item?.className,
+                                  'transition-colors duration-200',
+                                  'flex flex-row items-center gap-1 align-middle',
+                                  'text-inherit',
+                                  'line-through'
+                                )}
+                                // href={item?.url}
+                              >
+                                <span className="mr-2 h-4 w-4">{item?.icon}</span>
+                                <span className="mr-2">{item?.title}</span>
+                              </span>
+                            )}
+                          </li>
+                        )
+                      })}
+                    </ul>
+                  </div>
+                )
+              })}
+              <div className={cx('col-span-12', 'md:col-span-4', '')}>
+                <div
+                  aria-level={2}
+                  role="heading"
+                  className={cx('pb-3 font-extrabold uppercase tracking-tight', '')}
+                >
+                  <span>Info</span>
+                </div>
+                <ul>
+                  <li
+                    className={cx(
+                      'mb-2 md:mb-0.5',
+                      'flex flex-row items-center gap-1 align-middle'
+                    )}
+                  >
+                    <span className="mr-2 h-4 w-4">
+                      <ArchiveIcon className="text-inherit" />
+                    </span>
+                    <span className="">
+                      v{isBranchMain ? version : `${version}-${prerelease}`}
+                    </span>
+                  </li>
+                  {/* <li
+                    className={cx(
+                      'mb-2 md:mb-0.5',
+                      'align-middle flex flex-row items-center gap-1'
+                    )}
+                  >
+                    <span className="mr-2 h-4 w-4">
+                      <FileTextIcon className="text-inherit" />
+                    </span>
+                    <span className="">This site is in-progress</span>
+                  </li> */}
+                  <li
+                    className={cx(
+                      'mb-2 md:mb-0.5',
+                      'flex flex-row items-center gap-1 align-middle'
+                    )}
+                  >
+                    <Suspense fallback={<Fragment />}>
+                      <ThemeToggle />
+                    </Suspense>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <SectionWrapper>
+              <SectionHeader className="hidden">Disclaimer</SectionHeader>
+              <SectionContent className="w-full md:w-full">
+                <div className="flex flex-row items-start justify-start gap-1 py-4 align-text-bottom md:py-0">
+                  <span className="mr-2 mt-1 h-4 w-4">
+                    <FileTextIcon className="text-inherit" />
+                  </span>
+                  <span>
+                    <span className="font-bold">Please Note:</span> This site is
+                    being actively developed. So though it is nowhere near perfect,
+                    it is shippable, heh.{` `}
+                    <br className="hidden md:inline" />
+                    Consider this eternally under construction I guess
+                  </span>
+                </div>
+              </SectionContent>
+            </SectionWrapper>
+            <SectionWrapper>
+              <SectionHeader className="hidden">Copyright</SectionHeader>
+              <SectionContent className="w-full pb-36 md:w-full md:pb-2">
+                <div className="flex flex-row items-start justify-start gap-1 py-4 align-text-bottom md:py-0">
+                  <span className="">© 2023 Nice Group of People, LLC</span>
+                </div>
+              </SectionContent>
+            </SectionWrapper>
+          </SectionContent>
+        </SectionWrapper>
       </div>
     </footer>
   )

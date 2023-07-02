@@ -1,6 +1,6 @@
 // import Redis from 'ioredis'
 // import { Ratelimit } from '@upstash/ratelimit'
-import https from 'https'
+import https from 'node:https'
 
 import { Redis } from '@upstash/redis'
 /**

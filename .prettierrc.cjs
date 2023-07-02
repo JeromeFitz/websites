@@ -1,7 +1,5 @@
-const config = require('@jeromefitz/prettier-config/index.cjs')
+const config = require('@jeromefitz/prettier-config/tailwind.cjs')
 
 module.exports = {
   ...config,
-  plugins: [...config.plugins, require('prettier-plugin-nativewind')],
-  tailwindCustomFunctions: ['cx'],
 }

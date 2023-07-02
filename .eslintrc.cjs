@@ -38,14 +38,28 @@ module.exports = {
     }, // ⚙️ sites/jeromefitzgerald.com
     {
       extends: ['@jeromefitz/eslint-config/tailwind.cjs'],
-      files: 'sites/jeromefitzgerald.com/**',
+      files: 'sites/**',
       rules: nextOverrides.rules,
       settings: {
         tailwindcss: {
           config: `${fullCwd}/sites/jeromefitzgerald.com/tailwind.config.js`,
           callees: ['cx', 'tw'],
-          // @todo(eslint-plugin-tailwindcss) submit pr for allowlist
-          whitelist: ['afc', 'afc2', 'icon-custom', 'trap'],
+          /**
+           * @todo(eslint-plugin-tailwindcss) submit pr for allowlist
+           * @note(radix) dynamic variables need to be identified one-by-one here
+           */
+          whitelist: [
+            '_background',
+            '-button',
+            '-radix-',
+            'afc',
+            'afc2',
+            'bg-radix-',
+            'icon-custom',
+            'notion-',
+            'text-radix-',
+            'trap',
+          ],
         },
       },
     },

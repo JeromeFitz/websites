@@ -1,23 +1,16 @@
-// 'use client'
-
 import '@jeromefitz/tailwind-config/styles/globals.css'
-// import '~styles/output.css'
 
+import { cx } from '@jeromefitz/shared/src/utils'
 import localFont from 'next/font/local'
-import { Fragment, Suspense } from 'react'
+import { Suspense } from 'react'
 
 import { Analytics } from '~components/Analytics'
-import { CommandMenu } from '~components/CommandMenu'
+import { Banner } from '~components/Banner'
 import { Footer } from '~components/Footer'
-import { Navigation } from '~components/Navigation'
-import { NavigationBar } from '~components/NavigationBar'
+// // import { Header } from '~components/Header'
+import { NowPlaying } from '~components/NowPlaying'
+import { NowReading } from '~components/NowReading'
 import { Providers } from '~components/Providers'
-import { ScrollToTopHack } from '~components/ScrollToTopHack'
-import { metadata as seo } from '~config/metadata'
-import { cx } from '~utils/cx'
-// import { log } from '~utils/log'
-
-// const DEBUG_KEY = 'layout.ts >> (root) > '
 
 const fontSans = localFont({
   display: 'swap',
@@ -29,37 +22,45 @@ const fontSans = localFont({
     },
   ],
   src: '../../public/static/fonts/inter/inter-var.woff2',
-  // src: '../../public/static/fonts/name-sans/at--name-sans--var-full.woff2',
+  // src: '../../public/static/fonts/name-sans/at--name-sans-variable.woff2',
   style: 'normal',
   variable: '--font-inter',
   weight: '100 900',
 })
 
-interface RootLayoutProps {
-  children: React.ReactNode
+export const metadata = {
+  title: 'Jerome Fitzgerald (he/him) | Actor, Comedian, Writer',
+  description:
+    'Jerome Fitzgerald is an an actor, comedian, & writer hailing from Pittsburgh, PA.',
 }
 
-export const metadata = seo
+function Wrapper({ children }) {
+  return (
+    <div
+      className={cx(
+        // mobile
+        'm-2 px-2',
+        // desktop
+        'md:m-6',
+        ''
+      )}
+    >
+      {children}
+    </div>
+  )
+}
 
-const preconnects = [
-  // https://web.dev/preconnect-and-dns-prefetch/#how-to-implement-rel=preconnect
-  // 'https://jeromefitzgerald.com',
-  'https://cdn.jeromefitzgerald.com',
-  'https://crane.jeromefitzgerald.com',
-  'https://vitals.vercel-insights.com',
-]
+function Main({ children }) {
+  return (
+    <main className="m-0 min-h-screen w-full p-0">
+      <Wrapper>{children}</Wrapper>
+    </main>
+  )
+}
 
-function RootLayoutHOC({ children }: RootLayoutProps) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        {preconnects.map((preconnect, idx) => (
-          <Fragment key={`preconnect-${idx}`}>
-            <link rel="preconnect" href={preconnect} crossOrigin="anonymous" />
-            <link rel="dns-prefetch" href={preconnect} />
-          </Fragment>
-        ))}
-      </head>
       <body
         className={cx(
           'overflow-y-auto overflow-x-hidden',
@@ -70,40 +71,20 @@ function RootLayoutHOC({ children }: RootLayoutProps) {
           fontSans.variable
         )}
       >
-        {children}
+        <Providers>
+          <Suspense>
+            <Analytics />
+          </Suspense>
+          <Banner />
+          {/* <Header /> */}
+          <Main>{children}</Main>
+          <Wrapper>
+            <NowPlaying />
+            <NowReading />
+          </Wrapper>
+          <Footer />
+        </Providers>
       </body>
     </html>
   )
 }
-
-function RootLayoutKitchenSink({ children }: RootLayoutProps) {
-  return (
-    <RootLayoutHOC>
-      <Suspense>
-        <Analytics />
-      </Suspense>
-      <Providers>
-        <>
-          <Navigation />
-          <main className="relative m-0 min-h-screen w-full p-0">
-            <NavigationBar />
-            <div className="z-10 mx-4 my-6 max-w-screen-sm md:mx-4 md:my-9   md:max-w-screen-lg lg:mx-auto">
-              {/* @note(next) does not cause: deopted into client-side rendering  */}
-              <ScrollToTopHack>{children}</ScrollToTopHack>
-            </div>
-          </main>
-          <Footer />
-          <Suspense>
-            <CommandMenu />
-          </Suspense>
-        </>
-      </Providers>
-    </RootLayoutHOC>
-  )
-}
-
-function RootLayout({ children }: RootLayoutProps) {
-  return <RootLayoutKitchenSink>{children}</RootLayoutKitchenSink>
-}
-
-export default RootLayout
