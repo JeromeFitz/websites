@@ -1,1 +1,0 @@
-export { ScrollToTopHack } from './ScrollToTopHack'
