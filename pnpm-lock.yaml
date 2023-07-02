@@ -369,8 +369,8 @@ importers:
         specifier: 4.2.4
         version: 4.2.4
       '@plaiceholder/next':
-        specifier: 2.5.0
-        version: 2.5.0
+        specifier: 3.0.0
+        version: 3.0.0
       fast-json-stable-stringify:
         specifier: 2.1.0
         version: 2.1.0
@@ -6744,10 +6744,11 @@ packages:
       tslib: 2.6.0
     dev: true
 
-  /@plaiceholder/next@2.5.0:
-    resolution: {integrity: sha512-vT8YtPpgQEKFtz0QiiCnH3NfyVlldYpnxR6X2sqCJvHk+pi/Be1nb62CdYQ7RoNePPcjBQoRDSPpZpGmg8mEdw==}
+  /@plaiceholder/next@3.0.0:
+    resolution: {integrity: sha512-7UK/H1X64hwo2VaxOPKMXE+OY9IgmKLPsq/xKHZ+gU07oqQSfIWWIgpVVucMB3ZgVYah+68agR15BRuSxAuMHw==}
     peerDependencies:
       next: '>= 10.0.0'
+      plaiceholder: '>=3.0.0'
       sharp: '>= 0.30.6'
     dev: true
 
