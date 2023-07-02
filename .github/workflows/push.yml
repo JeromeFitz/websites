@@ -135,15 +135,15 @@ jobs:
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
           WEBSITE: 'jeromefitzgerald.com'
 
-      - name: '🎭  E2E'
-        id: push-e2e
-        uses: JeromeFitz/websites/.github/actions/e2e@main
-        with:
-          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
-          TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
-          TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-          VERCEL_ENV: ${{ vars.VERCEL_ENV }}
-          WEBSITE: 'jeromefitzgerald.com'
+      # - name: '🎭  E2E'
+      #   id: push-e2e
+      #   uses: JeromeFitz/websites/.github/actions/e2e@main
+      #   with:
+      #     LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+      #     TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+      #     TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      #     VERCEL_ENV: ${{ vars.VERCEL_ENV }}
+      #     WEBSITE: 'jeromefitzgerald.com'
 
       - name: '🏷️  Release'
         id: push-release

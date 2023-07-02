@@ -145,16 +145,16 @@ jobs:
         run: |
           echo "message=$(git log --no-merges -1 --oneline)" >> $GITHUB_OUTPUT
 
-      - name: '🎭  E2E'
-        id: pull-e2e
-        if: ${{ contains(steps.pull-commit-message.outputs.message, '[b]') }}
-        uses: JeromeFitz/websites/.github/actions/e2e@main
-        with:
-          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
-          TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
-          TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-          VERCEL_ENV: ${{ vars.VERCEL_ENV }}
-          WEBSITE: 'jeromefitzgerald.com'
+      # - name: '🎭  E2E'
+      #   id: pull-e2e
+      #   if: ${{ contains(steps.pull-commit-message.outputs.message, '[b]') }}
+      #   uses: JeromeFitz/websites/.github/actions/e2e@main
+      #   with:
+      #     LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+      #     TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+      #     TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      #     VERCEL_ENV: ${{ vars.VERCEL_ENV }}
+      #     WEBSITE: 'jeromefitzgerald.com'
 
       - name: '🛠️  Deploy (Config)'
         id: pull-deploy-config
