@@ -1,8 +1,17 @@
 const radixColors = require('@radix-ui/colors')
 const plugin = require('tailwindcss/plugin')
 
-const { backgrounds, buttons } = require('./src/index')
+const { backgrounds, buttons, notion, notionColors } = require('./src/index')
 
+/**
+ * @debug
+ */
+// console.dir(`> backgrounds`)
+// console.dir(backgrounds)
+// console.dir(`> buttons`)
+// console.dir(buttons)
+// console.dir(`> notion`)
+// console.dir(notion)
 /**
  * @note(tailwind) radix-colors-for-tailwind
  *
@@ -53,7 +62,7 @@ const radixPlugin = plugin.withOptions(
         )
         darkColors = { ...darkColors, ...dark, ...darkA }
         lightColors = { ...lightColors, ...light, ...lightA }
-        radixStyles = { ...radixStyles, ...backgrounds, ...buttons }
+        radixStyles = { ...radixStyles, ...backgrounds, ...buttons, ...notion }
       })
       addBase({
         ':root': {
@@ -63,6 +72,8 @@ const radixPlugin = plugin.withOptions(
           ...darkColors,
         },
       })
+      // console.dir(`>> radixStyles > notions`)
+      // console.dir(notion)
       addComponents(radixStyles)
     }
   },
@@ -90,14 +101,25 @@ const radixPlugin = plugin.withOptions(
         )
         return obj
       }, {})
+    // const filteredNotion = {}
+    // notionColors.map((n) => {
+    //   filteredNotion[n] = n.includes('_background')
+    //     ? `var(--${n.split('_')[0]}6)`
+    //     : `var(--${n}11)`
+    // })
+
+    const radix = {
+      ...filtered,
+      ...filteredA,
+      // ...filteredNotion,
+    }
+    // console.dir(`>> radix > filteredNotion`)
+    // console.dir(filteredNotion)
     return {
       theme: {
         extend: {
           colors: {
-            radix: {
-              ...filtered,
-              ...filteredA,
-            },
+            radix,
           },
         },
       },

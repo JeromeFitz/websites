@@ -23,7 +23,7 @@ const branchTypes = _map(
 const branches = [
   { name: 'main' },
   { name: 'canary', prerelease: 'canary' },
-  { name: 'feat/next-13-app-dir', prerelease: 'next13' },
+  { name: 'NICE-43', prerelease: 'NICE-43' },
   ...branchTypes,
 ]
 

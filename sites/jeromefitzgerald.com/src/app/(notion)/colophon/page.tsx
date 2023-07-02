@@ -1,46 +1,84 @@
-import type { Page } from '@jeromefitz/notion/schema'
-import { ContentNodes } from 'next-notion/src/app'
-import { Suspense } from 'react'
+/**
+ * @note(next) Custom Homepage
+ */
+import { isObjectEmpty } from '@jeromefitz/utils'
+// import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints'
 
-import { getDataCms, getMetadata } from '~app/(notion)/getMetadata'
-import { Debug } from '~components/Debug'
-import { PageHeading } from '~ui/PageHeading'
-// import { log } from '~utils/log'
+import { getCustom } from '~app/(cache)/getCustom'
+import { NotionBlocks } from '~app/(notion)/(utils)/NotionBlocks'
+// import { getDatabaseQuery } from '~app/(notion)/(utils)/queries/index'
+import {
+  getSegmentInfo,
+  // getPropertyTypeData,
+  getPageData,
+  // getShowData,
+} from '~app/(notion)/(utils)/utils'
+import {
+  // DATABASE_ID,
+  SEGMENT,
+} from '~app/(notion)/pages/[[...catchAll]]/Page.constants'
+import {
+  SectionContent,
+  SectionHeader,
+  SectionHeaderContent,
+  // SectionHero,
+  SectionHeaderTitle,
+  SectionWrapper,
+  // Tags,
+} from '~components/Section'
+import { Testing } from '~components/Testing'
 
-const ROUTE_TYPE = 'colophon'
-// const DEBUG_KEY = `${ROUTE_TYPE}/page.tsx >> `
+async function Slug({ segmentInfo }) {
+  // console.dir(segmentInfo)
+  // const data: QueryDatabaseResponse = await getDatabaseQuery({
+  //   database_id: DATABASE_ID,
+  //   filterType: 'starts_with',
+  //   segmentInfo: {
+  //     ...segmentInfo,
+  //     slug: '/homepage',
+  //   },
+  // })
+  const data = await getCustom({
+    database_id: '',
+    filterType: 'equals',
+    segmentInfo: {
+      ...segmentInfo,
+      slug: '/colophon',
+    },
+  })
 
-export async function generateMetadata() {
-  const catchAll = [ROUTE_TYPE]
-  const data = await getDataCms(catchAll)
-  const { metadata } = getMetadata({ catchAll, data })
-  return metadata
-}
+  const title = 'Colophon'
 
-export const preload = () => {
-  const catchAll = [ROUTE_TYPE]
-  void getDataCms(catchAll)
+  // console.dir(`showData`)
+  // console.dir(showData)
+  // console.dir(`data`)
+  // console.dir(data)
+
+  const { seoDescription } = getPageData(data?.page?.properties) || ''
+
+  if (isObjectEmpty(data.page)) return null
+  return (
+    <>
+      <SectionWrapper>
+        <SectionHeader>
+          <SectionHeaderTitle isTitle>{title}</SectionHeaderTitle>
+          <SectionHeaderContent className="">{seoDescription}</SectionHeaderContent>
+        </SectionHeader>
+        <SectionContent>
+          <NotionBlocks data={data?.blocks} />
+        </SectionContent>
+      </SectionWrapper>
+      <Testing />
+    </>
+  )
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export default async function Page({ preview = false, ...props }) {
-  const catchAll = [ROUTE_TYPE]
-  const data = await getDataCms(catchAll)
-  const { content, images } = data
-  const { pathVariables } = getMetadata({ catchAll, data })
+export default function Page({ preview = false, ...props }) {
+  const segmentInfo = getSegmentInfo({ SEGMENT, ...props })
 
-  return (
-    <>
-      {/* @note(next) Debug does not cause: deopted into client-side rendering */}
-      {/* @todo(next) Debug could be Suspensed */}
-      <Suspense>
-        <Debug data={data} pathVariables={pathVariables} />
-      </Suspense>
-      <PageHeading overline={`colophon`} title={'Colophon'} />
-      {/* @todo(next) Actual Loading Screen */}
-      <Suspense fallback={<p>Loading...</p>}>
-        {!!content && <ContentNodes content={content} images={images} />}
-      </Suspense>
-    </>
-  )
+  // if (segmentInfo.isIndex) {
+  //   return <Listing segmentInfo={segmentInfo} />
+  // }
+  return <Slug segmentInfo={segmentInfo} />
 }

@@ -1,70 +1,84 @@
-import type { Page } from '@jeromefitz/notion/schema'
-import { ContentNodes } from 'next-notion/src/app'
-import { Suspense } from 'react'
+/**
+ * @note(next) Custom Homepage
+ */
+import { isObjectEmpty } from '@jeromefitz/utils'
+// import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints'
 
-import { getDataCms, getMetadata } from '~app/(notion)/getMetadata'
-import { Debug } from '~components/Debug'
-import { PAGES__HOMEPAGE } from '~config/notion'
-import { PageHeading } from '~ui/PageHeading'
-// import { log } from '~utils/log'
+import { getCustom } from '~app/(cache)/getCustom'
+import { NotionBlocks } from '~app/(notion)/(utils)/NotionBlocks'
+// import { getDatabaseQuery } from '~app/(notion)/(utils)/queries/index'
+import {
+  getSegmentInfo,
+  // getPropertyTypeData,
+  getPageData,
+  // getShowData,
+} from '~app/(notion)/(utils)/utils'
+import {
+  // DATABASE_ID,
+  SEGMENT,
+} from '~app/(notion)/pages/[[...catchAll]]/Page.constants'
+import {
+  SectionContent,
+  SectionHeader,
+  SectionHeaderContent,
+  // SectionHero,
+  SectionHeaderTitle,
+  SectionWrapper,
+  // Tags,
+} from '~components/Section'
+import { Testing } from '~components/Testing'
 
-import { ListingShows } from './ListingShows'
-//
-// const DEBUG_KEY = 'page.tsx >> '
+async function Slug({ segmentInfo }) {
+  // console.dir(segmentInfo)
+  // const data: QueryDatabaseResponse = await getDatabaseQuery({
+  //   database_id: DATABASE_ID,
+  //   filterType: 'starts_with',
+  //   segmentInfo: {
+  //     ...segmentInfo,
+  //     slug: '/homepage',
+  //   },
+  // })
+  const data = await getCustom({
+    database_id: '',
+    filterType: 'equals',
+    segmentInfo: {
+      ...segmentInfo,
+      slug: '/homepage',
+    },
+  })
 
-const ROUTE_TYPE = PAGES__HOMEPAGE
+  const title = 'Jerome Fitzgerald (he/him)'
 
-export const revalidate = 0
+  // console.dir(`showData`)
+  // console.dir(showData)
+  // console.dir(`data`)
+  // console.dir(data)
 
-export async function generateMetadata() {
-  const catchAll = [ROUTE_TYPE]
-  const data = await getDataCms(catchAll)
-  const { metadata } = getMetadata({ catchAll, data })
-  // log(`${DEBUG_KEY} metadata`, metadata)
-  return {
-    ...metadata,
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    title: { default: `${metadata?.title?.default} | Comedian. Human. Nice.` },
-  }
-}
+  const { seoDescription } = getPageData(data?.page?.properties) || ''
 
-export const preload = ({ ...props }) => {
-  const catchAll = [ROUTE_TYPE]
-  !!props.params?.catchAll && catchAll.push(...props.params?.catchAll)
-  void getDataCms(catchAll)
+  if (isObjectEmpty(data.page)) return null
+  return (
+    <>
+      <SectionWrapper>
+        <SectionHeader>
+          <SectionHeaderTitle isTitle>{title}</SectionHeaderTitle>
+          <SectionHeaderContent className="">{seoDescription}</SectionHeaderContent>
+        </SectionHeader>
+        <SectionContent>
+          <NotionBlocks data={data?.blocks} />
+        </SectionContent>
+      </SectionWrapper>
+      <Testing />
+    </>
+  )
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export default async function Page({ preview = false, ...props }) {
-  // log(`${DEBUG_KEY} props`, props)
-  const catchAll = [ROUTE_TYPE]
-  !!props.params?.catchAll && catchAll.push(...props.params?.catchAll)
-  const data = await getDataCms(catchAll)
-  const { content, images, info } = data
-  const { pathVariables } = getMetadata({ catchAll, data })
-  const { properties }: { properties: Page } = info
-  const { title } = properties
+export default function Page({ preview = false, ...props }) {
+  const segmentInfo = getSegmentInfo({ SEGMENT, ...props })
 
-  // log(`${DEBUG_KEY} pathVariables`, pathVariables)
-  // log(`${DEBUG_KEY} data`, data)
-  // log(`${DEBUG_KEY} title`, title)
-
-  return (
-    <>
-      {/* @note(next) Debug does not cause: deopted into client-side rendering */}
-      {/* @todo(next) Debug could be Suspensed */}
-      <Suspense>
-        <Debug data={data} pathVariables={pathVariables} />
-      </Suspense>
-      <PageHeading overline="" title={title} />
-      {!!content && <ContentNodes content={content} images={images} />}
-      <Suspense fallback={<p>Loading...</p>}>
-        <>
-          <PageHeading overline="shows" title={'Shows'} />
-          <ListingShows />
-        </>
-      </Suspense>
-    </>
-  )
+  // if (segmentInfo.isIndex) {
+  //   return <Listing segmentInfo={segmentInfo} />
+  // }
+  return <Slug segmentInfo={segmentInfo} />
 }

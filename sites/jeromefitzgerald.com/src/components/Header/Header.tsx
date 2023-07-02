@@ -1,121 +1,89 @@
-'use client'
+import { cx } from '@jeromefitz/shared/src/utils'
+
 import {
-  motion,
-  useMotionTemplate,
-  useMotionValue,
-  useScroll,
-  useTransform,
-} from 'framer-motion'
-import { useEffect } from 'react'
+  AccordionDemo,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from './Header.Accordion'
 
-const clamp = (number, min, max) => Math.min(Math.max(number, min), max)
+const menus = [{ id: 'menu', url: '', title: 'Menu' }]
 
-function useBoundedScroll(bounds) {
-  const { scrollY } = useScroll()
-  const scrollYBounded = useMotionValue(0)
-  const scrollYBoundedProgress = useTransform(scrollYBounded, [0, bounds], [0, 1])
-
-  useEffect(() => {
-    return scrollY.onChange((current) => {
-      const previous = scrollY.getPrevious()
-      const diff = current - previous
-      const newScrollYBounded = scrollYBounded.get() + diff
-
-      scrollYBounded.set(clamp(newScrollYBounded, 0, bounds))
-    })
-  }, [bounds, scrollY, scrollYBounded])
-
-  return { scrollYBounded, scrollYBoundedProgress }
-}
+const links = [
+  { id: 'homepage', url: '/', title: 'Homepage' },
+  { id: 'events', url: '/events', title: 'Events' },
+  { id: 'shows', url: '/shows', title: 'Shows' },
+  { id: 'music', url: '/music', title: 'Music' },
+  { id: 'books', url: '/books', title: 'Books' },
+  { id: 'colophon', url: '/colophon', title: 'Colophon' },
+  { id: 'about', url: '/about', title: 'About' },
+  { id: 'contact', url: '/contact', title: 'Contact' },
+]
 
 function Header() {
-  const { scrollYBoundedProgress } = useBoundedScroll(400)
-  const scrollYBoundedProgressThrottled = useTransform(
-    scrollYBoundedProgress,
-    [0, 0.75, 1],
-    [0, 0, 1]
-  )
-
   return (
-    <div className="text-radix-slate6 mx-auto flex w-full max-w-3xl flex-1 overflow-hidden">
-      <div className="z-0 flex-1 overflow-y-scroll">
-        <motion.header
-          style={{
-            /**
-             * @todo(types)
-             * Type '{ height: MotionValue<number>; backgroundColor: MotionValue<string>; }' is not assignable to type 'MotionStyle'.
-             */
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            height: useTransform(scrollYBoundedProgressThrottled, [0, 1], [80, 50]),
-            backgroundColor: useMotionTemplate`rgb(255 255 255 / ${useTransform(
-              scrollYBoundedProgressThrottled,
-              [0, 1],
-              [1, 0.1]
-            )})`,
-          }}
-          className="fixed inset-x-0 top-0 flex h-20 shadow backdrop-blur-md"
-        >
-          <div className="mx-auto flex w-full max-w-3xl items-center justify-between px-8">
-            <motion.p
-              style={{
-                scale: useTransform(
-                  scrollYBoundedProgressThrottled,
-                  [0, 1],
-                  [1, 0.9]
-                ),
-              }}
-              className="flex origin-left items-center text-xl font-semibold "
-            >
-              <span className="-ml-1 text-2xl tracking-[-.075em]">
-                Jerome Fitzgerald
-              </span>
-            </motion.p>
-            <motion.nav
-              style={{
-                /**
-                 * @todo(types)
-                 * Type '{ opacity: MotionValue<number>; }' is not assignable to type 'MotionStyle'.
-                 */
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore
-                opacity: useTransform(
-                  scrollYBoundedProgressThrottled,
-                  [0, 1],
-                  [1, 0]
-                ),
-              }}
-              className="text-radix-slate4 flex space-x-4 text-xs font-medium"
-            >
-              <a href="#">A</a>
-              <a href="#">B</a>
-              <a href="#">C</a>
-            </motion.nav>
-          </div>
-        </motion.header>
-
-        <main className="px-8 pt-28">
-          <h1 className="bg-radix-slate2 h-10 w-4/5 rounded text-2xl font-bold" />
-          <div className="mt-8 space-y-6">
-            {[...Array(2).keys()].map((i) => (
-              <div key={i} className="space-y-2 text-sm">
-                <p className="bg-radix-slate2 h-4 w-5/6 rounded" />
-                <p className="bg-radix-slate2 h-4 rounded" />
-                <p className="bg-radix-slate2 h-4 w-4/6 rounded" />
-              </div>
-            ))}
-            <div className="bg-radix-slate2 h-64 rounded"></div>
-            {[...Array(90).keys()].map((i) => (
-              <div key={i} className="space-y-2 text-sm">
-                <p className="bg-radix-slate2 h-4 w-5/6 rounded" />
-                <p className="bg-radix-slate2 h-4 rounded" />
-                <p className="bg-radix-slate2 h-4 w-4/6 rounded" />
-              </div>
-            ))}
-          </div>
-        </main>
+    <header className="fixed top-0 z-50 w-screen">
+      <div className="">
+        <AccordionDemo>
+          {menus.map((menu) => {
+            const { id, title } = menu
+            const key = `header-link-${id}`
+            return (
+              // @note(types) Property 'value' does not exist on type
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
+              <AccordionItem key={key} value={id}>
+                <AccordionTrigger>
+                  <div className="flex w-full flex-row items-center justify-start px-2">
+                    <div className="flex w-6/12 min-w-0 grow-0 items-center  text-left leading-tight md:w-9/12 lg:w-6/12">
+                      <span className="text-lg font-bold">Jerome Fitzgerald</span>
+                    </div>
+                    <div className="w-6/12 px-2 text-right leading-tight md:w-3/12 lg:w-4/12 lg:text-left">
+                      <span>{title}</span>
+                    </div>
+                    <div className="hidden lg:ml-auto lg:mr-2 lg:flex lg:w-['calc(50%-2rem)'] lg:grow-0 lg:cursor-pointer lg:flex-row lg:overflow-hidden">
+                      IMG
+                    </div>
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent>
+                  <div className="flex flex-row flex-wrap">
+                    <div className="mb-2 w-full pb-2 md:mb-4 md:pb-4">
+                      <ul
+                        className={cx(
+                          'text-3xl font-black tracking-tighter',
+                          'w-full'
+                        )}
+                      >
+                        {links.map((link) => {
+                          const { id, title } = link
+                          const key = `header-link-item-${id}`
+                          return (
+                            <li
+                              key={key}
+                              className={cx(
+                                'my-2 py-2',
+                                'w-full',
+                                'even:bg-radix-green5 odd:bg-radix-red5'
+                              )}
+                            >
+                              {title}
+                            </li>
+                          )
+                        })}
+                      </ul>
+                    </div>
+                    <div className="mr-1 w-full justify-end text-right lg:mr-4">
+                      <span>Button</span>
+                    </div>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            )
+          })}
+        </AccordionDemo>
       </div>
-    </div>
+    </header>
   )
 }
 

@@ -1,9 +1,8 @@
+import { cx } from '@jeromefitz/shared/src/utils'
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { cx } from '../../utils/cx'
-
 import { Button } from './Button'
-import { VARIANTS } from './Button.vars'
+import { VARIANTS } from './Button.constants'
 
 const meta = {
   // eslint-disable-next-line storybook/no-title-property-in-meta

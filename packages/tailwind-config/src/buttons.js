@@ -3,13 +3,13 @@
  * https://www.radix-ui.com/docs/colors/palette-composition/understanding-the-scale
  *
  */
-const { colors, excludes, foregroundTextBlack } = require('./lib/const')
+const { excludes, foregroundTextBlack, radixColors } = require('./lib/const')
 
 const buttons = {}
 const types = ['', '-cta', '-outline', '-solid', '-transparent']
 const buttonTypes = []
 
-colors.map((color) => {
+radixColors.map((color) => {
   if (excludes.includes(color)) {
     return
   }

@@ -4,6 +4,7 @@ export * from './Icon'
  * @note(Icon) further breakdown/customizations
  */
 import {
+  ArchiveIcon,
   ArrowLeftIcon,
   ArrowRightIcon,
   ArrowTopRightIcon,
@@ -26,6 +27,7 @@ import {
   ChevronRightIcon,
   ChevronUpIcon,
   ClockIcon,
+  CloudIcon,
   Cross1Icon,
   Cross2Icon,
   CrossCircledIcon,
@@ -35,6 +37,7 @@ import {
   ExclamationTriangleIcon,
   ExitIcon,
   ExternalLinkIcon,
+  FileTextIcon,
   FontBoldIcon,
   FontItalicIcon,
   GearIcon,
@@ -76,6 +79,7 @@ import {
 
 const Icon = () => {}
 
+Icon.ArchiveIcon = ArchiveIcon
 Icon.ArrowLeft = ArrowLeftIcon
 Icon.ArrowRight = ArrowRightIcon
 Icon.ArrowTopRight = ArrowTopRightIcon
@@ -98,6 +102,7 @@ Icon.ChevronLeft = ChevronLeftIcon
 Icon.ChevronRight = ChevronRightIcon
 Icon.ChevronUp = ChevronUpIcon
 Icon.Clock = ClockIcon
+Icon.Cloud = CloudIcon
 Icon.Cross1 = Cross1Icon
 Icon.Cross2 = Cross2Icon
 Icon.CrossCircled = CrossCircledIcon
@@ -107,6 +112,7 @@ Icon.EnvelopeOpen = EnvelopeOpenIcon
 Icon.ExclamationTriangle = ExclamationTriangleIcon
 Icon.Exit = ExitIcon
 Icon.ExternalLink = ExternalLinkIcon
+Icon.FileTextIcon = FileTextIcon
 Icon.FontBold = FontBoldIcon
 Icon.FontItalic = FontItalicIcon
 Icon.Gear = GearIcon

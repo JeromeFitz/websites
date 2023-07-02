@@ -71,7 +71,7 @@ const nowPlaying = {
       },
     },
     artist: 'Nice Rec',
-    genres: [],
+    genres: ['hip-hop'],
   },
   currently_playing_type: 'track',
   actions: { disallows: { resuming: true, skipping_prev: true } },

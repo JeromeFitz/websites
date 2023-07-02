@@ -8,9 +8,7 @@
     // "rootDir": "src",
     "outDir": "dist",
     // "strict": false,
-    // //
-    // // w/ next-unused
-    "allowJs": true,
+    "allowJs": false,
     "allowSyntheticDefaultImports": true,
     "alwaysStrict": true,
     "baseUrl": ".",

@@ -1,82 +1,110 @@
-import type { Event } from '@jeromefitz/notion/schema'
-import { ContentNodes } from 'next-notion/src/app'
-import { Suspense } from 'react'
+import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints'
+import isEqual from 'lodash/isEqual'
+import uniqWith from 'lodash/uniqWith'
+import type { Metadata } from 'next'
 
-import { getDataCms, getMetadata } from '~app/(notion)/getMetadata'
-import { Debug } from '~components/Debug'
-import { notionConfig } from '~config/index'
-import { GENERATE } from '~lib/constants'
-import { PageHeading } from '~ui/PageHeading'
-// import { log } from '~utils/log'
+import { getCustom } from '~app/(cache)/getCustom'
+// import { TIME } from '~app/(notion)/(utils)/Notion.constants'
+import { getDatabaseQuery } from '~app/(notion)/(utils)/queries/index'
+import {
+  getEventData,
+  getPropertyTypeData,
+  getSegmentInfo,
+} from '~app/(notion)/(utils)/utils'
 
-import { EventsPast } from './EventsPast'
-import { Listing } from './Listing'
-import { Slug } from './Slug'
+import { DATABASE_ID, SEGMENT } from './Event.constants'
+import { Listing } from './Event.Listing'
+import { Slug } from './Event.Slug'
+import type { PageObjectResponseEvent } from './Event.types'
 
-// const DEBUG_KEY = '(notion)/events/[[..catchAll]]/page.tsx >> '
+const isDev = process.env.NODE_ENV === 'development'
 
-// @todo(types)
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-const { slug: ROUTE_TYPE } = notionConfig.NOTION.EVENTS
-
+// export const dynamic = 'auto'
 // export const dynamicParams = true
+// export const fetchCache = 'default-cache'
+// export const revalidate = TIME.MINUTE
+// export const runtime = 'nodejs'
 
-export function generateStaticParams() {
-  return GENERATE.events.map((event) => ({
-    catchAll: [...event],
-  }))
+export async function generateMetadata({ ...props }): Promise<Metadata> {
+  const segmentInfo = getSegmentInfo({ SEGMENT, ...props })
+  const data = await getCustom({
+    database_id: segmentInfo.isIndex ? '' : DATABASE_ID,
+    filterType: 'equals',
+    segmentInfo,
+  })
+
+  return data?.seo
 }
 
-// // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export async function generateMetadata({ ...props }) {
-  const catchAll = [ROUTE_TYPE]
-  !!props.params?.catchAll && catchAll.push(...props.params?.catchAll)
-  const data = await getDataCms(catchAll)
-  const { metadata } = getMetadata({ catchAll, data })
-  return metadata
-}
+async function _generateStaticParams({ ...props }) {
+  // @todo(types)
+  const segments: any = [{ catchAll: [] }]
+  const combos: any = []
 
-export const preload = ({ ...props }) => {
-  const catchAll = [ROUTE_TYPE]
-  !!props.params?.catchAll && catchAll.push(...props.params?.catchAll)
-  void getDataCms(catchAll)
+  console.dir(`> generateStaticParams (${SEGMENT})`)
+  const segmentInfo = getSegmentInfo({ SEGMENT, ...props })
+  // const data = await getCustom({
+  //   database_id: '',
+  //   filterType: 'equals',
+  //   segmentInfo,
+  // })
+  const dataStatic: QueryDatabaseResponse = await getDatabaseQuery({
+    database_id: DATABASE_ID,
+    filterType: 'starts_with',
+    segmentInfo,
+  })
+  const hasContent = dataStatic?.results?.length > 0
+
+  /**
+   * @note(next)   Do not pass the `SEGMENT` itself, comes from Next
+   * @note(notion) Modified Slug.Preview is what we are looking for.
+   */
+  if (hasContent) {
+    dataStatic.results.map((item: PageObjectResponseEvent) => {
+      const { properties } = item
+      const { isPublished } = getEventData(properties)
+      if (!isPublished) return
+      // const propertyTypeData: any = getPropertyTypeData(properties, 'Slug.Preview')
+      // const href = propertyTypeData?.string.replaceAll(`/${SEGMENT}/`, '')
+      const href = getPropertyTypeData(properties, 'Slug.Preview')?.replaceAll(
+        `/${SEGMENT}/`,
+        ''
+      )
+      const catchAll = href.split('/')
+
+      // const isEvent = segmentInfo.segment === 'events' && !segmentInfo.isIndex
+      // if (isEvent) {
+      // if (catchAll[0] !== 2023) return null
+      // }
+
+      segments.push({ catchAll })
+      if (catchAll.length > 0) {
+        for (let index = 0; index < catchAll.length; index++) {
+          const element = catchAll.slice(0, index)
+          element.length > 0 && combos.push({ catchAll: element })
+        }
+      }
+      return
+    })
+  }
+  const routes = !!combos && uniqWith(combos, isEqual)
+  !!routes && console.dir(`routes: turned off for now`)
+  !!routes && console.dir(routes)
+  // !!routes && routes.map((route) => segments.push(route))
+
+  console.dir(segments)
+
+  return segments
 }
+const generateStaticParams = isDev ? undefined : _generateStaticParams
+export { generateStaticParams }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export default async function Page({ preview = false, ...props }) {
-  // log(`${DEBUG_KEY} props`, props)
-  const catchAll = [ROUTE_TYPE]
-  !!props.params?.catchAll && catchAll.push(...props.params?.catchAll)
-  const data = await getDataCms(catchAll)
-  const { content, images, info } = data
-  const { pathVariables } = getMetadata({ catchAll, data })
-  const { isIndex } = pathVariables
-  const { properties }: { properties: Event } = info
-  const { title } = properties
+export default function Page({ preview = false, ...props }) {
+  const segmentInfo = getSegmentInfo({ SEGMENT, ...props })
 
-  const Component = isIndex ? Listing : Slug
-
-  // log(`${DEBUG_KEY} pathVariables`, pathVariables)
-
-  return (
-    <>
-      {/* @note(next) Debug does not cause: deopted into client-side rendering */}
-      {/* @todo(next) Debug could be Suspensed */}
-      <Suspense>
-        <Debug data={data} pathVariables={pathVariables} />
-      </Suspense>
-      <PageHeading
-        overline={ROUTE_TYPE}
-        title={isIndex ? 'Upcoming Events' : title}
-      />
-      <Component data={data} pathVariables={pathVariables} />
-      {!isIndex && (
-        <Suspense fallback={<p>Loading...</p>}>
-          <ContentNodes content={content} images={images} />
-        </Suspense>
-      )}
-      {isIndex && <EventsPast />}
-    </>
-  )
+  if (segmentInfo.isIndex) {
+    return <Listing segmentInfo={segmentInfo} />
+  }
+  return <Slug segmentInfo={segmentInfo} />
 }

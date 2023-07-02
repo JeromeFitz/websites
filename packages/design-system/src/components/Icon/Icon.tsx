@@ -2,6 +2,7 @@
 import {
   ArrowUturnLeftIcon as ArrowUturnLeftHero,
   BookOpenIcon as BookOpenIconHero,
+  CloudIcon as CloudIconHero,
   MapIcon as MapIconHero,
   MapPinIcon as MapPinIconHero,
   MicrophoneIcon as MicrophoneIconHero,
@@ -9,8 +10,10 @@ import {
   TagIcon as TagIconHero,
   TicketIcon as TicketIconHero,
 } from '@heroicons/react/24/outline'
+import { cx } from '@jeromefitz/shared/src/utils'
 import { AccessibleIcon } from '@radix-ui/react-accessible-icon'
 import {
+  ArchiveIcon as ArchiveIconRadix,
   ArrowLeftIcon as ArrowLeftIconRadix,
   ArrowRightIcon as ArrowRightIconRadix,
   ArrowTopRightIcon as ArrowTopRightIconRadix,
@@ -40,6 +43,7 @@ import {
   ExclamationTriangleIcon as ExclamationTriangleIconRadix,
   ExitIcon as ExitIconRadix,
   ExternalLinkIcon as ExternalLinkIconRadix,
+  FileTextIcon as FileTextIconRadix,
   FontBoldIcon as FontBoldIconRadix,
   FontItalicIcon as FontItalicIconRadix,
   GearIcon as GearIconRadix,
@@ -72,8 +76,6 @@ import {
 } from '@radix-ui/react-icons'
 // import { Slot } from '@radix-ui/react-slot'
 
-import { cx } from '../../utils/cx'
-
 import { IconProps } from './Icon.types'
 
 /**
@@ -87,6 +89,14 @@ import { IconProps } from './Icon.types'
  *
  */
 const twHeroToRadixIcon = 'mt-[1px] w-[1rem] [&>path]:stroke-[1.5]'
+
+const ArchiveIcon = ({ label, ...props }: IconProps) => (
+  <AccessibleIcon
+    label={label || 'An icon representing a cardboard box that holds archives.'}
+  >
+    <ArchiveIconRadix role="info" {...props} />
+  </AccessibleIcon>
+)
 
 const ArrowLeftIcon = ({ label, ...props }: IconProps) => (
   <AccessibleIcon
@@ -304,6 +314,21 @@ const ClockIcon = ({ label, ...props }: IconProps) => (
   </AccessibleIcon>
 )
 
+const CloudIcon = ({ className, label, ...props }: IconProps) => (
+  <AccessibleIcon
+    label={
+      label ||
+      'An icon representing a cloud. An outline of a fluffy cloud with some puffy pieces.'
+    }
+  >
+    <CloudIconHero
+      className={cx(twHeroToRadixIcon, className)}
+      role="info"
+      {...props}
+    />
+  </AccessibleIcon>
+)
+
 const Cross1Icon = ({ label, ...props }: IconProps) => (
   <AccessibleIcon
     label={
@@ -395,6 +420,17 @@ const ExternalLinkIcon = ({ label, ...props }: IconProps) => (
     }
   >
     <ExternalLinkIconRadix role="info" {...props} />
+  </AccessibleIcon>
+)
+
+const FileTextIcon = ({ label, ...props }: IconProps) => (
+  <AccessibleIcon
+    label={
+      label ||
+      'An icon representing a piece of paper. There are 4 lines representing text and a folded top right corner.'
+    }
+  >
+    <FileTextIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -848,6 +884,7 @@ const TwitterLogoIcon = ({ label, ...props }: IconProps) => (
 )
 
 export {
+  ArchiveIcon,
   ArrowLeftIcon,
   ArrowRightIcon,
   ArrowTopRightIcon,
@@ -870,6 +907,7 @@ export {
   ChevronRightIcon,
   ChevronUpIcon,
   ClockIcon,
+  CloudIcon,
   Cross1Icon,
   Cross2Icon,
   CrossCircledIcon,
@@ -879,6 +917,7 @@ export {
   ExclamationTriangleIcon,
   ExitIcon,
   ExternalLinkIcon,
+  FileTextIcon,
   FontBoldIcon,
   FontItalicIcon,
   GearIcon,

@@ -92,6 +92,8 @@ async function setupBuildInfo({ buildInfoConfig, pathDirName }) {
 
   const message = [
     '',
+    `OVERRIDE_CACHE: ${process.env.OVERRIDE_CACHE ? 'true' : 'false'}`,
+    '',
     `build-info.json: ${hasBuildInfo ? 'exists' : 'generated'}`,
     `›  v${data?.version}`,
     `›  ${
@@ -103,8 +105,9 @@ async function setupBuildInfo({ buildInfoConfig, pathDirName }) {
     }`,
     '',
   ]
-  const prefix = isCI ? '\x1b[0m%s\x1b[0m' : '\x1b[36m%s\x1b[0m'
-  message.map((msg) => console.debug(prefix, 'info', ' - [ 📦 ] ', msg))
+  const debugType = 'info'
+  const debugWithNext = !isCI ? debugType : `\x1b[36m${debugType}\x1b[0m`
+  message.map((msg) => console.debug('-', debugWithNext, '[ 📦 ] ', msg))
   console.debug()
 }
 

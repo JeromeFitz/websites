@@ -1,4 +1,4 @@
-import { cx } from '../../utils/cx'
+import { cx } from '@jeromefitz/shared/src/utils'
 
 import type { Variant } from './Button.types'
 
@@ -13,8 +13,8 @@ export const commonStyles = cx(
 )
 
 export const variantStyles = {
-  default: cx('tomato-button'),
-  empty: cx(),
+  default: cx(),
+  empty: cx(''),
   ghost: cx(),
   primary: cx('tomato-button-cta'),
   secondary: cx('tomato-button-outline'),

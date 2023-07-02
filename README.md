@@ -5,8 +5,15 @@
 - 📦️ **Packages**: [`@jeromefitz/packages`](https://github.com/JeromeFitz/packages)
   - 🔧 Configuration
     - `@jeromefitz/eslint-config`
+    - `@jeromefitz/jest-config`
+    - `@jeromefitz/jest-presets`
+    - `@jeromefitz/lighthouse-config`
     - `@jeromefitz/lint-staged`
+    - `@jeromefitz/next-config`
+    - `@jeromefitz/playwright-config`
     - `@jeromefitz/prettier-config`
+    - `@jeromefitz/storybook-config`
+    - `@jeromefitz/tailwind-config`
     - `@jeromefitz/tsconfig`
   - ⚡ Release Management
     - `ccommit`
@@ -18,18 +25,22 @@
     - `@jeromefitz/spotify`
     - `@jeromefitz/utils`
 
-You may be here for the implementation with `@jeromefitz/notion`, you can find more information in the following README:
+You may be here for the Notion CMS with Next, you can find more information in the following README:
 
 - [`./sites/jeromefitzgerald.com`](https://github.com/JeromeFitz/websites/tree/main/sites/jeromefitzgerald.com)
+  - `@jeromefitz/notion`
+  - `next-notion`
 
 ## Overview
 
+- **Analytics**: [Fathom](https://usefathom.com/ref/GKTEFP), Vercel
+  - Note: Referral Link
 - **Content**: Notion ([`@jeromefitz/notion`](https://github.com/JeromeFitz/packages))
 - **Database**: Notion (CMS), Upstash (Redis)
 - **Design System**: Radix UI ([`@jeromefitz/design-system`](https://github.com/JeromeFitz/packages))
 - **Framework**: Next
 - **Hosting**: Vercel
-- **Styling**: Stitches
+- **Styling**: Tailwind
 - ℹ️ **Colophon**: [https://jeromefitzgerald.com/colophon](https://jeromefitzgerald.com/colophon)
 
 ## Monorepo Setup
@@ -38,6 +49,7 @@ You may be here for the implementation with `@jeromefitz/notion`, you can find m
 - :octocat: [`GitHub Actions`](https://github.com/features/actions) for CI/CD (w/ `deploy-to-vercel-action`)
 - 🔺️ [`turborepo`](https://github.com/vercel/turborepo) for monorepo management
 - 🤖️ [`Renovate`](https://github.com/renovatebot/renovate) for Patch + Minor Package Management
+  - Roadmap [`mend`]
 - 🤖️ [`Kodiak`](https://kodiakhq.com) to “Automate (our) GitHub Pull Requests”
 - 🤖️ Automatic [`Semantic Versioning`](https://semver.org) w/ [`Conventional Commits`](https://www.conventionalcommits.org) for release management ([`ccommit`](https://github.com/JeromeFitz/packages)|[`@jeromefitz/semantic`](https://github.com/JeromeFitz/packages))
 
