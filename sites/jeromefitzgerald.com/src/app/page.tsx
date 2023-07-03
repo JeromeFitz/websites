@@ -28,7 +28,7 @@ import {
 } from '~components/Section'
 import { Testing } from '~components/Testing'
 
-async function Slug({ segmentInfo }) {
+async function Slug({ preview, revalidate, segmentInfo }) {
   // console.dir(segmentInfo)
   // const data: QueryDatabaseResponse = await getDatabaseQuery({
   //   database_id: DATABASE_ID,
@@ -41,6 +41,8 @@ async function Slug({ segmentInfo }) {
   const data = await getCustom({
     database_id: '',
     filterType: 'equals',
+    preview,
+    revalidate,
     segmentInfo: {
       ...segmentInfo,
       slug: '/homepage',
@@ -73,12 +75,11 @@ async function Slug({ segmentInfo }) {
   )
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export default function Page({ preview = false, ...props }) {
+export default function Page({ preview = false, revalidate = false, ...props }) {
   const segmentInfo = getSegmentInfo({ SEGMENT, ...props })
 
   // if (segmentInfo.isIndex) {
   //   return <Listing segmentInfo={segmentInfo} />
   // }
-  return <Slug segmentInfo={segmentInfo} />
+  return <Slug preview={preview} revalidate={revalidate} segmentInfo={segmentInfo} />
 }

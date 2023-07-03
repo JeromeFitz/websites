@@ -6,7 +6,6 @@ import { Suspense } from 'react'
 import { getPageData } from '~app/(notion)/(utils)/queries/index'
 import { getEventData, getPropertyTypeDataShow } from '~app/(notion)/(utils)/utils'
 import type { PageObjectResponseEvent } from '~app/(notion)/events/[[...catchAll]]/Event.types'
-// import { isEventInFuture } from '~app/(notion)/events/[[...catchAll]]/Event.utils'
 import { RelationLoading } from '~components/Relations'
 
 async function UpcomingShowsIndividual({ id }) {
@@ -26,11 +25,6 @@ async function UpcomingShowsIndividual({ id }) {
     year,
     // ...props
   } = getEventData(properties)
-
-  // // if (!isEventInFuture(dateIso)) return null
-  // console.dir(
-  //   `isEventInFuture: ${isEventInFuture(dateIso) ? 'y' : 'n'} (${dateIso})`
-  // )
 
   const style = cx(
     'inline-block text-lg font-normal tracking-tight md:text-2xl',

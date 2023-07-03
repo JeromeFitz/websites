@@ -4,7 +4,7 @@ import type { CredentialProps, ClientProps } from '@jeromefitz/spotify'
 import stringify from 'fast-json-stable-stringify'
 import { slug as _slug } from 'github-slugger'
 import ms from 'ms'
-import { NextApiResponse } from 'next'
+import { NextRequest, NextResponse } from 'next/server'
 import redis from 'next-notion/src/lib/redis'
 
 const keyPrefixSpotify = `${process.env.NEXT_PUBLIC__SITE}/spotify`
@@ -64,21 +64,27 @@ const credentials: CredentialProps = {
 
 const spotify: ClientProps = new Client({ accessToken: '', ...credentials })
 
-const spotifyApi = async (req: any, res: NextApiResponse) => {
-  const {
-    query: {
-      limit = 10 as number,
-      offset = 0 as number,
-      slug,
-      time_range = 'medium_term',
-    },
-  } = req
+// eslint-disable-next-line complexity
+export async function GET(
+  request: NextRequest,
+  { params }: { params: { slug: string } }
+) {
+  const slug = params.slug
+  const { searchParams } = new URL(request.url)
+  const limit = (searchParams.get('limit') ?? 10) as number
+  const offset = (searchParams.get('offset') ?? 0) as number
+  const time_range = searchParams.get('time_range') || 'medium_term'
 
   /**
    * @validation
    */
   if (!SLUG__VALIDATION.includes(slug))
-    return res?.status(200).json({ ...dataEmpty })
+    // return res?.status(200).json({ ...dataEmpty })
+    return NextResponse.json({
+      ...dataEmpty,
+      now: Date.now(),
+      status: 200,
+    })
 
   /**
    * @cache
@@ -89,8 +95,6 @@ const spotifyApi = async (req: any, res: NextApiResponse) => {
   //
   // let cache = await redis.get(key)
   const cache: any = await redis.get(key)
-
-  // console.dir(cache)
 
   // cache = !!cache && JSON?.parse(cache)
   const result: any = {}
@@ -125,6 +129,8 @@ const spotifyApi = async (req: any, res: NextApiResponse) => {
         data = await spotify.get.topArtists({
           limit,
           offset,
+          // @todo(types) Type 'string' is not assignable to type 'TimeRangeProps | undefined'.
+          // @ts-ignore
           time_range,
           withImages: true,
         })
@@ -143,6 +149,8 @@ const spotifyApi = async (req: any, res: NextApiResponse) => {
         data = await spotify.get.topTracks({
           limit,
           offset,
+          // @todo(types) Type 'string' is not assignable to type 'TimeRangeProps | undefined'.
+          // @ts-ignore
           time_range,
           withImages: true,
         })
@@ -164,10 +172,16 @@ const spotifyApi = async (req: any, res: NextApiResponse) => {
 
   // @hack(spotify) lol, error handling, wut
   if (data?.status === 204 || data?.status > 400) {
-    return res?.status(200).json({ ...dataEmpty })
+    return NextResponse.json({
+      ...dataEmpty,
+      status: 200,
+    })
   }
 
-  return res.status(200).json({ ...result.data, debug: result?.debug })
+  return NextResponse.json({
+    ...result.data,
+    debug: result?.debug,
+    now: Date.now(),
+    status: 200,
+  })
 }
-
-export default spotifyApi
