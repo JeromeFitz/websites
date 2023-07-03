@@ -75,7 +75,7 @@ function NowReading() {
                   <span
                     className={cx(
                       'mb-2 text-3xl font-black tracking-tighter md:text-6xl',
-                      'before:relative before:-ml-3 before:content-[open-quote] before:md:-ml-6',
+                      'before:relative before:ml-[-0.95rem] before:content-[open-quote] before:md:ml-[-1.80rem]',
                       'after:content-[close-quote]'
                     )}
                   >

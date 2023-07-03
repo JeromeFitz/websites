@@ -127,6 +127,11 @@ const config = ({}) => ({
             fontFeatureSettings:
               '"calt", "zero", "cv01", "cv02", "cv03", "cv04", "cv05", "cv06", "cv08", "cv09", "cv10", "cv11"',
             /**
+             * @note(font) INTER 4
+             *
+             */
+            fontVariationSettings: '"opsz" 32',
+            /**
              * @note(font) NAME SANS
              */
             // fontFeatureSettings:
