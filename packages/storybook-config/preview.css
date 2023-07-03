@@ -3,7 +3,7 @@
   font-family: 'Inter';
   font-style: normal;
   font-weight: 100 900;
-  src: url('/public/static/fonts/inter/inter-var.woff2') format('woff2');
+  src: url('/public/static/fonts/inter/inter-4.0.0-beta9g-var.woff2') format('woff2');
 }
 :root {
   --font-inter: 'Inter';

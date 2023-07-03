@@ -43,6 +43,7 @@
     "ccommit": "1.1.3",
     "concurrently": "8.2.0",
     "dotenv": "16.3.1",
+    "glyphhanger": "5.0.0",
     "husky": "8.0.3",
     "is-ci": "3.0.1",
     "lodash": "4.17.21",
