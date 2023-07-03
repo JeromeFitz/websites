@@ -74,7 +74,7 @@ async function _generateStaticParams({ ...props }) {
 
       // const isEvent = segmentInfo.segment === 'events' && !segmentInfo.isIndex
       // if (isEvent) {
-      // if (catchAll[0] !== 2023) return null
+      //   if (catchAll[0] !== 2023) return null
       // }
 
       segments.push({ catchAll })
@@ -99,12 +99,13 @@ async function _generateStaticParams({ ...props }) {
 const generateStaticParams = isDev ? undefined : _generateStaticParams
 export { generateStaticParams }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export default function Page({ preview = false, ...props }) {
+export default function Page({ preview = false, revalidate = false, ...props }) {
   const segmentInfo = getSegmentInfo({ SEGMENT, ...props })
 
   if (segmentInfo.isIndex) {
-    return <Listing segmentInfo={segmentInfo} />
+    return (
+      <Listing preview={preview} revalidate={revalidate} segmentInfo={segmentInfo} />
+    )
   }
-  return <Slug segmentInfo={segmentInfo} />
+  return <Slug preview={preview} revalidate={revalidate} segmentInfo={segmentInfo} />
 }

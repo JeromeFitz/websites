@@ -68,16 +68,31 @@ function setCache({ data, slug }: { data: RC; slug: string }) {
 type GetCustom = {
   database_id: string
   filterType: FilterType
+  preview?: boolean
+  revalidate?: boolean
   segmentInfo: SegmentInfo
 }
 
-export const preload = ({ database_id, filterType, segmentInfo }: GetCustom) => {
-  void getCustom({ database_id, filterType, segmentInfo })
+export const preload = ({
+  database_id,
+  filterType,
+  preview,
+  revalidate,
+  segmentInfo,
+}: GetCustom) => {
+  void getCustom({ database_id, filterType, preview, revalidate, segmentInfo })
 }
 
 const getCustom = cache(
   // eslint-disable-next-line complexity
-  async ({ database_id, filterType, segmentInfo }: GetCustom) => {
+  async ({
+    database_id,
+    filterType,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    preview,
+    revalidate,
+    segmentInfo,
+  }: GetCustom) => {
     const { slug } = segmentInfo
     /**
      * Redis
@@ -87,7 +102,8 @@ const getCustom = cache(
     const isCached = !!databaseQueryCache && !isObjectEmpty(databaseQueryCache)
     data = databaseQueryCache
 
-    if (OVERRIDE_CACHE || !isCached) {
+    if (OVERRIDE_CACHE || revalidate || !isCached) {
+      // console.dir(`OVERRIDE_CACHE || revalidate || !isCached`)
       /**
        * Notion
        */
