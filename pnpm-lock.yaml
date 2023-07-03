@@ -581,8 +581,8 @@ importers:
   packages/tailwind-config:
     devDependencies:
       '@plaiceholder/tailwindcss':
-        specifier: 2.5.0
-        version: 2.5.0(sharp@0.32.1)(tailwindcss@3.3.2)
+        specifier: 3.0.0
+        version: 3.0.0(sharp@0.32.1)(tailwindcss@3.3.2)
       '@radix-ui/colors':
         specifier: 1.0.0
         version: 1.0.0
@@ -6388,14 +6388,14 @@ packages:
       sharp: '>= 0.30.6'
     dev: true
 
-  /@plaiceholder/tailwindcss@2.5.0(sharp@0.32.1)(tailwindcss@3.3.2):
-    resolution: {integrity: sha512-V3iSX6ToFC9Lno29z73JuKH+CbtG4qYAyVGotOSNEUZBUzgxxTqiO/3rB5mzFfuZMZ2MLtCO3w1KOaJhYKZxSg==}
+  /@plaiceholder/tailwindcss@3.0.0(sharp@0.32.1)(tailwindcss@3.3.2):
+    resolution: {integrity: sha512-2yTU2Y7C/UeqU6DxAibMoqx0jV6YXD0QdgkuxI67RpM4Q9rXhBDShGrSBTlXkBu7YOL9sK+N1KFs+CeJGMtOkA==}
     peerDependencies:
+      plaiceholder: '>=3.0.0'
       sharp: '>= 0.30.6'
       tailwindcss: '>=3'
     dependencies:
       make-synchronous: 0.1.1
-      plaiceholder: 2.5.0(sharp@0.32.1)
       sharp: 0.32.1
       tailwindcss: 3.3.2(ts-node@10.9.1)
     dev: true
@@ -19403,6 +19403,7 @@ packages:
       node-cache: 5.1.2
       node-fetch: 2.6.7(encoding@0.1.13)
       sharp: 0.32.1
+    dev: false
 
   /playwright-core@1.35.1:
     resolution: {integrity: sha512-pNXb6CQ7OqmGDRspEjlxE49w+4YtR6a3X6mT1hZXeJHWmsEz7SunmvZeiG/+y1yyMZdHnnn73WKYdtV1er0Xyg==}
