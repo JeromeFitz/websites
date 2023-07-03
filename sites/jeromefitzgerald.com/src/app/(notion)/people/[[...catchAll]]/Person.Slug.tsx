@@ -26,10 +26,12 @@ const RELATIONS: RELATIONS_TYPE[] = [
   'Relation.Shows.Producer',
 ]
 
-async function Slug({ segmentInfo }) {
+async function Slug({ preview, revalidate, segmentInfo }) {
   const data = await getCustom({
     database_id: DATABASE_ID,
     filterType: 'equals',
+    preview,
+    revalidate,
     segmentInfo,
   })
   const is404 = isObjectEmpty(data?.blocks || {})

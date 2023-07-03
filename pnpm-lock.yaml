@@ -4,6 +4,9 @@ settings:
   autoInstallPeers: false
   excludeLinksFromLockfile: false
 
+overrides:
+  unfetch: 4.2.0
+
 importers:
 
   .:
@@ -919,6 +922,9 @@ importers:
       ts-node:
         specifier: 10.9.1
         version: 10.9.1(@types/node@20.3.3)(typescript@5.1.6)
+      unfetch:
+        specifier: 4.2.0
+        version: 4.2.0
       use-sound:
         specifier: 4.0.1
         version: 4.0.1(react@18.2.0)
@@ -16944,7 +16950,7 @@ packages:
     resolution: {integrity: sha512-1Yd+CF/7al18/N2BDbsLBcp6RO3tucSW+jcLq24dqdX5MNbCNTw1z4BsGsp4zNmjr/Izm2cs/cEqZPp4kvWSCA==}
     dependencies:
       node-fetch: 3.3.1
-      unfetch: 5.0.0
+      unfetch: 4.2.0
     dev: false
 
   /issue-parser@6.0.0:
@@ -22638,11 +22644,6 @@ packages:
 
   /unfetch@4.2.0:
     resolution: {integrity: sha512-F9p7yYCn6cIW9El1zi0HI6vqpeIvBsr3dSuRO6Xuppb1u5rXpCPmMvLSyECLhybr9isec8Ohl0hPekMVrEinDA==}
-    dev: true
-
-  /unfetch@5.0.0:
-    resolution: {integrity: sha512-3xM2c89siXg0nHvlmYsQ2zkLASvVMBisZm5lF3gFDqfF2xonNStDJyMpvaOBe0a1Edxmqrf2E0HBdmy9QyZaeg==}
-    dev: false
 
   /unicode-canonical-property-names-ecmascript@2.0.0:
     resolution: {integrity: sha512-yY5PpDlfVIU5+y/BSCxAJRBIS1Zc2dDG3Ujq+sR0U+JjUevW2JhocOF+soROYDSaAezOzOKuyyixhD6mBknSmQ==}

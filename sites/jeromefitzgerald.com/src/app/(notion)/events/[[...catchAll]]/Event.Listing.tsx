@@ -218,12 +218,14 @@ function EventsPast({ data }) {
 
 // @todo(complexity) 13
 // eslint-disable-next-line complexity
-async function Listing({ segmentInfo }) {
+async function Listing({ preview, revalidate, segmentInfo }) {
   const { slug } = segmentInfo
   // @note(notion) Listing do not pass Database ID
   const data = await getCustom({
     database_id: '',
     filterType: 'equals',
+    preview,
+    revalidate,
     segmentInfo,
   })
 

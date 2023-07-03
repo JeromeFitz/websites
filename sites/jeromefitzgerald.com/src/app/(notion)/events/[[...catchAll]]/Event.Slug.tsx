@@ -267,11 +267,13 @@ function Ticket({ properties, isFakePortal = false }) {
   )
 }
 
-async function Slug({ segmentInfo }) {
+async function Slug({ preview, revalidate, segmentInfo }) {
   // const { slug } = segmentInfo
   const data = await getCustom({
     database_id: DATABASE_ID,
     filterType: 'equals',
+    preview,
+    revalidate,
     segmentInfo,
   })
   const noData = isObjectEmpty(data?.blocks || {})
