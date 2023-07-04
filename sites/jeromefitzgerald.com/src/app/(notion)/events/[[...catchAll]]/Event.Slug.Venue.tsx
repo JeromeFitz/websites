@@ -1,7 +1,7 @@
 import { cx } from '@jeromefitz/shared/src/utils'
+import { getPageData } from 'next-notion/src/queries/index'
 import { Suspense } from 'react'
 
-import { getPageData } from '~app/(notion)/(utils)/queries/index'
 import { getPropertyTypeDataVenue } from '~app/(notion)/(utils)/utils'
 import type { PageObjectResponseVenue } from '~app/(notion)/venues/[[...catchAll]]/Venue.types'
 

@@ -17,17 +17,18 @@ import { Redis } from '@upstash/redis'
 import { slug as _slug } from 'github-slugger'
 import NextImage from 'next/image'
 import { notFound } from 'next/navigation'
+import { isImageExpired } from 'next-notion/src/utils/getAwsImage'
 import validUrl from 'valid-url'
 
 import { getCustom } from '~app/(cache)/getCustom'
 // import { FourOhFour } from '~app/(errors)/404'
 // import { Image } from '~app/(notion)/(utils)/blocks/Image'
-import { NotionBlocks } from '~app/(notion)/(utils)/NotionBlocks'
 import {
-  isImageExpired,
+  // isImageExpired,
   getEventData,
   getPropertyTypeDataEvent,
 } from '~app/(notion)/(utils)/utils'
+import { Notion as Blocks } from '~components/Notion'
 import { Relations } from '~components/Relations'
 import {
   SectionContent,
@@ -309,7 +310,7 @@ async function Slug({ preview, revalidate, segmentInfo }) {
         </SectionHeader>
         <SectionContent>
           <Image properties={properties} />
-          <NotionBlocks data={data?.blocks} />
+          <Blocks data={data?.blocks} />
         </SectionContent>
       </SectionWrapper>
       {/* Info */}

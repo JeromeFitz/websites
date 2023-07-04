@@ -2,12 +2,12 @@ import { Anchor } from '@jeromefitz/ds/components/Anchor'
 import { isObjectEmpty } from '@jeromefitz/utils'
 import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints'
 import { notFound } from 'next/navigation'
+import { getDatabaseQuery } from 'next-notion/src/queries/index'
 
 import { getCustom } from '~app/(cache)/getCustom'
 // import { FourOhFour } from '~app/(errors)/404'
-import { NotionBlocks } from '~app/(notion)/(utils)/NotionBlocks'
-import { getDatabaseQuery } from '~app/(notion)/(utils)/queries/index'
 import { getPropertyTypeData } from '~app/(notion)/(utils)/utils'
+import { Notion as Blocks } from '~components/Notion'
 // import { Relations } from '~components/Relations'
 import {
   SectionContent,
@@ -111,7 +111,7 @@ async function Listing({ preview, revalidate, segmentInfo }) {
           <SectionHeaderTitle isTitle>{title}</SectionHeaderTitle>
         </SectionHeader>
         <SectionContent>
-          <NotionBlocks data={data?.blocks} />
+          <Blocks data={data?.blocks} />
         </SectionContent>
       </SectionWrapper>
       {/* Info */}

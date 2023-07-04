@@ -1,4 +1,3 @@
-export { isAwsImage, isAwsImageExpired, isImageExpired } from './getAwsImage'
 export { getMetadata } from './getMetadata'
 export {
   getEventData,
@@ -7,6 +6,7 @@ export {
   getShowData,
   getPropertyTypeData,
   getPropertyTypeDataEvent,
+  getPropertyTypeDataPage,
   getPropertyTypeDataPerson,
   getPropertyTypeDataShow,
   getPropertyTypeDataVenue,

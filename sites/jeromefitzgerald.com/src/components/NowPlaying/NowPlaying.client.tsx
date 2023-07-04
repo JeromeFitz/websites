@@ -8,7 +8,7 @@ import _map from 'lodash/map'
 import _size from 'lodash/size'
 import ms from 'ms'
 import Image from 'next/image'
-import { fetcher } from 'next-notion/src/lib/fetcher'
+import { fetcher } from 'next-notion/src/zzz-old/lib/fetcher'
 import useSWR from 'swr'
 import _title from 'title'
 

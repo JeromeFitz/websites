@@ -10,15 +10,16 @@ import type {
 import { Redis } from '@upstash/redis'
 import stringify from 'fast-json-stable-stringify'
 import { slug as _slug } from 'github-slugger'
-import { cache } from 'react'
-
-import { TIME } from '~app/(notion)/(utils)/Notion.constants'
-import type { FilterType } from '~app/(notion)/(utils)/Notion.types'
+import { TIME } from 'next-notion/src/Notion.constants'
+// import type { FilterType } from '~app/(notion)/(utils)/Notion.types'
 import {
   getBlockChildrenDataParent,
   getDatabaseQuery,
-} from '~app/(notion)/(utils)/queries/index'
-import { isAwsImage, isImageExpired, getMetadata } from '~app/(notion)/(utils)/utils'
+} from 'next-notion/src/queries/index'
+import { isAwsImage, isImageExpired } from 'next-notion/src/utils/index'
+import { cache } from 'react'
+
+import { getMetadata } from '~app/(notion)/(utils)/utils'
 import type { SegmentInfo } from '~app/(notion)/(utils)/utils/getSegmentInfo'
 
 const notion = new Client({ auth: process.env.NOTION_API_KEY })
@@ -67,7 +68,7 @@ function setCache({ data, slug }: { data: RC; slug: string }) {
 
 type GetCustom = {
   database_id: string
-  filterType: FilterType
+  filterType: any //FilterType
   preview?: boolean
   revalidate?: boolean
   segmentInfo: SegmentInfo
