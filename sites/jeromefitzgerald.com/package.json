@@ -42,7 +42,7 @@
     "@jeromefitz/notion": "4.0.5",
     "@jeromefitz/spotify": "3.0.3",
     "@jeromefitz/utils": "2.2.2",
-    "@mantine/hooks": "6.0.15",
+    "@mantine/hooks": "6.0.16",
     "@notionhq/client": "2.2.6",
     "@radix-ui/primitive": "1.0.1",
     "@radix-ui/react-accessible-icon": "1.0.3",
