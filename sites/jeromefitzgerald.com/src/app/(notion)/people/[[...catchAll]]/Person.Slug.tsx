@@ -3,8 +3,8 @@ import { notFound } from 'next/navigation'
 
 import { getCustom } from '~app/(cache)/getCustom'
 // import { FourOhFour } from '~app/(errors)/404'
-import { NotionBlocks } from '~app/(notion)/(utils)/NotionBlocks'
 import { getPersonData } from '~app/(notion)/(utils)/utils'
+import { Notion as Blocks } from '~components/Notion'
 import { Relations } from '~components/Relations'
 import {
   SectionContent,
@@ -56,7 +56,7 @@ async function Slug({ preview, revalidate, segmentInfo }) {
           </SectionHeaderContent>
         </SectionHeader>
         <SectionContent>
-          <NotionBlocks data={data?.blocks} />
+          <Blocks data={data?.blocks} />
         </SectionContent>
       </SectionWrapper>
       {/* Info */}

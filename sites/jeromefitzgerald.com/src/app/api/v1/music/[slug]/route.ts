@@ -5,7 +5,7 @@ import stringify from 'fast-json-stable-stringify'
 import { slug as _slug } from 'github-slugger'
 import ms from 'ms'
 import { NextRequest, NextResponse } from 'next/server'
-import redis from 'next-notion/src/lib/redis'
+import redis from 'next-notion/src/zzz-old/lib/redis'
 
 const keyPrefixSpotify = `${process.env.NEXT_PUBLIC__SITE}/spotify`
 

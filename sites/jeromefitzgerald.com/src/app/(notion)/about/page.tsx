@@ -5,8 +5,7 @@ import { isObjectEmpty } from '@jeromefitz/utils'
 // import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints'
 
 import { getCustom } from '~app/(cache)/getCustom'
-import { NotionBlocks } from '~app/(notion)/(utils)/NotionBlocks'
-// import { getDatabaseQuery } from '~app/(notion)/(utils)/queries/index'
+// import { getDatabaseQuery } from 'next-notion/src/queries/index'
 import {
   getSegmentInfo,
   // getPropertyTypeData,
@@ -17,6 +16,7 @@ import {
   // DATABASE_ID,
   SEGMENT,
 } from '~app/(notion)/pages/[[...catchAll]]/Page.constants'
+import { Notion as Blocks } from '~components/Notion'
 import {
   SectionContent,
   SectionHeader,
@@ -69,7 +69,7 @@ async function Slug({ preview, revalidate, segmentInfo }) {
           <SectionHeaderContent className="">{seoDescription}</SectionHeaderContent>
         </SectionHeader>
         <SectionContent>
-          <NotionBlocks data={data?.blocks} />
+          <Blocks data={data?.blocks} />
         </SectionContent>
       </SectionWrapper>
       <Testing />
