@@ -17,8 +17,8 @@ const serverComponentsExternalPackages = [
  * @note(tailwind) lol, if we do not transpile locally,
  *  can we avoid the hack in app/design-system/page ?
  */
-// const transpilePackages = ['@jeromefitz/ds', '@jeromefitz/shared', 'next-notion']
-const transpilePackages = []
+const transpilePackages = ['@jeromefitz/ds', '@jeromefitz/shared', 'next-notion']
+// const transpilePackages = []
 
 module.exports = require('@jeromefitz/next-config')({
   basePath: '',

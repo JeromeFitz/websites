@@ -107,7 +107,6 @@
     "cmdk": "0.2.0",
     "date-fns": "2.30.0",
     "date-fns-tz": "2.0.0",
-    "emoji-regex": "10.2.1",
     "fast-json-stable-stringify": "2.1.0",
     "fathom-client": "3.5.0",
     "focus-trap-react": "10.1.4",
@@ -119,7 +118,6 @@
     "ms": "3.0.0-canary.1",
     "next": "13.4.8-canary.15",
     "next-themes": "0.2.1",
-    "node-emoji": "2.1.0",
     "plaiceholder": "2.5.0",
     "pluralize": "8.0.0",
     "podcast": "2.0.1",
@@ -140,6 +138,7 @@
     "unfetch": "4.2.0",
     "use-sound": "4.0.1",
     "uuid": "9.0.0",
+    "valid-url": "1.0.9",
     "zod": "3.21.4",
     "zustand": "4.3.8"
   },

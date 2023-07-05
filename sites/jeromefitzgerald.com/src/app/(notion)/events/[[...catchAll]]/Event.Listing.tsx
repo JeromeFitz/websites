@@ -11,15 +11,15 @@ import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpo
 import _filter from 'lodash/filter'
 import _orderBy from 'lodash/orderBy'
 import { notFound } from 'next/navigation'
+import {
+  getDatabaseQuery,
+  getDatabaseQueryByDateRange,
+} from 'next-notion/src/queries/index'
 
 import { getCustom } from '~app/(cache)/getCustom'
 // import { FourOhFour } from '~app/(errors)/404'
 // import { TIME } from '~app/(notion)/(utils)/Notion.constants'
-// import { NotionBlocks } from '~app/(notion)/(utils)/NotionBlocks'
-import {
-  getDatabaseQuery,
-  getDatabaseQueryByDateRange,
-} from '~app/(notion)/(utils)/queries/index'
+// import { NotionBlocks } from '~components/Notion/Notion.Blocks'
 import {
   getPropertyTypeData,
   getPageData,
@@ -283,7 +283,7 @@ async function Listing({ preview, revalidate, segmentInfo }) {
           <SectionHeaderContent>{seoDescription}</SectionHeaderContent>
         </SectionHeader>
         <SectionContent className="w-full">
-          {/* <NotionBlocks data={data?.blocks} /> */}
+          {/* <Blocks data={data?.blocks} /> */}
           {/* @todo(notion) Show */}
           {hasData && <Events data={eventsData} />}
         </SectionContent>
@@ -293,7 +293,7 @@ async function Listing({ preview, revalidate, segmentInfo }) {
           <SectionHeaderTitle>Select Past Events</SectionHeaderTitle>
         </SectionHeader>
         <SectionContent className="w-full">
-          {/* <NotionBlocks data={data?.blocks} /> */}
+          {/* <Blocks data={data?.blocks} /> */}
           {/* @todo(notion) Show */}
           {hasData && <EventsPast data={eventsData} />}
         </SectionContent>
@@ -304,7 +304,7 @@ async function Listing({ preview, revalidate, segmentInfo }) {
           <SectionHeaderTitle>Info</SectionHeaderTitle>
         </SectionHeader>
         <SectionContent>
-          <NotionBlocks data={data?.blocks} />
+          <Blocks data={data?.blocks} />
         </SectionContent>
       </SectionWrapper> */}
       <Testing />

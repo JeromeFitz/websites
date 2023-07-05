@@ -4,11 +4,11 @@ import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpo
 import _filter from 'lodash/filter'
 import _orderBy from 'lodash/orderBy'
 import { notFound } from 'next/navigation'
+import { getDatabaseQuery } from 'next-notion/src/queries/index'
 
 import { getCustom } from '~app/(cache)/getCustom'
 // import { FourOhFour } from '~app/(errors)/404'
-// import { NotionBlocks } from '~app/(notion)/(utils)/NotionBlocks'
-import { getDatabaseQuery } from '~app/(notion)/(utils)/queries/index'
+// import { NotionBlocks } from '~components/Notion/Notion.Blocks'
 import {
   getPropertyTypeData,
   getPageData,
@@ -143,7 +143,7 @@ async function Listing({ preview, revalidate, segmentInfo }) {
           </SectionHeaderContent>
         </SectionHeader>
         <SectionContent>
-          {/* <NotionBlocks data={data?.blocks} /> */}
+          {/* <Blocks data={data?.blocks} /> */}
           {hasContent && <ListingTemp data={showData} />}
         </SectionContent>
       </SectionWrapper>

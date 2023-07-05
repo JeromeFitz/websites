@@ -6,7 +6,10 @@ import type {
 import type { Metadata } from 'next'
 import _title from 'title'
 
-import { getPropertyTypeData, getEventData } from '~app/(notion)/(utils)/utils'
+import {
+  getPropertyTypeData,
+  getEventData,
+} from '~app/(notion)/(utils)/utils/getPropertyTypeData'
 
 const BASE_URL = 'https://jeromefitzgerald.com'
 
