@@ -115,12 +115,15 @@ function getMetadata({ properties, segmentInfo }) {
 
   const titleSuffix =
     segmentInfo.segment === 'pages' || segmentInfo.isIndex
-      ? ` | Jerome (he/him)`
+      ? segmentInfo.slug === '/homepage'
+        ? ` | Actor. Comedian. Writer.`
+        : ` | Jerome (he/him)`
       : ` | ${_title(segmentInfo.segment)}`
 
   titleSeo = `${titleSeo?.toString()}${titleSuffix}`
 
   const metadata: Metadata = {
+    // metadataBase: new URL(BASE_URL),
     alternates: {
       canonical,
     },

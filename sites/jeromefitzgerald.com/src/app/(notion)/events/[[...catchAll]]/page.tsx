@@ -72,10 +72,14 @@ async function _generateStaticParams({ ...props }) {
       )
       const catchAll = href.split('/')
 
-      // const isEvent = segmentInfo.segment === 'events' && !segmentInfo.isIndex
-      // if (isEvent) {
-      //   if (catchAll[0] !== 2023) return null
-      // }
+      /**
+       * @todo(next) build/cache this gets kind of in-depth
+       */
+      const isEvent = segmentInfo.segment === 'events' // && !segmentInfo.isIndex
+      if (isEvent) {
+        console.dir(`*** ${catchAll[0]}`)
+        if (catchAll[0] !== 2023) return null
+      }
 
       segments.push({ catchAll })
       if (catchAll.length > 0) {
