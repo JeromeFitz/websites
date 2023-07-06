@@ -3,6 +3,7 @@
  */
 import { isObjectEmpty } from '@jeromefitz/utils'
 // import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints'
+import type { Metadata } from 'next'
 
 import { getCustom } from '~app/(cache)/getCustom'
 // import { NotionBlocks } from '~components/Notion/Notion.Blocks'
