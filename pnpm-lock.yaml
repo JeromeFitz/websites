@@ -295,8 +295,8 @@ importers:
   packages/eslint-config:
     devDependencies:
       '@babel/eslint-parser':
-        specifier: 7.22.6
-        version: 7.22.6
+        specifier: 7.22.7
+        version: 7.22.7
       '@jeromefitz/eslint-config':
         specifier: 1.2.0
         version: 1.2.0(typescript@5.1.6)
@@ -1050,8 +1050,8 @@ packages:
       semver: 6.3.0
     dev: true
 
-  /@babel/eslint-parser@7.22.6:
-    resolution: {integrity: sha512-KAom7E7d6bAh5/PflF3luynWlDLOIqfX+ZJcL0LRs6/6rtXJmJxPiWuIGfxNPtcWdtQ5lSSJbKbQlz/c/R60Ng==}
+  /@babel/eslint-parser@7.22.7:
+    resolution: {integrity: sha512-LH6HJqjOyu/Qtp7LuSycZXK/CYXQ4ohdkliEaL1QTdtOXVdOVpTBKVxAo/+eeyt+x/2SRzB+zUPduVl+xiEvdg==}
     engines: {node: ^10.13.0 || ^12.13.0 || >=14.0.0}
     peerDependencies:
       '@babel/core': '>=7.11.0'
