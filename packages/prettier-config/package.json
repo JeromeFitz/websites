@@ -1,8 +1,0 @@
-{
-  "name": "@jeromefitz/prettier-config--custom",
-  "version": "0.0.0",
-  "private": true,
-  "devDependencies": {
-    "@jeromefitz/prettier-config": "1.2.0"
-  }
-}
