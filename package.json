@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@jeromefitz/conventional-gitmoji": "3.3.6",
-    "@jeromefitz/eslint-config--custom": "workspace:*",
+    "@jeromefitz/eslint-config": "1.2.1-canary.1",
     "@jeromefitz/lint-staged-config": "workspace:*",
     "@jeromefitz/prettier-config": "1.2.0",
     "@jeromefitz/release-notes-generator": "1.2.13",
