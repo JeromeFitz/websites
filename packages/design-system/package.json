@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "storybook build",
+    "build": "echo # storybook build",
+    "build:storybook": "storybook build",
     "dev": "storybook dev --quiet --port 6002",
     "test:e2e": "playwright test",
     "test:unit": "jest --ci --coverage",
