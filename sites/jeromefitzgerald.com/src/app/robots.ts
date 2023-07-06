@@ -7,7 +7,8 @@ function robots(): MetadataRoute.Robots {
     host,
     rules: {
       userAgent: '*',
-      allow: '/',
+      allow: ['/', '/api/v1/og/*'],
+      disallow: ['/playground'],
     },
     sitemap: `${host}/sitemap.xml`,
   }

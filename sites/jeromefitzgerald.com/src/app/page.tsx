@@ -9,7 +9,7 @@ import { getCustom } from '~app/(cache)/getCustom'
 // import { getDatabaseQuery } from 'next-notion/src/queries/index'
 import {
   getSegmentInfo,
-  // getPropertyTypeData,
+  getPropertyTypeData,
   getPageData,
   // getShowData,
 } from '~app/(notion)/(utils)/utils'
@@ -28,6 +28,32 @@ import {
   // Tags,
 } from '~components/Section'
 import { Testing } from '~components/Testing'
+
+export async function generateMetadata({ ...props }): Promise<Metadata> {
+  const segmentInfo = getSegmentInfo({ SEGMENT, ...props })
+  const data = await getCustom({
+    database_id: '',
+    filterType: 'equals',
+    // preview,
+    // revalidate,
+    segmentInfo: {
+      ...segmentInfo,
+      slug: '/homepage',
+    },
+  })
+
+  const is404 = isObjectEmpty(data?.blocks || {})
+  const is404Seo = {
+    title: `404 | ${segmentInfo?.segment} | ${process.env.NEXT_PUBLIC__SITE}`,
+  }
+
+  if (is404) return is404Seo
+
+  const isPublished =
+    getPropertyTypeData(data?.page?.properties, 'Is.Published') || false
+
+  return isPublished ? data?.seo : is404Seo
+}
 
 async function Slug({ preview, revalidate, segmentInfo }) {
   // console.dir(segmentInfo)
