@@ -1,9 +1,11 @@
 import { cx } from '@jeromefitz/shared/src/utils'
 import { Suspense } from 'react'
 
-import { getPropertyTypeDataVenue } from '~app/(notion)/(utils)/utils'
-import { getPageData } from '~app/(notion)/(utils)/utils/getPageData'
-import type { PageObjectResponseVenue } from '~app/(notion)/venues/[[...catchAll]]/Venue.types'
+import type { PageObjectResponseVenue } from '~app/(notion)/(config)/types'
+import {
+  getPageDataFromNotion,
+  getPropertyTypeDataVenue,
+} from '~app/(notion)/(config)/utils'
 
 function VenueLoading() {
   return (
@@ -18,7 +20,7 @@ function VenueLoading() {
 }
 
 async function VenueIndividual({ id }) {
-  const item: PageObjectResponseVenue = await getPageData(id)
+  const item: PageObjectResponseVenue = await getPageDataFromNotion(id)
   if (!item) return null
   const { properties } = item
 

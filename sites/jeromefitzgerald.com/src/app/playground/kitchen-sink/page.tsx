@@ -4,19 +4,14 @@
 import { isObjectEmpty } from '@jeromefitz/utils'
 // import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints'
 
-import { getCustom } from '~app/(cache)/getCustom'
-// import { NotionBlocks } from '~components/Notion/Notion.Blocks'
-// import { getDatabaseQuery } from '~app/(notion)/(utils)/utils/getDatabaseQuery'
+import { getDataFromCache } from '~app/(cache)'
+import { CONSTANTS } from '~app/(notion)/(config)/constants'
 import {
   getSegmentInfo,
   // getPropertyTypeData,
   getPageData,
   // getShowData,
-} from '~app/(notion)/(utils)/utils'
-import {
-  // DATABASE_ID,
-  SEGMENT,
-} from '~app/(notion)/pages/[[...catchAll]]/Page.constants'
+} from '~app/(notion)/(config)/utils'
 // import { NotionBlocks as Blocks } from '~components/Notion/Notion.Blocks'
 import { Notion as Blocks } from '~components/Notion'
 import {
@@ -29,6 +24,8 @@ import {
   // Tags,
 } from '~components/Section'
 
+const { SEGMENT } = CONSTANTS.PAGES
+
 async function Slug({ preview, revalidate, segmentInfo }) {
   // console.dir(segmentInfo)
   // const data: QueryDatabaseResponse = await getDatabaseQuery({
@@ -39,7 +36,7 @@ async function Slug({ preview, revalidate, segmentInfo }) {
   //     slug: '/homepage',
   //   },
   // })
-  const data = await getCustom({
+  const data = await getDataFromCache({
     database_id: '',
     filterType: 'equals',
     preview,

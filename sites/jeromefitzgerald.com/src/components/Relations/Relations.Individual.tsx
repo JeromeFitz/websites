@@ -7,9 +7,8 @@ import _orderBy from 'lodash/orderBy'
 import _size from 'lodash/size'
 import { cache, Suspense } from 'react'
 
-import { getEventData } from '~app/(notion)/(utils)/utils'
-import { getPageData } from '~app/(notion)/(utils)/utils/getPageData'
-import type { PageObjectResponseShow } from '~app/(notion)/shows/[[...catchAll]]/Show.types'
+import type { PageObjectResponseShow } from '~app/(notion)/(config)/types'
+import { getEventData, getPageDataFromNotion } from '~app/(notion)/(config)/utils'
 
 import { RelationLoading } from './index'
 
@@ -21,7 +20,7 @@ function ComponentFallback({ children, ...props }) {
 const RelationIndividual = cache(async ({ id }) => {
   // console.dir(`(9) id        ${id}`)
   // return null
-  const item: PageObjectResponseShow = await getPageData(id)
+  const item: PageObjectResponseShow = await getPageDataFromNotion(id)
   if (!item) return null
   const { properties } = item
   // if (!properties) return null
@@ -53,7 +52,7 @@ async function RI({ items }) {
 
   await asyncForEach(items, async (item: any) => {
     // console.dir(`(1) item.id:  ${item.id}`)
-    const data: any = await getPageData(item.id)
+    const data: any = await getPageDataFromNotion(item.id)
     // console.dir(`data: ${_size(data)}`)
     if (!data) return
     foo.push(data)

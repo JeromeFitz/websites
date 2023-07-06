@@ -3,7 +3,7 @@ import _size from 'lodash/size'
 import pluralize from 'pluralize'
 // import { Suspense } from 'react'
 
-import { getPropertyTypeDataEvent } from '~app/(notion)/(utils)/utils'
+import { getPropertyTypeDataEvent } from '~app/(notion)/(config)/utils'
 
 import {
   getRelationTitle,

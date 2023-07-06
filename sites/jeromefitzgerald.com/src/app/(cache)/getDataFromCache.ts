@@ -1,27 +1,18 @@
 import 'server-only'
-import https from 'node:https'
 
 import { isObjectEmpty } from '@jeromefitz/utils'
 import { Client } from '@notionhq/client'
-import type {
-  ListBlockChildrenResponse,
-  PageObjectResponse,
-} from '@notionhq/client/build/src/api-endpoints'
-import { Redis } from '@upstash/redis'
-import stringify from 'fast-json-stable-stringify'
-import { slug as _slug } from 'github-slugger'
-import { TIME } from 'next-notion/src/Notion.constants'
-// import type { FilterType } from '~app/(notion)/(utils)/Notion.types'
+// import type { FilterType } from 'next-notion/src/Notion.types'
 import { getBlockChildrenDataParent } from 'next-notion/src/queries/index'
 import { isAwsImage, isImageExpired } from 'next-notion/src/utils/index'
 import { cache } from 'react'
 
-import { getMetadata } from '~app/(notion)/(utils)/utils'
-import { getDatabaseQuery } from '~app/(notion)/(utils)/utils/getDatabaseQuery'
-import type { SegmentInfo } from '~app/(notion)/(utils)/utils/getSegmentInfo'
+import { getMetadata, getDatabaseQuery } from '~app/(notion)/(config)/utils'
+import type { SegmentInfo } from '~app/(notion)/(config)/utils'
+
+import { getCache, setCache } from './index'
 
 const notion = new Client({ auth: process.env.NOTION_API_KEY })
-const redis = Redis.fromEnv({ agent: new https.Agent({ keepAlive: true }) })
 
 /**
  * @note(next|redis) try to avoid breaking changes but if necessary
@@ -29,41 +20,6 @@ const redis = Redis.fromEnv({ agent: new https.Agent({ keepAlive: true }) })
  *  -  OVERRIDE_CACHE=true pnpm turbo run build --filter="..."
  */
 const OVERRIDE_CACHE = process.env.OVERRIDE_CACHE || false
-
-type RC = {
-  page: PageObjectResponse
-  blocks: ListBlockChildrenResponse
-}
-
-const getKeysByJoin = ({ keyData, keyJoin = '/', keyPrefix }) =>
-  `${keyPrefix}/${keyData.join(keyJoin)}`.toLowerCase()
-
-const getKeysBySlugger = ({ keyData, keyPrefix }) =>
-  `${keyPrefix}/${_slug(keyData)}`.toLowerCase()
-
-const KEY__PREFIX = process.env.NEXT_PUBLIC__SITE ?? ''
-
-function getKey(slug: string) {
-  const key = slug.includes(KEY__PREFIX) ? slug : `${KEY__PREFIX}${slug}`
-  // console.dir(`> slug: ${slug}`)
-  // console.dir(`> key:  ${key}`)
-  return key
-}
-
-async function getCache({ slug }: { slug: string }) {
-  const key = getKey(slug)
-  const cache = await redis.get<RC>(key)
-  return cache
-}
-
-// @todo(types) any
-function setCache({ data, slug }: { data: RC | any; slug: string }) {
-  const key = getKey(slug)
-  void redis.set(key, stringify(data), {
-    ex: TIME.MONTH,
-  })
-  return null
-}
 
 type GetCustom = {
   database_id: string
@@ -73,17 +29,23 @@ type GetCustom = {
   segmentInfo: SegmentInfo
 }
 
-// export const preload = ({
-//   database_id,
-//   filterType,
-//   preview,
-//   revalidate,
-//   segmentInfo,
-// }: GetCustom) => {
-//   void getCustom({ database_id, filterType, preview, revalidate, segmentInfo })
-// }
+export const preload = ({
+  database_id,
+  filterType,
+  preview,
+  revalidate,
+  segmentInfo,
+}: GetCustom) => {
+  void getDataFromCache({
+    database_id,
+    filterType,
+    preview,
+    revalidate,
+    segmentInfo,
+  })
+}
 
-const getCustom = cache(
+const getDataFromCache = cache(
   // eslint-disable-next-line complexity
   async ({
     database_id,
@@ -188,5 +150,4 @@ const getCustom = cache(
   }
 )
 
-export { getCache, getCustom, getKey, setCache, getKeysByJoin, getKeysBySlugger }
-export type { RC }
+export { getDataFromCache }
