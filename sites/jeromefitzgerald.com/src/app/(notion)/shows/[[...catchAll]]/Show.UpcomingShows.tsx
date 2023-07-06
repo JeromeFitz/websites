@@ -1,10 +1,10 @@
 import { Anchor } from '@jeromefitz/ds/components/Anchor'
 import { cx } from '@jeromefitz/shared/src/utils'
 import _size from 'lodash/size'
-import { getPageData } from 'next-notion/src/queries/index'
 import { Suspense } from 'react'
 
 import { getEventData, getPropertyTypeDataShow } from '~app/(notion)/(utils)/utils'
+import { getPageData } from '~app/(notion)/(utils)/utils/getPageData'
 import type { PageObjectResponseEvent } from '~app/(notion)/events/[[...catchAll]]/Event.types'
 import { RelationLoading } from '~components/Relations'
 

@@ -7,7 +7,7 @@ import type { Metadata } from 'next'
 
 import { getCustom } from '~app/(cache)/getCustom'
 // import { NotionBlocks } from '~components/Notion/Notion.Blocks'
-// import { getDatabaseQuery } from 'next-notion/src/queries/index'
+// import { getDatabaseQuery } from '~app/(notion)/(utils)/utils/getDatabaseQuery'
 import {
   getSegmentInfo,
   getPropertyTypeData,

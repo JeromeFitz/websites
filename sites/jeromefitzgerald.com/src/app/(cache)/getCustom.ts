@@ -12,14 +12,12 @@ import stringify from 'fast-json-stable-stringify'
 import { slug as _slug } from 'github-slugger'
 import { TIME } from 'next-notion/src/Notion.constants'
 // import type { FilterType } from '~app/(notion)/(utils)/Notion.types'
-import {
-  getBlockChildrenDataParent,
-  getDatabaseQuery,
-} from 'next-notion/src/queries/index'
+import { getBlockChildrenDataParent } from 'next-notion/src/queries/index'
 import { isAwsImage, isImageExpired } from 'next-notion/src/utils/index'
 import { cache } from 'react'
 
 import { getMetadata } from '~app/(notion)/(utils)/utils'
+import { getDatabaseQuery } from '~app/(notion)/(utils)/utils/getDatabaseQuery'
 import type { SegmentInfo } from '~app/(notion)/(utils)/utils/getSegmentInfo'
 
 const notion = new Client({ auth: process.env.NOTION_API_KEY })
@@ -58,7 +56,8 @@ async function getCache({ slug }: { slug: string }) {
   return cache
 }
 
-function setCache({ data, slug }: { data: RC; slug: string }) {
+// @todo(types) any
+function setCache({ data, slug }: { data: RC | any; slug: string }) {
   const key = getKey(slug)
   void redis.set(key, stringify(data), {
     ex: TIME.MONTH,
@@ -74,15 +73,15 @@ type GetCustom = {
   segmentInfo: SegmentInfo
 }
 
-export const preload = ({
-  database_id,
-  filterType,
-  preview,
-  revalidate,
-  segmentInfo,
-}: GetCustom) => {
-  void getCustom({ database_id, filterType, preview, revalidate, segmentInfo })
-}
+// export const preload = ({
+//   database_id,
+//   filterType,
+//   preview,
+//   revalidate,
+//   segmentInfo,
+// }: GetCustom) => {
+//   void getCustom({ database_id, filterType, preview, revalidate, segmentInfo })
+// }
 
 const getCustom = cache(
   // eslint-disable-next-line complexity
@@ -189,5 +188,5 @@ const getCustom = cache(
   }
 )
 
-export { getCache, getCustom, setCache, getKeysByJoin, getKeysBySlugger }
+export { getCache, getCustom, getKey, setCache, getKeysByJoin, getKeysBySlugger }
 export type { RC }

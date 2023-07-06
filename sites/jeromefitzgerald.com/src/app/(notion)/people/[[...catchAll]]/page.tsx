@@ -2,7 +2,6 @@ import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpo
 import isEqual from 'lodash/isEqual'
 import uniqWith from 'lodash/uniqWith'
 import type { Metadata } from 'next'
-import { getDatabaseQuery } from 'next-notion/src/queries/index'
 
 import { getCustom } from '~app/(cache)/getCustom'
 // import { TIME } from '~app/(notion)/(utils)/Notion.constants'
@@ -11,6 +10,7 @@ import {
   getPropertyTypeData,
   getSegmentInfo,
 } from '~app/(notion)/(utils)/utils'
+import { getDatabaseQuery } from '~app/(notion)/(utils)/utils/getDatabaseQuery'
 
 import { Listing } from './People.Listing'
 import { DATABASE_ID, SEGMENT } from './Person.constants'

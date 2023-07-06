@@ -2,11 +2,11 @@ import { Anchor } from '@jeromefitz/ds/components/Anchor'
 import { isObjectEmpty } from '@jeromefitz/utils'
 import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints'
 import { notFound } from 'next/navigation'
-import { getDatabaseQuery } from 'next-notion/src/queries/index'
 
 import { getCustom } from '~app/(cache)/getCustom'
 // import { FourOhFour } from '~app/(errors)/404'
 import { getPropertyTypeData } from '~app/(notion)/(utils)/utils'
+import { getDatabaseQuery } from '~app/(notion)/(utils)/utils/getDatabaseQuery'
 import { Notion as Blocks } from '~components/Notion'
 // import { Relations } from '~components/Relations'
 import {
