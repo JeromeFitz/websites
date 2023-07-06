@@ -44,13 +44,13 @@ export const size = {
 
 export const contentType = 'image/png'
 
-// Font
-const interRegular = fetch(
-  new URL('../../../assets/fonts/inter/v3/inter-regular.ttf', import.meta.url)
-).then((res) => res.arrayBuffer())
-const interBlack = fetch(
-  new URL('../../../assets/fonts/inter/v3/inter-black.ttf', import.meta.url)
-).then((res) => res.arrayBuffer())
+// // Font
+// const interRegular = fetch(
+//   new URL('../../../assets/fonts/inter/v3/inter-regular.ttf', import.meta.url)
+// ).then((res) => res.arrayBuffer())
+// const interBlack = fetch(
+//   new URL('../../../assets/fonts/inter/v3/inter-black.ttf', import.meta.url)
+// ).then((res) => res.arrayBuffer())
 
 function Pill({ children }) {
   return (
@@ -65,6 +65,9 @@ function Pill({ children }) {
 }
 
 // Image generation
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+// eslint-disable-next-line @typescript-eslint/require-await
 export default async function Image() {
   return new ImageResponse(
     (
@@ -221,20 +224,20 @@ export default async function Image() {
       // For convenience, we can re-use the exported opengraph-image
       // size config to also set the ImageResponse's width and height.
       ...size,
-      fonts: [
-        {
-          name: 'Inter',
-          data: await interRegular,
-          style: 'normal',
-          weight: 400,
-        },
-        {
-          name: 'Inter',
-          data: await interBlack,
-          style: 'normal',
-          weight: 900,
-        },
-      ],
+      // fonts: [
+      //   {
+      //     name: 'Inter',
+      //     data: await interRegular,
+      //     style: 'normal',
+      //     weight: 400,
+      //   },
+      //   {
+      //     name: 'Inter',
+      //     data: await interBlack,
+      //     style: 'normal',
+      //     weight: 900,
+      //   },
+      // ],
     }
   )
 }
