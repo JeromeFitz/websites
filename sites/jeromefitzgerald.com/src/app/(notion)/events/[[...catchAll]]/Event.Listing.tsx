@@ -16,17 +16,16 @@ import { notFound } from 'next/navigation'
 //   getDatabaseQueryByDateRange,
 // } from 'next-notion/src/queries/index'
 
-import { getCustom } from '~app/(cache)/getCustom'
+import { getDataFromCache } from '~app/(cache)'
+import { CONSTANTS } from '~app/(notion)/(config)/constants'
 // import { FourOhFour } from '~app/(errors)/404'
-// import { TIME } from '~app/(notion)/(utils)/Notion.constants'
-// import { NotionBlocks } from '~components/Notion/Notion.Blocks'
 import {
+  getDatabaseQuery,
+  getDatabaseQueryByDateRange,
   getPropertyTypeData,
   getPageData,
   getEventData,
-} from '~app/(notion)/(utils)/utils'
-import { getDatabaseQuery } from '~app/(notion)/(utils)/utils/getDatabaseQuery'
-import { getDatabaseQueryByDateRange } from '~app/(notion)/(utils)/utils/getDatabaseQueryByDateRange'
+} from '~app/(notion)/(config)/utils'
 import {
   SectionContent,
   SectionHeader,
@@ -38,7 +37,6 @@ import {
 } from '~components/Section'
 import { Testing } from '~components/Testing'
 
-import { DATABASE_ID } from './Event.constants'
 import {
   AccordionDemo,
   AccordionContent,
@@ -46,6 +44,8 @@ import {
   AccordionTrigger,
 } from './Event.Listing.Accordion'
 // import type { PageObjectResponseEvent } from './Event.types'
+
+const { DATABASE_ID } = CONSTANTS.EVENTS
 
 const description = `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Recusandae, omnis? Quod, enim fugit doloribus qui culpa odit. Eveniet, cupiditate qui alias nihil similique tempora fugit?`
 
@@ -223,7 +223,7 @@ function EventsPast({ data }) {
 async function Listing({ preview, revalidate, segmentInfo }) {
   const { slug } = segmentInfo
   // @note(notion) Listing do not pass Database ID
-  const data = await getCustom({
+  const data = await getDataFromCache({
     database_id: '',
     filterType: 'equals',
     preview,

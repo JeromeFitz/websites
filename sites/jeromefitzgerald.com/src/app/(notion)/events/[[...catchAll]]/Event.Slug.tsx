@@ -20,14 +20,16 @@ import { notFound } from 'next/navigation'
 import { isImageExpired } from 'next-notion/src/utils/getAwsImage'
 import validUrl from 'valid-url'
 
-import { getCustom } from '~app/(cache)/getCustom'
+import { getDataFromCache } from '~app/(cache)'
+import { CONSTANTS } from '~app/(notion)/(config)/constants'
 // import { FourOhFour } from '~app/(errors)/404'
 // import { Image } from '~app/(notion)/(utils)/blocks/Image'
+import type { PropertiesEvent } from '~app/(notion)/(config)/types'
 import {
   // isImageExpired,
   getEventData,
   getPropertyTypeDataEvent,
-} from '~app/(notion)/(utils)/utils'
+} from '~app/(notion)/(config)/utils'
 import { Notion as Blocks } from '~components/Notion'
 import { Relations } from '~components/Relations'
 import {
@@ -41,11 +43,10 @@ import {
 import { Testing } from '~components/Testing'
 // import { PageHeading } from '~ui/PageHeading'
 
-import { DATABASE_ID } from './Event.constants'
 // @ts-ignore
 import { Venue } from './Event.Slug.Venue'
-// @ts-ignore
-import type { PageObjectResponseEvent, PropertiesEvent } from './Event.types'
+
+const { DATABASE_ID } = CONSTANTS.EVENTS
 
 // const notion = new Client({ auth: process.env.NOTION_API_KEY })
 
@@ -270,7 +271,7 @@ function Ticket({ properties, isFakePortal = false }) {
 
 async function Slug({ preview, revalidate, segmentInfo }) {
   // const { slug } = segmentInfo
-  const data = await getCustom({
+  const data = await getDataFromCache({
     database_id: DATABASE_ID,
     filterType: 'equals',
     preview,

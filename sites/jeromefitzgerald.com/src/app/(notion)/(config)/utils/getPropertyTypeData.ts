@@ -15,10 +15,12 @@ import _merge from 'lodash/merge'
 import _size from 'lodash/size'
 import _uniq from 'lodash/uniq'
 
-import type { PropertiesEvent } from '~app/(notion)/events/[[...catchAll]]/Event.types'
-import type { PropertiesPerson } from '~app/(notion)/people/[[...catchAll]]/Person.types'
-import type { PropertiesShow } from '~app/(notion)/shows/[[...catchAll]]/Show.types'
-import type { PropertiesVenue } from '~app/(notion)/venues/[[...catchAll]]/Venue.types'
+import type {
+  PropertiesEvent,
+  PropertiesPerson,
+  PropertiesShow,
+  PropertiesVenue,
+} from '~app/(notion)/(config)/types'
 
 // function getCalloutData(){}
 // function getCheckboxData(){}

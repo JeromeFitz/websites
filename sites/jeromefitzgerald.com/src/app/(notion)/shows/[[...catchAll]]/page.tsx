@@ -4,19 +4,18 @@ import isEqual from 'lodash/isEqual'
 import uniqWith from 'lodash/uniqWith'
 import type { Metadata } from 'next'
 
-import { getCustom } from '~app/(cache)/getCustom'
-// import { TIME } from '~app/(notion)/(utils)/Notion.constants'
+import { getDataFromCache } from '~app/(cache)'
+import { CONSTANTS } from '~app/(notion)/(config)/constants'
+import type { PageObjectResponseShow } from '~app/(notion)/(config)/types'
 import {
   getSegmentInfo,
   getPropertyTypeData,
   getShowData,
-} from '~app/(notion)/(utils)/utils'
-import { getDatabaseQuery } from '~app/(notion)/(utils)/utils/getDatabaseQuery'
+  getDatabaseQuery,
+} from '~app/(notion)/(config)/utils'
 
-import { DATABASE_ID, SEGMENT } from './Show.constants'
 import { Listing } from './Show.Listing'
 import { Slug } from './Show.Slug'
-import type { PageObjectResponseShow } from './Show.types'
 
 const isDev = process.env.NODE_ENV === 'development'
 
@@ -26,9 +25,11 @@ const isDev = process.env.NODE_ENV === 'development'
 // export const revalidate = TIME.HOUR
 // export const runtime = 'nodejs'
 
+const { DATABASE_ID, SEGMENT } = CONSTANTS.SHOWS
+
 export async function generateMetadata({ ...props }): Promise<Metadata> {
   const segmentInfo = getSegmentInfo({ SEGMENT, ...props })
-  const data = await getCustom({
+  const data = await getDataFromCache({
     database_id: segmentInfo.isIndex ? '' : DATABASE_ID,
     filterType: 'equals',
     segmentInfo,
@@ -70,7 +71,7 @@ async function _generateStaticParams({ ...props }) {
 
   console.dir(`> generateStaticParams (${SEGMENT})`)
   const segmentInfo = getSegmentInfo({ SEGMENT, ...props })
-  // const data = await getCustom({
+  // const data = await getDataFromCache({
   //   database_id: '',
   //   filterType: 'equals',
   //   segmentInfo,

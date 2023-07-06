@@ -3,10 +3,11 @@ import { isObjectEmpty } from '@jeromefitz/utils'
 import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints'
 import { notFound } from 'next/navigation'
 
-import { getCustom } from '~app/(cache)/getCustom'
+import { getDataFromCache } from '~app/(cache)'
 // import { FourOhFour } from '~app/(errors)/404'
-import { getPropertyTypeData } from '~app/(notion)/(utils)/utils'
-import { getDatabaseQuery } from '~app/(notion)/(utils)/utils/getDatabaseQuery'
+import { CONSTANTS } from '~app/(notion)/(config)/constants'
+import type { PageObjectResponsePerson } from '~app/(notion)/(config)/types'
+import { getDatabaseQuery, getPropertyTypeData } from '~app/(notion)/(config)/utils'
 import { Notion as Blocks } from '~components/Notion'
 // import { Relations } from '~components/Relations'
 import {
@@ -20,9 +21,7 @@ import {
 } from '~components/Section'
 import { Testing } from '~components/Testing'
 
-import { DATABASE_ID } from './Person.constants'
 // import type { PropertiesPerson } from './Person.types'
-import type { PageObjectResponsePerson } from './Person.types'
 // // import { UpcomingShows } from './Show.UpcomingShows'
 
 // type RELATIONS_TYPE = keyof PropertiesPerson
@@ -30,6 +29,8 @@ import type { PageObjectResponsePerson } from './Person.types'
 //   'Relation.Shows.Cast',
 //   'Relation.Shows.Producer',
 // ]
+
+const { DATABASE_ID } = CONSTANTS.PEOPLE
 
 function ListingTemp({ data }) {
   return (
@@ -57,7 +58,7 @@ function ListingTemp({ data }) {
 async function Listing({ preview, revalidate, segmentInfo }) {
   // const { slug } = segmentInfo
   // @note(notion) Listing do not pass Database ID
-  const data = await getCustom({
+  const data = await getDataFromCache({
     database_id: '',
     filterType: 'equals',
     preview,

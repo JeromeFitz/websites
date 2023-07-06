@@ -1,9 +1,11 @@
 import { isObjectEmpty } from '@jeromefitz/utils'
 import { notFound } from 'next/navigation'
 
-import { getCustom } from '~app/(cache)/getCustom'
+import { getDataFromCache } from '~app/(cache)'
 // import { FourOhFour } from '~app/(errors)/404'
-import { getShowData } from '~app/(notion)/(utils)/utils'
+import { CONSTANTS } from '~app/(notion)/(config)/constants'
+import type { PropertiesShow } from '~app/(notion)/(config)/types'
+import { getShowData } from '~app/(notion)/(config)/utils'
 import { Notion as Blocks } from '~components/Notion'
 import { Relations } from '~components/Relations'
 import {
@@ -17,9 +19,9 @@ import {
 } from '~components/Section'
 import { Testing } from '~components/Testing'
 
-import { DATABASE_ID } from './Show.constants'
-import type { PropertiesShow } from './Show.types'
 // import { UpcomingShows } from './Show.UpcomingShows'
+
+const { DATABASE_ID } = CONSTANTS.SHOWS
 
 type RELATIONS_TYPE = keyof PropertiesShow
 const RELATIONS: RELATIONS_TYPE[] = [
@@ -38,7 +40,7 @@ const RELATIONS: RELATIONS_TYPE[] = [
 ]
 
 async function Slug({ preview, revalidate, segmentInfo }) {
-  const data = await getCustom({
+  const data = await getDataFromCache({
     database_id: DATABASE_ID,
     filterType: 'equals',
     preview,

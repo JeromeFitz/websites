@@ -3,11 +3,13 @@ import _size from 'lodash/size'
 import { revalidatePath } from 'next/cache'
 import { NextRequest, NextResponse } from 'next/server'
 
-import { getCustom } from '~app/(cache)/getCustom'
-import { getSegmentInfo } from '~app/(notion)/(utils)/utils'
-import { DATABASE_ID as DATABSE_ID__EVENTS } from '~app/(notion)/events/[[...catchAll]]/Event.constants'
-import { DATABASE_ID as DATABSE_ID__PAGES } from '~app/(notion)/pages/[[...catchAll]]/Page.constants'
-import { DATABASE_ID as DATABSE_ID__SHOWS } from '~app/(notion)/shows/[[...catchAll]]/Show.constants'
+import { getDataFromCache } from '~app/(cache)'
+import { CONSTANTS } from '~app/(notion)/(config)/constants'
+import { getSegmentInfo } from '~app/(notion)/(config)/utils'
+
+const { DATABASE_ID: DATABASE_ID__EVENTS } = CONSTANTS.EVENTS
+const { DATABASE_ID: DATABASE_ID__PAGES } = CONSTANTS.PAGES
+const { DATABASE_ID: DATABASE_ID__SHOWS } = CONSTANTS.SHOWS
 
 /**
  * @hack(next) Customization for makeshift ISR
@@ -69,13 +71,13 @@ export async function POST(request: NextRequest) {
     let database_id
     switch (segment) {
       case 'events':
-        database_id = DATABSE_ID__EVENTS
+        database_id = DATABASE_ID__EVENTS
         break
       case 'pages':
-        database_id = DATABSE_ID__PAGES
+        database_id = DATABASE_ID__PAGES
         break
       case 'shows':
-        database_id = DATABSE_ID__SHOWS
+        database_id = DATABASE_ID__SHOWS
         break
       default:
         break
@@ -99,7 +101,7 @@ export async function POST(request: NextRequest) {
 
     let data
     if (segmentInfo.isIndex) {
-      data = await getCustom({
+      data = await getDataFromCache({
         database_id: '', // do not pass database
         filterType: 'equals',
         preview: false,
@@ -107,7 +109,7 @@ export async function POST(request: NextRequest) {
         segmentInfo: { ...segmentInfo, slug: route === '/' ? '/homepage' : route },
       })
     } else {
-      data = await getCustom({
+      data = await getDataFromCache({
         database_id,
         filterType: 'equals',
         preview: false,
