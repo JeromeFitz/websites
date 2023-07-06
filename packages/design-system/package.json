@@ -82,7 +82,7 @@
     "@jeromefitz/storybook-config": "workspace:*",
     "@jeromefitz/tailwind-config": "workspace:*",
     "@mantine/hooks": "6.0.16",
-    "next": "13.4.8",
+    "next": "13.4.9-canary.2",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   }
