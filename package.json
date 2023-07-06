@@ -32,7 +32,7 @@
     "@jeromefitz/conventional-gitmoji": "3.3.6",
     "@jeromefitz/eslint-config": "1.2.1-canary.1",
     "@jeromefitz/lint-staged": "1.1.11-canary.1",
-    "@jeromefitz/prettier-config": "1.2.0",
+    "@jeromefitz/prettier-config": "1.2.1-canary.1",
     "@jeromefitz/release-notes-generator": "1.2.13",
     "@jeromefitz/semantic": "9.2.6",
     "@jeromefitz/tsconfig": "1.1.3",

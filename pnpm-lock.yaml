@@ -21,8 +21,8 @@ importers:
         specifier: 1.1.11-canary.1
         version: 1.1.11-canary.1(is-ci@3.0.1)
       '@jeromefitz/prettier-config':
-        specifier: 1.2.0
-        version: 1.2.0
+        specifier: 1.2.1-canary.1
+        version: 1.2.1-canary.1
       '@jeromefitz/release-notes-generator':
         specifier: 1.2.13
         version: 1.2.13(lodash@4.17.21)
@@ -408,12 +408,6 @@ importers:
       '@playwright/test':
         specifier: 1.35.1
         version: 1.35.1
-
-  packages/prettier-config:
-    devDependencies:
-      '@jeromefitz/prettier-config':
-        specifier: 1.2.0
-        version: 1.2.0
 
   packages/shared:
     dependencies:
@@ -5253,6 +5247,32 @@ packages:
       - prettier-plugin-style-order
       - prettier-plugin-svelte
       - prettier-plugin-twig-melody
+    dev: true
+
+  /@jeromefitz/prettier-config@1.2.1-canary.1:
+    resolution: {integrity: sha512-l5NZwllDbu5ntm06nHhRvQndLTLobpUt2W1pgA0+SyMmpce89RXtaG092yG6Lk7Qt9EdBqR4ddm8S1mfStU91g==}
+    engines: {node: '>=16'}
+    dependencies:
+      prettier: 2.8.8
+      prettier-plugin-pkg: 0.17.1(prettier@2.8.8)
+      prettier-plugin-tailwindcss: 0.3.0(prettier@2.8.8)
+    transitivePeerDependencies:
+      - '@ianvs/prettier-plugin-sort-imports'
+      - '@prettier/plugin-pug'
+      - '@shopify/prettier-plugin-liquid'
+      - '@shufo/prettier-plugin-blade'
+      - '@trivago/prettier-plugin-sort-imports'
+      - prettier-plugin-astro
+      - prettier-plugin-css-order
+      - prettier-plugin-import-sort
+      - prettier-plugin-jsdoc
+      - prettier-plugin-marko
+      - prettier-plugin-organize-attributes
+      - prettier-plugin-organize-imports
+      - prettier-plugin-style-order
+      - prettier-plugin-svelte
+      - prettier-plugin-twig-melody
+    dev: false
 
   /@jeromefitz/release-notes-generator@1.2.13(lodash@4.17.21):
     resolution: {integrity: sha512-FOrYXzf4LV08YrSdjvHIXeWpiw5Bx0duUraHdovSXNLoI/OKwXFb9SSQS4PL3iz5RqvpuIgPz6e1mWP0sJ6ukw==}
@@ -11391,6 +11411,7 @@ packages:
 
   /@types/minimatch@3.0.5:
     resolution: {integrity: sha512-Klz949h02Gz2uZCMGwDUSDS1YBlTdDDgbWHi+81l29tQALUtvz4rAYi5uoVhE5Lagoq6DeqAUlbrHvW/mXDgdQ==}
+    dev: true
 
   /@types/minimatch@5.1.2:
     resolution: {integrity: sha512-K0VQKziLUWkVKiRVrx4a40iPaxTUefQmjtkQofBkYRcoaaL/8rhwDWww9qWbrgicNOgnpIsMxyNIUM4+n6dUIA==}
@@ -12250,6 +12271,7 @@ packages:
   /array-differ@3.0.0:
     resolution: {integrity: sha512-THtfYS6KtME/yIAhKjZ2ul7XI96lQGHRputJQHO80LAWQnuGP4iCIN8vdMRboGbIEYBwU33q8Tch1os2+X0kMg==}
     engines: {node: '>=8'}
+    dev: true
 
   /array-equal@1.0.0:
     resolution: {integrity: sha512-H3LU5RLiSsGXPhN+Nipar0iR0IofH+8r89G2y1tBKxQ/agagKyAjhkAFDRBfodP2caPrNKHpAWNIM/c9yeL7uA==}
@@ -12316,6 +12338,7 @@ packages:
   /arrify@2.0.1:
     resolution: {integrity: sha512-3duEwti880xqi4eAMN8AyR4a0ByT90zoYdLlevfrvU43vb0YZwZVfxOgxWrLXXXpyugL0hNZc9G6BiB5B3nUug==}
     engines: {node: '>=8'}
+    dev: true
 
   /asn1.js@5.4.1:
     resolution: {integrity: sha512-+I//4cYPccV8LdmBLiX8CYvf9Sp3vQsrqu2QNXRcrbiWvcx/UdlFiqUJJzxRQxgsZmvhXhn4cSKeSmoFjVdupA==}
@@ -13072,6 +13095,7 @@ packages:
     dependencies:
       ansi-styles: 4.3.0
       supports-color: 7.2.0
+    dev: true
 
   /chalk@4.1.2:
     resolution: {integrity: sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==}
@@ -15190,6 +15214,7 @@ packages:
       onetime: 5.1.2
       signal-exit: 3.0.7
       strip-final-newline: 2.0.0
+    dev: true
 
   /execa@5.1.1:
     resolution: {integrity: sha512-8uSpZZocAZRBAPIEINJj3Lo9HyGitllczc27Eh5YYojjMFMn8yHMDMaUHE2Jqfq05D/wucwI4JGURyXt1vchyg==}
@@ -16370,6 +16395,7 @@ packages:
   /human-signals@1.1.1:
     resolution: {integrity: sha512-SEQu7vl8KjNL2eoGBLF3+wAjpsNfA9XMlXAYj/3EdaNfAlxKthD1xjEQfGOUhllCGGJVNY34bRr6lPINhNjyZw==}
     engines: {node: '>=8.12.0'}
+    dev: true
 
   /human-signals@2.1.0:
     resolution: {integrity: sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==}
@@ -18406,6 +18432,7 @@ packages:
   /mri@1.2.0:
     resolution: {integrity: sha512-tzzskb3bG8LvYGFF/mDTpq3jpI6Q9wc3LEmBaghu+DdCssd1FakN7Bc0hVNmEyGq1bq3RgfkCb3cmQLpNPOroA==}
     engines: {node: '>=4'}
+    dev: true
 
   /mrmime@1.0.1:
     resolution: {integrity: sha512-hzzEagAgDyoU1Q6yg5uI+AorQgdvMCur3FcKf7NhMKWsaYg+RnbTyHRa/9IlLF9rf455MOCtcqqrQQ83pPP7Uw==}
@@ -18439,6 +18466,7 @@ packages:
       array-union: 2.1.0
       arrify: 2.0.1
       minimatch: 3.1.2
+    dev: true
 
   /mz@2.7.0:
     resolution: {integrity: sha512-z81GNO7nnYMEhrGh9LeymoE4+Yr0Wn5McHIZMK5cfQCl+NDX08sCZgUc9/6MHni9IWuFLm1Z3HTCXu2z9fN62Q==}
@@ -20120,6 +20148,7 @@ packages:
       mri: 1.2.0
       multimatch: 4.0.0
       prettier: 2.8.8
+    dev: true
 
   /process-nextick-args@2.0.1:
     resolution: {integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==}
