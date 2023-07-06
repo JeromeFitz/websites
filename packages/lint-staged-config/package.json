@@ -4,7 +4,7 @@
   "private": true,
   "main": "./.lintstagedrc.mjs",
   "devDependencies": {
-    "@jeromefitz/lint-staged": "1.1.10",
+    "@jeromefitz/lint-staged": "1.1.11",
     "micromatch": "4.0.5"
   }
 }

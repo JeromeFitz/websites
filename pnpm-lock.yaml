@@ -357,8 +357,8 @@ importers:
   packages/lint-staged-config:
     devDependencies:
       '@jeromefitz/lint-staged':
-        specifier: 1.1.10
-        version: 1.1.10(is-ci@3.0.1)
+        specifier: 1.1.11
+        version: 1.1.11(is-ci@3.0.1)
       micromatch:
         specifier: 4.0.5
         version: 4.0.5
@@ -5248,14 +5248,15 @@ packages:
       - typescript
     dev: true
 
-  /@jeromefitz/lint-staged@1.1.10(is-ci@3.0.1):
-    resolution: {integrity: sha512-7BBhmF+wZN9h6PmOklSlAnFnLBZd2j79YG51/bPDEEJGUVYMqFaOr4OBYrFSsslW+O2AZPBnY+YgSBtSVPBKoA==}
+  /@jeromefitz/lint-staged@1.1.11(is-ci@3.0.1):
+    resolution: {integrity: sha512-8vf7lcGzm4rhoc5p1BPMY2w1pIECkXbhJOYO9uGri5IVOF7u4nIPLKgJMBNmBnQRQ+u5TAevm9BDUsfFS6TP9Q==}
     engines: {node: '>=16'}
     peerDependencies:
       is-ci: ^3.0.1
     dependencies:
       is-ci: 3.0.1
       lint-staged: 13.2.2
+      micromatch: 4.0.5
     transitivePeerDependencies:
       - enquirer
       - supports-color
@@ -18075,7 +18076,7 @@ packages:
       log-update: 4.0.0
       p-map: 4.0.0
       rfdc: 1.3.0
-      rxjs: 7.8.0
+      rxjs: 7.8.1
       through: 2.3.8
       wrap-ansi: 7.0.0
     dev: true
@@ -21346,17 +21347,10 @@ packages:
     dependencies:
       queue-microtask: 1.2.3
 
-  /rxjs@7.8.0:
-    resolution: {integrity: sha512-F2+gxDshqmIub1KdvZkaEfGDwLNpPvk9Fs6LD/MyQxNgMds/WH9OdDDXOmxUZpME+iSK3rQCctkL0DYyytUqMg==}
-    dependencies:
-      tslib: 2.6.0
-    dev: true
-
   /rxjs@7.8.1:
     resolution: {integrity: sha512-AA3TVj+0A2iuIoQkWEK/tqFjBq2j+6PO6Y0zJcvzLAFhEFIO3HL0vls9hWLncZbAAbK0mar7oZ4V079I/qPMxg==}
     dependencies:
       tslib: 2.6.0
-    dev: false
 
   /safe-buffer@5.1.1:
     resolution: {integrity: sha512-kKvNJn6Mm93gAczWVJg7wH+wGYWNrDHdWvpUmHyEsgCtIwwo3bqPtV4tR5tuPaUhTOo/kvhVwd8XwwOllGYkbg==}
