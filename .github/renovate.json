@@ -54,12 +54,29 @@
     {
       "allowedVersions": "<=18",
       "commitMessagePrefix": "📦  (deps-dev)",
-      "matchDepTypes": ["devDependencies"],
+      "matchDepTypes": ["devDependencies", "dependencies"],
       "matchPackageNames": ["@types/node"]
     },
     {
       "commitMessagePrefix": "📦  (deps-dev)",
-      "matchDepTypes": ["devDependencies"]
+      "matchDepTypes": ["devDependencies"],
+      "matchPackageNames": [
+        "@jeromefitz/*",
+        "@manypkg/cli",
+        "ccommit",
+        "concurrently",
+        "dotenv",
+        "glyphhanger",
+        "husky",
+        "is-ci",
+        "semantic-release",
+        "semantic-release-monorepo",
+        "syncpack",
+        "ts-node",
+        "tsup",
+        "turbo",
+        "typescript"
+      ]
     },
     {
       "commitMessagePrefix": "⬆️  (deps)",
