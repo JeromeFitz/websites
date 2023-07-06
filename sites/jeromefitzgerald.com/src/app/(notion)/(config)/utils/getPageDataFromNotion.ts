@@ -1,16 +1,18 @@
 import { isObjectEmpty } from '@jeromefitz/utils'
-import { getDatabaseQuery as _getDatabaseQuery } from 'next-notion/src/queries/index'
+import { getPageData as _getPageData } from 'next-notion/src/queries/index'
 import { cache } from 'react'
 
-import { getCache, setCache, getKey } from '~app/(cache)/getCustom'
+import { getCache, setCache, getKey } from '~app/(cache)'
 
 const OVERRIDE_CACHE = process.env.OVERRIDE_CACHE || false
 
-const getDatabaseQuery = cache(async ({ database_id, filterType, segmentInfo }) => {
+/**
+ * @todo(next) revalidate | preview
+ */
+const getPageDataFromNotion = cache(async (id) => {
   let data
 
-  const { slug } = segmentInfo
-  const prefix = `/notion/queries${slug}`
+  const prefix = `/notion/pages/${id}`
   const key: string = getKey(prefix)
   const dataFromCache = await getCache({ slug: key })
 
@@ -20,11 +22,7 @@ const getDatabaseQuery = cache(async ({ database_id, filterType, segmentInfo }) 
   const isCached = !!dataFromCache && !isObjectEmpty(dataFromCache)
 
   if (OVERRIDE_CACHE || !isCached) {
-    const dataFromNotion = await _getDatabaseQuery({
-      database_id,
-      filterType,
-      segmentInfo,
-    })
+    const dataFromNotion = await _getPageData(id)
     // console.dir(`> dataFromNotion: ${id}`)
     // console.dir(dataFromNotion)
 
@@ -38,7 +36,8 @@ const getDatabaseQuery = cache(async ({ database_id, filterType, segmentInfo }) 
     // console.dir(`gotCache: ${key}`)
     data = dataFromCache
   }
+
   return data
 })
 
-export { getDatabaseQuery }
+export { getPageDataFromNotion }

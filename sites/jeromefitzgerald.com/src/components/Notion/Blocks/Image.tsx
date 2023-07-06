@@ -21,9 +21,10 @@ import stringify from 'fast-json-stable-stringify'
 import { slug as _slug } from 'github-slugger'
 import NextImage from 'next/image'
 import { NotionEmoji as EmojiWrapper } from 'next-notion/src/blocks/Emoji'
-import { TIME } from 'next-notion/src/Notion.constants'
 import { isImageExpired } from 'next-notion/src/utils'
 import validUrl from 'valid-url'
+
+import { TIME } from '~app/(notion)/(config)/constants'
 
 import { getImageAlt, getImageUrl, getImageExpiration } from './Image.utils'
 

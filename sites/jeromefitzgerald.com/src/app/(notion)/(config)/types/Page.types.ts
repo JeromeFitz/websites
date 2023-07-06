@@ -11,8 +11,8 @@ type PropertiesPage = {
   ID: FormulaPropertyItemObjectResponse
   Title: TitlePropertyItemObjectResponse
 }
-type PageObjectResponseVenue = Spread<
+type PageObjectResponsePage = Spread<
   [PageObjectResponse, { properties: PropertiesPage }]
 >
 
-export type { PageObjectResponseVenue, PropertiesPage }
+export type { PageObjectResponsePage, PropertiesPage }

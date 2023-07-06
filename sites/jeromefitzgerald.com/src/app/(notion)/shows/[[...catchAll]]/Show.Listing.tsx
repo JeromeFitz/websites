@@ -5,15 +5,16 @@ import _filter from 'lodash/filter'
 import _orderBy from 'lodash/orderBy'
 import { notFound } from 'next/navigation'
 
-import { getCustom } from '~app/(cache)/getCustom'
+import { getDataFromCache } from '~app/(cache)'
 // import { FourOhFour } from '~app/(errors)/404'
-// import { NotionBlocks } from '~components/Notion/Notion.Blocks'
+import { CONSTANTS } from '~app/(notion)/(config)/constants'
+// import type { PageObjectResponseShow } from '~app/(notion)/(config)/types'
 import {
+  getDatabaseQuery,
   getPropertyTypeData,
   getPageData,
   getShowData,
-} from '~app/(notion)/(utils)/utils'
-import { getDatabaseQuery } from '~app/(notion)/(utils)/utils/getDatabaseQuery'
+} from '~app/(notion)/(config)/utils'
 import {
   SectionContent,
   SectionHeader,
@@ -25,8 +26,7 @@ import {
 } from '~components/Section'
 import { Testing } from '~components/Testing'
 
-import { DATABASE_ID } from './Show.constants'
-// import type { PageObjectResponseShow } from './Show.types'
+const { DATABASE_ID } = CONSTANTS.SHOWS
 
 function ListingTemp({ data }) {
   const items = data.results.map((item) => {
@@ -84,7 +84,7 @@ function ListingTemp({ data }) {
 async function Listing({ preview, revalidate, segmentInfo }) {
   // const { slug } = segmentInfo
   // @note(notion) Listing do not pass Database ID
-  const data = await getCustom({
+  const data = await getDataFromCache({
     database_id: '',
     filterType: 'equals',
     preview,
