@@ -164,3 +164,4 @@ const getDatabaseQueryByDateRange = async ({
 // )
 
 export { getDatabaseQuery, getDatabaseQueryByDateRange }
+export type { GetDatabaseQueryTypes }

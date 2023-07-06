@@ -5,7 +5,7 @@ import { isObjectEmpty } from '@jeromefitz/utils'
 // import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints'
 
 import { getCustom } from '~app/(cache)/getCustom'
-// import { getDatabaseQuery } from 'next-notion/src/queries/index'
+// import { getDatabaseQuery } from '~app/(notion)/(utils)/utils/getDatabaseQuery'
 import {
   getSegmentInfo,
   // getPropertyTypeData,
