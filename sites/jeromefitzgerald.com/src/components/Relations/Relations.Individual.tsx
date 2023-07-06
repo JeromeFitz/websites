@@ -5,10 +5,10 @@ import { asyncForEach } from '@jeromefitz/utils'
 import _noop from 'lodash/noop'
 import _orderBy from 'lodash/orderBy'
 import _size from 'lodash/size'
-import { getPageData } from 'next-notion/src/queries/index'
 import { cache, Suspense } from 'react'
 
 import { getEventData } from '~app/(notion)/(utils)/utils'
+import { getPageData } from '~app/(notion)/(utils)/utils/getPageData'
 import type { PageObjectResponseShow } from '~app/(notion)/shows/[[...catchAll]]/Show.types'
 
 import { RelationLoading } from './index'

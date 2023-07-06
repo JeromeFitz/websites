@@ -11,10 +11,10 @@ import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpo
 import _filter from 'lodash/filter'
 import _orderBy from 'lodash/orderBy'
 import { notFound } from 'next/navigation'
-import {
-  getDatabaseQuery,
-  getDatabaseQueryByDateRange,
-} from 'next-notion/src/queries/index'
+// import {
+//   getDatabaseQuery,
+//   getDatabaseQueryByDateRange,
+// } from 'next-notion/src/queries/index'
 
 import { getCustom } from '~app/(cache)/getCustom'
 // import { FourOhFour } from '~app/(errors)/404'
@@ -25,6 +25,8 @@ import {
   getPageData,
   getEventData,
 } from '~app/(notion)/(utils)/utils'
+import { getDatabaseQuery } from '~app/(notion)/(utils)/utils/getDatabaseQuery'
+import { getDatabaseQueryByDateRange } from '~app/(notion)/(utils)/utils/getDatabaseQueryByDateRange'
 import {
   SectionContent,
   SectionHeader,
