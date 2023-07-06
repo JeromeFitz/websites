@@ -1,6 +1,7 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [":semanticCommitsDisabled"],
+  "automerge": false,
   "baseBranches": ["main"],
   "branchPrefix": "deps/",
   "commitMessage": "{{{commitMessagePrefix}}} {{{commitMessageAction}}} {{{commitMessageTopic}}} {{{commitMessageExtra}}} {{{commitMessageSuffix}}}",
@@ -51,7 +52,7 @@
       "matchPackageNames": ["@types/*"]
     },
     {
-      "allowedVersions": "<19",
+      "allowedVersions": "<=18",
       "commitMessagePrefix": "📦  (deps-dev)",
       "matchDepTypes": ["devDependencies"],
       "matchPackageNames": ["@types/node"]
@@ -65,6 +66,8 @@
       "matchDepTypes": ["dependencies"]
     },
     {
+      "automerge": true,
+      "automergeType": "branch",
       "commitMessagePrefix": "📦  (deps-dev)",
       "excludePackageNames": [],
       "groupName": "storybook 🧪 ",
@@ -73,6 +76,8 @@
       "matchPackagePatterns": ["^@storybook/"]
     },
     {
+      "automerge": true,
+      "automergeType": "branch",
       "commitMessagePrefix": "📦  (deps-dev)",
       "excludePackageNames": [],
       "groupName": "testing-library 🧪 ",
@@ -81,6 +86,8 @@
       "matchPackagePatterns": ["^@testing-library/"]
     },
     {
+      "automerge": true,
+      "automergeType": "branch",
       "commitMessagePrefix": "📦  (deps-dev)",
       "excludePackageNames": [],
       "groupName": "playwright 🎭 ",
@@ -89,12 +96,14 @@
       "matchPackagePatterns": ["^@playwright/"]
     },
     {
+      "automerge": true,
+      "automergeType": "branch",
       "commitMessagePrefix": "📦  (deps-dev)",
       "excludePackageNames": [],
       "groupName": "jest 🃏 ",
       "groupSlug": "jest",
-      "matchPackageNames": ["@types/jest", "eslint-plugin-jest-dom"],
-      "matchPackagePatterns": ["^jest/"]
+      "matchPackageNames": ["@types/jest", "eslint-plugin-jest-dom", "jest"],
+      "matchPackagePatterns": ["^jest/", "^jest-/"]
     },
     {
       "commitMessagePrefix": "📦  (deps-dev)",
