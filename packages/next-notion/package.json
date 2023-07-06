@@ -30,7 +30,7 @@
   "peerDependencies": {
     "@jeromefitz/utils": "^2.2.2",
     "@notionhq/client": "^2.2.6",
-    "@upstash/ratelimit": "^0.3.2 || ^0.4.0",
+    "@upstash/ratelimit": "^0.4.0",
     "@upstash/redis": "^1.19.0",
     "date-fns": "^2.30.0",
     "date-fns-tz": "^2.0.0",

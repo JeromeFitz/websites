@@ -41,8 +41,5 @@
       ]
     }
   ],
-  "source": [
-    "./pnpm-workspace.yaml"
-  ],
   "versionGroups": []
 }
