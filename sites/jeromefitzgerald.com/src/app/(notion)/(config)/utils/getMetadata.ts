@@ -114,7 +114,7 @@ function getMetadata({ properties, segmentInfo }) {
   const titleSuffix =
     segmentInfo.segment === 'pages' || segmentInfo.isIndex
       ? segmentInfo.slug === '/homepage'
-        ? ` | Actor. Comedian. Writer.`
+        ? ` | Actor. Comedian. Writer`
         : ` | Jerome (he/him)`
       : ` | ${_title(segmentInfo.segment)}`
 
