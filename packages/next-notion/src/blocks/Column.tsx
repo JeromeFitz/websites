@@ -5,7 +5,6 @@ import type {
 import { forwardRef } from 'react'
 
 import { NotionBlocks as Blocks } from '../Notion.Blocks'
-// import { Notion as Blocks } from '../../../../sites/jeromefitzgerald.com/src/components/Notion/index'
 import { getBlockKey } from '../Notion.utils'
 
 const Column = forwardRef(function Column(props: any, ref: any) {

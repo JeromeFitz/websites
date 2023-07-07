@@ -13,7 +13,6 @@ function getAnnotations(annotations) {
     strikethrough && 'line-through',
     underline && 'underline',
     color === 'default' ? '' : `notion-${color}`,
-    // 'break-words',
     ''
   )
 }
@@ -39,10 +38,11 @@ function getBlock({
   const { component: Component, ...componentProps } = blockProps
   if (!Component || Component === undefined) return null
 
-  const key = `${block.id}--${order}`
+  // const key = `${block.id}--${order}`
+  // console.dir(`(getBlock) key: ${key}`)
   const props = { block, order: order, ...componentProps, blocks }
 
-  return <Component key={key} {...props} />
+  return <Component {...props} />
 }
 
 function getBlockKey(id, type, order) {

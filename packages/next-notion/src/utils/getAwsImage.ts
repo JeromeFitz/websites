@@ -1,13 +1,13 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-import url from 'node:url'
+// import url from 'node:url'
 
-import { isAfter, differenceInSeconds, parseISO } from 'date-fns'
+// import { isAfter, differenceInSeconds, parseISO } from 'date-fns'
+import { isAfter, parseISO } from 'date-fns'
 import { formatInTimeZone } from 'date-fns-tz'
 
 // const DEBUG = false
 
 const TZ_UTC = 'UTC'
-const TZ_AWS = 'America/New_York'
+// const TZ_AWS = 'America/New_York'
 const URL_AWS = 'amazonaws.com'
 
 function isAwsImage(imageUrl: string) {
@@ -19,49 +19,49 @@ function isAwsImage(imageUrl: string) {
  *  so you can avoid doing hacks like this -- when there is an actual
  *  field that just tells you in `expiry_time` :X
  */
-function isAwsImageExpired(imageUrl: string) {
-  const timestamp = new Date()
-  const tsAWS = formatInTimeZone(timestamp, TZ_AWS, `yyyyMMdd'T'HHmmss'Z'`)
-  // const tsUTC = formatInTimeZone(timestamp, TZ_UTC, `yyyyMMdd'T'HHmmss'Z'`)
-  const url_parts = url.parse(imageUrl, true)
-  const query = url_parts.query
-  const xAmzDate = query['X-Amz-Date']
-  const xAmzExpires = query['X-Amz-Expires']
-  // const dateLeft = parseISO(tsUTC)
-  const dateLeft = parseISO(tsAWS)
-  // @ts-ignore
-  const dateRight = parseISO(xAmzDate)
-  /**
-   * @note(aws)
-   * X-Amz-Date must not be more than X-Amz-Expires number of seconds in the past
-   *
-   */
-  let diffInSeconds = differenceInSeconds(dateLeft, dateRight)
-  diffInSeconds = diffInSeconds < 0 ? diffInSeconds * -1 : diffInSeconds
-  // @ts-ignore
-  const isExpired = diffInSeconds >= xAmzExpires
+// function isAwsImageExpired(imageUrl: string) {
+//   const timestamp = new Date()
+//   const tsAWS = formatInTimeZone(timestamp, TZ_AWS, `yyyyMMdd'T'HHmmss'Z'`)
+//   // const tsUTC = formatInTimeZone(timestamp, TZ_UTC, `yyyyMMdd'T'HHmmss'Z'`)
+//   const url_parts = url.parse(imageUrl, true)
+//   const query = url_parts.query
+//   const xAmzDate = query['X-Amz-Date']
+//   const xAmzExpires = query['X-Amz-Expires']
+//   // const dateLeft = parseISO(tsUTC)
+//   const dateLeft = parseISO(tsAWS)
+//   // @ts-ignore
+//   const dateRight = parseISO(xAmzDate)
+//   /**
+//    * @note(aws)
+//    * X-Amz-Date must not be more than X-Amz-Expires number of seconds in the past
+//    *
+//    */
+//   let diffInSeconds = differenceInSeconds(dateLeft, dateRight)
+//   diffInSeconds = diffInSeconds < 0 ? diffInSeconds * -1 : diffInSeconds
+//   // @ts-ignore
+//   const isExpired = diffInSeconds >= xAmzExpires
 
-  // // @debug
-  // if (DEBUG) {
-  //   console.dir(`>> isAwsImageExpired`)
-  //   console.dir(imageUrl)
-  //   // console.dir(`ts(utc):           ${tsUTC}`)
-  //   console.dir(`ts(aws):           ${tsAWS}`)
-  //   console.dir(`xAmzDate:          ${xAmzDate}`)
-  //   console.dir(`xAmzExpires:       ${xAmzExpires}`)
-  //   // console.dir(`dateLeft:`)
-  //   // console.dir(dateLeft)
-  //   console.dir(`dateLeft:`)
-  //   console.dir(dateLeft)
-  //   console.dir(`dateRight:`)
-  //   console.dir(dateRight)
-  //   console.dir(`diffInSeconds:     ${diffInSeconds}`)
-  //   console.dir(`isExpired:         ${isExpired ? 'y' : 'n'}`)
-  //   console.dir(`---`)
-  // }
+//   // // @debug
+//   // if (DEBUG) {
+//   //   console.dir(`>> isAwsImageExpired`)
+//   //   console.dir(imageUrl)
+//   //   // console.dir(`ts(utc):           ${tsUTC}`)
+//   //   console.dir(`ts(aws):           ${tsAWS}`)
+//   //   console.dir(`xAmzDate:          ${xAmzDate}`)
+//   //   console.dir(`xAmzExpires:       ${xAmzExpires}`)
+//   //   // console.dir(`dateLeft:`)
+//   //   // console.dir(dateLeft)
+//   //   console.dir(`dateLeft:`)
+//   //   console.dir(dateLeft)
+//   //   console.dir(`dateRight:`)
+//   //   console.dir(dateRight)
+//   //   console.dir(`diffInSeconds:     ${diffInSeconds}`)
+//   //   console.dir(`isExpired:         ${isExpired ? 'y' : 'n'}`)
+//   //   console.dir(`---`)
+//   // }
 
-  return isExpired
-}
+//   return isExpired
+// }
 
 /**
  * @note(notion)
@@ -95,4 +95,5 @@ function isImageExpired(image) {
   return isExpired
 }
 
-export { isAwsImage, isAwsImageExpired, isImageExpired }
+// export { isAwsImage, isAwsImageExpired, isImageExpired }
+export { isAwsImage, isImageExpired }

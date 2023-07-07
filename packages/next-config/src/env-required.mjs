@@ -37,4 +37,4 @@ function envRequired() {
   })
 }
 
-module.exports = envRequired
+export default envRequired

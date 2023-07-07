@@ -50,4 +50,4 @@ const securityHeaders = [
   },
 ]
 
-module.exports = securityHeaders
+export default securityHeaders

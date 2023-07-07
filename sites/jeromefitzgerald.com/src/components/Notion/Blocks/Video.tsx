@@ -1,4 +1,5 @@
 import 'server-only'
+
 import { Caption } from '@jeromefitz/ds/components/Caption'
 import type { VideoBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 import { NotionEmoji as EmojiWrapper } from 'next-notion/src/blocks/Emoji'

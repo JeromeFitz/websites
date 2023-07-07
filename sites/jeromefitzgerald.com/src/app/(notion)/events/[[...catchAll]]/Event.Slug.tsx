@@ -139,14 +139,15 @@ async function Image({ properties }) {
   // @ts-ignore
   const isExpired = isImageExpired(image)
   if (!isCached && !!imageUrl) {
-    const { getPlaiceholder } = await import('plaiceholder')
-    const { base64, img } = await getPlaiceholder(imageUrl)
-
-    image.blurDataURL = base64
+    const { getImage } = await import(
+      '@jeromefitz/shared/src/lib/plaiceholder/getImage'
+    )
+    const imageData = await getImage(imageUrl)
+    image.blurDataURL = imageData?.base64
     image = {
       alt: imageSeoDescription,
       ...image,
-      ...img,
+      ...imageData?.img,
     }
   }
 
