@@ -73,7 +73,7 @@ async function getImageFromBlock({ block, url }) {
    * If Expiration is hit:
    * - Get new Notion AWS Image
    * - Update Image Cache
-   * - **DO NOT**  redo the plaicholder, should be same image
+   * - **DO NOT**  redo the plaiceholder, should be same image
    * - - QUESTION: if we have cache with blurDataURL, could Suspend/SWR?
    */
   const isExpired = isImageExpired(image)
