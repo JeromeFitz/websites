@@ -30,7 +30,7 @@ const fontSans = localFont({
 })
 
 export const metadata = {
-  title: 'Jerome Fitzgerald (he/him) | Actor, Comedian, Writer',
+  title: 'Jerome Fitzgerald (he/him) | Actor. Comedian. Writer.',
   description:
     'Jerome Fitzgerald is an an actor, comedian, & writer hailing from Pittsburgh, PA.',
 }
