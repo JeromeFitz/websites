@@ -8,8 +8,8 @@ import { Analytics } from '~components/Analytics'
 import { Banner } from '~components/Banner'
 import { Footer } from '~components/Footer'
 // // import { Header } from '~components/Header'
-// import { NowPlaying } from '~components/NowPlaying'
-// import { NowReading } from '~components/NowReading'
+import { NowPlaying } from '~components/NowPlaying'
+import { NowReading } from '~components/NowReading'
 import { Providers } from '~components/Providers'
 
 const fontSans = localFont({
@@ -79,10 +79,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Banner />
           {/* <Header /> */}
           <Main>{children}</Main>
-          {/* <Wrapper>
+          <Wrapper>
             <NowPlaying />
             <NowReading />
-          </Wrapper> */}
+          </Wrapper>
           <Footer />
         </Providers>
       </body>
