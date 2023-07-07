@@ -5,9 +5,9 @@ import type { Metadata } from 'next'
 
 import { getDataFromCache } from '~app/(cache)'
 import { CONSTANTS } from '~app/(notion)/(config)/constants'
-import type { PageObjectResponseEvent } from '~app/(notion)/(config)/types'
+import type { PageObjectResponseEvent } from '~app/(notion)/(config)/segments'
+import { getEventData } from '~app/(notion)/(config)/segments'
 import {
-  getEventData,
   getPropertyTypeData,
   getSegmentInfo,
   getDatabaseQuery,

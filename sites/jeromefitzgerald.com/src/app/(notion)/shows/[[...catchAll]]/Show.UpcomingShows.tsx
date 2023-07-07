@@ -3,12 +3,12 @@ import { cx } from '@jeromefitz/shared/src/utils'
 import _size from 'lodash/size'
 import { Suspense } from 'react'
 
-import type { PageObjectResponseEvent } from '~app/(notion)/(config)/types'
+import type { PageObjectResponseEvent } from '~app/(notion)/(config)/segments'
 import {
   getEventData,
   getPropertyTypeDataShow,
-  getPageDataFromNotion,
-} from '~app/(notion)/(config)/utils'
+} from '~app/(notion)/(config)/segments'
+import { getPageDataFromNotion } from '~app/(notion)/(config)/utils'
 import { RelationLoading } from '~components/Relations'
 
 async function UpcomingShowsIndividual({ id }) {

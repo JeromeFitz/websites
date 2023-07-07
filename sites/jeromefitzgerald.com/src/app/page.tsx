@@ -7,12 +7,8 @@ import type { Metadata } from 'next'
 
 import { getDataFromCache } from '~app/(cache)'
 import { CONSTANTS } from '~app/(notion)/(config)/constants'
-import {
-  getSegmentInfo,
-  getPropertyTypeData,
-  getPageData,
-  // getShowData,
-} from '~app/(notion)/(config)/utils'
+import { getPageData } from '~app/(notion)/(config)/segments'
+import { getSegmentInfo, getPropertyTypeData } from '~app/(notion)/(config)/utils'
 import { Notion as Blocks } from '~components/Notion'
 import {
   SectionContent,

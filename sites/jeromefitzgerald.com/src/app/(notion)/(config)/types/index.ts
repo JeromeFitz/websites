@@ -1,5 +1,0 @@
-export type { PageObjectResponseEvent, PropertiesEvent } from './Event.types'
-export type { PageObjectResponsePage, PropertiesPage } from './Page.types'
-export type { PageObjectResponsePerson, PropertiesPerson } from './Person.types'
-export type { PageObjectResponseShow, PropertiesShow } from './Show.types'
-export type { PageObjectResponseVenue, PropertiesVenue } from './Venue.types'
