@@ -10,6 +10,7 @@ import { isObjectEmpty } from '@jeromefitz/utils'
 import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints'
 import _filter from 'lodash/filter'
 import _orderBy from 'lodash/orderBy'
+import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 // import {
 //   getDatabaseQuery,
@@ -167,6 +168,8 @@ function ListingTemp({ items, defaultValue }) {
 }
 
 function Events({ data }) {
+  const { isEnabled } = draftMode()
+  const draft = isEnabled
   const items = data.results.map((item) => {
     const { properties } = item
     const itemData: any = getEventData(properties)
@@ -175,12 +178,11 @@ function Events({ data }) {
     return itemData
   })
 
-  const preview = false
   /**
    * @todo(notion) filter out past events in listing
    */
   const events = _orderBy(
-    _filter(items, preview ? {} : { isPublished: true }),
+    _filter(items, draft ? {} : { isPublished: true }),
     ['dateIso'],
     ['asc']
   )
@@ -190,6 +192,9 @@ function Events({ data }) {
 }
 
 function EventsPast({ data }) {
+  const { isEnabled } = draftMode()
+  const draft = isEnabled
+
   const MAX = 10
   let i = 0
   const items = data.results.map((item) => {
@@ -203,12 +208,11 @@ function EventsPast({ data }) {
     return itemData
   })
 
-  const preview = false
   /**
    * @todo(notion) filter out past events in listing
    */
   const events = _orderBy(
-    _filter(items, preview ? {} : { isPublished: true }),
+    _filter(items, draft ? {} : { isPublished: true }),
     ['dateIso'],
     ['desc']
   )
@@ -217,15 +221,16 @@ function EventsPast({ data }) {
   return <ListingTemp items={events} defaultValue={defaultValue} />
 }
 
-// @todo(complexity) 13
+// @todo(complexity) 14
 // eslint-disable-next-line complexity
-async function Listing({ preview, revalidate, segmentInfo }) {
+async function Listing({ revalidate, segmentInfo }) {
+  const { isEnabled } = draftMode()
   const { slug } = segmentInfo
   // @note(notion) Listing do not pass Database ID
   const data = await getDataFromCache({
     database_id: '',
+    draft: isEnabled,
     filterType: 'equals',
-    preview,
     revalidate,
     segmentInfo,
   })
@@ -259,18 +264,14 @@ async function Listing({ preview, revalidate, segmentInfo }) {
       })
     : await getDatabaseQuery({
         database_id: DATABASE_ID,
+        draft: isEnabled,
         filterType: 'starts_with',
+        revalidate,
         segmentInfo,
       })
   const hasData = eventsData?.results?.length > 0
   const title = 'Events'
 
-  // console.dir(`eventsData`)
-  // console.dir(eventsData)
-  // console.dir(`data`)
-  // console.dir(data)
-
-  // const seoDescription = getPropertyTypeData(data?.page?.properties, 'SEO.Description')
   const { seoDescription } = getPageData(data?.page?.properties) || ''
 
   return (

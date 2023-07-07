@@ -48,19 +48,6 @@ export async function generateMetadata({ ...props }): Promise<Metadata> {
   return isPublished ? data?.seo : is404Seo
 }
 
-// const mockStaticParamsTest = [
-//   { catchAll: ['jerome-and'] },
-//   { catchAll: ['knights-of-the-arcade'] },
-//   { catchAll: ['the-playlist'] },
-//   { catchAll: ['warp-zone'] },
-// ]
-
-// export function generateStaticParams() {
-//   console.dir(`> generateStaticParams`)
-//   console.dir(mockStaticParamsTest)
-//   return mockStaticParamsTest
-// }
-
 async function _generateStaticParams({ ...props }) {
   if (isDev) {
     return []
@@ -78,7 +65,9 @@ async function _generateStaticParams({ ...props }) {
   // })
   const dataStatic: QueryDatabaseResponse = await getDatabaseQuery({
     database_id: DATABASE_ID,
+    draft: false,
     filterType: 'starts_with',
+    revalidate: false,
     segmentInfo,
   })
   const hasContent = dataStatic?.results?.length > 0
@@ -113,20 +102,18 @@ async function _generateStaticParams({ ...props }) {
   !!routes && console.dir(routes)
   // !!routes && routes.map((route) => segments.push(route))
 
-  console.dir(segments)
+  // console.dir(segments)
 
   return segments
 }
 const generateStaticParams = isDev ? undefined : _generateStaticParams
 export { generateStaticParams }
 
-export default function Page({ preview = false, revalidate = false, ...props }) {
+export default function Page({ revalidate = false, ...props }) {
   const segmentInfo = getSegmentInfo({ SEGMENT, ...props })
 
   if (segmentInfo.isIndex) {
-    return (
-      <Listing preview={preview} revalidate={revalidate} segmentInfo={segmentInfo} />
-    )
+    return <Listing revalidate={revalidate} segmentInfo={segmentInfo} />
   }
-  return <Slug preview={preview} revalidate={revalidate} segmentInfo={segmentInfo} />
+  return <Slug revalidate={revalidate} segmentInfo={segmentInfo} />
 }

@@ -1,6 +1,7 @@
 import { Anchor } from '@jeromefitz/ds/components/Anchor'
 import { isObjectEmpty } from '@jeromefitz/utils'
 import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints'
+import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 
 import { getDataFromCache } from '~app/(cache)'
@@ -55,13 +56,14 @@ function ListingTemp({ data }) {
 
 // @todo(complexity) 11
 // eslint-disable-next-line complexity
-async function Listing({ preview, revalidate, segmentInfo }) {
+async function Listing({ revalidate, segmentInfo }) {
+  const { isEnabled } = draftMode()
   // const { slug } = segmentInfo
   // @note(notion) Listing do not pass Database ID
   const data = await getDataFromCache({
     database_id: '',
+    draft: isEnabled,
     filterType: 'equals',
-    preview,
     revalidate,
     segmentInfo,
   })
@@ -97,7 +99,9 @@ async function Listing({ preview, revalidate, segmentInfo }) {
    */
   const personData: QueryDatabaseResponse = await getDatabaseQuery({
     database_id: DATABASE_ID,
+    draft: isEnabled,
     filterType: 'starts_with',
+    revalidate,
     segmentInfo,
   })
   const hasData = personData?.results?.length > 0

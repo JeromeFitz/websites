@@ -21,25 +21,25 @@ const notion = new Client({ auth: process.env.NOTION_API_KEY })
  */
 const OVERRIDE_CACHE = process.env.OVERRIDE_CACHE || false
 
-type GetCustom = {
+type GetDataFromCache = {
   database_id: string
+  draft?: boolean
   filterType: any //FilterType
-  preview?: boolean
   revalidate?: boolean
   segmentInfo: SegmentInfo
 }
 
 export const preload = ({
   database_id,
+  draft,
   filterType,
-  preview,
   revalidate,
   segmentInfo,
-}: GetCustom) => {
+}: GetDataFromCache) => {
   void getDataFromCache({
     database_id,
+    draft,
     filterType,
-    preview,
     revalidate,
     segmentInfo,
   })
@@ -49,12 +49,11 @@ const getDataFromCache = cache(
   // eslint-disable-next-line complexity
   async ({
     database_id,
+    draft,
     filterType,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    preview,
     revalidate,
     segmentInfo,
-  }: GetCustom) => {
+  }: GetDataFromCache) => {
     const { slug } = segmentInfo
     /**
      * Redis
@@ -64,14 +63,16 @@ const getDataFromCache = cache(
     const isCached = !!databaseQueryCache && !isObjectEmpty(databaseQueryCache)
     data = databaseQueryCache
 
-    if (OVERRIDE_CACHE || revalidate || !isCached) {
-      // console.dir(`OVERRIDE_CACHE || revalidate || !isCached`)
+    if (OVERRIDE_CACHE || draft || revalidate || !isCached) {
+      // console.dir(`OVERRIDE_CACHE || draft || revalidate || !isCached`)
       /**
        * Notion
        */
       const databaseQueryNotion = await getDatabaseQuery({
         database_id,
+        draft,
         filterType,
+        revalidate,
         segmentInfo,
       })
       data = databaseQueryNotion
@@ -96,7 +97,8 @@ const getDataFromCache = cache(
         blocks,
         seo,
       }
-      if (!isObjectEmpty(data.blocks)) {
+      if (!isObjectEmpty(data.blocks) && !draft) {
+        // console.dir(`setCache: draft: ${draft ? 'y' : 'n'}`)
         void setCache({ data, slug })
       }
     }
@@ -139,7 +141,8 @@ const getDataFromCache = cache(
         page: pageData,
         seo: pageSeo,
       }
-      if (!isObjectEmpty(data.blocks)) {
+      if (!isObjectEmpty(data.blocks) && !draft) {
+        // console.dir(`setCache: draft: ${draft ? 'y' : 'n'}`)
         void setCache({ data, slug })
       }
     }

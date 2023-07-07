@@ -1,4 +1,5 @@
 import { isObjectEmpty } from '@jeromefitz/utils'
+import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 
 import { getDataFromCache } from '~app/(cache)'
@@ -28,11 +29,12 @@ const RELATIONS: RELATIONS_TYPE[] = [
 
 const { DATABASE_ID } = CONSTANTS.PEOPLE
 
-async function Slug({ preview, revalidate, segmentInfo }) {
+async function Slug({ revalidate, segmentInfo }) {
+  const { isEnabled } = draftMode()
   const data = await getDataFromCache({
     database_id: DATABASE_ID,
+    draft: isEnabled,
     filterType: 'equals',
-    preview,
     revalidate,
     segmentInfo,
   })
