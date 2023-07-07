@@ -259,6 +259,7 @@ function getPropertyTypeData(properties, property) {
 
   /**
    * @todo(switch) move away from switch eventually
+   *
    */
   switch (type) {
     case 'checkbox':
