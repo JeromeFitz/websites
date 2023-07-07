@@ -158,6 +158,9 @@ function Image({ ...props }) {
   //   hack.quality
   // }`
 
+  // @hack(next) in case no comments are found in notion
+  if (!image?.alt) image.alt = ''
+
   return (
     <>
       {/* @hack(next) NEXT-811 */}

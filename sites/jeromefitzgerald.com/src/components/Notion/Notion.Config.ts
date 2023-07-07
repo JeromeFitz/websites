@@ -3,20 +3,26 @@
  *  up but you probably _need_ to set this up, haha
  */
 import { lazy } from 'react'
+// import { Embed } from './Blocks/Embed'
+// import { Image } from './Blocks/Image'
+// import { Video } from './Blocks/Video'
 
 const custom = {
   embed: {
     component: lazy(() => import('./Blocks/Embed')),
+    // component: Embed,
     element: 'div',
     className: '',
   },
   image: {
     component: lazy(() => import('./Blocks/Image')),
+    // component: Image,
     element: 'img',
     className: '',
   },
   video: {
     component: lazy(() => import('./Blocks/Video')),
+    // component: Video,
     element: 'div',
     className: '',
   },

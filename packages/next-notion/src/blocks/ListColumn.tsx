@@ -1,17 +1,14 @@
 import type {
-  ColumnBlockObjectResponse,
+  // ColumnBlockObjectResponse,
   ColumnListBlockObjectResponse,
 } from '@notionhq/client/build/src/api-endpoints'
 import { forwardRef } from 'react'
 
 import { NotionBlocks as Blocks } from '../Notion.Blocks'
-// import { Notion as Blocks } from '../../../../sites/jeromefitzgerald.com/src/components/Notion/index'
 import { getBlockKey } from '../Notion.utils'
-import { getBlockChildrenDataParent } from '../queries/index'
+// import { getBlockChildrenDataParent } from '../queries/index'
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-const ListColumn = forwardRef(async function ListColumn(props: any, ref: any) {
+const ListColumn = forwardRef(function ListColumn(props: any, ref: any) {
   const {
     block,
     order,
@@ -28,14 +25,10 @@ const ListColumn = forwardRef(async function ListColumn(props: any, ref: any) {
   }
 
   if (!items) return null
-  return (
-    <Component ref={ref} key={key} {...componentProps}>
-      {await items.results.map(async (item: ColumnBlockObjectResponse) => {
-        const data = await getBlockChildrenDataParent(item.id)
-        // @todo(next-notion) can we avoid async/await with the following?
-        // console.dir(item.columnDataColumn.results)
 
-        // @todo(next-notion) how to do this dynamically?
+  return (
+    <Component ref={ref} {...componentProps}>
+      {items.results.map((item) => {
         const blockProps = props?.blocks['column']
 
         const ComponentColumn: any = blockProps?.element ?? 'div'
@@ -46,15 +39,20 @@ const ListColumn = forwardRef(async function ListColumn(props: any, ref: any) {
         const block = {
           object: 'block',
           type: 'column',
-          column: data,
+          column: item.columnDataColumn,
         }
-
         return (
-          <ComponentColumn key={`${key}-column`} {...componentColumnProps}>
-            {block.column.results.map((item, order) => {
-              const blocksKey = `${key}--${order}`
-              return <Blocks key={blocksKey} blocks={props?.blocks} data={item} />
-            })}
+          <ComponentColumn
+            key={`${key}-column-${item.id}`}
+            {...componentColumnProps}
+          >
+            <>
+              {block.column.results.map((item, _order) => {
+                const blocksKey = `${key}--${order}--${item.id}--${_order}`
+                // console.dir(`blocksKey:    ${blocksKey}`)
+                return <Blocks key={blocksKey} blocks={props?.blocks} data={item} />
+              })}
+            </>
           </ComponentColumn>
         )
       })}

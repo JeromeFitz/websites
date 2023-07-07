@@ -1,4 +1,5 @@
 import 'server-only'
+
 import { Caption } from '@jeromefitz/ds/components/Caption'
 import { NotionEmoji as EmojiWrapper } from 'next-notion/src/blocks/Emoji'
 import { Tweet } from 'react-tweet'

@@ -2,7 +2,7 @@ import type {
   BlockObjectResponse,
   ListBlockChildrenResponse,
 } from '@notionhq/client/build/src/api-endpoints'
-import { Suspense } from 'react'
+// import { Suspense } from 'react'
 
 import { blocks as blocksDefault, OBJECTS, TYPES } from './Notion.Config'
 import { getBlock } from './Notion.utils'
@@ -41,15 +41,16 @@ function NotionBlocks({
     <>
       {!!results &&
         results.map((block: BlockObjectResponse, order) => {
-          if (order > 10) {
-            return (
-              // @todo(loading) suspense
-              <Suspense key={`${block.id}--${order}`} fallback={<p>Loading...</p>}>
-                {getBlock({ block, blocks, order })}
-              </Suspense>
-            )
-          }
+          // if (order > 10) {
+          //   return (
+          //     // @todo(loading) suspense
+          //     <Suspense key={`${block.id}--${order}`} fallback={<p>Loading...</p>}>
+          //       {getBlock({ block, blocks, order })}
+          //     </Suspense>
+          //   )
+          // }
           return getBlock({ block, blocks, order })
+          // return <></>
         })}
     </>
   )
