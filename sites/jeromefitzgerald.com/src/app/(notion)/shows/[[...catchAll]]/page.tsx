@@ -1,16 +1,16 @@
 import { isObjectEmpty } from '@jeromefitz/utils'
 import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints'
-import isEqual from 'lodash/isEqual'
-import uniqWith from 'lodash/uniqWith'
+// import isEqual from 'lodash/isEqual'
+// import uniqWith from 'lodash/uniqWith'
 import type { Metadata } from 'next'
+import { getPropertyTypeData } from 'next-notion/src/utils'
 
-import { getDataFromCache } from '~app/(cache)'
 import { CONSTANTS } from '~app/(notion)/(config)/constants'
 import type { PageObjectResponseShow } from '~app/(notion)/(config)/segments'
 import { getShowData } from '~app/(notion)/(config)/segments'
 import {
+  getDataFromCache,
   getSegmentInfo,
-  getPropertyTypeData,
   getDatabaseQuery,
 } from '~app/(notion)/(config)/utils'
 
@@ -97,9 +97,9 @@ async function _generateStaticParams({ ...props }) {
       }
     })
   }
-  const routes = !!combos && uniqWith(combos, isEqual)
-  !!routes && console.dir(`routes: turned off for now`)
-  !!routes && console.dir(routes)
+  // const routes = !!combos && uniqWith(combos, isEqual)
+  // !!routes && console.dir(`routes: turned off for now`)
+  // !!routes && console.dir(routes)
   // !!routes && routes.map((route) => segments.push(route))
 
   // console.dir(segments)

@@ -1,6 +1,6 @@
 import 'server-only'
 import { Anchor } from '@jeromefitz/ds/components/Anchor'
-import { cx } from '@jeromefitz/shared/src/utils'
+import { cx } from '@jeromefitz/shared/src/utils/cx'
 import { asyncForEach } from '@jeromefitz/utils'
 import _noop from 'lodash/noop'
 import _orderBy from 'lodash/orderBy'

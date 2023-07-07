@@ -1,5 +1,5 @@
+import { getDatabaseQueryByDateRange as _getDatabaseQueryByDateRange } from 'next-notion/src/queries'
 import type { GetDatabaseQueryTypes } from 'next-notion/src/queries/getDatabaseQuery'
-import { getDatabaseQueryByDateRange as _getDatabaseQueryByDateRange } from 'next-notion/src/queries/index'
 import { cache } from 'react'
 
 const getDatabaseQueryByDateRange = cache(

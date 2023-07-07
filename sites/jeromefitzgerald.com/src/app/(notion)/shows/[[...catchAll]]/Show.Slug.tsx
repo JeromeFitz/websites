@@ -2,11 +2,10 @@ import { isObjectEmpty } from '@jeromefitz/utils'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 
-import { getDataFromCache } from '~app/(cache)'
-// import { FourOhFour } from '~app/(errors)/404'
 import { CONSTANTS } from '~app/(notion)/(config)/constants'
 import type { PropertiesShow } from '~app/(notion)/(config)/segments'
 import { getShowData } from '~app/(notion)/(config)/segments'
+import { getDataFromCache } from '~app/(notion)/(config)/utils'
 import { Notion as Blocks } from '~components/Notion'
 import { Relations } from '~components/Relations'
 import {
@@ -18,7 +17,6 @@ import {
   SectionWrapper,
   Tags,
 } from '~components/Section'
-import { Testing } from '~components/Testing'
 
 // import { UpcomingShows } from './Show.UpcomingShows'
 
@@ -52,14 +50,11 @@ async function Slug({ revalidate, segmentInfo }) {
     segmentInfo,
   })
   const is404 = isObjectEmpty(data?.blocks || {})
-  // if (is404) return <FourOhFour isNotPublished={false} segmentInfo={segmentInfo} />
   if (is404) return notFound()
 
   const { properties }: { properties: PropertiesShow } = data?.page
   const { isPublished, tags, title } = getShowData(properties)
 
-  // if (!isPublished)
-  //   return <FourOhFour isNotPublished={true} segmentInfo={segmentInfo} />
   if (!isPublished) return notFound()
 
   return (
@@ -98,7 +93,6 @@ async function Slug({ revalidate, segmentInfo }) {
           <UpcomingShows properties={properties} />
         </SectionContent>
       </SectionWrapper> */}
-      <Testing />
     </>
   )
 }

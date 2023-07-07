@@ -141,6 +141,8 @@ Custom Callouts:
 
 #### `getPropertyTypeData`
 
+Moved to `next-notion`
+
 You pass a typed `notion` field it does the lift to get it into a more digestible format.
 
 **Note:** Goal is to keep `getPropertyTypeData` and move the data you want back to be custom to you via `[Notion-DB].utils.ts`

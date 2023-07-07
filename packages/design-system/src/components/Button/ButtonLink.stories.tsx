@@ -1,4 +1,4 @@
-import { cx } from '@jeromefitz/shared/src/utils'
+import { cx } from '@jeromefitz/shared/src/utils/cx'
 import type { Meta, StoryObj } from '@storybook/react'
 
 import { ButtonLink } from './ButtonLink'

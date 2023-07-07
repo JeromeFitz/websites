@@ -21,6 +21,3 @@ fi
 ###
 # @custom(build)
 ###
-mkdir -p ./dist/styles
-cp src/styles/chrome.css ./dist/styles
-cp src/styles/safari.css ./dist/styles

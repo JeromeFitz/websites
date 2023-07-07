@@ -1,14 +1,9 @@
-/**
- * @note(next) Custom Homepage
- */
 import { isObjectEmpty } from '@jeromefitz/utils'
-// import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints'
 import { draftMode } from 'next/headers'
 
-import { getDataFromCache } from '~app/(cache)'
 import { CONSTANTS } from '~app/(notion)/(config)/constants'
 import { getPageData } from '~app/(notion)/(config)/segments'
-import { getSegmentInfo } from '~app/(notion)/(config)/utils'
+import { getDataFromCache, getSegmentInfo } from '~app/(notion)/(config)/utils'
 import {
   SectionContent,
   SectionHeader,
@@ -18,23 +13,13 @@ import {
   SectionWrapper,
   // Tags,
 } from '~components/Section'
-import { Testing } from '~components/Testing'
 
+const slug = '/books'
 const { SEGMENT } = CONSTANTS.PAGES
 
 async function Slug({ revalidate, segmentInfo }) {
   const { isEnabled } = draftMode()
-  // console.dir(segmentInfo)
-  // const data: QueryDatabaseResponse = await getDatabaseQuery({
-  //   database_id: DATABASE_ID,
-  //   draft: isEnabled,
-  //   filterType: 'starts_with',
-  //   revalidate,
-  //   segmentInfo: {
-  //     ...segmentInfo,
-  //     slug: '/homepage',
-  //   },
-  // })
+
   const data = await getDataFromCache({
     database_id: '',
     draft: isEnabled,
@@ -42,18 +27,11 @@ async function Slug({ revalidate, segmentInfo }) {
     revalidate,
     segmentInfo: {
       ...segmentInfo,
-      slug: '/books',
+      slug,
     },
   })
 
-  const title = 'Books'
-
-  // console.dir(`showData`)
-  // console.dir(showData)
-  // console.dir(`data`)
-  // console.dir(data)
-
-  const { seoDescription } = getPageData(data?.page?.properties) || ''
+  const { seoDescription, title } = getPageData(data?.page?.properties) || ''
 
   if (isObjectEmpty(data.page)) return null
   return (
@@ -68,7 +46,6 @@ async function Slug({ revalidate, segmentInfo }) {
           {/* <Blocks data={data?.blocks} /> */}
         </SectionContent>
       </SectionWrapper>
-      <Testing />
     </>
   )
 }

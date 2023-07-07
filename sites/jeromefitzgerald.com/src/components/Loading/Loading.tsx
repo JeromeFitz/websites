@@ -1,4 +1,4 @@
-import { cx } from '@jeromefitz/shared/src/utils'
+import { cx } from '@jeromefitz/shared/src/utils/cx'
 import { useNProgress } from '@tanem/react-nprogress'
 import { motion } from 'framer-motion'
 import { useEffect } from 'react'

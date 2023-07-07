@@ -1,5 +1,5 @@
 /* eslint-disable no-restricted-imports */
-import { cx } from '@jeromefitz/shared/src/utils'
+import { cx } from '@jeromefitz/shared/src/utils/cx'
 import NextLink from 'next/link'
 
 import { ExternalLinkIcon } from '../Icon'

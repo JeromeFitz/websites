@@ -5,13 +5,12 @@ import _filter from 'lodash/filter'
 import _orderBy from 'lodash/orderBy'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
+import { getPropertyTypeData } from 'next-notion/src/utils'
 
-import { getDataFromCache } from '~app/(cache)'
-// import { FourOhFour } from '~app/(errors)/404'
 import { CONSTANTS } from '~app/(notion)/(config)/constants'
 // import type { PageObjectResponseShow } from '~app/(notion)/(config)/segments'
 import { getPageData, getShowData } from '~app/(notion)/(config)/segments'
-import { getDatabaseQuery, getPropertyTypeData } from '~app/(notion)/(config)/utils'
+import { getDataFromCache, getDatabaseQuery } from '~app/(notion)/(config)/utils'
 import {
   SectionContent,
   SectionHeader,
@@ -21,7 +20,6 @@ import {
   SectionWrapper,
   // Tags,
 } from '~components/Section'
-import { Testing } from '~components/Testing'
 
 const { DATABASE_ID } = CONSTANTS.SHOWS
 
@@ -97,7 +95,6 @@ async function Listing({ revalidate, segmentInfo }) {
   const noData = isObjectEmpty(data?.blocks || {})
 
   const is404 = !isDynamicListing && noData
-  // if (is404) return <FourOhFour isNotPublished={false} segmentInfo={segmentInfo} />
   if (is404) notFound()
 
   const isPublished = is404
@@ -106,8 +103,6 @@ async function Listing({ revalidate, segmentInfo }) {
       getPropertyTypeData(data?.page?.properties, 'Is.Published') ||
       false
 
-  // if (!isPublished)
-  //   return <FourOhFour isNotPublished={true} segmentInfo={segmentInfo} />
   if (!isPublished) notFound()
 
   /**
@@ -122,11 +117,6 @@ async function Listing({ revalidate, segmentInfo }) {
   })
   const hasContent = showData?.results?.length > 0
   const title = 'Shows'
-
-  // console.dir(`showData`)
-  // console.dir(showData)
-  // console.dir(`data`)
-  // console.dir(data)
 
   // const seoDescription = getPropertyTypeData(data?.page?.properties, 'SEO.Description')
   const { seoDescription } = getPageData(data?.page?.properties) || ''
@@ -148,7 +138,6 @@ async function Listing({ revalidate, segmentInfo }) {
           {hasContent && <ListingTemp data={showData} />}
         </SectionContent>
       </SectionWrapper>
-      <Testing />
     </>
   )
 }

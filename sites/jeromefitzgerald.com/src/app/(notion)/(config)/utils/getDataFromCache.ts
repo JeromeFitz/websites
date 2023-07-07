@@ -1,16 +1,15 @@
 import 'server-only'
 
+import { getCache, setCache } from '@jeromefitz/shared/src/lib/redis'
 import { isObjectEmpty } from '@jeromefitz/utils'
 import { Client } from '@notionhq/client'
 // import type { FilterType } from 'next-notion/src/Notion.types'
-import { getBlockChildrenDataParent } from 'next-notion/src/queries/index'
-import { isAwsImage, isImageExpired } from 'next-notion/src/utils/index'
+import { getBlockChildrenDataParent } from 'next-notion/src/queries'
+import { isAwsImage, isImageExpired } from 'next-notion/src/utils'
 import { cache } from 'react'
 
 import { getMetadata, getDatabaseQuery } from '~app/(notion)/(config)/utils'
 import type { SegmentInfo } from '~app/(notion)/(config)/utils'
-
-import { getCache, setCache } from './index'
 
 const notion = new Client({ auth: process.env.NOTION_API_KEY })
 

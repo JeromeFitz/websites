@@ -27,24 +27,34 @@
     "lint:typescript": "tsc --noEmit --declaration",
     "semantic-release": "echo semantic-release"
   },
-  "dependencies": {
-    "@jeromefitz/design-system": "4.2.3",
-    "@tanem/react-nprogress": "5.0.44",
+  "peerDependencies": {
+    "@notionhq/client": "^2.2.6",
+    "@upstash/ratelimit": "^0.4.3",
+    "@upstash/redis": "^1.22.0",
+    "clsx": "^1.2.1",
+    "fast-json-stable-stringify": "^2.1.0",
+    "ioredis": "^5.3.2",
+    "lodash": "^4.17.21",
+    "plaiceholder": "^2.5.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tailwind-merge": "^1.13.2"
+  },
+  "devDependencies": {
+    "@notionhq/client": "2.2.6",
+    "@types/lodash": "4.14.195",
+    "@types/react": "18.2.14",
+    "@types/react-dom": "18.2.6",
+    "@upstash/ratelimit": "0.4.3",
+    "@upstash/redis": "1.22.0",
     "clsx": "1.2.1",
-    "fathom-client": "3.5.0",
+    "fast-json-stable-stringify": "2.1.0",
+    "ioredis": "5.3.2",
     "lodash": "4.17.21",
-    "next": "13.4.9",
-    "next-themes": "0.2.1",
     "plaiceholder": "2.5.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "swr": "2.2.0",
     "tailwind-merge": "1.13.2"
-  },
-  "devDependencies": {
-    "@types/lodash": "4.14.195",
-    "@types/react": "18.2.14",
-    "@types/react-dom": "18.2.6"
   },
   "publishConfig": {
     "access": "public"

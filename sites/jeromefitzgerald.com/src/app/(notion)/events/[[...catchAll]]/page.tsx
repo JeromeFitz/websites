@@ -2,13 +2,13 @@ import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpo
 // import isEqual from 'lodash/isEqual'
 // import uniqWith from 'lodash/uniqWith'
 import type { Metadata } from 'next'
+import { getPropertyTypeData } from 'next-notion/src/utils'
 
-import { getDataFromCache } from '~app/(cache)'
 import { CONSTANTS } from '~app/(notion)/(config)/constants'
 import type { PageObjectResponseEvent } from '~app/(notion)/(config)/segments'
 import { getEventData } from '~app/(notion)/(config)/segments'
 import {
-  getPropertyTypeData,
+  getDataFromCache,
   getSegmentInfo,
   getDatabaseQuery,
 } from '~app/(notion)/(config)/utils'
@@ -78,11 +78,10 @@ async function _generateStaticParams({ ...props }) {
       /**
        * @todo(next) build/cache this gets kind of in-depth
        */
-      // const isEvent = segmentInfo.segment === 'events' // && !segmentInfo.isIndex
-      // if (isEvent) {
-      //   console.dir(`*** ${catchAll[0]}`)
-      //   if (catchAll[0] !== 2023) return null
-      // }
+      const isEvent = segmentInfo.segment === 'events' // && !segmentInfo.isIndex
+      if (isEvent) {
+        if (catchAll[0] !== 2023) return null
+      }
 
       segments.push({ catchAll })
       if (catchAll.length > 0) {
