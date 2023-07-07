@@ -541,8 +541,8 @@ importers:
         specifier: 4.2.3
         version: 4.2.3(@heroicons/react@2.0.18)(@radix-ui/react-icons@1.3.0)(@types/react@18.2.14)(cmdk@0.2.0)(framer-motion@10.12.18)(lodash@4.17.21)(next@13.4.9)(react-dom@18.2.0)(react@18.2.0)(swr@2.2.0)
       '@jeromefitz/notion':
-        specifier: 4.0.5
-        version: 4.0.5(@jeromefitz/utils@2.2.2)(lodash@4.17.21)
+        specifier: 4.0.7
+        version: 4.0.7(@jeromefitz/utils@2.2.2)(lodash@4.17.21)
       '@jeromefitz/spotify':
         specifier: 3.0.4
         version: 3.0.4(@jeromefitz/utils@2.2.2)(lodash@4.17.21)(sharp@0.32.1)
@@ -5333,17 +5333,17 @@ packages:
       - supports-color
     dev: false
 
-  /@jeromefitz/notion@4.0.5(@jeromefitz/utils@2.2.2)(lodash@4.17.21):
-    resolution: {integrity: sha512-Ok/bCzlKgeBs9N685TIkgWYqIUMSkCILxjqjFkp4wyWmI7vqYE/Zan4Dm+4lnhQ1m7Tu20BDUpnpO/cgoEXcIA==}
+  /@jeromefitz/notion@4.0.7(@jeromefitz/utils@2.2.2)(lodash@4.17.21):
+    resolution: {integrity: sha512-Be3y2sKLDGBv+no11O/5R+PLlHc0+wAPGHlsNNeyJoJPtwwvLyhgptu/amerIMgK6RV+lyrcxLZx1h+UTGpd9w==}
     engines: {node: '>=16'}
     peerDependencies:
       '@jeromefitz/utils': ^2.1.0
       lodash: ^4.17.21
     dependencies:
       '@jeromefitz/utils': 2.2.2(lodash@4.17.21)
-      '@notionhq/client': 2.2.4
-      date-fns: 2.29.3
-      date-fns-tz: 2.0.0(date-fns@2.29.3)
+      '@notionhq/client': 2.2.6
+      date-fns: 2.30.0
+      date-fns-tz: 2.0.0(date-fns@2.30.0)
       github-slugger: 2.0.0
       lodash: 4.17.21
     transitivePeerDependencies:
@@ -5947,16 +5947,6 @@ packages:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
-
-  /@notionhq/client@2.2.4:
-    resolution: {integrity: sha512-cr5yW6mIJX1cBDThClklNUY5KfQO0iW3rL/CEpx5gU+7Bv458VqeT9YfM9KIbhuGw0D2a8/+qv0UpveDM6rsOw==}
-    engines: {node: '>=12'}
-    dependencies:
-      '@types/node-fetch': 2.6.4
-      node-fetch: 2.6.12
-    transitivePeerDependencies:
-      - encoding
-    dev: false
 
   /@notionhq/client@2.2.6:
     resolution: {integrity: sha512-QmYN43nOLOBjQ450/nEb98EvTlkDq4t2/F39kiSxaqtse4EG7nctJLeJZrKR1glz9V4K8y2kHmNo8Bz+1XrwYQ==}
@@ -13848,25 +13838,12 @@ packages:
       whatwg-url: 11.0.0
     dev: true
 
-  /date-fns-tz@2.0.0(date-fns@2.29.3):
-    resolution: {integrity: sha512-OAtcLdB9vxSXTWHdT8b398ARImVwQMyjfYGkKD2zaGpHseG2UPHbHjXELReErZFxWdSLph3c2zOaaTyHfOhERQ==}
-    peerDependencies:
-      date-fns: '>=2.0.0'
-    dependencies:
-      date-fns: 2.29.3
-    dev: false
-
   /date-fns-tz@2.0.0(date-fns@2.30.0):
     resolution: {integrity: sha512-OAtcLdB9vxSXTWHdT8b398ARImVwQMyjfYGkKD2zaGpHseG2UPHbHjXELReErZFxWdSLph3c2zOaaTyHfOhERQ==}
     peerDependencies:
       date-fns: '>=2.0.0'
     dependencies:
       date-fns: 2.30.0
-
-  /date-fns@2.29.3:
-    resolution: {integrity: sha512-dDCnyH2WnnKusqvZZ6+jA1O51Ibt8ZMRNkDZdyAyK4YfbDwa/cEmuztzG5pk6hqlp9aSBPYcjOlktquahGwGeA==}
-    engines: {node: '>=0.11'}
-    dev: false
 
   /date-fns@2.30.0:
     resolution: {integrity: sha512-fnULvOpxnC5/Vg3NCiWelDsLiUc9bRwAPs/+LfTLNvetFCtCTN+yQz15C/fs4AwX1R9K5GLtLfn8QW+dWisaAw==}
