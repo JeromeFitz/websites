@@ -102,7 +102,6 @@
     "@upstash/ratelimit": "0.4.3",
     "@upstash/redis": "1.22.0",
     "@vercel/analytics": "1.0.1",
-    "blurhash": "2.0.5",
     "clsx": "1.2.1",
     "cmdk": "0.2.0",
     "date-fns": "2.30.0",
