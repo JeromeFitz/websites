@@ -1,14 +1,10 @@
 import 'server-only'
-import https from 'node:https'
 
-import { Redis } from '@upstash/redis'
 import stringify from 'fast-json-stable-stringify'
 
-import { TIME } from '~app/(notion)/(config)/constants'
+import { TIME } from '../constants'
 
-const redis = Redis.fromEnv({ agent: new https.Agent({ keepAlive: true }) })
-
-import { getKey } from './index'
+import redis, { getKey } from './index'
 import type { RC } from './index'
 
 // @todo(types) any

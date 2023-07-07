@@ -1,3 +1,3 @@
 # next-notion
 
-This entire thing needs to be re-written.
+README needs to be re-written.

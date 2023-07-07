@@ -1,5 +1,6 @@
+import { getPropertyTypeData } from 'next-notion/src/utils'
+
 import type { PropertiesPerson } from '~app/(notion)/(config)/segments'
-import { getPropertyTypeData } from '~app/(notion)/(config)/utils'
 
 function getPropertyTypeDataPerson(properties, property: keyof PropertiesPerson) {
   return getPropertyTypeData(properties, property)

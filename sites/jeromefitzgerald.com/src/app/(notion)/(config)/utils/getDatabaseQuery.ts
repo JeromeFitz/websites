@@ -1,8 +1,9 @@
-import { isObjectEmpty } from '@jeromefitz/utils'
-import { getDatabaseQuery as _getDatabaseQuery } from 'next-notion/src/queries/index'
-import { cache } from 'react'
+import 'server-only'
 
-import { getCache, setCache, getKey } from '~app/(cache)'
+import { getCache, setCache, getKey } from '@jeromefitz/shared/src/lib/redis'
+import { isObjectEmpty } from '@jeromefitz/utils'
+import { getDatabaseQuery as _getDatabaseQuery } from 'next-notion/src/queries'
+import { cache } from 'react'
 
 const OVERRIDE_CACHE = process.env.OVERRIDE_CACHE || false
 

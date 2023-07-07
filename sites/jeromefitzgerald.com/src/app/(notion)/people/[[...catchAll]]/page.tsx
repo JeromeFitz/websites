@@ -2,13 +2,13 @@ import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpo
 // import isEqual from 'lodash/isEqual'
 // import uniqWith from 'lodash/uniqWith'
 import type { Metadata } from 'next'
+import { getPropertyTypeData } from 'next-notion/src/utils'
 
-import { getDataFromCache } from '~app/(cache)'
 import { CONSTANTS } from '~app/(notion)/(config)/constants'
 import type { PageObjectResponsePerson } from '~app/(notion)/(config)/segments'
 import { getPersonData } from '~app/(notion)/(config)/segments'
 import {
-  getPropertyTypeData,
+  getDataFromCache,
   getSegmentInfo,
   getDatabaseQuery,
 } from '~app/(notion)/(config)/utils'

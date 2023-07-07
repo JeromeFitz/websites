@@ -1,6 +1,6 @@
 'use client'
 import { CalendarIcon } from '@jeromefitz/ds/components/Icon'
-import { cx } from '@jeromefitz/shared/src/utils'
+import { cx } from '@jeromefitz/shared/src/utils/cx'
 // eslint-disable-next-line no-restricted-imports
 import NextLink from 'next/link'
 import Headroom from 'react-headroom'

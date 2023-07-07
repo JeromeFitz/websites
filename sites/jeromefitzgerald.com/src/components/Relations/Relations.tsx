@@ -1,4 +1,4 @@
-import { cx } from '@jeromefitz/shared/src/utils'
+import { cx } from '@jeromefitz/shared/src/utils/cx'
 import _size from 'lodash/size'
 import pluralize from 'pluralize'
 // import { Suspense } from 'react'

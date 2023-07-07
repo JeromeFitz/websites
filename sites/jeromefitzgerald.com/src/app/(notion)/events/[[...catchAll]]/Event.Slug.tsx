@@ -10,7 +10,7 @@ import {
   LocationMarkerIcon,
 } from '@jeromefitz/ds/components/Icon'
 import { Separator } from '@jeromefitz/ds/components/Separator'
-import { cx } from '@jeromefitz/shared/src/utils'
+import { cx } from '@jeromefitz/shared/src/utils/cx'
 import { isObjectEmpty } from '@jeromefitz/utils'
 // import { Client } from '@notionhq/client'
 import { Redis } from '@upstash/redis'
@@ -21,15 +21,14 @@ import { notFound } from 'next/navigation'
 import { isImageExpired } from 'next-notion/src/utils/getAwsImage'
 import validUrl from 'valid-url'
 
-import { getDataFromCache } from '~app/(cache)'
 import { CONSTANTS } from '~app/(notion)/(config)/constants'
-// import { FourOhFour } from '~app/(errors)/404'
 // import { Image } from '~app/(notion)/(utils)/blocks/Image'
 import type { PropertiesEvent } from '~app/(notion)/(config)/segments'
 import {
   getEventData,
   getPropertyTypeDataEvent,
 } from '~app/(notion)/(config)/segments'
+import { getDataFromCache } from '~app/(notion)/(config)/utils'
 import { Notion as Blocks } from '~components/Notion'
 import { Relations } from '~components/Relations'
 import {
@@ -40,8 +39,6 @@ import {
   SectionWrapper,
   Tags,
 } from '~components/Section'
-import { Testing } from '~components/Testing'
-// import { PageHeading } from '~ui/PageHeading'
 
 // @ts-ignore
 import { Venue } from './Event.Slug.Venue'
@@ -285,7 +282,6 @@ async function Slug({ revalidate, segmentInfo }) {
   // console.dir(`noData:           ${noData ? 'y' : 'n'}`)
   // console.dir(`is404:            ${is404 ? 'y' : 'n'}`)
 
-  // if (is404) return <FourOhFour isNotPublished={false} segmentInfo={segmentInfo} />
   if (is404) return notFound()
 
   const { properties }: { properties: PropertiesEvent } = data?.page
@@ -293,8 +289,6 @@ async function Slug({ revalidate, segmentInfo }) {
 
   // console.dir(`isPublished:      ${isPublished ? 'y' : 'n'}`)
 
-  // if (!isPublished)
-  //   return <FourOhFour isNotPublished={true} segmentInfo={segmentInfo} />
   if (!isPublished) return notFound()
 
   return (
@@ -328,7 +322,6 @@ async function Slug({ revalidate, segmentInfo }) {
           />
         </SectionContent>
       </SectionWrapper>
-      <Testing />
     </>
   )
 }

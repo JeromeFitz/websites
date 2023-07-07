@@ -10,7 +10,7 @@ import {
   TagIcon as TagIconHero,
   TicketIcon as TicketIconHero,
 } from '@heroicons/react/24/outline'
-import { cx } from '@jeromefitz/shared/src/utils'
+import { cx } from '@jeromefitz/shared/src/utils/cx'
 import { AccessibleIcon } from '@radix-ui/react-accessible-icon'
 import {
   ArchiveIcon as ArchiveIconRadix,

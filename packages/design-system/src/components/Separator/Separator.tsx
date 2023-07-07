@@ -2,7 +2,7 @@
 /**
  * @note(next) why is this client? flushSync?
  */
-import { cx } from '@jeromefitz/shared/src/utils'
+import { cx } from '@jeromefitz/shared/src/utils/cx'
 import * as Separator from '@radix-ui/react-separator'
 
 function SeparatorImpl({ className = '' }) {

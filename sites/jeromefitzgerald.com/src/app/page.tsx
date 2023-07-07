@@ -1,15 +1,11 @@
-/**
- * @note(next) Custom Homepage
- */
 import { isObjectEmpty } from '@jeromefitz/utils'
-// import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints'
 import type { Metadata } from 'next'
 import { draftMode } from 'next/headers'
+import { getPropertyTypeData } from 'next-notion/src/utils'
 
-import { getDataFromCache } from '~app/(cache)'
 import { CONSTANTS } from '~app/(notion)/(config)/constants'
 import { getPageData } from '~app/(notion)/(config)/segments'
-import { getSegmentInfo, getPropertyTypeData } from '~app/(notion)/(config)/utils'
+import { getDataFromCache, getSegmentInfo } from '~app/(notion)/(config)/utils'
 import { Notion as Blocks } from '~components/Notion'
 import {
   SectionContent,
@@ -20,8 +16,8 @@ import {
   SectionWrapper,
   // Tags,
 } from '~components/Section'
-import { Testing } from '~components/Testing'
 
+const slug = '/homepage'
 const { SEGMENT } = CONSTANTS.PAGES
 
 export async function generateMetadata({ ...props }): Promise<Metadata> {
@@ -35,7 +31,7 @@ export async function generateMetadata({ ...props }): Promise<Metadata> {
     revalidate: false,
     segmentInfo: {
       ...segmentInfo,
-      slug: '/homepage',
+      slug,
     },
   })
 
@@ -54,17 +50,7 @@ export async function generateMetadata({ ...props }): Promise<Metadata> {
 
 async function Slug({ revalidate, segmentInfo }) {
   const { isEnabled } = draftMode()
-  // console.dir(segmentInfo)
-  // const data: QueryDatabaseResponse = await getDatabaseQuery({
-  //   database_id: DATABASE_ID,
-  //   draft: isEnabled,
-  //   filterType: 'starts_with',
-  //   revalidate,
-  //   segmentInfo: {
-  //     ...segmentInfo,
-  //     slug: '/homepage',
-  //   },
-  // })
+
   const data = await getDataFromCache({
     database_id: '',
     draft: isEnabled,
@@ -72,18 +58,11 @@ async function Slug({ revalidate, segmentInfo }) {
     revalidate,
     segmentInfo: {
       ...segmentInfo,
-      slug: '/homepage',
+      slug,
     },
   })
 
-  const title = 'Jerome Fitzgerald (he/him)'
-
-  // console.dir(`showData`)
-  // console.dir(showData)
-  // console.dir(`data`)
-  // console.dir(data)
-
-  const { seoDescription } = getPageData(data?.page?.properties) || ''
+  const { seoDescription, title } = getPageData(data?.page?.properties) || ''
 
   if (isObjectEmpty(data.page)) return null
   return (
@@ -97,7 +76,6 @@ async function Slug({ revalidate, segmentInfo }) {
           <Blocks data={data?.blocks} />
         </SectionContent>
       </SectionWrapper>
-      <Testing />
     </>
   )
 }
@@ -105,8 +83,5 @@ async function Slug({ revalidate, segmentInfo }) {
 export default function Page({ revalidate = false, ...props }) {
   const segmentInfo = getSegmentInfo({ SEGMENT, ...props })
 
-  // if (segmentInfo.isIndex) {
-  //   return <Listing revalidate={revalidate} segmentInfo={segmentInfo} />
-  // }
   return <Slug revalidate={revalidate} segmentInfo={segmentInfo} />
 }

@@ -1,4 +1,4 @@
-import { cx } from '@jeromefitz/shared/src/utils'
+import { cx } from '@jeromefitz/shared/src/utils/cx'
 // eslint-disable-next-line no-restricted-imports
 import Link from 'next/link'
 import { forwardRef } from 'react'
