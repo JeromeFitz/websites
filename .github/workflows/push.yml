@@ -143,7 +143,7 @@ jobs:
 
       - name: '🎭  E2E'
         id: push-e2e
-        if: ${{ contains(steps.push-commit-message.outputs.message, '[e2e]') }}
+        if: ${{ contains(steps.push-commit-message.outputs.message, '[b]') }}
         uses: JeromeFitz/websites/.github/actions/e2e@ci/e2e-testing
         with:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
