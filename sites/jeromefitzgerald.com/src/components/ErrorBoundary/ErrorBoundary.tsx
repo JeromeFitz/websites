@@ -1,8 +1,16 @@
 'use client'
+import { Separator } from '@jeromefitz/ds/components/Separator'
 import { Component } from 'react'
 import type { ReactNode } from 'react'
 
-import { PageHeading } from '~ui/PageHeading'
+import {
+  SectionContent,
+  SectionHeader,
+  // SectionHeaderContent,
+  SectionHeaderTitle,
+  SectionWrapper,
+  // Tags,
+} from '~components/Section'
 
 type PropsChildren = {
   children?: ReactNode
@@ -33,11 +41,33 @@ class ErrorBoundary extends Component<PropsChildren> {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     if (this.state.hasError) {
+      const title = 'Error'
+      const message = `Well this is embarassing.`
+      const body = `Hey, sometimes these things happen. This is an error that has sent an alert, so Jerome already knows most likely, heh.`
+
       return (
-        <main className="relative m-0 min-h-screen w-full p-0">
-          <section className="z-10 mx-4 my-6 max-w-screen-sm md:mx-4 md:my-9   md:max-w-screen-lg lg:mx-auto">
-            <PageHeading overline={`/error`} title={`Well, this is embarassing`} />
-            <p>Eek. Something went really wrong. Please try refreshing.</p>
+        <main className="m-0 min-h-screen w-full p-0">
+          <section className="m-2 px-2 md:m-6">
+            <SectionWrapper>
+              <SectionHeader>
+                <SectionHeaderTitle isTitle>{title}</SectionHeaderTitle>
+              </SectionHeader>
+              <SectionContent>
+                <h1 className="mb-7 text-6xl font-black">{message}</h1>
+                <p className="text-lg">{body}</p>
+                <Separator className="my-8" />
+                <p className="text-lg">
+                  Please try and go back to the{` `}
+                  <a
+                    href="/"
+                    className="decoration-radix-slate4 hover:decoration-radix-slate5 text-radix-pink11 hover:text-radix-pink12 inline-flex flex-row items-center gap-1 underline underline-offset-4 transition-all duration-200 ease-in"
+                  >
+                    homepage
+                  </a>
+                  .
+                </p>
+              </SectionContent>
+            </SectionWrapper>
           </section>
         </main>
       )
