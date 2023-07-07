@@ -73,8 +73,9 @@ async function getImageFromBlock({ block, url }) {
    * If Expiration is hit:
    * - Get new Notion AWS Image
    * - Update Image Cache
-   * - **DO NOT**  redo the plaicholder, should be same image
+   * - Since it is the same image, do not need to redo the plaiceholder if you do not want
    * - - QUESTION: if we have cache with blurDataURL, could Suspend/SWR?
+   * - - ANSWER: probably neglible perf but if site is large and in charge perhaps
    */
   const isExpired = isImageExpired(image)
 
@@ -89,6 +90,7 @@ async function getImageFromBlock({ block, url }) {
   if (OVERRIDE_CACHE || !isCached) {
     /**
      * @note(notion) Get Image Comments
+     * @todo(notion) Can we store this with Redis KV?
      * @todo(notion) Suspense or SWR; Not needed for SSR
      */
     const commentBlock = await notion?.comments?.list({
@@ -100,18 +102,21 @@ async function getImageFromBlock({ block, url }) {
   }
 
   /**
-   * @note(redis) if we already have the image we do not
-   *  need the dimensions and placeholder again (most likely)
+   * @note(redis) if image is already cached we are
+   *  most likely just getting a new AWS expiration
+   * from notion if this an extension and not a new image
+   *
+   * would recommend not having the "hit" here
    */
-  // if (OVERRIDE_CACHE || (!isCached && !!imageUrl)) {
-  if (!isCached && !!imageUrl) {
-    const { getPlaiceholder } = await import('plaiceholder')
-    const { base64, img } = await getPlaiceholder(imageUrl)
-
-    image.blurDataURL = base64
+  if (OVERRIDE_CACHE || (!isCached && !!imageUrl)) {
+    const { getImage } = await import(
+      '@jeromefitz/shared/src/lib/plaiceholder/getImage'
+    )
+    const imageData = await getImage(imageUrl)
+    image.blurDataURL = imageData?.base64
     image = {
       ...image,
-      ...img,
+      ...imageData?.img,
     }
   }
 
@@ -152,6 +157,9 @@ function Image({ ...props }) {
   // const preload = `/_next/image?url=${encodeURIComponent(props?.src)}&w=1920&q=${
   //   hack.quality
   // }`
+
+  // @hack(next) in case no comments are found in notion
+  if (!image?.alt) image.alt = ''
 
   return (
     <>

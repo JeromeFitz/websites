@@ -1,4 +1,5 @@
 import 'server-only'
+
 import { Client } from '@notionhq/client'
 
 import { getImageAlt } from './Image.utils'

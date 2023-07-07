@@ -1,7 +1,15 @@
-const path = require('path')
+import { dirname, join } from 'path'
+import { fileURLToPath } from 'url'
 
-const isCI = require('is-ci')
-!isCI && require('dotenv').config({ path: './.env' })
+import nextConfig from '@jeromefitz/next-config/next.config.mjs'
+import dotenv from 'dotenv'
+import isCI from 'is-ci'
+if (!isCI) {
+  dotenv.config({ patch: './.env' })
+}
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 
 const buildInfoConfig = {
   owner: 'jeromefitz',
@@ -20,10 +28,12 @@ const serverComponentsExternalPackages = [
 const tp = ['@jeromefitz/ds', '@jeromefitz/shared', 'next-notion']
 const transpilePackages = isCI ? [] : tp
 
-module.exports = require('@jeromefitz/next-config')({
+const config = nextConfig({
   basePath: '',
   buildInfoConfig,
-  pathDirName: path.join(__dirname),
+  pathDirName: join(__dirname),
   serverComponentsExternalPackages,
   transpilePackages,
 })
+
+export default config

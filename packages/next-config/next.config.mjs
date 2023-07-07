@@ -1,13 +1,11 @@
-const path = require('path')
+import { join, resolve } from 'path'
 
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-})
-const { withPlaiceholder } = require('@plaiceholder/next')
+import withBundleAnalyzer from '@next/bundle-analyzer'
+import withPlaiceholder from '@plaiceholder/next'
 
-const { setupBuildInfo } = require('./src/build-info')
-const envRequired = require('./src/env-required')
-const securityHeaders = require('./src/security-headers')
+import { setupBuildInfo } from './src/build-info.mjs'
+import envRequired from './src/env-required.mjs'
+import securityHeaders from './src/security-headers.mjs'
 
 envRequired()
 
@@ -59,7 +57,7 @@ const protocol = PROTOCOL.HTTPS
  * - swcMinify
  * - transpilePackages
  */
-module.exports = ({
+const config = ({
   basePath,
   buildInfoConfig,
   pathDirName,
@@ -78,7 +76,9 @@ module.exports = ({
   process.env.DESIGN_SYSTEM__TRANSPILE === 'true' &&
     transpilePackages.push('@jeromefitz/design-system')
 
-  /** @type {import('next').NextConfig} */
+  /**
+   * @type {import('next').NextConfig}
+   **/
   let nextConfig = {
     amp: {
       canonicalBase: undefined,
@@ -104,7 +104,7 @@ module.exports = ({
       appDir: true,
       legacyBrowsers: false,
       // @note(next) monorepo root
-      outputFileTracingRoot: path.join(pathDirName, '../../'),
+      outputFileTracingRoot: join(pathDirName, '../../'),
       serverComponentsExternalPackages,
     },
     // exportPathMap,
@@ -262,7 +262,7 @@ module.exports = ({
           console.debug('\x1b[33m%s\x1b[0m', 'warn', ' - [ 📦 ] ›  ', ext)
           // @note(npmrc) shamefully-hoist === node_modules at root
           // @todo(npmrc) would be nice to not shamefully-hoist
-          config.resolve.alias[ext] = path.resolve(
+          config.resolve.alias[ext] = resolve(
             pathDirName,
             '..',
             '..',
@@ -280,7 +280,10 @@ module.exports = ({
    * @note
    * Plugins cannot handle their own Configuration at this time.
    */
-  const plugins = [withBundleAnalyzer, withPlaiceholder]
+  const wBA = withBundleAnalyzer({ enabled: process.env.ANALYZE === 'true' })
+  const plugins = [wBA, withPlaiceholder]
 
   return plugins.reduce((config, plugin) => plugin(config), nextConfig)
 }
+
+export default config

@@ -23,7 +23,7 @@ const config = ({}) => ({
      *  in app/design-system/page ?
      */
     '../../packages/design-system/src/**/*.{ts,tsx}',
-    './node_modules/@plaiceholder/ui/**/*.{ts,tsx}',
+    // './node_modules/@plaiceholder/ui/**/*.{ts,tsx}',
     './node_modules/next-notion/src/**/*.{ts,tsx}',
     './src/app/**/*.{ts,tsx}',
     './src/components/**/*.{ts,tsx}',
@@ -237,7 +237,6 @@ const config = ({}) => ({
     require('tailwindcss-animate'),
     require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/typography'),
-    // require('@plaiceholder/tailwindcss'),
     require('@tailwindcss/forms'),
     radixPlugin({ colors: radixColors }),
     require('tailwindcss-radix')({ variantPrefix: 'radix' }),

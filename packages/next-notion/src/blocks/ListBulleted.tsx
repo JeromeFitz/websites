@@ -4,9 +4,7 @@ import type {
 } from '@notionhq/client/build/src/api-endpoints'
 import { forwardRef } from 'react'
 
-// @todo(notion) hrm, how do we do this?
 import { NotionBlocks as Blocks } from '../Notion.Blocks'
-// import { Notion as Blocks } from '../../../../sites/jeromefitzgerald.com/src/components/Notion/index'
 import { getBlockKey } from '../Notion.utils'
 
 const ListBulleted = forwardRef(function ListBulleted(props: any, ref: any) {

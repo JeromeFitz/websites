@@ -1,16 +1,16 @@
-const childProcess = require('child_process')
-const { existsSync, readFileSync } = require('fs')
-const { writeFile } = require('fs/promises')
-const { join } = require('path')
+import { execSync } from 'child_process'
+import { existsSync, readFileSync } from 'fs'
+import { writeFile } from 'fs/promises'
+import { join } from 'path'
 
-const { Octokit } = require('@octokit/core')
-const stringify = require('fast-json-stable-stringify')
-const isCI = require('is-ci')
-const _filter = require('lodash/filter')
-const _orderBy = require('lodash/orderBy')
-const _pick = require('lodash/pick')
-const _size = require('lodash/size')
-const prettier = require('prettier')
+import { Octokit } from '@octokit/core'
+import stringify from 'fast-json-stable-stringify'
+import isCI from 'is-ci'
+import _filter from 'lodash/filter.js'
+import _orderBy from 'lodash/orderBy.js'
+import _pick from 'lodash/pick.js'
+import _size from 'lodash/size.js'
+import { format } from 'prettier'
 
 !isCI && require('dotenv').config({ path: './.env' })
 
@@ -19,12 +19,7 @@ const octokit = new Octokit({})
 
 const branch =
   process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF ||
-  childProcess
-    // @note(git>=2.22)
-    // .execSync(`git branch --show-current`)
-    .execSync(`git rev-parse --abbrev-ref HEAD`)
-    .toString()
-    .trim()
+  execSync(`git rev-parse --abbrev-ref HEAD`).toString().trim()
 
 function getBranch(branch) {
   return branch.split('/')[branch.split('/').length - 1]
@@ -86,7 +81,7 @@ async function setupBuildInfo({ buildInfoConfig, pathDirName }) {
       version,
     }
 
-    const content = prettier.format(stringify(data), { parser: 'json' })
+    const content = format(stringify(data), { parser: 'json' })
     await writeFile(filePath, content)
   }
 
@@ -127,4 +122,4 @@ function withBuildInfo(nextConfig = {}) {
   return nextConfig
 }
 
-module.exports = { setupBuildInfo, withBuildInfo }
+export { setupBuildInfo, withBuildInfo }

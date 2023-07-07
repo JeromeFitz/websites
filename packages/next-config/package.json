@@ -7,7 +7,7 @@
     "@jeromefitz/prettier-config": "1.2.1",
     "@next/bundle-analyzer": "13.4.9",
     "@octokit/core": "4.2.4",
-    "@plaiceholder/next": "2.5.0",
+    "@plaiceholder/next": "3.0.0",
     "fast-json-stable-stringify": "2.1.0",
     "lodash": "4.17.21"
   }
