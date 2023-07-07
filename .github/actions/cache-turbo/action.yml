@@ -1,6 +1,6 @@
 # name: 'Cache'
 name: '🔺️  '
-description: 'Localized Cache (turbo)'
+description: 'Localized Cache (vercel)'
 author: 'JeromeFitz'
 
 inputs:
@@ -19,10 +19,9 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: '🔺️  Cache'
-      id: cache
+    - name: '🔺️  Cache (turbo)'
+      id: cache-turbo
       uses: actions/cache@v3
-      # - name: '🔺️  Cache (turbo)'
       #   id: cache-turbo-restore
       #   uses: actions/cache/restore@v3
       env:
@@ -39,16 +38,18 @@ runs:
           turbo-${{ github.job }}-
           turbo-
 
-    # - name: '🔺️  Cache (next)'
-    #   id: cache-next-restore
-    #   uses: actions/cache/restore@v3
-    #   env:
-    #     TURBO_TEAM: ${{ inputs.TURBO_TEAM }}
-    #     TURBO_TOKEN: ${{ inputs.TURBO_TOKEN }}
-    #     VERCEL_ENV: ${{ inputs.VERCEL_ENV }}
-    #   with:
-    #     path: |
-    #       ${{ github.workspace }}/sites/jeromefitzgerald.com/.next/cache
-    #     key: ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
-    #     restore-keys: |
-    #       ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-
+    - name: '🔺️  Cache (next)'
+      id: cache-next
+      uses: actions/cache@v3
+      # id: cache-next-restore
+      # uses: actions/cache/restore@v3
+      env:
+        TURBO_TEAM: ${{ inputs.TURBO_TEAM }}
+        TURBO_TOKEN: ${{ inputs.TURBO_TOKEN }}
+        VERCEL_ENV: ${{ inputs.VERCEL_ENV }}
+      with:
+        path: |
+          ${{ github.workspace }}/sites/jeromefitzgerald.com/.next/cache
+        key: ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+        restore-keys: |
+          ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-
