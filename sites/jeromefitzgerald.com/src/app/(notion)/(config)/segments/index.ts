@@ -12,3 +12,12 @@ export { getShowData, getPropertyTypeDataShow } from './Show.utils'
 
 export type { PageObjectResponseVenue, PropertiesVenue } from './Venue.types'
 export { getPropertyTypeDataVenue } from './Venue.utils'
+
+// @todo(types) way to do this for data passback and tell which one?
+// type PageObjectResponseCustom =
+//   | PageObjectResponseEvent
+//   | PageObjectResponsePage
+//   | PageObjectResponsePerson
+//   | PageObjectResponseShow
+//   | PageObjectResponseVenue
+// export type { PageObjectResponseCustom }

@@ -33,12 +33,17 @@ function getEventData(properties) {
 
   const tags = _uniq(_merge(tagsPrimary, tagsSecondary))
 
-  const venueTitle =
-    getPropertyTypeDataEvent(properties, 'Rollup.Venues.Title')[0] ?? ''
+  let venueTitle = getPropertyTypeDataEvent(properties, 'Rollup.Venues.Title') ?? ''
+  if (!!venueTitle) {
+    venueTitle = venueTitle[0]
+  }
 
   let title = getPropertyTypeDataEvent(properties, 'Title')
-  const titleFromPrimary =
-    getPropertyTypeDataEvent(properties, 'Rollup.Shows.Primary.Title')[0] ?? ''
+  let titleFromPrimary =
+    getPropertyTypeDataEvent(properties, 'Rollup.Shows.Primary.Title') ?? ''
+  if (!!titleFromPrimary) {
+    titleFromPrimary = titleFromPrimary[0]
+  }
 
   const hasTitleFromPrimary = _size(titleFromPrimary) > 0
   title = overrideTitle ? title : hasTitleFromPrimary ? titleFromPrimary : title

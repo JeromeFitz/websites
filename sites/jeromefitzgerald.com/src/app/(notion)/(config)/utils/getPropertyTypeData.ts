@@ -18,13 +18,12 @@ import type {
   UrlPropertyItemObjectResponse,
 } from '@notionhq/client/build/src/api-endpoints'
 import _orderBy from 'lodash/orderBy'
-
 import type {
   DateResponse,
   EmptyObject,
   RollupFunction,
   SelectPropertyResponse,
-} from './getPropertyTypeData.types'
+} from 'next-notion/src/Notion.types'
 
 type CheckboxData = {
   type: 'checkbox'
@@ -82,7 +81,7 @@ function getMultiSelectData({
   data: MultiSelectData
   type: string
 }) {
-  // properties['Address.PostalCode']
+  // properties['Tags']
   const typeData = data[type]
   const dataReturn: MultiSelectPropertyItemObjectResponse = typeData
   return dataReturn
@@ -94,7 +93,7 @@ type NumberData = {
   id: string
 }
 function getNumberData({ data, type }: { data: NumberData; type: string }) {
-  // properties['Tags']
+  // properties['Address.PostalCode']
   const typeData = data[type]
   const dataReturn: NumberPropertyItemObjectResponse = typeData
   return dataReturn
@@ -127,8 +126,7 @@ function getRichTextData({ data, type }: { data: RichTextData; type: string }) {
   // properties['SEO.Description']
   const typeData = data[type]
   // @todo(notion) proper fallback -- should probably warn here
-  // const dataReturn: RichTextPropertyItemObjectResponse[] =
-  typeData
+  // const dataReturn: RichTextPropertyItemObjectResponse[] = typeData
   const dataReturn = typeData[0]?.plain_text ?? ''
   return dataReturn
 }
