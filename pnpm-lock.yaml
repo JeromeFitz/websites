@@ -433,8 +433,8 @@ importers:
         specifier: 4.17.21
         version: 4.17.21
       plaiceholder:
-        specifier: 2.5.0
-        version: 2.5.0
+        specifier: 3.0.0
+        version: 3.0.0
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -781,8 +781,8 @@ importers:
         specifier: 0.2.1
         version: 0.2.1(next@13.4.9)(react-dom@18.2.0)(react@18.2.0)
       plaiceholder:
-        specifier: 2.5.0
-        version: 2.5.0(sharp@0.32.1)
+        specifier: 3.0.0
+        version: 3.0.0(sharp@0.32.1)
       pluralize:
         specifier: 8.0.0
         version: 8.0.0
@@ -19552,18 +19552,6 @@ packages:
       find-up: 2.1.0
     dev: false
 
-  /plaiceholder@2.5.0:
-    resolution: {integrity: sha512-rygdNSWuYzs1GxxGjq2FiJdJB1AUaKhUHP/M7PIrSjAAGuoJC5ACiJx+cZZ+hDmMalxsxOMw0Sbbx3LF8jemGg==}
-    peerDependencies:
-      sharp: '>= 0.30.6'
-    dependencies:
-      blurhash: 1.1.5
-      encoding: 0.1.13
-      image-size: 1.0.2
-      node-cache: 5.1.2
-      node-fetch: 2.6.7(encoding@0.1.13)
-    dev: true
-
   /plaiceholder@2.5.0(sharp@0.32.1):
     resolution: {integrity: sha512-rygdNSWuYzs1GxxGjq2FiJdJB1AUaKhUHP/M7PIrSjAAGuoJC5ACiJx+cZZ+hDmMalxsxOMw0Sbbx3LF8jemGg==}
     peerDependencies:
@@ -19575,6 +19563,20 @@ packages:
       node-cache: 5.1.2
       node-fetch: 2.6.7(encoding@0.1.13)
       sharp: 0.32.1
+
+  /plaiceholder@3.0.0:
+    resolution: {integrity: sha512-jwHxxHPnr1BwRzPCeZgEK2BMsEy2327sWynw3qb6XC/oGgGDUTPtR8pFxFQmNArhMBwhkUbUr5OPhhIJpCa8eQ==}
+    peerDependencies:
+      sharp: '>= 0.30.6'
+    dev: true
+
+  /plaiceholder@3.0.0(sharp@0.32.1):
+    resolution: {integrity: sha512-jwHxxHPnr1BwRzPCeZgEK2BMsEy2327sWynw3qb6XC/oGgGDUTPtR8pFxFQmNArhMBwhkUbUr5OPhhIJpCa8eQ==}
+    peerDependencies:
+      sharp: '>= 0.30.6'
+    dependencies:
+      sharp: 0.32.1
+    dev: false
 
   /playwright-core@1.35.1:
     resolution: {integrity: sha512-pNXb6CQ7OqmGDRspEjlxE49w+4YtR6a3X6mT1hZXeJHWmsEz7SunmvZeiG/+y1yyMZdHnnn73WKYdtV1er0Xyg==}
