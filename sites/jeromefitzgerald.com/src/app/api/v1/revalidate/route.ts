@@ -103,16 +103,16 @@ export async function POST(request: NextRequest) {
     if (segmentInfo.isIndex) {
       data = await getDataFromCache({
         database_id: '', // do not pass database
+        draft: false,
         filterType: 'equals',
-        preview: false,
         revalidate: true,
         segmentInfo: { ...segmentInfo, slug: route === '/' ? '/homepage' : route },
       })
     } else {
       data = await getDataFromCache({
         database_id,
+        draft: false,
         filterType: 'equals',
-        preview: false,
         revalidate: true,
         segmentInfo,
       })

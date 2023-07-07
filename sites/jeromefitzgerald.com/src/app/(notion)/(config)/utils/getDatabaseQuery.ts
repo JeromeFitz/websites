@@ -6,39 +6,41 @@ import { getCache, setCache, getKey } from '~app/(cache)'
 
 const OVERRIDE_CACHE = process.env.OVERRIDE_CACHE || false
 
-const getDatabaseQuery = cache(async ({ database_id, filterType, segmentInfo }) => {
-  let data
+const getDatabaseQuery = cache(
+  async ({ database_id, draft, filterType, revalidate, segmentInfo }) => {
+    let data
 
-  const { slug } = segmentInfo
-  const prefix = `/notion/queries${slug}`
-  const key: string = getKey(prefix)
-  const dataFromCache = await getCache({ slug: key })
+    const { slug } = segmentInfo
+    const prefix = `/notion/queries${slug}`
+    const key: string = getKey(prefix)
+    const dataFromCache = await getCache({ slug: key })
 
-  // console.dir(`> getCache: ${key}`)
-  // console.dir(dataFromCache)
+    // console.dir(`> getCache: ${key}`)
+    // console.dir(dataFromCache)
 
-  const isCached = !!dataFromCache && !isObjectEmpty(dataFromCache)
+    const isCached = !!dataFromCache && !isObjectEmpty(dataFromCache)
 
-  if (OVERRIDE_CACHE || !isCached) {
-    const dataFromNotion = await _getDatabaseQuery({
-      database_id,
-      filterType,
-      segmentInfo,
-    })
-    // console.dir(`> dataFromNotion: ${id}`)
-    // console.dir(dataFromNotion)
+    if (OVERRIDE_CACHE || draft || revalidate || !isCached) {
+      const dataFromNotion = await _getDatabaseQuery({
+        database_id,
+        filterType,
+        segmentInfo,
+      })
+      // console.dir(`> dataFromNotion: ${id}`)
+      // console.dir(dataFromNotion)
 
-    if (!isObjectEmpty(dataFromNotion)) {
-      // console.dir(`setCache: ${key}`)
-      void setCache({ data: dataFromNotion, slug: key })
+      if (!isObjectEmpty(dataFromNotion) && !draft) {
+        // console.dir(`setCache: ${key}`)
+        void setCache({ data: dataFromNotion, slug: key })
+      }
+
+      data = dataFromNotion
+    } else {
+      // console.dir(`gotCache: ${key}`)
+      data = dataFromCache
     }
-
-    data = dataFromNotion
-  } else {
-    // console.dir(`gotCache: ${key}`)
-    data = dataFromCache
+    return data
   }
-  return data
-})
+)
 
 export { getDatabaseQuery }

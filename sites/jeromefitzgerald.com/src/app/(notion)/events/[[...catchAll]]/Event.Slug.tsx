@@ -15,6 +15,7 @@ import { isObjectEmpty } from '@jeromefitz/utils'
 // import { Client } from '@notionhq/client'
 import { Redis } from '@upstash/redis'
 import { slug as _slug } from 'github-slugger'
+import { draftMode } from 'next/headers'
 import NextImage from 'next/image'
 import { notFound } from 'next/navigation'
 import { isImageExpired } from 'next-notion/src/utils/getAwsImage'
@@ -268,12 +269,13 @@ function Ticket({ properties, isFakePortal = false }) {
   )
 }
 
-async function Slug({ preview, revalidate, segmentInfo }) {
+async function Slug({ revalidate, segmentInfo }) {
+  const { isEnabled } = draftMode()
   // const { slug } = segmentInfo
   const data = await getDataFromCache({
     database_id: DATABASE_ID,
+    draft: isEnabled,
     filterType: 'equals',
-    preview,
     revalidate,
     segmentInfo,
   })

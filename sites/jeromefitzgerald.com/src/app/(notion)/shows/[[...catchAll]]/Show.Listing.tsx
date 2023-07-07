@@ -3,6 +3,7 @@ import { isObjectEmpty } from '@jeromefitz/utils'
 import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints'
 import _filter from 'lodash/filter'
 import _orderBy from 'lodash/orderBy'
+import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 
 import { getDataFromCache } from '~app/(cache)'
@@ -25,6 +26,8 @@ import { Testing } from '~components/Testing'
 const { DATABASE_ID } = CONSTANTS.SHOWS
 
 function ListingTemp({ data }) {
+  const { isEnabled } = draftMode()
+  const draft = isEnabled
   const items = data.results.map((item) => {
     const { properties } = item
     const itemData = getShowData(properties)
@@ -32,8 +35,7 @@ function ListingTemp({ data }) {
     return itemData
   })
 
-  const preview = false
-  const shows = _orderBy(_filter(items, preview ? {} : { isPublished: true }), [
+  const shows = _orderBy(_filter(items, draft ? {} : { isPublished: true }), [
     'title',
   ])
 
@@ -77,13 +79,14 @@ function ListingTemp({ data }) {
 
 // @todo(complexity) 12
 // eslint-disable-next-line complexity
-async function Listing({ preview, revalidate, segmentInfo }) {
+async function Listing({ revalidate, segmentInfo }) {
+  const { isEnabled } = draftMode()
   // const { slug } = segmentInfo
   // @note(notion) Listing do not pass Database ID
   const data = await getDataFromCache({
     database_id: '',
+    draft: isEnabled,
     filterType: 'equals',
-    preview,
     revalidate,
     segmentInfo,
   })
@@ -112,7 +115,9 @@ async function Listing({ preview, revalidate, segmentInfo }) {
    */
   const showData: QueryDatabaseResponse = await getDatabaseQuery({
     database_id: DATABASE_ID,
+    draft: isEnabled,
     filterType: 'starts_with',
+    revalidate,
     segmentInfo,
   })
   const hasContent = showData?.results?.length > 0

@@ -1,6 +1,6 @@
 import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints'
-import isEqual from 'lodash/isEqual'
-import uniqWith from 'lodash/uniqWith'
+// import isEqual from 'lodash/isEqual'
+// import uniqWith from 'lodash/uniqWith'
 import type { Metadata } from 'next'
 
 import { getDataFromCache } from '~app/(cache)'
@@ -51,7 +51,9 @@ async function _generateStaticParams({ ...props }) {
   // })
   const dataStatic: QueryDatabaseResponse = await getDatabaseQuery({
     database_id: DATABASE_ID,
+    draft: false,
     filterType: 'starts_with',
+    revalidate: false,
     segmentInfo,
   })
   const hasContent = dataStatic?.results?.length > 0
@@ -76,11 +78,11 @@ async function _generateStaticParams({ ...props }) {
       /**
        * @todo(next) build/cache this gets kind of in-depth
        */
-      const isEvent = segmentInfo.segment === 'events' // && !segmentInfo.isIndex
-      if (isEvent) {
-        console.dir(`*** ${catchAll[0]}`)
-        if (catchAll[0] !== 2023) return null
-      }
+      // const isEvent = segmentInfo.segment === 'events' // && !segmentInfo.isIndex
+      // if (isEvent) {
+      //   console.dir(`*** ${catchAll[0]}`)
+      //   if (catchAll[0] !== 2023) return null
+      // }
 
       segments.push({ catchAll })
       if (catchAll.length > 0) {
@@ -92,25 +94,23 @@ async function _generateStaticParams({ ...props }) {
       return
     })
   }
-  const routes = !!combos && uniqWith(combos, isEqual)
-  !!routes && console.dir(`routes: turned off for now`)
-  !!routes && console.dir(routes)
+  // const routes = !!combos && uniqWith(combos, isEqual)
+  // !!routes && console.dir(`routes: turned off`)
+  // !!routes && console.dir(routes)
   // !!routes && routes.map((route) => segments.push(route))
 
-  console.dir(segments)
+  // console.dir(segments)
 
   return segments
 }
 const generateStaticParams = isDev ? undefined : _generateStaticParams
 export { generateStaticParams }
 
-export default function Page({ preview = false, revalidate = false, ...props }) {
+export default function Page({ revalidate = false, ...props }) {
   const segmentInfo = getSegmentInfo({ SEGMENT, ...props })
 
   if (segmentInfo.isIndex) {
-    return (
-      <Listing preview={preview} revalidate={revalidate} segmentInfo={segmentInfo} />
-    )
+    return <Listing revalidate={revalidate} segmentInfo={segmentInfo} />
   }
-  return <Slug preview={preview} revalidate={revalidate} segmentInfo={segmentInfo} />
+  return <Slug revalidate={revalidate} segmentInfo={segmentInfo} />
 }

@@ -3,6 +3,7 @@
  */
 import { isObjectEmpty } from '@jeromefitz/utils'
 // import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints'
+import { draftMode } from 'next/headers'
 
 import { getDataFromCache } from '~app/(cache)'
 import { CONSTANTS } from '~app/(notion)/(config)/constants'
@@ -22,11 +23,14 @@ import {
 
 const { SEGMENT } = CONSTANTS.PAGES
 
-async function Slug({ preview, revalidate, segmentInfo }) {
+async function Slug({ revalidate, segmentInfo }) {
+  const { isEnabled } = draftMode()
   // console.dir(segmentInfo)
   // const data: QueryDatabaseResponse = await getDatabaseQuery({
   //   database_id: DATABASE_ID,
+  //   draft: isEnabled,
   //   filterType: 'starts_with',
+  //   revalidate,
   //   segmentInfo: {
   //     ...segmentInfo,
   //     slug: '/homepage',
@@ -34,8 +38,8 @@ async function Slug({ preview, revalidate, segmentInfo }) {
   // })
   const data = await getDataFromCache({
     database_id: '',
+    draft: isEnabled,
     filterType: 'equals',
-    preview,
     revalidate,
     segmentInfo: {
       ...segmentInfo,
@@ -68,11 +72,11 @@ async function Slug({ preview, revalidate, segmentInfo }) {
   )
 }
 
-export default function Page({ preview = false, revalidate = false, ...props }) {
+export default function Page({ revalidate = false, ...props }) {
   const segmentInfo = getSegmentInfo({ SEGMENT, ...props })
 
   // if (segmentInfo.isIndex) {
-  //   return <Listing segmentInfo={segmentInfo} />
+  //   return <Listing revalidate={revalidate} segmentInfo={segmentInfo} />
   // }
-  return <Slug preview={preview} revalidate={revalidate} segmentInfo={segmentInfo} />
+  return <Slug revalidate={revalidate} segmentInfo={segmentInfo} />
 }

@@ -7,7 +7,7 @@ import { getCache, setCache, getKey } from '~app/(cache)'
 const OVERRIDE_CACHE = process.env.OVERRIDE_CACHE || false
 
 /**
- * @todo(next) revalidate | preview
+ * @todo(next) draft | revalidate
  */
 const getPageDataFromNotion = cache(async (id) => {
   let data
