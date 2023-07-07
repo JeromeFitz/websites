@@ -33,8 +33,9 @@ const config = ({ website }) => ({
       // Wait up to 90s for the page to load
       maxWaitForLoad: 90000,
       startServerCommand: `pnpm turbo run start --filter="${website}"`,
-      startServerReadyPattern:
-        'ready - started server on 0.0.0.0:3000, url: http://localhost:3000',
+      // startServerReadyPattern:
+      //   'ready - started server on 0.0.0.0:3000, url: http://localhost:3000',
+      startServerReadyPattern: `${website}:start: - ready started server on 0.0.0.0:3000, url: http://localhost:3000`,
       url: ['http://localhost:3000'],
       numberOfRuns: 1,
       settings: {

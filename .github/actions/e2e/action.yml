@@ -30,6 +30,20 @@ inputs:
 runs:
   using: 'composite'
   steps:
+    - name: '🎭 Playwright: Get Installed Version'
+      id: playwright-version
+      shell: bash
+      # @todo(github-actions) can we do this dynamically?
+      run: echo "PLAYWRIGHT_VERSION=1.35.1" >> $GITHUB_ENV
+
+    - name: '🎭 Playwright: Check Browser Cache'
+      id: playwright-cache
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.cache/ms-playwright
+        key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
+
     # @todo(gh-actions) Separate `main` from PR
     - name: '🧪  Test: Build'
       id: e2e-build
@@ -71,10 +85,19 @@ runs:
       run: |
         pnpm turbo run lhci --filter="${{ inputs.WEBSITE }}" --cache-dir=".cache-turbo"
 
-    - name: '🎭  Playwright: Install'
+    - name: '🎭  Playwright: Install (!cache)'
       id: e2e-dependencies-playwright
       shell: bash
-      run: pnpm playwright install --with-deps
+      # run: pnpm playwright install --with-deps
+      run: npx playwright install --with-deps
+      if: steps.playwright-cache.outputs.cache-hit != 'true'
+
+    - name: '🎭  Playwright: Install (cache)'
+      id: e2e-dependencies-playwright-cache
+      shell: bash
+      # run: pnpm playwright install-deps
+      run: npx playwright install-deps
+      if: steps.playwright-cache.outputs.cache-hit == 'true'
 
     - name: '🎭  Playwright: ${{ inputs.WEBSITE }}'
       id: e2e-test

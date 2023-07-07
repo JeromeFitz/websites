@@ -5,15 +5,15 @@
 - 📦️ **Packages**: [`@jeromefitz/packages`](https://github.com/JeromeFitz/packages)
   - 🔧 Configuration
     - `@jeromefitz/eslint-config`
-    - `@jeromefitz/jest-config`
-    - `@jeromefitz/jest-presets`
-    - `@jeromefitz/lighthouse-config`
+    - `@jeromefitz/jest-config` \*
+    - `@jeromefitz/jest-presets` \*
+    - `@jeromefitz/lighthouse-config` \*
     - `@jeromefitz/lint-staged`
-    - `@jeromefitz/next-config`
-    - `@jeromefitz/playwright-config`
+    - `@jeromefitz/next-config` \*
+    - `@jeromefitz/playwright-config` \*
     - `@jeromefitz/prettier-config`
-    - `@jeromefitz/storybook-config`
-    - `@jeromefitz/tailwind-config`
+    - `@jeromefitz/storybook-config` \*
+    - `@jeromefitz/tailwind-config` \*
     - `@jeromefitz/tsconfig`
   - ⚡ Release Management
     - `ccommit`
@@ -24,6 +24,9 @@
     - `@jeromefitz/notion`
     - `@jeromefitz/spotify`
     - `@jeromefitz/utils`
+    - `next-notion` \*
+
+`*` Local to this monorepo
 
 You may be here for the Notion CMS with Next, you can find more information in the following README:
 
