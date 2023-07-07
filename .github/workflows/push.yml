@@ -113,9 +113,9 @@ jobs:
         id: push-install
         uses: JeromeFitz/websites/.github/actions/install@main
 
-      - name: '🔺️  Cache (turbo)'
-        id: push-cache-turbo
-        uses: JeromeFitz/websites/.github/actions/cache-turbo@ci/cache-next
+      - name: '🔺️  Cache (vercel)'
+        id: push-cache-vercel
+        uses: JeromeFitz/websites/.github/actions/cache-turbo@main
         with:
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
