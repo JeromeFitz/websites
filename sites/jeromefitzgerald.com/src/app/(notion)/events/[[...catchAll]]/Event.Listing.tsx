@@ -19,12 +19,11 @@ import { notFound } from 'next/navigation'
 import { getDataFromCache } from '~app/(cache)'
 import { CONSTANTS } from '~app/(notion)/(config)/constants'
 // import { FourOhFour } from '~app/(errors)/404'
+import { getEventData, getPageData } from '~app/(notion)/(config)/segments'
 import {
   getDatabaseQuery,
   getDatabaseQueryByDateRange,
   getPropertyTypeData,
-  getPageData,
-  getEventData,
 } from '~app/(notion)/(config)/utils'
 import {
   SectionContent,

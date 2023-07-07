@@ -31,6 +31,7 @@ type PropertiesEvent = {
   'Date.Timezone': FormulaPropertyItemObjectResponse
   'Date.WeekNumber': FormulaPropertyItemObjectResponse
   'Date.Year': FormulaPropertyItemObjectResponse
+  'Is.Active': CheckboxPropertyItemObjectResponse
   'Is.Indexed': CheckboxPropertyItemObjectResponse
   'Is.Published': CheckboxPropertyItemObjectResponse
   'Override.Slug': CheckboxPropertyItemObjectResponse

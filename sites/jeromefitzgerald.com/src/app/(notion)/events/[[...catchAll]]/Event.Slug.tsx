@@ -24,12 +24,11 @@ import { getDataFromCache } from '~app/(cache)'
 import { CONSTANTS } from '~app/(notion)/(config)/constants'
 // import { FourOhFour } from '~app/(errors)/404'
 // import { Image } from '~app/(notion)/(utils)/blocks/Image'
-import type { PropertiesEvent } from '~app/(notion)/(config)/types'
+import type { PropertiesEvent } from '~app/(notion)/(config)/segments'
 import {
-  // isImageExpired,
   getEventData,
   getPropertyTypeDataEvent,
-} from '~app/(notion)/(config)/utils'
+} from '~app/(notion)/(config)/segments'
 import { Notion as Blocks } from '~components/Notion'
 import { Relations } from '~components/Relations'
 import {
@@ -100,7 +99,7 @@ async function Image({ properties }) {
   const imageSeoDescription = getPropertyTypeDataEvent(
     properties,
     'SEO.Image.Description'
-  )[0]?.plain_text
+  )
   const imageSeo = getPropertyTypeDataEvent(properties, 'SEO.Image')[0]
   // console.dir(`imageSeo:`)
   // console.dir(imageSeo)
