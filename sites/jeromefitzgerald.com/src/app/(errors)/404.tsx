@@ -9,7 +9,6 @@ import {
   SectionWrapper,
   // Tags,
 } from '~components/Section'
-import { Testing } from '~components/Testing'
 
 // @todo(types)
 function FourOhFour({
@@ -48,7 +47,6 @@ function FourOhFour({
           </>
         </SectionContent>
       </SectionWrapper>
-      <Testing />
     </>
   )
 }

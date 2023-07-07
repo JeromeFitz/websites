@@ -13,6 +13,7 @@ import https from 'node:https'
 
 import { Caption } from '@jeromefitz/ds/components/Caption'
 // import { Image } from '@jeromefitz/ds/ui/blocks/index'
+import { TIME } from '@jeromefitz/shared/src/lib/constants'
 import { isObjectEmpty } from '@jeromefitz/utils'
 import { Client } from '@notionhq/client'
 import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
@@ -23,8 +24,6 @@ import NextImage from 'next/image'
 import { NotionEmoji as EmojiWrapper } from 'next-notion/src/blocks/Emoji'
 import { isImageExpired } from 'next-notion/src/utils'
 import validUrl from 'valid-url'
-
-import { TIME } from '~app/(notion)/(config)/constants'
 
 import { getImageAlt, getImageUrl, getImageExpiration } from './Image.utils'
 

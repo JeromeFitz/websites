@@ -1,3 +1,5 @@
+import 'server-only'
+
 import https from 'node:https'
 
 import { Redis } from '@upstash/redis'

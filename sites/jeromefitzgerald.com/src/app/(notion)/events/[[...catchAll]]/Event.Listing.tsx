@@ -5,26 +5,21 @@ import {
   ExternalLinkIcon,
   // LocationMarkerIcon,
 } from '@jeromefitz/ds/components/Icon'
-import { cx } from '@jeromefitz/shared/src/utils'
+import { cx } from '@jeromefitz/shared/src/utils/cx'
 import { isObjectEmpty } from '@jeromefitz/utils'
 import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints'
 import _filter from 'lodash/filter'
 import _orderBy from 'lodash/orderBy'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
-// import {
-//   getDatabaseQuery,
-//   getDatabaseQueryByDateRange,
-// } from 'next-notion/src/queries/index'
+import { getPropertyTypeData } from 'next-notion/src/utils'
 
-import { getDataFromCache } from '~app/(cache)'
 import { CONSTANTS } from '~app/(notion)/(config)/constants'
-// import { FourOhFour } from '~app/(errors)/404'
 import { getEventData, getPageData } from '~app/(notion)/(config)/segments'
 import {
+  getDataFromCache,
   getDatabaseQuery,
   getDatabaseQueryByDateRange,
-  getPropertyTypeData,
 } from '~app/(notion)/(config)/utils'
 import {
   SectionContent,
@@ -35,7 +30,6 @@ import {
   SectionWrapper,
   Tags,
 } from '~components/Section'
-import { Testing } from '~components/Testing'
 
 import {
   AccordionDemo,
@@ -241,7 +235,6 @@ async function Listing({ revalidate, segmentInfo }) {
   const noData = isObjectEmpty(data?.blocks || {})
 
   const is404 = !isDynamicListing && noData
-  // if (is404) return <FourOhFour isNotPublished={false} segmentInfo={segmentInfo} />
   if (is404) notFound()
 
   const isPublished = is404
@@ -250,8 +243,6 @@ async function Listing({ revalidate, segmentInfo }) {
       getPropertyTypeData(data?.page?.properties, 'Is.Published') ||
       false
 
-  // if (!isPublished)
-  //   return <FourOhFour isNotPublished={true} segmentInfo={segmentInfo} />
   if (!isPublished) notFound()
 
   /**
@@ -309,7 +300,6 @@ async function Listing({ revalidate, segmentInfo }) {
           <Blocks data={data?.blocks} />
         </SectionContent>
       </SectionWrapper> */}
-      <Testing />
     </>
   )
 }

@@ -4,10 +4,10 @@ import type {
   RichTextItemResponse,
 } from '@notionhq/client/build/src/api-endpoints'
 import type { Metadata } from 'next'
+import { getPropertyTypeData } from 'next-notion/src/utils'
 import _title from 'title'
 
 import { getEventData } from '~app/(notion)/(config)/segments'
-import { getPropertyTypeData } from '~app/(notion)/(config)/utils'
 
 const BASE_URL = 'https://jeromefitzgerald.com'
 

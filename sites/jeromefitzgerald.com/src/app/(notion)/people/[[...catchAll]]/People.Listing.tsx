@@ -3,12 +3,11 @@ import { isObjectEmpty } from '@jeromefitz/utils'
 import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
+import { getPropertyTypeData } from 'next-notion/src/utils'
 
-import { getDataFromCache } from '~app/(cache)'
-// import { FourOhFour } from '~app/(errors)/404'
 import { CONSTANTS } from '~app/(notion)/(config)/constants'
 import type { PageObjectResponsePerson } from '~app/(notion)/(config)/segments'
-import { getDatabaseQuery, getPropertyTypeData } from '~app/(notion)/(config)/utils'
+import { getDataFromCache, getDatabaseQuery } from '~app/(notion)/(config)/utils'
 import { Notion as Blocks } from '~components/Notion'
 // import { Relations } from '~components/Relations'
 import {
@@ -20,7 +19,6 @@ import {
   SectionWrapper,
   // Tags,
 } from '~components/Section'
-import { Testing } from '~components/Testing'
 
 // import type { PropertiesPerson } from './Person.types'
 // // import { UpcomingShows } from './Show.UpcomingShows'
@@ -79,7 +77,6 @@ async function Listing({ revalidate, segmentInfo }) {
   const is404 = !isDynamicListing && noData
   // console.dir(`is404:            ${is404 ? 'y' : 'n'}`)
 
-  // if (is404) return <FourOhFour isNotPublished={false} segmentInfo={segmentInfo} />
   if (is404) notFound()
 
   const isPublished = is404
@@ -90,8 +87,6 @@ async function Listing({ revalidate, segmentInfo }) {
 
   // console.dir(`isPublished:      ${isPublished ? 'y' : 'n'}`)
 
-  // if (!isPublished)
-  //   return <FourOhFour isNotPublished={true} segmentInfo={segmentInfo} />
   if (!isPublished) notFound()
 
   /**
@@ -129,7 +124,6 @@ async function Listing({ revalidate, segmentInfo }) {
           {hasData && <ListingTemp data={personData} />}
         </SectionContent>
       </SectionWrapper>
-      <Testing />
     </>
   )
 }

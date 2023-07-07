@@ -1,22 +1,3 @@
-import ms from 'ms'
-
-/**
- * @redis is in seconds not ms
- */
-const getTimeInSeconds = (time: number) => time / 1000 ?? 0
-
-/**
- * @note in seconds
- *       ...probably could be hard-coded
- */
-const TIME = {
-  DAY: getTimeInSeconds(ms('1d')),
-  HOUR: getTimeInSeconds(ms('1h')),
-  MINUTE: getTimeInSeconds(ms('1m')),
-  MONTH: getTimeInSeconds(ms('30d')),
-  YEAR: getTimeInSeconds(ms('1y')),
-}
-
 const CONSTANTS = {
   BLOG: {
     DATABASE_ID: process.env.NOTION__DATABASE__BLOG ?? '',
@@ -56,4 +37,4 @@ const CONSTANTS = {
   },
 }
 
-export { CONSTANTS, TIME }
+export { CONSTANTS }

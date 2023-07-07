@@ -1,5 +1,5 @@
 import { Anchor } from '@jeromefitz/ds/components/Anchor'
-import { cx } from '@jeromefitz/shared/src/utils'
+import { cx } from '@jeromefitz/shared/src/utils/cx'
 import _size from 'lodash/size'
 import { Suspense } from 'react'
 

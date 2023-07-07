@@ -375,21 +375,12 @@ importers:
       '@notionhq/client':
         specifier: 2.2.6
         version: 2.2.6
-      '@upstash/ratelimit':
-        specifier: 0.4.3
-        version: 0.4.3
-      '@upstash/redis':
-        specifier: 1.22.0
-        version: 1.22.0
       date-fns:
         specifier: 2.30.0
         version: 2.30.0
       date-fns-tz:
         specifier: 2.0.0
         version: 2.0.0(date-fns@2.30.0)
-      ioredis:
-        specifier: 5.3.2
-        version: 5.3.2
       next:
         specifier: 13.4.9
         version: 13.4.9(react-dom@18.2.0)(react@18.2.0)
@@ -410,44 +401,10 @@ importers:
         version: 1.35.1
 
   packages/shared:
-    dependencies:
-      '@jeromefitz/design-system':
-        specifier: 4.2.3
-        version: 4.2.3(@types/react@18.2.14)(lodash@4.17.21)(next@13.4.9)(react-dom@18.2.0)(react@18.2.0)(swr@2.2.0)
-      '@tanem/react-nprogress':
-        specifier: 5.0.44
-        version: 5.0.44(react-dom@18.2.0)(react@18.2.0)
-      clsx:
-        specifier: 1.2.1
-        version: 1.2.1
-      fathom-client:
-        specifier: 3.5.0
-        version: 3.5.0
-      lodash:
-        specifier: 4.17.21
-        version: 4.17.21
-      next:
-        specifier: 13.4.9
-        version: 13.4.9(react-dom@18.2.0)(react@18.2.0)
-      next-themes:
-        specifier: 0.2.1
-        version: 0.2.1(next@13.4.9)(react-dom@18.2.0)(react@18.2.0)
-      plaiceholder:
-        specifier: 2.5.0
-        version: 2.5.0
-      react:
-        specifier: 18.2.0
-        version: 18.2.0
-      react-dom:
-        specifier: 18.2.0
-        version: 18.2.0(react@18.2.0)
-      swr:
-        specifier: 2.2.0
-        version: 2.2.0(react@18.2.0)
-      tailwind-merge:
-        specifier: 1.13.2
-        version: 1.13.2
     devDependencies:
+      '@notionhq/client':
+        specifier: 2.2.6
+        version: 2.2.6
       '@types/lodash':
         specifier: 4.14.195
         version: 4.14.195
@@ -457,6 +414,36 @@ importers:
       '@types/react-dom':
         specifier: 18.2.6
         version: 18.2.6
+      '@upstash/ratelimit':
+        specifier: 0.4.3
+        version: 0.4.3
+      '@upstash/redis':
+        specifier: 1.22.0
+        version: 1.22.0
+      clsx:
+        specifier: 1.2.1
+        version: 1.2.1
+      fast-json-stable-stringify:
+        specifier: 2.1.0
+        version: 2.1.0
+      ioredis:
+        specifier: 5.3.2
+        version: 5.3.2
+      lodash:
+        specifier: 4.17.21
+        version: 4.17.21
+      plaiceholder:
+        specifier: 2.5.0
+        version: 2.5.0
+      react:
+        specifier: 18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: 18.2.0
+        version: 18.2.0(react@18.2.0)
+      tailwind-merge:
+        specifier: 1.13.2
+        version: 1.13.2
 
   packages/storybook-config:
     devDependencies:
@@ -5304,87 +5291,6 @@ packages:
       - '@types/react'
     dev: false
 
-  /@jeromefitz/design-system@4.2.3(@types/react@18.2.14)(lodash@4.17.21)(next@13.4.9)(react-dom@18.2.0)(react@18.2.0)(swr@2.2.0):
-    resolution: {integrity: sha512-sHjXjJ6JEIg+I8oYBqAcn4uS7dZ+4t5iF98LKnifRB+FXQzLp+dMux6wtbMhalbwPwcj100XC4yPMCgFdkEGeQ==}
-    engines: {node: '>=16'}
-    peerDependencies:
-      '@heroicons/react': ^2.0.0
-      '@radix-ui/colors': ^0.1.8
-      '@radix-ui/react-icons': ^1.1.1
-      cmdk: ^0.2.0
-      framer-motion: ^10.0.0
-      lodash: ^4.17.21
-      next: ^13.0.0
-      react: ^18.0.0
-      react-dom: ^18.0.0
-      swr: ^2.0.0
-    dependencies:
-      '@radix-ui/primitive': 1.0.0
-      '@radix-ui/react-accessible-icon': 1.0.2(react-dom@18.2.0)(react@18.2.0)
-      '@radix-ui/react-accordion': 1.1.1(react-dom@18.2.0)(react@18.2.0)
-      '@radix-ui/react-alert-dialog': 1.0.3(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0)
-      '@radix-ui/react-announce': 0.1.7(react-dom@18.2.0)(react@18.2.0)
-      '@radix-ui/react-arrow': 1.0.2(react-dom@18.2.0)(react@18.2.0)
-      '@radix-ui/react-aspect-ratio': 1.0.2(react-dom@18.2.0)(react@18.2.0)
-      '@radix-ui/react-avatar': 1.0.2(react-dom@18.2.0)(react@18.2.0)
-      '@radix-ui/react-checkbox': 1.0.3(react-dom@18.2.0)(react@18.2.0)
-      '@radix-ui/react-collapsible': 1.0.2(react-dom@18.2.0)(react@18.2.0)
-      '@radix-ui/react-collection': 1.0.2(react-dom@18.2.0)(react@18.2.0)
-      '@radix-ui/react-compose-refs': 1.0.0(react@18.2.0)
-      '@radix-ui/react-context': 1.0.0(react@18.2.0)
-      '@radix-ui/react-context-menu': 2.1.3(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0)
-      '@radix-ui/react-dialog': 1.0.3(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0)
-      '@radix-ui/react-direction': 1.0.0(react@18.2.0)
-      '@radix-ui/react-dismissable-layer': 1.0.3(react-dom@18.2.0)(react@18.2.0)
-      '@radix-ui/react-dropdown-menu': 2.0.4(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0)
-      '@radix-ui/react-focus-guards': 1.0.0(react@18.2.0)
-      '@radix-ui/react-focus-scope': 1.0.2(react-dom@18.2.0)(react@18.2.0)
-      '@radix-ui/react-hover-card': 1.0.5(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0)
-      '@radix-ui/react-id': 1.0.0(react@18.2.0)
-      '@radix-ui/react-label': 2.0.1(react-dom@18.2.0)(react@18.2.0)
-      '@radix-ui/react-menu': 2.0.4(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0)
-      '@radix-ui/react-navigation-menu': 1.1.2(react-dom@18.2.0)(react@18.2.0)
-      '@radix-ui/react-popover': 1.0.5(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0)
-      '@radix-ui/react-popper': 1.1.1(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0)
-      '@radix-ui/react-portal': 1.0.2(react-dom@18.2.0)(react@18.2.0)
-      '@radix-ui/react-presence': 1.0.0(react-dom@18.2.0)(react@18.2.0)
-      '@radix-ui/react-primitive': 1.0.2(react-dom@18.2.0)(react@18.2.0)
-      '@radix-ui/react-progress': 1.0.2(react-dom@18.2.0)(react@18.2.0)
-      '@radix-ui/react-radio-group': 1.1.2(react-dom@18.2.0)(react@18.2.0)
-      '@radix-ui/react-roving-focus': 1.0.3(react-dom@18.2.0)(react@18.2.0)
-      '@radix-ui/react-scroll-area': 1.0.3(react-dom@18.2.0)(react@18.2.0)
-      '@radix-ui/react-select': 1.2.1(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0)
-      '@radix-ui/react-separator': 1.0.2(react-dom@18.2.0)(react@18.2.0)
-      '@radix-ui/react-slider': 1.1.1(react-dom@18.2.0)(react@18.2.0)
-      '@radix-ui/react-slot': 1.0.1(react@18.2.0)
-      '@radix-ui/react-switch': 1.0.2(react-dom@18.2.0)(react@18.2.0)
-      '@radix-ui/react-tabs': 1.0.3(react-dom@18.2.0)(react@18.2.0)
-      '@radix-ui/react-toast': 1.1.3(react-dom@18.2.0)(react@18.2.0)
-      '@radix-ui/react-toggle': 1.0.2(react-dom@18.2.0)(react@18.2.0)
-      '@radix-ui/react-toggle-group': 1.0.3(react-dom@18.2.0)(react@18.2.0)
-      '@radix-ui/react-toolbar': 1.0.3(react-dom@18.2.0)(react@18.2.0)
-      '@radix-ui/react-tooltip': 1.0.5(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0)
-      '@radix-ui/react-use-callback-ref': 1.0.0(react@18.2.0)
-      '@radix-ui/react-use-controllable-state': 1.0.0(react@18.2.0)
-      '@radix-ui/react-use-escape-keydown': 1.0.2(react@18.2.0)
-      '@radix-ui/react-use-layout-effect': 1.0.0(react@18.2.0)
-      '@radix-ui/react-use-previous': 1.0.0(react@18.2.0)
-      '@radix-ui/react-use-rect': 1.0.0(react@18.2.0)
-      '@radix-ui/react-use-size': 1.0.0(react@18.2.0)
-      '@radix-ui/react-visually-hidden': 1.0.2(react-dom@18.2.0)(react@18.2.0)
-      '@stitches/react': 1.3.1-1(react@18.2.0)
-      emoji-regex: 10.2.1
-      lodash: 4.17.21
-      next: 13.4.9(react-dom@18.2.0)(react@18.2.0)
-      node-emoji: 1.11.0
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      smoothscroll-polyfill: 0.4.4
-      swr: 2.2.0(react@18.2.0)
-    transitivePeerDependencies:
-      - '@types/react'
-    dev: false
-
   /@jeromefitz/eslint-config@1.2.1(typescript@5.1.6):
     resolution: {integrity: sha512-pi5t5BRwZ3GKQkvmfvL/RgVVjiaSzNXRBJDpWMtITkNsHE9s1r/IS50wy1KjHQKPX0N/g4iWXreaX6hNfF8MFA==}
     engines: {node: '>=16'}
@@ -5601,7 +5507,7 @@ packages:
     dependencies:
       '@jest/fake-timers': 29.6.1
       '@jest/types': 29.6.1
-      '@types/node': 20.3.3
+      '@types/node': 20.4.0
       jest-mock: 29.6.1
     dev: true
 
@@ -5635,7 +5541,7 @@ packages:
     dependencies:
       '@jest/types': 29.6.1
       '@sinonjs/fake-timers': 10.0.2
-      '@types/node': 20.3.3
+      '@types/node': 20.4.0
       jest-message-util: 29.6.1
       jest-mock: 29.6.1
       jest-util: 29.6.1
@@ -5778,7 +5684,7 @@ packages:
     dependencies:
       '@types/istanbul-lib-coverage': 2.0.4
       '@types/istanbul-reports': 3.0.1
-      '@types/node': 20.3.3
+      '@types/node': 20.4.0
       '@types/yargs': 16.0.5
       chalk: 4.1.2
     dev: true
@@ -5790,7 +5696,7 @@ packages:
       '@jest/schemas': 29.6.0
       '@types/istanbul-lib-coverage': 2.0.4
       '@types/istanbul-reports': 3.0.1
-      '@types/node': 20.3.3
+      '@types/node': 20.4.0
       '@types/yargs': 17.0.24
       chalk: 4.1.2
     dev: true
@@ -11430,13 +11336,13 @@ packages:
     resolution: {integrity: sha512-ALYone6pm6QmwZoAgeyNksccT9Q4AWZQ6PvfwR37GT6r6FWUPguq6sUmNGSMV2Wr761oQoBxwGGa6DR5o1DC9g==}
     dependencies:
       '@types/connect': 3.4.35
-      '@types/node': 20.3.3
+      '@types/node': 20.4.0
     dev: true
 
   /@types/connect@3.4.35:
     resolution: {integrity: sha512-cdeYyv4KWoEgpBISTxWvqYsVy444DOqehiF3fM3ne10AmJ62RSyNkUnxMJXHQWRQQX2eR94m5y1IZyDwBjV9FQ==}
     dependencies:
-      '@types/node': 20.3.3
+      '@types/node': 20.4.0
     dev: true
 
   /@types/detect-port@1.3.3:
@@ -11480,7 +11386,7 @@ packages:
   /@types/express-serve-static-core@4.17.35:
     resolution: {integrity: sha512-wALWQwrgiB2AWTT91CB62b6Yt0sNHpznUXeZEcnPU3DRdlDIz74x8Qg1UUYKSVFi+va5vKOLYRBI1bRKiLLKIg==}
     dependencies:
-      '@types/node': 20.3.3
+      '@types/node': 20.4.0
       '@types/qs': 6.9.7
       '@types/range-parser': 1.2.4
       '@types/send': 0.17.1
@@ -11503,7 +11409,7 @@ packages:
     resolution: {integrity: sha512-IO+MJPVhoqz+28h1qLAcBEH2+xHMK6MTyHJc7MTnnYb6wsoLR29POVGJ7LycmVXIqyy/4/2ShP5sUwTXuOwb/w==}
     dependencies:
       '@types/minimatch': 5.1.2
-      '@types/node': 20.3.3
+      '@types/node': 20.4.0
     dev: true
 
   /@types/graceful-fs@4.1.6:
@@ -11556,7 +11462,7 @@ packages:
   /@types/jsdom@20.0.1:
     resolution: {integrity: sha512-d0r18sZPmMQr1eG35u12FZfhIXNrnsPU/g5wvRKCUf/tOGilKKwYMYGqh33BNR6ba+2gkHw1EUiHoN3mn7E5IQ==}
     dependencies:
-      '@types/node': 20.3.3
+      '@types/node': 20.4.0
       '@types/tough-cookie': 4.0.2
       parse5: 7.1.2
     dev: true
@@ -11607,7 +11513,7 @@ packages:
   /@types/node-fetch@2.6.4:
     resolution: {integrity: sha512-1ZX9fcN4Rvkvgv4E6PAY5WXUFWFcRWxZa3EW83UjycOB9ljJCedb2CupIP4RZMEwF/M3eTcCihbBRgwtGbg5Rg==}
     dependencies:
-      '@types/node': 20.3.3
+      '@types/node': 20.4.0
       form-data: 3.0.1
 
   /@types/node@12.20.55:
@@ -11624,6 +11530,7 @@ packages:
 
   /@types/node@20.3.3:
     resolution: {integrity: sha512-wheIYdr4NYML61AjC8MKj/2jrR/kDQri/CIpVoZwldwhnIrD/j9jIU5bJ8yBKuB2VhpFV7Ab6G2XkBjv9r9Zzw==}
+    dev: true
 
   /@types/node@20.4.0:
     resolution: {integrity: sha512-jfT7iTf/4kOQ9S7CHV9BIyRaQqHu67mOjsIQBC3BKZvzvUB6zLxEwJ6sBE3ozcvP8kF6Uk5PXN0Q+c0dfhGX0g==}
@@ -11715,7 +11622,7 @@ packages:
     resolution: {integrity: sha512-Cwo8LE/0rnvX7kIIa3QHCkcuF21c05Ayb0ZfxPiv0W8VRiZiNW/WuRupHKpqqGVGf7SUA44QSOUKaEd9lIrd/Q==}
     dependencies:
       '@types/mime': 1.3.2
-      '@types/node': 20.3.3
+      '@types/node': 20.4.0
     dev: true
 
   /@types/serve-static@1.15.2:
@@ -11723,7 +11630,7 @@ packages:
     dependencies:
       '@types/http-errors': 2.0.1
       '@types/mime': 3.0.1
-      '@types/node': 20.3.3
+      '@types/node': 20.4.0
     dev: true
 
   /@types/stack-utils@2.0.1:
@@ -13450,7 +13357,6 @@ packages:
   /clsx@1.2.1:
     resolution: {integrity: sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==}
     engines: {node: '>=6'}
-    dev: false
 
   /cluster-key-slot@1.1.2:
     resolution: {integrity: sha512-RMr0FhtfXemyinomL4hrWcYJxmX6deFdCxpJzhDttxgO1+bcCnkk+9drydLVDmAMG7NE6aN/fl4F7ucU/90gAA==}
@@ -17346,7 +17252,7 @@ packages:
     dependencies:
       '@jest/types': 29.6.0
       '@types/graceful-fs': 4.1.6
-      '@types/node': 20.3.3
+      '@types/node': 20.4.0
       anymatch: 3.1.3
       fb-watchman: 2.0.2
       graceful-fs: 4.2.11
@@ -17441,7 +17347,7 @@ packages:
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
     dependencies:
       '@jest/types': 27.5.1
-      '@types/node': 20.3.3
+      '@types/node': 20.4.0
     dev: true
 
   /jest-mock@29.6.1:
@@ -17449,7 +17355,7 @@ packages:
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     dependencies:
       '@jest/types': 29.6.1
-      '@types/node': 20.3.3
+      '@types/node': 20.4.0
       jest-util: 29.6.1
     dev: true
 
@@ -17588,7 +17494,7 @@ packages:
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     dependencies:
       '@jest/types': 29.6.0
-      '@types/node': 20.3.3
+      '@types/node': 20.4.0
       chalk: 4.1.2
       ci-info: 3.8.0
       graceful-fs: 4.2.11
@@ -17612,7 +17518,7 @@ packages:
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     dependencies:
       '@jest/types': 29.6.1
-      '@types/node': 20.3.3
+      '@types/node': 20.4.0
       chalk: 4.1.2
       ci-info: 3.8.0
       graceful-fs: 4.2.11
@@ -17649,7 +17555,7 @@ packages:
     resolution: {integrity: sha512-7vuh85V5cdDofPyxn58nrPjBktZo0u9x1g8WtjQol+jZDaE+fhN+cIvTj11GndBnMnyfrUOG1sZQxCdjKh+DKg==}
     engines: {node: '>= 10.13.0'}
     dependencies:
-      '@types/node': 20.3.3
+      '@types/node': 20.4.0
       merge-stream: 2.0.0
       supports-color: 8.1.1
     dev: true
@@ -17658,7 +17564,7 @@ packages:
     resolution: {integrity: sha512-NcrQnevGoSp4b5kg+akIpthoAFHxPBcb5P6mYPY0fUNT+sSvmtu6jlkEle3anczUKIKEbMxFimk9oTP/tpIPgA==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     dependencies:
-      '@types/node': 20.3.3
+      '@types/node': 20.4.0
       jest-util: 29.6.0
       merge-stream: 2.0.0
       supports-color: 8.1.1
@@ -19656,7 +19562,7 @@ packages:
       image-size: 1.0.2
       node-cache: 5.1.2
       node-fetch: 2.6.7(encoding@0.1.13)
-    dev: false
+    dev: true
 
   /plaiceholder@2.5.0(sharp@0.32.1):
     resolution: {integrity: sha512-rygdNSWuYzs1GxxGjq2FiJdJB1AUaKhUHP/M7PIrSjAAGuoJC5ACiJx+cZZ+hDmMalxsxOMw0Sbbx3LF8jemGg==}

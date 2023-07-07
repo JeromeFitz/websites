@@ -1,4 +1,4 @@
-import { cx } from '@jeromefitz/shared/src/utils'
+import { cx } from '@jeromefitz/shared/src/utils/cx'
 import { Suspense } from 'react'
 
 import type { PageObjectResponseVenue } from '~app/(notion)/(config)/segments'

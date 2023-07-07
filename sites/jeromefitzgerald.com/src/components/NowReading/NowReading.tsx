@@ -6,7 +6,7 @@
 // } from '@jeromefitz/ds/components/Icon'
 // import { Anchor } from '@jeromefitz/ds/components/Anchor'
 import { Separator } from '@jeromefitz/ds/components/Separator'
-import { cx } from '@jeromefitz/shared/src/utils'
+import { cx } from '@jeromefitz/shared/src/utils/cx'
 // import * as AspectRatio from '@radix-ui/react-aspect-ratio'
 // import _map from 'lodash/map'
 // import Image from 'next/image'

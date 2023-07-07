@@ -8,9 +8,11 @@ type RC = {
   blocks: ListBlockChildrenResponse
 }
 
+import redis from './redis'
+
 export { getCache } from './getCache'
-export { getDataFromCache } from './getDataFromCache'
 export { getKey } from './getKey'
 export { setCache } from './setCache'
 
 export type { RC }
+export default redis

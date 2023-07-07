@@ -18,12 +18,13 @@ import type {
   UrlPropertyItemObjectResponse,
 } from '@notionhq/client/build/src/api-endpoints'
 import _orderBy from 'lodash/orderBy'
+
 import type {
   DateResponse,
   EmptyObject,
   RollupFunction,
   SelectPropertyResponse,
-} from 'next-notion/src/Notion.types'
+} from '../Notion.types'
 
 type CheckboxData = {
   type: 'checkbox'

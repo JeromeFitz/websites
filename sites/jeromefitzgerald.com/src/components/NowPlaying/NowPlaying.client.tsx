@@ -1,19 +1,18 @@
 'use client'
 import { ButtonLink } from '@jeromefitz/ds/components/Button'
 import { ExternalLinkIcon } from '@jeromefitz/ds/components/Icon'
-import { cx } from '@jeromefitz/shared/src/utils'
+import { fetcher } from '@jeromefitz/shared/src/lib/fetcher'
+import { cx } from '@jeromefitz/shared/src/utils/cx'
 // import * as AspectRatio from '@radix-ui/react-aspect-ratio'
 import { slug as _slug } from 'github-slugger'
 import _map from 'lodash/map'
 import _size from 'lodash/size'
 import ms from 'ms'
 import Image from 'next/image'
-import { fetcher } from 'next-notion/src/zzz-old/lib/fetcher'
 import useSWR from 'swr'
 import _title from 'title'
 
 import { Tags } from '~components/Section'
-// import { Testing } from '~components/Testing'
 import nowPlaying from '~data/mock/music/now-playing'
 
 const refreshInterval = ms('1m')
