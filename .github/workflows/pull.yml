@@ -118,7 +118,7 @@ jobs:
 
       - name: '🔺️  Cache (turbo)'
         id: pull-cache-turbo
-        uses: JeromeFitz/websites/.github/actions/cache-turbo@main
+        uses: JeromeFitz/websites/.github/actions/cache-turbo@ci/cache-next
         with:
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
