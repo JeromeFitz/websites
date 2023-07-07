@@ -8,13 +8,9 @@ import { notFound } from 'next/navigation'
 import { getDataFromCache } from '~app/(cache)'
 // import { FourOhFour } from '~app/(errors)/404'
 import { CONSTANTS } from '~app/(notion)/(config)/constants'
-// import type { PageObjectResponseShow } from '~app/(notion)/(config)/types'
-import {
-  getDatabaseQuery,
-  getPropertyTypeData,
-  getPageData,
-  getShowData,
-} from '~app/(notion)/(config)/utils'
+// import type { PageObjectResponseShow } from '~app/(notion)/(config)/segments'
+import { getPageData, getShowData } from '~app/(notion)/(config)/segments'
+import { getDatabaseQuery, getPropertyTypeData } from '~app/(notion)/(config)/utils'
 import {
   SectionContent,
   SectionHeader,

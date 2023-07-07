@@ -6,11 +6,11 @@ import type { Metadata } from 'next'
 
 import { getDataFromCache } from '~app/(cache)'
 import { CONSTANTS } from '~app/(notion)/(config)/constants'
-import type { PageObjectResponseShow } from '~app/(notion)/(config)/types'
+import type { PageObjectResponseShow } from '~app/(notion)/(config)/segments'
+import { getShowData } from '~app/(notion)/(config)/segments'
 import {
   getSegmentInfo,
   getPropertyTypeData,
-  getShowData,
   getDatabaseQuery,
 } from '~app/(notion)/(config)/utils'
 

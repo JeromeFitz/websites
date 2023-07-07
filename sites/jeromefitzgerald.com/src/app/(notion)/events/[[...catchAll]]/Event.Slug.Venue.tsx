@@ -1,11 +1,9 @@
 import { cx } from '@jeromefitz/shared/src/utils'
 import { Suspense } from 'react'
 
-import type { PageObjectResponseVenue } from '~app/(notion)/(config)/types'
-import {
-  getPageDataFromNotion,
-  getPropertyTypeDataVenue,
-} from '~app/(notion)/(config)/utils'
+import type { PageObjectResponseVenue } from '~app/(notion)/(config)/segments'
+import { getPropertyTypeDataVenue } from '~app/(notion)/(config)/segments'
+import { getPageDataFromNotion } from '~app/(notion)/(config)/utils'
 
 function VenueLoading() {
   return (
@@ -24,16 +22,13 @@ async function VenueIndividual({ id }) {
   if (!item) return null
   const { properties } = item
 
-  const addressStreet = getPropertyTypeDataVenue(properties, 'Address.Street')[0]
-    .plain_text
-  const addressCity = getPropertyTypeDataVenue(properties, 'Address.City')[0]
-    .plain_text
+  const addressStreet = getPropertyTypeDataVenue(properties, 'Address.Street')
+  const addressCity = getPropertyTypeDataVenue(properties, 'Address.City')
   const addressNeighborhood = getPropertyTypeDataVenue(
     properties,
     'Address.Neighborhood'
-  )[0].plain_text
-  const addressState = getPropertyTypeDataVenue(properties, 'Address.State')[0]
-    .plain_text
+  )
+  const addressState = getPropertyTypeDataVenue(properties, 'Address.State')
   const addressPostalCode = getPropertyTypeDataVenue(
     properties,
     'Address.PostalCode'

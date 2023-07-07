@@ -1,5 +1,14 @@
 export type { PageObjectResponseEvent, PropertiesEvent } from './Event.types'
+export { getEventData, getPropertyTypeDataEvent } from './Event.utils'
+
 export type { PageObjectResponsePage, PropertiesPage } from './Page.types'
+export { getPageData, getPropertyTypeDataPage } from './Page.utils'
+
 export type { PageObjectResponsePerson, PropertiesPerson } from './Person.types'
+export { getPersonData, getPropertyTypeDataPerson } from './Person.utils'
+
 export type { PageObjectResponseShow, PropertiesShow } from './Show.types'
+export { getShowData, getPropertyTypeDataShow } from './Show.utils'
+
 export type { PageObjectResponseVenue, PropertiesVenue } from './Venue.types'
+export { getPropertyTypeDataVenue } from './Venue.utils'

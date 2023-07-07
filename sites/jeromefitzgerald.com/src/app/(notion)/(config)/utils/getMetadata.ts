@@ -6,7 +6,8 @@ import type {
 import type { Metadata } from 'next'
 import _title from 'title'
 
-import { getPropertyTypeData, getEventData } from '~app/(notion)/(config)/utils'
+import { getEventData } from '~app/(notion)/(config)/segments'
+import { getPropertyTypeData } from '~app/(notion)/(config)/utils'
 
 const BASE_URL = 'https://jeromefitzgerald.com'
 
@@ -37,7 +38,7 @@ function getMetadata({ properties, segmentInfo }) {
   const descriptionTemp: TextRichTextItemResponse = getPropertyTypeData(
     properties,
     'SEO.Description'
-  )[0]?.plain_text
+  )
   const description: string = descriptionTemp?.toString()
 
   /**
@@ -61,7 +62,7 @@ function getMetadata({ properties, segmentInfo }) {
       const imageDescription: TextRichTextItemResponse = getPropertyTypeData(
         properties,
         'SEO.Image.Description'
-      )[0]?.plain_text
+      )
 
       openGraph = {
         images: [
@@ -107,7 +108,7 @@ function getMetadata({ properties, segmentInfo }) {
 
     titleSeo = `${dayOfWeekAbbr.toUpperCase()} ${month}/${dayOfMonth} ${time}: ${title}`
   } else {
-    titleSeo = getPropertyTypeData(properties, 'Title')[0]?.plain_text
+    titleSeo = getPropertyTypeData(properties, 'Title')
   }
 
   const titleSuffix =

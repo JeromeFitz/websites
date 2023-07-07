@@ -5,9 +5,9 @@ import type { Metadata } from 'next'
 
 import { getDataFromCache } from '~app/(cache)'
 import { CONSTANTS } from '~app/(notion)/(config)/constants'
-import type { PageObjectResponsePerson } from '~app/(notion)/(config)/types'
+import type { PageObjectResponsePerson } from '~app/(notion)/(config)/segments'
+import { getPersonData } from '~app/(notion)/(config)/segments'
 import {
-  getPersonData,
   getPropertyTypeData,
   getSegmentInfo,
   getDatabaseQuery,
