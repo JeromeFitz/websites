@@ -498,9 +498,6 @@ importers:
 
   packages/tailwind-config:
     devDependencies:
-      '@plaiceholder/tailwindcss':
-        specifier: 3.0.0
-        version: 3.0.0(sharp@0.32.1)(tailwindcss@3.3.2)
       '@radix-ui/colors':
         specifier: 1.0.0
         version: 1.0.0
@@ -6111,18 +6108,6 @@ packages:
       next: '>= 10.0.0'
       plaiceholder: '>=3.0.0'
       sharp: '>= 0.30.6'
-    dev: true
-
-  /@plaiceholder/tailwindcss@3.0.0(sharp@0.32.1)(tailwindcss@3.3.2):
-    resolution: {integrity: sha512-2yTU2Y7C/UeqU6DxAibMoqx0jV6YXD0QdgkuxI67RpM4Q9rXhBDShGrSBTlXkBu7YOL9sK+N1KFs+CeJGMtOkA==}
-    peerDependencies:
-      plaiceholder: '>=3.0.0'
-      sharp: '>= 0.30.6'
-      tailwindcss: '>=3'
-    dependencies:
-      make-synchronous: 0.1.1
-      sharp: 0.32.1
-      tailwindcss: 3.3.2(ts-node@10.9.1)
     dev: true
 
   /@playwright/test@1.35.1:
@@ -17840,14 +17825,6 @@ packages:
   /make-error@1.3.6:
     resolution: {integrity: sha512-s8UhlNe7vPKomQhC1qFelMokr/Sc3AgNbso3n74mVPA5LTZwkB9NlXf4XPamLxJE8h0gh73rM94xvwRT2CVInw==}
 
-  /make-synchronous@0.1.1:
-    resolution: {integrity: sha512-Y4SxxqhaoyMDokJQ0AZz0E+bLhRkOSR7Z/IQoTKPdS6HYi3aobal2kMHoHHoqBadPWjf07P4K1FQLXOx3wf9Yw==}
-    engines: {node: '>=12'}
-    dependencies:
-      subsume: 3.0.0
-      type-fest: 0.16.0
-    dev: true
-
   /makeerror@1.0.12:
     resolution: {integrity: sha512-JmqCvUhmt43madlpFzG4BQzG2Z3m6tvQDNKdClZnO3VbIudJYmxsT0FNJMeiB2+JTSlTQTSbU8QdesVmwJcmLg==}
     dependencies:
@@ -21612,14 +21589,6 @@ packages:
   /stylis@4.1.1:
     resolution: {integrity: sha512-lVrM/bNdhVX2OgBFNa2YJ9Lxj7kPzylieHd3TNjuGE0Re9JB7joL5VUKOVH1kdNNJTgGPpT8hmwIAPLaSyEVFQ==}
     dev: false
-
-  /subsume@3.0.0:
-    resolution: {integrity: sha512-6n/UfV8UWKwJNO8OAOiKntwEMihuBeeoJfzpL542C+OuvT4iWG9SwjrXkOmsxjb4SteHUsos9SvrdqZ9+ICwTQ==}
-    engines: {node: '>=8'}
-    dependencies:
-      escape-string-regexp: 2.0.0
-      unique-string: 2.0.0
-    dev: true
 
   /sucrase@3.32.0:
     resolution: {integrity: sha512-ydQOU34rpSyj2TGyz4D2p8rbktIOZ8QY9s+DGLvFU1i5pWJE8vkpruCjGCMHsdXwnD7JDcS+noSwM/a7zyNFDQ==}
