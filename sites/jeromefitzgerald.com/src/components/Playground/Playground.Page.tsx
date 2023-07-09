@@ -47,14 +47,13 @@ const isDev = process.env.NODE_ENV === 'development'
 const siteColors = [
   'black',
   // 'gray',
-  'orange',
+  // 'orange',
   'pink',
-  'purple',
+  // 'purple',
   'slate',
   'white',
   // '',
 ]
-
 const foregroundTextBlack = ['sky', 'mint', 'lime', 'yellow', 'amber']
 
 const notionColors = [
@@ -282,57 +281,57 @@ function TailwindHackForDynamicallyLoadedStylesColSpans() {
     <>
       <h3 className="my-4 py-4 text-3xl font-bold">Grid</h3>
       <div className="bg-radix-slate6 grid grid-flow-col auto-rows-max grid-cols-12 gap-x-4 gap-y-2">
-        <div className="odd:bg-radix-purple6 bg-radix-pink6 col-span-1">01</div>
-        <div className="odd:bg-radix-purple6 bg-radix-pink6 col-span-2">02</div>
-        <div className="odd:bg-radix-purple6 bg-radix-pink6 col-span-3">03</div>
-        <div className="odd:bg-radix-purple6 bg-radix-pink6 col-span-4">04</div>
-        <div className="odd:bg-radix-purple6 bg-radix-pink6 col-span-5">05</div>
-        <div className="odd:bg-radix-purple6 bg-radix-pink6 col-span-6">06</div>
-        <div className="odd:bg-radix-purple6 bg-radix-pink6 col-span-7">07</div>
-        <div className="odd:bg-radix-purple6 bg-radix-pink6 col-span-8">08</div>
-        <div className="odd:bg-radix-purple6 bg-radix-pink6 col-span-9">09</div>
-        <div className="odd:bg-radix-purple6 bg-radix-pink6 col-span-10">10</div>
-        <div className="odd:bg-radix-purple6 bg-radix-pink6 col-span-11">11</div>
-        <div className="odd:bg-radix-purple6 bg-radix-pink6 col-span-12">12</div>
+        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-1">01</div>
+        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-2">02</div>
+        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-3">03</div>
+        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-4">04</div>
+        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-5">05</div>
+        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-6">06</div>
+        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-7">07</div>
+        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-8">08</div>
+        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-9">09</div>
+        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-10">10</div>
+        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-11">11</div>
+        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-12">12</div>
       </div>
       <div className="bg-radix-slate6 grid grid-flow-col auto-rows-max grid-cols-12 gap-x-4 gap-y-2">
-        <div className="odd:bg-radix-purple6 bg-radix-pink6 col-span-1 col-start-1">
+        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-1 col-start-1">
           01
         </div>
-        <div className="odd:bg-radix-purple6 bg-radix-pink6 col-span-2 col-start-1">
+        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-2 col-start-1">
           02
         </div>
-        <div className="odd:bg-radix-purple6 bg-radix-pink6 col-span-3 col-start-1">
+        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-3 col-start-1">
           03
         </div>
-        <div className="odd:bg-radix-purple6 bg-radix-pink6 col-span-4 col-start-1">
+        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-4 col-start-1">
           04
         </div>
-        <div className="odd:bg-radix-purple6 bg-radix-pink6 col-span-5 col-start-1">
+        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-5 col-start-1">
           05
         </div>
-        <div className="odd:bg-radix-purple6 bg-radix-pink6 col-span-6 col-start-1">
+        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-6 col-start-1">
           06
         </div>
-        <div className="odd:bg-radix-purple6 bg-radix-pink6 col-span-7 col-start-1">
+        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-7 col-start-1">
           07
         </div>
-        <div className="odd:bg-radix-purple6 bg-radix-pink6 col-span-8 col-start-1">
+        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-8 col-start-1">
           08
         </div>
-        <div className="odd:bg-radix-purple6 bg-radix-pink6 col-span-9 col-start-1">
+        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-9 col-start-1">
           09
         </div>
-        <div className="odd:bg-radix-purple6 bg-radix-pink6 col-span-10 col-start-1">
+        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-10 col-start-1">
           10
         </div>
-        <div className="odd:bg-radix-purple6 bg-radix-pink6 col-span-11 col-start-1">
+        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-11 col-start-1">
           11
         </div>
-        <div className="odd:bg-radix-purple6 bg-radix-pink6 col-span-12 col-start-1">
+        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-12 col-start-1">
           12
         </div>
-        <div className="odd:bg-radix-purple6 bg-radix-pink6 col-span-full">Full</div>
+        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-full">Full</div>
       </div>
     </>
   )

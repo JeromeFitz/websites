@@ -5,9 +5,9 @@ const isDev = process.env.NODE_ENV === 'development'
 const siteColors = [
   'black',
   // 'gray',
-  'orange',
+  // 'orange',
   'pink',
-  'purple',
+  // 'purple',
   'slate',
   'white',
   // '',

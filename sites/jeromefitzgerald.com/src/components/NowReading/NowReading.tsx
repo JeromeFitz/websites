@@ -1,6 +1,7 @@
 'use client'
 import { Separator } from '@jeromefitz/ds/components/Separator'
 import { cx } from '@jeromefitz/ds/utils/cx'
+import { Fragment } from 'react'
 
 import {
   SectionContent,
@@ -45,11 +46,8 @@ function NowReading() {
       <SectionContent>
         {books.map((book) => {
           return (
-            <>
-              <div
-                className={cx('flex flex-col gap-5 md:gap-4', 'pl-2 md:pl-4')}
-                key={`book-${book.id}`}
-              >
+            <Fragment key={`book-${book.id}`}>
+              <div className={cx('flex flex-col gap-5 md:gap-4', 'pl-2 md:pl-4')}>
                 <div className={cx('my-3 flex w-full flex-col justify-center')}>
                   <span
                     className={cx(
@@ -77,7 +75,7 @@ function NowReading() {
                 </div>
               </div>
               <Separator />
-            </>
+            </Fragment>
           )
         })}
         <div className="mt-3">

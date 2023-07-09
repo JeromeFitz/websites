@@ -33,7 +33,7 @@ const notionColors = [
   'pink',
   'purple',
   // 'red',
-  // 'yellow',
+  'yellow',
 ]
 
 function NowPlayingClient() {
