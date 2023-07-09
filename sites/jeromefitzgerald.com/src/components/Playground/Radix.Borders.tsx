@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/no-custom-classname */
 function RadixBorders() {
   return (
     <ul className="hidden">

@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/no-custom-classname */
 function RadixBackgrounds() {
   return (
     <ul className="hidden">
