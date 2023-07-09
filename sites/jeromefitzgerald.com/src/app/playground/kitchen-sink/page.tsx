@@ -4,6 +4,7 @@ import {
 } from '@jeromefitz/shared/src/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
 import { draftMode } from 'next/headers'
+import { notFound } from 'next/navigation'
 
 import { CONSTANTS, getPageData } from '~app/(notion)/(config)'
 import { Notion as Blocks } from '~components/Notion'
@@ -17,6 +18,7 @@ import {
   // Tags,
 } from '~components/Section'
 
+const isDev = process.env.NODE_ENV === 'development'
 const slug = '/kitchen-sink'
 const { SEGMENT } = CONSTANTS.PAGES
 
@@ -53,6 +55,7 @@ async function Slug({ revalidate, segmentInfo }) {
 }
 
 export default function Page({ revalidate = false, ...props }) {
+  if (!isDev) notFound()
   const segmentInfo = getSegmentInfo({ SEGMENT, ...props })
 
   return <Slug revalidate={revalidate} segmentInfo={segmentInfo} />

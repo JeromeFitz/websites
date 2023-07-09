@@ -7,7 +7,7 @@ import {
   CalendarIcon,
   ClockIcon,
   ExternalLinkIcon,
-  LocationMarkerIcon,
+  HomeIcon,
 } from '@jeromefitz/ds/components/Icon'
 import { Separator } from '@jeromefitz/ds/components/Separator'
 import { cx } from '@jeromefitz/ds/utils/cx'
@@ -227,10 +227,10 @@ function Ticket({ properties, isFakePortal = false }) {
         </h5>
         <h6
           className={cx(
-            'flex flex-row items-center justify-start gap-2 text-lg font-bold tracking-tight md:text-2xl'
+            'flex flex-row items-baseline justify-start gap-2 text-lg font-bold tracking-tight md:text-2xl'
           )}
         >
-          <LocationMarkerIcon className="h-5 w-5" />
+          <HomeIcon className="relative top-[0.25rem] h-5 w-5 md:top-[0.125rem]" />
           {venueTitle}
         </h6>
       </div>

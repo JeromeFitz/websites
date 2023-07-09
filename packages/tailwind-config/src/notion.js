@@ -27,7 +27,8 @@ notionColors.map((color) => {
   if (radixColor === 'gray') radixColor = 'slate'
   if (color.includes('_background')) {
     notion['.notion-' + color] = {
-      backgroundColor: `var(--${radixColor}4)`,
+      // @note(a11y) Radix-UI uses `4`, but Page Insights warns
+      backgroundColor: `var(--${radixColor}3)`,
     }
   } else {
     notion['.notion-' + color] = {

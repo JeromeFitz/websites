@@ -1,5 +1,5 @@
-import { getImage } from '@jeromefitz/shared/src/plaiceholder/getImage'
 import Image from 'next/image'
+import { notFound } from 'next/navigation'
 
 import {
   SectionContent,
@@ -11,10 +11,13 @@ import {
   // Tags,
 } from '~components/Section'
 
-async function ImageTest() {
-  const imageToGet = `https://cdn.jeromefitzgerald.com/images/2020/01/jfle--2020--cec-jr--bob-shields.jpg`
+const isDev = process.env.NODE_ENV === 'development'
 
-  const imageData = await getImage(imageToGet)
+async function ImageTest() {
+  const imageUrl = `https://cdn.jeromefitzgerald.com/images/2020/01/jfle--2020--cec-jr--bob-shields.jpg`
+
+  const { getImage } = await import('@jeromefitz/shared/src/plaiceholder/getImage')
+  const imageData = await getImage(imageUrl)
   // console.dir(`imageData:`)
   // console.dir(imageData)
 
@@ -40,6 +43,7 @@ async function ImageTest() {
 }
 
 export default function Page() {
+  if (!isDev) notFound()
   const title = 'Plaiceholder'
 
   return (

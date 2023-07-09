@@ -11,7 +11,9 @@ import { Image } from './Blocks/Image'
 
 const custom = {
   embed: {
-    component: dynamic(() => import('./Blocks/Embed').then((mod) => mod.Embed)),
+    component: dynamic(() => import('./Blocks/Embed').then((mod) => mod.Embed), {
+      ssr: false,
+    }),
     // component: lazy(() => import('./Blocks/Embed')),
     // component: Embed,
     element: 'div',
@@ -24,7 +26,9 @@ const custom = {
     className: '',
   },
   video: {
-    component: dynamic(() => import('./Blocks/Video').then((mod) => mod.Video)),
+    component: dynamic(() => import('./Blocks/Video').then((mod) => mod.Video), {
+      ssr: false,
+    }),
     // component: lazy(() => import('./Blocks/Video')),
     // component: Video,
     element: 'div',

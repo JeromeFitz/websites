@@ -28,22 +28,34 @@ import { Providers } from '~components/Providers'
 //   () => import('~components/NowReading').then((mod) => mod.NowReading),
 //   { ssr: false }
 // )
-const Analytics = dynamic(async () => {
-  const { Analytics: Component } = await import('~components/Analytics')
-  return { default: Component }
-})
-const Footer = dynamic(async () => {
-  const { Footer: Component } = await import('~components/Footer')
-  return { default: Component }
-})
-const NowPlaying = dynamic(async () => {
-  const { NowPlaying: Component } = await import('~components/NowPlaying')
-  return { default: Component }
-})
-const NowReading = dynamic(async () => {
-  const { NowReading: Component } = await import('~components/NowReading')
-  return { default: Component }
-})
+const Analytics = dynamic(
+  async () => {
+    const { Analytics: Component } = await import('~components/Analytics')
+    return { default: Component }
+  },
+  { ssr: false }
+)
+const Footer = dynamic(
+  async () => {
+    const { Footer: Component } = await import('~components/Footer')
+    return { default: Component }
+  },
+  { ssr: false }
+)
+const NowPlaying = dynamic(
+  async () => {
+    const { NowPlaying: Component } = await import('~components/NowPlaying')
+    return { default: Component }
+  },
+  { ssr: false }
+)
+const NowReading = dynamic(
+  async () => {
+    const { NowReading: Component } = await import('~components/NowReading')
+    return { default: Component }
+  },
+  { ssr: false }
+)
 
 const fontSans = localFont({
   display: 'swap',

@@ -49,7 +49,7 @@ const _radixColors = [
   'black',
   'white',
 ]
-const radixColors = !isDev ? _radixColors : siteColors
+const radixColors = isDev ? _radixColors : siteColors
 /**
  * @note(radix) These colors should have `black` text instead of `white`
  * ref: https://www.radix-ui.com/docs/colors/palette-composition/understanding-the-scale#steps-910-solid-backgrounds

@@ -1,3 +1,4 @@
+'use client'
 import { cx } from '@jeromefitz/ds/utils/cx'
 import { useNProgress } from '@tanem/react-nprogress'
 import { motion } from 'framer-motion'
