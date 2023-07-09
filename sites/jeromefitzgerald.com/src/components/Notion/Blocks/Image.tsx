@@ -109,9 +109,7 @@ async function getImageFromBlock({ block, url }) {
    * would recommend not having the "hit" here
    */
   if (OVERRIDE_CACHE || (!isCached && !!imageUrl)) {
-    const { getImage } = await import(
-      '@jeromefitz/shared/src/lib/plaiceholder/getImage'
-    )
+    const { getImage } = await import('@jeromefitz/shared/src/plaiceholder/getImage')
     const imageData = await getImage(imageUrl)
     image.blurDataURL = imageData?.base64
     image = {

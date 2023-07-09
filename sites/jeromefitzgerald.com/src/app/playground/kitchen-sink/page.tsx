@@ -1,9 +1,11 @@
+import {
+  getDataFromCache,
+  getSegmentInfo,
+} from '@jeromefitz/shared/src/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
 import { draftMode } from 'next/headers'
 
-import { CONSTANTS } from '~app/(notion)/(config)/constants'
-import { getPageData } from '~app/(notion)/(config)/segments'
-import { getDataFromCache, getSegmentInfo } from '~app/(notion)/(config)/utils'
+import { CONSTANTS, getPageData } from '~app/(notion)/(config)'
 import { Notion as Blocks } from '~components/Notion'
 import {
   SectionContent,

@@ -1,4 +1,4 @@
-import { cx } from '@jeromefitz/shared/src/utils/cx'
+import { cx } from '../../utils/cx'
 
 import type { Variant } from './Button.types'
 

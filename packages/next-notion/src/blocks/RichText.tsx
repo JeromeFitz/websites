@@ -1,5 +1,5 @@
 import { Anchor } from '@jeromefitz/ds/src/components/Anchor'
-import { cx } from '@jeromefitz/shared/src/utils/cx'
+import { cx } from '@jeromefitz/ds/src/utils/cx'
 import type {
   BulletedListItemBlockObjectResponse,
   Heading1BlockObjectResponse,

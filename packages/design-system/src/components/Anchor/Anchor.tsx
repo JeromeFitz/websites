@@ -1,7 +1,7 @@
 /* eslint-disable no-restricted-imports */
-import { cx } from '@jeromefitz/shared/src/utils/cx'
 import NextLink from 'next/link'
 
+import { cx } from '../../utils/cx'
 import { ExternalLinkIcon } from '../Icon'
 
 const nextSeo = { url: `https://${process.env.NEXT_PUBLIC__SITE}` }

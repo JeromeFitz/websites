@@ -1,4 +1,4 @@
-import { getImage } from '@jeromefitz/shared/src/lib/plaiceholder/getImage'
+import { getImage } from '@jeromefitz/shared/src/plaiceholder/getImage'
 import Image from 'next/image'
 
 import {

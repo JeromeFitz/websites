@@ -1,6 +1,6 @@
 import '@jeromefitz/tailwind-config/styles/globals.css'
 
-import { cx } from '@jeromefitz/shared/src/utils/cx'
+import { cx } from '@jeromefitz/ds/utils/cx'
 import localFont from 'next/font/local'
 import { Suspense } from 'react'
 

@@ -1,6 +1,7 @@
-import { cx } from '@jeromefitz/shared/src/utils/cx'
 import { forwardRef } from 'react'
 import type { ButtonHTMLAttributes, ForwardRefRenderFunction } from 'react'
+
+import { cx } from '../../utils/cx'
 
 import { VARIANTS } from './Button.constants'
 import { commonStyles, variantStyles } from './Button.styles'

@@ -1,9 +1,9 @@
-import { cx } from '@jeromefitz/shared/src/utils/cx'
+import { cx } from '@jeromefitz/ds/utils/cx'
 import _size from 'lodash/size'
 import pluralize from 'pluralize'
 // import { Suspense } from 'react'
 
-import { getPropertyTypeDataEvent } from '~app/(notion)/(config)/segments'
+import { getPropertyTypeDataEvent } from '~app/(notion)/(config)'
 
 import {
   getRelationTitle,

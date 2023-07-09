@@ -1,4 +1,4 @@
-import { cx } from '@jeromefitz/shared/src/utils/cx'
+import { cx } from '@jeromefitz/ds/utils/cx'
 
 function SectionHeaderContent({ children, className = '' }) {
   return (

@@ -19,7 +19,7 @@ import {
   StarIcon,
   TwitterLogoIcon,
 } from '@jeromefitz/ds/components/Icon'
-import { cx } from '@jeromefitz/shared/src/utils/cx'
+import { cx } from '@jeromefitz/ds/utils/cx'
 import { Fragment, Suspense } from 'react'
 
 import {

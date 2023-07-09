@@ -1,5 +1,6 @@
-import { cx } from '@jeromefitz/shared/src/utils/cx'
 import type { Meta, StoryObj } from '@storybook/react'
+
+import { cx } from '../../utils/cx'
 
 import { Button } from './Button'
 import { VARIANTS } from './Button.constants'

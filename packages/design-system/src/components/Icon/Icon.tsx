@@ -10,7 +10,6 @@ import {
   TagIcon as TagIconHero,
   TicketIcon as TicketIconHero,
 } from '@heroicons/react/24/outline'
-import { cx } from '@jeromefitz/shared/src/utils/cx'
 import { AccessibleIcon } from '@radix-ui/react-accessible-icon'
 import {
   ArchiveIcon as ArchiveIconRadix,
@@ -74,6 +73,8 @@ import {
   TextAlignRightIcon as TextAlignRightIconRadix,
   TwitterLogoIcon as TwitterLogoIconRadix,
 } from '@radix-ui/react-icons'
+
+import { cx } from '../../utils/cx'
 // import { Slot } from '@radix-ui/react-slot'
 
 import { IconProps } from './Icon.types'
