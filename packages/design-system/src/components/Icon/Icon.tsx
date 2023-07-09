@@ -72,8 +72,8 @@ import {
   TextAlignLeftIcon as TextAlignLeftIconRadix,
   TextAlignRightIcon as TextAlignRightIconRadix,
   TwitterLogoIcon as TwitterLogoIconRadix,
-  // } from '@radix-ui/react-icons'
-} from '@radix-ui/react-icons/dist/react-icons.esm'
+} from '@radix-ui/react-icons'
+// } from '@radix-ui/react-icons/dist/react-icons.esm'
 
 import { cx } from '../../utils/cx'
 // import { Slot } from '@radix-ui/react-slot'

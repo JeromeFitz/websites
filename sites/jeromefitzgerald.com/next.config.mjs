@@ -26,8 +26,8 @@ const serverComponentsExternalPackages = [
  *  can we avoid the hack in app/design-system/page ?
  */
 const tp = ['@jeromefitz/ds', '@jeromefitz/shared', 'next-notion']
-// const transpilePackages = isCI ? [] : []
-const transpilePackages = isCI ? [] : tp
+const transpilePackages = isCI ? [] : []
+// const transpilePackages = isCI ? [] : tp
 // const transpilePackages = isCI ? tp : []
 
 const config = nextConfig({

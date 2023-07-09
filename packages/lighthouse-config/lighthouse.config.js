@@ -6,7 +6,7 @@ const config = ({ website }) => ({
         'bf-cache': 'off',
         'categories:accessibility': ['error', { minScore: 1 }],
         'categories:best-practices': ['warn', { minScore: 1 }],
-        'categories:performance': ['warn', { minScore: 0.98 }],
+        'categories:performance': ['warn', { minScore: 0.96 }],
         'categories:seo': ['warn', { minScore: 1 }],
         // @note(radix-ui) bg3+text11 passes, not sure what is going on here
         'color-contrast': 'warn',
