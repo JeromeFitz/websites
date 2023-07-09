@@ -8,10 +8,11 @@ import { slug as _slug } from 'github-slugger'
 import _map from 'lodash/map'
 import _size from 'lodash/size'
 import ms from 'ms'
-import Image from 'next/image'
+// import NextImage from 'next/image'
 import useSWR from 'swr'
 import _title from 'title'
 
+import { NextImage } from '~components/Notion/Blocks/Image.client'
 import { Tags } from '~components/Section'
 import nowPlaying from '~data/mock/music/now-playing'
 
@@ -88,12 +89,13 @@ function NowPlayingClient() {
     <div className={cx('flex flex-col gap-5')}>
       <div className="shadow-radix-blackA7 w-full overflow-hidden rounded-md shadow-[0_2px_10px]">
         {/* <AspectRatio.Root ratio={16 / 9} asChild> */}
-        <Image
+        <NextImage
           {...image}
           alt={imageLabel}
           className={cx('h-full w-full object-cover')}
           placeholder="blur"
           role="img"
+          order={99}
         />
         {/* </AspectRatio.Root> */}
       </div>

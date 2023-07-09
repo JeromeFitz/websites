@@ -30,7 +30,7 @@ import {
   CONSTANTS,
 } from '~app/(notion)/(config)'
 import { Notion as Blocks } from '~components/Notion'
-import { NextImage } from '~components/Notion/Blocks/Image'
+import { NextImage } from '~components/Notion/Blocks/Image.client'
 import { Relations } from '~components/Relations'
 import {
   SectionContent,
@@ -160,11 +160,7 @@ async function Image({ properties }) {
       {!!imageUrl && (
         <>
           <Separator className={cx('my-4')} />
-          <NextImage
-            order={1}
-            unoptimized={process.env.NODE_ENV !== 'production'}
-            {...image}
-          />
+          <NextImage order={1} {...image} />
         </>
       )}
     </>

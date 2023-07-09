@@ -19,11 +19,12 @@ import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoin
 import { Redis } from '@upstash/redis'
 import stringify from 'fast-json-stable-stringify'
 import { slug as _slug } from 'github-slugger'
-import NextImage from 'next/image'
+// import NextImage from 'next/image'
 import { NotionEmoji as EmojiWrapper } from 'next-notion/src/blocks/Emoji'
 import { isImageExpired } from 'next-notion/src/utils'
 import validUrl from 'valid-url'
 
+import { NextImage } from './Image.client'
 import { getImageAlt, getImageUrl, getImageExpiration } from './Image.utils'
 
 const notion = new Client({ auth: process.env.NOTION_API_KEY })
@@ -66,7 +67,7 @@ async function getImageFromBlock({ block, url }) {
    * @note(notion) AWS, Notion, and Cache
    *
    * If Notion locally hosts the Image it has an expiration (3600)
-   * - `expiry_time` is when it will expire
+   * - `_time_time` is when it will expire
    * - Can also determine via convoluted way through X-Amz-Date
    *
    * If Expiration is hit:
@@ -120,9 +121,9 @@ async function getImageFromBlock({ block, url }) {
   if (isExpired) {
     image.src = imageUrl
     image.url = imageUrl
-    image.expiry_time = imageExpiry
+    image._time_time = imageExpiry
   } else {
-    image.expiry_time = undefined
+    image._time_time = undefined
   }
   image.id = key
 
@@ -137,44 +138,6 @@ async function getImageFromBlock({ block, url }) {
   }
 
   return image
-}
-
-function Image({ ...props }) {
-  // @note(notion) eject for html validity purposes
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { expiry, order, unoptimized, url, ...image } = props
-
-  const isPriority = props?.priority ? props?.priority : order < 2 ? true : false
-  const hack: any = {}
-  hack.priority = isPriority
-  hack.fetchPriority = isPriority ? 'high' : 'auto'
-  // hack.loading = isPriority ? 'eager' : 'lazy'
-  hack.quality = 90
-  image.img = undefined
-  // const preload = `/_next/image?url=${encodeURIComponent(props?.src)}&w=1920&q=${
-  //   hack.quality
-  // }`
-
-  // @hack(next) in case no comments are found in notion
-  if (!image?.alt) image.alt = ''
-
-  return (
-    <>
-      {/* @hack(next) NEXT-811 */}
-      {/* https://github.com/vercel/next.js/issues/43134 */}
-      {/* {!!hack.priority && <link rel="preload" href={preload} as="image" />} */}
-      {/* @todo(types) */}
-      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-      {/* @ts-ignore */}
-      <NextImage
-        className="flex w-full justify-center"
-        placeholder="blur"
-        unoptimized={process.env.NODE_ENV !== 'production'}
-        {...hack}
-        {...image}
-      />
-    </>
-  )
 }
 
 async function ImageImpl({
@@ -205,7 +168,7 @@ async function ImageImpl({
 
   return (
     <>
-      <Image {...image} />
+      <NextImage {...image} />
       {!!imageCaption && (
         <Caption>
           <EmojiWrapper id={block.id} text={`${imageCaption}`} />
@@ -216,6 +179,5 @@ async function ImageImpl({
   )
 }
 
-export { Image as NextImage }
 export { ImageImpl as Image }
 export default ImageImpl

@@ -1,17 +1,17 @@
-const isCI = require('is-ci')
+// const isCI = require('is-ci')
 
 const url = ['http://localhost:3000']
-if (!isCI) {
-  const urlAdditional = [
-    '/events',
-    '/events/2023/07/15/jerome-and',
-    '/shows',
-    '/shows/alex-o-jerome',
-  ]
-  urlAdditional.map((ua) => {
-    url.push(`${url[0]}${ua}`)
-  })
-}
+// if (!isCI) {
+const urlAdditional = [
+  '/events',
+  '/events/2023/07/15/jerome-and',
+  '/shows',
+  '/shows/alex-o-jerome',
+]
+urlAdditional.map((ua) => {
+  url.push(`${url[0]}${ua}`)
+})
+// }
 
 const config = ({ website }) => ({
   ci: {
