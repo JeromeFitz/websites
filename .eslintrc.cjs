@@ -3,7 +3,7 @@ const fullCwd = path.join(__dirname, './')
 
 const nextOverrides = {
   rules: {
-    '@next/next/no-html-link-for-pages': ['error', 'src/app'],
+    '@next/next/no-html-link-for-pages': ['off', 'src/app'],
     'no-restricted-imports': [
       'error',
       {
@@ -55,6 +55,7 @@ module.exports = {
             'bg-radix-',
             'icon-custom',
             'notion-',
+            'radix\\-.+:?.+',
             'spotify-button-outline',
             'text-radix-',
             'trap',

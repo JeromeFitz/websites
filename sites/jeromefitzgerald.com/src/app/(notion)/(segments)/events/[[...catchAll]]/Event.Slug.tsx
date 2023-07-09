@@ -17,7 +17,7 @@ import { isObjectEmpty } from '@jeromefitz/utils'
 import { Redis } from '@upstash/redis'
 import { slug as _slug } from 'github-slugger'
 import { draftMode } from 'next/headers'
-import NextImage from 'next/image'
+// import NextImage from 'next/image'
 import { notFound } from 'next/navigation'
 import { isImageExpired } from 'next-notion/src/utils/getAwsImage'
 import validUrl from 'valid-url'
@@ -30,6 +30,7 @@ import {
   CONSTANTS,
 } from '~app/(notion)/(config)'
 import { Notion as Blocks } from '~components/Notion'
+import { NextImage } from '~components/Notion/Blocks/Image'
 import { Relations } from '~components/Relations'
 import {
   SectionContent,
@@ -160,8 +161,7 @@ async function Image({ properties }) {
         <>
           <Separator className={cx('my-4')} />
           <NextImage
-            className="flex w-full justify-center"
-            placeholder="blur"
+            order={1}
             unoptimized={process.env.NODE_ENV !== 'production'}
             {...image}
           />
@@ -209,30 +209,34 @@ function Ticket({ properties, isFakePortal = false }) {
       )}
     >
       <div className="pl-5">
-        <h4
+        <p
           className={cx(
-            'flex flex-row items-center justify-start gap-2 text-lg font-bold tracking-tight md:text-2xl'
+            'flex flex-row-reverse items-center justify-end gap-2 text-lg font-bold tracking-tight md:text-2xl'
           )}
         >
+          <strong>
+            {dayOfWeek}, {monthName} {dayOfMonthOrdinal}
+          </strong>
           <CalendarIcon className="h-5 w-5" />
-          {dayOfWeek}, {monthName} {dayOfMonthOrdinal}
-        </h4>
-        <h5
+        </p>
+        <p
           className={cx(
-            'flex flex-row items-center justify-start gap-2 text-lg font-bold tracking-tight md:text-2xl'
+            'flex flex-row-reverse items-center justify-end gap-2 text-lg font-bold tracking-tight md:text-2xl'
           )}
         >
+          <strong>
+            {time} {timezone}
+          </strong>
           <ClockIcon className="h-5 w-5" />
-          {time} {timezone}
-        </h5>
-        <h6
+        </p>
+        <p
           className={cx(
-            'flex flex-row items-baseline justify-start gap-2 text-lg font-bold tracking-tight md:text-2xl'
+            'flex flex-row-reverse items-baseline justify-end gap-2 text-lg font-bold tracking-tight md:text-2xl'
           )}
         >
+          <strong>{venueTitle}</strong>
           <HomeIcon className="relative top-[0.25rem] h-5 w-5 md:top-[0.125rem]" />
-          {venueTitle}
-        </h6>
+        </p>
       </div>
       <div className="mt-1 pt-1">
         {ticketUrl && !isEventOver ? (

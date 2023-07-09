@@ -27,4 +27,6 @@ const ButtonComponent: ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> 
   return <button className={finalClassName} ref={ref} {...rest} />
 }
 
-export const Button = forwardRef(ButtonComponent)
+const Button = forwardRef(ButtonComponent)
+
+export { Button }

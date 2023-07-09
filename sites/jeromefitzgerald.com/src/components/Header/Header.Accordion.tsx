@@ -55,7 +55,7 @@ const AccordionTrigger = forwardRef<ForwardedRefType, PropsChildren>(
       >
         {children}
         <ChevronDownIcon
-          className="text-radix-slate12 transition-transform duration-300 ease-[cubic-bezier(0.87,_0,_0.13,_1)] group-data-[state=open]:rotate-180"
+          className="text-radix-slate12 transition-transform duration-300 group-data-[state=open]:rotate-180"
           aria-hidden
         />
       </Accordion.Trigger>

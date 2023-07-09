@@ -35,7 +35,18 @@ const config = ({}) => ({
   //   removeDeprecatedGapUtilities: true,
   //   purgeLayersByDefault: true,
   // },
-  safelist,
+  safelist: [
+    ...safelist,
+    // {
+    //   pattern: /bg-+/,
+    // },
+    // {
+    //   pattern: /radix-+/,
+    // },
+    // {
+    //   pattern: /text-+/,
+    // },
+  ],
   theme: {
     ...theme,
     colors: {},
@@ -75,23 +86,23 @@ const config = ({}) => ({
       },
       backgroundImage: {
         breeze: 'linear-gradient(140deg, rgb(207, 47, 152), rgb(106, 61, 236))',
-        candy: 'linear-gradient(140deg, rgb(165, 142, 251), rgb(233, 191, 248))',
-        crimson: 'linear-gradient(140deg, rgb(255, 99, 99), rgb(115, 52, 52))',
-        falcon: 'linear-gradient(140deg, rgb(189, 227, 236), rgb(54, 54, 84))',
-        meadow: 'linear-gradient(140deg, rgb(89, 212, 153), rgb(160, 135, 45))',
-        midnight: 'linear-gradient(140deg, rgb(76, 200, 200), rgb(32, 32, 51))',
-        raindrop: 'linear-gradient(140deg, rgb(142, 199, 251), rgb(28, 85, 170))',
-        sunset: 'linear-gradient(140deg, rgb(255, 207, 115), rgb(255, 122, 47))',
-        // @note(tailwind) hard-coded reverse
+        // candy: 'linear-gradient(140deg, rgb(165, 142, 251), rgb(233, 191, 248))',
+        // crimson: 'linear-gradient(140deg, rgb(255, 99, 99), rgb(115, 52, 52))',
+        // falcon: 'linear-gradient(140deg, rgb(189, 227, 236), rgb(54, 54, 84))',
+        // meadow: 'linear-gradient(140deg, rgb(89, 212, 153), rgb(160, 135, 45))',
+        // midnight: 'linear-gradient(140deg, rgb(76, 200, 200), rgb(32, 32, 51))',
+        // raindrop: 'linear-gradient(140deg, rgb(142, 199, 251), rgb(28, 85, 170))',
+        // sunset: 'linear-gradient(140deg, rgb(255, 207, 115), rgb(255, 122, 47))',
+        // // @note(tailwind) hard-coded reverse
         'breeze-r': 'linear-gradient(140deg, rgb(106, 61, 236), rgb(207, 47, 152))',
-        'candy-r': 'linear-gradient(140deg, rgb(233, 191, 248), rgb(165, 142, 251))',
-        'crimson-r': 'linear-gradient(140deg, rgb(115, 52, 52), rgb(255, 99, 99))',
-        'falcon-r': 'linear-gradient(140deg, rgb(54, 54, 84), rgb(189, 227, 236))',
-        'meadow-r': 'linear-gradient(140deg, rgb(160, 135, 45), rgb(89, 212, 153))',
-        'midnight-r': 'linear-gradient(140deg, rgb(32, 32, 51), rgb(76, 200, 200))',
-        'raindrop-r':
-          'linear-gradient(140deg, rgb(28, 85, 170), rgb(142, 199, 251))',
-        'sunset-r': 'linear-gradient(140deg, rgb(255, 122, 47), rgb(255, 207, 115))',
+        // 'candy-r': 'linear-gradient(140deg, rgb(233, 191, 248), rgb(165, 142, 251))',
+        // 'crimson-r': 'linear-gradient(140deg, rgb(115, 52, 52), rgb(255, 99, 99))',
+        // 'falcon-r': 'linear-gradient(140deg, rgb(54, 54, 84), rgb(189, 227, 236))',
+        // 'meadow-r': 'linear-gradient(140deg, rgb(160, 135, 45), rgb(89, 212, 153))',
+        // 'midnight-r': 'linear-gradient(140deg, rgb(32, 32, 51), rgb(76, 200, 200))',
+        // 'raindrop-r':
+        //   'linear-gradient(140deg, rgb(28, 85, 170), rgb(142, 199, 251))',
+        // 'sunset-r': 'linear-gradient(140deg, rgb(255, 122, 47), rgb(255, 207, 115))',
       },
       boxShadow: {
         slider: '0 0 0 5px rgba(0, 0, 0, 0.3)',

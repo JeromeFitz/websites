@@ -12,7 +12,6 @@ import 'server-only'
 import https from 'node:https'
 
 import { Caption } from '@jeromefitz/ds/components/Caption'
-// import { Image } from '@jeromefitz/ds/ui/blocks/index'
 import { TIME } from '@jeromefitz/shared/src/lib/constants'
 import { isObjectEmpty } from '@jeromefitz/utils'
 import { Client } from '@notionhq/client'
@@ -216,5 +215,6 @@ async function ImageImpl({
   )
 }
 
+export { Image as NextImage }
 export { ImageImpl as Image }
 export default ImageImpl

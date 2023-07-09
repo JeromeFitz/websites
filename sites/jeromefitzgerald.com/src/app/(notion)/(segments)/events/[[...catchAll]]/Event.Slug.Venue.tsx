@@ -54,9 +54,9 @@ function Venue({ id }) {
   if (!id) return null
   return (
     <>
-      <h5 className={cx('mb-1 mt-2 pb-1 pt-2 text-2xl font-bold leading-relaxed')}>
-        Arcade Comedy Theater
-      </h5>
+      <p className={cx('mb-1 mt-2 pb-1 pt-2 text-2xl font-bold leading-relaxed')}>
+        <strong>Arcade Comedy Theater</strong>
+      </p>
       <Suspense fallback={<VenueLoading />}>
         <VenueIndividual id={id} />
         {/* <VenueLoading /> */}

@@ -127,13 +127,14 @@ function ListingTemp({ items, defaultValue }) {
                         )}
                       >
                         <ButtonLink
+                          aria-label={`Read more detailed information for ${title}`}
                           href={href}
                           className={cx(
                             'justify-center',
                             isEventOver ? 'pink-button-outline' : 'pink-button-cta'
                           )}
                         >
-                          More Info
+                          Detailed Info
                         </ButtonLink>
                         {!!ticketUrl && !isEventOver && (
                           <ButtonLink

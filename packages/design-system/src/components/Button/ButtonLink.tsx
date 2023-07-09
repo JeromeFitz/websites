@@ -43,4 +43,6 @@ const ButtonLinkComponent: ForwardRefRenderFunction<
   )
 }
 
-export const ButtonLink = forwardRef(ButtonLinkComponent)
+const ButtonLink = forwardRef(ButtonLinkComponent)
+
+export { ButtonLink }

@@ -262,16 +262,14 @@ function Footer() {
                     className={cx('col-span-12', 'md:col-span-4', '')}
                     key={`menu-${menu.id}`}
                   >
-                    <div
-                      aria-level={2}
-                      role="heading"
+                    <p
                       className={cx(
                         'pb-3 font-extrabold uppercase tracking-tight',
                         ''
                       )}
                     >
-                      <span>{menu?.title}</span>
-                    </div>
+                      <strong>{menu?.title}</strong>
+                    </p>
                     <ul>
                       {menu?.items.map((item) => {
                         return (
@@ -326,13 +324,11 @@ function Footer() {
                 )
               })}
               <div className={cx('col-span-12', 'md:col-span-4', '')}>
-                <div
-                  aria-level={2}
-                  role="heading"
+                <p
                   className={cx('pb-3 font-extrabold uppercase tracking-tight', '')}
                 >
-                  <span>Info</span>
-                </div>
+                  <strong>Info</strong>
+                </p>
                 <ul>
                   <li
                     className={cx(

@@ -143,6 +143,7 @@ function NowPlayingClient() {
             <Tags tags={tags} classNameTag="px-3 py-2 mb-4 mr-4" />
           </div>
           <ButtonLink
+            aria-label={`Listen to “${track?.name}” on Spotify`}
             href={_href}
             className={cx(
               'spotify-button-outline',

@@ -43,9 +43,9 @@ function Relations({ properties, relations, relationsSecondary }) {
             )}
             key={`${id}-${relation}`}
           >
-            <h6 className={cx('pb-3 font-extrabold uppercase tracking-tight', '')}>
-              {title}
-            </h6>
+            <p className={cx('pb-3 font-extrabold uppercase tracking-tight', '')}>
+              <strong>{title}</strong>
+            </p>
             <ul>
               {/* {Array(itemsCount)
                 .fill(0)
