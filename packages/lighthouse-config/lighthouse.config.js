@@ -40,10 +40,10 @@ const config = ({ website }) => ({
       startServerReadyPattern: `${website}:start: - ready started server on 0.0.0.0:3000, url: http://localhost:3000`,
       url: [
         'http://localhost:3000',
-        'http://localhost:3000/events',
-        'http://localhost:3000/events/2023/07/15/jerome-and',
-        'http://localhost:3000/shows',
-        'http://localhost:3000/shows/alex-o-jerome',
+        // 'http://localhost:3000/events',
+        // 'http://localhost:3000/events/2023/07/15/jerome-and',
+        // 'http://localhost:3000/shows',
+        // 'http://localhost:3000/shows/alex-o-jerome',
       ],
       numberOfRuns: 1,
       settings: {

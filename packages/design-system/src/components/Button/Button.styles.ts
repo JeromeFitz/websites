@@ -3,7 +3,7 @@ import { cx } from '../../utils/cx'
 import type { Variant } from './Button.types'
 
 export const commonStyles = cx(
-  'group inline-flex transition-all duration-500',
+  'group inline-flex transition-all duration-200',
   'm-1.5 rounded-md px-4 py-2',
   'font-sans font-medium',
   'outline-none outline-offset-0 ',

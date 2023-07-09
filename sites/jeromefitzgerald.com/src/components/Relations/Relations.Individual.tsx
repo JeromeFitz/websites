@@ -33,7 +33,7 @@ const RelationIndividual = cache(async ({ id }) => {
 
   const style = cx(
     'inline-block text-base font-normal tracking-tight no-underline md:text-xl',
-    isPublished && 'transition-all duration-500',
+    isPublished && 'transition-all duration-200',
     isPublished && 'text-radix-slate12 hover:text-radix-pink11',
     '',
     ''

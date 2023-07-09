@@ -31,7 +31,7 @@ radixColors.map((_color) => {
     color: `var(--${color}11)`,
   }
   backgrounds['.' + color + '-cta-int'] = {
-    backgroundColor: `var(--${color}34`,
+    backgroundColor: `var(--${color}4`,
   }
   backgrounds['.' + color + '-cta-int:hover'] = {
     backgroundColor: `var(--${color}5)`,

@@ -16,6 +16,7 @@ function Tags({ tags, className = '', classNameTag = '' }) {
             key={id}
             className={cx(
               `notion-${color} notion-${color}_background`,
+              // `text-radix-${color}11 bg-radix-${color}3 dark:bg-radix-${color}3`,
               'relative rounded-full text-center font-semibold normal-case',
               // mobile (vertical sometimes)
               '-left-1.5 my-0 mb-2 mr-2',

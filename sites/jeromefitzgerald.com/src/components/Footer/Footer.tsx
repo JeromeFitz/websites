@@ -288,32 +288,34 @@ function Footer() {
                                   item?.className,
                                   '!align-middle',
                                   '!text-inherit',
-                                  '!no-underline'
+                                  '!no-underline',
+                                  'flex'
                                 )}
                                 href={item?.url}
                               >
-                                <span className="mr-2 h-4 w-4">{item?.icon}</span>
-                                <span className="mr-2">{item?.title}</span>
+                                <span className="flex flex-row-reverse items-center justify-end gap-1 align-middle">
+                                  <span className="mr-2">{item?.title}</span>
+                                  <span className="mr-2 h-4 w-4">{item?.icon}</span>
+                                </span>
                               </Anchor>
                             ) : (
                               <span
                                 // aria-label={`A link to ${item?.subtitle} on ${item?.title}`}
                                 className={cx(
-                                  // 'cursor-pointer',
-                                  // 'items-center justify-center',
-                                  // 'h-6 w-6',
                                   'icon-custom',
-                                  // 'mr-5',
-                                  // item?.className,
-                                  'transition-colors duration-200',
-                                  'flex flex-row items-center gap-1 align-middle',
-                                  'text-inherit',
+                                  item?.className,
+                                  '!align-middle',
+                                  '!text-inherit',
+                                  // '!no-underline',
+                                  'flex',
                                   'line-through'
                                 )}
                                 // href={item?.url}
                               >
-                                <span className="mr-2 h-4 w-4">{item?.icon}</span>
-                                <span className="mr-2">{item?.title}</span>
+                                <span className="flex flex-row-reverse items-center justify-end gap-1 align-middle">
+                                  <span className="mr-2">{item?.title}</span>
+                                  <span className="mr-2 h-4 w-4">{item?.icon}</span>
+                                </span>
                               </span>
                             )}
                           </li>
@@ -330,30 +332,16 @@ function Footer() {
                   <strong>Info</strong>
                 </p>
                 <ul>
-                  <li
-                    className={cx(
-                      'mb-2 md:mb-0.5',
-                      'flex flex-row items-center gap-1 align-middle'
-                    )}
-                  >
-                    <span className="mr-2 h-4 w-4">
-                      <ArchiveIcon className="text-inherit" />
-                    </span>
-                    <span className="">
-                      v{isBranchMain ? version : `${version}-${prerelease}`}
+                  <li className={cx('mb-2 md:mb-0.5', 'flex')}>
+                    <span className="flex flex-row-reverse items-center justify-end gap-1 align-middle">
+                      <span className="">
+                        v{isBranchMain ? version : `${version}-${prerelease}`}
+                      </span>
+                      <span className="mr-2 h-4 w-4">
+                        <ArchiveIcon className="text-inherit" />
+                      </span>
                     </span>
                   </li>
-                  {/* <li
-                    className={cx(
-                      'mb-2 md:mb-0.5',
-                      'align-middle flex flex-row items-center gap-1'
-                    )}
-                  >
-                    <span className="mr-2 h-4 w-4">
-                      <FileTextIcon className="text-inherit" />
-                    </span>
-                    <span className="">This site is in-progress</span>
-                  </li> */}
                   <li
                     className={cx(
                       'mb-2 md:mb-0.5',
