@@ -1,7 +1,7 @@
 import 'server-only'
 
 import { Caption } from '@jeromefitz/ds/components/Caption'
-import { NotionEmoji as EmojiWrapper } from 'next-notion/src/blocks/Emoji'
+// import { NotionEmoji as EmojiWrapper } from 'next-notion/src/blocks/Emoji'
 import { Tweet } from 'react-tweet'
 
 function EmbedTweet({ id }) {
@@ -27,7 +27,8 @@ function EmbedTwitter({ block }) {
       <EmbedTweet id={id} />
       {!!caption && (
         <Caption>
-          <EmojiWrapper id={block.id} text={`${caption}`} />
+          {/* <EmojiWrapper id={block.id} text={`${caption}`} /> */}
+          {caption}
         </Caption>
       )}
     </>

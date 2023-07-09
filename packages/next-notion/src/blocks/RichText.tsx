@@ -15,7 +15,7 @@ import { forwardRef, Fragment } from 'react'
 import type { ApiColor } from '../Notion.types'
 import { getAnnotations, getBlockKey } from '../Notion.utils'
 
-import { NotionEmoji as EmojiWrapper } from './Emoji'
+// import { NotionEmoji as EmojiWrapper } from './Emoji'
 
 // @todo(types)
 const Text = forwardRef(function Text(props: any, ref: any) {
@@ -68,7 +68,8 @@ function RichTextArray({ id, items }) {
 
         return (
           <Component key={key} {...props}>
-            <EmojiWrapper id={id} text={plain_text} />
+            {/* <EmojiWrapper id={id} text={plain_text} /> */}
+            {plain_text}
           </Component>
         )
       })}

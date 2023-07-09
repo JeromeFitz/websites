@@ -17,8 +17,14 @@
   stroke-width: '1.5 !important';
 }
 
-/* @note(radix) notion hack -- this is really stupid  */
-/* see: src/notion */
+/* @hack(radix) when notion sends a color (background|text) */
+/*  it can map to radix-ui, but since we do not want to load */
+/*  every single radix-ui color, we do an extra step to load */
+/*  them here manually... */
+/*  */
+/*  This avoids the `A` colors, but still, do not need all 12 */
+/*  */
+/* reference: ../src/notion */
 :root {
   --gray1: hsl(0, 0%, 99%);
   --gray2: hsl(0, 0%, 97.3%);
