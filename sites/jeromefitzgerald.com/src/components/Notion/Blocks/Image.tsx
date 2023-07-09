@@ -20,7 +20,7 @@ import { Redis } from '@upstash/redis'
 import stringify from 'fast-json-stable-stringify'
 import { slug as _slug } from 'github-slugger'
 import NextImage from 'next/image'
-// import { NotionEmoji as EmojiWrapper } from 'next-notion/src/blocks/Emoji'
+import { NotionEmoji as EmojiWrapper } from 'next-notion/src/blocks/Emoji'
 import { isImageExpired } from 'next-notion/src/utils'
 import validUrl from 'valid-url'
 
@@ -208,8 +208,8 @@ async function ImageImpl({
       <Image {...image} />
       {!!imageCaption && (
         <Caption>
-          {/* <EmojiWrapper id={block.id} text={`${imageCaption}`} /> */}
-          {imageCaption}
+          <EmojiWrapper id={block.id} text={`${imageCaption}`} />
+          {/* {imageCaption} */}
         </Caption>
       )}
     </>

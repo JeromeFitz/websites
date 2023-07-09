@@ -2,7 +2,7 @@ import 'server-only'
 
 import { Caption } from '@jeromefitz/ds/components/Caption'
 import type { VideoBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
-// import { NotionEmoji as EmojiWrapper } from 'next-notion/src/blocks/Emoji'
+import { NotionEmoji as EmojiWrapper } from 'next-notion/src/blocks/Emoji'
 import { Fragment, Suspense } from 'react'
 
 import { VideoYouTube } from './Video.YouTube'
@@ -24,8 +24,8 @@ function VideoImpl({ block }: { block: VideoBlockObjectResponse | any }) {
       <VideoYouTube block={block} url={url} />
       {!!caption && (
         <Caption>
-          {/* <EmojiWrapper id={block.id} text={`${caption}`} /> */}
-          {caption}
+          <EmojiWrapper id={block.id} text={`${caption}`} />
+          {/* {caption} */}
         </Caption>
       )}
     </Suspense>

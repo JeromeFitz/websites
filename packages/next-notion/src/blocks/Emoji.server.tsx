@@ -1,7 +1,8 @@
-'use client'
+import emojiRegex from 'emoji-regex'
 import _map from 'lodash/map'
 import _orderBy from 'lodash/orderBy'
 import _size from 'lodash/size'
+import { find as findEmoji } from 'node-emoji'
 
 /**
  * @note(a11y)
@@ -25,17 +26,14 @@ import _size from 'lodash/size'
  */
 function EmojiHtml({ emoji, label }) {
   return (
-    // <span aria-label={label} className="ml-0.5 mr-1.5" role="img">
-    //   {emoji}
-    // </span>
-    <span aria-label={label} className="" role="img">
+    <span aria-label={label} className="ml-0.5 mr-1.5" role="img">
       {emoji}
     </span>
   )
 }
 
-async function Emoji({ character }) {
-  const { find: findEmoji } = await import('node-emoji')
+function Emoji({ character }) {
+  // const { find: findEmoji } = await import('node-emoji')
   const emojiFound = findEmoji(character)
   // console.dir(`[emoji] supported: ${character}`)
 
@@ -55,7 +53,7 @@ async function Emoji({ character }) {
   return <EmojiHtml emoji={emoji} label={label} />
 }
 
-async function EmojiWrapper({ id, text }) {
+function EmojiWrapper({ id, text }) {
   // const [loading, loadingSet] = useState(true)
   // useEffect(() => {
   //   loadingSet(false)
@@ -63,7 +61,7 @@ async function EmojiWrapper({ id, text }) {
   if (!text) return null
   // if (loading) return <>{text}</>
 
-  const { default: emojiRegex } = await import('emoji-regex')
+  // const { default: emojiRegex } = await import('emoji-regex')
   const regex = emojiRegex()
   const emojiMapping = {}
 

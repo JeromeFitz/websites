@@ -1,3 +1,18 @@
+const isCI = require('is-ci')
+
+const url = ['http://localhost:3000']
+if (!isCI) {
+  const urlAdditional = [
+    '/events',
+    '/events/2023/07/15/jerome-and',
+    '/shows',
+    '/shows/alex-o-jerome',
+  ]
+  urlAdditional.map((ua) => {
+    url.push(`${url[0]}${ua}`)
+  })
+}
+
 const config = ({ website }) => ({
   ci: {
     assert: {
@@ -38,13 +53,7 @@ const config = ({ website }) => ({
       // startServerReadyPattern:
       //   'ready - started server on 0.0.0.0:3000, url: http://localhost:3000',
       startServerReadyPattern: `${website}:start: - ready started server on 0.0.0.0:3000, url: http://localhost:3000`,
-      url: [
-        'http://localhost:3000',
-        'http://localhost:3000/events',
-        'http://localhost:3000/events/2023/07/15/jerome-and',
-        'http://localhost:3000/shows',
-        'http://localhost:3000/shows/alex-o-jerome',
-      ],
+      url,
       numberOfRuns: 1,
       settings: {
         preset: 'desktop',
