@@ -66,15 +66,16 @@ const fontSans = localFont({
         'U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD',
     },
   ],
-  // src: '../../public/static/fonts/inter/inter-var.woff2',
-  src: '../../public/static/fonts/inter/inter-4.0.0-beta9g-var.woff2',
-  // src: '../../public/static/fonts/name-sans/at--name-sans-variable.woff2',
+  // src: '../../public/fonts/inter/inter-var.woff2',
+  src: '../../public/fonts/inter/inter-4.0.0-beta9g-var.woff2',
+  // src: '../../public/fonts/name-sans/at--name-sans-variable.woff2',
   style: 'normal',
   variable: '--font-inter',
   weight: '100 900',
 })
 
 export const metadata = {
+  manifest: '/images/favicon/site.webmanifest',
   title: 'Jerome Fitzgerald (he/him) | Actor. Comedian. Writer.',
   description:
     'Jerome Fitzgerald is an an actor, comedian, & writer hailing from Pittsburgh, PA.',

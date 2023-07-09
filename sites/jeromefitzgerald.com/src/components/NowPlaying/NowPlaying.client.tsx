@@ -26,15 +26,15 @@ const initialData = nowPlaying
  *       notionColors[Math.floor(Math.random() * notionColors.length)]
  */
 const notionColors = [
-  // 'blue',
-  // 'brown',
-  // 'gray',
-  // 'green',
   'orange',
   'pink',
   'purple',
-  // 'red',
   'yellow',
+  'brown',
+  'blue',
+  'green',
+  'red',
+  'gray',
 ]
 
 function NowPlayingClient() {
@@ -58,7 +58,7 @@ function NowPlayingClient() {
   const base64 = album?.image?.base64
   // const imageSlug = album?.image?.slug
   const imageData = album?.image
-  const imageLabel = `Apologies, this image is dynamically generated from another source. Cannot yet provide vivid details. This is an image of ${artist}’s album cover for “${track.name}.”`
+  const imageLabel = `This image is dynamically generated from another source. Cannot yet provide vivid details. This is an image of ${artist}’s album cover for “${track.name}.”`
 
   // console.log(`NowPlaying >> track`, track)
 

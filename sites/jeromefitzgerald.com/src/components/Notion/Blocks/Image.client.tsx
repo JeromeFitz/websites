@@ -18,8 +18,10 @@ function Image({ ...props }) {
 
   // @hack(next) in case no comments are found in notion
   if (!image?.alt) image.alt = ''
-  image.sizes = '(max-width: 768px) 50vw, (max-width: 1200px) 75vw, 100vw'
+  if (!image?.sizes)
+    image.sizes = '(max-width: 768px) 50vw, (max-width: 1200px) 75vw, 100vw'
   // image.unoptimized = process.env.NODE_ENV !== 'production'
+  // console.dir(`> Image.client: debug`)
   // console.dir(hack)
   // console.dir(image)
 
