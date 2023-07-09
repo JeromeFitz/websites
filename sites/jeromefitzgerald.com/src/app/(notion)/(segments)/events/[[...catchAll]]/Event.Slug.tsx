@@ -250,7 +250,7 @@ function Ticket({ properties, isFakePortal = false }) {
         ) : (
           <Button
             className={cx(
-              'gray-button-outline',
+              'slate-button-outline',
               'mx-0 w-full px-0 py-2 text-xl font-bold',
               'flex-row items-center justify-center gap-1',
               'cursor-not-allowed'

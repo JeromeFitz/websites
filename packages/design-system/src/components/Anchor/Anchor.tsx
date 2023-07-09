@@ -1,7 +1,7 @@
 /* eslint-disable no-restricted-imports */
 import NextLink from 'next/link'
 
-import { cx } from '../../utils/cx'
+import { twMerge } from '../../utils/cx'
 import { ExternalLinkIcon } from '../Icon'
 
 const nextSeo = { url: `https://${process.env.NEXT_PUBLIC__SITE}` }
@@ -12,7 +12,7 @@ const Anchor = ({ className = '', href, children }) => {
     !href.includes(domain.hostname.replace('www.', '')) || href.includes('bsky.app')
   const isNotion = !href.includes('http')
 
-  const styles = cx(
+  const styles = twMerge(
     'inline-flex flex-row items-center gap-1',
     'underline-offset-4',
     'underline',

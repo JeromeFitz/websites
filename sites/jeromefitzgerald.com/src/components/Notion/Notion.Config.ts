@@ -2,15 +2,18 @@
  * @todo(next-notion) you do not _need_ to set this
  *  up but you probably _need_ to set this up, haha
  */
+import dynamic from 'next/dynamic'
+
 // import { lazy } from 'react'
-import { Embed } from './Blocks/Embed'
+// import { Embed } from './Blocks/Embed'
 import { Image } from './Blocks/Image'
-import { Video } from './Blocks/Video'
+// import { Video } from './Blocks/Video'
 
 const custom = {
   embed: {
+    component: dynamic(() => import('./Blocks/Embed').then((mod) => mod.Embed)),
     // component: lazy(() => import('./Blocks/Embed')),
-    component: Embed,
+    // component: Embed,
     element: 'div',
     className: '',
   },
@@ -21,8 +24,9 @@ const custom = {
     className: '',
   },
   video: {
+    component: dynamic(() => import('./Blocks/Video').then((mod) => mod.Video)),
     // component: lazy(() => import('./Blocks/Video')),
-    component: Video,
+    // component: Video,
     element: 'div',
     className: '',
   },
@@ -37,7 +41,7 @@ const blocks = {
   },
   callout: {
     className:
-      'border-l-radix-green11 bg-radix-pinkA5 m-4 rounded border-l-8 p-14 text-xl md:text-3xl',
+      'border-l-radix-slate11 bg-radix-slateA5 m-4 rounded border-l-8 p-14 text-xl md:text-3xl',
   },
   column: {
     className: 'my-3 flex flex-[1_1] flex-col md:my-3 md:pr-5',
@@ -68,7 +72,7 @@ const blocks = {
   },
   quote: {
     className:
-      'border-l-radix-pink11 bg-radix-greenA5 m-4 rounded border-l-8 p-6 text-xl md:p-14 md:text-3xl',
+      'border-l-radix-pink11 bg-radix-pinkA5 m-4 rounded border-l-8 p-6 text-xl md:p-14 md:text-3xl',
   },
   ...custom,
 }

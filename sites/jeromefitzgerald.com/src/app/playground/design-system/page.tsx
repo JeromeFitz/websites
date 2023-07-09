@@ -10,6 +10,12 @@ import { Button } from '@jeromefitz/ds/components/Button'
 import { cx } from '@jeromefitz/ds/utils/cx'
 
 import {
+  RadixBackgrounds,
+  RadixBorders,
+  RadixColors,
+  TailwindWidth,
+} from '~components/Playground'
+import {
   SectionContent,
   SectionHeader,
   // SectionHeaderContent,
@@ -19,11 +25,7 @@ import {
 } from '~components/Section'
 import { Testing } from '~components/Testing'
 
-import { RadixBackgrounds } from './Radix.Backgrounds'
-import { RadixBorders } from './Radix.Borders'
-import { RadixColors } from './Radix.Colors'
-import { TailwindWidth } from './Tailwind.Width'
-
+const isDev = process.env.NODE_ENV === 'development'
 const foregroundTextBlack = ['sky', 'mint', 'lime', 'yellow', 'amber']
 
 const notionColors = [
@@ -47,7 +49,17 @@ const notionColors = [
   'pink_background',
   'red_background',
 ]
-const radixColors = [
+const siteColors = [
+  'black',
+  // 'gray',
+  'orange',
+  'pink',
+  'purple',
+  'slate',
+  'white',
+  // '',
+]
+const _radixColors = [
   'tomato',
   'red',
   'crimson',
@@ -83,6 +95,8 @@ const radixColors = [
   'black',
   'white',
 ]
+
+const radixColors = isDev ? siteColors : _radixColors
 
 const borderTypes = ['', '-x', '-y', '-s', '-e', '-t', '-r', '-b', '-l']
 const buttonTypes = ['', '-cta', '-outline', '-solid', '-transparent']

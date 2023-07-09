@@ -3,7 +3,7 @@
  * https://www.radix-ui.com/docs/colors/palette-composition/understanding-the-scale
  *
  */
-const { excludes, radixColors } = require('./lib/const')
+const { excludes, radixColors } = require('./colors')
 
 const backgrounds = {}
 

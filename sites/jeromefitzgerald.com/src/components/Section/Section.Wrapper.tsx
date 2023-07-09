@@ -13,7 +13,7 @@ function SectionWrapper({ children }) {
           // 'before:h-[1px]',
           'before:h-0',
           'before:relative before:inset-x-2 before:top-0 before:w-full before:content-normal',
-          'before:bg-radix-green8',
+          'before:bg-radix-slate8',
           ''
         )}
       >

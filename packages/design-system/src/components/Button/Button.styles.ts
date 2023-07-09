@@ -16,8 +16,8 @@ export const variantStyles = {
   default: cx(),
   empty: cx(''),
   ghost: cx(),
-  primary: cx('tomato-button-cta'),
-  secondary: cx('tomato-button-outline'),
-  tertiary: cx('tomato-button-solid'),
-  text: cx('tomato-button-transparent'),
+  primary: cx('pink-button-cta'),
+  secondary: cx('pink-button-outline'),
+  tertiary: cx('pink-button-solid'),
+  text: cx('pink-button-transparent'),
 } satisfies Record<Variant, string>

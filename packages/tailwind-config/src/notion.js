@@ -22,13 +22,16 @@ const notionColors = [
 
 const notion = {}
 notionColors.map((color) => {
+  // @note(radix-ui) map gray to slate
+  let radixColor = color.split('_')[0]
+  if (radixColor === 'gray') radixColor = 'slate'
   if (color.includes('_background')) {
     notion['.notion-' + color] = {
-      backgroundColor: `var(--${color.split('_')[0]}4)`,
+      backgroundColor: `var(--${radixColor}4)`,
     }
   } else {
     notion['.notion-' + color] = {
-      color: `var(--${color}11)`,
+      color: `var(--${radixColor}11)`,
     }
   }
 })

@@ -64,7 +64,7 @@ function Header() {
                               className={cx(
                                 'my-2 py-2',
                                 'w-full',
-                                'even:bg-radix-green5 odd:bg-radix-red5'
+                                'even:bg-radix-pink5 odd:bg-radix-slate5'
                               )}
                             >
                               {title}

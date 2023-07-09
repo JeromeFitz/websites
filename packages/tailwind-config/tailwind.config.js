@@ -23,8 +23,8 @@ const config = ({}) => ({
      *  in app/design-system/page ?
      */
     '../../packages/design-system/src/**/*.{ts,tsx}',
-    // './node_modules/@plaiceholder/ui/**/*.{ts,tsx}',
-    './node_modules/next-notion/src/**/*.{ts,tsx}',
+    '../../packages/next-notion/src/**/*.{ts,tsx}',
+    // './node_modules/next-notion/src/**/*.{ts,tsx}',
     './src/app/**/*.{ts,tsx}',
     './src/components/**/*.{ts,tsx}',
     './src/playground/**/*.{ts,tsx}',

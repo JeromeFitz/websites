@@ -28,7 +28,8 @@ const Loading: React.FC<{ isRouteChanging: boolean }> = ({ isRouteChanging }) =>
         'left-0 top-0 h-[2.5px] w-full',
         'bg-gradient-to-r',
         // 'from-radix-pink8 to-radix-pink11',
-        'from-radix-purple1 to-radix-pink12',
+        'from-radix-purple6 to-radix-pink11',
+        'dark:from-radix-pink6 dark:to-radix-purple11',
         ''
       )}
       animate={{

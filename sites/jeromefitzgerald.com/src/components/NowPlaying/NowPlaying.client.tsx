@@ -33,7 +33,7 @@ const notionColors = [
   'pink',
   'purple',
   // 'red',
-  'yellow',
+  // 'yellow',
 ]
 
 function NowPlayingClient() {
@@ -145,7 +145,7 @@ function NowPlayingClient() {
           <ButtonLink
             href={_href}
             className={cx(
-              'green-button-outline',
+              'spotify-button-outline',
               'flex-row items-center justify-center gap-1 align-middle',
               'w-1/3'
             )}

@@ -1,16 +1,49 @@
 import '@jeromefitz/tailwind-config/styles/globals.css'
 
 import { cx } from '@jeromefitz/ds/utils/cx'
+import dynamic from 'next/dynamic'
 import localFont from 'next/font/local'
-import { Suspense } from 'react'
+// import { Suspense } from 'react'
 
-import { Analytics } from '~components/Analytics'
+// import { Analytics } from '~components/Analytics'
 import { Banner } from '~components/Banner'
-import { Footer } from '~components/Footer'
-// // import { Header } from '~components/Header'
-import { NowPlaying } from '~components/NowPlaying'
-import { NowReading } from '~components/NowReading'
+// import { Footer } from '~components/Footer'
+// import { NowPlaying } from '~components/NowPlaying'
+// import { NowReading } from '~components/NowReading'
 import { Providers } from '~components/Providers'
+
+// const Analytics = dynamic(
+//   () => import('~components/Analytics').then((mod) => mod.Analytics),
+//   { ssr: false }
+// )
+// const Footer = dynamic(
+//   () => import('~components/Footer').then((mod) => mod.Footer),
+//   { ssr: false }
+// )
+// const NowPlaying = dynamic(
+//   () => import('~components/NowPlaying').then((mod) => mod.NowPlaying),
+//   { ssr: false }
+// )
+// const NowReading = dynamic(
+//   () => import('~components/NowReading').then((mod) => mod.NowReading),
+//   { ssr: false }
+// )
+const Analytics = dynamic(async () => {
+  const { Analytics: Component } = await import('~components/Analytics')
+  return { default: Component }
+})
+const Footer = dynamic(async () => {
+  const { Footer: Component } = await import('~components/Footer')
+  return { default: Component }
+})
+const NowPlaying = dynamic(async () => {
+  const { NowPlaying: Component } = await import('~components/NowPlaying')
+  return { default: Component }
+})
+const NowReading = dynamic(async () => {
+  const { NowReading: Component } = await import('~components/NowReading')
+  return { default: Component }
+})
 
 const fontSans = localFont({
   display: 'swap',
@@ -66,18 +99,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         className={cx(
           'overflow-y-auto overflow-x-hidden',
           'transition-all duration-500',
-          'selection:bg-radix-mauve12 selection:text-radix-mauve1',
+          'selection:bg-radix-slate12 selection:text-radix-slate1',
           'bg-white dark:bg-black',
           'font-sans antialiased',
           fontSans.variable
         )}
       >
         <Providers>
-          <Suspense>
+          {/* <Suspense>
             <Analytics />
-          </Suspense>
+          </Suspense> */}
+          <Analytics />
           <Banner />
-          {/* <Header /> */}
           <Main>{children}</Main>
           <Wrapper>
             <NowPlaying />

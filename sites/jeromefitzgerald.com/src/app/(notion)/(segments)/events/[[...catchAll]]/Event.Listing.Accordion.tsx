@@ -1,7 +1,7 @@
 'use client'
+import { ChevronDownIcon } from '@jeromefitz/ds/components/Icon'
 import { cx } from '@jeromefitz/ds/utils/cx'
 import * as Accordion from '@radix-ui/react-accordion'
-import { ChevronDownIcon } from '@radix-ui/react-icons'
 import { forwardRef } from 'react'
 import type { ForwardedRef, ReactNode } from 'react'
 
