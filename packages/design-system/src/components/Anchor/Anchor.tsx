@@ -1,7 +1,7 @@
 /* eslint-disable no-restricted-imports */
 import NextLink from 'next/link'
 
-import { twMerge } from '../../utils/cx'
+import { cx } from '../../utils/cx'
 import { ExternalLinkIcon } from '../Icon'
 
 const nextSeo = { url: `https://${process.env.NEXT_PUBLIC__SITE}` }
@@ -12,16 +12,19 @@ const Anchor = ({ className = '', href, children }) => {
     !href.includes(domain.hostname.replace('www.', '')) || href.includes('bsky.app')
   const isNotion = !href.includes('http')
 
-  const styles = twMerge(
+  /**
+   * @note(tailwind) twMerge works best here
+   *
+   * otherwise we need to pass `!` on certain
+   *  elements like: !text-inherit
+   * depending on the ordering of `cx` + tailwind by itself
+   */
+  const styles = cx(
     'inline-flex flex-row items-center gap-1',
     'underline-offset-4',
     'underline',
-    // 'decoration-radix-slate4 hover:decoration-radix-slate5',
     'text-radix-pink11 hover:text-radix-pink12',
     'transition-all duration-200 ease-in',
-    '',
-    // 'hover:bg-breeze hover:dark:bg-breeze-r hover:bg-clip-text hover:text-transparent',
-    '',
     className
   )
 

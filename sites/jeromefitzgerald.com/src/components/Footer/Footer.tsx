@@ -286,16 +286,11 @@ function Footer() {
                               <Anchor
                                 aria-label={`A link to ${item?.subtitle} on ${item?.title}`}
                                 className={cx(
-                                  'cursor-pointer',
-                                  // 'items-center justify-center',
-                                  // 'h-6 w-6',
                                   'icon-custom',
-                                  // 'mr-5',
                                   item?.className,
-                                  'transition-colors duration-200',
-                                  'flex flex-row items-center gap-1 align-middle',
-                                  'text-inherit',
-                                  'no-underline'
+                                  '!align-middle',
+                                  '!text-inherit',
+                                  '!no-underline'
                                 )}
                                 href={item?.url}
                               >

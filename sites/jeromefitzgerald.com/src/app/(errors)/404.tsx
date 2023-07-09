@@ -1,3 +1,4 @@
+import { Anchor } from '@jeromefitz/ds/components/Anchor'
 import { Separator } from '@jeromefitz/ds/components/Separator'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
@@ -32,6 +33,11 @@ function FourOhFour({
           <>
             <h1 className="mb-7 text-6xl font-black">{message}</h1>
             <p className="text-lg">{body}</p>
+            <Separator className="my-8" />
+            <p className="text-lg">
+              Please try and go back to the{` `}
+              <Anchor href="/">homepage</Anchor>.
+            </p>
             {!isObjectEmpty(segmentInfo) && (
               <>
                 <Separator className="my-8" />

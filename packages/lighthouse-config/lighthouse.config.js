@@ -4,16 +4,18 @@ const config = ({ website }) => ({
       preset: 'lighthouse:no-pwa',
       assertions: {
         'bf-cache': 'off',
-        'categories:accessibility': ['error', { minScore: 0.9 }],
-        'categories:best-practices': ['warn', { minScore: 0.9 }],
-        'categories:performance': ['warn', { minScore: 0.9 }],
-        'categories:seo': ['warn', { minScore: 0.9 }],
+        'categories:accessibility': ['error', { minScore: 1 }],
+        'categories:best-practices': ['warn', { minScore: 1 }],
+        'categories:performance': ['warn', { minScore: 0.98 }],
+        'categories:seo': ['warn', { minScore: 1 }],
         // @note(radix-ui) bg3+text11 passes, not sure what is going on here
         'color-contrast': 'warn',
         'csp-xss': 'off',
         'errors-in-console': 'off',
-        'largest-contentful-paint': ['warn', { minScore: 0.8 }],
+        'largest-contentful-paint': ['warn', { minScore: 0.9 }],
         'legacy-javascript': 'off',
+        // @note(lighthouse) does not score correctly locally :X
+        'max-potential-fid': ['warn', { minScore: 0.66 }],
         'non-composited-animations': 'off',
         'render-blocking-resources': 'off',
         'speed-index': 'off',
