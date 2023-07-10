@@ -10,7 +10,8 @@ import type { Metadata } from 'next'
 import { getPropertyTypeData } from 'next-notion/src/utils'
 
 import type { PageObjectResponseEvent } from '~app/(notion)/_config'
-import { getEventData, CONFIG } from '~app/(notion)/_config'
+import { getPageData, getEventData, CONFIG } from '~app/(notion)/_config'
+import { generateMetadataCustom } from '~app/(notion)/_config/temp/generateMetadataCustom'
 
 import { Listing } from './_components/Event.Listing'
 import { Slug } from './_components/Event.Slug'
@@ -33,7 +34,11 @@ export async function generateMetadata({ ...props }): Promise<Metadata> {
     segmentInfo,
   })
 
-  return data?.seo
+  const pageData = segmentInfo.isIndex
+    ? getPageData(data?.page?.properties)
+    : getEventData(data?.page?.properties)
+  const seo = await generateMetadataCustom({ data, pageData, segmentInfo })
+  return seo
 }
 
 async function _generateStaticParams({ ...props }) {

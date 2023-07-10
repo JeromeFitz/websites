@@ -11,7 +11,8 @@ import type { Metadata } from 'next'
 import { getPropertyTypeData } from 'next-notion/src/utils'
 
 import type { PageObjectResponseShow } from '~app/(notion)/_config'
-import { CONFIG, getShowData } from '~app/(notion)/_config'
+import { CONFIG, getPageData, getShowData } from '~app/(notion)/_config'
+import { generateMetadataCustom } from '~app/(notion)/_config/temp/generateMetadataCustom'
 
 import { Listing } from './_components/Show.Listing'
 import { Slug } from './_components/Show.Slug'
@@ -44,7 +45,12 @@ export async function generateMetadata({ ...props }): Promise<Metadata> {
   const isPublished =
     getPropertyTypeData(data?.page?.properties, 'Is.Published') || false
 
-  return isPublished ? data?.seo : is404Seo
+  const pageData = segmentInfo.isIndex
+    ? getPageData(data?.page?.properties)
+    : getShowData(data?.page?.properties)
+  const seo = await generateMetadataCustom({ data, pageData, segmentInfo })
+
+  return isPublished ? seo : is404Seo
 }
 
 async function _generateStaticParams({ ...props }) {

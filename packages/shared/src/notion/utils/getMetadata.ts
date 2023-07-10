@@ -9,7 +9,7 @@ import _title from 'title'
 
 // import { getEventData } from '../index'
 
-const BASE_URL = 'https://jeromefitzgerald.com'
+const BASE_URL = `https://${process.env.NEXT_PUBLIC__SITE}`
 
 type TextRequest = string
 type ImageItemResponse =

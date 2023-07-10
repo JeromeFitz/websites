@@ -10,7 +10,8 @@ import type { Metadata } from 'next'
 import { getPropertyTypeData } from 'next-notion/src/utils'
 
 import type { PageObjectResponsePerson } from '~app/(notion)/_config'
-import { getPersonData, CONFIG } from '~app/(notion)/_config'
+import { getPageData, getPersonData, CONFIG } from '~app/(notion)/_config'
+import { generateMetadataCustom } from '~app/(notion)/_config/temp/generateMetadataCustom'
 
 import { Listing } from './_components/People.Listing'
 import { Slug } from './_components/Person.Slug'
@@ -36,8 +37,13 @@ export async function generateMetadata({ ...props }): Promise<Metadata> {
     getPropertyTypeData(data?.page?.properties, 'Is.Published') || false
   // console.dir(data?.page?.properties)
 
+  const pageData = segmentInfo.isIndex
+    ? getPageData(data?.page?.properties)
+    : getPersonData(data?.page?.properties)
+  const seo = await generateMetadataCustom({ data, pageData, segmentInfo })
+
   return isPublished
-    ? data?.seo
+    ? seo
     : { title: `404 | ${segmentInfo?.segment} | ${process.env.NEXT_PUBLIC__SITE}` }
 }
 
