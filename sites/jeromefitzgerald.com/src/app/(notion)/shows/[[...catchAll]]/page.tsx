@@ -1,3 +1,8 @@
+import {
+  getDataFromCache,
+  getSegmentInfo,
+  getDatabaseQuery,
+} from '@jeromefitz/shared/src/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
 import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints'
 // import isEqual from 'lodash/isEqual'
@@ -5,17 +10,11 @@ import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpo
 import type { Metadata } from 'next'
 import { getPropertyTypeData } from 'next-notion/src/utils'
 
-import { CONSTANTS } from '~app/(notion)/(config)/constants'
-import type { PageObjectResponseShow } from '~app/(notion)/(config)/segments'
-import { getShowData } from '~app/(notion)/(config)/segments'
-import {
-  getDataFromCache,
-  getSegmentInfo,
-  getDatabaseQuery,
-} from '~app/(notion)/(config)/utils'
+import type { PageObjectResponseShow } from '~app/(notion)/_config'
+import { CONFIG, getShowData } from '~app/(notion)/_config'
 
-import { Listing } from './Show.Listing'
-import { Slug } from './Show.Slug'
+import { Listing } from './_components/Show.Listing'
+import { Slug } from './_components/Show.Slug'
 
 const isDev = process.env.NODE_ENV === 'development'
 
@@ -25,7 +24,7 @@ const isDev = process.env.NODE_ENV === 'development'
 // export const revalidate = TIME.HOUR
 // export const runtime = 'nodejs'
 
-const { DATABASE_ID, SEGMENT } = CONSTANTS.SHOWS
+const { DATABASE_ID, SEGMENT } = CONFIG.SHOWS
 
 export async function generateMetadata({ ...props }): Promise<Metadata> {
   const segmentInfo = getSegmentInfo({ SEGMENT, ...props })

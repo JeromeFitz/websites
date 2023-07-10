@@ -1,3 +1,5 @@
+const radixColors = require('@radix-ui/colors')
+
 const notionColors = [
   // 'default',
   'gray',
@@ -20,17 +22,46 @@ const notionColors = [
   'red_background',
 ]
 
+/**
+ * @note(tailwind) you have lost your mind
+ */
+const globalNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+const globalHack = []
+const globalDark = []
+
 const notion = {}
 notionColors.map((color) => {
+  let radixColor = color.split('_')[0]
+  // // @note(radix-ui) map gray to slate
+  // if (radixColor === 'gray') radixColor = 'slate'
+
   if (color.includes('_background')) {
     notion['.notion-' + color] = {
-      backgroundColor: `var(--${color.split('_')[0]}4)`,
+      // @note(a11y) Radix-UI uses `4`, but Page Insights warns
+      backgroundColor: `var(--${radixColor}3)`,
     }
   } else {
     notion['.notion-' + color] = {
-      color: `var(--${color}11)`,
+      color: `var(--${radixColor}11)`,
     }
+
+    // globalNumbers.map((n) => {
+    //   globalHack.push(
+    //     `--${radixColor}${n}: ${radixColors[radixColor][`${radixColor}${n}`]};`
+    //   )
+    //   globalDark.push(
+    //     `--${radixColor}${n}: ${
+    //       radixColors[`${radixColor}Dark`][`${radixColor}${n}`]
+    //     };`
+    //   )
+    // })
   }
 })
+
+// console.dir(`globalHack:`)
+// globalHack.map((g) => console.dir(g))
+// console.dir(`globalDark:`)
+// globalDark.map((g) => console.dir(g))
+// console.dir(`----`)
 
 module.exports = { notion, notionColors }

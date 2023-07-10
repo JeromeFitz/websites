@@ -12,7 +12,7 @@
   "trailingSlash": false,
   "headers": [
     {
-      "source": "/static/fonts/inter/inter-var.woff2",
+      "source": "/fonts/inter/inter-var.woff2",
       "headers": [
         {
           "key": "Cache-Control",
@@ -21,7 +21,7 @@
       ]
     },
     {
-      "source": "/static/fonts/inter/inter-var-italic.woff2",
+      "source": "/fonts/inter/inter-var-italic.woff2",
       "headers": [
         {
           "key": "Cache-Control",
@@ -30,7 +30,7 @@
       ]
     },
     {
-      "source": "/static/fonts/inter/inter-4.0.0-beta9g-var.woff2",
+      "source": "/fonts/inter/inter-4.0.0-beta9g-var.woff2",
       "headers": [
         {
           "key": "Cache-Control",

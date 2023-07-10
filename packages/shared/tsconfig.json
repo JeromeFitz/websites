@@ -34,7 +34,8 @@
     "strictNullChecks": false, // @todo(lint)
     "strictPropertyInitialization": false, // @todo(lint)
     "target": "esnext",
-    "tsBuildInfoFile": ".tsbuildinfo"
+    "tsBuildInfoFile": ".tsbuildinfo",
+    "types": ["node", "react/canary"]
   },
   "include": ["src", "index.d.ts", "next-env.d.ts"],
   "exclude": ["node_modules", "**/*.test.ts"]

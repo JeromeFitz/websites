@@ -1,8 +1,16 @@
 'use client'
+import dynamic from 'next/dynamic'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
-import { Loading } from '~components/Loading'
+// import { Loading } from '~components/Loading'
+const Loading = dynamic(
+  async () => {
+    const { Loading: Component } = await import('~components/Loading')
+    return { default: Component }
+  },
+  { ssr: false }
+)
 
 function RouterEventProvider() {
   // @todo(types)

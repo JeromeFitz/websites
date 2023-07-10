@@ -1,5 +1,5 @@
 import { Anchor } from '@jeromefitz/ds/src/components/Anchor'
-import { cx } from '@jeromefitz/shared/src/utils/cx'
+import { cx } from '@jeromefitz/ds/src/utils/cx'
 import type {
   BulletedListItemBlockObjectResponse,
   Heading1BlockObjectResponse,
@@ -69,6 +69,7 @@ function RichTextArray({ id, items }) {
         return (
           <Component key={key} {...props}>
             <EmojiWrapper id={id} text={plain_text} />
+            {/* {plain_text} */}
           </Component>
         )
       })}
@@ -96,6 +97,9 @@ function RichText({
     rich_text: Array<RichTextItemResponse>
     color: ApiColor
   } = block[block.type]
+
+  if (!data) return null
+
   const { rich_text } = data
 
   return (

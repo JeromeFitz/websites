@@ -1,10 +1,11 @@
-import { cx } from '@jeromefitz/shared/src/utils/cx'
+'use client'
+import { cx } from '@jeromefitz/ds/utils/cx'
 import { useNProgress } from '@tanem/react-nprogress'
-import { motion } from 'framer-motion'
+// import { motion } from 'framer-motion'
 import { useEffect } from 'react'
 
 const Loading: React.FC<{ isRouteChanging: boolean }> = ({ isRouteChanging }) => {
-  const { isFinished, progress } = useNProgress({
+  const { isFinished } = useNProgress({
     isAnimating: isRouteChanging,
     minimum: 0.08,
   })
@@ -20,22 +21,23 @@ const Loading: React.FC<{ isRouteChanging: boolean }> = ({ isRouteChanging }) =>
   }, [isFinished])
 
   return (
-    <motion.div
+    <div
       id="loading--status"
       className={cx(
         'pointer-events-none fixed',
         'z-[9999] origin-[0_0]',
         'left-0 top-0 h-[2.5px] w-full',
         'bg-gradient-to-r',
-        // 'from-radix-pink8 to-radix-pink11',
-        'from-radix-purple1 to-radix-pink12',
+        'from-radix-pink1 to-radix-pink11',
+        'dark:from-radix-pink11 dark:to-radix-pink1',
+        isFinished ? 'opacity-0' : 'opacity-100',
         ''
       )}
-      animate={{
-        opacity: isFinished ? [1, 0.75, 0.5, 0.25, 0] : [0, 0.25, 0.5, 0.75, 1],
-        scaleX: isFinished ? 1 : progress,
-      }}
-      transition={{ duration: 0.75 }}
+      // animate={{
+      //   opacity: isFinished ? [1, 0.75, 0.5, 0.25, 0] : [0, 0.25, 0.5, 0.75, 1],
+      //   scaleX: isFinished ? 1 : progress,
+      // }}
+      // transition={{ duration: 0.75 }}
     />
   )
 }

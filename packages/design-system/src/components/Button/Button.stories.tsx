@@ -1,5 +1,6 @@
-import { cx } from '@jeromefitz/shared/src/utils/cx'
 import type { Meta, StoryObj } from '@storybook/react'
+
+import { cx } from '../../utils/cx'
 
 import { Button } from './Button'
 import { VARIANTS } from './Button.constants'
@@ -44,8 +45,8 @@ export const Custom: Story = {
     ...Default.args,
     className: cx(
       'm-12 p-12',
-      'bg-radix-mauve12 text-radix-mauve1',
-      'hocus:bg-radix-mauve1 hocus:text-radix-mauve12'
+      'bg-radix-slate12 text-radix-slate1',
+      'hocus:bg-radix-slate1 hocus:text-radix-slate12'
     ),
     variant: 'empty',
   },

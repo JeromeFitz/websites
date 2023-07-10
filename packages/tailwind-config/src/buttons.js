@@ -3,7 +3,7 @@
  * https://www.radix-ui.com/docs/colors/palette-composition/understanding-the-scale
  *
  */
-const { excludes, foregroundTextBlack, radixColors } = require('./lib/const')
+const { excludes, foregroundTextBlack, radixColors } = require('./colors')
 
 const buttons = {}
 const types = ['', '-cta', '-outline', '-solid', '-transparent']
@@ -41,8 +41,9 @@ radixColors.map((color) => {
   /**
    * @note(radix) Steps 3–5: Component backgrounds
    */
+  // @note(a11y) Radix-UI uses `4`, but Page Insights warns
   buttons['.' + color + '-button-cta'] = {
-    backgroundColor: `var(--${color}4)`,
+    backgroundColor: `var(--${color}3)`,
     color: `var(--${color}11)`,
     '&:hover': {
       '--tw-ring-color': `var(--${color}11)`,

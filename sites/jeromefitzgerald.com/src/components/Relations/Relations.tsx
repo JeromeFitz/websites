@@ -1,9 +1,9 @@
-import { cx } from '@jeromefitz/shared/src/utils/cx'
+import { cx } from '@jeromefitz/ds/utils/cx'
 import _size from 'lodash/size'
 import pluralize from 'pluralize'
 // import { Suspense } from 'react'
 
-import { getPropertyTypeDataEvent } from '~app/(notion)/(config)/segments'
+import { getPropertyTypeDataEvent } from '~app/(notion)/_config'
 
 import {
   getRelationTitle,
@@ -43,9 +43,9 @@ function Relations({ properties, relations, relationsSecondary }) {
             )}
             key={`${id}-${relation}`}
           >
-            <h6 className={cx('pb-3 font-extrabold uppercase tracking-tight', '')}>
-              {title}
-            </h6>
+            <p className={cx('pb-3 font-extrabold uppercase tracking-tight', '')}>
+              <strong>{title}</strong>
+            </p>
             <ul>
               {/* {Array(itemsCount)
                 .fill(0)

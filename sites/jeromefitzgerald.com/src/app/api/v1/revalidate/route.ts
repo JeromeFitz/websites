@@ -1,14 +1,17 @@
+import {
+  getDataFromCache,
+  getSegmentInfo,
+} from '@jeromefitz/shared/src/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
 import _size from 'lodash/size'
 import { revalidatePath } from 'next/cache'
 import { NextRequest, NextResponse } from 'next/server'
 
-import { CONSTANTS } from '~app/(notion)/(config)/constants'
-import { getDataFromCache, getSegmentInfo } from '~app/(notion)/(config)/utils'
+import { CONFIG } from '~app/(notion)/_config'
 
-const { DATABASE_ID: DATABASE_ID__EVENTS } = CONSTANTS.EVENTS
-const { DATABASE_ID: DATABASE_ID__PAGES } = CONSTANTS.PAGES
-const { DATABASE_ID: DATABASE_ID__SHOWS } = CONSTANTS.SHOWS
+const { DATABASE_ID: DATABASE_ID__EVENTS } = CONFIG.EVENTS
+const { DATABASE_ID: DATABASE_ID__PAGES } = CONFIG.PAGES
+const { DATABASE_ID: DATABASE_ID__SHOWS } = CONFIG.SHOWS
 
 /**
  * @hack(next) Customization for makeshift ISR

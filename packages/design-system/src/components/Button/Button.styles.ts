@@ -1,9 +1,9 @@
-import { cx } from '@jeromefitz/shared/src/utils/cx'
+import { cx } from '../../utils/cx'
 
 import type { Variant } from './Button.types'
 
 export const commonStyles = cx(
-  'group inline-flex transition-all duration-500',
+  'group inline-flex transition-all duration-200',
   'm-1.5 rounded-md px-4 py-2',
   'font-sans font-medium',
   'outline-none outline-offset-0 ',
@@ -16,8 +16,8 @@ export const variantStyles = {
   default: cx(),
   empty: cx(''),
   ghost: cx(),
-  primary: cx('tomato-button-cta'),
-  secondary: cx('tomato-button-outline'),
-  tertiary: cx('tomato-button-solid'),
-  text: cx('tomato-button-transparent'),
+  primary: cx('pink-button-cta'),
+  secondary: cx('pink-button-outline'),
+  tertiary: cx('pink-button-solid'),
+  text: cx('pink-button-transparent'),
 } satisfies Record<Variant, string>

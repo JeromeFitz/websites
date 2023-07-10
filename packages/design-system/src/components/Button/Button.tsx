@@ -1,6 +1,7 @@
-import { cx } from '@jeromefitz/shared/src/utils/cx'
 import { forwardRef } from 'react'
 import type { ButtonHTMLAttributes, ForwardRefRenderFunction } from 'react'
+
+import { cx } from '../../utils/cx'
 
 import { VARIANTS } from './Button.constants'
 import { commonStyles, variantStyles } from './Button.styles'
@@ -26,4 +27,6 @@ const ButtonComponent: ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> 
   return <button className={finalClassName} ref={ref} {...rest} />
 }
 
-export const Button = forwardRef(ButtonComponent)
+const Button = forwardRef(ButtonComponent)
+
+export { Button }

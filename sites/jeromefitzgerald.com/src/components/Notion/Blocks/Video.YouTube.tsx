@@ -1,3 +1,7 @@
+/**
+ * @todo(next-notion) until we can SWR the comment fetch
+ *  this needs to be server-only
+ */
 import 'server-only'
 
 import { Client } from '@notionhq/client'

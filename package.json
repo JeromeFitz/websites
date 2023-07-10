@@ -26,8 +26,7 @@
     "prepare": "is-ci || husky install",
     "semantic-release": "pnpm run semantic-release:mono",
     "semantic-release:dry": "pnpm --filter jeromefitzgerald.com -r --workspace-concurrency=1 exec -- npx --no-install semantic-release -e semantic-release-monorepo --dry-run",
-    "semantic-release:mono": "pnpm --filter jeromefitzgerald.com -r --workspace-concurrency=1 exec -- npx --no-install semantic-release -e semantic-release-monorepo",
-    "start": "pnpm turbo run start --filter=\"jeromefitzgerald.com\""
+    "semantic-release:mono": "pnpm --filter jeromefitzgerald.com -r --workspace-concurrency=1 exec -- npx --no-install semantic-release -e semantic-release-monorepo"
   },
   "dependencies": {
     "@jeromefitz/conventional-gitmoji": "3.3.6",
@@ -40,7 +39,7 @@
     "@manypkg/cli": "0.21.0",
     "@types/is-ci": "3.0.0",
     "@types/lodash": "4.14.195",
-    "@types/node": "20.4.0",
+    "@types/node": "18.11.9",
     "ccommit": "1.1.3",
     "concurrently": "8.2.0",
     "dotenv": "16.3.1",

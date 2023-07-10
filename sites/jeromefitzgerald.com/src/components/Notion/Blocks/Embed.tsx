@@ -1,5 +1,3 @@
-import 'server-only'
-
 import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 
 import { EmbedTwitter } from './Embed.Twitter'

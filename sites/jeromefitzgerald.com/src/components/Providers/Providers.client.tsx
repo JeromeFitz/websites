@@ -1,11 +1,22 @@
+import dynamic from 'next/dynamic'
 import pluralize from 'pluralize'
-import { Suspense } from 'react'
+// import { Suspense } from 'react'
 import { Provider as ReactWrapBalancerProvider } from 'react-wrap-balancer'
 
 import { ErrorBoundary } from '~components/ErrorBoundary'
 
-import { RouterEventProvider } from './RouterEventProvider.client'
+// import { RouterEventProvider } from './RouterEventProvider.client'
 import { ThemeProvider } from './ThemeProvider.client'
+
+const RouterEventProvider = dynamic(
+  async () => {
+    const { RouterEventProvider: Component } = await import(
+      './RouterEventProvider.client'
+    )
+    return { default: Component }
+  },
+  { ssr: false }
+)
 
 const pluralRules = [
   { rule: /cast$/i, replacement: 'cast' },
@@ -47,9 +58,7 @@ function Providers({ children }) {
         enableSystem
         value={{ light: 'light', dark: 'dark' }}
       >
-        <Suspense>
-          <RouterEventProvider />
-        </Suspense>
+        <RouterEventProvider />
         <ReactWrapBalancerProvider>{children}</ReactWrapBalancerProvider>
       </ThemeProvider>
     </ErrorBoundary>

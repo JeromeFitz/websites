@@ -1,8 +1,9 @@
-import { cx } from '@jeromefitz/shared/src/utils/cx'
 // eslint-disable-next-line no-restricted-imports
 import Link from 'next/link'
 import { forwardRef } from 'react'
 import type { ComponentProps, ForwardRefRenderFunction } from 'react'
+
+import { cx } from '../../utils/cx'
 
 import { VARIANTS } from './Button.constants'
 import { commonStyles, variantStyles } from './Button.styles'
@@ -42,4 +43,6 @@ const ButtonLinkComponent: ForwardRefRenderFunction<
   )
 }
 
-export const ButtonLink = forwardRef(ButtonLinkComponent)
+const ButtonLink = forwardRef(ButtonLinkComponent)
+
+export { ButtonLink }

@@ -20,9 +20,7 @@ const config = ({ basePath = '', port, website = 'jeromefitzgerald.com' }) => {
     },
 
     webServer: {
-      // command: `cd ../.. && pnpm turbo run dev --filter="${website}"`,
-      // command: 'pnpm run dev',
-      command: 'pnpm run start',
+      command: `pnpm --filter ${website} start`,
       url: baseURL,
       reuseExistingServer: !process.env.CI,
     },

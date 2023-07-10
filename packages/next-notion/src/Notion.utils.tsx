@@ -1,4 +1,4 @@
-import { cx } from '@jeromefitz/shared/src/utils/cx'
+import { cx } from '@jeromefitz/ds/src/utils/cx'
 import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 
 import { blocks as blocksDefault } from './Notion.Config'

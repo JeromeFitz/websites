@@ -40,7 +40,6 @@
   },
   "devDependencies": {
     "@jeromefitz/ds": "workspace:*",
-    "@jeromefitz/shared": "workspace:*",
     "@jeromefitz/utils": "2.2.2",
     "@notionhq/client": "2.2.6",
     "date-fns": "2.30.0",

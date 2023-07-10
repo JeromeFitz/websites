@@ -3,7 +3,7 @@
  * https://www.radix-ui.com/docs/colors/palette-composition/understanding-the-scale
  *
  */
-const { excludes, radixColors } = require('./lib/const')
+const { excludes, radixColors } = require('./colors')
 
 const backgrounds = {}
 
@@ -31,7 +31,7 @@ radixColors.map((_color) => {
     color: `var(--${color}11)`,
   }
   backgrounds['.' + color + '-cta-int'] = {
-    backgroundColor: `var(--${color}4)`,
+    backgroundColor: `var(--${color}4`,
   }
   backgrounds['.' + color + '-cta-int:hover'] = {
     backgroundColor: `var(--${color}5)`,

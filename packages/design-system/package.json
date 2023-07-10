@@ -3,9 +3,17 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "echo # storybook build",
+    "build": "tsup-node",
     "build:storybook": "storybook build",
-    "dev": "storybook dev --quiet --port 6002",
+    "clean": "rm -rf ./.turbo ./dist",
+    "clean:install": "pnpm clean && rm -rf ./node_modules",
+    "copy": "mkdir -p ./dist && ./scripts/copy.sh",
+    "dev": "tsup-node --watch",
+    "dev:storybook": "storybook dev --quiet --port 6002",
+    "format:lint": "pnpm lint:eslint --fix",
+    "lint": "pnpm lint:eslint && pnpm lint:typescript",
+    "lint:eslint": "eslint ./src --ext cjs,js,jsx,mjs,ts,tsx --max-warnings=0",
+    "lint:typescript": "tsc --noEmit --declaration",
     "test:e2e": "playwright test",
     "test:unit": "jest --ci --coverage",
     "test:watch": "jest --watch"
@@ -17,7 +25,6 @@
   },
   "dependencies": {
     "@heroicons/react": "2.0.18",
-    "@jeromefitz/shared": "workspace:*",
     "@radix-ui/primitive": "1.0.1",
     "@radix-ui/react-accessible-icon": "1.0.3",
     "@radix-ui/react-accordion": "1.1.2",
