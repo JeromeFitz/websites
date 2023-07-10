@@ -4,6 +4,7 @@
  * This needs to be moved elsewhere
  *
  */
+import _title from 'title'
 
 async function generateMetadataCustom({ data, pageData, segmentInfo }) {
   const hasImage = !!pageData?.seoImage
@@ -33,6 +34,15 @@ async function generateMetadataCustom({ data, pageData, segmentInfo }) {
   } else {
     titleSeo = pageData.title
   }
+
+  const titleSuffix =
+    segmentInfo.segment === 'pages' || segmentInfo.isIndex
+      ? segmentInfo.slug === '/homepage'
+        ? ` | Actor. Comedian. Writer.`
+        : ` | Jerome Fitzgerald (he/him)`
+      : ` | ${_title(segmentInfo.segment)}`
+
+  titleSeo = `${titleSeo?.toString()}${titleSuffix}`
 
   const seo = {
     ...data?.seo,
