@@ -1,9 +1,11 @@
+import {
+  getDataFromCache,
+  getSegmentInfo,
+} from '@jeromefitz/shared/src/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
 import { draftMode } from 'next/headers'
 
-import { CONSTANTS } from '~app/(notion)/(config)/constants'
-import { getPageData } from '~app/(notion)/(config)/segments'
-import { getDataFromCache, getSegmentInfo } from '~app/(notion)/(config)/utils'
+import { CONFIG, getPageData } from '~app/(notion)/_config'
 import {
   SectionContent,
   SectionHeader,
@@ -15,7 +17,7 @@ import {
 } from '~components/Section'
 
 const slug = '/music'
-const { SEGMENT } = CONSTANTS.PAGES
+const { SEGMENT } = CONFIG.PAGES
 
 async function Slug({ revalidate, segmentInfo }) {
   const { isEnabled } = draftMode()

@@ -25,6 +25,7 @@ function VideoImpl({ block }: { block: VideoBlockObjectResponse | any }) {
       {!!caption && (
         <Caption>
           <EmojiWrapper id={block.id} text={`${caption}`} />
+          {/* {caption} */}
         </Caption>
       )}
     </Suspense>

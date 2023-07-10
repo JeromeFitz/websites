@@ -21,13 +21,15 @@ function ThemeToggle() {
   return (
     <>
       <button
-        className="hover:text-radix-pink11 flex flex-row items-center gap-1 align-middle"
+        className="hover:text-radix-pink11 flex"
         onClick={() => handleThemeToggle()}
       >
-        <span className="mr-2 h-4 w-4">
-          {loaded && <Icon className="text-inherit" />}
+        <span className="flex flex-row-reverse items-center justify-end gap-1 align-middle">
+          <span className="">Toggle Theme</span>
+          <span className="mr-2 h-4 w-4">
+            {loaded && <Icon className="text-inherit" />}
+          </span>
         </span>
-        <span className="">Toggle Theme</span>
       </button>
     </>
   )

@@ -1,4 +1,4 @@
-import 'server-only'
+'use client'
 
 import { Caption } from '@jeromefitz/ds/components/Caption'
 import { NotionEmoji as EmojiWrapper } from 'next-notion/src/blocks/Emoji'
@@ -28,6 +28,7 @@ function EmbedTwitter({ block }) {
       {!!caption && (
         <Caption>
           <EmojiWrapper id={block.id} text={`${caption}`} />
+          {/* {caption} */}
         </Caption>
       )}
     </>

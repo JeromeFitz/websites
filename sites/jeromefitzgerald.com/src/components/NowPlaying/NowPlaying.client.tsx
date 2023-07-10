@@ -1,17 +1,18 @@
 'use client'
 import { ButtonLink } from '@jeromefitz/ds/components/Button'
 import { ExternalLinkIcon } from '@jeromefitz/ds/components/Icon'
+import { cx } from '@jeromefitz/ds/utils/cx'
 import { fetcher } from '@jeromefitz/shared/src/lib/fetcher'
-import { cx } from '@jeromefitz/shared/src/utils/cx'
 // import * as AspectRatio from '@radix-ui/react-aspect-ratio'
 import { slug as _slug } from 'github-slugger'
 import _map from 'lodash/map'
 import _size from 'lodash/size'
 import ms from 'ms'
-import Image from 'next/image'
+// import NextImage from 'next/image'
 import useSWR from 'swr'
 import _title from 'title'
 
+import { NextImage } from '~components/Notion/Blocks/Image.client'
 import { Tags } from '~components/Section'
 import nowPlaying from '~data/mock/music/now-playing'
 
@@ -25,15 +26,15 @@ const initialData = nowPlaying
  *       notionColors[Math.floor(Math.random() * notionColors.length)]
  */
 const notionColors = [
-  // 'blue',
-  // 'brown',
-  // 'gray',
-  // 'green',
   'orange',
   'pink',
   'purple',
-  // 'red',
   'yellow',
+  'brown',
+  'blue',
+  'green',
+  'red',
+  'gray',
 ]
 
 function NowPlayingClient() {
@@ -57,7 +58,7 @@ function NowPlayingClient() {
   const base64 = album?.image?.base64
   // const imageSlug = album?.image?.slug
   const imageData = album?.image
-  const imageLabel = `Apologies, this image is dynamically generated from another source. Cannot yet provide vivid details. This is an image of ${artist}’s album cover for “${track.name}.”`
+  const imageLabel = `This image is dynamically generated from another source. Cannot yet provide vivid details. This is an image of ${artist}’s album cover for “${track.name}.”`
 
   // console.log(`NowPlaying >> track`, track)
 
@@ -88,12 +89,13 @@ function NowPlayingClient() {
     <div className={cx('flex flex-col gap-5')}>
       <div className="shadow-radix-blackA7 w-full overflow-hidden rounded-md shadow-[0_2px_10px]">
         {/* <AspectRatio.Root ratio={16 / 9} asChild> */}
-        <Image
+        <NextImage
           {...image}
           alt={imageLabel}
           className={cx('h-full w-full object-cover')}
           placeholder="blur"
           role="img"
+          order={99}
         />
         {/* </AspectRatio.Root> */}
       </div>
@@ -143,9 +145,10 @@ function NowPlayingClient() {
             <Tags tags={tags} classNameTag="px-3 py-2 mb-4 mr-4" />
           </div>
           <ButtonLink
+            aria-label={`Listen to “${track?.name}” on Spotify`}
             href={_href}
             className={cx(
-              'green-button-outline',
+              'spotify-button-outline',
               'flex-row items-center justify-center gap-1 align-middle',
               'w-1/3'
             )}

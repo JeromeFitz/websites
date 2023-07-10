@@ -1,4 +1,5 @@
-import { cx } from '@jeromefitz/shared/src/utils/cx'
+import { cx } from '@jeromefitz/ds/utils/cx'
+import { notFound } from 'next/navigation'
 
 import {
   SectionContent,
@@ -8,6 +9,8 @@ import {
   SectionWrapper,
   // Tags,
 } from '~components/Section'
+
+const isDev = process.env.NODE_ENV === 'development'
 
 const avatar =
   'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2021/bighead--jerome--dizzy.svg'
@@ -114,6 +117,7 @@ function OpenGraphTesting() {
 }
 
 export default function Page() {
+  if (!isDev) notFound()
   return (
     <>
       <SectionWrapper>

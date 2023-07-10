@@ -1,3 +1,4 @@
+'use client'
 import { FathomAnalytics } from './Fathom'
 import { VercelAnalytics } from './Vercel'
 

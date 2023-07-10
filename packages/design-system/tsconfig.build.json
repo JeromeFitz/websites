@@ -1,0 +1,48 @@
+{
+  "extends": "@jeromefitz/tsconfig/next.json",
+  "compilerOptions": {
+    // // w/ extends
+    // "baseUrl": ".",
+    "incremental": true,
+    // "noUnusedParameters": false, // @todo(lint)
+    "rootDir": "./src",
+    "outDir": "./dist",
+    // "strict": false,
+    "allowJs": false,
+    "allowSyntheticDefaultImports": true,
+    "alwaysStrict": true,
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    // "jsx": "preserve",
+    "jsx": "react-jsx",
+    "lib": ["dom", "ES2020"],
+    "module": "ES2020",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": false, // @todo(lint)
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": false, // @todo(lint)
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": false, // @todo(lint)
+    "strictNullChecks": false, // @todo(lint)
+    "strictPropertyInitialization": false, // @todo(lint)
+    "target": "esnext",
+    "tsBuildInfoFile": ".tsbuildinfo",
+    "types": ["node", "react/canary", "jest", "testing-library__jest-dom"]
+  },
+  "include": ["src", "index.d.ts", "next-env.d.ts"],
+  "exclude": [
+    "node_modules",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/*.stories.ts",
+    "**/*.stories.tsx"
+  ]
+}

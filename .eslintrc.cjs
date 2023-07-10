@@ -3,7 +3,7 @@ const fullCwd = path.join(__dirname, './')
 
 const nextOverrides = {
   rules: {
-    '@next/next/no-html-link-for-pages': ['error', 'src/app'],
+    '@next/next/no-html-link-for-pages': ['off', 'src/app'],
     'no-restricted-imports': [
       'error',
       {
@@ -52,11 +52,11 @@ module.exports = {
             '_background',
             '-button',
             '-radix-',
-            'afc',
-            'afc2',
             'bg-radix-',
             'icon-custom',
             'notion-',
+            'radix\\-.+:?.+',
+            'spotify-button-outline',
             'text-radix-',
             'trap',
           ],
@@ -72,7 +72,7 @@ module.exports = {
           config: `${fullCwd}/packages/design-system/tailwind.config.js`,
           callees: ['cx', 'tw'],
           // @todo(eslint-plugin-tailwindcss) submit pr for allowlist
-          whitelist: ['afc', 'afc2', 'icon-custom', 'trap'],
+          whitelist: ['icon-custom', 'spotify-button-outline', 'trap'],
         },
       },
     },

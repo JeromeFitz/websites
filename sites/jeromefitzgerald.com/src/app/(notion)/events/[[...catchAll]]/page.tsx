@@ -1,20 +1,19 @@
+import {
+  getDataFromCache,
+  getSegmentInfo,
+  getDatabaseQuery,
+} from '@jeromefitz/shared/src/notion/utils'
 import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints'
 // import isEqual from 'lodash/isEqual'
 // import uniqWith from 'lodash/uniqWith'
 import type { Metadata } from 'next'
 import { getPropertyTypeData } from 'next-notion/src/utils'
 
-import { CONSTANTS } from '~app/(notion)/(config)/constants'
-import type { PageObjectResponseEvent } from '~app/(notion)/(config)/segments'
-import { getEventData } from '~app/(notion)/(config)/segments'
-import {
-  getDataFromCache,
-  getSegmentInfo,
-  getDatabaseQuery,
-} from '~app/(notion)/(config)/utils'
+import type { PageObjectResponseEvent } from '~app/(notion)/_config'
+import { getEventData, CONFIG } from '~app/(notion)/_config'
 
-import { Listing } from './Event.Listing'
-import { Slug } from './Event.Slug'
+import { Listing } from './_components/Event.Listing'
+import { Slug } from './_components/Event.Slug'
 
 const isDev = process.env.NODE_ENV === 'development'
 
@@ -24,7 +23,7 @@ const isDev = process.env.NODE_ENV === 'development'
 // export const revalidate = TIME.MINUTE
 // export const runtime = 'nodejs'
 
-const { DATABASE_ID, SEGMENT } = CONSTANTS.EVENTS
+const { DATABASE_ID, SEGMENT } = CONFIG.EVENTS
 
 export async function generateMetadata({ ...props }): Promise<Metadata> {
   const segmentInfo = getSegmentInfo({ SEGMENT, ...props })

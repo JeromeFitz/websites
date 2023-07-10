@@ -6,6 +6,8 @@ const { backgrounds, buttons, notion, notionColors } = require('./src/index')
 /**
  * @debug
  */
+// console.dir(`> radixColors`)
+// console.dir(radixColors)
 // console.dir(`> backgrounds`)
 // console.dir(backgrounds)
 // console.dir(`> buttons`)

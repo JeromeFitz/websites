@@ -1,23 +1,22 @@
+import {
+  getDataFromCache,
+  getSegmentInfo,
+  getDatabaseQuery,
+} from '@jeromefitz/shared/src/notion/utils'
 import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints'
 // import isEqual from 'lodash/isEqual'
 // import uniqWith from 'lodash/uniqWith'
 import type { Metadata } from 'next'
 import { getPropertyTypeData } from 'next-notion/src/utils'
 
-import { CONSTANTS } from '~app/(notion)/(config)/constants'
-import type { PageObjectResponsePerson } from '~app/(notion)/(config)/segments'
-import { getPersonData } from '~app/(notion)/(config)/segments'
-import {
-  getDataFromCache,
-  getSegmentInfo,
-  getDatabaseQuery,
-} from '~app/(notion)/(config)/utils'
+import type { PageObjectResponsePerson } from '~app/(notion)/_config'
+import { getPersonData, CONFIG } from '~app/(notion)/_config'
 
-import { Listing } from './People.Listing'
-import { Slug } from './Person.Slug'
+import { Listing } from './_components/People.Listing'
+import { Slug } from './_components/Person.Slug'
 
 const isDev = process.env.NODE_ENV === 'development'
-const { DATABASE_ID, SEGMENT } = CONSTANTS.PEOPLE
+const { DATABASE_ID, SEGMENT } = CONFIG.PEOPLE
 
 // export const dynamic = 'auto'
 // export const dynamicParams = true

@@ -8,12 +8,8 @@ const buildInfoConfig = {
   repo: 'jeromefitzgerald.com',
 }
 
-const serverComponentsExternalPackages = [
-  '@jeromefitz/notion',
-  '@notionhq/client',
-  'plaiceholder',
-]
-const transpilePackages = ['@jeromefitz/shared', 'next-notion']
+const serverComponentsExternalPackages = []
+const transpilePackages = []
 
 module.exports = require('@jeromefitz/next-config')({
   basePath: '',

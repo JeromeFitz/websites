@@ -1,16 +1,16 @@
 import 'server-only'
 
 import { Anchor } from '@jeromefitz/ds/components/Anchor'
-import { cx } from '@jeromefitz/shared/src/utils/cx'
+import { cx } from '@jeromefitz/ds/utils/cx'
+import { getPageDataFromNotion } from '@jeromefitz/shared/src/notion/utils'
 import { asyncForEach } from '@jeromefitz/utils'
 import _noop from 'lodash/noop'
 import _orderBy from 'lodash/orderBy'
 import _size from 'lodash/size'
 import { cache, Suspense } from 'react'
 
-import type { PageObjectResponseShow } from '~app/(notion)/(config)/segments'
-import { getEventData } from '~app/(notion)/(config)/segments'
-import { getPageDataFromNotion } from '~app/(notion)/(config)/utils'
+import type { PageObjectResponseShow } from '~app/(notion)/_config'
+import { getEventData } from '~app/(notion)/_config'
 
 import { RelationLoading } from './index'
 
@@ -33,7 +33,7 @@ const RelationIndividual = cache(async ({ id }) => {
 
   const style = cx(
     'inline-block text-base font-normal tracking-tight no-underline md:text-xl',
-    isPublished && 'transition-all duration-500',
+    isPublished && 'transition-all duration-200',
     isPublished && 'text-radix-slate12 hover:text-radix-pink11',
     '',
     ''

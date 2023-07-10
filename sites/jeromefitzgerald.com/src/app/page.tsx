@@ -1,11 +1,13 @@
+import {
+  getDataFromCache,
+  getSegmentInfo,
+} from '@jeromefitz/shared/src/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
 import type { Metadata } from 'next'
 import { draftMode } from 'next/headers'
 import { getPropertyTypeData } from 'next-notion/src/utils'
 
-import { CONSTANTS } from '~app/(notion)/(config)/constants'
-import { getPageData } from '~app/(notion)/(config)/segments'
-import { getDataFromCache, getSegmentInfo } from '~app/(notion)/(config)/utils'
+import { getPageData, CONFIG } from '~app/(notion)/_config'
 import { Notion as Blocks } from '~components/Notion'
 import {
   SectionContent,
@@ -18,7 +20,7 @@ import {
 } from '~components/Section'
 
 const slug = '/homepage'
-const { SEGMENT } = CONSTANTS.PAGES
+const { SEGMENT } = CONFIG.PAGES
 
 export async function generateMetadata({ ...props }): Promise<Metadata> {
   const { isEnabled } = draftMode()
