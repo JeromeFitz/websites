@@ -23,7 +23,15 @@
     "build#jeromefitzgerald.com": {
       "dependsOn": ["^build"],
       "env": ["VERCEL_ENV"],
-      "inputs": ["src/**", "*.cjs", "*.js", "*.mjs", "tsconfig.json", "vercel.json"],
+      "inputs": [
+        "src/**",
+        "*.cjs",
+        "*.js",
+        "*.mjs",
+        "tsconfig.json",
+        "tsconfig.*.json",
+        "vercel.json"
+      ],
       "outputs": [".cache/**", ".next/**", "!.next/cache/**"]
     },
     "clean": {

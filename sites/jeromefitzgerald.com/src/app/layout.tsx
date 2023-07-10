@@ -3,6 +3,7 @@ import '@jeromefitz/tailwind-config/styles/globals.css'
 import { cx } from '@jeromefitz/ds/utils/cx'
 import dynamic from 'next/dynamic'
 import localFont from 'next/font/local'
+import { Fragment } from 'react'
 // import { Suspense } from 'react'
 
 // import { Analytics } from '~components/Analytics'
@@ -75,11 +76,23 @@ const fontSans = localFont({
 })
 
 export const metadata = {
+  colorScheme: 'dark',
   manifest: '/images/favicon/site.webmanifest',
+  themeColor: '#0f0f0f',
+  referrer: 'origin-when-cross-origin',
+  //
   title: 'Jerome Fitzgerald (he/him) | Actor. Comedian. Writer.',
   description:
     'Jerome Fitzgerald is an an actor, comedian, & writer hailing from Pittsburgh, PA.',
 }
+
+const preconnects = [
+  // https://web.dev/preconnect-and-dns-prefetch/#how-to-implement-rel=preconnect
+  // 'https://jeromefitzgerald.com',
+  'https://cdn.jeromefitzgerald.com',
+  'https://cdn.usefathom.com',
+  'https://vitals.vercel-insights.com',
+]
 
 function Wrapper({ children }) {
   return (
@@ -108,6 +121,14 @@ function Main({ children }) {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        {preconnects.map((preconnect, idx) => (
+          <Fragment key={`preconnect-${idx}`}>
+            <link rel="preconnect" href={preconnect} crossOrigin="anonymous" />
+            <link rel="dns-prefetch" href={preconnect} />
+          </Fragment>
+        ))}
+      </head>
       <body
         className={cx(
           'overflow-y-auto overflow-x-hidden',

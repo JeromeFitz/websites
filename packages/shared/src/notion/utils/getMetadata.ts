@@ -32,7 +32,8 @@ function getMetadata({ properties, segmentInfo }) {
   // console.dir(properties)
   // console.dir(isObjectEmpty(properties) ? `y` : 'n')
 
-  const canonical = `${BASE_URL}${segmentInfo?.slug}`
+  const canonical =
+    segmentInfo?.slug === '/homepage' ? BASE_URL : `${BASE_URL}${segmentInfo?.slug}`
 
   const descriptionTemp: TextRichTextItemResponse = getPropertyTypeData(
     properties,
