@@ -1,0 +1,36 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@jeromefitz/ds/*": ["../../packages/design-system/src/*"],
+      "~app/*": ["src/app/*"],
+      "~components/*": ["src/components/*"],
+      "~config/*": ["src/config/*"],
+      "~containers/*": ["src/containers/*"],
+      "~context/*": ["src/context/*"],
+      "~custom/*": ["src/custom/*"],
+      "~data/*": ["src/data/*"],
+      "~hooks/*": ["src/hooks/*"],
+      "~lib/*": ["src/lib/*"],
+      "~pages/*": ["src/pages/*"],
+      "~playground/*": ["src/playground/*"],
+      "~routes/*": ["src/routes/*"],
+      "~scripts/*": ["src/scripts/*"],
+      "~store/*": ["src/store/*"],
+      "~styles/*": ["src/styles/*"],
+      "~svg/*": ["src/svg/*"],
+      "~theme/*": ["src/theme/*"],
+      "~ui/*": ["src/ui/*"],
+      "~utils/*": ["src/utils/*"]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "preserveSymlinks": true,
+    "skipLibCheck": true,
+    "strictNullChecks": true
+  }
+}
