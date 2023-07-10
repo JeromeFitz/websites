@@ -74,8 +74,7 @@ runs:
       shell: bash
       # run: pnpm add @lhci/cli@0.12.0 --global
       run: |
-        npx @lhci/cli@0.12.0 install -g
-        lhci autorun
+        npx @lhci/cli@0.12.0 autorun
 
     - name: '💡  Lighthouse: ${{ inputs.WEBSITE }}'
       id: test-lighthouse
