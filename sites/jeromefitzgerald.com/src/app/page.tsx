@@ -5,9 +5,9 @@ import {
 import { isObjectEmpty } from '@jeromefitz/utils'
 import type { Metadata } from 'next'
 import { draftMode } from 'next/headers'
-import { getPropertyTypeData } from 'next-notion/src/utils'
 
 import { getPageData, CONFIG } from '~app/(notion)/_config'
+import { generateMetadataCustom } from '~app/(notion)/_config/temp/generateMetadataCustom'
 import { Notion as Blocks } from '~components/Notion'
 import {
   SectionContent,
@@ -44,10 +44,17 @@ export async function generateMetadata({ ...props }): Promise<Metadata> {
 
   if (is404) return is404Seo
 
-  const isPublished =
-    getPropertyTypeData(data?.page?.properties, 'Is.Published') || false
+  const pageData = getPageData(data?.page?.properties) || ''
+  const seo = await generateMetadataCustom({ data, pageData, segmentInfo })
 
-  return isPublished ? data?.seo : is404Seo
+  return pageData?.isPublished
+    ? {
+        ...seo,
+        title: 'Jerome Fitzgerald (he/him) | Actor. Comedian. Writer.',
+        description:
+          'Jerome Fitzgerald is an an actor, comedian, & writer hailing from Pittsburgh, PA.',
+      }
+    : is404Seo
 }
 
 async function Slug({ revalidate, segmentInfo }) {

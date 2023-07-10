@@ -76,6 +76,7 @@ const fontSans = localFont({
 })
 
 export const metadata = {
+  metadataBase: new URL(`https://${process.env.NEXT_PUBLIC__SITE}`),
   colorScheme: 'dark',
   manifest: '/images/favicon/site.webmanifest',
   themeColor: '#0f0f0f',
