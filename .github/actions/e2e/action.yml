@@ -44,26 +44,6 @@ runs:
           ~/.cache/ms-playwright
         key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
 
-    - name: '🎭  Playwright: Install (!cache)'
-      id: e2e-dependencies-playwright
-      shell: bash
-      # run: pnpm playwright install --with-deps
-      run: npx install playwright --with-deps
-      if: steps.playwright-cache.outputs.cache-hit != 'true'
-
-    - name: '🎭  Playwright: Install (cache)'
-      id: e2e-dependencies-playwright-cache
-      shell: bash
-      # run: pnpm playwright install-deps
-      run: npx playwright install-deps
-      if: steps.playwright-cache.outputs.cache-hit == 'true'
-
-    - name: '💡  Lighthouse: Install'
-      id: e2e-dependencies-lighthouse
-      shell: bash
-      run: pnpm add @lhci/cli --global
-      # run: npx install @lhci/cli --global
-
     # @todo(gh-actions) Separate `main` from PR
     - name: '🧪  Test: Build'
       id: e2e-build
@@ -89,6 +69,14 @@ runs:
     #     restore-keys: |
     #       ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-
 
+    - name: '💡  Lighthouse: Install'
+      id: e2e-dependencies-lighthouse
+      shell: bash
+      # run: pnpm add @lhci/cli@0.12.0 --global
+      run: |
+        npx @lhci/cli@0.12.0 install -g
+        lhci autorun
+
     - name: '💡  Lighthouse: ${{ inputs.WEBSITE }}'
       id: test-lighthouse
       shell: bash
@@ -100,6 +88,20 @@ runs:
       # run:  pnpm turbo run lhci --filter="${{ inputs.WEBSITE }}" --cache-dir=".cache-turbo"
       run: |
         pnpm --filter "${{ inputs.WEBSITE }}" lhci
+
+    - name: '🎭  Playwright: Install (!cache)'
+      id: e2e-dependencies-playwright
+      shell: bash
+      # run: pnpm playwright install --with-deps
+      run: npx playwright install --with-deps
+      if: steps.playwright-cache.outputs.cache-hit != 'true'
+
+    - name: '🎭  Playwright: Install (cache)'
+      id: e2e-dependencies-playwright-cache
+      shell: bash
+      # run: pnpm playwright install-deps
+      run: npx playwright install-deps
+      if: steps.playwright-cache.outputs.cache-hit == 'true'
 
     - name: '🎭  Playwright: ${{ inputs.WEBSITE }}'
       id: e2e-test
