@@ -72,9 +72,14 @@ runs:
     - name: '💡  Lighthouse: Install'
       id: e2e-dependencies-lighthouse
       shell: bash
+      env:
+        LHCI_GITHUB_APP_TOKEN: ${{ inputs.LHCI_GITHUB_APP_TOKEN }}
+        TURBO_TEAM: ${{ inputs.TURBO_TEAM }}
+        TURBO_TOKEN: ${{ inputs.TURBO_TOKEN }}
+        VERCEL_ENV: ${{ inputs.VERCEL_ENV }}
       # run: pnpm add @lhci/cli@0.12.0 --global
       run: |
-        npx @lhci/cli@0.12.0 autorun
+        npx @lhci/cli@0.12.0 autorun --config="./sites/${{ inputs.WEBSITE }}/lighthouse.config.js"
 
     - name: '💡  Lighthouse: ${{ inputs.WEBSITE }}'
       id: test-lighthouse
