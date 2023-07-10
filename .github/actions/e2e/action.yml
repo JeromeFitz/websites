@@ -72,7 +72,8 @@ runs:
     - name: '💡  Lighthouse: Install'
       id: e2e-dependencies-lighthouse
       shell: bash
-      run: pnpm add @lhci/cli -g
+      # run: pnpm add @lhci/cli -g
+      run: npx install @lhci/cli -g
 
     - name: '💡  Lighthouse: ${{ inputs.WEBSITE }}'
       id: test-lighthouse
@@ -89,7 +90,7 @@ runs:
       id: e2e-dependencies-playwright
       shell: bash
       # run: pnpm playwright install --with-deps
-      run: npx playwright install --with-deps
+      run: npx install playwright --with-deps
       if: steps.playwright-cache.outputs.cache-hit != 'true'
 
     - name: '🎭  Playwright: Install (cache)'
