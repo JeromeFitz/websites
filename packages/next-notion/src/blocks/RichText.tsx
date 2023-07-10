@@ -97,6 +97,9 @@ function RichText({
     rich_text: Array<RichTextItemResponse>
     color: ApiColor
   } = block[block.type]
+
+  if (!data) return null
+
   const { rich_text } = data
 
   return (

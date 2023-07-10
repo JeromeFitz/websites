@@ -153,6 +153,8 @@ async function ImageImpl({
   if (block?.image?.external?.url === '') return null
 
   const imageUrl = getImageUrl(block)
+  if (!imageUrl) return null
+
   const imageCaption = !!block[block.type]?.caption
     ? block[block.type]?.caption[0]?.plain_text
     : null

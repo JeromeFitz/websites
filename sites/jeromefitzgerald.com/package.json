@@ -23,6 +23,8 @@
     "lint": "concurrently \"pnpm run lint:eslint\" \"pnpm run lint:typescript:dev\"",
     "lint:eslint": "eslint ./src --ext cjs,js,jsx,mjs,ts,tsx --max-warnings=0",
     "lint:typescript": "tsc --noEmit --declaration",
+    "lint:typescript:dev": "pnpm run lint:typescript -p ./tsconfig.dev.json",
+    "lint:typescript:prod": "pnpm run lint:typescript -p ./tsconfig.json",
     "semantic-release": "semantic-release",
     "start": "next start",
     "start:isr": "next start -H localhost",

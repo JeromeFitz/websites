@@ -6,7 +6,7 @@ import { isObjectEmpty } from '@jeromefitz/utils'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 
-import { CONSTANTS, getPageData } from '~app/(notion)/(config)'
+import { CONFIG, getPageData } from '~app/(notion)/_config'
 import { Notion as Blocks } from '~components/Notion'
 import {
   SectionContent,
@@ -20,7 +20,7 @@ import {
 
 const isDev = process.env.NODE_ENV === 'development'
 const slug = '/kitchen-sink'
-const { SEGMENT } = CONSTANTS.PAGES
+const { SEGMENT } = CONFIG.PAGES
 
 async function Slug({ revalidate, segmentInfo }) {
   const { isEnabled } = draftMode()
