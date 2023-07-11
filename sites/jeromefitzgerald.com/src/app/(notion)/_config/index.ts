@@ -9,6 +9,9 @@ export { getPageData, getPropertyTypeDataPage } from './Page.utils'
 export type { PageObjectResponsePerson, PropertiesPerson } from './Person.types'
 export { getPersonData, getPropertyTypeDataPerson } from './Person.utils'
 
+export type { PageObjectResponsePodcast, PropertiesPodcast } from './Podcast.types'
+export { getPodcastData, getPropertyTypeDataPodcast } from './Podcast.utils'
+
 export type { PageObjectResponseShow, PropertiesShow } from './Show.types'
 export { getShowData, getPropertyTypeDataShow } from './Show.utils'
 
