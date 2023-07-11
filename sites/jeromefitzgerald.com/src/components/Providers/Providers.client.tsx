@@ -42,7 +42,7 @@ const singularRules = [
   { rule: /musical$/i, replacement: 'musical director' },
   { rule: /primary$/i, replacement: 'show' },
   { rule: /supporting$/i, replacement: 'Featuring' },
-  { rule: /technical$/i, replacement: 'techncial director' },
+  { rule: /technical$/i, replacement: 'technical director' },
 ]
 singularRules.map(({ rule, replacement }) => {
   pluralize.addSingularRule(rule, replacement)
