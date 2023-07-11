@@ -14,7 +14,7 @@ import _title from 'title'
 
 import { NextImage } from '~components/Notion/Blocks/Image.client'
 import { Tags } from '~components/Section'
-import nowPlaying from '~data/mock/music/now-playing'
+import nowPlaying from '~data/mock/music/the-control-center'
 
 const refreshInterval = ms('1m')
 

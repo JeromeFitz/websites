@@ -1,4 +1,4 @@
-const nowPlaying = {
+const data = {
   timestamp: 1639954840102,
   context: {
     external_urls: {
@@ -78,4 +78,4 @@ const nowPlaying = {
   is_playing: true,
 }
 
-export default nowPlaying
+export default data
