@@ -1,4 +1,5 @@
-import NextImage from 'next/image'
+import NextImage, { unstable_getImgProps as getImgProps } from 'next/image'
+import { preload } from 'react-dom'
 
 function Image({ ...props }) {
   // @note(notion) eject for html validity purposes
@@ -10,34 +11,37 @@ function Image({ ...props }) {
   const hack: any = {}
   hack.priority = isPriority
   hack.fetchPriority = isPriority ? 'high' : 'auto'
-  // hack.loading = isPriority ? 'eager' : 'lazy'
+  hack.loading = isPriority ? 'eager' : 'lazy'
   hack.quality = 90
-  // const preload = `/_next/image?url=${encodeURIComponent(props?.src)}&w=1920&q=${
-  //   hack.quality
-  // }`
 
   // @hack(next) in case no comments are found in notion
   if (!image?.alt) image.alt = ''
+
   if (!image?.sizes)
     image.sizes = '(max-width: 768px) 50vw, (max-width: 1200px) 50vw, 70vw'
-  // image.unoptimized = process.env.NODE_ENV !== 'production'
-  // console.dir(`> Image.client: debug`)
-  // console.dir(hack)
-  // console.dir(image)
+
+  /**
+   * @hack(next) NEXT-811
+   * ref: https://github.com/vercel/next.js/issues/43134
+   */
+  const imgProps = { ...hack, ...image }
+  const preloadImgProps = getImgProps(imgProps)
+  isPriority &&
+    preload(preloadImgProps.props.src, {
+      // @todo(types) Type '"image"' is not assignable to type 'PreloadAs
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      as: 'image',
+      imageSrcSet: preloadImgProps.props.srcSet,
+      imageSizes: imgProps.sizes,
+    })
 
   return (
     <>
-      {/* @hack(next) NEXT-811 */}
-      {/* https://github.com/vercel/next.js/issues/43134 */}
-      {/* {!!hack.priority && <link rel="preload" href={preload} as="image" />} */}
-      {/* @todo(types) */}
-      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-      {/* @ts-ignore */}
       <NextImage
         className="flex w-full justify-center"
         placeholder="blur"
-        {...hack}
-        {...image}
+        {...imgProps}
       />
     </>
   )
