@@ -59,12 +59,15 @@ const getDataFromCache = cache(
      * Redis
      */
     let data
+    console.dir(`getCache: slug: ${slug}`)
     const databaseQueryCache = await getCache({ slug })
     const isCached = !!databaseQueryCache && !isObjectEmpty(databaseQueryCache)
     data = databaseQueryCache
 
     if (OVERRIDE_CACHE || draft || revalidate || !isCached) {
-      // console.dir(`OVERRIDE_CACHE || draft || revalidate || !isCached`)
+      console.dir(
+        `getDataFromCache: OVERRIDE_CACHE || draft || revalidate || !isCached`
+      )
       /**
        * Notion
        */
@@ -98,7 +101,7 @@ const getDataFromCache = cache(
         seo,
       }
       if (!isObjectEmpty(data.blocks) && !draft) {
-        // console.dir(`setCache: draft: ${draft ? 'y' : 'n'}`)
+        console.dir(`setCache: draft: ${draft ? 'y' : 'n'}`)
         void setCache({ data, slug })
       }
     }

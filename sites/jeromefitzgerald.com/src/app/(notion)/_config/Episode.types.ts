@@ -3,21 +3,21 @@ import type {
   DatePropertyItemObjectResponse,
   FilesPropertyItemObjectResponse,
   FormulaPropertyItemObjectResponse,
-  MultiSelectPropertyItemObjectResponse,
+  NumberPropertyItemObjectResponse,
+  // MultiSelectPropertyItemObjectResponse,
   // NumberPropertyItemObjectResponse,
   PageObjectResponse,
   RelationPropertyItemObjectResponse,
   RichTextPropertyItemObjectResponse,
   RollupPropertyItemObjectResponse,
-  // SelectPropertyItemObjectResponse,
+  SelectPropertyItemObjectResponse,
   // StatusPropertyItemObjectResponse,
   TitlePropertyItemObjectResponse,
   UrlPropertyItemObjectResponse,
 } from '@notionhq/client/build/src/api-endpoints'
 import type { Spread } from 'next-notion/src/Notion.types'
 
-type PropertiesPodcast = {
-  'Author.Email': RichTextPropertyItemObjectResponse
+type PropertiesEpisode = {
   'Date.DayOfMonth': FormulaPropertyItemObjectResponse
   'Date.DayOfMonthOrdinal': FormulaPropertyItemObjectResponse
   'Date.DayOfWeek': FormulaPropertyItemObjectResponse
@@ -34,37 +34,53 @@ type PropertiesPodcast = {
   'Date.WeekNumber': FormulaPropertyItemObjectResponse
   'Date.Year': FormulaPropertyItemObjectResponse
   'Is.Active': CheckboxPropertyItemObjectResponse
+  'Is.Explicit': CheckboxPropertyItemObjectResponse
   'Is.Indexed': CheckboxPropertyItemObjectResponse
   'Is.Published': CheckboxPropertyItemObjectResponse
   'Meta.Apple.ID': RichTextPropertyItemObjectResponse
   'Meta.Apple.URL': UrlPropertyItemObjectResponse
+  'Meta.Duration': UrlPropertyItemObjectResponse
+  'Meta.Episode': NumberPropertyItemObjectResponse
+  'Meta.MP3': UrlPropertyItemObjectResponse
+  'Meta.Season': NumberPropertyItemObjectResponse
   'Meta.Spotify.ID': RichTextPropertyItemObjectResponse
   'Meta.Spotify.URL': UrlPropertyItemObjectResponse
-  'Relation.Episodes': RelationPropertyItemObjectResponse
-  'Relation.People.Host': RelationPropertyItemObjectResponse
-  'Relation.People.Producer': RelationPropertyItemObjectResponse
+  'Meta.Time.Duration': FormulaPropertyItemObjectResponse
+  'Meta.Time.Hours': FormulaPropertyItemObjectResponse
+  'Meta.Time.Minutes': FormulaPropertyItemObjectResponse
+  'Meta.Time.Seconds': FormulaPropertyItemObjectResponse
+  'Meta.Time.Valid': FormulaPropertyItemObjectResponse
+  'Meta.Time': RichTextPropertyItemObjectResponse
+  'Meta.Type': SelectPropertyItemObjectResponse
+  'Relation.People.Guest': RelationPropertyItemObjectResponse
+  'Relation.People.SoundEngineer': RelationPropertyItemObjectResponse
   'Relation.People.Thanks': RelationPropertyItemObjectResponse
-  'Rollup.Episodes.Slug': RollupPropertyItemObjectResponse
-  'Rollup.Episodes.Title': RollupPropertyItemObjectResponse
+  'Relation.Podcasts': RelationPropertyItemObjectResponse
+  'Relation.Venues': RelationPropertyItemObjectResponse
+  'Rollup.People.Guest.Title': RollupPropertyItemObjectResponse
   'Rollup.People.Host.Title': RollupPropertyItemObjectResponse
-  'Rollup.People.Producer.Title': RollupPropertyItemObjectResponse
+  'Rollup.People.SoundEngineer.Title': RollupPropertyItemObjectResponse
   'Rollup.People.Thanks.Title': RollupPropertyItemObjectResponse
+  'Rollup.Podcasts.Apple.ID': RollupPropertyItemObjectResponse
+  'Rollup.Podcasts.Apple.URL': RollupPropertyItemObjectResponse
+  'Rollup.Podcasts.Slug': RollupPropertyItemObjectResponse
+  'Rollup.Podcasts.Spotify.ID': RollupPropertyItemObjectResponse
+  'Rollup.Podcasts.Spotify.URL': RollupPropertyItemObjectResponse
+  'Rollup.Podcasts.Title': RollupPropertyItemObjectResponse
+  'Rollup.Venues.Slug': RollupPropertyItemObjectResponse
+  'Rollup.Venues.Title': RollupPropertyItemObjectResponse
   'SEO.Description': RichTextPropertyItemObjectResponse
   'SEO.Image.Description': RichTextPropertyItemObjectResponse
   'SEO.Image': FilesPropertyItemObjectResponse
   'SEO.Keywords': RichTextPropertyItemObjectResponse
   'Slug.Preview': FormulaPropertyItemObjectResponse
-  Explicit: CheckboxPropertyItemObjectResponse
-  Author: RichTextPropertyItemObjectResponse
-  Categories: MultiSelectPropertyItemObjectResponse
   Date: DatePropertyItemObjectResponse
   ID: FormulaPropertyItemObjectResponse
   Slug: RichTextPropertyItemObjectResponse
-  Tags: MultiSelectPropertyItemObjectResponse
   Title: TitlePropertyItemObjectResponse
 }
-type PageObjectResponsePodcast = Spread<
-  [PageObjectResponse, { properties: PropertiesPodcast }]
+type PageObjectResponseEpisode = Spread<
+  [PageObjectResponse, { properties: PropertiesEpisode }]
 >
 
-export type { PageObjectResponsePodcast, PropertiesPodcast }
+export type { PageObjectResponseEpisode, PropertiesEpisode }

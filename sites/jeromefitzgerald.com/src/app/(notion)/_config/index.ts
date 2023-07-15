@@ -1,5 +1,8 @@
 export { CONFIG } from './config'
 
+export type { PageObjectResponseEpisode, PropertiesEpisode } from './Episode.types'
+export { getEpisodeData, getPropertyTypeDataEpisode } from './Episode.utils'
+
 export type { PageObjectResponseEvent, PropertiesEvent } from './Event.types'
 export { getEventData, getPropertyTypeDataEvent } from './Event.utils'
 

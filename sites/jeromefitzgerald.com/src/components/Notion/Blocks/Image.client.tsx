@@ -24,6 +24,16 @@ function Image({ ...props }) {
   // console.dir(`> Image.client: debug`)
   // console.dir(hack)
   // console.dir(image)
+  if (!image.blurDataURL) image.blurDataURL = base64
+
+  const imageProps = {
+    ...hack,
+    ...image,
+    ...img,
+  }
+
+  // console.dir(`imageProps`)
+  // console.dir(imageProps)
 
   return (
     <>
@@ -36,8 +46,7 @@ function Image({ ...props }) {
       <NextImage
         className="flex w-full justify-center"
         placeholder="blur"
-        {...hack}
-        {...image}
+        {...imageProps}
       />
     </>
   )

@@ -23,13 +23,16 @@ const getDatabaseQuery = cache(
     const isCached = !!dataFromCache && !isObjectEmpty(dataFromCache)
 
     if (OVERRIDE_CACHE || draft || revalidate || !isCached) {
+      console.dir(
+        `getDatabaseQuery: OVERRIDE_CACHE || draft || revalidate || !isCached`
+      )
       const dataFromNotion = await _getDatabaseQuery({
         database_id,
         filterType,
         segmentInfo,
       })
-      // console.dir(`> dataFromNotion: ${id}`)
-      // console.dir(dataFromNotion)
+      console.dir(`> dataFromNotion: ${database_id}`)
+      console.dir(dataFromNotion)
 
       if (!isObjectEmpty(dataFromNotion) && !draft) {
         // console.dir(`setCache: ${key}`)

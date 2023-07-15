@@ -1,7 +1,7 @@
 // https://securityheaders.com
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' data: *.youtube.com *.twitter.com cdn.usefathom.com cdn.vercel-insights.com vercel.live *.${process.env.NEXT_PUBLIC__SITE};
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' data: *.spotify.com *.twitter.com *.youtube.com cdn.usefathom.com cdn.vercel-insights.com vercel.live *.${process.env.NEXT_PUBLIC__SITE};
   child-src *.youtube.com *.google.com *.twitter.com *.spotify.com vercel.live;
   style-src 'self' 'unsafe-inline' *.googleapis.com;
   img-src 'self' * blob: data:;
