@@ -31,8 +31,8 @@ const getDatabaseQuery = cache(
         filterType,
         segmentInfo,
       })
-      console.dir(`> dataFromNotion: ${database_id}`)
-      console.dir(dataFromNotion)
+      // console.dir(`> dataFromNotion: ${database_id}`)
+      // console.dir(dataFromNotion)
 
       if (!isObjectEmpty(dataFromNotion) && !draft) {
         // console.dir(`setCache: ${key}`)

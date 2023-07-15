@@ -1,6 +1,6 @@
 // https://securityheaders.com
 const ContentSecurityPolicy = `
-  default-src 'self';
+  default-src 'self' vercel.live;
   script-src 'self' 'unsafe-eval' 'unsafe-inline' data: *.spotify.com *.twitter.com *.youtube.com cdn.usefathom.com cdn.vercel-insights.com vercel.live *.${process.env.NEXT_PUBLIC__SITE};
   child-src *.youtube.com *.google.com *.twitter.com *.spotify.com vercel.live;
   style-src 'self' 'unsafe-inline' *.googleapis.com;
@@ -8,7 +8,7 @@ const ContentSecurityPolicy = `
   object-src 'self' * blob: data:;
   media-src 'none';
   connect-src * vitals.vercel-insights.com;
-  font-src 'self';
+  font-src 'self' data:;
 `
 
 const securityHeaders = [

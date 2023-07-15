@@ -9,7 +9,7 @@ import type {
   RelationPropertyItemObjectResponse,
   RichTextPropertyItemObjectResponse,
   RollupPropertyItemObjectResponse,
-  // SelectPropertyItemObjectResponse,
+  SelectPropertyItemObjectResponse,
   // StatusPropertyItemObjectResponse,
   TitlePropertyItemObjectResponse,
   UrlPropertyItemObjectResponse,
@@ -17,7 +17,6 @@ import type {
 import type { Spread } from 'next-notion/src/Notion.types'
 
 type PropertiesPodcast = {
-  'Author.Email': RichTextPropertyItemObjectResponse
   'Date.DayOfMonth': FormulaPropertyItemObjectResponse
   'Date.DayOfMonthOrdinal': FormulaPropertyItemObjectResponse
   'Date.DayOfWeek': FormulaPropertyItemObjectResponse
@@ -34,6 +33,7 @@ type PropertiesPodcast = {
   'Date.WeekNumber': FormulaPropertyItemObjectResponse
   'Date.Year': FormulaPropertyItemObjectResponse
   'Is.Active': CheckboxPropertyItemObjectResponse
+  'Is.Explicit': CheckboxPropertyItemObjectResponse
   'Is.Indexed': CheckboxPropertyItemObjectResponse
   'Is.Published': CheckboxPropertyItemObjectResponse
   'Meta.Apple.ID': RichTextPropertyItemObjectResponse
@@ -55,13 +55,17 @@ type PropertiesPodcast = {
   'SEO.Keywords': RichTextPropertyItemObjectResponse
   'Slug.Preview': FormulaPropertyItemObjectResponse
   Explicit: CheckboxPropertyItemObjectResponse
-  Author: RichTextPropertyItemObjectResponse
   Categories: MultiSelectPropertyItemObjectResponse
   Date: DatePropertyItemObjectResponse
   ID: FormulaPropertyItemObjectResponse
   Slug: RichTextPropertyItemObjectResponse
   Tags: MultiSelectPropertyItemObjectResponse
   Title: TitlePropertyItemObjectResponse
+  //
+  Author: RichTextPropertyItemObjectResponse
+  'Author.Email': RichTextPropertyItemObjectResponse
+  Subtitle: RichTextPropertyItemObjectResponse
+  Type: SelectPropertyItemObjectResponse
 }
 type PageObjectResponsePodcast = Spread<
   [PageObjectResponse, { properties: PropertiesPodcast }]

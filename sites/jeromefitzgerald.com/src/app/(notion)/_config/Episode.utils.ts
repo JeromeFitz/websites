@@ -57,6 +57,8 @@ function getEpisodeData(properties) {
     season: getPropertyTypeDataEpisode(properties, 'Meta.Season'),
     spotifyId: getPropertyTypeDataEpisode(properties, 'Meta.Spotify.ID'),
     type: getPropertyTypeDataEpisode(properties, 'Meta.Type'),
+    mp3: getPropertyTypeDataEpisode(properties, 'Meta.MP3'),
+    subtitle: getPropertyTypeDataEpisode(properties, 'Subtitle'),
     podcastAppleId: getPropertyTypeDataEpisode(
       properties,
       'Rollup.Podcasts.Apple.ID'
@@ -76,9 +78,10 @@ function getEpisodeData(properties) {
     podcastSlug: getPropertyTypeDataEpisode(properties, 'Rollup.Podcasts.Slug'),
 
     /**
-     * SEO Information
+     * Podcast Information
      */
     hosts: getPropertyTypeDataEpisode(properties, 'Rollup.People.Host.Title'),
+    podcastTitle: getPropertyTypeDataEpisode(properties, 'Rollup.Podcasts.Title')[0],
     /**
      * SEO Information
      */

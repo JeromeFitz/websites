@@ -78,6 +78,8 @@ type PropertiesEpisode = {
   ID: FormulaPropertyItemObjectResponse
   Slug: RichTextPropertyItemObjectResponse
   Title: TitlePropertyItemObjectResponse
+  //
+  Subtitle: RichTextPropertyItemObjectResponse
 }
 type PageObjectResponseEpisode = Spread<
   [PageObjectResponse, { properties: PropertiesEpisode }]

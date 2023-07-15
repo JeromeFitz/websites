@@ -1,4 +1,5 @@
 import { Anchor } from '@jeromefitz/ds/components/Anchor'
+// import { MicrophoneIcon } from '@jeromefitz/ds/components/Icon'
 import { Separator } from '@jeromefitz/ds/components/Separator'
 import { cx } from '@jeromefitz/ds/utils/cx'
 import { getDataFromCache } from '@jeromefitz/shared/src/notion/utils'
@@ -110,13 +111,16 @@ function Rollups({ properties }) {
 }
 
 function Links({ properties }) {
-  const { spotifyId } = getEpisodeData(properties)
+  const { href, podcastTitle, spotifyId, ...props } = getEpisodeData(properties)
+  console.dir(props)
+  const [, segment, podcastSlug] = href.split('/')
+  const podcastUrl = `/${segment}/${podcastSlug}`
   const spotifyUrl = `https://open.spotify.com/episode/${spotifyId}`
   const isPublished = true
   const style = cx(
     styleIndividual,
-    isPublished && 'transition-all duration-200',
-    isPublished && 'text-radix-slate12 hover:text-radix-pink11'
+    isPublished && 'transition-all duration-200'
+    // isPublished && 'text-radix-slate12 hover:text-radix-pink11'
   )
   return (
     <>
@@ -142,6 +146,16 @@ function Links({ properties }) {
             <strong>Preview</strong>
           </p>
           <EmbedSpotify id={spotifyId} />
+        </div>
+        <div className="my-2 py-2">
+          <p className="pb-3 font-extrabold uppercase tracking-tight">
+            <strong>Back to</strong>
+          </p>
+          <p className={style}>
+            <Anchor href={podcastUrl} className={cx(style)}>
+              {podcastTitle}
+            </Anchor>
+          </p>
         </div>
       </div>
     </>

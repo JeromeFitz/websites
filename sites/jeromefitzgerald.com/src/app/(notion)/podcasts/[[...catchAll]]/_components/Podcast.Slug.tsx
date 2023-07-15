@@ -22,7 +22,11 @@ import { PodcastEpisodes } from './Podcast.Episodes'
 const { DATABASE_ID } = CONFIG.PODCASTS
 
 type RELATIONS_TYPE = keyof PropertiesPodcast
-const RELATIONS: RELATIONS_TYPE[] = []
+const RELATIONS: RELATIONS_TYPE[] = [
+  'Relation.People.Host',
+  'Relation.People.Producer',
+  'Relation.People.Thanks',
+]
 
 async function Slug({ revalidate, segmentInfo }) {
   const { isEnabled } = draftMode()

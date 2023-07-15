@@ -72,8 +72,8 @@ const getDatabaseQuery = async ({
     sorts,
   }
 
-  console.dir(`> options`)
-  console.dir(options)
+  // console.dir(`> options`)
+  // console.dir(options)
 
   // @ts-expect-error Property 'is_not_empty' is missing in type
   const response = await notion.databases.query(options)

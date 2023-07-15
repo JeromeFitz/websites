@@ -25,8 +25,8 @@ async function Image({ properties }) {
     'SEO.Image.Description'
   )
   const imageSeo = getPropertyTypeDataEvent(properties, 'SEO.Image')[0]
-  console.dir(`imageSeo:`)
-  console.dir(imageSeo)
+  // console.dir(`imageSeo:`)
+  // console.dir(imageSeo)
   /**
    * @todo(next) this image piece should be abstracted out and return nothing if undefined
    */
