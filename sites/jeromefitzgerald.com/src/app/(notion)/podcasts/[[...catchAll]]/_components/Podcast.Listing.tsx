@@ -11,8 +11,8 @@ import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 import { getPropertyTypeData } from 'next-notion/src/utils'
 
-import { CONFIG, getPageData, getShowData } from '~app/(notion)/_config'
-// import type { PageObjectResponseShow } from '~app/(notion)/_config'
+import { CONFIG, getPageData, getPodcastData } from '~app/(notion)/_config'
+// import type { PageObjectResponsePodcast } from '~app/(notion)/_config'
 import {
   SectionContent,
   SectionHeader,
@@ -24,30 +24,35 @@ import {
 } from '~components/Section'
 import { WIP } from '~components/WIP'
 
-const { DATABASE_ID } = CONFIG.SHOWS
+const { DATABASE_ID } = CONFIG.PODCASTS
 
 function ListingTemp({ data }) {
   const { isEnabled } = draftMode()
   const draft = isEnabled
   const items = data.results.map((item) => {
     const { properties } = item
-    const itemData = getShowData(properties)
+    // console.dir(`item`)
+    // console.dir(properties)
+    const itemData = getPodcastData(properties)
+    if (!itemData?.id) return null
     if (!itemData?.isPublished) return null
     return itemData
   })
 
-  const shows = _orderBy(_filter(items, draft ? {} : { isPublished: true }), [
+  const podcasts = _orderBy(_filter(items, draft ? {} : { isPublished: true }), [
     'title',
   ])
 
+  // console.dir(podcasts)
+
   return (
     <ul>
-      {shows.map((show) => {
-        if (!show?.isPublished) return null
+      {podcasts.map((podcast) => {
+        if (!podcast?.isPublished) return null
         return (
-          <li key={`shows-show-${show?.id}`} className="my-1 py-1">
-            <Anchor href={show?.href} className="text-base md:text-xl">
-              {show?.title}
+          <li key={`podcasts-podcast-${podcast?.id}`} className="my-1 py-1">
+            <Anchor href={podcast?.href} className="text-base md:text-xl">
+              {podcast?.title}
             </Anchor>
           </li>
         )
@@ -57,9 +62,9 @@ function ListingTemp({ data }) {
 
   // return (
   //   <ul>
-  //     {shows.map((show: PageObjectResponseShow) => {
+  //     {shows.map((show: PageObjectResponsePodcast) => {
   //       const { properties } = show
-  //       const { isPublished } = getShowData(properties)
+  //       const { isPublished } = getPodcastData(properties)
   //       if (!isPublished) return null
   //       // const propertyTypeData: any = getPropertyTypeData(
   //       //   properties,
@@ -111,18 +116,20 @@ async function Listing({ revalidate, segmentInfo }) {
   /**
    * @note(notion) GET ITEMS / TODO CACHE + SUSPENSE
    */
-  const showData: QueryDatabaseResponse = await getDatabaseQuery({
+  const podcastData: QueryDatabaseResponse = await getDatabaseQuery({
     database_id: DATABASE_ID,
     draft: isEnabled,
     filterType: 'starts_with',
     revalidate,
     segmentInfo,
   })
-  const hasContent = showData?.results?.length > 0
-  const title = 'Shows'
+  const hasContent = podcastData?.results?.length > 0
+  const title = 'Podcasts'
 
   // const seoDescription = getPropertyTypeData(data?.page?.properties, 'SEO.Description')
   const { seoDescription } = getPageData(data?.page?.properties) || ''
+
+  // console.dir(podcastData)
 
   return (
     <>
@@ -137,9 +144,9 @@ async function Listing({ revalidate, segmentInfo }) {
           </SectionHeaderContent>
         </SectionHeader>
         <SectionContent>
-          {/* <Blocks data={data?.blocks} /> */}
           <WIP />
-          {hasContent && <ListingTemp data={showData} />}
+          {/* <Blocks data={data?.blocks} /> */}
+          {hasContent && <ListingTemp data={podcastData} />}
         </SectionContent>
       </SectionWrapper>
     </>

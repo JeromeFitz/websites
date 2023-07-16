@@ -103,9 +103,10 @@
       "matchPackagePatterns": ["^@testing-library/"]
     },
     {
-      "automerge": true,
+      "automerge": false,
       "automergeType": "branch",
       "commitMessagePrefix": "📦  (deps-dev)",
+      "commitMessageSuffix": "[b]",
       "excludePackageNames": [],
       "groupName": "playwright 🎭 ",
       "groupSlug": "playwright",

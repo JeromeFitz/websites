@@ -35,6 +35,7 @@ async function VideoYouTube({ block, url }) {
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
         sandbox="allow-scripts allow-presentation allow-popups allow-top-navigation-by-user-activation allow-forms allow-same-origin"
+        loading="lazy"
         title={alt}
       />
     </div>

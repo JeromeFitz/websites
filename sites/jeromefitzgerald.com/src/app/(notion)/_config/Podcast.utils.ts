@@ -36,11 +36,14 @@ function getPodcastData(properties) {
      * Is Information
      */
     isActive: getPropertyTypeDataPodcast(properties, 'Is.Active'),
+    isExplicit: getPropertyTypeDataPodcast(properties, 'Is.Explicit'),
     isIndexed: getPropertyTypeDataPodcast(properties, 'Is.Indexed'),
     isPublished: getPropertyTypeDataPodcast(properties, 'Is.Published'),
     /**
-     * Show Information
+     * Episode Information
      */
+    episodeSlugs: getPropertyTypeDataPodcast(properties, 'Rollup.Episodes.Slug'),
+    episodeTitles: getPropertyTypeDataPodcast(properties, 'Rollup.Episodes.Title'),
     /**
      * SEO Information
      */
@@ -51,6 +54,15 @@ function getPodcastData(properties) {
       'SEO.Image.Description'
     ),
     seoImage: getPropertyTypeDataPodcast(properties, 'SEO.Image')[0],
+    /**
+     * Tag Information
+     */
+    author: getPropertyTypeDataPodcast(properties, 'Author'),
+    authorEmail: getPropertyTypeDataPodcast(properties, 'Author.Email'),
+    categories: getPropertyTypeDataPodcast(properties, 'Categories'),
+    subtitle: getPropertyTypeDataPodcast(properties, 'Subtitle'),
+    tags: getPropertyTypeDataPodcast(properties, 'Tags'),
+    type: getPropertyTypeDataPodcast(properties, 'Type'),
   }
 
   return data
