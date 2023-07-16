@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 // https://jerandky.com/api/rss/podcasts/jer-and-ky-and-guest
 // https://jerandky.com/api/rss/podcasts/knockoffs
 
@@ -6,6 +5,7 @@ import {
   getDataFromCache,
   getSegmentInfo,
 } from '@jeromefitz/shared/src/notion/utils'
+import { isObjectEmpty } from '@jeromefitz/utils'
 import _orderBy from 'lodash/orderBy'
 import { NextRequest, NextResponse } from 'next/server'
 import { notion } from 'next-notion/src/helper'
@@ -21,10 +21,8 @@ export async function GET(
   { params }: { params: { slug: string } }
 ) {
   const slug = params.slug
-  console.dir(`slug: ${slug}`)
 
   const segmentInfo = getSegmentInfo({ SEGMENT, params: { catchAll: [slug] } })
-  console.dir(segmentInfo)
 
   const data = await getDataFromCache({
     database_id: DATABASE_ID,
@@ -33,23 +31,15 @@ export async function GET(
     revalidate: false,
     segmentInfo,
   })
-  const podcastData = getPodcastData(data?.page?.properties)
-  // console.dir(props)
 
-  // const episodes = await getDataFromCache({
-  //   database_id: CONFIG.EPISODES.DATABASE_ID,
-  //   draft: false,
-  //   filterType: 'starts_with',
-  //   revalidate: false,
-  //   segmentInfo: {
-  //     catchAll: ['podcasts', 'knockoffs'],
-  //     isIndex: false,
-  //     hasMeta: true,
-  //     segment: 'episodes',
-  //     segmentCount: 2,
-  //     slug: '/podcasts/knockoffs',
-  //   },
-  // })
+  if (isObjectEmpty(data?.blocks)) {
+    return NextResponse.json({
+      segment: `/podcasts/${slug}`,
+      status: 404,
+    })
+  }
+  const podcastData = getPodcastData(data?.page?.properties)
+
   const isDev = process.env.NODE_ENV === 'development'
   const isPublishedAnd = isDev
     ? {
@@ -64,7 +54,8 @@ export async function GET(
           equals: true,
         },
       }
-  const options = {
+  // @todo(types)
+  const options: any = {
     database_id: CONFIG.EPISODES.DATABASE_ID,
     filter: {
       and: [
@@ -79,12 +70,10 @@ export async function GET(
     },
     sorts: [],
   }
-  // @ts-ignore
+
   const dataEpisodes = await notion.databases.query(options)
-  // console.dir(`dataEpisodes:`)
-  // console.dir(dataEpisodes)
-  const _episodes = dataEpisodes.results.map((episode) => {
-    // @ts-ignore
+  // @todo(types)
+  const _episodes = dataEpisodes.results.map((episode: any) => {
     return getEpisodeData(episode.properties)
   })
   const episodes = _orderBy(_episodes, ['season', 'episode'], ['desc', 'desc'])
@@ -96,12 +85,12 @@ export async function GET(
   const url = `https://${process.env.NEXT_PUBLIC__SITE}`
   const siteUrl = `${url}${podcastData.href}`
   feed = new Podcast({
+    imageUrl: podcastData?.seoImage?.external?.url,
     title: podcastData.title,
     description: podcastData.seoDescription,
     generator: 'ngop[odcast]',
     // feedUrl: `${url}/${routeType}/${slug}`,
     siteUrl,
-    // imageUrl: ``,
     docs: `${url}`,
     author: podcastData?.author,
     // managingEditor: podcast['Author'],
@@ -118,7 +107,7 @@ export async function GET(
       name: podcastData?.author,
       email: podcastData?.authorEmail,
     },
-    // itunesExplicit: podcastData.isExplicit,
+    itunesExplicit: podcastData.isExplicit ? 'yes' : 'no',
     itunesCategory: podcastData.categories.map((category) => ({
       text: category.name,
       subcats: {},
@@ -127,13 +116,14 @@ export async function GET(
     itunesType: podcastData.type,
     customNamespaces: {
       atom: 'http://www.w3.org/2005/Atom',
+      content: 'http://purl.org/rss/1.0/modules/content/',
+      googleplay: 'http://www.google.com/schemas/play-podcasts/1.0',
+      itunes: 'http://www.itunes.com/dtds/podcast-1.0.dtd',
       media: 'http://search.yahoo.com/mrss',
-      // media: 'http://www.rssboard.org/media-rss',
-      psc: 'https://podlove.org/simple-chapters/',
+      podcast: 'https://podcastindex.org/namespace/1.0',
     },
     customElements: [
       {
-        // <atom:link rel="self" type="application/rss+xml" href="https://www.omnycontent.com/d/playlist/aaea4e69-af51-495e-afc9-a9760146922b/796f42bb-282c-4ba4-a0c6-a9ea0129cafa/fa8e724d-0571-49bb-841b-a9ea0129cb03/podcast.rss"/>
         'atom:link': {
           _attr: {
             rel: 'self',
@@ -141,16 +131,17 @@ export async function GET(
             type: 'application/rss+xml',
           },
         },
+      },
+      { language: 'en-US' },
+      {
         image: [
           { url: podcastData?.seoImage?.external?.url },
           { title: podcastData?.title },
           { link: siteUrl },
         ],
       },
-      { language: 'en-US' },
     ],
   })
-  // console.dir(podcastData?.seoImage?.external?.url)
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   episodes.map((episode, _episodeIndex) => {
@@ -171,20 +162,12 @@ export async function GET(
       categories: podcastData.categories.map((category) => category.name),
       author: podcastData.author,
       date: episode.dateIso,
-      // lat: 1,
-      // long: 2,
-      // enclosure: {
-      //   url: '',
-      //   file: '',
-      //   size: 1,
-      //   type: ''
-      // },
       content: episode.seoDescription,
       itunesAuthor: podcastData.author,
-      itunesExplicit: podcastData.isExplicit,
+      itunesExplicit: podcastData.isExplicit ? 'yes' : 'no',
       itunesSubtitle: episode.subtitle,
       itunesSummary: episode.seoDescription,
-      itunesDuration: episode.duration, // Why does this not work...
+      itunesDuration: episode.duration,
       // itunesKeywords: ['Jer&Ky', 'JerKy', 'MailShrimp'],
       itunesImage: episode?.seoImage?.external?.url,
       itunesSeason: episode.season,
@@ -210,29 +193,27 @@ export async function GET(
             },
           },
         },
-        // { 'itunes:duration': episode.duration },
       ],
     })
   })
 
   if (feed) {
-    // res.status(200)
-    // res.send(feed.buildXml())
-    // // res.status(200).json(json.props)
-    // const rss = feed.buildXML()
-    // console.dir(rss)
-    // return NextResponse.
-    return new Response(feed.buildXml(), {
-      headers: { 'Content-Type': 'application/rss+xml', charset: 'UTF-8' },
+    const _data = feed
+      .buildXml()
+      .replace(
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<?xml version="1.0" encoding="UTF-8"?>\n<?xml-stylesheet href="http://localhost:3000/xml/podcasts.xls" type="text/xsl"?>'
+      )
+
+    const data = new Response(_data, {
+      headers: { 'Content-Type': 'application/xml', charset: 'UTF-8' },
     })
+
+    return data
   } else {
     return NextResponse.json({
-      status: 404,
+      segment: `/podcasts/${slug}`,
+      status: 500,
     })
   }
-
-  return NextResponse.json({
-    ...episodes,
-    status: 200,
-  })
 }

@@ -51,6 +51,7 @@ function ListingTemp({ items, defaultValue }) {
       <div>
         <AccordionDemo defaultValue={defaultValue}>
           {items.map((item) => {
+            if (!item.id) return null
             // const { properties } = item
             // const {
             //   dayOfWeek,
@@ -96,7 +97,7 @@ function ListingTemp({ items, defaultValue }) {
                     </div>
                     <div className="w-6/12 px-2 text-right text-sm font-medium leading-tight md:w-3/12 md:text-xl lg:w-4/12 lg:text-left">
                       <span className="visible inline font-sans lg:invisible lg:hidden">
-                        {dayOfWeekAbbr.toUpperCase()}, {month}/{dayOfMonth}
+                        {dayOfWeekAbbr?.toUpperCase()}, {month}/{dayOfMonth}
                         <br />
                         {time}
                       </span>
@@ -167,6 +168,7 @@ function Events({ data }) {
   const items = data.results.map((item) => {
     const { properties } = item
     const itemData: any = getEventData(properties)
+    if (!itemData?.id) return null
     if (!itemData?.isPublished) return null
     if (itemData?.isEventOver) return null
     return itemData
@@ -260,6 +262,14 @@ async function Listing({ revalidate, segmentInfo }) {
         revalidate,
         segmentInfo,
       })
+  // const eventsData: QueryDatabaseResponse = await getDatabaseQuery({
+  //   database_id: DATABASE_ID,
+  //   draft: isEnabled,
+  //   filterType: 'starts_with',
+  //   revalidate,
+  //   segmentInfo,
+  // })
+
   const hasData = eventsData?.results?.length > 0
   const title = 'Events'
 
