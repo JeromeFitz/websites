@@ -3,15 +3,16 @@ import { cx } from '@jeromefitz/ds/utils/cx'
 
 import { getPodcastData } from '~app/(notion)/_config'
 import { blocks } from '~components/Notion/Notion.Config'
+import { WIP } from '~components/WIP'
 
 function PodcastEpisodes({ properties }) {
   const { episodeSlugs, episodeTitles, ...props } = getPodcastData(properties)
-  console.dir(props)
   return (
     <>
       <p className="pb-3 font-extrabold uppercase tracking-tight">
         <strong>Episodes</strong>
       </p>
+      <WIP />
       <ul className={cx(blocks['bulleted_list'].className)}>
         {episodeSlugs.map((slug, i) => {
           const href = `${props.href}/${slug}`

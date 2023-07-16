@@ -22,6 +22,7 @@ import {
   SectionWrapper,
   // Tags,
 } from '~components/Section'
+import { WIP } from '~components/WIP'
 
 const { DATABASE_ID } = CONFIG.PODCASTS
 
@@ -33,6 +34,7 @@ function ListingTemp({ data }) {
     // console.dir(`item`)
     // console.dir(properties)
     const itemData = getPodcastData(properties)
+    if (!itemData?.id) return null
     if (!itemData?.isPublished) return null
     return itemData
   })
@@ -142,6 +144,7 @@ async function Listing({ revalidate, segmentInfo }) {
           </SectionHeaderContent>
         </SectionHeader>
         <SectionContent>
+          <WIP />
           {/* <Blocks data={data?.blocks} /> */}
           {hasContent && <ListingTemp data={podcastData} />}
         </SectionContent>

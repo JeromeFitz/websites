@@ -196,6 +196,7 @@ function EventsPast({ data }) {
   const items = data.results.map((item) => {
     const { properties } = item
     const itemData: any = getEventData(properties)
+    if (!itemData?.id) return null
     if (!itemData?.isPublished) return null
     if (!itemData?.isEventOver) return null
     if (i > MAX) return null

@@ -22,6 +22,7 @@ import {
   SectionWrapper,
   // Tags,
 } from '~components/Section'
+import { WIP } from '~components/WIP'
 
 const { DATABASE_ID } = CONFIG.SHOWS
 
@@ -137,6 +138,7 @@ async function Listing({ revalidate, segmentInfo }) {
         </SectionHeader>
         <SectionContent>
           {/* <Blocks data={data?.blocks} /> */}
+          <WIP />
           {hasContent && <ListingTemp data={showData} />}
         </SectionContent>
       </SectionWrapper>
