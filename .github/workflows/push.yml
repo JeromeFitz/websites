@@ -144,7 +144,7 @@ jobs:
       - name: '🎭  E2E'
         id: push-e2e
         if: ${{ contains(steps.push-commit-message.outputs.message, '[b]') }}
-        uses: JeromeFitz/websites/.github/actions/e2e@NICE-31
+        uses: JeromeFitz/websites/.github/actions/e2e@main
         with:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
