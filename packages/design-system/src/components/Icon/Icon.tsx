@@ -3,6 +3,7 @@ import {
   ArrowUturnLeftIcon as ArrowUturnLeftHero,
   BookOpenIcon as BookOpenIconHero,
   CloudIcon as CloudIconHero,
+  HashtagIcon as HashtagIconHero,
   MapIcon as MapIconHero,
   MapPinIcon as MapPinIconHero,
   MicrophoneIcon as MicrophoneIconHero,
@@ -491,6 +492,21 @@ const HamburgerMenuIcon = ({ label, ...props }: IconProps) => (
   </AccessibleIcon>
 )
 
+const HashtagIcon = ({ className, label, ...props }: IconProps) => (
+  <AccessibleIcon
+    label={
+      label ||
+      'An icon representing a hashtag or pound symbol. It has a thin weight and slightly slanted to the right.'
+    }
+  >
+    <HashtagIconHero
+      className={cx(twHeroToRadixIcon, className)}
+      role="info"
+      {...props}
+    />
+  </AccessibleIcon>
+)
+
 const HomeIcon = ({ label, ...props }: IconProps) => (
   <AccessibleIcon
     label={
@@ -925,6 +941,7 @@ export {
   GearIcon,
   GitHubLogoIcon,
   HamburgerMenuIcon,
+  HashtagIcon,
   HomeIcon,
   IdCardIcon,
   ImageIcon,

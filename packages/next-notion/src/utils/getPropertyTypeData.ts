@@ -189,6 +189,14 @@ function getRollupData({ data, type }: { data: RollupData; type: string }) {
           dataReturn = getTitleData({ data: item, type: item.type })
           tempData.push(dataReturn)
         }
+        if (item.type === 'relation') {
+          // console.dir(`[info] relation (dataReturn)`)
+          // console.dir(dataReturn)
+          // console.dir(`[info] relation (item)`)
+          // console.dir(item)
+          dataReturn = getRelationData({ data: item, type: item.type })
+          tempData.push(dataReturn)
+        }
       })
       if (!isObjectEmpty(tempData)) {
         dataReturn = _orderBy(tempData)

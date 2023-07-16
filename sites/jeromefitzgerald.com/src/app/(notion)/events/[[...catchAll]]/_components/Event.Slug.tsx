@@ -1,7 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import https from 'node:https'
-
 import { Button, ButtonLink } from '@jeromefitz/ds/components/Button'
 import {
   CalendarIcon,
@@ -13,24 +9,14 @@ import { Separator } from '@jeromefitz/ds/components/Separator'
 import { cx } from '@jeromefitz/ds/utils/cx'
 import { getDataFromCache } from '@jeromefitz/shared/src/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
-// import { Client } from '@notionhq/client'
-import { Redis } from '@upstash/redis'
-import { slug as _slug } from 'github-slugger'
 import { draftMode } from 'next/headers'
 // import NextImage from 'next/image'
 import { notFound } from 'next/navigation'
-import { isImageExpired } from 'next-notion/src/utils/getAwsImage'
-import validUrl from 'valid-url'
 
 // import { Image } from '~app/(notion)/(utils)/blocks/Image'
 import type { PropertiesEvent } from '~app/(notion)/_config'
-import {
-  getEventData,
-  getPropertyTypeDataEvent,
-  CONFIG,
-} from '~app/(notion)/_config'
+import { getEventData, CONFIG } from '~app/(notion)/_config'
 import { Notion as Blocks } from '~components/Notion'
-import { NextImage } from '~components/Notion/Blocks/Image.client'
 import { Relations } from '~components/Relations'
 import {
   SectionContent,
@@ -41,16 +27,10 @@ import {
   Tags,
 } from '~components/Section'
 
-// @ts-ignore
-import { Venue } from './Event.Slug.Venue'
+// import { Venue } from './Event.Slug.Venue'
+import { Image } from './Image'
 
 const { DATABASE_ID } = CONFIG.EVENTS
-
-// const notion = new Client({ auth: process.env.NOTION_API_KEY })
-
-const redis = Redis.fromEnv({ agent: new https.Agent({ keepAlive: true }) })
-
-const CACHE_KEY_PREFIX__IMAGE = `${process.env.NEXT_PUBLIC__SITE}/image`
 
 /**
  * @note(notion) Yea these "titles" are not really user friendly :X
@@ -91,82 +71,6 @@ const RELATIONS_SECONDARY = [
   },
 ]
 
-async function Image({ properties }) {
-  /**
-   * Image Information
-   */
-  const imageSeoDescription = getPropertyTypeDataEvent(
-    properties,
-    'SEO.Image.Description'
-  )
-  const imageSeo = getPropertyTypeDataEvent(properties, 'SEO.Image')[0]
-  // console.dir(`imageSeo:`)
-  // console.dir(imageSeo)
-  /**
-   * @todo(next) this image piece should be abstracted out and return nothing if undefined
-   */
-  const imageUrl = !!imageSeo ? imageSeo[imageSeo.type].url : undefined
-  // console.dir(`imageSeoDescription:`)
-  // console.dir(imageSeoDescription)
-  // console.dir(`imageUrl:`)
-  // console.dir(imageUrl)
-
-  let key = '',
-    slugImage = ''
-
-  if (imageUrl) {
-    if (validUrl.isHttpsUri(imageUrl)) {
-      slugImage = _slug(imageUrl.includes('?') ? imageUrl.split('?')[0] : imageUrl)
-      key = `${CACHE_KEY_PREFIX__IMAGE}/${slugImage}`.toLowerCase()
-    }
-  }
-
-  // console.dir(`key:`)
-  // console.dir(key)
-  // console.dir(`slugImage:`)
-  // console.dir(slugImage)
-
-  const cache: any = await redis.get(key)
-  const isCached = !!cache && !isObjectEmpty(cache)
-  let image = !!cache ? { ...cache } : {}
-
-  // console.dir(`cache:`)
-  // console.dir(cache)
-  // console.dir(`isCached:`)
-  // console.dir(isCached)
-  // console.dir(`image:`)
-  // console.dir(image)
-
-  // @ts-ignore
-  const isExpired = isImageExpired(image)
-  if (!isCached && !!imageUrl) {
-    const { getImage } = await import('@jeromefitz/shared/src/plaiceholder/getImage')
-    const imageData = await getImage(imageUrl)
-    image.blurDataURL = imageData?.base64
-    image = {
-      alt: imageSeoDescription,
-      ...image,
-      ...imageData?.img,
-    }
-  }
-
-  // console.dir(`isExpired:`)
-  // console.dir(isExpired)
-  // console.dir(`image:`)
-  // console.dir(image)
-
-  return (
-    <>
-      {!!imageUrl && (
-        <>
-          <Separator className={cx('my-4')} />
-          <NextImage order={1} {...image} />
-        </>
-      )}
-    </>
-  )
-}
-
 function Ticket({ properties, isFakePortal = false }) {
   const {
     // dateIso,
@@ -178,8 +82,7 @@ function Ticket({ properties, isFakePortal = false }) {
     timezone,
     ticketUrl,
     venueTitle,
-    // @ts-ignore
-    venues,
+    // venues,
   } = getEventData(properties)
 
   const disabledText = isEventOver ? 'Event Has Passed' : 'Tickets Available Soon'

@@ -43,6 +43,7 @@ import {
   GearIcon,
   GitHubLogoIcon,
   HamburgerMenuIcon,
+  HashtagIcon,
   HomeIcon,
   IdCardIcon,
   ImageIcon,
@@ -118,6 +119,7 @@ Icon.FontItalic = FontItalicIcon
 Icon.Gear = GearIcon
 Icon.GitHubLogo = GitHubLogoIcon
 Icon.HamburgerMenu = HamburgerMenuIcon
+Icon.HashtagIcon = HashtagIcon
 Icon.Home = HomeIcon
 Icon.IdCard = IdCardIcon
 Icon.Image = ImageIcon
