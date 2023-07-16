@@ -103,7 +103,7 @@
       "matchPackagePatterns": ["^@testing-library/"]
     },
     {
-      "automerge": true,
+      "automerge": false,
       "automergeType": "branch",
       "commitMessagePrefix": "📦  (deps-dev)",
       "excludePackageNames": [],
