@@ -5,7 +5,29 @@ import { cx } from '@jeromefitz/ds/utils/cx'
 import NextLink from 'next/link'
 import Headroom from 'react-headroom'
 
+function Loading({}) {
+  return (
+    <span className="relative top-[0.125rem] inline-block w-6/12 max-w-sm animate-pulse rounded-md">
+      <span
+        className={`inline-block h-full w-full rounded bg-white text-xs font-normal leading-6 tracking-tight md:text-sm`}
+      >
+        &nbsp;
+      </span>
+    </span>
+  )
+}
+
 function Banner({}) {
+  /**
+   * @todo(notion) dynamically get next event
+   */
+  const info = {
+    title: 'Jerome &: The Comedy Variety Show',
+    url: '/events/2023/08/19/jerome-and?utm_source=website&utm_medium=banner&utm_id=20230819',
+    subtitle: 'SAT 08/19 09:00PM',
+  }
+  const isLoading = false
+
   return (
     <Headroom>
       <div
@@ -19,26 +41,33 @@ function Banner({}) {
           'dark:bg-breeze-r'
         )}
       >
-        <NextLink
-          className={cx('w-full cursor-pointer')}
-          href="/events/2023/07/15/jerome-and?utm_source=website&utm_medium=banner&utm_id=20230715"
-        >
-          <div className={cx('mx-auto my-0 flex items-center justify-center')}>
+        <NextLink className={cx('w-full cursor-pointer')} href={info.url}>
+          <div
+            className={cx('mx-auto my-0 flex w-full  items-center justify-center')}
+          >
             <p
               className={cx(
                 'm-0 p-2 text-center tracking-wider',
                 'flex flex-row gap-2 md:gap-3',
-                'font-sans font-bold'
+                'font-sans font-bold',
+                'w-full items-center',
+                'ml-3 justify-evenly md:ml-0',
+                'text-sm'
               )}
             >
-              <span className="visible md:invisible md:hidden">Next Show:</span>
-              <span className="invisible hidden md:visible md:inline-block">
-                Jerome &: The Comedy Variety Show
+              <span className="visible inline-flex w-4/12 items-center justify-center gap-2 md:invisible md:hidden">
+                <>
+                  <CalendarIcon />
+                  {` `} Next Show:
+                </>
               </span>
-              <span className="inline-flex items-center justify-center gap-2">
+              <span className="mr-1 inline-flex w-8/12 items-center justify-end gap-2 md:invisible md:hidden md:w-6/12 md:justify-start">
+                {isLoading ? <Loading /> : `${info.subtitle}`}
+              </span>
+              <span className="invisible hidden items-center justify-center gap-2 text-right md:visible md:inline-flex md:w-full">
                 <CalendarIcon />
                 {` `}
-                SAT 07/15 09:00PM
+                {isLoading ? <Loading /> : `${info.title} => ${info.subtitle}`}
               </span>
             </p>
           </div>
