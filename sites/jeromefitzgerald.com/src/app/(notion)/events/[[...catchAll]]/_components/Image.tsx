@@ -1,5 +1,6 @@
 import https from 'node:https'
 
+import { NextImage } from '@jeromefitz/shared/src/components/Notion/Blocks/Image.client'
 import { isObjectEmpty } from '@jeromefitz/utils'
 // import { Client } from '@notionhq/client'
 import { Redis } from '@upstash/redis'
@@ -8,7 +9,6 @@ import { slug as _slug } from 'github-slugger'
 import validUrl from 'valid-url'
 
 import { getPropertyTypeDataEvent } from '~app/(notion)/_config'
-import { NextImage } from '~components/Notion/Blocks/Image.client'
 
 // const notion = new Client({ auth: process.env.NOTION_API_KEY })
 

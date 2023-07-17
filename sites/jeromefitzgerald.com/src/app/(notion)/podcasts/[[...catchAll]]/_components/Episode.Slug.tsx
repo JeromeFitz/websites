@@ -1,7 +1,17 @@
 import { Anchor } from '@jeromefitz/ds/components/Anchor'
 // import { MicrophoneIcon } from '@jeromefitz/ds/components/Icon'
+import {
+  SectionContent,
+  SectionHeader,
+  // SectionHeaderContent,
+  SectionHeaderTitle,
+  // SectionHero,
+  SectionWrapper,
+  // Tags,
+} from '@jeromefitz/ds/components/Section'
 import { Separator } from '@jeromefitz/ds/components/Separator'
 import { cx } from '@jeromefitz/ds/utils/cx'
+import { EmbedSpotify } from '@jeromefitz/shared/src/components/Notion/Blocks/Embed.Spotify'
 import { getDataFromCache } from '@jeromefitz/shared/src/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
 import { draftMode } from 'next/headers'
@@ -11,17 +21,7 @@ import type { PropertiesEpisode } from '~app/(notion)/_config'
 import { CONFIG, getEpisodeData } from '~app/(notion)/_config'
 import { Image } from '~app/(notion)/events/[[...catchAll]]/_components/Image'
 import { Notion as Blocks } from '~components/Notion'
-import { EmbedSpotify } from '~components/Notion/Blocks/Embed.Spotify'
 import { Relations } from '~components/Relations'
-import {
-  SectionContent,
-  SectionHeader,
-  // SectionHeaderContent,
-  SectionHeaderTitle,
-  // SectionHero,
-  SectionWrapper,
-  // Tags,
-} from '~components/Section'
 
 const { DATABASE_ID } = CONFIG.EPISODES
 

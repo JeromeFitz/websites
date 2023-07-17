@@ -2,34 +2,46 @@
  * @todo(next-notion) you do not _need_ to set this
  *  up but you probably _need_ to set this up, haha
  */
+import { Image } from '@jeromefitz/shared/src/components/Notion/Blocks/Image'
 import dynamic from 'next/dynamic'
 
 // import { lazy } from 'react'
-// import { Embed } from './Blocks/Embed'
-import { Image } from './Blocks/Image'
-// import { Video } from './Blocks/Video'
+// import { Embed } from '@jeromefitz/shared/src/components/Notion/Blocks/Embed'
+// import { Video } from '@jeromefitz/shared/src/components/Notion/Blocks/Video'
 
 const custom = {
   embed: {
-    component: dynamic(() => import('./Blocks/Embed').then((mod) => mod.Embed), {
-      ssr: false,
-    }),
-    // component: lazy(() => import('./Blocks/Embed')),
+    component: dynamic(
+      () =>
+        import('@jeromefitz/shared/src/components/Notion/Blocks/Embed').then(
+          (mod) => mod.Embed
+        ),
+      {
+        ssr: false,
+      }
+    ),
+    // component: lazy(() => import('@jeromefitz/shared/src/components/Notion/Blocks/Embed')),
     // component: Embed,
     element: 'div',
     className: '',
   },
   image: {
-    // component: lazy(() => import('./Blocks/Image')),
+    // component: lazy(() => import('@jeromefitz/shared/src/components/Notion/Blocks/Image')),
     component: Image,
     element: 'img',
     className: '',
   },
   video: {
-    component: dynamic(() => import('./Blocks/Video').then((mod) => mod.Video), {
-      ssr: false,
-    }),
-    // component: lazy(() => import('./Blocks/Video')),
+    component: dynamic(
+      () =>
+        import('@jeromefitz/shared/src/components/Notion/Blocks/Video').then(
+          (mod) => mod.Video
+        ),
+      {
+        ssr: false,
+      }
+    ),
+    // component: lazy(() => import('@jeromefitz/shared/src/components/Notion/Blocks/Video')),
     // component: Video,
     element: 'div',
     className: '',

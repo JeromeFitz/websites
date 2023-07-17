@@ -11,8 +11,7 @@ import 'server-only'
  */
 import https from 'node:https'
 
-import { Caption } from '@jeromefitz/ds/components/Caption'
-import { TIME } from '@jeromefitz/shared/src/lib/constants'
+import { Caption } from '@jeromefitz/ds/src/components/Caption'
 import { isObjectEmpty } from '@jeromefitz/utils'
 import { Client } from '@notionhq/client'
 import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
@@ -23,6 +22,8 @@ import { slug as _slug } from 'github-slugger'
 import { NotionEmoji as EmojiWrapper } from 'next-notion/src/blocks/Emoji'
 import { isImageExpired } from 'next-notion/src/utils'
 import validUrl from 'valid-url'
+
+import { TIME } from '../../../lib/constants'
 
 import { NextImage } from './Image.client'
 import { getImageAlt, getImageUrl, getImageExpiration } from './Image.utils'
@@ -109,7 +110,7 @@ async function getImageFromBlock({ block, url }) {
    * would recommend not having the "hit" here
    */
   if (OVERRIDE_CACHE || (!isCached && !!imageUrl)) {
-    const { getImage } = await import('@jeromefitz/shared/src/plaiceholder/getImage')
+    const { getImage } = await import('../../../plaiceholder/getImage')
     const imageData = await getImage(imageUrl)
     image.blurDataURL = imageData?.base64
     image = {

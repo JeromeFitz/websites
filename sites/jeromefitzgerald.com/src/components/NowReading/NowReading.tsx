@@ -1,8 +1,4 @@
 'use client'
-import { Separator } from '@jeromefitz/ds/components/Separator'
-import { cx } from '@jeromefitz/ds/utils/cx'
-import { Fragment } from 'react'
-
 import {
   SectionContent,
   SectionHeader,
@@ -11,7 +7,10 @@ import {
   // SectionHero,
   SectionWrapper,
   // Tags,
-} from '~components/Section'
+} from '@jeromefitz/ds/components/Section'
+import { Separator } from '@jeromefitz/ds/components/Separator'
+import { cx } from '@jeromefitz/ds/utils/cx'
+import { Fragment } from 'react'
 
 const books = [
   {

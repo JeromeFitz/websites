@@ -1,5 +1,4 @@
 import { Anchor } from '@jeromefitz/ds/components/Anchor'
-
 import {
   SectionContent,
   SectionHeader,
@@ -7,7 +6,7 @@ import {
   SectionHeaderTitle,
   SectionWrapper,
   // Tags,
-} from '~components/Section'
+} from '@jeromefitz/ds/components/Section'
 // import { ThemeToggle } from '~app/ThemeToggle'
 
 const isDev = process.env.NODE_ENV === 'development'

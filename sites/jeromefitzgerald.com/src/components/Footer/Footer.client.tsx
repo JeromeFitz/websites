@@ -1,9 +1,8 @@
 'use client'
 import { MoonIcon, SunIcon } from '@jeromefitz/ds/components/Icon'
+import { useThemeToggle } from '@jeromefitz/shared/src/hooks/useThemeToggle'
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
-
-import { useThemeToggle } from '~hooks/useThemeToggle'
 
 export const useLoaded = () => {
   const [loaded, setLoaded] = useState(false)

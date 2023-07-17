@@ -8,6 +8,14 @@
  *
  */
 import { Button } from '@jeromefitz/ds/components/Button'
+import {
+  SectionContent,
+  SectionHeader,
+  // SectionHeaderContent,
+  SectionHeaderTitle,
+  SectionWrapper,
+  // Tags,
+} from '@jeromefitz/ds/components/Section'
 import { cx } from '@jeromefitz/ds/utils/cx'
 // import dynamic from 'next/dynamic'
 
@@ -33,14 +41,6 @@ import {
 //   const { TailwindWidth: Component } = await import('~components/Playground')
 //   return { default: Component }
 // })
-import {
-  SectionContent,
-  SectionHeader,
-  // SectionHeaderContent,
-  SectionHeaderTitle,
-  SectionWrapper,
-  // Tags,
-} from '~components/Section'
 import { Testing } from '~components/Testing'
 
 const isDev = process.env.NODE_ENV === 'development'

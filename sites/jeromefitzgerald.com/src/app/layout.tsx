@@ -4,13 +4,8 @@ import { cx } from '@jeromefitz/ds/utils/cx'
 import dynamic from 'next/dynamic'
 import localFont from 'next/font/local'
 import { Fragment } from 'react'
-// import { Suspense } from 'react'
 
-// import { Analytics } from '~components/Analytics'
 import { Banner } from '~components/Banner'
-// import { Footer } from '~components/Footer'
-// import { NowPlaying } from '~components/NowPlaying'
-// import { NowReading } from '~components/NowReading'
 import { Providers } from '~components/Providers'
 
 // const Analytics = dynamic(
@@ -31,7 +26,9 @@ import { Providers } from '~components/Providers'
 // )
 const Analytics = dynamic(
   async () => {
-    const { Analytics: Component } = await import('~components/Analytics')
+    const { Analytics: Component } = await import(
+      '@jeromefitz/shared/src/components/Analytics'
+    )
     return { default: Component }
   },
   { ssr: false }

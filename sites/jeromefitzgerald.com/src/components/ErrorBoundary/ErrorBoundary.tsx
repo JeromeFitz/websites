@@ -1,8 +1,4 @@
 'use client'
-import { Separator } from '@jeromefitz/ds/components/Separator'
-import { Component } from 'react'
-import type { ReactNode } from 'react'
-
 import {
   SectionContent,
   SectionHeader,
@@ -10,7 +6,10 @@ import {
   SectionHeaderTitle,
   SectionWrapper,
   // Tags,
-} from '~components/Section'
+} from '@jeromefitz/ds/components/Section'
+import { Separator } from '@jeromefitz/ds/components/Separator'
+import { Component } from 'react'
+import type { ReactNode } from 'react'
 
 type PropsChildren = {
   children?: ReactNode

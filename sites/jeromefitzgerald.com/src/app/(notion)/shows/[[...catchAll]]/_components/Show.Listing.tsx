@@ -1,5 +1,14 @@
 import { Anchor } from '@jeromefitz/ds/components/Anchor'
 import {
+  SectionContent,
+  SectionHeader,
+  SectionHeaderContent,
+  // SectionHero,
+  SectionHeaderTitle,
+  SectionWrapper,
+  // Tags,
+} from '@jeromefitz/ds/components/Section'
+import {
   getDataFromCache,
   getDatabaseQuery,
 } from '@jeromefitz/shared/src/notion/utils'
@@ -13,15 +22,6 @@ import { getPropertyTypeData } from 'next-notion/src/utils'
 
 import { CONFIG, getPageData, getShowData } from '~app/(notion)/_config'
 // import type { PageObjectResponseShow } from '~app/(notion)/_config'
-import {
-  SectionContent,
-  SectionHeader,
-  SectionHeaderContent,
-  // SectionHero,
-  SectionHeaderTitle,
-  SectionWrapper,
-  // Tags,
-} from '~components/Section'
 import { WIP } from '~components/WIP'
 
 const { DATABASE_ID } = CONFIG.SHOWS

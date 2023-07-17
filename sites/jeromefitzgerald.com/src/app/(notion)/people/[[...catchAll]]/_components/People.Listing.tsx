@@ -1,5 +1,14 @@
 import { Anchor } from '@jeromefitz/ds/components/Anchor'
 import {
+  SectionContent,
+  SectionHeader,
+  // SectionHeaderContent,
+  // SectionHero,
+  SectionHeaderTitle,
+  SectionWrapper,
+  // Tags,
+} from '@jeromefitz/ds/components/Section'
+import {
   getDataFromCache,
   getDatabaseQuery,
 } from '@jeromefitz/shared/src/notion/utils'
@@ -13,15 +22,6 @@ import type { PageObjectResponsePerson } from '~app/(notion)/_config'
 import { CONFIG } from '~app/(notion)/_config'
 import { Notion as Blocks } from '~components/Notion'
 // import { Relations } from '~components/Relations'
-import {
-  SectionContent,
-  SectionHeader,
-  // SectionHeaderContent,
-  // SectionHero,
-  SectionHeaderTitle,
-  SectionWrapper,
-  // Tags,
-} from '~components/Section'
 
 // import type { PropertiesPerson } from './Person.types'
 // // import { UpcomingShows } from './Show.UpcomingShows'

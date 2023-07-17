@@ -3,10 +3,12 @@ import dynamic from 'next/dynamic'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
-// import { Loading } from '~components/Loading'
+// import { Loading } from './RouterEventProvider.Loading.client'
 const Loading = dynamic(
   async () => {
-    const { Loading: Component } = await import('~components/Loading')
+    const { Loading: Component } = await import(
+      './RouterEventProvider.Loading.client'
+    )
     return { default: Component }
   },
   { ssr: false }

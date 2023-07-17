@@ -1,7 +1,4 @@
 import { Anchor } from '@jeromefitz/ds/components/Anchor'
-import { Separator } from '@jeromefitz/ds/components/Separator'
-import { isObjectEmpty } from '@jeromefitz/utils'
-
 import {
   SectionContent,
   SectionHeader,
@@ -9,7 +6,9 @@ import {
   SectionHeaderTitle,
   SectionWrapper,
   // Tags,
-} from '~components/Section'
+} from '@jeromefitz/ds/components/Section'
+import { Separator } from '@jeromefitz/ds/components/Separator'
+import { isObjectEmpty } from '@jeromefitz/utils'
 
 // @todo(types)
 function FourOhFour({
