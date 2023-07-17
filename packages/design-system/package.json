@@ -81,7 +81,7 @@
     "@radix-ui/react-visually-hidden": "1.0.3",
     "clsx": "2.0.0",
     "cmdk": "0.2.0",
-    "tailwind-merge": "1.13.2"
+    "tailwind-merge": "1.14.0"
   },
   "devDependencies": {
     "@jeromefitz/jest-config": "workspace:*",
