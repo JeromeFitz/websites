@@ -526,8 +526,8 @@ importers:
         specifier: 8.4.26
         version: 8.4.26
       sharp:
-        specifier: 0.32.2
-        version: 0.32.2
+        specifier: 0.32.3
+        version: 0.32.3
       tailwindcss:
         specifier: 3.3.3
         version: 3.3.3(ts-node@10.9.1)
@@ -551,7 +551,7 @@ importers:
         version: 4.0.7(@jeromefitz/utils@2.2.2)(lodash@4.17.21)
       '@jeromefitz/spotify':
         specifier: 3.0.4
-        version: 3.0.4(@jeromefitz/utils@2.2.2)(lodash@4.17.21)(sharp@0.32.2)
+        version: 3.0.4(@jeromefitz/utils@2.2.2)(lodash@4.17.21)(sharp@0.32.3)
       '@jeromefitz/utils':
         specifier: 2.2.2
         version: 2.2.2(lodash@4.17.21)
@@ -782,7 +782,7 @@ importers:
         version: 0.2.1(next@13.4.10)(react-dom@18.2.0)(react@18.2.0)
       plaiceholder:
         specifier: 3.0.0
-        version: 3.0.0(sharp@0.32.2)
+        version: 3.0.0(sharp@0.32.3)
       pluralize:
         specifier: 8.0.0
         version: 8.0.0
@@ -817,8 +817,8 @@ importers:
         specifier: 0.0.1
         version: 0.0.1
       sharp:
-        specifier: 0.32.2
-        version: 0.32.2
+        specifier: 0.32.3
+        version: 0.32.3
       smoothscroll-polyfill:
         specifier: 0.4.4
         version: 0.4.4
@@ -5203,7 +5203,7 @@ packages:
       - supports-color
     dev: false
 
-  /@jeromefitz/spotify@3.0.4(@jeromefitz/utils@2.2.2)(lodash@4.17.21)(sharp@0.32.2):
+  /@jeromefitz/spotify@3.0.4(@jeromefitz/utils@2.2.2)(lodash@4.17.21)(sharp@0.32.3):
     resolution: {integrity: sha512-KH8hWZy20okmEmwWDoEFXlmu4uOoy0tbVLwO48TEFlQU46qd93+Q+9O2EpErFMJteZgYt2UE7kufod3/OzeTEg==}
     engines: {node: '>=16'}
     peerDependencies:
@@ -5215,8 +5215,8 @@ packages:
       github-slugger: 2.0.0
       isomorphic-unfetch: 4.0.2
       lodash: 4.17.21
-      plaiceholder: 3.0.0(sharp@0.32.2)
-      sharp: 0.32.2
+      plaiceholder: 3.0.0(sharp@0.32.3)
+      sharp: 0.32.3
     dev: false
 
   /@jeromefitz/tsconfig@1.1.3:
@@ -18146,7 +18146,7 @@ packages:
     dependencies:
       hosted-git-info: 2.8.9
       resolve: 1.22.2
-      semver: 5.7.1
+      semver: 5.7.2
       validate-npm-package-license: 3.0.4
 
   /normalize-package-data@3.0.3:
@@ -18830,12 +18830,12 @@ packages:
       sharp: '>= 0.30.6'
     dev: true
 
-  /plaiceholder@3.0.0(sharp@0.32.2):
+  /plaiceholder@3.0.0(sharp@0.32.3):
     resolution: {integrity: sha512-jwHxxHPnr1BwRzPCeZgEK2BMsEy2327sWynw3qb6XC/oGgGDUTPtR8pFxFQmNArhMBwhkUbUr5OPhhIJpCa8eQ==}
     peerDependencies:
       sharp: '>= 0.30.6'
     dependencies:
-      sharp: 0.32.2
+      sharp: 0.32.3
     dev: false
 
   /playwright-core@1.36.1:
@@ -20595,14 +20595,9 @@ packages:
     engines: {node: '>=8'}
     dev: false
 
-  /semver@5.7.1:
-    resolution: {integrity: sha512-sauaDf/PZdVgrLTNYHRtpXa1iRiKcaebiKQ1BJdpQlWH2lCvexQdX55snPFyK7QzpudqbCI0qXFfOasHdyNDGQ==}
-    hasBin: true
-
   /semver@5.7.2:
     resolution: {integrity: sha512-cBznnQ9KjJqU67B52RMC65CMarK2600WFnbkcaiwWq3xy/5haFJlshgnpjovMVJ+Hff49d8GEn0b87C5pDQ10g==}
     hasBin: true
-    dev: true
 
   /semver@6.3.1:
     resolution: {integrity: sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==}
@@ -20705,8 +20700,8 @@ packages:
     resolution: {integrity: sha512-y0m1JoUZSlPAjXVtPPW70aZWfIL/dSP7AFkRnniLCrK/8MDKog3TySTBmckD+RObVxH0v4Tox67+F14PdED2oQ==}
     dev: false
 
-  /sharp@0.32.2:
-    resolution: {integrity: sha512-e4hyWKtU7ks/rLmoPys476zhpQnLqPJopz4+5b6OPeyJfvCTInAp0pe5tGhstjsNdUvDLrUVGEwevewYdZM8Eg==}
+  /sharp@0.32.3:
+    resolution: {integrity: sha512-i1gFPiNqyqxC4ouVvCKj5G8WfPIMeeSxpKcMrjic6NY4e8zktW7bIdqHPc3FCG+pNKU/XCEabKA57hhvZi8UmQ==}
     engines: {node: '>=14.15.0'}
     requiresBuild: true
     dependencies:
