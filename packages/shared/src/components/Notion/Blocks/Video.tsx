@@ -21,6 +21,9 @@ function VideoImpl({ block }: { block: VideoBlockObjectResponse | any }) {
   return (
     <Suspense fallback={<Fragment />}>
       <></>
+      {/* Async out of next  */}
+      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+      {/* @ts-ignore */}
       <VideoYouTube block={block} url={url} />
       {!!caption && (
         <Caption>

@@ -17,11 +17,12 @@ import { isObjectEmpty } from '@jeromefitz/utils'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 
-import type { PropertiesEpisode } from '~app/(notion)/_config'
-import { CONFIG, getEpisodeData } from '~app/(notion)/_config'
-import { Image } from '~app/(notion)/events/[[...catchAll]]/_components/Image'
-import { Notion as Blocks } from '~components/Notion'
-import { Relations } from '~components/Relations'
+import { Notion as Blocks } from '../../../../../components/Notion'
+import { Relations } from '../../../../../components/Relations'
+import type { PropertiesEpisode } from '../../../_config'
+import { CONFIG, getEpisodeData } from '../../../_config'
+
+import { Image } from './Image'
 
 const { DATABASE_ID } = CONFIG.EPISODES
 
