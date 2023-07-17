@@ -14,14 +14,14 @@ const Analytics = dynamic(
     )
     return { default: Component }
   },
-  { ssr: false }
+  { ssr: true }
 )
 const Footer = dynamic(
   async () => {
     const { Footer: Component } = await import('../components/Footer')
     return { default: Component }
   },
-  { ssr: false }
+  { ssr: true }
 )
 const fontSans = localFont({
   display: 'swap',

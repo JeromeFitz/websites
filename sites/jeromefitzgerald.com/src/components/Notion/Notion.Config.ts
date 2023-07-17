@@ -17,7 +17,7 @@ const custom = {
           (mod) => mod.Embed
         ),
       {
-        ssr: false,
+        ssr: true,
       }
     ),
     // component: lazy(() => import('@jeromefitz/shared/src/components/Notion/Blocks/Embed')),
@@ -38,7 +38,7 @@ const custom = {
           (mod) => mod.Video
         ),
       {
-        ssr: false,
+        ssr: true,
       }
     ),
     // component: lazy(() => import('@jeromefitz/shared/src/components/Notion/Blocks/Video')),

@@ -11,7 +11,7 @@ const Loading = dynamic(
     )
     return { default: Component }
   },
-  { ssr: false }
+  { ssr: true }
 )
 
 function RouterEventProvider() {
