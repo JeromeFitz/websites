@@ -79,7 +79,7 @@ function NowPlayingClient() {
           return {
             color: notionColors[i],
             id: _slug(genre),
-            name: _title(genre),
+            name: _title(genre, { special: ['R&B', 'Hip-Hop'] }),
           }
         })
 
