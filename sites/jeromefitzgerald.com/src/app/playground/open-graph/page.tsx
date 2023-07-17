@@ -1,6 +1,3 @@
-import { cx } from '@jeromefitz/ds/utils/cx'
-import { notFound } from 'next/navigation'
-
 import {
   SectionContent,
   // SectionHeader,
@@ -8,7 +5,9 @@ import {
   // SectionHeaderTitle,
   SectionWrapper,
   // Tags,
-} from '~components/Section'
+} from '@jeromefitz/ds/components/Section'
+import { cx } from '@jeromefitz/ds/utils/cx'
+import { notFound } from 'next/navigation'
 
 const isDev = process.env.NODE_ENV === 'development'
 

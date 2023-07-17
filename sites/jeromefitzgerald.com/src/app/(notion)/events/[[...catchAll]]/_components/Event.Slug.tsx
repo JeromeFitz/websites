@@ -5,6 +5,14 @@ import {
   ExternalLinkIcon,
   HomeIcon,
 } from '@jeromefitz/ds/components/Icon'
+import {
+  SectionContent,
+  SectionHeader,
+  SectionHeaderContent,
+  SectionHeaderTitle,
+  SectionWrapper,
+  Tags,
+} from '@jeromefitz/ds/components/Section'
 import { Separator } from '@jeromefitz/ds/components/Separator'
 import { cx } from '@jeromefitz/ds/utils/cx'
 import { getDataFromCache } from '@jeromefitz/shared/src/notion/utils'
@@ -18,14 +26,6 @@ import type { PropertiesEvent } from '~app/(notion)/_config'
 import { getEventData, CONFIG } from '~app/(notion)/_config'
 import { Notion as Blocks } from '~components/Notion'
 import { Relations } from '~components/Relations'
-import {
-  SectionContent,
-  SectionHeader,
-  SectionHeaderContent,
-  SectionHeaderTitle,
-  SectionWrapper,
-  Tags,
-} from '~components/Section'
 
 // import { Venue } from './Event.Slug.Venue'
 import { Image } from './Image'

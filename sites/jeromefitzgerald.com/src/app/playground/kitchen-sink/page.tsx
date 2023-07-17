@@ -1,4 +1,13 @@
 import {
+  SectionContent,
+  SectionHeader,
+  SectionHeaderContent,
+  // SectionHero,
+  SectionHeaderTitle,
+  SectionWrapper,
+  // Tags,
+} from '@jeromefitz/ds/components/Section'
+import {
   getDataFromCache,
   getSegmentInfo,
 } from '@jeromefitz/shared/src/notion/utils'
@@ -8,15 +17,6 @@ import { notFound } from 'next/navigation'
 
 import { CONFIG, getPageData } from '~app/(notion)/_config'
 import { Notion as Blocks } from '~components/Notion'
-import {
-  SectionContent,
-  SectionHeader,
-  SectionHeaderContent,
-  // SectionHero,
-  SectionHeaderTitle,
-  SectionWrapper,
-  // Tags,
-} from '~components/Section'
 
 const isDev = process.env.NODE_ENV === 'development'
 const slug = '/kitchen-sink'
