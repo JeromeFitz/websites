@@ -24,6 +24,17 @@ export async function GET(
 
   const segmentInfo = getSegmentInfo({ SEGMENT, params: { catchAll: [slug] } })
 
+  /**
+   * @hack(notion) API keeps timing out so use this to generate
+   *  then hard-code the XML because life is too short for any
+   *  of this.
+   */
+  return NextResponse.json({
+    segment: `/podcasts/${slug}`,
+    segmentInfo,
+    status: 200,
+  })
+
   const data = await getDataFromCache({
     database_id: DATABASE_ID,
     draft: false,
@@ -198,12 +209,11 @@ export async function GET(
   })
 
   if (feed) {
-    const _data = feed
-      .buildXml()
-      .replace(
-        '<?xml version="1.0" encoding="UTF-8"?>',
-        '<?xml version="1.0" encoding="UTF-8"?>\n<?xml-stylesheet href="http://localhost:3000/xml/podcasts.xls" type="text/xsl"?>'
-      )
+    const _data = feed.buildXml()
+    // .replace(
+    //   '<?xml version="1.0" encoding="UTF-8"?>',
+    //   '<?xml version="1.0" encoding="UTF-8"?>\n<?xml-stylesheet href="http://localhost:3000/xml/podcasts.xls" type="text/xsl"?>'
+    // )
 
     const data = new Response(_data, {
       headers: { 'Content-Type': 'application/xml', charset: 'UTF-8' },
