@@ -15,6 +15,8 @@ const events = [
   '2023/06/30/bracket-night',
   '2023/07/01/irony-city',
   '2023/07/15/jerome-and',
+  '2023/08/03/your-act',
+  '2023/08/19/jerome-and',
 ]
 const pages = [
   'about',
@@ -26,6 +28,7 @@ const pages = [
   'podcasts',
   'shows',
 ]
+const podcasts = ['jer-and-ky-and-guest', 'knockoffs']
 const shows = [
   'alex-o-jerome',
   'boo-humbag',
@@ -54,6 +57,10 @@ const sitemapPages = pages.map((slug) => ({
   url: `${siteUrl}/${slug}`,
   lastModified,
 }))
+const sitemapPodcasts = podcasts.map((slug) => ({
+  url: `${siteUrl}/${slug}`,
+  lastModified,
+}))
 const sitemapShows = shows.map((slug) => ({
   url: `${siteUrl}/shows/${slug}`,
   lastModified,
@@ -69,6 +76,7 @@ function sitemap(): MetadataRoute.Sitemap {
       ...sitemapRoot,
       ...sitemapEvents,
       ...sitemapPages,
+      ...sitemapPodcasts,
       ...sitemapShows,
     ],
     ['url'],
