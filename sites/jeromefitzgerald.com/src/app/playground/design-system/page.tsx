@@ -9,7 +9,7 @@ const PlaygroundPage = dynamic(
     const { PlaygroundPage: Component } = await import('~components/Playground')
     return { default: Component }
   },
-  { ssr: false }
+  { ssr: true }
 )
 
 export default function Page() {

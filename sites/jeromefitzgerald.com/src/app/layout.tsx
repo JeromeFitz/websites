@@ -4,58 +4,58 @@ import { cx } from '@jeromefitz/ds/utils/cx'
 import dynamic from 'next/dynamic'
 import localFont from 'next/font/local'
 import { Fragment } from 'react'
-// import { Suspense } from 'react'
 
-// import { Analytics } from '~components/Analytics'
 import { Banner } from '~components/Banner'
-// import { Footer } from '~components/Footer'
-// import { NowPlaying } from '~components/NowPlaying'
-// import { NowReading } from '~components/NowReading'
 import { Providers } from '~components/Providers'
 
 // const Analytics = dynamic(
-//   () => import('~components/Analytics').then((mod) => mod.Analytics),
-//   { ssr: false }
+//   () =>
+//     import('@jeromefitz/shared/src/components/Analytics').then(
+//       (mod) => mod.Analytics
+//     ),
+//   { ssr: true }
 // )
 // const Footer = dynamic(
 //   () => import('~components/Footer').then((mod) => mod.Footer),
-//   { ssr: false }
+//   { ssr: true }
 // )
 // const NowPlaying = dynamic(
 //   () => import('~components/NowPlaying').then((mod) => mod.NowPlaying),
-//   { ssr: false }
+//   { ssr: true }
 // )
 // const NowReading = dynamic(
 //   () => import('~components/NowReading').then((mod) => mod.NowReading),
-//   { ssr: false }
+//   { ssr: true }
 // )
 const Analytics = dynamic(
   async () => {
-    const { Analytics: Component } = await import('~components/Analytics')
+    const { Analytics: Component } = await import(
+      '@jeromefitz/shared/src/components/Analytics'
+    )
     return { default: Component }
   },
-  { ssr: false }
+  { ssr: true }
 )
 const Footer = dynamic(
   async () => {
     const { Footer: Component } = await import('~components/Footer')
     return { default: Component }
   },
-  { ssr: false }
+  { ssr: true }
 )
 const NowPlaying = dynamic(
   async () => {
     const { NowPlaying: Component } = await import('~components/NowPlaying')
     return { default: Component }
   },
-  { ssr: false }
+  { ssr: true }
 )
 const NowReading = dynamic(
   async () => {
     const { NowReading: Component } = await import('~components/NowReading')
     return { default: Component }
   },
-  { ssr: false }
+  { ssr: true }
 )
 
 const fontSans = localFont({

@@ -1,6 +1,3 @@
-import Image from 'next/image'
-import { notFound } from 'next/navigation'
-
 import {
   SectionContent,
   SectionHeader,
@@ -9,7 +6,9 @@ import {
   SectionHeaderTitle,
   SectionWrapper,
   // Tags,
-} from '~components/Section'
+} from '@jeromefitz/ds/components/Section'
+import Image from 'next/image'
+import { notFound } from 'next/navigation'
 
 const isDev = process.env.NODE_ENV === 'development'
 

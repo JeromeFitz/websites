@@ -1,4 +1,13 @@
 import {
+  SectionContent,
+  SectionHeader,
+  SectionHeaderContent,
+  // SectionHero,
+  SectionHeaderTitle,
+  SectionWrapper,
+  // Tags,
+} from '@jeromefitz/ds/components/Section'
+import {
   getDataFromCache,
   getSegmentInfo,
 } from '@jeromefitz/shared/src/notion/utils'
@@ -8,15 +17,6 @@ import { draftMode } from 'next/headers'
 
 import { getPageData, CONFIG } from '~app/(notion)/_config'
 import { generateMetadataCustom } from '~app/(notion)/_config/temp/generateMetadataCustom'
-import {
-  SectionContent,
-  SectionHeader,
-  SectionHeaderContent,
-  // SectionHero,
-  SectionHeaderTitle,
-  SectionWrapper,
-  // Tags,
-} from '~components/Section'
 
 const slug = '/books'
 const { SEGMENT } = CONFIG.PAGES

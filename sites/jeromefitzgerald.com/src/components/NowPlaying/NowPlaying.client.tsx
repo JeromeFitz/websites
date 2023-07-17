@@ -1,7 +1,9 @@
 'use client'
 import { ButtonLink } from '@jeromefitz/ds/components/Button'
 import { ExternalLinkIcon } from '@jeromefitz/ds/components/Icon'
+import { Tags } from '@jeromefitz/ds/components/Section'
 import { cx } from '@jeromefitz/ds/utils/cx'
+import { NextImage } from '@jeromefitz/shared/src/components/Notion/Blocks/Image.client'
 import { fetcher } from '@jeromefitz/shared/src/lib/fetcher'
 // import * as AspectRatio from '@radix-ui/react-aspect-ratio'
 import { slug as _slug } from 'github-slugger'
@@ -12,8 +14,6 @@ import ms from 'ms'
 import useSWR from 'swr'
 import _title from 'title'
 
-import { NextImage } from '~components/Notion/Blocks/Image.client'
-import { Tags } from '~components/Section'
 import nowPlaying from '~data/mock/music/the-control-center'
 
 const refreshInterval = ms('1m')

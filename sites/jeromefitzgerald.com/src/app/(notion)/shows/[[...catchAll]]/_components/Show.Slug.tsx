@@ -1,3 +1,12 @@
+import {
+  SectionContent,
+  SectionHeader,
+  SectionHeaderContent,
+  SectionHeaderTitle,
+  // SectionHero,
+  SectionWrapper,
+  Tags,
+} from '@jeromefitz/ds/components/Section'
 import { getDataFromCache } from '@jeromefitz/shared/src/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
 import { draftMode } from 'next/headers'
@@ -7,15 +16,6 @@ import type { PropertiesShow } from '~app/(notion)/_config'
 import { CONFIG, getShowData } from '~app/(notion)/_config'
 import { Notion as Blocks } from '~components/Notion'
 import { Relations } from '~components/Relations'
-import {
-  SectionContent,
-  SectionHeader,
-  SectionHeaderContent,
-  SectionHeaderTitle,
-  // SectionHero,
-  SectionWrapper,
-  Tags,
-} from '~components/Section'
 
 // import { UpcomingShows } from './Show.UpcomingShows'
 

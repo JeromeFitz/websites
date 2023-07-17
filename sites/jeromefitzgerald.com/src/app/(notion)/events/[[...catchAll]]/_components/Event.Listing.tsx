@@ -5,6 +5,15 @@ import {
   ExternalLinkIcon,
   // LocationMarkerIcon,
 } from '@jeromefitz/ds/components/Icon'
+import {
+  SectionContent,
+  SectionHeader,
+  SectionHeaderContent,
+  // SectionHero,
+  SectionHeaderTitle,
+  SectionWrapper,
+  Tags,
+} from '@jeromefitz/ds/components/Section'
 import { cx } from '@jeromefitz/ds/utils/cx'
 import {
   getDataFromCache,
@@ -20,15 +29,6 @@ import { notFound } from 'next/navigation'
 import { getPropertyTypeData } from 'next-notion/src/utils'
 
 import { getEventData, getPageData, CONFIG } from '~app/(notion)/_config'
-import {
-  SectionContent,
-  SectionHeader,
-  SectionHeaderContent,
-  // SectionHero,
-  SectionHeaderTitle,
-  SectionWrapper,
-  Tags,
-} from '~components/Section'
 
 import {
   AccordionDemo,

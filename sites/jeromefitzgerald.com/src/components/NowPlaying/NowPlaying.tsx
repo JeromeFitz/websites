@@ -1,14 +1,13 @@
 'use client'
-import { Separator } from '@jeromefitz/ds/components/Separator'
-import { Suspense } from 'react'
-
 import {
   SectionContent,
   SectionHeader,
   SectionHeaderContent,
   SectionHeaderTitle,
   SectionWrapper,
-} from '~components/Section'
+} from '@jeromefitz/ds/components/Section'
+import { Separator } from '@jeromefitz/ds/components/Separator'
+import { Suspense } from 'react'
 
 import { NowPlayingClient } from './NowPlaying.client'
 

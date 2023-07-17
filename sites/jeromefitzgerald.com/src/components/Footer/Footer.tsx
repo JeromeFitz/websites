@@ -18,16 +18,16 @@ import {
   StarIcon,
   TwitterLogoIcon,
 } from '@jeromefitz/ds/components/Icon'
-import { cx } from '@jeromefitz/ds/utils/cx'
-import { Fragment, Suspense } from 'react'
-
 import {
   SectionContent,
   SectionHeader,
   // SectionHeaderContent,
   SectionHeaderTitle,
   SectionWrapper,
-} from '~components/Section'
+} from '@jeromefitz/ds/components/Section'
+import { cx } from '@jeromefitz/ds/utils/cx'
+import { Fragment, Suspense } from 'react'
+
 import { WIPFooter } from '~components/WIP'
 /**
  * @note ignore this file for CI linting (created on next build)
