@@ -285,7 +285,7 @@ export function GET() {
       <guid isPermaLink="false">8c296f23d2e04b6c9f375ec5daa34020</guid>
       <category><![CDATA[Comedy]]></category>
       <dc:creator><![CDATA[JerKy BoyZ et Knockoffs]]></dc:creator>
-      <pubDate>Wed, 30 Dec 2020 12:01:00 GMT</pubDate>
+      <pubDate>Mon, 10 Feb 2021 12:01:00 GMT</pubDate>
       <enclosure url="https://cdn.jerandky.com/jerandky.com/podcasts/knockoffs/season-02/knockoffs--s02e13--psycho-(1998).mp3?utm_source=Podcast" length="00:56:10" type="audio/mpeg"/>
       <content:encoded><![CDATA[This week Alex & Kyle recap (a remake of) one of the scariest films of all time! How does it stack up against the original? Not well!]]></content:encoded>
       <itunes:author>JerKy BoyZ et Knockoffs</itunes:author>
@@ -305,7 +305,7 @@ export function GET() {
       <guid isPermaLink="false">30be5125a4d3489090666f44f1320eb1</guid>
       <category><![CDATA[Comedy]]></category>
       <dc:creator><![CDATA[JerKy BoyZ et Knockoffs]]></dc:creator>
-      <pubDate>Mon, 03 Feb 2020 12:01:00 GMT</pubDate>
+      <pubDate>Mon, 03 Feb 2021 12:01:00 GMT</pubDate>
       <enclosure url="https://cdn.jerandky.com/jerandky.com/podcasts/knockoffs/season-02/knockoffs--s02e12--house-at-the-end-of-the-street-(2012).mp3?utm_source=Podcast" length="01:21:47" type="audio/mpeg"/>
       <content:encoded><![CDATA[It’s hard to care about anyone in this movie, but Alex & Kyle try anyway. In a world filled with killers, cucks, and creeps, the scariest thing may be all of the acoustic performances.]]></content:encoded>
       <itunes:author>JerKy BoyZ et Knockoffs</itunes:author>
