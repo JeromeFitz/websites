@@ -1,9 +1,10 @@
 import '@jeromefitz/tailwind-config/styles/globals.css'
 
 import { cx } from '@jeromefitz/ds/utils/cx'
+import { Analytics } from '@jeromefitz/shared/src/components/Analytics'
 import dynamic from 'next/dynamic'
 import localFont from 'next/font/local'
-import { Fragment } from 'react'
+import { Fragment, Suspense } from 'react'
 
 import { Banner } from '~components/Banner'
 import { Providers } from '~components/Providers'
@@ -27,15 +28,15 @@ import { Providers } from '~components/Providers'
 //   () => import('~components/NowReading').then((mod) => mod.NowReading),
 //   { ssr: true }
 // )
-const Analytics = dynamic(
-  async () => {
-    const { Analytics: Component } = await import(
-      '@jeromefitz/shared/src/components/Analytics'
-    )
-    return { default: Component }
-  },
-  { ssr: true }
-)
+// const Analytics = dynamic(
+//   async () => {
+//     const { Analytics: Component } = await import(
+//       '@jeromefitz/shared/src/components/Analytics'
+//     )
+//     return { default: Component }
+//   },
+//   { ssr: false }
+// )
 const Footer = dynamic(
   async () => {
     const { Footer: Component } = await import('~components/Footer')
@@ -141,10 +142,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         )}
       >
         <Providers>
-          {/* <Suspense>
+          <Suspense>
             <Analytics />
-          </Suspense> */}
-          <Analytics />
+          </Suspense>
+          {/* <Analytics /> */}
           <Banner />
           <Main>{children}</Main>
           <Wrapper>

@@ -77,11 +77,6 @@ async function _generateStaticParams({ ...props }) {
 
   console.dir(`> generateStaticParams (${SEGMENT})`)
   const segmentInfo = getSegmentInfo({ SEGMENT, ...props })
-  // const data = await getDataFromCache({
-  //   database_id: '',
-  //   filterType: 'equals',
-  //   segmentInfo,
-  // })
   const dataStatic: QueryDatabaseResponse = await getDatabaseQuery({
     database_id: DATABASE_ID,
     draft: false,
@@ -100,8 +95,6 @@ async function _generateStaticParams({ ...props }) {
       const { properties } = item
       const { isPublished } = getPodcastData(properties)
       if (!isPublished) return
-      // const propertyTypeData: any = getPropertyTypeData(properties, 'Slug.Preview')
-      // const href = propertyTypeData?.string.replaceAll(`/${SEGMENT}/`, '')
       const href = getPropertyTypeData(properties, 'Slug.Preview')?.replaceAll(
         `/${SEGMENT}/`,
         ''
@@ -114,6 +107,20 @@ async function _generateStaticParams({ ...props }) {
           element.length > 0 && combos.push({ catchAll: element })
         }
       }
+      const { episodeSlugs, ...props } = getPodcastData(properties)
+      episodeSlugs.map((slug) => {
+        const href = `${props.href}/${slug}`
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        const catchAll = href.replaceAll(`/${SEGMENT}/`, '').split('/')
+        segments.push({ catchAll })
+        if (catchAll.length > 0) {
+          for (let index = 0; index < catchAll.length; index++) {
+            const element = catchAll.slice(0, index)
+            element.length > 0 && combos.push({ catchAll: element })
+          }
+        }
+      })
     })
   }
   // const routes = !!combos && uniqWith(combos, isEqual)
