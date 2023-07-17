@@ -12,8 +12,8 @@ const getDatabaseQuery = cache(
   async ({ database_id, draft, filterType, revalidate, segmentInfo }) => {
     let data
 
-    const { slug } = segmentInfo
-    const prefix = `/notion/queries${slug}`
+    const { segment, slug } = segmentInfo
+    const prefix = `/notion/queries/${segment}${slug}`
     const key: string = getKey(prefix)
     const dataFromCache = await getCache({ slug: key })
 
