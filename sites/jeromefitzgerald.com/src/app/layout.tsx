@@ -4,7 +4,7 @@ import { cx } from '@jeromefitz/ds/utils/cx'
 import { Analytics } from '@jeromefitz/shared/src/components/Analytics'
 import dynamic from 'next/dynamic'
 import localFont from 'next/font/local'
-import { Fragment, Suspense } from 'react'
+import { Fragment } from 'react'
 
 import { Banner } from '~components/Banner'
 import { Providers } from '~components/Providers'
@@ -142,10 +142,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         )}
       >
         <Providers>
-          <Suspense>
-            <Analytics />
-          </Suspense>
-          {/* <Analytics /> */}
+          <Analytics />
           <Banner />
           <Main>{children}</Main>
           <Wrapper>
