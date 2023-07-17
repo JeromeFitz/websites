@@ -157,6 +157,6 @@
     "@types/title": "3.4.1",
     "@types/uuid": "9.0.2",
     "next-notion": "workspace:*",
-    "tailwind-merge": "1.13.2"
+    "tailwind-merge": "1.14.0"
   }
 }
