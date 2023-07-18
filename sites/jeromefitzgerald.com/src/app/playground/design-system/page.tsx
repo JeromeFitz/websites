@@ -8,7 +8,7 @@ const PlaygroundPage = dynamic(
     const { PlaygroundPage: Component } = await import('~components/Playground')
     return { default: Component }
   },
-  { ssr: true }
+  { ssr: false }
 )
 
 const isDev = process.env.NODE_ENV === 'development'

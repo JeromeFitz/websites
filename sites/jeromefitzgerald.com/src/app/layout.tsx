@@ -9,24 +9,17 @@ import { Fragment } from 'react'
 import { Banner } from '~components/Banner'
 import { Providers } from '~components/Providers'
 
-// const Analytics = dynamic(
-//   () =>
-//     import('@jeromefitz/shared/src/components/Analytics').then(
-//       (mod) => mod.Analytics
-//     ),
-//   { ssr: true }
-// )
 // const Footer = dynamic(
 //   () => import('~components/Footer').then((mod) => mod.Footer),
-//   { ssr: true }
+//   { ssr: false }
 // )
 // const NowPlaying = dynamic(
 //   () => import('~components/NowPlaying').then((mod) => mod.NowPlaying),
-//   { ssr: true }
+//   { ssr: false }
 // )
 // const NowReading = dynamic(
 //   () => import('~components/NowReading').then((mod) => mod.NowReading),
-//   { ssr: true }
+//   { ssr: false }
 // )
 // const Analytics = dynamic(
 //   async () => {
@@ -42,21 +35,21 @@ const Footer = dynamic(
     const { Footer: Component } = await import('~components/Footer')
     return { default: Component }
   },
-  { ssr: true }
+  { ssr: false }
 )
 const NowPlaying = dynamic(
   async () => {
     const { NowPlaying: Component } = await import('~components/NowPlaying')
     return { default: Component }
   },
-  { ssr: true }
+  { ssr: false }
 )
 const NowReading = dynamic(
   async () => {
     const { NowReading: Component } = await import('~components/NowReading')
     return { default: Component }
   },
-  { ssr: true }
+  { ssr: false }
 )
 
 const fontSans = localFont({
