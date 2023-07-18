@@ -7,27 +7,20 @@ function Image({ ...props }) {
     props
 
   const isPriority = props?.priority ? props?.priority : order < 2 ? true : false
-  const hack: any = {}
-  hack.priority = isPriority
-  hack.fetchPriority = isPriority ? 'high' : 'auto'
-  // hack.loading = isPriority ? 'eager' : 'lazy'
-  hack.quality = 90
-  // const preload = `/_next/image?url=${encodeURIComponent(props?.src)}&w=1920&q=${
-  //   hack.quality
-  // }`
 
+  // @todo(js) can do this be handled with ...
   // @hack(next) in case no comments are found in notion
   if (!image?.alt) image.alt = ''
   if (!image?.sizes)
     image.sizes = '(max-width: 768px) 50vw, (max-width: 1200px) 50vw, 70vw'
-  // image.unoptimized = process.env.NODE_ENV !== 'production'
-  // console.dir(`> Image.client: debug`)
-  // console.dir(hack)
-  // console.dir(image)
   if (!image.blurDataURL) image.blurDataURL = base64
 
   const imageProps = {
-    ...hack,
+    priority: isPriority,
+    fetchPriority: isPriority ? 'high' : 'auto',
+    // loading: isPriority ? 'eager' : 'lazy',
+    quality: 90,
+    // unoptimized = process.env.NODE_ENV !== 'production',
     ...image,
     ...img,
   }
@@ -36,19 +29,11 @@ function Image({ ...props }) {
   // console.dir(imageProps)
 
   return (
-    <>
-      {/* @hack(next) NEXT-811 */}
-      {/* https://github.com/vercel/next.js/issues/43134 */}
-      {/* {!!hack.priority && <link rel="preload" href={preload} as="image" />} */}
-      {/* @todo(types) */}
-      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-      {/* @ts-ignore */}
-      <NextImage
-        className="flex w-full justify-center"
-        placeholder="blur"
-        {...imageProps}
-      />
-    </>
+    <NextImage
+      className="flex w-full justify-center"
+      placeholder="blur"
+      {...imageProps}
+    />
   )
 }
 
