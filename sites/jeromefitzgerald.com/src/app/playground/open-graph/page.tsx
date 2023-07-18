@@ -7,7 +7,9 @@ import {
   // Tags,
 } from '@jeromefitz/ds/components/Section'
 import { cx } from '@jeromefitz/ds/utils/cx'
-import { notFound } from 'next/navigation'
+// import { notFound } from 'next/navigation'
+
+import { FourOhFour } from '~app/_errors/404'
 
 const isDev = process.env.NODE_ENV === 'development'
 
@@ -116,7 +118,9 @@ function OpenGraphTesting() {
 }
 
 export default function Page() {
-  if (!isDev) notFound()
+  // if (!isDev) notFound()
+  // @note(next) avoid NEXT_DYNAMIC_NO_SSR_CODE
+  if (!isDev) return <FourOhFour isNotPublished={false} segmentInfo={{}} />
   return (
     <>
       <SectionWrapper>

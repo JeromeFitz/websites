@@ -13,9 +13,10 @@ import {
 } from '@jeromefitz/shared/src/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
 import { draftMode } from 'next/headers'
-import { notFound } from 'next/navigation'
+// import { notFound } from 'next/navigation'
 
 import { CONFIG, getPageData } from '~app/(notion)/_config'
+import { FourOhFour } from '~app/_errors/404'
 import { Notion as Blocks } from '~components/Notion'
 
 const isDev = process.env.NODE_ENV === 'development'
@@ -55,7 +56,9 @@ async function Slug({ revalidate, segmentInfo }) {
 }
 
 export default function Page({ revalidate = false, ...props }) {
-  if (!isDev) notFound()
+  // if (!isDev) notFound()
+  // @note(next) avoid NEXT_DYNAMIC_NO_SSR_CODE
+  if (!isDev) return <FourOhFour isNotPublished={false} segmentInfo={{}} />
   const segmentInfo = getSegmentInfo({ SEGMENT, ...props })
 
   return <Slug revalidate={revalidate} segmentInfo={segmentInfo} />

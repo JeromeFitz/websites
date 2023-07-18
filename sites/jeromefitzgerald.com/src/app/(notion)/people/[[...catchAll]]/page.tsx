@@ -47,6 +47,9 @@ export async function generateMetadata({ ...props }): Promise<Metadata> {
     : { title: `404 | ${segmentInfo?.segment} | ${process.env.NEXT_PUBLIC__SITE}` }
 }
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 async function _generateStaticParams({ ...props }) {
   // @todo(types)
   const segments: any = [{ catchAll: [] }]
@@ -102,11 +105,10 @@ async function _generateStaticParams({ ...props }) {
 
   return segments
 }
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const generateStaticParams = isDev ? undefined : _generateStaticParams
-// export { generateStaticParams }
+
+// const generateStaticParams = isDev ? undefined : _generateStaticParams
+const generateStaticParams = isDev ? undefined : undefined
+export { generateStaticParams }
 
 export default function Page({ revalidate = false, ...props }) {
   const segmentInfo = getSegmentInfo({ SEGMENT, ...props })
