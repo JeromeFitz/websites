@@ -42,7 +42,7 @@ const { DATABASE_ID } = CONFIG.EVENTS
 
 const description = `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Recusandae, omnis? Quod, enim fugit doloribus qui culpa odit. Eveniet, cupiditate qui alias nihil similique tempora fugit?`
 
-function ListingTemp({ items, defaultValue }) {
+function ListingTemp({ items, defaultValue = null }) {
   return (
     // wrapper
     <div>
@@ -183,7 +183,7 @@ function Events({ data }) {
     ['asc']
   )
 
-  const defaultValue = events[0]?.id || ''
+  const defaultValue = events[0]?.id || null
   return <ListingTemp items={events} defaultValue={defaultValue} />
 }
 
@@ -214,8 +214,7 @@ function EventsPast({ data }) {
     ['desc']
   )
 
-  const defaultValue = ''
-  return <ListingTemp items={events} defaultValue={defaultValue} />
+  return <ListingTemp items={events} />
 }
 
 // @todo(complexity) 14
