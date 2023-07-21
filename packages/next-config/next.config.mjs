@@ -103,7 +103,13 @@ const config = ({
     experimental: {
       appDir: true,
       legacyBrowsers: false,
-      // @note(next) monorepo root
+      // @note(next) storybook needs this -- but nothing else.
+      outputFileTracingExcludes: {
+        '*': [
+          'node_modules/.pnpm/@swc+core-linux-x64-musl',
+          'node_modules/.pnpm/@swc+core-linux-x64-gnu',
+        ],
+      },
       outputFileTracingRoot: join(pathDirName, '../../'),
       serverComponentsExternalPackages,
     },
