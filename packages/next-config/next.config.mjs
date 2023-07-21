@@ -108,6 +108,7 @@ const config = ({
         '*': [
           'node_modules/.pnpm/@swc+core-linux-x64-musl',
           'node_modules/.pnpm/@swc+core-linux-x64-gnu',
+          'node_modules/.pnpm/@esbuild+linux-x64',
         ],
       },
       outputFileTracingRoot: join(pathDirName, '../../'),
