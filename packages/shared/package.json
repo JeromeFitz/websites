@@ -49,7 +49,7 @@
   "devDependencies": {
     "@jeromefitz/ds": "workspace:*",
     "@jeromefitz/utils": "2.2.2",
-    "@notionhq/client": "2.2.8",
+    "@notionhq/client": "2.2.9",
     "@types/lodash": "4.14.195",
     "@types/react": "18.2.15",
     "@types/react-dom": "18.2.7",
