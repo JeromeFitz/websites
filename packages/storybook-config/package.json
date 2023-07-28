@@ -8,7 +8,7 @@
     "@storybook/addon-essentials": "7.1.1",
     "@storybook/addon-interactions": "7.1.1",
     "@storybook/addon-links": "7.1.1",
-    "@storybook/addon-styling": "1.3.4",
+    "@storybook/addon-styling": "1.3.5",
     "@storybook/addon-viewport": "7.1.1",
     "@storybook/blocks": "7.1.1",
     "@storybook/jest": "0.1.0",
