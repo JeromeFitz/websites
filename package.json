@@ -50,7 +50,7 @@
     "semantic-release-monorepo": "7.0.5",
     "syncpack": "10.9.3",
     "ts-node": "10.9.1",
-    "tsup": "7.1.0",
+    "tsup": "7.2.0",
     "turbo": "1.10.12",
     "typescript": "5.1.6"
   },
