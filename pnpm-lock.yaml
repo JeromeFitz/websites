@@ -742,8 +742,8 @@ importers:
         specifier: 1.0.3
         version: 1.0.3(@types/react-dom@18.2.7)(@types/react@18.2.18)(react-dom@18.2.0)(react@18.2.0)
       '@tanem/react-nprogress':
-        specifier: 5.0.45
-        version: 5.0.45(react-dom@18.2.0)(react@18.2.0)
+        specifier: 5.0.46
+        version: 5.0.46(react-dom@18.2.0)(react@18.2.0)
       '@upstash/ratelimit':
         specifier: 0.4.3
         version: 0.4.3
@@ -1109,8 +1109,8 @@ importers:
         specifier: 1.0.3
         version: 1.0.3(@types/react-dom@18.2.7)(@types/react@18.2.18)(react-dom@18.2.0)(react@18.2.0)
       '@tanem/react-nprogress':
-        specifier: 5.0.45
-        version: 5.0.45(react-dom@18.2.0)(react@18.2.0)
+        specifier: 5.0.46
+        version: 5.0.46(react-dom@18.2.0)(react@18.2.0)
       '@upstash/ratelimit':
         specifier: 0.4.3
         version: 0.4.3
@@ -9480,8 +9480,8 @@ packages:
       tailwindcss: 3.3.3(ts-node@10.9.1)
     dev: true
 
-  /@tanem/react-nprogress@5.0.45(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-UVszFpJ1d71OGJ00Hg5shGSP8nUp+8ZTS82+0IL3c4v16m+FS6/PUZba/qt6AaZBEOrhmHq9abiadTAR0NOFUQ==}
+  /@tanem/react-nprogress@5.0.46(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-iNECvWBwy559dc8ZCv93IblVCDHAqqEAAlrRfE3YhnvCcLR4JPDmZKgIXMdk+MV9IviWw0idr1vc4osrHK89vg==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
