@@ -42,8 +42,8 @@ importers:
         specifier: 3.0.0
         version: 3.0.0
       '@types/lodash':
-        specifier: 4.14.196
-        version: 4.14.196
+        specifier: 4.14.197
+        version: 4.14.197
       '@types/node':
         specifier: 18.17.4
         version: 18.17.4
@@ -406,8 +406,8 @@ importers:
         specifier: 2.2.10
         version: 2.2.10
       '@types/lodash':
-        specifier: 4.14.196
-        version: 4.14.196
+        specifier: 4.14.197
+        version: 4.14.197
       '@types/react':
         specifier: 18.2.20
         version: 18.2.20
@@ -8221,7 +8221,7 @@ packages:
       '@storybook/preview-api': 7.2.2
       '@storybook/theming': 7.2.2(react-dom@18.2.0)(react@18.2.0)
       '@storybook/types': 7.2.2
-      '@types/lodash': 4.14.196
+      '@types/lodash': 4.14.197
       color-convert: 2.0.1
       dequal: 2.0.3
       lodash: 4.17.21
@@ -9792,8 +9792,8 @@ packages:
       '@types/node': 18.17.4
     dev: false
 
-  /@types/lodash@4.14.196:
-    resolution: {integrity: sha512-22y3o88f4a94mKljsZcanlNWPzO0uBsBdzLAngf2tp533LzZcQzb6+eZPJ+vCTt+bqF2XnvT9gejTLsAcJAJyQ==}
+  /@types/lodash@4.14.197:
+    resolution: {integrity: sha512-BMVOiWs0uNxHVlHBgzTIqJYmj+PgCo4euloGF+5m4okL3rEYzM2EEv78mw8zWSMM57dM7kVIgJ2QDvwHSoCI5g==}
 
   /@types/mdx@2.0.5:
     resolution: {integrity: sha512-76CqzuD6Q7LC+AtbPqrvD9AqsN0k8bsYo2bM2J8pmNldP1aIPAbzUQ7QbobyXL4eLr1wK5x8FZFe8eF/ubRuBg==}
