@@ -421,8 +421,8 @@ importers:
         specifier: 1.22.0
         version: 1.22.0
       '@vercel/analytics':
-        specifier: 1.0.1
-        version: 1.0.1
+        specifier: 1.0.2
+        version: 1.0.2
       clsx:
         specifier: 2.0.0
         version: 2.0.0
@@ -751,8 +751,8 @@ importers:
         specifier: 1.22.0
         version: 1.22.0
       '@vercel/analytics':
-        specifier: 1.0.1
-        version: 1.0.1
+        specifier: 1.0.2
+        version: 1.0.2
       clsx:
         specifier: 2.0.0
         version: 2.0.0
@@ -1118,8 +1118,8 @@ importers:
         specifier: 1.22.0
         version: 1.22.0
       '@vercel/analytics':
-        specifier: 1.0.1
-        version: 1.0.1
+        specifier: 1.0.2
+        version: 1.0.2
       clsx:
         specifier: 2.0.0
         version: 2.0.0
@@ -10203,8 +10203,8 @@ packages:
     transitivePeerDependencies:
       - encoding
 
-  /@vercel/analytics@1.0.1:
-    resolution: {integrity: sha512-Ux0c9qUfkcPqng3vrR0GTrlQdqNJ2JREn/2ydrVuKwM3RtMfF2mWX31Ijqo1opSjNAq6rK76PwtANw6kl6TAow==}
+  /@vercel/analytics@1.0.2:
+    resolution: {integrity: sha512-BZFxVrv24VbNNl5xMxqUojQIegEeXMI6rX3rg1uVLYUEXsuKNBSAEQf4BWEcjQDp/8aYJOj6m8V4PUA3x/cxgg==}
 
   /@webassemblyjs/ast@1.11.6:
     resolution: {integrity: sha512-IN1xI7PwOvLPgjcf180gC1bqn3q/QaOCwYUahIOhbYUu8KA/3tw2RT/T0Gidi1l7Hhj5D/INhJxiICObqpMu4Q==}
