@@ -742,8 +742,8 @@ importers:
         specifier: 1.0.3
         version: 1.0.3(@types/react-dom@18.2.7)(@types/react@18.2.20)(react-dom@18.2.0)(react@18.2.0)
       '@tanem/react-nprogress':
-        specifier: 5.0.46
-        version: 5.0.46(react-dom@18.2.0)(react@18.2.0)
+        specifier: 5.0.47
+        version: 5.0.47(react-dom@18.2.0)(react@18.2.0)
       '@upstash/ratelimit':
         specifier: 0.4.3
         version: 0.4.3
@@ -1109,8 +1109,8 @@ importers:
         specifier: 1.0.3
         version: 1.0.3(@types/react-dom@18.2.7)(@types/react@18.2.20)(react-dom@18.2.0)(react@18.2.0)
       '@tanem/react-nprogress':
-        specifier: 5.0.46
-        version: 5.0.46(react-dom@18.2.0)(react@18.2.0)
+        specifier: 5.0.47
+        version: 5.0.47(react-dom@18.2.0)(react@18.2.0)
       '@upstash/ratelimit':
         specifier: 0.4.3
         version: 0.4.3
@@ -2745,6 +2745,13 @@ packages:
     dependencies:
       regenerator-runtime: 0.13.11
     dev: true
+
+  /@babel/runtime@7.22.10:
+    resolution: {integrity: sha512-21t/fkKLMZI4pqP2wlmsQAWnYW1PDyKyyUV4vCi+B25ydmdaYTKXPwCj0BzSUnZf4seIiYvSA3jcZ3gdsMFkLQ==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      regenerator-runtime: 0.14.0
+    dev: false
 
   /@babel/runtime@7.22.5:
     resolution: {integrity: sha512-ecjvYlnAaZ/KVneE/OdKYBYfgXV3Ptu6zQWmgEF7vwKhQnvVS6bjMD2XYgj+SNvQ1GfK/pjgokfPkC/2CO8CuA==}
@@ -9525,13 +9532,13 @@ packages:
       tailwindcss: 3.3.3(ts-node@10.9.1)
     dev: true
 
-  /@tanem/react-nprogress@5.0.46(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-iNECvWBwy559dc8ZCv93IblVCDHAqqEAAlrRfE3YhnvCcLR4JPDmZKgIXMdk+MV9IviWw0idr1vc4osrHK89vg==}
+  /@tanem/react-nprogress@5.0.47(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-DIW4bkXxPa2Mc8WKAoxdJudLsl2N4QinMeoG3Z+bQa4RNdV97FYVGcryie9ZjJU+ZUxvjT5eq504wnW/xzHlmA==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
-      '@babel/runtime': 7.22.6
+      '@babel/runtime': 7.22.10
       hoist-non-react-statics: 3.3.2
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -18691,6 +18698,10 @@ packages:
 
   /regenerator-runtime@0.13.11:
     resolution: {integrity: sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==}
+
+  /regenerator-runtime@0.14.0:
+    resolution: {integrity: sha512-srw17NI0TUWHuGa5CFGGmhfNIeja30WMBfbslPNhf6JrqQlLN5gcrvig1oqPxiVaXb0oW0XRKtH6Nngs5lKCIA==}
+    dev: false
 
   /regenerator-transform@0.15.1:
     resolution: {integrity: sha512-knzmNAcuyxV+gQCufkYcvOqX/qIIfHLv0u5x79kRxuGojfYVky1f15TzZEu2Avte8QGepvUNTnLskf8E6X6Vyg==}
