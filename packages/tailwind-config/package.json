@@ -10,7 +10,7 @@
     "autoprefixer": "10.4.15",
     "cssnano": "6.0.1",
     "postcss": "8.4.28",
-    "sharp": "0.32.4",
+    "sharp": "0.32.5",
     "tailwindcss": "3.3.3",
     "tailwindcss-animate": "1.0.6",
     "tailwindcss-radix": "2.8.0"
