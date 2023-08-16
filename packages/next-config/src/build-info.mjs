@@ -12,7 +12,10 @@ import _pick from 'lodash/pick.js'
 import _size from 'lodash/size.js'
 import { format } from 'prettier'
 
-!isCI && require('dotenv').config({ path: './.env' })
+if (!isCI) {
+  const dotenv = await import('dotenv')
+  dotenv.config({ path: './.env' })
+}
 
 // const octokit = new Octokit({ auth: process.env.OCTOKIT_TOKEN })
 const octokit = new Octokit({})
