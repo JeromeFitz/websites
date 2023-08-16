@@ -6,7 +6,7 @@
     "pnpmOverrides",
     "prod",
     "resolutions",
-    "workspace"
+    "local"
   ],
   "filter": ".",
   "indent": "  ",
@@ -19,7 +19,7 @@
         "resolutions",
         "overrides",
         "pnpmOverrides",
-        "workspace"
+        "local"
       ],
       "dependencies": [
         "**"
