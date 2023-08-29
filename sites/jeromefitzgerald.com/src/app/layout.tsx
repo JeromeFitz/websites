@@ -4,11 +4,11 @@ import { cx } from '@jeromefitz/ds/utils/cx'
 import { Analytics } from '@jeromefitz/shared/src/components/Analytics'
 import dynamic from 'next/dynamic'
 import localFont from 'next/font/local'
-import Head from 'next/head'
-import { Fragment } from 'react'
 
 import { Banner } from '~components/Banner'
 import { Providers } from '~components/Providers'
+
+import { PreloadResources } from './_next/preload-resources'
 
 // const Footer = dynamic(
 //   () => import('~components/Footer').then((mod) => mod.Footer),
@@ -82,14 +82,6 @@ export const metadata = {
     'Jerome Fitzgerald is an an actor, comedian, & writer hailing from Pittsburgh, PA.',
 }
 
-const preconnects = [
-  // https://web.dev/preconnect-and-dns-prefetch/#how-to-implement-rel=preconnect
-  // 'https://jeromefitzgerald.com',
-  'https://cdn.jeromefitzgerald.com',
-  'https://cdn.usefathom.com',
-  'https://vitals.vercel-insights.com',
-]
-
 function Wrapper({ children }) {
   return (
     <div
@@ -117,14 +109,7 @@ function Main({ children }) {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <Head>
-        {preconnects.map((preconnect, idx) => (
-          <Fragment key={`preconnect-${idx}`}>
-            <link rel="preconnect" href={preconnect} crossOrigin="anonymous" />
-            <link rel="dns-prefetch" href={preconnect} />
-          </Fragment>
-        ))}
-      </Head>
+      <PreloadResources />
       <body
         className={cx(
           'overflow-y-auto overflow-x-hidden',
