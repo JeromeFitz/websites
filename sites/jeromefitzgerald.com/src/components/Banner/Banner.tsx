@@ -22,9 +22,9 @@ function Banner({}) {
    * @todo(notion) dynamically get next event
    */
   const info = {
-    title: 'Jerome &: The Comedy Variety Show',
-    url: '/events/2023/08/19/jerome-and?utm_source=website&utm_medium=banner&utm_id=20230819',
-    subtitle: 'SAT 08/19 09:00PM',
+    title: 'Jerome &: JFLE, FRH Golden x pvkvsv, ...',
+    url: '/events/2023/09/15/jerome-and?utm_source=website&utm_medium=banner&utm_id=20230915',
+    subtitle: 'FRI 09/15 09:00PM',
   }
   const isLoading = false
 
