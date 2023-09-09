@@ -107,7 +107,7 @@
     "fast-json-stable-stringify": "2.1.0",
     "fathom-client": "3.5.0",
     "focus-trap-react": "10.2.1",
-    "framer-motion": "10.16.1",
+    "framer-motion": "10.16.4",
     "github-slugger": "2.0.0",
     "immer": "10.0.2",
     "ioredis": "5.3.2",
