@@ -385,8 +385,8 @@ importers:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
       uuid:
-        specifier: 9.0.0
-        version: 9.0.0
+        specifier: 9.0.1
+        version: 9.0.1
 
   packages/playwright-config:
     devDependencies:
@@ -856,8 +856,8 @@ importers:
         specifier: 4.0.1
         version: 4.0.1(react@18.2.0)
       uuid:
-        specifier: 9.0.0
-        version: 9.0.0
+        specifier: 9.0.1
+        version: 9.0.1
       valid-url:
         specifier: 1.0.9
         version: 1.0.9
@@ -1223,8 +1223,8 @@ importers:
         specifier: 4.0.1
         version: 4.0.1(react@18.2.0)
       uuid:
-        specifier: 9.0.0
-        version: 9.0.0
+        specifier: 9.0.1
+        version: 9.0.1
       valid-url:
         specifier: 1.0.9
         version: 1.0.9
@@ -2751,13 +2751,6 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.13.11
-    dev: true
-
-  /@babel/runtime@7.22.10:
-    resolution: {integrity: sha512-21t/fkKLMZI4pqP2wlmsQAWnYW1PDyKyyUV4vCi+B25ydmdaYTKXPwCj0BzSUnZf4seIiYvSA3jcZ3gdsMFkLQ==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      regenerator-runtime: 0.14.0
     dev: true
 
   /@babel/runtime@7.22.11:
@@ -8016,7 +8009,7 @@ packages:
       react-inspector: 6.0.2(react@18.2.0)
       telejson: 7.2.0
       ts-dedent: 2.2.0
-      uuid: 9.0.0
+      uuid: 9.0.1
     transitivePeerDependencies:
       - '@types/react'
       - '@types/react-dom'
@@ -20862,8 +20855,8 @@ packages:
     engines: {node: '>= 0.4.0'}
     dev: true
 
-  /uuid@9.0.0:
-    resolution: {integrity: sha512-MXcSTerfPa4uqyzStbRoTgt5XIe3x5+42+q1sDuy3R5MDk66URdLMOZe5aPX/SQd+kuYAh0FdP/pO28IkQyTeg==}
+  /uuid@9.0.1:
+    resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==}
     hasBin: true
 
   /v8-compile-cache-lib@3.0.1:
