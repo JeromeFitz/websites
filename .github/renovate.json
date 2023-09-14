@@ -83,7 +83,7 @@
       "matchDepTypes": ["dependencies"]
     },
     {
-      "automerge": true,
+      "automerge": false,
       "automergeType": "branch",
       "commitMessagePrefix": "📦  (deps-dev)",
       "excludePackageNames": [],
@@ -93,7 +93,7 @@
       "matchPackagePatterns": ["^@storybook/"]
     },
     {
-      "automerge": true,
+      "automerge": false,
       "automergeType": "branch",
       "commitMessagePrefix": "📦  (deps-dev)",
       "excludePackageNames": [],
@@ -110,11 +110,11 @@
       "excludePackageNames": [],
       "groupName": "playwright 🎭 ",
       "groupSlug": "playwright",
-      "matchPackageNames": ["eslint-plugin-playwright"],
+      "matchPackageNames": ["eslint-plugin-playwright", "playwright"],
       "matchPackagePatterns": ["^@playwright/"]
     },
     {
-      "automerge": true,
+      "automerge": false,
       "automergeType": "branch",
       "commitMessagePrefix": "📦  (deps-dev)",
       "excludePackageNames": [],
