@@ -153,7 +153,7 @@
     "@types/ramda": "0.29.5",
     "@types/react": "18.2.23",
     "@types/react-dom": "18.2.8",
-    "@types/react-headroom": "3.2.0",
+    "@types/react-headroom": "3.2.1",
     "@types/title": "3.4.1",
     "@types/uuid": "9.0.4",
     "next-notion": "workspace:*",
