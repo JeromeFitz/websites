@@ -9,7 +9,7 @@
     "@tailwindcss/typography": "0.5.10",
     "autoprefixer": "10.4.16",
     "cssnano": "6.0.1",
-    "postcss": "8.4.30",
+    "postcss": "8.4.31",
     "sharp": "0.32.6",
     "tailwindcss": "3.3.3",
     "tailwindcss-animate": "1.0.7",
