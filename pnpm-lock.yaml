@@ -418,8 +418,8 @@ importers:
         specifier: 0.4.4
         version: 0.4.4
       '@upstash/redis':
-        specifier: 1.22.0
-        version: 1.22.0
+        specifier: 1.22.1
+        version: 1.22.1
       '@vercel/analytics':
         specifier: 1.0.2
         version: 1.0.2
@@ -748,8 +748,8 @@ importers:
         specifier: 0.4.4
         version: 0.4.4
       '@upstash/redis':
-        specifier: 1.22.0
-        version: 1.22.0
+        specifier: 1.22.1
+        version: 1.22.1
       '@vercel/analytics':
         specifier: 1.0.2
         version: 1.0.2
@@ -1115,8 +1115,8 @@ importers:
         specifier: 0.4.4
         version: 0.4.4
       '@upstash/redis':
-        specifier: 1.22.0
-        version: 1.22.0
+        specifier: 1.22.1
+        version: 1.22.1
       '@vercel/analytics':
         specifier: 1.0.2
         version: 1.0.2
@@ -10206,7 +10206,7 @@ packages:
     resolution: {integrity: sha512-cpPSR0XJAJs4Ddz9nq3tINlPS5aLfWVCqhhtHnXt4p7qr5+/Znlt1Es736poB/9rnl1hAHrOsOvVj46NEXcVqA==}
     engines: {node: '>=16.0.0'}
     dependencies:
-      '@upstash/redis': 1.22.0
+      '@upstash/redis': 1.22.1
     transitivePeerDependencies:
       - encoding
 
@@ -10217,8 +10217,8 @@ packages:
     transitivePeerDependencies:
       - encoding
 
-  /@upstash/redis@1.22.0:
-    resolution: {integrity: sha512-sXoJDoEqqik0HbrNE7yRWckOySEFsoBxfRdCgOqkc0w6py19ZZG50SpGkDDEUXSnBqP8VgGYXhWAiBpqxrt5oA==}
+  /@upstash/redis@1.22.1:
+    resolution: {integrity: sha512-7ec2eCMkVxZzuHNb+hPKonX4b/Pu0BdDeSBsEy+jKIqiweXzCs5Dpu9642vJgf57YnEsfwgXnQMVEataarvyeQ==}
     dependencies:
       isomorphic-fetch: 3.0.0
     transitivePeerDependencies:
