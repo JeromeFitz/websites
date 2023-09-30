@@ -365,7 +365,9 @@ function Footer() {
               <SectionHeader className="hidden">Copyright</SectionHeader>
               <SectionContent className="w-full pb-36 md:w-full md:pb-2">
                 <div className="flex flex-row items-start justify-start gap-1 py-4 align-text-bottom md:py-0">
-                  <span className="">© 2023 Nice Group of People, LLC</span>
+                  <span className="">
+                    © {new Date().getFullYear()} Nice Group of People, LLC
+                  </span>
                 </div>
               </SectionContent>
             </SectionWrapper>
