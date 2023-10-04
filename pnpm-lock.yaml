@@ -493,8 +493,8 @@ importers:
         specifier: 7.4.6
         version: 7.4.6(react-dom@18.2.0)(react@18.2.0)
       '@storybook/jest':
-        specifier: 0.2.2
-        version: 0.2.2
+        specifier: 0.2.3
+        version: 0.2.3
       '@storybook/manager-api':
         specifier: 7.4.6
         version: 7.4.6(react-dom@18.2.0)(react@18.2.0)
@@ -8887,8 +8887,8 @@ packages:
       '@storybook/preview-api': 7.4.6
     dev: true
 
-  /@storybook/jest@0.2.2:
-    resolution: {integrity: sha512-PUfp9WoqUA8NdAmiz3UahUsyAMr+g1Dv3BB0fqJZsE2IuE5o1Mgsv4iLGzFm+ohcQLIDQvwvvbQIpxe8eY7TNw==}
+  /@storybook/jest@0.2.3:
+    resolution: {integrity: sha512-ov5izrmbAFObzKeh9AOC5MlmFxAcf0o5i6YFGae9sDx6DGh6alXsRM+chIbucVkUwVHVlSzdfbLDEFGY/ShaYw==}
     dependencies:
       '@storybook/expect': 28.1.3-5
       '@testing-library/jest-dom': 6.1.3(@types/jest@28.1.3)
