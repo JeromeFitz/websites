@@ -136,7 +136,7 @@
     "use-sound": "4.0.1",
     "uuid": "9.0.1",
     "valid-url": "1.0.9",
-    "zod": "3.22.2",
+    "zod": "3.22.3",
     "zustand": "4.4.2"
   },
   "devDependencies": {
