@@ -101,7 +101,7 @@ jobs:
     steps:
       - name: '🐙️  Checkout'
         id: pull-checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 1
@@ -176,7 +176,7 @@ jobs:
       #################################
       # - name: '🐙️  Deploy (Checkout)'
       #   id: pull-deploy-checkout
-      #   uses: actions/checkout@v3
+      #   uses: actions/checkout@v4
       #   if: ${{ (env.IS_ACTOR_VERIFIED == 'true') && contains(steps.pull-commit-message.outputs.message, '[b]') }}
       #   with:
       #     ref: ${{ steps.pull-deploy-config.outputs.ref }}
