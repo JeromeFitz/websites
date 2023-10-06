@@ -55,7 +55,7 @@
     "@types/react-dom": "18.2.10",
     "@upstash/ratelimit": "0.4.4",
     "@upstash/redis": "1.22.1",
-    "@vercel/analytics": "1.0.2",
+    "@vercel/analytics": "1.1.0",
     "clsx": "2.0.0",
     "fast-json-stable-stringify": "2.1.0",
     "fathom-client": "3.5.0",
