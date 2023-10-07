@@ -155,7 +155,7 @@
     "@types/react-dom": "18.2.11",
     "@types/react-headroom": "3.2.1",
     "@types/title": "3.4.1",
-    "@types/uuid": "9.0.4",
+    "@types/uuid": "9.0.5",
     "next-notion": "workspace:*",
     "tailwind-merge": "1.14.0"
   }
