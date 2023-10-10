@@ -54,7 +54,7 @@
     "@types/react": "18.2.27",
     "@types/react-dom": "18.2.12",
     "@upstash/ratelimit": "0.4.4",
-    "@upstash/redis": "1.22.1",
+    "@upstash/redis": "1.23.1",
     "@vercel/analytics": "1.1.0",
     "clsx": "2.0.0",
     "fast-json-stable-stringify": "2.1.0",
