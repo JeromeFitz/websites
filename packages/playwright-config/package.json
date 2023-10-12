@@ -4,6 +4,6 @@
   "private": true,
   "main": "./playwright.config.js",
   "devDependencies": {
-    "@playwright/test": "1.38.1"
+    "@playwright/test": "1.39.0"
   }
 }
