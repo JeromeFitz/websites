@@ -909,8 +909,8 @@ importers:
         specifier: 18.2.13
         version: 18.2.13
       '@types/react-headroom':
-        specifier: 3.2.1
-        version: 3.2.1
+        specifier: 3.2.2
+        version: 3.2.2
       '@types/title':
         specifier: 3.4.1
         version: 3.4.1
@@ -1276,8 +1276,8 @@ importers:
         specifier: 18.2.13
         version: 18.2.13
       '@types/react-headroom':
-        specifier: 3.2.1
-        version: 3.2.1
+        specifier: 3.2.2
+        version: 3.2.2
       '@types/title':
         specifier: 3.4.1
         version: 3.4.1
@@ -9867,8 +9867,8 @@ packages:
     dependencies:
       '@types/react': 18.2.28
 
-  /@types/react-headroom@3.2.1:
-    resolution: {integrity: sha512-BlXf8u6GjQ7CEqFAYNlou+y1CgFJrxM1tyqbH3C3Tfb9eFgMySg9sZyTLyO44XFnss/WN7yYLzD5yKbbOSj5Eg==}
+  /@types/react-headroom@3.2.2:
+    resolution: {integrity: sha512-63ByP4ElKG5iutXK8g9z2B15tjwOBxnYurXX41qrBjHhfgRA+wBoDM4h9YY7BJd1fjivh5S1QPW4aoXqfMxoRQ==}
     dependencies:
       '@types/react': 18.2.28
     dev: true
