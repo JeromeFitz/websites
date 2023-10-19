@@ -14,22 +14,16 @@ import { Fragment } from 'react'
 
 const books = [
   {
-    author: 'Robert A. Caro',
-    id: 'the-power-broker',
-    subtitle: 'Robert Moses and the Fall of New York',
-    title: 'The Power Broker',
+    author: 'Mary Beard',
+    id: 'sqpr',
+    subtitle: 'A History of Ancient Rome',
+    title: 'SQPR',
   },
   {
-    author: 'Patrick Radeen Keefe',
-    id: 'empire-of-pain',
-    subtitle: 'The Secret History of the Sackler Dynasty',
-    title: 'Empire of Pain',
-  },
-  {
-    author: 'Natalie Haynes',
-    id: 'a-thousand-ships',
+    author: 'Zadie Smith',
+    id: 'the-fraud',
     subtitle: 'A Novel',
-    title: 'A Thousand Ships',
+    title: 'The Fraud',
   },
 ]
 
