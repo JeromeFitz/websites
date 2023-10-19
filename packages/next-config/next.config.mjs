@@ -101,8 +101,6 @@ const config = ({
     },
     excludeDefaultMomentLocales: true,
     experimental: {
-      appDir: true,
-      legacyBrowsers: false,
       // @note(next) storybook needs this -- but nothing else.
       outputFileTracingExcludes: {
         '*': [
