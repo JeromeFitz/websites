@@ -22,9 +22,9 @@ function Banner({}) {
    * @todo(notion) dynamically get next event
    */
   const info = {
-    title: 'Jerome &: JFLE, FRH Golden x pvkvsv, ...',
-    url: '/events/2023/09/15/jerome-and?utm_source=website&utm_medium=banner&utm_id=20230915',
-    subtitle: 'FRI 09/15 09:00PM',
+    title: 'Jerome &: Aarie x NOCASINO, Erin Ross, ...',
+    url: '/events/2023/10/21/jerome-and?utm_source=website&utm_medium=banner&utm_id=20231021',
+    subtitle: 'SAT 10/21 09:00PM',
   }
   const isLoading = false
 
