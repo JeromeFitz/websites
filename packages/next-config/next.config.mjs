@@ -101,8 +101,6 @@ const config = ({
     },
     excludeDefaultMomentLocales: true,
     experimental: {
-      appDir: true,
-      legacyBrowsers: false,
       // @note(next) storybook needs this -- but nothing else.
       outputFileTracingExcludes: {
         '*': [
@@ -176,7 +174,15 @@ const config = ({
         },
         {
           protocol,
+          hostname: '*.s3.us-west-2.amazonaws.com',
+        },
+        {
+          protocol,
           hostname: 'sc-events.s3.amazonaws.com',
+        },
+        {
+          protocol,
+          hostname: '*.sc-events.s3.amazonaws.com',
         },
         // @note(remotePattern) Notion
         {
