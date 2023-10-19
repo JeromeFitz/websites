@@ -176,7 +176,15 @@ const config = ({
         },
         {
           protocol,
+          hostname: '*.s3.us-west-2.amazonaws.com',
+        },
+        {
+          protocol,
           hostname: 'sc-events.s3.amazonaws.com',
+        },
+        {
+          protocol,
+          hostname: '*.sc-events.s3.amazonaws.com',
         },
         // @note(remotePattern) Notion
         {
