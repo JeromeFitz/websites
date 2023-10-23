@@ -24,7 +24,7 @@ runs:
 
     - name: '💽️  Node ${{ inputs.node-version }}'
       id: node-setup
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         # architecture: 'x64'
         cache-dependency-path: pnpm-lock.yaml
