@@ -5,6 +5,28 @@ import { cx } from '@jeromefitz/ds/utils/cx'
 import NextLink from 'next/link'
 import Headroom from 'react-headroom'
 
+/**
+ * @hack
+ * Until next version is updated, do some fun hacks
+ */
+const info0 = {
+  title: 'Sketch Night @ Imposters (Cleveland, OH)',
+  url: '/events/2023/10/28/sketch-night?utm_source=website&utm_medium=banner&utm_id=20231028',
+  subtitle: 'SAT 10/28 09:00PM',
+}
+
+// const info1 = {
+//   title: 'Unlocking 811: Arcade Benefit Show',
+//   url: '/events/2023/11/03/unlocking-811?utm_source=website&utm_medium=banner&utm_id=20231103',
+//   subtitle: 'FRI 11/03 10:30PM',
+// }
+
+// const info2 = {
+//   title: 'Jerome &: Buscrates, Amanda Averell, ...',
+//   url: '/events/2023/11/18/jerome-and?utm_source=website&utm_medium=banner&utm_id=20231118',
+//   subtitle: 'SAT 11/18 09:00PM',
+// }
+
 function Loading({}) {
   return (
     <span className="relative top-[0.125rem] inline-block w-6/12 max-w-sm animate-pulse rounded-md">
@@ -21,11 +43,7 @@ function Banner({}) {
   /**
    * @todo(notion) dynamically get next event
    */
-  const info = {
-    title: 'Jerome &: Aarie x NOCASINO, Erin Ross, ...',
-    url: '/events/2023/10/21/jerome-and?utm_source=website&utm_medium=banner&utm_id=20231021',
-    subtitle: 'SAT 10/21 09:00PM',
-  }
+  const info = info0
   const isLoading = false
 
   return (
