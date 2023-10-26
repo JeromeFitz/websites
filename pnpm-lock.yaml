@@ -278,8 +278,8 @@ importers:
         specifier: workspace:*
         version: link:../tailwind-config
       '@mantine/hooks':
-        specifier: 7.1.6
-        version: 7.1.6(react@18.2.0)
+        specifier: 7.1.7
+        version: 7.1.7(react@18.2.0)
       next:
         specifier: 13.5.6
         version: 13.5.6(react-dom@18.2.0)(react@18.2.0)
@@ -575,8 +575,8 @@ importers:
         specifier: 2.2.2
         version: 2.2.2(lodash@4.17.21)
       '@mantine/hooks':
-        specifier: 7.1.6
-        version: 7.1.6(react@18.2.0)
+        specifier: 7.1.7
+        version: 7.1.7(react@18.2.0)
       '@notionhq/client':
         specifier: 2.2.13
         version: 2.2.13
@@ -942,8 +942,8 @@ importers:
         specifier: 2.2.2
         version: 2.2.2(lodash@4.17.21)
       '@mantine/hooks':
-        specifier: 7.1.6
-        version: 7.1.6(react@18.2.0)
+        specifier: 7.1.7
+        version: 7.1.7(react@18.2.0)
       '@notionhq/client':
         specifier: 2.2.13
         version: 2.2.13
@@ -3692,8 +3692,8 @@ packages:
     resolution: {integrity: sha512-dfLbk+PwWvFzSxwk3n5ySL0hfBog779o8h68wK/7/APo/7cgyWp5jcXockbxdk5kFRkbeXWm4Fbi9FrdN381sA==}
     dev: true
 
-  /@mantine/hooks@7.1.6(react@18.2.0):
-    resolution: {integrity: sha512-Yctcv21ttLYpcN/5gt2xCHB88U1rPNqHBkLVd7DMAB72LUkr4wp6xAVtELl576n7wHf36nshSkFCyNXh9Gm3eA==}
+  /@mantine/hooks@7.1.7(react@18.2.0):
+    resolution: {integrity: sha512-OwKK1CtZ++lRXcjqN3G1MiY4Ie0Cd+aGGjrzlSxO2JJnYLkPgAmQqO6HkwK6p7XOwMpRW0eJdh3r1ONkna8pSg==}
     peerDependencies:
       react: ^18.2.0
     dependencies:
