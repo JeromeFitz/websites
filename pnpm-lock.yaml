@@ -431,8 +431,8 @@ importers:
         specifier: 2.1.0
         version: 2.1.0
       fathom-client:
-        specifier: 3.5.0
-        version: 3.5.0
+        specifier: 3.6.0
+        version: 3.6.0
       github-slugger:
         specifier: 2.0.0
         version: 2.0.0
@@ -770,8 +770,8 @@ importers:
         specifier: 2.1.0
         version: 2.1.0
       fathom-client:
-        specifier: 3.5.0
-        version: 3.5.0
+        specifier: 3.6.0
+        version: 3.6.0
       focus-trap-react:
         specifier: 10.2.3
         version: 10.2.3(react-dom@18.2.0)(react@18.2.0)
@@ -1137,8 +1137,8 @@ importers:
         specifier: 2.1.0
         version: 2.1.0
       fathom-client:
-        specifier: 3.5.0
-        version: 3.5.0
+        specifier: 3.6.0
+        version: 3.6.0
       focus-trap-react:
         specifier: 10.2.3
         version: 10.2.3(react-dom@18.2.0)(react@18.2.0)
@@ -13526,8 +13526,8 @@ packages:
     dependencies:
       reusify: 1.0.4
 
-  /fathom-client@3.5.0:
-    resolution: {integrity: sha512-BiRDS9Q9a8Zma0H717FWC5cvf545K/CsxBpxKT22TcSl1EbRhhlHWIJgrdeiQUfdorBK2ppy09TwMOhRsbos/A==}
+  /fathom-client@3.6.0:
+    resolution: {integrity: sha512-/mrgmVvpw4HqDCcqUfPulERhONKgnJGL74RAxfqKDuRQ+7w9lKoTHMzqBWE7WNBvmsgZEthQWJFOWOEjv+T3gA==}
 
   /fb-watchman@2.0.2:
     resolution: {integrity: sha512-p5161BqbuCaSnB8jIbzQHOlpgsPmK5rJVDfDKO91Axs5NC1uu3HRQm6wt9cd9/+GtQQIO53JdGXXoyDpTAsgYA==}
