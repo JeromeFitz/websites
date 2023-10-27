@@ -7,7 +7,7 @@ function Analytics() {
   return (
     <>
       <VercelAnalytics />
-      <Suspense>
+      <Suspense fallback={null}>
         <FathomAnalytics />
       </Suspense>
     </>

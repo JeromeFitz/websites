@@ -1,5 +1,5 @@
 import { cx } from '@jeromefitz/ds/utils/cx'
-import { ImageResponse } from 'next/server'
+import { ImageResponse } from 'next/og'
 
 // Route segment config
 export const runtime = 'edge'
