@@ -28,7 +28,11 @@ function FathomAnalytics() {
   }, [])
 
   useEffect(() => {
-    trackPageview()
+    if (!pathname) return
+    trackPageview({
+      url: pathname + searchParams.toString(),
+      referrer: document.referrer,
+    })
   }, [pathname, searchParams])
 
   return null
