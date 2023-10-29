@@ -262,8 +262,8 @@ importers:
         specifier: 0.2.0
         version: 0.2.0(react-dom@18.2.0)(react@18.2.0)
       tailwind-merge:
-        specifier: 1.14.0
-        version: 1.14.0
+        specifier: 2.0.0
+        version: 2.0.0
     devDependencies:
       '@jeromefitz/jest-config':
         specifier: workspace:*
@@ -461,8 +461,8 @@ importers:
         specifier: 3.1.1
         version: 3.1.1(react-dom@18.2.0)(react@18.2.0)
       tailwind-merge:
-        specifier: 1.14.0
-        version: 1.14.0
+        specifier: 2.0.0
+        version: 2.0.0
       valid-url:
         specifier: 1.0.9
         version: 1.0.9
@@ -921,8 +921,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/next-notion
       tailwind-merge:
-        specifier: 1.14.0
-        version: 1.14.0
+        specifier: 2.0.0
+        version: 2.0.0
 
   sites/jeromefitzgerald.com:
     dependencies:
@@ -1288,8 +1288,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/next-notion
       tailwind-merge:
-        specifier: 1.14.0
-        version: 1.14.0
+        specifier: 2.0.0
+        version: 2.0.0
 
 packages:
 
@@ -2723,6 +2723,12 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.13.11
+
+  /@babel/runtime@7.23.2:
+    resolution: {integrity: sha512-mM8eg4yl5D6i3lu2QKPuPH4FArvJ8KhTofbE7jwMUv9KX5mBvwPAqnV3MlyBNqdp9RyRKP6Yck8TrfYrPvX3bg==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      regenerator-runtime: 0.14.0
 
   /@babel/template@7.22.5:
     resolution: {integrity: sha512-X7yV7eiwAxdj9k94NEylvbVHLiVG1nvzCV2EAowhxLTwODV1jl9UzZ48leOC0sH7OnuHrIkllaBgneUykIcZaw==}
@@ -19731,8 +19737,10 @@ packages:
     resolution: {integrity: sha512-Cat63mxsVJlzYvN51JmVXIgNoUokrIaT2zLclCXjRd8boZ0004U4KCs/sToJ75C6sdlByWxpYnb5Boif1VSFew==}
     dev: false
 
-  /tailwind-merge@1.14.0:
-    resolution: {integrity: sha512-3mFKyCo/MBcgyOTlrY8T7odzZFx+w+qKSMAmdFzRvqBfLlSigU6TZnlFHK0lkMwj9Bj8OYU+9yW9lmGuS0QEnQ==}
+  /tailwind-merge@2.0.0:
+    resolution: {integrity: sha512-WO8qghn9yhsldLSg80au+3/gY9E4hFxIvQ3qOmlpXnqpDKoMruKfi/56BbbMg6fHTQJ9QD3cc79PoWqlaQE4rw==}
+    dependencies:
+      '@babel/runtime': 7.23.2
 
   /tailwindcss-animate@1.0.7(tailwindcss@3.3.5):
     resolution: {integrity: sha512-bl6mpH3T7I3UFxuvDEXLxy/VuFxBk5bbzplh7tXI68mwMokNYd1t9qPBHlnyTwfa4JGC4zP516I1hYYtQ/vspA==}
