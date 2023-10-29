@@ -9,17 +9,17 @@ import Headroom from 'react-headroom'
  * @hack
  * Until next version is updated, do some fun hacks
  */
-const info0 = {
-  title: 'Sketch Night @ Imposters (Cleveland, OH)',
-  url: '/events/2023/10/28/sketch-night?utm_source=website&utm_medium=banner&utm_id=20231028',
-  subtitle: 'SAT 10/28 09:00PM',
-}
-
-// const info1 = {
-//   title: 'Unlocking 811: Arcade Benefit Show',
-//   url: '/events/2023/11/03/unlocking-811?utm_source=website&utm_medium=banner&utm_id=20231103',
-//   subtitle: 'FRI 11/03 10:30PM',
+// const info0 = {
+//   title: 'Sketch Night @ Imposters (Cleveland, OH)',
+//   url: '/events/2023/10/28/sketch-night?utm_source=website&utm_medium=banner&utm_id=20231028',
+//   subtitle: 'SAT 10/28 09:00PM',
 // }
+
+const info1 = {
+  title: 'Unlocking 811: Arcade Benefit Show',
+  url: '/events/2023/11/03/unlocking-811?utm_source=website&utm_medium=banner&utm_id=20231103',
+  subtitle: 'FRI 11/03 10:30PM',
+}
 
 // const info2 = {
 //   title: 'Jerome &: Buscrates, Amanda Averell, ...',
@@ -43,7 +43,7 @@ function Banner({}) {
   /**
    * @todo(notion) dynamically get next event
    */
-  const info = info0
+  const info = info1
   const isLoading = false
 
   return (
