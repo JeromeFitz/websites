@@ -2,6 +2,7 @@ import '@jeromefitz/tailwind-config/styles/globals.css'
 
 import { cx } from '@jeromefitz/ds/utils/cx'
 import { Analytics } from '@jeromefitz/shared/src/components/Analytics'
+import { Viewport } from 'next'
 import dynamic from 'next/dynamic'
 import localFont from 'next/font/local'
 
@@ -64,7 +65,6 @@ const fontSans = localFont({
   ],
   // src: '../../public/fonts/inter/inter-var.woff2',
   src: '../../public/fonts/inter/inter-4.0.0-beta9g-var.woff2',
-  // src: '../../public/fonts/name-sans/at--name-sans-variable.woff2',
   style: 'normal',
   variable: '--font-inter',
   weight: '100 900',
@@ -72,14 +72,17 @@ const fontSans = localFont({
 
 export const metadata = {
   metadataBase: new URL(`https://${process.env.NEXT_PUBLIC__SITE}`),
-  colorScheme: 'dark',
   manifest: '/images/favicon/site.webmanifest',
-  themeColor: '#0f0f0f',
   referrer: 'origin-when-cross-origin',
   //
   title: 'Jerome Fitzgerald (he/him) | Actor. Comedian. Writer.',
   description:
     'Jerome Fitzgerald is an an actor, comedian, & writer hailing from Pittsburgh, PA.',
+}
+
+export const viewport: Viewport = {
+  colorScheme: 'dark',
+  themeColor: '#0f0f0f',
 }
 
 function Wrapper({ children }) {
