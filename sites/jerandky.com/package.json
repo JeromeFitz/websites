@@ -98,7 +98,7 @@
     "@radix-ui/react-visually-hidden": "1.0.3",
     "@tanem/react-nprogress": "5.0.51",
     "@upstash/ratelimit": "0.4.4",
-    "@upstash/redis": "1.24.2",
+    "@upstash/redis": "1.24.3",
     "@vercel/analytics": "1.1.1",
     "clsx": "2.0.0",
     "cmdk": "0.2.0",
