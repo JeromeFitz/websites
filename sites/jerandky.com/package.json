@@ -151,7 +151,7 @@
     "@types/ms": "0.7.33",
     "@types/pluralize": "0.0.32",
     "@types/ramda": "0.29.7",
-    "@types/react": "18.2.33",
+    "@types/react": "18.2.34",
     "@types/react-dom": "18.2.14",
     "@types/react-headroom": "3.2.2",
     "@types/title": "3.4.2",
