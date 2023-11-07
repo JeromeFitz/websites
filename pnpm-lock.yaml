@@ -912,8 +912,8 @@ importers:
         specifier: 3.2.3
         version: 3.2.3
       '@types/title':
-        specifier: 3.4.2
-        version: 3.4.2
+        specifier: 3.4.3
+        version: 3.4.3
       '@types/uuid':
         specifier: 9.0.6
         version: 9.0.6
@@ -1279,8 +1279,8 @@ importers:
         specifier: 3.2.3
         version: 3.2.3
       '@types/title':
-        specifier: 3.4.2
-        version: 3.4.2
+        specifier: 3.4.3
+        version: 3.4.3
       '@types/uuid':
         specifier: 9.0.6
         version: 9.0.6
@@ -9902,8 +9902,8 @@ packages:
       '@types/jest': 29.5.7
     dev: true
 
-  /@types/title@3.4.2:
-    resolution: {integrity: sha512-MqVvMvuwQi0uA/9MxHPDBK4aUMvt2/CvD1kbHiCPmfsM+X1aDG6MWugiBur7SDbAOPT+fIeLx2T4oxCpUtqHkA==}
+  /@types/title@3.4.3:
+    resolution: {integrity: sha512-mjupLOb4kwUuoUFokkacy/VMRVBH2qtqZ5AX7K7iha6+iKIkX80n/Y4EoNVEVRmer8dYJU/ry+fppUaDFVQh7Q==}
     dev: true
 
   /@types/tough-cookie@4.0.2:
