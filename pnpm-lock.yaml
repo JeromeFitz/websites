@@ -897,8 +897,8 @@ importers:
         specifier: 0.7.34
         version: 0.7.34
       '@types/pluralize':
-        specifier: 0.0.32
-        version: 0.0.32
+        specifier: 0.0.33
+        version: 0.0.33
       '@types/ramda':
         specifier: 0.29.8
         version: 0.29.8
@@ -1264,8 +1264,8 @@ importers:
         specifier: 0.7.34
         version: 0.7.34
       '@types/pluralize':
-        specifier: 0.0.32
-        version: 0.0.32
+        specifier: 0.0.33
+        version: 0.0.33
       '@types/ramda':
         specifier: 0.29.8
         version: 0.29.8
@@ -9808,8 +9808,8 @@ packages:
   /@types/parse-json@4.0.0:
     resolution: {integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==}
 
-  /@types/pluralize@0.0.32:
-    resolution: {integrity: sha512-exDkoRIkWJlbRDRmtYDbI3ZUE28HwBwHe5VKn4mvpvMW7qIRDHO6URItErBsBSX7J8/PrDLSOHCcbUMFXwA6CA==}
+  /@types/pluralize@0.0.33:
+    resolution: {integrity: sha512-JOqsl+ZoCpP4e8TDke9W79FDcSgPAR0l6pixx2JHkhnRjvShyYiAYw2LVsnA7K08Y6DeOnaU6ujmENO4os/cYg==}
     dev: true
 
   /@types/pretty-hrtime@1.0.1:
