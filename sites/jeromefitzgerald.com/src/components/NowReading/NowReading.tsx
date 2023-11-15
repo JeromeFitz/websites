@@ -15,9 +15,9 @@ import { Fragment } from 'react'
 const books = [
   {
     author: 'Mary Beard',
-    id: 'sqpr',
+    id: 'spqr',
     subtitle: 'A History of Ancient Rome',
-    title: 'SQPR',
+    title: 'SPQR',
   },
   {
     author: 'Zadie Smith',
