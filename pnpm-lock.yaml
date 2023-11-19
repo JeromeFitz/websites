@@ -360,8 +360,8 @@ importers:
         specifier: 10.3.0
         version: 10.3.0
       node-emoji:
-        specifier: 2.1.0
-        version: 2.1.0
+        specifier: 2.1.1
+        version: 2.1.1
     devDependencies:
       '@jeromefitz/ds':
         specifier: workspace:*
@@ -8224,9 +8224,9 @@ packages:
     engines: {node: '>=6'}
     dev: false
 
-  /@sindresorhus/is@3.1.2:
-    resolution: {integrity: sha512-JiX9vxoKMmu8Y3Zr2RVathBL1Cdu4Nt4MuNWemt1Nc06A0RAin9c5FArkhGsyMBWfCu4zj+9b+GxtjAnE4qqLQ==}
-    engines: {node: '>=10'}
+  /@sindresorhus/is@6.1.0:
+    resolution: {integrity: sha512-BuvU07zq3tQ/2SIgBsEuxKYDyDjC0n7Zir52bpHy2xnBbW81+po43aLFPLbeV3HRAheFbGud1qgcqSYfhtHMAg==}
+    engines: {node: '>=16'}
     dev: false
 
   /@sinonjs/commons@2.0.0:
@@ -16787,10 +16787,11 @@ packages:
       lodash: 4.17.21
     dev: false
 
-  /node-emoji@2.1.0:
-    resolution: {integrity: sha512-tcsBm9C6FmPN5Wo7OjFi9lgMyJjvkAeirmjR/ax8Ttfqy4N8PoFic26uqFTIgayHPNI5FH4ltUvfh9kHzwcK9A==}
+  /node-emoji@2.1.1:
+    resolution: {integrity: sha512-+fyi06+Z9LARCwnTmUF1sRPVQFhGlIpuye3zwlzMN8bIKou6l7k1rGV8WVOEu9EQnRLfoVOYj/p107u0CoQoKA==}
+    engines: {node: '>=18'}
     dependencies:
-      '@sindresorhus/is': 3.1.2
+      '@sindresorhus/is': 6.1.0
       char-regex: 1.0.2
       emojilib: 2.4.0
       skin-tone: 2.0.0
