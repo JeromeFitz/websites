@@ -81,8 +81,8 @@ importers:
         specifier: 10.9.1
         version: 10.9.1(@types/node@18.18.5)(typescript@5.3.2)
       tsup:
-        specifier: 8.0.0
-        version: 8.0.0(ts-node@10.9.1)(typescript@5.3.2)
+        specifier: 8.0.1
+        version: 8.0.1(ts-node@10.9.1)(typescript@5.3.2)
       turbo:
         specifier: 1.10.16
         version: 1.10.16
@@ -20575,8 +20575,8 @@ packages:
   /tslib@2.6.0:
     resolution: {integrity: sha512-7At1WUettjcSRHXCyYtTselblcHl9PJFFVKiCAy/bY97+BPZXSQ2wbq0P9s8tK2G7dFQfNnlJnPAiArVBVBsfA==}
 
-  /tsup@8.0.0(ts-node@10.9.1)(typescript@5.3.2):
-    resolution: {integrity: sha512-9rOGn8LsFn2iAg2pCB1jnH7ygVuGjlzIomjw0jKXUxAii3iL5cXgm0jZMPKfFH1bSAjQovJ1DUVPSw+oDuIu8A==}
+  /tsup@8.0.1(ts-node@10.9.1)(typescript@5.3.2):
+    resolution: {integrity: sha512-hvW7gUSG96j53ZTSlT4j/KL0q1Q2l6TqGBFc6/mu/L46IoNWqLLUzLRLP1R8Q7xrJTmkDxxDoojV5uCVs1sVOg==}
     engines: {node: '>=18'}
     hasBin: true
     peerDependencies:
