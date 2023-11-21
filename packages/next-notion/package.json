@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "emoji-regex": "10.3.0",
-    "node-emoji": "2.1.2"
+    "node-emoji": "2.1.3"
   },
   "devDependencies": {
     "@jeromefitz/ds": "workspace:*",
