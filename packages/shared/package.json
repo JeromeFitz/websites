@@ -30,7 +30,7 @@
   "peerDependencies": {
     "@jeromefitz/utils": "^2.2.2",
     "@notionhq/client": "^2.2.6",
-    "@upstash/ratelimit": "^0.4.3",
+    "@upstash/ratelimit": "^0.4.3 || ^1.0.0",
     "@upstash/redis": "^1.22.0",
     "@vercel/analytics": "^1.0.1",
     "clsx": "^2.0.0",
@@ -53,7 +53,7 @@
     "@types/lodash": "4.14.202",
     "@types/react": "18.2.39",
     "@types/react-dom": "18.2.17",
-    "@upstash/ratelimit": "0.4.4",
+    "@upstash/ratelimit": "1.0.0",
     "@upstash/redis": "1.25.1",
     "@vercel/analytics": "1.1.1",
     "clsx": "2.0.0",
