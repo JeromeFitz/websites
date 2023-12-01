@@ -829,8 +829,8 @@ importers:
         specifier: 3.1.1
         version: 3.1.1(react-dom@18.2.0)(react@18.2.0)
       react-use:
-        specifier: 17.4.1
-        version: 17.4.1(react-dom@18.2.0)(react@18.2.0)
+        specifier: 17.4.2
+        version: 17.4.2(react-dom@18.2.0)(react@18.2.0)
       react-wrap-balancer:
         specifier: 1.1.0
         version: 1.1.0(react@18.2.0)
@@ -1196,8 +1196,8 @@ importers:
         specifier: 3.1.1
         version: 3.1.1(react-dom@18.2.0)(react@18.2.0)
       react-use:
-        specifier: 17.4.1
-        version: 17.4.1(react-dom@18.2.0)(react@18.2.0)
+        specifier: 17.4.2
+        version: 17.4.2(react-dom@18.2.0)(react@18.2.0)
       react-wrap-balancer:
         specifier: 1.1.0
         version: 1.1.0(react@18.2.0)
@@ -18502,11 +18502,11 @@ packages:
       tslib: 2.6.0
     dev: false
 
-  /react-use@17.4.1(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-f3EdGM5ea+2EEIkfgggE+Jhza7uEek8aEMTpd1TQnyqGAD4wew3CMVshiXEP6kstjBE4XUGoKVxttqio76ijNw==}
+  /react-use@17.4.2(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-1jPtmWLD8OJJNYCdYLJEH/HM+bPDfJuyGwCYeJFgPmWY8ttwpgZnW5QnzgM55CYUByUiTjHxsGOnEpLl6yQaoQ==}
     peerDependencies:
-      react: ^16.8.0  || ^17.0.0 || ^18.0.0
-      react-dom: ^16.8.0  || ^17.0.0 || ^18.0.0
+      react: '*'
+      react-dom: '*'
     dependencies:
       '@types/js-cookie': 2.2.7
       '@xobotyi/scrollbar-width': 1.9.5
