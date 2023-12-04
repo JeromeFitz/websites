@@ -370,8 +370,8 @@ importers:
         specifier: 2.2.2
         version: 2.2.2(lodash@4.17.21)
       '@notionhq/client':
-        specifier: 2.2.13
-        version: 2.2.13
+        specifier: 2.2.14
+        version: 2.2.14
       date-fns:
         specifier: 2.30.0
         version: 2.30.0
@@ -406,8 +406,8 @@ importers:
         specifier: 2.2.2
         version: 2.2.2(lodash@4.17.21)
       '@notionhq/client':
-        specifier: 2.2.13
-        version: 2.2.13
+        specifier: 2.2.14
+        version: 2.2.14
       '@types/lodash':
         specifier: 4.14.202
         version: 4.14.202
@@ -580,8 +580,8 @@ importers:
         specifier: 7.3.0
         version: 7.3.0(react@18.2.0)
       '@notionhq/client':
-        specifier: 2.2.13
-        version: 2.2.13
+        specifier: 2.2.14
+        version: 2.2.14
       '@radix-ui/primitive':
         specifier: 1.0.1
         version: 1.0.1
@@ -947,8 +947,8 @@ importers:
         specifier: 7.3.0
         version: 7.3.0(react@18.2.0)
       '@notionhq/client':
-        specifier: 2.2.13
-        version: 2.2.13
+        specifier: 2.2.14
+        version: 2.2.14
       '@radix-ui/primitive':
         specifier: 1.0.1
         version: 1.0.1
@@ -4250,8 +4250,8 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
 
-  /@notionhq/client@2.2.13:
-    resolution: {integrity: sha512-wJpEl30QUSy2K3/Q2c2knNiZlLXJ17JnQgaIiFbN68IMJy+2TE9fXLxvV1N/cMVs2+SpteAa6PlyrUgfGdlmDg==}
+  /@notionhq/client@2.2.14:
+    resolution: {integrity: sha512-oqUefZtCiJPCX+74A1Os9OVTef3fSnVWe2eVQtU1HJSD+nsfxfhwvDKnzJTh2Tw1ZHKLxpieHB/nzGdY+Uo12A==}
     engines: {node: '>=12'}
     dependencies:
       '@types/node-fetch': 2.6.4

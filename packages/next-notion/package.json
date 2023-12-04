@@ -41,7 +41,7 @@
   "devDependencies": {
     "@jeromefitz/ds": "workspace:*",
     "@jeromefitz/utils": "2.2.2",
-    "@notionhq/client": "2.2.13",
+    "@notionhq/client": "2.2.14",
     "date-fns": "2.30.0",
     "date-fns-tz": "2.0.0",
     "next": "14.0.3",
