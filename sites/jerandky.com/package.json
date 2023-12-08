@@ -131,7 +131,7 @@
     "smoothscroll-polyfill": "0.4.4",
     "swr": "2.2.4",
     "title": "3.5.3",
-    "ts-node": "10.9.1",
+    "ts-node": "10.9.2",
     "unfetch": "4.2.0",
     "use-sound": "4.0.1",
     "uuid": "9.0.1",
