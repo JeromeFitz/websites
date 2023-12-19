@@ -35,7 +35,7 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
-    "@heroicons/react": "2.0.18",
+    "@heroicons/react": "2.1.1",
     "@jeromefitz/design-system": "4.2.3",
     "@jeromefitz/notion": "4.0.7",
     "@jeromefitz/spotify": "3.0.4",
