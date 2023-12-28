@@ -10,9 +10,9 @@ import Headroom from 'react-headroom'
  * Until next version is updated, do some fun hacks
  */
 const info = {
-  title: 'Jerome &: Else Collective, Derek Minto, ...',
-  url: '/events/2023/12/16/jerome-and?utm_source=website&utm_medium=banner&utm_id=20231216',
-  subtitle: 'SAT 12/16 09:00PM',
+  title: 'Arcade Hootenanny',
+  url: '/events/2024/01/13/arcade-hootenanny?utm_source=website&utm_medium=banner&utm_id=20231216',
+  subtitle: 'SAT 01/13 08:00PM',
 }
 
 function Loading({}) {
