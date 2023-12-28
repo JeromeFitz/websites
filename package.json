@@ -12,7 +12,7 @@
   "private": true,
   "packageManager": "^pnpm@8.6.2",
   "engines": {
-    "node": ">=18"
+    "node": ">=18.17.0"
   },
   "scripts": {
     "clean:install": "turbo run clean && ./scripts/clean.sh",
