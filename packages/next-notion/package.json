@@ -28,10 +28,10 @@
     "semantic-release": "echo semantic-release"
   },
   "peerDependencies": {
+    "@jeromefitz/date-fns-tz": "^3.0.0-canary.3",
     "@jeromefitz/utils": "^2.2.2",
     "@notionhq/client": "^2.2.6",
-    "date-fns": "^2.30.0",
-    "date-fns-tz": "^2.0.0",
+    "date-fns": "^3.0.6",
     "uuid": "^9.0.0"
   },
   "dependencies": {
@@ -39,11 +39,11 @@
     "node-emoji": "2.1.3"
   },
   "devDependencies": {
+    "@jeromefitz/date-fns-tz": "3.0.0-canary.3",
     "@jeromefitz/ds": "workspace:*",
     "@jeromefitz/utils": "2.2.2",
     "@notionhq/client": "2.2.14",
-    "date-fns": "2.30.0",
-    "date-fns-tz": "2.0.0",
+    "date-fns": "3.0.6",
     "next": "14.0.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
