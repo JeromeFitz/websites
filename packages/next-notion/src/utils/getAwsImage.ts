@@ -1,10 +1,10 @@
 // import url from 'node:url'
 
 import { formatInTimeZone } from '@jeromefitz/date-fns-tz'
-// import { isAfter, differenceInSeconds, parseISO } from 'date-fns'
-import { isAfter, parseISO } from 'date-fns'
+import { isAfter, differenceInSeconds, parseISO } from 'date-fns'
+// import { isAfter, parseISO } from 'date-fns'
 
-// const DEBUG = true
+const DEBUG = true
 
 const TZ_UTC = 'UTC'
 // const TZ_AWS = 'America/New_York'
@@ -82,16 +82,16 @@ function isImageExpired(image) {
   const utc = formatInTimeZone(timestamp, TZ_UTC, `yyyy-MM-dd'T'HH:mm:ss.ms'Z'`)
   const isExpired = isAfter(parseISO(utc), parseISO(image?.expiry_time))
 
-  // // @debug
-  // if (DEBUG) {
-  //   const diff = differenceInSeconds(parseISO(utc), parseISO(image?.expiry_time))
-  //   // diff = diff < 0 ? diff * -1 : diff
-  //   console.dir(`utc:          ${utc}`)
-  //   console.dir(`expiry_time:  ${image?.expiry_time}`)
-  //   console.dir(`diff:         ${diff} (${diff / 60} minutes)`)
-  //   console.dir(`isExpired:    ${isExpired ? 'y' : 'n'}`)
-  //   console.dir(`---`)
-  // }
+  // @debug
+  if (DEBUG) {
+    const diff = differenceInSeconds(parseISO(utc), parseISO(image?.expiry_time))
+    // diff = diff < 0 ? diff * -1 : diff
+    console.dir(`utc:          ${utc}`)
+    console.dir(`expiry_time:  ${image?.expiry_time}`)
+    console.dir(`diff:         ${diff} (${diff / 60} minutes)`)
+    console.dir(`isExpired:    ${isExpired ? 'y' : 'n'}`)
+    console.dir(`---`)
+  }
 
   return isExpired
 }
