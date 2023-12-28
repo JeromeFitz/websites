@@ -1,10 +1,10 @@
 // import url from 'node:url'
 
+import { formatInTimeZone } from '@jeromefitz/date-fns-tz'
 // import { isAfter, differenceInSeconds, parseISO } from 'date-fns'
 import { isAfter, parseISO } from 'date-fns'
-import { formatInTimeZone } from 'date-fns-tz'
 
-// const DEBUG = false
+// const DEBUG = true
 
 const TZ_UTC = 'UTC'
 // const TZ_AWS = 'America/New_York'
@@ -90,6 +90,7 @@ function isImageExpired(image) {
   //   console.dir(`expiry_time:  ${image?.expiry_time}`)
   //   console.dir(`diff:         ${diff} (${diff / 60} minutes)`)
   //   console.dir(`isExpired:    ${isExpired ? 'y' : 'n'}`)
+  //   console.dir(`---`)
   // }
 
   return isExpired
