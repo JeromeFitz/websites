@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "@heroicons/react": "2.1.1",
-    "@jeromefitz/date-fns-tz": "3.0.0-canary.3",
+    "@jeromefitz/date-fns-tz": "3.0.0-canary.5",
     "@jeromefitz/design-system": "4.2.3",
     "@jeromefitz/notion": "4.0.7",
     "@jeromefitz/spotify": "3.0.4",

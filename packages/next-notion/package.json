@@ -39,7 +39,7 @@
     "node-emoji": "2.1.3"
   },
   "devDependencies": {
-    "@jeromefitz/date-fns-tz": "3.0.0-canary.3",
+    "@jeromefitz/date-fns-tz": "3.0.0-canary.5",
     "@jeromefitz/ds": "workspace:*",
     "@jeromefitz/utils": "2.2.2",
     "@notionhq/client": "2.2.14",
