@@ -30,9 +30,9 @@
   "peerDependencies": {
     "@jeromefitz/date-fns-tz": "^3.0.0-canary.8",
     "@jeromefitz/utils": "^2.2.2",
-    "@notionhq/client": "^2.2.6",
+    "@notionhq/client": "^2.2.14",
     "date-fns": "^3.0.6",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.1"
   },
   "dependencies": {
     "emoji-regex": "10.3.0",

@@ -37,6 +37,12 @@ const config = {
   ],
   versionGroups: [
     {
+      dependencies: ['@jeromefitz/date-fns-tz'],
+      dependencyTypes: ['peer'],
+      label: '@todo: @jeromefitz/date-fns-tz',
+      packages: ['**'],
+    },
+    {
       dependencies: ['$LOCAL'],
       dependencyTypes: ['dev', 'prod'],
       label: 'workspace protocol when local',
