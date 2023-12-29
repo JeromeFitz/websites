@@ -426,6 +426,9 @@ importers:
       '@vercel/analytics':
         specifier: 1.1.1
         version: 1.1.1
+      '@vercel/speed-insights':
+        specifier: 1.0.2
+        version: 1.0.2
       clsx:
         specifier: 2.1.0
         version: 2.1.0
@@ -1126,6 +1129,9 @@ importers:
       '@vercel/analytics':
         specifier: 1.1.1
         version: 1.1.1
+      '@vercel/speed-insights':
+        specifier: 1.0.2
+        version: 1.0.2
       clsx:
         specifier: 2.1.0
         version: 2.1.0
@@ -10227,6 +10233,10 @@ packages:
     resolution: {integrity: sha512-+NqgNmSabg3IFfxYhrWCfB/H+RCUOCR5ExRudNG2+pcRehq628DJB5e1u1xqwpLtn4pAYii4D98w7kofORAGQA==}
     dependencies:
       server-only: 0.0.1
+
+  /@vercel/speed-insights@1.0.2:
+    resolution: {integrity: sha512-y5HWeB6RmlyVYxJAMrjiDEz8qAIy2cit0fhBq+MD78WaUwQvuBnQlX4+5MuwVTWi46bV3klaRMq83u9zUy1KOg==}
+    requiresBuild: true
 
   /@webassemblyjs/ast@1.11.6:
     resolution: {integrity: sha512-IN1xI7PwOvLPgjcf180gC1bqn3q/QaOCwYUahIOhbYUu8KA/3tw2RT/T0Gidi1l7Hhj5D/INhJxiICObqpMu4Q==}
