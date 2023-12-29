@@ -22,4 +22,5 @@ fi
 
 if [ ! "$HUSKY__PRE_COMMIT__LINT_STAGED" = "0" ]; then
     pnpm lint-staged
+    pnpm run lint:packages
 fi
