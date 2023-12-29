@@ -1,3 +1,3 @@
 export { Analytics } from './Analytics'
 export { FathomAnalytics } from './Fathom'
-export { VercelAnalytics } from './Vercel'
+export { VercelAnalytics, VercelSpeedInsights } from './Vercel'
