@@ -56,7 +56,7 @@
     "@upstash/ratelimit": "1.0.0",
     "@upstash/redis": "1.27.1",
     "@vercel/analytics": "1.1.1",
-    "clsx": "2.0.0",
+    "clsx": "2.1.0",
     "fast-json-stable-stringify": "2.1.0",
     "fathom-client": "3.6.0",
     "github-slugger": "2.0.0",
