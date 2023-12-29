@@ -101,7 +101,7 @@
     "@upstash/ratelimit": "1.0.0",
     "@upstash/redis": "1.27.1",
     "@vercel/analytics": "1.1.1",
-    "clsx": "2.0.0",
+    "clsx": "2.1.0",
     "cmdk": "0.2.0",
     "date-fns": "3.0.6",
     "fast-json-stable-stringify": "2.1.0",
