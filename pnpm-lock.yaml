@@ -75,8 +75,8 @@ importers:
         specifier: 7.0.5
         version: 7.0.5(semantic-release@19.0.5)
       syncpack:
-        specifier: 12.2.0
-        version: 12.2.0(typescript@5.3.3)
+        specifier: 12.3.0
+        version: 12.3.0(typescript@5.3.3)
       ts-node:
         specifier: 10.9.2
         version: 10.9.2(@types/node@18.18.5)(typescript@5.3.3)
@@ -19746,8 +19746,8 @@ packages:
       tslib: 2.6.0
     dev: false
 
-  /syncpack@12.2.0(typescript@5.3.3):
-    resolution: {integrity: sha512-Wl2+JMJkzfYhaFA09GlqvV7XDP/S4EA1TlH1YkS6SBHv6xHAzkgaQQOlcezXuBThHjXGZwofhrItMuS2bPi4rQ==}
+  /syncpack@12.3.0(typescript@5.3.3):
+    resolution: {integrity: sha512-Gz2uGn96OmGfVVlKztvFac1EJYjP+WptQ2ohA6Uf48C6qLkhSayhkdujKQ6q7bGOTy8HSGI0iDfwfCJu6wvRig==}
     engines: {node: '>=16'}
     hasBin: true
     dependencies:
