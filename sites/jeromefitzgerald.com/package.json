@@ -104,7 +104,7 @@
     "@vercel/speed-insights": "1.0.2",
     "clsx": "2.1.0",
     "cmdk": "0.2.0",
-    "date-fns": "3.1.0",
+    "date-fns": "3.2.0",
     "fast-json-stable-stringify": "2.1.0",
     "fathom-client": "3.6.0",
     "focus-trap-react": "10.2.3",
