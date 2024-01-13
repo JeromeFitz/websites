@@ -832,8 +832,8 @@ importers:
         specifier: 3.2.0
         version: 3.2.0(react-dom@18.2.0)(react@18.2.0)
       react-use:
-        specifier: 17.4.2
-        version: 17.4.2(react-dom@18.2.0)(react@18.2.0)
+        specifier: 17.4.3
+        version: 17.4.3(react-dom@18.2.0)(react@18.2.0)
       react-wrap-balancer:
         specifier: 1.1.0
         version: 1.1.0(react@18.2.0)
@@ -1202,8 +1202,8 @@ importers:
         specifier: 3.2.0
         version: 3.2.0(react-dom@18.2.0)(react@18.2.0)
       react-use:
-        specifier: 17.4.2
-        version: 17.4.2(react-dom@18.2.0)(react@18.2.0)
+        specifier: 17.4.3
+        version: 17.4.3(react-dom@18.2.0)(react@18.2.0)
       react-wrap-balancer:
         specifier: 1.1.0
         version: 1.1.0(react@18.2.0)
@@ -18347,8 +18347,8 @@ packages:
       tslib: 2.6.0
     dev: false
 
-  /react-use@17.4.2(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-1jPtmWLD8OJJNYCdYLJEH/HM+bPDfJuyGwCYeJFgPmWY8ttwpgZnW5QnzgM55CYUByUiTjHxsGOnEpLl6yQaoQ==}
+  /react-use@17.4.3(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-05Oyuwn4ZccdzLD4ttLbMe8TkobdKpOj7YCFE9VhVpbXrTWZpvCcMyroRw/Banh1RIcQRcM06tfzPpY5D9sTsQ==}
     peerDependencies:
       react: '*'
       react-dom: '*'
