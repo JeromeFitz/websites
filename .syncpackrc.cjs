@@ -12,6 +12,7 @@ const config = {
     'resolutions', // resolutions
   ],
   indent: '  ',
+  lintFormatting: false,
   semverGroups: [
     {
       dependencies: ['semver*'],
