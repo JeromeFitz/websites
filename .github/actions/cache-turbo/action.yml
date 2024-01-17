@@ -21,7 +21,7 @@ runs:
   steps:
     - name: '🔺️  Cache (turbo)'
       id: cache-turbo
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       #   id: cache-turbo-restore
       #   uses: actions/cache/restore@v3
       env:
@@ -40,7 +40,7 @@ runs:
 
     - name: '🔺️  Cache (next)'
       id: cache-next
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       # id: cache-next-restore
       # uses: actions/cache/restore@v3
       env:
