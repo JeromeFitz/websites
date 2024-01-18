@@ -52,7 +52,7 @@
       "matchPackageNames": ["@types/*"]
     },
     {
-      "allowedVersions": "<=18",
+      "allowedVersions": "<=20",
       "commitMessagePrefix": "📦  (deps-dev)",
       "matchDepTypes": ["devDependencies", "dependencies"],
       "matchPackageNames": ["@types/node"]

@@ -5,7 +5,7 @@ author: 'JeromeFitz'
 
 inputs:
   node-version:
-    default: '18'
+    default: '20'
     description: '🔢  Node version'
     required: true
   pnpm-version:
