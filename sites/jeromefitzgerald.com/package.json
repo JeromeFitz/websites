@@ -114,7 +114,7 @@
     "ioredis": "5.3.2",
     "isomorphic-unfetch": "4.0.2",
     "ms": "3.0.0-canary.1",
-    "next": "14.0.4",
+    "next": "14.1.0",
     "next-themes": "0.2.1",
     "plaiceholder": "3.0.0",
     "pluralize": "8.0.0",
