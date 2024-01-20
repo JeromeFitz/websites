@@ -342,8 +342,8 @@ importers:
         specifier: 14.1.0
         version: 14.1.0
       '@octokit/core':
-        specifier: 5.0.2
-        version: 5.0.2
+        specifier: 5.1.0
+        version: 5.1.0
       '@plaiceholder/next':
         specifier: 3.0.0
         version: 3.0.0
@@ -4105,8 +4105,8 @@ packages:
       - encoding
     dev: false
 
-  /@octokit/core@5.0.2:
-    resolution: {integrity: sha512-cZUy1gUvd4vttMic7C0lwPed8IYXWYp8kHIMatyhY8t8n3Cpw2ILczkV5pGMPqef7v0bLo0pOHrEHarsau2Ydg==}
+  /@octokit/core@5.1.0:
+    resolution: {integrity: sha512-BDa2VAMLSh3otEiaMJ/3Y36GU4qf6GI+VivQ/P41NC6GHcdxpKlqV0ikSZ5gdQsmS3ojXeRx5vasgNTinF0Q4g==}
     engines: {node: '>= 18'}
     dependencies:
       '@octokit/auth-token': 4.0.0
