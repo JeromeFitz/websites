@@ -91,7 +91,7 @@
   ],
   "scripts": {
     "build": "tsup-node",
-    "clean": "rm -rf ./.turbo ./src",
+    "clean": "rm -rf ./.turbo ./dist",
     "clean:install": "pnpm clean && rm -rf ./node_modules",
     "copy": "mkdir -p ./src && ./scripts/copy.sh",
     "dev": "tsup-node --watch",
