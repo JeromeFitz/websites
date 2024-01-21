@@ -2,7 +2,6 @@
 
 if [[ -d ./node_modules ]]; then rm -rf ./node_modules; fi
 
-if [[ -d ./packages/design-system/node_modules ]]; then rm -rf ./packages/design-system/node_modules; fi
 if [[ -d ./packages/eslint-config/node_modules ]]; then rm -rf ./packages/eslint-config/node_modules; fi
 if [[ -d ./packages/jest-config/node_modules ]]; then rm -rf ./packages/jest-config/node_modules; fi
 if [[ -d ./packages/jest-presets/node_modules ]]; then rm -rf ./packages/jest-presets/node_modules; fi
@@ -13,6 +12,8 @@ if [[ -d ./packages/prettier-config/node_modules ]]; then rm -rf ./packages/pret
 if [[ -d ./packages/storybook-config/node_modules ]]; then rm -rf ./packages/storybook-config/node_modules; fi
 if [[ -d ./packages/tailwind-config/node_modules ]]; then rm -rf ./packages/tailwind-config/node_modules; fi
 
+if [[ -d ./packages/design-system/dist ]]; then rm -rf ./packages/design-system/dist; fi
+if [[ -d ./packages/design-system/node_modules ]]; then rm -rf ./packages/design-system/node_modules; fi
 if [[ -d ./packages/next-notion/dist ]]; then rm -rf ./packages/next-notion/dist; fi
 if [[ -d ./packages/next-notion/node_modules ]]; then rm -rf ./packages/next-notion/node_modules; fi
 if [[ -d ./packages/shared/dist ]]; then rm -rf ./packages/shared/dist; fi
