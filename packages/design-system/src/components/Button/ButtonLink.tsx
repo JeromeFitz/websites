@@ -1,13 +1,15 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore @todo(next) esm
 // eslint-disable-next-line no-restricted-imports
 import Link from 'next/link'
 import { forwardRef } from 'react'
 import type { ComponentProps, ForwardRefRenderFunction } from 'react'
 
-import { cx } from '../../utils/cx'
+import { cx } from '../../utils/cx.js'
 
-import { VARIANTS } from './Button.constants'
-import { commonStyles, variantStyles } from './Button.styles'
-import type { Variant } from './Button.types'
+import { VARIANTS } from './Button.constants.js'
+import { commonStyles, variantStyles } from './Button.styles.js'
+import type { Variant } from './Button.types.js'
 
 export interface ButtonLinkProps extends ComponentProps<typeof Link> {
   variant?: Variant
@@ -17,6 +19,8 @@ const ButtonLinkComponent: ForwardRefRenderFunction<
   HTMLAnchorElement,
   ButtonLinkProps
 > = (props, ref) => {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore @todo(next) esm
   const { className, href, variant = VARIANTS.DEFAULT, ...rest } = props
   const finalClassName =
     variant === VARIANTS.EMPTY

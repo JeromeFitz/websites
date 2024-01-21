@@ -1,5 +1,5 @@
 /* eslint-disable tailwindcss/no-custom-classname */
-import { cx } from '../../utils/cx'
+import { cx } from '../../utils/cx.js'
 
 function Tags({ tags, className = '', classNameTag = '' }) {
   return (
@@ -7,7 +7,7 @@ function Tags({ tags, className = '', classNameTag = '' }) {
       className={cx(
         'flex flex-row flex-wrap items-start align-top',
         'mt-4',
-        className
+        className,
       )}
     >
       {tags?.map((tag) => {
@@ -28,7 +28,7 @@ function Tags({ tags, className = '', classNameTag = '' }) {
               'md:left-0 md:my-2 md:mr-2',
               'md:px-4 md:py-1',
               classNameTag,
-              ''
+              '',
             )}
             style={{}}
           >

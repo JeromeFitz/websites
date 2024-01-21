@@ -46,21 +46,21 @@ function NowReading() {
                     className={cx(
                       'mb-2 text-3xl font-black tracking-tighter md:text-6xl',
                       'before:relative before:ml-[-0.95rem] before:content-[open-quote] before:md:ml-[-1.80rem]',
-                      'after:content-[close-quote]'
+                      'after:content-[close-quote]',
                     )}
                   >
                     {book.title}
                   </span>
                   <span
                     className={cx(
-                      'mb-2 text-2xl font-extrabold tracking-tight md:mb-5  md:text-5xl'
+                      'mb-2 text-2xl font-extrabold tracking-tight md:mb-5  md:text-5xl',
                     )}
                   >
                     {book.author}
                   </span>
                   <span
                     className={cx(
-                      'mb-4 text-xl font-light tracking-tight md:mb-6 md:text-3xl'
+                      'mb-4 text-xl font-light tracking-tight md:mb-6 md:text-3xl',
                     )}
                   >
                     {book.subtitle}

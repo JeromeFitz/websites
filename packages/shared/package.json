@@ -9,17 +9,91 @@
     "url": "https://jeromefitzgerald.com"
   },
   "license": "MIT",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
-  "typings": "./dist/index.d.ts",
+  "engines": {
+    "node": ">=20"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./components/Analytics": {
+      "types": "./dist/components/Analytics/index.d.ts",
+      "default": "./dist/components/Analytics/index.js"
+    },
+    "./components/Analytics/Analytics": {
+      "types": "./dist/components/Analytics/Analytics.d.ts",
+      "default": "./dist/components/Analytics/Analytics.js"
+    },
+    "./components/Analytics/Fathom": {
+      "types": "./dist/components/Analytics/Fathom.d.ts",
+      "default": "./dist/components/Analytics/Fathom.js"
+    },
+    "./components/Analytics/Vercel": {
+      "types": "./dist/components/Analytics/Vercel.d.ts",
+      "default": "./dist/components/Analytics/Vercel.js"
+    },
+    "./components/Notion/Blocks/EmbedSpotify": {
+      "types": "./dist/components/Notion/Blocks/Embed.Spotify.d.ts",
+      "default": "./dist/components/Notion/Blocks/Embed.Spotify.js"
+    },
+    "./components/Notion/Blocks/Embed": {
+      "types": "./dist/components/Notion/Blocks/Embed.d.ts",
+      "default": "./dist/components/Notion/Blocks/Embed.js"
+    },
+    "./components/Notion/Blocks/EmbedTwitter": {
+      "types": "./dist/components/Notion/Blocks/Embed.Twitter.d.ts",
+      "default": "./dist/components/Notion/Blocks/Embed.Twitter.js"
+    },
+    "./components/Notion/Blocks/ImageClient": {
+      "types": "./dist/components/Notion/Blocks/Image.client.d.ts",
+      "default": "./dist/components/Notion/Blocks/Image.client.js"
+    },
+    "./components/Notion/Blocks/Image": {
+      "types": "./dist/components/Notion/Blocks/Image.d.ts",
+      "default": "./dist/components/Notion/Blocks/Image.js"
+    },
+    "./components/Notion/Blocks/ImageUtils": {
+      "types": "./dist/components/Notion/Blocks/Image.utils.d.ts",
+      "default": "./dist/components/Notion/Blocks/Image.utils.js"
+    },
+    "./components/Notion/Blocks/Video": {
+      "types": "./dist/components/Notion/Blocks/Video.d.ts",
+      "default": "./dist/components/Notion/Blocks/Video.js"
+    },
+    "./components/Notion/Blocks/VideoYouTube": {
+      "types": "./dist/components/Notion/Blocks/Video.YouTube.d.ts",
+      "default": "./dist/components/Notion/Blocks/Video.YouTube.js"
+    },
+    "./hooks": {
+      "types": "./dist/hooks/index.d.ts",
+      "default": "./dist/hooks/index.js"
+    },
+    "./lib": {
+      "types": "./dist/lib/index.d.ts",
+      "default": "./dist/lib/index.js"
+    },
+    "./notion/utils": {
+      "types": "./dist/notion/utils/index.d.ts",
+      "default": "./dist/notion/utils/index.js"
+    },
+    "./plaiceholder": {
+      "types": "./dist/plaiceholder/index.d.ts",
+      "default": "./dist/plaiceholder/index.js"
+    },
+    "./redis": {
+      "types": "./dist/redis/index.d.ts",
+      "default": "./dist/redis/index.js"
+    }
+  },
   "files": [
-    "dist/**"
+    "src/**"
   ],
   "scripts": {
     "build": "tsup-node",
-    "clean": "rm -rf ./.turbo ./dist",
+    "clean": "rm -rf ./.turbo ./src",
     "clean:install": "pnpm clean && rm -rf ./node_modules",
-    "copy": "mkdir -p ./dist && ./scripts/copy.sh",
+    "copy": "mkdir -p ./src && ./scripts/copy.sh",
     "dev": "tsup-node --watch",
     "format:lint": "pnpm lint:eslint --fix",
     "lint": "pnpm lint:eslint && pnpm lint:typescript",
@@ -28,12 +102,11 @@
     "semantic-release": "echo semantic-release"
   },
   "peerDependencies": {
-    "@jeromefitz/utils": "^2.2.2",
     "@notionhq/client": "^2.2.14",
     "@upstash/ratelimit": "^1.0.0",
     "@upstash/redis": "^1.28.1",
-    "@vercel/analytics": "^1.1.1",
-    "@vercel/speed-insights": "^1.0.4",
+    "@vercel/analytics": "^1.1.2",
+    "@vercel/speed-insights": "^1.0.5",
     "clsx": "^2.1.0",
     "fast-json-stable-stringify": "^2.1.0",
     "fathom-client": "^3.6.0",
@@ -44,12 +117,13 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-tweet": "^3.2.0",
+    "server-only": "0.0.1",
     "tailwind-merge": "^2.2.0",
     "valid-url": "^1.0.9"
   },
   "devDependencies": {
     "@jeromefitz/ds": "workspace:*",
-    "@jeromefitz/utils": "2.2.2",
+    "@jeromefitz/utils": "3.0.0-canary.2",
     "@notionhq/client": "2.2.14",
     "@types/lodash": "4.14.202",
     "@types/react": "18.2.48",
@@ -70,6 +144,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-tweet": "3.2.0",
+    "server-only": "0.0.1",
     "tailwind-merge": "2.2.0",
     "valid-url": "1.0.9"
   },

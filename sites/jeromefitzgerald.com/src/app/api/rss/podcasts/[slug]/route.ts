@@ -1,14 +1,14 @@
 // https://jerandky.com/api/rss/podcasts/jer-and-ky-and-guest
 // https://jerandky.com/api/rss/podcasts/knockoffs
 
-import {
-  getDataFromCache,
-  getSegmentInfo,
-} from '@jeromefitz/shared/src/notion/utils'
+import { getDataFromCache, getSegmentInfo } from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
-import _orderBy from 'lodash/orderBy'
+import _orderBy from 'lodash/orderBy.js'
+// @todo(next) esm
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { NextRequest, NextResponse } from 'next/server'
-import { notion } from 'next-notion/src/helper'
+import { notion } from 'next-notion/helper'
 import { Podcast } from 'podcast'
 
 // import type { PropertiesEpisode, PropertiesPodcast } from '~app/(notion)/_config'
@@ -18,7 +18,7 @@ const { DATABASE_ID, SEGMENT } = CONFIG.PODCASTS
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { slug: string } }
+  { params }: { params: { slug: string } },
 ) {
   const slug = params.slug
 

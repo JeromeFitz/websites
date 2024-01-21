@@ -1,10 +1,12 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import redis from '@jeromefitz/shared/src/redis'
+import redis from '@jeromefitz/shared/redis'
 import Client from '@jeromefitz/spotify'
 import type { CredentialProps, ClientProps } from '@jeromefitz/spotify'
 import stringify from 'fast-json-stable-stringify'
 import { slug as _slug } from 'github-slugger'
 import ms from 'ms'
+// @todo(next) esm
+// @ts-ignore
 import { NextRequest, NextResponse } from 'next/server'
 
 const keyPrefixSpotify = `${process.env.NEXT_PUBLIC__SITE}/spotify`
@@ -67,7 +69,7 @@ const spotify: ClientProps = new Client({ accessToken: '', ...credentials })
 // eslint-disable-next-line complexity
 export async function GET(
   request: NextRequest,
-  { params }: { params: { slug: string } }
+  { params }: { params: { slug: string } },
 ) {
   const slug = params.slug
   const { searchParams } = new URL(request.url)

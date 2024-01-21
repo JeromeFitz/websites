@@ -1,14 +1,22 @@
+// @todo(next) esm
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import dynamic from 'next/dynamic'
+// // // @todo(next) esm
+// // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// // @ts-ignore
 // import { notFound } from 'next/navigation'
 
-import { FourOhFour } from '~app/_errors/404'
+import { FourOhFour } from '~app/_errors/404.js'
 
 const PlaygroundPage = dynamic(
   async () => {
-    const { PlaygroundPage: Component } = await import('~components/Playground')
+    const { PlaygroundPage: Component } = await import(
+      '~components/Playground/index.js'
+    )
     return { default: Component }
   },
-  { ssr: false }
+  { ssr: false },
 )
 
 const isDev = process.env.NODE_ENV === 'development'

@@ -21,3 +21,23 @@ fi
 ###
 # @custom(build)
 ###
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  if [[ "$OSTYPE" == "darwin"* ]]; then
+  sed -i "" "s|dist/||g" dist/package.json
+else
+  sed -i -e "s|dist/||g" dist/package.json
+fi
+else
+  sed -i -e "s|dist/||g" dist/package.json
+fi
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  if [[ "$OSTYPE" == "darwin"* ]]; then
+  sed -i "" "s|src/||g" dist/package.json
+else
+  sed -i -e "s|src/||g" dist/package.json
+fi
+else
+  sed -i -e "s|src/||g" dist/package.json
+fi

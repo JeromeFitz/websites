@@ -24,7 +24,7 @@ import {
   RadixBorders,
   RadixColors,
   TailwindWidth,
-} from '~components/Playground'
+} from '~components/Playground/index.js'
 // const RadixBackgrounds = dynamic(async () => {
 //   const { RadixBackgrounds: Component } = await import('~components/Playground')
 //   return { default: Component }
@@ -41,7 +41,7 @@ import {
 //   const { TailwindWidth: Component } = await import('~components/Playground')
 //   return { default: Component }
 // })
-import { Testing } from '~components/Testing'
+import { Testing } from '~components/Testing/index.js'
 
 const isDev = process.env.NODE_ENV === 'development'
 const siteColors = [
@@ -142,7 +142,7 @@ function TailwindHackForDynamicallyLoadedStylesBorders() {
                   '',
                   '',
                   '',
-                  ''
+                  '',
                 )
                 return (
                   <li key={`radix-borders-${id}-${borderType}`} className={styles}>
@@ -225,7 +225,7 @@ function TailwindHackForDynamicallyLoadedStylesColors() {
                 '',
                 '',
                 '',
-                ''
+                '',
               )
               return (
                 <li key={`radix-colors-${id}`} className={color}>
@@ -261,7 +261,7 @@ function TailwindHackForDynamicallyLoadedStylesColors() {
                 '',
                 '',
                 '',
-                ''
+                '',
               )
               return (
                 <li key={`radix-bg-colors-${id}`} className={color}>

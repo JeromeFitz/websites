@@ -17,9 +17,9 @@
     "isolatedModules": true,
     // "jsx": "preserve",
     "jsx": "react-jsx",
-    "lib": ["dom", "ES2020"],
-    "module": "ES2020",
-    "moduleResolution": "node",
+    "lib": ["dom", "ESNext"],
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "noEmit": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": false, // @todo(lint)
@@ -33,10 +33,10 @@
     "strictFunctionTypes": false, // @todo(lint)
     "strictNullChecks": false, // @todo(lint)
     "strictPropertyInitialization": false, // @todo(lint)
-    "target": "esnext",
+    "target": "ESNext",
     "tsBuildInfoFile": ".tsbuildinfo",
-    "types": ["node", "react/canary"]
+    "types": ["node", "react/canary"],
   },
   "include": ["src", "index.d.ts", "next-env.d.ts"],
-  "exclude": ["node_modules", "**/*.test.ts"]
+  "exclude": ["node_modules", "**/*.test.ts"],
 }

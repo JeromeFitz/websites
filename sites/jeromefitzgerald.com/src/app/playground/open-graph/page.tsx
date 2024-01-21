@@ -7,9 +7,12 @@ import {
   // Tags,
 } from '@jeromefitz/ds/components/Section'
 import { cx } from '@jeromefitz/ds/utils/cx'
+// // // @todo(next) esm
+// // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// // @ts-ignore
 // import { notFound } from 'next/navigation'
 
-import { FourOhFour } from '~app/_errors/404'
+import { FourOhFour } from '~app/_errors/404.js'
 
 const isDev = process.env.NODE_ENV === 'development'
 
@@ -49,7 +52,7 @@ function Pill({ children }) {
   return (
     <div
       className={cx(
-        'm-4 mx-auto w-1/5 rounded-full border-2 border-[#0f0f0f] bg-[#f4f4f4] px-3 py-2 text-[#0f0f0f]'
+        'm-4 mx-auto w-1/5 rounded-full border-2 border-[#0f0f0f] bg-[#f4f4f4] px-3 py-2 text-[#0f0f0f]',
       )}
     >
       {children}
@@ -63,15 +66,15 @@ function OpenGraphTesting() {
       {/* // Start here */}
       <div
         className={cx(
-          'flex h-full w-full flex-row flex-wrap items-start justify-items-start text-3xl',
-          'bg-[linear-gradient(170deg,_rgb(244,_244,_244),_rgb(207,_47,_152))]'
+          'flex size-full flex-row flex-wrap items-start justify-items-start text-3xl',
+          'bg-[linear-gradient(170deg,_rgb(244,_244,_244),_rgb(207,_47,_152))]',
         )}
       >
         <div className={cx('flex w-full flex-row justify-between')}>
           <div className={cx('m-3 flex items-center p-3 align-top')}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              className="inline-block h-16 w-16 rounded-full bg-[white] ring-1 ring-[black]"
+              className="inline-block size-16 rounded-full bg-[white] ring-1 ring-[black]"
               src={avatar}
             />
             <span className={cx('mx-4 text-2xl font-medium')}>
@@ -80,7 +83,7 @@ function OpenGraphTesting() {
           </div>
           <div className={cx('m-3 flex items-center p-3 align-top')}>
             <span className={cx('mx-4 text-2xl font-medium')}>{item.segment}</span>
-            <span className="bg-breeze inline-block h-16 w-16 rounded-full ring-1 ring-[black]" />
+            <span className="bg-breeze inline-block size-16 rounded-full ring-1 ring-[black]" />
           </div>
         </div>
         <div className={cx('flex w-full flex-row justify-center align-top')}>
@@ -104,7 +107,7 @@ function OpenGraphTesting() {
             </span>
             <span
               className={cx(
-                ' mx-4 w-full px-4 text-center text-xl font-semibold uppercase'
+                ' mx-4 w-full px-4 text-center text-xl font-semibold uppercase',
               )}
             >
               <Pill>{item.location}</Pill>

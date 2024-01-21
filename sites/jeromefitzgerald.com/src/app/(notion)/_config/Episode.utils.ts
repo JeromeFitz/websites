@@ -1,4 +1,4 @@
-import { getPropertyTypeData } from 'next-notion/src/utils'
+import { getPropertyTypeData } from 'next-notion/utils'
 
 import type { PropertiesEpisode } from '~app/(notion)/_config'
 
@@ -28,7 +28,7 @@ function getEpisodeData(properties) {
     dayOfMonth: getPropertyTypeDataEpisode(properties, 'Date.DayOfMonth'),
     dayOfMonthOrdinal: getPropertyTypeDataEpisode(
       properties,
-      'Date.DayOfMonthOrdinal'
+      'Date.DayOfMonthOrdinal',
     ),
     dayOfWeek: getPropertyTypeDataEpisode(properties, 'Date.DayOfWeek'),
     dayOfWeekAbbr: getPropertyTypeDataEpisode(properties, 'Date.DayOfWeekAbbr'),
@@ -61,19 +61,19 @@ function getEpisodeData(properties) {
     subtitle: getPropertyTypeDataEpisode(properties, 'Subtitle'),
     podcastAppleId: getPropertyTypeDataEpisode(
       properties,
-      'Rollup.Podcasts.Apple.ID'
+      'Rollup.Podcasts.Apple.ID',
     ),
     podcastAppleUrl: getPropertyTypeDataEpisode(
       properties,
-      'Rollup.Podcasts.Apple.URL'
+      'Rollup.Podcasts.Apple.URL',
     ),
     podcastSpotifyId: getPropertyTypeDataEpisode(
       properties,
-      'Rollup.Podcasts.Spotify.ID'
+      'Rollup.Podcasts.Spotify.ID',
     ),
     podcastSpotifyUrl: getPropertyTypeDataEpisode(
       properties,
-      'Rollup.Podcasts.Spotify.URL'
+      'Rollup.Podcasts.Spotify.URL',
     ),
     podcastSlug: getPropertyTypeDataEpisode(properties, 'Rollup.Podcasts.Slug'),
 
@@ -89,7 +89,7 @@ function getEpisodeData(properties) {
     seoKeywords: getPropertyTypeDataEpisode(properties, 'SEO.Keywords'),
     seoImageDescription: getPropertyTypeDataEpisode(
       properties,
-      'SEO.Image.Description'
+      'SEO.Image.Description',
     ),
     seoImage: getPropertyTypeDataEpisode(properties, 'SEO.Image')[0],
     /**

@@ -7,12 +7,12 @@ import {
   SectionWrapper,
   // Tags,
 } from '@jeromefitz/ds/components/Section'
-import {
-  getDataFromCache,
-  getSegmentInfo,
-} from '@jeromefitz/shared/src/notion/utils'
+import { getDataFromCache, getSegmentInfo } from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
 import type { Metadata } from 'next'
+// @todo(next) esm
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { draftMode } from 'next/headers'
 
 import { getPageData, CONFIG } from '~app/(notion)/_config'

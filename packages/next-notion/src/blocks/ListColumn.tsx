@@ -1,8 +1,8 @@
-import type { ColumnListBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
+import type { ColumnListBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints.js'
 import { forwardRef } from 'react'
 
-import { NotionBlocks as Blocks } from '../Notion.Blocks'
-import { getBlockKey } from '../Notion.utils'
+import { NotionBlocks as Blocks } from '../Notion.Blocks.js'
+import { getBlockKey } from '../Notion.utils.js'
 
 const ListColumn = forwardRef(function ListColumn(props: any, ref: any) {
   const {

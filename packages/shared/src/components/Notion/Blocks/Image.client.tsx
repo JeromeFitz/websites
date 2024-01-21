@@ -1,3 +1,8 @@
+/**
+ * @todo(types) next/image
+ */
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import NextImage from 'next/image'
 
 function Image({ ...props }) {
@@ -37,4 +42,4 @@ function Image({ ...props }) {
   )
 }
 
-export { Image as NextImage }
+export { Image as ImageClient }

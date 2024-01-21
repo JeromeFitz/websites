@@ -1,7 +1,50 @@
 {
   "name": "@jeromefitz/ds",
   "version": "0.0.0",
+  "type": "module",
+  "license": "MIT",
   "private": true,
+  "engines": {
+    "node": ">=20"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./components": {
+      "types": "./dist/components/index.d.ts",
+      "default": "./dist/components/index.js"
+    },
+    "./components/Anchor": {
+      "types": "./dist/components/Anchor/index.d.ts",
+      "default": "./dist/components/Anchor/index.js"
+    },
+    "./components/Button": {
+      "types": "./dist/components/Button/index.d.ts",
+      "default": "./dist/components/Button/index.js"
+    },
+    "./components/Caption": {
+      "types": "./dist/components/Caption/index.d.ts",
+      "default": "./dist/components/Caption/index.js"
+    },
+    "./components/Icon": {
+      "types": "./dist/components/Icon/index.d.ts",
+      "default": "./dist/components/Icon/index.js"
+    },
+    "./components/Section": {
+      "types": "./dist/components/Section/index.d.ts",
+      "default": "./dist/components/Section/index.js"
+    },
+    "./components/Separator": {
+      "types": "./dist/components/Separator/index.d.ts",
+      "default": "./dist/components/Separator/index.js"
+    },
+    "./utils/cx": {
+      "types": "./dist/utils/cx.d.ts",
+      "default": "./dist/utils/cx.js"
+    }
+  },
   "scripts": {
     "build": "tsup-node",
     "build:storybook": "storybook build",
@@ -89,6 +132,8 @@
     "@jeromefitz/storybook-config": "workspace:*",
     "@jeromefitz/tailwind-config": "workspace:*",
     "@mantine/hooks": "7.4.2",
+    "@types/react": "18.2.48",
+    "@types/react-dom": "18.2.18",
     "next": "14.1.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"

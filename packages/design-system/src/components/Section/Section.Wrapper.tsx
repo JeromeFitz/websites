@@ -1,4 +1,4 @@
-import { cx } from '../../utils/cx'
+import { cx } from '../../utils/cx.js'
 
 function SectionWrapper({ children }) {
   return (
@@ -14,7 +14,7 @@ function SectionWrapper({ children }) {
           'before:h-0',
           'before:relative before:inset-x-2 before:top-0 before:w-full before:content-normal',
           'before:bg-radix-slate8',
-          ''
+          '',
         )}
       >
         {children}

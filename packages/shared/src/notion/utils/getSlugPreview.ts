@@ -1,4 +1,4 @@
-import { getPropertyTypeData } from 'next-notion/src/utils/getPropertyTypeData'
+import { getPropertyTypeData } from 'next-notion/utils'
 
 function getSlugPreview(properties) {
   return getPropertyTypeData(properties, 'Slug.Preview')

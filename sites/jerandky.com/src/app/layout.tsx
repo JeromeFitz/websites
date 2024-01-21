@@ -14,14 +14,14 @@ const Analytics = dynamic(
     )
     return { default: Component }
   },
-  { ssr: true }
+  { ssr: true },
 )
 const Footer = dynamic(
   async () => {
     const { Footer: Component } = await import('../components/Footer')
     return { default: Component }
   },
-  { ssr: true }
+  { ssr: true },
 )
 const fontSans = localFont({
   display: 'swap',
@@ -67,7 +67,7 @@ function Wrapper({ children }) {
         'm-2 px-2',
         // desktop
         'md:m-6',
-        ''
+        '',
       )}
     >
       {children}
@@ -101,7 +101,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           'selection:bg-radix-slate12 selection:text-radix-slate1',
           'bg-white dark:bg-black',
           'font-sans antialiased',
-          fontSans.variable
+          fontSans.variable,
         )}
       >
         <Providers>

@@ -15,13 +15,13 @@ import {
   getDataFromCache,
   getSegmentInfo,
   getDatabaseQuery,
-} from '@jeromefitz/shared/src/notion/utils'
+} from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
-import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints'
+import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints.js'
 // import isEqual from 'lodash/isEqual'
 // import uniqWith from 'lodash/uniqWith'
 import type { Metadata } from 'next'
-import { getPropertyTypeData } from 'next-notion/src/utils'
+import { getPropertyTypeData } from 'next-notion/utils'
 
 import type { PageObjectResponsePodcast } from '~app/(notion)/_config'
 import { CONFIG, getPageData, getPodcastData } from '~app/(notion)/_config'
@@ -97,7 +97,7 @@ async function _generateStaticParams({ ...props }) {
       if (!isPublished) return
       const href = getPropertyTypeData(properties, 'Slug.Preview')?.replaceAll(
         `/${SEGMENT}/`,
-        ''
+        '',
       )
       const catchAll = href.split('/')
       segments.push({ catchAll })

@@ -95,7 +95,7 @@ function Footer() {
               className={cx(
                 'grid w-full grid-cols-12 gap-x-4 gap-y-8',
                 // 'md:[&>*:nth-child(2)]:col-start-9',
-                ''
+                '',
               )}
             >
               {menus.map((menu) => {
@@ -107,7 +107,7 @@ function Footer() {
                     <p
                       className={cx(
                         'pb-3 font-extrabold uppercase tracking-tight',
-                        ''
+                        '',
                       )}
                     >
                       <strong>{menu?.title}</strong>
@@ -118,7 +118,7 @@ function Footer() {
                           <li
                             className={cx(
                               'mb-2 md:mb-0.5',
-                              item?.active && item?.className
+                              item?.active && item?.className,
                             )}
                             key={`menu-${menu?.id}-social-${item?.id}`}
                           >
@@ -131,13 +131,13 @@ function Footer() {
                                   '!align-middle',
                                   '!text-inherit',
                                   '!no-underline',
-                                  'flex'
+                                  'flex',
                                 )}
                                 href={item?.url}
                               >
                                 <span className="flex flex-row-reverse items-center justify-end gap-1 align-middle">
                                   <span className="mr-2">{item?.title}</span>
-                                  <span className="mr-2 h-4 w-4">{item?.icon}</span>
+                                  <span className="mr-2 size-4">{item?.icon}</span>
                                 </span>
                               </Anchor>
                             ) : (
@@ -150,13 +150,13 @@ function Footer() {
                                   '!text-inherit',
                                   // '!no-underline',
                                   'flex',
-                                  'line-through'
+                                  'line-through',
                                 )}
                                 // href={item?.url}
                               >
                                 <span className="flex flex-row-reverse items-center justify-end gap-1 align-middle">
                                   <span className="mr-2">{item?.title}</span>
-                                  <span className="mr-2 h-4 w-4">{item?.icon}</span>
+                                  <span className="mr-2 size-4">{item?.icon}</span>
                                 </span>
                               </span>
                             )}
@@ -187,7 +187,7 @@ function Footer() {
                   <li
                     className={cx(
                       'mb-2 md:mb-0.5',
-                      'flex flex-row items-center gap-1 align-middle'
+                      'flex flex-row items-center gap-1 align-middle',
                     )}
                   >
                     <Suspense fallback={<Fragment />}>
@@ -201,7 +201,7 @@ function Footer() {
               <SectionHeader className="hidden">Disclaimer</SectionHeader>
               <SectionContent className="w-full md:w-full">
                 <div className="flex flex-row items-start justify-start gap-1 py-4 align-text-bottom md:py-0">
-                  <span className="mr-2 mt-1 h-4 w-4">
+                  <span className="mr-2 mt-1 size-4">
                     <FileTextIcon className="text-inherit" />
                   </span>
                   <span>

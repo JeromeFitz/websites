@@ -97,7 +97,7 @@ async function _generateStaticParams({ ...props }) {
       if (!isPublished) return
       const href = getPropertyTypeData(properties, 'Slug.Preview')?.replaceAll(
         `/${SEGMENT}/`,
-        ''
+        '',
       )
       const catchAll = href.split('/')
       segments.push({ catchAll })
