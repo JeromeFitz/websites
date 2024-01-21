@@ -1,5 +1,5 @@
-import { Anchor } from '@jeromefitz/ds/src/components/Anchor'
-import { cx } from '@jeromefitz/ds/src/utils/cx'
+import { Anchor } from '@jeromefitz/ds/components/Anchor'
+import { cx } from '@jeromefitz/ds/utils/cx'
 import type {
   BulletedListItemBlockObjectResponse,
   Heading1BlockObjectResponse,
@@ -9,7 +9,7 @@ import type {
   ParagraphBlockObjectResponse,
   QuoteBlockObjectResponse,
   RichTextItemResponse,
-} from '@notionhq/client/build/src/api-endpoints'
+} from '@notionhq/client/build/src/api-endpoints.js'
 import { forwardRef, Fragment } from 'react'
 
 import type { ApiColor } from '../Notion.types'

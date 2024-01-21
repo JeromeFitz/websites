@@ -1,7 +1,6 @@
 {
   "name": "next-notion",
   "version": "0.0.0",
-  "type": "module",
   "repository": "jeromefitz/websites.git",
   "author": {
     "name": "Jerome Fitzgerald",
@@ -9,9 +8,79 @@
     "url": "https://jeromefitzgerald.com"
   },
   "license": "MIT",
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "typings": "./dist/index.d.ts",
+  "engines": {
+    "node": ">=20"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./blocks/Column": {
+      "types": "./dist/blocks/Column.d.ts",
+      "default": "./dist/blocks/Column.js"
+    },
+    "./blocks/Divider": {
+      "types": "./dist/blocks/Divider.d.ts",
+      "default": "./dist/blocks/Divider.js"
+    },
+    "./blocks/EmojiClient": {
+      "types": "./dist/blocks/Emoji.client.d.ts",
+      "default": "./dist/blocks/Emoji.client.js"
+    },
+    "./blocks/EmojiServer": {
+      "types": "./dist/blocks/Emoji.server.d.ts",
+      "default": "./dist/blocks/Emoji.server.js"
+    },
+    "./blocks/Emoji": {
+      "types": "./dist/blocks/Emoji.d.ts",
+      "default": "./dist/blocks/Emoji.js"
+    },
+    "./blocks/ListBulleted": {
+      "types": "./dist/blocks/ListBulleted.d.ts",
+      "default": "./dist/blocks/ListBulleted.js"
+    },
+    "./blocks/ListColumn": {
+      "types": "./dist/blocks/ListColumn.d.ts",
+      "default": "./dist/blocks/ListColumn.js"
+    },
+    "./blocks/RichText": {
+      "types": "./dist/blocks/RichText.d.ts",
+      "default": "./dist/blocks/RichText.js"
+    },
+    "./helper": {
+      "types": "./dist/helper.d.ts",
+      "default": "./dist/helper.js"
+    },
+    "./utils": {
+      "types": "./dist/utils/index.d.ts",
+      "default": "./dist/utils/index.js"
+    },
+    "./queries": {
+      "types": "./dist/queries/index.d.ts",
+      "default": "./dist/queries/index.js"
+    },
+    "./Notion.Blocks": {
+      "types": "./dist/Notion.Blocks.d.ts",
+      "default": "./dist/Notion.Blocks.js"
+    },
+    "./Notion.Config": {
+      "types": "./dist/Notion.Config.d.ts",
+      "default": "./dist/Notion.Config.js"
+    },
+    "./Notion.constants": {
+      "types": "./dist/Notion.constants.d.ts",
+      "default": "./dist/Notion.constants.js"
+    },
+    "./Notion.types": {
+      "types": "./dist/Notion.types.d.ts",
+      "default": "./dist/Notion.types.js"
+    },
+    "./Notion.utils": {
+      "types": "./dist/Notion.utils.d.ts",
+      "default": "./dist/Notion.utils.js"
+    }
+  },
   "files": [
     "dist/**"
   ],
@@ -29,9 +98,9 @@
   },
   "peerDependencies": {
     "@jeromefitz/date-fns-tz": "^3.0.0-canary.8",
-    "@jeromefitz/utils": "^2.2.2",
     "@notionhq/client": "^2.2.14",
-    "date-fns": "^3.2.0",
+    "date-fns": "^3.3.0",
+    "server-only": "0.0.1",
     "uuid": "^9.0.1"
   },
   "dependencies": {
@@ -40,13 +109,15 @@
   },
   "devDependencies": {
     "@jeromefitz/date-fns-tz": "3.0.0-canary.8",
-    "@jeromefitz/ds": "workspace:*",
-    "@jeromefitz/utils": "2.2.2",
+    "@jeromefitz/utils": "3.0.0-canary.2",
     "@notionhq/client": "2.2.14",
-    "date-fns": "3.2.0",
+    "@types/react": "18.2.48",
+    "@types/react-dom": "18.2.18",
+    "date-fns": "3.3.0",
     "next": "14.1.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "server-only": "0.0.1",
     "uuid": "9.0.1"
   },
   "publishConfig": {

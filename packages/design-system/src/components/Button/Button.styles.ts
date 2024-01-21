@@ -9,7 +9,7 @@ export const commonStyles = cx(
   'outline-none outline-offset-0 ',
   'hocus:ring-1 ring-0 ring-inset',
   'focus:shadow-md',
-  'cursor-default hover:cursor-pointer'
+  'cursor-default hover:cursor-pointer',
 )
 
 export const variantStyles = {

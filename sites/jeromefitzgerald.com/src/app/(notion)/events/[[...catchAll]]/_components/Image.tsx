@@ -1,6 +1,6 @@
 import https from 'node:https'
 
-import { NextImage } from '@jeromefitz/shared/src/components/Notion/Blocks/Image.client'
+import { ImageClient as NextImage } from '@jeromefitz/shared/components/Notion/Blocks/Image.client'
 import { isObjectEmpty } from '@jeromefitz/utils'
 // import { Client } from '@notionhq/client'
 import { Redis } from '@upstash/redis'
@@ -22,7 +22,7 @@ async function Image({ properties }) {
    */
   const imageSeoDescription = getPropertyTypeDataEvent(
     properties,
-    'SEO.Image.Description'
+    'SEO.Image.Description',
   )
   const imageSeo = getPropertyTypeDataEvent(properties, 'SEO.Image')[0]
   // console.dir(`imageSeo:`)
@@ -64,7 +64,7 @@ async function Image({ properties }) {
 
   // const isExpired = isImageExpired(image)
   if (!isCached && !!imageUrl) {
-    const { getImage } = await import('@jeromefitz/shared/src/plaiceholder/getImage')
+    const { getImage } = await import('@jeromefitz/shared/plaiceholder')
     const imageData = await getImage(imageUrl)
     image.blurDataURL = imageData?.base64
     image = {

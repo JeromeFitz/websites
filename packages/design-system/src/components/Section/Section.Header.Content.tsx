@@ -7,7 +7,7 @@ function SectionHeaderContent({ children, className = '' }) {
         '[writing-mode:vertical-lr]',
         'md:[writing-mode:lr]',
         'w-11/12',
-        className
+        className,
       )}
     >
       {children}

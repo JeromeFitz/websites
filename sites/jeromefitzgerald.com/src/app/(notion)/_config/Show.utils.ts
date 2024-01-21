@@ -1,4 +1,4 @@
-import { getPropertyTypeData } from 'next-notion/src/utils'
+import { getPropertyTypeData } from 'next-notion/utils'
 
 import type { PropertiesShow } from '~app/(notion)/_config'
 
@@ -24,7 +24,7 @@ function getShowData(properties) {
     seoKeywords: getPropertyTypeDataShow(properties, 'SEO.Keywords'),
     seoImageDescription: getPropertyTypeDataShow(
       properties,
-      'SEO.Image.Description'
+      'SEO.Image.Description',
     ),
     seoImage: getPropertyTypeDataShow(properties, 'SEO.Image')[0],
     /**
@@ -36,7 +36,7 @@ function getShowData(properties) {
      */
     rollupCastTitles: getPropertyTypeDataShow(
       properties,
-      'Rollup.People.Cast.Title'
+      'Rollup.People.Cast.Title',
     ),
     rollupCastSlugs: getPropertyTypeDataShow(properties, 'Rollup.People.Cast.Slug'),
   }

@@ -1,5 +1,5 @@
 import { cx } from '@jeromefitz/ds/utils/cx'
-import { getPageDataFromNotion } from '@jeromefitz/shared/src/notion/utils'
+import { getPageDataFromNotion } from '@jeromefitz/shared/notion/utils'
 import { Suspense } from 'react'
 
 import type { PageObjectResponseVenue } from '~app/(notion)/_config'
@@ -26,12 +26,12 @@ async function VenueIndividual({ id }) {
   const addressCity = getPropertyTypeDataVenue(properties, 'Address.City')
   const addressNeighborhood = getPropertyTypeDataVenue(
     properties,
-    'Address.Neighborhood'
+    'Address.Neighborhood',
   )
   const addressState = getPropertyTypeDataVenue(properties, 'Address.State')
   const addressPostalCode = getPropertyTypeDataVenue(
     properties,
-    'Address.PostalCode'
+    'Address.PostalCode',
   )
 
   // console.dir(`addressPostalCode: ${addressPostalCode}`)

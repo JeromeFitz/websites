@@ -5,10 +5,12 @@ import { FourOhFour } from '~app/_errors/404'
 
 const PlaygroundPage = dynamic(
   async () => {
-    const { PlaygroundPage: Component } = await import('~components/Playground')
+    const { PlaygroundPage: Component } = await import(
+      '~components/Playground/index'
+    )
     return { default: Component }
   },
-  { ssr: false }
+  { ssr: false },
 )
 
 const isDev = process.env.NODE_ENV === 'development'

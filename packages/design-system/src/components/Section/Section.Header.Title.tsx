@@ -12,7 +12,7 @@ function SectionHeaderTitle({ children, className = '', isTitle = false }) {
         'my-1 py-1 pr-2',
         'md:my-2 md:py-2 md:pr-6',
         'w-11/12',
-        className
+        className,
       )}
     >
       {children}

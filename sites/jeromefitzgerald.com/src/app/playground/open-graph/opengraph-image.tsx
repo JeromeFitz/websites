@@ -56,7 +56,7 @@ function Pill({ children }) {
   return (
     <div
       tw={cx(
-        'm-4 mx-auto w-1/5 rounded-full border-2 border-[#0f0f0f] bg-[#f4f4f4] px-3 py-2 text-center text-[#0f0f0f]'
+        'm-4 mx-auto w-1/5 rounded-full border-2 border-[#0f0f0f] bg-[#f4f4f4] px-3 py-2 text-center text-[#0f0f0f]',
       )}
     >
       {children}
@@ -75,12 +75,12 @@ export default async function Image() {
         {/* // Start here */}
         <div
           tw={cx(
-            'flex h-full w-full flex-row flex-wrap items-start  text-3xl',
+            'flex size-full flex-row flex-wrap items-start text-3xl',
             '',
             // @todo(vercel/og)
             'justify-items-start bg-[linear-gradient(170deg,_rgb(244,_244,_244),_rgb(207,_47,_152))]',
             '',
-            ''
+            '',
           )}
           style={{
             background:
@@ -95,7 +95,7 @@ export default async function Image() {
                 // @todo(vercel/og)
                 'align-top',
                 '',
-                ''
+                '',
               )}
               style={{
                 verticalAlign: 'top',
@@ -104,11 +104,11 @@ export default async function Image() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 tw={cx(
-                  'h-16 w-16 rounded-full bg-[#f4f4f4] ',
+                  'size-16 rounded-full bg-[#f4f4f4]',
                   // @todo(vercel/og)
                   'inline-block ring-1 ring-[#0f0f0f]',
                   '',
-                  ''
+                  '',
                 )}
                 // @todo(vercel/og) cannot handle inline-block
                 style={{
@@ -126,7 +126,7 @@ export default async function Image() {
                 // @todo(vercel/og)
                 'align-top',
                 '',
-                ''
+                '',
               )}
               style={{
                 verticalAlign: 'top',
@@ -135,9 +135,9 @@ export default async function Image() {
               <span tw={cx('mx-4 text-2xl font-medium')}>{item.segment}</span>
               <span
                 tw={cx(
-                  'inline-block h-16 w-16 rounded-full ',
+                  'inline-block size-16 rounded-full',
                   // @todo(vercel/og)
-                  ' bg-breeze ring-1 ring-[#0f0f0f]'
+                  ' bg-breeze ring-1 ring-[#0f0f0f]',
                 )}
                 style={{
                   backgroundColor: '#f4f4f4',
@@ -154,7 +154,7 @@ export default async function Image() {
               // @todo(vercel/og)
               'align-top',
               '',
-              ''
+              '',
             )}
             style={{
               verticalAlign: 'top',
@@ -165,7 +165,7 @@ export default async function Image() {
                 tw={cx(
                   'mx-16 px-16 text-center text-6xl uppercase',
                   // @todo(vercel-og)
-                  'font-black'
+                  'font-black',
                 )}
                 style={{
                   fontWeight: 900,
@@ -182,7 +182,7 @@ export default async function Image() {
               // @todo(vercel/og)
               'align-top',
               '',
-              ''
+              '',
             )}
             style={{
               verticalAlign: 'top',
@@ -194,7 +194,7 @@ export default async function Image() {
                 // @todo(vercel/og)
                 'gap-1',
                 '',
-                ''
+                '',
               )}
               style={{
                 gap: '1.25rem',
@@ -208,7 +208,7 @@ export default async function Image() {
               </span>
               <span
                 tw={cx(
-                  ' mx-4 w-full px-4 text-center text-xl font-semibold uppercase'
+                  ' mx-4 w-full px-4 text-center text-xl font-semibold uppercase',
                 )}
               >
                 <Pill>{item.location}</Pill>
@@ -238,6 +238,6 @@ export default async function Image() {
       //     weight: 900,
       //   },
       // ],
-    }
+    },
   )
 }

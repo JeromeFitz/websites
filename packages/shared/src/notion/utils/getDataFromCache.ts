@@ -2,15 +2,16 @@ import 'server-only'
 
 import { isObjectEmpty } from '@jeromefitz/utils'
 import { Client } from '@notionhq/client'
-// import type { FilterType } from 'next-notion/src/Notion.types'
-import { getBlockChildrenDataParent } from 'next-notion/src/queries'
-import { isAwsImage, isImageExpired } from 'next-notion/src/utils'
+// import type { FilterType } from 'next-notion/Notion.types'
+import { getBlockChildrenDataParent } from 'next-notion/queries'
+import { isAwsImage, isImageExpired } from 'next-notion/utils'
 import { cache } from 'react'
 
-import { getCache, setCache } from '../../redis'
+import { getCache, setCache } from '../../redis/index'
 
 import { getMetadata, getDatabaseQuery } from './index'
-import type { SegmentInfo } from './index'
+// @todo(types) next-notion
+// import type { SegmentInfo } from './index'
 
 const notion = new Client({ auth: process.env.NOTION_API_KEY })
 
@@ -26,7 +27,8 @@ type GetDataFromCache = {
   draft?: boolean
   filterType: any //FilterType
   revalidate?: boolean
-  segmentInfo: SegmentInfo
+  // @todo(types) next-notion
+  segmentInfo: any //SegmentInfo
 }
 
 export const preload = ({
@@ -153,7 +155,7 @@ const getDataFromCache = cache(
      * 404
      */
     return data
-  }
+  },
 )
 
 export { getDataFromCache }

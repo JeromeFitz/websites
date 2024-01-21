@@ -1,4 +1,5 @@
 'use client'
+
 import dynamic from 'next/dynamic'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
@@ -11,7 +12,7 @@ const Loading = dynamic(
     )
     return { default: Component }
   },
-  { ssr: false }
+  { ssr: false },
 )
 
 function RouterEventProvider() {

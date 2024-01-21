@@ -1,7 +1,7 @@
-import { execSync } from 'child_process'
-import { existsSync, readFileSync } from 'fs'
-import { writeFile } from 'fs/promises'
-import { join } from 'path'
+import { execSync } from 'node:child_process'
+import { existsSync, readFileSync } from 'node:fs'
+import { writeFile } from 'node:fs/promises'
+import { join } from 'node:path'
 
 import { Octokit } from '@octokit/core'
 import stringify from 'fast-json-stable-stringify'
@@ -10,7 +10,7 @@ import _filter from 'lodash/filter.js'
 import _orderBy from 'lodash/orderBy.js'
 import _pick from 'lodash/pick.js'
 import _size from 'lodash/size.js'
-import { format } from 'prettier'
+// import { format } from 'prettier'
 
 if (!isCI) {
   const dotenv = await import('dotenv')
@@ -84,7 +84,8 @@ async function setupBuildInfo({ buildInfoConfig, pathDirName }) {
       version,
     }
 
-    const content = format(stringify(data), { parser: 'json' })
+    // const content = format(stringify(data), { parser: 'json' })
+    const content = stringify(data)
     await writeFile(filePath, content)
   }
 

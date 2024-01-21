@@ -1,5 +1,5 @@
-import { dirname, join } from 'path'
-import { fileURLToPath } from 'url'
+import { dirname, join } from 'node:path'
+import { fileURLToPath } from 'node:url'
 
 import nextConfig from '@jeromefitz/next-config/next.config.mjs'
 import dotenv from 'dotenv'
@@ -18,17 +18,20 @@ const buildInfoConfig = {
 
 const serverComponentsExternalPackages = [
   '@jeromefitz/notion',
+  // '@jeromefitz/utils',
   '@notionhq/client',
   // 'emoji-regex',
   // 'node-emoji',
   'plaiceholder',
+  'prettier',
 ]
 /**
  * @note(tailwind) lol, if we do not transpile locally,
  *  can we avoid the hack in app/design-system/page ?
  *  also -- which one is the good one here, haha
  */
-const tp = ['@jeromefitz/ds', '@jeromefitz/shared', 'next-notion']
+// const tp = ['@jeromefitz/ds', '@jeromefitz/shared', 'next-notion']
+const tp = []
 // const transpilePackages = isCI ? [] : []
 const transpilePackages = tp
 // const transpilePackages = isCI ? [] : tp

@@ -22,6 +22,7 @@ const ButtonLinkComponent: ForwardRefRenderFunction<
     variant === VARIANTS.EMPTY
       ? cx(variantStyles[variant], className)
       : cx(commonStyles, variantStyles[variant], className)
+  // eslint-disable-next-line @typescript-eslint/no-base-to-string
   const useLink = href && href.toString().startsWith('/')
 
   if (useLink) {
@@ -33,6 +34,7 @@ const ButtonLinkComponent: ForwardRefRenderFunction<
   return (
     <a
       className={finalClassName}
+      // eslint-disable-next-line @typescript-eslint/no-base-to-string
       href={href.toString()}
       ref={ref}
       rel="noreferrer"

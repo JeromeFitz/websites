@@ -1,9 +1,6 @@
-import {
-  getDataFromCache,
-  getSegmentInfo,
-} from '@jeromefitz/shared/src/notion/utils'
+import { getDataFromCache, getSegmentInfo } from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
-import _size from 'lodash/size'
+import _size from 'lodash/size.js'
 import { revalidatePath } from 'next/cache'
 import { NextRequest, NextResponse } from 'next/server'
 

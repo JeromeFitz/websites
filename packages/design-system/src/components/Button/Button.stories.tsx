@@ -46,7 +46,7 @@ export const Custom: Story = {
     className: cx(
       'm-12 p-12',
       'bg-radix-slate12 text-radix-slate1',
-      'hocus:bg-radix-slate1 hocus:text-radix-slate12'
+      'hocus:bg-radix-slate1 hocus:text-radix-slate12',
     ),
     variant: 'empty',
   },

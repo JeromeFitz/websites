@@ -8,6 +8,9 @@ import { cx } from '../../utils/cx'
 
 function SeparatorImpl({ className = '' }) {
   return (
+    // @todo(types) radix
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     <Separator.Root
       asChild
       className={cx(
@@ -19,7 +22,7 @@ function SeparatorImpl({ className = '' }) {
         'h-[1px] w-full',
         'min-h-[0.75rem]',
         'text-radix-slate6',
-        className
+        className,
       )}
       decorative
       orientation="vertical"

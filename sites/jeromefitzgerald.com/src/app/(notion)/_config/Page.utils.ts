@@ -1,4 +1,4 @@
-import { getPropertyTypeData } from 'next-notion/src/utils'
+import { getPropertyTypeData } from 'next-notion/utils'
 
 import type { PropertiesPage } from '~app/(notion)/_config'
 
@@ -30,7 +30,7 @@ function getPageData(properties): any {
     seoKeywords: getPropertyTypeDataPage(properties, 'SEO.Keywords'),
     seoImageDescription: getPropertyTypeDataPage(
       properties,
-      'SEO.Image.Description'
+      'SEO.Image.Description',
     ),
     seoImage: getPropertyTypeDataPage(properties, 'SEO.Image')[0],
     /**

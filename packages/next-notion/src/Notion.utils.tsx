@@ -1,5 +1,5 @@
-import { cx } from '@jeromefitz/ds/src/utils/cx'
-import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
+import { cx } from '@jeromefitz/ds/utils/cx'
+import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints.js'
 
 import { blocks as blocksDefault } from './Notion.Config'
 
@@ -13,7 +13,7 @@ function getAnnotations(annotations) {
     strikethrough && 'line-through',
     underline && 'underline',
     color === 'default' ? '' : `notion-${color}`,
-    ''
+    '',
   )
 }
 

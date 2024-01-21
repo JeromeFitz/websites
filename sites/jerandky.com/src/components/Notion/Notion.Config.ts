@@ -14,11 +14,11 @@ const custom = {
     component: dynamic(
       () =>
         import('@jeromefitz/shared/src/components/Notion/Blocks/Embed').then(
-          (mod) => mod.Embed
+          (mod) => mod.Embed,
         ),
       {
         ssr: true,
-      }
+      },
     ),
     // component: lazy(() => import('@jeromefitz/shared/src/components/Notion/Blocks/Embed')),
     // component: Embed,
@@ -35,11 +35,11 @@ const custom = {
     component: dynamic(
       () =>
         import('@jeromefitz/shared/src/components/Notion/Blocks/Video').then(
-          (mod) => mod.Video
+          (mod) => mod.Video,
         ),
       {
         ssr: true,
-      }
+      },
     ),
     // component: lazy(() => import('@jeromefitz/shared/src/components/Notion/Blocks/Video')),
     // component: Video,

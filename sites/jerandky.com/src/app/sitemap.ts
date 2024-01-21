@@ -31,7 +31,7 @@ function sitemap(): MetadataRoute.Sitemap {
       ...sitemapPodcasts,
     ],
     ['url'],
-    ['asc']
+    ['asc'],
   )
 }
 

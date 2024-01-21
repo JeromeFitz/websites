@@ -6,4 +6,5 @@ export { getPageDataFromNotion } from './getPageDataFromNotion'
 export { getSegmentInfo } from './getSegmentInfo'
 export { getSlugPreview } from './getSlugPreview'
 
-export type { SegmentInfo } from './getSegmentInfo'
+// @todo(types) next-notion
+// export type { SegmentInfo } from './getSegmentInfo'

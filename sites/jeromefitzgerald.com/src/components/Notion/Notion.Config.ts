@@ -2,31 +2,31 @@
  * @todo(next-notion) you do not _need_ to set this
  *  up but you probably _need_ to set this up, haha
  */
-import { Image } from '@jeromefitz/shared/src/components/Notion/Blocks/Image'
+import { Image } from '@jeromefitz/shared/components/Notion/Blocks/Image'
 import dynamic from 'next/dynamic'
 
 // import { lazy } from 'react'
-// import { Embed } from '@jeromefitz/shared/src/components/Notion/Blocks/Embed'
-// import { Video } from '@jeromefitz/shared/src/components/Notion/Blocks/Video'
+// import { Embed } from '@jeromefitz/shared/components/Notion/Blocks/Embed'
+// import { Video } from '@jeromefitz/shared/components/Notion/Blocks/Video'
 
 const custom = {
   embed: {
     component: dynamic(
       () =>
-        import('@jeromefitz/shared/src/components/Notion/Blocks/Embed').then(
-          (mod) => mod.Embed
+        import('@jeromefitz/shared/components/Notion/Blocks/Embed').then(
+          (mod) => mod.Embed,
         ),
       {
         ssr: false,
-      }
+      },
     ),
-    // component: lazy(() => import('@jeromefitz/shared/src/components/Notion/Blocks/Embed')),
+    // component: lazy(() => import('@jeromefitz/shared/components/Notion/Blocks/Embed')),
     // component: Embed,
     element: 'div',
     className: '',
   },
   image: {
-    // component: lazy(() => import('@jeromefitz/shared/src/components/Notion/Blocks/Image')),
+    // component: lazy(() => import('@jeromefitz/shared/components/Notion/Blocks/Image')),
     component: Image,
     element: 'img',
     className: '',
@@ -34,14 +34,14 @@ const custom = {
   video: {
     component: dynamic(
       () =>
-        import('@jeromefitz/shared/src/components/Notion/Blocks/Video').then(
-          (mod) => mod.Video
+        import('@jeromefitz/shared/components/Notion/Blocks/Video').then(
+          (mod) => mod.Video,
         ),
       {
         ssr: false,
-      }
+      },
     ),
-    // component: lazy(() => import('@jeromefitz/shared/src/components/Notion/Blocks/Video')),
+    // component: lazy(() => import('@jeromefitz/shared/components/Notion/Blocks/Video')),
     // component: Video,
     element: 'div',
     className: '',

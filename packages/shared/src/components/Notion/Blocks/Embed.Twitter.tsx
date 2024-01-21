@@ -1,7 +1,7 @@
 'use client'
 
-import { Caption } from '@jeromefitz/ds/src/components/Caption'
-import { NotionEmoji as EmojiWrapper } from 'next-notion/src/blocks/Emoji'
+import { Caption } from '@jeromefitz/ds/components/Caption'
+import { NotionEmoji as EmojiWrapper } from 'next-notion/blocks/Emoji'
 import { Tweet } from 'react-tweet'
 
 function EmbedTweet({ id }) {

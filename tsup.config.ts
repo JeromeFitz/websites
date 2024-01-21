@@ -2,9 +2,9 @@ import { defineConfig } from 'tsup'
 import type { Options } from 'tsup'
 
 const config: Options = {
-  clean: false,
+  clean: true,
   dts: true,
-  format: ['esm', 'cjs'],
+  format: ['esm'],
   minify: true,
   onSuccess: 'pnpm copy',
   outDir: 'dist',

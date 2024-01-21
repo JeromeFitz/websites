@@ -7,10 +7,7 @@ import {
   SectionWrapper,
   // Tags,
 } from '@jeromefitz/ds/components/Section'
-import {
-  getDataFromCache,
-  getSegmentInfo,
-} from '@jeromefitz/shared/src/notion/utils'
+import { getDataFromCache, getSegmentInfo } from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
 import type { Metadata } from 'next'
 import { draftMode } from 'next/headers'

@@ -1,12 +1,12 @@
 import { Anchor } from '@jeromefitz/ds/components/Anchor'
 import { cx } from '@jeromefitz/ds/utils/cx'
-import { getPageDataFromNotion } from '@jeromefitz/shared/src/notion/utils'
-import _size from 'lodash/size'
+import { getPageDataFromNotion } from '@jeromefitz/shared/notion/utils'
+import _size from 'lodash/size.js'
 import { Suspense } from 'react'
 
 import type { PageObjectResponseEvent } from '~app/(notion)/_config'
 import { getEventData, getPropertyTypeDataShow } from '~app/(notion)/_config'
-import { RelationLoading } from '~components/Relations'
+import { RelationLoading } from '~components/Relations/index'
 
 async function UpcomingShowsIndividual({ id }) {
   const item: PageObjectResponseEvent = await getPageDataFromNotion(id)
@@ -29,7 +29,7 @@ async function UpcomingShowsIndividual({ id }) {
   const style = cx(
     'inline-block text-lg font-normal tracking-tight md:text-2xl',
     'mb-4 w-full',
-    'hover:bg-radix-blackA8 dark:hover:bg-radix-whiteA8'
+    'hover:bg-radix-blackA8 dark:hover:bg-radix-whiteA8',
   )
 
   return (
@@ -59,7 +59,7 @@ function UpcomingShows({ properties }) {
     return (
       <p
         className={cx(
-          'inline-block text-base font-normal tracking-tight md:text-xl'
+          'inline-block text-base font-normal tracking-tight md:text-xl',
         )}
       >
         No Upcoming Shows

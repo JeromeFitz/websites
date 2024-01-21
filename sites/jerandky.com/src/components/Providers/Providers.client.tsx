@@ -15,7 +15,7 @@ const RouterEventProvider = dynamic(
     )
     return { default: Component }
   },
-  { ssr: true }
+  { ssr: true },
 )
 
 const pluralRules = [

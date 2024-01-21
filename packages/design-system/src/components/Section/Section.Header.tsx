@@ -23,7 +23,7 @@ function SectionHeader({ children, className = '' }) {
           'top-0 md:top-2',
           // w/  react-headroom
           // 'top-4 md:top-8',
-          className
+          className,
         )}
       >
         {children}

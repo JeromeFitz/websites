@@ -93,13 +93,11 @@ const getNotionQueryDatePrepartion = (val, type) => {
   const date = val[2]
   const tsPrep =
     type === 'from'
-      ? // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
-        `${year}-${('00' + month).substr(-2)}-${('00' + date).substr(
-          -2
+      ? `${year}-${('00' + month).substr(-2)}-${('00' + date).substr(
+          -2,
         )}T00:00:00.000Z`
-      : // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
-        `${year}-${('00' + month).substr(-2)}-${('00' + date).substr(
-          -2
+      : `${year}-${('00' + month).substr(-2)}-${('00' + date).substr(
+          -2,
         )}T23:59:59.999Z`
   const tsNew = new Date(tsPrep)
   if (type === 'to') {

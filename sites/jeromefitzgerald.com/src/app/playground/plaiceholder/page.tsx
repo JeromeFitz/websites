@@ -17,7 +17,7 @@ const isDev = process.env.NODE_ENV === 'development'
 async function ImageTest() {
   const imageUrl = `https://cdn.jeromefitzgerald.com/images/2020/01/jfle--2020--cec-jr--bob-shields.jpg`
 
-  const { getImage } = await import('@jeromefitz/shared/src/plaiceholder/getImage')
+  const { getImage } = await import('@jeromefitz/shared/plaiceholder')
   const imageData = await getImage(imageUrl)
   // console.dir(`imageData:`)
   // console.dir(imageData)
@@ -35,7 +35,7 @@ async function ImageTest() {
       <Image
         {...image}
         alt="testing"
-        className="h-full w-full object-cover"
+        className="size-full object-cover"
         placeholder="blur"
         role="img"
       />

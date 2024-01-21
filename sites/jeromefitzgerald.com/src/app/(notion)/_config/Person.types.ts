@@ -10,8 +10,8 @@ import type {
   RichTextPropertyItemObjectResponse,
   SelectPropertyItemObjectResponse,
   TitlePropertyItemObjectResponse,
-} from '@notionhq/client/build/src/api-endpoints'
-import type { Spread } from 'next-notion/src/Notion.types'
+} from '@notionhq/client/build/src/api-endpoints.js'
+import type { Spread } from 'next-notion/Notion.types'
 
 type PropertiesPerson = {
   'Is.Active': CheckboxPropertyItemObjectResponse

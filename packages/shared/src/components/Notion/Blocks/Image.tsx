@@ -11,21 +11,20 @@ import 'server-only'
  */
 import https from 'node:https'
 
-import { Caption } from '@jeromefitz/ds/src/components/Caption'
+import { Caption } from '@jeromefitz/ds/components/Caption'
 import { isObjectEmpty } from '@jeromefitz/utils'
 import { Client } from '@notionhq/client'
-import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
+import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints.js'
 import { Redis } from '@upstash/redis'
 import stringify from 'fast-json-stable-stringify'
 import { slug as _slug } from 'github-slugger'
-// import NextImage from 'next/image'
-import { NotionEmoji as EmojiWrapper } from 'next-notion/src/blocks/Emoji'
-import { isImageExpired } from 'next-notion/src/utils'
+import { NotionEmoji as EmojiWrapper } from 'next-notion/blocks/Emoji'
+import { isImageExpired } from 'next-notion/utils'
 import validUrl from 'valid-url'
 
 import { TIME } from '../../../lib/constants'
 
-import { NextImage } from './Image.client'
+import { ImageClient as NextImage } from './Image.client'
 import { getImageAlt, getImageUrl, getImageExpiration } from './Image.utils'
 
 const notion = new Client({ auth: process.env.NOTION_API_KEY })

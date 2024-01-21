@@ -1,4 +1,4 @@
-import type { DividerBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
+import type { DividerBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints.js'
 import { forwardRef } from 'react'
 
 import { getBlockKey } from '../Notion.utils'

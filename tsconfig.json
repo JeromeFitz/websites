@@ -18,7 +18,7 @@
     "jsx": "preserve",
     "lib": ["dom", "ES2020"],
     "module": "ES2020",
-    "moduleResolution": "node",
+    "moduleResolution": "Node",
     "noEmit": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": false, // @todo(lint)
@@ -33,13 +33,14 @@
     "strictFunctionTypes": false, // @todo(lint)
     "strictNullChecks": false, // @todo(lint)
     "strictPropertyInitialization": false, // @todo(lint)
-    "target": "esnext"
+    "target": "ESNext",
   },
   "include": [
+    "tsup.config.ts",
     "packages/**/*.ts",
     "packages/**/*.tsx",
     "sites/**/*.ts",
-    "sites/**/*.tsx"
+    "sites/**/*.tsx",
   ],
-  "exclude": ["node_modules", "tests/*.test.ts", "todo"]
+  "exclude": ["node_modules", "tests/*.test.ts", "todo"],
 }

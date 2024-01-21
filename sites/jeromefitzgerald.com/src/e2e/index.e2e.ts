@@ -6,7 +6,7 @@ test('has title', async ({ page }) => {
   await page.goto(basePath)
 
   await expect(page).toHaveTitle(
-    'Jerome Fitzgerald (he/him) | Actor. Comedian. Writer.'
+    'Jerome Fitzgerald (he/him) | Actor. Comedian. Writer.',
   )
 })
 
