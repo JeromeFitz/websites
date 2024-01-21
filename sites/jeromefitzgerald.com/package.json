@@ -83,12 +83,12 @@
     "@radix-ui/react-visually-hidden": "1.0.3",
     "@tanem/react-nprogress": "5.0.51",
     "@upstash/ratelimit": "1.0.0",
-    "@upstash/redis": "1.28.1",
+    "@upstash/redis": "1.28.2",
     "@vercel/analytics": "1.1.2",
     "@vercel/speed-insights": "1.0.5",
     "clsx": "2.1.0",
     "cmdk": "0.2.0",
-    "date-fns": "3.2.0",
+    "date-fns": "3.3.0",
     "fast-json-stable-stringify": "2.1.0",
     "fathom-client": "3.6.0",
     "focus-trap-react": "10.2.3",
@@ -109,7 +109,7 @@
     "react-headroom": "3.2.1",
     "react-swipeable": "7.0.1",
     "react-tweet": "3.2.0",
-    "react-use": "17.4.3",
+    "react-use": "17.4.4",
     "react-wrap-balancer": "1.1.0",
     "server-only": "0.0.1",
     "sharp": "0.32.6",
@@ -122,7 +122,7 @@
     "uuid": "9.0.1",
     "valid-url": "1.0.9",
     "zod": "3.22.4",
-    "zustand": "4.4.7"
+    "zustand": "4.5.0"
   },
   "devDependencies": {
     "@jeromefitz/jest-config": "workspace:*",
