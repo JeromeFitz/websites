@@ -1,6 +1,6 @@
-import { cx } from '../../utils/cx'
+import { cx } from '../../utils/cx.js'
 
-import type { Variant } from './Button.types'
+import type { Variant } from './Button.types.js'
 
 export const commonStyles = cx(
   'group inline-flex transition-all duration-200',
@@ -9,7 +9,7 @@ export const commonStyles = cx(
   'outline-none outline-offset-0 ',
   'hocus:ring-1 ring-0 ring-inset',
   'focus:shadow-md',
-  'cursor-default hover:cursor-pointer'
+  'cursor-default hover:cursor-pointer',
 )
 
 export const variantStyles = {

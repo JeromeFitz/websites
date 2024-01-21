@@ -1,11 +1,11 @@
 import 'server-only'
 
 import { asyncForEach } from '@jeromefitz/utils'
-import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
-import _noop from 'lodash/noop'
+import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints.js'
+import _noop from 'lodash/noop.js'
 
-import { getBlockChildrenData } from './getBlockChildrenData'
-import { getColumnData } from './getColumnData'
+import { getBlockChildrenData } from './getBlockChildrenData.js'
+import { getColumnData } from './getColumnData.js'
 
 async function getBlockChildrenDataParent(block_id) {
   const response = await getBlockChildrenData(block_id)

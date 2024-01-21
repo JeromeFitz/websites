@@ -1,17 +1,18 @@
 import type {
   BlockObjectResponse,
   ListBlockChildrenResponse,
-} from '@notionhq/client/build/src/api-endpoints'
+} from '@notionhq/client/build/src/api-endpoints.js'
 // import { Suspense } from 'react'
 
-import { blocks as blocksDefault, OBJECTS, TYPES } from './Notion.Config'
-import { getBlock } from './Notion.utils'
+import { blocks as blocksDefault, OBJECTS, TYPES } from './Notion.Config.js'
+import { getBlock } from './Notion.utils.js'
 
 function NotionBlocks({
   data,
   blocks = blocksDefault,
 }: {
   // @todo(types) ListBlockChildrenResponse | any => children
+  // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
   data: ListBlockChildrenResponse | any
   blocks?: any
 }) {

@@ -2,20 +2,20 @@ import {
   getDataFromCache,
   getSegmentInfo,
   getDatabaseQuery,
-} from '@jeromefitz/shared/src/notion/utils'
+} from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
-import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints'
+import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints.js'
 // import isEqual from 'lodash/isEqual'
 // import uniqWith from 'lodash/uniqWith'
 import type { Metadata } from 'next'
-import { getPropertyTypeData } from 'next-notion/src/utils'
+import { getPropertyTypeData } from 'next-notion/utils'
 
 import type { PageObjectResponseShow } from '~app/(notion)/_config'
 import { CONFIG, getPageData, getShowData } from '~app/(notion)/_config'
 import { generateMetadataCustom } from '~app/(notion)/_config/temp/generateMetadataCustom'
 
-import { Listing } from './_components/Show.Listing'
-import { Slug } from './_components/Show.Slug'
+import { Listing } from './_components/Show.Listing.js'
+import { Slug } from './_components/Show.Slug.js'
 
 const isDev = process.env.NODE_ENV === 'development'
 
@@ -90,7 +90,7 @@ async function _generateStaticParams({ ...props }) {
       // const href = propertyTypeData?.string.replaceAll(`/${SEGMENT}/`, '')
       const href = getPropertyTypeData(properties, 'Slug.Preview')?.replaceAll(
         `/${SEGMENT}/`,
-        ''
+        '',
       )
       const catchAll = href.split('/')
       segments.push({ catchAll })

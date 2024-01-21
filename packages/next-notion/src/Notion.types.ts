@@ -1,7 +1,7 @@
 import type {
   BlockObjectResponse,
   PartialUserObjectResponse,
-} from '@notionhq/client/build/src/api-endpoints'
+} from '@notionhq/client/build/src/api-endpoints.js'
 
 type ApiColor =
   | 'default'

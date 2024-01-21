@@ -1,7 +1,7 @@
 'use client'
-import _map from 'lodash/map'
-import _orderBy from 'lodash/orderBy'
-import _size from 'lodash/size'
+import _map from 'lodash/map.js'
+import _orderBy from 'lodash/orderBy.js'
+import _size from 'lodash/size.js'
 
 /**
  * @note(a11y)
@@ -107,9 +107,7 @@ async function EmojiWrapper({ id, text }) {
 
     emojiMapping[emojiIndex] = {
       index: match.index,
-      // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
       to: Math.floor(match?.index + emojiLengthCodePoint),
-      // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
       to2: Math.floor(match?.index + emojiLength),
       emoji: true,
       text: emoji,
@@ -137,7 +135,7 @@ async function EmojiWrapper({ id, text }) {
           <Emoji character={item.text.trim()} key={`${id}--emoji--${itemId}`} />
         ) : (
           item.text
-        )
+        ),
       )
       if (
         _size(emojiMapping) === _size(emojiMappingStitch) &&
@@ -149,7 +147,6 @@ async function EmojiWrapper({ id, text }) {
         // console.dir(`---`)
 
         const sliced = _text
-          // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
           .slice(item.to2 + 1)
           .normalize('NFD')
           // @hack(emoji) replace any non-alphanumeric, replace with space

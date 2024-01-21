@@ -22,7 +22,7 @@ async function Image({ properties }) {
    */
   const imageSeoDescription = getPropertyTypeDataEpisode(
     properties,
-    'SEO.Image.Description'
+    'SEO.Image.Description',
   )
   const imageSeo = getPropertyTypeDataEpisode(properties, 'SEO.Image')[0]
   // console.dir(`imageSeo:`)

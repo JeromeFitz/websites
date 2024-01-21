@@ -1,25 +1,26 @@
-import 'server-only'
+// import 'server-only'
 
 import { Anchor } from '@jeromefitz/ds/components/Anchor'
 import { cx } from '@jeromefitz/ds/utils/cx'
-import { getPageDataFromNotion } from '@jeromefitz/shared/src/notion/utils'
+import { getPageDataFromNotion } from '@jeromefitz/shared/notion/utils'
 import { asyncForEach } from '@jeromefitz/utils'
-import _noop from 'lodash/noop'
-import _orderBy from 'lodash/orderBy'
-import _size from 'lodash/size'
+import _noop from 'lodash/noop.js'
+import _orderBy from 'lodash/orderBy.js'
+import _size from 'lodash/size.js'
 import { cache, Suspense } from 'react'
 
-import type { PageObjectResponseShow } from '~app/(notion)/_config'
-import { getEventData } from '~app/(notion)/_config'
+import type { PageObjectResponseShow } from '~app/(notion)/_config/index'
+import { getEventData } from '~app/(notion)/_config/index'
 
-import { RelationLoading } from './index'
+import { RelationLoading } from './index.js'
 
 function ComponentFallback({ children, ...props }) {
   return <span {...props}>{children}</span>
 }
 
 // async function RelationIndividual({ id }) {
-const RelationIndividual = cache(async ({ id }) => {
+// @todo(types)
+const RelationIndividual: any = cache(async ({ id }) => {
   // console.dir(`(9) id        ${id}`)
   // return null
   const item: PageObjectResponseShow = await getPageDataFromNotion(id)
@@ -36,7 +37,7 @@ const RelationIndividual = cache(async ({ id }) => {
     isPublished && 'transition-all duration-200',
     isPublished && 'text-radix-slate12 hover:text-radix-pink11',
     '',
-    ''
+    '',
   )
 
   return (

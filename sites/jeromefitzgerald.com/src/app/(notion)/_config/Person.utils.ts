@@ -1,4 +1,4 @@
-import { getPropertyTypeData } from 'next-notion/src/utils'
+import { getPropertyTypeData } from 'next-notion/utils'
 
 import type { PropertiesPerson } from '~app/(notion)/_config'
 

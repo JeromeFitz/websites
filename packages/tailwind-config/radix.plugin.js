@@ -39,28 +39,28 @@ const radixPlugin = plugin.withOptions(
           (oldKey) =>
             delete Object.assign(light, {
               ['--' + oldKey]: light[oldKey],
-            })[oldKey]
+            })[oldKey],
         )
         const lightA = { ...radixColors[color + 'A'] }
         Object.keys(lightA).forEach(
           (oldKey) =>
             delete Object.assign(lightA, {
               ['--' + oldKey]: lightA[oldKey],
-            })[oldKey]
+            })[oldKey],
         )
         const dark = { ...radixColors[color + 'Dark'] }
         Object.keys(dark).forEach(
           (oldKey) =>
             delete Object.assign(dark, {
               ['--' + oldKey]: dark[oldKey],
-            })[oldKey]
+            })[oldKey],
         )
         const darkA = { ...radixColors[color + 'DarkA'] }
         Object.keys(darkA).forEach(
           (oldKey) =>
             delete Object.assign(darkA, {
               ['--' + oldKey]: darkA[oldKey],
-            })[oldKey]
+            })[oldKey],
         )
         darkColors = { ...darkColors, ...dark, ...darkA }
         lightColors = { ...lightColors, ...light, ...lightA }
@@ -84,22 +84,22 @@ const radixPlugin = plugin.withOptions(
     const filtered = Object.keys(radixColors)
       .filter(
         (color) =>
-          chosen.includes(color) && !color.includes('A') && !color.includes('Dark')
+          chosen.includes(color) && !color.includes('A') && !color.includes('Dark'),
       )
       .reduce((obj, key) => {
         Object.keys(radixColors[key]).forEach(
-          (color) => (obj[color] = `var(--${color})`)
+          (color) => (obj[color] = `var(--${color})`),
         )
         return obj
       }, {})
     const filteredA = Object.keys(radixColors)
       .filter(
         (color) =>
-          !chosen.includes(color) && color.includes('A') && !color.includes('Dark')
+          !chosen.includes(color) && color.includes('A') && !color.includes('Dark'),
       )
       .reduce((obj, key) => {
         Object.keys(radixColors[key]).forEach(
-          (color) => (obj[`${color}`] = `var(--${color})`)
+          (color) => (obj[`${color}`] = `var(--${color})`),
         )
         return obj
       }, {})
@@ -126,7 +126,7 @@ const radixPlugin = plugin.withOptions(
         },
       },
     }
-  }
+  },
 )
 
 module.exports = radixPlugin

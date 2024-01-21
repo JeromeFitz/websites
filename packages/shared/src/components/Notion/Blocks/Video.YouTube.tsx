@@ -6,7 +6,7 @@ import 'server-only'
 
 import { Client } from '@notionhq/client'
 
-import { getImageAlt } from './Image.utils'
+import { getImageAlt } from './Image.utils.js'
 
 const notion = new Client({ auth: process.env.NOTION_API_KEY })
 

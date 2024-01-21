@@ -22,7 +22,7 @@ function Relations({ properties, relations, relationsSecondary }) {
       className={cx(
         'grid w-full grid-cols-12 gap-x-4 gap-y-8',
         // 'md:[&>*:nth-child(2)]:col-start-9',
-        ''
+        '',
       )}
     >
       {relations.map((relation) => {
@@ -39,7 +39,7 @@ function Relations({ properties, relations, relationsSecondary }) {
               'md:col-span-4 ',
               // 'first:col-span-12',
               // 'md:first:col-span-8',
-              ''
+              '',
             )}
             key={`${id}-${relation}`}
           >

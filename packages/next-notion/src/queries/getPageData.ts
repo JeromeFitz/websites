@@ -1,11 +1,11 @@
 import 'server-only'
 
 // import { cache } from 'react'
-// import type { GetPageResponse } from '@notionhq/client/build/src/api-endpoints'
+// import type { GetPageResponse } from '@notionhq/client/build/src/api-endpoints.js'
 
 // import type { PageObjectResponseShow } from '../../shows/[[...catchAll]]/Show.types'
 
-import { notion } from '../helper'
+import { notion } from '../helper.js'
 
 type PageData = any
 

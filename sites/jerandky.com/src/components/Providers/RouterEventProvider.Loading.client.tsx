@@ -31,7 +31,7 @@ const Loading: React.FC<{ isRouteChanging: boolean }> = ({ isRouteChanging }) =>
         'from-radix-pink1 to-radix-pink11',
         'dark:from-radix-pink11 dark:to-radix-pink1',
         isFinished ? 'opacity-0' : 'opacity-100',
-        ''
+        '',
       )}
       // animate={{
       //   opacity: isFinished ? [1, 0.75, 0.5, 0.25, 0] : [0, 0.25, 0.5, 0.75, 1],

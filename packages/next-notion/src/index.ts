@@ -1,4 +1,4 @@
-import { uuidConverter, uuidValidate } from './utils/uuid'
+import { uuidConverter, uuidValidate } from './utils/uuid.js'
 
 const strings = [
   '27360d9b5f274dc2ac19ad09837b6860',

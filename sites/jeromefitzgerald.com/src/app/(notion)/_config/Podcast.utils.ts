@@ -1,4 +1,4 @@
-import { getPropertyTypeData } from 'next-notion/src/utils'
+import { getPropertyTypeData } from 'next-notion/utils'
 
 import type { PropertiesPodcast } from '~app/(notion)/_config'
 
@@ -22,7 +22,7 @@ function getPodcastData(properties) {
     dayOfMonth: getPropertyTypeDataPodcast(properties, 'Date.DayOfMonth'),
     dayOfMonthOrdinal: getPropertyTypeDataPodcast(
       properties,
-      'Date.DayOfMonthOrdinal'
+      'Date.DayOfMonthOrdinal',
     ),
     dayOfWeek: getPropertyTypeDataPodcast(properties, 'Date.DayOfWeek'),
     dayOfWeekAbbr: getPropertyTypeDataPodcast(properties, 'Date.DayOfWeekAbbr'),
@@ -51,7 +51,7 @@ function getPodcastData(properties) {
     seoKeywords: getPropertyTypeDataPodcast(properties, 'SEO.Keywords'),
     seoImageDescription: getPropertyTypeDataPodcast(
       properties,
-      'SEO.Image.Description'
+      'SEO.Image.Description',
     ),
     seoImage: getPropertyTypeDataPodcast(properties, 'SEO.Image')[0],
     /**

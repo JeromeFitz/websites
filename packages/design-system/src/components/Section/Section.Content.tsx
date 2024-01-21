@@ -1,4 +1,4 @@
-import { cx } from '../../utils/cx'
+import { cx } from '../../utils/cx.js'
 
 function SectionContent({ children, className = '' }) {
   return (
@@ -18,7 +18,7 @@ function SectionContent({ children, className = '' }) {
         // 'before:left-2 before:right-2,
         'before:bg-radix-slate6',
         '',
-        className
+        className,
       )}
     >
       <div

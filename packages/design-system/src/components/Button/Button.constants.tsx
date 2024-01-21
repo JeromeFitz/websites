@@ -1,4 +1,4 @@
-import type { Variants } from './Button.types'
+import type { Variants } from './Button.types.js'
 
 const VARIANTS: Variants = {
   DEFAULT: 'default',

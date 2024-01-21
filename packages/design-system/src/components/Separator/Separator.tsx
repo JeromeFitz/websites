@@ -4,7 +4,7 @@
  */
 import * as Separator from '@radix-ui/react-separator'
 
-import { cx } from '../../utils/cx'
+import { cx } from '../../utils/cx.js'
 
 function SeparatorImpl({ className = '' }) {
   return (
@@ -19,7 +19,7 @@ function SeparatorImpl({ className = '' }) {
         'h-[1px] w-full',
         'min-h-[0.75rem]',
         'text-radix-slate6',
-        className
+        className,
       )}
       decorative
       orientation="vertical"

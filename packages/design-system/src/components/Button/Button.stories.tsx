@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { cx } from '../../utils/cx'
+import { cx } from '../../utils/cx.js'
 
-import { Button } from './Button'
-import { VARIANTS } from './Button.constants'
+import { VARIANTS } from './Button.constants.js'
+import { Button } from './Button.js'
 
 const meta = {
   // eslint-disable-next-line storybook/no-title-property-in-meta
@@ -46,7 +46,7 @@ export const Custom: Story = {
     className: cx(
       'm-12 p-12',
       'bg-radix-slate12 text-radix-slate1',
-      'hocus:bg-radix-slate1 hocus:text-radix-slate12'
+      'hocus:bg-radix-slate1 hocus:text-radix-slate12',
     ),
     variant: 'empty',
   },

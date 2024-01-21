@@ -1,10 +1,10 @@
 import 'server-only'
 
 import { isObjectEmpty } from '@jeromefitz/utils'
-import { getPageData as _getPageData } from 'next-notion/src/queries'
+import { getPageData as _getPageData } from 'next-notion/queries'
 import { cache } from 'react'
 
-import { getCache, setCache, getKey } from '../../redis'
+import { getCache, setCache, getKey } from '../../redis/index.js'
 
 const OVERRIDE_CACHE = process.env.OVERRIDE_CACHE || false
 

@@ -1,10 +1,10 @@
 import 'server-only'
 
 import { isObjectEmpty } from '@jeromefitz/utils'
-import { getDatabaseQuery as _getDatabaseQuery } from 'next-notion/src/queries'
+import { getDatabaseQuery as _getDatabaseQuery } from 'next-notion/queries'
 import { cache } from 'react'
 
-import { getCache, setCache, getKey } from '../../redis'
+import { getCache, setCache, getKey } from '../../redis/index.js'
 
 const OVERRIDE_CACHE = process.env.OVERRIDE_CACHE || false
 
@@ -45,7 +45,7 @@ const getDatabaseQuery = cache(
       data = dataFromCache
     }
     return data
-  }
+  },
 )
 
 export { getDatabaseQuery }

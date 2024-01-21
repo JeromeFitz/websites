@@ -7,15 +7,21 @@ import {
   SectionWrapper,
   Tags,
 } from '@jeromefitz/ds/components/Section'
-import { getDataFromCache } from '@jeromefitz/shared/src/notion/utils'
+import { getDataFromCache } from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
+// @todo(next) esm
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { draftMode } from 'next/headers'
+// @todo(next) esm
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { notFound } from 'next/navigation'
 
 import type { PropertiesPodcast } from '~app/(notion)/_config'
 import { CONFIG, getPodcastData } from '~app/(notion)/_config'
 import { Notion as Blocks } from '~components/Notion'
-import { Relations } from '~components/Relations'
+import { Relations } from '~components/Relations/index'
 
 import { PodcastEpisodes } from './Podcast.Episodes'
 

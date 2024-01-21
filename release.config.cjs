@@ -17,7 +17,7 @@ const branchTypes = _map(
         }
       )
     })[0]
-  }
+  },
 ).filter((branchType) => !!branchType)
 
 const branches = [

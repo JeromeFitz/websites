@@ -19,14 +19,20 @@ import {
   getDataFromCache,
   getDatabaseQuery,
   getDatabaseQueryByDateRange,
-} from '@jeromefitz/shared/src/notion/utils'
+} from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
-import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints'
-import _filter from 'lodash/filter'
-import _orderBy from 'lodash/orderBy'
+import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints.js'
+import _filter from 'lodash/filter.js'
+import _orderBy from 'lodash/orderBy.js'
+// @todo(next) esm
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { draftMode } from 'next/headers'
+// @todo(next) esm
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { notFound } from 'next/navigation'
-import { getPropertyTypeData } from 'next-notion/src/utils'
+import { getPropertyTypeData } from 'next-notion/utils'
 
 import { getEventData, getPageData, CONFIG } from '~app/(notion)/_config'
 
@@ -124,25 +130,31 @@ function ListingTemp({ items, defaultValue = null }) {
                         className={cx(
                           // 'items-center align-middle',
                           'mr-1 w-full justify-end text-right md:w-6/12 lg:mr-4',
-                          'flex flex-col'
+                          'flex flex-col',
                         )}
                       >
+                        {/* @todo(types) */}
+                        {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+                        {/* @ts-ignore */}
                         <ButtonLink
                           aria-label={`Read more detailed information for ${title}`}
                           href={href}
                           className={cx(
                             'justify-center',
-                            isEventOver ? 'pink-button-outline' : 'pink-button-cta'
+                            isEventOver ? 'pink-button-outline' : 'pink-button-cta',
                           )}
                         >
                           Detailed Info
                         </ButtonLink>
                         {!!ticketUrl && !isEventOver && (
+                          // @todo(types)
+                          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                          // @ts-ignore
                           <ButtonLink
                             href={ticketUrl}
                             className={cx(
                               'pink-button-outline',
-                              'flex-row items-center justify-center gap-1'
+                              'flex-row items-center justify-center gap-1',
                             )}
                           >
                             <>Buy Tickets</>
@@ -180,7 +192,7 @@ function Events({ data }) {
   const events = _orderBy(
     _filter(items, draft ? {} : { isPublished: true }),
     ['dateIso'],
-    ['asc']
+    ['asc'],
   )
 
   const defaultValue = events[0]?.id || null
@@ -211,7 +223,7 @@ function EventsPast({ data }) {
   const events = _orderBy(
     _filter(items, draft ? {} : { isPublished: true }),
     ['dateIso'],
-    ['desc']
+    ['desc'],
   )
 
   return <ListingTemp items={events} />

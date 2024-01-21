@@ -5,7 +5,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from './Header.Accordion'
+} from './Header.Accordion.js'
 
 const menus = [{ id: 'menu', url: '', title: 'Menu' }]
 
@@ -52,7 +52,7 @@ function Header() {
                       <ul
                         className={cx(
                           'text-3xl font-black tracking-tighter',
-                          'w-full'
+                          'w-full',
                         )}
                       >
                         {links.map((link) => {
@@ -64,7 +64,7 @@ function Header() {
                               className={cx(
                                 'my-2 py-2',
                                 'w-full',
-                                'even:bg-radix-pink5 odd:bg-radix-slate5'
+                                'even:bg-radix-pink5 odd:bg-radix-slate5',
                               )}
                             >
                               {title}

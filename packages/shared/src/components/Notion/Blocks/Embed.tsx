@@ -1,8 +1,9 @@
-import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
+import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints.js'
 
-import { EmbedTwitter } from './Embed.Twitter'
+import { EmbedTwitter } from './Embed.Twitter.js'
 
 // @todo(types)
+// eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
 function EmbedImpl({ block }: { block: BlockObjectResponse | any }) {
   // console.dir(`EmbedImpl`)
   // console.dir(block)

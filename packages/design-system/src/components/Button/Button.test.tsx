@@ -2,7 +2,7 @@ import { composeStories } from '@storybook/react'
 import { render, screen } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 
-import * as stories from './Button.stories'
+import * as stories from './Button.stories.js'
 
 const ButtonStories = composeStories(stories)
 

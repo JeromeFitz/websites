@@ -15,10 +15,15 @@ import {
 } from '@jeromefitz/ds/components/Section'
 import { Separator } from '@jeromefitz/ds/components/Separator'
 import { cx } from '@jeromefitz/ds/utils/cx'
-import { getDataFromCache } from '@jeromefitz/shared/src/notion/utils'
+import { getDataFromCache } from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
+// @todo(next) esm
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { draftMode } from 'next/headers'
-// import NextImage from 'next/image'
+// @todo(next) esm
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { notFound } from 'next/navigation'
 
 // import { Image } from '~app/(notion)/(utils)/blocks/Image'
@@ -27,7 +32,7 @@ import { getEventData, CONFIG } from '~app/(notion)/_config'
 import { Notion as Blocks } from '~components/Notion'
 import { Relations } from '~components/Relations'
 
-// import { Venue } from './Event.Slug.Venue'
+// import { Venue } from './Event.Slug.Venue.js'
 import { Image } from './Image'
 
 const { DATABASE_ID } = CONFIG.EVENTS
@@ -104,46 +109,49 @@ function Ticket({ properties, isFakePortal = false }) {
         'z-50 md:z-0',
         'px-2 pb-1.5 pt-4 md:p-0',
         'rounded-t md:rounded-none',
-        ''
+        '',
       )}
     >
       <div className="pl-5">
         <p
           className={cx(
-            'flex flex-row-reverse items-center justify-end gap-2 text-lg font-bold tracking-tight md:text-2xl'
+            'flex flex-row-reverse items-center justify-end gap-2 text-lg font-bold tracking-tight md:text-2xl',
           )}
         >
           <strong>
             {dayOfWeek}, {monthName} {dayOfMonthOrdinal}
           </strong>
-          <CalendarIcon className="h-5 w-5" />
+          <CalendarIcon className="size-5" />
         </p>
         <p
           className={cx(
-            'flex flex-row-reverse items-center justify-end gap-2 text-lg font-bold tracking-tight md:text-2xl'
+            'flex flex-row-reverse items-center justify-end gap-2 text-lg font-bold tracking-tight md:text-2xl',
           )}
         >
           <strong>
             {time} {timezone}
           </strong>
-          <ClockIcon className="h-5 w-5" />
+          <ClockIcon className="size-5" />
         </p>
         <p
           className={cx(
-            'flex flex-row-reverse items-baseline justify-end gap-2 text-lg font-bold tracking-tight md:text-2xl'
+            'flex flex-row-reverse items-baseline justify-end gap-2 text-lg font-bold tracking-tight md:text-2xl',
           )}
         >
           <strong>{venueTitle}</strong>
-          <HomeIcon className="relative top-[0.25rem] h-5 w-5 md:top-[0.125rem]" />
+          <HomeIcon className="relative top-[0.25rem] size-5 md:top-[0.125rem]" />
         </p>
       </div>
       <div className="mt-1 pt-1">
         {ticketUrl && !isEventOver ? (
+          // @todo(types)
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
           <ButtonLink
             className={cx(
               'pink-button-outline',
               'mx-0 w-full px-0 py-2 text-xl font-bold',
-              'flex-row items-center justify-center gap-1'
+              'flex-row items-center justify-center gap-1',
             )}
             href={ticketUrl}
           >
@@ -156,7 +164,7 @@ function Ticket({ properties, isFakePortal = false }) {
               'slate-button-outline',
               'mx-0 w-full px-0 py-2 text-xl font-bold',
               'flex-row items-center justify-center gap-1',
-              'cursor-not-allowed'
+              'cursor-not-allowed',
             )}
             disabled={true}
           >

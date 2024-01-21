@@ -1,7 +1,7 @@
 import { composeStories } from '@storybook/react'
 import { render, screen } from '@testing-library/react'
 
-import * as stories from './ButtonLink.stories'
+import * as stories from './ButtonLink.stories.js'
 
 const ButtonLinkStories = composeStories(stories)
 

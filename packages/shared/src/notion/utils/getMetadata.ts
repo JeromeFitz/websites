@@ -2,9 +2,9 @@ import { isObjectEmpty } from '@jeromefitz/utils'
 import type {
   TextRichTextItemResponse,
   RichTextItemResponse,
-} from '@notionhq/client/build/src/api-endpoints'
+} from '@notionhq/client/build/src/api-endpoints.js'
 import type { Metadata } from 'next'
-import { getPropertyTypeData } from 'next-notion/src/utils'
+import { getPropertyTypeData } from 'next-notion/utils'
 import _title from 'title'
 
 // import { getEventData } from '../index'
@@ -37,8 +37,9 @@ function getMetadata({ properties, segmentInfo }) {
 
   const descriptionTemp: TextRichTextItemResponse = getPropertyTypeData(
     properties,
-    'SEO.Description'
+    'SEO.Description',
   )
+  // eslint-disable-next-line @typescript-eslint/no-base-to-string
   const description: string = descriptionTemp?.toString()
 
   /**
@@ -51,7 +52,7 @@ function getMetadata({ properties, segmentInfo }) {
 
     const imageData: ImageItemResponse = getPropertyTypeData(
       properties,
-      'SEO.Image'
+      'SEO.Image',
     )[0]
     // console.dir(`> imageData`)
     // console.dir(imageData)
@@ -61,7 +62,7 @@ function getMetadata({ properties, segmentInfo }) {
         imageData.type === 'external' ? imageData.external.url : imageData.file.url
       const imageDescription: TextRichTextItemResponse = getPropertyTypeData(
         properties,
-        'SEO.Image.Description'
+        'SEO.Image.Description',
       )
 
       openGraph = {

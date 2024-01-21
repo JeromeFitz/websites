@@ -3,14 +3,13 @@ import { ButtonLink } from '@jeromefitz/ds/components/Button'
 import { ExternalLinkIcon } from '@jeromefitz/ds/components/Icon'
 import { Tags } from '@jeromefitz/ds/components/Section'
 import { cx } from '@jeromefitz/ds/utils/cx'
-import { NextImage } from '@jeromefitz/shared/src/components/Notion/Blocks/Image.client'
-import { fetcher } from '@jeromefitz/shared/src/lib/fetcher'
+import { ImageClient as NextImage } from '@jeromefitz/shared/components/Notion/Blocks/ImageClient'
+import { fetcher } from '@jeromefitz/shared/lib'
 // import * as AspectRatio from '@radix-ui/react-aspect-ratio'
 import { slug as _slug } from 'github-slugger'
-import _map from 'lodash/map'
-import _size from 'lodash/size'
+import _map from 'lodash/map.js'
+import _size from 'lodash/size.js'
 import ms from 'ms'
-// import NextImage from 'next/image'
 import useSWR from 'swr'
 import _title from 'title'
 
@@ -92,7 +91,7 @@ function NowPlayingClient() {
         <NextImage
           {...image}
           alt={imageLabel}
-          className={cx('h-full w-full object-cover')}
+          className={cx('size-full object-cover')}
           placeholder="blur"
           role="img"
           order={99}
@@ -111,7 +110,7 @@ function NowPlayingClient() {
             'before:relative before:ml-[-0.95rem] before:content-[open-quote] before:md:ml-[-1.80rem]',
             'after:content-[close-quote]',
             // '[hanging-punctuation:first]',
-            ''
+            '',
           )}
         >
           {/* “{track?.name}” */}
@@ -139,22 +138,25 @@ function NowPlayingClient() {
             className={cx(
               'mb-2 md:mb-4',
               'md:-mt-4',
-              'flex flex-row content-center items-center justify-items-start gap-[0.5rem]'
+              'flex flex-row content-center items-center justify-items-start gap-[0.5rem]',
             )}
           >
             <Tags tags={tags} classNameTag="px-3 py-2 mb-4 mr-4" />
           </div>
+          {/* @todo(types) */}
+          {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+          {/* @ts-ignore */}
           <ButtonLink
             aria-label={`Listen to “${track?.name}” on Spotify`}
             href={_href}
             className={cx(
               'spotify-button-outline',
               'flex-row items-center justify-center gap-1 align-middle',
-              'w-1/3'
+              'w-1/3',
             )}
           >
             <>Spotify</>
-            <span className="h-4 w-4">
+            <span className="size-4">
               <ExternalLinkIcon className="icon-custom" />
             </span>
           </ButtonLink>

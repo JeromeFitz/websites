@@ -36,7 +36,7 @@ const RelationIndividual = cache(async ({ id }) => {
     isPublished && 'transition-all duration-200',
     isPublished && 'text-radix-slate12 hover:text-radix-pink11',
     '',
-    ''
+    '',
   )
 
   return (

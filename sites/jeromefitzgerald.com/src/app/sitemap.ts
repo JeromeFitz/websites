@@ -1,4 +1,4 @@
-import _orderBy from 'lodash/orderBy'
+import _orderBy from 'lodash/orderBy.js'
 import { MetadataRoute } from 'next'
 
 /**
@@ -80,7 +80,7 @@ function sitemap(): MetadataRoute.Sitemap {
       ...sitemapShows,
     ],
     ['url'],
-    ['asc']
+    ['asc'],
   )
 }
 
