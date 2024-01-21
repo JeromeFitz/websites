@@ -11,13 +11,7 @@ import {
 import { getDataFromCache, getDatabaseQuery } from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
 import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints.js'
-// @todo(next) esm
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import { draftMode } from 'next/headers'
-// @todo(next) esm
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import { notFound } from 'next/navigation'
 import { getPropertyTypeData } from 'next-notion/utils'
 

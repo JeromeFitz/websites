@@ -14,13 +14,7 @@ import { cx } from '@jeromefitz/ds/utils/cx'
 import { EmbedSpotify } from '@jeromefitz/shared/components/Notion/Blocks/Embed.Spotify'
 import { getDataFromCache } from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
-// @todo(next) esm
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import { draftMode } from 'next/headers'
-// @todo(next) esm
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import { notFound } from 'next/navigation'
 
 import type { PropertiesEpisode } from '~app/(notion)/_config'

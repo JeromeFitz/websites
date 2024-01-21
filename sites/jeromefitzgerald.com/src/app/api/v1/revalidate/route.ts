@@ -1,13 +1,7 @@
 import { getDataFromCache, getSegmentInfo } from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
 import _size from 'lodash/size.js'
-// @todo(next) esm
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import { revalidatePath } from 'next/cache'
-// @todo(next) esm
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import { NextRequest, NextResponse } from 'next/server'
 
 import { CONFIG } from '~app/(notion)/_config'

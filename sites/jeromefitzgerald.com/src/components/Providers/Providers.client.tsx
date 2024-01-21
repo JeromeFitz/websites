@@ -1,6 +1,3 @@
-// @todo(next) esm
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import dynamic from 'next/dynamic'
 import pluralize from 'pluralize'
 // import { Suspense } from 'react'

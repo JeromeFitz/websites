@@ -4,9 +4,6 @@ import '@jeromefitz/tailwind-config/styles/globals.css'
 import { cx } from '@jeromefitz/ds/utils/cx'
 import { Analytics } from '@jeromefitz/shared/components/Analytics/Analytics'
 import { Viewport } from 'next'
-// @todo(next) esm
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import dynamic from 'next/dynamic'
 import localFont from 'next/font/local'
 
@@ -58,9 +55,6 @@ const NowReading = dynamic(
   { ssr: false },
 )
 
-// @todo(next) esm
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 const fontSans = localFont({
   display: 'swap',
   declarations: [

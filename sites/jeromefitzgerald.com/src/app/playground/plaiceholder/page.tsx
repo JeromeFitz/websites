@@ -7,13 +7,7 @@ import {
   SectionWrapper,
   // Tags,
 } from '@jeromefitz/ds/components/Section'
-// @todo(next) esm
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import Image from 'next/image'
-// // // @todo(next) esm
-// // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// // @ts-ignore
 // import { notFound } from 'next/navigation'
 
 import { FourOhFour } from '~app/_errors/404'

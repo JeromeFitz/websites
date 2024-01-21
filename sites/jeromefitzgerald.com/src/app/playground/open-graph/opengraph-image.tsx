@@ -1,7 +1,4 @@
 import { cx } from '@jeromefitz/ds/utils/cx'
-// @todo(next) esm
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import { ImageResponse } from 'next/og'
 
 // Route segment config
