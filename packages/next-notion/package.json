@@ -109,7 +109,7 @@
   },
   "devDependencies": {
     "@jeromefitz/date-fns-tz": "3.0.0-canary.8",
-    "@jeromefitz/utils": "3.0.0-canary.2",
+    "@jeromefitz/utils": "3.0.0",
     "@notionhq/client": "2.2.14",
     "@types/react": "18.2.48",
     "@types/react-dom": "18.2.18",
