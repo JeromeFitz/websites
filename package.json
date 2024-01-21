@@ -25,8 +25,8 @@
     "preinstall": "npx only-allow pnpm",
     "prepare": "is-ci || husky install",
     "semantic-release": "pnpm run semantic-release:mono",
-    "semantic-release:dry": "pnpm --filter jeromefitzgerald.com -r --workspace-concurrency=1 exec -- npx --no-install semantic-release -e semantic-release-monorepo --dry-run",
-    "semantic-release:mono": "pnpm --filter jeromefitzgerald.com -r --workspace-concurrency=1 exec -- npx --no-install semantic-release -e semantic-release-monorepo"
+    "semantic-release:dry": "pnpm --filter jeromefitzgerald.com -r --workspace-concurrency=1 exec -- npx --no-install semantic-release --dry-run",
+    "semantic-release:mono": "pnpm --filter jeromefitzgerald.com -r --workspace-concurrency=1 exec -- npx --no-install semantic-release"
   },
   "dependencies": {
     "@jeromefitz/conventional-gitmoji": "4.0.0-canary.2",
