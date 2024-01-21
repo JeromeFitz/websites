@@ -3,9 +3,6 @@
  *  up but you probably _need_ to set this up, haha
  */
 import { Image } from '@jeromefitz/shared/components/Notion/Blocks/Image'
-// @todo(next) esm
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import dynamic from 'next/dynamic'
 
 // import { lazy } from 'react'

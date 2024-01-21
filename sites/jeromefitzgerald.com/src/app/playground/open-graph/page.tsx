@@ -7,9 +7,6 @@ import {
   // Tags,
 } from '@jeromefitz/ds/components/Section'
 import { cx } from '@jeromefitz/ds/utils/cx'
-// // // @todo(next) esm
-// // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// // @ts-ignore
 // import { notFound } from 'next/navigation'
 
 import { FourOhFour } from '~app/_errors/404'

@@ -1,11 +1,6 @@
 'use client'
-// @todo(next) esm
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
+
 import dynamic from 'next/dynamic'
-// @todo(next) esm
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 

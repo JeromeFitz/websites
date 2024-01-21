@@ -1,5 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore @todo(next) esm
 // eslint-disable-next-line no-restricted-imports
 import NextLink from 'next/link'
 

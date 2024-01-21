@@ -1,10 +1,4 @@
-// @todo(next) esm
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import dynamic from 'next/dynamic'
-// // // @todo(next) esm
-// // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// // @ts-ignore
 // import { notFound } from 'next/navigation'
 
 import { FourOhFour } from '~app/_errors/404'

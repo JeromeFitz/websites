@@ -1,9 +1,6 @@
 'use client'
 import { CalendarIcon } from '@jeromefitz/ds/components/Icon'
 import { cx } from '@jeromefitz/ds/utils/cx'
-// @todo(next) esm
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 // eslint-disable-next-line no-restricted-imports
 import NextLink from 'next/link'
 import Headroom from 'react-headroom'

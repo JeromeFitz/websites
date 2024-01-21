@@ -1,8 +1,5 @@
 'use client'
 import { load, trackPageview } from 'fathom-client'
-// @todo(next) esm
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import { usePathname, useSearchParams } from 'next/navigation'
 import { useEffect } from 'react'
 

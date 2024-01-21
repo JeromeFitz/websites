@@ -5,8 +5,6 @@ import type { CredentialProps, ClientProps } from '@jeromefitz/spotify'
 import stringify from 'fast-json-stable-stringify'
 import { slug as _slug } from 'github-slugger'
 import ms from 'ms'
-// @todo(next) esm
-// @ts-ignore
 import { NextRequest, NextResponse } from 'next/server'
 
 const keyPrefixSpotify = `${process.env.NEXT_PUBLIC__SITE}/spotify`

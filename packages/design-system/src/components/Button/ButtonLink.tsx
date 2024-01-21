@@ -1,5 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore @todo(next) esm
 // eslint-disable-next-line no-restricted-imports
 import Link from 'next/link'
 import { forwardRef } from 'react'
@@ -19,8 +17,6 @@ const ButtonLinkComponent: ForwardRefRenderFunction<
   HTMLAnchorElement,
   ButtonLinkProps
 > = (props, ref) => {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore @todo(next) esm
   const { className, href, variant = VARIANTS.DEFAULT, ...rest } = props
   const finalClassName =
     variant === VARIANTS.EMPTY
