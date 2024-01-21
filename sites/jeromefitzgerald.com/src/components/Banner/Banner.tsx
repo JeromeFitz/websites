@@ -19,7 +19,7 @@ function Loading({}) {
   return (
     <span className="relative top-[0.125rem] inline-block w-6/12 max-w-sm animate-pulse rounded-md">
       <span
-        className={`inline-block h-full w-full rounded bg-white text-xs font-normal leading-6 tracking-tight md:text-sm`}
+        className={`inline-block size-full rounded bg-white text-xs font-normal leading-6 tracking-tight md:text-sm`}
       >
         &nbsp;
       </span>
@@ -34,6 +34,9 @@ function Banner({}) {
   const isLoading = false
 
   return (
+    // @todo(types) no construct
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     <Headroom>
       <div
         className={cx(
@@ -43,7 +46,7 @@ function Banner({}) {
           'text-white',
           'bg-radix-slate1 opacity-90 backdrop-blur-md hover:opacity-100',
           'bg-breeze',
-          'dark:bg-breeze-r'
+          'dark:bg-breeze-r',
         )}
       >
         <NextLink className={cx('w-full cursor-pointer')} href={info.url}>
@@ -57,7 +60,7 @@ function Banner({}) {
                 'font-sans font-bold',
                 'w-full items-center',
                 'ml-3 justify-evenly md:ml-0',
-                'text-sm'
+                'text-sm',
               )}
             >
               <span className="visible inline-flex w-4/12 items-center justify-center gap-2 md:invisible md:hidden">

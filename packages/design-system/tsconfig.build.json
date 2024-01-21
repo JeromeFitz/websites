@@ -5,7 +5,7 @@
     // "baseUrl": ".",
     "incremental": true,
     // "noUnusedParameters": false, // @todo(lint)
-    "rootDir": "./src",
+    // "rootDir": "./src",
     "outDir": "./dist",
     // "strict": false,
     "allowJs": false,

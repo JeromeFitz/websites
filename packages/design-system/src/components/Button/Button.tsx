@@ -14,7 +14,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const ButtonComponent: ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> = (
   props,
-  ref
+  ref,
 ) => {
   const { className, variant = VARIANTS.DEFAULT, ...rest } = props
   const finalClassName =

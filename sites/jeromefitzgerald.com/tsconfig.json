@@ -5,7 +5,7 @@
     ".next/types/**/*.ts",
     "index.d.ts",
     "next-env.d.ts",
-    "src"
+    "src",
   ],
-  "exclude": ["node_modules", "tests/*.test.ts"]
+  "exclude": ["node_modules", "tests/*.test.ts"],
 }

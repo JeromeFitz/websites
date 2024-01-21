@@ -1,7 +1,7 @@
 import type {
   ListBlockChildrenResponse,
   PageObjectResponse,
-} from '@notionhq/client/build/src/api-endpoints'
+} from '@notionhq/client/build/src/api-endpoints.js'
 
 type RC = {
   page: PageObjectResponse

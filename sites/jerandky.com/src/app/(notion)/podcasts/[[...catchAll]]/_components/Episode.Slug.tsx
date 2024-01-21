@@ -47,7 +47,7 @@ const RELATIONS_SECONDARY = [
 
 const styleIndividual = cx(
   'inline-block text-base font-normal tracking-tight no-underline md:text-xl',
-  ''
+  '',
 )
 
 function Rollups({ properties }) {
@@ -55,7 +55,7 @@ function Rollups({ properties }) {
   const style = cx(
     styleIndividual,
     isPublished && 'transition-all duration-200',
-    isPublished && 'text-radix-slate12 hover:text-radix-pink11'
+    isPublished && 'text-radix-slate12 hover:text-radix-pink11',
   )
 
   const {
@@ -119,7 +119,7 @@ function Links({ properties }) {
   const isPublished = true
   const style = cx(
     styleIndividual,
-    isPublished && 'transition-all duration-200'
+    isPublished && 'transition-all duration-200',
     // isPublished && 'text-radix-slate12 hover:text-radix-pink11'
   )
   return (
@@ -134,7 +134,7 @@ function Links({ properties }) {
               href={spotifyUrl}
               className={cx(
                 style,
-                'text-spotify-dark hover:text-spotify dark:text-spotify dark:hover:text-spotify-dark'
+                'text-spotify-dark hover:text-spotify dark:text-spotify dark:hover:text-spotify-dark',
               )}
             >
               Spotify

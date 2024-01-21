@@ -3,7 +3,7 @@ import { cx } from '@jeromefitz/ds/utils/cx'
 
 import { getPodcastData } from '~app/(notion)/_config'
 import { blocks } from '~components/Notion/Notion.Config'
-import { WIP } from '~components/WIP'
+import { WIP } from '~components/WIP/index'
 
 function PodcastEpisodes({ properties }) {
   const { episodeSlugs, episodeTitles, ...props } = getPodcastData(properties)

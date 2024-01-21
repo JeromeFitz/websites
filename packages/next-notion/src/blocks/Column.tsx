@@ -1,7 +1,7 @@
 import type {
   BulletedListItemBlockObjectResponse,
   NumberedListItemBlockObjectResponse,
-} from '@notionhq/client/build/src/api-endpoints'
+} from '@notionhq/client/build/src/api-endpoints.js'
 import { forwardRef } from 'react'
 
 import { NotionBlocks as Blocks } from '../Notion.Blocks'

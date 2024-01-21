@@ -7,10 +7,7 @@ import {
   SectionWrapper,
   // Tags,
 } from '@jeromefitz/ds/components/Section'
-import {
-  getDataFromCache,
-  getSegmentInfo,
-} from '@jeromefitz/shared/src/notion/utils'
+import { getDataFromCache, getSegmentInfo } from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
 import type { Metadata } from 'next'
 import { draftMode } from 'next/headers'
@@ -67,6 +64,7 @@ async function Slug({ revalidate, segmentInfo }) {
   const { seoDescription, title } = getPageData(data?.page?.properties) || ''
 
   if (isObjectEmpty(data.page)) return null
+  // console.dir(data?.blocks)
   return (
     <>
       <SectionWrapper>
@@ -82,8 +80,14 @@ async function Slug({ revalidate, segmentInfo }) {
   )
 }
 
-export default function Page({ revalidate = false, ...props }) {
-  const segmentInfo = getSegmentInfo({ SEGMENT, ...props })
+// export default function Page({ revalidate = false, ...props }) {
+//   const segmentInfo = getSegmentInfo({ SEGMENT, ...props })
+
+//   return <Slug revalidate={revalidate} segmentInfo={segmentInfo} />
+// }
+export default function Page(props) {
+  const revalidate = props?.revalidate || false
+  const segmentInfo = getSegmentInfo({ SEGMENT, ...props, revalidate })
 
   return <Slug revalidate={revalidate} segmentInfo={segmentInfo} />
 }

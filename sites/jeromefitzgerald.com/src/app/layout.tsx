@@ -1,13 +1,14 @@
+'use client'
 import '@jeromefitz/tailwind-config/styles/globals.css'
 
 import { cx } from '@jeromefitz/ds/utils/cx'
-import { Analytics } from '@jeromefitz/shared/src/components/Analytics'
+import { Analytics } from '@jeromefitz/shared/components/Analytics/Analytics'
 import { Viewport } from 'next'
 import dynamic from 'next/dynamic'
 import localFont from 'next/font/local'
 
-import { Banner } from '~components/Banner'
-import { Providers } from '~components/Providers'
+import { Banner } from '~components/Banner/index'
+import { Providers } from '~components/Providers/index'
 
 import { PreloadResources } from './_next/preload-resources'
 
@@ -34,24 +35,24 @@ import { PreloadResources } from './_next/preload-resources'
 // )
 const Footer = dynamic(
   async () => {
-    const { Footer: Component } = await import('~components/Footer')
+    const { Footer: Component } = await import('~components/Footer/index')
     return { default: Component }
   },
-  { ssr: false }
+  { ssr: false },
 )
 const NowPlaying = dynamic(
   async () => {
-    const { NowPlaying: Component } = await import('~components/NowPlaying')
+    const { NowPlaying: Component } = await import('~components/NowPlaying/index')
     return { default: Component }
   },
-  { ssr: false }
+  { ssr: false },
 )
 const NowReading = dynamic(
   async () => {
-    const { NowReading: Component } = await import('~components/NowReading')
+    const { NowReading: Component } = await import('~components/NowReading/index')
     return { default: Component }
   },
-  { ssr: false }
+  { ssr: false },
 )
 
 const fontSans = localFont({
@@ -70,15 +71,15 @@ const fontSans = localFont({
   weight: '100 900',
 })
 
-export const metadata = {
-  metadataBase: new URL(`https://${process.env.NEXT_PUBLIC__SITE}`),
-  manifest: '/images/favicon/site.webmanifest',
-  referrer: 'origin-when-cross-origin',
-  //
-  title: 'Jerome Fitzgerald (he/him) | Actor. Comedian. Writer.',
-  description:
-    'Jerome Fitzgerald is an an actor, comedian, & writer hailing from Pittsburgh, PA.',
-}
+// export const metadata = {
+//   metadataBase: new URL(`https://${process.env.NEXT_PUBLIC__SITE}`),
+//   manifest: '/images/favicon/site.webmanifest',
+//   referrer: 'origin-when-cross-origin',
+//   //
+//   title: 'Jerome Fitzgerald (he/him) | Actor. Comedian. Writer.',
+//   description:
+//     'Jerome Fitzgerald is an an actor, comedian, & writer hailing from Pittsburgh, PA.',
+// }
 
 export const viewport: Viewport = {
   colorScheme: 'dark',
@@ -93,7 +94,7 @@ function Wrapper({ children }) {
         'm-2 px-2',
         // desktop
         'md:m-6',
-        ''
+        '',
       )}
     >
       {children}
@@ -120,7 +121,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           'selection:bg-radix-slate12 selection:text-radix-slate1',
           'bg-white dark:bg-black',
           'font-sans antialiased',
-          fontSans.variable
+          fontSans.variable,
         )}
       >
         <Providers>

@@ -1,4 +1,4 @@
-import type { ColumnListBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
+import type { ColumnListBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints.js'
 import { forwardRef } from 'react'
 
 import { NotionBlocks as Blocks } from '../Notion.Blocks'

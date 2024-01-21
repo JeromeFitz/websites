@@ -1,8 +1,8 @@
-/* eslint-disable no-restricted-imports */
+// eslint-disable-next-line no-restricted-imports
 import NextLink from 'next/link'
 
 import { cx } from '../../utils/cx'
-import { ExternalLinkIcon } from '../Icon'
+import { ExternalLinkIcon } from '../Icon/Icon'
 
 const nextSeo = { url: `https://${process.env.NEXT_PUBLIC__SITE}` }
 const domain = new URL(nextSeo.url)
@@ -25,7 +25,7 @@ const Anchor = ({ className = '', href, children }) => {
     'underline',
     'text-radix-pink11 hover:text-radix-pink12',
     'transition-all duration-200 ease-in',
-    className
+    className,
   )
 
   if (isExternal && !isNotion) {

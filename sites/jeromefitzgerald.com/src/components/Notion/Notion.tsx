@@ -1,4 +1,4 @@
-import { NotionBlocks } from 'next-notion/src/Notion.Blocks'
+import { NotionBlocks } from 'next-notion/Notion.Blocks'
 
 import { blocks } from './Notion.Config'
 

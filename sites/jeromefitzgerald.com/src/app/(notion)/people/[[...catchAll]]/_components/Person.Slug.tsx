@@ -6,7 +6,7 @@ import {
   SectionWrapper,
   Tags,
 } from '@jeromefitz/ds/components/Section'
-import { getDataFromCache } from '@jeromefitz/shared/src/notion/utils'
+import { getDataFromCache } from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
@@ -14,7 +14,7 @@ import { notFound } from 'next/navigation'
 import type { PropertiesPerson } from '~app/(notion)/_config'
 import { getPersonData, CONFIG } from '~app/(notion)/_config'
 import { Notion as Blocks } from '~components/Notion'
-import { Relations } from '~components/Relations'
+import { Relations } from '~components/Relations/index'
 
 // import { UpcomingShows } from './Show.UpcomingShows'
 

@@ -1,7 +1,7 @@
-import _merge from 'lodash/merge'
-import _size from 'lodash/size'
-import _uniq from 'lodash/uniq'
-import { getPropertyTypeData } from 'next-notion/src/utils'
+import _merge from 'lodash/merge.js'
+import _size from 'lodash/size.js'
+import _uniq from 'lodash/uniq.js'
+import { getPropertyTypeData } from 'next-notion/utils'
 
 import type { PropertiesEvent } from '~app/(notion)/_config'
 
@@ -51,7 +51,7 @@ function getEventData(properties) {
   const daysUntilEvent = getPropertyTypeDataEvent(properties, 'Date.DaysUntilEvent')
   const hoursUntilEvent = getPropertyTypeDataEvent(
     properties,
-    'Date.HoursUntilEvent'
+    'Date.HoursUntilEvent',
   )
   const isEventOver = hoursUntilEvent < 0
 
@@ -66,7 +66,7 @@ function getEventData(properties) {
     dayOfMonth: getPropertyTypeDataEvent(properties, 'Date.DayOfMonth'),
     dayOfMonthOrdinal: getPropertyTypeDataEvent(
       properties,
-      'Date.DayOfMonthOrdinal'
+      'Date.DayOfMonthOrdinal',
     ),
     dayOfWeek: getPropertyTypeDataEvent(properties, 'Date.DayOfWeek'),
     dayOfWeekAbbr: getPropertyTypeDataEvent(properties, 'Date.DayOfWeekAbbr'),
@@ -96,7 +96,7 @@ function getEventData(properties) {
     seoKeywords: getPropertyTypeDataEvent(properties, 'SEO.Keywords'),
     seoImageDescription: getPropertyTypeDataEvent(
       properties,
-      'SEO.Image.Description'
+      'SEO.Image.Description',
     ),
     seoImage: getPropertyTypeDataEvent(properties, 'SEO.Image')[0],
     /**

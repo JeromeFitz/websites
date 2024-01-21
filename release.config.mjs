@@ -1,10 +1,13 @@
-const { getConfig } = require('@jeromefitz/semantic')
-const isCI = require('is-ci')
-const _map = require('lodash/map.js')
+import { getConfig } from '@jeromefitz/semantic'
+import isCI from 'is-ci'
+import _map from 'lodash/map.js'
 
-!isCI && require('dotenv').config({ path: './.env' })
+import releaseBranchTypes from './config/release-branch-types/index.cjs'
 
-const releaseBranchTypes = require('./config/release-branch-types/index.cjs')
+if (!isCI) {
+  const dotenv = await import('dotenv')
+  dotenv.config({ path: './.env' })
+}
 
 const branchTypes = _map(
   releaseBranchTypes,
@@ -17,13 +20,13 @@ const branchTypes = _map(
         }
       )
     })[0]
-  }
+  },
 ).filter((branchType) => !!branchType)
 
 const branches = [
   { name: 'main' },
   { name: 'canary', prerelease: 'canary' },
-  { name: 'NICE-43', prerelease: 'NICE-43' },
+  { name: 'NICE-67', prerelease: 'NICE-67' },
   ...branchTypes,
 ]
 
@@ -33,10 +36,16 @@ const config = {
     email: [],
     login: ['BotJerome', 'JeromeFitz'],
   },
+  /**
+   * @note(semantic) what a second after ALL THIS we are not even using this?!
+   */
+  // extends: 'semantic-release-monorepo',
   enableNpm: false,
 }
 
 // const _config = getConfig(config)
 
-module.exports.config = config
-module.exports.getConfig = getConfig
+const _config = config
+export { _config as config }
+const _getConfig = getConfig
+export { _getConfig as getConfig }

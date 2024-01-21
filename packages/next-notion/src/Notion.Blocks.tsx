@@ -1,7 +1,7 @@
 import type {
   BlockObjectResponse,
   ListBlockChildrenResponse,
-} from '@notionhq/client/build/src/api-endpoints'
+} from '@notionhq/client/build/src/api-endpoints.js'
 // import { Suspense } from 'react'
 
 import { blocks as blocksDefault, OBJECTS, TYPES } from './Notion.Config'
@@ -12,6 +12,7 @@ function NotionBlocks({
   blocks = blocksDefault,
 }: {
   // @todo(types) ListBlockChildrenResponse | any => children
+  // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
   data: ListBlockChildrenResponse | any
   blocks?: any
 }) {
@@ -23,6 +24,10 @@ function NotionBlocks({
       type === TYPES.NUMBERED_LIST_ITEM ||
       type === TYPES.COLUMN)
   const isBlockItem = object === OBJECTS.BLOCK
+
+  // console.dir(data)
+  // console.dir(`OBJECTS.LIST: ${OBJECTS.LIST}`)
+  // console.dir(`isListBlock: ${isListBlock ? 'y' : 'n'}`)
 
   if (isListItem) {
     // console.dir(`⚠️ isListItem: ${type}`)

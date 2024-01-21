@@ -12,6 +12,9 @@ type PropsChildren = {
 }
 
 const AccordionDemo = ({ children, defaultValue = '' }) => (
+  // @todo(types) radix
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-expect-error
   <Accordion.Root
     className="bg-radix-slate6 w-full shadow-xl"
     type="single"
@@ -27,7 +30,7 @@ const AccordionItem = forwardRef<ForwardedRefType, PropsChildren>(
     <Accordion.Item
       className={cx(
         'focus-within:shadow-radix-slate12 mt-px overflow-hidden first:mt-0  focus-within:relative focus-within:z-10 focus-within:shadow-[0_0_0_2px]',
-        className
+        className,
       )}
       {...props}
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -36,17 +39,20 @@ const AccordionItem = forwardRef<ForwardedRefType, PropsChildren>(
     >
       {children}
     </Accordion.Item>
-  )
+  ),
 )
 
 const AccordionTrigger = forwardRef<ForwardedRefType, PropsChildren>(
   ({ children, className, ...props }, forwardedRef) => (
+    // @todo(types) radix
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     <Accordion.Header className="flex">
       <Accordion.Trigger
         className={cx(
           'text-radix-pink12 shadow-radix-slate6 hover:bg-radix-pinkA4 bg-radix-pinkA8 group flex flex-1 cursor-default items-center justify-between px-1 py-4 text-[15px] leading-none shadow-[0_1px_0] outline-none md:px-2',
           'transition-all duration-200',
-          className
+          className,
         )}
         {...props}
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -60,7 +66,7 @@ const AccordionTrigger = forwardRef<ForwardedRefType, PropsChildren>(
         />
       </Accordion.Trigger>
     </Accordion.Header>
-  )
+  ),
 )
 
 const AccordionContent = forwardRef<ForwardedRefType, PropsChildren>(
@@ -68,7 +74,7 @@ const AccordionContent = forwardRef<ForwardedRefType, PropsChildren>(
     <Accordion.Content
       className={cx(
         'text-radix-slate11 bg-radix-slate2 data-[state=open]:animate-slideDown data-[state=closed]:animate-slideUp w-full overflow-hidden',
-        className
+        className,
       )}
       {...props}
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -77,7 +83,7 @@ const AccordionContent = forwardRef<ForwardedRefType, PropsChildren>(
     >
       <div className="px-5">{children}</div>
     </Accordion.Content>
-  )
+  ),
 )
 
 export { AccordionDemo, AccordionItem, AccordionContent, AccordionTrigger }

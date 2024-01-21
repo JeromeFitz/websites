@@ -21,11 +21,14 @@ envRequired()
  */
 const isLocal = process.env.DESIGN_SYSTEM__LINK === 'true' ? true : false
 const externals = [
+  // '@radix-ui/react-primitive',
   '@radix-ui/colors',
-  '@types/react',
+  // '@types/react',
+  // '@types/react-dom',
   'cmdk',
   'react',
   'react-dom',
+  'prettier',
   'swr',
 ]
 const isLocalDebugMessages = [
@@ -91,7 +94,10 @@ const config = ({
     compress: true,
     // configFileName: ''
     // crossOrigin: 'same-origin',
-    devIndicators: { buildActivity: true, buildActivityPosition: 'bottom-right' },
+    devIndicators: {
+      buildActivity: true,
+      buildActivityPosition: 'bottom-right',
+    },
     distDir: './.next',
     // distDir: './out',
     // env,
@@ -101,6 +107,7 @@ const config = ({
     },
     excludeDefaultMomentLocales: true,
     experimental: {
+      // esmExternals: true,
       // @note(next) storybook needs this -- but nothing else.
       outputFileTracingExcludes: {
         '*': [
@@ -270,7 +277,7 @@ const config = ({
       // @note(pnpm)  path mapping if working locally
       if (isLocal) {
         isLocalDebugMessages.map((msg) =>
-          console.debug('\x1b[33m%s\x1b[0m', 'warn', ' - ', msg)
+          console.debug('\x1b[33m%s\x1b[0m', 'warn', ' - ', msg),
         )
         externals.map((ext) => {
           console.debug('\x1b[33m%s\x1b[0m', 'warn', ' - [ 📦 ] ›  ', ext)
@@ -281,11 +288,12 @@ const config = ({
             '..',
             '..',
             'node_modules',
-            ext
+            ext,
           )
         })
       }
 
+      // return { ...config, module: { ...config.module, exprContextCritical: false } }
       return config
     },
   }

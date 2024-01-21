@@ -16,8 +16,8 @@ import type {
   // SelectPropertyItemObjectResponse,
   // TitlePropertyItemObjectResponse,
   UrlPropertyItemObjectResponse,
-} from '@notionhq/client/build/src/api-endpoints'
-import _orderBy from 'lodash/orderBy'
+} from '@notionhq/client/build/src/api-endpoints.js'
+import _orderBy from 'lodash/orderBy.js'
 
 import type {
   DateResponse,
@@ -65,7 +65,7 @@ function getFormulaData({ data, type }: { data: any; type: string }) {
   }
 
   console.dir(
-    `[info] getFormulaData return is not a number|string: ${dataReturn.type}`
+    `[info] getFormulaData return is not a number|string: ${dataReturn.type}`,
   )
   return dataReturn[dataReturn.type]
 }
@@ -207,7 +207,7 @@ function getRollupData({ data, type }: { data: RollupData; type: string }) {
   }
 
   console.dir(
-    `[info] getRollupData return is not a array|multi_select: ${dataReturn.type}`
+    `[info] getRollupData return is not a array|multi_select: ${dataReturn.type}`,
   )
   dataReturn = dataReturn[dataReturn.type]
 

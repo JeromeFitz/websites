@@ -3,7 +3,7 @@ import { FileTextIcon } from '@jeromefitz/ds/components/Icon'
 function Wrapper({ children }) {
   return (
     <div className="flex flex-row items-start justify-start gap-1 py-4 align-text-bottom md:py-0">
-      <span className="mr-2 mt-1 h-4 w-4">
+      <span className="mr-2 mt-1 size-4">
         <FileTextIcon className="text-inherit" />
       </span>
       <span>

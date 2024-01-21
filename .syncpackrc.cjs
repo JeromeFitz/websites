@@ -22,6 +22,13 @@ const config = {
       packages: ['**'],
     },
     {
+      dependencies: ['server-only'],
+      dependencyTypes: ['peer'],
+      isIgnored: true,
+      label: 'ignore: server-only',
+      packages: ['**'],
+    },
+    {
       dependencies: ['**'],
       dependencyTypes: ['dev', 'local', 'overrides', 'prod'],
       label: 'types:  !peer',
@@ -41,6 +48,12 @@ const config = {
       dependencies: ['@jeromefitz/date-fns-tz'],
       dependencyTypes: ['peer'],
       label: '@todo: @jeromefitz/date-fns-tz',
+      packages: ['**'],
+    },
+    {
+      dependencies: ['server-only'],
+      dependencyTypes: ['peer'],
+      label: '@todo: server-only',
       packages: ['**'],
     },
     {

@@ -1,6 +1,6 @@
 'use client'
 import { MoonIcon, SunIcon } from '@jeromefitz/ds/components/Icon'
-import { useThemeToggle } from '@jeromefitz/shared/src/hooks/useThemeToggle'
+import { useThemeToggle } from '@jeromefitz/shared/hooks'
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 
@@ -25,7 +25,7 @@ function ThemeToggle() {
       >
         <span className="flex flex-row-reverse items-center justify-end gap-1 align-middle">
           <span className="">Toggle Theme</span>
-          <span className="mr-2 h-4 w-4">
+          <span className="mr-2 size-4">
             {loaded && <Icon className="text-inherit" />}
           </span>
         </span>
