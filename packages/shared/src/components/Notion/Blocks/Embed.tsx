@@ -1,6 +1,6 @@
 import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints.js'
 
-import { EmbedTwitter } from './Embed.Twitter.js'
+import { EmbedTwitter } from './Embed.Twitter'
 
 // @todo(types)
 // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents

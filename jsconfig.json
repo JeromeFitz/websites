@@ -2,6 +2,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+      "@jeromefitz/ds/*": ["./packages/design-system/src/*"],
+      "@jeromefitz/shared/*": ["./packages/shared/src/*"],
+      "next-notion/*": ["./packages/next-notion/src/*"],
       "~app/*": ["./sites/jeromefitzgerald.com/src/app/*"],
       "~components/*": ["./sites/jeromefitzgerald.com/src/components/*"],
       "~config/*": ["./sites/jeromefitzgerald.com/src/config/*"],

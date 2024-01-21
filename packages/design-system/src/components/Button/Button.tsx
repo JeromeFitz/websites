@@ -1,11 +1,11 @@
 import { forwardRef } from 'react'
 import type { ButtonHTMLAttributes, ForwardRefRenderFunction } from 'react'
 
-import { cx } from '../../utils/cx.js'
+import { cx } from '../../utils/cx'
 
-import { VARIANTS } from './Button.constants.js'
-import { commonStyles, variantStyles } from './Button.styles.js'
-import type { Classname, Variant } from './Button.types.js'
+import { VARIANTS } from './Button.constants'
+import { commonStyles, variantStyles } from './Button.styles'
+import type { Classname, Variant } from './Button.types'
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: Classname

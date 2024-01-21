@@ -12,7 +12,7 @@ import { cache, Suspense } from 'react'
 import type { PageObjectResponseShow } from '~app/(notion)/_config/index'
 import { getEventData } from '~app/(notion)/_config/index'
 
-import { RelationLoading } from './index.js'
+import { RelationLoading } from './index'
 
 function ComponentFallback({ children, ...props }) {
   return <span {...props}>{children}</span>

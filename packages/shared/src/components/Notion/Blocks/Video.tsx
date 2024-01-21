@@ -5,7 +5,7 @@ import type { VideoBlockObjectResponse } from '@notionhq/client/build/src/api-en
 import { NotionEmoji as EmojiWrapper } from 'next-notion/blocks/Emoji'
 import { Fragment, Suspense } from 'react'
 
-import { VideoYouTube } from './Video.YouTube.js'
+import { VideoYouTube } from './Video.YouTube'
 
 // @todo(types)
 // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents

@@ -1,1 +1,1 @@
-export { Caption } from './Caption.js'
+export { Caption } from './Caption'

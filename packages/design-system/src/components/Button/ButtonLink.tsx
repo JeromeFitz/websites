@@ -5,11 +5,11 @@ import Link from 'next/link'
 import { forwardRef } from 'react'
 import type { ComponentProps, ForwardRefRenderFunction } from 'react'
 
-import { cx } from '../../utils/cx.js'
+import { cx } from '../../utils/cx'
 
-import { VARIANTS } from './Button.constants.js'
-import { commonStyles, variantStyles } from './Button.styles.js'
-import type { Variant } from './Button.types.js'
+import { VARIANTS } from './Button.constants'
+import { commonStyles, variantStyles } from './Button.styles'
+import type { Variant } from './Button.types'
 
 export interface ButtonLinkProps extends ComponentProps<typeof Link> {
   variant?: Variant
@@ -26,6 +26,7 @@ const ButtonLinkComponent: ForwardRefRenderFunction<
     variant === VARIANTS.EMPTY
       ? cx(variantStyles[variant], className)
       : cx(commonStyles, variantStyles[variant], className)
+  // eslint-disable-next-line @typescript-eslint/no-base-to-string
   const useLink = href && href.toString().startsWith('/')
 
   if (useLink) {
@@ -37,6 +38,7 @@ const ButtonLinkComponent: ForwardRefRenderFunction<
   return (
     <a
       className={finalClassName}
+      // eslint-disable-next-line @typescript-eslint/no-base-to-string
       href={href.toString()}
       ref={ref}
       rel="noreferrer"

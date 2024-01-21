@@ -2,10 +2,10 @@ import 'server-only'
 
 import stringify from 'fast-json-stable-stringify'
 
-import { TIME } from '../lib/constants.js'
+import { TIME } from '../lib/constants'
 
-import redis, { getKey } from './index.js'
-import type { RC } from './index.js'
+import redis, { getKey } from './index'
+import type { RC } from './index'
 
 // @todo(types) any
 // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents

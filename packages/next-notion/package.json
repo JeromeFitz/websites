@@ -1,7 +1,6 @@
 {
   "name": "next-notion",
   "version": "0.0.0",
-  "type": "module",
   "repository": "jeromefitz/websites.git",
   "author": {
     "name": "Jerome Fitzgerald",
@@ -110,7 +109,6 @@
   },
   "devDependencies": {
     "@jeromefitz/date-fns-tz": "3.0.0-canary.8",
-    "@jeromefitz/ds": "workspace:*",
     "@jeromefitz/utils": "3.0.0-canary.2",
     "@notionhq/client": "2.2.14",
     "@types/react": "18.2.48",

@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { cx } from '../../utils/cx.js'
+import { cx } from '../../utils/cx'
 
-import { MapIcon } from './Icon.js'
+import { MapIcon } from './Icon'
 
 const meta = {
   // eslint-disable-next-line storybook/no-title-property-in-meta

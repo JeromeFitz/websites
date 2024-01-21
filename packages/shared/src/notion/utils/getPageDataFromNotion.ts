@@ -4,7 +4,7 @@ import { isObjectEmpty } from '@jeromefitz/utils'
 import { getPageData as _getPageData } from 'next-notion/queries'
 import { cache } from 'react'
 
-import { getCache, setCache, getKey } from '../../redis/index.js'
+import { getCache, setCache, getKey } from '../../redis/index'
 
 const OVERRIDE_CACHE = process.env.OVERRIDE_CACHE || false
 

@@ -1,5 +1,5 @@
-export type { IconProps } from './Icon.types.js'
-export * from './Icon.js'
+export type { IconProps } from './Icon.types'
+export * from './Icon'
 /**
  * @note(Icon) further breakdown/customizations
  */
@@ -76,7 +76,7 @@ import {
   TextAlignRightIcon,
   TicketIcon,
   TwitterLogoIcon,
-} from './Icon.js'
+} from './Icon'
 
 const Icon = () => {}
 

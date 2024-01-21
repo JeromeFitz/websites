@@ -19,7 +19,7 @@ import { draftMode } from 'next/headers'
 // import { notFound } from 'next/navigation'
 
 import { CONFIG, getPageData } from '~app/(notion)/_config'
-import { FourOhFour } from '~app/_errors/404.js'
+import { FourOhFour } from '~app/_errors/404'
 import { Notion as Blocks } from '~components/Notion'
 
 const isDev = process.env.NODE_ENV === 'development'

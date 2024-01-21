@@ -24,7 +24,7 @@ import {
   RadixBorders,
   RadixColors,
   TailwindWidth,
-} from '~components/Playground/index.js'
+} from '~components/Playground/index'
 // const RadixBackgrounds = dynamic(async () => {
 //   const { RadixBackgrounds: Component } = await import('~components/Playground')
 //   return { default: Component }
@@ -41,7 +41,7 @@ import {
 //   const { TailwindWidth: Component } = await import('~components/Playground')
 //   return { default: Component }
 // })
-import { Testing } from '~components/Testing/index.js'
+import { Testing } from '~components/Testing/index'
 
 const isDev = process.env.NODE_ENV === 'development'
 const siteColors = [

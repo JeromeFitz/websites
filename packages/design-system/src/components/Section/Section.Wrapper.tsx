@@ -1,4 +1,4 @@
-import { cx } from '../../utils/cx.js'
+import { cx } from '../../utils/cx'
 
 function SectionWrapper({ children }) {
   return (

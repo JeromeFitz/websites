@@ -1,6 +1,6 @@
 import https from 'node:https'
 
-import { ImageClient as NextImage } from '@jeromefitz/shared/components/Notion/Blocks/ImageClient'
+import { ImageClient as NextImage } from '@jeromefitz/shared/components/Notion/Blocks/Image.client'
 import { isObjectEmpty } from '@jeromefitz/utils'
 // import { Client } from '@notionhq/client'
 import { Redis } from '@upstash/redis'

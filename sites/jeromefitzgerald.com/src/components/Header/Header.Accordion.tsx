@@ -12,6 +12,9 @@ type PropsChildren = {
 }
 
 const AccordionDemo = ({ children, defaultValue = '' }) => (
+  // @todo(types) radix
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-expect-error
   <Accordion.Root
     className="bg-radix-slate6 w-full shadow-xl"
     type="single"
@@ -41,6 +44,9 @@ const AccordionItem = forwardRef<ForwardedRefType, PropsChildren>(
 
 const AccordionTrigger = forwardRef<ForwardedRefType, PropsChildren>(
   ({ children, className, ...props }, forwardedRef) => (
+    // @todo(types) radix
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     <Accordion.Header className="flex">
       <Accordion.Trigger
         className={cx(

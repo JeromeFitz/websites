@@ -1,8 +1,8 @@
 'use client'
 import { Suspense } from 'react'
 
-import { FathomAnalytics } from './Fathom.js'
-import { VercelAnalytics, VercelSpeedInsights } from './Vercel.js'
+import { FathomAnalytics } from './Fathom'
+import { VercelAnalytics, VercelSpeedInsights } from './Vercel'
 
 function Analytics() {
   return (

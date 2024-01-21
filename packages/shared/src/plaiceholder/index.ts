@@ -1,1 +1,1 @@
-export { getImage } from './getImage.js'
+export { getImage } from './getImage'

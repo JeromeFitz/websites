@@ -22,10 +22,10 @@ import { NotionEmoji as EmojiWrapper } from 'next-notion/blocks/Emoji'
 import { isImageExpired } from 'next-notion/utils'
 import validUrl from 'valid-url'
 
-import { TIME } from '../../../lib/constants.js'
+import { TIME } from '../../../lib/constants'
 
-import { ImageClient as NextImage } from './Image.client.js'
-import { getImageAlt, getImageUrl, getImageExpiration } from './Image.utils.js'
+import { ImageClient as NextImage } from './Image.client'
+import { getImageAlt, getImageUrl, getImageExpiration } from './Image.utils'
 
 const notion = new Client({ auth: process.env.NOTION_API_KEY })
 
@@ -109,7 +109,7 @@ async function getImageFromBlock({ block, url }) {
    * would recommend not having the "hit" here
    */
   if (OVERRIDE_CACHE || (!isCached && !!imageUrl)) {
-    const { getImage } = await import('../../../plaiceholder/getImage.js')
+    const { getImage } = await import('../../../plaiceholder/getImage')
     const imageData = await getImage(imageUrl)
     image.blurDataURL = imageData?.base64
     image = {

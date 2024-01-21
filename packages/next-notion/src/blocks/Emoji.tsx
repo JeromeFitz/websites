@@ -1,4 +1,4 @@
-import { EmojiWrapper } from './Emoji.server.js'
+import { EmojiWrapper } from './Emoji.server'
 // import { lazy, Suspense } from 'react'
 
 // // @note(next) outside of page.tsx, need to ignore

@@ -1,5 +1,5 @@
 /* eslint-disable tailwindcss/no-custom-classname */
-import { cx } from '../../utils/cx.js'
+import { cx } from '../../utils/cx'
 
 function Tags({ tags, className = '', classNameTag = '' }) {
   return (

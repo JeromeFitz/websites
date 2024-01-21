@@ -32,7 +32,7 @@ import { getEventData, CONFIG } from '~app/(notion)/_config'
 import { Notion as Blocks } from '~components/Notion'
 import { Relations } from '~components/Relations'
 
-// import { Venue } from './Event.Slug.Venue.js'
+// import { Venue } from './Event.Slug.Venue'
 import { Image } from './Image'
 
 const { DATABASE_ID } = CONFIG.EVENTS

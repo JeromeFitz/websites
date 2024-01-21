@@ -1,5 +1,5 @@
 {
-  "extends": "@jeromefitz/tsconfig/next.json",
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
     // // w/ extends
     // "baseUrl": ".",
@@ -18,9 +18,9 @@
     "isolatedModules": true,
     // "jsx": "preserve",
     "jsx": "react-jsx",
-    "lib": ["dom", "ESNext"],
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
+    "lib": ["dom", "ES2020"],
+    "module": "ES2020",
+    "moduleResolution": "Node",
     "noEmit": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": false, // @todo(lint)
@@ -36,6 +36,9 @@
     "strictPropertyInitialization": false, // @todo(lint)
     "target": "ESNext",
     "tsBuildInfoFile": ".tsbuildinfo",
+    "paths": {
+      "@jeromefitz/ds/*": ["../../packages/design-system/src/*"],
+    },
   },
   "include": ["src", "index.d.ts", "next-env.d.ts"],
   "exclude": ["node_modules", "**/*.test.ts"],

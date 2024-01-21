@@ -12,10 +12,10 @@ import type {
 } from '@notionhq/client/build/src/api-endpoints.js'
 import { forwardRef, Fragment } from 'react'
 
-import type { ApiColor } from '../Notion.types.js'
-import { getAnnotations, getBlockKey } from '../Notion.utils.js'
+import type { ApiColor } from '../Notion.types'
+import { getAnnotations, getBlockKey } from '../Notion.utils'
 
-import { NotionEmoji as EmojiWrapper } from './Emoji.js'
+import { NotionEmoji as EmojiWrapper } from './Emoji'
 
 // @todo(types)
 const Text = forwardRef(function Text(props: any, ref: any) {

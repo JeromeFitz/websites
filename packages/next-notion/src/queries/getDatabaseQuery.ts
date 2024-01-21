@@ -3,9 +3,9 @@ import 'server-only'
 import { addDays, format } from 'date-fns'
 // import { cache } from 'react'
 
-import { notion } from '../helper.js'
-import type { FilterType, SortItem } from '../Notion.types.js'
-import type { SegmentInfo } from '../utils/getSegmentInfo.js'
+import { notion } from '../helper'
+import type { FilterType, SortItem } from '../Notion.types'
+import type { SegmentInfo } from '../utils/getSegmentInfo'
 
 const isDev = process.env.NODE_ENV === 'development'
 const DATABASE_ID = process.env.NOTION__DATABASE__PAGES ?? ''

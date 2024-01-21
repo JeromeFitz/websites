@@ -1,2 +1,2 @@
-export { TIME } from './constants.js'
-export { fetcher } from './fetcher.js'
+export { TIME } from './constants'
+export { fetcher } from './fetcher'

@@ -5,7 +5,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from './Header.Accordion.js'
+} from './Header.Accordion'
 
 const menus = [{ id: 'menu', url: '', title: 'Menu' }]
 

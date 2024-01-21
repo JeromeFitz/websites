@@ -1,7 +1,6 @@
 {
   "name": "@jeromefitz/shared",
   "version": "0.0.0",
-  "type": "module",
   "repository": "jeromefitz/websites.git",
   "author": {
     "name": "Jerome Fitzgerald",
@@ -33,7 +32,7 @@
       "types": "./dist/components/Analytics/Vercel.d.ts",
       "default": "./dist/components/Analytics/Vercel.js"
     },
-    "./components/Notion/Blocks/EmbedSpotify": {
+    "./components/Notion/Blocks/Embed.Spotify": {
       "types": "./dist/components/Notion/Blocks/Embed.Spotify.d.ts",
       "default": "./dist/components/Notion/Blocks/Embed.Spotify.js"
     },
@@ -41,11 +40,11 @@
       "types": "./dist/components/Notion/Blocks/Embed.d.ts",
       "default": "./dist/components/Notion/Blocks/Embed.js"
     },
-    "./components/Notion/Blocks/EmbedTwitter": {
+    "./components/Notion/Blocks/Embed.Twitter": {
       "types": "./dist/components/Notion/Blocks/Embed.Twitter.d.ts",
       "default": "./dist/components/Notion/Blocks/Embed.Twitter.js"
     },
-    "./components/Notion/Blocks/ImageClient": {
+    "./components/Notion/Blocks/Image.client": {
       "types": "./dist/components/Notion/Blocks/Image.client.d.ts",
       "default": "./dist/components/Notion/Blocks/Image.client.js"
     },
@@ -53,7 +52,7 @@
       "types": "./dist/components/Notion/Blocks/Image.d.ts",
       "default": "./dist/components/Notion/Blocks/Image.js"
     },
-    "./components/Notion/Blocks/ImageUtils": {
+    "./components/Notion/Blocks/Image.utils": {
       "types": "./dist/components/Notion/Blocks/Image.utils.d.ts",
       "default": "./dist/components/Notion/Blocks/Image.utils.js"
     },
@@ -61,7 +60,7 @@
       "types": "./dist/components/Notion/Blocks/Video.d.ts",
       "default": "./dist/components/Notion/Blocks/Video.js"
     },
-    "./components/Notion/Blocks/VideoYouTube": {
+    "./components/Notion/Blocks/Video.YouTube": {
       "types": "./dist/components/Notion/Blocks/Video.YouTube.d.ts",
       "default": "./dist/components/Notion/Blocks/Video.YouTube.js"
     },
@@ -122,7 +121,6 @@
     "valid-url": "^1.0.9"
   },
   "devDependencies": {
-    "@jeromefitz/ds": "workspace:*",
     "@jeromefitz/utils": "3.0.0-canary.2",
     "@notionhq/client": "2.2.14",
     "@types/lodash": "4.14.202",
@@ -139,7 +137,6 @@
     "ioredis": "5.3.2",
     "lodash": "4.17.21",
     "next": "14.1.0",
-    "next-notion": "workspace:*",
     "plaiceholder": "3.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",

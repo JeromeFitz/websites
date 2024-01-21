@@ -1,7 +1,7 @@
 import { composeStories } from '@storybook/react'
 import { render, screen } from '@testing-library/react'
 
-import * as stories from './Icon.stories.js'
+import * as stories from './Icon.stories'
 
 const IconStories = composeStories(stories)
 
