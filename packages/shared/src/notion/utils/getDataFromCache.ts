@@ -7,11 +7,11 @@ import { getBlockChildrenDataParent } from 'next-notion/queries'
 import { isAwsImage, isImageExpired } from 'next-notion/utils'
 import { cache } from 'react'
 
-import { getCache, setCache } from '../../redis/index.js'
+import { getCache, setCache } from '../../redis/index'
 
-import { getMetadata, getDatabaseQuery } from './index.js'
+import { getMetadata, getDatabaseQuery } from './index'
 // @todo(types) next-notion
-// import type { SegmentInfo } from './index.js'
+// import type { SegmentInfo } from './index'
 
 const notion = new Client({ auth: process.env.NOTION_API_KEY })
 

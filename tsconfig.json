@@ -16,9 +16,9 @@
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "lib": ["dom", "ESNext"],
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
+    "lib": ["dom", "ES2020"],
+    "module": "ES2020",
+    "moduleResolution": "Node",
     "noEmit": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": false, // @todo(lint)

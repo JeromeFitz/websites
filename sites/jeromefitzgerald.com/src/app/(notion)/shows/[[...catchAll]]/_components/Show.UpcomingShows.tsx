@@ -6,7 +6,7 @@ import { Suspense } from 'react'
 
 import type { PageObjectResponseEvent } from '~app/(notion)/_config'
 import { getEventData, getPropertyTypeDataShow } from '~app/(notion)/_config'
-import { RelationLoading } from '~components/Relations/index.js'
+import { RelationLoading } from '~components/Relations/index'
 
 async function UpcomingShowsIndividual({ id }) {
   const item: PageObjectResponseEvent = await getPageDataFromNotion(id)

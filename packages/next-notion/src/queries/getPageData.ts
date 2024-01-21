@@ -5,7 +5,7 @@ import 'server-only'
 
 // import type { PageObjectResponseShow } from '../../shows/[[...catchAll]]/Show.types'
 
-import { notion } from '../helper.js'
+import { notion } from '../helper'
 
 type PageData = any
 

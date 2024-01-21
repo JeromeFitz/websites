@@ -14,8 +14,8 @@ import type { PageObjectResponseShow } from '~app/(notion)/_config'
 import { CONFIG, getPageData, getShowData } from '~app/(notion)/_config'
 import { generateMetadataCustom } from '~app/(notion)/_config/temp/generateMetadataCustom'
 
-import { Listing } from './_components/Show.Listing.js'
-import { Slug } from './_components/Show.Slug.js'
+import { Listing } from './_components/Show.Listing'
+import { Slug } from './_components/Show.Slug'
 
 const isDev = process.env.NODE_ENV === 'development'
 

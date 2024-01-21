@@ -21,11 +21,14 @@ envRequired()
  */
 const isLocal = process.env.DESIGN_SYSTEM__LINK === 'true' ? true : false
 const externals = [
+  '@radix-ui/react-primitive',
   '@radix-ui/colors',
   '@types/react',
+  '@types/react-dom',
   'cmdk',
   'react',
   'react-dom',
+  'prettier',
   'swr',
 ]
 const isLocalDebugMessages = [
@@ -104,7 +107,7 @@ const config = ({
     },
     excludeDefaultMomentLocales: true,
     experimental: {
-      esmExternals: true,
+      // esmExternals: true,
       // @note(next) storybook needs this -- but nothing else.
       outputFileTracingExcludes: {
         '*': [

@@ -3,8 +3,8 @@
 // eslint-disable-next-line no-restricted-imports
 import NextLink from 'next/link'
 
-import { cx } from '../../utils/cx.js'
-import { ExternalLinkIcon } from '../Icon/Icon.js'
+import { cx } from '../../utils/cx'
+import { ExternalLinkIcon } from '../Icon/Icon'
 
 const nextSeo = { url: `https://${process.env.NEXT_PUBLIC__SITE}` }
 const domain = new URL(nextSeo.url)

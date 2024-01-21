@@ -4,10 +4,13 @@
  */
 import * as Separator from '@radix-ui/react-separator'
 
-import { cx } from '../../utils/cx.js'
+import { cx } from '../../utils/cx'
 
 function SeparatorImpl({ className = '' }) {
   return (
+    // @todo(types) radix
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     <Separator.Root
       asChild
       className={cx(

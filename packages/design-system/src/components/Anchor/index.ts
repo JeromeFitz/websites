@@ -1,1 +1,1 @@
-export { Anchor } from './Anchor.js'
+export { Anchor } from './Anchor'

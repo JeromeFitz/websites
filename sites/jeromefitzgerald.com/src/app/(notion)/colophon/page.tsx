@@ -17,9 +17,7 @@ import { draftMode } from 'next/headers'
 
 import { getPageData, CONFIG } from '~app/(notion)/_config'
 import { generateMetadataCustom } from '~app/(notion)/_config/temp/generateMetadataCustom'
-// import { Notion as Blocks } from '~components/Notion'
-
-import { PageClient } from './_client/page.client'
+import { Notion as Blocks } from '~components/Notion'
 
 const slug = '/colophon'
 const { SEGMENT } = CONFIG.PAGES
@@ -69,7 +67,7 @@ async function Slug({ revalidate, segmentInfo }) {
   const { seoDescription, title } = getPageData(data?.page?.properties) || ''
 
   if (isObjectEmpty(data.page)) return null
-  console.dir(data?.blocks)
+  // console.dir(data?.blocks)
   return (
     <>
       <SectionWrapper>
@@ -78,16 +76,21 @@ async function Slug({ revalidate, segmentInfo }) {
           <SectionHeaderContent className="">{seoDescription}</SectionHeaderContent>
         </SectionHeader>
         <SectionContent>
-          {/* <Blocks data={data?.blocks} /> */}
-          <PageClient data={data} />
+          <Blocks data={data?.blocks} />
         </SectionContent>
       </SectionWrapper>
     </>
   )
 }
 
-export default function Page({ revalidate = false, ...props }) {
-  const segmentInfo = getSegmentInfo({ SEGMENT, ...props })
+// export default function Page({ revalidate = false, ...props }) {
+//   const segmentInfo = getSegmentInfo({ SEGMENT, ...props })
+
+//   return <Slug revalidate={revalidate} segmentInfo={segmentInfo} />
+// }
+export default function Page(props) {
+  const revalidate = props?.revalidate || false
+  const segmentInfo = getSegmentInfo({ SEGMENT, ...props, revalidate })
 
   return <Slug revalidate={revalidate} segmentInfo={segmentInfo} />
 }

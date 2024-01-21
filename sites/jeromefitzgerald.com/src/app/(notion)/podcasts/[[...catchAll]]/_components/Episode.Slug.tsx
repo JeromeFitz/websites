@@ -11,7 +11,7 @@ import {
 } from '@jeromefitz/ds/components/Section'
 import { Separator } from '@jeromefitz/ds/components/Separator'
 import { cx } from '@jeromefitz/ds/utils/cx'
-import { EmbedSpotify } from '@jeromefitz/shared/components/Notion/Blocks/EmbedSpotify'
+import { EmbedSpotify } from '@jeromefitz/shared/components/Notion/Blocks/Embed.Spotify'
 import { getDataFromCache } from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
 // @todo(next) esm

@@ -76,10 +76,10 @@ import {
 } from '@radix-ui/react-icons'
 // } from '@radix-ui/react-icons/dist/react-icons.esm'
 
-import { cx } from '../../utils/cx.js'
+import { cx } from '../../utils/cx'
 // import { Slot } from '@radix-ui/react-slot'
 
-import { IconProps } from './Icon.types.js'
+import { IconProps } from './Icon.types'
 
 /**
  * @hack(icon)

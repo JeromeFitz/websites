@@ -10,7 +10,7 @@ import _filter from 'lodash/filter.js'
 import _orderBy from 'lodash/orderBy.js'
 import _pick from 'lodash/pick.js'
 import _size from 'lodash/size.js'
-import { format } from 'prettier'
+// import { format } from 'prettier'
 
 if (!isCI) {
   const dotenv = await import('dotenv')
@@ -84,7 +84,8 @@ async function setupBuildInfo({ buildInfoConfig, pathDirName }) {
       version,
     }
 
-    const content = format(stringify(data), { parser: 'json' })
+    // const content = format(stringify(data), { parser: 'json' })
+    const content = stringify(data)
     await writeFile(filePath, content)
   }
 

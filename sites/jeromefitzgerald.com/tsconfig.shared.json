@@ -3,6 +3,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+      "@jeromefitz/ds/*": ["../../packages/design-system/src/*"],
+      "@jeromefitz/shared/*": ["../../packages/shared/src/*"],
+      "next-notion/*": ["../../packages/next-notion/src/*"],
       "~app/*": ["src/app/*"],
       "~components/*": ["src/components/*"],
       "~config/*": ["src/config/*"],

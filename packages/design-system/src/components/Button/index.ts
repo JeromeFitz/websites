@@ -1,2 +1,2 @@
-export * from './Button.js'
-export * from './ButtonLink.js'
+export * from './Button'
+export * from './ButtonLink'

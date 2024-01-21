@@ -4,8 +4,8 @@ import type {
 } from '@notionhq/client/build/src/api-endpoints.js'
 // import { Suspense } from 'react'
 
-import { blocks as blocksDefault, OBJECTS, TYPES } from './Notion.Config.js'
-import { getBlock } from './Notion.utils.js'
+import { blocks as blocksDefault, OBJECTS, TYPES } from './Notion.Config'
+import { getBlock } from './Notion.utils'
 
 function NotionBlocks({
   data,
@@ -24,6 +24,10 @@ function NotionBlocks({
       type === TYPES.NUMBERED_LIST_ITEM ||
       type === TYPES.COLUMN)
   const isBlockItem = object === OBJECTS.BLOCK
+
+  // console.dir(data)
+  // console.dir(`OBJECTS.LIST: ${OBJECTS.LIST}`)
+  // console.dir(`isListBlock: ${isListBlock ? 'y' : 'n'}`)
 
   if (isListItem) {
     // console.dir(`⚠️ isListItem: ${type}`)

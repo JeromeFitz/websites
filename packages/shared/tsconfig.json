@@ -1,11 +1,11 @@
 {
-  "extends": "@jeromefitz/tsconfig/next.json",
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
     // // w/ extends
     // "baseUrl": ".",
     "incremental": true,
     // "noUnusedParameters": false, // @todo(lint)
-    "rootDir": "./src",
+    // "rootDir": "./src",
     "outDir": "./dist",
     // "strict": false,
     "allowJs": false,
@@ -17,9 +17,9 @@
     "isolatedModules": true,
     // "jsx": "preserve",
     "jsx": "react-jsx",
-    "lib": ["dom", "ESNext"],
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
+    "lib": ["dom", "ES2020"],
+    "module": "ES2020",
+    "moduleResolution": "node",
     "noEmit": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": false, // @todo(lint)
@@ -36,6 +36,10 @@
     "target": "ESNext",
     "tsBuildInfoFile": ".tsbuildinfo",
     "types": ["node", "react/canary"],
+    "paths": {
+      "@jeromefitz/ds/*": ["../../packages/design-system/src/*"],
+      "next-notion/*": ["../../packages/next-notion/src/*"],
+    },
   },
   "include": ["src", "index.d.ts", "next-env.d.ts"],
   "exclude": ["node_modules", "**/*.test.ts"],

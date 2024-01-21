@@ -1,7 +1,6 @@
 {
   "name": "@jeromefitz/websites",
   "version": "0.0.0",
-  "type": "module",
   "description": "Monorepo for series of websites for Jerome Fitzgerald (he/him).",
   "repository": "jeromefitz/websites.git",
   "author": {
@@ -58,9 +57,6 @@
   "pnpm": {
     "overrides": {
       "@babel/traverse": "7.23.2",
-      "@radix-ui/react-primitive": "1.0.3",
-      "@types/react": "18.2.48",
-      "@types/react-dom": "18.2.18",
       "browserify-sign": "4.2.2",
       "unfetch": "4.2.0",
       "semver@^5.0.0": "5.7.2",

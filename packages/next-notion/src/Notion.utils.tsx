@@ -1,7 +1,7 @@
 import { cx } from '@jeromefitz/ds/utils/cx'
 import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints.js'
 
-import { blocks as blocksDefault } from './Notion.Config.js'
+import { blocks as blocksDefault } from './Notion.Config'
 
 function getAnnotations(annotations) {
   if (!annotations) return ''

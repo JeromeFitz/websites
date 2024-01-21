@@ -24,7 +24,7 @@ import type {
   EmptyObject,
   RollupFunction,
   SelectPropertyResponse,
-} from '../Notion.types.js'
+} from '../Notion.types'
 
 type CheckboxData = {
   type: 'checkbox'

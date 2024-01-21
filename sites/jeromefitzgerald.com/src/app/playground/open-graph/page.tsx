@@ -12,7 +12,7 @@ import { cx } from '@jeromefitz/ds/utils/cx'
 // // @ts-ignore
 // import { notFound } from 'next/navigation'
 
-import { FourOhFour } from '~app/_errors/404.js'
+import { FourOhFour } from '~app/_errors/404'
 
 const isDev = process.env.NODE_ENV === 'development'
 

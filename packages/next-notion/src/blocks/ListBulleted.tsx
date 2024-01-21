@@ -4,8 +4,8 @@ import type {
 } from '@notionhq/client/build/src/api-endpoints.js'
 import { forwardRef } from 'react'
 
-import { NotionBlocks as Blocks } from '../Notion.Blocks.js'
-import { getBlockKey } from '../Notion.utils.js'
+import { NotionBlocks as Blocks } from '../Notion.Blocks'
+import { getBlockKey } from '../Notion.utils'
 
 const ListBulleted = forwardRef(function ListBulleted(props: any, ref: any) {
   const {
