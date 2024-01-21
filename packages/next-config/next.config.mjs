@@ -21,10 +21,10 @@ envRequired()
  */
 const isLocal = process.env.DESIGN_SYSTEM__LINK === 'true' ? true : false
 const externals = [
-  '@radix-ui/react-primitive',
+  // '@radix-ui/react-primitive',
   '@radix-ui/colors',
-  '@types/react',
-  '@types/react-dom',
+  // '@types/react',
+  // '@types/react-dom',
   'cmdk',
   'react',
   'react-dom',
