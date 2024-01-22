@@ -803,8 +803,8 @@ importers:
         specifier: 0.0.33
         version: 0.0.33
       '@types/ramda':
-        specifier: 0.29.9
-        version: 0.29.9
+        specifier: 0.29.10
+        version: 0.29.10
       '@types/react':
         specifier: 18.2.48
         version: 18.2.48
@@ -7739,10 +7739,10 @@ packages:
     resolution: {integrity: sha512-FGa1F62FT09qcrueBA6qYTrJPVDzah9a+493+o2PCXsesWHIn27G98TsSMs3WPNbZIEj4+VJf6saSFpvD+3Zsw==}
     dev: true
 
-  /@types/ramda@0.29.9:
-    resolution: {integrity: sha512-X3yEG6tQCWBcUAql+RPC/O1Hm9BSU+MXu2wJnCETuAgUlrEDwTA1kIOdEEE4YXDtf0zfQLHa9CCE7WYp9kqPIQ==}
+  /@types/ramda@0.29.10:
+    resolution: {integrity: sha512-0BzWVKtSEtignlk+XBuK88Il5wzQwbRVfEkzE8iKm02NYHMGQ/9ffB05M+zXhTCqo50DOIAT9pNSJsjFMMG4rQ==}
     dependencies:
-      types-ramda: 0.29.6
+      types-ramda: 0.29.7
     dev: true
 
   /@types/range-parser@1.2.4:
@@ -15574,7 +15574,7 @@ packages:
     dependencies:
       lilconfig: 2.1.0
       ts-node: 10.9.2(@types/node@20.11.5)(typescript@5.3.3)
-      yaml: 2.3.4
+      yaml: 2.3.1
     dev: false
 
   /postcss-loader@7.3.3:
@@ -18707,8 +18707,8 @@ packages:
     resolution: {integrity: sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==}
     dev: true
 
-  /types-ramda@0.29.6:
-    resolution: {integrity: sha512-VJoOk1uYNh9ZguGd3eZvqkdhD4hTGtnjRBUx5Zc0U9ftmnCgiWcSj/lsahzKunbiwRje1MxxNkEy1UdcXRCpYw==}
+  /types-ramda@0.29.7:
+    resolution: {integrity: sha512-8KBxZGJwUF3MpRkkJauSpvfHXk8Ssq15QXGuCBTDGeKd9PfheokkC3wAKRV3djej9O31Qa5M7Owsg8hF0GjtAw==}
     dependencies:
       ts-toolbelt: 9.6.0
     dev: true
@@ -19494,7 +19494,6 @@ packages:
   /yaml@2.3.1:
     resolution: {integrity: sha512-2eHWfjaoXgTBC2jNM1LRef62VQa0umtvRiDSk6HSzW7RvS5YtkabJrwYLLEKWBc8a5U2PTSCs+dJjUTJdlHsWQ==}
     engines: {node: '>= 14'}
-    dev: true
 
   /yaml@2.3.4:
     resolution: {integrity: sha512-8aAvwVUSHpfEqTQ4w/KMlf3HcRdt50E5ODIQJBw1fQ5RL34xabzxtUlzTXVqc4rkZsPbvrXKWnABCD7kWSmocA==}
