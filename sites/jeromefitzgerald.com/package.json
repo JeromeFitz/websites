@@ -140,6 +140,6 @@
     "@types/react-headroom": "3.2.3",
     "@types/title": "3.4.3",
     "@types/uuid": "9.0.7",
-    "tailwind-merge": "2.2.0"
+    "tailwind-merge": "2.2.1"
   }
 }

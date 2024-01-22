@@ -142,7 +142,7 @@
     "react-dom": "18.2.0",
     "react-tweet": "3.2.0",
     "server-only": "0.0.1",
-    "tailwind-merge": "2.2.0",
+    "tailwind-merge": "2.2.1",
     "valid-url": "1.0.9"
   },
   "publishConfig": {
