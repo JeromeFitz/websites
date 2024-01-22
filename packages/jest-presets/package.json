@@ -4,6 +4,6 @@
   "private": true,
   "main": "./jest/node/jest-preset.js",
   "devDependencies": {
-    "ts-jest": "29.1.1"
+    "ts-jest": "29.1.2"
   }
 }
