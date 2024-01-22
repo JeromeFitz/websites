@@ -134,7 +134,7 @@
     "@jeromefitz/tsconfig": "2.0.0",
     "@types/ms": "0.7.34",
     "@types/pluralize": "0.0.33",
-    "@types/ramda": "0.29.9",
+    "@types/ramda": "0.29.10",
     "@types/react": "18.2.48",
     "@types/react-dom": "18.2.18",
     "@types/react-headroom": "3.2.3",
