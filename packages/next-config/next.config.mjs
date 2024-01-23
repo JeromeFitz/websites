@@ -291,11 +291,11 @@ const config = ({
         })
       }
 
-      return config
-      // return {
-      //   ...config,
-      //   externals: [...config.externals, { sharp: 'commonjs sharp' }],
-      // }
+      // return config
+      return {
+        ...config,
+        externals: [...config.externals, { sharp: 'commonjs sharp' }],
+      }
     },
   }
 
