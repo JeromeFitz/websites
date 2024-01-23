@@ -1,4 +1,4 @@
-import { join, resolve } from 'path'
+import { join, resolve } from 'node:path'
 
 import withBundleAnalyzer from '@next/bundle-analyzer'
 import withPlaiceholder from '@plaiceholder/next'
@@ -291,11 +291,7 @@ const config = ({
         })
       }
 
-      // return config
-      return {
-        ...config,
-        externals: [...config.externals, { sharp: 'commonjs sharp' }],
-      }
+      return config
     },
   }
 

@@ -17,6 +17,7 @@ const buildInfoConfig = {
 }
 
 const serverComponentsExternalPackages = [
+  '@plaiceholder/next',
   '@jeromefitz/notion',
   // '@jeromefitz/utils',
   '@notionhq/client',
