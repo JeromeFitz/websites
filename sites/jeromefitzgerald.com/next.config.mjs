@@ -24,14 +24,15 @@ const serverComponentsExternalPackages = [
   // 'node-emoji',
   'plaiceholder',
   'prettier',
+  'sharp',
 ]
 /**
  * @note(tailwind) lol, if we do not transpile locally,
  *  can we avoid the hack in app/design-system/page ?
  *  also -- which one is the good one here, haha
  */
-// const tp = ['@jeromefitz/ds', '@jeromefitz/shared', 'next-notion']
-const tp = []
+const tp = ['@jeromefitz/ds', '@jeromefitz/shared', 'next-notion']
+// const tp = []
 // const transpilePackages = isCI ? [] : []
 const transpilePackages = tp
 // const transpilePackages = isCI ? [] : tp

@@ -271,8 +271,6 @@ const config = ({
     // @note(next) false will block: ./pages
     useFileSystemPublicRoutes: true,
 
-    // @ts-ignore
-
     webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
       // @note(pnpm)  path mapping if working locally
       if (isLocal) {
@@ -293,8 +291,11 @@ const config = ({
         })
       }
 
-      // return { ...config, module: { ...config.module, exprContextCritical: false } }
       return config
+      // return {
+      //   ...config,
+      //   externals: [...config.externals, { sharp: 'commonjs sharp' }],
+      // }
     },
   }
 
