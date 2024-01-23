@@ -1,4 +1,4 @@
-import { dirname, join } from 'path'
+import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'url'
 
 import nextConfig from '@jeromefitz/next-config/next.config.mjs'

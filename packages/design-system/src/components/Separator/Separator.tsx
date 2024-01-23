@@ -10,7 +10,7 @@ function SeparatorImpl({ className = '' }) {
   return (
     // @todo(types) radix
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-expect-error
+    // @ts-ignore
     <Separator.Root
       asChild
       className={cx(
