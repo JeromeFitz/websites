@@ -70,7 +70,6 @@
         "husky",
         "is-ci",
         "semantic-release",
-        "semantic-release-monorepo",
         "syncpack",
         "ts-node",
         "tsup",
