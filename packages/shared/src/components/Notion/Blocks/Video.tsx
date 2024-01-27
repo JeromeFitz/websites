@@ -1,11 +1,13 @@
-import 'server-only'
-
 import { Caption } from '@jeromefitz/ds/components/Caption'
+
 import type { VideoBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints.js'
+
 import { NotionEmoji as EmojiWrapper } from 'next-notion/blocks/Emoji'
 import { Fragment, Suspense } from 'react'
 
 import { VideoYouTube } from './Video.YouTube'
+
+import 'server-only'
 
 // @todo(types)
 // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents

@@ -1,11 +1,11 @@
-import 'server-only'
-
 import stringify from 'fast-json-stable-stringify'
 
-import { TIME } from '../lib/constants'
-
-import redis, { getKey } from './index'
 import type { RC } from './index'
+
+import { TIME } from '../lib/constants'
+import redis, { getKey } from './index'
+
+import 'server-only'
 
 // @todo(types) any
 // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents

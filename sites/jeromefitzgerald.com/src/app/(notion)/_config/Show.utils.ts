@@ -10,27 +10,13 @@ function getShowData(properties) {
   const data = {
     href: getPropertyTypeDataShow(properties, 'Slug.Preview'),
     id: getPropertyTypeDataShow(properties, 'ID'),
-    title: getPropertyTypeDataShow(properties, 'Title'),
     /**
      * Is Information
      */
     isActive: getPropertyTypeDataShow(properties, 'Is.Active'),
     isIndexed: getPropertyTypeDataShow(properties, 'Is.Indexed'),
     isPublished: getPropertyTypeDataShow(properties, 'Is.Published'),
-    /**
-     * SEO Information
-     */
-    seoDescription: getPropertyTypeDataShow(properties, 'SEO.Description'),
-    seoKeywords: getPropertyTypeDataShow(properties, 'SEO.Keywords'),
-    seoImageDescription: getPropertyTypeDataShow(
-      properties,
-      'SEO.Image.Description',
-    ),
-    seoImage: getPropertyTypeDataShow(properties, 'SEO.Image')[0],
-    /**
-     * Tag Information
-     */
-    tags: getPropertyTypeDataShow(properties, 'Tags'),
+    rollupCastSlugs: getPropertyTypeDataShow(properties, 'Rollup.People.Cast.Slug'),
     /**
      * Testing
      */
@@ -38,7 +24,21 @@ function getShowData(properties) {
       properties,
       'Rollup.People.Cast.Title',
     ),
-    rollupCastSlugs: getPropertyTypeDataShow(properties, 'Rollup.People.Cast.Slug'),
+    /**
+     * SEO Information
+     */
+    seoDescription: getPropertyTypeDataShow(properties, 'SEO.Description'),
+    seoImage: getPropertyTypeDataShow(properties, 'SEO.Image')[0],
+    seoImageDescription: getPropertyTypeDataShow(
+      properties,
+      'SEO.Image.Description',
+    ),
+    seoKeywords: getPropertyTypeDataShow(properties, 'SEO.Keywords'),
+    /**
+     * Tag Information
+     */
+    tags: getPropertyTypeDataShow(properties, 'Tags'),
+    title: getPropertyTypeDataShow(properties, 'Title'),
   }
   /**
    * testing
@@ -52,4 +52,4 @@ function getShowData(properties) {
   return data
 }
 
-export { getShowData, getPropertyTypeDataShow }
+export { getPropertyTypeDataShow, getShowData }

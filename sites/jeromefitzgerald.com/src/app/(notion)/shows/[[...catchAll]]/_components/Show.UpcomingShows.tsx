@@ -1,10 +1,12 @@
 import { Anchor } from '@jeromefitz/ds/components/Anchor'
 import { cx } from '@jeromefitz/ds/utils/cx'
 import { getPageDataFromNotion } from '@jeromefitz/shared/notion/utils'
+
 import _size from 'lodash/size.js'
 import { Suspense } from 'react'
 
 import type { PageObjectResponseEvent } from '~app/(notion)/_config'
+
 import { getEventData, getPropertyTypeDataShow } from '~app/(notion)/_config'
 import { RelationLoading } from '~components/Relations/index'
 
@@ -33,7 +35,7 @@ async function UpcomingShowsIndividual({ id }) {
   )
 
   return (
-    <Anchor href={href} className={style}>
+    <Anchor className={style} href={href}>
       <div className={cx('text-3xl font-black')}>{title}</div>
       <h5 className={cx('mb-1 mt-2 pb-1 pt-2 text-2xl font-bold leading-relaxed')}>
         {dayOfMonth} {monthName} {year}
@@ -76,7 +78,7 @@ function UpcomingShows({ properties }) {
               const { id } = item
 
               return (
-                <li key={id} className={cx('my-2 md:my-0.5')}>
+                <li className={cx('my-2 md:my-0.5')} key={id}>
                   <Suspense fallback={<RelationLoading />}>
                     <UpcomingShowsIndividual id={id} />
                   </Suspense>

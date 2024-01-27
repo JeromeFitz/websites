@@ -4,8 +4,8 @@ import _last from 'lodash/last.js'
 
 type SegmentInfo = {
   catchAll: string[]
-  isIndex: boolean
   hasMeta: boolean
+  isIndex: boolean
   segment: string
   segmentCount: number
   slug: string
@@ -32,8 +32,8 @@ function getSegmentInfo({ SEGMENT, ...props }) {
 
   const segmentInfo: SegmentInfo = {
     catchAll,
-    isIndex,
     hasMeta,
+    isIndex,
     segment,
     segmentCount,
     // segmentOptions,

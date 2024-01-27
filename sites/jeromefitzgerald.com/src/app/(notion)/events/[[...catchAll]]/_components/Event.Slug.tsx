@@ -17,12 +17,14 @@ import { Separator } from '@jeromefitz/ds/components/Separator'
 import { cx } from '@jeromefitz/ds/utils/cx'
 import { getDataFromCache } from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
+
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 
 // import { Image } from '~app/(notion)/(utils)/blocks/Image'
 import type { PropertiesEvent } from '~app/(notion)/_config'
-import { getEventData, CONFIG } from '~app/(notion)/_config'
+
+import { CONFIG, getEventData } from '~app/(notion)/_config'
 import { Notion as Blocks } from '~components/Notion'
 import { Relations } from '~components/Relations'
 
@@ -56,7 +58,6 @@ const RELATIONS: RELATIONS_TYPE[] = [
 const RELATIONS_SECONDARY = [
   {
     from: 'events',
-    to: 'people',
     relations: [
       'Relation.People.Cast',
       'Relation.People.Director',
@@ -67,19 +68,20 @@ const RELATIONS_SECONDARY = [
       'Relation.People.Thanks',
       'Relation.People.Writer',
     ],
+    to: 'people',
   },
 ]
 
-function Ticket({ properties, isFakePortal = false }) {
+function Ticket({ isFakePortal = false, properties }) {
   const {
     // dateIso,
     dayOfMonthOrdinal,
     dayOfWeek,
     isEventOver,
     monthName,
+    ticketUrl,
     time,
     timezone,
-    ticketUrl,
     venueTitle,
     // venues,
   } = getEventData(properties)

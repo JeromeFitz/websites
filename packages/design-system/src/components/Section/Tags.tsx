@@ -1,7 +1,7 @@
 /* eslint-disable tailwindcss/no-custom-classname */
 import { cx } from '../../utils/cx'
 
-function Tags({ tags, className = '', classNameTag = '' }) {
+function Tags({ className = '', classNameTag = '', tags }) {
   return (
     <ul
       className={cx(
@@ -14,7 +14,6 @@ function Tags({ tags, className = '', classNameTag = '' }) {
         const { color, id, name } = tag
         return (
           <li
-            key={id}
             className={cx(
               `notion-${color} notion-${color}_background`,
               // `text-radix-${color}11 bg-radix-${color}3 dark:bg-radix-${color}3`,
@@ -30,6 +29,7 @@ function Tags({ tags, className = '', classNameTag = '' }) {
               classNameTag,
               '',
             )}
+            key={id}
             style={{}}
           >
             {name}

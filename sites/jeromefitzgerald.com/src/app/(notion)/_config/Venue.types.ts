@@ -16,9 +16,9 @@ type PropertiesVenue = {
   'Address.PostalCode': NumberPropertyItemObjectResponse
   'Address.State': RichTextPropertyItemObjectResponse
   'Address.Street': RichTextPropertyItemObjectResponse
+  ID: FormulaPropertyItemObjectResponse
   'Relation.Events': RelationPropertyItemObjectResponse
   'Slug.Preview': RichTextPropertyItemObjectResponse
-  ID: FormulaPropertyItemObjectResponse
   Title: TitlePropertyItemObjectResponse
 }
 type PageObjectResponseVenue = Spread<

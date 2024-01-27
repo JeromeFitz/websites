@@ -1,11 +1,13 @@
-import 'server-only'
-
 import { asyncForEach } from '@jeromefitz/utils'
+
 import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints.js'
+
 import _noop from 'lodash/noop.js'
 
 import { getBlockChildrenData } from './getBlockChildrenData'
 import { getColumnData } from './getColumnData'
+
+import 'server-only'
 
 async function getBlockChildrenDataParent(block_id) {
   const response = await getBlockChildrenData(block_id)
@@ -34,17 +36,17 @@ async function getBlockChildrenDataParent(block_id) {
       const listItemType =
         block.type === 'bulleted_list_item' ? 'bulleted_list' : 'numbered_list'
       blocks.push({
-        object: 'block',
-        id: isListItemId,
-        parent: block.parent,
-        created_time: block.created_time,
-        last_edited_time: block.last_edited_time,
-        created_by: block.created_by,
-        last_edited_by: block.last_edited_time,
-        has_children: true,
         archived: false,
-        type: listItemType,
+        created_by: block.created_by,
+        created_time: block.created_time,
+        has_children: true,
+        id: isListItemId,
+        last_edited_by: block.last_edited_time,
+        last_edited_time: block.last_edited_time,
         [listItemType]: { [listItemType]: [] },
+        object: 'block',
+        parent: block.parent,
+        type: listItemType,
       })
     }
     if (isListItemStart && block.type === isListItemType) {

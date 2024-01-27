@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import redis from '@jeromefitz/shared/redis'
 import Client from '@jeromefitz/spotify'
-import type { CredentialProps, ClientProps } from '@jeromefitz/spotify'
+
+import type { ClientProps, CredentialProps } from '@jeromefitz/spotify'
+
 import stringify from 'fast-json-stable-stringify'
 import { slug as _slug } from 'github-slugger'
 import ms from 'ms'
@@ -15,21 +17,21 @@ const keyPrefixSpotify = `${process.env.NEXT_PUBLIC__SITE}/spotify`
 const getTimeInSeconds = (time: number) => time / 1000 ?? 0
 
 const evictionPolicyTiming = {
+  long_term: getTimeInSeconds(ms('30d')),
+  medium_term: getTimeInSeconds(ms('7d')),
   now_playing: getTimeInSeconds(ms('2m')),
   short_term: getTimeInSeconds(ms('1d')),
-  medium_term: getTimeInSeconds(ms('7d')),
-  long_term: getTimeInSeconds(ms('30d')),
 }
 
 const SLUG__VALIDATION = ['now-playing', 'top-artists', 'top-tracks']
-const dataEmpty = { is_playing: false, debug: { type: 'api', latency: 0 } }
+const dataEmpty = { debug: { latency: 0, type: 'api' }, is_playing: false }
 
 const getKey = ({ limit, offset, slug, time_range }) => {
   if (slug === 'now-playing') {
     const key = `${keyPrefixSpotify}/${slug}`
     return {
-      key,
       evictionPolicy: evictionPolicyTiming['now_playing'],
+      key,
     }
   }
 
@@ -38,8 +40,8 @@ const getKey = ({ limit, offset, slug, time_range }) => {
   const key = `${keyPrefixSpotify}/${slug}/${params}`.toLowerCase()
 
   return {
-    key,
     evictionPolicy: evictionPolicyTiming[time_range],
+    key,
   }
 }
 
@@ -89,7 +91,7 @@ export async function GET(
   /**
    * @cache
    */
-  const { key, evictionPolicy } = getKey({ limit, offset, slug, time_range })
+  const { evictionPolicy, key } = getKey({ limit, offset, slug, time_range })
 
   let start = Date.now()
   //

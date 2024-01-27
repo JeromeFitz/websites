@@ -19,32 +19,32 @@ const RouterEventProvider = dynamic(
 )
 
 const pluralRules = [
-  { rule: /cast$/i, replacement: 'cast' },
-  { rule: /crew$/i, replacement: 'crew' },
-  { rule: /emeritus$/i, replacement: 'emeritus' },
-  { rule: /intern$/i, replacement: 'house Staff' },
-  { rule: /interns$/i, replacement: 'house Staff' },
-  { rule: /lineup$/i, replacement: 'lineup' },
-  { rule: /music$/i, replacement: 'musical guests' },
-  { rule: /past$/i, replacement: 'emeritus' },
-  { rule: /primary$/i, replacement: 'Show' },
-  { rule: /supporting$/i, replacement: 'Featuring' },
-  { rule: /thanks$/i, replacement: 'thanks' },
+  { replacement: 'cast', rule: /cast$/i },
+  { replacement: 'crew', rule: /crew$/i },
+  { replacement: 'emeritus', rule: /emeritus$/i },
+  { replacement: 'house Staff', rule: /intern$/i },
+  { replacement: 'house Staff', rule: /interns$/i },
+  { replacement: 'lineup', rule: /lineup$/i },
+  { replacement: 'musical guests', rule: /music$/i },
+  { replacement: 'emeritus', rule: /past$/i },
+  { replacement: 'Show', rule: /primary$/i },
+  { replacement: 'Featuring', rule: /supporting$/i },
+  { replacement: 'thanks', rule: /thanks$/i },
   // { rule: /tags$/i, replacement: 'tags' },
 ]
-pluralRules.map(({ rule, replacement }) => {
+pluralRules.map(({ replacement, rule }) => {
   pluralize.addPluralRule(rule, replacement)
 })
 const singularRules = [
-  { rule: /intern$/i, replacement: 'house Staff' },
-  { rule: /interns$/i, replacement: 'house Staff' },
-  { rule: /music$/i, replacement: 'musical guest' },
-  { rule: /musical$/i, replacement: 'musical director' },
-  { rule: /primary$/i, replacement: 'show' },
-  { rule: /supporting$/i, replacement: 'Featuring' },
-  { rule: /technical$/i, replacement: 'technical director' },
+  { replacement: 'house Staff', rule: /intern$/i },
+  { replacement: 'house Staff', rule: /interns$/i },
+  { replacement: 'musical guest', rule: /music$/i },
+  { replacement: 'musical director', rule: /musical$/i },
+  { replacement: 'show', rule: /primary$/i },
+  { replacement: 'Featuring', rule: /supporting$/i },
+  { replacement: 'technical director', rule: /technical$/i },
 ]
-singularRules.map(({ rule, replacement }) => {
+singularRules.map(({ replacement, rule }) => {
   pluralize.addSingularRule(rule, replacement)
 })
 
@@ -56,7 +56,7 @@ function Providers({ children }) {
         defaultTheme="system"
         disableTransitionOnChange={false}
         enableSystem
-        value={{ light: 'light', dark: 'dark' }}
+        value={{ dark: 'dark', light: 'light' }}
       >
         <RouterEventProvider />
         <ReactWrapBalancerProvider>{children}</ReactWrapBalancerProvider>

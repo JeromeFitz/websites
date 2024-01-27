@@ -1,9 +1,10 @@
-import 'server-only'
-
 import { asyncForEach } from '@jeromefitz/utils'
+
 import _noop from 'lodash/noop.js'
 
 import { getBlockChildrenData } from './getBlockChildrenData'
+
+import 'server-only'
 
 async function getColumnData(columnListData) {
   const columnResults: any = []
