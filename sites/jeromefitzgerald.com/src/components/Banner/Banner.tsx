@@ -11,9 +11,9 @@ import Headroom from 'react-headroom'
  * Until next version is updated, do some fun hacks
  */
 const info = {
-  subtitle: 'FRI 01/26 08:00PM',
-  title: 'Friday Night Raw',
-  url: '/events/2024/01/26/friday-night-raw-with-ricky-romance?utm_source=website&utm_medium=banner&utm_id=20240126',
+  subtitle: 'SAT 02/03 07:00PM',
+  title: 'Fridge Art Sketch Show',
+  url: '/events/2024/02/03/fridge-art-sketch-show?utm_source=website&utm_medium=banner&utm_id=20240203',
 }
 
 function Loading({}) {
