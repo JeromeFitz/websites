@@ -14,10 +14,12 @@ import { cx } from '@jeromefitz/ds/utils/cx'
 import { EmbedSpotify } from '@jeromefitz/shared/components/Notion/Blocks/Embed.Spotify'
 import { getDataFromCache } from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
+
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 
 import type { PropertiesEpisode } from '~app/(notion)/_config'
+
 import { CONFIG, getEpisodeData } from '~app/(notion)/_config'
 import { Image } from '~app/(notion)/events/[[...catchAll]]/_components/Image'
 import { Notion as Blocks } from '~components/Notion'
@@ -35,12 +37,12 @@ const RELATIONS: RELATIONS_TYPE[] = [
 const RELATIONS_SECONDARY = [
   {
     from: 'episodes',
-    to: 'podcasts',
     relations: [
       'Relation.People.Host',
       'Relation.People.Producer',
       'Relation.People.Thanks',
     ],
+    to: 'podcasts',
   },
 ]
 
@@ -58,13 +60,13 @@ function Rollups({ properties }) {
   )
 
   const {
-    duration,
     dayOfMonthOrdinal,
-    monthName,
-    year,
     dayOfWeek,
+    duration,
     episode,
+    monthName,
     season,
+    year,
     // ...props
   } = getEpisodeData(properties)
   // console.dir(props)
@@ -75,15 +77,15 @@ function Rollups({ properties }) {
     //   count: 2,
     //   items: hosts,
     // },
-    { id: 'Season', data: season },
-    { id: 'Episode', data: episode },
+    { data: season, id: 'Season' },
+    { data: episode, id: 'Episode' },
     {
-      id: 'Date',
       data: `${dayOfWeek}, ${monthName} ${dayOfMonthOrdinal}, ${year}`,
+      id: 'Date',
     },
     {
-      id: 'Duration',
       data: duration,
+      id: 'Duration',
     },
   ]
 
@@ -130,11 +132,11 @@ function Links({ properties }) {
           </p>
           <p className={style}>
             <Anchor
-              href={spotifyUrl}
               className={cx(
                 style,
                 'text-spotify-dark hover:text-spotify dark:text-spotify dark:hover:text-spotify-dark',
               )}
+              href={spotifyUrl}
             >
               Spotify
             </Anchor>
@@ -151,7 +153,7 @@ function Links({ properties }) {
             <strong>Back to</strong>
           </p>
           <p className={style}>
-            <Anchor href={podcastUrl} className={cx(style)}>
+            <Anchor className={cx(style)} href={podcastUrl}>
               {podcastTitle}
             </Anchor>
           </p>

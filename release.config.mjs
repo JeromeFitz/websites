@@ -1,4 +1,5 @@
 import { getConfig } from '@jeromefitz/semantic'
+
 import isCI from 'is-ci'
 import _map from 'lodash/map.js'
 

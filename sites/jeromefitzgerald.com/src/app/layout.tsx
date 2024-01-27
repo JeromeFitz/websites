@@ -1,8 +1,8 @@
 'use client'
-import '@jeromefitz/tailwind-config/styles/globals.css'
-
 import { cx } from '@jeromefitz/ds/utils/cx'
 import { Analytics } from '@jeromefitz/shared/components/Analytics/Analytics'
+import '@jeromefitz/tailwind-config/styles/globals.css'
+
 import { Viewport } from 'next'
 import dynamic from 'next/dynamic'
 import localFont from 'next/font/local'
@@ -56,7 +56,6 @@ const NowReading = dynamic(
 )
 
 const fontSans = localFont({
-  display: 'swap',
   declarations: [
     {
       prop: 'unicode-range',
@@ -64,6 +63,7 @@ const fontSans = localFont({
         'U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD',
     },
   ],
+  display: 'swap',
   // src: '../../public/fonts/inter/inter-var.woff2',
   src: '../../public/fonts/inter/inter-4.0.0-beta9g-var.woff2',
   style: 'normal',

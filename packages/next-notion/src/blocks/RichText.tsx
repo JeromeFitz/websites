@@ -1,5 +1,6 @@
 import { Anchor } from '@jeromefitz/ds/components/Anchor'
 import { cx } from '@jeromefitz/ds/utils/cx'
+
 import type {
   BulletedListItemBlockObjectResponse,
   Heading1BlockObjectResponse,
@@ -10,11 +11,12 @@ import type {
   QuoteBlockObjectResponse,
   RichTextItemResponse,
 } from '@notionhq/client/build/src/api-endpoints.js'
-import { forwardRef, Fragment } from 'react'
+
+import { Fragment, forwardRef } from 'react'
 
 import type { ApiColor } from '../Notion.types'
-import { getAnnotations, getBlockKey } from '../Notion.utils'
 
+import { getAnnotations, getBlockKey } from '../Notion.utils'
 import { NotionEmoji as EmojiWrapper } from './Emoji'
 
 // @todo(types)
@@ -57,7 +59,7 @@ function RichTextArray({ id, items }) {
         const isInternalToNotion = !!href && !href?.includes('http')
         if (!!href && !isInternalToNotion) {
           return (
-            <Href key={key} href={href} {...props}>
+            <Href href={href} key={key} {...props}>
               {plain_text}
             </Href>
           )
@@ -94,8 +96,8 @@ function RichText({
 }) {
   const key = getBlockKey(block.id, block.type, order)
   const data: {
-    rich_text: Array<RichTextItemResponse>
     color: ApiColor
+    rich_text: Array<RichTextItemResponse>
   } = block[block.type]
 
   if (!data) return null

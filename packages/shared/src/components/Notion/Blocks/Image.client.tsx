@@ -21,8 +21,8 @@ function Image({ ...props }) {
   if (!image.blurDataURL) image.blurDataURL = base64
 
   const imageProps = {
-    priority: isPriority,
     fetchPriority: isPriority ? 'high' : 'auto',
+    priority: isPriority,
     // loading: isPriority ? 'eager' : 'lazy',
     quality: 90,
     // unoptimized = process.env.NODE_ENV !== 'production',

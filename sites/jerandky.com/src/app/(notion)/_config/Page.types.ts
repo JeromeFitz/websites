@@ -7,19 +7,19 @@ import type {
   SelectPropertyItemObjectResponse,
   TitlePropertyItemObjectResponse,
 } from '@notionhq/client/build/src/api-endpoints'
-import type { Spread } from 'next-notion/src/Notion.types'
+import type { Spread } from 'next-notion/Notion.types'
 
 type PropertiesPage = {
+  ID: FormulaPropertyItemObjectResponse
   'Is.Active': CheckboxPropertyItemObjectResponse
   'Is.Indexed': CheckboxPropertyItemObjectResponse
   'Is.Published': CheckboxPropertyItemObjectResponse
-  'Select.Test': SelectPropertyItemObjectResponse
   'SEO.Description': RichTextPropertyItemObjectResponse
-  'SEO.Image.Description': RichTextPropertyItemObjectResponse
   'SEO.Image': FilesPropertyItemObjectResponse
+  'SEO.Image.Description': RichTextPropertyItemObjectResponse
   'SEO.Keywords': RichTextPropertyItemObjectResponse
+  'Select.Test': SelectPropertyItemObjectResponse
   'Slug.Preview': RichTextPropertyItemObjectResponse
-  ID: FormulaPropertyItemObjectResponse
   Title: TitlePropertyItemObjectResponse
 }
 type PageObjectResponsePage = Spread<

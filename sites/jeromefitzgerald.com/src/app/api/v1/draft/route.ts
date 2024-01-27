@@ -1,4 +1,5 @@
 import { getDataFromCache, getSegmentInfo } from '@jeromefitz/shared/notion/utils'
+
 import { draftMode } from 'next/headers'
 import { redirect } from 'next/navigation'
 

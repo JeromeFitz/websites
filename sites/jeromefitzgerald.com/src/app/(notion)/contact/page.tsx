@@ -9,10 +9,12 @@ import {
 } from '@jeromefitz/ds/components/Section'
 import { getDataFromCache, getSegmentInfo } from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
+
 import type { Metadata } from 'next'
+
 import { draftMode } from 'next/headers'
 
-import { getPageData, CONFIG } from '~app/(notion)/_config'
+import { CONFIG, getPageData } from '~app/(notion)/_config'
 import { generateMetadataCustom } from '~app/(notion)/_config/temp/generateMetadataCustom'
 
 const slug = '/contact'

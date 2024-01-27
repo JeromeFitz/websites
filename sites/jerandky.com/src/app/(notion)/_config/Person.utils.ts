@@ -1,4 +1,4 @@
-import { getPropertyTypeData } from 'next-notion/src/utils'
+import { getPropertyTypeData } from 'next-notion/utils'
 
 import type { PropertiesPerson } from '../_config'
 
@@ -10,17 +10,11 @@ function getPersonData(properties) {
   const data = {
     href: getPropertyTypeDataPerson(properties, 'Slug.Preview'),
     id: getPropertyTypeDataPerson(properties, 'ID'),
-    title: getPropertyTypeDataPerson(properties, 'Title'),
-    /**
-     * Is Information
-     */
     isActive: getPropertyTypeDataPerson(properties, 'Is.Active'),
     isIndexed: getPropertyTypeDataPerson(properties, 'Is.Indexed'),
     isPublished: getPropertyTypeDataPerson(properties, 'Is.Published'),
-    /**
-     * Tag Information
-     */
     tags: [],
+    title: getPropertyTypeDataPerson(properties, 'Title'),
   }
   return data
 }

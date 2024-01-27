@@ -126,8 +126,8 @@ const config = ({
     async headers() {
       return [
         {
-          source: '/(.*)',
           headers: securityHeaders,
+          source: '/(.*)',
         },
       ]
     },
@@ -153,68 +153,68 @@ const config = ({
       // minimumCacheTTL: 86400, // 1 day
       remotePatterns: [
         {
-          protocol,
           hostname: `**.${process.env.NEXT_PUBLIC__SITE}`,
+          protocol,
         },
         // @note(remotePattern) Podcast Imagery
         {
-          protocol,
           hostname: `**.jerandky.com`,
+          protocol,
         },
         // @note(remotePattern) Future proofing "other" websites
         {
-          protocol,
           hostname: `**.jeromefitzgerald.com`,
+          protocol,
         },
         // @note(remotePattern) AWS
         {
-          protocol,
           hostname: `**.amazonws.com`,
+          protocol,
         },
         {
-          protocol,
           hostname: `**.**.amazonws.com`,
+          protocol,
         },
         {
-          protocol,
           hostname: 's3.us-west-2.amazonaws.com',
+          protocol,
         },
         {
-          protocol,
           hostname: '*.s3.us-west-2.amazonaws.com',
+          protocol,
         },
         {
-          protocol,
           hostname: 'sc-events.s3.amazonaws.com',
+          protocol,
         },
         {
-          protocol,
           hostname: '*.sc-events.s3.amazonaws.com',
+          protocol,
         },
         // @note(remotePattern) Notion
         {
-          protocol,
           hostname: `**.notion.so`,
+          protocol,
         },
         // @note(remotePattern) Spotify
         {
-          protocol,
           hostname: `i.scdn.co`,
+          protocol,
         },
         // @note(remotePattern) Twitter
         {
-          protocol,
           hostname: `pbs.twimg.com`,
+          protocol,
         },
         // @note(remotePattern) Unsplash
         {
-          protocol,
           hostname: `images.unsplash.com`,
+          protocol,
         },
         // @note(remotePattern) Giphy
         {
-          protocol,
           hostname: `**.giphy.com`,
+          protocol,
         },
       ],
     },
@@ -273,7 +273,7 @@ const config = ({
 
     // @ts-ignore
 
-    webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+    webpack: (config, { buildId, defaultLoaders, dev, isServer, webpack }) => {
       // @note(pnpm)  path mapping if working locally
       if (isLocal) {
         isLocalDebugMessages.map((msg) =>

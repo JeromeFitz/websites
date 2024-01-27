@@ -1,4 +1,4 @@
-import { getPropertyTypeData } from 'next-notion/src/utils'
+import { getPropertyTypeData } from 'next-notion/utils'
 
 import type { PropertiesVenue } from '../_config'
 

@@ -8,8 +8,10 @@ import {
   // Tags,
 } from '@jeromefitz/ds/components/Section'
 import { Separator } from '@jeromefitz/ds/components/Separator'
-import { Component } from 'react'
+
 import type { ReactNode } from 'react'
+
+import { Component } from 'react'
 
 type PropsChildren = {
   children?: ReactNode
@@ -58,8 +60,8 @@ class ErrorBoundary extends Component<PropsChildren> {
                 <p className="text-lg">
                   Please try and go back to the{` `}
                   <a
-                    href="/"
                     className="decoration-radix-slate4 hover:decoration-radix-slate5 text-radix-pink11 hover:text-radix-pink12 inline-flex flex-row items-center gap-1 underline underline-offset-4 transition-all duration-200 ease-in"
+                    href="/"
                   >
                     homepage
                   </a>

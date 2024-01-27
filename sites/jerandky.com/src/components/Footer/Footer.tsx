@@ -14,6 +14,7 @@ import {
   SectionWrapper,
 } from '@jeromefitz/ds/components/Section'
 import { cx } from '@jeromefitz/ds/utils/cx'
+
 import { Fragment, Suspense } from 'react'
 
 /**
@@ -28,52 +29,52 @@ import { ThemeToggle } from './Footer.client'
 // const { isBranchMain, prerelease, version } = buildInfo
 
 const URL_TYPE = {
+  AUDIO: 'audio',
   EXTERNAL: 'url.external',
   INTERNAL: 'url.internal',
-  AUDIO: 'audio',
-  THEME: 'theme',
   SETTINGS: 'settings',
   SOCIAL: 'social',
+  THEME: 'theme',
 }
 
 const pages = [
   {
     active: true,
-    id: 'homepage',
     className: 'hover:text-radix-pink11',
+    icon: <HomeIcon className="text-inherit" />,
+    id: 'homepage',
+    keywords: 'social homepage',
+    subtitle: '/',
     // className: '',
     title: '/',
-    url: '/',
-    icon: <HomeIcon className="text-inherit" />,
-    subtitle: '/',
-    keywords: 'social homepage',
     type: URL_TYPE.INTERNAL,
+    url: '/',
   },
   {
     active: true,
-    id: 'podcasts',
     className: 'hover:text-radix-pink11',
+    icon: <MicrophoneIcon className="text-inherit" />,
+    id: 'podcasts',
+    keywords: 'social podcasts',
+    subtitle: 'Podcasts',
     // className: '',
     title: 'Podcasts',
-    url: '/podcasts',
-    icon: <MicrophoneIcon className="text-inherit" />,
-    subtitle: 'Podcasts',
-    keywords: 'social podcasts',
     type: URL_TYPE.INTERNAL,
+    url: '/podcasts',
   },
 ]
 const socials = [
   {
     active: true,
-    id: 'instagram',
     className: 'hover:text-instagram',
-    title: 'Instagram',
-    url: 'https://instagram.com/jerandkyandguest',
     icon: <InstagramLogoIcon className="text-inherit" />,
+    id: 'instagram',
+    keywords: 'social instagram ig',
     rightSlot: <ExternalLinkIcon />,
     subtitle: '@jerandkyandguest',
-    keywords: 'social instagram ig',
+    title: 'Instagram',
     type: URL_TYPE.EXTERNAL,
+    url: 'https://instagram.com/jerandkyandguest',
   },
 ]
 

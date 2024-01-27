@@ -21,18 +21,20 @@ import {
   getDatabaseQueryByDateRange,
 } from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
+
 import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints.js'
+
 import _filter from 'lodash/filter.js'
 import _orderBy from 'lodash/orderBy.js'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 import { getPropertyTypeData } from 'next-notion/utils'
 
-import { getEventData, getPageData, CONFIG } from '~app/(notion)/_config'
+import { CONFIG, getEventData, getPageData } from '~app/(notion)/_config'
 
 import {
-  AccordionDemo,
   AccordionContent,
+  AccordionDemo,
   AccordionItem,
   AccordionTrigger,
 } from './Event.Listing.Accordion'
@@ -42,7 +44,7 @@ const { DATABASE_ID } = CONFIG.EVENTS
 
 const description = `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Recusandae, omnis? Quod, enim fugit doloribus qui culpa odit. Eveniet, cupiditate qui alias nihil similique tempora fugit?`
 
-function ListingTemp({ items, defaultValue = null }) {
+function ListingTemp({ defaultValue = null, items }) {
   return (
     // wrapper
     <div>
@@ -67,20 +69,20 @@ function ListingTemp({ items, defaultValue = null }) {
             //   ticketUrl,
             // } = getEventData(properties)
             const {
-              dayOfWeek,
-              dayOfWeekAbbr,
               dayOfMonth,
               dayOfMonthOrdinal,
+              dayOfWeek,
+              dayOfWeekAbbr,
+              href,
+              id,
               isEventOver,
               month,
               monthName,
-              href,
-              id,
               seoDescription,
               tags,
-              title,
-              time,
               ticketUrl,
+              time,
+              title,
             } = item
             // const dateMobile = `${dayOfWeekAbbr.toUpperCase()}, ${month}/${dayOfMonth}<br/>${time}`
 
@@ -118,7 +120,7 @@ function ListingTemp({ items, defaultValue = null }) {
                     </div>
                     <div className="flex w-full flex-row flex-wrap justify-center md:flex-nowrap">
                       <div className="w-full justify-start px-4 text-left md:-mt-4">
-                        <Tags tags={tags} classNameTag="px-3 py-2 mb-4 mr-4" />
+                        <Tags classNameTag="px-3 py-2 mb-4 mr-4" tags={tags} />
                       </div>
                       <div
                         className={cx(
@@ -132,11 +134,11 @@ function ListingTemp({ items, defaultValue = null }) {
                         {/* @ts-ignore */}
                         <ButtonLink
                           aria-label={`Read more detailed information for ${title}`}
-                          href={href}
                           className={cx(
                             'justify-center',
                             isEventOver ? 'pink-button-outline' : 'pink-button-cta',
                           )}
+                          href={href}
                         >
                           Detailed Info
                         </ButtonLink>
@@ -145,11 +147,11 @@ function ListingTemp({ items, defaultValue = null }) {
                           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                           // @ts-ignore
                           <ButtonLink
-                            href={ticketUrl}
                             className={cx(
                               'pink-button-outline',
                               'flex-row items-center justify-center gap-1',
                             )}
+                            href={ticketUrl}
                           >
                             <>Buy Tickets</>
                             <ExternalLinkIcon />
@@ -190,7 +192,7 @@ function Events({ data }) {
   )
 
   const defaultValue = events[0]?.id || null
-  return <ListingTemp items={events} defaultValue={defaultValue} />
+  return <ListingTemp defaultValue={defaultValue} items={events} />
 }
 
 function EventsPast({ data }) {

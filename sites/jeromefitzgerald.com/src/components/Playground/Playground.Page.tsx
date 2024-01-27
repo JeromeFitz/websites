@@ -145,7 +145,7 @@ function TailwindHackForDynamicallyLoadedStylesBorders() {
                   '',
                 )
                 return (
-                  <li key={`radix-borders-${id}-${borderType}`} className={styles}>
+                  <li className={styles} key={`radix-borders-${id}-${borderType}`}>
                     {styles}
                   </li>
                 )
@@ -170,8 +170,8 @@ function TailwindHackForDynamicallyLoadedStylesButtons() {
           return buttonTypes.map((buttonType) => {
             return (
               <li
-                key={`radix-buttons-${radixColor}-${buttonType}`}
                 className={'mb-4'}
+                key={`radix-buttons-${radixColor}-${buttonType}`}
               >
                 <Button className={`${radixColor}-button${buttonType}`}>
                   {radixColor}-button
@@ -198,8 +198,8 @@ function TailwindHackForDynamicallyLoadedStylesColors() {
           }
           return (
             <li
-              key={`notion-colors-${notionColor}`}
               className={`notion-${notionColor} py-2 pl-1`}
+              key={`notion-colors-${notionColor}`}
             >
               {notionColor}
             </li>
@@ -228,7 +228,7 @@ function TailwindHackForDynamicallyLoadedStylesColors() {
                 '',
               )
               return (
-                <li key={`radix-colors-${id}`} className={color}>
+                <li className={color} key={`radix-colors-${id}`}>
                   {color}
                 </li>
               )
@@ -264,7 +264,7 @@ function TailwindHackForDynamicallyLoadedStylesColors() {
                 '',
               )
               return (
-                <li key={`radix-bg-colors-${id}`} className={color}>
+                <li className={color} key={`radix-bg-colors-${id}`}>
                   {color}
                 </li>
               )
@@ -338,18 +338,18 @@ function TailwindHackForDynamicallyLoadedStylesColSpans() {
 }
 
 const SECTIONS = [
-  { ID: 'radix-borders', COMPONENT: TailwindHackForDynamicallyLoadedStylesBorders },
-  { ID: 'radix-buttons', COMPONENT: TailwindHackForDynamicallyLoadedStylesButtons },
-  { ID: 'radix-colors', COMPONENT: TailwindHackForDynamicallyLoadedStylesColors },
-  { ID: 'radix-columns', COMPONENT: TailwindHackForDynamicallyLoadedStylesColSpans },
-  { ID: 'tailwind-width', COMPONENT: TailwindWidth },
+  { COMPONENT: TailwindHackForDynamicallyLoadedStylesBorders, ID: 'radix-borders' },
+  { COMPONENT: TailwindHackForDynamicallyLoadedStylesButtons, ID: 'radix-buttons' },
+  { COMPONENT: TailwindHackForDynamicallyLoadedStylesColors, ID: 'radix-colors' },
+  { COMPONENT: TailwindHackForDynamicallyLoadedStylesColSpans, ID: 'radix-columns' },
+  { COMPONENT: TailwindWidth, ID: 'tailwind-width' },
 ]
 
 function PlaygroundPage() {
   return (
     <>
       {SECTIONS.map((SECTION) => {
-        const { ID, COMPONENT } = SECTION
+        const { COMPONENT, ID } = SECTION
         return (
           <SectionWrapper>
             <SectionHeader>

@@ -1,8 +1,10 @@
-import 'server-only'
 /**
  * @todo(notion) getFormulaData
  */
+import 'server-only'
+
 import { isObjectEmpty } from '@jeromefitz/utils'
+
 import type {
   CheckboxPropertyItemObjectResponse,
   FilesPropertyItemObjectResponse,
@@ -17,6 +19,7 @@ import type {
   // TitlePropertyItemObjectResponse,
   UrlPropertyItemObjectResponse,
 } from '@notionhq/client/build/src/api-endpoints.js'
+
 import _orderBy from 'lodash/orderBy.js'
 
 import type {
@@ -27,9 +30,9 @@ import type {
 } from '../Notion.types'
 
 type CheckboxData = {
-  type: 'checkbox'
   checkbox: boolean
   id: string
+  type: 'checkbox'
 }
 function getCheckboxData({ data, type }: { data: CheckboxData; type: string }) {
   // properties['Is.Published']
@@ -39,9 +42,9 @@ function getCheckboxData({ data, type }: { data: CheckboxData; type: string }) {
 }
 
 type FilesData = {
-  type: 'url'
-  url: string | null
   id: string
+  type: 'url'
+  url: null | string
 }
 function getFilesData({ data, type }: { data: FilesData; type: string }) {
   // properties['SEO.Image']
@@ -71,9 +74,9 @@ function getFormulaData({ data, type }: { data: any; type: string }) {
 }
 
 type MultiSelectData = {
-  type: 'multi_select'
-  multi_select: Array<SelectPropertyResponse>
   id: string
+  multi_select: Array<SelectPropertyResponse>
+  type: 'multi_select'
 }
 function getMultiSelectData({
   data,
@@ -89,9 +92,9 @@ function getMultiSelectData({
 }
 
 type NumberData = {
-  type: 'number'
-  number: number | null
   id: string
+  number: null | number
+  type: 'number'
 }
 function getNumberData({ data, type }: { data: NumberData; type: string }) {
   // properties['Address.PostalCode']
@@ -101,12 +104,12 @@ function getNumberData({ data, type }: { data: NumberData; type: string }) {
 }
 
 type RelationData = {
-  type: 'relation'
+  has_more?: boolean
+  id: string
   relation: Array<{
     id: string
   }>
-  id: string
-  has_more?: boolean
+  type: 'relation'
 }
 function getRelationData({ data, type }: { data: RelationData; type: string }) {
   // properties['Relation.Shows.Cast']
@@ -116,12 +119,12 @@ function getRelationData({ data, type }: { data: RelationData; type: string }) {
 }
 
 type RichTextData = {
-  type: 'relation'
+  has_more?: boolean
+  id: string
   relation: Array<{
     id: string
   }>
-  id: string
-  has_more?: boolean
+  type: 'relation'
 }
 function getRichTextData({ data, type }: { data: RichTextData; type: string }) {
   // properties['SEO.Description']
@@ -133,35 +136,35 @@ function getRichTextData({ data, type }: { data: RichTextData; type: string }) {
 }
 
 type RollupData = {
-  type: 'rollup'
+  id: string
+  object: 'property_item'
   rollup:
     | {
-        type: 'number'
-        number: number | null
-        function: RollupFunction
-      }
-    | {
-        type: 'date'
-        date: DateResponse | null
-        function: RollupFunction
-      }
-    | {
-        type: 'array'
         array: Array<EmptyObject>
         function: RollupFunction
+        type: 'array'
       }
     | {
+        date: DateResponse | null
+        function: RollupFunction
+        type: 'date'
+      }
+    | {
+        function: RollupFunction
+        incomplete: EmptyObject
+        type: 'incomplete'
+      }
+    | {
+        function: RollupFunction
+        number: null | number
+        type: 'number'
+      }
+    | {
+        function: RollupFunction
         type: 'unsupported'
         unsupported: EmptyObject
-        function: RollupFunction
       }
-    | {
-        type: 'incomplete'
-        incomplete: EmptyObject
-        function: RollupFunction
-      }
-  object: 'property_item'
-  id: string
+  type: 'rollup'
 }
 function getRollupData({ data, type }: { data: RollupData; type: string }) {
   // properties['Rollup.People.Cast.Title']
@@ -215,9 +218,9 @@ function getRollupData({ data, type }: { data: RollupData; type: string }) {
 }
 
 type SelectData = {
-  type: 'select'
-  select: SelectPropertyResponse | null
   id: string
+  select: SelectPropertyResponse | null
+  type: 'select'
 }
 function getSelectData({ data, type }: { data: SelectData; type: string }) {
   // properties['Select.Test']
@@ -227,9 +230,9 @@ function getSelectData({ data, type }: { data: SelectData; type: string }) {
 }
 
 type TitleData = {
-  type: 'title'
-  title: Array<RichTextItemResponse>
   id: string
+  title: Array<RichTextItemResponse>
+  type: 'title'
 }
 function getTitleData({ data, type }: { data: TitleData; type: string }) {
   // properties['Title']
@@ -240,9 +243,9 @@ function getTitleData({ data, type }: { data: TitleData; type: string }) {
 }
 
 type UrlData = {
-  type: 'url'
-  url: string | null
   id: string
+  type: 'url'
+  url: null | string
 }
 function getUrlData({ data, type }: { data: UrlData; type: string }) {
   // properties['URL.Ticket']

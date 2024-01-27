@@ -1,5 +1,4 @@
 packages:
   - 'packages/*'
   - 'sites/*'
-  - '!sites/jerandky.com'
 enable-pre-post-scripts: true

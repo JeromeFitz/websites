@@ -9,10 +9,12 @@ import {
 } from '@jeromefitz/ds/components/Section'
 import { getDataFromCache, getSegmentInfo } from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
+
 import type { Metadata } from 'next'
+
 import { draftMode } from 'next/headers'
 
-import { getPageData, CONFIG } from '~app/(notion)/_config/index'
+import { CONFIG, getPageData } from '~app/(notion)/_config/index'
 import { generateMetadataCustom } from '~app/(notion)/_config/temp/generateMetadataCustom'
 import { Notion as Blocks } from '~components/Notion/index'
 
@@ -47,9 +49,9 @@ export async function generateMetadata({ ...props }): Promise<Metadata> {
   return pageData?.isPublished
     ? {
         ...seo,
-        title: 'Jerome Fitzgerald (he/him) | Actor. Comedian. Writer.',
         description:
           'Jerome Fitzgerald is an an actor, comedian, & writer hailing from Pittsburgh, PA.',
+        title: 'Jerome Fitzgerald (he/him) | Actor. Comedian. Writer.',
       }
     : is404Seo
 }

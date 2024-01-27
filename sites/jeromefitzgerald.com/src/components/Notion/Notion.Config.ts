@@ -3,6 +3,7 @@
  *  up but you probably _need_ to set this up, haha
  */
 import { Image } from '@jeromefitz/shared/components/Notion/Blocks/Image'
+
 import dynamic from 'next/dynamic'
 
 // import { lazy } from 'react'
@@ -11,6 +12,8 @@ import dynamic from 'next/dynamic'
 
 const custom = {
   embed: {
+    className: '',
+    // component: lazy(() => import('@jeromefitz/shared/components/Notion/Blocks/Embed')),
     component: dynamic(
       () =>
         import('@jeromefitz/shared/components/Notion/Blocks/Embed').then(
@@ -20,18 +23,18 @@ const custom = {
         ssr: false,
       },
     ),
-    // component: lazy(() => import('@jeromefitz/shared/components/Notion/Blocks/Embed')),
     // component: Embed,
     element: 'div',
-    className: '',
   },
   image: {
+    className: '',
     // component: lazy(() => import('@jeromefitz/shared/components/Notion/Blocks/Image')),
     component: Image,
     element: 'img',
-    className: '',
   },
   video: {
+    className: '',
+    // component: lazy(() => import('@jeromefitz/shared/components/Notion/Blocks/Video')),
     component: dynamic(
       () =>
         import('@jeromefitz/shared/components/Notion/Blocks/Video').then(
@@ -41,10 +44,8 @@ const custom = {
         ssr: false,
       },
     ),
-    // component: lazy(() => import('@jeromefitz/shared/components/Notion/Blocks/Video')),
     // component: Video,
     element: 'div',
-    className: '',
   },
 }
 

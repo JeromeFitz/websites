@@ -10,7 +10,9 @@ import {
 } from '@jeromefitz/ds/components/Section'
 import { getDataFromCache, getDatabaseQuery } from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
+
 import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints.js'
+
 import _filter from 'lodash/filter.js'
 import _orderBy from 'lodash/orderBy.js'
 import { draftMode } from 'next/headers'
@@ -42,8 +44,8 @@ function ListingTemp({ data }) {
       {shows.map((show) => {
         if (!show?.isPublished) return null
         return (
-          <li key={`shows-show-${show?.id}`} className="my-1 py-1">
-            <Anchor href={show?.href} className="text-base md:text-xl">
+          <li className="my-1 py-1" key={`shows-show-${show?.id}`}>
+            <Anchor className="text-base md:text-xl" href={show?.href}>
               {show?.title}
             </Anchor>
           </li>

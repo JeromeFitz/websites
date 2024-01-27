@@ -7,16 +7,17 @@ import {
   SectionWrapper,
   Tags,
 } from '@jeromefitz/ds/components/Section'
-import { getDataFromCache } from '@jeromefitz/shared/src/notion/utils'
+import { getDataFromCache } from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
+
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 
+import type { PropertiesPodcast } from '../../../_config'
+
 import { Notion as Blocks } from '../../../../../components/Notion'
 import { Relations } from '../../../../../components/Relations'
-import type { PropertiesPodcast } from '../../../_config'
 import { CONFIG, getPodcastData } from '../../../_config'
-
 import { PodcastEpisodes } from './Podcast.Episodes'
 
 const { DATABASE_ID } = CONFIG.PODCASTS

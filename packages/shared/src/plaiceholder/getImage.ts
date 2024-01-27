@@ -12,7 +12,7 @@ const getImage = async (src: string) => {
 
   return {
     ...plaiceholder,
-    img: { src, height, width },
+    img: { height, src, width },
   }
 }
 

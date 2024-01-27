@@ -18,8 +18,8 @@ import {
   ArrowRightIcon as ArrowRightIconRadix,
   ArrowTopRightIcon as ArrowTopRightIconRadix,
   BellIcon as BellIconRadix,
-  BookmarkIcon as BookmarkIconRadix,
   BookmarkFilledIcon as BookmarkFilledIconRadix,
+  BookmarkIcon as BookmarkIconRadix,
   CalendarIcon as CalendarIconRadix,
   CaretDownIcon as CaretDownIconRadix,
   CaretLeftIcon as CaretLeftIconRadix,
@@ -27,8 +27,8 @@ import {
   CaretSortIcon as CaretSortIconRadix,
   CaretUpIcon as CaretUpIconRadix,
   ChatBubbleIcon as ChatBubbleIconRadix,
-  CheckIcon as CheckIconRadix,
   CheckCircledIcon as CheckCircledIconRadix,
+  CheckIcon as CheckIconRadix,
   ChevronDownIcon as ChevronDownIconRadix,
   ChevronLeftIcon as ChevronLeftIconRadix,
   ChevronRightIcon as ChevronRightIconRadix,
@@ -764,18 +764,18 @@ const SpotifyLogoIcon = ({ label, ...props }: IconProps) => (
   >
     <svg
       className="fill:bg-black dark:fill:bg-white"
-      width="17px"
       height="17px"
-      viewBox="0 0 17 17"
+      role="info"
       version="1.1"
+      viewBox="0 0 17 17"
+      width="17px"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
-      role="info"
       {...props}
     >
       <defs></defs>
-      <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-        <g transform="translate(-303.000000, -5776.000000)" fill="currentColor">
+      <g fill="none" fillRule="evenodd" stroke="none" strokeWidth="1">
+        <g fill="currentColor" transform="translate(-303.000000, -5776.000000)">
           <g id="Group-12" transform="translate(130.000000, 5758.000000)">
             <path
               d="M186.918938,25.6499188 C186.791639,25.6499188 186.662513,25.6199721 186.542015,25.5566271 C181.694705,23.0107486 176.716441,24.5350881 176.666699,24.5507213 C176.238816,24.685837 175.782712,24.4483949 175.647799,24.0208164 C175.512785,23.5930349 175.750024,23.1369309 176.177704,23.0019168 C176.407126,22.9295371 181.857432,21.2615547 187.297282,24.1186763 C187.694304,24.3272883 187.847185,24.8182117 187.638573,25.2152343 C187.493408,25.4918609 187.210995,25.6499188 186.918938,25.6499188 M186.447099,27.9201858 C186.325079,28.1324523 186.102864,28.2512241 185.874457,28.2512241 C185.762892,28.2512241 185.649805,28.2229016 185.546159,28.1633127 C181.341333,25.7451393 177.105241,27.1529403 177.062909,27.1673554 C176.718166,27.2855181 176.342969,27.1019801 176.224705,26.7572374 C176.106542,26.4124946 176.290182,26.0371961 176.634925,25.9190333 C176.830746,25.8519324 181.485585,24.3058687 186.204074,27.0192459 C186.519986,27.2009566 186.62881,27.6042732 186.447099,27.9201858 M185.391553,30.272984 C185.28679,30.4471827 185.102034,30.5436213 184.912507,30.5436213 C184.814647,30.5436213 184.715366,30.5178367 184.625322,30.463628 C181.277988,28.4501923 177.310198,29.614765 177.270506,29.6267437 C176.975708,29.7157717 176.663856,29.5493897 176.57432,29.2546935 C176.484785,28.9598959 176.650456,28.6484498 176.945152,28.5585081 C177.126152,28.5032843 181.418992,27.231817 185.200909,29.5067537 C185.465151,29.6657252 185.550524,30.0087422 185.391553,30.272984 M181.5,18 C176.80557,18 173,21.8055702 173,26.5001015 C173,31.1944298 176.80557,35 181.5,35 C186.19443,35 190,31.1944298 190,26.5001015 C190,21.8055702 186.19443,18 181.5,18"
@@ -908,9 +908,9 @@ export {
   ArrowTopRightIcon,
   ArrowUturnLeftIcon,
   BellIcon,
+  BookOpenIcon,
   BookmarkFilledIcon,
   BookmarkIcon,
-  BookOpenIcon,
   CalendarIcon,
   CaretDownIcon,
   CaretLeftIcon,

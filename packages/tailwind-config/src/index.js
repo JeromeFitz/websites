@@ -1,12 +1,12 @@
 const { backgrounds } = require('./backgrounds')
-const { buttons, buttonTypes } = require('./buttons')
+const { buttonTypes, buttons } = require('./buttons')
 const { excludes, foregroundTextBlack, radixColors } = require('./colors')
 const { notion, notionColors } = require('./notion')
 
 module.exports = {
   backgrounds,
-  buttons,
   buttonTypes,
+  buttons,
   excludes,
   foregroundTextBlack,
   notion,

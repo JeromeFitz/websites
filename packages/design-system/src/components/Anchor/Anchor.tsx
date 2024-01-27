@@ -7,7 +7,7 @@ import { ExternalLinkIcon } from '../Icon/Icon'
 const nextSeo = { url: `https://${process.env.NEXT_PUBLIC__SITE}` }
 const domain = new URL(nextSeo.url)
 
-const Anchor = ({ className = '', href, children }) => {
+const Anchor = ({ children, className = '', href }) => {
   const isExternal =
     !href.includes(domain.hostname.replace('www.', '')) || href.includes('bsky.app')
   const isNotion = !href.includes('http')
@@ -30,7 +30,7 @@ const Anchor = ({ className = '', href, children }) => {
 
   if (isExternal && !isNotion) {
     return (
-      <a href={href} rel="noreferrer" target={'_blank'} className={styles}>
+      <a className={styles} href={href} rel="noreferrer" target={'_blank'}>
         <>{children}</>
         <ExternalLinkIcon />
       </a>

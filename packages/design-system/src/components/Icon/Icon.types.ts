@@ -5,9 +5,9 @@ import { SVGAttributes } from 'react'
  */
 interface IconProps extends SVGAttributes<SVGElement> {
   children?: never
-  style?: any
   color?: string
   label?: string
+  style?: any
 }
 
 export type { IconProps }

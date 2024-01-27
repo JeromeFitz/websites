@@ -9,10 +9,12 @@ import {
 } from '@jeromefitz/ds/components/Section'
 import { getDataFromCache } from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
+
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 
 import type { PropertiesShow } from '~app/(notion)/_config'
+
 import { CONFIG, getShowData } from '~app/(notion)/_config'
 import { Notion as Blocks } from '~components/Notion'
 import { Relations } from '~components/Relations/index'

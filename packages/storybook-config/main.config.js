@@ -5,7 +5,6 @@ import { resolve } from 'node:path'
 
 /** @type { import('@storybook/nextjs').StorybookConfig } */
 const config = {
-  stories: ['../src/**/*.mdx', '../src/**/*.stories.{js,jsx,ts,tsx}'],
   addons: [
     '@storybook/addon-links',
     {
@@ -29,6 +28,13 @@ const config = {
       },
     },
   ],
+  core: {
+    disableTelemetry: true,
+    enableCrashReports: true,
+  },
+  docs: {
+    autodocs: true,
+  },
   framework: {
     name: '@storybook/nextjs',
     options: {},
@@ -37,14 +43,8 @@ const config = {
     //   nextConfigPath: resolve(__dirname, '../next.config.js'),
     // },
   },
-  core: {
-    disableTelemetry: true,
-    enableCrashReports: true,
-  },
-  docs: {
-    autodocs: true,
-  },
   staticDirs: [resolve(__dirname, 'public')],
+  stories: ['../src/**/*.mdx', '../src/**/*.stories.{js,jsx,ts,tsx}'],
 }
 
 export default config

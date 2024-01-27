@@ -1,9 +1,9 @@
 import { create } from '@storybook/theming'
 
 const commonOptions = {
+  brandTarget: '_blank',
   brandTitle: 'NGOP — Storybook',
   brandUrl: 'https://jeromefitzgerald.com/',
-  brandTarget: '_blank',
 }
 
 export const light = create({
