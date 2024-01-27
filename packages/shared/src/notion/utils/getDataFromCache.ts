@@ -1,3 +1,5 @@
+import 'server-only'
+
 import { isObjectEmpty } from '@jeromefitz/utils'
 
 import { Client } from '@notionhq/client'
@@ -8,8 +10,6 @@ import { cache } from 'react'
 
 import { getCache, setCache } from '../../redis/index'
 import { getDatabaseQuery, getMetadata } from './index'
-
-import 'server-only'
 // @todo(types) next-notion
 // import type { SegmentInfo } from './index'
 

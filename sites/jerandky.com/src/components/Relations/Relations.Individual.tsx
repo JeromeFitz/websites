@@ -1,3 +1,5 @@
+import 'server-only'
+
 import { Anchor } from '@jeromefitz/ds/components/Anchor'
 import { cx } from '@jeromefitz/ds/utils/cx'
 import { getPageDataFromNotion } from '@jeromefitz/shared/notion/utils'
@@ -12,8 +14,6 @@ import type { PageObjectResponsePerson } from '../../app/(notion)/_config'
 
 import { getPodcastData } from '../../app/(notion)/_config'
 import { RelationLoading } from './index'
-
-import 'server-only'
 
 function ComponentFallback({ children, ...props }) {
   return <span {...props}>{children}</span>

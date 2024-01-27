@@ -1,6 +1,8 @@
 /**
  * @todo(notion) getFormulaData
  */
+import 'server-only'
+
 import { isObjectEmpty } from '@jeromefitz/utils'
 
 import type {
@@ -26,8 +28,6 @@ import type {
   RollupFunction,
   SelectPropertyResponse,
 } from '../Notion.types'
-
-import 'server-only'
 
 type CheckboxData = {
   checkbox: boolean

@@ -2,11 +2,11 @@
  * @todo(next-notion) until we can SWR the comment fetch
  *  this needs to be server-only
  */
+import 'server-only'
+
 import { Client } from '@notionhq/client'
 
 import { getImageAlt } from './Image.utils'
-
-import 'server-only'
 
 const notion = new Client({ auth: process.env.NOTION_API_KEY })
 
