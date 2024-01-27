@@ -44,6 +44,10 @@
       "cache": false,
       "dependsOn": ["^//#format"]
     },
+    "format:lint": {
+      "cache": false,
+      "dependsOn": ["^//#format"]
+    },
     "lhci": {
       "dependsOn": ["^build"],
       "inputs": ["src/**/*.ts", "src/**/*.tsx"],

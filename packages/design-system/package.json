@@ -62,7 +62,7 @@
     "test:watch": "jest --watch"
   },
   "peerDependencies": {
-    "@mantine/hooks": "^7.4.2",
+    "@mantine/hooks": "^7.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
