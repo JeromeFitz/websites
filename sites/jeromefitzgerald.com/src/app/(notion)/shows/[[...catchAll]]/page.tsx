@@ -6,8 +6,8 @@ import {
 import { isObjectEmpty } from '@jeromefitz/utils'
 
 import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints.js'
-// import isEqual from 'lodash/isEqual'
-// import uniqWith from 'lodash/uniqWith'
+// import isEqual from 'lodash/isEqual.js'
+// import uniqWith from 'lodash/uniqWith.js'
 import type { Metadata } from 'next'
 
 import { getPropertyTypeData } from 'next-notion/utils'

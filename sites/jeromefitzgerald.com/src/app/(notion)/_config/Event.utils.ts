@@ -56,9 +56,6 @@ function getEventData(properties) {
   const isEventOver = hoursUntilEvent < 0
 
   const data = {
-    /**
-     * Date Information
-     */
     dateIso: getPropertyTypeDataEvent(properties, 'Date.ISO'),
     dayOfMonth: getPropertyTypeDataEvent(properties, 'Date.DayOfMonth'),
     dayOfMonthOrdinal: getPropertyTypeDataEvent(
@@ -72,9 +69,6 @@ function getEventData(properties) {
     hoursUntilEvent,
     href: getPropertyTypeDataEvent(properties, 'Slug.Preview'),
     id: getPropertyTypeDataEvent(properties, 'ID'),
-    /**
-     * Is Information
-     */
     isActive: getPropertyTypeDataEvent(properties, 'Is.Active'),
     isEventOver,
     isIndexed: getPropertyTypeDataEvent(properties, 'Is.Indexed'),
@@ -82,9 +76,6 @@ function getEventData(properties) {
     month: getPropertyTypeDataEvent(properties, 'Date.Month'),
     monthName: getPropertyTypeDataEvent(properties, 'Date.MonthName'),
     monthNameAbbr: getPropertyTypeDataEvent(properties, 'Date.MonthNameAbbr'),
-    /**
-     * SEO Information
-     */
     seoDescription: getPropertyTypeDataEvent(properties, 'SEO.Description'),
     seoImage: getPropertyTypeDataEvent(properties, 'SEO.Image')[0],
     seoImageDescription: getPropertyTypeDataEvent(
@@ -92,23 +83,11 @@ function getEventData(properties) {
       'SEO.Image.Description',
     ),
     seoKeywords: getPropertyTypeDataEvent(properties, 'SEO.Keywords'),
-    /**
-     * Show Information
-     */
-    /**
-     * Tag Information
-     */
     tags,
-    /**
-     * Ticket Information
-     */
     ticketUrl: getPropertyTypeDataEvent(properties, 'URL.Ticket'),
     time: getPropertyTypeDataEvent(properties, 'Date.Time'),
     timezone: getPropertyTypeDataEvent(properties, 'Date.Timezone'),
     title,
-    /**
-     * Venue Information
-     */
     venueTitle,
     venues: getPropertyTypeDataEvent(properties, 'Relation.Venues'),
     year: getPropertyTypeDataEvent(properties, 'Date.Year'),
