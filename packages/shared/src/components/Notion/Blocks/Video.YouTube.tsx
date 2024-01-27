@@ -26,17 +26,17 @@ async function VideoYouTube({ block, url }) {
   return (
     <div className="relative h-full max-h-[480] w-full overflow-hidden [&>*:iframe]:absolute [&>*:iframe]:left-0 [&>*:iframe]:top-0 [&>*:iframe]:h-full [&>*:iframe]:max-h-[600] [&>*:iframe]:w-full">
       <iframe
-        // width="720"
-        height="576"
-        // height="100%"
-        width="100%"
-        src={`https://www.youtube.com/embed/${embedId}`}
-        frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
-        sandbox="allow-scripts allow-presentation allow-popups allow-top-navigation-by-user-activation allow-forms allow-same-origin"
+        frameBorder="0"
+        // width="720"
+        height="576"
         loading="lazy"
+        sandbox="allow-scripts allow-presentation allow-popups allow-top-navigation-by-user-activation allow-forms allow-same-origin"
+        src={`https://www.youtube.com/embed/${embedId}`}
         title={alt}
+        // height="100%"
+        width="100%"
       />
     </div>
   )

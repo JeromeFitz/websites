@@ -28,7 +28,7 @@ const { backgrounds, buttons, notion, notionColors } = require('./src/index')
  */
 const radixPlugin = plugin.withOptions(
   function (options) {
-    return function ({ addComponents, addBase }) {
+    return function ({ addBase, addComponents }) {
       let radixStyles = {}
       let lightColors = {}
       let darkColors = {}
@@ -67,11 +67,11 @@ const radixPlugin = plugin.withOptions(
         radixStyles = { ...radixStyles, ...backgrounds, ...buttons, ...notion }
       })
       addBase({
-        ':root': {
-          ...lightColors,
-        },
         '.dark': {
           ...darkColors,
+        },
+        ':root': {
+          ...lightColors,
         },
       })
       // console.dir(`>> radixStyles > notions`)

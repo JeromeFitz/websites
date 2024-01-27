@@ -1,6 +1,7 @@
 import 'server-only'
 
 import { isObjectEmpty } from '@jeromefitz/utils'
+
 import { Client } from '@notionhq/client'
 // import type { FilterType } from 'next-notion/Notion.types'
 import { getBlockChildrenDataParent } from 'next-notion/queries'
@@ -8,8 +9,7 @@ import { isAwsImage, isImageExpired } from 'next-notion/utils'
 import { cache } from 'react'
 
 import { getCache, setCache } from '../../redis/index'
-
-import { getMetadata, getDatabaseQuery } from './index'
+import { getDatabaseQuery, getMetadata } from './index'
 // @todo(types) next-notion
 // import type { SegmentInfo } from './index'
 
@@ -98,8 +98,8 @@ const getDataFromCache = cache(
        */
       const seo = getMetadata({ properties: page?.properties || {}, segmentInfo })
       data = {
-        page,
         blocks,
+        page,
         seo,
       }
       if (!isObjectEmpty(data.blocks) && !draft) {

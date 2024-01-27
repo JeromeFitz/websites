@@ -4,8 +4,8 @@ import type {
 } from '@notionhq/client/build/src/api-endpoints.js'
 
 type RC = {
-  page: PageObjectResponse
   blocks: ListBlockChildrenResponse
+  page: PageObjectResponse
 }
 
 import redis from './redis'

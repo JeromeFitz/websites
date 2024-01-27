@@ -1,9 +1,11 @@
 'use client'
 import { ChevronDownIcon } from '@jeromefitz/ds/components/Icon'
 import { cx } from '@jeromefitz/ds/utils/cx'
+
+import type { ForwardedRef, ReactNode } from 'react'
+
 import * as Accordion from '@radix-ui/react-accordion'
 import { forwardRef } from 'react'
-import type { ForwardedRef, ReactNode } from 'react'
 
 type ForwardedRefType = ForwardedRef<any>
 type PropsChildren = {
@@ -17,9 +19,9 @@ const AccordionDemo = ({ children, defaultValue }) => (
   // @ts-expect-error
   <Accordion.Root
     className="bg-radix-slate6 w-full rounded-md shadow-[0_2px_10px] shadow-black/5"
-    type="single"
-    defaultValue={defaultValue}
     collapsible
+    defaultValue={defaultValue}
+    type="single"
   >
     {children}
   </Accordion.Root>
@@ -61,8 +63,8 @@ const AccordionTrigger = forwardRef<ForwardedRefType, PropsChildren>(
       >
         {children}
         <ChevronDownIcon
-          className="text-radix-slate12 mr-2 transition-transform duration-300 group-data-[state=open]:rotate-180"
           aria-hidden
+          className="text-radix-slate12 mr-2 transition-transform duration-300 group-data-[state=open]:rotate-180"
         />
       </Accordion.Trigger>
     </Accordion.Header>
@@ -86,4 +88,4 @@ const AccordionContent = forwardRef<ForwardedRefType, PropsChildren>(
   ),
 )
 
-export { AccordionDemo, AccordionItem, AccordionContent, AccordionTrigger }
+export { AccordionContent, AccordionDemo, AccordionItem, AccordionTrigger }

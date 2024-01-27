@@ -12,12 +12,12 @@ const podcasts = ['jer-and-ky-and-guest', 'knockoffs']
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const sitemapRoot = root.map((slug) => ({
-  url: `${siteUrl}`,
   lastModified,
+  url: `${siteUrl}`,
 }))
 const sitemapPodcasts = podcasts.map((slug) => ({
-  url: `${siteUrl}/podcasts/${slug}`,
   lastModified,
+  url: `${siteUrl}/podcasts/${slug}`,
 }))
 
 function sitemap(): MetadataRoute.Sitemap {

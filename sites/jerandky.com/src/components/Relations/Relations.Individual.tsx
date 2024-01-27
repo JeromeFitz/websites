@@ -2,16 +2,17 @@ import 'server-only'
 
 import { Anchor } from '@jeromefitz/ds/components/Anchor'
 import { cx } from '@jeromefitz/ds/utils/cx'
-import { getPageDataFromNotion } from '@jeromefitz/shared/src/notion/utils'
+import { getPageDataFromNotion } from '@jeromefitz/shared/notion/utils'
 import { asyncForEach } from '@jeromefitz/utils'
+
 import _noop from 'lodash/noop'
 import _orderBy from 'lodash/orderBy'
 import _size from 'lodash/size'
-import { cache, Suspense } from 'react'
+import { Suspense, cache } from 'react'
 
 import type { PageObjectResponsePerson } from '../../app/(notion)/_config'
-import { getPodcastData } from '../../app/(notion)/_config'
 
+import { getPodcastData } from '../../app/(notion)/_config'
 import { RelationLoading } from './index'
 
 function ComponentFallback({ children, ...props }) {
@@ -41,7 +42,7 @@ const RelationIndividual = cache(async ({ id }) => {
 
   return (
     <>
-      <Component href={hrefValue} className={style}>
+      <Component className={style} href={hrefValue}>
         {title}
       </Component>
     </>
@@ -71,7 +72,7 @@ async function RI({ items }) {
     <>
       {bar.map((b, i) => {
         return (
-          <li key={`ris-loading-${i}`} className={cx('mb-2 md:mb-0.5')}>
+          <li className={cx('mb-2 md:mb-0.5')} key={`ris-loading-${i}`}>
             {/* <RelationLoading /> */}
             <RelationIndividual id={b?.id} />
           </li>
@@ -88,7 +89,7 @@ function RIS_LOADING({ size }) {
         .fill(0)
         .map((_, i) => {
           return (
-            <li key={`ris-loading-${i}`} className={cx('mb-2 md:mb-0.5')}>
+            <li className={cx('mb-2 md:mb-0.5')} key={`ris-loading-${i}`}>
               <RelationLoading />
             </li>
           )

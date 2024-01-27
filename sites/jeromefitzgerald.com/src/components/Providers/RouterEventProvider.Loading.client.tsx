@@ -1,5 +1,6 @@
 'use client'
 import { cx } from '@jeromefitz/ds/utils/cx'
+
 import { useNProgress } from '@tanem/react-nprogress'
 // import { motion } from 'framer-motion'
 import { useEffect } from 'react'
@@ -22,7 +23,6 @@ const Loading: React.FC<{ isRouteChanging: boolean }> = ({ isRouteChanging }) =>
 
   return (
     <div
-      id="loading--status"
       className={cx(
         'pointer-events-none fixed',
         'z-[9999] origin-[0_0]',
@@ -33,6 +33,7 @@ const Loading: React.FC<{ isRouteChanging: boolean }> = ({ isRouteChanging }) =>
         isFinished ? 'opacity-0' : 'opacity-100',
         '',
       )}
+      id="loading--status"
       // animate={{
       //   opacity: isFinished ? [1, 0.75, 0.5, 0.25, 0] : [0, 0.25, 0.5, 0.75, 1],
       //   scaleX: isFinished ? 1 : progress,

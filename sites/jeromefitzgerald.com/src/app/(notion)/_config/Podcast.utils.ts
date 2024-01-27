@@ -12,12 +12,9 @@ function getPodcastData(properties) {
   // if (!properties) return {}
 
   const data = {
-    href: getPropertyTypeDataPodcast(properties, 'Slug.Preview'),
-    id: getPropertyTypeDataPodcast(properties, 'ID'),
-    title: getPropertyTypeDataPodcast(properties, 'Title'),
-    /**
-     * Date Information
-     */
+    author: getPropertyTypeDataPodcast(properties, 'Author'),
+    authorEmail: getPropertyTypeDataPodcast(properties, 'Author.Email'),
+    categories: getPropertyTypeDataPodcast(properties, 'Categories'),
     dateIso: getPropertyTypeDataPodcast(properties, 'Date.ISO'),
     dayOfMonth: getPropertyTypeDataPodcast(properties, 'Date.DayOfMonth'),
     dayOfMonthOrdinal: getPropertyTypeDataPodcast(
@@ -26,43 +23,31 @@ function getPodcastData(properties) {
     ),
     dayOfWeek: getPropertyTypeDataPodcast(properties, 'Date.DayOfWeek'),
     dayOfWeekAbbr: getPropertyTypeDataPodcast(properties, 'Date.DayOfWeekAbbr'),
-    month: getPropertyTypeDataPodcast(properties, 'Date.Month'),
-    monthName: getPropertyTypeDataPodcast(properties, 'Date.MonthName'),
-    monthNameAbbr: getPropertyTypeDataPodcast(properties, 'Date.MonthNameAbbr'),
-    time: getPropertyTypeDataPodcast(properties, 'Date.Time'),
-    timezone: getPropertyTypeDataPodcast(properties, 'Date.Timezone'),
-    year: getPropertyTypeDataPodcast(properties, 'Date.Year'),
-    /**
-     * Is Information
-     */
+    episodeSlugs: getPropertyTypeDataPodcast(properties, 'Rollup.Episodes.Slug'),
+    episodeTitles: getPropertyTypeDataPodcast(properties, 'Rollup.Episodes.Title'),
+    href: getPropertyTypeDataPodcast(properties, 'Slug.Preview'),
+    id: getPropertyTypeDataPodcast(properties, 'ID'),
     isActive: getPropertyTypeDataPodcast(properties, 'Is.Active'),
     isExplicit: getPropertyTypeDataPodcast(properties, 'Is.Explicit'),
     isIndexed: getPropertyTypeDataPodcast(properties, 'Is.Indexed'),
     isPublished: getPropertyTypeDataPodcast(properties, 'Is.Published'),
-    /**
-     * Episode Information
-     */
-    episodeSlugs: getPropertyTypeDataPodcast(properties, 'Rollup.Episodes.Slug'),
-    episodeTitles: getPropertyTypeDataPodcast(properties, 'Rollup.Episodes.Title'),
-    /**
-     * SEO Information
-     */
+    month: getPropertyTypeDataPodcast(properties, 'Date.Month'),
+    monthName: getPropertyTypeDataPodcast(properties, 'Date.MonthName'),
+    monthNameAbbr: getPropertyTypeDataPodcast(properties, 'Date.MonthNameAbbr'),
     seoDescription: getPropertyTypeDataPodcast(properties, 'SEO.Description'),
-    seoKeywords: getPropertyTypeDataPodcast(properties, 'SEO.Keywords'),
+    seoImage: getPropertyTypeDataPodcast(properties, 'SEO.Image')[0],
     seoImageDescription: getPropertyTypeDataPodcast(
       properties,
       'SEO.Image.Description',
     ),
-    seoImage: getPropertyTypeDataPodcast(properties, 'SEO.Image')[0],
-    /**
-     * Tag Information
-     */
-    author: getPropertyTypeDataPodcast(properties, 'Author'),
-    authorEmail: getPropertyTypeDataPodcast(properties, 'Author.Email'),
-    categories: getPropertyTypeDataPodcast(properties, 'Categories'),
+    seoKeywords: getPropertyTypeDataPodcast(properties, 'SEO.Keywords'),
     subtitle: getPropertyTypeDataPodcast(properties, 'Subtitle'),
     tags: getPropertyTypeDataPodcast(properties, 'Tags'),
+    time: getPropertyTypeDataPodcast(properties, 'Date.Time'),
+    timezone: getPropertyTypeDataPodcast(properties, 'Date.Timezone'),
+    title: getPropertyTypeDataPodcast(properties, 'Title'),
     type: getPropertyTypeDataPodcast(properties, 'Type'),
+    year: getPropertyTypeDataPodcast(properties, 'Date.Year'),
   }
 
   return data

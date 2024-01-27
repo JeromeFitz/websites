@@ -17,7 +17,7 @@ function PodcastEpisodes({ properties }) {
         {episodeSlugs.map((slug, i) => {
           const href = `${props.href}/${slug}`
           return (
-            <li key={slug} className={cx(blocks['bulleted_list_item'].className)}>
+            <li className={cx(blocks['bulleted_list_item'].className)} key={slug}>
               <Anchor href={href}>{episodeTitles[i]}</Anchor>
             </li>
           )

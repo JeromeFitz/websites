@@ -2,49 +2,50 @@
  * @todo(next-notion) you do not _need_ to set this
  *  up but you probably _need_ to set this up, haha
  */
-import { Image } from '@jeromefitz/shared/src/components/Notion/Blocks/Image'
+import { Image } from '@jeromefitz/shared/components/Notion/Blocks/Image'
+
 import dynamic from 'next/dynamic'
 
 // import { lazy } from 'react'
-// import { Embed } from '@jeromefitz/shared/src/components/Notion/Blocks/Embed'
-// import { Video } from '@jeromefitz/shared/src/components/Notion/Blocks/Video'
+// import { Embed } from '@jeromefitz/shared/components/Notion/Blocks/Embed'
+// import { Video } from '@jeromefitz/shared/components/Notion/Blocks/Video'
 
 const custom = {
   embed: {
+    className: '',
+    // component: lazy(() => import('@jeromefitz/shared/components/Notion/Blocks/Embed')),
     component: dynamic(
       () =>
-        import('@jeromefitz/shared/src/components/Notion/Blocks/Embed').then(
+        import('@jeromefitz/shared/components/Notion/Blocks/Embed').then(
           (mod) => mod.Embed,
         ),
       {
         ssr: true,
       },
     ),
-    // component: lazy(() => import('@jeromefitz/shared/src/components/Notion/Blocks/Embed')),
     // component: Embed,
     element: 'div',
-    className: '',
   },
   image: {
-    // component: lazy(() => import('@jeromefitz/shared/src/components/Notion/Blocks/Image')),
+    className: '',
+    // component: lazy(() => import('@jeromefitz/shared/components/Notion/Blocks/Image')),
     component: Image,
     element: 'img',
-    className: '',
   },
   video: {
+    className: '',
+    // component: lazy(() => import('@jeromefitz/shared/components/Notion/Blocks/Video')),
     component: dynamic(
       () =>
-        import('@jeromefitz/shared/src/components/Notion/Blocks/Video').then(
+        import('@jeromefitz/shared/components/Notion/Blocks/Video').then(
           (mod) => mod.Video,
         ),
       {
         ssr: true,
       },
     ),
-    // component: lazy(() => import('@jeromefitz/shared/src/components/Notion/Blocks/Video')),
     // component: Video,
     element: 'div',
-    className: '',
   },
 }
 

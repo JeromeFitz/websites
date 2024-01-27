@@ -1,6 +1,7 @@
 'use client'
 import { CalendarIcon } from '@jeromefitz/ds/components/Icon'
 import { cx } from '@jeromefitz/ds/utils/cx'
+
 // eslint-disable-next-line no-restricted-imports
 import NextLink from 'next/link'
 import Headroom from 'react-headroom'
@@ -10,9 +11,9 @@ import Headroom from 'react-headroom'
  * Until next version is updated, do some fun hacks
  */
 const info = {
+  subtitle: 'FRI 01/26 08:00PM',
   title: 'Friday Night Raw',
   url: '/events/2024/01/26/friday-night-raw-with-ricky-romance?utm_source=website&utm_medium=banner&utm_id=20240126',
-  subtitle: 'FRI 01/26 08:00PM',
 }
 
 function Loading({}) {

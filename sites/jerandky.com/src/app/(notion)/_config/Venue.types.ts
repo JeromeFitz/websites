@@ -6,7 +6,7 @@ import type {
   RichTextPropertyItemObjectResponse,
   TitlePropertyItemObjectResponse,
 } from '@notionhq/client/build/src/api-endpoints'
-import type { Spread } from 'next-notion/src/Notion.types'
+import type { Spread } from 'next-notion/Notion.types'
 
 type PropertiesVenue = {
   'Address.City': RichTextPropertyItemObjectResponse
@@ -16,9 +16,9 @@ type PropertiesVenue = {
   'Address.PostalCode': NumberPropertyItemObjectResponse
   'Address.State': RichTextPropertyItemObjectResponse
   'Address.Street': RichTextPropertyItemObjectResponse
+  ID: FormulaPropertyItemObjectResponse
   'Relation.Events': RelationPropertyItemObjectResponse
   'Slug.Preview': RichTextPropertyItemObjectResponse
-  ID: FormulaPropertyItemObjectResponse
   Title: TitlePropertyItemObjectResponse
 }
 type PageObjectResponseVenue = Spread<

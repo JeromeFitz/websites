@@ -1,4 +1,3 @@
-import 'server-only'
 /**
  * @note(next) Please avoid making this a Client Component
  *
@@ -9,12 +8,16 @@ import 'server-only'
  *   - Override Cache with new Image Data (if using)
  *
  */
+import 'server-only'
+
 import https from 'node:https'
 
 import { Caption } from '@jeromefitz/ds/components/Caption'
 import { isObjectEmpty } from '@jeromefitz/utils'
-import { Client } from '@notionhq/client'
+
 import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints.js'
+
+import { Client } from '@notionhq/client'
 import { Redis } from '@upstash/redis'
 import stringify from 'fast-json-stable-stringify'
 import { slug as _slug } from 'github-slugger'
@@ -23,9 +26,8 @@ import { isImageExpired } from 'next-notion/utils'
 import validUrl from 'valid-url'
 
 import { TIME } from '../../../lib/constants'
-
 import { ImageClient as NextImage } from './Image.client'
-import { getImageAlt, getImageUrl, getImageExpiration } from './Image.utils'
+import { getImageAlt, getImageExpiration, getImageUrl } from './Image.utils'
 
 const notion = new Client({ auth: process.env.NOTION_API_KEY })
 

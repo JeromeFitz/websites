@@ -1,13 +1,14 @@
+import type { ComponentProps, ForwardRefRenderFunction } from 'react'
+
 // eslint-disable-next-line no-restricted-imports
 import Link from 'next/link'
 import { forwardRef } from 'react'
-import type { ComponentProps, ForwardRefRenderFunction } from 'react'
+
+import type { Variant } from './Button.types'
 
 import { cx } from '../../utils/cx'
-
 import { VARIANTS } from './Button.constants'
 import { commonStyles, variantStyles } from './Button.styles'
-import type { Variant } from './Button.types'
 
 export interface ButtonLinkProps extends ComponentProps<typeof Link> {
   variant?: Variant

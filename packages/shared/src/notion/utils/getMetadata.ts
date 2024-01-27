@@ -1,9 +1,11 @@
 import { isObjectEmpty } from '@jeromefitz/utils'
+
 import type {
-  TextRichTextItemResponse,
   RichTextItemResponse,
+  TextRichTextItemResponse,
 } from '@notionhq/client/build/src/api-endpoints.js'
 import type { Metadata } from 'next'
+
 import { getPropertyTypeData } from 'next-notion/utils'
 import _title from 'title'
 
@@ -14,14 +16,14 @@ const BASE_URL = `https://${process.env.NEXT_PUBLIC__SITE}`
 type TextRequest = string
 type ImageItemResponse =
   | {
-      type: 'external'
-      external: { url: TextRequest }
       caption: Array<RichTextItemResponse>
+      external: { url: TextRequest }
+      type: 'external'
     }
   | {
-      type: 'file'
-      file: { url: string; expiry_time: string }
       caption: Array<RichTextItemResponse>
+      file: { expiry_time: string; url: string }
+      type: 'file'
     }
 
 function getMetadata({ properties, segmentInfo }) {
@@ -126,9 +128,9 @@ function getMetadata({ properties, segmentInfo }) {
     alternates: {
       canonical,
     },
-    title: titleSeo,
     description,
     openGraph,
+    title: titleSeo,
   }
 
   // console.dir(`>metadata`)

@@ -56,12 +56,6 @@ function getEventData(properties) {
   const isEventOver = hoursUntilEvent < 0
 
   const data = {
-    href: getPropertyTypeDataEvent(properties, 'Slug.Preview'),
-    id: getPropertyTypeDataEvent(properties, 'ID'),
-    title,
-    /**
-     * Date Information
-     */
     dateIso: getPropertyTypeDataEvent(properties, 'Date.ISO'),
     dayOfMonth: getPropertyTypeDataEvent(properties, 'Date.DayOfMonth'),
     dayOfMonthOrdinal: getPropertyTypeDataEvent(
@@ -70,48 +64,33 @@ function getEventData(properties) {
     ),
     dayOfWeek: getPropertyTypeDataEvent(properties, 'Date.DayOfWeek'),
     dayOfWeekAbbr: getPropertyTypeDataEvent(properties, 'Date.DayOfWeekAbbr'),
-    month: getPropertyTypeDataEvent(properties, 'Date.Month'),
-    monthName: getPropertyTypeDataEvent(properties, 'Date.MonthName'),
-    monthNameAbbr: getPropertyTypeDataEvent(properties, 'Date.MonthNameAbbr'),
-    time: getPropertyTypeDataEvent(properties, 'Date.Time'),
-    timezone: getPropertyTypeDataEvent(properties, 'Date.Timezone'),
-    year: getPropertyTypeDataEvent(properties, 'Date.Year'),
     //
     daysUntilEvent,
     hoursUntilEvent,
-    isEventOver,
-    /**
-     * Is Information
-     */
+    href: getPropertyTypeDataEvent(properties, 'Slug.Preview'),
+    id: getPropertyTypeDataEvent(properties, 'ID'),
     isActive: getPropertyTypeDataEvent(properties, 'Is.Active'),
+    isEventOver,
     isIndexed: getPropertyTypeDataEvent(properties, 'Is.Indexed'),
     isPublished: getPropertyTypeDataEvent(properties, 'Is.Published'),
-    /**
-     * Show Information
-     */
-    /**
-     * SEO Information
-     */
+    month: getPropertyTypeDataEvent(properties, 'Date.Month'),
+    monthName: getPropertyTypeDataEvent(properties, 'Date.MonthName'),
+    monthNameAbbr: getPropertyTypeDataEvent(properties, 'Date.MonthNameAbbr'),
     seoDescription: getPropertyTypeDataEvent(properties, 'SEO.Description'),
-    seoKeywords: getPropertyTypeDataEvent(properties, 'SEO.Keywords'),
+    seoImage: getPropertyTypeDataEvent(properties, 'SEO.Image')[0],
     seoImageDescription: getPropertyTypeDataEvent(
       properties,
       'SEO.Image.Description',
     ),
-    seoImage: getPropertyTypeDataEvent(properties, 'SEO.Image')[0],
-    /**
-     * Tag Information
-     */
+    seoKeywords: getPropertyTypeDataEvent(properties, 'SEO.Keywords'),
     tags,
-    /**
-     * Ticket Information
-     */
     ticketUrl: getPropertyTypeDataEvent(properties, 'URL.Ticket'),
-    /**
-     * Venue Information
-     */
+    time: getPropertyTypeDataEvent(properties, 'Date.Time'),
+    timezone: getPropertyTypeDataEvent(properties, 'Date.Timezone'),
+    title,
     venueTitle,
     venues: getPropertyTypeDataEvent(properties, 'Relation.Venues'),
+    year: getPropertyTypeDataEvent(properties, 'Date.Year'),
   }
 
   return data

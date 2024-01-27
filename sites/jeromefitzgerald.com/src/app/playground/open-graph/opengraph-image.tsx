@@ -1,4 +1,5 @@
 import { cx } from '@jeromefitz/ds/utils/cx'
+
 import { ImageResponse } from 'next/og'
 
 // Route segment config
@@ -8,29 +9,29 @@ const avatar =
   'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2021/bighead--jerome--dizzy.svg'
 const items = [
   {
-    title: 'Jerome &: The Comedy Variety Show',
+    description: 'SAT 07/15 @ 09:00PM EDT',
+    location: 'Pittsburgh, PA',
     segment: 'events',
     slug: '/events/2023/07/15/jerome-and',
-    description: 'SAT 07/15 @ 09:00PM EDT',
+    title: 'Jerome &: The Comedy Variety Show',
     venue: 'Arcade Comedy Theater',
-    location: 'Pittsburgh, PA',
   },
   {
-    title: 'Alex O’Jerome',
+    description: 'The Vomit Twinz',
+    location: 'improv',
     segment: 'shows',
     slug: '/shows/alex-o-jerome',
-    description: 'The Vomit Twinz',
+    title: 'Alex O’Jerome',
     venue: 'LAX to CHI to PIT Connection',
-    location: 'improv',
   },
   {
-    title: 'Boo Humbag: The Musical',
+    description: 'The most celebrated morality tale of all-time.',
+    location: 'musical',
     segment: 'shows',
     slug: '/shows/boo-humbag-the-musical',
-    description: 'The most celebrated morality tale of all-time.',
+    title: 'Boo Humbag: The Musical',
     venue:
       'Transfomred into a hilarious send-up with original song and dance numbers.',
-    location: 'musical',
   },
 ]
 const item = items[2]
@@ -38,8 +39,8 @@ const item = items[2]
 // Image metadata
 export const alt = 'Jerome'
 export const size = {
-  width: 1200,
   height: 600,
+  width: 1200,
 }
 
 export const contentType = 'image/png'
@@ -74,6 +75,11 @@ export default async function Image() {
       <div tw={cx('flex h-[600px] w-[1200px] border-2 bg-[#f4f4f4]')}>
         {/* // Start here */}
         <div
+          style={{
+            background:
+              'linear-gradient(170deg, rgb(244, 244, 244), rgb(207, 47, 152))',
+            justifyItems: 'start',
+          }}
           tw={cx(
             'flex size-full flex-row flex-wrap items-start text-3xl',
             '',
@@ -82,14 +88,12 @@ export default async function Image() {
             '',
             '',
           )}
-          style={{
-            background:
-              'linear-gradient(170deg, rgb(244, 244, 244), rgb(207, 47, 152))',
-            justifyItems: 'start',
-          }}
         >
           <div tw={cx('flex w-full flex-row justify-between', 'mb-12')}>
             <div
+              style={{
+                verticalAlign: 'top',
+              }}
               tw={cx(
                 'm-3 flex items-center p-3 ',
                 // @todo(vercel/og)
@@ -97,12 +101,16 @@ export default async function Image() {
                 '',
                 '',
               )}
-              style={{
-                verticalAlign: 'top',
-              }}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
+                src={avatar}
+                // @todo(vercel/og) cannot handle inline-block
+                style={{
+                  backgroundColor: '#f4f4f4',
+                  border: '1px black',
+                  display: 'block',
+                }}
                 tw={cx(
                   'size-16 rounded-full bg-[#f4f4f4]',
                   // @todo(vercel/og)
@@ -110,17 +118,13 @@ export default async function Image() {
                   '',
                   '',
                 )}
-                // @todo(vercel/og) cannot handle inline-block
-                style={{
-                  backgroundColor: '#f4f4f4',
-                  border: '1px black',
-                  display: 'block',
-                }}
-                src={avatar}
               />
               <span tw={cx('mx-4 text-2xl font-medium')}>jeromefitzgerald.com</span>
             </div>
             <div
+              style={{
+                verticalAlign: 'top',
+              }}
               tw={cx(
                 'm-3 flex items-center p-3',
                 // @todo(vercel/og)
@@ -128,26 +132,26 @@ export default async function Image() {
                 '',
                 '',
               )}
-              style={{
-                verticalAlign: 'top',
-              }}
             >
               <span tw={cx('mx-4 text-2xl font-medium')}>{item.segment}</span>
               <span
-                tw={cx(
-                  'inline-block size-16 rounded-full',
-                  // @todo(vercel/og)
-                  ' bg-breeze ring-1 ring-[#0f0f0f]',
-                )}
                 style={{
                   backgroundColor: '#f4f4f4',
                   border: '1px black',
                   display: 'block',
                 }}
+                tw={cx(
+                  'inline-block size-16 rounded-full',
+                  // @todo(vercel/og)
+                  ' bg-breeze ring-1 ring-[#0f0f0f]',
+                )}
               />
             </div>
           </div>
           <div
+            style={{
+              verticalAlign: 'top',
+            }}
             tw={cx(
               'flex w-full flex-row justify-center',
               'mb-12',
@@ -156,26 +160,26 @@ export default async function Image() {
               '',
               '',
             )}
-            style={{
-              verticalAlign: 'top',
-            }}
           >
             <div tw={cx('flex flex-row flex-wrap')}>
               <span
+                style={{
+                  fontWeight: 900,
+                }}
                 tw={cx(
                   'mx-16 px-16 text-center text-6xl uppercase',
                   // @todo(vercel-og)
                   'font-black',
                 )}
-                style={{
-                  fontWeight: 900,
-                }}
               >
                 {item.title}
               </span>
             </div>
           </div>
           <div
+            style={{
+              verticalAlign: 'top',
+            }}
             tw={cx(
               'flex w-full flex-row justify-center text-center',
               'mb-12',
@@ -184,11 +188,11 @@ export default async function Image() {
               '',
               '',
             )}
-            style={{
-              verticalAlign: 'top',
-            }}
           >
             <div
+              style={{
+                gap: '1.25rem',
+              }}
               tw={cx(
                 'flex flex-row flex-wrap justify-center text-center',
                 // @todo(vercel/og)
@@ -196,9 +200,6 @@ export default async function Image() {
                 '',
                 '',
               )}
-              style={{
-                gap: '1.25rem',
-              }}
             >
               <span tw={cx('mx-4 w-full px-4 text-center text-3xl font-bold')}>
                 {item.description}

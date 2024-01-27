@@ -3,6 +3,7 @@
 
 import { getDataFromCache, getSegmentInfo } from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
+
 import _orderBy from 'lodash/orderBy.js'
 import { NextRequest, NextResponse } from 'next/server'
 import { notion } from 'next-notion/helper'
@@ -51,16 +52,16 @@ export async function GET(
   const isDev = process.env.NODE_ENV === 'development'
   const isPublishedAnd = isDev
     ? {
-        timestamp: 'created_time',
         created_time: {
           after: '2020-01-01T00:00:00.000Z',
         },
+        timestamp: 'created_time',
       }
     : {
-        property: 'Is.Published',
         checkbox: {
           equals: true,
         },
+        property: 'Is.Published',
       }
   // @todo(types)
   const options: any = {
@@ -93,49 +94,17 @@ export async function GET(
   const url = `https://${process.env.NEXT_PUBLIC__SITE}`
   const siteUrl = `${url}${podcastData.href}`
   feed = new Podcast({
-    imageUrl: podcastData?.seoImage?.external?.url,
-    title: podcastData.title,
-    description: podcastData.seoDescription,
-    generator: 'ngop[odcast]',
-    // feedUrl: `${url}/${routeType}/${slug}`,
-    siteUrl,
-    docs: `${url}`,
     author: podcastData?.author,
-    // managingEditor: podcast['Author'],
-    // webMaster: podcast['Author'],
-    copyright: `${year} ${podcastData?.author}`,
     // language: 'en-US', // optional, used only in RSS 2.0, possible values: http://www.w3.org/TR/REC-html40/struct/dirlang.html#langcodes
     categories: podcastData.categories.map((category) => category.name),
-    pubDate: episodes[0].dateIso,
-    // ttl: 60, // @int Number of minutes feed can be cached before refreshing from source
-    itunesAuthor: podcastData?.author,
-    itunesSubtitle: podcastData?.subtitle,
-    itunesSummary: podcastData?.seoDescription,
-    itunesOwner: {
-      name: podcastData?.author,
-      email: podcastData?.authorEmail,
-    },
-    itunesExplicit: podcastData.isExplicit ? 'yes' : 'no',
-    itunesCategory: podcastData.categories.map((category) => ({
-      text: category.name,
-      subcats: {},
-    })),
-    itunesImage: podcastData?.seoImage?.external?.url,
-    itunesType: podcastData.type,
-    customNamespaces: {
-      atom: 'http://www.w3.org/2005/Atom',
-      content: 'http://purl.org/rss/1.0/modules/content/',
-      googleplay: 'http://www.google.com/schemas/play-podcasts/1.0',
-      itunes: 'http://www.itunes.com/dtds/podcast-1.0.dtd',
-      media: 'http://search.yahoo.com/mrss',
-      podcast: 'https://podcastindex.org/namespace/1.0',
-    },
+    // webMaster: podcast['Author'],
+    copyright: `${year} ${podcastData?.author}`,
     customElements: [
       {
         'atom:link': {
           _attr: {
-            rel: 'self',
             href: siteUrl,
+            rel: 'self',
             type: 'application/rss+xml',
           },
         },
@@ -149,6 +118,38 @@ export async function GET(
         ],
       },
     ],
+    customNamespaces: {
+      atom: 'http://www.w3.org/2005/Atom',
+      content: 'http://purl.org/rss/1.0/modules/content/',
+      googleplay: 'http://www.google.com/schemas/play-podcasts/1.0',
+      itunes: 'http://www.itunes.com/dtds/podcast-1.0.dtd',
+      media: 'http://search.yahoo.com/mrss',
+      podcast: 'https://podcastindex.org/namespace/1.0',
+    },
+    description: podcastData.seoDescription,
+    docs: `${url}`,
+    // managingEditor: podcast['Author'],
+    generator: 'ngop[odcast]',
+    imageUrl: podcastData?.seoImage?.external?.url,
+    // ttl: 60, // @int Number of minutes feed can be cached before refreshing from source
+    itunesAuthor: podcastData?.author,
+    itunesCategory: podcastData.categories.map((category) => ({
+      subcats: {},
+      text: category.name,
+    })),
+    itunesExplicit: podcastData.isExplicit ? 'yes' : 'no',
+    itunesImage: podcastData?.seoImage?.external?.url,
+    itunesOwner: {
+      email: podcastData?.authorEmail,
+      name: podcastData?.author,
+    },
+    itunesSubtitle: podcastData?.subtitle,
+    itunesSummary: podcastData?.seoDescription,
+    itunesType: podcastData.type,
+    pubDate: episodes[0].dateIso,
+    // feedUrl: `${url}/${routeType}/${slug}`,
+    siteUrl,
+    title: podcastData.title,
   })
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -162,46 +163,46 @@ export async function GET(
     // console.dir(`ep`)
     // console.dir(episode.mp3[0][episode.mp3[0].type].url)
     feed.addItem({
-      title: episode.title,
-      description: episode.seoDescription,
-      url: `${url}${episode.href}`,
-      // @important GUID is Unique!
-      guid: episode.id,
-      categories: podcastData.categories.map((category) => category.name),
       author: podcastData.author,
-      date: episode.dateIso,
+      categories: podcastData.categories.map((category) => category.name),
       content: episode.seoDescription,
-      itunesAuthor: podcastData.author,
-      itunesExplicit: podcastData.isExplicit ? 'yes' : 'no',
-      itunesSubtitle: episode.subtitle,
-      itunesSummary: episode.seoDescription,
-      itunesDuration: episode.duration,
-      // itunesKeywords: ['Jer&Ky', 'JerKy', 'MailShrimp'],
-      itunesImage: episode?.seoImage?.external?.url,
-      itunesSeason: episode.season,
-      itunesEpisode: episode.episode,
-      itunesTitle: episode.title,
-      itunesEpisodeType: episode?.type?.name ?? 'full',
-      // customNamespaces: [],
       // customElements: [{ 'itunes:subtitle': episode['Subtitle'] }],
       customElements: [
         {
           // 'content:encoded': `<![CDATA[ <b>test</b> ]]`,
           enclosure: {
             _attr: {
-              url: `${episode.mp3[0][episode.mp3[0].type].url}?utm_source=Podcast`,
               length: episode?.duration,
               type: 'audio/mpeg',
+              url: `${episode.mp3[0][episode.mp3[0].type].url}?utm_source=Podcast`,
             },
           },
           'media:content': {
             _attr: {
-              url: episode.mp3,
               type: 'audio/mpeg',
+              url: episode.mp3,
             },
           },
         },
       ],
+      date: episode.dateIso,
+      description: episode.seoDescription,
+      // @important GUID is Unique!
+      guid: episode.id,
+      itunesAuthor: podcastData.author,
+      itunesDuration: episode.duration,
+      itunesEpisode: episode.episode,
+      itunesEpisodeType: episode?.type?.name ?? 'full',
+      itunesExplicit: podcastData.isExplicit ? 'yes' : 'no',
+      // itunesKeywords: ['Jer&Ky', 'JerKy', 'MailShrimp'],
+      itunesImage: episode?.seoImage?.external?.url,
+      itunesSeason: episode.season,
+      itunesSubtitle: episode.subtitle,
+      itunesSummary: episode.seoDescription,
+      itunesTitle: episode.title,
+      title: episode.title,
+      // customNamespaces: [],
+      url: `${url}${episode.href}`,
     })
   })
 

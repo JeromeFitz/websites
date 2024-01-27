@@ -1,8 +1,10 @@
 import { cx } from '@jeromefitz/ds/utils/cx'
 import { getPageDataFromNotion } from '@jeromefitz/shared/notion/utils'
+
 import { Suspense } from 'react'
 
 import type { PageObjectResponseVenue } from '~app/(notion)/_config'
+
 import { getPropertyTypeDataVenue } from '~app/(notion)/_config'
 
 function VenueLoading() {

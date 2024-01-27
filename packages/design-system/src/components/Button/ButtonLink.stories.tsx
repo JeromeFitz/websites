@@ -1,13 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
 import { cx } from '../../utils/cx'
-
 import { ButtonLink } from './ButtonLink'
 
 const meta = {
+  component: ButtonLink,
   // eslint-disable-next-line storybook/no-title-property-in-meta
   title: 'Components/ButtonLink',
-  component: ButtonLink,
 } satisfies Meta<typeof ButtonLink>
 
 export default meta
@@ -22,9 +21,9 @@ const values = {
 export const Default: Story = {
   args: {
     children: values.link.name,
+    className: cx(),
     href: values.href,
     target: '_blank',
-    className: cx(),
   },
 }
 

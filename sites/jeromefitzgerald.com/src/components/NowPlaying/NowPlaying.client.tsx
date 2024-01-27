@@ -5,6 +5,7 @@ import { Tags } from '@jeromefitz/ds/components/Section'
 import { cx } from '@jeromefitz/ds/utils/cx'
 import { ImageClient as NextImage } from '@jeromefitz/shared/components/Notion/Blocks/Image.client'
 import { fetcher } from '@jeromefitz/shared/lib'
+
 // import * as AspectRatio from '@radix-ui/react-aspect-ratio'
 import { slug as _slug } from 'github-slugger'
 import _map from 'lodash/map.js'
@@ -92,9 +93,9 @@ function NowPlayingClient() {
           {...image}
           alt={imageLabel}
           className={cx('size-full object-cover')}
+          order={99}
           placeholder="blur"
           role="img"
-          order={99}
         />
         {/* </AspectRatio.Root> */}
       </div>
@@ -141,19 +142,19 @@ function NowPlayingClient() {
               'flex flex-row content-center items-center justify-items-start gap-[0.5rem]',
             )}
           >
-            <Tags tags={tags} classNameTag="px-3 py-2 mb-4 mr-4" />
+            <Tags classNameTag="px-3 py-2 mb-4 mr-4" tags={tags} />
           </div>
           {/* @todo(types) */}
           {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
           {/* @ts-ignore */}
           <ButtonLink
             aria-label={`Listen to “${track?.name}” on Spotify`}
-            href={_href}
             className={cx(
               'spotify-button-outline',
               'flex-row items-center justify-center gap-1 align-middle',
               'w-1/3',
             )}
+            href={_href}
           >
             <>Spotify</>
             <span className="size-4">

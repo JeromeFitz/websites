@@ -30,8 +30,8 @@ function FathomAnalytics() {
   useEffect(() => {
     if (!pathname) return
     trackPageview({
-      url: pathname + searchParams.toString(),
       referrer: document.referrer,
+      url: pathname + searchParams.toString(),
     })
   }, [pathname, searchParams])
 

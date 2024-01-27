@@ -27,4 +27,4 @@ function getImageExpiration(block) {
     : block[block?.type]?.file?.expiry_time
 }
 
-export { getImageAlt, getImageUrl, getImageExpiration }
+export { getImageAlt, getImageExpiration, getImageUrl }

@@ -46,24 +46,24 @@ const shows = [
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const sitemapRoot = root.map((slug) => ({
-  url: `${siteUrl}`,
   lastModified,
+  url: `${siteUrl}`,
 }))
 const sitemapEvents = events.map((slug) => ({
-  url: `${siteUrl}/events/${slug}`,
   lastModified,
+  url: `${siteUrl}/events/${slug}`,
 }))
 const sitemapPages = pages.map((slug) => ({
-  url: `${siteUrl}/${slug}`,
   lastModified,
+  url: `${siteUrl}/${slug}`,
 }))
 const sitemapPodcasts = podcasts.map((slug) => ({
-  url: `${siteUrl}/${slug}`,
   lastModified,
+  url: `${siteUrl}/${slug}`,
 }))
 const sitemapShows = shows.map((slug) => ({
-  url: `${siteUrl}/shows/${slug}`,
   lastModified,
+  url: `${siteUrl}/shows/${slug}`,
 }))
 
 function sitemap(): MetadataRoute.Sitemap {

@@ -1,4 +1,5 @@
 import type { DividerBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints.js'
+
 import { forwardRef } from 'react'
 
 import { getBlockKey } from '../Notion.utils'
@@ -13,7 +14,7 @@ const Divider = forwardRef(function Divider(props: any, ref: any) {
     className: props?.className ?? undefined,
   }
 
-  return <Component ref={ref} key={key} {...componentProps} />
+  return <Component key={key} ref={ref} {...componentProps} />
 })
 
 export { Divider }

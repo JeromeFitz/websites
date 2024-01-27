@@ -16,31 +16,22 @@ function getPageData(properties): any {
   const data = {
     href: getPropertyTypeDataPage(properties, 'Slug.Preview'),
     id: getPropertyTypeDataPage(properties, 'ID'),
-    title: getPropertyTypeDataPage(properties, 'Title'),
-    /**
-     * Is Information
-     */
     isActive: getPropertyTypeDataPage(properties, 'Is.Active'),
     isIndexed: getPropertyTypeDataPage(properties, 'Is.Indexed'),
     isPublished: getPropertyTypeDataPage(properties, 'Is.Published'),
     /**
-     * SEO Information
+     * Testing
      */
+    selectTest: getPropertyTypeDataPage(properties, 'Select.Test'),
     seoDescription: getPropertyTypeDataPage(properties, 'SEO.Description'),
-    seoKeywords: getPropertyTypeDataPage(properties, 'SEO.Keywords'),
+    seoImage: getPropertyTypeDataPage(properties, 'SEO.Image')[0],
     seoImageDescription: getPropertyTypeDataPage(
       properties,
       'SEO.Image.Description',
     ),
-    seoImage: getPropertyTypeDataPage(properties, 'SEO.Image')[0],
-    /**
-     * Tag Information
-     */
+    seoKeywords: getPropertyTypeDataPage(properties, 'SEO.Keywords'),
     tags: [],
-    /**
-     * Testing
-     */
-    selectTest: getPropertyTypeDataPage(properties, 'Select.Test'),
+    title: getPropertyTypeDataPage(properties, 'Title'),
   }
   return data
 }

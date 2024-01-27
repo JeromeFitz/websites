@@ -21,13 +21,6 @@ radixColors.map((color) => {
    * @note(radix) Steps 3–5: Component backgrounds
    */
   buttons['.' + color + '-button'] = {
-    backgroundColor: `var(--${color}3)`,
-    color: `var(--${color}11)`,
-    '&:hover': {
-      '--tw-ring-color': `var(--${color}11)`,
-      backgroundColor: `var(--${color}4)`,
-      color: `var(--${color}11)`,
-    },
     '&:active': {
       '--tw-ring-color': `var(--${color}12)`,
       backgroundColor: `var(--${color}5)`,
@@ -37,19 +30,19 @@ radixColors.map((color) => {
       '--tw-ring-color': `var(--${color}12)`,
       backgroundColor: `var(--${color}6)`,
     },
+    '&:hover': {
+      '--tw-ring-color': `var(--${color}11)`,
+      backgroundColor: `var(--${color}4)`,
+      color: `var(--${color}11)`,
+    },
+    backgroundColor: `var(--${color}3)`,
+    color: `var(--${color}11)`,
   }
   /**
    * @note(radix) Steps 3–5: Component backgrounds
    */
   // @note(a11y) Radix-UI uses `4`, but Page Insights warns
   buttons['.' + color + '-button-cta'] = {
-    backgroundColor: `var(--${color}3)`,
-    color: `var(--${color}11)`,
-    '&:hover': {
-      '--tw-ring-color': `var(--${color}11)`,
-      backgroundColor: `var(--${color}5)`,
-      color: `var(--${color}11)`,
-    },
     '&:active': {
       '--tw-ring-color': `var(--${color}12)`,
       backgroundColor: `var(--${color}6)`,
@@ -59,20 +52,18 @@ radixColors.map((color) => {
       '--tw-ring-color': `var(--${color}12)`,
       backgroundColor: `var(--${color}7)`,
     },
+    '&:hover': {
+      '--tw-ring-color': `var(--${color}11)`,
+      backgroundColor: `var(--${color}5)`,
+      color: `var(--${color}11)`,
+    },
+    backgroundColor: `var(--${color}3)`,
+    color: `var(--${color}11)`,
   }
   /**
    * @note(radix) Steps 6–8: Borders
    */
   buttons['.' + color + '-button-outline'] = {
-    '--tw-ring-color': `var(--${color}6)`,
-    backgroundColor: `var(--${color}1)`,
-    borderColor: `var(--${color}6)`,
-    borderWidth: `2px`,
-    color: `var(--${color}11)`,
-    '&:hover': {
-      '--tw-ring-color': `var(--${color}7)`,
-      borderColor: `var(--${color}7)`,
-    },
     '&:active': {
       '--tw-ring-color': `var(--${color}8)`,
       backgroundColor: `var(--${color}2)`,
@@ -83,17 +74,20 @@ radixColors.map((color) => {
       '--tw-ring-color': `var(--${color}9)`,
       borderColor: `var(--${color}9)`,
     },
+    '&:hover': {
+      '--tw-ring-color': `var(--${color}7)`,
+      borderColor: `var(--${color}7)`,
+    },
+    '--tw-ring-color': `var(--${color}6)`,
+    backgroundColor: `var(--${color}1)`,
+    borderColor: `var(--${color}6)`,
+    borderWidth: `2px`,
+    color: `var(--${color}11)`,
   }
   /**
    * @note(radix) Steps 9–10: Solid backgrounds
    */
   buttons['.' + color + '-button-solid'] = {
-    backgroundColor: `var(--${color}9)`,
-    color: foregroundTextBlack.includes(color) ? `black` : `white`,
-    '&:hover': {
-      '--tw-ring-color': `var(--${color}11)`,
-      backgroundColor: `var(--${color}10)`,
-    },
     '&:active': {
       '--tw-ring-color': `var(--${color}12)`,
       backgroundColor: `var(--${color}11)`,
@@ -102,18 +96,17 @@ radixColors.map((color) => {
       '--tw-ring-color': `var(--${color}12)`,
       // backgroundColor: `var(--${color}12)`,
     },
+    '&:hover': {
+      '--tw-ring-color': `var(--${color}11)`,
+      backgroundColor: `var(--${color}10)`,
+    },
+    backgroundColor: `var(--${color}9)`,
+    color: foregroundTextBlack.includes(color) ? `black` : `white`,
   }
   /**
    * @note(radix) Transparent backgrounds
    */
   buttons['.' + color + '-button-transparent'] = {
-    backgroundColor: `transparent`,
-    color: `var(--${color}11)`,
-    '&:hover': {
-      '--tw-ring-color': `var(--${color}11)`,
-      backgroundColor: `var(--${color}4)`,
-      color: `var(--${color}11)`,
-    },
     '&:active': {
       '--tw-ring-color': `var(--${color}12)`,
       backgroundColor: `var(--${color}5)`,
@@ -123,7 +116,14 @@ radixColors.map((color) => {
       '--tw-ring-color': `var(--${color}12)`,
       backgroundColor: `var(--${color}6)`,
     },
+    '&:hover': {
+      '--tw-ring-color': `var(--${color}11)`,
+      backgroundColor: `var(--${color}4)`,
+      color: `var(--${color}11)`,
+    },
+    backgroundColor: `transparent`,
+    color: `var(--${color}11)`,
   }
 })
 
-module.exports = { buttons, buttonTypes }
+module.exports = { buttonTypes, buttons }
