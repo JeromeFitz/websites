@@ -261,9 +261,6 @@ importers:
       '@types/jest':
         specifier: 29.5.11
         version: 29.5.11
-      '@types/testing-library__jest-dom':
-        specifier: 5.14.9
-        version: 5.14.9
       jest:
         specifier: 29.7.0
         version: 29.7.0(@types/node@20.11.8)(ts-node@10.9.2)
@@ -8930,12 +8927,6 @@ packages:
 
   /@types/stack-utils@2.0.1:
     resolution: {integrity: sha512-Hl219/BT5fLAaz6NDkSuhzasy49dwQS/DSdu4MdggFB8zcXv7vflBI3xp7FEmkmdDkBUI2bPUNeMttp2knYdxw==}
-    dev: true
-
-  /@types/testing-library__jest-dom@5.14.9:
-    resolution: {integrity: sha512-FSYhIjFlfOpGSRyVoMBMuS3ws5ehFQODymf3vlI7U1K8c7PHwWwFY7VREfmsuzHSOnoKs/9/Y983ayOs7eRzqw==}
-    dependencies:
-      '@types/jest': 29.5.11
     dev: true
 
   /@types/title@3.4.3:
