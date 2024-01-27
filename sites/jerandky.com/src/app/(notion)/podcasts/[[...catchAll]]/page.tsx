@@ -13,20 +13,22 @@
 
 import {
   getDataFromCache,
-  getSegmentInfo,
   getDatabaseQuery,
-} from '@jeromefitz/shared/src/notion/utils'
+  getSegmentInfo,
+} from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
+
 import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints'
 // import isEqual from 'lodash/isEqual'
 // import uniqWith from 'lodash/uniqWith'
 import type { Metadata } from 'next'
-import { getPropertyTypeData } from 'next-notion/src/utils'
+
+import { getPropertyTypeData } from 'next-notion/utils'
 
 import type { PageObjectResponsePodcast } from '../../_config'
+
 import { CONFIG, getPageData, getPodcastData } from '../../_config'
 import { generateMetadataCustom } from '../../_config/temp/generateMetadataCustom'
-
 import { EpisodeSlug } from './_components/Episode.Slug'
 import { Listing as PodcastListing } from './_components/Podcast.Listing'
 import { Slug as PodcastSlug } from './_components/Podcast.Slug'

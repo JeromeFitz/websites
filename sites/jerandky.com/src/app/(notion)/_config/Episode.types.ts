@@ -15,9 +15,10 @@ import type {
   TitlePropertyItemObjectResponse,
   UrlPropertyItemObjectResponse,
 } from '@notionhq/client/build/src/api-endpoints'
-import type { Spread } from 'next-notion/src/Notion.types'
+import type { Spread } from 'next-notion/Notion.types'
 
 type PropertiesEpisode = {
+  Date: DatePropertyItemObjectResponse
   'Date.DayOfMonth': FormulaPropertyItemObjectResponse
   'Date.DayOfMonthOrdinal': FormulaPropertyItemObjectResponse
   'Date.DayOfWeek': FormulaPropertyItemObjectResponse
@@ -33,6 +34,7 @@ type PropertiesEpisode = {
   'Date.Timezone': FormulaPropertyItemObjectResponse
   'Date.WeekNumber': FormulaPropertyItemObjectResponse
   'Date.Year': FormulaPropertyItemObjectResponse
+  ID: FormulaPropertyItemObjectResponse
   'Is.Active': CheckboxPropertyItemObjectResponse
   'Is.Explicit': CheckboxPropertyItemObjectResponse
   'Is.Indexed': CheckboxPropertyItemObjectResponse
@@ -45,12 +47,12 @@ type PropertiesEpisode = {
   'Meta.Season': NumberPropertyItemObjectResponse
   'Meta.Spotify.ID': RichTextPropertyItemObjectResponse
   'Meta.Spotify.URL': UrlPropertyItemObjectResponse
+  'Meta.Time': RichTextPropertyItemObjectResponse
   'Meta.Time.Duration': FormulaPropertyItemObjectResponse
   'Meta.Time.Hours': FormulaPropertyItemObjectResponse
   'Meta.Time.Minutes': FormulaPropertyItemObjectResponse
   'Meta.Time.Seconds': FormulaPropertyItemObjectResponse
   'Meta.Time.Valid': FormulaPropertyItemObjectResponse
-  'Meta.Time': RichTextPropertyItemObjectResponse
   'Meta.Type': SelectPropertyItemObjectResponse
   'Relation.People.Guest': RelationPropertyItemObjectResponse
   'Relation.People.SoundEngineer': RelationPropertyItemObjectResponse
@@ -70,16 +72,14 @@ type PropertiesEpisode = {
   'Rollup.Venues.Slug': RollupPropertyItemObjectResponse
   'Rollup.Venues.Title': RollupPropertyItemObjectResponse
   'SEO.Description': RichTextPropertyItemObjectResponse
-  'SEO.Image.Description': RichTextPropertyItemObjectResponse
   'SEO.Image': FilesPropertyItemObjectResponse
+  'SEO.Image.Description': RichTextPropertyItemObjectResponse
   'SEO.Keywords': RichTextPropertyItemObjectResponse
-  'Slug.Preview': FormulaPropertyItemObjectResponse
-  Date: DatePropertyItemObjectResponse
-  ID: FormulaPropertyItemObjectResponse
   Slug: RichTextPropertyItemObjectResponse
-  Title: TitlePropertyItemObjectResponse
+  'Slug.Preview': FormulaPropertyItemObjectResponse
   //
   Subtitle: RichTextPropertyItemObjectResponse
+  Title: TitlePropertyItemObjectResponse
 }
 type PageObjectResponseEpisode = Spread<
   [PageObjectResponse, { properties: PropertiesEpisode }]

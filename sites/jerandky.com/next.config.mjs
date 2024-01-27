@@ -2,6 +2,7 @@ import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'url'
 
 import nextConfig from '@jeromefitz/next-config/next.config.mjs'
+
 import dotenv from 'dotenv'
 import isCI from 'is-ci'
 if (!isCI) {
@@ -28,7 +29,8 @@ const serverComponentsExternalPackages = [
  *  can we avoid the hack in app/design-system/page ?
  *  also -- which one is the good one here, haha
  */
-const tp = ['@jeromefitz/ds', '@jeromefitz/shared', 'next-notion']
+// const tp = ['@jeromefitz/ds', '@jeromefitz/shared', 'next-notion']
+const tp = []
 // const transpilePackages = isCI ? [] : []
 const transpilePackages = tp
 // const transpilePackages = isCI ? [] : tp

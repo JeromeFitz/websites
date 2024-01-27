@@ -8,17 +8,16 @@ import {
   SectionWrapper,
   // Tags,
 } from '@jeromefitz/ds/components/Section'
-import {
-  getDataFromCache,
-  getDatabaseQuery,
-} from '@jeromefitz/shared/src/notion/utils'
+import { getDataFromCache, getDatabaseQuery } from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
+
 import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints'
+
 import _filter from 'lodash/filter'
 import _orderBy from 'lodash/orderBy'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
-import { getPropertyTypeData } from 'next-notion/src/utils'
+import { getPropertyTypeData } from 'next-notion/utils'
 
 import { CONFIG, getPageData, getPodcastData } from '../../../_config'
 // import type { PageObjectResponsePodcast } from '../../../_config'
@@ -49,8 +48,8 @@ function ListingTemp({ data }) {
       {podcasts.map((podcast) => {
         if (!podcast?.isPublished) return null
         return (
-          <li key={`podcasts-podcast-${podcast?.id}`} className="my-1 py-1">
-            <Anchor href={podcast?.href} className="text-base md:text-xl">
+          <li className="my-1 py-1" key={`podcasts-podcast-${podcast?.id}`}>
+            <Anchor className="text-base md:text-xl" href={podcast?.href}>
               {podcast?.title}
             </Anchor>
           </li>
