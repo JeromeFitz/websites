@@ -23,7 +23,7 @@
     "lint:packages": "syncpack lint",
     "lint:repo": "manypkg check",
     "preinstall": "npx only-allow pnpm",
-    "prepare": "is-ci || husky install",
+    "prepare": "is-ci || husky",
     "semantic-release": "pnpm run semantic-release:mono",
     "semantic-release:dry": "pnpm --filter jeromefitzgerald.com -r --workspace-concurrency=1 exec -- npx --no-install semantic-release --dry-run",
     "semantic-release:mono": "pnpm --filter jeromefitzgerald.com -r --workspace-concurrency=1 exec -- npx --no-install semantic-release"
@@ -43,7 +43,7 @@
     "ccommit": "2.0.0",
     "concurrently": "8.2.2",
     "dotenv": "16.4.1",
-    "husky": "8.0.3",
+    "husky": "9.0.6",
     "is-ci": "3.0.1",
     "lodash": "4.17.21",
     "semantic-release": "23.0.0",
