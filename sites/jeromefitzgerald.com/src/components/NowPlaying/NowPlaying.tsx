@@ -7,6 +7,7 @@ import {
   SectionWrapper,
 } from '@jeromefitz/ds/components/Section'
 import { Separator } from '@jeromefitz/ds/components/Separator'
+
 import { Suspense } from 'react'
 
 import { NowPlayingClient } from './NowPlaying.client'

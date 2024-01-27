@@ -10,9 +10,9 @@ import { lazy } from 'react'
 const OBJECTS = { BLOCK: 'block', LIST: 'list' }
 const TYPES = {
   BLOCK: 'block',
+  BULLETED_LIST_ITEM: 'bulleted_list_item',
   CHILD_PAGE: 'child_page',
   COLUMN: 'column',
-  BULLETED_LIST_ITEM: 'bulleted_list_item',
   NUMBERED_LIST_ITEM: 'numbered_list_item',
 }
 
@@ -38,82 +38,82 @@ const TYPES = {
  */
 const blocks = {
   bulleted_list: {
+    className: '',
     component: lazy(() => import('./blocks/ListBulleted')),
     // component: ListBulleted,
     element: 'ul',
-    className: '',
   },
   bulleted_list_item: {
+    className: '',
     component: lazy(() => import('./blocks/RichText')),
     // component: RichText,
     element: 'li',
-    className: '',
   },
   callout: {
+    className: '',
     component: lazy(() => import('./blocks/RichText')),
     // component: RichText,
     element: 'blockquote',
-    className: '',
   },
   column: {
+    className: '',
     component: 'div',
     element: 'div',
-    className: '',
   },
   column_list: {
+    className: '',
     component: lazy(() => import('./blocks/ListColumn')),
     // component: ListColumn,
     element: 'div',
-    className: '',
   },
   divider: {
+    className: '',
     component: lazy(() => import('./blocks/Divider')),
     // component: Divider,
     element: 'hr',
-    className: '',
   },
   heading_1: {
+    className: '',
     component: lazy(() => import('./blocks/RichText')),
     // component: RichText,
     element: 'h1',
-    className: '',
   },
   heading_2: {
+    className: '',
     component: lazy(() => import('./blocks/RichText')),
     // component: RichText,
     element: 'h2',
-    className: '',
   },
   heading_3: {
+    className: '',
     component: lazy(() => import('./blocks/RichText')),
     // component: RichText,
     element: 'h3',
-    className: '',
   },
   numbered_list: {
+    className: '',
     component: lazy(() => import('./blocks/ListBulleted')),
     // component: ListBulleted,
     element: 'ol',
-    className: '',
   },
   numbered_list_item: {
+    className: '',
     component: lazy(() => import('./blocks/RichText')),
     // component: RichText,
     element: 'li',
-    className: '',
   },
   paragraph: {
+    className: '',
     component: lazy(() => import('./blocks/RichText')),
     // component: RichText,
     element: 'p',
-    className: '',
   },
   quote: {
+    className: '',
     component: lazy(() => import('./blocks/RichText')),
     // component: RichText,
     element: 'blockquote',
-    className: '',
   },
 }
 
-export { blocks, OBJECTS, TYPES }
+export { OBJECTS, TYPES, blocks }

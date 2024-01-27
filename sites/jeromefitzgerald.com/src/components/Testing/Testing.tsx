@@ -49,8 +49,8 @@ function Testing() {
       <ul>
         {links.map((href, i) => {
           return (
-            <li key={`homepage-link-${i}`} className="my-1 py-1">
-              <Anchor href={href} className="text-base md:text-xl">
+            <li className="my-1 py-1" key={`homepage-link-${i}`}>
+              <Anchor className="text-base md:text-xl" href={href}>
                 {href}
               </Anchor>
             </li>

@@ -10,12 +10,15 @@ import {
 } from '@jeromefitz/ds/components/Section'
 import { getDataFromCache, getDatabaseQuery } from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
+
 import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints.js'
+
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 import { getPropertyTypeData } from 'next-notion/utils'
 
 import type { PageObjectResponsePerson } from '~app/(notion)/_config'
+
 import { CONFIG } from '~app/(notion)/_config'
 import { Notion as Blocks } from '~components/Notion'
 // import { Relations } from '~components/Relations/index'

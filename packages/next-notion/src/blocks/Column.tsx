@@ -2,6 +2,7 @@ import type {
   BulletedListItemBlockObjectResponse,
   NumberedListItemBlockObjectResponse,
 } from '@notionhq/client/build/src/api-endpoints.js'
+
 import { forwardRef } from 'react'
 
 import { NotionBlocks as Blocks } from '../Notion.Blocks'
@@ -25,10 +26,10 @@ const Column = forwardRef(function Column(props: any, ref: any) {
   }
 
   return (
-    <Component ref={ref} key={key} {...componentProps}>
+    <Component key={key} ref={ref} {...componentProps}>
       {items.map((item, order) => {
         const blocksKey = `${key}--${order}`
-        return <Blocks key={blocksKey} blocks={props?.blocks} data={item} />
+        return <Blocks blocks={props?.blocks} data={item} key={blocksKey} />
       })}
     </Component>
   )

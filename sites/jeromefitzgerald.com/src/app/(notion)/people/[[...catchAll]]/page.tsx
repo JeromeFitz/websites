@@ -1,16 +1,19 @@
 import {
   getDataFromCache,
-  getSegmentInfo,
   getDatabaseQuery,
+  getSegmentInfo,
 } from '@jeromefitz/shared/notion/utils'
+
 import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints.js'
 // import isEqual from 'lodash/isEqual'
 // import uniqWith from 'lodash/uniqWith'
 import type { Metadata } from 'next'
+
 import { getPropertyTypeData } from 'next-notion/utils'
 
 import type { PageObjectResponsePerson } from '~app/(notion)/_config'
-import { getPageData, getPersonData, CONFIG } from '~app/(notion)/_config'
+
+import { CONFIG, getPageData, getPersonData } from '~app/(notion)/_config'
 import { generateMetadataCustom } from '~app/(notion)/_config/temp/generateMetadataCustom'
 
 import { Listing } from './_components/People.Listing'

@@ -4,25 +4,25 @@ import type {
 } from '@notionhq/client/build/src/api-endpoints.js'
 
 type ApiColor =
+  | 'blue'
+  | 'blue_background'
+  | 'brown'
+  | 'brown_background'
   | 'default'
   | 'gray'
-  | 'brown'
-  | 'orange'
-  | 'yellow'
-  | 'green'
-  | 'blue'
-  | 'purple'
-  | 'pink'
-  | 'red'
   | 'gray_background'
-  | 'brown_background'
-  | 'orange_background'
-  | 'yellow_background'
+  | 'green'
   | 'green_background'
-  | 'blue_background'
-  | 'purple_background'
+  | 'orange'
+  | 'orange_background'
+  | 'pink'
   | 'pink_background'
+  | 'purple'
+  | 'purple_background'
+  | 'red'
   | 'red_background'
+  | 'yellow'
+  | 'yellow_background'
 
 /**
  * @note(typescript) we need to take over the Notion returns
@@ -33,7 +33,7 @@ type OptionalPropertyNames<T> = {
 }[keyof T]
 
 type SpreadProperties<L, R, K extends keyof L & keyof R> = {
-  [P in K]: L[P] | Exclude<R[P], undefined>
+  [P in K]: Exclude<R[P], undefined> | L[P]
 }
 
 type Id<T> = T extends infer U ? { [K in keyof U]: U[K] } : never
@@ -53,50 +53,50 @@ type Spread<A extends readonly [...any]> = A extends [infer L, ...infer R]
  */
 type Direction = 'ascending' | 'descending'
 type SortItem = {
-  property: string
   direction: Direction
+  property: string
 }
 type FilterType =
-  | 'equals'
-  | 'does_not_equal'
   | 'contains'
   | 'does_not_contain'
-  | 'starts_with'
+  | 'does_not_equal'
   | 'ends_with'
+  | 'equals'
+  | 'starts_with'
 
 type BulletedListBlockObjectResponse = {
-  type: 'bulleted_list'
-  bulleted_list: any
-  parent:
-    | { type: 'database_id'; database_id: string }
-    | { type: 'page_id'; page_id: string }
-    | { type: 'block_id'; block_id: string }
-    | { type: 'workspace'; workspace: true }
-  object: 'block'
-  id: string
-  created_time: string
-  created_by: PartialUserObjectResponse
-  last_edited_time: string
-  last_edited_by: PartialUserObjectResponse
-  has_children: boolean
   archived: boolean
+  bulleted_list: any
+  created_by: PartialUserObjectResponse
+  created_time: string
+  has_children: boolean
+  id: string
+  last_edited_by: PartialUserObjectResponse
+  last_edited_time: string
+  object: 'block'
+  parent:
+    | { block_id: string; type: 'block_id' }
+    | { database_id: string; type: 'database_id' }
+    | { page_id: string; type: 'page_id' }
+    | { type: 'workspace'; workspace: true }
+  type: 'bulleted_list'
 }
 type NumberedListBlockObjectResponse = {
-  type: 'numbered_list'
-  numbered_list: any
-  parent:
-    | { type: 'database_id'; database_id: string }
-    | { type: 'page_id'; page_id: string }
-    | { type: 'block_id'; block_id: string }
-    | { type: 'workspace'; workspace: true }
-  object: 'block'
-  id: string
-  created_time: string
-  created_by: PartialUserObjectResponse
-  last_edited_time: string
-  last_edited_by: PartialUserObjectResponse
-  has_children: boolean
   archived: boolean
+  created_by: PartialUserObjectResponse
+  created_time: string
+  has_children: boolean
+  id: string
+  last_edited_by: PartialUserObjectResponse
+  last_edited_time: string
+  numbered_list: any
+  object: 'block'
+  parent:
+    | { block_id: string; type: 'block_id' }
+    | { database_id: string; type: 'database_id' }
+    | { page_id: string; type: 'page_id' }
+    | { type: 'workspace'; workspace: true }
+  type: 'numbered_list'
 }
 
 type BlockObjectResponseCustom =
@@ -106,46 +106,46 @@ type BlockObjectResponseCustom =
 
 type EmptyObject = Record<string, never>
 type RollupFunction =
-  | 'count'
-  | 'count_values'
-  | 'empty'
-  | 'not_empty'
-  | 'unique'
-  | 'show_unique'
-  | 'percent_empty'
-  | 'percent_not_empty'
-  | 'sum'
   | 'average'
+  | 'checked'
+  | 'count'
+  | 'count_per_group'
+  | 'count_values'
+  | 'date_range'
+  | 'earliest_date'
+  | 'empty'
+  | 'latest_date'
+  | 'max'
   | 'median'
   | 'min'
-  | 'max'
-  | 'range'
-  | 'earliest_date'
-  | 'latest_date'
-  | 'date_range'
-  | 'checked'
-  | 'unchecked'
+  | 'not_empty'
   | 'percent_checked'
-  | 'percent_unchecked'
-  | 'count_per_group'
+  | 'percent_empty'
+  | 'percent_not_empty'
   | 'percent_per_group'
+  | 'percent_unchecked'
+  | 'range'
   | 'show_original'
+  | 'show_unique'
+  | 'sum'
+  | 'unchecked'
+  | 'unique'
 type StringRequest = string
 type SelectColor =
+  | 'blue'
+  | 'brown'
   | 'default'
   | 'gray'
-  | 'brown'
-  | 'orange'
-  | 'yellow'
   | 'green'
-  | 'blue'
-  | 'purple'
+  | 'orange'
   | 'pink'
+  | 'purple'
   | 'red'
+  | 'yellow'
 type SelectPropertyResponse = {
+  color: SelectColor
   id: StringRequest
   name: StringRequest
-  color: SelectColor
 }
 type TimeZoneRequest =
   | 'Africa/Abidjan'
@@ -328,8 +328,8 @@ type TimeZoneRequest =
   | 'America/Pangnirtung'
   | 'America/Paramaribo'
   | 'America/Phoenix'
-  | 'America/Port-au-Prince'
   | 'America/Port_of_Spain'
+  | 'America/Port-au-Prince'
   | 'America/Porto_Acre'
   | 'America/Porto_Velho'
   | 'America/Puerto_Rico'
@@ -540,9 +540,6 @@ type TimeZoneRequest =
   | 'Etc/GMT'
   | 'Etc/GMT+0'
   | 'Etc/GMT+1'
-  | 'Etc/GMT+10'
-  | 'Etc/GMT+11'
-  | 'Etc/GMT+12'
   | 'Etc/GMT+2'
   | 'Etc/GMT+3'
   | 'Etc/GMT+4'
@@ -551,13 +548,11 @@ type TimeZoneRequest =
   | 'Etc/GMT+7'
   | 'Etc/GMT+8'
   | 'Etc/GMT+9'
+  | 'Etc/GMT+10'
+  | 'Etc/GMT+11'
+  | 'Etc/GMT+12'
   | 'Etc/GMT-0'
   | 'Etc/GMT-1'
-  | 'Etc/GMT-10'
-  | 'Etc/GMT-11'
-  | 'Etc/GMT-12'
-  | 'Etc/GMT-13'
-  | 'Etc/GMT-14'
   | 'Etc/GMT-2'
   | 'Etc/GMT-3'
   | 'Etc/GMT-4'
@@ -566,6 +561,11 @@ type TimeZoneRequest =
   | 'Etc/GMT-7'
   | 'Etc/GMT-8'
   | 'Etc/GMT-9'
+  | 'Etc/GMT-10'
+  | 'Etc/GMT-11'
+  | 'Etc/GMT-12'
+  | 'Etc/GMT-13'
+  | 'Etc/GMT-14'
   | 'Etc/GMT0'
   | 'Etc/Greenwich'
   | 'Etc/UCT'
@@ -742,8 +742,8 @@ type TimeZoneRequest =
   | 'WET'
   | 'Zulu'
 type DateResponse = {
+  end: null | string
   start: string
-  end: string | null
   time_zone: TimeZoneRequest | null
 }
 

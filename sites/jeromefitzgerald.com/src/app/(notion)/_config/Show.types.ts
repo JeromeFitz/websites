@@ -13,20 +13,22 @@ import type {
 import type { Spread } from 'next-notion/Notion.types'
 
 type PropertiesShow = {
+  Complexity: SelectPropertyItemObjectResponse
+  ID: FormulaPropertyItemObjectResponse
   'Is.Active': CheckboxPropertyItemObjectResponse
-  'Is.HouseTeam.Past': CheckboxPropertyItemObjectResponse
   'Is.HouseTeam': CheckboxPropertyItemObjectResponse
+  'Is.HouseTeam.Past': CheckboxPropertyItemObjectResponse
   'Is.Indexed': CheckboxPropertyItemObjectResponse
   'Is.Published': CheckboxPropertyItemObjectResponse
   'Is.Recurring': CheckboxPropertyItemObjectResponse
   'Relation.Events.Primary': RelationPropertyItemObjectResponse
   'Relation.Events.Supporting': RelationPropertyItemObjectResponse
-  'Relation.People.Cast.Past': RelationPropertyItemObjectResponse
   'Relation.People.Cast': RelationPropertyItemObjectResponse
+  'Relation.People.Cast.Past': RelationPropertyItemObjectResponse
   'Relation.People.Crew': RelationPropertyItemObjectResponse
+  'Relation.People.Director': RelationPropertyItemObjectResponse
   'Relation.People.Director.Musical': RelationPropertyItemObjectResponse
   'Relation.People.Director.Technical': RelationPropertyItemObjectResponse
-  'Relation.People.Director': RelationPropertyItemObjectResponse
   'Relation.People.Music': RelationPropertyItemObjectResponse
   'Relation.People.Producer': RelationPropertyItemObjectResponse
   'Relation.People.Thanks': RelationPropertyItemObjectResponse
@@ -43,13 +45,11 @@ type PropertiesShow = {
   'Rollup.People.Thanks.Title': RollupPropertyItemObjectResponse
   'Rollup.People.Writer.Title': RollupPropertyItemObjectResponse
   'SEO.Description': RichTextPropertyItemObjectResponse
-  'SEO.Image.Description': RichTextPropertyItemObjectResponse
   'SEO.Image': FilesPropertyItemObjectResponse
+  'SEO.Image.Description': RichTextPropertyItemObjectResponse
   'SEO.Keywords': RichTextPropertyItemObjectResponse
-  'Slug.Preview': FormulaPropertyItemObjectResponse
-  Complexity: SelectPropertyItemObjectResponse
-  ID: FormulaPropertyItemObjectResponse
   Slug: RichTextPropertyItemObjectResponse
+  'Slug.Preview': FormulaPropertyItemObjectResponse
   Tags: MultiSelectPropertyItemObjectResponse
   Title: TitlePropertyItemObjectResponse
   Type: SelectPropertyItemObjectResponse

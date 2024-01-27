@@ -18,9 +18,6 @@ function getEpisodeData(properties) {
   }
 
   const data = {
-    href: getPropertyTypeDataEpisode(properties, 'Slug.Preview'),
-    id: getPropertyTypeDataEpisode(properties, 'ID'),
-    title: getPropertyTypeDataEpisode(properties, 'Title'),
     /**
      * Date Information
      */
@@ -32,12 +29,19 @@ function getEpisodeData(properties) {
     ),
     dayOfWeek: getPropertyTypeDataEpisode(properties, 'Date.DayOfWeek'),
     dayOfWeekAbbr: getPropertyTypeDataEpisode(properties, 'Date.DayOfWeekAbbr'),
-    month: getPropertyTypeDataEpisode(properties, 'Date.Month'),
-    monthName: getPropertyTypeDataEpisode(properties, 'Date.MonthName'),
-    monthNameAbbr: getPropertyTypeDataEpisode(properties, 'Date.MonthNameAbbr'),
-    time: getPropertyTypeDataEpisode(properties, 'Date.Time'),
-    timezone: getPropertyTypeDataEpisode(properties, 'Date.Timezone'),
-    year: getPropertyTypeDataEpisode(properties, 'Date.Year'),
+    duration: getPropertyTypeDataEpisode(properties, 'Meta.Time'),
+    /**
+     * Meta Information
+     */
+    durationInSeconds: getPropertyTypeDataEpisode(properties, 'Meta.Time.Duration'),
+    episode: getPropertyTypeDataEpisode(properties, 'Meta.Episode'),
+    /**
+     * Podcast Information
+     */
+    hosts: getPropertyTypeDataEpisode(properties, 'Rollup.People.Host.Title'),
+    hour: getPropertyTypeDataEpisode(properties, 'Meta.Time.Hours'),
+    href: getPropertyTypeDataEpisode(properties, 'Slug.Preview'),
+    id: getPropertyTypeDataEpisode(properties, 'ID'),
     /**
      * Is Information
      */
@@ -45,20 +49,11 @@ function getEpisodeData(properties) {
     isExplicit: getPropertyTypeDataEpisode(properties, 'Is.Explicit'),
     isIndexed: getPropertyTypeDataEpisode(properties, 'Is.Indexed'),
     isPublished: getPropertyTypeDataEpisode(properties, 'Is.Published'),
-    /**
-     * Meta Information
-     */
-    durationInSeconds: getPropertyTypeDataEpisode(properties, 'Meta.Time.Duration'),
-    duration: getPropertyTypeDataEpisode(properties, 'Meta.Time'),
-    hour: getPropertyTypeDataEpisode(properties, 'Meta.Time.Hours'),
     minute: getPropertyTypeDataEpisode(properties, 'Meta.Time.Minutes'),
-    second: getPropertyTypeDataEpisode(properties, 'Meta.Time.Seconds'),
-    episode: getPropertyTypeDataEpisode(properties, 'Meta.Episode'),
-    season: getPropertyTypeDataEpisode(properties, 'Meta.Season'),
-    spotifyId: getPropertyTypeDataEpisode(properties, 'Meta.Spotify.ID'),
-    type: getPropertyTypeDataEpisode(properties, 'Meta.Type'),
+    month: getPropertyTypeDataEpisode(properties, 'Date.Month'),
+    monthName: getPropertyTypeDataEpisode(properties, 'Date.MonthName'),
+    monthNameAbbr: getPropertyTypeDataEpisode(properties, 'Date.MonthNameAbbr'),
     mp3: getPropertyTypeDataEpisode(properties, 'Meta.MP3'),
-    subtitle: getPropertyTypeDataEpisode(properties, 'Subtitle'),
     podcastAppleId: getPropertyTypeDataEpisode(
       properties,
       'Rollup.Podcasts.Apple.ID',
@@ -67,6 +62,7 @@ function getEpisodeData(properties) {
       properties,
       'Rollup.Podcasts.Apple.URL',
     ),
+    podcastSlug: getPropertyTypeDataEpisode(properties, 'Rollup.Podcasts.Slug'),
     podcastSpotifyId: getPropertyTypeDataEpisode(
       properties,
       'Rollup.Podcasts.Spotify.ID',
@@ -75,28 +71,32 @@ function getEpisodeData(properties) {
       properties,
       'Rollup.Podcasts.Spotify.URL',
     ),
-    podcastSlug: getPropertyTypeDataEpisode(properties, 'Rollup.Podcasts.Slug'),
-
-    /**
-     * Podcast Information
-     */
-    hosts: getPropertyTypeDataEpisode(properties, 'Rollup.People.Host.Title'),
     podcastTitle: getPropertyTypeDataEpisode(properties, 'Rollup.Podcasts.Title')[0],
+    season: getPropertyTypeDataEpisode(properties, 'Meta.Season'),
+    second: getPropertyTypeDataEpisode(properties, 'Meta.Time.Seconds'),
     /**
      * SEO Information
      */
     seoDescription: getPropertyTypeDataEpisode(properties, 'SEO.Description'),
-    seoKeywords: getPropertyTypeDataEpisode(properties, 'SEO.Keywords'),
+    seoImage: getPropertyTypeDataEpisode(properties, 'SEO.Image')[0],
     seoImageDescription: getPropertyTypeDataEpisode(
       properties,
       'SEO.Image.Description',
     ),
-    seoImage: getPropertyTypeDataEpisode(properties, 'SEO.Image')[0],
+    seoKeywords: getPropertyTypeDataEpisode(properties, 'SEO.Keywords'),
+    spotifyId: getPropertyTypeDataEpisode(properties, 'Meta.Spotify.ID'),
+
+    subtitle: getPropertyTypeDataEpisode(properties, 'Subtitle'),
+    time: getPropertyTypeDataEpisode(properties, 'Date.Time'),
+    timezone: getPropertyTypeDataEpisode(properties, 'Date.Timezone'),
+    title: getPropertyTypeDataEpisode(properties, 'Title'),
+    type: getPropertyTypeDataEpisode(properties, 'Meta.Type'),
     /**
      * Venue Information
      */
     venueTitle,
     venues: getPropertyTypeDataEpisode(properties, 'Relation.Venues'),
+    year: getPropertyTypeDataEpisode(properties, 'Date.Year'),
   }
 
   return data

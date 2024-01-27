@@ -1,6 +1,6 @@
-import { cx } from '../../utils/cx'
-
 import type { Variant } from './Button.types'
+
+import { cx } from '../../utils/cx'
 
 export const commonStyles = cx(
   'group inline-flex transition-all duration-200',

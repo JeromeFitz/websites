@@ -17,6 +17,7 @@ import type {
 import type { Spread } from 'next-notion/Notion.types'
 
 type PropertiesEvent = {
+  Date: DatePropertyItemObjectResponse
   'Date.DayOfMonth': FormulaPropertyItemObjectResponse
   'Date.DayOfMonthOrdinal': FormulaPropertyItemObjectResponse
   'Date.DayOfWeek': FormulaPropertyItemObjectResponse
@@ -31,14 +32,15 @@ type PropertiesEvent = {
   'Date.Timezone': FormulaPropertyItemObjectResponse
   'Date.WeekNumber': FormulaPropertyItemObjectResponse
   'Date.Year': FormulaPropertyItemObjectResponse
+  ID: FormulaPropertyItemObjectResponse
   'Is.Active': CheckboxPropertyItemObjectResponse
   'Is.Indexed': CheckboxPropertyItemObjectResponse
   'Is.Published': CheckboxPropertyItemObjectResponse
   'Override.Slug': CheckboxPropertyItemObjectResponse
-  'Override.Tags': CheckboxPropertyItemObjectResponse
-  'Override.Title': CheckboxPropertyItemObjectResponse
   // 'Payout.Amount': NumberPropertyItemObjectResponse
   // 'Payout.Gross.Profit': FormulaPropertyItemObjectResponse
+  'Override.Tags': CheckboxPropertyItemObjectResponse
+  'Override.Title': CheckboxPropertyItemObjectResponse
   // 'Payout.Ticket.Sales': NumberPropertyItemObjectResponse
   'Relation.People.Guests': RelationPropertyItemObjectResponse
   'Relation.People.HouseManager': RelationPropertyItemObjectResponse
@@ -61,20 +63,18 @@ type PropertiesEvent = {
   'Rollup.Venues.Slug': RollupPropertyItemObjectResponse
   'Rollup.Venues.Title': RollupPropertyItemObjectResponse
   'SEO.Description': RichTextPropertyItemObjectResponse
-  'SEO.Image.Description': RichTextPropertyItemObjectResponse
   'SEO.Image': FilesPropertyItemObjectResponse
-  'SEO.Keywords': RichTextPropertyItemObjectResponse
-  'Slug.Preview': FormulaPropertyItemObjectResponse
+  'SEO.Image.Description': RichTextPropertyItemObjectResponse
   // 'Slug.Preview.Override': FormulaPropertyItemObjectResponse
-  // 'Tickets.Attended': NumberPropertyItemObjectResponse
-  'URL.Ticket': UrlPropertyItemObjectResponse
-  Date: DatePropertyItemObjectResponse
-  ID: FormulaPropertyItemObjectResponse
+  'SEO.Keywords': RichTextPropertyItemObjectResponse
   Slug: RichTextPropertyItemObjectResponse
+  'Slug.Preview': FormulaPropertyItemObjectResponse
   Stage: SelectPropertyItemObjectResponse
   Status: StatusPropertyItemObjectResponse
   Tags: MultiSelectPropertyItemObjectResponse
   Title: TitlePropertyItemObjectResponse
+  // 'Tickets.Attended': NumberPropertyItemObjectResponse
+  'URL.Ticket': UrlPropertyItemObjectResponse
 }
 type PageObjectResponseEvent = Spread<
   [PageObjectResponse, { properties: PropertiesEvent }]

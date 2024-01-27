@@ -1,11 +1,12 @@
-import 'server-only'
-
 import { addDays, format } from 'date-fns'
+
+import 'server-only'
 // import { cache } from 'react'
 
-import { notion } from '../helper'
 import type { FilterType, SortItem } from '../Notion.types'
 import type { SegmentInfo } from '../utils/getSegmentInfo'
+
+import { notion } from '../helper'
 
 const isDev = process.env.NODE_ENV === 'development'
 const DATABASE_ID = process.env.NOTION__DATABASE__PAGES ?? ''
@@ -22,16 +23,16 @@ type GetDatabaseQueryTypes = {
  */
 const isPublishedAnd = isDev
   ? {
-      timestamp: 'created_time',
       created_time: {
         after: '2020-01-01T00:00:00.000Z',
       },
+      timestamp: 'created_time',
     }
   : {
-      property: 'Is.Published',
       checkbox: {
         equals: true,
       },
+      property: 'Is.Published',
     }
 
 // const getDatabaseQuery = cache(
@@ -128,23 +129,23 @@ const getDatabaseQueryByDateRange = async ({
   const filterData = {
     and: [
       {
-        property,
         date: {
           on_or_after: from,
         },
+        property,
       },
       {
-        property,
         date: {
           on_or_before: to,
         },
+        property,
       },
     ],
   }
   const sortsData: SortItem[] = [
     {
-      property: 'Date',
       direction: 'descending',
+      property: 'Date',
     },
   ]
   const filter = filterData

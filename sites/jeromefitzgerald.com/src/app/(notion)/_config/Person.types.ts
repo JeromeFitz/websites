@@ -14,10 +14,15 @@ import type {
 import type { Spread } from 'next-notion/Notion.types'
 
 type PropertiesPerson = {
+  Date: DatePropertyItemObjectResponse
+  Email: EmailPropertyItemObjectResponse
+  ID: FormulaPropertyItemObjectResponse
   'Is.Active': CheckboxPropertyItemObjectResponse
   'Is.Indexed': CheckboxPropertyItemObjectResponse
   // 'Is.OkayToText': CheckboxPropertyItemObjectResponse
   'Is.Published': CheckboxPropertyItemObjectResponse
+  Phone: PhoneNumberPropertyItemObjectResponse
+  Pronouns: SelectPropertyItemObjectResponse
   'Relation.Episodes.Guest': RelationPropertyItemObjectResponse
   'Relation.Episodes.SoundEngineer': RelationPropertyItemObjectResponse
   'Relation.Episodes.Thanks': RelationPropertyItemObjectResponse
@@ -31,24 +36,19 @@ type PropertiesPerson = {
   'Relation.Podcasts.Host': RelationPropertyItemObjectResponse
   'Relation.Podcasts.Producer': RelationPropertyItemObjectResponse
   'Relation.Podcasts.Thanks': RelationPropertyItemObjectResponse
-  'Relation.Shows.Cast.Past': RelationPropertyItemObjectResponse
   'Relation.Shows.Cast': RelationPropertyItemObjectResponse
+  'Relation.Shows.Cast.Past': RelationPropertyItemObjectResponse
   'Relation.Shows.Crew': RelationPropertyItemObjectResponse
+  'Relation.Shows.Director': RelationPropertyItemObjectResponse
   'Relation.Shows.Director.Musical': RelationPropertyItemObjectResponse
   'Relation.Shows.Director.Technical': RelationPropertyItemObjectResponse
-  'Relation.Shows.Director': RelationPropertyItemObjectResponse
   'Relation.Shows.Music': RelationPropertyItemObjectResponse
   'Relation.Shows.Producer': RelationPropertyItemObjectResponse
   'Relation.Shows.Thanks': RelationPropertyItemObjectResponse
   'Relation.Shows.Writer': RelationPropertyItemObjectResponse
-  'Slug.Preview': FormulaPropertyItemObjectResponse
-  Date: DatePropertyItemObjectResponse
-  Email: EmailPropertyItemObjectResponse
-  ID: FormulaPropertyItemObjectResponse
-  Phone: PhoneNumberPropertyItemObjectResponse
-  Pronouns: SelectPropertyItemObjectResponse
   Roles: MultiSelectPropertyItemObjectResponse
   Slug: RichTextPropertyItemObjectResponse
+  'Slug.Preview': FormulaPropertyItemObjectResponse
   Title: TitlePropertyItemObjectResponse
 }
 type PageObjectResponsePerson = Spread<

@@ -2,6 +2,7 @@ import https from 'node:https'
 
 import { ImageClient as NextImage } from '@jeromefitz/shared/components/Notion/Blocks/Image.client'
 import { isObjectEmpty } from '@jeromefitz/utils'
+
 // import { Client } from '@notionhq/client'
 import { Redis } from '@upstash/redis'
 import { slug as _slug } from 'github-slugger'

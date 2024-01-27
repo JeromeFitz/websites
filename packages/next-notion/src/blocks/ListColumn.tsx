@@ -1,4 +1,5 @@
 import type { ColumnListBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints.js'
+
 import { forwardRef } from 'react'
 
 import { NotionBlocks as Blocks } from '../Notion.Blocks'
@@ -33,14 +34,14 @@ const ListColumn = forwardRef(function ListColumn(props: any, ref: any) {
         }
 
         const block = {
-          object: 'block',
-          type: 'column',
           /**
            * @note(notion) if this ever needs to be directly from db
            * - import { getBlockChildrenDataParent } from '../queries/index'
            * - await getBlockChildrenDataParent(item.id)
            */
           column: item.columnDataColumn,
+          object: 'block',
+          type: 'column',
         }
         return (
           <ComponentColumn
@@ -50,7 +51,7 @@ const ListColumn = forwardRef(function ListColumn(props: any, ref: any) {
             <>
               {block.column.results.map((item, _order) => {
                 const blocksKey = `${key}--${order}--${item.id}--${_order}`
-                return <Blocks key={blocksKey} blocks={props?.blocks} data={item} />
+                return <Blocks blocks={props?.blocks} data={item} key={blocksKey} />
               })}
             </>
           </ComponentColumn>

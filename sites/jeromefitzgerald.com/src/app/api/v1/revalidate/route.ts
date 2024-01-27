@@ -1,5 +1,6 @@
 import { getDataFromCache, getSegmentInfo } from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
+
 import _size from 'lodash/size.js'
 import { revalidatePath } from 'next/cache'
 import { NextRequest, NextResponse } from 'next/server'
@@ -88,10 +89,10 @@ export async function POST(request: NextRequest) {
         now: Date.now(),
         revalidated: {
           data: null,
-          status: false,
           path,
           route,
           segment,
+          status: false,
         },
         segment: null,
         status: 400,
@@ -123,10 +124,10 @@ export async function POST(request: NextRequest) {
         now: Date.now(),
         revalidated: {
           data,
-          status: false,
           path,
           route,
           segment,
+          status: false,
         },
         status: 400,
       })
@@ -136,10 +137,10 @@ export async function POST(request: NextRequest) {
         now: Date.now(),
         revalidated: {
           data,
-          status: true,
           path,
           route,
           segment,
+          status: true,
         },
         status: 200,
       })
@@ -151,10 +152,10 @@ export async function POST(request: NextRequest) {
     now: Date.now(),
     revalidated: {
       data: null,
-      status: false,
       path,
       route,
       segment,
+      status: false,
     },
     segment: null,
     status: 401,

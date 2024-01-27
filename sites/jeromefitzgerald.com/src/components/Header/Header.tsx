@@ -1,23 +1,23 @@
 import { cx } from '@jeromefitz/ds/utils/cx'
 
 import {
-  AccordionDemo,
   AccordionContent,
+  AccordionDemo,
   AccordionItem,
   AccordionTrigger,
 } from './Header.Accordion'
 
-const menus = [{ id: 'menu', url: '', title: 'Menu' }]
+const menus = [{ id: 'menu', title: 'Menu', url: '' }]
 
 const links = [
-  { id: 'homepage', url: '/', title: 'Homepage' },
-  { id: 'events', url: '/events', title: 'Events' },
-  { id: 'shows', url: '/shows', title: 'Shows' },
-  { id: 'music', url: '/music', title: 'Music' },
-  { id: 'books', url: '/books', title: 'Books' },
-  { id: 'colophon', url: '/colophon', title: 'Colophon' },
-  { id: 'about', url: '/about', title: 'About' },
-  { id: 'contact', url: '/contact', title: 'Contact' },
+  { id: 'homepage', title: 'Homepage', url: '/' },
+  { id: 'events', title: 'Events', url: '/events' },
+  { id: 'shows', title: 'Shows', url: '/shows' },
+  { id: 'music', title: 'Music', url: '/music' },
+  { id: 'books', title: 'Books', url: '/books' },
+  { id: 'colophon', title: 'Colophon', url: '/colophon' },
+  { id: 'about', title: 'About', url: '/about' },
+  { id: 'contact', title: 'Contact', url: '/contact' },
 ]
 
 function Header() {
@@ -60,12 +60,12 @@ function Header() {
                           const key = `header-link-item-${id}`
                           return (
                             <li
-                              key={key}
                               className={cx(
                                 'my-2 py-2',
                                 'w-full',
                                 'even:bg-radix-pink5 odd:bg-radix-slate5',
                               )}
+                              key={key}
                             >
                               {title}
                             </li>

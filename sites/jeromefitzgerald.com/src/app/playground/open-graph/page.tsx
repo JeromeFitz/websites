@@ -18,29 +18,29 @@ const avatar =
 
 const items = [
   {
-    title: 'Jerome &: The Comedy Variety Show',
+    description: 'SAT 07/15 @ 09:00PM EDT',
+    location: 'Pittsburgh, PA',
     segment: 'events',
     slug: '/events/2023/07/15/jerome-and',
-    description: 'SAT 07/15 @ 09:00PM EDT',
+    title: 'Jerome &: The Comedy Variety Show',
     venue: 'Arcade Comedy Theater',
-    location: 'Pittsburgh, PA',
   },
   {
-    title: 'Alex O’Jerome',
+    description: 'The Vomit Twinz',
+    location: 'improv',
     segment: 'shows',
     slug: '/shows/alex-o-jerome',
-    description: 'The Vomit Twinz',
+    title: 'Alex O’Jerome',
     venue: 'LAX to CHI to PIT Connection',
-    location: 'improv',
   },
   {
-    title: 'Boo Humbag: The Musical',
+    description: 'The most celebrated morality tale of all-time.',
+    location: 'musical',
     segment: 'shows',
     slug: '/shows/boo-humbag-the-musical',
-    description: 'The most celebrated morality tale of all-time.',
+    title: 'Boo Humbag: The Musical',
     venue:
       'Transfomred into a hilarious send-up with original song and dance numbers.',
-    location: 'musical',
   },
 ]
 const item = items[2]

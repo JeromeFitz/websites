@@ -10,7 +10,6 @@ function getPersonData(properties) {
   const data = {
     href: getPropertyTypeDataPerson(properties, 'Slug.Preview'),
     id: getPropertyTypeDataPerson(properties, 'ID'),
-    title: getPropertyTypeDataPerson(properties, 'Title'),
     /**
      * Is Information
      */
@@ -21,6 +20,7 @@ function getPersonData(properties) {
      * Tag Information
      */
     tags: [],
+    title: getPropertyTypeDataPerson(properties, 'Title'),
   }
   return data
 }
