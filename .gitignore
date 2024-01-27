@@ -60,11 +60,12 @@ sitemap-*.xml
 storybook-static
 tsconfig.tsbuildinfo
 tsconfig.*.tsbuildinfo
-.vscode/settings.json
+.vscode/**
+!.vscode/extensions.json
+!.vscode/settings.default.json
 
 ## ZZZ
 zzz
 
 # next
-**/**/.vscode
 sites/**/src/styles/output.css
