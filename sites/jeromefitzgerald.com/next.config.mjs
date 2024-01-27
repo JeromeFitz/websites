@@ -2,6 +2,7 @@ import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 import nextConfig from '@jeromefitz/next-config/next.config.mjs'
+
 import dotenv from 'dotenv'
 import isCI from 'is-ci'
 if (!isCI) {

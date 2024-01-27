@@ -10,23 +10,17 @@ function getShowData(properties) {
   const data = {
     href: getPropertyTypeDataShow(properties, 'Slug.Preview'),
     id: getPropertyTypeDataShow(properties, 'ID'),
-    /**
-     * Is Information
-     */
     isActive: getPropertyTypeDataShow(properties, 'Is.Active'),
     isIndexed: getPropertyTypeDataShow(properties, 'Is.Indexed'),
     isPublished: getPropertyTypeDataShow(properties, 'Is.Published'),
-    rollupCastSlugs: getPropertyTypeDataShow(properties, 'Rollup.People.Cast.Slug'),
     /**
      * Testing
      */
+    rollupCastSlugs: getPropertyTypeDataShow(properties, 'Rollup.People.Cast.Slug'),
     rollupCastTitles: getPropertyTypeDataShow(
       properties,
       'Rollup.People.Cast.Title',
     ),
-    /**
-     * SEO Information
-     */
     seoDescription: getPropertyTypeDataShow(properties, 'SEO.Description'),
     seoImage: getPropertyTypeDataShow(properties, 'SEO.Image')[0],
     seoImageDescription: getPropertyTypeDataShow(
@@ -34,9 +28,6 @@ function getShowData(properties) {
       'SEO.Image.Description',
     ),
     seoKeywords: getPropertyTypeDataShow(properties, 'SEO.Keywords'),
-    /**
-     * Tag Information
-     */
     tags: getPropertyTypeDataShow(properties, 'Tags'),
     title: getPropertyTypeDataShow(properties, 'Title'),
   }

@@ -5,26 +5,7 @@ const config = ({ basePath = '', port, website = 'jeromefitzgerald.com' }) => {
 
   /** @type {import('@playwright/test').PlaywrightTestConfig} */
   const config = {
-    testMatch: '**/*.e2e.{js,jsx,ts,tsx}',
-    testDir: 'src/e2e',
     outputDir: 'e2e-results',
-    retries: 2,
-
-    reporter: [['list'], ['html', { open: 'never', outputFolder: 'e2e-report' }]],
-
-    use: {
-      baseURL,
-      screenshot: 'on',
-      video: 'on-first-retry',
-      trace: 'on-first-retry',
-    },
-
-    webServer: {
-      command: `pnpm --filter ${website} start`,
-      url: baseURL,
-      reuseExistingServer: !process.env.CI,
-    },
-
     projects: [
       { name: 'Desktop Chrome', use: { ...devices['Desktop Chrome'] } },
       // { name: 'Desktop Firefox', use: { ...devices['Desktop Firefox'] } },
@@ -32,6 +13,25 @@ const config = ({ basePath = '', port, website = 'jeromefitzgerald.com' }) => {
       // { name: 'Mobile Chrome', use: { ...devices['Pixel 5'] } },
       { name: 'Mobile Safari', use: { ...devices['iPhone 12'] } },
     ],
+    reporter: [['list'], ['html', { open: 'never', outputFolder: 'e2e-report' }]],
+    retries: 2,
+
+    testDir: 'src/e2e',
+
+    testMatch: '**/*.e2e.{js,jsx,ts,tsx}',
+
+    use: {
+      baseURL,
+      screenshot: 'on',
+      trace: 'on-first-retry',
+      video: 'on-first-retry',
+    },
+
+    webServer: {
+      command: `pnpm --filter ${website} start`,
+      reuseExistingServer: !process.env.CI,
+      url: baseURL,
+    },
   }
 
   return defineConfig(config)

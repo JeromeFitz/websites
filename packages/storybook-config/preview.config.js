@@ -3,6 +3,7 @@ import { MINIMAL_VIEWPORTS as viewports } from '@storybook/addon-viewport'
 
 import * as themes from './themes'
 import { DEFAULT_THEME, withTailwindTheme } from './withTailwindTheme.decorator'
+
 import './preview.css'
 
 /** @type { import('@storybook/react').Preview } */
@@ -10,18 +11,18 @@ const config = {
   decorators: [withTailwindTheme],
   globalTypes: {
     theme: {
-      name: 'Theme',
-      description: 'Global theme for components',
       defaultValue: DEFAULT_THEME,
+      description: 'Global theme for components',
+      name: 'Theme',
       toolbar: {
+        // Change title based on selected value
+        dynamicTitle: true,
         icon: 'paintbrush',
         // Array of plain string values or MenuItem shape (see below)
         items: [
-          { value: 'light', title: 'Light', left: '🌞' },
-          { value: 'dark', title: 'Dark', left: '🌛' },
+          { left: '🌞', title: 'Light', value: 'light' },
+          { left: '🌛', title: 'Dark', value: 'dark' },
         ],
-        // Change title based on selected value
-        dynamicTitle: true,
       },
     },
   },

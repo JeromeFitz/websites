@@ -18,9 +18,6 @@ function getEpisodeData(properties) {
   }
 
   const data = {
-    /**
-     * Date Information
-     */
     dateIso: getPropertyTypeDataEpisode(properties, 'Date.ISO'),
     dayOfMonth: getPropertyTypeDataEpisode(properties, 'Date.DayOfMonth'),
     dayOfMonthOrdinal: getPropertyTypeDataEpisode(
@@ -30,21 +27,12 @@ function getEpisodeData(properties) {
     dayOfWeek: getPropertyTypeDataEpisode(properties, 'Date.DayOfWeek'),
     dayOfWeekAbbr: getPropertyTypeDataEpisode(properties, 'Date.DayOfWeekAbbr'),
     duration: getPropertyTypeDataEpisode(properties, 'Meta.Time'),
-    /**
-     * Meta Information
-     */
     durationInSeconds: getPropertyTypeDataEpisode(properties, 'Meta.Time.Duration'),
     episode: getPropertyTypeDataEpisode(properties, 'Meta.Episode'),
-    /**
-     * Podcast Information
-     */
     hosts: getPropertyTypeDataEpisode(properties, 'Rollup.People.Host.Title'),
     hour: getPropertyTypeDataEpisode(properties, 'Meta.Time.Hours'),
     href: getPropertyTypeDataEpisode(properties, 'Slug.Preview'),
     id: getPropertyTypeDataEpisode(properties, 'ID'),
-    /**
-     * Is Information
-     */
     isActive: getPropertyTypeDataEpisode(properties, 'Is.Active'),
     isExplicit: getPropertyTypeDataEpisode(properties, 'Is.Explicit'),
     isIndexed: getPropertyTypeDataEpisode(properties, 'Is.Indexed'),
@@ -74,9 +62,6 @@ function getEpisodeData(properties) {
     podcastTitle: getPropertyTypeDataEpisode(properties, 'Rollup.Podcasts.Title')[0],
     season: getPropertyTypeDataEpisode(properties, 'Meta.Season'),
     second: getPropertyTypeDataEpisode(properties, 'Meta.Time.Seconds'),
-    /**
-     * SEO Information
-     */
     seoDescription: getPropertyTypeDataEpisode(properties, 'SEO.Description'),
     seoImage: getPropertyTypeDataEpisode(properties, 'SEO.Image')[0],
     seoImageDescription: getPropertyTypeDataEpisode(
@@ -91,9 +76,6 @@ function getEpisodeData(properties) {
     timezone: getPropertyTypeDataEpisode(properties, 'Date.Timezone'),
     title: getPropertyTypeDataEpisode(properties, 'Title'),
     type: getPropertyTypeDataEpisode(properties, 'Meta.Type'),
-    /**
-     * Venue Information
-     */
     venueTitle,
     venues: getPropertyTypeDataEpisode(properties, 'Relation.Venues'),
     year: getPropertyTypeDataEpisode(properties, 'Date.Year'),
