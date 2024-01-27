@@ -529,8 +529,8 @@ importers:
         specifier: 5.0.1
         version: 5.0.1(@jeromefitz/utils@3.0.0)(lodash@4.17.21)
       '@jeromefitz/spotify':
-        specifier: 4.0.1
-        version: 4.0.1(@jeromefitz/utils@3.0.0)(lodash@4.17.21)(sharp@0.32.6)
+        specifier: 4.0.2
+        version: 4.0.2(@jeromefitz/utils@3.0.0)(lodash@4.17.21)(sharp@0.32.6)
       '@jeromefitz/utils':
         specifier: 3.0.0
         version: 3.0.0(lodash@4.17.21)
@@ -836,8 +836,8 @@ importers:
         specifier: 5.0.1
         version: 5.0.1(@jeromefitz/utils@3.0.0)(lodash@4.17.21)
       '@jeromefitz/spotify':
-        specifier: 4.0.1
-        version: 4.0.1(@jeromefitz/utils@3.0.0)(lodash@4.17.21)(sharp@0.32.6)
+        specifier: 4.0.2
+        version: 4.0.2(@jeromefitz/utils@3.0.0)(lodash@4.17.21)(sharp@0.32.6)
       '@jeromefitz/utils':
         specifier: 3.0.0
         version: 3.0.0(lodash@4.17.21)
@@ -3405,8 +3405,8 @@ packages:
       - typescript
     dev: false
 
-  /@jeromefitz/spotify@4.0.1(@jeromefitz/utils@3.0.0)(lodash@4.17.21)(sharp@0.32.6):
-    resolution: {integrity: sha512-BCoKK4dAUhhbtsRtaHYZXe70RprvYYbx6av7YrliDIDBFnHmNl0hjz6eCZmfO2J6TtGzn5lrSX/IEEZxxaMXGw==}
+  /@jeromefitz/spotify@4.0.2(@jeromefitz/utils@3.0.0)(lodash@4.17.21)(sharp@0.32.6):
+    resolution: {integrity: sha512-gAj0AJkCc9E5QP749r2JDJ/0zV89YNa5SPCKLkr9rYjjkBu9uHQqUXR6AsiJd5XyiJa09bnYemQZzA1DPUA2KQ==}
     engines: {node: '>=20'}
     peerDependencies:
       '@jeromefitz/utils': ^3.0.0
