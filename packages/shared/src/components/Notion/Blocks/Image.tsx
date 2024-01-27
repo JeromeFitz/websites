@@ -8,6 +8,8 @@
  *   - Override Cache with new Image Data (if using)
  *
  */
+import 'server-only'
+
 import https from 'node:https'
 
 import { Caption } from '@jeromefitz/ds/components/Caption'
@@ -26,8 +28,6 @@ import validUrl from 'valid-url'
 import { TIME } from '../../../lib/constants'
 import { ImageClient as NextImage } from './Image.client'
 import { getImageAlt, getImageExpiration, getImageUrl } from './Image.utils'
-
-import 'server-only'
 
 const notion = new Client({ auth: process.env.NOTION_API_KEY })
 

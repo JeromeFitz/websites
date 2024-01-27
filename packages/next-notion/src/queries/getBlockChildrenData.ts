@@ -1,6 +1,6 @@
-import { notion } from '../helper'
-
 import 'server-only'
+
+import { notion } from '../helper'
 
 /**
  * @todo(error-handling)

@@ -1,8 +1,8 @@
+import 'server-only'
+
 import https from 'node:https'
 
 import { Redis } from '@upstash/redis'
-
-import 'server-only'
 
 const redis = Redis.fromEnv({
   agent: new https.Agent({ keepAlive: true }),

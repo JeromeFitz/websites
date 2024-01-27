@@ -21,8 +21,8 @@ importers:
         specifier: 4.0.0
         version: 4.0.0(lodash@4.17.21)
       '@jeromefitz/eslint-config':
-        specifier: 2.1.0
-        version: 2.1.0(typescript@5.3.3)
+        specifier: 2.1.1
+        version: 2.1.1(typescript@5.3.3)
       '@jeromefitz/lint-staged':
         specifier: 2.0.0
         version: 2.0.0(is-ci@3.0.1)
@@ -3278,8 +3278,8 @@ packages:
       - '@types/react'
     dev: false
 
-  /@jeromefitz/eslint-config@2.1.0(typescript@5.3.3):
-    resolution: {integrity: sha512-b7axU1RmZOlsn5mFoO8PYQ17eyvR5D8zmTiqoxCSbz2LSMXx+jqtOE08jkoxPfjU58+PoSnYgqnGh21VW4u9Ig==}
+  /@jeromefitz/eslint-config@2.1.1(typescript@5.3.3):
+    resolution: {integrity: sha512-LauoNxFQ+GnzR2l0juCS2y+JsZK978ZgCQ1aLvUW+hNEJbiTa+nekQ3M+fNHKz4EZNu1TLV2sRexUqWlkvuIxA==}
     engines: {node: '>=20'}
     dependencies:
       '@babel/eslint-parser': 7.23.9(eslint@8.56.0)
@@ -3902,7 +3902,7 @@ packages:
     engines: {node: '>= 8'}
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
-      fastq: 1.16.0
+      fastq: 1.17.0
 
   /@notionhq/client@2.2.14:
     resolution: {integrity: sha512-oqUefZtCiJPCX+74A1Os9OVTef3fSnVWe2eVQtU1HJSD+nsfxfhwvDKnzJTh2Tw1ZHKLxpieHB/nzGdY+Uo12A==}
@@ -12496,8 +12496,8 @@ packages:
     resolution: {integrity: sha512-bijHueCGd0LqqNK9b5oCMHc0MluJAx0cwqASgbWMvkO01lCYgIhacVRLcaDz3QnyYIRNJRDwMb41VuT6pHJ91Q==}
     dev: false
 
-  /fastq@1.16.0:
-    resolution: {integrity: sha512-ifCoaXsDrsdkWTtiNJX5uzHDsrck5TzfKKDcuFFTIrrc/BS076qgEIfoIy1VeZqViznfKiysPYTh/QeHtnIsYA==}
+  /fastq@1.17.0:
+    resolution: {integrity: sha512-zGygtijUMT7jnk3h26kUms3BkSDp4IfIKjmnqI2tvx6nuBfiF1UqOxbnLfzdv+apBy+53oaImsKtMw/xYbW+1w==}
     dependencies:
       reusify: 1.0.4
 
