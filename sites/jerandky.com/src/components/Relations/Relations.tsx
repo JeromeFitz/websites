@@ -1,14 +1,14 @@
 import { cx } from '@jeromefitz/ds/utils/cx'
+
 import _size from 'lodash/size'
 import pluralize from 'pluralize'
 // import { Suspense } from 'react'
 
 import { getPropertyTypeDataPodcast } from '../../app/(notion)/_config'
-
 import {
-  getRelationTitle,
   // RelationIndividual,
   RelationIndividuals,
+  getRelationTitle,
   // RelationLoading,
 } from './index'
 

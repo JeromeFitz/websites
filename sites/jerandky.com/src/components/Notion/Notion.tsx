@@ -1,10 +1,10 @@
-import { NotionBlocks } from 'next-notion/src/Notion.Blocks'
+import { NotionBlocks } from 'next-notion/Notion.Blocks'
 
 import { blocks } from './Notion.Config'
 
 // @todo(types)
 function Notion({ data }: { data: any }) {
-  return <NotionBlocks data={data} blocks={blocks} />
+  return <NotionBlocks blocks={blocks} data={data} />
 }
 
 export { Notion }
