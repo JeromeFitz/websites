@@ -526,8 +526,8 @@ importers:
         specifier: 5.0.1
         version: 5.0.1(@jeromefitz/utils@3.0.0)(lodash@4.17.21)
       '@jeromefitz/spotify':
-        specifier: 4.0.0
-        version: 4.0.0(@jeromefitz/utils@3.0.0)(lodash@4.17.21)(sharp@0.32.6)
+        specifier: 4.0.1
+        version: 4.0.1(@jeromefitz/utils@3.0.0)(lodash@4.17.21)(sharp@0.32.6)
       '@jeromefitz/utils':
         specifier: 3.0.0
         version: 3.0.0(lodash@4.17.21)
@@ -2985,13 +2985,13 @@ packages:
       - typescript
     dev: false
 
-  /@jeromefitz/spotify@4.0.0(@jeromefitz/utils@3.0.0)(lodash@4.17.21)(sharp@0.32.6):
-    resolution: {integrity: sha512-FDo5IFM0tTxweVzB/W8eHpr+GiGAojSKsS9DO42Nez3ioWIeLtM0TLp1qvUJZqm04MLKMwY0kFoStvntz/KSpw==}
+  /@jeromefitz/spotify@4.0.1(@jeromefitz/utils@3.0.0)(lodash@4.17.21)(sharp@0.32.6):
+    resolution: {integrity: sha512-BCoKK4dAUhhbtsRtaHYZXe70RprvYYbx6av7YrliDIDBFnHmNl0hjz6eCZmfO2J6TtGzn5lrSX/IEEZxxaMXGw==}
     engines: {node: '>=20'}
     peerDependencies:
-      '@jeromefitz/utils': ^2.1.0
+      '@jeromefitz/utils': ^3.0.0
       lodash: ^4.17.21
-      sharp: ^0.31.1 || ^0.32.0
+      sharp: ^0.32.1
     dependencies:
       '@jeromefitz/utils': 3.0.0(lodash@4.17.21)
       github-slugger: 2.0.0
