@@ -129,7 +129,7 @@
     "@upstash/ratelimit": "1.0.0",
     "@upstash/redis": "1.28.2",
     "@vercel/analytics": "1.1.2",
-    "@vercel/speed-insights": "1.0.8",
+    "@vercel/speed-insights": "1.0.9",
     "clsx": "2.1.0",
     "fast-json-stable-stringify": "2.1.0",
     "fathom-client": "3.6.0",
