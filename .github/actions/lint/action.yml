@@ -34,4 +34,4 @@ runs:
         TURBO_TEAM: ${{ inputs.TURBO_TEAM }}
         TURBO_TOKEN: ${{ inputs.TURBO_TOKEN }}
       run: |
-        pnpm turbo run lint --cache-dir=".cache-turbo"
+        TURBO_TELEMETRY_DISABLED=1 pnpm turbo run lint --cache-dir=".cache-turbo"
