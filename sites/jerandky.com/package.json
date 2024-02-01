@@ -85,7 +85,7 @@
     "@upstash/redis": "1.28.3",
     "@vercel/analytics": "1.1.2",
     "clsx": "2.1.0",
-    "cmdk": "0.2.0",
+    "cmdk": "0.2.1",
     "date-fns": "3.3.1",
     "fast-json-stable-stringify": "2.1.0",
     "fathom-client": "3.6.0",
