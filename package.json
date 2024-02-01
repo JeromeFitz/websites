@@ -15,7 +15,7 @@
     "node": ">=20"
   },
   "scripts": {
-    "clean:install": "turbo run clean && ./scripts/clean.sh",
+    "clean:install": "TURBO_TELEMETRY_DISABLED=1 turbo run clean && ./scripts/clean.sh",
     "format": "pnpm run format:prettier:write",
     "format:prettier:base": "prettier . --ignore-unknown",
     "format:prettier:check": "pnpm format:prettier:base --check",

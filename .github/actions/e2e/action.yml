@@ -53,7 +53,7 @@ runs:
         TURBO_TOKEN: ${{ inputs.TURBO_TOKEN }}
         VERCEL_ENV: ${{ inputs.VERCEL_ENV }}
       run: |
-        pnpm turbo run build --filter="${{ inputs.WEBSITE }}" --cache-dir=".cache-turbo"
+        TURBO_TELEMETRY_DISABLED=1 pnpm turbo run build --filter="${{ inputs.WEBSITE }}" --cache-dir=".cache-turbo"
 
     # - name: '🔺️  Cache (next)'
     #   id: e2e-build-cache
@@ -90,7 +90,7 @@ runs:
         TURBO_TOKEN: ${{ inputs.TURBO_TOKEN }}
         VERCEL_ENV: ${{ inputs.VERCEL_ENV }}
       run: |
-        pnpm turbo run lhci --filter="${{ inputs.WEBSITE }}" --cache-dir=".cache-turbo"
+        TURBO_TELEMETRY_DISABLED=1 pnpm turbo run lhci --filter="${{ inputs.WEBSITE }}" --cache-dir=".cache-turbo"
       # run: |
       #   pnpm --filter "${{ inputs.WEBSITE }}" lhci
 
