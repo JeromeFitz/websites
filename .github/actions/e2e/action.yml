@@ -33,8 +33,7 @@ runs:
     - name: '🎭 Playwright: Get Installed Version'
       id: playwright-version
       shell: bash
-      # @todo(github-actions) can we do this dynamically?
-      run: echo "PLAYWRIGHT_VERSION=1.41.1" >> $GITHUB_ENV
+      run: echo PLAYWRIGHT_VERSION=$(node --print 'require("./packages/playwright-config/package.json").devDependencies["@playwright/test"]') >> $GITHUB_ENV
 
     - name: '🎭 Playwright: Check Browser Cache'
       id: playwright-cache
@@ -68,19 +67,19 @@ runs:
     #       ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
     #     restore-keys: |
     #       ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-
-    - name: '💡  Lighthouse: Install'
-      id: e2e-dependencies-lighthouse
-      shell: bash
-      # env:
-      #   LHCI_GITHUB_APP_TOKEN: ${{ inputs.LHCI_GITHUB_APP_TOKEN }}
-      #   TURBO_TEAM: ${{ inputs.TURBO_TEAM }}
-      #   TURBO_TOKEN: ${{ inputs.TURBO_TOKEN }}
-      #   VERCEL_ENV: ${{ inputs.VERCEL_ENV }}
-      run: |
-        pnpm add @lhci/cli@0.12.0 --global
-      # run: |
-      #   npx @lhci/cli@0.12.0 autorun --config="./sites/${{ inputs.WEBSITE }}/lighthouse.config.js"
-
+    # - name: '💡  Lighthouse: Install'
+    #   id: e2e-dependencies-lighthouse
+    #   shell: bash
+    #   # env:
+    #   #   LHCI_GITHUB_APP_TOKEN: ${{ inputs.LHCI_GITHUB_APP_TOKEN }}
+    #   #   TURBO_TEAM: ${{ inputs.TURBO_TEAM }}
+    #   #   TURBO_TOKEN: ${{ inputs.TURBO_TOKEN }}
+    #   #   VERCEL_ENV: ${{ inputs.VERCEL_ENV }}
+    #   run: |
+    #     pnpm add @lhci/cli@0.12.0 --global
+    #   # pnpm dlx @lhci/cli@0.12.0
+    #   # run: |
+    #   #   npx @lhci/cli@0.12.0 autorun --config="./sites/${{ inputs.WEBSITE }}/lighthouse.config.js"
     - name: '💡  Lighthouse: ${{ inputs.WEBSITE }}'
       id: test-lighthouse
       shell: bash
@@ -97,15 +96,15 @@ runs:
     - name: '🎭  Playwright: Install (!cache)'
       id: e2e-dependencies-playwright
       shell: bash
-      # run: pnpm playwright@1.41.1  install --with-deps
-      run: npx playwright@1.41.1 install --with-deps
+      # run: pnpm playwright@${{ env.PLAYWRIGHT_VERSION }}  install --with-deps
+      run: npx playwright@${{ env.PLAYWRIGHT_VERSION }} install --with-deps
       if: steps.playwright-cache.outputs.cache-hit != 'true'
 
     - name: '🎭  Playwright: Install (cache)'
       id: e2e-dependencies-playwright-cache
       shell: bash
-      # run: pnpm playwright@1.41.1  install-deps
-      run: npx playwright@1.41.1 install-deps
+      # run: pnpm playwright@${{ env.PLAYWRIGHT_VERSION }}  install-deps
+      run: npx playwright@${{ env.PLAYWRIGHT_VERSION }} install-deps
       if: steps.playwright-cache.outputs.cache-hit == 'true'
 
     - name: '🎭  Playwright: ${{ inputs.WEBSITE }}'
