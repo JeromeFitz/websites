@@ -56,12 +56,11 @@ const config = {
       label: '@todo: server-only',
       packages: ['**'],
     },
-     {
+    {
       dependencies: ['**'],
       dependencyTypes: ['peer'],
       label: 'peer:  ^range',
       packages: ['**'],
-
     },
     {
       dependencies: ['$LOCAL'],
