@@ -51,8 +51,8 @@ importers:
         specifier: 20.11.16
         version: 20.11.16
       ccommit:
-        specifier: 2.0.0
-        version: 2.0.0
+        specifier: 2.0.1
+        version: 2.0.1
       concurrently:
         specifier: 8.2.2
         version: 8.2.2
@@ -10320,8 +10320,8 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /ccommit@2.0.0:
-    resolution: {integrity: sha512-nOuWKCMSRtOboUp+Xg2c5KvIxgt2c8O1Pl/Ocby1gaptS5XPBuWTCYOEaXv4w0vtGOVIeWqFaoYNxt6BUt2CSw==}
+  /ccommit@2.0.1:
+    resolution: {integrity: sha512-glbXRFIJke+Sg45/vfXIAPuP4AnMCtvWOoYt2khvS6OYoMV/GmvyHKGt6hxhI3tJcGK9sBeMjOWitg5G1XYhng==}
     engines: {node: '>=20'}
     hasBin: true
     dependencies:
