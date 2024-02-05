@@ -128,7 +128,7 @@
     "@types/react-dom": "18.2.18",
     "@upstash/ratelimit": "1.0.0",
     "@upstash/redis": "1.28.3",
-    "@vercel/analytics": "1.1.2",
+    "@vercel/analytics": "1.1.3",
     "@vercel/speed-insights": "1.0.9",
     "clsx": "2.1.0",
     "fast-json-stable-stringify": "2.1.0",
