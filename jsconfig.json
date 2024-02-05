@@ -22,7 +22,7 @@
       "~svg/*": ["./sites/jeromefitzgerald.com/src/svg/*"],
       "~theme/*": ["./sites/jeromefitzgerald.com/src/theme/*"],
       "~ui/*": ["./sites/jeromefitzgerald.com/src/ui/*"],
-      "~utils/*": ["./sites/jeromefitzgerald.com/src/utils/*"],
-    },
-  },
+      "~utils/*": ["./sites/jeromefitzgerald.com/src/utils/*"]
+    }
+  }
 }
