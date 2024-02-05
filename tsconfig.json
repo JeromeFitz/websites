@@ -33,14 +33,14 @@
     "strictFunctionTypes": false, // @todo(lint)
     "strictNullChecks": false, // @todo(lint)
     "strictPropertyInitialization": false, // @todo(lint)
-    "target": "ESNext",
+    "target": "ESNext"
   },
   "include": [
     "tsup.config.ts",
     "packages/**/*.ts",
     "packages/**/*.tsx",
     "sites/**/*.ts",
-    "sites/**/*.tsx",
+    "sites/**/*.tsx"
   ],
-  "exclude": ["node_modules", "tests/*.test.ts", "todo"],
+  "exclude": ["node_modules", "tests/*.test.ts", "todo"]
 }
