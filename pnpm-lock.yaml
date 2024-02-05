@@ -24,8 +24,8 @@ importers:
         specifier: 2.1.2
         version: 2.1.2(typescript@5.3.3)
       '@jeromefitz/lint-staged':
-        specifier: 2.0.0
-        version: 2.0.0(is-ci@3.0.1)
+        specifier: 2.0.1
+        version: 2.0.1(is-ci@3.0.1)
       '@jeromefitz/prettier-config':
         specifier: 2.0.0
         version: 2.0.0
@@ -3298,14 +3298,14 @@ packages:
       - vue-eslint-parser
     dev: false
 
-  /@jeromefitz/lint-staged@2.0.0(is-ci@3.0.1):
-    resolution: {integrity: sha512-MKWHy8Kysvi8ifiesZJY9C8ykLzE2zmfIotZfziyN1aE9BwHVH3TH/3NnZeZ5IXOLSiQs26p6WKKaI246/cHLQ==}
+  /@jeromefitz/lint-staged@2.0.1(is-ci@3.0.1):
+    resolution: {integrity: sha512-/77Z8VKI3WDhnT8/09cYzl+E+SAQ9JzJKr3znMaiOQa9LdudjEGL4qeFpOmDeS3heZJYwxWNe8DZNbPHJAFR5Q==}
     engines: {node: '>=20'}
     peerDependencies:
       is-ci: ^3.0.1
     dependencies:
       is-ci: 3.0.1
-      lint-staged: 15.2.0
+      lint-staged: 15.2.1
       micromatch: 4.0.5
     transitivePeerDependencies:
       - supports-color
@@ -14681,8 +14681,8 @@ packages:
   /lines-and-columns@1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
 
-  /lint-staged@15.2.0:
-    resolution: {integrity: sha512-TFZzUEV00f+2YLaVPWBWGAMq7So6yQx+GG8YRMDeOEIf95Zn5RyiLMsEiX4KTNl9vq/w+NqRJkLA1kPIo15ufQ==}
+  /lint-staged@15.2.1:
+    resolution: {integrity: sha512-dhwAPnM85VdshybV9FWI/9ghTvMLoQLEXgVMx+ua2DN7mdfzd/tRfoU2yhMcBac0RHkofoxdnnJUokr8s4zKmQ==}
     engines: {node: '>=18.12.0'}
     hasBin: true
     dependencies:
@@ -14691,7 +14691,7 @@ packages:
       debug: 4.3.4
       execa: 8.0.1
       lilconfig: 3.0.0
-      listr2: 8.0.0
+      listr2: 8.0.1
       micromatch: 4.0.5
       pidtree: 0.6.0
       string-argv: 0.3.2
@@ -14700,8 +14700,8 @@ packages:
       - supports-color
     dev: false
 
-  /listr2@8.0.0:
-    resolution: {integrity: sha512-u8cusxAcyqAiQ2RhYvV7kRKNLgUvtObIbhOX2NCXqvp1UU32xIg5CT22ykS2TPKJXZWJwtK3IKLiqAGlGNE+Zg==}
+  /listr2@8.0.1:
+    resolution: {integrity: sha512-ovJXBXkKGfq+CwmKTjluEqFi3p4h8xvkxGQQAQan22YCgef4KZ1mKGjzfGh6PL6AW5Csw0QiQPNuQyH+6Xk3hA==}
     engines: {node: '>=18.0.0'}
     dependencies:
       cli-truncate: 4.0.0
