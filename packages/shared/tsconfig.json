@@ -38,9 +38,9 @@
     "types": ["node", "react/canary"],
     "paths": {
       "@jeromefitz/ds/*": ["../../packages/design-system/src/*"],
-      "next-notion/*": ["../../packages/next-notion/src/*"],
-    },
+      "next-notion/*": ["../../packages/next-notion/src/*"]
+    }
   },
   "include": ["src", "index.d.ts", "next-env.d.ts"],
-  "exclude": ["node_modules", "**/*.test.ts"],
+  "exclude": ["node_modules", "**/*.test.ts"]
 }
