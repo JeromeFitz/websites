@@ -125,7 +125,7 @@
     "@notionhq/client": "2.2.14",
     "@types/lodash": "4.14.202",
     "@types/react": "18.2.55",
-    "@types/react-dom": "18.2.18",
+    "@types/react-dom": "18.2.19",
     "@upstash/ratelimit": "1.0.0",
     "@upstash/redis": "1.28.3",
     "@vercel/analytics": "1.1.3",
