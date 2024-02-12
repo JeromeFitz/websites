@@ -30,8 +30,8 @@ importers:
         specifier: 2.0.1
         version: 2.0.1
       '@jeromefitz/release-notes-generator':
-        specifier: 2.0.1
-        version: 2.0.1(lodash@4.17.21)
+        specifier: 2.0.2
+        version: 2.0.2(lodash@4.17.21)
       '@jeromefitz/semantic':
         specifier: 10.0.1
         version: 10.0.1(@jeromefitz/conventional-gitmoji@4.0.1)(typescript@5.3.3)
@@ -3351,8 +3351,8 @@ packages:
       - prettier-plugin-svelte
       - prettier-plugin-twig-melody
 
-  /@jeromefitz/release-notes-generator@2.0.1(lodash@4.17.21):
-    resolution: {integrity: sha512-ERXyx08IOQwbU3cHU8X9i31iv/djsN/F8tmgj/xV6TQHTEcBOPnXr4RxUIpO9HV9xrMKs3b9iK+8wcHyryxTWg==}
+  /@jeromefitz/release-notes-generator@2.0.2(lodash@4.17.21):
+    resolution: {integrity: sha512-sdFP23lNfyR1M22dNNwEqm4eKI+o64xjwOui7EIbZXt5ibjEfWSDVpdWVi+Du2dVEiyPXHS1dIvN3Ww7sMdFyA==}
     engines: {node: '>=20'}
     peerDependencies:
       lodash: ^4.17.21
