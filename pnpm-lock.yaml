@@ -57,8 +57,8 @@ importers:
         specifier: 8.2.2
         version: 8.2.2
       dotenv:
-        specifier: 16.4.3
-        version: 16.4.3
+        specifier: 16.4.4
+        version: 16.4.4
       husky:
         specifier: 9.0.10
         version: 9.0.10
@@ -11493,8 +11493,8 @@ packages:
     engines: {node: '>=12'}
     dev: false
 
-  /dotenv@16.4.3:
-    resolution: {integrity: sha512-II98GFrje5psQTSve0E7bnwMFybNLqT8Vu8JIFWRjsE3khyNUm/loZupuy5DVzG2IXf/ysxvrixYOQnM6mjD3A==}
+  /dotenv@16.4.4:
+    resolution: {integrity: sha512-XvPXc8XAQThSjAbY6cQ/9PcBXmFoWuw1sQ3b8HqUCR6ziGXjkTi//kB9SWa2UwqlgdAIuRqAa/9hVljzPehbYg==}
     engines: {node: '>=12'}
 
   /duplexer2@0.1.4:
@@ -14655,7 +14655,7 @@ packages:
     engines: {node: '>=14.0.0'}
     dependencies:
       app-root-dir: 1.0.2
-      dotenv: 16.4.3
+      dotenv: 16.4.4
       dotenv-expand: 10.0.0
     dev: true
 
