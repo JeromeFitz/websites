@@ -43,7 +43,7 @@
     "ccommit": "2.0.2",
     "concurrently": "8.2.2",
     "dotenv": "16.4.4",
-    "husky": "9.0.10",
+    "husky": "9.0.11",
     "is-ci": "3.0.1",
     "lodash": "4.17.21",
     "semantic-release": "23.0.2",
