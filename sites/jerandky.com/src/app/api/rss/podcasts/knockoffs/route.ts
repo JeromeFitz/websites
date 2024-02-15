@@ -20,7 +20,7 @@ export function GET() {
     <copyright><![CDATA[2023 JerKy BoyZ et Knockoffs]]></copyright>
     <docs>https://jerandky.com</docs>
     <category><![CDATA[Comedy]]></category>
-    <atom:link rel="self" href="https://jerandky.com/podcasts/knockoffs" type="application/rss+xml"/>
+    <atom:link rel="self" href="https://jerandky.com/api/rss/podcasts/knockoffs" type="application/rss+xml"/>
     <language>en-US</language>
     <image>
       <url>https://cdn.jerandky.com/jerandky.com/podcasts/knockoffs/season-01/_original/knockoffs--s01e00--cover-art--final.jpg</url>
@@ -30,7 +30,7 @@ export function GET() {
     <itunes:author>JerKy BoyZ et Knockoffs</itunes:author>
     <itunes:subtitle>Just two jerks talking like jerks</itunes:subtitle>
     <itunes:summary>Each week Alex &amp; Kyle discuss a (classic?) movie and do their best to focus on its shortcomings. Horror movies, thrillers, teens-in-the-woods… Anything goes, as long as someone gets knocked off.</itunes:summary>
-    <itunes:type/>
+    <itunes:type>episodic</itunes:type>
     <itunes:owner>
       <itunes:name>JerKy BoyZ et Knockoffs</itunes:name>
       <itunes:email>jeromes+knockoffs@gmail.com</itunes:email>
