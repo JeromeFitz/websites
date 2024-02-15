@@ -103,6 +103,7 @@ export async function GET(
       {
         'atom:link': {
           _attr: {
+            // @todo(rss) this is the RSS FEED not the SITE URL
             href: siteUrl,
             rel: 'self',
             type: 'application/rss+xml',

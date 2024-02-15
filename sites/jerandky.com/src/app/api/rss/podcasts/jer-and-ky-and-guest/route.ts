@@ -21,7 +21,7 @@ export function GET() {
     <copyright><![CDATA[2023 JerKy BoyZ et Team Mail & Shrimp]]></copyright>
     <docs>https://jerandky.com</docs>
     <category><![CDATA[Comedy]]></category>
-    <atom:link rel="self" href="https://jerandky.com/podcasts/jer-and-ky-and-guest" type="application/rss+xml"/>
+    <atom:link rel="self" href="https://jerandky.com/api/rss/podcasts/jer-and-ky-and-guest" type="application/rss+xml"/>
     <language>en-US</language>
     <image>
       <url>https://cdn.jerandky.com/jerandky.com/podcasts/jer-and-ky-and-guest/season-01/_original/s01e00--000--00.jpg</url>
@@ -31,7 +31,7 @@ export function GET() {
     <itunes:author>JerKy BoyZ et Team Mail &amp; Shrimp</itunes:author>
     <itunes:subtitle>tHe bOYz</itunes:subtitle>
     <itunes:summary>Every episode is an action packed 3-5 minutes. Two Dummies (Jer &amp; Ky) + One Guest (&amp; Guest) = Four Podcasts (in one).</itunes:summary>
-    <itunes:type/>
+    <itunes:type>episodic</itunes:type>
     <itunes:owner>
       <itunes:name>JerKy BoyZ et Team Mail &amp; Shrimp</itunes:name>
       <itunes:email>jeromes+jer-and-ky@gmail.com</itunes:email>
