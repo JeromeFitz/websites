@@ -5,6 +5,7 @@
 
 @import url('./chrome.css');
 @import url('./safari.css');
+/* @import url('./cmdk.css'); */
 
 .icon-custom svg {
   height: inherit;
@@ -17,6 +18,19 @@
   stroke-width: '1.5 !important';
 }
 
+.radix-themes {
+  /* --default-font-family: var(--font-inter), var(--font-geist-sans), -apple-system, */
+  --default-font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont,
+    'Segoe UI (Custom)', Roboto, 'Helvetica Neue', 'Open Sans (Custom)', system-ui,
+    sans-serif, 'Apple Color Emoji';
+  /* --code-font-family: var(--font-geist-mono), 'Menlo', 'Consolas (Custom)',
+    'Bitstream Vera Sans Mono', monospace, 'Apple Color Emoji', 'Segoe UI Emoji'; */
+  /* --code-font-weight: 200; */
+  font-feature-settings: 'calt', 'zero', 'cv01', 'cv02', 'cv03', 'cv04', 'cv05',
+    'cv06', 'cv08', 'cv09', 'cv10', 'cv11';
+  font-variation-settings: 'opsz' 32;
+}
+
 /* @hack(radix) when notion sends a color (background|text) */
 /*  it can map to radix-ui, but since we do not want to load */
 /*  every single radix-ui color, we do an extra step to load */
@@ -26,7 +40,7 @@
 /*  */
 /* reference: ../src/notion */
 :root {
-  --gray1: hsl(0, 0%, 99%);
+  /* --gray1: hsl(0, 0%, 99%);
   --gray2: hsl(0, 0%, 97.3%);
   --gray3: hsl(0, 0%, 95.1%);
   --gray4: hsl(0, 0%, 93%);
@@ -37,8 +51,8 @@
   --gray9: hsl(0, 0%, 56.1%);
   --gray10: hsl(0, 0%, 52.3%);
   --gray11: hsl(0, 0%, 43.5%);
-  --gray12: hsl(0, 0%, 9%);
-  --brown1: hsl(30, 40%, 99.1%);
+  --gray12: hsl(0, 0%, 9%); */
+  /* --brown1: hsl(30, 40%, 99.1%);
   --brown2: hsl(30, 50%, 97.6%);
   --brown3: hsl(30, 52.5%, 94.6%);
   --brown4: hsl(30, 53%, 91.2%);
@@ -109,7 +123,7 @@
   --purple9: hsl(272, 51%, 54%);
   --purple10: hsl(272, 46.8%, 50.3%);
   --purple11: hsl(272, 50%, 45.8%);
-  --purple12: hsl(272, 66%, 16%);
+  --purple12: hsl(272, 66%, 16%); */
   --pink1: hsl(322, 100%, 99.4%);
   --pink2: hsl(323, 100%, 98.4%);
   --pink3: hsl(323, 86.3%, 96.5%);
@@ -122,7 +136,7 @@
   --pink10: hsl(322, 63.9%, 50.7%);
   --pink11: hsl(322, 75%, 46%);
   --pink12: hsl(320, 70%, 13.5%);
-  --red1: hsl(359, 100%, 99.4%);
+  /* --red1: hsl(359, 100%, 99.4%);
   --red2: hsl(359, 100%, 98.6%);
   --red3: hsl(360, 100%, 96.8%);
   --red4: hsl(360, 97.9%, 94.8%);
@@ -133,11 +147,43 @@
   --red9: hsl(358, 75%, 59%);
   --red10: hsl(358, 69.4%, 55.2%);
   --red11: hsl(358, 65%, 48.7%);
-  --red12: hsl(354, 50%, 14.6%);
+  --red12: hsl(354, 50%, 14.6%); */
+  --blackA1: rgba(0, 0, 0, 0.05);
+  --blackA2: rgba(0, 0, 0, 0.1);
+  --blackA3: rgba(0, 0, 0, 0.15);
+  --blackA4: rgba(0, 0, 0, 0.2);
+  --blackA5: rgba(0, 0, 0, 0.3);
+  --blackA6: rgba(0, 0, 0, 0.4);
+  --blackA7: rgba(0, 0, 0, 0.5);
+  --blackA8: rgba(0, 0, 0, 0.6);
+  --blackA9: rgba(0, 0, 0, 0.7);
+  --blackA10: rgba(0, 0, 0, 0.8);
+  --blackA11: rgba(0, 0, 0, 0.9);
+  --blackA12: rgba(0, 0, 0, 0.95);
+  --whiteA1: rgba(255, 255, 255, 0.05);
+  --whiteA2: rgba(255, 255, 255, 0.1);
+  --whiteA3: rgba(255, 255, 255, 0.15);
+  --whiteA4: rgba(255, 255, 255, 0.2);
+  --whiteA5: rgba(255, 255, 255, 0.3);
+  --whiteA6: rgba(255, 255, 255, 0.4);
+  --whiteA7: rgba(255, 255, 255, 0.5);
+  --whiteA8: rgba(255, 255, 255, 0.6);
+  --whiteA9: rgba(255, 255, 255, 0.7);
+  --whiteA10: rgba(255, 255, 255, 0.8);
+  --whiteA11: rgba(255, 255, 255, 0.9);
+  --whiteA12: rgba(255, 255, 255, 0.95);
+
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+
+  --cmdk-shadow: 0 16px 70px rgb(0 0 0 / 20%);
+  --layer-portal: 9999;
+  --page-top: 75px;
+  --transition-fast: 500ms;
 }
 
 .dark {
-  --gray1: hsl(0, 0%, 8.5%);
+  /* --gray1: hsl(0, 0%, 8.5%);
   --gray2: hsl(0, 0%, 11%);
   --gray3: hsl(0, 0%, 13.6%);
   --gray4: hsl(0, 0%, 15.8%);
@@ -220,7 +266,7 @@
   --purple9: hsl(272, 51%, 54%);
   --purple10: hsl(273, 57.3%, 59.1%);
   --purple11: hsl(275, 80%, 71%);
-  --purple12: hsl(279, 75%, 95.7%);
+  --purple12: hsl(279, 75%, 95.7%); */
   --pink1: hsl(318, 25%, 9.6%);
   --pink2: hsl(319, 32.2%, 11.6%);
   --pink3: hsl(319, 41%, 16%);
@@ -233,7 +279,7 @@
   --pink10: hsl(323, 72.8%, 59.2%);
   --pink11: hsl(325, 90%, 66.4%);
   --pink12: hsl(322, 90%, 95.8%);
-  --red1: hsl(353, 23%, 9.8%);
+  /* --red1: hsl(353, 23%, 9.8%);
   --red2: hsl(357, 34.4%, 12%);
   --red3: hsl(356, 43.4%, 16.4%);
   --red4: hsl(356, 47.6%, 19.2%);
@@ -244,7 +290,76 @@
   --red9: hsl(358, 75%, 59%);
   --red10: hsl(358, 85.3%, 64%);
   --red11: hsl(358, 100%, 69.5%);
-  --red12: hsl(351, 89%, 96%);
+  --red12: hsl(351, 89%, 96%); */
+
+  --muted: 223 47% 11%;
+  --muted-foreground: 215.4 16.3% 56.9%;
+}
+
+.widget-init {
+  opacity: 100 !important;
+}
+
+:where(*) {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --header-height: 2.6rem;
+  --sidebar-width: 100%;
+  --sidebar-margin: 1rem;
+}
+@media (min-width: 768px) {
+  :root {
+    --sidebar-width: 16rem;
+  }
+}
+
+:root {
+  -br: 0.2rem;
+  --ease-out: cubic-bezier(0, 0.55, 0.45, 1);
+  --ease-in-out: cubic-bezier(0.85, 0, 0.15, 1);
+  --theme-transition-duration: 400ms;
+  --theme-transition-ease: ease-out;
+  --theme-transition: var(--theme-transition-duration) var(--theme-transition-ease);
+}
+
+:root {
+  --mt: 0px;
+  --mb: 0px;
+  --pt: 0px;
+  --pb: 0px;
+}
+
+:root {
+  --gutter: var(--grid-gap);
+  --col: (100vw - var(--grid-margin) * 2 - (var(--grid-cols) - 1) * var(--grid-gap)) /
+    var(--grid-cols);
+  --cols: calc(var(--col) + var(--gutter));
+}
+@media (min-width: 768px) {
+  :root {
+    --col: (
+        calc(100vw - var(--sidebar-width)) - var(--grid-margin) -
+          (var(--grid-cols) - 1) * var(--grid-gap)
+      ) / var(--grid-cols);
+  }
+}
+
+:root {
+  --page-width: 1440px;
+  --grid-margin: 1rem;
+  --grid-gap: 1rem;
+  --grid-cols: 6;
+}
+@media (min-width: 768px) {
+  :root {
+    --grid-margin: 2.7rem;
+    --grid-gap: 1rem;
+    --grid-cols: 12;
+  }
 }
 
 .spotify-button-outline {

@@ -1,12 +1,3 @@
-import {
-  SectionContent,
-  SectionHeader,
-  SectionHeaderContent,
-  // SectionHero,
-  SectionHeaderTitle,
-  SectionWrapper,
-  // Tags,
-} from '@jeromefitz/ds/components/Section'
 import { getDataFromCache, getSegmentInfo } from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
@@ -16,6 +7,9 @@ import { draftMode } from 'next/headers'
 
 import { CONFIG, getPageData } from '~app/(notion)/_config'
 import { generateMetadataCustom } from '~app/(notion)/_config/temp/generateMetadataCustom'
+import { ModuleRow } from '~app/_temp/modules/ModuleRow'
+import { TopBar } from '~app/_temp/modules/TopBar'
+import { LayoutClient } from '~app/layout.client'
 import { Notion as Blocks } from '~components/Notion'
 
 const slug = '/about'
@@ -68,15 +62,20 @@ async function Slug({ revalidate, segmentInfo }) {
   if (isObjectEmpty(data.page)) return null
   return (
     <>
-      <SectionWrapper>
-        <SectionHeader>
-          <SectionHeaderTitle isTitle>{title}</SectionHeaderTitle>
-          <SectionHeaderContent className="">{seoDescription}</SectionHeaderContent>
-        </SectionHeader>
-        <SectionContent>
-          <Blocks data={data?.blocks} />
-        </SectionContent>
-      </SectionWrapper>
+      <LayoutClient>
+        <div className="w-full min-w-full">
+          <TopBar
+            className=""
+            description={seoDescription}
+            isHiddenTags={true}
+            label={title}
+            title={title}
+          />
+          <ModuleRow>
+            <Blocks data={data?.blocks} />
+          </ModuleRow>
+        </div>
+      </LayoutClient>
     </>
   )
 }

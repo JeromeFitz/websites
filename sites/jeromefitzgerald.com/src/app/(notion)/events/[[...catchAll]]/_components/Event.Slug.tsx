@@ -5,14 +5,7 @@ import {
   ExternalLinkIcon,
   HomeIcon,
 } from '@jeromefitz/ds/components/Icon'
-import {
-  SectionContent,
-  SectionHeader,
-  SectionHeaderContent,
-  SectionHeaderTitle,
-  SectionWrapper,
-  Tags,
-} from '@jeromefitz/ds/components/Section'
+import { Tags } from '@jeromefitz/ds/components/Section'
 import { Separator } from '@jeromefitz/ds/components/Separator'
 import { cx } from '@jeromefitz/ds/utils/cx'
 import { getDataFromCache } from '@jeromefitz/shared/notion/utils'
@@ -25,8 +18,12 @@ import { notFound } from 'next/navigation'
 import type { PropertiesEvent } from '~app/(notion)/_config'
 
 import { CONFIG, getEventData } from '~app/(notion)/_config'
+import { ModuleRow } from '~app/_temp/modules/ModuleRow'
+import { TopBar } from '~app/_temp/modules/TopBar'
+import { LayoutClient } from '~app/layout.client'
 import { Notion as Blocks } from '~components/Notion'
 import { Relations } from '~components/Relations'
+import { WIP } from '~components/WIP/index'
 
 // import { Venue } from './Event.Slug.Venue'
 import { Image } from './Image'
@@ -95,7 +92,7 @@ function Ticket({ isFakePortal = false, properties }) {
           ? 'visible inline md:invisible md:hidden'
           : 'invisible hidden md:visible md:inline',
         '[writing-mode:horizontal-tb]',
-        'bg-radix-pinkA9 md:bg-inherit',
+        'bg-[var(--accent-a9)] md:bg-inherit',
         'backdrop-blur-md md:backdrop-blur-none',
         'fixed md:relative',
         'bottom-0 md:bottom-auto',
@@ -145,7 +142,8 @@ function Ticket({ isFakePortal = false, properties }) {
           // @ts-ignore
           <ButtonLink
             className={cx(
-              'pink-button-outline',
+              // @todo(radix-ui) get these custom classes back
+              // 'pink-button-outline',
               'mx-0 w-full px-0 py-2 text-xl font-bold',
               'flex-row items-center justify-center gap-1',
             )}
@@ -157,7 +155,7 @@ function Ticket({ isFakePortal = false, properties }) {
         ) : (
           <Button
             className={cx(
-              'slate-button-outline',
+              // 'slate-button-outline',
               'mx-0 w-full px-0 py-2 text-xl font-bold',
               'flex-row items-center justify-center gap-1',
               'cursor-not-allowed',
@@ -191,44 +189,44 @@ async function Slug({ revalidate, segmentInfo }) {
   if (is404) return notFound()
 
   const { properties }: { properties: PropertiesEvent } = data?.page
-  const { isPublished, tags, title } = getEventData(properties)
+  const { isPublished, seoDescription, tags, title } = getEventData(properties)
 
   // console.dir(`isPublished:      ${isPublished ? 'y' : 'n'}`)
 
   if (!isPublished) return notFound()
 
   return (
-    <>
-      {/* Content */}
+    <LayoutClient>
       <Ticket isFakePortal properties={properties} />
-      <SectionWrapper>
-        <SectionHeader>
-          <SectionHeaderTitle isTitle>{title}</SectionHeaderTitle>
-          <SectionHeaderContent>
-            <Tags tags={tags} />
-            <Separator className={'my-4'} />
-            <Ticket properties={properties} />
-          </SectionHeaderContent>
-        </SectionHeader>
-        <SectionContent>
+      <div className="w-full min-w-full">
+        <TopBar
+          className=""
+          description={seoDescription}
+          isHiddenTags={true}
+          label={title}
+          title={title}
+        />
+        <ModuleRow>
+          {/* <Blocks data={data?.blocks} /> */}
+          <WIP />
+          <Tags tags={tags} />
+          <Separator className={'my-4'} />
+          <Ticket properties={properties} />
+          <Separator className="my-6" />
+          {/* <h3 className="text-3xl font-black uppercase tracking-tighter">
+            Select Past Events
+          </h3> */}
+          <Separator className="my-4 opacity-50" />
           <Image properties={properties} />
           <Blocks data={data?.blocks} />
-        </SectionContent>
-      </SectionWrapper>
-      {/* Info */}
-      <SectionWrapper>
-        <SectionHeader>
-          <SectionHeaderTitle>Info</SectionHeaderTitle>
-        </SectionHeader>
-        <SectionContent>
           <Relations
             properties={properties}
             relations={RELATIONS}
             relationsSecondary={RELATIONS_SECONDARY}
           />
-        </SectionContent>
-      </SectionWrapper>
-    </>
+        </ModuleRow>
+      </div>
+    </LayoutClient>
   )
 }
 

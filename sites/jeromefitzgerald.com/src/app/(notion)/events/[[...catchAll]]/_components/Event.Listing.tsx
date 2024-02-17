@@ -5,15 +5,8 @@ import {
   ExternalLinkIcon,
   // LocationMarkerIcon,
 } from '@jeromefitz/ds/components/Icon'
-import {
-  SectionContent,
-  SectionHeader,
-  SectionHeaderContent,
-  // SectionHero,
-  SectionHeaderTitle,
-  SectionWrapper,
-  Tags,
-} from '@jeromefitz/ds/components/Section'
+import { Tags } from '@jeromefitz/ds/components/Section'
+import { Separator } from '@jeromefitz/ds/components/Separator'
 import { cx } from '@jeromefitz/ds/utils/cx'
 import {
   getDataFromCache,
@@ -31,6 +24,10 @@ import { notFound } from 'next/navigation'
 import { getPropertyTypeData } from 'next-notion/utils'
 
 import { CONFIG, getEventData, getPageData } from '~app/(notion)/_config'
+import { ModuleRow } from '~app/_temp/modules/ModuleRow'
+import { TopBar } from '~app/_temp/modules/TopBar'
+import { LayoutClient } from '~app/layout.client'
+import { WIP } from '~components/WIP/index'
 
 import {
   AccordionContent,
@@ -136,7 +133,8 @@ function ListingTemp({ defaultValue = null, items }) {
                           aria-label={`Read more detailed information for ${title}`}
                           className={cx(
                             'justify-center',
-                            isEventOver ? 'pink-button-outline' : 'pink-button-cta',
+                            // @todo(radix-ui) get these custom classes back
+                            // isEventOver ? 'pink-button-outline' : 'pink-button-cta',
                           )}
                           href={href}
                         >
@@ -148,7 +146,8 @@ function ListingTemp({ defaultValue = null, items }) {
                           // @ts-ignore
                           <ButtonLink
                             className={cx(
-                              'pink-button-outline',
+                              // @todo(radix-ui) get these custom classes back
+                              // 'pink-button-outline',
                               'flex-row items-center justify-center gap-1',
                             )}
                             href={ticketUrl}
@@ -285,39 +284,28 @@ async function Listing({ revalidate, segmentInfo }) {
 
   return (
     <>
-      {/* Hero */}
-      {/* <SectionHero title={title} /> */}
-      {/* Content */}
-      <SectionWrapper>
-        <SectionHeader className="hidden md:flex">
-          <SectionHeaderTitle isTitle>{title}</SectionHeaderTitle>
-          <SectionHeaderContent>{seoDescription}</SectionHeaderContent>
-        </SectionHeader>
-        <SectionContent className="w-full">
-          {/* <Blocks data={data?.blocks} /> */}
-          {/* @todo(notion) Show */}
-          {hasData && <Events data={eventsData} />}
-        </SectionContent>
-      </SectionWrapper>
-      <SectionWrapper>
-        <SectionHeader className="hidden md:flex">
-          <SectionHeaderTitle>Select Past Events</SectionHeaderTitle>
-        </SectionHeader>
-        <SectionContent className="w-full">
-          {/* <Blocks data={data?.blocks} /> */}
-          {/* @todo(notion) Show */}
-          {hasData && <EventsPast data={eventsData} />}
-        </SectionContent>
-      </SectionWrapper>
-      {/* Info */}
-      {/* <SectionWrapper>
-        <SectionHeader>
-          <SectionHeaderTitle>Info</SectionHeaderTitle>
-        </SectionHeader>
-        <SectionContent>
-          <Blocks data={data?.blocks} />
-        </SectionContent>
-      </SectionWrapper> */}
+      <LayoutClient>
+        <div className="w-full min-w-full">
+          <TopBar
+            className=""
+            description={seoDescription}
+            isHiddenTags={true}
+            label={title}
+            title={title}
+          />
+          <ModuleRow>
+            {/* <Blocks data={data?.blocks} /> */}
+            <WIP />
+            {hasData && <Events data={eventsData} />}
+            <Separator className="my-6" />
+            <h3 className="text-3xl font-black uppercase tracking-tighter">
+              Select Past Events
+            </h3>
+            <Separator className="my-4 opacity-50" />
+            {hasData && <EventsPast data={eventsData} />}
+          </ModuleRow>
+        </div>
+      </LayoutClient>
     </>
   )
 }

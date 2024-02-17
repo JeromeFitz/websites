@@ -14,6 +14,7 @@ import {
   BookmarkFilledIcon,
   BookmarkIcon,
   CalendarIcon,
+  CameraIcon,
   CaretDownIcon,
   CaretLeftIcon,
   CaretRightIcon,
@@ -74,8 +75,10 @@ import {
   TextAlignJustifyIcon,
   TextAlignLeftIcon,
   TextAlignRightIcon,
+  ThreadsLogoIcon,
   TicketIcon,
   TwitterLogoIcon,
+  UpdateIcon,
 } from './Icon'
 
 const Icon = () => {}
@@ -90,6 +93,7 @@ Icon.Bookmark = BookmarkIcon
 Icon.BookmarkFilled = BookmarkFilledIcon
 Icon.BookOpen = BookOpenIcon
 Icon.Calendar = CalendarIcon
+Icon.Camera = CameraIcon
 Icon.CaretDown = CaretDownIcon
 Icon.CaretLeft = CaretLeftIcon
 Icon.CaretRight = CaretRightIcon
@@ -151,7 +155,9 @@ Icon.TextAlignJustify = TextAlignJustifyIcon
 Icon.TextAlignLeft = TextAlignLeftIcon
 Icon.TextAlignRight = TextAlignRightIcon
 Icon.Ticket = TicketIcon
+Icon.ThreadsLogo = ThreadsLogoIcon
 Icon.TwitterLogo = TwitterLogoIcon
+Icon.UpdateIcon = UpdateIcon
 /**
  * Customizations and Shorthand
  */

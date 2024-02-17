@@ -1,12 +1,4 @@
-import {
-  SectionContent,
-  SectionHeader,
-  SectionHeaderContent,
-  SectionHeaderTitle,
-  // SectionHero,
-  SectionWrapper,
-  Tags,
-} from '@jeromefitz/ds/components/Section'
+import { Separator } from '@jeromefitz/ds/components/Separator'
 import { getDataFromCache } from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
@@ -16,6 +8,9 @@ import { notFound } from 'next/navigation'
 import type { PropertiesShow } from '~app/(notion)/_config'
 
 import { CONFIG, getShowData } from '~app/(notion)/_config'
+import { ModuleRow } from '~app/_temp/modules/ModuleRow'
+import { TopBar } from '~app/_temp/modules/TopBar'
+import { LayoutClient } from '~app/layout.client'
 import { Notion as Blocks } from '~components/Notion'
 import { Relations } from '~components/Relations/index'
 
@@ -54,46 +49,37 @@ async function Slug({ revalidate, segmentInfo }) {
   if (is404) return notFound()
 
   const { properties }: { properties: PropertiesShow } = data?.page
-  const { isPublished, tags, title } = getShowData(properties)
+  const { isPublished, seoDescription, tags, title } = getShowData(properties)
 
   if (!isPublished) return notFound()
 
   return (
     <>
-      {/* Hero */}
-      {/* <SectionHero title={title} /> */}
-      {/* Content */}
-      <SectionWrapper>
-        <SectionHeader>
-          <SectionHeaderTitle isTitle>{title}</SectionHeaderTitle>
-          <SectionHeaderContent>
-            <Tags tags={tags} />
-          </SectionHeaderContent>
-        </SectionHeader>
-        <SectionContent>
-          <Blocks data={data?.blocks} />
-        </SectionContent>
-      </SectionWrapper>
-      <SectionWrapper>
-        <SectionHeader>
-          <SectionHeaderTitle>Info</SectionHeaderTitle>
-        </SectionHeader>
-        <SectionContent>
-          <Relations
-            properties={properties}
-            relations={RELATIONS}
-            relationsSecondary={[]}
+      <LayoutClient>
+        <div className="w-full min-w-full">
+          <TopBar
+            className=""
+            description={seoDescription}
+            isHidden={false}
+            isHiddenTags={false}
+            isHiddenTitle={false}
+            label={title}
+            tags={tags}
+            title={title}
           />
-        </SectionContent>
-      </SectionWrapper>
-      {/* <SectionWrapper>
-        <SectionHeader>
-          <SectionHeaderTitle>Upcoming Shows</SectionHeaderTitle>
-        </SectionHeader>
-        <SectionContent>
-          <UpcomingShows properties={properties} />
-        </SectionContent>
-      </SectionWrapper> */}
+          <ModuleRow>
+            <Blocks data={data?.blocks} />
+            <Separator className="my-6" />
+            <h3 className="text-3xl font-black uppercase tracking-tighter">Info</h3>
+            <Separator className="my-4 opacity-50" />
+            <Relations
+              properties={properties}
+              relations={RELATIONS}
+              relationsSecondary={[]}
+            />
+          </ModuleRow>
+        </div>
+      </LayoutClient>
     </>
   )
 }

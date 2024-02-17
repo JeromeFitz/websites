@@ -3,10 +3,11 @@ import { fileURLToPath } from 'node:url'
 
 import nextConfig from '@jeromefitz/next-config/next.config.mjs'
 
-import dotenv from 'dotenv'
 import isCI from 'is-ci'
+
 if (!isCI) {
-  dotenv.config({ patch: './.env' })
+  const dotenv = await import('dotenv')
+  dotenv.config({ path: './.env' })
 }
 
 const __filename = fileURLToPath(import.meta.url)

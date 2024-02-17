@@ -1,19 +1,22 @@
+// const rtw = require('radix-themes-tw')
 const theme = require('tailwindcss/defaultTheme')
 
 const hocusPlugin = require('./hocus.plugin')
-const radixPlugin = require('./radix.plugin')
-const { notionColors, radixColors } = require('./src/index')
+// const radixPlugin = require('./radix.plugin')
+// const { notionColors, radixColors } = require('./src/index')
+
+// const radixThemePreset = rtw.radixThemePreset
 
 const safelist = []
-notionColors.map((color) => {
-  safelist.push(`notion-${color}`)
-})
-const buttonTypes = ['', '-cta', '-outline', '-solid', '-transparent']
-radixColors.map((color) => {
-  buttonTypes.map((type) => {
-    safelist.push(`${color}-button${type}`)
-  })
-})
+// notionColors.map((color) => {
+//   safelist.push(`notion-${color}`)
+// })
+// const buttonTypes = ['', '-cta', '-outline', '-solid', '-transparent']
+// radixColors.map((color) => {
+//   buttonTypes.map((type) => {
+//     safelist.push(`${color}-button${type}`)
+//   })
+// })
 
 /** @type {import('tailwindcss').Config} */
 const config = ({}) => ({
@@ -34,16 +37,24 @@ const config = ({}) => ({
   // future: {
   //   removeDeprecatedGapUtilities: true,
   //   purgeLayersByDefault: true,
+  // },
   plugins: [
     hocusPlugin,
     require('tailwindcss-animate'),
     require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/typography'),
     require('@tailwindcss/forms'),
-    radixPlugin({ colors: radixColors }),
-    require('tailwindcss-radix')({ variantPrefix: 'radix' }),
+    // radixPlugin({ colors: radixColors }),
+    // require('tailwindcss-radix')({ variantPrefix: 'radix' }),
+    // plugin(({ matchUtilities }) => {
+    //   matchUtilities({
+    //     perspective: (value) => ({
+    //       perspective: value,
+    //     }),
+    //   })
+    // }),
   ],
-  // },
+  // presets: [radixThemePreset],
   safelist: [
     ...safelist,
     // {
@@ -91,7 +102,10 @@ const config = ({}) => ({
         slideRightAndFade: 'slideRightAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)',
         slideUp: 'slideUp 300ms cubic-bezier(0.87, 0, 0.13, 1)',
         slideUpAndFade: 'slideUpAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)',
+        // text based
+        sweep: 'sweep calc(var(--width)*6ms) infinite alternate ease-in-out',
         swipeOut: 'swipeOut 100ms ease-out',
+        // sweep: 'sweep 1s infinite alternate ease-in-out',
       },
       backgroundImage: {
         breeze: 'linear-gradient(140deg, rgb(207, 47, 152), rgb(106, 61, 236))',
@@ -113,51 +127,56 @@ const config = ({}) => ({
         //   'linear-gradient(140deg, rgb(28, 85, 170), rgb(142, 199, 251))',
         // 'sunset-r': 'linear-gradient(140deg, rgb(255, 122, 47), rgb(255, 207, 115))',
       },
+      borderWidth: {
+        1: '1px',
+      },
       boxShadow: {
         slider: '0 0 0 5px rgba(0, 0, 0, 0.3)',
       },
       colors: {
         //
         black: '#0f0f0f',
-        current: 'current',
         // social
-        github: '#000000',
+        bluesky: '#3399FF', // #87CEEB
+        current: 'current',
+        github: 'var(--blackA1)',
+        'github-dark': 'var(--whiteA1)',
         inherit: 'inherit',
         instagram: '#c32aa3',
         linkedin: '#0a66c2',
+        // },
+        muted: {
+          DEFAULT: 'hsl(var(--muted))',
+          foreground: 'hsl(var(--muted-foreground))',
+        },
         spotify: '#1ed760',
         'spotify-dark': '#1db954',
+        threads: '#c32aa3',
         transparent: 'transparent',
         twitter: '#1da1f2',
-        white: '#f4f4f4',
         //
         // contrast: {
         //   lo: 'var(--contrast-lo)',
         //   hi: 'var(--contrast-hi)',
-        // },
+        white: '#f4f4f4',
       },
       fontFamily: {
-        sans: [
-          ['var(--font-inter)', ...theme.fontFamily.sans],
-          {
-            /**
-             * @note(font) INTER
-             */
-            // // https://rsms.me/inter/lab/?feat-cv01=1&feat-ss01=1&feat-ss02=1&feat-ss03=1&invert-colors=1&wght=900
-            fontFeatureSettings:
-              '"calt", "zero", "cv01", "cv02", "cv03", "cv04", "cv05", "cv06", "cv08", "cv09", "cv10", "cv11"',
-            /**
-             * @note(font) INTER 4
-             *
-             */
-            fontVariationSettings: '"opsz" 32',
-            /**
-             * @note(font) NAME SANS
-             */
-            // fontFeatureSettings:
-            //   '"case", "zero", "ss04", "ss05", "ss07", "ss09", "ss11", "ss12", "ss14"',
-          },
-        ],
+        mono: ['var(--font-geist-mono)', ...theme.fontFamily.mono],
+        // ],
+        sans: ['var(--font-geist-sans)', ...theme.fontFamily.sans],
+        // sans: [
+        //   ['var(--font-inter)', 'var(--font-geist-sans)', ...theme.fontFamily.sans],
+        //   {
+        //     /**
+        //      * @note(font) INTER
+        //      *
+        //      * ref: https://rsms.me/inter/lab/?feat-cv01=1&feat-ss01=1&feat-ss02=1&feat-ss03=1&invert-colors=1&wght=900
+        //      *
+        //      */
+        //     fontFeatureSettings:
+        //       '"calt", "zero", "cv01", "cv02", "cv03", "cv04", "cv05", "cv06", "cv08", "cv09", "cv10", "cv11"',
+        //     fontVariationSettings: '"opsz" 32',
+        //   },
       },
       keyframes: {
         contentShow: {
@@ -237,6 +256,13 @@ const config = ({}) => ({
           from: { opacity: 0, transform: 'translateY(2px)' },
           to: { opacity: 1, transform: 'translateY(0)' },
         },
+        // text based
+        sweep: {
+          to: {
+            transform:
+              'translate(min(0px,calc(var(--cols)*var(--grid-cols) - var(--gutter) - 100%)))',
+          },
+        },
         swipeOut: {
           from: { transform: 'translateX(var(--radix-toast-swipe-end-x))' },
           to: { transform: 'translateX(calc(100% + var(--viewport-padding)))' },
@@ -249,6 +275,9 @@ const config = ({}) => ({
       lineHeight: {
         'loose-extra': '2.125',
         tighter: '1.125',
+      },
+      transitionDuration: {
+        250: '250ms',
       },
     },
   },

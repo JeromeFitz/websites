@@ -137,7 +137,8 @@ async function _generateStaticParams({ ...props }) {
 const generateStaticParams = isDev ? undefined : _generateStaticParams
 export { generateStaticParams }
 
-export default function Page({ revalidate = false, ...props }) {
+export default function Page(props) {
+  const revalidate = props?.revalidate || false
   const segmentInfo = getSegmentInfo({ SEGMENT, ...props })
 
   /**

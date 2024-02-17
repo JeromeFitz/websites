@@ -54,7 +54,7 @@ const URL_TYPE = {
 const pages = [
   {
     active: true,
-    className: 'hover:text-radix-pink11',
+    className: 'hover:text-[var(--accent-11)]',
     icon: <HomeIcon className="text-inherit" />,
     id: 'homepage',
     keywords: 'social homepage',
@@ -66,7 +66,7 @@ const pages = [
   },
   {
     active: true,
-    className: 'hover:text-radix-pink11',
+    className: 'hover:text-[var(--accent-11)]',
     icon: <IdCardIcon className="text-inherit" />,
     id: 'about',
     keywords: 'social about',
@@ -78,7 +78,7 @@ const pages = [
   },
   {
     active: isDev,
-    className: 'hover:text-radix-pink11',
+    className: 'hover:text-[var(--accent-11)]',
     icon: <BookOpenIcon className="text-inherit" />,
     id: 'books',
     keywords: 'social books',
@@ -90,7 +90,7 @@ const pages = [
   },
   {
     active: true,
-    className: 'hover:text-radix-pink11',
+    className: 'hover:text-[var(--accent-11)]',
     icon: <InfoCircledIcon className="text-inherit" />,
     id: 'colophon',
     keywords: 'social colophon',
@@ -102,7 +102,7 @@ const pages = [
   },
   {
     active: isDev,
-    className: 'hover:text-radix-pink11',
+    className: 'hover:text-[var(--accent-11)]',
     icon: <EnvelopeOpenIcon className="text-inherit" />,
     id: 'contact',
     keywords: 'social contact',
@@ -114,7 +114,7 @@ const pages = [
   },
   {
     active: true,
-    className: 'hover:text-radix-pink11',
+    className: 'hover:text-[var(--accent-11)]',
     icon: <CalendarIcon className="text-inherit" />,
     id: 'events',
     keywords: 'social events',
@@ -126,7 +126,7 @@ const pages = [
   },
   {
     active: isDev,
-    className: 'hover:text-radix-pink11',
+    className: 'hover:text-[var(--accent-11)]',
     icon: <MusicalNoteIcon className="text-inherit" />,
     id: 'music',
     keywords: 'social music',
@@ -138,7 +138,7 @@ const pages = [
   },
   {
     active: true,
-    className: 'hover:text-radix-pink11',
+    className: 'hover:text-[var(--accent-11)]',
     icon: <MicrophoneIcon className="text-inherit" />,
     id: 'podcasts',
     keywords: 'social podcasts',
@@ -150,7 +150,7 @@ const pages = [
   },
   {
     active: true,
-    className: 'hover:text-radix-pink11',
+    className: 'hover:text-[var(--accent-11)]',
     icon: <StarIcon className="text-inherit" />,
     id: 'shows',
     keywords: 'social shows',

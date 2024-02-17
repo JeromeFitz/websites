@@ -1,14 +1,5 @@
 import { Anchor } from '@jeromefitz/ds/components/Anchor'
 // import { MicrophoneIcon } from '@jeromefitz/ds/components/Icon'
-import {
-  SectionContent,
-  SectionHeader,
-  // SectionHeaderContent,
-  SectionHeaderTitle,
-  // SectionHero,
-  SectionWrapper,
-  // Tags,
-} from '@jeromefitz/ds/components/Section'
 import { Separator } from '@jeromefitz/ds/components/Separator'
 import { cx } from '@jeromefitz/ds/utils/cx'
 import { EmbedSpotify } from '@jeromefitz/shared/components/Notion/Blocks/Embed.Spotify'
@@ -22,8 +13,12 @@ import type { PropertiesEpisode } from '~app/(notion)/_config'
 
 import { CONFIG, getEpisodeData } from '~app/(notion)/_config'
 import { Image } from '~app/(notion)/events/[[...catchAll]]/_components/Image'
+import { ModuleRow } from '~app/_temp/modules/ModuleRow'
+import { TopBar } from '~app/_temp/modules/TopBar'
+import { LayoutClient } from '~app/layout.client'
 import { Notion as Blocks } from '~components/Notion'
 import { Relations } from '~components/Relations'
+import { WIP } from '~components/WIP/index'
 
 const { DATABASE_ID } = CONFIG.EPISODES
 
@@ -56,7 +51,7 @@ function Rollups({ properties }) {
   const style = cx(
     styleIndividual,
     isPublished && 'transition-all duration-200',
-    isPublished && 'text-radix-slate12 hover:text-radix-pink11',
+    isPublished && 'text-[var(--slate-12)] hover:text-[var(--accent-11)]',
   )
 
   const {
@@ -121,7 +116,7 @@ function Links({ properties }) {
   const style = cx(
     styleIndividual,
     isPublished && 'transition-all duration-200',
-    // isPublished && 'text-radix-slate12 hover:text-radix-pink11'
+    // isPublished && 'text-[var(--slate-12)] hover:text-[var(--accent-11)]'
   )
   return (
     <>
@@ -180,47 +175,40 @@ async function EpisodeSlug({ revalidate, segmentInfo }) {
   if (is404) return notFound()
 
   const { properties }: { properties: PropertiesEpisode } = data?.page
-  const { isPublished, title } = getEpisodeData(properties)
+  const { isPublished, seoDescription, title } = getEpisodeData(properties)
 
   if (!isPublished) return notFound()
 
   return (
     <>
-      {/* Hero */}
-      {/* <SectionHero title={title} /> */}
-      {/* Content */}
-      <SectionWrapper>
-        <SectionHeader>
-          <SectionHeaderTitle isTitle>{title}</SectionHeaderTitle>
-        </SectionHeader>
-        <SectionContent>
-          <Image properties={properties} />
-          <Separator className="my-8" />
-          <Blocks data={data?.blocks} />
-          <Links properties={properties} />
-        </SectionContent>
-      </SectionWrapper>
-      <SectionWrapper>
-        <SectionHeader>
-          <SectionHeaderTitle>Info</SectionHeaderTitle>
-        </SectionHeader>
-        <SectionContent>
-          <Rollups properties={properties} />
-          <Relations
-            properties={properties}
-            relations={RELATIONS}
-            relationsSecondary={RELATIONS_SECONDARY}
+      <LayoutClient>
+        <div className="w-full min-w-full">
+          <TopBar
+            className=""
+            description={seoDescription}
+            isHiddenTags={true}
+            label={title}
+            title={title}
           />
-        </SectionContent>
-      </SectionWrapper>
-      {/* <SectionWrapper>
-        <SectionHeader>
-          <SectionHeaderTitle>Upcoming Episodes</SectionHeaderTitle>
-        </SectionHeader>
-        <SectionContent>
-          <UpcomingEpisodes properties={properties} />
-        </SectionContent>
-      </SectionWrapper> */}
+          <ModuleRow>
+            {/* <Blocks data={data?.blocks} /> */}
+            <WIP />
+            <Image properties={properties} />
+            <Separator className="my-8" />
+            <Blocks data={data?.blocks} />
+            <Links properties={properties} />
+            <Separator className="my-6" />
+            <h3 className="text-3xl font-black uppercase tracking-tighter">Info</h3>
+            <Separator className="my-4 opacity-50" />
+            <Rollups properties={properties} />
+            <Relations
+              properties={properties}
+              relations={RELATIONS}
+              relationsSecondary={RELATIONS_SECONDARY}
+            />
+          </ModuleRow>
+        </div>
+      </LayoutClient>
     </>
   )
 }

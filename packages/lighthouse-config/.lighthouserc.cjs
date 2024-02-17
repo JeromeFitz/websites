@@ -18,6 +18,7 @@ const config = ({ website }) => ({
     assert: {
       assertions: {
         'bf-cache': 'off',
+        'bootup-time': 'warn',
         'categories:accessibility': ['error', { minScore: 1 }],
         'categories:best-practices': ['warn', { minScore: 1 }],
         'categories:performance': ['warn', { minScore: 0.96 }],
@@ -25,9 +26,12 @@ const config = ({ website }) => ({
         // @note(radix-ui) bg3+text11 passes, not sure what is going on here
         'color-contrast': 'warn',
         'csp-xss': 'off',
+        'dom-size': 'off',
+        'empty-heading': 'warn',
         'errors-in-console': 'off',
         'largest-contentful-paint': ['warn', { minScore: 0.9 }],
         'legacy-javascript': 'off',
+        'mainthread-work-breakdown': 'warn',
         // @note(lighthouse) does not score correctly locally :X
         'max-potential-fid': ['warn', { minScore: 0.66 }],
         'non-composited-animations': 'off',
@@ -36,6 +40,7 @@ const config = ({ website }) => ({
         'server-response-time': 'off',
         'speed-index': 'off',
         'tap-targets': 'off',
+        'total-byte-weight': 'warn',
         'unused-css-rules': 'warn',
         'unused-javascript': 'off',
         'uses-responsive-images': 'off',

@@ -20,6 +20,6 @@ test('has heading', async ({ page }) => {
    * - https://www.programsbuzz.com/article/playwright-select-first-or-last-element#first-method
    *
    */
-  const heading = page.getByRole('heading', { level: 2 }).first()
+  const heading = page.getByRole('heading', { level: 1 }).first()
   await expect(heading).toContainText('Jerome Fitzgerald (he/him)')
 })

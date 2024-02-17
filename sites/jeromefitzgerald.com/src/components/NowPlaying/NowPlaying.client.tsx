@@ -86,8 +86,8 @@ function NowPlayingClient() {
   !!genresExtra && tags.push({ color: 'gray', id: 'none', name: genresExtra })
 
   return (
-    <div className={cx('flex flex-col gap-5')}>
-      <div className="shadow-radix-blackA7 w-full overflow-hidden rounded-md shadow-[0_2px_10px]">
+    <div className={cx('mr-2 flex w-9/12 flex-col justify-end gap-5')}>
+      <div className="w-full overflow-hidden rounded-md shadow-[0_2px_10px] shadow-[var(--black-a7)]">
         {/* <AspectRatio.Root ratio={16 / 9} asChild> */}
         <NextImage
           {...image}
@@ -104,7 +104,7 @@ function NowPlayingClient() {
       >
         <span
           className={cx(
-            'mb-2 md:mb-4 md:text-6xl',
+            'mb-2 md:mb-4 md:text-2xl',
             'text-3xl font-black tracking-tighter',
             // '-ml-8',
             // 'before:-left-8',
@@ -120,13 +120,13 @@ function NowPlayingClient() {
         <div className={cx('')}>
           <div className={cx('mb-2 md:mb-4')}>
             <span
-              className={cx('text-2xl font-extrabold tracking-tight md:text-5xl')}
+              className={cx('text-2xl font-extrabold tracking-tight md:text-2xl')}
             >
               {artist}
             </span>
           </div>
           <div className={cx('mb-2 md:mb-4')}>
-            <p className={cx('mr-4 text-xl font-light tracking-tight md:text-3xl')}>
+            <p className={cx('mr-4 text-xl font-light tracking-tight md:text-xl')}>
               <span className={cx('')}>from{` `}</span>
               <span className={cx('font-bold')}>“{album?.name}”</span>
               <span className={cx('')}>

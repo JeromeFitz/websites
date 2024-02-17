@@ -138,7 +138,7 @@ function TailwindHackForDynamicallyLoadedStylesBorders() {
                 const styles = cx(
                   `border${borderType}-radix-${radixColor}${i}`,
                   `my-0.5 py-0.5 pl-2`,
-                  'border-[1px]',
+                  'border-1',
                   '',
                   '',
                   '',
@@ -218,6 +218,7 @@ function TailwindHackForDynamicallyLoadedStylesColors() {
             .map((_, _i) => {
               const i = _i + 1
               const id = `${radixColor}-${i}`
+              // eslint-disable-next-line tailwindcss/no-custom-classname
               const color = cx(
                 `text-radix-${radixColor}${i}`,
                 `py-0.5 pl-2`,
@@ -248,6 +249,7 @@ function TailwindHackForDynamicallyLoadedStylesColors() {
             .map((_, _i) => {
               const i = _i + 1
               const id = `${radixColor}-${i}`
+              // eslint-disable-next-line tailwindcss/no-custom-classname
               const color = cx(
                 `bg-radix-${radixColor}${i}`,
                 i >= 9 &&
@@ -280,58 +282,84 @@ function TailwindHackForDynamicallyLoadedStylesColSpans() {
   return (
     <>
       <h3 className="my-4 py-4 text-3xl font-bold">Grid</h3>
-      <div className="bg-radix-slate6 grid grid-flow-col auto-rows-max grid-cols-12 gap-x-4 gap-y-2">
-        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-1">01</div>
-        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-2">02</div>
-        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-3">03</div>
-        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-4">04</div>
-        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-5">05</div>
-        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-6">06</div>
-        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-7">07</div>
-        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-8">08</div>
-        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-9">09</div>
-        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-10">10</div>
-        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-11">11</div>
-        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-12">12</div>
-      </div>
-      <div className="bg-radix-slate6 grid grid-flow-col auto-rows-max grid-cols-12 gap-x-4 gap-y-2">
-        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-1 col-start-1">
+      <div className="grid grid-flow-col auto-rows-max grid-cols-12 gap-x-4 gap-y-2 bg-[var(--slate-6)]">
+        <div className="col-span-1 bg-[var(--accent-6)] odd:bg-[var(--slate-6)]">
           01
         </div>
-        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-2 col-start-1">
+        <div className="col-span-2 bg-[var(--accent-6)] odd:bg-[var(--slate-6)]">
           02
         </div>
-        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-3 col-start-1">
+        <div className="col-span-3 bg-[var(--accent-6)] odd:bg-[var(--slate-6)]">
           03
         </div>
-        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-4 col-start-1">
+        <div className="col-span-4 bg-[var(--accent-6)] odd:bg-[var(--slate-6)]">
           04
         </div>
-        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-5 col-start-1">
+        <div className="col-span-5 bg-[var(--accent-6)] odd:bg-[var(--slate-6)]">
           05
         </div>
-        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-6 col-start-1">
+        <div className="col-span-6 bg-[var(--accent-6)] odd:bg-[var(--slate-6)]">
           06
         </div>
-        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-7 col-start-1">
+        <div className="col-span-7 bg-[var(--accent-6)] odd:bg-[var(--slate-6)]">
           07
         </div>
-        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-8 col-start-1">
+        <div className="col-span-8 bg-[var(--accent-6)] odd:bg-[var(--slate-6)]">
           08
         </div>
-        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-9 col-start-1">
+        <div className="col-span-9 bg-[var(--accent-6)] odd:bg-[var(--slate-6)]">
           09
         </div>
-        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-10 col-start-1">
+        <div className="col-span-10 bg-[var(--accent-6)] odd:bg-[var(--slate-6)]">
           10
         </div>
-        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-11 col-start-1">
+        <div className="col-span-11 bg-[var(--accent-6)] odd:bg-[var(--slate-6)]">
           11
         </div>
-        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-12 col-start-1">
+        <div className="col-span-12 bg-[var(--accent-6)] odd:bg-[var(--slate-6)]">
           12
         </div>
-        <div className="odd:bg-radix-slate6 bg-radix-pink6 col-span-full">Full</div>
+      </div>
+      <div className="grid grid-flow-col auto-rows-max grid-cols-12 gap-x-4 gap-y-2 bg-[var(--slate-6)]">
+        <div className="col-span-1 col-start-1 bg-[var(--accent-6)] odd:bg-[var(--slate-6)]">
+          01
+        </div>
+        <div className="col-span-2 col-start-1 bg-[var(--accent-6)] odd:bg-[var(--slate-6)]">
+          02
+        </div>
+        <div className="col-span-3 col-start-1 bg-[var(--accent-6)] odd:bg-[var(--slate-6)]">
+          03
+        </div>
+        <div className="col-span-4 col-start-1 bg-[var(--accent-6)] odd:bg-[var(--slate-6)]">
+          04
+        </div>
+        <div className="col-span-5 col-start-1 bg-[var(--accent-6)] odd:bg-[var(--slate-6)]">
+          05
+        </div>
+        <div className="col-span-6 col-start-1 bg-[var(--accent-6)] odd:bg-[var(--slate-6)]">
+          06
+        </div>
+        <div className="col-span-7 col-start-1 bg-[var(--accent-6)] odd:bg-[var(--slate-6)]">
+          07
+        </div>
+        <div className="col-span-8 col-start-1 bg-[var(--accent-6)] odd:bg-[var(--slate-6)]">
+          08
+        </div>
+        <div className="col-span-9 col-start-1 bg-[var(--accent-6)] odd:bg-[var(--slate-6)]">
+          09
+        </div>
+        <div className="col-span-10 col-start-1 bg-[var(--accent-6)] odd:bg-[var(--slate-6)]">
+          10
+        </div>
+        <div className="col-span-11 col-start-1 bg-[var(--accent-6)] odd:bg-[var(--slate-6)]">
+          11
+        </div>
+        <div className="col-span-12 col-start-1 bg-[var(--accent-6)] odd:bg-[var(--slate-6)]">
+          12
+        </div>
+        <div className="col-span-full bg-[var(--accent-6)] odd:bg-[var(--slate-6)]">
+          Full
+        </div>
       </div>
     </>
   )
@@ -357,6 +385,7 @@ function PlaygroundPage() {
             </SectionHeader>
             <SectionContent>
               <COMPONENT />
+              <div className="overflow-hidden" />
             </SectionContent>
           </SectionWrapper>
         )

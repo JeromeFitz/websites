@@ -5,15 +5,11 @@ function SectionWrapper({ children }) {
     <div className={cx('z-0 w-full')}>
       <div
         className={cx(
-          'flex w-full flex-wrap items-start pt-1 md:pt-4',
-          // custom
-          // 'relative',
-          '',
-          // before
-          // 'before:h-[1px]',
+          'flex w-full flex-row flex-wrap items-start pt-8',
+          'md:flex-row md:pt-4',
           'before:h-0',
           'before:relative before:inset-x-2 before:top-0 before:w-full before:content-normal',
-          'before:bg-radix-slate8',
+          'before:bg-[var(--gray-8)]',
           '',
         )}
       >

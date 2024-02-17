@@ -17,10 +17,10 @@ function SectionHeader({ children, className = '' }) {
           // 'before:h-0',
           'before:relative before:top-0 before:w-11/12 before:content-normal',
           // 'before:left-2 before:right-2,
-          'before:bg-radix-slate6',
+          'before:bg-[var(--gray-6)]',
           '',
           // w/o react-headroom
-          'top-0 md:top-2',
+          'top-7 md:top-3',
           // w/  react-headroom
           // 'top-4 md:top-8',
           className,

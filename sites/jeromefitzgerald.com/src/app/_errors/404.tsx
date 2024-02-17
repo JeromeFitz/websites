@@ -1,14 +1,10 @@
 import { Anchor } from '@jeromefitz/ds/components/Anchor'
-import {
-  SectionContent,
-  SectionHeader,
-  // SectionHeaderContent,
-  SectionHeaderTitle,
-  SectionWrapper,
-  // Tags,
-} from '@jeromefitz/ds/components/Section'
 import { Separator } from '@jeromefitz/ds/components/Separator'
 import { isObjectEmpty } from '@jeromefitz/utils'
+
+import { ModuleRow } from '~app/_temp/modules/ModuleRow'
+import { TopBar } from '~app/_temp/modules/TopBar'
+import { LayoutClient } from '~app/layout.client'
 
 // @todo(types)
 function FourOhFour({
@@ -24,13 +20,19 @@ function FourOhFour({
 
   return (
     <>
-      <SectionWrapper>
-        <SectionHeader>
-          <SectionHeaderTitle isTitle>{title}</SectionHeaderTitle>
-        </SectionHeader>
-        <SectionContent>
-          <>
-            <h1 className="mb-7 text-6xl font-black">{message}</h1>
+      <LayoutClient>
+        <div className="w-full min-w-full">
+          <TopBar
+            className=""
+            description={title}
+            isHidden={false}
+            isHiddenTags={true}
+            isHiddenTitle={false}
+            label={message}
+            tags={[]}
+            title={message}
+          />
+          <ModuleRow>
             <p className="text-lg">{body}</p>
             <Separator className="my-8" />
             <p className="text-lg">
@@ -49,9 +51,9 @@ function FourOhFour({
                 </ul>
               </>
             )}
-          </>
-        </SectionContent>
-      </SectionWrapper>
+          </ModuleRow>
+        </div>
+      </LayoutClient>
     </>
   )
 }

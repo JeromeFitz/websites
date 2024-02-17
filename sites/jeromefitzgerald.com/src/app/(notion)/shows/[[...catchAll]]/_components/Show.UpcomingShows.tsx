@@ -31,7 +31,7 @@ async function UpcomingShowsIndividual({ id }) {
   const style = cx(
     'inline-block text-lg font-normal tracking-tight md:text-2xl',
     'mb-4 w-full',
-    'hover:bg-radix-blackA8 dark:hover:bg-radix-whiteA8',
+    'hover:bg-[var(--blackA8)] dark:hover:bg-[var(--whiteA8)]',
   )
 
   return (

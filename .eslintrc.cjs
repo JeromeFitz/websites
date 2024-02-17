@@ -1,4 +1,4 @@
-const path = require('path')
+const path = require('node:path')
 const fullCwd = path.join(__dirname, './')
 
 const nextOverrides = {
@@ -7,8 +7,8 @@ const nextOverrides = {
     'no-restricted-imports': [
       'error',
       {
-        name: 'next/link',
         message: 'Use local <Anchor /> instead',
+        name: 'next/link',
       },
     ],
     /**
@@ -26,9 +26,6 @@ module.exports = {
     '@jeromefitz/eslint-config/react.cjs',
   ],
   ignorePatterns: ['next-env.d.ts'],
-  plugins: ['testing-library'],
-  root: true,
-  reportUnusedDisableDirectives: true,
   overrides: [
     // ⚙️ packages/storybook-config
     {
@@ -42,8 +39,8 @@ module.exports = {
       rules: nextOverrides.rules,
       settings: {
         tailwindcss: {
-          config: `${fullCwd}/sites/jeromefitzgerald.com/tailwind.config.js`,
           callees: ['cx', 'tw'],
+          config: `${fullCwd}/sites/jeromefitzgerald.com/tailwind.config.js`,
           /**
            * @todo(eslint-plugin-tailwindcss) submit pr for allowlist
            * @note(radix) dynamic variables need to be identified one-by-one here
@@ -52,13 +49,21 @@ module.exports = {
             '_background',
             '-button',
             '-radix-',
-            'bg-radix-',
+            'afc',
+            'a-no-focus',
+            'animate-sweep',
+            'bg-radix\\-.+:?.+',
+            'bg-muted',
+            'duration-250',
             'icon-custom',
             'notion-',
+            'perspective\\-.+:?.+',
             'radix\\-.+:?.+',
             'spotify-button-outline',
-            'text-radix-',
+            'text-radix\\-.+:?.+',
+            // 'data\\-.+:?.+',
             'trap',
+            'widget-init',
           ],
         },
       },
@@ -69,8 +74,8 @@ module.exports = {
       rules: nextOverrides.rules,
       settings: {
         tailwindcss: {
-          config: `${fullCwd}/packages/design-system/tailwind.config.js`,
           callees: ['cx', 'tw'],
+          config: `${fullCwd}/packages/design-system/tailwind.config.js`,
           // @todo(eslint-plugin-tailwindcss) submit pr for allowlist
           whitelist: ['icon-custom', 'spotify-button-outline', 'trap'],
         },
@@ -91,4 +96,7 @@ module.exports = {
       files: ['**/*.{spec,test}.{js,jsx,ts,tsx}'],
     },
   ],
+  plugins: ['testing-library'],
+  reportUnusedDisableDirectives: true,
+  root: true,
 }

@@ -1,13 +1,4 @@
 import { Anchor } from '@jeromefitz/ds/components/Anchor'
-import {
-  SectionContent,
-  SectionHeader,
-  SectionHeaderContent,
-  // SectionHero,
-  SectionHeaderTitle,
-  SectionWrapper,
-  // Tags,
-} from '@jeromefitz/ds/components/Section'
 import { getDataFromCache, getDatabaseQuery } from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
@@ -20,6 +11,10 @@ import { notFound } from 'next/navigation'
 import { getPropertyTypeData } from 'next-notion/utils'
 
 import { CONFIG, getPageData, getPodcastData } from '~app/(notion)/_config'
+import { ModuleRow } from '~app/_temp/modules/ModuleRow'
+import { TopBar } from '~app/_temp/modules/TopBar'
+import { LayoutClient } from '~app/layout.client'
+// import { Notion as Blocks } from '~components/Notion'
 // import type { PageObjectResponsePodcast } from '~app/(notion)/_config'
 import { WIP } from '~components/WIP/index'
 
@@ -58,28 +53,6 @@ function ListingTemp({ data }) {
       })}
     </ul>
   )
-
-  // return (
-  //   <ul>
-  //     {shows.map((show: PageObjectResponsePodcast) => {
-  //       const { properties } = show
-  //       const { isPublished } = getPodcastData(properties)
-  //       if (!isPublished) return null
-  //       // const propertyTypeData: any = getPropertyTypeData(
-  //       //   properties,
-  //       //   'Slug.Preview'
-  //       // )
-  //       // const href = propertyTypeData?.string
-  //       // if (!href) return null
-  //       const href = getPropertyTypeData(properties, 'Slug.Preview')
-  //       return (
-  //         <li key={`shows-show-${show.id}`}>
-  //           <NextLink href={href}>{href}</NextLink>
-  //         </li>
-  //       )
-  //     })}
-  //   </ul>
-  // )
 }
 
 // @todo(complexity) 12
@@ -132,22 +105,22 @@ async function Listing({ revalidate, segmentInfo }) {
 
   return (
     <>
-      {/* Hero */}
-      {/* <SectionHero title={title} /> */}
-      {/* Content */}
-      <SectionWrapper>
-        <SectionHeader>
-          <SectionHeaderTitle isTitle>{title}</SectionHeaderTitle>
-          <SectionHeaderContent className="invisible hidden md:visible md:inline">
-            {seoDescription}
-          </SectionHeaderContent>
-        </SectionHeader>
-        <SectionContent>
-          <WIP />
-          {/* <Blocks data={data?.blocks} /> */}
-          {hasContent && <ListingTemp data={podcastData} />}
-        </SectionContent>
-      </SectionWrapper>
+      <LayoutClient>
+        <div className="w-full min-w-full">
+          <TopBar
+            className=""
+            description={seoDescription}
+            isHiddenTags={true}
+            label={title}
+            title={title}
+          />
+          <ModuleRow>
+            {/* <Blocks data={data?.blocks} /> */}
+            <WIP />
+            {hasContent && <ListingTemp data={podcastData} />}
+          </ModuleRow>
+        </div>
+      </LayoutClient>
     </>
   )
 }

@@ -21,7 +21,7 @@ function ThemeToggle() {
   return (
     <>
       <button
-        className="hover:text-radix-pink11 flex"
+        className="flex hover:text-[var(--accent-11)]"
         onClick={() => handleThemeToggle()}
       >
         <span className="flex flex-row-reverse items-center justify-end gap-1 align-middle">

@@ -35,7 +35,7 @@ function Image({ ...props }) {
 
   return (
     <NextImage
-      className="flex w-full justify-center"
+      className="flex w-full justify-center rounded"
       placeholder="blur"
       {...imageProps}
     />

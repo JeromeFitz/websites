@@ -27,10 +27,14 @@ function WIPFooter() {
   )
 }
 
-function WIP() {
+function WIP({
+  description = 'This page is in the process of being updated.',
+}: {
+  description?: string
+}) {
   return (
     <Wrapper>
-      <span>This page is in the process of being updated.</span>
+      <span>{description}</span>
     </Wrapper>
   )
 }

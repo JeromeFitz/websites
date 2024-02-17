@@ -1,13 +1,4 @@
 import { Anchor } from '@jeromefitz/ds/components/Anchor'
-import {
-  SectionContent,
-  SectionHeader,
-  SectionHeaderContent,
-  // SectionHero,
-  SectionHeaderTitle,
-  SectionWrapper,
-  // Tags,
-} from '@jeromefitz/ds/components/Section'
 import { getDataFromCache, getDatabaseQuery } from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
@@ -19,7 +10,14 @@ import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 import { getPropertyTypeData } from 'next-notion/utils'
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { CONFIG, getPageData, getShowData } from '~app/(notion)/_config'
+import { ModuleRow } from '~app/_temp/modules/ModuleRow'
+import { TopBar } from '~app/_temp/modules/TopBar'
+import { LayoutClient } from '~app/layout.client'
+// import { Notion as Blocks } from '~components/Notion'
 // import type { PageObjectResponseShow } from '~app/(notion)/_config'
 import { WIP } from '~components/WIP/index'
 
@@ -121,26 +119,28 @@ async function Listing({ revalidate, segmentInfo }) {
   const title = 'Shows'
 
   // const seoDescription = getPropertyTypeData(data?.page?.properties, 'SEO.Description')
-  const { seoDescription } = getPageData(data?.page?.properties) || ''
+  // const { seoDescription } = getPageData(data?.page?.properties) || ''
+  const seoDescription =
+    'Shows that comedian Jerome Fitzgerald is in. Maybe these should be Acts? Online content, when it is his, eludes him. (He is glad you found this page in spite of this.)'
 
   return (
     <>
-      {/* Hero */}
-      {/* <SectionHero title={title} /> */}
-      {/* Content */}
-      <SectionWrapper>
-        <SectionHeader>
-          <SectionHeaderTitle isTitle>{title}</SectionHeaderTitle>
-          <SectionHeaderContent className="invisible hidden md:visible md:inline">
-            {seoDescription}
-          </SectionHeaderContent>
-        </SectionHeader>
-        <SectionContent>
-          {/* <Blocks data={data?.blocks} /> */}
-          <WIP />
-          {hasContent && <ListingTemp data={showData} />}
-        </SectionContent>
-      </SectionWrapper>
+      <LayoutClient>
+        <div className="w-full min-w-full">
+          <TopBar
+            className=""
+            description={seoDescription}
+            isHiddenTags={true}
+            label={title}
+            title={title}
+          />
+          <ModuleRow>
+            {/* <Blocks data={data?.blocks} /> */}
+            <WIP />
+            {hasContent && <ListingTemp data={showData} />}
+          </ModuleRow>
+        </div>
+      </LayoutClient>
     </>
   )
 }

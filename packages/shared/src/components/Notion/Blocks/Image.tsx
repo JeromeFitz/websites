@@ -144,15 +144,21 @@ async function getImageFromBlock({ block, url }) {
 
 async function ImageImpl({
   block,
+  blocks,
+  className = '',
   order,
 }: {
   block: BlockObjectResponse
+  blocks?: any
+  className?: string
   order: any
 }) {
   // @todo(error-handling)
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   if (block?.image?.external?.url === '') return null
+
+  const classNameCaption = blocks?.caption?.className || ''
 
   const imageUrl = getImageUrl(block)
   if (!imageUrl) return null
@@ -161,7 +167,7 @@ async function ImageImpl({
     ? block[block.type]?.caption[0]?.plain_text
     : null
 
-  let image = {
+  let image: any = {
     order,
     src: imageUrl,
     url: imageUrl,
@@ -172,11 +178,10 @@ async function ImageImpl({
 
   return (
     <>
-      <NextImage {...image} />
+      <NextImage className={className} {...image} />
       {!!imageCaption && (
-        <Caption>
+        <Caption className={classNameCaption}>
           <EmojiWrapper id={block.id} text={`${imageCaption}`} />
-          {/* {imageCaption} */}
         </Caption>
       )}
     </>

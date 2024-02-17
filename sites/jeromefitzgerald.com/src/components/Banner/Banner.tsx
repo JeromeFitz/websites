@@ -43,9 +43,9 @@ function Banner({}) {
         className={cx(
           // 'fixed',
           'top-0 z-20 m-0 min-h-[1.5rem] w-full shadow-lg transition-all duration-500',
-          // 'bg-radix-slate2 hover:bg-radix-slate3',
+          // 'bg-[var(--gray-2)] hover:bg-[var(--gray-3)]',
           'text-white',
-          'bg-radix-slate1 opacity-90 backdrop-blur-md hover:opacity-100',
+          'bg-[var(--gray-1)] opacity-90 backdrop-blur-md hover:opacity-100',
           'bg-breeze',
           'dark:bg-breeze-r',
         )}
