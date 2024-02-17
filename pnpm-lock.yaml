@@ -769,8 +769,8 @@ importers:
         specifier: 3.22.4
         version: 3.22.4
       zustand:
-        specifier: 4.5.0
-        version: 4.5.0(@types/react@18.2.55)(immer@10.0.3)(react@18.2.0)
+        specifier: 4.5.1
+        version: 4.5.1(@types/react@18.2.55)(immer@10.0.3)(react@18.2.0)
     devDependencies:
       '@jeromefitz/jest-config':
         specifier: workspace:*
@@ -1076,8 +1076,8 @@ importers:
         specifier: 3.22.4
         version: 3.22.4
       zustand:
-        specifier: 4.5.0
-        version: 4.5.0(@types/react@18.2.55)(immer@10.0.3)(react@18.2.0)
+        specifier: 4.5.1
+        version: 4.5.1(@types/react@18.2.55)(immer@10.0.3)(react@18.2.0)
     devDependencies:
       '@jeromefitz/jest-config':
         specifier: workspace:*
@@ -20165,8 +20165,8 @@ packages:
     resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
     dev: false
 
-  /zustand@4.5.0(@types/react@18.2.55)(immer@10.0.3)(react@18.2.0):
-    resolution: {integrity: sha512-zlVFqS5TQ21nwijjhJlx4f9iGrXSL0o/+Dpy4txAP22miJ8Ti6c1Ol1RLNN98BMib83lmDH/2KmLwaNXpjrO1A==}
+  /zustand@4.5.1(@types/react@18.2.55)(immer@10.0.3)(react@18.2.0):
+    resolution: {integrity: sha512-XlauQmH64xXSC1qGYNv00ODaQ3B+tNPoy22jv2diYiP4eoDKr9LA+Bh5Bc3gplTrFdb6JVI+N4kc1DZ/tbtfPg==}
     engines: {node: '>=12.7.0'}
     peerDependencies:
       '@types/react': '>=16.8'
