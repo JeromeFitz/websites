@@ -17,7 +17,7 @@ import { WIPFooter } from '~components/WIP'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import buildInfo from '~config/build-info.json'
-import { socials } from '~config/socials'
+import { socials } from '~data/socials'
 
 import { FooterCmdkClient } from './Footer.Cmdk.client'
 

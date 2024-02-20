@@ -29,6 +29,8 @@ import type {
   SelectPropertyResponse,
 } from '../Notion.types'
 
+const debug = process.env.NODE_ENV === 'development'
+
 type CheckboxData = {
   checkbox: boolean
   id: string
@@ -132,6 +134,13 @@ function getRichTextData({ data, type }: { data: RichTextData; type: string }) {
   // @todo(notion) proper fallback -- should probably warn here
   // const dataReturn: RichTextPropertyItemObjectResponse[] = typeData
   const dataReturn = typeData[0]?.plain_text ?? ''
+
+  // // @debug
+  // console.dir(`type: ${type}`)
+  // console.dir(typeData)
+  // console.dir(dataReturn)
+  // console.dir(`----`)
+
   return dataReturn
 }
 
@@ -258,7 +267,7 @@ function getUrlData({ data, type }: { data: UrlData; type: string }) {
 // @todo(types)
 // eslint-disable-next-line complexity
 function getPropertyTypeData(properties, property) {
-  null
+  // null
   if (!properties) return null
   const type = properties[property]?.type
   if (!type) return null
@@ -304,13 +313,17 @@ function getPropertyTypeData(properties, property) {
    */
   const typeData = properties[property][type]
   const typeDataType = typeData?.type
-  console.dir(`> debug:        getPropertyTypeData`)
-  console.dir(`> type:         ${type}`)
-  // console.dir(`> properties:`)
-  // console.dir(properties)
-  console.dir(`> typeDataType: ${typeDataType}`)
-  // console.dir(`> typeData:`)
-  // console.dir(typeData)
+
+  if (debug) {
+    console.dir(`> debug:        getPropertyTypeData`)
+    console.dir(`> type:         ${type}`)
+    // console.dir(`> properties:`)
+    // console.dir(properties)
+    console.dir(`> typeDataType: ${typeDataType}`)
+    // console.dir(`> typeData:`)
+    // console.dir(typeData)
+  }
+
   const returnData = { [typeDataType]: typeData[typeDataType] }
   return returnData
 }

@@ -1,17 +1,17 @@
 'use client'
-import {
-  SectionContent,
-  SectionHeader,
-  // SectionHeaderContent,
-  SectionHeaderTitle,
-  SectionWrapper,
-  // Tags,
-} from '@jeromefitz/ds/components/Section'
 import { Separator } from '@jeromefitz/ds/components/Separator'
 
 import type { ReactNode } from 'react'
 
 import { Component } from 'react'
+
+import { Grid } from '~app/playground/2024/_components/Grid'
+import {
+  HeadlineColumnA,
+  HeadlineContent,
+  HeadlineTitle,
+  HeadlineTitleSub,
+} from '~app/playground/2024/_components/Headline'
 
 type PropsChildren = {
   children?: ReactNode
@@ -48,28 +48,31 @@ class ErrorBoundary extends Component<PropsChildren> {
 
       return (
         <main className="m-0 min-h-screen w-full p-0">
-          <section className="m-2 px-2 md:m-6">
-            <SectionWrapper>
-              <SectionHeader>
-                <SectionHeaderTitle isTitle>{title}</SectionHeaderTitle>
-              </SectionHeader>
-              <SectionContent>
-                <h1 className="mb-7 text-6xl font-black">{message}</h1>
-                <p className="text-lg">{body}</p>
-                <Separator className="my-8" />
-                <p className="text-lg">
-                  Please try and go back to the{` `}
-                  <a
-                    className="inline-flex flex-row items-center gap-1 text-[var(--accent-11)] underline decoration-[var(--gray-4)] underline-offset-4 transition-all duration-200 ease-in hover:text-[var(--accent-12)] hover:decoration-[var(--gray-5)]"
-                    href="/"
-                  >
-                    homepage
-                  </a>
-                  .
-                </p>
-              </SectionContent>
-            </SectionWrapper>
-          </section>
+          <Grid as="section">
+            <HeadlineColumnA>
+              <HeadlineTitle aria-label={title} as="h1">
+                <>{title}</>
+              </HeadlineTitle>
+              <HeadlineTitleSub>
+                <></>
+              </HeadlineTitleSub>
+            </HeadlineColumnA>
+            <HeadlineContent>
+              <h1 className="mb-7 text-6xl font-black">{message}</h1>
+              <p className="text-lg">{body}</p>
+              <Separator className="my-8" />
+              <p className="text-lg">
+                Please try and go back to the{` `}
+                <a
+                  className="inline-flex flex-row items-center gap-1 text-[var(--accent-11)] underline decoration-[var(--gray-4)] underline-offset-4 transition-all duration-200 ease-in hover:text-[var(--accent-12)] hover:decoration-[var(--gray-5)]"
+                  href="/"
+                >
+                  homepage
+                </a>
+                .
+              </p>
+            </HeadlineContent>
+          </Grid>
         </main>
       )
     }

@@ -21,5 +21,5 @@ test('has heading', async ({ page }) => {
    *
    */
   const heading = page.getByRole('heading', { level: 1 }).first()
-  await expect(heading).toContainText('Jerome Fitzgerald (he/him)')
+  await expect(heading).toContainText('Jerome Fitzgerald')
 })

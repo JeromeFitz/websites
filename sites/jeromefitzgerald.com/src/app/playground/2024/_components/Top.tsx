@@ -1,12 +1,12 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 'use client'
 import { useOnScreen, useSWRInfinitePages } from '@jeromefitz/design-system'
 import { Anchor } from '@jeromefitz/ds/components/Anchor'
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-import { ArrowRightIcon } from '@jeromefitz/ds/components/Icon'
+import { ArrowTopRightIcon } from '@jeromefitz/ds/components/Icon'
 import { cx } from '@jeromefitz/ds/utils/cx'
 import { fetcher } from '@jeromefitz/shared/lib'
 
-import { useViewportSize } from '@mantine/hooks'
+import { useWindowScroll } from '@mantine/hooks'
 import { ArrowUpIcon } from '@radix-ui/react-icons'
 import { Badge, Button, Flex, Select } from '@radix-ui/themes'
 import Image from 'next/image'
@@ -15,7 +15,16 @@ import NextLink from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 import _title from 'title'
 
+import { bandcamps } from '~data/bandcamps'
 import { useStore as _useStore } from '~store/index'
+
+import { Grid } from './Grid'
+import {
+  HeadlineColumnA,
+  HeadlineContent,
+  HeadlineTitle,
+  HeadlineTitleSub,
+} from './Headline'
 
 const useStore = () => {
   return _useStore((store) => ({
@@ -35,51 +44,8 @@ function addS(str) {
   return `${str}’${poss}`
 }
 
-const bandcamps = [
-  {
-    album: 'The Control Center',
-    artist: 'Buscrates',
-    href: 'https://torysilvermusic.bandcamp.com/album/slowly',
-  },
-  {
-    album: 'Check Please',
-    artist: 'Cam Chambers and Nice Rec',
-    href: 'https://camchambers.bandcamp.com/album/check-please',
-  },
-  {
-    album: 'Shifty',
-    artist: 'Else Collective',
-    href: 'https://pjroduta.bandcamp.com/album/shifty',
-  },
-  {
-    album: 'Heat',
-    artist: 'Flower Crown',
-    href: 'https://flowercrownmusic.bandcamp.com/album/heat',
-  },
-  {
-    album: 'Made For The Soul',
-    artist: 'FRH Golden x pvkvsv',
-    href: 'https://frhgolden.bandcamp.com/album/made-for-the-soul',
-  },
-  {
-    album: 'Yinztroducing...',
-    artist: 'Moemaw Naedon & C.Scott',
-    href: 'https://soulslimerecords.bandcamp.com/album/yinztroducing',
-  },
-  {
-    album: 'Drink The Blue Sky',
-    artist: 'Nice Rec',
-    href: 'https://nicerec.bandcamp.com/album/drink-the-blue-sky',
-  },
-  {
-    album: 'Slowly',
-    artist: 'Tory Silver',
-    href: 'https://torysilvermusic.bandcamp.com/album/slowly',
-  },
-]
-
 /**
- * @note fuck ariel pink, fuck kanye
+ * @note fuck ariel pink
  */
 const removeItems = ['5H0YoDsPDi9fObFmJtTjfN']
 const info = {
@@ -143,12 +109,12 @@ function DataItemLoader({ error, handleScroll, isLoadingMore }) {
         className={cx(
           'flex w-full flex-col-reverse items-start justify-between justify-items-start md:flex-row-reverse',
           'text-left',
-          'hover:bg-[#fff] dark:hover:bg-[#000]',
-          'border-t-1 border-black/70',
+          'hover:bg-[#fff] dark:hover:bg-[var(--gray-2)]',
+          'border-t-1 border-[var(--gray-6)]',
           'mb-3 p-1 md:mb-0 md:gap-6 md:p-8',
         )}
       >
-        <div className={cx('flex h-full max-w-80  flex-col justify-center gap-2 ')}>
+        <div className={cx('flex h-full flex-col justify-center gap-2 ')}>
           <p className={cx('text-xs tracking-tighter')}>
             <span className="font-bold uppercase tracking-wide text-[var(--gray-11)]">
               Status
@@ -173,7 +139,7 @@ function DataItemLoader({ error, handleScroll, isLoadingMore }) {
             </span>
           </p>
           <Button
-            className="my-4 w-fit cursor-pointer"
+            className="my-4 w-fit hover:cursor-pointer"
             color="pink"
             highContrast={false}
             onClick={handleScroll}
@@ -184,7 +150,7 @@ function DataItemLoader({ error, handleScroll, isLoadingMore }) {
             <>
               Go to top
               {` `}
-              <ArrowUpIcon className={cx('text-[var(--accent-11)] opacity-100')} />
+              <ArrowUpIcon className={cx('text-[var(--accent-11)] !opacity-100')} />
             </>
           </Button>
         </div>
@@ -194,7 +160,8 @@ function DataItemLoader({ error, handleScroll, isLoadingMore }) {
             alt={``}
             className={cx(
               'flex h-[inherit] w-full justify-center overflow-y-hidden rounded-md md:max-w-96',
-              !isLoadingMore && !error && 'grayscale',
+              // !isLoadingMore && !error && 'grayscale',
+              '',
             )}
             placeholder="blur"
             role="img"
@@ -253,9 +220,7 @@ function DataItem({ item, type }) {
         'mb-3 p-1 md:mb-0 md:gap-6 md:p-8',
       )}
     >
-      <div
-        className={cx('flex h-full max-w-80 flex-col justify-center gap-3 md:gap-2')}
-      >
+      <div className={cx('flex h-full  flex-col justify-center gap-3 md:gap-2')}>
         <p className={cx('text-xs tracking-tighter')}>
           <span className="font-bold uppercase tracking-wide text-[var(--gray-11)]">
             Artist
@@ -305,18 +270,18 @@ function DataItem({ item, type }) {
             {genres.map((genre) => {
               if (!genre) return null
               return (
-                <Badge key={`g--${genre}`} radius="full" size="1">
+                <Badge key={`g--${genre}`} radius="full" size="2">
                   {genre}
                 </Badge>
               )
             })}
             {!!genresExtra && (
-              <Badge color="gray" radius="full" size="1">
+              <Badge color="gray" radius="full" size="2">
                 {genresExtra}
               </Badge>
             )}
             {genres.length === 0 && (
-              <Badge color="gray" radius="full" size="1">
+              <Badge color="gray" radius="full" size="2">
                 N/A
               </Badge>
             )}
@@ -334,7 +299,9 @@ function DataItem({ item, type }) {
           <NextLink href={_href}>
             Open Spotify
             {` `}
-            <ArrowRightIcon className={cx('text-[var(--accent-11)] opacity-100')} />
+            <ArrowTopRightIcon
+              className={cx('text-[var(--accent-11)] !opacity-100')}
+            />
           </NextLink>
         </Button>
       </div>
@@ -353,38 +320,34 @@ function DataItem({ item, type }) {
 }
 function Top({}) {
   // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
-  const ref = useRef<any | null>(null)
-  const { width } = useViewportSize()
-  // const {
-  //   data: { time_range },
-  // } = useSpotify()
+  const refElementToScrollToAfter = useRef<any | null>()
+  // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
+  const refSWRInfinitePages = useRef<any | null>(null)
 
   const { spotifyTimeRange, spotifyTimeRangeSet, spotifyType, spotifyTypeSet } =
     useStore()
 
   const [limit] = useState(10)
   const [url] = useState(INIT.url)
-  const isVisible = useOnScreen(ref)
+  const isVisible = useOnScreen(refSWRInfinitePages)
 
-  const handleScroll = (href) => {
-    const targetId = href.replace(/.*\#/, '')
-    const elem = document.getElementById(targetId)
-    // @note(scroll) do not scroll on mobile for now
-    if (width > 699) {
-      window.scrollTo({
-        behavior: 'smooth',
-        top: elem?.getBoundingClientRect().top,
-      })
-    }
+  /**
+   * @hack(mantine) this is ... well ... not dynamic really
+   */
+  const [, scrollTo] = useWindowScroll()
+  const handleScrollTo = () => {
+    const { clientHeight } = refElementToScrollToAfter.current
+    // console.dir(`clientHeight: ${clientHeight}`)
+    scrollTo({ y: clientHeight + 100 })
   }
 
   const handleValueChangeTimeRange = (value) => {
     spotifyTimeRangeSet(value)
-    handleScroll('#now-playing')
+    handleScrollTo()
   }
   const handleValueChangeType = (value) => {
     spotifyTypeSet(value)
-    handleScroll('#now-playing')
+    handleScrollTo()
   }
 
   const {
@@ -429,188 +392,201 @@ function Top({}) {
   }, [canFetchMore, fetchMore, isFetchingMore, isLoadingMore, isVisible])
 
   return (
-    <section
-      className={cx('grid grid-cols-4 gap-4', 'mb-1 mr-1 p-4 md:p-12', 'max-w-7xl')}
-    >
-      <div className={cx('hidden', 'col-span-4 md:col-span-1')}>
-        <p
-          className={cx(
-            'text-4xl font-black tracking-tighter',
-            'flex flex-col gap-0',
-            '',
-          )}
-        >
-          <strong>Now Playing</strong>
-          <span className="font-mono text-base font-light tracking-normal">
-            via
-            <span className="text-spotify-dark dark:text-spotify font-sans text-2xl font-bold">
-              {' '}
-              Spotify
-            </span>
-          </span>
-        </p>
-      </div>
-      <div
-        className={cx(
-          'hidden',
-          // 'flex flex-col gap-4',
-          'col-span-4 md:col-span-3',
-        )}
-      >
-        <p className={cx('text-lg tracking-wide', 'flex flex-col gap-0', '')}>
-          My “Music” library is at over 50 days, and am continuing an ever growing
-          vinyl collection. (I have not yet made the leap to first editions, which is
-          probably for the best currently. Especially when looking to backstock
-          really old records
-        </p>
-        <p
-          className={cx(
-            'text-2xl font-semibold tracking-wide',
-            'flex flex-col gap-0',
-            // 'text-[var(--accent-11)]',
-            '',
-          )}
-        >
-          Please support artists by going to shows and purchasing music, especially
-          local and indie.
-        </p>
-        <p className={cx('mb-2 mt-4 items-center text-lg tracking-wide md:text-xl')}>
-          Like some of <Anchor href="/shows/jerome-and">Jerome &</Anchor>’s musical
-          guests on Bandcamp:
-        </p>
-        <ul className="list-inside pb-4 text-base tracking-wide md:list-disc md:text-lg">
-          {bandcamps.map(({ album, artist: _artist, href }, id) => {
-            const artist = addS(_artist)
-            return (
-              <li className="my-2 md:my-1" key={`bandcamp-link-${id}`}>
-                <Anchor
-                  className={cx(
-                    'inline-flex flex-row items-center gap-1',
-                    'underline-offset-4',
-                    'underline',
-                    'decoration-[var(--accent-a4)] hover:decoration-[var(--accent-a5)]',
-                    'text-[var(--accent-11)] hover:text-[var(--accent-12)]',
-                    'transition-all duration-200 ease-in',
-                    '',
-                  )}
-                  href={href}
-
-                  // target="_blank"
-                >
-                  {artist}, “{album}”
-                </Anchor>
-              </li>
-            )
-          })}
-        </ul>
-      </div>
-      <div
-        className={cx(
-          'col-span-4 h-fit  md:col-span-1',
-          'sticky -top-4 md:top-28',
-          'bg-white dark:bg-black',
-        )}
-        id="now-playing"
-      >
-        <div className={cx()}>
-          <p
-            className={cx(
-              'text-4xl font-black tracking-tighter',
-              'flex flex-col gap-0',
-              '',
-            )}
-          >
-            <strong>Now Playing</strong>
-            <span className="font-mono text-base font-light tracking-normal">
+    <>
+      <Grid ref={refElementToScrollToAfter}>
+        <HeadlineColumnA separateTitle={true}>
+          <HeadlineTitle as="h1">Now Playing</HeadlineTitle>
+          <HeadlineTitleSub>
+            <Badge
+              aria-label="data from Spotify"
+              className={cx('!bg-[var(--gray-a3)] !text-black  dark:!text-white')}
+              size="2"
+            >
+              <span aria-hidden className="inline md:hidden">
+                via{` `}
+              </span>
+              <span aria-hidden className="hidden md:inline">
+                data from{` `}
+              </span>
+              <span
+                aria-hidden
+                className=" !text-spotify-dark dark:!text-spotify font-black uppercase  tracking-wide"
+              >
+                Spotify
+              </span>
+            </Badge>
+            {/* <span className="font-mono text-base font-light tracking-normal">
               via
               <span className="text-spotify-dark dark:text-spotify font-sans text-2xl font-bold">
                 {' '}
                 Spotify
               </span>
-            </span>
-          </p>
-        </div>
+            </span> */}
+          </HeadlineTitleSub>
+        </HeadlineColumnA>
+        <HeadlineContent>
+          <>
+            <p className={cx('text-lg tracking-wide', 'flex flex-col gap-0', '')}>
+              My “Music” library is at over 50 days, and am continuing an ever
+              growing vinyl collection. (I have not yet made the leap to first
+              editions, which is probably for the best currently. Especially when
+              looking to backstock really old records.)
+            </p>
+            <p className={cx('text-lg tracking-wide', 'flex flex-col gap-0', '')}>
+              Separately, I have been teaching myself piano and fooling around with a
+              sampler/drum machine.
+            </p>
+            <p
+              className={cx(
+                'text-2xl font-semibold tracking-wide',
+                'flex flex-col gap-0',
+                // 'text-[var(--accent-11)]',
+                '',
+              )}
+            >
+              Please support artists by going to shows and purchasing music,
+              especially local and indie.
+            </p>
+            <p
+              className={cx(
+                'mb-2 mt-4 items-center text-lg tracking-wide md:text-xl',
+              )}
+            >
+              Like some of <Anchor href="/shows/jerome-and">Jerome &</Anchor>’s
+              musical guests on Bandcamp:
+            </p>
+            <ul className="list-inside pb-4 text-base tracking-wide md:list-disc md:text-lg">
+              {bandcamps.map(({ album, artist: _artist, href }, id) => {
+                const artist = addS(_artist)
+                return (
+                  <li className="my-2 md:my-1" key={`bandcamp-link-${id}`}>
+                    <Anchor
+                      className={cx(
+                        'inline-flex flex-row items-center gap-1',
+                        'underline-offset-4',
+                        'underline',
+                        'decoration-[var(--accent-a4)] hover:decoration-[var(--accent-a5)]',
+                        'text-[var(--accent-11)] hover:text-[var(--accent-12)]',
+                        'transition-all duration-200 ease-in',
+                        '',
+                      )}
+                      href={href}
+                      // target="_blank"
+                    >
+                      {artist}, “{album}”
+                    </Anchor>
+                  </li>
+                )
+              })}
+            </ul>
+          </>
+        </HeadlineContent>
+      </Grid>
+      <Grid as="section">
         <div
           className={cx(
-            'mt-6 md:mt-8',
-            'flex flex-row justify-between gap-4 pb-4  md:flex-col md:justify-start md:pb-0',
+            'col-span-4 h-fit  md:col-span-1',
+            'sticky top-[calc(var(--header-height)_+_0px)] md:top-28',
+            'bg-white dark:bg-black',
+            'border-b-1 border-[var(--gray-a3)]',
+            'drop-shadow-sm dark:shadow-white/5  dark:drop-shadow-lg',
+            'md:border-none md:drop-shadow-none',
           )}
         >
-          <Flex gap="3">
-            <Select.Root
-              defaultValue={spotifyTimeRange ?? INIT.time_range}
-              onValueChange={(value) => handleValueChangeTimeRange(value)}
-              size="3"
-            >
-              <Select.Trigger
-                // @todo(radix) asChild this?
-                // @ts-ignore
-                className="w-full"
-                placeholder="Time Range:"
-                radius="full"
-              />
-              {/* @ts-ignore */}
-              <Select.Content className="w-full">
+          <div
+            className={cx(
+              // 'mt-6 md:mt-8',
+              'flex flex-row justify-between gap-4 pb-4  md:flex-col md:justify-start md:pb-0',
+            )}
+          >
+            <Flex gap="3">
+              <Select.Root
+                defaultValue={spotifyTimeRange ?? INIT.time_range}
+                onValueChange={(value) => handleValueChangeTimeRange(value)}
+                size="3"
+              >
+                <Select.Trigger
+                  // @todo(radix) asChild this?
+                  // @ts-ignore
+                  className="w-full md:w-11/12"
+                  placeholder="Time Range:"
+                  radius="full"
+                />
                 {/* @ts-ignore */}
-                <Select.Item className="w-full" value="short_term">
-                  Past Month
-                </Select.Item>
+                <Select.Content className="w-full">
+                  {/* @ts-ignore */}
+                  <Select.Item className="w-full" value="short_term">
+                    Past Month
+                  </Select.Item>
+                  {/* @ts-ignore */}
+                  <Select.Item value="medium_term">Past Six Months</Select.Item>
+                  {/* @ts-ignore */}
+                  <Select.Item value="long_term">All Time</Select.Item>
+                </Select.Content>
+              </Select.Root>
+            </Flex>
+            <Flex gap="3">
+              <Select.Root
+                defaultValue={spotifyType ?? INIT.type}
+                onValueChange={(value) => handleValueChangeType(value)}
+                size="3"
+              >
+                <Select.Trigger
+                  // @todo(radix) asChild this?
+                  // @ts-ignore
+                  className="w-full md:w-11/12"
+                  placeholder="Type:"
+                  radius="full"
+                />
                 {/* @ts-ignore */}
-                <Select.Item value="medium_term">Past Six Months</Select.Item>
-                {/* @ts-ignore */}
-                <Select.Item value="long_term">All Time</Select.Item>
-              </Select.Content>
-            </Select.Root>
-          </Flex>
-          <Flex gap="3">
-            <Select.Root
-              defaultValue={spotifyType ?? INIT.type}
-              onValueChange={(value) => handleValueChangeType(value)}
-              size="3"
-            >
-              {/* @todo(radix) asChild this? */}
-              {/* @ts-ignore */}
-              <Select.Trigger className="w-full" placeholder="Type:" radius="full" />
-              {/* @ts-ignore */}
-              <Select.Content>
-                {/* @ts-ignore */}
-                <Select.Item value="top-artists">Top Artists</Select.Item>
-                {/* @ts-ignore */}
-                <Select.Item value="top-tracks">Top Tracks</Select.Item>
-              </Select.Content>
-            </Select.Root>
-          </Flex>
+                <Select.Content>
+                  {/* @ts-ignore */}
+                  <Select.Item value="top-artists">Top Artists</Select.Item>
+                  {/* @ts-ignore */}
+                  <Select.Item value="top-tracks">Top Tracks</Select.Item>
+                </Select.Content>
+              </Select.Root>
+            </Flex>
+          </div>
         </div>
-      </div>
-      <ul
-        className={cx(
-          'm-0 list-none p-0',
-          'col-span-4 md:col-span-3',
-          'justify-items-start',
-        )}
-      >
-        {data?.map((item: any, i: number) => {
-          if (removeItems.includes(item.id)) return null
-          // return null
-          return (
-            <DataItem
-              item={item}
-              key={`np--${spotifyType}}--${spotifyTimeRange}--${i}`}
-              type={spotifyType}
-            />
-          )
-        })}
-        <div ref={ref} />
-        <DataItemLoader
-          error={error}
-          handleScroll={() => handleScroll('#now-playing')}
-          isLoadingMore={isLoadingMore}
-          key="np-l-2"
-        />
-      </ul>
+        <ul
+          className={cx(
+            'm-0 list-none p-0',
+            'col-span-4 md:col-span-3',
+            'justify-items-start',
+          )}
+        >
+          {data?.map((item: any, i: number) => {
+            if (removeItems.includes(item.id)) return null
+            /**
+             * @todo(radix) when data changes drastically
+             *  can this not be so jarring? Possible to have
+             *  a pseudo-loader to "hide" the first element for
+             *  a period of time?
+             *
+             * Or have opacity start at 0 then come to 100?
+             */
+            return (
+              <DataItem
+                item={item}
+                key={`np--${spotifyType}}--${spotifyTimeRange}--${i}`}
+                type={spotifyType}
+              />
+            )
+          })}
+          <div ref={refSWRInfinitePages} />
+          <DataItemLoader
+            error={error}
+            // handleScroll={() => handleScroll('#now-playing')}
+            handleScroll={() => handleScrollTo()}
+            isLoadingMore={isLoadingMore}
+            key="np-l-2"
+          />
+        </ul>
 
-      <div className={cx()}></div>
-    </section>
+        <div className={cx()}></div>
+      </Grid>
+    </>
   )
 }
 

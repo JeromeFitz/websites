@@ -1,14 +1,28 @@
 'use client'
-import { createContext, useContext } from 'react'
-import { createStore, useStore as useZustandStore } from 'zustand'
+import type { ReactNode } from 'react'
+import type { StoreApi } from 'zustand'
+
+import { createContext, useContext, useRef } from 'react'
+import { useStore as useZustandStore } from 'zustand'
+// import { persist } from 'zustand/middleware'
+import { createStore } from 'zustand/vanilla'
 
 // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
-const zustandContext = createContext<any | null>(null)
+const Context = createContext<any | null>(null)
 
-const Provider = zustandContext.Provider
+interface ProviderProps {
+  children: ReactNode
+}
+const Provider = ({ children }: ProviderProps) => {
+  const storeRef = useRef<StoreApi<any>>()
+  if (!storeRef.current) {
+    storeRef.current = initializeStoreMenu()
+  }
+  return <Context.Provider value={storeRef.current}>{children}</Context.Provider>
+}
 
-const useStore = <T>(selector: (state: any) => T) => {
-  const store = useContext(zustandContext)
+const useStore = <T,>(selector: (state: any) => T): T => {
+  const store = useContext(Context)
   if (!store) throw new Error('Store is missing the provider')
   return useZustandStore(store, selector)
 }
@@ -23,15 +37,10 @@ const getDefaultInitialStateStoreMenu = () => ({
   countSet: () => {},
   current: 0,
   currentSet: () => {},
-  // htmlWidth: 0,
-  // htmlWidthSet: () => {},
-  // htmlHeight: 0,
   isCmdkInnerOpen: false,
   isCmdkInnerOpenSet: () => {},
-  // htmlHeightSet: () => {},
   isCmdkOpen: false,
   isCmdkOpenSet: () => {},
-  //
   isMenuOpen: false,
   isMenuOpenSet: () => {},
   isRouteChanging: false,
@@ -67,21 +76,11 @@ const initializeStoreMenu = (preloadedState: Partial<any> = {}) => {
         cmdkPages: get().cmdkPages.slice(0, -1),
       })
     },
-    // htmlWidthSet: (width) => {
-    //   set({
-    //     htmlWidth: width,
-    //   })
-    // },
-    // htmlHeightSet: (height) => {
-    //   set({
-    //     htmlHeight: height,
-    //   })
     isCmdkInnerOpenSet: () => {
       set({
         isCmdkInnerOpen: !get().isCmdkInnerOpen,
       })
     },
-    // },
     isCmdkOpenSet: () => {
       set({
         isCmdkInnerOpen: !get().isCmdkInnerOpen,

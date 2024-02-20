@@ -11,6 +11,7 @@ import { cx } from '@jeromefitz/ds/utils/cx'
 import { getDataFromCache } from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
+import { Badge } from '@radix-ui/themes'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 
@@ -18,9 +19,13 @@ import { notFound } from 'next/navigation'
 import type { PropertiesEvent } from '~app/(notion)/_config'
 
 import { CONFIG, getEventData } from '~app/(notion)/_config'
-import { ModuleRow } from '~app/_temp/modules/ModuleRow'
-import { TopBar } from '~app/_temp/modules/TopBar'
-import { LayoutClient } from '~app/layout.client'
+import { Grid } from '~app/playground/2024/_components/Grid'
+import {
+  HeadlineColumnA,
+  HeadlineContent,
+  HeadlineTitle,
+  HeadlineTitleSub,
+} from '~app/playground/2024/_components/Headline'
 import { Notion as Blocks } from '~components/Notion'
 import { Relations } from '~components/Relations'
 import { WIP } from '~components/WIP/index'
@@ -189,44 +194,54 @@ async function Slug({ revalidate, segmentInfo }) {
   if (is404) return notFound()
 
   const { properties }: { properties: PropertiesEvent } = data?.page
-  const { isPublished, seoDescription, tags, title } = getEventData(properties)
+  const { isPublished, tags, title } = getEventData(properties)
 
   // console.dir(`isPublished:      ${isPublished ? 'y' : 'n'}`)
 
   if (!isPublished) return notFound()
 
   return (
-    <LayoutClient>
+    <>
       <Ticket isFakePortal properties={properties} />
-      <div className="w-full min-w-full">
-        <TopBar
-          className=""
-          description={seoDescription}
-          isHiddenTags={true}
-          label={title}
-          title={title}
-        />
-        <ModuleRow>
-          {/* <Blocks data={data?.blocks} /> */}
+      <Grid as="section">
+        <HeadlineColumnA>
+          <HeadlineTitle aria-label={title} as="h1">
+            <>{title}</>
+          </HeadlineTitle>
+          <HeadlineTitleSub>
+            {tags.map(({ color, id, name }) => (
+              <Badge color={color} key={id} size="2">
+                {name}
+              </Badge>
+            ))}
+          </HeadlineTitleSub>
+        </HeadlineColumnA>
+        <HeadlineContent>
           <WIP />
           <Tags tags={tags} />
           <Separator className={'my-4'} />
           <Ticket properties={properties} />
-          <Separator className="my-6" />
-          {/* <h3 className="text-3xl font-black uppercase tracking-tighter">
-            Select Past Events
-          </h3> */}
           <Separator className="my-4 opacity-50" />
           <Image properties={properties} />
           <Blocks data={data?.blocks} />
+        </HeadlineContent>
+      </Grid>
+      <Grid as="section">
+        <HeadlineColumnA>
+          <HeadlineTitle aria-label={title} as="p">
+            <>Info</>
+          </HeadlineTitle>
+        </HeadlineColumnA>
+        <HeadlineContent className="">
+          <Separator className="mb-4 opacity-50" />
           <Relations
             properties={properties}
             relations={RELATIONS}
             relationsSecondary={RELATIONS_SECONDARY}
           />
-        </ModuleRow>
-      </div>
-    </LayoutClient>
+        </HeadlineContent>
+      </Grid>
+    </>
   )
 }
 

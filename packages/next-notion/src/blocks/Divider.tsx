@@ -9,7 +9,7 @@ const Divider = forwardRef(function Divider(props: any, ref: any) {
     props
   const key = getBlockKey(block.id, block.type, order)
 
-  const Component = props?.element ?? 'p'
+  const Component = props?.as ?? 'p'
   const componentProps = {
     className: props?.className ?? undefined,
   }

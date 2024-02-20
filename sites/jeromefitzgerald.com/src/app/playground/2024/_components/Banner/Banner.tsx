@@ -1,78 +1,27 @@
-import { ArrowRightIcon } from '@jeromefitz/ds/components/Icon'
 import { cx } from '@jeromefitz/ds/utils/cx'
 
 import { Badge, Button } from '@radix-ui/themes'
 // eslint-disable-next-line no-restricted-imports
 import NextLink from 'next/link'
 
-type Data = {
-  badge: {
-    color:
-      | 'amber'
-      | 'blue'
-      | 'bronze'
-      | 'brown'
-      | 'crimson'
-      | 'cyan'
-      | 'gold'
-      | 'grass'
-      | 'gray'
-      | 'green'
-      | 'indigo'
-      | 'iris'
-      | 'jade'
-      | 'lime'
-      | 'mint'
-      | 'orange'
-      | 'pink'
-      | 'plum'
-      | 'purple'
-      | 'red'
-      | 'ruby'
-      | 'sky'
-      | 'teal'
-      | 'tomato'
-      | 'violet'
-      | 'yellow'
-    text: string
-  }
-  button: { icon: any; text: string }
-  content: { desktop: string; mobile: string }
-  href: string
-}
+import { Grid } from '~app/playground/2024/_components/Grid'
 
-function Banner() {
-  const data: Data = {
-    badge: {
-      color: 'lime',
-      text: 'Playing…',
-    },
-    button: {
-      icon: <ArrowRightIcon className={cx('text-[var(--accent-11)]')} />,
-      text: 'Go to Music',
-    },
-    content: {
-      desktop: 'Amyl and The Sniffers – “Comfort To Me”',
-      mobile: 'Amyl and The Sniffers – “Comfort To Me”',
-    },
-    href: '/playground/2024',
-  }
-
+function Banner({ data }) {
   return (
-    <div className={cx('font-sans text-base')}>
+    <Grid as="div" className="mx-auto w-full font-sans text-base">
       <NextLink
         className={cx(
           '[--icon-size:16px]',
           'rounded-full shadow-md',
           'h-8',
           'px-2 py-0',
-          'mb-6 mt-2',
+          'my-2',
           'bg-[var(--accent-1)] dark:bg-[var(--accent-2)]',
           'active:bg-[var(--gray-7)] dark:active:bg-[var(--gray-2)]',
-          'max-w-full items-center justify-center  leading-5',
-          'flex flex-row',
-          'md:hidden',
-          'relative z-10 w-fit',
+          'leading-5',
+          'col-span-4 flex flex-row md:hidden',
+          'items-center justify-center gap-2',
+          // 'relative z-10 w-fit',
           'transition-transform',
           'group active:translate-y-[0.125rem]',
           'outline-offset-2 outline-[blue]',
@@ -101,7 +50,7 @@ function Banner() {
             radius="full"
             variant="solid"
           >
-            {data.badge.text}
+            {data.icon}
           </Badge>
         </span>
         <span
@@ -117,11 +66,9 @@ function Banner() {
       </NextLink>
       <div
         className={cx(
-          'mx-auto mb-8 mt-10',
-          'w-full max-w-5xl',
+          'mb-2 mt-4',
+          'hidden md:col-span-4 md:flex md:flex-row',
           'items-center justify-center gap-2',
-          'hidden',
-          'md:flex md:flex-row',
         )}
       >
         <span
@@ -137,6 +84,7 @@ function Banner() {
             size="2"
             variant="solid"
           >
+            {data.icon}
             {data.badge.text}
           </Badge>
         </span>
@@ -173,7 +121,7 @@ function Banner() {
           </NextLink>
         </Button>
       </div>
-    </div>
+    </Grid>
   )
 }
 

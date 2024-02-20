@@ -12,6 +12,8 @@ import dynamic from 'next/dynamic'
 
 const custom = {
   embed: {
+    // component: Embed,
+    as: 'div',
     className: '',
     // component: lazy(() => import('@jeromefitz/shared/components/Notion/Blocks/Embed')),
     component: dynamic(
@@ -23,16 +25,16 @@ const custom = {
         ssr: true,
       },
     ),
-    // component: Embed,
-    element: 'div',
   },
   image: {
+    as: 'img',
     className: '',
     // component: lazy(() => import('@jeromefitz/shared/components/Notion/Blocks/Image')),
     component: Image,
-    element: 'img',
   },
   video: {
+    // component: Video,
+    as: 'div',
     className: '',
     // component: lazy(() => import('@jeromefitz/shared/components/Notion/Blocks/Video')),
     component: dynamic(
@@ -44,8 +46,6 @@ const custom = {
         ssr: true,
       },
     ),
-    // component: Video,
-    element: 'div',
   },
 }
 

@@ -1,12 +1,10 @@
+import { Grid } from '~app/playground/2024/_components/Grid'
 import {
-  SectionContent,
-  SectionHeader,
-  // SectionHeaderContent,
-  // SectionHero,
-  SectionHeaderTitle,
-  SectionWrapper,
-  // Tags,
-} from '@jeromefitz/ds/components/Section'
+  HeadlineColumnA,
+  HeadlineContent,
+  HeadlineTitle,
+  HeadlineTitleSub,
+} from '~app/playground/2024/_components/Headline'
 
 import { Modal } from './_components/Newsletter.Modal'
 
@@ -14,13 +12,18 @@ export default function Page() {
   const title = 'Newsletter'
 
   return (
-    <SectionWrapper>
-      <SectionHeader>
-        <SectionHeaderTitle isTitle>{title}</SectionHeaderTitle>
-      </SectionHeader>
-      <SectionContent>
+    <Grid as="section">
+      <HeadlineColumnA>
+        <HeadlineTitle aria-label={title} as="h1">
+          <>{title}</>
+        </HeadlineTitle>
+        <HeadlineTitleSub>
+          <>testing</>
+        </HeadlineTitleSub>
+      </HeadlineColumnA>
+      <HeadlineContent>
         <Modal />
-      </SectionContent>
-    </SectionWrapper>
+      </HeadlineContent>
+    </Grid>
   )
 }

@@ -8,15 +8,15 @@
  *
  */
 import { Button } from '@jeromefitz/ds/components/Button'
-import {
-  SectionContent,
-  SectionHeader,
-  // SectionHeaderContent,
-  SectionHeaderTitle,
-  SectionWrapper,
-  // Tags,
-} from '@jeromefitz/ds/components/Section'
 import { cx } from '@jeromefitz/ds/utils/cx'
+
+import { Grid } from '~app/playground/2024/_components/Grid'
+import {
+  HeadlineColumnA,
+  HeadlineContent,
+  HeadlineTitle,
+  HeadlineTitleSub,
+} from '~app/playground/2024/_components/Headline'
 // import dynamic from 'next/dynamic'
 
 import {
@@ -379,15 +379,20 @@ function PlaygroundPage() {
       {SECTIONS.map((SECTION) => {
         const { COMPONENT, ID } = SECTION
         return (
-          <SectionWrapper>
-            <SectionHeader>
-              <SectionHeaderTitle isTitle>{ID}</SectionHeaderTitle>
-            </SectionHeader>
-            <SectionContent>
+          <Grid as="section">
+            <HeadlineColumnA>
+              <HeadlineTitle aria-label={ID} as="h1">
+                <>{ID}</>
+              </HeadlineTitle>
+              <HeadlineTitleSub>
+                <>Testing</>
+              </HeadlineTitleSub>
+            </HeadlineColumnA>
+            <HeadlineContent>
               <COMPONENT />
               <div className="overflow-hidden" />
-            </SectionContent>
-          </SectionWrapper>
+            </HeadlineContent>
+          </Grid>
         )
       })}
       <Testing />

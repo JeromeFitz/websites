@@ -8,17 +8,18 @@ import { GeistSans as fontGeistSans } from 'geist/font/sans'
 import { Viewport } from 'next'
 // import localFont from 'next/font/local'
 
-import '@radix-ui/themes/styles.css'
+import type { ReactNode } from 'react'
 
-// import { Banner } from '~components/Banner'
-// import NavigationMenu from '~components/Navigation/Navigation'
+import type { As } from '~app/playground/2024/_components/Headline.types'
+
 import { Footer } from '~app/_temp/Footer'
-// import { Header } from '~app/_temp/Header'
-// import { Layout } from '~components/Layout'
+import { BannerClient } from '~app/playground/2024/_components/Banner/Banner.client'
+import { Navigation } from '~app/playground/2024/_components/Navigation'
 import { Providers } from '~components/Providers'
 
 import { PreloadResources } from './_next/preload-resources'
-// import { LayoutClient } from './layout.client'
+
+import '@radix-ui/themes/styles.css'
 
 // // const Footer = dynamic(
 // //   () => import('~components/Footer').then((mod) => mod.Footer),
@@ -122,15 +123,24 @@ export const viewport: Viewport = {
   themeColor: '#0f0f0f',
 }
 
-function Wrapper({ children }) {
-  return <div className={cx('')}>{children}</div>
+type WrapperProps = {
+  as?: As
+  children: ReactNode
+  className?: string
 }
-
-function Main({ children }) {
+function Wrapper({ as = 'div', children, className, ...props }: WrapperProps) {
+  const Component: As = as
   return (
-    <main className="m-0 min-h-screen w-full p-0 font-sans">
-      <Wrapper>{children}</Wrapper>
-    </main>
+    <Component
+      className={cx(
+        'inset-y-0 z-50 flex w-full flex-col items-center',
+        'mx-auto max-w-screen-xl',
+        className,
+      )}
+      {...props}
+    >
+      {children}
+    </Component>
   )
 }
 
@@ -167,12 +177,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           <Providers>
             <Analytics />
-            {/* <LayoutClient> */}
-            {/* <Header /> */}
-            <Main>{children}</Main>
-            {/* <Layout /> */}
+            <Wrapper as="header" className={cx('sticky top-0 z-10 mx-auto w-full ')}>
+              <Navigation />
+            </Wrapper>
+            <Wrapper className="">
+              <BannerClient />
+            </Wrapper>
+            <Wrapper as="main" className="">
+              <>{children}</>
+            </Wrapper>
             <Footer />
-            {/* </LayoutClient> */}
           </Providers>
         </Theme>
       </body>

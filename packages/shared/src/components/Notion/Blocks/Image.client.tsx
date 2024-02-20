@@ -17,7 +17,9 @@ function Image({ ...props }) {
   // @hack(next) in case no comments are found in notion
   if (!image?.alt) image.alt = ''
   if (!image?.sizes)
-    image.sizes = '(max-width: 768px) 50vw, (max-width: 1200px) 50vw, 70vw'
+    // image.sizes = '(max-width: 768px) 50vw, (max-width: 1200px) 50vw, 70vw'
+    image.sizes =
+      '(max-width: 768px) 90vw, (max-width: 1280px) 50vw, (max-width: 2560px) 75vw, 50vw'
   if (!image.blurDataURL) image.blurDataURL = base64
 
   const imageProps = {

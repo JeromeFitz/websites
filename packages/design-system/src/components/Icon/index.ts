@@ -61,6 +61,7 @@ import {
   MusicalNoteIcon,
   Pencil1Icon,
   Pencil2Icon,
+  PlayIcon,
   QuoteIcon,
   ReturnIcon,
   Share1Icon,
@@ -140,6 +141,7 @@ Icon.Moon = MoonIcon
 Icon.MusicNote = MusicalNoteIcon
 Icon.Pencil1 = Pencil1Icon
 Icon.Pencil2 = Pencil2Icon
+Icon.PlayIcon = PlayIcon
 Icon.Quote = QuoteIcon
 Icon.Return = ReturnIcon
 Icon.Share1 = Share1Icon

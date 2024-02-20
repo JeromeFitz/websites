@@ -5,6 +5,41 @@ import { useOs } from '@mantine/hooks'
 import { useEffect, useState } from 'react'
 import { useOrientation } from 'react-use'
 
+const isActive = false
+
+function OrientationContent({ os }) {
+  return (
+    <>
+      <div className="m-12 flex flex-row items-start justify-start gap-1 py-4 align-text-bottom font-mono md:py-0">
+        <span className="mr-2 mt-1 size-4">
+          <FileTextIcon className="text-inherit" />
+        </span>
+        <span>
+          <span className="font-bold">Please Note: </span>
+          <span>
+            This site is being actively developed.
+            <br />
+            So though it is nowhere near perfect, it is shippable, heh.
+          </span>
+        </span>
+      </div>
+      <div className="m-12 flex flex-row items-start justify-start gap-1 py-4 align-text-bottom font-mono md:py-0">
+        <span className="mr-2 mt-1 size-4">
+          <UpdateIcon className="text-inherit" />
+        </span>
+        <span>
+          <span className="font-bold">But… </span>
+          <span>
+            it cannot be viewed in landscape mode just yet.
+            <br />
+            Please turn your <strong>{os}</strong> device.
+          </span>
+        </span>
+      </div>
+    </>
+  )
+}
+
 function Orientation({ children }) {
   const os = useOs()
   const { type } = useOrientation()
@@ -15,36 +50,7 @@ function Orientation({ children }) {
   // console.dir(`type: ${type}`)
 
   if (loaded && type === 'landscape-primary' && (os === 'ios' || os === 'android'))
-    return (
-      <>
-        <div className="m-12 flex flex-row items-start justify-start gap-1 py-4 align-text-bottom font-mono md:py-0">
-          <span className="mr-2 mt-1 size-4">
-            <FileTextIcon className="text-inherit" />
-          </span>
-          <span>
-            <span className="font-bold">Please Note: </span>
-            <span>
-              This site is being actively developed.
-              <br />
-              So though it is nowhere near perfect, it is shippable, heh.
-            </span>
-          </span>
-        </div>
-        <div className="m-12 flex flex-row items-start justify-start gap-1 py-4 align-text-bottom font-mono md:py-0">
-          <span className="mr-2 mt-1 size-4">
-            <UpdateIcon className="text-inherit" />
-          </span>
-          <span>
-            <span className="font-bold">But… </span>
-            <span>
-              it cannot be viewed in landscape mode just yet.
-              <br />
-              Please turn your <strong>{os}</strong> device.
-            </span>
-          </span>
-        </div>
-      </>
-    )
+    return isActive ? <OrientationContent os={os} /> : <>{children}</>
   return <>{children}</>
 }
 

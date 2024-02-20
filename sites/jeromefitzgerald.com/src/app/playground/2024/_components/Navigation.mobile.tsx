@@ -194,8 +194,13 @@ function NavigationMobile() {
   }
   return (
     <>
-      <div className={cx('cursor-pointer')} onClick={handleOnClick}>
-        {isMenuOpen ? 'Close' : 'Open'} Menu
+      <div
+        className={cx(
+          'col-span-4 flex cursor-pointer items-center justify-end md:hidden',
+        )}
+        onClick={handleOnClick}
+      >
+        {isMenuOpen ? `Close` : `Open`} Menu
       </div>
 
       {isMenuOpen && (
@@ -203,8 +208,9 @@ function NavigationMobile() {
         <Portal.Root>
           <nav
             className={cx(
-              '[--header-height:64px]',
+              // '[--header-height:57px]',
               'top-[calc(var(--header-height)_-_0px)]',
+              // 'top-1',
               'fixed inset-x-0 bottom-0 size-full max-w-[100vw]',
               // 'bg-[var(--gray-a1)] backdrop-blur-sm',
               'bg-white dark:bg-black',
@@ -214,7 +220,12 @@ function NavigationMobile() {
               'block',
             )}
           >
-            <div className={cx('m-0 list-none p-0', 'mx-auto max-w-screen-lg')}>
+            <div
+              className={cx(
+                'm-0 mt-2 list-none p-0 pt-2',
+                'mx-auto max-w-screen-lg',
+              )}
+            >
               <ul className={cx()}>
                 <li
                   className={cx(

@@ -3,13 +3,18 @@ import { isObjectEmpty } from '@jeromefitz/utils'
 
 import type { Metadata } from 'next'
 
+import { Badge } from '@radix-ui/themes'
 import { draftMode } from 'next/headers'
 
 import { CONFIG, getPageData } from '~app/(notion)/_config'
 import { generateMetadataCustom } from '~app/(notion)/_config/temp/generateMetadataCustom'
-import { ModuleRow } from '~app/_temp/modules/ModuleRow'
-import { TopBar } from '~app/_temp/modules/TopBar'
-import { LayoutClient } from '~app/layout.client'
+import { Grid } from '~app/playground/2024/_components/Grid'
+import {
+  HeadlineColumnA,
+  HeadlineContent,
+  HeadlineTitle,
+  HeadlineTitleSub,
+} from '~app/playground/2024/_components/Headline'
 import { Notion as Blocks } from '~components/Notion'
 
 const slug = '/about'
@@ -61,22 +66,20 @@ async function Slug({ revalidate, segmentInfo }) {
 
   if (isObjectEmpty(data.page)) return null
   return (
-    <>
-      <LayoutClient>
-        <div className="w-full min-w-full">
-          <TopBar
-            className=""
-            description={seoDescription}
-            isHiddenTags={true}
-            label={title}
-            title={title}
-          />
-          <ModuleRow>
-            <Blocks data={data?.blocks} />
-          </ModuleRow>
-        </div>
-      </LayoutClient>
-    </>
+    <Grid as="section">
+      <HeadlineColumnA>
+        <HeadlineTitle aria-label={title} as="h1">
+          <>{title}</>
+        </HeadlineTitle>
+        <HeadlineTitleSub>
+          <Badge size="2">testing</Badge>
+        </HeadlineTitleSub>
+      </HeadlineColumnA>
+      <HeadlineContent>
+        <p className={'text-lg tracking-wide'}>{seoDescription}</p>
+        <Blocks data={data?.blocks} />
+      </HeadlineContent>
+    </Grid>
   )
 }
 

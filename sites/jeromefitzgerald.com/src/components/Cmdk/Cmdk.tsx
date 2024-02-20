@@ -1,36 +1,29 @@
 'use client'
-import {
-  BookOpenIcon,
-  DesktopIcon,
-  EnvelopeOpenIcon,
-  // HamburgerMenuIcon,
-  HomeIcon,
-  IdCardIcon,
-  InfoCircledIcon,
-  MagnifyingGlassIcon,
-  MicrophoneIcon,
-  MoonIcon,
-  MusicalNoteIcon,
-  StarIcon,
-  SunIcon,
-  TicketIcon,
-} from '@jeromefitz/ds/components/Icon'
+import { MagnifyingGlassIcon } from '@jeromefitz/ds/components/Icon'
 import { cx } from '@jeromefitz/ds/utils/cx'
 import '@jeromefitz/tailwind-config/styles/cmdk.css'
+
+import type { ReactNode } from 'react'
 
 import { Kbd } from '@radix-ui/themes'
 import { Command, useCommandState } from 'cmdk'
 import { AnimatePresence, MotionProps, motion } from 'framer-motion'
 import { slug as _slug } from 'github-slugger'
+import _findIndex from 'lodash/findIndex.js'
 import { useRouter } from 'next/navigation'
 import { useTheme } from 'next-themes'
-import React from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 
+import { menus } from '~data/menu'
 import { useStore as _useStore } from '~store/index'
 
 import { Logo } from './Icons'
 
 const SKIP = 'skip'
+
+function getIconViaParentChild(parent, child) {
+  return !!child ? child : parent
+}
 
 const useStore = () => {
   return _useStore((store) => ({
@@ -46,46 +39,7 @@ const useStore = () => {
   }))
 }
 
-const groups = [
-  {
-    id: 'website',
-    items: [
-      {
-        href: '/about',
-        icon: <IdCardIcon />,
-        id: 'About',
-        shortcut: 'U A',
-      },
-      {
-        href: '/books',
-        icon: <BookOpenIcon />,
-        id: 'Books',
-      },
-      {
-        href: '/colophon',
-        icon: <InfoCircledIcon />,
-        id: 'Colophon',
-      },
-      {
-        href: '/contact',
-        icon: <EnvelopeOpenIcon />,
-        id: 'Contact',
-      },
-      {
-        href: '/',
-        icon: <HomeIcon />,
-        id: 'Homepage / Index',
-      },
-      {
-        href: '/music',
-        icon: <MusicalNoteIcon />,
-        id: 'Music',
-      },
-    ],
-  },
-]
-
-function CMDKWrapper(props: MotionProps & { children: React.ReactNode }) {
+function CMDKWrapper(props: MotionProps & { children: ReactNode }) {
   return (
     <AnimatePresence initial={true} mode="wait">
       <motion.div
@@ -108,7 +62,7 @@ function SubItem({
   shortcut = undefined,
   value,
 }: {
-  children: React.ReactNode
+  children: ReactNode
   closeCmdK?: boolean
   href?: string
   onClick?: () => void
@@ -138,7 +92,7 @@ function Item({
   shortcut = undefined,
   value = SKIP,
 }: {
-  children: React.ReactNode
+  children: ReactNode
   closeCmdK?: boolean
   href?: string
   onClick?: () => void
@@ -148,7 +102,7 @@ function Item({
 }) {
   const router = useRouter()
   const { isCmdkOpenSet } = useStore()
-  const [isClick, isClickSet] = React.useState(false)
+  const [isClick, isClickSet] = useState(false)
 
   const shouldSkip = !value.includes(SKIP)
 
@@ -199,31 +153,20 @@ function Item({
 
 function ItemsUpcomingEvents({ isSubItem = false }) {
   const ItemComponent = isSubItem ? SubItem : Item
-  const items = [
-    {
-      href: '/events/2024/02/03/fridge-art-sketch-show?utm_source=website&utm_medium=banner&utm_id=20240203',
-      icon: <TicketIcon />,
-      id: '/events/2024/02/03/fridge-art-sketch-show',
-      isActive: true,
-      title: 'Fridge Art Sketch Show',
-      titleInfo: '',
-    },
-    {
-      href: '/events',
-      icon: <TicketIcon />,
-      id: '/shows',
-      isActive: true,
-      title: '… All Events',
-      titleInfo: 'If you can believe, there are more.',
-    },
-  ]
+  const { icon: _icon, items } = useMemo(
+    () => menus[_findIndex(menus, { group: 'events' })],
+    [],
+  )
   return (
     <>
-      {items.map(({ href, icon, isActive, title }) => {
+      {items.map(({ href, icon: __icon, isActive, title }) => {
         if (!isActive) return null
+        const Icon = getIconViaParentChild(_icon, __icon)
         return (
           <ItemComponent href={href} key={_slug(title)} value={title}>
-            <Logo>{icon}</Logo>
+            <Logo>
+              <Icon />
+            </Logo>
             {title}
           </ItemComponent>
         )
@@ -233,71 +176,21 @@ function ItemsUpcomingEvents({ isSubItem = false }) {
 }
 function ItemsShows({ isSubItem = false }) {
   const ItemComponent = isSubItem ? SubItem : Item
-  const items = [
-    {
-      href: '/shows/alex-o-jerome',
-      icon: <StarIcon />,
-      id: '/shows/alex-o-jerome',
-      isActive: true,
-      title: 'Alex O’Jerome',
-      titleInfo: 'Chicago to Pittsburgh Connection. Dem Vomit Twinz.',
-    },
-    {
-      href: '/shows/bubble-boy-the-musical',
-      icon: <StarIcon />,
-      id: '/shows/bubble-boy-the-musical',
-      isActive: true,
-      title: 'Bubble Boy: The Musical',
-      titleInfo: 'A musical ahead of its time by Cinco Paul',
-    },
-    {
-      href: '/shows/jfle',
-      icon: <StarIcon />,
-      id: '/shows/jfle',
-      isActive: true,
-      title: 'JFLE (Jerome & Jesse LE)',
-      titleInfo: 'Delightful absurdity with dark whimsy and musical skill',
-    },
-    {
-      href: '/shows/justin-and-jerome-experience',
-      icon: <StarIcon />,
-      id: '/shows/justin-and-jerome-experience',
-      isActive: false,
-      title: 'Justin & Jerome Experience',
-      titleInfo: 'Acclaimed improv and heralded sketch (on-and-off stage)',
-    },
-    {
-      href: '/shows/my-dinner-with-andre-the-musical',
-      icon: <StarIcon />,
-      id: '/shows/my-dinner-with-andre-the-musical',
-      isActive: true,
-      title: 'My Dinner With André: The Musical',
-      titleInfo: 'The cult classic gets the Justin & Jerome Experience treatment.',
-    },
-    {
-      href: '/shows/the-death-show',
-      icon: <StarIcon />,
-      id: '/shows/the-death-show',
-      isActive: true,
-      title: 'The Death Show',
-      titleInfo: 'The longest running death themed improv show.',
-    },
-    {
-      href: '/shows',
-      icon: <StarIcon />,
-      id: '/shows',
-      isActive: true,
-      title: '… All Shows',
-      titleInfo: 'If you can believe, there are more.',
-    },
-  ]
+  const { icon: _icon, items } = useMemo(
+    () => menus[_findIndex(menus, { group: 'shows' })],
+    [],
+  )
+
   return (
     <>
-      {items.map(({ href, icon, isActive, title }) => {
+      {items.map(({ href, icon: __icon, isActive, title }) => {
         if (!isActive) return null
+        const Icon = getIconViaParentChild(_icon, __icon)
         return (
           <ItemComponent href={href} key={_slug(title)} value={title}>
-            <Logo>{icon}</Logo>
+            <Logo>
+              <Icon />
+            </Logo>
             {title}
           </ItemComponent>
         )
@@ -307,31 +200,21 @@ function ItemsShows({ isSubItem = false }) {
 }
 function ItemsPodcasts({ isSubItem = false }) {
   const ItemComponent = isSubItem ? SubItem : Item
-  const items = [
-    {
-      href: '/podcasts/jer-and-ky-and-guest',
-      icon: <MicrophoneIcon />,
-      id: '/podcasts/jer-and-ky-and-guest',
-      isActive: true,
-      title: 'Jer & Ky & Guest',
-      titleInfo: 'The longest running death themed improv show.',
-    },
-    {
-      href: '/podcasts/knockoffs',
-      icon: <MicrophoneIcon />,
-      id: '/podcasts/knockoffs',
-      isActive: true,
-      title: 'Knockoffs',
-      titleInfo: 'The longest running death themed improv show.',
-    },
-  ]
+  const { icon: _icon, items } = useMemo(
+    () => menus[_findIndex(menus, { group: 'podcasts' })],
+    [],
+  )
+
   return (
     <>
-      {items.map(({ href, icon, isActive, title }) => {
+      {items.map(({ href, icon: __icon, isActive, title }) => {
         if (!isActive) return null
+        const Icon = getIconViaParentChild(_icon, __icon)
         return (
           <ItemComponent href={href} key={_slug(title)} value={title}>
-            <Logo>{icon}</Logo>
+            <Logo>
+              <Icon />
+            </Logo>
             {title}
           </ItemComponent>
         )
@@ -342,42 +225,28 @@ function ItemsPodcasts({ isSubItem = false }) {
 function ItemsTheme({ isSubItem = false }) {
   const { setTheme } = useTheme()
   const ItemComponent = isSubItem ? SubItem : Item
-  const items = [
-    {
-      closeCmdK: false,
-      href: '',
-      icon: <MoonIcon />,
-      id: '/theme/dark',
-      isActive: true,
-      onClick: () => setTheme('dark'),
-      title: 'Change Theme Dark',
-      titleInfo: '',
-    },
-    {
-      closeCmdK: false,
-      href: '',
-      icon: <SunIcon />,
-      id: '/theme/light',
-      isActive: true,
-      onClick: () => setTheme('light'),
-      title: 'Change Theme Light',
-      titleInfo: '',
-    },
-  ]
+  const { icon: _icon, items } = useMemo(
+    () => menus[_findIndex(menus, { group: 'general' })],
+    [],
+  )
 
   return (
     <>
-      {items.map(({ href, icon, isActive, onClick, title }) => {
+      {items.map(({ href, icon: __icon, isActive, title }) => {
         if (!isActive) return null
+        const Icon = getIconViaParentChild(_icon, __icon)
         return (
           <ItemComponent
             closeCmdK={false}
             href={href}
             key={_slug(title)}
-            onClick={onClick}
+            // @todo(cmdk) strip `/`
+            onClick={() => setTheme(href)}
             value={title}
           >
-            <Logo>{icon}</Logo>
+            <Logo>
+              <Icon />
+            </Logo>
             {title}
           </ItemComponent>
         )
@@ -386,9 +255,12 @@ function ItemsTheme({ isSubItem = false }) {
   )
 }
 function Cmdk() {
-  const [value, setValue] = React.useState('linear')
-  const inputRef = React.useRef<HTMLInputElement | null>(null)
-  const listRef = React.useRef(null)
+  const [value, setValue] = useState('linear')
+  const inputRef = useRef<HTMLInputElement | null>(null)
+  const listRef = useRef(null)
+
+  const general = useMemo(() => menus[_findIndex(menus, { group: 'general' })], [])
+  const IconGeneral = general.icon
 
   /**
    * @note(cmdk)
@@ -404,7 +276,7 @@ function Cmdk() {
     isCmdkOpen,
     isCmdkOpenSet,
   } = useStore()
-  React.useEffect(() => {
+  useEffect(() => {
     const down = (e) => {
       if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
         e.preventDefault()
@@ -418,7 +290,7 @@ function Cmdk() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  React.useEffect(() => {
+  useEffect(() => {
     inputRef?.current?.focus()
   }, [])
 
@@ -427,6 +299,11 @@ function Cmdk() {
     inputRef?.current?.focus()
     cmdkPagesSet(page)
   }
+
+  const { icon: _icon, items } = useMemo(
+    () => menus[_findIndex(menus, { group: 'pages' })],
+    [],
+  )
 
   return (
     <>
@@ -485,25 +362,26 @@ function Cmdk() {
               <Command.Empty>No results found.</Command.Empty>
               {!page && (
                 <>
-                  {groups.map(({ id, items }) => {
-                    return (
-                      <Command.Group className="capitalize " heading={id} key={id}>
-                        {items.map((item) => {
-                          const props = {
-                            ...item,
-                            shortcut: !!item.shortcut ? item.shortcut : '',
-                            value: item.id,
-                          }
-                          return (
-                            <Item key={`${id}--${item.id}`} {...props}>
-                              <Logo>{item.icon}</Logo>
-                              {item.id}
-                            </Item>
-                          )
-                        })}
-                      </Command.Group>
-                    )
-                  })}
+                  <Command.Group className="capitalize" heading={'pages'}>
+                    {items.map((item) => {
+                      const { href, icon: __icon, id, isActive, title } = item
+                      if (!isActive) return null
+                      const Icon = getIconViaParentChild(_icon, __icon)
+                      const props = {
+                        ...item,
+                        // shortcut: !!item.shortcut ? item.shortcut : '',
+                        value: href,
+                      }
+                      return (
+                        <Item key={`pages--${id}`} {...props}>
+                          <Logo>
+                            <Icon />
+                          </Logo>
+                          {title}
+                        </Item>
+                      )
+                    })}
+                  </Command.Group>
                   <Command.Group
                     className="capitalize"
                     heading={`search`}
@@ -537,19 +415,19 @@ function Cmdk() {
                   </Command.Group>
                   <Command.Group
                     className="capitalize"
-                    heading={`general`}
-                    key={`general`}
+                    heading={general.group}
+                    key={general.group}
                   >
                     <Item
                       onSelect={() => {
-                        setPage('themes')
+                        setPage(general.group)
                       }}
                       value={`${SKIP}-4`}
                     >
                       <Logo>
-                        <DesktopIcon />
+                        <IconGeneral />
                       </Logo>
-                      Change Theme…
+                      {general.title}
                     </Item>
                     <ItemsTheme isSubItem />
                   </Command.Group>
@@ -558,7 +436,7 @@ function Cmdk() {
               {page === 'upcoming-events' && <ItemsUpcomingEvents />}
               {page === 'shows' && <ItemsShows />}
               {page === 'podcasts' && <ItemsPodcasts />}
-              {page === 'themes' && <ItemsTheme />}
+              {page === general.group && <ItemsTheme />}
             </Command.List>
 
             <div cmdk-footer="">

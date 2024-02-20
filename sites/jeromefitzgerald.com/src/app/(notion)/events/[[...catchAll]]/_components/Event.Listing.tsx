@@ -17,16 +17,22 @@ import { isObjectEmpty } from '@jeromefitz/utils'
 
 import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints.js'
 
+import { Badge } from '@radix-ui/themes'
 import _filter from 'lodash/filter.js'
 import _orderBy from 'lodash/orderBy.js'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 import { getPropertyTypeData } from 'next-notion/utils'
 
-import { CONFIG, getEventData, getPageData } from '~app/(notion)/_config'
-import { ModuleRow } from '~app/_temp/modules/ModuleRow'
-import { TopBar } from '~app/_temp/modules/TopBar'
-import { LayoutClient } from '~app/layout.client'
+// import { CONFIG, getEventData, getPageData } from '~app/(notion)/_config'
+import { CONFIG, getEventData } from '~app/(notion)/_config'
+import { Grid } from '~app/playground/2024/_components/Grid'
+import {
+  HeadlineColumnA,
+  HeadlineContent,
+  HeadlineTitle,
+  HeadlineTitleSub,
+} from '~app/playground/2024/_components/Headline'
 import { WIP } from '~components/WIP/index'
 
 import {
@@ -198,7 +204,7 @@ function EventsPast({ data }) {
   const { isEnabled } = draftMode()
   const draft = isEnabled
 
-  const MAX = 10
+  const MAX = 36
   let i = 0
   const items = data.results.map((item) => {
     const { properties } = item
@@ -280,32 +286,36 @@ async function Listing({ revalidate, segmentInfo }) {
   const hasData = eventsData?.results?.length > 0
   const title = 'Events'
 
-  const { seoDescription } = getPageData(data?.page?.properties) || ''
+  // const { seoDescription } = getPageData(data?.page?.properties) || ''
 
   return (
     <>
-      <LayoutClient>
-        <div className="w-full min-w-full">
-          <TopBar
-            className=""
-            description={seoDescription}
-            isHiddenTags={true}
-            label={title}
-            title={title}
-          />
-          <ModuleRow>
-            {/* <Blocks data={data?.blocks} /> */}
-            <WIP />
-            {hasData && <Events data={eventsData} />}
-            <Separator className="my-6" />
-            <h3 className="text-3xl font-black uppercase tracking-tighter">
-              Select Past Events
-            </h3>
-            <Separator className="my-4 opacity-50" />
-            {hasData && <EventsPast data={eventsData} />}
-          </ModuleRow>
-        </div>
-      </LayoutClient>
+      <Grid as="section">
+        <HeadlineColumnA>
+          <HeadlineTitle aria-label={title} as="h1">
+            <>{title}</>
+          </HeadlineTitle>
+          <HeadlineTitleSub>
+            <Badge size="2">testing</Badge>
+          </HeadlineTitleSub>
+        </HeadlineColumnA>
+        <HeadlineContent>
+          <WIP />
+          {/* <Blocks data={data?.blocks} /> */}
+          {hasData && <Events data={eventsData} />}
+        </HeadlineContent>
+      </Grid>
+      <Grid as="section">
+        <HeadlineColumnA>
+          <HeadlineTitle aria-label={title} as="p">
+            <>Select Past Events</>
+          </HeadlineTitle>
+        </HeadlineColumnA>
+        <HeadlineContent className="">
+          <Separator className="mb-4 opacity-50" />
+          {hasData && <EventsPast data={eventsData} />}
+        </HeadlineContent>
+      </Grid>
     </>
   )
 }

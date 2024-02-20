@@ -8,10 +8,8 @@ import { draftMode } from 'next/headers'
 
 import { CONFIG, getPageData } from '~app/(notion)/_config/index'
 import { generateMetadataCustom } from '~app/(notion)/_config/temp/generateMetadataCustom'
-import { ModuleRow } from '~app/_temp/modules/ModuleRow'
-import { TopBar } from '~app/_temp/modules/TopBar'
-import { LayoutClient } from '~app/layout.client'
-import { Notion as Blocks } from '~components/Notion'
+import { PageHome } from '~app/playground/2024/_components/Page.Home'
+// import { Notion as Blocks } from '~components/Notion'
 
 const slug = '/homepage'
 const { SEGMENT } = CONFIG.PAGES
@@ -68,32 +66,9 @@ async function Slug({ revalidate, segmentInfo }) {
   // const { seoDescription, title } = getPageData(data?.page?.properties) || ''
 
   if (isObjectEmpty(data.page)) return null
-  return (
-    <>
-      <LayoutClient>
-        <div className="w-full min-w-full">
-          <TopBar
-            className=""
-            description="An actor, comedian, & writer hailing from Pittsburgh, PA."
-            isHiddenTags={true}
-            isUppercase={false}
-            label=""
-            title="Jerome Fitzgerald (he/him)"
-          />
-          <ModuleRow>
-            <Blocks data={data?.blocks} />
-          </ModuleRow>
-        </div>
-      </LayoutClient>
-    </>
-  )
+  return <PageHome />
 }
 
-// export default function Page({ revalidate = false, ...props }) {
-//   const segmentInfo = getSegmentInfo({ SEGMENT, ...props })
-
-//   return <Slug revalidate={revalidate} segmentInfo={segmentInfo} />
-// }
 export default function Page(props) {
   const revalidate = props?.revalidate || false
   const segmentInfo = getSegmentInfo({ SEGMENT, ...props, revalidate })

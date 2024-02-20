@@ -1,19 +1,25 @@
-import { getDataFromCache, getSegmentInfo } from '@jeromefitz/shared/notion/utils'
+// import { cx } from '@jeromefitz/ds/utils/cx'
+import {
+  getDataFromCache,
+  getDatabaseQuery,
+  getSegmentInfo,
+} from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
+import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints.js'
 import type { Metadata } from 'next'
 
 import { draftMode } from 'next/headers'
+import _title from 'title'
 
-import { CONFIG, getPageData } from '~app/(notion)/_config'
+import { CONFIG, getBookData, getPageData } from '~app/(notion)/_config'
 import { generateMetadataCustom } from '~app/(notion)/_config/temp/generateMetadataCustom'
-import { ModuleRow } from '~app/_temp/modules/ModuleRow'
-import { TopBar } from '~app/_temp/modules/TopBar'
-import { LayoutClient } from '~app/layout.client'
-import { WIP } from '~components/WIP/index'
+
+import { BookPage } from './_components/Book.client'
 
 const slug = '/books'
-const { SEGMENT } = CONFIG.PAGES
+const { SEGMENT } = CONFIG.BOOKS
+const { DATABASE_ID } = CONFIG.BOOKS
 
 export async function generateMetadata({ ...props }): Promise<Metadata> {
   const { isEnabled } = draftMode()
@@ -57,26 +63,62 @@ async function Slug({ revalidate, segmentInfo }) {
     },
   })
 
-  const { seoDescription, title } = getPageData(data?.page?.properties) || ''
+  const { title } = getPageData(data?.page?.properties) || ''
+
+  /**
+   * @note(notion) GET ITEMS / TODO CACHE + SUSPENSE
+   */
+  const booksData: QueryDatabaseResponse = await getDatabaseQuery({
+    database_id: DATABASE_ID,
+    draft: isEnabled,
+    filterType: 'starts_with',
+    revalidate,
+    segmentInfo,
+  })
+  const _items = booksData.results.map((item) => {
+    // @todo(types)
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    const { properties } = item
+    const itemData: any = getBookData(properties)
+    if (!itemData?.id) return null
+    if (!itemData?.isPublished) return null
+    return itemData
+  })
+
+  /**
+   * @todo
+   * Well this is a ... less than ideal way of doing this.
+   *
+   */
+  const books: any = [
+    { color: 'pink', id: 'in-progress', items: [], notionFilter: 'In Progress' },
+    { color: 'orange', id: 'in-queue', items: [], notionFilter: 'Pending' },
+    { color: 'jade', id: 'completed', items: [], notionFilter: 'Complete' },
+  ]
+
+  _items.map((item) => {
+    if (!item?.status?.name) return null
+    if (!item?.isActive) return null
+    if (item?.status?.name === 'In Progress') {
+      books[0].items.push(item)
+      books[0].title = _title(books[0].id)
+    }
+    if (item?.status?.name === 'Pending') {
+      books[1].items.push(item)
+      books[1].title = _title(books[1].id)
+    }
+    if (item?.status?.name === 'Complete') {
+      books[2].items.push(item)
+      books[2].title = _title(books[2].id)
+    }
+    return null
+  })
 
   if (isObjectEmpty(data.page)) return null
   return (
     <>
-      <LayoutClient>
-        <div className="w-full min-w-full">
-          <TopBar
-            className=""
-            description={seoDescription}
-            isHiddenTags={true}
-            label={title}
-            title={title}
-          />
-          <ModuleRow>
-            {/* <Blocks data={data?.blocks} /> */}
-            <WIP description={`This page has not been migrated yet.`} />
-          </ModuleRow>
-        </div>
-      </LayoutClient>
+      <BookPage books={books} title={title} />
     </>
   )
 }

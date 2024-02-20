@@ -63,6 +63,7 @@ import {
   MoonIcon as MoonIconRadix,
   Pencil1Icon as Pencil1IconRadix,
   Pencil2Icon as Pencil2IconRadix,
+  PlayIcon as PlayIconRadix,
   QuoteIcon as QuoteIconRadix,
   Share1Icon as Share1IconRadix,
   SpeakerModerateIcon as SpeakerModerateIconRadix,
@@ -710,6 +711,12 @@ const Pencil2Icon = ({ label, ...props }: IconProps) => (
   </AccessibleIcon>
 )
 
+const PlayIcon = ({ label, ...props }: IconProps) => (
+  <AccessibleIcon label={label || 'An icon representing a play button.'}>
+    <PlayIconRadix role="info" {...props} />
+  </AccessibleIcon>
+)
+
 const QuoteIcon = ({ label, ...props }: IconProps) => (
   <AccessibleIcon
     label={
@@ -999,6 +1006,7 @@ export {
   MusicalNoteIcon,
   Pencil1Icon,
   Pencil2Icon,
+  PlayIcon,
   QuoteIcon,
   ReturnIcon,
   Share1Icon,

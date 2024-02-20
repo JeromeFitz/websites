@@ -1,9 +1,11 @@
 import { Anchor } from '@jeromefitz/ds/components/Anchor'
+import { cx } from '@jeromefitz/ds/utils/cx'
 import { getDataFromCache, getDatabaseQuery } from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
 import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints.js'
 
+import { Badge } from '@radix-ui/themes'
 import _filter from 'lodash/filter.js'
 import _orderBy from 'lodash/orderBy.js'
 import { draftMode } from 'next/headers'
@@ -14,9 +16,13 @@ import { getPropertyTypeData } from 'next-notion/utils'
 // @ts-ignore
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { CONFIG, getPageData, getShowData } from '~app/(notion)/_config'
-import { ModuleRow } from '~app/_temp/modules/ModuleRow'
-import { TopBar } from '~app/_temp/modules/TopBar'
-import { LayoutClient } from '~app/layout.client'
+import { Grid } from '~app/playground/2024/_components/Grid'
+import {
+  HeadlineColumnA,
+  HeadlineContent,
+  HeadlineTitle,
+  HeadlineTitleSub,
+} from '~app/playground/2024/_components/Headline'
 // import { Notion as Blocks } from '~components/Notion'
 // import type { PageObjectResponseShow } from '~app/(notion)/_config'
 import { WIP } from '~components/WIP/index'
@@ -124,24 +130,24 @@ async function Listing({ revalidate, segmentInfo }) {
     'Shows that comedian Jerome Fitzgerald is in. Maybe these should be Acts? Online content, when it is his, eludes him. (He is glad you found this page in spite of this.)'
 
   return (
-    <>
-      <LayoutClient>
-        <div className="w-full min-w-full">
-          <TopBar
-            className=""
-            description={seoDescription}
-            isHiddenTags={true}
-            label={title}
-            title={title}
-          />
-          <ModuleRow>
-            {/* <Blocks data={data?.blocks} /> */}
-            <WIP />
-            {hasContent && <ListingTemp data={showData} />}
-          </ModuleRow>
-        </div>
-      </LayoutClient>
-    </>
+    <Grid as="section">
+      <HeadlineColumnA>
+        <HeadlineTitle aria-label={title} as="h1">
+          <>{title}</>
+        </HeadlineTitle>
+        <HeadlineTitleSub>
+          <Badge size="2">testing</Badge>
+        </HeadlineTitleSub>
+      </HeadlineColumnA>
+      <HeadlineContent>
+        {/* <Blocks data={data?.blocks} /> */}
+        <p className={cx('text-lg tracking-wide', 'flex flex-col gap-0', '')}>
+          {seoDescription}
+        </p>
+        <WIP />
+        {hasContent && <ListingTemp data={showData} />}
+      </HeadlineContent>
+    </Grid>
   )
 }
 

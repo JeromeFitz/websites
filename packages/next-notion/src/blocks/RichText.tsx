@@ -23,7 +23,7 @@ import { NotionEmoji as EmojiWrapper } from './Emoji'
 const Text = forwardRef(function Text(props: any, ref: any) {
   const { children } = props
 
-  const Component = props?.element ?? 'p'
+  const Component = props?.as ?? 'p'
   const componentProps = {
     className: props?.className ?? undefined,
   }

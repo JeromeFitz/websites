@@ -30,13 +30,13 @@ const custom = {
   //     },
   //   ),
   //   // component: Embed,
-  //   element: 'div',
+  //   as: 'div',
   // },
   image: {
-    className: '2xl:max-w-7xl',
+    as: 'img',
+    className: '',
     // component: lazy(() => import('@jeromefitz/shared/components/Notion/Blocks/Image')),
     component: Image,
-    element: 'img',
   },
   // @note(next)  we are not using this, so no need to take the hit
   // video: {
@@ -52,7 +52,7 @@ const custom = {
   //     },
   //   ),
   //   // component: Video,
-  //   element: 'div',
+  //   as: 'div',
   // },
 }
 
@@ -77,12 +77,15 @@ const blocks = {
     className: 'my-7 h-7 w-full',
   },
   heading_1: {
+    as: 'h2',
     className: 'mb-4 text-3xl font-black md:mb-5 md:text-4xl font-sans',
   },
   heading_2: {
+    as: 'h3',
     className: 'mb-3 text-2xl font-black md:mb-4 md:text-3xl font-sans',
   },
   heading_3: {
+    as: 'h3',
     className: 'mb-2 text-xl font-black md:mb-3 md:text-2xl font-sans',
   },
   numbered_list: {

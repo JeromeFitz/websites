@@ -1,15 +1,14 @@
-import {
-  SectionContent,
-  // SectionHeader,
-  // SectionHeaderContent,
-  // SectionHeaderTitle,
-  SectionWrapper,
-  // Tags,
-} from '@jeromefitz/ds/components/Section'
 import { cx } from '@jeromefitz/ds/utils/cx'
 // import { notFound } from 'next/navigation'
 
 import { FourOhFour } from '~app/_errors/404'
+import { Grid } from '~app/playground/2024/_components/Grid'
+import {
+  HeadlineColumnA,
+  HeadlineContent,
+  HeadlineTitle,
+  HeadlineTitleSub,
+} from '~app/playground/2024/_components/Headline'
 
 const isDev = process.env.NODE_ENV === 'development'
 
@@ -121,16 +120,21 @@ export default function Page() {
   // if (!isDev) notFound()
   // @note(next) avoid NEXT_DYNAMIC_NO_SSR_CODE
   if (!isDev) return <FourOhFour isNotPublished={false} segmentInfo={{}} />
+
+  const title = 'Open Graph Testing'
   return (
-    <>
-      <SectionWrapper>
-        {/* <SectionHeader>
-          <SectionHeaderTitle isTitle>Open Graph Testing</SectionHeaderTitle>
-        </SectionHeader> */}
-        <SectionContent>
-          <OpenGraphTesting />
-        </SectionContent>
-      </SectionWrapper>
-    </>
+    <Grid as="section">
+      <HeadlineColumnA>
+        <HeadlineTitle aria-label={title} as="h1">
+          <>{title}</>
+        </HeadlineTitle>
+        <HeadlineTitleSub>
+          <></>
+        </HeadlineTitleSub>
+      </HeadlineColumnA>
+      <HeadlineContent>
+        <OpenGraphTesting />
+      </HeadlineContent>
+    </Grid>
   )
 }

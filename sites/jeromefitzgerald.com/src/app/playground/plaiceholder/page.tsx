@@ -1,17 +1,14 @@
-import {
-  SectionContent,
-  SectionHeader,
-  // SectionHeaderContent,
-  // SectionHero,
-  SectionHeaderTitle,
-  SectionWrapper,
-  // Tags,
-} from '@jeromefitz/ds/components/Section'
-
 import Image from 'next/image'
 // import { notFound } from 'next/navigation'
 
 import { FourOhFour } from '~app/_errors/404'
+import { Grid } from '~app/playground/2024/_components/Grid'
+import {
+  HeadlineColumnA,
+  HeadlineContent,
+  HeadlineTitle,
+  HeadlineTitleSub,
+} from '~app/playground/2024/_components/Headline'
 
 const isDev = process.env.NODE_ENV === 'development'
 
@@ -51,13 +48,18 @@ export default function Page() {
   const title = 'Plaiceholder'
 
   return (
-    <SectionWrapper>
-      <SectionHeader>
-        <SectionHeaderTitle isTitle>{title}</SectionHeaderTitle>
-      </SectionHeader>
-      <SectionContent>
+    <Grid as="section">
+      <HeadlineColumnA>
+        <HeadlineTitle aria-label={title} as="h1">
+          <>{title}</>
+        </HeadlineTitle>
+        <HeadlineTitleSub>
+          <>Testing</>
+        </HeadlineTitleSub>
+      </HeadlineColumnA>
+      <HeadlineContent>
         <ImageTest />
-      </SectionContent>
-    </SectionWrapper>
+      </HeadlineContent>
+    </Grid>
   )
 }

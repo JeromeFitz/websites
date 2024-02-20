@@ -1,20 +1,20 @@
-import {
-  SectionContent,
-  SectionHeader,
-  SectionHeaderContent,
-  SectionHeaderTitle,
-  SectionWrapper,
-  Tags,
-} from '@jeromefitz/ds/components/Section'
 import { getDataFromCache } from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
+import { Badge } from '@radix-ui/themes'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 
 import type { PropertiesPerson } from '~app/(notion)/_config'
 
 import { CONFIG, getPersonData } from '~app/(notion)/_config'
+import { Grid } from '~app/playground/2024/_components/Grid'
+import {
+  HeadlineColumnA,
+  HeadlineContent,
+  HeadlineTitle,
+  HeadlineTitleSub,
+} from '~app/playground/2024/_components/Headline'
 import { Notion as Blocks } from '~components/Notion'
 import { Relations } from '~components/Relations/index'
 
@@ -41,46 +41,49 @@ async function Slug({ revalidate, segmentInfo }) {
   if (is404) return notFound()
 
   const { properties }: { properties: PropertiesPerson } = data?.page
-  const { isPublished, tags, title } = getPersonData(properties)
+  const { isPublished, title } = getPersonData(properties)
 
   if (!isPublished) return notFound()
 
   return (
     <>
-      {/* Content */}
-      <SectionWrapper>
-        <SectionHeader>
-          <SectionHeaderTitle isTitle>{title}</SectionHeaderTitle>
-          <SectionHeaderContent>
-            <Tags tags={tags} />
-          </SectionHeaderContent>
-        </SectionHeader>
-        <SectionContent>
+      <Grid as="section">
+        <HeadlineColumnA>
+          <HeadlineTitle aria-label={title} as="h1">
+            <>{title}</>
+          </HeadlineTitle>
+          <HeadlineTitleSub>
+            <Badge size="2">testing</Badge>
+          </HeadlineTitleSub>
+        </HeadlineColumnA>
+        <HeadlineContent>
           <Blocks data={data?.blocks} />
-        </SectionContent>
-      </SectionWrapper>
-      {/* Info */}
-      <SectionWrapper>
-        <SectionHeader>
-          <SectionHeaderTitle>Info</SectionHeaderTitle>
-        </SectionHeader>
-        <SectionContent>
+        </HeadlineContent>
+      </Grid>
+      <Grid as="section">
+        <HeadlineColumnA>
+          <HeadlineTitle aria-label={`Info`} as="p">
+            <>Info</>
+          </HeadlineTitle>
+        </HeadlineColumnA>
+        <HeadlineContent className="">
           <Relations
             properties={properties}
             relations={RELATIONS}
             relationsSecondary={[]}
           />
-        </SectionContent>
-      </SectionWrapper>
-      {/* Upcoming Shows */}
-      {/* <SectionWrapper>
-        <SectionHeader>
-          <SectionHeaderTitle>Upcoming Shows</SectionHeaderTitle>
-        </SectionHeader>
-        <SectionContent>
-          <UpcomingShows properties={properties} />
-        </SectionContent>
-      </SectionWrapper> */}
+        </HeadlineContent>
+      </Grid>
+      <Grid as="section">
+        <HeadlineColumnA>
+          <HeadlineTitle aria-label={`Info`} as="p">
+            <>Upcoming Shows</>
+          </HeadlineTitle>
+        </HeadlineColumnA>
+        <HeadlineContent className="">
+          <>{/* <UpcomingShows properties={properties} /> */}</>
+        </HeadlineContent>
+      </Grid>
     </>
   )
 }

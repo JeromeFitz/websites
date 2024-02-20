@@ -19,7 +19,7 @@ const ListBulleted = forwardRef(function ListBulleted(props: any, ref: any) {
   const key = getBlockKey(block.id, block.type, order)
   const items = block[block.type][block.type]
 
-  const Component = props?.element ?? 'ul'
+  const Component = props?.as ?? 'ul'
   const componentProps = {
     className: props?.className ?? undefined,
   }

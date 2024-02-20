@@ -8,9 +8,6 @@ function PodcastEpisodes({ properties }) {
   const { episodeSlugs, episodeTitles, ...props } = getPodcastData(properties)
   return (
     <>
-      <p className="text-3xl font-black uppercase tracking-tighter">
-        <strong>Episodes</strong>
-      </p>
       <ul className={cx(blocks['bulleted_list'].className)}>
         {episodeSlugs.map((slug, i) => {
           const href = `${props.href}/${slug}`

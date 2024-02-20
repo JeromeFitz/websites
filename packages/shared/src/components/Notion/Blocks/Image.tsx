@@ -176,6 +176,9 @@ async function ImageImpl({
   const imageOptimized = await getImageFromBlock({ block, url: imageUrl })
   image = { ...image, ...imageOptimized }
 
+  // console.dir(`image:`)
+  // console.dir(image)
+
   return (
     <>
       <NextImage className={className} {...image} />
