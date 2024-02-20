@@ -17,7 +17,7 @@ function Caption({
   size = '2',
 }: CalloutRootPropsCustom) {
   return (
-    <CalloutRoot className={cx('w-full', className)} size={size}>
+    <CalloutRoot className={cx('w-full font-mono', className)} size={size}>
       <CalloutIcon>
         <Icon />
       </CalloutIcon>

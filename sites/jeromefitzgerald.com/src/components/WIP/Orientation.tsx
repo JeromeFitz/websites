@@ -5,7 +5,7 @@ import { useOs } from '@mantine/hooks'
 import { useEffect, useState } from 'react'
 import { useOrientation } from 'react-use'
 
-const isActive = false
+const isActive = true
 
 function OrientationContent({ os }) {
   return (

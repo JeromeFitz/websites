@@ -862,9 +862,6 @@ importers:
       '@notionhq/client':
         specifier: 2.2.14
         version: 2.2.14
-      '@radix-ui/primitive':
-        specifier: 1.0.1
-        version: 1.0.1
       '@radix-ui/react-accessible-icon':
         specifier: 1.0.3
         version: 1.0.3(@types/react-dom@18.2.19)(@types/react@18.2.57)(react-dom@18.2.0)(react@18.2.0)
@@ -889,9 +886,6 @@ importers:
       '@radix-ui/react-collapsible':
         specifier: 1.0.3
         version: 1.0.3(@types/react-dom@18.2.19)(@types/react@18.2.57)(react-dom@18.2.0)(react@18.2.0)
-      '@radix-ui/react-compose-refs':
-        specifier: 1.0.1
-        version: 1.0.1(@types/react@18.2.57)(react@18.2.0)
       '@radix-ui/react-context':
         specifier: 1.0.1
         version: 1.0.1(@types/react@18.2.57)(react@18.2.0)
@@ -973,9 +967,6 @@ importers:
       '@radix-ui/react-tooltip':
         specifier: 1.0.7
         version: 1.0.7(@types/react-dom@18.2.19)(@types/react@18.2.57)(react-dom@18.2.0)(react@18.2.0)
-      '@radix-ui/react-use-callback-ref':
-        specifier: 1.0.1
-        version: 1.0.1(@types/react@18.2.57)(react@18.2.0)
       '@radix-ui/react-visually-hidden':
         specifier: 1.0.3
         version: 1.0.3(@types/react-dom@18.2.19)(@types/react@18.2.57)(react-dom@18.2.0)(react@18.2.0)

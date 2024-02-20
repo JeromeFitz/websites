@@ -256,13 +256,6 @@ const config = ({}) => ({
           from: { opacity: 0, transform: 'translateY(2px)' },
           to: { opacity: 1, transform: 'translateY(0)' },
         },
-        // text based
-        sweep: {
-          to: {
-            transform:
-              'translate(min(0px,calc(var(--cols)*var(--grid-cols) - var(--gutter) - 100%)))',
-          },
-        },
         swipeOut: {
           from: { transform: 'translateX(var(--radix-toast-swipe-end-x))' },
           to: { transform: 'translateX(calc(100% + var(--viewport-padding)))' },

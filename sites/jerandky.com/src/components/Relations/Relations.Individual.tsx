@@ -5,9 +5,9 @@ import { cx } from '@jeromefitz/ds/utils/cx'
 import { getPageDataFromNotion } from '@jeromefitz/shared/notion/utils'
 import { asyncForEach } from '@jeromefitz/utils'
 
-import _noop from 'lodash/noop'
-import _orderBy from 'lodash/orderBy'
-import _size from 'lodash/size'
+import _noop from 'lodash/noop.js'
+import _orderBy from 'lodash/orderBy.js'
+import _size from 'lodash/size.js'
 import { Suspense, cache } from 'react'
 
 import type { PageObjectResponsePerson } from '../../app/(notion)/_config'

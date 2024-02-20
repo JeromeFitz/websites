@@ -31,6 +31,7 @@ const image = {
 
 const PageHome = forwardRef(function PageHome(props, forwardedRef) {
   const title = 'Jerome Fitzgerald'
+  const needLighthouseHack = true
   return (
     <Grid as="section" ref={forwardedRef}>
       <HeadlineColumnA>
@@ -41,13 +42,29 @@ const PageHome = forwardRef(function PageHome(props, forwardedRef) {
           </>
         </HeadlineTitle>
         <HeadlineTitleSub>
-          <Badge color="orange" size="2">
+          <Badge
+            className={cx(
+              needLighthouseHack && 'bg-[--orange-a4] text-[--orange-12]',
+            )}
+            color="orange"
+            size="2"
+          >
             actor
           </Badge>
-          <Badge color="mint" size="2">
+          <Badge
+            className={cx(needLighthouseHack && 'bg-[--mint-a4] text-[--mint-12]')}
+            color="mint"
+            size="2"
+          >
             comedian
           </Badge>
-          <Badge color="purple" size="2">
+          <Badge
+            className={cx(
+              needLighthouseHack && 'bg-[--purple-a4] text-[--purple-12]',
+            )}
+            color="purple"
+            size="2"
+          >
             writer
           </Badge>
           {/* <Badge color="purple" size="2">
@@ -77,7 +94,13 @@ const PageHome = forwardRef(function PageHome(props, forwardedRef) {
             <AspectRatio ratio={4 / 3}>
               <NextImage {...image} />
             </AspectRatio>
-            <Caption className="m-2 p-4">
+            <Caption
+              className={cx(
+                'm-2 p-4',
+                needLighthouseHack &&
+                  'bg-[var(--accent-a4)] text-[var(--accent-12)]',
+              )}
+            >
               Charles Entertainment Cheese Jr. en-farting-route to SF Sketchfest
               (Photo by Bob Shields)
             </Caption>

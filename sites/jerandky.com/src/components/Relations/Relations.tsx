@@ -1,6 +1,6 @@
 import { cx } from '@jeromefitz/ds/utils/cx'
 
-import _size from 'lodash/size'
+import _size from 'lodash/size.js'
 import pluralize from 'pluralize'
 // import { Suspense } from 'react'
 

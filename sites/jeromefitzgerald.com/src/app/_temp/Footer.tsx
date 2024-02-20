@@ -3,7 +3,6 @@ import {
   // ArrowTopRightIcon,
   ExternalLinkIcon,
 } from '@jeromefitz/ds/components/Icon'
-import { Tooltip } from '@jeromefitz/ds/components/Tooltip'
 import { cx } from '@jeromefitz/ds/utils/cx'
 
 import { Button } from '@radix-ui/themes'
@@ -21,6 +20,7 @@ import buildInfo from '~config/build-info.json'
 import { socials } from '~data/socials'
 
 import { FooterCmdkClient } from './Footer.Cmdk.client'
+import { TooltipWrapper } from './Footer.client'
 
 const { isBranchMain, prerelease, version } = buildInfo
 
@@ -58,7 +58,7 @@ function Footer() {
 
             return (
               <li className={cx('my-2')} key={`footer--social--${social.id}`}>
-                <Tooltip
+                <TooltipWrapper
                   description={
                     social?.tooltipDescription || 'I barely use social media'
                   }
@@ -87,7 +87,7 @@ function Footer() {
                       <ExternalLinkIcon className="text-[var(--gray-12)]" />
                     </a>
                   </Button>
-                </Tooltip>
+                </TooltipWrapper>
               </li>
             )
           })}
@@ -100,12 +100,9 @@ function Footer() {
           'md:col-span-3 md:my-1 md:py-1',
         )}
       >
-        <div className="flex flex-col items-end justify-start gap-1 py-4 align-text-bottom md:py-0">
+        <div className="flex flex-col items-end justify-start gap-3 py-4 align-text-bottom md:py-0">
           <div className={cx('md:flex md:items-center', 'gap-2', 'group')}>
-            <FooterCmdkClient />
-          </div>
-          <div className={cx('md:flex md:items-center', 'gap-2', 'group')}>
-            <Tooltip description={'Go to Colophon'}>
+            <TooltipWrapper description={'Go to Colophon'}>
               <Button asChild highContrast radius="medium" size="3" variant="ghost">
                 <NextLink
                   className="gap-2 group-hover:cursor-pointer md:flex"
@@ -117,7 +114,10 @@ function Footer() {
                   </p>
                 </NextLink>
               </Button>
-            </Tooltip>
+            </TooltipWrapper>
+          </div>
+          <div className={cx('md:flex md:items-center', 'gap-2', 'group')}>
+            <FooterCmdkClient />
           </div>
           <div>
             <span className="mr-2 size-4">©</span>

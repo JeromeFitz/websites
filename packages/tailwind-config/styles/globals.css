@@ -308,58 +308,6 @@
 
 :root {
   --header-height: 3.5rem;
-  --sidebar-width: 100%;
-  --sidebar-margin: 1rem;
-}
-@media (min-width: 768px) {
-  :root {
-    --sidebar-width: 16rem;
-  }
-}
-
-:root {
-  -br: 0.2rem;
-  --ease-out: cubic-bezier(0, 0.55, 0.45, 1);
-  --ease-in-out: cubic-bezier(0.85, 0, 0.15, 1);
-  --theme-transition-duration: 400ms;
-  --theme-transition-ease: ease-out;
-  --theme-transition: var(--theme-transition-duration) var(--theme-transition-ease);
-}
-
-:root {
-  --mt: 0px;
-  --mb: 0px;
-  --pt: 0px;
-  --pb: 0px;
-}
-
-:root {
-  --gutter: var(--grid-gap);
-  --col: (100vw - var(--grid-margin) * 2 - (var(--grid-cols) - 1) * var(--grid-gap)) /
-    var(--grid-cols);
-  --cols: calc(var(--col) + var(--gutter));
-}
-@media (min-width: 768px) {
-  :root {
-    --col: (
-        calc(100vw - var(--sidebar-width)) - var(--grid-margin) -
-          (var(--grid-cols) - 1) * var(--grid-gap)
-      ) / var(--grid-cols);
-  }
-}
-
-:root {
-  --page-width: 1440px;
-  --grid-margin: 1rem;
-  --grid-gap: 1rem;
-  --grid-cols: 6;
-}
-@media (min-width: 768px) {
-  :root {
-    --grid-margin: 2.7rem;
-    --grid-gap: 1rem;
-    --grid-cols: 12;
-  }
 }
 
 .spotify-button-outline {
