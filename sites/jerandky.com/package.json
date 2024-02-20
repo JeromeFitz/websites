@@ -133,7 +133,7 @@
     "@types/ms": "0.7.34",
     "@types/pluralize": "0.0.33",
     "@types/ramda": "0.29.10",
-    "@types/react": "18.2.56",
+    "@types/react": "18.2.57",
     "@types/react-dom": "18.2.19",
     "@types/react-headroom": "3.2.3",
     "@types/title": "3.4.3",
