@@ -186,7 +186,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Wrapper as="main" className="">
               <>{children}</>
             </Wrapper>
-            <Footer />
+            <Wrapper as="footer" className="">
+              <Footer />
+            </Wrapper>
           </Providers>
         </Theme>
       </body>

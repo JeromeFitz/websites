@@ -395,7 +395,7 @@ function Top({}) {
     <>
       <Grid ref={refElementToScrollToAfter}>
         <HeadlineColumnA separateTitle={true}>
-          <HeadlineTitle as="h1">Now Playing</HeadlineTitle>
+          <HeadlineTitle as="h1">Music</HeadlineTitle>
           <HeadlineTitleSub>
             <Badge
               aria-label="data from Spotify"
