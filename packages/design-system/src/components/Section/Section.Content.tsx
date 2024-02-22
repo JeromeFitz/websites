@@ -5,9 +5,9 @@ function SectionContent({ children, className = '' }) {
     <div
       className={cx(
         // 'sticky',
-        'top-0 flex w-5/6 flex-col items-start py-4',
+        'top-7 flex w-5/6 flex-col items-start py-4',
         // desktop
-        'md:top-2 md:w-4/6 md:items-start',
+        'md:top-3 md:w-4/6 md:items-start',
         'md:py-2',
         //
         // 'md:slate-border md:border-t-[1px] md:border-solid md:py-3'
@@ -16,7 +16,7 @@ function SectionContent({ children, className = '' }) {
         // 'before:h-0',
         'before:relative before:top-0 before:w-full  before:content-normal',
         // 'before:left-2 before:right-2,
-        'before:bg-radix-slate6',
+        'before:bg-[var(--gray-6)]',
         '',
         className,
       )}

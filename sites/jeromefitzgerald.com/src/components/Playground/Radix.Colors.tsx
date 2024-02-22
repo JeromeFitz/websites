@@ -1,4 +1,3 @@
-/* eslint-disable tailwindcss/no-custom-classname */
 function RadixColors() {
   return (
     <ul className="hidden">

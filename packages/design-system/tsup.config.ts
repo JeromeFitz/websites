@@ -1,4 +1,3 @@
-// import isCI from 'is-ci'
 import type { Options } from 'tsup'
 
 import { defineConfig } from 'tsup'

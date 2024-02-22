@@ -70,16 +70,34 @@ const getDatabaseQuery = async ({
   const options = {
     database_id: !!database_id ? database_id : DATABASE_ID,
     filter,
+    page_size: 100, // max
     sorts,
   }
 
-  // console.dir(`> options`)
-  // console.dir(options)
-
+  /**
+   * @todo(notion) loop through cursors
+   * @ref https://github.com/makenotion/notion-sdk-js/issues/147
+   */
   // @ts-expect-error Property 'is_not_empty' is missing in type
-  const response = await notion.databases.query(options)
+  let _response = await notion.databases.query(options)
+  let _results = _response?.results
+  let i = 0
+  while (_response.has_more && _response.next_cursor) {
+    console.dir(`(╯°□°)╯︵ ┻━┻  ${slug} api request: has_more (${i})`)
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    _response = await notion.databases.query({
+      ...options,
+      start_cursor: _response.next_cursor,
+    })
 
-  return response
+    const __results = _response.results
+    _results = _results.concat(__results)
+    i++
+  }
+
+  return { ..._response, results: _results }
+  // return _response
 }
 // )
 

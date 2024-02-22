@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="19px" viewBox="0 0 12 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>pointer</title>
+    <defs>
+        <filter color-interpolation-filters="auto" id="filter-1">
+            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0.964706 0 0 0 0 0.717647 0 0 0 0 0.835294 0 0 0 1.000000 0"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Home---Full" transform="translate(-597.000000, -949.000000)">
+            <g id="pointer" transform="translate(597.000000, 949.000000)">
+                <polygon id="Path" fill="#111111" fill-rule="nonzero" points="0 16.015 0 0 11.591 11.619 4.81 11.619 4.399 11.743"></polygon>
+                <polygon id="Path" fill="#111111" fill-rule="nonzero" points="9.0845 16.6893 5.4795 18.2243 0.7975 7.1353 4.4835 5.5823"></polygon>
+                <g filter="url(#filter-1)" id="Group">
+                    <g transform="translate(1.000000, 2.407100)">
+                        <polygon id="Path" fill="#000000" fill-rule="nonzero" points="6.751 13.6015 4.907 14.3755 1.807 7.0015 3.648 6.2265"></polygon>
+                        <polygon id="Path" fill="#000000" fill-rule="nonzero" points="0 -1.77635684e-15 0 11.188 2.969 8.322 3.397 8.183 8.165 8.183"></polygon>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,12 +1,4 @@
-import {
-  SectionContent,
-  SectionHeader,
-  SectionHeaderContent,
-  // SectionHero,
-  SectionHeaderTitle,
-  SectionWrapper,
-  // Tags,
-} from '@jeromefitz/ds/components/Section'
+// import { cx } from '@jeromefitz/ds/utils/cx'
 import { getDataFromCache, getSegmentInfo } from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
@@ -16,7 +8,8 @@ import { draftMode } from 'next/headers'
 
 import { CONFIG, getPageData } from '~app/(notion)/_config/index'
 import { generateMetadataCustom } from '~app/(notion)/_config/temp/generateMetadataCustom'
-import { Notion as Blocks } from '~components/Notion/index'
+import { PageHome } from '~app/playground/2024/_components/Page.Home'
+// import { Notion as Blocks } from '~components/Notion'
 
 const slug = '/homepage'
 const { SEGMENT } = CONFIG.PAGES
@@ -70,29 +63,12 @@ async function Slug({ revalidate, segmentInfo }) {
     },
   })
 
-  const { seoDescription, title } = getPageData(data?.page?.properties) || ''
+  // const { seoDescription, title } = getPageData(data?.page?.properties) || ''
 
   if (isObjectEmpty(data.page)) return null
-  return (
-    <>
-      <SectionWrapper>
-        <SectionHeader>
-          <SectionHeaderTitle isTitle>{title}</SectionHeaderTitle>
-          <SectionHeaderContent className="">{seoDescription}</SectionHeaderContent>
-        </SectionHeader>
-        <SectionContent>
-          <Blocks data={data?.blocks} />
-        </SectionContent>
-      </SectionWrapper>
-    </>
-  )
+  return <PageHome />
 }
 
-// export default function Page({ revalidate = false, ...props }) {
-//   const segmentInfo = getSegmentInfo({ SEGMENT, ...props })
-
-//   return <Slug revalidate={revalidate} segmentInfo={segmentInfo} />
-// }
 export default function Page(props) {
   const revalidate = props?.revalidate || false
   const segmentInfo = getSegmentInfo({ SEGMENT, ...props, revalidate })

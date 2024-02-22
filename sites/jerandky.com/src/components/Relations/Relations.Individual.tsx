@@ -5,9 +5,9 @@ import { cx } from '@jeromefitz/ds/utils/cx'
 import { getPageDataFromNotion } from '@jeromefitz/shared/notion/utils'
 import { asyncForEach } from '@jeromefitz/utils'
 
-import _noop from 'lodash/noop'
-import _orderBy from 'lodash/orderBy'
-import _size from 'lodash/size'
+import _noop from 'lodash/noop.js'
+import _orderBy from 'lodash/orderBy.js'
+import _size from 'lodash/size.js'
 import { Suspense, cache } from 'react'
 
 import type { PageObjectResponsePerson } from '../../app/(notion)/_config'
@@ -35,7 +35,7 @@ const RelationIndividual = cache(async ({ id }) => {
   const style = cx(
     'inline-block text-base font-normal tracking-tight no-underline md:text-xl',
     isPublished && 'transition-all duration-200',
-    isPublished && 'text-radix-slate12 hover:text-radix-pink11',
+    isPublished && 'text-[var(--gray-12)] hover:text-[var(--accent-11)]',
     '',
     '',
   )

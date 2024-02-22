@@ -1,13 +1,12 @@
 import { Anchor } from '@jeromefitz/ds/components/Anchor'
+
+import { Grid } from '~app/playground/2024/_components/Grid'
 import {
-  SectionContent,
-  SectionHeader,
-  // SectionHeaderContent,
-  SectionHeaderTitle,
-  SectionWrapper,
-  // Tags,
-} from '@jeromefitz/ds/components/Section'
-// import { ThemeToggle } from '~app/ThemeToggle'
+  HeadlineColumnA,
+  HeadlineContent,
+  HeadlineTitle,
+  HeadlineTitleSub,
+} from '~app/playground/2024/_components/Headline'
 
 const isDev = process.env.NODE_ENV === 'development'
 
@@ -30,15 +29,21 @@ const links = [
 function Wrapper({ children }) {
   if (!isDev) return null
   if (isDev) return null
+
+  const title = 'Testing'
   return (
     <>
-      {/* Testing */}
-      <SectionWrapper>
-        <SectionHeader>
-          <SectionHeaderTitle>Testing</SectionHeaderTitle>
-        </SectionHeader>
-        <SectionContent>{children}</SectionContent>
-      </SectionWrapper>
+      <Grid as="section">
+        <HeadlineColumnA>
+          <HeadlineTitle aria-label={title} as="h1">
+            <>{title}</>
+          </HeadlineTitle>
+          <HeadlineTitleSub>
+            <>{title}</>
+          </HeadlineTitleSub>
+        </HeadlineColumnA>
+        <HeadlineContent>{children}</HeadlineContent>
+      </Grid>
     </>
   )
 }
@@ -50,7 +55,7 @@ function Testing() {
         {links.map((href, i) => {
           return (
             <li className="my-1 py-1" key={`homepage-link-${i}`}>
-              <Anchor className="text-base md:text-xl" href={href}>
+              <Anchor className="text-base lg:text-xl" href={href}>
                 {href}
               </Anchor>
             </li>

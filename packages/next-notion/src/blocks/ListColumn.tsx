@@ -16,7 +16,7 @@ const ListColumn = forwardRef(function ListColumn(props: any, ref: any) {
   const key = getBlockKey(block.id, block.type, order)
   const items: any = block[block.type][block.type]
 
-  const Component = props?.element ?? 'div'
+  const Component = props?.as ?? 'div'
   const componentProps = {
     className: props?.className ?? undefined,
   }

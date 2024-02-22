@@ -1,5 +1,6 @@
 // eslint-disable-next-line no-restricted-imports
-import NextLink from 'next/link'
+import NextLink, { type LinkProps } from 'next/link'
+import React, { type PropsWithChildren } from 'react'
 
 import { cx } from '../../utils/cx'
 import { ExternalLinkIcon } from '../Icon/Icon'
@@ -23,7 +24,7 @@ const Anchor = ({ children, className = '', href }) => {
     'inline-flex flex-row items-center gap-1',
     'underline-offset-4',
     'underline',
-    'text-radix-pink11 hover:text-radix-pink12',
+    'text-[var(--accent-11)] hover:text-[var(--accent-12)]',
     'transition-all duration-200 ease-in',
     className,
   )
@@ -48,4 +49,50 @@ const Anchor = ({ children, className = '', href }) => {
   return <NextLink {...props}>{children}</NextLink>
 }
 
-export { Anchor }
+type AnchorProps = Omit<
+  React.AnchorHTMLAttributes<HTMLAnchorElement>,
+  keyof LinkProps
+>
+type ScrollLinkProps = AnchorProps & LinkProps & PropsWithChildren
+
+const ScrollTo = ({ children, className = '', href }: ScrollLinkProps) => {
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    e.preventDefault()
+    //remove everything before the hash
+    const targetId = e.currentTarget.href.replace(/.*\#/, '')
+    const elem = document.getElementById(targetId)
+    window.scrollTo({
+      behavior: 'smooth',
+      top: elem?.getBoundingClientRect().top,
+    })
+  }
+
+  /**
+   * @note(tailwind) twMerge works best here
+   *
+   * otherwise we need to pass `!` on certain
+   *  elements like: !text-inherit
+   * depending on the ordering of `cx` + tailwind by itself
+   */
+  const styles = cx(
+    'inline-flex flex-row items-center gap-1',
+    'underline-offset-4',
+    'underline',
+    'text-[var(--accent-11)] hover:text-[var(--accent-12)]',
+    'transition-all duration-200 ease-in',
+    className,
+  )
+  if (!href) return null
+
+  const props = {
+    className: styles,
+    href,
+  }
+
+  return (
+    <NextLink onClick={handleScroll} {...props}>
+      {children}
+    </NextLink>
+  )
+}
+export { Anchor, ScrollTo }

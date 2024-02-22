@@ -13,8 +13,8 @@ import { isObjectEmpty } from '@jeromefitz/utils'
 
 import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints'
 
-import _filter from 'lodash/filter'
-import _orderBy from 'lodash/orderBy'
+import _filter from 'lodash/filter.js'
+import _orderBy from 'lodash/orderBy.js'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 import { getPropertyTypeData } from 'next-notion/utils'

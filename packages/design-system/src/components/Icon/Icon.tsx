@@ -1,6 +1,7 @@
 'use client'
 import {
   ArrowUturnLeftIcon as ArrowUturnLeftHero,
+  AtSymbolIcon as AtSymbolIconHero,
   BookOpenIcon as BookOpenIconHero,
   CloudIcon as CloudIconHero,
   HashtagIcon as HashtagIconHero,
@@ -21,6 +22,7 @@ import {
   BookmarkFilledIcon as BookmarkFilledIconRadix,
   BookmarkIcon as BookmarkIconRadix,
   CalendarIcon as CalendarIconRadix,
+  CameraIcon as CameraIconRadix,
   CaretDownIcon as CaretDownIconRadix,
   CaretLeftIcon as CaretLeftIconRadix,
   CaretRightIcon as CaretRightIconRadix,
@@ -61,6 +63,7 @@ import {
   MoonIcon as MoonIconRadix,
   Pencil1Icon as Pencil1IconRadix,
   Pencil2Icon as Pencil2IconRadix,
+  PlayIcon as PlayIconRadix,
   QuoteIcon as QuoteIconRadix,
   Share1Icon as Share1IconRadix,
   SpeakerModerateIcon as SpeakerModerateIconRadix,
@@ -73,6 +76,7 @@ import {
   TextAlignLeftIcon as TextAlignLeftIconRadix,
   TextAlignRightIcon as TextAlignRightIconRadix,
   TwitterLogoIcon as TwitterLogoIconRadix,
+  UpdateIcon as UpdateIconRadix,
 } from '@radix-ui/react-icons'
 // } from '@radix-ui/react-icons/dist/react-icons.esm'
 
@@ -199,6 +203,17 @@ const CalendarIcon = ({ label, ...props }: IconProps) => (
     }
   >
     <CalendarIconRadix role="info" {...props} />
+  </AccessibleIcon>
+)
+
+const CameraIcon = ({ label, ...props }: IconProps) => (
+  <AccessibleIcon
+    label={
+      label ||
+      'An icon representing a camera. It has a rounded rectangular shape with a flash in the upper left and its larger lens on the right.'
+    }
+  >
+    <CameraIconRadix role="info" {...props} />
   </AccessibleIcon>
 )
 
@@ -696,6 +711,12 @@ const Pencil2Icon = ({ label, ...props }: IconProps) => (
   </AccessibleIcon>
 )
 
+const PlayIcon = ({ label, ...props }: IconProps) => (
+  <AccessibleIcon label={label || 'An icon representing a play button.'}>
+    <PlayIconRadix role="info" {...props} />
+  </AccessibleIcon>
+)
+
 const QuoteIcon = ({ label, ...props }: IconProps) => (
   <AccessibleIcon
     label={
@@ -875,6 +896,21 @@ const TextAlignRightIcon = ({ label, ...props }: IconProps) => (
   </AccessibleIcon>
 )
 
+const ThreadsLogoIcon = ({ className, label, ...props }: IconProps) => (
+  <AccessibleIcon
+    label={
+      label ||
+      'An icon representing the logo of Threads (the BlueSky/X by Instagram... It is an at symbol (@) that is done all in one line that results in a sans serif open top -a.'
+    }
+  >
+    <AtSymbolIconHero
+      className={cx(twHeroToRadixIcon, className)}
+      role="info"
+      {...props}
+    />
+  </AccessibleIcon>
+)
+
 const TicketIcon = ({ className, label, ...props }: IconProps) => (
   <AccessibleIcon
     label={
@@ -901,6 +937,17 @@ const TwitterLogoIcon = ({ label, ...props }: IconProps) => (
   </AccessibleIcon>
 )
 
+const UpdateIcon = ({ label, ...props }: IconProps) => (
+  <AccessibleIcon
+    label={
+      label ||
+      'An icon of two arrows curved in a circular fashion to show they are continuous.'
+    }
+  >
+    <UpdateIconRadix role="info" {...props} />
+  </AccessibleIcon>
+)
+
 export {
   ArchiveIcon,
   ArrowLeftIcon,
@@ -912,6 +959,7 @@ export {
   BookmarkFilledIcon,
   BookmarkIcon,
   CalendarIcon,
+  CameraIcon,
   CaretDownIcon,
   CaretLeftIcon,
   CaretRightIcon,
@@ -958,6 +1006,7 @@ export {
   MusicalNoteIcon,
   Pencil1Icon,
   Pencil2Icon,
+  PlayIcon,
   QuoteIcon,
   ReturnIcon,
   Share1Icon,
@@ -972,6 +1021,8 @@ export {
   TextAlignJustifyIcon,
   TextAlignLeftIcon,
   TextAlignRightIcon,
+  ThreadsLogoIcon,
   TicketIcon,
   TwitterLogoIcon,
+  UpdateIcon,
 }

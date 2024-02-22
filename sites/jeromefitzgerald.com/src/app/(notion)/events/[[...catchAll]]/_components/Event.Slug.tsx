@@ -5,19 +5,13 @@ import {
   ExternalLinkIcon,
   HomeIcon,
 } from '@jeromefitz/ds/components/Icon'
-import {
-  SectionContent,
-  SectionHeader,
-  SectionHeaderContent,
-  SectionHeaderTitle,
-  SectionWrapper,
-  Tags,
-} from '@jeromefitz/ds/components/Section'
+import { Tags } from '@jeromefitz/ds/components/Section'
 import { Separator } from '@jeromefitz/ds/components/Separator'
 import { cx } from '@jeromefitz/ds/utils/cx'
 import { getDataFromCache } from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
+import { Badge } from '@radix-ui/themes'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 
@@ -25,8 +19,16 @@ import { notFound } from 'next/navigation'
 import type { PropertiesEvent } from '~app/(notion)/_config'
 
 import { CONFIG, getEventData } from '~app/(notion)/_config'
+import { Grid } from '~app/playground/2024/_components/Grid'
+import {
+  HeadlineColumnA,
+  HeadlineContent,
+  HeadlineTitle,
+  HeadlineTitleSub,
+} from '~app/playground/2024/_components/Headline'
 import { Notion as Blocks } from '~components/Notion'
 import { Relations } from '~components/Relations'
+import { WIP } from '~components/WIP/index'
 
 // import { Venue } from './Event.Slug.Venue'
 import { Image } from './Image'
@@ -92,26 +94,26 @@ function Ticket({ isFakePortal = false, properties }) {
     <div
       className={cx(
         isFakePortal
-          ? 'visible inline md:invisible md:hidden'
-          : 'invisible hidden md:visible md:inline',
+          ? 'visible inline lg:invisible lg:hidden'
+          : 'invisible hidden lg:visible lg:inline',
         '[writing-mode:horizontal-tb]',
-        'bg-radix-pinkA9 md:bg-inherit',
-        'backdrop-blur-md md:backdrop-blur-none',
-        'fixed md:relative',
-        'bottom-0 md:bottom-auto',
-        'left-0 md:left-auto',
-        'w-screen md:w-auto',
-        'text-center md:text-left',
-        'z-50 md:z-0',
-        'px-2 pb-1.5 pt-4 md:p-0',
-        'rounded-t md:rounded-none',
+        'bg-[var(--accent-a9)] lg:bg-inherit',
+        'backdrop-blur-md lg:backdrop-blur-none',
+        'fixed lg:relative',
+        'bottom-0 lg:bottom-auto',
+        'left-0 lg:left-auto',
+        'w-screen lg:w-auto',
+        'text-center lg:text-left',
+        'z-50 lg:z-0',
+        'px-2 pb-1.5 pt-4 lg:p-0',
+        'rounded-t lg:rounded-none',
         '',
       )}
     >
       <div className="pl-5">
         <p
           className={cx(
-            'flex flex-row-reverse items-center justify-end gap-2 text-lg font-bold tracking-tight md:text-2xl',
+            'flex flex-row-reverse items-center justify-end gap-2 text-lg font-bold tracking-tight lg:text-2xl',
           )}
         >
           <strong>
@@ -121,7 +123,7 @@ function Ticket({ isFakePortal = false, properties }) {
         </p>
         <p
           className={cx(
-            'flex flex-row-reverse items-center justify-end gap-2 text-lg font-bold tracking-tight md:text-2xl',
+            'flex flex-row-reverse items-center justify-end gap-2 text-lg font-bold tracking-tight lg:text-2xl',
           )}
         >
           <strong>
@@ -131,11 +133,11 @@ function Ticket({ isFakePortal = false, properties }) {
         </p>
         <p
           className={cx(
-            'flex flex-row-reverse items-baseline justify-end gap-2 text-lg font-bold tracking-tight md:text-2xl',
+            'flex flex-row-reverse items-baseline justify-end gap-2 text-lg font-bold tracking-tight lg:text-2xl',
           )}
         >
           <strong>{venueTitle}</strong>
-          <HomeIcon className="relative top-[0.25rem] size-5 md:top-[0.125rem]" />
+          <HomeIcon className="relative top-[0.25rem] size-5 lg:top-[0.125rem]" />
         </p>
       </div>
       <div className="mt-1 pt-1">
@@ -145,7 +147,8 @@ function Ticket({ isFakePortal = false, properties }) {
           // @ts-ignore
           <ButtonLink
             className={cx(
-              'pink-button-outline',
+              // @todo(radix-ui) get these custom classes back
+              // 'pink-button-outline',
               'mx-0 w-full px-0 py-2 text-xl font-bold',
               'flex-row items-center justify-center gap-1',
             )}
@@ -157,7 +160,7 @@ function Ticket({ isFakePortal = false, properties }) {
         ) : (
           <Button
             className={cx(
-              'slate-button-outline',
+              // 'slate-button-outline',
               'mx-0 w-full px-0 py-2 text-xl font-bold',
               'flex-row items-center justify-center gap-1',
               'cursor-not-allowed',
@@ -199,35 +202,45 @@ async function Slug({ revalidate, segmentInfo }) {
 
   return (
     <>
-      {/* Content */}
       <Ticket isFakePortal properties={properties} />
-      <SectionWrapper>
-        <SectionHeader>
-          <SectionHeaderTitle isTitle>{title}</SectionHeaderTitle>
-          <SectionHeaderContent>
-            <Tags tags={tags} />
-            <Separator className={'my-4'} />
-            <Ticket properties={properties} />
-          </SectionHeaderContent>
-        </SectionHeader>
-        <SectionContent>
+      <Grid as="section">
+        <HeadlineColumnA>
+          <HeadlineTitle aria-label={title} as="h1">
+            <>{title}</>
+          </HeadlineTitle>
+          <HeadlineTitleSub>
+            {tags.map(({ color, id, name }) => (
+              <Badge color={color} key={id} size="2">
+                {name}
+              </Badge>
+            ))}
+          </HeadlineTitleSub>
+        </HeadlineColumnA>
+        <HeadlineContent>
+          <WIP />
+          <Tags tags={tags} />
+          <Separator className={'my-4'} />
+          <Ticket properties={properties} />
+          <Separator className="my-4 opacity-50" />
           <Image properties={properties} />
           <Blocks data={data?.blocks} />
-        </SectionContent>
-      </SectionWrapper>
-      {/* Info */}
-      <SectionWrapper>
-        <SectionHeader>
-          <SectionHeaderTitle>Info</SectionHeaderTitle>
-        </SectionHeader>
-        <SectionContent>
+        </HeadlineContent>
+      </Grid>
+      <Grid as="section">
+        <HeadlineColumnA>
+          <HeadlineTitle aria-label={title} as="p">
+            <>Info</>
+          </HeadlineTitle>
+        </HeadlineColumnA>
+        <HeadlineContent className="">
+          <Separator className="mb-4 opacity-50" />
           <Relations
             properties={properties}
             relations={RELATIONS}
             relationsSecondary={RELATIONS_SECONDARY}
           />
-        </SectionContent>
-      </SectionWrapper>
+        </HeadlineContent>
+      </Grid>
     </>
   )
 }

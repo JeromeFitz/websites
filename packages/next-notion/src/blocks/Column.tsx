@@ -20,7 +20,7 @@ const Column = forwardRef(function Column(props: any, ref: any) {
   // const items = block[block.type][block.type]
   const items = block[block.type]?.results
 
-  const Component = props?.element ?? 'div'
+  const Component = props?.as ?? 'div'
   const componentProps = {
     className: props?.className ?? undefined,
   }

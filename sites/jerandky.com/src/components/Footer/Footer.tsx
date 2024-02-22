@@ -40,7 +40,7 @@ const URL_TYPE = {
 const pages = [
   {
     active: true,
-    className: 'hover:text-radix-pink11',
+    className: 'hover:text-[var(--accent-11)]',
     icon: <HomeIcon className="text-inherit" />,
     id: 'homepage',
     keywords: 'social homepage',
@@ -52,7 +52,7 @@ const pages = [
   },
   {
     active: true,
-    className: 'hover:text-radix-pink11',
+    className: 'hover:text-[var(--accent-11)]',
     icon: <MicrophoneIcon className="text-inherit" />,
     id: 'podcasts',
     keywords: 'social podcasts',

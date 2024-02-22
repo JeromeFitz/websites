@@ -2,7 +2,7 @@ import { FileTextIcon } from '@jeromefitz/ds/components/Icon'
 
 function Wrapper({ children }) {
   return (
-    <div className="flex flex-row items-start justify-start gap-1 py-4 align-text-bottom md:py-0">
+    <div className="flex flex-row items-start justify-start gap-1 py-4 align-text-bottom lg:py-0">
       <span className="mr-2 mt-1 size-4">
         <FileTextIcon className="text-inherit" />
       </span>
@@ -20,17 +20,21 @@ function WIPFooter() {
       <span>
         This site is being actively developed. So though it is nowhere near perfect,
         it is shippable, heh.{` `}
-        <br className="hidden md:inline" />
+        <br className="hidden lg:inline" />
         Consider this eternally under construction I guess
       </span>
     </Wrapper>
   )
 }
 
-function WIP() {
+function WIP({
+  description = 'This page is in the process of being updated.',
+}: {
+  description?: string
+}) {
   return (
     <Wrapper>
-      <span>This page is in the process of being updated.</span>
+      <span>{description}</span>
     </Wrapper>
   )
 }
