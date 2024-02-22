@@ -1,0 +1,916 @@
+diff --git a/package.json b/package.json
+index 34ae7bc626b3f5e7717f10c19eb8036e36b3e270..963deb0e7833277b9238b28c4c212c7b0d751b39 100644
+--- a/package.json
++++ b/package.json
+@@ -1,75 +1,48 @@
+ {
+   "name": "@radix-ui/themes",
+   "version": "3.0.0-rc.10",
+-  "type": "commonjs",
+-  "main": "./dist/cjs/index.js",
+-  "types": "./dist/cjs/index.d.ts",
+-  "module": "./dist/esm/index.js",
+-  "style": "./styles.css",
++  "type": "module",
++  "sideEffects": false,
++  "license": "MIT",
++  "files": [
++    "dist/**",
++    "postcss-breakpoints.cjs",
++    "postcss-whitespace.cjs",
++    "tokens.css",
++    "components.css",
++    "utilities.css",
++    "styles.css"
++  ],
+   "exports": {
+     ".": {
+-      "require": {
+-        "types": "./dist/cjs/index.d.ts",
+-        "default": "./dist/cjs/index.js"
+-      },
+-      "import": {
+-        "types": "./dist/esm/index.d.ts",
+-        "default": "./dist/esm/index.js"
+-      }
++      "types": "./dist/esm/index.d.ts",
++      "default": "./dist/esm/index.js"
++    },
++    "./components": {
++      "types": "./dist/esm/components/index.d.ts",
++      "default": "./dist/esm/components/index.js"
+     },
+     "./helpers": {
+-      "require": {
+-        "types": "./dist/cjs/helpers/index.d.ts",
+-        "default": "./dist/cjs/helpers/index.js"
+-      },
+-      "import": {
+-        "types": "./dist/esm/helpers/index.d.ts",
+-        "default": "./dist/esm/helpers/index.js"
+-      }
++      "types": "./dist/esm/helpers/index.d.ts",
++      "default": "./dist/esm/helpers/index.js"
+     },
+     "./props": {
+-      "require": {
+-        "types": "./dist/cjs/props/index.d.ts",
+-        "default": "./dist/cjs/props/index.js"
+-      },
+-      "import": {
+-        "types": "./dist/esm/props/index.d.ts",
+-        "default": "./dist/esm/props/index.js"
+-      }
++      "types": "./dist/esm/props/index.d.ts",
++      "default": "./dist/esm/props/index.js"
+     },
+     "./tokens.css": {
+-      "import": "./tokens.css",
+-      "require": "./tokens.css",
+       "default": "./tokens.css"
+     },
+     "./components.css": {
+-      "import": "./components.css",
+-      "require": "./components.css",
+       "default": "./components.css"
+     },
+     "./utilities.css": {
+-      "import": "./utilities.css",
+-      "require": "./utilities.css",
+       "default": "./utilities.css"
+     },
+-    "./styles.css": {
+-      "import": "./styles.css",
+-      "require": "./styles.css",
++    "./styles.css":  {
+       "default": "./styles.css"
+     }
+   },
+-  "sideEffects": false,
+-  "license": "MIT",
+-  "files": [
+-    "src/**",
+-    "dist/**",
+-    "postcss-breakpoints.cjs",
+-    "postcss-whitespace.cjs",
+-    "tokens.css",
+-    "components.css",
+-    "utilities.css",
+-    "styles.css"
+-  ],
+   "scripts": {
+     "build": "yarn build:js && yarn build:css",
+     "build:js": "yarn build:js:cjs && yarn build:js:esm && yarn build:js:cjs:types && yarn build:js:esm:types",
+diff --git a/src/components/accessible-icon.tsx b/src/components/accessible-icon.tsx
+deleted file mode 100644
+index df1bea3b7d19c91b7d0eb2e6eb1729426940bc34..0000000000000000000000000000000000000000
+diff --git a/src/components/alert-dialog.css b/src/components/alert-dialog.css
+deleted file mode 100644
+index a8d57a9978447c23972371046d135699d28af3cc..0000000000000000000000000000000000000000
+diff --git a/src/components/alert-dialog.parts.ts b/src/components/alert-dialog.parts.ts
+deleted file mode 100644
+index 2eb4d4fd355b3fba473bac6bcea1b29868eb66b3..0000000000000000000000000000000000000000
+diff --git a/src/components/alert-dialog.props.ts b/src/components/alert-dialog.props.ts
+deleted file mode 100644
+index 373d73929bcf8acd0206cc272cdf0e2518e4f755..0000000000000000000000000000000000000000
+diff --git a/src/components/alert-dialog.tsx b/src/components/alert-dialog.tsx
+deleted file mode 100644
+index ab9ac17490b5a8dea7e5cac3627c1faf1f8b9693..0000000000000000000000000000000000000000
+diff --git a/src/components/animations.css b/src/components/animations.css
+deleted file mode 100644
+index c46a4ba924def0ac2a3b16fabf2142f2ba331871..0000000000000000000000000000000000000000
+diff --git a/src/components/aspect-ratio.tsx b/src/components/aspect-ratio.tsx
+deleted file mode 100644
+index 304c35044a0783a0e666342d6764e1e5195690f4..0000000000000000000000000000000000000000
+diff --git a/src/components/avatar.css b/src/components/avatar.css
+deleted file mode 100644
+index 457a3d64edc6c5cf02ca35fc5b0c0d9662027913..0000000000000000000000000000000000000000
+diff --git a/src/components/avatar.props.ts b/src/components/avatar.props.ts
+deleted file mode 100644
+index a3dd4d6dee067eee3aa77eb69d2780a15f720ffd..0000000000000000000000000000000000000000
+diff --git a/src/components/avatar.tsx b/src/components/avatar.tsx
+deleted file mode 100644
+index ce900bfd2007cf681428c2708c1a2ec4337e1b23..0000000000000000000000000000000000000000
+diff --git a/src/components/badge.css b/src/components/badge.css
+deleted file mode 100644
+index 0c1b0e77652ead94ddfcecab20adad7bcae63f1b..0000000000000000000000000000000000000000
+diff --git a/src/components/badge.props.ts b/src/components/badge.props.ts
+deleted file mode 100644
+index e0b54c67b420c033ca2e2131759c86bcc0ad074b..0000000000000000000000000000000000000000
+diff --git a/src/components/badge.tsx b/src/components/badge.tsx
+deleted file mode 100644
+index 96b2804ec4bfceac2f84d5619d9afe77c46aa708..0000000000000000000000000000000000000000
+diff --git a/src/components/base-button.css b/src/components/base-button.css
+deleted file mode 100644
+index 1622d87ff5f5a54f934ec343c44967273415ec86..0000000000000000000000000000000000000000
+diff --git a/src/components/base-button.props.ts b/src/components/base-button.props.ts
+deleted file mode 100644
+index b20c6cb2ae69bcb94291f7f6bfd7e0a71f17376d..0000000000000000000000000000000000000000
+diff --git a/src/components/base-button.tsx b/src/components/base-button.tsx
+deleted file mode 100644
+index 26bf31ec4f4432e964f5d07308de587ed470934b..0000000000000000000000000000000000000000
+diff --git a/src/components/base-checkbox.css b/src/components/base-checkbox.css
+deleted file mode 100644
+index 8b701e2f1865789cf3c96206385edefb82439b83..0000000000000000000000000000000000000000
+diff --git a/src/components/base-checkbox.props.ts b/src/components/base-checkbox.props.ts
+deleted file mode 100644
+index c19609bdc87e760371ad3e007147449d2883eb6b..0000000000000000000000000000000000000000
+diff --git a/src/components/base-dialog.css b/src/components/base-dialog.css
+deleted file mode 100644
+index 149d7dad2f1dc5c88b29cbac56dc6a50cb59d63d..0000000000000000000000000000000000000000
+diff --git a/src/components/base-menu.css b/src/components/base-menu.css
+deleted file mode 100644
+index a351d3f6abbbc9ebb51e184a06952f76c0e217ca..0000000000000000000000000000000000000000
+diff --git a/src/components/base-menu.props.ts b/src/components/base-menu.props.ts
+deleted file mode 100644
+index 59c0e3093e58b87ea20c5ae3f6cbfa3b97b982c9..0000000000000000000000000000000000000000
+diff --git a/src/components/base-radio.css b/src/components/base-radio.css
+deleted file mode 100644
+index f6a65cd2d3abfd045946b833c834d44b0c57fac8..0000000000000000000000000000000000000000
+diff --git a/src/components/base-radio.props.ts b/src/components/base-radio.props.ts
+deleted file mode 100644
+index f2a4252911049e3b0ac8dbb480c43f5f3b6a5e74..0000000000000000000000000000000000000000
+diff --git a/src/components/base-tab-list.css b/src/components/base-tab-list.css
+deleted file mode 100644
+index 5266d10034b25300c9905d203a5925fcc9ff2002..0000000000000000000000000000000000000000
+diff --git a/src/components/base-tab-list.props.ts b/src/components/base-tab-list.props.ts
+deleted file mode 100644
+index 5f1797eae7e7dcaf01ee62f7e5974b476ed6ed95..0000000000000000000000000000000000000000
+diff --git a/src/components/blockquote.css b/src/components/blockquote.css
+deleted file mode 100644
+index 9e0fffa426ec26d3f122e054421422c9fbeaf0a9..0000000000000000000000000000000000000000
+diff --git a/src/components/blockquote.props.ts b/src/components/blockquote.props.ts
+deleted file mode 100644
+index 860c922ca046e1023dfc5341c852fe65854c5205..0000000000000000000000000000000000000000
+diff --git a/src/components/blockquote.tsx b/src/components/blockquote.tsx
+deleted file mode 100644
+index 09f7ccb9bea516d0456e16e30a53884d8126b803..0000000000000000000000000000000000000000
+diff --git a/src/components/box.css b/src/components/box.css
+deleted file mode 100644
+index 40e1ea872935f26bacdd64bb945a2fdf7f969785..0000000000000000000000000000000000000000
+diff --git a/src/components/box.props.ts b/src/components/box.props.ts
+deleted file mode 100644
+index 2091ee5dadacf201745be1a4cbc3d2f5345acc48..0000000000000000000000000000000000000000
+diff --git a/src/components/box.tsx b/src/components/box.tsx
+deleted file mode 100644
+index ed08c5cd7505cd3f46d18b552e86a49f189241c7..0000000000000000000000000000000000000000
+diff --git a/src/components/button.css b/src/components/button.css
+deleted file mode 100644
+index 339c152bf863e9d44649ac7aa028249ea6ee8b03..0000000000000000000000000000000000000000
+diff --git a/src/components/button.props.ts b/src/components/button.props.ts
+deleted file mode 100644
+index 8bc15e4a5b0a50fde4f04f0542cfd4e25407914e..0000000000000000000000000000000000000000
+diff --git a/src/components/button.tsx b/src/components/button.tsx
+deleted file mode 100644
+index 4fee463f90226e92bb3d9218e055d1c6a7389710..0000000000000000000000000000000000000000
+diff --git a/src/components/callout.css b/src/components/callout.css
+deleted file mode 100644
+index 1c796aca3714c535d779d1247a9f352b58f6bfbc..0000000000000000000000000000000000000000
+diff --git a/src/components/callout.parts.ts b/src/components/callout.parts.ts
+deleted file mode 100644
+index 9f75c8e8b8211ac320f077bd0cfe6cb3fe7a44af..0000000000000000000000000000000000000000
+diff --git a/src/components/callout.props.ts b/src/components/callout.props.ts
+deleted file mode 100644
+index d7296ef74bd05543924e5f6c29fc42c956df901b..0000000000000000000000000000000000000000
+diff --git a/src/components/callout.tsx b/src/components/callout.tsx
+deleted file mode 100644
+index 1e47d7f45e227068570d87d7ec505f9c74f890b0..0000000000000000000000000000000000000000
+diff --git a/src/components/card.css b/src/components/card.css
+deleted file mode 100644
+index 665ad5c4d3930e1ead9d66a65e3a6370327e2bb9..0000000000000000000000000000000000000000
+diff --git a/src/components/card.props.ts b/src/components/card.props.ts
+deleted file mode 100644
+index 809a0c6676abceaab35338008eb88aaf7381e3b0..0000000000000000000000000000000000000000
+diff --git a/src/components/card.tsx b/src/components/card.tsx
+deleted file mode 100644
+index 2bee4257b261dbb3a059ddb355520817f6c97ffc..0000000000000000000000000000000000000000
+diff --git a/src/components/checkbox-card-group.css b/src/components/checkbox-card-group.css
+deleted file mode 100644
+index 2f23b6b10ae7a904930c69b96a20a6c2b0baaffd..0000000000000000000000000000000000000000
+diff --git a/src/components/checkbox-card-group.parts.ts b/src/components/checkbox-card-group.parts.ts
+deleted file mode 100644
+index 8cf7af8450c9dfa0e291a64cd2a41a914c7153d4..0000000000000000000000000000000000000000
+diff --git a/src/components/checkbox-card-group.props.ts b/src/components/checkbox-card-group.props.ts
+deleted file mode 100644
+index 4bc24c932cf9d66e661bdb9f0e3546ba8d50e31d..0000000000000000000000000000000000000000
+diff --git a/src/components/checkbox-card-group.tsx b/src/components/checkbox-card-group.tsx
+deleted file mode 100644
+index 907a501d3915c434d370372ab06acce948112dc5..0000000000000000000000000000000000000000
+diff --git a/src/components/checkbox-group.css b/src/components/checkbox-group.css
+deleted file mode 100644
+index a1fb6c5aafa5a995fd0bc657f07c7e9372dd9b22..0000000000000000000000000000000000000000
+diff --git a/src/components/checkbox-group.parts.ts b/src/components/checkbox-group.parts.ts
+deleted file mode 100644
+index 6ba8d6b163114939dffb197486eba449c0ec4963..0000000000000000000000000000000000000000
+diff --git a/src/components/checkbox-group.primitive.tsx b/src/components/checkbox-group.primitive.tsx
+deleted file mode 100644
+index 3cfbfda4d367b486b8cbad2dd1aa7234a817a825..0000000000000000000000000000000000000000
+diff --git a/src/components/checkbox-group.props.ts b/src/components/checkbox-group.props.ts
+deleted file mode 100644
+index 655d966dae497632e5edbea67e248c06f25f3182..0000000000000000000000000000000000000000
+diff --git a/src/components/checkbox-group.tsx b/src/components/checkbox-group.tsx
+deleted file mode 100644
+index 8b0a0de65f9183c9acf3d94df3070a972e587fa5..0000000000000000000000000000000000000000
+diff --git a/src/components/checkbox.css b/src/components/checkbox.css
+deleted file mode 100644
+index 12aeba87e91cebe4de8cf91b703425f3792b5ad4..0000000000000000000000000000000000000000
+diff --git a/src/components/checkbox.props.ts b/src/components/checkbox.props.ts
+deleted file mode 100644
+index f96e93dc3f28964eaabce1399a624d214e56efbc..0000000000000000000000000000000000000000
+diff --git a/src/components/checkbox.tsx b/src/components/checkbox.tsx
+deleted file mode 100644
+index 95e6b5ae7615f447469629a91067d9536b5ee6f4..0000000000000000000000000000000000000000
+diff --git a/src/components/code.css b/src/components/code.css
+deleted file mode 100644
+index 194941e965c92ecaa08ce79c29e8b39d0dd69366..0000000000000000000000000000000000000000
+diff --git a/src/components/code.props.ts b/src/components/code.props.ts
+deleted file mode 100644
+index afff1054ead61941f24570277dc15c0ea9860b5b..0000000000000000000000000000000000000000
+diff --git a/src/components/code.tsx b/src/components/code.tsx
+deleted file mode 100644
+index 4d0530937cc7f7d571c8a9a3e8788ad0ab30e905..0000000000000000000000000000000000000000
+diff --git a/src/components/container.css b/src/components/container.css
+deleted file mode 100644
+index 78b9c292d7139be711ae06f7465dd4a965cb818b..0000000000000000000000000000000000000000
+diff --git a/src/components/container.props.ts b/src/components/container.props.ts
+deleted file mode 100644
+index 109fab7d972f3096f9e40ad4db1747c461ef2125..0000000000000000000000000000000000000000
+diff --git a/src/components/container.tsx b/src/components/container.tsx
+deleted file mode 100644
+index 8d5a07941fd4ac3817ee0fcd885e3b36435f6080..0000000000000000000000000000000000000000
+diff --git a/src/components/context-menu.css b/src/components/context-menu.css
+deleted file mode 100644
+index 37e76d9419fab8e4ea57cf56532009a42b7775c8..0000000000000000000000000000000000000000
+diff --git a/src/components/context-menu.parts.ts b/src/components/context-menu.parts.ts
+deleted file mode 100644
+index 49b9021ccd095fe20310752226d1c34a3f63971b..0000000000000000000000000000000000000000
+diff --git a/src/components/context-menu.props.ts b/src/components/context-menu.props.ts
+deleted file mode 100644
+index 85ca206235d07b35f464e4b44cf69fef4e344a60..0000000000000000000000000000000000000000
+diff --git a/src/components/context-menu.tsx b/src/components/context-menu.tsx
+deleted file mode 100644
+index 2c48286c6a167c08978a194a2381c8afd1a1642a..0000000000000000000000000000000000000000
+diff --git a/src/components/data-list.css b/src/components/data-list.css
+deleted file mode 100644
+index 41f82dae06a234b4056f57d464bee8a9a710e109..0000000000000000000000000000000000000000
+diff --git a/src/components/data-list.parts.ts b/src/components/data-list.parts.ts
+deleted file mode 100644
+index 3d16da3c12d647017bc23d104bdea9becc70e206..0000000000000000000000000000000000000000
+diff --git a/src/components/data-list.props.ts b/src/components/data-list.props.ts
+deleted file mode 100644
+index aa34a4e30c54752544f1e4f34d8386b4437da63c..0000000000000000000000000000000000000000
+diff --git a/src/components/data-list.tsx b/src/components/data-list.tsx
+deleted file mode 100644
+index 2d2b3827cd5e2be9e5462365b54e8b4c75dbd670..0000000000000000000000000000000000000000
+diff --git a/src/components/dialog.css b/src/components/dialog.css
+deleted file mode 100644
+index a8d57a9978447c23972371046d135699d28af3cc..0000000000000000000000000000000000000000
+diff --git a/src/components/dialog.parts.ts b/src/components/dialog.parts.ts
+deleted file mode 100644
+index f5067fba55ebc3afc4d6cd4658ecc9cb17be82e0..0000000000000000000000000000000000000000
+diff --git a/src/components/dialog.props.ts b/src/components/dialog.props.ts
+deleted file mode 100644
+index 7fb6f232c1a13b281efe45d8c997ecec22382848..0000000000000000000000000000000000000000
+diff --git a/src/components/dialog.tsx b/src/components/dialog.tsx
+deleted file mode 100644
+index 414f41808dd12899765e264c409ad1154a4010c4..0000000000000000000000000000000000000000
+diff --git a/src/components/dropdown-menu.css b/src/components/dropdown-menu.css
+deleted file mode 100644
+index 01d2bdb61196305537333ef193e6f45a040b08cc..0000000000000000000000000000000000000000
+diff --git a/src/components/dropdown-menu.parts.ts b/src/components/dropdown-menu.parts.ts
+deleted file mode 100644
+index b2f6ffab819e7af1e649d8827100b1b32d25377f..0000000000000000000000000000000000000000
+diff --git a/src/components/dropdown-menu.props.ts b/src/components/dropdown-menu.props.ts
+deleted file mode 100644
+index 924a1e794ac4006f313a30fc168ddeb5da2469fd..0000000000000000000000000000000000000000
+diff --git a/src/components/dropdown-menu.tsx b/src/components/dropdown-menu.tsx
+deleted file mode 100644
+index f8479faab926ac22318b4d288d482a14e3762630..0000000000000000000000000000000000000000
+diff --git a/src/components/em.css b/src/components/em.css
+deleted file mode 100644
+index 2bb77fefcc3f52d4acbee26a8c71f1de8bbc3d27..0000000000000000000000000000000000000000
+diff --git a/src/components/em.props.ts b/src/components/em.props.ts
+deleted file mode 100644
+index fcd99cce9cc841d2799ff45957c6f8e08ba30586..0000000000000000000000000000000000000000
+diff --git a/src/components/em.tsx b/src/components/em.tsx
+deleted file mode 100644
+index 24d72de981e89caf4722761bcbf810de1b93bf26..0000000000000000000000000000000000000000
+diff --git a/src/components/flex.css b/src/components/flex.css
+deleted file mode 100644
+index 5faa8c0b76782ad12cda51e53def094aa7b08aff..0000000000000000000000000000000000000000
+diff --git a/src/components/flex.props.ts b/src/components/flex.props.ts
+deleted file mode 100644
+index f88338f109bd88d2701ae1db4ee217fd08d01e85..0000000000000000000000000000000000000000
+diff --git a/src/components/flex.tsx b/src/components/flex.tsx
+deleted file mode 100644
+index cf0fb1cf74384a0c170f841c2c2aad8700a3f8d9..0000000000000000000000000000000000000000
+diff --git a/src/components/grid.css b/src/components/grid.css
+deleted file mode 100644
+index c01dac4847d37c477767a7dc60be0e30223bdd0e..0000000000000000000000000000000000000000
+diff --git a/src/components/grid.props.ts b/src/components/grid.props.ts
+deleted file mode 100644
+index 537b08e0512c795fcd316e107b0d465664a6bec2..0000000000000000000000000000000000000000
+diff --git a/src/components/grid.tsx b/src/components/grid.tsx
+deleted file mode 100644
+index c955f1067d314dc7286c216f8e1132df809e440f..0000000000000000000000000000000000000000
+diff --git a/src/components/heading.css b/src/components/heading.css
+deleted file mode 100644
+index 3b69a57e9781f77e1dcdc5670f76270d4a59219a..0000000000000000000000000000000000000000
+diff --git a/src/components/heading.props.ts b/src/components/heading.props.ts
+deleted file mode 100644
+index 04842fdb35be225f74e4b220f305aeecca39db94..0000000000000000000000000000000000000000
+diff --git a/src/components/heading.tsx b/src/components/heading.tsx
+deleted file mode 100644
+index ccbdbf41f77e40ff258aed68b967bce422f9c87d..0000000000000000000000000000000000000000
+diff --git a/src/components/hover-card.css b/src/components/hover-card.css
+deleted file mode 100644
+index 7fea4fcad215209f7875bec04150f3ee5f8217c9..0000000000000000000000000000000000000000
+diff --git a/src/components/hover-card.parts.ts b/src/components/hover-card.parts.ts
+deleted file mode 100644
+index 0df1916a75c1ce655968adaa5e4846a19c0462a5..0000000000000000000000000000000000000000
+diff --git a/src/components/hover-card.props.ts b/src/components/hover-card.props.ts
+deleted file mode 100644
+index d661be4347fb76f99f7bb704e2dc2c611e75f8bb..0000000000000000000000000000000000000000
+diff --git a/src/components/hover-card.tsx b/src/components/hover-card.tsx
+deleted file mode 100644
+index 2525a6dbe1695f3034298b1da4a3aba83e815d3c..0000000000000000000000000000000000000000
+diff --git a/src/components/icon-button.css b/src/components/icon-button.css
+deleted file mode 100644
+index 8a3a8e821d109689a5b6a483a66de1bc235d631a..0000000000000000000000000000000000000000
+diff --git a/src/components/icon-button.props.ts b/src/components/icon-button.props.ts
+deleted file mode 100644
+index 32f9348d918b22e21784c5248b8e8d6996d01f4c..0000000000000000000000000000000000000000
+diff --git a/src/components/icon-button.tsx b/src/components/icon-button.tsx
+deleted file mode 100644
+index 6be9e4b44eaef5d3d97e392964817b0a00a41c94..0000000000000000000000000000000000000000
+diff --git a/src/components/icons.tsx b/src/components/icons.tsx
+deleted file mode 100644
+index 24511d6a4b8ac2de59a59cd840463db8545c085b..0000000000000000000000000000000000000000
+diff --git a/src/components/index.css b/src/components/index.css
+deleted file mode 100644
+index 73d887b0233f542375059bbb8999e2e10fb61474..0000000000000000000000000000000000000000
+diff --git a/src/components/index.ts b/src/components/index.ts
+deleted file mode 100644
+index 2089515426d7edfa91412a0ad5020ea7887a538e..0000000000000000000000000000000000000000
+diff --git a/src/components/inset.css b/src/components/inset.css
+deleted file mode 100644
+index 92ba356346dac6ef91e2e7a56e49f74f43dc2325..0000000000000000000000000000000000000000
+diff --git a/src/components/inset.props.ts b/src/components/inset.props.ts
+deleted file mode 100644
+index 579074a722c0f9cb93186774fb3257a4632b1197..0000000000000000000000000000000000000000
+diff --git a/src/components/inset.tsx b/src/components/inset.tsx
+deleted file mode 100644
+index 067870c8fb095c2557e62b2e6b90006166e23635..0000000000000000000000000000000000000000
+diff --git a/src/components/kbd.css b/src/components/kbd.css
+deleted file mode 100644
+index 91d78e40e6b131ffaa80cf79bf6114e872157618..0000000000000000000000000000000000000000
+diff --git a/src/components/kbd.props.ts b/src/components/kbd.props.ts
+deleted file mode 100644
+index 8a9d55e55f4f8a52fbb7c4c51b5d5136beeba3a8..0000000000000000000000000000000000000000
+diff --git a/src/components/kbd.tsx b/src/components/kbd.tsx
+deleted file mode 100644
+index 8f2391b2cf0bcb02489149c4fa9f320971523308..0000000000000000000000000000000000000000
+diff --git a/src/components/link.css b/src/components/link.css
+deleted file mode 100644
+index 37900b8d05691786746a728b12712344a94d9318..0000000000000000000000000000000000000000
+diff --git a/src/components/link.props.ts b/src/components/link.props.ts
+deleted file mode 100644
+index eda40f77a9e92ec3dc820f08e5aebec1e2052aec..0000000000000000000000000000000000000000
+diff --git a/src/components/link.tsx b/src/components/link.tsx
+deleted file mode 100644
+index 5b2a43b6773decf0ccbece816ce7b2aa99e26ef0..0000000000000000000000000000000000000000
+diff --git a/src/components/popover.css b/src/components/popover.css
+deleted file mode 100644
+index dfbcfd42eb0c63a4c9ef2e99d92f7795bae7ae56..0000000000000000000000000000000000000000
+diff --git a/src/components/popover.parts.ts b/src/components/popover.parts.ts
+deleted file mode 100644
+index c339a29cf78b314bb8335881f752dafd137367ac..0000000000000000000000000000000000000000
+diff --git a/src/components/popover.props.ts b/src/components/popover.props.ts
+deleted file mode 100644
+index 87c2c1391a0e45d1e38206533c2be6f47ddd3340..0000000000000000000000000000000000000000
+diff --git a/src/components/popover.tsx b/src/components/popover.tsx
+deleted file mode 100644
+index 439d693e808ebd444f030dfb56db713b022c357e..0000000000000000000000000000000000000000
+diff --git a/src/components/portal.tsx b/src/components/portal.tsx
+deleted file mode 100644
+index 251b3ec06914c4e549acbd94ff1778308a726658..0000000000000000000000000000000000000000
+diff --git a/src/components/progress.css b/src/components/progress.css
+deleted file mode 100644
+index 4d2020f006261ade64f89575dd2139b328ef3f44..0000000000000000000000000000000000000000
+diff --git a/src/components/progress.props.tsx b/src/components/progress.props.tsx
+deleted file mode 100644
+index 0f976c25496cb6225d1290af04763ed41645c12e..0000000000000000000000000000000000000000
+diff --git a/src/components/progress.tsx b/src/components/progress.tsx
+deleted file mode 100644
+index df61804122789e6c3ac4c2747dc364c8f242601f..0000000000000000000000000000000000000000
+diff --git a/src/components/quote.css b/src/components/quote.css
+deleted file mode 100644
+index 21cde2a274b36a207f75c4916c5f174fca207d40..0000000000000000000000000000000000000000
+diff --git a/src/components/quote.props.ts b/src/components/quote.props.ts
+deleted file mode 100644
+index 4b75b72ff974464e9e32faa0e65568de32de3e25..0000000000000000000000000000000000000000
+diff --git a/src/components/quote.tsx b/src/components/quote.tsx
+deleted file mode 100644
+index 9981261f4b4ff07bb24e97d14a00f6328196631c..0000000000000000000000000000000000000000
+diff --git a/src/components/radio-card-group.css b/src/components/radio-card-group.css
+deleted file mode 100644
+index bc22ddcb1e20f0ec504a4f107134ff968805d7ed..0000000000000000000000000000000000000000
+diff --git a/src/components/radio-card-group.parts.ts b/src/components/radio-card-group.parts.ts
+deleted file mode 100644
+index fb332675efa84a80465d9a105db600e093487496..0000000000000000000000000000000000000000
+diff --git a/src/components/radio-card-group.props.ts b/src/components/radio-card-group.props.ts
+deleted file mode 100644
+index ffe3592721b871e09b92f76b0f323cb27e2ea270..0000000000000000000000000000000000000000
+diff --git a/src/components/radio-card-group.tsx b/src/components/radio-card-group.tsx
+deleted file mode 100644
+index 3b7a2977e5d198b1c69fdf9e7582f2008efb3ec9..0000000000000000000000000000000000000000
+diff --git a/src/components/radio-group.css b/src/components/radio-group.css
+deleted file mode 100644
+index 9239180971689e973d573a3cce4bcc8d47b5f329..0000000000000000000000000000000000000000
+diff --git a/src/components/radio-group.parts.ts b/src/components/radio-group.parts.ts
+deleted file mode 100644
+index d2bdbc67cfe3d642cd6d073532a6552f76444c2b..0000000000000000000000000000000000000000
+diff --git a/src/components/radio-group.props.ts b/src/components/radio-group.props.ts
+deleted file mode 100644
+index ee4f9a3262b7a2d52da18d7f2fde506b071dc695..0000000000000000000000000000000000000000
+diff --git a/src/components/radio-group.tsx b/src/components/radio-group.tsx
+deleted file mode 100644
+index e50735047f271f663ed452e3c42c428e6ebf8ca9..0000000000000000000000000000000000000000
+diff --git a/src/components/radio.css b/src/components/radio.css
+deleted file mode 100644
+index 72a4a0a2a32f08856ccfcba540aa2546e29442d8..0000000000000000000000000000000000000000
+diff --git a/src/components/radio.props.ts b/src/components/radio.props.ts
+deleted file mode 100644
+index caedf3573ae4a2a7ef3bcf93a3554e983127bb6f..0000000000000000000000000000000000000000
+diff --git a/src/components/radio.tsx b/src/components/radio.tsx
+deleted file mode 100644
+index 1c0af81b7e9048eb70dde4016f4b392ffb986d5f..0000000000000000000000000000000000000000
+diff --git a/src/components/reset.css b/src/components/reset.css
+deleted file mode 100644
+index 9c7150800ce1334a25676d9ad44accc27753ce14..0000000000000000000000000000000000000000
+diff --git a/src/components/reset.tsx b/src/components/reset.tsx
+deleted file mode 100644
+index 49492206d8928c8a5436077b18a67d57cf4c9938..0000000000000000000000000000000000000000
+diff --git a/src/components/scroll-area.css b/src/components/scroll-area.css
+deleted file mode 100644
+index f4b893597547429a4c7925a3e3c702f0d1bfe9fe..0000000000000000000000000000000000000000
+diff --git a/src/components/scroll-area.props.ts b/src/components/scroll-area.props.ts
+deleted file mode 100644
+index 952466d46532d483e477f8de64c43039d039a97a..0000000000000000000000000000000000000000
+diff --git a/src/components/scroll-area.tsx b/src/components/scroll-area.tsx
+deleted file mode 100644
+index 0535a137bb5d8a897ecf455855483fdb4717993f..0000000000000000000000000000000000000000
+diff --git a/src/components/section.css b/src/components/section.css
+deleted file mode 100644
+index e2663131b4052cce8ef0c001914b9ef52472bb28..0000000000000000000000000000000000000000
+diff --git a/src/components/section.props.ts b/src/components/section.props.ts
+deleted file mode 100644
+index b17e1a35ec96af1a27ec910fdabe9a0253973a1f..0000000000000000000000000000000000000000
+diff --git a/src/components/section.tsx b/src/components/section.tsx
+deleted file mode 100644
+index 758d93b870ebcec68a1f6f990a6d2d5b53991fc2..0000000000000000000000000000000000000000
+diff --git a/src/components/select.css b/src/components/select.css
+deleted file mode 100644
+index 53678d1a7f24aabea968ab62da51f9a90612de0e..0000000000000000000000000000000000000000
+diff --git a/src/components/select.parts.ts b/src/components/select.parts.ts
+deleted file mode 100644
+index 41acaf49b5f7141c9a4a74c7be1b6e23281383d5..0000000000000000000000000000000000000000
+diff --git a/src/components/select.props.ts b/src/components/select.props.ts
+deleted file mode 100644
+index 9192d4c2a43e4fdbc267cbcbed6a9b22f552639b..0000000000000000000000000000000000000000
+diff --git a/src/components/select.tsx b/src/components/select.tsx
+deleted file mode 100644
+index ff4e485c1488aa1c5df3d545f1b74f4163798bb6..0000000000000000000000000000000000000000
+diff --git a/src/components/separator.css b/src/components/separator.css
+deleted file mode 100644
+index 673d954135144a5e3b88c4326313099439dcf6d5..0000000000000000000000000000000000000000
+diff --git a/src/components/separator.props.ts b/src/components/separator.props.ts
+deleted file mode 100644
+index 117e55e85e253bc4f6fcd0d9a1ec3ed3696fea8c..0000000000000000000000000000000000000000
+diff --git a/src/components/separator.tsx b/src/components/separator.tsx
+deleted file mode 100644
+index fd2afca432e578eca46866d87d5a730b8c0c39fd..0000000000000000000000000000000000000000
+diff --git a/src/components/skeleton.css b/src/components/skeleton.css
+deleted file mode 100644
+index 1a358f85ebe3cd5b0e394b3ca96ab721c3beff12..0000000000000000000000000000000000000000
+diff --git a/src/components/skeleton.props.ts b/src/components/skeleton.props.ts
+deleted file mode 100644
+index 4e0969da52d0789fa67a6a699bf0f8f171fbf200..0000000000000000000000000000000000000000
+diff --git a/src/components/skeleton.tsx b/src/components/skeleton.tsx
+deleted file mode 100644
+index 68fd52d73794d6735a05aa6b3a8933cb8d3e5a88..0000000000000000000000000000000000000000
+diff --git a/src/components/slider.css b/src/components/slider.css
+deleted file mode 100644
+index 5027a7c3887516b1a3d022a408e8a8a17c1ddf6e..0000000000000000000000000000000000000000
+diff --git a/src/components/slider.props.ts b/src/components/slider.props.ts
+deleted file mode 100644
+index a7be56c2202e533175372509d488da8eef59ead2..0000000000000000000000000000000000000000
+diff --git a/src/components/slider.tsx b/src/components/slider.tsx
+deleted file mode 100644
+index 416e45a717693068e9bbcdd62197f67b95778add..0000000000000000000000000000000000000000
+diff --git a/src/components/slot.tsx b/src/components/slot.tsx
+deleted file mode 100644
+index 7fae1c16b109712c255a74c0bbd71fce4455fbe3..0000000000000000000000000000000000000000
+diff --git a/src/components/spinner.css b/src/components/spinner.css
+deleted file mode 100644
+index 78468939d689ca5b0183f620bf717ad16684c3d9..0000000000000000000000000000000000000000
+diff --git a/src/components/spinner.props.ts b/src/components/spinner.props.ts
+deleted file mode 100644
+index 7b9ea0588a1b73c7565385ca459437268e41c19a..0000000000000000000000000000000000000000
+diff --git a/src/components/spinner.tsx b/src/components/spinner.tsx
+deleted file mode 100644
+index c4974bd51946b8af166fc1a4b06bef6413c7e5b7..0000000000000000000000000000000000000000
+diff --git a/src/components/strong.css b/src/components/strong.css
+deleted file mode 100644
+index 9b025692ec05814d8ce48c3a884ee27da7d9812b..0000000000000000000000000000000000000000
+diff --git a/src/components/strong.props.ts b/src/components/strong.props.ts
+deleted file mode 100644
+index ba7e1800d0e1707e14df5405a2ae79bd3c7e1975..0000000000000000000000000000000000000000
+diff --git a/src/components/strong.tsx b/src/components/strong.tsx
+deleted file mode 100644
+index 776d7a415dcdae80b30034570dcdeee8c0276a45..0000000000000000000000000000000000000000
+diff --git a/src/components/switch.css b/src/components/switch.css
+deleted file mode 100644
+index 612e4ec1f164545deb934d5f917613047b3ee4e9..0000000000000000000000000000000000000000
+diff --git a/src/components/switch.props.ts b/src/components/switch.props.ts
+deleted file mode 100644
+index 1e41ccc920922bf40f5c07394a31da40eda1594e..0000000000000000000000000000000000000000
+diff --git a/src/components/switch.tsx b/src/components/switch.tsx
+deleted file mode 100644
+index 03950e0dd9769656ec1250a33d5764ac3cbf5ce7..0000000000000000000000000000000000000000
+diff --git a/src/components/tab-nav.css b/src/components/tab-nav.css
+deleted file mode 100644
+index c665a22ef601fb591e06a30af6ff738e017eca4a..0000000000000000000000000000000000000000
+diff --git a/src/components/tab-nav.parts.ts b/src/components/tab-nav.parts.ts
+deleted file mode 100644
+index 9bd24159cdfdbbae906feea3c20c547dff433e07..0000000000000000000000000000000000000000
+diff --git a/src/components/tab-nav.props.ts b/src/components/tab-nav.props.ts
+deleted file mode 100644
+index 21e76c63854419c44e73fcec3b1e5892fc8434ce..0000000000000000000000000000000000000000
+diff --git a/src/components/tab-nav.tsx b/src/components/tab-nav.tsx
+deleted file mode 100644
+index 70002e6c16c0a0b06a30e0de4ed9002ddc07497b..0000000000000000000000000000000000000000
+diff --git a/src/components/table.css b/src/components/table.css
+deleted file mode 100644
+index ecf49955edcf66129f36390b8dd6a2c00ecef0a3..0000000000000000000000000000000000000000
+diff --git a/src/components/table.parts.ts b/src/components/table.parts.ts
+deleted file mode 100644
+index 315ec85b509c106ce42f9edd9bc1795c8fed12c1..0000000000000000000000000000000000000000
+diff --git a/src/components/table.props.ts b/src/components/table.props.ts
+deleted file mode 100644
+index 40e48de097b173ed82b3d2c9aeeacd387998421c..0000000000000000000000000000000000000000
+diff --git a/src/components/table.tsx b/src/components/table.tsx
+deleted file mode 100644
+index 6ee1d0a7dde8c00edf01c4e72c103cb3712ec0bd..0000000000000000000000000000000000000000
+diff --git a/src/components/tabs.css b/src/components/tabs.css
+deleted file mode 100644
+index 6183bd92f86aa24d23057a777be52ab642af1535..0000000000000000000000000000000000000000
+diff --git a/src/components/tabs.parts.ts b/src/components/tabs.parts.ts
+deleted file mode 100644
+index 3f452b6dea92b880b0765c93be1f77b340399617..0000000000000000000000000000000000000000
+diff --git a/src/components/tabs.props.ts b/src/components/tabs.props.ts
+deleted file mode 100644
+index 51fb522b3c42cac0a85063e641d85feeff7fc9d0..0000000000000000000000000000000000000000
+diff --git a/src/components/tabs.tsx b/src/components/tabs.tsx
+deleted file mode 100644
+index 4dccd7f4cbd94efd467d0e394487fcafa0824511..0000000000000000000000000000000000000000
+diff --git a/src/components/text-area.css b/src/components/text-area.css
+deleted file mode 100644
+index ee22f231443e6d9d5854bcfc8142e9d3948e72e6..0000000000000000000000000000000000000000
+diff --git a/src/components/text-area.props.ts b/src/components/text-area.props.ts
+deleted file mode 100644
+index af70a1fd71dc28c1a265630e144609264282d762..0000000000000000000000000000000000000000
+diff --git a/src/components/text-area.tsx b/src/components/text-area.tsx
+deleted file mode 100644
+index 4b33f3fd97dc403fabe6f1d3078ead09cdad8154..0000000000000000000000000000000000000000
+diff --git a/src/components/text-field.css b/src/components/text-field.css
+deleted file mode 100644
+index 3b85e4cce45f5218c9a761dd6c2fc41ddd9e001a..0000000000000000000000000000000000000000
+diff --git a/src/components/text-field.parts.ts b/src/components/text-field.parts.ts
+deleted file mode 100644
+index ebfffa1e68e07b0438702b107211eb9fce87a02c..0000000000000000000000000000000000000000
+diff --git a/src/components/text-field.props.ts b/src/components/text-field.props.ts
+deleted file mode 100644
+index 0b4efa4da605651e709aba4d19dfc8448fe2aec4..0000000000000000000000000000000000000000
+diff --git a/src/components/text-field.tsx b/src/components/text-field.tsx
+deleted file mode 100644
+index 574a957f16aa83ba3a51b5ede66c91237792de55..0000000000000000000000000000000000000000
+diff --git a/src/components/text.css b/src/components/text.css
+deleted file mode 100644
+index 0d46be6f8ce2b30902873d176f7b6efe1ea9edb3..0000000000000000000000000000000000000000
+diff --git a/src/components/text.props.ts b/src/components/text.props.ts
+deleted file mode 100644
+index 3d2afb65fe0886301afdf317f29a3f35a880065d..0000000000000000000000000000000000000000
+diff --git a/src/components/text.tsx b/src/components/text.tsx
+deleted file mode 100644
+index c4532fca159e7255c59d0cec3e437a4b18eac4c3..0000000000000000000000000000000000000000
+diff --git a/src/components/theme-panel.css b/src/components/theme-panel.css
+deleted file mode 100644
+index ad7882ca5a628a945c9faf5a6de51d8508f3683e..0000000000000000000000000000000000000000
+diff --git a/src/components/theme-panel.tsx b/src/components/theme-panel.tsx
+deleted file mode 100644
+index 74116cff7ec60c9dbea023942c86e93923eda881..0000000000000000000000000000000000000000
+diff --git a/src/components/theme.tsx b/src/components/theme.tsx
+deleted file mode 100644
+index f8eccc2a3330beb02fab42bb86fb0ee508bde6f1..0000000000000000000000000000000000000000
+diff --git a/src/components/tooltip.css b/src/components/tooltip.css
+deleted file mode 100644
+index a834e9706b3882aaa40af9564b6a0d7bd6519333..0000000000000000000000000000000000000000
+diff --git a/src/components/tooltip.props.ts b/src/components/tooltip.props.ts
+deleted file mode 100644
+index a05ff0d159a7ddcc53e82518a9a05a40d32e7839..0000000000000000000000000000000000000000
+diff --git a/src/components/tooltip.tsx b/src/components/tooltip.tsx
+deleted file mode 100644
+index 2a86ea3b93be5745ed2fa0224b442855ebdbc7e7..0000000000000000000000000000000000000000
+diff --git a/src/components/visually-hidden.tsx b/src/components/visually-hidden.tsx
+deleted file mode 100644
+index 2d56344a3ac3b0790553a0baa01e32454b3177a8..0000000000000000000000000000000000000000
+diff --git a/src/helpers/component-props-as.ts b/src/helpers/component-props-as.ts
+deleted file mode 100644
+index 4846bbcc8e6ba42ba63b485911e9215ce92365ea..0000000000000000000000000000000000000000
+diff --git a/src/helpers/component-props-without-color.ts b/src/helpers/component-props-without-color.ts
+deleted file mode 100644
+index e3ed14c872f999278ce8d39ce46fe0ff9d5553ce..0000000000000000000000000000000000000000
+diff --git a/src/helpers/extract-margin-props.ts b/src/helpers/extract-margin-props.ts
+deleted file mode 100644
+index 840d61046e788a09815efea5d50d079c81b377fe..0000000000000000000000000000000000000000
+diff --git a/src/helpers/extract-props.ts b/src/helpers/extract-props.ts
+deleted file mode 100644
+index a6d1bcb8ed2b35de7d1324b654078109076edc9e..0000000000000000000000000000000000000000
+diff --git a/src/helpers/get-margin-styles.ts b/src/helpers/get-margin-styles.ts
+deleted file mode 100644
+index 09df4cf39314123873aff2e99692f05c249a4e8f..0000000000000000000000000000000000000000
+diff --git a/src/helpers/get-matching-gray-color.ts b/src/helpers/get-matching-gray-color.ts
+deleted file mode 100644
+index f429c79960379585e2e5a99c7f258514e69734c6..0000000000000000000000000000000000000000
+diff --git a/src/helpers/get-responsive-styles.ts b/src/helpers/get-responsive-styles.ts
+deleted file mode 100644
+index 98221f2ad5cf66524e633322a67a228b12309080..0000000000000000000000000000000000000000
+diff --git a/src/helpers/get-root.tsx b/src/helpers/get-root.tsx
+deleted file mode 100644
+index 15b43eef3bf9e2857cf1c0cee13002989fc65bc2..0000000000000000000000000000000000000000
+diff --git a/src/helpers/has-own-property.ts b/src/helpers/has-own-property.ts
+deleted file mode 100644
+index 603108cab281f1be12084dace7f8cf56c725b204..0000000000000000000000000000000000000000
+diff --git a/src/helpers/index.ts b/src/helpers/index.ts
+deleted file mode 100644
+index 8197e388498e6e1799fa0c7ac9f4b84e0b9e4ca7..0000000000000000000000000000000000000000
+diff --git a/src/helpers/input-attributes.ts b/src/helpers/input-attributes.ts
+deleted file mode 100644
+index 317d647102bc2ffb97cb853e326c3bb060e71187..0000000000000000000000000000000000000000
+diff --git a/src/helpers/is-responsive-object.ts b/src/helpers/is-responsive-object.ts
+deleted file mode 100644
+index 6895f5cc1865d5fe33fc696da4fd59eb028b271a..0000000000000000000000000000000000000000
+diff --git a/src/helpers/map-prop-values.ts b/src/helpers/map-prop-values.ts
+deleted file mode 100644
+index c698f634a2db3716562dc38c4583bd2772e37160..0000000000000000000000000000000000000000
+diff --git a/src/helpers/merge-styles.ts b/src/helpers/merge-styles.ts
+deleted file mode 100644
+index 6a72d3930d39f9facfff1111753bda78860f116c..0000000000000000000000000000000000000000
+diff --git a/src/helpers/nice-intersection.ts b/src/helpers/nice-intersection.ts
+deleted file mode 100644
+index 9f2a6ba5309baf3fb5a4e0ec38f7ad758aa64edb..0000000000000000000000000000000000000000
+diff --git a/src/helpers/require-react-element.ts b/src/helpers/require-react-element.ts
+deleted file mode 100644
+index 4ae033d15ac875e6087d9bfa3037aa208683990a..0000000000000000000000000000000000000000
+diff --git a/src/index.ts b/src/index.ts
+deleted file mode 100644
+index 8a8c2711ca80d9e97474fe4d1190328a96684e7d..0000000000000000000000000000000000000000
+diff --git a/src/props/as-child.prop.ts b/src/props/as-child.prop.ts
+deleted file mode 100644
+index 20231257aa256ac3ccb9cae673101633125d247b..0000000000000000000000000000000000000000
+diff --git a/src/props/color.prop.ts b/src/props/color.prop.ts
+deleted file mode 100644
+index 6ca6c295bfb207074d49b3c4c556064b43d47262..0000000000000000000000000000000000000000
+diff --git a/src/props/gap.prop.ts b/src/props/gap.prop.ts
+deleted file mode 100644
+index b25c1869b8081079c329ea5215c11ae909ff24a6..0000000000000000000000000000000000000000
+diff --git a/src/props/height.props.ts b/src/props/height.props.ts
+deleted file mode 100644
+index 9ec22c4e75ed31d8dd9b788d614d5d9ed20ac5c9..0000000000000000000000000000000000000000
+diff --git a/src/props/high-contrast.prop.ts b/src/props/high-contrast.prop.ts
+deleted file mode 100644
+index 64c414206da113e0b6cebf8a4c536645d29b4aa1..0000000000000000000000000000000000000000
+diff --git a/src/props/index.ts b/src/props/index.ts
+deleted file mode 100644
+index 39811dc82d6d989ff42a75036c8dbfa06a413073..0000000000000000000000000000000000000000
+diff --git a/src/props/layout.props.ts b/src/props/layout.props.ts
+deleted file mode 100644
+index f1f357d89ae7157338d99010293fb1c29b7e64bd..0000000000000000000000000000000000000000
+diff --git a/src/props/leading-trim.prop.ts b/src/props/leading-trim.prop.ts
+deleted file mode 100644
+index 184d979ce42abf4eae8586e029edcf37a984f7ca..0000000000000000000000000000000000000000
+diff --git a/src/props/margin.props.ts b/src/props/margin.props.ts
+deleted file mode 100644
+index fe44a8ec38b293cec4829b8a1ce3160df439a725..0000000000000000000000000000000000000000
+diff --git a/src/props/padding.props.ts b/src/props/padding.props.ts
+deleted file mode 100644
+index c83a53f7ec4d3347424897ee3c50c90157b7fa88..0000000000000000000000000000000000000000
+diff --git a/src/props/prop-def.ts b/src/props/prop-def.ts
+deleted file mode 100644
+index c379d45ae8c882e2b3f93f115cdcc9b0b76e5fd9..0000000000000000000000000000000000000000
+diff --git a/src/props/radius.prop.ts b/src/props/radius.prop.ts
+deleted file mode 100644
+index 40223831cb54a88d0e28adc11c4a02463bbacefe..0000000000000000000000000000000000000000
+diff --git a/src/props/text-align.prop.ts b/src/props/text-align.prop.ts
+deleted file mode 100644
+index 904adc8d8d9aa789e238a1b98bedad0eade14796..0000000000000000000000000000000000000000
+diff --git a/src/props/text-wrap.prop.ts b/src/props/text-wrap.prop.ts
+deleted file mode 100644
+index 49747608488812747630f7e5c4ab58d525104404..0000000000000000000000000000000000000000
+diff --git a/src/props/theme.props.ts b/src/props/theme.props.ts
+deleted file mode 100644
+index 2c0e6a12e4f755016847bd1121cf50c92ab0d7c7..0000000000000000000000000000000000000000
+diff --git a/src/props/truncate.prop.ts b/src/props/truncate.prop.ts
+deleted file mode 100644
+index 5226bbf76a8f586f28e412c237f3f62da08260b9..0000000000000000000000000000000000000000
+diff --git a/src/props/weight.prop.ts b/src/props/weight.prop.ts
+deleted file mode 100644
+index ee86ed89ad0f0638ae4346f51958ba9f6a3aead4..0000000000000000000000000000000000000000
+diff --git a/src/props/width.props.ts b/src/props/width.props.ts
+deleted file mode 100644
+index f539829f26e88cf9cdfcb78f5a39d88b891e0093..0000000000000000000000000000000000000000
+diff --git a/src/styles/breakpoints.css b/src/styles/breakpoints.css
+deleted file mode 100644
+index 0757a56dff67299789972d4aa569c696e3e6d0cf..0000000000000000000000000000000000000000
+diff --git a/src/styles/index.css b/src/styles/index.css
+deleted file mode 100644
+index 8525072458e1fc50033104d516836e516a39b49b..0000000000000000000000000000000000000000
+diff --git a/src/styles/tokens/color.css b/src/styles/tokens/color.css
+deleted file mode 100644
+index c37aec95c3ee88b5d89a43ade40913e65a38ac00..0000000000000000000000000000000000000000
+diff --git a/src/styles/tokens/cursor.css b/src/styles/tokens/cursor.css
+deleted file mode 100644
+index b557c10a2ff2dae064bfdcb71e299a158b78c2c8..0000000000000000000000000000000000000000
+diff --git a/src/styles/tokens/index.css b/src/styles/tokens/index.css
+deleted file mode 100644
+index 131491d2955f01111aead8fc51f85f0c10b5e39c..0000000000000000000000000000000000000000
+diff --git a/src/styles/tokens/radius.css b/src/styles/tokens/radius.css
+deleted file mode 100644
+index 1985f35c8d14a653c118f5c5bb0d727962b66b6a..0000000000000000000000000000000000000000
+diff --git a/src/styles/tokens/scaling.css b/src/styles/tokens/scaling.css
+deleted file mode 100644
+index 93079722413a9d5e797482eb1fa672309ff2b823..0000000000000000000000000000000000000000
+diff --git a/src/styles/tokens/shadow.css b/src/styles/tokens/shadow.css
+deleted file mode 100644
+index 3819685c0c0c89ea240345b7f74f3d582ed7beb1..0000000000000000000000000000000000000000
+diff --git a/src/styles/tokens/space.css b/src/styles/tokens/space.css
+deleted file mode 100644
+index 137e86d98ea20b2a3a0c8943eff1109f891ae69c..0000000000000000000000000000000000000000
+diff --git a/src/styles/tokens/typography.css b/src/styles/tokens/typography.css
+deleted file mode 100644
+index e378aa307aadcc988476bc13da017c2a699aa89d..0000000000000000000000000000000000000000
+diff --git a/src/styles/utilities/align-items.css b/src/styles/utilities/align-items.css
+deleted file mode 100644
+index 199749a3e35ea24d19e2fecdbcd9ff0a353227ef..0000000000000000000000000000000000000000
+diff --git a/src/styles/utilities/align-self.css b/src/styles/utilities/align-self.css
+deleted file mode 100644
+index 3fd1e371ce87942f69e00de40e1c79ca52bbe723..0000000000000000000000000000000000000000
+diff --git a/src/styles/utilities/display.css b/src/styles/utilities/display.css
+deleted file mode 100644
+index 0430168ba8aeef6ecd3298929f7e26fcc4c9189a..0000000000000000000000000000000000000000
+diff --git a/src/styles/utilities/flex-basis.css b/src/styles/utilities/flex-basis.css
+deleted file mode 100644
+index a977384ba7b5e803de55900cfc21d73d29a1c9a4..0000000000000000000000000000000000000000
+diff --git a/src/styles/utilities/flex-direction.css b/src/styles/utilities/flex-direction.css
+deleted file mode 100644
+index bd025eb60b171d787c2fd3035bb5479030750cfc..0000000000000000000000000000000000000000
+diff --git a/src/styles/utilities/flex-grow.css b/src/styles/utilities/flex-grow.css
+deleted file mode 100644
+index 11c99fd3406361b643b3a2d0af39807a47f2ede1..0000000000000000000000000000000000000000
+diff --git a/src/styles/utilities/flex-shrink.css b/src/styles/utilities/flex-shrink.css
+deleted file mode 100644
+index 3dae5b3b59c42cde593c2464d9a5fb5f3954b73e..0000000000000000000000000000000000000000
+diff --git a/src/styles/utilities/flex-wrap.css b/src/styles/utilities/flex-wrap.css
+deleted file mode 100644
+index 96b9ca9c7ddef39ad1ba6bfbd66100d61cc46dcc..0000000000000000000000000000000000000000
+diff --git a/src/styles/utilities/font-weight.css b/src/styles/utilities/font-weight.css
+deleted file mode 100644
+index 9f0ddb408c3c3bf8c0d711ef79dc94db8833406d..0000000000000000000000000000000000000000
+diff --git a/src/styles/utilities/gap.css b/src/styles/utilities/gap.css
+deleted file mode 100644
+index 3065442d7ef495585ca6304059df97e579fb27e9..0000000000000000000000000000000000000000
+diff --git a/src/styles/utilities/grid-auto-flow.css b/src/styles/utilities/grid-auto-flow.css
+deleted file mode 100644
+index 63762d78830c6a7230245e14c5d72407e79133ae..0000000000000000000000000000000000000000
+diff --git a/src/styles/utilities/grid-column-end.css b/src/styles/utilities/grid-column-end.css
+deleted file mode 100644
+index cce6c013c11e93db902c88bd82ccd735ef7dbe30..0000000000000000000000000000000000000000
+diff --git a/src/styles/utilities/grid-column-start.css b/src/styles/utilities/grid-column-start.css
+deleted file mode 100644
+index 55a88aad144ffb92b8333db619e79c0019e041b7..0000000000000000000000000000000000000000
+diff --git a/src/styles/utilities/grid-column.css b/src/styles/utilities/grid-column.css
+deleted file mode 100644
+index 2815ef315ce59b116477c3c63d18f51e79981f9e..0000000000000000000000000000000000000000
+diff --git a/src/styles/utilities/grid-row-end.css b/src/styles/utilities/grid-row-end.css
+deleted file mode 100644
+index 90539bd7f1ebd015f90cc16a9873243078702908..0000000000000000000000000000000000000000
+diff --git a/src/styles/utilities/grid-row-start.css b/src/styles/utilities/grid-row-start.css
+deleted file mode 100644
+index 06e543530e04f12c6443b9bcc4ba73d4d09bd644..0000000000000000000000000000000000000000
+diff --git a/src/styles/utilities/grid-row.css b/src/styles/utilities/grid-row.css
+deleted file mode 100644
+index 58f8e1f08a80c27744c4ea4ce060bed156687c1c..0000000000000000000000000000000000000000
+diff --git a/src/styles/utilities/grid-template-columns.css b/src/styles/utilities/grid-template-columns.css
+deleted file mode 100644
+index a70bdadf1717b7029c722feef5ca96d62e8f9abf..0000000000000000000000000000000000000000
+diff --git a/src/styles/utilities/grid-template-rows.css b/src/styles/utilities/grid-template-rows.css
+deleted file mode 100644
+index b05553439ee093f20ae43cc2a3babd452f994c64..0000000000000000000000000000000000000000
+diff --git a/src/styles/utilities/height.css b/src/styles/utilities/height.css
+deleted file mode 100644
+index a6684250a979c43ff7d4d9dcc0b35d5367414d4e..0000000000000000000000000000000000000000
+diff --git a/src/styles/utilities/index.css b/src/styles/utilities/index.css
+deleted file mode 100644
+index 6012a39e0c9a96a4e5ca990f02ae7b1e1b667a39..0000000000000000000000000000000000000000
+diff --git a/src/styles/utilities/inset.css b/src/styles/utilities/inset.css
+deleted file mode 100644
+index da7992c7a6aae3819b03d995cbc5eaa561489630..0000000000000000000000000000000000000000
+diff --git a/src/styles/utilities/justify-content.css b/src/styles/utilities/justify-content.css
+deleted file mode 100644
+index 2adbf3eda27440be128523589b5c26dad4eae5ae..0000000000000000000000000000000000000000
+diff --git a/src/styles/utilities/leading-trim.css b/src/styles/utilities/leading-trim.css
+deleted file mode 100644
+index bb8a96ab19686debd9f39b3746a77909d0f96350..0000000000000000000000000000000000000000
+diff --git a/src/styles/utilities/margin.css b/src/styles/utilities/margin.css
+deleted file mode 100644
+index 23aa3db73d7126602dce7b6a58851a17a41dd062..0000000000000000000000000000000000000000
+diff --git a/src/styles/utilities/max-height.css b/src/styles/utilities/max-height.css
+deleted file mode 100644
+index a039737082f630b171e66d5e26cf66b38bcca678..0000000000000000000000000000000000000000
+diff --git a/src/styles/utilities/max-width.css b/src/styles/utilities/max-width.css
+deleted file mode 100644
+index b6c3b1ddf68f8a9404b19adedac96d92dfae8601..0000000000000000000000000000000000000000
+diff --git a/src/styles/utilities/min-height.css b/src/styles/utilities/min-height.css
+deleted file mode 100644
+index 3877a26630c46b5ae5b4f2c6b28cc5774ec26124..0000000000000000000000000000000000000000
+diff --git a/src/styles/utilities/min-width.css b/src/styles/utilities/min-width.css
+deleted file mode 100644
+index 2655eb8945b30db45072f4470e1e5e66d3df67f3..0000000000000000000000000000000000000000
+diff --git a/src/styles/utilities/padding.css b/src/styles/utilities/padding.css
+deleted file mode 100644
+index 18ded4151b662053bc8f0b344bf14ba5d2123ebb..0000000000000000000000000000000000000000
+diff --git a/src/styles/utilities/position.css b/src/styles/utilities/position.css
+deleted file mode 100644
+index 7ba8aa73e076c30c7c0a16820716275089acb208..0000000000000000000000000000000000000000
+diff --git a/src/styles/utilities/resize.css b/src/styles/utilities/resize.css
+deleted file mode 100644
+index 169dafbb7854cf2c08303bfcfd5d275026c2a697..0000000000000000000000000000000000000000
+diff --git a/src/styles/utilities/table-layout.css b/src/styles/utilities/table-layout.css
+deleted file mode 100644
+index 002b22af3370d4793cab9f271aa0f74c07ff0d20..0000000000000000000000000000000000000000
+diff --git a/src/styles/utilities/text-align.css b/src/styles/utilities/text-align.css
+deleted file mode 100644
+index 17961c53a1ff9b6278e6ebf0a36158a7eac184fb..0000000000000000000000000000000000000000
+diff --git a/src/styles/utilities/text-wrap.css b/src/styles/utilities/text-wrap.css
+deleted file mode 100644
+index 150e9417a3f222beca1c9c271cd34a3311f6160b..0000000000000000000000000000000000000000
+diff --git a/src/styles/utilities/truncate.css b/src/styles/utilities/truncate.css
+deleted file mode 100644
+index 10157b5da40e815e31806cab66b328ce67fcf91a..0000000000000000000000000000000000000000
+diff --git a/src/styles/utilities/vertical-align.css b/src/styles/utilities/vertical-align.css
+deleted file mode 100644
+index be4e48b1376ea702a4764a3bb1190974758c32e5..0000000000000000000000000000000000000000
+diff --git a/src/styles/utilities/width.css b/src/styles/utilities/width.css
+deleted file mode 100644
+index 12cd5bd51548d0fc4255b603fb85b1b057457d74..0000000000000000000000000000000000000000

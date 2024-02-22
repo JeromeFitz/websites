@@ -13,6 +13,11 @@ overrides:
   semver@^7.0.0: 7.5.4
   tough-cookie: 4.1.3
 
+patchedDependencies:
+  '@radix-ui/themes@3.0.0-rc.10':
+    hash: pqrrccd5uvsobktvjcbx2luvhe
+    path: patches/@radix-ui__themes@3.0.0-rc.10.patch
+
 importers:
 
   .:
@@ -202,7 +207,7 @@ importers:
         version: 1.0.3(@types/react-dom@18.2.19)(@types/react@18.2.57)(react-dom@18.2.0)(react@18.2.0)
       '@radix-ui/themes':
         specifier: 3.0.0-rc.10
-        version: 3.0.0-rc.10(@types/react-dom@18.2.19)(@types/react@18.2.57)(react-dom@18.2.0)(react@18.2.0)
+        version: 3.0.0-rc.10(patch_hash=pqrrccd5uvsobktvjcbx2luvhe)(@types/react-dom@18.2.19)(@types/react@18.2.57)(react-dom@18.2.0)(react@18.2.0)
       clsx:
         specifier: 2.1.0
         version: 2.1.0
@@ -362,7 +367,7 @@ importers:
         version: 2.2.14
       '@radix-ui/themes':
         specifier: 3.0.0-rc.10
-        version: 3.0.0-rc.10(@types/react-dom@18.2.19)(@types/react@18.2.57)(react-dom@18.2.0)(react@18.2.0)
+        version: 3.0.0-rc.10(patch_hash=pqrrccd5uvsobktvjcbx2luvhe)(@types/react-dom@18.2.19)(@types/react@18.2.57)(react-dom@18.2.0)(react@18.2.0)
       '@types/lodash':
         specifier: 4.14.202
         version: 4.14.202
@@ -488,7 +493,7 @@ importers:
         version: 3.0.0
       '@radix-ui/themes':
         specifier: 3.0.0-rc.10
-        version: 3.0.0-rc.10
+        version: 3.0.0-rc.10(patch_hash=pqrrccd5uvsobktvjcbx2luvhe)
       '@tailwindcss/aspect-ratio':
         specifier: 0.4.2
         version: 0.4.2(tailwindcss@3.4.1)
@@ -972,7 +977,7 @@ importers:
         version: 1.0.3(@types/react-dom@18.2.19)(@types/react@18.2.57)(react-dom@18.2.0)(react@18.2.0)
       '@radix-ui/themes':
         specifier: 3.0.0-rc.10
-        version: 3.0.0-rc.10(@types/react-dom@18.2.19)(@types/react@18.2.57)(react-dom@18.2.0)(react@18.2.0)
+        version: 3.0.0-rc.10(patch_hash=pqrrccd5uvsobktvjcbx2luvhe)(@types/react-dom@18.2.19)(@types/react@18.2.57)(react-dom@18.2.0)(react@18.2.0)
       '@tanem/react-nprogress':
         specifier: 5.0.51
         version: 5.0.51(react-dom@18.2.0)(react@18.2.0)
@@ -7788,7 +7793,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.23.9
 
-  /@radix-ui/themes@3.0.0-rc.10:
+  /@radix-ui/themes@3.0.0-rc.10(patch_hash=pqrrccd5uvsobktvjcbx2luvhe):
     resolution: {integrity: sha512-GbIvc7NPs520gjfxBe0NIKGUv7A2nXfjW9m3MVK8WAM9jqVPHwo36omugnC84/czBKjX9tMGNtFsWlA/+UdtsA==}
     peerDependencies:
       '@types/react': '*'
@@ -7836,8 +7841,9 @@ packages:
       '@radix-ui/react-visually-hidden': 1.0.3
       classnames: 2.5.1
     dev: true
+    patched: true
 
-  /@radix-ui/themes@3.0.0-rc.10(@types/react-dom@18.2.19)(@types/react@18.2.57)(react-dom@18.2.0)(react@18.2.0):
+  /@radix-ui/themes@3.0.0-rc.10(patch_hash=pqrrccd5uvsobktvjcbx2luvhe)(@types/react-dom@18.2.19)(@types/react@18.2.57)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-GbIvc7NPs520gjfxBe0NIKGUv7A2nXfjW9m3MVK8WAM9jqVPHwo36omugnC84/czBKjX9tMGNtFsWlA/+UdtsA==}
     peerDependencies:
       '@types/react': '*'
@@ -7888,6 +7894,7 @@ packages:
       classnames: 2.5.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
+    patched: true
 
   /@rollup/rollup-android-arm-eabi@4.4.1:
     resolution: {integrity: sha512-Ss4suS/sd+6xLRu+MLCkED2mUrAyqHmmvZB+zpzZ9Znn9S8wCkTQCJaQ8P8aHofnvG5L16u9MVnJjCqioPErwQ==}
@@ -10614,6 +10621,9 @@ packages:
 
   /ajv-formats@2.1.1:
     resolution: {integrity: sha512-Wx0Kx52hxE7C18hkMEggYlEifqWZtYaRgouJor+WMdPnQyEK13vgEWyVNup7SoeeoLMsr4kf5h6dOW11I15MUA==}
+    peerDependenciesMeta:
+      ajv:
+        optional: true
     dependencies:
       ajv: 8.12.0
     dev: true
