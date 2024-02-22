@@ -19,16 +19,16 @@ import { notFound } from 'next/navigation'
 import type { PropertiesEvent } from '@/app/(notion)/_config'
 
 import { CONFIG, getEventData } from '@/app/(notion)/_config'
-import { Grid } from '@/app/playground/2024/_components/Grid'
+import { Grid } from '@/components/Grid'
 import {
   HeadlineColumnA,
   HeadlineContent,
   HeadlineTitle,
   HeadlineTitleSub,
-} from '@/app/playground/2024/_components/Headline'
+} from '@/components/Headline'
 import { Notion as Blocks } from '@/components/Notion'
 import { Relations } from '@/components/Relations'
-import { WIP } from '@/components/WIP/index'
+import { WIP } from '@/components/WIP'
 
 // import { Venue } from './Event.Slug.Venue'
 import { Image } from './Image'

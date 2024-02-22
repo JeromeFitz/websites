@@ -20,13 +20,13 @@ import { getPropertyTypeData } from 'next-notion/utils'
 
 // import { CONFIG, getEventData, getPageData } from '@/app/(notion)/_config'
 import { CONFIG, getEventData } from '@/app/(notion)/_config'
-import { Grid } from '@/app/playground/2024/_components/Grid'
+import { Grid } from '@/components/Grid'
 import {
   HeadlineColumnA,
   HeadlineContent,
   HeadlineTitle,
-} from '@/app/playground/2024/_components/Headline'
-import { WIP } from '@/components/WIP/index'
+} from '@/components/Headline'
+import { WIP } from '@/components/WIP'
 
 import { AccordionClient } from './Event.Listing.client'
 

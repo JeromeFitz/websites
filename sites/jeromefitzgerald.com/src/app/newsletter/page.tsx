@@ -1,9 +1,9 @@
-import { Grid } from '@/app/playground/2024/_components/Grid'
+import { Grid } from '@/components/Grid'
 import {
   HeadlineColumnA,
   HeadlineContent,
   HeadlineTitle,
-} from '@/app/playground/2024/_components/Headline'
+} from '@/components/Headline'
 
 import { Modal } from './_components/Newsletter.Modal'
 

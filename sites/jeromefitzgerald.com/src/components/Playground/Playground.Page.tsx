@@ -10,13 +10,13 @@
 import { Button } from '@jeromefitz/ds/components/Button'
 import { cx } from '@jeromefitz/ds/utils/cx'
 
-import { Grid } from '@/app/playground/2024/_components/Grid'
+import { Grid } from '@/components/Grid'
 import {
   HeadlineColumnA,
   HeadlineContent,
   HeadlineTitle,
   HeadlineTitleSub,
-} from '@/app/playground/2024/_components/Headline'
+} from '@/components/Headline'
 // import dynamic from 'next/dynamic'
 
 import {

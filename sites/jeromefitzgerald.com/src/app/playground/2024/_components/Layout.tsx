@@ -4,13 +4,13 @@
 import { Badge, Box, Button, Heading, Skeleton, Text } from '@radix-ui/themes'
 import React, { forwardRef } from 'react'
 
-import { Grid } from './Grid'
+import { Grid } from '@/components/Grid'
 import {
   HeadlineColumnA,
   HeadlineContent,
   HeadlineTitle,
   HeadlineTitleSub,
-} from './Headline'
+} from '@/components/Headline'
 
 const Layout = forwardRef(function Layout(props, forwardedRef) {
   const [isLoading, setIsLoading] = React.useState(true)

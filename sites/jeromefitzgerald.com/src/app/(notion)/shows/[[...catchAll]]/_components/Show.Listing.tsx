@@ -15,15 +15,15 @@ import { getPropertyTypeData } from 'next-notion/utils'
 // @ts-ignore
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { CONFIG, getPageData, getShowData } from '@/app/(notion)/_config'
-import { Grid } from '@/app/playground/2024/_components/Grid'
+import { Grid } from '@/components/Grid'
 import {
   HeadlineColumnA,
   HeadlineContent,
   HeadlineTitle,
-} from '@/app/playground/2024/_components/Headline'
+} from '@/components/Headline'
 // import { Notion as Blocks } from '@/components/Notion'
 // import type { PageObjectResponseShow } from '@/app/(notion)/_config'
-import { WIP } from '@/components/WIP/index'
+import { WIP } from '@/components/WIP'
 
 const { DATABASE_ID } = CONFIG.SHOWS
 

@@ -4,7 +4,7 @@ import { Badge, Button } from '@radix-ui/themes'
 // eslint-disable-next-line no-restricted-imports
 import NextLink from 'next/link'
 
-import { Grid } from '@/app/playground/2024/_components/Grid'
+import { Grid } from '@/components/Grid'
 
 function Banner({ data }) {
   return (

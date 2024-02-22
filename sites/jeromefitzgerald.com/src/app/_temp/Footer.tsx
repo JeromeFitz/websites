@@ -9,7 +9,7 @@ import { Button } from '@radix-ui/themes'
 // eslint-disable-next-line no-restricted-imports
 import NextLink from 'next/link'
 
-import { Grid } from '@/app/playground/2024/_components/Grid'
+import { Grid } from '@/components/Grid'
 import { WIPFooter } from '@/components/WIP'
 /**
  * @note ignore this file for CI linting (created on next build)

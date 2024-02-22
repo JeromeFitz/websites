@@ -5,14 +5,14 @@ import { ImageClient as NextImage } from '@jeromefitz/shared/components/Notion/B
 import { AspectRatio, Badge } from '@radix-ui/themes'
 import { forwardRef } from 'react'
 
-import { Grid } from '@/app/playground/2024/_components/Grid'
+import { Grid } from '@/components/Grid'
 import {
   HeadlineColumnA,
   HeadlineContent,
   HeadlineTitle,
   HeadlineTitleSub,
-} from '@/app/playground/2024/_components/Headline'
-import { Quote } from '@/app/playground/2024/_components/Quote'
+} from '@/components/Headline'
+import { Quote } from '@/components/Quote'
 import { quotes } from '@/data/quotes'
 
 const image = {

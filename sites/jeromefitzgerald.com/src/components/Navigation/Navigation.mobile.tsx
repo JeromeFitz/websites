@@ -22,7 +22,7 @@ import {
   AccordionList,
   AccordionListItem,
   AccordionTrigger,
-} from '@/app/playground/2024/_components/Accordion/index'
+} from '@/components/Accordion'
 import { menus } from '@/data/menu'
 import { useStore } from '@/store/index'
 
