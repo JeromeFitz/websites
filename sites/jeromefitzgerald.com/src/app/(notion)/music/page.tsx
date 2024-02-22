@@ -1,11 +1,14 @@
-import { getDataFromCache, getSegmentInfo } from '@jeromefitz/shared/notion/utils'
+import {
+  getDataFromCache,
+  getSegmentInfo,
+} from '@jeromefitz/shared/notion/utils/index'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
 import type { Metadata } from 'next'
 
-import { draftMode } from 'next/headers'
+import { draftMode } from 'next/headers.js'
 
-import { CONFIG, getPageData } from '@/app/(notion)/_config'
+import { CONFIG, getPageData } from '@/app/(notion)/_config/index'
 import { generateMetadataCustom } from '@/app/(notion)/_config/temp/generateMetadataCustom'
 
 import { MusicClient } from './_components/Music.client'

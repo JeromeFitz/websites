@@ -1,16 +1,16 @@
-import { Anchor } from '@jeromefitz/ds/components/Anchor'
-import { Separator } from '@jeromefitz/ds/components/Separator'
+import { Anchor } from '@jeromefitz/ds/components/Anchor/index'
+import { Separator } from '@jeromefitz/ds/components/Separator/index'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
 import { Badge } from '@radix-ui/themes'
 
-import { Grid } from '@/components/Grid'
+import { Grid } from '@/components/Grid/index'
 import {
   HeadlineColumnA,
   HeadlineContent,
   HeadlineTitle,
   HeadlineTitleSub,
-} from '@/components/Headline'
+} from '@/components/Headline/index'
 
 // @todo(types)
 function FourOhFour({

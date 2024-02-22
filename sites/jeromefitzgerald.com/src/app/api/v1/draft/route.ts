@@ -1,7 +1,10 @@
-import { getDataFromCache, getSegmentInfo } from '@jeromefitz/shared/notion/utils'
+import {
+  getDataFromCache,
+  getSegmentInfo,
+} from '@jeromefitz/shared/notion/utils/index'
 
-import { draftMode } from 'next/headers'
-import { redirect } from 'next/navigation'
+import { draftMode } from 'next/headers.js'
+import { redirect } from 'next/navigation.js'
 
 /**
  * @todo(notion) this is a proof of concept right now

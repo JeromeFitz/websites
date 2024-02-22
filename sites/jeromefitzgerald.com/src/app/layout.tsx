@@ -10,9 +10,9 @@ import { Viewport } from 'next'
 
 import { Footer } from '@/app/_temp/Footer'
 import { BannerClient } from '@/components/Banner/Banner.client'
-import { Navigation } from '@/components/Navigation'
-import { Providers } from '@/components/Providers'
-import { Wrapper } from '@/components/Wrapper'
+import { Navigation } from '@/components/Navigation/index'
+import { Providers } from '@/components/Providers/index'
+import { Wrapper } from '@/components/Wrapper/index'
 
 import { PreloadResources } from './_next/preload-resources'
 

@@ -1,7 +1,7 @@
-import { Anchor } from '@jeromefitz/ds/components/Anchor'
+import { Anchor } from '@jeromefitz/ds/components/Anchor/index'
 import { cx } from '@jeromefitz/ds/utils/cx'
 
-import { getPodcastData } from '@/app/(notion)/_config'
+import { getPodcastData } from '@/app/(notion)/_config/index'
 import { blocks } from '@/components/Notion/Notion.Config'
 
 function PodcastEpisodes({ properties }) {

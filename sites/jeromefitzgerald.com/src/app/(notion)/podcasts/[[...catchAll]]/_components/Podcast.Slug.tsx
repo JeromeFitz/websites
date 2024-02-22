@@ -1,24 +1,24 @@
-import { Separator } from '@jeromefitz/ds/components/Separator'
-import { getDataFromCache } from '@jeromefitz/shared/notion/utils'
+import { Separator } from '@jeromefitz/ds/components/Separator/index'
+import { getDataFromCache } from '@jeromefitz/shared/notion/utils/index'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
 import { Badge } from '@radix-ui/themes'
-import { draftMode } from 'next/headers'
-import { notFound } from 'next/navigation'
+import { draftMode } from 'next/headers.js'
+import { notFound } from 'next/navigation.js'
 
-import type { PropertiesPodcast } from '@/app/(notion)/_config'
+import type { PropertiesPodcast } from '@/app/(notion)/_config/index'
 
-import { CONFIG, getPodcastData } from '@/app/(notion)/_config'
-import { Grid } from '@/components/Grid'
+import { CONFIG, getPodcastData } from '@/app/(notion)/_config/index'
+import { Grid } from '@/components/Grid/index'
 import {
   HeadlineColumnA,
   HeadlineContent,
   HeadlineTitle,
   HeadlineTitleSub,
-} from '@/components/Headline'
-import { Notion as Blocks } from '@/components/Notion'
-import { Relations } from '@/components/Relations'
-import { WIP } from '@/components/WIP'
+} from '@/components/Headline/index'
+import { Notion as Blocks } from '@/components/Notion/index'
+import { Relations } from '@/components/Relations/index'
+import { WIP } from '@/components/WIP/index'
 
 import { PodcastEpisodes } from './Podcast.Episodes'
 

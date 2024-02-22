@@ -9,11 +9,17 @@ import { slug as _slug } from 'github-slugger'
 // import { isImageExpired } from 'next-notion/src/utils/getAwsImage'
 import validUrl from 'valid-url'
 
-import { getPropertyTypeDataEvent } from '@/app/(notion)/_config'
+import { getPropertyTypeDataEvent } from '@/app/(notion)/_config/index'
 
 // const notion = new Client({ auth: process.env.NOTION_API_KEY })
 
-const redis = Redis.fromEnv({ agent: new https.Agent({ keepAlive: true }) })
+const redis = Redis.fromEnv({
+  agent: new https.Agent({ keepAlive: true }),
+  retry: {
+    backoff: (retryCount) => Math.exp(retryCount) * 50,
+    retries: 5,
+  },
+})
 
 const CACHE_KEY_PREFIX__IMAGE = `${process.env.NEXT_PUBLIC__SITE}/image`
 
@@ -65,7 +71,7 @@ async function Image({ properties }) {
 
   // const isExpired = isImageExpired(image)
   if (!isCached && !!imageUrl) {
-    const { getImage } = await import('@jeromefitz/shared/plaiceholder')
+    const { getImage } = await import('@jeromefitz/shared/plaiceholder/index')
     const imageData = await getImage(imageUrl)
     image.blurDataURL = imageData?.base64
     image = {

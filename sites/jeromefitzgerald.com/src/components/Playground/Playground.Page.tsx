@@ -7,17 +7,17 @@
  *  when you are coding. (2 step process when adding new functions)
  *
  */
-import { Button } from '@jeromefitz/ds/components/Button'
+import { Button } from '@jeromefitz/ds/components/Button/index'
 import { cx } from '@jeromefitz/ds/utils/cx'
 
-import { Grid } from '@/components/Grid'
+import { Grid } from '@/components/Grid/index'
 import {
   HeadlineColumnA,
   HeadlineContent,
   HeadlineTitle,
   HeadlineTitleSub,
-} from '@/components/Headline'
-// import dynamic from 'next/dynamic'
+} from '@/components/Headline/index'
+// import dynamic from 'next/dynamic.js'
 
 import {
   RadixBackgrounds,

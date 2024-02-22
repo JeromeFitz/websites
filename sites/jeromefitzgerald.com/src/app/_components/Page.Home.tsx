@@ -1,18 +1,18 @@
-import { Caption } from '@jeromefitz/ds/components/Caption'
+import { Caption } from '@jeromefitz/ds/components/Caption/index'
 import { cx } from '@jeromefitz/ds/utils/cx'
 import { ImageClient as NextImage } from '@jeromefitz/shared/components/Notion/Blocks/Image.client'
 
 import { AspectRatio, Badge } from '@radix-ui/themes'
 import { forwardRef } from 'react'
 
-import { Grid } from '@/components/Grid'
+import { Grid } from '@/components/Grid/index'
 import {
   HeadlineColumnA,
   HeadlineContent,
   HeadlineTitle,
   HeadlineTitleSub,
-} from '@/components/Headline'
-import { Quote } from '@/components/Quote'
+} from '@/components/Headline/index'
+import { Quote } from '@/components/Quote/index'
 import { quotes } from '@/data/quotes'
 
 const image = {

@@ -1,15 +1,26 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import redis from '@jeromefitz/shared/redis'
+import https from 'node:https'
+
 import Client from '@jeromefitz/spotify'
 
 import type { ClientProps, CredentialProps } from '@jeromefitz/spotify'
 
+// import redis from '@jeromefitz/shared/redis/redis.js'
+import { Redis } from '@upstash/redis'
 import stringify from 'fast-json-stable-stringify'
 import { slug as _slug } from 'github-slugger'
 import ms from 'ms'
-import { NextRequest, NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server.js'
 
 const keyPrefixSpotify = `${process.env.NEXT_PUBLIC__SITE}/spotify`
+
+const redis = Redis.fromEnv({
+  agent: new https.Agent({ keepAlive: true }),
+  retry: {
+    backoff: (retryCount) => Math.exp(retryCount) * 50,
+    retries: 5,
+  },
+})
 
 /**
  * @redis is in seconds not ms

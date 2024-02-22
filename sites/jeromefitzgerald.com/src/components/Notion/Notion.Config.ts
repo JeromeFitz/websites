@@ -4,7 +4,7 @@
  */
 import { Image } from '@jeromefitz/shared/components/Notion/Blocks/Image'
 
-// import dynamic from 'next/dynamic'
+// import dynamic from 'next/dynamic.js'
 
 // import { lazy } from 'react'
 // import { Embed } from '@jeromefitz/shared/components/Notion/Blocks/Embed'

@@ -1,8 +1,9 @@
 {
   "name": "@jeromefitz/playwright-config",
   "version": "0.0.0",
+  "type": "module",
   "private": true,
-  "main": "./playwright.config.js",
+  "main": "./playwright.config.ts",
   "devDependencies": {
     "@playwright/test": "1.41.2"
   }

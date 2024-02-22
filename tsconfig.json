@@ -17,8 +17,8 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "lib": ["dom", "ES2020"],
-    "module": "ES2020",
-    "moduleResolution": "Node",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "noEmit": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": false, // @todo(lint)

@@ -4,8 +4,8 @@ import { isObjectEmpty } from '@jeromefitz/utils'
 
 import { Client } from '@notionhq/client'
 // import type { FilterType } from 'next-notion/Notion.types'
-import { getBlockChildrenDataParent } from 'next-notion/queries'
-import { isAwsImage, isImageExpired } from 'next-notion/utils'
+import { getBlockChildrenDataParent } from 'next-notion/queries/index'
+import { isAwsImage, isImageExpired } from 'next-notion/utils/index'
 import { cache } from 'react'
 
 import { getCache, setCache } from '../../redis/index'

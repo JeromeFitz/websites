@@ -1,34 +1,34 @@
-import { Button, ButtonLink } from '@jeromefitz/ds/components/Button'
+import { Button, ButtonLink } from '@jeromefitz/ds/components/Button/index'
 import {
   CalendarIcon,
   ClockIcon,
   ExternalLinkIcon,
   HomeIcon,
-} from '@jeromefitz/ds/components/Icon'
-import { Tags } from '@jeromefitz/ds/components/Section'
-import { Separator } from '@jeromefitz/ds/components/Separator'
+} from '@jeromefitz/ds/components/Icon/index'
+import { Tags } from '@jeromefitz/ds/components/Section/index'
+import { Separator } from '@jeromefitz/ds/components/Separator/index'
 import { cx } from '@jeromefitz/ds/utils/cx'
-import { getDataFromCache } from '@jeromefitz/shared/notion/utils'
+import { getDataFromCache } from '@jeromefitz/shared/notion/utils/index'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
 import { Badge } from '@radix-ui/themes'
-import { draftMode } from 'next/headers'
-import { notFound } from 'next/navigation'
+import { draftMode } from 'next/headers.js'
+import { notFound } from 'next/navigation.js'
 
 // import { Image } from '@/app/(notion)/(utils)/blocks/Image'
-import type { PropertiesEvent } from '@/app/(notion)/_config'
+import type { PropertiesEvent } from '@/app/(notion)/_config/index'
 
-import { CONFIG, getEventData } from '@/app/(notion)/_config'
-import { Grid } from '@/components/Grid'
+import { CONFIG, getEventData } from '@/app/(notion)/_config/index'
+import { Grid } from '@/components/Grid/index'
 import {
   HeadlineColumnA,
   HeadlineContent,
   HeadlineTitle,
   HeadlineTitleSub,
-} from '@/components/Headline'
-import { Notion as Blocks } from '@/components/Notion'
-import { Relations } from '@/components/Relations'
-import { WIP } from '@/components/WIP'
+} from '@/components/Headline/index'
+import { Notion as Blocks } from '@/components/Notion/index'
+import { Relations } from '@/components/Relations/index'
+import { WIP } from '@/components/WIP/index'
 
 // import { Venue } from './Event.Slug.Venue'
 import { Image } from './Image'

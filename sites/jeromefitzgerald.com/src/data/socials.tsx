@@ -7,7 +7,7 @@ import {
   SpotifyLogoIcon,
   ThreadsLogoIcon,
   TwitterLogoIcon,
-} from '@jeromefitz/ds/components/Icon'
+} from '@jeromefitz/ds/components/Icon/index'
 
 const URL_TYPE = {
   AUDIO: 'audio',

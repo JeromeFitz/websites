@@ -1,24 +1,27 @@
-import { Anchor } from '@jeromefitz/ds/components/Anchor'
-import { getDataFromCache, getDatabaseQuery } from '@jeromefitz/shared/notion/utils'
+import { Anchor } from '@jeromefitz/ds/components/Anchor/index'
+import {
+  getDataFromCache,
+  getDatabaseQuery,
+} from '@jeromefitz/shared/notion/utils/index'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
 import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints.js'
 
-import { draftMode } from 'next/headers'
-import { notFound } from 'next/navigation'
-import { getPropertyTypeData } from 'next-notion/utils'
+import { draftMode } from 'next/headers.js'
+import { notFound } from 'next/navigation.js'
+import { getPropertyTypeData } from 'next-notion/utils/index'
 
-import type { PageObjectResponsePerson } from '@/app/(notion)/_config'
+import type { PageObjectResponsePerson } from '@/app/(notion)/_config/index'
 
-import { CONFIG } from '@/app/(notion)/_config'
-import { Grid } from '@/components/Grid'
+import { CONFIG } from '@/app/(notion)/_config/index'
+import { Grid } from '@/components/Grid/index'
 import {
   HeadlineColumnA,
   HeadlineContent,
   HeadlineTitle,
-} from '@/components/Headline'
-import { Notion as Blocks } from '@/components/Notion'
-// import { Relations } from '@/components/Relations'
+} from '@/components/Headline/index'
+import { Notion as Blocks } from '@/components/Notion/index'
+// import { Relations } from '@/components/Relations/index'
 
 // import type { PropertiesPerson } from './Person.types'
 // // import { UpcomingShows } from './Show.UpcomingShows'

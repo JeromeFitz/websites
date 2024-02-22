@@ -1,5 +1,5 @@
 'use client'
-import { Tooltip } from '@jeromefitz/ds/components/Tooltip'
+import { Tooltip } from '@jeromefitz/ds/components/Tooltip/index'
 
 import { Button, Kbd } from '@radix-ui/themes'
 

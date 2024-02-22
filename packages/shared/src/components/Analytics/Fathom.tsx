@@ -1,6 +1,6 @@
 'use client'
 import { load, trackPageview } from 'fathom-client'
-import { usePathname, useSearchParams } from 'next/navigation'
+import { usePathname, useSearchParams } from 'next/navigation.js'
 import { useEffect } from 'react'
 
 // const isProd = process.env.NODE_ENV === 'production'

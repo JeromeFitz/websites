@@ -1,12 +1,12 @@
-import { Anchor } from '@jeromefitz/ds/components/Anchor'
+import { Anchor } from '@jeromefitz/ds/components/Anchor/index'
 
-import { Grid } from '@/components/Grid'
+import { Grid } from '@/components/Grid/index'
 import {
   HeadlineColumnA,
   HeadlineContent,
   HeadlineTitle,
   HeadlineTitleSub,
-} from '@/components/Headline'
+} from '@/components/Headline/index'
 
 const isDev = process.env.NODE_ENV === 'development'
 
