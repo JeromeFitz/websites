@@ -201,8 +201,8 @@ importers:
         specifier: 1.0.3
         version: 1.0.3(@types/react-dom@18.2.19)(@types/react@18.2.57)(react-dom@18.2.0)(react@18.2.0)
       '@radix-ui/themes':
-        specifier: 3.0.0-rc.9
-        version: 3.0.0-rc.9(@types/react-dom@18.2.19)(@types/react@18.2.57)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 3.0.0-rc.10
+        version: 3.0.0-rc.10(@types/react-dom@18.2.19)(@types/react@18.2.57)(react-dom@18.2.0)(react@18.2.0)
       clsx:
         specifier: 2.1.0
         version: 2.1.0
@@ -361,8 +361,8 @@ importers:
         specifier: 2.2.14
         version: 2.2.14
       '@radix-ui/themes':
-        specifier: 3.0.0-rc.9
-        version: 3.0.0-rc.9(@types/react-dom@18.2.19)(@types/react@18.2.57)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 3.0.0-rc.10
+        version: 3.0.0-rc.10(@types/react-dom@18.2.19)(@types/react@18.2.57)(react-dom@18.2.0)(react@18.2.0)
       '@types/lodash':
         specifier: 4.14.202
         version: 4.14.202
@@ -487,8 +487,8 @@ importers:
         specifier: 3.0.0
         version: 3.0.0
       '@radix-ui/themes':
-        specifier: 3.0.0-rc.9
-        version: 3.0.0-rc.9
+        specifier: 3.0.0-rc.10
+        version: 3.0.0-rc.10
       '@tailwindcss/aspect-ratio':
         specifier: 0.4.2
         version: 0.4.2(tailwindcss@3.4.1)
@@ -971,8 +971,8 @@ importers:
         specifier: 1.0.3
         version: 1.0.3(@types/react-dom@18.2.19)(@types/react@18.2.57)(react-dom@18.2.0)(react@18.2.0)
       '@radix-ui/themes':
-        specifier: 3.0.0-rc.9
-        version: 3.0.0-rc.9(@types/react-dom@18.2.19)(@types/react@18.2.57)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 3.0.0-rc.10
+        version: 3.0.0-rc.10(@types/react-dom@18.2.19)(@types/react@18.2.57)(react-dom@18.2.0)(react@18.2.0)
       '@tanem/react-nprogress':
         specifier: 5.0.51
         version: 5.0.51(react-dom@18.2.0)(react@18.2.0)
@@ -7050,6 +7050,29 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
+  /@radix-ui/react-toggle-group@1.0.4:
+    resolution: {integrity: sha512-Uaj/M/cMyiyT9Bx6fOZO0SAG4Cls0GptBWiBmBxofmDbNVnYYoyRWj/2M/6VCi/7qcXFWnHhRUfdfZFvvkuu8A==}
+    peerDependencies:
+      '@types/react': '*'
+      '@types/react-dom': '*'
+      react: ^16.8 || ^17.0 || ^18.0
+      react-dom: ^16.8 || ^17.0 || ^18.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.23.9
+      '@radix-ui/primitive': 1.0.1
+      '@radix-ui/react-context': 1.0.1
+      '@radix-ui/react-direction': 1.0.1
+      '@radix-ui/react-primitive': 1.0.3
+      '@radix-ui/react-roving-focus': 1.0.4
+      '@radix-ui/react-toggle': 1.0.3
+      '@radix-ui/react-use-controllable-state': 1.0.1
+    dev: true
+
   /@radix-ui/react-toggle-group@1.0.4(@types/react-dom@18.2.19)(@types/react@18.2.57)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-Uaj/M/cMyiyT9Bx6fOZO0SAG4Cls0GptBWiBmBxofmDbNVnYYoyRWj/2M/6VCi/7qcXFWnHhRUfdfZFvvkuu8A==}
     peerDependencies:
@@ -7075,7 +7098,6 @@ packages:
       '@types/react-dom': 18.2.19
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: false
 
   /@radix-ui/react-toggle-group@1.0.4(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-Uaj/M/cMyiyT9Bx6fOZO0SAG4Cls0GptBWiBmBxofmDbNVnYYoyRWj/2M/6VCi/7qcXFWnHhRUfdfZFvvkuu8A==}
@@ -7116,6 +7138,25 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
+  /@radix-ui/react-toggle@1.0.3:
+    resolution: {integrity: sha512-Pkqg3+Bc98ftZGsl60CLANXQBBQ4W3mTFS9EJvNxKMZ7magklKV69/id1mlAlOFDDfHvlCms0fx8fA4CMKDJHg==}
+    peerDependencies:
+      '@types/react': '*'
+      '@types/react-dom': '*'
+      react: ^16.8 || ^17.0 || ^18.0
+      react-dom: ^16.8 || ^17.0 || ^18.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.23.9
+      '@radix-ui/primitive': 1.0.1
+      '@radix-ui/react-primitive': 1.0.3
+      '@radix-ui/react-use-controllable-state': 1.0.1
+    dev: true
+
   /@radix-ui/react-toggle@1.0.3(@types/react-dom@18.2.19)(@types/react@18.2.57)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-Pkqg3+Bc98ftZGsl60CLANXQBBQ4W3mTFS9EJvNxKMZ7magklKV69/id1mlAlOFDDfHvlCms0fx8fA4CMKDJHg==}
     peerDependencies:
@@ -7137,7 +7178,6 @@ packages:
       '@types/react-dom': 18.2.19
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: false
 
   /@radix-ui/react-toggle@1.0.3(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-Pkqg3+Bc98ftZGsl60CLANXQBBQ4W3mTFS9EJvNxKMZ7magklKV69/id1mlAlOFDDfHvlCms0fx8fA4CMKDJHg==}
@@ -7748,8 +7788,8 @@ packages:
     dependencies:
       '@babel/runtime': 7.23.9
 
-  /@radix-ui/themes@3.0.0-rc.9:
-    resolution: {integrity: sha512-rXUKOU4CQODUNRIp0GT9d1xdTAzSi7c0kJOmNx/lBcSA2l1d/SjOfZ42upv9g0Pvlu2hRavqBcqRHpumc8pFVg==}
+  /@radix-ui/themes@3.0.0-rc.10:
+    resolution: {integrity: sha512-GbIvc7NPs520gjfxBe0NIKGUv7A2nXfjW9m3MVK8WAM9jqVPHwo36omugnC84/czBKjX9tMGNtFsWlA/+UdtsA==}
     peerDependencies:
       '@types/react': '*'
       '@types/react-dom': '*'
@@ -7789,6 +7829,7 @@ packages:
       '@radix-ui/react-slot': 1.0.2
       '@radix-ui/react-switch': 1.0.3
       '@radix-ui/react-tabs': 1.0.4
+      '@radix-ui/react-toggle-group': 1.0.4
       '@radix-ui/react-tooltip': 1.0.7
       '@radix-ui/react-use-callback-ref': 1.0.1
       '@radix-ui/react-use-controllable-state': 1.0.1
@@ -7796,8 +7837,8 @@ packages:
       classnames: 2.5.1
     dev: true
 
-  /@radix-ui/themes@3.0.0-rc.9(@types/react-dom@18.2.19)(@types/react@18.2.57)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-rXUKOU4CQODUNRIp0GT9d1xdTAzSi7c0kJOmNx/lBcSA2l1d/SjOfZ42upv9g0Pvlu2hRavqBcqRHpumc8pFVg==}
+  /@radix-ui/themes@3.0.0-rc.10(@types/react-dom@18.2.19)(@types/react@18.2.57)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-GbIvc7NPs520gjfxBe0NIKGUv7A2nXfjW9m3MVK8WAM9jqVPHwo36omugnC84/czBKjX9tMGNtFsWlA/+UdtsA==}
     peerDependencies:
       '@types/react': '*'
       '@types/react-dom': '*'
@@ -7837,6 +7878,7 @@ packages:
       '@radix-ui/react-slot': 1.0.2(@types/react@18.2.57)(react@18.2.0)
       '@radix-ui/react-switch': 1.0.3(@types/react-dom@18.2.19)(@types/react@18.2.57)(react-dom@18.2.0)(react@18.2.0)
       '@radix-ui/react-tabs': 1.0.4(@types/react-dom@18.2.19)(@types/react@18.2.57)(react-dom@18.2.0)(react@18.2.0)
+      '@radix-ui/react-toggle-group': 1.0.4(@types/react-dom@18.2.19)(@types/react@18.2.57)(react-dom@18.2.0)(react@18.2.0)
       '@radix-ui/react-tooltip': 1.0.7(@types/react-dom@18.2.19)(@types/react@18.2.57)(react-dom@18.2.0)(react@18.2.0)
       '@radix-ui/react-use-callback-ref': 1.0.1(@types/react@18.2.57)(react@18.2.0)
       '@radix-ui/react-use-controllable-state': 1.0.1(@types/react@18.2.57)(react@18.2.0)
