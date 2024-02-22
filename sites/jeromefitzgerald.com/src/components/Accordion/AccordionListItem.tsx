@@ -3,7 +3,7 @@ import { cx } from '@jeromefitz/ds/utils/cx'
 // eslint-disable-next-line no-restricted-imports
 import NextLink from 'next/link'
 
-// import { useStore } from '~store/index'
+// import { useStore } from '@/store/index'
 
 // const useStoreMenu = () => {
 //   return useStore((store) => ({

@@ -4,7 +4,7 @@ import type { ReactNode } from 'react'
 
 import { forwardRef } from 'react'
 
-import type { As } from './Headline.types'
+import type { As } from '../Headline/Headline.types'
 
 type GridProps = {
   as?: As

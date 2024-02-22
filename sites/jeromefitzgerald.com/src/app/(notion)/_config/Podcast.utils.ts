@@ -1,6 +1,6 @@
 import { getPropertyTypeData } from 'next-notion/utils'
 
-import type { PropertiesPodcast } from '~app/(notion)/_config'
+import type { PropertiesPodcast } from '@/app/(notion)/_config'
 
 /**
  * @todo(typescript) way to do this through extraction?

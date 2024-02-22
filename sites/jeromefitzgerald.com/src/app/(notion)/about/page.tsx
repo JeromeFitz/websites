@@ -5,15 +5,15 @@ import type { Metadata } from 'next'
 
 import { draftMode } from 'next/headers'
 
-import { CONFIG, getPageData } from '~app/(notion)/_config'
-import { generateMetadataCustom } from '~app/(notion)/_config/temp/generateMetadataCustom'
-import { Grid } from '~app/playground/2024/_components/Grid'
+import { CONFIG, getPageData } from '@/app/(notion)/_config'
+import { generateMetadataCustom } from '@/app/(notion)/_config/temp/generateMetadataCustom'
+import { Grid } from '@/components/Grid'
 import {
   HeadlineColumnA,
   HeadlineContent,
   HeadlineTitle,
-} from '~app/playground/2024/_components/Headline'
-import { Notion as Blocks } from '~components/Notion'
+} from '@/components/Headline'
+import { Notion as Blocks } from '@/components/Notion'
 
 const slug = '/about'
 const { SEGMENT } = CONFIG.PAGES

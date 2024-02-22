@@ -1,14 +1,14 @@
 import { cx } from '@jeromefitz/ds/utils/cx'
 // import { notFound } from 'next/navigation'
 
-import { FourOhFour } from '~app/_errors/404'
-import { Grid } from '~app/playground/2024/_components/Grid'
+import { FourOhFour } from '@/app/_errors/404'
+import { Grid } from '@/components/Grid'
 import {
   HeadlineColumnA,
   HeadlineContent,
   HeadlineTitle,
   HeadlineTitleSub,
-} from '~app/playground/2024/_components/Headline'
+} from '@/components/Headline'
 
 const isDev = process.env.NODE_ENV === 'development'
 

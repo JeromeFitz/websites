@@ -1,6 +1,6 @@
 import { getPropertyTypeData } from 'next-notion/utils'
 
-import type { PropertiesShow } from '~app/(notion)/_config'
+import type { PropertiesShow } from '@/app/(notion)/_config'
 
 function getPropertyTypeDataShow(properties, property: keyof PropertiesShow) {
   return getPropertyTypeData(properties, property)

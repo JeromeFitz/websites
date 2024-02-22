@@ -1,9 +1,8 @@
 import { cx } from '@jeromefitz/ds/utils/cx'
 
-import { FourOhFour } from '~app/_errors/404'
+import { FourOhFour } from '@/app/_errors/404'
 
 import { Layout } from './_components/Layout'
-// import { PageHome as Layout } from './_components/Page.Home'
 
 const isDev = process.env.NODE_ENV === 'development'
 

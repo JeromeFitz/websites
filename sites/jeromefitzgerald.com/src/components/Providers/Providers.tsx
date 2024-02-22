@@ -3,7 +3,7 @@ import pluralize from 'pluralize'
 // import { Suspense } from 'react'
 import { Provider as ReactWrapBalancerProvider } from 'react-wrap-balancer'
 
-import { ErrorBoundary } from '~components/ErrorBoundary'
+import { ErrorBoundary } from '@/components/ErrorBoundary'
 
 import { Providers as ProvidersClient } from './Providers.client'
 // import { RouterEventProvider } from './RouterEventProvider.client'

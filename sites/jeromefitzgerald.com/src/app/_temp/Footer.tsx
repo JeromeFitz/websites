@@ -9,15 +9,15 @@ import { Button } from '@radix-ui/themes'
 // eslint-disable-next-line no-restricted-imports
 import NextLink from 'next/link'
 
-import { Grid } from '~app/playground/2024/_components/Grid'
-import { WIPFooter } from '~components/WIP'
+import { Grid } from '@/components/Grid'
+import { WIPFooter } from '@/components/WIP'
 /**
  * @note ignore this file for CI linting (created on next build)
  */
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import buildInfo from '~config/build-info.json'
-import { socials } from '~data/socials'
+import buildInfo from '@/config/build-info.json'
+import { socials } from '@/data/socials'
 
 import { FooterCmdkClient } from './Footer.Cmdk.client'
 import { TooltipWrapper } from './Footer.client'

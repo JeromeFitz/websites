@@ -1,12 +1,12 @@
 import { Anchor } from '@jeromefitz/ds/components/Anchor'
 
-import { Grid } from '~app/playground/2024/_components/Grid'
+import { Grid } from '@/components/Grid'
 import {
   HeadlineColumnA,
   HeadlineContent,
   HeadlineTitle,
   HeadlineTitleSub,
-} from '~app/playground/2024/_components/Headline'
+} from '@/components/Headline'
 
 const isDev = process.env.NODE_ENV === 'development'
 

@@ -9,8 +9,8 @@ import { NextRequest, NextResponse } from 'next/server'
 import { notion } from 'next-notion/helper'
 import { Podcast } from 'podcast'
 
-// import type { PropertiesEpisode, PropertiesPodcast } from '~app/(notion)/_config'
-import { CONFIG, getEpisodeData, getPodcastData } from '~app/(notion)/_config'
+// import type { PropertiesEpisode, PropertiesPodcast } from '@/app/(notion)/_config'
+import { CONFIG, getEpisodeData, getPodcastData } from '@/app/(notion)/_config'
 
 const { DATABASE_ID, SEGMENT } = CONFIG.PODCASTS
 
