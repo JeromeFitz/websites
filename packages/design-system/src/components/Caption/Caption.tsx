@@ -1,4 +1,4 @@
-import type { CalloutRootProps } from '@radix-ui/themes/dist/cjs/components/callout'
+import type { CalloutRootProps } from '@radix-ui/themes/dist/esm/components/callout.js'
 
 import { CalloutIcon, CalloutRoot, CalloutText } from '@radix-ui/themes'
 
