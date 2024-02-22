@@ -34,7 +34,7 @@
     "start:isr": "next start -H localhost",
     "storybook:build": "storybook build",
     "storybook:dev": "storybook dev --quiet --port 6002",
-    "test:e2e": "playwright test",
+    "test:e2e": "playwright test --config ./playwright.config.ts",
     "test:unit": "jest --ci --coverage",
     "test:watch": "jest --watch"
   },
