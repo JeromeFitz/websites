@@ -1,8 +1,8 @@
 import { Anchor } from '@jeromefitz/ds/components/Anchor'
 import { cx } from '@jeromefitz/ds/utils/cx'
 
-import { getPodcastData } from '~app/(notion)/_config'
-import { blocks } from '~components/Notion/Notion.Config'
+import { getPodcastData } from '@/app/(notion)/_config'
+import { blocks } from '@/components/Notion/Notion.Config'
 
 function PodcastEpisodes({ properties }) {
   const { episodeSlugs, episodeTitles, ...props } = getPodcastData(properties)

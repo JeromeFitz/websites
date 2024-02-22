@@ -1,14 +1,14 @@
 import Image from 'next/image'
 // import { notFound } from 'next/navigation'
 
-import { FourOhFour } from '~app/_errors/404'
-import { Grid } from '~app/playground/2024/_components/Grid'
+import { FourOhFour } from '@/app/_errors/404'
+import { Grid } from '@/app/playground/2024/_components/Grid'
 import {
   HeadlineColumnA,
   HeadlineContent,
   HeadlineTitle,
   HeadlineTitleSub,
-} from '~app/playground/2024/_components/Headline'
+} from '@/app/playground/2024/_components/Headline'
 
 const isDev = process.env.NODE_ENV === 'development'
 

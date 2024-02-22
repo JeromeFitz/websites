@@ -3,7 +3,7 @@ import { cx } from '@jeromefitz/ds/utils/cx'
 
 import { motion } from 'framer-motion'
 
-import { useStore as _useStore } from '~store/index'
+import { useStore as _useStore } from '@/store/index'
 
 const useStore = () => {
   return _useStore((store) => ({

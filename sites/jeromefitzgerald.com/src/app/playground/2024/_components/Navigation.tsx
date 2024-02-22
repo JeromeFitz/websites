@@ -1,6 +1,6 @@
 import { cx } from '@jeromefitz/ds/utils/cx'
 
-import { Grid } from '~app/playground/2024/_components/Grid'
+import { Grid } from '@/app/playground/2024/_components/Grid'
 
 import { NavigationDesktop } from './Navigation.desktop'
 import { NavigationMobile } from './Navigation.mobile'

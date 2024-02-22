@@ -10,13 +10,13 @@
 import { Button } from '@jeromefitz/ds/components/Button'
 import { cx } from '@jeromefitz/ds/utils/cx'
 
-import { Grid } from '~app/playground/2024/_components/Grid'
+import { Grid } from '@/app/playground/2024/_components/Grid'
 import {
   HeadlineColumnA,
   HeadlineContent,
   HeadlineTitle,
   HeadlineTitleSub,
-} from '~app/playground/2024/_components/Headline'
+} from '@/app/playground/2024/_components/Headline'
 // import dynamic from 'next/dynamic'
 
 import {
@@ -24,7 +24,7 @@ import {
   RadixBorders,
   RadixColors,
   TailwindWidth,
-} from '~components/Playground/index'
+} from '@/components/Playground/index'
 // const RadixBackgrounds = dynamic(async () => {
 //   const { RadixBackgrounds: Component } = await import('~components/Playground')
 //   return { default: Component }
@@ -41,7 +41,7 @@ import {
 //   const { TailwindWidth: Component } = await import('~components/Playground')
 //   return { default: Component }
 // })
-import { Testing } from '~components/Testing/index'
+import { Testing } from '@/components/Testing/index'
 
 const isDev = process.env.NODE_ENV === 'development'
 const siteColors = [

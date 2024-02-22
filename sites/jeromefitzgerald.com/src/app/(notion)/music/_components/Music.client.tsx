@@ -24,15 +24,15 @@ import NextLink from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 import _title from 'title'
 
-import { Grid } from '~app/playground/2024/_components/Grid'
+import { Grid } from '@/app/playground/2024/_components/Grid'
 import {
   HeadlineColumnA,
   HeadlineContent,
   HeadlineTitle,
   HeadlineTitleSub,
-} from '~app/playground/2024/_components/Headline'
-import { bandcamps } from '~data/bandcamps'
-import { useStore as _useStore } from '~store/index'
+} from '@/app/playground/2024/_components/Headline'
+import { bandcamps } from '@/data/bandcamps'
+import { useStore as _useStore } from '@/store/index'
 
 const useStore = () => {
   return _useStore((store) => ({

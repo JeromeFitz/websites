@@ -11,10 +11,10 @@ import type { Metadata } from 'next'
 
 import { getPropertyTypeData } from 'next-notion/utils'
 
-import type { PageObjectResponseEvent } from '~app/(notion)/_config'
+import type { PageObjectResponseEvent } from '@/app/(notion)/_config'
 
-import { CONFIG, getEventData, getPageData } from '~app/(notion)/_config'
-import { generateMetadataCustom } from '~app/(notion)/_config/temp/generateMetadataCustom'
+import { CONFIG, getEventData, getPageData } from '@/app/(notion)/_config'
+import { generateMetadataCustom } from '@/app/(notion)/_config/temp/generateMetadataCustom'
 
 import { Listing } from './_components/Event.Listing'
 import { Slug } from './_components/Event.Slug'

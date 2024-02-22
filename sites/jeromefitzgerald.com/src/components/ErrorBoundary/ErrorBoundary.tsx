@@ -5,13 +5,13 @@ import type { ReactNode } from 'react'
 
 import { Component } from 'react'
 
-import { Grid } from '~app/playground/2024/_components/Grid'
+import { Grid } from '@/app/playground/2024/_components/Grid'
 import {
   HeadlineColumnA,
   HeadlineContent,
   HeadlineTitle,
   HeadlineTitleSub,
-} from '~app/playground/2024/_components/Headline'
+} from '@/app/playground/2024/_components/Headline'
 
 type PropsChildren = {
   children?: ReactNode

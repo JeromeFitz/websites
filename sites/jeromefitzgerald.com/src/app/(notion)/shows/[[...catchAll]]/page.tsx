@@ -12,10 +12,10 @@ import type { Metadata } from 'next'
 
 import { getPropertyTypeData } from 'next-notion/utils'
 
-import type { PageObjectResponseShow } from '~app/(notion)/_config'
+import type { PageObjectResponseShow } from '@/app/(notion)/_config'
 
-import { CONFIG, getPageData, getShowData } from '~app/(notion)/_config'
-import { generateMetadataCustom } from '~app/(notion)/_config/temp/generateMetadataCustom'
+import { CONFIG, getPageData, getShowData } from '@/app/(notion)/_config'
+import { generateMetadataCustom } from '@/app/(notion)/_config/temp/generateMetadataCustom'
 
 import { Listing } from './_components/Show.Listing'
 import { Slug } from './_components/Show.Slug'

@@ -15,20 +15,20 @@ import { Badge } from '@radix-ui/themes'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 
-// import { Image } from '~app/(notion)/(utils)/blocks/Image'
-import type { PropertiesEvent } from '~app/(notion)/_config'
+// import { Image } from '@/app/(notion)/(utils)/blocks/Image'
+import type { PropertiesEvent } from '@/app/(notion)/_config'
 
-import { CONFIG, getEventData } from '~app/(notion)/_config'
-import { Grid } from '~app/playground/2024/_components/Grid'
+import { CONFIG, getEventData } from '@/app/(notion)/_config'
+import { Grid } from '@/app/playground/2024/_components/Grid'
 import {
   HeadlineColumnA,
   HeadlineContent,
   HeadlineTitle,
   HeadlineTitleSub,
-} from '~app/playground/2024/_components/Headline'
-import { Notion as Blocks } from '~components/Notion'
-import { Relations } from '~components/Relations'
-import { WIP } from '~components/WIP/index'
+} from '@/app/playground/2024/_components/Headline'
+import { Notion as Blocks } from '@/components/Notion'
+import { Relations } from '@/components/Relations'
+import { WIP } from '@/components/WIP/index'
 
 // import { Venue } from './Event.Slug.Venue'
 import { Image } from './Image'

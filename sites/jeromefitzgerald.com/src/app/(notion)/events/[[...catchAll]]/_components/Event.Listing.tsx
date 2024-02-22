@@ -18,15 +18,15 @@ import NextLink from 'next/link'
 import { notFound } from 'next/navigation'
 import { getPropertyTypeData } from 'next-notion/utils'
 
-// import { CONFIG, getEventData, getPageData } from '~app/(notion)/_config'
-import { CONFIG, getEventData } from '~app/(notion)/_config'
-import { Grid } from '~app/playground/2024/_components/Grid'
+// import { CONFIG, getEventData, getPageData } from '@/app/(notion)/_config'
+import { CONFIG, getEventData } from '@/app/(notion)/_config'
+import { Grid } from '@/app/playground/2024/_components/Grid'
 import {
   HeadlineColumnA,
   HeadlineContent,
   HeadlineTitle,
-} from '~app/playground/2024/_components/Headline'
-import { WIP } from '~components/WIP/index'
+} from '@/app/playground/2024/_components/Headline'
+import { WIP } from '@/components/WIP/index'
 
 import { AccordionClient } from './Event.Listing.client'
 

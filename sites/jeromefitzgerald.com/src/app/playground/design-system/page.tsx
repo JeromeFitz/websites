@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic'
 // import { notFound } from 'next/navigation'
 
-import { FourOhFour } from '~app/_errors/404'
+import { FourOhFour } from '@/app/_errors/404'
 
 const PlaygroundPage = dynamic(
   async () => {

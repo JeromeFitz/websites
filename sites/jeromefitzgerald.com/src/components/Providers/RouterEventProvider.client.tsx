@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
-import { useStore as _useStore } from '~store/index'
+import { useStore as _useStore } from '@/store/index'
 
 // import { Loading } from './RouterEventProvider.Loading.client'
 const Loading = dynamic(

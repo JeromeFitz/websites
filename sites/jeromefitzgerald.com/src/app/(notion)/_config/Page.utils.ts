@@ -1,6 +1,6 @@
 import { getPropertyTypeData } from 'next-notion/utils'
 
-import type { PropertiesPage } from '~app/(notion)/_config'
+import type { PropertiesPage } from '@/app/(notion)/_config'
 
 // @todo(types)
 function getPropertyTypeDataPage(properties, property: keyof PropertiesPage) {

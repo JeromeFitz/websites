@@ -10,9 +10,9 @@ import _orderBy from 'lodash/orderBy.js'
 import _size from 'lodash/size.js'
 import { Suspense, cache } from 'react'
 
-import type { PageObjectResponseShow } from '~app/(notion)/_config/index'
+import type { PageObjectResponseShow } from '@/app/(notion)/_config/index'
 
-import { getEventData } from '~app/(notion)/_config/index'
+import { getEventData } from '@/app/(notion)/_config/index'
 
 import { RelationLoading } from './index'
 

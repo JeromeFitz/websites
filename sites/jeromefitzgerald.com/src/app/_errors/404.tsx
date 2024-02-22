@@ -4,13 +4,13 @@ import { isObjectEmpty } from '@jeromefitz/utils'
 
 import { Badge } from '@radix-ui/themes'
 
-import { Grid } from '~app/playground/2024/_components/Grid'
+import { Grid } from '@/app/playground/2024/_components/Grid'
 import {
   HeadlineColumnA,
   HeadlineContent,
   HeadlineTitle,
   HeadlineTitleSub,
-} from '~app/playground/2024/_components/Headline'
+} from '@/app/playground/2024/_components/Headline'
 
 // @todo(types)
 function FourOhFour({

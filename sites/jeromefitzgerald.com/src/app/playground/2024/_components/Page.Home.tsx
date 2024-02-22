@@ -5,15 +5,15 @@ import { ImageClient as NextImage } from '@jeromefitz/shared/components/Notion/B
 import { AspectRatio, Badge } from '@radix-ui/themes'
 import { forwardRef } from 'react'
 
-import { Grid } from '~app/playground/2024/_components/Grid'
+import { Grid } from '@/app/playground/2024/_components/Grid'
 import {
   HeadlineColumnA,
   HeadlineContent,
   HeadlineTitle,
   HeadlineTitleSub,
-} from '~app/playground/2024/_components/Headline'
-import { Quote } from '~app/playground/2024/_components/Quote'
-import { quotes } from '~data/quotes'
+} from '@/app/playground/2024/_components/Headline'
+import { Quote } from '@/app/playground/2024/_components/Quote'
+import { quotes } from '@/data/quotes'
 
 const image = {
   alt: 'Jerome is wearing a black suit, with a paper mâché head of Charles Entertainment Cheese Junior. A blue duct-tap cap with a yellow “C” resides between two giant rat (mouse?) ears with a cut-out for his face. He is standing pointing an accusatory finger at two poor seated schlubs about to incur his wrath. Due to his stance and finger pointing you cannot see his face under the paper mâché rat head and just see his right ear and side cheek. There is an empty pizza box on a chair behind him.',

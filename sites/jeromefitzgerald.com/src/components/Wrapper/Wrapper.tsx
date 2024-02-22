@@ -4,7 +4,7 @@ import type { ReactNode } from 'react'
 
 import { Slot } from '@radix-ui/react-slot'
 
-import type { As } from '~app/playground/2024/_components/Headline.types'
+import type { As } from '@/app/playground/2024/_components/Headline.types'
 
 type WrapperProps = {
   as?: As

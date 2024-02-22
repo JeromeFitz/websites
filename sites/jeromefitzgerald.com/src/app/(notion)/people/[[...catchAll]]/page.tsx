@@ -11,10 +11,10 @@ import type { Metadata } from 'next'
 
 import { getPropertyTypeData } from 'next-notion/utils'
 
-import type { PageObjectResponsePerson } from '~app/(notion)/_config'
+import type { PageObjectResponsePerson } from '@/app/(notion)/_config'
 
-import { CONFIG, getPageData, getPersonData } from '~app/(notion)/_config'
-import { generateMetadataCustom } from '~app/(notion)/_config/temp/generateMetadataCustom'
+import { CONFIG, getPageData, getPersonData } from '@/app/(notion)/_config'
+import { generateMetadataCustom } from '@/app/(notion)/_config/temp/generateMetadataCustom'
 
 import { Listing } from './_components/People.Listing'
 import { Slug } from './_components/Person.Slug'

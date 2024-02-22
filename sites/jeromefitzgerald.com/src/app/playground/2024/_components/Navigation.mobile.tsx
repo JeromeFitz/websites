@@ -22,9 +22,9 @@ import {
   AccordionList,
   AccordionListItem,
   AccordionTrigger,
-} from '~app/playground/2024/_components/Accordion/index'
-import { menus } from '~data/menu'
-import { useStore } from '~store/index'
+} from '@/app/playground/2024/_components/Accordion/index'
+import { menus } from '@/data/menu'
+import { useStore } from '@/store/index'
 
 const useStoreMenu = () => {
   return useStore((store) => ({

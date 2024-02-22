@@ -4,17 +4,17 @@ import { isObjectEmpty } from '@jeromefitz/utils'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 
-import type { PropertiesPerson } from '~app/(notion)/_config'
+import type { PropertiesPerson } from '@/app/(notion)/_config'
 
-import { CONFIG, getPersonData } from '~app/(notion)/_config'
-import { Grid } from '~app/playground/2024/_components/Grid'
+import { CONFIG, getPersonData } from '@/app/(notion)/_config'
+import { Grid } from '@/app/playground/2024/_components/Grid'
 import {
   HeadlineColumnA,
   HeadlineContent,
   HeadlineTitle,
-} from '~app/playground/2024/_components/Headline'
-import { Notion as Blocks } from '~components/Notion'
-import { Relations } from '~components/Relations/index'
+} from '@/app/playground/2024/_components/Headline'
+import { Notion as Blocks } from '@/components/Notion'
+import { Relations } from '@/components/Relations/index'
 
 // import { UpcomingShows } from './Show.UpcomingShows'
 

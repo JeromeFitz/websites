@@ -6,19 +6,19 @@ import { Badge } from '@radix-ui/themes'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 
-import type { PropertiesPodcast } from '~app/(notion)/_config'
+import type { PropertiesPodcast } from '@/app/(notion)/_config'
 
-import { CONFIG, getPodcastData } from '~app/(notion)/_config'
-import { Grid } from '~app/playground/2024/_components/Grid'
+import { CONFIG, getPodcastData } from '@/app/(notion)/_config'
+import { Grid } from '@/app/playground/2024/_components/Grid'
 import {
   HeadlineColumnA,
   HeadlineContent,
   HeadlineTitle,
   HeadlineTitleSub,
-} from '~app/playground/2024/_components/Headline'
-import { Notion as Blocks } from '~components/Notion'
-import { Relations } from '~components/Relations/index'
-import { WIP } from '~components/WIP/index'
+} from '@/app/playground/2024/_components/Headline'
+import { Notion as Blocks } from '@/components/Notion'
+import { Relations } from '@/components/Relations/index'
+import { WIP } from '@/components/WIP/index'
 
 import { PodcastEpisodes } from './Podcast.Episodes'
 
