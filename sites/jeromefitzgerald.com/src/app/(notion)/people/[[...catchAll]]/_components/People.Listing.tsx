@@ -1,13 +1,4 @@
 import { Anchor } from '@jeromefitz/ds/components/Anchor'
-import {
-  SectionContent,
-  SectionHeader,
-  // SectionHeaderContent,
-  // SectionHero,
-  SectionHeaderTitle,
-  SectionWrapper,
-  // Tags,
-} from '@jeromefitz/ds/components/Section'
 import { getDataFromCache, getDatabaseQuery } from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
@@ -20,6 +11,12 @@ import { getPropertyTypeData } from 'next-notion/utils'
 import type { PageObjectResponsePerson } from '~app/(notion)/_config'
 
 import { CONFIG } from '~app/(notion)/_config'
+import { Grid } from '~app/playground/2024/_components/Grid'
+import {
+  HeadlineColumnA,
+  HeadlineContent,
+  HeadlineTitle,
+} from '~app/playground/2024/_components/Headline'
 import { Notion as Blocks } from '~components/Notion'
 // import { Relations } from '~components/Relations/index'
 
@@ -106,27 +103,27 @@ async function Listing({ revalidate, segmentInfo }) {
   const title = 'People'
   return (
     <>
-      {/* Hero */}
-      {/* <SectionHero title={title} /> */}
-      {/* Content */}
-      <SectionWrapper>
-        <SectionHeader>
-          <SectionHeaderTitle isTitle>{title}</SectionHeaderTitle>
-        </SectionHeader>
-        <SectionContent>
+      <Grid as="section">
+        <HeadlineColumnA>
+          <HeadlineTitle aria-label={title} as="h1">
+            <>{title}</>
+          </HeadlineTitle>
+        </HeadlineColumnA>
+        <HeadlineContent>
           <Blocks data={data?.blocks} />
-        </SectionContent>
-      </SectionWrapper>
-      {/* Info */}
-      <SectionWrapper>
-        <SectionHeader>
-          <SectionHeaderTitle>Info</SectionHeaderTitle>
-        </SectionHeader>
-        <SectionContent>
+        </HeadlineContent>
+      </Grid>
+      <Grid as="section">
+        <HeadlineColumnA>
+          <HeadlineTitle aria-label={`Info`} as="p">
+            <>Info</>
+          </HeadlineTitle>
+        </HeadlineColumnA>
+        <HeadlineContent className="">
           {/* @todo(notion) Show */}
           {hasData && <ListingTemp data={personData} />}
-        </SectionContent>
-      </SectionWrapper>
+        </HeadlineContent>
+      </Grid>
     </>
   )
 }

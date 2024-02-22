@@ -14,6 +14,7 @@ import {
   BookmarkFilledIcon,
   BookmarkIcon,
   CalendarIcon,
+  CameraIcon,
   CaretDownIcon,
   CaretLeftIcon,
   CaretRightIcon,
@@ -60,6 +61,7 @@ import {
   MusicalNoteIcon,
   Pencil1Icon,
   Pencil2Icon,
+  PlayIcon,
   QuoteIcon,
   ReturnIcon,
   Share1Icon,
@@ -74,8 +76,10 @@ import {
   TextAlignJustifyIcon,
   TextAlignLeftIcon,
   TextAlignRightIcon,
+  ThreadsLogoIcon,
   TicketIcon,
   TwitterLogoIcon,
+  UpdateIcon,
 } from './Icon'
 
 const Icon = () => {}
@@ -90,6 +94,7 @@ Icon.Bookmark = BookmarkIcon
 Icon.BookmarkFilled = BookmarkFilledIcon
 Icon.BookOpen = BookOpenIcon
 Icon.Calendar = CalendarIcon
+Icon.Camera = CameraIcon
 Icon.CaretDown = CaretDownIcon
 Icon.CaretLeft = CaretLeftIcon
 Icon.CaretRight = CaretRightIcon
@@ -136,6 +141,7 @@ Icon.Moon = MoonIcon
 Icon.MusicNote = MusicalNoteIcon
 Icon.Pencil1 = Pencil1Icon
 Icon.Pencil2 = Pencil2Icon
+Icon.PlayIcon = PlayIcon
 Icon.Quote = QuoteIcon
 Icon.Return = ReturnIcon
 Icon.Share1 = Share1Icon
@@ -151,7 +157,9 @@ Icon.TextAlignJustify = TextAlignJustifyIcon
 Icon.TextAlignLeft = TextAlignLeftIcon
 Icon.TextAlignRight = TextAlignRightIcon
 Icon.Ticket = TicketIcon
+Icon.ThreadsLogo = ThreadsLogoIcon
 Icon.TwitterLogo = TwitterLogoIcon
+Icon.UpdateIcon = UpdateIcon
 /**
  * Customizations and Shorthand
  */

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="15px" height="14px" viewBox="0 0 15 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>cursor-close</title>
+    <g id="Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="cursors" transform="translate(-26.000000, -122.000000)" fill="#F6B7D5" stroke="#000000">
+            <path d="M35,122 L35,127.999 L41,128 L41,131 L35,130.999 L35,137 L32,137 L32,130.999 L26,131 L26,128 L32,127.999 L32,122 L35,122 Z" id="cursor-close" transform="translate(33.500000, 129.500000) rotate(-45.000000) translate(-33.500000, -129.500000) "></path>
+        </g>
+    </g>
+</svg>

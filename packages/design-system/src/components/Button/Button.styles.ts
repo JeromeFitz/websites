@@ -14,10 +14,15 @@ export const commonStyles = cx(
 
 export const variantStyles = {
   default: cx(),
-  empty: cx(''),
+  empty: cx(),
   ghost: cx(),
-  primary: cx('pink-button-cta'),
-  secondary: cx('pink-button-outline'),
-  tertiary: cx('pink-button-solid'),
-  text: cx('pink-button-transparent'),
+  primary: cx(),
+  secondary: cx(),
+  tertiary: cx(),
+  text: cx(),
+  // @todo(radix-ui) get these custom classes back
+  // primary: cx('pink-button-cta'),
+  // secondary: cx('pink-button-outline'),
+  // tertiary: cx('pink-button-solid'),
+  // text: cx('pink-button-transparent'),
 } satisfies Record<Variant, string>

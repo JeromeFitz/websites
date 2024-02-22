@@ -1,21 +1,22 @@
-import {
-  SectionContent,
-  SectionHeader,
-  SectionHeaderContent,
-  SectionHeaderTitle,
-  // SectionHero,
-  SectionWrapper,
-  Tags,
-} from '@jeromefitz/ds/components/Section'
+import { Separator } from '@jeromefitz/ds/components/Separator'
+// import { cx } from '@jeromefitz/ds/utils/cx'
 import { getDataFromCache } from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
+import { Badge } from '@radix-ui/themes'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 
 import type { PropertiesShow } from '~app/(notion)/_config'
 
 import { CONFIG, getShowData } from '~app/(notion)/_config'
+import { Grid } from '~app/playground/2024/_components/Grid'
+import {
+  HeadlineColumnA,
+  HeadlineContent,
+  HeadlineTitle,
+  HeadlineTitleSub,
+} from '~app/playground/2024/_components/Headline'
 import { Notion as Blocks } from '~components/Notion'
 import { Relations } from '~components/Relations/index'
 
@@ -58,42 +59,43 @@ async function Slug({ revalidate, segmentInfo }) {
 
   if (!isPublished) return notFound()
 
+  // console.dir(`seoDescription: ${seoDescription}`)
+  // console.dir(tags)
+
   return (
     <>
-      {/* Hero */}
-      {/* <SectionHero title={title} /> */}
-      {/* Content */}
-      <SectionWrapper>
-        <SectionHeader>
-          <SectionHeaderTitle isTitle>{title}</SectionHeaderTitle>
-          <SectionHeaderContent>
-            <Tags tags={tags} />
-          </SectionHeaderContent>
-        </SectionHeader>
-        <SectionContent>
+      <Grid as="section">
+        <HeadlineColumnA>
+          <HeadlineTitle aria-label={title} as="h1">
+            <>{title}</>
+          </HeadlineTitle>
+          <HeadlineTitleSub>
+            {tags.map(({ color, id, name }) => (
+              <Badge color={color} key={id} size="2">
+                {name}
+              </Badge>
+            ))}
+          </HeadlineTitleSub>
+        </HeadlineColumnA>
+        <HeadlineContent>
           <Blocks data={data?.blocks} />
-        </SectionContent>
-      </SectionWrapper>
-      <SectionWrapper>
-        <SectionHeader>
-          <SectionHeaderTitle>Info</SectionHeaderTitle>
-        </SectionHeader>
-        <SectionContent>
+        </HeadlineContent>
+      </Grid>
+      <Grid as="section">
+        <HeadlineColumnA>
+          <HeadlineTitle aria-label={title} as="p">
+            <>Info</>
+          </HeadlineTitle>
+        </HeadlineColumnA>
+        <HeadlineContent className="">
+          <Separator className="mb-4 opacity-50" />
           <Relations
             properties={properties}
             relations={RELATIONS}
             relationsSecondary={[]}
           />
-        </SectionContent>
-      </SectionWrapper>
-      {/* <SectionWrapper>
-        <SectionHeader>
-          <SectionHeaderTitle>Upcoming Shows</SectionHeaderTitle>
-        </SectionHeader>
-        <SectionContent>
-          <UpcomingShows properties={properties} />
-        </SectionContent>
-      </SectionWrapper> */}
+        </HeadlineContent>
+      </Grid>
     </>
   )
 }

@@ -11,7 +11,10 @@ async function generateMetadataCustom({ data, pageData, segmentInfo }) {
   let images: any = undefined
   if (hasImage) {
     const { getImage } = await import('@jeromefitz/shared/plaiceholder')
-    const imageData = await getImage(pageData.seoImage[pageData.seoImage.type].url)
+    const imageUrl = pageData?.seoImage[pageData?.seoImage?.type]?.url
+    // console.dir(`imageUrl:`)
+    // console.dir(imageUrl)
+    const imageData = await getImage(imageUrl)
     // console.dir(`imageData:`)
     // console.dir(imageData)
     images = [

@@ -2,6 +2,8 @@
 import { cx } from '../../utils/cx'
 
 function Tags({ className = '', classNameTag = '', tags }) {
+  // console.dir(`> tags:`)
+  // console.dir(tags)
   return (
     <ul
       className={cx(

@@ -1,1 +1,1 @@
-export { Anchor } from './Anchor'
+export { Anchor, ScrollTo } from './Anchor'

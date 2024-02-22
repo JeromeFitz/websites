@@ -35,9 +35,9 @@ const RelationIndividual: any = cache(async ({ id }) => {
   const hrefValue = isPublished ? href : undefined
 
   const style = cx(
-    'inline-block text-base font-normal tracking-tight no-underline md:text-xl',
+    'inline-block text-base font-normal tracking-tight no-underline lg:text-xl',
     isPublished && 'transition-all duration-200',
-    isPublished && 'text-radix-slate12 hover:text-radix-pink11',
+    isPublished && 'text-[var(--slate-12)] hover:text-[var(--accent-11)]',
     '',
     '',
   )
@@ -74,7 +74,7 @@ async function RI({ items }) {
     <>
       {bar.map((b, i) => {
         return (
-          <li className={cx('mb-2 md:mb-0.5')} key={`ris-loading-${i}`}>
+          <li className={cx('mb-2 lg:mb-0.5')} key={`ris-loading-${i}`}>
             {/* <RelationLoading /> */}
             <RelationIndividual id={b?.id} />
           </li>
@@ -91,7 +91,7 @@ function RIS_LOADING({ size }) {
         .fill(0)
         .map((_, i) => {
           return (
-            <li className={cx('mb-2 md:mb-0.5')} key={`ris-loading-${i}`}>
+            <li className={cx('mb-2 lg:mb-0.5')} key={`ris-loading-${i}`}>
               <RelationLoading />
             </li>
           )
@@ -123,7 +123,7 @@ function RelationIndividuals({ items }) {
 //           const { id } = item
 
 //           return (
-//             <li key={id} className={cx('mb-2 md:mb-0.5')}>
+//             <li key={id} className={cx('mb-2 lg:mb-0.5')}>
 //               <Suspense fallback={<RelationLoading />}>
 //                 <RelationIndividual id={id} />
 //               </Suspense>

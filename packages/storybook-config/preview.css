@@ -5,11 +5,27 @@
   font-weight: 100 900;
   src: url('/public/fonts/inter/inter-4.0.0-beta9g-var.woff2') format('woff2');
 }
+@font-face {
+  font-display: swap;
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 100 900;
+  src: url('/public/fonts/geist/GeistVF--1.0.0.woff2') format('woff2');
+}
+@font-face {
+  font-display: swap;
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 100 900;
+  src: url('/public/fonts/geist/GeistMonoVF--1.0.0.woff2') format('woff2');
+}
 :root {
   --font-inter: 'Inter';
-  --fonts-mono: var(--fonts-fallback-mono) !important;
-  --fonts-sans: var(--font-inter), var(--fonts-fallback-sans) !important;
-  --fonts-serif: var(--fonts-fallback-serif) !important;
+  --font-geist-sans: 'Geist';
+  --font-geist-mono: 'Geist Mono';
+  --font-mono: var(--font-geist-mono), var(--fonts-fallback-mono) !important;
+  --font-sans: var(--font-geist-sans), var(--fonts-fallback-sans) !important;
+  --font-serif: var(--fonts-fallback-serif) !important;
 }
 * {
   box-sizing: 'border-box';
@@ -24,7 +40,7 @@
 body {
   background-color: var(--colors-body);
   font-feature-settings: '"calt", "zero", "cv01", "cv02", "cv03", "cv04", "cv05", "cv06", "cv08", "cv09", "cv10", "cv11"';
-  font-family: var(--font-inter);
+  font-family: var(--font-sans);
   margin: 0;
   -webkit-text-size-adjust: '100%';
 }
@@ -35,7 +51,7 @@ body.loading * {
 
 button,
 textarea {
-  font-family: var(--font-inter);
+  font-family: var(--font-sans);
   font-feature-settings: inherit !important;
 }
 
@@ -47,7 +63,7 @@ svg {
 pre,
 code {
   margin: 0;
-  font-family: var(--fonts-mono);
+  font-family: var(--font-mono);
 }
 
 #__next {

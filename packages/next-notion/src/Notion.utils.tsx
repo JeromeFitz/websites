@@ -39,11 +39,14 @@ function getBlock({
   const { component: Component, ...componentProps } = blockProps
   if (!Component || Component === undefined) return null
 
-  // const key = `${block.id}--${order}`
+  const key = `${block.id}--${order}`
   // console.dir(`(getBlock) key: ${key}`)
-  const props = { block, order: order, ...componentProps, blocks }
 
-  return <Component {...props} />
+  const props = { block, order: order, ...componentProps, blocks }
+  // console.dir(`props:`)
+  // console.dir(props)
+
+  return <Component key={key} {...props} />
 }
 
 function getBlockKey(id, type, order) {

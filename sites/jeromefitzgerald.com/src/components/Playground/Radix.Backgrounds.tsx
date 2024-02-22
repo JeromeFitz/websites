@@ -1,7 +1,45 @@
-/* eslint-disable tailwindcss/no-custom-classname */
 function RadixBackgrounds() {
   return (
     <ul className="hidden">
+      <li className="bg-bluesky hover:bg-bluesky group-hover:bg-bluesky">
+        bg-bluesky
+      </li>
+      <li className="bg-instagram hover:bg-instagram group-hover:bg-instagram"></li>
+      <li className="bg-github hover:bg-github group-hover:bg-github">bg-github</li>
+      <li className="dark:bg-github dark:hover:bg-github group-dark:hover:bg-github">
+        dark:bg-github
+      </li>
+      <li className="bg-instagram hover:bg-instagram group-hover:bg-instagram">
+        bg-instagram
+      </li>
+      <li className="bg-linkedin hover:bg-linkedin group-hover:bg-linkedin">
+        bg-linkedin
+      </li>
+      <li className="bg-spotify hover:bg-spotify group-hover:bg-spotify">
+        bg-spotify
+      </li>
+      <li className="bg-threads hover:bg-threads group-hover:bg-threads">
+        bg-threads
+      </li>
+      <li className="bg-twitter hover:bg-twitter group-hover:bg-twitter">
+        bg-twitter
+      </li>
+
+      <li className="bg-github-dark hover:bg-github-dark group-hover:bg-github-dark">
+        bg-github-dark
+      </li>
+      <li className="bg-spotify-dark hover:bg-spotify-dark group-hover:bg-spotify-dark">
+        bg-spotify-dark
+      </li>
+
+      <li className="dark:bg-github-dark dark:hover:bg-github-dark dark:group-hover:bg-github-dark">
+        dark:bg-github-dark
+      </li>
+      <li className="dark:bg-spotify-dark dark:hover:bg-spotify-dark dark:group-hover:bg-spotify-dark">
+        dark:bg-spotify-dark
+      </li>
+
+      {/*  */}
       <li className="bg-radix-tomato1">bg-radix-tomato1</li>
       <li className="bg-radix-tomato2">bg-radix-tomato2</li>
       <li className="bg-radix-tomato3">bg-radix-tomato3</li>

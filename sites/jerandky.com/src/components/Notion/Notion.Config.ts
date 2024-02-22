@@ -12,6 +12,8 @@ import dynamic from 'next/dynamic'
 
 const custom = {
   embed: {
+    // component: Embed,
+    as: 'div',
     className: '',
     // component: lazy(() => import('@jeromefitz/shared/components/Notion/Blocks/Embed')),
     component: dynamic(
@@ -23,16 +25,16 @@ const custom = {
         ssr: true,
       },
     ),
-    // component: Embed,
-    element: 'div',
   },
   image: {
+    as: 'img',
     className: '',
     // component: lazy(() => import('@jeromefitz/shared/components/Notion/Blocks/Image')),
     component: Image,
-    element: 'img',
   },
   video: {
+    // component: Video,
+    as: 'div',
     className: '',
     // component: lazy(() => import('@jeromefitz/shared/components/Notion/Blocks/Video')),
     component: dynamic(
@@ -44,8 +46,6 @@ const custom = {
         ssr: true,
       },
     ),
-    // component: Video,
-    element: 'div',
   },
 }
 
@@ -58,7 +58,7 @@ const blocks = {
   },
   callout: {
     className:
-      'border-l-radix-slate11 bg-radix-slateA5 m-4 rounded border-l-8 p-14 text-xl md:text-3xl',
+      'border-l-[var(--gray-11)] bg-[var(--gray-a5)] m-4 rounded border-l-8 p-14 text-xl md:text-3xl',
   },
   column: {
     className: 'my-3 flex flex-[1_1] flex-col md:my-3 md:pr-5',
@@ -89,7 +89,7 @@ const blocks = {
   },
   quote: {
     className:
-      'border-l-radix-pink11 bg-radix-pinkA5 m-4 rounded border-l-8 p-6 text-xl md:p-14 md:text-3xl',
+      'border-l-[var(--accent-11)] bg-[var(--accent-a5)] m-4 rounded border-l-8 p-6 text-xl md:p-14 md:text-3xl',
   },
   ...custom,
 }

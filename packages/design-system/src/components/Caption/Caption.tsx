@@ -1,8 +1,28 @@
-function Caption({ children }) {
+import type { CalloutRootProps } from '@radix-ui/themes/dist/cjs/components/callout'
+
+import { CalloutIcon, CalloutRoot, CalloutText } from '@radix-ui/themes'
+
+import { cx } from '../../utils/cx'
+import { CameraIcon } from '../Icon'
+
+interface CalloutRootPropsCustom extends CalloutRootProps {
+  icon?: any
+  textClassname?: string
+}
+
+function Caption({
+  children,
+  className,
+  icon: Icon = CameraIcon,
+  size = '2',
+}: CalloutRootPropsCustom) {
   return (
-    <p className="border-l-radix-pink11 bg-radix-blackA4 dark:bg-radix-whiteA4 my-4 ml-2 rounded border-l-4 py-4 pl-4 text-sm">
-      {children}
-    </p>
+    <CalloutRoot className={cx('w-full font-mono', className)} size={size}>
+      <CalloutIcon>
+        <Icon />
+      </CalloutIcon>
+      <CalloutText>{children}</CalloutText>
+    </CalloutRoot>
   )
 }
 

@@ -1,12 +1,3 @@
-import {
-  SectionContent,
-  SectionHeader,
-  SectionHeaderContent,
-  // SectionHero,
-  SectionHeaderTitle,
-  SectionWrapper,
-  // Tags,
-} from '@jeromefitz/ds/components/Section'
 import { getDataFromCache, getSegmentInfo } from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
@@ -16,6 +7,12 @@ import { draftMode } from 'next/headers'
 
 import { CONFIG, getPageData } from '~app/(notion)/_config'
 import { generateMetadataCustom } from '~app/(notion)/_config/temp/generateMetadataCustom'
+import { Grid } from '~app/playground/2024/_components/Grid'
+import {
+  HeadlineColumnA,
+  HeadlineContent,
+  HeadlineTitle,
+} from '~app/playground/2024/_components/Headline'
 import { Notion as Blocks } from '~components/Notion'
 
 const slug = '/about'
@@ -67,17 +64,17 @@ async function Slug({ revalidate, segmentInfo }) {
 
   if (isObjectEmpty(data.page)) return null
   return (
-    <>
-      <SectionWrapper>
-        <SectionHeader>
-          <SectionHeaderTitle isTitle>{title}</SectionHeaderTitle>
-          <SectionHeaderContent className="">{seoDescription}</SectionHeaderContent>
-        </SectionHeader>
-        <SectionContent>
-          <Blocks data={data?.blocks} />
-        </SectionContent>
-      </SectionWrapper>
-    </>
+    <Grid as="section">
+      <HeadlineColumnA>
+        <HeadlineTitle aria-label={title} as="h1">
+          <>{title}</>
+        </HeadlineTitle>
+      </HeadlineColumnA>
+      <HeadlineContent>
+        <p className={'text-lg tracking-wide'}>{seoDescription}</p>
+        <Blocks data={data?.blocks} />
+      </HeadlineContent>
+    </Grid>
   )
 }
 

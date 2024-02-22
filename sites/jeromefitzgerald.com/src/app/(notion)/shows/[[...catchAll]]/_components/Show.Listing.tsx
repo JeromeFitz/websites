@@ -1,13 +1,5 @@
 import { Anchor } from '@jeromefitz/ds/components/Anchor'
-import {
-  SectionContent,
-  SectionHeader,
-  SectionHeaderContent,
-  // SectionHero,
-  SectionHeaderTitle,
-  SectionWrapper,
-  // Tags,
-} from '@jeromefitz/ds/components/Section'
+import { cx } from '@jeromefitz/ds/utils/cx'
 import { getDataFromCache, getDatabaseQuery } from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
@@ -19,7 +11,17 @@ import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 import { getPropertyTypeData } from 'next-notion/utils'
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { CONFIG, getPageData, getShowData } from '~app/(notion)/_config'
+import { Grid } from '~app/playground/2024/_components/Grid'
+import {
+  HeadlineColumnA,
+  HeadlineContent,
+  HeadlineTitle,
+} from '~app/playground/2024/_components/Headline'
+// import { Notion as Blocks } from '~components/Notion'
 // import type { PageObjectResponseShow } from '~app/(notion)/_config'
 import { WIP } from '~components/WIP/index'
 
@@ -45,7 +47,7 @@ function ListingTemp({ data }) {
         if (!show?.isPublished) return null
         return (
           <li className="my-1 py-1" key={`shows-show-${show?.id}`}>
-            <Anchor className="text-base md:text-xl" href={show?.href}>
+            <Anchor className="text-base lg:text-xl" href={show?.href}>
               {show?.title}
             </Anchor>
           </li>
@@ -121,27 +123,26 @@ async function Listing({ revalidate, segmentInfo }) {
   const title = 'Shows'
 
   // const seoDescription = getPropertyTypeData(data?.page?.properties, 'SEO.Description')
-  const { seoDescription } = getPageData(data?.page?.properties) || ''
+  // const { seoDescription } = getPageData(data?.page?.properties) || ''
+  const seoDescription =
+    'Shows that comedian Jerome Fitzgerald is in. Maybe these should be Acts? Online content, when it is his, eludes him. (He is glad you found this page in spite of this.)'
 
   return (
-    <>
-      {/* Hero */}
-      {/* <SectionHero title={title} /> */}
-      {/* Content */}
-      <SectionWrapper>
-        <SectionHeader>
-          <SectionHeaderTitle isTitle>{title}</SectionHeaderTitle>
-          <SectionHeaderContent className="invisible hidden md:visible md:inline">
-            {seoDescription}
-          </SectionHeaderContent>
-        </SectionHeader>
-        <SectionContent>
-          {/* <Blocks data={data?.blocks} /> */}
-          <WIP />
-          {hasContent && <ListingTemp data={showData} />}
-        </SectionContent>
-      </SectionWrapper>
-    </>
+    <Grid as="section">
+      <HeadlineColumnA>
+        <HeadlineTitle aria-label={title} as="h1">
+          <>{title}</>
+        </HeadlineTitle>
+      </HeadlineColumnA>
+      <HeadlineContent>
+        {/* <Blocks data={data?.blocks} /> */}
+        <p className={cx('text-lg tracking-wide', 'flex flex-col gap-0', '')}>
+          {seoDescription}
+        </p>
+        <WIP />
+        {hasContent && <ListingTemp data={showData} />}
+      </HeadlineContent>
+    </Grid>
   )
 }
 

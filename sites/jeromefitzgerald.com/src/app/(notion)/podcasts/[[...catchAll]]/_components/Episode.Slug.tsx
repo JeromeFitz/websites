@@ -1,14 +1,5 @@
 import { Anchor } from '@jeromefitz/ds/components/Anchor'
 // import { MicrophoneIcon } from '@jeromefitz/ds/components/Icon'
-import {
-  SectionContent,
-  SectionHeader,
-  // SectionHeaderContent,
-  SectionHeaderTitle,
-  // SectionHero,
-  SectionWrapper,
-  // Tags,
-} from '@jeromefitz/ds/components/Section'
 import { Separator } from '@jeromefitz/ds/components/Separator'
 import { cx } from '@jeromefitz/ds/utils/cx'
 import { EmbedSpotify } from '@jeromefitz/shared/components/Notion/Blocks/Embed.Spotify'
@@ -22,8 +13,15 @@ import type { PropertiesEpisode } from '~app/(notion)/_config'
 
 import { CONFIG, getEpisodeData } from '~app/(notion)/_config'
 import { Image } from '~app/(notion)/events/[[...catchAll]]/_components/Image'
+import { Grid } from '~app/playground/2024/_components/Grid'
+import {
+  HeadlineColumnA,
+  HeadlineContent,
+  HeadlineTitle,
+} from '~app/playground/2024/_components/Headline'
 import { Notion as Blocks } from '~components/Notion'
 import { Relations } from '~components/Relations'
+import { WIP } from '~components/WIP/index'
 
 const { DATABASE_ID } = CONFIG.EPISODES
 
@@ -47,7 +45,7 @@ const RELATIONS_SECONDARY = [
 ]
 
 const styleIndividual = cx(
-  'inline-block text-base font-normal tracking-tight no-underline md:text-xl',
+  'inline-block text-base font-normal tracking-tight no-underline lg:text-xl',
   '',
 )
 
@@ -56,7 +54,7 @@ function Rollups({ properties }) {
   const style = cx(
     styleIndividual,
     isPublished && 'transition-all duration-200',
-    isPublished && 'text-radix-slate12 hover:text-radix-pink11',
+    isPublished && 'text-[var(--slate-12)] hover:text-[var(--accent-11)]',
   )
 
   const {
@@ -95,12 +93,12 @@ function Rollups({ properties }) {
         {rollups.map((rollup) => {
           const key = `rollup-${rollup.id}`
           return (
-            <div className="col-span-6 md:col-span-4" key={key}>
+            <div className="col-span-6 lg:col-span-4" key={key}>
               <p className="pb-3 font-extrabold uppercase tracking-tight">
                 <strong>{rollup.id}</strong>
               </p>
               <ul>
-                <li className={'mb-2 md:mb-0.5'}>
+                <li className={'mb-2 lg:mb-0.5'}>
                   <span className={style}>{rollup.data}</span>
                 </li>
               </ul>
@@ -121,7 +119,7 @@ function Links({ properties }) {
   const style = cx(
     styleIndividual,
     isPublished && 'transition-all duration-200',
-    // isPublished && 'text-radix-slate12 hover:text-radix-pink11'
+    // isPublished && 'text-[var(--slate-12)] hover:text-[var(--accent-11)]'
   )
   return (
     <>
@@ -186,41 +184,35 @@ async function EpisodeSlug({ revalidate, segmentInfo }) {
 
   return (
     <>
-      {/* Hero */}
-      {/* <SectionHero title={title} /> */}
-      {/* Content */}
-      <SectionWrapper>
-        <SectionHeader>
-          <SectionHeaderTitle isTitle>{title}</SectionHeaderTitle>
-        </SectionHeader>
-        <SectionContent>
+      <Grid as="section">
+        <HeadlineColumnA>
+          <HeadlineTitle aria-label={title} as="h1">
+            <>{title}</>
+          </HeadlineTitle>
+        </HeadlineColumnA>
+        <HeadlineContent>
+          <WIP />
           <Image properties={properties} />
-          <Separator className="my-8" />
           <Blocks data={data?.blocks} />
           <Links properties={properties} />
-        </SectionContent>
-      </SectionWrapper>
-      <SectionWrapper>
-        <SectionHeader>
-          <SectionHeaderTitle>Info</SectionHeaderTitle>
-        </SectionHeader>
-        <SectionContent>
+        </HeadlineContent>
+      </Grid>
+      <Grid as="section">
+        <HeadlineColumnA>
+          <HeadlineTitle aria-label={title} as="p">
+            <>Info</>
+          </HeadlineTitle>
+        </HeadlineColumnA>
+        <HeadlineContent className="">
+          <Separator className="mb-4 opacity-50" />
           <Rollups properties={properties} />
           <Relations
             properties={properties}
             relations={RELATIONS}
             relationsSecondary={RELATIONS_SECONDARY}
           />
-        </SectionContent>
-      </SectionWrapper>
-      {/* <SectionWrapper>
-        <SectionHeader>
-          <SectionHeaderTitle>Upcoming Episodes</SectionHeaderTitle>
-        </SectionHeader>
-        <SectionContent>
-          <UpcomingEpisodes properties={properties} />
-        </SectionContent>
-      </SectionWrapper> */}
+        </HeadlineContent>
+      </Grid>
     </>
   )
 }

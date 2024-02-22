@@ -1,13 +1,5 @@
 import { Anchor } from '@jeromefitz/ds/components/Anchor'
-import {
-  SectionContent,
-  SectionHeader,
-  SectionHeaderContent,
-  // SectionHero,
-  SectionHeaderTitle,
-  SectionWrapper,
-  // Tags,
-} from '@jeromefitz/ds/components/Section'
+// import { cx } from '@jeromefitz/ds/utils/cx'
 import { getDataFromCache, getDatabaseQuery } from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
@@ -19,7 +11,15 @@ import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 import { getPropertyTypeData } from 'next-notion/utils'
 
-import { CONFIG, getPageData, getPodcastData } from '~app/(notion)/_config'
+// import { CONFIG, getPageData, getPodcastData } from '~app/(notion)/_config'
+import { CONFIG, getPodcastData } from '~app/(notion)/_config'
+import { Grid } from '~app/playground/2024/_components/Grid'
+import {
+  HeadlineColumnA,
+  HeadlineContent,
+  HeadlineTitle,
+} from '~app/playground/2024/_components/Headline'
+// import { Notion as Blocks } from '~components/Notion'
 // import type { PageObjectResponsePodcast } from '~app/(notion)/_config'
 import { WIP } from '~components/WIP/index'
 
@@ -50,7 +50,7 @@ function ListingTemp({ data }) {
         if (!podcast?.isPublished) return null
         return (
           <li className="my-1 py-1" key={`podcasts-podcast-${podcast?.id}`}>
-            <Anchor className="text-base md:text-xl" href={podcast?.href}>
+            <Anchor className="text-base lg:text-xl" href={podcast?.href}>
               {podcast?.title}
             </Anchor>
           </li>
@@ -58,28 +58,6 @@ function ListingTemp({ data }) {
       })}
     </ul>
   )
-
-  // return (
-  //   <ul>
-  //     {shows.map((show: PageObjectResponsePodcast) => {
-  //       const { properties } = show
-  //       const { isPublished } = getPodcastData(properties)
-  //       if (!isPublished) return null
-  //       // const propertyTypeData: any = getPropertyTypeData(
-  //       //   properties,
-  //       //   'Slug.Preview'
-  //       // )
-  //       // const href = propertyTypeData?.string
-  //       // if (!href) return null
-  //       const href = getPropertyTypeData(properties, 'Slug.Preview')
-  //       return (
-  //         <li key={`shows-show-${show.id}`}>
-  //           <NextLink href={href}>{href}</NextLink>
-  //         </li>
-  //       )
-  //     })}
-  //   </ul>
-  // )
 }
 
 // @todo(complexity) 12
@@ -126,28 +104,27 @@ async function Listing({ revalidate, segmentInfo }) {
   const title = 'Podcasts'
 
   // const seoDescription = getPropertyTypeData(data?.page?.properties, 'SEO.Description')
-  const { seoDescription } = getPageData(data?.page?.properties) || ''
+  // const { seoDescription } = getPageData(data?.page?.properties) || ''
 
   // console.dir(podcastData)
 
   return (
     <>
-      {/* Hero */}
-      {/* <SectionHero title={title} /> */}
-      {/* Content */}
-      <SectionWrapper>
-        <SectionHeader>
-          <SectionHeaderTitle isTitle>{title}</SectionHeaderTitle>
-          <SectionHeaderContent className="invisible hidden md:visible md:inline">
-            {seoDescription}
-          </SectionHeaderContent>
-        </SectionHeader>
-        <SectionContent>
-          <WIP />
+      <Grid as="section">
+        <HeadlineColumnA>
+          <HeadlineTitle aria-label={title} as="h1">
+            <>{title}</>
+          </HeadlineTitle>
+        </HeadlineColumnA>
+        <HeadlineContent>
           {/* <Blocks data={data?.blocks} /> */}
+          {/* <p className={cx('text-lg tracking-wide', 'flex flex-col gap-0', '')}>
+            {seoDescription}
+          </p> */}
+          <WIP />
           {hasContent && <ListingTemp data={podcastData} />}
-        </SectionContent>
-      </SectionWrapper>
+        </HeadlineContent>
+      </Grid>
     </>
   )
 }

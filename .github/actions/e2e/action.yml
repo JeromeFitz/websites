@@ -98,6 +98,7 @@ runs:
       shell: bash
       # run: pnpm playwright@${{ env.PLAYWRIGHT_VERSION }}  install --with-deps
       run: npx playwright@${{ env.PLAYWRIGHT_VERSION }} install --with-deps
+      # run: pnpm exec playwright@${{ env.PLAYWRIGHT_VERSION }} install --with-deps
       if: steps.playwright-cache.outputs.cache-hit != 'true'
 
     - name: '🎭  Playwright: Install (cache)'
@@ -105,6 +106,7 @@ runs:
       shell: bash
       # run: pnpm playwright@${{ env.PLAYWRIGHT_VERSION }}  install-deps
       run: npx playwright@${{ env.PLAYWRIGHT_VERSION }} install-deps
+      # run: pnpm exec playwright@${{ env.PLAYWRIGHT_VERSION }} install
       if: steps.playwright-cache.outputs.cache-hit == 'true'
 
     - name: '🎭  Playwright: ${{ inputs.WEBSITE }}'
