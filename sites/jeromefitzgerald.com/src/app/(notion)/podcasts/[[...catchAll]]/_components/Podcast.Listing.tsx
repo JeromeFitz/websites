@@ -5,7 +5,6 @@ import { isObjectEmpty } from '@jeromefitz/utils'
 
 import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints.js'
 
-import { Badge } from '@radix-ui/themes'
 import _filter from 'lodash/filter.js'
 import _orderBy from 'lodash/orderBy.js'
 import { draftMode } from 'next/headers'
@@ -19,7 +18,6 @@ import {
   HeadlineColumnA,
   HeadlineContent,
   HeadlineTitle,
-  HeadlineTitleSub,
 } from '~app/playground/2024/_components/Headline'
 // import { Notion as Blocks } from '~components/Notion'
 // import type { PageObjectResponsePodcast } from '~app/(notion)/_config'
@@ -52,7 +50,7 @@ function ListingTemp({ data }) {
         if (!podcast?.isPublished) return null
         return (
           <li className="my-1 py-1" key={`podcasts-podcast-${podcast?.id}`}>
-            <Anchor className="text-base md:text-xl" href={podcast?.href}>
+            <Anchor className="text-base lg:text-xl" href={podcast?.href}>
               {podcast?.title}
             </Anchor>
           </li>
@@ -117,9 +115,6 @@ async function Listing({ revalidate, segmentInfo }) {
           <HeadlineTitle aria-label={title} as="h1">
             <>{title}</>
           </HeadlineTitle>
-          <HeadlineTitleSub>
-            <Badge size="2">testing</Badge>
-          </HeadlineTitleSub>
         </HeadlineColumnA>
         <HeadlineContent>
           {/* <Blocks data={data?.blocks} /> */}

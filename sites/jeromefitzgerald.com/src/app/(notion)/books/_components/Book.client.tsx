@@ -109,18 +109,20 @@ function BookPage({ books, title }) {
           </p>
           <p className={cx('text-2xl tracking-wide')}>
             Please support your local library and bookstores. If you buy online,
-            please consider <strong>Biblio</strong> and <strong>Bookshop</strong>.
+            please consider <strong>Biblio</strong> (whose affiliate program is ...
+            uh ... not in their control) and <strong>Bookshop</strong> (whose
+            affiliate program does not work).
           </p>
           <p className={cx('text-lg tracking-wide', 'flex flex-col gap-0', '')}>
             On that note: Pittsburgh is home to a lot great bookstores!
           </p>
-          <ul className="list-inside pb-4 text-base tracking-wide md:list-disc md:text-lg">
-            <li className="my-2 md:my-1">Amazing Books and Records</li>
-            <li className="my-2 md:my-1">Bottom Feeder Books</li>
-            <li className="my-2 md:my-1">The Big Idea Bookstore Cooperative</li>
-            <li className="my-2 md:my-1">City of Asylum Bookstore </li>
-            <li className="my-2 md:my-1">White Whale Bookstore</li>
-            <li className="my-2 md:my-1">& “many more”</li>
+          <ul className="list-inside pb-4 text-base tracking-wide lg:list-disc lg:text-lg">
+            <li className="my-2 lg:my-1">Amazing Books and Records</li>
+            <li className="my-2 lg:my-1">Bottom Feeder Books</li>
+            <li className="my-2 lg:my-1">The Big Idea Bookstore Cooperative</li>
+            <li className="my-2 lg:my-1">City of Asylum Bookstore </li>
+            <li className="my-2 lg:my-1">White Whale Bookstore</li>
+            <li className="my-2 lg:my-1">& “many more”</li>
           </ul>
           <Separator orientation="horizontal" size="4" />
           <WIP description={`This page is currently getting an overhaul.`} />

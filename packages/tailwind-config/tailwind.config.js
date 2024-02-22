@@ -133,32 +133,50 @@ const config = ({}) => ({
       boxShadow: {
         slider: '0 0 0 5px rgba(0, 0, 0, 0.3)',
       },
+      /* eslint-disable perfectionist/sort-objects */
       colors: {
-        //
-        black: '#0f0f0f',
-        // social
+        /**
+         * App
+         */
+        // black: '#000000', // Black
+        // white: '#ffffff', // White
+
+        // black: '#030303', // Gray 01
+        // white: '#fcfcfc', // Gray 99
+
+        black: '#050505', // Gray 02
+        white: '#fafafa', // Gray 98
+
+        // black: '#0f0f0f', // Gray 06
+        // white: '#f4f4f4', // Gray 94
+
+        /**
+         * Social
+         */
         bluesky: '#3399FF', // #87CEEB
-        current: 'current',
         github: 'var(--blackA1)',
         'github-dark': 'var(--whiteA1)',
         inherit: 'inherit',
         instagram: '#c32aa3',
         linkedin: '#0a66c2',
-        // },
+        spotify: '#1ed760',
+        'spotify-dark': '#1db954',
+        threads: '#c32aa3',
+        twitter: '#1da1f2',
+        /**
+         * Other
+         */
+        current: 'current',
         muted: {
           DEFAULT: 'hsl(var(--muted))',
           foreground: 'hsl(var(--muted-foreground))',
         },
-        spotify: '#1ed760',
-        'spotify-dark': '#1db954',
-        threads: '#c32aa3',
         transparent: 'transparent',
-        twitter: '#1da1f2',
         //
         // contrast: {
         //   lo: 'var(--contrast-lo)',
         //   hi: 'var(--contrast-hi)',
-        white: '#f4f4f4',
+        // },
       },
       fontFamily: {
         mono: ['var(--font-geist-mono)', ...theme.fontFamily.mono],

@@ -87,7 +87,7 @@ const initializeStoreMenu = (preloadedState: Partial<any> = {}) => {
       })
       get().isCmdkOpen
         ? setTimeout(() => {
-            console.dir(`ok`)
+            // console.dir(`ok`)
             set({
               cmdkInput: '',
               cmdkPages: get().cmdkPages.slice(0, -1),

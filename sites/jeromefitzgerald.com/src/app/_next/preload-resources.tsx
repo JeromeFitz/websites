@@ -6,6 +6,7 @@ const preconnects = [
   // https://web.dev/preconnect-and-dns-prefetch/#how-to-implement-rel=preconnect
   // 'https://jeromefitzgerald.com',
   'https://cdn.jeromefitzgerald.com',
+  'https://cdn.jerandky.com',
   'https://cdn.usefathom.com',
   'https://vitals.vercel-insights.com',
 ]

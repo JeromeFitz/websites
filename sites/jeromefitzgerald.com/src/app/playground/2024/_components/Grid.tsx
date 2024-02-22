@@ -20,9 +20,9 @@ const Grid = forwardRef(function Grid(
   return (
     <Component
       className={cx(
-        'grid grid-cols-4 gap-4',
+        'grid grid-cols-12 gap-2 lg:gap-4',
         'mb-1 mr-1',
-        'p-4 md:p-8',
+        'p-4 lg:p-8',
         'w-full',
         '',
         className,

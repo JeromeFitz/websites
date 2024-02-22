@@ -10,18 +10,18 @@ function HeadlineColumnA({ children, separateTitle = true }) {
   return (
     <div
       className={cx(
-        'col-span-4 md:col-span-1',
+        'col-span-full lg:col-span-3',
         'flex flex-col justify-start',
         'h-fit',
-        'md:h-44 md:max-h-56 md:min-h-44',
-        'md:sticky md:top-28',
+        'lg:h-44 lg:max-h-56 lg:min-h-44',
+        'lg:sticky lg:top-28',
         '',
       )}
     >
-      <div className={cx('h-[inherit]', 'md:h-full md:max-h-56 md:min-h-44')}>
+      <div className={cx('h-[inherit]', 'lg:h-full lg:max-h-56 lg:min-h-44')}>
         <div
           className={cx(
-            'flex h-[inherit] flex-col gap-4 md:gap-0',
+            'flex h-[inherit] flex-col gap-4 lg:gap-0',
             separateTitle && 'justify-between',
           )}
         >
@@ -68,6 +68,7 @@ function HeadlineTitleSub({ children, className }: HeadlineTitleSubProps) {
       className={cx(
         'font-mono text-base font-light tracking-normal',
         'flex flex-row flex-wrap gap-2',
+        'lg:mr-3',
         className,
       )}
     >
@@ -80,8 +81,8 @@ function HeadlineContent({ children, className = '' }) {
     <div
       className={cx(
         'flex flex-col gap-4',
-        'col-span-4 md:col-span-3',
-        'mt-4 md:mt-0',
+        'col-span-full lg:col-span-9',
+        'mt-4 lg:mt-0',
         className,
       )}
     >

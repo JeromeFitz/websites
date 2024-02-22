@@ -1,7 +1,6 @@
 import { getDataFromCache } from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
-import { Badge } from '@radix-ui/themes'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 
@@ -13,7 +12,6 @@ import {
   HeadlineColumnA,
   HeadlineContent,
   HeadlineTitle,
-  HeadlineTitleSub,
 } from '~app/playground/2024/_components/Headline'
 import { Notion as Blocks } from '~components/Notion'
 import { Relations } from '~components/Relations/index'
@@ -52,9 +50,6 @@ async function Slug({ revalidate, segmentInfo }) {
           <HeadlineTitle aria-label={title} as="h1">
             <>{title}</>
           </HeadlineTitle>
-          <HeadlineTitleSub>
-            <Badge size="2">testing</Badge>
-          </HeadlineTitleSub>
         </HeadlineColumnA>
         <HeadlineContent>
           <Blocks data={data?.blocks} />

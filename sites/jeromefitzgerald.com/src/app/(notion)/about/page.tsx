@@ -3,7 +3,6 @@ import { isObjectEmpty } from '@jeromefitz/utils'
 
 import type { Metadata } from 'next'
 
-import { Badge } from '@radix-ui/themes'
 import { draftMode } from 'next/headers'
 
 import { CONFIG, getPageData } from '~app/(notion)/_config'
@@ -13,7 +12,6 @@ import {
   HeadlineColumnA,
   HeadlineContent,
   HeadlineTitle,
-  HeadlineTitleSub,
 } from '~app/playground/2024/_components/Headline'
 import { Notion as Blocks } from '~components/Notion'
 
@@ -71,9 +69,6 @@ async function Slug({ revalidate, segmentInfo }) {
         <HeadlineTitle aria-label={title} as="h1">
           <>{title}</>
         </HeadlineTitle>
-        <HeadlineTitleSub>
-          <Badge size="2">testing</Badge>
-        </HeadlineTitleSub>
       </HeadlineColumnA>
       <HeadlineContent>
         <p className={'text-lg tracking-wide'}>{seoDescription}</p>

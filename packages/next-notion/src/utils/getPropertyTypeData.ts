@@ -7,6 +7,7 @@ import { isObjectEmpty } from '@jeromefitz/utils'
 
 import type {
   CheckboxPropertyItemObjectResponse,
+  DatePropertyItemObjectResponse,
   FilesPropertyItemObjectResponse,
   // FormulaPropertyItemObjectResponse,
   MultiSelectPropertyItemObjectResponse,
@@ -40,6 +41,20 @@ function getCheckboxData({ data, type }: { data: CheckboxData; type: string }) {
   // properties['Is.Published']
   const typeData = data[type]
   const dataReturn: CheckboxPropertyItemObjectResponse = typeData
+  return dataReturn
+}
+
+type DateData = {
+  date: DateResponse | null
+  id: string
+  type: 'date'
+}
+function getDateData({ data, type }: { data: DateData; type: string }) {
+  // properties['Date.XYZ']
+  const typeData = data[type]
+  // @note(notion) this returns DateResponse...
+  const dataReturn: DatePropertyItemObjectResponse = typeData
+  // { end: null, start: '2016-04-26', time_zone: null }
   return dataReturn
 }
 
@@ -284,6 +299,8 @@ function getPropertyTypeData(properties, property) {
   switch (type) {
     case 'checkbox':
       return getCheckboxData({ data, type })
+    case 'date':
+      return getDateData({ data, type })
     case 'files':
       return getFilesData({ data, type })
     case 'formula':

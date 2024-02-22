@@ -14,7 +14,7 @@ import { Banner } from './Banner'
 
 const dataListening: Data = {
   badge: {
-    color: 'lime',
+    color: 'mint',
     text: 'Playing…',
   },
   button: {
@@ -30,7 +30,7 @@ const dataListening: Data = {
 }
 const dataReading: Data = {
   badge: {
-    color: 'indigo',
+    color: 'purple',
     text: 'Reading…',
   },
   button: {

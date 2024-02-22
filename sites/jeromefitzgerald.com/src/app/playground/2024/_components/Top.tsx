@@ -109,14 +109,14 @@ function DataItemLoader({ error, handleScroll, isLoadingMore }) {
         className={cx(
           'flex w-full flex-col-reverse items-start justify-between justify-items-start md:flex-row-reverse',
           'text-left',
-          'hover:bg-[#fff] dark:hover:bg-[var(--gray-2)]',
-          'border-t-1 border-[var(--gray-6)]',
+          'hover:bg-[#fff] dark:hover:bg-[var(--mauve-2)]',
+          'border-t-1 border-[var(--mauve-6)]',
           'mb-3 p-1 md:mb-0 md:gap-6 md:p-8',
         )}
       >
         <div className={cx('flex h-full flex-col justify-center gap-2 ')}>
           <p className={cx('text-xs tracking-tighter')}>
-            <span className="font-bold uppercase tracking-wide text-[var(--gray-11)]">
+            <span className="font-bold uppercase tracking-wide text-[var(--mauve-11)]">
               Status
             </span>
             <br />
@@ -130,7 +130,7 @@ function DataItemLoader({ error, handleScroll, isLoadingMore }) {
           </p>
 
           <p className={cx('text-xs tracking-tighter')}>
-            <span className="line-clamp-3 text-2xl text-[var(--gray-12)]">
+            <span className="line-clamp-3 text-2xl text-[var(--mauve-12)]">
               {isLoadingMore // ? 'loading' : isReachingEnd ? 'no more' :''
                 ? info.loading.cta
                 : !!error
@@ -215,14 +215,14 @@ function DataItem({ item, type }) {
       className={cx(
         'flex w-full flex-col-reverse items-start justify-between justify-items-start md:flex-row',
         'text-left',
-        'hover:bg-[#fff] dark:hover:bg-[var(--gray-2)]',
-        'border-t-1 border-[var(--gray-6)]',
+        'hover:bg-[#fff] dark:hover:bg-[var(--mauve-2)]',
+        'border-t-1 border-[var(--mauve-6)]',
         'mb-3 p-1 md:mb-0 md:gap-6 md:p-8',
       )}
     >
       <div className={cx('flex h-full  flex-col justify-center gap-3 md:gap-2')}>
         <p className={cx('text-xs tracking-tighter')}>
-          <span className="font-bold uppercase tracking-wide text-[var(--gray-11)]">
+          <span className="font-bold uppercase tracking-wide text-[var(--mauve-11)]">
             Artist
           </span>
           <br />
@@ -231,29 +231,29 @@ function DataItem({ item, type }) {
         {type === 'top-tracks' && (
           <>
             <p className={cx('text-xs tracking-tighter')}>
-              <span className="text-xs font-bold uppercase tracking-wide text-[var(--gray-11)]">
+              <span className="text-xs font-bold uppercase tracking-wide text-[var(--mauve-11)]">
                 Song
               </span>
               <br />
-              <span className="line-clamp-3 text-2xl text-[var(--gray-12)]">
+              <span className="line-clamp-3 text-2xl text-[var(--mauve-12)]">
                 {_title2}
               </span>
             </p>
             <p className={cx('text-xs tracking-tighter')}>
-              <span className="text-xs font-bold uppercase tracking-wide text-[var(--gray-11)]">
+              <span className="text-xs font-bold uppercase tracking-wide text-[var(--mauve-11)]">
                 Album
               </span>
               <br />
-              <span className="line-clamp-3 text-xl text-[var(--gray-12)]">
+              <span className="line-clamp-3 text-xl text-[var(--mauve-12)]">
                 {_title3}
               </span>
             </p>
             <p className={cx('text-xs tracking-tighter')}>
-              <span className="text-xs font-bold uppercase tracking-wide text-[var(--gray-11)]">
+              <span className="text-xs font-bold uppercase tracking-wide text-[var(--mauve-11)]">
                 Year
               </span>
               <br />
-              <span className="font-mono text-base text-[var(--gray-12)]">
+              <span className="font-mono text-base text-[var(--mauve-12)]">
                 {item.album.release_date.slice(0, 4)}
               </span>
             </p>
@@ -261,7 +261,7 @@ function DataItem({ item, type }) {
         )}
 
         <p className={cx('gap-2 text-xs tracking-tighter')}>
-          <span className="mb-2 text-xs font-bold uppercase tracking-wide text-[var(--gray-11)]">
+          <span className="mb-2 text-xs font-bold uppercase tracking-wide text-[var(--mauve-11)]">
             Genre{genres.length > 1 && 's'}
           </span>
           <br />
@@ -399,7 +399,7 @@ function Top({}) {
           <HeadlineTitleSub>
             <Badge
               aria-label="data from Spotify"
-              className={cx('!bg-[var(--gray-a3)] !text-black  dark:!text-white')}
+              className={cx('!bg-[var(--mauve-a3)] !text-black  dark:!text-white')}
               size="2"
             >
               <span aria-hidden className="inline md:hidden">
@@ -485,10 +485,10 @@ function Top({}) {
       <Grid as="section">
         <div
           className={cx(
-            'col-span-4 h-fit  md:col-span-1',
-            'sticky top-[calc(var(--header-height)_+_0px)] md:top-28',
+            'col-span-full h-fit  md:col-span-3',
+            'sticky top-[calc(var(--header-height)_-_5px)] md:top-28',
             'bg-white dark:bg-black',
-            'border-b-1 border-[var(--gray-a3)]',
+            'border-b-1 border-[var(--mauve-a3)]',
             'drop-shadow-sm dark:shadow-white/5  dark:drop-shadow-lg',
             'md:border-none md:drop-shadow-none',
           )}
@@ -552,7 +552,7 @@ function Top({}) {
         <ul
           className={cx(
             'm-0 list-none p-0',
-            'col-span-4 md:col-span-3',
+            'col-span-full md:col-span-9',
             'justify-items-start',
           )}
         >

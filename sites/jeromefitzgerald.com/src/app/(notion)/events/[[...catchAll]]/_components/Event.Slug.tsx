@@ -94,26 +94,26 @@ function Ticket({ isFakePortal = false, properties }) {
     <div
       className={cx(
         isFakePortal
-          ? 'visible inline md:invisible md:hidden'
-          : 'invisible hidden md:visible md:inline',
+          ? 'visible inline lg:invisible lg:hidden'
+          : 'invisible hidden lg:visible lg:inline',
         '[writing-mode:horizontal-tb]',
-        'bg-[var(--accent-a9)] md:bg-inherit',
-        'backdrop-blur-md md:backdrop-blur-none',
-        'fixed md:relative',
-        'bottom-0 md:bottom-auto',
-        'left-0 md:left-auto',
-        'w-screen md:w-auto',
-        'text-center md:text-left',
-        'z-50 md:z-0',
-        'px-2 pb-1.5 pt-4 md:p-0',
-        'rounded-t md:rounded-none',
+        'bg-[var(--accent-a9)] lg:bg-inherit',
+        'backdrop-blur-md lg:backdrop-blur-none',
+        'fixed lg:relative',
+        'bottom-0 lg:bottom-auto',
+        'left-0 lg:left-auto',
+        'w-screen lg:w-auto',
+        'text-center lg:text-left',
+        'z-50 lg:z-0',
+        'px-2 pb-1.5 pt-4 lg:p-0',
+        'rounded-t lg:rounded-none',
         '',
       )}
     >
       <div className="pl-5">
         <p
           className={cx(
-            'flex flex-row-reverse items-center justify-end gap-2 text-lg font-bold tracking-tight md:text-2xl',
+            'flex flex-row-reverse items-center justify-end gap-2 text-lg font-bold tracking-tight lg:text-2xl',
           )}
         >
           <strong>
@@ -123,7 +123,7 @@ function Ticket({ isFakePortal = false, properties }) {
         </p>
         <p
           className={cx(
-            'flex flex-row-reverse items-center justify-end gap-2 text-lg font-bold tracking-tight md:text-2xl',
+            'flex flex-row-reverse items-center justify-end gap-2 text-lg font-bold tracking-tight lg:text-2xl',
           )}
         >
           <strong>
@@ -133,11 +133,11 @@ function Ticket({ isFakePortal = false, properties }) {
         </p>
         <p
           className={cx(
-            'flex flex-row-reverse items-baseline justify-end gap-2 text-lg font-bold tracking-tight md:text-2xl',
+            'flex flex-row-reverse items-baseline justify-end gap-2 text-lg font-bold tracking-tight lg:text-2xl',
           )}
         >
           <strong>{venueTitle}</strong>
-          <HomeIcon className="relative top-[0.25rem] size-5 md:top-[0.125rem]" />
+          <HomeIcon className="relative top-[0.25rem] size-5 lg:top-[0.125rem]" />
         </p>
       </div>
       <div className="mt-1 pt-1">

@@ -17,9 +17,9 @@ function Banner({ data }) {
           'px-2 py-0',
           'my-2',
           'bg-[var(--accent-1)] dark:bg-[var(--accent-2)]',
-          'active:bg-[var(--gray-7)] dark:active:bg-[var(--gray-2)]',
+          'active:bg-[var(--mauve-7)] dark:active:bg-[var(--mauve-2)]',
           'leading-5',
-          'col-span-4 flex flex-row md:hidden',
+          'col-span-full flex flex-row lg:hidden',
           'items-center justify-center gap-2',
           // 'relative z-10 w-fit',
           'transition-transform',
@@ -57,7 +57,7 @@ function Banner({ data }) {
           className={cx(
             'inline-block w-full px-2 py-0',
             'truncate',
-            'min-w-32 max-w-60',
+            'min-w-32 max-w-80',
           )}
         >
           {data.content.mobile}
@@ -67,7 +67,7 @@ function Banner({ data }) {
       <div
         className={cx(
           'mb-2 mt-4',
-          'hidden md:col-span-4 md:flex md:flex-row',
+          'hidden lg:col-span-full lg:flex lg:flex-row',
           'items-center justify-center gap-2',
         )}
       >
@@ -104,7 +104,7 @@ function Banner({ data }) {
             // 'bg-[#ffffff] hover:bg-[#ffffff]/5',
             // 'dark:bg-[#000000] dark:hover:bg-[#fff]/5',
             // 'text-[var(--accent-11)] hover:text-[var(--accent-12)]',
-            // 'text-[var(--gray-12)] hover:text-[var(--gray-11)]',
+            // 'text-[var(--mauve-12)] hover:text-[var(--mauve-11)]',
             // 'transition-all',
             '',
           )}

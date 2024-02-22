@@ -6,7 +6,6 @@ import { EmbedSpotify } from '@jeromefitz/shared/components/Notion/Blocks/Embed.
 import { getDataFromCache } from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
-import { Badge } from '@radix-ui/themes'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 
@@ -19,7 +18,6 @@ import {
   HeadlineColumnA,
   HeadlineContent,
   HeadlineTitle,
-  HeadlineTitleSub,
 } from '~app/playground/2024/_components/Headline'
 import { Notion as Blocks } from '~components/Notion'
 import { Relations } from '~components/Relations'
@@ -47,7 +45,7 @@ const RELATIONS_SECONDARY = [
 ]
 
 const styleIndividual = cx(
-  'inline-block text-base font-normal tracking-tight no-underline md:text-xl',
+  'inline-block text-base font-normal tracking-tight no-underline lg:text-xl',
   '',
 )
 
@@ -95,12 +93,12 @@ function Rollups({ properties }) {
         {rollups.map((rollup) => {
           const key = `rollup-${rollup.id}`
           return (
-            <div className="col-span-6 md:col-span-4" key={key}>
+            <div className="col-span-6 lg:col-span-4" key={key}>
               <p className="pb-3 font-extrabold uppercase tracking-tight">
                 <strong>{rollup.id}</strong>
               </p>
               <ul>
-                <li className={'mb-2 md:mb-0.5'}>
+                <li className={'mb-2 lg:mb-0.5'}>
                   <span className={style}>{rollup.data}</span>
                 </li>
               </ul>
@@ -191,9 +189,6 @@ async function EpisodeSlug({ revalidate, segmentInfo }) {
           <HeadlineTitle aria-label={title} as="h1">
             <>{title}</>
           </HeadlineTitle>
-          <HeadlineTitleSub>
-            <Badge size="2">testing</Badge>
-          </HeadlineTitleSub>
         </HeadlineColumnA>
         <HeadlineContent>
           <WIP />

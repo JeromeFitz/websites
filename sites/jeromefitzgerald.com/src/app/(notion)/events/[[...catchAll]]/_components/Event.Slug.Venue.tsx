@@ -11,9 +11,9 @@ function VenueLoading() {
   return (
     <>
       <div className="relative top-[0.125rem] inline-block w-full max-w-sm animate-pulse rounded-md">
-        <div className="mb-2 h-4 w-11/12 rounded bg-[var(--gray-9)]"></div>
-        <div className="mb-2 h-4 w-11/12 rounded bg-[var(--gray-9)]"></div>
-        <div className="h-4 w-11/12 rounded bg-[var(--gray-9)]"></div>
+        <div className="mb-2 h-4 w-11/12 rounded bg-[var(--mauve-9)]"></div>
+        <div className="mb-2 h-4 w-11/12 rounded bg-[var(--mauve-9)]"></div>
+        <div className="h-4 w-11/12 rounded bg-[var(--mauve-9)]"></div>
       </div>
     </>
   )

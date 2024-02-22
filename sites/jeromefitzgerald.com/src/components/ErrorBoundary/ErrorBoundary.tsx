@@ -64,7 +64,7 @@ class ErrorBoundary extends Component<PropsChildren> {
               <p className="text-lg">
                 Please try and go back to the{` `}
                 <a
-                  className="inline-flex flex-row items-center gap-1 text-[var(--accent-11)] underline decoration-[var(--gray-4)] underline-offset-4 transition-all duration-200 ease-in hover:text-[var(--accent-12)] hover:decoration-[var(--gray-5)]"
+                  className="inline-flex flex-row items-center gap-1 text-[var(--accent-11)] underline decoration-[var(--mauve-4)] underline-offset-4 transition-all duration-200 ease-in hover:text-[var(--accent-12)] hover:decoration-[var(--mauve-5)]"
                   href="/"
                 >
                   homepage

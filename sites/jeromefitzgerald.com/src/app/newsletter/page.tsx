@@ -3,7 +3,6 @@ import {
   HeadlineColumnA,
   HeadlineContent,
   HeadlineTitle,
-  HeadlineTitleSub,
 } from '~app/playground/2024/_components/Headline'
 
 import { Modal } from './_components/Newsletter.Modal'
@@ -17,9 +16,6 @@ export default function Page() {
         <HeadlineTitle aria-label={title} as="h1">
           <>{title}</>
         </HeadlineTitle>
-        <HeadlineTitleSub>
-          <>testing</>
-        </HeadlineTitleSub>
       </HeadlineColumnA>
       <HeadlineContent>
         <Modal />

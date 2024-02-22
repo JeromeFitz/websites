@@ -114,7 +114,7 @@ function Item({
           isClickSet(true)
           isCmdkOpenSet()
         }
-        console.dir(`s: ${value}`)
+        // console.dir(`s: ${value}`)
       }
     : onSelect
 
@@ -336,7 +336,7 @@ function Cmdk() {
         }}
         onOpenChange={isCmdkOpenSet}
         onValueChange={(v) => {
-          console.dir(`v: ${v}`)
+          // console.dir(`v: ${v}`)
           setValue(v)
         }}
         open={isCmdkOpen}

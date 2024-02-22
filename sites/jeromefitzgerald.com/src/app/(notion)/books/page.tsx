@@ -92,9 +92,9 @@ async function Slug({ revalidate, segmentInfo }) {
    *
    */
   const books: any = [
-    { color: 'pink', id: 'in-progress', items: [], notionFilter: 'In Progress' },
-    { color: 'orange', id: 'in-queue', items: [], notionFilter: 'Pending' },
-    { color: 'jade', id: 'completed', items: [], notionFilter: 'Complete' },
+    { color: 'orange', id: 'in-progress', items: [], notionFilter: 'In Progress' },
+    { color: 'mint', id: 'in-queue', items: [], notionFilter: 'Pending' },
+    { color: 'purple', id: 'completed', items: [], notionFilter: 'Complete' },
   ]
 
   _items.map((item) => {

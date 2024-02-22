@@ -7,13 +7,13 @@ import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import { Button, Text } from '@radix-ui/themes'
 // eslint-disable-next-line no-restricted-imports
 import NextLink from 'next/link'
-import { Fragment, forwardRef } from 'react'
+import { Fragment, forwardRef, memo } from 'react'
 
 import { menus } from '~data/menu'
 
 const NavigationMenuImpl = () => {
   return (
-    <div className="col-span-4 hidden md:flex md:items-center md:justify-between">
+    <div className="col-span-full hidden lg:flex lg:items-center lg:justify-between">
       {/* @note(navigation) left */}
       <div className={cx('')}>
         <div
@@ -50,7 +50,7 @@ const NavigationMenuImpl = () => {
                         <NavigationMenu.Trigger
                           className={cx(
                             'group flex items-center justify-center',
-                            'rounded-full hover:bg-[var(--gray-a2)]',
+                            'rounded-full hover:bg-[var(--mauve-a2)]',
                             'px-3 py-2',
                             'transition-colors',
                           )}
@@ -112,7 +112,7 @@ const NavigationMenuImpl = () => {
                           className={cx(
                             'group flex',
                             // 'place-items-center items-center justify-center',
-                            'rounded-full hover:bg-[var(--gray-a2)]',
+                            'rounded-full hover:bg-[var(--mauve-a2)]',
                             'px-3 py-2',
                             'transition-colors',
                           )}
@@ -175,7 +175,7 @@ const ListItem = forwardRef(
           'group',
           'flex select-none flex-row items-center gap-3 p-3',
           'text-black dark:text-white',
-          'hover:bg-[var(--gray-a2)]',
+          'hover:bg-[var(--mauve-a2)]',
           'rounded-md px-3 py-2',
           className,
         )}
@@ -192,13 +192,13 @@ const ListItem = forwardRef(
             className={cx(
               'flex flex-col items-start justify-start',
               'mt-0 h-full',
-              'group-hover:text-[var(--gray-12)]',
+              'group-hover:text-[var(--mauve-12)]',
             )}
           >
             <Text
               as="div"
               className={cx(
-                'mb-1 flex items-center gap-2 whitespace-nowrap text-[15px] font-medium text-[var(--gray12)]',
+                'mb-1 flex items-center gap-2 whitespace-nowrap text-[15px] font-medium text-[var(--mauve12)]',
               )}
             >
               {title}
@@ -213,4 +213,8 @@ const ListItem = forwardRef(
   ),
 )
 
-export { NavigationMenuImpl as NavigationDesktop }
+const NavigationMenuMemo = memo(function _NavigationMenuMemo() {
+  return <NavigationMenuImpl />
+})
+
+export { NavigationMenuMemo as NavigationDesktop }

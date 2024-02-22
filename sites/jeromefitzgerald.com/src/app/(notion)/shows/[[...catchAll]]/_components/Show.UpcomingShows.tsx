@@ -29,7 +29,7 @@ async function UpcomingShowsIndividual({ id }) {
   } = getEventData(properties)
 
   const style = cx(
-    'inline-block text-lg font-normal tracking-tight md:text-2xl',
+    'inline-block text-lg font-normal tracking-tight lg:text-2xl',
     'mb-4 w-full',
     'hover:bg-[var(--blackA8)] dark:hover:bg-[var(--whiteA8)]',
   )
@@ -61,7 +61,7 @@ function UpcomingShows({ properties }) {
     return (
       <p
         className={cx(
-          'inline-block text-base font-normal tracking-tight md:text-xl',
+          'inline-block text-base font-normal tracking-tight lg:text-xl',
         )}
       >
         No Upcoming Shows
@@ -78,7 +78,7 @@ function UpcomingShows({ properties }) {
               const { id } = item
 
               return (
-                <li className={cx('my-2 md:my-0.5')} key={id}>
+                <li className={cx('my-2 lg:my-0.5')} key={id}>
                   <Suspense fallback={<RelationLoading />}>
                     <UpcomingShowsIndividual id={id} />
                   </Suspense>

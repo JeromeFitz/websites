@@ -22,7 +22,7 @@ function Relations({ properties, relations, relationsSecondary }) {
     <div
       className={cx(
         'grid w-full grid-cols-12 gap-x-4 gap-y-8',
-        // 'md:[&>*:nth-child(2)]:col-start-9',
+        // 'lg:[&>*:nth-child(2)]:col-start-9',
         '',
       )}
     >
@@ -37,9 +37,9 @@ function Relations({ properties, relations, relationsSecondary }) {
           <div
             className={cx(
               'col-span-6',
-              'md:col-span-4 ',
+              'lg:col-span-4 ',
               // 'first:col-span-12',
-              // 'md:first:col-span-8',
+              // 'lg:first:col-span-8',
               '',
             )}
             key={`${id}-${relation}`}
@@ -47,7 +47,7 @@ function Relations({ properties, relations, relationsSecondary }) {
             <p
               className={cx(
                 'pb-3 font-extrabold uppercase tracking-tight',
-                'text-[var(--gray-11)]',
+                'text-[var(--mauve-11)]',
               )}
             >
               <strong>{title}</strong>
@@ -60,7 +60,7 @@ function Relations({ properties, relations, relationsSecondary }) {
                   const { id } = item
 
                   return (
-                    <li key={id} className={cx('mb-2 md:mb-0.5')}>
+                    <li key={id} className={cx('mb-2 lg:mb-0.5')}>
                       <Suspense fallback={<RelationLoading />}>
                         <RelationIndividual id={id} />
                       </Suspense>

@@ -161,9 +161,17 @@ const config = ({
           hostname: `**.jerandky.com`,
           protocol,
         },
+        {
+          hostname: `cdn.jerandky.com`,
+          protocol,
+        },
         // @note(remotePattern) Future proofing "other" websites
         {
           hostname: `**.jeromefitzgerald.com`,
+          protocol,
+        },
+        {
+          hostname: `cdn.jeromefitzgerald.com`,
           protocol,
         },
         // @note(remotePattern) AWS

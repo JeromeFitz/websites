@@ -8,14 +8,11 @@ import { GeistSans as fontGeistSans } from 'geist/font/sans'
 import { Viewport } from 'next'
 // import localFont from 'next/font/local'
 
-import type { ReactNode } from 'react'
-
-import type { As } from '~app/playground/2024/_components/Headline.types'
-
 import { Footer } from '~app/_temp/Footer'
 import { BannerClient } from '~app/playground/2024/_components/Banner/Banner.client'
 import { Navigation } from '~app/playground/2024/_components/Navigation'
 import { Providers } from '~components/Providers'
+import { Wrapper } from '~components/Wrapper'
 
 import { PreloadResources } from './_next/preload-resources'
 
@@ -101,27 +98,6 @@ export const viewport: Viewport = {
   themeColor: '#0f0f0f',
 }
 
-type WrapperProps = {
-  as?: As
-  children: ReactNode
-  className?: string
-}
-function Wrapper({ as = 'div', children, className, ...props }: WrapperProps) {
-  const Component: As = as
-  return (
-    <Component
-      className={cx(
-        'inset-y-0 z-50 flex w-full flex-col items-center',
-        'mx-auto max-w-screen-xl',
-        className,
-      )}
-      {...props}
-    >
-      {children}
-    </Component>
-  )
-}
-
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
@@ -136,26 +112,31 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       suppressHydrationWarning
     >
       <PreloadResources />
-      <body
-        className={cx(
-          // 'overflow-y-auto overflow-x-hidden md:overflow-y-auto',
-          // 'transition-all duration-200',
-          'selection:bg-[var(--gray-12)] selection:text-[var(--gray-1)]',
-          'bg-white dark:bg-black',
-          'font-sans antialiased',
-          '',
-        )}
+
+      <Theme
+        accentColor="pink"
+        asChild
+        grayColor="gray"
+        panelBackground="translucent"
+        radius="medium"
+        scaling="100%"
       >
-        <Theme
-          accentColor="pink"
-          grayColor="gray"
-          panelBackground="translucent"
-          radius="medium"
-          scaling="100%"
+        <body
+          className={cx(
+            // 'overflow-y-auto overflow-x-hidden lg:overflow-y-auto',
+            // 'transition-all duration-200',
+            'selection:bg-[var(--mauve-12)] selection:text-[var(--mauve-1)]',
+            'bg-white dark:bg-black',
+            'font-sans antialiased',
+            '',
+          )}
         >
           <Providers>
             <Analytics />
-            <Wrapper as="header" className={cx('sticky top-0 z-10 mx-auto w-full ')}>
+            <Wrapper
+              as="header"
+              className={cx('sticky top-0 !z-30 mx-auto w-full ')}
+            >
               <Navigation />
             </Wrapper>
             <Wrapper className="">
@@ -167,9 +148,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Wrapper as="footer" className="">
               <Footer />
             </Wrapper>
+            {/* <ThemePanel /> */}
           </Providers>
-        </Theme>
-      </body>
+        </body>
+      </Theme>
     </html>
   )
 }

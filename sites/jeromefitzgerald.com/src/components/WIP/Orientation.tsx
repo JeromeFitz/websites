@@ -5,12 +5,12 @@ import { useOs } from '@mantine/hooks'
 import { useEffect, useState } from 'react'
 import { useOrientation } from 'react-use'
 
-const isActive = true
+const isActive = false
 
 function OrientationContent({ os }) {
   return (
     <>
-      <div className="m-12 flex flex-row items-start justify-start gap-1 py-4 align-text-bottom font-mono md:py-0">
+      <div className="m-12 flex flex-row items-start justify-start gap-1 py-4 align-text-bottom font-mono lg:py-0">
         <span className="mr-2 mt-1 size-4">
           <FileTextIcon className="text-inherit" />
         </span>
@@ -23,7 +23,7 @@ function OrientationContent({ os }) {
           </span>
         </span>
       </div>
-      <div className="m-12 flex flex-row items-start justify-start gap-1 py-4 align-text-bottom font-mono md:py-0">
+      <div className="m-12 flex flex-row items-start justify-start gap-1 py-4 align-text-bottom font-mono lg:py-0">
         <span className="mr-2 mt-1 size-4">
           <UpdateIcon className="text-inherit" />
         </span>

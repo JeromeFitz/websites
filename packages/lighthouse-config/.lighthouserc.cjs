@@ -19,8 +19,7 @@ const config = ({ urlAdditional, website }) => {
           'categories:best-practices': [WARN, { minScore: 1 }],
           'categories:performance': [WARN, { minScore: 0.96 }],
           'categories:seo': [WARN, { minScore: 1 }],
-          // @note(radix-ui) bg3+text11 passes, not sure what is going on here
-          'color-contrast': WARN,
+          'color-contrast': ERROR,
           'csp-xss': OFF,
           'dom-size': OFF,
           'empty-heading': OFF,

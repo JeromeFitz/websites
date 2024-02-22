@@ -5,12 +5,12 @@ import Image from 'next/image'
 
 function Quote({ item }) {
   return (
-    <section className={cx('grid h-fit grid-cols-2 grid-rows-1 md:grid-cols-3')}>
-      <div className={cx('col-span-3', 'p-6 md:p-12')}>
+    <section className={cx('grid h-fit grid-cols-2 grid-rows-1 lg:grid-cols-3')}>
+      <div className={cx('col-span-3', 'p-6 lg:p-12')}>
         <div className={cx('')}>
           <div
             className={cx(
-              'text-3xl font-normal md:font-medium',
+              'text-3xl font-normal lg:font-medium',
               'pointer-events-none relative -indent-3',
               'max-w-screen-sm',
               '',

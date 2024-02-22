@@ -17,7 +17,7 @@ function FooterCmdkClient() {
   return (
     <Tooltip description={'Open via Cmd ⌘ + K'}>
       <Button
-        className="gap-[0.5rem] group-hover:cursor-pointer md:flex"
+        className="gap-[0.5rem] group-hover:cursor-pointer lg:flex"
         highContrast
         //
         onClick={() => {
@@ -27,10 +27,10 @@ function FooterCmdkClient() {
         size="3"
         variant="ghost"
       >
-        <span className="gap-[0.25rem] md:flex">
-          <Kbd className="group-hover:cursor-pointer">Cmd ⌘ + K</Kbd>
+        <span className="gap-[0.25rem] lg:flex">
+          <Kbd className="font-mono group-hover:cursor-pointer">⌘ + K</Kbd>
         </span>
-        <p className="text-[var(--gray-12)]">Command Menu</p>
+        <p className="text-[var(--mauve-12)]">Command Menu</p>
       </Button>
     </Tooltip>
   )
