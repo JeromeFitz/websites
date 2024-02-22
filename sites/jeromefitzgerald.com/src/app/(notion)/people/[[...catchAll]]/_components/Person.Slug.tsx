@@ -1,20 +1,20 @@
-import { getDataFromCache } from '@jeromefitz/shared/notion/utils'
+import { getDataFromCache } from '@jeromefitz/shared/notion/utils/index'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
-import { draftMode } from 'next/headers'
-import { notFound } from 'next/navigation'
+import { draftMode } from 'next/headers.js'
+import { notFound } from 'next/navigation.js'
 
-import type { PropertiesPerson } from '@/app/(notion)/_config'
+import type { PropertiesPerson } from '@/app/(notion)/_config/index'
 
-import { CONFIG, getPersonData } from '@/app/(notion)/_config'
-import { Grid } from '@/components/Grid'
+import { CONFIG, getPersonData } from '@/app/(notion)/_config/index'
+import { Grid } from '@/components/Grid/index'
 import {
   HeadlineColumnA,
   HeadlineContent,
   HeadlineTitle,
-} from '@/components/Headline'
-import { Notion as Blocks } from '@/components/Notion'
-import { Relations } from '@/components/Relations'
+} from '@/components/Headline/index'
+import { Notion as Blocks } from '@/components/Notion/index'
+import { Relations } from '@/components/Relations/index'
 
 // import { UpcomingShows } from './Show.UpcomingShows'
 

@@ -1,14 +1,14 @@
 import { cx } from '@jeromefitz/ds/utils/cx'
-// import { notFound } from 'next/navigation'
+// import { notFound } from 'next/navigation.js'
 
 import { FourOhFour } from '@/app/_errors/404'
-import { Grid } from '@/components/Grid'
+import { Grid } from '@/components/Grid/index'
 import {
   HeadlineColumnA,
   HeadlineContent,
   HeadlineTitle,
   HeadlineTitleSub,
-} from '@/components/Headline'
+} from '@/components/Headline/index'
 
 const isDev = process.env.NODE_ENV === 'development'
 

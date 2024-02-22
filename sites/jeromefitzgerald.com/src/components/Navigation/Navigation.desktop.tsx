@@ -1,6 +1,6 @@
 'use client'
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { CaretDownIcon, Pencil2Icon } from '@jeromefitz/ds/components/Icon'
+import { CaretDownIcon, Pencil2Icon } from '@jeromefitz/ds/components/Icon/index'
 import { cx } from '@jeromefitz/ds/utils/cx'
 
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'

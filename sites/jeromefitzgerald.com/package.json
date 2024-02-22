@@ -1,6 +1,7 @@
 {
   "name": "jeromefitzgerald.com",
   "version": "0.0.0",
+  "type": "module",
   "description": "Website for Jerome Fitzgerald (he/him).",
   "repository": "jeromefitz/websites.git",
   "author": {

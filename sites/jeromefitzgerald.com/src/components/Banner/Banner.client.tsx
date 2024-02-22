@@ -3,10 +3,10 @@ import {
   ArrowRightIcon,
   BookOpenIcon,
   PlayIcon,
-} from '@jeromefitz/ds/components/Icon'
+} from '@jeromefitz/ds/components/Icon/index'
 import { cx } from '@jeromefitz/ds/utils/cx'
 
-import { usePathname } from 'next/navigation'
+import { usePathname } from 'next/navigation.js'
 
 import type { Data } from './Banner.types'
 

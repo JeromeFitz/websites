@@ -1,19 +1,22 @@
-import { getDataFromCache, getSegmentInfo } from '@jeromefitz/shared/notion/utils'
+import {
+  getDataFromCache,
+  getSegmentInfo,
+} from '@jeromefitz/shared/notion/utils/index'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
 import type { Metadata } from 'next'
 
-import { draftMode } from 'next/headers'
+import { draftMode } from 'next/headers.js'
 
-import { CONFIG, getPageData } from '@/app/(notion)/_config'
+import { CONFIG, getPageData } from '@/app/(notion)/_config/index'
 import { generateMetadataCustom } from '@/app/(notion)/_config/temp/generateMetadataCustom'
-import { Grid } from '@/components/Grid'
+import { Grid } from '@/components/Grid/index'
 import {
   HeadlineColumnA,
   HeadlineContent,
   HeadlineTitle,
-} from '@/components/Headline'
-import { Notion as Blocks } from '@/components/Notion'
+} from '@/components/Headline/index'
+import { Notion as Blocks } from '@/components/Notion/index'
 
 const slug = '/about'
 const { SEGMENT } = CONFIG.PAGES

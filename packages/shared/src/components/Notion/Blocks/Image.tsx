@@ -22,7 +22,7 @@ import { Redis } from '@upstash/redis'
 import stringify from 'fast-json-stable-stringify'
 import { slug as _slug } from 'github-slugger'
 import { NotionEmoji as EmojiWrapper } from 'next-notion/blocks/Emoji'
-import { isImageExpired } from 'next-notion/utils'
+import { isImageExpired } from 'next-notion/utils/index'
 import validUrl from 'valid-url'
 
 import { TIME } from '../../../lib/constants'
@@ -31,7 +31,13 @@ import { getImageAlt, getImageExpiration, getImageUrl } from './Image.utils'
 
 const notion = new Client({ auth: process.env.NOTION_API_KEY })
 
-const redis = Redis.fromEnv({ agent: new https.Agent({ keepAlive: true }) })
+const redis = Redis.fromEnv({
+  agent: new https.Agent({ keepAlive: true }),
+  retry: {
+    backoff: (retryCount) => Math.exp(retryCount) * 50,
+    retries: 5,
+  },
+})
 
 /**
  * @note(next|redis) try to avoid breaking changes but if necessary

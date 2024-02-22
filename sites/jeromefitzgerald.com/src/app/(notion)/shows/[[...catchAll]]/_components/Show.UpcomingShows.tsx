@@ -1,14 +1,14 @@
-import { Anchor } from '@jeromefitz/ds/components/Anchor'
+import { Anchor } from '@jeromefitz/ds/components/Anchor/index'
 import { cx } from '@jeromefitz/ds/utils/cx'
-import { getPageDataFromNotion } from '@jeromefitz/shared/notion/utils'
+import { getPageDataFromNotion } from '@jeromefitz/shared/notion/utils/index'
 
 import _size from 'lodash/size.js'
 import { Suspense } from 'react'
 
-import type { PageObjectResponseEvent } from '@/app/(notion)/_config'
+import type { PageObjectResponseEvent } from '@/app/(notion)/_config/index'
 
-import { getEventData, getPropertyTypeDataShow } from '@/app/(notion)/_config'
-import { RelationLoading } from '@/components/Relations'
+import { getEventData, getPropertyTypeDataShow } from '@/app/(notion)/_config/index'
+import { RelationLoading } from '@/components/Relations/index'
 
 async function UpcomingShowsIndividual({ id }) {
   const item: PageObjectResponseEvent = await getPageDataFromNotion(id)

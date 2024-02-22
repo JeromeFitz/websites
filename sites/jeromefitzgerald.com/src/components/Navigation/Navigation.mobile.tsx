@@ -5,7 +5,7 @@ import {
   HamburgerMenuIcon,
   MoonIcon,
   SunIcon,
-} from '@jeromefitz/ds/components/Icon'
+} from '@jeromefitz/ds/components/Icon/index'
 import { cx } from '@jeromefitz/ds/utils/cx'
 
 import * as Accordion from '@radix-ui/react-accordion'

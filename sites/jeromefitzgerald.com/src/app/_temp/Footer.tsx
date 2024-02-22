@@ -2,15 +2,15 @@ import {
   ArchiveIcon,
   // ArrowTopRightIcon,
   ExternalLinkIcon,
-} from '@jeromefitz/ds/components/Icon'
+} from '@jeromefitz/ds/components/Icon/index'
 import { cx } from '@jeromefitz/ds/utils/cx'
 
 import { Button } from '@radix-ui/themes'
 // eslint-disable-next-line no-restricted-imports
 import NextLink from 'next/link'
 
-import { Grid } from '@/components/Grid'
-import { WIPFooter } from '@/components/WIP'
+import { Grid } from '@/components/Grid/index'
+import { WIPFooter } from '@/components/WIP/index'
 /**
  * @note ignore this file for CI linting (created on next build)
  */

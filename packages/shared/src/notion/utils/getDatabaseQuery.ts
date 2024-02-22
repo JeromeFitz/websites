@@ -2,7 +2,7 @@ import 'server-only'
 
 import { isObjectEmpty } from '@jeromefitz/utils'
 
-import { getDatabaseQuery as _getDatabaseQuery } from 'next-notion/queries'
+import { getDatabaseQuery as _getDatabaseQuery } from 'next-notion/queries/index'
 import { cache } from 'react'
 
 import { getCache, getKey, setCache } from '../../redis/index'

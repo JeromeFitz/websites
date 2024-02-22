@@ -3,16 +3,16 @@ import {
   getDataFromCache,
   getDatabaseQuery,
   getSegmentInfo,
-} from '@jeromefitz/shared/notion/utils'
+} from '@jeromefitz/shared/notion/utils/index'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
 import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints.js'
 import type { Metadata } from 'next'
 
-import { draftMode } from 'next/headers'
+import { draftMode } from 'next/headers.js'
 import _title from 'title'
 
-import { CONFIG, getBookData, getPageData } from '@/app/(notion)/_config'
+import { CONFIG, getBookData, getPageData } from '@/app/(notion)/_config/index'
 import { generateMetadataCustom } from '@/app/(notion)/_config/temp/generateMetadataCustom'
 
 import { BookPage } from './_components/Book.client'

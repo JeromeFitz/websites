@@ -6,7 +6,7 @@ import type {
 } from '@notionhq/client/build/src/api-endpoints.js'
 import type { Metadata } from 'next'
 
-import { getPropertyTypeData } from 'next-notion/utils'
+import { getPropertyTypeData } from 'next-notion/utils/index'
 import _title from 'title'
 
 // import { getEventData } from '../index'

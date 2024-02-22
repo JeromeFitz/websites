@@ -1,5 +1,5 @@
 'use client'
-import { FileTextIcon, UpdateIcon } from '@jeromefitz/ds/components/Icon'
+import { FileTextIcon, UpdateIcon } from '@jeromefitz/ds/components/Icon/index'
 
 import { useOs } from '@mantine/hooks'
 import { useEffect, useState } from 'react'

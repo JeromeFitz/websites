@@ -14,7 +14,7 @@ import {
   StarIcon,
   SunIcon,
   TicketIcon,
-} from '@jeromefitz/ds/components/Icon'
+} from '@jeromefitz/ds/components/Icon/index'
 
 import type { ReactNode } from 'react'
 

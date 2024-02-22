@@ -1,27 +1,30 @@
-import { Anchor } from '@jeromefitz/ds/components/Anchor'
+import { Anchor } from '@jeromefitz/ds/components/Anchor/index'
 // import { cx } from '@jeromefitz/ds/utils/cx'
-import { getDataFromCache, getDatabaseQuery } from '@jeromefitz/shared/notion/utils'
+import {
+  getDataFromCache,
+  getDatabaseQuery,
+} from '@jeromefitz/shared/notion/utils/index'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
 import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints.js'
 
 import _filter from 'lodash/filter.js'
 import _orderBy from 'lodash/orderBy.js'
-import { draftMode } from 'next/headers'
-import { notFound } from 'next/navigation'
-import { getPropertyTypeData } from 'next-notion/utils'
+import { draftMode } from 'next/headers.js'
+import { notFound } from 'next/navigation.js'
+import { getPropertyTypeData } from 'next-notion/utils/index'
 
-// import { CONFIG, getPageData, getPodcastData } from '@/app/(notion)/_config'
-import { CONFIG, getPodcastData } from '@/app/(notion)/_config'
-import { Grid } from '@/components/Grid'
+// import { CONFIG, getPageData, getPodcastData } from '@/app/(notion)/_config/index'
+import { CONFIG, getPodcastData } from '@/app/(notion)/_config/index'
+import { Grid } from '@/components/Grid/index'
 import {
   HeadlineColumnA,
   HeadlineContent,
   HeadlineTitle,
-} from '@/components/Headline'
-// import { Notion as Blocks } from '@/components/Notion'
-// import type { PageObjectResponsePodcast } from '@/app/(notion)/_config'
-import { WIP } from '@/components/WIP'
+} from '@/components/Headline/index'
+// import { Notion as Blocks } from '@/components/Notion/index'
+// import type { PageObjectResponsePodcast } from '@/app/(notion)/_config/index'
+import { WIP } from '@/components/WIP/index'
 
 const { DATABASE_ID } = CONFIG.PODCASTS
 

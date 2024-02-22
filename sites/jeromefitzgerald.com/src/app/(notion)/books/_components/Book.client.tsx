@@ -7,14 +7,14 @@ import { format } from 'date-fns'
 import _orderBy from 'lodash/orderBy.js'
 import { Fragment } from 'react'
 
-import { Grid } from '@/components/Grid'
+import { Grid } from '@/components/Grid/index'
 import {
   HeadlineColumnA,
   HeadlineContent,
   HeadlineTitle,
   HeadlineTitleSub,
-} from '@/components/Headline'
-import { WIP } from '@/components/WIP'
+} from '@/components/Headline/index'
+import { WIP } from '@/components/WIP/index'
 
 // function ListItem() {
 //   return <></>
@@ -111,7 +111,7 @@ function BookPage({ books, title }) {
             Please support your local library and bookstores. If you buy online,
             please consider <strong>Biblio</strong> (whose affiliate program is ...
             uh ... not in their control) and <strong>Bookshop</strong> (whose
-            affiliate program does not work).
+            affiliate program I am in the process of setting up).
           </p>
           <p className={cx('text-lg tracking-wide', 'flex flex-col gap-0', '')}>
             On that note: Pittsburgh is home to a lot great bookstores!

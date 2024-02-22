@@ -1,9 +1,9 @@
-import { Separator } from '@jeromefitz/ds/components/Separator'
+import { Separator } from '@jeromefitz/ds/components/Separator/index'
 import {
   getDataFromCache,
   getDatabaseQuery,
   getDatabaseQueryByDateRange,
-} from '@jeromefitz/shared/notion/utils'
+} from '@jeromefitz/shared/notion/utils/index'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
 import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints.js'
@@ -12,21 +12,21 @@ import { Link } from '@radix-ui/themes'
 import _filter from 'lodash/filter.js'
 import _orderBy from 'lodash/orderBy.js'
 import _remove from 'lodash/remove.js'
-// import { draftMode } from 'next/headers'
+// import { draftMode } from 'next/headers.js'
 // eslint-disable-next-line no-restricted-imports
 import NextLink from 'next/link'
-import { notFound } from 'next/navigation'
-import { getPropertyTypeData } from 'next-notion/utils'
+import { notFound } from 'next/navigation.js'
+import { getPropertyTypeData } from 'next-notion/utils/index'
 
-// import { CONFIG, getEventData, getPageData } from '@/app/(notion)/_config'
-import { CONFIG, getEventData } from '@/app/(notion)/_config'
-import { Grid } from '@/components/Grid'
+// import { CONFIG, getEventData, getPageData } from '@/app/(notion)/_config/index'
+import { CONFIG, getEventData } from '@/app/(notion)/_config/index'
+import { Grid } from '@/components/Grid/index'
 import {
   HeadlineColumnA,
   HeadlineContent,
   HeadlineTitle,
-} from '@/components/Headline'
-import { WIP } from '@/components/WIP'
+} from '@/components/Headline/index'
+import { WIP } from '@/components/WIP/index'
 
 import { AccordionClient } from './Event.Listing.client'
 

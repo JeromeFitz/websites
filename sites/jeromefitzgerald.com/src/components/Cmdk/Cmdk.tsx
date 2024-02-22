@@ -1,5 +1,5 @@
 'use client'
-import { MagnifyingGlassIcon } from '@jeromefitz/ds/components/Icon'
+import { MagnifyingGlassIcon } from '@jeromefitz/ds/components/Icon/index'
 import { cx } from '@jeromefitz/ds/utils/cx'
 import '@jeromefitz/tailwind-config/styles/cmdk.css'
 
@@ -10,7 +10,7 @@ import { Command, useCommandState } from 'cmdk'
 import { AnimatePresence, MotionProps, motion } from 'framer-motion'
 import { slug as _slug } from 'github-slugger'
 import _findIndex from 'lodash/findIndex.js'
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation.js'
 import { useTheme } from 'next-themes'
 import { useEffect, useMemo, useRef, useState } from 'react'
 

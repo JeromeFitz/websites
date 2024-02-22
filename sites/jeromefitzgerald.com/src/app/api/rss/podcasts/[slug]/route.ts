@@ -1,16 +1,19 @@
 // https://jerandky.com/api/rss/podcasts/jer-and-ky-and-guest
 // https://jerandky.com/api/rss/podcasts/knockoffs
 
-import { getDataFromCache, getSegmentInfo } from '@jeromefitz/shared/notion/utils'
+import {
+  getDataFromCache,
+  getSegmentInfo,
+} from '@jeromefitz/shared/notion/utils/index'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
 import _orderBy from 'lodash/orderBy.js'
-import { NextRequest, NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server.js'
 import { notion } from 'next-notion/helper'
 import { Podcast } from 'podcast'
 
-// import type { PropertiesEpisode, PropertiesPodcast } from '@/app/(notion)/_config'
-import { CONFIG, getEpisodeData, getPodcastData } from '@/app/(notion)/_config'
+// import type { PropertiesEpisode, PropertiesPodcast } from '@/app/(notion)/_config/index'
+import { CONFIG, getEpisodeData, getPodcastData } from '@/app/(notion)/_config/index'
 
 const { DATABASE_ID, SEGMENT } = CONFIG.PODCASTS
 

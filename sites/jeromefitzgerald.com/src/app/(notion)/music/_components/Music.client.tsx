@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 'use client'
 import { useOnScreen, useSWRInfinitePages } from '@jeromefitz/design-system'
-import { Anchor } from '@jeromefitz/ds/components/Anchor'
-import { ArrowTopRightIcon } from '@jeromefitz/ds/components/Icon'
+import { Anchor } from '@jeromefitz/ds/components/Anchor/index'
+import { ArrowTopRightIcon } from '@jeromefitz/ds/components/Icon/index'
 import { cx } from '@jeromefitz/ds/utils/cx'
 import { fetcher } from '@jeromefitz/shared/lib'
 
@@ -24,13 +24,13 @@ import NextLink from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 import _title from 'title'
 
-import { Grid } from '@/components/Grid'
+import { Grid } from '@/components/Grid/index'
 import {
   HeadlineColumnA,
   HeadlineContent,
   HeadlineTitle,
   HeadlineTitleSub,
-} from '@/components/Headline'
+} from '@/components/Headline/index'
 import { bandcamps } from '@/data/bandcamps'
 import { useStore as _useStore } from '@/store/index'
 

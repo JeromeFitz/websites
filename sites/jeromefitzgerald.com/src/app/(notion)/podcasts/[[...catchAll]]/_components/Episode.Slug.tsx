@@ -1,27 +1,27 @@
-import { Anchor } from '@jeromefitz/ds/components/Anchor'
-// import { MicrophoneIcon } from '@jeromefitz/ds/components/Icon'
-import { Separator } from '@jeromefitz/ds/components/Separator'
+import { Anchor } from '@jeromefitz/ds/components/Anchor/index'
+// import { MicrophoneIcon } from '@jeromefitz/ds/components/Icon/index'
+import { Separator } from '@jeromefitz/ds/components/Separator/index'
 import { cx } from '@jeromefitz/ds/utils/cx'
 import { EmbedSpotify } from '@jeromefitz/shared/components/Notion/Blocks/Embed.Spotify'
-import { getDataFromCache } from '@jeromefitz/shared/notion/utils'
+import { getDataFromCache } from '@jeromefitz/shared/notion/utils/index'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
-import { draftMode } from 'next/headers'
-import { notFound } from 'next/navigation'
+import { draftMode } from 'next/headers.js'
+import { notFound } from 'next/navigation.js'
 
-import type { PropertiesEpisode } from '@/app/(notion)/_config'
+import type { PropertiesEpisode } from '@/app/(notion)/_config/index'
 
-import { CONFIG, getEpisodeData } from '@/app/(notion)/_config'
+import { CONFIG, getEpisodeData } from '@/app/(notion)/_config/index'
 import { Image } from '@/app/(notion)/events/[[...catchAll]]/_components/Image'
-import { Grid } from '@/components/Grid'
+import { Grid } from '@/components/Grid/index'
 import {
   HeadlineColumnA,
   HeadlineContent,
   HeadlineTitle,
-} from '@/components/Headline'
-import { Notion as Blocks } from '@/components/Notion'
-import { Relations } from '@/components/Relations'
-import { WIP } from '@/components/WIP'
+} from '@/components/Headline/index'
+import { Notion as Blocks } from '@/components/Notion/index'
+import { Relations } from '@/components/Relations/index'
+import { WIP } from '@/components/WIP/index'
 
 const { DATABASE_ID } = CONFIG.EPISODES
 

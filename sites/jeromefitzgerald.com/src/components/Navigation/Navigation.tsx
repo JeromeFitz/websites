@@ -1,6 +1,6 @@
 import { cx } from '@jeromefitz/ds/utils/cx'
 
-import { Grid } from '@/components/Grid'
+import { Grid } from '@/components/Grid/index'
 
 import { NavigationDesktop } from './Navigation.desktop'
 import { NavigationMobile } from './Navigation.mobile'

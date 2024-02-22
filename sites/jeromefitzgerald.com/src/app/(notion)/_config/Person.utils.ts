@@ -1,6 +1,6 @@
-import { getPropertyTypeData } from 'next-notion/utils'
+import { getPropertyTypeData } from 'next-notion/utils/index'
 
-import type { PropertiesPerson } from '@/app/(notion)/_config'
+import type { PropertiesPerson } from '@/app/(notion)/_config/index'
 
 function getPropertyTypeDataPerson(properties, property: keyof PropertiesPerson) {
   return getPropertyTypeData(properties, property)

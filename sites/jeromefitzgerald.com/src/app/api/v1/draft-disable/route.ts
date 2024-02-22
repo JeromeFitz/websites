@@ -1,4 +1,4 @@
-import { draftMode } from 'next/headers'
+import { draftMode } from 'next/headers.js'
 
 export function GET() {
   draftMode().disable()
