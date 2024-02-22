@@ -1,9 +1,9 @@
-import { Grid } from '@/components/Grid'
+import { Grid } from '@/components/Grid/index'
 import {
   HeadlineColumnA,
   HeadlineContent,
   HeadlineTitle,
-} from '@/components/Headline'
+} from '@/components/Headline/index'
 
 import { Modal } from './_components/Newsletter.Modal'
 

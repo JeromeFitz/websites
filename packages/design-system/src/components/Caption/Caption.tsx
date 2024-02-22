@@ -1,27 +1,27 @@
-import type { CalloutRootProps } from '@radix-ui/themes/dist/esm/components/callout.js'
-
 import { CalloutIcon, CalloutRoot, CalloutText } from '@radix-ui/themes'
 
 import { cx } from '../../utils/cx'
-import { CameraIcon } from '../Icon'
+import { CameraIcon } from '../Icon/index'
 
-interface CalloutRootPropsCustom extends CalloutRootProps {
+interface CaptionProps {
+  children?: any
+  className?: string
+  classNameText?: string
   icon?: any
-  textClassname?: string
 }
 
 function Caption({
   children,
-  className,
+  className = '',
+  classNameText = '',
   icon: Icon = CameraIcon,
-  size = '2',
-}: CalloutRootPropsCustom) {
+}: CaptionProps) {
   return (
-    <CalloutRoot className={cx('w-full font-mono', className)} size={size}>
+    <CalloutRoot className={cx('w-full font-mono', className)} size="2">
       <CalloutIcon>
         <Icon />
       </CalloutIcon>
-      <CalloutText>{children}</CalloutText>
+      <CalloutText className={classNameText}>{children}</CalloutText>
     </CalloutRoot>
   )
 }

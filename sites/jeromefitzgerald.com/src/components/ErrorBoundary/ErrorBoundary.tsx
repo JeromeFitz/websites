@@ -1,17 +1,17 @@
 'use client'
-import { Separator } from '@jeromefitz/ds/components/Separator'
+import { Separator } from '@jeromefitz/ds/components/Separator/index'
 
 import type { ReactNode } from 'react'
 
 import { Component } from 'react'
 
-import { Grid } from '@/components/Grid'
+import { Grid } from '@/components/Grid/index'
 import {
   HeadlineColumnA,
   HeadlineContent,
   HeadlineTitle,
   HeadlineTitleSub,
-} from '@/components/Headline'
+} from '@/components/Headline/index'
 
 type PropsChildren = {
   children?: ReactNode

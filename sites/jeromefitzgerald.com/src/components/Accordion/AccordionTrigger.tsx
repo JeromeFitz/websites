@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 'use client'
-import { ChevronDownIcon } from '@jeromefitz/ds/components/Icon'
+import { ChevronDownIcon } from '@jeromefitz/ds/components/Icon/index'
 import { cx } from '@jeromefitz/ds/utils/cx'
 
 import * as Accordion from '@radix-ui/react-accordion'

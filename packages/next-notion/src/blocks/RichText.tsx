@@ -1,4 +1,4 @@
-import { Anchor } from '@jeromefitz/ds/components/Anchor'
+import { Anchor } from '@jeromefitz/ds/components/Anchor/index'
 import { cx } from '@jeromefitz/ds/utils/cx'
 
 import type {

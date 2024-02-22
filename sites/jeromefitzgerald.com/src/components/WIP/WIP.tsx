@@ -1,4 +1,4 @@
-import { FileTextIcon } from '@jeromefitz/ds/components/Icon'
+import { FileTextIcon } from '@jeromefitz/ds/components/Icon/index'
 
 function Wrapper({ children }) {
   return (

@@ -1,10 +1,11 @@
-const { defineConfig, devices } = require('@playwright/test')
+import type { PlaywrightTestConfig } from '@playwright/test'
+
+import { defineConfig, devices } from '@playwright/test'
 
 const config = ({ basePath = '', port, website = 'jeromefitzgerald.com' }) => {
   const baseURL = `http://localhost:${port}${basePath}`
 
-  /** @type {import('@playwright/test').PlaywrightTestConfig} */
-  const config = {
+  const config: PlaywrightTestConfig = {
     outputDir: 'e2e-results',
     projects: [
       { name: 'Desktop Chrome', use: { ...devices['Desktop Chrome'] } },
@@ -16,7 +17,7 @@ const config = ({ basePath = '', port, website = 'jeromefitzgerald.com' }) => {
     reporter: [['list'], ['html', { open: 'never', outputFolder: 'e2e-report' }]],
     retries: 2,
 
-    testDir: 'src/e2e',
+    testDir: '.',
 
     testMatch: '**/*.e2e.{js,jsx,ts,tsx}',
 
@@ -37,4 +38,4 @@ const config = ({ basePath = '', port, website = 'jeromefitzgerald.com' }) => {
   return defineConfig(config)
 }
 
-module.exports = config
+export default config

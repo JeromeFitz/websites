@@ -1,4 +1,4 @@
-import dynamic from 'next/dynamic'
+import dynamic from 'next/dynamic.js'
 import pluralize from 'pluralize'
 // import { Suspense } from 'react'
 import { Provider as ReactWrapBalancerProvider } from 'react-wrap-balancer'

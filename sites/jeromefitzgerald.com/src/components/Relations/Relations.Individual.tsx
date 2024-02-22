@@ -1,8 +1,8 @@
 // import 'server-only'
 
-import { Anchor } from '@jeromefitz/ds/components/Anchor'
+import { Anchor } from '@jeromefitz/ds/components/Anchor/index'
 import { cx } from '@jeromefitz/ds/utils/cx'
-import { getPageDataFromNotion } from '@jeromefitz/shared/notion/utils'
+import { getPageDataFromNotion } from '@jeromefitz/shared/notion/utils/index'
 import { asyncForEach } from '@jeromefitz/utils'
 
 import _noop from 'lodash/noop.js'

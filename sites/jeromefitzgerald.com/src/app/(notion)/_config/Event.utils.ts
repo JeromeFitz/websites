@@ -1,9 +1,9 @@
 import _merge from 'lodash/merge.js'
 import _size from 'lodash/size.js'
 import _uniq from 'lodash/uniq.js'
-import { getPropertyTypeData } from 'next-notion/utils'
+import { getPropertyTypeData } from 'next-notion/utils/index'
 
-import type { PropertiesEvent } from '@/app/(notion)/_config'
+import type { PropertiesEvent } from '@/app/(notion)/_config/index'
 
 /**
  * @todo(typescript) way to do this through extraction?

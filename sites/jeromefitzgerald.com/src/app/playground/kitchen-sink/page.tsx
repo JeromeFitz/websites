@@ -1,22 +1,25 @@
 import { cx } from '@jeromefitz/ds/utils/cx'
 import { ImageClient as NextImage } from '@jeromefitz/shared/components/Notion/Blocks/Image.client'
-import { getDataFromCache, getSegmentInfo } from '@jeromefitz/shared/notion/utils'
+import {
+  getDataFromCache,
+  getSegmentInfo,
+} from '@jeromefitz/shared/notion/utils/index'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
 import { Badge } from '@radix-ui/themes'
-import { draftMode } from 'next/headers'
-// import { notFound } from 'next/navigation'
+import { draftMode } from 'next/headers.js'
+// import { notFound } from 'next/navigation.js'
 
-import { CONFIG, getPageData } from '@/app/(notion)/_config'
+import { CONFIG, getPageData } from '@/app/(notion)/_config/index'
 import { FourOhFour } from '@/app/_errors/404'
-import { Grid } from '@/components/Grid'
+import { Grid } from '@/components/Grid/index'
 import {
   HeadlineColumnA,
   HeadlineContent,
   HeadlineTitle,
   HeadlineTitleSub,
-} from '@/components/Headline'
-import { Notion as Blocks } from '@/components/Notion'
+} from '@/components/Headline/index'
+import { Notion as Blocks } from '@/components/Notion/index'
 
 const isDev = process.env.NODE_ENV === 'development'
 const slug = '/kitchen-sink'

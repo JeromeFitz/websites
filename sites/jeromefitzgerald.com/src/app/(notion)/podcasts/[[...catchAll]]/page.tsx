@@ -15,7 +15,7 @@ import {
   getDataFromCache,
   getDatabaseQuery,
   getSegmentInfo,
-} from '@jeromefitz/shared/notion/utils'
+} from '@jeromefitz/shared/notion/utils/index'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
 import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints.js'
@@ -23,11 +23,11 @@ import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpo
 // import uniqWith from 'lodash/uniqWith.js'
 import type { Metadata } from 'next'
 
-import { getPropertyTypeData } from 'next-notion/utils'
+import { getPropertyTypeData } from 'next-notion/utils/index'
 
-import type { PageObjectResponsePodcast } from '@/app/(notion)/_config'
+import type { PageObjectResponsePodcast } from '@/app/(notion)/_config/index'
 
-import { CONFIG, getPageData, getPodcastData } from '@/app/(notion)/_config'
+import { CONFIG, getPageData, getPodcastData } from '@/app/(notion)/_config/index'
 import { generateMetadataCustom } from '@/app/(notion)/_config/temp/generateMetadataCustom'
 
 import { EpisodeSlug } from './_components/Episode.Slug'

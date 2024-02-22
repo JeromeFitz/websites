@@ -1,5 +1,5 @@
-import dynamic from 'next/dynamic'
-// import { notFound } from 'next/navigation'
+import dynamic from 'next/dynamic.js'
+// import { notFound } from 'next/navigation.js'
 
 import { FourOhFour } from '@/app/_errors/404'
 
