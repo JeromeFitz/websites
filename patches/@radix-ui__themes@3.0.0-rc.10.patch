@@ -1,106 +1,49 @@
 diff --git a/package.json b/package.json
-index 34ae7bc626b3f5e7717f10c19eb8036e36b3e270..963deb0e7833277b9238b28c4c212c7b0d751b39 100644
+index 34ae7bc626b3f5e7717f10c19eb8036e36b3e270..3c3313fe8a8c75fa09845198b33dfe37af4b6a7f 100644
 --- a/package.json
 +++ b/package.json
-@@ -1,75 +1,48 @@
- {
+@@ -2,15 +2,15 @@
    "name": "@radix-ui/themes",
    "version": "3.0.0-rc.10",
--  "type": "commonjs",
+   "type": "commonjs",
 -  "main": "./dist/cjs/index.js",
 -  "types": "./dist/cjs/index.d.ts",
--  "module": "./dist/esm/index.js",
--  "style": "./styles.css",
-+  "type": "module",
-+  "sideEffects": false,
-+  "license": "MIT",
-+  "files": [
-+    "dist/**",
-+    "postcss-breakpoints.cjs",
-+    "postcss-whitespace.cjs",
-+    "tokens.css",
-+    "components.css",
-+    "utilities.css",
-+    "styles.css"
-+  ],
++  "main": "./dist/esm/index.js",
++  "types": "./dist/esm/index.d.ts",
+   "module": "./dist/esm/index.js",
+   "style": "./styles.css",
    "exports": {
      ".": {
--      "require": {
+       "require": {
 -        "types": "./dist/cjs/index.d.ts",
 -        "default": "./dist/cjs/index.js"
--      },
--      "import": {
--        "types": "./dist/esm/index.d.ts",
--        "default": "./dist/esm/index.js"
--      }
-+      "types": "./dist/esm/index.d.ts",
-+      "default": "./dist/esm/index.js"
-+    },
-+    "./components": {
-+      "types": "./dist/esm/components/index.d.ts",
-+      "default": "./dist/esm/components/index.js"
++        "types": "./dist/esm/index.d.ts",
++        "default": "./dist/esm/index.js"
+       },
+       "import": {
+         "types": "./dist/esm/index.d.ts",
+@@ -19,8 +19,8 @@
      },
      "./helpers": {
--      "require": {
+       "require": {
 -        "types": "./dist/cjs/helpers/index.d.ts",
 -        "default": "./dist/cjs/helpers/index.js"
--      },
--      "import": {
--        "types": "./dist/esm/helpers/index.d.ts",
--        "default": "./dist/esm/helpers/index.js"
--      }
-+      "types": "./dist/esm/helpers/index.d.ts",
-+      "default": "./dist/esm/helpers/index.js"
++        "types": "./dist/esm/helpers/index.d.ts",
++        "default": "./dist/esm/helpers/index.js"
+       },
+       "import": {
+         "types": "./dist/esm/helpers/index.d.ts",
+@@ -29,8 +29,8 @@
      },
      "./props": {
--      "require": {
+       "require": {
 -        "types": "./dist/cjs/props/index.d.ts",
 -        "default": "./dist/cjs/props/index.js"
--      },
--      "import": {
--        "types": "./dist/esm/props/index.d.ts",
--        "default": "./dist/esm/props/index.js"
--      }
-+      "types": "./dist/esm/props/index.d.ts",
-+      "default": "./dist/esm/props/index.js"
-     },
-     "./tokens.css": {
--      "import": "./tokens.css",
--      "require": "./tokens.css",
-       "default": "./tokens.css"
-     },
-     "./components.css": {
--      "import": "./components.css",
--      "require": "./components.css",
-       "default": "./components.css"
-     },
-     "./utilities.css": {
--      "import": "./utilities.css",
--      "require": "./utilities.css",
-       "default": "./utilities.css"
-     },
--    "./styles.css": {
--      "import": "./styles.css",
--      "require": "./styles.css",
-+    "./styles.css":  {
-       "default": "./styles.css"
-     }
-   },
--  "sideEffects": false,
--  "license": "MIT",
--  "files": [
--    "src/**",
--    "dist/**",
--    "postcss-breakpoints.cjs",
--    "postcss-whitespace.cjs",
--    "tokens.css",
--    "components.css",
--    "utilities.css",
--    "styles.css"
--  ],
-   "scripts": {
-     "build": "yarn build:js && yarn build:css",
-     "build:js": "yarn build:js:cjs && yarn build:js:esm && yarn build:js:cjs:types && yarn build:js:esm:types",
++        "types": "./dist/esm/props/index.d.ts",
++        "default": "./dist/esm/props/index.js"
+       },
+       "import": {
+         "types": "./dist/esm/props/index.d.ts",
 diff --git a/src/components/accessible-icon.tsx b/src/components/accessible-icon.tsx
 deleted file mode 100644
 index df1bea3b7d19c91b7d0eb2e6eb1729426940bc34..0000000000000000000000000000000000000000
