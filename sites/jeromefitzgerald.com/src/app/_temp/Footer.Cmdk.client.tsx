@@ -3,7 +3,7 @@ import { Tooltip } from '@jeromefitz/ds/components/Tooltip'
 
 import { Button, Kbd } from '@radix-ui/themes'
 
-import { useStore as _useStore } from '~store/index'
+import { useStore as _useStore } from '@/store/index'
 
 const useStore = () => {
   return _useStore((store) => ({

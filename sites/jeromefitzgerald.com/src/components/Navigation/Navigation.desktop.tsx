@@ -9,7 +9,7 @@ import { Button, Text } from '@radix-ui/themes'
 import NextLink from 'next/link'
 import { Fragment, forwardRef, memo } from 'react'
 
-import { menus } from '~data/menu'
+import { menus } from '@/data/menu'
 
 const NavigationMenuImpl = () => {
   return (

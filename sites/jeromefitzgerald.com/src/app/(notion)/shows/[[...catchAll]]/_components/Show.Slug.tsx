@@ -7,18 +7,18 @@ import { Badge } from '@radix-ui/themes'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 
-import type { PropertiesShow } from '~app/(notion)/_config'
+import type { PropertiesShow } from '@/app/(notion)/_config'
 
-import { CONFIG, getShowData } from '~app/(notion)/_config'
-import { Grid } from '~app/playground/2024/_components/Grid'
+import { CONFIG, getShowData } from '@/app/(notion)/_config'
+import { Grid } from '@/components/Grid'
 import {
   HeadlineColumnA,
   HeadlineContent,
   HeadlineTitle,
   HeadlineTitleSub,
-} from '~app/playground/2024/_components/Headline'
-import { Notion as Blocks } from '~components/Notion'
-import { Relations } from '~components/Relations/index'
+} from '@/components/Headline'
+import { Notion as Blocks } from '@/components/Notion'
+import { Relations } from '@/components/Relations'
 
 // import { UpcomingShows } from './Show.UpcomingShows'
 

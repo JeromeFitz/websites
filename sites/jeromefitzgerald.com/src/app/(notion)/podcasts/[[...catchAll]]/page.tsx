@@ -25,10 +25,10 @@ import type { Metadata } from 'next'
 
 import { getPropertyTypeData } from 'next-notion/utils'
 
-import type { PageObjectResponsePodcast } from '~app/(notion)/_config'
+import type { PageObjectResponsePodcast } from '@/app/(notion)/_config'
 
-import { CONFIG, getPageData, getPodcastData } from '~app/(notion)/_config'
-import { generateMetadataCustom } from '~app/(notion)/_config/temp/generateMetadataCustom'
+import { CONFIG, getPageData, getPodcastData } from '@/app/(notion)/_config'
+import { generateMetadataCustom } from '@/app/(notion)/_config/temp/generateMetadataCustom'
 
 import { EpisodeSlug } from './_components/Episode.Slug'
 import { Listing as PodcastListing } from './_components/Podcast.Listing'

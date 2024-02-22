@@ -7,14 +7,14 @@ import { format } from 'date-fns'
 import _orderBy from 'lodash/orderBy.js'
 import { Fragment } from 'react'
 
-import { Grid } from '~app/playground/2024/_components/Grid'
+import { Grid } from '@/components/Grid'
 import {
   HeadlineColumnA,
   HeadlineContent,
   HeadlineTitle,
   HeadlineTitleSub,
-} from '~app/playground/2024/_components/Headline'
-import { WIP } from '~components/WIP/index'
+} from '@/components/Headline'
+import { WIP } from '@/components/WIP'
 
 // function ListItem() {
 //   return <></>

@@ -12,8 +12,8 @@ import type { Metadata } from 'next'
 import { draftMode } from 'next/headers'
 import _title from 'title'
 
-import { CONFIG, getBookData, getPageData } from '~app/(notion)/_config'
-import { generateMetadataCustom } from '~app/(notion)/_config/temp/generateMetadataCustom'
+import { CONFIG, getBookData, getPageData } from '@/app/(notion)/_config'
+import { generateMetadataCustom } from '@/app/(notion)/_config/temp/generateMetadataCustom'
 
 import { BookPage } from './_components/Book.client'
 

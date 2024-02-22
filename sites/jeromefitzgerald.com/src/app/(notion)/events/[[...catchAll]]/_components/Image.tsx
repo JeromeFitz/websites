@@ -9,7 +9,7 @@ import { slug as _slug } from 'github-slugger'
 // import { isImageExpired } from 'next-notion/src/utils/getAwsImage'
 import validUrl from 'valid-url'
 
-import { getPropertyTypeDataEvent } from '~app/(notion)/_config'
+import { getPropertyTypeDataEvent } from '@/app/(notion)/_config'
 
 // const notion = new Client({ auth: process.env.NOTION_API_KEY })
 

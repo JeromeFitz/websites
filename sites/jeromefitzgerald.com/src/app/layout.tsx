@@ -8,11 +8,11 @@ import { GeistSans as fontGeistSans } from 'geist/font/sans'
 import { Viewport } from 'next'
 // import localFont from 'next/font/local'
 
-import { Footer } from '~app/_temp/Footer'
-import { BannerClient } from '~app/playground/2024/_components/Banner/Banner.client'
-import { Navigation } from '~app/playground/2024/_components/Navigation'
-import { Providers } from '~components/Providers'
-import { Wrapper } from '~components/Wrapper'
+import { Footer } from '@/app/_temp/Footer'
+import { BannerClient } from '@/components/Banner/Banner.client'
+import { Navigation } from '@/components/Navigation'
+import { Providers } from '@/components/Providers'
+import { Wrapper } from '@/components/Wrapper'
 
 import { PreloadResources } from './_next/preload-resources'
 

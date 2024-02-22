@@ -3,7 +3,7 @@ import _size from 'lodash/size.js'
 import _uniq from 'lodash/uniq.js'
 import { getPropertyTypeData } from 'next-notion/utils'
 
-import type { PropertiesEvent } from '~app/(notion)/_config'
+import type { PropertiesEvent } from '@/app/(notion)/_config'
 
 /**
  * @todo(typescript) way to do this through extraction?

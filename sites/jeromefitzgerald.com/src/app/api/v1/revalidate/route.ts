@@ -5,7 +5,7 @@ import _size from 'lodash/size.js'
 import { revalidatePath } from 'next/cache'
 import { NextRequest, NextResponse } from 'next/server'
 
-import { CONFIG } from '~app/(notion)/_config'
+import { CONFIG } from '@/app/(notion)/_config'
 
 const { DATABASE_ID: DATABASE_ID__EVENTS } = CONFIG.EVENTS
 const { DATABASE_ID: DATABASE_ID__PAGES } = CONFIG.PAGES

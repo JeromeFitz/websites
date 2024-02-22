@@ -5,8 +5,8 @@ import type { Metadata } from 'next'
 
 import { draftMode } from 'next/headers'
 
-import { CONFIG, getPageData } from '~app/(notion)/_config'
-import { generateMetadataCustom } from '~app/(notion)/_config/temp/generateMetadataCustom'
+import { CONFIG, getPageData } from '@/app/(notion)/_config'
+import { generateMetadataCustom } from '@/app/(notion)/_config/temp/generateMetadataCustom'
 
 import { MusicClient } from './_components/Music.client'
 

@@ -8,17 +8,17 @@ import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 import { getPropertyTypeData } from 'next-notion/utils'
 
-import type { PageObjectResponsePerson } from '~app/(notion)/_config'
+import type { PageObjectResponsePerson } from '@/app/(notion)/_config'
 
-import { CONFIG } from '~app/(notion)/_config'
-import { Grid } from '~app/playground/2024/_components/Grid'
+import { CONFIG } from '@/app/(notion)/_config'
+import { Grid } from '@/components/Grid'
 import {
   HeadlineColumnA,
   HeadlineContent,
   HeadlineTitle,
-} from '~app/playground/2024/_components/Headline'
-import { Notion as Blocks } from '~components/Notion'
-// import { Relations } from '~components/Relations/index'
+} from '@/components/Headline'
+import { Notion as Blocks } from '@/components/Notion'
+// import { Relations } from '@/components/Relations'
 
 // import type { PropertiesPerson } from './Person.types'
 // // import { UpcomingShows } from './Show.UpcomingShows'

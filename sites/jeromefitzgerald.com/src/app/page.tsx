@@ -6,10 +6,10 @@ import type { Metadata } from 'next'
 
 import { draftMode } from 'next/headers'
 
-import { CONFIG, getPageData } from '~app/(notion)/_config/index'
-import { generateMetadataCustom } from '~app/(notion)/_config/temp/generateMetadataCustom'
-import { PageHome } from '~app/playground/2024/_components/Page.Home'
-// import { Notion as Blocks } from '~components/Notion'
+import { CONFIG, getPageData } from '@/app/(notion)/_config/index'
+import { generateMetadataCustom } from '@/app/(notion)/_config/temp/generateMetadataCustom'
+import { PageHome } from '@/app/_components/Page.Home'
+// import { Notion as Blocks } from '@/components/Notion'
 
 const slug = '/homepage'
 const { SEGMENT } = CONFIG.PAGES
