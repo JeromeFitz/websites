@@ -15,6 +15,10 @@ const CONFIG = {
     DATABASE_ID: process.env.NOTION__DATABASE__EVENTS ?? '',
     SEGMENT: 'events',
   },
+  MUSIC: {
+    DATABASE_ID: '',
+    SEGMENT: 'music',
+  },
   PAGES: {
     DATABASE_ID: process.env.NOTION__DATABASE__PAGES ?? '',
     SEGMENT: 'pages',
