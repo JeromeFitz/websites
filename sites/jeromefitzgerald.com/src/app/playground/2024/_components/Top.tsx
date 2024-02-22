@@ -8,7 +8,16 @@ import { fetcher } from '@jeromefitz/shared/lib'
 
 import { useWindowScroll } from '@mantine/hooks'
 import { ArrowUpIcon } from '@radix-ui/react-icons'
-import { Badge, Button, Flex, Select } from '@radix-ui/themes'
+import {
+  Badge,
+  Button,
+  // Card,
+  Flex,
+  // Inset,
+  Select,
+  // Strong,
+  // Text,
+} from '@radix-ui/themes'
 import Image from 'next/image'
 // eslint-disable-next-line no-restricted-imports
 import NextLink from 'next/link'
@@ -211,62 +220,90 @@ function DataItem({ item, type }) {
   const genresExtra = getArrayCountOfOverage(_genres, GENRE_MAX)
 
   return (
-    <li
-      className={cx(
-        'flex w-full flex-col-reverse items-start justify-between justify-items-start md:flex-row',
-        'text-left',
-        'hover:bg-[#fff] dark:hover:bg-[var(--mauve-2)]',
-        'border-t-1 border-[var(--mauve-6)]',
-        'mb-3 p-1 md:mb-0 md:gap-6 md:p-8',
-      )}
-    >
-      <div className={cx('flex h-full  flex-col justify-center gap-3 md:gap-2')}>
-        <p className={cx('text-xs tracking-tighter')}>
-          <span className="font-bold uppercase tracking-wide text-[var(--mauve-11)]">
+    <>
+      {/* <Card className="max-w-md" size="5" variant="surface">
+        <div>
+          <Inset clip="padding-box" side="top">
+            <Image
+              {...image}
+              alt={_alt}
+              className=""
+              placeholder="blur"
+              role="img"
+              tabIndex={-1}
+            />
+          </Inset>
+        </div>
+        <div>
+          <Text
+            as="span"
+            className="mb-1 uppercase"
+            color="gray"
+            size="1"
+            weight="bold"
+          >
             Artist
-          </span>
-          <br />
-          <span className="line-clamp-3  text-3xl font-medium">{_title1}</span>
-        </p>
-        {type === 'top-tracks' && (
-          <>
-            <p className={cx('text-xs tracking-tighter')}>
-              <span className="text-xs font-bold uppercase tracking-wide text-[var(--mauve-11)]">
+          </Text>
+          <Text as="p" className="line-clamp-3 pb-2" size="7" weight="medium">
+            {_title1}
+          </Text>
+          {type === 'top-tracks' && (
+            <>
+              <Text
+                as="span"
+                className="mb-1 uppercase"
+                color="gray"
+                size="1"
+                weight="bold"
+              >
                 Song
-              </span>
-              <br />
-              <span className="line-clamp-3 text-2xl text-[var(--mauve-12)]">
+              </Text>
+              <Text as="p" className="line-clamp-3 pb-2" size="6" weight="medium">
                 {_title2}
-              </span>
-            </p>
-            <p className={cx('text-xs tracking-tighter')}>
-              <span className="text-xs font-bold uppercase tracking-wide text-[var(--mauve-11)]">
-                Album
-              </span>
-              <br />
-              <span className="line-clamp-3 text-xl text-[var(--mauve-12)]">
-                {_title3}
-              </span>
-            </p>
-            <p className={cx('text-xs tracking-tighter')}>
-              <span className="text-xs font-bold uppercase tracking-wide text-[var(--mauve-11)]">
-                Year
-              </span>
-              <br />
-              <span className="font-mono text-base text-[var(--mauve-12)]">
-                {item.album.release_date.slice(0, 4)}
-              </span>
-            </p>
-          </>
-        )}
+              </Text>
 
-        <p className={cx('gap-2 text-xs tracking-tighter')}>
-          <span className="mb-2 text-xs font-bold uppercase tracking-wide text-[var(--mauve-11)]">
+              <Text
+                as="span"
+                className="mb-1 uppercase"
+                color="gray"
+                size="1"
+                weight="bold"
+              >
+                Album
+              </Text>
+              <Text as="p" className="line-clamp-3 pb-2" size="6" weight="medium">
+                {_title3}
+              </Text>
+
+              <Text
+                as="span"
+                className="mb-1 uppercase"
+                color="gray"
+                size="1"
+                weight="bold"
+              >
+                Year
+              </Text>
+              <Text
+                as="p"
+                className="line-clamp-3 pb-2 font-mono"
+                size="5"
+                weight="medium"
+              >
+                {item.album.release_date.slice(0, 4)}
+              </Text>
+            </>
+          )}
+          <Text
+            as="span"
+            className="mb-1 uppercase"
+            color="gray"
+            size="1"
+            weight="bold"
+          >
             Genre{genres.length > 1 && 's'}
-          </span>
-          <br />
-          <br />
-          <span className="mb-1 flex flex-row flex-wrap gap-2 pb-1 font-mono text-xs">
+          </Text>
+          <span className="mb-1 flex flex-row flex-wrap gap-2 pb-1 font-mono">
             {genres.map((genre) => {
               if (!genre) return null
               return (
@@ -286,36 +323,140 @@ function DataItem({ item, type }) {
               </Badge>
             )}
           </span>
-        </p>
-        <Button
-          asChild
-          className="w-fit"
-          color="jade"
-          highContrast={false}
-          radius="full"
-          size="2"
-          variant="outline"
-        >
-          <NextLink href={_href}>
-            Open Spotify
-            {` `}
-            <ArrowTopRightIcon
-              className={cx('text-[var(--accent-11)] !opacity-100')}
-            />
-          </NextLink>
-        </Button>
-      </div>
-      <div className={cx('h-fit min-h-96 w-full md:w-1/2 md:max-w-sm')}>
-        <Image
-          {...image}
-          alt={_alt}
-          className="flex h-[inherit] w-full justify-center overflow-y-hidden rounded-md md:max-w-96"
-          placeholder="blur"
-          role="img"
-          tabIndex={-1}
-        />
-      </div>
-    </li>
+          <Text
+            as="p"
+            className="mb-1 uppercase"
+            color="gray"
+            size="1"
+            weight="bold"
+          >
+            Link
+          </Text>
+          <Button
+            asChild
+            className="w-fit"
+            color="jade"
+            highContrast={false}
+            radius="full"
+            size="2"
+            variant="outline"
+          >
+            <NextLink href={_href}>
+              Open Spotify
+              {` `}
+              <ArrowTopRightIcon
+                className={cx('text-[var(--accent-11)] !opacity-100')}
+              />
+            </NextLink>
+          </Button>
+        </div>
+      </Card> */}
+      <li
+        className={cx(
+          'flex w-full flex-col-reverse items-start justify-between justify-items-start md:flex-row',
+          'text-left',
+          'hover:bg-[#fff] dark:hover:bg-[var(--mauve-2)]',
+          'border-t-1 border-[var(--mauve-6)]',
+          'mb-3 p-1 md:mb-0 md:gap-6 md:p-8',
+        )}
+      >
+        <div className={cx('flex h-full  flex-col justify-center gap-3 md:gap-2')}>
+          <p className={cx('text-xs tracking-tighter')}>
+            <span className="font-bold uppercase tracking-wide text-[var(--mauve-11)]">
+              Artist
+            </span>
+            <br />
+            <span className="line-clamp-3  text-3xl font-medium">{_title1}</span>
+          </p>
+          {type === 'top-tracks' && (
+            <>
+              <p className={cx('text-xs tracking-tighter')}>
+                <span className="text-xs font-bold uppercase tracking-wide text-[var(--mauve-11)]">
+                  Song
+                </span>
+                <br />
+                <span className="line-clamp-3 text-2xl text-[var(--mauve-12)]">
+                  {_title2}
+                </span>
+              </p>
+              <p className={cx('text-xs tracking-tighter')}>
+                <span className="text-xs font-bold uppercase tracking-wide text-[var(--mauve-11)]">
+                  Album
+                </span>
+                <br />
+                <span className="line-clamp-3 text-xl text-[var(--mauve-12)]">
+                  {_title3}
+                </span>
+              </p>
+              <p className={cx('text-xs tracking-tighter')}>
+                <span className="text-xs font-bold uppercase tracking-wide text-[var(--mauve-11)]">
+                  Year
+                </span>
+                <br />
+                <span className="font-mono text-base text-[var(--mauve-12)]">
+                  {item.album.release_date.slice(0, 4)}
+                </span>
+              </p>
+            </>
+          )}
+
+          <p className={cx('gap-2 text-xs tracking-tighter')}>
+            <span className="mb-2 text-xs font-bold uppercase tracking-wide text-[var(--mauve-11)]">
+              Genre{genres.length > 1 && 's'}
+            </span>
+            <br />
+            <br />
+            <span className="mb-1 flex flex-row flex-wrap gap-2 pb-1 font-mono text-xs">
+              {genres.map((genre) => {
+                if (!genre) return null
+                return (
+                  <Badge key={`g--${genre}`} radius="full" size="2">
+                    {genre}
+                  </Badge>
+                )
+              })}
+              {!!genresExtra && (
+                <Badge color="gray" radius="full" size="2">
+                  {genresExtra}
+                </Badge>
+              )}
+              {genres.length === 0 && (
+                <Badge color="gray" radius="full" size="2">
+                  N/A
+                </Badge>
+              )}
+            </span>
+          </p>
+          <Button
+            asChild
+            className="w-fit"
+            color="jade"
+            highContrast={false}
+            radius="full"
+            size="2"
+            variant="outline"
+          >
+            <NextLink href={_href}>
+              Open Spotify
+              {` `}
+              <ArrowTopRightIcon
+                className={cx('text-[var(--accent-11)] !opacity-100')}
+              />
+            </NextLink>
+          </Button>
+        </div>
+        <div className={cx('h-fit min-h-96 w-full md:w-1/2 md:max-w-sm')}>
+          <Image
+            {...image}
+            alt={_alt}
+            className="flex h-[inherit] w-full justify-center overflow-y-hidden rounded-md md:max-w-96"
+            placeholder="blur"
+            role="img"
+            tabIndex={-1}
+          />
+        </div>
+      </li>
+    </>
   )
 }
 function Top({}) {
@@ -513,7 +654,7 @@ function Top({}) {
                   radius="full"
                 />
                 {/* @ts-ignore */}
-                <Select.Content className="w-full">
+                <Select.Content className="w-full" position="popper">
                   {/* @ts-ignore */}
                   <Select.Item className="w-full" value="short_term">
                     Past Month
@@ -539,7 +680,7 @@ function Top({}) {
                   radius="full"
                 />
                 {/* @ts-ignore */}
-                <Select.Content>
+                <Select.Content position="popper">
                   {/* @ts-ignore */}
                   <Select.Item value="top-artists">Top Artists</Select.Item>
                   {/* @ts-ignore */}

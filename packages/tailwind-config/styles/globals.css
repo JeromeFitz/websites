@@ -5,7 +5,6 @@
 
 @import url('./chrome.css');
 @import url('./safari.css');
-/* @import url('./cmdk.css'); */
 
 .icon-custom svg {
   height: inherit;
