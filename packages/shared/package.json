@@ -126,7 +126,7 @@
     "@notionhq/client": "2.2.14",
     "@radix-ui/themes": "3.0.0-rc.9-patch.2",
     "@types/lodash": "4.14.202",
-    "@types/react": "18.2.57",
+    "@types/react": "18.2.58",
     "@types/react-dom": "18.2.19",
     "@upstash/ratelimit": "1.0.1",
     "@upstash/redis": "1.28.4",
