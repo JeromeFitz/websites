@@ -1,2 +1,2 @@
-export { Orientation } from './Orientation'
+// export { Orientation } from './Orientation'
 export { WIP, WIPFooter } from './WIP'

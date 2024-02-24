@@ -14,6 +14,7 @@ import _title from 'title'
 
 import { CONFIG, getBookData, getPageData } from '@/app/(notion)/_config/index'
 import { generateMetadataCustom } from '@/app/(notion)/_config/temp/generateMetadataCustom'
+import { Layout } from '@/components/Layout/index'
 
 import { BookPage } from './_components/Book.client'
 
@@ -128,7 +129,15 @@ export default function Page(props) {
   const segmentInfo = getSegmentInfo({ SEGMENT, ...props })
 
   // if (segmentInfo.isIndex) {
-  //   return <Listing srevalidate={revalidate} egmentInfo={segmentInfo} />
+  //   return (
+  //     <Layout>
+  //       <Listing egmentInfo={segmentInfo} srevalidate={revalidate} />
+  //     </Layout>
+  //   )
   // }
-  return <Slug revalidate={revalidate} segmentInfo={segmentInfo} />
+  return (
+    <Layout>
+      <Slug revalidate={revalidate} segmentInfo={segmentInfo} />
+    </Layout>
+  )
 }

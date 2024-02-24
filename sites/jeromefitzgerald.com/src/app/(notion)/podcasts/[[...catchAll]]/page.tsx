@@ -29,6 +29,7 @@ import type { PageObjectResponsePodcast } from '@/app/(notion)/_config/index'
 
 import { CONFIG, getPageData, getPodcastData } from '@/app/(notion)/_config/index'
 import { generateMetadataCustom } from '@/app/(notion)/_config/temp/generateMetadataCustom'
+import { Layout } from '@/components/Layout/index'
 
 import { EpisodeSlug } from './_components/Episode.Slug'
 import { Listing as PodcastListing } from './_components/Podcast.Listing'
@@ -147,11 +148,24 @@ export default function Page(props) {
    */
   const isEpisode = segmentInfo.segmentCount === 3
   if (isEpisode) {
-    return <EpisodeSlug revalidate={revalidate} segmentInfo={segmentInfo} />
+    return (
+      <Layout>
+        {' '}
+        <EpisodeSlug revalidate={revalidate} segmentInfo={segmentInfo} />
+      </Layout>
+    )
   }
 
   if (segmentInfo.isIndex) {
-    return <PodcastListing revalidate={revalidate} segmentInfo={segmentInfo} />
+    return (
+      <Layout>
+        <PodcastListing revalidate={revalidate} segmentInfo={segmentInfo} />
+      </Layout>
+    )
   }
-  return <PodcastSlug revalidate={revalidate} segmentInfo={segmentInfo} />
+  return (
+    <Layout>
+      <PodcastSlug revalidate={revalidate} segmentInfo={segmentInfo} />
+    </Layout>
+  )
 }

@@ -79,7 +79,8 @@ function Events({ data }) {
           <Link asChild>
             <NextLink href="/shows/jerome-and">Jerome &</NextLink>
           </Link>
-          {` `}is taking a break from its monthly gig in 2024.
+          {` `}is taking a break from its monthly gig in{' '}
+          <span className="font-mono">2024</span>.
           <br />
           Cooking something special up at the moment.
         </p>
@@ -87,7 +88,7 @@ function Events({ data }) {
           I pop up on shows from time to time, they will be here if I can remember to
           put them up.
         </p>
-        <p className={'font-medium tracking-normal'}>
+        <p className={'text-lg tracking-wide'}>
           Hit me up if you want a professional moron on your show.
         </p>
       </>

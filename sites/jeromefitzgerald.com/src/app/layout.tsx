@@ -8,7 +8,6 @@ import { GeistSans as fontGeistSans } from 'geist/font/sans'
 import { Viewport } from 'next'
 // import localFont from 'next/font/local'
 
-import { Footer } from '@/app/_temp/Footer'
 import { BannerClient } from '@/components/Banner/Banner.client'
 import { Navigation } from '@/components/Navigation/index'
 import { Providers } from '@/components/Providers/index'
@@ -17,27 +16,6 @@ import { Wrapper } from '@/components/Wrapper/index'
 import { PreloadResources } from './_next/preload-resources'
 
 import '@radix-ui/themes/styles.css'
-
-// // const Footer = dynamic(
-// //   () => import('~components/Footer').then((mod) => mod.Footer),
-// //   { ssr: false }
-// // )
-// // const Analytics = dynamic(
-// //   async () => {
-// //     const { Analytics: Component } = await import(
-// //       '@jeromefitz/shared/src/components/Analytics'
-// //     )
-// //     return { default: Component }
-// //   },
-// //   { ssr: false }
-// // )
-// const Footer = dynamic(
-//   async () => {
-//     const { Footer: Component } = await import('~components/Footer')
-//     return { default: Component }
-//   },
-//   { ssr: false }
-// )
 
 const fontInter = { variable: '' }
 // const fontInter = localFont({
@@ -142,13 +120,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Wrapper className="">
               <BannerClient />
             </Wrapper>
-            <Wrapper as="main" className="">
-              <>{children}</>
-            </Wrapper>
-            <Wrapper as="footer" className="">
-              <Footer />
-            </Wrapper>
-            {/* <ThemePanel /> */}
+            {children}
           </Providers>
         </body>
       </Theme>
