@@ -44,9 +44,9 @@ function CMDKWrapper(props: MotionProps & { children: ReactNode }) {
   return (
     <AnimatePresence initial={true} mode="wait">
       <motion.div
-        animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0, scale: 0.96 }}
-        initial={{ opacity: 0, scale: 0.96 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        initial={{ opacity: 0 }}
         transition={{ duration: 0.125 }}
         {...props}
       />

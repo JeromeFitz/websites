@@ -288,6 +288,7 @@ const config = ({}) => ({
         tighter: '1.125',
       },
       transitionDuration: {
+        125: '125ms',
         250: '250ms',
       },
     },
