@@ -16,6 +16,7 @@ import {
   HeadlineContent,
   HeadlineTitle,
 } from '@/components/Headline/index'
+import { Layout } from '@/components/Layout/index'
 import { Notion as Blocks } from '@/components/Notion/index'
 
 const slug = '/about'
@@ -88,5 +89,9 @@ export default function Page(props) {
   }
   const segmentInfo = getSegmentInfo({ SEGMENT, ...propsHack })
 
-  return <Slug revalidate={propsHack?.revalidate} segmentInfo={segmentInfo} />
+  return (
+    <Layout>
+      <Slug revalidate={propsHack?.revalidate} segmentInfo={segmentInfo} />
+    </Layout>
+  )
 }

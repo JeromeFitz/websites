@@ -10,6 +10,7 @@ import { draftMode } from 'next/headers.js'
 
 import { CONFIG, getPageData } from '@/app/(notion)/_config/index'
 import { generateMetadataCustom } from '@/app/(notion)/_config/temp/generateMetadataCustom'
+import { Layout } from '@/components/Layout/index'
 
 import { MusicClient } from './_components/Music.client'
 
@@ -67,7 +68,15 @@ export default function Page(props) {
   const segmentInfo = getSegmentInfo({ SEGMENT, ...props })
 
   // if (segmentInfo.isIndex) {
-  //   return <Listing srevalidate={revalidate} egmentInfo={segmentInfo} />
+  //   return (
+  //     <Layout>
+  //       <Listing srevalidate={revalidate} segmentInfo={segmentInfo} />
+  //     </Layout>
+  //   )
   // }
-  return <Slug revalidate={revalidate} segmentInfo={segmentInfo} />
+  return (
+    <Layout>
+      <Slug revalidate={revalidate} segmentInfo={segmentInfo} />
+    </Layout>
+  )
 }

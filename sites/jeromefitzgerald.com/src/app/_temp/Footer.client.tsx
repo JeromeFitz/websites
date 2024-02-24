@@ -1,13 +1,4 @@
-/**
- * @note(next) 🔥 🔥 🔥 🔥 🔥
- *
- * for some reason if any thing is `use client`
- * in footer it breaks tailwind
- *
- * GOOD TIMES figuring this one out
- *
- */
-// 'use client'
+'use client'
 import {
   ArchiveIcon,
   // ArrowTopRightIcon,
@@ -16,6 +7,7 @@ import {
 import { cx } from '@jeromefitz/ds/utils/cx'
 
 import { Button } from '@radix-ui/themes'
+import dynamic from 'next/dynamic.js'
 // eslint-disable-next-line no-restricted-imports
 import NextLink from 'next/link'
 
@@ -29,9 +21,17 @@ import { WIPFooter } from '@/components/WIP/WIP'
 import buildInfo from '@/config/build-info.json'
 import { socials } from '@/data/socials'
 
-import { FooterCmdkClient } from './Footer.Cmdk.client'
+// import { FooterCmdkClient } from './Footer.Cmdk.client'
 
 const { isBranchMain, prerelease, version } = buildInfo
+
+const FooterCmdkClient = dynamic(
+  async () => {
+    const { FooterCmdkClient: Component } = await import('./Footer.Cmdk.client')
+    return { default: Component }
+  },
+  { ssr: false },
+)
 
 function FooterClient() {
   return (

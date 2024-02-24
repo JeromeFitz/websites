@@ -12,6 +12,7 @@ import { draftMode } from 'next/headers.js'
 import { CONFIG, getPageData } from '@/app/(notion)/_config/index'
 import { generateMetadataCustom } from '@/app/(notion)/_config/temp/generateMetadataCustom'
 import { PageHome } from '@/app/_components/Page.Home'
+import { Layout } from '@/components/Layout/index'
 // import { Notion as Blocks } from '@/components/Notion/index'
 
 const slug = '/homepage'
@@ -76,5 +77,9 @@ export default function Page(props) {
   const revalidate = props?.revalidate || false
   const segmentInfo = getSegmentInfo({ SEGMENT, ...props, revalidate })
 
-  return <Slug revalidate={revalidate} segmentInfo={segmentInfo} />
+  return (
+    <Layout>
+      <Slug revalidate={revalidate} segmentInfo={segmentInfo} />
+    </Layout>
+  )
 }
