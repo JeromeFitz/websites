@@ -440,9 +440,6 @@
   /* background: white; */
   border-top: 1px solid var(--blackA7);
 
-  /* @media (prefers-color-scheme: dark) {
-    background: var(--slate2);
-  } */
   .dark & {
     background: var(--blackA11);
     border-top: 1px solid var(--whiteA7);
