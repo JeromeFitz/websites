@@ -29,6 +29,7 @@
       "commitMessagePrefix": "⬆️  (deps)",
       "groupName": "radix-ui 🌐 ",
       "groupSlug": "radix-ui",
+      "excludePackageNames": ["@radix-ui/themes"],
       "matchPackagePatterns": ["^@radix-ui/"]
     },
     {
@@ -136,6 +137,15 @@
       "groupName": "next 🔺 ",
       "groupSlug": "next",
       "matchPackageNames": ["@next/bundle-analyzer", "next"],
+      "reviewers": ["JeromeFitz"]
+    },
+    {
+      "assignees": ["JeromeFitz"],
+      "commitMessagePrefix": "⬆️  (deps)",
+      "commitMessageSuffix": "[b]",
+      "groupName": "radix-ui/themes 🎨 ",
+      "groupSlug": "radix-ui/themes",
+      "matchPackageNames": ["@radix-ui/themes"],
       "reviewers": ["JeromeFitz"]
     },
     {

@@ -54,6 +54,7 @@ module.exports = {
             'animate-sweep',
             'bg-radix\\-.+:?.+',
             'bg-muted',
+            'duration-125',
             'duration-250',
             'icon-custom',
             'notion-',
