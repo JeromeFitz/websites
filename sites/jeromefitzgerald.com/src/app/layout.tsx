@@ -6,6 +6,7 @@ import { Theme } from '@radix-ui/themes'
 import { GeistMono as fontGeistMono } from 'geist/font/mono'
 import { GeistSans as fontGeistSans } from 'geist/font/sans'
 import { Viewport } from 'next'
+import dynamic from 'next/dynamic.js'
 // import localFont from 'next/font/local'
 
 import { BannerClient } from '@/components/Banner/Banner.client'
