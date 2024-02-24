@@ -20,7 +20,7 @@ import buildInfo from '@/config/build-info.json'
 import { socials } from '@/data/socials'
 
 import { FooterCmdkClient } from './Footer.Cmdk.client'
-import { TooltipWrapper } from './Footer.client'
+import { TooltipClient } from './Tooltip.client'
 
 const { isBranchMain, prerelease, version } = buildInfo
 
@@ -67,7 +67,7 @@ function Footer() {
                 className={cx('my-2 basis-1/2 lg:basis-0')}
                 key={`footer--social--${social.id}`}
               >
-                <TooltipWrapper
+                <TooltipClient
                   description={
                     social?.tooltipDescription || 'I barely use social media'
                   }
@@ -96,7 +96,7 @@ function Footer() {
                       <ExternalLinkIcon className="text-[var(--mauve-12)]" />
                     </a>
                   </Button>
-                </TooltipWrapper>
+                </TooltipClient>
               </li>
             )
           })}
@@ -111,7 +111,7 @@ function Footer() {
       >
         <div className="flex flex-col items-end justify-start gap-3 py-4 align-text-bottom lg:py-0">
           <div className={cx('lg:flex lg:items-center', 'gap-2', 'group')}>
-            <TooltipWrapper description={'Go to Colophon'}>
+            <TooltipClient description={'Go to Colophon'}>
               <Button asChild highContrast radius="medium" size="3" variant="ghost">
                 <NextLink
                   className="gap-2 group-hover:cursor-pointer lg:flex"
@@ -123,7 +123,7 @@ function Footer() {
                   </p>
                 </NextLink>
               </Button>
-            </TooltipWrapper>
+            </TooltipClient>
           </div>
           <div
             className={cx(
