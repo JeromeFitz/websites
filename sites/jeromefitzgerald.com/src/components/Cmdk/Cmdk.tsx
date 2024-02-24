@@ -1,7 +1,6 @@
 'use client'
 import { MagnifyingGlassIcon } from '@jeromefitz/ds/components/Icon/index'
 import { cx } from '@jeromefitz/ds/utils/cx'
-import '@jeromefitz/tailwind-config/styles/cmdk.css'
 
 import type { ReactNode } from 'react'
 
@@ -18,6 +17,8 @@ import { menus } from '@/data/menu'
 import { useStore as _useStore } from '@/store/index'
 
 import { Logo } from './Icons'
+
+import styles from './Cmdk.module.css'
 
 const SKIP = 'skip'
 
@@ -83,6 +84,10 @@ function SubItem({
   return <Item {...props}>{children}</Item>
 }
 
+function getDark(theme) {
+  return theme === 'dark' ? styles['dark'] : ''
+}
+
 function Item({
   children,
   closeCmdK = true,
@@ -101,6 +106,7 @@ function Item({
   value?: string
 }) {
   const router = useRouter()
+  const { theme } = useTheme()
   const { isCmdkOpenSet } = useStore()
   const [isClick, isClickSet] = useState(false)
 
@@ -124,6 +130,7 @@ function Item({
 
   return (
     <Command.Item
+      className={cx(styles['cmdk-item'], getDark(theme))}
       data-active={isClick ? 'true' : 'false'}
       id={`cmdk-${value}`}
       onMouseDown={() => {
@@ -138,6 +145,7 @@ function Item({
       {children}
       {/* {!!shortcut && (
         <div
+        className={cx(styles['cmdk-meta'],styles['dark])}
           cmdk-meta=""
           cmdk-raycast-submenu-shortcuts=""
           className="flex flex-row gap-1"
@@ -255,6 +263,7 @@ function ItemsTheme({ isSubItem = false }) {
   )
 }
 function Cmdk() {
+  const { theme } = useTheme()
   const [value, setValue] = useState('linear')
   const inputRef = useRef<HTMLInputElement | null>(null)
   const listRef = useRef(null)
@@ -318,8 +327,22 @@ function Cmdk() {
         )}
       />
       <Command.Dialog
-        className={cx('data-[state=closed]:opacity-0')}
-        contentClassName={cx()}
+        className={cx(
+          'data-[state=closed]:opacity-0',
+          'bg-white dark:bg-black',
+          styles['cmdk-wrapper'],
+          // styles['cmdk-dialog-in'],
+          // styles['cmdk-dialog-out'],
+          getDark(theme),
+          styles['cmdk-shine'],
+          styles['cmdk-border'],
+        )}
+        contentClassName={cx(
+          styles['cmdk-dialog'],
+          // styles['cmdk-dialog-in'],
+          // styles['cmdk-dialog-out'],
+          getDark(theme),
+        )}
         label="Command Menu"
         onKeyDown={(e) => {
           if (
@@ -349,20 +372,47 @@ function Cmdk() {
             data-state={isCmdkInnerOpen ? 'open' : 'closed'}
             id="cmdk-wrapper"
           >
-            <div cmdk-top-shine="" />
+            <div
+              className={cx(
+                styles['cmdk-top-shine'],
+                getDark(theme),
+                styles['cmdk-show-top-shine'],
+              )}
+              cmdk-top-shine=""
+            />
             <Command.Input
               autoFocus
+              className={cx(styles['cmdk-input'], getDark(theme))}
               onValueChange={cmdkInputSet}
               placeholder="Search website..."
               ref={inputRef}
               value={cmdkInput}
             />
-            <hr cmdk-loader="" />
-            <Command.List ref={listRef}>
-              <Command.Empty>No results found.</Command.Empty>
+            <hr
+              className={cx(
+                styles['cmdk-loader'],
+                getDark(theme),
+                styles['cmdk-loading'],
+              )}
+              cmdk-loader=""
+            />
+            <Command.List
+              className={cx(styles['cmdk-list'], getDark(theme))}
+              ref={listRef}
+            >
+              <Command.Empty className={cx(styles['cmdk-empty'], getDark(theme))}>
+                No results found.
+              </Command.Empty>
               {!page && (
                 <>
-                  <Command.Group className="capitalize" heading={'pages'}>
+                  <Command.Group
+                    className={cx(
+                      'capitalize',
+                      styles['cmdk-group'],
+                      getDark(theme),
+                    )}
+                    heading={'pages'}
+                  >
                     {items.map((item) => {
                       const { href, icon: __icon, id, isActive, title } = item
                       if (!isActive) return null
@@ -383,7 +433,11 @@ function Cmdk() {
                     })}
                   </Command.Group>
                   <Command.Group
-                    className="capitalize"
+                    className={cx(
+                      'capitalize',
+                      styles['cmdk-group'],
+                      getDark(theme),
+                    )}
                     heading={`search`}
                     key={`search`}
                   >
@@ -414,7 +468,11 @@ function Cmdk() {
                     <ItemsPodcasts isSubItem />
                   </Command.Group>
                   <Command.Group
-                    className="capitalize"
+                    className={cx(
+                      'capitalize',
+                      styles['cmdk-group'],
+                      getDark(theme),
+                    )}
                     heading={general.group}
                     key={general.group}
                   >
@@ -439,7 +497,10 @@ function Cmdk() {
               {page === general.group && <ItemsTheme />}
             </Command.List>
 
-            <div cmdk-footer="">
+            <div
+              className={cx(styles['cmdk-footer'], getDark(theme))}
+              cmdk-footer=""
+            >
               {/* <HamburgerMenuIcon /> */}
               <div className="flex flex-row items-center justify-start gap-2 align-middle">
                 <div className="inline-flex gap-2">
@@ -448,7 +509,14 @@ function Cmdk() {
                 </div>
                 <span className="font-mono text-xs">Close</span>
               </div>
-              <button className="fixed right-0 mr-2" cmdk-open-trigger="">
+              <button
+                className={cx(
+                  'fixed right-0 mr-2',
+                  styles['cmdk-open-trigger'],
+                  getDark(theme),
+                )}
+                cmdk-open-trigger=""
+              >
                 Return to Select
                 <Kbd className="text-xs">↵</Kbd>
               </button>
