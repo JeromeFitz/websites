@@ -4,14 +4,14 @@
 import { useOs } from '@mantine/hooks'
 import { Button, Kbd } from '@radix-ui/themes'
 
-// import { useStore as _useStore } from '@/store/index'
+import { useStore as _useStore } from '@/store/index'
 
-// const useStore = () => {
-//   return _useStore((store) => ({
-//     isCmdkOpen: store.isCmdkOpen,
-//     isCmdkOpenSet: store.isCmdkOpenSet,
-//   }))
-// }
+const useStore = () => {
+  return _useStore((store) => ({
+    isCmdkOpen: store.isCmdkOpen,
+    isCmdkOpenSet: store.isCmdkOpenSet,
+  }))
+}
 
 function FooterCmdkClient() {
   const { isCmdkOpenSet } = useStore()
