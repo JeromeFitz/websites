@@ -24,9 +24,9 @@
       "types": "./dist/components/Button/index.d.ts",
       "default": "./dist/components/Button/index.js"
     },
-    "./components/Caption": {
-      "types": "./dist/components/Caption/index.d.ts",
-      "default": "./dist/components/Caption/index.js"
+    "./components/Callout": {
+      "types": "./dist/components/Callout/index.d.ts",
+      "default": "./dist/components/Callout/index.js"
     },
     "./components/Icon": {
       "types": "./dist/components/Icon/index.d.ts",
@@ -55,7 +55,7 @@
     "dev:storybook": "storybook dev --quiet --port 6002",
     "format:lint": "pnpm lint:eslint --fix",
     "lint": "pnpm lint:eslint && pnpm lint:typescript",
-    "lint:eslint": "eslint ./src --ext cjs,js,jsx,mjs,ts,tsx --max-warnings=0",
+    "lint:eslint": "eslint ./src --ext cjs,js,jsx,mjs,ts,tsx --ignore-path ../../.eslintignore --max-warnings=0",
     "lint:typescript": "tsc --noEmit --declaration",
     "test:e2e": "playwright test",
     "test:unit": "jest --ci --coverage",

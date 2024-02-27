@@ -1,17 +1,15 @@
-import { Button, ButtonLink } from '@jeromefitz/ds/components/Button/index'
+import { AnchorUnstyled as Anchor } from '@jeromefitz/ds/components/Anchor/index'
+import { Callout } from '@jeromefitz/ds/components/Callout/index'
 import {
   CalendarIcon,
   ClockIcon,
-  ExternalLinkIcon,
   HomeIcon,
 } from '@jeromefitz/ds/components/Icon/index'
-import { Tags } from '@jeromefitz/ds/components/Section/index'
 import { Separator } from '@jeromefitz/ds/components/Separator/index'
-import { cx } from '@jeromefitz/ds/utils/cx'
 import { getDataFromCache } from '@jeromefitz/shared/notion/utils/index'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
-import { Badge } from '@radix-ui/themes'
+import { Badge, Button, Code, Flex, Heading, Text } from '@radix-ui/themes'
 import { draftMode } from 'next/headers.js'
 import { notFound } from 'next/navigation.js'
 
@@ -25,12 +23,12 @@ import {
   HeadlineContent,
   HeadlineTitle,
   HeadlineTitleSub,
+  HeadlineTitleText,
 } from '@/components/Headline/index'
 import { Notion as Blocks } from '@/components/Notion/index'
 import { Relations } from '@/components/Relations/index'
-import { WIP } from '@/components/WIP/index'
 
-// import { Venue } from './Event.Slug.Venue'
+import { Venue } from './Event.Slug.Venue'
 import { Image } from './Image'
 
 const { DATABASE_ID } = CONFIG.EVENTS
@@ -74,7 +72,7 @@ const RELATIONS_SECONDARY = [
   },
 ]
 
-function Ticket({ isFakePortal = false, properties }) {
+function Ticket({ properties }) {
   const {
     // dateIso,
     dayOfMonthOrdinal,
@@ -85,93 +83,70 @@ function Ticket({ isFakePortal = false, properties }) {
     time,
     timezone,
     venueTitle,
-    // venues,
+    venues,
   } = getEventData(properties)
 
   const disabledText = isEventOver ? 'Event Has Passed' : 'Tickets Available Soon'
 
   return (
-    <div
-      className={cx(
-        isFakePortal
-          ? 'visible inline lg:invisible lg:hidden'
-          : 'invisible hidden lg:visible lg:inline',
-        '[writing-mode:horizontal-tb]',
-        'bg-[var(--accent-a9)] lg:bg-inherit',
-        'backdrop-blur-md lg:backdrop-blur-none',
-        'fixed lg:relative',
-        'bottom-0 lg:bottom-auto',
-        'left-0 lg:left-auto',
-        'w-screen lg:w-auto',
-        'text-center lg:text-left',
-        'z-50 lg:z-0',
-        'px-2 pb-1.5 pt-4 lg:p-0',
-        'rounded-t lg:rounded-none',
-        '',
-      )}
-    >
-      <div className="pl-5">
-        <p
-          className={cx(
-            'flex flex-row-reverse items-center justify-end gap-2 text-lg font-bold tracking-tight lg:text-2xl',
-          )}
+    <>
+      <Flex align="start" direction="column" width="100%">
+        <Flex
+          align="center"
+          direction="row-reverse"
+          gap="1"
+          justify="end"
+          width="100%"
+          wrap="nowrap"
         >
-          <strong>
+          <Text size={{ initial: '2', lg: '3' }} weight="bold">
             {dayOfWeek}, {monthName} {dayOfMonthOrdinal}
-          </strong>
-          <CalendarIcon className="size-5" />
-        </p>
-        <p
-          className={cx(
-            'flex flex-row-reverse items-center justify-end gap-2 text-lg font-bold tracking-tight lg:text-2xl',
-          )}
+          </Text>
+          <CalendarIcon className="size-4 lg:size-5" />
+        </Flex>
+        <Flex
+          align="center"
+          direction="row-reverse"
+          gap="1"
+          justify="end"
+          width="100%"
+          wrap="nowrap"
         >
-          <strong>
+          <Text weight="bold">
             {time} {timezone}
-          </strong>
-          <ClockIcon className="size-5" />
-        </p>
-        <p
-          className={cx(
-            'flex flex-row-reverse items-baseline justify-end gap-2 text-lg font-bold tracking-tight lg:text-2xl',
-          )}
+          </Text>
+          <ClockIcon className="size-4 lg:size-5" />
+        </Flex>
+        <Flex
+          align="start"
+          direction="row-reverse"
+          gap="1"
+          justify="end"
+          width="100%"
+          wrap="nowrap"
         >
-          <strong>{venueTitle}</strong>
-          <HomeIcon className="relative top-[0.25rem] size-5 lg:top-[0.125rem]" />
-        </p>
-      </div>
-      <div className="mt-1 pt-1">
+          <Text weight="bold">
+            {venueTitle}
+            <Text as="span" weight="regular">
+              <Venue id={venues[0]?.id} />
+            </Text>
+          </Text>
+          <HomeIcon className="mt-[0.2rem] size-4 lg:mt-[0.125rem] lg:size-5" />
+        </Flex>
+      </Flex>
+
+      <Flex align="center" justify="start" mt="1" width="100%">
         {ticketUrl && !isEventOver ? (
-          // @todo(types)
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
-          <ButtonLink
-            className={cx(
-              // @todo(radix-ui) get these custom classes back
-              // 'pink-button-outline',
-              'mx-0 w-full px-0 py-2 text-xl font-bold',
-              'flex-row items-center justify-center gap-1',
-            )}
-            href={ticketUrl}
-          >
-            <>Buy Tickets</>
-            <ExternalLinkIcon />
-          </ButtonLink>
+          <Button asChild variant="surface">
+            <Anchor href={ticketUrl}>Buy Tickets</Anchor>
+          </Button>
         ) : (
-          <Button
-            className={cx(
-              // 'slate-button-outline',
-              'mx-0 w-full px-0 py-2 text-xl font-bold',
-              'flex-row items-center justify-center gap-1',
-              'cursor-not-allowed',
-            )}
-            disabled={true}
-          >
+          <Button disabled={true}>
             <>{disabledText}</>
           </Button>
         )}
-      </div>
-    </div>
+      </Flex>
+    </>
   )
 }
 
@@ -202,33 +177,36 @@ async function Slug({ revalidate, segmentInfo }) {
 
   return (
     <>
-      <Ticket isFakePortal properties={properties} />
-      <Grid as="section">
+      <Grid>
         <HeadlineColumnA>
-          <HeadlineTitle aria-label={title} as="h1">
+          <HeadlineTitleText
+            aria-hidden={true}
+            aria-label={title}
+            className="hidden"
+          >
             <>{title}</>
-          </HeadlineTitle>
+          </HeadlineTitleText>
           <HeadlineTitleSub>
             {tags.map(({ color, id, name }) => (
               <Badge color={color} key={id} size="2">
-                {name}
+                <Code variant="ghost">{name}</Code>
               </Badge>
             ))}
+            <Ticket properties={properties} />
           </HeadlineTitleSub>
         </HeadlineColumnA>
         <HeadlineContent>
-          <WIP />
-          <Tags tags={tags} />
+          <Heading size={{ initial: '7', lg: '9' }}>{title}</Heading>
           <Separator className={'my-4'} />
-          <Ticket properties={properties} />
+          <Callout size="1" variant="outline" />
           <Separator className="my-4 opacity-50" />
           <Image properties={properties} />
           <Blocks data={data?.blocks} />
         </HeadlineContent>
       </Grid>
-      <Grid as="section">
+      <Grid>
         <HeadlineColumnA>
-          <HeadlineTitle aria-label={title} as="p">
+          <HeadlineTitle aria-label={title} as="h2">
             <>Info</>
           </HeadlineTitle>
         </HeadlineColumnA>

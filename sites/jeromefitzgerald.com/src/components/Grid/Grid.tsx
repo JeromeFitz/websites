@@ -1,39 +1,36 @@
-import { cx } from '@jeromefitz/ds/utils/cx'
-
+import type { GridProps } from '@radix-ui/themes/dist/esm/components/grid.js'
 import type { ReactNode } from 'react'
 
+import { Grid } from '@radix-ui/themes'
 import { forwardRef } from 'react'
 
-import type { As } from '../Headline/Headline.types'
-
-type GridProps = {
-  as?: As
+type AdditionalProps = {
   children: ReactNode
   className?: string
 }
-
-const Grid = forwardRef(function Grid(
-  { as = 'div', children, className }: GridProps,
+type GridImpl = GridProps & AdditionalProps
+const GridImpl = forwardRef(function GridImpl(
+  { children, className, ...props }: GridImpl,
   forwardedRef,
 ) {
-  const Component: As = as
   return (
-    <Component
-      className={cx(
-        'grid grid-cols-12 gap-2 lg:gap-4',
-        'mb-1 mr-1',
-        'p-4 lg:p-8',
-        'w-full',
-        '',
-        className,
-      )}
+    <Grid
+      className={className}
+      columns="12"
+      flow="column"
+      gap="2"
+      mb="1"
+      mr="1"
+      p={{ initial: '4', lg: '8' }}
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       ref={forwardedRef}
+      width="100%"
+      {...props}
     >
       {children}
-    </Component>
+    </Grid>
   )
 })
 
-export { Grid }
+export { GridImpl as Grid }

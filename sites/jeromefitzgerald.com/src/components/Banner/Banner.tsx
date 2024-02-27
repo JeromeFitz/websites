@@ -1,32 +1,54 @@
+/**
+ * @todo(data)
+ *
+ * - [ ] pull from store/api not pass-through props
+ * - [ ] different types of data to show:
+ * - - events
+ * - - music
+ * - - reading
+ * - - etc.
+ *
+ */
 import { cx } from '@jeromefitz/ds/utils/cx'
 
-import { Badge, Button } from '@radix-ui/themes'
+import { Badge, Box, Button, Flex, Text } from '@radix-ui/themes'
 // eslint-disable-next-line no-restricted-imports
 import NextLink from 'next/link'
 
 import { Grid } from '@/components/Grid/index'
 
-function Banner({ data }) {
+function BannerMobile({ data }) {
   return (
-    <Grid as="div" className="mx-auto w-full font-sans text-base">
+    <Flex
+      align="center"
+      asChild
+      className={cx(
+        '[--icon-size:16px]',
+        'group transition-transform',
+        'active:translate-y-[0.125rem]',
+        'bg-[var(--mauve-a2)] active:bg-[var(--mauve-a3)]',
+        'text-[var(--accent-12)] active:text-[var(--accent-a12)]',
+      )}
+      data-radius="full"
+      display={{
+        initial: 'flex',
+        lg: 'none',
+      }}
+      gridColumn="1/-1"
+      justify="center"
+      my="2"
+      px="2"
+      py="0"
+      style={{
+        border: `1px solid var(--accent-7)`,
+        borderRadius: 'var(--radius-3)',
+        boxShadow: 'var(--shadow-3)',
+        cursor: 'pointer',
+        lineHeight: 'var(--line-height-7)',
+      }}
+      width="100%"
+    >
       <NextLink
-        className={cx(
-          '[--icon-size:16px]',
-          'rounded-full shadow-md',
-          'h-8',
-          'px-2 py-0',
-          'my-2',
-          'bg-[var(--accent-1)] dark:bg-[var(--accent-2)]',
-          'active:bg-[var(--mauve-7)] dark:active:bg-[var(--mauve-2)]',
-          'leading-5',
-          'col-span-full flex flex-row lg:hidden',
-          'items-center justify-center gap-2',
-          // 'relative z-10 w-fit',
-          'transition-transform',
-          'group active:translate-y-[0.125rem]',
-          'outline-offset-2 outline-[blue]',
-          'border-1 border-black/35 dark:border-white/35',
-        )}
         data-active="false"
         data-prefix="true"
         data-version="v1"
@@ -36,91 +58,100 @@ function Banner({ data }) {
         tabIndex={0}
         type="submit"
       >
-        <span
-          className={cx(
-            'mr-[2px] flex min-w-5 shrink-0 items-center justify-center',
-          )}
+        <Flex
+          align="center"
+          as="span"
+          flexShrink="0"
+          justify="center"
+          // minWidth="5"
+          mr="2"
+          // width="100%"
         >
-          <Badge
-            className={cx(
-              // 'group-active:opacity-90',
-              '',
-            )}
-            color={data.badge.color}
-            radius="full"
-            variant="solid"
-          >
+          <Badge color={data.badge.color} radius="full" variant="solid">
             {data.icon}
           </Badge>
-        </span>
-        <span
-          className={cx(
-            'inline-block w-full px-2 py-0',
-            'truncate',
-            'min-w-32 max-w-80',
-          )}
+        </Flex>
+        <Box
+          className="truncate"
+          display="inline-block"
+          maxWidth="20rem"
+          minWidth="8rem"
+          px="2"
+          py="0"
+          width="100%"
         >
           {data.content.mobile}
-        </span>
-        <span className={cx('ml-2 flex min-w-5 shrink-0')}>{data.button.icon}</span>
+        </Box>
+        <Flex as="span" flexShrink="0" minWidth="5" ml="2">
+          {data.button.icon}
+        </Flex>
       </NextLink>
-      <div
-        className={cx(
-          'mb-2 mt-4',
-          'hidden lg:col-span-full lg:flex lg:flex-row',
-          'items-center justify-center gap-2',
-        )}
-      >
-        <span
-          className={cx(
-            'mr-[2px] flex min-w-5 shrink-0 items-center justify-center',
-          )}
-        >
-          <Badge
-            className={cx('')}
-            color={data.badge.color}
-            highContrast={false}
-            radius="full"
-            size="2"
-            variant="solid"
-          >
-            {data.icon}
-            {data.badge.text}
-          </Badge>
-        </span>
-        <span
-          className={cx(
-            'inline-block w-full px-2 py-0',
-            'truncate',
-            'min-w-60 max-w-96',
-          )}
-        >
-          {data.content.desktop}
-        </span>
+    </Flex>
+  )
+}
 
-        <Button
-          asChild
-          className={cx(
-            // 'bg-[#ffffff] hover:bg-[#ffffff]/5',
-            // 'dark:bg-[#000000] dark:hover:bg-[#fff]/5',
-            // 'text-[var(--accent-11)] hover:text-[var(--accent-12)]',
-            // 'text-[var(--mauve-12)] hover:text-[var(--mauve-11)]',
-            // 'transition-all',
-            '',
-          )}
-          // color="pink"
+function BannerDesktop({ data }) {
+  return (
+    <Flex
+      align="center"
+      direction="row"
+      display={{ initial: 'none', lg: 'flex' }}
+      gap="1"
+      gridColumn="1/-1"
+      justify="center"
+      mb="2"
+      mt="2"
+      width="100%"
+    >
+      <Flex
+        align="center"
+        as="span"
+        display="flex"
+        flexShrink="0"
+        justify="center"
+        minWidth="1.25rem"
+        mr="1"
+      >
+        <Badge
+          color={data.badge.color}
           highContrast={false}
           radius="full"
           size="2"
-          variant="outline"
+          variant="soft"
         >
-          <NextLink href={data.href}>
-            {data.button.text}
-            {` `}
-            {data.button.icon}
-          </NextLink>
-        </Button>
-      </div>
+          {data.icon}
+          {data.badge.text}
+        </Badge>
+      </Flex>
+      <Box
+        as="span"
+        className="truncate"
+        display="inline-block"
+        maxWidth="24rem"
+        minWidth="15rem"
+        px="2"
+        py="0"
+        width="100%"
+      >
+        <Text as="span">{data.content.desktop}</Text>
+      </Box>
+
+      <Button asChild highContrast={false} radius="full" size="2" variant="soft">
+        <NextLink href={data.href}>
+          {data.button.text}
+          {` `}
+          {data.button.icon}
+        </NextLink>
+      </Button>
+    </Flex>
+  )
+}
+
+function Banner({ data }) {
+  return (
+    <Grid as="div" mx="auto" width="100%">
+      <BannerMobile data={data} />
+      <BannerDesktop data={data} />
     </Grid>
   )
 }

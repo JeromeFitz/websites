@@ -60,7 +60,6 @@ module.exports = {
             'notion-',
             'perspective\\-.+:?.+',
             'radix\\-.+:?.+',
-            'spotify-button-outline',
             'text-radix\\-.+:?.+',
             // 'data\\-.+:?.+',
             'trap',
@@ -78,7 +77,7 @@ module.exports = {
           callees: ['cx', 'tw'],
           config: `${fullCwd}/packages/design-system/tailwind.config.js`,
           // @todo(eslint-plugin-tailwindcss) submit pr for allowlist
-          whitelist: ['icon-custom', 'spotify-button-outline', 'trap'],
+          whitelist: ['icon-custom', 'trap'],
         },
       },
     },

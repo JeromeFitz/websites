@@ -21,7 +21,7 @@ function LayoutClient() {
         animate={isWidgetOpen ? 'open' : 'closed'}
         className={cx(
           'z-[49]',
-          'bg-[var(--whiteA12)] dark:bg-[var(--blackA12)]',
+          'bg-[var(--white-a12)] dark:bg-[var(--black-a12)]',
           'fixed left-0 top-0 h-screen w-full',
           'pointer-events-none data-[open=true]:pointer-events-auto',
           'backdrop-blur-sm',

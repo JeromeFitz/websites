@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/no-custom-classname */
 import { cx } from '../../utils/cx'
 
 function SectionHeaderTitle({ children, className = '', isTitle = false }) {

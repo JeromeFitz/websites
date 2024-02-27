@@ -11,7 +11,7 @@ export default function Page() {
   const title = 'Newsletter'
 
   return (
-    <Grid as="section">
+    <Grid>
       <HeadlineColumnA>
         <HeadlineTitle aria-label={title} as="h1">
           <>{title}</>

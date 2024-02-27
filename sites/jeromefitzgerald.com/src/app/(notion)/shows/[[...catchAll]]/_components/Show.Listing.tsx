@@ -1,5 +1,5 @@
 import { Anchor } from '@jeromefitz/ds/components/Anchor/index'
-import { cx } from '@jeromefitz/ds/utils/cx'
+import { Callout } from '@jeromefitz/ds/components/Callout/index'
 import {
   getDataFromCache,
   getDatabaseQuery,
@@ -8,6 +8,7 @@ import { isObjectEmpty } from '@jeromefitz/utils'
 
 import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints.js'
 
+import { Box, Link, Text } from '@radix-ui/themes'
 import _filter from 'lodash/filter.js'
 import _orderBy from 'lodash/orderBy.js'
 import { draftMode } from 'next/headers.js'
@@ -26,7 +27,6 @@ import {
 } from '@/components/Headline/index'
 // import { Notion as Blocks } from '@/components/Notion/index'
 // import type { PageObjectResponseShow } from '@/app/(notion)/_config/index'
-import { WIP } from '@/components/WIP/index'
 
 const { DATABASE_ID } = CONFIG.SHOWS
 
@@ -49,11 +49,13 @@ function ListingTemp({ data }) {
       {shows.map((show) => {
         if (!show?.isPublished) return null
         return (
-          <li className="my-1 py-1" key={`shows-show-${show?.id}`}>
-            <Anchor className="text-base lg:text-xl" href={show?.href}>
-              {show?.title}
-            </Anchor>
-          </li>
+          <Box asChild key={`shows-show-${show?.id}`} my="1" py="1">
+            <li>
+              <Link asChild>
+                <Anchor href={show?.href}> {show?.title}</Anchor>
+              </Link>
+            </li>
+          </Box>
         )
       })}
     </ul>
@@ -131,7 +133,7 @@ async function Listing({ revalidate, segmentInfo }) {
     'Shows that comedian Jerome Fitzgerald is in. Maybe these should be Acts? Online content, when it is his, eludes him. (He is glad you found this page in spite of this.)'
 
   return (
-    <Grid as="section">
+    <Grid>
       <HeadlineColumnA>
         <HeadlineTitle aria-label={title} as="h1">
           <>{title}</>
@@ -139,10 +141,8 @@ async function Listing({ revalidate, segmentInfo }) {
       </HeadlineColumnA>
       <HeadlineContent>
         {/* <Blocks data={data?.blocks} /> */}
-        <p className={cx('text-lg tracking-wide', 'flex flex-col gap-0', '')}>
-          {seoDescription}
-        </p>
-        <WIP />
+        <Text size="4">{seoDescription}</Text>
+        <Callout size="1" variant="outline" />
         {hasContent && <ListingTemp data={showData} />}
       </HeadlineContent>
     </Grid>

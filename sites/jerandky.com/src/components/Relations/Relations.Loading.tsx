@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/no-custom-classname */
 function RelationLoading() {
   const random = Math.floor(Math.random() * (10 - 5 + 1)) + 5
   const colWidth = random === 12 ? 'w-full' : `w-${random}/12`

@@ -1,3 +1,4 @@
+import { Callout } from '@jeromefitz/ds/components/Callout/index'
 import {
   getDataFromCache,
   getSegmentInfo,
@@ -18,7 +19,6 @@ import {
 } from '@/components/Headline/index'
 // import { Notion as Blocks } from '@/components/Notion/index'
 import { Layout } from '@/components/Layout/index'
-import { WIP } from '@/components/WIP/index'
 
 const slug = '/contact'
 const { SEGMENT } = CONFIG.PAGES
@@ -69,14 +69,16 @@ async function Slug({ revalidate, segmentInfo }) {
 
   if (isObjectEmpty(data.page)) return null
   return (
-    <Grid as="section">
+    <Grid>
       <HeadlineColumnA>
         <HeadlineTitle aria-label={title} as="h1">
           <>{title}</>
         </HeadlineTitle>
       </HeadlineColumnA>
       <HeadlineContent>
-        <WIP description={`This page has not been migrated yet.`} />
+        <Callout size="1" variant="surface">
+          This page has not been migrated yet.
+        </Callout>
         {/* <p className={'text-lg tracking-wide'}>{seoDescription}</p> */}
       </HeadlineContent>
     </Grid>

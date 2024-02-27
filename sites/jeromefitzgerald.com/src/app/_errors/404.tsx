@@ -1,8 +1,16 @@
-import { Anchor } from '@jeromefitz/ds/components/Anchor/index'
-import { Separator } from '@jeromefitz/ds/components/Separator/index'
+import { AnchorUnstyled as Anchor } from '@jeromefitz/ds/components/Anchor/index'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
-import { Badge } from '@radix-ui/themes'
+import {
+  Badge,
+  Box,
+  Code,
+  Heading,
+  Link,
+  Separator,
+  Strong,
+  Text,
+} from '@radix-ui/themes'
 
 import { Grid } from '@/components/Grid/index'
 import {
@@ -22,39 +30,51 @@ function FourOhFour({
 }) {
   const title = '404'
   const message = `Page Not Found`
-  const body = `Hey, sometimes these things happen. I bet if this page existed it would be pretty cool.`
+  // const body = `Hey, sometimes these things happen. I bet if this page existed it would be pretty cool.`
 
   return (
     <>
-      <Grid as="section">
+      <Grid>
         <HeadlineColumnA>
           <HeadlineTitle aria-label={message} as="h1">
             <>{message}</>
           </HeadlineTitle>
           <HeadlineTitleSub>
             <Badge size="2">
-              {title}
-              {isNotPublished ? '*!*' : ''}
+              <Code variant="ghost">
+                {title}
+                {isNotPublished ? '*!*' : ''}
+              </Code>
             </Badge>
           </HeadlineTitleSub>
         </HeadlineColumnA>
         <HeadlineContent>
-          <p className={'text-lg tracking-wide'}>{body}</p>
-          <Separator className="my-8" />
-          <p className="text-lg">
+          <Text as="p" size="8" weight="bold">
+            Hey, sometimes these things happen.
+          </Text>
+          <Text size="4">I bet if this page existed it would be pretty cool.</Text>
+          <Separator my="8" />
+          <Text size="4">
             Please try and go back to the{` `}
-            <Anchor href="/">homepage</Anchor>.
-          </p>
+            <Link asChild>
+              <Anchor href="/">homepage</Anchor>
+            </Link>
+            .
+          </Text>
           {!isObjectEmpty(segmentInfo) && (
             <>
-              <Separator className="my-8" />
-              <h2 className="text-xl font-bold">Error Information:</h2>
-              <ul className="my-4 list-inside list-disc">
-                <li>
-                  <strong>url: </strong>
-                  <span>{segmentInfo?.slug}</span>
-                </li>
-              </ul>
+              <Separator my="8" />
+              <Heading as="h2">Error Information:</Heading>
+              <Box asChild mb="4" pb="2" width="100%">
+                <ul className="list-inside list-disc">
+                  <Text asChild>
+                    <li>
+                      <Strong>url: </Strong>
+                      <Text as="span">{segmentInfo?.slug}</Text>
+                    </li>
+                  </Text>
+                </ul>
+              </Box>
             </>
           )}
         </HeadlineContent>

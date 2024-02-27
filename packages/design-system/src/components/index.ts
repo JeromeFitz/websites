@@ -1,5 +1,5 @@
 export { Anchor } from './Anchor/index'
 export { Button, ButtonLink } from './Button/index'
-export { Caption } from './Caption/index'
+export { Callout } from './Callout/index'
 export { Icon } from './Icon/index'
 export { Separator } from './Separator/index'

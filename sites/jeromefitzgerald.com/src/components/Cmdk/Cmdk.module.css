@@ -3,11 +3,11 @@
   position: fixed;
   inset: 0;
   /* @note(cmdk) handled separately */
-  /* background: var(--whiteA11); */
+  /* background: var(--white-a11); */
   transition: all 150ms ease;
   .dark & {
     /* @note(cmdk) handled separately */
-    /* background: var(--blackA11); */
+    /* background: var(--black-a11); */
   }
 }
 
@@ -22,20 +22,20 @@
   box-shadow: var(--cmdk-shadow);
   position: relative;
 
-  background: var(--whiteA12);
-  /* border: 1px solid var(--blackA6); */
+  background: var(--white-a12);
+  /* border: 1px solid var(--black-a6); */
   border: 0;
 
   &:after {
     content: '';
     background: linear-gradient(
       to right,
-      var(--blackA12) 20%,
-      var(--blackA12) 40%,
-      var(--blackA11) 50%,
-      var(--blackA11) 55%,
-      var(--blackA12) 70%,
-      var(--blackA12) 100%
+      var(--black-a12) 20%,
+      var(--black-a12) 40%,
+      var(--black-a11) 50%,
+      var(--black-a11) 55%,
+      var(--black-a12) 70%,
+      var(--black-a12) 100%
     );
     z-index: -1;
     position: absolute;
@@ -62,20 +62,20 @@
   }
 
   .dark & {
-    background: var(--blackA12);
-    /* border: 1px solid var(--whiteA6); */
+    background: var(--black-a12);
+    /* border: 1px solid var(--white-a6); */
     border: 0;
 
     &:after {
       content: '';
       background: linear-gradient(
         to right,
-        var(--whiteA6) 20%,
-        var(--whiteA6) 40%,
-        var(--whiteA10) 50%,
-        var(--whiteA10) 55%,
-        var(--whiteA6) 70%,
-        var(--whiteA6) 100%
+        var(--white-a6) 20%,
+        var(--white-a6) 40%,
+        var(--white-a10) 50%,
+        var(--white-a10) 55%,
+        var(--white-a6) 70%,
+        var(--white-a6) 100%
       );
       z-index: -1;
       position: absolute;
@@ -116,14 +116,14 @@
       margin-left: 8px;
     }
 
-    background: var(--whiteA1);
-    color: var(--blackA12);
-    border: 1px solid var(--blackA7);
+    background: var(--white-a1);
+    color: var(--black-a12);
+    border: 1px solid var(--black-a7);
 
     .dark & {
-      background: var(--blackA1);
-      border: 1px solid var(--whiteA7);
-      color: var(--whiteA12);
+      background: var(--black-a1);
+      border: 1px solid var(--white-a7);
+      color: var(--white-a12);
     }
   }
 }
@@ -137,17 +137,17 @@
   padding: 8px 16px !important;
   outline: none;
 
-  background: var(--whiteA2) !important;
-  color: var(--blackA11);
+  background: var(--white-a2) !important;
+  color: var(--black-a11);
   &::placeholder {
-    color: var(--blackA8);
+    color: var(--black-a8);
   }
 
   .dark & {
-    background: var(--blackA2) !important;
-    color: var(--whiteA11);
+    background: var(--black-a2) !important;
+    color: var(--white-a11);
     &::placeholder {
-      color: var(--whiteA8);
+      color: var(--white-a8);
     }
   }
 
@@ -171,16 +171,16 @@
   background: linear-gradient(
     90deg,
     rgba(255, 212, 241, 0),
-    var(--pink11) 20%,
-    var(--pink10) 67.19%,
+    var(--pink-11) 20%,
+    var(--pink-10) 67.19%,
     rgba(255, 212, 241, 0)
   );
   .dark & {
     background: linear-gradient(
       90deg,
       rgba(56, 189, 248, 0),
-      var(--pink5) 20%,
-      var(--pink9) 67.19%,
+      var(--pink-5) 20%,
+      var(--pink-9) 67.19%,
       rgba(236, 72, 153, 0)
     );
   }
@@ -199,11 +199,11 @@
   margin-top: 12px;
   margin-bottom: 12px;
 
-  --loader-color: var(--pink9);
-  background: var(--blackA6);
+  --loader-color: var(--pink-9);
+  background: var(--black-a6);
   .dark & {
-    --loader-color: var(--pink3);
-    background: var(--whiteA6);
+    --loader-color: var(--pink-3);
+    background: var(--white-a6);
   }
 
   &:after {
@@ -228,20 +228,20 @@
 
 /* [cmdk-item] { */
 .cmdk-item {
-  content-visibility: auto;
-
-  cursor: pointer;
-  height: 40px;
-  border-radius: 8px;
-  font-size: 14px;
-  display: flex;
   align-items: center;
+  border-radius: 8px;
+  color: var(--black-a12);
+  content-visibility: auto;
+  cursor: pointer;
+  display: flex;
+  font-size: 14px;
   gap: 8px;
+  height: 40px;
   padding: 0 8px;
+  transition-property: none;
+  transition: all 150ms ease;
   user-select: none;
   will-change: background, color;
-  transition: all 150ms ease;
-  transition-property: none;
 
   &:first-child {
     margin-top: 8px;
@@ -256,47 +256,46 @@
     height: 18px;
   }
 
-  color: var(--blackA12);
   &[data-selected='true'] {
-    background: var(--blackA4);
-    color: var(--blackA12);
+    background: var(--black-a4);
+    color: var(--black-a12);
     box-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width))
-      var(--pinkA7);
+      var(--pink-a7);
   }
   &[data-disabled='true'] {
-    color: var(--blackA8);
+    color: var(--black-a8);
     cursor: not-allowed;
   }
   &:active {
     transition-property: background;
-    background: var(--blackA4);
+    background: var(--black-a4);
   }
   &:focus,
   &:focus:active,
   &[data-active='true'] {
     transition-property: background;
-    background: var(--blackA5);
+    background: var(--black-a5);
   }
 
   .dark & {
-    color: var(--whiteA12);
+    color: var(--white-a12);
     &[data-selected='true'] {
-      background: var(--whiteA4);
-      color: var(--whiteA12);
+      background: var(--white-a4);
+      color: var(--white-a12);
     }
     &[data-disabled='true'] {
-      color: var(--whiteA8);
+      color: var(--white-a8);
       cursor: not-allowed;
     }
     &:active {
       transition-property: background;
-      background: var(--whiteA4);
+      background: var(--white-a4);
     }
     &:focus,
     &:focus:active,
     &[data-active='true'] {
       transition-property: background;
-      background: var(--whiteA5);
+      background: var(--white-a5);
     }
   }
 }
@@ -305,9 +304,9 @@
 .cmdk-meta {
   margin-left: auto;
   font-size: 13px;
-  color: var(--blackA11);
+  color: var(--black-a11);
   .dark & {
-    color: var(--whiteA11);
+    color: var(--white-a11);
   }
 }
 
@@ -333,9 +332,9 @@
   font-size: 12px;
   height: 28px;
   letter-spacing: -0.25px;
-  color: var(--blackA11);
+  color: var(--black-a11);
   .dark & {
-    color: var(--whiteA11);
+    color: var(--white-a11);
   }
 }
 
@@ -343,9 +342,9 @@
 .cmdk-open-trigger {
   display: flex;
   align-items: center;
-  color: var(--blackA12);
+  color: var(--black-a12);
   .dark & {
-    color: var(--whiteA12);
+    color: var(--white-a12);
   }
 }
 
@@ -367,27 +366,27 @@
     border: 0;
     width: 1px;
 
-    background: var(--blackA6);
+    background: var(--black-a6);
     .dark & {
-      background: var(--whiteA6);
+      background: var(--white-a6);
     }
   }
 
   &[aria-expanded='true'],
   &:hover {
-    background: var(--blackA4);
+    background: var(--black-a4);
 
     kbd {
-      background: var(--blackA7);
+      background: var(--black-a7);
     }
   }
 
   .dark & {
     &:hover {
-      background: var(--whiteA4);
+      background: var(--white-a4);
 
       kbd {
-        background: var(--whiteA7);
+        background: var(--white-a7);
       }
     }
   }
@@ -398,9 +397,9 @@
   height: 1px;
   width: 100%;
   margin: 4px 0;
-  background: var(--blackA5);
+  background: var(--black-a5);
   .dark & {
-    background: var(--whiteA5);
+    background: var(--white-a5);
   }
 }
 
@@ -418,9 +417,9 @@
     display: flex;
     align-items: center;
 
-    color: var(--blackA11);
+    color: var(--black-a11);
     .dark & {
-      color: var(--whiteA11);
+      color: var(--white-a11);
     }
   }
 }
@@ -436,16 +435,16 @@
   padding: 8px;
   border-radius: 0 0 12px 12px;
   backdrop-filter: blur(3px);
-  background: var(--whiteA11);
+  background: var(--white-a11);
   /* background: white; */
-  border-top: 1px solid var(--blackA7);
+  border-top: 1px solid var(--black-a7);
 
   /* @media (prefers-color-scheme: dark) {
     background: var(--slate2);
   } */
   .dark & {
-    background: var(--blackA11);
-    border-top: 1px solid var(--whiteA7);
+    background: var(--black-a11);
+    border-top: 1px solid var(--white-a7);
   }
 
   svg {
@@ -461,9 +460,9 @@
     border: 0;
     margin: 0 4px 0px 12px;
 
-    background: var(--blackA6);
+    background: var(--black-a6);
     .dark & {
-      background: var(--whiteA6);
+      background: var(--white-a6);
     }
   }
 }
@@ -496,9 +495,9 @@
   justify-content: center;
   height: 64px;
   white-space: pre-wrap;
-  color: var(--blackA7);
+  color: var(--black-a7);
   .dark & {
-    color: var(--whiteA7);
+    color: var(--white-a7);
   }
 }
 
@@ -509,11 +508,11 @@
     width: 320px;
     border-radius: 8px;
 
-    border: 1px solid var(--blackA6);
-    background: var(--blackA2);
+    border: 1px solid var(--black-a6);
+    background: var(--black-a2);
     .dark & {
-      border: 1px solid var(--whiteA6);
-      background: var(--whiteA2);
+      border: 1px solid var(--white-a6);
+      background: var(--white-a2);
     }
   }
 
@@ -551,7 +550,7 @@
     }
 
     /* &[aria-selected='true']:focus:active {
-      background: var(--pink6);
+      background: var(--pink-6);
       color: var(--slate11);
 
       [cmdk-submenu-shortcuts] kbd {
@@ -668,9 +667,9 @@
 
 @keyframes cmdk-border {
   to {
-    box-shadow: 0 0 0 1px var(--blackA1);
+    box-shadow: 0 0 0 1px var(--black-a1);
     .dark & {
-      box-shadow: 0 0 0 1px var(--whiteA1);
+      box-shadow: 0 0 0 1px var(--white-a1);
     }
   }
 }

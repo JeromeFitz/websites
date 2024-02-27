@@ -1,18 +1,18 @@
 'use client'
+import { Callout } from '@jeromefitz/ds/components/Callout/index'
 import {
   ArchiveIcon,
-  // ArrowTopRightIcon,
   ExternalLinkIcon,
+  InfoCircledIcon,
 } from '@jeromefitz/ds/components/Icon/index'
 import { cx } from '@jeromefitz/ds/utils/cx'
 
-import { Button } from '@radix-ui/themes'
+import { Button, Text } from '@radix-ui/themes'
 import dynamic from 'next/dynamic.js'
 // eslint-disable-next-line no-restricted-imports
 import NextLink from 'next/link'
 
 import { Grid } from '@/components/Grid/index'
-import { WIPFooter } from '@/components/WIP/WIP'
 /**
  * @note ignore this file for CI linting (created on next build)
  */
@@ -46,8 +46,23 @@ function FooterClient() {
         'lg:py-12',
       )}
     >
-      <div className="col-span-full my-8 flex items-center justify-between">
-        <WIPFooter />
+      <div className="col-span-full my-8 flex items-end justify-start">
+        <Callout
+          className={cx('m-2 max-w-screen-sm p-4')}
+          icon={InfoCircledIcon}
+          size="1"
+          variant="surface"
+        >
+          <Text as="p" size="2">
+            This site is being actively developed.
+          </Text>
+          <Text as="p" size="2">
+            So though it is nowhere near perfect, it is shippable, heh.
+          </Text>
+          <Text as="p" size="2">
+            Consider this eternally under construction.
+          </Text>
+        </Callout>
       </div>
       <div
         className={cx(
@@ -64,7 +79,7 @@ function FooterClient() {
           )}
         >
           <li>
-            <span className="mb-2 pb-2 font-bold uppercase tracking-tight text-[var(--gray-11)]">
+            <span className="mb-2 pb-2 font-bold uppercase tracking-[var(--letter-spacing-1)] text-[var(--gray-11)]">
               Social
             </span>
           </li>

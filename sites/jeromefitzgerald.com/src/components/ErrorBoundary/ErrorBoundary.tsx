@@ -1,8 +1,7 @@
 'use client'
-import { Separator } from '@jeromefitz/ds/components/Separator/index'
-
 import type { ReactNode } from 'react'
 
+import { Heading, Link, Separator, Text } from '@radix-ui/themes'
 import { Component } from 'react'
 
 import { Grid } from '@/components/Grid/index'
@@ -48,7 +47,7 @@ class ErrorBoundary extends Component<PropsChildren> {
 
       return (
         <main className="m-0 min-h-screen w-full p-0">
-          <Grid as="section">
+          <Grid>
             <HeadlineColumnA>
               <HeadlineTitle aria-label={title} as="h1">
                 <>{title}</>
@@ -58,19 +57,18 @@ class ErrorBoundary extends Component<PropsChildren> {
               </HeadlineTitleSub>
             </HeadlineColumnA>
             <HeadlineContent>
-              <h1 className="mb-7 text-6xl font-black">{message}</h1>
-              <p className="text-lg">{body}</p>
-              <Separator className="my-8" />
-              <p className="text-lg">
+              <Heading mb="7" size="7">
+                {message}
+              </Heading>
+              <Text size="6">{body}</Text>
+              <Separator my="8" size="4" />
+              <Text size="6">
                 Please try and go back to the{` `}
-                <a
-                  className="inline-flex flex-row items-center gap-1 text-[var(--accent-11)] underline decoration-[var(--mauve-4)] underline-offset-4 transition-all duration-200 ease-in hover:text-[var(--accent-12)] hover:decoration-[var(--mauve-5)]"
-                  href="/"
-                >
-                  homepage
-                </a>
+                <Link asChild>
+                  <a href="/">homepage</a>
+                </Link>
                 .
-              </p>
+              </Text>
             </HeadlineContent>
           </Grid>
         </main>
