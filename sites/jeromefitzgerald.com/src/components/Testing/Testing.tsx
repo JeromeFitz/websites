@@ -1,4 +1,6 @@
-import { Anchor } from '@jeromefitz/ds/components/Anchor/index'
+import { AnchorUnstyled as Anchor } from '@jeromefitz/ds/components/Anchor/index'
+
+import { Box, Flex, Link } from '@radix-ui/themes'
 
 import { Grid } from '@/components/Grid/index'
 import {
@@ -33,7 +35,7 @@ function Wrapper({ children }) {
   const title = 'Testing'
   return (
     <>
-      <Grid as="section">
+      <Grid>
         <HeadlineColumnA>
           <HeadlineTitle aria-label={title} as="h1">
             <>{title}</>
@@ -51,17 +53,29 @@ function Wrapper({ children }) {
 function Testing() {
   return (
     <Wrapper>
-      <ul>
-        {links.map((href, i) => {
-          return (
-            <li className="my-1 py-1" key={`homepage-link-${i}`}>
-              <Anchor className="text-base lg:text-xl" href={href}>
-                {href}
-              </Anchor>
-            </li>
-          )
-        })}
-      </ul>
+      <Box asChild my="1" py="1" width="100%">
+        <ul className="list-inside">
+          {links.map((href, i) => {
+            return (
+              <Box
+                asChild
+                key={`homepage-link-${i}`}
+                mb={{ initial: '2', lg: '1' }}
+                my="1"
+                py="1"
+              >
+                <li>
+                  <Flex asChild direction="row" display="inline-flex" gap="2">
+                    <Link asChild mb="2">
+                      <Anchor href={href}>{href}</Anchor>
+                    </Link>
+                  </Flex>
+                </li>
+              </Box>
+            )
+          })}
+        </ul>
+      </Box>
     </Wrapper>
   )
 }

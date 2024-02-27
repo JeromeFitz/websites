@@ -1,11 +1,12 @@
-import { Anchor } from '@jeromefitz/ds/components/Anchor/index'
-// import { MicrophoneIcon } from '@jeromefitz/ds/components/Icon/index'
+import { AnchorUnstyled as Anchor } from '@jeromefitz/ds/components/Anchor/index'
+import { Callout } from '@jeromefitz/ds/components/Callout/index'
 import { Separator } from '@jeromefitz/ds/components/Separator/index'
 import { cx } from '@jeromefitz/ds/utils/cx'
 import { EmbedSpotify } from '@jeromefitz/shared/components/Notion/Blocks/Embed.Spotify'
 import { getDataFromCache } from '@jeromefitz/shared/notion/utils/index'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
+import { Box, Flex, Grid as GridRadix, Link, Strong, Text } from '@radix-ui/themes'
 import { draftMode } from 'next/headers.js'
 import { notFound } from 'next/navigation.js'
 
@@ -21,7 +22,6 @@ import {
 } from '@/components/Headline/index'
 import { Notion as Blocks } from '@/components/Notion/index'
 import { Relations } from '@/components/Relations/index'
-import { WIP } from '@/components/WIP/index'
 
 const { DATABASE_ID } = CONFIG.EPISODES
 
@@ -44,19 +44,7 @@ const RELATIONS_SECONDARY = [
   },
 ]
 
-const styleIndividual = cx(
-  'inline-block text-base font-normal tracking-tight no-underline lg:text-xl',
-  '',
-)
-
 function Rollups({ properties }) {
-  const isPublished = false
-  const style = cx(
-    styleIndividual,
-    isPublished && 'transition-all duration-200',
-    isPublished && 'text-[var(--slate-12)] hover:text-[var(--accent-11)]',
-  )
-
   const {
     dayOfMonthOrdinal,
     dayOfWeek,
@@ -88,25 +76,29 @@ function Rollups({ properties }) {
   ]
 
   return (
-    <>
-      <div className="mb-4 grid w-full grid-cols-12 gap-x-4 gap-y-8">
-        {rollups.map((rollup) => {
-          const key = `rollup-${rollup.id}`
-          return (
-            <div className="col-span-6 lg:col-span-4" key={key}>
-              <p className="pb-3 font-extrabold uppercase tracking-tight">
-                <strong>{rollup.id}</strong>
-              </p>
-              <ul>
-                <li className={'mb-2 lg:mb-0.5'}>
-                  <span className={style}>{rollup.data}</span>
+    <GridRadix columns="12" gapX="4" gapY="8" mb="4" width="100%">
+      {rollups.map((rollup) => {
+        const key = `rollup-${rollup.id}`
+        return (
+          <Box
+            // className="col-span-6 lg:col-span-4"
+            gridColumn={{ initial: 'span 6 / span 6', lg: 'span 4 / span 4' }}
+            key={key}
+          >
+            <Text className="uppercase">
+              <Strong>{rollup.id}</Strong>
+            </Text>
+            <ul>
+              <Box asChild mb={{ initial: '2', lg: '1' }}>
+                <li>
+                  <Text as="span">{rollup.data}</Text>
                 </li>
-              </ul>
-            </div>
-          )
-        })}
-      </div>
-    </>
+              </Box>
+            </ul>
+          </Box>
+        )
+      })}
+    </GridRadix>
   )
 }
 
@@ -115,48 +107,44 @@ function Links({ properties }) {
   const [, segment, podcastSlug] = href.split('/')
   const podcastUrl = `/${segment}/${podcastSlug}`
   const spotifyUrl = `https://open.spotify.com/episode/${spotifyId}`
-  const isPublished = true
-  const style = cx(
-    styleIndividual,
-    isPublished && 'transition-all duration-200',
-    // isPublished && 'text-[var(--slate-12)] hover:text-[var(--accent-11)]'
-  )
+
   return (
     <>
-      <div className="my-4 py-4">
-        <div className="my-2 py-2">
-          <p className="pb-3 font-extrabold uppercase tracking-tight">
-            <strong>Listen</strong>
-          </p>
-          <p className={style}>
-            <Anchor
-              className={cx(
-                style,
-                'text-spotify-dark hover:text-spotify dark:text-spotify dark:hover:text-spotify-dark',
-              )}
-              href={spotifyUrl}
-            >
-              Spotify
-            </Anchor>
-          </p>
-        </div>
-        <div className="my-2 py-2">
-          <p className="pb-3 font-extrabold uppercase tracking-tight">
-            <strong>Preview</strong>
-          </p>
+      <Box my="4" py="4">
+        <Box my="2" py="2">
+          <Text className="uppercase" weight="bold">
+            <Strong>Listen</Strong>
+          </Text>
+          <Flex align="center" asChild>
+            <Link asChild>
+              <Anchor
+                className={cx(
+                  'text-spotify-dark hover:text-spotify dark:text-spotify dark:hover:text-spotify-dark',
+                )}
+                href={spotifyUrl}
+              >
+                Spotify
+              </Anchor>
+            </Link>
+          </Flex>
+        </Box>
+        <Box my="2" py="2">
+          <Text className="uppercase" weight="bold">
+            <Strong>Preview</Strong>
+          </Text>
           <EmbedSpotify id={spotifyId} />
-        </div>
-        <div className="my-2 py-2">
-          <p className="pb-3 font-extrabold uppercase tracking-tight">
-            <strong>Back to</strong>
-          </p>
-          <p className={style}>
-            <Anchor className={cx(style)} href={podcastUrl}>
-              {podcastTitle}
-            </Anchor>
-          </p>
-        </div>
-      </div>
+        </Box>
+        <Box my="2" py="2">
+          <Text className="uppercase" weight="bold">
+            <Strong>Back to</Strong>
+          </Text>
+          <Flex align="center" asChild>
+            <Link asChild mt="3">
+              <Anchor href={podcastUrl}>{podcastTitle}</Anchor>
+            </Link>
+          </Flex>
+        </Box>
+      </Box>
     </>
   )
 }
@@ -184,22 +172,22 @@ async function EpisodeSlug({ revalidate, segmentInfo }) {
 
   return (
     <>
-      <Grid as="section">
+      <Grid>
         <HeadlineColumnA>
           <HeadlineTitle aria-label={title} as="h1">
             <>{title}</>
           </HeadlineTitle>
         </HeadlineColumnA>
         <HeadlineContent>
-          <WIP />
+          <Callout size="1" variant="outline" />
           <Image properties={properties} />
           <Blocks data={data?.blocks} />
           <Links properties={properties} />
         </HeadlineContent>
       </Grid>
-      <Grid as="section">
+      <Grid>
         <HeadlineColumnA>
-          <HeadlineTitle aria-label={title} as="p">
+          <HeadlineTitle aria-label={title} as="h2">
             <>Info</>
           </HeadlineTitle>
         </HeadlineColumnA>

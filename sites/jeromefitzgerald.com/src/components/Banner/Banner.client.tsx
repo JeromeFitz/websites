@@ -2,7 +2,7 @@
 import {
   ArrowRightIcon,
   BookOpenIcon,
-  PlayIcon,
+  MusicalNoteIcon,
 } from '@jeromefitz/ds/components/Icon/index'
 import { cx } from '@jeromefitz/ds/utils/cx'
 
@@ -15,10 +15,10 @@ import { Banner } from './Banner'
 const dataListening: Data = {
   badge: {
     color: 'mint',
-    text: 'Playing…',
+    text: 'Listening…',
   },
   button: {
-    icon: <ArrowRightIcon className={cx('text-[var(--accent-11)]')} />,
+    icon: <ArrowRightIcon />,
     text: 'Go to Music',
   },
   content: {
@@ -26,7 +26,7 @@ const dataListening: Data = {
     mobile: 'Amyl and The Sniffers – “Comfort To Me”',
   },
   href: '/music',
-  icon: <PlayIcon />,
+  icon: <MusicalNoteIcon />,
 }
 const dataReading: Data = {
   badge: {

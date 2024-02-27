@@ -1,45 +1,51 @@
-import { cx } from '@jeromefitz/ds/utils/cx'
-
-import { IconButton } from '@radix-ui/themes'
+import { Box, Em, Flex, Grid, IconButton, Text } from '@radix-ui/themes'
 import Image from 'next/image'
 
 function Quote({ item }) {
   return (
-    <section className={cx('grid h-fit grid-cols-2 grid-rows-1 lg:grid-cols-3')}>
-      <div className={cx('col-span-3', 'p-6 lg:p-12')}>
-        <div className={cx('')}>
-          <div
-            className={cx(
-              'text-3xl font-normal lg:font-medium',
-              'pointer-events-none relative -indent-3',
-              'max-w-screen-sm',
-              '',
-            )}
-          >
-            <span className={cx('inline', '-ml-2 mb-[-1px] pr-2')}>“</span>
-            <p className={cx('inline', 'm-0 p-0')}>{item.content}</p>
-            <span className={cx('inline', 'pl-2')}>”</span>
-          </div>
-          <footer
-            className={cx(
-              'mt-8',
-              'pointer-events-none ml-auto',
-              'flex flex-initial flex-row items-center justify-end gap-6',
-            )}
-          >
-            <div
-              className={cx(
-                'flex flex-initial flex-col items-end justify-start gap-1',
-              )}
-            >
-              <div className={cx('m-0 p-0', 'text-2xl font-semibold')}>
+    <Grid
+      asChild
+      columns="1"
+      height="100%"
+      m={{ initial: '1', lg: '3' }}
+      p={{ initial: '3', lg: '6' }}
+      rows="1"
+      width="100%"
+    >
+      <section>
+        <Box
+          className="pointer-events-none indent-[calc(var(--space-3)_*_-1)]"
+          position="relative"
+          pr={{ initial: '0', lg: '9' }}
+          width="100%"
+        >
+          <Text size="7">
+            <Text as="span">“</Text>
+            <Text as="span">{item.content}</Text>
+            <Text as="span">”</Text>
+          </Text>
+        </Box>
+        <Flex
+          align="center"
+          asChild
+          direction="row"
+          gap="5"
+          justify="end"
+          ml="auto"
+          pt="8"
+        >
+          <footer className="pointer-events-none">
+            <Flex align="end" direction="column" gap="1" justify="start">
+              <Text as="span" size="5" weight="medium">
                 {item.who}
-              </div>
-              <div className={cx('m-0 p-0', 'text-lg italic')}>{item.where}</div>
-            </div>
-            <div className={cx('')}>
+              </Text>
+              <Text as="span" size="2">
+                <Em>{item.where}</Em>
+              </Text>
+            </Flex>
+            <Box>
               <IconButton
-                className={cx('select-none')}
+                className="select-none"
                 radius="full"
                 // @note(a11y) does not link out so no need for keyboard focus
                 tabIndex={-1}
@@ -47,17 +53,17 @@ function Quote({ item }) {
               >
                 <Image
                   alt={`Logo for ${item.where}`}
-                  className="rounded-full"
+                  className="rounded-[var(--radius-full)]"
                   height="36"
                   src={item.image}
                   width="36"
                 />
               </IconButton>
-            </div>
+            </Box>
           </footer>
-        </div>
-      </div>
-    </section>
+        </Flex>
+      </section>
+    </Grid>
   )
 }
 

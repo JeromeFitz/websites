@@ -4,7 +4,7 @@ import { cx } from '@jeromefitz/ds/utils/cx'
 
 import type { ReactNode } from 'react'
 
-import { Kbd } from '@radix-ui/themes'
+import { Kbd, Text } from '@radix-ui/themes'
 import { Command, useCommandState } from 'cmdk'
 import { AnimatePresence, MotionProps, motion } from 'framer-motion'
 import { slug as _slug } from 'github-slugger'
@@ -322,7 +322,7 @@ function Cmdk() {
           'duration-250 fixed left-0 top-0 z-50 size-full transition-all',
           'pointer-events-none',
           isCmdkOpen && isCmdkInnerOpen
-            ? 'bg-[var(--whiteA11)] dark:bg-[var(--blackA11)]'
+            ? 'bg-[var(--white-a11)] dark:bg-[var(--black-a11)]'
             : 'bg-transparent',
         )}
       />
@@ -504,10 +504,18 @@ function Cmdk() {
               {/* <HamburgerMenuIcon /> */}
               <div className="flex flex-row items-center justify-start gap-2 align-middle">
                 <div className="inline-flex gap-2">
-                  <Kbd>⌘</Kbd>
-                  <Kbd>K</Kbd>
+                  <Kbd>
+                    <Text as="span" size="2">
+                      ⌘
+                    </Text>
+                  </Kbd>
+                  <Kbd>
+                    <Text as="span" size="1">
+                      K
+                    </Text>
+                  </Kbd>
                 </div>
-                <span className="font-mono text-xs">Close</span>
+                <span className={styles['cmdk-open-trigger']}>Close</span>
               </div>
               <button
                 className={cx(
@@ -518,7 +526,11 @@ function Cmdk() {
                 cmdk-open-trigger=""
               >
                 Return to Select
-                <Kbd className="text-xs">↵</Kbd>
+                <Kbd>
+                  <Text as="span" size="2">
+                    ↵
+                  </Text>
+                </Kbd>
               </button>
             </div>
           </div>

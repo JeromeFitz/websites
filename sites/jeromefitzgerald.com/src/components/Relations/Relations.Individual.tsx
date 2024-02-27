@@ -1,10 +1,18 @@
 // import 'server-only'
-
-import { Anchor } from '@jeromefitz/ds/components/Anchor/index'
-import { cx } from '@jeromefitz/ds/utils/cx'
+import { AnchorUnstyled as Anchor } from '@jeromefitz/ds/components/Anchor/index'
 import { getPageDataFromNotion } from '@jeromefitz/shared/notion/utils/index'
 import { asyncForEach } from '@jeromefitz/utils'
 
+import {
+  // Badge,
+  Box,
+  // Code,
+  // Flex,
+  // Link,
+  // Separator,
+  // Strong,
+  Text,
+} from '@radix-ui/themes'
 import _noop from 'lodash/noop.js'
 import _orderBy from 'lodash/orderBy.js'
 import _size from 'lodash/size.js'
@@ -15,10 +23,6 @@ import type { PageObjectResponseShow } from '@/app/(notion)/_config/index'
 import { getEventData } from '@/app/(notion)/_config/index'
 
 import { RelationLoading } from './index'
-
-function ComponentFallback({ children, ...props }) {
-  return <span {...props}>{children}</span>
-}
 
 // async function RelationIndividual({ id }) {
 // @todo(types)
@@ -31,22 +35,12 @@ const RelationIndividual: any = cache(async ({ id }) => {
   // if (!properties) return null
   const { href, isPublished, title } = getEventData(properties)
 
-  const Component = isPublished ? Anchor : ComponentFallback
+  const Component = isPublished ? Anchor : Text
   const hrefValue = isPublished ? href : undefined
-
-  const style = cx(
-    'inline-block text-base font-normal tracking-tight no-underline lg:text-xl',
-    isPublished && 'transition-all duration-200',
-    isPublished && 'text-[var(--slate-12)] hover:text-[var(--accent-11)]',
-    '',
-    '',
-  )
 
   return (
     <>
-      <Component className={style} href={hrefValue}>
-        {title}
-      </Component>
+      <Component href={hrefValue}>{title}</Component>
     </>
   )
 })
@@ -74,10 +68,12 @@ async function RI({ items }) {
     <>
       {bar.map((b, i) => {
         return (
-          <li className={cx('mb-2 lg:mb-0.5')} key={`ris-loading-${i}`}>
-            {/* <RelationLoading /> */}
-            <RelationIndividual id={b?.id} />
-          </li>
+          <Box asChild key={`ris-loading-${i}`} mb={{ initial: '2', lg: '1' }}>
+            <li>
+              {/* <RelationLoading /> */}
+              <RelationIndividual id={b?.id} />
+            </li>
+          </Box>
         )
       })}
     </>
@@ -91,9 +87,11 @@ function RIS_LOADING({ size }) {
         .fill(0)
         .map((_, i) => {
           return (
-            <li className={cx('mb-2 lg:mb-0.5')} key={`ris-loading-${i}`}>
-              <RelationLoading />
-            </li>
+            <Box asChild key={`ris-loading-${i}`} mb={{ initial: '2', lg: '1' }}>
+              <li>
+                <RelationLoading />
+              </li>
+            </Box>
           )
         })}
     </>

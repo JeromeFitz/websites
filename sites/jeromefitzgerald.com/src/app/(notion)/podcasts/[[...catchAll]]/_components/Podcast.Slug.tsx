@@ -1,8 +1,9 @@
+import { Callout } from '@jeromefitz/ds/components/Callout/index'
 import { Separator } from '@jeromefitz/ds/components/Separator/index'
 import { getDataFromCache } from '@jeromefitz/shared/notion/utils/index'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
-import { Badge } from '@radix-ui/themes'
+import { Badge, Code } from '@radix-ui/themes'
 import { draftMode } from 'next/headers.js'
 import { notFound } from 'next/navigation.js'
 
@@ -18,7 +19,6 @@ import {
 } from '@/components/Headline/index'
 import { Notion as Blocks } from '@/components/Notion/index'
 import { Relations } from '@/components/Relations/index'
-import { WIP } from '@/components/WIP/index'
 
 import { PodcastEpisodes } from './Podcast.Episodes'
 
@@ -52,7 +52,7 @@ async function Slug({ revalidate, segmentInfo }) {
 
   return (
     <>
-      <Grid as="section">
+      <Grid>
         <HeadlineColumnA>
           <HeadlineTitle aria-label={title} as="h1">
             <>{title}</>
@@ -60,19 +60,19 @@ async function Slug({ revalidate, segmentInfo }) {
           <HeadlineTitleSub>
             {tags.map(({ color, id, name }) => (
               <Badge color={color} key={id} size="2">
-                {name}
+                <Code variant="ghost">{name}</Code>
               </Badge>
             ))}
           </HeadlineTitleSub>
         </HeadlineColumnA>
         <HeadlineContent>
-          <WIP />
+          <Callout size="1" variant="outline" />
           <Blocks data={data?.blocks} />
         </HeadlineContent>
       </Grid>
-      <Grid as="section">
+      <Grid>
         <HeadlineColumnA>
-          <HeadlineTitle aria-label={title} as="p">
+          <HeadlineTitle aria-label={title} as="h2">
             <>Episodes</>
           </HeadlineTitle>
         </HeadlineColumnA>
@@ -81,9 +81,9 @@ async function Slug({ revalidate, segmentInfo }) {
           <PodcastEpisodes properties={properties} />
         </HeadlineContent>
       </Grid>
-      <Grid as="section">
+      <Grid>
         <HeadlineColumnA>
-          <HeadlineTitle aria-label={title} as="p">
+          <HeadlineTitle aria-label={title} as="h2">
             <>Info</>
           </HeadlineTitle>
         </HeadlineColumnA>

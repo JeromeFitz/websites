@@ -45,7 +45,7 @@ async function Slug({ revalidate, segmentInfo }) {
 
   return (
     <>
-      <Grid as="section">
+      <Grid>
         <HeadlineColumnA>
           <HeadlineTitle aria-label={title} as="h1">
             <>{title}</>
@@ -55,9 +55,9 @@ async function Slug({ revalidate, segmentInfo }) {
           <Blocks data={data?.blocks} />
         </HeadlineContent>
       </Grid>
-      <Grid as="section">
+      <Grid>
         <HeadlineColumnA>
-          <HeadlineTitle aria-label={`Info`} as="p">
+          <HeadlineTitle aria-label={`Info`} as="h2">
             <>Info</>
           </HeadlineTitle>
         </HeadlineColumnA>
@@ -69,9 +69,9 @@ async function Slug({ revalidate, segmentInfo }) {
           />
         </HeadlineContent>
       </Grid>
-      <Grid as="section">
+      <Grid>
         <HeadlineColumnA>
-          <HeadlineTitle aria-label={`Info`} as="p">
+          <HeadlineTitle aria-label={`Info`} as="h2">
             <>Upcoming Shows</>
           </HeadlineTitle>
         </HeadlineColumnA>

@@ -37,7 +37,7 @@ function AccordionListItem({ children, href, icon, ...props }) {
           className={cx('ml-1 size-4 min-w-4 text-[currentColor] lg:ml-2')}
           label={''}
         />
-        <span className="truncate text-base">{children}</span>
+        <span className="truncate">{children}</span>
       </li>
     </NextLink>
   )

@@ -16,6 +16,8 @@ type PropertiesVenue = {
   'Address.PostalCode': NumberPropertyItemObjectResponse
   'Address.State': RichTextPropertyItemObjectResponse
   'Address.Street': RichTextPropertyItemObjectResponse
+  // @todo(notion) deprecate field for Address.PostalCode
+  'Address.ZipCode': NumberPropertyItemObjectResponse
   ID: FormulaPropertyItemObjectResponse
   'Relation.Events': RelationPropertyItemObjectResponse
   'Slug.Preview': RichTextPropertyItemObjectResponse

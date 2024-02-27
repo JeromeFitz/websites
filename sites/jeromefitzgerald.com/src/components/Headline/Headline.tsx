@@ -1,12 +1,17 @@
 import { cx } from '@jeromefitz/ds/utils/cx'
 
+import type { HeadingProps } from '@radix-ui/themes/dist/esm/components/heading.js'
+import type { TextProps } from '@radix-ui/themes/dist/esm/components/text.js'
 import type { ReactNode } from 'react'
 
-// import { Heading } from '@radix-ui/themes'
+import { Heading, Text } from '@radix-ui/themes'
 
-import type { As } from './Headline.types'
-
-function HeadlineColumnA({ children, separateTitle = true }) {
+type AdditionalProps = {
+  children: ReactNode
+  className?: string
+}
+type HeadlineColumnAProps = AdditionalProps & { separateTitle?: boolean }
+function HeadlineColumnA({ children, separateTitle = true }: HeadlineColumnAProps) {
   return (
     <div
       className={cx(
@@ -31,52 +36,46 @@ function HeadlineColumnA({ children, separateTitle = true }) {
     </div>
   )
 }
-
-type HeadlineTitleProps = {
-  as?: As
-  children: ReactNode
-  className?: string
-}
-function HeadlineTitle({
-  as = 'p',
-  children,
-  className,
-  ...props
-}: HeadlineTitleProps) {
-  const Component: As = as
+type HeadlineTitleProps = HeadingProps & AdditionalProps
+function HeadlineTitle({ children, className = '', ...props }: HeadlineTitleProps) {
   return (
-    <Component
-      className={cx(
-        'text-4xl font-black tracking-tighter',
-        'line-clamp-3',
-        className,
-      )}
+    <Heading
+      className={cx('line-clamp-3', className)}
+      size="8"
+      weight="bold"
       {...props}
     >
       {children}
-    </Component>
+    </Heading>
   )
 }
-
-type HeadlineTitleSubProps = {
-  children: ReactNode
-  className?: string
+type HeadlineTitleTextProps = TextProps & AdditionalProps
+function HeadlineTitleText({
+  children,
+  className,
+  ...props
+}: HeadlineTitleTextProps) {
+  return (
+    <Text
+      className={cx('line-clamp-3', className)}
+      size="8"
+      weight="bold"
+      {...props}
+    >
+      {children}
+    </Text>
+  )
 }
+type HeadlineTitleSubProps = AdditionalProps
 function HeadlineTitleSub({ children, className }: HeadlineTitleSubProps) {
   return (
-    <div
-      className={cx(
-        'font-mono text-base font-light tracking-normal',
-        'flex flex-row flex-wrap gap-2',
-        'lg:mr-3',
-        className,
-      )}
-    >
+    <div className={cx('flex flex-row flex-wrap gap-2', 'lg:mr-3', className)}>
       {children}
     </div>
   )
 }
-function HeadlineContent({ children, className = '' }) {
+type HeadlineContentProps = AdditionalProps
+function HeadlineContent({ children, className = '' }: HeadlineContentProps) {
   return (
     <div
       className={cx(
@@ -91,4 +90,10 @@ function HeadlineContent({ children, className = '' }) {
   )
 }
 
-export { HeadlineColumnA, HeadlineContent, HeadlineTitle, HeadlineTitleSub }
+export {
+  HeadlineColumnA,
+  HeadlineContent,
+  HeadlineTitle,
+  HeadlineTitleSub,
+  HeadlineTitleText,
+}

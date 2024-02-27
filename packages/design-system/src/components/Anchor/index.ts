@@ -1,1 +1,1 @@
-export { Anchor, ScrollTo } from './Anchor'
+export { Anchor, AnchorUnstyled, ScrollTo } from './Anchor'

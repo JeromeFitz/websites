@@ -1,22 +1,26 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 'use client'
 import { useOnScreen, useSWRInfinitePages } from '@jeromefitz/design-system'
-import { Anchor } from '@jeromefitz/ds/components/Anchor/index'
+import { AnchorUnstyled as Anchor } from '@jeromefitz/ds/components/Anchor/index'
 import { ArrowTopRightIcon } from '@jeromefitz/ds/components/Icon/index'
 import { cx } from '@jeromefitz/ds/utils/cx'
 import { fetcher } from '@jeromefitz/shared/lib'
 
-import { useWindowScroll } from '@mantine/hooks'
+import { useScrollIntoView } from '@mantine/hooks'
 import { ArrowUpIcon } from '@radix-ui/react-icons'
 import {
   Badge,
+  Box,
   Button,
-  // Card,
+  Card,
+  Code,
+  // Em,
   Flex,
-  // Inset,
+  Inset,
+  Link,
   Select,
   // Strong,
-  // Text,
+  Text,
 } from '@radix-ui/themes'
 import Image from 'next/image'
 // eslint-disable-next-line no-restricted-imports
@@ -46,6 +50,7 @@ const useStore = () => {
 const HOUR = 3600000
 // const MINUTE = 60000
 // const SECOND = 1000
+const SCROLL_DURATION = 1250
 
 function addS(str) {
   const poss = str.charAt(str.length - 1) === 's' ? '' : 's'
@@ -113,70 +118,92 @@ function DataItemLoader({ error, handleScroll, isLoadingMore }) {
   }
   return (
     <>
-      <li
-        className={cx(
-          'flex w-full flex-col-reverse items-start justify-between justify-items-start md:flex-row-reverse',
-          'text-left',
-          'hover:bg-[#fff] dark:hover:bg-[var(--mauve-2)]',
-          'border-t-1 border-[var(--mauve-6)]',
-          'mb-3 p-1 md:mb-0 md:gap-6 md:p-8',
-        )}
-      >
-        <div className={cx('flex h-full flex-col justify-center gap-2 ')}>
-          <p className={cx('text-xs tracking-tighter')}>
-            <span className="font-bold uppercase tracking-wide text-[var(--mauve-11)]">
-              Status
-            </span>
-            <br />
-            <span className="line-clamp-3 text-3xl font-medium">
-              {isLoadingMore // ? 'loading' : isReachingEnd ? 'no more' :''
-                ? info.loading.text
-                : !!error
-                  ? info.error.text
-                  : info.success.text}
-            </span>
-          </p>
-
-          <p className={cx('text-xs tracking-tighter')}>
-            <span className="line-clamp-3 text-2xl text-[var(--mauve-12)]">
-              {isLoadingMore // ? 'loading' : isReachingEnd ? 'no more' :''
-                ? info.loading.cta
-                : !!error
-                  ? info.error.cta
-                  : info.success.cta}
-            </span>
-          </p>
-          <Button
-            className="my-4 w-fit hover:cursor-pointer"
-            color="pink"
-            highContrast={false}
-            onClick={handleScroll}
-            radius="full"
-            size="2"
-            variant="outline"
+      <Card asChild className="h-fit w-full" size="1" variant="surface">
+        <li>
+          <Flex
+            direction={{ initial: 'column', md: 'row-reverse' }}
+            gap={{ initial: '2', lg: '6' }}
           >
-            <>
-              Go to top
-              {` `}
-              <ArrowUpIcon className={cx('text-[var(--accent-11)] !opacity-100')} />
-            </>
-          </Button>
-        </div>
-        <div className={cx('h-fit min-h-96')}>
-          <Image
-            {...image}
-            alt={``}
-            className={cx(
-              'flex h-[inherit] w-full justify-center overflow-y-hidden rounded-md md:max-w-96',
-              // !isLoadingMore && !error && 'grayscale',
-              '',
-            )}
-            placeholder="blur"
-            role="img"
-            tabIndex={-1}
-          />
-        </div>
-      </li>
+            <Inset clip="padding-box" side={{ initial: 'top', md: 'all' }}>
+              <Image
+                {...image}
+                alt={``}
+                className={cx(
+                  'md:max-w-96',
+                  !isLoadingMore && !error && 'grayscale',
+                  '',
+                )}
+                placeholder="blur"
+                role="img"
+                tabIndex={-1}
+              />
+            </Inset>
+            <Box px="2" width="25rem">
+              <Text
+                as="span"
+                className="uppercase"
+                color="gray"
+                size="1"
+                weight="bold"
+              >
+                Status
+              </Text>
+              <Text
+                as="p"
+                className="line-clamp-3"
+                size={{ initial: '3', lg: '5' }}
+                weight="medium"
+              >
+                {isLoadingMore // ? 'loading' : isReachingEnd ? 'no more' :''
+                  ? info.loading.text
+                  : !!error
+                    ? info.error.text
+                    : info.success.text}
+              </Text>
+              <Text
+                as="p"
+                className="line-clamp-3"
+                mt="2"
+                size={{ initial: '3', lg: '5' }}
+                weight="regular"
+              >
+                {isLoadingMore // ? 'loading' : isReachingEnd ? 'no more' :''
+                  ? info.loading.cta
+                  : !!error
+                    ? info.error.cta
+                    : info.success.cta}
+              </Text>
+              <Text
+                as="p"
+                className="uppercase"
+                color="gray"
+                mt="4"
+                size="1"
+                weight="bold"
+              >
+                Link
+              </Text>
+              <Button
+                className="w-fit hover:cursor-pointer"
+                highContrast={false}
+                mt="2"
+                onClick={handleScroll}
+                radius="full"
+                size="2"
+                variant="outline"
+              >
+                <>
+                  Go to Beginning
+                  {` `}
+                  <ArrowUpIcon
+                    className={cx('-rotate-90 text-[var(--accent-11)] !opacity-100')}
+                  />
+                </>
+              </Button>
+            </Box>
+          </Flex>
+        </li>
+      </Card>
     </>
   )
 }
@@ -220,247 +247,163 @@ function DataItem({ item, type }) {
 
   return (
     <>
-      {/* <Card className="max-w-md" size="5" variant="surface">
-        <div>
-          <Inset clip="padding-box" side="top">
-            <Image
-              {...image}
-              alt={_alt}
-              className=""
-              placeholder="blur"
-              role="img"
-              tabIndex={-1}
-            />
-          </Inset>
-        </div>
-        <div>
-          <Text
-            as="span"
-            className="mb-1 uppercase"
-            color="gray"
-            size="1"
-            weight="bold"
+      <Card asChild className="h-fit w-full" size="1" variant="surface">
+        <li>
+          <Flex
+            direction={{ initial: 'column', md: 'row-reverse' }}
+            gap={{ initial: '2', lg: '6' }}
           >
-            Artist
-          </Text>
-          <Text as="p" className="line-clamp-3 pb-2" size="7" weight="medium">
-            {_title1}
-          </Text>
-          {type === 'top-tracks' && (
-            <>
+            <Inset clip="padding-box" side={{ initial: 'top', md: 'all' }}>
+              <Image
+                {...image}
+                alt={_alt}
+                className="h-auto w-full lg:h-full lg:min-w-96"
+                placeholder="blur"
+                role="img"
+                tabIndex={-1}
+              />
+            </Inset>
+            <Box px="2" width="25rem">
               <Text
                 as="span"
-                className="mb-1 uppercase"
+                className="uppercase"
                 color="gray"
                 size="1"
                 weight="bold"
               >
-                Song
-              </Text>
-              <Text as="p" className="line-clamp-3 pb-2" size="6" weight="medium">
-                {_title2}
-              </Text>
-
-              <Text
-                as="span"
-                className="mb-1 uppercase"
-                color="gray"
-                size="1"
-                weight="bold"
-              >
-                Album
-              </Text>
-              <Text as="p" className="line-clamp-3 pb-2" size="6" weight="medium">
-                {_title3}
-              </Text>
-
-              <Text
-                as="span"
-                className="mb-1 uppercase"
-                color="gray"
-                size="1"
-                weight="bold"
-              >
-                Year
+                Artist
               </Text>
               <Text
                 as="p"
-                className="line-clamp-3 pb-2 font-mono"
-                size="5"
+                className="line-clamp-3 pb-2"
+                size={{ initial: '3', lg: '5' }}
                 weight="medium"
               >
-                {item.album.release_date.slice(0, 4)}
+                {_title1}
               </Text>
-            </>
-          )}
-          <Text
-            as="span"
-            className="mb-1 uppercase"
-            color="gray"
-            size="1"
-            weight="bold"
-          >
-            Genre{genres.length > 1 && 's'}
-          </Text>
-          <span className="mb-1 flex flex-row flex-wrap gap-2 pb-1 font-mono">
-            {genres.map((genre) => {
-              if (!genre) return null
-              return (
-                <Badge key={`g--${genre}`} radius="full" size="2">
-                  {genre}
-                </Badge>
-              )
-            })}
-            {!!genresExtra && (
-              <Badge color="gray" radius="full" size="2">
-                {genresExtra}
-              </Badge>
-            )}
-            {genres.length === 0 && (
-              <Badge color="gray" radius="full" size="2">
-                N/A
-              </Badge>
-            )}
-          </span>
-          <Text
-            as="p"
-            className="mb-1 uppercase"
-            color="gray"
-            size="1"
-            weight="bold"
-          >
-            Link
-          </Text>
-          <Button
-            asChild
-            className="w-fit"
-            color="jade"
-            highContrast={false}
-            radius="full"
-            size="2"
-            variant="outline"
-          >
-            <NextLink href={_href}>
-              Open Spotify
-              {` `}
-              <ArrowTopRightIcon
-                className={cx('text-[var(--accent-11)] !opacity-100')}
-              />
-            </NextLink>
-          </Button>
-        </div>
-      </Card> */}
-      <li
-        className={cx(
-          'flex w-full flex-col-reverse items-start justify-between justify-items-start md:flex-row',
-          'text-left',
-          'hover:bg-[#fff] dark:hover:bg-[var(--mauve-2)]',
-          'border-t-1 border-[var(--mauve-6)]',
-          'mb-3 p-1 md:mb-0 md:gap-6 md:p-8',
-        )}
-      >
-        <div className={cx('flex h-full  flex-col justify-center gap-3 md:gap-2')}>
-          <p className={cx('text-xs tracking-tighter')}>
-            <span className="font-bold uppercase tracking-wide text-[var(--mauve-11)]">
-              Artist
-            </span>
-            <br />
-            <span className="line-clamp-3  text-3xl font-medium">{_title1}</span>
-          </p>
-          {type === 'top-tracks' && (
-            <>
-              <p className={cx('text-xs tracking-tighter')}>
-                <span className="text-xs font-bold uppercase tracking-wide text-[var(--mauve-11)]">
-                  Song
-                </span>
-                <br />
-                <span className="line-clamp-3 text-2xl text-[var(--mauve-12)]">
-                  {_title2}
-                </span>
-              </p>
-              <p className={cx('text-xs tracking-tighter')}>
-                <span className="text-xs font-bold uppercase tracking-wide text-[var(--mauve-11)]">
-                  Album
-                </span>
-                <br />
-                <span className="line-clamp-3 text-xl text-[var(--mauve-12)]">
-                  {_title3}
-                </span>
-              </p>
-              <p className={cx('text-xs tracking-tighter')}>
-                <span className="text-xs font-bold uppercase tracking-wide text-[var(--mauve-11)]">
-                  Year
-                </span>
-                <br />
-                <span className="font-mono text-base text-[var(--mauve-12)]">
-                  {item.album.release_date.slice(0, 4)}
-                </span>
-              </p>
-            </>
-          )}
+              {type === 'top-tracks' && (
+                <>
+                  <Text
+                    as="span"
+                    className="uppercase"
+                    color="gray"
+                    size="1"
+                    weight="bold"
+                  >
+                    Song
+                  </Text>
+                  <Text
+                    as="p"
+                    className="line-clamp-3 pb-2"
+                    size={{ initial: '3', lg: '5' }}
+                    weight="medium"
+                  >
+                    {_title2}
+                  </Text>
 
-          <p className={cx('gap-2 text-xs tracking-tighter')}>
-            <span className="mb-2 text-xs font-bold uppercase tracking-wide text-[var(--mauve-11)]">
-              Genre{genres.length > 1 && 's'}
-            </span>
-            <br />
-            <br />
-            <span className="mb-1 flex flex-row flex-wrap gap-2 pb-1 font-mono text-xs">
-              {genres.map((genre) => {
-                if (!genre) return null
-                return (
-                  <Badge key={`g--${genre}`} radius="full" size="2">
-                    {genre}
+                  <Text
+                    as="span"
+                    className="uppercase"
+                    color="gray"
+                    size="1"
+                    weight="bold"
+                  >
+                    Album
+                  </Text>
+                  <Text
+                    as="p"
+                    className="line-clamp-3 pb-2"
+                    size={{ initial: '3', lg: '5' }}
+                    weight="medium"
+                  >
+                    {_title3}
+                  </Text>
+
+                  <Text
+                    as="span"
+                    className="uppercase"
+                    color="gray"
+                    size="1"
+                    weight="bold"
+                  >
+                    Year
+                  </Text>
+                  <Text
+                    as="p"
+                    className="line-clamp-3 pb-2 font-mono"
+                    size={{ initial: '1', lg: '2' }}
+                    weight="medium"
+                  >
+                    {item.album.release_date.slice(0, 4)}
+                  </Text>
+                </>
+              )}
+              <Text
+                as="span"
+                className="uppercase"
+                color="gray"
+                size="1"
+                weight="bold"
+              >
+                Genre{genres.length > 1 && 's'}
+              </Text>
+              <span className="mb-3 mt-2 flex flex-row flex-wrap gap-2 pb-1 font-mono lg:mt-1">
+                {genres.map((genre) => {
+                  if (!genre) return null
+                  return (
+                    <Badge
+                      key={`g--${genre}`}
+                      radius="full"
+                      size={{ initial: '1', lg: '1' }}
+                    >
+                      {genre}
+                    </Badge>
+                  )
+                })}
+                {!!genresExtra && (
+                  <Badge color="gray" radius="full" size={{ initial: '1', lg: '1' }}>
+                    {genresExtra}
                   </Badge>
-                )
-              })}
-              {!!genresExtra && (
-                <Badge color="gray" radius="full" size="2">
-                  {genresExtra}
-                </Badge>
-              )}
-              {genres.length === 0 && (
-                <Badge color="gray" radius="full" size="2">
-                  N/A
-                </Badge>
-              )}
-            </span>
-          </p>
-          <Button
-            asChild
-            className="w-fit"
-            color="jade"
-            highContrast={false}
-            radius="full"
-            size="2"
-            variant="outline"
-          >
-            <NextLink href={_href}>
-              Open Spotify
-              {` `}
-              <ArrowTopRightIcon
-                className={cx('text-[var(--accent-11)] !opacity-100')}
-              />
-            </NextLink>
-          </Button>
-        </div>
-        <div className={cx('h-fit min-h-96 w-full md:w-1/2 md:max-w-sm')}>
-          <Image
-            {...image}
-            alt={_alt}
-            className="flex h-[inherit] w-full justify-center overflow-y-hidden rounded-md md:max-w-96"
-            placeholder="blur"
-            role="img"
-            tabIndex={-1}
-          />
-        </div>
-      </li>
+                )}
+                {genres.length === 0 && (
+                  <Badge color="gray" radius="full" size={{ initial: '1', lg: '1' }}>
+                    N/A
+                  </Badge>
+                )}
+              </span>
+              <Text as="p" className="uppercase" color="gray" size="1" weight="bold">
+                Link
+              </Text>
+              <Button
+                asChild
+                className="w-fit"
+                color="jade"
+                highContrast={false}
+                mt="1"
+                radius="full"
+                size={{ initial: '2', lg: '2' }}
+                variant="outline"
+              >
+                <NextLink href={_href}>
+                  Open Spotify
+                  {` `}
+                  <ArrowTopRightIcon
+                    className={cx('text-[var(--accent-11)] !opacity-100')}
+                  />
+                </NextLink>
+              </Button>
+            </Box>
+          </Flex>
+        </li>
+      </Card>
     </>
   )
 }
 function MusicClient({}) {
-  // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
-  const refElementToScrollToAfter = useRef<any | null>()
+  const { scrollIntoView, scrollableRef, targetRef } = useScrollIntoView<
+    HTMLDivElement,
+    HTMLDivElement
+  >({ axis: 'x', duration: SCROLL_DURATION - 250, isList: true })
   // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
   const refSWRInfinitePages = useRef<any | null>(null)
 
@@ -471,23 +414,25 @@ function MusicClient({}) {
   const [url] = useState(INIT.url)
   const isVisible = useOnScreen(refSWRInfinitePages)
 
-  /**
-   * @hack(mantine) this is ... well ... not dynamic really
-   */
-  const [, scrollTo] = useWindowScroll()
-  const handleScrollTo = () => {
-    const { clientHeight } = refElementToScrollToAfter.current
-    // console.dir(`clientHeight: ${clientHeight}`)
-    scrollTo({ y: clientHeight + 100 })
+  const scrollIntoViewHandle = () => {
+    scrollIntoView({ alignment: 'start' })
   }
 
   const handleValueChangeTimeRange = (value) => {
-    spotifyTimeRangeSet(value)
-    handleScrollTo()
+    // @todo(a11y) prefers reduced motion
+    scrollIntoViewHandle()
+    // @hack(mantine) eh... sure.
+    setTimeout(() => {
+      spotifyTimeRangeSet(value)
+    }, SCROLL_DURATION)
   }
   const handleValueChangeType = (value) => {
-    spotifyTypeSet(value)
-    handleScrollTo()
+    // @todo(a11y) prefers reduced motion
+    scrollIntoViewHandle()
+    // @hack(mantine) eh... sure.
+    setTimeout(() => {
+      spotifyTypeSet(value)
+    }, SCROLL_DURATION)
   }
 
   const {
@@ -533,7 +478,7 @@ function MusicClient({}) {
 
   return (
     <>
-      <Grid ref={refElementToScrollToAfter}>
+      <Grid>
         <HeadlineColumnA separateTitle={true}>
           <HeadlineTitle as="h1">Music</HeadlineTitle>
           <HeadlineTitleSub>
@@ -542,87 +487,74 @@ function MusicClient({}) {
               className={cx('!bg-[var(--mauve-a3)] !text-black  dark:!text-white')}
               size="2"
             >
-              <span aria-hidden className="inline md:hidden">
-                via{` `}
-              </span>
-              <span aria-hidden className="hidden md:inline">
-                data from{` `}
-              </span>
-              <span
-                aria-hidden
-                className=" !text-spotify-dark dark:!text-spotify font-black uppercase  tracking-wide"
-              >
-                Spotify
-              </span>
+              <Code variant="ghost">
+                <span aria-hidden className="inline md:hidden">
+                  via{` `}
+                </span>
+                <span aria-hidden className="hidden md:inline">
+                  data from{` `}
+                </span>
+                <span
+                  aria-hidden
+                  className=" !text-spotify-dark dark:!text-spotify uppercase "
+                >
+                  Spotify
+                </span>
+              </Code>
             </Badge>
-            {/* <span className="font-mono text-base font-light tracking-normal">
-              via
-              <span className="text-spotify-dark dark:text-spotify font-sans text-2xl font-bold">
-                {' '}
-                Spotify
-              </span>
-            </span> */}
           </HeadlineTitleSub>
         </HeadlineColumnA>
         <HeadlineContent>
           <>
-            <p className={cx('text-lg tracking-wide', 'flex flex-col gap-0', '')}>
-              My “Music” library is at over 50 days, and am continuing an ever
-              growing vinyl collection. (I have not yet made the leap to first
-              editions, which is probably for the best currently. Especially when
-              looking to backstock really old records.)
-            </p>
-            <p className={cx('text-lg tracking-wide', 'flex flex-col gap-0', '')}>
+            <Text size="4">
+              My “Music” library is at over <span className="font-mono">50</span>{' '}
+              days, and am continuing an ever growing vinyl collection. (I have not
+              yet made the leap to first editions, which is probably for the best
+              currently. Especially when looking to backstock really old records.)
+            </Text>
+            <Text size="4">
               Separately, I have been teaching myself piano and fooling around with a
               sampler/drum machine.
-            </p>
-            <p
-              className={cx(
-                'text-2xl font-semibold tracking-wide',
-                'flex flex-col gap-0',
-                // 'text-[var(--accent-11)]',
-                '',
-              )}
-            >
+            </Text>
+            <Text size="4" weight="medium">
               Please support artists by going to shows and purchasing music,
               especially local and indie.
-            </p>
-            <p
-              className={cx(
-                'mb-2 mt-4 items-center text-lg tracking-wide md:text-xl',
-              )}
-            >
-              Like some of <Anchor href="/shows/jerome-and">Jerome &</Anchor>’s
-              musical guests on Bandcamp:
-            </p>
-            <ul className="list-inside pb-4 text-base tracking-wide md:list-disc md:text-lg">
-              {bandcamps.map(({ album, artist: _artist, href }, id) => {
-                const artist = addS(_artist)
-                return (
-                  <li className="my-2 md:my-1" key={`bandcamp-link-${id}`}>
-                    <Anchor
-                      className={cx(
-                        'inline-flex flex-row items-center gap-1',
-                        'underline-offset-4',
-                        'underline',
-                        'decoration-[var(--accent-a4)] hover:decoration-[var(--accent-a5)]',
-                        'text-[var(--accent-11)] hover:text-[var(--accent-12)]',
-                        'transition-all duration-200 ease-in',
-                        '',
-                      )}
-                      href={href}
-                      // target="_blank"
-                    >
-                      {artist}, “{album}”
-                    </Anchor>
-                  </li>
-                )
-              })}
-            </ul>
+            </Text>
+            <Text size="4">
+              Like some of{' '}
+              <Link asChild>
+                <Anchor href="/shows/jerome-and">Jerome &</Anchor>
+              </Link>
+              ’s musical guests on Bandcamp:
+            </Text>
+            <Box asChild mb="4" pb="2" width="100%">
+              <ul className="list-inside lg:list-disc">
+                {bandcamps.map(({ album, artist: _artist, href }, id) => {
+                  const artist = addS(_artist)
+                  return (
+                    <li key={`bandcamp-link-${id}`}>
+                      <Flex
+                        align="baseline"
+                        asChild
+                        direction="row"
+                        display="inline-flex"
+                        gap="2"
+                      >
+                        <Link asChild mb="2">
+                          <Anchor href={href}>
+                            {artist}, “{album}”
+                          </Anchor>
+                        </Link>
+                      </Flex>
+                    </li>
+                  )
+                })}
+              </ul>
+            </Box>
           </>
         </HeadlineContent>
       </Grid>
-      <Grid as="section">
+      <Grid>
         <div
           className={cx(
             'col-span-full h-fit  md:col-span-3',
@@ -631,6 +563,7 @@ function MusicClient({}) {
             'border-b-1 border-[var(--mauve-a3)]',
             'drop-shadow-sm dark:shadow-white/5  dark:drop-shadow-lg',
             'md:border-none md:drop-shadow-none',
+            'z-40 lg:z-0',
           )}
         >
           <div
@@ -643,7 +576,7 @@ function MusicClient({}) {
               <Select.Root
                 defaultValue={spotifyTimeRange ?? INIT.time_range}
                 onValueChange={(value) => handleValueChangeTimeRange(value)}
-                size="3"
+                size={{ initial: '3', lg: '3' }}
               >
                 <Select.Trigger
                   // @todo(radix) asChild this?
@@ -653,7 +586,7 @@ function MusicClient({}) {
                   radius="full"
                 />
                 {/* @ts-ignore */}
-                <Select.Content className="w-full" position="popper">
+                <Select.Content className="z-50 w-full" position="popper">
                   {/* @ts-ignore */}
                   <Select.Item className="w-full" value="short_term">
                     Past Month
@@ -674,12 +607,12 @@ function MusicClient({}) {
                 <Select.Trigger
                   // @todo(radix) asChild this?
                   // @ts-ignore
-                  className="w-full md:w-11/12"
+                  className="z-50 w-full md:w-11/12 "
                   placeholder="Type:"
                   radius="full"
                 />
                 {/* @ts-ignore */}
-                <Select.Content position="popper">
+                <Select.Content className="z-50 w-full" position="popper">
                   {/* @ts-ignore */}
                   <Select.Item value="top-artists">Top Artists</Select.Item>
                   {/* @ts-ignore */}
@@ -694,10 +627,19 @@ function MusicClient({}) {
             'm-0 list-none p-0',
             'col-span-full md:col-span-9',
             'justify-items-start',
+            'flex flex-row flex-nowrap',
+            'overflow-x-auto',
+            'gap-4 lg:gap-16',
+            'z-0',
+            'first:gap-0',
           )}
+          // @ts-ignore
+          ref={scrollableRef}
         >
+          <div className="-mx-2 w-0 lg:-mx-8" ref={targetRef} />
           {data?.map((item: any, i: number) => {
             if (removeItems.includes(item.id)) return null
+            // if (i > 5) return null
             /**
              * @todo(radix) when data changes drastically
              *  can this not be so jarring? Possible to have
@@ -717,8 +659,7 @@ function MusicClient({}) {
           <div ref={refSWRInfinitePages} />
           <DataItemLoader
             error={error}
-            // handleScroll={() => handleScroll('#now-playing')}
-            handleScroll={() => handleScrollTo()}
+            handleScroll={() => scrollIntoViewHandle()}
             isLoadingMore={isLoadingMore}
             key="np-l-2"
           />

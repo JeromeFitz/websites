@@ -1,5 +1,5 @@
-import { Anchor } from '@jeromefitz/ds/components/Anchor/index'
-// import { cx } from '@jeromefitz/ds/utils/cx'
+import { AnchorUnstyled as Anchor } from '@jeromefitz/ds/components/Anchor/index'
+import { Callout } from '@jeromefitz/ds/components/Callout/index'
 import {
   getDataFromCache,
   getDatabaseQuery,
@@ -8,6 +8,7 @@ import { isObjectEmpty } from '@jeromefitz/utils'
 
 import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints.js'
 
+import { Box, Link } from '@radix-ui/themes'
 import _filter from 'lodash/filter.js'
 import _orderBy from 'lodash/orderBy.js'
 import { draftMode } from 'next/headers.js'
@@ -24,7 +25,6 @@ import {
 } from '@/components/Headline/index'
 // import { Notion as Blocks } from '@/components/Notion/index'
 // import type { PageObjectResponsePodcast } from '@/app/(notion)/_config/index'
-import { WIP } from '@/components/WIP/index'
 
 const { DATABASE_ID } = CONFIG.PODCASTS
 
@@ -52,18 +52,20 @@ function ListingTemp({ data }) {
       {podcasts.map((podcast) => {
         if (!podcast?.isPublished) return null
         return (
-          <li className="my-1 py-1" key={`podcasts-podcast-${podcast?.id}`}>
-            <Anchor className="text-base lg:text-xl" href={podcast?.href}>
-              {podcast?.title}
-            </Anchor>
-          </li>
+          <Box asChild key={`podcasts-podcast-${podcast?.id}`} my="1" py="1">
+            <li>
+              <Link asChild>
+                <Anchor href={podcast?.href}> {podcast?.title}</Anchor>
+              </Link>
+            </li>
+          </Box>
         )
       })}
     </ul>
   )
 }
 
-// @todo(complexity) 12
+// @todo(complexity) 11
 // eslint-disable-next-line complexity
 async function Listing({ revalidate, segmentInfo }) {
   const { isEnabled } = draftMode()
@@ -113,7 +115,7 @@ async function Listing({ revalidate, segmentInfo }) {
 
   return (
     <>
-      <Grid as="section">
+      <Grid>
         <HeadlineColumnA>
           <HeadlineTitle aria-label={title} as="h1">
             <>{title}</>
@@ -121,10 +123,8 @@ async function Listing({ revalidate, segmentInfo }) {
         </HeadlineColumnA>
         <HeadlineContent>
           {/* <Blocks data={data?.blocks} /> */}
-          {/* <p className={cx('text-lg tracking-wide', 'flex flex-col gap-0', '')}>
-            {seoDescription}
-          </p> */}
-          <WIP />
+          {/* <Text size="4">{seoDescription}</Text> */}
+          <Callout size="1" variant="outline" />
           {hasContent && <ListingTemp data={podcastData} />}
         </HeadlineContent>
       </Grid>

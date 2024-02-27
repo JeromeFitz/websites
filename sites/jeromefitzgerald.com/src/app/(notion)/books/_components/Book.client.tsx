@@ -1,8 +1,20 @@
-import { cx } from '@jeromefitz/ds/utils/cx'
+'use client'
+import { AnchorUnstyled as Anchor } from '@jeromefitz/ds/components/Anchor/index'
+import { Callout } from '@jeromefitz/ds/components/Callout/index'
 import { lpad } from '@jeromefitz/utils'
 
-import { Separator } from '@radix-ui/themes'
-import { Badge } from '@radix-ui/themes'
+import { useScrollIntoView } from '@mantine/hooks'
+import {
+  Badge,
+  Box,
+  Button,
+  Code,
+  Flex,
+  Link,
+  Separator,
+  Strong,
+  Text,
+} from '@radix-ui/themes'
 import { format } from 'date-fns'
 import _orderBy from 'lodash/orderBy.js'
 import { Fragment } from 'react'
@@ -14,52 +26,106 @@ import {
   HeadlineTitle,
   HeadlineTitleSub,
 } from '@/components/Headline/index'
-import { WIP } from '@/components/WIP/index'
 
-// function ListItem() {
-//   return <></>
-// }
+const stores = [
+  {
+    id: 'amazing-books-and-records',
+    title: 'Amazing Books and Records',
+    url: 'https://www.amazingbooksandrecords.com/',
+  },
+  {
+    id: 'bottom-feeder',
+    title: 'Bottom Feeder Books',
+    url: 'https://www.bottomfeederbooks.com/',
+  },
+  {
+    id: 'the-big-idea',
+    title: 'The Big Idea Bookstore Cooperative',
+    url: 'https://thebigideapgh.com/',
+  },
+  {
+    id: 'city-of-aslyum',
+    title: 'City of Asylum Bookstore',
+    url: 'https://www.cityofasylumbooks.org/',
+  },
+  {
+    id: 'city-books',
+    title: 'City Books',
+    url: 'https://www.instagram.com/citybookspgh',
+  },
+  {
+    id: 'white-whale-bookstore',
+    title: 'White Whale Bookstore',
+    url: 'https://whitewhalebookstore.com/',
+  },
+  { id: 'etc', title: '& “many more”', url: '' },
+]
 
-function Books({ data }) {
+function Books({ data, refs }) {
   return (
     <>
-      {data.map((book) => {
+      {data.map((book, i) => {
+        const targetRef: any = refs[i][1]
         // const title = _title(book.id)
         const items = _orderBy(book.items, ['author', 'dateReleasedIso', 'title'])
 
         return (
-          <Fragment key={`books-}`}>
-            <Separator orientation="horizontal" size="4" />
-            <HeadlineTitle aria-label={book.title} as="h3" className="mb-4">
-              <div id={book.id}>{book.title}</div>
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          <Fragment key={`books-${book.id}`}>
+            <Separator orientation="horizontal" ref={targetRef} size="4" />
+            <HeadlineTitle aria-label={book.title} as="h3" mb="4">
+              <Text as="span" id={book.id}>
+                {book.title}
+              </Text>
             </HeadlineTitle>
-            <ul className="list-inside list-none">
-              {items.map((item) => {
-                return (
-                  <li className="flex flex-col py-4" key={item.id}>
-                    <div className="ml-3 pl-2 -indent-2 text-2xl font-medium tracking-tight">
-                      <span className={cx('inline', '-ml-2 mb-[-1px] pr-1')}>“</span>
-                      <p className={cx('inline', 'm-0 p-0')}>
-                        {item.title}
-                        {!!item.subtitle && `: ${item.subtitle}`}
-                      </p>
-                      <span className={cx('inline', 'pl-1')}>”</span>
-                    </div>
-                    <div className="ml-3 gap-2 pl-2 -indent-2 text-2xl font-medium tracking-tight">
-                      <span className={cx('inline', '-ml-2 mb-[-1px] pr-1')}>–</span>
-                      <p className="inline text-xl font-light tracking-wide">
-                        {item.author}
-                      </p>
-                    </div>
-                    <div className="ml-3 gap-2 pl-2 indent-0 text-2xl font-medium tracking-tight">
-                      <p className="inline font-mono text-base font-light tracking-wide">
-                        {format(item.dateReleasedIso, 'yyyy')}, p.{item.pages}
-                      </p>
-                    </div>
-                  </li>
-                )
-              })}
-            </ul>
+            <Box asChild mb="4" pb="2" width="100%">
+              <ul className="list-inside list-none">
+                {items.map((item) => {
+                  return (
+                    <Flex asChild direction="column" key={item.id} py="4">
+                      <li>
+                        <Box
+                          className="indent-[calc(var(--space-3)_*_-1)]"
+                          ml="3"
+                          pl="3"
+                        >
+                          <Text size="6" weight="bold">
+                            <Text as="span">“</Text>
+                            <Text as="span">
+                              {item.title}
+                              {!!item.subtitle && `: ${item.subtitle}`}
+                            </Text>
+                            <Text as="span">”</Text>
+                          </Text>
+                        </Box>
+                        <Box
+                          className="indent-[calc(var(--space-2)_*_-1)]"
+                          ml="3"
+                          pl="2"
+                        >
+                          <Text size="5" weight="medium">
+                            <Text as="span">–</Text>
+                            <Text as="span">{item.author}</Text>
+                          </Text>
+                        </Box>
+                        <Box
+                          className="indent-[calc(var(--space-1)_*_1)]"
+                          ml="3"
+                          pl="2"
+                        >
+                          <Text size="5" weight="regular">
+                            <Code variant="ghost">
+                              {format(item.dateReleasedIso, 'yyyy')}, p.{item.pages}
+                            </Code>
+                          </Text>
+                        </Box>
+                      </li>
+                    </Flex>
+                  )
+                })}
+              </ul>
+            </Box>
           </Fragment>
         )
       })}
@@ -68,65 +134,142 @@ function Books({ data }) {
 }
 
 function BookPage({ books, title }) {
+  const { scrollIntoView: scrollIntoView1, targetRef: targetRef1 } =
+    useScrollIntoView<HTMLDivElement>({
+      offset: 92,
+    })
+  const { scrollIntoView: scrollIntoView2, targetRef: targetRef2 } =
+    useScrollIntoView<HTMLDivElement>({
+      offset: 92,
+    })
+  const { scrollIntoView: scrollIntoView3, targetRef: targetRef3 } =
+    useScrollIntoView<HTMLDivElement>({
+      offset: 92,
+    })
+
+  const refs = [
+    [scrollIntoView1, targetRef1],
+    [scrollIntoView2, targetRef2],
+    [scrollIntoView3, targetRef3],
+  ]
+
   return (
-    <Grid as="section">
+    <Grid>
       <HeadlineColumnA>
         <HeadlineTitle aria-label={title} as="h1">
           <>{title}</>
         </HeadlineTitle>
         <HeadlineTitleSub>
-          <div className="flex flex-col gap-1">
-            {books.map((book) => {
+          <Flex direction="column" gap="1">
+            {books.map((book, i) => {
+              const scrollIntoView: any = refs[i][0]
               return (
-                <div className="flex flex-row items-center gap-2 ">
-                  <Badge color={book.color} size="2">
-                    {lpad(book.items.length)}
-                  </Badge>
-                  <a
-                    className="font-mono text-base tracking-wide"
-                    href={`#${book.id}`}
+                <Flex
+                  align="center"
+                  asChild
+                  className="group hover:cursor-pointer"
+                  direction="row"
+                  gap="2"
+                  justify="start"
+                  key={`books--menu--${book.id}`}
+                  wrap="nowrap"
+                >
+                  <Button
+                    onClick={() => {
+                      scrollIntoView()
+                    }}
+                    style={{
+                      boxShadow: 'none',
+                    }}
+                    tabIndex={0}
+                    variant="outline"
                   >
-                    {book.title}
-                  </a>
-                </div>
+                    <>
+                      <Badge
+                        className="transition-colors group-hover:cursor-pointer group-hover:bg-[var(--accent-a4)] group-hover:text-[var(--accent-12)]"
+                        color={book.color}
+                        highContrast={false}
+                        size="2"
+                      >
+                        <Code variant="ghost">{lpad(book.items.length)}</Code>
+                      </Badge>
+                      <Code variant="ghost">
+                        <Link
+                          asChild
+                          className="group-hover:underline"
+                          color="gray"
+                          highContrast={true}
+                          size="2"
+                          style={{ outline: 'none' }}
+                          underline="hover"
+                        >
+                          <Text as="span">{book.title}</Text>
+                        </Link>
+                      </Code>
+                    </>
+                  </Button>
+                </Flex>
               )
             })}
-          </div>
+          </Flex>
         </HeadlineTitleSub>
       </HeadlineColumnA>
       <HeadlineContent>
         <>
-          <p className={cx('text-lg tracking-wide')}>
+          <Text size="4">
             There is something about physical books! Sarah and I tend to surround
             ourselves with them and are often reading a few at a time. Still working
             on the layout and what kind of stuff it entails. This is not an
             exhaustive all-time list just one that since I started creating this
             section I have been keeping track of.
-          </p>
-          <p className={cx('text-lg tracking-wide')}>
-            This does not count <strong>cookbooks</strong>. (Of which I think I may
+          </Text>
+          <Text size="4">
+            This does not count <Strong>cookbooks</Strong>. (Of which I think I may
             make a whole new section.)
-          </p>
-          <p className={cx('text-2xl tracking-wide')}>
+          </Text>
+          <Text size="4">
             Please support your local library and bookstores. If you buy online,
-            please consider <strong>Biblio</strong> (whose affiliate program is ...
-            uh ... not in their control) and <strong>Bookshop</strong> (whose
+            please consider <Strong>Biblio</Strong> (whose affiliate program is ...
+            uh ... not in their control) and <Strong>Bookshop</Strong> (whose
             affiliate program I am in the process of setting up).
-          </p>
-          <p className={cx('text-lg tracking-wide', 'flex flex-col gap-0', '')}>
-            On that note: Pittsburgh is home to a lot great bookstores!
-          </p>
-          <ul className="list-inside pb-4 text-base tracking-wide lg:list-disc lg:text-lg">
-            <li className="my-2 lg:my-1">Amazing Books and Records</li>
-            <li className="my-2 lg:my-1">Bottom Feeder Books</li>
-            <li className="my-2 lg:my-1">The Big Idea Bookstore Cooperative</li>
-            <li className="my-2 lg:my-1">City of Asylum Bookstore </li>
-            <li className="my-2 lg:my-1">White Whale Bookstore</li>
-            <li className="my-2 lg:my-1">& “many more”</li>
-          </ul>
-          <Separator orientation="horizontal" size="4" />
-          <WIP description={`This page is currently getting an overhaul.`} />
-          <Books data={books} />
+          </Text>
+          <Text size="4">Pittsburgh is home to a lot great bookstores!</Text>
+          <Box asChild mb="4" pb="2" width="100%">
+            <ul className="list-inside lg:list-disc">
+              {/* @todo(types) */}
+              {stores.map((store: any, i) => {
+                if (store.url === '') {
+                  return (
+                    <li key={`store-${i}`}>
+                      <Text size="4">{store.title}</Text>
+                    </li>
+                  )
+                } else {
+                  return (
+                    <li key={`store-${i}`}>
+                      <Flex
+                        align="baseline"
+                        asChild
+                        direction="row"
+                        display="inline-flex"
+                        gap="2"
+                      >
+                        <Link asChild>
+                          <Anchor href={store.url}>
+                            <Text size="4">{store.title}</Text>
+                          </Anchor>
+                        </Link>
+                      </Flex>
+                    </li>
+                  )
+                }
+              })}
+            </ul>
+          </Box>
+          <Callout size="1" variant="outline">
+            This page is in the process of getting an overhaul.
+          </Callout>
+          <Books data={books} refs={refs} />
         </>
       </HeadlineContent>
     </Grid>
