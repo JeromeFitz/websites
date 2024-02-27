@@ -1,9 +1,7 @@
-import { Separator } from '@jeromefitz/ds/components/Separator/index'
-// import { cx } from '@jeromefitz/ds/utils/cx'
 import { getDataFromCache } from '@jeromefitz/shared/notion/utils/index'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
-import { Badge } from '@radix-ui/themes'
+import { Badge, Code, Separator } from '@radix-ui/themes'
 import { draftMode } from 'next/headers.js'
 import { notFound } from 'next/navigation.js'
 
@@ -64,7 +62,7 @@ async function Slug({ revalidate, segmentInfo }) {
 
   return (
     <>
-      <Grid as="section">
+      <Grid>
         <HeadlineColumnA>
           <HeadlineTitle aria-label={title} as="h1">
             <>{title}</>
@@ -72,7 +70,7 @@ async function Slug({ revalidate, segmentInfo }) {
           <HeadlineTitleSub>
             {tags.map(({ color, id, name }) => (
               <Badge color={color} key={id} size="2">
-                {name}
+                <Code variant="ghost">{name}</Code>
               </Badge>
             ))}
           </HeadlineTitleSub>
@@ -81,14 +79,14 @@ async function Slug({ revalidate, segmentInfo }) {
           <Blocks data={data?.blocks} />
         </HeadlineContent>
       </Grid>
-      <Grid as="section">
+      <Grid>
         <HeadlineColumnA>
-          <HeadlineTitle aria-label={title} as="p">
+          <HeadlineTitle aria-label={title} as="h2">
             <>Info</>
           </HeadlineTitle>
         </HeadlineColumnA>
         <HeadlineContent className="">
-          <Separator className="mb-4 opacity-50" />
+          <Separator size="4" />
           <Relations
             properties={properties}
             relations={RELATIONS}

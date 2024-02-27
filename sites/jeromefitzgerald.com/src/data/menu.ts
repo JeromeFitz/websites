@@ -125,7 +125,7 @@ const menus: NavigationMenuItems[] = [
       {
         href: '/shows/justin-and-jerome-experience',
         id: '/shows/justin-and-jerome-experience',
-        isActive: false,
+        isActive: true,
         isActiveMobileOverride: true,
         title: 'Justin & Jerome Experience',
         titleDescription: 'Acclaimed improv and heralded sketch (on-and-off stage)',

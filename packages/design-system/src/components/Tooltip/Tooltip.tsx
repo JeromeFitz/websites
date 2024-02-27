@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/no-custom-classname */
 'use client'
 import * as Tooltip from '@radix-ui/react-tooltip'
 import React from 'react'

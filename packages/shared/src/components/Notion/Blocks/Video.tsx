@@ -1,6 +1,6 @@
 import 'server-only'
 
-import { Caption } from '@jeromefitz/ds/components/Caption'
+import { Callout } from '@jeromefitz/ds/components/Callout/index'
 
 import type { VideoBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints.js'
 
@@ -29,10 +29,10 @@ function VideoImpl({ block }: { block: VideoBlockObjectResponse | any }) {
       {/* @ts-ignore */}
       <VideoYouTube block={block} url={url} />
       {!!caption && (
-        <Caption>
+        <Callout>
           <EmojiWrapper id={block.id} text={`${caption}`} />
           {/* {caption} */}
-        </Caption>
+        </Callout>
       )}
     </Suspense>
   )

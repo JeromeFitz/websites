@@ -1,6 +1,6 @@
 'use client'
 
-import { Caption } from '@jeromefitz/ds/components/Caption'
+import { Callout } from '@jeromefitz/ds/components/Callout/index'
 
 import { NotionEmoji as EmojiWrapper } from 'next-notion/blocks/Emoji'
 import { Tweet } from 'react-tweet'
@@ -27,10 +27,10 @@ function EmbedTwitter({ block }) {
     <>
       <EmbedTweet id={id} />
       {!!caption && (
-        <Caption>
+        <Callout>
           <EmojiWrapper id={block.id} text={`${caption}`} />
           {/* {caption} */}
-        </Caption>
+        </Callout>
       )}
     </>
   )

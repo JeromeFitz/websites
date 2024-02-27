@@ -6,6 +6,7 @@ import { isObjectEmpty } from '@jeromefitz/utils'
 
 import type { Metadata } from 'next'
 
+import { Text } from '@radix-ui/themes'
 import { draftMode } from 'next/headers.js'
 
 import { CONFIG, getPageData } from '@/app/(notion)/_config/index'
@@ -68,14 +69,14 @@ async function Slug({ revalidate, segmentInfo }) {
 
   if (isObjectEmpty(data.page)) return null
   return (
-    <Grid as="section">
+    <Grid>
       <HeadlineColumnA>
         <HeadlineTitle aria-label={title} as="h1">
           <>{title}</>
         </HeadlineTitle>
       </HeadlineColumnA>
       <HeadlineContent>
-        <p className={'text-lg tracking-wide'}>{seoDescription}</p>
+        <Text size="4">{seoDescription}</Text>
         <Blocks data={data?.blocks} />
       </HeadlineContent>
     </Grid>

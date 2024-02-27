@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/no-custom-classname */
 import type { Variant } from './Button.types'
 
 import { cx } from '../../utils/cx'

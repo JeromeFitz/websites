@@ -22,7 +22,7 @@ const quotes = [
       'There’s a part in Bubble Boy: The Musical where my husband laughed so hard that he started to choke (don’t worry, he’s fine).',
     image: '/images/logos/pittsburgh-city-paper.png',
     url: 'https://www.pghcitypaper.com/arts-entertainment/arcade-comedy-theater-delivers-a-fun-filled-laugh-riot-with-bubble-boy-the-musical-15859103',
-    where: 'Pittsburgh City',
+    where: 'Pittsburgh City Paper',
     who: 'Amanda Waltz',
   },
 ]

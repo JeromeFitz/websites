@@ -12,7 +12,8 @@ import 'server-only'
 
 import https from 'node:https'
 
-import { Caption } from '@jeromefitz/ds/components/Caption'
+import { Callout } from '@jeromefitz/ds/components/Callout/index'
+import { CameraIcon } from '@jeromefitz/ds/components/Icon/index'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
 import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints.js'
@@ -189,9 +190,9 @@ async function ImageImpl({
     <>
       <NextImage className={className} {...image} />
       {!!imageCaption && (
-        <Caption className={classNameCaption}>
+        <Callout className={classNameCaption} icon={CameraIcon}>
           <EmojiWrapper id={block.id} text={`${imageCaption}`} />
-        </Caption>
+        </Callout>
       )}
     </>
   )

@@ -1,4 +1,4 @@
-import { Badge } from '@radix-ui/themes'
+import { Badge, Text } from '@radix-ui/themes'
 
 import { FourOhFour } from '@/app/_errors/404'
 import { Grid } from '@/components/Grid/index'
@@ -11,7 +11,35 @@ import {
 
 const isDev = process.env.NODE_ENV === 'development'
 
-const _radixColorsAccents = [
+type RadixColor =
+  | 'amber'
+  | 'blue'
+  | 'bronze'
+  | 'brown'
+  | 'crimson'
+  | 'cyan'
+  | 'gold'
+  | 'grass'
+  | 'gray'
+  | 'green'
+  | 'indigo'
+  | 'iris'
+  | 'jade'
+  | 'lime'
+  | 'mint'
+  | 'orange'
+  | 'pink'
+  | 'plum'
+  | 'purple'
+  | 'red'
+  | 'ruby'
+  | 'sky'
+  | 'teal'
+  | 'tomato'
+  | 'violet'
+  | 'yellow'
+
+const _radixColorsAccents: RadixColor[] = [
   'tomato',
   'red',
   'crimson',
@@ -51,7 +79,7 @@ const _radixColorsAccents = [
 function Slug() {
   const title = 'Radix Badge Adjustment'
   return (
-    <Grid as="section">
+    <Grid>
       <HeadlineColumnA>
         <HeadlineTitle aria-label={title} as="h1">
           <>{title}</>
@@ -63,10 +91,8 @@ function Slug() {
           {_radixColorsAccents.map((color) => {
             const _title = `${color}-a11`
             return (
-              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-              // @ts-ignore
-              <Badge className="text-3xl" color={color} size="2">
-                {_title}
+              <Badge color={color} radius="large" size="2" variant="solid">
+                <Text size="7">{_title}</Text>
               </Badge>
             )
           })}

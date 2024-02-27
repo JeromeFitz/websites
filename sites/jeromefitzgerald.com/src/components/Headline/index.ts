@@ -3,4 +3,5 @@ export {
   HeadlineContent,
   HeadlineTitle,
   HeadlineTitleSub,
+  HeadlineTitleText,
 } from './Headline'

@@ -11,6 +11,8 @@ import { Fragment, forwardRef, memo } from 'react'
 
 import { menus } from '@/data/menu'
 
+const IS_ICON_SHOWN = false
+
 const NavigationMenuImpl = () => {
   return (
     <div className="col-span-full hidden lg:flex lg:items-center lg:justify-between">
@@ -38,9 +40,9 @@ const NavigationMenuImpl = () => {
                   // @ts-ignore
                   <NavigationMenu.Item
                     className={cx(
-                      'cursor-pointer select-none text-base transition-colors',
+                      'cursor-pointer select-none transition-colors',
                       'hocus:hover:text-[var(--accent-11)]',
-                      '',
+                      'first-of-type:relative first-of-type:-left-4',
                     )}
                     key={`nav--${menu.id}`}
                   >
@@ -50,7 +52,7 @@ const NavigationMenuImpl = () => {
                         <NavigationMenu.Trigger
                           className={cx(
                             'group flex items-center justify-center',
-                            'rounded-full hover:bg-[var(--mauve-a2)]',
+                            'rounded-[var(--radius-full)] hover:bg-[var(--mauve-a2)]',
                             'px-3 py-2',
                             'transition-colors',
                           )}
@@ -112,7 +114,7 @@ const NavigationMenuImpl = () => {
                           className={cx(
                             'group flex',
                             // 'place-items-center items-center justify-center',
-                            'rounded-full hover:bg-[var(--mauve-a2)]',
+                            'rounded-[var(--radius-full)] hover:bg-[var(--mauve-a2)]',
                             'px-3 py-2',
                             'transition-colors',
                           )}
@@ -120,7 +122,7 @@ const NavigationMenuImpl = () => {
                           <NavigationMenu.Link>
                             {menu.isParentIconVisible ? (
                               <>
-                                <Icon className="hocus:hover:text-[var(--accent-11)] mt-1 transition-colors" />
+                                <Icon className="hocus:hover:text-[var(--accent-11)]  mt-1 transition-colors" />
                                 <span className="hidden">{menu.title}</span>
                               </>
                             ) : (
@@ -145,7 +147,7 @@ const NavigationMenuImpl = () => {
                 // @ts-ignore
                 className={cx(
                   'absolute',
-                  'data-[state=open]:animate-scaleIn data-[state=closed]:animate-scaleOut   mt-[10px] h-[var(--radix-navigation-menu-viewport-height)] w-full origin-[top_center] overflow-hidden rounded-sm border-2 shadow-xl transition-[width,_height] duration-300 sm:w-[var(--radix-navigation-menu-viewport-width)]',
+                  'data-[state=open]:animate-scaleIn data-[state=closed]:animate-scaleOut   shadow-6 mt-[10px] h-[var(--radix-navigation-menu-viewport-height)] w-full origin-[top_center] overflow-hidden rounded-[var(--radius-1)] border-2 transition-[width,_height] duration-300 sm:w-[var(--radix-navigation-menu-viewport-width)]',
                   'bg-white dark:bg-black',
                   'border-[var(--accent-a6)] dark:border-[var(--accent-a12)]',
                 )}
@@ -175,8 +177,8 @@ const ListItem = forwardRef(
           'group',
           'flex select-none flex-row items-center gap-3 p-3',
           'text-black dark:text-white',
-          'hover:bg-[var(--mauve-a2)]',
-          'rounded-md px-3 py-2',
+          'hover:bg-[var(--mauve-a4)]',
+          'rounded-[var(--radius-3)] px-3 py-2',
           className,
         )}
       >
@@ -184,7 +186,10 @@ const ListItem = forwardRef(
           <div className={cx('items-center justify-start', 'mt-2 h-full', '')}>
             <Pencil2Icon
               aria-hidden
-              className={cx('size-4 text-[currentColor]')}
+              className={cx(
+                'size-4 text-[currentColor]',
+                !IS_ICON_SHOWN && 'hidden',
+              )}
               label={''}
             />
           </div>
@@ -203,7 +208,7 @@ const ListItem = forwardRef(
             >
               {title}
             </Text>
-            <Text className={cx('line-clamp-2 text-sm')} highContrast>
+            <Text className={cx('line-clamp-2')} highContrast size="1">
               {children}
             </Text>
           </div>

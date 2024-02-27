@@ -1,25 +1,14 @@
-// const rtw = require('radix-themes-tw')
+const rtw = require('radix-themes-tw')
 const theme = require('tailwindcss/defaultTheme')
 
 const hocusPlugin = require('./hocus.plugin')
-// const radixPlugin = require('./radix.plugin')
-// const { notionColors, radixColors } = require('./src/index')
 
-// const radixThemePreset = rtw.radixThemePreset
+const radixThemePreset = rtw.radixThemePreset
 
 const safelist = []
-// notionColors.map((color) => {
-//   safelist.push(`notion-${color}`)
-// })
-// const buttonTypes = ['', '-cta', '-outline', '-solid', '-transparent']
-// radixColors.map((color) => {
-//   buttonTypes.map((type) => {
-//     safelist.push(`${color}-button${type}`)
-//   })
-// })
 
 /** @type {import('tailwindcss').Config} */
-const config = ({}) => ({
+const config = ({ useTailwind = true }) => ({
   content: [
     /**
      * @note(tailwind) lol, if we do this, can we avoid the hack
@@ -44,17 +33,8 @@ const config = ({}) => ({
     require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/typography'),
     require('@tailwindcss/forms'),
-    // radixPlugin({ colors: radixColors }),
-    // require('tailwindcss-radix')({ variantPrefix: 'radix' }),
-    // plugin(({ matchUtilities }) => {
-    //   matchUtilities({
-    //     perspective: (value) => ({
-    //       perspective: value,
-    //     }),
-    //   })
-    // }),
   ],
-  // presets: [radixThemePreset],
+  presets: [radixThemePreset],
   safelist: [
     ...safelist,
     // {
@@ -68,7 +48,7 @@ const config = ({}) => ({
     // },
   ],
   theme: {
-    ...theme,
+    // ...theme,
     colors: {},
     container: {
       center: true,
@@ -154,8 +134,8 @@ const config = ({}) => ({
          * Social
          */
         bluesky: '#3399FF', // #87CEEB
-        github: 'var(--blackA1)',
-        'github-dark': 'var(--whiteA1)',
+        github: 'var(--black-a1)',
+        'github-dark': 'var(--white-a1)',
         inherit: 'inherit',
         instagram: '#c32aa3',
         linkedin: '#0a66c2',

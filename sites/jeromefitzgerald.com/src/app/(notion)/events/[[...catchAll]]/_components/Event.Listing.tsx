@@ -1,3 +1,4 @@
+import { Callout } from '@jeromefitz/ds/components/Callout/index'
 import { Separator } from '@jeromefitz/ds/components/Separator/index'
 import {
   getDataFromCache,
@@ -8,7 +9,7 @@ import { isObjectEmpty } from '@jeromefitz/utils'
 
 import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints.js'
 
-import { Link } from '@radix-ui/themes'
+import { Link, Text } from '@radix-ui/themes'
 import _filter from 'lodash/filter.js'
 import _orderBy from 'lodash/orderBy.js'
 import _remove from 'lodash/remove.js'
@@ -26,7 +27,6 @@ import {
   HeadlineContent,
   HeadlineTitle,
 } from '@/components/Headline/index'
-import { WIP } from '@/components/WIP/index'
 
 import { AccordionClient } from './Event.Listing.client'
 
@@ -75,22 +75,25 @@ function Events({ data }) {
   if (items.length === 0) {
     return (
       <>
-        <p className={'text-2xl tracking-wide '}>
+        <Text size="5">
           <Link asChild>
             <NextLink href="/shows/jerome-and">Jerome &</NextLink>
           </Link>
           {` `}is taking a break from its monthly gig in{' '}
-          <span className="font-mono">2024</span>.
+          <Text as="span" className="font-mono">
+            2024
+          </Text>
+          .
           <br />
           Cooking something special up at the moment.
-        </p>
-        <p className={'text-lg tracking-wide '}>
+        </Text>
+        <Text size="4">
           I pop up on shows from time to time, they will be here if I can remember to
           put them up.
-        </p>
-        <p className={'text-lg tracking-wide'}>
+        </Text>
+        <Text size="4">
           Hit me up if you want a professional moron on your show.
-        </p>
+        </Text>
       </>
     )
   }
@@ -189,21 +192,21 @@ async function Listing({ revalidate, segmentInfo }) {
 
   return (
     <>
-      <Grid as="section">
+      <Grid>
         <HeadlineColumnA>
           <HeadlineTitle aria-label={title} as="h1">
             <>{title}</>
           </HeadlineTitle>
         </HeadlineColumnA>
         <HeadlineContent>
-          <WIP />
+          <Callout size="1" variant="outline" />
           {/* <Blocks data={data?.blocks} /> */}
           {hasData && <Events data={eventsData} />}
         </HeadlineContent>
       </Grid>
-      <Grid as="section">
+      <Grid>
         <HeadlineColumnA>
-          <HeadlineTitle aria-label={title} as="p">
+          <HeadlineTitle aria-label={title} as="h2">
             <>Select Past Events</>
           </HeadlineTitle>
         </HeadlineColumnA>

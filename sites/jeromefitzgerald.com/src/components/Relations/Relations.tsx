@@ -1,5 +1,15 @@
 import { cx } from '@jeromefitz/ds/utils/cx'
 
+import {
+  // Badge,
+  Box,
+  // Code,
+  // Flex,
+  // Link,
+  // Separator,
+  // Strong,
+  Text,
+} from '@radix-ui/themes'
 import _size from 'lodash/size.js'
 import pluralize from 'pluralize'
 // import { Suspense } from 'react'
@@ -44,16 +54,12 @@ function Relations({ properties, relations, relationsSecondary }) {
             )}
             key={`${id}-${relation}`}
           >
-            <p
-              className={cx(
-                'pb-3 font-extrabold uppercase tracking-tight',
-                'text-[var(--mauve-11)]',
-              )}
-            >
-              <strong>{title}</strong>
-            </p>
-            <ul>
-              {/* {Array(itemsCount)
+            <Text className="uppercase" color="gray" weight="bold">
+              <>{title}</>
+            </Text>
+            <Box asChild my="1" py="1" width="100%">
+              <ul className="list-inside">
+                {/* {Array(itemsCount)
                 .fill(0)
                 .map((_, i) => {
                   const item = items[i]
@@ -67,8 +73,9 @@ function Relations({ properties, relations, relationsSecondary }) {
                     </li>
                   )
                 })} */}
-              <RelationIndividuals items={items} />
-            </ul>
+                <RelationIndividuals items={items} />
+              </ul>
+            </Box>
           </div>
         )
       })}

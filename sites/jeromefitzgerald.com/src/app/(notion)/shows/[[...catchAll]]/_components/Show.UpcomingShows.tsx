@@ -1,7 +1,8 @@
-import { Anchor } from '@jeromefitz/ds/components/Anchor/index'
+import { AnchorUnstyled as Anchor } from '@jeromefitz/ds/components/Anchor/index'
 import { cx } from '@jeromefitz/ds/utils/cx'
 import { getPageDataFromNotion } from '@jeromefitz/shared/notion/utils/index'
 
+import { Box, Heading, Link, Text } from '@radix-ui/themes'
 import _size from 'lodash/size.js'
 import { Suspense } from 'react'
 
@@ -28,27 +29,25 @@ async function UpcomingShowsIndividual({ id }) {
     // ...props
   } = getEventData(properties)
 
-  const style = cx(
-    'inline-block text-lg font-normal tracking-tight lg:text-2xl',
-    'mb-4 w-full',
-    'hover:bg-[var(--blackA8)] dark:hover:bg-[var(--whiteA8)]',
-  )
-
   return (
-    <Anchor className={style} href={href}>
-      <div className={cx('text-3xl font-black')}>{title}</div>
-      <h5 className={cx('mb-1 mt-2 pb-1 pt-2 text-2xl font-bold leading-relaxed')}>
-        {dayOfMonth} {monthName} {year}
-      </h5>
-      <div className={cx('text-xl')}>
-        <span>
-          {time} {timezone}
-        </span>
-        <br />
-        <span>{dayOfWeek}</span>
-      </div>
-      <div className={cx('text-xl')}> at {venueTitle}</div>
-    </Anchor>
+    <Link asChild>
+      <Anchor href={href}>
+        <Text size="8" weight="bold">
+          {title}
+        </Text>
+        <Heading as="h5">
+          {dayOfMonth} {monthName} {year}
+        </Heading>
+        <Text size="7">
+          <Text as="span">
+            {time} {timezone}
+          </Text>
+          <br />
+          <Text as="span">{dayOfWeek}</Text>
+        </Text>
+        <Text size="7"> at {venueTitle}</Text>
+      </Anchor>
+    </Link>
   )
 }
 
@@ -59,13 +58,9 @@ function UpcomingShows({ properties }) {
   const itemsCount = _size(items)
   if (itemsCount === 0)
     return (
-      <p
-        className={cx(
-          'inline-block text-base font-normal tracking-tight lg:text-xl',
-        )}
-      >
-        No Upcoming Shows
-      </p>
+      <Box asChild display="inline-block">
+        <Text size={{ initial: '4', lg: '7' }}>No Upcoming Shows</Text>
+      </Box>
     )
   return (
     <>
@@ -78,11 +73,13 @@ function UpcomingShows({ properties }) {
               const { id } = item
 
               return (
-                <li className={cx('my-2 lg:my-0.5')} key={id}>
-                  <Suspense fallback={<RelationLoading />}>
-                    <UpcomingShowsIndividual id={id} />
-                  </Suspense>
-                </li>
+                <Box asChild my={{ initial: '2', lg: '1' }}>
+                  <li className={cx('my-2 lg:my-0.5')} key={id}>
+                    <Suspense fallback={<RelationLoading />}>
+                      <UpcomingShowsIndividual id={id} />
+                    </Suspense>
+                  </li>
+                </Box>
               )
             })}
         </ul>

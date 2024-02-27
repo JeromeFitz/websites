@@ -49,7 +49,7 @@ const AccordionNavigation = () => {
     <Accordion.Root
       className={cx(
         'mt-10 min-w-full max-w-full',
-        'w-[300px] rounded-md bg-[var(--mauve-6)]',
+        'w-[300px] rounded-[var(--radius-3)] bg-[var(--mauve-6)]',
         'shadow-[0_2px_10px] shadow-black/5 dark:shadow-white/10',
         'border-1 border-black/5 dark:border-white/10',
       )}
