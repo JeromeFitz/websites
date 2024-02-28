@@ -1,6 +1,8 @@
 import { getPageDataFromNotion } from '@jeromefitz/shared/notion/utils/index'
 
-import { Flex, Skeleton, Text } from '@radix-ui/themes'
+import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
+import { Skeleton } from '@radix-ui/themes/dist/esm/components/skeleton.js'
+import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import { Suspense } from 'react'
 
 import type { PageObjectResponseVenue } from '@/app/(notion)/_config/index'

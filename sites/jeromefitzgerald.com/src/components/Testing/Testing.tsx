@@ -1,6 +1,8 @@
 import { AnchorUnstyled as Anchor } from '@jeromefitz/ds/components/Anchor/index'
 
-import { Box, Flex, Link } from '@radix-ui/themes'
+import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
+import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
+import { Link } from '@radix-ui/themes/dist/esm/components/link.js'
 
 import { Grid } from '@/components/Grid/index'
 import {

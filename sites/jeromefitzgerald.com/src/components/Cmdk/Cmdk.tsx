@@ -4,7 +4,8 @@ import { cx } from '@jeromefitz/ds/utils/cx'
 
 import type { ReactNode } from 'react'
 
-import { Kbd, Text } from '@radix-ui/themes'
+import { Kbd } from '@radix-ui/themes/dist/esm/components/kbd.js'
+import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import { Command, useCommandState } from 'cmdk'
 import { AnimatePresence, MotionProps, motion } from 'framer-motion'
 import { slug as _slug } from 'github-slugger'

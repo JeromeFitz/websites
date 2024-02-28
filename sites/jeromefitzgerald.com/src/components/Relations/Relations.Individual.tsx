@@ -3,16 +3,8 @@ import { AnchorUnstyled as Anchor } from '@jeromefitz/ds/components/Anchor/index
 import { getPageDataFromNotion } from '@jeromefitz/shared/notion/utils/index'
 import { asyncForEach } from '@jeromefitz/utils'
 
-import {
-  // Badge,
-  Box,
-  // Code,
-  // Flex,
-  // Link,
-  // Separator,
-  // Strong,
-  Text,
-} from '@radix-ui/themes'
+import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
+import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import _noop from 'lodash/noop.js'
 import _orderBy from 'lodash/orderBy.js'
 import _size from 'lodash/size.js'

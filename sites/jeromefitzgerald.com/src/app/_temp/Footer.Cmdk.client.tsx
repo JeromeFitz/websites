@@ -2,7 +2,8 @@
 // import { Tooltip } from '@jeromefitz/ds/components/Tooltip/index'
 
 import { useOs } from '@mantine/hooks'
-import { Button, Kbd } from '@radix-ui/themes'
+import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
+import { Kbd } from '@radix-ui/themes/dist/esm/components/kbd.js'
 
 import { useStore as _useStore } from '@/store/index'
 

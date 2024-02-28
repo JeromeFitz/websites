@@ -1,4 +1,9 @@
-import { Box, Em, Flex, Grid, IconButton, Text } from '@radix-ui/themes'
+import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
+import { Em } from '@radix-ui/themes/dist/esm/components/em.js'
+import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
+import { Grid } from '@radix-ui/themes/dist/esm/components/grid.js'
+import { IconButton } from '@radix-ui/themes/dist/esm/components/icon-button.js'
+import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import Image from 'next/image'
 
 function Quote({ item }) {

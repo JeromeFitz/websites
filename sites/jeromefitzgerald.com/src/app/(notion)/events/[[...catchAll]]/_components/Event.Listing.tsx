@@ -9,7 +9,8 @@ import { isObjectEmpty } from '@jeromefitz/utils'
 
 import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints.js'
 
-import { Link, Text } from '@radix-ui/themes'
+import { Link } from '@radix-ui/themes/dist/esm/components/link.js'
+import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import _filter from 'lodash/filter.js'
 import _orderBy from 'lodash/orderBy.js'
 import _remove from 'lodash/remove.js'

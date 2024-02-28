@@ -11,7 +11,11 @@
  */
 import { cx } from '@jeromefitz/ds/utils/cx'
 
-import { Badge, Box, Button, Flex, Text } from '@radix-ui/themes'
+import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
+import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
+import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
+import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
+import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 // eslint-disable-next-line no-restricted-imports
 import NextLink from 'next/link'
 
