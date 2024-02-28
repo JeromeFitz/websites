@@ -7,7 +7,9 @@ import {
 } from '@jeromefitz/ds/components/Icon/index'
 import { cx } from '@jeromefitz/ds/utils/cx'
 
-import { Button, Text } from '@radix-ui/themes'
+import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
+import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
+import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import dynamic from 'next/dynamic.js'
 // eslint-disable-next-line no-restricted-imports
 import NextLink from 'next/link'
@@ -53,15 +55,21 @@ function FooterClient() {
           size="1"
           variant="surface"
         >
-          <Text as="p" size="2">
-            This site is being actively developed.
-          </Text>
-          <Text as="p" size="2">
-            So though it is nowhere near perfect, it is shippable, heh.
-          </Text>
-          <Text as="p" size="2">
-            Consider this eternally under construction.
-          </Text>
+          <Box asChild display="block">
+            <Text as="span" size="2">
+              This site is being actively developed.
+            </Text>
+          </Box>
+          <Box asChild display="block">
+            <Text as="span" size="2">
+              So though it is nowhere near perfect, it is shippable, heh.
+            </Text>
+          </Box>
+          <Box asChild display="block">
+            <Text as="span" size="2">
+              Consider this eternally under construction.
+            </Text>
+          </Box>
         </Callout>
       </div>
       <div

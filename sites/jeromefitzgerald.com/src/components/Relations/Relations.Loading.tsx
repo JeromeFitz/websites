@@ -1,4 +1,5 @@
-import { Box, Text } from '@radix-ui/themes'
+import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
+import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 
 /**
  * @todo(radix) replace with Skeleton

@@ -4,7 +4,8 @@ import type { HeadingProps } from '@radix-ui/themes/dist/esm/components/heading.
 import type { TextProps } from '@radix-ui/themes/dist/esm/components/text.js'
 import type { ReactNode } from 'react'
 
-import { Heading, Text } from '@radix-ui/themes'
+import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
+import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 
 type AdditionalProps = {
   children: ReactNode

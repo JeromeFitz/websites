@@ -1,16 +1,14 @@
 import { AnchorUnstyled as Anchor } from '@jeromefitz/ds/components/Anchor/index'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
-import {
-  Badge,
-  Box,
-  Code,
-  Heading,
-  Link,
-  Separator,
-  Strong,
-  Text,
-} from '@radix-ui/themes'
+import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
+import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
+import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
+import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
+import { Link } from '@radix-ui/themes/dist/esm/components/link.js'
+import { Separator } from '@radix-ui/themes/dist/esm/components/separator.js'
+import { Strong } from '@radix-ui/themes/dist/esm/components/strong.js'
+import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 
 import { Grid } from '@/components/Grid/index'
 import {

@@ -1,7 +1,9 @@
 import { getDataFromCache } from '@jeromefitz/shared/notion/utils/index'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
-import { Badge, Code, Separator } from '@radix-ui/themes'
+import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
+import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
+import { Separator } from '@radix-ui/themes/dist/esm/components/separator.js'
 import { draftMode } from 'next/headers.js'
 import { notFound } from 'next/navigation.js'
 

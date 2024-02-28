@@ -6,7 +6,10 @@ import { Tags } from '@jeromefitz/ds/components/Section/index'
 import { cx } from '@jeromefitz/ds/utils/cx'
 
 import * as Accordion from '@radix-ui/react-accordion'
-import { Box, Button, Flex, Text } from '@radix-ui/themes'
+import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
+import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
+import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
+import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 // eslint-disable-next-line no-restricted-imports
 import NextLink from 'next/link'
 

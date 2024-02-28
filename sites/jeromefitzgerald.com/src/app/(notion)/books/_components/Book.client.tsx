@@ -4,17 +4,15 @@ import { Callout } from '@jeromefitz/ds/components/Callout/index'
 import { lpad } from '@jeromefitz/utils'
 
 import { useScrollIntoView } from '@mantine/hooks'
-import {
-  Badge,
-  Box,
-  Button,
-  Code,
-  Flex,
-  Link,
-  Separator,
-  Strong,
-  Text,
-} from '@radix-ui/themes'
+import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
+import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
+import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
+import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
+import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
+import { Link } from '@radix-ui/themes/dist/esm/components/link.js'
+import { Separator } from '@radix-ui/themes/dist/esm/components/separator.js'
+import { Strong } from '@radix-ui/themes/dist/esm/components/strong.js'
+import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import { format } from 'date-fns'
 import _orderBy from 'lodash/orderBy.js'
 import { Fragment } from 'react'
@@ -74,7 +72,12 @@ function Books({ data, refs }) {
           // @ts-ignore
           <Fragment key={`books-${book.id}`}>
             <Separator orientation="horizontal" ref={targetRef} size="4" />
-            <HeadlineTitle aria-label={book.title} as="h3" mb="4">
+            <HeadlineTitle
+              aria-label={book.title}
+              as="h3"
+              // className="sticky top-[calc(var(--header-height)_-_5px)] md:top-28"
+              mb="4"
+            >
               <Text as="span" id={book.id}>
                 {book.title}
               </Text>

@@ -4,7 +4,8 @@ import { CaretDownIcon, Pencil2Icon } from '@jeromefitz/ds/components/Icon/index
 import { cx } from '@jeromefitz/ds/utils/cx'
 
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
-import { Button, Text } from '@radix-ui/themes'
+import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
+import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 // eslint-disable-next-line no-restricted-imports
 import NextLink from 'next/link'
 import { Fragment, forwardRef, memo } from 'react'

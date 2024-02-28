@@ -3,7 +3,8 @@ import { Separator } from '@jeromefitz/ds/components/Separator/index'
 import { getDataFromCache } from '@jeromefitz/shared/notion/utils/index'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
-import { Badge, Code } from '@radix-ui/themes'
+import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
+import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
 import { draftMode } from 'next/headers.js'
 import { notFound } from 'next/navigation.js'
 

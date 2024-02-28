@@ -2,7 +2,10 @@ import { AnchorUnstyled as Anchor } from '@jeromefitz/ds/components/Anchor/index
 import { cx } from '@jeromefitz/ds/utils/cx'
 import { getPageDataFromNotion } from '@jeromefitz/shared/notion/utils/index'
 
-import { Box, Heading, Link, Text } from '@radix-ui/themes'
+import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
+import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
+import { Link } from '@radix-ui/themes/dist/esm/components/link.js'
+import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import _size from 'lodash/size.js'
 import { Suspense } from 'react'
 

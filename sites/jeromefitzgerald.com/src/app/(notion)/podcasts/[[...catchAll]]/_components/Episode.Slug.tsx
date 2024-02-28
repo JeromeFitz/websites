@@ -6,7 +6,12 @@ import { EmbedSpotify } from '@jeromefitz/shared/components/Notion/Blocks/Embed.
 import { getDataFromCache } from '@jeromefitz/shared/notion/utils/index'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
-import { Box, Flex, Grid as GridRadix, Link, Strong, Text } from '@radix-ui/themes'
+import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
+import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
+import { Grid as GridRadix } from '@radix-ui/themes/dist/esm/components/grid.js'
+import { Link } from '@radix-ui/themes/dist/esm/components/link.js'
+import { Strong } from '@radix-ui/themes/dist/esm/components/strong.js'
+import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import { draftMode } from 'next/headers.js'
 import { notFound } from 'next/navigation.js'
 

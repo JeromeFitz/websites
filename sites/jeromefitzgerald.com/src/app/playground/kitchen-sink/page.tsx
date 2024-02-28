@@ -5,7 +5,8 @@ import {
 } from '@jeromefitz/shared/notion/utils/index'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
-import { Badge, Text } from '@radix-ui/themes'
+import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
+import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import { draftMode } from 'next/headers.js'
 // import { notFound } from 'next/navigation.js'
 
