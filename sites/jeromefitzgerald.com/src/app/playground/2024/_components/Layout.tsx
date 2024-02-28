@@ -1,7 +1,12 @@
 'use client'
 // import { cx } from '@jeromefitz/ds/utils/cx'
 
-import { Badge, Box, Button, Heading, Skeleton, Text } from '@radix-ui/themes'
+import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
+import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
+import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
+import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
+import { Skeleton } from '@radix-ui/themes/dist/esm/components/skeleton.js'
+import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import React, { forwardRef } from 'react'
 
 import { Grid } from '@/components/Grid/index'
@@ -28,6 +33,7 @@ const Layout = forwardRef(function Layout(props, forwardedRef) {
   return (
     <>
       <Grid ref={forwardedRef}>
+        {/* <Grid> */}
         <HeadlineColumnA>
           <HeadlineTitle aria-label={title} as="h1">
             <>

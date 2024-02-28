@@ -6,7 +6,7 @@ import { isObjectEmpty } from '@jeromefitz/utils'
 
 import type { Metadata } from 'next'
 
-import { Text } from '@radix-ui/themes'
+import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import { draftMode } from 'next/headers.js'
 
 import { CONFIG, getPageData } from '@/app/(notion)/_config/index'

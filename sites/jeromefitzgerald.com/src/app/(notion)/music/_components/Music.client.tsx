@@ -8,20 +8,16 @@ import { fetcher } from '@jeromefitz/shared/lib'
 
 import { useScrollIntoView } from '@mantine/hooks'
 import { ArrowUpIcon } from '@radix-ui/react-icons'
-import {
-  Badge,
-  Box,
-  Button,
-  Card,
-  Code,
-  // Em,
-  Flex,
-  Inset,
-  Link,
-  Select,
-  // Strong,
-  Text,
-} from '@radix-ui/themes'
+import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
+import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
+import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
+import { Card } from '@radix-ui/themes/dist/esm/components/card.js'
+import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
+import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
+import { Inset } from '@radix-ui/themes/dist/esm/components/inset.js'
+import { Link } from '@radix-ui/themes/dist/esm/components/link.js'
+import * as Select from '@radix-ui/themes/dist/esm/components/select.parts.js'
+import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import Image from 'next/image'
 // eslint-disable-next-line no-restricted-imports
 import NextLink from 'next/link'

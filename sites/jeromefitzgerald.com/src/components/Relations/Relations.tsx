@@ -1,15 +1,7 @@
 import { cx } from '@jeromefitz/ds/utils/cx'
 
-import {
-  // Badge,
-  Box,
-  // Code,
-  // Flex,
-  // Link,
-  // Separator,
-  // Strong,
-  Text,
-} from '@radix-ui/themes'
+import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
+import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import _size from 'lodash/size.js'
 import pluralize from 'pluralize'
 // import { Suspense } from 'react'

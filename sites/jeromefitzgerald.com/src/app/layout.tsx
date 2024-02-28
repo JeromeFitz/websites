@@ -2,7 +2,7 @@ import { cx } from '@jeromefitz/ds/utils/cx'
 import { Analytics } from '@jeromefitz/shared/components/Analytics/Analytics'
 import '@jeromefitz/tailwind-config/styles/globals.css'
 
-import { Theme } from '@radix-ui/themes'
+import { Theme } from '@radix-ui/themes/dist/esm/components/theme.js'
 import { GeistMono as fontGeistMono } from 'geist/font/mono'
 import { GeistSans as fontGeistSans } from 'geist/font/sans'
 import { Viewport } from 'next'

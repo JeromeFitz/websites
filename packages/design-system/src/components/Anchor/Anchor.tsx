@@ -1,4 +1,4 @@
-import { Flex } from '@radix-ui/themes'
+import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 // eslint-disable-next-line no-restricted-imports
 import NextLink, { type LinkProps } from 'next/link'
 import React, { type PropsWithChildren } from 'react'

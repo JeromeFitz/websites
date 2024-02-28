@@ -10,7 +10,7 @@ import { cx } from '@jeromefitz/ds/utils/cx'
 
 import * as Accordion from '@radix-ui/react-accordion'
 import * as Portal from '@radix-ui/react-portal'
-import { Button } from '@radix-ui/themes'
+import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
 // eslint-disable-next-line no-restricted-imports
 import NextLink from 'next/link'
 import { useTheme } from 'next-themes'

@@ -1,4 +1,5 @@
-import { Badge, Text } from '@radix-ui/themes'
+import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
+import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 
 import { FourOhFour } from '@/app/_errors/404'
 import { Grid } from '@/components/Grid/index'

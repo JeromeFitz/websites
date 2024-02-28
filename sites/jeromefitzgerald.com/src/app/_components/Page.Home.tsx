@@ -3,7 +3,11 @@ import { CameraIcon } from '@jeromefitz/ds/components/Icon/index'
 import { cx } from '@jeromefitz/ds/utils/cx'
 import { ImageClient as NextImage } from '@jeromefitz/shared/components/Notion/Blocks/Image.client'
 
-import { AspectRatio, Badge, Box, Code, Text } from '@radix-ui/themes'
+import { AspectRatio } from '@radix-ui/themes/dist/esm/components/aspect-ratio.js'
+import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
+import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
+import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
+import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import { forwardRef } from 'react'
 
 import { Grid } from '@/components/Grid/index'
@@ -45,6 +49,7 @@ const PageHome = forwardRef(function PageHome(props, forwardedRef) {
   const title = 'Jerome Fitzgerald'
   return (
     <Grid ref={forwardedRef}>
+      {/* <Grid> */}
       <HeadlineColumnA>
         <HeadlineTitle aria-label={title} as="h1">
           <>

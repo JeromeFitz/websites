@@ -1,6 +1,7 @@
 /**
  * @todo(types) next/image
  */
+// import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import NextImage from 'next/image'
@@ -32,15 +33,42 @@ function Image({ ...props }) {
     ...img,
   }
 
-  // console.dir(`imageProps`)
-  // console.dir(imageProps)
+  // // console.dir(`imageProps`)
+  // // console.dir(imageProps)
+
+  // const testProps = {
+  //   alt: imageProps.alt,
+  //   blurDataURL: imageProps.blurDataURL,
+  //   fetchPriority: imageProps.fetchPriority,
+  //   priority: imageProps.priority,
+  //   quality: imageProps.quality,
+  //   // sizes: imageProps.sizes,
+  //   src: imageProps.src,
+  // }
+
+  // // console.dir(`testProps`)
+  // // console.dir(testProps)
 
   return (
-    <NextImage
-      className="flex w-full justify-center rounded"
-      placeholder="blur"
-      {...imageProps}
-    />
+    <>
+      <NextImage
+        className="flex w-full justify-center rounded-[var(--radius-3)]"
+        placeholder="blur"
+        {...imageProps}
+      />
+      {/* <Box
+        height="100%"
+        maxWidth={{ initial: '100%', lg: '1024px', md: '768px', xl: '1280px' }}
+        position="relative"
+      >
+        <NextImage
+          className="rounded-[var(--radius-3)]"
+          fill={true}
+          placeholder="blur"
+          {...testProps}
+        />
+      </Box> */}
+    </>
   )
 }
 

@@ -1,7 +1,10 @@
 'use client'
 import type { ReactNode } from 'react'
 
-import { Heading, Link, Separator, Text } from '@radix-ui/themes'
+import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
+import { Link } from '@radix-ui/themes/dist/esm/components/link.js'
+import { Separator } from '@radix-ui/themes/dist/esm/components/separator.js'
+import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import { Component } from 'react'
 
 import { Grid } from '@/components/Grid/index'
