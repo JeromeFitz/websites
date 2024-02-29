@@ -33,8 +33,8 @@ function Image({ ...props }) {
     ...img,
   }
 
-  // // console.dir(`imageProps`)
-  // // console.dir(imageProps)
+  // console.dir(`imageProps`)
+  // console.dir(imageProps)
 
   // const testProps = {
   //   alt: imageProps.alt,
@@ -52,7 +52,7 @@ function Image({ ...props }) {
   return (
     <>
       <NextImage
-        className="flex w-full justify-center rounded-[var(--radius-3)]"
+        className="h-auto w-full rounded-[var(--radius-3)]"
         placeholder="blur"
         {...imageProps}
       />
