@@ -52,7 +52,7 @@ function Image({ ...props }) {
   return (
     <>
       <NextImage
-        className="h-auto w-full rounded-[var(--radius-3)]"
+        className="rounded-3 h-auto w-full"
         placeholder="blur"
         {...imageProps}
       />
@@ -62,7 +62,7 @@ function Image({ ...props }) {
         position="relative"
       >
         <NextImage
-          className="rounded-[var(--radius-3)]"
+          className="rounded-3"
           fill={true}
           placeholder="blur"
           {...testProps}

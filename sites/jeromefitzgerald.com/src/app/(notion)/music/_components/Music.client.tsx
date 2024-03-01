@@ -192,7 +192,7 @@ function DataItemLoader({ error, handleScroll, isLoadingMore }) {
                   Go to Beginning
                   {` `}
                   <ArrowUpIcon
-                    className={cx('-rotate-90 text-[var(--accent-11)] !opacity-100')}
+                    className={cx('text-accent-11 -rotate-90 !opacity-100')}
                   />
                 </>
               </Button>
@@ -383,9 +383,7 @@ function DataItem({ item, type }) {
                 <NextLink href={_href}>
                   Open Spotify
                   {` `}
-                  <ArrowTopRightIcon
-                    className={cx('text-[var(--accent-11)] !opacity-100')}
-                  />
+                  <ArrowTopRightIcon className={cx('text-accent-11 !opacity-100')} />
                 </NextLink>
               </Button>
             </Box>
@@ -480,7 +478,7 @@ function MusicClient({}) {
           <HeadlineTitleSub>
             <Badge
               aria-label="data from Spotify"
-              className={cx('!bg-[var(--mauve-a3)] !text-black  dark:!text-white')}
+              className={cx('!bg-grayA-3 !text-black  dark:!text-white')}
               size="2"
             >
               <Code variant="ghost">
@@ -553,12 +551,14 @@ function MusicClient({}) {
       <Grid>
         <div
           className={cx(
-            'col-span-full h-fit  md:col-span-3',
-            'sticky top-[calc(var(--header-height)_-_5px)] md:top-28',
-            'bg-white dark:bg-black',
-            'border-b-1 border-[var(--mauve-a3)]',
-            'drop-shadow-sm dark:shadow-white/5  dark:drop-shadow-lg',
-            'md:border-none md:drop-shadow-none',
+            'col-span-full h-fit md:col-span-3',
+            'sticky top-[calc(var(--header-height)_-_6px)] md:top-28',
+            // 'bg-white lg:bg-transparent dark:bg-black',
+            'bg-whiteA-12 dark:bg-blackA-12 lg:bg-transparent',
+            'backdrop-blur-sm',
+            // 'border-b-1 border-grayA-3',
+            // 'drop-shadow-sm dark:shadow-white/5  dark:drop-shadow-lg',
+            // 'md:border-none md:drop-shadow-none',
             'z-40 lg:z-0',
           )}
         >

@@ -21,7 +21,7 @@ function SeparatorImpl({ className = '' }) {
         // 'min-h-[0.75rem]',
         'h-[1px] w-full',
         'min-h-[0.75rem]',
-        'text-[var(--gray-6)]',
+        'text-gray-6',
         className,
       )}
       decorative

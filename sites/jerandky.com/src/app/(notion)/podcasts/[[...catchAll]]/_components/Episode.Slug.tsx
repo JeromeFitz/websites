@@ -57,7 +57,7 @@ function Rollups({ properties }) {
   const style = cx(
     styleIndividual,
     isPublished && 'transition-all duration-200',
-    isPublished && 'text-[var(--gray-12)] hover:text-[var(--accent-11)]',
+    isPublished && 'hover:text-accent-11 text-gray-12',
   )
 
   const {
@@ -122,7 +122,7 @@ function Links({ properties }) {
   const style = cx(
     styleIndividual,
     isPublished && 'transition-all duration-200',
-    // isPublished && 'text-[var(--gray-12)] hover:text-[var(--accent-11)]'
+    // isPublished && 'text-gray-12 hover:text-accent-11'
   )
   return (
     <>

@@ -30,8 +30,9 @@ function BannerMobile({ data }) {
         '[--icon-size:16px]',
         'group transition-transform',
         'active:translate-y-[0.125rem]',
-        'bg-[var(--mauve-a2)] active:bg-[var(--mauve-a3)]',
-        'text-[var(--accent-12)] active:text-[var(--accent-a12)]',
+        'bg-grayA-2 active:bg-grayA-3',
+        'text-accent-12 active:text-accentA-12',
+        'rounded-3 shadow-3 cursor-pointer leading-7',
       )}
       data-radius="full"
       display={{
@@ -43,13 +44,6 @@ function BannerMobile({ data }) {
       my="2"
       px="2"
       py="0"
-      style={{
-        border: `1px solid var(--accent-7)`,
-        borderRadius: 'var(--radius-3)',
-        boxShadow: 'var(--shadow-3)',
-        cursor: 'pointer',
-        lineHeight: 'var(--line-height-7)',
-      }}
       width="100%"
     >
       <NextLink
@@ -132,7 +126,7 @@ function BannerDesktop({ data }) {
         className="truncate"
         display="inline-block"
         maxWidth="24rem"
-        minWidth="15rem"
+        minWidth="16rem"
         px="2"
         py="0"
         width="100%"

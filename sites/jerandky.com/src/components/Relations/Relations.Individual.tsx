@@ -36,7 +36,7 @@ const RelationIndividual = cache(async ({ id }) => {
   const style = cx(
     'inline-block text-base font-normal tracking-tight no-underline md:text-xl',
     isPublished && 'transition-all duration-200',
-    isPublished && 'text-[var(--gray-12)] hover:text-[var(--accent-11)]',
+    isPublished && 'hover:text-accent-11 text-gray-12',
     '',
     '',
   )

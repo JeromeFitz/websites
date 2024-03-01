@@ -61,6 +61,10 @@ const GridImpl = forwardRef(function GridImpl(
       // className={cx(`grid grid-cols-12 gap-2`, className)}
       className={cx(
         `[--grid-template-columns:repeat(12,_minmax(0,_1fr))]`,
+        'grid-cols-[var(--grid-template-columns)]',
+        'grid grid-flow-col grid-rows-none',
+        'items-stretch justify-start',
+        'w-full gap-2',
         className,
       )}
       mb="1"
@@ -70,17 +74,8 @@ const GridImpl = forwardRef(function GridImpl(
       // @ts-ignore
       ref={forwardedRef}
       style={{
-        alignItems: 'stretch',
         boxSizing: 'none',
-        display: 'grid',
-        gap: 'var(--space-2)',
-        gridAutoFlow: 'column',
-        // gridTemplateColumns: 'minmax(0, 1fr)',
-        gridTemplateColumns: 'var(--grid-template-columns)',
-        gridTemplateRows: 'none',
-        justifyContent: 'flex-start',
       }}
-      width="100%"
       {...props}
     >
       {children}

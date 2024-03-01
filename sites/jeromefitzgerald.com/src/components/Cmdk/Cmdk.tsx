@@ -323,7 +323,7 @@ function Cmdk() {
           'duration-250 fixed left-0 top-0 z-50 size-full transition-all',
           'pointer-events-none',
           isCmdkOpen && isCmdkInnerOpen
-            ? 'bg-[var(--white-a11)] dark:bg-[var(--black-a11)]'
+            ? 'bg-whiteA-11 dark:bg-blackA-11'
             : 'bg-transparent',
         )}
       />

@@ -28,8 +28,8 @@ const Loading: React.FC<{ isRouteChanging: boolean }> = ({ isRouteChanging }) =>
         'z-[9999] origin-[0_0]',
         'left-0 top-0 h-[1.25px] w-full',
         'bg-gradient-to-r',
-        'from-[var(--accent-1)] to-[var(--accent-11)]',
-        'dark:from-[var(--accent-11)] dark:to-[var(--accent-1)]',
+        'to-accent-11 from-accent-1',
+        'dark:from-accent-11 dark:to-accent-1',
         isFinished ? 'opacity-0' : 'opacity-100',
         '',
       )}

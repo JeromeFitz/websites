@@ -104,7 +104,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         className={cx(
           'overflow-y-auto overflow-x-hidden',
           // 'transition-all duration-200',
-          'selection:bg-[var(--gray-12)] selection:text-[var(--gray-1)]',
+          'selection:bg-gray-12 selection:text-gray-1',
           'bg-white dark:bg-black',
           'font-sans antialiased',
           fontSans.variable,
