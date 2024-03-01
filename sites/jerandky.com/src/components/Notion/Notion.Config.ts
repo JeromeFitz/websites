@@ -89,7 +89,7 @@ const blocks = {
   },
   quote: {
     className:
-      'border-l-[var(--accent-11)] bg-[var(--accent-a5)] m-4 rounded border-l-8 p-6 text-xl md:p-14 md:text-3xl',
+      'border-l-accent-11 bg-[var(--accent-a5)] m-4 rounded border-l-8 p-6 text-xl md:p-14 md:text-3xl',
   },
   ...custom,
 }

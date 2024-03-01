@@ -14,7 +14,7 @@ const custom = {
   caption: {
     className:
       // @note(radix-ui) bg3+text11 passes, not sure what is going on here
-      'font-mono mb-2 shadow-sm 2xl:max-w-7xl !bg-[var(--accent-a2)] dark:bg-[var(--accent-a3)]',
+      'font-mono mb-2 shadow-sm 2xl:max-w-7xl !bg-accentA-2 dark:bg-accentA-3',
   },
   // @note(next)  we are not using this, so no need to take the hit
   // embed: {
@@ -65,7 +65,7 @@ const blocks = {
   },
   callout: {
     className:
-      'border-l-[var(--mauve-11)] bg-[var(--mauve-a5)] m-4 rounded border-l-8 p-14 text-xl lg:text-3xl 2xl:max-w-7xl',
+      'border-l-gray-11 bg-grayA-5 m-4 rounded border-l-8 p-14 text-xl lg:text-3xl 2xl:max-w-7xl',
   },
   column: {
     className: 'my-3 flex flex-[1_1] flex-col lg:my-3 lg:pr-5 ',
@@ -101,7 +101,7 @@ const blocks = {
   },
   quote: {
     className:
-      'border-l-[var(--accent-11)] bg-[var(--accent-5)] m-4 rounded border-l-8 p-6 text-xl lg:p-14 lg:text-3xl font-sans 2xl:max-w-7xl',
+      'border-l-accent-11 bg-accent-5 m-4 rounded border-l-8 p-6 text-xl lg:p-14 lg:text-3xl font-sans 2xl:max-w-7xl',
   },
   ...custom,
 }

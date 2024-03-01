@@ -49,7 +49,7 @@ const AccordionNavigation = () => {
     <Accordion.Root
       className={cx(
         'mt-10 min-w-full max-w-full',
-        'w-[300px] rounded-[var(--radius-3)] bg-[var(--mauve-6)]',
+        'rounded-3 bg-gray-6 w-[300px]',
         'shadow-[0_2px_10px] shadow-black/5 dark:shadow-white/10',
         'border-1 border-black/5 dark:border-white/10',
       )}
@@ -127,7 +127,7 @@ function NavigationMobile() {
               'top-[calc(var(--header-height)_-_5px)]',
               // 'top-1',
               'fixed inset-x-0 bottom-0 size-full max-w-[100vw]',
-              // 'bg-[var(--mauve-a1)] backdrop-blur-sm',
+              // 'bg-grayA-1 backdrop-blur-sm',
               'bg-white dark:bg-black',
               'px-6 pb-6 pt-0',
               'visible z-50',
@@ -170,7 +170,7 @@ function NavigationMobile() {
           <div
             className={cx(
               'fixed left-0 top-0 z-[99999] flex flex-row items-end justify-start  py-4',
-              // 'bg-[var(--accent-4)]',
+              // 'bg-accent-4',
             )}
           >
             <Button

@@ -19,7 +19,7 @@ function Quote({ item }) {
     >
       <section>
         <Box
-          className="pointer-events-none indent-[calc(var(--space-3)_*_-1)]"
+          className="pointer-events-none -indent-3"
           position="relative"
           pr={{ initial: '0', lg: '9' }}
           width="100%"
@@ -58,7 +58,7 @@ function Quote({ item }) {
               >
                 <Image
                   alt={`Logo for ${item.where}`}
-                  className="h-auto w-[36px] rounded-[var(--radius-full)]"
+                  className="rounded-item h-auto w-[36px]"
                   height="36"
                   src={item.image}
                   width="36"

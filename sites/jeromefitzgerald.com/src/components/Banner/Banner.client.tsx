@@ -34,7 +34,7 @@ const dataReading: Data = {
     text: 'Reading…',
   },
   button: {
-    icon: <ArrowRightIcon className={cx('text-[var(--accent-11)]')} />,
+    icon: <ArrowRightIcon className={cx('text-accent-11')} />,
     text: 'Go to Books',
   },
   content: {

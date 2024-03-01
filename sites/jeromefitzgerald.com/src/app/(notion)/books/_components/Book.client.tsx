@@ -88,11 +88,7 @@ function Books({ data, refs }) {
                   return (
                     <Flex asChild direction="column" key={item.id} py="4">
                       <li>
-                        <Box
-                          className="indent-[calc(var(--space-3)_*_-1)]"
-                          ml="3"
-                          pl="3"
-                        >
+                        <Box className="-indent-3" ml="3" pl="3">
                           <Text size="6" weight="bold">
                             <Text as="span">“</Text>
                             <Text as="span">
@@ -102,21 +98,13 @@ function Books({ data, refs }) {
                             <Text as="span">”</Text>
                           </Text>
                         </Box>
-                        <Box
-                          className="indent-[calc(var(--space-2)_*_-1)]"
-                          ml="3"
-                          pl="2"
-                        >
+                        <Box className="-indent-2" ml="3" pl="2">
                           <Text size="5" weight="medium">
                             <Text as="span">–</Text>
                             <Text as="span">{item.author}</Text>
                           </Text>
                         </Box>
-                        <Box
-                          className="indent-[calc(var(--space-1)_*_1)]"
-                          ml="3"
-                          pl="2"
-                        >
+                        <Box className="indent-1" ml="3" pl="2">
                           <Text size="5" weight="regular">
                             <Code variant="ghost">
                               {format(item.dateReleasedIso, 'yyyy')}, p.{item.pages}
@@ -189,7 +177,7 @@ function BookPage({ books, title }) {
                   >
                     <>
                       <Badge
-                        className="transition-colors group-hover:cursor-pointer group-hover:bg-[var(--accent-a4)] group-hover:text-[var(--accent-12)]"
+                        className="group-hover:text-accent-12 group-hover:bg-accentA-4 transition-colors group-hover:cursor-pointer"
                         color={book.color}
                         highContrast={false}
                         size="2"

@@ -25,7 +25,7 @@ const Anchor = ({ children, className = '', href }) => {
     'inline-flex flex-row items-center gap-1',
     'underline-offset-4',
     'underline',
-    'text-[var(--accent-11)] hover:text-[var(--accent-12)]',
+    'text-accent-11 hover:text-accent-12',
     'transition-all duration-200 ease-in',
     className,
   )
@@ -105,7 +105,7 @@ const ScrollTo = ({ children, className = '', href }: ScrollLinkProps) => {
     'inline-flex flex-row items-center gap-1',
     'underline-offset-4',
     'underline',
-    'text-[var(--accent-11)] hover:text-[var(--accent-12)]',
+    'text-accent-11 hover:text-accent-12',
     'transition-all duration-200 ease-in',
     className,
   )

@@ -10,7 +10,7 @@ const AccordionItem = forwardRef(
   ({ children, className, ...props }, forwardedRef) => (
     <Accordion.Item
       className={cx(
-        'mt-px overflow-hidden first:mt-0 first:rounded-t last:rounded-b focus-within:relative focus-within:z-10 focus-within:shadow-[0_0_0_0.25px] focus-within:shadow-[var(--accent-12)]',
+        'focus-within:shadow-accent-12 mt-px overflow-hidden first:mt-0 first:rounded-t last:rounded-b focus-within:relative focus-within:z-10 focus-within:shadow-[0_0_0_0.25px]',
         className,
       )}
       {...props}

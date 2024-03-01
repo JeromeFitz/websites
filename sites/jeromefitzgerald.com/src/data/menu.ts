@@ -65,7 +65,7 @@ const menus: NavigationMenuItems[] = [
         id: 'upcoming-events',
         isActive: false,
         isActiveMobileOverride: false,
-        title: 'Upcoming Events',
+        title: 'Events',
         titleDescription: 'Jerome is cooking something up at the moment.',
       },
       {
@@ -78,7 +78,7 @@ const menus: NavigationMenuItems[] = [
         titleDescription: 'Including recent past events.',
       },
     ],
-    title: 'Upcoming Events',
+    title: 'Events',
   },
   {
     group: 'shows',

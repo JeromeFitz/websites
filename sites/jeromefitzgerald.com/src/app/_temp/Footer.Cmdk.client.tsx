@@ -35,7 +35,7 @@ function FooterCmdkClient() {
       <span className="gap-[0.25rem] lg:flex">
         <Kbd className="font-mono group-hover:cursor-pointer">{key} + K</Kbd>
       </span>
-      <p className="text-[var(--mauve-12)]">Command Menu</p>
+      <p className="text-gray-12">Command Menu</p>
     </Button>
     // </Tooltip>
   )

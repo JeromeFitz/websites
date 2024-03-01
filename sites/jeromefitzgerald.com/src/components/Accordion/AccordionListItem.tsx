@@ -24,12 +24,12 @@ function AccordionListItem({ children, href, icon, ...props }) {
       <li
         className={cx(
           'cursor-pointer no-underline',
-          'text-[var(--mauve-11)]',
+          'text-gray-11',
           'flex w-full select-none flex-row items-center justify-start',
           'transition-colors',
           'my-1 gap-2 py-1',
           'lg:my-1 lg:gap-3 lg:py-2',
-          'rounded hover:bg-[var(--mauve-4)] hover:text-[var(--mauve-12)]',
+          'hover:text-gray-12 hover:bg-gray-4 rounded',
         )}
       >
         <Icon
