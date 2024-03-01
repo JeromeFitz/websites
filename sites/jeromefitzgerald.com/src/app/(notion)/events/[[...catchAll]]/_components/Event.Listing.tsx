@@ -85,9 +85,8 @@ function Events({ data }) {
             2024
           </Text>
           .
-          <br />
-          Cooking something special up at the moment.
         </Text>
+        <Text size="4"> Cooking something special up at the moment.</Text>
         <Text size="4">
           I pop up on shows from time to time, they will be here if I can remember to
           put them up.

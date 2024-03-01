@@ -42,7 +42,7 @@ const NavigationMenuImpl = () => {
                   <NavigationMenu.Item
                     className={cx(
                       'cursor-pointer select-none transition-colors',
-                      'hocus:hover:text-[var(--accent-11)]',
+                      'hocus:hover:text-accent-11',
                       'first-of-type:relative first-of-type:-left-4',
                     )}
                     key={`nav--${menu.id}`}
@@ -53,7 +53,7 @@ const NavigationMenuImpl = () => {
                         <NavigationMenu.Trigger
                           className={cx(
                             'group flex items-center justify-center',
-                            'rounded-[var(--radius-full)] hover:bg-[var(--mauve-a2)]',
+                            'rounded-item hover:bg-grayA-2',
                             'px-3 py-2',
                             'transition-colors',
                           )}
@@ -71,7 +71,7 @@ const NavigationMenuImpl = () => {
                               <CaretDownIcon
                                 aria-hidden
                                 className={cx(
-                                  'duration-250 relative top-[1px] mr-1 text-[var(--accent-12)] transition-transform ease-in group-data-[state=open]:-rotate-180 group-data-[state=open]:text-[var(--accent-11)]',
+                                  'duration-250 group-data-[state=open]:text-accent-11 text-accent-12 relative top-[1px] mr-1 transition-transform ease-in group-data-[state=open]:-rotate-180',
                                 )}
                                 label={''}
                               />
@@ -115,7 +115,7 @@ const NavigationMenuImpl = () => {
                           className={cx(
                             'group flex',
                             // 'place-items-center items-center justify-center',
-                            'rounded-[var(--radius-full)] hover:bg-[var(--mauve-a2)]',
+                            'hover:bg-grayA-2 rounded-item',
                             'px-3 py-2',
                             'transition-colors',
                           )}
@@ -123,7 +123,7 @@ const NavigationMenuImpl = () => {
                           <NavigationMenu.Link>
                             {menu.isParentIconVisible ? (
                               <>
-                                <Icon className="hocus:hover:text-[var(--accent-11)]  mt-1 transition-colors" />
+                                <Icon className="hocus:hover:text-accent-11  mt-1 transition-colors" />
                                 <span className="hidden">{menu.title}</span>
                               </>
                             ) : (
@@ -139,7 +139,7 @@ const NavigationMenuImpl = () => {
 
               {/* @ts-ignore */}
               <NavigationMenu.Indicator className="data-[state=visible]:animate-fadeIn data-[state=hidden]:animate-fadeOut top-full z-[1] flex h-[10px] items-end justify-center overflow-hidden transition-[width,transform_250ms_ease]">
-                <div className="relative top-[70%] size-[10px] rotate-[45deg] rounded-tl-[2px] bg-[var(--accent-a6)] dark:bg-[var(--accent-a12)]" />
+                <div className="bg-accentA-6 dark:bg-accentA-12 relative top-[70%] size-[10px] rotate-[45deg] rounded-tl-[2px]" />
               </NavigationMenu.Indicator>
             </NavigationMenu.List>
 
@@ -148,9 +148,9 @@ const NavigationMenuImpl = () => {
                 // @ts-ignore
                 className={cx(
                   'absolute',
-                  'data-[state=open]:animate-scaleIn data-[state=closed]:animate-scaleOut   shadow-6 mt-[10px] h-[var(--radix-navigation-menu-viewport-height)] w-full origin-[top_center] overflow-hidden rounded-[var(--radius-1)] border-2 transition-[width,_height] duration-300 sm:w-[var(--radix-navigation-menu-viewport-width)]',
+                  'data-[state=open]:animate-scaleIn data-[state=closed]:animate-scaleOut   shadow-6 rounded-1 mt-[10px] h-[var(--radix-navigation-menu-viewport-height)] w-full origin-[top_center] overflow-hidden border-2 transition-[width,_height] duration-300 sm:w-[var(--radix-navigation-menu-viewport-width)]',
                   'bg-white dark:bg-black',
-                  'border-[var(--accent-a6)] dark:border-[var(--accent-a12)]',
+                  'border-accentA-6 dark:border-accentA-12',
                 )}
               />
             </div>
@@ -178,8 +178,8 @@ const ListItem = forwardRef(
           'group',
           'flex select-none flex-row items-center gap-3 p-3',
           'text-black dark:text-white',
-          'hover:bg-[var(--mauve-a4)]',
-          'rounded-[var(--radius-3)] px-3 py-2',
+          'hover:bg-grayA-4',
+          'rounded-3 px-3 py-2',
           className,
         )}
       >
@@ -198,13 +198,13 @@ const ListItem = forwardRef(
             className={cx(
               'flex flex-col items-start justify-start',
               'mt-0 h-full',
-              'group-hover:text-[var(--mauve-12)]',
+              'group-hover:text-gray-12',
             )}
           >
             <Text
               as="div"
               className={cx(
-                'mb-1 flex items-center gap-2 whitespace-nowrap text-[15px] font-medium text-[var(--mauve12)]',
+                'text-gray-12 mb-1 flex items-center gap-2 whitespace-nowrap text-[15px] font-medium',
               )}
             >
               {title}

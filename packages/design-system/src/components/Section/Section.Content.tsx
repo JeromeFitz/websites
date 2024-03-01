@@ -16,7 +16,7 @@ function SectionContent({ children, className = '' }) {
         // 'before:h-0',
         'before:relative before:top-0 before:w-full  before:content-normal',
         // 'before:left-2 before:right-2,
-        'before:bg-[var(--gray-6)]',
+        'before:bg-gray-6',
         '',
         className,
       )}

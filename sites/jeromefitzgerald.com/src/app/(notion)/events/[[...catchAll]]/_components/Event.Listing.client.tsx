@@ -26,14 +26,10 @@ function AccordionClient({ defaultValue, items }) {
     // @ts-ignore
     <Box
       asChild
+      className="border-accentA-12 shadow-3 bg-grayA-6 border-0 border-solid"
       maxWidth="100%"
       minWidth="100%"
       mt="4"
-      style={{
-        background: 'var(--mauve-a6)',
-        border: '1px solid var(--pink-A12)',
-        boxShadow: 'var(--shadow-3)',
-      }}
       width="300px"
     >
       {/* @ts-ignore */}
@@ -90,8 +86,7 @@ function AccordionClient({ defaultValue, items }) {
                 >
                   <Flex
                     align="center"
-                    className="text-left"
-                    grow="0"
+                    className="grow-0 text-left"
                     minWidth="0"
                     width={{ initial: '70%', lg: '66.666667%', md: '75%' }}
                   >
@@ -116,6 +111,7 @@ function AccordionClient({ defaultValue, items }) {
                     <Text
                       as="span"
                       className="invisible hidden lg:visible lg:inline"
+                      size="2"
                     >
                       {dayOfWeek}, {monthName} {dayOfMonthOrdinal}
                       <br />@ {time}

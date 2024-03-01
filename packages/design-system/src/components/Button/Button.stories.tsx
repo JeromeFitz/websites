@@ -44,8 +44,8 @@ export const Custom: Story = {
     ...Default.args,
     className: cx(
       'm-12 p-12',
-      'bg-[var(--gray-12)] text-[var(--gray-1)]',
-      'hocus:bg-[var(--gray-1)] hocus:text-[var(--gray-12)]',
+      'bg-gray-12 text-gray-1',
+      'hocus:bg-gray-1 hocus:text-gray-12',
     ),
     variant: 'empty',
   },

@@ -43,7 +43,7 @@ function FooterClient() {
         'top-0 z-10 mx-auto w-full ',
         'col-span-full',
         'bg-white dark:bg-black',
-        'border-t-1 border-[var(--mauve-a3)]',
+        'border-t-1 border-grayA-3',
         '',
         'lg:py-12',
       )}
@@ -87,7 +87,7 @@ function FooterClient() {
           )}
         >
           <li>
-            <span className="mb-2 pb-2 font-bold uppercase tracking-[var(--letter-spacing-1)] text-[var(--gray-11)]">
+            <span className="text-gray-11 tracking-1 mb-2 pb-2 font-bold uppercase">
               Social
             </span>
           </li>
@@ -109,8 +109,7 @@ function FooterClient() {
                   <a
                     className={cx(
                       'hover:cursor-pointer lg:flex',
-                      'text-[var(--slate12)] hover:text-[var(--slate12)]',
-                      'dark:text-[var(--slate1)] dark:hover:text-[var(--slate1)]',
+                      'text-gray-11 hover:text-gray-12',
                       'duration-250 transition-colors',
                       'place-content-start items-center justify-items-start lg:w-full',
                       social.className,
@@ -120,7 +119,7 @@ function FooterClient() {
                   >
                     {social.icon}
                     <p className="text-inherit">{social.title}</p>{' '}
-                    <ExternalLinkIcon className="text-[var(--mauve-12)]" />
+                    <ExternalLinkIcon className="text-gray-12" />
                   </a>
                 </Button>
               </li>
@@ -142,8 +141,8 @@ function FooterClient() {
                 className="gap-2 group-hover:cursor-pointer lg:flex"
                 href={'/colophon'}
               >
-                <ArchiveIcon className="text-[var(--mauve-12)]" />
-                <p className="font-mono text-[var(--mauve-12)]">
+                <ArchiveIcon className="text-gray-12" />
+                <p className="text-gray-12 font-mono">
                   v{isBranchMain ? version : `${version}-${prerelease}`}
                 </p>
               </NextLink>

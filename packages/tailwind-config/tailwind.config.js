@@ -49,7 +49,7 @@ const config = ({ useTailwind = true }) => ({
   ],
   theme: {
     // ...theme,
-    colors: {},
+    // colors: {},
     container: {
       center: true,
       padding: '1.5rem',

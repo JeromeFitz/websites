@@ -10,7 +10,7 @@ const AccordionContent = forwardRef(
   ({ children, className, ...props }, forwardedRef) => (
     <Accordion.Content
       className={cx(
-        'data-[state=open]:animate-slideDown data-[state=closed]:animate-slideUp overflow-hidden bg-[var(--mauve-2)] text-[15px] text-[var(--mauve-11)]',
+        'data-[state=open]:animate-slideDown data-[state=closed]:animate-slideUp bg-gray-2 text-gray-11 overflow-hidden text-[15px]',
         className,
       )}
       {...props}

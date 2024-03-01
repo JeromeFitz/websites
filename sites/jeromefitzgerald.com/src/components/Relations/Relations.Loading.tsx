@@ -11,7 +11,7 @@ function RelationLoading() {
   return (
     <>
       <Box
-        className="animate-pulse rounded-[var(--radius-3)]"
+        className="rounded-3 animate-pulse"
         display="inline-block"
         maxWidth="24rem"
         top="1"
@@ -19,7 +19,7 @@ function RelationLoading() {
       >
         <Box
           as="div"
-          className={`bg-[var(--mauve-9)] ${colWidth}`}
+          className={`bg-gray-9 ${colWidth}`}
           display="inline-block"
           height="100%"
         >

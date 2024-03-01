@@ -9,7 +9,7 @@ function SectionWrapper({ children }) {
           'md:flex-row md:pt-4',
           'before:h-0',
           'before:relative before:inset-x-2 before:top-0 before:w-full before:content-normal',
-          'before:bg-[var(--gray-8)]',
+          'before:bg-gray-8',
           '',
         )}
       >
