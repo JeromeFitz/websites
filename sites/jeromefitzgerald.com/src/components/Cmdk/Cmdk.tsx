@@ -21,8 +21,6 @@ import { Logo } from './Icons'
 
 import styles from './Cmdk.module.css'
 
-console.dir(styles)
-
 const SKIP = 'skip'
 
 function getIconViaParentChild(parent, child) {
@@ -325,15 +323,13 @@ function Cmdk() {
           'duration-250 fixed left-0 top-0 z-50 size-full transition-all',
           'pointer-events-none',
           isCmdkOpen && isCmdkInnerOpen
-            ? // ? 'bg-whiteA-11 dark:bg-blackA-11'
-              'bg-grayA-2 backdrop-blur-sm'
+            ? 'bg-grayA-2 backdrop-blur-sm'
             : 'bg-transparent',
         )}
       />
       <Command.Dialog
         className={cx(
           'data-[state=closed]:opacity-0',
-          // 'bg-white dark:bg-black',
           styles['cmdk-wrapper'],
           // styles['cmdk-dialog-in'],
           // styles['cmdk-dialog-out'],
@@ -503,7 +499,6 @@ function Cmdk() {
 
             <div
               className={cx(styles['cmdk-footer'], getDark(theme))}
-              // className={cx(styles['cmdk-footer'])}
               cmdk-footer=""
             >
               {/* <HamburgerMenuIcon /> */}
