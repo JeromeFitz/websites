@@ -114,8 +114,8 @@ function DataItemLoader({ error, handleScroll, isLoadingMore }) {
   }
   return (
     <>
-      <Card asChild className="h-fit w-full" size="1" variant="surface">
-        <li>
+      <li>
+        <Card className="h-fit w-full" size="1" variant="surface">
           <Flex
             direction={{ initial: 'column', md: 'row-reverse' }}
             gap={{ initial: '2', lg: '6' }}
@@ -198,8 +198,8 @@ function DataItemLoader({ error, handleScroll, isLoadingMore }) {
               </Button>
             </Box>
           </Flex>
-        </li>
-      </Card>
+        </Card>
+      </li>
     </>
   )
 }
@@ -243,8 +243,8 @@ function DataItem({ item, type }) {
 
   return (
     <>
-      <Card asChild className="h-fit w-full" size="1" variant="surface">
-        <li>
+      <li>
+        <Card className="h-fit w-full" size="1" variant="surface">
           <Flex
             direction={{ initial: 'column', md: 'row-reverse' }}
             gap={{ initial: '2', lg: '6' }}
@@ -388,8 +388,8 @@ function DataItem({ item, type }) {
               </Button>
             </Box>
           </Flex>
-        </li>
-      </Card>
+        </Card>
+      </li>
     </>
   )
 }
