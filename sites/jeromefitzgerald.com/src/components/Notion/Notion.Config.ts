@@ -26,7 +26,7 @@ const custom = {
   //         (mod) => mod.Embed,
   //       ),
   //     {
-  //       ssr: false,
+  //       ssr: true,
   //     },
   //   ),
   //   // component: Embed,
@@ -48,7 +48,7 @@ const custom = {
   //         (mod) => mod.Video,
   //       ),
   //     {
-  //       ssr: false,
+  //       ssr: true,
   //     },
   //   ),
   //   // component: Video,
