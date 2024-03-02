@@ -58,7 +58,7 @@ function Quote({ item }) {
               >
                 <Image
                   alt={`Logo for ${item.where}`}
-                  className="rounded-item h-auto w-[36px]"
+                  className="rounded-item !h-[36px] !w-[36px]"
                   height="36"
                   src={item.image}
                   width="36"
