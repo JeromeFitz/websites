@@ -32,7 +32,7 @@ const FooterCmdkClient = dynamic(
     const { FooterCmdkClient: Component } = await import('./Footer.Cmdk.client')
     return { default: Component }
   },
-  { ssr: false },
+  { ssr: true },
 )
 
 function FooterClient() {

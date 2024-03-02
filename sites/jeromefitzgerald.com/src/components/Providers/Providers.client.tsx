@@ -6,7 +6,7 @@ const Cmdk = dynamic(
     const { Cmdk: Component } = await import('@/components/Cmdk')
     return { default: Component }
   },
-  { ssr: false },
+  { ssr: true },
 )
 
 function Providers({ children }) {

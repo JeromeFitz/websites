@@ -7,7 +7,7 @@ const Footer = dynamic(
     const { Footer: Component } = await import('@/app/_temp/Footer')
     return { default: Component }
   },
-  { ssr: false },
+  { ssr: true },
 )
 
 function Layout({ children }) {
