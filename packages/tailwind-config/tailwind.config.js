@@ -121,11 +121,11 @@ const config = ({ useTailwind = true }) => ({
         // black: '#000000', // Black
         // white: '#ffffff', // White
 
-        // black: '#030303', // Gray 01
-        // white: '#fcfcfc', // Gray 99
+        black: '#030303', // Gray 01
+        white: '#fcfcfc', // Gray 99
 
-        black: '#050505', // Gray 02
-        white: '#fafafa', // Gray 98
+        // black: '#050505', // Gray 02
+        // white: '#fafafa', // Gray 98
 
         // black: '#0f0f0f', // Gray 06
         // white: '#f4f4f4', // Gray 94

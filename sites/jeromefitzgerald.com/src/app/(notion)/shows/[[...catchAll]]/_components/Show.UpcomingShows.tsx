@@ -12,7 +12,7 @@ import { Suspense } from 'react'
 import type { PageObjectResponseEvent } from '@/app/(notion)/_config/index'
 
 import { getEventData, getPropertyTypeDataShow } from '@/app/(notion)/_config/index'
-import { RelationLoading } from '@/components/Relations/index'
+// import { RelationLoading } from '@/components/Relations/index'
 
 async function UpcomingShowsIndividual({ id }) {
   const item: PageObjectResponseEvent = await getPageDataFromNotion(id)
@@ -78,7 +78,9 @@ function UpcomingShows({ properties }) {
               return (
                 <Box asChild my={{ initial: '2', lg: '1' }}>
                   <li className={cx('my-2 lg:my-0.5')} key={id}>
-                    <Suspense fallback={<RelationLoading />}>
+                    {/* @todo(notion) loading component will break, has been reworked */}
+                    {/* <Suspense fallback={<RelationLoading />}> */}
+                    <Suspense fallback={null}>
                       <UpcomingShowsIndividual id={id} />
                     </Suspense>
                   </li>

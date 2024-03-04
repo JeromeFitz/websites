@@ -87,7 +87,7 @@ function FooterClient() {
           )}
         >
           <li>
-            <span className="text-gray-11 tracking-1 mb-2 pb-2 font-bold uppercase">
+            <span className="text-gray-12 tracking-1 mb-2 pb-2 font-bold uppercase">
               Social
             </span>
           </li>
@@ -109,7 +109,7 @@ function FooterClient() {
                   <a
                     className={cx(
                       'hover:cursor-pointer lg:flex',
-                      'text-gray-11 hover:text-gray-12',
+                      'text-gray-12 hover:text-gray-12',
                       'duration-250 transition-colors',
                       'place-content-start items-center justify-items-start lg:w-full',
                       social.className,

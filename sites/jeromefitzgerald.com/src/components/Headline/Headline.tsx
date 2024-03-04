@@ -4,6 +4,8 @@ import type { HeadingProps } from '@radix-ui/themes/dist/esm/components/heading.
 import type { TextProps } from '@radix-ui/themes/dist/esm/components/text.js'
 import type { ReactNode } from 'react'
 
+import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
+import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 
@@ -14,7 +16,7 @@ type AdditionalProps = {
 type HeadlineColumnAProps = AdditionalProps & { separateTitle?: boolean }
 function HeadlineColumnA({ children, separateTitle = true }: HeadlineColumnAProps) {
   return (
-    <div
+    <Box
       className={cx(
         'col-span-full lg:col-span-3',
         'flex flex-col justify-start',
@@ -24,17 +26,17 @@ function HeadlineColumnA({ children, separateTitle = true }: HeadlineColumnAProp
         '',
       )}
     >
-      <div className={cx('h-[inherit]', 'lg:h-full lg:max-h-56 lg:min-h-44')}>
-        <div
-          className={cx(
-            'flex h-[inherit] flex-col gap-4 lg:gap-0',
-            separateTitle && 'justify-between',
-          )}
+      <Box className={cx('h-[inherit]', 'lg:h-full lg:max-h-56 lg:min-h-44')}>
+        <Flex
+          className={cx('h-[inherit]', separateTitle && 'justify-between')}
+          direction="column"
+          gap={{ initial: '4', lg: '0' }}
+          height="inherit"
         >
           {children}
-        </div>
-      </div>
-    </div>
+        </Flex>
+      </Box>
+    </Box>
   )
 }
 type HeadlineTitleProps = HeadingProps & AdditionalProps
@@ -78,16 +80,19 @@ function HeadlineTitleSub({ children, className }: HeadlineTitleSubProps) {
 type HeadlineContentProps = AdditionalProps
 function HeadlineContent({ children, className = '' }: HeadlineContentProps) {
   return (
-    <div
+    <Flex
       className={cx(
-        'flex flex-col gap-4',
+        // 'flex flex-col gap-4',
         'col-span-full lg:col-span-9',
-        'mt-4 lg:mt-0',
+        // 'mt-4 lg:mt-0',
         className,
       )}
+      direction="column"
+      gap="4"
+      mt={{ initial: '4', lg: '0' }}
     >
       {children}
-    </div>
+    </Flex>
   )
 }
 

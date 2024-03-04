@@ -5,8 +5,6 @@ function getRelationTitle(str) {
     .split(/(?=[A-Z])/)
     .join(' ')
 
-  // console.dir(`title: ${title}`)
-
   return title
 }
 
