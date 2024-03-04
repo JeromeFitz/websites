@@ -1,77 +1,59 @@
-import { cx } from '@jeromefitz/ds/utils/cx'
-
 import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
+import { Grid } from '@radix-ui/themes/dist/esm/components/grid.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
+import _map from 'lodash/map.js'
 import _size from 'lodash/size.js'
 import pluralize from 'pluralize'
-// import { Suspense } from 'react'
+import { Suspense } from 'react'
 
-import { getPropertyTypeDataEvent } from '@/app/(notion)/_config/index'
+import { RelationsItems, RelationsLoading, getRelationTitle } from './index'
 
-import {
-  // RelationIndividual,
-  RelationIndividuals,
-  getRelationTitle,
-  // RelationLoading,
-} from './index'
-
-/**
- * @todo(notion) hrm, how do we get data from two tables over?
- */
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function Relations({ properties, relations, relationsSecondary }) {
+function RelationsWrapper({ children }) {
   return (
-    <div
-      className={cx(
-        'grid w-full grid-cols-12 gap-x-4 gap-y-8',
-        // 'lg:[&>*:nth-child(2)]:col-start-9',
-        '',
-      )}
-    >
-      {relations.map((relation) => {
-        const id = getPropertyTypeDataEvent(properties, 'ID')
-        const items = getPropertyTypeDataEvent(properties, relation)
+    <Grid columns={{ initial: '2', lg: '3' }} gapX="3" gapY="6" width="100%">
+      {children}
+    </Grid>
+  )
+}
+function RelationsColumn({ children }) {
+  return <Box>{children}</Box>
+}
+function RelationsColumnTitle({ children }) {
+  return (
+    <Text className="text-gray-12 uppercase" weight="bold">
+      {children}
+    </Text>
+  )
+}
+function RelationsColumnList({ children }) {
+  return (
+    <Box asChild mt="1" py="2">
+      <ul className=" list-inside ">{children}</ul>
+    </Box>
+  )
+}
+
+function Relations({ id, relations }) {
+  return (
+    <RelationsWrapper>
+      {_map(relations, (items, relation) => {
         if (!items) return null
         const itemsCount = _size(items)
         if (itemsCount === 0) return null
         const title = pluralize(getRelationTitle(relation), itemsCount)
         return (
-          <div
-            className={cx(
-              'col-span-6',
-              'lg:col-span-4 ',
-              // 'first:col-span-12',
-              // 'lg:first:col-span-8',
-              '',
-            )}
-            key={`${id}-${relation}`}
-          >
-            <Text className="uppercase" color="gray" weight="bold">
-              <>{title}</>
-            </Text>
-            <Box asChild my="1" py="1" width="100%">
-              <ul className="list-inside">
-                {/* {Array(itemsCount)
-                .fill(0)
-                .map((_, i) => {
-                  const item = items[i]
-                  const { id } = item
-
-                  return (
-                    <li key={id} className={cx('mb-2 lg:mb-0.5')}>
-                      <Suspense fallback={<RelationLoading />}>
-                        <RelationIndividual id={id} />
-                      </Suspense>
-                    </li>
-                  )
-                })} */}
-                <RelationIndividuals items={items} />
-              </ul>
-            </Box>
-          </div>
+          <RelationsColumn key={`relations--${id}--${relation}`}>
+            <RelationsColumnTitle>{title}</RelationsColumnTitle>
+            <RelationsColumnList>
+              <Suspense fallback={<RelationsLoading size={itemsCount} />}>
+                <RelationsItems items={items} />
+                {/* <RelationsLoading size={itemsCount} /> */}
+              </Suspense>
+            </RelationsColumnList>
+          </RelationsColumn>
         )
       })}
-    </div>
+    </RelationsWrapper>
   )
 }
 

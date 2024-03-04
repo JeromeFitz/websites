@@ -68,7 +68,15 @@ export async function POST(request: NextRequest) {
   const signature = request.headers.get('x-revalidate-signature-256')
 
   if (token === signature) {
-    revalidatePath(path)
+    /**
+     * @note(next)
+     *
+     * ref: https://nextjs.org/docs/app/api-reference/functions/revalidatePath
+     *
+     * If path contains a dynamic segment, this parameter is required.
+     *
+     */
+    revalidatePath(path, 'page')
     const segmentInfo = getSegmentInfo({ SEGMENT: segment, ...props })
 
     let database_id

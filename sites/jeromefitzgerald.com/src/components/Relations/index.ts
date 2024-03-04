@@ -1,4 +1,5 @@
 export { Relations } from './Relations'
-export { RelationIndividual, RelationIndividuals } from './Relations.Individual'
-export { RelationLoading } from './Relations.Loading'
+export { RelationsItem } from './Relations.Item'
+export { RelationsItems } from './Relations.Items'
+export { RelationsLoading } from './Relations.Loading'
 export { getRelationTitle } from './Relations.utils'
