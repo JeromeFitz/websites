@@ -1,33 +1,39 @@
-import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
+import { Skeleton } from '@radix-ui/themes/dist/esm/components/skeleton.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 
-/**
- * @todo(radix) replace with Skeleton
- */
-function RelationLoading() {
-  // So ... (10 - 5 + 1) you mean .. 6? 🤣
-  const random = Math.floor(Math.random() * (10 - 5 + 1)) + 5
-  const colWidth = random === 12 ? 'w-full' : `w-${random}/12`
+// function createRandomString(length) {
+//   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+//   let result = ''
+//   for (let i = 0; i < length; i++) {
+//     result += chars.charAt(Math.floor(Math.random() * chars.length))
+//   }
+//   return result
+// }
+
+function Loading() {
+  // const random = createRandomString(Math.floor(Math.random() * 16) + 11)
+  const random = 'ABCDEFGHIJKLMNOP'
+  return (
+    <Skeleton loading={true}>
+      <Text as="span">{random}</Text>
+    </Skeleton>
+  )
+}
+
+function RelationsLoading({ size }) {
   return (
     <>
-      <Box
-        className="rounded-3 animate-pulse"
-        display="inline-block"
-        maxWidth="24rem"
-        top="1"
-        width="100%"
-      >
-        <Box
-          as="div"
-          className={`bg-gray-9 ${colWidth}`}
-          display="inline-block"
-          height="100%"
-        >
-          <Text as="span">&nbsp;</Text>
-        </Box>
-      </Box>
+      {Array(size)
+        .fill(0)
+        .map((_, i) => {
+          return (
+            <li key={`rl-${i}`}>
+              <Loading />
+            </li>
+          )
+        })}
     </>
   )
 }
 
-export { RelationLoading }
+export { RelationsLoading }

@@ -4,27 +4,89 @@
  * This needs to be moved elsewhere
  *
  */
-import _title from 'title'
+import https from 'node:https'
 
+import { isObjectEmpty } from '@jeromefitz/utils'
+
+import { Redis } from '@upstash/redis'
+import { slug as _slug } from 'github-slugger'
+import _title from 'title'
+import validUrl from 'valid-url'
+
+const redis = Redis.fromEnv({
+  agent: new https.Agent({ keepAlive: true }),
+  retry: {
+    backoff: (retryCount) => Math.exp(retryCount) * 50,
+    retries: 5,
+  },
+})
+
+const CACHE_KEY_PREFIX__IMAGE = `${process.env.NEXT_PUBLIC__SITE}/image`
+
+// @todo(complexity) 17
+// eslint-disable-next-line complexity
 async function generateMetadataCustom({ data, pageData, segmentInfo }) {
   const hasImage = !!pageData?.seoImage
-  let images: any = undefined
+  const images: any = undefined
   if (hasImage) {
-    const { getImage } = await import('@jeromefitz/shared/plaiceholder/index')
-    const imageUrl = pageData?.seoImage[pageData?.seoImage?.type]?.url
-    // console.dir(`imageUrl:`)
-    // console.dir(imageUrl)
-    const imageData = await getImage(imageUrl)
-    // console.dir(`imageData:`)
-    // console.dir(imageData)
-    images = [
-      {
+    /**
+     * @todo(notion) check against cache first
+     */
+    const imageUrl = !!pageData?.seoImage
+      ? pageData?.seoImage[pageData?.seoImage?.type]?.url
+      : undefined
+
+    let key = '',
+      slugImage = ''
+
+    if (imageUrl) {
+      if (validUrl.isHttpsUri(imageUrl)) {
+        slugImage = _slug(imageUrl.includes('?') ? imageUrl.split('?')[0] : imageUrl)
+        key = `${CACHE_KEY_PREFIX__IMAGE}/${slugImage}`.toLowerCase()
+      }
+    }
+
+    const cache: any = await redis.get(key)
+    const isCached = !!cache && !isObjectEmpty(cache)
+    const images = !!cache ? cache : []
+
+    if (!isCached && !!imageUrl) {
+      // console.dir(`[generateMetadataCustom] !isCached && !!imageUrl`)
+      const { getImage } = await import('@jeromefitz/shared/plaiceholder/index')
+      const imageData = await getImage(imageUrl)
+      // image.blurDataURL = imageData?.base64
+      // image = {
+      //   alt: imageSeoDescription,
+      //   ...image,
+      //   ...imageData?.img,
+      // }
+      images.push({
         alt: pageData?.seoImageDescription,
         height: imageData?.img?.height,
         url: imageData?.img?.src,
         width: imageData?.img?.width,
-      },
-    ]
+      })
+    } else {
+      // console.dir(`[generateMetadataCustom] isCached`)
+    }
+    /**
+     * @todo(notion) setCache
+     */
+
+    // const { getImage } = await import('@jeromefitz/shared/plaiceholder/index')
+    // // console.dir(`imageUrl:`)
+    // // console.dir(imageUrl)
+    // const imageData = await getImage(imageUrl)
+    // // console.dir(`imageData:`)
+    // // console.dir(imageData)
+    // images = [
+    //   {
+    //     alt: pageData?.seoImageDescription,
+    //     height: imageData?.img?.height,
+    //     url: imageData?.img?.src,
+    //     width: imageData?.img?.width,
+    //   },
+    // ]
   }
 
   let titleSeo = ''

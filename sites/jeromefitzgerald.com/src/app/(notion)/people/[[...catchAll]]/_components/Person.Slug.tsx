@@ -6,7 +6,11 @@ import { notFound } from 'next/navigation.js'
 
 import type { PropertiesPerson } from '@/app/(notion)/_config/index'
 
-import { CONFIG, getPersonData } from '@/app/(notion)/_config/index'
+import {
+  CONFIG,
+  getPersonData,
+  getPropertyTypeDataPerson,
+} from '@/app/(notion)/_config/index'
 import { Grid } from '@/components/Grid/index'
 import {
   HeadlineColumnA,
@@ -39,9 +43,18 @@ async function Slug({ revalidate, segmentInfo }) {
   if (is404) return notFound()
 
   const { properties }: { properties: PropertiesPerson } = data?.page
-  const { isPublished, title } = getPersonData(properties)
+  const { id, isPublished, title } = getPersonData(properties)
 
   if (!isPublished) return notFound()
+
+  const R: any = {}
+  RELATIONS.map((relation: RELATIONS_TYPE) => {
+    R[relation] = []
+    const items = getPropertyTypeDataPerson(properties, relation)
+    items.map((item) => {
+      R[relation].push(item.id)
+    })
+  })
 
   return (
     <>
@@ -62,11 +75,7 @@ async function Slug({ revalidate, segmentInfo }) {
           </HeadlineTitle>
         </HeadlineColumnA>
         <HeadlineContent className="">
-          <Relations
-            properties={properties}
-            relations={RELATIONS}
-            relationsSecondary={[]}
-          />
+          <Relations id={id} relations={R} />
         </HeadlineContent>
       </Grid>
       <Grid>

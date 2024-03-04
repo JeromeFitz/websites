@@ -10,7 +10,11 @@ import { notFound } from 'next/navigation.js'
 
 import type { PropertiesPodcast } from '@/app/(notion)/_config/index'
 
-import { CONFIG, getPodcastData } from '@/app/(notion)/_config/index'
+import {
+  CONFIG,
+  getPodcastData,
+  getPropertyTypeDataPodcast,
+} from '@/app/(notion)/_config/index'
 import { Grid } from '@/components/Grid/index'
 import {
   HeadlineColumnA,
@@ -47,9 +51,18 @@ async function Slug({ revalidate, segmentInfo }) {
   if (is404) return notFound()
 
   const { properties }: { properties: PropertiesPodcast } = data?.page
-  const { isPublished, tags, title } = getPodcastData(properties)
+  const { id, isPublished, tags, title } = getPodcastData(properties)
 
   if (!isPublished) return notFound()
+
+  const R: any = {}
+  RELATIONS.map((relation: RELATIONS_TYPE) => {
+    R[relation] = []
+    const items = getPropertyTypeDataPodcast(properties, relation)
+    items.map((item) => {
+      R[relation].push(item.id)
+    })
+  })
 
   return (
     <>
@@ -90,11 +103,7 @@ async function Slug({ revalidate, segmentInfo }) {
         </HeadlineColumnA>
         <HeadlineContent className="">
           <Separator className="mb-4 opacity-50" />
-          <Relations
-            properties={properties}
-            relations={RELATIONS}
-            relationsSecondary={[]}
-          />
+          <Relations id={id} relations={R} />
         </HeadlineContent>
       </Grid>
     </>

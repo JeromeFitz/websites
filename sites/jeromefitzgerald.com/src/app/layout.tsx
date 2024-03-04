@@ -8,7 +8,7 @@ import { GeistSans as fontGeistSans } from 'geist/font/sans'
 import { Viewport } from 'next'
 // import localFont from 'next/font/local'
 
-import { BannerClient } from '@/components/Banner/Banner.client'
+import { Banner } from '@/components/Banner/Banner'
 import { Navigation } from '@/components/Navigation/index'
 import { Providers } from '@/components/Providers/index'
 import { Wrapper } from '@/components/Wrapper/index'
@@ -118,7 +118,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Navigation />
             </Wrapper>
             <Wrapper className="">
-              <BannerClient />
+              <Banner />
             </Wrapper>
             {children}
           </Providers>

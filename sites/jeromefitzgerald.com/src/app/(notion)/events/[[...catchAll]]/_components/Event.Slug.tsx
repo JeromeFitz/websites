@@ -21,7 +21,11 @@ import { notFound } from 'next/navigation.js'
 // import { Image } from '@/app/(notion)/(utils)/blocks/Image'
 import type { PropertiesEvent } from '@/app/(notion)/_config/index'
 
-import { CONFIG, getEventData } from '@/app/(notion)/_config/index'
+import {
+  CONFIG,
+  getEventData,
+  getPropertyTypeDataEvent,
+} from '@/app/(notion)/_config/index'
 import { Grid } from '@/components/Grid/index'
 import {
   HeadlineColumnA,
@@ -73,7 +77,8 @@ const RELATIONS_SECONDARY = [
       'Relation.People.Thanks',
       'Relation.People.Writer',
     ],
-    to: 'people',
+    // to: 'people',
+    to: 'shows',
   },
 ]
 
@@ -174,11 +179,51 @@ async function Slug({ revalidate, segmentInfo }) {
   if (is404) return notFound()
 
   const { properties }: { properties: PropertiesEvent } = data?.page
-  const { isPublished, tags, title } = getEventData(properties)
+  const { id, isPublished, tags, title } = getEventData(properties)
 
   // console.dir(`isPublished:      ${isPublished ? 'y' : 'n'}`)
 
   if (!isPublished) return notFound()
+
+  const R: any = {}
+  RELATIONS.map((relation: RELATIONS_TYPE) => {
+    R[relation] = []
+    const items = getPropertyTypeDataEvent(properties, relation)
+    items.map((item) => {
+      R[relation].push(item.id)
+    })
+  })
+
+  const showPrimarySlug = getPropertyTypeDataEvent(
+    properties,
+    'Rollup.Shows.Primary.Slug',
+  )[0]
+  // console.dir(`showPrimarySlug: ${showPrimarySlug}`)
+  const showPrimaryData = await getDataFromCache({
+    database_id: DATABASE_ID,
+    draft: false,
+    filterType: 'equals',
+    revalidate: false,
+    segmentInfo: {
+      catchAll: ['shows', showPrimarySlug],
+      hasMeta: true,
+      isIndex: false,
+      segment: 'shows',
+      segmentCount: 2,
+      slug: `/shows/${showPrimarySlug}`,
+    },
+  })
+  if (!!showPrimaryData?.page) {
+    const { properties: showPrimaryProperties }: { properties: any } =
+      showPrimaryData?.page
+    RELATIONS_SECONDARY[0]?.relations?.map((relation: RELATIONS_TYPE) => {
+      R[relation] = []
+      const items = getPropertyTypeDataEvent(showPrimaryProperties, relation)
+      items.map((item) => {
+        R[relation].push(item.id)
+      })
+    })
+  }
 
   return (
     <>
@@ -217,11 +262,7 @@ async function Slug({ revalidate, segmentInfo }) {
         </HeadlineColumnA>
         <HeadlineContent className="">
           <Separator className="mb-4 opacity-50" />
-          <Relations
-            properties={properties}
-            relations={RELATIONS}
-            relationsSecondary={RELATIONS_SECONDARY}
-          />
+          <Relations id={id} key={`relations--${id}--wrapper`} relations={R} />
         </HeadlineContent>
       </Grid>
     </>

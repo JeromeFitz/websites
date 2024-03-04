@@ -17,7 +17,11 @@ import { notFound } from 'next/navigation.js'
 
 import type { PropertiesEpisode } from '@/app/(notion)/_config/index'
 
-import { CONFIG, getEpisodeData } from '@/app/(notion)/_config/index'
+import {
+  CONFIG,
+  getEpisodeData,
+  getPropertyTypeDataEpisode,
+} from '@/app/(notion)/_config/index'
 import { Image } from '@/app/(notion)/events/[[...catchAll]]/_components/Image'
 import { Grid } from '@/components/Grid/index'
 import {
@@ -32,6 +36,7 @@ const { DATABASE_ID } = CONFIG.EPISODES
 
 type RELATIONS_TYPE = keyof PropertiesEpisode
 const RELATIONS: RELATIONS_TYPE[] = [
+  'Relation.Podcasts',
   'Relation.People.Guest',
   'Relation.People.SoundEngineer',
   // 'Relation.People.Thanks',
@@ -171,9 +176,53 @@ async function EpisodeSlug({ revalidate, segmentInfo }) {
   if (is404) return notFound()
 
   const { properties }: { properties: PropertiesEpisode } = data?.page
-  const { isPublished, title } = getEpisodeData(properties)
+  const { href, id, isPublished, title } = getEpisodeData(properties)
+  // console.dir(props)
+  // console.dir(properties)
 
   if (!isPublished) return notFound()
+
+  const R: any = {}
+  RELATIONS.map((relation: RELATIONS_TYPE) => {
+    R[relation] = []
+    const items = getPropertyTypeDataEpisode(properties, relation)
+    items.map((item) => {
+      R[relation].push(item.id)
+    })
+  })
+
+  /**
+   * @note(notion) this rollup does not work?!
+   */
+  // const podcastSlug = getPropertyTypeDataEpisode(properties, 'Rollup.Podcasts.Slug')
+  const podcastSlug = href.split('/')[2]
+  // console.dir(`href:        ${href}`)
+  // console.dir(`podcastSlug: ${podcastSlug}`)
+  const podcastPrimaryData = await getDataFromCache({
+    database_id: DATABASE_ID,
+    draft: false,
+    filterType: 'equals',
+    revalidate: false,
+    segmentInfo: {
+      catchAll: ['podcasts', podcastSlug],
+      hasMeta: true,
+      isIndex: false,
+      segment: 'podcasts',
+      segmentCount: 2,
+      slug: `/podcasts/${podcastSlug}`,
+    },
+  })
+  if (!!podcastPrimaryData) {
+    const { properties: podcastPrimaryProperties }: { properties: any } =
+      podcastPrimaryData?.page
+    RELATIONS_SECONDARY[0]?.relations?.map((relation: RELATIONS_TYPE) => {
+      R[relation] = []
+      const items = getPropertyTypeDataEpisode(podcastPrimaryProperties, relation)
+      items.map((item) => {
+        R[relation].push(item.id)
+      })
+    })
+  }
 
   return (
     <>
@@ -199,11 +248,7 @@ async function EpisodeSlug({ revalidate, segmentInfo }) {
         <HeadlineContent className="">
           <Separator className="mb-4 opacity-50" />
           <Rollups properties={properties} />
-          <Relations
-            properties={properties}
-            relations={RELATIONS}
-            relationsSecondary={RELATIONS_SECONDARY}
-          />
+          <Relations id={id} relations={R} />
         </HeadlineContent>
       </Grid>
     </>
