@@ -134,12 +134,14 @@ function AccordionClient({ defaultValue, items }) {
                         // 'items-center align-middle',
                         'mr-1 w-full justify-end text-right md:w-6/12 lg:mr-4',
                         'flex flex-col',
+                        'gap-2',
                       )}
                     >
                       <Button
                         aria-label={`Read more detailed information for ${title}`}
                         asChild
                         className={cx('justify-center')}
+                        variant="solid"
                       >
                         <NextLink href={href}>Detailed Info</NextLink>
                       </Button>
@@ -149,6 +151,7 @@ function AccordionClient({ defaultValue, items }) {
                           className={cx(
                             'flex-row items-center justify-center gap-1',
                           )}
+                          variant="surface"
                         >
                           <NextLink href={ticketUrl}>
                             <>Buy Tickets</>
