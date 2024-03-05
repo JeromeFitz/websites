@@ -127,7 +127,7 @@
     "@radix-ui/themes": "3.0.0-rc.13-patch.1",
     "@types/lodash": "4.14.202",
     "@types/react": "18.2.63",
-    "@types/react-dom": "18.2.19",
+    "@types/react-dom": "18.2.20",
     "@upstash/ratelimit": "1.0.1",
     "@upstash/redis": "1.28.4",
     "@vercel/analytics": "1.2.2",
