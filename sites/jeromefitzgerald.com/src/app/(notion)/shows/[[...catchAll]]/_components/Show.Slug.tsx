@@ -84,7 +84,7 @@ async function Slug({ revalidate, segmentInfo }) {
           </HeadlineTitle>
           <HeadlineTitleSub>
             {tags.map(({ color, id, name }) => (
-              <Badge color={color} key={id} size="2">
+              <Badge className="lowercase" color={color} key={id} size="2">
                 <Code variant="ghost">{name}</Code>
               </Badge>
             ))}

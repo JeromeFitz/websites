@@ -1,5 +1,4 @@
 import { Callout } from '@jeromefitz/ds/components/Callout/index'
-import { Separator } from '@jeromefitz/ds/components/Separator/index'
 import {
   getDataFromCache,
   getDatabaseQuery,
@@ -211,7 +210,6 @@ async function Listing({ revalidate, segmentInfo }) {
           </HeadlineTitle>
         </HeadlineColumnA>
         <HeadlineContent className="">
-          <Separator className="mb-4 opacity-50" />
           {hasData && <EventsPast data={eventsData} />}
         </HeadlineContent>
       </Grid>

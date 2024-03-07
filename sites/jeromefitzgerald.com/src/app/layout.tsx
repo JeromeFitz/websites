@@ -1,6 +1,5 @@
 import { cx } from '@jeromefitz/ds/utils/cx'
 import { Analytics } from '@jeromefitz/shared/components/Analytics/Analytics'
-import '@jeromefitz/tailwind-config/styles/globals.css'
 
 import { Theme } from '@radix-ui/themes/dist/esm/components/theme.js'
 import { GeistMono as fontGeistMono } from 'geist/font/mono'
@@ -15,9 +14,11 @@ import { Wrapper } from '@/components/Wrapper/index'
 
 import { PreloadResources } from './_next/preload-resources'
 
+/* eslint-disable perfectionist/sort-imports */
+import '@jeromefitz/tailwind-config/styles/globals.css'
 import '@radix-ui/themes/styles.css'
 
-const fontInter = { variable: '' }
+// const fontInter = { variable: '' }
 // const fontInter = localFont({
 //   declarations: [
 //     {
@@ -32,6 +33,7 @@ const fontInter = { variable: '' }
 //   variable: '--font-inter',
 //   weight: '100 900',
 // })
+
 // const fontGeistMono = localFont({
 //   declarations: [
 //     {
@@ -46,6 +48,7 @@ const fontInter = { variable: '' }
 //   variable: '--font-geist-mono',
 //   weight: '100 900',
 // })
+
 // const fontGeistSans = localFont({
 //   declarations: [
 //     {
@@ -73,7 +76,7 @@ const fontInter = { variable: '' }
 
 export const viewport: Viewport = {
   colorScheme: 'dark',
-  themeColor: '#0f0f0f',
+  themeColor: '#030303',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -81,7 +84,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html
       // className={cx(fontInter.variable, GeistSans.variable, GeistMono.variable)}
       className={cx(
-        fontInter.variable,
+        // fontInter.variable,
         fontGeistMono.variable,
         fontGeistSans.variable,
         '',
@@ -102,7 +105,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <body
           className={cx(
             'overflow-y-auto overflow-x-hidden lg:overflow-y-auto',
-            // 'transition-all duration-200',
             'selection:bg-gray-12 selection:text-gray-1',
             'bg-white dark:bg-black',
             'font-sans antialiased',

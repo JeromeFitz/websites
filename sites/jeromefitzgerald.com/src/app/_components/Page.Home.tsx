@@ -64,13 +64,19 @@ const PageHome = forwardRef(function PageHome(props, forwardedRef) {
         </HeadlineTitle>
         <HeadlineTitleSub>
           <Badge color="orange" size="2">
-            <Code variant="ghost">actor</Code>
+            <Code className="lowercase" variant="ghost">
+              Actor
+            </Code>
           </Badge>
           <Badge color="mint" size="2">
-            <Code variant="ghost">comedian</Code>
+            <Code className="lowercase" variant="ghost">
+              Comedian
+            </Code>
           </Badge>
           <Badge color="purple" size="2">
-            <Code variant="ghost">writer</Code>
+            <Code className="lowercase" variant="ghost">
+              Writer
+            </Code>
           </Badge>
         </HeadlineTitleSub>
       </HeadlineColumnA>
