@@ -1,10 +1,10 @@
 import { Callout } from '@jeromefitz/ds/components/Callout/index'
-import { Separator } from '@jeromefitz/ds/components/Separator/index'
 import { getDataFromCache } from '@jeromefitz/shared/notion/utils/index'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
 import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
 import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
+import { Separator } from '@radix-ui/themes/dist/esm/components/separator.js'
 import { draftMode } from 'next/headers.js'
 import { notFound } from 'next/navigation.js'
 
@@ -73,7 +73,7 @@ async function Slug({ revalidate, segmentInfo }) {
           </HeadlineTitle>
           <HeadlineTitleSub>
             {tags.map(({ color, id, name }) => (
-              <Badge color={color} key={id} size="2">
+              <Badge className="lowercase" color={color} key={id} size="2">
                 <Code variant="ghost">{name}</Code>
               </Badge>
             ))}
@@ -91,7 +91,7 @@ async function Slug({ revalidate, segmentInfo }) {
           </HeadlineTitle>
         </HeadlineColumnA>
         <HeadlineContent className="">
-          <Separator className="mb-4 opacity-50" />
+          <Separator size="4" />
           <PodcastEpisodes properties={properties} />
         </HeadlineContent>
       </Grid>
@@ -102,7 +102,7 @@ async function Slug({ revalidate, segmentInfo }) {
           </HeadlineTitle>
         </HeadlineColumnA>
         <HeadlineContent className="">
-          <Separator className="mb-4 opacity-50" />
+          <Separator size="4" />
           <Relations id={id} relations={R} />
         </HeadlineContent>
       </Grid>

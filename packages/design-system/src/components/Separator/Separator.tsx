@@ -2,34 +2,38 @@
 /**
  * @note(next) why is this client? flushSync?
  */
-import * as Separator from '@radix-ui/react-separator'
+import type { SeparatorProps } from '@radix-ui/react-separator'
+
+import { Root as SeparatorRoot } from '@radix-ui/react-separator'
 
 import { cx } from '../../utils/cx'
 
-function SeparatorImpl({ className = '' }) {
+interface SeparatorPropsImpl extends SeparatorProps {
+  children?: any
+  className?: any
+}
+
+function Separator({
+  // @todo(radix) className
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  className = '',
+  decorative = true,
+  orientation = 'vertical',
+}: SeparatorPropsImpl) {
   return (
-    // @todo(types) radix
+    // @todo(radix) children
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    <Separator.Root
+    <SeparatorRoot
       asChild
-      className={cx(
-        // 'data-[orientation=horizontal]:h-[1px]',
-        // 'data-[orientation=horizontal]:w-full',
-        // 'data-[orientation=vertical]:h-full',
-        // 'data-[orientation=vertical]:w-[1px]',
-        // 'min-h-[0.75rem]',
-        'h-[1px] w-full',
-        'min-h-[0.75rem]',
-        'text-gray-6',
-        className,
-      )}
-      decorative
-      orientation="vertical"
+      className={cx('h-[1px] w-full', 'min-h-[0.75rem]', 'text-gray-6', className)}
+      decorative={decorative}
+      orientation={orientation}
     >
       <hr />
-    </Separator.Root>
+    </SeparatorRoot>
   )
 }
 
-export { SeparatorImpl as Separator }
+export { Separator }

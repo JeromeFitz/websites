@@ -4,8 +4,8 @@ import {
   CalendarIcon,
   ClockIcon,
   HomeIcon,
+  TicketIcon,
 } from '@jeromefitz/ds/components/Icon/index'
-import { Separator } from '@jeromefitz/ds/components/Separator/index'
 import { getDataFromCache } from '@jeromefitz/shared/notion/utils/index'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
@@ -14,6 +14,7 @@ import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
 import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
 import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
+import { Separator } from '@radix-ui/themes/dist/esm/components/separator.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import { draftMode } from 'next/headers.js'
 import { notFound } from 'next/navigation.js'
@@ -104,57 +105,70 @@ function Ticket({ properties }) {
         <Flex
           align="center"
           direction="row-reverse"
-          gap="1"
+          gap="2"
           justify="end"
+          mt="1"
           width="100%"
           wrap="nowrap"
         >
-          <Text size={{ initial: '2', lg: '3' }} weight="bold">
+          <Code size={{ initial: '2', lg: '3' }} variant="ghost" weight="bold">
             {dayOfWeek}, {monthName} {dayOfMonthOrdinal}
-          </Text>
+          </Code>
           <CalendarIcon className="size-4 lg:size-5" />
         </Flex>
         <Flex
           align="center"
           direction="row-reverse"
-          gap="1"
+          gap="2"
           justify="end"
+          mt="1"
           width="100%"
           wrap="nowrap"
         >
-          <Text weight="bold">
+          <Code variant="ghost" weight="bold">
             {time} {timezone}
-          </Text>
+          </Code>
           <ClockIcon className="size-4 lg:size-5" />
         </Flex>
         <Flex
           align="start"
           direction="row-reverse"
-          gap="1"
+          gap="2"
           justify="end"
+          mt="1"
           width="100%"
           wrap="nowrap"
         >
-          <Text weight="bold">
+          <Code variant="ghost" weight="bold">
             {venueTitle}
             <Text as="span" weight="regular">
               <Venue id={venues[0]?.id} />
             </Text>
-          </Text>
+          </Code>
           <HomeIcon className="mt-[0.2rem] size-4 lg:mt-[0.125rem] lg:size-5" />
         </Flex>
       </Flex>
-
-      <Flex align="center" justify="start" mt="1" width="100%">
+      <Flex
+        align="start"
+        direction="row-reverse"
+        gap="2"
+        justify="end"
+        mt="2"
+        width="100%"
+        wrap="nowrap"
+      >
         {ticketUrl && !isEventOver ? (
           <Button asChild variant="surface">
-            <Anchor href={ticketUrl}>Buy Tickets</Anchor>
+            <Anchor className="font-mono" href={ticketUrl}>
+              Buy Tickets
+            </Anchor>
           </Button>
         ) : (
-          <Button disabled={true}>
+          <Button className="font-mono hover:cursor-not-allowed" disabled={true}>
             <>{disabledText}</>
           </Button>
         )}
+        <TicketIcon className="size-4 lg:size-5" />
       </Flex>
     </>
   )
@@ -246,10 +260,9 @@ async function Slug({ revalidate, segmentInfo }) {
           </HeadlineTitleSub>
         </HeadlineColumnA>
         <HeadlineContent>
-          <Heading size={{ initial: '7', lg: '9' }}>{title}</Heading>
-          <Separator className={'my-4'} />
           <Callout size="1" variant="outline" />
-          <Separator className="my-4 opacity-50" />
+          <Heading size={{ initial: '7', lg: '9' }}>{title}</Heading>
+
           <Image properties={properties} />
           <Blocks data={data?.blocks} />
         </HeadlineContent>
@@ -261,7 +274,7 @@ async function Slug({ revalidate, segmentInfo }) {
           </HeadlineTitle>
         </HeadlineColumnA>
         <HeadlineContent className="">
-          <Separator className="mb-4 opacity-50" />
+          <Separator size="4" />
           <Relations id={id} key={`relations--${id}--wrapper`} relations={R} />
         </HeadlineContent>
       </Grid>

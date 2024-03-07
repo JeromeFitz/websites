@@ -1,15 +1,16 @@
 import { AnchorUnstyled as Anchor } from '@jeromefitz/ds/components/Anchor/index'
 import { Callout } from '@jeromefitz/ds/components/Callout/index'
-import { Separator } from '@jeromefitz/ds/components/Separator/index'
 import { cx } from '@jeromefitz/ds/utils/cx'
 import { EmbedSpotify } from '@jeromefitz/shared/components/Notion/Blocks/Embed.Spotify'
 import { getDataFromCache } from '@jeromefitz/shared/notion/utils/index'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
 import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
+import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
 import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Grid as GridRadix } from '@radix-ui/themes/dist/esm/components/grid.js'
 import { Link } from '@radix-ui/themes/dist/esm/components/link.js'
+import { Separator } from '@radix-ui/themes/dist/esm/components/separator.js'
 import { Strong } from '@radix-ui/themes/dist/esm/components/strong.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import { draftMode } from 'next/headers.js'
@@ -54,6 +55,8 @@ const RELATIONS_SECONDARY = [
   },
 ]
 
+const rollupsDisplayInCode = ['Season', 'Episode', 'Duration']
+
 function Rollups({ properties }) {
   const {
     dayOfMonthOrdinal,
@@ -88,12 +91,14 @@ function Rollups({ properties }) {
   return (
     <GridRadix columns="12" gapX="4" gapY="8" mb="4" width="100%">
       {rollups.map((rollup) => {
-        const key = `rollup-${rollup.id}`
+        const isCode = rollupsDisplayInCode.includes(rollup.id)
+        const Component = isCode ? Code : Text
+        const ComponentProps = isCode ? { variant: 'ghost' } : {}
         return (
           <Box
             // className="col-span-6 lg:col-span-4"
             gridColumn={{ initial: 'span 6 / span 6', lg: 'span 4 / span 4' }}
-            key={key}
+            key={`rollup-${rollup.id}`}
           >
             <Text className="uppercase">
               <Strong>{rollup.id}</Strong>
@@ -101,7 +106,10 @@ function Rollups({ properties }) {
             <ul>
               <Box asChild mb={{ initial: '2', lg: '1' }}>
                 <li>
-                  <Text as="span">{rollup.data}</Text>
+                  {/* @todo(types) pass types better at Component/Props */}
+                  {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+                  {/* @ts-ignore */}
+                  <Component {...ComponentProps}>{rollup.data}</Component>
                 </li>
               </Box>
             </ul>
@@ -246,7 +254,7 @@ async function EpisodeSlug({ revalidate, segmentInfo }) {
           </HeadlineTitle>
         </HeadlineColumnA>
         <HeadlineContent className="">
-          <Separator className="mb-4 opacity-50" />
+          <Separator size="4" />
           <Rollups properties={properties} />
           <Relations id={id} relations={R} />
         </HeadlineContent>

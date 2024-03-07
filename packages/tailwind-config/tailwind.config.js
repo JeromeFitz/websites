@@ -163,7 +163,7 @@ const config = ({ useTailwind = true }) => ({
         // ],
         sans: ['var(--font-geist-sans)', ...theme.fontFamily.sans],
         // sans: [
-        //   ['var(--font-inter)', 'var(--font-geist-sans)', ...theme.fontFamily.sans],
+        //   ['var(--font-inter)', ...theme.fontFamily.sans],
         //   {
         //     /**
         //      * @note(font) INTER
@@ -175,6 +175,7 @@ const config = ({ useTailwind = true }) => ({
         //       '"calt", "zero", "cv01", "cv02", "cv03", "cv04", "cv05", "cv06", "cv08", "cv09", "cv10", "cv11"',
         //     fontVariationSettings: '"opsz" 32',
         //   },
+        // ],
       },
       keyframes: {
         contentShow: {
