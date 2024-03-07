@@ -3,7 +3,16 @@
 import { CaretDownIcon, Pencil2Icon } from '@jeromefitz/ds/components/Icon/index'
 import { cx } from '@jeromefitz/ds/utils/cx'
 
-import * as NavigationMenu from '@radix-ui/react-navigation-menu'
+import {
+  NavigationMenuContent,
+  NavigationMenuIndicator,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  Root as NavigationMenuRoot,
+  NavigationMenuTrigger,
+  NavigationMenuViewport,
+} from '@radix-ui/react-navigation-menu'
 import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 // eslint-disable-next-line no-restricted-imports
@@ -14,7 +23,7 @@ import { menus } from '@/data/menu'
 
 const IS_ICON_SHOWN = false
 
-const NavigationMenuImpl = () => {
+const NavigationMenu = () => {
   return (
     <div className="col-span-full hidden lg:flex lg:items-center lg:justify-between">
       {/* @note(navigation) left */}
@@ -25,13 +34,13 @@ const NavigationMenuImpl = () => {
           )}
         >
           {/* @ts-ignore */}
-          <NavigationMenu.Root
+          <NavigationMenuRoot
             aria-label="Navigation header with 3 dropdown menus with links and 1 link"
             className={cx('relative flex w-full items-center justify-center')}
           >
             {/* @todo(menu) motion background */}
             {/* @ts-ignore */}
-            <NavigationMenu.List
+            <NavigationMenuList
               className={cx('m-0 flex list-none justify-center p-0')}
             >
               {menus.map((menu) => {
@@ -39,7 +48,7 @@ const NavigationMenuImpl = () => {
                 const Icon = menu.icon
                 return (
                   // @ts-ignore
-                  <NavigationMenu.Item
+                  <NavigationMenuItem
                     className={cx(
                       'cursor-pointer select-none transition-colors',
                       'hocus:hover:text-accent-11',
@@ -50,7 +59,7 @@ const NavigationMenuImpl = () => {
                     {menu.isParent ? (
                       <Fragment key={`nav--${menu.id}--p`}>
                         {/* @ts-ignore */}
-                        <NavigationMenu.Trigger
+                        <NavigationMenuTrigger
                           className={cx(
                             'group flex items-center justify-center',
                             'rounded-item hover:bg-grayA-2',
@@ -77,8 +86,8 @@ const NavigationMenuImpl = () => {
                               />
                             </>
                           </Button>
-                        </NavigationMenu.Trigger>
-                        <NavigationMenu.Content className="!absolute left-0 top-0 w-full duration-75 ease-in sm:w-auto">
+                        </NavigationMenuTrigger>
+                        <NavigationMenuContent className="!absolute left-0 top-0 w-full duration-75 ease-in sm:w-auto">
                           <ul
                             className={cx(
                               'mx-4 my-2 flex list-none flex-col p-0',
@@ -106,7 +115,7 @@ const NavigationMenuImpl = () => {
                               })}
                             </li>
                           </ul>
-                        </NavigationMenu.Content>
+                        </NavigationMenuContent>
                       </Fragment>
                     ) : (
                       <NextLink href={menu.href} legacyBehavior passHref>
@@ -120,7 +129,7 @@ const NavigationMenuImpl = () => {
                             'transition-colors',
                           )}
                         >
-                          <NavigationMenu.Link>
+                          <NavigationMenuLink>
                             {menu.isParentIconVisible ? (
                               <>
                                 <Icon className="hocus:hover:text-accent-11  mt-1 transition-colors" />
@@ -129,22 +138,22 @@ const NavigationMenuImpl = () => {
                             ) : (
                               menu.title
                             )}
-                          </NavigationMenu.Link>
+                          </NavigationMenuLink>
                         </Text>
                       </NextLink>
                     )}
-                  </NavigationMenu.Item>
+                  </NavigationMenuItem>
                 )
               })}
 
               {/* @ts-ignore */}
-              <NavigationMenu.Indicator className="data-[state=visible]:animate-fadeIn data-[state=hidden]:animate-fadeOut top-full z-[1] flex h-[10px] items-end justify-center overflow-hidden transition-[width,transform_250ms_ease]">
+              <NavigationMenuIndicator className="data-[state=visible]:animate-fadeIn data-[state=hidden]:animate-fadeOut top-full z-[1] flex h-[10px] items-end justify-center overflow-hidden transition-[width,transform_250ms_ease]">
                 <div className="bg-accentA-6 dark:bg-accentA-12 relative top-[70%] size-[10px] rotate-[45deg] rounded-tl-[2px]" />
-              </NavigationMenu.Indicator>
-            </NavigationMenu.List>
+              </NavigationMenuIndicator>
+            </NavigationMenuList>
 
             <div className="perspective-[2000px] absolute left-0 top-full flex w-full justify-start">
-              <NavigationMenu.Viewport
+              <NavigationMenuViewport
                 // @ts-ignore
                 className={cx(
                   'absolute',
@@ -154,7 +163,7 @@ const NavigationMenuImpl = () => {
                 )}
               />
             </div>
-          </NavigationMenu.Root>
+          </NavigationMenuRoot>
         </div>
       </div>
       {/* @note(navigation) right */}
@@ -173,7 +182,7 @@ const ListItem = forwardRef(
       // @ts-ignore
       ref={forwardedRef}
     >
-      <NavigationMenu.Link
+      <NavigationMenuLink
         className={cx(
           'group',
           'flex select-none flex-row items-center gap-3 p-3',
@@ -214,13 +223,13 @@ const ListItem = forwardRef(
             </Text>
           </div>
         </>
-      </NavigationMenu.Link>
+      </NavigationMenuLink>
     </NextLink>
   ),
 )
 
 const NavigationMenuMemo = memo(function _NavigationMenuMemo() {
-  return <NavigationMenuImpl />
+  return <NavigationMenu />
 })
 
 export { NavigationMenuMemo as NavigationDesktop }

@@ -16,7 +16,12 @@ import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
 import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Inset } from '@radix-ui/themes/dist/esm/components/inset.js'
 import { Link } from '@radix-ui/themes/dist/esm/components/link.js'
-import * as Select from '@radix-ui/themes/dist/esm/components/select.parts.js'
+import {
+  SelectContent,
+  SelectItem,
+  SelectRoot,
+  SelectTrigger,
+} from '@radix-ui/themes/dist/esm/components/select.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import Image from 'next/image'
 // eslint-disable-next-line no-restricted-imports
@@ -569,52 +574,61 @@ function MusicClient({}) {
             )}
           >
             <Flex gap="3">
-              <Select.Root
+              <SelectRoot
                 defaultValue={spotifyTimeRange ?? INIT.time_range}
                 onValueChange={(value) => handleValueChangeTimeRange(value)}
                 size={{ initial: '3', lg: '3' }}
               >
-                <Select.Trigger
+                <SelectTrigger
                   // @todo(radix) asChild this?
                   // @ts-ignore
                   className="w-full md:w-11/12"
                   placeholder="Time Range:"
                   radius="full"
                 />
+                {/* @todo(radix) className */}
                 {/* @ts-ignore */}
-                <Select.Content className="z-50 w-full" position="popper">
+                <SelectContent className="z-50 w-full" position="popper">
+                  {/* @todo(radix) children */}
                   {/* @ts-ignore */}
-                  <Select.Item className="w-full" value="short_term">
+                  <SelectItem className="w-full" value="short_term">
                     Past Month
-                  </Select.Item>
+                  </SelectItem>
+                  {/* @todo(radix) children */}
                   {/* @ts-ignore */}
-                  <Select.Item value="medium_term">Past Six Months</Select.Item>
+                  <SelectItem value="medium_term">
+                    <>Past Six Months</>
+                  </SelectItem>
+                  {/* @todo(radix) children */}
                   {/* @ts-ignore */}
-                  <Select.Item value="long_term">All Time</Select.Item>
-                </Select.Content>
-              </Select.Root>
+                  <SelectItem value="long_term">All Time</SelectItem>
+                </SelectContent>
+              </SelectRoot>
             </Flex>
             <Flex gap="3">
-              <Select.Root
+              <SelectRoot
                 defaultValue={spotifyType ?? INIT.type}
                 onValueChange={(value) => handleValueChangeType(value)}
                 size="3"
               >
-                <Select.Trigger
+                <SelectTrigger
                   // @todo(radix) asChild this?
                   // @ts-ignore
                   className="z-50 w-full md:w-11/12 "
                   placeholder="Type:"
                   radius="full"
                 />
+                {/* @todo(radix) children */}
                 {/* @ts-ignore */}
-                <Select.Content className="z-50 w-full" position="popper">
+                <SelectContent className="z-50 w-full" position="popper">
+                  {/* @todo(radix) children */}
                   {/* @ts-ignore */}
-                  <Select.Item value="top-artists">Top Artists</Select.Item>
+                  <SelectItem value="top-artists">Top Artists</SelectItem>
+                  {/* @todo(radix) children */}
                   {/* @ts-ignore */}
-                  <Select.Item value="top-tracks">Top Tracks</Select.Item>
-                </Select.Content>
-              </Select.Root>
+                  <SelectItem value="top-tracks">Top Tracks</SelectItem>
+                </SelectContent>
+              </SelectRoot>
             </Flex>
           </div>
         </div>

@@ -201,8 +201,8 @@ importers:
         specifier: 1.0.3
         version: 1.0.3(@types/react-dom@18.2.21)(@types/react@18.2.64)(react-dom@18.2.0)(react@18.2.0)
       '@radix-ui/themes':
-        specifier: 3.0.0-rc.13-patch.1
-        version: 3.0.0-rc.13-patch.1(@types/react-dom@18.2.21)(@types/react@18.2.64)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 3.0.0-rc.14-patch.1
+        version: 3.0.0-rc.14-patch.1(@types/react-dom@18.2.21)(@types/react@18.2.64)(react-dom@18.2.0)(react@18.2.0)
       clsx:
         specifier: 2.1.0
         version: 2.1.0
@@ -361,8 +361,8 @@ importers:
         specifier: 2.2.14
         version: 2.2.14
       '@radix-ui/themes':
-        specifier: 3.0.0-rc.13-patch.1
-        version: 3.0.0-rc.13-patch.1(@types/react-dom@18.2.21)(@types/react@18.2.64)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 3.0.0-rc.14-patch.1
+        version: 3.0.0-rc.14-patch.1(@types/react-dom@18.2.21)(@types/react@18.2.64)(react-dom@18.2.0)(react@18.2.0)
       '@types/lodash':
         specifier: 4.14.202
         version: 4.14.202
@@ -487,8 +487,8 @@ importers:
         specifier: 3.0.0
         version: 3.0.0
       '@radix-ui/themes':
-        specifier: 3.0.0-rc.13-patch.1
-        version: 3.0.0-rc.13-patch.1
+        specifier: 3.0.0-rc.14-patch.1
+        version: 3.0.0-rc.14-patch.1
       '@tailwindcss/aspect-ratio':
         specifier: 0.4.2
         version: 0.4.2(tailwindcss@3.4.1)
@@ -971,8 +971,8 @@ importers:
         specifier: 1.0.3
         version: 1.0.3(@types/react-dom@18.2.21)(@types/react@18.2.64)(react-dom@18.2.0)(react@18.2.0)
       '@radix-ui/themes':
-        specifier: 3.0.0-rc.13-patch.1
-        version: 3.0.0-rc.13-patch.1(@types/react-dom@18.2.21)(@types/react@18.2.64)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 3.0.0-rc.14-patch.1
+        version: 3.0.0-rc.14-patch.1(@types/react-dom@18.2.21)(@types/react@18.2.64)(react-dom@18.2.0)(react@18.2.0)
       '@tanem/react-nprogress':
         specifier: 5.0.51
         version: 5.0.51(react-dom@18.2.0)(react@18.2.0)
@@ -7846,8 +7846,8 @@ packages:
     dependencies:
       '@babel/runtime': 7.23.9
 
-  /@radix-ui/themes@3.0.0-rc.13-patch.1:
-    resolution: {integrity: sha512-+cXaaWoqYfOVKLDa+smoAB6g5GUHDeCbR13wxIus0oTlecKdZfZHo861O4bg6CpAEPOZ4qgdLpxcXbiEUXO+fg==}
+  /@radix-ui/themes@3.0.0-rc.14-patch.1:
+    resolution: {integrity: sha512-9Nux7JfL7/vCQAlhMOIGfvZ/X9GIfdG66K3W7BkmXvPfus9Q8b/BRP7LYlrJWC4bUhZjhV6vQB4sL9EkCTCKjQ==}
     peerDependencies:
       '@types/react': '*'
       '@types/react-dom': '*'
@@ -7895,8 +7895,8 @@ packages:
       classnames: 2.5.1
     dev: true
 
-  /@radix-ui/themes@3.0.0-rc.13-patch.1(@types/react-dom@18.2.21)(@types/react@18.2.64)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-+cXaaWoqYfOVKLDa+smoAB6g5GUHDeCbR13wxIus0oTlecKdZfZHo861O4bg6CpAEPOZ4qgdLpxcXbiEUXO+fg==}
+  /@radix-ui/themes@3.0.0-rc.14-patch.1(@types/react-dom@18.2.21)(@types/react@18.2.64)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-9Nux7JfL7/vCQAlhMOIGfvZ/X9GIfdG66K3W7BkmXvPfus9Q8b/BRP7LYlrJWC4bUhZjhV6vQB4sL9EkCTCKjQ==}
     peerDependencies:
       '@types/react': '*'
       '@types/react-dom': '*'
@@ -10692,6 +10692,9 @@ packages:
 
   /ajv-formats@2.1.1:
     resolution: {integrity: sha512-Wx0Kx52hxE7C18hkMEggYlEifqWZtYaRgouJor+WMdPnQyEK13vgEWyVNup7SoeeoLMsr4kf5h6dOW11I15MUA==}
+    peerDependenciesMeta:
+      ajv:
+        optional: true
     dependencies:
       ajv: 8.12.0
     dev: true

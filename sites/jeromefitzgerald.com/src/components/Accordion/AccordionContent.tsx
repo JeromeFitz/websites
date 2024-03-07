@@ -2,12 +2,18 @@
 'use client'
 import { cx } from '@jeromefitz/ds/utils/cx'
 
+import type { AccordionContentProps } from '@radix-ui/react-accordion'
+
 import * as Accordion from '@radix-ui/react-accordion'
 import { forwardRef } from 'react'
 
+interface AccordionContentPropsImpl extends AccordionContentProps {
+  children?: any
+  className?: any
+}
+
 const AccordionContent = forwardRef(
-  // @ts-ignore
-  ({ children, className, ...props }, forwardedRef) => (
+  ({ children, className, ...props }: AccordionContentPropsImpl, forwardedRef) => (
     <Accordion.Content
       className={cx(
         'data-[state=open]:animate-slideDown data-[state=closed]:animate-slideUp bg-gray-2 text-gray-11 overflow-hidden text-[15px]',

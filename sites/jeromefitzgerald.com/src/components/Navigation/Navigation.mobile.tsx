@@ -8,8 +8,7 @@ import {
 } from '@jeromefitz/ds/components/Icon/index'
 import { cx } from '@jeromefitz/ds/utils/cx'
 
-import * as Accordion from '@radix-ui/react-accordion'
-import * as Portal from '@radix-ui/react-portal'
+import { Root as PortalRoot } from '@radix-ui/react-portal'
 import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
 // eslint-disable-next-line no-restricted-imports
 import NextLink from 'next/link'
@@ -21,6 +20,7 @@ import {
   AccordionItem,
   AccordionList,
   AccordionListItem,
+  AccordionRoot,
   AccordionTrigger,
 } from '@/components/Accordion'
 import { menus } from '@/data/menu'
@@ -45,8 +45,7 @@ const AccordionNavigation = () => {
   }
 
   return (
-    // @ts-ignore
-    <Accordion.Root
+    <AccordionRoot
       className={cx(
         'mt-10 min-w-full max-w-full',
         'rounded-3 bg-gray-6 w-[300px]',
@@ -61,17 +60,13 @@ const AccordionNavigation = () => {
         if (!menu.isActiveMobileOverride) return null
         // const Icon = menu.icon
         return (
-          // @ts-ignore
           <AccordionItem key={`nav--mobile--${menu.id}`} value={menu.id}>
-            {/* @ts-ignore */}
             <AccordionTrigger>{menu.title}</AccordionTrigger>
-            {/* @ts-ignore */}
             <AccordionContent>
               <AccordionList>
                 {menu.items.map((item) => {
                   if (!item.isActiveMobileOverride) return null
                   return (
-                    // @ts-ignore
                     <AccordionListItem
                       href={item.href}
                       icon={item.icon ? item.icon : menu.icon}
@@ -87,7 +82,7 @@ const AccordionNavigation = () => {
           </AccordionItem>
         )
       })}
-    </Accordion.Root>
+    </AccordionRoot>
   )
 }
 
@@ -118,8 +113,9 @@ function NavigationMobile() {
       </Button>
 
       {isMenuOpen && (
+        // @todo(radix) children
         // @ts-ignore
-        <Portal.Root>
+        <PortalRoot>
           <nav
             className={cx(
               // '[--header-height:57px]',
@@ -186,7 +182,7 @@ function NavigationMobile() {
               {theme === 'dark' ? <MoonIcon /> : <SunIcon />}
             </Button>
           </div>
-        </Portal.Root>
+        </PortalRoot>
       )}
     </>
   )

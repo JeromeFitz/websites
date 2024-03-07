@@ -3,12 +3,18 @@
 import { ChevronDownIcon } from '@jeromefitz/ds/components/Icon/index'
 import { cx } from '@jeromefitz/ds/utils/cx'
 
+import type { AccordionTriggerProps } from '@radix-ui/react-accordion'
+
 import * as Accordion from '@radix-ui/react-accordion'
 import { forwardRef } from 'react'
 
+interface AccordionTriggerPropsImpl extends AccordionTriggerProps {
+  children?: any
+  className?: any
+}
+
 const AccordionTrigger = forwardRef(
-  // @ts-ignore
-  ({ children, className, ...props }, forwardedRef) => (
+  ({ children, className, ...props }: AccordionTriggerPropsImpl, forwardedRef) => (
     // @ts-ignore
     <Accordion.Header className="flex">
       <Accordion.Trigger
