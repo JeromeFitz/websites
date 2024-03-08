@@ -30,6 +30,7 @@ interface Item {
   isActiveMobileOverride: boolean
   isParent: boolean
   isParentIconVisible?: boolean
+  keywords?: string[]
   title: string
   titleDescription: string
 }
@@ -69,6 +70,26 @@ const menus: NavigationMenuItems[] = [
         titleDescription: 'Jerome is cooking something up at the moment.',
       },
       {
+        href: '/events/2024/03/22/sketch-madness',
+        id: '/events/2024/03/22/sketch-madness',
+        isActive: true,
+        isActiveMobileOverride: true,
+        keywords: ['sketch', 'madness', 'march'],
+        title: 'Sketch Madness: FRI 03/22',
+        titleDescription:
+          'Coming this March to the city of champions, “Sketch Madness,” a new sketch comedy show from the writers and producers of the sold-out triumph “Revue This!”',
+      },
+      {
+        href: '/events/2024/03/23/sketch-madness',
+        id: '/events/2024/03/23/sketch-madness',
+        isActive: true,
+        isActiveMobileOverride: true,
+        keywords: ['sketch', 'madness', 'march'],
+        title: 'Sketch Madness: SAT 03/23',
+        titleDescription:
+          'Coming this March to the city of champions, “Sketch Madness,” a new sketch comedy show from the writers and producers of the sold-out triumph “Revue This!”',
+      },
+      {
         href: '/events',
         icon: ListBulletIcon,
         id: 'all-events',
@@ -94,14 +115,26 @@ const menus: NavigationMenuItems[] = [
         id: '/shows/alex-o-jerome',
         isActive: true,
         isActiveMobileOverride: true,
+        keywords: ['alex', 'jerome', 'aoj'],
         title: 'Alex O’Jerome',
         titleDescription: 'Chicago to Pittsburgh Connection. Dem Vomit Twinz.',
+      },
+      {
+        href: '/shows/boo-humbag-the-musical',
+        id: '/shows/boo-humbag-the-musical',
+        isActive: false,
+        isActiveMobileOverride: true,
+        keywords: ['boo', 'humbag', 'musical'],
+        title: 'Boo Humbag: The Musical',
+        titleDescription:
+          'The most celebrated morality tale of all-time was transformed by into a hilarious send-up complete with original song and dance numbers. Gold, Toe Nails, & A Christmas Miracle',
       },
       {
         href: '/shows/bubble-boy-the-musical',
         id: '/shows/bubble-boy-the-musical',
         isActive: true,
         isActiveMobileOverride: true,
+        keywords: ['bubble', 'boy', 'musical'],
         title: 'Bubble Boy: The Musical',
         titleDescription: 'A musical ahead of its time by Cinco Paul',
       },
@@ -110,6 +143,7 @@ const menus: NavigationMenuItems[] = [
         id: '/shows/jerome-and',
         isActive: true,
         isActiveMobileOverride: true,
+        keywords: ['jerome', '&', 'and'],
         title: 'Jerome &',
         titleDescription:
           'Special Comedy Guests, Special Musical Guests, Special Overall Hi-Jinks',
@@ -119,14 +153,36 @@ const menus: NavigationMenuItems[] = [
         id: '/shows/jfle',
         isActive: true,
         isActiveMobileOverride: true,
+        keywords: ['jfle', 'jesse', 'jerome'],
         title: 'JFLE (Jerome & Jesse LE)',
         titleDescription: 'Delightful absurdity with dark whimsy and musical skill',
+      },
+      {
+        href: '/shows/jfle-take-broadway',
+        id: '/shows/jfle-take-broadway',
+        isActive: false,
+        isActiveMobileOverride: true,
+        keywords: ['jfle', 'jesse', 'jerome', 'broadway'],
+        title: 'JFLE: Take Broadway',
+        titleDescription:
+          'Cats become Lion Kings in this send up of past, current, & future Broadway',
+      },
+      {
+        href: '/shows/jfle-grand-finale',
+        id: '/shows/jfle-grand-finale',
+        isActive: false,
+        isActiveMobileOverride: false,
+        keywords: ['jfle', 'jesse', 'jerome', 'grand', 'finale'],
+        title: 'JFLE: Grand Finale',
+        titleDescription:
+          'The two night sell out extravangza with special guests P-Si & G-Funk (Paul Simon & Art Garfunkel)',
       },
       {
         href: '/shows/justin-and-jerome-experience',
         id: '/shows/justin-and-jerome-experience',
         isActive: true,
         isActiveMobileOverride: true,
+        keywords: ['jje', 'justin', 'jerome', 'experience'],
         title: 'Justin & Jerome Experience',
         titleDescription: 'Acclaimed improv and heralded sketch (on-and-off stage)',
       },
@@ -135,6 +191,7 @@ const menus: NavigationMenuItems[] = [
         id: '/shows/my-dinner-with-andre-the-musical',
         isActive: true,
         isActiveMobileOverride: true,
+        keywords: ['jje', 'justin', 'jerome', 'experience', 'andre', 'dinner'],
         title: 'My Dinner With André: The Musical',
         titleDescription:
           'The cult classic gets the Justin & Jerome Experience treatment.',
@@ -144,9 +201,19 @@ const menus: NavigationMenuItems[] = [
         id: '/shows/the-death-show',
         isActive: true,
         isActiveMobileOverride: true,
+        keywords: ['death', 'show'],
         title: 'The Death Show',
         titleDescription:
           'The longest running death themed improv show in Pittsburgh.',
+      },
+      {
+        href: '/shows/warp-zone',
+        id: '/shows/warp-zone',
+        isActive: false,
+        isActiveMobileOverride: true,
+        keywords: ['warp', 'zone'],
+        title: 'Warp Zone',
+        titleDescription: 'Arcade Comedy Theater’s Premier House Team',
       },
       {
         href: '/shows',
@@ -154,6 +221,7 @@ const menus: NavigationMenuItems[] = [
         id: 'all-shows',
         isActive: true,
         isActiveMobileOverride: true,
+        keywords: ['all', 'shows'],
         title: '… All Shows',
         titleDescription: 'If you can believe, there are more.',
       },
@@ -174,6 +242,16 @@ const menus: NavigationMenuItems[] = [
         id: '/podcasts/jer-and-ky-and-guest',
         isActive: true,
         isActiveMobileOverride: true,
+        keywords: [
+          'jerky',
+          'jer',
+          'ky',
+          'guest',
+          'mailshrimp',
+          'wild',
+          'fuck',
+          'podcast',
+        ],
         title: 'Jer & Ky & Guest',
         titleDescription: '...',
       },
@@ -182,6 +260,7 @@ const menus: NavigationMenuItems[] = [
         id: '/podcasts/knockoffs',
         isActive: true,
         isActiveMobileOverride: true,
+        keywords: ['knockoffs', 'alex', 'ky', 'podcast'],
         title: 'Knockoffs',
         titleDescription: '...',
       },
@@ -299,6 +378,7 @@ const menus: NavigationMenuItems[] = [
         id: '/theme/dark',
         isActive: true,
         isActiveMobileOverride: false,
+        keywords: ['theme', 'dark'],
         title: 'Change Theme to Dark Mode',
         titleDescription: '...',
       },
@@ -308,6 +388,7 @@ const menus: NavigationMenuItems[] = [
         id: '/theme/light',
         isActive: true,
         isActiveMobileOverride: false,
+        keywords: ['theme', 'light'],
         title: 'Change Theme to Light Mode',
         titleDescription: '...',
       },
