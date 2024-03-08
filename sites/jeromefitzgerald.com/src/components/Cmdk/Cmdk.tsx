@@ -4,6 +4,7 @@ import { cx } from '@jeromefitz/ds/utils/cx'
 
 import type { ReactNode } from 'react'
 
+import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 import { Kbd } from '@radix-ui/themes/dist/esm/components/kbd.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import { Command, useCommandState } from 'cmdk'
@@ -59,6 +60,8 @@ function SubItem({
   children,
   closeCmdK = true,
   href = '/',
+  id,
+  keywords = [],
   onClick = () => {},
   onSelect = () => {},
   shortcut = undefined,
@@ -67,6 +70,8 @@ function SubItem({
   children: ReactNode
   closeCmdK?: boolean
   href?: string
+  id: string
+  keywords?: string[]
   onClick?: () => void
   onSelect?: () => void
   shortcut?: string
@@ -77,6 +82,8 @@ function SubItem({
   const props = {
     closeCmdK,
     href,
+    id,
+    keywords,
     onClick,
     onSelect,
     shortcut,
@@ -93,6 +100,8 @@ function Item({
   children,
   closeCmdK = true,
   href = '/',
+  id,
+  keywords = [],
   onClick = () => {},
   onSelect = () => {},
   shortcut = undefined,
@@ -101,6 +110,8 @@ function Item({
   children: ReactNode
   closeCmdK?: boolean
   href?: string
+  id: string
+  keywords?: string[]
   onClick?: () => void
   onSelect?: () => void
   shortcut?: string
@@ -126,14 +137,15 @@ function Item({
     : onSelect
 
   // @note(cmdk) _do not_ pass undefined as that passes entire node
-  let _value = shouldSkip ? `xyz--${value}` : value
+  let _value = shouldSkip ? `xyz--${id}` : id
   _value = !!shortcut ? `${_value}:${shortcut}` : _value
 
   return (
     <Command.Item
       className={cx(styles['cmdk-item'], getDark(theme))}
       data-active={isClick ? 'true' : 'false'}
-      id={`cmdk-${value}`}
+      id={`cmdk-${id}`}
+      keywords={keywords}
       onMouseDown={() => {
         isClickSet(true)
       }}
@@ -168,18 +180,29 @@ function ItemsUpcomingEvents({ isSubItem = false }) {
   )
   return (
     <>
-      {items.map(({ href, icon: __icon, isActive, title }) => {
-        if (!isActive) return null
-        const Icon = getIconViaParentChild(_icon, __icon)
-        return (
-          <ItemComponent href={href} key={_slug(title)} value={title}>
-            <Logo>
-              <Icon />
-            </Logo>
-            {title}
-          </ItemComponent>
-        )
-      })}
+      {items.map(
+        ({
+          href,
+          icon: __icon,
+          id,
+          isActive,
+          isActiveMobileOverride,
+          keywords,
+          title,
+        }) => {
+          if (!isActive && !isActiveMobileOverride) return null
+          const Icon = getIconViaParentChild(_icon, __icon)
+          const props = { href, id, keywords, title, value: title }
+          return (
+            <ItemComponent key={_slug(title)} {...props}>
+              <Logo>
+                <Icon />
+              </Logo>
+              {title}
+            </ItemComponent>
+          )
+        },
+      )}
     </>
   )
 }
@@ -192,18 +215,29 @@ function ItemsShows({ isSubItem = false }) {
 
   return (
     <>
-      {items.map(({ href, icon: __icon, isActive, title }) => {
-        if (!isActive) return null
-        const Icon = getIconViaParentChild(_icon, __icon)
-        return (
-          <ItemComponent href={href} key={_slug(title)} value={title}>
-            <Logo>
-              <Icon />
-            </Logo>
-            {title}
-          </ItemComponent>
-        )
-      })}
+      {items.map(
+        ({
+          href,
+          icon: __icon,
+          id,
+          isActive,
+          isActiveMobileOverride,
+          keywords,
+          title,
+        }) => {
+          if (!isActive && !isActiveMobileOverride) return null
+          const Icon = getIconViaParentChild(_icon, __icon)
+          const props = { href, id, keywords, title, value: title }
+          return (
+            <ItemComponent key={_slug(title)} {...props}>
+              <Logo>
+                <Icon />
+              </Logo>
+              {title}
+            </ItemComponent>
+          )
+        },
+      )}
     </>
   )
 }
@@ -216,18 +250,29 @@ function ItemsPodcasts({ isSubItem = false }) {
 
   return (
     <>
-      {items.map(({ href, icon: __icon, isActive, title }) => {
-        if (!isActive) return null
-        const Icon = getIconViaParentChild(_icon, __icon)
-        return (
-          <ItemComponent href={href} key={_slug(title)} value={title}>
-            <Logo>
-              <Icon />
-            </Logo>
-            {title}
-          </ItemComponent>
-        )
-      })}
+      {items.map(
+        ({
+          href,
+          icon: __icon,
+          id,
+          isActive,
+          isActiveMobileOverride,
+          keywords,
+          title,
+        }) => {
+          if (!isActive && !isActiveMobileOverride) return null
+          const Icon = getIconViaParentChild(_icon, __icon)
+          const props = { href, id, keywords, title, value: title }
+          return (
+            <ItemComponent key={_slug(title)} {...props}>
+              <Logo>
+                <Icon />
+              </Logo>
+              {title}
+            </ItemComponent>
+          )
+        },
+      )}
     </>
   )
 }
@@ -241,25 +286,38 @@ function ItemsTheme({ isSubItem = false }) {
 
   return (
     <>
-      {items.map(({ href, icon: __icon, isActive, title }) => {
-        if (!isActive) return null
-        const Icon = getIconViaParentChild(_icon, __icon)
-        return (
-          <ItemComponent
-            closeCmdK={false}
-            href={href}
-            key={_slug(title)}
+      {items.map(
+        ({
+          href,
+          icon: __icon,
+          id,
+          isActive,
+          isActiveMobileOverride,
+          keywords,
+          title,
+        }) => {
+          if (!isActive && !isActiveMobileOverride) return null
+          const Icon = getIconViaParentChild(_icon, __icon)
+          const props = {
+            closeCmdK: false,
+            href,
+            id,
+            keywords,
             // @todo(cmdk) strip `/`
-            onClick={() => setTheme(href)}
-            value={title}
-          >
-            <Logo>
-              <Icon />
-            </Logo>
-            {title}
-          </ItemComponent>
-        )
-      })}
+            onClick: () => setTheme(href),
+            title,
+            value: title,
+          }
+          return (
+            <ItemComponent key={_slug(title)} {...props}>
+              <Logo>
+                <Icon />
+              </Logo>
+              {title}
+            </ItemComponent>
+          )
+        },
+      )}
     </>
   )
 }
@@ -317,7 +375,7 @@ function Cmdk() {
 
   return (
     <>
-      <div
+      <Box
         aria-hidden={true}
         className={cx(
           'duration-250 fixed left-0 top-0 z-50 size-full transition-all',
@@ -343,6 +401,11 @@ function Cmdk() {
           // styles['cmdk-dialog-out'],
           getDark(theme),
         )}
+        filter={(value, search, keywords) => {
+          const extendValue = value + ' ' + keywords?.join(' ')
+          if (extendValue.includes(search)) return 1
+          return 0
+        }}
         label="Command Menu"
         onKeyDown={(e) => {
           if (
@@ -367,12 +430,12 @@ function Cmdk() {
         value={value}
       >
         <CMDKWrapper>
-          <div
+          <Box
             className="duration-250 transition-opacity data-[state=closed]:opacity-0 data-[state=open]:opacity-100"
             data-state={isCmdkInnerOpen ? 'open' : 'closed'}
             id="cmdk-wrapper"
           >
-            <div
+            <Box
               className={cx(
                 styles['cmdk-top-shine'],
                 getDark(theme),
@@ -414,8 +477,15 @@ function Cmdk() {
                     heading={'pages'}
                   >
                     {items.map((item) => {
-                      const { href, icon: __icon, id, isActive, title } = item
-                      if (!isActive) return null
+                      const {
+                        href,
+                        icon: __icon,
+                        id,
+                        isActive,
+                        isActiveMobileOverride,
+                        title,
+                      } = item
+                      if (!isActive && !isActiveMobileOverride) return null
                       const Icon = getIconViaParentChild(_icon, __icon)
                       const props = {
                         ...item,
@@ -442,6 +512,7 @@ function Cmdk() {
                     key={`search`}
                   >
                     <Item
+                      id={`upcoming-events`}
                       onSelect={() => setPage('upcoming-events')}
                       shortcut="U E"
                       value={`${SKIP}-1`}
@@ -452,14 +523,22 @@ function Cmdk() {
                       <span className="hidden">Search </span>Upcoming Events…
                     </Item>
                     <ItemsUpcomingEvents isSubItem />
-                    <Item onSelect={() => setPage('shows')} value={`${SKIP}-2`}>
+                    <Item
+                      id={`shows`}
+                      onSelect={() => setPage('shows')}
+                      value={`${SKIP}-2`}
+                    >
                       <Logo>
                         <MagnifyingGlassIcon />
                       </Logo>
                       <span className="hidden">Search </span>Shows…
                     </Item>
                     <ItemsShows isSubItem />
-                    <Item onSelect={() => setPage('podcasts')} value={`${SKIP}-3`}>
+                    <Item
+                      id={`podcasts`}
+                      onSelect={() => setPage('podcasts')}
+                      value={`${SKIP}-3`}
+                    >
                       <Logo>
                         <MagnifyingGlassIcon />
                       </Logo>
@@ -477,6 +556,7 @@ function Cmdk() {
                     key={general.group}
                   >
                     <Item
+                      id={`theme`}
                       onSelect={() => {
                         setPage(general.group)
                       }}
@@ -497,13 +577,13 @@ function Cmdk() {
               {page === general.group && <ItemsTheme />}
             </Command.List>
 
-            <div
+            <Box
               className={cx(styles['cmdk-footer'], getDark(theme))}
               cmdk-footer=""
             >
               {/* <HamburgerMenuIcon /> */}
-              <div className="flex flex-row items-center justify-start gap-2 align-middle">
-                <div className="inline-flex gap-2">
+              <Box className="flex flex-row items-center justify-start gap-2 align-middle">
+                <Box className="inline-flex gap-2">
                   <Kbd>
                     <Text as="span" size="2">
                       ⌘
@@ -514,9 +594,9 @@ function Cmdk() {
                       K
                     </Text>
                   </Kbd>
-                </div>
+                </Box>
                 <span className={styles['cmdk-open-trigger']}>Close</span>
-              </div>
+              </Box>
               <button
                 className={cx(
                   'fixed right-0 mr-2',
@@ -532,8 +612,8 @@ function Cmdk() {
                   </Text>
                 </Kbd>
               </button>
-            </div>
-          </div>
+            </Box>
+          </Box>
         </CMDKWrapper>
       </Command.Dialog>
     </>
