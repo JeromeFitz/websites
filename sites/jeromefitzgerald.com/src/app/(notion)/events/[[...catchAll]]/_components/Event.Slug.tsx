@@ -262,7 +262,6 @@ async function Slug({ revalidate, segmentInfo }) {
         <HeadlineContent>
           <Callout size="1" variant="outline" />
           <Heading size={{ initial: '7', lg: '9' }}>{title}</Heading>
-
           <Image properties={properties} />
           <Blocks data={data?.blocks} />
         </HeadlineContent>
