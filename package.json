@@ -32,7 +32,7 @@
     "@jeromefitz/conventional-gitmoji": "4.0.1",
     "@jeromefitz/eslint-config": "2.1.8",
     "@jeromefitz/lint-staged": "2.0.2",
-    "@jeromefitz/prettier-config": "2.0.1",
+    "@jeromefitz/prettier-config": "2.0.2",
     "@jeromefitz/release-notes-generator": "2.0.2",
     "@jeromefitz/semantic": "10.0.3",
     "@jeromefitz/tsconfig": "2.0.0",
