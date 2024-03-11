@@ -27,8 +27,8 @@ importers:
         specifier: 2.0.2
         version: 2.0.2(is-ci@3.0.1)
       '@jeromefitz/prettier-config':
-        specifier: 2.0.1
-        version: 2.0.1
+        specifier: 2.0.2
+        version: 2.0.2
       '@jeromefitz/release-notes-generator':
         specifier: 2.0.2
         version: 2.0.2(lodash@4.17.21)
@@ -285,8 +285,8 @@ importers:
   packages/next-config:
     devDependencies:
       '@jeromefitz/prettier-config':
-        specifier: 2.0.1
-        version: 2.0.1
+        specifier: 2.0.2
+        version: 2.0.2
       '@next/bundle-analyzer':
         specifier: 14.1.2
         version: 14.1.2
@@ -3364,13 +3364,13 @@ packages:
       - encoding
     dev: false
 
-  /@jeromefitz/prettier-config@2.0.1:
-    resolution: {integrity: sha512-VdOuhDL2Q4AjBgnp/MiTA8sb8yKQRBb6Vskfbt51OAqOnDuArEUAt2QRn95STHTP/Qi2LdulZJYFxIXSwR6yzQ==}
+  /@jeromefitz/prettier-config@2.0.2:
+    resolution: {integrity: sha512-4NQozUEbBaf6z02RZst4r/aINd3zZqJAAyjG7aucLOe96SxsHNGto9Oi3LvQDEqcEizA7EDGxZzNYkSOcr9VWg==}
     engines: {node: '>=20'}
     dependencies:
       prettier: 3.2.5
       prettier-plugin-pkg: 0.18.1(prettier@3.2.5)
-      prettier-plugin-tailwindcss: 0.5.11(prettier@3.2.5)
+      prettier-plugin-tailwindcss: 0.5.12(prettier@3.2.5)
     transitivePeerDependencies:
       - '@ianvs/prettier-plugin-sort-imports'
       - '@prettier/plugin-pug'
@@ -3383,6 +3383,7 @@ packages:
       - prettier-plugin-marko
       - prettier-plugin-organize-attributes
       - prettier-plugin-organize-imports
+      - prettier-plugin-sort-imports
       - prettier-plugin-style-order
       - prettier-plugin-svelte
       - prettier-plugin-twig-melody
@@ -17961,8 +17962,8 @@ packages:
     dependencies:
       prettier: 3.2.5
 
-  /prettier-plugin-tailwindcss@0.5.11(prettier@3.2.5):
-    resolution: {integrity: sha512-AvI/DNyMctyyxGOjyePgi/gqj5hJYClZ1avtQvLlqMT3uDZkRbi4HhGUpok3DRzv9z7Lti85Kdj3s3/1CeNI0w==}
+  /prettier-plugin-tailwindcss@0.5.12(prettier@3.2.5):
+    resolution: {integrity: sha512-o74kiDBVE73oHW+pdkFSluHBL3cYEvru5YgEqNkBMFF7Cjv+w1vI565lTlfoJT4VLWDe0FMtZ7FkE/7a4pMXSQ==}
     engines: {node: '>=14.21.3'}
     peerDependencies:
       '@ianvs/prettier-plugin-sort-imports': '*'
@@ -17977,6 +17978,7 @@ packages:
       prettier-plugin-marko: '*'
       prettier-plugin-organize-attributes: '*'
       prettier-plugin-organize-imports: '*'
+      prettier-plugin-sort-imports: '*'
       prettier-plugin-style-order: '*'
       prettier-plugin-svelte: '*'
       prettier-plugin-twig-melody: '*'
@@ -18002,6 +18004,8 @@ packages:
       prettier-plugin-organize-attributes:
         optional: true
       prettier-plugin-organize-imports:
+        optional: true
+      prettier-plugin-sort-imports:
         optional: true
       prettier-plugin-style-order:
         optional: true
