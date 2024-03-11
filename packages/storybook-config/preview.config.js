@@ -39,6 +39,9 @@ const config = {
     docs: {
       theme: themes.dark,
     },
+    nextjs: {
+      appDirectory: true,
+    },
     viewport: {
       viewports,
     },

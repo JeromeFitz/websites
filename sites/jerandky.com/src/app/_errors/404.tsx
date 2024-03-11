@@ -8,8 +8,9 @@ import {
   SectionWrapper,
   // Tags,
 } from '@jeromefitz/ds/components/Section'
-import { Separator } from '@jeromefitz/ds/components/Separator'
 import { isObjectEmpty } from '@jeromefitz/utils'
+
+import { Separator } from '@radix-ui/themes/dist/esm/components/separator.js'
 
 // @todo(types)
 function FourOhFour({
@@ -33,14 +34,14 @@ function FourOhFour({
           <>
             <h1 className="mb-7 text-6xl font-black">{message}</h1>
             <p className="text-lg">{body}</p>
-            <Separator className="my-8" />
+            <Separator my="4" orientation="horizontal" size="4" />
             <p className="text-lg">
               Please try and go back to the{` `}
               <Anchor href="/">homepage</Anchor>.
             </p>
             {!isObjectEmpty(segmentInfo) && (
               <>
-                <Separator className="my-8" />
+                <Separator my="4" orientation="horizontal" size="4" />
                 <h2 className="text-xl font-bold">Error Information:</h2>
                 <ul className="my-4 list-inside list-disc">
                   <li>
