@@ -10,12 +10,12 @@ import {
   SectionWrapper,
   // Tags,
 } from '@jeromefitz/ds/components/Section'
-import { Separator } from '@jeromefitz/ds/components/Separator'
 import { cx } from '@jeromefitz/ds/utils/cx'
 import { EmbedSpotify } from '@jeromefitz/shared/components/Notion/Blocks/Embed.Spotify'
 import { getDataFromCache } from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
+import { Separator } from '@radix-ui/themes/dist/esm/components/separator.js'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 
@@ -196,7 +196,7 @@ async function EpisodeSlug({ revalidate, segmentInfo }) {
         </SectionHeader>
         <SectionContent>
           <Image properties={properties} />
-          <Separator className="my-8" />
+          <Separator my="4" orientation="horizontal" size="4" />
           <Blocks data={data?.blocks} />
           <Links properties={properties} />
         </SectionContent>

@@ -1,6 +1,4 @@
 'use client'
-// import { Tooltip } from '@jeromefitz/ds/components/Tooltip/index'
-
 import { useOs } from '@mantine/hooks'
 import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
 import { Kbd } from '@radix-ui/themes/dist/esm/components/kbd.js'
@@ -21,7 +19,6 @@ function FooterCmdkClient() {
   const key = isMac ? '⌘' : 'Ctrl'
   // const button = isMac ? 'Cmd' : 'Ctrl'
   return (
-    // <Tooltip description={`Open via ${key}  + K`}>
     <Button
       className="gap-[0.5rem] group-hover:cursor-pointer lg:flex"
       highContrast
@@ -37,7 +34,6 @@ function FooterCmdkClient() {
       </span>
       <p className="text-gray-12">Command Menu</p>
     </Button>
-    // </Tooltip>
   )
 }
 

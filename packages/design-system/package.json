@@ -20,10 +20,6 @@
       "types": "./dist/components/Anchor/index.d.ts",
       "default": "./dist/components/Anchor/index.js"
     },
-    "./components/Button": {
-      "types": "./dist/components/Button/index.d.ts",
-      "default": "./dist/components/Button/index.js"
-    },
     "./components/Callout": {
       "types": "./dist/components/Callout/index.d.ts",
       "default": "./dist/components/Callout/index.js"
@@ -36,10 +32,6 @@
       "types": "./dist/components/Section/index.d.ts",
       "default": "./dist/components/Section/index.js"
     },
-    "./components/Separator": {
-      "types": "./dist/components/Separator/index.d.ts",
-      "default": "./dist/components/Separator/index.js"
-    },
     "./utils/cx": {
       "types": "./dist/utils/cx.d.ts",
       "default": "./dist/utils/cx.js"
@@ -47,16 +39,16 @@
   },
   "scripts": {
     "build": "tsup-node",
-    "build:storybook": "storybook build",
     "clean": "rm -rf ./.turbo ./dist",
     "clean:install": "pnpm clean && rm -rf ./node_modules",
     "copy": "mkdir -p ./dist && ./scripts/copy.sh",
     "dev": "tsup-node --watch",
-    "dev:storybook": "storybook dev --quiet --port 6002",
     "format:lint": "pnpm lint:eslint --fix",
     "lint": "pnpm lint:eslint && pnpm lint:typescript",
     "lint:eslint": "eslint ./src --ext cjs,js,jsx,mjs,ts,tsx --ignore-path ../../.eslintignore --max-warnings=0",
     "lint:typescript": "tsc --noEmit --declaration",
+    "storybook:build": "storybook build",
+    "storybook:dev": "storybook dev --quiet --port 6002",
     "test:e2e": "playwright test",
     "test:unit": "jest --ci --coverage",
     "test:watch": "jest --watch"
