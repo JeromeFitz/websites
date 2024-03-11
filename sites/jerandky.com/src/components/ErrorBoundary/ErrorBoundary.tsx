@@ -8,10 +8,10 @@ import {
   SectionWrapper,
   // Tags,
 } from '@jeromefitz/ds/components/Section'
-import { Separator } from '@jeromefitz/ds/components/Separator'
 
 import type { ReactNode } from 'react'
 
+import { Separator } from '@radix-ui/themes/dist/esm/components/separator.js'
 import { Component } from 'react'
 
 type PropsChildren = {
@@ -57,7 +57,7 @@ class ErrorBoundary extends Component<PropsChildren> {
               <SectionContent>
                 <h1 className="mb-7 text-6xl font-black">{message}</h1>
                 <p className="text-lg">{body}</p>
-                <Separator className="my-8" />
+                <Separator my="4" orientation="horizontal" size="4" />
                 <p className="text-lg">
                   Please try and go back to the{` `}
                   <a
