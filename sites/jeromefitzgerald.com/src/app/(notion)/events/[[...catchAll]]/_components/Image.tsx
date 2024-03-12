@@ -1,16 +1,24 @@
+/* eslint-disable complexity */
 import https from 'node:https'
 
 import { ImageClient as NextImage } from '@jeromefitz/shared/components/Notion/Blocks/Image.client'
+// import {
+//   getImageAlt,
+//   getImageExpiration,
+//   getImageUrl,
+// } from '@jeromefitz/shared/components/Notion/Blocks/Image.utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
-// import { Client } from '@notionhq/client'
+import { Client } from '@notionhq/client'
 import { Redis } from '@upstash/redis'
 import { slug as _slug } from 'github-slugger'
-// import { isImageExpired } from 'next-notion/src/utils/getAwsImage'
+import _isArray from 'lodash/isArray.js'
+import { isAwsImage, isImageExpired } from 'next-notion/utils/index'
 import validUrl from 'valid-url'
 
 import { getPropertyTypeDataEvent } from '@/app/(notion)/_config/index'
 
+const notion = new Client({ auth: process.env.NOTION_API_KEY })
 // const notion = new Client({ auth: process.env.NOTION_API_KEY })
 
 const redis = Redis.fromEnv({
@@ -23,17 +31,50 @@ const redis = Redis.fromEnv({
 
 const CACHE_KEY_PREFIX__IMAGE = `${process.env.NEXT_PUBLIC__SITE}/image`
 
-async function Image({ properties }) {
+async function Image({ className = '', properties }) {
+  // console.dir(properties)
   /**
    * Image Information
    */
-  const imageSeoDescription = getPropertyTypeDataEvent(
-    properties,
-    'SEO.Image.Description',
-  )
-  const imageSeo = getPropertyTypeDataEvent(properties, 'SEO.Image')[0]
-  // console.dir(`imageSeo:`)
-  // console.dir(imageSeo)
+  const imageSeoDescription = _isArray(properties['SEO.Image.Description'])
+    ? getPropertyTypeDataEvent(properties, 'SEO.Image.Description')
+    : properties['SEO.Image.Description']
+  /**
+   * @hack(notion) this probably _is not_ files all the time :X
+   */
+  let imageSeo = _isArray(properties['SEO.Image'])
+    ? getPropertyTypeDataEvent(properties, 'SEO.Image')[0]
+    : properties['SEO.Image']
+  if (imageSeo.type === 'file') {
+    // console.dir(imageSeo)
+  } else {
+    imageSeo = imageSeo?.files[0]
+  }
+
+  /**
+   * Custom Check:
+   * - If SEO Image is AWS, re-set cache
+   */
+  let isExpired = false
+  const SEO_IMAGE_IS_AWS = !!imageSeo
+    ? isAwsImage(imageSeo[imageSeo?.type]?.url)
+    : false
+  if (SEO_IMAGE_IS_AWS) {
+    isExpired = isImageExpired({
+      expiry_time:
+        imageSeo?.type === 'external' ? null : imageSeo[imageSeo?.type]?.expiry_time,
+      src: imageSeo[imageSeo.type].url,
+    })
+  }
+
+  if (SEO_IMAGE_IS_AWS && isExpired) {
+    console.dir(isExpired)
+    const imageDataRefresh: any = await notion?.pages?.retrieve({
+      page_id: properties['ID'],
+    })
+    imageSeo = imageDataRefresh.properties['SEO.Image'].files[0]
+  }
+
   /**
    * @todo(next) this image piece should be abstracted out and return nothing if undefined
    */
@@ -81,12 +122,14 @@ async function Image({ properties }) {
     }
   }
 
-  // console.dir(`isExpired:`)
-  // console.dir(isExpired)
-  // console.dir(`image:`)
-  // console.dir(image)
+  console.dir(`isExpired:`)
+  console.dir(isExpired)
+  console.dir(`image:`)
+  console.dir(image)
 
-  return <>{!!imageUrl && <NextImage order={1} {...image} />}</>
+  return (
+    <>{!!imageUrl && <NextImage className={className} order={1} {...image} />}</>
+  )
 }
 
 export { Image }
