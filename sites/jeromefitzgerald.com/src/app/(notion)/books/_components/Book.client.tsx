@@ -16,6 +16,7 @@ import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
 import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Inset } from '@radix-ui/themes/dist/esm/components/inset.js'
 import { Link } from '@radix-ui/themes/dist/esm/components/link.js'
+import { ScrollArea } from '@radix-ui/themes/dist/esm/components/scroll-area.js'
 import {
   SelectContent,
   SelectItem,
@@ -29,7 +30,8 @@ import { slug as _slug } from 'github-slugger'
 import _orderBy from 'lodash/orderBy.js'
 // eslint-disable-next-line no-restricted-imports
 import NextLink from 'next/link'
-import { Fragment } from 'react'
+import { Fragment, useRef } from 'react'
+import { Virtualizer } from 'virtua'
 
 // import { Image } from '@/app/(notion)/events/[[...catchAll]]/_components/Image'
 import { Grid } from '@/components/Grid/index'
@@ -123,10 +125,10 @@ function Books({ data }) {
               }
               return (
                 <Flex asChild direction="column" key={item.id} pb="4">
-                  <li>
+                  <li className="mr-4 h-fit">
                     <Card className="h-fit w-full" size="1" variant="surface">
                       <Flex
-                        direction={{ initial: 'row-reverse', md: 'row-reverse' }}
+                        direction={{ initial: 'column', md: 'row-reverse' }}
                         gap={{ initial: '6', lg: '6' }}
                         justify="between"
                       >
@@ -139,7 +141,9 @@ function Books({ data }) {
                                 properties={properties}
                               /> */}
                           <NextImage
-                            className="rounded-2 mx-auto h-full min-w-[250px]"
+                            className="mx-auto h-auto max-h-[275px] w-full min-w-[175px] max-w-64 lg:h-full lg:max-h-full lg:min-w-[275px] lg:max-w-[575px]"
+                            role="img"
+                            tabIndex={-1}
                             {...image}
                           />
                         </Inset>
@@ -156,7 +160,7 @@ function Books({ data }) {
                           <Text
                             as="p"
                             className="line-clamp-3 pb-2"
-                            size={{ initial: '3', lg: '5' }}
+                            size={{ initial: '2', lg: '5' }}
                             weight="medium"
                           >
                             {item.author}
@@ -174,7 +178,7 @@ function Books({ data }) {
                           <Text
                             as="p"
                             className="line-clamp-3 pb-2"
-                            size={{ initial: '3', lg: '5' }}
+                            size={{ initial: '2', lg: '5' }}
                             weight="medium"
                           >
                             {item.title}
@@ -259,7 +263,7 @@ function Books({ data }) {
                               highContrast={false}
                               mt="1"
                               radius="full"
-                              size={{ initial: '2', lg: '2' }}
+                              size={{ initial: '1', lg: '2' }}
                               variant="outline"
                             >
                               <NextLink href={item.urlBookshop} target="_self">
@@ -277,7 +281,7 @@ function Books({ data }) {
                               highContrast={false}
                               mt="1"
                               radius="full"
-                              size={{ initial: '2', lg: '2' }}
+                              size={{ initial: '1', lg: '2' }}
                               variant="outline"
                             >
                               <NextLink href={item.urlBiblio} target="_self">
@@ -308,6 +312,8 @@ function BookPage({ books, title }) {
     HTMLDivElement,
     HTMLDivElement
   >({ axis: 'x', duration: SCROLL_DURATION - 250, isList: true })
+  const refContainer = useRef<HTMLDivElement>(null)
+
   const { bookStatus, bookStatusSet } = useStore()
 
   const scrollIntoViewHandle = () => {
@@ -476,23 +482,50 @@ function BookPage({ books, title }) {
             </Flex>
           </div>
         </div>
-        <ul
-          className={cx(
-            'm-0 list-none p-0',
-            'col-span-full md:col-span-9',
-            'justify-items-start',
-            'flex flex-row flex-nowrap',
-            'overflow-x-auto',
-            'gap-4 lg:gap-16',
-            'z-0',
-            'first:gap-0',
-          )}
-          // @ts-ignore
+        {/* @ts-ignore */}
+        <ScrollArea
+          asChild
+          className="h-[675px] md:h-[475px]"
+          radius="full"
           ref={scrollableRef}
+          scrollbars="horizontal"
+          size="2"
+          type="always"
         >
-          <div className="-mx-2 w-0 lg:-mx-8" ref={targetRef} />
-          <Books data={books} />
-        </ul>
+          <div
+            className={cx(
+              // 'm-0 list-none p-0',
+              'col-span-full md:col-span-9',
+              'justify-items-start',
+              'flex flex-row flex-nowrap',
+
+              'z-0',
+            )}
+            // @ts-ignore
+            ref={refContainer}
+          >
+            <ul>
+              <div className="-mx-2 w-0 lg:-mx-8" ref={targetRef} />
+              <Box
+                asChild
+                className={cx(
+                  'm-0 list-none p-0',
+                  'col-span-full md:col-span-9',
+                  'justify-items-start',
+                  'flex flex-row flex-nowrap',
+                  'overflow-x-auto',
+                  'gap-4 lg:gap-16',
+                  'z-0',
+                  'first:gap-0',
+                )}
+              >
+                <Virtualizer horizontal>
+                  <Books data={books} />
+                </Virtualizer>
+              </Box>
+            </ul>
+          </div>
+        </ScrollArea>
       </Grid>
     </>
   )
