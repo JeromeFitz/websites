@@ -28,6 +28,8 @@ const useStore = <T,>(selector: (state: any) => T): T => {
 }
 
 const getDefaultInitialStateStoreMenu = () => ({
+  bookStatus: 'in-progress',
+  bookStatusSet: () => {},
   cmdkInput: '',
   cmdkInputSet: () => {},
   cmdkPages: [],
@@ -61,6 +63,11 @@ const initializeStoreMenu = (preloadedState: Partial<any> = {}) => {
   return createStore<any>((set, get) => ({
     ...getDefaultInitialStateStoreMenu(),
     ...preloadedState,
+    bookStatusSet: (status) => {
+      set({
+        bookStatus: status,
+      })
+    },
     cmdkInputSet: (search) => {
       set({
         cmdkInput: search,

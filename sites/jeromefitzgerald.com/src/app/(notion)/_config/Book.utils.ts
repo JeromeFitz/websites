@@ -19,12 +19,12 @@ function getBookData(properties) {
     isActive: getPropertyTypeDataBook(properties, 'Is.Active'),
     isIndexed: getPropertyTypeDataBook(properties, 'Is.Indexed'),
     isPublished: getPropertyTypeDataBook(properties, 'Is.Published'),
-    // isbn10: getPropertyTypeDataBook(properties, 'ISBN-10'),
-    // isbn13: getPropertyTypeDataBook(properties, 'ISBN-13'),
+    isbn13Hard: getPropertyTypeDataBook(properties, 'ISBN-13.Hard'),
+    isbn13Soft: getPropertyTypeDataBook(properties, 'ISBN-13.Soft'),
     pages: getPropertyTypeDataBook(properties, 'Pages'),
     publisher: getPropertyTypeDataBook(properties, 'Publisher'),
     // seoDescription: getPropertyTypeDataBook(properties, 'SEO.Description'),
-    // seoImage: getPropertyTypeDataBook(properties, 'SEO.Image')[0],
+    seoImage: getPropertyTypeDataBook(properties, 'SEO.Image')[0],
     // seoImageDescription: getPropertyTypeDataBook(
     //   properties,
     //   'SEO.Image.Description',
@@ -34,8 +34,8 @@ function getBookData(properties) {
     subtitle: getPropertyTypeDataBook(properties, 'Subtitle'),
     title: getPropertyTypeDataBook(properties, 'Title'),
     // urlAmazon: getPropertyTypeDataBook(properties, 'URL.Amazon'),
-    // urlBiblio: getPropertyTypeDataBook(properties, 'URL.Biblio'),
-    // urlBookshop: getPropertyTypeDataBook(properties, 'URL.Bookshop'),
+    urlBiblio: getPropertyTypeDataBook(properties, 'URL.Biblio'),
+    urlBookshop: getPropertyTypeDataBook(properties, 'URL.Bookshop'),
     // urlGoodreads: getPropertyTypeDataBook(properties, 'URL.Goodreads'),
   }
   return data
