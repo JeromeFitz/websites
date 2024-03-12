@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 'use client'
-import { useOnScreen, useSWRInfinitePages } from '@jeromefitz/design-system'
+import { useSWRInfinitePages } from '@jeromefitz/design-system'
 import { AnchorUnstyled as Anchor } from '@jeromefitz/ds/components/Anchor/index'
 import { ArrowTopRightIcon } from '@jeromefitz/ds/components/Icon/index'
 import { cx } from '@jeromefitz/ds/utils/cx'
 import { fetcher } from '@jeromefitz/shared/lib'
 
-import { useScrollIntoView } from '@mantine/hooks'
+import { useIntersection, useScrollIntoView } from '@mantine/hooks'
 import { ArrowUpIcon } from '@radix-ui/react-icons'
 import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
 import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
@@ -16,6 +16,7 @@ import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
 import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Inset } from '@radix-ui/themes/dist/esm/components/inset.js'
 import { Link } from '@radix-ui/themes/dist/esm/components/link.js'
+import { ScrollArea } from '@radix-ui/themes/dist/esm/components/scroll-area.js'
 import {
   SelectContent,
   SelectItem,
@@ -28,6 +29,7 @@ import Image from 'next/image'
 import NextLink from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 import _title from 'title'
+import { Virtualizer } from 'virtua'
 
 import { Grid } from '@/components/Grid/index'
 import {
@@ -248,23 +250,25 @@ function DataItem({ item, type }) {
 
   return (
     <>
-      <li>
+      <li className="mr-4">
         <Card className="h-fit w-full" size="1" variant="surface">
           <Flex
             direction={{ initial: 'column', md: 'row-reverse' }}
             gap={{ initial: '2', lg: '6' }}
+            height="100%"
+            maxWidth={{ initial: '320px', lg: '725px' }}
           >
             <Inset clip="padding-box" side={{ initial: 'top', md: 'all' }}>
               <Image
                 {...image}
                 alt={_alt}
-                className="h-auto w-full lg:h-full lg:min-w-96"
+                className="mx-auto h-auto w-full max-w-64 lg:h-full lg:max-w-[575px]"
                 placeholder="blur"
                 role="img"
                 tabIndex={-1}
               />
             </Inset>
-            <Box px="2" width="25rem">
+            <Flex direction="column" px="2" width="25rem">
               <Text
                 as="span"
                 className="uppercase"
@@ -277,7 +281,7 @@ function DataItem({ item, type }) {
               <Text
                 as="p"
                 className="line-clamp-3 pb-2"
-                size={{ initial: '3', lg: '5' }}
+                size={{ initial: '2', lg: '5' }}
                 weight="medium"
               >
                 {_title1}
@@ -296,7 +300,7 @@ function DataItem({ item, type }) {
                   <Text
                     as="p"
                     className="line-clamp-3 pb-2"
-                    size={{ initial: '3', lg: '5' }}
+                    size={{ initial: '2', lg: '5' }}
                     weight="medium"
                   >
                     {_title2}
@@ -314,7 +318,7 @@ function DataItem({ item, type }) {
                   <Text
                     as="p"
                     className="line-clamp-3 pb-2"
-                    size={{ initial: '3', lg: '5' }}
+                    size={{ initial: '2', lg: '5' }}
                     weight="medium"
                   >
                     {_title3}
@@ -372,66 +376,70 @@ function DataItem({ item, type }) {
                   </Badge>
                 )}
               </span>
-              <Text as="p" className="uppercase" color="gray" size="1" weight="bold">
-                Link
-              </Text>
-              <Button
-                asChild
-                className="w-fit"
-                color="jade"
-                highContrast={false}
-                mt="1"
-                radius="full"
-                size={{ initial: '2', lg: '2' }}
-                variant="outline"
+              <Flex
+                align="start"
+                direction="column"
+                flexGrow="1"
+                gap="2"
+                justify="end"
+                mb="2"
               >
-                <NextLink href={_href}>
-                  Open Spotify
-                  {` `}
-                  <ArrowTopRightIcon className={cx('text-accent-11 !opacity-100')} />
-                </NextLink>
-              </Button>
-            </Box>
+                <Text
+                  as="p"
+                  className="uppercase"
+                  color="gray"
+                  size="1"
+                  weight="bold"
+                >
+                  Link
+                </Text>
+                <Button
+                  asChild
+                  className="w-fit"
+                  color="jade"
+                  highContrast={false}
+                  mt="1"
+                  radius="full"
+                  size={{ initial: '1', lg: '2' }}
+                  variant="outline"
+                >
+                  <NextLink href={_href}>
+                    Open Spotify
+                    {` `}
+                    <ArrowTopRightIcon
+                      className={cx('text-accent-11 !opacity-100')}
+                    />
+                  </NextLink>
+                </Button>
+              </Flex>
+            </Flex>
           </Flex>
         </Card>
       </li>
     </>
   )
 }
-function MusicClient({}) {
+
+function DataItems() {
   const { scrollIntoView, scrollableRef, targetRef } = useScrollIntoView<
     HTMLDivElement,
     HTMLDivElement
   >({ axis: 'x', duration: SCROLL_DURATION - 250, isList: true })
-  // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
-  const refSWRInfinitePages = useRef<any | null>(null)
+  const refContainer = useRef<HTMLDivElement>(null)
+  const { entry, ref: refSWRInfinitePages } = useIntersection({
+    root: refContainer.current,
+    threshold: 1,
+  })
 
-  const { spotifyTimeRange, spotifyTimeRangeSet, spotifyType, spotifyTypeSet } =
-    useStore()
+  const isVisible = entry?.isIntersecting
+
+  const { spotifyTimeRange, spotifyType } = useStore()
 
   const [limit] = useState(10)
   const [url] = useState(INIT.url)
-  const isVisible = useOnScreen(refSWRInfinitePages)
 
   const scrollIntoViewHandle = () => {
     scrollIntoView({ alignment: 'start' })
-  }
-
-  const handleValueChangeTimeRange = (value) => {
-    // @todo(a11y) prefers reduced motion
-    scrollIntoViewHandle()
-    // @hack(mantine) eh... sure.
-    setTimeout(() => {
-      spotifyTimeRangeSet(value)
-    }, SCROLL_DURATION)
-  }
-  const handleValueChangeType = (value) => {
-    // @todo(a11y) prefers reduced motion
-    scrollIntoViewHandle()
-    // @hack(mantine) eh... sure.
-    setTimeout(() => {
-      spotifyTypeSet(value)
-    }, SCROLL_DURATION)
   }
 
   const {
@@ -474,6 +482,100 @@ function MusicClient({}) {
       void fetchMore()
     }
   }, [canFetchMore, fetchMore, isFetchingMore, isLoadingMore, isVisible])
+
+  return (
+    <>
+      {/* @ts-ignore */}
+      <ScrollArea
+        asChild
+        className="h-[625px] md:h-[475px]"
+        radius="full"
+        ref={scrollableRef}
+        scrollbars="horizontal"
+        size="2"
+        type="always"
+      >
+        <div
+          className={cx(
+            'col-span-full md:col-span-9',
+            'justify-items-start',
+            'flex flex-row flex-nowrap',
+
+            'z-0',
+          )}
+          ref={refContainer}
+        >
+          <ul>
+            <div className="-mx-2 w-0 lg:-mx-8" ref={targetRef} />
+            <Box
+              asChild
+              className={cx(
+                'm-0 list-none p-0',
+                'col-span-full md:col-span-9',
+                'justify-items-start',
+                'flex flex-row flex-nowrap',
+                'overflow-x-auto',
+                'gap-4 lg:gap-16',
+                'z-0',
+                'first:gap-0',
+              )}
+            >
+              <Virtualizer horizontal>
+                {data?.map((item: any, i: number) => {
+                  if (removeItems.includes(item.id)) return null
+                  // if (i > 5) return null
+                  /**
+                   * @todo(radix) when data changes drastically
+                   *  can this not be so jarring? Possible to have
+                   *  a pseudo-loader to "hide" the first element for
+                   *  a period of time?
+                   *
+                   * Or have opacity start at 0 then come to 100?
+                   */
+                  return (
+                    <DataItem
+                      item={item}
+                      key={`np--${spotifyType}}--${spotifyTimeRange}--${i}`}
+                      type={spotifyType}
+                    />
+                  )
+                })}
+                <div className="" ref={refSWRInfinitePages} />
+                <DataItemLoader
+                  error={error}
+                  handleScroll={() => scrollIntoViewHandle()}
+                  isLoadingMore={isLoadingMore}
+                  key="np-l-2"
+                />
+              </Virtualizer>
+            </Box>
+          </ul>
+        </div>
+      </ScrollArea>
+    </>
+  )
+}
+
+function MusicClient({}) {
+  const { spotifyTimeRange, spotifyTimeRangeSet, spotifyType, spotifyTypeSet } =
+    useStore()
+
+  const handleValueChangeTimeRange = (value) => {
+    // @todo(a11y) prefers reduced motion
+    // scrollIntoViewHandle()
+    // @hack(mantine) eh... sure.
+    setTimeout(() => {
+      spotifyTimeRangeSet(value)
+    }, SCROLL_DURATION)
+  }
+  const handleValueChangeType = (value) => {
+    // @todo(a11y) prefers reduced motion
+    // scrollIntoViewHandle()
+    // @hack(mantine) eh... sure.
+    setTimeout(() => {
+      spotifyTypeSet(value)
+    }, SCROLL_DURATION)
+  }
 
   return (
     <>
@@ -632,49 +734,7 @@ function MusicClient({}) {
             </Flex>
           </div>
         </div>
-        <ul
-          className={cx(
-            'm-0 list-none p-0',
-            'col-span-full md:col-span-9',
-            'justify-items-start',
-            'flex flex-row flex-nowrap',
-            'overflow-x-auto',
-            'gap-4 lg:gap-16',
-            'z-0',
-            'first:gap-0',
-          )}
-          // @ts-ignore
-          ref={scrollableRef}
-        >
-          <div className="-mx-2 w-0 lg:-mx-8" ref={targetRef} />
-          {data?.map((item: any, i: number) => {
-            if (removeItems.includes(item.id)) return null
-            // if (i > 5) return null
-            /**
-             * @todo(radix) when data changes drastically
-             *  can this not be so jarring? Possible to have
-             *  a pseudo-loader to "hide" the first element for
-             *  a period of time?
-             *
-             * Or have opacity start at 0 then come to 100?
-             */
-            return (
-              <DataItem
-                item={item}
-                key={`np--${spotifyType}}--${spotifyTimeRange}--${i}`}
-                type={spotifyType}
-              />
-            )
-          })}
-          <div ref={refSWRInfinitePages} />
-          <DataItemLoader
-            error={error}
-            handleScroll={() => scrollIntoViewHandle()}
-            isLoadingMore={isLoadingMore}
-            key="np-l-2"
-          />
-        </ul>
-
+        <DataItems />
         <div className={cx()}></div>
       </Grid>
     </>
