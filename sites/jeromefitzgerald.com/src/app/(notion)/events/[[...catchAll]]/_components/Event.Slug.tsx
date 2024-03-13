@@ -9,10 +9,11 @@ import {
 import { getDataFromCache } from '@jeromefitz/shared/notion/utils/index'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
+import { Flex } from '@radix-ui/themes'
 import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
 import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
 import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
-import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
+// import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
 import { Separator } from '@radix-ui/themes/dist/esm/components/separator.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
