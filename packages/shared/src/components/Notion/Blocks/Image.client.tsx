@@ -1,6 +1,8 @@
 /**
  * @todo(types) next/image
  */
+// import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
+
 // import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -28,7 +30,7 @@ function Image({ ...props }) {
     priority: isPriority,
     // loading: isPriority ? 'eager' : 'lazy',
     quality: 90,
-    // unoptimized = process.env.NODE_ENV !== 'production',
+    // unoptimized = env.IS_DEV',
     ...image,
     ...img,
   }

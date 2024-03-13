@@ -1,13 +1,12 @@
 import 'server-only'
 
+import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
 import { getPageData as _getPageData } from 'next-notion/queries/index'
 import { cache } from 'react'
 
 import { getCache, getKey, setCache } from '../../redis/index'
-
-const OVERRIDE_CACHE = process.env.OVERRIDE_CACHE || false
 
 /**
  * @todo(next) draft | revalidate
@@ -24,7 +23,7 @@ const getPageDataFromNotion = cache(async (id) => {
 
   const isCached = !!dataFromCache && !isObjectEmpty(dataFromCache)
 
-  if (OVERRIDE_CACHE || !isCached) {
+  if (env.OVERRIDE_CACHE || !isCached) {
     const dataFromNotion = await _getPageData(id)
     // console.dir(`> dataFromNotion: ${id}`)
     // console.dir(dataFromNotion)

@@ -1,6 +1,8 @@
 import Image from 'next/image'
 // import { notFound } from 'next/navigation.js'
 
+import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
+
 import { FourOhFour } from '@/app/_errors/404'
 import { Grid } from '@/components/Grid/index'
 import {
@@ -9,7 +11,6 @@ import {
   HeadlineTitle,
   HeadlineTitleSub,
 } from '@/components/Headline/index'
-import { envClient as env } from '@/config/env.client.mjs'
 
 async function ImageTest() {
   const imageUrl = `https://cdn.jeromefitzgerald.com/images/2020/01/jfle--2020--cec-jr--bob-shields.jpg`

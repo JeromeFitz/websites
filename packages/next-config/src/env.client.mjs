@@ -14,6 +14,8 @@ const SITE_HTTPS = `https://${SITE}`
 
 const envSchema = z.object({
   IS_DEV: z.boolean(),
+  IS_PRODUCTION: z.boolean(),
+  IS_VERCEL: z.boolean(),
   NEXT_PUBLIC__BASE_URL: z.enum([SITE_HTTPS]).default(SITE_HTTPS),
   NEXT_PUBLIC__FATHOM_SITE_ID: z.string().trim(),
   NEXT_PUBLIC__SITE: z.enum([SITE]).default(SITE),
@@ -32,6 +34,8 @@ const envSchema = z.object({
 
 const envClientParsed = envSchema.safeParse({
   IS_DEV: process.env.NODE_ENV === 'development' ?? false,
+  IS_PRODUCTION: process.env.NODE_ENV === 'production' ?? false,
+  IS_VERCEL: !!process.env.VERCEL_URL ?? false,
   NEXT_PUBLIC__BASE_URL: `https://${process.env.NEXT_PUBLIC__SITE}`,
   NEXT_PUBLIC__FATHOM_SITE_ID: process.env.NEXT_PUBLIC__FATHOM_SITE_ID,
   NEXT_PUBLIC__SITE: process.env.NEXT_PUBLIC__SITE,

@@ -1,3 +1,4 @@
+import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
 import type {
@@ -8,8 +9,6 @@ import type { Metadata } from 'next'
 
 import { getPropertyTypeData } from 'next-notion/utils/index'
 import _title from 'title'
-
-// import { envClient as env } from '@/config/env.client.mjs'
 
 // import { getEventData } from '../index'
 
@@ -36,8 +35,8 @@ function getMetadata({ properties, segmentInfo }) {
 
   const canonical =
     segmentInfo?.slug === '/homepage'
-      ? process.env.NEXT_PUBLIC__BASE_URL
-      : `${process.env.NEXT_PUBLIC__BASE_URL}${segmentInfo?.slug}`
+      ? env.NEXT_PUBLIC__BASE_URL
+      : `${env.NEXT_PUBLIC__BASE_URL}${segmentInfo?.slug}`
 
   const descriptionTemp: TextRichTextItemResponse = getPropertyTypeData(
     properties,

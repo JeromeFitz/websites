@@ -10,6 +10,8 @@ import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import { draftMode } from 'next/headers.js'
 // import { notFound } from 'next/navigation.js'
 
+import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
+
 import { CONFIG, getPageData } from '@/app/(notion)/_config/index'
 import { FourOhFour } from '@/app/_errors/404'
 import { Grid } from '@/components/Grid/index'
@@ -20,7 +22,6 @@ import {
   HeadlineTitleSub,
 } from '@/components/Headline/index'
 import { Notion as Blocks } from '@/components/Notion/index'
-import { envClient as env } from '@/config/env.client.mjs'
 
 const slug = '/kitchen-sink'
 const { SEGMENT } = CONFIG.PAGES

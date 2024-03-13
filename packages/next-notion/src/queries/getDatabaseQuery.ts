@@ -1,5 +1,8 @@
 import 'server-only'
 
+import { envClient } from '@jeromefitz/next-config/env.client.mjs'
+import { envServer } from '@jeromefitz/next-config/env.server.mjs'
+
 import { addDays, format } from 'date-fns'
 // import { cache } from 'react'
 
@@ -8,8 +11,7 @@ import type { SegmentInfo } from '../utils/getSegmentInfo'
 
 import { notion } from '../helper'
 
-const isDev = process.env.NODE_ENV === 'development'
-const DATABASE_ID = process.env.NOTION__DATABASE__PAGES ?? ''
+const DATABASE_ID = envServer.NOTION__DATABASE__PAGES ?? ''
 
 type GetDatabaseQueryTypes = {
   database_id?: string
@@ -21,7 +23,7 @@ type GetDatabaseQueryTypes = {
 /**
  * @note(notion) development pseudo preview
  */
-const isPublishedAnd = isDev
+const isPublishedAnd = envClient.IS__DEV
   ? {
       created_time: {
         after: '2020-01-01T00:00:00.000Z',

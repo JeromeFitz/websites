@@ -1,3 +1,4 @@
+import { envServer as env } from '@jeromefitz/next-config/env.server.mjs'
 import {
   getDataFromCache,
   getSegmentInfo,
@@ -9,7 +10,6 @@ import { revalidatePath } from 'next/cache.js'
 import { NextRequest, NextResponse } from 'next/server.js'
 
 import { CONFIG } from '@/app/(notion)/_config/index'
-import { envServer as env } from '@/config/env.server.mjs'
 
 const { DATABASE_ID: DATABASE_ID__EVENTS } = CONFIG.EVENTS
 const { DATABASE_ID: DATABASE_ID__PAGES } = CONFIG.PAGES

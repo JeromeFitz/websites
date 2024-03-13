@@ -1,4 +1,5 @@
 import { Callout } from '@jeromefitz/ds/components/Callout/index'
+import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
 import {
   getDataFromCache,
   getSegmentInfo,
@@ -19,7 +20,6 @@ import {
 } from '@/components/Headline/index'
 // import { Notion as Blocks } from '@/components/Notion/index'
 import { Layout } from '@/components/Layout/index'
-import { envClient as env } from '@/config/env.client.mjs'
 
 const slug = '/contact'
 const { SEGMENT } = CONFIG.PAGES

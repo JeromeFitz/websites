@@ -11,6 +11,8 @@
  * Should we handle that all together, or not?
  */
 
+// import isEqual from 'lodash/isEqual.js'
+import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
 import {
   getDataFromCache,
   getDatabaseQuery,
@@ -19,7 +21,6 @@ import {
 import { isObjectEmpty } from '@jeromefitz/utils'
 
 import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints.js'
-// import isEqual from 'lodash/isEqual.js'
 // import uniqWith from 'lodash/uniqWith.js'
 import type { Metadata } from 'next'
 
@@ -30,7 +31,6 @@ import type { PageObjectResponsePodcast } from '@/app/(notion)/_config/index'
 import { CONFIG, getPageData, getPodcastData } from '@/app/(notion)/_config/index'
 import { generateMetadataCustom } from '@/app/(notion)/_config/temp/generateMetadataCustom'
 import { Layout } from '@/components/Layout/index'
-import { envClient as env } from '@/config/env.client.mjs'
 
 import { EpisodeSlug } from './_components/Episode.Slug'
 import { Listing as PodcastListing } from './_components/Podcast.Listing'

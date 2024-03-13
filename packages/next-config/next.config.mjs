@@ -6,32 +6,23 @@ import withPlaiceholder from '@plaiceholder/next'
 import { setupBuildInfo } from './src/build-info.mjs'
 import securityHeaders from './src/security-headers.mjs'
 
-/**
- * @note(pnpm) until we move "websites" into "packages"...
- *
- * When developing locally:
- * - pnpm dev:ds
- * - OR update .env => pnpm dev
- *
- * This maps all the externals required for proper localized
- *  files system path mapping.
- */
-const isLocal = process.env.DESIGN_SYSTEM__LINK === 'true' ? true : false
+import './src/env.client.mjs'
+import './src/env.server.mjs'
+
 const externals = [
-  // '@radix-ui/react-primitive',
   '@radix-ui/colors',
-  // '@types/react',
-  // '@types/react-dom',
   'cmdk',
   'react',
   'react-dom',
   'prettier',
   'swr',
 ]
-const isLocalDebugMessages = [
-  `[ 📝 ] pnpm link...`,
-  `[ 🔗 ] @jeromefitz/design-system`,
-]
+
+/**
+ * @note(pnpm) remnant from pnpm linking, should be removed
+ */
+const isLocal = false
+const isLocalDebugMessages = [`[ 📝 ] pnpm link...`]
 
 const PROTOCOL = {
   HTTP: 'http',
@@ -66,15 +57,6 @@ const config = ({
 }) => {
   // console.dir(`> (debug) basePath:    ${basePath}`)
   // console.dir(`> (debug) pathDirName: ${pathDirName}`)
-
-  /**
-   * @note(pnpm) pass ENV variable to determine if we should transpile
-   *            ./src  == transpile
-   *            ./dist != transpile
-   */
-
-  process.env.DESIGN_SYSTEM__TRANSPILE === 'true' &&
-    transpilePackages.push('@jeromefitz/design-system')
 
   /**
    * @type {import('next').NextConfig}

@@ -1,3 +1,5 @@
+import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
+
 import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 
@@ -9,7 +11,6 @@ import {
   HeadlineTitle,
   HeadlineTitleSub,
 } from '@/components/Headline/index'
-import { envClient as env } from '@/config/env.client.mjs'
 
 type RadixColor =
   | 'amber'

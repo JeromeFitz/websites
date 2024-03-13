@@ -15,10 +15,9 @@ import {
   SunIcon,
   TicketIcon,
 } from '@jeromefitz/ds/components/Icon/index'
+import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
 
 import type { ReactNode } from 'react'
-
-import { envClient as env } from '@/config/env.client.mjs'
 
 interface Item {
   group: string

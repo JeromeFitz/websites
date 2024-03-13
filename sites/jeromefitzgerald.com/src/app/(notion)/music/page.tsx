@@ -1,3 +1,4 @@
+import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
 import {
   getDataFromCache,
   getSegmentInfo,
@@ -11,7 +12,6 @@ import { draftMode } from 'next/headers.js'
 import { CONFIG, getPageData } from '@/app/(notion)/_config/index'
 import { generateMetadataCustom } from '@/app/(notion)/_config/temp/generateMetadataCustom'
 import { Layout } from '@/components/Layout/index'
-import { envClient as env } from '@/config/env.client.mjs'
 
 import { MusicClient } from './_components/Music.client'
 

@@ -1,3 +1,5 @@
+// import isEqual from 'lodash/isEqual.js'
+import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
 import {
   getDataFromCache,
   getDatabaseQuery,
@@ -5,7 +7,6 @@ import {
 } from '@jeromefitz/shared/notion/utils/index'
 
 import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints.js'
-// import isEqual from 'lodash/isEqual.js'
 // import uniqWith from 'lodash/uniqWith.js'
 import type { Metadata } from 'next'
 
@@ -16,7 +17,6 @@ import type { PageObjectResponsePerson } from '@/app/(notion)/_config/index'
 import { CONFIG, getPageData, getPersonData } from '@/app/(notion)/_config/index'
 import { generateMetadataCustom } from '@/app/(notion)/_config/temp/generateMetadataCustom'
 import { Layout } from '@/components/Layout/index'
-import { envClient as env } from '@/config/env.client.mjs'
 
 import { Listing } from './_components/People.Listing'
 import { Slug } from './_components/Person.Slug'

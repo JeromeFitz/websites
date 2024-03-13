@@ -11,7 +11,10 @@
         "name": "next"
       }
     ],
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "paths": {
+      "@jeromefitz/next-config/*": ["../../packages/next-config/src/*"]
+    }
   },
   "include": ["src"],
   "exclude": ["node_modules"]

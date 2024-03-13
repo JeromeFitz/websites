@@ -1,7 +1,7 @@
 import { cx } from '@jeromefitz/ds/utils/cx'
+import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
 
 import { FourOhFour } from '@/app/_errors/404'
-import { envClient as env } from '@/config/env.client.mjs'
 
 import { Layout } from './_components/Layout'
 

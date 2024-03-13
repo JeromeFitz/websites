@@ -1,15 +1,14 @@
+import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
+
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 
-const debug = process.env.NODE_ENV === 'development'
-const isVercel = process.env.VERCEL_URL || ''
-
 function VercelAnalytics() {
-  return isVercel ? <Analytics debug={debug} /> : null
+  return env.IS_VERCEL ? <Analytics debug={env.IS_DEV} /> : null
 }
 
 function VercelSpeedInsights() {
-  return isVercel ? <SpeedInsights /> : null
+  return env.IS_VERCEL ? <SpeedInsights /> : null
 }
 
 export { VercelAnalytics, VercelSpeedInsights }

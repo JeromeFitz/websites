@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import https from 'node:https'
 
+import { envClient } from '@jeromefitz/next-config/env.client.mjs'
+import { envServer } from '@jeromefitz/next-config/env.server.mjs'
 import Client from '@jeromefitz/spotify'
 
 import type { ClientProps, CredentialProps } from '@jeromefitz/spotify'
@@ -11,9 +13,6 @@ import stringify from 'fast-json-stable-stringify'
 import { slug as _slug } from 'github-slugger'
 import ms from 'ms'
 import { NextRequest, NextResponse } from 'next/server.js'
-
-import { envClient } from '@/config/env.client.mjs'
-import { envServer } from '@/config/env.server.mjs'
 
 const keyPrefixSpotify = `${envClient.NEXT_PUBLIC__SITE}/spotify`
 

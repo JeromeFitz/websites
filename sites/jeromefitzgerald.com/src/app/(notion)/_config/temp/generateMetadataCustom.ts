@@ -6,14 +6,13 @@
  */
 import https from 'node:https'
 
+import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
 import { Redis } from '@upstash/redis'
 import { slug as _slug } from 'github-slugger'
 import _title from 'title'
 import validUrl from 'valid-url'
-
-import { envClient as env } from '@/config/env.client.mjs'
 
 const redis = Redis.fromEnv({
   agent: new https.Agent({ keepAlive: true }),

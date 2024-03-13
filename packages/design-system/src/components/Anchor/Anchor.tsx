@@ -1,3 +1,5 @@
+import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
+
 import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 // eslint-disable-next-line no-restricted-imports
 import NextLink, { type LinkProps } from 'next/link'
@@ -6,7 +8,7 @@ import React, { type PropsWithChildren } from 'react'
 import { cx } from '../../utils/cx'
 import { ExternalLinkIcon } from '../Icon/Icon'
 
-const nextSeo = { url: `https://${process.env.NEXT_PUBLIC__SITE}` }
+const nextSeo = { url: `https://${env.NEXT_PUBLIC__SITE}` }
 const domain = new URL(nextSeo.url)
 
 const Anchor = ({ children, className = '', href }) => {

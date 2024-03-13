@@ -1,4 +1,5 @@
 // import { cx } from '@jeromefitz/ds/utils/cx'
+import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
 import {
   getDataFromCache,
   getDatabaseQuery,
@@ -15,7 +16,6 @@ import _title from 'title'
 import { CONFIG, getBookData, getPageData } from '@/app/(notion)/_config/index'
 import { generateMetadataCustom } from '@/app/(notion)/_config/temp/generateMetadataCustom'
 import { Layout } from '@/components/Layout/index'
-import { envClient as env } from '@/config/env.client.mjs'
 
 import { BookPage } from './_components/Book.client'
 

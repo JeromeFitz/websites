@@ -1,27 +1,18 @@
 'use client'
+import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
+
 import { load, trackPageview } from 'fathom-client'
 import { usePathname, useSearchParams } from 'next/navigation.js'
 import { useEffect } from 'react'
-
-// const isProd = process.env.NODE_ENV === 'production'
-// const isVercel = process.env.VERCEL_URL || ''
-// const hasAnalytics = isProd && isVercel
 
 function FathomAnalytics() {
   const pathname = usePathname()
   const searchParams = useSearchParams()
   useEffect(() => {
-    // if (hasAnalytics) {
-    if (process.env.NODE_ENV === 'production') {
-      /**
-       * @note(types)
-       * Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
-       */
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      load(process.env.NEXT_PUBLIC__FATHOM_SITE_ID, {
+    if (env.IS_PRODUCTION) {
+      load(env.NEXT_PUBLIC__FATHOM_SITE_ID, {
         honorDNT: true,
-        includedDomains: [process.env.NEXT_PUBLIC__SITE],
+        includedDomains: [env.NEXT_PUBLIC__SITE],
         url: `https://cdn.usefathom.com/script.js`,
       })
     }

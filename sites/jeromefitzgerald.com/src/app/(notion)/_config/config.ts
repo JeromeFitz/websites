@@ -1,4 +1,4 @@
-import { envServer as env } from '@/config/env.server.mjs'
+import { envServer as env } from '@jeromefitz/next-config/env.server.mjs'
 
 const CONFIG = {
   BLOG: {

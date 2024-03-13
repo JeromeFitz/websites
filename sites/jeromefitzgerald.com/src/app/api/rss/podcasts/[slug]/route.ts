@@ -1,6 +1,7 @@
 // https://jerandky.com/api/rss/podcasts/jer-and-ky-and-guest
 // https://jerandky.com/api/rss/podcasts/knockoffs
 
+import { envClient } from '@jeromefitz/next-config/env.client.mjs'
 import {
   getDataFromCache,
   getSegmentInfo,
@@ -14,7 +15,6 @@ import { Podcast } from 'podcast'
 
 // import type { PropertiesEpisode, PropertiesPodcast } from '@/app/(notion)/_config/index'
 import { CONFIG, getEpisodeData, getPodcastData } from '@/app/(notion)/_config/index'
-import { envClient } from '@/config/env.client.mjs'
 
 const { DATABASE_ID, SEGMENT } = CONFIG.PODCASTS
 

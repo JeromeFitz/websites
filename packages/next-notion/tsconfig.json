@@ -36,7 +36,8 @@
     "target": "ESNext",
     "tsBuildInfoFile": ".tsbuildinfo",
     "paths": {
-      "@jeromefitz/ds/*": ["../../packages/design-system/src/*"]
+      "@jeromefitz/ds/*": ["../../packages/design-system/src/*"],
+      "@jeromefitz/next-config/*": ["../../packages/next-config/src/*"]
     }
   },
   "include": ["src", "index.d.ts", "next-env.d.ts"],

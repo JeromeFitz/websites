@@ -6,6 +6,8 @@ import { ImageClient as NextImage } from '@jeromefitz/shared/components/Notion/B
 //   getImageAlt,
 //   getImageExpiration,
 //   getImageUrl,
+import { envClient } from '@jeromefitz/next-config/env.client.mjs'
+import { envServer } from '@jeromefitz/next-config/env.server.mjs'
 // } from '@jeromefitz/shared/components/Notion/Blocks/Image.utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
@@ -17,8 +19,6 @@ import { isAwsImage, isImageExpired } from 'next-notion/utils/index'
 import validUrl from 'valid-url'
 
 import { getPropertyTypeDataEvent } from '@/app/(notion)/_config/index'
-import { envClient } from '@/config/env.client.mjs'
-import { envServer } from '@/config/env.server.mjs'
 
 const notion = new Client({ auth: envServer.NOTION_API_KEY })
 // const notion = new Client({ auth: envServer.NOTION_API_KEY })

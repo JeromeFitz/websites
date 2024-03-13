@@ -8,12 +8,20 @@
  *   - Override Cache with new Image Data (if using)
  *
  */
+/**
+ * @note(next|redis) try to avoid breaking changes but if necessary
+ *  run a build with:
+ *  -  OVERRIDE_CACHE=true pnpm turbo run build --filter="..."
+ */
+
 import 'server-only'
 
 import https from 'node:https'
 
 import { Callout } from '@jeromefitz/ds/components/Callout/index'
 import { CameraIcon } from '@jeromefitz/ds/components/Icon/index'
+import { envClient } from '@jeromefitz/next-config/env.client.mjs'
+import { envServer } from '@jeromefitz/next-config/env.server.mjs'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
 import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints.js'
@@ -30,7 +38,7 @@ import { TIME } from '../../../lib/constants'
 import { ImageClient as NextImage } from './Image.client'
 import { getImageAlt, getImageExpiration, getImageUrl } from './Image.utils'
 
-const notion = new Client({ auth: process.env.NOTION_API_KEY })
+const notion = new Client({ auth: envServer.NOTION_API_KEY })
 
 const redis = Redis.fromEnv({
   agent: new https.Agent({ keepAlive: true }),
@@ -40,14 +48,7 @@ const redis = Redis.fromEnv({
   },
 })
 
-/**
- * @note(next|redis) try to avoid breaking changes but if necessary
- *  run a build with:
- *  -  OVERRIDE_CACHE=true pnpm turbo run build --filter="..."
- */
-const OVERRIDE_CACHE = process.env.OVERRIDE_CACHE || false
-
-const CACHE_KEY_PREFIX__IMAGE = `${process.env.NEXT_PUBLIC__SITE}/image`
+const CACHE_KEY_PREFIX__IMAGE = `${envClient.NEXT_PUBLIC__SITE}/image`
 
 // async function getImage({ url }) {}
 
@@ -96,7 +97,7 @@ async function getImageFromBlock({ block, url }) {
     imageExpiry = getImageExpiration(blockRefreshData)
   }
 
-  if (OVERRIDE_CACHE || !isCached) {
+  if (envClient.OVERRIDE_CACHE || !isCached) {
     /**
      * @note(notion) Get Image Comments
      * @todo(notion) Can we store this with Redis KV?
@@ -117,7 +118,7 @@ async function getImageFromBlock({ block, url }) {
    *
    * would recommend not having the "hit" here
    */
-  if (OVERRIDE_CACHE || (!isCached && !!imageUrl)) {
+  if (envClient.OVERRIDE_CACHE || (!isCached && !!imageUrl)) {
     const { getImage } = await import('../../../plaiceholder/getImage')
     const imageData = await getImage(imageUrl)
     image.blurDataURL = imageData?.base64
@@ -140,7 +141,7 @@ async function getImageFromBlock({ block, url }) {
    * Cache
    */
 
-  if (OVERRIDE_CACHE || isExpired || !isCached) {
+  if (envClient.OVERRIDE_CACHE || isExpired || !isCached) {
     void redis.set(key, stringify(image), {
       ex: TIME.MONTH,
     })

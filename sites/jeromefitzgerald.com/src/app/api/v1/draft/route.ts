@@ -1,3 +1,4 @@
+import { envServer as env } from '@jeromefitz/next-config/env.server.mjs'
 import {
   getDataFromCache,
   getSegmentInfo,
@@ -5,8 +6,6 @@ import {
 
 import { draftMode } from 'next/headers.js'
 import { redirect } from 'next/navigation.js'
-
-import { envServer as env } from '@/config/env.server.mjs'
 
 /**
  * @todo(notion) this is a proof of concept right now
