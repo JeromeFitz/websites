@@ -1,4 +1,5 @@
 import { AnchorUnstyled as Anchor } from '@jeromefitz/ds/components/Anchor/index'
+import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
 
 import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
@@ -11,8 +12,6 @@ import {
   HeadlineTitle,
   HeadlineTitleSub,
 } from '@/components/Headline/index'
-
-const isDev = process.env.NODE_ENV === 'development'
 
 const links = [
   '/',
@@ -30,9 +29,12 @@ const links = [
   // '/kitchen-sink',
 ]
 
+/**
+ * @todo(next) uh can we delete this?
+ */
 function Wrapper({ children }) {
-  if (!isDev) return null
-  if (isDev) return null
+  if (!env.IS_DEV) return null
+  if (env.IS_DEV) return null
 
   const title = 'Testing'
   return (

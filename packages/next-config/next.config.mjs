@@ -4,37 +4,48 @@ import withBundleAnalyzer from '@next/bundle-analyzer'
 import withPlaiceholder from '@plaiceholder/next'
 
 import { setupBuildInfo } from './src/build-info.mjs'
-import envRequired from './src/env-required.mjs'
 import securityHeaders from './src/security-headers.mjs'
 
-envRequired()
+import './src/env.client.mjs'
+import './src/env.server.mjs'
 
 /**
- * @note(pnpm) until we move "websites" into "packages"...
- *
- * When developing locally:
- * - pnpm dev:ds
- * - OR update .env => pnpm dev
- *
- * This maps all the externals required for proper localized
- *  files system path mapping.
+ * @todo(next) cannot remove all of these just yet   🫠
+ *             moved here instead of env.server for now
  */
-const isLocal = process.env.DESIGN_SYSTEM__LINK === 'true' ? true : false
+const envSecrets = [
+  'DRAFT_TOKEN',
+  'GH_TOKEN',
+  'LHCI_GITHUB_APP_TOKEN',
+  // 'NOTION_API_KEY',
+  // // 'OCTOKIT_TOKEN',
+  'OG_API_KEY',
+  'PREVIEW_TOKEN',
+  'REVALIDATE_TOKEN',
+  'SPOTIFY_CLIENT_ID',
+  'SPOTIFY_CLIENT_SECRET',
+  'SPOTIFY_REFRESH_TOKEN',
+  // // 'UPSTASH_REDIS_REST_TOKEN',
+  // // 'UPSTASH_REDIS_REST_URL',
+]
+for (const envSecretsVar of envSecrets) {
+  delete process.env[envSecretsVar]
+}
+
 const externals = [
-  // '@radix-ui/react-primitive',
   '@radix-ui/colors',
-  // '@types/react',
-  // '@types/react-dom',
   'cmdk',
   'react',
   'react-dom',
   'prettier',
   'swr',
 ]
-const isLocalDebugMessages = [
-  `[ 📝 ] pnpm link...`,
-  `[ 🔗 ] @jeromefitz/design-system`,
-]
+
+/**
+ * @note(pnpm) remnant from pnpm linking, should be removed
+ */
+const isLocal = false
+const isLocalDebugMessages = [`[ 📝 ] pnpm link...`]
 
 const PROTOCOL = {
   HTTP: 'http',
@@ -69,15 +80,6 @@ const config = ({
 }) => {
   // console.dir(`> (debug) basePath:    ${basePath}`)
   // console.dir(`> (debug) pathDirName: ${pathDirName}`)
-
-  /**
-   * @note(pnpm) pass ENV variable to determine if we should transpile
-   *            ./src  == transpile
-   *            ./dist != transpile
-   */
-
-  process.env.DESIGN_SYSTEM__TRANSPILE === 'true' &&
-    transpilePackages.push('@jeromefitz/design-system')
 
   /**
    * @type {import('next').NextConfig}

@@ -46,9 +46,9 @@ async function setupBuildInfo({ buildInfoConfig, pathDirName }) {
   } else {
     const releases = await octokit.request('GET /repos/{owner}/{repo}/releases', {
       owner: buildInfoConfig.owner,
-      repo: buildInfoConfig.repo,
       page: 1,
       per_page: 20,
+      repo: buildInfoConfig.repo,
     })
 
     const ___data = _orderBy(releases.data, ['published_at'], ['desc'])

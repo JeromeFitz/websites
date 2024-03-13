@@ -1,5 +1,7 @@
 import https from 'node:https'
 
+import { envClient } from '@jeromefitz/next-config/env.client.mjs'
+import { envServer } from '@jeromefitz/next-config/env.server.mjs'
 import { ImageClient as NextImage } from '@jeromefitz/shared/components/Notion/Blocks/Image.client'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
@@ -11,11 +13,15 @@ import validUrl from 'valid-url'
 
 import { getPropertyTypeDataEpisode } from '../../../_config'
 
-// const notion = new Client({ auth: process.env.NOTION_API_KEY })
+// const notion = new Client({ auth: envServer.NOTION_API_KEY })
 
-const redis = Redis.fromEnv({ agent: new https.Agent({ keepAlive: true }) })
+const redis = new Redis({
+  agent: new https.Agent({ keepAlive: true }),
+  token: envServer.UPSTASH_REDIS_REST_TOKEN,
+  url: envServer.UPSTASH_REDIS_REST_URL,
+})
 
-const CACHE_KEY_PREFIX__IMAGE = `${process.env.NEXT_PUBLIC__SITE}/image`
+const CACHE_KEY_PREFIX__IMAGE = `${envClient.NEXT_PUBLIC__SITE}/image`
 
 async function Image({ properties }) {
   /**

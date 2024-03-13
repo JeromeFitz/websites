@@ -1,44 +1,46 @@
 /**
  * @note(notion) try as i might, we need a config file
  */
+import { envServer as env } from '@jeromefitz/next-config/env.server.mjs'
+
 const DATABASES = {
   BLOG: {
-    id: '27360d9b5f274dc2ac19ad09837b6860',
+    id: env.NOTION__DATABASE__BLOG,
     segment: 'pages',
     slug: 'blog',
   },
   BOOKS: {
-    id: 'cff5175dc3174af4b2b20826eb409291',
+    id: env.NOTION__DATABASE__BOOKS,
     segment: 'pages',
     slug: 'books',
   },
   EPISODES: {
-    id: '2dbb52e80e5d49bfbf5ac1a98f6c07d4',
+    id: env.NOTION__DATABASE__EPISODES,
     segment: 'episodes',
     slug: 'episodes',
   },
   EVENTS: {
-    id: '9248dbc7a4c141aab16551bc87ed5422',
+    id: env.NOTION__DATABASE__EVENTS,
     segment: 'pages',
     slug: 'events',
   },
   PAGES: {
-    id: 'c6ef23945c684e10a5f6aafb4c7ad115',
+    id: env.NOTION__DATABASE__PAGES,
     segment: 'pages',
     slug: '',
   },
   PODCASTS: {
-    id: '601679d51dba4dd1b0bc1efc20800e5a',
+    id: env.NOTION__DATABASE__PODCASTS,
     segment: 'pages',
     slug: 'podcasts',
   },
   SHOWS: {
-    id: '30471ded18b34af982d2f0064c4bcbf1',
+    id: env.NOTION__DATABASE__SHOWS,
     segment: 'pages',
     slug: 'shows',
   },
   VENUES: {
-    id: 'ab2134096d7f48ad9c86c576b59b6c0e',
+    id: env.NOTION__DATABASE__VENUES,
     segment: 'pages',
     slug: 'veneus',
   },

@@ -1,3 +1,5 @@
+import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
+
 import { FourOhFour } from '@/app/_errors/404'
 import { Grid } from '@/components/Grid/index'
 import {
@@ -7,12 +9,10 @@ import {
   HeadlineTitleSub,
 } from '@/components/Headline/index'
 
-const isDev = process.env.NODE_ENV === 'development'
-
 export default function Page() {
-  // if (!isDev) notFound()
+  // if (!env.IS_DEV) notFound()
   // @note(next) avoid NEXT_DYNAMIC_NO_SSR_CODE
-  if (!isDev) return <FourOhFour isNotPublished={false} segmentInfo={{}} />
+  if (!env.IS_DEV) return <FourOhFour isNotPublished={false} segmentInfo={{}} />
 
   const title = 'Playground'
   return (

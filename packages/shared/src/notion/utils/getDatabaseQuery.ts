@@ -1,13 +1,12 @@
 import 'server-only'
 
+import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
 import { getDatabaseQuery as _getDatabaseQuery } from 'next-notion/queries/index'
 import { cache } from 'react'
 
 import { getCache, getKey, setCache } from '../../redis/index'
-
-const OVERRIDE_CACHE = process.env.OVERRIDE_CACHE || false
 
 const getDatabaseQuery = cache(
   async ({ database_id, draft, filterType, revalidate, segmentInfo }) => {
@@ -23,9 +22,9 @@ const getDatabaseQuery = cache(
 
     const isCached = !!dataFromCache && !isObjectEmpty(dataFromCache)
 
-    if (OVERRIDE_CACHE || draft || revalidate || !isCached) {
+    if (env.OVERRIDE_CACHE || draft || revalidate || !isCached) {
       // console.dir(
-      //   `getDatabaseQuery: OVERRIDE_CACHE || draft || revalidate || !isCached`
+      //   `getDatabaseQuery: env.OVERRIDE_CACHE || draft || revalidate || !isCached`
       // )
       const dataFromNotion = await _getDatabaseQuery({
         database_id,

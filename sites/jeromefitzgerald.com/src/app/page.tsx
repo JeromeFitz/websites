@@ -1,4 +1,6 @@
 // import { cx } from '@jeromefitz/ds/utils/cx'
+// import { Notion as Blocks } from '@/components/Notion/index'
+import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
 import {
   getDataFromCache,
   getSegmentInfo,
@@ -13,7 +15,6 @@ import { CONFIG, getPageData } from '@/app/(notion)/_config/index'
 import { generateMetadataCustom } from '@/app/(notion)/_config/temp/generateMetadataCustom'
 import { PageHome } from '@/app/_components/Page.Home'
 import { Layout } from '@/components/Layout/index'
-// import { Notion as Blocks } from '@/components/Notion/index'
 
 const slug = '/homepage'
 const { SEGMENT } = CONFIG.PAGES
@@ -35,7 +36,7 @@ export async function generateMetadata({ ...props }): Promise<Metadata> {
 
   const is404 = isObjectEmpty(data?.blocks || {})
   const is404Seo = {
-    title: `404 | ${segmentInfo?.segment} | ${process.env.NEXT_PUBLIC__SITE}`,
+    title: `404 | ${segmentInfo?.segment} | ${env.NEXT_PUBLIC__SITE}`,
   }
 
   if (is404) return is404Seo

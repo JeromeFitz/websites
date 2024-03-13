@@ -18,10 +18,10 @@ import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
 import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import {
-  TabsContent,
-  TabsList,
-  TabsRoot,
-  TabsTrigger,
+  Content as TabsContent,
+  List as TabsList,
+  Root as TabsRoot,
+  Trigger as TabsTrigger,
 } from '@radix-ui/themes/dist/esm/components/tabs.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import _map from 'lodash/map.js'

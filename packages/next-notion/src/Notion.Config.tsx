@@ -38,22 +38,22 @@ const TYPES = {
  */
 const blocks = {
   bulleted_list: {
-    // component: ListBulleted,
     as: 'ul',
     className: '',
     component: lazy(() => import('./blocks/ListBulleted')),
+    // component: ListBulleted,
   },
   bulleted_list_item: {
-    // component: RichText,
     as: 'li',
     className: '',
     component: lazy(() => import('./blocks/RichText')),
+    // component: RichText,
   },
   callout: {
-    // component: RichText,
     as: 'blockquote',
     className: '',
     component: lazy(() => import('./blocks/RichText')),
+    // component: RichText,
   },
   column: {
     as: 'div',
@@ -61,58 +61,58 @@ const blocks = {
     component: 'div',
   },
   column_list: {
-    // component: ListColumn,
     as: 'div',
     className: '',
     component: lazy(() => import('./blocks/ListColumn')),
+    // component: ListColumn,
   },
   divider: {
-    // component: Divider,
     as: 'hr',
     className: '',
     component: lazy(() => import('./blocks/Divider')),
+    // component: Divider,
   },
   heading_1: {
-    // component: RichText,
     as: 'h1',
     className: '',
     component: lazy(() => import('./blocks/RichText')),
+    // component: RichText,
   },
   heading_2: {
-    // component: RichText,
     as: 'h2',
     className: '',
     component: lazy(() => import('./blocks/RichText')),
+    // component: RichText,
   },
   heading_3: {
-    // component: RichText,
     as: 'h3',
     className: '',
     component: lazy(() => import('./blocks/RichText')),
+    // component: RichText,
   },
   numbered_list: {
-    // component: ListBulleted,
     as: 'ol',
     className: '',
     component: lazy(() => import('./blocks/ListBulleted')),
+    // component: ListBulleted,
   },
   numbered_list_item: {
-    // component: RichText,
     as: 'li',
     className: '',
     component: lazy(() => import('./blocks/RichText')),
+    // component: RichText,
   },
   paragraph: {
-    // component: RichText,
     as: 'p',
     className: '',
     component: lazy(() => import('./blocks/RichText')),
+    // component: RichText,
   },
   quote: {
-    // component: RichText,
     as: 'blockquote',
     className: '',
     component: lazy(() => import('./blocks/RichText')),
+    // component: RichText,
   },
 }
 

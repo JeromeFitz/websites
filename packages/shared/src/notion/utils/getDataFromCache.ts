@@ -1,5 +1,12 @@
 import 'server-only'
+/**
+ * @note(next|redis) try to avoid breaking changes but if necessary
+ *  run a build with:
+ *  -  OVERRIDE_CACHE=true pnpm turbo run build --filter="..."
+ */
 
+import { envClient } from '@jeromefitz/next-config/env.client.mjs'
+import { envServer } from '@jeromefitz/next-config/env.server.mjs'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
 import { Client } from '@notionhq/client'
@@ -13,14 +20,7 @@ import { getDatabaseQuery, getMetadata } from './index'
 // @todo(types) next-notion
 // import type { SegmentInfo } from './index'
 
-const notion = new Client({ auth: process.env.NOTION_API_KEY })
-
-/**
- * @note(next|redis) try to avoid breaking changes but if necessary
- *  run a build with:
- *  -  OVERRIDE_CACHE=true pnpm turbo run build --filter="..."
- */
-const OVERRIDE_CACHE = process.env.OVERRIDE_CACHE || false
+const notion = new Client({ auth: envServer.NOTION_API_KEY })
 
 type GetDataFromCache = {
   database_id: string
@@ -66,9 +66,9 @@ const getDataFromCache = cache(
     const isCached = !!databaseQueryCache && !isObjectEmpty(databaseQueryCache)
     data = databaseQueryCache
 
-    if (OVERRIDE_CACHE || draft || revalidate || !isCached) {
+    if (envClient.OVERRIDE_CACHE || draft || revalidate || !isCached) {
       // console.dir(
-      //   `getDataFromCache: OVERRIDE_CACHE || draft || revalidate || !isCached`
+      //   `getDataFromCache: envClient.OVERRIDE_CACHE || draft || revalidate || !isCached`
       // )
       /**
        * Notion

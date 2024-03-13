@@ -7,7 +7,6 @@
     // "noUnusedParameters": false, // @todo(lint)
     // "rootDir": "./src",
     "outDir": "./dist",
-    // "strict": false,
     "allowJs": false,
     "allowSyntheticDefaultImports": true,
     "alwaysStrict": true,
@@ -38,6 +37,7 @@
     "types": ["node", "react/canary"],
     "paths": {
       "@jeromefitz/ds/*": ["../../packages/design-system/src/*"],
+      "@jeromefitz/next-config/*": ["../../packages/next-config/src/*"],
       "next-notion/*": ["../../packages/next-notion/src/*"]
     }
   },

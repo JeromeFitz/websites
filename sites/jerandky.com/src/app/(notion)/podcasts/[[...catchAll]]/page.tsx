@@ -10,7 +10,7 @@
  *
  * Should we handle that all together, or not?
  */
-
+import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
 import {
   getDataFromCache,
   getDatabaseQuery,
@@ -33,8 +33,6 @@ import { EpisodeSlug } from './_components/Episode.Slug'
 import { Listing as PodcastListing } from './_components/Podcast.Listing'
 import { Slug as PodcastSlug } from './_components/Podcast.Slug'
 
-const isDev = process.env.NODE_ENV === 'development'
-
 // export const dynamic = 'auto'
 // export const dynamicParams = true
 // export const fetchCache = 'default-cache'
@@ -53,7 +51,7 @@ export async function generateMetadata({ ...props }): Promise<Metadata> {
 
   const is404 = isObjectEmpty(data?.blocks || {})
   const is404Seo = {
-    title: `404 | ${segmentInfo?.segment} | ${process.env.NEXT_PUBLIC__SITE}`,
+    title: `404 | ${segmentInfo?.segment} | ${env.NEXT_PUBLIC__SITE}`,
   }
 
   if (is404) return is404Seo
@@ -70,7 +68,7 @@ export async function generateMetadata({ ...props }): Promise<Metadata> {
 }
 
 async function _generateStaticParams({ ...props }) {
-  if (isDev) {
+  if (env.IS_DEV) {
     return []
   }
   // @todo(types)
@@ -134,7 +132,7 @@ async function _generateStaticParams({ ...props }) {
 
   return segments
 }
-const generateStaticParams = isDev ? undefined : _generateStaticParams
+const generateStaticParams = env.IS_DEV ? undefined : _generateStaticParams
 export { generateStaticParams }
 
 export default function Page(props) {

@@ -3,6 +3,7 @@
  */
 import 'server-only'
 
+import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
 import type {
@@ -29,8 +30,6 @@ import type {
   RollupFunction,
   SelectPropertyResponse,
 } from '../Notion.types'
-
-const debug = process.env.NODE_ENV === 'development'
 
 type CheckboxData = {
   checkbox: boolean
@@ -331,7 +330,7 @@ function getPropertyTypeData(properties, property) {
   const typeData = properties[property][type]
   const typeDataType = typeData?.type
 
-  if (debug) {
+  if (env.IS_DEV) {
     console.dir(`> debug:        getPropertyTypeData`)
     console.dir(`> type:         ${type}`)
     // console.dir(`> properties:`)

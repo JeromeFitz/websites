@@ -1,6 +1,7 @@
 // https://jerandky.com/api/rss/podcasts/jer-and-ky-and-guest
 // https://jerandky.com/api/rss/podcasts/knockoffs
 
+import { envClient } from '@jeromefitz/next-config/env.client.mjs'
 import {
   getDataFromCache,
   getSegmentInfo,
@@ -52,7 +53,7 @@ export async function GET(
   }
   const podcastData = getPodcastData(data?.page?.properties)
 
-  const isDev = process.env.NODE_ENV === 'development'
+  const isDev = envClient.NODE_ENV === 'development'
   const isPublishedAnd = isDev
     ? {
         created_time: {
@@ -94,7 +95,7 @@ export async function GET(
   let feed: any = null
   const today = new Date()
   const year = today.getFullYear()
-  const url = `https://${process.env.NEXT_PUBLIC__SITE}`
+  const url = `https://${envClient.NEXT_PUBLIC__SITE}`
   const siteUrl = `${url}${podcastData.href}`
   feed = new Podcast({
     author: podcastData?.author,

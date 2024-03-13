@@ -15,10 +15,9 @@ import {
   SunIcon,
   TicketIcon,
 } from '@jeromefitz/ds/components/Icon/index'
+import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
 
 import type { ReactNode } from 'react'
-
-const isDev = process.env.NODE_ENV === 'development'
 
 interface Item {
   group: string
@@ -357,7 +356,7 @@ const menus: NavigationMenuItems[] = [
     href: '/playground/2024',
     icon: Pencil2Icon,
     id: '/playground/2024',
-    isActive: isDev,
+    isActive: env?.IS_DEV,
     isActiveMobileOverride: false,
     isParent: false,
     items: [],

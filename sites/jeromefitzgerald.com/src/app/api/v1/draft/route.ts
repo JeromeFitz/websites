@@ -1,3 +1,4 @@
+import { envServer as env } from '@jeromefitz/next-config/env.server.mjs'
 import {
   getDataFromCache,
   getSegmentInfo,
@@ -32,7 +33,7 @@ export async function GET(request: Request) {
   const secret = searchParams.get('secret')
   const slug = searchParams.get('slug') ?? ''
 
-  if (secret !== process.env.DRAFT_TOKEN || !slug) {
+  if (secret !== env.DRAFT_TOKEN || !slug) {
     return new Response('Invalid token', { status: 401 })
   }
 

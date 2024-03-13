@@ -1,3 +1,4 @@
+import { envServer as env } from '@jeromefitz/next-config/env.server.mjs'
 import {
   getDataFromCache,
   getSegmentInfo,
@@ -64,7 +65,7 @@ export async function POST(request: NextRequest) {
     },
   }
 
-  const token = process.env.REVALIDATE_TOKEN
+  const token = env.REVALIDATE_TOKEN
   const signature = request.headers.get('x-revalidate-signature-256')
 
   if (token === signature) {

@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import https from 'node:https'
 
+import { envClient } from '@jeromefitz/next-config/env.client.mjs'
+import { envServer } from '@jeromefitz/next-config/env.server.mjs'
 import Client from '@jeromefitz/spotify'
 
 import type { ClientProps, CredentialProps } from '@jeromefitz/spotify'
@@ -12,14 +14,16 @@ import { slug as _slug } from 'github-slugger'
 import ms from 'ms'
 import { NextRequest, NextResponse } from 'next/server.js'
 
-const keyPrefixSpotify = `${process.env.NEXT_PUBLIC__SITE}/spotify`
+const keyPrefixSpotify = `${envClient.NEXT_PUBLIC__SITE}/spotify`
 
-const redis = Redis.fromEnv({
+const redis = new Redis({
   agent: new https.Agent({ keepAlive: true }),
   retry: {
     backoff: (retryCount) => Math.exp(retryCount) * 50,
     retries: 5,
   },
+  token: envServer.UPSTASH_REDIS_REST_TOKEN,
+  url: envServer.UPSTASH_REDIS_REST_URL,
 })
 
 /**
@@ -60,7 +64,7 @@ const {
   SPOTIFY_CLIENT_ID: clientId,
   SPOTIFY_CLIENT_SECRET: clientSecret,
   SPOTIFY_REFRESH_TOKEN: refreshToken,
-} = process.env
+} = envServer
 
 /**
  * @todo(types) how did i mess this up so bad haha

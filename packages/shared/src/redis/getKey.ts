@@ -1,6 +1,7 @@
 // import { slug as _slug } from 'github-slugger'
+import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
 
-const KEY__PREFIX = process.env.NEXT_PUBLIC__SITE ?? ''
+const KEY__PREFIX = env.NEXT_PUBLIC__SITE
 
 // const getKeysByJoin = ({ keyData, keyJoin = '/', keyPrefix }) =>
 //   `${keyPrefix}/${keyData.join(keyJoin)}`.toLowerCase()

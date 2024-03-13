@@ -1,6 +1,8 @@
 import Image from 'next/image'
 // import { notFound } from 'next/navigation.js'
 
+import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
+
 import { FourOhFour } from '@/app/_errors/404'
 import { Grid } from '@/components/Grid/index'
 import {
@@ -9,8 +11,6 @@ import {
   HeadlineTitle,
   HeadlineTitleSub,
 } from '@/components/Headline/index'
-
-const isDev = process.env.NODE_ENV === 'development'
 
 async function ImageTest() {
   const imageUrl = `https://cdn.jeromefitzgerald.com/images/2020/01/jfle--2020--cec-jr--bob-shields.jpg`
@@ -42,9 +42,9 @@ async function ImageTest() {
 }
 
 export default function Page() {
-  // if (!isDev) notFound()
+  // if (!env.IS_DEV) notFound()
   // @note(next) avoid NEXT_DYNAMIC_NO_SSR_CODE
-  if (!isDev) return <FourOhFour isNotPublished={false} segmentInfo={{}} />
+  if (!env.IS_DEV) return <FourOhFour isNotPublished={false} segmentInfo={{}} />
   const title = 'Plaiceholder'
 
   return (
