@@ -12,7 +12,10 @@ import { slug as _slug } from 'github-slugger'
 import ms from 'ms'
 import { NextRequest, NextResponse } from 'next/server.js'
 
-const keyPrefixSpotify = `${process.env.NEXT_PUBLIC__SITE}/spotify`
+import { envClient } from '@/config/env.client.mjs'
+import { envServer } from '@/config/env.server.mjs'
+
+const keyPrefixSpotify = `${envClient.NEXT_PUBLIC__SITE}/spotify`
 
 const redis = Redis.fromEnv({
   agent: new https.Agent({ keepAlive: true }),
@@ -60,7 +63,7 @@ const {
   SPOTIFY_CLIENT_ID: clientId,
   SPOTIFY_CLIENT_SECRET: clientSecret,
   SPOTIFY_REFRESH_TOKEN: refreshToken,
-} = process.env
+} = envServer
 
 /**
  * @todo(types) how did i mess this up so bad haha

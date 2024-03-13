@@ -16,11 +16,10 @@ import type { PageObjectResponseEvent } from '@/app/(notion)/_config/index'
 import { CONFIG, getEventData, getPageData } from '@/app/(notion)/_config/index'
 import { generateMetadataCustom } from '@/app/(notion)/_config/temp/generateMetadataCustom'
 import { Layout } from '@/components/Layout/index'
+import { envClient as env } from '@/config/env.client.mjs'
 
 import { Listing } from './_components/Event.Listing'
 import { Slug } from './_components/Event.Slug'
-
-const isDev = process.env.NODE_ENV === 'development'
 
 // export const dynamic = 'auto'
 // export const dynamicParams = true
@@ -110,7 +109,7 @@ async function _generateStaticParams({ ...props }) {
 
   return segments
 }
-const generateStaticParams = isDev ? undefined : _generateStaticParams
+const generateStaticParams = env.IS_DEV ? undefined : _generateStaticParams
 export { generateStaticParams }
 
 export default function Page(props) {

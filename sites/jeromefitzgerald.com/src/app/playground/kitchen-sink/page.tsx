@@ -20,8 +20,8 @@ import {
   HeadlineTitleSub,
 } from '@/components/Headline/index'
 import { Notion as Blocks } from '@/components/Notion/index'
+import { envClient as env } from '@/config/env.client.mjs'
 
-const isDev = process.env.NODE_ENV === 'development'
 const slug = '/kitchen-sink'
 const { SEGMENT } = CONFIG.PAGES
 
@@ -77,9 +77,9 @@ async function Slug({ revalidate, segmentInfo }) {
 }
 
 export default function Page(props) {
-  // if (!isDev) notFound()
+  // if (!env.IS_DEV) notFound()
   // @note(next) avoid NEXT_DYNAMIC_NO_SSR_CODE
-  if (!isDev) return <FourOhFour isNotPublished={false} segmentInfo={{}} />
+  if (!env.IS_DEV) return <FourOhFour isNotPublished={false} segmentInfo={{}} />
 
   const revalidate = props?.revalidate || false
   const segmentInfo = getSegmentInfo({ SEGMENT, ...props, revalidate })

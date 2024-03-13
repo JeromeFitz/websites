@@ -14,6 +14,7 @@ import { Podcast } from 'podcast'
 
 // import type { PropertiesEpisode, PropertiesPodcast } from '@/app/(notion)/_config/index'
 import { CONFIG, getEpisodeData, getPodcastData } from '@/app/(notion)/_config/index'
+import { envClient } from '@/config/env.client.mjs'
 
 const { DATABASE_ID, SEGMENT } = CONFIG.PODCASTS
 
@@ -52,7 +53,7 @@ export async function GET(
   }
   const podcastData = getPodcastData(data?.page?.properties)
 
-  const isDev = process.env.NODE_ENV === 'development'
+  const isDev = envClient.NODE_ENV === 'development'
   const isPublishedAnd = isDev
     ? {
         created_time: {
@@ -94,7 +95,7 @@ export async function GET(
   let feed: any = null
   const today = new Date()
   const year = today.getFullYear()
-  const url = `https://${process.env.NEXT_PUBLIC__SITE}`
+  const url = `https://${envClient.NEXT_PUBLIC__SITE}`
   const siteUrl = `${url}${podcastData.href}`
   feed = new Podcast({
     author: podcastData?.author,

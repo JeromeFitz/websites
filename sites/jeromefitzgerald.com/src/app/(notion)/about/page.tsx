@@ -19,6 +19,7 @@ import {
 } from '@/components/Headline/index'
 import { Layout } from '@/components/Layout/index'
 import { Notion as Blocks } from '@/components/Notion/index'
+import { envClient as env } from '@/config/env.client.mjs'
 
 const slug = '/about'
 const { SEGMENT } = CONFIG.PAGES
@@ -40,7 +41,7 @@ export async function generateMetadata({ ...props }): Promise<Metadata> {
 
   const is404 = isObjectEmpty(data?.blocks || {})
   const is404Seo = {
-    title: `404 | ${segmentInfo?.segment} | ${process.env.NEXT_PUBLIC__SITE}`,
+    title: `404 | ${segmentInfo?.segment} | ${env.NEXT_PUBLIC__SITE}`,
   }
 
   if (is404) return is404Seo

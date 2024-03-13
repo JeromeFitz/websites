@@ -488,7 +488,7 @@ function DataItems() {
       {/* @ts-ignore */}
       <ScrollArea
         asChild
-        className="h-[625px] md:h-[475px]"
+        className="h-[72vh] md:h-[48vh]"
         radius="full"
         ref={scrollableRef}
         scrollbars="horizontal"

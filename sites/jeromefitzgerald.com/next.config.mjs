@@ -10,6 +10,9 @@ if (!isCI) {
   dotenv.config({ path: './.env' })
 }
 
+import './src/config/env.client.mjs'
+import './src/config/env.server.mjs'
+
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 

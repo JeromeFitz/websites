@@ -11,6 +11,7 @@ import { draftMode } from 'next/headers.js'
 import { CONFIG, getPageData } from '@/app/(notion)/_config/index'
 import { generateMetadataCustom } from '@/app/(notion)/_config/temp/generateMetadataCustom'
 import { Layout } from '@/components/Layout/index'
+import { envClient as env } from '@/config/env.client.mjs'
 
 import { MusicClient } from './_components/Music.client'
 
@@ -34,7 +35,7 @@ export async function generateMetadata({ ...props }): Promise<Metadata> {
 
   const is404 = isObjectEmpty(data?.blocks || {})
   const is404Seo = {
-    title: `404 | ${segmentInfo?.segment} | ${process.env.NEXT_PUBLIC__SITE}`,
+    title: `404 | ${segmentInfo?.segment} | ${env.NEXT_PUBLIC__SITE}`,
   }
 
   if (is404) return is404Seo

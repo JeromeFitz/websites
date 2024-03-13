@@ -13,6 +13,8 @@ import { slug as _slug } from 'github-slugger'
 import _title from 'title'
 import validUrl from 'valid-url'
 
+import { envClient as env } from '@/config/env.client.mjs'
+
 const redis = Redis.fromEnv({
   agent: new https.Agent({ keepAlive: true }),
   retry: {
@@ -21,7 +23,7 @@ const redis = Redis.fromEnv({
   },
 })
 
-const CACHE_KEY_PREFIX__IMAGE = `${process.env.NEXT_PUBLIC__SITE}/image`
+const CACHE_KEY_PREFIX__IMAGE = `${env.NEXT_PUBLIC__SITE}/image`
 
 // @todo(complexity) 17
 // eslint-disable-next-line complexity
@@ -112,7 +114,7 @@ async function generateMetadataCustom({ data, pageData, segmentInfo }) {
   const seo = {
     ...data?.seo,
     keywords: pageData?.seoKeywords,
-    metadataBase: new URL(`https://${process.env.NEXT_PUBLIC__SITE}`),
+    metadataBase: new URL(`https://${env.NEXT_PUBLIC__SITE}`),
     openGraph: {
       description: pageData?.seoDescription,
       images,

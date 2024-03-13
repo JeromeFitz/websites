@@ -18,7 +18,7 @@ import {
 
 import type { ReactNode } from 'react'
 
-const isDev = process.env.NODE_ENV === 'development'
+import { envClient as env } from '@/config/env.client.mjs'
 
 interface Item {
   group: string
@@ -357,7 +357,7 @@ const menus: NavigationMenuItems[] = [
     href: '/playground/2024',
     icon: Pencil2Icon,
     id: '/playground/2024',
-    isActive: isDev,
+    isActive: env?.IS_DEV,
     isActiveMobileOverride: false,
     isParent: false,
     items: [],

@@ -17,11 +17,10 @@ import type { PageObjectResponseShow } from '@/app/(notion)/_config/index'
 import { CONFIG, getPageData, getShowData } from '@/app/(notion)/_config/index'
 import { generateMetadataCustom } from '@/app/(notion)/_config/temp/generateMetadataCustom'
 import { Layout } from '@/components/Layout/index'
+import { envClient as env } from '@/config/env.client.mjs'
 
 import { Listing } from './_components/Show.Listing'
 import { Slug } from './_components/Show.Slug'
-
-const isDev = process.env.NODE_ENV === 'development'
 
 // export const dynamic = 'auto'
 // export const dynamicParams = true
@@ -41,7 +40,7 @@ export async function generateMetadata({ ...props }): Promise<Metadata> {
 
   const is404 = isObjectEmpty(data?.blocks || {})
   const is404Seo = {
-    title: `404 | ${segmentInfo?.segment} | ${process.env.NEXT_PUBLIC__SITE}`,
+    title: `404 | ${segmentInfo?.segment} | ${env.NEXT_PUBLIC__SITE}`,
   }
 
   if (is404) return is404Seo
@@ -58,7 +57,7 @@ export async function generateMetadata({ ...props }): Promise<Metadata> {
 }
 
 async function _generateStaticParams({ ...props }) {
-  if (isDev) {
+  if (env.IS_DEV) {
     return []
   }
   // @todo(types)
@@ -115,7 +114,7 @@ async function _generateStaticParams({ ...props }) {
 
   return segments
 }
-const generateStaticParams = isDev ? undefined : _generateStaticParams
+const generateStaticParams = env.IS_DEV ? undefined : _generateStaticParams
 export { generateStaticParams }
 
 export default function Page(props) {

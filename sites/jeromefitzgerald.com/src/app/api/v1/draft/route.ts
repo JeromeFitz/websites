@@ -6,6 +6,8 @@ import {
 import { draftMode } from 'next/headers.js'
 import { redirect } from 'next/navigation.js'
 
+import { envServer as env } from '@/config/env.server.mjs'
+
 /**
  * @todo(notion) this is a proof of concept right now
  */
@@ -32,7 +34,7 @@ export async function GET(request: Request) {
   const secret = searchParams.get('secret')
   const slug = searchParams.get('slug') ?? ''
 
-  if (secret !== process.env.DRAFT_TOKEN || !slug) {
+  if (secret !== env.DRAFT_TOKEN || !slug) {
     return new Response('Invalid token', { status: 401 })
   }
 

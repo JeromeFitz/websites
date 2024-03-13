@@ -11,8 +11,7 @@ import {
   HeadlineTitle,
   HeadlineTitleSub,
 } from '@/components/Headline/index'
-
-const isDev = process.env.NODE_ENV === 'development'
+import { envClient as env } from '@/config/env.client.mjs'
 
 const links = [
   '/',
@@ -30,9 +29,12 @@ const links = [
   // '/kitchen-sink',
 ]
 
+/**
+ * @todo(next) uh can we delete this?
+ */
 function Wrapper({ children }) {
-  if (!isDev) return null
-  if (isDev) return null
+  if (!env.IS_DEV) return null
+  if (env.IS_DEV) return null
 
   const title = 'Testing'
   return (

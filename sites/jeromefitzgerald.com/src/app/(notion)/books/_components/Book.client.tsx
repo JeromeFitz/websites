@@ -485,7 +485,7 @@ function BookPage({ books, title }) {
         {/* @ts-ignore */}
         <ScrollArea
           asChild
-          className="h-[675px] md:h-[475px]"
+          className="h-[80vh] md:h-[56vh]"
           radius="full"
           ref={scrollableRef}
           scrollbars="horizontal"

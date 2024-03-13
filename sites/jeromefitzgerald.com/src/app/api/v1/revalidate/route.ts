@@ -9,6 +9,7 @@ import { revalidatePath } from 'next/cache.js'
 import { NextRequest, NextResponse } from 'next/server.js'
 
 import { CONFIG } from '@/app/(notion)/_config/index'
+import { envServer as env } from '@/config/env.server.mjs'
 
 const { DATABASE_ID: DATABASE_ID__EVENTS } = CONFIG.EVENTS
 const { DATABASE_ID: DATABASE_ID__PAGES } = CONFIG.PAGES
@@ -64,7 +65,7 @@ export async function POST(request: NextRequest) {
     },
   }
 
-  const token = process.env.REVALIDATE_TOKEN
+  const token = env.REVALIDATE_TOKEN
   const signature = request.headers.get('x-revalidate-signature-256')
 
   if (token === signature) {

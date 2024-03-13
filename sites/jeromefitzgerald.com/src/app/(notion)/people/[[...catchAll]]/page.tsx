@@ -16,11 +16,11 @@ import type { PageObjectResponsePerson } from '@/app/(notion)/_config/index'
 import { CONFIG, getPageData, getPersonData } from '@/app/(notion)/_config/index'
 import { generateMetadataCustom } from '@/app/(notion)/_config/temp/generateMetadataCustom'
 import { Layout } from '@/components/Layout/index'
+import { envClient as env } from '@/config/env.client.mjs'
 
 import { Listing } from './_components/People.Listing'
 import { Slug } from './_components/Person.Slug'
 
-const isDev = process.env.NODE_ENV === 'development'
 const { DATABASE_ID, SEGMENT } = CONFIG.PEOPLE
 
 // export const dynamic = 'auto'
@@ -48,7 +48,7 @@ export async function generateMetadata({ ...props }): Promise<Metadata> {
 
   return isPublished
     ? seo
-    : { title: `404 | ${segmentInfo?.segment} | ${process.env.NEXT_PUBLIC__SITE}` }
+    : { title: `404 | ${segmentInfo?.segment} | ${env.NEXT_PUBLIC__SITE}` }
 }
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -110,8 +110,8 @@ async function _generateStaticParams({ ...props }) {
   return segments
 }
 
-// const generateStaticParams = isDev ? undefined : _generateStaticParams
-const generateStaticParams = isDev ? undefined : undefined
+// const generateStaticParams = env.IS_DEV ? undefined : _generateStaticParams
+const generateStaticParams = env.IS_DEV ? undefined : undefined
 export { generateStaticParams }
 
 export default function Page(props) {

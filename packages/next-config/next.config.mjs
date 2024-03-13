@@ -4,10 +4,7 @@ import withBundleAnalyzer from '@next/bundle-analyzer'
 import withPlaiceholder from '@plaiceholder/next'
 
 import { setupBuildInfo } from './src/build-info.mjs'
-import envRequired from './src/env-required.mjs'
 import securityHeaders from './src/security-headers.mjs'
-
-envRequired()
 
 /**
  * @note(pnpm) until we move "websites" into "packages"...

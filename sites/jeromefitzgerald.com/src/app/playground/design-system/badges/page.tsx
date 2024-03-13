@@ -9,8 +9,7 @@ import {
   HeadlineTitle,
   HeadlineTitleSub,
 } from '@/components/Headline/index'
-
-const isDev = process.env.NODE_ENV === 'development'
+import { envClient as env } from '@/config/env.client.mjs'
 
 type RadixColor =
   | 'amber'
@@ -104,9 +103,9 @@ function Slug() {
 }
 
 export default function Page() {
-  // if (!isDev) notFound()
+  // if (!env.IS_DEV) notFound()
   // @note(next) avoid NEXT_DYNAMIC_NO_SSR_CODE
-  if (!isDev) return <FourOhFour isNotPublished={false} segmentInfo={{}} />
+  if (!env.IS_DEV) return <FourOhFour isNotPublished={false} segmentInfo={{}} />
 
   return <Slug />
 }

@@ -17,9 +17,11 @@ import { isAwsImage, isImageExpired } from 'next-notion/utils/index'
 import validUrl from 'valid-url'
 
 import { getPropertyTypeDataEvent } from '@/app/(notion)/_config/index'
+import { envClient } from '@/config/env.client.mjs'
+import { envServer } from '@/config/env.server.mjs'
 
-const notion = new Client({ auth: process.env.NOTION_API_KEY })
-// const notion = new Client({ auth: process.env.NOTION_API_KEY })
+const notion = new Client({ auth: envServer.NOTION_API_KEY })
+// const notion = new Client({ auth: envServer.NOTION_API_KEY })
 
 const redis = Redis.fromEnv({
   agent: new https.Agent({ keepAlive: true }),
@@ -29,7 +31,7 @@ const redis = Redis.fromEnv({
   },
 })
 
-const CACHE_KEY_PREFIX__IMAGE = `${process.env.NEXT_PUBLIC__SITE}/image`
+const CACHE_KEY_PREFIX__IMAGE = `${envClient.NEXT_PUBLIC__SITE}/image`
 
 async function Image({ className = '', properties }) {
   // console.dir(properties)
@@ -122,10 +124,10 @@ async function Image({ className = '', properties }) {
     }
   }
 
-  console.dir(`isExpired:`)
-  console.dir(isExpired)
-  console.dir(`image:`)
-  console.dir(image)
+  // console.dir(`isExpired:`)
+  // console.dir(isExpired)
+  // console.dir(`image:`)
+  // console.dir(image)
 
   return (
     <>{!!imageUrl && <NextImage className={className} order={1} {...image} />}</>
