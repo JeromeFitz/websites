@@ -718,8 +718,8 @@ importers:
         specifier: 14.1.2
         version: 14.1.2(react-dom@18.2.0)(react@18.2.0)
       next-themes:
-        specifier: 0.2.1
-        version: 0.2.1(next@14.1.2)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 0.3.0
+        version: 0.3.0(react-dom@18.2.0)(react@18.2.0)
       plaiceholder:
         specifier: 3.0.0
         version: 3.0.0(sharp@0.32.6)
@@ -1037,8 +1037,8 @@ importers:
         specifier: 14.1.2
         version: 14.1.2(react-dom@18.2.0)(react@18.2.0)
       next-themes:
-        specifier: 0.2.1
-        version: 0.2.1(next@14.1.2)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 0.3.0
+        version: 0.3.0(react-dom@18.2.0)(react@18.2.0)
       plaiceholder:
         specifier: 3.0.0
         version: 3.0.0(sharp@0.32.6)
@@ -11422,9 +11422,6 @@ packages:
 
   /ajv-formats@2.1.1:
     resolution: {integrity: sha512-Wx0Kx52hxE7C18hkMEggYlEifqWZtYaRgouJor+WMdPnQyEK13vgEWyVNup7SoeeoLMsr4kf5h6dOW11I15MUA==}
-    peerDependenciesMeta:
-      ajv:
-        optional: true
     dependencies:
       ajv: 8.12.0
     dev: true
@@ -17308,14 +17305,12 @@ packages:
     resolution: {integrity: sha512-EZSPZB70jiVsivaBLYDCyntd5eH8NTSMOn3rB+HxwdmKThGELLdYv8qVIMWvZEFy9w8ZZpW9h9OB32l1rGtj7g==}
     dev: false
 
-  /next-themes@0.2.1(next@14.1.2)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-B+AKNfYNIzh0vqQQKqQItTS8evEouKD7H5Hj3kmuPERwddR2TxvDSFZuTj6T7Jfn1oyeUyJMydPl1Bkxkh0W7A==}
+  /next-themes@0.3.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-/QHIrsYpd6Kfk7xakK4svpDI5mmXP0gfvCoJdGpZQ2TOrQZmsW0QxjaiLn8wbIKjtm4BTSqLoix4lxYYOnLJ/w==}
     peerDependencies:
-      next: '*'
-      react: '*'
-      react-dom: '*'
+      react: ^16.8 || ^17 || ^18
+      react-dom: ^16.8 || ^17 || ^18
     dependencies:
-      next: 14.1.2(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
