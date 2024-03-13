@@ -1,6 +1,12 @@
+/**
+ * @todo(radix-ui) issue w/ flex.props.js init order
+ *
+ * ref: https://github.com/JeromeFitz/websites/pull/2341
+ */
+import { Flex } from '@radix-ui/themes'
 import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 import { Em } from '@radix-ui/themes/dist/esm/components/em.js'
-import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
+// import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Grid } from '@radix-ui/themes/dist/esm/components/grid.js'
 import { IconButton } from '@radix-ui/themes/dist/esm/components/icon-button.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
