@@ -9,6 +9,29 @@ import securityHeaders from './src/security-headers.mjs'
 import './src/env.client.mjs'
 import './src/env.server.mjs'
 
+/**
+ * @todo(next) cannot remove all of these just yet   🫠
+ *             moved here instead of env.server for now
+ */
+const envSecrets = [
+  'DRAFT_TOKEN',
+  'GH_TOKEN',
+  'LHCI_GITHUB_APP_TOKEN',
+  // 'NOTION_API_KEY',
+  // // 'OCTOKIT_TOKEN',
+  'OG_API_KEY',
+  'PREVIEW_TOKEN',
+  'REVALIDATE_TOKEN',
+  'SPOTIFY_CLIENT_ID',
+  'SPOTIFY_CLIENT_SECRET',
+  'SPOTIFY_REFRESH_TOKEN',
+  // // 'UPSTASH_REDIS_REST_TOKEN',
+  // // 'UPSTASH_REDIS_REST_URL',
+]
+for (const envSecretsVar of envSecrets) {
+  delete process.env[envSecretsVar]
+}
+
 const externals = [
   '@radix-ui/colors',
   'cmdk',

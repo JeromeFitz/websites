@@ -40,12 +40,14 @@ import { getImageAlt, getImageExpiration, getImageUrl } from './Image.utils'
 
 const notion = new Client({ auth: envServer.NOTION_API_KEY })
 
-const redis = Redis.fromEnv({
+const redis = new Redis({
   agent: new https.Agent({ keepAlive: true }),
   retry: {
     backoff: (retryCount) => Math.exp(retryCount) * 50,
     retries: 5,
   },
+  token: envServer.UPSTASH_REDIS_REST_TOKEN,
+  url: envServer.UPSTASH_REDIS_REST_URL,
 })
 
 const CACHE_KEY_PREFIX__IMAGE = `${envClient.NEXT_PUBLIC__SITE}/image`

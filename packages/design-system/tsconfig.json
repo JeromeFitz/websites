@@ -11,6 +11,7 @@
         "name": "next"
       }
     ],
+    "strict": true,
     "strictNullChecks": true,
     "paths": {
       "@jeromefitz/next-config/*": ["../../packages/next-config/src/*"]

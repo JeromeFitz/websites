@@ -6,7 +6,6 @@
  * ref: https://vercel.com/docs/projects/environment-variables/system-environment-variables
  *
  */
-// import isCI from 'is-ci'
 import { z } from 'zod'
 
 const SITE = 'jeromefitzgerald.com'
@@ -58,8 +57,9 @@ ${envClientParsed.error.errors.map((error) => `  ${error.path}: ${error.message}
   process.exit(1)
 }
 
-const envClientFreeze = Object.freeze(envClientParsed)
-const envClient = envClientFreeze.data
+// const envClientFreeze = Object.freeze(envClientParsed)
+// const envClient = envClientFreeze.data
+const envClient = Object.freeze(envClientParsed.data)
 
 // console.dir(`envClient:`)
 // console.dir(envClient)

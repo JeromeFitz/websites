@@ -91,7 +91,9 @@ async function Slug({ revalidate, segmentInfo }) {
           </HeadlineTitleSub>
         </HeadlineColumnA>
         <HeadlineContent>
-          <Blocks data={data?.blocks} />
+          <>
+            <Blocks data={data?.blocks} />
+          </>
         </HeadlineContent>
       </Grid>
       <Grid>
