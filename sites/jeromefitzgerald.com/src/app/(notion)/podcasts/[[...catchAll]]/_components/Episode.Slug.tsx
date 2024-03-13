@@ -5,6 +5,11 @@ import { EmbedSpotify } from '@jeromefitz/shared/components/Notion/Blocks/Embed.
 import { getDataFromCache } from '@jeromefitz/shared/notion/utils/index'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
+/**
+ * @todo(radix-ui) issue w/ flex.props.js init order
+ *
+ * ref: https://github.com/JeromeFitz/websites/pull/2341
+ */
 import { Flex } from '@radix-ui/themes'
 import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 import { Code } from '@radix-ui/themes/dist/esm/components/code.js'

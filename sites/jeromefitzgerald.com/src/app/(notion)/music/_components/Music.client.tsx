@@ -8,6 +8,11 @@ import { fetcher } from '@jeromefitz/shared/lib'
 
 import { useIntersection, useScrollIntoView } from '@mantine/hooks'
 import { ArrowUpIcon } from '@radix-ui/react-icons'
+/**
+ * @todo(radix-ui) issue w/ flex.props.js init order
+ *
+ * ref: https://github.com/JeromeFitz/websites/pull/2341
+ */
 import { Flex } from '@radix-ui/themes'
 import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
 import { Box } from '@radix-ui/themes/dist/esm/components/box.js'

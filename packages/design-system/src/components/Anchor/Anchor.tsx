@@ -1,5 +1,10 @@
 import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
 
+/**
+ * @todo(radix-ui) issue w/ flex.props.js init order
+ *
+ * ref: https://github.com/JeromeFitz/websites/pull/2341
+ */
 import { Flex } from '@radix-ui/themes'
 // import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 // eslint-disable-next-line no-restricted-imports
