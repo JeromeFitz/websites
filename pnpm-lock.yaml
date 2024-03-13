@@ -201,8 +201,8 @@ importers:
         specifier: 1.0.3
         version: 1.0.3(@types/react-dom@18.2.22)(@types/react@18.2.65)(react-dom@18.2.0)(react@18.2.0)
       '@radix-ui/themes':
-        specifier: 3.0.0-rc.14-patch.1
-        version: 3.0.0-rc.14-patch.1(@types/react-dom@18.2.22)(@types/react@18.2.65)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 3.0.0-rc.16-patch.1
+        version: 3.0.0-rc.16-patch.1(@types/react-dom@18.2.22)(@types/react@18.2.65)(react-dom@18.2.0)(react@18.2.0)
       clsx:
         specifier: 2.1.0
         version: 2.1.0
@@ -364,8 +364,8 @@ importers:
         specifier: 2.2.14
         version: 2.2.14
       '@radix-ui/themes':
-        specifier: 3.0.0-rc.14-patch.1
-        version: 3.0.0-rc.14-patch.1(@types/react-dom@18.2.22)(@types/react@18.2.65)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 3.0.0-rc.16-patch.1
+        version: 3.0.0-rc.16-patch.1(@types/react-dom@18.2.22)(@types/react@18.2.65)(react-dom@18.2.0)(react@18.2.0)
       '@types/lodash':
         specifier: 4.17.0
         version: 4.17.0
@@ -436,8 +436,8 @@ importers:
         specifier: workspace:*
         version: link:../tailwind-config
       '@radix-ui/themes':
-        specifier: 3.0.0-rc.14-patch.1
-        version: 3.0.0-rc.14-patch.1(react-dom@18.2.0)(react@18.2.0)
+        specifier: 3.0.0-rc.16-patch.1
+        version: 3.0.0-rc.16-patch.1(react-dom@18.2.0)(react@18.2.0)
       '@storybook/addon-a11y':
         specifier: 8.0.0
         version: 8.0.0
@@ -493,8 +493,8 @@ importers:
         specifier: 3.0.0
         version: 3.0.0
       '@radix-ui/themes':
-        specifier: 3.0.0-rc.14-patch.1
-        version: 3.0.0-rc.14-patch.1
+        specifier: 3.0.0-rc.16-patch.1
+        version: 3.0.0-rc.16-patch.1
       '@tailwindcss/aspect-ratio':
         specifier: 0.4.2
         version: 0.4.2(tailwindcss@3.4.1)
@@ -667,8 +667,8 @@ importers:
         specifier: 1.0.3
         version: 1.0.3(@types/react-dom@18.2.22)(@types/react@18.2.65)(react-dom@18.2.0)(react@18.2.0)
       '@radix-ui/themes':
-        specifier: 3.0.0-rc.14-patch.1
-        version: 3.0.0-rc.14-patch.1(@types/react-dom@18.2.22)(@types/react@18.2.65)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 3.0.0-rc.16-patch.1
+        version: 3.0.0-rc.16-patch.1(@types/react-dom@18.2.22)(@types/react@18.2.65)(react-dom@18.2.0)(react@18.2.0)
       '@tanem/react-nprogress':
         specifier: 5.0.51
         version: 5.0.51(react-dom@18.2.0)(react@18.2.0)
@@ -980,8 +980,8 @@ importers:
         specifier: 1.0.3
         version: 1.0.3(@types/react-dom@18.2.22)(@types/react@18.2.65)(react-dom@18.2.0)(react@18.2.0)
       '@radix-ui/themes':
-        specifier: 3.0.0-rc.14-patch.1
-        version: 3.0.0-rc.14-patch.1(@types/react-dom@18.2.22)(@types/react@18.2.65)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 3.0.0-rc.16-patch.1
+        version: 3.0.0-rc.16-patch.1(@types/react-dom@18.2.22)(@types/react@18.2.65)(react-dom@18.2.0)(react@18.2.0)
       '@tanem/react-nprogress':
         specifier: 5.0.51
         version: 5.0.51(react-dom@18.2.0)(react@18.2.0)
@@ -8533,8 +8533,8 @@ packages:
     dependencies:
       '@babel/runtime': 7.23.9
 
-  /@radix-ui/themes@3.0.0-rc.14-patch.1:
-    resolution: {integrity: sha512-9Nux7JfL7/vCQAlhMOIGfvZ/X9GIfdG66K3W7BkmXvPfus9Q8b/BRP7LYlrJWC4bUhZjhV6vQB4sL9EkCTCKjQ==}
+  /@radix-ui/themes@3.0.0-rc.16-patch.1:
+    resolution: {integrity: sha512-1EZZCbeKbkIOosA5qQgbC9EKR0MZBY6EqY55XRnT7jZ1dxK8xzOdv5dND7UlJfyNYL5Qciej5892A5rnDPTZ5A==}
     peerDependencies:
       '@types/react': '*'
       '@types/react-dom': '*'
@@ -8580,10 +8580,11 @@ packages:
       '@radix-ui/react-use-controllable-state': 1.0.1
       '@radix-ui/react-visually-hidden': 1.0.3
       classnames: 2.5.1
+      react-remove-scroll-bar: 2.3.4
     dev: true
 
-  /@radix-ui/themes@3.0.0-rc.14-patch.1(@types/react-dom@18.2.22)(@types/react@18.2.65)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-9Nux7JfL7/vCQAlhMOIGfvZ/X9GIfdG66K3W7BkmXvPfus9Q8b/BRP7LYlrJWC4bUhZjhV6vQB4sL9EkCTCKjQ==}
+  /@radix-ui/themes@3.0.0-rc.16-patch.1(@types/react-dom@18.2.22)(@types/react@18.2.65)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-1EZZCbeKbkIOosA5qQgbC9EKR0MZBY6EqY55XRnT7jZ1dxK8xzOdv5dND7UlJfyNYL5Qciej5892A5rnDPTZ5A==}
     peerDependencies:
       '@types/react': '*'
       '@types/react-dom': '*'
@@ -8633,9 +8634,10 @@ packages:
       classnames: 2.5.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
+      react-remove-scroll-bar: 2.3.4(@types/react@18.2.65)(react@18.2.0)
 
-  /@radix-ui/themes@3.0.0-rc.14-patch.1(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-9Nux7JfL7/vCQAlhMOIGfvZ/X9GIfdG66K3W7BkmXvPfus9Q8b/BRP7LYlrJWC4bUhZjhV6vQB4sL9EkCTCKjQ==}
+  /@radix-ui/themes@3.0.0-rc.16-patch.1(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-1EZZCbeKbkIOosA5qQgbC9EKR0MZBY6EqY55XRnT7jZ1dxK8xzOdv5dND7UlJfyNYL5Qciej5892A5rnDPTZ5A==}
     peerDependencies:
       '@types/react': '*'
       '@types/react-dom': '*'
@@ -8683,6 +8685,7 @@ packages:
       classnames: 2.5.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
+      react-remove-scroll-bar: 2.3.4(react@18.2.0)
     dev: true
 
   /@rollup/rollup-android-arm-eabi@4.4.1:
