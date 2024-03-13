@@ -18,10 +18,10 @@ import { Inset } from '@radix-ui/themes/dist/esm/components/inset.js'
 import { Link } from '@radix-ui/themes/dist/esm/components/link.js'
 import { ScrollArea } from '@radix-ui/themes/dist/esm/components/scroll-area.js'
 import {
-  SelectContent,
-  SelectItem,
-  SelectRoot,
-  SelectTrigger,
+  Content as SelectContent,
+  Item as SelectItem,
+  Root as SelectRoot,
+  Trigger as SelectTrigger,
 } from '@radix-ui/themes/dist/esm/components/select.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import Image from 'next/image'
@@ -488,7 +488,7 @@ function DataItems() {
       {/* @ts-ignore */}
       <ScrollArea
         asChild
-        className="h-[625px] md:h-[475px]"
+        className="h-[72vh] md:h-[48vh]"
         radius="full"
         ref={scrollableRef}
         scrollbars="horizontal"

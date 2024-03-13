@@ -7,7 +7,6 @@
     // "noUnusedParameters": false, // @todo(lint)
     // "rootDir": "src",
     "outDir": "dist",
-    // "strict": false,
     "allowJs": false,
     "allowSyntheticDefaultImports": true,
     "alwaysStrict": true,

@@ -1,3 +1,5 @@
+// import isEqual from 'lodash/isEqual.js'
+import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
 import {
   getDataFromCache,
   getDatabaseQuery,
@@ -5,7 +7,6 @@ import {
 } from '@jeromefitz/shared/notion/utils/index'
 
 import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints.js'
-// import isEqual from 'lodash/isEqual.js'
 // import uniqWith from 'lodash/uniqWith.js'
 import type { Metadata } from 'next'
 
@@ -19,8 +20,6 @@ import { Layout } from '@/components/Layout/index'
 
 import { Listing } from './_components/Event.Listing'
 import { Slug } from './_components/Event.Slug'
-
-const isDev = process.env.NODE_ENV === 'development'
 
 // export const dynamic = 'auto'
 // export const dynamicParams = true
@@ -110,7 +109,7 @@ async function _generateStaticParams({ ...props }) {
 
   return segments
 }
-const generateStaticParams = isDev ? undefined : _generateStaticParams
+const generateStaticParams = env.IS_DEV ? undefined : _generateStaticParams
 export { generateStaticParams }
 
 export default function Page(props) {

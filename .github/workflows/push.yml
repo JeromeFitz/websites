@@ -40,7 +40,6 @@ env:
   OCTOKIT_TOKEN: ${{ secrets.OCTOKIT_TOKEN }}
   OG_API_KEY: ${{ secrets.OG_API_KEY }}
   PREVIEW_TOKEN: ${{ secrets.PREVIEW_TOKEN }}
-  REDIS_URL: ${{ secrets.REDIS_URL }}
   REVALIDATE_TOKEN: ${{ secrets.REVALIDATE_TOKEN }}
   SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
   SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
@@ -83,7 +82,6 @@ jobs:
       OCTOKIT_TOKEN: ${{ secrets.OCTOKIT_TOKEN }}
       OG_API_KEY: ${{ secrets.OG_API_KEY }}
       PREVIEW_TOKEN: ${{ secrets.PREVIEW_TOKEN }}
-      REDIS_URL: ${{ secrets.REDIS_URL }}
       REVALIDATE_TOKEN: ${{ secrets.REVALIDATE_TOKEN }}
       SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
       SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}

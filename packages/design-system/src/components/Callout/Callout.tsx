@@ -1,10 +1,10 @@
-import type { CalloutRootProps } from '@radix-ui/themes/dist/esm/components/callout.js'
+import type { RootProps as CalloutRootProps } from '@radix-ui/themes/dist/esm/components/callout.js'
 import type { ReactNode } from 'react'
 
 import {
-  CalloutIcon,
-  CalloutRoot,
-  CalloutText,
+  Icon as CalloutIcon,
+  Root as CalloutRoot,
+  Text as CalloutText,
 } from '@radix-ui/themes/dist/esm/components/callout.js'
 
 import { cx } from '../../utils/cx'

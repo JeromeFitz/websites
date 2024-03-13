@@ -1,4 +1,5 @@
 // import { cx } from '@jeromefitz/ds/utils/cx'
+import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
 import {
   getDataFromCache,
   getDatabaseQuery,
@@ -39,7 +40,7 @@ export async function generateMetadata({ ...props }): Promise<Metadata> {
 
   const is404 = isObjectEmpty(data?.blocks || {})
   const is404Seo = {
-    title: `404 | ${segmentInfo?.segment} | ${process.env.NEXT_PUBLIC__SITE}`,
+    title: `404 | ${segmentInfo?.segment} | ${env.NEXT_PUBLIC__SITE}`,
   }
 
   if (is404) return is404Seo

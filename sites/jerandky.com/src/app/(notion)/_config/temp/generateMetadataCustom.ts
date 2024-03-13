@@ -4,6 +4,8 @@
  * This needs to be moved elsewhere
  *
  */
+import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
+
 import _title from 'title'
 
 async function generateMetadataCustom({ data, pageData, segmentInfo }) {
@@ -47,7 +49,7 @@ async function generateMetadataCustom({ data, pageData, segmentInfo }) {
   const seo = {
     ...data?.seo,
     keywords: pageData?.seoKeywords,
-    metadataBase: new URL(`https://${process.env.NEXT_PUBLIC__SITE}`),
+    metadataBase: new URL(`https://${env.NEXT_PUBLIC__SITE}`),
     openGraph: {
       description: pageData?.seoDescription,
       images,

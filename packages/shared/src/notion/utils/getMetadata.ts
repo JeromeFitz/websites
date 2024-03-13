@@ -1,3 +1,4 @@
+import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
 import type {
@@ -10,8 +11,6 @@ import { getPropertyTypeData } from 'next-notion/utils/index'
 import _title from 'title'
 
 // import { getEventData } from '../index'
-
-const BASE_URL = `https://${process.env.NEXT_PUBLIC__SITE}`
 
 type TextRequest = string
 type ImageItemResponse =
@@ -35,7 +34,9 @@ function getMetadata({ properties, segmentInfo }) {
   // console.dir(isObjectEmpty(properties) ? `y` : 'n')
 
   const canonical =
-    segmentInfo?.slug === '/homepage' ? BASE_URL : `${BASE_URL}${segmentInfo?.slug}`
+    segmentInfo?.slug === '/homepage'
+      ? env.NEXT_PUBLIC__BASE_URL
+      : `${env.NEXT_PUBLIC__BASE_URL}${segmentInfo?.slug}`
 
   const descriptionTemp: TextRichTextItemResponse = getPropertyTypeData(
     properties,

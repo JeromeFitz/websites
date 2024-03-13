@@ -8,7 +8,6 @@
     // @todo(typescript) until figure out config stuff this has to go here
     // "rootDir": "./src",
     "outDir": "./dist",
-    // "strict": false,
     "allowJs": false,
     "allowSyntheticDefaultImports": true,
     "alwaysStrict": true,
@@ -37,7 +36,8 @@
     "target": "ESNext",
     "tsBuildInfoFile": ".tsbuildinfo",
     "paths": {
-      "@jeromefitz/ds/*": ["../../packages/design-system/src/*"]
+      "@jeromefitz/ds/*": ["../../packages/design-system/src/*"],
+      "@jeromefitz/next-config/*": ["../../packages/next-config/src/*"]
     }
   },
   "include": ["src", "index.d.ts", "next-env.d.ts"],

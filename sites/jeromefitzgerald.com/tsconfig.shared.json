@@ -4,6 +4,7 @@
     "baseUrl": ".",
     "paths": {
       "@jeromefitz/ds/*": ["../../packages/design-system/src/*"],
+      "@jeromefitz/next-config/*": ["../../packages/next-config/src/*"],
       "@jeromefitz/shared/*": ["../../packages/shared/src/*"],
       "next-notion/*": ["../../packages/next-notion/src/*"],
       "@/app/*": ["src/app/*"],

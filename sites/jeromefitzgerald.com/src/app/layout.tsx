@@ -11,6 +11,7 @@ import { Banner } from '@/components/Banner/Banner'
 import { Navigation } from '@/components/Navigation/index'
 import { Providers } from '@/components/Providers/index'
 import { Wrapper } from '@/components/Wrapper/index'
+// import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
 
 import { PreloadResources } from './_next/preload-resources'
 
@@ -65,7 +66,7 @@ import '@radix-ui/themes/styles.css'
 // })
 
 // export const metadata = {
-//   metadataBase: new URL(`https://${process.env.NEXT_PUBLIC__SITE}`),
+//   metadataBase: new URL(`https://${env.NEXT_PUBLIC__SITE}`),
 //   manifest: '/images/favicon/site.webmanifest',
 //   referrer: 'origin-when-cross-origin',
 //   //

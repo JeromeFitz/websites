@@ -1,4 +1,5 @@
 import { cx } from '@jeromefitz/ds/utils/cx'
+import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
 import '@jeromefitz/tailwind-config/styles/globals.css'
 
 import { Viewport } from 'next'
@@ -46,7 +47,7 @@ export const metadata = {
   description:
     'The Jer & Ky BoyZ are comedians Jerome Fitzgerald & Kyle Longsdorf. Jer & Ky Productions is a subsidiary of Nice Group of People sponsored by MailShrimp and home to comedy podcasts Jer & Ky & Guest, Knockoffs.',
   manifest: '/images/favicon/site.webmanifest',
-  metadataBase: new URL(`https://${process.env.NEXT_PUBLIC__SITE}`),
+  metadataBase: new URL(`https://${env.NEXT_PUBLIC__SITE}`),
   referrer: 'origin-when-cross-origin',
   themeColor: '#0f0f0f',
   //

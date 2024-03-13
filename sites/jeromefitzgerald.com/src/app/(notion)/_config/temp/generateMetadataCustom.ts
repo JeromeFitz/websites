@@ -6,6 +6,8 @@
  */
 import https from 'node:https'
 
+import { envClient } from '@jeromefitz/next-config/env.client.mjs'
+import { envServer } from '@jeromefitz/next-config/env.server.mjs'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
 import { Redis } from '@upstash/redis'
@@ -13,15 +15,17 @@ import { slug as _slug } from 'github-slugger'
 import _title from 'title'
 import validUrl from 'valid-url'
 
-const redis = Redis.fromEnv({
+const redis = new Redis({
   agent: new https.Agent({ keepAlive: true }),
   retry: {
     backoff: (retryCount) => Math.exp(retryCount) * 50,
     retries: 5,
   },
+  token: envServer.UPSTASH_REDIS_REST_TOKEN,
+  url: envServer.UPSTASH_REDIS_REST_URL,
 })
 
-const CACHE_KEY_PREFIX__IMAGE = `${process.env.NEXT_PUBLIC__SITE}/image`
+const CACHE_KEY_PREFIX__IMAGE = `${envClient.NEXT_PUBLIC__SITE}/image`
 
 // @todo(complexity) 17
 // eslint-disable-next-line complexity
@@ -112,7 +116,7 @@ async function generateMetadataCustom({ data, pageData, segmentInfo }) {
   const seo = {
     ...data?.seo,
     keywords: pageData?.seoKeywords,
-    metadataBase: new URL(`https://${process.env.NEXT_PUBLIC__SITE}`),
+    metadataBase: new URL(`https://${envClient.NEXT_PUBLIC__SITE}`),
     openGraph: {
       description: pageData?.seoDescription,
       images,
