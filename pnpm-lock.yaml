@@ -1106,8 +1106,8 @@ importers:
         specifier: 1.0.9
         version: 1.0.9
       virtua:
-        specifier: 0.28.0
-        version: 0.28.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: 0.29.0
+        version: 0.29.0(react-dom@18.2.0)(react@18.2.0)
       zod:
         specifier: 3.22.4
         version: 3.22.4
@@ -21862,8 +21862,8 @@ packages:
     engines: {node: '>= 0.8'}
     dev: true
 
-  /virtua@0.28.0(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-aJLdLmow2bkCeuR6fwLEg1M6h4RR3Ob1TOQ9U9a4c5Csz8E871z+e0FeDwq2z95TBDYG87CRj5uJmw6NQ5DBQw==}
+  /virtua@0.29.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-V7gxQDUGgxe32cLyYhZ+hOxtZLuqKV9icqomE8qAN5HILf1TMuisCEZJVbr+k7GI7K+oOkYdKFiBX23cdXSXmg==}
     peerDependencies:
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
