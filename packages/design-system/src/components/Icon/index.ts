@@ -10,6 +10,7 @@ import {
   ArrowTopRightIcon,
   ArrowUturnLeftIcon,
   BellIcon,
+  BlueskyLogoIcon,
   BookOpenIcon,
   BookmarkFilledIcon,
   BookmarkIcon,
@@ -90,6 +91,7 @@ Icon.ArrowRight = ArrowRightIcon
 Icon.ArrowTopRight = ArrowTopRightIcon
 Icon.ArrowUturnLeft = ArrowUturnLeftIcon
 Icon.Bell = BellIcon
+Icon.BlueskyLogo = BlueskyLogoIcon
 Icon.Bookmark = BookmarkIcon
 Icon.BookmarkFilled = BookmarkFilledIcon
 Icon.BookOpen = BookOpenIcon

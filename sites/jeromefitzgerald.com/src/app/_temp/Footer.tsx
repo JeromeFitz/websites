@@ -8,12 +8,16 @@
  *  while in layout.tsx
  *
  */
+import { memo } from 'react'
+
 import { FooterClient } from './Footer.client'
+
+const FooterClientMemoized = memo(FooterClient)
 
 function Footer() {
   return (
     <>
-      <FooterClient />
+      <FooterClientMemoized />
     </>
   )
 }

@@ -28,20 +28,20 @@ import { useStore } from '@/store/index'
 
 const useStoreMenu = () => {
   return useStore((store) => ({
-    isMenuOpen: store.isMenuOpen,
-    isMenuOpenSet: store.isMenuOpenSet,
+    isMenuMobileOpen: store.isMenuMobileOpen,
+    isMenuMobileOpenSet: store.isMenuMobileOpenSet,
   }))
 }
 
 const AccordionNavigation = () => {
-  const { isMenuOpen, isMenuOpenSet } = useStoreMenu()
+  const { isMenuMobileOpen, isMenuMobileOpenSet } = useStoreMenu()
   const handleOnClick = () => {
-    if (!isMenuOpen) {
+    if (!isMenuMobileOpen) {
       document.body.classList.add('!overflow-hidden')
     } else {
       document.body.classList.remove('!overflow-hidden')
     }
-    isMenuOpenSet()
+    isMenuMobileOpenSet()
   }
 
   return (
@@ -88,31 +88,31 @@ const AccordionNavigation = () => {
 
 function NavigationMobile() {
   const { setTheme, theme } = useTheme()
-  const { isMenuOpen, isMenuOpenSet } = useStoreMenu()
+  const { isMenuMobileOpen, isMenuMobileOpenSet } = useStoreMenu()
   const handleOnClick = () => {
-    if (!isMenuOpen) {
+    if (!isMenuMobileOpen) {
       document.body.classList.add('!overflow-hidden')
     } else {
       document.body.classList.remove('!overflow-hidden')
     }
-    isMenuOpenSet()
+    isMenuMobileOpenSet()
   }
   return (
     <>
       <Button
         className={cx(
-          'col-span-full flex cursor-pointer items-center justify-end gap-2 lg:hidden',
+          'col-span-full flex cursor-pointer items-center justify-end gap-2 md:hidden',
         )}
         color="pink"
         onClick={handleOnClick}
         size="2"
         variant="ghost"
       >
-        <span>{isMenuOpen ? `Close` : `Open`} Menu</span>
-        {isMenuOpen ? <Cross1Icon /> : <HamburgerMenuIcon />}
+        <span>{isMenuMobileOpen ? `Close` : `Open`} Menu</span>
+        {isMenuMobileOpen ? <Cross1Icon /> : <HamburgerMenuIcon />}
       </Button>
 
-      {isMenuOpen && (
+      {isMenuMobileOpen && (
         // @todo(radix) children
         // @ts-ignore
         <PortalRoot>
@@ -145,7 +145,9 @@ function NavigationMobile() {
                 >
                   <li
                     className={cx(
-                      'flex w-full cursor-pointer select-none items-center transition-colors',
+                      'flex w-full cursor-pointer select-none items-center',
+                      // 'transition-colors',
+                      '',
                     )}
                   >
                     <Button
@@ -171,7 +173,7 @@ function NavigationMobile() {
           >
             <Button
               className={cx(
-                'col-span-full flex cursor-pointer items-center justify-end gap-2 px-7 lg:hidden',
+                'col-span-full flex cursor-pointer items-center justify-end gap-2 px-7 md:hidden',
               )}
               color="pink"
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}

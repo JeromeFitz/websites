@@ -135,7 +135,7 @@ function Books({ data }) {
                     <Card className="h-fit w-full" size="1" variant="surface">
                       <Flex
                         direction={{ initial: 'column', md: 'row-reverse' }}
-                        gap={{ initial: '6', lg: '6' }}
+                        gap={{ initial: '6', md: '6' }}
                         justify="between"
                       >
                         <Inset
@@ -147,7 +147,7 @@ function Books({ data }) {
                                 properties={properties}
                               /> */}
                           <NextImage
-                            className="mx-auto h-auto max-h-[275px] w-full min-w-[175px] max-w-64 lg:h-full lg:max-h-full lg:min-w-[275px] lg:max-w-[575px]"
+                            className="mx-auto h-auto max-h-[275px] w-full min-w-[175px] max-w-64 md:h-full md:max-h-full md:min-w-[275px] md:max-w-[575px]"
                             role="img"
                             tabIndex={-1}
                             {...image}
@@ -166,7 +166,7 @@ function Books({ data }) {
                           <Text
                             as="p"
                             className="line-clamp-3 pb-2"
-                            size={{ initial: '2', lg: '5' }}
+                            size={{ initial: '2', md: '5' }}
                             weight="medium"
                           >
                             {item.author}
@@ -184,7 +184,7 @@ function Books({ data }) {
                           <Text
                             as="p"
                             className="line-clamp-3 pb-2"
-                            size={{ initial: '2', lg: '5' }}
+                            size={{ initial: '2', md: '5' }}
                             weight="medium"
                           >
                             {item.title}
@@ -203,7 +203,7 @@ function Books({ data }) {
                           <Text
                             as="p"
                             className="line-clamp-3 pb-2 font-mono"
-                            size={{ initial: '1', lg: '2' }}
+                            size={{ initial: '1', md: '2' }}
                             weight="medium"
                           >
                             <Code variant="ghost">{item.pages}</Code>
@@ -220,7 +220,7 @@ function Books({ data }) {
                           <Text
                             as="p"
                             className="line-clamp-3 pb-2 font-mono"
-                            size={{ initial: '1', lg: '2' }}
+                            size={{ initial: '1', md: '2' }}
                             weight="medium"
                           >
                             <Code variant="ghost">
@@ -236,11 +236,11 @@ function Books({ data }) {
                           >
                             Status
                           </Text>
-                          <span className="mb-3 mt-2 flex flex-row flex-wrap gap-2 pb-1 font-mono lg:mt-1">
+                          <span className="mb-3 mt-2 flex flex-row flex-wrap gap-2 pb-1 font-mono md:mt-1">
                             <Badge
                               color={book.color}
                               radius="full"
-                              size={{ initial: '1', lg: '1' }}
+                              size={{ initial: '1', md: '1' }}
                             >
                               <>{book.title}</>
                             </Badge>
@@ -269,7 +269,7 @@ function Books({ data }) {
                               highContrast={false}
                               mt="1"
                               radius="full"
-                              size={{ initial: '1', lg: '2' }}
+                              size={{ initial: '1', md: '2' }}
                               variant="outline"
                             >
                               <NextLink href={item.urlBookshop} target="_self">
@@ -287,7 +287,7 @@ function Books({ data }) {
                               highContrast={false}
                               mt="1"
                               radius="full"
-                              size={{ initial: '1', lg: '2' }}
+                              size={{ initial: '1', md: '2' }}
                               variant="outline"
                             >
                               <NextLink href={item.urlBiblio} target="_self">
@@ -343,7 +343,7 @@ function BookPage({ books, title }) {
           </HeadlineTitle>
           <HeadlineTitleSub>
             <></>
-            {/* <Callout className={cx('m-2 w-full p-4 lg:w-11/12')} color="mint">
+            {/* <Callout className={cx('m-2 w-full p-4 md:w-11/12')} color="mint">
               Links to <Strong>Bookshop</Strong> earn a commission.
             </Callout> */}
           </HeadlineTitleSub>
@@ -369,7 +369,7 @@ function BookPage({ books, title }) {
             </Text>
             <Text size="4">Pittsburgh is home to a lot great bookstores!</Text>
             <Box asChild mb="4" pb="2" width="100%">
-              <ul className="list-inside lg:list-disc">
+              <ul className="list-inside md:list-disc">
                 {/* @todo(types) */}
                 {stores.map((store: any, i) => {
                   if (store.url === '') {
@@ -423,13 +423,13 @@ function BookPage({ books, title }) {
           className={cx(
             'col-span-full h-fit md:col-span-3',
             'sticky top-[calc(var(--header-height)_-_6px)] md:top-28',
-            // 'bg-white lg:bg-transparent dark:bg-black',
-            'bg-whiteA-12 dark:bg-blackA-12 lg:bg-transparent dark:lg:bg-transparent',
+            // 'bg-white md:bg-transparent dark:bg-black',
+            'bg-whiteA-12 dark:bg-blackA-12 md:bg-transparent dark:md:bg-transparent',
             'backdrop-blur-sm',
             // 'border-b-1 border-grayA-3',
             // 'drop-shadow-sm dark:shadow-white/5  dark:drop-shadow-lg',
             // 'md:border-none md:drop-shadow-none',
-            'z-40 lg:z-0',
+            'z-40 md:z-0',
           )}
         >
           <div
@@ -442,7 +442,7 @@ function BookPage({ books, title }) {
               <SelectRoot
                 defaultValue={bookStatus ?? 'in-progress'}
                 onValueChange={(value) => handleValueChangeBookStatus(value)}
-                size={{ initial: '3', lg: '3' }}
+                size={{ initial: '3', md: '3' }}
               >
                 <SelectTrigger
                   // @todo(radix) asChild this?
@@ -511,7 +511,7 @@ function BookPage({ books, title }) {
             ref={refContainer}
           >
             <ul>
-              <div className="-mx-2 w-0 lg:-mx-8" ref={targetRef} />
+              <div className="-mx-2 w-0 md:-mx-8" ref={targetRef} />
               <Box
                 asChild
                 className={cx(
@@ -520,7 +520,7 @@ function BookPage({ books, title }) {
                   'justify-items-start',
                   'flex flex-row flex-nowrap',
                   'overflow-x-auto',
-                  'gap-4 lg:gap-16',
+                  'gap-4 md:gap-16',
                   'z-0',
                   'first:gap-0',
                 )}

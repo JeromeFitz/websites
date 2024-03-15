@@ -18,8 +18,8 @@ function Quote({ item }) {
       asChild
       columns="1"
       height="100%"
-      m={{ initial: '1', lg: '3' }}
-      p={{ initial: '3', lg: '6' }}
+      m={{ initial: '1', md: '3' }}
+      p={{ initial: '3', md: '6' }}
       rows="1"
       width="100%"
     >
@@ -27,7 +27,7 @@ function Quote({ item }) {
         <Box
           className="pointer-events-none -indent-3"
           position="relative"
-          pr={{ initial: '0', lg: '9' }}
+          pr={{ initial: '0', md: '9' }}
           width="100%"
         >
           <Text size="7">
