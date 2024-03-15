@@ -42,7 +42,7 @@ function Emoji({ character }) {
     return (
       <EmojiHtml
         emoji={character}
-        label={'no description currently for this emoji'}
+        label={'no generated description currently for this emoji'}
       />
     )
   }

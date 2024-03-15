@@ -1,5 +1,5 @@
 import {
-  CloudIcon,
+  BlueskyLogoIcon,
   ExternalLinkIcon,
   GitHubLogoIcon,
   InstagramLogoIcon,
@@ -36,7 +36,7 @@ const socials = [
   {
     active: true,
     className: 'hover:bg-bluesky',
-    icon: <CloudIcon className="text-inherit" />,
+    icon: <BlueskyLogoIcon className="text-inherit" />,
     id: 'bluesky',
     keywords: 'social bluesky',
     rightSlot: <ExternalLinkIcon />,

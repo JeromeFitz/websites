@@ -10,7 +10,7 @@ import { RelationsItems, RelationsLoading, getRelationTitle } from './index'
 
 function RelationsWrapper({ children }) {
   return (
-    <Grid columns={{ initial: '2', lg: '3' }} gapX="3" gapY="6" width="100%">
+    <Grid columns={{ initial: '2', md: '3' }} gapX="3" gapY="6" width="100%">
       {children}
     </Grid>
   )

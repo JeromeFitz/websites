@@ -102,15 +102,15 @@ function Rollups({ properties }) {
         const ComponentProps = isCode ? { variant: 'ghost' } : {}
         return (
           <Box
-            // className="col-span-6 lg:col-span-4"
-            gridColumn={{ initial: 'span 6 / span 6', lg: 'span 4 / span 4' }}
+            // className="col-span-6 md:col-span-4"
+            gridColumn={{ initial: 'span 6 / span 6', md: 'span 4 / span 4' }}
             key={`rollup-${rollup.id}`}
           >
             <Text className="uppercase">
               <Strong>{rollup.id}</Strong>
             </Text>
             <ul>
-              <Box asChild mb={{ initial: '2', lg: '1' }}>
+              <Box asChild mb={{ initial: '2', md: '1' }}>
                 <li>
                   {/* @todo(types) pass types better at Component/Props */}
                   {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}

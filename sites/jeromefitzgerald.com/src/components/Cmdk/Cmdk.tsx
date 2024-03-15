@@ -378,7 +378,8 @@ function Cmdk() {
       <Box
         aria-hidden={true}
         className={cx(
-          'duration-250 fixed left-0 top-0 z-50 size-full transition-all',
+          'duration-250 fixed left-0 top-0 z-50 size-full',
+          'transition-all',
           'pointer-events-none',
           isCmdkOpen && isCmdkInnerOpen
             ? 'bg-grayA-2 backdrop-blur-sm'

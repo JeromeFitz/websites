@@ -62,7 +62,7 @@ function UpcomingShows({ properties }) {
   if (itemsCount === 0)
     return (
       <Box asChild display="inline-block">
-        <Text size={{ initial: '4', lg: '7' }}>No Upcoming Shows</Text>
+        <Text size={{ initial: '4', md: '7' }}>No Upcoming Shows</Text>
       </Box>
     )
   return (
@@ -76,8 +76,8 @@ function UpcomingShows({ properties }) {
               const { id } = item
 
               return (
-                <Box asChild my={{ initial: '2', lg: '1' }}>
-                  <li className={cx('my-2 lg:my-0.5')} key={id}>
+                <Box asChild my={{ initial: '2', md: '1' }}>
+                  <li className={cx('my-2 md:my-0.5')} key={id}>
                     {/* @todo(notion) loading component will break, has been reworked */}
                     {/* <Suspense fallback={<RelationLoading />}> */}
                     <Suspense fallback={null}>

@@ -43,8 +43,8 @@ const getDefaultInitialStateStoreMenu = () => ({
   isCmdkInnerOpenSet: () => {},
   isCmdkOpen: false,
   isCmdkOpenSet: () => {},
-  isMenuOpen: false,
-  isMenuOpenSet: () => {},
+  isMenuMobileOpen: false,
+  isMenuMobileOpenSet: () => {},
   isRouteChanging: false,
   isRouteChangingSet: () => {},
   isWidgetOpen: false,
@@ -106,9 +106,9 @@ const initializeStoreMenu = (preloadedState: Partial<any> = {}) => {
             isCmdkOpen: !get().isCmdkOpen,
           })
     },
-    isMenuOpenSet: () => {
+    isMenuMobileOpenSet: () => {
       set({
-        isMenuOpen: !get().isMenuOpen,
+        isMenuMobileOpen: !get().isMenuMobileOpen,
       })
     },
     isRouteChangingSet: (val: boolean) => {
