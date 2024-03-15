@@ -29,6 +29,22 @@
   font-feature-settings: 'calt', 'zero', 'cv01', 'cv02', 'cv03', 'cv04', 'cv05',
     'cv06', 'cv08', 'cv09', 'cv10', 'cv11';
   font-variation-settings: 'opsz' 32;
+
+  /* Gray 00, 100 */
+  /*  --black: '#000000; Black */
+  /*  --white: '#ffffff; White */
+
+  /* Gray 01, 99 */
+  --black: '#030303';
+  --white: '#fcfcfc';
+
+  /* Gray 02, 98 */
+  /*  --black: '#050505'; */
+  /*  --white: '#fafafa'; */
+
+  /* Gray 06, 94 */
+  /*  --black: '#0f0f0f; */
+  /*  --white: '#f4f4f4; */
 }
 
 :root {

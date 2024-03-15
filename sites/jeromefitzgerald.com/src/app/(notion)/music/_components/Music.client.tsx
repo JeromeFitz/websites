@@ -131,7 +131,7 @@ function DataItemLoader({ error, handleScroll, isLoadingMore }) {
         <Card className="h-fit w-full" size="1" variant="surface">
           <Flex
             direction={{ initial: 'column', md: 'row-reverse' }}
-            gap={{ initial: '2', lg: '6' }}
+            gap={{ initial: '2', md: '6' }}
           >
             <Inset clip="padding-box" side={{ initial: 'top', md: 'all' }}>
               <Image
@@ -160,7 +160,7 @@ function DataItemLoader({ error, handleScroll, isLoadingMore }) {
               <Text
                 as="p"
                 className="line-clamp-3"
-                size={{ initial: '3', lg: '5' }}
+                size={{ initial: '3', md: '5' }}
                 weight="medium"
               >
                 {isLoadingMore // ? 'loading' : isReachingEnd ? 'no more' :''
@@ -173,7 +173,7 @@ function DataItemLoader({ error, handleScroll, isLoadingMore }) {
                 as="p"
                 className="line-clamp-3"
                 mt="2"
-                size={{ initial: '3', lg: '5' }}
+                size={{ initial: '3', md: '5' }}
                 weight="regular"
               >
                 {isLoadingMore // ? 'loading' : isReachingEnd ? 'no more' :''
@@ -260,15 +260,15 @@ function DataItem({ item, type }) {
         <Card className="h-fit w-full" size="1" variant="surface">
           <Flex
             direction={{ initial: 'column', md: 'row-reverse' }}
-            gap={{ initial: '2', lg: '6' }}
+            gap={{ initial: '2', md: '6' }}
             height="100%"
-            maxWidth={{ initial: '320px', lg: '725px' }}
+            maxWidth={{ initial: '320px', md: '725px' }}
           >
             <Inset clip="padding-box" side={{ initial: 'top', md: 'all' }}>
               <Image
                 {...image}
                 alt={_alt}
-                className="mx-auto h-auto w-full max-w-64 lg:h-full lg:max-w-[575px]"
+                className="mx-auto h-auto w-full max-w-64 md:h-full md:max-w-[575px]"
                 placeholder="blur"
                 role="img"
                 tabIndex={-1}
@@ -287,7 +287,7 @@ function DataItem({ item, type }) {
               <Text
                 as="p"
                 className="line-clamp-3 pb-2"
-                size={{ initial: '2', lg: '5' }}
+                size={{ initial: '2', md: '5' }}
                 weight="medium"
               >
                 {_title1}
@@ -306,7 +306,7 @@ function DataItem({ item, type }) {
                   <Text
                     as="p"
                     className="line-clamp-3 pb-2"
-                    size={{ initial: '2', lg: '5' }}
+                    size={{ initial: '2', md: '5' }}
                     weight="medium"
                   >
                     {_title2}
@@ -324,7 +324,7 @@ function DataItem({ item, type }) {
                   <Text
                     as="p"
                     className="line-clamp-3 pb-2"
-                    size={{ initial: '2', lg: '5' }}
+                    size={{ initial: '2', md: '5' }}
                     weight="medium"
                   >
                     {_title3}
@@ -342,7 +342,7 @@ function DataItem({ item, type }) {
                   <Text
                     as="p"
                     className="line-clamp-3 pb-2 font-mono"
-                    size={{ initial: '1', lg: '2' }}
+                    size={{ initial: '1', md: '2' }}
                     weight="medium"
                   >
                     {item.album.release_date.slice(0, 4)}
@@ -358,26 +358,26 @@ function DataItem({ item, type }) {
               >
                 Genre{genres.length > 1 && 's'}
               </Text>
-              <span className="mb-3 mt-2 flex flex-row flex-wrap gap-2 pb-1 font-mono lg:mt-1">
+              <span className="mb-3 mt-2 flex flex-row flex-wrap gap-2 pb-1 font-mono md:mt-1">
                 {genres.map((genre) => {
                   if (!genre) return null
                   return (
                     <Badge
                       key={`g--${genre}`}
                       radius="full"
-                      size={{ initial: '1', lg: '1' }}
+                      size={{ initial: '1', md: '1' }}
                     >
                       {genre}
                     </Badge>
                   )
                 })}
                 {!!genresExtra && (
-                  <Badge color="gray" radius="full" size={{ initial: '1', lg: '1' }}>
+                  <Badge color="gray" radius="full" size={{ initial: '1', md: '1' }}>
                     {genresExtra}
                   </Badge>
                 )}
                 {genres.length === 0 && (
-                  <Badge color="gray" radius="full" size={{ initial: '1', lg: '1' }}>
+                  <Badge color="gray" radius="full" size={{ initial: '1', md: '1' }}>
                     N/A
                   </Badge>
                 )}
@@ -406,7 +406,7 @@ function DataItem({ item, type }) {
                   highContrast={false}
                   mt="1"
                   radius="full"
-                  size={{ initial: '1', lg: '2' }}
+                  size={{ initial: '1', md: '2' }}
                   variant="outline"
                 >
                   <NextLink href={_href}>
@@ -512,7 +512,7 @@ function DataItems() {
           ref={refContainer}
         >
           <ul>
-            <div className="-mx-2 w-0 lg:-mx-8" ref={targetRef} />
+            <div className="-mx-2 w-0 md:-mx-8" ref={targetRef} />
             <Box
               asChild
               className={cx(
@@ -521,7 +521,7 @@ function DataItems() {
                 'justify-items-start',
                 'flex flex-row flex-nowrap',
                 'overflow-x-auto',
-                'gap-4 lg:gap-16',
+                'gap-4 md:gap-16',
                 'z-0',
                 'first:gap-0',
               )}
@@ -635,7 +635,7 @@ function MusicClient({}) {
               ’s musical guests on Bandcamp:
             </Text>
             <Box asChild mb="4" pb="2" width="100%">
-              <ul className="list-inside lg:list-disc">
+              <ul className="list-inside md:list-disc">
                 {bandcamps.map(({ album, artist: _artist, href }, id) => {
                   const artist = addS(_artist)
                   return (
@@ -666,13 +666,13 @@ function MusicClient({}) {
           className={cx(
             'col-span-full h-fit md:col-span-3',
             'sticky top-[calc(var(--header-height)_-_6px)] md:top-28',
-            // 'bg-white lg:bg-transparent dark:bg-black',
-            'bg-whiteA-12 dark:bg-blackA-12 lg:bg-transparent',
+            // 'bg-white md:bg-transparent dark:bg-black',
+            'bg-whiteA-12 dark:bg-blackA-12 md:bg-transparent',
             'backdrop-blur-sm',
             // 'border-b-1 border-grayA-3',
             // 'drop-shadow-sm dark:shadow-white/5  dark:drop-shadow-lg',
             // 'md:border-none md:drop-shadow-none',
-            'z-40 lg:z-0',
+            'z-40 md:z-0',
           )}
         >
           <div
@@ -685,7 +685,7 @@ function MusicClient({}) {
               <SelectRoot
                 defaultValue={spotifyTimeRange ?? INIT.time_range}
                 onValueChange={(value) => handleValueChangeTimeRange(value)}
-                size={{ initial: '3', lg: '3' }}
+                size={{ initial: '3', md: '3' }}
               >
                 <SelectTrigger
                   // @todo(radix) asChild this?

@@ -102,7 +102,7 @@ function AccordionClient({ defaultValue, items }) {
                   >
                     <Text
                       as="span"
-                      className="visible inline lg:invisible lg:hidden"
+                      className="visible inline md:invisible md:hidden"
                       size="1"
                     >
                       {dayOfWeekAbbr?.toUpperCase()}, {month}/{dayOfMonth}
@@ -111,7 +111,7 @@ function AccordionClient({ defaultValue, items }) {
                     </Text>
                     <Text
                       as="span"
-                      className="invisible hidden lg:visible lg:inline"
+                      className="invisible hidden md:visible md:inline"
                       size="2"
                     >
                       {dayOfWeek}, {monthName} {dayOfMonthOrdinal}

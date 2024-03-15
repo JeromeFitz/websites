@@ -70,7 +70,7 @@ function Testing() {
               <Box
                 asChild
                 key={`homepage-link-${i}`}
-                mb={{ initial: '2', lg: '1' }}
+                mb={{ initial: '2', md: '1' }}
                 my="1"
                 py="1"
               >

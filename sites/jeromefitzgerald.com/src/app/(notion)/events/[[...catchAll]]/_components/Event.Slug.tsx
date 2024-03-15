@@ -117,10 +117,10 @@ function Ticket({ properties }) {
           width="100%"
           wrap="nowrap"
         >
-          <Code size={{ initial: '2', lg: '3' }} variant="ghost" weight="bold">
+          <Code size={{ initial: '2', md: '3' }} variant="ghost" weight="bold">
             {dayOfWeek}, {monthName} {dayOfMonthOrdinal}
           </Code>
-          <CalendarIcon className="size-4 lg:size-5" />
+          <CalendarIcon className="size-4 md:size-5" />
         </Flex>
         <Flex
           align="center"
@@ -134,7 +134,7 @@ function Ticket({ properties }) {
           <Code variant="ghost" weight="bold">
             {time} {timezone}
           </Code>
-          <ClockIcon className="size-4 lg:size-5" />
+          <ClockIcon className="size-4 md:size-5" />
         </Flex>
         <Flex
           align="start"
@@ -151,7 +151,7 @@ function Ticket({ properties }) {
               <Venue id={venues[0]?.id} />
             </Text>
           </Code>
-          <HomeIcon className="mt-[0.2rem] size-4 lg:mt-[0.125rem] lg:size-5" />
+          <HomeIcon className="mt-[0.2rem] size-4 md:mt-[0.125rem] md:size-5" />
         </Flex>
       </Flex>
       <Flex
@@ -174,7 +174,7 @@ function Ticket({ properties }) {
             <>{disabledText}</>
           </Button>
         )}
-        <TicketIcon className="size-4 lg:size-5" />
+        <TicketIcon className="size-4 md:size-5" />
       </Flex>
     </>
   )
@@ -267,7 +267,7 @@ async function Slug({ revalidate, segmentInfo }) {
         </HeadlineColumnA>
         <HeadlineContent>
           <Callout size="1" variant="outline" />
-          <Heading size={{ initial: '7', lg: '9' }}>{title}</Heading>
+          <Heading size={{ initial: '7', md: '9' }}>{title}</Heading>
           <Image properties={properties} />
           <Blocks data={data?.blocks} />
         </HeadlineContent>

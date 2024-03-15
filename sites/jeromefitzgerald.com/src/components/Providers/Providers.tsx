@@ -54,13 +54,7 @@ function Providers({ children }) {
   return (
     <>
       <ErrorBoundary>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          disableTransitionOnChange={false}
-          enableSystem
-          value={{ dark: 'dark', light: 'light' }}
-        >
+        <ThemeProvider>
           <StoreProvider>
             <RouterEventProvider />
             <ReactWrapBalancerProvider>

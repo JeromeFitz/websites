@@ -24,19 +24,19 @@ function HeadlineColumnA({ children, separateTitle = true }: HeadlineColumnAProp
   return (
     <Box
       className={cx(
-        'col-span-full lg:col-span-3',
+        'col-span-full md:col-span-3',
         'flex flex-col justify-start',
         'h-fit',
-        'lg:h-44 lg:max-h-56 lg:min-h-44',
-        'lg:sticky lg:top-28',
+        'md:h-44 md:max-h-56 md:min-h-44',
+        'md:sticky md:top-28',
         '',
       )}
     >
-      <Box className={cx('h-[inherit]', 'lg:h-full lg:max-h-56 lg:min-h-44')}>
+      <Box className={cx('h-[inherit]', 'md:h-full md:max-h-56 md:min-h-44')}>
         <Flex
           className={cx('h-[inherit]', separateTitle && 'justify-between')}
           direction="column"
-          gap={{ initial: '4', lg: '0' }}
+          gap={{ initial: '4', md: '0' }}
           height="inherit"
         >
           {children}
@@ -78,7 +78,7 @@ function HeadlineTitleText({
 type HeadlineTitleSubProps = AdditionalProps
 function HeadlineTitleSub({ children, className }: HeadlineTitleSubProps) {
   return (
-    <div className={cx('flex flex-row flex-wrap gap-2', 'lg:mr-3', className)}>
+    <div className={cx('flex flex-row flex-wrap gap-2', 'md:mr-3', className)}>
       {children}
     </div>
   )
@@ -89,13 +89,13 @@ function HeadlineContent({ children, className = '' }: HeadlineContentProps) {
     <Flex
       className={cx(
         // 'flex flex-col gap-4',
-        'col-span-full lg:col-span-9',
-        // 'mt-4 lg:mt-0',
+        'col-span-full md:col-span-9',
+        // 'mt-4 md:mt-0',
         className,
       )}
       direction="column"
       gap="4"
-      mt={{ initial: '4', lg: '0' }}
+      mt={{ initial: '4', md: '0' }}
     >
       {children}
     </Flex>

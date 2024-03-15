@@ -118,17 +118,21 @@ const config = ({ useTailwind = true }) => ({
         /**
          * App
          */
-        // black: '#000000', // Black
-        // white: '#ffffff', // White
+        // // Gray 00, 100
+        // black: '#000000',
+        // white: '#ffffff',
 
-        black: '#030303', // Gray 01
-        white: '#fcfcfc', // Gray 99
+        // Gray 01, 99
+        black: '#030303',
+        white: '#fcfcfc',
 
-        // black: '#050505', // Gray 02
-        // white: '#fafafa', // Gray 98
+        // // Gray 02, 98
+        // black: '#050505',
+        // white: '#fafafa',
 
-        // black: '#0f0f0f', // Gray 06
-        // white: '#f4f4f4', // Gray 94
+        // // Gray 06, 94
+        // black: '#0f0f0f',
+        // white: '#f4f4f4',
 
         /**
          * Social
@@ -182,11 +186,11 @@ const config = ({ useTailwind = true }) => ({
           from: { opacity: 0, transform: 'translate(-50%, -48%) scale(0.96)' },
           to: { opacity: 1, transform: 'translate(-50%, -50%) scale(1)' },
         },
+        // navigation-menu
         enterFromLeft: {
           from: { opacity: 0, transform: 'translateX(-200px)' },
           to: { opacity: 1, transform: 'translateX(0)' },
         },
-        // navigation-menu
         enterFromRight: {
           from: { opacity: 0, transform: 'translateX(200px)' },
           to: { opacity: 1, transform: 'translateX(0)' },

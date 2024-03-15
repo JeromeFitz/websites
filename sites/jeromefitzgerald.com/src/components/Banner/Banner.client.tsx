@@ -56,7 +56,7 @@ function BannerMobile({ data }) {
       data-radius="full"
       display={{
         initial: 'flex',
-        lg: 'none',
+        md: 'none',
       }}
       gridColumn="1/-1"
       justify="center"
@@ -114,7 +114,7 @@ function BannerDesktop({ data }) {
     <Flex
       align="center"
       direction="row"
-      display={{ initial: 'none', lg: 'flex' }}
+      display={{ initial: 'none', md: 'flex' }}
       gap="1"
       gridColumn="1/-1"
       justify="center"
@@ -187,7 +187,7 @@ function BannerClient() {
     <Flex
       align="center"
       direction="row"
-      display={{ initial: 'flex', lg: 'flex' }}
+      display={{ initial: 'flex', md: 'flex' }}
       gap="1"
       gridColumn="1/-1"
       justify="center"

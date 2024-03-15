@@ -40,7 +40,7 @@ type GridImpl = GridProps & AdditionalProps
 //       gap="2"
 //       mb="1"
 //       mr="1"
-//       p={{ initial: '4', lg: '8' }}
+//       p={{ initial: '4', md: '8' }}
 //       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 //       // @ts-ignore
 //       ref={forwardedRef}
@@ -69,7 +69,7 @@ const GridImpl = forwardRef(function GridImpl(
       )}
       mb="1"
       mr="1"
-      p={{ initial: '4', lg: '8' }}
+      p={{ initial: '4', md: '8' }}
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       ref={forwardedRef}

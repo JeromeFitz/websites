@@ -15,7 +15,7 @@ function SectionContainer() {
       <div
         className={cx(
           'inset-y-0 z-50 flex w-full flex-col items-center',
-          'pt-10 lg:pt-0',
+          'pt-10 md:pt-0',
           'mx-auto max-w-screen-xl',
         )}
       >
