@@ -4,6 +4,8 @@ export * from './Icon'
  * @note(Icon) further breakdown/customizations
  */
 import {
+  AmazonLogoIcon,
+  AppleLogoIcon,
   ArchiveIcon,
   ArrowLeftIcon,
   ArrowRightIcon,
@@ -44,6 +46,7 @@ import {
   FontItalicIcon,
   GearIcon,
   GitHubLogoIcon,
+  GooglePodcastsLogoIcon,
   HamburgerMenuIcon,
   HashtagIcon,
   HomeIcon,
@@ -85,6 +88,8 @@ import {
 
 const Icon = () => {}
 
+Icon.AmazonLogo = AmazonLogoIcon
+Icon.AppleLogo = AppleLogoIcon
 Icon.ArchiveIcon = ArchiveIcon
 Icon.ArrowLeft = ArrowLeftIcon
 Icon.ArrowRight = ArrowRightIcon
@@ -125,6 +130,7 @@ Icon.FontBold = FontBoldIcon
 Icon.FontItalic = FontItalicIcon
 Icon.Gear = GearIcon
 Icon.GitHubLogo = GitHubLogoIcon
+Icon.GooglePodcastsLogo = GooglePodcastsLogoIcon
 Icon.HamburgerMenu = HamburgerMenuIcon
 Icon.HashtagIcon = HashtagIcon
 Icon.Home = HomeIcon

@@ -363,6 +363,17 @@ const menus: NavigationMenuItems[] = [
     title: 'Playground',
   },
   {
+    group: 'navigation-menu',
+    href: '/playground/design-system',
+    icon: Pencil2Icon,
+    id: '/playground/design-system',
+    isActive: env?.IS_DEV,
+    isActiveMobileOverride: false,
+    isParent: false,
+    items: [],
+    title: 'DS',
+  },
+  {
     group: 'general',
     href: '/theme',
     icon: DesktopIcon,
