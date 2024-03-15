@@ -317,7 +317,7 @@ importers:
     devDependencies:
       '@jeromefitz/date-fns-tz':
         specifier: 3.0.0-canary.8
-        version: 3.0.0-canary.8(date-fns@3.4.0)
+        version: 3.0.0-canary.8(date-fns@3.5.0)
       '@jeromefitz/utils':
         specifier: 3.0.0
         version: 3.0.0(lodash@4.17.21)
@@ -331,8 +331,8 @@ importers:
         specifier: 18.2.22
         version: 18.2.22
       date-fns:
-        specifier: 3.4.0
-        version: 3.4.0
+        specifier: 3.5.0
+        version: 3.5.0
       next:
         specifier: 14.1.3
         version: 14.1.3(react-dom@18.2.0)(react@18.2.0)
@@ -536,7 +536,7 @@ importers:
         version: 2.1.1(react@18.2.0)
       '@jeromefitz/date-fns-tz':
         specifier: 3.0.0-canary.8
-        version: 3.0.0-canary.8(date-fns@3.4.0)
+        version: 3.0.0-canary.8(date-fns@3.5.0)
       '@jeromefitz/design-system':
         specifier: 4.2.3
         version: 4.2.3(@heroicons/react@2.1.1)(@radix-ui/react-icons@1.3.0)(@types/react@18.2.66)(cmdk@1.0.0)(framer-motion@11.0.13)(lodash@4.17.21)(next@14.1.3)(react-dom@18.2.0)(react@18.2.0)(swr@2.2.5)
@@ -688,8 +688,8 @@ importers:
         specifier: 1.0.0
         version: 1.0.0(@types/react-dom@18.2.22)(@types/react@18.2.66)(react-dom@18.2.0)(react@18.2.0)
       date-fns:
-        specifier: 3.4.0
-        version: 3.4.0
+        specifier: 3.5.0
+        version: 3.5.0
       fast-json-stable-stringify:
         specifier: 2.1.0
         version: 2.1.0
@@ -852,7 +852,7 @@ importers:
         version: 2.1.1(react@18.2.0)
       '@jeromefitz/date-fns-tz':
         specifier: 3.0.0-canary.8
-        version: 3.0.0-canary.8(date-fns@3.4.0)
+        version: 3.0.0-canary.8(date-fns@3.5.0)
       '@jeromefitz/design-system':
         specifier: 4.2.3
         version: 4.2.3(@heroicons/react@2.1.1)(@radix-ui/react-icons@1.3.0)(@types/react@18.2.66)(cmdk@1.0.0)(framer-motion@11.0.13)(lodash@4.17.21)(next@14.1.3)(react-dom@18.2.0)(react@18.2.0)(swr@2.2.5)
@@ -1004,8 +1004,8 @@ importers:
         specifier: 1.0.0
         version: 1.0.0(@types/react-dom@18.2.22)(@types/react@18.2.66)(react-dom@18.2.0)(react@18.2.0)
       date-fns:
-        specifier: 3.4.0
-        version: 3.4.0
+        specifier: 3.5.0
+        version: 3.5.0
       fast-json-stable-stringify:
         specifier: 2.1.0
         version: 2.1.0
@@ -3295,12 +3295,12 @@ packages:
       lodash.clonedeep: 4.5.0
     dev: false
 
-  /@jeromefitz/date-fns-tz@3.0.0-canary.8(date-fns@3.4.0):
+  /@jeromefitz/date-fns-tz@3.0.0-canary.8(date-fns@3.5.0):
     resolution: {integrity: sha512-tU4JAYkqsKqwdwa+4X2Un0fFT/OaeQw3NV6AGLeyNd/TfNEJZlV6lHOemG6NAigZlGkGEIK279SIjEJPZsMkUg==}
     peerDependencies:
       date-fns: ^3.0.0
     dependencies:
-      date-fns: 3.4.0
+      date-fns: 3.5.0
       lodash.clonedeep: 4.5.0
 
   /@jeromefitz/design-system@4.2.3(@heroicons/react@2.1.1)(@radix-ui/react-icons@1.3.0)(@types/react@18.2.66)(cmdk@1.0.0)(framer-motion@11.0.13)(lodash@4.17.21)(next@14.1.3)(react-dom@18.2.0)(react@18.2.0)(swr@2.2.5):
@@ -13173,8 +13173,8 @@ packages:
     resolution: {integrity: sha512-y8e109LYGgoQDveiEBD3DYXKba1jWf5BA8YU1FL5Tvm0BTdEfy54WLCwnuYWZNnzzvALy/QQ4Hov+Q9RVRv+Zw==}
     dev: false
 
-  /date-fns@3.4.0:
-    resolution: {integrity: sha512-Akz4R8J9MXBsOgF1QeWeCsbv6pntT5KCPjU0Q9prBxVmWJYPLhwAIsNg3b0QAdr0ttiozYLD3L/af7Ra0jqYXw==}
+  /date-fns@3.5.0:
+    resolution: {integrity: sha512-a+DwyXn7NOfdJireCzAA0B9p7jIXEu/Q9JKCyMYvH6+0vPUNbQceA0neXrdfJ/xzl3mhOh5vibQQ3936Tssm6A==}
 
   /debounce@1.2.1:
     resolution: {integrity: sha512-XRRe6Glud4rd/ZGQfiV1ruXSfbvfJedlV9Y6zOlP+2K04vBYiJEte6stfFkCP03aMnY5tsipamumUjL14fofug==}
