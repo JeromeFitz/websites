@@ -99,7 +99,7 @@
     "@radix-ui/themes": "3.0.0-rc.16-patch.1",
     "clsx": "2.1.0",
     "cmdk": "1.0.0",
-    "tailwind-merge": "2.2.1"
+    "tailwind-merge": "2.2.2"
   },
   "devDependencies": {
     "@jeromefitz/jest-config": "workspace:*",

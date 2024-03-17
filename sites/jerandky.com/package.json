@@ -140,6 +140,6 @@
     "@types/smoothscroll-polyfill": "0.3.4",
     "@types/title": "3.4.3",
     "@types/uuid": "9.0.8",
-    "tailwind-merge": "2.2.1"
+    "tailwind-merge": "2.2.2"
   }
 }
