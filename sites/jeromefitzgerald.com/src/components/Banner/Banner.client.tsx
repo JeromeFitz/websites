@@ -47,7 +47,7 @@ function BannerMobile({ data }) {
       className={cx(
         '[--icon-size:16px]',
         'group transition-transform',
-        'active:translate-y-[0.125rem]',
+        'active:translate-y-0.5',
         'bg-grayA-2 active:bg-grayA-3',
         'text-accent-12 active:text-accentA-12',
         'rounded-3 shadow-3 cursor-pointer leading-7',

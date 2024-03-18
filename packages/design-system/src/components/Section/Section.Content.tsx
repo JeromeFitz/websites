@@ -12,7 +12,7 @@ function SectionContent({ children, className = '' }) {
         //
         // 'md:slate-border md:border-t-[1px] md:border-solid md:py-3'
         // before
-        'before:h-[1px]',
+        'before:h-px',
         // 'before:h-0',
         'before:relative before:top-0 before:w-full  before:content-normal',
         // 'before:left-2 before:right-2,

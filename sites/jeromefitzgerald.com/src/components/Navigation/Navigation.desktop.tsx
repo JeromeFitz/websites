@@ -132,7 +132,7 @@ function ListParent({ menu }) {
             <CaretDownIcon
               aria-hidden
               className={cx(
-                'duration-250 group-data-[state=open]:text-accent-11 text-accent-12 relative top-[1px] mr-1 transition-transform ease-in group-data-[state=open]:-rotate-180',
+                'duration-250 group-data-[state=open]:text-accent-11 text-accent-12 relative top-px mr-1 transition-transform ease-in group-data-[state=open]:-rotate-180',
               )}
               label={''}
             />
@@ -235,7 +235,7 @@ const NavigationMenu = () => {
               >
                 <div
                   className={cx(
-                    'relative top-[70%] size-[10px] rotate-[45deg] rounded-tl-[2px]',
+                    'relative top-[70%] size-[10px] rotate-45 rounded-tl-[2px]',
                     // 'bg-accentA-6 dark:bg-accentA-12',
                     'bg-accent-6 dark:bg-accent-12',
                   )}
