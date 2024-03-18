@@ -30,8 +30,8 @@ importers:
         specifier: 2.0.2
         version: 2.0.2
       '@jeromefitz/release-notes-generator':
-        specifier: 2.0.2
-        version: 2.0.2(lodash@4.17.21)
+        specifier: 2.0.3
+        version: 2.0.3(lodash@4.17.21)
       '@jeromefitz/semantic':
         specifier: 10.0.3
         version: 10.0.3(@jeromefitz/conventional-gitmoji@4.0.1)(typescript@5.4.2)
@@ -3475,8 +3475,8 @@ packages:
       - prettier-plugin-svelte
       - prettier-plugin-twig-melody
 
-  /@jeromefitz/release-notes-generator@2.0.2(lodash@4.17.21):
-    resolution: {integrity: sha512-sdFP23lNfyR1M22dNNwEqm4eKI+o64xjwOui7EIbZXt5ibjEfWSDVpdWVi+Du2dVEiyPXHS1dIvN3Ww7sMdFyA==}
+  /@jeromefitz/release-notes-generator@2.0.3(lodash@4.17.21):
+    resolution: {integrity: sha512-/Rhwps0i1cSZ/IDEoq/JZtS49rYAGYTJF5D5evzdRklnHwqEirmwWskduLDKoz9uh5v5JoYu1DUHNfEiOVgLng==}
     engines: {node: '>=20'}
     peerDependencies:
       lodash: ^4.17.21
@@ -3484,7 +3484,7 @@ packages:
       '@octokit/rest': 20.0.2
       conventional-commits-filter: 4.0.0
       conventional-commits-parser: 5.0.0
-      date-fns: 3.3.1
+      date-fns: 3.5.0
       import-from-esm: 1.3.3
       lodash: 4.17.21
       read-package-up: 11.0.0
@@ -4039,7 +4039,7 @@ packages:
       '@octokit/graphql': 7.0.2
       '@octokit/request': 8.1.6
       '@octokit/request-error': 5.0.1
-      '@octokit/types': 12.4.0
+      '@octokit/types': 12.6.0
       before-after-hook: 2.2.3
       universal-user-agent: 6.0.1
     dev: false
@@ -4067,7 +4067,7 @@ packages:
     resolution: {integrity: sha512-DWPLtr1Kz3tv8L0UvXTDP1fNwM0S+z6EJpRcvH66orY6Eld4XBMCSYsaWp4xIm61jTWxK68BrR7ibO+vSDnZqw==}
     engines: {node: '>= 18'}
     dependencies:
-      '@octokit/types': 12.4.0
+      '@octokit/types': 12.6.0
       universal-user-agent: 6.0.1
     dev: false
 
@@ -4076,7 +4076,7 @@ packages:
     engines: {node: '>= 18'}
     dependencies:
       '@octokit/request': 8.1.6
-      '@octokit/types': 12.4.0
+      '@octokit/types': 12.6.0
       universal-user-agent: 6.0.1
     dev: false
 
@@ -4085,7 +4085,7 @@ packages:
     engines: {node: '>= 18'}
     dependencies:
       '@octokit/request': 9.0.0
-      '@octokit/types': 12.4.0
+      '@octokit/types': 12.6.0
       universal-user-agent: 7.0.2
 
   /@octokit/openapi-types@19.1.0:
@@ -4111,7 +4111,7 @@ packages:
       '@octokit/core': '>=5'
     dependencies:
       '@octokit/core': 5.1.0
-      '@octokit/types': 12.4.0
+      '@octokit/types': 12.6.0
     dev: false
 
   /@octokit/plugin-request-log@4.0.0(@octokit/core@5.1.0):
@@ -4130,7 +4130,7 @@ packages:
       '@octokit/core': '>=5'
     dependencies:
       '@octokit/core': 5.1.0
-      '@octokit/types': 12.4.0
+      '@octokit/types': 12.6.0
     dev: false
 
   /@octokit/plugin-retry@6.0.1(@octokit/core@5.1.0):
@@ -4183,7 +4183,7 @@ packages:
     resolution: {integrity: sha512-X7pnyTMV7MgtGmiXBwmO6M5kIPrntOXdyKZLigNfQWSEQzVxR4a4vo49vJjTWX70mPndj8KhfT4Dx+2Ng3vnBQ==}
     engines: {node: '>= 18'}
     dependencies:
-      '@octokit/types': 12.4.0
+      '@octokit/types': 12.6.0
       deprecation: 2.3.1
       once: 1.4.0
     dev: false
@@ -4192,7 +4192,7 @@ packages:
     resolution: {integrity: sha512-EPeILOAEGqwmEG6g7dYlbvqkjJ5nWNcZvQpgeLEn1MieIcJ0xK0CJtvVcIMXqzIM8DOWzvI6zL5FQAwjTvk/Tg==}
     engines: {node: '>= 18'}
     dependencies:
-      '@octokit/types': 12.4.0
+      '@octokit/types': 12.6.0
 
   /@octokit/request@8.1.6:
     resolution: {integrity: sha512-YhPaGml3ncZC1NfXpP3WZ7iliL1ap6tLkAp6MvbK2fTTPytzVUyUesBBogcdMm86uRYO5rHaM1xIWxigWZ17MQ==}
@@ -4200,7 +4200,7 @@ packages:
     dependencies:
       '@octokit/endpoint': 9.0.4
       '@octokit/request-error': 5.0.1
-      '@octokit/types': 12.4.0
+      '@octokit/types': 12.6.0
       universal-user-agent: 6.0.1
     dev: false
 
@@ -4210,7 +4210,7 @@ packages:
     dependencies:
       '@octokit/endpoint': 10.0.0
       '@octokit/request-error': 6.0.1
-      '@octokit/types': 12.4.0
+      '@octokit/types': 12.6.0
       universal-user-agent: 7.0.2
 
   /@octokit/rest@20.0.2:
@@ -13163,10 +13163,6 @@ packages:
     engines: {node: '>=0.11'}
     dependencies:
       '@babel/runtime': 7.23.9
-
-  /date-fns@3.3.1:
-    resolution: {integrity: sha512-y8e109LYGgoQDveiEBD3DYXKba1jWf5BA8YU1FL5Tvm0BTdEfy54WLCwnuYWZNnzzvALy/QQ4Hov+Q9RVRv+Zw==}
-    dev: false
 
   /date-fns@3.5.0:
     resolution: {integrity: sha512-a+DwyXn7NOfdJireCzAA0B9p7jIXEu/Q9JKCyMYvH6+0vPUNbQceA0neXrdfJ/xzl3mhOh5vibQQ3936Tssm6A==}
