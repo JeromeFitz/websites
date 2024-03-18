@@ -406,13 +406,7 @@ function BookPage({ books, title }) {
           </>
         </HeadlineContent>
       </Grid>
-      <Grid
-        className={cx(
-          'py-0',
-          'my-[var(--space-4)] px-[var(--space-4)]',
-          'md:my-0 md:px-[var(--space-8)]',
-        )}
-      >
+      <Grid className={cx('py-0', 'my-rx-4 px-rx-4', 'md:px-rx-8 md:my-0')}>
         <Callout className="col-span-full" color="mint">
           <Strong className="font-mono uppercase">Bookshop</Strong> links earn a
           commission.

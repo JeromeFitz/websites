@@ -151,7 +151,7 @@ function Ticket({ properties }) {
               <Venue id={venues[0]?.id} />
             </Text>
           </Code>
-          <HomeIcon className="mt-[0.2rem] size-4 md:mt-[0.125rem] md:size-5" />
+          <HomeIcon className="mt-[0.2rem] size-4 md:mt-0.5 md:size-5" />
         </Flex>
       </Flex>
       <Flex
