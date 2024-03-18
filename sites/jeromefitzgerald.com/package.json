@@ -42,7 +42,7 @@
     "@heroicons/react": "2.1.1",
     "@jeromefitz/date-fns-tz": "3.0.0-canary.8",
     "@jeromefitz/design-system": "4.2.3",
-    "@jeromefitz/notion": "5.0.1",
+    "@jeromefitz/notion": "5.0.2",
     "@jeromefitz/spotify": "4.0.2",
     "@jeromefitz/utils": "3.0.0",
     "@mantine/hooks": "7.6.2",
