@@ -24,7 +24,7 @@ function FooterCmdkClient({ isLoading }) {
   return (
     <Skeleton loading={isLoading}>
       <Button
-        className="gap-[0.5rem] font-mono hover:cursor-pointer lg:flex"
+        className="gap-2 font-mono hover:cursor-pointer lg:flex"
         highContrast
         onClick={() => {
           isCmdkOpenSet()
@@ -36,7 +36,7 @@ function FooterCmdkClient({ isLoading }) {
         <Text className="text-gray-12 mr-1" size="2">
           Command Menu
         </Text>
-        <Box className="gap-[0.25rem] lg:flex">
+        <Box className="gap-1 lg:flex">
           <Kbd className="group-hover:cursor-pointer">{key}</Kbd>
           <Kbd className="group-hover:cursor-pointer">K</Kbd>
         </Box>
