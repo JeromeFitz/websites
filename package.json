@@ -50,7 +50,7 @@
     "syncpack": "12.3.0",
     "ts-node": "10.9.2",
     "tsup": "8.0.2",
-    "turbo": "1.12.5",
+    "turbo": "1.13.0",
     "typescript": "5.4.3"
   },
   "pnpm": {
