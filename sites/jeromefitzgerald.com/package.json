@@ -140,7 +140,7 @@
     "@types/ms": "0.7.34",
     "@types/pluralize": "0.0.33",
     "@types/ramda": "0.29.11",
-    "@types/react": "18.2.68",
+    "@types/react": "18.2.69",
     "@types/react-dom": "18.2.22",
     "@types/react-headroom": "3.2.3",
     "@types/smoothscroll-polyfill": "0.3.4",
