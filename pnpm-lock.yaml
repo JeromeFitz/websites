@@ -201,8 +201,8 @@ importers:
         specifier: 1.0.3
         version: 1.0.3(@types/react-dom@18.2.22)(@types/react@18.2.70)(react-dom@18.2.0)(react@18.2.0)
       '@radix-ui/themes':
-        specifier: 3.0.0-rc.16-patch.1
-        version: 3.0.0-rc.16-patch.1(@types/react-dom@18.2.22)(@types/react@18.2.70)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 3.0.0
+        version: 3.0.0(@types/react-dom@18.2.22)(@types/react@18.2.70)(react-dom@18.2.0)(react@18.2.0)
       clsx:
         specifier: 2.1.0
         version: 2.1.0
@@ -364,8 +364,8 @@ importers:
         specifier: 2.2.14
         version: 2.2.14
       '@radix-ui/themes':
-        specifier: 3.0.0-rc.16-patch.1
-        version: 3.0.0-rc.16-patch.1(@types/react-dom@18.2.22)(@types/react@18.2.70)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 3.0.0
+        version: 3.0.0(@types/react-dom@18.2.22)(@types/react@18.2.70)(react-dom@18.2.0)(react@18.2.0)
       '@types/lodash':
         specifier: 4.17.0
         version: 4.17.0
@@ -436,8 +436,8 @@ importers:
         specifier: workspace:*
         version: link:../tailwind-config
       '@radix-ui/themes':
-        specifier: 3.0.0-rc.16-patch.1
-        version: 3.0.0-rc.16-patch.1(react-dom@18.2.0)(react@18.2.0)
+        specifier: 3.0.0
+        version: 3.0.0(react-dom@18.2.0)(react@18.2.0)
       '@storybook/addon-a11y':
         specifier: 8.0.4
         version: 8.0.4
@@ -493,8 +493,8 @@ importers:
         specifier: 3.0.0
         version: 3.0.0
       '@radix-ui/themes':
-        specifier: 3.0.0-rc.16-patch.1
-        version: 3.0.0-rc.16-patch.1
+        specifier: 3.0.0
+        version: 3.0.0
       '@tailwindcss/aspect-ratio':
         specifier: 0.4.2
         version: 0.4.2(tailwindcss@3.4.1)
@@ -667,8 +667,8 @@ importers:
         specifier: 1.0.3
         version: 1.0.3(@types/react-dom@18.2.22)(@types/react@18.2.70)(react-dom@18.2.0)(react@18.2.0)
       '@radix-ui/themes':
-        specifier: 3.0.0-rc.16-patch.1
-        version: 3.0.0-rc.16-patch.1(@types/react-dom@18.2.22)(@types/react@18.2.70)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 3.0.0
+        version: 3.0.0(@types/react-dom@18.2.22)(@types/react@18.2.70)(react-dom@18.2.0)(react@18.2.0)
       '@tanem/react-nprogress':
         specifier: 5.0.51
         version: 5.0.51(react-dom@18.2.0)(react@18.2.0)
@@ -980,8 +980,8 @@ importers:
         specifier: 1.0.3
         version: 1.0.3(@types/react-dom@18.2.22)(@types/react@18.2.70)(react-dom@18.2.0)(react@18.2.0)
       '@radix-ui/themes':
-        specifier: 3.0.0-rc.16-patch.1
-        version: 3.0.0-rc.16-patch.1(@types/react-dom@18.2.22)(@types/react@18.2.70)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 3.0.0
+        version: 3.0.0(@types/react-dom@18.2.22)(@types/react@18.2.70)(react-dom@18.2.0)(react@18.2.0)
       '@tanem/react-nprogress':
         specifier: 5.0.51
         version: 5.0.51(react-dom@18.2.0)(react@18.2.0)
@@ -2550,6 +2550,12 @@ packages:
 
   /@babel/runtime@7.24.0:
     resolution: {integrity: sha512-Chk32uHMg6TnQdvw2e9IlqPpFX/6NLuK0Ys2PqLb7/gL5uFn9mXvK715FGLlOLQrcO4qIkNHkvPGktzzXexsFw==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      regenerator-runtime: 0.14.1
+
+  /@babel/runtime@7.24.1:
+    resolution: {integrity: sha512-+BIznRzyqBf+2wCTxcKE3wDjfGeCoVE61KSHGpkzqrLi8qxqFwBeUFyId2cxkTmm55fzDGnm0+yCxaxygrLUnQ==}
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.14.1
@@ -5619,7 +5625,7 @@ packages:
       '@types/react-dom':
         optional: true
     dependencies:
-      '@babel/runtime': 7.24.0
+      '@babel/runtime': 7.24.1
       '@radix-ui/primitive': 1.0.1
       '@radix-ui/react-compose-refs': 1.0.1
       '@radix-ui/react-context': 1.0.1
@@ -5641,7 +5647,7 @@ packages:
       '@types/react-dom':
         optional: true
     dependencies:
-      '@babel/runtime': 7.24.0
+      '@babel/runtime': 7.24.1
       '@radix-ui/primitive': 1.0.1
       '@radix-ui/react-compose-refs': 1.0.1(@types/react@18.2.70)(react@18.2.0)
       '@radix-ui/react-context': 1.0.1(@types/react@18.2.70)(react@18.2.0)
@@ -5666,7 +5672,7 @@ packages:
       '@types/react-dom':
         optional: true
     dependencies:
-      '@babel/runtime': 7.24.0
+      '@babel/runtime': 7.24.1
       '@radix-ui/primitive': 1.0.1
       '@radix-ui/react-compose-refs': 1.0.1(react@18.2.0)
       '@radix-ui/react-context': 1.0.1(react@18.2.0)
@@ -8446,8 +8452,8 @@ packages:
     dependencies:
       '@babel/runtime': 7.24.0
 
-  /@radix-ui/themes@3.0.0-rc.16-patch.1:
-    resolution: {integrity: sha512-1EZZCbeKbkIOosA5qQgbC9EKR0MZBY6EqY55XRnT7jZ1dxK8xzOdv5dND7UlJfyNYL5Qciej5892A5rnDPTZ5A==}
+  /@radix-ui/themes@3.0.0:
+    resolution: {integrity: sha512-PHRmrs9EQaO4h/gmRao1m/iZHnFcdB0L4u22OTU7EUeDDVBqzICrUhY0U+xihWTbiReVlt1b9AgM7CMiGXaJvw==}
     peerDependencies:
       '@types/react': '*'
       '@types/react-dom': '*'
@@ -8496,8 +8502,8 @@ packages:
       react-remove-scroll-bar: 2.3.4
     dev: true
 
-  /@radix-ui/themes@3.0.0-rc.16-patch.1(@types/react-dom@18.2.22)(@types/react@18.2.70)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-1EZZCbeKbkIOosA5qQgbC9EKR0MZBY6EqY55XRnT7jZ1dxK8xzOdv5dND7UlJfyNYL5Qciej5892A5rnDPTZ5A==}
+  /@radix-ui/themes@3.0.0(@types/react-dom@18.2.22)(@types/react@18.2.70)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-PHRmrs9EQaO4h/gmRao1m/iZHnFcdB0L4u22OTU7EUeDDVBqzICrUhY0U+xihWTbiReVlt1b9AgM7CMiGXaJvw==}
     peerDependencies:
       '@types/react': '*'
       '@types/react-dom': '*'
@@ -8549,8 +8555,8 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
       react-remove-scroll-bar: 2.3.4(@types/react@18.2.70)(react@18.2.0)
 
-  /@radix-ui/themes@3.0.0-rc.16-patch.1(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-1EZZCbeKbkIOosA5qQgbC9EKR0MZBY6EqY55XRnT7jZ1dxK8xzOdv5dND7UlJfyNYL5Qciej5892A5rnDPTZ5A==}
+  /@radix-ui/themes@3.0.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-PHRmrs9EQaO4h/gmRao1m/iZHnFcdB0L4u22OTU7EUeDDVBqzICrUhY0U+xihWTbiReVlt1b9AgM7CMiGXaJvw==}
     peerDependencies:
       '@types/react': '*'
       '@types/react-dom': '*'
@@ -11503,6 +11509,9 @@ packages:
 
   /ajv-formats@2.1.1:
     resolution: {integrity: sha512-Wx0Kx52hxE7C18hkMEggYlEifqWZtYaRgouJor+WMdPnQyEK13vgEWyVNup7SoeeoLMsr4kf5h6dOW11I15MUA==}
+    peerDependenciesMeta:
+      ajv:
+        optional: true
     dependencies:
       ajv: 8.12.0
     dev: true
