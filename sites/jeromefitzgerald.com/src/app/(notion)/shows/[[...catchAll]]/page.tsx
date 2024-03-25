@@ -1,4 +1,3 @@
-// import isEqual from 'lodash/isEqual.js'
 import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
 import {
   getDataFromCache,
@@ -8,9 +7,10 @@ import {
 import { isObjectEmpty } from '@jeromefitz/utils'
 
 import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints.js'
-// import uniqWith from 'lodash/uniqWith.js'
 import type { Metadata } from 'next'
 
+// import isEqual from 'lodash/isEqual.js'
+// import uniqWith from 'lodash/uniqWith.js'
 import { getPropertyTypeData } from 'next-notion/utils/index'
 
 import type { PageObjectResponseShow } from '@/app/(notion)/_config/index'
@@ -48,6 +48,8 @@ export async function generateMetadata({ ...props }): Promise<Metadata> {
   const isPublished =
     getPropertyTypeData(data?.page?.properties, 'Is.Published') || false
 
+  console.dir(`segmentInfo.isIndex: ${segmentInfo.isIndex ? 'y' : 'n'}`)
+
   const pageData = segmentInfo.isIndex
     ? getPageData(data?.page?.properties)
     : getShowData(data?.page?.properties)
@@ -66,6 +68,7 @@ async function _generateStaticParams({ ...props }) {
 
   console.dir(`> generateStaticParams (${SEGMENT})`)
   const segmentInfo = getSegmentInfo({ SEGMENT, ...props })
+  // console.dir(segmentInfo)
   // const data = await getDataFromCache({
   //   database_id: '',
   //   filterType: 'equals',
@@ -96,13 +99,24 @@ async function _generateStaticParams({ ...props }) {
         '',
       )
       const catchAll = href.split('/')
+
       segments.push({ catchAll })
+
       if (catchAll.length > 0) {
         for (let index = 0; index < catchAll.length; index++) {
           const element = catchAll.slice(0, index)
           element.length > 0 && combos.push({ catchAll: element })
+          // if (element.length > 1) {
+          //   console.dir(`---`)
+          //   console.dir(`SEGMENT:        ${SEGMENT}`)
+          //   console.dir(`element.length: ${element.length}`)
+          //   console.dir(element)
+          //   console.dir(`---`)
+          //   combos.push({ catchAll: element })
+          // }
         }
       }
+      return
     })
   }
   // const routes = !!combos && uniqWith(combos, isEqual)

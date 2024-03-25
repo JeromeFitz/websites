@@ -57,10 +57,10 @@ const banners = {
       text: 'Go to Details',
     },
     content: {
-      desktop: 'Sketch Madness: Sports Themed Sketch Show',
-      mobile: 'Sketch Madness: Sports Themed Sketch Show',
+      desktop: 'Arcade Hootenanny!: Saturday, April 18th',
+      mobile: 'Arcade Hootenanny!: SAT 04/18',
     },
-    href: '/events/2024/03/22/sketch-madness',
+    href: '/events/2024/04/13/arcade-hootenanny',
     icon: <TicketIcon />,
   },
 }
