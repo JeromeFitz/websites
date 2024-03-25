@@ -1,4 +1,3 @@
-// import isEqual from 'lodash/isEqual.js'
 import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
 import {
   getDataFromCache,
@@ -7,9 +6,10 @@ import {
 } from '@jeromefitz/shared/notion/utils/index'
 
 import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints.js'
-// import uniqWith from 'lodash/uniqWith.js'
 import type { Metadata } from 'next'
 
+// import isEqual from 'lodash/isEqual.js'
+// import uniqWith from 'lodash/uniqWith.js'
 import { getPropertyTypeData } from 'next-notion/utils/index'
 
 import type { PageObjectResponseEvent } from '@/app/(notion)/_config/index'
@@ -20,6 +20,8 @@ import { Layout } from '@/components/Layout/index'
 
 import { Listing } from './_components/Event.Listing'
 import { Slug } from './_components/Event.Slug'
+
+const CURRENT_YEAR = 2024
 
 // export const dynamic = 'auto'
 // export const dynamicParams = true
@@ -87,7 +89,12 @@ async function _generateStaticParams({ ...props }) {
        */
       const isEvent = segmentInfo.segment === 'events' // && !segmentInfo.isIndex
       if (isEvent) {
-        if (catchAll[0] !== 2023) return null
+        const isCurrentYear =
+          catchAll[0] === CURRENT_YEAR || catchAll[0] === `${CURRENT_YEAR}`
+        // console.dir(`---`)
+        // console.dir(`catchAll[0]:   ${catchAll[0]}`)
+        // console.dir(`isCurrentYear: ${isCurrentYear ? 'y' : 'n'}`)
+        if (!isCurrentYear) return null
       }
 
       segments.push({ catchAll })
@@ -100,11 +107,18 @@ async function _generateStaticParams({ ...props }) {
       return
     })
   }
+  /**
+   * @todo(next-notion) This needs to return but for some reason
+   *  the year/month/day indexes are not working anymore :X :X :X
+   */
   // const routes = !!combos && uniqWith(combos, isEqual)
   // !!routes && console.dir(`routes: turned off`)
   // !!routes && console.dir(routes)
   // !!routes && routes.map((route) => segments.push(route))
 
+  // console.dir(`[combos]`)
+  // console.dir(combos)
+  // console.dir(`[segments]`)
   // console.dir(segments)
 
   return segments

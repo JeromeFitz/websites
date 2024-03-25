@@ -12,15 +12,17 @@ const getDatabaseQuery = cache(
   async ({ database_id, draft, filterType, revalidate, segmentInfo }) => {
     let data
 
-    const { segment, slug } = segmentInfo
-    const prefix = `/notion/queries/${segment}${slug}`
+    const { isIndex, segment, slug } = segmentInfo
+
+    const prefixSlug = isIndex || segment === slug ? segment : `${segment}${slug}`
+    const prefix = `/notion/queries/${prefixSlug}`
     const key: string = getKey(prefix)
     const dataFromCache = await getCache({ slug: key })
-
-    // console.dir(`> getCache: ${key}`)
-    // console.dir(dataFromCache)
-
     const isCached = !!dataFromCache && !isObjectEmpty(dataFromCache)
+
+    // console.dir(`> getCache: ${key} (${prefix})`)
+    // console.dir(`> isCached: ${isCached ? 'y' : 'n'}`)
+    // console.dir(dataFromCache)
 
     if (env.OVERRIDE_CACHE || draft || revalidate || !isCached) {
       // console.dir(
