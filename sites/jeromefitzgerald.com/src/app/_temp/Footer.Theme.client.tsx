@@ -5,9 +5,9 @@ import { cx } from '@jeromefitz/ds/utils/cx'
 
 // import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
 import {
-  Item as RadioCardGroupItem,
-  Root as RadioCardGroupRoot,
-} from '@radix-ui/themes/dist/esm/components/radio-card-group.js'
+  Item as RadioCardItem,
+  Root as RadioCardRoot,
+} from '@radix-ui/themes/dist/esm/components/radio-cards.js'
 import { Skeleton } from '@radix-ui/themes/dist/esm/components/skeleton.js'
 import { useTheme } from 'next-themes'
 
@@ -16,7 +16,7 @@ function FooterThemeClient({ isLoading }) {
 
   return (
     // @ts-ignore
-    <RadioCardGroupRoot
+    <RadioCardRoot
       className={cx(
         '[--accent-indicator:var(--pink-6)]',
         '![--grid-template-columns:repeat(2,_minmax(0,_1fr))]',
@@ -27,24 +27,24 @@ function FooterThemeClient({ isLoading }) {
       size="1"
     >
       <Skeleton loading={isLoading}>
-        <RadioCardGroupItem
+        <RadioCardItem
           className="hover:cursor-pointer"
           onClick={() => setTheme('dark')}
           value="dark"
         >
           <MoonIcon />
-        </RadioCardGroupItem>
+        </RadioCardItem>
       </Skeleton>
       <Skeleton loading={isLoading}>
-        <RadioCardGroupItem
+        <RadioCardItem
           className="hover:cursor-pointer"
           onClick={() => setTheme('light')}
           value="light"
         >
           <SunIcon />
-        </RadioCardGroupItem>
+        </RadioCardItem>
       </Skeleton>
-    </RadioCardGroupRoot>
+    </RadioCardRoot>
   )
 }
 

@@ -97,6 +97,72 @@ import { IconProps } from './Icon.types'
  */
 const twHeroToRadixIcon = 'mt-[1px] w-[1rem] [&>path]:stroke-[1.5]'
 
+const AmazonLogoIcon = ({ label, ...props }: IconProps) => (
+  <AccessibleIcon
+    label={
+      label ||
+      'An icon representing the logo of Amazon. Which is a sans serif letter -a, with a curved arrow underline pointing to the right that mimics a smirk or smiley face.'
+    }
+  >
+    <svg
+      className="fill:bg-black dark:fill:bg-white"
+      height="17px"
+      role="info"
+      version="1.1"
+      viewBox="3 1 252 260"
+      width="17px"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+      {...props}
+    >
+      <g fill="none" fill-rule="evenodd">
+        <path
+          d="m221.503 210.324c-105.235 50.083-170.545 8.18-212.352-17.271-2.587-1.604-6.984.375-3.169 4.757 13.928 16.888 59.573 57.593 119.153 57.593 59.621 0 95.09-32.532 99.527-38.207 4.407-5.627 1.294-8.731-3.16-6.872zm29.555-16.322c-2.826-3.68-17.184-4.366-26.22-3.256-9.05 1.078-22.634 6.609-21.453 9.93.606 1.244 1.843.686 8.06.127 6.234-.622 23.698-2.826 27.337 1.931 3.656 4.79-5.57 27.608-7.255 31.288-1.628 3.68.622 4.629 3.68 2.178 3.016-2.45 8.476-8.795 12.14-17.774 3.639-9.028 5.858-21.622 3.71-24.424z"
+          fill="currentColor"
+          fill-rule="nonzero"
+        ></path>
+        <path
+          d="m150.744 108.13c0 13.141.332 24.1-6.31 35.77-5.361 9.489-13.853 15.324-23.341 15.324-12.952 0-20.495-9.868-20.495-24.432 0-28.75 25.76-33.968 50.146-33.968zm34.015 82.216c-2.23 1.992-5.456 2.135-7.97.806-11.196-9.298-13.189-13.615-19.356-22.487-18.502 18.882-31.596 24.527-55.601 24.527-28.37 0-50.478-17.506-50.478-52.565 0-27.373 14.85-46.018 35.96-55.126 18.313-8.066 43.884-9.489 63.43-11.718v-4.365c0-8.018.616-17.506-4.08-24.432-4.128-6.215-12.003-8.777-18.93-8.777-12.856 0-24.337 6.594-27.136 20.257-.57 3.037-2.799 6.026-5.835 6.168l-32.735-3.51c-2.751-.618-5.787-2.847-5.028-7.07 7.543-39.66 43.36-51.616 75.43-51.616 16.415 0 37.858 4.365 50.81 16.795 16.415 15.323 14.849 35.77 14.849 58.02v52.565c0 15.798 6.547 22.724 12.714 31.264 2.182 3.036 2.657 6.69-.095 8.966-6.879 5.74-19.119 16.415-25.855 22.393l-.095-.095"
+          fill="currentColor"
+        ></path>
+        <path
+          d="m221.503 210.324c-105.235 50.083-170.545 8.18-212.352-17.271-2.587-1.604-6.984.375-3.169 4.757 13.928 16.888 59.573 57.593 119.153 57.593 59.621 0 95.09-32.532 99.527-38.207 4.407-5.627 1.294-8.731-3.16-6.872zm29.555-16.322c-2.826-3.68-17.184-4.366-26.22-3.256-9.05 1.078-22.634 6.609-21.453 9.93.606 1.244 1.843.686 8.06.127 6.234-.622 23.698-2.826 27.337 1.931 3.656 4.79-5.57 27.608-7.255 31.288-1.628 3.68.622 4.629 3.68 2.178 3.016-2.45 8.476-8.795 12.14-17.774 3.639-9.028 5.858-21.622 3.71-24.424z"
+          fill="currentColor"
+          fill-rule="nonzero"
+        ></path>
+        <path
+          d="m150.744 108.13c0 13.141.332 24.1-6.31 35.77-5.361 9.489-13.853 15.324-23.341 15.324-12.952 0-20.495-9.868-20.495-24.432 0-28.75 25.76-33.968 50.146-33.968zm34.015 82.216c-2.23 1.992-5.456 2.135-7.97.806-11.196-9.298-13.189-13.615-19.356-22.487-18.502 18.882-31.596 24.527-55.601 24.527-28.37 0-50.478-17.506-50.478-52.565 0-27.373 14.85-46.018 35.96-55.126 18.313-8.066 43.884-9.489 63.43-11.718v-4.365c0-8.018.616-17.506-4.08-24.432-4.128-6.215-12.003-8.777-18.93-8.777-12.856 0-24.337 6.594-27.136 20.257-.57 3.037-2.799 6.026-5.835 6.168l-32.735-3.51c-2.751-.618-5.787-2.847-5.028-7.07 7.543-39.66 43.36-51.616 75.43-51.616 16.415 0 37.858 4.365 50.81 16.795 16.415 15.323 14.849 35.77 14.849 58.02v52.565c0 15.798 6.547 22.724 12.714 31.264 2.182 3.036 2.657 6.69-.095 8.966-6.879 5.74-19.119 16.415-25.855 22.393l-.095-.095"
+          fill="currentColor"
+        ></path>
+      </g>
+    </svg>
+  </AccessibleIcon>
+)
+
+const AppleLogoIcon = ({ label, ...props }: IconProps) => (
+  <AccessibleIcon
+    label={label || 'An icon representing the logo of Apple. Which is an apple.'}
+  >
+    <svg
+      className="fill:bg-black dark:fill:bg-white"
+      height="17px"
+      role="info"
+      version="1.1"
+      viewBox="0 0 814 1000"
+      width="17px"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+      {...props}
+    >
+      <path
+        d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76.5 0-103.7 40.8-165.9 40.8s-105.6-57-155.5-127C46.7 790.7 0 663 0 541.8c0-194.4 126.4-297.5 250.8-297.5 66.1 0 121.2 43.4 162.7 43.4 39.5 0 101.1-46 176.3-46 28.5 0 130.9 2.6 198.3 99.2zm-234-181.5c31.1-36.9 53.1-88.1 53.1-139.3 0-7.1-.6-14.3-1.9-20.1-50.6 1.9-110.8 33.7-147.1 75.8-28.5 32.4-55.1 83.6-55.1 135.5 0 7.8 1.3 15.6 1.9 18.1 3.2.6 8.4 1.3 13.6 1.3 45.4 0 102.5-30.4 135.5-71.3z"
+        fill="currentColor"
+        id="apple-icon"
+      ></path>
+    </svg>
+  </AccessibleIcon>
+)
+
 const ArchiveIcon = ({ label, ...props }: IconProps) => (
   <AccessibleIcon
     label={label || 'An icon representing a cardboard box that holds archives.'}
@@ -520,6 +586,35 @@ const GitHubLogoIcon = ({ label, ...props }: IconProps) => (
     }
   >
     <GitHubLogoIconRadix role="info" {...props} />
+  </AccessibleIcon>
+)
+
+const GooglePodcastsLogoIcon = ({ label, ...props }: IconProps) => (
+  <AccessibleIcon
+    label={label || 'An icon representing the logo for Google Podcasts.'}
+  >
+    <svg
+      className="fill:bg-black dark:fill:bg-white"
+      height="17px"
+      role="info"
+      version="1.1"
+      viewBox="0 0 400 400"
+      width="17px"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+      {...props}
+    >
+      <g stroke-linecap="round" stroke-width="48.5">
+        <path d="m24.26 186.32v27.351" stroke="currentColor"></path>
+        <path d="m375.74 186.32v27.351" stroke="currentColor"></path>
+        <path d="m112.13 104.27v89.46m0 74.645v27.351" stroke="currentColor"></path>
+        <path d="m287.87 206.26v89.46m0-191.46v27.351" stroke="currentColor"></path>
+        <path
+          d="m200 127.06v145.87m0-248.68v27.351m0 296.78v27.351"
+          stroke="currentColor"
+        ></path>
+      </g>
+    </svg>
   </AccessibleIcon>
 )
 
@@ -976,6 +1071,8 @@ const UpdateIcon = ({ label, ...props }: IconProps) => (
 )
 
 export {
+  AmazonLogoIcon,
+  AppleLogoIcon,
   ArchiveIcon,
   ArrowLeftIcon,
   ArrowRightIcon,
@@ -1016,6 +1113,7 @@ export {
   FontItalicIcon,
   GearIcon,
   GitHubLogoIcon,
+  GooglePodcastsLogoIcon,
   HamburgerMenuIcon,
   HashtagIcon,
   HomeIcon,

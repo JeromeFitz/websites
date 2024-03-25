@@ -16,7 +16,33 @@ const events = [
   '2023/07/01/irony-city',
   '2023/07/15/jerome-and',
   '2023/08/03/your-act',
+  '2023/08/03/your-act',
+  '2023/08/12/arcade-hootenanny',
   '2023/08/19/jerome-and',
+  '2023/09/07/your-act',
+  '2023/09/08/fondue-for-two',
+  '2023/09/09/super-late-night',
+  '2023/09/15/jerome-and',
+  '2023/09/16/knights-of-the-arcade',
+  '2023/09/22/the-sketch-comedy-lab',
+  '2023/09/23/fridge-art-sketch-show',
+  '2023/09/29/bitch-please',
+  '2023/10/13/the-latchkey-kids',
+  '2023/10/14/arcade-hootenanny',
+  '2023/10/15/master-class-sketch-reading',
+  '2023/10/21/jerome-and',
+  '2023/10/28/sketch-night',
+  '2023/11/03/unlocking-811',
+  '2023/11/18/jerome-and',
+  '2023/12/16/jerome-and',
+  '2024/01/13/arcade-hootenanny',
+  '2024/01/18/lucky-draw',
+  '2024/01/26/friday-night-raw-with-ricky-romance',
+  '2024/02/03/fridge-art-sketch-show',
+  '2024/03/22/sketch-madness',
+  '2024/03/23/sketch-madness',
+  '2024/04/13/arcade-hootenanny',
+  '2024/05/18/the-playlist',
 ]
 const pages = [
   'about',
@@ -59,7 +85,7 @@ const sitemapPages = pages.map((slug) => ({
 }))
 const sitemapPodcasts = podcasts.map((slug) => ({
   lastModified,
-  url: `${siteUrl}/${slug}`,
+  url: `${siteUrl}/podcasts/${slug}`,
 }))
 const sitemapShows = shows.map((slug) => ({
   lastModified,
