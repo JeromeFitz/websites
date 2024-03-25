@@ -15,7 +15,11 @@ import { EmbedSpotify } from '@jeromefitz/shared/components/Notion/Blocks/Embed.
 import { getDataFromCache } from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
+import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
+// import { Grid } from '@radix-ui/themes/dist/esm/components/grid.js'
 import { Separator } from '@radix-ui/themes/dist/esm/components/separator.js'
+import { Strong } from '@radix-ui/themes/dist/esm/components/strong.js'
+import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 
@@ -92,23 +96,23 @@ function Rollups({ properties }) {
 
   return (
     <>
-      <div className="mb-4 grid w-full grid-cols-12 gap-x-4 gap-y-8">
+      <Box className="mb-4 grid w-full grid-cols-12 gap-x-4 gap-y-8">
         {rollups.map((rollup) => {
           const key = `rollup-${rollup.id}`
           return (
-            <div className="col-span-6 md:col-span-4" key={key}>
-              <p className="pb-3 font-extrabold uppercase tracking-tight">
-                <strong>{rollup.id}</strong>
-              </p>
+            <Box className="col-span-6 md:col-span-4" key={key}>
+              <Text className="pb-3 font-extrabold uppercase tracking-tight">
+                <Strong>{rollup.id}</Strong>
+              </Text>
               <ul>
                 <li className={'mb-2 md:mb-0.5'}>
-                  <span className={style}>{rollup.data}</span>
+                  <Text className={style}>{rollup.data}</Text>
                 </li>
               </ul>
-            </div>
+            </Box>
           )
         })}
-      </div>
+      </Box>
     </>
   )
 }
@@ -126,12 +130,12 @@ function Links({ properties }) {
   )
   return (
     <>
-      <div className="my-4 py-4">
-        <div className="my-2 py-2">
-          <p className="pb-3 font-extrabold uppercase tracking-tight">
-            <strong>Listen</strong>
-          </p>
-          <p className={style}>
+      <Box className="my-4 py-4">
+        <Box className="my-2 py-2">
+          <Text className="pb-3 font-extrabold uppercase tracking-tight">
+            <Strong>Listen</Strong>
+          </Text>
+          <Text className={style}>
             <Anchor
               className={cx(
                 style,
@@ -141,25 +145,25 @@ function Links({ properties }) {
             >
               Spotify
             </Anchor>
-          </p>
-        </div>
-        <div className="my-2 py-2">
-          <p className="pb-3 font-extrabold uppercase tracking-tight">
-            <strong>Preview</strong>
-          </p>
+          </Text>
+        </Box>
+        <Box className="my-2 py-2">
+          <Text className="pb-3 font-extrabold uppercase tracking-tight">
+            <Strong>Preview</Strong>
+          </Text>
           <EmbedSpotify id={spotifyId} />
-        </div>
-        <div className="my-2 py-2">
-          <p className="pb-3 font-extrabold uppercase tracking-tight">
-            <strong>Back to</strong>
-          </p>
-          <p className={style}>
+        </Box>
+        <Box className="my-2 py-2">
+          <Text className="pb-3 font-extrabold uppercase tracking-tight">
+            <Strong>Back to</Strong>
+          </Text>
+          <Text className={style}>
             <Anchor className={cx(style)} href={podcastUrl}>
               {podcastTitle}
             </Anchor>
-          </p>
-        </div>
-      </div>
+          </Text>
+        </Box>
+      </Box>
     </>
   )
 }
