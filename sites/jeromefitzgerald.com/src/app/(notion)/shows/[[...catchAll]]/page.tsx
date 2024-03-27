@@ -48,7 +48,7 @@ export async function generateMetadata({ ...props }): Promise<Metadata> {
   const isPublished =
     getPropertyTypeData(data?.page?.properties, 'Is.Published') || false
 
-  console.dir(`segmentInfo.isIndex: ${segmentInfo.isIndex ? 'y' : 'n'}`)
+  // console.dir(`segmentInfo.isIndex: ${segmentInfo.isIndex ? 'y' : 'n'}`)
 
   const pageData = segmentInfo.isIndex
     ? getPageData(data?.page?.properties)

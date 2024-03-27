@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 'use client'
 import { useSWRInfinitePages } from '@jeromefitz/design-system'
-import { AnchorUnstyled as Anchor } from '@jeromefitz/ds/components/Anchor/index'
+import { Anchor } from '@jeromefitz/ds/components/Anchor/index'
 import { ArrowTopRightIcon } from '@jeromefitz/ds/components/Icon/index'
 import { cx } from '@jeromefitz/ds/utils/cx'
 import { fetcher } from '@jeromefitz/shared/lib'
@@ -21,7 +21,6 @@ import { Card } from '@radix-ui/themes/dist/esm/components/card.js'
 import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
 // import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Inset } from '@radix-ui/themes/dist/esm/components/inset.js'
-import { Link } from '@radix-ui/themes/dist/esm/components/link.js'
 import { ScrollArea } from '@radix-ui/themes/dist/esm/components/scroll-area.js'
 import {
   Content as SelectContent,
@@ -409,7 +408,7 @@ function DataItem({ item, type }) {
                   size={{ initial: '1', md: '2' }}
                   variant="outline"
                 >
-                  <NextLink href={_href}>
+                  <NextLink href={_href} target="_blank">
                     Open Spotify
                     {` `}
                     <ArrowTopRightIcon
@@ -628,10 +627,7 @@ function MusicClient({}) {
               especially local and indie.
             </Text>
             <Text size="4">
-              Like some of{' '}
-              <Link asChild>
-                <Anchor href="/shows/jerome-and">Jerome &</Anchor>
-              </Link>
+              Like some of <Anchor href="/shows/jerome-and">Jerome &</Anchor>
               ’s musical guests on Bandcamp:
             </Text>
             <Box asChild mb="4" pb="2" width="100%">
@@ -647,11 +643,9 @@ function MusicClient({}) {
                         display="inline-flex"
                         gap="2"
                       >
-                        <Link asChild mb="2">
-                          <Anchor href={href}>
-                            {artist}, “{album}”
-                          </Anchor>
-                        </Link>
+                        <Anchor href={href}>
+                          {artist}, “{album}”
+                        </Anchor>
                       </Flex>
                     </li>
                   )

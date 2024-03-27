@@ -1,6 +1,5 @@
-import { AnchorUnstyled as Anchor } from '@jeromefitz/ds/components/Anchor/index'
+import { Anchor } from '@jeromefitz/ds/components/Anchor/index'
 
-import { Link } from '@radix-ui/themes/dist/esm/components/link.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import { cache } from 'react'
 
@@ -13,11 +12,7 @@ const RelationsItem = cache(({ item }) => {
   const { href, isPublished, title } = getEventData(properties)
 
   if (isPublished) {
-    return (
-      <Link asChild>
-        <Anchor href={href}>{title}</Anchor>
-      </Link>
-    )
+    return <Anchor href={href}>{title}</Anchor>
   }
   return <Text>{title}</Text>
 })
