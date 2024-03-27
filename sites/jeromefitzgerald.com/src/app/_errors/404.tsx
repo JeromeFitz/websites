@@ -1,4 +1,4 @@
-import { AnchorUnstyled as Anchor } from '@jeromefitz/ds/components/Anchor/index'
+import { Anchor } from '@jeromefitz/ds/components/Anchor/index'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
 import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'

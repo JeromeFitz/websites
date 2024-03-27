@@ -1,4 +1,4 @@
-import { AnchorUnstyled as Anchor } from '@jeromefitz/ds/components/Anchor/index'
+import { Anchor } from '@jeromefitz/ds/components/Anchor/index'
 import { Callout } from '@jeromefitz/ds/components/Callout/index'
 import {
   CalendarIcon,

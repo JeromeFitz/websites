@@ -1,4 +1,4 @@
-import { AnchorUnstyled as Anchor } from '@jeromefitz/ds/components/Anchor/index'
+import { Anchor } from '@jeromefitz/ds/components/Anchor/index'
 
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import { cache } from 'react'

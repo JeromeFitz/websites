@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 'use client'
 import { useSWRInfinitePages } from '@jeromefitz/design-system'
-import { AnchorUnstyled as Anchor } from '@jeromefitz/ds/components/Anchor/index'
+import { Anchor } from '@jeromefitz/ds/components/Anchor/index'
 import { ArrowTopRightIcon } from '@jeromefitz/ds/components/Icon/index'
 import { cx } from '@jeromefitz/ds/utils/cx'
 import { fetcher } from '@jeromefitz/shared/lib'
@@ -402,7 +402,7 @@ function DataItem({ item, type }) {
                   size={{ initial: '1', md: '2' }}
                   variant="outline"
                 >
-                  <NextLink href={_href}>
+                  <NextLink href={_href} target="_blank">
                     Open Spotify
                     {` `}
                     <ArrowTopRightIcon

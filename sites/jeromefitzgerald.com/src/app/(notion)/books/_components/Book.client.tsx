@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 'use client'
-import { AnchorUnstyled as Anchor } from '@jeromefitz/ds/components/Anchor/index'
+import { Anchor } from '@jeromefitz/ds/components/Anchor/index'
 import { Callout } from '@jeromefitz/ds/components/Callout/index'
 import { ArrowTopRightIcon } from '@jeromefitz/ds/components/Icon/index'
 import { cx } from '@jeromefitz/ds/utils/cx'
@@ -265,7 +265,7 @@ function Books({ data }) {
                               size={{ initial: '1', md: '2' }}
                               variant="outline"
                             >
-                              <NextLink href={item.urlBookshop} target="_self">
+                              <NextLink href={item.urlBookshop} target="_blank">
                                 Buy New at Bookshop
                                 {` `}
                                 <ArrowTopRightIcon
@@ -283,7 +283,7 @@ function Books({ data }) {
                               size={{ initial: '1', md: '2' }}
                               variant="outline"
                             >
-                              <NextLink href={item.urlBiblio} target="_self">
+                              <NextLink href={item.urlBiblio} target="_blank">
                                 Buy Used at Biblio
                                 {` `}
                                 <ArrowTopRightIcon

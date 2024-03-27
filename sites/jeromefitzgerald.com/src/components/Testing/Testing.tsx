@@ -1,4 +1,4 @@
-import { AnchorUnstyled as Anchor } from '@jeromefitz/ds/components/Anchor/index'
+import { Anchor } from '@jeromefitz/ds/components/Anchor/index'
 import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
 
 import { Box } from '@radix-ui/themes/dist/esm/components/box.js'

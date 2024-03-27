@@ -5,7 +5,7 @@ const hocusPlugin = require('./hocus.plugin')
 
 const radixThemePreset = rtw.radixThemePreset
 
-const safelist = []
+const safelist = ['cursor-pointer']
 
 /** @type {import('tailwindcss').Config} */
 const config = ({ useTailwind = true }) => ({

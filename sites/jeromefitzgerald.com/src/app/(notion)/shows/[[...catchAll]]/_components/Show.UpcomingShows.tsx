@@ -1,4 +1,4 @@
-import { AnchorUnstyled as Anchor } from '@jeromefitz/ds/components/Anchor/index'
+import { Anchor } from '@jeromefitz/ds/components/Anchor/index'
 import { cx } from '@jeromefitz/ds/utils/cx'
 import { getPageDataFromNotion } from '@jeromefitz/shared/notion/utils/index'
 
