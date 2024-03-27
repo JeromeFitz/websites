@@ -13,13 +13,13 @@ import { useScrollIntoView } from '@mantine/hooks'
  *
  * ref: https://github.com/JeromeFitz/websites/pull/2341
  */
-import { Flex } from '@radix-ui/themes'
+// import { Flex } from '@radix-ui/themes'
 import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
 import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
 import { Card } from '@radix-ui/themes/dist/esm/components/card.js'
 import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
-// import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
+import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Inset } from '@radix-ui/themes/dist/esm/components/inset.js'
 import { Link } from '@radix-ui/themes/dist/esm/components/link.js'
 import { ScrollArea } from '@radix-ui/themes/dist/esm/components/scroll-area.js'

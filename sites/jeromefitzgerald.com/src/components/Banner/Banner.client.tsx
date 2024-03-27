@@ -18,11 +18,11 @@ import { cx } from '@jeromefitz/ds/utils/cx'
  *
  * ref: https://github.com/JeromeFitz/websites/pull/2341
  */
-import { Flex } from '@radix-ui/themes'
+// import { Flex } from '@radix-ui/themes'
 import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
 import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
-// import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
+import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import {
   Content as TabsContent,
   List as TabsList,
