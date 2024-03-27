@@ -13,7 +13,6 @@ import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
 // eslint-disable-next-line no-restricted-imports
 import NextLink from 'next/link'
 import { useTheme } from 'next-themes'
-import React from 'react'
 
 import {
   AccordionContent,

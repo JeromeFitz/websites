@@ -1,10 +1,9 @@
-import { AnchorUnstyled as Anchor } from '@jeromefitz/ds/components/Anchor/index'
+import { Anchor } from '@jeromefitz/ds/components/Anchor/index'
 import { cx } from '@jeromefitz/ds/utils/cx'
 import { getPageDataFromNotion } from '@jeromefitz/shared/notion/utils/index'
 
 import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
-import { Link } from '@radix-ui/themes/dist/esm/components/link.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import _size from 'lodash/size.js'
 import { Suspense } from 'react'
@@ -33,24 +32,22 @@ async function UpcomingShowsIndividual({ id }) {
   } = getEventData(properties)
 
   return (
-    <Link asChild>
-      <Anchor href={href}>
-        <Text size="8" weight="bold">
-          {title}
+    <Anchor href={href}>
+      <Text size="8" weight="bold">
+        {title}
+      </Text>
+      <Heading as="h5">
+        {dayOfMonth} {monthName} {year}
+      </Heading>
+      <Text size="7">
+        <Text as="span">
+          {time} {timezone}
         </Text>
-        <Heading as="h5">
-          {dayOfMonth} {monthName} {year}
-        </Heading>
-        <Text size="7">
-          <Text as="span">
-            {time} {timezone}
-          </Text>
-          <br />
-          <Text as="span">{dayOfWeek}</Text>
-        </Text>
-        <Text size="7"> at {venueTitle}</Text>
-      </Anchor>
-    </Link>
+        <br />
+        <Text as="span">{dayOfWeek}</Text>
+      </Text>
+      <Text size="7"> at {venueTitle}</Text>
+    </Anchor>
   )
 }
 

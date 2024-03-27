@@ -1,7 +1,7 @@
-import React from 'react'
+import { useCallback } from 'react'
 
 function useThemeToggle({ setTheme, theme }) {
-  return React.useCallback(() => {
+  return useCallback(() => {
     const newTheme = theme === 'dark' ? 'light' : 'dark'
     document.documentElement.style.setProperty('color-scheme', newTheme)
     setTheme(newTheme)

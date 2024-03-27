@@ -1,4 +1,4 @@
-import { AnchorUnstyled as Anchor } from '@jeromefitz/ds/components/Anchor/index'
+import { Anchor } from '@jeromefitz/ds/components/Anchor/index'
 import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
 
 /**
@@ -9,7 +9,6 @@ import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
 import { Flex } from '@radix-ui/themes'
 import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 // import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
-import { Link } from '@radix-ui/themes/dist/esm/components/link.js'
 
 import { Grid } from '@/components/Grid/index'
 import {
@@ -76,9 +75,7 @@ function Testing() {
               >
                 <li>
                   <Flex asChild direction="row" display="inline-flex" gap="2">
-                    <Link asChild mb="2">
-                      <Anchor href={href}>{href}</Anchor>
-                    </Link>
+                    <Anchor href={href}>{href}</Anchor>
                   </Flex>
                 </li>
               </Box>

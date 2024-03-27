@@ -1,4 +1,4 @@
-import { AnchorUnstyled as Anchor } from '@jeromefitz/ds/components/Anchor/index'
+import { Anchor } from '@jeromefitz/ds/components/Anchor/index'
 import { Callout } from '@jeromefitz/ds/components/Callout/index'
 import {
   getDataFromCache,
@@ -9,7 +9,6 @@ import { isObjectEmpty } from '@jeromefitz/utils'
 import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints.js'
 
 import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
-import { Link } from '@radix-ui/themes/dist/esm/components/link.js'
 import _filter from 'lodash/filter.js'
 import _orderBy from 'lodash/orderBy.js'
 import { draftMode } from 'next/headers.js'
@@ -55,9 +54,7 @@ function ListingTemp({ data }) {
         return (
           <Box asChild key={`podcasts-podcast-${podcast?.id}`} my="1" py="1">
             <li>
-              <Link asChild>
-                <Anchor href={podcast?.href}> {podcast?.title}</Anchor>
-              </Link>
+              <Anchor href={podcast?.href}> {podcast?.title}</Anchor>
             </li>
           </Box>
         )

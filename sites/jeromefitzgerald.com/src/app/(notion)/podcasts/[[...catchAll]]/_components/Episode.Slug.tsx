@@ -1,4 +1,4 @@
-import { AnchorUnstyled as Anchor } from '@jeromefitz/ds/components/Anchor/index'
+import { Anchor } from '@jeromefitz/ds/components/Anchor/index'
 import { Callout } from '@jeromefitz/ds/components/Callout/index'
 import { cx } from '@jeromefitz/ds/utils/cx'
 import { EmbedSpotify } from '@jeromefitz/shared/components/Notion/Blocks/Embed.Spotify'
@@ -15,7 +15,6 @@ import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
 // import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Grid as GridRadix } from '@radix-ui/themes/dist/esm/components/grid.js'
-import { Link } from '@radix-ui/themes/dist/esm/components/link.js'
 import { Separator } from '@radix-ui/themes/dist/esm/components/separator.js'
 import { Strong } from '@radix-ui/themes/dist/esm/components/strong.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
@@ -140,16 +139,14 @@ function Links({ properties }) {
             <Strong>Listen</Strong>
           </Text>
           <Flex align="center" asChild>
-            <Link asChild>
-              <Anchor
-                className={cx(
-                  'text-spotify-dark hover:text-spotify dark:text-spotify dark:hover:text-spotify-dark',
-                )}
-                href={spotifyUrl}
-              >
-                Spotify
-              </Anchor>
-            </Link>
+            <Anchor
+              className={cx(
+                'text-spotify-dark hover:text-spotify dark:text-spotify dark:hover:text-spotify-dark',
+              )}
+              href={spotifyUrl}
+            >
+              Spotify
+            </Anchor>
           </Flex>
         </Box>
         <Box my="2" py="2">
@@ -163,9 +160,7 @@ function Links({ properties }) {
             <Strong>Back to</Strong>
           </Text>
           <Flex align="center" asChild>
-            <Link asChild mt="3">
-              <Anchor href={podcastUrl}>{podcastTitle}</Anchor>
-            </Link>
+            <Anchor href={podcastUrl}>{podcastTitle}</Anchor>
           </Flex>
         </Box>
       </Box>
