@@ -8,12 +8,6 @@ import { fetcher } from '@jeromefitz/shared/lib'
 
 import { useIntersection, useScrollIntoView } from '@mantine/hooks'
 import { ArrowUpIcon } from '@radix-ui/react-icons'
-/**
- * @todo(radix-ui) issue w/ flex.props.js init order
- *
- * ref: https://github.com/JeromeFitz/websites/pull/2341
- */
-// import { Flex } from '@radix-ui/themes'
 import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
 import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
@@ -21,7 +15,6 @@ import { Card } from '@radix-ui/themes/dist/esm/components/card.js'
 import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
 import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Inset } from '@radix-ui/themes/dist/esm/components/inset.js'
-import { Link } from '@radix-ui/themes/dist/esm/components/link.js'
 import { ScrollArea } from '@radix-ui/themes/dist/esm/components/scroll-area.js'
 import {
   Content as SelectContent,
@@ -628,10 +621,7 @@ function MusicClient({}) {
               especially local and indie.
             </Text>
             <Text size="4">
-              Like some of{' '}
-              <Link asChild>
-                <Anchor href="/shows/jerome-and">Jerome &</Anchor>
-              </Link>
+              Like some of <Anchor href="/shows/jerome-and">Jerome &</Anchor>
               ’s musical guests on Bandcamp:
             </Text>
             <Box asChild mb="4" pb="2" width="100%">
@@ -647,11 +637,9 @@ function MusicClient({}) {
                         display="inline-flex"
                         gap="2"
                       >
-                        <Link asChild mb="2">
-                          <Anchor href={href}>
-                            {artist}, “{album}”
-                          </Anchor>
-                        </Link>
+                        <Anchor href={href}>
+                          {artist}, “{album}”
+                        </Anchor>
                       </Flex>
                     </li>
                   )

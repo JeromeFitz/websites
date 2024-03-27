@@ -1,4 +1,4 @@
-import { Anchor } from '@jeromefitz/ds/components/Anchor/index'
+import { AnchorUnstyled as Anchor } from '@jeromefitz/ds/components/Anchor/index'
 import { Callout } from '@jeromefitz/ds/components/Callout/index'
 import {
   getDataFromCache,
@@ -8,8 +8,6 @@ import { isObjectEmpty } from '@jeromefitz/utils'
 
 import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints.js'
 
-import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
-import { Link } from '@radix-ui/themes/dist/esm/components/link.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import _filter from 'lodash/filter.js'
 import _orderBy from 'lodash/orderBy.js'
@@ -47,17 +45,15 @@ function ListingTemp({ data }) {
   ])
 
   return (
-    <ul>
+    <ul className="list-inside md:list-disc">
       {shows.map((show) => {
         if (!show?.isPublished) return null
         return (
-          <Box asChild key={`shows-show-${show?.id}`} my="1" py="1">
-            <li>
-              <Link asChild>
-                <Anchor href={show?.href}> {show?.title}</Anchor>
-              </Link>
-            </li>
-          </Box>
+          <li key={`shows-show-${show?.id}`}>
+            <Anchor href={show?.href}>
+              <Text size="4"> {show?.title}</Text>
+            </Anchor>
+          </li>
         )
       })}
     </ul>

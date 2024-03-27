@@ -1,3 +1,4 @@
+import { AnchorUnstyled as Anchor } from '@jeromefitz/ds/components/Anchor/index'
 import { Callout } from '@jeromefitz/ds/components/Callout/index'
 import {
   getDataFromCache,
@@ -8,14 +9,11 @@ import { isObjectEmpty } from '@jeromefitz/utils'
 
 import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints.js'
 
-import { Link } from '@radix-ui/themes/dist/esm/components/link.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import _filter from 'lodash/filter.js'
 import _orderBy from 'lodash/orderBy.js'
 import _remove from 'lodash/remove.js'
 // import { draftMode } from 'next/headers.js'
-// eslint-disable-next-line no-restricted-imports
-import NextLink from 'next/link'
 import { notFound } from 'next/navigation.js'
 import { getPropertyTypeData } from 'next-notion/utils/index'
 
@@ -76,9 +74,7 @@ function Events({ data }) {
     return (
       <>
         <Text size="5">
-          <Link asChild>
-            <NextLink href="/shows/jerome-and">Jerome &</NextLink>
-          </Link>
+          <Anchor href="/shows/jerome-and">Jerome &</Anchor>
           {` `}is taking a break from its monthly gig in{' '}
           <Text as="span" className="font-mono">
             2024

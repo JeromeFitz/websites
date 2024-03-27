@@ -1,12 +1,7 @@
 import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
 
-/**
- * @todo(radix-ui) issue w/ flex.props.js init order
- *
- * ref: https://github.com/JeromeFitz/websites/pull/2341
- */
-// import { Flex } from '@radix-ui/themes'
 import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
+import { Link } from '@radix-ui/themes/dist/esm/components/link.js'
 // eslint-disable-next-line no-restricted-imports
 import NextLink, { type LinkProps } from 'next/link'
 import React, { type PropsWithChildren } from 'react'
@@ -65,10 +60,10 @@ const AnchorUnstyled = ({ children, className = '', href }) => {
   if (isExternal && !isNotion) {
     return (
       <Flex asChild direction="row" gap="2">
-        <a className={className} href={href} rel="noreferrer" target={'_blank'}>
+        <Link className={className} href={href} rel="noreferrer" target={'_blank'}>
           <>{children}</>
           <ExternalLinkIcon />
-        </a>
+        </Link>
       </Flex>
     )
   }
@@ -81,7 +76,11 @@ const AnchorUnstyled = ({ children, className = '', href }) => {
     href: _href === '' ? '/' : _href,
   }
 
-  return <NextLink {...props}>{children}</NextLink>
+  return (
+    <Link asChild>
+      <NextLink {...props}>{children}</NextLink>
+    </Link>
+  )
 }
 
 type AnchorProps = Omit<

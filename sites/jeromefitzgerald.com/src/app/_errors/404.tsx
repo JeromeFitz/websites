@@ -5,7 +5,6 @@ import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
 import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
 import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
-import { Link } from '@radix-ui/themes/dist/esm/components/link.js'
 import { Separator } from '@radix-ui/themes/dist/esm/components/separator.js'
 import { Strong } from '@radix-ui/themes/dist/esm/components/strong.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
@@ -54,10 +53,7 @@ function FourOhFour({
           <Separator my="8" />
           <Text size="4">
             Please try and go back to the{` `}
-            <Link asChild>
-              <Anchor href="/">homepage</Anchor>
-            </Link>
-            .
+            <Anchor href="/">homepage</Anchor>.
           </Text>
           {!isObjectEmpty(segmentInfo) && (
             <>
