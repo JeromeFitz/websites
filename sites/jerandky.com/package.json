@@ -135,7 +135,7 @@
     "@types/pluralize": "0.0.33",
     "@types/ramda": "0.29.11",
     "@types/react": "18.2.73",
-    "@types/react-dom": "18.2.22",
+    "@types/react-dom": "18.2.23",
     "@types/react-headroom": "3.2.3",
     "@types/smoothscroll-polyfill": "0.3.4",
     "@types/title": "3.4.3",
