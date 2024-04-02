@@ -512,8 +512,8 @@ importers:
         specifier: 8.4.38
         version: 8.4.38
       radix-themes-tw:
-        specifier: 0.2.1
-        version: 0.2.1
+        specifier: 0.2.2
+        version: 0.2.2
       sharp:
         specifier: 0.32.6
         version: 0.32.6
@@ -19052,8 +19052,8 @@ packages:
     engines: {node: '>=10'}
     dev: false
 
-  /radix-themes-tw@0.2.1:
-    resolution: {integrity: sha512-coQSox1h6Hu885v8dRdMzdQz24urR7twORyFvtxvZ21f3k16KmUn2PDQ9cM5sr1AZrkCahNwN0oE/zEUXP7cpA==}
+  /radix-themes-tw@0.2.2:
+    resolution: {integrity: sha512-uJT1xyNrEqt0USStcF+5DqFSNnPlBNrtyGX18sFXBVJjM8mfwEAgZdiV0TELvc6qDV95jzj2jiJtImu33iDPOw==}
     dev: true
 
   /raf@3.4.1:
