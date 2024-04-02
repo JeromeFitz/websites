@@ -39,7 +39,7 @@
     "@manypkg/cli": "0.21.3",
     "@types/is-ci": "3.0.4",
     "@types/lodash": "4.17.0",
-    "@types/node": "20.12.2",
+    "@types/node": "20.12.3",
     "ccommit": "2.0.2",
     "concurrently": "8.2.2",
     "dotenv": "16.4.5",
