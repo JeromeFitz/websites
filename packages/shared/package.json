@@ -127,7 +127,7 @@
     "@types/lodash": "4.17.0",
     "@types/react": "18.2.74",
     "@types/react-dom": "18.2.23",
-    "@upstash/ratelimit": "1.0.1",
+    "@upstash/ratelimit": "1.0.3",
     "@upstash/redis": "1.29.0",
     "@vercel/analytics": "1.2.2",
     "@vercel/speed-insights": "1.0.10",
