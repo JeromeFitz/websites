@@ -320,8 +320,8 @@ importers:
         specifier: 3.0.0
         version: 3.0.0(lodash@4.17.21)
       '@notionhq/client':
-        specifier: 2.2.14
-        version: 2.2.14
+        specifier: 2.2.15
+        version: 2.2.15
       '@types/react':
         specifier: 18.2.75
         version: 18.2.75
@@ -359,8 +359,8 @@ importers:
         specifier: 3.0.0
         version: 3.0.0(lodash@4.17.21)
       '@notionhq/client':
-        specifier: 2.2.14
-        version: 2.2.14
+        specifier: 2.2.15
+        version: 2.2.15
       '@radix-ui/themes':
         specifier: 3.0.2
         version: 3.0.2(@types/react-dom@18.2.24)(@types/react@18.2.75)(react-dom@18.2.0)(react@18.2.0)
@@ -551,8 +551,8 @@ importers:
         specifier: 7.7.1
         version: 7.7.1(react@18.2.0)
       '@notionhq/client':
-        specifier: 2.2.14
-        version: 2.2.14
+        specifier: 2.2.15
+        version: 2.2.15
       '@radix-ui/react-accessible-icon':
         specifier: 1.0.3
         version: 1.0.3(@types/react-dom@18.2.24)(@types/react@18.2.75)(react-dom@18.2.0)(react@18.2.0)
@@ -867,8 +867,8 @@ importers:
         specifier: 7.7.1
         version: 7.7.1(react@18.2.0)
       '@notionhq/client':
-        specifier: 2.2.14
-        version: 2.2.14
+        specifier: 2.2.15
+        version: 2.2.15
       '@radix-ui/react-accessible-icon':
         specifier: 1.0.3
         version: 1.0.3(@types/react-dom@18.2.24)(@types/react@18.2.75)(react-dom@18.2.0)(react@18.2.0)
@@ -3881,6 +3881,16 @@ packages:
 
   /@notionhq/client@2.2.14:
     resolution: {integrity: sha512-oqUefZtCiJPCX+74A1Os9OVTef3fSnVWe2eVQtU1HJSD+nsfxfhwvDKnzJTh2Tw1ZHKLxpieHB/nzGdY+Uo12A==}
+    engines: {node: '>=12'}
+    dependencies:
+      '@types/node-fetch': 2.6.4
+      node-fetch: 2.6.12
+    transitivePeerDependencies:
+      - encoding
+    dev: false
+
+  /@notionhq/client@2.2.15:
+    resolution: {integrity: sha512-XhdSY/4B1D34tSco/GION+23GMjaS9S2zszcqYkMHo8RcWInymF6L1x+Gk7EmHdrSxNFva2WM8orhC4BwQCwgw==}
     engines: {node: '>=12'}
     dependencies:
       '@types/node-fetch': 2.6.4
