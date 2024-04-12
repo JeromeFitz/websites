@@ -112,7 +112,7 @@
     "@jeromefitz/utils": "3.0.0",
     "@notionhq/client": "2.2.15",
     "@types/react": "18.2.75",
-    "@types/react-dom": "18.2.24",
+    "@types/react-dom": "18.2.25",
     "date-fns": "3.6.0",
     "next": "14.1.4",
     "react": "18.2.0",
