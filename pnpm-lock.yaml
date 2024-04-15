@@ -28,8 +28,8 @@ importers:
         specifier: 2.0.3
         version: 2.0.3
       '@jeromefitz/release-notes-generator':
-        specifier: 2.0.4
-        version: 2.0.4(lodash@4.17.21)
+        specifier: 2.0.5
+        version: 2.0.5(lodash@4.17.21)
       '@jeromefitz/semantic':
         specifier: 10.0.5
         version: 10.0.5(@jeromefitz/conventional-gitmoji@4.0.1)(typescript@5.4.5)
@@ -3351,13 +3351,13 @@ packages:
       - prettier-plugin-style-order
       - prettier-plugin-svelte
 
-  /@jeromefitz/release-notes-generator@2.0.4(lodash@4.17.21):
-    resolution: {integrity: sha512-WsJhWeWRvsI+19ST6pIXC6sAjyUYuJifjEQ4mE1fdDOMR/5zv6QRVAA6MlrKvn7znOG+W2noJvdLlaCULhPP8A==}
+  /@jeromefitz/release-notes-generator@2.0.5(lodash@4.17.21):
+    resolution: {integrity: sha512-PMWGxkYRw9b4hyXv09MNg3AdPSCziwnZYczeUQbxvmzVwilF1DC29jgYsBEAj/QcVhpSa+wL9jvGwm7QL5R8Rg==}
     engines: {node: '>=20'}
     peerDependencies:
       lodash: ^4.17.21
     dependencies:
-      '@octokit/rest': 20.0.2
+      '@octokit/rest': 20.1.0
       conventional-commits-filter: 4.0.0
       conventional-commits-parser: 5.0.0
       date-fns: 3.6.0
@@ -4066,8 +4066,8 @@ packages:
       '@octokit/types': 12.6.0
       universal-user-agent: 7.0.2
 
-  /@octokit/rest@20.0.2:
-    resolution: {integrity: sha512-Ux8NDgEraQ/DMAU1PlAohyfBBXDwhnX2j33Z1nJNziqAfHi70PuxkFYIcIt8aIAxtRE7KVuKp8lSR8pA0J5iOQ==}
+  /@octokit/rest@20.1.0:
+    resolution: {integrity: sha512-STVO3itHQLrp80lvcYB2UIKoeil5Ctsgd2s1AM+du3HqZIR35ZH7WE9HLwUOLXH0myA0y3AGNPo8gZtcgIbw0g==}
     engines: {node: '>= 18'}
     dependencies:
       '@octokit/core': 5.1.0
