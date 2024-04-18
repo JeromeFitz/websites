@@ -33,7 +33,7 @@
     "@jeromefitz/eslint-config": "2.1.11",
     "@jeromefitz/lint-staged": "2.0.2",
     "@jeromefitz/prettier-config": "2.0.3",
-    "@jeromefitz/release-notes-generator": "2.0.4",
+    "@jeromefitz/release-notes-generator": "2.0.5",
     "@jeromefitz/semantic": "10.0.5",
     "@jeromefitz/tsconfig": "2.0.0",
     "@manypkg/cli": "0.21.4",
