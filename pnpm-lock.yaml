@@ -374,8 +374,8 @@ importers:
         specifier: 18.2.25
         version: 18.2.25
       '@upstash/ratelimit':
-        specifier: 1.0.3
-        version: 1.0.3
+        specifier: 1.1.1
+        version: 1.1.1
       '@upstash/redis':
         specifier: 1.29.0
         version: 1.29.0
@@ -671,8 +671,8 @@ importers:
         specifier: 5.0.51
         version: 5.0.51(react-dom@18.2.0)(react@18.2.0)
       '@upstash/ratelimit':
-        specifier: 1.0.3
-        version: 1.0.3
+        specifier: 1.1.1
+        version: 1.1.1
       '@upstash/redis':
         specifier: 1.29.0
         version: 1.29.0
@@ -984,8 +984,8 @@ importers:
         specifier: 5.0.51
         version: 5.0.51(react-dom@18.2.0)(react@18.2.0)
       '@upstash/ratelimit':
-        specifier: 1.0.3
-        version: 1.0.3
+        specifier: 1.1.1
+        version: 1.1.1
       '@upstash/redis':
         specifier: 1.29.0
         version: 1.29.0
@@ -11128,8 +11128,8 @@ packages:
     dependencies:
       '@upstash/redis': 1.29.0
 
-  /@upstash/ratelimit@1.0.3:
-    resolution: {integrity: sha512-uaws/6Ar28TICm61wfIbL4Ba91WYtIfl6HMj0PNJ0H/nm0SSXwVbCxPEiX9aXa41gMlVWujaJcOreqIuO8/mqg==}
+  /@upstash/ratelimit@1.1.1:
+    resolution: {integrity: sha512-e9xnKkHOYzOoqt5eH5bCB90UslkW/sKcKaDwcd07QZ40lkAPHE8DEuzgZwXuKfuywWp8XDE/c6HwDXcsTsNfww==}
     dependencies:
       '@upstash/core-analytics': 0.0.7
 
