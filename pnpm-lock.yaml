@@ -537,7 +537,7 @@ importers:
         version: 3.0.0-canary.8(date-fns@3.6.0)
       '@jeromefitz/design-system':
         specifier: 4.2.3
-        version: 4.2.3(@heroicons/react@2.1.3(react@18.2.0))(@radix-ui/react-icons@1.3.0(react@18.2.0))(@types/react@18.2.79)(cmdk@1.0.0(@types/react-dom@18.2.25)(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(lodash@4.17.21)(next@14.1.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(swr@2.2.5(react@18.2.0))
+        version: 4.2.3(@heroicons/react@2.1.3(react@18.2.0))(@radix-ui/react-icons@1.3.0(react@18.2.0))(@types/react@18.2.79)(cmdk@1.0.0(@types/react-dom@18.2.25)(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(framer-motion@11.1.7(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(lodash@4.17.21)(next@14.1.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(swr@2.2.5(react@18.2.0))
       '@jeromefitz/notion':
         specifier: 5.0.4
         version: 5.0.4(@jeromefitz/utils@3.0.0(lodash@4.17.21))(lodash@4.17.21)
@@ -698,8 +698,8 @@ importers:
         specifier: 10.2.3
         version: 10.2.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       framer-motion:
-        specifier: 11.1.5
-        version: 11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        specifier: 11.1.7
+        version: 11.1.7(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       github-slugger:
         specifier: 2.0.0
         version: 2.0.0
@@ -853,7 +853,7 @@ importers:
         version: 3.0.0-canary.8(date-fns@3.6.0)
       '@jeromefitz/design-system':
         specifier: 4.2.3
-        version: 4.2.3(@heroicons/react@2.1.3(react@18.2.0))(@radix-ui/react-icons@1.3.0(react@18.2.0))(@types/react@18.2.79)(cmdk@1.0.0(@types/react-dom@18.2.25)(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(lodash@4.17.21)(next@14.1.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(swr@2.2.5(react@18.2.0))
+        version: 4.2.3(@heroicons/react@2.1.3(react@18.2.0))(@radix-ui/react-icons@1.3.0(react@18.2.0))(@types/react@18.2.79)(cmdk@1.0.0(@types/react-dom@18.2.25)(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(framer-motion@11.1.7(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(lodash@4.17.21)(next@14.1.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(swr@2.2.5(react@18.2.0))
       '@jeromefitz/notion':
         specifier: 5.0.4
         version: 5.0.4(@jeromefitz/utils@3.0.0(lodash@4.17.21))(lodash@4.17.21)
@@ -1014,8 +1014,8 @@ importers:
         specifier: 10.2.3
         version: 10.2.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       framer-motion:
-        specifier: 11.1.5
-        version: 11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        specifier: 11.1.7
+        version: 11.1.7(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       geist:
         specifier: 1.3.0
         version: 1.3.0(next@14.1.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0))
@@ -6575,8 +6575,8 @@ packages:
   fraction.js@4.3.7:
     resolution: {integrity: sha512-ZsDfxO51wGAXREY55a7la9LScWpwv9RxIrYABrlvOFBlH/ShPnrtsXeuUIfXKKOVicNxQ+o8JTbJvjS4M89yew==}
 
-  framer-motion@11.1.5:
-    resolution: {integrity: sha512-ogK5fc0GBUT3AjzMXPx7f74m5V1ByRqkKQARBVHpdkYTNDxb/WriANYD+5JBo1wklQQJ1HayDZtmofQLqZFcbw==}
+  framer-motion@11.1.7:
+    resolution: {integrity: sha512-cW11Pu53eDAXUEhv5hEiWuIXWhfkbV32PlgVISn7jRdcAiVrJ1S03YQQ0/DzoswGYYwKi4qYmHHjCzAH52eSdQ==}
     peerDependencies:
       '@emotion/is-prop-valid': '*'
       react: ^18.0.0
@@ -11808,7 +11808,7 @@ snapshots:
       date-fns: 3.6.0
       lodash.clonedeep: 4.5.0
 
-  '@jeromefitz/design-system@4.2.3(@heroicons/react@2.1.3(react@18.2.0))(@radix-ui/react-icons@1.3.0(react@18.2.0))(@types/react@18.2.79)(cmdk@1.0.0(@types/react-dom@18.2.25)(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(lodash@4.17.21)(next@14.1.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(swr@2.2.5(react@18.2.0))':
+  '@jeromefitz/design-system@4.2.3(@heroicons/react@2.1.3(react@18.2.0))(@radix-ui/react-icons@1.3.0(react@18.2.0))(@types/react@18.2.79)(cmdk@1.0.0(@types/react-dom@18.2.25)(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(framer-motion@11.1.7(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(lodash@4.17.21)(next@14.1.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(swr@2.2.5(react@18.2.0))':
     dependencies:
       '@heroicons/react': 2.1.3(react@18.2.0)
       '@radix-ui/primitive': 1.0.0
@@ -11868,7 +11868,7 @@ snapshots:
       '@stitches/react': 1.3.1-1(react@18.2.0)
       cmdk: 1.0.0(@types/react-dom@18.2.25)(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       emoji-regex: 10.2.1
-      framer-motion: 11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      framer-motion: 11.1.7(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       lodash: 4.17.21
       next: 14.1.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       node-emoji: 1.11.0
@@ -19124,7 +19124,7 @@ snapshots:
 
   fraction.js@4.3.7: {}
 
-  framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
+  framer-motion@11.1.7(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
       tslib: 2.6.2
     optionalDependencies:
