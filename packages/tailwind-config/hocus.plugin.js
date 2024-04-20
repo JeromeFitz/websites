@@ -1,4 +1,4 @@
-const plugin = require('tailwindcss/plugin')
+import plugin from 'tailwindcss/plugin'
 
 /**
  * @note(tailwind) hover + focus = hocus
@@ -29,4 +29,4 @@ const hocusPlugin = plugin(({ addVariant }) => {
   addVariant('peer-hocus', [':merge(.peer):hover ~ &', ':merge(.peer):focus ~ &'])
 })
 
-module.exports = hocusPlugin
+export default hocusPlugin

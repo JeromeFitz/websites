@@ -57,10 +57,10 @@ const banners = {
       text: 'Go to Details',
     },
     content: {
-      desktop: 'Arcade Hootenanny!: Saturday, April 13th',
-      mobile: 'Arcade Hootenanny!: SAT 04/13',
+      desktop: 'Latchkey Kids w/ Warp Zone!: Saturday, May 10th',
+      mobile: 'Latchkey Kids!: SAT 05/10',
     },
-    href: '/events/2024/04/13/arcade-hootenanny',
+    href: '/events/2024/05/10/the-latchkey-kids',
     icon: <TicketIcon />,
   },
 }

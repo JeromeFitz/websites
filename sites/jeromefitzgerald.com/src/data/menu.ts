@@ -89,14 +89,13 @@ const menus: NavigationMenuItems[] = [
       //     'Coming this March to the city of champions, “Sketch Madness,” a new sketch comedy show from the writers and producers of the sold-out triumph “Revue This!”',
       // },
       {
-        href: '/events/2024/04/13/arcade-hootenanny',
-        id: '/events/2024/04/13/arcade-hootenanny',
+        href: '/events/2024/05/10/the-latchkey-kids',
+        id: '/events/2024/05/10/the-latchkey-kids',
         isActive: true,
         isActiveMobileOverride: true,
-        keywords: ['arcade', 'hoot'],
-        title: 'Arcade Hootenanny: SAT 04/13',
-        titleDescription:
-          'The Arcade Hootenanny is styled after the classic Chicago-style improv show featuring monologist-inspired scenes.',
+        keywords: ['latchkey', 'kids', 'warp', 'zone'],
+        title: 'Lathkey Kids: SAT 05/10',
+        titleDescription: 'Psst – Warp Zone are special guests. Pass it on.',
       },
       {
         href: '/events/2024/05/18/the-playlist',
