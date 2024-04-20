@@ -12,32 +12,16 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: '🔧  pnpm: Get Corepack Version'
-      id: node-pnpm-version
-      shell: bash
-      run: echo PNPM_VERSION=$(node --print 'require("./package.json").packageManager') >> $GITHUB_ENV
-
     - name: '🔧  pnpm: Install'
       id: pnpm-setup
-      shell: bash
-      # @note(corepack) Why, that was quite the rabbit hole
-      #  on corepack|npm and github actions ... yikes.
-      #
-      # How about you just install it and do not use corepack for now.
-      # :homer-simpson-fade-backwards-into-bushes:
-      #
-      run: |
-        npm install -g ${{ env.PNPM_VERSION }}
-
-      # uses: pnpm/action-setup@v2.4.0
-      # with:
-      #   version: ${{ inputs.pnpm-version }}
+      uses: pnpm/action-setup@v3
+      with:
+        run_install: false
 
     - name: '💽️  Node ${{ inputs.node-version }}'
       id: node-setup
       uses: actions/setup-node@v4
       with:
-        # architecture: 'x64'
         cache-dependency-path: pnpm-lock.yaml
         cache: 'pnpm'
         node-version: ${{ inputs.node-version }}
