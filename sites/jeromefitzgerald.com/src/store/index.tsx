@@ -53,7 +53,7 @@ const getDefaultInitialStateStoreMenu = () => ({
   seenSetDecrease: () => {},
   seenSetIncrease: () => {},
   // @note(zustand) no persist state due to SSR
-  spotifyTimeRange: 'short_term',
+  spotifyTimeRange: 'medium_term',
   spotifyTimeRangeSet: () => {},
   spotifyType: 'top-tracks',
   spotifyTypeSet: () => {},
