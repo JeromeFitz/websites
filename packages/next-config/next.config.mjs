@@ -110,6 +110,7 @@ const config = ({
     excludeDefaultMomentLocales: true,
     experimental: {
       // esmExternals: true,
+      // optimizePackageImports: ['@radix-ui/themes'],
       // @note(next) storybook needs this -- but nothing else.
       outputFileTracingExcludes: {
         '*': [
@@ -121,6 +122,7 @@ const config = ({
       // @note(next) monorepo root
       outputFileTracingRoot: join(pathDirName, '../../'),
       serverComponentsExternalPackages,
+      useLightningcss: false,
     },
     // exportPathMap,
     // generateBuildId,

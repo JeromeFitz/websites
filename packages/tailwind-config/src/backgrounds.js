@@ -3,7 +3,7 @@
  * https://www.radix-ui.com/docs/colors/palette-composition/understanding-the-scale
  *
  */
-const { excludes, radixColors } = require('./colors')
+import { excludes, radixColors } from './colors'
 
 const backgrounds = {}
 
@@ -59,4 +59,4 @@ radixColors.map((_color) => {
   }
 })
 
-module.exports = { backgrounds }
+export default { backgrounds }

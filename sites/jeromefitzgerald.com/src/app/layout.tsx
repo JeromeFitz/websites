@@ -13,11 +13,11 @@ import { Providers } from '@/components/Providers/index'
 import { Wrapper } from '@/components/Wrapper/index'
 // import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
 
-import { PreloadResources } from './_next/preload-resources'
-
-/* eslint-disable perfectionist/sort-imports */
-import '@jeromefitz/tailwind-config/styles/globals.css'
 import '@radix-ui/themes/styles.css'
+
+import '@jeromefitz/tailwind-config/styles/globals.css'
+
+import { PreloadResources } from './_next/preload-resources'
 
 // const fontInter = { variable: '' }
 // const fontInter = localFont({

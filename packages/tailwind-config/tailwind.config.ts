@@ -1,14 +1,14 @@
-const rtw = require('radix-themes-tw')
-const theme = require('tailwindcss/defaultTheme')
+import type { Config } from 'tailwindcss'
 
-const hocusPlugin = require('./hocus.plugin')
+import { radixThemePreset } from 'radix-themes-tw'
+import theme from 'tailwindcss/defaultTheme'
 
-const radixThemePreset = rtw.radixThemePreset
+import hocusPlugin from './hocus.plugin.js'
 
-const safelist = ['cursor-pointer']
+const safelist = ['cursor-pointer', 'hidden', 'md:hidden']
 
-/** @type {import('tailwindcss').Config} */
-const config = ({ useTailwind = true }) => ({
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const getConfig = ({ useTailwind = true }): Config => ({
   content: [
     /**
      * @note(tailwind) lol, if we do this, can we avoid the hack
@@ -21,6 +21,7 @@ const config = ({ useTailwind = true }) => ({
     './src/components/**/*.{ts,tsx}',
     './src/playground/**/*.{ts,tsx}',
     './src/ui/**/*.{ts,tsx}',
+    // './node_modules/@radix-ui/themes/dist/**/*.{js,ts,jsx,tsx}',
   ],
   darkMode: 'class',
   // future: {
@@ -183,33 +184,33 @@ const config = ({ useTailwind = true }) => ({
       },
       keyframes: {
         contentShow: {
-          from: { opacity: 0, transform: 'translate(-50%, -48%) scale(0.96)' },
-          to: { opacity: 1, transform: 'translate(-50%, -50%) scale(1)' },
+          from: { opacity: '0', transform: 'translate(-50%, -48%) scale(0.96)' },
+          to: { opacity: '1', transform: 'translate(-50%, -50%) scale(1)' },
         },
         // navigation-menu
         enterFromLeft: {
-          from: { opacity: 0, transform: 'translateX(-200px)' },
-          to: { opacity: 1, transform: 'translateX(0)' },
+          from: { opacity: '0', transform: 'translateX(-200px)' },
+          to: { opacity: '1', transform: 'translateX(0)' },
         },
         enterFromRight: {
-          from: { opacity: 0, transform: 'translateX(200px)' },
-          to: { opacity: 1, transform: 'translateX(0)' },
+          from: { opacity: '0', transform: 'translateX(200px)' },
+          to: { opacity: '1', transform: 'translateX(0)' },
         },
         exitToLeft: {
-          from: { opacity: 1, transform: 'translateX(0)' },
-          to: { opacity: 0, transform: 'translateX(-200px)' },
+          from: { opacity: '1', transform: 'translateX(0)' },
+          to: { opacity: '0', transform: 'translateX(-200px)' },
         },
         exitToRight: {
-          from: { opacity: 1, transform: 'translateX(0)' },
-          to: { opacity: 0, transform: 'translateX(200px)' },
+          from: { opacity: '1', transform: 'translateX(0)' },
+          to: { opacity: '0', transform: 'translateX(200px)' },
         },
         fadeIn: {
-          from: { opacity: 0 },
-          to: { opacity: 1 },
+          from: { opacity: '0' },
+          to: { opacity: '1' },
         },
         fadeOut: {
-          from: { opacity: 1 },
-          to: { opacity: 0 },
+          from: { opacity: '1' },
+          to: { opacity: '0' },
         },
         // toast
         hide: {
@@ -218,16 +219,16 @@ const config = ({ useTailwind = true }) => ({
         },
         // alert-dialog, dialog
         overlayShow: {
-          from: { opacity: 0 },
-          to: { opacity: 1 },
+          from: { opacity: '0' },
+          to: { opacity: '1' },
         },
         scaleIn: {
-          from: { opacity: 0, transform: 'rotateX(-10deg) scale(0.9)' },
-          to: { opacity: 1, transform: 'rotateX(0deg) scale(1)' },
+          from: { opacity: '0', transform: 'rotateX(-10deg) scale(0.9)' },
+          to: { opacity: '1', transform: 'rotateX(0deg) scale(1)' },
         },
         scaleOut: {
-          from: { opacity: 1, transform: 'rotateX(0deg) scale(1)' },
-          to: { opacity: 0, transform: 'rotateX(-10deg) scale(0.95)' },
+          from: { opacity: '1', transform: 'rotateX(0deg) scale(1)' },
+          to: { opacity: '0', transform: 'rotateX(-10deg) scale(0.95)' },
         },
         // accordion
         slideDown: {
@@ -236,28 +237,28 @@ const config = ({ useTailwind = true }) => ({
         },
         // hovercard, popover, tooltip
         slideDownAndFade: {
-          from: { opacity: 0, transform: 'translateY(-2px)' },
-          to: { opacity: 1, transform: 'translateY(0)' },
+          from: { opacity: '0', transform: 'translateY(-2px)' },
+          to: { opacity: '1', transform: 'translateY(0)' },
         },
         slideIn: {
           from: { transform: 'translateX(calc(100% + var(--viewport-padding)))' },
           to: { transform: 'translateX(0))' },
         },
         slideLeftAndFade: {
-          from: { opacity: 0, transform: 'translateX(2px)' },
-          to: { opacity: 1, transform: 'translateX(0)' },
+          from: { opacity: '0', transform: 'translateX(2px)' },
+          to: { opacity: '1', transform: 'translateX(0)' },
         },
         slideRightAndFade: {
-          from: { opacity: 0, transform: 'translateX(2px)' },
-          to: { opacity: 1, transform: 'translateX(0)' },
+          from: { opacity: '0', transform: 'translateX(2px)' },
+          to: { opacity: '1', transform: 'translateX(0)' },
         },
         slideUp: {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' },
         },
         slideUpAndFade: {
-          from: { opacity: 0, transform: 'translateY(2px)' },
-          to: { opacity: 1, transform: 'translateY(0)' },
+          from: { opacity: '0', transform: 'translateY(2px)' },
+          to: { opacity: '1', transform: 'translateY(0)' },
         },
         swipeOut: {
           from: { transform: 'translateX(var(--radix-toast-swipe-end-x))' },
@@ -306,4 +307,4 @@ const config = ({ useTailwind = true }) => ({
   },
 })
 
-module.exports = config
+export default getConfig

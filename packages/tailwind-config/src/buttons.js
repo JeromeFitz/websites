@@ -3,7 +3,7 @@
  * https://www.radix-ui.com/docs/colors/palette-composition/understanding-the-scale
  *
  */
-const { excludes, foregroundTextBlack, radixColors } = require('./colors')
+import { excludes, foregroundTextBlack, radixColors } from './colors'
 
 const buttons = {}
 const types = ['', '-cta', '-outline', '-solid', '-transparent']
@@ -126,4 +126,4 @@ radixColors.map((color) => {
   }
 })
 
-module.exports = { buttonTypes, buttons }
+export default { buttonTypes, buttons }

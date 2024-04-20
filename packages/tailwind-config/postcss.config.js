@@ -1,5 +1,6 @@
 /* eslint-disable perfectionist/sort-objects */
-module.exports = {
+/** @type {import('postcss-load-config').Config} */
+const configPostcss = {
   plugins: {
     /**
      * @note(next) documentation shows that autoprefixer should be last
@@ -28,3 +29,5 @@ module.exports = {
       : {}),
   },
 }
+
+export default configPostcss
