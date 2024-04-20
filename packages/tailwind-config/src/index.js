@@ -1,9 +1,9 @@
-const { backgrounds } = require('./backgrounds')
-const { buttonTypes, buttons } = require('./buttons')
-const { excludes, foregroundTextBlack, radixColors } = require('./colors')
-const { notion, notionColors } = require('./notion')
+import { backgrounds } from './backgrounds'
+import { buttonTypes, buttons } from './buttons'
+import { excludes, foregroundTextBlack, radixColors } from './colors'
+import { notion, notionColors } from './notion'
 
-module.exports = {
+export default {
   backgrounds,
   buttonTypes,
   buttons,

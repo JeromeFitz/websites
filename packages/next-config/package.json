@@ -5,11 +5,11 @@
   "main": "./next.config.mjs",
   "devDependencies": {
     "@jeromefitz/prettier-config": "2.0.3",
-    "@next/bundle-analyzer": "14.1.4",
+    "@next/bundle-analyzer": "14.2.2",
     "@octokit/core": "6.1.2",
     "@plaiceholder/next": "3.0.0",
     "fast-json-stable-stringify": "2.1.0",
     "lodash": "4.17.21",
-    "zod": "3.22.4"
+    "zod": "3.22.5"
   }
 }

@@ -1,7 +1,7 @@
-const radixColors = require('@radix-ui/colors')
-const plugin = require('tailwindcss/plugin')
+import radixColors from '@radix-ui/colors'
+import { withOptions } from 'tailwindcss/plugin'
 
-const { backgrounds, buttons, notion, notionColors } = require('./src/index')
+import { backgrounds, buttons, notion, notionColors } from './src/index'
 
 /**
  * @debug
@@ -26,7 +26,7 @@ const { backgrounds, buttons, notion, notionColors } = require('./src/index')
  *
  *
  */
-const radixPlugin = plugin.withOptions(
+const radixPlugin = withOptions(
   function (options) {
     return function ({ addBase, addComponents }) {
       let radixStyles = {}
@@ -129,4 +129,4 @@ const radixPlugin = plugin.withOptions(
   },
 )
 
-module.exports = radixPlugin
+export default radixPlugin

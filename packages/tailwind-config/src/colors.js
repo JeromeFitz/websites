@@ -57,4 +57,4 @@ const radixColors = isDev ? _radixColors : siteColors
 const foregroundTextBlack = ['sky', 'mint', 'lime', 'yellow', 'amber']
 const excludes = ['white', 'black']
 
-module.exports = { excludes, foregroundTextBlack, radixColors }
+export default { excludes, foregroundTextBlack, radixColors }

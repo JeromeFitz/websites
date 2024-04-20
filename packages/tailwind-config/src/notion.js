@@ -1,4 +1,4 @@
-const radixColors = require('@radix-ui/colors')
+import radixColors from '@radix-ui/colors'
 
 const notionColors = [
   // 'default',
@@ -64,4 +64,4 @@ notionColors.map((color) => {
 // globalDark.map((g) => console.dir(g))
 // console.dir(`----`)
 
-module.exports = { notion, notionColors }
+export default { notion, notionColors }

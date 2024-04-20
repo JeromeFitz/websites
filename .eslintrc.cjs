@@ -40,7 +40,7 @@ module.exports = {
       settings: {
         tailwindcss: {
           callees: ['cx', 'tw'],
-          config: `${fullCwd}/sites/jeromefitzgerald.com/tailwind.config.js`,
+          config: `${fullCwd}/sites/jeromefitzgerald.com/tailwind.config.ts`,
           /**
            * @todo(eslint-plugin-tailwindcss) submit pr for allowlist
            * @note(radix) dynamic variables need to be identified one-by-one here
@@ -75,7 +75,7 @@ module.exports = {
       settings: {
         tailwindcss: {
           callees: ['cx', 'tw'],
-          config: `${fullCwd}/packages/design-system/tailwind.config.js`,
+          config: `${fullCwd}/packages/design-system/tailwind.config.ts`,
           // @todo(eslint-plugin-tailwindcss) submit pr for allowlist
           whitelist: ['icon-custom', 'trap'],
         },
