@@ -87,7 +87,7 @@ const info = {
 const INIT = {
   limit: 10,
   offset: 0,
-  time_range: 'short_term',
+  time_range: 'medium_term',
   type: 'top-artists',
   url: '/api/v1/music',
 }
