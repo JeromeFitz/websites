@@ -5,7 +5,7 @@ import { BannerClient } from './Banner.client'
 
 const meta = {
   component: BannerClient,
-  // eslint-disable-next-line storybook/no-title-property-in-meta
+  // @todo(eslint) storybook/no-title-property-in-meta
   title: 'Components/BannerClient',
 } satisfies Meta<typeof BannerClient>
 

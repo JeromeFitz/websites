@@ -25,7 +25,7 @@
     "format:lint": "pnpm lint:eslint --fix",
     "lhci": "pnpm --package=@lhci/cli@0.13.0 dlx lhci autorun --config=.lighthouserc.cjs",
     "lint": "concurrently \"pnpm run lint:eslint\" \"pnpm run lint:typescript:dev\"",
-    "lint:eslint": "eslint ./src --ext cjs,js,jsx,mjs,ts,tsx --ignore-path ../../.eslintignore --max-warnings=0",
+    "lint:eslint": "eslint ./src --max-warnings=0",
     "lint:typescript": "tsc --noEmit --declaration",
     "lint:typescript:dev": "pnpm run lint:typescript -p ./tsconfig.dev.json",
     "lint:typescript:prod": "pnpm run lint:typescript -p ./tsconfig.json",

@@ -30,6 +30,8 @@ import { Slug } from './_components/Show.Slug'
 
 const { DATABASE_ID, SEGMENT } = CONFIG.SHOWS
 
+// @todo(complexity) 15
+// eslint-disable-next-line complexity
 export async function generateMetadata({ ...props }): Promise<Metadata> {
   const segmentInfo = getSegmentInfo({ SEGMENT, ...props })
   const data = await getDataFromCache({

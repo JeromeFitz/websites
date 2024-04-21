@@ -26,7 +26,7 @@ async function VideoYouTube({ block, url }) {
   const alt = (!!commentBlock && getImageAlt(commentBlock?.results)) || ''
 
   return (
-    <div className="relative h-full max-h-[480] w-full overflow-hidden [&>*:iframe]:absolute [&>*:iframe]:left-0 [&>*:iframe]:top-0 [&>*:iframe]:h-full [&>*:iframe]:max-h-[600] [&>*:iframe]:w-full">
+    <div className="relative size-full max-h-[480] overflow-hidden [&>*:iframe]:absolute [&>*:iframe]:left-0 [&>*:iframe]:top-0 [&>*:iframe]:size-full [&>*:iframe]:max-h-[600]">
       <iframe
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen

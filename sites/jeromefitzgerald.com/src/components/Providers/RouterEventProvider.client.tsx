@@ -35,7 +35,7 @@ function RouterEventProvider() {
     pastRoute !== pathname && isRouteChangingSet(true)
     pastRoute === pathname && isRouteChangingSet(false)
     pastRouteSet(pathname)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // @todo(eslint) react-hooks/exhaustive-deps
   }, [pathname, pastRoute])
 
   return <Loading isRouteChanging={isRouteChanging} />

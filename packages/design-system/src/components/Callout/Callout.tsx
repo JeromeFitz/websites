@@ -17,7 +17,7 @@ type AdditionalProps = {
   color?: string
   icon?: any
 }
-type CalloutRootPropsImpl = CalloutRootProps & AdditionalProps
+type CalloutRootPropsImpl = AdditionalProps & CalloutRootProps
 
 function CalloutImpl({
   children = <>This page is in the process of being updated.</>,

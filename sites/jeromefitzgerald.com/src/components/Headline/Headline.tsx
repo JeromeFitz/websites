@@ -19,7 +19,7 @@ type AdditionalProps = {
   children: ReactNode
   className?: string
 }
-type HeadlineColumnAProps = AdditionalProps & { separateTitle?: boolean }
+type HeadlineColumnAProps = { separateTitle?: boolean } & AdditionalProps
 function HeadlineColumnA({ children, separateTitle = true }: HeadlineColumnAProps) {
   return (
     <Box
@@ -45,7 +45,7 @@ function HeadlineColumnA({ children, separateTitle = true }: HeadlineColumnAProp
     </Box>
   )
 }
-type HeadlineTitleProps = HeadingProps & AdditionalProps
+type HeadlineTitleProps = AdditionalProps & HeadingProps
 function HeadlineTitle({ children, className = '', ...props }: HeadlineTitleProps) {
   return (
     <Heading
@@ -58,7 +58,7 @@ function HeadlineTitle({ children, className = '', ...props }: HeadlineTitleProp
     </Heading>
   )
 }
-type HeadlineTitleTextProps = TextProps & AdditionalProps
+type HeadlineTitleTextProps = AdditionalProps & TextProps
 function HeadlineTitleText({
   children,
   className,

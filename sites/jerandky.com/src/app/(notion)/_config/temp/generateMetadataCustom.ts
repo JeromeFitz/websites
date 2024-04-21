@@ -8,6 +8,8 @@ import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
 
 import _title from 'title'
 
+// @todo(complexity) 21
+// eslint-disable-next-line complexity
 async function generateMetadataCustom({ data, pageData, segmentInfo }) {
   const hasImage = !!pageData?.seoImage
   let images: any = undefined

@@ -115,6 +115,8 @@ function Footer() {
                       <strong>{menu?.title}</strong>
                     </p>
                     <ul>
+                      {/* @todo(complexity) 17 */}
+                      {/* eslint-disable-next-line complexity */}
                       {menu?.items.map((item) => {
                         return (
                           <li
