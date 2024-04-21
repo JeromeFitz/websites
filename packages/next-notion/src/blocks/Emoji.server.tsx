@@ -53,6 +53,8 @@ function Emoji({ character }) {
   return <EmojiHtml emoji={emoji} label={label} />
 }
 
+// @todo(complexity) 13
+// eslint-disable-next-line complexity
 function EmojiWrapper({ id, text }) {
   // const [loading, loadingSet] = useState(true)
   // useEffect(() => {

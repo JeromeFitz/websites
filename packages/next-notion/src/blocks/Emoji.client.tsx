@@ -55,6 +55,8 @@ async function Emoji({ character }) {
   return <EmojiHtml emoji={emoji} label={label} />
 }
 
+// @todo(complexity) 13
+// eslint-disable-next-line complexity, @next/next/no-async-client-component
 async function EmojiWrapper({ id, text }) {
   // const [loading, loadingSet] = useState(true)
   // useEffect(() => {

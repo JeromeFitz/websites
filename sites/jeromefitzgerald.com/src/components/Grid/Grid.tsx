@@ -27,7 +27,7 @@ type AdditionalProps = {
   children: ReactNode
   className?: string
 }
-type GridImpl = GridProps & AdditionalProps
+type GridImpl = AdditionalProps & GridProps
 // const GridImpl = forwardRef(function GridImpl(
 //   { children, className, ...props }: GridImpl,
 //   forwardedRef,

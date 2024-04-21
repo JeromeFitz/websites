@@ -18,6 +18,8 @@ import { CONFIG, getEpisodeData, getPodcastData } from '@/app/(notion)/_config/i
 
 const { DATABASE_ID, SEGMENT } = CONFIG.PODCASTS
 
+// @todo(complexity) 25
+// eslint-disable-next-line complexity
 export async function GET(
   request: NextRequest,
   { params }: { params: { slug: string } },

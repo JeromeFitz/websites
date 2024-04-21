@@ -42,7 +42,7 @@ const useStore = () => {
   }))
 }
 
-function CMDKWrapper(props: MotionProps & { children: ReactNode }) {
+function CMDKWrapper(props: { children: ReactNode } & MotionProps) {
   return (
     <AnimatePresence initial={true} mode="wait">
       <motion.div
@@ -96,6 +96,8 @@ function getDark(theme) {
   return theme === 'dark' ? styles['dark'] : ''
 }
 
+// @todo(complexity) 12
+// eslint-disable-next-line complexity
 function Item({
   children,
   closeCmdK = true,
@@ -355,7 +357,7 @@ function Cmdk() {
 
     document.addEventListener('keydown', down)
     return () => document.removeEventListener('keydown', down)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // @todo(eslint) react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
@@ -445,6 +447,7 @@ function Cmdk() {
               cmdk-top-shine=""
             />
             <Command.Input
+              // eslint-disable-next-line jsx-a11y/no-autofocus
               autoFocus
               className={cx(styles['cmdk-input'], getDark(theme))}
               onValueChange={cmdkInputSet}

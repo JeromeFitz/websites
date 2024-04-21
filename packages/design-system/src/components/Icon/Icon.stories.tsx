@@ -5,7 +5,7 @@ import { MapIcon } from './Icon'
 
 const meta = {
   component: MapIcon,
-  // eslint-disable-next-line storybook/no-title-property-in-meta
+  // @todo(eslint) storybook/no-title-property-in-meta
   title: 'Components/Icon',
 } satisfies Meta<typeof MapIcon>
 

@@ -25,6 +25,8 @@ type ImageItemResponse =
       type: 'file'
     }
 
+// @todo(complexity) 15
+// eslint-disable-next-line complexity
 function getMetadata({ properties, segmentInfo }) {
   if (isObjectEmpty(properties)) return {}
   // console.dir(`[getMetadata] segmentInfo:`)

@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@jeromefitz/conventional-gitmoji": "4.0.1",
-    "@jeromefitz/eslint-config": "2.1.11",
+    "@jeromefitz/eslint-config": "3.0.0-canary.4",
     "@jeromefitz/lint-staged": "2.0.2",
     "@jeromefitz/prettier-config": "2.0.3",
     "@jeromefitz/release-notes-generator": "2.0.5",
@@ -59,6 +59,7 @@
       "semver@^5.0.0": "5.7.2",
       "semver@^6.0.0": "6.3.1",
       "semver@^7.0.0": "7.5.4",
+      "sharp": "0.32.6",
       "tough-cookie": "4.1.3"
     }
   }

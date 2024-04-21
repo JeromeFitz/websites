@@ -92,7 +92,7 @@
     "dev": "tsup-node --watch",
     "format:lint": "pnpm lint:eslint --fix",
     "lint": "pnpm lint:eslint && pnpm lint:typescript",
-    "lint:eslint": "eslint ./src --ext cjs,js,jsx,mjs,ts,tsx --max-warnings=0",
+    "lint:eslint": "eslint ./src --max-warnings=0",
     "lint:typescript": "tsc --noEmit --declaration",
     "semantic-release": "echo semantic-release"
   },

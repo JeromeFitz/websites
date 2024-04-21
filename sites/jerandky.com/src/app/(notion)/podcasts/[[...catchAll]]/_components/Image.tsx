@@ -23,6 +23,8 @@ const redis = new Redis({
 
 const CACHE_KEY_PREFIX__IMAGE = `${envClient.NEXT_PUBLIC__SITE}/image`
 
+// @todo(complexity) 12
+// eslint-disable-next-line complexity
 async function Image({ properties }) {
   /**
    * Image Information
