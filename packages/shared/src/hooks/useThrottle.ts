@@ -7,7 +7,7 @@ function useThrottle(cb, delay) {
   useEffect(() => {
     cbRef.current = cb
   })
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // @todo(eslint) react-hooks/exhaustive-deps
   return useCallback(
     _throttle((...args) => cbRef.current(...args), delay, options),
     [delay],

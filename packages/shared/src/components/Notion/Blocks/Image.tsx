@@ -152,6 +152,8 @@ async function getImageFromBlock({ block, url }) {
   return image
 }
 
+// @todo(complexity) 15
+// eslint-disable-next-line complexity
 async function ImageImpl({
   block,
   blocks,

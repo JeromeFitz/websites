@@ -29,6 +29,8 @@ const { DATABASE_ID, SEGMENT } = CONFIG.PEOPLE
 // export const revalidate = TIME.MINUTE
 // export const runtime = 'nodejs'
 
+// @todo(complexity) 12
+// eslint-disable-next-line complexity
 export async function generateMetadata({ ...props }): Promise<Metadata> {
   const segmentInfo = getSegmentInfo({ SEGMENT, ...props })
   const data = await getDataFromCache({

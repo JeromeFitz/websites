@@ -99,6 +99,8 @@ async function Slug({ revalidate, segmentInfo }) {
     { color: 'purple', id: 'completed', items: [], notionFilter: 'Complete' },
   ]
 
+  // @todo(complexity) 15
+  // eslint-disable-next-line complexity
   _items.map((item) => {
     if (!item?.status?.name) return null
     if (!item?.isActive) return null
