@@ -20,8 +20,8 @@ importers:
         specifier: 4.0.1
         version: 4.0.1(lodash@4.17.21)
       '@jeromefitz/eslint-config':
-        specifier: 3.0.0-canary.4
-        version: 3.0.0-canary.4(typescript@5.4.5)
+        specifier: 3.0.0
+        version: 3.0.0(typescript@5.4.5)
       '@jeromefitz/lint-staged':
         specifier: 2.0.2
         version: 2.0.2(is-ci@3.0.1)
@@ -2292,8 +2292,8 @@ packages:
       react-dom: ^18.0.0
       swr: ^2.0.0
 
-  '@jeromefitz/eslint-config@3.0.0-canary.4':
-    resolution: {integrity: sha512-4MCFTsSbP5394sN/TPXHj8sR8p76jRbBj3H0/ghqNx7XrHTfTLeHCfk74vFHAbE1ayon5s760zAMllr3+n2/gA==}
+  '@jeromefitz/eslint-config@3.0.0':
+    resolution: {integrity: sha512-BKRcMKRuqTkhUPDr6YWDhR4GITxk5/kGpTsbwaX+U3FGraMzvTqWdkbtGkKWejMBsJtOMct/s0GFDui/NraInw==}
     engines: {node: '>=20'}
 
   '@jeromefitz/lint-staged@2.0.2':
@@ -12698,7 +12698,7 @@ snapshots:
     transitivePeerDependencies:
       - '@types/react'
 
-  '@jeromefitz/eslint-config@3.0.0-canary.4(typescript@5.4.5)':
+  '@jeromefitz/eslint-config@3.0.0(typescript@5.4.5)':
     dependencies:
       '@babel/core': 7.24.4
       '@babel/eslint-parser': 7.24.1(@babel/core@7.24.4)(eslint@9.1.0)
@@ -20570,7 +20570,7 @@ snapshots:
     dependencies:
       es-errors: 1.3.0
       hasown: 2.0.2
-      side-channel: 1.0.5
+      side-channel: 1.0.6
 
   into-stream@7.0.0:
     dependencies:
