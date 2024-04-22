@@ -10,6 +10,6 @@
     "@plaiceholder/next": "3.0.0",
     "fast-json-stable-stringify": "2.1.0",
     "lodash": "4.17.21",
-    "zod": "3.23.0"
+    "zod": "3.23.1"
   }
 }
