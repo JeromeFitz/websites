@@ -708,8 +708,8 @@ importers:
         specifier: 2.0.0
         version: 2.0.0
       immer:
-        specifier: 10.0.4
-        version: 10.0.4
+        specifier: 10.1.1
+        version: 10.1.1
       ioredis:
         specifier: 5.4.1
         version: 5.4.1
@@ -793,7 +793,7 @@ importers:
         version: 3.23.4
       zustand:
         specifier: 4.5.2
-        version: 4.5.2(@types/react@18.3.1)(immer@10.0.4)(react@18.3.1)
+        version: 4.5.2(@types/react@18.3.1)(immer@10.1.1)(react@18.3.1)
     devDependencies:
       '@jeromefitz/jest-config':
         specifier: workspace:*
@@ -1027,8 +1027,8 @@ importers:
         specifier: 2.0.0
         version: 2.0.0
       immer:
-        specifier: 10.0.4
-        version: 10.0.4
+        specifier: 10.1.1
+        version: 10.1.1
       ioredis:
         specifier: 5.4.1
         version: 5.4.1
@@ -1115,7 +1115,7 @@ importers:
         version: 3.23.4
       zustand:
         specifier: 4.5.2
-        version: 4.5.2(@types/react@18.3.1)(immer@10.0.4)(react@18.3.1)
+        version: 4.5.2(@types/react@18.3.1)(immer@10.1.1)(react@18.3.1)
     devDependencies:
       '@jeromefitz/jest-config':
         specifier: workspace:*
@@ -7063,8 +7063,8 @@ packages:
     engines: {node: '>=14.0.0'}
     hasBin: true
 
-  immer@10.0.4:
-    resolution: {integrity: sha512-cuBuGK40P/sk5IzWa9QPUaAdvPHjkk1c+xYsd9oZw+YQQEV+10G0P5uMpGctZZKnyQ+ibRO08bD25nWLmYi2pw==}
+  immer@10.1.1:
+    resolution: {integrity: sha512-s2MPrmjovJcoMaHtx6K11Ra7oD05NT97w1IC5zpMkT6Atjr7H8LjaDd81iIxUYpMKSRRNMJE703M1Fhr/TctHw==}
 
   import-fresh@3.3.0:
     resolution: {integrity: sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw==}
@@ -19876,7 +19876,7 @@ snapshots:
     dependencies:
       queue: 6.0.2
 
-  immer@10.0.4: {}
+  immer@10.1.1: {}
 
   import-fresh@3.3.0:
     dependencies:
@@ -23999,10 +23999,10 @@ snapshots:
 
   zod@3.23.4: {}
 
-  zustand@4.5.2(@types/react@18.3.1)(immer@10.0.4)(react@18.3.1):
+  zustand@4.5.2(@types/react@18.3.1)(immer@10.1.1)(react@18.3.1):
     dependencies:
       use-sync-external-store: 1.2.0(react@18.3.1)
     optionalDependencies:
       '@types/react': 18.3.1
-      immer: 10.0.4
+      immer: 10.1.1
       react: 18.3.1
