@@ -36,7 +36,7 @@
       "commitMessagePrefix": "⬆️  (deps)",
       "groupName": "react ⚛️ ",
       "groupSlug": "react",
-      "matchPackageNames": ["@types/react", "react", "react-dom"]
+      "matchPackageNames": ["@types/react", "@types/react-dom", "react", "react-dom"]
     },
     {
       "commitMessagePrefix": "📦  (deps-peer)",
@@ -48,6 +48,7 @@
         "@types/jest",
         "@types/node",
         "@types/react",
+        "@types/react-dom",
         "@types/testing-library__jest-dom"
       ],
       "matchPackageNames": ["@types/*"]
