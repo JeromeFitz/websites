@@ -200,8 +200,8 @@ importers:
         specifier: 1.0.3
         version: 1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/themes':
-        specifier: 3.0.2
-        version: 3.0.2(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 3.0.3
+        version: 3.0.3(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       clsx:
         specifier: 2.1.1
         version: 2.1.1
@@ -363,8 +363,8 @@ importers:
         specifier: 2.2.15
         version: 2.2.15
       '@radix-ui/themes':
-        specifier: 3.0.2
-        version: 3.0.2(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 3.0.3
+        version: 3.0.3(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@types/lodash':
         specifier: 4.17.0
         version: 4.17.0
@@ -435,8 +435,8 @@ importers:
         specifier: workspace:*
         version: link:../tailwind-config
       '@radix-ui/themes':
-        specifier: 3.0.2
-        version: 3.0.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 3.0.3
+        version: 3.0.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@storybook/addon-a11y':
         specifier: 8.0.9
         version: 8.0.9
@@ -492,8 +492,8 @@ importers:
         specifier: 3.0.0
         version: 3.0.0
       '@radix-ui/themes':
-        specifier: 3.0.2
-        version: 3.0.2
+        specifier: 3.0.3
+        version: 3.0.3
       '@tailwindcss/aspect-ratio':
         specifier: 0.4.2
         version: 0.4.2(tailwindcss@3.4.3(ts-node@10.9.2(@types/node@20.12.7)(typescript@5.4.5)))
@@ -669,8 +669,8 @@ importers:
         specifier: 1.0.3
         version: 1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/themes':
-        specifier: 3.0.2
-        version: 3.0.2(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 3.0.3
+        version: 3.0.3(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@tanem/react-nprogress':
         specifier: 5.0.51
         version: 5.0.51(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -982,8 +982,8 @@ importers:
         specifier: 1.0.3
         version: 1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/themes':
-        specifier: 3.0.2
-        version: 3.0.2(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 3.0.3
+        version: 3.0.3(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@tanem/react-nprogress':
         specifier: 5.0.51
         version: 5.0.51(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -3739,8 +3739,8 @@ packages:
   '@radix-ui/rect@1.0.1':
     resolution: {integrity: sha512-fyrgCaedtvMg9NK3en0pnOYJdtfwxUcNolezkNPUsoX57X8oQk+NkqcvzHXD2uKNij6GXmWU9NDru2IWjrO4BQ==}
 
-  '@radix-ui/themes@3.0.2':
-    resolution: {integrity: sha512-z5drXh8VYAqHT9sfRaY5tGo7XYLhTUKEmV+x0umzfkCVhK+7k6UwzSMDgsSFjrmgbq5LWQON7FzWXGaalr+k1A==}
+  '@radix-ui/themes@3.0.3':
+    resolution: {integrity: sha512-ANTIndVgasHglJFW19yOQMX996Bcu1blADjOPHUP6DgPpDJH25z5o0p3U7sT/n0VWEr2rZpnpgAFwFs4I9AhIA==}
     peerDependencies:
       '@types/react': '*'
       '@types/react-dom': '*'
@@ -15094,7 +15094,7 @@ snapshots:
     dependencies:
       '@babel/runtime': 7.24.4
 
-  '@radix-ui/themes@3.0.2':
+  '@radix-ui/themes@3.0.3':
     dependencies:
       '@radix-ui/colors': 3.0.0
       '@radix-ui/primitive': 1.0.1
@@ -15132,7 +15132,7 @@ snapshots:
       classnames: 2.5.1
       react-remove-scroll-bar: 2.3.4
 
-  '@radix-ui/themes@3.0.2(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@radix-ui/themes@3.0.3(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@radix-ui/colors': 3.0.0
       '@radix-ui/primitive': 1.0.1
@@ -15175,7 +15175,7 @@ snapshots:
       '@types/react': 18.3.1
       '@types/react-dom': 18.3.0
 
-  '@radix-ui/themes@3.0.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@radix-ui/themes@3.0.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@radix-ui/colors': 3.0.0
       '@radix-ui/primitive': 1.0.1
