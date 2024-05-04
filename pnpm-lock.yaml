@@ -823,8 +823,8 @@ importers:
         specifier: 0.0.33
         version: 0.0.33
       '@types/ramda':
-        specifier: 0.29.12
-        version: 0.29.12
+        specifier: 0.30.0
+        version: 0.30.0
       '@types/react':
         specifier: 18.3.1
         version: 18.3.1
@@ -1145,8 +1145,8 @@ importers:
         specifier: 0.0.33
         version: 0.0.33
       '@types/ramda':
-        specifier: 0.29.12
-        version: 0.29.12
+        specifier: 0.30.0
+        version: 0.30.0
       '@types/react':
         specifier: 18.3.1
         version: 18.3.1
@@ -4498,8 +4498,8 @@ packages:
   '@types/qs@6.9.7':
     resolution: {integrity: sha512-FGa1F62FT09qcrueBA6qYTrJPVDzah9a+493+o2PCXsesWHIn27G98TsSMs3WPNbZIEj4+VJf6saSFpvD+3Zsw==}
 
-  '@types/ramda@0.29.12':
-    resolution: {integrity: sha512-sgIEjpJhdQPB52gDF4aphs9nl0xe54CR22DPdWqT8gQHjZYmVApgA0R3/CpMbl0Y8az2TEZrPNL2zy0EvjbkLA==}
+  '@types/ramda@0.30.0':
+    resolution: {integrity: sha512-DQtfqUbSB18iM9NHbQ++kVUDuBWHMr6T2FpW1XTiksYRGjq4WnNPZLt712OEHEBJs7aMyJ68Mf2kGMOP1srVVw==}
 
   '@types/range-parser@1.2.4':
     resolution: {integrity: sha512-EEhsLsD6UsDM1yFhAvy0Cjr6VwmpMWqFBCb9w07wVugF7w9nfajxLuVmngTIpgS6svCnm6Vaw+MZhoDCKnOfsw==}
@@ -10451,8 +10451,8 @@ packages:
     resolution: {integrity: sha512-/OxDN6OtAk5KBpGb28T+HZc2M+ADtvRxXrKKbUwtsLgdoxgX13hyy7ek6bFRl5+aBs2yZzB0c4CnQfAtVypW/g==}
     engines: {node: '>= 0.4'}
 
-  types-ramda@0.29.10:
-    resolution: {integrity: sha512-5PJiW/eiTPyXXBYGZOYGezMl6qj7keBiZheRwfjJZY26QPHsNrjfJnz0mru6oeqqoTHOni893Jfd6zyUXfQRWg==}
+  types-ramda@0.30.0:
+    resolution: {integrity: sha512-oVPw/KHB5M0Du0txTEKKM8xZOG9cZBRdCVXvwHYuNJUVkAiJ9oWyqkA+9Bj2gjMsHgkkhsYevobQBWs8I2/Xvw==}
 
   typescript@5.4.5:
     resolution: {integrity: sha512-vcI4UpRgg81oIRUFwR0WSIHKt11nJ7SAVlYNIu+QpqeyXP+gpQJy/Z4+F0aGxSE4MqwjyXvW/TzgkLAx2AGHwQ==}
@@ -16746,9 +16746,9 @@ snapshots:
 
   '@types/qs@6.9.7': {}
 
-  '@types/ramda@0.29.12':
+  '@types/ramda@0.30.0':
     dependencies:
-      types-ramda: 0.29.10
+      types-ramda: 0.30.0
 
   '@types/range-parser@1.2.4': {}
 
@@ -23606,7 +23606,7 @@ snapshots:
       is-typed-array: 1.1.13
       possible-typed-array-names: 1.0.0
 
-  types-ramda@0.29.10:
+  types-ramda@0.30.0:
     dependencies:
       ts-toolbelt: 9.6.0
 
