@@ -166,7 +166,7 @@ function NavigationMobile() {
 
           <div
             className={cx(
-              'fixed left-0 top-0 z-[99999] flex flex-row items-end justify-start  py-4',
+              'fixed left-0 top-0 z-[99999] flex flex-row items-end justify-start py-4',
               // 'bg-accent-4',
             )}
           >

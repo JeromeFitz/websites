@@ -32,7 +32,7 @@ function HeaderSidebar({
     <ContainerHeaderSidebar>
       <div
         className={cx(
-          'h-min w-full ',
+          'h-min w-full',
           // 'size-full',
           'relative flex flex-none flex-col flex-nowrap content-start items-start justify-start gap-0 overflow-visible',
           'px-0 pb-6 pt-0 md:p-0',

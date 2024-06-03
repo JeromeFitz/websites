@@ -70,13 +70,13 @@ function Currently() {
         // @todo(ui) can we align this with radix?
         'gap-[10px]',
         'order-[0]',
-        'md:h-[266px] ',
+        'md:h-[266px]',
       )}
       style={{ opacity: 1 }}
     >
       <Box
         className={cx(
-          'relative flex h-min w-full flex-none flex-col flex-nowrap content-start items-start justify-start gap-6 overflow-visible p-0 ',
+          'relative flex h-min w-full flex-none flex-col flex-nowrap content-start items-start justify-start gap-6 overflow-visible p-0',
           'md:flex-row md:justify-between',
         )}
         style={{ opacity: 1 }}
@@ -92,7 +92,7 @@ function Currently() {
           style={{ opacity: 1 }}
         >
           <Text
-            className="text-accentA-12 "
+            className="text-accentA-12"
             size={{ initial: '6', md: '8' }}
             weight="medium"
           >
