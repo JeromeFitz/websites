@@ -52,7 +52,7 @@ function NavigationTertiary({ className, order = 0 }) {
       className={cx(
         'hidden md:flex',
         'relative h-auto flex-none',
-        'w-max ',
+        'w-max',
         className,
       )}
       style={{ opacity: 1, order }}
@@ -62,7 +62,7 @@ function NavigationTertiary({ className, order = 0 }) {
           <DropdownMenuRoot modal={false}>
             {/* @ts-ignore */}
             <DropdownMenuTrigger
-              className={cx(isDisabled && ' hover:cursor-not-allowed')}
+              className={cx(isDisabled && 'hover:cursor-not-allowed')}
             >
               <Button
                 aria-label={

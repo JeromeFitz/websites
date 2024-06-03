@@ -96,7 +96,7 @@ function ListRootLink({ menu }) {
         <NavigationMenuLink>
           {menu.isParentIconVisible ? (
             <>
-              <Icon className="hocus:hover:text-accent-11  mt-1 transition-colors" />
+              <Icon className="hocus:hover:text-accent-11 mt-1 transition-colors" />
               <span className="hidden">{menu.title}</span>
             </>
           ) : (
@@ -227,7 +227,7 @@ const NavigationMenu = () => {
               {/* @ts-ignore */}
               <NavigationMenuIndicator
                 className={cx(
-                  'data-[state=visible]:animate-fadeIn data-[state=hidden]:animate-fadeOut top-[38px] z-[-1] flex h-[10px] items-end justify-center overflow-hidden ',
+                  'data-[state=visible]:animate-fadeIn data-[state=hidden]:animate-fadeOut top-[38px] z-[-1] flex h-[10px] items-end justify-center overflow-hidden',
                   // 'transition-[width,transform,_50ms_ease]',
                   // 'transition-[width,transform] duration-250',
                   'transition-[width,transform] !duration-0',

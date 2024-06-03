@@ -37,7 +37,7 @@ function Relations({ properties, relations, relationsSecondary }) {
           <div
             className={cx(
               'col-span-6',
-              'md:col-span-4 ',
+              'md:col-span-4',
               // 'first:col-span-12',
               // 'md:first:col-span-8',
               '',

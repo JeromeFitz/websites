@@ -10,14 +10,14 @@ function Navigation() {
     <Grid
       as="div"
       className={cx(
-        'top-0 z-10 mx-auto w-full md:sticky ',
+        'top-0 z-10 mx-auto w-full md:sticky',
         'col-span-full',
         'bg-white dark:bg-black',
         'md:bg-whiteA-12 md:dark:bg-blackA-11',
         'md:backdrop-blur-sm',
         'md:border-b-1 md:border-grayA-3',
         'md:drop-shadow-sm',
-        'md:dark:shadow-white/5  md:dark:drop-shadow-lg',
+        'md:dark:shadow-white/5 md:dark:drop-shadow-lg',
         '',
         'md:py-2',
       )}
