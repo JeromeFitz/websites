@@ -15,16 +15,15 @@ import { draftMode } from 'next/headers.js'
 import { notFound } from 'next/navigation.js'
 import { getPropertyTypeData } from 'next-notion/utils/index'
 
+import { ArticleMain } from '@/app/playground/2024/_components/Article.Main'
+import { ContainerWithSidebar } from '@/app/playground/2024/_components/Container.Main'
+// import { HeaderFull } from '@/app/playground/2024/_components/Header.Full'
+import { HeaderSidebar } from '@/app/playground/2024/_components/Header.Sidebar'
+import { LI, UL } from '@/components/List/index'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { CONFIG, getPageData, getShowData } from '@/app/(notion)/_config/index'
-import { Grid } from '@/components/Grid/index'
-import {
-  HeadlineColumnA,
-  HeadlineContent,
-  HeadlineTitle,
-} from '@/components/Headline/index'
 // import { Notion as Blocks } from '@/components/Notion/index'
 // import type { PageObjectResponseShow } from '@/app/(notion)/_config/index'
 
@@ -45,18 +44,21 @@ function ListingTemp({ data }) {
   ])
 
   return (
-    <ul className="list-inside md:list-disc">
+    <UL>
       {shows.map((show) => {
         if (!show?.isPublished) return null
         return (
-          <li key={`shows-show-${show?.id}`}>
-            <Anchor href={show?.href}>
+          <LI key={`shows-show-${show?.id}`}>
+            <Anchor
+              className="flex list-none items-center justify-start gap-2"
+              href={show?.href}
+            >
               <Text size="4"> {show?.title}</Text>
             </Anchor>
-          </li>
+          </LI>
         )
       })}
-    </ul>
+    </UL>
   )
 
   // return (
@@ -131,19 +133,18 @@ async function Listing({ revalidate, segmentInfo }) {
     'Shows that comedian Jerome Fitzgerald is in. Maybe these should be Acts? Online content, when it is his, eludes him. (He is glad you found this page in spite of this.)'
 
   return (
-    <Grid>
-      <HeadlineColumnA>
-        <HeadlineTitle aria-label={title} as="h1">
-          <>{title}</>
-        </HeadlineTitle>
-      </HeadlineColumnA>
-      <HeadlineContent>
-        {/* <Blocks data={data?.blocks} /> */}
-        <Text size="4">{seoDescription}</Text>
-        <Callout size="1" variant="outline" />
-        {hasContent && <ListingTemp data={showData} />}
-      </HeadlineContent>
-    </Grid>
+    <>
+      {/* <HeaderFull overline={seoDescription} title={title} /> */}
+      <ContainerWithSidebar>
+        <HeaderSidebar hasBorder={false} title={title} />
+        <ArticleMain>
+          <Callout size="1" variant="outline" />
+          {/* <Blocks data={data?.blocks} /> */}
+          <Text size="4">{seoDescription}</Text>
+          {hasContent && <ListingTemp data={showData} />}
+        </ArticleMain>
+      </ContainerWithSidebar>
+    </>
   )
 }
 

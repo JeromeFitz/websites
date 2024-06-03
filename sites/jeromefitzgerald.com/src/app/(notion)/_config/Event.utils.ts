@@ -31,7 +31,7 @@ function getEventData(properties) {
   const tagsSecondary =
     getPropertyTypeDataEvent(properties, 'Rollup.Shows.Supporting.Tags') ?? []
 
-  const tags = _uniq(_merge(tagsPrimary, tagsSecondary))
+  const tags = _uniq(_merge(tagsPrimary, tagsSecondary)) ?? []
 
   let venueTitle = getPropertyTypeDataEvent(properties, 'Rollup.Venues.Title') ?? ''
   if (!!venueTitle) {

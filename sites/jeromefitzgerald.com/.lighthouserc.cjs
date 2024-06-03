@@ -4,10 +4,10 @@ let urlAdditional = undefined
 
 if (!isCI) {
   urlAdditional = [
-    '/books',
+    '/currently/listening-to',
+    '/currently/reading',
     // '/events',
     // '/events/2023/07/15/jerome-and',
-    '/music',
     // '/shows',
     // '/shows/alex-o-jerome',
   ]

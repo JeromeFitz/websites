@@ -16,7 +16,7 @@ import type { PageObjectResponseEvent } from '@/app/(notion)/_config/index'
 
 import { CONFIG, getEventData, getPageData } from '@/app/(notion)/_config/index'
 import { generateMetadataCustom } from '@/app/(notion)/_config/temp/generateMetadataCustom'
-import { Layout } from '@/components/Layout/index'
+// import { Layout } from '@/components/Layout/index'
 
 import { Listing } from './_components/Event.Listing'
 import { Slug } from './_components/Event.Slug'
@@ -131,15 +131,7 @@ export default function Page(props) {
   const segmentInfo = getSegmentInfo({ SEGMENT, ...props })
 
   if (segmentInfo.isIndex) {
-    return (
-      <Layout>
-        <Listing revalidate={revalidate} segmentInfo={segmentInfo} />
-      </Layout>
-    )
+    return <Listing revalidate={revalidate} segmentInfo={segmentInfo} />
   }
-  return (
-    <Layout>
-      <Slug revalidate={revalidate} segmentInfo={segmentInfo} />
-    </Layout>
-  )
+  return <Slug revalidate={revalidate} segmentInfo={segmentInfo} />
 }

@@ -1,0 +1,11 @@
+@font-face {
+  font-family: 'NameSans';
+  font-weight: 1 1000;
+  src: url('https://nice-fonts.s3.amazonaws.com/arrow-type/at--name-sans--variable--1.0.0.woff2');
+}
+
+@font-face {
+  font-family: 'NameSansMono';
+  font-weight: 1 1000;
+  src: url('https://nice-fonts.s3.amazonaws.com/arrow-type/at--name-mono--variable-0.3.woff2');
+}

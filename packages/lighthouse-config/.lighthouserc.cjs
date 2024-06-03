@@ -39,6 +39,7 @@ const config = ({ urlAdditional, website }) => {
           'unused-css-rules': OFF,
           'unused-javascript': OFF,
           'uses-responsive-images': OFF,
+          'uses-text-compression': WARN,
         },
         preset: 'lighthouse:no-pwa',
       },

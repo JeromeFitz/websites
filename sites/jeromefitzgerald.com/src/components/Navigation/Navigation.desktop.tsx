@@ -242,7 +242,7 @@ const NavigationMenu = () => {
                 />
               </NavigationMenuIndicator>
             </NavigationMenuList>
-            <div className="perspective-[2000px] absolute left-0 top-[48px] flex w-full justify-start">
+            <div className="perspective-[2000px] absolute left-0 top-12 flex w-full justify-start">
               <NavigationMenuViewport
                 // @ts-ignore
                 className={cx(

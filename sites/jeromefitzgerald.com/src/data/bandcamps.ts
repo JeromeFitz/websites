@@ -2,7 +2,7 @@ const bandcamps = [
   {
     album: 'The Control Center',
     artist: 'Buscrates',
-    href: 'https://torysilvermusic.bandcamp.com/album/slowly',
+    href: 'https://buscrates412.bandcamp.com/album/control-center',
   },
   {
     album: 'Check Please',

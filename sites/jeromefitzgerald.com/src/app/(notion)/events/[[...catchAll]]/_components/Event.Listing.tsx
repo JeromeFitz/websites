@@ -19,10 +19,13 @@ import { getPropertyTypeData } from 'next-notion/utils/index'
 
 // import { CONFIG, getEventData, getPageData } from '@/app/(notion)/_config/index'
 import { CONFIG, getEventData } from '@/app/(notion)/_config/index'
-import { Grid } from '@/components/Grid/index'
+import { ArticleMain } from '@/app/playground/2024/_components/Article.Main'
+// import { ArticleMainCTA } from '@/app/playground/2024/_components/Article.Main.CTA'
+import { ContainerWithSidebar } from '@/app/playground/2024/_components/Container.Main'
+import { HeaderSidebar } from '@/app/playground/2024/_components/Header.Sidebar'
 import {
-  HeadlineColumnA,
-  HeadlineContent,
+  // HeadlineColumnA,
+  // HeadlineContent,
   HeadlineTitle,
 } from '@/components/Headline/index'
 
@@ -35,7 +38,7 @@ const { DATABASE_ID } = CONFIG.EVENTS
 function ListingTemp({ defaultValue = null, items }) {
   return (
     // wrapper
-    <div>
+    <div className="w-full">
       {/* search/filter here */}
       {/* list */}
       <div>
@@ -186,30 +189,19 @@ async function Listing({ revalidate, segmentInfo }) {
   // const { seoDescription } = getPageData(data?.page?.properties) || ''
 
   return (
-    <>
-      <Grid>
-        <HeadlineColumnA>
-          <HeadlineTitle aria-label={title} as="h1">
-            <>{title}</>
-          </HeadlineTitle>
-        </HeadlineColumnA>
-        <HeadlineContent>
-          <Callout size="1" variant="outline" />
-          {/* <Blocks data={data?.blocks} /> */}
-          {hasData && <Events data={eventsData} />}
-        </HeadlineContent>
-      </Grid>
-      <Grid>
-        <HeadlineColumnA>
-          <HeadlineTitle aria-label={title} as="h2">
-            <>Select Past Events</>
-          </HeadlineTitle>
-        </HeadlineColumnA>
-        <HeadlineContent className="">
-          {hasData && <EventsPast data={eventsData} />}
-        </HeadlineContent>
-      </Grid>
-    </>
+    <ContainerWithSidebar>
+      <HeaderSidebar hasBorder={false} title={title} />
+      <ArticleMain>
+        <Callout size="1" variant="outline" />
+        {/* <Blocks data={data?.blocks} /> */}
+        {hasData && <Events data={eventsData} />}
+
+        <HeadlineTitle aria-label={title} as="h2">
+          <>Select Past Events</>
+        </HeadlineTitle>
+        {hasData && <EventsPast data={eventsData} />}
+      </ArticleMain>
+    </ContainerWithSidebar>
   )
 }
 

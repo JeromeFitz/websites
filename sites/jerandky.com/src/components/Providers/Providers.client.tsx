@@ -54,7 +54,7 @@ function Providers({ children }) {
         attribute="class"
         defaultTheme="system"
         disableTransitionOnChange={false}
-        enableSystem
+        enableSystem={true}
         value={{ dark: 'dark', light: 'light' }}
       >
         <RouterEventProvider />

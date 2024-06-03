@@ -11,11 +11,10 @@ import { draftMode } from 'next/headers.js'
 
 import { CONFIG, getPageData } from '@/app/(notion)/_config/index'
 import { generateMetadataCustom } from '@/app/(notion)/_config/temp/generateMetadataCustom'
-import { Layout } from '@/components/Layout/index'
 
 import { MusicClient } from './_components/Music.client'
 
-const slug = '/music'
+const slug = '/currently/listening-to'
 const { SEGMENT } = CONFIG.MUSIC
 
 export async function generateMetadata({ ...props }): Promise<Metadata> {
@@ -43,7 +42,11 @@ export async function generateMetadata({ ...props }): Promise<Metadata> {
   const pageData = getPageData(data?.page?.properties) || ''
   const seo = await generateMetadataCustom({ data, pageData, segmentInfo })
 
-  return pageData?.isPublished ? seo : is404Seo
+  const title = 'Listening To… | Jerome Fitzgerald (he/him)'
+
+  return pageData?.isPublished
+    ? { ...seo, openGraph: { ...seo.openGraph, title }, title }
+    : is404Seo
 }
 
 async function Slug({ revalidate, segmentInfo }) {
@@ -69,15 +72,7 @@ export default function Page(props) {
   const segmentInfo = getSegmentInfo({ SEGMENT, ...props })
 
   // if (segmentInfo.isIndex) {
-  //   return (
-  //     <Layout>
-  //       <Listing srevalidate={revalidate} segmentInfo={segmentInfo} />
-  //     </Layout>
-  //   )
+  //   return <Listing srevalidate={revalidate} segmentInfo={segmentInfo} />
   // }
-  return (
-    <Layout>
-      <Slug revalidate={revalidate} segmentInfo={segmentInfo} />
-    </Layout>
-  )
+  return <Slug revalidate={revalidate} segmentInfo={segmentInfo} />
 }

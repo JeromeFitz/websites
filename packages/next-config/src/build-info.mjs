@@ -31,6 +31,8 @@ function getBranch(branch) {
 /**
  * @todo(dynamic) owner/repo from package.json
  */
+// @todo(complexity) 15
+// eslint-disable-next-line complexity
 async function setupBuildInfo({ buildInfoConfig, pathDirName }) {
   /**
    * @todo(dynamic) determine path for multi-site

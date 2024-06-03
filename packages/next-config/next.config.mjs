@@ -75,6 +75,7 @@ const config = ({
   basePath,
   buildInfoConfig,
   pathDirName,
+  redirects = [],
   serverComponentsExternalPackages = [],
   transpilePackages = [],
 }) => {
@@ -178,6 +179,10 @@ const config = ({
           hostname: `cdn.jeromefitzgerald.com`,
           protocol,
         },
+        {
+          hostname: `nice-fonts.s3.amazonaws.com`,
+          protocol,
+        },
         // @note(remotePattern) AWS
         {
           hostname: `**.amazonws.com`,
@@ -256,7 +261,9 @@ const config = ({
     // @todo(react) https://nextjs.org/docs/api-reference/next.config.js/react-strict-mode
     // reactStrictMode: true,
     // @note(next) redirect an incoming request path to a different destination path
-    // redirects,
+    async redirects() {
+      return redirects
+    },
     // @note(next) map an incoming request path to a different destination path
     async rewrites() {
       /**

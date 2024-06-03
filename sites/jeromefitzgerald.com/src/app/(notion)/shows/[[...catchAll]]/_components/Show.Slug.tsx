@@ -1,29 +1,26 @@
 import { getDataFromCache } from '@jeromefitz/shared/notion/utils/index'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
-import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
-import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
-import { Separator } from '@radix-ui/themes/dist/esm/components/separator.js'
 import { draftMode } from 'next/headers.js'
 import { notFound } from 'next/navigation.js'
 
 import type { PropertiesShow } from '@/app/(notion)/_config/index'
+// import type { SectionType } from '@/app/(notion)/about/_components/Section'
 
 import {
   CONFIG,
   getPropertyTypeDataShow,
   getShowData,
 } from '@/app/(notion)/_config/index'
-import { Grid } from '@/components/Grid/index'
-import {
-  HeadlineColumnA,
-  HeadlineContent,
-  HeadlineTitle,
-  HeadlineTitleSub,
-} from '@/components/Headline/index'
+// import { Section } from '@/app/(notion)/about/_components/Section'
+import { ArticleMain } from '@/app/playground/2024/_components/Article.Main'
+import { ArticleMainCTA } from '@/app/playground/2024/_components/Article.Main.CTA'
+import { ContainerWithSidebar } from '@/app/playground/2024/_components/Container.Main'
+import { Credits } from '@/app/playground/2024/_components/Credits'
+import { HeaderSidebar } from '@/app/playground/2024/_components/Header.Sidebar'
 import { Notion as Blocks } from '@/components/Notion/index'
-import { Relations } from '@/components/Relations/index'
 
+import { ShowSlugHeaderData } from './Show.Slug.Header.Data'
 // import { UpcomingShows } from './Show.UpcomingShows'
 
 const { DATABASE_ID } = CONFIG.SHOWS
@@ -59,7 +56,7 @@ async function Slug({ revalidate, segmentInfo }) {
   if (is404) return notFound()
 
   const { properties }: { properties: PropertiesShow } = data?.page
-  const { id, isPublished, tags, title } = getShowData(properties)
+  const { id, isPublished, title } = getShowData(properties)
 
   if (!isPublished) return notFound()
 
@@ -75,38 +72,34 @@ async function Slug({ revalidate, segmentInfo }) {
     })
   })
 
+  // const sections: SectionType[] = [
+  //   {
+  //     content: null,
+  //     icon: null,
+  //     id: 'test',
+  //     title: 'Lore',
+  //   },
+  //   {
+  //     content: <Credits id={id} key={`relations--${id}--wrapper`} relations={R} />,
+  //     icon: null,
+  //     id: 'credits',
+  //     title: 'Credits',
+  //   },
+  // ]
+
   return (
     <>
-      <Grid>
-        <HeadlineColumnA>
-          <HeadlineTitle aria-label={title} as="h1">
-            <>{title}</>
-          </HeadlineTitle>
-          <HeadlineTitleSub>
-            {tags.map(({ color, id, name }) => (
-              <Badge className="lowercase" color={color} key={id} size="2">
-                <Code variant="ghost">{name}</Code>
-              </Badge>
-            ))}
-          </HeadlineTitleSub>
-        </HeadlineColumnA>
-        <HeadlineContent>
-          <>
-            <Blocks data={data?.blocks} />
-          </>
-        </HeadlineContent>
-      </Grid>
-      <Grid>
-        <HeadlineColumnA>
-          <HeadlineTitle aria-label={title} as="h2">
-            <>Info</>
-          </HeadlineTitle>
-        </HeadlineColumnA>
-        <HeadlineContent className="">
-          <Separator size="4" />
-          <Relations id={id} relations={R} />
-        </HeadlineContent>
-      </Grid>
+      <ContainerWithSidebar>
+        <HeaderSidebar title={title}>
+          <ShowSlugHeaderData properties={properties} />
+        </HeaderSidebar>
+        <ArticleMain>
+          <Blocks data={data?.blocks} />
+          <Credits id={id} key={`relations--${id}--wrapper`} relations={R} />
+          <ArticleMainCTA href="/shows" type="shows" />
+        </ArticleMain>
+      </ContainerWithSidebar>
+      {/* <Section sections={sections} /> */}
     </>
   )
 }
