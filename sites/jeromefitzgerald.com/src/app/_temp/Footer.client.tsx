@@ -51,7 +51,7 @@ function FooterClient() {
       <Grid
         as="div"
         className={cx(
-          'top-0 z-10 mx-auto w-full ',
+          'top-0 z-10 mx-auto w-full',
           'col-span-full',
           'bg-white dark:bg-black',
           '',
@@ -96,7 +96,7 @@ function FooterClient() {
         >
           <Flex
             align={{ initial: 'center', md: 'end' }}
-            className="col-span-full  md:col-span-5"
+            className="col-span-full md:col-span-5"
             gap="2"
             justify="start"
           >

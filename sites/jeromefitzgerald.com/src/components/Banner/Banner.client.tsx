@@ -215,7 +215,7 @@ function BannerClient() {
               <TabsTrigger
                 aria-label={banner}
                 className={cx(
-                  'group hover:cursor-pointer ',
+                  'group hover:cursor-pointer',
                   'before:h-0.5',
                   `before:bg-transparent`,
                   'transition-all',

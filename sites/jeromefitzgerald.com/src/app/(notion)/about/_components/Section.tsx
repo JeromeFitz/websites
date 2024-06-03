@@ -39,7 +39,7 @@ function SectionLegend({ data }) {
         return (
           <NextLink
             className={cx(
-              ' hocus:bg-accent-4 group relative flex size-full flex-row flex-nowrap items-center justify-start gap-4 overflow-visible p-5 no-underline',
+              'hocus:bg-accent-4 group relative flex size-full flex-row flex-nowrap items-center justify-start gap-4 overflow-visible p-5 no-underline',
               'border-t-1 border-gray-7 first-of-type:border-t-0',
               '',
             )}
