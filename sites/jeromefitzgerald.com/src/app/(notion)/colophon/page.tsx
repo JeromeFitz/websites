@@ -12,13 +12,10 @@ import { draftMode } from 'next/headers.js'
 
 import { CONFIG, getPageData } from '@/app/(notion)/_config/index'
 import { generateMetadataCustom } from '@/app/(notion)/_config/temp/generateMetadataCustom'
-import { Grid } from '@/components/Grid/index'
-import {
-  HeadlineColumnA,
-  HeadlineContent,
-  HeadlineTitle,
-} from '@/components/Headline/index'
-import { Layout } from '@/components/Layout/index'
+import { ArticleMain } from '@/app/playground/2024/_components/Article.Main'
+// import { ArticleMainCTA } from '@/app/playground/2024/_components/Article.Main.CTA'
+import { ContainerWithSidebar } from '@/app/playground/2024/_components/Container.Main'
+import { HeaderSidebar } from '@/app/playground/2024/_components/Header.Sidebar'
 import { Notion as Blocks } from '@/components/Notion/index'
 
 const slug = '/colophon'
@@ -71,17 +68,13 @@ async function Slug({ revalidate, segmentInfo }) {
   if (isObjectEmpty(data.page)) return null
   // console.dir(data?.blocks)
   return (
-    <Grid>
-      <HeadlineColumnA>
-        <HeadlineTitle aria-label={title} as="h1">
-          <>{title}</>
-        </HeadlineTitle>
-      </HeadlineColumnA>
-      <HeadlineContent>
+    <ContainerWithSidebar>
+      <HeaderSidebar hasBorder={false} title={title} />
+      <ArticleMain>
         <Text size="4">{seoDescription}</Text>
         <Blocks data={data?.blocks} />
-      </HeadlineContent>
-    </Grid>
+      </ArticleMain>
+    </ContainerWithSidebar>
   )
 }
 
@@ -89,9 +82,5 @@ export default function Page(props) {
   const revalidate = props?.revalidate || false
   const segmentInfo = getSegmentInfo({ SEGMENT, ...props, revalidate })
 
-  return (
-    <Layout>
-      <Slug revalidate={revalidate} segmentInfo={segmentInfo} />
-    </Layout>
-  )
+  return <Slug revalidate={revalidate} segmentInfo={segmentInfo} />
 }

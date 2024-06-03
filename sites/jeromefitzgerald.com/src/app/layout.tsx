@@ -1,69 +1,24 @@
+import { SkipNavContent, SkipNavLink } from '@jeromefitz/ds/components/SkipNav'
 import { cx } from '@jeromefitz/ds/utils/cx'
 import { Analytics } from '@jeromefitz/shared/components/Analytics/Analytics'
 
 import { Theme } from '@radix-ui/themes/dist/esm/components/theme.js'
-import { GeistMono as fontGeistMono } from 'geist/font/mono'
-import { GeistSans as fontGeistSans } from 'geist/font/sans'
 import { Viewport } from 'next'
-// import localFont from 'next/font/local'
 
-import { Banner } from '@/components/Banner/Banner'
-import { Navigation } from '@/components/Navigation/index'
+import { ContainerFooter } from '@/app/playground/2024/_components/Container.Footer'
+import { ContainerGradient } from '@/app/playground/2024/_components/Container.Gradient'
+import { ContainerContent } from '@/app/playground/2024/_components/Container.Main'
+import { ContainerNavigation } from '@/app/playground/2024/_components/Container.Navigation'
+import { ContainerSite } from '@/app/playground/2024/_components/Container.Site'
+import { Overlay } from '@/app/playground/2024/_components/Overlay'
 import { Providers } from '@/components/Providers/index'
-import { Wrapper } from '@/components/Wrapper/index'
-// import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
+
+import { fonts } from './_next/fonts'
+import { PreloadResources } from './_next/preload-resources'
 
 import '@radix-ui/themes/styles.css'
 
 import '@jeromefitz/tailwind-config/styles/globals.css'
-
-import { PreloadResources } from './_next/preload-resources'
-
-// const fontInter = { variable: '' }
-// const fontInter = localFont({
-//   declarations: [
-//     {
-//       prop: 'unicode-range',
-//       value:
-//         'U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD',
-//     },
-//   ],
-//   display: 'swap',
-//   src: '../../public/fonts/inter/inter-4.0.0-beta9g-var.woff2',
-//   style: 'normal',
-//   variable: '--font-inter',
-//   weight: '100 900',
-// })
-
-// const fontGeistMono = localFont({
-//   declarations: [
-//     {
-//       prop: 'unicode-range',
-//       value:
-//         'U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD',
-//     },
-//   ],
-//   display: 'swap',
-//   src: '../../public/fonts/geist/GeistMonoVF--1.0.0.woff2',
-//   style: 'normal',
-//   variable: '--font-geist-mono',
-//   weight: '100 900',
-// })
-
-// const fontGeistSans = localFont({
-//   declarations: [
-//     {
-//       prop: 'unicode-range',
-//       value:
-//         'U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD',
-//     },
-//   ],
-//   display: 'swap',
-//   src: '../../public/fonts/geist/GeistVF--1.0.0.woff2',
-//   style: 'normal',
-//   variable: '--font-geist-sans',
-//   weight: '100 900',
-// })
 
 // export const metadata = {
 //   metadataBase: new URL(`https://${env.NEXT_PUBLIC__SITE}`),
@@ -82,19 +37,8 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html
-      // className={cx(fontInter.variable, GeistSans.variable, GeistMono.variable)}
-      className={cx(
-        // fontInter.variable,
-        fontGeistMono.variable,
-        fontGeistSans.variable,
-        '',
-      )}
-      lang="en"
-      suppressHydrationWarning={true}
-    >
+    <html className={fonts} lang="en" suppressHydrationWarning={true}>
       <PreloadResources />
-
       <Theme
         accentColor="pink"
         asChild
@@ -108,22 +52,23 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             'overflow-y-auto overflow-x-hidden md:overflow-y-auto',
             'selection:bg-gray-12 selection:text-gray-1',
             'bg-white dark:bg-black',
-            'font-sans antialiased',
-            '',
+            'scroll-smooth font-sans antialiased',
+            // @hack(radix-ui) dropdown cause mr-45...
+            '!m-0',
           )}
         >
+          <SkipNavLink />
           <Providers>
             <Analytics />
-            <Wrapper
-              as="header"
-              className={cx('sticky top-0 !z-30 mx-auto w-full ')}
-            >
-              <Navigation />
-            </Wrapper>
-            <Wrapper className="">
-              <Banner />
-            </Wrapper>
-            {children}
+            <ContainerGradient />
+            <ContainerSite>
+              <ContainerNavigation />
+              <SkipNavContent>
+                <ContainerContent>{children}</ContainerContent>
+              </SkipNavContent>
+              <ContainerFooter />
+            </ContainerSite>
+            <Overlay />
           </Providers>
         </body>
       </Theme>

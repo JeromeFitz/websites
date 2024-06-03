@@ -8,7 +8,7 @@ const ContentSecurityPolicy = `
   object-src 'self' * blob: data:;
   media-src 'none';
   connect-src * vitals.vercel-insights.com;
-  font-src 'self' data:;
+  font-src 'self' * nice-fonts-apn-all-874455631470.s3-accesspoint.us-east-1.amazonaws.com nice-fonts.s3.amazonaws.com fonts.jeromefitzgerald.com data:;
 `
 
 const securityHeaders = [

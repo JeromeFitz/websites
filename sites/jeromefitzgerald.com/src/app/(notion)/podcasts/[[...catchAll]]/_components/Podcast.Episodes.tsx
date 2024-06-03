@@ -1,24 +1,21 @@
 import { Anchor } from '@jeromefitz/ds/components/Anchor/index'
-import { cx } from '@jeromefitz/ds/utils/cx'
 
 import { getPodcastData } from '@/app/(notion)/_config/index'
-import { blocks } from '@/components/Notion/Notion.Config'
+import { LI, UL } from '@/components/List/index'
 
 function PodcastEpisodes({ properties }) {
   const { episodeSlugs, episodeTitles, ...props } = getPodcastData(properties)
   return (
-    <>
-      <ul className={cx(blocks['bulleted_list'].className)}>
-        {episodeSlugs.map((slug, i) => {
-          const href = `${props.href}/${slug}`
-          return (
-            <li className={cx(blocks['bulleted_list_item'].className)} key={slug}>
-              <Anchor href={href}>{episodeTitles[i]}</Anchor>
-            </li>
-          )
-        })}
-      </ul>
-    </>
+    <UL>
+      {episodeSlugs.map((slug, i) => {
+        const href = `${props.href}/${slug}`
+        return (
+          <LI key={slug}>
+            <Anchor href={href}>{episodeTitles[i]}</Anchor>
+          </LI>
+        )
+      })}
+    </UL>
   )
 }
 

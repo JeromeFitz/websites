@@ -1,6 +1,7 @@
 import {
   BlueskyLogoIcon,
   ExternalLinkIcon,
+  FileTextIcon,
   GitHubLogoIcon,
   InstagramLogoIcon,
   LinkedInLogoIcon,
@@ -85,6 +86,19 @@ const socials = [
     tooltipDescription: 'Truly unhinged.',
     type: URL_TYPE.EXTERNAL,
     url: 'https://www.linkedin.com/in/jeromefitzgerald',
+  },
+  {
+    active: true,
+    className: 'hover:bg-twitter',
+    icon: <FileTextIcon className="text-inherit" />,
+    id: 'x',
+    keywords: 'social twitter x',
+    rightSlot: <ExternalLinkIcon />,
+    subtitle: '@JeromeFitz',
+    title: 'X',
+    tooltipDescription: 'Who uses this?',
+    type: URL_TYPE.EXTERNAL,
+    url: 'https://read.cv/jeromefitzgerald',
   },
   {
     active: true,

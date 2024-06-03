@@ -6,17 +6,9 @@ import {
 } from '@jeromefitz/ds/components/Icon/index'
 import { cx } from '@jeromefitz/ds/utils/cx'
 
-/**
- * @todo(radix-ui) issue w/ flex.props.js init order
- *
- * ref: https://github.com/JeromeFitz/websites/pull/2341
- */
-import { Flex } from '@radix-ui/themes'
-// import { Avatar } from '@radix-ui/themes/dist/esm/components/avatar.js'
 import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
-// import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
-// import { Grid as GridRadix } from '@radix-ui/themes/dist/esm/components/grid.js'
+import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Separator } from '@radix-ui/themes/dist/esm/components/separator.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import dynamic from 'next/dynamic.js'
@@ -26,23 +18,19 @@ import { useEffect, useState } from 'react'
 import { Grid } from '@/components/Grid/index'
 import { socials } from '@/data/socials'
 
-// import { FooterCmdkClient } from './Footer.Cmdk.client'
-// import { FooterThemeClient } from './Footer.Theme.client'
-// import { FooterVersionClient } from './Footer.Version.client'
-
 const FooterCmdkClient = dynamic(
   async () => {
     const { FooterCmdkClient: Component } = await import('./Footer.Cmdk.client')
     return { default: Component }
   },
-  { ssr: true },
+  { ssr: false },
 )
 const FooterThemeClient = dynamic(
   async () => {
     const { FooterThemeClient: Component } = await import('./Footer.Theme.client')
     return { default: Component }
   },
-  { ssr: true },
+  { ssr: false },
 )
 const FooterVersionClient = dynamic(
   async () => {
@@ -51,7 +39,7 @@ const FooterVersionClient = dynamic(
     )
     return { default: Component }
   },
-  { ssr: true },
+  { ssr: false },
 )
 
 function FooterClient() {
@@ -112,13 +100,6 @@ function FooterClient() {
             gap="2"
             justify="start"
           >
-            {/* <Avatar
-              fallback="J"
-              radius="full"
-              // @ts-ignore
-              src="/images/favicon/apple-touch-icon.png"
-              variant="soft"
-            /> */}
             <Flex
               direction={{ initial: 'column', md: 'column' }}
               gap={{ initial: '6', md: '4' }}

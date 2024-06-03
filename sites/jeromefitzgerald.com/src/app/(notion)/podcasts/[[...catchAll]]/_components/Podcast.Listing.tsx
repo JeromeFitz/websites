@@ -17,14 +17,12 @@ import { getPropertyTypeData } from 'next-notion/utils/index'
 
 // import { CONFIG, getPageData, getPodcastData } from '@/app/(notion)/_config/index'
 import { CONFIG, getPodcastData } from '@/app/(notion)/_config/index'
-import { Grid } from '@/components/Grid/index'
-import {
-  HeadlineColumnA,
-  HeadlineContent,
-  HeadlineTitle,
-} from '@/components/Headline/index'
+import { ArticleMain } from '@/app/playground/2024/_components/Article.Main'
+import { ContainerWithSidebar } from '@/app/playground/2024/_components/Container.Main'
+import { HeaderSidebar } from '@/app/playground/2024/_components/Header.Sidebar'
 // import { Notion as Blocks } from '@/components/Notion/index'
 // import type { PageObjectResponsePodcast } from '@/app/(notion)/_config/index'
+import { LI, UL } from '@/components/List/index'
 
 const { DATABASE_ID } = CONFIG.PODCASTS
 
@@ -48,18 +46,18 @@ function ListingTemp({ data }) {
   // console.dir(podcasts)
 
   return (
-    <ul>
+    <UL>
       {podcasts.map((podcast) => {
         if (!podcast?.isPublished) return null
         return (
           <Box asChild key={`podcasts-podcast-${podcast?.id}`} my="1" py="1">
-            <li>
+            <LI>
               <Anchor href={podcast?.href}> {podcast?.title}</Anchor>
-            </li>
+            </LI>
           </Box>
         )
       })}
-    </ul>
+    </UL>
   )
 }
 
@@ -113,19 +111,15 @@ async function Listing({ revalidate, segmentInfo }) {
 
   return (
     <>
-      <Grid>
-        <HeadlineColumnA>
-          <HeadlineTitle aria-label={title} as="h1">
-            <>{title}</>
-          </HeadlineTitle>
-        </HeadlineColumnA>
-        <HeadlineContent>
+      <ContainerWithSidebar>
+        <HeaderSidebar hasBorder={false} title={title} />
+        <ArticleMain>
           {/* <Blocks data={data?.blocks} /> */}
           {/* <Text size="4">{seoDescription}</Text> */}
           <Callout size="1" variant="outline" />
           {hasContent && <ListingTemp data={podcastData} />}
-        </HeadlineContent>
-      </Grid>
+        </ArticleMain>
+      </ContainerWithSidebar>
     </>
   )
 }

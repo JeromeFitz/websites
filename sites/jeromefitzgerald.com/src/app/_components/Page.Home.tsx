@@ -7,9 +7,11 @@ import { AspectRatio } from '@radix-ui/themes/dist/esm/components/aspect-ratio.j
 import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
 import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
+import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import { forwardRef } from 'react'
 
+import { ArticleMain } from '@/app/playground/2024/_components/Article.Main'
 import { Grid } from '@/components/Grid/index'
 import {
   HeadlineColumnA,
@@ -17,6 +19,7 @@ import {
   HeadlineTitle,
   HeadlineTitleSub,
 } from '@/components/Headline/index'
+import { LI, UL } from '@/components/List/index'
 import { Quote } from '@/components/Quote/index'
 import { quotes } from '@/data/quotes'
 
@@ -46,7 +49,10 @@ const cities = [
   '& “more”',
 ]
 
-const PageHome = forwardRef(function PageHome(props, forwardedRef) {
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const PageHomeOld = forwardRef(function PageHome(props, forwardedRef) {
   const title = 'Jerome Fitzgerald'
   return (
     <Grid ref={forwardedRef}>
@@ -109,13 +115,13 @@ const PageHome = forwardRef(function PageHome(props, forwardedRef) {
           </Box>
           <Text size="6">Hailing from Pittsburgh, my shows have featured in:</Text>
           <Box asChild mb="4" pb="2" width="100%">
-            <ul className="list-inside list-disc">
+            <UL>
               {cities.map((city, i) => (
                 <Text asChild key={`city-${i}`} size="5">
-                  <li>{city}</li>
+                  <LI>{city}</LI>
                 </Text>
               ))}
-            </ul>
+            </UL>
           </Box>
           <Text size="6">Here are some nice quotes from nice people:</Text>
           {quotes.map((quote, i) => {
@@ -126,5 +132,20 @@ const PageHome = forwardRef(function PageHome(props, forwardedRef) {
     </Grid>
   )
 })
+
+function PageHome() {
+  return (
+    <>
+      <ArticleMain>
+        <Heading as="h1" className="absolute left-[-999px] top-[-999px] block">
+          Jerome Fitzgerald (he/him)
+        </Heading>
+        <Heading as="h2" className="absolute left-[-999px] top-[-999px] block">
+          Actor. Comedian. Human.
+        </Heading>
+      </ArticleMain>
+    </>
+  )
+}
 
 export { PageHome }

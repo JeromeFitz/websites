@@ -1,26 +1,21 @@
 import { Anchor } from '@jeromefitz/ds/components/Anchor/index'
-import { Callout } from '@jeromefitz/ds/components/Callout/index'
+// import { Callout } from '@jeromefitz/ds/components/Callout/index'
 import {
   CalendarIcon,
   ClockIcon,
   HomeIcon,
   TicketIcon,
 } from '@jeromefitz/ds/components/Icon/index'
+// import { cx } from '@jeromefitz/ds/utils/cx'
 import { getDataFromCache } from '@jeromefitz/shared/notion/utils/index'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
-/**
- * @todo(radix-ui) issue w/ flex.props.js init order
- *
- * ref: https://github.com/JeromeFitz/websites/pull/2341
- */
-import { Flex } from '@radix-ui/themes'
-import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
+// import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
 import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
 import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
-// import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
-import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
-import { Separator } from '@radix-ui/themes/dist/esm/components/separator.js'
+import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
+// import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
+// import { Separator } from '@radix-ui/themes/dist/esm/components/separator.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import { draftMode } from 'next/headers.js'
 import { notFound } from 'next/navigation.js'
@@ -33,17 +28,16 @@ import {
   getEventData,
   getPropertyTypeDataEvent,
 } from '@/app/(notion)/_config/index'
-import { Grid } from '@/components/Grid/index'
-import {
-  HeadlineColumnA,
-  HeadlineContent,
-  HeadlineTitle,
-  HeadlineTitleSub,
-  HeadlineTitleText,
-} from '@/components/Headline/index'
+import { ArticleMain } from '@/app/playground/2024/_components/Article.Main'
+import { ArticleMainCTA } from '@/app/playground/2024/_components/Article.Main.CTA'
+import { ContainerWithSidebar } from '@/app/playground/2024/_components/Container.Main'
+import { Credits } from '@/app/playground/2024/_components/Credits'
+import { HeaderSidebar } from '@/app/playground/2024/_components/Header.Sidebar'
+// import { HeaderSidebarCTA } from '@/app/playground/2024/_components/Header.Sidebar.CTA'
 import { Notion as Blocks } from '@/components/Notion/index'
-import { Relations } from '@/components/Relations/index'
+// import { Relations } from '@/components/Relations/index'
 
+import { EventSlugHeaderData } from './Event.Slug.Header.Data'
 import { Venue } from './Event.Slug.Venue'
 import { Image } from './Image'
 
@@ -89,6 +83,9 @@ const RELATIONS_SECONDARY = [
   },
 ]
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function Ticket({ properties }) {
   const {
     // dateIso,
@@ -201,7 +198,7 @@ async function Slug({ revalidate, segmentInfo }) {
   if (is404) return notFound()
 
   const { properties }: { properties: PropertiesEvent } = data?.page
-  const { id, isPublished, tags, title } = getEventData(properties)
+  const { id, isPublished, title } = getEventData(properties)
 
   // console.dir(`isPublished:      ${isPublished ? 'y' : 'n'}`)
 
@@ -248,8 +245,20 @@ async function Slug({ revalidate, segmentInfo }) {
   }
 
   return (
-    <>
-      <Grid>
+    <ContainerWithSidebar>
+      {/* @todo(types) */}
+      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+      {/* @ts-ignore */}
+      <HeaderSidebar title={title}>
+        <EventSlugHeaderData properties={properties} />
+      </HeaderSidebar>
+      <ArticleMain>
+        <Image properties={properties} />
+        <Blocks data={data?.blocks} />
+        <Credits id={id} key={`relations--${id}--wrapper`} relations={R} />
+        <ArticleMainCTA />
+      </ArticleMain>
+      {/* <Grid>
         <HeadlineColumnA>
           <HeadlineTitleText
             aria-hidden={true}
@@ -284,8 +293,8 @@ async function Slug({ revalidate, segmentInfo }) {
           <Separator size="4" />
           <Relations id={id} key={`relations--${id}--wrapper`} relations={R} />
         </HeadlineContent>
-      </Grid>
-    </>
+      </Grid> */}
+    </ContainerWithSidebar>
   )
 }
 

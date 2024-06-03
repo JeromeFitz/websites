@@ -1,4 +1,23 @@
 'use client'
+import {
+  BookOpenIcon,
+  // DesktopIcon,
+  EnvelopeOpenIcon,
+  HomeIcon,
+  IdCardIcon,
+  // InfoCircledIcon,
+  ListBulletIcon,
+  // MagnifyingGlassIcon,
+  MicrophoneIcon,
+  // MoonIcon,
+  MusicalNoteIcon,
+  // Pencil2Icon,
+  Share1Icon,
+  StarIcon,
+  // SunIcon,
+  TicketIcon,
+} from '@jeromefitz/ds/components/Icon/index'
+
 import type { ReactNode } from 'react'
 import type { StoreApi } from 'zustand'
 
@@ -45,6 +64,8 @@ const getDefaultInitialStateStoreMenu = () => ({
   isCmdkOpenSet: () => {},
   isMenuMobileOpen: false,
   isMenuMobileOpenSet: () => {},
+  isOverlay: false,
+  isOverlaySet: () => {},
   isRouteChanging: false,
   isRouteChangingSet: () => {},
   isWidgetOpen: false,
@@ -57,6 +78,337 @@ const getDefaultInitialStateStoreMenu = () => ({
   spotifyTimeRangeSet: () => {},
   spotifyType: 'top-tracks',
   spotifyTypeSet: () => {},
+  // @wip(menu)
+  zzz_menuSecondary: [
+    {
+      hasSubNavigation: true,
+      href: '/currently/listening-to',
+      icon: Share1Icon,
+      id: 'currently',
+      isActive: true,
+      isActiveMobile: true,
+      title: 'Currently…',
+    },
+    {
+      hasSubNavigation: true,
+      href: '/events',
+      icon: TicketIcon,
+      id: 'events',
+      isActive: true,
+      isActiveMobile: true,
+      title: 'Events',
+    },
+    {
+      hasSubNavigation: true,
+      href: '/podcasts',
+      icon: MicrophoneIcon,
+      id: 'podcasts',
+      isActive: true,
+      isActiveMobile: true,
+      title: 'Podcasts',
+    },
+    {
+      hasSubNavigation: true,
+      href: '/shows',
+      icon: StarIcon,
+      id: 'shows',
+      isActive: true,
+      isActiveMobile: true,
+      title: 'Shows',
+    },
+    {
+      hasSubNavigation: false,
+      href: null,
+      id: 'sep',
+      isActive: true,
+      isActiveMobile: true,
+      title: 'SEP',
+    },
+    {
+      hasSubNavigation: false,
+      href: '/about',
+      icon: IdCardIcon,
+      id: 'about',
+      isActive: false,
+      isActiveMobile: false,
+      title: 'About',
+    },
+    {
+      hasSubNavigation: false,
+      href: '/',
+      icon: HomeIcon,
+      id: 'home',
+      isActive: true,
+      isActiveMobile: true,
+      title: 'Home',
+    },
+    {
+      hasSubNavigation: false,
+      href: '/contact',
+      icon: EnvelopeOpenIcon,
+      id: 'contact',
+      isActive: true,
+      isActiveMobile: true,
+      title: 'Contact',
+    },
+  ],
+  zzz_menuSecondaryActive: { id: 'home', title: 'Home' },
+  zzz_menuTertiary: {
+    currently: [
+      {
+        href: '/currently',
+        icon: null,
+        id: 'all',
+        isActive: false,
+        isActiveMobile: false,
+        title: 'All',
+        titleDescription: null,
+      },
+      {
+        href: '/currently/cooking',
+        icon: null,
+        id: 'cooking',
+        isActive: false,
+        isActiveMobile: false,
+        title: 'Cooking…',
+        titleDescription: 'Currently Cooking… ',
+      },
+      {
+        href: '/currently/listening-to',
+        icon: MusicalNoteIcon,
+        id: 'listening-to',
+        isActive: true,
+        isActiveMobile: true,
+        title: 'Listening to…',
+        titleDescription: 'Currently Listening to… ',
+      },
+      {
+        href: '/currently/reading',
+        icon: BookOpenIcon,
+        id: 'reading',
+        isActive: true,
+        isActiveMobile: true,
+        title: 'Reading…',
+        titleDescription: 'Currently Reading… ',
+      },
+    ],
+    events: [
+      {
+        href: '/events',
+        icon: ListBulletIcon,
+        id: 'all',
+        isActive: true,
+        isActiveMobile: true,
+        title: '… All Events',
+        titleDescription: 'Including recent past events.',
+      },
+      {
+        href: '/events/2024/05/10/the-latchkey-kids',
+        icon: TicketIcon,
+        id: '2024/05/10/the-latchkey-kids',
+        isActive: false,
+        isActiveMobile: false,
+        keywords: ['latchkey', 'kids', 'warp', 'zone'],
+        title: 'Latchkey Kids: SAT 05/10',
+        titleDescription: 'Psst – Warp Zone are special guests. Pass it on.',
+      },
+      {
+        href: '/events/2024/06/06/your-act',
+        icon: TicketIcon,
+        id: '2024/06/06/your-act',
+        isActive: true,
+        isActiveMobile: true,
+        keywords: ['your', 'act', 'nonsense'],
+        title: 'Your ACT: THU 06/06',
+        titleDescription: 'Your ACT with Nonsense',
+      },
+    ],
+    podcasts: [
+      {
+        href: '/podcasts',
+        icon: ListBulletIcon,
+        id: 'all',
+        isActive: true,
+        isActiveMobile: true,
+        title: '… All Podcasts',
+        titleDescription: 'These two he helps host, these he guests or is retired.',
+      },
+      {
+        href: '/podcasts/jer-and-ky-and-guest',
+        icon: MicrophoneIcon,
+        id: '/podcasts/jer-and-ky-and-guest',
+        isActive: true,
+        isActiveMobile: true,
+        keywords: [
+          'jerky',
+          'jer',
+          'ky',
+          'guest',
+          'mailshrimp',
+          'wild',
+          'fuck',
+          'podcast',
+        ],
+        title: 'Jer & Ky & Guest',
+        titleDescription: '...',
+      },
+      {
+        href: '/podcasts/knockoffs',
+        icon: MicrophoneIcon,
+        id: '/podcasts/knockoffs',
+        isActive: true,
+        isActiveMobile: true,
+        keywords: ['knockoffs', 'alex', 'ky', 'podcast'],
+        title: 'Knockoffs',
+        titleDescription: '...',
+      },
+    ],
+    shows: [
+      {
+        href: '/shows',
+        icon: ListBulletIcon,
+        id: 'all',
+        isActive: true,
+        isActiveMobile: false,
+        keywords: ['all', 'shows'],
+        title: '… All Shows',
+        titleDescription: 'If you can believe, there are more.',
+      },
+      {
+        href: '/shows/alex-o-jerome',
+        icon: StarIcon,
+        id: 'alex-o-jerome',
+        isActive: true,
+        isActiveMobile: true,
+        keywords: ['alex', 'jerome', 'aoj'],
+        title: 'Alex O’Jerome',
+        titleDescription: 'Chicago to Pittsburgh Connection. Dem Vomit Twinz.',
+      },
+      {
+        href: '/shows/boo-humbag',
+        icon: StarIcon,
+        id: 'boo-humbag',
+        isActive: true,
+        isActiveMobile: true,
+        keywords: ['boo', 'humbag', 'musical'],
+        title: 'Boo Humbag: The Musical',
+        titleDescription:
+          'The most celebrated morality tale of all-time was transformed by into a hilarious send-up complete with original song and dance numbers. Gold, Toe Nails, & A Christmas Miracle',
+      },
+      {
+        href: '/shows/bubble-boy-the-musical',
+        icon: StarIcon,
+        id: 'bubble-boy-the-musical',
+        isActive: true,
+        isActiveMobile: true,
+        keywords: ['bubble', 'boy', 'musical'],
+        title: 'Bubble Boy: The Musical',
+        titleDescription: 'A musical ahead of its time by Cinco Paul',
+      },
+      {
+        href: '/shows/jer-and-ky',
+        icon: StarIcon,
+        id: '/shows/jer-and-ky',
+        isActive: true,
+        isActiveMobile: true,
+        keywords: ['jer', '&', 'ky', 'mailshrimp'],
+        title: 'The Jer & Ky BoyZ',
+        titleDescription:
+          'Special Comedy Guests, Special Musical Guests, Special Overall Hi-Jinks',
+      },
+      {
+        href: '/shows/jerome-and',
+        icon: StarIcon,
+        id: '/shows/jerome-and',
+        isActive: true,
+        isActiveMobile: true,
+        keywords: ['jerome', '&', 'and'],
+        title: 'Jerome &',
+        titleDescription:
+          'Special Comedy Guests, Special Musical Guests, Special Overall Hi-Jinks',
+      },
+      {
+        href: '/shows/jfle',
+        icon: StarIcon,
+        id: '/shows/jfle',
+        isActive: true,
+        isActiveMobile: true,
+        keywords: ['jfle', 'jesse', 'jerome'],
+        title: 'JFLE (Jerome & Jesse LE)',
+        titleDescription: 'Delightful absurdity with dark whimsy and musical skill',
+      },
+      {
+        href: '/shows/jfle-take-broadway',
+        icon: StarIcon,
+        id: '/shows/jfle-take-broadway',
+        isActive: true,
+        isActiveMobile: true,
+        keywords: ['jfle', 'jesse', 'jerome', 'broadway'],
+        title: 'JFLE: Take Broadway',
+        titleDescription:
+          'Cats become Lion Kings in this send up of past, current, & future Broadway',
+      },
+      {
+        href: '/shows/jfle-grand-finale',
+        icon: StarIcon,
+        id: '/shows/jfle-grand-finale',
+        isActive: false,
+        isActiveMobile: false,
+        keywords: ['jfle', 'jesse', 'jerome', 'grand', 'finale'],
+        title: 'JFLE: Grand Finale',
+        titleDescription:
+          'The two night sell out extravangza with special guests P-Si & G-Funk (Paul Simon & Art Garfunkel)',
+      },
+      {
+        href: '/shows/justin-and-jerome-experience',
+        icon: StarIcon,
+        id: '/shows/justin-and-jerome-experience',
+        isActive: true,
+        isActiveMobile: true,
+        keywords: ['jje', 'justin', 'jerome', 'experience'],
+        title: 'Justin & Jerome Experience',
+        titleDescription: 'Acclaimed improv and heralded sketch (on-and-off stage)',
+      },
+      {
+        href: '/shows/my-dinner-with-andre-the-musical',
+        icon: StarIcon,
+        id: '/shows/my-dinner-with-andre-the-musical',
+        isActive: true,
+        isActiveMobile: true,
+        keywords: ['jje', 'justin', 'jerome', 'experience', 'andre', 'dinner'],
+        title: 'My Dinner With André: The Musical',
+        titleDescription:
+          'The cult classic gets the Justin & Jerome Experience treatment.',
+      },
+      {
+        href: '/shows/the-death-show',
+        icon: StarIcon,
+        id: '/shows/the-death-show',
+        isActive: true,
+        isActiveMobile: true,
+        keywords: ['death', 'show'],
+        title: 'The Death Show',
+        titleDescription:
+          'The longest running death themed improv show in Pittsburgh.',
+      },
+      {
+        href: '/shows/warp-zone',
+        icon: StarIcon,
+        id: '/shows/warp-zone',
+        isActive: true,
+        isActiveMobile: true,
+        keywords: ['warp', 'zone'],
+        title: 'Warp Zone',
+        titleDescription: 'Arcade Comedy Theater’s Premier House Team',
+      },
+    ],
+  },
+  zzz_menuTertiaryActive: {
+    id: null,
+    isActive: false,
+    isActiveMobile: true,
+    title: null,
+  },
 })
 
 const initializeStoreMenu = (preloadedState: Partial<any> = {}) => {
@@ -111,6 +463,11 @@ const initializeStoreMenu = (preloadedState: Partial<any> = {}) => {
         isMenuMobileOpen: !get().isMenuMobileOpen,
       })
     },
+    isOverlaySet: () => {
+      set({
+        isOverlay: !get().isOverlay,
+      })
+    },
     isRouteChangingSet: (val: boolean) => {
       set({
         isRouteChanging: val,
@@ -124,6 +481,25 @@ const initializeStoreMenu = (preloadedState: Partial<any> = {}) => {
     spotifyTypeSet: (type) => {
       set({
         spotifyType: type,
+      })
+    },
+    zzz_menuSecondaryActiveSet: (item) => {
+      const hasTertiary = !!get().zzz_menuTertiary[item.id]
+      const menuTertiaryItemsActive = get().zzz_menuTertiary[item.id]?.filter(
+        (i: { isActive: boolean; isActiveMobile: boolean }) =>
+          i.isActive || i.isActiveMobile,
+      )
+
+      set({
+        zzz_menuSecondaryActive: item,
+        zzz_menuTertiaryActive: hasTertiary
+          ? menuTertiaryItemsActive[0]
+          : { icon: null, id: null, isActive: false, title: null },
+      })
+    },
+    zzz_menuTertiaryActiveSet: (item) => {
+      set({
+        zzz_menuTertiaryActive: item,
       })
     },
   }))

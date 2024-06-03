@@ -8,6 +8,7 @@ const siteUrl = 'https://jeromefitzgerald.com'
 const lastModified = new Date()
 
 const root = ['']
+const currently = ['listening-to', 'reading']
 const events = [
   '2023/06/01/your-act',
   '2023/06/10/the-playlist',
@@ -42,15 +43,17 @@ const events = [
   '2024/03/22/sketch-madness',
   '2024/03/23/sketch-madness',
   '2024/04/13/arcade-hootenanny',
-  '2024/05/18/the-playlist',
+  '2024/05/10/the-latchkey-kids',
+  // '2024/05/18/the-playlist',
+  '2024/06/15/the-playlist',
 ]
 const pages = [
   'about',
-  'books',
+  // 'books',
   'colophon',
   'contact',
   'events',
-  'music',
+  // 'music',
   'podcasts',
   'shows',
 ]
@@ -74,6 +77,10 @@ const shows = [
 const sitemapRoot = root.map((slug) => ({
   lastModified,
   url: `${siteUrl}`,
+}))
+const sitemapCurrently = currently.map((slug) => ({
+  lastModified,
+  url: `${siteUrl}/currently/${slug}`,
 }))
 const sitemapEvents = events.map((slug) => ({
   lastModified,
@@ -100,6 +107,7 @@ function sitemap(): MetadataRoute.Sitemap {
       //   lastModified: new Date(),
       // },
       ...sitemapRoot,
+      ...sitemapCurrently,
       ...sitemapEvents,
       ...sitemapPages,
       ...sitemapPodcasts,
