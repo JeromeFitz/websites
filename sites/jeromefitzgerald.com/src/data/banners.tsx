@@ -27,7 +27,7 @@ const banners = {
       desktop: 'FRH Golden x DayDreamzs – The Game is The Game',
       mobile: 'FRH Golden x DayDreamzs – The Game is The Game',
     },
-    href: '/music',
+    href: '/currently/listening-to',
     icon: <MusicalNoteIcon />,
   },
   [BANNERS.READING]: {
@@ -44,7 +44,7 @@ const banners = {
         'Robert A. Caro – “The Power Broker: Robert Moses and the Fall of New York”',
       mobile: 'Robert A. Caro – “The Power Broker”',
     },
-    href: '/books',
+    href: '/currently/reading',
     icon: <BookOpenIcon />,
   },
   [BANNERS.UPCOMING]: {

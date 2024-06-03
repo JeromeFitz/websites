@@ -34,7 +34,7 @@ const custom = {
   // },
   image: {
     as: 'img',
-    className: '',
+    className: 'rounded-3',
     // component: lazy(() => import('@jeromefitz/shared/components/Notion/Blocks/Image')),
     component: Image,
   },
@@ -58,14 +58,15 @@ const custom = {
 
 const blocks = {
   bulleted_list: {
-    className: 'my-2 flex list-inside list-disc flex-col py-2 font-sans text-base',
+    className:
+      'my-2 flex list-inside list-disc flex-col py-2 font-sans text-base text-5 md:text-5',
   },
   bulleted_list_item: {
     className: 'mb-3 leading-tight',
   },
   callout: {
     className:
-      'border-l-gray-11 bg-grayA-5 m-4 rounded border-l-8 p-14 text-xl md:text-3xl 2xl:max-w-7xl',
+      'border-l-gray-11 bg-grayA-5 m-4 rounded border-l-8 p-14 text-5 md:text-6 2xl:max-w-7xl',
   },
   column: {
     className: 'my-3 flex flex-[1_1] flex-col md:my-3 md:pr-5 ',
@@ -78,15 +79,15 @@ const blocks = {
   },
   heading_1: {
     as: 'h2',
-    className: 'mb-4 text-3xl font-black md:mb-5 md:text-4xl font-sans',
+    className: 'mb-4 text-8 font-medium md:mb-5 md:text-7 font-sans',
   },
   heading_2: {
     as: 'h3',
-    className: 'mb-3 text-2xl font-black md:mb-4 md:text-3xl font-sans',
+    className: 'mb-3 text-7 font-medium md:mb-4 md:text-6 font-sans',
   },
   heading_3: {
     as: 'h3',
-    className: 'mb-2 text-xl font-black md:mb-3 md:text-2xl font-sans',
+    className: 'mb-2 text-6 font-medium md:mb-3 md:text-6 font-sans',
   },
   numbered_list: {
     className:
@@ -97,11 +98,11 @@ const blocks = {
   },
   paragraph: {
     className:
-      'mb-4 text-lg font-normal leading-normal break-words font-sans 2xl:max-w-7xl',
+      'mb-4 text-5 font-normal leading-normal break-words font-sans 2xl:max-w-7xl',
   },
   quote: {
     className:
-      'border-l-accent-11 bg-accent-5 m-4 rounded border-l-8 p-6 text-xl md:p-14 md:text-3xl font-sans 2xl:max-w-7xl',
+      'border-l-accent-11 bg-accent-5 m-4 rounded border-l-8 p-6 text-5 md:p-14 md:text-6 font-sans 2xl:max-w-7xl md:m-0',
   },
   ...custom,
 }

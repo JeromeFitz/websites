@@ -1,4 +1,5 @@
 type As =
+  | 'article'
   | 'div'
   | 'footer'
   | 'h1'

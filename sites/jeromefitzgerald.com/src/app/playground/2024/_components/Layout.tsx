@@ -7,7 +7,7 @@ import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
 import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
 import { Skeleton } from '@radix-ui/themes/dist/esm/components/skeleton.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
-import React, { forwardRef } from 'react'
+import { forwardRef, useEffect, useRef, useState } from 'react'
 
 import { Grid } from '@/components/Grid/index'
 import {
@@ -18,10 +18,10 @@ import {
 } from '@/components/Headline/index'
 
 const Layout = forwardRef(function Layout(props, forwardedRef) {
-  const [isLoading, setIsLoading] = React.useState(false)
-  const loadingTimeoutRef = React.useRef<ReturnType<typeof setTimeout>>()
+  const [isLoading, setIsLoading] = useState(false)
+  const loadingTimeoutRef = useRef<ReturnType<typeof setTimeout>>()
 
-  React.useEffect(() => {
+  useEffect(() => {
     loadingTimeoutRef.current = setTimeout(() => {
       setIsLoading(false)
     }, 2000)

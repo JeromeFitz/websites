@@ -5,15 +5,9 @@ import { ExternalLinkIcon } from '@jeromefitz/ds/components/Icon/index'
 import { Tags } from '@jeromefitz/ds/components/Section/index'
 import { cx } from '@jeromefitz/ds/utils/cx'
 
-/**
- * @todo(radix-ui) issue w/ flex.props.js init order
- *
- * ref: https://github.com/JeromeFitz/websites/pull/2341
- */
-import { Flex } from '@radix-ui/themes'
 import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
-// import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
+import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 // eslint-disable-next-line no-restricted-imports
 import NextLink from 'next/link'
@@ -95,6 +89,7 @@ function AccordionClient({ defaultValue, items }) {
                       {title}
                     </Text>
                   </Flex>
+
                   <Flex
                     className="text-left"
                     px="2"

@@ -13,16 +13,10 @@
  */
 import { cx } from '@jeromefitz/ds/utils/cx'
 
-/**
- * @todo(radix-ui) issue w/ flex.props.js init order
- *
- * ref: https://github.com/JeromeFitz/websites/pull/2341
- */
-import { Flex } from '@radix-ui/themes'
 import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
 import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
-// import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
+import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import {
   Content as TabsContent,
   List as TabsList,
@@ -154,7 +148,6 @@ function BannerDesktop({ data }) {
       >
         <Text as="span">{data.content.desktop}</Text>
       </Box>
-
       <Button
         asChild
         color={data.badge.color}
@@ -177,11 +170,11 @@ function BannerClient() {
   const path = usePathname()
   // const [defaultValue, defaultValueSet] = useState(BANNERS.LISTENING)
   // if (path === '/') defaultValueSet(BANNERS.UPCOMING)
-  // if (path === '/music') defaultValueSet(BANNERS.READING)
+  // if (path === '/currently/listening-to') defaultValueSet(BANNERS.READING)
 
   let defaultValue = BANNERS.LISTENING
   if (path === '/') defaultValue = BANNERS.UPCOMING
-  if (path === '/music') defaultValue = BANNERS.READING
+  if (path === '/currently/listening-to') defaultValue = BANNERS.READING
 
   return (
     <Flex
@@ -223,7 +216,7 @@ function BannerClient() {
                 aria-label={banner}
                 className={cx(
                   'group hover:cursor-pointer ',
-                  'before:h-[2px]',
+                  'before:h-0.5',
                   `before:bg-transparent`,
                   'transition-all',
                   styles['test'],

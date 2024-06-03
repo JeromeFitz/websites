@@ -28,7 +28,7 @@ function RelationsColumnTitle({ children }) {
 function RelationsColumnList({ children }) {
   return (
     <Box asChild mt="1" py="2">
-      <ul className=" list-inside ">{children}</ul>
+      <ul className="list-inside">{children}</ul>
     </Box>
   )
 }

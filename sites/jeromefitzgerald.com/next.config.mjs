@@ -39,10 +39,24 @@ const transpilePackages = tp
 // const transpilePackages = isCI ? [] : tp
 // const transpilePackages = isCI ? tp : []
 
+const redirects = [
+  {
+    destination: '/currently/reading',
+    permanent: false,
+    source: '/books',
+  },
+  {
+    destination: '/currently/listening-to',
+    permanent: false,
+    source: '/music',
+  },
+]
+
 const config = nextConfig({
   basePath: '',
   buildInfoConfig,
   pathDirName: join(__dirname),
+  redirects,
   serverComponentsExternalPackages,
   transpilePackages,
 })

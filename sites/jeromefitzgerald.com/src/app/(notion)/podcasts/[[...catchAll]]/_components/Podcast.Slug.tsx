@@ -2,9 +2,6 @@ import { Callout } from '@jeromefitz/ds/components/Callout/index'
 import { getDataFromCache } from '@jeromefitz/shared/notion/utils/index'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
-import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
-import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
-import { Separator } from '@radix-ui/themes/dist/esm/components/separator.js'
 import { draftMode } from 'next/headers.js'
 import { notFound } from 'next/navigation.js'
 
@@ -15,17 +12,14 @@ import {
   getPodcastData,
   getPropertyTypeDataPodcast,
 } from '@/app/(notion)/_config/index'
-import { Grid } from '@/components/Grid/index'
-import {
-  HeadlineColumnA,
-  HeadlineContent,
-  HeadlineTitle,
-  HeadlineTitleSub,
-} from '@/components/Headline/index'
+import { ArticleMain } from '@/app/playground/2024/_components/Article.Main'
+import { ContainerWithSidebar } from '@/app/playground/2024/_components/Container.Main'
+import { HeaderSidebar } from '@/app/playground/2024/_components/Header.Sidebar'
 import { Notion as Blocks } from '@/components/Notion/index'
 import { Relations } from '@/components/Relations/index'
 
 import { PodcastEpisodes } from './Podcast.Episodes'
+import { PodcastSlugHeaderData } from './Podcast.Slug.Header.Data'
 
 const { DATABASE_ID } = CONFIG.PODCASTS
 
@@ -51,7 +45,7 @@ async function Slug({ revalidate, segmentInfo }) {
   if (is404) return notFound()
 
   const { properties }: { properties: PropertiesPodcast } = data?.page
-  const { id, isPublished, tags, title } = getPodcastData(properties)
+  const { id, isPublished, title } = getPodcastData(properties)
 
   if (!isPublished) return notFound()
 
@@ -66,46 +60,27 @@ async function Slug({ revalidate, segmentInfo }) {
 
   return (
     <>
-      <Grid>
-        <HeadlineColumnA>
-          <HeadlineTitle aria-label={title} as="h1">
-            <>{title}</>
-          </HeadlineTitle>
-          <HeadlineTitleSub>
-            {tags.map(({ color, id, name }) => (
-              <Badge className="lowercase" color={color} key={id} size="2">
-                <Code variant="ghost">{name}</Code>
-              </Badge>
-            ))}
-          </HeadlineTitleSub>
-        </HeadlineColumnA>
-        <HeadlineContent>
+      <ContainerWithSidebar>
+        <HeaderSidebar title={title}>
+          <PodcastSlugHeaderData properties={properties} />
+        </HeaderSidebar>
+        <ArticleMain>
           <Callout size="1" variant="outline" />
           <Blocks data={data?.blocks} />
-        </HeadlineContent>
-      </Grid>
-      <Grid>
-        <HeadlineColumnA>
-          <HeadlineTitle aria-label={title} as="h2">
-            <>Episodes</>
-          </HeadlineTitle>
-        </HeadlineColumnA>
-        <HeadlineContent className="">
-          <Separator size="4" />
+        </ArticleMain>
+      </ContainerWithSidebar>
+      <ContainerWithSidebar>
+        <HeaderSidebar title={'Episodes'} />
+        <ArticleMain>
           <PodcastEpisodes properties={properties} />
-        </HeadlineContent>
-      </Grid>
-      <Grid>
-        <HeadlineColumnA>
-          <HeadlineTitle aria-label={title} as="h2">
-            <>Info</>
-          </HeadlineTitle>
-        </HeadlineColumnA>
-        <HeadlineContent className="">
-          <Separator size="4" />
+        </ArticleMain>
+      </ContainerWithSidebar>
+      <ContainerWithSidebar>
+        <HeaderSidebar title={'Info'} />
+        <ArticleMain>
           <Relations id={id} relations={R} />
-        </HeadlineContent>
-      </Grid>
+        </ArticleMain>
+      </ContainerWithSidebar>
     </>
   )
 }

@@ -15,11 +15,10 @@ import _title from 'title'
 
 import { CONFIG, getBookData, getPageData } from '@/app/(notion)/_config/index'
 import { generateMetadataCustom } from '@/app/(notion)/_config/temp/generateMetadataCustom'
-import { Layout } from '@/components/Layout/index'
 
 import { BookPage } from './_components/Book.client'
 
-const slug = '/books'
+const slug = '/currently/reading'
 const { SEGMENT } = CONFIG.BOOKS
 const { DATABASE_ID } = CONFIG.BOOKS
 
@@ -48,7 +47,11 @@ export async function generateMetadata({ ...props }): Promise<Metadata> {
   const pageData = getPageData(data?.page?.properties) || ''
   const seo = await generateMetadataCustom({ data, pageData, segmentInfo })
 
-  return pageData?.isPublished ? seo : is404Seo
+  const title = 'Reading… | Jerome Fitzgerald (he/him)'
+
+  return pageData?.isPublished
+    ? { ...seo, openGraph: { ...seo.openGraph, title }, title }
+    : is404Seo
 }
 
 async function Slug({ revalidate, segmentInfo }) {
@@ -132,15 +135,7 @@ export default function Page(props) {
   const segmentInfo = getSegmentInfo({ SEGMENT, ...props })
 
   // if (segmentInfo.isIndex) {
-  //   return (
-  //     <Layout>
-  //       <Listing egmentInfo={segmentInfo} srevalidate={revalidate} />
-  //     </Layout>
-  //   )
+  //   return <Listing egmentInfo={segmentInfo} srevalidate={revalidate} />
   // }
-  return (
-    <Layout>
-      <Slug revalidate={revalidate} segmentInfo={segmentInfo} />
-    </Layout>
-  )
+  return <Slug revalidate={revalidate} segmentInfo={segmentInfo} />
 }

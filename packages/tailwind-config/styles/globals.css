@@ -5,6 +5,7 @@
 
 @import url('./chrome.css');
 @import url('./safari.css');
+/* @import url('./fonts.css'); */
 
 .icon-custom svg {
   height: inherit;
@@ -28,14 +29,21 @@
   --cursor-slider-thumb-active: pointer;
   --cursor-switch: pointer;
 
-  /* --default-font-family: var(--font-inter),  -apple-system, BlinkMacSystemFont,
-    'Segoe UI (Custom)', Roboto, 'Helvetica Neue', 'Open Sans (Custom)', system-ui,
-    sans-serif, 'Apple Color Emoji'; */
+  /* --font-name-sans: 'NameSans'; */
+  /* --font-name-sans-mono: 'NameSansMono'; */
+
   --default-font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont,
     'Segoe UI (Custom)', Roboto, 'Helvetica Neue', 'Open Sans (Custom)', system-ui,
     sans-serif, 'Apple Color Emoji';
+
   --code-font-family: var(--font-geist-mono), 'Menlo', 'Consolas (Custom)',
     'Bitstream Vera Sans Mono', monospace, 'Apple Color Emoji', 'Segoe UI Emoji';
+
+  --em-font-family: 'Times New Roman', 'Times', serif;
+
+  --quote-font-family: 'Times New Roman', 'Times', serif;
+
+  /* NameSans / Inter */
   font-feature-settings: 'calt', 'zero', 'cv01', 'cv02', 'cv03', 'cv04', 'cv05',
     'cv06', 'cv08', 'cv09', 'cv10', 'cv11';
   font-variation-settings: 'opsz' 32;
@@ -86,6 +94,8 @@
 :root {
   /* --header-height: 3.5rem; */
   --header-height: 56px;
+  --sidebar-width: 309px;
+  --sidebar-gap: 28px;
 }
 
 .light,
@@ -98,4 +108,12 @@
   --ruby-a11: color(display-p3 0.727 0.21 0.31);
   --tomato-a11: color(display-p3 0.701 0.249 0.137);
   --yellow-a11: color(display-p3 0.592 0.392 0);
+}
+
+#data-radix-popper-content-wrapper {
+  z-index: 9999;
+}
+
+* {
+  scroll-behavior: smooth;
 }

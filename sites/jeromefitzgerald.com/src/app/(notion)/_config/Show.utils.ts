@@ -28,7 +28,7 @@ function getShowData(properties) {
       'SEO.Image.Description',
     ),
     seoKeywords: getPropertyTypeDataShow(properties, 'SEO.Keywords'),
-    tags: getPropertyTypeDataShow(properties, 'Tags'),
+    tags: getPropertyTypeDataShow(properties, 'Tags') ?? [],
     title: getPropertyTypeDataShow(properties, 'Title'),
   }
   /**

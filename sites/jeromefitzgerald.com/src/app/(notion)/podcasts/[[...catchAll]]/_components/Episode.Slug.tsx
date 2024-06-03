@@ -5,17 +5,11 @@ import { EmbedSpotify } from '@jeromefitz/shared/components/Notion/Blocks/Embed.
 import { getDataFromCache } from '@jeromefitz/shared/notion/utils/index'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
-/**
- * @todo(radix-ui) issue w/ flex.props.js init order
- *
- * ref: https://github.com/JeromeFitz/websites/pull/2341
- */
-import { Flex } from '@radix-ui/themes'
 import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
-// import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
+import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Grid as GridRadix } from '@radix-ui/themes/dist/esm/components/grid.js'
-import { Separator } from '@radix-ui/themes/dist/esm/components/separator.js'
+// import { Separator } from '@radix-ui/themes/dist/esm/components/separator.js'
 import { Strong } from '@radix-ui/themes/dist/esm/components/strong.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import { draftMode } from 'next/headers.js'
@@ -29,12 +23,10 @@ import {
   getPropertyTypeDataEpisode,
 } from '@/app/(notion)/_config/index'
 import { Image } from '@/app/(notion)/events/[[...catchAll]]/_components/Image'
-import { Grid } from '@/components/Grid/index'
-import {
-  HeadlineColumnA,
-  HeadlineContent,
-  HeadlineTitle,
-} from '@/components/Headline/index'
+import { ArticleMain } from '@/app/playground/2024/_components/Article.Main'
+import { ContainerWithSidebar } from '@/app/playground/2024/_components/Container.Main'
+import { HeaderSidebar } from '@/app/playground/2024/_components/Header.Sidebar'
+import { LI, UL } from '@/components/List/index'
 import { Notion as Blocks } from '@/components/Notion/index'
 import { Relations } from '@/components/Relations/index'
 
@@ -108,16 +100,16 @@ function Rollups({ properties }) {
             <Text className="uppercase">
               <Strong>{rollup.id}</Strong>
             </Text>
-            <ul>
-              <Box asChild mb={{ initial: '2', md: '1' }}>
-                <li>
-                  {/* @todo(types) pass types better at Component/Props */}
-                  {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-                  {/* @ts-ignore */}
-                  <Component {...ComponentProps}>{rollup.data}</Component>
-                </li>
-              </Box>
-            </ul>
+            <UL>
+              {/* <Box asChild mb={{ initial: '2', md: '1' }}> */}
+              <LI>
+                {/* @todo(types) pass types better at Component/Props */}
+                {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+                {/* @ts-ignore */}
+                <Component {...ComponentProps}>{rollup.data}</Component>
+              </LI>
+              {/* </Box> */}
+            </UL>
           </Box>
         )
       })}
@@ -237,31 +229,23 @@ async function EpisodeSlug({ revalidate, segmentInfo }) {
 
   return (
     <>
-      <Grid>
-        <HeadlineColumnA>
-          <HeadlineTitle aria-label={title} as="h1">
-            <>{title}</>
-          </HeadlineTitle>
-        </HeadlineColumnA>
-        <HeadlineContent>
+      <ContainerWithSidebar>
+        <HeaderSidebar title={title} />
+        <ArticleMain>
           <Callout size="1" variant="outline" />
           <Image properties={properties} />
           <Blocks data={data?.blocks} />
           <Links properties={properties} />
-        </HeadlineContent>
-      </Grid>
-      <Grid>
-        <HeadlineColumnA>
-          <HeadlineTitle aria-label={title} as="h2">
-            <>Info</>
-          </HeadlineTitle>
-        </HeadlineColumnA>
-        <HeadlineContent className="">
-          <Separator size="4" />
+        </ArticleMain>
+      </ContainerWithSidebar>
+      {/* <Separator size="4" /> */}
+      <ContainerWithSidebar>
+        <HeaderSidebar title={`Info`} />
+        <ArticleMain>
           <Rollups properties={properties} />
           <Relations id={id} relations={R} />
-        </HeadlineContent>
-      </Grid>
+        </ArticleMain>
+      </ContainerWithSidebar>
     </>
   )
 }
