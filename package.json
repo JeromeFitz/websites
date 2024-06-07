@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@jeromefitz/conventional-gitmoji": "4.0.1",
-    "@jeromefitz/eslint-config": "3.0.5",
+    "@jeromefitz/eslint-config": "4.0.0-canary.1",
     "@jeromefitz/lint-staged": "2.0.3",
     "@jeromefitz/prettier-config": "2.0.5",
     "@jeromefitz/release-notes-generator": "2.0.8",
@@ -51,7 +51,7 @@
     "tailwindcss": "3.4.4",
     "ts-node": "10.9.2",
     "tsup": "8.1.0",
-    "turbo": "1.13.4",
+    "turbo": "2.0.3",
     "typescript": "5.4.5"
   },
   "pnpm": {
