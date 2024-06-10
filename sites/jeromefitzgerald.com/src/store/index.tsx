@@ -129,8 +129,8 @@ const getDefaultInitialStateStoreMenu = () => ({
       href: '/about',
       icon: IdCardIcon,
       id: 'about',
-      isActive: false,
-      isActiveMobile: false,
+      isActive: true,
+      isActiveMobile: true,
       title: 'About',
     },
     {
@@ -144,7 +144,7 @@ const getDefaultInitialStateStoreMenu = () => ({
     },
     {
       hasSubNavigation: false,
-      href: '/contact',
+      href: '/about#contact',
       icon: EnvelopeOpenIcon,
       id: 'contact',
       isActive: true,
