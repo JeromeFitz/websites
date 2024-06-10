@@ -1,6 +1,17 @@
 {
   "$schema": "https://turborepo.org/schema.json",
   "globalDependencies": ["pnpm-workspace.yaml"],
+  "globalPassThroughEnv": [
+    "*_TOKEN",
+    "IS_*",
+    "NEXT_PUBLIC_*",
+    "NODE_ENV",
+    "NOTION_*",
+    "OVERRIDE_CACHE",
+    "SPOTIFY_*",
+    "UPSTASH_*",
+    "VERCEL_*"
+  ],
   "tasks": {
     "//#format": {
       "dependsOn": [],
@@ -17,7 +28,6 @@
     },
     "build": {
       "dependsOn": ["^build"],
-      "env": ["*_TOKEN", "NEXT_PUBLIC_*", "NOTION_*", "SPOTIFY_*", "UPSTASH_*"],
       "inputs": ["src/**", "*.cjs", "*.js", "*.mjs", "tsconfig.json"],
       "outputs": [".cache/**", ".next/**", "!.next/cache/**"]
     },
