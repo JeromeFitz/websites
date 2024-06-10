@@ -3,6 +3,7 @@
   "globalDependencies": ["pnpm-workspace.yaml"],
   "globalPassThroughEnv": [
     "*_TOKEN",
+    "CI",
     "IS_*",
     "NEXT_PUBLIC_*",
     "NODE_ENV",
