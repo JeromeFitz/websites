@@ -30,9 +30,9 @@
   },
   "dependencies": {
     "@jeromefitz/conventional-gitmoji": "4.0.1",
-    "@jeromefitz/eslint-config": "4.0.0",
+    "@jeromefitz/eslint-config": "3.0.5",
     "@jeromefitz/lint-staged": "2.0.3",
-    "@jeromefitz/prettier-config": "2.0.6",
+    "@jeromefitz/prettier-config": "2.0.5",
     "@jeromefitz/release-notes-generator": "2.0.8",
     "@jeromefitz/semantic": "10.0.6",
     "@jeromefitz/tsconfig": "2.0.0",
@@ -50,8 +50,8 @@
     "syncpack": "12.3.2",
     "tailwindcss": "3.4.4",
     "ts-node": "10.9.2",
-    "tsup": "8.1.0",
-    "turbo": "2.0.3",
+    "tsup": "8.0.2",
+    "turbo": "1.13.4",
     "typescript": "5.4.5"
   },
   "pnpm": {
