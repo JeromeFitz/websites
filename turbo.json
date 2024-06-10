@@ -17,6 +17,7 @@
     },
     "build": {
       "dependsOn": ["^build"],
+      "env": ["*_TOKEN", "NEXT_PUBLIC_*", "NOTION_*", "SPOTIFY_*", "UPSTASH_*"],
       "inputs": ["src/**", "*.cjs", "*.js", "*.mjs", "tsconfig.json"],
       "outputs": [".cache/**", ".next/**", "!.next/cache/**"]
     },
