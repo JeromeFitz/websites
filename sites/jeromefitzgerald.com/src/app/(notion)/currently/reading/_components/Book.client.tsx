@@ -307,7 +307,7 @@ function BookPage({ books, title }) {
       <Flex className="flex flex-col gap-20">
         <Flex className="flex flex-col gap-6">
           <Text size="4">
-            <Em>There is something about physical books!</Em> Sarah and I tend to
+            <Em>There is something about physical books!</Em> Big S and I tend to
             surround ourselves with them and are often reading a few at a time. Still
             working on the layout and what kind of stuff it entails. This is not an
             exhaustive all-time list just one that since I started creating this
