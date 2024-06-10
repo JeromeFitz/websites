@@ -11,6 +11,8 @@ import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
 import { Em } from '@radix-ui/themes/dist/esm/components/em.js'
 import { Grid } from '@radix-ui/themes/dist/esm/components/grid.js'
 import { Inset } from '@radix-ui/themes/dist/esm/components/inset.js'
+// import { useEffect, useState } from 'react'
+import { Link } from '@radix-ui/themes/dist/esm/components/link.js'
 import {
   // Close as PopoverClose,
   Content as PopoverContent,
@@ -19,7 +21,9 @@ import {
 } from '@radix-ui/themes/dist/esm/components/popover.js'
 import { Strong } from '@radix-ui/themes/dist/esm/components/strong.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
-// import { useEffect, useState } from 'react'
+// eslint-disable-next-line no-restricted-imports
+import NextLink from 'next/link'
+import { useState } from 'react'
 
 import { useStore as _useStore } from '@/store/index'
 
@@ -47,6 +51,7 @@ const image = {
 
 function NavigationPrimary({ order = 0 }) {
   const { isOverlaySet } = useStore()
+  const [isPopover, isPoperoverSet] = useState(false)
 
   return (
     <div
@@ -55,7 +60,14 @@ function NavigationPrimary({ order = 0 }) {
       style={{ opacity: 1, order }}
     >
       <div className={cx('contents')}>
-        <PopoverRoot modal={true} onOpenChange={() => isOverlaySet()}>
+        <PopoverRoot
+          modal={true}
+          onOpenChange={() => {
+            isOverlaySet()
+            isPoperoverSet(!isPopover)
+          }}
+          open={isPopover}
+        >
           {/* @ts-ignore */}
           <PopoverTrigger asChild>
             <Button
@@ -127,7 +139,17 @@ function NavigationPrimary({ order = 0 }) {
                   Along with a healthy career in engineering leadership.
                 </Text>
                 <Text as="p" size="3" trim="both">
-                  Well, click around I guess.
+                  Well,{' '}
+                  <Link
+                    asChild
+                    onClick={() => {
+                      isOverlaySet()
+                      isPoperoverSet(!isPopover)
+                    }}
+                  >
+                    <NextLink href="/about">click around</NextLink>
+                  </Link>{' '}
+                  I guess.
                 </Text>
               </Box>
             </Grid>
