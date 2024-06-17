@@ -36,7 +36,7 @@ const currently = [
     id: 'listening',
     isActive: true,
     title: 'I’m Listening To…',
-    titleSub: 'Jessica Pratt – Here in the Pitch',
+    titleSub: 'Cam Chambers, Nice Rec – Check Please',
   },
   {
     apiUrl: '',
