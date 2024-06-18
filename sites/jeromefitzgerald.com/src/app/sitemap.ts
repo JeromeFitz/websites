@@ -8,7 +8,14 @@ const siteUrl = 'https://jeromefitzgerald.com'
 const lastModified = new Date()
 
 const root = ['']
-const currently = ['listening-to', 'reading']
+const currently = [
+  // 'cooking',
+  'listening-to',
+  'reading',
+]
+/**
+ * @todo(dynamic) start somewhere though
+ */
 const events = [
   '2023/06/01/your-act',
   '2023/06/10/the-playlist',
@@ -44,8 +51,10 @@ const events = [
   '2024/03/23/sketch-madness',
   '2024/04/13/arcade-hootenanny',
   '2024/05/10/the-latchkey-kids',
-  // '2024/05/18/the-playlist',
-  '2024/06/15/the-playlist',
+  '2024/06/06/your-act',
+  '2024/07/13/arcade-hootenanny',
+  // '2024/07/18/sketch-comedy-lab-best-of',
+  // '2024/07/19/sketch-comedy-lab-best-of',
 ]
 const pages = [
   'about',
