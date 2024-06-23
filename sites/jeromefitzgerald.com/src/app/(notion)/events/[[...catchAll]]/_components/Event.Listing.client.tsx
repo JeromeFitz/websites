@@ -1,5 +1,4 @@
 'use client'
-/* eslint-disabdle tailwindcss/no-custom-classname */
 
 import { ExternalLinkIcon } from '@jeromefitz/ds/components/Icon/index'
 import { Tags } from '@jeromefitz/ds/components/Section/index'
@@ -31,6 +30,9 @@ function AccordionClient({ defaultValue, items }) {
       mt="4"
       width="300px"
     >
+      {/* @todo(types) radix */}
+      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment  */}
+      {/* @ts-ignore */}
       <AccordionRoot collapsible defaultValue={defaultValue} type="single">
         {items.map((item) => {
           if (!item.id) return null
@@ -68,6 +70,9 @@ function AccordionClient({ defaultValue, items }) {
 
           const key = `items-item-${id}`
           return (
+            // @todo(types) radix
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
             <AccordionItem key={key} value={id}>
               <AccordionTrigger>
                 <Flex

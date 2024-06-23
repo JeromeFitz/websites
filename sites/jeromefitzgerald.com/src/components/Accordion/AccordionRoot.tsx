@@ -1,11 +1,10 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 'use client'
-import type { AccordionImplSingleProps } from '@radix-ui/react-accordion'
 
 import { Accordion as AccordionRoot } from '@radix-ui/react-accordion'
 import { forwardRef } from 'react'
 
-interface AccordionRootPropsImpl extends AccordionImplSingleProps {
+interface AccordionRootPropsImpl {
   children?: any
   className?: any
   type?: 'multiple' | 'single'
