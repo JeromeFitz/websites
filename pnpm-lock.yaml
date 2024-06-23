@@ -12,13 +12,18 @@ overrides:
   sharp: 0.32.6
   tough-cookie: 4.1.4
 
+patchedDependencies:
+  '@semantic-release/commit-analyzer@13.0.0':
+    hash: 4ldj247mh3etpypyayklcqtkvm
+    path: patches/@semantic-release__commit-analyzer@13.0.0.patch
+
 importers:
 
   .:
     dependencies:
       '@jeromefitz/conventional-gitmoji':
-        specifier: 4.0.1
-        version: 4.0.1(lodash@4.17.21)
+        specifier: 4.0.2
+        version: 4.0.2(lodash@4.17.21)
       '@jeromefitz/eslint-config':
         specifier: 4.0.0
         version: 4.0.0(tailwindcss@3.4.4(ts-node@10.9.2(@types/node@20.14.8)(typescript@5.5.2)))(typescript@5.5.2)
@@ -29,11 +34,11 @@ importers:
         specifier: 2.0.6
         version: 2.0.6
       '@jeromefitz/release-notes-generator':
-        specifier: 3.0.0-canary.1
-        version: 3.0.0-canary.1(lodash@4.17.21)
+        specifier: 3.0.1
+        version: 3.0.1(lodash@4.17.21)
       '@jeromefitz/semantic':
-        specifier: 11.0.0-canary.1
-        version: 11.0.0-canary.1(@jeromefitz/conventional-gitmoji@4.0.1(lodash@4.17.21))(typescript@5.5.2)
+        specifier: 11.0.1
+        version: 11.0.1(@jeromefitz/conventional-gitmoji@4.0.2(lodash@4.17.21))(typescript@5.5.2)
       '@jeromefitz/tsconfig':
         specifier: 2.0.0
         version: 2.0.0
@@ -2508,8 +2513,8 @@ packages:
     resolution: {integrity: sha512-ZXRY4jNvVgSVQ8DL3LTcakaAtXwTVUxE81hslsyD2AtoXW/wVob10HkOJ1X/pAlcI7D+2YoZKg5do8G/w6RYgA==}
     engines: {node: '>=8'}
 
-  '@jeromefitz/conventional-gitmoji@4.0.1':
-    resolution: {integrity: sha512-VmtTkovB2TV505W79PO6Q4UsYqZ+QbtMlGa9P4DYAw1dcSsN7Y4wTAbCleTwi4DkPoYj++Dy9oRS4rOh/+5odA==}
+  '@jeromefitz/conventional-gitmoji@4.0.2':
+    resolution: {integrity: sha512-I4RxxpmdDg8eRZ/eWyChYoC7o7KxqAFMf7ss4WNizy48Bv9FQRpNQG70ok7x6EI/jQ6DncLD7S+1LzrNf8oLbA==}
     engines: {node: '>=20'}
     peerDependencies:
       lodash: ^4.17.21
@@ -2540,14 +2545,14 @@ packages:
     resolution: {integrity: sha512-AIVE0Wb0ApBFacRgzXa73cqfn84a9xRpOPTRR9yeVn6SD7VNm5Teq4wLv1bRUqFWhxXAfaNy/To+gPM0BOWmqQ==}
     engines: {node: '>=20'}
 
-  '@jeromefitz/release-notes-generator@3.0.0-canary.1':
-    resolution: {integrity: sha512-3OSgJcBi6J8+pyluMyc7bKdLVjgjJ+aWd6bcpsEDg9MZhoWMohHsUXnFj8ihraCmosEN4fomUOx4jHq6IJnK8w==}
+  '@jeromefitz/release-notes-generator@3.0.1':
+    resolution: {integrity: sha512-xoPg9aSywNcbTtLn8VL6qR53T4oKjx6AiSbeJlymeQe8i1E2t029jk5RNHGmFrtwEgvl84RLqaC1K8S+Ixapcg==}
     engines: {node: '>=20'}
     peerDependencies:
       lodash: ^4.17.21
 
-  '@jeromefitz/semantic@11.0.0-canary.1':
-    resolution: {integrity: sha512-fhTOEi08gWpr2fLa/yESfrO1/638DXpTcsP57eN6SFoPcXQgdw5LkghbF3K3NresWgJbSP6qxs5MvdhJ5NfPcA==}
+  '@jeromefitz/semantic@11.0.1':
+    resolution: {integrity: sha512-OBah8kDpiR3MTf20Sa2HQ+T8MjBBrNwzINkIzZ02RdJN4tow/LrC8jD/zguNB8b51ln+N8jrNAn1FqaU/ScqYQ==}
     engines: {node: '>=20'}
     peerDependencies:
       '@jeromefitz/conventional-gitmoji': ^4.0.0
@@ -2815,11 +2820,11 @@ packages:
     peerDependencies:
       '@octokit/core': '>=6'
 
-  '@octokit/plugin-rest-endpoint-methods@13.2.2':
-    resolution: {integrity: sha512-EI7kXWidkt3Xlok5uN43suK99VWqc8OaIMktY9d9+RNKl69juoTyxmLoWPIZgJYzi41qj/9zU7G/ljnNOJ5AFA==}
+  '@octokit/plugin-rest-endpoint-methods@13.2.1':
+    resolution: {integrity: sha512-YMWBw6Exh1ZBs5cCE0AnzYxSQDIJS00VlBqISTgNYmu5MBdeM07K/MAJjy/VkNaH5jpJmD/5HFUvIZ+LDB5jSQ==}
     engines: {node: '>= 18'}
     peerDependencies:
-      '@octokit/core': ^5
+      '@octokit/core': '>=6'
 
   '@octokit/plugin-retry@7.1.1':
     resolution: {integrity: sha512-G9Ue+x2odcb8E1XIPhaFBnTTIrrUDfXN05iFXiqhR+SeeeDMMILcAnysOsxUpEWcQp2e5Ft397FCXTcPkiPkLw==}
@@ -7343,6 +7348,10 @@ packages:
   is-core-module@2.13.1:
     resolution: {integrity: sha512-hHrIjvZsftOsvKSn2TRYl63zvxsgE0K+0mYMoH6gD4omR5IWB2KynivBQczo3+wF1cCkjzvptnI9Q0sPU66ilw==}
 
+  is-core-module@2.14.0:
+    resolution: {integrity: sha512-a5dFJih5ZLYlRtDc0dZWP7RiKr6xIKzmn/oAYCDvdLThadVgyJwlaoQPmRtMSpz+rk0OGAgIu+TcM9HUF0fk1A==}
+    engines: {node: '>= 0.4'}
+
   is-data-view@1.0.1:
     resolution: {integrity: sha512-AHkaJrsUVW6wq6JS8y3JnM/GJF/9cf+k20+iDzlSaJrinEo5+7vRiteOSwBhHRiAyQATN1AmY4hwzxJKPmYf+w==}
     engines: {node: '>= 0.4'}
@@ -8414,8 +8423,8 @@ packages:
   normalize-package-data@2.5.0:
     resolution: {integrity: sha512-/5CMN3T0R4XTj4DcGaexo+roZSdSFW/0AOOTROrjxzCG1wrWXEsGbRKevjlIL+ZDE4sZlJr5ED4YW0yqmkK+eA==}
 
-  normalize-package-data@6.0.0:
-    resolution: {integrity: sha512-UL7ELRVxYBHBgYEtZCXjxuD5vPxnmvMGq0jp/dGPKKrN7tfsBh2IY7TlJ15WWwdjRWD3RJbnsygUurTK3xkPkg==}
+  normalize-package-data@6.0.1:
+    resolution: {integrity: sha512-6rvCfeRW+OEZagAB4lMLSNuTNYZWLVtKccK79VSTf//yTY5VOCgcpH80O+bZK8Neps7pUnd5G+QlMg1yV/2iZQ==}
     engines: {node: ^16.14.0 || >=18.0.0}
 
   normalize-path@3.0.0:
@@ -9257,6 +9266,11 @@ packages:
     engines: {node: '>=14'}
     hasBin: true
 
+  prettier@3.3.2:
+    resolution: {integrity: sha512-rAVeHYMcv8ATV5d508CFdn+8/pHPpXeIid1DdrPwXnaAdH7cqjVbpJaT5eq4yRAFU/lsbwYwSF/n5iNrdJHPQA==}
+    engines: {node: '>=14'}
+    hasBin: true
+
   pretty-error@4.0.0:
     resolution: {integrity: sha512-AoJ5YMAcXKYxKhuJGdcvse+Voc6v1RgnsR3nWcYU7q4t6z0Q6T86sv5Zq8VIRbOWWFpvdGE83LtdSMNd+6Y0xw==}
 
@@ -9805,6 +9819,9 @@ packages:
     resolution: {integrity: sha512-9BakfsO2aUQN2K9Fdbj87RJIEZ82Q9IGim7FqM5OsebfoFC6ZHXgDq/KvniuLTPdeM8wY2o6Dj3WQ7KeQCj3cA==}
     engines: {node: '>=0.10.0'}
 
+  semantic-release-commit-filter@1.0.2:
+    resolution: {integrity: sha512-LpIB1UN78oRmJnqgPdvA/qRgVitih5V1Ybyszv8GcOBAJWJBHGWI1PmSrOfdEmbf1ZvGkdK/NNDdBHbuSQqSyQ==}
+
   semantic-release@24.0.0:
     resolution: {integrity: sha512-v46CRPw+9eI3ZuYGF2oAjqPqsfbnfFTwLBgQsv/lch4goD09ytwOTESMN4QIrx/wPLxUGey60/NMx+ANQtWRsA==}
     engines: {node: '>=20.8.1'}
@@ -9995,14 +10012,14 @@ packages:
   spdx-correct@3.2.0:
     resolution: {integrity: sha512-kN9dJbvnySHULIluDHy32WHRUu3Og7B9sbY7tsFLctQkIqnMh3hErYgdMjTYuqmcXX+lK5T1lnUt3G7zNswmZA==}
 
-  spdx-exceptions@2.3.0:
-    resolution: {integrity: sha512-/tTrYOC7PPI1nUAgx34hUpqXuyJG+DTHJTnIULG4rDygi4xu/tfgmq1e1cIRwRzwZgo4NLySi+ricLkZkw4i5A==}
+  spdx-exceptions@2.5.0:
+    resolution: {integrity: sha512-PiU42r+xO4UbUS1buo3LPJkjlO7430Xn5SVAhdpzzsPHsjbYVflnnFdATgabnLude+Cqu25p6N+g2lw/PFsa4w==}
 
   spdx-expression-parse@3.0.1:
     resolution: {integrity: sha512-cbqHunsQWnJNE6KhVSMsMeH5H/L9EpymbzqTQ3uLwNCLZ1Q481oWaofqH7nO6V07xlXwY6PhQdQ2IedWx/ZK4Q==}
 
-  spdx-license-ids@3.0.13:
-    resolution: {integrity: sha512-XkD+zwiqXHikFZm4AX/7JSCXA98U5Db4AFd5XUg/+9UNtnH75+Z9KxtpYiJZx36mUDVOwH83pl7yvCer6ewM3w==}
+  spdx-license-ids@3.0.18:
+    resolution: {integrity: sha512-xxRs31BqRYHwiMzudOrpSiHtZ8i/GeionCBDSilhYRj+9gIcI8wCZTlXZKu9vZIVqViP3dcp9qE5G6AlIaD+TQ==}
 
   split2@1.0.0:
     resolution: {integrity: sha512-NKywug4u4pX/AZBB1FCPzZ6/7O+Xhz1qMVbzTvvKvikjO99oPN87SkK08mEY9P63/5lWjK+wgOOgApnTg5r6qg==}
@@ -10598,8 +10615,8 @@ packages:
     resolution: {integrity: sha512-RAH822pAdBgcNMAfWnCBU3CFZcfZ/i1eZjwFU/dsLKumyuuP3niueg2UAukXYF0E2AAoc82ZSSf9J0WQBinzHA==}
     engines: {node: '>=12.20'}
 
-  type-fest@4.9.0:
-    resolution: {integrity: sha512-KS/6lh/ynPGiHD/LnAobrEFq3Ad4pBzOlJ1wAnJx9N4EYoqFhMfLIBjUT2UEx4wg5ZE+cC1ob6DCSpppVo+rtg==}
+  type-fest@4.20.1:
+    resolution: {integrity: sha512-R6wDsVsoS9xYOpy8vgeBlqpdOyzJ12HNfQhC/aAKWM3YoCV9TtunJzh/QpkMgeDhkoynDcw5f1y+qF9yc/HHyg==}
     engines: {node: '>=16'}
 
   type-is@1.6.18:
@@ -12356,7 +12373,7 @@ snapshots:
 
   '@istanbuljs/schema@0.1.3': {}
 
-  '@jeromefitz/conventional-gitmoji@4.0.1(lodash@4.17.21)':
+  '@jeromefitz/conventional-gitmoji@4.0.2(lodash@4.17.21)':
     dependencies:
       fast-json-stable-stringify: 2.1.0
       grapheme-splitter: 1.0.4
@@ -12445,7 +12462,7 @@ snapshots:
       - prettier-plugin-style-order
       - prettier-plugin-svelte
 
-  '@jeromefitz/release-notes-generator@3.0.0-canary.1(lodash@4.17.21)':
+  '@jeromefitz/release-notes-generator@3.0.1(lodash@4.17.21)':
     dependencies:
       '@octokit/rest': 21.0.0
       conventional-commits-filter: 5.0.0
@@ -12458,11 +12475,13 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@jeromefitz/semantic@11.0.0-canary.1(@jeromefitz/conventional-gitmoji@4.0.1(lodash@4.17.21))(typescript@5.5.2)':
+  '@jeromefitz/semantic@11.0.1(@jeromefitz/conventional-gitmoji@4.0.2(lodash@4.17.21))(typescript@5.5.2)':
     dependencies:
-      '@jeromefitz/conventional-gitmoji': 4.0.1(lodash@4.17.21)
+      '@jeromefitz/conventional-gitmoji': 4.0.2(lodash@4.17.21)
+      '@semantic-release/commit-analyzer': 13.0.0(patch_hash=4ldj247mh3etpypyayklcqtkvm)(semantic-release@24.0.0(typescript@5.5.2))
       '@semantic-release/git': 10.0.1(semantic-release@24.0.0(typescript@5.5.2))
       semantic-release: 24.0.0(typescript@5.5.2)
+      semantic-release-commit-filter: 1.0.2
       title: 3.5.3
     transitivePeerDependencies:
       - supports-color
@@ -12833,7 +12852,7 @@ snapshots:
     dependencies:
       '@octokit/core': 6.1.2
 
-  '@octokit/plugin-rest-endpoint-methods@13.2.2(@octokit/core@6.1.2)':
+  '@octokit/plugin-rest-endpoint-methods@13.2.1(@octokit/core@6.1.2)':
     dependencies:
       '@octokit/core': 6.1.2
       '@octokit/types': 13.5.0
@@ -12867,7 +12886,7 @@ snapshots:
       '@octokit/core': 6.1.2
       '@octokit/plugin-paginate-rest': 11.3.0(@octokit/core@6.1.2)
       '@octokit/plugin-request-log': 5.3.0(@octokit/core@6.1.2)
-      '@octokit/plugin-rest-endpoint-methods': 13.2.2(@octokit/core@6.1.2)
+      '@octokit/plugin-rest-endpoint-methods': 13.2.1(@octokit/core@6.1.2)
 
   '@octokit/types@13.5.0':
     dependencies:
@@ -14625,7 +14644,7 @@ snapshots:
 
   '@sec-ant/readable-stream@0.4.1': {}
 
-  '@semantic-release/commit-analyzer@13.0.0(semantic-release@24.0.0(typescript@5.5.2))':
+  '@semantic-release/commit-analyzer@13.0.0(patch_hash=4ldj247mh3etpypyayklcqtkvm)(semantic-release@24.0.0(typescript@5.5.2))':
     dependencies:
       conventional-changelog-angular: 8.0.0
       conventional-changelog-writer: 8.0.0
@@ -14634,7 +14653,7 @@ snapshots:
       debug: 4.3.5
       import-from-esm: 1.3.4
       lodash-es: 4.17.21
-      micromatch: 4.0.7
+      micromatch: 4.0.5
       semantic-release: 24.0.0(typescript@5.5.2)
     transitivePeerDependencies:
       - supports-color
@@ -15261,7 +15280,7 @@ snapshots:
       node-fetch: 2.7.0
       picomatch: 2.3.1
       pkg-dir: 5.0.0
-      prettier-fallback: prettier@3.3.1
+      prettier-fallback: prettier@3.3.2
       pretty-hrtime: 1.0.3
       resolve-from: 5.0.0
       semver: 7.5.4
@@ -15296,7 +15315,7 @@ snapshots:
       node-fetch: 2.7.0
       picomatch: 2.3.1
       pkg-dir: 5.0.0
-      prettier-fallback: prettier@3.3.1
+      prettier-fallback: prettier@3.3.2
       pretty-hrtime: 1.0.3
       resolve-from: 5.0.0
       semver: 7.5.4
@@ -19430,6 +19449,10 @@ snapshots:
     dependencies:
       hasown: 2.0.2
 
+  is-core-module@2.14.0:
+    dependencies:
+      hasown: 2.0.2
+
   is-data-view@1.0.1:
     dependencies:
       is-typed-array: 1.1.13
@@ -20693,10 +20716,10 @@ snapshots:
       semver: 5.7.2
       validate-npm-package-license: 3.0.4
 
-  normalize-package-data@6.0.0:
+  normalize-package-data@6.0.1:
     dependencies:
       hosted-git-info: 7.0.2
-      is-core-module: 2.13.1
+      is-core-module: 2.14.0
       semver: 7.5.4
       validate-npm-package-license: 3.0.4
 
@@ -20962,7 +20985,7 @@ snapshots:
     dependencies:
       '@babel/code-frame': 7.24.7
       index-to-position: 0.1.2
-      type-fest: 4.9.0
+      type-fest: 4.20.1
 
   parse-ms@4.0.0: {}
 
@@ -21379,6 +21402,8 @@ snapshots:
 
   prettier@3.3.1: {}
 
+  prettier@3.3.2: {}
+
   pretty-error@4.0.0:
     dependencies:
       lodash: 4.17.21
@@ -21705,7 +21730,7 @@ snapshots:
     dependencies:
       find-up-simple: 1.0.0
       read-pkg: 9.0.1
-      type-fest: 4.9.0
+      type-fest: 4.20.1
 
   read-pkg-up@7.0.1:
     dependencies:
@@ -21723,9 +21748,9 @@ snapshots:
   read-pkg@9.0.1:
     dependencies:
       '@types/normalize-package-data': 2.4.4
-      normalize-package-data: 6.0.0
+      normalize-package-data: 6.0.1
       parse-json: 8.1.0
-      type-fest: 4.9.0
+      type-fest: 4.20.1
       unicorn-magic: 0.1.0
 
   read-yaml-file@1.1.0:
@@ -22038,9 +22063,11 @@ snapshots:
 
   screenfull@5.2.0: {}
 
+  semantic-release-commit-filter@1.0.2: {}
+
   semantic-release@24.0.0(typescript@5.5.2):
     dependencies:
-      '@semantic-release/commit-analyzer': 13.0.0(semantic-release@24.0.0(typescript@5.5.2))
+      '@semantic-release/commit-analyzer': 13.0.0(patch_hash=4ldj247mh3etpypyayklcqtkvm)(semantic-release@24.0.0(typescript@5.5.2))
       '@semantic-release/error': 4.0.0
       '@semantic-release/github': 10.0.4(semantic-release@24.0.0(typescript@5.5.2))
       '@semantic-release/npm': 12.0.1(semantic-release@24.0.0(typescript@5.5.2))
@@ -22276,16 +22303,16 @@ snapshots:
   spdx-correct@3.2.0:
     dependencies:
       spdx-expression-parse: 3.0.1
-      spdx-license-ids: 3.0.13
+      spdx-license-ids: 3.0.18
 
-  spdx-exceptions@2.3.0: {}
+  spdx-exceptions@2.5.0: {}
 
   spdx-expression-parse@3.0.1:
     dependencies:
-      spdx-exceptions: 2.3.0
-      spdx-license-ids: 3.0.13
+      spdx-exceptions: 2.5.0
+      spdx-license-ids: 3.0.18
 
-  spdx-license-ids@3.0.13: {}
+  spdx-license-ids@3.0.18: {}
 
   split2@1.0.0:
     dependencies:
@@ -22932,7 +22959,7 @@ snapshots:
 
   type-fest@2.19.0: {}
 
-  type-fest@4.9.0: {}
+  type-fest@4.20.1: {}
 
   type-is@1.6.18:
     dependencies:
