@@ -27,6 +27,9 @@ function FooterThemeClient({ isLoading }) {
       size="1"
     >
       <Skeleton loading={isLoading}>
+        {/* @todo(types) radix */}
+        {}
+        {/* @ts-ignore */}
         <RadioCardItem
           className="hover:cursor-pointer"
           onClick={() => setTheme('dark')}
@@ -36,6 +39,9 @@ function FooterThemeClient({ isLoading }) {
         </RadioCardItem>
       </Skeleton>
       <Skeleton loading={isLoading}>
+        {/* @todo(types) radix */}
+        {}
+        {/* @ts-ignore */}
         <RadioCardItem
           className="hover:cursor-pointer"
           onClick={() => setTheme('light')}
