@@ -43,6 +43,9 @@ function NavigationButtonClient() {
           radius="full"
           variant="surface"
         >
+          {/* @todo(types) radix */}
+          {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment  */}
+          {/* @ts-ignore */}
           <SegmentedControl.Item
             // aria-label="Dark theme"
             suppressHydrationWarning
@@ -50,6 +53,9 @@ function NavigationButtonClient() {
           >
             <MoonIcon />
           </SegmentedControl.Item>
+          {/* @todo(types) radix */}
+          {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment  */}
+          {/* @ts-ignore */}
           <SegmentedControl.Item
             // aria-label="Light theme"
             suppressHydrationWarning
