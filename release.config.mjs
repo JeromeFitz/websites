@@ -28,6 +28,7 @@ const branches = [
   { name: 'main' },
   { name: 'canary', prerelease: 'canary' },
   { name: 'NICE-67', prerelease: 'NICE-67' },
+  { name: 'deps/semantic-release-24.x', prerelease: 'canary' },
   ...branchTypes,
 ]
 
