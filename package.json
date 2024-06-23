@@ -25,16 +25,17 @@
     "preinstall": "npx only-allow pnpm",
     "prepare": "is-ci || husky",
     "semantic-release": "pnpm run semantic-release:mono",
-    "semantic-release:dry": "pnpm --filter jeromefitzgerald.com -r --workspace-concurrency=1 exec -- npx --no-install semantic-release --dry-run",
-    "semantic-release:mono": "pnpm --filter jeromefitzgerald.com -r --workspace-concurrency=1 exec -- npx --no-install semantic-release"
+    "semantic-release:dry": "pnpm semantic-release:mono --dry-run",
+    "semantic-release:mono": "pnpm --filter jeromefitzgerald.com -r --workspace-concurrency=1 exec -- npx --no-install semantic-release",
+    "turbo": "TURBO_TELEMETRY_DISABLED=1 turbo"
   },
   "dependencies": {
-    "@jeromefitz/conventional-gitmoji": "4.0.1",
+    "@jeromefitz/conventional-gitmoji": "4.0.2",
     "@jeromefitz/eslint-config": "4.0.0",
     "@jeromefitz/lint-staged": "2.0.3",
     "@jeromefitz/prettier-config": "2.0.6",
-    "@jeromefitz/release-notes-generator": "2.0.8",
-    "@jeromefitz/semantic": "10.0.6",
+    "@jeromefitz/release-notes-generator": "3.0.1",
+    "@jeromefitz/semantic": "11.0.1",
     "@jeromefitz/tsconfig": "2.0.0",
     "@manypkg/cli": "0.21.4",
     "@types/is-ci": "3.0.4",
@@ -46,7 +47,7 @@
     "husky": "9.0.11",
     "is-ci": "3.0.1",
     "lodash": "4.17.21",
-    "semantic-release": "23.1.1",
+    "semantic-release": "24.0.0",
     "syncpack": "12.3.2",
     "tailwindcss": "3.4.4",
     "ts-node": "10.9.2",
@@ -55,6 +56,9 @@
     "typescript": "5.5.2"
   },
   "pnpm": {
+    "patchedDependencies": {
+      "@semantic-release/commit-analyzer@13.0.0": "patches/@semantic-release__commit-analyzer@13.0.0.patch"
+    },
     "overrides": {
       "unfetch": "4.2.0",
       "semver@^5.0.0": "5.7.2",

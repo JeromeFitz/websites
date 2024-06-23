@@ -24,4 +24,4 @@ runs:
     - name: '🃏  Jest: unit'
       id: test-jest
       shell: bash
-      run: TURBO_TELEMETRY_DISABLED=1 pnpm turbo run test:unit --filter="${{ inputs.WEBSITE }}" --cache-dir=".cache-turbo"
+      run: pnpm turbo run test:unit --filter="${{ inputs.WEBSITE }}" --cache-dir=".cache-turbo"
