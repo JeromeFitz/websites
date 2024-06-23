@@ -31,8 +31,8 @@ importers:
         specifier: 2.0.4
         version: 2.0.4(is-ci@3.0.1)
       '@jeromefitz/prettier-config':
-        specifier: 2.0.6
-        version: 2.0.6
+        specifier: 2.0.7
+        version: 2.0.7
       '@jeromefitz/release-notes-generator':
         specifier: 3.0.1
         version: 3.0.1(lodash@4.17.21)
@@ -40,8 +40,8 @@ importers:
         specifier: 11.0.1
         version: 11.0.1(@jeromefitz/conventional-gitmoji@4.0.2(lodash@4.17.21))(typescript@5.5.2)
       '@jeromefitz/tsconfig':
-        specifier: 2.0.0
-        version: 2.0.0
+        specifier: 2.0.1
+        version: 2.0.1
       '@manypkg/cli':
         specifier: 0.21.4
         version: 0.21.4
@@ -55,8 +55,8 @@ importers:
         specifier: 20.14.8
         version: 20.14.8
       ccommit:
-        specifier: 2.0.2
-        version: 2.0.2
+        specifier: 3.0.0
+        version: 3.0.0
       concurrently:
         specifier: 8.2.2
         version: 8.2.2
@@ -307,8 +307,8 @@ importers:
   packages/next-config:
     devDependencies:
       '@jeromefitz/prettier-config':
-        specifier: 2.0.6
-        version: 2.0.6
+        specifier: 2.0.7
+        version: 2.0.7
       '@next/bundle-analyzer':
         specifier: 14.2.4
         version: 14.2.4
@@ -356,8 +356,8 @@ importers:
         specifier: 3.0.0-canary.8
         version: 3.0.0-canary.8(date-fns@3.6.0)
       '@jeromefitz/utils':
-        specifier: 3.0.0
-        version: 3.0.0(lodash@4.17.21)
+        specifier: 3.0.1
+        version: 3.0.1(lodash@4.17.21)
       '@notionhq/client':
         specifier: 2.2.15
         version: 2.2.15
@@ -395,8 +395,8 @@ importers:
   packages/shared:
     devDependencies:
       '@jeromefitz/utils':
-        specifier: 3.0.0
-        version: 3.0.0(lodash@4.17.21)
+        specifier: 3.0.1
+        version: 3.0.1(lodash@4.17.21)
       '@notionhq/client':
         specifier: 2.2.15
         version: 2.2.15
@@ -603,13 +603,13 @@ importers:
         version: 3.0.0-canary.8(date-fns@3.6.0)
       '@jeromefitz/notion':
         specifier: 5.0.5
-        version: 5.0.5(@jeromefitz/utils@3.0.0(lodash@4.17.21))(lodash@4.17.21)
+        version: 5.0.5(@jeromefitz/utils@3.0.1(lodash@4.17.21))(lodash@4.17.21)
       '@jeromefitz/spotify':
-        specifier: 4.0.3
-        version: 4.0.3(@jeromefitz/utils@3.0.0(lodash@4.17.21))(lodash@4.17.21)(sharp@0.32.6)
+        specifier: 4.0.4
+        version: 4.0.4(@jeromefitz/utils@3.0.1(lodash@4.17.21))(lodash@4.17.21)(sharp@0.32.6)
       '@jeromefitz/utils':
-        specifier: 3.0.0
-        version: 3.0.0(lodash@4.17.21)
+        specifier: 3.0.1
+        version: 3.0.1(lodash@4.17.21)
       '@mantine/hooks':
         specifier: 7.10.2
         version: 7.10.2(react@18.3.1)
@@ -876,8 +876,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/tailwind-config
       '@jeromefitz/tsconfig':
-        specifier: 2.0.0
-        version: 2.0.0
+        specifier: 2.0.1
+        version: 2.0.1
       '@types/ms':
         specifier: 0.7.34
         version: 0.7.34
@@ -922,13 +922,13 @@ importers:
         version: 3.0.0-canary.8(date-fns@3.6.0)
       '@jeromefitz/notion':
         specifier: 5.0.5
-        version: 5.0.5(@jeromefitz/utils@3.0.0(lodash@4.17.21))(lodash@4.17.21)
+        version: 5.0.5(@jeromefitz/utils@3.0.1(lodash@4.17.21))(lodash@4.17.21)
       '@jeromefitz/spotify':
-        specifier: 4.0.3
-        version: 4.0.3(@jeromefitz/utils@3.0.0(lodash@4.17.21))(lodash@4.17.21)(sharp@0.32.6)
+        specifier: 4.0.4
+        version: 4.0.4(@jeromefitz/utils@3.0.1(lodash@4.17.21))(lodash@4.17.21)(sharp@0.32.6)
       '@jeromefitz/utils':
-        specifier: 3.0.0
-        version: 3.0.0(lodash@4.17.21)
+        specifier: 3.0.1
+        version: 3.0.1(lodash@4.17.21)
       '@mantine/hooks':
         specifier: 7.10.2
         version: 7.10.2(react@18.3.1)
@@ -1201,8 +1201,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/tailwind-config
       '@jeromefitz/tsconfig':
-        specifier: 2.0.0
-        version: 2.0.0
+        specifier: 2.0.1
+        version: 2.0.1
       '@types/ms':
         specifier: 0.7.34
         version: 0.7.34
@@ -2537,8 +2537,8 @@ packages:
       '@jeromefitz/utils': ^3.0.0
       lodash: ^4.17.21
 
-  '@jeromefitz/prettier-config@2.0.6':
-    resolution: {integrity: sha512-AIVE0Wb0ApBFacRgzXa73cqfn84a9xRpOPTRR9yeVn6SD7VNm5Teq4wLv1bRUqFWhxXAfaNy/To+gPM0BOWmqQ==}
+  '@jeromefitz/prettier-config@2.0.7':
+    resolution: {integrity: sha512-Op6wzTyLi9HCRKuGXSu7CudcNBCxK42IM0UERQzdRFmHjp73X5EqaKA38+ahWGYGj/H7MOBHf3R+YPKS2JSrpw==}
     engines: {node: '>=20'}
 
   '@jeromefitz/release-notes-generator@3.0.1':
@@ -2553,20 +2553,20 @@ packages:
     peerDependencies:
       '@jeromefitz/conventional-gitmoji': ^4.0.0
 
-  '@jeromefitz/spotify@4.0.3':
-    resolution: {integrity: sha512-5VeUO9PDHGYG/J5XrTcK+Ba0eYU0jkgL8l6Rdop3767llGZIw+ZwvXX8/NqWbGE5zn8rzlBzvGyp/cFJ5ssu9g==}
+  '@jeromefitz/spotify@4.0.4':
+    resolution: {integrity: sha512-FZHCAzc5LQdnUtdqKt6ZsJkMrtHW6sDqRg4gLpKV7r4OoghtVDjKCKMuj4Dtx35YihGbqqkJ0HZ2rbheA3E+3g==}
     engines: {node: '>=20'}
     peerDependencies:
       '@jeromefitz/utils': ^3.0.0
       lodash: ^4.17.21
       sharp: 0.32.6
 
-  '@jeromefitz/tsconfig@2.0.0':
-    resolution: {integrity: sha512-f+4y5PLb9BVvk1s5ez/vReu1KnXoZM/Ra08e7XmDZYZWmpOCfSfZ13D4KHhc5TuJ7lW69jUkl3dt/9fkhnfOkw==}
+  '@jeromefitz/tsconfig@2.0.1':
+    resolution: {integrity: sha512-H4taDa+dcP+3FkZ/pQIplXsbzyAUxhRXyPjFxsRiLZax7jr8fte9JixFBgh45LWHctsbR76maif65ZqsTO3I/w==}
     engines: {node: '>=20'}
 
-  '@jeromefitz/utils@3.0.0':
-    resolution: {integrity: sha512-3EAFaEDjaChIe4+jxMXqW+TY3Ngs0p1k3txosVoqF5qcJ45iCrBYs4jrk9fl7ygoI+eSHKGUQA6x17Olaw2kZA==}
+  '@jeromefitz/utils@3.0.1':
+    resolution: {integrity: sha512-JHivI8/aOFXarn/w0ooktNA+9yg1ttMa8CAjl+PwnPERPC7nk7jU0fuoaDKXdODN4EK00IuZBoCWexFKLOf5hw==}
     engines: {node: '>=20'}
     peerDependencies:
       lodash: ^4.17.21
@@ -5466,8 +5466,8 @@ packages:
     resolution: {integrity: sha512-roIFONhcxog0JSSWbvVAh3OocukmSgpqOH6YpMkCvav/ySIV3JKg4Dc8vYtQjYi/UxpNE36r/9v+VqTQqgkYmw==}
     engines: {node: '>=4'}
 
-  ccommit@2.0.2:
-    resolution: {integrity: sha512-iufE9Zusi05kz11wiVChoYh2kIlBJt9yJyBLYdRLze16yIUEZC6KNE39pMyw0T2n2SH6qWnte+2MVdF1+RUhBw==}
+  ccommit@3.0.0:
+    resolution: {integrity: sha512-ecjrnYKKCGS4oGO0rkv8wzzMGfnci8E2KoLUsUktbTX1KNVi/DMVi9m2ST671lkG49IonKwE+KmtYCJUCR47sA==}
     engines: {node: '>=20'}
     hasBin: true
 
@@ -6624,6 +6624,10 @@ packages:
   execa@9.1.0:
     resolution: {integrity: sha512-lSgHc4Elo2m6bUDhc3Hl/VxvUDJdQWI40RZ4KMY9bKRc+hgMOT7II/JjbNDhI8VnMtrCb7U/fhpJIkLORZozWw==}
     engines: {node: '>=18'}
+
+  execa@9.3.0:
+    resolution: {integrity: sha512-l6JFbqnHEadBoVAVpN5dl2yCyfX28WoBAGaoQcNmLLSedOxTxcn2Qa83s8I/PA5i56vWru2OHOtrwF7Om2vqlg==}
+    engines: {node: ^18.19.0 || >=20.5.0}
 
   exit@0.1.2:
     resolution: {integrity: sha512-Zk/eNKV2zbjpKzrsQ+n1G6poVbErQxJ0LBOJXaKZ1EViLzH+hrLu9cdXI4zw9dBQJslwBEpbQ2P1oS7nDxs6jQ==}
@@ -9223,8 +9227,8 @@ packages:
     peerDependencies:
       prettier: ^3.0.3
 
-  prettier-plugin-tailwindcss@0.6.2:
-    resolution: {integrity: sha512-eFefm4cg+1c2B57+H274Qm//CTWBdtQN9ansl0YTP/8TC8x3bugCTQSS/e4FC5Ctl9djhTzsbcMrZ7x2/abIow==}
+  prettier-plugin-tailwindcss@0.6.5:
+    resolution: {integrity: sha512-axfeOArc/RiGHjOIy9HytehlC0ZLeMaqY09mm8YCkMzznKiDkwFzOpBvtuhuv3xG5qB73+Mj7OCe2j/L1ryfuQ==}
     engines: {node: '>=14.21.3'}
     peerDependencies:
       '@ianvs/prettier-plugin-sort-imports': '*'
@@ -9278,11 +9282,6 @@ packages:
   prettier@2.8.8:
     resolution: {integrity: sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==}
     engines: {node: '>=10.13.0'}
-    hasBin: true
-
-  prettier@3.3.1:
-    resolution: {integrity: sha512-7CAwy5dRsxs8PHXT3twixW9/OEll8MLE0VRPCJyl7CkS6VHGPSlsVaWTiASPTyGyYRyApxlaWTzwUxVNrhcwDg==}
-    engines: {node: '>=14'}
     hasBin: true
 
   prettier@3.3.2:
@@ -12444,10 +12443,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@jeromefitz/notion@5.0.5(@jeromefitz/utils@3.0.0(lodash@4.17.21))(lodash@4.17.21)':
+  '@jeromefitz/notion@5.0.5(@jeromefitz/utils@3.0.1(lodash@4.17.21))(lodash@4.17.21)':
     dependencies:
       '@jeromefitz/date-fns-tz': 3.0.0-canary.8(date-fns@3.6.0)
-      '@jeromefitz/utils': 3.0.0(lodash@4.17.21)
+      '@jeromefitz/utils': 3.0.1(lodash@4.17.21)
       '@notionhq/client': 2.2.15
       date-fns: 3.6.0
       github-slugger: 2.0.0
@@ -12455,11 +12454,11 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  '@jeromefitz/prettier-config@2.0.6':
+  '@jeromefitz/prettier-config@2.0.7':
     dependencies:
-      prettier: 3.3.1
-      prettier-plugin-pkg: 0.18.1(prettier@3.3.1)
-      prettier-plugin-tailwindcss: 0.6.2(prettier@3.3.1)
+      prettier: 3.3.2
+      prettier-plugin-pkg: 0.18.1(prettier@3.3.2)
+      prettier-plugin-tailwindcss: 0.6.5(prettier@3.3.2)
     transitivePeerDependencies:
       - '@ianvs/prettier-plugin-sort-imports'
       - '@prettier/plugin-pug'
@@ -12502,18 +12501,18 @@ snapshots:
       - supports-color
       - typescript
 
-  '@jeromefitz/spotify@4.0.3(@jeromefitz/utils@3.0.0(lodash@4.17.21))(lodash@4.17.21)(sharp@0.32.6)':
+  '@jeromefitz/spotify@4.0.4(@jeromefitz/utils@3.0.1(lodash@4.17.21))(lodash@4.17.21)(sharp@0.32.6)':
     dependencies:
-      '@jeromefitz/utils': 3.0.0(lodash@4.17.21)
+      '@jeromefitz/utils': 3.0.1(lodash@4.17.21)
       github-slugger: 2.0.0
       isomorphic-unfetch: 4.0.2
       lodash: 4.17.21
       plaiceholder: 3.0.0(sharp@0.32.6)
       sharp: 0.32.6
 
-  '@jeromefitz/tsconfig@2.0.0': {}
+  '@jeromefitz/tsconfig@2.0.1': {}
 
-  '@jeromefitz/utils@3.0.0(lodash@4.17.21)':
+  '@jeromefitz/utils@3.0.1(lodash@4.17.21)':
     dependencies:
       lodash: 4.17.21
 
@@ -15015,10 +15014,10 @@ snapshots:
       - prettier
       - supports-color
 
-  '@storybook/builder-manager@8.1.10(prettier@3.3.1)':
+  '@storybook/builder-manager@8.1.10(prettier@3.3.2)':
     dependencies:
       '@fal-works/esbuild-plugin-global-externals': 2.1.2
-      '@storybook/core-common': 8.1.10(prettier@3.3.1)
+      '@storybook/core-common': 8.1.10(prettier@3.3.2)
       '@storybook/manager': 8.1.10
       '@storybook/node-logger': 8.1.10
       '@types/ejs': 3.1.5
@@ -15116,12 +15115,12 @@ snapshots:
       '@babel/types': 7.24.7
       '@ndelangen/get-tarball': 3.0.9
       '@storybook/codemod': 8.1.10
-      '@storybook/core-common': 8.1.10(prettier@3.3.1)
+      '@storybook/core-common': 8.1.10(prettier@3.3.2)
       '@storybook/core-events': 8.1.10
-      '@storybook/core-server': 8.1.10(prettier@3.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@storybook/core-server': 8.1.10(prettier@3.3.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@storybook/csf-tools': 8.1.10
       '@storybook/node-logger': 8.1.10
-      '@storybook/telemetry': 8.1.10(prettier@3.3.1)
+      '@storybook/telemetry': 8.1.10(prettier@3.3.2)
       '@storybook/types': 8.1.10
       '@types/semver': 7.5.8
       '@yarnpkg/fslib': 2.10.3
@@ -15140,7 +15139,7 @@ snapshots:
       jscodeshift: 0.15.2
       leven: 3.1.0
       ora: 5.4.1
-      prettier: 3.3.1
+      prettier: 3.3.2
       prompts: 2.4.2
       read-pkg-up: 7.0.1
       semver: 7.5.4
@@ -15183,7 +15182,7 @@ snapshots:
       globby: 14.0.1
       jscodeshift: 0.15.2(@babel/preset-env@7.24.6(@babel/core@7.24.7))
       lodash: 4.17.21
-      prettier: 3.3.1
+      prettier: 3.3.2
       recast: 0.23.7
       tiny-invariant: 1.3.3
     transitivePeerDependencies:
@@ -15307,7 +15306,7 @@ snapshots:
       - encoding
       - supports-color
 
-  '@storybook/core-common@8.1.10(prettier@3.3.1)':
+  '@storybook/core-common@8.1.10(prettier@3.3.2)':
     dependencies:
       '@storybook/core-events': 8.1.10
       '@storybook/csf-tools': 8.1.10
@@ -15339,7 +15338,7 @@ snapshots:
       ts-dedent: 2.2.0
       util: 0.12.5
     optionalDependencies:
-      prettier: 3.3.1
+      prettier: 3.3.2
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -15357,15 +15356,15 @@ snapshots:
       '@storybook/csf': 0.1.7
       ts-dedent: 2.2.0
 
-  '@storybook/core-server@8.1.10(prettier@3.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@storybook/core-server@8.1.10(prettier@3.3.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@aw-web-design/x-default-browser': 1.4.126
       '@babel/core': 7.24.7
       '@babel/parser': 7.24.7
       '@discoveryjs/json-ext': 0.5.7
-      '@storybook/builder-manager': 8.1.10(prettier@3.3.1)
+      '@storybook/builder-manager': 8.1.10(prettier@3.3.2)
       '@storybook/channels': 8.1.10
-      '@storybook/core-common': 8.1.10(prettier@3.3.1)
+      '@storybook/core-common': 8.1.10(prettier@3.3.2)
       '@storybook/core-events': 8.1.10
       '@storybook/csf': 0.1.7
       '@storybook/csf-tools': 8.1.10
@@ -15375,7 +15374,7 @@ snapshots:
       '@storybook/manager-api': 8.1.10(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@storybook/node-logger': 8.1.10
       '@storybook/preview-api': 8.1.10
-      '@storybook/telemetry': 8.1.10(prettier@3.3.1)
+      '@storybook/telemetry': 8.1.10(prettier@3.3.2)
       '@storybook/types': 8.1.10
       '@types/detect-port': 1.3.5
       '@types/diff': 5.2.1
@@ -15785,10 +15784,10 @@ snapshots:
       memoizerific: 1.11.3
       qs: 6.12.1
 
-  '@storybook/telemetry@8.1.10(prettier@3.3.1)':
+  '@storybook/telemetry@8.1.10(prettier@3.3.2)':
     dependencies:
       '@storybook/client-logger': 8.1.10
-      '@storybook/core-common': 8.1.10(prettier@3.3.1)
+      '@storybook/core-common': 8.1.10(prettier@3.3.2)
       '@storybook/csf-tools': 8.1.10
       chalk: 4.1.2
       detect-package-manager: 2.0.1
@@ -17201,11 +17200,11 @@ snapshots:
 
   case-sensitive-paths-webpack-plugin@2.4.0: {}
 
-  ccommit@2.0.2:
+  ccommit@3.0.0:
     dependencies:
       ansi-colors: 4.1.3
       enquirer: 2.4.1
-      execa: 8.0.1
+      execa: 9.3.0
       fuse.js: 7.0.0
       meow: 13.2.0
 
@@ -18658,6 +18657,21 @@ snapshots:
       strip-final-newline: 3.0.0
 
   execa@9.1.0:
+    dependencies:
+      '@sindresorhus/merge-streams': 4.0.0
+      cross-spawn: 7.0.3
+      figures: 6.1.0
+      get-stream: 9.0.1
+      human-signals: 7.0.0
+      is-plain-obj: 4.1.0
+      is-stream: 4.0.1
+      npm-run-path: 5.3.0
+      pretty-ms: 9.0.0
+      signal-exit: 4.1.0
+      strip-final-newline: 4.0.0
+      yoctocolors: 2.0.2
+
+  execa@9.3.0:
     dependencies:
       '@sindresorhus/merge-streams': 4.0.0
       cross-spawn: 7.0.3
@@ -21441,17 +21455,15 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier-plugin-pkg@0.18.1(prettier@3.3.1):
+  prettier-plugin-pkg@0.18.1(prettier@3.3.2):
     dependencies:
-      prettier: 3.3.1
+      prettier: 3.3.2
 
-  prettier-plugin-tailwindcss@0.6.2(prettier@3.3.1):
+  prettier-plugin-tailwindcss@0.6.5(prettier@3.3.2):
     dependencies:
-      prettier: 3.3.1
+      prettier: 3.3.2
 
   prettier@2.8.8: {}
-
-  prettier@3.3.1: {}
 
   prettier@3.3.2: {}
 
