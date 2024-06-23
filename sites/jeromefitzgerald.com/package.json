@@ -41,7 +41,7 @@
   "dependencies": {
     "@heroicons/react": "2.1.4",
     "@jeromefitz/date-fns-tz": "3.0.0-canary.8",
-    "@jeromefitz/notion": "5.0.4",
+    "@jeromefitz/notion": "5.0.5",
     "@jeromefitz/spotify": "4.0.3",
     "@jeromefitz/utils": "3.0.0",
     "@mantine/hooks": "7.10.2",
