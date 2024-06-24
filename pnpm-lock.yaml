@@ -842,8 +842,8 @@ importers:
         specifier: 4.2.0
         version: 4.2.0
       use-sound:
-        specifier: 4.0.1
-        version: 4.0.1(react@18.3.1)
+        specifier: 4.0.3
+        version: 4.0.3(react@18.3.1)
       uuid:
         specifier: 10.0.0
         version: 10.0.0
@@ -1164,8 +1164,8 @@ importers:
         specifier: 4.2.0
         version: 4.2.0
       use-sound:
-        specifier: 4.0.1
-        version: 4.0.1(react@18.3.1)
+        specifier: 4.0.3
+        version: 4.0.3(react@18.3.1)
       uuid:
         specifier: 10.0.0
         version: 10.0.0
@@ -10801,8 +10801,8 @@ packages:
       '@types/react':
         optional: true
 
-  use-sound@4.0.1:
-    resolution: {integrity: sha512-hykJ86kNcu6y/FzlSHcQxhjSGMslZx2WlfLpZNoPbvueakv4OF3xPxEtGV2YmculrIaH0tPp9LtG4jgy17xMWg==}
+  use-sound@4.0.3:
+    resolution: {integrity: sha512-L205pEUFIrLsGYsCUKHQVCt0ajs//YQOFbEQeNwaWaqQj3y3st4SuR+rvpMHLmv8hgTcfUFlvMQawZNI3OE18w==}
     peerDependencies:
       react: '>=16.8'
 
@@ -23208,7 +23208,7 @@ snapshots:
       react: 18.3.1
       tslib: 2.6.2
 
-  use-sound@4.0.1(react@18.3.1):
+  use-sound@4.0.3(react@18.3.1):
     dependencies:
       howler: 2.2.3
       react: 18.3.1
