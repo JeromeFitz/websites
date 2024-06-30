@@ -42,6 +42,7 @@ import { Venue } from './Event.Slug.Venue'
 import { Image } from './Image'
 
 const { DATABASE_ID } = CONFIG.EVENTS
+const { DATABASE_ID: DATABASE_ID__SHOWS } = CONFIG.SHOWS
 
 /**
  * @note(notion) Yea these "titles" are not really user friendly :X
@@ -217,9 +218,8 @@ async function Slug({ revalidate, segmentInfo }) {
     properties,
     'Rollup.Shows.Primary.Slug',
   )[0]
-  // console.dir(`showPrimarySlug: ${showPrimarySlug}`)
   const showPrimaryData = await getDataFromCache({
-    database_id: DATABASE_ID,
+    database_id: DATABASE_ID__SHOWS,
     draft: false,
     filterType: 'equals',
     revalidate: false,
@@ -258,42 +258,6 @@ async function Slug({ revalidate, segmentInfo }) {
         <Credits id={id} key={`relations--${id}--wrapper`} relations={R} />
         <ArticleMainCTA />
       </ArticleMain>
-      {/* <Grid>
-        <HeadlineColumnA>
-          <HeadlineTitleText
-            aria-hidden={true}
-            aria-label={title}
-            className="hidden"
-          >
-            <>{title}</>
-          </HeadlineTitleText>
-          <HeadlineTitleSub>
-            {tags.map(({ color, id, name }) => (
-              <Badge color={color} key={id} size="2">
-                <Code variant="ghost">{name}</Code>
-              </Badge>
-            ))}
-            <Ticket properties={properties} />
-          </HeadlineTitleSub>
-        </HeadlineColumnA>
-        <HeadlineContent>
-          <Callout size="1" variant="outline" />
-          <Heading size={{ initial: '7', md: '9' }}>{title}</Heading>
-          <Image properties={properties} />
-          <Blocks data={data?.blocks} />
-        </HeadlineContent>
-      </Grid>
-      <Grid>
-        <HeadlineColumnA>
-          <HeadlineTitle aria-label={title} as="h2">
-            <>Info</>
-          </HeadlineTitle>
-        </HeadlineColumnA>
-        <HeadlineContent className="">
-          <Separator size="4" />
-          <Relations id={id} key={`relations--${id}--wrapper`} relations={R} />
-        </HeadlineContent>
-      </Grid> */}
     </ContainerWithSidebar>
   )
 }
