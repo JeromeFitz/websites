@@ -356,8 +356,8 @@ importers:
         specifier: 3.0.0-canary.8
         version: 3.0.0-canary.8(date-fns@3.6.0)
       '@jeromefitz/utils':
-        specifier: 3.0.1
-        version: 3.0.1(lodash@4.17.21)
+        specifier: 3.0.2
+        version: 3.0.2(lodash@4.17.21)
       '@notionhq/client':
         specifier: 2.2.15
         version: 2.2.15
@@ -395,8 +395,8 @@ importers:
   packages/shared:
     devDependencies:
       '@jeromefitz/utils':
-        specifier: 3.0.1
-        version: 3.0.1(lodash@4.17.21)
+        specifier: 3.0.2
+        version: 3.0.2(lodash@4.17.21)
       '@notionhq/client':
         specifier: 2.2.15
         version: 2.2.15
@@ -603,13 +603,13 @@ importers:
         version: 3.0.0-canary.8(date-fns@3.6.0)
       '@jeromefitz/notion':
         specifier: 5.0.6
-        version: 5.0.6(@jeromefitz/utils@3.0.1(lodash@4.17.21))(lodash@4.17.21)
+        version: 5.0.6(@jeromefitz/utils@3.0.2(lodash@4.17.21))(lodash@4.17.21)
       '@jeromefitz/spotify':
         specifier: 4.0.5
-        version: 4.0.5(@jeromefitz/utils@3.0.1(lodash@4.17.21))(lodash@4.17.21)(sharp@0.32.6)
+        version: 4.0.5(@jeromefitz/utils@3.0.2(lodash@4.17.21))(lodash@4.17.21)(sharp@0.32.6)
       '@jeromefitz/utils':
-        specifier: 3.0.1
-        version: 3.0.1(lodash@4.17.21)
+        specifier: 3.0.2
+        version: 3.0.2(lodash@4.17.21)
       '@mantine/hooks':
         specifier: 7.11.0
         version: 7.11.0(react@18.3.1)
@@ -922,13 +922,13 @@ importers:
         version: 3.0.0-canary.8(date-fns@3.6.0)
       '@jeromefitz/notion':
         specifier: 5.0.6
-        version: 5.0.6(@jeromefitz/utils@3.0.1(lodash@4.17.21))(lodash@4.17.21)
+        version: 5.0.6(@jeromefitz/utils@3.0.2(lodash@4.17.21))(lodash@4.17.21)
       '@jeromefitz/spotify':
         specifier: 4.0.5
-        version: 4.0.5(@jeromefitz/utils@3.0.1(lodash@4.17.21))(lodash@4.17.21)(sharp@0.32.6)
+        version: 4.0.5(@jeromefitz/utils@3.0.2(lodash@4.17.21))(lodash@4.17.21)(sharp@0.32.6)
       '@jeromefitz/utils':
-        specifier: 3.0.1
-        version: 3.0.1(lodash@4.17.21)
+        specifier: 3.0.2
+        version: 3.0.2(lodash@4.17.21)
       '@mantine/hooks':
         specifier: 7.11.0
         version: 7.11.0(react@18.3.1)
@@ -2565,8 +2565,8 @@ packages:
     resolution: {integrity: sha512-H4taDa+dcP+3FkZ/pQIplXsbzyAUxhRXyPjFxsRiLZax7jr8fte9JixFBgh45LWHctsbR76maif65ZqsTO3I/w==}
     engines: {node: '>=20'}
 
-  '@jeromefitz/utils@3.0.1':
-    resolution: {integrity: sha512-JHivI8/aOFXarn/w0ooktNA+9yg1ttMa8CAjl+PwnPERPC7nk7jU0fuoaDKXdODN4EK00IuZBoCWexFKLOf5hw==}
+  '@jeromefitz/utils@3.0.2':
+    resolution: {integrity: sha512-mjkEmpoSWwVJeXSUW62kwJoUhqwuhDZOoJDySVjRrhQNTqKVF/l04SW+Pc5t/7/uYDxrV9VZVCwe0TbjscGafA==}
     engines: {node: '>=20'}
     peerDependencies:
       lodash: ^4.17.21
@@ -12493,10 +12493,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@jeromefitz/notion@5.0.6(@jeromefitz/utils@3.0.1(lodash@4.17.21))(lodash@4.17.21)':
+  '@jeromefitz/notion@5.0.6(@jeromefitz/utils@3.0.2(lodash@4.17.21))(lodash@4.17.21)':
     dependencies:
       '@jeromefitz/date-fns-tz': 3.0.0-canary.8(date-fns@3.6.0)
-      '@jeromefitz/utils': 3.0.1(lodash@4.17.21)
+      '@jeromefitz/utils': 3.0.2(lodash@4.17.21)
       '@notionhq/client': 2.2.15
       date-fns: 3.6.0
       github-slugger: 2.0.0
@@ -12551,9 +12551,9 @@ snapshots:
       - supports-color
       - typescript
 
-  '@jeromefitz/spotify@4.0.5(@jeromefitz/utils@3.0.1(lodash@4.17.21))(lodash@4.17.21)(sharp@0.32.6)':
+  '@jeromefitz/spotify@4.0.5(@jeromefitz/utils@3.0.2(lodash@4.17.21))(lodash@4.17.21)(sharp@0.32.6)':
     dependencies:
-      '@jeromefitz/utils': 3.0.1(lodash@4.17.21)
+      '@jeromefitz/utils': 3.0.2(lodash@4.17.21)
       github-slugger: 2.0.0
       isomorphic-unfetch: 4.0.2
       lodash: 4.17.21
@@ -12562,7 +12562,7 @@ snapshots:
 
   '@jeromefitz/tsconfig@2.0.1': {}
 
-  '@jeromefitz/utils@3.0.1(lodash@4.17.21)':
+  '@jeromefitz/utils@3.0.2(lodash@4.17.21)':
     dependencies:
       lodash: 4.17.21
 
