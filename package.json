@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "@jeromefitz/conventional-gitmoji": "4.0.3",
-    "@jeromefitz/eslint-config": "4.0.1",
+    "@jeromefitz/eslint-config": "4.0.2",
     "@jeromefitz/lint-staged": "2.0.4",
     "@jeromefitz/prettier-config": "2.0.7",
     "@jeromefitz/release-notes-generator": "3.0.1",
