@@ -431,8 +431,8 @@ importers:
         specifier: 2.1.0
         version: 2.1.0
       fathom-client:
-        specifier: 3.7.0
-        version: 3.7.0
+        specifier: 3.7.2
+        version: 3.7.2
       github-slugger:
         specifier: 2.0.0
         version: 2.0.0
@@ -758,8 +758,8 @@ importers:
         specifier: 2.1.0
         version: 2.1.0
       fathom-client:
-        specifier: 3.7.0
-        version: 3.7.0
+        specifier: 3.7.2
+        version: 3.7.2
       focus-trap-react:
         specifier: 10.2.3
         version: 10.2.3(prop-types@15.8.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -1077,8 +1077,8 @@ importers:
         specifier: 2.1.0
         version: 2.1.0
       fathom-client:
-        specifier: 3.7.0
-        version: 3.7.0
+        specifier: 3.7.2
+        version: 3.7.2
       focus-trap-react:
         specifier: 10.2.3
         version: 10.2.3(prop-types@15.8.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -6722,8 +6722,8 @@ packages:
   fastq@1.17.1:
     resolution: {integrity: sha512-sRVD3lWVIXWg6By68ZN7vho9a1pQcN/WBFaAAsDDFzlJjvoGx0P8z7V1t72grFJfJhu3YPZBuu25f7Kaw2jN1w==}
 
-  fathom-client@3.7.0:
-    resolution: {integrity: sha512-lMEyR3lSThlkK69+f/16OEyuii743iJGcZ6aIUKT5qYH9lGi7ENTYwuxh5NWWYSO6qs57we01nLxncW8kegJlw==}
+  fathom-client@3.7.2:
+    resolution: {integrity: sha512-sWtaNivhg7uwp/q1bUuIiNj4LeQZMEZ5NXXFFpZ8le4uDedAfQG84gPOdYehtVXbl+1yX2s8lmXZ2+IQ9a/xxA==}
 
   fb-watchman@2.0.2:
     resolution: {integrity: sha512-p5161BqbuCaSnB8jIbzQHOlpgsPmK5rJVDfDKO91Axs5NC1uu3HRQm6wt9cd9/+GtQQIO53JdGXXoyDpTAsgYA==}
@@ -18842,7 +18842,7 @@ snapshots:
     dependencies:
       reusify: 1.0.4
 
-  fathom-client@3.7.0: {}
+  fathom-client@3.7.2: {}
 
   fb-watchman@2.0.2:
     dependencies:
