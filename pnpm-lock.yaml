@@ -97,8 +97,8 @@ importers:
   packages/design-system:
     dependencies:
       '@heroicons/react':
-        specifier: 2.1.4
-        version: 2.1.4(react@18.3.1)
+        specifier: 2.1.5
+        version: 2.1.5(react@18.3.1)
       '@radix-ui/react-accessible-icon':
         specifier: 1.1.0
         version: 1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -596,8 +596,8 @@ importers:
   sites/jerandky.com:
     dependencies:
       '@heroicons/react':
-        specifier: 2.1.4
-        version: 2.1.4(react@18.3.1)
+        specifier: 2.1.5
+        version: 2.1.5(react@18.3.1)
       '@jeromefitz/date-fns-tz':
         specifier: 3.0.0-canary.8
         version: 3.0.0-canary.8(date-fns@3.6.0)
@@ -915,8 +915,8 @@ importers:
   sites/jeromefitzgerald.com:
     dependencies:
       '@heroicons/react':
-        specifier: 2.1.4
-        version: 2.1.4(react@18.3.1)
+        specifier: 2.1.5
+        version: 2.1.5(react@18.3.1)
       '@jeromefitz/date-fns-tz':
         specifier: 3.0.0-canary.8
         version: 3.0.0-canary.8(date-fns@3.6.0)
@@ -2469,8 +2469,8 @@ packages:
   '@floating-ui/utils@0.2.2':
     resolution: {integrity: sha512-J4yDIIthosAsRZ5CPYP/jQvUAQtlZTTD/4suA08/FEnlxqW3sKS9iAhgsa9VYLZ6vDHn/ixJgIqRQPotoBjxIw==}
 
-  '@heroicons/react@2.1.4':
-    resolution: {integrity: sha512-ju0wj0wwrUTMQ2Yceyrma7TKuI3BpSjp+qKqV81K9KGcUHdvTMdiwfRc2cwXBp3uXtKuDZkh0v03nWOQnJFv2Q==}
+  '@heroicons/react@2.1.5':
+    resolution: {integrity: sha512-FuzFN+BsHa+7OxbvAERtgBTNeZpUjgM/MIizfVkSCL2/edriN0Hx/DWRCR//aPYwO5QX/YlgLGXk+E3PcfZwjA==}
     peerDependencies:
       react: '>= 16'
 
@@ -12382,7 +12382,7 @@ snapshots:
 
   '@floating-ui/utils@0.2.2': {}
 
-  '@heroicons/react@2.1.4(react@18.3.1)':
+  '@heroicons/react@2.1.5(react@18.3.1)':
     dependencies:
       react: 18.3.1
 
