@@ -416,8 +416,8 @@ importers:
         specifier: 1.2.1
         version: 1.2.1
       '@upstash/redis':
-        specifier: 1.32.0
-        version: 1.32.0
+        specifier: 1.33.0
+        version: 1.33.0
       '@vercel/analytics':
         specifier: 1.3.1
         version: 1.3.1(next@14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
@@ -740,8 +740,8 @@ importers:
         specifier: 1.2.1
         version: 1.2.1
       '@upstash/redis':
-        specifier: 1.32.0
-        version: 1.32.0
+        specifier: 1.33.0
+        version: 1.33.0
       '@vercel/analytics':
         specifier: 1.3.1
         version: 1.3.1(next@14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
@@ -1056,8 +1056,8 @@ importers:
         specifier: 1.2.1
         version: 1.2.1
       '@upstash/redis':
-        specifier: 1.32.0
-        version: 1.32.0
+        specifier: 1.33.0
+        version: 1.33.0
       '@vercel/analytics':
         specifier: 1.3.1
         version: 1.3.1(next@14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
@@ -4670,8 +4670,8 @@ packages:
   '@upstash/ratelimit@1.2.1':
     resolution: {integrity: sha512-o01lV1yFS5Fzj5KONZmNyVch/Qrlj785B2ob+kStUmxn8F6xXk7IHTQqVcHE+Ce3CmT/qQIwvMxDZftyJ5wYpQ==}
 
-  '@upstash/redis@1.32.0':
-    resolution: {integrity: sha512-KBzCjOgF9mhNcV4HTz7U8g7QTdLVEKi1sSe/97u0E+HkzdPmDt3j9lIPIHEUJz6RrdVH6s4HW4JcPvMLC7w3ew==}
+  '@upstash/redis@1.33.0':
+    resolution: {integrity: sha512-5WOilc7AE0ITAdE3NCyMwgOq1n3RHcqW0OfmbotiAyfA+QAEe1R7kXin8L/Yladgdc5lkA0GcYyewqKfAw53jQ==}
 
   '@vercel/analytics@1.3.1':
     resolution: {integrity: sha512-xhSlYgAuJ6Q4WQGkzYTLmXwhYl39sWjoMA3nHxfkvG+WdBT25c563a7QhwwKivEOZtPJXifYHR1m2ihoisbWyA==}
@@ -15539,13 +15539,13 @@ snapshots:
 
   '@upstash/core-analytics@0.0.9':
     dependencies:
-      '@upstash/redis': 1.32.0
+      '@upstash/redis': 1.33.0
 
   '@upstash/ratelimit@1.2.1':
     dependencies:
       '@upstash/core-analytics': 0.0.9
 
-  '@upstash/redis@1.32.0':
+  '@upstash/redis@1.33.0':
     dependencies:
       crypto-js: 4.2.0
 
