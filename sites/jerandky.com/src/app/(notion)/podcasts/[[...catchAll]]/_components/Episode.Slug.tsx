@@ -184,6 +184,7 @@ async function EpisodeSlug({ revalidate, segmentInfo }) {
   const is404 = isObjectEmpty(data?.blocks || {})
   if (is404) return notFound()
 
+  // eslint-disable-next-line no-unsafe-optional-chaining
   const { properties }: { properties: PropertiesEpisode } = data?.page
   const { isPublished, title } = getEpisodeData(properties)
 

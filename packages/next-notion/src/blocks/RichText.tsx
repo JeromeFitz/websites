@@ -65,7 +65,7 @@ function RichTextArray({ id, items }) {
           )
         }
 
-        const Component = !!props.className ? 'span' : Fragment
+        const Component = props.className ? 'span' : Fragment
         if (Component === Fragment) delete props.className
 
         return (
@@ -97,7 +97,7 @@ function RichText({
   const key = getBlockKey(block.id, block.type, order)
   const data: {
     color: ApiColor
-    rich_text: Array<RichTextItemResponse>
+    rich_text: RichTextItemResponse[]
   } = block[block.type]
 
   if (!data) return null

@@ -8,7 +8,7 @@ import type {
 } from '@notionhq/client/build/src/api-endpoints'
 import type { Spread } from 'next-notion/Notion.types'
 
-type PropertiesVenue = {
+interface PropertiesVenue {
   'Address.City': RichTextPropertyItemObjectResponse
   'Address.Latitude': NumberPropertyItemObjectResponse
   'Address.Longitude': NumberPropertyItemObjectResponse

@@ -21,7 +21,7 @@ type PageKeyMaker<Page, Key extends any[]> = (
    */
 ) => Key
 
-type UseSWRInfinitePagesConfig<Page extends object> = {
+interface UseSWRInfinitePagesConfig<Page extends object> {
   dataPath: keyof Page | string[]
   limit?: number
 } // & SWRInfiniteConfiguration<Page>

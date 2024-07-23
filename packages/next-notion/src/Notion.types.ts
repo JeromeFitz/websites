@@ -52,7 +52,7 @@ type Spread<A extends readonly [...any]> = A extends [infer L, ...infer R]
  *
  */
 type Direction = 'ascending' | 'descending'
-type SortItem = {
+interface SortItem {
   direction: Direction
   property: string
 }
@@ -64,7 +64,7 @@ type FilterType =
   | 'equals'
   | 'starts_with'
 
-type BulletedListBlockObjectResponse = {
+interface BulletedListBlockObjectResponse {
   archived: boolean
   bulleted_list: any
   created_by: PartialUserObjectResponse
@@ -81,7 +81,7 @@ type BulletedListBlockObjectResponse = {
     | { type: 'workspace'; workspace: true }
   type: 'bulleted_list'
 }
-type NumberedListBlockObjectResponse = {
+interface NumberedListBlockObjectResponse {
   archived: boolean
   created_by: PartialUserObjectResponse
   created_time: string
@@ -142,7 +142,7 @@ type SelectColor =
   | 'purple'
   | 'red'
   | 'yellow'
-type SelectPropertyResponse = {
+interface SelectPropertyResponse {
   color: SelectColor
   id: StringRequest
   name: StringRequest
@@ -741,7 +741,7 @@ type TimeZoneRequest =
   | 'W-SU'
   | 'WET'
   | 'Zulu'
-type DateResponse = {
+interface DateResponse {
   end: null | string
   start: string
   time_zone: TimeZoneRequest | null

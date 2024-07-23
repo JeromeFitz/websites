@@ -1,4 +1,4 @@
-type Data = {
+interface Data {
   badge: {
     color:
       | 'amber'

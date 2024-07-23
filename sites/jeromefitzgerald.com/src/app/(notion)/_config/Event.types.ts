@@ -16,7 +16,7 @@ import type {
 } from '@notionhq/client/build/src/api-endpoints.js'
 import type { Spread } from 'next-notion/Notion.types'
 
-type PropertiesEvent = {
+interface PropertiesEvent {
   Date: DatePropertyItemObjectResponse
   'Date.DayOfMonth': FormulaPropertyItemObjectResponse
   'Date.DayOfMonthOrdinal': FormulaPropertyItemObjectResponse

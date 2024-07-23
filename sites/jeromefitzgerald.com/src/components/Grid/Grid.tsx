@@ -4,7 +4,7 @@ import type { ReactNode } from 'react'
 import { Grid } from '@radix-ui/themes/dist/esm/components/grid.js'
 import { forwardRef } from 'react'
 
-type AdditionalProps = {
+interface AdditionalProps {
   children: ReactNode
   className?: string
 }

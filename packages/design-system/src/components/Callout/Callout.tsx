@@ -10,7 +10,7 @@ import {
 import { cx } from '../../utils/cx'
 import { FileTextIcon } from '../Icon/index'
 
-type AdditionalProps = {
+interface AdditionalProps {
   children?: ReactNode
   className?: string
   classNameText?: string

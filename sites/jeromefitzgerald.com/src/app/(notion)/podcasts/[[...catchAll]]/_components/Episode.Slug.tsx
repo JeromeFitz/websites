@@ -178,6 +178,7 @@ async function EpisodeSlug({ revalidate, segmentInfo }) {
   const is404 = isObjectEmpty(data?.blocks || {})
   if (is404) return notFound()
 
+  // eslint-disable-next-line no-unsafe-optional-chaining
   const { properties }: { properties: PropertiesEpisode } = data?.page
   const { href, id, isPublished, title } = getEpisodeData(properties)
   // console.dir(props)
@@ -215,8 +216,9 @@ async function EpisodeSlug({ revalidate, segmentInfo }) {
       slug: `/podcasts/${podcastSlug}`,
     },
   })
-  if (!!podcastPrimaryData) {
+  if (podcastPrimaryData) {
     const { properties: podcastPrimaryProperties }: { properties: any } =
+      // eslint-disable-next-line no-unsafe-optional-chaining
       podcastPrimaryData?.page
     RELATIONS_SECONDARY[0]?.relations?.map((relation: RELATIONS_TYPE) => {
       R[relation] = []

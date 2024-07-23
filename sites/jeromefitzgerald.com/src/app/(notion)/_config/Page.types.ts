@@ -9,7 +9,7 @@ import type {
 } from '@notionhq/client/build/src/api-endpoints.js'
 import type { Spread } from 'next-notion/Notion.types'
 
-type PropertiesPage = {
+interface PropertiesPage {
   ID: FormulaPropertyItemObjectResponse
   'Is.Active': CheckboxPropertyItemObjectResponse
   'Is.Indexed': CheckboxPropertyItemObjectResponse

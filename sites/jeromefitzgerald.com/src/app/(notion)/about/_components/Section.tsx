@@ -282,7 +282,7 @@ function SectionLegend({ data }) {
                 <Box className="relative flex size-min cursor-pointer flex-row flex-nowrap items-center justify-start gap-3 overflow-visible p-0">
                   <Box className="rounded-3 bg-accent-9 flex size-8 flex-row flex-nowrap items-center justify-center">
                     <Box className={cx('text-white dark:text-black')}>
-                      {!!item.icon ? (
+                      {item.icon ? (
                         <Icon className="!size-4" />
                       ) : (
                         <Code variant="ghost">{i + 1}</Code>
@@ -330,7 +330,7 @@ function SectionContent({ data }) {
                   )}
                 >
                   <Heading as="h3" className={cx('text-white dark:text-black')}>
-                    {!!item.icon ? (
+                    {item.icon ? (
                       <Icon className="!size-6" />
                     ) : (
                       <Code variant="ghost">{i + 1}</Code>
@@ -358,7 +358,7 @@ function SectionContent({ data }) {
             </Box>
             <Box className="w-full">
               <Box className="max-w-screen-sm">
-                {!!item.content ? item.content : <Lorem />}
+                {item.content ? item.content : <Lorem />}
               </Box>
             </Box>
           </section>

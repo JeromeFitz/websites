@@ -36,7 +36,7 @@ async function generateMetadataCustom({ data, pageData, segmentInfo }) {
     /**
      * @todo(notion) check against cache first
      */
-    const imageUrl = !!pageData?.seoImage
+    const imageUrl = pageData?.seoImage
       ? pageData?.seoImage[pageData?.seoImage?.type]?.url
       : undefined
 
@@ -52,7 +52,7 @@ async function generateMetadataCustom({ data, pageData, segmentInfo }) {
 
     const cache: any = await redis.get(key)
     const isCached = !!cache && !isObjectEmpty(cache)
-    const images = !!cache ? cache : []
+    const images = cache ? cache : []
 
     if (!isCached && !!imageUrl) {
       // console.dir(`[generateMetadataCustom] !isCached && !!imageUrl`)

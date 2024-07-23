@@ -22,7 +22,7 @@ import { getDatabaseQuery, getMetadata } from './index'
 
 const notion = new Client({ auth: envServer.NOTION_API_KEY })
 
-type GetDataFromCache = {
+interface GetDataFromCache {
   database_id: string
   draft?: boolean
   filterType: any //FilterType
@@ -84,7 +84,7 @@ const getDataFromCache = cache(
       const page = data.results[0]
 
       let blocks = {}
-      if (!!page) {
+      if (page) {
         const blockChildrenParentData = getBlockChildrenDataParent(page?.id)
         const [blockChildrenParent] = await Promise.all([blockChildrenParentData])
         blocks = blockChildrenParent
@@ -114,7 +114,7 @@ const getDataFromCache = cache(
      */
     let isExpired = false
     const blockSeoImage = data?.page?.properties['SEO.Image']?.files[0]
-    const SEO_IMAGE_IS_AWS = !!blockSeoImage
+    const SEO_IMAGE_IS_AWS = blockSeoImage
       ? isAwsImage(blockSeoImage[blockSeoImage?.type]?.url)
       : false
     if (SEO_IMAGE_IS_AWS) {
@@ -131,7 +131,7 @@ const getDataFromCache = cache(
      */
     if (
       !!data?.page?.id &&
-      (isExpired || isObjectEmpty(!!data?.seo ? data?.seo : {}))
+      (isExpired || isObjectEmpty(data?.seo ? data?.seo : {}))
     ) {
       // @todo(types)
       const pageData: any = await notion?.pages?.retrieve({

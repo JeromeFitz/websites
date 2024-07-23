@@ -13,7 +13,7 @@ import type {
 } from '@notionhq/client/build/src/api-endpoints.js'
 import type { Spread } from 'next-notion/Notion.types'
 
-type PropertiesBook = {
+interface PropertiesBook {
   Author: RichTextPropertyItemObjectResponse
   'Date.Published': DatePropertyItemObjectResponse
   'Date.Read': DatePropertyItemObjectResponse

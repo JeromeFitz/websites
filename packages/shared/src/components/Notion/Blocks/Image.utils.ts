@@ -10,7 +10,7 @@ function getImageAlt(comments) {
   )
   return !!c && c.length > 0
     ? c[0]?.rich_text[0]?.plain_text.slice(FIND_ALT.length)
-    : !!comment
+    : comment
       ? comment?.rich_text[0]?.plain_text
       : ''
 }
