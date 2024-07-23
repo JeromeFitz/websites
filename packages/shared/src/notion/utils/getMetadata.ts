@@ -44,7 +44,7 @@ function getMetadata({ properties, segmentInfo }) {
     properties,
     'SEO.Description',
   )
-   
+
   const description: string = descriptionTemp?.toString()
 
   /**
