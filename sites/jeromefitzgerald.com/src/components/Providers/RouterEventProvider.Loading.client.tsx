@@ -64,8 +64,8 @@ const Loading: React.FC<{ isRouteChanging: boolean }> = ({ isRouteChanging }) =>
       ? _find(zzz_menuTertiary[type], { href: pathname })
       : null
 
-    if (!!mt2) zzz_menuSecondaryActiveSet(mt2)
-    if (!!mt3) zzz_menuTertiaryActiveSet(mt3)
+    if (mt2) zzz_menuSecondaryActiveSet(mt2)
+    if (mt3) zzz_menuTertiaryActiveSet(mt3)
 
     return () => {
       document.body.classList.remove('loading')

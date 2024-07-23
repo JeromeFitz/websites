@@ -13,7 +13,7 @@ import { notion } from '../helper'
 
 const DATABASE_ID = envServer.NOTION__DATABASE__PAGES ?? ''
 
-type GetDatabaseQueryTypes = {
+interface GetDatabaseQueryTypes {
   database_id?: string
   filterType?: FilterType
   segmentInfo: SegmentInfo
@@ -70,7 +70,7 @@ const getDatabaseQuery = async ({
   const sorts = sortsData
 
   const options = {
-    database_id: !!database_id ? database_id : DATABASE_ID,
+    database_id: database_id ? database_id : DATABASE_ID,
     filter,
     page_size: 100, // max
     sorts,
@@ -172,7 +172,7 @@ const getDatabaseQueryByDateRange = async ({
   const sorts = sortsData
 
   const options = {
-    database_id: !!database_id ? database_id : DATABASE_ID,
+    database_id: database_id ? database_id : DATABASE_ID,
     filter,
     sorts,
   }

@@ -73,7 +73,7 @@ async function getImageFromBlock({ block, url }) {
 
   const cache: any = await redis.get(key)
   const isCached = !!cache && !isObjectEmpty(cache)
-  let image = !!cache ? { ...cache } : {}
+  let image = cache ? { ...cache } : {}
 
   /**
    * @note(notion) AWS, Notion, and Cache
@@ -175,7 +175,7 @@ async function ImageImpl({
   const imageUrl = getImageUrl(block)
   if (!imageUrl) return null
 
-  const imageCaption = !!block[block.type]?.caption
+  const imageCaption = block[block.type]?.caption
     ? block[block.type]?.caption[0]?.plain_text
     : null
 

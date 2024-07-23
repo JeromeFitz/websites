@@ -55,6 +55,7 @@ async function Slug({ revalidate, segmentInfo }) {
   const is404 = isObjectEmpty(data?.blocks || {})
   if (is404) return notFound()
 
+  // eslint-disable-next-line no-unsafe-optional-chaining
   const { properties }: { properties: PropertiesShow } = data?.page
   const { id, isPublished, title } = getShowData(properties)
 

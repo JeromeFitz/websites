@@ -1,4 +1,4 @@
-function Navigation({}) {
+function Navigation() {
   return (
     <>
       <></>

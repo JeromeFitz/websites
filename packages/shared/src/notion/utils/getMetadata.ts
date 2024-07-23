@@ -15,12 +15,12 @@ import _title from 'title'
 type TextRequest = string
 type ImageItemResponse =
   | {
-      caption: Array<RichTextItemResponse>
+      caption: RichTextItemResponse[]
       external: { url: TextRequest }
       type: 'external'
     }
   | {
-      caption: Array<RichTextItemResponse>
+      caption: RichTextItemResponse[]
       file: { expiry_time: string; url: string }
       type: 'file'
     }
@@ -44,7 +44,7 @@ function getMetadata({ properties, segmentInfo }) {
     properties,
     'SEO.Description',
   )
-  // eslint-disable-next-line @typescript-eslint/no-base-to-string
+
   const description: string = descriptionTemp?.toString()
 
   /**
@@ -53,7 +53,7 @@ function getMetadata({ properties, segmentInfo }) {
   let openGraph: any
   const hasImage = !isObjectEmpty(properties?.['SEO.Image'] ?? {})
   if (hasImage) {
-    openGraph: true
+    true
 
     const imageData: ImageItemResponse = getPropertyTypeData(
       properties,
@@ -62,7 +62,7 @@ function getMetadata({ properties, segmentInfo }) {
     // console.dir(`> imageData`)
     // console.dir(imageData)
 
-    if (!!imageData) {
+    if (imageData) {
       const imageUrl =
         imageData.type === 'external' ? imageData.external.url : imageData.file.url
       const imageDescription: TextRichTextItemResponse = getPropertyTypeData(

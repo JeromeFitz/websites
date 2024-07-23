@@ -9,7 +9,7 @@ import {
   // Tags,
 } from '@jeromefitz/ds/components/Section'
 
-function Slug({}) {
+function Slug() {
   const title = 'Jer & Ky BoyZ'
   const subtitle = 'MailShrimp'
 
@@ -38,6 +38,6 @@ function Slug({}) {
   )
 }
 
-export default function Page({}) {
+export default function Page() {
   return <Slug />
 }

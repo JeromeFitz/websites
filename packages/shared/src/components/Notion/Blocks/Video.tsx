@@ -17,7 +17,7 @@ function VideoImpl({ block }: { block: VideoBlockObjectResponse | any }) {
   /**
    * @todo(notion) TextAnnotations
    */
-  const caption = !!block[block.type]?.caption
+  const caption = block[block.type]?.caption
     ? block[block.type]?.caption[0]?.plain_text
     : null
 

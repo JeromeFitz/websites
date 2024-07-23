@@ -31,7 +31,7 @@ import type {
   SelectPropertyResponse,
 } from '../Notion.types'
 
-type CheckboxData = {
+interface CheckboxData {
   checkbox: boolean
   id: string
   type: 'checkbox'
@@ -43,7 +43,7 @@ function getCheckboxData({ data, type }: { data: CheckboxData; type: string }) {
   return dataReturn
 }
 
-type DateData = {
+interface DateData {
   date: DateResponse | null
   id: string
   type: 'date'
@@ -57,7 +57,7 @@ function getDateData({ data, type }: { data: DateData; type: string }) {
   return dataReturn
 }
 
-type FilesData = {
+interface FilesData {
   id: string
   type: 'url'
   url: null | string
@@ -89,9 +89,9 @@ function getFormulaData({ data, type }: { data: any; type: string }) {
   return dataReturn[dataReturn.type]
 }
 
-type MultiSelectData = {
+interface MultiSelectData {
   id: string
-  multi_select: Array<SelectPropertyResponse>
+  multi_select: SelectPropertyResponse[]
   type: 'multi_select'
 }
 function getMultiSelectData({
@@ -107,7 +107,7 @@ function getMultiSelectData({
   return dataReturn
 }
 
-type NumberData = {
+interface NumberData {
   id: string
   number: null | number
   type: 'number'
@@ -119,12 +119,12 @@ function getNumberData({ data, type }: { data: NumberData; type: string }) {
   return dataReturn
 }
 
-type RelationData = {
+interface RelationData {
   has_more?: boolean
   id: string
-  relation: Array<{
+  relation: {
     id: string
-  }>
+  }[]
   type: 'relation'
 }
 function getRelationData({ data, type }: { data: RelationData; type: string }) {
@@ -134,12 +134,12 @@ function getRelationData({ data, type }: { data: RelationData; type: string }) {
   return dataReturn
 }
 
-type RichTextData = {
+interface RichTextData {
   has_more?: boolean
   id: string
-  relation: Array<{
+  relation: {
     id: string
-  }>
+  }[]
   type: 'relation'
 }
 function getRichTextData({ data, type }: { data: RichTextData; type: string }) {
@@ -158,12 +158,12 @@ function getRichTextData({ data, type }: { data: RichTextData; type: string }) {
   return dataReturn
 }
 
-type RollupData = {
+interface RollupData {
   id: string
   object: 'property_item'
   rollup:
     | {
-        array: Array<EmptyObject>
+        array: EmptyObject[]
         function: RollupFunction
         type: 'array'
       }
@@ -240,7 +240,7 @@ function getRollupData({ data, type }: { data: RollupData; type: string }) {
   return dataReturn
 }
 
-type SelectData = {
+interface SelectData {
   id: string
   select: SelectPropertyResponse | null
   type: 'select'
@@ -252,9 +252,9 @@ function getSelectData({ data, type }: { data: SelectData; type: string }) {
   return dataReturn
 }
 
-type TitleData = {
+interface TitleData {
   id: string
-  title: Array<RichTextItemResponse>
+  title: RichTextItemResponse[]
   type: 'title'
 }
 function getTitleData({ data, type }: { data: TitleData; type: string }) {
@@ -265,7 +265,7 @@ function getTitleData({ data, type }: { data: TitleData; type: string }) {
   return dataReturn
 }
 
-type UrlData = {
+interface UrlData {
   id: string
   type: 'url'
   url: null | string

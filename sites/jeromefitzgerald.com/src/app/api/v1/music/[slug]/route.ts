@@ -29,6 +29,7 @@ const redis = new Redis({
 /**
  * @redis is in seconds not ms
  */
+// eslint-disable-next-line no-constant-binary-expression
 const getTimeInSeconds = (time: number) => time / 1000 ?? 0
 
 const evictionPolicyTiming = {

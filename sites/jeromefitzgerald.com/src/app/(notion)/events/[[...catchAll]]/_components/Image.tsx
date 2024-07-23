@@ -60,7 +60,7 @@ async function Image({ className = '', properties }) {
    * - If SEO Image is AWS, re-set cache
    */
   let isExpired = false
-  const SEO_IMAGE_IS_AWS = !!imageSeo
+  const SEO_IMAGE_IS_AWS = imageSeo
     ? isAwsImage(imageSeo[imageSeo?.type]?.url)
     : false
   if (SEO_IMAGE_IS_AWS) {
@@ -82,7 +82,7 @@ async function Image({ className = '', properties }) {
   /**
    * @todo(next) this image piece should be abstracted out and return nothing if undefined
    */
-  const imageUrl = !!imageSeo ? imageSeo[imageSeo.type].url : undefined
+  const imageUrl = imageSeo ? imageSeo[imageSeo.type].url : undefined
   // console.dir(`imageSeoDescription:`)
   // console.dir(imageSeoDescription)
   // console.dir(`imageUrl:`)
@@ -105,7 +105,7 @@ async function Image({ className = '', properties }) {
 
   const cache: any = await redis.get(key)
   const isCached = !!cache && !isObjectEmpty(cache)
-  let image = !!cache ? { ...cache } : {}
+  let image = cache ? { ...cache } : {}
 
   // console.dir(`cache:`)
   // console.dir(cache)
