@@ -9,7 +9,7 @@ import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 
-type AdditionalProps = {
+interface AdditionalProps {
   children: ReactNode
   className?: string
 }

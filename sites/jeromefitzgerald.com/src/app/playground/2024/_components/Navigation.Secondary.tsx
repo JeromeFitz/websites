@@ -43,7 +43,7 @@ function NavigationSecondary({ order = 0 }) {
     zzz_menuTertiaryActiveSet,
   } = useStore()
 
-  const isDisabled = !!zzz_menuSecondaryActive?.icon ? false : true
+  const isDisabled = zzz_menuSecondaryActive?.icon ? false : true
   const IconSecondary = zzz_menuSecondaryActive?.icon ?? HomeIcon
 
   /**

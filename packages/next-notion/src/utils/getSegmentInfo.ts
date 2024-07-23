@@ -2,7 +2,7 @@ import _first from 'lodash/first.js'
 import _isInteger from 'lodash/isInteger.js'
 import _last from 'lodash/last.js'
 
-type SegmentInfo = {
+interface SegmentInfo {
   catchAll: string[]
   hasMeta: boolean
   isIndex: boolean
@@ -14,6 +14,7 @@ type SegmentInfo = {
 function getSegmentInfo({ SEGMENT, ...props }) {
   const segment = SEGMENT
   const catchAll = [segment]
+  // eslint-disable-next-line no-unsafe-optional-chaining
   !!props.params?.catchAll && catchAll.push(...props.params?.catchAll)
 
   const first = _first(catchAll)

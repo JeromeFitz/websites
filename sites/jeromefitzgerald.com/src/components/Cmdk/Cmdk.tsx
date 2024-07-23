@@ -25,7 +25,7 @@ import styles from './Cmdk.module.css'
 const SKIP = 'skip'
 
 function getIconViaParentChild(parent, child) {
-  return !!child ? child : parent
+  return child ? child : parent
 }
 
 const useStore = () => {
@@ -140,7 +140,7 @@ function Item({
 
   // @note(cmdk) _do not_ pass undefined as that passes entire node
   let _value = shouldSkip ? `xyz--${id}` : id
-  _value = !!shortcut ? `${_value}:${shortcut}` : _value
+  _value = shortcut ? `${_value}:${shortcut}` : _value
 
   return (
     <Command.Item

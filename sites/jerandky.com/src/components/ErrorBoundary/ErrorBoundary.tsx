@@ -14,7 +14,7 @@ import type { ReactNode } from 'react'
 import { Separator } from '@radix-ui/themes/dist/esm/components/separator.js'
 import { Component } from 'react'
 
-type PropsChildren = {
+interface PropsChildren {
   children?: ReactNode
 }
 

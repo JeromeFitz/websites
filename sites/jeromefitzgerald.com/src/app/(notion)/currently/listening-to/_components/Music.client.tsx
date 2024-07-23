@@ -141,7 +141,7 @@ function DataItemLoader({ error, handleScroll, isLoadingMore }) {
               <Text size={{ initial: '1', md: '7' }} weight="medium">
                 {isLoadingMore // ? 'loading' : isReachingEnd ? 'no more' :''
                   ? info.loading.text
-                  : !!error
+                  : error
                     ? info.error.text
                     : info.success.text}
               </Text>
@@ -163,7 +163,7 @@ function DataItemLoader({ error, handleScroll, isLoadingMore }) {
               >
                 {isLoadingMore // ? 'loading' : isReachingEnd ? 'no more' :''
                   ? info.loading.cta
-                  : !!error
+                  : error
                     ? info.error.cta
                     : info.success.cta}
               </Text>
@@ -424,7 +424,7 @@ function DataItem({ item, type }) {
   )
 }
 
-function DataItems({}) {
+function DataItems() {
   const refContainer = useRef<HTMLDivElement>(null)
   const { entry, ref: refSWRInfinitePages } = useIntersection({
     root: refContainer.current,
@@ -512,7 +512,7 @@ function DataItems({}) {
   )
 }
 
-function MusicClient({}) {
+function MusicClient() {
   const { spotifyTimeRange, spotifyTimeRangeSet, spotifyType, spotifyTypeSet } =
     useStore()
 

@@ -6,7 +6,7 @@ import { Slot } from '@radix-ui/react-slot'
 
 import type { As } from '@/components/Headline/Headline.types'
 
-type WrapperProps = {
+interface WrapperProps {
   as?: As
   asChild?: boolean
   children: ReactNode

@@ -3,7 +3,7 @@ import type {
   PageObjectResponse,
 } from '@notionhq/client/build/src/api-endpoints.js'
 
-type RC = {
+interface RC {
   blocks: ListBlockChildrenResponse
   page: PageObjectResponse
 }

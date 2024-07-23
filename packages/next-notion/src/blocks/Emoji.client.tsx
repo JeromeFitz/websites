@@ -73,6 +73,7 @@ async function EmojiWrapper({ id, text }) {
   // isDev && console.dir(`> lazy load emoji libraries`)
 
   let emojiIndex = 0
+  // eslint-disable-next-line no-unsafe-optional-chaining
   for (const match of text?.matchAll(regex)) {
     const emoji = match[0]
     // @note(emoji) double to take into account emoji codepoint length

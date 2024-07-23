@@ -12,7 +12,7 @@ import type {
 } from '@notionhq/client/build/src/api-endpoints.js'
 import type { Spread } from 'next-notion/Notion.types'
 
-type PropertiesShow = {
+interface PropertiesShow {
   Complexity: SelectPropertyItemObjectResponse
   ID: FormulaPropertyItemObjectResponse
   'Is.Active': CheckboxPropertyItemObjectResponse

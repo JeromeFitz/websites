@@ -18,7 +18,7 @@ import { ContainerWithSidebar } from '@/app/playground/2024/_components/Containe
 import { ContainerSite } from '@/app/playground/2024/_components/Container.Site'
 import { HeaderSidebar } from '@/app/playground/2024/_components/Header.Sidebar'
 
-type PropsChildren = {
+interface PropsChildren {
   children?: ReactNode
 }
 

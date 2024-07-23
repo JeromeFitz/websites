@@ -198,6 +198,7 @@ async function Slug({ revalidate, segmentInfo }) {
 
   if (is404) return notFound()
 
+  // eslint-disable-next-line no-unsafe-optional-chaining
   const { properties }: { properties: PropertiesEvent } = data?.page
   const { id, isPublished, title } = getEventData(properties)
 
@@ -232,8 +233,9 @@ async function Slug({ revalidate, segmentInfo }) {
       slug: `/shows/${showPrimarySlug}`,
     },
   })
-  if (!!showPrimaryData?.page) {
+  if (showPrimaryData?.page) {
     const { properties: showPrimaryProperties }: { properties: any } =
+      // eslint-disable-next-line no-unsafe-optional-chaining
       showPrimaryData?.page
     RELATIONS_SECONDARY[0]?.relations?.map((relation: RELATIONS_TYPE) => {
       R[relation] = []

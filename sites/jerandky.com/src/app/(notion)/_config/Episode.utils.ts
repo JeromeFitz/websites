@@ -13,7 +13,7 @@ function getEpisodeData(properties) {
 
   let venueTitle =
     getPropertyTypeDataEpisode(properties, 'Rollup.Venues.Title') ?? ''
-  if (!!venueTitle) {
+  if (venueTitle) {
     venueTitle = venueTitle[0]
   }
 
