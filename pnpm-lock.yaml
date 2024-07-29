@@ -602,8 +602,8 @@ importers:
         specifier: 3.0.0-canary.8
         version: 3.0.0-canary.8(date-fns@3.6.0)
       '@jeromefitz/notion':
-        specifier: 5.0.7
-        version: 5.0.7(@jeromefitz/utils@3.0.3(lodash@4.17.21))(lodash@4.17.21)
+        specifier: 5.0.8
+        version: 5.0.8(@jeromefitz/utils@3.0.3(lodash@4.17.21))(lodash@4.17.21)
       '@jeromefitz/spotify':
         specifier: 4.0.8
         version: 4.0.8(@jeromefitz/utils@3.0.3(lodash@4.17.21))(lodash@4.17.21)(sharp@0.32.6)
@@ -921,8 +921,8 @@ importers:
         specifier: 3.0.0-canary.8
         version: 3.0.0-canary.8(date-fns@3.6.0)
       '@jeromefitz/notion':
-        specifier: 5.0.7
-        version: 5.0.7(@jeromefitz/utils@3.0.3(lodash@4.17.21))(lodash@4.17.21)
+        specifier: 5.0.8
+        version: 5.0.8(@jeromefitz/utils@3.0.3(lodash@4.17.21))(lodash@4.17.21)
       '@jeromefitz/spotify':
         specifier: 4.0.8
         version: 4.0.8(@jeromefitz/utils@3.0.3(lodash@4.17.21))(lodash@4.17.21)(sharp@0.32.6)
@@ -2511,8 +2511,8 @@ packages:
     peerDependencies:
       is-ci: ^3.0.1
 
-  '@jeromefitz/notion@5.0.7':
-    resolution: {integrity: sha512-MAqZEzlHVnREtlzSJ93Hqsm6+DFwC7xRlLmKHX+SlnHZztkpYQwX8R0BQI6D7CQPVvynwf6i2fiYdG+v0OqMOQ==}
+  '@jeromefitz/notion@5.0.8':
+    resolution: {integrity: sha512-f1oi2VbKm2A8zzG3wg0wiAUkY4pk39nEDhC/+9Bec1l13w/0MDhb+g9DusSqaWlj6IMrjfWhHWNA9xkgjaYrDw==}
     engines: {node: '>=20'}
     peerDependencies:
       '@jeromefitz/utils': ^3.0.0
@@ -12268,7 +12268,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@jeromefitz/notion@5.0.7(@jeromefitz/utils@3.0.3(lodash@4.17.21))(lodash@4.17.21)':
+  '@jeromefitz/notion@5.0.8(@jeromefitz/utils@3.0.3(lodash@4.17.21))(lodash@4.17.21)':
     dependencies:
       '@jeromefitz/date-fns-tz': 3.0.0-canary.8(date-fns@3.6.0)
       '@jeromefitz/utils': 3.0.3(lodash@4.17.21)
