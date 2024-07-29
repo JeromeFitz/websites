@@ -17,4 +17,4 @@ const INIT = {
   url: '/api/v1/music',
 }
 
-export { INIT, getKey }
+export { getKey, INIT }

@@ -14,11 +14,11 @@ interface PropertiesPage {
   'Is.Active': CheckboxPropertyItemObjectResponse
   'Is.Indexed': CheckboxPropertyItemObjectResponse
   'Is.Published': CheckboxPropertyItemObjectResponse
+  'Select.Test': SelectPropertyItemObjectResponse
   'SEO.Description': RichTextPropertyItemObjectResponse
   'SEO.Image': FilesPropertyItemObjectResponse
   'SEO.Image.Description': RichTextPropertyItemObjectResponse
   'SEO.Keywords': RichTextPropertyItemObjectResponse
-  'Select.Test': SelectPropertyItemObjectResponse
   'Slug.Preview': RichTextPropertyItemObjectResponse
   Title: TitlePropertyItemObjectResponse
 }

@@ -139,8 +139,8 @@ function EventSlugHeaderData({ properties }) {
     time,
     timezone,
     title,
-    venueTitle,
     venues,
+    venueTitle,
   } = getEventData(properties)
 
   const venueId = venues[0]?.id

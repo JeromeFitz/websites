@@ -97,8 +97,8 @@ function Ticket({ properties }) {
     ticketUrl,
     time,
     timezone,
-    venueTitle,
     venues,
+    venueTitle,
   } = getEventData(properties)
 
   const disabledText = isEventOver ? 'Event Has Passed' : 'Tickets Available Soon'

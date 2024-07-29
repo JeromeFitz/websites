@@ -1,7 +1,7 @@
 export {
-  getDataFromCache,
   getDatabaseQuery,
   getDatabaseQueryByDateRange,
+  getDataFromCache,
   getMetadata,
   getPageDataFromNotion,
   getSegmentInfo,

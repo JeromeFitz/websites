@@ -26,7 +26,7 @@ export async function GET(
 ) {
   const slug = params.slug
 
-  const segmentInfo = getSegmentInfo({ SEGMENT, params: { catchAll: [slug] } })
+  const segmentInfo = getSegmentInfo({ params: { catchAll: [slug] }, SEGMENT })
 
   /**
    * @hack(notion) API keeps timing out so use this to generate
@@ -221,7 +221,7 @@ export async function GET(
     // )
 
     const data = new Response(_data, {
-      headers: { 'Content-Type': 'application/xml', charset: 'UTF-8' },
+      headers: { charset: 'UTF-8', 'Content-Type': 'application/xml' },
     })
 
     return data

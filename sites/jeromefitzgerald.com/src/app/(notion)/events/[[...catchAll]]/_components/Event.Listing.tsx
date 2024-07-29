@@ -1,9 +1,9 @@
 import { Anchor } from '@jeromefitz/ds/components/Anchor/index'
 import { Callout } from '@jeromefitz/ds/components/Callout/index'
 import {
-  getDataFromCache,
   getDatabaseQuery,
   getDatabaseQueryByDateRange,
+  getDataFromCache,
 } from '@jeromefitz/shared/notion/utils/index'
 import { isObjectEmpty } from '@jeromefitz/utils'
 

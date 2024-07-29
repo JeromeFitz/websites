@@ -23,7 +23,7 @@ interface Item {
   group: string
   href: string
   // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
-  icon?: ReactNode | any
+  icon?: any | ReactNode
   id: string
   isActive: boolean
   isActiveMobileOverride: boolean
