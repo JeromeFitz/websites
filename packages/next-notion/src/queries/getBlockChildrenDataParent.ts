@@ -12,9 +12,9 @@ import { getColumnData } from './getColumnData'
 async function getBlockChildrenDataParent(block_id) {
   const response = await getBlockChildrenData(block_id)
 
-  let isListItemStart = false,
-    isListItemType = '',
-    isListItemId = ''
+  let isListItemId = '',
+    isListItemStart = false,
+    isListItemType = ''
   const blocks: any = []
 
   // response.results.map(async (block: BlockObjectResponse, i) => {

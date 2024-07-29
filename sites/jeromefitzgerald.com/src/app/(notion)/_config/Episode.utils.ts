@@ -76,8 +76,8 @@ function getEpisodeData(properties) {
     timezone: getPropertyTypeDataEpisode(properties, 'Date.Timezone'),
     title: getPropertyTypeDataEpisode(properties, 'Title'),
     type: getPropertyTypeDataEpisode(properties, 'Meta.Type'),
-    venueTitle,
     venues: getPropertyTypeDataEpisode(properties, 'Relation.Venues'),
+    venueTitle,
     year: getPropertyTypeDataEpisode(properties, 'Date.Year'),
   }
 

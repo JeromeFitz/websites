@@ -4,7 +4,7 @@ import type {
 } from '@notionhq/client/build/src/api-endpoints.js'
 // import { Suspense } from 'react'
 
-import { OBJECTS, TYPES, blocks as blocksDefault } from './Notion.Config'
+import { blocks as blocksDefault, OBJECTS, TYPES } from './Notion.Config'
 import { getBlock } from './Notion.utils'
 
 function NotionBlocks({
@@ -14,7 +14,7 @@ function NotionBlocks({
   // @todo(types) ListBlockChildrenResponse | any => children
   blocks?: any
   // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
-  data: ListBlockChildrenResponse | any
+  data: any | ListBlockChildrenResponse
 }) {
   const { object, results, type } = data
   const isListBlock = object === OBJECTS.LIST && type === TYPES.BLOCK

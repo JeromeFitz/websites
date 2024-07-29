@@ -43,8 +43,8 @@ export async function GET(request: Request) {
 
   const SEGMENT = getSegmentFromSlug(slug)
   const segmentInfo = getSegmentInfo({
-    SEGMENT,
     params: { catchAll: [slug.split('/')[2]] },
+    SEGMENT,
   })
   // console.dir(`(draft) segmentInfo:`)
   // console.dir(segmentInfo)

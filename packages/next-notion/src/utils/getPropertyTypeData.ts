@@ -242,7 +242,7 @@ function getRollupData({ data, type }: { data: RollupData; type: string }) {
 
 interface SelectData {
   id: string
-  select: SelectPropertyResponse | null
+  select: null | SelectPropertyResponse
   type: 'select'
 }
 function getSelectData({ data, type }: { data: SelectData; type: string }) {

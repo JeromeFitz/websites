@@ -505,4 +505,4 @@ const initializeStoreMenu = (preloadedState: Partial<any> = {}) => {
   }))
 }
 
-export { Provider, initializeStoreMenu, useStore }
+export { initializeStoreMenu, Provider, useStore }

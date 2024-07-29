@@ -9,7 +9,7 @@ import { asyncForEach } from '@jeromefitz/utils'
 import _noop from 'lodash/noop.js'
 import _orderBy from 'lodash/orderBy.js'
 import _size from 'lodash/size.js'
-import { Suspense, cache } from 'react'
+import { cache, Suspense } from 'react'
 
 import type { PageObjectResponsePerson } from '../../app/(notion)/_config'
 

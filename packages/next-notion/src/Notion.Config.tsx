@@ -116,4 +116,4 @@ const blocks = {
   },
 }
 
-export { OBJECTS, TYPES, blocks }
+export { blocks, OBJECTS, TYPES }

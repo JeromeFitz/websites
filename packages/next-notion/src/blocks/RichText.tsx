@@ -12,7 +12,7 @@ import type {
   RichTextItemResponse,
 } from '@notionhq/client/build/src/api-endpoints.js'
 
-import { Fragment, forwardRef } from 'react'
+import { forwardRef, Fragment } from 'react'
 
 import type { ApiColor } from '../Notion.types'
 

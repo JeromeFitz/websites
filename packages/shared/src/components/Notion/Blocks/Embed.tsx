@@ -4,7 +4,7 @@ import { EmbedTwitter } from './Embed.Twitter'
 
 // @todo(types)
 // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
-function EmbedImpl({ block }: { block: BlockObjectResponse | any }) {
+function EmbedImpl({ block }: { block: any | BlockObjectResponse }) {
   // console.dir(`EmbedImpl`)
   // console.dir(block)
 
