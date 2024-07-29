@@ -442,7 +442,7 @@ export function GET() {
   </channel>
 </rss>`
   const data = new Response(_data, {
-    headers: { 'Content-Type': 'application/xml', charset: 'UTF-8' },
+    headers: { charset: 'UTF-8', 'Content-Type': 'application/xml' },
   })
 
   return data

@@ -9,7 +9,7 @@ import {
   SectionWrapper,
   // Tags,
 } from '@jeromefitz/ds/components/Section'
-import { getDataFromCache, getDatabaseQuery } from '@jeromefitz/shared/notion/utils'
+import { getDatabaseQuery, getDataFromCache } from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
 import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints'

@@ -88,8 +88,8 @@ function getEventData(properties) {
     time: getPropertyTypeDataEvent(properties, 'Date.Time'),
     timezone: getPropertyTypeDataEvent(properties, 'Date.Timezone'),
     title,
-    venueTitle,
     venues: getPropertyTypeDataEvent(properties, 'Relation.Venues'),
+    venueTitle,
     year: getPropertyTypeDataEvent(properties, 'Date.Year'),
   }
 

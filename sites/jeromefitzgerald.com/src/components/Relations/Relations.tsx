@@ -6,7 +6,7 @@ import _size from 'lodash/size.js'
 import pluralize from 'pluralize'
 import { Suspense } from 'react'
 
-import { RelationsItems, RelationsLoading, getRelationTitle } from './index'
+import { getRelationTitle, RelationsItems, RelationsLoading } from './index'
 
 function RelationsWrapper({ children }) {
   return (

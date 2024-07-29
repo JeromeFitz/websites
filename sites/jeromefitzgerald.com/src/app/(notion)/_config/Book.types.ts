@@ -20,12 +20,12 @@ interface PropertiesBook {
   'Date.Released': DatePropertyItemObjectResponse
   'Date.Released.ISO': FormulaPropertyItemObjectResponse
   ID: FormulaPropertyItemObjectResponse
-  'ISBN-13.Hard': NumberPropertyItemObjectResponse
-  'ISBN-13.Soft': NumberPropertyItemObjectResponse
   'Is.Active': CheckboxPropertyItemObjectResponse
   'Is.Bookshop': CheckboxPropertyItemObjectResponse
   'Is.Indexed': CheckboxPropertyItemObjectResponse
   'Is.Published': CheckboxPropertyItemObjectResponse
+  'ISBN-13.Hard': NumberPropertyItemObjectResponse
+  'ISBN-13.Soft': NumberPropertyItemObjectResponse
   Pages: RichTextPropertyItemObjectResponse
   Publisher: NumberPropertyItemObjectResponse
   'Relation.Events': RelationPropertyItemObjectResponse

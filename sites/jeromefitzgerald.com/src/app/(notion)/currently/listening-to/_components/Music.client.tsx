@@ -42,7 +42,7 @@ import { HeaderSidebar } from '@/app/playground/2024/_components/Header.Sidebar'
 import { LI, UL } from '@/components/List/index'
 import { bandcamps } from '@/data/bandcamps'
 import { useStore as _useStore } from '@/store/index'
-import { INIT, getKey } from '@/utils/getKey'
+import { getKey, INIT } from '@/utils/getKey'
 
 const useStore = () => {
   return _useStore((store) => ({
@@ -202,14 +202,14 @@ function DataItemLoader({ error, handleScroll, isLoadingMore }) {
 
 function DataItem({ item, type }) {
   // @hack
-  let GENRE_MAX = 4,
+  let _alt: string,
+    _genres: string[],
     _href: string,
+    _meta: any,
     _title1: string,
     _title2: string,
     _title3: string,
-    _meta: any,
-    _genres: string[],
-    _alt: string
+    GENRE_MAX = 4
 
   if (type === 'top-artists') {
     GENRE_MAX = 9

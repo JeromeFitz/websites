@@ -7,9 +7,9 @@ import pluralize from 'pluralize'
 
 import { getPropertyTypeDataPodcast } from '../../app/(notion)/_config'
 import {
+  getRelationTitle,
   // RelationIndividual,
   RelationIndividuals,
-  getRelationTitle,
   // RelationLoading,
 } from './index'
 

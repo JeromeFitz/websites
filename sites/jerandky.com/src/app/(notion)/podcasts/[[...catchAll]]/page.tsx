@@ -12,8 +12,8 @@
  */
 import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
 import {
-  getDataFromCache,
   getDatabaseQuery,
+  getDataFromCache,
   getSegmentInfo,
 } from '@jeromefitz/shared/notion/utils'
 import { isObjectEmpty } from '@jeromefitz/utils'

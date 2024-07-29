@@ -1,8 +1,8 @@
 // import { cx } from '@jeromefitz/ds/utils/cx'
 import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
 import {
-  getDataFromCache,
   getDatabaseQuery,
+  getDataFromCache,
   getSegmentInfo,
 } from '@jeromefitz/shared/notion/utils/index'
 import { isObjectEmpty } from '@jeromefitz/utils'
