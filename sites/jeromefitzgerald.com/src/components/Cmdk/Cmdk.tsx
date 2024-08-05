@@ -128,6 +128,7 @@ function Item({
 
   const _onSelect = shouldSkip
     ? () => {
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         !!onClick && onClick()
         if (closeCmdK) {
           router.push(href)

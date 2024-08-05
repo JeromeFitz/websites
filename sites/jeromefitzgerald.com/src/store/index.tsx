@@ -444,6 +444,7 @@ const initializeStoreMenu = (preloadedState: Partial<any> = {}) => {
       set({
         isCmdkInnerOpen: !get().isCmdkInnerOpen,
       })
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
       get().isCmdkOpen
         ? setTimeout(() => {
             // console.dir(`ok`)

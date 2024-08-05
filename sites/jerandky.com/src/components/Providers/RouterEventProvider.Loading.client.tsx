@@ -12,6 +12,7 @@ const Loading: React.FC<{ isRouteChanging: boolean }> = ({ isRouteChanging }) =>
   })
 
   useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     isFinished
       ? document.body.classList.remove('loading')
       : document.body.classList.add('loading')
