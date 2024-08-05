@@ -53,8 +53,6 @@ function getMetadata({ properties, segmentInfo }) {
   let openGraph: any
   const hasImage = !isObjectEmpty(properties?.['SEO.Image'] ?? {})
   if (hasImage) {
-    true
-
     const imageData: ImageItemResponse = getPropertyTypeData(
       properties,
       'SEO.Image',

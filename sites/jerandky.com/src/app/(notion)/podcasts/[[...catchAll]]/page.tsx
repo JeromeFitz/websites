@@ -106,6 +106,7 @@ async function _generateStaticParams({ ...props }) {
       if (catchAll.length > 0) {
         for (let index = 0; index < catchAll.length; index++) {
           const element = catchAll.slice(0, index)
+          // eslint-disable-next-line @typescript-eslint/no-unused-expressions
           element.length > 0 && combos.push({ catchAll: element })
         }
       }
@@ -119,6 +120,7 @@ async function _generateStaticParams({ ...props }) {
         if (catchAll.length > 0) {
           for (let index = 0; index < catchAll.length; index++) {
             const element = catchAll.slice(0, index)
+            // eslint-disable-next-line @typescript-eslint/no-unused-expressions
             element.length > 0 && combos.push({ catchAll: element })
           }
         }

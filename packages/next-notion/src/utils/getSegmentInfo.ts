@@ -14,7 +14,7 @@ interface SegmentInfo {
 function getSegmentInfo({ SEGMENT, ...props }) {
   const segment = SEGMENT
   const catchAll = [segment]
-  // eslint-disable-next-line no-unsafe-optional-chaining
+  // eslint-disable-next-line no-unsafe-optional-chaining, @typescript-eslint/no-unused-expressions
   !!props.params?.catchAll && catchAll.push(...props.params?.catchAll)
 
   const first = _first(catchAll)
