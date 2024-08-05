@@ -150,6 +150,7 @@ function NavigationSecondary({ order = 0 }) {
                       //   console.dir(
                       //     `zzz_menuSecondaryActiveSet (router): ${item.href}`,
                       //   )
+                      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
                       !!item.href && router.push(item.href)
                     }}
                     textValue={item.title}
@@ -198,6 +199,7 @@ function NavigationSecondary({ order = 0 }) {
                                   //   console.dir(
                                   //     `zzz_menuTertiaryActiveSet (router): ${itemSub.href}`,
                                   //   )
+                                  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
                                   !!itemSub.href && router.push(itemSub.href)
                                 }}
                               >
