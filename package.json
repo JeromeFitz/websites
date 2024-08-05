@@ -35,7 +35,7 @@
     "@jeromefitz/eslint-config": "5.0.0-canary.5",
     "@jeromefitz/lint-staged": "2.0.5",
     "@jeromefitz/prettier-config": "2.0.8",
-    "@jeromefitz/release-notes-generator": "3.0.4",
+    "@jeromefitz/release-notes-generator": "3.0.5",
     "@jeromefitz/semantic": "11.0.2",
     "@jeromefitz/tsconfig": "2.0.1",
     "@manypkg/cli": "0.21.4",
