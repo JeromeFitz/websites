@@ -5,6 +5,6 @@
   "private": true,
   "main": "./playwright.config.ts",
   "devDependencies": {
-    "@playwright/test": "1.45.3"
+    "@playwright/test": "1.46.0"
   }
 }
