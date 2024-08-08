@@ -26,7 +26,7 @@ importers:
         version: 4.0.6(lodash@4.17.21)
       '@jeromefitz/eslint-config':
         specifier: 5.0.0-canary.5
-        version: 5.0.0-canary.5(tailwindcss@3.4.7(ts-node@10.9.2(@types/node@20.14.14)(typescript@5.5.4)))(typescript@5.5.4)
+        version: 5.0.0-canary.5(tailwindcss@3.4.8(ts-node@10.9.2(@types/node@20.14.14)(typescript@5.5.4)))(typescript@5.5.4)
       '@jeromefitz/lint-staged':
         specifier: 2.0.5
         version: 2.0.5(is-ci@3.0.1)
@@ -79,8 +79,8 @@ importers:
         specifier: 12.4.0
         version: 12.4.0(typescript@5.5.4)
       tailwindcss:
-        specifier: 3.4.7
-        version: 3.4.7(ts-node@10.9.2(@types/node@20.14.14)(typescript@5.5.4))
+        specifier: 3.4.8
+        version: 3.4.8(ts-node@10.9.2(@types/node@20.14.14)(typescript@5.5.4))
       ts-node:
         specifier: 10.9.2
         version: 10.9.2(@types/node@20.14.14)(typescript@5.5.4)
@@ -552,13 +552,13 @@ importers:
         version: 3.1.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@tailwindcss/aspect-ratio':
         specifier: 0.4.2
-        version: 0.4.2(tailwindcss@3.4.7(ts-node@10.9.2(@types/node@20.14.14)(typescript@5.5.4)))
+        version: 0.4.2(tailwindcss@3.4.8(ts-node@10.9.2(@types/node@20.14.14)(typescript@5.5.4)))
       '@tailwindcss/forms':
         specifier: 0.5.7
-        version: 0.5.7(tailwindcss@3.4.7(ts-node@10.9.2(@types/node@20.14.14)(typescript@5.5.4)))
+        version: 0.5.7(tailwindcss@3.4.8(ts-node@10.9.2(@types/node@20.14.14)(typescript@5.5.4)))
       '@tailwindcss/typography':
-        specifier: 0.5.13
-        version: 0.5.13(tailwindcss@3.4.7(ts-node@10.9.2(@types/node@20.14.14)(typescript@5.5.4)))
+        specifier: 0.5.14
+        version: 0.5.14(tailwindcss@3.4.8(ts-node@10.9.2(@types/node@20.14.14)(typescript@5.5.4)))
       autoprefixer:
         specifier: 10.4.20
         version: 10.4.20(postcss@8.4.41)
@@ -584,11 +584,11 @@ importers:
         specifier: 0.32.6
         version: 0.32.6
       tailwindcss:
-        specifier: 3.4.7
-        version: 3.4.7(ts-node@10.9.2(@types/node@20.14.14)(typescript@5.5.4))
+        specifier: 3.4.8
+        version: 3.4.8(ts-node@10.9.2(@types/node@20.14.14)(typescript@5.5.4))
       tailwindcss-animate:
         specifier: 1.0.7
-        version: 1.0.7(tailwindcss@3.4.7(ts-node@10.9.2(@types/node@20.14.14)(typescript@5.5.4)))
+        version: 1.0.7(tailwindcss@3.4.8(ts-node@10.9.2(@types/node@20.14.14)(typescript@5.5.4)))
       tailwindcss-radix:
         specifier: 3.0.3
         version: 3.0.3
@@ -4404,8 +4404,8 @@ packages:
     peerDependencies:
       tailwindcss: '>=3.0.0 || >= 3.0.0-alpha.1'
 
-  '@tailwindcss/typography@0.5.13':
-    resolution: {integrity: sha512-ADGcJ8dX21dVVHIwTRgzrcunY6YY9uSlAHHGVKvkA+vLc5qLwEszvKts40lx7z0qc4clpjclwLeK5rVCV2P/uw==}
+  '@tailwindcss/typography@0.5.14':
+    resolution: {integrity: sha512-ZvOCjUbsJBjL9CxQBn+VEnFpouzuKhxh2dH8xMIWHILL+HfOYtlAkWcyoon8LlzE53d2Yo6YO6pahKKNW3q1YQ==}
     peerDependencies:
       tailwindcss: '>=3.0.0 || insiders'
 
@@ -10215,8 +10215,8 @@ packages:
   tailwindcss-radix@3.0.3:
     resolution: {integrity: sha512-uueKWJIY98tU4Fip2FTL2eXBqX428e5HBwbu+8rqqJ9H3NuhkcAGS66wNHZjeix56f6nNBhkhMLpQeIrmVxH/w==}
 
-  tailwindcss@3.4.7:
-    resolution: {integrity: sha512-rxWZbe87YJb4OcSopb7up2Ba4U82BoiSGUdoDr3Ydrg9ckxFS/YWsvhN323GMcddgU65QRy7JndC7ahhInhvlQ==}
+  tailwindcss@3.4.8:
+    resolution: {integrity: sha512-GkP17r9GQkxgZ9FKHJQEnjJuKBcbFhMFzKu5slmN6NjlCuFnYJMQ8N4AZ6VrUyiRXlDtPKHkesuQ/MS913Nvdg==}
     engines: {node: '>=14.0.0'}
     hasBin: true
 
@@ -10994,11 +10994,6 @@ packages:
   yaml@1.10.2:
     resolution: {integrity: sha512-r3vXyErRCYJ7wg28yvBY5VSoAF8ZvlcW9/BwUzEtUsjvX/DKs24dIkuwjtuprwJJHsbyUbLApepYTR1BN4uHrg==}
     engines: {node: '>= 6'}
-
-  yaml@2.4.5:
-    resolution: {integrity: sha512-aBx2bnqDzVOyNKfsysjA2ms5ZlnjSAW2eG3/L5G/CSujfjLJTJsEw1bGw8kCf04KodQWk1pxlGnZ56CRxiawmg==}
-    engines: {node: '>= 14'}
-    hasBin: true
 
   yaml@2.5.0:
     resolution: {integrity: sha512-2wWLbGbYDiSqqIKoPjar3MPgB94ErzCtrNE1FdqGuaO0pi2JGjmE8aW8TDZwzU7vuxcGRdL/4gPQwQ7hD5AMSw==}
@@ -12365,7 +12360,7 @@ snapshots:
       date-fns: 3.6.0
       lodash.clonedeep: 4.5.0
 
-  '@jeromefitz/eslint-config@5.0.0-canary.5(tailwindcss@3.4.7(ts-node@10.9.2(@types/node@20.14.14)(typescript@5.5.4)))(typescript@5.5.4)':
+  '@jeromefitz/eslint-config@5.0.0-canary.5(tailwindcss@3.4.8(ts-node@10.9.2(@types/node@20.14.14)(typescript@5.5.4)))(typescript@5.5.4)':
     dependencies:
       '@babel/core': 7.25.2
       '@babel/eslint-parser': 7.25.1(@babel/core@7.25.2)(eslint@9.8.0)
@@ -12385,7 +12380,7 @@ snapshots:
       eslint-plugin-react: 7.35.0(eslint@9.8.0)
       eslint-plugin-react-hooks: 4.6.2(eslint@9.8.0)
       eslint-plugin-storybook: 0.8.0(eslint@9.8.0)(typescript@5.5.4)
-      eslint-plugin-tailwindcss: 3.17.4(tailwindcss@3.4.7(ts-node@10.9.2(@types/node@20.14.14)(typescript@5.5.4)))
+      eslint-plugin-tailwindcss: 3.17.4(tailwindcss@3.4.8(ts-node@10.9.2(@types/node@20.14.14)(typescript@5.5.4)))
       eslint-plugin-testing-library: 6.2.2(eslint@9.8.0)(typescript@5.5.4)
       eslint-plugin-turbo: 2.0.11(eslint@9.8.0)
       typescript-eslint: 8.0.0(eslint@9.8.0)(typescript@5.5.4)
@@ -15384,22 +15379,22 @@ snapshots:
     dependencies:
       defer-to-connect: 2.0.1
 
-  '@tailwindcss/aspect-ratio@0.4.2(tailwindcss@3.4.7(ts-node@10.9.2(@types/node@20.14.14)(typescript@5.5.4)))':
+  '@tailwindcss/aspect-ratio@0.4.2(tailwindcss@3.4.8(ts-node@10.9.2(@types/node@20.14.14)(typescript@5.5.4)))':
     dependencies:
-      tailwindcss: 3.4.7(ts-node@10.9.2(@types/node@20.14.14)(typescript@5.5.4))
+      tailwindcss: 3.4.8(ts-node@10.9.2(@types/node@20.14.14)(typescript@5.5.4))
 
-  '@tailwindcss/forms@0.5.7(tailwindcss@3.4.7(ts-node@10.9.2(@types/node@20.14.14)(typescript@5.5.4)))':
+  '@tailwindcss/forms@0.5.7(tailwindcss@3.4.8(ts-node@10.9.2(@types/node@20.14.14)(typescript@5.5.4)))':
     dependencies:
       mini-svg-data-uri: 1.4.4
-      tailwindcss: 3.4.7(ts-node@10.9.2(@types/node@20.14.14)(typescript@5.5.4))
+      tailwindcss: 3.4.8(ts-node@10.9.2(@types/node@20.14.14)(typescript@5.5.4))
 
-  '@tailwindcss/typography@0.5.13(tailwindcss@3.4.7(ts-node@10.9.2(@types/node@20.14.14)(typescript@5.5.4)))':
+  '@tailwindcss/typography@0.5.14(tailwindcss@3.4.8(ts-node@10.9.2(@types/node@20.14.14)(typescript@5.5.4)))':
     dependencies:
       lodash.castarray: 4.4.0
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       postcss-selector-parser: 6.0.10
-      tailwindcss: 3.4.7(ts-node@10.9.2(@types/node@20.14.14)(typescript@5.5.4))
+      tailwindcss: 3.4.8(ts-node@10.9.2(@types/node@20.14.14)(typescript@5.5.4))
 
   '@tanem/react-nprogress@5.0.51(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
@@ -17903,11 +17898,11 @@ snapshots:
       - supports-color
       - typescript
 
-  eslint-plugin-tailwindcss@3.17.4(tailwindcss@3.4.7(ts-node@10.9.2(@types/node@20.14.14)(typescript@5.5.4))):
+  eslint-plugin-tailwindcss@3.17.4(tailwindcss@3.4.8(ts-node@10.9.2(@types/node@20.14.14)(typescript@5.5.4))):
     dependencies:
       fast-glob: 3.3.2
       postcss: 8.4.41
-      tailwindcss: 3.4.7(ts-node@10.9.2(@types/node@20.14.14)(typescript@5.5.4))
+      tailwindcss: 3.4.8(ts-node@10.9.2(@types/node@20.14.14)(typescript@5.5.4))
 
   eslint-plugin-testing-library@6.2.2(eslint@9.8.0)(typescript@5.5.4):
     dependencies:
@@ -20581,7 +20576,7 @@ snapshots:
   postcss-load-config@4.0.2(postcss@8.4.41)(ts-node@10.9.2(@types/node@20.14.14)(typescript@5.5.4)):
     dependencies:
       lilconfig: 3.1.2
-      yaml: 2.4.5
+      yaml: 2.5.0
     optionalDependencies:
       postcss: 8.4.41
       ts-node: 10.9.2(@types/node@20.14.14)(typescript@5.5.4)
@@ -22011,13 +22006,13 @@ snapshots:
 
   tailwind-merge@2.4.0: {}
 
-  tailwindcss-animate@1.0.7(tailwindcss@3.4.7(ts-node@10.9.2(@types/node@20.14.14)(typescript@5.5.4))):
+  tailwindcss-animate@1.0.7(tailwindcss@3.4.8(ts-node@10.9.2(@types/node@20.14.14)(typescript@5.5.4))):
     dependencies:
-      tailwindcss: 3.4.7(ts-node@10.9.2(@types/node@20.14.14)(typescript@5.5.4))
+      tailwindcss: 3.4.8(ts-node@10.9.2(@types/node@20.14.14)(typescript@5.5.4))
 
   tailwindcss-radix@3.0.3: {}
 
-  tailwindcss@3.4.7(ts-node@10.9.2(@types/node@20.14.14)(typescript@5.5.4)):
+  tailwindcss@3.4.8(ts-node@10.9.2(@types/node@20.14.14)(typescript@5.5.4)):
     dependencies:
       '@alloc/quick-lru': 5.2.0
       arg: 5.0.2
@@ -22823,8 +22818,6 @@ snapshots:
   yallist@4.0.0: {}
 
   yaml@1.10.2: {}
-
-  yaml@2.4.5: {}
 
   yaml@2.5.0: {}
 
