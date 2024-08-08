@@ -13,7 +13,7 @@
   "packageManager": "pnpm@9.7.0",
   "engines": {
     "node": ">=20 <21",
-    "pnpm": ">=9.6.0 <10"
+    "pnpm": ">=9 <10"
   },
   "scripts": {
     "clean:install": "TURBO_TELEMETRY_DISABLED=1 turbo run clean && ./scripts/clean.sh",
