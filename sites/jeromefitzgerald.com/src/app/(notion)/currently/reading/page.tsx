@@ -1,5 +1,4 @@
-// import { cx } from '@jeromefitz/ds/utils/cx'
-import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
+// import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
 import {
   getDatabaseQuery,
   getDataFromCache,
@@ -37,17 +36,18 @@ export async function generateMetadata({ ...props }): Promise<Metadata> {
     },
   })
 
+  const title = 'Reading… | Jerome Fitzgerald (he/him)'
+
   const is404 = isObjectEmpty(data?.blocks || {})
   const is404Seo = {
-    title: `404 | ${segmentInfo?.segment} | ${env.NEXT_PUBLIC__SITE}`,
+    // title: `404 | ${segmentInfo?.segment} | ${env.NEXT_PUBLIC__SITE}`,
+    title,
   }
 
   if (is404) return is404Seo
 
   const pageData = getPageData(data?.page?.properties) || ''
   const seo = await generateMetadataCustom({ data, pageData, segmentInfo })
-
-  const title = 'Reading… | Jerome Fitzgerald (he/him)'
 
   return pageData?.isPublished
     ? { ...seo, openGraph: { ...seo.openGraph, title }, title }
@@ -122,7 +122,7 @@ async function Slug({ revalidate, segmentInfo }) {
     return null
   })
 
-  if (isObjectEmpty(data.page)) return null
+  // if (isObjectEmpty(data?.page)) return null
   return (
     <>
       <BookPage books={books} title={title} />

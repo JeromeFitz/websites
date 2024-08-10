@@ -1,4 +1,4 @@
-import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
+// import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
 import {
   getDataFromCache,
   getSegmentInfo,
@@ -16,6 +16,7 @@ import { MusicClient } from './_components/Music.client'
 
 const slug = '/currently/listening-to'
 const { SEGMENT } = CONFIG.MUSIC
+// const { DATABASE_ID: DATABASE_ID__PAGES } = CONFIG.PAGES
 
 export async function generateMetadata({ ...props }): Promise<Metadata> {
   const { isEnabled } = draftMode()
@@ -32,17 +33,18 @@ export async function generateMetadata({ ...props }): Promise<Metadata> {
     },
   })
 
+  const title = 'Listening To… | Jerome Fitzgerald (he/him)'
+
   const is404 = isObjectEmpty(data?.blocks || {})
   const is404Seo = {
-    title: `404 | ${segmentInfo?.segment} | ${env.NEXT_PUBLIC__SITE}`,
+    // title: `404 | ${segmentInfo?.segment} | ${env.NEXT_PUBLIC__SITE}`,
+    title,
   }
 
   if (is404) return is404Seo
 
   const pageData = getPageData(data?.page?.properties) || ''
   const seo = await generateMetadataCustom({ data, pageData, segmentInfo })
-
-  const title = 'Listening To… | Jerome Fitzgerald (he/him)'
 
   return pageData?.isPublished
     ? { ...seo, openGraph: { ...seo.openGraph, title }, title }
@@ -52,6 +54,12 @@ export async function generateMetadata({ ...props }): Promise<Metadata> {
 async function Slug({ revalidate, segmentInfo }) {
   const { isEnabled } = draftMode()
 
+  // console.dir(`segmentInfo`)
+  // console.dir(segmentInfo)
+
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const data = await getDataFromCache({
     database_id: '',
     draft: isEnabled,
@@ -63,7 +71,8 @@ async function Slug({ revalidate, segmentInfo }) {
     },
   })
 
-  if (isObjectEmpty(data.page)) return null
+  // const isUndefined = data?.page === undefined
+  // if isObjectEmpty(data?.page)) return null
   return <MusicClient />
 }
 
