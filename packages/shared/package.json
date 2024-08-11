@@ -158,7 +158,7 @@
     "server-only": "0.0.1",
     "sharp": "0.32.6",
     "swr": "2.2.5",
-    "tailwind-merge": "2.4.0",
+    "tailwind-merge": "2.5.0",
     "valid-url": "1.0.9"
   },
   "publishConfig": {
