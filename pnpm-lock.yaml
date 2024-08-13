@@ -31,8 +31,8 @@ importers:
         specifier: 2.0.5
         version: 2.0.5(is-ci@3.0.1)
       '@jeromefitz/prettier-config':
-        specifier: 2.0.8
-        version: 2.0.8
+        specifier: 2.0.9
+        version: 2.0.9
       '@jeromefitz/release-notes-generator':
         specifier: 3.0.5
         version: 3.0.5(lodash@4.17.21)
@@ -307,8 +307,8 @@ importers:
   packages/next-config:
     devDependencies:
       '@jeromefitz/prettier-config':
-        specifier: 2.0.8
-        version: 2.0.8
+        specifier: 2.0.9
+        version: 2.0.9
       '@next/bundle-analyzer':
         specifier: 14.2.5
         version: 14.2.5
@@ -2523,8 +2523,8 @@ packages:
       '@jeromefitz/utils': ^3.0.0
       lodash: ^4.17.21
 
-  '@jeromefitz/prettier-config@2.0.8':
-    resolution: {integrity: sha512-GkRxioKsCnX5VDPzNQQ7YZutEjF4Wo156Geyc31qx1VIv7oPpMbCWD25ecxcUH8SU03yGT1OQ7eRlypm1gswsw==}
+  '@jeromefitz/prettier-config@2.0.9':
+    resolution: {integrity: sha512-dWX3onvTturd2YjnHKnhVbFKHctsxS0zEui8dnUamu/xvoyeJzBSIFVYq4/c4pVZa1jAwLlbRwB7Jmh3k5mGxw==}
     engines: {node: '>=20'}
 
   '@jeromefitz/release-notes-generator@3.0.5':
@@ -9138,8 +9138,8 @@ packages:
     peerDependencies:
       prettier: ^3.0.3
 
-  prettier-plugin-tailwindcss@0.6.5:
-    resolution: {integrity: sha512-axfeOArc/RiGHjOIy9HytehlC0ZLeMaqY09mm8YCkMzznKiDkwFzOpBvtuhuv3xG5qB73+Mj7OCe2j/L1ryfuQ==}
+  prettier-plugin-tailwindcss@0.6.6:
+    resolution: {integrity: sha512-OPva5S7WAsPLEsOuOWXATi13QrCKACCiIonFgIR6V4lYv4QLp++UXVhZSzRbZxXGimkQtQT86CC6fQqTOybGng==}
     engines: {node: '>=14.21.3'}
     peerDependencies:
       '@ianvs/prettier-plugin-sort-imports': '*'
@@ -9153,6 +9153,7 @@ packages:
       prettier-plugin-import-sort: '*'
       prettier-plugin-jsdoc: '*'
       prettier-plugin-marko: '*'
+      prettier-plugin-multiline-arrays: '*'
       prettier-plugin-organize-attributes: '*'
       prettier-plugin-organize-imports: '*'
       prettier-plugin-sort-imports: '*'
@@ -9178,6 +9179,8 @@ packages:
       prettier-plugin-jsdoc:
         optional: true
       prettier-plugin-marko:
+        optional: true
+      prettier-plugin-multiline-arrays:
         optional: true
       prettier-plugin-organize-attributes:
         optional: true
@@ -12318,11 +12321,11 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  '@jeromefitz/prettier-config@2.0.8':
+  '@jeromefitz/prettier-config@2.0.9':
     dependencies:
       prettier: 3.3.3
       prettier-plugin-pkg: 0.18.1(prettier@3.3.3)
-      prettier-plugin-tailwindcss: 0.6.5(prettier@3.3.3)
+      prettier-plugin-tailwindcss: 0.6.6(prettier@3.3.3)
     transitivePeerDependencies:
       - '@ianvs/prettier-plugin-sort-imports'
       - '@prettier/plugin-pug'
@@ -12334,6 +12337,7 @@ snapshots:
       - prettier-plugin-import-sort
       - prettier-plugin-jsdoc
       - prettier-plugin-marko
+      - prettier-plugin-multiline-arrays
       - prettier-plugin-organize-attributes
       - prettier-plugin-organize-imports
       - prettier-plugin-sort-imports
@@ -20700,7 +20704,7 @@ snapshots:
     dependencies:
       prettier: 3.3.3
 
-  prettier-plugin-tailwindcss@0.6.5(prettier@3.3.3):
+  prettier-plugin-tailwindcss@0.6.6(prettier@3.3.3):
     dependencies:
       prettier: 3.3.3
 
