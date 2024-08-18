@@ -58,7 +58,7 @@ function Comedy() {
       <Text>
         Based in <Strong>Pittsburgh, PA</Strong> I’ve had shows in <Em>Chicago</Em>,{' '}
         <Em>Cleveland</Em>, <Em>Detroit</Em>, <Em>New York City</Em>,{' '}
-        <Em>Philaelphia</Em>, <Em>San Diego</Em>, <Em>San Francisco</Em>, and more.
+        <Em>Philadelphia</Em>, <Em>San Diego</Em>, <Em>San Francisco</Em>, and more.
       </Text>
       <br />
       <br />
