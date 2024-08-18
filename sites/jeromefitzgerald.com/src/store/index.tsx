@@ -203,16 +203,6 @@ const getDefaultInitialStateStoreMenu = () => ({
         titleDescription: 'Including recent past events.',
       },
       {
-        href: '/events/2024/08/17/doomscroll',
-        icon: TicketIcon,
-        id: '2024/08/17/doomscroll',
-        isActive: true,
-        isActiveMobile: true,
-        keywords: ['doom', 'scroll', 'improv'],
-        title: 'Doomscroll: SAT 08/17',
-        titleDescription: '',
-      },
-      {
         href: '/events/2024/08/24/the-playlist',
         icon: TicketIcon,
         id: '2024/08/24/the-playlist',
