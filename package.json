@@ -33,7 +33,7 @@
   "dependencies": {
     "@jeromefitz/conventional-gitmoji": "4.0.6",
     "@jeromefitz/eslint-config": "5.0.0-canary.5",
-    "@jeromefitz/lint-staged": "2.0.5",
+    "@jeromefitz/lint-staged": "2.0.6",
     "@jeromefitz/prettier-config": "2.0.9",
     "@jeromefitz/release-notes-generator": "3.0.5",
     "@jeromefitz/semantic": "11.0.2",
