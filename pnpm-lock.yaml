@@ -34,8 +34,8 @@ importers:
         specifier: 2.0.9
         version: 2.0.9
       '@jeromefitz/release-notes-generator':
-        specifier: 3.0.5
-        version: 3.0.5(lodash@4.17.21)
+        specifier: 3.0.6
+        version: 3.0.6(lodash@4.17.21)
       '@jeromefitz/semantic':
         specifier: 11.0.3
         version: 11.0.3(@jeromefitz/conventional-gitmoji@4.0.6(lodash@4.17.21))(typescript@5.5.4)
@@ -2527,8 +2527,8 @@ packages:
     resolution: {integrity: sha512-dWX3onvTturd2YjnHKnhVbFKHctsxS0zEui8dnUamu/xvoyeJzBSIFVYq4/c4pVZa1jAwLlbRwB7Jmh3k5mGxw==}
     engines: {node: '>=20'}
 
-  '@jeromefitz/release-notes-generator@3.0.5':
-    resolution: {integrity: sha512-LGbJEmkH53/LUmw5Qplwj6Jg6uHTL1is1JrRZEvxGlgrr6RMorKp0hxozVIKqhrcly0XNBY2EXs9o6zmmmaKvA==}
+  '@jeromefitz/release-notes-generator@3.0.6':
+    resolution: {integrity: sha512-Ulx8G+bicJXNrklo4yDRJkG0uJuu/A+nopfxleSqNekYkSvDviX63x+R+NDIehqbFzChesMyAz4+WFuvgicXPQ==}
     engines: {node: '>=20'}
     peerDependencies:
       lodash: ^4.17.21
@@ -2825,8 +2825,8 @@ packages:
     resolution: {integrity: sha512-pyAguc0p+f+GbQho0uNetNQMmLG1e80WjkIaqqgUkihqUp0boRU6nKItXO4VWnr+nbZiLGEyy4TeKRwqaLvYgw==}
     engines: {node: '>= 18'}
 
-  '@octokit/rest@21.0.1':
-    resolution: {integrity: sha512-RWA6YU4CqK0h0J6tfYlUFnH3+YgBADlxaHXaKSG+BVr2y4PTfbU2tlKuaQoQZ83qaTbi4CUxLNAmbAqR93A6mQ==}
+  '@octokit/rest@21.0.2':
+    resolution: {integrity: sha512-+CiLisCoyWmYicH25y1cDfCrv41kRSvTq6pPWtRroRJzhsCZWZyCqGyI8foJT5LmScADSwRAnr/xo+eewL04wQ==}
     engines: {node: '>= 18'}
 
   '@octokit/types@13.5.0':
@@ -12353,9 +12353,9 @@ snapshots:
       - prettier-plugin-style-order
       - prettier-plugin-svelte
 
-  '@jeromefitz/release-notes-generator@3.0.5(lodash@4.17.21)':
+  '@jeromefitz/release-notes-generator@3.0.6(lodash@4.17.21)':
     dependencies:
-      '@octokit/rest': 21.0.1
+      '@octokit/rest': 21.0.2
       conventional-commits-filter: 5.0.0
       conventional-commits-parser: 6.0.0
       date-fns: 3.6.0
@@ -12766,7 +12766,7 @@ snapshots:
       '@octokit/types': 13.5.0
       universal-user-agent: 7.0.2
 
-  '@octokit/rest@21.0.1':
+  '@octokit/rest@21.0.2':
     dependencies:
       '@octokit/core': 6.1.2
       '@octokit/plugin-paginate-rest': 11.3.0(@octokit/core@6.1.2)
