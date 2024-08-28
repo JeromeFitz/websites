@@ -104,7 +104,7 @@
     "uuid": "^9.0.1 || ^10.0.0"
   },
   "dependencies": {
-    "emoji-regex": "10.3.0",
+    "emoji-regex": "10.4.0",
     "node-emoji": "2.1.3"
   },
   "devDependencies": {
