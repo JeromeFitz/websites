@@ -1,5 +1,5 @@
-import { ArrowTopRightIcon } from '@jeromefitz/ds/components/Icon/index'
 import {
+  ArrowTopRightIcon,
   CalendarIcon,
   ClockIcon,
   HomeIcon,
@@ -26,8 +26,7 @@ import NextLink from 'next/link'
 
 import type { PageObjectResponseVenue } from '@/app/(notion)/_config/index'
 
-import { getEventData } from '@/app/(notion)/_config/index'
-import { getPropertyTypeDataVenue } from '@/app/(notion)/_config/index'
+import { getEventData, getPropertyTypeDataVenue } from '@/app/(notion)/_config/index'
 
 function CTA({ href, isDisabled = false }) {
   const title = isDisabled ? 'Event Has Passed' : 'Buy Tickets'

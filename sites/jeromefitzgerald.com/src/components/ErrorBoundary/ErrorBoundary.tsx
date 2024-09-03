@@ -13,8 +13,10 @@ import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import { Component } from 'react'
 
 import { ArticleMain } from '@/app/playground/2024/_components/Article.Main'
-import { ContainerContent } from '@/app/playground/2024/_components/Container.Main'
-import { ContainerWithSidebar } from '@/app/playground/2024/_components/Container.Main'
+import {
+  ContainerContent,
+  ContainerWithSidebar,
+} from '@/app/playground/2024/_components/Container.Main'
 import { ContainerSite } from '@/app/playground/2024/_components/Container.Site'
 import { HeaderSidebar } from '@/app/playground/2024/_components/Header.Sidebar'
 
