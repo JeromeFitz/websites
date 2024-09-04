@@ -10,7 +10,7 @@
     "@tailwindcss/forms": "0.5.8",
     "@tailwindcss/typography": "0.5.15",
     "autoprefixer": "10.4.20",
-    "cssnano": "7.0.5",
+    "cssnano": "7.0.6",
     "lightningcss": "1.26.0",
     "postcss": "8.4.45",
     "radix-themes-tw": "0.2.3",
