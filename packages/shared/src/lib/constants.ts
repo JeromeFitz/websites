@@ -3,8 +3,7 @@ import ms from 'ms'
 /**
  * @redis is in seconds not ms
  */
-// eslint-disable-next-line no-constant-binary-expression
-const getTimeInSeconds = (time: number) => time / 1000 ?? 0
+const getTimeInSeconds = (time: number) => (!time ? 0 : time / 1000)
 
 /**
  * @note in seconds
