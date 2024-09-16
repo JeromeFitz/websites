@@ -414,8 +414,8 @@ importers:
         specifier: 18.3.0
         version: 18.3.0
       '@upstash/ratelimit':
-        specifier: 2.0.2
-        version: 2.0.2
+        specifier: 2.0.3
+        version: 2.0.3
       '@upstash/redis':
         specifier: 1.34.0
         version: 1.34.0
@@ -738,8 +738,8 @@ importers:
         specifier: 5.0.51
         version: 5.0.51(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@upstash/ratelimit':
-        specifier: 2.0.2
-        version: 2.0.2
+        specifier: 2.0.3
+        version: 2.0.3
       '@upstash/redis':
         specifier: 1.34.0
         version: 1.34.0
@@ -1054,8 +1054,8 @@ importers:
         specifier: 5.0.51
         version: 5.0.51(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@upstash/ratelimit':
-        specifier: 2.0.2
-        version: 2.0.2
+        specifier: 2.0.3
+        version: 2.0.3
       '@upstash/redis':
         specifier: 1.34.0
         version: 1.34.0
@@ -4607,8 +4607,8 @@ packages:
     resolution: {integrity: sha512-7qJHGxpQgQr9/vmeS1PktEwvNAF7TI4iJDi8Pu2CFZ9YUGHZH4fOP5TfYlZ4aVxfopnELiE4BS4FBjyK7V1/xQ==}
     engines: {node: '>=16.0.0'}
 
-  '@upstash/ratelimit@2.0.2':
-    resolution: {integrity: sha512-1J5Szbu5r9OTV2F95SinFVo5DQ7jm1Gmal9xD7HrcBlOxyn7YXToEsK2j6lSNJEhklvKl96Ntzzd3Q/yR9GB2A==}
+  '@upstash/ratelimit@2.0.3':
+    resolution: {integrity: sha512-BMUpZPZ9IMwrUwohw0HoVAwjBRo5SDb0riAxfCGrLbutuZTPiVagh017Cm3GfhMqwUWLOp0xJQxTCXp812UJVQ==}
 
   '@upstash/redis@1.34.0':
     resolution: {integrity: sha512-TrXNoJLkysIl8SBc4u9bNnyoFYoILpCcFJcLyWCccb/QSUmaVKdvY0m5diZqc3btExsapcMbaw/s/wh9Sf1pJw==}
@@ -15280,7 +15280,7 @@ snapshots:
     dependencies:
       '@upstash/redis': 1.34.0
 
-  '@upstash/ratelimit@2.0.2':
+  '@upstash/ratelimit@2.0.3':
     dependencies:
       '@upstash/core-analytics': 0.0.10
 
