@@ -355,7 +355,7 @@ importers:
     devDependencies:
       '@jeromefitz/date-fns-tz':
         specifier: 3.0.0-canary.8
-        version: 3.0.0-canary.8(date-fns@3.6.0)
+        version: 3.0.0-canary.8(date-fns@4.1.0)
       '@jeromefitz/utils':
         specifier: 3.0.3
         version: 3.0.3(lodash@4.17.21)
@@ -369,8 +369,8 @@ importers:
         specifier: 18.3.0
         version: 18.3.0
       date-fns:
-        specifier: 3.6.0
-        version: 3.6.0
+        specifier: 4.1.0
+        version: 4.1.0
       next:
         specifier: 14.2.13
         version: 14.2.13(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -601,7 +601,7 @@ importers:
         version: 2.1.5(react@18.3.1)
       '@jeromefitz/date-fns-tz':
         specifier: 3.0.0-canary.8
-        version: 3.0.0-canary.8(date-fns@3.6.0)
+        version: 3.0.0-canary.8(date-fns@4.1.0)
       '@jeromefitz/notion':
         specifier: 5.0.9
         version: 5.0.9(@jeromefitz/utils@3.0.3(lodash@4.17.21))(lodash@4.17.21)
@@ -753,8 +753,8 @@ importers:
         specifier: 1.0.0
         version: 1.0.0(@types/react-dom@18.3.0)(@types/react@18.3.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       date-fns:
-        specifier: 3.6.0
-        version: 3.6.0
+        specifier: 4.1.0
+        version: 4.1.0
       fast-json-stable-stringify:
         specifier: 2.1.0
         version: 2.1.0
@@ -920,7 +920,7 @@ importers:
         version: 2.1.5(react@18.3.1)
       '@jeromefitz/date-fns-tz':
         specifier: 3.0.0-canary.8
-        version: 3.0.0-canary.8(date-fns@3.6.0)
+        version: 3.0.0-canary.8(date-fns@4.1.0)
       '@jeromefitz/notion':
         specifier: 5.0.9
         version: 5.0.9(@jeromefitz/utils@3.0.3(lodash@4.17.21))(lodash@4.17.21)
@@ -1072,8 +1072,8 @@ importers:
         specifier: 1.0.0
         version: 1.0.0(@types/react-dom@18.3.0)(@types/react@18.3.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       date-fns:
-        specifier: 3.6.0
-        version: 3.6.0
+        specifier: 4.1.0
+        version: 4.1.0
       fast-json-stable-stringify:
         specifier: 2.1.0
         version: 2.1.0
@@ -5650,6 +5650,9 @@ packages:
 
   date-fns@3.6.0:
     resolution: {integrity: sha512-fRHTG8g/Gif+kSh50gaGEdToemgfj74aRX3swtiouboip5JDLAyDE9F11nHMIcvOaXeOC6D7SpNhi7uFyB7Uww==}
+
+  date-fns@4.1.0:
+    resolution: {integrity: sha512-Ukq0owbQXxa/U3EGtsdVBkR1w7KOQ5gIBqdH2hkvknzZPYvBxb/aa6E8L7tmjFtkwZBu3UXBbjIgPo/Ez4xaNg==}
 
   debounce@1.2.1:
     resolution: {integrity: sha512-XRRe6Glud4rd/ZGQfiV1ruXSfbvfJedlV9Y6zOlP+2K04vBYiJEte6stfFkCP03aMnY5tsipamumUjL14fofug==}
@@ -11767,6 +11770,11 @@ snapshots:
       date-fns: 3.6.0
       lodash.clonedeep: 4.5.0
 
+  '@jeromefitz/date-fns-tz@3.0.0-canary.8(date-fns@4.1.0)':
+    dependencies:
+      date-fns: 4.1.0
+      lodash.clonedeep: 4.5.0
+
   '@jeromefitz/eslint-config@5.0.0-canary.9(tailwindcss@3.4.12(ts-node@10.9.2(@types/node@20.16.5)(typescript@5.6.2)))(typescript@5.6.2)':
     dependencies:
       '@babel/core': 7.25.2
@@ -16507,6 +16515,8 @@ snapshots:
       is-data-view: 1.0.1
 
   date-fns@3.6.0: {}
+
+  date-fns@4.1.0: {}
 
   debounce@1.2.1: {}
 
