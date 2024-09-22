@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic'
-import pluralize from 'pluralize'
+import { addPluralRule, addSingularRule } from 'pluralize'
 // import { Suspense } from 'react'
 import { Provider as ReactWrapBalancerProvider } from 'react-wrap-balancer'
 
@@ -32,7 +32,7 @@ const pluralRules = [
   // { rule: /tags$/i, replacement: 'tags' },
 ]
 pluralRules.map(({ replacement, rule }) => {
-  pluralize.addPluralRule(rule, replacement)
+  addPluralRule(rule, replacement)
 })
 const singularRules = [
   { replacement: 'house Staff', rule: /intern$/i },
@@ -44,7 +44,7 @@ const singularRules = [
   { replacement: 'technical director', rule: /technical$/i },
 ]
 singularRules.map(({ replacement, rule }) => {
-  pluralize.addSingularRule(rule, replacement)
+  addSingularRule(rule, replacement)
 })
 
 function Providers({ children }) {
