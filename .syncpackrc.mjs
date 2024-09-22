@@ -45,12 +45,6 @@ const config = {
   ],
   versionGroups: [
     {
-      dependencies: ['@jeromefitz/date-fns-tz'],
-      dependencyTypes: ['peer'],
-      label: '@todo: @jeromefitz/date-fns-tz',
-      packages: ['**'],
-    },
-    {
       dependencies: ['server-only'],
       dependencyTypes: ['peer'],
       label: '@todo: server-only',
