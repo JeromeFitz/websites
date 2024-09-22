@@ -22,6 +22,7 @@ import type { ReactNode } from 'react'
 import type { StoreApi } from 'zustand'
 
 import { createContext, useContext, useRef } from 'react'
+// eslint-disable-next-line import-x/no-deprecated
 import { useStore as useZustandStore } from 'zustand'
 // import { persist } from 'zustand/middleware'
 import { createStore } from 'zustand/vanilla'
@@ -43,6 +44,7 @@ const Provider = ({ children }: ProviderProps) => {
 const useStore = <T,>(selector: (state: any) => T): T => {
   const store = useContext(Context)
   if (!store) throw new Error('Store is missing the provider')
+  // eslint-disable-next-line import-x/no-deprecated
   return useZustandStore(store, selector)
 }
 

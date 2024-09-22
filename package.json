@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "@jeromefitz/conventional-gitmoji": "4.0.6",
-    "@jeromefitz/eslint-config": "5.0.0-canary.9",
+    "@jeromefitz/eslint-config": "5.0.0-canary.11",
     "@jeromefitz/lint-staged": "2.0.7",
     "@jeromefitz/prettier-config": "2.0.9",
     "@jeromefitz/release-notes-generator": "3.0.7",
@@ -61,7 +61,7 @@
       "@semantic-release/commit-analyzer@13.0.0": "patches/@semantic-release__commit-analyzer@13.0.0.patch"
     },
     "overrides": {
-      "@typescript-eslint/typescript-estree": "^8.3.0",
+      "@typescript-eslint/typescript-estree": "^8.6.0",
       "unfetch": "4.2.0",
       "semver@^5.0.0": "5.7.2",
       "semver@^6.0.0": "6.3.1",
