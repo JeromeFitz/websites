@@ -609,8 +609,8 @@ importers:
         specifier: 2.1.5
         version: 2.1.5(react@18.3.1)
       '@jeromefitz/notion':
-        specifier: 5.0.9
-        version: 5.0.9(@jeromefitz/utils@3.0.3(lodash@4.17.21))(lodash@4.17.21)
+        specifier: 5.0.10
+        version: 5.0.10(@jeromefitz/utils@3.0.3(lodash@4.17.21))(lodash@4.17.21)
       '@jeromefitz/spotify':
         specifier: 4.0.10
         version: 4.0.10(@jeromefitz/utils@3.0.3(lodash@4.17.21))(lodash@4.17.21)(sharp@0.32.6)
@@ -931,8 +931,8 @@ importers:
         specifier: 2.1.5
         version: 2.1.5(react@18.3.1)
       '@jeromefitz/notion':
-        specifier: 5.0.9
-        version: 5.0.9(@jeromefitz/utils@3.0.3(lodash@4.17.21))(lodash@4.17.21)
+        specifier: 5.0.10
+        version: 5.0.10(@jeromefitz/utils@3.0.3(lodash@4.17.21))(lodash@4.17.21)
       '@jeromefitz/spotify':
         specifier: 4.0.10
         version: 4.0.10(@jeromefitz/utils@3.0.3(lodash@4.17.21))(lodash@4.17.21)(sharp@0.32.6)
@@ -2346,11 +2346,6 @@ packages:
     peerDependencies:
       lodash: ^4.17.21
 
-  '@jeromefitz/date-fns-tz@3.0.0-canary.8':
-    resolution: {integrity: sha512-tU4JAYkqsKqwdwa+4X2Un0fFT/OaeQw3NV6AGLeyNd/TfNEJZlV6lHOemG6NAigZlGkGEIK279SIjEJPZsMkUg==}
-    peerDependencies:
-      date-fns: ^3.0.0
-
   '@jeromefitz/eslint-config@5.0.0-canary.11':
     resolution: {integrity: sha512-xnwdRjIr5O+EGojo1D1Wfpkd/4E0sVHJWjpKUSCP40ed0aU3B5020SCy96MG3dsSrrEtcpwyn/X5ZkV4OcMJrg==}
     engines: {node: '>=20'}
@@ -2361,8 +2356,8 @@ packages:
     peerDependencies:
       is-ci: ^3.0.1
 
-  '@jeromefitz/notion@5.0.9':
-    resolution: {integrity: sha512-Q6/SIulcNgVB1SL4QHo+D9KqENxf5PVwVwbZIhjcO1kzSly/3eeB40hgwSRb0d3oEa2F/klekhVmG4Dj6G3Qqg==}
+  '@jeromefitz/notion@5.0.10':
+    resolution: {integrity: sha512-FHdgml7ztNS8QShUtRedotXbnWcvzqeRzV0UP59G57TpMS0JK9blFBJdy0XYHqpBLa15x+FP731uwW5YFJZvnQ==}
     engines: {node: '>=20'}
     peerDependencies:
       '@jeromefitz/utils': ^3.0.0
@@ -7684,9 +7679,6 @@ packages:
   lodash.castarray@4.4.0:
     resolution: {integrity: sha512-aVx8ztPv7/2ULbArGJ2Y42bG1mEQ5mGjpdvrbJcJFU3TbYybe+QlLS4pst9zV52ymy2in1KpFPiZnAOATxD4+Q==}
 
-  lodash.clonedeep@4.5.0:
-    resolution: {integrity: sha512-H5ZhCF25riFd9uB5UCkVKo61m3S/xZk1x4wA6yp/L3RFP6Z/eHH1ymQcGLo7J3GMPfm0V/7m1tryHuGVxpqEBQ==}
-
   lodash.debounce@4.0.8:
     resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
 
@@ -11811,11 +11803,6 @@ snapshots:
       lodash: 4.17.21
       title: 3.5.3
 
-  '@jeromefitz/date-fns-tz@3.0.0-canary.8(date-fns@3.6.0)':
-    dependencies:
-      date-fns: 3.6.0
-      lodash.clonedeep: 4.5.0
-
   '@jeromefitz/eslint-config@5.0.0-canary.11(tailwindcss@3.4.12(ts-node@10.9.2(@types/node@20.16.5)(typescript@5.6.2)))(typescript@5.6.2)':
     dependencies:
       '@babel/core': 7.25.2
@@ -11862,12 +11849,11 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@jeromefitz/notion@5.0.9(@jeromefitz/utils@3.0.3(lodash@4.17.21))(lodash@4.17.21)':
+  '@jeromefitz/notion@5.0.10(@jeromefitz/utils@3.0.3(lodash@4.17.21))(lodash@4.17.21)':
     dependencies:
-      '@jeromefitz/date-fns-tz': 3.0.0-canary.8(date-fns@3.6.0)
       '@jeromefitz/utils': 3.0.3(lodash@4.17.21)
       '@notionhq/client': 2.2.15
-      date-fns: 3.6.0
+      date-fns: 4.1.0
       github-slugger: 2.0.0
       lodash: 4.17.21
     transitivePeerDependencies:
@@ -19004,8 +18990,6 @@ snapshots:
   lodash.capitalize@4.2.1: {}
 
   lodash.castarray@4.4.0: {}
-
-  lodash.clonedeep@4.5.0: {}
 
   lodash.debounce@4.0.8: {}
 
