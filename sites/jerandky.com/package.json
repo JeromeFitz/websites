@@ -35,7 +35,7 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
-    "@date-fns/tz": "1.1.1",
+    "@date-fns/tz": "1.1.2",
     "@date-fns/utc": "2.1.0",
     "@heroicons/react": "2.1.5",
     "@jeromefitz/notion": "5.0.10",
