@@ -134,7 +134,7 @@
     "valid-url": "^1.0.9"
   },
   "devDependencies": {
-    "@jeromefitz/utils": "3.0.3",
+    "@jeromefitz/utils": "3.0.4",
     "@notionhq/client": "2.2.15",
     "@radix-ui/themes": "3.1.4",
     "@types/lodash": "4.17.9",
