@@ -53,8 +53,12 @@ const events = [
   '2024/05/10/the-latchkey-kids',
   '2024/06/06/your-act',
   '2024/07/13/arcade-hootenanny',
-  // '2024/07/18/sketch-comedy-lab-best-of',
-  // '2024/07/19/sketch-comedy-lab-best-of',
+  '2024/07/18/sketch-lab-report-vol-1',
+  '2024/07/19/sketch-lab-report-vol-1',
+  '2024/08/09/barbara-a-mother-comedy-bingo',
+  '2024/08/17/doomscroll',
+  '2024/08/24/the-playlist',
+  '2024/10/12/arcade-hootenanny',
 ]
 const pages = [
   'about',
