@@ -741,8 +741,8 @@ importers:
         specifier: 3.1.4
         version: 3.1.4(@types/react-dom@18.3.1)(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@tanem/react-nprogress':
-        specifier: 5.0.51
-        version: 5.0.51(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 5.0.52
+        version: 5.0.52(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@upstash/ratelimit':
         specifier: 2.0.3
         version: 2.0.3
@@ -1060,8 +1060,8 @@ importers:
         specifier: 3.1.4
         version: 3.1.4(@types/react-dom@18.3.1)(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@tanem/react-nprogress':
-        specifier: 5.0.51
-        version: 5.0.51(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 5.0.52
+        version: 5.0.52(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@upstash/ratelimit':
         specifier: 2.0.3
         version: 2.0.3
@@ -1986,6 +1986,10 @@ packages:
 
   '@babel/runtime@7.24.7':
     resolution: {integrity: sha512-UwgBRMjJP+xv857DCngvqXI3Iq6J4v0wXmwc6sapg+zyhbwmQX67LUEFrkK5tbyJ30jGuG3ZvWpBiB9LCy1kWw==}
+    engines: {node: '>=6.9.0'}
+
+  '@babel/runtime@7.25.7':
+    resolution: {integrity: sha512-FjoyLe754PMiYsFaN5C94ttGiOmBNYTf6pLr4xXHAT5uctHb092PBszndLDR5XA/jghQvn4n7JMHl7dmTgbm9w==}
     engines: {node: '>=6.9.0'}
 
   '@babel/template@7.24.6':
@@ -4555,8 +4559,8 @@ packages:
     peerDependencies:
       tailwindcss: '>=3.0.0 || insiders || >=4.0.0-alpha.20'
 
-  '@tanem/react-nprogress@5.0.51':
-    resolution: {integrity: sha512-YxNUCpznuBVA+PhjEzFmxaa1czXgU+5Ojchw5JBK7DQS6SHIgNudpFohWpNBWMu2KWByGJ2OLH2OwbM/XyP18Q==}
+  '@tanem/react-nprogress@5.0.52':
+    resolution: {integrity: sha512-ncDcnDS/vm79sqPmBmeslA5TeA3+7VMmLgo6SPkjmRivHmImV/5DqzcbCltopkpadZ5/mSyCCPoQEi1bvU/VMQ==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
@@ -11944,6 +11948,10 @@ snapshots:
     dependencies:
       regenerator-runtime: 0.14.1
 
+  '@babel/runtime@7.25.7':
+    dependencies:
+      regenerator-runtime: 0.14.1
+
   '@babel/template@7.24.6':
     dependencies:
       '@babel/code-frame': 7.24.7
@@ -15629,9 +15637,9 @@ snapshots:
       postcss-selector-parser: 6.0.10
       tailwindcss: 3.4.13(ts-node@10.9.2(@types/node@20.16.11)(typescript@5.6.3))
 
-  '@tanem/react-nprogress@5.0.51(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@tanem/react-nprogress@5.0.52(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@babel/runtime': 7.23.9
+      '@babel/runtime': 7.25.7
       hoist-non-react-statics: 3.3.2
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
