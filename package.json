@@ -40,7 +40,7 @@
     "@jeromefitz/tsconfig": "2.0.1",
     "@manypkg/cli": "0.22.0",
     "@types/is-ci": "3.0.4",
-    "@types/lodash": "4.17.10",
+    "@types/lodash": "4.17.11",
     "@types/node": "20.16.12",
     "ccommit": "3.0.5",
     "concurrently": "9.0.1",
