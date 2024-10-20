@@ -24,9 +24,8 @@ import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 // eslint-disable-next-line no-restricted-imports
 import NextLink from 'next/link'
 import { useState } from 'react'
-import { useShallow } from 'zustand/shallow'
 
-import { useStore as _useStore } from '@/store/index'
+import { useStore as _useStore, useShallow } from '@/store/index'
 
 const useStore = () => {
   return _useStore(

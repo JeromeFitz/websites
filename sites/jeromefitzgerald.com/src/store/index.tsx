@@ -23,6 +23,7 @@ import type { StoreApi } from 'zustand'
 
 import { createContext, useContext, useRef } from 'react'
 import { useStore as useZustandStore } from 'zustand'
+import { useShallow } from 'zustand/shallow'
 import { createStore } from 'zustand/vanilla'
 
 // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
@@ -497,4 +498,4 @@ const initializeStoreMenu = (preloadedState: Partial<any> = {}) => {
   }))
 }
 
-export { initializeStoreMenu, Provider, useStore }
+export { initializeStoreMenu, Provider, useShallow, useStore }

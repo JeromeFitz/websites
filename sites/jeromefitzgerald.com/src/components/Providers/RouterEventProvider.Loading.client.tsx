@@ -6,9 +6,8 @@ import _find from 'lodash/find.js'
 import { usePathname } from 'next/navigation.js'
 // import { motion } from 'framer-motion'
 import { useEffect } from 'react'
-import { useShallow } from 'zustand/shallow'
 
-import { useStore as _useStore } from '@/store/index'
+import { useStore as _useStore, useShallow } from '@/store/index'
 
 const useStore = () => {
   return _useStore(

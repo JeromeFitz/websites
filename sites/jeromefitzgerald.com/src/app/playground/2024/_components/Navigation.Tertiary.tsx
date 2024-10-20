@@ -18,9 +18,8 @@ import {
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import { useRouter } from 'next/navigation.js'
 import { Fragment } from 'react'
-import { useShallow } from 'zustand/shallow'
 
-import { useStore as _useStore } from '@/store/index'
+import { useStore as _useStore, useShallow } from '@/store/index'
 
 const useStore = () => {
   return _useStore(

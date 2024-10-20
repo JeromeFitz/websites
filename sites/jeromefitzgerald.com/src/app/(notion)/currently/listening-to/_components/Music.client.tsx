@@ -32,7 +32,6 @@ import NextLink from 'next/link'
 import { Fragment, useEffect, useRef, useState } from 'react'
 import _title from 'title'
 import { Virtualizer } from 'virtua'
-import { useShallow } from 'zustand/shallow'
 
 import { ArticleMain } from '@/app/playground/2024/_components/Article.Main'
 // import { ArticleMainCTA } from '@/app/playground/2024/_components/Article.Main.CTA'
@@ -42,7 +41,7 @@ import { HeaderSidebar } from '@/app/playground/2024/_components/Header.Sidebar'
 // import { Grid } from '@/components/Grid/index'
 import { LI, UL } from '@/components/List/index'
 import { bandcamps } from '@/data/bandcamps'
-import { useStore as _useStore } from '@/store/index'
+import { useStore as _useStore, useShallow } from '@/store/index'
 import { getKey, INIT } from '@/utils/getKey'
 
 const useStore = () => {

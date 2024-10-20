@@ -14,10 +14,9 @@ import _findIndex from 'lodash/findIndex.js'
 import { useRouter } from 'next/navigation.js'
 import { useTheme } from 'next-themes'
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { useShallow } from 'zustand/shallow'
 
 import { menus } from '@/data/menu'
-import { useStore as _useStore } from '@/store/index'
+import { useStore as _useStore, useShallow } from '@/store/index'
 
 import { Logo } from './Icons'
 

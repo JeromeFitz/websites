@@ -3,9 +3,8 @@
 import dynamic from 'next/dynamic.js'
 import { usePathname } from 'next/navigation.js'
 import { useEffect, useState } from 'react'
-import { useShallow } from 'zustand/shallow'
 
-import { useStore as _useStore } from '@/store/index'
+import { useStore as _useStore, useShallow } from '@/store/index'
 
 // import { Loading } from './RouterEventProvider.Loading.client'
 const Loading = dynamic(

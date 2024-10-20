@@ -1,9 +1,7 @@
 'use client'
 import { cx } from '@jeromefitz/ds/utils/cx'
 
-import { useShallow } from 'zustand/shallow'
-
-import { useStore as _useStore } from '@/store/index'
+import { useStore as _useStore, useShallow } from '@/store/index'
 
 const useStore = () => {
   return _useStore(
