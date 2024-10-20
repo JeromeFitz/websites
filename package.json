@@ -66,7 +66,7 @@
       "elliptic": "^6.5.7",
       "express": "^4.20.0",
       "micromatch": "^4.0.8",
-      "path-to-regexp": "^0.1.10",
+      "path-to-regexp": "^8.0.0",
       "unfetch": "4.2.0",
       "rollup": "^4.22.4",
       "semver@^5.0.0": "5.7.2",
