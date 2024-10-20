@@ -16,7 +16,7 @@ import { useTheme } from 'next-themes'
 import { useEffect, useMemo, useRef, useState } from 'react'
 
 import { menus } from '@/data/menu'
-import { useStore as _useStore } from '@/store/index'
+import { useStore as _useStore, useShallow } from '@/store/index'
 
 import { Logo } from './Icons'
 
@@ -29,17 +29,19 @@ function getIconViaParentChild(parent, child) {
 }
 
 const useStore = () => {
-  return _useStore((store) => ({
-    cmdkInput: store.cmdkInput,
-    cmdkInputSet: store.cmdkInputSet,
-    cmdkPages: store.cmdkPages,
-    cmdkPagesSet: store.cmdkPagesSet,
-    cmdkPagesSetRemove: store.cmdkPagesSetRemove,
-    isCmdkInnerOpen: store.isCmdkInnerOpen,
-    isCmdkInnerOpenSet: store.isCmdkInnerOpenSet,
-    isCmdkOpen: store.isCmdkOpen,
-    isCmdkOpenSet: store.isCmdkOpenSet,
-  }))
+  return _useStore(
+    useShallow((store) => ({
+      cmdkInput: store.cmdkInput,
+      cmdkInputSet: store.cmdkInputSet,
+      cmdkPages: store.cmdkPages,
+      cmdkPagesSet: store.cmdkPagesSet,
+      cmdkPagesSetRemove: store.cmdkPagesSetRemove,
+      isCmdkInnerOpen: store.isCmdkInnerOpen,
+      isCmdkInnerOpenSet: store.isCmdkInnerOpenSet,
+      isCmdkOpen: store.isCmdkOpen,
+      isCmdkOpenSet: store.isCmdkOpenSet,
+    })),
+  )
 }
 
 function CMDKWrapper(props: { children: ReactNode } & MotionProps) {

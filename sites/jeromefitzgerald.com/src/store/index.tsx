@@ -23,6 +23,7 @@ import type { StoreApi } from 'zustand'
 
 import { createContext, useContext, useRef } from 'react'
 import { useStore as useZustandStore } from 'zustand'
+import { useShallow } from 'zustand/shallow'
 import { createStore } from 'zustand/vanilla'
 
 // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
@@ -46,37 +47,39 @@ const useStore = <T,>(selector: (state: any) => T): T => {
   return useZustandStore(store, selector)
 }
 
+const FALLBACK_ACTION = () => {}
+
 const getDefaultInitialStateStoreMenu = () => ({
   bookStatus: 'in-progress',
-  bookStatusSet: () => {},
+  bookStatusSet: FALLBACK_ACTION,
   cmdkInput: '',
-  cmdkInputSet: () => {},
+  cmdkInputSet: FALLBACK_ACTION,
   cmdkPages: [],
-  cmdkPagesSet: () => {},
-  cmdkPagesSetRemove: () => {},
+  cmdkPagesSet: FALLBACK_ACTION,
+  cmdkPagesSetRemove: FALLBACK_ACTION,
   count: 0,
-  countSet: () => {},
+  countSet: FALLBACK_ACTION,
   current: 0,
-  currentSet: () => {},
+  currentSet: FALLBACK_ACTION,
   isCmdkInnerOpen: false,
-  isCmdkInnerOpenSet: () => {},
+  isCmdkInnerOpenSet: FALLBACK_ACTION,
   isCmdkOpen: false,
-  isCmdkOpenSet: () => {},
+  isCmdkOpenSet: FALLBACK_ACTION,
   isMenuMobileOpen: false,
-  isMenuMobileOpenSet: () => {},
+  isMenuMobileOpenSet: FALLBACK_ACTION,
   isOverlay: false,
-  isOverlaySet: () => {},
+  isOverlaySet: FALLBACK_ACTION,
   isRouteChanging: false,
-  isRouteChangingSet: () => {},
+  isRouteChangingSet: FALLBACK_ACTION,
   isWidgetOpen: false,
-  isWidgetOpenSet: () => {},
+  isWidgetOpenSet: FALLBACK_ACTION,
   seen: 0,
-  seenSetDecrease: () => {},
-  seenSetIncrease: () => {},
+  seenSetDecrease: FALLBACK_ACTION,
+  seenSetIncrease: FALLBACK_ACTION,
   spotifyTimeRange: 'medium_term',
-  spotifyTimeRangeSet: () => {},
+  spotifyTimeRangeSet: FALLBACK_ACTION,
   spotifyType: 'top-tracks',
-  spotifyTypeSet: () => {},
+  spotifyTypeSet: FALLBACK_ACTION,
   // @wip(menu)
   zzz_menuSecondary: [
     {
@@ -495,4 +498,4 @@ const initializeStoreMenu = (preloadedState: Partial<any> = {}) => {
   }))
 }
 
-export { initializeStoreMenu, Provider, useStore }
+export { initializeStoreMenu, Provider, useShallow, useStore }

@@ -1,12 +1,14 @@
 'use client'
 import { cx } from '@jeromefitz/ds/utils/cx'
 
-import { useStore as _useStore } from '@/store/index'
+import { useStore as _useStore, useShallow } from '@/store/index'
 
 const useStore = () => {
-  return _useStore((store) => ({
-    isOverlay: store.isOverlay,
-  }))
+  return _useStore(
+    useShallow((store) => ({
+      isOverlay: store.isOverlay,
+    })),
+  )
 }
 
 function Overlay() {

@@ -39,13 +39,15 @@ import { HeaderSidebar } from '@/app/playground/2024/_components/Header.Sidebar'
 // import { Lorem } from '@/app/playground/2024/_components/Lorem'
 // import { Image } from '@/app/(notion)/events/[[...catchAll]]/_components/Image'
 import { LI, UL } from '@/components/List/index'
-import { useStore as _useStore } from '@/store/index'
+import { useStore as _useStore, useShallow } from '@/store/index'
 
 const useStore = () => {
-  return _useStore((store) => ({
-    bookStatus: store.bookStatus,
-    bookStatusSet: store.bookStatusSet,
-  }))
+  return _useStore(
+    useShallow((store) => ({
+      bookStatus: store.bookStatus,
+      bookStatusSet: store.bookStatusSet,
+    })),
+  )
 }
 
 const stores = [

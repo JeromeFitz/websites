@@ -7,17 +7,19 @@ import { usePathname } from 'next/navigation.js'
 // import { motion } from 'framer-motion'
 import { useEffect } from 'react'
 
-import { useStore as _useStore } from '@/store/index'
+import { useStore as _useStore, useShallow } from '@/store/index'
 
 const useStore = () => {
-  return _useStore((store) => ({
-    zzz_menuSecondary: store.zzz_menuSecondary,
-    zzz_menuSecondaryActive: store.zzz_menuSecondaryActive,
-    zzz_menuSecondaryActiveSet: store.zzz_menuSecondaryActiveSet,
-    zzz_menuTertiary: store.zzz_menuTertiary,
-    zzz_menuTertiaryActive: store.zzz_menuTertiaryActive,
-    zzz_menuTertiaryActiveSet: store.zzz_menuTertiaryActiveSet,
-  }))
+  return _useStore(
+    useShallow((store) => ({
+      zzz_menuSecondary: store.zzz_menuSecondary,
+      zzz_menuSecondaryActive: store.zzz_menuSecondaryActive,
+      zzz_menuSecondaryActiveSet: store.zzz_menuSecondaryActiveSet,
+      zzz_menuTertiary: store.zzz_menuTertiary,
+      zzz_menuTertiaryActive: store.zzz_menuTertiaryActive,
+      zzz_menuTertiaryActiveSet: store.zzz_menuTertiaryActiveSet,
+    })),
+  )
 }
 
 const Loading: React.FC<{ isRouteChanging: boolean }> = ({ isRouteChanging }) => {

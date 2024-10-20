@@ -41,16 +41,18 @@ import { HeaderSidebar } from '@/app/playground/2024/_components/Header.Sidebar'
 // import { Grid } from '@/components/Grid/index'
 import { LI, UL } from '@/components/List/index'
 import { bandcamps } from '@/data/bandcamps'
-import { useStore as _useStore } from '@/store/index'
+import { useStore as _useStore, useShallow } from '@/store/index'
 import { getKey, INIT } from '@/utils/getKey'
 
 const useStore = () => {
-  return _useStore((store) => ({
-    spotifyTimeRange: store.spotifyTimeRange,
-    spotifyTimeRangeSet: store.spotifyTimeRangeSet,
-    spotifyType: store.spotifyType,
-    spotifyTypeSet: store.spotifyTypeSet,
-  }))
+  return _useStore(
+    useShallow((store) => ({
+      spotifyTimeRange: store.spotifyTimeRange,
+      spotifyTimeRangeSet: store.spotifyTimeRangeSet,
+      spotifyType: store.spotifyType,
+      spotifyTypeSet: store.spotifyTypeSet,
+    })),
+  )
 }
 
 const HOUR = 3600000

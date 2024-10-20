@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic.js'
 import { usePathname } from 'next/navigation.js'
 import { useEffect, useState } from 'react'
 
-import { useStore as _useStore } from '@/store/index'
+import { useStore as _useStore, useShallow } from '@/store/index'
 
 // import { Loading } from './RouterEventProvider.Loading.client'
 const Loading = dynamic(
@@ -18,10 +18,12 @@ const Loading = dynamic(
 )
 
 const useStore = () => {
-  return _useStore((store) => ({
-    isRouteChanging: store.isRouteChanging,
-    isRouteChangingSet: store.isRouteChangingSet,
-  }))
+  return _useStore(
+    useShallow((store) => ({
+      isRouteChanging: store.isRouteChanging,
+      isRouteChangingSet: store.isRouteChangingSet,
+    })),
+  )
 }
 
 function RouterEventProvider() {
