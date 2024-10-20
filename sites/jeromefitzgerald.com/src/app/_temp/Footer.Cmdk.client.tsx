@@ -5,14 +5,17 @@ import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
 import { Kbd } from '@radix-ui/themes/dist/esm/components/kbd.js'
 import { Skeleton } from '@radix-ui/themes/dist/esm/components/skeleton.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
+import { useShallow } from 'zustand/shallow'
 
 import { useStore as _useStore } from '@/store/index'
 
 const useStore = () => {
-  return _useStore((store) => ({
-    isCmdkOpen: store.isCmdkOpen,
-    isCmdkOpenSet: store.isCmdkOpenSet,
-  }))
+  return _useStore(
+    useShallow((store) => ({
+      isCmdkOpen: store.isCmdkOpen,
+      isCmdkOpenSet: store.isCmdkOpenSet,
+    })),
+  )
 }
 
 function FooterCmdkClient({ isLoading }) {

@@ -30,6 +30,7 @@ import _orderBy from 'lodash/orderBy.js'
 import NextLink from 'next/link'
 import { Fragment } from 'react'
 import { Virtualizer } from 'virtua'
+import { useShallow } from 'zustand/shallow'
 
 import { ArticleMain } from '@/app/playground/2024/_components/Article.Main'
 // import { ArticleMainCTA } from '@/app/playground/2024/_components/Article.Main.CTA'
@@ -42,10 +43,12 @@ import { LI, UL } from '@/components/List/index'
 import { useStore as _useStore } from '@/store/index'
 
 const useStore = () => {
-  return _useStore((store) => ({
-    bookStatus: store.bookStatus,
-    bookStatusSet: store.bookStatusSet,
-  }))
+  return _useStore(
+    useShallow((store) => ({
+      bookStatus: store.bookStatus,
+      bookStatusSet: store.bookStatusSet,
+    })),
+  )
 }
 
 const stores = [

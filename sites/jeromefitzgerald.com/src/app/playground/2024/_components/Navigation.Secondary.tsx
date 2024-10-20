@@ -20,17 +20,20 @@ import {
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import { useRouter } from 'next/navigation.js'
 import { Fragment } from 'react'
+import { useShallow } from 'zustand/shallow'
 
 import { useStore as _useStore } from '@/store/index'
 
 const useStore = () => {
-  return _useStore((store) => ({
-    zzz_menuSecondary: store.zzz_menuSecondary,
-    zzz_menuSecondaryActive: store.zzz_menuSecondaryActive,
-    zzz_menuSecondaryActiveSet: store.zzz_menuSecondaryActiveSet,
-    zzz_menuTertiary: store.zzz_menuTertiary,
-    zzz_menuTertiaryActiveSet: store.zzz_menuTertiaryActiveSet,
-  }))
+  return _useStore(
+    useShallow((store) => ({
+      zzz_menuSecondary: store.zzz_menuSecondary,
+      zzz_menuSecondaryActive: store.zzz_menuSecondaryActive,
+      zzz_menuSecondaryActiveSet: store.zzz_menuSecondaryActiveSet,
+      zzz_menuTertiary: store.zzz_menuTertiary,
+      zzz_menuTertiaryActiveSet: store.zzz_menuTertiaryActiveSet,
+    })),
+  )
 }
 
 function NavigationSecondary({ order = 0 }) {

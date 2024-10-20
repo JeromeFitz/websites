@@ -2,14 +2,17 @@
 import { cx } from '@jeromefitz/ds/utils/cx'
 
 import { motion } from 'framer-motion'
+import { useShallow } from 'zustand/shallow'
 
 import { useStore as _useStore } from '@/store/index'
 
 const useStore = () => {
-  return _useStore((store) => ({
-    isWidgetOpen: store.isWidgetOpen,
-    isWidgetOpenSet: store.isWidgetOpenSet,
-  }))
+  return _useStore(
+    useShallow((store) => ({
+      isWidgetOpen: store.isWidgetOpen,
+      isWidgetOpenSet: store.isWidgetOpenSet,
+    })),
+  )
 }
 
 function LayoutClient() {
