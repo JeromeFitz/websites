@@ -42,7 +42,7 @@
     "@date-fns/tz": "1.1.2",
     "@date-fns/utc": "2.1.0",
     "@heroicons/react": "2.1.5",
-    "@jeromefitz/notion": "5.0.12",
+    "@jeromefitz/notion": "5.0.13",
     "@jeromefitz/spotify": "4.0.12",
     "@jeromefitz/utils": "3.0.5",
     "@mantine/hooks": "7.13.3",
