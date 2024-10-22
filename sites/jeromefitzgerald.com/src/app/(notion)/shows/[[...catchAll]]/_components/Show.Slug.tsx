@@ -42,7 +42,7 @@ const RELATIONS: RELATIONS_TYPE[] = [
 ]
 
 async function Slug({ revalidate, segmentInfo }) {
-  const { isEnabled } = draftMode()
+  const { isEnabled } = await draftMode()
   // console.dir(`Slug: segmentInfo => draft: ${isEnabled ? 'y' : 'n'}`)
   // console.dir(segmentInfo)
   const data = await getDataFromCache({

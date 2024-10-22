@@ -163,7 +163,7 @@ function Links({ properties }) {
 // @todo(complexity) 11
 // eslint-disable-next-line complexity
 async function EpisodeSlug({ revalidate, segmentInfo }) {
-  const { isEnabled } = draftMode()
+  const { isEnabled } = await draftMode()
   // console.dir(`EpisodeSlug: segmentInfo => draft: ${isEnabled ? 'y' : 'n'}`)
   // console.dir(segmentInfo)
   // console.dir(`... /podcasts/jer-and-ky-and-guest/danks-for-the-memories-beth-glick`)
@@ -216,7 +216,10 @@ async function EpisodeSlug({ revalidate, segmentInfo }) {
       slug: `/podcasts/${podcastSlug}`,
     },
   })
-  if (podcastPrimaryData) {
+  /**
+   * @todo(podcasts) this check is breaking as `page` is undefined
+   */
+  if (podcastPrimaryData && !!podcastPrimaryData?.properties?.page) {
     const { properties: podcastPrimaryProperties }: { properties: any } =
       // eslint-disable-next-line no-unsafe-optional-chaining
       podcastPrimaryData?.page

@@ -181,7 +181,7 @@ function Ticket({ properties }) {
 // @todo(complexity) 12
 // eslint-disable-next-line complexity
 async function Slug({ revalidate, segmentInfo }) {
-  const { isEnabled } = draftMode()
+  const { isEnabled } = await draftMode()
   // const { slug } = segmentInfo
   const data = await getDataFromCache({
     database_id: DATABASE_ID,

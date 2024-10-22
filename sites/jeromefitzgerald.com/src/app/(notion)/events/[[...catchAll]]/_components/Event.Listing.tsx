@@ -49,7 +49,7 @@ function ListingTemp({ defaultValue = null, items }) {
 }
 
 function Events({ data }) {
-  // const { isEnabled } = draftMode()
+  // const { isEnabled } = await draftMode()
   // const draft = isEnabled
   const draft = false
   const items = data.results.map((item) => {
@@ -99,7 +99,7 @@ function Events({ data }) {
 }
 
 function EventsPast({ data }) {
-  // const { isEnabled } = draftMode()
+  // const { isEnabled } = await draftMode()
   // const draft = isEnabled
   const draft = false
 
@@ -132,7 +132,7 @@ function EventsPast({ data }) {
 // @todo(complexity) 14
 // eslint-disable-next-line complexity
 async function Listing({ revalidate, segmentInfo }) {
-  // const { isEnabled } = draftMode()
+  // const { isEnabled } = await draftMode()
   const isEnabled = false
   const { slug } = segmentInfo
   // @note(notion) Listing do not pass Database ID

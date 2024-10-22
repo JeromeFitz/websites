@@ -31,7 +31,7 @@ const RELATIONS: RELATIONS_TYPE[] = [
 const { DATABASE_ID } = CONFIG.PEOPLE
 
 async function Slug({ revalidate, segmentInfo }) {
-  const { isEnabled } = draftMode()
+  const { isEnabled } = await draftMode()
   const data = await getDataFromCache({
     database_id: DATABASE_ID,
     draft: isEnabled,

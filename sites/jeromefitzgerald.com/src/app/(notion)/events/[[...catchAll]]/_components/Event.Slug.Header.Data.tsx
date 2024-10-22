@@ -254,7 +254,6 @@ function EventSlugHeaderData({ properties }) {
           )}
         </DataList.Root>
       </div>
-
       <div
         className={cx(
           'drop-shadow-md transition-all hover:drop-shadow-lg',

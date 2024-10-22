@@ -41,7 +41,7 @@ const image = {
 }
 
 async function Slug({ revalidate, segmentInfo }) {
-  const { isEnabled } = draftMode()
+  const { isEnabled } = await draftMode()
 
   const data = await getDataFromCache({
     database_id: '',
@@ -83,7 +83,11 @@ export default function Page(props) {
   if (!env.IS_DEV) return <FourOhFour isNotPublished={false} segmentInfo={{}} />
 
   const revalidate = props?.revalidate || false
-  const segmentInfo = getSegmentInfo({ SEGMENT, ...props, revalidate })
+  const segmentInfo = getSegmentInfo({
+    SEGMENT /* @next-codemod-ignore 'props' is used with spread syntax (...). Any asynchronous properties of 'props' must be awaited when accessed. */,
+    ...props,
+    revalidate,
+  })
 
   return <Slug revalidate={revalidate} segmentInfo={segmentInfo} />
 }

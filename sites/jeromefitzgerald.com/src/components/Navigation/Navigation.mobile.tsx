@@ -116,7 +116,6 @@ function NavigationMobile() {
         <span>{isMenuMobileOpen ? `Close` : `Open`} Menu</span>
         {isMenuMobileOpen ? <Cross1Icon /> : <HamburgerMenuIcon />}
       </Button>
-
       {isMenuMobileOpen && (
         // @todo(radix) children
         // @ts-ignore
@@ -169,7 +168,6 @@ function NavigationMobile() {
               <AccordionNavigation />
             </div>
           </nav>
-
           <div
             className={cx(
               'fixed left-0 top-0 z-[99999] flex flex-row items-end justify-start py-4',
