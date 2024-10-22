@@ -71,7 +71,6 @@ const protocol = PROTOCOL.HTTPS
  * - redirects
  * - rewrites
  * - serverExternalPackages
- * - swcMinify
  * - transpilePackages
  */
 const config = ({

@@ -8,7 +8,9 @@
     "NEXT_PUBLIC_*",
     "NODE_ENV",
     "NOTION_*",
+    "OG_*",
     "OVERRIDE_CACHE",
+    "REDIS_*",
     "SPOTIFY_*",
     "UPSTASH_*",
     "VERCEL_*"
