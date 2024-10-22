@@ -216,7 +216,10 @@ async function EpisodeSlug({ revalidate, segmentInfo }) {
       slug: `/podcasts/${podcastSlug}`,
     },
   })
-  if (podcastPrimaryData) {
+  /**
+   * @todo(podcasts) this check is breaking as `page` is undefined
+   */
+  if (podcastPrimaryData && !!podcastPrimaryData?.properties?.page) {
     const { properties: podcastPrimaryProperties }: { properties: any } =
       // eslint-disable-next-line no-unsafe-optional-chaining
       podcastPrimaryData?.page

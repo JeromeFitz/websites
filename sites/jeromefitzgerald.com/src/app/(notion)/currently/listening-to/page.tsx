@@ -76,11 +76,11 @@ async function Slug({ revalidate, segmentInfo }) {
   return <MusicClient />
 }
 
-export default function Page(props) {
-  const revalidate = props?.revalidate || false
+export default async function Page({ params, revalidate = false }) {
+  const { catchAll } = await params
   const segmentInfo = getSegmentInfo({
-    SEGMENT /* @next-codemod-ignore 'props' is used with spread syntax (...). Any asynchronous properties of 'props' must be awaited when accessed. */,
-    ...props,
+    params: { catchAll },
+    SEGMENT,
   })
 
   // if (segmentInfo.isIndex) {
