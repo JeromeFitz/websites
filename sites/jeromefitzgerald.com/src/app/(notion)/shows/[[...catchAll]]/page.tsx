@@ -31,8 +31,12 @@ const { DATABASE_ID, SEGMENT } = CONFIG.SHOWS
 
 // @todo(complexity) 15
 // eslint-disable-next-line complexity
-export async function generateMetadata({ ...props }): Promise<Metadata> {
-  const segmentInfo = getSegmentInfo({ SEGMENT, ...props })
+export async function generateMetadata({ params }): Promise<Metadata> {
+  const { catchAll } = await params
+  const segmentInfo = getSegmentInfo({
+    params: { catchAll },
+    SEGMENT,
+  })
   const data = await getDataFromCache({
     database_id: segmentInfo.isIndex ? '' : DATABASE_ID,
     filterType: 'equals',
@@ -59,7 +63,7 @@ export async function generateMetadata({ ...props }): Promise<Metadata> {
   return isPublished ? seo : is404Seo
 }
 
-async function _generateStaticParams({ ...props }) {
+async function _generateStaticParams({ params }) {
   if (env.IS_DEV) {
     return []
   }
@@ -68,7 +72,11 @@ async function _generateStaticParams({ ...props }) {
   const combos: any = []
 
   console.dir(`> generateStaticParams (${SEGMENT})`)
-  const segmentInfo = getSegmentInfo({ SEGMENT, ...props })
+  const { catchAll } = await params
+  const segmentInfo = getSegmentInfo({
+    params: { catchAll },
+    SEGMENT,
+  })
   // console.dir(segmentInfo)
   // const data = await getDataFromCache({
   //   database_id: '',
@@ -133,9 +141,12 @@ async function _generateStaticParams({ ...props }) {
 const generateStaticParams = env.IS_DEV ? undefined : _generateStaticParams
 export { generateStaticParams }
 
-export default function Page(props) {
-  const revalidate = props?.revalidate || false
-  const segmentInfo = getSegmentInfo({ SEGMENT, ...props })
+export default async function Page({ params, revalidate = false }) {
+  const { catchAll } = await params
+  const segmentInfo = getSegmentInfo({
+    params: { catchAll },
+    SEGMENT,
+  })
 
   if (segmentInfo.isIndex) {
     return <Listing revalidate={revalidate} segmentInfo={segmentInfo} />

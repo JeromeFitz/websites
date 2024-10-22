@@ -31,8 +31,12 @@ const CURRENT_YEAR = 2024
 
 const { DATABASE_ID, SEGMENT } = CONFIG.EVENTS
 
-export async function generateMetadata({ ...props }): Promise<Metadata> {
-  const segmentInfo = getSegmentInfo({ SEGMENT, ...props })
+export async function generateMetadata({ params }): Promise<Metadata> {
+  const { catchAll } = await params
+  const segmentInfo = getSegmentInfo({
+    params: { catchAll },
+    SEGMENT,
+  })
   const data = await getDataFromCache({
     database_id: segmentInfo.isIndex ? '' : DATABASE_ID,
     filterType: 'equals',
@@ -46,13 +50,17 @@ export async function generateMetadata({ ...props }): Promise<Metadata> {
   return seo
 }
 
-async function _generateStaticParams({ ...props }) {
+async function _generateStaticParams({ params }) {
   // @todo(types)
   const segments: any = [{ catchAll: [] }]
   const combos: any = []
 
   console.dir(`> generateStaticParams (${SEGMENT})`)
-  const segmentInfo = getSegmentInfo({ SEGMENT, ...props })
+  const { catchAll } = await params
+  const segmentInfo = getSegmentInfo({
+    params: { catchAll },
+    SEGMENT,
+  })
   // const data = await getDataFromCache({
   //   database_id: '',
   //   filterType: 'equals',
@@ -127,9 +135,12 @@ async function _generateStaticParams({ ...props }) {
 const generateStaticParams = env.IS_DEV ? undefined : _generateStaticParams
 export { generateStaticParams }
 
-export default function Page(props) {
-  const revalidate = props?.revalidate || false
-  const segmentInfo = getSegmentInfo({ SEGMENT, ...props })
+export default async function Page({ params, revalidate = false }) {
+  const { catchAll } = await params
+  const segmentInfo = getSegmentInfo({
+    params: { catchAll },
+    SEGMENT,
+  })
 
   if (segmentInfo.isIndex) {
     return <Listing revalidate={revalidate} segmentInfo={segmentInfo} />

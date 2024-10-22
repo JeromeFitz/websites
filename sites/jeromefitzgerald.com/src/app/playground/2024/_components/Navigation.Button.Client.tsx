@@ -20,6 +20,7 @@ function NavigationButtonClient() {
   }
 
   return (
+    // </Box>
     <Skeleton loading={isLoading}>
       <Box
         asChild
@@ -66,7 +67,6 @@ function NavigationButtonClient() {
         </SegmentedControl.Root>
       </Box>
     </Skeleton>
-    // </Box>
   )
 }
 

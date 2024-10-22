@@ -19,7 +19,7 @@ const { SEGMENT } = CONFIG.MUSIC
 // const { DATABASE_ID: DATABASE_ID__PAGES } = CONFIG.PAGES
 
 export async function generateMetadata({ ...props }): Promise<Metadata> {
-  const { isEnabled } = draftMode()
+  const { isEnabled } = await draftMode()
   const segmentInfo = getSegmentInfo({ SEGMENT, ...props })
   const data = await getDataFromCache({
     database_id: '',
@@ -52,7 +52,7 @@ export async function generateMetadata({ ...props }): Promise<Metadata> {
 }
 
 async function Slug({ revalidate, segmentInfo }) {
-  const { isEnabled } = draftMode()
+  const { isEnabled } = await draftMode()
 
   // console.dir(`segmentInfo`)
   // console.dir(segmentInfo)
@@ -76,9 +76,12 @@ async function Slug({ revalidate, segmentInfo }) {
   return <MusicClient />
 }
 
-export default function Page(props) {
-  const revalidate = props?.revalidate || false
-  const segmentInfo = getSegmentInfo({ SEGMENT, ...props })
+export default async function Page({ params, revalidate = false }) {
+  const { catchAll } = await params
+  const segmentInfo = getSegmentInfo({
+    params: { catchAll },
+    SEGMENT,
+  })
 
   // if (segmentInfo.isIndex) {
   //   return <Listing srevalidate={revalidate} segmentInfo={segmentInfo} />

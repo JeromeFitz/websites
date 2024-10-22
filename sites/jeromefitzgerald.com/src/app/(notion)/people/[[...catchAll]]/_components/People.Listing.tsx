@@ -58,7 +58,7 @@ function ListingTemp({ data }) {
 // @todo(complexity) 11
 // eslint-disable-next-line complexity
 async function Listing({ revalidate, segmentInfo }) {
-  const { isEnabled } = draftMode()
+  const { isEnabled } = await draftMode()
   // const { slug } = segmentInfo
   // @note(notion) Listing do not pass Database ID
   const data = await getDataFromCache({
