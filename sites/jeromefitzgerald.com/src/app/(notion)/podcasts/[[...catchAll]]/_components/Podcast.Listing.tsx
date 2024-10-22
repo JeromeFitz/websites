@@ -26,8 +26,8 @@ import { LI, UL } from '@/components/List/index'
 
 const { DATABASE_ID } = CONFIG.PODCASTS
 
-function ListingTemp({ data }) {
-  const { isEnabled } = draftMode()
+async function ListingTemp({ data }) {
+  const { isEnabled } = await draftMode()
   const draft = isEnabled
   const items = data.results.map((item) => {
     const { properties } = item
@@ -64,7 +64,7 @@ function ListingTemp({ data }) {
 // @todo(complexity) 11
 // eslint-disable-next-line complexity
 async function Listing({ revalidate, segmentInfo }) {
-  const { isEnabled } = draftMode()
+  const { isEnabled } = await draftMode()
   // const { slug } = segmentInfo
   // @note(notion) Listing do not pass Database ID
   const data = await getDataFromCache({

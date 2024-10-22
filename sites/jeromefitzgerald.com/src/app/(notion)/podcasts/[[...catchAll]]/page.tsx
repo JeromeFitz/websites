@@ -143,8 +143,10 @@ export { generateStaticParams }
 
 export default function Page(props) {
   const revalidate = props?.revalidate || false
-  const segmentInfo = getSegmentInfo({ SEGMENT, /* @next-codemod-error 'props' is used with spread syntax (...). Any asynchronous properties of 'props' must be awaited when accessed. */
-  ...props })
+  const segmentInfo = getSegmentInfo({
+    SEGMENT /* @next-codemod-ignore 'props' is used with spread syntax (...). Any asynchronous properties of 'props' must be awaited when accessed. */,
+    ...props,
+  })
 
   /**
    * @hack(notion) Determiniation if this segment isa PODCAST or EPISODE

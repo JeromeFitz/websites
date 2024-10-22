@@ -22,7 +22,7 @@ const { SEGMENT } = CONFIG.BOOKS
 const { DATABASE_ID } = CONFIG.BOOKS
 
 export async function generateMetadata({ ...props }): Promise<Metadata> {
-  const { isEnabled } = draftMode()
+  const { isEnabled } = await draftMode()
   const segmentInfo = getSegmentInfo({ SEGMENT, ...props })
   const data = await getDataFromCache({
     database_id: '',
@@ -55,7 +55,7 @@ export async function generateMetadata({ ...props }): Promise<Metadata> {
 }
 
 async function Slug({ revalidate, segmentInfo }) {
-  const { isEnabled } = draftMode()
+  const { isEnabled } = await draftMode()
 
   const data = await getDataFromCache({
     database_id: '',
@@ -132,8 +132,10 @@ async function Slug({ revalidate, segmentInfo }) {
 
 export default function Page(props) {
   const revalidate = props?.revalidate || false
-  const segmentInfo = getSegmentInfo({ SEGMENT, /* @next-codemod-error 'props' is used with spread syntax (...). Any asynchronous properties of 'props' must be awaited when accessed. */
-  ...props })
+  const segmentInfo = getSegmentInfo({
+    SEGMENT /* @next-codemod-ignore 'props' is used with spread syntax (...). Any asynchronous properties of 'props' must be awaited when accessed. */,
+    ...props,
+  })
 
   // if (segmentInfo.isIndex) {
   //   return <Listing egmentInfo={segmentInfo} srevalidate={revalidate} />

@@ -82,8 +82,11 @@ const credentials: CredentialProps = {
 const spotify: ClientProps = new Client({ accessToken: '', ...credentials })
 
 // eslint-disable-next-line complexity
-export async function GET(request: NextRequest, props: { params: Promise<{ slug: string }> }) {
-  const params = await props.params;
+export async function GET(
+  request: NextRequest,
+  props: { params: Promise<{ slug: string }> },
+) {
+  const params = await props.params
   const slug = params.slug
   const { searchParams } = new URL(request.url)
   const limit = (searchParams.get('limit') ?? 10) as number

@@ -20,8 +20,11 @@ const { DATABASE_ID, SEGMENT } = CONFIG.PODCASTS
 
 // @todo(complexity) 25
 // eslint-disable-next-line complexity
-export async function GET(request: NextRequest, props: { params: Promise<{ slug: string }> }) {
-  const params = await props.params;
+export async function GET(
+  request: NextRequest,
+  props: { params: Promise<{ slug: string }> },
+) {
+  const params = await props.params
   const slug = params.slug
 
   const segmentInfo = getSegmentInfo({ params: { catchAll: [slug] }, SEGMENT })

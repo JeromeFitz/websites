@@ -19,7 +19,7 @@ const { SEGMENT } = CONFIG.MUSIC
 // const { DATABASE_ID: DATABASE_ID__PAGES } = CONFIG.PAGES
 
 export async function generateMetadata({ ...props }): Promise<Metadata> {
-  const { isEnabled } = draftMode()
+  const { isEnabled } = await draftMode()
   const segmentInfo = getSegmentInfo({ SEGMENT, ...props })
   const data = await getDataFromCache({
     database_id: '',
@@ -52,7 +52,7 @@ export async function generateMetadata({ ...props }): Promise<Metadata> {
 }
 
 async function Slug({ revalidate, segmentInfo }) {
-  const { isEnabled } = draftMode()
+  const { isEnabled } = await draftMode()
 
   // console.dir(`segmentInfo`)
   // console.dir(segmentInfo)
@@ -78,8 +78,10 @@ async function Slug({ revalidate, segmentInfo }) {
 
 export default function Page(props) {
   const revalidate = props?.revalidate || false
-  const segmentInfo = getSegmentInfo({ SEGMENT, /* @next-codemod-error 'props' is used with spread syntax (...). Any asynchronous properties of 'props' must be awaited when accessed. */
-  ...props })
+  const segmentInfo = getSegmentInfo({
+    SEGMENT /* @next-codemod-ignore 'props' is used with spread syntax (...). Any asynchronous properties of 'props' must be awaited when accessed. */,
+    ...props,
+  })
 
   // if (segmentInfo.isIndex) {
   //   return <Listing srevalidate={revalidate} segmentInfo={segmentInfo} />
