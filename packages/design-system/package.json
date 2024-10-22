@@ -59,8 +59,8 @@
   },
   "peerDependencies": {
     "@mantine/hooks": "^7.5.1",
-    "react": "19.0.0-rc-69d4b800-20241021",
-    "react-dom": "19.0.0-rc-69d4b800-20241021"
+    "react": "19.0.0-rc-fb9a90fa48-20240614",
+    "react-dom": "19.0.0-rc-fb9a90fa48-20240614"
   },
   "dependencies": {
     "@heroicons/react": "2.1.5",
@@ -112,7 +112,7 @@
     "@jeromefitz/tailwind-config": "workspace:*",
     "@mantine/hooks": "7.13.3",
     "next": "15.0.0",
-    "react": "19.0.0-rc-69d4b800-20241021",
-    "react-dom": "19.0.0-rc-69d4b800-20241021"
+    "react": "19.0.0-rc-fb9a90fa48-20240614",
+    "react-dom": "19.0.0-rc-fb9a90fa48-20240614"
   }
 }
