@@ -128,10 +128,13 @@ async function Slug({ revalidate, segmentInfo }) {
   )
 }
 
-export default async function Page({ params, revalidate = false }) {
+export default async function Page(props) {
+  const revalidate = props?.revalidate || false
+  const { params } = props
   const { catchAll } = await params
   const segmentInfo = getSegmentInfo({
     params: { catchAll },
+    revalidate,
     SEGMENT,
   })
 

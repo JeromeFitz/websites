@@ -76,7 +76,9 @@ async function Slug({ revalidate, segmentInfo }) {
   return <MusicClient />
 }
 
-export default async function Page({ params, revalidate = false }) {
+export default async function Page(props) {
+  const revalidate = props?.revalidate || false
+  const { params } = props
   const { catchAll } = await params
   const segmentInfo = getSegmentInfo({
     params: { catchAll },
@@ -84,7 +86,7 @@ export default async function Page({ params, revalidate = false }) {
   })
 
   // if (segmentInfo.isIndex) {
-  //   return <Listing srevalidate={revalidate} segmentInfo={segmentInfo} />
+  //   return <Listing revalidate={revalidate} segmentInfo={segmentInfo} />
   // }
   return <Slug revalidate={revalidate} segmentInfo={segmentInfo} />
 }
