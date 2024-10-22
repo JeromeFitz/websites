@@ -83,7 +83,8 @@ export default function Page(props) {
   if (!env.IS_DEV) return <FourOhFour isNotPublished={false} segmentInfo={{}} />
 
   const revalidate = props?.revalidate || false
-  const segmentInfo = getSegmentInfo({ SEGMENT, ...props, revalidate })
+  const segmentInfo = getSegmentInfo({ SEGMENT, /* @next-codemod-error 'props' is used with spread syntax (...). Any asynchronous properties of 'props' must be awaited when accessed. */
+  ...props, revalidate })
 
   return <Slug revalidate={revalidate} segmentInfo={segmentInfo} />
 }

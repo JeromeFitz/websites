@@ -74,6 +74,7 @@ async function Slug({ revalidate, segmentInfo }) {
 
 export default function Page(props) {
   const propsHack = {
+    /* @next-codemod-error 'props' is used with spread syntax (...). Any asynchronous properties of 'props' must be awaited when accessed. */
     ...props,
     revalidate: props?.revalidate || false,
   }
