@@ -135,10 +135,13 @@ async function _generateStaticParams({ params }) {
 const generateStaticParams = env.IS_DEV ? undefined : _generateStaticParams
 export { generateStaticParams }
 
-export default async function Page({ params, revalidate = false }) {
+export default async function Page(props) {
+  const revalidate = props?.revalidate || false
+  const { params } = props
   const { catchAll } = await params
   const segmentInfo = getSegmentInfo({
     params: { catchAll },
+    revalidate,
     SEGMENT,
   })
 

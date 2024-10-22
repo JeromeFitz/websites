@@ -78,12 +78,14 @@ async function Slug({ revalidate, segmentInfo }) {
   )
 }
 
-export default function Page(props) {
+export default async function Page(props) {
   const revalidate = props?.revalidate || false
+  const { params } = props
+  const { catchAll } = await params
   const segmentInfo = getSegmentInfo({
-    SEGMENT /* @next-codemod-ignore 'props' is used with spread syntax (...). Any asynchronous properties of 'props' must be awaited when accessed. */,
-    ...props,
+    params: { catchAll },
     revalidate,
+    SEGMENT,
   })
 
   return <Slug revalidate={revalidate} segmentInfo={segmentInfo} />

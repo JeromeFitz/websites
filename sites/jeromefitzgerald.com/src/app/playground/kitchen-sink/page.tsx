@@ -77,16 +77,18 @@ async function Slug({ revalidate, segmentInfo }) {
   )
 }
 
-export default function Page(props) {
+export default async function Page(props) {
   // if (!env.IS_DEV) notFound()
   // @note(next) avoid NEXT_DYNAMIC_NO_SSR_CODE
   if (!env.IS_DEV) return <FourOhFour isNotPublished={false} segmentInfo={{}} />
 
   const revalidate = props?.revalidate || false
+  const { params } = props
+  const { catchAll } = await params
   const segmentInfo = getSegmentInfo({
-    SEGMENT /* @next-codemod-ignore 'props' is used with spread syntax (...). Any asynchronous properties of 'props' must be awaited when accessed. */,
-    ...props,
+    params: { catchAll },
     revalidate,
+    SEGMENT,
   })
 
   return <Slug revalidate={revalidate} segmentInfo={segmentInfo} />
