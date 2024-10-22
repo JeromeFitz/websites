@@ -204,16 +204,16 @@ const getDefaultInitialStateStoreMenu = () => ({
         title: '… All Events',
         titleDescription: 'Including recent past events.',
       },
-      {
-        href: '/events/2024/10/12/arcade-hootenanny',
-        icon: TicketIcon,
-        id: '2024/10/12/arcade-hootenanny',
-        isActive: true,
-        isActiveMobile: true,
-        keywords: ['arcade', 'hootenanny'],
-        title: 'Arcade Hootenanny: SAT 10/12',
-        titleDescription: '',
-      },
+      // {
+      //   href: '/events/2024/10/12/arcade-hootenanny',
+      //   icon: TicketIcon,
+      //   id: '2024/10/12/arcade-hootenanny',
+      //   isActive: true,
+      //   isActiveMobile: true,
+      //   keywords: ['arcade', 'hootenanny'],
+      //   title: 'Arcade Hootenanny: SAT 10/12',
+      //   titleDescription: '',
+      // },
     ],
     podcasts: [
       {

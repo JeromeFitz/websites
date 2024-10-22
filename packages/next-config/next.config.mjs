@@ -29,6 +29,7 @@ const envSecrets = [
   // // 'UPSTASH_REDIS_REST_URL',
 ]
 for (const envSecretsVar of envSecrets) {
+  // eslint-disable-next-line no-undef
   delete process.env[envSecretsVar]
 }
 
@@ -59,15 +60,17 @@ const protocol = PROTOCOL.HTTPS
  * - configFileName
  * - env
  * - experimental.appDir
- * - experimental.serverComponentsExternalPackages
  * - experimental.turbo
  * - headers
  * - images
  * - onDemandEntries
+ * - outputFileTracingExcludes
+ * - outputFileTracingRoot
  * - pageExtensions
  * - reactStrictMode
  * - redirects
  * - rewrites
+ * - serverExternalPackages
  * - swcMinify
  * - transpilePackages
  */
@@ -112,17 +115,6 @@ const config = ({
     experimental: {
       // esmExternals: true,
       // optimizePackageImports: ['@radix-ui/themes'],
-      // @note(next) storybook needs this -- but nothing else.
-      outputFileTracingExcludes: {
-        '*': [
-          'node_modules/.pnpm/@swc+core-linux-x64-musl',
-          'node_modules/.pnpm/@swc+core-linux-x64-gnu',
-          'node_modules/.pnpm/@esbuild+linux-x64',
-        ],
-      },
-      // @note(next) monorepo root
-      outputFileTracingRoot: join(pathDirName, '../../'),
-      serverComponentsExternalPackages,
       useLightningcss: false,
     },
     // exportPathMap,
@@ -158,6 +150,7 @@ const config = ({
       // minimumCacheTTL: 86400, // 1 day
       remotePatterns: [
         {
+          // eslint-disable-next-line no-undef
           hostname: `**.${process.env.NEXT_PUBLIC__SITE}`,
           protocol,
         },
@@ -247,8 +240,17 @@ const config = ({
        */
       pagesBufferLength: 2,
     },
-    optimizeFonts: true,
     output: undefined,
+    // @note(next) storybook needs this -- but nothing else.
+    outputFileTracingExcludes: {
+      '*': [
+        'node_modules/.pnpm/@swc+core-linux-x64-musl',
+        'node_modules/.pnpm/@swc+core-linux-x64-gnu',
+        'node_modules/.pnpm/@esbuild+linux-x64',
+      ],
+    },
+    // @note(next) monorepo root
+    outputFileTracingRoot: join(pathDirName, '../../'),
     // output: 'export',
     // output: 'standalone',
     // outputFileTracing: false,
@@ -276,11 +278,11 @@ const config = ({
       return {}
     },
     sassOptions: {},
+    serverExternalPackages: serverComponentsExternalPackages,
     serverRuntimeConfig: {
       // @note(next) available on the server
     },
     staticPageGenerationTimeout: 60,
-    swcMinify: true,
     trailingSlash: false,
     transpilePackages,
     typescript: {
@@ -290,15 +292,18 @@ const config = ({
     // @note(next) false will block: ./pages
     useFileSystemPublicRoutes: true,
 
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     webpack: (config, { buildId, defaultLoaders, dev, isServer, webpack }) => {
       // @note(pnpm)  path mapping if working locally
       if (isLocal) {
         isLocalDebugMessages.map((msg) =>
+          // eslint-disable-next-line no-undef
           console.debug('\x1b[33m%s\x1b[0m', 'warn', ' - ', msg),
         )
         externals.map((ext) => {
+          // eslint-disable-next-line no-undef
           console.debug('\x1b[33m%s\x1b[0m', 'warn', ' - [ 📦 ] ›  ', ext)
           // @note(npmrc) shamefully-hoist === node_modules at root
           // @todo(npmrc) would be nice to not shamefully-hoist
@@ -321,6 +326,7 @@ const config = ({
    * @note
    * Plugins cannot handle their own Configuration at this time.
    */
+  // eslint-disable-next-line no-undef
   const wBA = withBundleAnalyzer({ enabled: process.env.ANALYZE === 'true' })
   const plugins = [wBA, withPlaiceholder]
 
