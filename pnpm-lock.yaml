@@ -412,8 +412,8 @@ importers:
         specifier: 1.3.2
         version: 1.3.2(next@15.0.0(react-dom@19.0.0-rc-65a56d0e-20241020(react@19.0.0-rc-65a56d0e-20241020))(react@19.0.0-rc-65a56d0e-20241020))(react@19.0.0-rc-65a56d0e-20241020)
       '@vercel/speed-insights':
-        specifier: 1.0.13
-        version: 1.0.13(next@15.0.0(react-dom@19.0.0-rc-65a56d0e-20241020(react@19.0.0-rc-65a56d0e-20241020))(react@19.0.0-rc-65a56d0e-20241020))(react@19.0.0-rc-65a56d0e-20241020)
+        specifier: 1.0.14
+        version: 1.0.14(next@15.0.0(react-dom@19.0.0-rc-65a56d0e-20241020(react@19.0.0-rc-65a56d0e-20241020))(react@19.0.0-rc-65a56d0e-20241020))(react@19.0.0-rc-65a56d0e-20241020)
       clsx:
         specifier: 2.1.1
         version: 2.1.1
@@ -1052,8 +1052,8 @@ importers:
         specifier: 1.3.2
         version: 1.3.2(next@15.0.0(react-dom@19.0.0-rc-65a56d0e-20241020(react@19.0.0-rc-65a56d0e-20241020))(react@19.0.0-rc-65a56d0e-20241020))(react@19.0.0-rc-65a56d0e-20241020)
       '@vercel/speed-insights':
-        specifier: 1.0.13
-        version: 1.0.13(next@15.0.0(react-dom@19.0.0-rc-65a56d0e-20241020(react@19.0.0-rc-65a56d0e-20241020))(react@19.0.0-rc-65a56d0e-20241020))(react@19.0.0-rc-65a56d0e-20241020)
+        specifier: 1.0.14
+        version: 1.0.14(next@15.0.0(react-dom@19.0.0-rc-65a56d0e-20241020(react@19.0.0-rc-65a56d0e-20241020))(react@19.0.0-rc-65a56d0e-20241020))(react@19.0.0-rc-65a56d0e-20241020)
       clsx:
         specifier: 2.1.1
         version: 2.1.1
@@ -5054,12 +5054,12 @@ packages:
       react:
         optional: true
 
-  '@vercel/speed-insights@1.0.13':
-    resolution: {integrity: sha512-3iuOMB/M0WE3Zeuoo2mnlD7Eo7fGH7RBGi92Vq4qO7Kp+BwNbpwFqkjuPQDEeBxoGQLJFRICrsx5/IluHZVCZA==}
+  '@vercel/speed-insights@1.0.14':
+    resolution: {integrity: sha512-env1BkPddz1UaEZwBL4GmfRksMi2LbiYaKuoxMQjfLk83aEh7kkWMukkUhpQVs717NE6nnD+1+KO85GZHOZ4nQ==}
     peerDependencies:
       '@sveltejs/kit': ^1 || ^2
       next: '>= 13'
-      react: ^18 || ^19
+      react: ^18 || ^19 || ^19.0.0-rc
       svelte: '>= 4'
       vue: ^3
       vue-router: ^4
@@ -15450,7 +15450,7 @@ snapshots:
       next: 15.0.0(react-dom@19.0.0-rc-65a56d0e-20241020(react@19.0.0-rc-65a56d0e-20241020))(react@19.0.0-rc-65a56d0e-20241020)
       react: 19.0.0-rc-65a56d0e-20241020
 
-  '@vercel/speed-insights@1.0.13(next@15.0.0(react-dom@19.0.0-rc-65a56d0e-20241020(react@19.0.0-rc-65a56d0e-20241020))(react@19.0.0-rc-65a56d0e-20241020))(react@19.0.0-rc-65a56d0e-20241020)':
+  '@vercel/speed-insights@1.0.14(next@15.0.0(react-dom@19.0.0-rc-65a56d0e-20241020(react@19.0.0-rc-65a56d0e-20241020))(react@19.0.0-rc-65a56d0e-20241020))(react@19.0.0-rc-65a56d0e-20241020)':
     optionalDependencies:
       next: 15.0.0(react-dom@19.0.0-rc-65a56d0e-20241020(react@19.0.0-rc-65a56d0e-20241020))(react@19.0.0-rc-65a56d0e-20241020)
       react: 19.0.0-rc-65a56d0e-20241020
