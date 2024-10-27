@@ -102,7 +102,7 @@
     "@notionhq/client": "^2.2.14",
     "date-fns": "^4.0.0",
     "server-only": "0.0.1",
-    "uuid": "^9.0.1 || ^10.0.0"
+    "uuid": "^11.0.0"
   },
   "dependencies": {
     "emoji-regex": "10.4.0",
@@ -118,7 +118,7 @@
     "react": "19.0.0-rc-69d4b800-20241021",
     "react-dom": "19.0.0-rc-69d4b800-20241021",
     "server-only": "0.0.1",
-    "uuid": "10.0.0"
+    "uuid": "11.0.1"
   },
   "publishConfig": {
     "access": "public"
