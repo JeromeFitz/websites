@@ -379,8 +379,8 @@ importers:
         specifier: 0.0.1
         version: 0.0.1
       uuid:
-        specifier: 10.0.0
-        version: 10.0.0
+        specifier: 11.0.0
+        version: 11.0.0
 
   packages/playwright-config:
     devDependencies:
@@ -838,8 +838,8 @@ importers:
         specifier: 4.0.3
         version: 4.0.3(react@19.0.0-rc-69d4b800-20241021)
       uuid:
-        specifier: 10.0.0
-        version: 10.0.0
+        specifier: 11.0.0
+        version: 11.0.0
       valid-url:
         specifier: 1.0.9
         version: 1.0.9
@@ -1157,8 +1157,8 @@ importers:
         specifier: 4.0.3
         version: 4.0.3(react@19.0.0-rc-69d4b800-20241021)
       uuid:
-        specifier: 10.0.0
-        version: 10.0.0
+        specifier: 11.0.0
+        version: 11.0.0
       valid-url:
         specifier: 1.0.9
         version: 1.0.9
@@ -10782,8 +10782,8 @@ packages:
     resolution: {integrity: sha512-pMZTvIkT1d+TFGvDOqodOclx0QWkkgi6Tdoa8gC8ffGAAqz9pzPTZWAybbsHHoED/ztMtkv/VoYTYyShUn81hA==}
     engines: {node: '>= 0.4.0'}
 
-  uuid@10.0.0:
-    resolution: {integrity: sha512-8XkAphELsDnEGrDxUOHB3RGvXz6TeuYSGEZBOjtTtPm2lwhGBjLgOzLHB63IUWfBpNucQjND6d3AOudO+H3RWQ==}
+  uuid@11.0.0:
+    resolution: {integrity: sha512-iE8Fa5fgBY4rN5GvNUJ8TSwO1QG7TzdPfhrJczf6XJ6mZUxh/GX433N70fCiJL9h8EKP5ayEIo0Q6EBQGWHFqA==}
     hasBin: true
 
   uuid@9.0.1:
@@ -21880,7 +21880,7 @@ snapshots:
 
   utils-merge@1.0.1: {}
 
-  uuid@10.0.0: {}
+  uuid@11.0.0: {}
 
   uuid@9.0.1: {}
 
