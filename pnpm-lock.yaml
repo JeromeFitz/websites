@@ -153,8 +153,8 @@ importers:
         specifier: 1.1.2
         version: 1.1.2(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021)
       '@radix-ui/react-icons':
-        specifier: 1.3.0
-        version: 1.3.0(react@19.0.0-rc-69d4b800-20241021)
+        specifier: 1.3.1
+        version: 1.3.1(react@19.0.0-rc-69d4b800-20241021)
       '@radix-ui/react-id':
         specifier: 1.1.0
         version: 1.1.0(react@19.0.0-rc-69d4b800-20241021)
@@ -658,8 +658,8 @@ importers:
         specifier: 1.1.2
         version: 1.1.2(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021)
       '@radix-ui/react-icons':
-        specifier: 1.3.0
-        version: 1.3.0(react@19.0.0-rc-69d4b800-20241021)
+        specifier: 1.3.1
+        version: 1.3.1(react@19.0.0-rc-69d4b800-20241021)
       '@radix-ui/react-id':
         specifier: 1.1.0
         version: 1.1.0(react@19.0.0-rc-69d4b800-20241021)
@@ -968,8 +968,8 @@ importers:
         specifier: 1.1.2
         version: 1.1.2(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021)
       '@radix-ui/react-icons':
-        specifier: 1.3.0
-        version: 1.3.0(react@19.0.0-rc-69d4b800-20241021)
+        specifier: 1.3.1
+        version: 1.3.1(react@19.0.0-rc-69d4b800-20241021)
       '@radix-ui/react-id':
         specifier: 1.1.0
         version: 1.1.0(react@19.0.0-rc-69d4b800-20241021)
@@ -3482,10 +3482,10 @@ packages:
       '@types/react-dom':
         optional: true
 
-  '@radix-ui/react-icons@1.3.0':
-    resolution: {integrity: sha512-jQxj/0LKgp+j9BiTXz3O3sgs26RNet2iLWmsPyRz2SIcR4q/4SbazXfnYwbAr+vLYKSfc7qxzyGQA1HLlYiuNw==}
+  '@radix-ui/react-icons@1.3.1':
+    resolution: {integrity: sha512-QvYompk0X+8Yjlo/Fv4McrzxohDdM5GgLHyQcPpcsPvlOSXCGFjdbuyGL5dzRbg0GpknAjQJJZzdiRK7iWVuFQ==}
     peerDependencies:
-      react: ^16.x || ^17.x || ^18.x
+      react: ^16.x || ^17.x || ^18.x || ^19.x
 
   '@radix-ui/react-id@1.0.1':
     resolution: {integrity: sha512-tI7sT/kqYp8p96yGWY1OAnLHrqDgzHefRBKQ2YAkBS5ja7QLcZ9Z/uY7bEjPUatf8RomoXM8/1sMj1IJaE5UzQ==}
@@ -13506,7 +13506,7 @@ snapshots:
       react: 19.0.0-rc-69d4b800-20241021
       react-dom: 19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021)
 
-  '@radix-ui/react-icons@1.3.0(react@19.0.0-rc-69d4b800-20241021)':
+  '@radix-ui/react-icons@1.3.1(react@19.0.0-rc-69d4b800-20241021)':
     dependencies:
       react: 19.0.0-rc-69d4b800-20241021
 
