@@ -19,10 +19,10 @@
     "@storybook/testing-library": "0.2.2",
     "@storybook/theming": "8.4.0",
     "less": "4.2.0",
-    "next": "15.0.1",
+    "next": "15.0.2",
     "postcss": "8.4.47",
-    "react": "19.0.0-rc-69d4b800-20241021",
-    "react-dom": "19.0.0-rc-69d4b800-20241021",
+    "react": "19.0.0-rc-45804af1-20241021",
+    "react-dom": "19.0.0-rc-45804af1-20241021",
     "storybook": "8.4.0",
     "webpack": "5.95.0"
   }
