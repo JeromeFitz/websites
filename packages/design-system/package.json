@@ -102,7 +102,7 @@
     "@radix-ui/react-visually-hidden": "1.1.0",
     "@radix-ui/themes": "3.1.4",
     "clsx": "2.1.1",
-    "cmdk": "1.0.3",
+    "cmdk": "1.0.4",
     "tailwind-merge": "2.5.4"
   },
   "devDependencies": {
