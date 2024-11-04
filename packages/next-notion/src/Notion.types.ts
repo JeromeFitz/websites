@@ -30,7 +30,7 @@ type ApiColor =
  * @ref:
  */
 type OptionalPropertyNames<T> = {
-  [K in keyof T]-?: object extends { [P in K]: T[K] } ? K : never
+  [K in keyof T]-?: object extends Record<K, T[K]> ? K : never
 }[keyof T]
 
 type SpreadProperties<L, R, K extends keyof L & keyof R> = {
