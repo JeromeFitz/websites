@@ -225,8 +225,8 @@ importers:
         specifier: 2.1.1
         version: 2.1.1
       cmdk:
-        specifier: 1.0.3
-        version: 1.0.3(react-dom@19.0.0-rc-45804af1-20241021(react@19.0.0-rc-45804af1-20241021))(react@19.0.0-rc-45804af1-20241021)
+        specifier: 1.0.4
+        version: 1.0.4(react-dom@19.0.0-rc-45804af1-20241021(react@19.0.0-rc-45804af1-20241021))(react@19.0.0-rc-45804af1-20241021)
       tailwind-merge:
         specifier: 2.5.4
         version: 2.5.4
@@ -742,8 +742,8 @@ importers:
         specifier: 2.1.1
         version: 2.1.1
       cmdk:
-        specifier: 1.0.3
-        version: 1.0.3(react-dom@19.0.0-rc-45804af1-20241021(react@19.0.0-rc-45804af1-20241021))(react@19.0.0-rc-45804af1-20241021)
+        specifier: 1.0.4
+        version: 1.0.4(react-dom@19.0.0-rc-45804af1-20241021(react@19.0.0-rc-45804af1-20241021))(react@19.0.0-rc-45804af1-20241021)
       date-fns:
         specifier: 4.1.0
         version: 4.1.0
@@ -1055,8 +1055,8 @@ importers:
         specifier: 2.1.1
         version: 2.1.1
       cmdk:
-        specifier: 1.0.3
-        version: 1.0.3(react-dom@19.0.0-rc-45804af1-20241021(react@19.0.0-rc-45804af1-20241021))(react@19.0.0-rc-45804af1-20241021)
+        specifier: 1.0.4
+        version: 1.0.4(react-dom@19.0.0-rc-45804af1-20241021(react@19.0.0-rc-45804af1-20241021))(react@19.0.0-rc-45804af1-20241021)
       date-fns:
         specifier: 4.1.0
         version: 4.1.0
@@ -5492,8 +5492,8 @@ packages:
     resolution: {integrity: sha512-RMr0FhtfXemyinomL4hrWcYJxmX6deFdCxpJzhDttxgO1+bcCnkk+9drydLVDmAMG7NE6aN/fl4F7ucU/90gAA==}
     engines: {node: '>=0.10.0'}
 
-  cmdk@1.0.3:
-    resolution: {integrity: sha512-2c3uTjwT4YeHj60q2k8S1B0WHSoGR6t5CPnec6PMFD2QF4gwid0t1VSPNeEmL02EwBwNky/A3gwPCOViKTtoPA==}
+  cmdk@1.0.4:
+    resolution: {integrity: sha512-AnsjfHyHpQ/EFeAnG216WY7A5LiYCoZzCSygiLvfXC3H3LFGCprErteUcszaVluGOhuOTbJS3jWHrSDYPBBygg==}
     peerDependencies:
       react: ^18 || ^19 || ^19.0.0-rc
       react-dom: ^18 || ^19 || ^19.0.0-rc
@@ -15463,7 +15463,7 @@ snapshots:
 
   cluster-key-slot@1.1.2: {}
 
-  cmdk@1.0.3(react-dom@19.0.0-rc-45804af1-20241021(react@19.0.0-rc-45804af1-20241021))(react@19.0.0-rc-45804af1-20241021):
+  cmdk@1.0.4(react-dom@19.0.0-rc-45804af1-20241021(react@19.0.0-rc-45804af1-20241021))(react@19.0.0-rc-45804af1-20241021):
     dependencies:
       '@radix-ui/react-dialog': 1.1.2(react-dom@19.0.0-rc-45804af1-20241021(react@19.0.0-rc-45804af1-20241021))(react@19.0.0-rc-45804af1-20241021)
       '@radix-ui/react-id': 1.1.0(react@19.0.0-rc-45804af1-20241021)
