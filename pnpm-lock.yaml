@@ -802,8 +802,8 @@ importers:
         specifier: 3.2.1
         version: 3.2.1(react@19.0.0-rc-45804af1-20241021)
       react-swipeable:
-        specifier: 7.0.1
-        version: 7.0.1(react@19.0.0-rc-45804af1-20241021)
+        specifier: 7.0.2
+        version: 7.0.2(react@19.0.0-rc-45804af1-20241021)
       react-tweet:
         specifier: 3.2.1
         version: 3.2.1(react-dom@19.0.0-rc-45804af1-20241021(react@19.0.0-rc-45804af1-20241021))(react@19.0.0-rc-45804af1-20241021)
@@ -1118,8 +1118,8 @@ importers:
         specifier: 3.2.1
         version: 3.2.1(react@19.0.0-rc-45804af1-20241021)
       react-swipeable:
-        specifier: 7.0.1
-        version: 7.0.1(react@19.0.0-rc-45804af1-20241021)
+        specifier: 7.0.2
+        version: 7.0.2(react@19.0.0-rc-45804af1-20241021)
       react-tweet:
         specifier: 3.2.1
         version: 3.2.1(react-dom@19.0.0-rc-45804af1-20241021(react@19.0.0-rc-45804af1-20241021))(react@19.0.0-rc-45804af1-20241021)
@@ -9095,10 +9095,10 @@ packages:
       '@types/react':
         optional: true
 
-  react-swipeable@7.0.1:
-    resolution: {integrity: sha512-RKB17JdQzvECfnVj9yDZsiYn3vH0eyva/ZbrCZXZR0qp66PBRhtg4F9yJcJTWYT5Adadi+x4NoG53BxKHwIYLQ==}
+  react-swipeable@7.0.2:
+    resolution: {integrity: sha512-v1Qx1l+aC2fdxKa9aKJiaU/ZxmJ5o98RMoFwUqAAzVWUcxgfHFXDDruCKXhw6zIYXm6V64JiHgP9f6mlME5l8w==}
     peerDependencies:
-      react: ^16.8.3 || ^17 || ^18
+      react: ^16.8.3 || ^17 || ^18 || ^19.0.0 || ^19.0.0-rc
 
   react-tweet@3.2.1:
     resolution: {integrity: sha512-dktP3RMuwRB4pnSDocKpSsW5Hq1IXRW6fONkHhxT5EBIXsKZzdQuI70qtub1XN2dtZdkJWWxfBm/Q+kN+vRYFA==}
@@ -19349,7 +19349,7 @@ snapshots:
       react: 19.0.0-rc-45804af1-20241021
       tslib: 2.7.0
 
-  react-swipeable@7.0.1(react@19.0.0-rc-45804af1-20241021):
+  react-swipeable@7.0.2(react@19.0.0-rc-45804af1-20241021):
     dependencies:
       react: 19.0.0-rc-45804af1-20241021
 
