@@ -754,8 +754,8 @@ importers:
         specifier: 3.7.2
         version: 3.7.2
       focus-trap-react:
-        specifier: 10.3.0
-        version: 10.3.0(prop-types@15.8.1)(react-dom@19.0.0-rc-45804af1-20241021(react@19.0.0-rc-45804af1-20241021))(react@19.0.0-rc-45804af1-20241021)
+        specifier: 10.3.1
+        version: 10.3.1(prop-types@15.8.1)(react-dom@19.0.0-rc-45804af1-20241021(react@19.0.0-rc-45804af1-20241021))(react@19.0.0-rc-45804af1-20241021)
       framer-motion:
         specifier: 11.11.11
         version: 11.11.11(react-dom@19.0.0-rc-45804af1-20241021(react@19.0.0-rc-45804af1-20241021))(react@19.0.0-rc-45804af1-20241021)
@@ -1067,8 +1067,8 @@ importers:
         specifier: 3.7.2
         version: 3.7.2
       focus-trap-react:
-        specifier: 10.3.0
-        version: 10.3.0(prop-types@15.8.1)(react-dom@19.0.0-rc-45804af1-20241021(react@19.0.0-rc-45804af1-20241021))(react@19.0.0-rc-45804af1-20241021)
+        specifier: 10.3.1
+        version: 10.3.1(prop-types@15.8.1)(react-dom@19.0.0-rc-45804af1-20241021(react@19.0.0-rc-45804af1-20241021))(react@19.0.0-rc-45804af1-20241021)
       framer-motion:
         specifier: 11.11.11
         version: 11.11.11(react-dom@19.0.0-rc-45804af1-20241021(react@19.0.0-rc-45804af1-20241021))(react@19.0.0-rc-45804af1-20241021)
@@ -6569,15 +6569,15 @@ packages:
   flatted@3.3.1:
     resolution: {integrity: sha512-X8cqMLLie7KsNUDSdzeN8FYK9rEt4Dt67OsG/DNGnYTSDBG4uFAJFBnUeiV+zCVAvwFy56IjM9sH51jVaEhNxw==}
 
-  focus-trap-react@10.3.0:
-    resolution: {integrity: sha512-XrCTj44uNE0clTA47y1AbIb7tM7w6+zi6WrJzb4RxRe3uAIIivkBCwlsCqe7R3vPRT/LCQzfe4+N/KjtJMQMgw==}
+  focus-trap-react@10.3.1:
+    resolution: {integrity: sha512-PN4Ya9xf9nyj/Nd9VxBNMuD7IrlRbmaG6POAQ8VLqgtc6IY/Ln1tYakow+UIq4fihYYYFM70/2oyidE6bbiPgw==}
     peerDependencies:
       prop-types: ^15.8.1
       react: '>=16.3.0'
       react-dom: '>=16.3.0'
 
-  focus-trap@7.6.0:
-    resolution: {integrity: sha512-1td0l3pMkWJLFipobUcGaf+5DTY4PLDDrcqoSaKP8ediO/CoWCCYk/fT/Y2A4e6TNB+Sh6clRJCjOPPnKoNHnQ==}
+  focus-trap@7.6.1:
+    resolution: {integrity: sha512-nB8y4nQl8PshahLpGKZOq1sb0xrMVFSn6at7u/qOsBZTlZRzaapISGENcB6mOkoezbClZyiMwEF/dGY8AZ00rA==}
 
   for-each@0.3.3:
     resolution: {integrity: sha512-jqYfLp7mo9vIyQf8ykW2v7A+2N4QjeCeI5+Dz9XraiO1ign81wjiH7Fb9vSOWvQfNtmSa4H2RoQTrrXivdUZmw==}
@@ -16825,15 +16825,15 @@ snapshots:
 
   flatted@3.3.1: {}
 
-  focus-trap-react@10.3.0(prop-types@15.8.1)(react-dom@19.0.0-rc-45804af1-20241021(react@19.0.0-rc-45804af1-20241021))(react@19.0.0-rc-45804af1-20241021):
+  focus-trap-react@10.3.1(prop-types@15.8.1)(react-dom@19.0.0-rc-45804af1-20241021(react@19.0.0-rc-45804af1-20241021))(react@19.0.0-rc-45804af1-20241021):
     dependencies:
-      focus-trap: 7.6.0
+      focus-trap: 7.6.1
       prop-types: 15.8.1
       react: 19.0.0-rc-45804af1-20241021
       react-dom: 19.0.0-rc-45804af1-20241021(react@19.0.0-rc-45804af1-20241021)
       tabbable: 6.2.0
 
-  focus-trap@7.6.0:
+  focus-trap@7.6.1:
     dependencies:
       tabbable: 6.2.0
 
