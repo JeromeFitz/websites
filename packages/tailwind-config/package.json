@@ -12,7 +12,7 @@
     "autoprefixer": "10.4.20",
     "cssnano": "7.0.6",
     "lightningcss": "1.28.1",
-    "postcss": "8.4.47",
+    "postcss": "8.4.49",
     "radix-themes-tw": "0.2.3",
     "react": "19.0.0-rc-45804af1-20241021",
     "react-dom": "19.0.0-rc-45804af1-20241021",
