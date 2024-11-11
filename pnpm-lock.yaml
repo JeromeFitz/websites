@@ -379,8 +379,8 @@ importers:
         specifier: 0.0.1
         version: 0.0.1
       uuid:
-        specifier: 11.0.2
-        version: 11.0.2
+        specifier: 11.0.3
+        version: 11.0.3
 
   packages/playwright-config:
     devDependencies:
@@ -838,8 +838,8 @@ importers:
         specifier: 4.0.3
         version: 4.0.3(react@19.0.0-rc-45804af1-20241021)
       uuid:
-        specifier: 11.0.2
-        version: 11.0.2
+        specifier: 11.0.3
+        version: 11.0.3
       valid-url:
         specifier: 1.0.9
         version: 1.0.9
@@ -1154,8 +1154,8 @@ importers:
         specifier: 4.0.3
         version: 4.0.3(react@19.0.0-rc-45804af1-20241021)
       uuid:
-        specifier: 11.0.2
-        version: 11.0.2
+        specifier: 11.0.3
+        version: 11.0.3
       valid-url:
         specifier: 1.0.9
         version: 1.0.9
@@ -10316,8 +10316,8 @@ packages:
   utila@0.4.0:
     resolution: {integrity: sha512-Z0DbgELS9/L/75wZbro8xAnT50pBVFQZ+hUEueGDU5FN51YSCYM+jdxsfCiHjwNP/4LCDD0i/graKpeBnOXKRA==}
 
-  uuid@11.0.2:
-    resolution: {integrity: sha512-14FfcOJmqdjbBPdDjFQyk/SdT4NySW4eM0zcG+HqbHP5jzuH56xO3J1DGhgs/cEMCfwYi3HQI1gnTO62iaG+tQ==}
+  uuid@11.0.3:
+    resolution: {integrity: sha512-d0z310fCWv5dJwnX1Y/MncBAqGMKEzlBb1AOf7z9K8ALnd0utBX/msg/fA0+sbyN1ihbMsLhrBlnl1ak7Wa0rg==}
     hasBin: true
 
   uuid@9.0.1:
@@ -20706,7 +20706,7 @@ snapshots:
 
   utila@0.4.0: {}
 
-  uuid@11.0.2: {}
+  uuid@11.0.3: {}
 
   uuid@9.0.1: {}
 
