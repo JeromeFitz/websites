@@ -244,8 +244,8 @@ importers:
         specifier: workspace:*
         version: link:../tailwind-config
       '@mantine/hooks':
-        specifier: 7.13.5
-        version: 7.13.5(react@19.0.0-rc-45804af1-20241021)
+        specifier: 7.14.0
+        version: 7.14.0(react@19.0.0-rc-45804af1-20241021)
       next:
         specifier: 15.0.2
         version: 15.0.2(react-dom@19.0.0-rc-45804af1-20241021(react@19.0.0-rc-45804af1-20241021))(react@19.0.0-rc-45804af1-20241021)
@@ -604,8 +604,8 @@ importers:
         specifier: 3.0.7
         version: 3.0.7(lodash@4.17.21)
       '@mantine/hooks':
-        specifier: 7.13.5
-        version: 7.13.5(react@19.0.0-rc-45804af1-20241021)
+        specifier: 7.14.0
+        version: 7.14.0(react@19.0.0-rc-45804af1-20241021)
       '@notionhq/client':
         specifier: 2.2.15
         version: 2.2.15
@@ -917,8 +917,8 @@ importers:
         specifier: 3.0.7
         version: 3.0.7(lodash@4.17.21)
       '@mantine/hooks':
-        specifier: 7.13.5
-        version: 7.13.5(react@19.0.0-rc-45804af1-20241021)
+        specifier: 7.14.0
+        version: 7.14.0(react@19.0.0-rc-45804af1-20241021)
       '@notionhq/client':
         specifier: 2.2.15
         version: 2.2.15
@@ -2509,8 +2509,8 @@ packages:
   '@juggle/resize-observer@3.4.0':
     resolution: {integrity: sha512-dfLbk+PwWvFzSxwk3n5ySL0hfBog779o8h68wK/7/APo/7cgyWp5jcXockbxdk5kFRkbeXWm4Fbi9FrdN381sA==}
 
-  '@mantine/hooks@7.13.5':
-    resolution: {integrity: sha512-hxFOQn6NeN7fP37VXZh7z5KxwqA9HYmydivIay0jyQTYA4Falc8Pb4ozSxnyFbXyxzUWcFIQL4xayHRvedgE+Q==}
+  '@mantine/hooks@7.14.0':
+    resolution: {integrity: sha512-BJ577AoQ5KnvbuaG174TYAmL2UqcX9qh9aL0aOx+gqyMM6GWeBXUXWx1kcMCzaDbYZwfQptU476fpSjHdcLjMw==}
     peerDependencies:
       react: ^18.x || ^19.x
 
@@ -11775,7 +11775,7 @@ snapshots:
 
   '@juggle/resize-observer@3.4.0': {}
 
-  '@mantine/hooks@7.13.5(react@19.0.0-rc-45804af1-20241021)':
+  '@mantine/hooks@7.14.0(react@19.0.0-rc-45804af1-20241021)':
     dependencies:
       react: 19.0.0-rc-45804af1-20241021
 
