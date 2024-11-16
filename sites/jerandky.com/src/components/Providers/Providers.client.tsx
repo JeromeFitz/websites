@@ -50,13 +50,7 @@ singularRules.map(({ replacement, rule }) => {
 function Providers({ children }) {
   return (
     <ErrorBoundary>
-      <ThemeProvider
-        attribute="class"
-        defaultTheme="system"
-        disableTransitionOnChange={false}
-        enableSystem={true}
-        value={{ dark: 'dark', light: 'light' }}
-      >
+      <ThemeProvider>
         <RouterEventProvider />
         <ReactWrapBalancerProvider>{children}</ReactWrapBalancerProvider>
       </ThemeProvider>
