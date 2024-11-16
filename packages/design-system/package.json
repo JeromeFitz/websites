@@ -111,7 +111,7 @@
     "@jeromefitz/storybook-config": "workspace:*",
     "@jeromefitz/tailwind-config": "workspace:*",
     "@mantine/hooks": "7.14.0",
-    "next": "15.0.2",
+    "next": "15.0.3",
     "react": "19.0.0-rc-45804af1-20241021",
     "react-dom": "19.0.0-rc-45804af1-20241021"
   }
