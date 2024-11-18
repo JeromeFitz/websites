@@ -108,8 +108,8 @@ importers:
   packages/design-system:
     dependencies:
       '@heroicons/react':
-        specifier: 2.1.5
-        version: 2.1.5(react@19.0.0-rc-66855b96-20241106)
+        specifier: 2.2.0
+        version: 2.2.0(react@19.0.0-rc-66855b96-20241106)
       '@radix-ui/react-accessible-icon':
         specifier: 1.1.0
         version: 1.1.0(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
@@ -592,8 +592,8 @@ importers:
         specifier: 2.1.0
         version: 2.1.0
       '@heroicons/react':
-        specifier: 2.1.5
-        version: 2.1.5(react@19.0.0-rc-66855b96-20241106)
+        specifier: 2.2.0
+        version: 2.2.0(react@19.0.0-rc-66855b96-20241106)
       '@jeromefitz/notion':
         specifier: 5.0.14
         version: 5.0.14(@jeromefitz/utils@3.0.7(lodash@4.17.21))(lodash@4.17.21)
@@ -905,8 +905,8 @@ importers:
         specifier: 2.1.0
         version: 2.1.0
       '@heroicons/react':
-        specifier: 2.1.5
-        version: 2.1.5(react@19.0.0-rc-66855b96-20241106)
+        specifier: 2.2.0
+        version: 2.2.0(react@19.0.0-rc-66855b96-20241106)
       '@jeromefitz/notion':
         specifier: 5.0.14
         version: 5.0.14(@jeromefitz/utils@3.0.7(lodash@4.17.21))(lodash@4.17.21)
@@ -2311,10 +2311,10 @@ packages:
   '@floating-ui/utils@0.2.2':
     resolution: {integrity: sha512-J4yDIIthosAsRZ5CPYP/jQvUAQtlZTTD/4suA08/FEnlxqW3sKS9iAhgsa9VYLZ6vDHn/ixJgIqRQPotoBjxIw==}
 
-  '@heroicons/react@2.1.5':
-    resolution: {integrity: sha512-FuzFN+BsHa+7OxbvAERtgBTNeZpUjgM/MIizfVkSCL2/edriN0Hx/DWRCR//aPYwO5QX/YlgLGXk+E3PcfZwjA==}
+  '@heroicons/react@2.2.0':
+    resolution: {integrity: sha512-LMcepvRaS9LYHJGsF0zzmgKCUim/X3N/DQKc4jepAXJ7l8QxJ1PmxJzqplF2Z3FE4PqBAIGyJAQ/w4B5dsqbtQ==}
     peerDependencies:
-      react: '>= 16'
+      react: '>= 16 || ^19.0.0-rc'
 
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
@@ -11423,7 +11423,7 @@ snapshots:
 
   '@floating-ui/utils@0.2.2': {}
 
-  '@heroicons/react@2.1.5(react@19.0.0-rc-66855b96-20241106)':
+  '@heroicons/react@2.2.0(react@19.0.0-rc-66855b96-20241106)':
     dependencies:
       react: 19.0.0-rc-66855b96-20241106
 
