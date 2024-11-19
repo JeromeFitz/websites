@@ -595,8 +595,8 @@ importers:
         specifier: 2.2.0
         version: 2.2.0(react@19.0.0-rc-66855b96-20241106)
       '@jeromefitz/notion':
-        specifier: 5.0.14
-        version: 5.0.14(@jeromefitz/utils@3.0.7(lodash@4.17.21))(lodash@4.17.21)
+        specifier: 5.0.15
+        version: 5.0.15(@jeromefitz/utils@3.0.7(lodash@4.17.21))(lodash@4.17.21)
       '@jeromefitz/spotify':
         specifier: 4.0.14
         version: 4.0.14(@jeromefitz/utils@3.0.7(lodash@4.17.21))(lodash@4.17.21)(sharp@0.32.6)
@@ -908,8 +908,8 @@ importers:
         specifier: 2.2.0
         version: 2.2.0(react@19.0.0-rc-66855b96-20241106)
       '@jeromefitz/notion':
-        specifier: 5.0.14
-        version: 5.0.14(@jeromefitz/utils@3.0.7(lodash@4.17.21))(lodash@4.17.21)
+        specifier: 5.0.15
+        version: 5.0.15(@jeromefitz/utils@3.0.7(lodash@4.17.21))(lodash@4.17.21)
       '@jeromefitz/spotify':
         specifier: 4.0.14
         version: 4.0.14(@jeromefitz/utils@3.0.7(lodash@4.17.21))(lodash@4.17.21)(sharp@0.32.6)
@@ -2362,8 +2362,8 @@ packages:
     peerDependencies:
       is-ci: ^3.0.1
 
-  '@jeromefitz/notion@5.0.14':
-    resolution: {integrity: sha512-q8c7rwDeocfyVYYK+R66lC4MgveNokuZEyDUbfageyG+imMLKmXjP1fyEzXWitXvdb96wN4dGUoiDw/ICY7wHQ==}
+  '@jeromefitz/notion@5.0.15':
+    resolution: {integrity: sha512-QGZe8h6z6OvM8V75LNYobekzE6t171U746Q6fiY9Ris+d4M/CYzEC8+M9HTA6ZpFfCHmWmv5jqHpylKsTO1lWg==}
     engines: {node: '>=20'}
     peerDependencies:
       '@jeromefitz/utils': ^3.0.0
@@ -11506,7 +11506,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@jeromefitz/notion@5.0.14(@jeromefitz/utils@3.0.7(lodash@4.17.21))(lodash@4.17.21)':
+  '@jeromefitz/notion@5.0.15(@jeromefitz/utils@3.0.7(lodash@4.17.21))(lodash@4.17.21)':
     dependencies:
       '@jeromefitz/utils': 3.0.7(lodash@4.17.21)
       '@notionhq/client': 2.2.15
