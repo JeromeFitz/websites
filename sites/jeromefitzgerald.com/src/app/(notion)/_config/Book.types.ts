@@ -13,6 +13,9 @@ import type {
 } from '@notionhq/client/build/src/api-endpoints.js'
 import type { Spread } from 'next-notion/Notion.types'
 
+type PageObjectResponseBook = Spread<
+  [PageObjectResponse, { properties: PropertiesBook }]
+>
 interface PropertiesBook {
   Author: RichTextPropertyItemObjectResponse
   'Date.Published': DatePropertyItemObjectResponse
@@ -43,8 +46,5 @@ interface PropertiesBook {
   'URL.Bookshop': FormulaPropertyItemObjectResponse
   'URL.Goodreads': UrlPropertyItemObjectResponse
 }
-type PageObjectResponseBook = Spread<
-  [PageObjectResponse, { properties: PropertiesBook }]
->
 
 export type { PageObjectResponseBook, PropertiesBook }

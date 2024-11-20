@@ -12,6 +12,9 @@ import type {
 } from '@notionhq/client/build/src/api-endpoints.js'
 import type { Spread } from 'next-notion/Notion.types'
 
+type PageObjectResponseShow = Spread<
+  [PageObjectResponse, { properties: PropertiesShow }]
+>
 interface PropertiesShow {
   Complexity: SelectPropertyItemObjectResponse
   ID: FormulaPropertyItemObjectResponse
@@ -54,8 +57,5 @@ interface PropertiesShow {
   Title: TitlePropertyItemObjectResponse
   Type: SelectPropertyItemObjectResponse
 }
-type PageObjectResponseShow = Spread<
-  [PageObjectResponse, { properties: PropertiesShow }]
->
 
 export type { PageObjectResponseShow, PropertiesShow }

@@ -81,6 +81,58 @@ function Comedy() {
   )
 }
 
+function Contact() {
+  return (
+    <>
+      <Callout size="1" variant="surface">
+        This has not been migrated yet.
+      </Callout>
+      <ul
+        className={cx(
+          'mx-2 mt-2 pt-2',
+          'flex flex-row gap-8 md:gap-4',
+          'justify-center',
+          'md:place-items-baseline md:items-center md:justify-start',
+        )}
+      >
+        {socials.map((social) => {
+          if (!social.active) return null
+
+          return (
+            <li className={cx('')} key={`footer--social--${social.id}`}>
+              <Button asChild highContrast radius="full" size="2" variant="ghost">
+                <a
+                  className={cx(
+                    'hover:cursor-pointer lg:flex',
+                    'text-gray-12 hover:text-gray-12',
+                    // 'duration-250 transition-colors',
+                    'place-content-start items-center justify-items-start lg:w-full',
+                    social.className,
+                  )}
+                  href={social.url}
+                  target="_blank"
+                >
+                  {social.icon}
+                  <span
+                    className={cx(
+                      // 'flex flex-row items-center justify-center gap-2',
+                      'hidden',
+                      '',
+                    )}
+                  >
+                    <span className="text-inherit">{social.title}</span>{' '}
+                    <ExternalLinkIcon className="text-gray-12" />
+                  </span>
+                </a>
+              </Button>
+            </li>
+          )
+        })}
+      </ul>
+    </>
+  )
+}
+
 function Engineering() {
   return (
     <>
@@ -197,58 +249,6 @@ function NonProfit() {
   )
 }
 
-function Contact() {
-  return (
-    <>
-      <Callout size="1" variant="surface">
-        This has not been migrated yet.
-      </Callout>
-      <ul
-        className={cx(
-          'mx-2 mt-2 pt-2',
-          'flex flex-row gap-8 md:gap-4',
-          'justify-center',
-          'md:place-items-baseline md:items-center md:justify-start',
-        )}
-      >
-        {socials.map((social) => {
-          if (!social.active) return null
-
-          return (
-            <li className={cx('')} key={`footer--social--${social.id}`}>
-              <Button asChild highContrast radius="full" size="2" variant="ghost">
-                <a
-                  className={cx(
-                    'hover:cursor-pointer lg:flex',
-                    'text-gray-12 hover:text-gray-12',
-                    // 'duration-250 transition-colors',
-                    'place-content-start items-center justify-items-start lg:w-full',
-                    social.className,
-                  )}
-                  href={social.url}
-                  target="_blank"
-                >
-                  {social.icon}
-                  <span
-                    className={cx(
-                      // 'flex flex-row items-center justify-center gap-2',
-                      'hidden',
-                      '',
-                    )}
-                  >
-                    <span className="text-inherit">{social.title}</span>{' '}
-                    <ExternalLinkIcon className="text-gray-12" />
-                  </span>
-                </a>
-              </Button>
-            </li>
-          )
-        })}
-      </ul>
-    </>
-  )
-}
-
 const sectionsDefault = [
   { content: <Bio />, icon: null, id: 'bio', title: 'Bio' },
   { content: <Comedy />, icon: null, id: 'comedy', title: 'Comedy' },
@@ -262,41 +262,46 @@ const sectionsDefault = [
   { content: <Contact />, icon: null, id: 'contact', title: 'Contact' },
 ]
 
-function SectionLegend({ data }) {
+function Section({ sections = sectionsDefault }: { sections?: SectionType[] }) {
   return (
-    <Box className="rounded-3 border-1 border-gray-7">
-      {data.map((item, i) => {
-        const Icon = item.icon
-        return (
-          <NextLink
+    <>
+      <Box
+        className={cx(
+          'flex w-full flex-col md:flex-row',
+          'gap-[var(--sidebar-gap)]',
+          'mb-24',
+        )}
+      >
+        <Box
+          className={cx(
+            // 'bg-purple-6 rounded-3 border-1',
+            'col-span-3',
+            'hidden md:block',
+            '!md:w-[var(--sidebar-width)] w-full md:min-w-[var(--sidebar-width)] md:max-w-[var(--sidebar-width)]',
+            '',
+          )}
+        >
+          <Box
             className={cx(
-              'hocus:bg-accent-4 group relative flex size-full flex-row flex-nowrap items-center justify-start gap-4 overflow-visible p-5 no-underline',
-              'border-t-1 border-gray-7 first-of-type:border-t-0',
-              '',
+              // 'bg-purple-9 rounded-3 border-1 min-h-[280px]',
+              'sticky top-24',
             )}
-            href={`#${item.id}`}
-            key={`legend-${i}`}
           >
-            <Box className="relative size-auto flex-none">
-              <Box className="contents">
-                <Box className="relative flex size-min cursor-pointer flex-row flex-nowrap items-center justify-start gap-3 overflow-visible p-0">
-                  <Box className="rounded-3 bg-accent-9 flex size-8 flex-row flex-nowrap items-center justify-center">
-                    <Box className={cx('text-white dark:text-black')}>
-                      {item.icon ? (
-                        <Icon className="!size-4" />
-                      ) : (
-                        <Code variant="ghost">{i + 1}</Code>
-                      )}
-                    </Box>
-                  </Box>
-                  <Box className="">{item.title}</Box>
-                </Box>
-              </Box>
-            </Box>
-          </NextLink>
-        )
-      })}
-    </Box>
+            <Box
+              className={cx(
+                'rounded-3 absolute inset-x-0 top-0 z-0 h-16 flex-none overflow-hidden',
+                'hidden',
+              )}
+              data-name="Legend: Highlight"
+            />
+            <SectionLegend data={sections} />
+          </Box>
+        </Box>
+        <Box className="flex w-full flex-col gap-24">
+          <SectionContent data={sections} />
+        </Box>
+      </Box>
+    </>
   )
 }
 
@@ -368,46 +373,41 @@ function SectionContent({ data }) {
   )
 }
 
-function Section({ sections = sectionsDefault }: { sections?: SectionType[] }) {
+function SectionLegend({ data }) {
   return (
-    <>
-      <Box
-        className={cx(
-          'flex w-full flex-col md:flex-row',
-          'gap-[var(--sidebar-gap)]',
-          'mb-24',
-        )}
-      >
-        <Box
-          className={cx(
-            // 'bg-purple-6 rounded-3 border-1',
-            'col-span-3',
-            'hidden md:block',
-            '!md:w-[var(--sidebar-width)] w-full md:min-w-[var(--sidebar-width)] md:max-w-[var(--sidebar-width)]',
-            '',
-          )}
-        >
-          <Box
+    <Box className="rounded-3 border-1 border-gray-7">
+      {data.map((item, i) => {
+        const Icon = item.icon
+        return (
+          <NextLink
             className={cx(
-              // 'bg-purple-9 rounded-3 border-1 min-h-[280px]',
-              'sticky top-24',
+              'hocus:bg-accent-4 group relative flex size-full flex-row flex-nowrap items-center justify-start gap-4 overflow-visible p-5 no-underline',
+              'border-t-1 border-gray-7 first-of-type:border-t-0',
+              '',
             )}
+            href={`#${item.id}`}
+            key={`legend-${i}`}
           >
-            <Box
-              className={cx(
-                'rounded-3 absolute inset-x-0 top-0 z-0 h-16 flex-none overflow-hidden',
-                'hidden',
-              )}
-              data-name="Legend: Highlight"
-            />
-            <SectionLegend data={sections} />
-          </Box>
-        </Box>
-        <Box className="flex w-full flex-col gap-24">
-          <SectionContent data={sections} />
-        </Box>
-      </Box>
-    </>
+            <Box className="relative size-auto flex-none">
+              <Box className="contents">
+                <Box className="relative flex size-min cursor-pointer flex-row flex-nowrap items-center justify-start gap-3 overflow-visible p-0">
+                  <Box className="rounded-3 bg-accent-9 flex size-8 flex-row flex-nowrap items-center justify-center">
+                    <Box className={cx('text-white dark:text-black')}>
+                      {item.icon ? (
+                        <Icon className="!size-4" />
+                      ) : (
+                        <Code variant="ghost">{i + 1}</Code>
+                      )}
+                    </Box>
+                  </Box>
+                  <Box className="">{item.title}</Box>
+                </Box>
+              </Box>
+            </Box>
+          </NextLink>
+        )
+      })}
+    </Box>
   )
 }
 

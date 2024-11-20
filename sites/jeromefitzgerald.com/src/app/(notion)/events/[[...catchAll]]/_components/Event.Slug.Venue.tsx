@@ -9,6 +9,45 @@ import type { PageObjectResponseVenue } from '@/app/(notion)/_config/index'
 
 import { getPropertyTypeDataVenue } from '@/app/(notion)/_config/index'
 
+function Venue({ id }) {
+  if (!id) return null
+  return (
+    <>
+      <Suspense fallback={<VenueWithSkeleton />}>
+        <VenueIndividual id={id} />
+      </Suspense>
+    </>
+  )
+}
+
+async function VenueIndividual({ id }) {
+  const item: PageObjectResponseVenue = await getPageDataFromNotion(id)
+  if (!item) return <VenueWithSkeleton />
+  const { properties } = item
+
+  const addressStreet = getPropertyTypeDataVenue(properties, 'Address.Street')
+  const addressCity = getPropertyTypeDataVenue(properties, 'Address.City')
+  // const addressNeighborhood = getPropertyTypeDataVenue(
+  //   properties,
+  //   'Address.Neighborhood',
+  // )
+  const addressState = getPropertyTypeDataVenue(properties, 'Address.State')?.name
+  const addressPostalCode = getPropertyTypeDataVenue(properties, 'Address.ZipCode')
+
+  const street = addressStreet
+  const city = `${addressCity}, ${addressState} ${addressPostalCode}`
+  // const neighborhood = addressNeighborhood
+
+  return (
+    <VenueWithSkeleton
+      city={city}
+      isLoading={false}
+      // neighborhood={neighborhood}
+      street={street}
+    />
+  )
+}
+
 function VenueWithSkeleton({
   city = '',
   isLoading = true,
@@ -55,45 +94,6 @@ function VenueWithSkeleton({
         </Text>
       </Skeleton> */}
     </Flex>
-  )
-}
-
-async function VenueIndividual({ id }) {
-  const item: PageObjectResponseVenue = await getPageDataFromNotion(id)
-  if (!item) return <VenueWithSkeleton />
-  const { properties } = item
-
-  const addressStreet = getPropertyTypeDataVenue(properties, 'Address.Street')
-  const addressCity = getPropertyTypeDataVenue(properties, 'Address.City')
-  // const addressNeighborhood = getPropertyTypeDataVenue(
-  //   properties,
-  //   'Address.Neighborhood',
-  // )
-  const addressState = getPropertyTypeDataVenue(properties, 'Address.State')?.name
-  const addressPostalCode = getPropertyTypeDataVenue(properties, 'Address.ZipCode')
-
-  const street = addressStreet
-  const city = `${addressCity}, ${addressState} ${addressPostalCode}`
-  // const neighborhood = addressNeighborhood
-
-  return (
-    <VenueWithSkeleton
-      city={city}
-      isLoading={false}
-      // neighborhood={neighborhood}
-      street={street}
-    />
-  )
-}
-
-function Venue({ id }) {
-  if (!id) return null
-  return (
-    <>
-      <Suspense fallback={<VenueWithSkeleton />}>
-        <VenueIndividual id={id} />
-      </Suspense>
-    </>
   )
 }
 

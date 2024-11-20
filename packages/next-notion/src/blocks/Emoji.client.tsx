@@ -3,6 +3,27 @@ import _map from 'lodash/map.js'
 import _orderBy from 'lodash/orderBy.js'
 import _size from 'lodash/size.js'
 
+async function Emoji({ character }) {
+  const { find: findEmoji } = await import('node-emoji')
+  const emojiFound = findEmoji(character)
+  // console.dir(`[emoji] supported: ${character}`)
+
+  if (emojiFound === undefined) {
+    // console.dir(`[emoji] unsupported: ${character}`)
+    return (
+      <EmojiHtml
+        emoji={character}
+        label={'no generated description currently for this emoji'}
+      />
+    )
+  }
+
+  const { emoji, key } = emojiFound
+  const label = `an emoji representation of ${key.replace(/_/gi, ' ')}`
+
+  return <EmojiHtml emoji={emoji} label={label} />
+}
+
 /**
  * @note(a11y)
  *
@@ -32,27 +53,6 @@ function EmojiHtml({ emoji, label }) {
       {emoji}
     </span>
   )
-}
-
-async function Emoji({ character }) {
-  const { find: findEmoji } = await import('node-emoji')
-  const emojiFound = findEmoji(character)
-  // console.dir(`[emoji] supported: ${character}`)
-
-  if (emojiFound === undefined) {
-    // console.dir(`[emoji] unsupported: ${character}`)
-    return (
-      <EmojiHtml
-        emoji={character}
-        label={'no generated description currently for this emoji'}
-      />
-    )
-  }
-
-  const { emoji, key } = emojiFound
-  const label = `an emoji representation of ${key.replace(/_/gi, ' ')}`
-
-  return <EmojiHtml emoji={emoji} label={label} />
 }
 
 // @todo(complexity) 13

@@ -66,30 +66,6 @@ export const viewport: Viewport = {
   themeColor: '#0f0f0f',
 }
 
-function Wrapper({ children }) {
-  return (
-    <div
-      className={cx(
-        // mobile
-        'm-2 px-2',
-        // desktop
-        'md:m-6',
-        '',
-      )}
-    >
-      {children}
-    </div>
-  )
-}
-
-function Main({ children }) {
-  return (
-    <main className="m-0 min-h-screen w-full p-0">
-      <Wrapper>{children}</Wrapper>
-    </main>
-  )
-}
-
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
@@ -118,5 +94,29 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </Providers>
       </body>
     </html>
+  )
+}
+
+function Main({ children }) {
+  return (
+    <main className="m-0 min-h-screen w-full p-0">
+      <Wrapper>{children}</Wrapper>
+    </main>
+  )
+}
+
+function Wrapper({ children }) {
+  return (
+    <div
+      className={cx(
+        // mobile
+        'm-2 px-2',
+        // desktop
+        'md:m-6',
+        '',
+      )}
+    >
+      {children}
+    </div>
   )
 }

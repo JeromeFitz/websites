@@ -6,13 +6,13 @@ import { cx } from '../../utils/cx'
 
 const defaultId = 'skip-nav'
 
-interface SkipNavLinkProps {
-  children?: React.ReactNode
-  contentId?: string
-}
 interface SkipNavContentProps {
   children?: React.ReactNode
   id?: string
+}
+interface SkipNavLinkProps {
+  children?: React.ReactNode
+  contentId?: string
 }
 
 const SkipNavLink = forwardRef(function SkipNavLink(

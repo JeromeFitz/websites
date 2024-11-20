@@ -3,10 +3,6 @@ import { getPropertyTypeData } from 'next-notion/utils/index'
 import type { PropertiesPage } from '@/app/(notion)/_config/index'
 
 // @todo(types)
-function getPropertyTypeDataPage(properties, property: keyof PropertiesPage) {
-  return getPropertyTypeData(properties, property)
-}
-// @todo(types)
 function getPageData(properties): any {
   /**
    * @hack(notion) Depending on how this is queried this may not be a "real" page?
@@ -34,6 +30,10 @@ function getPageData(properties): any {
     title: getPropertyTypeDataPage(properties, 'Title'),
   }
   return data
+}
+// @todo(types)
+function getPropertyTypeDataPage(properties, property: keyof PropertiesPage) {
+  return getPropertyTypeData(properties, property)
 }
 
 export { getPageData, getPropertyTypeDataPage }

@@ -16,71 +16,14 @@ import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpo
 
 import _filter from 'lodash/filter.js'
 import _orderBy from 'lodash/orderBy.js'
+import { getPropertyTypeData } from 'next-notion/utils'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
-import { getPropertyTypeData } from 'next-notion/utils'
 
 import { CONFIG, getPageData, getPodcastData } from '../../../_config'
 // import type { PageObjectResponsePodcast } from '../../../_config'
 
 const { DATABASE_ID } = CONFIG.PODCASTS
-
-async function ListingTemp({ data }) {
-  const { isEnabled } = await draftMode()
-  const draft = isEnabled
-  const items = data.results.map((item) => {
-    const { properties } = item
-    // console.dir(`item`)
-    // console.dir(properties)
-    const itemData = getPodcastData(properties)
-    if (!itemData?.id) return null
-    if (!itemData?.isPublished) return null
-    return itemData
-  })
-
-  const podcasts = _orderBy(_filter(items, draft ? {} : { isPublished: true }), [
-    'title',
-  ])
-
-  // console.dir(podcasts)
-
-  return (
-    <ul>
-      {podcasts.map((podcast) => {
-        if (!podcast?.isPublished) return null
-        return (
-          <li className="my-1 py-1" key={`podcasts-podcast-${podcast?.id}`}>
-            <Anchor className="text-base md:text-xl" href={podcast?.href}>
-              {podcast?.title}
-            </Anchor>
-          </li>
-        )
-      })}
-    </ul>
-  )
-
-  // return (
-  //   <ul>
-  //     {shows.map((show: PageObjectResponsePodcast) => {
-  //       const { properties } = show
-  //       const { isPublished } = getPodcastData(properties)
-  //       if (!isPublished) return null
-  //       // const propertyTypeData: any = getPropertyTypeData(
-  //       //   properties,
-  //       //   'Slug.Preview'
-  //       // )
-  //       // const href = propertyTypeData?.string
-  //       // if (!href) return null
-  //       const href = getPropertyTypeData(properties, 'Slug.Preview')
-  //       return (
-  //         <li key={`shows-show-${show.id}`}>
-  //           <NextLink href={href}>{href}</NextLink>
-  //         </li>
-  //       )
-  //     })}
-  //   </ul>
-  // )
-}
 
 // @todo(complexity) 12
 // eslint-disable-next-line complexity
@@ -149,6 +92,63 @@ async function Listing({ revalidate, segmentInfo }) {
       </SectionWrapper>
     </>
   )
+}
+
+async function ListingTemp({ data }) {
+  const { isEnabled } = await draftMode()
+  const draft = isEnabled
+  const items = data.results.map((item) => {
+    const { properties } = item
+    // console.dir(`item`)
+    // console.dir(properties)
+    const itemData = getPodcastData(properties)
+    if (!itemData?.id) return null
+    if (!itemData?.isPublished) return null
+    return itemData
+  })
+
+  const podcasts = _orderBy(_filter(items, draft ? {} : { isPublished: true }), [
+    'title',
+  ])
+
+  // console.dir(podcasts)
+
+  return (
+    <ul>
+      {podcasts.map((podcast) => {
+        if (!podcast?.isPublished) return null
+        return (
+          <li className="my-1 py-1" key={`podcasts-podcast-${podcast?.id}`}>
+            <Anchor className="text-base md:text-xl" href={podcast?.href}>
+              {podcast?.title}
+            </Anchor>
+          </li>
+        )
+      })}
+    </ul>
+  )
+
+  // return (
+  //   <ul>
+  //     {shows.map((show: PageObjectResponsePodcast) => {
+  //       const { properties } = show
+  //       const { isPublished } = getPodcastData(properties)
+  //       if (!isPublished) return null
+  //       // const propertyTypeData: any = getPropertyTypeData(
+  //       //   properties,
+  //       //   'Slug.Preview'
+  //       // )
+  //       // const href = propertyTypeData?.string
+  //       // if (!href) return null
+  //       const href = getPropertyTypeData(properties, 'Slug.Preview')
+  //       return (
+  //         <li key={`shows-show-${show.id}`}>
+  //           <NextLink href={href}>{href}</NextLink>
+  //         </li>
+  //       )
+  //     })}
+  //   </ul>
+  // )
 }
 
 export { Listing }

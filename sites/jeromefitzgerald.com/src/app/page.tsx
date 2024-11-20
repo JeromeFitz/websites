@@ -54,6 +54,19 @@ export async function generateMetadata({ ...props }): Promise<Metadata> {
     : is404Seo
 }
 
+export default async function Page(props) {
+  const revalidate = props?.revalidate || false
+  const { params } = props
+  const { catchAll } = await params
+  const segmentInfo = getSegmentInfo({
+    params: { catchAll },
+    revalidate,
+    SEGMENT,
+  })
+
+  return <Slug revalidate={revalidate} segmentInfo={segmentInfo} />
+}
+
 async function Slug({ revalidate, segmentInfo }) {
   const { isEnabled } = await draftMode()
 
@@ -72,17 +85,4 @@ async function Slug({ revalidate, segmentInfo }) {
 
   if (isObjectEmpty(data.page)) return null
   return <PageHome />
-}
-
-export default async function Page(props) {
-  const revalidate = props?.revalidate || false
-  const { params } = props
-  const { catchAll } = await params
-  const segmentInfo = getSegmentInfo({
-    params: { catchAll },
-    revalidate,
-    SEGMENT,
-  })
-
-  return <Slug revalidate={revalidate} segmentInfo={segmentInfo} />
 }

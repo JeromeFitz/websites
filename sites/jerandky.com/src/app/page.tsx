@@ -9,6 +9,10 @@ import {
   // Tags,
 } from '@jeromefitz/ds/components/Section'
 
+export default function Page() {
+  return <Slug />
+}
+
 function Slug() {
   const title = 'Jer & Ky BoyZ'
   const subtitle = 'MailShrimp'
@@ -36,8 +40,4 @@ function Slug() {
       </SectionWrapper>
     </>
   )
-}
-
-export default function Page() {
-  return <Slug />
 }

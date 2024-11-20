@@ -2,10 +2,6 @@ import { getPropertyTypeData } from 'next-notion/utils/index'
 
 import type { PropertiesBook } from '@/app/(notion)/_config/index'
 
-function getPropertyTypeDataBook(properties, property: keyof PropertiesBook) {
-  return getPropertyTypeData(properties, property)
-}
-
 function getBookData(properties) {
   // if (!properties) return {}
   // console.dir(properties)
@@ -39,6 +35,10 @@ function getBookData(properties) {
     // urlGoodreads: getPropertyTypeDataBook(properties, 'URL.Goodreads'),
   }
   return data
+}
+
+function getPropertyTypeDataBook(properties, property: keyof PropertiesBook) {
+  return getPropertyTypeData(properties, property)
 }
 
 export { getBookData, getPropertyTypeDataBook }

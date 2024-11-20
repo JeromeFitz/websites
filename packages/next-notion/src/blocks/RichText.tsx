@@ -43,6 +43,38 @@ function Href({ children, href, ...props }) {
   )
 }
 
+function RichText({
+  block,
+  order,
+  ...props
+}: {
+  block:
+    | BulletedListItemBlockObjectResponse
+    | Heading1BlockObjectResponse
+    | Heading2BlockObjectResponse
+    | Heading3BlockObjectResponse
+    | NumberedListItemBlockObjectResponse
+    | ParagraphBlockObjectResponse
+    | QuoteBlockObjectResponse
+  order: number
+}) {
+  const key = getBlockKey(block.id, block.type, order)
+  const data: {
+    color: ApiColor
+    rich_text: RichTextItemResponse[]
+  } = block[block.type]
+
+  if (!data) return null
+
+  const { rich_text } = data
+
+  return (
+    <Text key={key} {...props}>
+      <RichTextArray id={block.id} items={rich_text} />
+    </Text>
+  )
+}
+
 function RichTextArray({ id, items }) {
   // console.dir(`-- items --`)
   // console.dir(items)
@@ -76,38 +108,6 @@ function RichTextArray({ id, items }) {
         )
       })}
     </>
-  )
-}
-
-function RichText({
-  block,
-  order,
-  ...props
-}: {
-  block:
-    | BulletedListItemBlockObjectResponse
-    | Heading1BlockObjectResponse
-    | Heading2BlockObjectResponse
-    | Heading3BlockObjectResponse
-    | NumberedListItemBlockObjectResponse
-    | ParagraphBlockObjectResponse
-    | QuoteBlockObjectResponse
-  order: number
-}) {
-  const key = getBlockKey(block.id, block.type, order)
-  const data: {
-    color: ApiColor
-    rich_text: RichTextItemResponse[]
-  } = block[block.type]
-
-  if (!data) return null
-
-  const { rich_text } = data
-
-  return (
-    <Text key={key} {...props}>
-      <RichTextArray id={block.id} items={rich_text} />
-    </Text>
   )
 }
 

@@ -11,9 +11,9 @@ import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpo
 import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 import _filter from 'lodash/filter.js'
 import _orderBy from 'lodash/orderBy.js'
+import { getPropertyTypeData } from 'next-notion/utils/index'
 import { draftMode } from 'next/headers.js'
 import { notFound } from 'next/navigation.js'
-import { getPropertyTypeData } from 'next-notion/utils/index'
 
 // import { CONFIG, getPageData, getPodcastData } from '@/app/(notion)/_config/index'
 import { CONFIG, getPodcastData } from '@/app/(notion)/_config/index'
@@ -25,41 +25,6 @@ import { HeaderSidebar } from '@/app/playground/2024/_components/Header.Sidebar'
 import { LI, UL } from '@/components/List/index'
 
 const { DATABASE_ID } = CONFIG.PODCASTS
-
-async function ListingTemp({ data }) {
-  const { isEnabled } = await draftMode()
-  const draft = isEnabled
-  const items = data.results.map((item) => {
-    const { properties } = item
-    // console.dir(`item`)
-    // console.dir(properties)
-    const itemData = getPodcastData(properties)
-    if (!itemData?.id) return null
-    if (!itemData?.isPublished) return null
-    return itemData
-  })
-
-  const podcasts = _orderBy(_filter(items, draft ? {} : { isPublished: true }), [
-    'title',
-  ])
-
-  // console.dir(podcasts)
-
-  return (
-    <UL>
-      {podcasts.map((podcast) => {
-        if (!podcast?.isPublished) return null
-        return (
-          <Box asChild key={`podcasts-podcast-${podcast?.id}`} my="1" py="1">
-            <LI>
-              <Anchor href={podcast?.href}> {podcast?.title}</Anchor>
-            </LI>
-          </Box>
-        )
-      })}
-    </UL>
-  )
-}
 
 // @todo(complexity) 11
 // eslint-disable-next-line complexity
@@ -121,6 +86,41 @@ async function Listing({ revalidate, segmentInfo }) {
         </ArticleMain>
       </ContainerWithSidebar>
     </>
+  )
+}
+
+async function ListingTemp({ data }) {
+  const { isEnabled } = await draftMode()
+  const draft = isEnabled
+  const items = data.results.map((item) => {
+    const { properties } = item
+    // console.dir(`item`)
+    // console.dir(properties)
+    const itemData = getPodcastData(properties)
+    if (!itemData?.id) return null
+    if (!itemData?.isPublished) return null
+    return itemData
+  })
+
+  const podcasts = _orderBy(_filter(items, draft ? {} : { isPublished: true }), [
+    'title',
+  ])
+
+  // console.dir(podcasts)
+
+  return (
+    <UL>
+      {podcasts.map((podcast) => {
+        if (!podcast?.isPublished) return null
+        return (
+          <Box asChild key={`podcasts-podcast-${podcast?.id}`} my="1" py="1">
+            <LI>
+              <Anchor href={podcast?.href}> {podcast?.title}</Anchor>
+            </LI>
+          </Box>
+        )
+      })}
+    </UL>
   )
 }
 

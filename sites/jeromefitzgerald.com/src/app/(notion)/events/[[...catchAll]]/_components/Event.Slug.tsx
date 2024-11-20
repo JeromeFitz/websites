@@ -84,6 +84,92 @@ const RELATIONS_SECONDARY = [
   },
 ]
 
+// @todo(complexity) 12
+// eslint-disable-next-line complexity
+async function Slug({ revalidate, segmentInfo }) {
+  const { isEnabled } = await draftMode()
+  // const { slug } = segmentInfo
+  const data = await getDataFromCache({
+    database_id: DATABASE_ID,
+    draft: isEnabled,
+    filterType: 'equals',
+    revalidate,
+    segmentInfo,
+  })
+  const noData = isObjectEmpty(data?.blocks || {})
+  const is404 = noData
+
+  // console.dir(`noData:           ${noData ? 'y' : 'n'}`)
+  // console.dir(`is404:            ${is404 ? 'y' : 'n'}`)
+
+  if (is404) return notFound()
+
+  // eslint-disable-next-line no-unsafe-optional-chaining
+  const { properties }: { properties: PropertiesEvent } = data?.page
+  const { id, isPublished, title } = getEventData(properties)
+
+  // console.dir(`isPublished:      ${isPublished ? 'y' : 'n'}`)
+
+  if (!isPublished) return notFound()
+
+  const R: any = {}
+  RELATIONS.map((relation: RELATIONS_TYPE) => {
+    R[relation] = []
+    const items = getPropertyTypeDataEvent(properties, relation)
+    items.map((item) => {
+      R[relation].push(item.id)
+    })
+  })
+
+  const showPrimarySlug = getPropertyTypeDataEvent(
+    properties,
+    'Rollup.Shows.Primary.Slug',
+  )[0]
+  const showPrimaryData = await getDataFromCache({
+    database_id: DATABASE_ID__SHOWS,
+    draft: false,
+    filterType: 'equals',
+    revalidate: false,
+    segmentInfo: {
+      catchAll: ['shows', showPrimarySlug],
+      hasMeta: true,
+      isIndex: false,
+      segment: 'shows',
+      segmentCount: 2,
+      slug: `/shows/${showPrimarySlug}`,
+    },
+  })
+  if (showPrimaryData?.page) {
+    const { properties: showPrimaryProperties }: { properties: any } =
+      // eslint-disable-next-line no-unsafe-optional-chaining
+      showPrimaryData?.page
+    RELATIONS_SECONDARY[0]?.relations?.map((relation: RELATIONS_TYPE) => {
+      R[relation] = []
+      const items = getPropertyTypeDataEvent(showPrimaryProperties, relation)
+      items.map((item) => {
+        R[relation].push(item.id)
+      })
+    })
+  }
+
+  return (
+    <ContainerWithSidebar>
+      {/* @todo(types) */}
+      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+      {/* @ts-ignore */}
+      <HeaderSidebar title={title}>
+        <EventSlugHeaderData properties={properties} />
+      </HeaderSidebar>
+      <ArticleMain>
+        <Image properties={properties} />
+        <Blocks data={data?.blocks} />
+        <Credits id={id} key={`relations--${id}--wrapper`} relations={R} />
+        <ArticleMainCTA />
+      </ArticleMain>
+    </ContainerWithSidebar>
+  )
+}
+
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -175,92 +261,6 @@ function Ticket({ properties }) {
         <TicketIcon className="size-4 md:size-5" />
       </Flex>
     </>
-  )
-}
-
-// @todo(complexity) 12
-// eslint-disable-next-line complexity
-async function Slug({ revalidate, segmentInfo }) {
-  const { isEnabled } = await draftMode()
-  // const { slug } = segmentInfo
-  const data = await getDataFromCache({
-    database_id: DATABASE_ID,
-    draft: isEnabled,
-    filterType: 'equals',
-    revalidate,
-    segmentInfo,
-  })
-  const noData = isObjectEmpty(data?.blocks || {})
-  const is404 = noData
-
-  // console.dir(`noData:           ${noData ? 'y' : 'n'}`)
-  // console.dir(`is404:            ${is404 ? 'y' : 'n'}`)
-
-  if (is404) return notFound()
-
-  // eslint-disable-next-line no-unsafe-optional-chaining
-  const { properties }: { properties: PropertiesEvent } = data?.page
-  const { id, isPublished, title } = getEventData(properties)
-
-  // console.dir(`isPublished:      ${isPublished ? 'y' : 'n'}`)
-
-  if (!isPublished) return notFound()
-
-  const R: any = {}
-  RELATIONS.map((relation: RELATIONS_TYPE) => {
-    R[relation] = []
-    const items = getPropertyTypeDataEvent(properties, relation)
-    items.map((item) => {
-      R[relation].push(item.id)
-    })
-  })
-
-  const showPrimarySlug = getPropertyTypeDataEvent(
-    properties,
-    'Rollup.Shows.Primary.Slug',
-  )[0]
-  const showPrimaryData = await getDataFromCache({
-    database_id: DATABASE_ID__SHOWS,
-    draft: false,
-    filterType: 'equals',
-    revalidate: false,
-    segmentInfo: {
-      catchAll: ['shows', showPrimarySlug],
-      hasMeta: true,
-      isIndex: false,
-      segment: 'shows',
-      segmentCount: 2,
-      slug: `/shows/${showPrimarySlug}`,
-    },
-  })
-  if (showPrimaryData?.page) {
-    const { properties: showPrimaryProperties }: { properties: any } =
-      // eslint-disable-next-line no-unsafe-optional-chaining
-      showPrimaryData?.page
-    RELATIONS_SECONDARY[0]?.relations?.map((relation: RELATIONS_TYPE) => {
-      R[relation] = []
-      const items = getPropertyTypeDataEvent(showPrimaryProperties, relation)
-      items.map((item) => {
-        R[relation].push(item.id)
-      })
-    })
-  }
-
-  return (
-    <ContainerWithSidebar>
-      {/* @todo(types) */}
-      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-      {/* @ts-ignore */}
-      <HeaderSidebar title={title}>
-        <EventSlugHeaderData properties={properties} />
-      </HeaderSidebar>
-      <ArticleMain>
-        <Image properties={properties} />
-        <Blocks data={data?.blocks} />
-        <Credits id={id} key={`relations--${id}--wrapper`} relations={R} />
-        <ArticleMainCTA />
-      </ArticleMain>
-    </ContainerWithSidebar>
   )
 }
 

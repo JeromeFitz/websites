@@ -13,44 +13,6 @@ import type { PageObjectResponseEvent } from '@/app/(notion)/_config/index'
 import { getEventData, getPropertyTypeDataShow } from '@/app/(notion)/_config/index'
 // import { RelationLoading } from '@/components/Relations/index'
 
-async function UpcomingShowsIndividual({ id }) {
-  const item: PageObjectResponseEvent = await getPageDataFromNotion(id)
-  if (!item) return null
-  const { properties } = item
-  const {
-    // dateIso,
-    dayOfMonth,
-    dayOfWeek,
-    href,
-    monthName,
-    time,
-    timezone,
-    title,
-    venueTitle,
-    year,
-    // ...props
-  } = getEventData(properties)
-
-  return (
-    <Anchor href={href}>
-      <Text size="8" weight="bold">
-        {title}
-      </Text>
-      <Heading as="h5">
-        {dayOfMonth} {monthName} {year}
-      </Heading>
-      <Text size="7">
-        <Text as="span">
-          {time} {timezone}
-        </Text>
-        <br />
-        <Text as="span">{dayOfWeek}</Text>
-      </Text>
-      <Text size="7"> at {venueTitle}</Text>
-    </Anchor>
-  )
-}
-
 function UpcomingShows({ properties }) {
   // const items = properties['Relation.Events.Primary']
   const items = getPropertyTypeDataShow(properties, 'Relation.Events.Primary')
@@ -87,6 +49,44 @@ function UpcomingShows({ properties }) {
         </ul>
       </>
     </>
+  )
+}
+
+async function UpcomingShowsIndividual({ id }) {
+  const item: PageObjectResponseEvent = await getPageDataFromNotion(id)
+  if (!item) return null
+  const { properties } = item
+  const {
+    // dateIso,
+    dayOfMonth,
+    dayOfWeek,
+    href,
+    monthName,
+    time,
+    timezone,
+    title,
+    venueTitle,
+    year,
+    // ...props
+  } = getEventData(properties)
+
+  return (
+    <Anchor href={href}>
+      <Text size="8" weight="bold">
+        {title}
+      </Text>
+      <Heading as="h5">
+        {dayOfMonth} {monthName} {year}
+      </Heading>
+      <Text size="7">
+        <Text as="span">
+          {time} {timezone}
+        </Text>
+        <br />
+        <Text as="span">{dayOfWeek}</Text>
+      </Text>
+      <Text size="7"> at {venueTitle}</Text>
+    </Anchor>
   )
 }
 

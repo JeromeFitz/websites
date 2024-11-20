@@ -10,9 +10,9 @@ import { cx } from '@jeromefitz/ds/utils/cx'
 
 import { Root as PortalRoot } from '@radix-ui/react-portal'
 import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
+import { useTheme } from 'next-themes'
 // eslint-disable-next-line no-restricted-imports
 import NextLink from 'next/link'
-import { useTheme } from 'next-themes'
 
 import {
   AccordionContent,

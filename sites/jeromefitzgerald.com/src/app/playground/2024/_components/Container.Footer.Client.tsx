@@ -4,8 +4,8 @@ import { cx } from '@jeromefitz/ds/utils/cx'
 
 import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
-import { usePathname } from 'next/navigation.js'
 import { NotionEmoji as EmojiWrapper } from 'next-notion/blocks/Emoji'
+import { usePathname } from 'next/navigation.js'
 
 function ContainerFooterClient() {
   const pathname = usePathname()

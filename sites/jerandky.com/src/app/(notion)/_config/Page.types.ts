@@ -9,6 +9,9 @@ import type {
 } from '@notionhq/client/build/src/api-endpoints'
 import type { Spread } from 'next-notion/Notion.types'
 
+type PageObjectResponsePage = Spread<
+  [PageObjectResponse, { properties: PropertiesPage }]
+>
 interface PropertiesPage {
   ID: FormulaPropertyItemObjectResponse
   'Is.Active': CheckboxPropertyItemObjectResponse
@@ -22,8 +25,5 @@ interface PropertiesPage {
   'Slug.Preview': RichTextPropertyItemObjectResponse
   Title: TitlePropertyItemObjectResponse
 }
-type PageObjectResponsePage = Spread<
-  [PageObjectResponse, { properties: PropertiesPage }]
->
 
 export type { PageObjectResponsePage, PropertiesPage }

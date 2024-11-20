@@ -13,9 +13,9 @@ import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import _filter from 'lodash/filter.js'
 import _orderBy from 'lodash/orderBy.js'
 import _remove from 'lodash/remove.js'
+import { getPropertyTypeData } from 'next-notion/utils/index'
 // import { draftMode } from 'next/headers.js'
 import { notFound } from 'next/navigation.js'
-import { getPropertyTypeData } from 'next-notion/utils/index'
 
 // import { CONFIG, getEventData, getPageData } from '@/app/(notion)/_config/index'
 import { CONFIG, getEventData } from '@/app/(notion)/_config/index'
@@ -34,19 +34,6 @@ import { AccordionClient } from './Event.Listing.client'
 // import type { PageObjectResponseEvent } from './Event.types'
 
 const { DATABASE_ID } = CONFIG.EVENTS
-
-function ListingTemp({ defaultValue = null, items }) {
-  return (
-    // wrapper
-    <div className="w-full">
-      {/* search/filter here */}
-      {/* list */}
-      <div>
-        <AccordionClient defaultValue={defaultValue} items={items} />
-      </div>
-    </div>
-  )
-}
 
 function Events({ data }) {
   // const { isEnabled } = await draftMode()
@@ -202,6 +189,19 @@ async function Listing({ revalidate, segmentInfo }) {
         {hasData && <EventsPast data={eventsData} />}
       </ArticleMain>
     </ContainerWithSidebar>
+  )
+}
+
+function ListingTemp({ defaultValue = null, items }) {
+  return (
+    // wrapper
+    <div className="w-full">
+      {/* search/filter here */}
+      {/* list */}
+      <div>
+        <AccordionClient defaultValue={defaultValue} items={items} />
+      </div>
+    </div>
   )
 }
 

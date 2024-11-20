@@ -15,16 +15,16 @@ function getImageAlt(comments) {
       : ''
 }
 
-function getImageUrl(block) {
-  return block[block.type].type === 'external'
-    ? block[block?.type]?.external?.url
-    : block[block?.type]?.file?.url
-}
-
 function getImageExpiration(block) {
   return block[block?.type]?.type === 'external'
     ? null
     : block[block?.type]?.file?.expiry_time
+}
+
+function getImageUrl(block) {
+  return block[block.type].type === 'external'
+    ? block[block?.type]?.external?.url
+    : block[block?.type]?.file?.url
 }
 
 export { getImageAlt, getImageExpiration, getImageUrl }

@@ -77,6 +77,14 @@ const _radixColorsAccents: RadixColor[] = [
   // 'white',
 ]
 
+export default function Page() {
+  // if (!env.IS_DEV) notFound()
+  // @note(next) avoid NEXT_DYNAMIC_NO_SSR_CODE
+  if (!env.IS_DEV) return <FourOhFour isNotPublished={false} segmentInfo={{}} />
+
+  return <Slug />
+}
+
 function Slug() {
   const title = 'Radix Badge Adjustment'
   return (
@@ -101,12 +109,4 @@ function Slug() {
       </HeadlineContent>
     </Grid>
   )
-}
-
-export default function Page() {
-  // if (!env.IS_DEV) notFound()
-  // @note(next) avoid NEXT_DYNAMIC_NO_SSR_CODE
-  if (!env.IS_DEV) return <FourOhFour isNotPublished={false} segmentInfo={{}} />
-
-  return <Slug />
 }

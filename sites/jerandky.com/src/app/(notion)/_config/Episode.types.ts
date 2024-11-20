@@ -17,6 +17,9 @@ import type {
 } from '@notionhq/client/build/src/api-endpoints'
 import type { Spread } from 'next-notion/Notion.types'
 
+type PageObjectResponseEpisode = Spread<
+  [PageObjectResponse, { properties: PropertiesEpisode }]
+>
 interface PropertiesEpisode {
   Date: DatePropertyItemObjectResponse
   'Date.DayOfMonth': FormulaPropertyItemObjectResponse
@@ -81,8 +84,5 @@ interface PropertiesEpisode {
   Subtitle: RichTextPropertyItemObjectResponse
   Title: TitlePropertyItemObjectResponse
 }
-type PageObjectResponseEpisode = Spread<
-  [PageObjectResponse, { properties: PropertiesEpisode }]
->
 
 export type { PageObjectResponseEpisode, PropertiesEpisode }

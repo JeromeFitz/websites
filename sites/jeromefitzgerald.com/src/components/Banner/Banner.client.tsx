@@ -33,139 +33,6 @@ import { BANNERS, banners } from '@/data/banners'
 
 import styles from './Banner.module.css'
 
-function BannerMobile({ data }) {
-  return (
-    <Flex
-      align="center"
-      asChild
-      className={cx(
-        '[--icon-size:16px]',
-        'group transition-transform',
-        'active:translate-y-0.5',
-        'bg-grayA-2 active:bg-grayA-3',
-        'text-accent-12 active:text-accentA-12',
-        'rounded-3 shadow-3 cursor-pointer leading-7',
-        '',
-      )}
-      data-radius="full"
-      display={{
-        initial: 'flex',
-        md: 'none',
-      }}
-      gridColumn="1/-1"
-      justify="center"
-      my="2"
-      px="2"
-      py="0"
-      width="100%"
-    >
-      <NextLink
-        data-active="false"
-        data-prefix="true"
-        data-version="v1"
-        date-suffix="true"
-        href={data.href}
-        role="link"
-        tabIndex={0}
-        type="submit"
-      >
-        <Flex
-          align="center"
-          as="span"
-          flexShrink="0"
-          justify="center"
-          // minWidth="5"
-          mr="2"
-          // width="100%"
-        >
-          <Badge color={data.badge.color} radius="full" variant="solid">
-            {data.icon}
-          </Badge>
-        </Flex>
-        <Box
-          className="truncate"
-          display="inline-block"
-          maxWidth="20rem"
-          minWidth="8rem"
-          px="2"
-          py="0"
-          width="100%"
-        >
-          {data.content.mobile}
-        </Box>
-        <Flex as="span" flexShrink="0" minWidth="5" ml="2">
-          <Text asChild color={data.badge.color}>
-            {data.button.icon}
-          </Text>
-        </Flex>
-      </NextLink>
-    </Flex>
-  )
-}
-
-function BannerDesktop({ data }) {
-  return (
-    <Flex
-      align="center"
-      direction="row"
-      display={{ initial: 'none', md: 'flex' }}
-      gap="1"
-      gridColumn="1/-1"
-      justify="center"
-      mb="2"
-      mt="2"
-      width="100%"
-    >
-      <Flex
-        align="center"
-        as="span"
-        display="flex"
-        flexShrink="0"
-        justify="center"
-        minWidth="1.25rem"
-        mr="1"
-      >
-        <Badge
-          color={data.badge.color}
-          highContrast={false}
-          radius="full"
-          size="2"
-          variant="soft"
-        >
-          {data.icon}
-          {data.badge.text}
-        </Badge>
-      </Flex>
-      <Box
-        as="span"
-        className="truncate"
-        display="inline-block"
-        maxWidth="24rem"
-        minWidth="16rem"
-        px="2"
-        py="0"
-        width="100%"
-      >
-        <Text as="span">{data.content.desktop}</Text>
-      </Box>
-      <Button
-        asChild
-        color={data.badge.color}
-        highContrast={false}
-        radius="full"
-        size="2"
-        variant="surface"
-      >
-        <NextLink href={data.href}>
-          {data.button.text}
-          {` `}
-          {data.button.icon}
-        </NextLink>
-      </Button>
-    </Flex>
-  )
-}
-
 function BannerClient() {
   const path = usePathname()
   // const [defaultValue, defaultValueSet] = useState(BANNERS.LISTENING)
@@ -246,6 +113,139 @@ function BannerClient() {
           })}
         </TabsList>
       </TabsRoot>
+    </Flex>
+  )
+}
+
+function BannerDesktop({ data }) {
+  return (
+    <Flex
+      align="center"
+      direction="row"
+      display={{ initial: 'none', md: 'flex' }}
+      gap="1"
+      gridColumn="1/-1"
+      justify="center"
+      mb="2"
+      mt="2"
+      width="100%"
+    >
+      <Flex
+        align="center"
+        as="span"
+        display="flex"
+        flexShrink="0"
+        justify="center"
+        minWidth="1.25rem"
+        mr="1"
+      >
+        <Badge
+          color={data.badge.color}
+          highContrast={false}
+          radius="full"
+          size="2"
+          variant="soft"
+        >
+          {data.icon}
+          {data.badge.text}
+        </Badge>
+      </Flex>
+      <Box
+        as="span"
+        className="truncate"
+        display="inline-block"
+        maxWidth="24rem"
+        minWidth="16rem"
+        px="2"
+        py="0"
+        width="100%"
+      >
+        <Text as="span">{data.content.desktop}</Text>
+      </Box>
+      <Button
+        asChild
+        color={data.badge.color}
+        highContrast={false}
+        radius="full"
+        size="2"
+        variant="surface"
+      >
+        <NextLink href={data.href}>
+          {data.button.text}
+          {` `}
+          {data.button.icon}
+        </NextLink>
+      </Button>
+    </Flex>
+  )
+}
+
+function BannerMobile({ data }) {
+  return (
+    <Flex
+      align="center"
+      asChild
+      className={cx(
+        '[--icon-size:16px]',
+        'group transition-transform',
+        'active:translate-y-0.5',
+        'bg-grayA-2 active:bg-grayA-3',
+        'text-accent-12 active:text-accentA-12',
+        'rounded-3 shadow-3 cursor-pointer leading-7',
+        '',
+      )}
+      data-radius="full"
+      display={{
+        initial: 'flex',
+        md: 'none',
+      }}
+      gridColumn="1/-1"
+      justify="center"
+      my="2"
+      px="2"
+      py="0"
+      width="100%"
+    >
+      <NextLink
+        data-active="false"
+        data-prefix="true"
+        data-version="v1"
+        date-suffix="true"
+        href={data.href}
+        role="link"
+        tabIndex={0}
+        type="submit"
+      >
+        <Flex
+          align="center"
+          as="span"
+          flexShrink="0"
+          justify="center"
+          // minWidth="5"
+          mr="2"
+          // width="100%"
+        >
+          <Badge color={data.badge.color} radius="full" variant="solid">
+            {data.icon}
+          </Badge>
+        </Flex>
+        <Box
+          className="truncate"
+          display="inline-block"
+          maxWidth="20rem"
+          minWidth="8rem"
+          px="2"
+          py="0"
+          width="100%"
+        >
+          {data.content.mobile}
+        </Box>
+        <Flex as="span" flexShrink="0" minWidth="5" ml="2">
+          <Text asChild color={data.badge.color}>
+            {data.button.icon}
+          </Text>
+        </Flex>
+      </NextLink>
     </Flex>
   )
 }
