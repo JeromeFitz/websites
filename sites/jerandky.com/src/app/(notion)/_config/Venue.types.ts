@@ -8,6 +8,9 @@ import type {
 } from '@notionhq/client/build/src/api-endpoints'
 import type { Spread } from 'next-notion/Notion.types'
 
+type PageObjectResponseVenue = Spread<
+  [PageObjectResponse, { properties: PropertiesVenue }]
+>
 interface PropertiesVenue {
   'Address.City': RichTextPropertyItemObjectResponse
   'Address.Latitude': NumberPropertyItemObjectResponse
@@ -23,8 +26,5 @@ interface PropertiesVenue {
   'Slug.Preview': RichTextPropertyItemObjectResponse
   Title: TitlePropertyItemObjectResponse
 }
-type PageObjectResponseVenue = Spread<
-  [PageObjectResponse, { properties: PropertiesVenue }]
->
 
 export type { PageObjectResponseVenue, PropertiesVenue }

@@ -54,6 +54,22 @@ export async function generateMetadata({ ...props }): Promise<Metadata> {
     : is404Seo
 }
 
+export default async function Page(props) {
+  const revalidate = props?.revalidate || false
+  const { params } = props
+  const { catchAll } = await params
+  const segmentInfo = getSegmentInfo({
+    params: { catchAll },
+    revalidate,
+    SEGMENT,
+  })
+
+  // if (segmentInfo.isIndex) {
+  //   return <Listing egmentInfo={segmentInfo} srevalidate={revalidate} />
+  // }
+  return <Slug revalidate={revalidate} segmentInfo={segmentInfo} />
+}
+
 async function Slug({ revalidate, segmentInfo }) {
   const { isEnabled } = await draftMode()
 
@@ -128,20 +144,4 @@ async function Slug({ revalidate, segmentInfo }) {
       <BookPage books={books} title={title} />
     </>
   )
-}
-
-export default async function Page(props) {
-  const revalidate = props?.revalidate || false
-  const { params } = props
-  const { catchAll } = await params
-  const segmentInfo = getSegmentInfo({
-    params: { catchAll },
-    revalidate,
-    SEGMENT,
-  })
-
-  // if (segmentInfo.isIndex) {
-  //   return <Listing egmentInfo={segmentInfo} srevalidate={revalidate} />
-  // }
-  return <Slug revalidate={revalidate} segmentInfo={segmentInfo} />
 }

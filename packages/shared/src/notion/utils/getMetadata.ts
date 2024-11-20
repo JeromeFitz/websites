@@ -12,7 +12,6 @@ import _title from 'title'
 
 // import { getEventData } from '../index'
 
-type TextRequest = string
 type ImageItemResponse =
   | {
       caption: RichTextItemResponse[]
@@ -24,6 +23,7 @@ type ImageItemResponse =
       file: { expiry_time: string; url: string }
       type: 'file'
     }
+type TextRequest = string
 
 // @todo(complexity) 15
 // eslint-disable-next-line complexity

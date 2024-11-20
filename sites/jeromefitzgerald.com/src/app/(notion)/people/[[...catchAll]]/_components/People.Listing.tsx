@@ -7,9 +7,9 @@ import { isObjectEmpty } from '@jeromefitz/utils'
 
 import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints.js'
 
+import { getPropertyTypeData } from 'next-notion/utils/index'
 import { draftMode } from 'next/headers.js'
 import { notFound } from 'next/navigation.js'
-import { getPropertyTypeData } from 'next-notion/utils/index'
 
 import type { PageObjectResponsePerson } from '@/app/(notion)/_config/index'
 
@@ -33,27 +33,6 @@ import { Notion as Blocks } from '@/components/Notion/index'
 // ]
 
 const { DATABASE_ID } = CONFIG.PEOPLE
-
-function ListingTemp({ data }) {
-  return (
-    <ul>
-      {data.results.map((person: PageObjectResponsePerson) => {
-        const { properties } = person
-        // const propertyTypeData: any = getPropertyTypeData(
-        //   properties,
-        //   'Slug.Preview'
-        // )
-        // const href = propertyTypeData?.string
-        const href = getPropertyTypeData(properties, 'Slug.Preview')
-        return (
-          <li key={`people-person-${person.id}`}>
-            <Anchor href={href}>{href}</Anchor>
-          </li>
-        )
-      })}
-    </ul>
-  )
-}
 
 // @todo(complexity) 11
 // eslint-disable-next-line complexity
@@ -128,6 +107,27 @@ async function Listing({ revalidate, segmentInfo }) {
         </HeadlineContent>
       </Grid>
     </>
+  )
+}
+
+function ListingTemp({ data }) {
+  return (
+    <ul>
+      {data.results.map((person: PageObjectResponsePerson) => {
+        const { properties } = person
+        // const propertyTypeData: any = getPropertyTypeData(
+        //   properties,
+        //   'Slug.Preview'
+        // )
+        // const href = propertyTypeData?.string
+        const href = getPropertyTypeData(properties, 'Slug.Preview')
+        return (
+          <li key={`people-person-${person.id}`}>
+            <Anchor href={href}>{href}</Anchor>
+          </li>
+        )
+      })}
+    </ul>
   )
 }
 

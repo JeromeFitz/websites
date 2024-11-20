@@ -28,31 +28,6 @@ const links = [
   // '/kitchen-sink',
 ]
 
-/**
- * @todo(next) uh can we delete this?
- */
-function Wrapper({ children }) {
-  if (!env.IS_DEV) return null
-  if (env.IS_DEV) return null
-
-  const title = 'Testing'
-  return (
-    <>
-      <Grid>
-        <HeadlineColumnA>
-          <HeadlineTitle aria-label={title} as="h1">
-            <>{title}</>
-          </HeadlineTitle>
-          <HeadlineTitleSub>
-            <>{title}</>
-          </HeadlineTitleSub>
-        </HeadlineColumnA>
-        <HeadlineContent>{children}</HeadlineContent>
-      </Grid>
-    </>
-  )
-}
-
 function Testing() {
   return (
     <Wrapper>
@@ -78,6 +53,31 @@ function Testing() {
         </ul>
       </Box>
     </Wrapper>
+  )
+}
+
+/**
+ * @todo(next) uh can we delete this?
+ */
+function Wrapper({ children }) {
+  if (!env.IS_DEV) return null
+  if (env.IS_DEV) return null
+
+  const title = 'Testing'
+  return (
+    <>
+      <Grid>
+        <HeadlineColumnA>
+          <HeadlineTitle aria-label={title} as="h1">
+            <>{title}</>
+          </HeadlineTitle>
+          <HeadlineTitleSub>
+            <>{title}</>
+          </HeadlineTitleSub>
+        </HeadlineColumnA>
+        <HeadlineContent>{children}</HeadlineContent>
+      </Grid>
+    </>
   )
 }
 

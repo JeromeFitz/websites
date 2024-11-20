@@ -36,25 +36,10 @@ interface CheckboxData {
   id: string
   type: 'checkbox'
 }
-function getCheckboxData({ data, type }: { data: CheckboxData; type: string }) {
-  // properties['Is.Published']
-  const typeData = data[type]
-  const dataReturn: CheckboxPropertyItemObjectResponse = typeData
-  return dataReturn
-}
-
 interface DateData {
   date: DateResponse | null
   id: string
   type: 'date'
-}
-function getDateData({ data, type }: { data: DateData; type: string }) {
-  // properties['Date.XYZ']
-  const typeData = data[type]
-  // @note(notion) this returns DateResponse...
-  const dataReturn: DatePropertyItemObjectResponse = typeData
-  // { end: null, start: '2016-04-26', time_zone: null }
-  return dataReturn
 }
 
 interface FilesData {
@@ -62,49 +47,10 @@ interface FilesData {
   type: 'url'
   url: null | string
 }
-function getFilesData({ data, type }: { data: FilesData; type: string }) {
-  // properties['SEO.Image']
-  const typeData = data[type]
-  const dataReturn: FilesPropertyItemObjectResponse = typeData
-  return dataReturn
-}
-
-// @todo(types)
-function getFormulaData({ data, type }: { data: any; type: string }) {
-  // // properties['Slug.Preview']
-  // // properties['Slug.Preview'].formula.string
-  const typeData = data[type]
-  const dataReturn: any = typeData
-
-  /**
-   * @question(notion) is there any other type of return?
-   */
-  if (dataReturn.type === 'number' || dataReturn.type === 'string') {
-    return dataReturn[dataReturn.type]
-  }
-
-  console.dir(
-    `[info] getFormulaData return is not a number|string: ${dataReturn.type}`,
-  )
-  return dataReturn[dataReturn.type]
-}
-
 interface MultiSelectData {
   id: string
   multi_select: SelectPropertyResponse[]
   type: 'multi_select'
-}
-function getMultiSelectData({
-  data,
-  type,
-}: {
-  data: MultiSelectData
-  type: string
-}) {
-  // properties['Tags']
-  const typeData = data[type]
-  const dataReturn: MultiSelectPropertyItemObjectResponse = typeData
-  return dataReturn
 }
 
 interface NumberData {
@@ -112,13 +58,6 @@ interface NumberData {
   number: null | number
   type: 'number'
 }
-function getNumberData({ data, type }: { data: NumberData; type: string }) {
-  // properties['Address.PostalCode']
-  const typeData = data[type]
-  const dataReturn: NumberPropertyItemObjectResponse = typeData
-  return dataReturn
-}
-
 interface RelationData {
   has_more?: boolean
   id: string
@@ -126,12 +65,6 @@ interface RelationData {
     id: string
   }[]
   type: 'relation'
-}
-function getRelationData({ data, type }: { data: RelationData; type: string }) {
-  // properties['Relation.Shows.Cast']
-  const typeData = data[type]
-  const dataReturn: RelationPropertyItemObjectResponse[] = typeData
-  return dataReturn
 }
 
 interface RichTextData {
@@ -141,21 +74,6 @@ interface RichTextData {
     id: string
   }[]
   type: 'relation'
-}
-function getRichTextData({ data, type }: { data: RichTextData; type: string }) {
-  // properties['SEO.Description']
-  const typeData = data[type]
-  // @todo(notion) proper fallback -- should probably warn here
-  // const dataReturn: RichTextPropertyItemObjectResponse[] = typeData
-  const dataReturn = typeData[0]?.plain_text ?? ''
-
-  // // @debug
-  // console.dir(`type: ${type}`)
-  // console.dir(typeData)
-  // console.dir(dataReturn)
-  // console.dir(`----`)
-
-  return dataReturn
 }
 
 interface RollupData {
@@ -189,67 +107,10 @@ interface RollupData {
       }
   type: 'rollup'
 }
-function getRollupData({ data, type }: { data: RollupData; type: string }) {
-  // properties['Rollup.People.Cast.Title']
-  const typeData = data[type]
-  let dataReturn: any = typeData
-
-  /**
-   * @hack(notion) this is where you lose me on ever wanting to do any of this
-   */
-  if (dataReturn.type === 'array' || dataReturn.type === 'multi_select') {
-    dataReturn = dataReturn[dataReturn.type]
-
-    if (!isObjectEmpty(dataReturn)) {
-      const tempData: any = []
-      dataReturn.map((item) => {
-        // console.dir(`[info] getRollupData !isObjectEmpty: ${item.type}`)
-        if (item.type === 'multi_select') {
-          dataReturn = getMultiSelectData({ data: item, type: item.type })
-        }
-        if (item.type === 'rich_text') {
-          dataReturn = getRichTextData({ data: item, type: item.type })
-          tempData.push(dataReturn)
-        }
-        if (item.type === 'title') {
-          dataReturn = getTitleData({ data: item, type: item.type })
-          tempData.push(dataReturn)
-        }
-        if (item.type === 'relation') {
-          // console.dir(`[info] relation (dataReturn)`)
-          // console.dir(dataReturn)
-          // console.dir(`[info] relation (item)`)
-          // console.dir(item)
-          dataReturn = getRelationData({ data: item, type: item.type })
-          tempData.push(dataReturn)
-        }
-      })
-      if (!isObjectEmpty(tempData)) {
-        dataReturn = _orderBy(tempData)
-      }
-    }
-
-    return dataReturn
-  }
-
-  console.dir(
-    `[info] getRollupData return is not a array|multi_select: ${dataReturn.type}`,
-  )
-  dataReturn = dataReturn[dataReturn.type]
-
-  return dataReturn
-}
-
 interface SelectData {
   id: string
   select: null | SelectPropertyResponse
   type: 'select'
-}
-function getSelectData({ data, type }: { data: SelectData; type: string }) {
-  // properties['Select.Test']
-  const typeData = data[type]
-  const dataReturn: SelectPropertyResponse = typeData
-  return dataReturn
 }
 
 interface TitleData {
@@ -257,23 +118,69 @@ interface TitleData {
   title: RichTextItemResponse[]
   type: 'title'
 }
-function getTitleData({ data, type }: { data: TitleData; type: string }) {
-  // properties['Title']
-  const typeData = data[type]
-  // const dataReturn: TitlePropertyItemObjectResponse[] = typeData
-  const dataReturn = typeData[0]?.plain_text ?? ''
-  return dataReturn
-}
-
 interface UrlData {
   id: string
   type: 'url'
   url: null | string
 }
-function getUrlData({ data, type }: { data: UrlData; type: string }) {
-  // properties['URL.Ticket']
+
+function getCheckboxData({ data, type }: { data: CheckboxData; type: string }) {
+  // properties['Is.Published']
   const typeData = data[type]
-  const dataReturn: UrlPropertyItemObjectResponse[] = typeData
+  const dataReturn: CheckboxPropertyItemObjectResponse = typeData
+  return dataReturn
+}
+function getDateData({ data, type }: { data: DateData; type: string }) {
+  // properties['Date.XYZ']
+  const typeData = data[type]
+  // @note(notion) this returns DateResponse...
+  const dataReturn: DatePropertyItemObjectResponse = typeData
+  // { end: null, start: '2016-04-26', time_zone: null }
+  return dataReturn
+}
+
+function getFilesData({ data, type }: { data: FilesData; type: string }) {
+  // properties['SEO.Image']
+  const typeData = data[type]
+  const dataReturn: FilesPropertyItemObjectResponse = typeData
+  return dataReturn
+}
+// @todo(types)
+function getFormulaData({ data, type }: { data: any; type: string }) {
+  // // properties['Slug.Preview']
+  // // properties['Slug.Preview'].formula.string
+  const typeData = data[type]
+  const dataReturn: any = typeData
+
+  /**
+   * @question(notion) is there any other type of return?
+   */
+  if (dataReturn.type === 'number' || dataReturn.type === 'string') {
+    return dataReturn[dataReturn.type]
+  }
+
+  console.dir(
+    `[info] getFormulaData return is not a number|string: ${dataReturn.type}`,
+  )
+  return dataReturn[dataReturn.type]
+}
+
+function getMultiSelectData({
+  data,
+  type,
+}: {
+  data: MultiSelectData
+  type: string
+}) {
+  // properties['Tags']
+  const typeData = data[type]
+  const dataReturn: MultiSelectPropertyItemObjectResponse = typeData
+  return dataReturn
+}
+function getNumberData({ data, type }: { data: NumberData; type: string }) {
+  // properties['Address.PostalCode']
+  const typeData = data[type]
+  const dataReturn: NumberPropertyItemObjectResponse = typeData
   return dataReturn
 }
 
@@ -342,6 +249,99 @@ function getPropertyTypeData(properties, property) {
 
   const returnData = { [typeDataType]: typeData[typeDataType] }
   return returnData
+}
+function getRelationData({ data, type }: { data: RelationData; type: string }) {
+  // properties['Relation.Shows.Cast']
+  const typeData = data[type]
+  const dataReturn: RelationPropertyItemObjectResponse[] = typeData
+  return dataReturn
+}
+
+function getRichTextData({ data, type }: { data: RichTextData; type: string }) {
+  // properties['SEO.Description']
+  const typeData = data[type]
+  // @todo(notion) proper fallback -- should probably warn here
+  // const dataReturn: RichTextPropertyItemObjectResponse[] = typeData
+  const dataReturn = typeData[0]?.plain_text ?? ''
+
+  // // @debug
+  // console.dir(`type: ${type}`)
+  // console.dir(typeData)
+  // console.dir(dataReturn)
+  // console.dir(`----`)
+
+  return dataReturn
+}
+function getRollupData({ data, type }: { data: RollupData; type: string }) {
+  // properties['Rollup.People.Cast.Title']
+  const typeData = data[type]
+  let dataReturn: any = typeData
+
+  /**
+   * @hack(notion) this is where you lose me on ever wanting to do any of this
+   */
+  if (dataReturn.type === 'array' || dataReturn.type === 'multi_select') {
+    dataReturn = dataReturn[dataReturn.type]
+
+    if (!isObjectEmpty(dataReturn)) {
+      const tempData: any = []
+      dataReturn.map((item) => {
+        // console.dir(`[info] getRollupData !isObjectEmpty: ${item.type}`)
+        if (item.type === 'multi_select') {
+          dataReturn = getMultiSelectData({ data: item, type: item.type })
+        }
+        if (item.type === 'rich_text') {
+          dataReturn = getRichTextData({ data: item, type: item.type })
+          tempData.push(dataReturn)
+        }
+        if (item.type === 'title') {
+          dataReturn = getTitleData({ data: item, type: item.type })
+          tempData.push(dataReturn)
+        }
+        if (item.type === 'relation') {
+          // console.dir(`[info] relation (dataReturn)`)
+          // console.dir(dataReturn)
+          // console.dir(`[info] relation (item)`)
+          // console.dir(item)
+          dataReturn = getRelationData({ data: item, type: item.type })
+          tempData.push(dataReturn)
+        }
+      })
+      if (!isObjectEmpty(tempData)) {
+        dataReturn = _orderBy(tempData)
+      }
+    }
+
+    return dataReturn
+  }
+
+  console.dir(
+    `[info] getRollupData return is not a array|multi_select: ${dataReturn.type}`,
+  )
+  dataReturn = dataReturn[dataReturn.type]
+
+  return dataReturn
+}
+
+function getSelectData({ data, type }: { data: SelectData; type: string }) {
+  // properties['Select.Test']
+  const typeData = data[type]
+  const dataReturn: SelectPropertyResponse = typeData
+  return dataReturn
+}
+function getTitleData({ data, type }: { data: TitleData; type: string }) {
+  // properties['Title']
+  const typeData = data[type]
+  // const dataReturn: TitlePropertyItemObjectResponse[] = typeData
+  const dataReturn = typeData[0]?.plain_text ?? ''
+  return dataReturn
+}
+
+function getUrlData({ data, type }: { data: UrlData; type: string }) {
+  // properties['URL.Ticket']
+  const typeData = data[type]
+  const dataReturn: UrlPropertyItemObjectResponse[] = typeData
+  return dataReturn
 }
 
 export { getPropertyTypeData }

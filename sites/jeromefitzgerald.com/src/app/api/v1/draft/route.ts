@@ -7,26 +7,6 @@ import {
 import { draftMode } from 'next/headers.js'
 import { redirect } from 'next/navigation.js'
 
-/**
- * @todo(notion) this is a proof of concept right now
- */
-function getSegmentFromSlug(slug) {
-  const split = slug.split('/')
-  if (
-    split[1] === 'blog' ||
-    split[1] === 'books' ||
-    // split[1] === 'episodes' ||
-    split[1] === 'events' ||
-    split[1] === 'people' ||
-    split[1] === 'podcasts' ||
-    split[1] === 'shows' ||
-    split[1] === 'venues'
-  ) {
-    return split[1]
-  }
-  return 'pages'
-}
-
 export async function GET(request: Request) {
   // Parse query string parameters
   const { searchParams } = new URL(request.url)
@@ -78,4 +58,24 @@ export async function GET(request: Request) {
   // return new Response('Draft mode is enabled')
 
   redirect(slug)
+}
+
+/**
+ * @todo(notion) this is a proof of concept right now
+ */
+function getSegmentFromSlug(slug) {
+  const split = slug.split('/')
+  if (
+    split[1] === 'blog' ||
+    split[1] === 'books' ||
+    // split[1] === 'episodes' ||
+    split[1] === 'events' ||
+    split[1] === 'people' ||
+    split[1] === 'podcasts' ||
+    split[1] === 'shows' ||
+    split[1] === 'venues'
+  ) {
+    return split[1]
+  }
+  return 'pages'
 }

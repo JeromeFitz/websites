@@ -16,6 +16,9 @@ import type {
 } from '@notionhq/client/build/src/api-endpoints.js'
 import type { Spread } from 'next-notion/Notion.types'
 
+type PageObjectResponseEvent = Spread<
+  [PageObjectResponse, { properties: PropertiesEvent }]
+>
 interface PropertiesEvent {
   Date: DatePropertyItemObjectResponse
   'Date.DayOfMonth': FormulaPropertyItemObjectResponse
@@ -76,8 +79,5 @@ interface PropertiesEvent {
   // 'Tickets.Attended': NumberPropertyItemObjectResponse
   'URL.Ticket': UrlPropertyItemObjectResponse
 }
-type PageObjectResponseEvent = Spread<
-  [PageObjectResponse, { properties: PropertiesEvent }]
->
 
 export type { PageObjectResponseEvent, PropertiesEvent }

@@ -21,17 +21,6 @@ import {
   HeadlineTitleSub,
 } from '@/components/Headline/index'
 
-function Test() {
-  return (
-    <Box className="flex flex-row items-center justify-start gap-4">
-      <SpotifyLogoIcon className="size-36" />
-      <AppleLogoIcon className="size-36" />
-      <AmazonLogoIcon className="size-36" />
-      <GooglePodcastsLogoIcon className="size-36" />
-    </Box>
-  )
-}
-
 function Page() {
   // if (!env.IS_DEV) notFound()
   // @note(next) avoid NEXT_DYNAMIC_NO_SSR_CODE
@@ -60,6 +49,17 @@ function Page() {
       </Grid>
       <Separator size="4" />
     </>
+  )
+}
+
+function Test() {
+  return (
+    <Box className="flex flex-row items-center justify-start gap-4">
+      <SpotifyLogoIcon className="size-36" />
+      <AppleLogoIcon className="size-36" />
+      <AmazonLogoIcon className="size-36" />
+      <GooglePodcastsLogoIcon className="size-36" />
+    </Box>
   )
 }
 

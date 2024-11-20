@@ -7,6 +7,20 @@ import { useOrientation } from 'react-use'
 
 const isActive = false
 
+function Orientation({ children }) {
+  const os = useOs()
+  const { type } = useOrientation()
+  const [loaded, setLoaded] = useState(false)
+  useEffect(() => setLoaded(true), [os, type])
+
+  // console.dir(`os: ${os}`)
+  // console.dir(`type: ${type}`)
+
+  if (loaded && type === 'landscape-primary' && (os === 'ios' || os === 'android'))
+    return isActive ? <OrientationContent os={os} /> : <>{children}</>
+  return <>{children}</>
+}
+
 function OrientationContent({ os }) {
   return (
     <>
@@ -38,20 +52,6 @@ function OrientationContent({ os }) {
       </div>
     </>
   )
-}
-
-function Orientation({ children }) {
-  const os = useOs()
-  const { type } = useOrientation()
-  const [loaded, setLoaded] = useState(false)
-  useEffect(() => setLoaded(true), [os, type])
-
-  // console.dir(`os: ${os}`)
-  // console.dir(`type: ${type}`)
-
-  if (loaded && type === 'landscape-primary' && (os === 'ios' || os === 'android'))
-    return isActive ? <OrientationContent os={os} /> : <>{children}</>
-  return <>{children}</>
 }
 
 export { Orientation }

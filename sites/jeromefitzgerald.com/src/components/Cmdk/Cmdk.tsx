@@ -11,8 +11,8 @@ import { Command, useCommandState } from 'cmdk'
 import { AnimatePresence, motion, MotionProps } from 'framer-motion'
 import { slug as _slug } from 'github-slugger'
 import _findIndex from 'lodash/findIndex.js'
-import { useRouter } from 'next/navigation.js'
 import { useTheme } from 'next-themes'
+import { useRouter } from 'next/navigation.js'
 import { useEffect, useMemo, useRef, useState } from 'react'
 
 import { menus } from '@/data/menu'
@@ -44,288 +44,6 @@ const useStore = () => {
   )
 }
 
-function CMDKWrapper(props: { children: ReactNode } & MotionProps) {
-  return (
-    <AnimatePresence initial={true} mode="wait">
-      <motion.div
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        initial={{ opacity: 0 }}
-        transition={{ duration: 0.125 }}
-        {...props}
-      />
-    </AnimatePresence>
-  )
-}
-
-function SubItem({
-  children,
-  closeCmdK = true,
-  href = '/',
-  id,
-  keywords = [],
-  onClick = () => {},
-  onSelect = () => {},
-  shortcut = undefined,
-  value,
-}: {
-  children: ReactNode
-  closeCmdK?: boolean
-  href?: string
-  id: string
-  keywords?: string[]
-  onClick?: () => void
-  onSelect?: () => void
-  shortcut?: string
-  value?: string
-}) {
-  const search = useCommandState((state) => state.search)
-  if (!search) return null
-  const props = {
-    closeCmdK,
-    href,
-    id,
-    keywords,
-    onClick,
-    onSelect,
-    shortcut,
-    value,
-  }
-  return <Item {...props}>{children}</Item>
-}
-
-function getDark(theme) {
-  return theme === 'dark' ? styles['dark'] : ''
-}
-
-// @todo(complexity) 12
-// eslint-disable-next-line complexity
-function Item({
-  children,
-  closeCmdK = true,
-  href = '/',
-  id,
-  keywords = [],
-  onClick = () => {},
-  onSelect = () => {},
-  shortcut = undefined,
-  value = SKIP,
-}: {
-  children: ReactNode
-  closeCmdK?: boolean
-  href?: string
-  id: string
-  keywords?: string[]
-  onClick?: () => void
-  onSelect?: () => void
-  shortcut?: string
-  value?: string
-}) {
-  const router = useRouter()
-  const { theme } = useTheme()
-  const { isCmdkOpenSet } = useStore()
-  const [isClick, isClickSet] = useState(false)
-
-  const shouldSkip = !value.includes(SKIP)
-
-  const _onSelect = shouldSkip
-    ? () => {
-        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-        !!onClick && onClick()
-        if (closeCmdK) {
-          router.push(href)
-          isClickSet(true)
-          isCmdkOpenSet()
-        }
-        // console.dir(`s: ${value}`)
-      }
-    : onSelect
-
-  // @note(cmdk) _do not_ pass undefined as that passes entire node
-  let _value = shouldSkip ? `xyz--${id}` : id
-  _value = shortcut ? `${_value}:${shortcut}` : _value
-
-  return (
-    <Command.Item
-      className={cx(styles['cmdk-item'], getDark(theme))}
-      data-active={isClick ? 'true' : 'false'}
-      id={`cmdk-${id}`}
-      keywords={keywords}
-      onMouseDown={() => {
-        isClickSet(true)
-      }}
-      onMouseUp={() => {
-        isClickSet(false)
-      }}
-      onSelect={_onSelect}
-      value={_value}
-    >
-      {children}
-      {/* {!!shortcut && (
-        <div
-        className={cx(styles['cmdk-meta'],styles['dark])}
-          cmdk-meta=""
-          cmdk-raycast-submenu-shortcuts=""
-          className="flex flex-row gap-1"
-        >
-          {shortcut.split(' ').map((key) => {
-            return <Kbd key={key}>{key}</Kbd>
-          })}
-        </div>
-      )} */}
-    </Command.Item>
-  )
-}
-
-function ItemsUpcomingEvents({ isSubItem = false }) {
-  const ItemComponent = isSubItem ? SubItem : Item
-  const { icon: _icon, items } = useMemo(
-    () => menus[_findIndex(menus, { group: 'events' })],
-    [],
-  )
-  return (
-    <>
-      {items.map(
-        ({
-          href,
-          icon: __icon,
-          id,
-          isActive,
-          isActiveMobileOverride,
-          keywords,
-          title,
-        }) => {
-          if (!isActive && !isActiveMobileOverride) return null
-          const Icon = getIconViaParentChild(_icon, __icon)
-          const props = { href, id, keywords, title, value: title }
-          return (
-            <ItemComponent key={_slug(title)} {...props}>
-              <Logo>
-                <Icon />
-              </Logo>
-              {title}
-            </ItemComponent>
-          )
-        },
-      )}
-    </>
-  )
-}
-function ItemsShows({ isSubItem = false }) {
-  const ItemComponent = isSubItem ? SubItem : Item
-  const { icon: _icon, items } = useMemo(
-    () => menus[_findIndex(menus, { group: 'shows' })],
-    [],
-  )
-
-  return (
-    <>
-      {items.map(
-        ({
-          href,
-          icon: __icon,
-          id,
-          isActive,
-          isActiveMobileOverride,
-          keywords,
-          title,
-        }) => {
-          if (!isActive && !isActiveMobileOverride) return null
-          const Icon = getIconViaParentChild(_icon, __icon)
-          const props = { href, id, keywords, title, value: title }
-          return (
-            <ItemComponent key={_slug(title)} {...props}>
-              <Logo>
-                <Icon />
-              </Logo>
-              {title}
-            </ItemComponent>
-          )
-        },
-      )}
-    </>
-  )
-}
-function ItemsPodcasts({ isSubItem = false }) {
-  const ItemComponent = isSubItem ? SubItem : Item
-  const { icon: _icon, items } = useMemo(
-    () => menus[_findIndex(menus, { group: 'podcasts' })],
-    [],
-  )
-
-  return (
-    <>
-      {items.map(
-        ({
-          href,
-          icon: __icon,
-          id,
-          isActive,
-          isActiveMobileOverride,
-          keywords,
-          title,
-        }) => {
-          if (!isActive && !isActiveMobileOverride) return null
-          const Icon = getIconViaParentChild(_icon, __icon)
-          const props = { href, id, keywords, title, value: title }
-          return (
-            <ItemComponent key={_slug(title)} {...props}>
-              <Logo>
-                <Icon />
-              </Logo>
-              {title}
-            </ItemComponent>
-          )
-        },
-      )}
-    </>
-  )
-}
-function ItemsTheme({ isSubItem = false }) {
-  const { setTheme } = useTheme()
-  const ItemComponent = isSubItem ? SubItem : Item
-  const { icon: _icon, items } = useMemo(
-    () => menus[_findIndex(menus, { group: 'general' })],
-    [],
-  )
-
-  return (
-    <>
-      {items.map(
-        ({
-          href,
-          icon: __icon,
-          id,
-          isActive,
-          isActiveMobileOverride,
-          keywords,
-          title,
-        }) => {
-          if (!isActive && !isActiveMobileOverride) return null
-          const Icon = getIconViaParentChild(_icon, __icon)
-          const props = {
-            closeCmdK: false,
-            href,
-            id,
-            keywords,
-            // @todo(cmdk) strip `/`
-            onClick: () => setTheme(href),
-            title,
-            value: title,
-          }
-          return (
-            <ItemComponent key={_slug(title)} {...props}>
-              <Logo>
-                <Icon />
-              </Logo>
-              {title}
-            </ItemComponent>
-          )
-        },
-      )}
-    </>
-  )
-}
 function Cmdk() {
   const { theme } = useTheme()
   const [value, setValue] = useState('linear')
@@ -625,6 +343,288 @@ function Cmdk() {
       </Command.Dialog>
     </>
   )
+}
+
+function CMDKWrapper(props: MotionProps & { children: ReactNode }) {
+  return (
+    <AnimatePresence initial={true} mode="wait">
+      <motion.div
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        initial={{ opacity: 0 }}
+        transition={{ duration: 0.125 }}
+        {...props}
+      />
+    </AnimatePresence>
+  )
+}
+
+function getDark(theme) {
+  return theme === 'dark' ? styles['dark'] : ''
+}
+
+// @todo(complexity) 12
+// eslint-disable-next-line complexity
+function Item({
+  children,
+  closeCmdK = true,
+  href = '/',
+  id,
+  keywords = [],
+  onClick = () => {},
+  onSelect = () => {},
+  shortcut = undefined,
+  value = SKIP,
+}: {
+  children: ReactNode
+  closeCmdK?: boolean
+  href?: string
+  id: string
+  keywords?: string[]
+  onClick?: () => void
+  onSelect?: () => void
+  shortcut?: string
+  value?: string
+}) {
+  const router = useRouter()
+  const { theme } = useTheme()
+  const { isCmdkOpenSet } = useStore()
+  const [isClick, isClickSet] = useState(false)
+
+  const shouldSkip = !value.includes(SKIP)
+
+  const _onSelect = shouldSkip
+    ? () => {
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+        !!onClick && onClick()
+        if (closeCmdK) {
+          router.push(href)
+          isClickSet(true)
+          isCmdkOpenSet()
+        }
+        // console.dir(`s: ${value}`)
+      }
+    : onSelect
+
+  // @note(cmdk) _do not_ pass undefined as that passes entire node
+  let _value = shouldSkip ? `xyz--${id}` : id
+  _value = shortcut ? `${_value}:${shortcut}` : _value
+
+  return (
+    <Command.Item
+      className={cx(styles['cmdk-item'], getDark(theme))}
+      data-active={isClick ? 'true' : 'false'}
+      id={`cmdk-${id}`}
+      keywords={keywords}
+      onMouseDown={() => {
+        isClickSet(true)
+      }}
+      onMouseUp={() => {
+        isClickSet(false)
+      }}
+      onSelect={_onSelect}
+      value={_value}
+    >
+      {children}
+      {/* {!!shortcut && (
+        <div
+        className={cx(styles['cmdk-meta'],styles['dark])}
+          cmdk-meta=""
+          cmdk-raycast-submenu-shortcuts=""
+          className="flex flex-row gap-1"
+        >
+          {shortcut.split(' ').map((key) => {
+            return <Kbd key={key}>{key}</Kbd>
+          })}
+        </div>
+      )} */}
+    </Command.Item>
+  )
+}
+
+function ItemsPodcasts({ isSubItem = false }) {
+  const ItemComponent = isSubItem ? SubItem : Item
+  const { icon: _icon, items } = useMemo(
+    () => menus[_findIndex(menus, { group: 'podcasts' })],
+    [],
+  )
+
+  return (
+    <>
+      {items.map(
+        ({
+          href,
+          icon: __icon,
+          id,
+          isActive,
+          isActiveMobileOverride,
+          keywords,
+          title,
+        }) => {
+          if (!isActive && !isActiveMobileOverride) return null
+          const Icon = getIconViaParentChild(_icon, __icon)
+          const props = { href, id, keywords, title, value: title }
+          return (
+            <ItemComponent key={_slug(title)} {...props}>
+              <Logo>
+                <Icon />
+              </Logo>
+              {title}
+            </ItemComponent>
+          )
+        },
+      )}
+    </>
+  )
+}
+function ItemsShows({ isSubItem = false }) {
+  const ItemComponent = isSubItem ? SubItem : Item
+  const { icon: _icon, items } = useMemo(
+    () => menus[_findIndex(menus, { group: 'shows' })],
+    [],
+  )
+
+  return (
+    <>
+      {items.map(
+        ({
+          href,
+          icon: __icon,
+          id,
+          isActive,
+          isActiveMobileOverride,
+          keywords,
+          title,
+        }) => {
+          if (!isActive && !isActiveMobileOverride) return null
+          const Icon = getIconViaParentChild(_icon, __icon)
+          const props = { href, id, keywords, title, value: title }
+          return (
+            <ItemComponent key={_slug(title)} {...props}>
+              <Logo>
+                <Icon />
+              </Logo>
+              {title}
+            </ItemComponent>
+          )
+        },
+      )}
+    </>
+  )
+}
+function ItemsTheme({ isSubItem = false }) {
+  const { setTheme } = useTheme()
+  const ItemComponent = isSubItem ? SubItem : Item
+  const { icon: _icon, items } = useMemo(
+    () => menus[_findIndex(menus, { group: 'general' })],
+    [],
+  )
+
+  return (
+    <>
+      {items.map(
+        ({
+          href,
+          icon: __icon,
+          id,
+          isActive,
+          isActiveMobileOverride,
+          keywords,
+          title,
+        }) => {
+          if (!isActive && !isActiveMobileOverride) return null
+          const Icon = getIconViaParentChild(_icon, __icon)
+          const props = {
+            closeCmdK: false,
+            href,
+            id,
+            keywords,
+            // @todo(cmdk) strip `/`
+            onClick: () => setTheme(href),
+            title,
+            value: title,
+          }
+          return (
+            <ItemComponent key={_slug(title)} {...props}>
+              <Logo>
+                <Icon />
+              </Logo>
+              {title}
+            </ItemComponent>
+          )
+        },
+      )}
+    </>
+  )
+}
+function ItemsUpcomingEvents({ isSubItem = false }) {
+  const ItemComponent = isSubItem ? SubItem : Item
+  const { icon: _icon, items } = useMemo(
+    () => menus[_findIndex(menus, { group: 'events' })],
+    [],
+  )
+  return (
+    <>
+      {items.map(
+        ({
+          href,
+          icon: __icon,
+          id,
+          isActive,
+          isActiveMobileOverride,
+          keywords,
+          title,
+        }) => {
+          if (!isActive && !isActiveMobileOverride) return null
+          const Icon = getIconViaParentChild(_icon, __icon)
+          const props = { href, id, keywords, title, value: title }
+          return (
+            <ItemComponent key={_slug(title)} {...props}>
+              <Logo>
+                <Icon />
+              </Logo>
+              {title}
+            </ItemComponent>
+          )
+        },
+      )}
+    </>
+  )
+}
+function SubItem({
+  children,
+  closeCmdK = true,
+  href = '/',
+  id,
+  keywords = [],
+  onClick = () => {},
+  onSelect = () => {},
+  shortcut = undefined,
+  value,
+}: {
+  children: ReactNode
+  closeCmdK?: boolean
+  href?: string
+  id: string
+  keywords?: string[]
+  onClick?: () => void
+  onSelect?: () => void
+  shortcut?: string
+  value?: string
+}) {
+  const search = useCommandState((state) => state.search)
+  if (!search) return null
+  const props = {
+    closeCmdK,
+    href,
+    id,
+    keywords,
+    onClick,
+    onSelect,
+    shortcut,
+    value,
+  }
+  return <Item {...props}>{children}</Item>
 }
 
 export { Cmdk }
