@@ -886,9 +886,6 @@ importers:
       '@types/smoothscroll-polyfill':
         specifier: 0.3.4
         version: 0.3.4
-      '@types/title':
-        specifier: 3.4.3
-        version: 3.4.3
       prop-types:
         specifier: 15.8.1
         version: 15.8.1
@@ -1205,9 +1202,6 @@ importers:
       '@types/smoothscroll-polyfill':
         specifier: 0.3.4
         version: 0.3.4
-      '@types/title':
-        specifier: 3.4.3
-        version: 3.4.3
       prop-types:
         specifier: 15.8.1
         version: 15.8.1
@@ -4342,9 +4336,6 @@ packages:
   '@types/stack-utils@2.0.3':
     resolution: {integrity: sha512-9aEbYZ3TbYMznPdcdr3SmIrLXwC/AKZXQeCf9Pgao5CKb8CyHuEX5jzWPTkvregvhRJHcpRO6BFoGW9ycaOkYw==}
 
-  '@types/title@3.4.3':
-    resolution: {integrity: sha512-mjupLOb4kwUuoUFokkacy/VMRVBH2qtqZ5AX7K7iha6+iKIkX80n/Y4EoNVEVRmer8dYJU/ry+fppUaDFVQh7Q==}
-
   '@types/tough-cookie@4.0.5':
     resolution: {integrity: sha512-/Ad8+nIOV7Rl++6f1BdKxFSMgmoqEoYbHRpPcx3JEfv8VRsQe9Z4mCXeJBzxs7mbHY/XOZZuXlRNfhpVPbs6ZA==}
 
@@ -6075,10 +6066,6 @@ packages:
 
   execa@9.4.1:
     resolution: {integrity: sha512-5eo/BRqZm3GYce+1jqX/tJ7duA2AnE39i88fuedNFUV8XxGxUpF3aWkBRfbUcjV49gCkvS/pzc0YrCPhaIewdg==}
-    engines: {node: ^18.19.0 || >=20.5.0}
-
-  execa@9.5.0:
-    resolution: {integrity: sha512-t7vvYt+oKnMbF3O+S5+HkylsPrsUatwJSe4Cv+4017R0MCySjECxnVJ2eyDXVD/Xpj5H29YzyYn6eEpugG7GJA==}
     engines: {node: ^18.19.0 || >=20.5.0}
 
   execa@9.5.1:
@@ -12756,7 +12743,7 @@ snapshots:
     dependencies:
       '@semantic-release/error': 4.0.0
       aggregate-error: 5.0.0
-      execa: 9.5.0
+      execa: 9.5.1
       fs-extra: 11.2.0
       lodash-es: 4.17.21
       nerf-dart: 1.0.0
@@ -13727,8 +13714,6 @@ snapshots:
   '@types/smoothscroll-polyfill@0.3.4': {}
 
   '@types/stack-utils@2.0.3': {}
-
-  '@types/title@3.4.3': {}
 
   '@types/tough-cookie@4.0.5': {}
 
@@ -15831,21 +15816,6 @@ snapshots:
     dependencies:
       '@sindresorhus/merge-streams': 4.0.0
       cross-spawn: 7.0.3
-      figures: 6.1.0
-      get-stream: 9.0.1
-      human-signals: 8.0.0
-      is-plain-obj: 4.1.0
-      is-stream: 4.0.1
-      npm-run-path: 6.0.0
-      pretty-ms: 9.0.0
-      signal-exit: 4.1.0
-      strip-final-newline: 4.0.0
-      yoctocolors: 2.0.2
-
-  execa@9.5.0:
-    dependencies:
-      '@sindresorhus/merge-streams': 4.0.0
-      cross-spawn: 7.0.6
       figures: 6.1.0
       get-stream: 9.0.1
       human-signals: 8.0.0

@@ -22,7 +22,7 @@
     "dev": "next dev --experimental-https",
     "dev:turbo": "next dev --turbo",
     "format": "pnpm run format:lint",
-    "format:lint": "pnpm lint:eslint --fix",
+    "g": "pnpm lint:eslint --fix",
     "lhci": "pnpm --package=@lhci/cli@0.13.0 dlx lhci autorun --config=.lighthouserc.cjs",
     "lint": "concurrently \"pnpm run lint:eslint\" \"pnpm run lint:typescript:dev\"",
     "lint:eslint": "eslint ./src --max-warnings=0",
@@ -143,7 +143,6 @@
     "@types/ramda": "0.30.2",
     "@types/react-headroom": "3.2.3",
     "@types/smoothscroll-polyfill": "0.3.4",
-    "@types/title": "3.4.3",
     "prop-types": "15.8.1",
     "tailwind-merge": "2.5.4"
   }
