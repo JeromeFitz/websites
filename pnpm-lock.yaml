@@ -459,6 +459,9 @@ importers:
       tailwind-merge:
         specifier: 2.5.4
         version: 2.5.4
+      title:
+        specifier: 4.0.0
+        version: 4.0.0
       valid-url:
         specifier: 1.0.9
         version: 1.0.9
