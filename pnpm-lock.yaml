@@ -33,8 +33,8 @@ importers:
   .:
     dependencies:
       '@jeromefitz/conventional-gitmoji':
-        specifier: 4.0.10
-        version: 4.0.10(lodash@4.17.21)
+        specifier: 4.0.12
+        version: 4.0.12(lodash@4.17.21)
       '@jeromefitz/eslint-config':
         specifier: 5.0.0-canary.21
         version: 5.0.0-canary.21(tailwindcss@3.4.15(ts-node@10.9.2(@types/node@20.17.6)(typescript@5.6.3)))(typescript@5.6.3)
@@ -49,7 +49,7 @@ importers:
         version: 3.0.12(lodash@4.17.21)
       '@jeromefitz/semantic':
         specifier: 11.0.7
-        version: 11.0.7(@jeromefitz/conventional-gitmoji@4.0.10(lodash@4.17.21))(typescript@5.6.3)
+        version: 11.0.7(@jeromefitz/conventional-gitmoji@4.0.12(lodash@4.17.21))(typescript@5.6.3)
       '@jeromefitz/tsconfig':
         specifier: 2.0.1
         version: 2.0.1
@@ -2346,8 +2346,8 @@ packages:
     resolution: {integrity: sha512-ZXRY4jNvVgSVQ8DL3LTcakaAtXwTVUxE81hslsyD2AtoXW/wVob10HkOJ1X/pAlcI7D+2YoZKg5do8G/w6RYgA==}
     engines: {node: '>=8'}
 
-  '@jeromefitz/conventional-gitmoji@4.0.10':
-    resolution: {integrity: sha512-aKl3ZgLPjbvIdbAmDj2OSyfaoi7AkAXDiaI2QWuKt3GGr4B6eVhsvokYVnpNImCFItUjnv9JPOZ68uKz7CkEsw==}
+  '@jeromefitz/conventional-gitmoji@4.0.12':
+    resolution: {integrity: sha512-us23SKpEn4kcpbOx+uGCCvk4HXX95ehbKDLvv7lHXiKWlANGM21BQqPUahe9ASsCQ1AmMdVg/h2LU3PzwFjUqw==}
     engines: {node: '>=20'}
     peerDependencies:
       lodash: ^4.17.21
@@ -5210,6 +5210,10 @@ packages:
     resolution: {integrity: sha512-16KrBOV7bHmHdxcQiCvfUFYVFyEah4FI8vYT1Fr7CGSA4G+xBWMEfUEQJS1hxeHGtI9ju1Bzs9uXSbj5HZKArw==}
     engines: {node: '>=4'}
 
+  clipboardy@4.0.0:
+    resolution: {integrity: sha512-5mOlNS0mhX0707P2I0aZ2V/cmHUEO/fL7VFLqszkhUsxt7RwnmrInf/eEQKlf5GzvYeHIjT+Ov1HRfNmymlG0w==}
+    engines: {node: '>=18'}
+
   cliui@7.0.4:
     resolution: {integrity: sha512-OcRE68cOsVMXp1Yvonl/fzkQOyjLSu/8bhPDfQt0e0/Eb283TKP20Fs2MqoPsr9SwA595rRCA+QMzYc9nBP+JQ==}
 
@@ -6826,6 +6830,11 @@ packages:
     engines: {node: '>=8'}
     hasBin: true
 
+  is-docker@3.0.0:
+    resolution: {integrity: sha512-eljcgEDlEns/7AXFosB5K/2nCM4P7FQPkGc/DWLy5rmFEWvZayGrik1d9/QIY5nJ4f9YsVvBkA6kJpHn9rISdQ==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+    hasBin: true
+
   is-extglob@2.1.1:
     resolution: {integrity: sha512-SbKbANkN603Vi4jEZv49LeVJMn4yGwsbzZworEoyEiutsN3nJYdbO36zfhGJ6QEDpOZIFkDtnq5JRxmvl3jsoQ==}
     engines: {node: '>=0.10.0'}
@@ -6856,6 +6865,11 @@ packages:
   is-glob@4.0.3:
     resolution: {integrity: sha512-xelSayHH36ZgE7ZWhli7pW34hNbNl8Ojv5KVmkJD4hBdD3th8Tfk9vYasLM+mXWOZhFkgZfxhLSnrwRr4elSSg==}
     engines: {node: '>=0.10.0'}
+
+  is-inside-container@1.0.0:
+    resolution: {integrity: sha512-KIYLCCJghfHZxqjYBE7rEy0OBuTd5xCHS7tHVgvCLkx7StIoaxwNW3hCALgEUjFfeRk+MG/Qxmp/vtETEF3tRA==}
+    engines: {node: '>=14.16'}
+    hasBin: true
 
   is-interactive@2.0.0:
     resolution: {integrity: sha512-qP1vozQRI+BMOPcjFzrjXuQvdak2pHNUMZoeG2eRbiSqyvbEf/wQtEOTOX1guk6E3t36RkaqiSt8A/6YElNxLQ==}
@@ -6961,6 +6975,14 @@ packages:
   is-wsl@2.2.0:
     resolution: {integrity: sha512-fKzAra0rGJUUBwGBgNkHZuToZcn+TtXHpeCgmkMJMMYx1sQDYaCSyjJBSCa2nH1DGm7s3n1oBnohoVTBaN7Lww==}
     engines: {node: '>=8'}
+
+  is-wsl@3.1.0:
+    resolution: {integrity: sha512-UcVfVfaK4Sc4m7X3dUSoHoozQGBEFeDC+zVo06t98xe8CzHSZZBekNXH+tu0NalHolcJ/QAGqS46Hef7QXBIMw==}
+    engines: {node: '>=16'}
+
+  is64bit@2.0.0:
+    resolution: {integrity: sha512-jv+8jaWCl0g2lSBkNSVXdzfBA0npK1HGC2KtWM9FumFRoGS94g3NbCCLVnCYHLjp4GrW2KZeeSTMo5ddtznmGw==}
+    engines: {node: '>=18'}
 
   isarray@1.0.0:
     resolution: {integrity: sha512-VLghIWNM6ELQzo7zwmcg0NmTVyWKYjvIeM83yjp0wRDTmUnrM678fQbcKBo6n2CJEF0szoG//ytg+TKla89ALQ==}
@@ -9511,6 +9533,10 @@ packages:
     engines: {node: '>=18.18.0'}
     hasBin: true
 
+  system-architecture@0.1.0:
+    resolution: {integrity: sha512-ulAk51I9UVUyJgxlv9M6lFot2WP3e7t8Kz9+IS6D4rVba1tR9kON+Ey69f+1R4Q8cd45Lod6a4IcJIxnzGc/zA==}
+    engines: {node: '>=18'}
+
   tabbable@6.2.0:
     resolution: {integrity: sha512-Cat63mxsVJlzYvN51JmVXIgNoUokrIaT2zLclCXjRd8boZ0004U4KCs/sToJ75C6sdlByWxpYnb5Boif1VSFew==}
 
@@ -9632,6 +9658,10 @@ packages:
 
   title@3.5.3:
     resolution: {integrity: sha512-20JyowYglSEeCvZv3EZ0nZ046vLarO37prvV0mbtQV7C8DJPGgN967r8SJkqd3XK3K3lD3/Iyfp3avjfil8Q2Q==}
+    hasBin: true
+
+  title@4.0.0:
+    resolution: {integrity: sha512-HtJL7yozZem9ufiWnwcftBpbNAO+phHMfao8CS4QLON7HzjyDRlf7qE9SXna6/749ZzpEsBZHy+MmY/GOS4i6g==}
     hasBin: true
 
   titleize@1.0.0:
@@ -11453,12 +11483,12 @@ snapshots:
 
   '@istanbuljs/schema@0.1.3': {}
 
-  '@jeromefitz/conventional-gitmoji@4.0.10(lodash@4.17.21)':
+  '@jeromefitz/conventional-gitmoji@4.0.12(lodash@4.17.21)':
     dependencies:
       fast-json-stable-stringify: 2.1.0
       grapheme-splitter: 1.0.4
       lodash: 4.17.21
-      title: 3.5.3
+      title: 4.0.0
 
   '@jeromefitz/eslint-config@5.0.0-canary.21(tailwindcss@3.4.15(ts-node@10.9.2(@types/node@20.17.6)(typescript@5.6.3)))(typescript@5.6.3)':
     dependencies:
@@ -11552,9 +11582,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@jeromefitz/semantic@11.0.7(@jeromefitz/conventional-gitmoji@4.0.10(lodash@4.17.21))(typescript@5.6.3)':
+  '@jeromefitz/semantic@11.0.7(@jeromefitz/conventional-gitmoji@4.0.12(lodash@4.17.21))(typescript@5.6.3)':
     dependencies:
-      '@jeromefitz/conventional-gitmoji': 4.0.10(lodash@4.17.21)
+      '@jeromefitz/conventional-gitmoji': 4.0.12(lodash@4.17.21)
       '@semantic-release/commit-analyzer': 13.0.0(patch_hash=4ldj247mh3etpypyayklcqtkvm)(semantic-release@24.2.0(typescript@5.6.3))
       '@semantic-release/git': 10.0.1(semantic-release@24.2.0(typescript@5.6.3))
       semantic-release: 24.2.0(typescript@5.6.3)
@@ -14847,6 +14877,12 @@ snapshots:
       arch: 2.2.0
       execa: 0.8.0
 
+  clipboardy@4.0.0:
+    dependencies:
+      execa: 8.0.1
+      is-wsl: 3.1.0
+      is64bit: 2.0.0
+
   cliui@7.0.4:
     dependencies:
       string-width: 4.2.3
@@ -16765,6 +16801,8 @@ snapshots:
 
   is-docker@2.2.1: {}
 
+  is-docker@3.0.0: {}
+
   is-extglob@2.1.1: {}
 
   is-finalizationregistry@1.0.2:
@@ -16788,6 +16826,10 @@ snapshots:
   is-glob@4.0.3:
     dependencies:
       is-extglob: 2.1.1
+
+  is-inside-container@1.0.0:
+    dependencies:
+      is-docker: 3.0.0
 
   is-interactive@2.0.0: {}
 
@@ -16865,6 +16907,14 @@ snapshots:
   is-wsl@2.2.0:
     dependencies:
       is-docker: 2.2.1
+
+  is-wsl@3.1.0:
+    dependencies:
+      is-inside-container: 1.0.0
+
+  is64bit@2.0.0:
+    dependencies:
+      system-architecture: 0.1.0
 
   isarray@1.0.0: {}
 
@@ -19569,6 +19619,8 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
+  system-architecture@0.1.0: {}
+
   tabbable@6.2.0: {}
 
   tailwind-merge@2.5.4: {}
@@ -19718,6 +19770,12 @@ snapshots:
       chalk: 2.3.0
       clipboardy: 1.2.2
       titleize: 1.0.0
+
+  title@4.0.0:
+    dependencies:
+      arg: 5.0.2
+      chalk: 5.3.0
+      clipboardy: 4.0.0
 
   titleize@1.0.0: {}
 
