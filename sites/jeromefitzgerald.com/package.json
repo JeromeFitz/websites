@@ -22,7 +22,7 @@
     "dev": "next dev --experimental-https",
     "dev:turbo": "next dev --turbo",
     "format": "pnpm run format:lint",
-    "g": "pnpm lint:eslint --fix",
+    "format:lint": "pnpm lint:eslint --fix",
     "lhci": "pnpm --package=@lhci/cli@0.13.0 dlx lhci autorun --config=.lighthouserc.cjs",
     "lint": "concurrently \"pnpm run lint:eslint\" \"pnpm run lint:typescript:dev\"",
     "lint:eslint": "eslint ./src --max-warnings=0",
