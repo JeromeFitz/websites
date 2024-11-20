@@ -48,8 +48,8 @@ importers:
         specifier: 3.0.12
         version: 3.0.12(lodash@4.17.21)
       '@jeromefitz/semantic':
-        specifier: 11.0.7
-        version: 11.0.7(@jeromefitz/conventional-gitmoji@4.0.12(lodash@4.17.21))(typescript@5.6.3)
+        specifier: 11.0.8
+        version: 11.0.8(@jeromefitz/conventional-gitmoji@4.0.12(lodash@4.17.21))(typescript@5.6.3)
       '@jeromefitz/tsconfig':
         specifier: 2.0.1
         version: 2.0.1
@@ -2379,8 +2379,8 @@ packages:
     peerDependencies:
       lodash: ^4.17.21
 
-  '@jeromefitz/semantic@11.0.7':
-    resolution: {integrity: sha512-FmziSiDQWzVWHW8fHg2Q/HtF206S9TCHpfsukgwQ8oXOX1cAZPfUS4fHRMl76m51f1EFZ+h34wM5ZTzcQqzBEw==}
+  '@jeromefitz/semantic@11.0.8':
+    resolution: {integrity: sha512-G6R1OrBUAhjKfpORsEGSbWL1JOh4oTtN0A+WeCP63tob+Luj15y5bolqCIun+LMM2tYXWvz/RXwFTnYNsPmo6Q==}
     engines: {node: '>=20'}
     peerDependencies:
       '@jeromefitz/conventional-gitmoji': ^4.0.0
@@ -11582,14 +11582,14 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@jeromefitz/semantic@11.0.7(@jeromefitz/conventional-gitmoji@4.0.12(lodash@4.17.21))(typescript@5.6.3)':
+  '@jeromefitz/semantic@11.0.8(@jeromefitz/conventional-gitmoji@4.0.12(lodash@4.17.21))(typescript@5.6.3)':
     dependencies:
       '@jeromefitz/conventional-gitmoji': 4.0.12(lodash@4.17.21)
       '@semantic-release/commit-analyzer': 13.0.0(patch_hash=4ldj247mh3etpypyayklcqtkvm)(semantic-release@24.2.0(typescript@5.6.3))
       '@semantic-release/git': 10.0.1(semantic-release@24.2.0(typescript@5.6.3))
       semantic-release: 24.2.0(typescript@5.6.3)
       semantic-release-commit-filter: 1.0.2
-      title: 3.5.3
+      title: 4.0.0
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -16049,7 +16049,7 @@ snapshots:
 
   execa@5.1.1:
     dependencies:
-      cross-spawn: 7.0.3
+      cross-spawn: 7.0.6
       get-stream: 6.0.1
       human-signals: 2.1.0
       is-stream: 2.0.1
