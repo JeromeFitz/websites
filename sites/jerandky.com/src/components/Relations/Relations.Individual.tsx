@@ -50,6 +50,18 @@ const RelationIndividual = cache(async ({ id }) => {
   )
 })
 
+function RelationIndividuals({ items }) {
+  const itemsCount = _size(items)
+  return (
+    <>
+      <Suspense fallback={<RIS_LOADING size={itemsCount} />}>
+        <RI items={items} />
+        {/* <RIS_LOADING size={itemsCount} /> */}
+      </Suspense>
+    </>
+  )
+}
+
 async function RI({ items }) {
   const foo: any = []
   // console.dir(`items: ${_size(items)}`)
@@ -95,18 +107,6 @@ function RIS_LOADING({ size }) {
             </li>
           )
         })}
-    </>
-  )
-}
-
-function RelationIndividuals({ items }) {
-  const itemsCount = _size(items)
-  return (
-    <>
-      <Suspense fallback={<RIS_LOADING size={itemsCount} />}>
-        <RI items={items} />
-        {/* <RIS_LOADING size={itemsCount} /> */}
-      </Suspense>
     </>
   )
 }

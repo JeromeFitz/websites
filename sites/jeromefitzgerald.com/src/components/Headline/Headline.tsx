@@ -13,7 +13,11 @@ interface AdditionalProps {
   children: ReactNode
   className?: string
 }
-type HeadlineColumnAProps = { separateTitle?: boolean } & AdditionalProps
+type HeadlineColumnAProps = AdditionalProps & { separateTitle?: boolean }
+type HeadlineContentProps = AdditionalProps
+type HeadlineTitleProps = AdditionalProps & HeadingProps
+type HeadlineTitleSubProps = AdditionalProps
+type HeadlineTitleTextProps = AdditionalProps & TextProps
 function HeadlineColumnA({ children, separateTitle = true }: HeadlineColumnAProps) {
   return (
     <Box
@@ -39,45 +43,6 @@ function HeadlineColumnA({ children, separateTitle = true }: HeadlineColumnAProp
     </Box>
   )
 }
-type HeadlineTitleProps = AdditionalProps & HeadingProps
-function HeadlineTitle({ children, className = '', ...props }: HeadlineTitleProps) {
-  return (
-    <Heading
-      className={cx('line-clamp-3', className)}
-      size="8"
-      weight="bold"
-      {...props}
-    >
-      {children}
-    </Heading>
-  )
-}
-type HeadlineTitleTextProps = AdditionalProps & TextProps
-function HeadlineTitleText({
-  children,
-  className,
-  ...props
-}: HeadlineTitleTextProps) {
-  return (
-    <Text
-      className={cx('line-clamp-3', className)}
-      size="8"
-      weight="bold"
-      {...props}
-    >
-      {children}
-    </Text>
-  )
-}
-type HeadlineTitleSubProps = AdditionalProps
-function HeadlineTitleSub({ children, className }: HeadlineTitleSubProps) {
-  return (
-    <div className={cx('flex flex-row flex-wrap gap-2', 'md:mr-3', className)}>
-      {children}
-    </div>
-  )
-}
-type HeadlineContentProps = AdditionalProps
 function HeadlineContent({ children, className = '' }: HeadlineContentProps) {
   return (
     <Flex
@@ -93,6 +58,41 @@ function HeadlineContent({ children, className = '' }: HeadlineContentProps) {
     >
       {children}
     </Flex>
+  )
+}
+function HeadlineTitle({ children, className = '', ...props }: HeadlineTitleProps) {
+  return (
+    <Heading
+      className={cx('line-clamp-3', className)}
+      size="8"
+      weight="bold"
+      {...props}
+    >
+      {children}
+    </Heading>
+  )
+}
+function HeadlineTitleSub({ children, className }: HeadlineTitleSubProps) {
+  return (
+    <div className={cx('flex flex-row flex-wrap gap-2', 'md:mr-3', className)}>
+      {children}
+    </div>
+  )
+}
+function HeadlineTitleText({
+  children,
+  className,
+  ...props
+}: HeadlineTitleTextProps) {
+  return (
+    <Text
+      className={cx('line-clamp-3', className)}
+      size="8"
+      weight="bold"
+      {...props}
+    >
+      {children}
+    </Text>
   )
 }
 

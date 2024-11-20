@@ -1,3 +1,4 @@
+import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
 import { ImageClient as NextImage } from '@jeromefitz/shared/components/Notion/Blocks/Image.client'
 import {
   getDataFromCache,
@@ -7,10 +8,8 @@ import { isObjectEmpty } from '@jeromefitz/utils'
 
 import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
-import { draftMode } from 'next/headers.js'
 // import { notFound } from 'next/navigation.js'
-
-import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
+import { draftMode } from 'next/headers.js'
 
 import { CONFIG, getPageData } from '@/app/(notion)/_config/index'
 import { FourOhFour } from '@/app/_errors/404'
@@ -38,6 +37,23 @@ const image = {
   src: 'https://cdn.jeromefitzgerald.com/images/2020/01/jfle--2020--cec-jr--bob-shields.jpg',
   url: 'https://cdn.jeromefitzgerald.com/images/2020/01/jfle--2020--cec-jr--bob-shields.jpg',
   width: 1280,
+}
+
+export default async function Page(props) {
+  // if (!env.IS_DEV) notFound()
+  // @note(next) avoid NEXT_DYNAMIC_NO_SSR_CODE
+  if (!env.IS_DEV) return <FourOhFour isNotPublished={false} segmentInfo={{}} />
+
+  const revalidate = props?.revalidate || false
+  const { params } = props
+  const { catchAll } = await params
+  const segmentInfo = getSegmentInfo({
+    params: { catchAll },
+    revalidate,
+    SEGMENT,
+  })
+
+  return <Slug revalidate={revalidate} segmentInfo={segmentInfo} />
 }
 
 async function Slug({ revalidate, segmentInfo }) {
@@ -75,21 +91,4 @@ async function Slug({ revalidate, segmentInfo }) {
       </HeadlineContent>
     </Grid>
   )
-}
-
-export default async function Page(props) {
-  // if (!env.IS_DEV) notFound()
-  // @note(next) avoid NEXT_DYNAMIC_NO_SSR_CODE
-  if (!env.IS_DEV) return <FourOhFour isNotPublished={false} segmentInfo={{}} />
-
-  const revalidate = props?.revalidate || false
-  const { params } = props
-  const { catchAll } = await params
-  const segmentInfo = getSegmentInfo({
-    params: { catchAll },
-    revalidate,
-    SEGMENT,
-  })
-
-  return <Slug revalidate={revalidate} segmentInfo={segmentInfo} />
 }

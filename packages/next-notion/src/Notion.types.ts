@@ -25,45 +25,10 @@ type ApiColor =
   | 'yellow'
   | 'yellow_background'
 
-/**
- * @note(typescript) we need to take over the Notion returns
- * @ref:
- */
-type OptionalPropertyNames<T> = {
-  [K in keyof T]-?: object extends Record<K, T[K]> ? K : never
-}[keyof T]
-
-type SpreadProperties<L, R, K extends keyof L & keyof R> = {
-  [P in K]: Exclude<R[P], undefined> | L[P]
-}
-
-type Id<T> = T extends infer U ? { [K in keyof U]: U[K] } : never
-
-type SpreadTwo<L, R> = Id<
-  Pick<L, Exclude<keyof L, keyof R>> &
-    Pick<R, Exclude<keyof R, OptionalPropertyNames<R>>> &
-    Pick<R, Exclude<OptionalPropertyNames<R>, keyof L>> &
-    SpreadProperties<L, R, keyof L & OptionalPropertyNames<R>>
->
-
-type Spread<A extends readonly [...any]> = A extends [infer L, ...infer R]
-  ? SpreadTwo<L, Spread<R>>
-  : unknown
-/**
- *
- */
-type Direction = 'ascending' | 'descending'
-interface SortItem {
-  direction: Direction
-  property: string
-}
-type FilterType =
-  | 'contains'
-  | 'does_not_contain'
-  | 'does_not_equal'
-  | 'ends_with'
-  | 'equals'
-  | 'starts_with'
+type BlockObjectResponseCustom =
+  | BlockObjectResponse
+  | BulletedListBlockObjectResponse
+  | NumberedListBlockObjectResponse
 
 interface BulletedListBlockObjectResponse {
   archived: boolean
@@ -82,6 +47,27 @@ interface BulletedListBlockObjectResponse {
     | { type: 'workspace'; workspace: true }
   type: 'bulleted_list'
 }
+
+interface DateResponse {
+  end: null | string
+  start: string
+  time_zone: TimeZoneRequest | null
+}
+
+/**
+ *
+ */
+type Direction = 'ascending' | 'descending'
+
+type EmptyObject = Record<string, never>
+type FilterType =
+  | 'contains'
+  | 'does_not_contain'
+  | 'does_not_equal'
+  | 'ends_with'
+  | 'equals'
+  | 'starts_with'
+type Id<T> = T extends infer U ? { [K in keyof U]: U[K] } : never
 interface NumberedListBlockObjectResponse {
   archived: boolean
   created_by: PartialUserObjectResponse
@@ -100,12 +86,13 @@ interface NumberedListBlockObjectResponse {
   type: 'numbered_list'
 }
 
-type BlockObjectResponseCustom =
-  | BlockObjectResponse
-  | BulletedListBlockObjectResponse
-  | NumberedListBlockObjectResponse
-
-type EmptyObject = Record<string, never>
+/**
+ * @note(typescript) we need to take over the Notion returns
+ * @ref:
+ */
+type OptionalPropertyNames<T> = {
+  [K in keyof T]-?: object extends Record<K, T[K]> ? K : never
+}[keyof T]
 type RollupFunction =
   | 'average'
   | 'checked'
@@ -131,7 +118,7 @@ type RollupFunction =
   | 'sum'
   | 'unchecked'
   | 'unique'
-type StringRequest = string
+
 type SelectColor =
   | 'blue'
   | 'brown'
@@ -143,11 +130,29 @@ type SelectColor =
   | 'purple'
   | 'red'
   | 'yellow'
+
 interface SelectPropertyResponse {
   color: SelectColor
   id: StringRequest
   name: StringRequest
 }
+interface SortItem {
+  direction: Direction
+  property: string
+}
+type Spread<A extends readonly [...any]> = A extends [infer L, ...infer R]
+  ? SpreadTwo<L, Spread<R>>
+  : unknown
+type SpreadProperties<L, R, K extends keyof L & keyof R> = {
+  [P in K]: Exclude<R[P], undefined> | L[P]
+}
+type SpreadTwo<L, R> = Id<
+  Pick<L, Exclude<keyof L, keyof R>> &
+    Pick<R, Exclude<keyof R, OptionalPropertyNames<R>>> &
+    Pick<R, Exclude<OptionalPropertyNames<R>, keyof L>> &
+    SpreadProperties<L, R, keyof L & OptionalPropertyNames<R>>
+>
+type StringRequest = string
 type TimeZoneRequest =
   | 'Africa/Abidjan'
   | 'Africa/Accra'
@@ -742,11 +747,6 @@ type TimeZoneRequest =
   | 'W-SU'
   | 'WET'
   | 'Zulu'
-interface DateResponse {
-  end: null | string
-  start: string
-  time_zone: TimeZoneRequest | null
-}
 
 export type {
   ApiColor,

@@ -99,109 +99,6 @@ const info = {
   },
 }
 
-/**
- * @todo(js) well this could be better, lol
- */
-function getArrayFirstX(arr: string[], max = 4) {
-  if (arr.length === 0 || !arr) return []
-  return arr.map((genre, i) => {
-    if (i > max) return
-    return _title(genre)
-  })
-}
-function getArrayCountOfOverage(arr: string[], max = 4) {
-  return arr.length > max && arr.length - (max + 1) > 0
-    ? `+ ${arr.length - (max + 1)} more`
-    : ``
-}
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function DataItemLoader({ error, handleScroll, isLoadingMore }) {
-  const image = {
-    blurDataURL:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAIAAAACUFjqAAAACXBIWXMAAAsTAAALEwEAmpwYAAABQUlEQVR4nAE2Acn+APzz8fzz8f/29fns6vvt6v+7xfV9lf+Ko/5/l/S2uwD/29r/3d3/3t//4972ur9tIi1HGRpgKy+vSV/uo6oA//Hx//bz/+fm//f1r214KwAApXBWbkIxGQAAuV5oAP/y8f/AyvyOn/+GnOFke2wvLHJIO1kmI40kOM9JXwD/0db+f5X/hZv8fZL/h53Tb3R3OjqEKDfjZHzeXnAA/6Ox/4WY+oSV/omb/5Wm+4GS6GZ153KB1nx7xIFpAP+fr/uKmfuKmP+drv+WpfaIlPyPm9eGgq1+YryIbQD/pa/5kpv7lZz3k5r6lZz7nKX8m6PajY2+iHeUXlIA/6y2+Z+k7JSU/Kes/7K7/Kev+6Or+aKqq3hxm2VhAPK8vM6im/++xP+9wv+0u/++xfSqrdOPjNe2sNirpkiyyKcq+CIbAAAAAElFTkSuQmCC',
-    height: 640,
-    src: 'https://i.scdn.co/image/ab6761610000e5eb7455f2c344f66269f98948a4',
-    width: 640,
-  }
-  return (
-    <>
-      <Box
-        className={cx(
-          'rounded-3 border-1 border-gray-7 mb-2 mr-4 flex w-full flex-row items-start gap-0 md:mb-5 md:min-h-[400px] md:flex-row-reverse md:items-start',
-          'flex-auto',
-        )}
-      >
-        <DataList.Root className="w-full p-2 md:px-4 md:py-5">
-          <DataList.Item align="start" className="flex flex-col gap-0">
-            <DataList.Label>
-              <Text size="1">
-                <Code variant="ghost">Status</Code>
-              </Text>
-            </DataList.Label>
-            <DataList.Value>
-              <Text size={{ initial: '1', md: '7' }} weight="medium">
-                {isLoadingMore // ? 'loading' : isReachingEnd ? 'no more' :''
-                  ? info.loading.text
-                  : error
-                    ? info.error.text
-                    : info.success.text}
-              </Text>
-            </DataList.Value>
-          </DataList.Item>
-          <DataList.Item align="start" className="flex flex-col gap-0">
-            <DataList.Label>
-              <Text size="1">
-                <Code variant="ghost">&nbsp;</Code>
-              </Text>
-            </DataList.Label>
-            <DataList.Value>
-              <Text
-                as="p"
-                className="line-clamp-3"
-                mt="2"
-                size={{ initial: '3', md: '5' }}
-                weight="regular"
-              >
-                {isLoadingMore // ? 'loading' : isReachingEnd ? 'no more' :''
-                  ? info.loading.cta
-                  : error
-                    ? info.error.cta
-                    : info.success.cta}
-              </Text>
-            </DataList.Value>
-          </DataList.Item>
-        </DataList.Root>
-        <Inset
-          className={cx(
-            'rounded-3 relative h-full',
-            'h-[275px] w-[164px] min-w-[164px] max-w-[164px]',
-            'md:size-full md:max-w-[308px]',
-            // 'md:h-[450px] md:w-[500px]',
-            // 'md:border-1 md:border-gray-7 ',
-            '',
-          )}
-          clip="border-box"
-          side={{ initial: 'all', md: 'all' }}
-        >
-          <Image
-            {...image}
-            alt={``}
-            className={cx(
-              'md:max-w-96',
-              !isLoadingMore && !error && 'grayscale',
-              '',
-            )}
-            placeholder="blur"
-            role="img"
-            tabIndex={-1}
-          />
-        </Inset>
-      </Box>
-    </>
-  )
-}
-
 function DataItem({ item, type }) {
   // @hack
   let _alt: string,
@@ -425,6 +322,92 @@ function DataItem({ item, type }) {
     </>
   )
 }
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function DataItemLoader({ error, handleScroll, isLoadingMore }) {
+  const image = {
+    blurDataURL:
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAIAAAACUFjqAAAACXBIWXMAAAsTAAALEwEAmpwYAAABQUlEQVR4nAE2Acn+APzz8fzz8f/29fns6vvt6v+7xfV9lf+Ko/5/l/S2uwD/29r/3d3/3t//4972ur9tIi1HGRpgKy+vSV/uo6oA//Hx//bz/+fm//f1r214KwAApXBWbkIxGQAAuV5oAP/y8f/AyvyOn/+GnOFke2wvLHJIO1kmI40kOM9JXwD/0db+f5X/hZv8fZL/h53Tb3R3OjqEKDfjZHzeXnAA/6Ox/4WY+oSV/omb/5Wm+4GS6GZ153KB1nx7xIFpAP+fr/uKmfuKmP+drv+WpfaIlPyPm9eGgq1+YryIbQD/pa/5kpv7lZz3k5r6lZz7nKX8m6PajY2+iHeUXlIA/6y2+Z+k7JSU/Kes/7K7/Kev+6Or+aKqq3hxm2VhAPK8vM6im/++xP+9wv+0u/++xfSqrdOPjNe2sNirpkiyyKcq+CIbAAAAAElFTkSuQmCC',
+    height: 640,
+    src: 'https://i.scdn.co/image/ab6761610000e5eb7455f2c344f66269f98948a4',
+    width: 640,
+  }
+  return (
+    <>
+      <Box
+        className={cx(
+          'rounded-3 border-1 border-gray-7 mb-2 mr-4 flex w-full flex-row items-start gap-0 md:mb-5 md:min-h-[400px] md:flex-row-reverse md:items-start',
+          'flex-auto',
+        )}
+      >
+        <DataList.Root className="w-full p-2 md:px-4 md:py-5">
+          <DataList.Item align="start" className="flex flex-col gap-0">
+            <DataList.Label>
+              <Text size="1">
+                <Code variant="ghost">Status</Code>
+              </Text>
+            </DataList.Label>
+            <DataList.Value>
+              <Text size={{ initial: '1', md: '7' }} weight="medium">
+                {isLoadingMore // ? 'loading' : isReachingEnd ? 'no more' :''
+                  ? info.loading.text
+                  : error
+                    ? info.error.text
+                    : info.success.text}
+              </Text>
+            </DataList.Value>
+          </DataList.Item>
+          <DataList.Item align="start" className="flex flex-col gap-0">
+            <DataList.Label>
+              <Text size="1">
+                <Code variant="ghost">&nbsp;</Code>
+              </Text>
+            </DataList.Label>
+            <DataList.Value>
+              <Text
+                as="p"
+                className="line-clamp-3"
+                mt="2"
+                size={{ initial: '3', md: '5' }}
+                weight="regular"
+              >
+                {isLoadingMore // ? 'loading' : isReachingEnd ? 'no more' :''
+                  ? info.loading.cta
+                  : error
+                    ? info.error.cta
+                    : info.success.cta}
+              </Text>
+            </DataList.Value>
+          </DataList.Item>
+        </DataList.Root>
+        <Inset
+          className={cx(
+            'rounded-3 relative h-full',
+            'h-[275px] w-[164px] min-w-[164px] max-w-[164px]',
+            'md:size-full md:max-w-[308px]',
+            // 'md:h-[450px] md:w-[500px]',
+            // 'md:border-1 md:border-gray-7 ',
+            '',
+          )}
+          clip="border-box"
+          side={{ initial: 'all', md: 'all' }}
+        >
+          <Image
+            {...image}
+            alt={``}
+            className={cx(
+              'md:max-w-96',
+              !isLoadingMore && !error && 'grayscale',
+              '',
+            )}
+            placeholder="blur"
+            role="img"
+            tabIndex={-1}
+          />
+        </Inset>
+      </Box>
+    </>
+  )
+}
 
 function DataItems() {
   const refContainer = useRef<HTMLDivElement>(null)
@@ -512,6 +495,23 @@ function DataItems() {
       />
     </Virtualizer>
   )
+}
+
+function getArrayCountOfOverage(arr: string[], max = 4) {
+  return arr.length > max && arr.length - (max + 1) > 0
+    ? `+ ${arr.length - (max + 1)} more`
+    : ``
+}
+
+/**
+ * @todo(js) well this could be better, lol
+ */
+function getArrayFirstX(arr: string[], max = 4) {
+  if (arr.length === 0 || !arr) return []
+  return arr.map((genre, i) => {
+    if (i > max) return
+    return _title(genre)
+  })
 }
 
 function MusicClient() {

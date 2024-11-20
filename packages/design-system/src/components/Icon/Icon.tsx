@@ -82,7 +82,6 @@ import {
 
 import { cx } from '../../utils/cx'
 // import { Slot } from '@radix-ui/react-slot'
-
 import { IconProps } from './Icon.types'
 
 /**

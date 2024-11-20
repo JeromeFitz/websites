@@ -23,7 +23,6 @@ import { ArticleMain } from '@/app/playground/2024/_components/Article.Main'
 import { ContainerWithSidebar } from '@/app/playground/2024/_components/Container.Main'
 import { HeaderSidebar } from '@/app/playground/2024/_components/Header.Sidebar'
 // import { Notion as Blocks } from '@/components/Notion/index'
-
 import { socials } from '@/data/socials'
 
 const slug = '/contact'
@@ -55,6 +54,19 @@ export async function generateMetadata({ ...props }): Promise<Metadata> {
   const seo = await generateMetadataCustom({ data, pageData, segmentInfo })
 
   return pageData?.isPublished ? seo : is404Seo
+}
+
+export default async function Page(props) {
+  const revalidate = props?.revalidate || false
+  const { params } = props
+  const { catchAll } = await params
+  const segmentInfo = getSegmentInfo({
+    params: { catchAll },
+    revalidate,
+    SEGMENT,
+  })
+
+  return <Slug revalidate={revalidate} segmentInfo={segmentInfo} />
 }
 
 async function Slug({ revalidate, segmentInfo }) {
@@ -126,17 +138,4 @@ async function Slug({ revalidate, segmentInfo }) {
       </ArticleMain>
     </ContainerWithSidebar>
   )
-}
-
-export default async function Page(props) {
-  const revalidate = props?.revalidate || false
-  const { params } = props
-  const { catchAll } = await params
-  const segmentInfo = getSegmentInfo({
-    params: { catchAll },
-    revalidate,
-    SEGMENT,
-  })
-
-  return <Slug revalidate={revalidate} segmentInfo={segmentInfo} />
 }

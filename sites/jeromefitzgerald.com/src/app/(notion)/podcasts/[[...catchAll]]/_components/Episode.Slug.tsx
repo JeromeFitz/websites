@@ -54,112 +54,6 @@ const RELATIONS_SECONDARY = [
 
 const rollupsDisplayInCode = ['Season', 'Episode', 'Duration']
 
-function Rollups({ properties }) {
-  const {
-    dayOfMonthOrdinal,
-    dayOfWeek,
-    duration,
-    episode,
-    monthName,
-    season,
-    year,
-    // ...props
-  } = getEpisodeData(properties)
-  // console.dir(props)
-
-  const rollups = [
-    // {
-    //   id: 'Host',
-    //   count: 2,
-    //   items: hosts,
-    // },
-    { data: season, id: 'Season' },
-    { data: episode, id: 'Episode' },
-    {
-      data: `${dayOfWeek}, ${monthName} ${dayOfMonthOrdinal}, ${year}`,
-      id: 'Date',
-    },
-    {
-      data: duration,
-      id: 'Duration',
-    },
-  ]
-
-  return (
-    <GridRadix columns="12" gapX="4" gapY="8" mb="4" width="100%">
-      {rollups.map((rollup) => {
-        const isCode = rollupsDisplayInCode.includes(rollup.id)
-        const Component = isCode ? Code : Text
-        const ComponentProps = isCode ? { variant: 'ghost' } : {}
-        return (
-          <Box
-            // className="col-span-6 md:col-span-4"
-            gridColumn={{ initial: 'span 6 / span 6', md: 'span 4 / span 4' }}
-            key={`rollup-${rollup.id}`}
-          >
-            <Text className="uppercase">
-              <Strong>{rollup.id}</Strong>
-            </Text>
-            <UL>
-              {/* <Box asChild mb={{ initial: '2', md: '1' }}> */}
-              <LI>
-                {/* @todo(types) pass types better at Component/Props */}
-                {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-                {/* @ts-ignore */}
-                <Component {...ComponentProps}>{rollup.data}</Component>
-              </LI>
-              {/* </Box> */}
-            </UL>
-          </Box>
-        )
-      })}
-    </GridRadix>
-  )
-}
-
-function Links({ properties }) {
-  const { href, podcastTitle, spotifyId } = getEpisodeData(properties)
-  const [, segment, podcastSlug] = href.split('/')
-  const podcastUrl = `/${segment}/${podcastSlug}`
-  const spotifyUrl = `https://open.spotify.com/episode/${spotifyId}`
-
-  return (
-    <>
-      <Box my="4" py="4">
-        <Box my="2" py="2">
-          <Text className="uppercase" weight="bold">
-            <Strong>Listen</Strong>
-          </Text>
-          <Flex align="center" asChild>
-            <Anchor
-              className={cx(
-                'text-spotify-dark hover:text-spotify dark:text-spotify dark:hover:text-spotify-dark',
-              )}
-              href={spotifyUrl}
-            >
-              Spotify
-            </Anchor>
-          </Flex>
-        </Box>
-        <Box my="2" py="2">
-          <Text className="uppercase" weight="bold">
-            <Strong>Preview</Strong>
-          </Text>
-          <EmbedSpotify id={spotifyId} />
-        </Box>
-        <Box my="2" py="2">
-          <Text className="uppercase" weight="bold">
-            <Strong>Back to</Strong>
-          </Text>
-          <Flex align="center" asChild>
-            <Anchor href={podcastUrl}>{podcastTitle}</Anchor>
-          </Flex>
-        </Box>
-      </Box>
-    </>
-  )
-}
-
 // @todo(complexity) 11
 // eslint-disable-next-line complexity
 async function EpisodeSlug({ revalidate, segmentInfo }) {
@@ -252,6 +146,112 @@ async function EpisodeSlug({ revalidate, segmentInfo }) {
         </ArticleMain>
       </ContainerWithSidebar>
     </>
+  )
+}
+
+function Links({ properties }) {
+  const { href, podcastTitle, spotifyId } = getEpisodeData(properties)
+  const [, segment, podcastSlug] = href.split('/')
+  const podcastUrl = `/${segment}/${podcastSlug}`
+  const spotifyUrl = `https://open.spotify.com/episode/${spotifyId}`
+
+  return (
+    <>
+      <Box my="4" py="4">
+        <Box my="2" py="2">
+          <Text className="uppercase" weight="bold">
+            <Strong>Listen</Strong>
+          </Text>
+          <Flex align="center" asChild>
+            <Anchor
+              className={cx(
+                'text-spotify-dark hover:text-spotify dark:text-spotify dark:hover:text-spotify-dark',
+              )}
+              href={spotifyUrl}
+            >
+              Spotify
+            </Anchor>
+          </Flex>
+        </Box>
+        <Box my="2" py="2">
+          <Text className="uppercase" weight="bold">
+            <Strong>Preview</Strong>
+          </Text>
+          <EmbedSpotify id={spotifyId} />
+        </Box>
+        <Box my="2" py="2">
+          <Text className="uppercase" weight="bold">
+            <Strong>Back to</Strong>
+          </Text>
+          <Flex align="center" asChild>
+            <Anchor href={podcastUrl}>{podcastTitle}</Anchor>
+          </Flex>
+        </Box>
+      </Box>
+    </>
+  )
+}
+
+function Rollups({ properties }) {
+  const {
+    dayOfMonthOrdinal,
+    dayOfWeek,
+    duration,
+    episode,
+    monthName,
+    season,
+    year,
+    // ...props
+  } = getEpisodeData(properties)
+  // console.dir(props)
+
+  const rollups = [
+    // {
+    //   id: 'Host',
+    //   count: 2,
+    //   items: hosts,
+    // },
+    { data: season, id: 'Season' },
+    { data: episode, id: 'Episode' },
+    {
+      data: `${dayOfWeek}, ${monthName} ${dayOfMonthOrdinal}, ${year}`,
+      id: 'Date',
+    },
+    {
+      data: duration,
+      id: 'Duration',
+    },
+  ]
+
+  return (
+    <GridRadix columns="12" gapX="4" gapY="8" mb="4" width="100%">
+      {rollups.map((rollup) => {
+        const isCode = rollupsDisplayInCode.includes(rollup.id)
+        const Component = isCode ? Code : Text
+        const ComponentProps = isCode ? { variant: 'ghost' } : {}
+        return (
+          <Box
+            // className="col-span-6 md:col-span-4"
+            gridColumn={{ initial: 'span 6 / span 6', md: 'span 4 / span 4' }}
+            key={`rollup-${rollup.id}`}
+          >
+            <Text className="uppercase">
+              <Strong>{rollup.id}</Strong>
+            </Text>
+            <UL>
+              {/* <Box asChild mb={{ initial: '2', md: '1' }}> */}
+              <LI>
+                {/* @todo(types) pass types better at Component/Props */}
+                {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+                {/* @ts-ignore */}
+                <Component {...ComponentProps}>{rollup.data}</Component>
+              </LI>
+              {/* </Box> */}
+            </UL>
+          </Box>
+        )
+      })}
+    </GridRadix>
   )
 }
 

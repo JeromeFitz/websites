@@ -60,6 +60,35 @@ function CTA({ href, isDisabled = false }) {
   )
 }
 
+async function DataList__VenueIndividual({ id, title }) {
+  const item: PageObjectResponseVenue = await getPageDataFromNotion(id)
+  if (!item) return <DataList__VenueIndividualWithSkeleton title={title} />
+  const { properties } = item
+
+  const addressStreet = getPropertyTypeDataVenue(properties, 'Address.Street')
+  const addressCity = getPropertyTypeDataVenue(properties, 'Address.City')
+  const addressNeighborhood = getPropertyTypeDataVenue(
+    properties,
+    'Address.Neighborhood',
+  )
+  const addressState = getPropertyTypeDataVenue(properties, 'Address.State')?.name
+  const addressPostalCode = getPropertyTypeDataVenue(properties, 'Address.ZipCode')
+
+  const street = addressStreet
+  const city = `${addressCity}, ${addressState} ${addressPostalCode}`
+  const neighborhood = addressNeighborhood
+
+  return (
+    <DataList__VenueIndividualWithSkeleton
+      city={city}
+      isLoading={false}
+      neighborhood={neighborhood}
+      street={street}
+      title={title}
+    />
+  )
+}
+
 function DataList__VenueIndividualWithSkeleton({
   city = '',
   isLoading = true,
@@ -94,35 +123,6 @@ function DataList__VenueIndividualWithSkeleton({
         </Text>
       </DataList.Value>
     </DataList.Item>
-  )
-}
-
-async function DataList__VenueIndividual({ id, title }) {
-  const item: PageObjectResponseVenue = await getPageDataFromNotion(id)
-  if (!item) return <DataList__VenueIndividualWithSkeleton title={title} />
-  const { properties } = item
-
-  const addressStreet = getPropertyTypeDataVenue(properties, 'Address.Street')
-  const addressCity = getPropertyTypeDataVenue(properties, 'Address.City')
-  const addressNeighborhood = getPropertyTypeDataVenue(
-    properties,
-    'Address.Neighborhood',
-  )
-  const addressState = getPropertyTypeDataVenue(properties, 'Address.State')?.name
-  const addressPostalCode = getPropertyTypeDataVenue(properties, 'Address.ZipCode')
-
-  const street = addressStreet
-  const city = `${addressCity}, ${addressState} ${addressPostalCode}`
-  const neighborhood = addressNeighborhood
-
-  return (
-    <DataList__VenueIndividualWithSkeleton
-      city={city}
-      isLoading={false}
-      neighborhood={neighborhood}
-      street={street}
-      title={title}
-    />
   )
 }
 

@@ -8,31 +8,6 @@ import { Suspense } from 'react'
 
 import { getRelationTitle, RelationsItems, RelationsLoading } from './index'
 
-function RelationsWrapper({ children }) {
-  return (
-    <Grid columns={{ initial: '2', md: '3' }} gapX="3" gapY="6" width="100%">
-      {children}
-    </Grid>
-  )
-}
-function RelationsColumn({ children }) {
-  return <Box>{children}</Box>
-}
-function RelationsColumnTitle({ children }) {
-  return (
-    <Text className="text-gray-12 uppercase" weight="bold">
-      {children}
-    </Text>
-  )
-}
-function RelationsColumnList({ children }) {
-  return (
-    <Box asChild mt="1" py="2">
-      <ul className="list-inside">{children}</ul>
-    </Box>
-  )
-}
-
 function Relations({ id, relations }) {
   return (
     <RelationsWrapper>
@@ -54,6 +29,31 @@ function Relations({ id, relations }) {
         )
       })}
     </RelationsWrapper>
+  )
+}
+function RelationsColumn({ children }) {
+  return <Box>{children}</Box>
+}
+function RelationsColumnList({ children }) {
+  return (
+    <Box asChild mt="1" py="2">
+      <ul className="list-inside">{children}</ul>
+    </Box>
+  )
+}
+function RelationsColumnTitle({ children }) {
+  return (
+    <Text className="text-gray-12 uppercase" weight="bold">
+      {children}
+    </Text>
+  )
+}
+
+function RelationsWrapper({ children }) {
+  return (
+    <Grid columns={{ initial: '2', md: '3' }} gapX="3" gapY="6" width="100%">
+      {children}
+    </Grid>
   )
 }
 

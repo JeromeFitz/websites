@@ -51,6 +51,21 @@ export async function generateMetadata({ ...props }): Promise<Metadata> {
     : is404Seo
 }
 
+export default async function Page(props) {
+  const revalidate = props?.revalidate || false
+  const { params } = props
+  const { catchAll } = await params
+  const segmentInfo = getSegmentInfo({
+    params: { catchAll },
+    SEGMENT,
+  })
+
+  // if (segmentInfo.isIndex) {
+  //   return <Listing revalidate={revalidate} segmentInfo={segmentInfo} />
+  // }
+  return <Slug revalidate={revalidate} segmentInfo={segmentInfo} />
+}
+
 async function Slug({ revalidate, segmentInfo }) {
   const { isEnabled } = await draftMode()
 
@@ -74,19 +89,4 @@ async function Slug({ revalidate, segmentInfo }) {
   // const isUndefined = data?.page === undefined
   // if isObjectEmpty(data?.page)) return null
   return <MusicClient />
-}
-
-export default async function Page(props) {
-  const revalidate = props?.revalidate || false
-  const { params } = props
-  const { catchAll } = await params
-  const segmentInfo = getSegmentInfo({
-    params: { catchAll },
-    SEGMENT,
-  })
-
-  // if (segmentInfo.isIndex) {
-  //   return <Listing revalidate={revalidate} segmentInfo={segmentInfo} />
-  // }
-  return <Slug revalidate={revalidate} segmentInfo={segmentInfo} />
 }

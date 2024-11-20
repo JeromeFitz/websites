@@ -56,118 +56,6 @@ const styleIndividual = cx(
   '',
 )
 
-function Rollups({ properties }) {
-  const isPublished = false
-  const style = cx(
-    styleIndividual,
-    isPublished && 'transition-all duration-200',
-    isPublished && 'hover:text-accent-11 text-gray-12',
-  )
-
-  const {
-    dayOfMonthOrdinal,
-    dayOfWeek,
-    duration,
-    episode,
-    monthName,
-    season,
-    year,
-    // ...props
-  } = getEpisodeData(properties)
-  // console.dir(props)
-
-  const rollups = [
-    // {
-    //   id: 'Host',
-    //   count: 2,
-    //   items: hosts,
-    // },
-    { data: season, id: 'Season' },
-    { data: episode, id: 'Episode' },
-    {
-      data: `${dayOfWeek}, ${monthName} ${dayOfMonthOrdinal}, ${year}`,
-      id: 'Date',
-    },
-    {
-      data: duration,
-      id: 'Duration',
-    },
-  ]
-
-  return (
-    <>
-      <Box className="mb-4 grid w-full grid-cols-12 gap-x-4 gap-y-8">
-        {rollups.map((rollup) => {
-          const key = `rollup-${rollup.id}`
-          return (
-            <Box className="col-span-6 md:col-span-4" key={key}>
-              <Text className="pb-3 font-extrabold uppercase tracking-tight">
-                <Strong>{rollup.id}</Strong>
-              </Text>
-              <ul>
-                <li className={'mb-2 md:mb-0.5'}>
-                  <Text className={style}>{rollup.data}</Text>
-                </li>
-              </ul>
-            </Box>
-          )
-        })}
-      </Box>
-    </>
-  )
-}
-
-function Links({ properties }) {
-  const { href, podcastTitle, spotifyId } = getEpisodeData(properties)
-  const [, segment, podcastSlug] = href.split('/')
-  const podcastUrl = `/${segment}/${podcastSlug}`
-  const spotifyUrl = `https://open.spotify.com/episode/${spotifyId}`
-  const isPublished = true
-  const style = cx(
-    styleIndividual,
-    isPublished && 'transition-all duration-200',
-    // isPublished && 'text-gray-12 hover:text-accent-11'
-  )
-  return (
-    <>
-      <Box className="my-4 py-4">
-        <Box className="my-2 py-2">
-          <Text className="pb-3 font-extrabold uppercase tracking-tight">
-            <Strong>Listen</Strong>
-          </Text>
-          <Text className={style}>
-            <Anchor
-              className={cx(
-                style,
-                'text-spotify-dark hover:text-spotify dark:text-spotify dark:hover:text-spotify-dark',
-              )}
-              href={spotifyUrl}
-            >
-              Spotify
-            </Anchor>
-          </Text>
-        </Box>
-        <Box className="my-2 py-2">
-          <Text className="pb-3 font-extrabold uppercase tracking-tight">
-            <Strong>Preview</Strong>
-          </Text>
-          <EmbedSpotify id={spotifyId} />
-        </Box>
-        <Box className="my-2 py-2">
-          <Text className="pb-3 font-extrabold uppercase tracking-tight">
-            <Strong>Back to</Strong>
-          </Text>
-          <Text className={style}>
-            <Anchor className={cx(style)} href={podcastUrl}>
-              {podcastTitle}
-            </Anchor>
-          </Text>
-        </Box>
-      </Box>
-    </>
-  )
-}
-
 async function EpisodeSlug({ revalidate, segmentInfo }) {
   const { isEnabled } = await draftMode()
   // console.dir(`EpisodeSlug: segmentInfo => draft: ${isEnabled ? 'y' : 'n'}`)
@@ -227,6 +115,118 @@ async function EpisodeSlug({ revalidate, segmentInfo }) {
           <UpcomingEpisodes properties={properties} />
         </SectionContent>
       </SectionWrapper> */}
+    </>
+  )
+}
+
+function Links({ properties }) {
+  const { href, podcastTitle, spotifyId } = getEpisodeData(properties)
+  const [, segment, podcastSlug] = href.split('/')
+  const podcastUrl = `/${segment}/${podcastSlug}`
+  const spotifyUrl = `https://open.spotify.com/episode/${spotifyId}`
+  const isPublished = true
+  const style = cx(
+    styleIndividual,
+    isPublished && 'transition-all duration-200',
+    // isPublished && 'text-gray-12 hover:text-accent-11'
+  )
+  return (
+    <>
+      <Box className="my-4 py-4">
+        <Box className="my-2 py-2">
+          <Text className="pb-3 font-extrabold uppercase tracking-tight">
+            <Strong>Listen</Strong>
+          </Text>
+          <Text className={style}>
+            <Anchor
+              className={cx(
+                style,
+                'text-spotify-dark hover:text-spotify dark:text-spotify dark:hover:text-spotify-dark',
+              )}
+              href={spotifyUrl}
+            >
+              Spotify
+            </Anchor>
+          </Text>
+        </Box>
+        <Box className="my-2 py-2">
+          <Text className="pb-3 font-extrabold uppercase tracking-tight">
+            <Strong>Preview</Strong>
+          </Text>
+          <EmbedSpotify id={spotifyId} />
+        </Box>
+        <Box className="my-2 py-2">
+          <Text className="pb-3 font-extrabold uppercase tracking-tight">
+            <Strong>Back to</Strong>
+          </Text>
+          <Text className={style}>
+            <Anchor className={cx(style)} href={podcastUrl}>
+              {podcastTitle}
+            </Anchor>
+          </Text>
+        </Box>
+      </Box>
+    </>
+  )
+}
+
+function Rollups({ properties }) {
+  const isPublished = false
+  const style = cx(
+    styleIndividual,
+    isPublished && 'transition-all duration-200',
+    isPublished && 'hover:text-accent-11 text-gray-12',
+  )
+
+  const {
+    dayOfMonthOrdinal,
+    dayOfWeek,
+    duration,
+    episode,
+    monthName,
+    season,
+    year,
+    // ...props
+  } = getEpisodeData(properties)
+  // console.dir(props)
+
+  const rollups = [
+    // {
+    //   id: 'Host',
+    //   count: 2,
+    //   items: hosts,
+    // },
+    { data: season, id: 'Season' },
+    { data: episode, id: 'Episode' },
+    {
+      data: `${dayOfWeek}, ${monthName} ${dayOfMonthOrdinal}, ${year}`,
+      id: 'Date',
+    },
+    {
+      data: duration,
+      id: 'Duration',
+    },
+  ]
+
+  return (
+    <>
+      <Box className="mb-4 grid w-full grid-cols-12 gap-x-4 gap-y-8">
+        {rollups.map((rollup) => {
+          const key = `rollup-${rollup.id}`
+          return (
+            <Box className="col-span-6 md:col-span-4" key={key}>
+              <Text className="pb-3 font-extrabold uppercase tracking-tight">
+                <Strong>{rollup.id}</Strong>
+              </Text>
+              <ul>
+                <li className={'mb-2 md:mb-0.5'}>
+                  <Text className={style}>{rollup.data}</Text>
+                </li>
+              </ul>
+            </Box>
+          )
+        })}
+      </Box>
     </>
   )
 }

@@ -2,12 +2,6 @@ import { getPropertyTypeData } from 'next-notion/utils/index'
 
 import type { PropertiesPodcast } from '@/app/(notion)/_config/index'
 
-/**
- * @todo(typescript) way to do this through extraction?
- */
-function getPropertyTypeDataPodcast(properties, property: keyof PropertiesPodcast) {
-  return getPropertyTypeData(properties, property)
-}
 function getPodcastData(properties) {
   // if (!properties) return {}
 
@@ -51,6 +45,12 @@ function getPodcastData(properties) {
   }
 
   return data
+}
+/**
+ * @todo(typescript) way to do this through extraction?
+ */
+function getPropertyTypeDataPodcast(properties, property: keyof PropertiesPodcast) {
+  return getPropertyTypeData(properties, property)
 }
 
 export { getPodcastData, getPropertyTypeDataPodcast }

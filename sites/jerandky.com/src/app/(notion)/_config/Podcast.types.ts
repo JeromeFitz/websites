@@ -16,6 +16,9 @@ import type {
 } from '@notionhq/client/build/src/api-endpoints'
 import type { Spread } from 'next-notion/Notion.types'
 
+type PageObjectResponsePodcast = Spread<
+  [PageObjectResponse, { properties: PropertiesPodcast }]
+>
 interface PropertiesPodcast {
   //
   Author: RichTextPropertyItemObjectResponse
@@ -67,8 +70,5 @@ interface PropertiesPodcast {
   Title: TitlePropertyItemObjectResponse
   Type: SelectPropertyItemObjectResponse
 }
-type PageObjectResponsePodcast = Spread<
-  [PageObjectResponse, { properties: PropertiesPodcast }]
->
 
 export type { PageObjectResponsePodcast, PropertiesPodcast }

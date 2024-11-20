@@ -9,6 +9,8 @@ import _last from 'lodash/last.js'
 import { useCallback, useMemo, useRef } from 'react'
 import useSWRInfinite from 'swr/infinite'
 
+type PageFetcher<Page, Key extends any[]> = (...params: Key) => Page | Promise<Page>
+
 type PageKeyMaker<Page, Key extends any[]> = (
   index: number,
   previousPageData?: Page,
@@ -25,8 +27,6 @@ interface UseSWRInfinitePagesConfig<Page extends object> {
   dataPath: keyof Page | string[]
   limit?: number
 } // & SWRInfiniteConfiguration<Page>
-
-type PageFetcher<Page, Key extends any[]> = (...params: Key) => Page | Promise<Page>
 
 /**
  * @todo(types) SWRInfiniteMutatorOptions

@@ -9,8 +9,8 @@ import {
 import { isObjectEmpty } from '@jeromefitz/utils'
 
 import _orderBy from 'lodash/orderBy.js'
-import { NextRequest, NextResponse } from 'next/server.js'
 import { notion } from 'next-notion/helper'
+import { NextRequest, NextResponse } from 'next/server.js'
 import { Podcast } from 'podcast'
 
 // import type { PropertiesEpisode, PropertiesPodcast } from '@/app/(notion)/_config/index'

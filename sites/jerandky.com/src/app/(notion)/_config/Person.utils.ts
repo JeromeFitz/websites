@@ -2,9 +2,6 @@ import { getPropertyTypeData } from 'next-notion/utils'
 
 import type { PropertiesPerson } from '../_config'
 
-function getPropertyTypeDataPerson(properties, property: keyof PropertiesPerson) {
-  return getPropertyTypeData(properties, property)
-}
 function getPersonData(properties) {
   // if (!properties) return {}
   const data = {
@@ -17,6 +14,9 @@ function getPersonData(properties) {
     title: getPropertyTypeDataPerson(properties, 'Title'),
   }
   return data
+}
+function getPropertyTypeDataPerson(properties, property: keyof PropertiesPerson) {
+  return getPropertyTypeData(properties, property)
 }
 
 export { getPersonData, getPropertyTypeDataPerson }

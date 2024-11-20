@@ -16,81 +16,6 @@ import { CreditsItems } from './Credits.Items'
 import { CreditsLoading } from './Credits.Loading'
 import { getRelationTitle } from './Credits.utils'
 
-function RelationContainerTitle({ children, className = '' }) {
-  return (
-    <Box
-      className={cx(
-        'relative h-16 w-full flex-none p-4',
-        'px-5 pb-8 pt-5',
-        'border-gray-7 border-y-1',
-        className,
-      )}
-    >
-      <Box className={cx('contents')}>
-        <Box className={cx('flex flex-row items-center justify-start gap-4')}>
-          {/* <InfoCircledIcon /> */}
-          <Text className="font-medium capitalize" size={{ initial: '3', md: '5' }}>
-            {children}
-          </Text>
-        </Box>
-      </Box>
-    </Box>
-  )
-}
-
-function RelationContainerContent({ children }) {
-  return (
-    <Box
-      className={cx(
-        'relative flex h-min w-full flex-none flex-col flex-nowrap content-start items-start justify-start gap-4 overflow-visible px-5 py-8',
-        'bg-accentA-2',
-        // 'border-gray-7 border-1 border-l-0 border-t-0',
-        'md:h-full',
-      )}
-    >
-      {children}
-    </Box>
-  )
-}
-
-function RelationContainer({ children }) {
-  return (
-    <Box
-      className={cx(
-        'relative flex h-auto w-[1px] flex-col flex-nowrap content-center items-stretch justify-start gap-0 overflow-hidden p-0',
-        'min-w-[300px]',
-        // 'flex-[1_0_0px]',
-        'flex-auto',
-      )}
-    >
-      {children}
-    </Box>
-  )
-}
-
-/**
- * @todo(css) figure out grid for this better please...
- */
-function RelationsContainer({ children }) {
-  return (
-    <Box
-      className={cx(
-        // 'bg-accent-2',
-        'size-full items-stretch',
-        'rounded-3 relative z-10 flex h-min w-full flex-row content-start items-start justify-start gap-0 overflow-hidden p-0',
-        // 'flex-none flex-row flex-nowrap',
-        'flex-row flex-wrap',
-        'border-1 border-gray-7',
-        // 'border-t-1 rounded-t-[0]',
-        'rounded-t-[0] border-t-0',
-      )}
-      id="container--credits--content"
-    >
-      {children}
-    </Box>
-  )
-}
-
 function Credits({ id, relations }) {
   let relationsSize = 0
   let relationAddition = 0
@@ -150,6 +75,81 @@ function Credits({ id, relations }) {
           </RelationContainer>
         )}
       </RelationsContainer>
+    </Box>
+  )
+}
+
+function RelationContainer({ children }) {
+  return (
+    <Box
+      className={cx(
+        'relative flex h-auto w-[1px] flex-col flex-nowrap content-center items-stretch justify-start gap-0 overflow-hidden p-0',
+        'min-w-[300px]',
+        // 'flex-[1_0_0px]',
+        'flex-auto',
+      )}
+    >
+      {children}
+    </Box>
+  )
+}
+
+function RelationContainerContent({ children }) {
+  return (
+    <Box
+      className={cx(
+        'relative flex h-min w-full flex-none flex-col flex-nowrap content-start items-start justify-start gap-4 overflow-visible px-5 py-8',
+        'bg-accentA-2',
+        // 'border-gray-7 border-1 border-l-0 border-t-0',
+        'md:h-full',
+      )}
+    >
+      {children}
+    </Box>
+  )
+}
+
+function RelationContainerTitle({ children, className = '' }) {
+  return (
+    <Box
+      className={cx(
+        'relative h-16 w-full flex-none p-4',
+        'px-5 pb-8 pt-5',
+        'border-gray-7 border-y-1',
+        className,
+      )}
+    >
+      <Box className={cx('contents')}>
+        <Box className={cx('flex flex-row items-center justify-start gap-4')}>
+          {/* <InfoCircledIcon /> */}
+          <Text className="font-medium capitalize" size={{ initial: '3', md: '5' }}>
+            {children}
+          </Text>
+        </Box>
+      </Box>
+    </Box>
+  )
+}
+
+/**
+ * @todo(css) figure out grid for this better please...
+ */
+function RelationsContainer({ children }) {
+  return (
+    <Box
+      className={cx(
+        // 'bg-accent-2',
+        'size-full items-stretch',
+        'rounded-3 relative z-10 flex h-min w-full flex-row content-start items-start justify-start gap-0 overflow-hidden p-0',
+        // 'flex-none flex-row flex-nowrap',
+        'flex-row flex-wrap',
+        'border-1 border-gray-7',
+        // 'border-t-1 rounded-t-[0]',
+        'rounded-t-[0] border-t-0',
+      )}
+      id="container--credits--content"
+    >
+      {children}
     </Box>
   )
 }
