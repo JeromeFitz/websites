@@ -154,6 +154,10 @@
       "matchUpdateTypes": ["major"],
       "labels": ["📦 Dependencies 💥 Breaking 💥", "🛑️ Do Not Merge"],
       "reviewers": ["JeromeFitz"]
+    },
+    {
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "automerge": true
     }
   ],
   "prBodyColumns": ["Package", "Update", "Type", "Change"],
