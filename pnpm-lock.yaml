@@ -54,8 +54,8 @@ importers:
         specifier: 2.0.1
         version: 2.0.1
       '@manypkg/cli':
-        specifier: 0.22.0
-        version: 0.22.0
+        specifier: 0.23.0
+        version: 0.23.0
       '@types/is-ci':
         specifier: 3.0.4
         version: 3.0.4
@@ -2502,8 +2502,8 @@ packages:
     peerDependencies:
       react: ^18.x || ^19.x
 
-  '@manypkg/cli@0.22.0':
-    resolution: {integrity: sha512-HwONx0Pr9ucehlrMvFMSuztLiKfwPYkjRDc0ymL5RiGYBk1slX8k3RWy+F01f1T+JLbImthSGMwY04Ojt20nTA==}
+  '@manypkg/cli@0.23.0':
+    resolution: {integrity: sha512-9N0GuhUZhrDbOS2rer1/ZWaO8RvPOUI+kKTwlq74iQXomL+725E9Vfvl9U64FYwnLkQCxCmPZ9nBs/u8JwFnSw==}
     engines: {node: '>=18.0.0'}
     hasBin: true
 
@@ -8070,9 +8070,6 @@ packages:
   picocolors@1.0.1:
     resolution: {integrity: sha512-anP1Z8qwhkbmu7MFP5iTt+wQKXgwzf7zTyGlcdzabySa9vd0Xt392U0rVmz9poOaBj0uHJKyyo9/upk0HrEQew==}
 
-  picocolors@1.1.0:
-    resolution: {integrity: sha512-TQ92mBOW0l3LeMeyLV6mzy/kWr8lkd/hp3mTg7wYK7zJhuBStmGMBG0BdeDZS/dZx1IukaX6Bk11zcln25o1Aw==}
-
   picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
 
@@ -11656,7 +11653,7 @@ snapshots:
     dependencies:
       react: 19.0.0-rc-66855b96-20241106
 
-  '@manypkg/cli@0.22.0':
+  '@manypkg/cli@0.23.0':
     dependencies:
       '@manypkg/get-packages': 2.2.1
       detect-indent: 6.1.0
@@ -11664,7 +11661,7 @@ snapshots:
       p-limit: 2.3.0
       package-json: 10.0.1
       parse-github-url: 1.0.2
-      picocolors: 1.1.0
+      picocolors: 1.1.1
       sembear: 0.7.0
       semver: 7.5.4
       tinyexec: 0.3.1
@@ -17946,8 +17943,6 @@ snapshots:
   performance-now@2.1.0: {}
 
   picocolors@1.0.1: {}
-
-  picocolors@1.1.0: {}
 
   picocolors@1.1.1: {}
 
