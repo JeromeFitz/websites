@@ -61,23 +61,17 @@
       "@semantic-release/commit-analyzer@13.0.0": "patches/@semantic-release__commit-analyzer@13.0.0.patch"
     },
     "overrides": {
-      "@typescript-eslint/typescript-estree": "^8.10.0",
-      "body-parser": "^1.20.3",
-      "cookie": "^0.7.0",
+      "@typescript-eslint/typescript-estree": "^8.15.0",
       "elliptic": "^6.5.7",
-      "express": "^4.20.0",
+      "express": "^4.21.1",
       "micromatch": "^4.0.8",
-      "path-to-regexp": "^0.1.10",
       "unfetch": "4.2.0",
-      "rollup": "^4.22.4",
       "semver@^5.0.0": "5.7.2",
       "semver@^6.0.0": "6.3.1",
-      "semver@^7.0.0": "7.5.4",
-      "send": "^0.19.0",
-      "serve-static": "^1.16.0",
+      "semver@^7.0.0": "7.6.3",
       "sharp": "0.32.6",
       "tough-cookie": "4.1.4",
-      "ws": "^8.17.1"
+      "ws": "^8.18.0"
     }
   }
 }
