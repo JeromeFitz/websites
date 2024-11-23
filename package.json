@@ -62,6 +62,7 @@
     },
     "overrides": {
       "@typescript-eslint/typescript-estree": "^8.15.0",
+      "cross-spawn": "^7.0.6",
       "elliptic": "^6.6.1",
       "express": "^4.21.1",
       "micromatch": "^4.0.8",
