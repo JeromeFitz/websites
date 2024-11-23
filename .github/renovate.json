@@ -84,8 +84,6 @@
       "matchDepTypes": ["dependencies"]
     },
     {
-      "automerge": false,
-      "automergeType": "branch",
       "commitMessagePrefix": "📦  (deps-dev)",
       "excludePackageNames": [],
       "groupName": "storybook 🧪 ",
@@ -94,8 +92,6 @@
       "matchPackagePatterns": ["^@storybook/"]
     },
     {
-      "automerge": false,
-      "automergeType": "branch",
       "commitMessagePrefix": "📦  (deps-dev)",
       "excludePackageNames": [],
       "groupName": "testing-library 🧪 ",
@@ -104,8 +100,6 @@
       "matchPackagePatterns": ["^@testing-library/"]
     },
     {
-      "automerge": false,
-      "automergeType": "branch",
       "commitMessagePrefix": "📦  (deps-dev)",
       "commitMessageSuffix": "[b]",
       "excludePackageNames": [],
@@ -115,8 +109,6 @@
       "matchPackagePatterns": ["^@playwright/"]
     },
     {
-      "automerge": false,
-      "automergeType": "branch",
       "commitMessagePrefix": "📦  (deps-dev)",
       "excludePackageNames": [],
       "groupName": "jest 🃏 ",
@@ -156,8 +148,10 @@
       "reviewers": ["JeromeFitz"]
     },
     {
-      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
-      "automerge": true
+      "automerge": true,
+      "automergeStrategy": "squash",
+      "automergeType": "pr",
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"]
     }
   ],
   "prBodyColumns": ["Package", "Update", "Type", "Change"],
