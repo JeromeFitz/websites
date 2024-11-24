@@ -138,6 +138,6 @@
     "@types/react-headroom": "3.2.3",
     "@types/smoothscroll-polyfill": "0.3.4",
     "prop-types": "15.8.1",
-    "tailwind-merge": "2.5.4"
+    "tailwind-merge": "2.5.5"
   }
 }
