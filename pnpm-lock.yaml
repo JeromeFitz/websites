@@ -239,8 +239,8 @@ importers:
         specifier: workspace:*
         version: link:../tailwind-config
       '@mantine/hooks':
-        specifier: 7.14.2
-        version: 7.14.2(react@19.0.0-rc-66855b96-20241106)
+        specifier: 7.14.3
+        version: 7.14.3(react@19.0.0-rc-66855b96-20241106)
       next:
         specifier: 15.0.3
         version: 15.0.3(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
@@ -602,8 +602,8 @@ importers:
         specifier: 3.0.8
         version: 3.0.8(lodash@4.17.21)
       '@mantine/hooks':
-        specifier: 7.14.2
-        version: 7.14.2(react@19.0.0-rc-66855b96-20241106)
+        specifier: 7.14.3
+        version: 7.14.3(react@19.0.0-rc-66855b96-20241106)
       '@notionhq/client':
         specifier: 2.2.15
         version: 2.2.15
@@ -912,8 +912,8 @@ importers:
         specifier: 3.0.8
         version: 3.0.8(lodash@4.17.21)
       '@mantine/hooks':
-        specifier: 7.14.2
-        version: 7.14.2(react@19.0.0-rc-66855b96-20241106)
+        specifier: 7.14.3
+        version: 7.14.3(react@19.0.0-rc-66855b96-20241106)
       '@notionhq/client':
         specifier: 2.2.15
         version: 2.2.15
@@ -2492,8 +2492,8 @@ packages:
   '@juggle/resize-observer@3.4.0':
     resolution: {integrity: sha512-dfLbk+PwWvFzSxwk3n5ySL0hfBog779o8h68wK/7/APo/7cgyWp5jcXockbxdk5kFRkbeXWm4Fbi9FrdN381sA==}
 
-  '@mantine/hooks@7.14.2':
-    resolution: {integrity: sha512-WN0bEJHw2Lh/2PLqik8rqITJRZAu6A1FK6f+H0SNTrQuWYBPSHdNTqM8hntDnhpM/2mZ52t3VWYgvNVGczLxIw==}
+  '@mantine/hooks@7.14.3':
+    resolution: {integrity: sha512-cU3R9b8GLs6aCvpsVC56ZOOJCUIoDqX3RcLWkcfpA5a47LjWa/rzegP4YWfNW6/E9vodPJT4AEbYXVffYlyNwA==}
     peerDependencies:
       react: ^18.x || ^19.x
 
@@ -11625,7 +11625,7 @@ snapshots:
 
   '@juggle/resize-observer@3.4.0': {}
 
-  '@mantine/hooks@7.14.2(react@19.0.0-rc-66855b96-20241106)':
+  '@mantine/hooks@7.14.3(react@19.0.0-rc-66855b96-20241106)':
     dependencies:
       react: 19.0.0-rc-66855b96-20241106
 
