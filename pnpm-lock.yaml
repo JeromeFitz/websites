@@ -43,8 +43,8 @@ importers:
         specifier: 3.0.12
         version: 3.0.12(lodash@4.17.21)
       '@jeromefitz/semantic':
-        specifier: 11.0.8
-        version: 11.0.8(@jeromefitz/conventional-gitmoji@4.0.13(lodash@4.17.21))(typescript@5.7.2)
+        specifier: 11.0.9
+        version: 11.0.9(@jeromefitz/conventional-gitmoji@4.0.13(lodash@4.17.21))(typescript@5.7.2)
       '@jeromefitz/tsconfig':
         specifier: 2.0.1
         version: 2.0.1
@@ -2367,8 +2367,8 @@ packages:
     peerDependencies:
       lodash: ^4.17.21
 
-  '@jeromefitz/semantic@11.0.8':
-    resolution: {integrity: sha512-G6R1OrBUAhjKfpORsEGSbWL1JOh4oTtN0A+WeCP63tob+Luj15y5bolqCIun+LMM2tYXWvz/RXwFTnYNsPmo6Q==}
+  '@jeromefitz/semantic@11.0.9':
+    resolution: {integrity: sha512-v1FxSRLvztVx3/Z4SiHSO5aHuDYzBG9tri/sb5s3k0PL1X+uNOWuU3H5vmn7zxmW1/ttTYYWR3xuJgb0Yi5snA==}
     engines: {node: '>=20'}
     peerDependencies:
       '@jeromefitz/conventional-gitmoji': ^4.0.0
@@ -9491,10 +9491,6 @@ packages:
     resolution: {integrity: sha512-n1cw8k1k0x4pgA2+9XrOkFydTerNcJ1zWCO5Nn9scWHTD+5tp8dghT2x1uduQePZTZgd3Tupf+x9BxJjeJi77Q==}
     engines: {node: '>=14.0.0'}
 
-  title@4.0.0:
-    resolution: {integrity: sha512-HtJL7yozZem9ufiWnwcftBpbNAO+phHMfao8CS4QLON7HzjyDRlf7qE9SXna6/749ZzpEsBZHy+MmY/GOS4i6g==}
-    hasBin: true
-
   title@4.0.1:
     resolution: {integrity: sha512-xRnPkJx9nvE5MF6LkB5e8QJjE2FW8269wTu/LQdf7zZqBgPly0QJPf/CWAo7srj5so4yXfoLEdCFgurlpi47zg==}
     hasBin: true
@@ -11395,14 +11391,14 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@jeromefitz/semantic@11.0.8(@jeromefitz/conventional-gitmoji@4.0.13(lodash@4.17.21))(typescript@5.7.2)':
+  '@jeromefitz/semantic@11.0.9(@jeromefitz/conventional-gitmoji@4.0.13(lodash@4.17.21))(typescript@5.7.2)':
     dependencies:
       '@jeromefitz/conventional-gitmoji': 4.0.13(lodash@4.17.21)
       '@semantic-release/commit-analyzer': 13.0.0(patch_hash=4ldj247mh3etpypyayklcqtkvm)(semantic-release@24.2.0(typescript@5.7.2))
       '@semantic-release/git': 10.0.1(semantic-release@24.2.0(typescript@5.7.2))
       semantic-release: 24.2.0(typescript@5.7.2)
       semantic-release-commit-filter: 1.0.2
-      title: 4.0.0
+      title: 4.0.1
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -19407,12 +19403,6 @@ snapshots:
   tinyrainbow@1.2.0: {}
 
   tinyspy@3.0.2: {}
-
-  title@4.0.0:
-    dependencies:
-      arg: 5.0.2
-      chalk: 5.3.0
-      clipboardy: 4.0.0
 
   title@4.0.1:
     dependencies:
