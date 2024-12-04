@@ -343,8 +343,8 @@ importers:
         specifier: 10.4.0
         version: 10.4.0
       node-emoji:
-        specifier: 2.1.3
-        version: 2.1.3
+        specifier: 2.2.0
+        version: 2.2.0
     devDependencies:
       '@date-fns/tz':
         specifier: 1.2.0
@@ -7681,8 +7681,8 @@ packages:
     resolution: {integrity: sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ==}
     engines: {node: '>=10.5.0'}
 
-  node-emoji@2.1.3:
-    resolution: {integrity: sha512-E2WEOVsgs7O16zsURJ/eH8BqhF029wGpEOnv7Urwdo2wmQanOACwJQh0devF9D9RhoZru0+9JXIS0dBXIAz+lA==}
+  node-emoji@2.2.0:
+    resolution: {integrity: sha512-Z3lTE9pLaJF47NyMhd4ww1yFTAP8YhYI8SleJiHzM46Fgpm5cnNzSl9XfzFNqbaz+VlJrIj3fXQ4DeN1Rjm6cw==}
     engines: {node: '>=18'}
 
   node-fetch@2.6.12:
@@ -17448,7 +17448,7 @@ snapshots:
       cli-highlight: 2.1.11
       cli-table3: 0.6.5
       marked: 12.0.2
-      node-emoji: 2.1.3
+      node-emoji: 2.2.0
       supports-hyperlinks: 3.0.0
 
   marked@12.0.2: {}
@@ -17634,7 +17634,7 @@ snapshots:
 
   node-domexception@1.0.0: {}
 
-  node-emoji@2.1.3:
+  node-emoji@2.2.0:
     dependencies:
       '@sindresorhus/is': 4.6.0
       char-regex: 1.0.2
