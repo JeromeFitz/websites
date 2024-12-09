@@ -42,7 +42,7 @@
     "@types/is-ci": "3.0.4",
     "@types/lodash": "4.17.13",
     "@types/node": "20.17.9",
-    "ccommit": "3.0.8",
+    "ccommit": "3.0.9",
     "concurrently": "9.1.0",
     "dotenv": "16.4.7",
     "husky": "9.1.7",
