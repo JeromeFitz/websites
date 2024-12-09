@@ -806,8 +806,8 @@ importers:
         specifier: 3.2.1
         version: 3.2.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react-use:
-        specifier: 17.5.1
-        version: 17.5.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        specifier: 17.6.0
+        version: 17.6.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react-wrap-balancer:
         specifier: 1.1.1
         version: 1.1.1(react@19.0.0)
@@ -1119,8 +1119,8 @@ importers:
         specifier: 3.2.1
         version: 3.2.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react-use:
-        specifier: 17.5.1
-        version: 17.5.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        specifier: 17.6.0
+        version: 17.6.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react-wrap-balancer:
         specifier: 1.1.1
         version: 1.1.1(react@19.0.0)
@@ -8736,8 +8736,8 @@ packages:
       react: '*'
       tslib: '*'
 
-  react-use@17.5.1:
-    resolution: {integrity: sha512-LG/uPEVRflLWMwi3j/sZqR00nF6JGqTTDblkXK2nzXsIvij06hXl1V/MZIlwj1OKIQUtlh1l9jK8gLsRyCQxMg==}
+  react-use@17.6.0:
+    resolution: {integrity: sha512-OmedEScUMKFfzn1Ir8dBxiLLSOzhKe/dPZwVxcujweSj45aNM7BEGPb9BEVIgVEqEXx6f3/TsXzwIktNgUR02g==}
     peerDependencies:
       react: '*'
       react-dom: '*'
@@ -18548,12 +18548,12 @@ snapshots:
       react-dom: 19.0.0(react@19.0.0)
       swr: 2.2.5(react@19.0.0)
 
-  react-universal-interface@0.6.2(react@19.0.0)(tslib@2.6.2):
+  react-universal-interface@0.6.2(react@19.0.0)(tslib@2.7.0):
     dependencies:
       react: 19.0.0
-      tslib: 2.6.2
+      tslib: 2.7.0
 
-  react-use@17.5.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+  react-use@17.6.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:
       '@types/js-cookie': 2.2.7
       '@xobotyi/scrollbar-width': 1.9.5
@@ -18564,13 +18564,13 @@ snapshots:
       nano-css: 5.6.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
-      react-universal-interface: 0.6.2(react@19.0.0)(tslib@2.6.2)
+      react-universal-interface: 0.6.2(react@19.0.0)(tslib@2.7.0)
       resize-observer-polyfill: 1.5.1
       screenfull: 5.2.0
       set-harmonic-interval: 1.0.1
       throttle-debounce: 3.0.1
       ts-easing: 0.2.0
-      tslib: 2.6.2
+      tslib: 2.7.0
 
   react-wrap-balancer@1.1.1(react@19.0.0):
     dependencies:
