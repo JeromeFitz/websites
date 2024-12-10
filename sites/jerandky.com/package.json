@@ -91,7 +91,6 @@
     "date-fns": "4.1.0",
     "fast-json-stable-stringify": "2.1.0",
     "fathom-client": "3.7.2",
-    "focus-trap-react": "10.3.1",
     "framer-motion": "11.13.3",
     "github-slugger": "2.0.0",
     "immer": "10.1.1",
@@ -137,7 +136,6 @@
     "@types/ramda": "0.30.2",
     "@types/react-headroom": "3.2.3",
     "@types/smoothscroll-polyfill": "0.3.4",
-    "prop-types": "15.8.1",
     "tailwind-merge": "2.5.5"
   }
 }
