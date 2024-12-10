@@ -51,9 +51,6 @@ importers:
       '@manypkg/cli':
         specifier: 0.23.0
         version: 0.23.0
-      '@types/is-ci':
-        specifier: 3.0.4
-        version: 3.0.4
       '@types/lodash':
         specifier: 4.17.13
         version: 4.17.13
@@ -4221,9 +4218,6 @@ packages:
 
   '@types/http-errors@2.0.4':
     resolution: {integrity: sha512-D0CFMMtydbJAegzOyHjtiKPLlvnm3iTZyZRSZoLq2mRhDdmLfIWOCYPfQJ4cu2erKghU++QvjcUjp/5h7hESpA==}
-
-  '@types/is-ci@3.0.4':
-    resolution: {integrity: sha512-AkCYCmwlXeuH89DagDCzvCAyltI2v9lh3U3DqSg/GrBYoReAaWwxfXCqMx9UV5MajLZ4ZFwZzV4cABGIxk2XRw==}
 
   '@types/istanbul-lib-coverage@2.0.6':
     resolution: {integrity: sha512-2QF/t/auWm0lsy8XtKVPG19v3sSOQlJe/YHZgfjb/KBBHOGSV+J2q/S671rcq9uTBrLAXmZpqJiaQbMT+zNU1w==}
@@ -13610,10 +13604,6 @@ snapshots:
   '@types/html-minifier-terser@6.1.0': {}
 
   '@types/http-errors@2.0.4': {}
-
-  '@types/is-ci@3.0.4':
-    dependencies:
-      ci-info: 3.9.0
 
   '@types/istanbul-lib-coverage@2.0.6': {}
 

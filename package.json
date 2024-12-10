@@ -39,7 +39,6 @@
     "@jeromefitz/semantic": "11.0.9",
     "@jeromefitz/tsconfig": "2.0.1",
     "@manypkg/cli": "0.23.0",
-    "@types/is-ci": "3.0.4",
     "@types/lodash": "4.17.13",
     "@types/node": "20.17.9",
     "ccommit": "3.0.8",
