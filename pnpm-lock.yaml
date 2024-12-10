@@ -35,7 +35,7 @@ importers:
         version: 5.0.0-canary.25(tailwindcss@3.4.16(ts-node@10.9.2(@types/node@20.17.9)(typescript@5.7.2)))(typescript@5.7.2)
       '@jeromefitz/lint-staged':
         specifier: 2.0.7
-        version: 2.0.7(is-ci@3.0.1)
+        version: 2.0.7(is-ci@4.1.0)
       '@jeromefitz/prettier-config':
         specifier: 2.0.13
         version: 2.0.13
@@ -51,9 +51,6 @@ importers:
       '@manypkg/cli':
         specifier: 0.23.0
         version: 0.23.0
-      '@types/is-ci':
-        specifier: 3.0.4
-        version: 3.0.4
       '@types/lodash':
         specifier: 4.17.13
         version: 4.17.13
@@ -73,8 +70,8 @@ importers:
         specifier: 9.1.7
         version: 9.1.7
       is-ci:
-        specifier: 3.0.1
-        version: 3.0.1
+        specifier: 4.1.0
+        version: 4.1.0
       lodash:
         specifier: 4.17.21
         version: 4.17.21
@@ -4222,9 +4219,6 @@ packages:
   '@types/http-errors@2.0.4':
     resolution: {integrity: sha512-D0CFMMtydbJAegzOyHjtiKPLlvnm3iTZyZRSZoLq2mRhDdmLfIWOCYPfQJ4cu2erKghU++QvjcUjp/5h7hESpA==}
 
-  '@types/is-ci@3.0.4':
-    resolution: {integrity: sha512-AkCYCmwlXeuH89DagDCzvCAyltI2v9lh3U3DqSg/GrBYoReAaWwxfXCqMx9UV5MajLZ4ZFwZzV4cABGIxk2XRw==}
-
   '@types/istanbul-lib-coverage@2.0.6':
     resolution: {integrity: sha512-2QF/t/auWm0lsy8XtKVPG19v3sSOQlJe/YHZgfjb/KBBHOGSV+J2q/S671rcq9uTBrLAXmZpqJiaQbMT+zNU1w==}
 
@@ -5106,6 +5100,10 @@ packages:
 
   ci-info@3.9.0:
     resolution: {integrity: sha512-NIxF55hv4nSqQswkAeiOi1r83xy8JldOFDTWiug55KBu9Jnblncd2U6ViHmYgHf01TPZS77NJBhBMKdWj9HQMQ==}
+    engines: {node: '>=8'}
+
+  ci-info@4.1.0:
+    resolution: {integrity: sha512-HutrvTNsF48wnxkzERIXOe5/mlcfFcbfCmwcg6CJnizbSue78AbDt+1cgl26zwn61WFxhcPykPfZrbqjGmBb4A==}
     engines: {node: '>=8'}
 
   cipher-base@1.0.4:
@@ -6724,8 +6722,8 @@ packages:
     resolution: {integrity: sha512-1BC0BVFhS/p0qtw6enp8e+8OD0UrK0oFLztSjNzhcKA3WDuJxxAPXzPuPtKkjEY9UUoEWlX/8fgKeu2S8i9JTA==}
     engines: {node: '>= 0.4'}
 
-  is-ci@3.0.1:
-    resolution: {integrity: sha512-ZYvCgrefwqoQ6yTyYUbQu64HsITZ3NfKX1lzaEYdkTDcfKzzCI/wthRRYKkdjHKFVgNiXKAKm65Zo1pk2as/QQ==}
+  is-ci@4.1.0:
+    resolution: {integrity: sha512-Ab9bQDQ11lWootZUI5qxgN2ZXwxNI5hTwnsvOc1wyxQ7zQ8OkEDw79mI0+9jI3x432NfwbVRru+3noJfXF6lSQ==}
     hasBin: true
 
   is-core-module@2.15.1:
@@ -11379,9 +11377,9 @@ snapshots:
       - tailwindcss
       - typescript
 
-  '@jeromefitz/lint-staged@2.0.7(is-ci@3.0.1)':
+  '@jeromefitz/lint-staged@2.0.7(is-ci@4.1.0)':
     dependencies:
-      is-ci: 3.0.1
+      is-ci: 4.1.0
       lint-staged: 15.2.10
       micromatch: 4.0.8
     transitivePeerDependencies:
@@ -13611,10 +13609,6 @@ snapshots:
 
   '@types/http-errors@2.0.4': {}
 
-  '@types/is-ci@3.0.4':
-    dependencies:
-      ci-info: 3.9.0
-
   '@types/istanbul-lib-coverage@2.0.6': {}
 
   '@types/istanbul-lib-report@3.0.3':
@@ -14625,6 +14619,8 @@ snapshots:
   ci-info@3.8.0: {}
 
   ci-info@3.9.0: {}
+
+  ci-info@4.1.0: {}
 
   cipher-base@1.0.4:
     dependencies:
@@ -16559,9 +16555,9 @@ snapshots:
 
   is-callable@1.2.7: {}
 
-  is-ci@3.0.1:
+  is-ci@4.1.0:
     dependencies:
-      ci-info: 3.9.0
+      ci-info: 4.1.0
 
   is-core-module@2.15.1:
     dependencies:
@@ -16831,7 +16827,7 @@ snapshots:
       '@jest/types': 29.6.3
       babel-jest: 29.7.0(@babel/core@7.26.0)
       chalk: 4.1.2
-      ci-info: 3.8.0
+      ci-info: 3.9.0
       deepmerge: 4.3.1
       glob: 7.2.3
       graceful-fs: 4.2.11
