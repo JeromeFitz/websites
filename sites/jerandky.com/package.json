@@ -120,7 +120,7 @@
     "use-sound": "4.0.3",
     "uuid": "11.0.3",
     "valid-url": "1.0.9",
-    "zod": "3.24.0",
+    "zod": "3.24.1",
     "zustand": "5.0.2"
   },
   "devDependencies": {
