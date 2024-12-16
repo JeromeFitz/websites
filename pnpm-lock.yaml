@@ -59,8 +59,8 @@ importers:
         specifier: 22.10.2
         version: 22.10.2
       ccommit:
-        specifier: 3.0.9
-        version: 3.0.9
+        specifier: 3.1.0
+        version: 3.1.0
       concurrently:
         specifier: 9.1.0
         version: 9.1.0
@@ -5107,8 +5107,8 @@ packages:
     resolution: {integrity: sha512-roIFONhcxog0JSSWbvVAh3OocukmSgpqOH6YpMkCvav/ySIV3JKg4Dc8vYtQjYi/UxpNE36r/9v+VqTQqgkYmw==}
     engines: {node: '>=4'}
 
-  ccommit@3.0.9:
-    resolution: {integrity: sha512-xevFCQlD1vL78VvgUb3+d7nTGrw+zRIWZ75YTjMWbnEJaRQdVfHw9O6qijgUB/qtJZmRwNdA5kT+iuxwvvdtng==}
+  ccommit@3.1.0:
+    resolution: {integrity: sha512-ruUohElK8tdpW5qaRHzq9n+sVdpA8zoBW9xyajeI9+ZWZXQpA7avpD7eprkru1zhacdTBWiEGJOisCGz3S6dmA==}
     engines: {node: '>=20'}
     hasBin: true
 
@@ -6143,10 +6143,6 @@ packages:
 
   execa@9.4.1:
     resolution: {integrity: sha512-5eo/BRqZm3GYce+1jqX/tJ7duA2AnE39i88fuedNFUV8XxGxUpF3aWkBRfbUcjV49gCkvS/pzc0YrCPhaIewdg==}
-    engines: {node: ^18.19.0 || >=20.5.0}
-
-  execa@9.5.1:
-    resolution: {integrity: sha512-QY5PPtSonnGwhhHDNI7+3RvY285c7iuJFFB+lU+oEzMY/gEGJ808owqJsrr8Otd1E/x07po1LkUBmdAc5duPAg==}
     engines: {node: ^18.19.0 || >=20.5.0}
 
   execa@9.5.2:
@@ -12854,7 +12850,7 @@ snapshots:
     dependencies:
       '@semantic-release/error': 4.0.0
       aggregate-error: 5.0.0
-      execa: 9.5.1
+      execa: 9.5.2
       fs-extra: 11.2.0
       lodash-es: 4.17.21
       nerf-dart: 1.0.0
@@ -14679,7 +14675,7 @@ snapshots:
 
   case-sensitive-paths-webpack-plugin@2.4.0: {}
 
-  ccommit@3.0.9:
+  ccommit@3.1.0:
     dependencies:
       ansi-colors: 4.1.3
       enquirer: 2.4.1
@@ -15972,21 +15968,6 @@ snapshots:
       strip-final-newline: 3.0.0
 
   execa@9.4.1:
-    dependencies:
-      '@sindresorhus/merge-streams': 4.0.0
-      cross-spawn: 7.0.6
-      figures: 6.1.0
-      get-stream: 9.0.1
-      human-signals: 8.0.0
-      is-plain-obj: 4.1.0
-      is-stream: 4.0.1
-      npm-run-path: 6.0.0
-      pretty-ms: 9.0.0
-      signal-exit: 4.1.0
-      strip-final-newline: 4.0.0
-      yoctocolors: 2.0.2
-
-  execa@9.5.1:
     dependencies:
       '@sindresorhus/merge-streams': 4.0.0
       cross-spawn: 7.0.6
