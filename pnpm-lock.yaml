@@ -38,8 +38,8 @@ importers:
         specifier: 2.1.0
         version: 2.1.0(is-ci@4.1.0)
       '@jeromefitz/prettier-config':
-        specifier: 2.0.13
-        version: 2.0.13
+        specifier: 2.1.0
+        version: 2.1.0
       '@jeromefitz/release-notes-generator':
         specifier: 3.1.0
         version: 3.1.0(lodash@4.17.21)
@@ -299,8 +299,8 @@ importers:
   packages/next-config:
     devDependencies:
       '@jeromefitz/prettier-config':
-        specifier: 2.0.13
-        version: 2.0.13
+        specifier: 2.1.0
+        version: 2.1.0
       '@next/bundle-analyzer':
         specifier: 15.1.0
         version: 15.1.0
@@ -2343,8 +2343,8 @@ packages:
       '@jeromefitz/utils': ^3.0.0
       lodash: ^4.17.21
 
-  '@jeromefitz/prettier-config@2.0.13':
-    resolution: {integrity: sha512-c5RvZynL6NCGjmi8SyYJHiET86etdlPsZaBebK6HwGE6L3/fiQyskI1hVQbJE/W1vwy07FzY6p8C99Dl+HVEcg==}
+  '@jeromefitz/prettier-config@2.1.0':
+    resolution: {integrity: sha512-L6Dja2GcmoPK91JXv50Y5HE9F3yVaScPxQK2qPhAIx88kZqeEVjDdIpsukvyayWz5Eg49xZp/0AAQjzMhWxbSQ==}
     engines: {node: '>=20'}
 
   '@jeromefitz/release-notes-generator@3.1.0':
@@ -11454,7 +11454,7 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  '@jeromefitz/prettier-config@2.0.13':
+  '@jeromefitz/prettier-config@2.1.0':
     dependencies:
       prettier: 3.4.2
       prettier-plugin-pkg: 0.18.1(prettier@3.4.2)
