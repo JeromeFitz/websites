@@ -35,8 +35,8 @@ importers:
         specifier: 5.0.0-canary.26
         version: 5.0.0-canary.26(tailwindcss@3.4.16(ts-node@10.9.2(@types/node@22.10.2)(typescript@5.7.2)))(typescript@5.7.2)
       '@jeromefitz/lint-staged':
-        specifier: 2.0.7
-        version: 2.0.7(is-ci@4.1.0)
+        specifier: 2.1.0
+        version: 2.1.0(is-ci@4.1.0)
       '@jeromefitz/prettier-config':
         specifier: 2.0.13
         version: 2.0.13
@@ -2330,11 +2330,11 @@ packages:
     resolution: {integrity: sha512-PfyBWo5he48M9j6uXi+gwR46Rb2pQnJHK8HESPFsn0TGjOk43N4aX7NzhxqytlwsNqop7JpoN2hq+EzQ+pbQ5Q==}
     engines: {node: '>=20'}
 
-  '@jeromefitz/lint-staged@2.0.7':
-    resolution: {integrity: sha512-9OsP/vEDUbx+ksOH4Ss1lXfZY5wv3iZCgZQf89e/c46vIPhC9+Yt0XZnIw7QFMk4OZaMZtuwjIBrxYF9bEoAWA==}
+  '@jeromefitz/lint-staged@2.1.0':
+    resolution: {integrity: sha512-fgZjqGIJAdoDj2YNuxULSdka/VyWh5pvmH8/PeZmpU2MJtiL/S62K+HSjAjgUesmyvcPZZB40qoIHbjhHlTLRg==}
     engines: {node: '>=20'}
     peerDependencies:
-      is-ci: ^3.0.1
+      is-ci: ^3.0.1 || ^4.0.0
 
   '@jeromefitz/notion@5.0.15':
     resolution: {integrity: sha512-QGZe8h6z6OvM8V75LNYobekzE6t171U746Q6fiY9Ris+d4M/CYzEC8+M9HTA6ZpFfCHmWmv5jqHpylKsTO1lWg==}
@@ -5559,8 +5559,8 @@ packages:
       supports-color:
         optional: true
 
-  debug@4.3.6:
-    resolution: {integrity: sha512-O/09Bd4Z1fBrU4VzkhFqVgpPzaGbw6Sm9FEkBT1A/YBXQFGuuSxa1dN2nxgxS34JmKXqYx8CZAwEVoJFImUXIg==}
+  debug@4.3.7:
+    resolution: {integrity: sha512-Er2nc/H7RrMXZBFCEim6TCmMk02Z8vLC2Rbi1KEBggpo0fS6l0S1nnapwmIi3yW/+GOJap1Krg4w0Hg80oCqgQ==}
     engines: {node: '>=6.0'}
     peerDependencies:
       supports-color: '*'
@@ -5568,8 +5568,8 @@ packages:
       supports-color:
         optional: true
 
-  debug@4.3.7:
-    resolution: {integrity: sha512-Er2nc/H7RrMXZBFCEim6TCmMk02Z8vLC2Rbi1KEBggpo0fS6l0S1nnapwmIi3yW/+GOJap1Krg4w0Hg80oCqgQ==}
+  debug@4.4.0:
+    resolution: {integrity: sha512-6WTZ/IxCY/T6BALoZHaE4ctp9xm+Z5kY/pzYaCHRFeyVhojxlrm+46y68HA6hr0TcwEssoxNiDEUJQjfPZ/RYA==}
     engines: {node: '>=6.0'}
     peerDependencies:
       supports-color: '*'
@@ -7376,13 +7376,13 @@ packages:
   lines-and-columns@1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
 
-  lint-staged@15.2.10:
-    resolution: {integrity: sha512-5dY5t743e1byO19P9I4b3x8HJwalIznL5E1FWYnU6OWw33KxNBSLAc6Cy7F2PsFEO8FKnLwjwm5hx7aMF0jzZg==}
+  lint-staged@15.2.11:
+    resolution: {integrity: sha512-Ev6ivCTYRTGs9ychvpVw35m/bcNDuBN+mnTeObCL5h+boS5WzBEC6LHI4I9F/++sZm1m+J2LEiy0gxL/R9TBqQ==}
     engines: {node: '>=18.12.0'}
     hasBin: true
 
-  listr2@8.2.4:
-    resolution: {integrity: sha512-opevsywziHd3zHCVQGAj8zu+Z3yHNkkoYhWIGnq54RrCVwLz0MozotJEDnKsIBLvkfLGN6BLOyAeRrYI0pKA4g==}
+  listr2@8.2.5:
+    resolution: {integrity: sha512-iyAZCeyD+c1gPyE9qpFu8af0Y+MRtmKOncdGoA2S5EY8iFq99dmmvkNnHiWo+pj0s7yH7l3KPIgee77tKpXPWQ==}
     engines: {node: '>=18.0.0'}
 
   load-json-file@4.0.0:
@@ -10191,6 +10191,11 @@ packages:
     engines: {node: '>= 14'}
     hasBin: true
 
+  yaml@2.6.1:
+    resolution: {integrity: sha512-7r0XPzioN/Q9kXBro/XPnA6kznR73DHq+GXh5ON7ZozRO6aMjbmiBuKste2wslTFkC5d1dw0GooOCepZXJ2SAg==}
+    engines: {node: '>= 14'}
+    hasBin: true
+
   yargs-parser@20.2.9:
     resolution: {integrity: sha512-y11nGElTIV+CT3Zv9t7VKl+Q3hTQoT9a1Qzezhhl6Rp21gJ/IVTW7Z3y9EWXhuUBC2Shnf+DX0antecpAwSP8w==}
     engines: {node: '>=10'}
@@ -11435,10 +11440,10 @@ snapshots:
       - tailwindcss
       - typescript
 
-  '@jeromefitz/lint-staged@2.0.7(is-ci@4.1.0)':
+  '@jeromefitz/lint-staged@2.1.0(is-ci@4.1.0)':
     dependencies:
       is-ci: 4.1.0
-      lint-staged: 15.2.10
+      lint-staged: 15.2.11
       micromatch: 4.0.8
     transitivePeerDependencies:
       - supports-color
@@ -15190,11 +15195,11 @@ snapshots:
     dependencies:
       ms: 2.1.2
 
-  debug@4.3.6:
-    dependencies:
-      ms: 2.1.2
-
   debug@4.3.7:
+    dependencies:
+      ms: 2.1.3
+
+  debug@4.4.0:
     dependencies:
       ms: 2.1.3
 
@@ -17425,22 +17430,22 @@ snapshots:
 
   lines-and-columns@1.2.4: {}
 
-  lint-staged@15.2.10:
+  lint-staged@15.2.11:
     dependencies:
       chalk: 5.3.0
       commander: 12.1.0
-      debug: 4.3.6
+      debug: 4.4.0
       execa: 8.0.1
-      lilconfig: 3.1.2
-      listr2: 8.2.4
+      lilconfig: 3.1.3
+      listr2: 8.2.5
       micromatch: 4.0.8
       pidtree: 0.6.0
       string-argv: 0.3.2
-      yaml: 2.5.0
+      yaml: 2.6.1
     transitivePeerDependencies:
       - supports-color
 
-  listr2@8.2.4:
+  listr2@8.2.5:
     dependencies:
       cli-truncate: 4.0.0
       colorette: 2.0.20
@@ -20211,6 +20216,8 @@ snapshots:
   yaml@1.10.2: {}
 
   yaml@2.5.0: {}
+
+  yaml@2.6.1: {}
 
   yargs-parser@20.2.9: {}
 
