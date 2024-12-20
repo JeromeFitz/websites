@@ -146,7 +146,7 @@
     "fast-json-stable-stringify": "2.1.0",
     "fathom-client": "3.7.2",
     "github-slugger": "2.0.0",
-    "ioredis": "5.4.1",
+    "ioredis": "5.4.2",
     "lodash": "4.17.21",
     "next": "15.1.1",
     "plaiceholder": "3.0.0",
