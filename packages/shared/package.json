@@ -155,7 +155,7 @@
     "react-tweet": "3.2.1",
     "server-only": "0.0.1",
     "sharp": "0.32.6",
-    "swr": "2.2.5",
+    "swr": "2.3.0",
     "tailwind-merge": "2.5.5",
     "title": "4.0.1",
     "valid-url": "1.0.9"

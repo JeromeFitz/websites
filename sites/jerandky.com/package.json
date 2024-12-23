@@ -113,7 +113,7 @@
     "server-only": "0.0.1",
     "sharp": "0.32.6",
     "smoothscroll-polyfill": "0.4.4",
-    "swr": "2.2.5",
+    "swr": "2.3.0",
     "title": "4.0.1",
     "ts-node": "10.9.2",
     "unfetch": "4.2.0",
