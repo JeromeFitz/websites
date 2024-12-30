@@ -40,9 +40,8 @@ const banners = {
       text: 'Go to Books',
     },
     content: {
-      desktop:
-        'Robert A. Caro – “The Power Broker: Robert Moses and the Fall of New York”',
-      mobile: 'Robert A. Caro – “The Power Broker”',
+      desktop: 'Costanza Casati – Clytemnestra: A Novel',
+      mobile: 'Costanza Casati – Clytemnestra”',
     },
     href: '/currently/reading',
     icon: <BookOpenIcon />,
@@ -57,10 +56,10 @@ const banners = {
       text: 'Go to Details',
     },
     content: {
-      desktop: 'Latchkey Kids w/ Warp Zone!: Saturday, May 10th',
-      mobile: 'Latchkey Kids!: SAT 05/10',
+      desktop: 'Irony City: Saturday, January 04th',
+      mobile: 'Irony City: SAT 01/04',
     },
-    href: '/events/2024/05/10/the-latchkey-kids',
+    href: '/events/2025/01/04/irony-city',
     icon: <TicketIcon />,
   },
 }
