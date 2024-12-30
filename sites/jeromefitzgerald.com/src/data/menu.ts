@@ -78,8 +78,8 @@ const menus: NavigationMenuItems[] = [
         titleDescription: 'Psst – Jerome is Opening Act. Pass it on.',
       },
       {
-        href: '/2025/01/23/sketch-lab-report-vol-1',
-        id: '/2025/01/23/sketch-lab-report-vol-1',
+        href: '/events/2025/01/23/sketch-lab-report-vol-1',
+        id: '/events/2025/01/23/sketch-lab-report-vol-1',
         isActive: true,
         isActiveMobileOverride: true,
         keywords: ['sketch', 'lab', 'report'],
@@ -87,8 +87,8 @@ const menus: NavigationMenuItems[] = [
         titleDescription: 'Sketch Lab Report Vol.1',
       },
       {
-        href: '/2025/01/24/sketch-lab-report-vol-1',
-        id: '/2025/01/24/sketch-lab-report-vol-1',
+        href: '/events/2025/01/24/sketch-lab-report-vol-1',
+        id: '/events/2025/01/24/sketch-lab-report-vol-1',
         isActive: true,
         isActiveMobileOverride: true,
         keywords: ['sketch', 'lab', 'report'],
@@ -96,8 +96,8 @@ const menus: NavigationMenuItems[] = [
         titleDescription: 'Sketch Lab Report Vol.1',
       },
       {
-        href: '/2025/01/31/sketch-lab-report-vol-1',
-        id: '/2025/01/31/sketch-lab-report-vol-1',
+        href: '/events/2025/01/31/sketch-lab-report-vol-1',
+        id: '/events/2025/01/31/sketch-lab-report-vol-1',
         isActive: true,
         isActiveMobileOverride: true,
         keywords: ['sketch', 'lab', 'report'],
@@ -105,8 +105,8 @@ const menus: NavigationMenuItems[] = [
         titleDescription: 'Sketch Lab Report Vol.1',
       },
       {
-        href: '/2025/02/01/sketch-lab-report-vol-1',
-        id: '/2025/02/01/sketch-lab-report-vol-1',
+        href: '/events/2025/02/01/sketch-lab-report-vol-1',
+        id: '/events/2025/02/01/sketch-lab-report-vol-1',
         isActive: true,
         isActiveMobileOverride: true,
         keywords: ['sketch', 'lab', 'report'],
