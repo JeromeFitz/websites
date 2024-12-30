@@ -36,7 +36,7 @@ const currently = [
     id: 'listening',
     isActive: true,
     title: 'I’m Listening To…',
-    titleSub: 'Cam Chambers, Nice Rec – Check Please',
+    titleSub: 'Jessica Pratt – Here In The Pitch',
   },
   {
     apiUrl: '',
@@ -47,7 +47,7 @@ const currently = [
     id: 'reading',
     isActive: true,
     title: 'I’m Reading…',
-    titleSub: 'Robert A. Caro – The Power Broker',
+    titleSub: 'Costanza Casati – Clytemnestra',
   },
   {
     apiUrl: '',

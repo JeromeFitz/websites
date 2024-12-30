@@ -59,6 +59,17 @@ const events = [
   '2024/08/17/doomscroll',
   '2024/08/24/the-playlist',
   '2024/10/12/arcade-hootenanny',
+  '2024/12/01/your-act',
+  '2024/12/11/sketch-writing-101-class-show',
+  '2024/12/13/cantus-secret-comedy-club',
+  '2024/12/21/improv-in-development',
+  '2025/01/04/irony-city',
+  '2025/01/05/your-act',
+  '2025/01/23/sketch-lab-report-vol-1',
+  '2025/01/24/sketch-lab-report-vol-1',
+  '2025/01/31/sketch-lab-report-vol-1',
+  '2025/02/01/sketch-lab-report-vol-1',
+  '2025/02/02/your-act',
 ]
 const pages = [
   'about',
