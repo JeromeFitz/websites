@@ -35,8 +35,8 @@ importers:
         specifier: 5.0.0-canary.27
         version: 5.0.0-canary.27(tailwindcss@3.4.17(ts-node@10.9.2(@types/node@22.10.2)(typescript@5.7.2)))(typescript@5.7.2)
       '@jeromefitz/lint-staged':
-        specifier: 2.1.0
-        version: 2.1.0(is-ci@4.1.0)
+        specifier: 2.1.1
+        version: 2.1.1(is-ci@4.1.0)
       '@jeromefitz/prettier-config':
         specifier: 2.1.0
         version: 2.1.0
@@ -2330,8 +2330,8 @@ packages:
     resolution: {integrity: sha512-QBcz0Au1uwTb2lIOhenecKeqkV8pipnuyCh/YNrZ/HM3q00QFEcDnKzTmrN3JWNJ1uMltSApWM2eYgN5O6Rizw==}
     engines: {node: '>=20'}
 
-  '@jeromefitz/lint-staged@2.1.0':
-    resolution: {integrity: sha512-fgZjqGIJAdoDj2YNuxULSdka/VyWh5pvmH8/PeZmpU2MJtiL/S62K+HSjAjgUesmyvcPZZB40qoIHbjhHlTLRg==}
+  '@jeromefitz/lint-staged@2.1.1':
+    resolution: {integrity: sha512-estNSw0kWxvFknhpUPAoA3/43Eklcgdl0fNdXRFNl99TSqST7Q1A5/LJItFozQXqeAGnOk3d5FEGsAI6K2yWPg==}
     engines: {node: '>=20'}
     peerDependencies:
       is-ci: ^3.0.1 || ^4.0.0
@@ -5105,6 +5105,10 @@ packages:
     resolution: {integrity: sha512-dLitG79d+GV1Nb/VYcCDFivJeK1hiukt9QjRNVOsUtTy1rR1YJsmpGGTZ3qJos+uw7WmWF4wUwBd9jxjocFC2w==}
     engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
 
+  chalk@5.4.1:
+    resolution: {integrity: sha512-zgVZuo2WcZgfUEmsn6eO3kINexW8RAE4maiQ8QNs8CtpPCSyMiYsULR3HQYkm3w8FIA3SberyMJMSldGsW+U3w==}
+    engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
+
   char-regex@1.0.2:
     resolution: {integrity: sha512-kWWXztvZ5SBQV+eRgKFeh8q5sLuZY2+8WUIzlxWVTg+oGwY14qylx1KbKzHd8P6ZYkAg0xyIDU9JMHhyJMZ1jw==}
     engines: {node: '>=10'}
@@ -7332,8 +7336,8 @@ packages:
   lines-and-columns@1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
 
-  lint-staged@15.2.11:
-    resolution: {integrity: sha512-Ev6ivCTYRTGs9ychvpVw35m/bcNDuBN+mnTeObCL5h+boS5WzBEC6LHI4I9F/++sZm1m+J2LEiy0gxL/R9TBqQ==}
+  lint-staged@15.3.0:
+    resolution: {integrity: sha512-vHFahytLoF2enJklgtOtCtIjZrKD/LoxlaUusd5nh7dWv/dkKQJY74ndFSzxCdv7g0ueGg1ORgTSt4Y9LPZn9A==}
     engines: {node: '>=18.12.0'}
     hasBin: true
 
@@ -11405,10 +11409,10 @@ snapshots:
       - tailwindcss
       - typescript
 
-  '@jeromefitz/lint-staged@2.1.0(is-ci@4.1.0)':
+  '@jeromefitz/lint-staged@2.1.1(is-ci@4.1.0)':
     dependencies:
       is-ci: 4.1.0
-      lint-staged: 15.2.11
+      lint-staged: 15.3.0
       micromatch: 4.0.8
     transitivePeerDependencies:
       - supports-color
@@ -14655,6 +14659,8 @@ snapshots:
 
   chalk@5.3.0: {}
 
+  chalk@5.4.1: {}
+
   char-regex@1.0.2: {}
 
   check-error@2.1.1: {}
@@ -17349,9 +17355,9 @@ snapshots:
 
   lines-and-columns@1.2.4: {}
 
-  lint-staged@15.2.11:
+  lint-staged@15.3.0:
     dependencies:
-      chalk: 5.3.0
+      chalk: 5.4.1
       commander: 12.1.0
       debug: 4.4.0
       execa: 8.0.1
