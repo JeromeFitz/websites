@@ -5,6 +5,8 @@ import { getPropertyTypeData } from 'next-notion/utils/index'
 
 import type { PropertiesEvent } from '@/app/(notion)/_config/index'
 
+// @todo(complexity) 11
+// eslint-disable-next-line complexity
 function getEventData(properties) {
   // if (!properties) return {}
   /**
@@ -49,6 +51,12 @@ function getEventData(properties) {
   )
   const isEventOver = hoursUntilEvent < 0
 
+  const isSeoImageEmpty =
+    getPropertyTypeDataEvent(properties, 'SEO.Image')?.length === 0
+  // console.dir(`what is happening with SEO.Image?!`)
+  // console.dir(`isSeoImageEmpty: ${isSeoImageEmpty ? 'y' : 'n'}`)
+  // console.dir(getPropertyTypeDataEvent(properties, 'SEO.Image'))
+
   const data = {
     dateIso: getPropertyTypeDataEvent(properties, 'Date.ISO'),
     dayOfMonth: getPropertyTypeDataEvent(properties, 'Date.DayOfMonth'),
@@ -71,7 +79,9 @@ function getEventData(properties) {
     monthName: getPropertyTypeDataEvent(properties, 'Date.MonthName'),
     monthNameAbbr: getPropertyTypeDataEvent(properties, 'Date.MonthNameAbbr'),
     seoDescription: getPropertyTypeDataEvent(properties, 'SEO.Description'),
-    seoImage: getPropertyTypeDataEvent(properties, 'SEO.Image')[0],
+    seoImage: isSeoImageEmpty
+      ? null
+      : getPropertyTypeDataEvent(properties, 'SEO.Image')[0],
     seoImageDescription: getPropertyTypeDataEvent(
       properties,
       'SEO.Image.Description',
