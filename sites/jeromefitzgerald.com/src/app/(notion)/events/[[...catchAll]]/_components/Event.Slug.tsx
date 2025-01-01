@@ -99,6 +99,8 @@ async function Slug({ revalidate, segmentInfo }) {
   const noData = isObjectEmpty(data?.blocks || {})
   const is404 = noData
 
+  // console.dir(segmentInfo)
+  // console.dir(data)
   // console.dir(`noData:           ${noData ? 'y' : 'n'}`)
   // console.dir(`is404:            ${is404 ? 'y' : 'n'}`)
 
