@@ -31,7 +31,7 @@
     "turbo": "TURBO_TELEMETRY_DISABLED=1 turbo"
   },
   "dependencies": {
-    "@jeromefitz/conventional-gitmoji": "4.0.13",
+    "@jeromefitz/conventional-gitmoji": "4.0.14",
     "@jeromefitz/eslint-config": "5.0.0-canary.28",
     "@jeromefitz/lint-staged": "2.1.1",
     "@jeromefitz/prettier-config": "2.1.0",
