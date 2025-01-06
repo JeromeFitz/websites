@@ -36,7 +36,7 @@
     "@jeromefitz/lint-staged": "2.1.1",
     "@jeromefitz/prettier-config": "2.1.0",
     "@jeromefitz/release-notes-generator": "3.1.1",
-    "@jeromefitz/semantic": "11.1.0",
+    "@jeromefitz/semantic": "11.1.1",
     "@jeromefitz/tsconfig": "2.1.0",
     "@manypkg/cli": "0.23.0",
     "@types/lodash": "4.17.14",
