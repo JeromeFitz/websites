@@ -840,8 +840,8 @@ importers:
         specifier: 3.24.1
         version: 3.24.1
       zustand:
-        specifier: 5.0.2
-        version: 5.0.2(immer@10.1.1)(react@19.0.0)
+        specifier: 5.0.3
+        version: 5.0.3(immer@10.1.1)(react@19.0.0)
     devDependencies:
       '@jeromefitz/jest-config':
         specifier: workspace:*
@@ -1150,8 +1150,8 @@ importers:
         specifier: 3.24.1
         version: 3.24.1
       zustand:
-        specifier: 5.0.2
-        version: 5.0.2(immer@10.1.1)(react@19.0.0)
+        specifier: 5.0.3
+        version: 5.0.3(immer@10.1.1)(react@19.0.0)
     devDependencies:
       '@jeromefitz/jest-config':
         specifier: workspace:*
@@ -10484,8 +10484,8 @@ packages:
   zod@3.24.1:
     resolution: {integrity: sha512-muH7gBL9sI1nciMZV67X5fTKKBLtwpZ5VBp1vsOQzj1MhrBZ4wlVCm3gedKZWLp0Oyel8sIGfeiz54Su+OVT+A==}
 
-  zustand@5.0.2:
-    resolution: {integrity: sha512-8qNdnJVJlHlrKXi50LDqqUNmUbuBjoKLrYQBnoChIbVph7vni+sY+YpvdjXG9YLd/Bxr6scMcR+rm5H3aSqPaw==}
+  zustand@5.0.3:
+    resolution: {integrity: sha512-14fwWQtU3pH4dE0dOpdMiWjddcH+QzKIgk1cl8epwSE7yag43k/AD/m4L6+K7DytAOr9gGBe3/EXj9g7cdostg==}
     engines: {node: '>=12.20.0'}
     peerDependencies:
       '@types/react': '>=18.0.0'
@@ -20962,7 +20962,7 @@ snapshots:
 
   zod@3.24.1: {}
 
-  zustand@5.0.2(immer@10.1.1)(react@19.0.0):
+  zustand@5.0.3(immer@10.1.1)(react@19.0.0):
     optionalDependencies:
       immer: 10.1.1
       react: 19.0.0
