@@ -11,7 +11,7 @@
     "@tailwindcss/typography": "0.5.15",
     "autoprefixer": "10.4.20",
     "cssnano": "7.0.6",
-    "lightningcss": "1.29.0",
+    "lightningcss": "1.29.1",
     "postcss": "8.4.49",
     "radix-themes-tw": "0.2.3",
     "react": "19.0.0",
