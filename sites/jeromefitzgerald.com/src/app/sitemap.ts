@@ -65,6 +65,7 @@ const events = [
   '2024/12/21/improv-in-development',
   '2025/01/04/irony-city',
   '2025/01/05/your-act',
+  '2025/01/11/arcade-hootenanny',
   '2025/01/23/sketch-lab-report-vol-1',
   '2025/01/24/sketch-lab-report-vol-1',
   '2025/01/31/sketch-lab-report-vol-1',

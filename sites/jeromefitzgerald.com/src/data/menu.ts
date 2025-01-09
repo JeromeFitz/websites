@@ -69,13 +69,13 @@ const menus: NavigationMenuItems[] = [
         titleDescription: 'Jerome is cooking something up at the moment.',
       },
       {
-        href: '/events/2025/01/04/irony-city',
-        id: '/events/2025/01/04/irony-city',
+        href: '/events/2025/01/11/arcade-hootenanny',
+        id: '/events/2025/01/11/arcade-hootenanny',
         isActive: true,
         isActiveMobileOverride: false,
-        keywords: ['irony', 'city', 'jerome'],
-        title: 'Irony City: SAT 01/04',
-        titleDescription: 'Psst – Jerome is Opening Act. Pass it on.',
+        keywords: ['arcade', 'hootenanny', 'improv'],
+        title: 'Arcade Hootenanny: SAT 01/11',
+        titleDescription: 'Arcade Hootenanny: SAT 01/11',
       },
       {
         href: '/events/2025/01/23/sketch-lab-report-vol-1',
