@@ -91,7 +91,7 @@
     "date-fns": "4.1.0",
     "fast-json-stable-stringify": "2.1.0",
     "fathom-client": "3.7.2",
-    "framer-motion": "11.16.1",
+    "framer-motion": "11.16.4",
     "github-slugger": "2.0.0",
     "immer": "10.1.1",
     "ioredis": "5.4.2",
