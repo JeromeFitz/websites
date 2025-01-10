@@ -118,7 +118,7 @@
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "server-only": "0.0.1",
-    "uuid": "11.0.4"
+    "uuid": "11.0.5"
   },
   "publishConfig": {
     "access": "public"
