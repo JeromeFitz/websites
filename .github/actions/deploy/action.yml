@@ -33,6 +33,8 @@ inputs:
 runs:
   using: 'composite'
   steps:
+    - name: '🔺️ Install'
+      run: npm install -g vercel@39.3.0
     - name: '🔺️ Deploy'
       id: wf-deploy
       # uses: JeromeFitz/deploy-to-vercel-action@ci/vercel-deploy-commit-limits
