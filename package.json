@@ -59,6 +59,9 @@
     "patchedDependencies": {
       "@semantic-release/commit-analyzer@13.0.0": "patches/@semantic-release__commit-analyzer@13.0.0.patch"
     },
+    "onlyBuiltDependencies": [
+      "sharp"
+    ],
     "overrides": {
       "@typescript-eslint/typescript-estree": "^8.17.0",
       "cross-spawn": "^7.0.6",
