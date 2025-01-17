@@ -21,10 +21,6 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: '🃏  Jest: install sharp'
-      id: test-install-sharp
-      shell: bash
-      run: pnpm add sharp@0.32.6
     - name: '🃏  Jest: unit'
       id: test-jest
       shell: bash

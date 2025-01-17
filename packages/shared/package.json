@@ -156,7 +156,7 @@
     "react-dom": "19.0.0",
     "react-tweet": "3.2.1",
     "server-only": "0.0.1",
-    "sharp": "0.32.6",
+    "sharp": "0.33.5",
     "swr": "2.3.0",
     "tailwind-merge": "2.6.0",
     "title": "4.0.1",
