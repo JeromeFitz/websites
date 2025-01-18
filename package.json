@@ -34,7 +34,7 @@
     "@jeromefitz/conventional-gitmoji": "4.0.14",
     "@jeromefitz/eslint-config": "5.0.0-canary.33",
     "@jeromefitz/lint-staged": "2.1.1",
-    "@jeromefitz/prettier-config": "2.1.0",
+    "@jeromefitz/prettier-config": "2.1.1",
     "@jeromefitz/release-notes-generator": "3.1.2",
     "@jeromefitz/semantic": "11.1.2",
     "@jeromefitz/tsconfig": "2.1.0",
