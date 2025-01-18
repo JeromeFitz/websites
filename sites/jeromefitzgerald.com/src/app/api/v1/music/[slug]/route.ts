@@ -35,10 +35,16 @@ const evictionPolicyTiming = {
   long_term: getTimeInSeconds(ms('30d')),
   medium_term: getTimeInSeconds(ms('7d')),
   now_playing: getTimeInSeconds(ms('2m')),
+  recently_played: getTimeInSeconds(ms('1d')),
   short_term: getTimeInSeconds(ms('1d')),
 }
 
-const SLUG__VALIDATION = ['now-playing', 'top-artists', 'top-tracks']
+const SLUG__VALIDATION = [
+  'now-playing',
+  'recently-played',
+  'top-artists',
+  'top-tracks',
+]
 const dataEmpty = { debug: { latency: 0, type: 'api' }, is_playing: false }
 
 const getKey = ({ limit, offset, slug, time_range }) => {
@@ -46,6 +52,16 @@ const getKey = ({ limit, offset, slug, time_range }) => {
     const key = `${keyPrefixSpotify}/${slug}`
     return {
       evictionPolicy: evictionPolicyTiming['now_playing'],
+      key,
+    }
+  }
+
+  if (slug === 'recently-played') {
+    const _params = `?limit=50`
+    const params = _slug(_params)
+    const key = `${keyPrefixSpotify}/${slug}/${params}`.toLowerCase()
+    return {
+      evictionPolicy: evictionPolicyTiming['recently_played'],
       key,
     }
   }
@@ -141,6 +157,19 @@ export async function GET(
           // void redis.set(key, stringify(result.data), 'EX', evictionPolicy)
           void redis.set(key, stringify(result.data), { ex: evictionPolicy })
         }
+        break
+      case 'recently-played':
+        start = Date.now()
+        data = await spotify.get.recentlyPlayed({ limit, withImages: true })
+        result.data = data
+        result.debug = {
+          key,
+          latency: Date.now() - start,
+          type: 'api',
+        }
+        // @cache(set) redis
+        // void redis.set(key, stringify(result.data), 'EX', evictionPolicy)
+        void redis.set(key, stringify(result.data), { ex: evictionPolicy })
         break
       case 'top-artists':
         start = Date.now()

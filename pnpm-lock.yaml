@@ -600,8 +600,8 @@ importers:
         specifier: 5.1.1
         version: 5.1.1(@jeromefitz/utils@3.1.1(lodash@4.17.21))(lodash@4.17.21)
       '@jeromefitz/spotify':
-        specifier: 4.1.1
-        version: 4.1.1(@jeromefitz/utils@3.1.1(lodash@4.17.21))(lodash@4.17.21)(sharp@0.33.5)
+        specifier: 4.2.0-canary.2
+        version: 4.2.0-canary.2(@jeromefitz/utils@3.1.1(lodash@4.17.21))(lodash@4.17.21)(sharp@0.33.5)
       '@jeromefitz/utils':
         specifier: 3.1.1
         version: 3.1.1(lodash@4.17.21)
@@ -901,8 +901,8 @@ importers:
         specifier: 5.1.1
         version: 5.1.1(@jeromefitz/utils@3.1.1(lodash@4.17.21))(lodash@4.17.21)
       '@jeromefitz/spotify':
-        specifier: 4.1.1
-        version: 4.1.1(@jeromefitz/utils@3.1.1(lodash@4.17.21))(lodash@4.17.21)(sharp@0.33.5)
+        specifier: 4.2.0-canary.2
+        version: 4.2.0-canary.2(@jeromefitz/utils@3.1.1(lodash@4.17.21))(lodash@4.17.21)(sharp@0.33.5)
       '@jeromefitz/utils':
         specifier: 3.1.1
         version: 3.1.1(lodash@4.17.21)
@@ -2467,8 +2467,8 @@ packages:
     peerDependencies:
       '@jeromefitz/conventional-gitmoji': ^4.0.0
 
-  '@jeromefitz/spotify@4.1.1':
-    resolution: {integrity: sha512-GTpoNE+ChsgiXuA6ndy1EU30TS1PBBj8CopDnqEjwH6ZWD2TAF0m7qUN9EAo6sMsCY3pwinumpCYNo+iCAHYzg==}
+  '@jeromefitz/spotify@4.2.0-canary.2':
+    resolution: {integrity: sha512-mnXbWWWFisfcJxUXB7wVuRRyLdsZKsA5cvpGWbCvtpNaXZGn+kQzcILYQCr0VyFAftKGk7ILk6Qmw0ucYVDBCw==}
     engines: {node: '>=20'}
     peerDependencies:
       '@jeromefitz/utils': ^3.0.0
@@ -11839,7 +11839,7 @@ snapshots:
       - supports-color
       - typescript
 
-  '@jeromefitz/spotify@4.1.1(@jeromefitz/utils@3.1.1(lodash@4.17.21))(lodash@4.17.21)(sharp@0.33.5)':
+  '@jeromefitz/spotify@4.2.0-canary.2(@jeromefitz/utils@3.1.1(lodash@4.17.21))(lodash@4.17.21)(sharp@0.33.5)':
     dependencies:
       '@jeromefitz/utils': 3.1.1(lodash@4.17.21)
       github-slugger: 2.0.0

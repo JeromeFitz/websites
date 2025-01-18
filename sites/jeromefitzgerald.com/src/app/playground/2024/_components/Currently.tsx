@@ -28,7 +28,8 @@ const currently = [
     titleSub: 'N/A',
   },
   {
-    apiUrl: '/api/v1/music/top-artists?limit=10&offset=0&time_range=medium_term',
+    // apiUrl: '/api/v1/music/top-tracks?limit=10&offset=0&time_range=short_term',
+    apiUrl: '/api/v1/music/recently-played?limit=10',
     color: 'orange',
     component: CurrentlyMusicClient,
     href: '/currently/listening-to',
@@ -102,11 +103,19 @@ function Currently() {
         {}
         {currently.map((c, idx) => {
           if (!c?.isActive) return null
+
           const key = `currently-${idx}-${c.id}`
 
           const Component = c.component
           const titleSub = c?.titleSub.split(' – ')
           const props = { ...c, titleSub }
+
+          // if (c.id === 'listening') {
+          //   console.dir(`c:`)
+          //   console.dir(c)
+          //   console.dir(`props:`)
+          //   console.dir(props)
+          // }
 
           return <Component key={key} {...props} />
         })}

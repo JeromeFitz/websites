@@ -17,7 +17,7 @@ function CurrentlyItem({ headline, id = '', isLoading, subline }) {
         <Component>{headline}</Component>
         <Text className="hidden"> – </Text>
         <br />
-        <Text size={{ initial: '4', md: '5' }}>
+        <Text className="line-clamp-1" size={{ initial: '4', md: '5' }}>
           <Text as="span">“</Text>
           <Text as="span" className="pr-0.5">
             <Em>{subline}</Em>
