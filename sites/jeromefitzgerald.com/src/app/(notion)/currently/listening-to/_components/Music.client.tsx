@@ -157,48 +157,49 @@ function DataItem({ item, type }) {
               </Text>
             </DataList.Value>
           </DataList.Item>
-          {type === 'top-tracks' && (
-            <>
-              <DataList.Item align="start" className="flex flex-col gap-0">
-                <DataList.Label>
-                  <Text size="1">
-                    <Code variant="ghost">Song</Code>
-                  </Text>
-                </DataList.Label>
-                <DataList.Value>
-                  <Text size={{ initial: '1', md: '2' }} weight="medium">
-                    {_title2}
-                  </Text>
-                </DataList.Value>
-              </DataList.Item>
-              <DataList.Item align="start" className="flex flex-col gap-0">
-                <DataList.Label>
-                  <Text size="1">
-                    <Code variant="ghost">Album</Code>
-                  </Text>
-                </DataList.Label>
-                <DataList.Value>
-                  <Text size={{ initial: '1', md: '2' }} weight="medium">
-                    {_title3}
-                  </Text>
-                </DataList.Value>
-              </DataList.Item>
-              <DataList.Item align="start" className="flex flex-col gap-0">
-                <DataList.Label>
-                  <Text size="1">
-                    <Code variant="ghost">Year</Code>
-                  </Text>
-                </DataList.Label>
-                <DataList.Value>
-                  <Text size={{ initial: '1', md: '2' }}>
-                    <Code variant="ghost">
-                      {item.album.release_date.slice(0, 4)}
-                    </Code>
-                  </Text>
-                </DataList.Value>
-              </DataList.Item>
-            </>
-          )}
+          {type === 'top-tracks' ||
+            (type === 'recently-played' && (
+              <>
+                <DataList.Item align="start" className="flex flex-col gap-0">
+                  <DataList.Label>
+                    <Text size="1">
+                      <Code variant="ghost">Song</Code>
+                    </Text>
+                  </DataList.Label>
+                  <DataList.Value>
+                    <Text size={{ initial: '1', md: '2' }} weight="medium">
+                      {_title2}
+                    </Text>
+                  </DataList.Value>
+                </DataList.Item>
+                <DataList.Item align="start" className="flex flex-col gap-0">
+                  <DataList.Label>
+                    <Text size="1">
+                      <Code variant="ghost">Album</Code>
+                    </Text>
+                  </DataList.Label>
+                  <DataList.Value>
+                    <Text size={{ initial: '1', md: '2' }} weight="medium">
+                      {_title3}
+                    </Text>
+                  </DataList.Value>
+                </DataList.Item>
+                <DataList.Item align="start" className="flex flex-col gap-0">
+                  <DataList.Label>
+                    <Text size="1">
+                      <Code variant="ghost">Year</Code>
+                    </Text>
+                  </DataList.Label>
+                  <DataList.Value>
+                    <Text size={{ initial: '1', md: '2' }}>
+                      <Code variant="ghost">
+                        {item.album.release_date.slice(0, 4)}
+                      </Code>
+                    </Text>
+                  </DataList.Value>
+                </DataList.Item>
+              </>
+            ))}
           <DataList.Item
             align="start"
             className={cx(
@@ -459,7 +460,13 @@ function DataItems() {
   )
 
   useEffect(() => {
-    if (canFetchMore && !isFetchingMore && !isLoadingMore && isVisible) {
+    if (
+      canFetchMore &&
+      !isFetchingMore &&
+      !isLoadingMore &&
+      isVisible &&
+      spotifyType !== 'recently-played'
+    ) {
       void fetchMore()
     }
   }, [canFetchMore, fetchMore, isFetchingMore, isLoadingMore, isVisible])
@@ -608,6 +615,7 @@ function MusicClient() {
                 <Flex gap="3">
                   <SelectRoot
                     defaultValue={spotifyTimeRange ?? INIT.time_range}
+                    disabled={spotifyType === 'recently-played'}
                     onValueChange={(value) => handleValueChangeTimeRange(value)}
                     size={{ initial: '3', md: '3' }}
                   >
@@ -658,6 +666,11 @@ function MusicClient() {
                       {/* @todo(radix) children */}
                       {/* @ts-ignore */}
                       <SelectItem value="top-tracks">Top Tracks</SelectItem>
+                      {/* @todo(radix) children */}
+                      {/* @ts-ignore */}
+                      <SelectItem value="recently-played">
+                        Recently Played
+                      </SelectItem>
                     </SelectContent>
                   </SelectRoot>
                 </Flex>
