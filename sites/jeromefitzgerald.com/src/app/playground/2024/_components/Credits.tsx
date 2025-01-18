@@ -22,7 +22,7 @@ function Credits({ id, relations }) {
   return (
     <Box
       className={cx(
-        'relative flex h-min w-full flex-none flex-col flex-nowrap content-center items-center justify-center gap-0 overflow-visible p-0',
+        'relative flex h-min w-full flex-none flex-col flex-nowrap place-content-center items-center gap-0 overflow-visible p-0',
         'z-0',
       )}
       id="container--credits"
@@ -98,7 +98,7 @@ function RelationContainerContent({ children }) {
   return (
     <Box
       className={cx(
-        'relative flex h-min w-full flex-none flex-col flex-nowrap content-start items-start justify-start gap-4 overflow-visible px-5 py-8',
+        'relative flex h-min w-full flex-none flex-col flex-nowrap place-content-start items-start gap-4 overflow-visible px-5 py-8',
         'bg-accentA-2',
         // 'border-gray-7 border-1 border-l-0 border-t-0',
         'md:h-full',
@@ -140,7 +140,7 @@ function RelationsContainer({ children }) {
       className={cx(
         // 'bg-accent-2',
         'size-full items-stretch',
-        'rounded-3 relative z-10 flex h-min w-full flex-row content-start items-start justify-start gap-0 overflow-hidden p-0',
+        'rounded-3 relative z-10 flex h-min w-full flex-row place-content-start items-start gap-0 overflow-hidden p-0',
         // 'flex-none flex-row flex-nowrap',
         'flex-row flex-wrap',
         'border-1 border-gray-7',

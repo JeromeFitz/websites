@@ -17,7 +17,7 @@ function ContainerFooter() {
       <Box className={cx('contents')}>
         <footer
           className={cx(
-            'relative flex h-min w-full flex-col flex-nowrap content-start items-start justify-start gap-12 overflow-visible p-0',
+            'relative flex h-min w-full flex-col flex-nowrap place-content-start items-start gap-12 overflow-visible p-0',
             'md:px-0 md:pb-0 md:pt-28',
           )}
           style={{ opacity: 1 }}

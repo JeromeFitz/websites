@@ -34,7 +34,7 @@ function HeaderSidebar({
         className={cx(
           'h-min w-full',
           // 'size-full',
-          'relative flex flex-none flex-col flex-nowrap content-start items-start justify-start gap-0 overflow-visible',
+          'relative flex flex-none flex-col flex-nowrap place-content-start items-start gap-0 overflow-visible',
           'px-0 pb-6 pt-0 md:p-0',
           hasBorder && 'rounded-3 border-gray-7 border-1',
           className,
@@ -44,7 +44,7 @@ function HeaderSidebar({
         {!isTitleEmpty && (
           <div
             className={cx(
-              'relative z-30 flex h-min w-full flex-none flex-col flex-nowrap content-start items-start justify-start gap-3 overflow-hidden p-5',
+              'relative z-30 flex h-min w-full flex-none flex-col flex-nowrap place-content-start items-start gap-3 overflow-hidden p-5',
               isTitleEmpty && 'hidden',
               '',
             )}
