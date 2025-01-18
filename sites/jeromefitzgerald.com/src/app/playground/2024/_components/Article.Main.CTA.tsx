@@ -42,7 +42,7 @@ function ArticleMainCTA({ color = 'accent', href = '/events', type = 'events' })
             </Box>
             <Box
               className={cx(
-                'relative flex h-min w-full flex-col flex-nowrap content-start items-start justify-start gap-0.5 p-0',
+                'relative flex h-min w-full flex-col flex-nowrap place-content-start items-start gap-0.5 p-0',
               )}
             >
               <Heading

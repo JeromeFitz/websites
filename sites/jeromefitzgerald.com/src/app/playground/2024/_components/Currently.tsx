@@ -67,7 +67,7 @@ function Currently() {
   return (
     <Box
       className={cx(
-        'relative flex h-min w-full flex-none flex-col flex-nowrap content-center items-center justify-center overflow-visible p-0',
+        'relative flex h-min w-full flex-none flex-col flex-nowrap place-content-center items-center overflow-visible p-0',
         // @todo(ui) can we align this with radix?
         'gap-[10px]',
         'order-[0]',
@@ -77,7 +77,7 @@ function Currently() {
     >
       <Box
         className={cx(
-          'relative flex h-min w-full flex-none flex-col flex-nowrap content-start items-start justify-start gap-6 overflow-visible p-0',
+          'relative flex h-min w-full flex-none flex-col flex-nowrap place-content-start items-start gap-6 overflow-visible p-0',
           'md:flex-row md:justify-between',
         )}
         style={{ opacity: 1 }}

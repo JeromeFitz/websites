@@ -52,7 +52,7 @@ function ShowSlugHeaderData({ properties }) {
               </DataList.Label>
               <DataList.Value
                 className={cx(
-                  'flex flex-none flex-row flex-wrap content-start items-start justify-start gap-2 md:gap-3',
+                  'flex flex-none flex-row flex-wrap place-content-start items-start gap-2 md:gap-3',
                   'before:[content:initial]',
                   'before:table',
                   '',
