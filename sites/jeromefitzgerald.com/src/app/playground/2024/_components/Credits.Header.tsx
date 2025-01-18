@@ -11,7 +11,7 @@ function CreditsHeader({
   return (
     <Box
       className={cx(
-        'relative flex h-min w-full flex-none flex-col flex-nowrap content-start items-start justify-start gap-2 overflow-hidden p-8 pl-4 will-change-transform',
+        'relative flex h-min w-full flex-none flex-col flex-nowrap place-content-start items-start gap-2 overflow-hidden p-8 pl-4 will-change-transform',
         'border-1 border-gray-7',
         'rounded-3 rounded-b-[0] border-b-0',
         // 'hidden',

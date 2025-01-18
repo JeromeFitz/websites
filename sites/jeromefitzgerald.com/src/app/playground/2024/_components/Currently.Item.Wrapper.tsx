@@ -82,7 +82,7 @@ function CurrentlyWrapper({ children, ...c }) {
             </Box>
             <Box
               className={cx(
-                'relative flex h-min w-full flex-col flex-nowrap content-start items-start justify-start gap-0.5 py-0 pl-6 pr-3',
+                'relative flex h-min w-full flex-col flex-nowrap place-content-start items-start gap-0.5 py-0 pl-6 pr-3',
               )}
             >
               <Heading
