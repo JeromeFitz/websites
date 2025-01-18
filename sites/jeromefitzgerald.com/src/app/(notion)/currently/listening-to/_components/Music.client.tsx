@@ -157,49 +157,48 @@ function DataItem({ item, type }) {
               </Text>
             </DataList.Value>
           </DataList.Item>
-          {type === 'top-tracks' ||
-            (type === 'recently-played' && (
-              <>
-                <DataList.Item align="start" className="flex flex-col gap-0">
-                  <DataList.Label>
-                    <Text size="1">
-                      <Code variant="ghost">Song</Code>
-                    </Text>
-                  </DataList.Label>
-                  <DataList.Value>
-                    <Text size={{ initial: '1', md: '2' }} weight="medium">
-                      {_title2}
-                    </Text>
-                  </DataList.Value>
-                </DataList.Item>
-                <DataList.Item align="start" className="flex flex-col gap-0">
-                  <DataList.Label>
-                    <Text size="1">
-                      <Code variant="ghost">Album</Code>
-                    </Text>
-                  </DataList.Label>
-                  <DataList.Value>
-                    <Text size={{ initial: '1', md: '2' }} weight="medium">
-                      {_title3}
-                    </Text>
-                  </DataList.Value>
-                </DataList.Item>
-                <DataList.Item align="start" className="flex flex-col gap-0">
-                  <DataList.Label>
-                    <Text size="1">
-                      <Code variant="ghost">Year</Code>
-                    </Text>
-                  </DataList.Label>
-                  <DataList.Value>
-                    <Text size={{ initial: '1', md: '2' }}>
-                      <Code variant="ghost">
-                        {item.album.release_date.slice(0, 4)}
-                      </Code>
-                    </Text>
-                  </DataList.Value>
-                </DataList.Item>
-              </>
-            ))}
+          {['recently-played', 'top-tracks'].includes(type) && (
+            <>
+              <DataList.Item align="start" className="flex flex-col gap-0">
+                <DataList.Label>
+                  <Text size="1">
+                    <Code variant="ghost">Song</Code>
+                  </Text>
+                </DataList.Label>
+                <DataList.Value>
+                  <Text size={{ initial: '1', md: '2' }} weight="medium">
+                    {_title2}
+                  </Text>
+                </DataList.Value>
+              </DataList.Item>
+              <DataList.Item align="start" className="flex flex-col gap-0">
+                <DataList.Label>
+                  <Text size="1">
+                    <Code variant="ghost">Album</Code>
+                  </Text>
+                </DataList.Label>
+                <DataList.Value>
+                  <Text size={{ initial: '1', md: '2' }} weight="medium">
+                    {_title3}
+                  </Text>
+                </DataList.Value>
+              </DataList.Item>
+              <DataList.Item align="start" className="flex flex-col gap-0">
+                <DataList.Label>
+                  <Text size="1">
+                    <Code variant="ghost">Year</Code>
+                  </Text>
+                </DataList.Label>
+                <DataList.Value>
+                  <Text size={{ initial: '1', md: '2' }}>
+                    <Code variant="ghost">
+                      {item.album.release_date.slice(0, 4)}
+                    </Code>
+                  </Text>
+                </DataList.Value>
+              </DataList.Item>
+            </>
+          )}
           <DataList.Item
             align="start"
             className={cx(
@@ -622,7 +621,10 @@ function MusicClient() {
                     <SelectTrigger
                       // @todo(radix) asChild this?
                       // @ts-ignore
-                      className="w-full md:w-full"
+                      className={cx(
+                        'w-full md:w-full',
+                        spotifyType === 'recently-played' && 'cursor-not-allowed',
+                      )}
                       placeholder="Time Range:"
                       // radius="full"
                     />
