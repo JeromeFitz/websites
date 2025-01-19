@@ -57,7 +57,7 @@ const getKey = ({ limit, offset, slug, time_range }) => {
   }
 
   if (slug === 'recently-played') {
-    const _params = `?limit=50`
+    const _params = `?limit=${limit}`
     const params = _slug(_params)
     const key = `${keyPrefixSpotify}/${slug}/${params}`.toLowerCase()
     return {
