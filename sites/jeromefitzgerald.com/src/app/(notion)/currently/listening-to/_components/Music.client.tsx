@@ -66,16 +66,12 @@ function addS(str) {
   return `${str}’${poss}`
 }
 
-/**
- * @todo(spotify) uh... what is going on with short_term ?
- */
 const ranges = [
-  { active: false, slug: 'short_term', title: 'Past Month' },
+  { active: true, slug: 'short_term', title: 'Past Month' },
   {
     active: true,
     slug: 'medium_term',
-    // title: 'Past Six Months',
-    title: 'Recent',
+    title: 'Past Six Months',
   },
   { active: true, slug: 'long_term', title: 'All Time' },
 ]
@@ -135,6 +131,7 @@ function DataItem({ item, type }) {
   }
   const genres = getArrayFirstX(_genres, GENRE_MAX)
   const genresExtra = getArrayCountOfOverage(_genres, GENRE_MAX)
+  const isTrack = ['recently-played', 'top-tracks'].includes(type)
 
   return (
     <>
@@ -157,7 +154,7 @@ function DataItem({ item, type }) {
               </Text>
             </DataList.Value>
           </DataList.Item>
-          {['recently-played', 'top-tracks'].includes(type) && (
+          {isTrack && (
             <>
               <DataList.Item align="start" className="flex flex-col gap-0">
                 <DataList.Label>
@@ -203,7 +200,7 @@ function DataItem({ item, type }) {
             align="start"
             className={cx(
               'flex-col gap-0 md:gap-1',
-              type === 'top-tracks' ? 'hidden' : 'flex',
+              type === isTrack ? 'hidden' : 'flex',
             )}
           >
             <DataList.Label>
@@ -435,7 +432,7 @@ function DataItems() {
   } = useSWRInfinitePages(
     (pageIndex) =>
       getKey(pageIndex, {
-        limit,
+        limit: spotifyType === 'recently-played' ? 50 : limit,
         time_range: spotifyTimeRange ?? INIT.time_range,
         type: spotifyType ?? INIT.type,
         url,
@@ -444,7 +441,7 @@ function DataItems() {
     {
       // @ts-ignore
       dataPath: 'items',
-      limit: 10,
+      limit: spotifyType === 'recently-played' ? 50 : limit,
       //
       refreshInterval: HOUR,
       revalidateAll: false,

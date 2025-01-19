@@ -13,7 +13,7 @@ import { CurrentlyItem } from './Currently.Item'
 import { CurrentlyWrapper } from './Currently.Item.Wrapper'
 
 // const key = getKey(0, { ...INIT, time_range: 'short_term', type: 'top-tracks' })
-const key = getKey(0, { ...INIT, limit: 50, type: 'recently-played' })
+const key = getKey(0, { ...INIT, limit: 1, type: 'recently-played' })
 
 const options = {}
 
