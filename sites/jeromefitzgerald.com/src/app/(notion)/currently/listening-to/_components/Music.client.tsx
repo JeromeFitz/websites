@@ -26,6 +26,8 @@ import {
 } from '@radix-ui/themes/dist/esm/components/select.js'
 import { Strong } from '@radix-ui/themes/dist/esm/components/strong.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
+// import { getUnixTime } from 'date-fns'
+// import _last from 'lodash/last.js'
 import Image from 'next/image'
 // eslint-disable-next-line no-restricted-imports
 import NextLink from 'next/link'
@@ -417,6 +419,7 @@ function DataItems() {
 
   const { spotifyTimeRange, spotifyType } = useStore()
 
+  // const [before] = useState(getUnixTime(Date.now()))
   const [limit] = useState(10)
   const [url] = useState(INIT.url)
 
@@ -454,6 +457,16 @@ function DataItems() {
       revalidateOnReconnect: false,
     },
   )
+
+  // if (spotifyType === 'recently-played') {
+  //   console.dir(`before: ${before}`)
+  //   console.dir(`cursors.before:`)
+  //   console.dir(data[0].played_at)
+  //   const bFirst = getUnixTime(data[0]?.played_at)
+  //   const bLast = getUnixTime(_last(data).played_at)
+  //   console.dir(`bFirst: ${bFirst}000`)
+  //   console.dir(`bLast:  ${bLast}000`)
+  // }
 
   useEffect(() => {
     if (

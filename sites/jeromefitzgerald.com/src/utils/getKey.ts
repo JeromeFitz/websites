@@ -1,5 +1,15 @@
 /**
  * Spotify API
+ *
+ * @todo(spotify)
+ *
+ * recently-played cursor is: after|before
+ * - its history is 50 records
+ * - no need to cycle through cursors indefinetly
+ * - just request limit of 50
+ *
+ * top-artists|tracks cursor is: offset
+ * - works well with pageIndex
  */
 const getKey = (pageIndex, { limit, time_range, type, url }) => {
   const offset = pageIndex === 0 ? 0 : 10 * pageIndex

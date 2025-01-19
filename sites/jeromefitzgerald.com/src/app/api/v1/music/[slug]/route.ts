@@ -47,7 +47,7 @@ const SLUG__VALIDATION = [
 ]
 const dataEmpty = { debug: { latency: 0, type: 'api' }, is_playing: false }
 
-const getKey = ({ limit, offset, slug, time_range }) => {
+const getKey = ({ before, limit, offset, slug, time_range }) => {
   if (slug === 'now-playing') {
     const key = `${keyPrefixSpotify}/${slug}`
     return {
@@ -57,7 +57,7 @@ const getKey = ({ limit, offset, slug, time_range }) => {
   }
 
   if (slug === 'recently-played') {
-    const _params = `?limit=${limit}`
+    const _params = `?limit=${limit}${before > 0 ? `&before=${before}` : ''}`
     const params = _slug(_params)
     const key = `${keyPrefixSpotify}/${slug}/${params}`.toLowerCase()
     return {
@@ -105,6 +105,7 @@ export async function GET(
   const params = await props.params
   const slug = params.slug
   const { searchParams } = new URL(request.url)
+  const before = (searchParams.get('before') ?? 0) as number
   const limit = (searchParams.get('limit') ?? 10) as number
   const offset = (searchParams.get('offset') ?? 0) as number
   const time_range = searchParams.get('time_range') || 'medium_term'
@@ -123,7 +124,7 @@ export async function GET(
   /**
    * @cache
    */
-  const { evictionPolicy, key } = getKey({ limit, offset, slug, time_range })
+  const { evictionPolicy, key } = getKey({ before, limit, offset, slug, time_range })
 
   let start = Date.now()
   //
@@ -160,7 +161,11 @@ export async function GET(
         break
       case 'recently-played':
         start = Date.now()
-        data = await spotify.get.recentlyPlayed({ limit, withImages: true })
+        data = await spotify.get.recentlyPlayed({
+          before: before > 0 ? before : undefined,
+          limit,
+          withImages: true,
+        })
         result.data = data
         result.debug = {
           key,
