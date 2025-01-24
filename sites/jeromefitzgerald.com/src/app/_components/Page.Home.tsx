@@ -103,8 +103,6 @@ const PageHomeOld = forwardRef(function PageHome(props, forwardedRef) {
             drama or musical number, and a healthy career in engineering leadership.
           </Text>
           <Box my="2" py="2" width="100%">
-            {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-            {/* @ts-ignore */}
             <AspectRatio ratio={4 / 3}>
               <NextImage {...image} />
             </AspectRatio>

@@ -609,6 +609,8 @@ function MusicClient() {
                 )}
               >
                 <Flex gap="3">
+                  {/* @todo(radix) children */}
+                  {/* @ts-ignore */}
                   <SelectRoot
                     defaultValue={spotifyTimeRange ?? INIT.time_range}
                     disabled={spotifyType === 'recently-played'}
@@ -616,24 +618,17 @@ function MusicClient() {
                     size={{ initial: '3', md: '3' }}
                   >
                     <SelectTrigger
-                      // @todo(radix) asChild this?
-                      // @ts-ignore
                       className={cx(
                         'w-full md:w-full',
                         spotifyType === 'recently-played' && 'cursor-not-allowed',
                       )}
                       placeholder="Time Range:"
-                      // radius="full"
                     />
-                    {/* @todo(radix) className */}
-                    {/* @ts-ignore */}
                     <SelectContent className="z-50 w-full" position="popper">
                       {ranges.map((range) => {
                         if (!range.active) return null
                         return (
                           <Fragment key={range.slug}>
-                            {/* @todo(radix) children */}
-                            {/* @ts-ignore */}
                             <SelectItem className="w-full" value={range.slug}>
                               {range.title}
                             </SelectItem>
@@ -644,29 +639,20 @@ function MusicClient() {
                   </SelectRoot>
                 </Flex>
                 <Flex gap="3">
+                  {/* @todo(radix) children */}
+                  {/* @ts-ignore */}
                   <SelectRoot
                     defaultValue={spotifyType ?? INIT.type}
                     onValueChange={(value) => handleValueChangeType(value)}
                     size="3"
                   >
                     <SelectTrigger
-                      // @todo(radix) asChild this?
-                      // @ts-ignore
                       className="z-50 w-full md:w-full"
                       placeholder="Type:"
-                      // radius="full"
                     />
-                    {/* @todo(radix) children */}
-                    {/* @ts-ignore */}
                     <SelectContent className="z-50 w-full" position="popper">
-                      {/* @todo(radix) children */}
-                      {/* @ts-ignore */}
                       <SelectItem value="top-artists">Top Artists</SelectItem>
-                      {/* @todo(radix) children */}
-                      {/* @ts-ignore */}
                       <SelectItem value="top-tracks">Top Tracks</SelectItem>
-                      {/* @todo(radix) children */}
-                      {/* @ts-ignore */}
                       <SelectItem value="recently-played">
                         Recently Played
                       </SelectItem>
