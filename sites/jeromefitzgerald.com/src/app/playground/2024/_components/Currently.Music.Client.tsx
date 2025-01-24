@@ -20,12 +20,11 @@ const options = {}
 function CurrentlyMusicClient({ titleSub, ...c }) {
   const { color, href, icon, id, title } = c
   const propsParent = { color, href, icon, id, title }
-  const { data, error, isLoading } = useSWR(key, fetcher, options)
+  const { data, error, isLoading }: { data: any; error: any; isLoading: boolean } =
+    useSWR(key, fetcher, options)
 
-  const hasError = !!error
+  const hasError = !!error || data?.items === undefined
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
   const top = hasError ? {} : data?.items[0]
 
   const headline = hasError ? titleSub[0] : top?.artist
