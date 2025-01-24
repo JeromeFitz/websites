@@ -1,9 +1,7 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 'use client'
 import { MoonIcon, SunIcon } from '@jeromefitz/ds/components/Icon/index'
 import { cx } from '@jeromefitz/ds/utils/cx'
 
-// import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
 import {
   Item as RadioCardItem,
   Root as RadioCardRoot,
@@ -15,7 +13,6 @@ function FooterThemeClient({ isLoading }) {
   const { setTheme, theme } = useTheme()
 
   return (
-    // @ts-ignore
     <RadioCardRoot
       className={cx(
         '[--accent-indicator:var(--pink-6)]',
@@ -27,9 +24,6 @@ function FooterThemeClient({ isLoading }) {
       size="1"
     >
       <Skeleton loading={isLoading}>
-        {/* @todo(types) radix */}
-        {}
-        {/* @ts-ignore */}
         <RadioCardItem
           className="hover:cursor-pointer"
           onClick={() => setTheme('dark')}
@@ -39,9 +33,6 @@ function FooterThemeClient({ isLoading }) {
         </RadioCardItem>
       </Skeleton>
       <Skeleton loading={isLoading}>
-        {/* @todo(types) radix */}
-        {}
-        {/* @ts-ignore */}
         <RadioCardItem
           className="hover:cursor-pointer"
           onClick={() => setTheme('light')}

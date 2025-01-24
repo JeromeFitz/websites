@@ -9,9 +9,6 @@ import {
   Item as DropdownMenuItem,
   Root as DropdownMenuRoot,
   Separator as DropdownMenuSeparator,
-  // Sub as DropdownMenuSub,
-  // SubContent as DropdownMenuSubContent,
-  // SubTrigger as DropdownMenuSubTrigger,
   Trigger as DropdownMenuTrigger,
   TriggerIcon as DropdownMenuTriggerIcon,
 } from '@radix-ui/themes/dist/esm/components/dropdown-menu.js'
@@ -61,8 +58,9 @@ function NavigationTertiary({ className, order = 0 }) {
     >
       <div className={cx('contents')}>
         <div className={cx()}>
+          {/* @todo(radix) children */}
+          {/* @ts-ignore */}
           <DropdownMenuRoot modal={false}>
-            {/* @ts-ignore */}
             <DropdownMenuTrigger
               className={cx(isDisabled && 'hover:cursor-not-allowed')}
             >
@@ -70,7 +68,6 @@ function NavigationTertiary({ className, order = 0 }) {
                 aria-label={
                   isDisabled ? 'Disabled Secondary Menu' : 'Secondary Menu'
                 }
-                // asChild
                 className={cx(
                   'bg-accent-3 hover:bg-accent-4 active:bg-accent-5',
                   'text-accent-11 hover:text-accent-11 active:text-accent-11',
@@ -87,18 +84,15 @@ function NavigationTertiary({ className, order = 0 }) {
                   gap: 'var(--space-2)',
                   justifyContent: 'space-between',
                   minWidth: '165px',
-                  // marginLeft: '4px',
                   textAlign: 'left',
                 }}
                 variant="outline"
               >
-                {/* <div> */}
                 <div className="flex items-center justify-start gap-2">
                   {!isDisabled && <DropdownMenuTriggerIconType className="ml-1" />}
                   {zzz_menuTertiaryActive?.title}
                 </div>
                 {!isDisabled && <DropdownMenuTriggerIcon />}
-                {/* </div> */}
               </Button>
             </DropdownMenuTrigger>
             {!isDisabled && (

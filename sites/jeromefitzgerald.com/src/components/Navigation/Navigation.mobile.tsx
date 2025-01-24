@@ -52,7 +52,6 @@ const AccordionNavigation = () => {
         'border-1 border-black/5 dark:border-white/10',
       )}
       // @todo(types) radix
-
       // @ts-ignore
       collapsible
       defaultValue="item-1"
@@ -63,7 +62,6 @@ const AccordionNavigation = () => {
         // const Icon = menu.icon
         return (
           // @todo(types) radix
-
           // @ts-ignore
           <AccordionItem key={`nav--mobile--${menu.id}`} value={menu.id}>
             <AccordionTrigger>{menu.title}</AccordionTrigger>

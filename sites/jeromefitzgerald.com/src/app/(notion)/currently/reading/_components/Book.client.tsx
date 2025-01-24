@@ -360,25 +360,20 @@ function BookPage({ books, title }) {
       <ContainerWithSidebar>
         <HeaderSidebar className="!size-full" hasBorder={false} title="">
           <>
+            {/* @todo(radix) children */}
+            {/* @ts-ignore */}
             <SelectRoot
               defaultValue={bookStatus ?? 'in-progress'}
               onValueChange={(value) => handleValueChangeBookStatus(value)}
               size={{ initial: '3', md: '3' }}
             >
               <SelectTrigger
-                // @todo(radix) asChild this?
-                // @ts-ignore
                 className="w-full hover:cursor-pointer"
                 placeholder="Time Range:"
-                // radius="full"
               />
-              {/* @todo(radix) className */}
-              {/* @ts-ignore */}
               <SelectContent className="z-50 w-full" position="popper">
                 {books.map((book) => {
                   return (
-                    // @todo(radix) asChild this?
-                    // @ts-ignore
                     <SelectItem
                       className="group hover:cursor-pointer"
                       key={`si--${book.id}`}

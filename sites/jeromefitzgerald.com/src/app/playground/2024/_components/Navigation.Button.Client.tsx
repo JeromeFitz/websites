@@ -24,17 +24,13 @@ function NavigationButtonClient() {
     <Skeleton loading={isLoading}>
       <Box
         asChild
-        className={cx(
-          'z-50 h-full rounded-full backdrop-blur transition-colors',
-          // 'bg-whiteA-9 dark:bg-blackA-9',
-        )}
+        className={cx('z-50 h-full rounded-full backdrop-blur transition-colors')}
       >
         <SegmentedControl.Root
           className={cx(
             'size-full',
             'bg-whiteA-3 hover:bg-whiteA-4 active:bg-whiteA-5',
             'dark:bg-blackA-3 hover:dark:bg-blackA-4 active:dark:bg-blackA-5',
-            // 'text-accent-12 hover:text-accent-12 active:text-accent-12',
             '',
           )}
           defaultValue={theme || 'dark'}
@@ -44,24 +40,10 @@ function NavigationButtonClient() {
           radius="full"
           variant="surface"
         >
-          {/* @todo(types) radix */}
-          {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment  */}
-          {/* @ts-ignore */}
-          <SegmentedControl.Item
-            // aria-label="Dark theme"
-            suppressHydrationWarning
-            value="dark"
-          >
+          <SegmentedControl.Item suppressHydrationWarning value="dark">
             <MoonIcon />
           </SegmentedControl.Item>
-          {/* @todo(types) radix */}
-          {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment  */}
-          {/* @ts-ignore */}
-          <SegmentedControl.Item
-            // aria-label="Light theme"
-            suppressHydrationWarning
-            value="light"
-          >
+          <SegmentedControl.Item suppressHydrationWarning value="light">
             <SunIcon />
           </SegmentedControl.Item>
         </SegmentedControl.Root>
