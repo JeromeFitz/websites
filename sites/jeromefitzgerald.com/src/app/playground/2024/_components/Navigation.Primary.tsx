@@ -62,6 +62,8 @@ function NavigationPrimary({ order = 0 }) {
       style={{ opacity: 1, order }}
     >
       <div className={cx('contents')}>
+        {/* @todo(radix) children */}
+        {/* @ts-ignore */}
         <PopoverRoot
           modal={true}
           onOpenChange={() => {
@@ -70,7 +72,6 @@ function NavigationPrimary({ order = 0 }) {
           }}
           open={isPopover}
         >
-          {/* @ts-ignore */}
           <PopoverTrigger asChild>
             <Button
               aria-label="Jerome"
@@ -112,7 +113,6 @@ function NavigationPrimary({ order = 0 }) {
               p="0"
             >
               <Inset mb={{ initial: '6', md: '4' }} p="0" side="top">
-                {/* @ts-ignore */}
                 <AspectRatio ratio={4 / 3}>
                   <NextImage {...image} />
                 </AspectRatio>

@@ -9,7 +9,6 @@ import { forwardRef } from 'react'
 
 const AccordionItem = forwardRef(
   // @todo(types) radix
-
   // @ts-ignore
   ({ children, className, ...props }: AccordionItemProps, forwardedRef) => (
     <Accordion.Item
