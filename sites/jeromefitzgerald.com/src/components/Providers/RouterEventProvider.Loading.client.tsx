@@ -4,7 +4,6 @@ import { cx } from '@jeromefitz/ds/utils/cx'
 import { useNProgress } from '@tanem/react-nprogress'
 import _find from 'lodash/find.js'
 import { usePathname } from 'next/navigation.js'
-// import { motion } from 'framer-motion'
 import { useEffect } from 'react'
 
 import { useStore as _useStore, useShallow } from '@/store/index'
@@ -31,10 +30,8 @@ const Loading: React.FC<{ isRouteChanging: boolean }> = ({ isRouteChanging }) =>
   const pathname = usePathname()
   const {
     zzz_menuSecondary,
-    // zzz_menuSecondaryActive,
     zzz_menuSecondaryActiveSet,
     zzz_menuTertiary,
-    // zzz_menuTertiaryActive,
     zzz_menuTertiaryActiveSet,
   } = useStore()
 
@@ -44,22 +41,10 @@ const Loading: React.FC<{ isRouteChanging: boolean }> = ({ isRouteChanging }) =>
       ? document.body.classList.remove('loading')
       : document.body.classList.add('loading')
 
-    // console.dir(`is this called?`)
-    // console.dir(`zzz_menuSecondary`)
-    // console.dir(zzz_menuSecondary)
-    // console.dir(`zzz_menuTertiary`)
-    // console.dir(zzz_menuTertiary)
-
     const pathnameSplit = pathname.split('/')
-    // console.dir(`pathnameSplit...`)
-    // console.dir(pathnameSplit)
 
     let type = pathnameSplit[1]
-    // let slug = pathnameSplit[2]
-    // if (['books', 'cooking', 'music'].includes(type)) {
-    //   // slug = type
-    //   type = 'currently'
-    // }
+
     if (pathname === '/') type = 'home'
     const mt2 = _find(zzz_menuSecondary, { id: type })
     const hasTertiary = mt2?.hasSubNavigation
