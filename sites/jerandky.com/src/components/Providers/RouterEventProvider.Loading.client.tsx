@@ -2,7 +2,6 @@
 import { cx } from '@jeromefitz/ds/utils/cx'
 
 import { useNProgress } from '@tanem/react-nprogress'
-// import { motion } from 'framer-motion'
 import { useEffect } from 'react'
 
 const Loading: React.FC<{ isRouteChanging: boolean }> = ({ isRouteChanging }) => {
@@ -35,11 +34,6 @@ const Loading: React.FC<{ isRouteChanging: boolean }> = ({ isRouteChanging }) =>
         '',
       )}
       id="loading--status"
-      // animate={{
-      //   opacity: isFinished ? [1, 0.75, 0.5, 0.25, 0] : [0, 0.25, 0.5, 0.75, 1],
-      //   scaleX: isFinished ? 1 : progress,
-      // }}
-      // transition={{ duration: 0.75 }}
     />
   )
 }

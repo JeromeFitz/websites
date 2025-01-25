@@ -755,9 +755,6 @@ importers:
       fathom-client:
         specifier: 3.7.2
         version: 3.7.2
-      framer-motion:
-        specifier: 12.0.5
-        version: 12.0.5(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       github-slugger:
         specifier: 2.0.0
         version: 2.0.0
