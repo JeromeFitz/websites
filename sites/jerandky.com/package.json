@@ -41,7 +41,7 @@
     "@jeromefitz/notion": "5.1.1",
     "@jeromefitz/spotify": "4.2.0-canary.2",
     "@jeromefitz/utils": "3.1.1",
-    "@mantine/hooks": "7.16.1",
+    "@mantine/hooks": "7.16.2",
     "@notionhq/client": "2.2.15",
     "@radix-ui/colors": "3.0.0",
     "@radix-ui/react-accessible-icon": "1.1.1",
