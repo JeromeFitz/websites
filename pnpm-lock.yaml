@@ -38,8 +38,8 @@ importers:
         specifier: 2.1.3
         version: 2.1.3(is-ci@4.1.0)
       '@jeromefitz/prettier-config':
-        specifier: 2.1.1
-        version: 2.1.1
+        specifier: 2.1.2
+        version: 2.1.2
       '@jeromefitz/release-notes-generator':
         specifier: 3.1.2
         version: 3.1.2(lodash@4.17.21)
@@ -299,8 +299,8 @@ importers:
   packages/next-config:
     devDependencies:
       '@jeromefitz/prettier-config':
-        specifier: 2.1.1
-        version: 2.1.1
+        specifier: 2.1.2
+        version: 2.1.2
       '@next/bundle-analyzer':
         specifier: 15.1.6
         version: 15.1.6
@@ -2485,8 +2485,8 @@ packages:
       '@jeromefitz/utils': ^3.0.0
       lodash: ^4.17.21
 
-  '@jeromefitz/prettier-config@2.1.1':
-    resolution: {integrity: sha512-GUnP7U9ADge0JhezMR2St9zyEhflmPx/5ulGRQ4XTZp19Ig7BuG3UQGAF3PH7AqjYrK6afrXwFmRKDsHQci8PA==}
+  '@jeromefitz/prettier-config@2.1.2':
+    resolution: {integrity: sha512-gFCrMJjNYeai7UInowZXCNc/4pmq5EglIu/u4V/2QJJXSK1uz3UlNSHAQhc27EFoGrbH2YrrlmmMpkKd+ug2eg==}
     engines: {node: '>=20'}
 
   '@jeromefitz/release-notes-generator@3.1.2':
@@ -8714,8 +8714,8 @@ packages:
     peerDependencies:
       prettier: ^3.0.3
 
-  prettier-plugin-tailwindcss@0.6.10:
-    resolution: {integrity: sha512-ndj2WLDaMzACnr1gAYZiZZLs5ZdOeBYgOsbBmHj3nvW/6q8h8PymsXiEnKvj/9qgCCAoHyvLOisoQdIcsDvIgw==}
+  prettier-plugin-tailwindcss@0.6.11:
+    resolution: {integrity: sha512-YxaYSIvZPAqhrrEpRtonnrXdghZg1irNg4qrjboCXrpybLWVs55cW2N3juhspVJiO0JBvYJT8SYsJpc8OQSnsA==}
     engines: {node: '>=14.21.3'}
     peerDependencies:
       '@ianvs/prettier-plugin-sort-imports': '*'
@@ -11921,11 +11921,11 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  '@jeromefitz/prettier-config@2.1.1':
+  '@jeromefitz/prettier-config@2.1.2':
     dependencies:
       prettier: 3.4.2
       prettier-plugin-pkg: 0.18.1(prettier@3.4.2)
-      prettier-plugin-tailwindcss: 0.6.10(prettier@3.4.2)
+      prettier-plugin-tailwindcss: 0.6.11(prettier@3.4.2)
     transitivePeerDependencies:
       - '@ianvs/prettier-plugin-sort-imports'
       - '@prettier/plugin-pug'
@@ -19046,7 +19046,7 @@ snapshots:
     dependencies:
       prettier: 3.4.2
 
-  prettier-plugin-tailwindcss@0.6.10(prettier@3.4.2):
+  prettier-plugin-tailwindcss@0.6.11(prettier@3.4.2):
     dependencies:
       prettier: 3.4.2
 
