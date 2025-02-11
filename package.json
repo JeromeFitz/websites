@@ -41,7 +41,7 @@
     "@manypkg/cli": "0.23.0",
     "@types/lodash": "4.17.15",
     "@types/node": "22.10.2",
-    "ccommit": "3.1.0",
+    "ccommit": "3.1.1",
     "concurrently": "9.1.2",
     "dotenv": "16.4.7",
     "husky": "9.1.7",
