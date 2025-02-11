@@ -59,8 +59,8 @@ importers:
         specifier: 22.10.2
         version: 22.10.2
       ccommit:
-        specifier: 3.1.0
-        version: 3.1.0
+        specifier: 3.1.1
+        version: 3.1.1
       concurrently:
         specifier: 9.1.2
         version: 9.1.2
@@ -5668,8 +5668,8 @@ packages:
     resolution: {integrity: sha512-roIFONhcxog0JSSWbvVAh3OocukmSgpqOH6YpMkCvav/ySIV3JKg4Dc8vYtQjYi/UxpNE36r/9v+VqTQqgkYmw==}
     engines: {node: '>=4'}
 
-  ccommit@3.1.0:
-    resolution: {integrity: sha512-ruUohElK8tdpW5qaRHzq9n+sVdpA8zoBW9xyajeI9+ZWZXQpA7avpD7eprkru1zhacdTBWiEGJOisCGz3S6dmA==}
+  ccommit@3.1.1:
+    resolution: {integrity: sha512-hw9M0u7q6FJuqsiqeaVEH9slO9U+Vb1yEEjjXPOiRxySNWA2LVcdisXcmVZapXTk0VKr31oI2FS9u2eD+OnX3A==}
     engines: {node: '>=20'}
     hasBin: true
 
@@ -6911,8 +6911,8 @@ packages:
   functions-have-names@1.2.3:
     resolution: {integrity: sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==}
 
-  fuse.js@7.0.0:
-    resolution: {integrity: sha512-14F4hBIxqKvD4Zz/XjDc3y94mNZN6pRv3U13Udo0lNLCWRBUsrMv2xwcF/y/Z5sV6+FQW+/ow68cHpm4sunt8Q==}
+  fuse.js@7.1.0:
+    resolution: {integrity: sha512-trLf4SzuuUxfusZADLINj+dE8clK1frKdmqiJNb1Es75fmI5oY6X2mxLVUciLLjxqw/xr72Dhy+lER6dGd02FQ==}
     engines: {node: '>=10'}
 
   geist@1.3.1:
@@ -15867,12 +15867,12 @@ snapshots:
 
   case-sensitive-paths-webpack-plugin@2.4.0: {}
 
-  ccommit@3.1.0:
+  ccommit@3.1.1:
     dependencies:
       ansi-colors: 4.1.3
       enquirer: 2.4.1
       execa: 9.5.2
-      fuse.js: 7.0.0
+      fuse.js: 7.1.0
       meow: 13.2.0
 
   chai@5.1.1:
@@ -17423,7 +17423,7 @@ snapshots:
 
   functions-have-names@1.2.3: {}
 
-  fuse.js@7.0.0: {}
+  fuse.js@7.1.0: {}
 
   geist@1.3.1(next@15.1.6(react-dom@19.0.0(react@19.0.0))(react@19.0.0)):
     dependencies:
