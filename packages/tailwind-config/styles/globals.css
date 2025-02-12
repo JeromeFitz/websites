@@ -32,20 +32,23 @@
   /* --font-name-sans: 'NameSans'; */
   /* --font-name-sans-mono: 'NameSansMono'; */
 
-  --default-font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont,
-    'Segoe UI (Custom)', Roboto, 'Helvetica Neue', 'Open Sans (Custom)', system-ui,
-    sans-serif, 'Apple Color Emoji';
+  --default-font-family:
+    var(--font-geist-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI (Custom)',
+    Roboto, 'Helvetica Neue', 'Open Sans (Custom)', system-ui, sans-serif,
+    'Apple Color Emoji';
 
-  --code-font-family: var(--font-geist-mono), 'Menlo', 'Consolas (Custom)',
-    'Bitstream Vera Sans Mono', monospace, 'Apple Color Emoji', 'Segoe UI Emoji';
+  --code-font-family:
+    var(--font-geist-mono), 'Menlo', 'Consolas (Custom)', 'Bitstream Vera Sans Mono',
+    monospace, 'Apple Color Emoji', 'Segoe UI Emoji';
 
   --em-font-family: 'Times New Roman', 'Times', serif;
 
   --quote-font-family: 'Times New Roman', 'Times', serif;
 
   /* NameSans / Inter */
-  font-feature-settings: 'calt', 'zero', 'cv01', 'cv02', 'cv03', 'cv04', 'cv05',
-    'cv06', 'cv08', 'cv09', 'cv10', 'cv11';
+  font-feature-settings:
+    'calt', 'zero', 'cv01', 'cv02', 'cv03', 'cv04', 'cv05', 'cv06', 'cv08', 'cv09',
+    'cv10', 'cv11';
   font-variation-settings: 'opsz' 32;
 
   /* Gray 00, 100 */
