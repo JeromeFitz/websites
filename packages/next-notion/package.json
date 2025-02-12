@@ -116,7 +116,7 @@
     "@notionhq/client": "2.2.15",
     "date-fns": "4.1.0",
     "ms": "3.0.0-canary.1",
-    "next": "15.1.6",
+    "next": "15.1.7",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "server-only": "0.0.1",
