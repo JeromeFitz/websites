@@ -405,8 +405,8 @@ importers:
         specifier: 1.34.4
         version: 1.34.4
       '@vercel/analytics':
-        specifier: 1.4.1
-        version: 1.4.1(next@15.1.6(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
+        specifier: 1.5.0
+        version: 1.5.0(next@15.1.6(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
       '@vercel/speed-insights':
         specifier: 1.1.0
         version: 1.1.0(next@15.1.6(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
@@ -738,8 +738,8 @@ importers:
         specifier: 1.34.4
         version: 1.34.4
       '@vercel/analytics':
-        specifier: 1.4.1
-        version: 1.4.1(next@15.1.6(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
+        specifier: 1.5.0
+        version: 1.5.0(next@15.1.6(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
       clsx:
         specifier: 2.1.1
         version: 2.1.1
@@ -1033,8 +1033,8 @@ importers:
         specifier: 1.34.4
         version: 1.34.4
       '@vercel/analytics':
-        specifier: 1.4.1
-        version: 1.4.1(next@15.1.6(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
+        specifier: 1.5.0
+        version: 1.5.0(next@15.1.6(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
       '@vercel/speed-insights':
         specifier: 1.1.0
         version: 1.1.0(next@15.1.6(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
@@ -5091,8 +5091,8 @@ packages:
   '@upstash/redis@1.34.4':
     resolution: {integrity: sha512-AZx2iD5s1Pu/KCrRA7KVCffu3NSoaYnNY7N9YI7aLAYhcJfsriQKTe+8OxQWJqGqFbrvm17Lyr9HFnDLvqNpfA==}
 
-  '@vercel/analytics@1.4.1':
-    resolution: {integrity: sha512-ekpL4ReX2TH3LnrRZTUKjHHNpNy9S1I7QmS+g/RQXoSUQ8ienzosuX7T9djZ/s8zPhBx1mpHP/Rw5875N+zQIQ==}
+  '@vercel/analytics@1.5.0':
+    resolution: {integrity: sha512-MYsBzfPki4gthY5HnYN7jgInhAZ7Ac1cYDoRWFomwGHWEX7odTEzbtg9kf/QSo7XEsEAqlQugA6gJ2WS2DEa3g==}
     peerDependencies:
       '@remix-run/react': ^2
       '@sveltejs/kit': ^1 || ^2
@@ -15164,7 +15164,7 @@ snapshots:
     dependencies:
       crypto-js: 4.2.0
 
-  '@vercel/analytics@1.4.1(next@15.1.6(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)':
+  '@vercel/analytics@1.5.0(next@15.1.6(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)':
     optionalDependencies:
       next: 15.1.6(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react: 19.0.0
