@@ -332,8 +332,8 @@ importers:
         specifier: 0.33.5
         version: 0.33.5
       zod:
-        specifier: 3.24.1
-        version: 3.24.1
+        specifier: 3.24.2
+        version: 3.24.2
 
   packages/next-notion:
     dependencies:
@@ -840,8 +840,8 @@ importers:
         specifier: 1.0.9
         version: 1.0.9
       zod:
-        specifier: 3.24.1
-        version: 3.24.1
+        specifier: 3.24.2
+        version: 3.24.2
       zustand:
         specifier: 5.0.3
         version: 5.0.3(immer@10.1.1)(react@19.0.0)
@@ -1147,8 +1147,8 @@ importers:
         specifier: 0.40.0
         version: 0.40.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       zod:
-        specifier: 3.24.1
-        version: 3.24.1
+        specifier: 3.24.2
+        version: 3.24.2
       zustand:
         specifier: 5.0.3
         version: 5.0.3(immer@10.1.1)(react@19.0.0)
@@ -10825,8 +10825,8 @@ packages:
     resolution: {integrity: sha512-Ct97huExsu7cWeEjmrXlofevF8CvzUglJ4iGUet5B8xn1oumtAZBpHU4GzYuoE6PVqcZ5hghtBrSlhwHuR1Jmw==}
     engines: {node: '>=18'}
 
-  zod@3.24.1:
-    resolution: {integrity: sha512-muH7gBL9sI1nciMZV67X5fTKKBLtwpZ5VBp1vsOQzj1MhrBZ4wlVCm3gedKZWLp0Oyel8sIGfeiz54Su+OVT+A==}
+  zod@3.24.2:
+    resolution: {integrity: sha512-lY7CDW43ECgW9u1TcT3IoXHflywfVqDYze4waEz812jR/bZ8FHDsl7pFQoSZTz5N+2NqRXs8GBwnAwo3ZNxqhQ==}
 
   zustand@5.0.3:
     resolution: {integrity: sha512-14fwWQtU3pH4dE0dOpdMiWjddcH+QzKIgk1cl8epwSE7yag43k/AD/m4L6+K7DytAOr9gGBe3/EXj9g7cdostg==}
@@ -21533,7 +21533,7 @@ snapshots:
 
   yoctocolors@2.0.2: {}
 
-  zod@3.24.1: {}
+  zod@3.24.2: {}
 
   zustand@5.0.3(immer@10.1.1)(react@19.0.0):
     optionalDependencies:
