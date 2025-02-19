@@ -354,8 +354,8 @@ importers:
         specifier: 3.1.2
         version: 3.1.2(lodash@4.17.21)
       '@notionhq/client':
-        specifier: 2.2.15
-        version: 2.2.15
+        specifier: 2.2.16
+        version: 2.2.16
       date-fns:
         specifier: 4.1.0
         version: 4.1.0
@@ -390,8 +390,8 @@ importers:
         specifier: 3.1.2
         version: 3.1.2(lodash@4.17.21)
       '@notionhq/client':
-        specifier: 2.2.15
-        version: 2.2.15
+        specifier: 2.2.16
+        version: 2.2.16
       '@radix-ui/themes':
         specifier: 3.2.0
         version: 3.2.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -609,8 +609,8 @@ importers:
         specifier: 7.17.0
         version: 7.17.0(react@19.0.0)
       '@notionhq/client':
-        specifier: 2.2.15
-        version: 2.2.15
+        specifier: 2.2.16
+        version: 2.2.16
       '@radix-ui/colors':
         specifier: 3.0.0
         version: 3.0.0
@@ -907,8 +907,8 @@ importers:
         specifier: 7.17.0
         version: 7.17.0(react@19.0.0)
       '@notionhq/client':
-        specifier: 2.2.15
-        version: 2.2.15
+        specifier: 2.2.16
+        version: 2.2.16
       '@radix-ui/colors':
         specifier: 3.0.0
         version: 3.0.0
@@ -2689,6 +2689,10 @@ packages:
 
   '@notionhq/client@2.2.15':
     resolution: {integrity: sha512-XhdSY/4B1D34tSco/GION+23GMjaS9S2zszcqYkMHo8RcWInymF6L1x+Gk7EmHdrSxNFva2WM8orhC4BwQCwgw==}
+    engines: {node: '>=12'}
+
+  '@notionhq/client@2.2.16':
+    resolution: {integrity: sha512-3GlkfhLw8+Jw8U2iFEmHA6WfCgYhZCXLxgPdqDJkYMFotELNpQO+yGSy2QWURsG8ndu21sLt+FEOfDbNcCtFMg==}
     engines: {node: '>=12'}
 
   '@octokit/auth-token@5.1.1':
@@ -4909,9 +4913,6 @@ packages:
   '@types/node-fetch@2.6.11':
     resolution: {integrity: sha512-24xFj9R5+rfQJLRyM56qh+wnVSYhyXC2tkoBndtY0U+vubqNsYXGjufB2nn8Q6gt0LrARwL6UBtMCSVCwl4B1g==}
 
-  '@types/node-fetch@2.6.4':
-    resolution: {integrity: sha512-1ZX9fcN4Rvkvgv4E6PAY5WXUFWFcRWxZa3EW83UjycOB9ljJCedb2CupIP4RZMEwF/M3eTcCihbBRgwtGbg5Rg==}
-
   '@types/node@18.17.15':
     resolution: {integrity: sha512-2yrWpBk32tvV/JAd3HNHWuZn/VDN1P+72hWirHnvsvTGSqbANi+kSeuQR9yAHnbvaBvHDsoTdXV0Fe+iRtHLKA==}
 
@@ -6830,10 +6831,6 @@ packages:
       typescript: '>3.6.0'
       webpack: ^5.11.0
 
-  form-data@3.0.1:
-    resolution: {integrity: sha512-RHkBKtLWUVwd7SqRIvCZMEvAMoGUp0XU+seQiZejj0COz3RI3hWP4sCv3gZWWLjJTd7rGwcsF5eKZGii0r/hbg==}
-    engines: {node: '>= 6'}
-
   form-data@4.0.0:
     resolution: {integrity: sha512-ETEklSGi5t0QMZuiXoA/Q6vcnxcLQP5vdugSpuAyi6SVGi2clPPp+xgEhuMaHC+zGgn31Kd235W35f7Hykkaww==}
     engines: {node: '>= 6'}
@@ -8305,15 +8302,6 @@ packages:
   node-emoji@2.2.0:
     resolution: {integrity: sha512-Z3lTE9pLaJF47NyMhd4ww1yFTAP8YhYI8SleJiHzM46Fgpm5cnNzSl9XfzFNqbaz+VlJrIj3fXQ4DeN1Rjm6cw==}
     engines: {node: '>=18'}
-
-  node-fetch@2.6.12:
-    resolution: {integrity: sha512-C/fGU2E8ToujUivIO0H+tpQ6HWo4eEmchoPIoXtxCrVghxdKq+QOHqEZW7tuP3KlV3bC8FRMO5nMCC7Zm1VP6g==}
-    engines: {node: 4.x || >=6.0.0}
-    peerDependencies:
-      encoding: ^0.1.0
-    peerDependenciesMeta:
-      encoding:
-        optional: true
 
   node-fetch@2.7.0:
     resolution: {integrity: sha512-c4FRfUm/dbcWZ7U+1Wq0AwCyFL+3nt2bEw05wfxSz+DWpWsitgmSgYmy2dQdWyKC1694ELPqMs/YzUSNozLt8A==}
@@ -12513,8 +12501,15 @@ snapshots:
 
   '@notionhq/client@2.2.15':
     dependencies:
-      '@types/node-fetch': 2.6.4
-      node-fetch: 2.6.12
+      '@types/node-fetch': 2.6.11
+      node-fetch: 2.7.0
+    transitivePeerDependencies:
+      - encoding
+
+  '@notionhq/client@2.2.16':
+    dependencies:
+      '@types/node-fetch': 2.6.11
+      node-fetch: 2.7.0
     transitivePeerDependencies:
       - encoding
 
@@ -14858,11 +14853,6 @@ snapshots:
     dependencies:
       '@types/node': 22.10.2
       form-data: 4.0.0
-
-  '@types/node-fetch@2.6.4':
-    dependencies:
-      '@types/node': 22.10.2
-      form-data: 3.0.1
 
   '@types/node@18.17.15': {}
 
@@ -17217,12 +17207,6 @@ snapshots:
       typescript: 5.7.3
       webpack: 5.98.0
 
-  form-data@3.0.1:
-    dependencies:
-      asynckit: 0.4.0
-      combined-stream: 1.0.8
-      mime-types: 2.1.35
-
   form-data@4.0.0:
     dependencies:
       asynckit: 0.4.0
@@ -18872,10 +18856,6 @@ snapshots:
       char-regex: 1.0.2
       emojilib: 2.4.0
       skin-tone: 2.0.0
-
-  node-fetch@2.6.12:
-    dependencies:
-      whatwg-url: 5.0.0
 
   node-fetch@2.7.0:
     dependencies:
