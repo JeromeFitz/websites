@@ -38,8 +38,8 @@ importers:
         specifier: 2.1.3
         version: 2.1.3(is-ci@4.1.0)
       '@jeromefitz/prettier-config':
-        specifier: 2.1.4
-        version: 2.1.4
+        specifier: 2.1.5
+        version: 2.1.5
       '@jeromefitz/release-notes-generator':
         specifier: 3.1.5
         version: 3.1.5(lodash@4.17.21)
@@ -299,8 +299,8 @@ importers:
   packages/next-config:
     devDependencies:
       '@jeromefitz/prettier-config':
-        specifier: 2.1.4
-        version: 2.1.4
+        specifier: 2.1.5
+        version: 2.1.5
       '@next/bundle-analyzer':
         specifier: 15.1.7
         version: 15.1.7
@@ -2446,8 +2446,8 @@ packages:
       '@jeromefitz/utils': ^3.0.0
       lodash: ^4.17.21
 
-  '@jeromefitz/prettier-config@2.1.4':
-    resolution: {integrity: sha512-spaNDrXpw78KPnGmGM/8p5pQoCqNKI3biyi0GyEdZP3fmbhG+In6Huc9tt5gjpGMZFmDsTSEglOB2zMNi+3z1A==}
+  '@jeromefitz/prettier-config@2.1.5':
+    resolution: {integrity: sha512-toZREUAxLsNInTeeeFYseMAD0wCg1LW39IL8a313KVC4mMIG1pDWLOAGcFqoCJnQfPoOWRZJTeLhNX0LGdV4HA==}
     engines: {node: '>=20'}
 
   '@jeromefitz/release-notes-generator@3.1.5':
@@ -9122,8 +9122,8 @@ packages:
     engines: {node: '>=10.13.0'}
     hasBin: true
 
-  prettier@3.5.1:
-    resolution: {integrity: sha512-hPpFQvHwL3Qv5AdRvBFMhnKo4tYxp0ReXiPn2bxkiohEX6mBeBwEpBSQTkD458RaaDKQMYSp4hX4UtfUTA5wDw==}
+  prettier@3.5.2:
+    resolution: {integrity: sha512-lc6npv5PH7hVqozBR7lkBNOGXV9vMwROAPlumdBkX0wTbbzPu/U1hk5yL8p2pt4Xoc+2mkT8t/sow2YrV/M5qg==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -12125,11 +12125,11 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  '@jeromefitz/prettier-config@2.1.4':
+  '@jeromefitz/prettier-config@2.1.5':
     dependencies:
-      prettier: 3.5.1
-      prettier-plugin-pkg: 0.18.1(prettier@3.5.1)
-      prettier-plugin-tailwindcss: 0.6.11(prettier@3.5.1)
+      prettier: 3.5.2
+      prettier-plugin-pkg: 0.18.1(prettier@3.5.2)
+      prettier-plugin-tailwindcss: 0.6.11(prettier@3.5.2)
     transitivePeerDependencies:
       - '@ianvs/prettier-plugin-sort-imports'
       - '@prettier/plugin-pug'
@@ -19503,17 +19503,17 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier-plugin-pkg@0.18.1(prettier@3.5.1):
+  prettier-plugin-pkg@0.18.1(prettier@3.5.2):
     dependencies:
-      prettier: 3.5.1
+      prettier: 3.5.2
 
-  prettier-plugin-tailwindcss@0.6.11(prettier@3.5.1):
+  prettier-plugin-tailwindcss@0.6.11(prettier@3.5.2):
     dependencies:
-      prettier: 3.5.1
+      prettier: 3.5.2
 
   prettier@2.8.8: {}
 
-  prettier@3.5.1: {}
+  prettier@3.5.2: {}
 
   pretty-error@4.0.0:
     dependencies:
