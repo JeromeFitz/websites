@@ -4,7 +4,7 @@
   "private": true,
   "devDependencies": {
     "@jeromefitz/tailwind-config": "workspace:*",
-    "@radix-ui/themes": "3.2.0",
+    "@radix-ui/themes": "3.2.1",
     "@storybook/addon-a11y": "8.5.8",
     "@storybook/addon-essentials": "8.5.8",
     "@storybook/addon-interactions": "8.5.8",
