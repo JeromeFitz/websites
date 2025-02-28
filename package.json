@@ -74,7 +74,7 @@
       "semver@^6.0.0": "6.3.1",
       "semver@^7.0.0": "7.7.1",
       "sharp": "0.33.5",
-      "tough-cookie": "4.1.4",
+      "tough-cookie": "5.1.2",
       "ws": "^8.18.0"
     },
     "supportedArchitectures": {
