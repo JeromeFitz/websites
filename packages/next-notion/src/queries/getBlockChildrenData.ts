@@ -8,7 +8,7 @@ import { notion } from '../helper'
 async function getBlockChildrenData(block_id) {
   const response = await notion.blocks.children.list({
     block_id,
-    page_size: 100, // max
+    page_size: 50,
   })
   return response
 }
