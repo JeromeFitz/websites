@@ -1,7 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
-  "regions": ["iad"],
+  "regions": ["iad1"],
   "public": false,
   "cleanUrls": true,
   "github": {
