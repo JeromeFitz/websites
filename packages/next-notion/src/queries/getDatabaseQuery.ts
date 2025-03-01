@@ -26,7 +26,7 @@ interface GetDatabaseQueryTypes {
 const isPublishedAnd = envClient.IS__DEV
   ? {
       created_time: {
-        after: '2020-01-01T00:00:00.000Z',
+        after: '2025-01-01T00:00:00.000Z',
       },
       timestamp: 'created_time',
     }
@@ -45,6 +45,8 @@ const getDatabaseQuery = async ({
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   sortProperty,
 }: GetDatabaseQueryTypes) => {
+  // console.dir(`> segmentInfo`)
+  // console.dir(segmentInfo)
   const { slug } = segmentInfo
   const filterData = {
     and: [
@@ -72,7 +74,7 @@ const getDatabaseQuery = async ({
   const options = {
     database_id: database_id ? database_id : DATABASE_ID,
     filter,
-    page_size: 100, // max
+    page_size: 50,
     sorts,
   }
 
@@ -84,7 +86,30 @@ const getDatabaseQuery = async ({
   let _response = await notion.databases.query(options)
   let _results = _response?.results
   let i = 0
-  while (_response.has_more && _response.next_cursor) {
+  while (
+    _response.has_more &&
+    _response.next_cursor &&
+    /**
+     * @hack(upstash)
+     * Added _1_ more event and all hell broke loose.
+     *
+     * * [Error [UpstashError]: Command failed: ERR max request size exceeded. Limit: 1048576 bytes, Actual: 1077906 bytes. See https://upstash.com/docs/redis/troubleshooting/max_request_size_exceeded for details]
+     *
+     * Dif of 29,330 bytes = 29.33kb ===> I do not buy it.
+     * > the "new" event is: 9.98 KB
+     * > perhaps this is "3" new ones, but it was not
+     *
+     * Regardless... if we want to not spend $250 a month 🪦
+     * Move this to something else, or who cares about cache
+     * It truly has made my life at times very difficult haha
+     *
+     * A lot of text what does this do?
+     *
+     * we lower the page_limit and we skip the cursor load_more for events
+     *
+     */
+    segmentInfo.segment !== 'events'
+  ) {
     console.dir(`(╯°□°)╯︵ ┻━┻  ${slug} api request: has_more (${i})`)
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
