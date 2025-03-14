@@ -218,8 +218,8 @@ importers:
         specifier: 2.1.1
         version: 2.1.1
       cmdk:
-        specifier: 1.1.0
-        version: 1.1.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        specifier: 1.1.1
+        version: 1.1.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       tailwind-merge:
         specifier: 2.6.0
         version: 2.6.0
@@ -744,8 +744,8 @@ importers:
         specifier: 2.1.1
         version: 2.1.1
       cmdk:
-        specifier: 1.1.0
-        version: 1.1.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        specifier: 1.1.1
+        version: 1.1.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       date-fns:
         specifier: 4.1.0
         version: 4.1.0
@@ -1039,8 +1039,8 @@ importers:
         specifier: 2.1.1
         version: 2.1.1
       cmdk:
-        specifier: 1.1.0
-        version: 1.1.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        specifier: 1.1.1
+        version: 1.1.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       date-fns:
         specifier: 4.1.0
         version: 4.1.0
@@ -5306,8 +5306,8 @@ packages:
     resolution: {integrity: sha512-RMr0FhtfXemyinomL4hrWcYJxmX6deFdCxpJzhDttxgO1+bcCnkk+9drydLVDmAMG7NE6aN/fl4F7ucU/90gAA==}
     engines: {node: '>=0.10.0'}
 
-  cmdk@1.1.0:
-    resolution: {integrity: sha512-kJTwfCTJYECDkoFWIszsYufE6o22iHUm0RwBhDSrQpkDOVtn0QThsCsTZIsVlYr6wJTi44FhyG2WbSwyBwq/yA==}
+  cmdk@1.1.1:
+    resolution: {integrity: sha512-Vsv7kFaXm+ptHDMZ7izaRsP70GgrW9NBNGswt9OZaVBLlE0SNpDq8eu/VGXyF9r7M0azK3Wy7OlYXsuyYLFzHg==}
     peerDependencies:
       react: ^18 || ^19 || ^19.0.0-rc
       react-dom: ^18 || ^19 || ^19.0.0-rc
@@ -14976,7 +14976,7 @@ snapshots:
 
   cluster-key-slot@1.1.2: {}
 
-  cmdk@1.1.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+  cmdk@1.1.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:
       '@radix-ui/react-compose-refs': 1.1.1(react@19.0.0)
       '@radix-ui/react-dialog': 1.1.6(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
