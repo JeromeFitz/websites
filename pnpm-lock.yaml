@@ -35,8 +35,8 @@ importers:
         specifier: 5.0.0-canary.39
         version: 5.0.0-canary.39(tailwindcss@3.4.17(ts-node@10.9.2(@types/node@22.10.2)(typescript@5.8.2)))(turbo@2.4.4)(typescript@5.8.2)
       '@jeromefitz/lint-staged':
-        specifier: 2.1.3
-        version: 2.1.3(is-ci@4.1.0)
+        specifier: 2.1.4
+        version: 2.1.4(is-ci@4.1.0)
       '@jeromefitz/prettier-config':
         specifier: 2.1.6
         version: 2.1.6
@@ -2465,8 +2465,8 @@ packages:
     resolution: {integrity: sha512-rhzjlLJsSlikCLfLzudrRLNdux4E0bqIxdGR43xYskbm4ECsZrtTjvxTtBa9lkbzT8HQ9pn1efxB0GxHMeWfiA==}
     engines: {node: '>=20'}
 
-  '@jeromefitz/lint-staged@2.1.3':
-    resolution: {integrity: sha512-QFog1QBesh1Gc2nLssyMzENGzBjL5NE18Kx+mxs3x1h19pQDtqD2zrGzJEgGrYPpm3ZJr1cD/67cs6iG9i68kQ==}
+  '@jeromefitz/lint-staged@2.1.4':
+    resolution: {integrity: sha512-VGa1gsKvEpbJE/jgvnfy3G0iZkoBo4Yqti4R7CBJ6yTKauR9LIa24U6SPt3qaw2YXo2MT2WoILePWZjdMLAu0Q==}
     engines: {node: '>=20'}
     peerDependencies:
       is-ci: ^3.0.1 || ^4.0.0
@@ -7506,8 +7506,8 @@ packages:
   lines-and-columns@1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
 
-  lint-staged@15.4.3:
-    resolution: {integrity: sha512-FoH1vOeouNh1pw+90S+cnuoFwRfUD9ijY2GKy5h7HS3OR7JVir2N2xrsa0+Twc1B7cW72L+88geG5cW4wIhn7g==}
+  lint-staged@15.5.0:
+    resolution: {integrity: sha512-WyCzSbfYGhK7cU+UuDDkzUiytbfbi0ZdPy2orwtM75P3WTtQBzmG40cCxIa8Ii2+XjfxzLH6Be46tUfWS85Xfg==}
     engines: {node: '>=18.12.0'}
     hasBin: true
 
@@ -11746,10 +11746,10 @@ snapshots:
       - turbo
       - typescript
 
-  '@jeromefitz/lint-staged@2.1.3(is-ci@4.1.0)':
+  '@jeromefitz/lint-staged@2.1.4(is-ci@4.1.0)':
     dependencies:
       is-ci: 4.1.0
-      lint-staged: 15.4.3
+      lint-staged: 15.5.0
       micromatch: 4.0.8
     transitivePeerDependencies:
       - supports-color
@@ -17712,7 +17712,7 @@ snapshots:
 
   lines-and-columns@1.2.4: {}
 
-  lint-staged@15.4.3:
+  lint-staged@15.5.0:
     dependencies:
       chalk: 5.4.1
       commander: 13.1.0
