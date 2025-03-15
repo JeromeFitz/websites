@@ -140,6 +140,6 @@
     "@types/ramda": "0.30.2",
     "@types/react-headroom": "3.2.3",
     "@types/smoothscroll-polyfill": "0.3.4",
-    "tailwind-merge": "2.6.0"
+    "tailwind-merge": "3.0.2"
   }
 }
