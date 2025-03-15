@@ -59,8 +59,8 @@ importers:
         specifier: 22.10.2
         version: 22.10.2
       ccommit:
-        specifier: 3.1.1
-        version: 3.1.1
+        specifier: 3.1.2
+        version: 3.1.2
       concurrently:
         specifier: 9.1.2
         version: 9.1.2
@@ -5149,8 +5149,8 @@ packages:
     resolution: {integrity: sha512-roIFONhcxog0JSSWbvVAh3OocukmSgpqOH6YpMkCvav/ySIV3JKg4Dc8vYtQjYi/UxpNE36r/9v+VqTQqgkYmw==}
     engines: {node: '>=4'}
 
-  ccommit@3.1.1:
-    resolution: {integrity: sha512-hw9M0u7q6FJuqsiqeaVEH9slO9U+Vb1yEEjjXPOiRxySNWA2LVcdisXcmVZapXTk0VKr31oI2FS9u2eD+OnX3A==}
+  ccommit@3.1.2:
+    resolution: {integrity: sha512-uNeU4YVTkVNxWP0U/Thv0MEM8bfhgGpvRFQgoOO+dSkyNgC/2vJCK1ZCI87+NUqm0evBUvXSR9pUgq62ZMbnJw==}
     engines: {node: '>=20'}
     hasBin: true
 
@@ -14745,7 +14745,7 @@ snapshots:
 
   case-sensitive-paths-webpack-plugin@2.4.0: {}
 
-  ccommit@3.1.1:
+  ccommit@3.1.2:
     dependencies:
       ansi-colors: 4.1.3
       enquirer: 2.4.1
