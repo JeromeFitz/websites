@@ -1,14 +1,16 @@
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-import { RULES, getCompat } from '@jeromefitz/eslint-config/_lib.js'
-import { configBase as eslintBase } from '@jeromefitz/eslint-config/base.js'
-// import { configE2E as eslintE2E } from '@jeromefitz/eslint-config/e2e.js'
-import { configJest } from '@jeromefitz/eslint-config/jest.js'
+import { getCompat, RULES } from '@jeromefitz/eslint-config/_lib.js'
+import { configBase } from '@jeromefitz/eslint-config/base.js'
+// import { configE2E } from '@jeromefitz/eslint-config/e2e.js'
+// import { configJest } from '@jeromefitz/eslint-config/jest.js'
 import { configNext } from '@jeromefitz/eslint-config/next.js'
 import { configReact } from '@jeromefitz/eslint-config/react.js'
 import { configTailwind } from '@jeromefitz/eslint-config/tailwind.js'
-import { configTypescript as eslintTypescript } from '@jeromefitz/eslint-config/typescript.js'
+import { configTypescript } from '@jeromefitz/eslint-config/typescript.js'
+
+import { defineConfig } from 'eslint/config'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -17,30 +19,16 @@ const fullCwd = path.join(__dirname, './')
 
 const compat = getCompat(__dirname)
 
-function getEsHack(arr, files = [`**/*.ts?(x)`]) {
-  return arr.map((a) => {
-    return { ...a, files }
-  })
-}
-
-const eslintReact = getEsHack(configReact)
-const eslintNext = getEsHack(configNext)
-const eslintTailwind = getEsHack(configTailwind)
-// const eslintJest = getEsHack(configJest, ['**/*.{spec,test}.{js,jsx,ts,tsx}'])
-
-// console.dir(...compat.extends('plugin:storybook/recommended'))
-// console.dir(...compat.extends('plugin:storybook/csf-strict'))
-// console.dir(...compat.extends('plugin:playwright/playwright-test'))
-
 /** @type {import('typescript-eslint').Config} */
-const config = [
-  ...eslintBase,
-  ...eslintTypescript,
-  ...eslintReact,
-  ...eslintNext,
-  ...eslintTailwind,
+const config = defineConfig([
+  ...configBase,
+  ...configTypescript,
+  ...configReact,
+  ...configNext,
+  ...configTailwind,
   // @todo(eslint) do not move to eslint@9 just yet
-  // ...eslintJest,
+  // ...configE2E,
+  // ...configJest,
   {
     ignores: [
       // folders
@@ -168,8 +156,9 @@ const config = [
       // 'testing-library/**': RULES.OFF,
     },
   },
-]
+])
 
+// console.dir(`> config`)
 // console.dir(config)
 
 export default config
