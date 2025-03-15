@@ -1,4 +1,3 @@
-/* eslint-disable tailwindcss/no-custom-classname */
 import { Anchor } from '@jeromefitz/ds/components/Anchor'
 // import { MicrophoneIcon } from '@jeromefitz/ds/components/Icon'
 import {
@@ -134,7 +133,7 @@ function Links({ properties }) {
     <>
       <Box className="my-4 py-4">
         <Box className="my-2 py-2">
-          <Text className="pb-3 font-extrabold uppercase tracking-tight">
+          <Text className="pb-3 font-extrabold tracking-tight uppercase">
             <Strong>Listen</Strong>
           </Text>
           <Text className={style}>
@@ -150,13 +149,13 @@ function Links({ properties }) {
           </Text>
         </Box>
         <Box className="my-2 py-2">
-          <Text className="pb-3 font-extrabold uppercase tracking-tight">
+          <Text className="pb-3 font-extrabold tracking-tight uppercase">
             <Strong>Preview</Strong>
           </Text>
           <EmbedSpotify id={spotifyId} />
         </Box>
         <Box className="my-2 py-2">
-          <Text className="pb-3 font-extrabold uppercase tracking-tight">
+          <Text className="pb-3 font-extrabold tracking-tight uppercase">
             <Strong>Back to</Strong>
           </Text>
           <Text className={style}>
@@ -215,7 +214,7 @@ function Rollups({ properties }) {
           const key = `rollup-${rollup.id}`
           return (
             <Box className="col-span-6 md:col-span-4" key={key}>
-              <Text className="pb-3 font-extrabold uppercase tracking-tight">
+              <Text className="pb-3 font-extrabold tracking-tight uppercase">
                 <Strong>{rollup.id}</Strong>
               </Text>
               <ul>

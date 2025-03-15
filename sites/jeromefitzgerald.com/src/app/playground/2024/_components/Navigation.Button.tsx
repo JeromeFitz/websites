@@ -12,10 +12,10 @@ function NavigationButton() {
   return (
     <Box
       className={cx(
-        'fixed right-6 top-6 z-50 h-10 w-auto flex-none gap-3',
+        'fixed top-6 right-6 z-50 h-10 w-auto flex-none gap-3',
         'hidden md:flex',
-        'drop-shadow-sm',
-        'backdrop-blur-sm',
+        'drop-shadow-xs',
+        'backdrop-blur-xs',
         // 'drop-shadow-lg active:drop-shadow-md',
       )}
     >
@@ -24,7 +24,7 @@ function NavigationButton() {
         asChild
         className={cx(
           'rounded-3 h-full px-8 transition-colors',
-          'backdrop-blur-sm transition-all',
+          'backdrop-blur-xs transition-all',
         )}
         color="gray"
         variant="soft"

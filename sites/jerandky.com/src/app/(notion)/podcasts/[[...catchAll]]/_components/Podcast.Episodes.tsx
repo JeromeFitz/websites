@@ -1,4 +1,3 @@
-/* eslint-disable tailwindcss/no-custom-classname */
 import { Anchor } from '@jeromefitz/ds/components/Anchor'
 import { cx } from '@jeromefitz/ds/utils/cx'
 
@@ -9,7 +8,7 @@ function PodcastEpisodes({ properties }) {
   const { episodeSlugs, episodeTitles, ...props } = getPodcastData(properties)
   return (
     <>
-      <p className="pb-3 font-extrabold uppercase tracking-tight">
+      <p className="pb-3 font-extrabold tracking-tight uppercase">
         <strong>Episodes</strong>
       </p>
       <ul className={cx(blocks['bulleted_list'].className)}>

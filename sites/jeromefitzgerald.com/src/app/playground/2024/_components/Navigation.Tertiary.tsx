@@ -71,7 +71,7 @@ function NavigationTertiary({ className, order = 0 }) {
                 className={cx(
                   'bg-accent-3 hover:bg-accent-4 active:bg-accent-5',
                   'text-accent-11 hover:text-accent-11 active:text-accent-11',
-                  'backdrop-blur-sm transition-all',
+                  'backdrop-blur-xs transition-all',
                   '!min-w-[310px]',
                 )}
                 // @todo(types)

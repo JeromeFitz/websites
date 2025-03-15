@@ -277,7 +277,7 @@ function Section({ sections = sectionsDefault }: { sections?: SectionType[] }) {
             // 'bg-purple-6 rounded-3 border-1',
             'col-span-3',
             'hidden md:block',
-            '!md:w-[var(--sidebar-width)] w-full md:min-w-[var(--sidebar-width)] md:max-w-[var(--sidebar-width)]',
+            '!md:w-[var(--sidebar-width)] w-full md:max-w-[var(--sidebar-width)] md:min-w-[var(--sidebar-width)]',
             '',
           )}
         >
@@ -319,7 +319,7 @@ function SectionContent({ data }) {
             <Box
               className={cx(
                 'relative flex h-min w-full flex-row flex-nowrap items-center justify-start gap-8 self-start overflow-hidden p-0',
-                'after:border-t-1 after:border-accent-9 after:pointer-events-none after:absolute after:left-0 after:top-0 after:size-full after:content-[""]',
+                'after:border-accent-9 after:pointer-events-none after:absolute after:top-0 after:left-0 after:size-full after:border-t-1 after:content-[""]',
               )}
             >
               <Box
@@ -330,7 +330,7 @@ function SectionContent({ data }) {
               >
                 <Box
                   className={cx(
-                    'flex shrink-0 transform-none flex-col items-center justify-center outline-none',
+                    'flex shrink-0 transform-none flex-col items-center justify-center outline-hidden',
                     'relative line-clamp-1 h-full w-[1px] flex-[1_0_0px]',
                   )}
                 >
@@ -350,7 +350,7 @@ function SectionContent({ data }) {
               >
                 <Box
                   className={cx(
-                    'flex shrink-0 transform-none flex-col items-start justify-start outline-none',
+                    'flex shrink-0 transform-none flex-col items-start justify-start outline-hidden',
                     'relative line-clamp-1 h-full w-[1px] flex-[1_0_0px]',
                     'pt-1.5',
                   )}
@@ -375,14 +375,14 @@ function SectionContent({ data }) {
 
 function SectionLegend({ data }) {
   return (
-    <Box className="rounded-3 border-1 border-gray-7">
+    <Box className="border-gray-7 rounded-3 border-1">
       {data.map((item, i) => {
         const Icon = item.icon
         return (
           <NextLink
             className={cx(
               'hocus:bg-accent-4 group relative flex size-full flex-row flex-nowrap items-center justify-start gap-4 overflow-visible p-5 no-underline',
-              'border-t-1 border-gray-7 first-of-type:border-t-0',
+              'border-gray-7 border-t-1 first-of-type:border-t-0',
               '',
             )}
             href={`#${item.id}`}

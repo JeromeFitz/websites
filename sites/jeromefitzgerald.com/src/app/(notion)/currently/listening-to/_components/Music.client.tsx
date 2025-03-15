@@ -135,11 +135,13 @@ function DataItem({ item, type }) {
 
   return (
     <>
-      <Box
-        className={cx(
-          'rounded-3 border-1 border-gray-7 mb-2 mr-4 flex w-full flex-row items-start gap-0 md:mb-5 md:min-h-min md:flex-row-reverse md:items-start',
-          'flex-auto',
-        )}
+      <Flex
+        className={
+          cx()
+          // 'rounded-3 border-gray-7 mr-4 mb-2 flex w-full flex-row items-start gap-0 border-1 md:mb-5 md:min-h-min md:flex-row-reverse md:items-start',
+          // 'flex-auto',
+        }
+        direction="row"
       >
         <DataList.Root className="w-full gap-1 p-2 md:gap-3 md:p-4">
           <DataList.Item align="start" className="flex flex-col gap-0">
@@ -210,7 +212,7 @@ function DataItem({ item, type }) {
             </DataList.Label>
             <DataList.Value>
               <Text size={{ initial: '2', md: '2' }}>
-                <span className="mb-3 mt-2 flex flex-row flex-wrap gap-2 pb-1 font-mono md:mt-1">
+                <span className="mt-2 mb-3 flex flex-row flex-wrap gap-2 pb-1 font-mono md:mt-1">
                   {genres.map((genre) => {
                     if (!genre) return null
                     return (
@@ -285,7 +287,7 @@ function DataItem({ item, type }) {
         <Inset
           className={cx(
             'rounded-3 relative h-full',
-            'h-[275px] w-[164px] min-w-[164px] max-w-[164px]',
+            'h-[275px] w-[164px] max-w-[164px] min-w-[164px]',
             'md:size-full md:max-w-[308px]',
             // 'md:h-[450px] md:w-[500px]',
             // 'md:border-1 md:border-gray-7 ',
@@ -315,7 +317,7 @@ function DataItem({ item, type }) {
             tabIndex={-1}
           />
         </Inset>
-      </Box>
+      </Flex>
     </>
   )
 }
@@ -332,7 +334,7 @@ function DataItemLoader({ error, handleScroll, isLoadingMore }) {
     <>
       <Box
         className={cx(
-          'rounded-3 border-1 border-gray-7 mb-2 mr-4 flex w-full flex-row items-start gap-0 md:mb-5 md:min-h-[400px] md:flex-row-reverse md:items-start',
+          'rounded-3 border-gray-7 mr-4 mb-2 flex w-full flex-row items-start gap-0 border-1 md:mb-5 md:min-h-[400px] md:flex-row-reverse md:items-start',
           'flex-auto',
         )}
       >
@@ -379,7 +381,7 @@ function DataItemLoader({ error, handleScroll, isLoadingMore }) {
         <Inset
           className={cx(
             'rounded-3 relative h-full',
-            'h-[275px] w-[164px] min-w-[164px] max-w-[164px]',
+            'h-[275px] w-[164px] max-w-[164px] min-w-[164px]',
             'md:size-full md:max-w-[308px]',
             // 'md:h-[450px] md:w-[500px]',
             // 'md:border-1 md:border-gray-7 ',
@@ -595,9 +597,9 @@ function MusicClient() {
                 '',
                 // 'bg-white md:bg-transparent dark:bg-black',
                 'bg-whiteA-12 dark:bg-blackA-12 md:bg-transparent',
-                'backdrop-blur-sm',
+                'backdrop-blur-xs',
                 // 'border-b-1 border-grayA-3',
-                // 'drop-shadow-sm dark:shadow-white/5  dark:drop-shadow-lg',
+                // 'drop-shadow-xs dark:shadow-white/5  dark:drop-shadow-lg',
                 // 'md:border-none md:drop-shadow-none',
                 'z-40 md:z-0',
               )}
@@ -661,7 +663,7 @@ function MusicClient() {
                 </Flex>
               </div>
             </div>
-            <Callout className="relative bottom-0 right-0" color="mint" size="1">
+            <Callout className="relative right-0 bottom-0" color="mint" size="1">
               <Strong className="font-mono uppercase">Spotify</Strong> does not earn
               a commission. But all data is currently from them.
             </Callout>

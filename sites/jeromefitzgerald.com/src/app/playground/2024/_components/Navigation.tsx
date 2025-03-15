@@ -12,7 +12,7 @@ function Navigation() {
       <nav
         className={cx(
           'relative mr-6 flex h-12 w-[unset] flex-row flex-nowrap content-start items-start justify-between gap-2 overflow-visible p-0',
-          'drop-shadow-sm',
+          'drop-shadow-xs',
           'md:w-full md:justify-start',
         )}
         id="nav"

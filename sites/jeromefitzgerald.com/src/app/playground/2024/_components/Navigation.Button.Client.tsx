@@ -24,7 +24,7 @@ function NavigationButtonClient() {
     <Skeleton loading={isLoading}>
       <Box
         asChild
-        className={cx('z-50 h-full rounded-full backdrop-blur transition-colors')}
+        className={cx('z-50 h-full rounded-full backdrop-blur-sm transition-colors')}
       >
         <SegmentedControl.Root
           className={cx(

@@ -1,4 +1,3 @@
-/* eslint-disable tailwindcss/no-custom-classname */
 import 'server-only'
 
 import { Anchor } from '@jeromefitz/ds/components/Anchor'

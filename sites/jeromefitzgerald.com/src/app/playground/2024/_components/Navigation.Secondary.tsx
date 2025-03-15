@@ -96,7 +96,7 @@ function NavigationSecondary({ order = 0 }) {
                   <DropdownMenuItem
                     className={cx(
                       !!mt && 'hidden md:flex',
-                      !item.isActive && item.isActiveMobile && 'md:hidden',
+                      !item.isActive && item.isActiveMobile && 'hidden',
                     )}
                     onSelect={() => {
                       zzz_menuSecondaryActiveSet(item)
@@ -111,7 +111,7 @@ function NavigationSecondary({ order = 0 }) {
 
                   {!!mt && (
                     <DropdownMenuSub>
-                      <DropdownMenuSubTrigger className="md:hidden">
+                      <DropdownMenuSubTrigger className="hidden">
                         <Text size={{ initial: '2', md: '3' }}>{item.title}</Text>
                       </DropdownMenuSubTrigger>
                       <DropdownMenuSubContent size={{ initial: '2', md: '3' }}>

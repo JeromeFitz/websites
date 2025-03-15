@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 import type { Config } from 'tailwindcss'
 
 import { radixThemePreset } from 'radix-themes-tw'
@@ -5,7 +6,7 @@ import theme from 'tailwindcss/defaultTheme'
 
 import hocusPlugin from './hocus.plugin.js'
 
-const safelist = ['cursor-pointer', 'hidden', 'md:hidden']
+// const safelist = ['cursor-pointer', 'hidden', 'md:hidden']
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const getConfig = ({ useTailwind = true }): Config => ({
@@ -36,18 +37,18 @@ const getConfig = ({ useTailwind = true }): Config => ({
     require('@tailwindcss/forms'),
   ],
   presets: [radixThemePreset],
-  safelist: [
-    ...safelist,
-    // {
-    //   pattern: /bg-+/,
-    // },
-    // {
-    //   pattern: /radix-+/,
-    // },
-    // {
-    //   pattern: /text-+/,
-    // },
-  ],
+  // safelist: [
+  //   ...safelist,
+  //   // {
+  //   //   pattern: /bg-+/,
+  //   // },
+  //   // {
+  //   //   pattern: /radix-+/,
+  //   // },
+  //   // {
+  //   //   pattern: /text-+/,
+  //   // },
+  // ],
   theme: {
     // ...theme,
     // colors: {},
@@ -279,32 +280,32 @@ const getConfig = ({ useTailwind = true }): Config => ({
       },
     },
   },
-  variants: {
-    extend: {
-      backgroundColor: [
-        'dark',
-        'even',
-        'first',
-        'group-hover',
-        'group-hocus',
-        'hocus',
-        'hover',
-        'last',
-        'odd',
-      ],
-      backgroundOpacity: ['dark'],
-      borderColor: ['dark'],
-      borderWidth: ['group-hover', 'group-hocus', 'first', 'last'],
-      boxShadow: ['dark'],
-      opacity: ['group-hover', 'group-hocus'],
-      pointerEvents: ['hover', 'focus', 'hocus'],
-      ringColor: ['dark'],
-      scale: ['group-hover', 'group-hocus'],
-      transform: ['group-hover', 'group-hocus'],
-      translate: ['group-hover', 'group-hocus'],
-    },
-    typography: ['dark'],
-  },
+  // variants: {
+  //   extend: {
+  //     backgroundColor: [
+  //       'dark',
+  //       'even',
+  //       'first',
+  //       'group-hover',
+  //       'group-hocus',
+  //       'hocus',
+  //       'hover',
+  //       'last',
+  //       'odd',
+  //     ],
+  //     backgroundOpacity: ['dark'],
+  //     borderColor: ['dark'],
+  //     borderWidth: ['group-hover', 'group-hocus', 'first', 'last'],
+  //     boxShadow: ['dark'],
+  //     opacity: ['group-hover', 'group-hocus'],
+  //     pointerEvents: ['hover', 'focus', 'hocus'],
+  //     ringColor: ['dark'],
+  //     scale: ['group-hover', 'group-hocus'],
+  //     transform: ['group-hover', 'group-hocus'],
+  //     translate: ['group-hover', 'group-hocus'],
+  //   },
+  //   typography: ['dark'],
+  // },
 })
 
 export default getConfig

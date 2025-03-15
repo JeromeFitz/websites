@@ -10,8 +10,8 @@ function HeaderFull({ overline = '', title = '' }) {
       className={cx(
         'relative h-min w-full overflow-visible',
         'flex flex-[0_0_auto] flex-col place-content-start items-start gap-12',
-        'px-0 pb-24 pt-32',
-        'md:pb-12 md:pt-36',
+        'px-0 pt-32 pb-24',
+        'md:pt-36 md:pb-12',
       )}
       data-name="Header: Full"
       id="header--full"
@@ -29,7 +29,7 @@ function HeaderFull({ overline = '', title = '' }) {
         <Box
           className={cx(
             // 'bg-accent-4',
-            'relative flex h-min w-[1px] flex-[1_0_0px] flex-col place-content-start items-start gap-4 place-self-start overflow-visible p-0 [align-self:unset] [grid-column:auto_/_span_3]',
+            'relative [grid-column:auto_/_span_3] flex h-min w-[1px] flex-[1_0_0px] flex-col place-content-start items-start gap-4 place-self-start [align-self:unset] overflow-visible p-0',
             'md:w-full md:flex-[0_0_auto]',
           )}
           id="header--full--content--container"
@@ -37,7 +37,7 @@ function HeaderFull({ overline = '', title = '' }) {
           <Box
             className={cx(
               'relative size-auto flex-[0_0_auto] whitespace-pre',
-              'flex shrink-0 transform-none flex-col justify-start outline-none',
+              'flex shrink-0 transform-none flex-col justify-start outline-hidden',
             )}
           >
             <Heading
@@ -50,8 +50,8 @@ function HeaderFull({ overline = '', title = '' }) {
           </Box>
           <Box
             className={cx(
-              'relative size-auto flex-[0_0_auto] whitespace-pre-wrap break-words [word-break:break-word]',
-              'flex shrink-0 transform-none flex-col justify-start outline-none',
+              'relative size-auto flex-[0_0_auto] break-words [word-break:break-word] whitespace-pre-wrap',
+              'flex shrink-0 transform-none flex-col justify-start outline-hidden',
             )}
           >
             <Heading
@@ -61,7 +61,7 @@ function HeaderFull({ overline = '', title = '' }) {
             >
               {title}
               {` `}
-              {/* <Text className="text-gray-11 mt-3 block">
+              {/* <Text className="block mt-3 text-gray-11">
                 Hailing from Pittsburgh, PA.
               </Text> */}
             </Heading>
