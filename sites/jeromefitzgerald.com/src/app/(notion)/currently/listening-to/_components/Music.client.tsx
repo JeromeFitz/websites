@@ -5,11 +5,9 @@ import { Callout } from '@jeromefitz/ds/components/Callout/index'
 import { ArrowTopRightIcon } from '@jeromefitz/ds/components/Icon/index'
 import { cx } from '@jeromefitz/ds/utils/cx'
 import { useSWRInfinitePages } from '@jeromefitz/shared/hooks/useSWRInfinitePages'
-// import { ImageClient as NextImage } from '@jeromefitz/shared/components/Notion/Blocks/Image.client'
 import { fetcher } from '@jeromefitz/shared/lib'
 
 import { useIntersection } from '@mantine/hooks'
-// import { ArrowUpIcon } from '@radix-ui/react-icons'
 import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
 import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
@@ -34,11 +32,9 @@ import _title from 'title'
 import { Virtualizer } from 'virtua'
 
 import { ArticleMain } from '@/app/playground/2024/_components/Article.Main'
-// import { ArticleMainCTA } from '@/app/playground/2024/_components/Article.Main.CTA'
 import { ContainerWithSidebar } from '@/app/playground/2024/_components/Container.Main'
 import { HeaderFull } from '@/app/playground/2024/_components/Header.Full'
 import { HeaderSidebar } from '@/app/playground/2024/_components/Header.Sidebar'
-// import { Grid } from '@/components/Grid/index'
 import { LI, UL } from '@/components/List/index'
 import { bandcamps } from '@/data/bandcamps'
 import { useStore as _useStore, useShallow } from '@/store/index'
@@ -135,166 +131,193 @@ function DataItem({ item, type }) {
 
   return (
     <Flex
-      className={
-        cx()
-        // 'rounded-3 border-gray-7 mr-4 mb-2 flex w-full flex-row items-start gap-0 border-1 md:mb-5 md:min-h-min md:flex-row-reverse md:items-start',
-        // 'flex-auto',
-      }
-      direction="row"
+      className="border-gray-7 flex-auto items-start rounded-md border-1 border-t-1"
+      direction={{ initial: 'column-reverse', md: 'row-reverse' }}
+      gap="0"
+      justify="between"
+      mb={{ initial: '2', md: '5' }}
+      minHeight={{ initial: 'min-content', md: 'min-content' }}
+      mr="4"
+      p="0"
+      position="relative"
+      width="100%"
+      wrap="nowrap"
     >
-      <DataList.Root className="w-full gap-1 p-2 md:gap-3 md:p-4">
-        <DataList.Item align="start" className="flex flex-col gap-0">
-          <DataList.Label>
-            <Text size="1">
-              <Code variant="ghost">Artist</Code>
-            </Text>
-          </DataList.Label>
-          <DataList.Value>
-            <Text size={{ initial: '1', md: '2' }} weight="medium">
-              {_title1}
-            </Text>
-          </DataList.Value>
-        </DataList.Item>
-        {isTrack && (
-          <>
-            <DataList.Item align="start" className="flex flex-col gap-0">
+      <Flex
+        asChild
+        direction="column"
+        gap={{ initial: '2', md: '3' }}
+        justify="start"
+        p={{ initial: '2', md: '4' }}
+        width="100%"
+      >
+        <DataList.Root>
+          <Flex asChild direction="column" display="inline-flex" gap="0">
+            <DataList.Item align="start">
               <DataList.Label>
                 <Text size="1">
-                  <Code variant="ghost">Song</Code>
+                  <Code variant="ghost">Artist</Code>
                 </Text>
               </DataList.Label>
               <DataList.Value>
                 <Text size={{ initial: '1', md: '2' }} weight="medium">
-                  {_title2}
+                  {_title1}
                 </Text>
               </DataList.Value>
             </DataList.Item>
-            <DataList.Item align="start" className="flex flex-col gap-0">
-              <DataList.Label>
-                <Text size="1">
-                  <Code variant="ghost">Album</Code>
-                </Text>
-              </DataList.Label>
-              <DataList.Value>
-                <Text size={{ initial: '1', md: '2' }} weight="medium">
-                  {_title3}
-                </Text>
-              </DataList.Value>
-            </DataList.Item>
-            <DataList.Item align="start" className="flex flex-col gap-0">
-              <DataList.Label>
-                <Text size="1">
-                  <Code variant="ghost">Year</Code>
-                </Text>
-              </DataList.Label>
-              <DataList.Value>
-                <Text size={{ initial: '1', md: '2' }}>
-                  <Code variant="ghost">{item.album.release_date.slice(0, 4)}</Code>
-                </Text>
-              </DataList.Value>
-            </DataList.Item>
-          </>
-        )}
-        <DataList.Item
-          align="start"
-          className={cx(
-            'flex-col gap-0 md:gap-1',
-            type === isTrack ? 'hidden' : 'flex',
+          </Flex>
+          {isTrack && (
+            <>
+              <Flex asChild direction="column" display="inline-flex" gap="0">
+                <DataList.Item align="start">
+                  <DataList.Label>
+                    <Text size="1">
+                      <Code variant="ghost">Song</Code>
+                    </Text>
+                  </DataList.Label>
+                  <DataList.Value>
+                    <Text size={{ initial: '1', md: '2' }} weight="medium">
+                      {_title2}
+                    </Text>
+                  </DataList.Value>
+                </DataList.Item>
+              </Flex>
+              <Flex asChild direction="column" display="inline-flex" gap="0">
+                <DataList.Item align="start">
+                  <DataList.Label>
+                    <Text size="1">
+                      <Code variant="ghost">Album</Code>
+                    </Text>
+                  </DataList.Label>
+                  <DataList.Value>
+                    <Text size={{ initial: '1', md: '2' }} weight="medium">
+                      {_title3}
+                    </Text>
+                  </DataList.Value>
+                </DataList.Item>
+              </Flex>
+              <Flex asChild direction="column" display="inline-flex" gap="0">
+                <DataList.Item align="start">
+                  <DataList.Label>
+                    <Text size="1">
+                      <Code variant="ghost">Year</Code>
+                    </Text>
+                  </DataList.Label>
+                  <DataList.Value>
+                    <Text size={{ initial: '1', md: '2' }}>
+                      <Code variant="ghost">
+                        {item.album.release_date.slice(0, 4)}
+                      </Code>
+                    </Text>
+                  </DataList.Value>
+                </DataList.Item>
+              </Flex>
+            </>
           )}
-        >
-          <DataList.Label>
-            <Text size="1">
-              <Code variant="ghost">Genre{genres.length > 1 && 's'}</Code>
-            </Text>
-          </DataList.Label>
-          <DataList.Value>
-            <Text size={{ initial: '2', md: '2' }}>
-              <span className="mt-2 mb-3 flex flex-row flex-wrap gap-2 pb-1 font-mono md:mt-1">
-                {genres.map((genre) => {
-                  if (!genre) return null
-                  return (
-                    <Badge
-                      key={`g--${genre}`}
-                      radius="full"
-                      size={{ initial: '1', md: '1' }}
-                    >
-                      {genre}
-                    </Badge>
-                  )
-                })}
-                {!!genresExtra && (
-                  <Badge color="gray" radius="full" size={{ initial: '1', md: '1' }}>
-                    {genresExtra}
-                  </Badge>
-                )}
-                {genres.length === 0 && (
-                  <Badge color="gray" radius="full" size={{ initial: '1', md: '1' }}>
-                    N/A
-                  </Badge>
-                )}
-              </span>
-            </Text>
-          </DataList.Value>
-        </DataList.Item>
-        <DataList.Item align="start" className="flex flex-col gap-0 md:gap-1">
-          <DataList.Label>
-            <Text size="1">
-              <Code variant="ghost">Link</Code>
-            </Text>
-          </DataList.Label>
-          <DataList.Value>
-            <Flex
-              align="start"
-              direction="column"
-              flexGrow="1"
-              gap="2"
-              justify="end"
-              mb="2"
-            >
-              <Button
-                asChild
-                className="w-fit"
-                color="jade"
-                highContrast={false}
-                mt="0"
-                radius="full"
-                size={{ initial: '1', md: '1' }}
-                variant="outline"
-              >
-                <NextLink href={_href} target="_blank">
-                  Open Spotify
-                  {` `}
-                  <ArrowTopRightIcon className={cx('text-accent-11 !opacity-100')} />
-                </NextLink>
-              </Button>
-            </Flex>
-          </DataList.Value>
-        </DataList.Item>
-      </DataList.Root>
+          <Flex
+            asChild
+            direction="column"
+            display={type === isTrack ? 'none' : 'inline-flex'}
+            gap={{ initial: '0', md: '1' }}
+          >
+            <DataList.Item align="start">
+              <DataList.Label>
+                <Text size="1">
+                  <Code variant="ghost">Genre{genres.length > 1 && 's'}</Code>
+                </Text>
+              </DataList.Label>
+              <DataList.Value>
+                <Text size={{ initial: '2', md: '2' }}>
+                  <span className="mt-2 mb-3 flex flex-row flex-wrap gap-2 pb-1 font-mono md:mt-1">
+                    {genres.map((genre) => {
+                      if (!genre) return null
+                      return (
+                        <Badge
+                          key={`g--${genre}`}
+                          radius="full"
+                          size={{ initial: '1', md: '1' }}
+                        >
+                          {genre}
+                        </Badge>
+                      )
+                    })}
+                    {!!genresExtra && (
+                      <Badge
+                        color="gray"
+                        radius="full"
+                        size={{ initial: '1', md: '1' }}
+                      >
+                        {genresExtra}
+                      </Badge>
+                    )}
+                    {genres.length === 0 && (
+                      <Badge
+                        color="gray"
+                        radius="full"
+                        size={{ initial: '1', md: '1' }}
+                      >
+                        N/A
+                      </Badge>
+                    )}
+                  </span>
+                </Text>
+              </DataList.Value>
+            </DataList.Item>
+          </Flex>
+          <Flex
+            asChild
+            direction="column"
+            display="inline-flex"
+            gap={{ initial: '0', md: '1' }}
+          >
+            <DataList.Item align="start">
+              <DataList.Label>
+                <Text size="1">
+                  <Code variant="ghost">Link</Code>
+                </Text>
+              </DataList.Label>
+              <DataList.Value>
+                <Flex
+                  align="start"
+                  direction="column"
+                  flexGrow="1"
+                  gap="2"
+                  justify="end"
+                  mb="2"
+                >
+                  <Button
+                    asChild
+                    className="w-fit"
+                    color="jade"
+                    highContrast={false}
+                    mt="0"
+                    radius="full"
+                    size={{ initial: '1', md: '1' }}
+                    variant="outline"
+                  >
+                    <NextLink href={_href} target="_blank">
+                      Open Spotify
+                      {` `}
+                      <ArrowTopRightIcon
+                        className={cx('text-accent-11 !opacity-100')}
+                      />
+                    </NextLink>
+                  </Button>
+                </Flex>
+              </DataList.Value>
+            </DataList.Item>
+          </Flex>
+        </DataList.Root>
+      </Flex>
       <Inset
         className={cx(
           'rounded-3 relative h-full',
           'h-[275px] w-[164px] max-w-[164px] min-w-[164px]',
           'md:size-full md:max-w-[308px]',
-          // 'md:h-[450px] md:w-[500px]',
-          // 'md:border-1 md:border-gray-7 ',
-          '',
         )}
         clip="border-box"
         side={{ initial: 'all', md: 'all' }}
       >
-        {/* <NextImage
-            className={cx(
-              'rounded-3',
-              // 'max-h-[275px] min-w-[150px]',
-              // 'size-full ',
-              // 'md:max-h-full md:min-w-[275px] md:max-w-[575px]',
-              '',
-            )}
-            role="img"
-            tabIndex={-1}
-            {...image}
-          /> */}
         <Image
           {...image}
           alt={_alt}
@@ -331,45 +354,49 @@ function DataItemLoader({ error, handleScroll, isLoadingMore }) {
         width="100%"
         wrap="wrap"
       >
-        <DataList.Root className="w-full p-2 md:px-4 md:py-5">
-          <DataList.Item align="start" className="flex flex-col gap-0">
-            <DataList.Label>
-              <Text size="1">
-                <Code variant="ghost">Status</Code>
-              </Text>
-            </DataList.Label>
-            <DataList.Value>
-              <Text size={{ initial: '1', md: '7' }} weight="medium">
-                {isLoadingMore // ? 'loading' : isReachingEnd ? 'no more' :''
-                  ? info.loading.text
-                  : error
-                    ? info.error.text
-                    : info.success.text}
-              </Text>
-            </DataList.Value>
-          </DataList.Item>
-          <DataList.Item align="start" className="flex flex-col gap-0">
-            <DataList.Label>
-              <Text size="1">
-                <Code variant="ghost">&nbsp;</Code>
-              </Text>
-            </DataList.Label>
-            <DataList.Value>
-              <Text
-                as="p"
-                className="line-clamp-3"
-                mt="2"
-                size={{ initial: '3', md: '5' }}
-                weight="regular"
-              >
-                {isLoadingMore // ? 'loading' : isReachingEnd ? 'no more' :''
-                  ? info.loading.cta
-                  : error
-                    ? info.error.cta
-                    : info.success.cta}
-              </Text>
-            </DataList.Value>
-          </DataList.Item>
+        <DataList.Root className="w-full">
+          <Flex asChild direction="column" display="inline-flex" gap="0">
+            <DataList.Item align="start">
+              <DataList.Label>
+                <Text size="1">
+                  <Code variant="ghost">Status</Code>
+                </Text>
+              </DataList.Label>
+              <DataList.Value>
+                <Text size={{ initial: '1', md: '7' }} weight="medium">
+                  {isLoadingMore // ? 'loading' : isReachingEnd ? 'no more' :''
+                    ? info.loading.text
+                    : error
+                      ? info.error.text
+                      : info.success.text}
+                </Text>
+              </DataList.Value>
+            </DataList.Item>
+          </Flex>
+          <Flex asChild direction="column" display="inline-flex" gap="0">
+            <DataList.Item align="start">
+              <DataList.Label>
+                <Text size="1">
+                  <Code variant="ghost">&nbsp;</Code>
+                </Text>
+              </DataList.Label>
+              <DataList.Value>
+                <Text
+                  as="p"
+                  className="line-clamp-3"
+                  mt="2"
+                  size={{ initial: '3', md: '5' }}
+                  weight="regular"
+                >
+                  {isLoadingMore // ? 'loading' : isReachingEnd ? 'no more' :''
+                    ? info.loading.cta
+                    : error
+                      ? info.error.cta
+                      : info.success.cta}
+                </Text>
+              </DataList.Value>
+            </DataList.Item>
+          </Flex>
         </DataList.Root>
         <Inset
           className={cx(
@@ -534,10 +561,10 @@ function MusicClient() {
   }
 
   return (
-    <>
+    <Flex direction="column">
       <HeaderFull overline="Currently…" title="Listening To" />
-      <Flex className="flex flex-col gap-20">
-        <Flex className="flex flex-col gap-6">
+      <Flex direction="column" gap="9" pb="4">
+        <Flex direction="column" gap="6">
           <Text size="4">
             My “<Em>Music</Em>” library is at over{' '}
             <span className="font-mono">50</span> days, and am continuing an ever
@@ -580,30 +607,37 @@ function MusicClient() {
         </Flex>
       </Flex>
       <Callout size="1" variant="outline" />
-
       <ContainerWithSidebar>
         <HeaderSidebar className="!size-full" hasBorder={false} title="">
-          <div className="sticky top-[calc(var(--header-height)_-_6px)] flex size-full flex-col justify-between md:top-28">
-            <div
+          <Flex
+            className="rounded-3 border-1"
+            direction="column"
+            height="100%"
+            justify="between"
+            top={{
+              initial: '0',
+              md: '0',
+            }}
+            width="100%"
+          >
+            <Flex
               className={cx(
-                'col-span-full h-fit md:col-span-3',
-                '',
-                // 'bg-white md:bg-transparent dark:bg-black',
-                'bg-whiteA-12 dark:bg-blackA-12 md:bg-transparent',
-                'backdrop-blur-xs',
-                // 'border-b-1 border-grayA-3',
-                // 'drop-shadow-xs dark:shadow-white/5  dark:drop-shadow-lg',
-                // 'md:border-none md:drop-shadow-none',
-                'z-40 md:z-0',
+                // '!md:col-span-3 !col-span-full',
+                'bg-whiteA-12 dark:bg-blackA-12 md:bg-transparent md:dark:bg-transparent',
+                'z-40 backdrop-blur-xs md:z-0',
               )}
+              direction="row"
+              height="fit-content"
+              width="100%"
             >
-              <div
-                className={cx(
-                  // 'mt-6 md:mt-8',
-                  'flex flex-row justify-between gap-4 pb-4 md:flex-col md:justify-start md:pb-0',
-                )}
+              <Flex
+                direction={{ initial: 'row', md: 'column' }}
+                gap="4"
+                justify={{ initial: 'between', md: 'start' }}
+                pb={{ initial: '4', md: '0' }}
+                width="100%"
               >
-                <Flex gap="3">
+                <Flex gap="3" width="100%">
                   {/* @todo(radix) children */}
                   {/* @ts-ignore */}
                   <SelectRoot
@@ -614,10 +648,11 @@ function MusicClient() {
                   >
                     <SelectTrigger
                       className={cx(
-                        'w-full md:w-full',
+                        '!md:w-full !w-full',
                         spotifyType === 'recently-played' && 'cursor-not-allowed',
                       )}
                       placeholder="Time Range:"
+                      width="100%"
                     />
                     <SelectContent className="z-50 w-full" position="popper">
                       {ranges.map((range) => {
@@ -642,7 +677,7 @@ function MusicClient() {
                     size="3"
                   >
                     <SelectTrigger
-                      className="z-50 w-full md:w-full"
+                      className="!md:w-full z-50 !w-full"
                       placeholder="Type:"
                     />
                     <SelectContent className="z-50 w-full" position="popper">
@@ -654,20 +689,20 @@ function MusicClient() {
                     </SelectContent>
                   </SelectRoot>
                 </Flex>
-              </div>
-            </div>
+              </Flex>
+            </Flex>
             <Callout className="relative right-0 bottom-0" color="mint" size="1">
               <Strong className="font-mono uppercase">Spotify</Strong> does not earn
               a commission. But all data is currently from them.
             </Callout>
-          </div>
+          </Flex>
         </HeaderSidebar>
         <ArticleMain>
           <DataItems />
           <div className={cx()}></div>
         </ArticleMain>
       </ContainerWithSidebar>
-    </>
+    </Flex>
   )
 }
 

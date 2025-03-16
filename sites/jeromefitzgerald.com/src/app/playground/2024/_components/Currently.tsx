@@ -67,6 +67,7 @@ function Currently() {
   return (
     <Flex
       align="end"
+      // bottom="0"
       className={cx(
         'place-content-center items-center overflow-visible',
         'order-[0]',
@@ -74,8 +75,10 @@ function Currently() {
       direction="column"
       gap="10"
       height={{ initial: 'min-content', md: '266px' }}
+      // height="100%"
       justify="center"
       p="0"
+      // position="fixed"
       px={{ initial: '5', md: '0' }}
       style={{ opacity: 1 }}
       width="100%"

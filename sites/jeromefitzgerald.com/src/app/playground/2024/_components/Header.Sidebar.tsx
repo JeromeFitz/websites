@@ -1,5 +1,6 @@
 import { cx } from '@jeromefitz/ds/utils/cx'
 
+// import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
 
@@ -8,10 +9,12 @@ function ContainerHeaderSidebar({ children }) {
     <Flex
       asChild
       className={cx(
+        // 'bg-iris-3',
+        // 'rounded-md border-1',
         'z-0 content-center items-start overflow-auto will-change-transform',
-        'md:sticky',
       )}
       data-name="Side Bar"
+      display="inline-flex"
       flexBasis="0px"
       flexGrow="1"
       flexShrink="0"
@@ -21,7 +24,7 @@ function ContainerHeaderSidebar({ children }) {
       maxHeight={{ initial: 'unset', md: 'unset' }}
       maxWidth={{ initial: 'unset', md: '320px' }}
       mr={{ initial: '0', md: '-1' }}
-      position="relative"
+      position={{ initial: 'relative', md: 'relative' }}
       style={{ opacity: 1, transform: 'perspective(1200px)' }}
       top={{ initial: 'unsert', md: '9' }}
       width="100%"
@@ -43,12 +46,14 @@ function HeaderSidebar({
     <ContainerHeaderSidebar>
       <Flex
         className={cx(
-          'flex-none place-content-start items-start overflow-visible',
-          'px-0 pt-0 pb-6 md:p-0',
+          'place-content-start items-start overflow-visible',
           hasBorder && 'rounded-3 border-gray-7 border-1',
           className,
         )}
         direction="column"
+        flexBasis="auto"
+        flexGrow="0"
+        flexShrink="0"
         gap="0"
         height="min-content"
         id="header-top"
@@ -63,10 +68,13 @@ function HeaderSidebar({
         {!isTitleEmpty && (
           <Flex
             className={cx(
-              'z-30 flex-none place-content-start items-start overflow-hidden',
+              'z-30 place-content-start items-start overflow-hidden',
               isTitleEmpty && 'hidden',
             )}
             direction="column"
+            flexBasis="auto"
+            flexGrow="0"
+            flexShrink="0"
             gap="3"
             height="min-content"
             id="header-info"
@@ -80,14 +88,16 @@ function HeaderSidebar({
             </Heading>
           </Flex>
         )}
-
         <Flex
-          className="flex-none"
           direction="column"
+          flexBasis="auto"
+          flexGrow="0"
+          flexShrink="0"
           height="100%"
           id="header-container"
           justify="between"
           position="relative"
+          top="0"
           width="100%"
         >
           {children}

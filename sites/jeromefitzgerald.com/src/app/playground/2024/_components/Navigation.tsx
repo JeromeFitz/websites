@@ -19,7 +19,7 @@ function Navigation() {
         )}
         direction="row"
         gap="2"
-        h="calc(var(--spacing) * 12)"
+        height="calc(var(--spacing) * 12)"
         justify={{ initial: 'between', md: 'start' }}
         mr="6"
         p="0"

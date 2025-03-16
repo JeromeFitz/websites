@@ -56,7 +56,7 @@ function NavigationTertiary({ className, order = 0 }) {
       )}
       style={{ opacity: 1, order }}
     >
-      <div className={cx('contents')}>
+      <div className="contents size-full">
         <div className={cx()}>
           {/* @todo(radix) children */}
           {/* @ts-ignore */}

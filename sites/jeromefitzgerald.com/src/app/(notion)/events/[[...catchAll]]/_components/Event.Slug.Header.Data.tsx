@@ -240,27 +240,37 @@ function EventSlugHeaderData({ properties }) {
                   Type
                 </Text>
               </DataList.Label>
-              <DataList.Value
-                className={cx(
-                  'flex flex-none flex-row flex-wrap place-content-start items-start gap-2 md:gap-3',
-                  'before:[content:initial]',
-                  'before:table',
-                  '',
-                )}
+              <Flex
+                asChild
+                direction="row"
+                flexBasis="auto"
+                flexGrow="0"
+                flexShrink="0"
+                gap={{ initial: '2', md: '3' }}
+                wrap="wrap"
               >
-                <>
-                  {tags.length === 0 && (
-                    <Badge className="lowercase" color="amber" size="2">
-                      <Code variant="ghost">comedy</Code>
-                    </Badge>
+                <DataList.Value
+                  className={cx(
+                    'place-content-start items-start',
+                    'before:[content:initial]',
+                    'before:table',
+                    '',
                   )}
-                  {tags.map(({ color, id, name }) => (
-                    <Badge className="lowercase" color={color} key={id} size="2">
-                      <Code variant="ghost">{name}</Code>
-                    </Badge>
-                  ))}
-                </>
-              </DataList.Value>
+                >
+                  <>
+                    {tags.length === 0 && (
+                      <Badge className="lowercase" color="amber" size="2">
+                        <Code variant="ghost">comedy</Code>
+                      </Badge>
+                    )}
+                    {tags.map(({ color, id, name }) => (
+                      <Badge className="lowercase" color={color} key={id} size="2">
+                        <Code variant="ghost">{name}</Code>
+                      </Badge>
+                    ))}
+                  </>
+                </DataList.Value>
+              </Flex>
             </DataList.Item>
           )}
         </DataList.Root>
@@ -277,7 +287,7 @@ function EventSlugHeaderData({ properties }) {
         id="header-bottom"
         style={{ opacity: 1, transform: 'perspective(1200px)' }}
       >
-        <div className={cx('contents')}>
+        <div className="contents size-full">
           <div className={cx('ml-0.5 w-full pb-2')}>
             <CTA href={ticketUrl} isDisabled={isEventOver} />
           </div>

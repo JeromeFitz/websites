@@ -7,9 +7,12 @@ function SectionSpacer() {
     <Flex
       className={cx(
         'bg-green-4',
-        'flex-none content-start items-start justify-self-end overflow-visible',
+        'content-start items-start justify-self-end overflow-visible',
       )}
       direction="row"
+      flexBasis="auto"
+      flexGrow="0"
+      flexShrink="0"
       gap="9"
       height="100%"
       justify="end"

@@ -14,8 +14,11 @@ function ContainerFooterClient() {
   const isHomepage = pathname === '/'
   return (
     <Flex
-      className="order-1 flex-none content-start items-start"
+      className="order-1 content-start items-start"
       display={{ initial: isHomepage ? 'none' : 'flex' }}
+      flexBasis="auto"
+      flexGrow="0"
+      flexShrink="0"
       gap={{ initial: 'unset', md: '9' }}
       height="calc(var(--spacing) * 3)"
       justify={{ initial: 'between', md: IS_COLOPHON_SHOWN ? 'between' : 'end' }}

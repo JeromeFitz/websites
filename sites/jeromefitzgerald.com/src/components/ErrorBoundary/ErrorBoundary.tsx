@@ -86,7 +86,7 @@ class ErrorBoundary extends Component<PropsChildren> {
                         minWidth="88px"
                       >
                         <ExclamationTriangleIcon />
-                        <Text className="ml-2 font-mono" size="1">
+                        <Text className="font-mono" ml="1" size="1">
                           Error
                         </Text>
                       </DataList.Label>

@@ -101,7 +101,7 @@ function ShowSlugHeaderData({ properties }) {
         id="header-bottom"
         style={{ opacity: 1, transform: 'perspective(1200px)' }}
       >
-        <div className={cx('contents')}>
+        <div className="contents size-full">
           <div className={cx('ml-0.5 w-full pb-2')}>
             {/* <CTA href={ticketUrl} isDisabled={isEventOver} /> */}
           </div>

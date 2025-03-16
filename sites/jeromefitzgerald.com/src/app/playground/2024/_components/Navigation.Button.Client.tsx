@@ -33,13 +33,11 @@ function NavigationButtonClient() {
             '',
           )}
           defaultValue={theme || 'dark'}
-          height="100%"
           onValueChange={(value) => {
             if (value) handleTheme(value)
           }}
           radius="full"
           variant="surface"
-          width="100%"
         >
           <SegmentedControl.Item suppressHydrationWarning value="dark">
             <MoonIcon />

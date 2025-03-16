@@ -52,7 +52,7 @@ function NavigationSecondary({ order = 0 }) {
       className={cx('relative h-auto w-min flex-none')}
       style={{ opacity: 1, order }}
     >
-      <div className={cx('contents')}>
+      <div className="contents size-full">
         {/* @todo(radix) children */}
         {/* @ts-ignore */}
         <DropdownMenuRoot modal={false}>
@@ -60,7 +60,7 @@ function NavigationSecondary({ order = 0 }) {
             <Flex
               asChild
               className={cx(
-                'bg-accent-1 hover:bg-accent-2 transition-colors',
+                '!bg-accent-1 !hover:bg-accent-2 transition-colors',
                 // 'w-[165px] max-w-[165px] min-w-[128px]',
                 // 'flex items-center justify-between gap-4 text-left',
               )}

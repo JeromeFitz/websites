@@ -7,8 +7,11 @@ import { Currently } from './Currently'
 function ContainerFooter() {
   return (
     <Flex
-      className="z-0 flex-[0_0_auto] md:z-10 md:flex-none"
+      className="z-0 md:z-10"
       direction="row"
+      flexBasis="auto"
+      flexGrow="0"
+      flexShrink="0"
       height="100%"
       position="relative"
       style={{ opacity: 1, transform: 'perspective(1200px)' }}

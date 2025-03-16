@@ -7,7 +7,6 @@ import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
 import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
 import { Em } from '@radix-ui/themes/dist/esm/components/em.js'
 import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
-import { Grid } from '@radix-ui/themes/dist/esm/components/grid.js'
 import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
 import { Link } from '@radix-ui/themes/dist/esm/components/link.js'
 import { Separator } from '@radix-ui/themes/dist/esm/components/separator.js'
@@ -86,51 +85,54 @@ function Comedy() {
 function Contact() {
   return (
     <>
-      <Callout size="1" variant="surface">
+      <Callout className="!my-6" size="1" variant="surface">
         This has not been migrated yet.
       </Callout>
-      <ul
-        className={cx(
-          'mx-2 mt-2 pt-2',
-          'flex flex-row gap-8 md:gap-4',
-          'justify-center',
-          'md:place-items-baseline md:items-center md:justify-start',
-        )}
+      <Flex
+        asChild
+        direction="row"
+        gap={{ initial: '8', md: '4' }}
+        justify={{ initial: 'center', md: 'start' }}
+        mt="2"
+        mx="2"
+        pt="2"
       >
-        {socials.map((social) => {
-          if (!social.active) return null
+        <ul className="md:place-items-baseline md:items-center">
+          {socials.map((social) => {
+            if (!social.active) return null
 
-          return (
-            <li className={cx('')} key={`footer--social--${social.id}`}>
-              <Button asChild highContrast radius="full" size="2" variant="ghost">
-                <a
-                  className={cx(
-                    'hover:cursor-pointer lg:flex',
-                    'text-gray-12 hover:text-gray-12',
-                    // 'duration-250 transition-colors',
-                    'place-content-start items-center justify-items-start lg:w-full',
-                    social.className,
-                  )}
-                  href={social.url}
-                  target="_blank"
-                >
-                  {social.icon}
-                  <span
+            return (
+              <li key={`footer--social--${social.id}`}>
+                <Button asChild highContrast radius="full" size="2" variant="ghost">
+                  <a
                     className={cx(
-                      // 'flex flex-row items-center justify-center gap-2',
-                      'hidden',
-                      '',
+                      'hover:cursor-pointer lg:flex',
+                      'text-gray-12 hover:text-gray-12',
+                      // 'duration-250 transition-colors',
+                      'place-content-start items-center justify-items-start lg:w-full',
+                      social.className,
                     )}
+                    href={social.url}
+                    target="_blank"
                   >
-                    <span className="text-inherit">{social.title}</span>{' '}
-                    <ExternalLinkIcon className="text-gray-12" />
-                  </span>
-                </a>
-              </Button>
-            </li>
-          )
-        })}
-      </ul>
+                    {social.icon}
+                    <span
+                      className={cx(
+                        // 'flex flex-row items-center justify-center gap-2',
+                        'hidden',
+                        '',
+                      )}
+                    >
+                      <span className="text-inherit">{social.title}</span>{' '}
+                      <ExternalLinkIcon className="text-gray-12" />
+                    </span>
+                  </a>
+                </Button>
+              </li>
+            )
+          })}
+        </ul>
+      </Flex>
     </>
   )
 }
@@ -266,46 +268,39 @@ const sectionsDefault = [
 
 function Section({ sections = sectionsDefault }: { sections?: SectionType[] }) {
   return (
-    <>
-      <Flex
-        direction={{ initial: 'column', md: 'row' }}
-        gap="var(--sidebar-gap)"
-        mb="12"
-        width="100%"
+    <Flex
+      direction={{ initial: 'column', md: 'row' }}
+      gap="var(--sidebar-gap)"
+      mb="12"
+      width="100%"
+    >
+      <Box
+        // className="rounded-3 border-1"
+        display={{ initial: 'none', md: 'inline' }}
+        maxWidth={{ md: 'var(--sidebar-width)' }}
+        minWidth={{ md: 'var(--sidebar-width)' }}
+        width={{ initial: '100%', md: 'var(--sidebar-width)' }}
       >
-        <Grid
-          className={cx(
-            // 'bg-purple-6',
-            // 'rounded-3 border-1',
-            '!col-span-3',
-          )}
-          // columns="3"
-          display={{ initial: 'none', md: 'grid' }}
-          maxWidth={{ md: 'var(--sidebar-width)' }}
-          minWidth={{ md: 'var(--sidebar-width)' }}
-          width={{ initial: '100%', md: 'var(--sidebar-width)' }}
+        <Box
+          // className="rounded-3 border-1"
+          minHeight="280px"
+          position="sticky"
+          top="calc(var(--spacing) * 24)"
         >
           <Box
             className={cx(
-              // 'bg-purple-9 rounded-3 border-1 min-h-[280px]',
-              'sticky top-24',
+              'rounded-3 absolute inset-x-0 top-0 z-0 h-16 flex-none overflow-hidden',
+              'hidden',
             )}
-          >
-            <Box
-              className={cx(
-                'rounded-3 absolute inset-x-0 top-0 z-0 h-16 flex-none overflow-hidden',
-                'hidden',
-              )}
-              data-name="Legend: Highlight"
-            />
-            <SectionLegend data={sections} />
-          </Box>
-        </Grid>
-        <Flex direction="column" gap="9" width="100%">
-          <SectionContent data={sections} />
-        </Flex>
+            data-name="Legend: Highlight"
+          />
+          <SectionLegend data={sections} />
+        </Box>
+      </Box>
+      <Flex direction="column" gap="9" width="100%">
+        <SectionContent data={sections} />
       </Flex>
-    </>
+    </Flex>
   )
 }
 
@@ -329,12 +324,13 @@ function SectionContent({ data }) {
                   'items-center self-start overflow-hidden',
                   'after:border-accent-9 after:pointer-events-none after:absolute after:top-0 after:left-0 after:size-full after:border-t-1 after:content-[""]',
                 )}
-                column="row"
+                // column="row"
                 gap="3"
                 height="min-content"
                 justify="start"
                 mb="2"
                 p="0"
+                pb="2"
                 position="relative"
                 width="100%"
                 wrap="nowrap"
@@ -342,7 +338,7 @@ function SectionContent({ data }) {
                 <Flex
                   className="bg-accent-9 rounded-b-3 aspect-[1_/_1] items-center overflow-visible"
                   gap="0"
-                  height="calc(var(--spacing) * 10)"
+                  height="calc(var(--spacing) * 12)"
                   justify="center"
                   p="0"
                   width="calc(var(--spacing) * 10)"
@@ -359,7 +355,11 @@ function SectionContent({ data }) {
                     position="relative"
                     width={{ initial: '1px', md: '1px' }}
                   >
-                    <Heading as="h3" className={cx('text-white dark:text-black')}>
+                    <Heading
+                      as="h3"
+                      className={cx('font-mono text-white dark:text-black')}
+                      size="5"
+                    >
                       {item.icon ? (
                         <Icon className="!size-6" />
                       ) : (

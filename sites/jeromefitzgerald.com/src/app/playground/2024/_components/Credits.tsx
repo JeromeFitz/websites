@@ -21,11 +21,11 @@ function Credits({ id, relations }) {
   let relationAddition = 0
   return (
     <Flex
-      className={cx(
-        'flex-none place-content-center items-center overflow-visible',
-        'z-0',
-      )}
+      className={cx('place-content-center items-center overflow-visible', 'z-0')}
       direction="column"
+      flexBasis="auto"
+      flexGrow="0"
+      flexShrink="0"
       gap="0"
       height="min-content"
       id="container--credits"
@@ -126,20 +126,25 @@ function RelationContainerContent({ children }) {
 function RelationContainerTitle({ children, className = '' }) {
   return (
     <Box
-      className={cx(
-        'relative h-16 w-full flex-none p-4',
-        'px-5 pt-5 pb-8',
-        'border-gray-7 border-y-1',
-        className,
-      )}
+      className={cx('border-gray-7 border-y-1', className)}
+      flexBasis="auto"
+      flexGrow="0"
+      flexShrink="0"
+      height="calc(var(--spacing) * 16)"
+      p="4"
+      pb="8"
+      position="relative"
+      pt="5"
+      px="5"
+      width="100%"
     >
       <Box className="contents size-full">
-        <Box className={cx('flex flex-row items-center justify-start gap-4')}>
+        <Flex className="items-center" direction="row" gap="4" justify="start">
           {/* <InfoCircledIcon /> */}
           <Text className="font-medium capitalize" size={{ initial: '3', md: '5' }}>
             {children}
           </Text>
-        </Box>
+        </Flex>
       </Box>
     </Box>
   )

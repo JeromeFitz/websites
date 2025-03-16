@@ -61,7 +61,7 @@ function NavigationPrimary({ order = 0 }) {
       // ref={ref}
       style={{ opacity: 1, order }}
     >
-      <div className={cx('contents')}>
+      <div className="contents size-full">
         {/* @todo(radix) children */}
         {/* @ts-ignore */}
         <PopoverRoot
@@ -73,29 +73,31 @@ function NavigationPrimary({ order = 0 }) {
           open={isPopover}
         >
           <PopoverTrigger asChild>
-            <Button
-              aria-label="Jerome"
-              className={cx(
-                'bg-accent-1 hover:bg-accent-2 transition-colors',
-                '[&>svg]:data-[state="open"]:animate-none',
-                'flex flex-row gap-0',
-              )}
-              // color={isLoading ? 'accent' : 'gray'}
-              color="gray"
-              radius="full"
-              size="3"
-              variant="outline"
-            >
-              <DotFilledIcon
+            <Flex asChild direction="row" gap="3">
+              <Button
+                aria-label="Jerome"
                 className={cx(
-                  'text-pink-11 size-6 animate-pulse transition-all delay-1000',
-                  '',
+                  '!bg-accent-1 !hover:bg-accent-2 transition-colors',
+                  '[&>svg]:data-[state="open"]:animate-none',
+                  '!cursor-pointer',
                 )}
-              />
-              <Text>
-                <Strong>Jerome</Strong>
-              </Text>
-            </Button>
+                // color={isLoading ? 'accent' : 'gray'}
+                color="gray"
+                radius="full"
+                size="3"
+                variant="outline"
+              >
+                <DotFilledIcon
+                  className={cx(
+                    'text-pink-11 size-6 animate-pulse transition-all delay-1000',
+                    '',
+                  )}
+                />
+                <Text>
+                  <Strong>Jerome</Strong>
+                </Text>
+              </Button>
+            </Flex>
           </PopoverTrigger>
           <PopoverContent
             asChild
@@ -107,10 +109,11 @@ function NavigationPrimary({ order = 0 }) {
               className={cx(
                 'rounded-3 border-gray-7 !overflow-hidden border-1',
                 'w-[calc(var(--radix-popper-available-width)_-_3px)] min-w-[unset]',
-                'md:max-w-[309px]',
+                'md:max-w-[209px]',
               )}
               m="0"
               p="0"
+              width="calc(var(--radix-popper-available-width) - 13px"
             >
               <Inset mb={{ initial: '6', md: '4' }} p="0" side="top">
                 <AspectRatio ratio={4 / 3}>
