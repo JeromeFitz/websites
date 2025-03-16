@@ -25,7 +25,7 @@ function OrientationContent({ os }) {
   return (
     <>
       <div className="m-12 flex flex-row items-start justify-start gap-1 py-4 align-text-bottom font-mono md:py-0">
-        <span className="mr-2 mt-1 size-4">
+        <span className="mt-1 mr-2 size-4">
           <FileTextIcon className="text-inherit" />
         </span>
         <span>
@@ -38,7 +38,7 @@ function OrientationContent({ os }) {
         </span>
       </div>
       <div className="m-12 flex flex-row items-start justify-start gap-1 py-4 align-text-bottom font-mono md:py-0">
-        <span className="mr-2 mt-1 size-4">
+        <span className="mt-1 mr-2 size-4">
           <UpdateIcon className="text-inherit" />
         </span>
         <span>

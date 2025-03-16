@@ -21,7 +21,7 @@ function Logo({
       <div
         aria-hidden
         className={cx(
-          'pointer-events-none absolute left-0 top-0 z-10 flex size-full select-none items-center justify-center',
+          'pointer-events-none absolute top-0 left-0 z-10 flex size-full items-center justify-center select-none',
           '[transform:scale(1.5)_translateZ(0)]',
           '[filter:blur(12px)_opacity(0.4)_saturate(100%)]',
           '[transition:filter_150ms_ease]',
@@ -32,7 +32,7 @@ function Logo({
       </div>
       <div
         className={cx(
-          'pointer-events-none z-20 flex size-full select-none items-center justify-center rounded-[inherit] object-cover',
+          'pointer-events-none z-20 flex size-full items-center justify-center rounded-[inherit] object-cover select-none',
           '[&>svg]:w-[14px]:h-[14px]:[filter:drop-shadow(0_4px_4px_rgba(0,_0,_0,_0.16))]:[transition:filter_150ms_ease]',
           '',
         )}

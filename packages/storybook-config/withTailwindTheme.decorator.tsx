@@ -31,7 +31,7 @@ export const withTailwindTheme = (Story, context) => {
     >
       <Box
         className={cx(
-          'overflow-y-auto overflow-x-hidden lg:overflow-y-auto',
+          'overflow-x-hidden overflow-y-auto lg:overflow-y-auto',
           'selection:bg-gray-12 selection:text-gray-1',
           'bg-white dark:bg-black',
           'font-sans antialiased',
