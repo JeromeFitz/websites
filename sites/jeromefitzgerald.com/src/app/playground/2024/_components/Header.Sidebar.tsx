@@ -1,22 +1,35 @@
 import { cx } from '@jeromefitz/ds/utils/cx'
 
+import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
 // import _isEmpty from 'lodash/isEmpty.js'
 
 function ContainerHeaderSidebar({ children }) {
   return (
-    <header
+    <Flex
+      asChild
       className={cx(
-        'z-0 flex flex-[1_0_0px] flex-col flex-nowrap content-center items-start justify-between overflow-auto will-change-transform',
-        'relative top-[unset] h-min w-full max-w-[unset] flex-none',
-        'md:sticky md:top-24 md:h-[88vh] md:w-full md:max-w-[309px]',
+        'z-0 content-center items-start overflow-auto will-change-transform',
+        'md:sticky',
       )}
       data-name="Side Bar"
+      flexBasis="0px"
+      flexGrow="1"
+      flexShrink="0"
+      height={{ initial: 'min-content', md: '88vh' }}
       id="header--sidebar"
+      justify="between"
+      maxHeight={{ initial: 'unset', md: 'unset' }}
+      maxWidth={{ initial: 'unset', md: '320px' }}
+      mr={{ initial: '0', md: '-1' }}
+      position="relative"
       style={{ opacity: 1, transform: 'perspective(1200px)' }}
+      top={{ initial: 'unsert', md: '9' }}
+      width="100%"
+      wrap="nowrap"
     >
-      {children}
-    </header>
+      <header>{children}</header>
+    </Flex>
   )
 }
 
@@ -35,7 +48,7 @@ function HeaderSidebar({
           'h-min w-full',
           // 'size-full',
           'relative flex flex-none flex-col flex-nowrap place-content-start items-start gap-0 overflow-visible',
-          'px-0 pb-6 pt-0 md:p-0',
+          'px-0 pt-0 pb-6 md:p-0',
           hasBorder && 'rounded-3 border-gray-7 border-1',
           className,
         )}

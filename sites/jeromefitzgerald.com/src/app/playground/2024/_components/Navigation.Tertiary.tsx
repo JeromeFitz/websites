@@ -30,7 +30,7 @@ const useStore = () => {
 }
 
 // @todo(complexity) 11
-// eslint-disable-next-line complexity
+
 function NavigationTertiary({ className, order = 0 }) {
   const router = useRouter()
   const {
@@ -65,18 +65,17 @@ function NavigationTertiary({ className, order = 0 }) {
               className={cx(isDisabled && 'hover:cursor-not-allowed')}
             >
               <Button
-                aria-label={
-                  isDisabled ? 'Disabled Secondary Menu' : 'Secondary Menu'
-                }
+                aria-label={isDisabled ? 'Disabled Tertiary Menu' : 'Tertiary Menu'}
                 className={cx(
-                  'bg-accent-3 hover:bg-accent-4 active:bg-accent-5',
+                  '!bg-accent-3 !hover:bg-accent-4 !active:bg-accent-5',
                   'text-accent-11 hover:text-accent-11 active:text-accent-11',
-                  'backdrop-blur-xs transition-all',
+                  'backdrop-blur-md transition-all',
                   '!min-w-[310px]',
                 )}
                 // @todo(types)
                 // @ts-ignore
-                color={isDisabled ? 'gray' : 'accent'}
+                // color="orange"
+                // color={isDisabled ? 'gray' : 'accent'}
                 disabled={isDisabled}
                 size="3"
                 style={{

@@ -16,13 +16,14 @@ function ShowSlugHeaderData({ properties }) {
     <>
       <Flex
         className={cx(
-          // 'relative flex h-min w-full flex-col flex-nowrap content-center items-center justify-start gap-0 overflow-auto p-0',
+          'content-center items-center overflow-auto',
           'border-gray-7 border-t-1',
         )}
-        // conten/</>t="center"
         direction="column"
-        justify="center"
+        gap="0"
+        justify="start"
         p="0"
+        position="relative"
         width="100%"
         wrap="nowrap"
       >
@@ -40,7 +41,7 @@ function ShowSlugHeaderData({ properties }) {
               minWidth="88px"
             >
               <IdCardIcon />
-              <Text className="ml-2 font-mono" size="1">
+              <Text className="font-mono" ml="1" size="1">
                 Title
               </Text>
             </DataList.Label>
@@ -53,31 +54,36 @@ function ShowSlugHeaderData({ properties }) {
                 minWidth="88px"
               >
                 <TagIcon />
-                <Text className="ml-2 font-mono" size="1">
+                <Text className="font-mono" ml="1" size="1">
                   Type
                 </Text>
               </DataList.Label>
-              <DataList.Value
-                className={cx(
-                  'flex flex-none flex-row flex-wrap place-content-start items-start gap-2 md:gap-3',
-                  'before:[content:initial]',
-                  'before:table',
-                  '',
-                )}
+              <Flex
+                asChild
+                direction="row"
+                gap={{ initial: '2', md: '3' }}
+                wrap="wrap"
               >
-                <>
-                  {tags.length === 0 && (
-                    <Badge className="lowercase" color="amber" size="2">
-                      <Code variant="ghost">comedy</Code>
-                    </Badge>
+                <DataList.Value
+                  className={cx(
+                    'place-content-start items-start',
+                    'before:table before:[content:initial]',
                   )}
-                  {tags.map(({ color, id, name }) => (
-                    <Badge className="lowercase" color={color} key={id} size="2">
-                      <Code variant="ghost">{name}</Code>
-                    </Badge>
-                  ))}
-                </>
-              </DataList.Value>
+                >
+                  <>
+                    {tags.length === 0 && (
+                      <Badge className="lowercase" color="amber" size="2">
+                        <Code variant="ghost">comedy</Code>
+                      </Badge>
+                    )}
+                    {tags.map(({ color, id, name }) => (
+                      <Badge className="lowercase" color={color} key={id} size="2">
+                        <Code variant="ghost">{name}</Code>
+                      </Badge>
+                    ))}
+                  </>
+                </DataList.Value>
+              </Flex>
             </DataList.Item>
           )}
         </DataList.Root>

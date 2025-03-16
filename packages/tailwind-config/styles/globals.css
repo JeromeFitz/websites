@@ -10,6 +10,7 @@
 @plugin "@tailwindcss/typography";
 @plugin "tailwindcss-radix";
 /* @plugin "radix-themes-tw"; */
+@import './radix-themes-tw.css';
 
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,
@@ -112,11 +113,15 @@
 @theme {
   /* --header-height: 3.5rem; */
   --header-height: 56px;
-  --sidebar-width: 309px;
+  --sidebar-width: 320px;
   --sidebar-gap: 28px;
 }
 
-@custom-variant dark {
+/* @custom-variant dark (&:is(.dark *)); */
+@custom-variant dark (&:where(.dark, .dark *));
+/* @variant dark (&:where([data-theme="dark"], [data-theme="dark"] *)); */
+.dark,
+.dark-theme {
   --muted: 223 47% 11%;
   --muted-foreground: 215.4 16.3% 56.9%;
 }
@@ -125,13 +130,40 @@
   opacity: 100 !important;
 }
 
-:where(*) {
+/* :where(*) {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
+} */
 
 @theme {
+  /*  Gray 00, 100 */
+  --black: '#000000';
+  --white: '#ffffff';
+  /* Gray 01, 99 */
+  --black: '#030303';
+  --white: '#fcfcfc';
+  /* Gray 02, 98 */
+  --black: '#050505';
+  --white: '#fafafa';
+  /* Gray 06, 94 */
+  --black: '#0f0f0f';
+  --white: '#f4f4f4';
+  /* social */
+  --bluesky: '#3399FF';
+  --github: 'var(--black-a1)';
+  --github-dark: 'var(--white-a1)';
+  --inherit: 'inherit';
+  --instagram: '#c32aa3';
+  --linkedin: '#0a66c2';
+  --spotify: '#1ed760';
+  /* --spotify-dark: '#1db954'; */
+  --threads: '#c32aa3';
+  --twitter: '#1da1f2';
+  /* custom */
+  --current: 'current';
+  --transparent: 'transparent';
+  /* a11y improvements for radix */
   --amber-a11: color(display-p3 0.61 0.37 0);
   --crimson-a11: color(display-p3 0.729 0.192 0.385);
   --pink-a11: color(display-p3 0.688 0.209 0.518);
@@ -140,6 +172,13 @@
   --ruby-a11: color(display-p3 0.727 0.21 0.31);
   --tomato-a11: color(display-p3 0.701 0.249 0.137);
   --yellow-a11: color(display-p3 0.592 0.392 0);
+  /* fonts */
+  --font-family-mono: var(--font-geist-mono);
+  --font-family-sans: var(--font-geist-sans);
+}
+.dark,
+.dark-theme {
+  --spotify: '#1db954';
 }
 
 #data-radix-popper-content-wrapper {
@@ -150,8 +189,12 @@
   scroll-behavior: smooth;
 }
 
-[data-size='hero'] {
+[data-icon='hero'] {
+  /* padding: 0.325rem; */
   margin-top: 1px;
   width: 1rem;
-  font-size: 125%;
+}
+
+[data-icon='hero'] * {
+  stroke-width: 1.5 !important;
 }

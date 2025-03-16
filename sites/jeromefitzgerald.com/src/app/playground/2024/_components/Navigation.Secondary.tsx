@@ -15,6 +15,7 @@ import {
   Trigger as DropdownMenuTrigger,
   TriggerIcon as DropdownMenuTriggerIcon,
 } from '@radix-ui/themes/dist/esm/components/dropdown-menu.js'
+import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import { useRouter } from 'next/navigation.js'
 import { Fragment } from 'react'
@@ -56,25 +57,35 @@ function NavigationSecondary({ order = 0 }) {
         {/* @ts-ignore */}
         <DropdownMenuRoot modal={false}>
           <DropdownMenuTrigger>
-            <Button
+            <Flex
+              asChild
               className={cx(
                 'bg-accent-1 hover:bg-accent-2 transition-colors',
-                'w-[165px] max-w-[165px]',
-                'flex items-center justify-between gap-4 text-left',
+                // 'w-[165px] max-w-[165px] min-w-[128px]',
+                // 'flex items-center justify-between gap-4 text-left',
               )}
-              // @todo(types)
-              // @ts-ignore
-              color={isDisabled ? 'gray' : 'accent'}
-              disabled={isDisabled}
-              size="3"
-              variant="outline"
+              gap="4"
+              justify="between"
+              maxWidth="165px"
+              minWidth="128px"
+              width="165px"
             >
-              <div className="flex items-center justify-start gap-2">
-                {!isDisabled && <IconSecondary className="ml-1" />}
-                {!isDisabled && <Text>{zzz_menuSecondaryActive.title}</Text>}
-              </div>
-              <DropdownMenuTriggerIcon />
-            </Button>
+              <Button
+                className="text-left"
+                // @todo(types)
+                // @ts-ignore
+                color={isDisabled ? 'gray' : 'accent'}
+                disabled={isDisabled}
+                size="3"
+                variant="outline"
+              >
+                <div className="flex items-center justify-start gap-2">
+                  {!isDisabled && <IconSecondary className="ml-1" />}
+                  {!isDisabled && <Text>{zzz_menuSecondaryActive.title}</Text>}
+                </div>
+                <DropdownMenuTriggerIcon />
+              </Button>
+            </Flex>
           </DropdownMenuTrigger>
           <DropdownMenuContent
             className="z-50 min-w-[165px]"
@@ -95,7 +106,7 @@ function NavigationSecondary({ order = 0 }) {
                 <Fragment key={key}>
                   <DropdownMenuItem
                     className={cx(
-                      !!mt && 'hidden md:flex',
+                      !!mt && '!hidden md:flex',
                       !item.isActive && item.isActiveMobile && 'hidden',
                     )}
                     onSelect={() => {

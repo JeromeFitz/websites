@@ -45,25 +45,16 @@ function CurrentlyWrapper({ children, ...c }) {
   return (
     <Flex
       align="end"
-      className={cx(
-        // 'bg-black/5',
-        // 'bg-accentA-1',
-        'rounded-md',
-        // 'flex-none md:flex-[1_0_0px]',
-        // 'relative size-full flex-none',
-        // 'md:h-64 md:w-[1px]',
-        // 'md:w-[308px] md:min-w-[308px] md:max-w-[308px]',
-      )}
+      className="rounded-md"
       flexBasis="0px"
       flexGrow="1"
       flexShrink="0"
       height={{ initial: '100%', md: 'calc(var(--spacing) * 64)' }}
-      maxWidth={{ md: '308px' }}
-      minWidth={{ md: '308px' }}
+      // maxWidth={{ md: '308px' }}
+      // minWidth={{ md: '308px' }}
       position="relative"
       style={{ opacity: 1, transform: 'none' }}
-      // width={{ initial: 'unset', md: '1px' }}
-      width={{ initial: 'unset', md: '308px' }}
+      width="100%"
     >
       <Box className={cx('contents h-[inherit] w-[inherit]')}>
         <Flex
@@ -74,7 +65,7 @@ function CurrentlyWrapper({ children, ...c }) {
           justify="between"
           pb="5"
           position="relative"
-          pt="6"
+          pt="4"
           px="0"
           width="100%"
           wrap="nowrap"
@@ -89,20 +80,17 @@ function CurrentlyWrapper({ children, ...c }) {
               // 'pt-6 pb-5',
               // 'px-0',
             )}
-            // @todo(radix) pull in type
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
             color={color}
             variant="soft"
           >
             <NextLink href={href}>
-              <Box position="relative" px="5" right="0">
+              <Box mr="3" position="relative" right="0">
                 <Icon
                   className={cx(
-                    'm-2 rounded-md p-1.5 text-inherit !opacity-100 md:p-2',
+                    'm-2 rounded-md p-2 text-inherit !opacity-100 md:p-2',
                     'transition-colors',
                     'bg-white/95 group-hover:bg-white/75',
-                    'dark:bg-black',
+                    'dark:bg-black/95 dark:group-hover:bg-black/55',
                     '!md:size-12 !size-10',
                   )}
                 />

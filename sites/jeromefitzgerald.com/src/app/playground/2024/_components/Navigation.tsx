@@ -1,5 +1,7 @@
 import { cx } from '@jeromefitz/ds/utils/cx'
 
+import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
+
 import { NavigationButton } from './Navigation.Button'
 import { NavigationPrimary } from './Navigation.Primary'
 import { NavigationSecondary } from './Navigation.Secondary'
@@ -9,21 +11,31 @@ import { NavigationTertiary } from './Navigation.Tertiary'
 function Navigation() {
   return (
     <>
-      <nav
+      <Flex
+        asChild
         className={cx(
-          'relative mr-6 flex h-12 w-[unset] flex-row flex-nowrap content-start items-start justify-between gap-2 overflow-visible p-0',
+          'content-start items-center overflow-visible',
           'drop-shadow-xs',
-          'md:w-full md:justify-start',
         )}
-        id="nav"
+        direction="row"
+        gap="2"
+        h="calc(var(--spacing) * 12)"
+        justify={{ initial: 'between', md: 'start' }}
+        mr="6"
+        p="0"
+        position="relative"
         style={{ height: '100%', opacity: 1 }}
+        width={{ initial: 'unset', md: '100%' }}
+        wrap="nowrap"
       >
-        <NavigationPrimary />
-        <NavigationSeparator className="hidden md:inline-flex" />
-        <NavigationSecondary />
-        <NavigationSeparator className="hidden md:inline-flex" />
-        <NavigationTertiary className="hidden md:inline-flex" />
-      </nav>
+        <nav id="nav">
+          <NavigationPrimary />
+          <NavigationSeparator className="hidden md:inline-flex" />
+          <NavigationSecondary />
+          <NavigationSeparator className="hidden md:inline-flex" />
+          <NavigationTertiary className="hidden md:inline-flex" />
+        </nav>
+      </Flex>
       <NavigationButton />
     </>
   )

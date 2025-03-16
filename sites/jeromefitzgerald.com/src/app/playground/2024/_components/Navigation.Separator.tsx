@@ -8,13 +8,11 @@ function NavigationSeparator({ className, isActive = true, order = 0 }) {
     <div
       className={cx(
         'relative -left-1 flex h-full w-3 flex-none items-center',
-        // 'bg-green-5',
-        '',
         className,
       )}
       style={{ opacity: 0.4, order }}
     >
-      <div className={cx('contents')}>
+      <div className={cx('contents h-[inherit] w-[inherit]')}>
         <CaretRightIcon
           className={cx('relative inline-flex aspect-[1_/_1] overflow-visible')}
         />

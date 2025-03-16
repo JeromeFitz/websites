@@ -8,7 +8,6 @@ import { isObjectEmpty } from '@jeromefitz/utils'
 
 import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints.js'
 
-import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 import _filter from 'lodash/filter.js'
 import _orderBy from 'lodash/orderBy.js'
 import { getPropertyTypeData } from 'next-notion/utils/index'
@@ -113,11 +112,15 @@ async function ListingTemp({ data }) {
       {podcasts.map((podcast) => {
         if (!podcast?.isPublished) return null
         return (
-          <Box asChild key={`podcasts-podcast-${podcast?.id}`} my="1" py="1">
-            <LI>
-              <Anchor href={podcast?.href}> {podcast?.title}</Anchor>
-            </LI>
-          </Box>
+          <LI key={`podcasts-podcast-${podcast?.id}`}>
+            <Anchor
+              className="flex list-none items-center justify-start gap-2"
+              href={podcast?.href}
+            >
+              {' '}
+              {podcast?.title}
+            </Anchor>
+          </LI>
         )
       })}
     </UL>

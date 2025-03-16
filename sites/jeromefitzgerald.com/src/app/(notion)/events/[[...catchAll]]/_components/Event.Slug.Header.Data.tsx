@@ -12,10 +12,12 @@ import { getPageDataFromNotion } from '@jeromefitz/shared/notion/utils/index'
 
 // import * as Portal from '@radix-ui/react-portal'
 import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
+import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
 import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
 import * as DataList from '@radix-ui/themes/dist/esm/components/data-list.js'
 import { Em } from '@radix-ui/themes/dist/esm/components/em.js'
+import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Portal } from '@radix-ui/themes/dist/esm/components/portal.js'
 import { Skeleton } from '@radix-ui/themes/dist/esm/components/skeleton.js'
 import { Strong } from '@radix-ui/themes/dist/esm/components/strong.js'
@@ -33,30 +35,32 @@ function CTA({ href, isDisabled = false }) {
   const Component = isDisabled ? Text : NextLink
 
   return (
-    <Button
-      asChild
-      className={cx(
-        'group flex w-full justify-between py-8 hover:-translate-y-1',
-        'data-[disabled="true"]:bg-gray-2 data-[disabled="true"]:hover:cursor-not-allowed',
-        // 'data-[disabled="true"]:pointer-events-none',
-        'data-[disabled="true"]:hover:translate-y-0',
-        'data-[disabled="true"]:hidden',
-      )}
-      color="green"
-      disabled={isDisabled}
-      radius="small"
-      size="4"
-      variant="solid"
-    >
-      <Component href={href}>
-        <Text className={cx(isDisabled && 'line-through')}>{title}</Text>
-        <ArrowTopRightIcon
-          className={cx(
-            'bg-blackA-9 group-hover:bg-blackA-10 rounded-3 size-6 p-1 text-inherit !opacity-100 transition-colors',
-          )}
-        />
-      </Component>
-    </Button>
+    <Flex asChild className="group" justify="between" py="4" width="100%">
+      <Button
+        asChild
+        className={cx(
+          'hover:-translate-y-1',
+          'data-[disabled="true"]:bg-gray-2 data-[disabled="true"]:hover:cursor-not-allowed',
+          // 'data-[disabled="true"]:pointer-events-none',
+          'data-[disabled="true"]:hover:translate-y-0',
+          'data-[disabled="true"]:hidden',
+        )}
+        color="green"
+        disabled={isDisabled}
+        radius="small"
+        size="4"
+        variant="solid"
+      >
+        <Component href={href}>
+          <Text className={cx(isDisabled && 'line-through')}>{title}</Text>
+          <ArrowTopRightIcon
+            className={cx(
+              'bg-blackA-9 group-hover:bg-blackA-10 rounded-3 size-6 p-1 text-inherit !opacity-100 transition-colors',
+            )}
+          />
+        </Component>
+      </Button>
+    </Flex>
   )
 }
 
@@ -103,7 +107,7 @@ function DataList__VenueIndividualWithSkeleton({
         minWidth="88px"
       >
         <HomeIcon />
-        <Text className="ml-2 font-mono" size="1">
+        <Text className="font-mono" ml="1" size="1">
           Venue
         </Text>
       </DataList.Label>
@@ -154,7 +158,7 @@ function EventSlugHeaderData({ properties }) {
       >
         <DataList.Root
           className={cx(
-            'py-6 pl-4 pr-1',
+            'py-6 pr-1 pl-4',
             'gap-x-[var(--space-3)] md:!gap-x-[var(--space-1)]',
             'w-full',
           )}
@@ -167,7 +171,7 @@ function EventSlugHeaderData({ properties }) {
                 minWidth="88px"
               >
                 <InfoCircledIcon />
-                <Text className="ml-2 font-mono" size="1">
+                <Text className="font-mono" ml="1" size="1">
                   Note
                 </Text>
               </DataList.Label>
@@ -182,7 +186,7 @@ function EventSlugHeaderData({ properties }) {
               minWidth="88px"
             >
               <IdCardIcon />
-              <Text className="ml-2 font-mono" size="1">
+              <Text className="font-mono" ml="1" size="1">
                 Title
               </Text>
             </DataList.Label>
@@ -194,7 +198,7 @@ function EventSlugHeaderData({ properties }) {
               minWidth="88px"
             >
               <CalendarIcon />
-              <Text className="ml-2 font-mono" size="1">
+              <Text className="font-mono" ml="1" size="1">
                 Date
               </Text>
             </DataList.Label>
@@ -209,7 +213,7 @@ function EventSlugHeaderData({ properties }) {
               minWidth="88px"
             >
               <ClockIcon />
-              <Text className="ml-2 font-mono" size="1">
+              <Text className="font-mono" ml="1" size="1">
                 Time
               </Text>
             </DataList.Label>
@@ -225,7 +229,7 @@ function EventSlugHeaderData({ properties }) {
                 minWidth="88px"
               >
                 <TagIcon />
-                <Text className="ml-2 font-mono" size="1">
+                <Text className="font-mono" ml="1" size="1">
                   Type
                 </Text>
               </DataList.Label>
@@ -277,12 +281,17 @@ function EventSlugHeaderData({ properties }) {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         <Portal asChild>
-          <div
-            className={cx('w-full md:hidden', 'fixed bottom-0 left-0', 'z-40')}
+          <Box
+            bottom="0"
+            className="z-40"
+            display={{ md: 'none' }}
             id="portal--header--cta"
+            left="0"
+            position="fixed"
+            width="100%"
           >
             <CTA href={ticketUrl} isDisabled={isEventOver} />
-          </div>
+          </Box>
         </Portal>
       )}
     </>

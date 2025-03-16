@@ -68,50 +68,40 @@ function Currently() {
     <Flex
       align="end"
       className={cx(
-        // 'relative flex h-min w-full flex-none flex-col flex-nowrap place-content-center items-center overflow-visible p-0',
-        // // @todo(ui) can we align this with radix?
-        // 'gap-[10px]',
+        'place-content-center items-center overflow-visible',
         'order-[0]',
-        // 'md:h-[266px]',
       )}
       direction="column"
       gap="10"
-      height={{ md: '266px' }}
+      height={{ initial: 'min-content', md: '266px' }}
       justify="center"
       p="0"
-      pr="5"
+      px={{ initial: '5', md: '0' }}
       style={{ opacity: 1 }}
       width="100%"
       wrap="nowrap"
     >
       <Flex
+        className={cx('place-content-start items-start')}
         direction={{ initial: 'column', md: 'row' }}
-        // className={cx(
-        //   'relative flex h-min w-full flex-none flex-col flex-nowrap place-content-start items-start gap-6 overflow-visible p-0',
-        //   'md:flex-row md:justify-between',
-        // )}
-        gap="0"
+        gap="6"
+        height="min-content"
         justify={{ initial: 'start', md: 'between' }}
+        p="0"
         position="relative"
         style={{ opacity: 1 }}
         width="100%"
         wrap="nowrap"
       >
         <Flex
-          className={cx(
-            // 'bg-black/50',
-            'rounded-md',
-            // 'relative flex h-min flex-[1_0_0px] flex-row flex-nowrap content-center items-center justify-start gap-[10px] overflow-visible',
-            // 'w-[unset]',
-            // 'md:w-[318px] md:max-w-[318px] md:min-w-[318px]',
-          )}
+          className="content-center items-center overflow-visible rounded-md"
           content="center"
           direction="row"
           gap="10"
           justify="start"
-          maxWidth={{ md: '318px' }}
-          minWidth={{ md: '318px' }}
+          maxWidth={{ initial: 'unset', md: '320px' }}
           position="relative"
+          pr="0"
           style={{ opacity: 1 }}
           width={{ initial: 'unset', md: '318px' }}
         >
@@ -123,7 +113,6 @@ function Currently() {
             <Em>Currently…</Em>
           </Text>
         </Flex>
-        {}
         {currently.map((c, idx) => {
           if (!c?.isActive) return null
 

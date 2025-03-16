@@ -7,6 +7,7 @@ import { isObjectEmpty } from '@jeromefitz/utils'
 
 import type { Metadata } from 'next'
 
+import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { draftMode } from 'next/headers.js'
 
 import { CONFIG, getPageData } from '@/app/(notion)/_config/index'
@@ -78,9 +79,9 @@ async function Slug({ revalidate, segmentInfo }) {
   if (isObjectEmpty(data.page)) return null
 
   return (
-    <>
+    <Flex direction="column">
       <HeaderFull overline="About" title="Jerome Fitzgerald (he/him)" />
       <Section />
-    </>
+    </Flex>
   )
 }
