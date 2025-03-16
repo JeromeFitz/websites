@@ -2,7 +2,6 @@ import { cx } from '@jeromefitz/ds/utils/cx'
 
 import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
-// import _isEmpty from 'lodash/isEmpty.js'
 
 function ContainerHeaderSidebar({ children }) {
   return (
@@ -39,57 +38,61 @@ function HeaderSidebar({
   hasBorder = true,
   title = '',
 }) {
-  // const isTitleEmpty = _isEmpty(title)
   const isTitleEmpty = title === ''
   return (
     <ContainerHeaderSidebar>
-      <div
+      <Flex
         className={cx(
-          'h-min w-full',
-          // 'size-full',
-          'relative flex flex-none flex-col flex-nowrap place-content-start items-start gap-0 overflow-visible',
+          'flex-none place-content-start items-start overflow-visible',
           'px-0 pt-0 pb-6 md:p-0',
           hasBorder && 'rounded-3 border-gray-7 border-1',
           className,
         )}
+        direction="column"
+        gap="0"
+        height="min-content"
         id="header-top"
+        p={{ md: '0' }}
+        pb="6"
+        position="relative"
+        pt="0"
+        px="0"
+        width="100%"
+        wrap="nowrap"
       >
         {!isTitleEmpty && (
-          <div
+          <Flex
             className={cx(
-              'relative z-30 flex h-min w-full flex-none flex-col flex-nowrap place-content-start items-start gap-3 overflow-hidden p-5',
+              'z-30 flex-none place-content-start items-start overflow-hidden',
               isTitleEmpty && 'hidden',
-              '',
             )}
+            direction="column"
+            gap="3"
+            height="min-content"
             id="header-info"
+            p="5"
+            position="relative"
+            width="100%"
+            wrap="nowrap"
           >
-            <Heading
-              as="h1"
-              className={cx(
-                'line-clamp-2 font-medium',
-                // 'md:min-h-[60px]',
-                '',
-              )}
-              size="6"
-            >
+            <Heading as="h1" className="line-clamp-2 font-medium" size="6">
               {title}
             </Heading>
-          </div>
+          </Flex>
         )}
 
-        <div
-          className={cx(
-            // 'h-min w-full ',
-            'size-full',
-            'relative flex-none',
-            'flex flex-col justify-between',
-            // 'pb-2',
-          )}
+        <Flex
+          className="flex-none"
+          direction="column"
+          height="100%"
           id="header-container"
+          justify="between"
+          position="relative"
+          width="100%"
         >
           {children}
-        </div>
-      </div>
+        </Flex>
+      </Flex>
     </ContainerHeaderSidebar>
   )
 }

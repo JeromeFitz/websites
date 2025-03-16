@@ -1,5 +1,3 @@
-// import { cx } from '@jeromefitz/ds/utils/cx'
-// import { Notion as Blocks } from '@/components/Notion/index'
 import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
 import {
   getDataFromCache,
@@ -14,7 +12,6 @@ import { draftMode } from 'next/headers.js'
 import { CONFIG, getPageData } from '@/app/(notion)/_config/index'
 import { generateMetadataCustom } from '@/app/(notion)/_config/temp/generateMetadataCustom'
 import { PageHome } from '@/app/_components/Page.Home'
-// import { Layout } from '@/components/Layout/index'
 
 const slug = '/homepage'
 const { SEGMENT } = CONFIG.PAGES

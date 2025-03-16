@@ -438,7 +438,7 @@ function SectionLegend({ data }) {
           >
             <NextLink href={`#${item.id}`}>
               <Box className="relative size-auto flex-none">
-                <Box className="contents">
+                <Box className="contents size-full">
                   <Flex
                     className="cursor-pointer items-center overflow-visible"
                     direction="row"

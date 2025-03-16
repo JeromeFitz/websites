@@ -15,7 +15,7 @@ function ArticleMainCTA({ color = 'accent', href = '/events', type = 'events' })
       className={cx('relative h-[266px] w-full flex-none', 'mt-6 mb-2')}
       style={{ opacity: 1, transform: 'perspective(1200px)' }}
     >
-      <Box className={cx('contents')}>
+      <Box className="contents size-full">
         <Flex
           asChild
           className={cx(

@@ -3,6 +3,7 @@ import { cx } from '@jeromefitz/ds/utils/cx'
 import type { ReactNode } from 'react'
 
 import { Slot } from '@radix-ui/react-slot'
+import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 
 import type { As } from '@/components/Headline/Headline.types'
 
@@ -21,16 +22,15 @@ function Wrapper({
 }: WrapperProps) {
   const Component = asChild ? Slot : as
   return (
-    <Component
-      className={cx(
-        'inset-y-0 z-50 flex w-full flex-col items-center',
-        'mx-auto max-w-screen-xl',
-        className,
-      )}
-      {...props}
+    <Flex
+      asChild
+      className={cx('inset-y-0 z-50 items-center', className)}
+      direction="column"
+      maxWidth="1640px" // screen-xl
+      mx="auto"
     >
-      {children}
-    </Component>
+      <Component {...props}>{children}</Component>
+    </Flex>
   )
 }
 

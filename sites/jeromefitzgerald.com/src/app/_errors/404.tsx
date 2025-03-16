@@ -7,6 +7,7 @@ import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
 import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
 import * as DataList from '@radix-ui/themes/dist/esm/components/data-list.js'
+import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
 import { Separator } from '@radix-ui/themes/dist/esm/components/separator.js'
 import { Strong } from '@radix-ui/themes/dist/esm/components/strong.js'
@@ -31,16 +32,22 @@ function FourOhFour({
   return (
     <ContainerWithSidebar>
       <HeaderSidebar title={''}>
-        <div
+        <Flex
           className={cx(
-            'relative flex h-min w-full flex-col flex-nowrap content-center items-center justify-start gap-0 overflow-auto p-0',
-            'rounded-3 border-gray-7 border-1',
-            // 'rounded-t-[0] border-t-0',
+            'content-center items-center overflow-auto',
+            'border-gray-7 border-t-1',
           )}
+          direction="column"
+          gap="0"
+          justify="start"
+          p="0"
+          position="relative"
+          width="100%"
+          wrap="nowrap"
         >
           <DataList.Root
             className={cx(
-              'py-6 pl-4 pr-1',
+              'py-6 pr-1 pl-4',
               'gap-x-[var(--space-3)] md:!gap-x-[var(--space-1)]',
               'w-full',
             )}
@@ -52,7 +59,7 @@ function FourOhFour({
                 minWidth="88px"
               >
                 <ExclamationTriangleIcon />
-                <Text className="ml-2 font-mono" size="1">
+                <Text className="font-mono" ml="1" size="1">
                   Error
                 </Text>
               </DataList.Label>
@@ -66,7 +73,7 @@ function FourOhFour({
               </DataList.Value>
             </DataList.Item>
           </DataList.Root>
-        </div>
+        </Flex>
       </HeaderSidebar>
       <ArticleMain>
         <Text as="p" size="8" weight="medium">

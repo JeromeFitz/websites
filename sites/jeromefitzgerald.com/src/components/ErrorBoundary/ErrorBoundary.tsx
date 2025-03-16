@@ -7,6 +7,7 @@ import type { ReactNode } from 'react'
 import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
 import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
 import * as DataList from '@radix-ui/themes/dist/esm/components/data-list.js'
+import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Link } from '@radix-ui/themes/dist/esm/components/link.js'
 import { Separator } from '@radix-ui/themes/dist/esm/components/separator.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
@@ -58,16 +59,22 @@ class ErrorBoundary extends Component<PropsChildren> {
           <ContainerContent>
             <ContainerWithSidebar>
               <HeaderSidebar title={title}>
-                <div
+                <Flex
                   className={cx(
-                    'relative flex h-min w-full flex-col flex-nowrap content-center items-center justify-start gap-0 overflow-auto p-0',
-                    'rounded-3 border-gray-7 border-1',
-                    'rounded-t-[0] border-t-0',
+                    'content-center items-center overflow-auto',
+                    'border-gray-7 border-t-1',
                   )}
+                  direction="column"
+                  gap="0"
+                  justify="start"
+                  p="0"
+                  position="relative"
+                  width="100%"
+                  wrap="nowrap"
                 >
                   <DataList.Root
                     className={cx(
-                      'py-6 pl-4 pr-1',
+                      'py-6 pr-1 pl-4',
                       'gap-x-[var(--space-3)] md:!gap-x-[var(--space-1)]',
                       'w-full',
                     )}
@@ -90,7 +97,7 @@ class ErrorBoundary extends Component<PropsChildren> {
                       </DataList.Value>
                     </DataList.Item>
                   </DataList.Root>
-                </div>
+                </Flex>
               </HeaderSidebar>
               <ArticleMain>
                 <Text as="p" size="8" weight="medium">

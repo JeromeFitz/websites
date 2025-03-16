@@ -111,159 +111,172 @@ function Book({ book, item }) {
     width: 315,
   }
   return (
-    <Box
-      className={cx(
-        'rounded-3 border-1 border-gray-7 mb-2 mr-4 flex w-full flex-row items-start gap-0 md:mb-5 md:min-h-min md:flex-row-reverse md:items-start',
-        'flex-auto',
-      )}
-    >
-      <DataList.Root className="w-full gap-2 p-2 md:gap-5 md:p-4">
-        <DataList.Item align="start" className="flex flex-col gap-0">
-          <DataList.Label>
-            <Text size="1">
-              <Code variant="ghost">Author</Code>
-            </Text>
-          </DataList.Label>
-          <DataList.Value>
-            <Text size={{ initial: '1', md: '2' }} weight="medium">
-              {item.author}
-            </Text>
-          </DataList.Value>
-        </DataList.Item>
-        <DataList.Item align="start" className="flex flex-col gap-0">
-          <DataList.Label>
-            <Text size="1">
-              <Code variant="ghost">Title</Code>
-            </Text>
-          </DataList.Label>
-          <DataList.Value>
-            <Text size={{ initial: '1', md: '2' }} weight="medium">
-              {item.title}
-              {!!item.subtitle && `: ${item.subtitle}`}
-            </Text>
-          </DataList.Value>
-        </DataList.Item>
-        <DataList.Item align="start" className="flex flex-col gap-0">
-          <DataList.Label>
-            <Text size="1">
-              <Code variant="ghost">Year</Code>
-            </Text>
-          </DataList.Label>
-          <DataList.Value>
-            <Text size={{ initial: '1', md: '2' }}>
-              <Code variant="ghost">{format(item.dateReleasedIso, 'yyyy')}</Code>
-            </Text>
-          </DataList.Value>
-        </DataList.Item>
-        <DataList.Item align="start" className="hidden flex-col gap-0 md:flex">
-          <DataList.Label>
-            <Text size="1">Pages</Text>
-          </DataList.Label>
-          <DataList.Value>
-            <Text size={{ initial: '1', md: '2' }}>
-              <Code variant="ghost">{item.pages}</Code>
-            </Text>
-          </DataList.Value>
-        </DataList.Item>
-        <DataList.Item
-          align="start"
-          className="hidden flex-col gap-0 md:flex md:gap-1"
-        >
-          <DataList.Label>
-            <Text size="1">
-              <Code variant="ghost">Status</Code>
-            </Text>
-          </DataList.Label>
-          <DataList.Value>
-            <Text size={{ initial: '2', md: '2' }}>
-              <Badge
-                color={book.color}
-                radius="full"
-                size={{ initial: '1', md: '2' }}
-                variant="soft"
-              >
-                <Code variant="ghost">{book.title}</Code>
-              </Badge>
-            </Text>
-          </DataList.Value>
-        </DataList.Item>
-        <DataList.Item align="start" className="flex flex-col gap-0 md:gap-1">
-          <DataList.Label>
-            <Text size="1">
-              <Code variant="ghost">Links</Code>
-            </Text>
-          </DataList.Label>
-          <DataList.Value>
-            <Flex
-              align="start"
-              direction="column"
-              flexGrow="1"
-              gap="2"
-              justify="end"
-              mb="2"
-            >
-              <Button
-                asChild
-                className="w-fit"
-                color="mint"
-                highContrast={false}
-                mt="0"
-                radius="full"
-                size={{ initial: '1', md: '2' }}
-                variant="outline"
-              >
-                <NextLink href={item.urlBookshop} target="_blank">
-                  Buy New at Bookshop
-                  {` `}
-                  <ArrowTopRightIcon className={cx('text-accent-11 !opacity-100')} />
-                </NextLink>
-              </Button>
-              <Button
-                asChild
-                className="w-fit"
-                color="pink"
-                highContrast={false}
-                mt="0"
-                radius="full"
-                size={{ initial: '1', md: '2' }}
-                variant="outline"
-              >
-                <NextLink href={item.urlBiblio} target="_blank">
-                  Buy Used at Biblio
-                  {` `}
-                  <ArrowTopRightIcon className={cx('text-accent-11 !opacity-100')} />
-                </NextLink>
-              </Button>
-            </Flex>
-          </DataList.Value>
-        </DataList.Item>
-      </DataList.Root>
-      <Inset
-        className={cx(
-          'rounded-3 relative h-full',
-          'h-[275px] w-[164px] min-w-[164px] max-w-[164px]',
-          'md:size-full md:max-w-[308px]',
-          // 'md:h-[450px] md:w-[500px]',
-          // 'md:border-1 md:border-gray-7 ',
-          '',
-        )}
-        clip="border-box"
-        side={{ initial: 'all', md: 'all' }}
+    <>
+      <Flex
+        className="border-gray-7 flex-auto items-start border-t-1"
+        direction={{ initial: 'row', md: 'row-reverse' }}
+        gap="0"
+        justify="start"
+        mb={{ initial: '2', md: '5' }}
+        minHeight={{ initial: 'min-content', md: 'min-content' }}
+        mr="4"
+        p="0"
+        position="relative"
+        width="100%"
+        wrap="wrap"
       >
-        <NextImage
+        <DataList.Root className="w-full gap-2 p-2 md:gap-5 md:p-4">
+          <DataList.Item align="start" className="flex flex-col gap-0">
+            <DataList.Label>
+              <Text size="1">
+                <Code variant="ghost">Author</Code>
+              </Text>
+            </DataList.Label>
+            <DataList.Value>
+              <Text size={{ initial: '1', md: '2' }} weight="medium">
+                {item.author}
+              </Text>
+            </DataList.Value>
+          </DataList.Item>
+          <DataList.Item align="start" className="flex flex-col gap-0">
+            <DataList.Label>
+              <Text size="1">
+                <Code variant="ghost">Title</Code>
+              </Text>
+            </DataList.Label>
+            <DataList.Value>
+              <Text size={{ initial: '1', md: '2' }} weight="medium">
+                {item.title}
+                {!!item.subtitle && `: ${item.subtitle}`}
+              </Text>
+            </DataList.Value>
+          </DataList.Item>
+          <DataList.Item align="start" className="flex flex-col gap-0">
+            <DataList.Label>
+              <Text size="1">
+                <Code variant="ghost">Year</Code>
+              </Text>
+            </DataList.Label>
+            <DataList.Value>
+              <Text size={{ initial: '1', md: '2' }}>
+                <Code variant="ghost">{format(item.dateReleasedIso, 'yyyy')}</Code>
+              </Text>
+            </DataList.Value>
+          </DataList.Item>
+          <DataList.Item align="start" className="hidden flex-col gap-0 md:flex">
+            <DataList.Label>
+              <Text size="1">Pages</Text>
+            </DataList.Label>
+            <DataList.Value>
+              <Text size={{ initial: '1', md: '2' }}>
+                <Code variant="ghost">{item.pages}</Code>
+              </Text>
+            </DataList.Value>
+          </DataList.Item>
+          <DataList.Item
+            align="start"
+            className="hidden flex-col gap-0 md:flex md:gap-1"
+          >
+            <DataList.Label>
+              <Text size="1">
+                <Code variant="ghost">Status</Code>
+              </Text>
+            </DataList.Label>
+            <DataList.Value>
+              <Text size={{ initial: '2', md: '2' }}>
+                <Badge
+                  color={book.color}
+                  radius="full"
+                  size={{ initial: '1', md: '2' }}
+                  variant="soft"
+                >
+                  <Code variant="ghost">{book.title}</Code>
+                </Badge>
+              </Text>
+            </DataList.Value>
+          </DataList.Item>
+          <DataList.Item align="start" className="flex flex-col gap-0 md:gap-1">
+            <DataList.Label>
+              <Text size="1">
+                <Code variant="ghost">Links</Code>
+              </Text>
+            </DataList.Label>
+            <DataList.Value>
+              <Flex
+                align="start"
+                direction="column"
+                flexGrow="1"
+                gap="2"
+                justify="end"
+                mb="2"
+              >
+                <Button
+                  asChild
+                  className="w-fit"
+                  color="mint"
+                  highContrast={false}
+                  mt="0"
+                  radius="full"
+                  size={{ initial: '1', md: '2' }}
+                  variant="outline"
+                >
+                  <NextLink href={item.urlBookshop} target="_blank">
+                    Buy New at Bookshop
+                    {` `}
+                    <ArrowTopRightIcon
+                      className={cx('text-accent-11 !opacity-100')}
+                    />
+                  </NextLink>
+                </Button>
+                <Button
+                  asChild
+                  className="w-fit"
+                  color="pink"
+                  highContrast={false}
+                  mt="0"
+                  radius="full"
+                  size={{ initial: '1', md: '2' }}
+                  variant="outline"
+                >
+                  <NextLink href={item.urlBiblio} target="_blank">
+                    Buy Used at Biblio
+                    {` `}
+                    <ArrowTopRightIcon
+                      className={cx('text-accent-11 !opacity-100')}
+                    />
+                  </NextLink>
+                </Button>
+              </Flex>
+            </DataList.Value>
+          </DataList.Item>
+        </DataList.Root>
+        <Inset
           className={cx(
-            'rounded-3',
-            // 'max-h-[275px] min-w-[150px]',
-            // 'size-full ',
-            // 'md:max-h-full md:min-w-[275px] md:max-w-[575px]',
+            'rounded-3 relative h-full',
+            'h-[275px] w-[164px] max-w-[164px] min-w-[164px]',
+            'md:size-full md:max-w-[308px]',
+            // 'md:h-[450px] md:w-[500px]',
+            // 'md:border-1 md:border-gray-7 ',
             '',
           )}
-          role="img"
-          tabIndex={-1}
-          {...image}
-        />
-      </Inset>
-    </Box>
+          clip="border-box"
+          side={{ initial: 'all', md: 'all' }}
+        >
+          <NextImage
+            className={cx(
+              'rounded-3',
+              // 'max-h-[275px] min-w-[150px]',
+              // 'size-full ',
+              // 'md:max-h-full md:min-w-[275px] md:max-w-[575px]',
+              '',
+            )}
+            role="img"
+            tabIndex={-1}
+            {...image}
+          />
+        </Inset>
+      </Flex>
+    </>
   )
 }
 
@@ -401,7 +414,7 @@ function BookPage({ books, title }) {
                 })}
               </SelectContent>
             </SelectRoot>
-            <Callout className="relative bottom-0 right-0" color="mint" size="1">
+            <Callout className="relative right-0 bottom-0" color="mint" size="1">
               <Strong className="font-mono uppercase">Bookshop</Strong> links earn a
               commission.
             </Callout>

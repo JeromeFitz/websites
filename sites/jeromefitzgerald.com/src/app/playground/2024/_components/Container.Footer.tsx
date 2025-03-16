@@ -1,32 +1,42 @@
-import { cx } from '@jeromefitz/ds/utils/cx'
-
 import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
+import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 
 import { ContainerFooterClient } from './Container.Footer.Client'
 import { Currently } from './Currently'
 
 function ContainerFooter() {
   return (
-    <Box
-      className={cx(
-        'relative size-full flex-[0_0_auto] md:flex-none',
-        'z-0 md:z-10',
-      )}
+    <Flex
+      className="z-0 flex-[0_0_auto] md:z-10 md:flex-none"
+      direction="row"
+      height="100%"
+      position="relative"
       style={{ opacity: 1, transform: 'perspective(1200px)' }}
+      width="100%"
     >
-      <Box className={cx('contents')}>
-        <footer
-          className={cx(
-            'relative flex h-min w-full flex-col flex-nowrap place-content-start items-start gap-12 overflow-visible p-0',
-            'md:px-0 md:pb-0 md:pt-28',
-          )}
+      <Box className="contents size-full">
+        <Flex
+          asChild
+          className="place-content-start items-start overflow-visible"
+          direction="column"
+          gap="9"
+          height="min-content"
+          p="0"
+          pb={{ md: '0' }}
+          position="relative"
+          pt={{ md: '9' }}
+          px={{ md: '0' }}
           style={{ opacity: 1 }}
+          width="100%"
+          wrap="nowrap"
         >
-          <Currently />
-          <ContainerFooterClient />
-        </footer>
+          <footer>
+            <Currently />
+            <ContainerFooterClient />
+          </footer>
+        </Flex>
       </Box>
-    </Box>
+    </Flex>
   )
 }
 

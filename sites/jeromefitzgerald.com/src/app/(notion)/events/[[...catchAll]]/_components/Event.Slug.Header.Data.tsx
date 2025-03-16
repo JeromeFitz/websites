@@ -150,11 +150,18 @@ function EventSlugHeaderData({ properties }) {
 
   return (
     <>
-      <div
+      <Flex
         className={cx(
-          'relative flex h-min w-full flex-col flex-nowrap content-center items-center justify-start gap-0 overflow-auto p-0',
+          'content-center items-center overflow-auto',
           'border-gray-7 border-t-1',
         )}
+        direction="column"
+        gap="0"
+        justify="start"
+        p="0"
+        position="relative"
+        width="100%"
+        wrap="nowrap"
       >
         <DataList.Root
           className={cx(
@@ -257,7 +264,7 @@ function EventSlugHeaderData({ properties }) {
             </DataList.Item>
           )}
         </DataList.Root>
-      </div>
+      </Flex>
       <div
         className={cx(
           'drop-shadow-md transition-all hover:drop-shadow-lg',

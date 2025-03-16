@@ -1,18 +1,21 @@
 import { cx } from '@jeromefitz/ds/utils/cx'
 
-import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
+import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 
 function SectionSpacer() {
   return (
-    <Box
+    <Flex
       className={cx(
-        'bg-green-4 h-full',
-        // 'min-w-[309px]',
-        // 'h-min',
-        'relative flex w-full flex-none flex-col flex-nowrap content-start items-start justify-end gap-14 justify-self-end overflow-visible',
-        // 'p-[0_0_12px]',
-        // 'md:self-center md:p-[0_0_120px]',
+        'bg-green-4',
+        'flex-none content-start items-start justify-self-end overflow-visible',
       )}
+      direction="row"
+      gap="9"
+      height="100%"
+      justify="end"
+      position="relative"
+      width="100%"
+      wrap="nowrap"
     />
   )
 }

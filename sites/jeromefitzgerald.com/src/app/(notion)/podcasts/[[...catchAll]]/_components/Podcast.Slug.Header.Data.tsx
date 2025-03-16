@@ -4,6 +4,7 @@ import { cx } from '@jeromefitz/ds/utils/cx'
 import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
 import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
 import * as DataList from '@radix-ui/themes/dist/esm/components/data-list.js'
+import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 
 import { getPodcastData } from '@/app/(notion)/_config/index'
@@ -13,15 +14,22 @@ function PodcastSlugHeaderData({ properties }) {
 
   return (
     <>
-      <div
+      <Flex
         className={cx(
-          'relative flex h-min w-full flex-col flex-nowrap content-center items-center justify-start gap-0 overflow-auto p-0',
+          'content-center items-center overflow-auto',
           'border-gray-7 border-t-1',
         )}
+        direction="column"
+        gap="0"
+        justify="start"
+        p="0"
+        position="relative"
+        width="100%"
+        wrap="nowrap"
       >
         <DataList.Root
           className={cx(
-            'py-6 pl-4 pr-1',
+            'py-6 pr-1 pl-4',
             'gap-x-[var(--space-3)] md:!gap-x-[var(--space-1)]',
             'w-full',
           )}
@@ -74,7 +82,7 @@ function PodcastSlugHeaderData({ properties }) {
             </DataList.Item>
           )}
         </DataList.Root>
-      </div>
+      </Flex>
 
       <div
         className={cx(

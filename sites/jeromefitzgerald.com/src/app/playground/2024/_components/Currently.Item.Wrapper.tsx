@@ -60,6 +60,7 @@ function CurrentlyWrapper({ children, ...c }) {
         <Flex
           align="end"
           asChild
+          className=""
           direction="column"
           height="100%"
           justify="between"
@@ -74,11 +75,7 @@ function CurrentlyWrapper({ children, ...c }) {
             asChild
             className={cx(
               'group content-end',
-              // 'group size-full transition-transform hover:-translate-y-1',
-              // 'flex flex-col flex-nowrap',
-              // 'relative size-full content-end items-end justify-between',
-              // 'pt-6 pb-5',
-              // 'px-0',
+              'hover:-translate-y- transition-transform',
             )}
             color={color}
             variant="soft"
@@ -96,9 +93,7 @@ function CurrentlyWrapper({ children, ...c }) {
                 />
               </Box>
               <Flex
-                // className={cx(
-                //   'relative flex h-min w-full flex-col flex-nowrap place-content-start items-start gap-0.5 py-0 pr-3 pl-6',
-                // )}
+                className="place-content-start items-start"
                 direction="column"
                 gap="1"
                 height="min-content"

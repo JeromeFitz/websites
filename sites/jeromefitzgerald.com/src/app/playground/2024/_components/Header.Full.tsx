@@ -17,9 +17,9 @@ function HeaderFull({ overline = '', title = '' }) {
       flexShrink="0"
       gap="12"
       height="min-content"
-      pb={{ intial: 'calc(var(--spacing) * 24)', md: 'calc(var(--spacing) * 12)' }}
+      pb={{ initial: 'calc(var(--spacing) * 24)', md: 'calc(var(--spacing) * 12)' }}
       position="relative"
-      pt={{ intial: 'calc(var(--spacing) * 32)', md: 'calc(var(--spacing) * 36)' }}
+      pt={{ initial: 'calc(var(--spacing) * 32)', md: 'calc(var(--spacing) * 36)' }}
       px="0"
       width="100%"
     >
