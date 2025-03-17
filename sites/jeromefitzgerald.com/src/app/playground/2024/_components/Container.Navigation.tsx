@@ -15,7 +15,7 @@ function ContainerNavigation() {
       data-name="Container: Navigation"
       id="container--navigation"
     >
-      <Box className={cx('contents')}>
+      <Box className="contents size-full">
         <Navigation />
       </Box>
     </Box>

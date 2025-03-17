@@ -111,137 +111,187 @@ function Book({ book, item }) {
     width: 315,
   }
   return (
-    <Box
-      className={cx(
-        'rounded-3 border-1 border-gray-7 mb-2 mr-4 flex w-full flex-row items-start gap-0 md:mb-5 md:min-h-min md:flex-row-reverse md:items-start',
-        'flex-auto',
-      )}
+    <Flex
+      className="border-gray-7 flex-auto items-start rounded-md border-1 border-t-1"
+      direction={{ initial: 'row', md: 'row-reverse' }}
+      gap="0"
+      justify="between"
+      mb={{ initial: '2', md: '5' }}
+      minHeight={{ initial: 'min-content', md: 'min-content' }}
+      mr="4"
+      p="0"
+      position="relative"
+      width="100%"
+      wrap="nowrap"
     >
-      <DataList.Root className="w-full gap-2 p-2 md:gap-5 md:p-4">
-        <DataList.Item align="start" className="flex flex-col gap-0">
-          <DataList.Label>
-            <Text size="1">
-              <Code variant="ghost">Author</Code>
-            </Text>
-          </DataList.Label>
-          <DataList.Value>
-            <Text size={{ initial: '1', md: '2' }} weight="medium">
-              {item.author}
-            </Text>
-          </DataList.Value>
-        </DataList.Item>
-        <DataList.Item align="start" className="flex flex-col gap-0">
-          <DataList.Label>
-            <Text size="1">
-              <Code variant="ghost">Title</Code>
-            </Text>
-          </DataList.Label>
-          <DataList.Value>
-            <Text size={{ initial: '1', md: '2' }} weight="medium">
-              {item.title}
-              {!!item.subtitle && `: ${item.subtitle}`}
-            </Text>
-          </DataList.Value>
-        </DataList.Item>
-        <DataList.Item align="start" className="flex flex-col gap-0">
-          <DataList.Label>
-            <Text size="1">
-              <Code variant="ghost">Year</Code>
-            </Text>
-          </DataList.Label>
-          <DataList.Value>
-            <Text size={{ initial: '1', md: '2' }}>
-              <Code variant="ghost">{format(item.dateReleasedIso, 'yyyy')}</Code>
-            </Text>
-          </DataList.Value>
-        </DataList.Item>
-        <DataList.Item align="start" className="hidden flex-col gap-0 md:flex">
-          <DataList.Label>
-            <Text size="1">Pages</Text>
-          </DataList.Label>
-          <DataList.Value>
-            <Text size={{ initial: '1', md: '2' }}>
-              <Code variant="ghost">{item.pages}</Code>
-            </Text>
-          </DataList.Value>
-        </DataList.Item>
-        <DataList.Item
-          align="start"
-          className="hidden flex-col gap-0 md:flex md:gap-1"
-        >
-          <DataList.Label>
-            <Text size="1">
-              <Code variant="ghost">Status</Code>
-            </Text>
-          </DataList.Label>
-          <DataList.Value>
-            <Text size={{ initial: '2', md: '2' }}>
-              <Badge
-                color={book.color}
-                radius="full"
-                size={{ initial: '1', md: '2' }}
-                variant="soft"
-              >
-                <Code variant="ghost">{book.title}</Code>
-              </Badge>
-            </Text>
-          </DataList.Value>
-        </DataList.Item>
-        <DataList.Item align="start" className="flex flex-col gap-0 md:gap-1">
-          <DataList.Label>
-            <Text size="1">
-              <Code variant="ghost">Links</Code>
-            </Text>
-          </DataList.Label>
-          <DataList.Value>
-            <Flex
-              align="start"
-              direction="column"
-              flexGrow="1"
-              gap="2"
-              justify="end"
-              mb="2"
-            >
-              <Button
-                asChild
-                className="w-fit"
-                color="mint"
-                highContrast={false}
-                mt="0"
-                radius="full"
-                size={{ initial: '1', md: '2' }}
-                variant="outline"
-              >
-                <NextLink href={item.urlBookshop} target="_blank">
-                  Buy New at Bookshop
-                  {` `}
-                  <ArrowTopRightIcon className={cx('text-accent-11 !opacity-100')} />
-                </NextLink>
-              </Button>
-              <Button
-                asChild
-                className="w-fit"
-                color="pink"
-                highContrast={false}
-                mt="0"
-                radius="full"
-                size={{ initial: '1', md: '2' }}
-                variant="outline"
-              >
-                <NextLink href={item.urlBiblio} target="_blank">
-                  Buy Used at Biblio
-                  {` `}
-                  <ArrowTopRightIcon className={cx('text-accent-11 !opacity-100')} />
-                </NextLink>
-              </Button>
-            </Flex>
-          </DataList.Value>
-        </DataList.Item>
-      </DataList.Root>
+      <Flex
+        asChild
+        direction="column"
+        gap={{ initial: '2', md: '5' }}
+        justify="start"
+        p={{ initial: '2', md: '4' }}
+        width="100%"
+      >
+        <DataList.Root>
+          <Flex asChild direction="column" display="inline-flex" gap="0">
+            <DataList.Item align="start">
+              <DataList.Label>
+                <Text size="1">
+                  <Code variant="ghost">Author</Code>
+                </Text>
+              </DataList.Label>
+              <DataList.Value>
+                <Text size={{ initial: '1', md: '2' }} weight="medium">
+                  {item.author}
+                </Text>
+              </DataList.Value>
+            </DataList.Item>
+          </Flex>
+          <Flex asChild direction="column" display="inline-flex" gap="0">
+            <DataList.Item align="start">
+              <DataList.Label>
+                <Text size="1">
+                  <Code variant="ghost">Title</Code>
+                </Text>
+              </DataList.Label>
+              <DataList.Value>
+                <Text size={{ initial: '1', md: '2' }} weight="medium">
+                  {item.title}
+                  {!!item.subtitle && `: ${item.subtitle}`}
+                </Text>
+              </DataList.Value>
+            </DataList.Item>
+          </Flex>
+          <Flex
+            asChild
+            direction="column"
+            display="inline-flex"
+            gap="0"
+            wrap="nowrap"
+          >
+            <DataList.Item align="start">
+              <DataList.Label>
+                <Text size="1">
+                  <Code variant="ghost">Year</Code>
+                </Text>
+              </DataList.Label>
+              <DataList.Value>
+                <Text size={{ initial: '1', md: '2' }}>
+                  <Code variant="ghost">{format(item.dateReleasedIso, 'yyyy')}</Code>
+                </Text>
+              </DataList.Value>
+            </DataList.Item>
+          </Flex>
+          <Flex
+            asChild
+            direction="column"
+            display={{ initial: 'none', md: 'inline-flex' }}
+            gap="0"
+          >
+            <DataList.Item align="start">
+              <DataList.Label>
+                <Text size="1">Pages</Text>
+              </DataList.Label>
+              <DataList.Value>
+                <Text size={{ initial: '1', md: '2' }}>
+                  <Code variant="ghost">{item.pages}</Code>
+                </Text>
+              </DataList.Value>
+            </DataList.Item>
+          </Flex>
+          <Flex
+            asChild
+            direction="column"
+            display={{ initial: 'none', md: 'inline-flex' }}
+            gap={{ initial: '0', md: '1' }}
+          >
+            <DataList.Item align="start">
+              <DataList.Label>
+                <Text size="1">
+                  <Code variant="ghost">Status</Code>
+                </Text>
+              </DataList.Label>
+              <DataList.Value>
+                <Text size={{ initial: '2', md: '2' }}>
+                  <Badge
+                    color={book.color}
+                    radius="full"
+                    size={{ initial: '1', md: '2' }}
+                    variant="soft"
+                  >
+                    <Code variant="ghost">{book.title}</Code>
+                  </Badge>
+                </Text>
+              </DataList.Value>
+            </DataList.Item>
+          </Flex>
+          <Flex
+            asChild
+            direction="column"
+            display="inline-flex"
+            gap={{ initial: '0', md: '1' }}
+          >
+            <DataList.Item align="start">
+              <DataList.Label>
+                <Text size="1">
+                  <Code variant="ghost">Links</Code>
+                </Text>
+              </DataList.Label>
+              <DataList.Value>
+                <Flex
+                  align="start"
+                  direction="column"
+                  flexGrow="1"
+                  gap="2"
+                  justify="end"
+                  mb="2"
+                >
+                  <Button
+                    asChild
+                    className="w-fit"
+                    color="mint"
+                    highContrast={false}
+                    mt="0"
+                    radius="full"
+                    size={{ initial: '1', md: '2' }}
+                    variant="outline"
+                  >
+                    <NextLink href={item.urlBookshop} target="_blank">
+                      Buy New at Bookshop
+                      {` `}
+                      <ArrowTopRightIcon
+                        className={cx('text-accent-11 !opacity-100')}
+                      />
+                    </NextLink>
+                  </Button>
+                  <Button
+                    asChild
+                    className="w-fit"
+                    color="pink"
+                    highContrast={false}
+                    mt="0"
+                    radius="full"
+                    size={{ initial: '1', md: '2' }}
+                    variant="outline"
+                  >
+                    <NextLink href={item.urlBiblio} target="_blank">
+                      Buy Used at Biblio
+                      {` `}
+                      <ArrowTopRightIcon
+                        className={cx('text-accent-11 !opacity-100')}
+                      />
+                    </NextLink>
+                  </Button>
+                </Flex>
+              </DataList.Value>
+            </DataList.Item>
+          </Flex>
+        </DataList.Root>
+      </Flex>
       <Inset
         className={cx(
           'rounded-3 relative h-full',
-          'h-[275px] w-[164px] min-w-[164px] max-w-[164px]',
+          'h-[275px] w-[164px] max-w-[164px] min-w-[164px]',
           'md:size-full md:max-w-[308px]',
           // 'md:h-[450px] md:w-[500px]',
           // 'md:border-1 md:border-gray-7 ',
@@ -263,7 +313,7 @@ function Book({ book, item }) {
           {...image}
         />
       </Inset>
-    </Box>
+    </Flex>
   )
 }
 
@@ -304,10 +354,10 @@ function BookPage({ books, title }) {
     }, SCROLL_DURATION)
   }
   return (
-    <>
+    <Flex direction="column">
       <HeaderFull overline="Currently…" title="Reading" />
-      <Flex className="flex flex-col gap-20">
-        <Flex className="flex flex-col gap-6">
+      <Flex direction="column" gap="9">
+        <Flex direction="column" gap="6">
           <Text size="4">
             <Em>There is something about physical books!</Em> Big S and I tend to
             surround ourselves with them and are often reading a few at a time. Still
@@ -401,7 +451,7 @@ function BookPage({ books, title }) {
                 })}
               </SelectContent>
             </SelectRoot>
-            <Callout className="relative bottom-0 right-0" color="mint" size="1">
+            <Callout className="relative right-0 bottom-0" color="mint" size="1">
               <Strong className="font-mono uppercase">Bookshop</Strong> links earn a
               commission.
             </Callout>
@@ -413,7 +463,7 @@ function BookPage({ books, title }) {
           </Virtualizer>
         </ArticleMain>
       </ContainerWithSidebar>
-    </>
+    </Flex>
   )
 }
 

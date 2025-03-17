@@ -24,9 +24,9 @@ function LayoutClient() {
         className={cx(
           'z-[49]',
           'bg-whiteA-12 dark:bg-blackA-12',
-          'fixed left-0 top-0 h-screen w-full',
+          'fixed top-0 left-0 h-screen w-full',
           'pointer-events-none data-[open=true]:pointer-events-auto',
-          'backdrop-blur-sm',
+          'backdrop-blur-xs',
         )}
         data-open={isWidgetOpen}
         id="widget-blur"

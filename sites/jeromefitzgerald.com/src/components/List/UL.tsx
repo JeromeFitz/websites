@@ -1,7 +1,11 @@
-import { cx } from '@jeromefitz/ds/utils/cx'
+import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 
 function UL({ children, className = '' }) {
-  return <ul className={cx('flex flex-col gap-4', className)}>{children}</ul>
+  return (
+    <Flex asChild className={className} direction="column" gap="4">
+      <ul>{children}</ul>
+    </Flex>
+  )
 }
 
 export { UL }

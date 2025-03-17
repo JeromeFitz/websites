@@ -1,4 +1,3 @@
-/* eslint-disable tailwindcss/no-custom-classname */
 import { cx } from '@jeromefitz/ds/utils/cx'
 
 import _size from 'lodash/size.js'
@@ -44,7 +43,7 @@ function Relations({ properties, relations, relationsSecondary }) {
             )}
             key={`${id}-${relation}`}
           >
-            <p className={cx('pb-3 font-extrabold uppercase tracking-tight', '')}>
+            <p className={cx('pb-3 font-extrabold tracking-tight uppercase', '')}>
               <strong>{title}</strong>
             </p>
             <ul>

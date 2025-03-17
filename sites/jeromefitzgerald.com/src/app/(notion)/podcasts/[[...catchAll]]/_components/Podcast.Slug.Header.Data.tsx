@@ -4,6 +4,7 @@ import { cx } from '@jeromefitz/ds/utils/cx'
 import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
 import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
 import * as DataList from '@radix-ui/themes/dist/esm/components/data-list.js'
+import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 
 import { getPodcastData } from '@/app/(notion)/_config/index'
@@ -13,15 +14,22 @@ function PodcastSlugHeaderData({ properties }) {
 
   return (
     <>
-      <div
+      <Flex
         className={cx(
-          'relative flex h-min w-full flex-col flex-nowrap content-center items-center justify-start gap-0 overflow-auto p-0',
+          'content-center items-center overflow-auto',
           'border-gray-7 border-t-1',
         )}
+        direction="column"
+        gap="0"
+        justify="start"
+        p="0"
+        position="relative"
+        width="100%"
+        wrap="nowrap"
       >
         <DataList.Root
           className={cx(
-            'py-6 pl-4 pr-1',
+            'py-6 pr-1 pl-4',
             'gap-x-[var(--space-3)] md:!gap-x-[var(--space-1)]',
             'w-full',
           )}
@@ -50,31 +58,41 @@ function PodcastSlugHeaderData({ properties }) {
                   Type
                 </Text>
               </DataList.Label>
-              <DataList.Value
-                className={cx(
-                  'flex flex-none flex-row flex-wrap place-content-start items-start gap-2 md:gap-3',
-                  'before:[content:initial]',
-                  'before:table',
-                  '',
-                )}
+              <Flex
+                asChild
+                direction="row"
+                flexBasis="auto"
+                flexGrow="0"
+                flexShrink="0"
+                gap={{ initial: '2', md: '3' }}
+                wrap="wrap"
               >
-                <>
-                  {tags.length === 0 && (
-                    <Badge className="lowercase" color="amber" size="2">
-                      <Code variant="ghost">comedy</Code>
-                    </Badge>
+                <DataList.Value
+                  className={cx(
+                    'place-content-start items-start',
+                    'before:[content:initial]',
+                    'before:table',
+                    '',
                   )}
-                  {tags.map(({ color, id, name }) => (
-                    <Badge className="lowercase" color={color} key={id} size="2">
-                      <Code variant="ghost">{name}</Code>
-                    </Badge>
-                  ))}
-                </>
-              </DataList.Value>
+                >
+                  <>
+                    {tags.length === 0 && (
+                      <Badge className="lowercase" color="amber" size="2">
+                        <Code variant="ghost">comedy</Code>
+                      </Badge>
+                    )}
+                    {tags.map(({ color, id, name }) => (
+                      <Badge className="lowercase" color={color} key={id} size="2">
+                        <Code variant="ghost">{name}</Code>
+                      </Badge>
+                    ))}
+                  </>
+                </DataList.Value>
+              </Flex>
             </DataList.Item>
           )}
         </DataList.Root>
-      </div>
+      </Flex>
 
       <div
         className={cx(
@@ -88,7 +106,7 @@ function PodcastSlugHeaderData({ properties }) {
         id="header-bottom"
         style={{ opacity: 1, transform: 'perspective(1200px)' }}
       >
-        <div className={cx('contents')}>
+        <div className="contents size-full">
           <div className={cx('ml-0.5 w-full pb-2')}>
             {/* <CTA href={ticketUrl} isDisabled={isEventOver} /> */}
           </div>

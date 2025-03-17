@@ -6,9 +6,9 @@ import { ImageClient as NextImage } from '@jeromefitz/shared/components/Notion/B
 // import { useHover } from '@mantine/hooks'
 import { DotFilledIcon } from '@radix-ui/react-icons'
 import { AspectRatio } from '@radix-ui/themes/dist/esm/components/aspect-ratio.js'
-import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
 import { Em } from '@radix-ui/themes/dist/esm/components/em.js'
+import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Grid } from '@radix-ui/themes/dist/esm/components/grid.js'
 import { Inset } from '@radix-ui/themes/dist/esm/components/inset.js'
 // import { useEffect, useState } from 'react'
@@ -61,7 +61,7 @@ function NavigationPrimary({ order = 0 }) {
       // ref={ref}
       style={{ opacity: 1, order }}
     >
-      <div className={cx('contents')}>
+      <div className="contents size-full">
         {/* @todo(radix) children */}
         {/* @ts-ignore */}
         <PopoverRoot
@@ -73,29 +73,31 @@ function NavigationPrimary({ order = 0 }) {
           open={isPopover}
         >
           <PopoverTrigger asChild>
-            <Button
-              aria-label="Jerome"
-              className={cx(
-                'bg-accent-1 hover:bg-accent-2 transition-colors',
-                '[&>svg]:data-[state="open"]:animate-none',
-                'flex flex-row gap-0',
-              )}
-              // color={isLoading ? 'accent' : 'gray'}
-              color="gray"
-              radius="full"
-              size="3"
-              variant="outline"
-            >
-              <DotFilledIcon
+            <Flex asChild direction="row" gap="3">
+              <Button
+                aria-label="Jerome"
                 className={cx(
-                  'text-pink-11 size-6 animate-pulse transition-all delay-1000',
-                  '',
+                  '!bg-accent-1 !hover:bg-accent-2 transition-colors',
+                  '[&>svg]:data-[state="open"]:animate-none',
+                  '!cursor-pointer',
                 )}
-              />
-              <Text>
-                <Strong>Jerome</Strong>
-              </Text>
-            </Button>
+                // color={isLoading ? 'accent' : 'gray'}
+                color="gray"
+                radius="full"
+                size="3"
+                variant="outline"
+              >
+                <DotFilledIcon
+                  className={cx(
+                    'text-pink-11 size-6 animate-pulse transition-all delay-1000',
+                    '',
+                  )}
+                />
+                <Text>
+                  <Strong>Jerome</Strong>
+                </Text>
+              </Button>
+            </Flex>
           </PopoverTrigger>
           <PopoverContent
             asChild
@@ -105,12 +107,13 @@ function NavigationPrimary({ order = 0 }) {
           >
             <Grid
               className={cx(
-                'rounded-3 border-1 border-gray-7 overflow-hidden',
+                'rounded-3 border-gray-7 !overflow-hidden border-1',
                 'w-[calc(var(--radix-popper-available-width)_-_3px)] min-w-[unset]',
-                'md:max-w-[309px]',
+                'md:max-w-[209px]',
               )}
               m="0"
               p="0"
+              width="calc(var(--radix-popper-available-width) - 13px"
             >
               <Inset mb={{ initial: '6', md: '4' }} p="0" side="top">
                 <AspectRatio ratio={4 / 3}>
@@ -118,8 +121,10 @@ function NavigationPrimary({ order = 0 }) {
                 </AspectRatio>
               </Inset>
 
-              <Box
-                className="flex flex-col gap-6"
+              <Flex
+                direction="column"
+                display="flex"
+                gap="6"
                 mb={{ initial: '6', md: '4' }}
                 px={{ initial: '3', md: '3' }}
               >
@@ -153,7 +158,7 @@ function NavigationPrimary({ order = 0 }) {
                   </Link>{' '}
                   I guess.
                 </Text>
-              </Box>
+              </Flex>
             </Grid>
           </PopoverContent>
         </PopoverRoot>

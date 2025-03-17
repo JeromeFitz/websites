@@ -1,15 +1,22 @@
 import { cx } from '@jeromefitz/ds/utils/cx'
 
 import { CornerBottomLeftIcon } from '@radix-ui/react-icons'
+import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 
 function LI({ children, className = '' }) {
   return (
-    <li
-      className={cx('flex list-none items-baseline justify-start gap-2', className)}
+    <Flex
+      asChild
+      className={cx('list-none items-baseline', className)}
+      direction="row"
+      gap="2"
+      justify="start"
     >
-      <CornerBottomLeftIcon />
-      {children}
-    </li>
+      <li>
+        <CornerBottomLeftIcon />
+        {children}
+      </li>
+    </Flex>
   )
 }
 

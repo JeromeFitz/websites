@@ -4,6 +4,7 @@ import { cx } from '@jeromefitz/ds/utils/cx'
 import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
 import { Em } from '@radix-ui/themes/dist/esm/components/em.js'
+import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
 // eslint-disable-next-line no-restricted-imports
 import NextLink from 'next/link'
@@ -11,59 +12,75 @@ import NextLink from 'next/link'
 function ArticleMainCTA({ color = 'accent', href = '/events', type = 'events' }) {
   return (
     <Box
-      className={cx('relative h-[266px] w-full flex-none', 'mb-2 mt-6')}
+      className={cx('relative h-[266px] w-full flex-none', 'mt-6 mb-2')}
       style={{ opacity: 1, transform: 'perspective(1200px)' }}
     >
-      <Box className={cx('contents')}>
-        <Button
+      <Box className="contents size-full">
+        <Flex
           asChild
           className={cx(
-            'group size-full transition-transform hover:-translate-y-1',
-            'flex flex-col flex-nowrap',
-            'relative h-[220px] w-[330px] content-end items-end justify-between',
-            'px-6 pb-5 pt-6',
+            'group transition-transform hover:-translate-y-1',
+            // 'content-end items-end',
           )}
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
-          color={color}
-          style={{ height: '100%', width: '100%' }}
-          variant="soft"
+          direction="column"
+          gap="8"
+          height="220px"
+          justify="between"
+          pb="5"
+          position="relative"
+          pt="4"
+          px="6"
+          width="100%"
+          wrap="nowrap"
         >
-          <NextLink href={href}>
-            <Box className={cx('relative right-0')}>
-              <ArrowTopRightIcon
-                className={cx(
-                  'rounded-3 !size-12 p-2 text-inherit !opacity-100',
-                  'transition-colors',
-                  'bg-whiteA-9 group-hover:bg-whiteA-10',
-                  'dark:bg-blackA-9 dark:group-hover:bg-blackA-10',
-                )}
-              />
-            </Box>
-            <Box
-              className={cx(
-                'relative flex h-min w-full flex-col flex-nowrap place-content-start items-start gap-0.5 p-0',
-              )}
-            >
-              <Heading
-                as="h3"
-                className={cx('mb-2 font-mono font-medium uppercase')}
-                highContrast
-                size="1"
+          {/* @todo(types) */}
+          {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+          {/* @ts-ignore */}
+          <Button asChild color={color} variant="soft">
+            <NextLink href={href}>
+              <Box mr="4" position="absolute" pt="0" right="0">
+                <ArrowTopRightIcon
+                  className={cx(
+                    'rounded-3 !size-12 p-2 text-inherit !opacity-100',
+                    'transition-colors',
+                    'bg-whiteA-9 group-hover:bg-whiteA-10',
+                    'dark:bg-blackA-9 dark:group-hover:bg-blackA-10',
+                  )}
+                />
+              </Box>
+              <Flex
+                className={cx('bottom-0 place-content-start items-start')}
+                direction="column"
+                gap="1"
+                height="min-content"
+                justify="start"
+                mb="4"
+                p="0"
+                pl="4"
+                position="absolute"
+                width="100%"
+                wrap="nowrap"
               >
-                Go To
-              </Heading>
-              <Heading
-                align="left"
-                as="h3"
-                className="font-medium capitalize"
-                size={{ initial: '7', md: '8' }}
-              >
-                <Em>All {type}</Em>
-              </Heading>
-            </Box>
-          </NextLink>
-        </Button>
+                <Heading
+                  as="h3"
+                  className={cx('mb-2 font-mono font-medium uppercase')}
+                  highContrast
+                  size="1"
+                >
+                  Go To
+                </Heading>
+                <Heading
+                  align="left"
+                  as="h3"
+                  className="font-medium capitalize"
+                  size={{ initial: '7', md: '8' }}
+                >
+                  <Em>All {type}</Em>
+                </Heading>
+              </Flex>
+            </NextLink>
+          </Button>
+        </Flex>
       </Box>
     </Box>
   )

@@ -30,7 +30,7 @@ function ListItem({ children, className, href, title, ...props }) {
       asChild
       className={cx(
         'group',
-        'flex select-none flex-row items-center gap-3 p-3',
+        'flex flex-row items-center gap-3 p-3 select-none',
         'text-black dark:text-white',
         // 'hover:bg-grayA-4',
         'hover:bg-gray-4',
@@ -61,7 +61,7 @@ function ListItem({ children, className, href, title, ...props }) {
             <Text
               as="div"
               className={cx(
-                'text-gray-12 mb-1 flex items-center gap-2 whitespace-nowrap text-[15px] font-medium',
+                'text-gray-12 mb-1 flex items-center gap-2 text-[15px] font-medium whitespace-nowrap',
               )}
             >
               {title}
@@ -132,7 +132,7 @@ function ListParent({ menu }) {
             <CaretDownIcon
               aria-hidden
               className={cx(
-                'duration-250 group-data-[state=open]:text-accent-11 text-accent-12 relative top-px mr-1 transition-transform ease-in group-data-[state=open]:-rotate-180',
+                'group-data-[state=open]:text-accent-11 text-accent-12 relative top-px mr-1 transition-transform duration-250 ease-in group-data-[state=open]:-rotate-180',
               )}
               label={''}
             />
@@ -141,7 +141,7 @@ function ListParent({ menu }) {
       </NavigationMenuTrigger>
       <NavigationMenuContent
         className={cx(
-          'duration-250 absolute left-0 top-0 ease-in-out',
+          'absolute top-0 left-0 duration-250 ease-in-out',
           'data-[motion=from-start]:animate-enterFromLeft',
           'data-[motion=from-end]:animate-enterFromRight',
           'data-[motion=to-start]:animate-exitToLeft',
@@ -159,7 +159,7 @@ function ListParent({ menu }) {
           <li
             className={cx(
               'grid [grid-template-columns:1fr_1fr]',
-              'gap-3 p-1 outline-none',
+              'gap-3 p-1 outline-hidden',
             )}
           >
             {menu.items.map((item) => {
@@ -209,7 +209,7 @@ const NavigationMenu = () => {
                   // @ts-ignore
                   <NavigationMenuItem
                     className={cx(
-                      'cursor-pointer select-none transition-colors',
+                      'cursor-pointer transition-colors select-none',
                       // 'hocus:hover:text-accent-11',
                       'first-of-type:relative first-of-type:-left-4',
                     )}
@@ -242,14 +242,14 @@ const NavigationMenu = () => {
                 />
               </NavigationMenuIndicator>
             </NavigationMenuList>
-            <div className="perspective-[2000px] absolute left-0 top-12 flex w-full justify-start">
+            <div className="absolute top-12 left-0 flex w-full justify-start perspective-[2000px]">
               <NavigationMenuViewport
                 // @ts-ignore
                 className={cx(
                   'absolute',
                   'w-[var(--radix-navigation-menu-viewport-width)]',
                   'h-[var(--radix-navigation-menu-viewport-height)]',
-                  'duration-250 transition-[width,height] ease-in-out',
+                  'transition-[width,height] duration-250 ease-in-out',
                 )}
               />
             </div>

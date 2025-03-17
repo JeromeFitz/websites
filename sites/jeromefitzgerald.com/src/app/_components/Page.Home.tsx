@@ -91,7 +91,7 @@ const PageHomeOld = forwardRef(function PageHome(props, forwardedRef) {
           <Text as="p" size="8" weight="bold">
             <span
               aria-label="an emoji representation of wave"
-              className="ml-0.5 mr-1.5"
+              className="mr-1.5 ml-0.5"
               role="img"
             >
               👋
@@ -135,10 +135,10 @@ function PageHome() {
   return (
     <>
       <ArticleMain>
-        <Heading as="h1" className="absolute left-[-999px] top-[-999px] block">
+        <Heading as="h1" className="absolute top-[-999px] left-[-999px] block">
           Jerome Fitzgerald (he/him)
         </Heading>
-        <Heading as="h2" className="absolute left-[-999px] top-[-999px] block">
+        <Heading as="h2" className="absolute top-[-999px] left-[-999px] block">
           Actor. Comedian. Human.
         </Heading>
       </ArticleMain>

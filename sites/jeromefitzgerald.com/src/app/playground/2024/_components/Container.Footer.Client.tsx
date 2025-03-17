@@ -1,27 +1,35 @@
 'use client'
 import { InfoCircledIcon } from '@jeromefitz/ds/components/Icon/index'
-import { cx } from '@jeromefitz/ds/utils/cx'
 
 import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
+import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import { NotionEmoji as EmojiWrapper } from 'next-notion/blocks/Emoji'
 import { usePathname } from 'next/navigation.js'
+
+const IS_COLOPHON_SHOWN = false
 
 function ContainerFooterClient() {
   const pathname = usePathname()
   const isHomepage = pathname === '/'
   return (
-    <Box
-      className={cx(
-        isHomepage && 'hidden',
-        'relative order-1 mb-2 flex h-3 w-full flex-none flex-nowrap content-start items-start justify-between gap-[unset] p-0',
-        'md:justify-end md:gap-16',
-        // 'md:justify-between',
-        // 'overflow-hidden',
-      )}
+    <Flex
+      className="order-1 content-start items-start"
+      display={{ initial: isHomepage ? 'none' : 'flex' }}
+      flexBasis="auto"
+      flexGrow="0"
+      flexShrink="0"
+      gap={{ initial: 'unset', md: '9' }}
+      height="calc(var(--spacing) * 3)"
+      justify={{ initial: 'between', md: IS_COLOPHON_SHOWN ? 'between' : 'end' }}
+      mb="2"
+      p="0"
+      position="relative"
       style={{ opacity: 1 }}
+      width="100%"
+      wrap="nowrap"
     >
-      <Box className={cx('')}>
+      <Box>
         <Text
           align={{ initial: 'center', md: 'left' }}
           className="font-mono md:mr-1"
@@ -36,20 +44,20 @@ function ContainerFooterClient() {
           </Box>
         </Text>
       </Box>
-      <Box className={cx('hidden')}>
+      <Box display={{ initial: IS_COLOPHON_SHOWN ? 'block' : 'none' }}>
         <Text
           align={{ initial: 'center', md: 'left' }}
           as="span"
           className="font-mono"
           size={{ initial: '1', md: '2' }}
         >
-          <Box className={cx('flex items-center justify-end gap-2')}>
+          <Flex className="items-center" gap="2" justify="end">
             <Text>Colophon</Text>
             <InfoCircledIcon />
-          </Box>
+          </Flex>
         </Text>
       </Box>
-    </Box>
+    </Flex>
   )
 }
 

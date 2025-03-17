@@ -1,20 +1,27 @@
 import { cx } from '@jeromefitz/ds/utils/cx'
 
-import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
+import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 
 function ContainerContent({ children, className = '' }) {
   return (
-    <Box
+    <Flex
+      align="start"
       className={cx(
         'relative z-0 overflow-visible',
-        'flex flex-none flex-col flex-nowrap place-content-start items-start gap-7',
-        'h-min w-full',
-        'px-0 pb-0 pt-24 md:px-0 md:pb-0 md:pt-24',
+        'place-content-start items-start',
         className,
       )}
+      direction="row"
+      gap={{ initial: '0', md: '6' }}
+      height="min-content"
+      pb="0"
+      pt={{ initial: '12', md: '12' }}
+      px="0"
+      width="100%"
+      wrap="nowrap"
     >
       {children}
-    </Box>
+    </Flex>
   )
 }
 

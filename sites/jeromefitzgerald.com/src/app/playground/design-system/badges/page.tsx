@@ -1,6 +1,7 @@
 import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
 
 import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
+import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 
 import { FourOhFour } from '@/app/_errors/404'
@@ -96,7 +97,7 @@ function Slug() {
         <HeadlineTitleSub>Slight adjustments for --a11</HeadlineTitleSub>
       </HeadlineColumnA>
       <HeadlineContent>
-        <div className="flex flex-col flex-wrap gap-4">
+        <Flex direction="column" gap="4" wrap="wrap">
           {_radixColorsAccents.map((color) => {
             const _title = `${color}-a11`
             return (
@@ -105,7 +106,7 @@ function Slug() {
               </Badge>
             )
           })}
-        </div>
+        </Flex>
       </HeadlineContent>
     </Grid>
   )

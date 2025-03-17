@@ -1,4 +1,3 @@
-/* eslint-disable tailwindcss/no-custom-classname */
 import { Anchor } from '@jeromefitz/ds/components/Anchor'
 import {
   SectionContent,

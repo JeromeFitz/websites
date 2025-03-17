@@ -2,7 +2,7 @@
 import { cx } from '@jeromefitz/ds/utils/cx'
 
 import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
-// import { Grid } from '@radix-ui/themes/dist/esm/components/grid.js'
+import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import _map from 'lodash/map.js'
 import _size from 'lodash/size.js'
@@ -20,12 +20,19 @@ function Credits({ id, relations }) {
   let relationsSize = 0
   let relationAddition = 0
   return (
-    <Box
-      className={cx(
-        'relative flex h-min w-full flex-none flex-col flex-nowrap place-content-center items-center gap-0 overflow-visible p-0',
-        'z-0',
-      )}
+    <Flex
+      className={cx('place-content-center items-center overflow-visible', 'z-0')}
+      direction="column"
+      flexBasis="auto"
+      flexGrow="0"
+      flexShrink="0"
+      gap="0"
+      height="min-content"
       id="container--credits"
+      p="0"
+      position="relative"
+      width="100%"
+      wrap="nowrap"
     >
       <CreditsHeader />
       <RelationsContainer>
@@ -75,57 +82,69 @@ function Credits({ id, relations }) {
           </RelationContainer>
         )}
       </RelationsContainer>
-    </Box>
+    </Flex>
   )
 }
 
 function RelationContainer({ children }) {
   return (
-    <Box
-      className={cx(
-        'relative flex h-auto w-[1px] flex-col flex-nowrap content-center items-stretch justify-start gap-0 overflow-hidden p-0',
-        'min-w-[300px]',
-        // 'flex-[1_0_0px]',
-        'flex-auto',
-      )}
+    <Flex
+      className="flex-auto content-center items-stretch overflow-hidden"
+      direction="column"
+      gap="0"
+      height="auto"
+      justify="start"
+      minWidth="300px"
+      p="0"
+      position="relative"
+      width="1px"
+      wrap="nowrap"
     >
       {children}
-    </Box>
+    </Flex>
   )
 }
 
 function RelationContainerContent({ children }) {
   return (
-    <Box
-      className={cx(
-        'relative flex h-min w-full flex-none flex-col flex-nowrap place-content-start items-start gap-4 overflow-visible px-5 py-8',
-        'bg-accentA-2',
-        // 'border-gray-7 border-1 border-l-0 border-t-0',
-        'md:h-full',
-      )}
+    <Flex
+      className="bg-accentA-2 place-content-start items-start overflow-visible"
+      direction="column"
+      gap="4"
+      height={{ initial: 'min-content', md: '100%' }}
+      position="relative"
+      px="5"
+      py="8"
+      width="100%"
+      wrap="nowrap"
     >
       {children}
-    </Box>
+    </Flex>
   )
 }
 
 function RelationContainerTitle({ children, className = '' }) {
   return (
     <Box
-      className={cx(
-        'relative h-16 w-full flex-none p-4',
-        'px-5 pb-8 pt-5',
-        'border-gray-7 border-y-1',
-        className,
-      )}
+      className={cx('border-gray-7 border-y-1', className)}
+      flexBasis="auto"
+      flexGrow="0"
+      flexShrink="0"
+      height="calc(var(--spacing) * 16)"
+      p="4"
+      pb="8"
+      position="relative"
+      pt="5"
+      px="5"
+      width="100%"
     >
-      <Box className={cx('contents')}>
-        <Box className={cx('flex flex-row items-center justify-start gap-4')}>
+      <Box className="contents size-full">
+        <Flex className="items-center" direction="row" gap="4" justify="start">
           {/* <InfoCircledIcon /> */}
           <Text className="font-medium capitalize" size={{ initial: '3', md: '5' }}>
             {children}
           </Text>
-        </Box>
+        </Flex>
       </Box>
     </Box>
   )
@@ -136,21 +155,23 @@ function RelationContainerTitle({ children, className = '' }) {
  */
 function RelationsContainer({ children }) {
   return (
-    <Box
+    <Flex
       className={cx(
-        // 'bg-accent-2',
-        'size-full items-stretch',
-        'rounded-3 relative z-10 flex h-min w-full flex-row place-content-start items-start gap-0 overflow-hidden p-0',
-        // 'flex-none flex-row flex-nowrap',
-        'flex-row flex-wrap',
-        'border-1 border-gray-7',
-        // 'border-t-1 rounded-t-[0]',
-        'rounded-t-[0] border-t-0',
+        'items-stretch',
+        'rounded-3 z-10 place-content-start items-start overflow-hidden',
+        'border-gray-7 rounded-t-[0] border-1 border-t-0',
       )}
+      direction="row"
+      gap="0"
+      height="min-content"
       id="container--credits--content"
+      p="0"
+      position="relative"
+      width="100%"
+      wrap="wrap"
     >
       {children}
-    </Box>
+    </Flex>
   )
 }
 
