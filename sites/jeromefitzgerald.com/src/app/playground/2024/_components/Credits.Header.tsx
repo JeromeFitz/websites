@@ -1,6 +1,6 @@
 import { cx } from '@jeromefitz/ds/utils/cx'
 
-import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
+import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 
@@ -9,15 +9,23 @@ function CreditsHeader({
   title = 'Info',
 }) {
   return (
-    <Box
+    <Flex
       className={cx(
-        'relative flex h-min w-full flex-none flex-col flex-nowrap place-content-start items-start gap-2 overflow-hidden p-8 pl-4 will-change-transform',
-        'border-1 border-gray-7',
-        'rounded-3 rounded-b-[0] border-b-0',
-        // 'hidden',
-        '',
+        'place-content-start items-start overflow-hidden will-change-transform',
+        'border-gray-7 rounded-3 rounded-b-[0] border-1 border-b-0',
       )}
+      direction="column"
+      flexBasis="auto"
+      flexGrow="0"
+      flexShrink="0"
+      gap="2"
+      height="min-content"
       id="container--credits--header"
+      p="8"
+      pl="4"
+      position="relative"
+      width="100%"
+      wrap="nowrap"
     >
       <Heading
         as="h2"
@@ -33,7 +41,7 @@ function CreditsHeader({
       >
         {subtitle}
       </Text>
-    </Box>
+    </Flex>
   )
 }
 

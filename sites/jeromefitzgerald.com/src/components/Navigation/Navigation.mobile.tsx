@@ -46,7 +46,7 @@ const AccordionNavigation = () => {
   return (
     <AccordionRoot
       className={cx(
-        'mt-10 min-w-full max-w-full',
+        'mt-10 max-w-full min-w-full',
         'rounded-3 bg-gray-6 w-[300px]',
         'shadow-[0_2px_10px] shadow-black/5 dark:shadow-white/10',
         'border-1 border-black/5 dark:border-white/10',
@@ -125,9 +125,9 @@ function NavigationMobile() {
               'top-[calc(var(--header-height)_-_5px)]',
               // 'top-1',
               'fixed inset-x-0 bottom-0 size-full max-w-[100vw]',
-              // 'bg-grayA-1 backdrop-blur-sm',
+              // 'bg-grayA-1 backdrop-blur-xs',
               'bg-white dark:bg-black',
-              'px-6 pb-6 pt-0',
+              'px-6 pt-0 pb-6',
               'visible z-50',
               'overflow-y-scroll',
               'block',
@@ -147,13 +147,13 @@ function NavigationMobile() {
                 >
                   <li
                     className={cx(
-                      'flex w-full cursor-pointer select-none items-center',
+                      'flex w-full cursor-pointer items-center select-none',
                       // 'transition-colors',
                       '',
                     )}
                   >
                     <Button
-                      className={cx('h-10 min-w-full max-w-full px-4')}
+                      className={cx('h-10 max-w-full min-w-full px-4')}
                       color="pink"
                       size="4"
                       variant="surface"
@@ -168,7 +168,7 @@ function NavigationMobile() {
           </nav>
           <div
             className={cx(
-              'fixed left-0 top-0 z-[99999] flex flex-row items-end justify-start py-4',
+              'fixed top-0 left-0 z-[99999] flex flex-row items-end justify-start py-4',
               // 'bg-accent-4',
             )}
           >

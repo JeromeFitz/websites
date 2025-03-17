@@ -20,15 +20,14 @@ function NavigationButtonClient() {
   }
 
   return (
-    // </Box>
     <Skeleton loading={isLoading}>
       <Box
         asChild
-        className={cx('z-50 h-full rounded-full backdrop-blur transition-colors')}
+        className={cx('z-50 rounded-full backdrop-blur-sm transition-colors')}
+        height="100%"
       >
         <SegmentedControl.Root
           className={cx(
-            'size-full',
             'bg-whiteA-3 hover:bg-whiteA-4 active:bg-whiteA-5',
             'dark:bg-blackA-3 hover:dark:bg-blackA-4 active:dark:bg-blackA-5',
             '',

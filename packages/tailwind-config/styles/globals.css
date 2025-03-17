@@ -1,24 +1,57 @@
-@tailwind base;
+@import 'tailwindcss';
+/* @config "../tailwind.config.ts"; */
 
-@tailwind components;
-@tailwind utilities;
-
-@import url('./chrome.css');
-@import url('./safari.css');
+@import url('./chrome.css') layer(utilities);
+@import url('./safari.css') layer(utilities);
 /* @import url('./fonts.css'); */
 
+@import 'tw-animate-css';
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/typography";
+@plugin "tailwindcss-radix";
+/* @plugin "radix-themes-tw"; */
+@import './radix-themes-tw.css';
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
+@utility icon-hero {
+  height: 1rem !important;
+  width: 1rem !important;
+}
+
 .icon-custom svg {
-  height: inherit;
-  width: inherit;
-  /* height: 2rem; */
-  /* width: 2rem; */
+  /* height: inherit; */
+  /* width: inherit; */
+  height: 1rem !important;
+  width: 1rem !important;
 }
 
 .icon-custom.hero svg path {
   stroke-width: '1.5 !important';
 }
 
-.radix-themes {
+[data-size='hero'] {
+  margin-top: 1px;
+  width: 1rem;
+}
+
+@theme {
   --cursor-button: pointer;
   --cursor-checkbox: pointer;
   --cursor-disabled: default;
@@ -46,10 +79,10 @@
   --quote-font-family: 'Times New Roman', 'Times', serif;
 
   /* NameSans / Inter */
-  font-feature-settings:
+  /* font-feature-settings:
     'calt', 'zero', 'cv01', 'cv02', 'cv03', 'cv04', 'cv05', 'cv06', 'cv08', 'cv09',
-    'cv10', 'cv11';
-  font-variation-settings: 'opsz' 32;
+    'cv10', 'cv11'; */
+  /* font-variation-settings: 'opsz' 32; */
 
   /* Gray 00, 100 */
   /*  --black: '#000000; Black */
@@ -68,7 +101,7 @@
   /*  --white: '#f4f4f4; */
 }
 
-:root {
+@theme {
   --muted: 210 40% 96.1%;
   --muted-foreground: 215.4 16.3% 46.9%;
 
@@ -77,7 +110,16 @@
   --page-top: 75px;
   --transition-fast: 500ms;
 }
+@theme {
+  /* --header-height: 3.5rem; */
+  --header-height: 56px;
+  --sidebar-width: 320px;
+  --sidebar-gap: 28px;
+}
 
+/* @custom-variant dark (&:is(.dark *)); */
+@custom-variant dark (&:where(.dark, .dark *));
+/* @variant dark (&:where([data-theme="dark"], [data-theme="dark"] *)); */
 .dark,
 .dark-theme {
   --muted: 223 47% 11%;
@@ -88,21 +130,49 @@
   opacity: 100 !important;
 }
 
-:where(*) {
+/* :where(*) {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
+} */
 
-:root {
-  /* --header-height: 3.5rem; */
-  --header-height: 56px;
-  --sidebar-width: 309px;
-  --sidebar-gap: 28px;
+@layer utilities {
+  :root {
+    /*  Gray 00, 100 */
+    --black: '#000000';
+    --white: '#ffffff';
+    /* Gray 01, 99 */
+    --black: '#030303';
+    --white: '#fcfcfc';
+    /* Gray 02, 98 */
+    --black: '#050505';
+    --white: '#fafafa';
+    /* Gray 06, 94 */
+    --black: '#0f0f0f';
+    --white: '#f4f4f4';
+    /* social */
+    --bluesky: '#3399FF';
+    --github: 'var(--black-a1)';
+    --github-dark: 'var(--white-a1)';
+    --inherit: 'inherit';
+    --instagram: '#c32aa3';
+    --linkedin: '#0a66c2';
+    --spotify: '#1ed760';
+    /* --spotify-dark: '#1db954'; */
+    --threads: '#c32aa3';
+    --twitter: '#1da1f2';
+    /* custom */
+    --current: 'current';
+    --transparent: 'transparent';
+    /* fonts */
+    --font-family-mono: var(--font-geist-mono);
+    --font-family-sans: var(--font-geist-sans);
+  }
 }
 
 .light,
 .light-theme {
+  /* a11y improvements for radix */
   --amber-a11: color(display-p3 0.61 0.37 0);
   --crimson-a11: color(display-p3 0.729 0.192 0.385);
   --pink-a11: color(display-p3 0.688 0.209 0.518);
@@ -112,6 +182,10 @@
   --tomato-a11: color(display-p3 0.701 0.249 0.137);
   --yellow-a11: color(display-p3 0.592 0.392 0);
 }
+.dark,
+.dark-theme {
+  --spotify: '#1db954';
+}
 
 #data-radix-popper-content-wrapper {
   z-index: 9999;
@@ -119,4 +193,14 @@
 
 * {
   scroll-behavior: smooth;
+}
+
+[data-icon='hero'] {
+  /* padding: 0.325rem; */
+  margin-top: 1px;
+  width: 1rem;
+}
+
+[data-icon='hero'] * {
+  stroke-width: 1.5 !important;
 }

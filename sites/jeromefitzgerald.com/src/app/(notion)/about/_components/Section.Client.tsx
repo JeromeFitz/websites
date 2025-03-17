@@ -24,7 +24,13 @@ function SectionClientLegend({ data }) {
     <>
       {data.map((item, i) => {
         return (
-          <Box className="relative z-10 h-16 w-full flex-none" key={`legend-${i}`}>
+          <Box
+            className="z-10"
+            height="calc(var(--spacing) * 16)"
+            key={`legend-${i}`}
+            position="relative"
+            width="100%"
+          >
             <NextLink
               href={`#${item.id}`}
               // onClick={(e) => {

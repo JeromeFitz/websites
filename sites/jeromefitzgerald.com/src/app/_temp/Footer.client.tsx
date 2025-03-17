@@ -55,7 +55,7 @@ function FooterClient() {
           'col-span-full',
           'bg-white dark:bg-black',
           '',
-          'lg:pb-2 lg:pt-8',
+          'lg:pt-8 lg:pb-2',
         )}
       >
         <div className="col-span-full flex items-end justify-start">

@@ -7,8 +7,8 @@ import {
 } from '@jeromefitz/ds/components/Icon/index'
 import { cx } from '@jeromefitz/ds/utils/cx'
 
-import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 import { Em } from '@radix-ui/themes/dist/esm/components/em.js'
+import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 
 import { CurrentlyEvent } from './Currently.Event'
@@ -57,7 +57,7 @@ const currently = [
     href: '/events',
     icon: TicketIcon,
     id: 'events',
-    isActive: true,
+    isActive: false,
     title: 'My Next Event…',
     titleSub: 'Not Scheduled – See Past Events',
   },
@@ -65,32 +65,48 @@ const currently = [
 
 function Currently() {
   return (
-    <Box
+    <Flex
+      align="end"
+      // bottom="0"
       className={cx(
-        'relative flex h-min w-full flex-none flex-col flex-nowrap place-content-center items-center overflow-visible p-0',
-        // @todo(ui) can we align this with radix?
-        'gap-[10px]',
+        'place-content-center items-center overflow-visible',
         'order-[0]',
-        'md:h-[266px]',
       )}
+      direction="column"
+      gap="10"
+      height={{ initial: 'min-content', md: '266px' }}
+      // height="100%"
+      justify="center"
+      p="0"
+      // position="fixed"
+      px={{ initial: '5', md: '0' }}
       style={{ opacity: 1 }}
+      width="100%"
+      wrap="nowrap"
     >
-      <Box
-        className={cx(
-          'relative flex h-min w-full flex-none flex-col flex-nowrap place-content-start items-start gap-6 overflow-visible p-0',
-          'md:flex-row md:justify-between',
-        )}
+      <Flex
+        className={cx('place-content-start items-start')}
+        direction={{ initial: 'column', md: 'row' }}
+        gap="6"
+        height="min-content"
+        justify={{ initial: 'start', md: 'between' }}
+        p="0"
+        position="relative"
         style={{ opacity: 1 }}
+        width="100%"
+        wrap="nowrap"
       >
-        <Box
-          className={cx(
-            // 'bg-grass-5',
-            'rounded-3',
-            'relative flex h-min flex-[1_0_0px] flex-row flex-nowrap content-center items-center justify-start gap-[10px] overflow-visible',
-            'w-[unset]',
-            'md:w-[318px] md:min-w-[318px] md:max-w-[318px]',
-          )}
+        <Flex
+          className="content-center items-center overflow-visible rounded-md"
+          content="center"
+          direction="row"
+          gap="10"
+          justify="start"
+          maxWidth={{ initial: 'unset', md: '320px' }}
+          position="relative"
+          pr="0"
           style={{ opacity: 1 }}
+          width={{ initial: 'unset', md: '318px' }}
         >
           <Text
             className="text-accentA-12"
@@ -99,8 +115,7 @@ function Currently() {
           >
             <Em>Currently…</Em>
           </Text>
-        </Box>
-        {}
+        </Flex>
         {currently.map((c, idx) => {
           if (!c?.isActive) return null
 
@@ -119,8 +134,8 @@ function Currently() {
 
           return <Component key={key} {...props} />
         })}
-      </Box>
-    </Box>
+      </Flex>
+    </Flex>
   )
 }
 

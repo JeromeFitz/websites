@@ -101,11 +101,11 @@ function Cmdk() {
       <Box
         aria-hidden={true}
         className={cx(
-          'duration-250 fixed left-0 top-0 z-50 size-full',
+          'fixed top-0 left-0 z-50 size-full duration-250',
           'transition-all',
           'pointer-events-none',
           isCmdkOpen && isCmdkInnerOpen
-            ? 'bg-grayA-2 backdrop-blur-sm'
+            ? 'bg-grayA-2 backdrop-blur-xs'
             : 'bg-transparent',
         )}
       />
@@ -155,7 +155,7 @@ function Cmdk() {
       >
         <CMDKWrapper>
           <Box
-            className="duration-250 transition-opacity data-[state=closed]:opacity-0 data-[state=open]:opacity-100"
+            className="data-[state=open]:opacity-black/50 data-[state=closed]:opacity-black/0 transition-black/50 duration-250"
             data-state={isCmdkInnerOpen ? 'open' : 'closed'}
             id="cmdk-wrapper"
           >

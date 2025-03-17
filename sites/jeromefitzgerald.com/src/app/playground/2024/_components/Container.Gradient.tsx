@@ -9,7 +9,7 @@ function ContainerGradient() {
         className={cx(
           'pointer-events-none fixed top-0 z-30 w-full flex-none',
           'h-[50px] md:h-[35px]',
-          'backdrop-blur-sm',
+          'backdrop-blur-xs',
           'opacity-80 md:opacity-90',
           '',
         )}

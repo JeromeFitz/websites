@@ -50,7 +50,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       >
         <body
           className={cx(
-            'overflow-y-auto overflow-x-hidden md:overflow-y-auto',
+            'overflow-x-hidden overflow-y-auto md:overflow-y-auto',
             'selection:bg-gray-12 selection:text-gray-1',
             'bg-white dark:bg-black',
             'scroll-smooth font-sans antialiased',

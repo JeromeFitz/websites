@@ -94,7 +94,9 @@ import { IconProps } from './Icon.types'
  *  Override by passing tailwind className to Icon.XYZ
  *
  */
-const twHeroToRadixIcon = 'mt-[1px] w-[1rem] [&>path]:stroke-[1.5]'
+const twHeroToRadixIcon =
+  'icon-custom mt-[1px] w-[1rem] [&>path]:stroke-[1.5] icon-hero'
+// const twHeroToRadixIcon = ''
 
 const AmazonLogoIcon = ({ label, ...props }: IconProps) => (
   <AccessibleIcon
@@ -104,7 +106,7 @@ const AmazonLogoIcon = ({ label, ...props }: IconProps) => (
     }
   >
     <svg
-      className="fill:bg-black dark:fill:bg-white"
+      className="dark:fill:bg-white fill:bg-black"
       height="17px"
       role="img"
       version="1.1"
@@ -143,7 +145,7 @@ const AppleLogoIcon = ({ label, ...props }: IconProps) => (
     label={label || 'An icon representing the logo of Apple. Which is an apple.'}
   >
     <svg
-      className="fill:bg-black dark:fill:bg-white"
+      className="dark:fill:bg-white fill:bg-black"
       height="17px"
       role="img"
       version="1.1"
@@ -206,6 +208,7 @@ const ArrowUturnLeftIcon = ({ className, label, ...props }: IconProps) => (
   >
     <ArrowUturnLeftHero
       className={cx(twHeroToRadixIcon, className)}
+      data-icon="hero"
       role="img"
       {...props}
     />
@@ -231,7 +234,7 @@ const BlueskyLogoIcon = ({ label, ...props }: IconProps) => (
     }
   >
     <svg
-      className="fill:bg-black dark:fill:bg-white"
+      className="dark:fill:bg-white fill:bg-black"
       height="17px"
       role="img"
       version="1.1"
@@ -281,6 +284,7 @@ const BookOpenIcon = ({ className, label, ...props }: IconProps) => (
   >
     <BookOpenIconHero
       className={cx(twHeroToRadixIcon, className)}
+      data-icon="hero"
       role="img"
       {...props}
     />
@@ -433,6 +437,7 @@ const CloudIcon = ({ className, label, ...props }: IconProps) => (
   >
     <CloudIconHero
       className={cx(twHeroToRadixIcon, className)}
+      data-icon="hero"
       role="img"
       {...props}
     />
@@ -593,7 +598,7 @@ const GooglePodcastsLogoIcon = ({ label, ...props }: IconProps) => (
     label={label || 'An icon representing the logo for Google Podcasts.'}
   >
     <svg
-      className="fill:bg-black dark:fill:bg-white"
+      className="dark:fill:bg-white fill:bg-black"
       height="17px"
       role="img"
       version="1.1"
@@ -637,6 +642,7 @@ const HashtagIcon = ({ className, label, ...props }: IconProps) => (
   >
     <HashtagIconHero
       className={cx(twHeroToRadixIcon, className)}
+      data-icon="hero"
       role="img"
       {...props}
     />
@@ -737,6 +743,7 @@ const LocationMarkerIcon = ({ className, label, ...props }: IconProps) => (
   >
     <MapPinIconHero
       className={cx(twHeroToRadixIcon, className)}
+      data-icon="hero"
       role="img"
       {...props}
     />
@@ -763,6 +770,7 @@ const MapIcon = ({ className, label, ...props }: IconProps) => (
   >
     <MapIconHero
       className={cx(twHeroToRadixIcon, className)}
+      data-icon="hero"
       role="img"
       {...props}
     />
@@ -778,6 +786,7 @@ const MicrophoneIcon = ({ className, label, ...props }: IconProps) => (
   >
     <MicrophoneIconHero
       className={cx(twHeroToRadixIcon, className)}
+      data-icon="hero"
       role="img"
       {...props}
     />
@@ -804,6 +813,7 @@ const MusicalNoteIcon = ({ className, label, ...props }: IconProps) => (
   >
     <MusicalNoteIconHero
       className={cx(twHeroToRadixIcon, className)}
+      data-icon="hero"
       role="img"
       {...props}
     />
@@ -857,7 +867,7 @@ const ReturnIcon = ({ className, label, ...props }: IconProps) => (
     }
   >
     <ArrowUturnLeftHero
-      className={cx(twHeroToRadixIcon, 'rotate-180 -scale-x-100', className)}
+      className={cx(twHeroToRadixIcon, '-scale-x-100 rotate-180', className)}
       role="img"
       {...props}
     />
@@ -905,7 +915,7 @@ const SpotifyLogoIcon = ({ label, ...props }: IconProps) => (
     }
   >
     <svg
-      className="fill:bg-black dark:fill:bg-white"
+      className="dark:fill:bg-white fill:bg-black"
       height="17px"
       role="img"
       version="1.1"
@@ -972,6 +982,7 @@ const TagIcon = ({ className, label, ...props }: IconProps) => (
   >
     <TagIconHero
       className={cx(twHeroToRadixIcon, className)}
+      data-icon="hero"
       role="img"
       {...props}
     />
@@ -1026,6 +1037,7 @@ const ThreadsLogoIcon = ({ className, label, ...props }: IconProps) => (
   >
     <AtSymbolIconHero
       className={cx(twHeroToRadixIcon, className)}
+      data-icon="hero"
       role="img"
       {...props}
     />
@@ -1041,6 +1053,7 @@ const TicketIcon = ({ className, label, ...props }: IconProps) => (
   >
     <TicketIconHero
       className={cx(twHeroToRadixIcon, className)}
+      data-icon="hero"
       role="img"
       {...props}
     />

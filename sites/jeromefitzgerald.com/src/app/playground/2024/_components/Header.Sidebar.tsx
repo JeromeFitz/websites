@@ -1,22 +1,37 @@
 import { cx } from '@jeromefitz/ds/utils/cx'
 
+// import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
+import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
-// import _isEmpty from 'lodash/isEmpty.js'
 
 function ContainerHeaderSidebar({ children }) {
   return (
-    <header
+    <Flex
+      asChild
       className={cx(
-        'z-0 flex flex-[1_0_0px] flex-col flex-nowrap content-center items-start justify-between overflow-auto will-change-transform',
-        'relative top-[unset] h-min w-full max-w-[unset] flex-none',
-        'md:sticky md:top-24 md:h-[88vh] md:w-full md:max-w-[309px]',
+        // 'bg-iris-3',
+        // 'rounded-md border-1',
+        'z-0 content-center items-start overflow-auto will-change-transform',
       )}
       data-name="Side Bar"
+      display="inline-flex"
+      flexBasis="0px"
+      flexGrow="1"
+      flexShrink="0"
+      height={{ initial: 'min-content', md: '88vh' }}
       id="header--sidebar"
+      justify="between"
+      maxHeight={{ initial: 'unset', md: 'unset' }}
+      maxWidth={{ initial: 'unset', md: '320px' }}
+      mr={{ initial: '0', md: '-1' }}
+      position={{ initial: 'relative', md: 'relative' }}
       style={{ opacity: 1, transform: 'perspective(1200px)' }}
+      top={{ initial: 'unsert', md: '9' }}
+      width="100%"
+      wrap="nowrap"
     >
-      {children}
-    </header>
+      <header>{children}</header>
+    </Flex>
   )
 }
 
@@ -26,57 +41,68 @@ function HeaderSidebar({
   hasBorder = true,
   title = '',
 }) {
-  // const isTitleEmpty = _isEmpty(title)
   const isTitleEmpty = title === ''
   return (
     <ContainerHeaderSidebar>
-      <div
+      <Flex
         className={cx(
-          'h-min w-full',
-          // 'size-full',
-          'relative flex flex-none flex-col flex-nowrap place-content-start items-start gap-0 overflow-visible',
-          'px-0 pb-6 pt-0 md:p-0',
+          'place-content-start items-start overflow-visible',
           hasBorder && 'rounded-3 border-gray-7 border-1',
           className,
         )}
+        direction="column"
+        flexBasis="auto"
+        flexGrow="0"
+        flexShrink="0"
+        gap="0"
+        height="min-content"
         id="header-top"
+        p={{ md: '0' }}
+        pb="6"
+        position="relative"
+        pt="0"
+        px="0"
+        width="100%"
+        wrap="nowrap"
       >
         {!isTitleEmpty && (
-          <div
+          <Flex
             className={cx(
-              'relative z-30 flex h-min w-full flex-none flex-col flex-nowrap place-content-start items-start gap-3 overflow-hidden p-5',
+              'z-30 place-content-start items-start overflow-hidden',
               isTitleEmpty && 'hidden',
-              '',
             )}
+            direction="column"
+            flexBasis="auto"
+            flexGrow="0"
+            flexShrink="0"
+            gap="3"
+            height="min-content"
             id="header-info"
+            p="5"
+            position="relative"
+            width="100%"
+            wrap="nowrap"
           >
-            <Heading
-              as="h1"
-              className={cx(
-                'line-clamp-2 font-medium',
-                // 'md:min-h-[60px]',
-                '',
-              )}
-              size="6"
-            >
+            <Heading as="h1" className="line-clamp-2 font-medium" size="6">
               {title}
             </Heading>
-          </div>
+          </Flex>
         )}
-
-        <div
-          className={cx(
-            // 'h-min w-full ',
-            'size-full',
-            'relative flex-none',
-            'flex flex-col justify-between',
-            // 'pb-2',
-          )}
+        <Flex
+          direction="column"
+          flexBasis="auto"
+          flexGrow="0"
+          flexShrink="0"
+          height="100%"
           id="header-container"
+          justify="between"
+          position="relative"
+          top="0"
+          width="100%"
         >
           {children}
-        </div>
-      </div>
+        </Flex>
+      </Flex>
     </ContainerHeaderSidebar>
   )
 }

@@ -21,7 +21,7 @@ function HeaderSidebarCTA({
       id="header-bottom"
       style={{ opacity: 1, transform: 'perspective(1200px)' }}
     >
-      <div className={cx('contents')}>
+      <div className="contents size-full">
         <div className={cx('w-full p-2')}>
           <Button
             asChild

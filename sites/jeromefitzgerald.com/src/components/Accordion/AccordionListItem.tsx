@@ -25,7 +25,7 @@ function AccordionListItem({ children, href, icon, ...props }) {
         className={cx(
           'cursor-pointer no-underline',
           'text-gray-11',
-          'flex w-full select-none flex-row items-center justify-start',
+          'flex w-full flex-row items-center justify-start select-none',
           'transition-colors',
           'my-1 gap-2 py-1',
           'md:my-1 md:gap-3 md:py-2',

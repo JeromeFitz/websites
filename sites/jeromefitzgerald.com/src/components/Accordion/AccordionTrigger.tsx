@@ -19,7 +19,7 @@ const AccordionTrigger = forwardRef(
     <Accordion.Header className="flex">
       <Accordion.Trigger
         className={cx(
-          'hover:bg-gray-2 shadow-gray-5 text-accent-11 group flex h-[45px] flex-1 cursor-default items-center justify-between bg-white px-5 text-[15px] leading-[var(--leading-none)] shadow-[0_1px_0] outline-none dark:bg-black/95',
+          'hover:bg-gray-2 shadow-gray-5 text-accent-11 group flex h-[45px] flex-1 cursor-default items-center justify-between bg-white px-5 text-[15px] leading-[var(--leading-none)] shadow-[0_1px_0] outline-hidden dark:bg-black/95',
           className,
         )}
         {...props}

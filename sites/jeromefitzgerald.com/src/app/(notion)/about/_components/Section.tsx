@@ -6,6 +6,7 @@ import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
 import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
 import { Em } from '@radix-ui/themes/dist/esm/components/em.js'
+import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
 import { Link } from '@radix-ui/themes/dist/esm/components/link.js'
 import { Separator } from '@radix-ui/themes/dist/esm/components/separator.js'
@@ -84,51 +85,54 @@ function Comedy() {
 function Contact() {
   return (
     <>
-      <Callout size="1" variant="surface">
+      <Callout className="!my-6" size="1" variant="surface">
         This has not been migrated yet.
       </Callout>
-      <ul
-        className={cx(
-          'mx-2 mt-2 pt-2',
-          'flex flex-row gap-8 md:gap-4',
-          'justify-center',
-          'md:place-items-baseline md:items-center md:justify-start',
-        )}
+      <Flex
+        asChild
+        direction="row"
+        gap={{ initial: '8', md: '4' }}
+        justify={{ initial: 'center', md: 'start' }}
+        mt="2"
+        mx="2"
+        pt="2"
       >
-        {socials.map((social) => {
-          if (!social.active) return null
+        <ul className="md:place-items-baseline md:items-center">
+          {socials.map((social) => {
+            if (!social.active) return null
 
-          return (
-            <li className={cx('')} key={`footer--social--${social.id}`}>
-              <Button asChild highContrast radius="full" size="2" variant="ghost">
-                <a
-                  className={cx(
-                    'hover:cursor-pointer lg:flex',
-                    'text-gray-12 hover:text-gray-12',
-                    // 'duration-250 transition-colors',
-                    'place-content-start items-center justify-items-start lg:w-full',
-                    social.className,
-                  )}
-                  href={social.url}
-                  target="_blank"
-                >
-                  {social.icon}
-                  <span
+            return (
+              <li key={`footer--social--${social.id}`}>
+                <Button asChild highContrast radius="full" size="2" variant="ghost">
+                  <a
                     className={cx(
-                      // 'flex flex-row items-center justify-center gap-2',
-                      'hidden',
-                      '',
+                      'hover:cursor-pointer lg:flex',
+                      'text-gray-12 hover:text-gray-12',
+                      // 'duration-250 transition-colors',
+                      'place-content-start items-center justify-items-start lg:w-full',
+                      social.className,
                     )}
+                    href={social.url}
+                    target="_blank"
                   >
-                    <span className="text-inherit">{social.title}</span>{' '}
-                    <ExternalLinkIcon className="text-gray-12" />
-                  </span>
-                </a>
-              </Button>
-            </li>
-          )
-        })}
-      </ul>
+                    {social.icon}
+                    <span
+                      className={cx(
+                        // 'flex flex-row items-center justify-center gap-2',
+                        'hidden',
+                        '',
+                      )}
+                    >
+                      <span className="text-inherit">{social.title}</span>{' '}
+                      <ExternalLinkIcon className="text-gray-12" />
+                    </span>
+                  </a>
+                </Button>
+              </li>
+            )
+          })}
+        </ul>
+      </Flex>
     </>
   )
 }
@@ -264,44 +268,39 @@ const sectionsDefault = [
 
 function Section({ sections = sectionsDefault }: { sections?: SectionType[] }) {
   return (
-    <>
+    <Flex
+      direction={{ initial: 'column', md: 'row' }}
+      gap="var(--sidebar-gap)"
+      mb="12"
+      width="100%"
+    >
       <Box
-        className={cx(
-          'flex w-full flex-col md:flex-row',
-          'gap-[var(--sidebar-gap)]',
-          'mb-24',
-        )}
+        // className="rounded-3 border-1"
+        display={{ initial: 'none', md: 'inline' }}
+        maxWidth={{ md: 'var(--sidebar-width)' }}
+        minWidth={{ md: 'var(--sidebar-width)' }}
+        width={{ initial: '100%', md: 'var(--sidebar-width)' }}
       >
         <Box
-          className={cx(
-            // 'bg-purple-6 rounded-3 border-1',
-            'col-span-3',
-            'hidden md:block',
-            '!md:w-[var(--sidebar-width)] w-full md:min-w-[var(--sidebar-width)] md:max-w-[var(--sidebar-width)]',
-            '',
-          )}
+          // className="rounded-3 border-1"
+          minHeight="280px"
+          position="sticky"
+          top="calc(var(--spacing) * 24)"
         >
           <Box
             className={cx(
-              // 'bg-purple-9 rounded-3 border-1 min-h-[280px]',
-              'sticky top-24',
+              'rounded-3 absolute inset-x-0 top-0 z-0 h-16 flex-none overflow-hidden',
+              'hidden',
             )}
-          >
-            <Box
-              className={cx(
-                'rounded-3 absolute inset-x-0 top-0 z-0 h-16 flex-none overflow-hidden',
-                'hidden',
-              )}
-              data-name="Legend: Highlight"
-            />
-            <SectionLegend data={sections} />
-          </Box>
-        </Box>
-        <Box className="flex w-full flex-col gap-24">
-          <SectionContent data={sections} />
+            data-name="Legend: Highlight"
+          />
+          <SectionLegend data={sections} />
         </Box>
       </Box>
-    </>
+      <Flex direction="column" gap="9" width="100%">
+        <SectionContent data={sections} />
+      </Flex>
+    </Flex>
   )
 }
 
@@ -311,62 +310,103 @@ function SectionContent({ data }) {
       {data.map((item, i) => {
         const Icon = item.icon
         return (
-          <section
-            className={cx('flex w-full flex-col gap-14', 'scroll-mt-[100px]')}
-            id={`${item.id}`}
+          <Flex
+            asChild
+            className="scroll-mt-[100px] border-none"
+            direction="column"
+            gap="12"
             key={`section--${item.id}`}
+            width="100%"
           >
-            <Box
-              className={cx(
-                'relative flex h-min w-full flex-row flex-nowrap items-center justify-start gap-8 self-start overflow-hidden p-0',
-                'after:border-t-1 after:border-accent-9 after:pointer-events-none after:absolute after:left-0 after:top-0 after:size-full after:content-[""]',
-              )}
-            >
-              <Box
+            <section id={`${item.id}`}>
+              <Flex
                 className={cx(
-                  'bg-accent-9 rounded-b-3',
-                  'flex aspect-[1_/_1] size-10 flex-none flex-nowrap items-center justify-center gap-0 overflow-visible p-0',
+                  'items-center self-start overflow-hidden',
+                  'after:border-accent-9 after:pointer-events-none after:absolute after:top-0 after:left-0 after:size-full after:border-t-1 after:content-[""]',
                 )}
+                // column="row"
+                gap="3"
+                height="min-content"
+                justify="start"
+                mb="2"
+                p="0"
+                pb="2"
+                position="relative"
+                width="100%"
+                wrap="nowrap"
               >
-                <Box
-                  className={cx(
-                    'flex shrink-0 transform-none flex-col items-center justify-center outline-none',
-                    'relative line-clamp-1 h-full w-[1px] flex-[1_0_0px]',
-                  )}
+                <Flex
+                  className="bg-accent-9 rounded-b-3 aspect-[1_/_1] items-center overflow-visible"
+                  gap="0"
+                  height="calc(var(--spacing) * 12)"
+                  justify="center"
+                  p="0"
+                  width="calc(var(--spacing) * 10)"
+                  wrap="nowrap"
                 >
-                  <Heading as="h3" className={cx('text-white dark:text-black')}>
-                    {item.icon ? (
-                      <Icon className="!size-6" />
-                    ) : (
-                      <Code variant="ghost">{i + 1}</Code>
-                    )}
-                  </Heading>
+                  <Flex
+                    className="line-clamp-1 transform-none items-center outline-hidden"
+                    direction="column"
+                    flexBasis="0x"
+                    flexGrow="1"
+                    flexShrink="0"
+                    height="100%"
+                    justify="center"
+                    position="relative"
+                    width={{ initial: '1px', md: '1px' }}
+                  >
+                    <Heading
+                      as="h3"
+                      className={cx('font-mono text-white dark:text-black')}
+                      size="5"
+                    >
+                      {item.icon ? (
+                        <Icon className="!size-6" />
+                      ) : (
+                        <Code variant="ghost">{i + 1}</Code>
+                      )}
+                    </Heading>
+                  </Flex>
+                </Flex>
+                <Flex
+                  className="content-center items-center overflow-visible"
+                  direction="row"
+                  flexBasis="0x"
+                  flexGrow="1"
+                  flexShrink="0"
+                  gap="0"
+                  height="100%"
+                  justify="start"
+                  p="0"
+                  position="relative"
+                  width={{ initial: '1px', md: '1px' }}
+                  wrap="nowrap"
+                >
+                  <Flex
+                    className="line-clamp-1 transform-none items-start outline-hidden"
+                    direction="column"
+                    flexBasis="0px"
+                    flexGrow="1"
+                    flexShrink="0"
+                    height="100%"
+                    justify="start"
+                    position="relative"
+                    pt="2"
+                    width={{ initial: '1px', md: '1px' }}
+                  >
+                    <Heading as="h2" className={cx('')}>
+                      {item.title}
+                    </Heading>
+                  </Flex>
+                </Flex>
+              </Flex>
+              <Box width="100%">
+                <Box className="max-w-screen-sm">
+                  {item.content ? item.content : <Lorem />}
                 </Box>
               </Box>
-              <Box
-                className={cx(
-                  'relative flex h-full w-[1px] flex-[1_0_0px] flex-row flex-nowrap content-center items-center justify-start gap-0 overflow-visible p-0',
-                )}
-              >
-                <Box
-                  className={cx(
-                    'flex shrink-0 transform-none flex-col items-start justify-start outline-none',
-                    'relative line-clamp-1 h-full w-[1px] flex-[1_0_0px]',
-                    'pt-1.5',
-                  )}
-                >
-                  <Heading as="h2" className={cx('')}>
-                    {item.title}
-                  </Heading>
-                </Box>
-              </Box>
-            </Box>
-            <Box className="w-full">
-              <Box className="max-w-screen-sm">
-                {item.content ? item.content : <Lorem />}
-              </Box>
-            </Box>
-          </section>
+            </section>
+          </Flex>
         )
       })}
     </>
@@ -375,36 +415,63 @@ function SectionContent({ data }) {
 
 function SectionLegend({ data }) {
   return (
-    <Box className="rounded-3 border-1 border-gray-7">
+    <Box className="border-gray-7 rounded-3 border-1">
       {data.map((item, i) => {
         const Icon = item.icon
         return (
-          <NextLink
+          <Flex
+            asChild
             className={cx(
-              'hocus:bg-accent-4 group relative flex size-full flex-row flex-nowrap items-center justify-start gap-4 overflow-visible p-5 no-underline',
-              'border-t-1 border-gray-7 first-of-type:border-t-0',
+              'hover:bg-accent-4 group items-center overflow-visible no-underline',
+              'border-gray-7 border-t-1 first-of-type:border-t-0',
               '',
             )}
-            href={`#${item.id}`}
+            direction="row"
+            gap="4"
+            height="100%"
+            justify="start"
             key={`legend-${i}`}
+            p="5"
+            position="relative"
+            width="100%"
+            wrap="nowrap"
           >
-            <Box className="relative size-auto flex-none">
-              <Box className="contents">
-                <Box className="relative flex size-min cursor-pointer flex-row flex-nowrap items-center justify-start gap-3 overflow-visible p-0">
-                  <Box className="rounded-3 bg-accent-9 flex size-8 flex-row flex-nowrap items-center justify-center">
-                    <Box className={cx('text-white dark:text-black')}>
-                      {item.icon ? (
-                        <Icon className="!size-4" />
-                      ) : (
-                        <Code variant="ghost">{i + 1}</Code>
-                      )}
-                    </Box>
-                  </Box>
-                  <Box className="">{item.title}</Box>
+            <NextLink href={`#${item.id}`}>
+              <Box className="relative size-auto flex-none">
+                <Box className="contents size-full">
+                  <Flex
+                    className="cursor-pointer items-center overflow-visible"
+                    direction="row"
+                    gap="3"
+                    height="min-content"
+                    justify="start"
+                    p="0"
+                    position="relative"
+                    width="min-content"
+                    wrap="nowrap"
+                  >
+                    <Flex
+                      className="rounded-3 bg-accent-9 items-center"
+                      direction="row"
+                      height="calc(var(--spacing) * 8)"
+                      justify="center"
+                      width="calc(var(--spacing) * 8)"
+                      wrap="nowrap"
+                    >
+                      <Box className={cx('text-white dark:text-black')}>
+                        {item.icon ? (
+                          <Icon className="!size-4" />
+                        ) : (
+                          <Code variant="ghost">{i + 1}</Code>
+                        )}
+                      </Box>
+                    </Flex>
+                    <Box className="">{item.title}</Box>
+                  </Flex>
                 </Box>
               </Box>
-            </Box>
-          </NextLink>
+            </NextLink>
+          </Flex>
         )
       })}
     </Box>
