@@ -224,8 +224,8 @@ importers:
         specifier: 1.1.1
         version: 1.1.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       tailwind-merge:
-        specifier: 3.0.2
-        version: 3.0.2
+        specifier: 3.1.0
+        version: 3.1.0
     devDependencies:
       '@jeromefitz/jest-config':
         specifier: workspace:*
@@ -459,8 +459,8 @@ importers:
         specifier: 2.3.3
         version: 2.3.3(react@19.1.0)
       tailwind-merge:
-        specifier: 3.0.2
-        version: 3.0.2
+        specifier: 3.1.0
+        version: 3.1.0
       title:
         specifier: 4.0.1
         version: 4.0.1
@@ -883,8 +883,8 @@ importers:
         specifier: 0.3.4
         version: 0.3.4
       tailwind-merge:
-        specifier: 3.0.2
-        version: 3.0.2
+        specifier: 3.1.0
+        version: 3.1.0
 
   sites/jeromefitzgerald.com:
     dependencies:
@@ -1187,8 +1187,8 @@ importers:
         specifier: 0.3.4
         version: 0.3.4
       tailwind-merge:
-        specifier: 3.0.2
-        version: 3.0.2
+        specifier: 3.1.0
+        version: 3.1.0
 
 packages:
 
@@ -9669,8 +9669,8 @@ packages:
     resolution: {integrity: sha512-ulAk51I9UVUyJgxlv9M6lFot2WP3e7t8Kz9+IS6D4rVba1tR9kON+Ey69f+1R4Q8cd45Lod6a4IcJIxnzGc/zA==}
     engines: {node: '>=18'}
 
-  tailwind-merge@3.0.2:
-    resolution: {integrity: sha512-l7z+OYZ7mu3DTqrL88RiKrKIqO3NcpEO8V/Od04bNpvk0kiIFndGEoqfuzvj4yuhRkHKjRkII2z+KS2HfPcSxw==}
+  tailwind-merge@3.1.0:
+    resolution: {integrity: sha512-aV27Oj8B7U/tAOMhJsSGdWqelfmudnGMdXIlMnk1JfsjwSjts6o8HyfN7SFH3EztzH4YH8kk6GbLTHzITJO39Q==}
 
   tailwindcss-radix@4.0.2:
     resolution: {integrity: sha512-Uoa2BUCfWKGCjQPXbj4X4Q4EWAeCsvhj0udn0IupeNcvuLbqRXvC5+bKAqsngIne5mrRUPTy/IqMXGh81YyrCA==}
@@ -19845,7 +19845,7 @@ snapshots:
 
   system-architecture@0.1.0: {}
 
-  tailwind-merge@3.0.2: {}
+  tailwind-merge@3.1.0: {}
 
   tailwindcss-radix@4.0.2(tailwindcss@4.0.17):
     dependencies:
