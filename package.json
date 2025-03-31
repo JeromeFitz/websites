@@ -67,7 +67,7 @@
       "@typescript-eslint/typescript-estree": "^8.26.1",
       "cross-spawn": "^7.0.6",
       "elliptic": "^6.6.1",
-      "express": "^4.21.1",
+      "express": "^5.0.0",
       "micromatch": "^4.0.8",
       "nanoid@^3.0.0": "^3.3.8",
       "unfetch": "4.2.0",
