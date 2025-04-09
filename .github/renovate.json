@@ -27,6 +27,7 @@
     },
     {
       "commitMessagePrefix": "⬆️  (deps)",
+      "commitMessageSuffix": "[b]",
       "groupName": "radix-ui 🌐 ",
       "groupSlug": "radix-ui",
       "excludePackageNames": ["@radix-ui/themes"],
