@@ -44,7 +44,7 @@
     "@types/node": "22.13.10",
     "ccommit": "3.1.2",
     "concurrently": "9.1.2",
-    "dotenv": "16.4.7",
+    "dotenv": "16.5.0",
     "husky": "9.1.7",
     "is-ci": "4.1.0",
     "lodash": "4.17.21",
