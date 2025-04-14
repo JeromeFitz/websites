@@ -5,16 +5,16 @@
   "main": "./next.config.mjs",
   "devDependencies": {
     "@jeromefitz/prettier-config": "2.1.7",
-    "@next/bundle-analyzer": "15.1.7",
+    "@next/bundle-analyzer": "15.3.0",
     "@octokit/core": "6.1.5",
     "@plaiceholder/next": "3.0.0",
     "fast-json-stable-stringify": "2.1.0",
     "lodash": "4.17.21",
-    "next": "15.1.7",
+    "next": "15.3.0",
     "plaiceholder": "3.0.0",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "sharp": "0.33.5",
+    "sharp": "0.34.1",
     "zod": "3.24.2"
   }
 }

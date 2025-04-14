@@ -1,0 +1,1 @@
+export { getImage } from './getImage'

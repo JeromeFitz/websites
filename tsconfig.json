@@ -36,6 +36,7 @@
   },
   "include": [
     "tsup.config.ts",
+    "node-modules-inspector.config.ts",
     "packages/**/*.ts",
     "packages/**/*.tsx",
     "sites/**/*.ts",

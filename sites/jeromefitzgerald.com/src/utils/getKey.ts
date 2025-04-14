@@ -1,30 +1,26 @@
 /**
- * Spotify API
+ * @todo(types) string | string[]
  *
- * @todo(spotify)
+ * getKey => key
+ * getKeyForGenerateStaticParams => return
  *
- * recently-played cursor is: after|before
- * - its history is 50 records
- * - no need to cycle through cursors indefinetly
- * - just request limit of 50
- *
- * top-artists|tracks cursor is: offset
- * - works well with pageIndex
  */
-const getKey = (pageIndex, { limit, time_range, type, url }) => {
-  const offset = pageIndex === 0 ? 0 : 10 * pageIndex
-  const key = [
-    `${url}/${type}?limit=${limit}&offset=${offset}&time_range=${time_range}`,
-  ]
-  return key
+export function getKey(segment: string, key: any) {
+  if (segment === 'pages') {
+    return `/${key}`
+  }
+  return `/${segment}/${Object.prototype.toString.call(key) === '[object Array]' ? key.join('/') : key}`
 }
 
-const INIT = {
-  limit: 10,
-  offset: 0,
-  time_range: 'medium_term',
-  type: 'top-artists',
-  url: '/api/v1/music',
+/**
+ * @note (ಠ_ಠ)
+ *
+ *  [[...key]]        – Y to passing "segment"
+ *  [...key] || [key] - N to passing "segment"
+ *
+ */
+// @todo(types) string[] | string
+export function getKeyForGenerateStaticParams(segment: string, key: string): any {
+  const _key = key.replace(`/${segment}/`, '')
+  return _key.includes('/') ? _key.split('/') : _key
 }
-
-export { getKey, INIT }

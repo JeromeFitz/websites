@@ -1,8 +1,9 @@
-import dynamic from 'next/dynamic.js'
+import dynamic from 'next/dynamic'
 import { addPluralRule, addSingularRule } from 'pluralize'
 // import { Suspense } from 'react'
 import { Provider as ReactWrapBalancerProvider } from 'react-wrap-balancer'
 
+import { Analytics } from '@/components/Analytics/Analytics'
 import { ErrorBoundary } from '@/components/ErrorBoundary'
 
 import { Providers as ProvidersClient } from './Providers.client'
@@ -50,9 +51,10 @@ singularRules.map(({ replacement, rule }) => {
   addSingularRule(rule, replacement)
 })
 
-function Providers({ children }) {
+function Providers({ children }: { children: React.ReactNode }) {
   return (
     <>
+      <Analytics />
       <ErrorBoundary>
         <ThemeProvider>
           <StoreProvider>

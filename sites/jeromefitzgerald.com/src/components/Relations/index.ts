@@ -1,5 +1,0 @@
-export { Relations } from './Relations'
-export { RelationsItem } from './Relations.Item'
-export { RelationsItems } from './Relations.Items'
-export { RelationsLoading } from './Relations.Loading'
-export { getRelationTitle } from './Relations.utils'

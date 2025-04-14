@@ -1,6 +1,6 @@
 'use client'
 
-import ReactDOM from 'react-dom'
+import { preconnect, prefetchDNS } from 'react-dom'
 
 const preconnects = [
   // https://web.dev/preconnect-and-dns-prefetch/#how-to-implement-rel=preconnect
@@ -12,16 +12,11 @@ const preconnects = [
 ]
 
 function PreloadResources() {
-  preconnects.map((preconnect) => {
-    // console.dir(`> preconnect: ${preconnect}`)
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    ReactDOM.preconnect(preconnect, { crossOrigin: 'anonymous' })
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    ReactDOM.prefetchDNS(preconnect)
+  preconnects.map((p) => {
+    // console.dir(`> p: ${p}`)
+    preconnect(p, { crossOrigin: 'anonymous' })
+    prefetchDNS(p)
   })
-
   return null
 }
 

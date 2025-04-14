@@ -1,7 +1,4 @@
 'use client'
-import { ExclamationTriangleIcon } from '@jeromefitz/ds/components/Icon/index'
-import { cx } from '@jeromefitz/ds/utils/cx'
-
 import type { ReactNode } from 'react'
 
 import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
@@ -13,13 +10,15 @@ import { Separator } from '@radix-ui/themes/dist/esm/components/separator.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import { Component } from 'react'
 
-import { ArticleMain } from '@/app/playground/2024/_components/Article.Main'
+import { ArticleMain } from '@/components/Article/Article.Main'
 import {
   ContainerContent,
   ContainerWithSidebar,
-} from '@/app/playground/2024/_components/Container.Main'
-import { ContainerSite } from '@/app/playground/2024/_components/Container.Site'
-import { HeaderSidebar } from '@/app/playground/2024/_components/Header.Sidebar'
+} from '@/components/Container/Container.Main'
+import { ContainerSite } from '@/components/Container/Container.Site'
+import { HeaderSidebar } from '@/components/Header/Header.Sidebar'
+import { ExclamationTriangleIcon } from '@/components/Icon/index'
+import { cx } from '@/utils/cx'
 
 interface PropsChildren {
   children?: ReactNode
@@ -37,6 +36,8 @@ class ErrorBoundary extends Component<PropsChildren> {
     return { hasError: true }
   }
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   componentDidCatch(error, errorInfo) {
     // // You can also log the error to an error reporting service
@@ -74,7 +75,7 @@ class ErrorBoundary extends Component<PropsChildren> {
                 >
                   <DataList.Root
                     className={cx(
-                      'py-6 pr-1 pl-4',
+                      'py-6 pl-4 pr-1',
                       'gap-x-[var(--space-3)] md:!gap-x-[var(--space-1)]',
                       'w-full',
                     )}

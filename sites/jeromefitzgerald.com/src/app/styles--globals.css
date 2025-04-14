@@ -1,0 +1,89 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import './styles--radix-themes-tw.css';
+
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+@plugin 'tailwindcss-radix';
+
+@theme inline {
+  --default-font-family: var(--font-geist-sans);
+  --font-family-mono: var(--font-geist-mono);
+  --font-family-sans: var(--font-geist-sans);
+
+  /* --header-height: 3.5rem; */
+  --header-height: 56px;
+  --sidebar-width: 320px;
+  --sidebar-gap: 28px;
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Borogodo';
+  font-style: normal;
+  font-weight: 100 900;
+  src: url('https://cdn.jeromefitzgerald.com/fonts/borogodo/0.2/BorogodoV0.2-BlackM.woff2')
+    format('woff2');
+}
+
+.radix-themes {
+  /* fonts */
+  --font-borogodo: 'Borogodo';
+  --display-font-family: var(--font-borogodo), var(--default-font-family);
+  --default-font-family:
+    var(--font-geist-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI (Custom)',
+    Roboto, 'Helvetica Neue', 'Open Sans (Custom)', system-ui, sans-serif,
+    'Apple Color Emoji';
+  --code-font-family:
+    var(--font-geist-mono), 'Menlo', 'Consolas (Custom)', 'Bitstream Vera Sans Mono',
+    monospace, 'Apple Color Emoji', 'Segoe UI Emoji';
+  --em-font-family: 'Times New Roman', 'Times', serif;
+  --quote-font-family: 'Times New Roman', 'Times', serif;
+
+  /* a11y improvements */
+  /* .light,
+  .light-theme {
+    --amber-a11: color(display-p3 0.61 0.37 0);
+    --crimson-a11: color(display-p3 0.729 0.192 0.385);
+    --pink-a11: color(display-p3 0.688 0.209 0.518);
+    --orange-a11: color(display-p3 0.69 0.29 0.05);
+    --red-a11: color(display-p3 0.73 0.22 0.217);
+    --ruby-a11: color(display-p3 0.727 0.21 0.31);
+    --tomato-a11: color(display-p3 0.701 0.249 0.137);
+    --yellow-a11: color(display-p3 0.592 0.392 0);
+  } */
+}
+@supports (color: color(display-p3 1 1 1)) {
+  @media (color-gamut: p3) {
+    /* :root, */
+    .light,
+    .light-theme {
+      --amber-a11: color(display-p3 0.61 0.37 0);
+      --crimson-a11: color(display-p3 0.729 0.192 0.385);
+      --pink-a11: color(display-p3 0.688 0.209 0.518);
+      --orange-a11: color(display-p3 0.69 0.29 0.05);
+      --red-a11: color(display-p3 0.73 0.22 0.217);
+      --ruby-a11: color(display-p3 0.727 0.21 0.31);
+      --tomato-a11: color(display-p3 0.701 0.249 0.137);
+      --yellow-a11: color(display-p3 0.592 0.392 0);
+    }
+  }
+}
+
+@theme {
+  --cursor-button: pointer;
+  --cursor-checkbox: pointer;
+  --cursor-disabled: default;
+  --cursor-link: pointer;
+  --cursor-menu-item: pointer;
+  --cursor-radio: pointer;
+  --cursor-slider-thumb: pointer;
+  --cursor-slider-thumb-active: pointer;
+  --cursor-switch: pointer;
+}
+
+/* :where(*) {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+} */

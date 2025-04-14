@@ -79,7 +79,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body
         className={cx(
-          'overflow-x-hidden overflow-y-auto',
+          'overflow-y-auto overflow-x-hidden',
           // 'transition-all duration-200',
           'selection:bg-gray-12 selection:text-gray-1',
           'bg-white dark:bg-black',

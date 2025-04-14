@@ -1,12 +1,11 @@
 'use client'
-import { cx } from '@jeromefitz/ds/utils/cx'
-
 import { useNProgress } from '@tanem/react-nprogress'
 import _find from 'lodash/find.js'
 import { usePathname } from 'next/navigation.js'
 import { useEffect } from 'react'
 
 import { useStore as _useStore, useShallow } from '@/store/index'
+import { cx } from '@/utils/cx'
 
 const useStore = () => {
   return _useStore(
@@ -65,7 +64,7 @@ const Loading: React.FC<{ isRouteChanging: boolean }> = ({ isRouteChanging }) =>
       className={cx(
         'pointer-events-none fixed',
         'z-[9999] origin-[0_0]',
-        'top-0 left-0 h-1 w-full',
+        'left-0 top-0 h-1 w-full',
         'bg-gradient-to-r',
         'to-accent-11 from-accent-1',
         'dark:from-accent-11 dark:to-accent-1',

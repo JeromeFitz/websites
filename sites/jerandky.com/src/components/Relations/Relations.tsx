@@ -43,7 +43,7 @@ function Relations({ properties, relations, relationsSecondary }) {
             )}
             key={`${id}-${relation}`}
           >
-            <p className={cx('pb-3 font-extrabold tracking-tight uppercase', '')}>
+            <p className={cx('pb-3 font-extrabold uppercase tracking-tight', '')}>
               <strong>{title}</strong>
             </p>
             <ul>

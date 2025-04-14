@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 'use client'
-import { cx } from '@jeromefitz/ds/utils/cx'
-
 import type { AccordionContentProps } from '@radix-ui/react-accordion'
 
 import * as Accordion from '@radix-ui/react-accordion'
 import { forwardRef } from 'react'
+
+import { cx } from '@/utils/cx'
 
 interface AccordionContentPropsImpl extends AccordionContentProps {
   children?: any
