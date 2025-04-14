@@ -35,8 +35,8 @@ importers:
         specifier: 5.0.0-canary.50
         version: 5.0.0-canary.50(turbo@2.5.0)(typescript@5.8.3)
       '@jeromefitz/lint-staged':
-        specifier: 2.1.4
-        version: 2.1.4(is-ci@4.1.0)
+        specifier: 2.1.5
+        version: 2.1.5(is-ci@4.1.0)
       '@jeromefitz/prettier-config':
         specifier: 2.1.7
         version: 2.1.7
@@ -2452,8 +2452,8 @@ packages:
     resolution: {integrity: sha512-/skYHOkw/WGl3vMfNOos9bMy5TlictPFs0b9skyXUanjyjCn651GbtZxsiR2ETkIMcUDA6fiB9I7iaTfTHoDUw==}
     engines: {node: '>=20'}
 
-  '@jeromefitz/lint-staged@2.1.4':
-    resolution: {integrity: sha512-VGa1gsKvEpbJE/jgvnfy3G0iZkoBo4Yqti4R7CBJ6yTKauR9LIa24U6SPt3qaw2YXo2MT2WoILePWZjdMLAu0Q==}
+  '@jeromefitz/lint-staged@2.1.5':
+    resolution: {integrity: sha512-0ztJi+ZTyUDIq5NJb6XaT/de5Ia6gWeY1UwKUNvhJQo8ICT5nHsLC4wEDHef9j21IMndOUVl8WpCEn2rd1Zt8Q==}
     engines: {node: '>=20'}
     peerDependencies:
       is-ci: ^3.0.1 || ^4.0.0
@@ -8277,8 +8277,8 @@ packages:
   lines-and-columns@1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
 
-  lint-staged@15.5.0:
-    resolution: {integrity: sha512-WyCzSbfYGhK7cU+UuDDkzUiytbfbi0ZdPy2orwtM75P3WTtQBzmG40cCxIa8Ii2+XjfxzLH6Be46tUfWS85Xfg==}
+  lint-staged@15.5.1:
+    resolution: {integrity: sha512-6m7u8mue4Xn6wK6gZvSCQwBvMBR36xfY24nF5bMTf2MHDYG6S3yhJuOgdYVw99hsjyDt2d4z168b3naI8+NWtQ==}
     engines: {node: '>=18.12.0'}
     hasBin: true
 
@@ -12395,10 +12395,10 @@ snapshots:
       - turbo
       - typescript
 
-  '@jeromefitz/lint-staged@2.1.4(is-ci@4.1.0)':
+  '@jeromefitz/lint-staged@2.1.5(is-ci@4.1.0)':
     dependencies:
       is-ci: 4.1.0
-      lint-staged: 15.5.0
+      lint-staged: 15.5.1
       micromatch: 4.0.8
     transitivePeerDependencies:
       - supports-color
@@ -19006,7 +19006,7 @@ snapshots:
 
   lines-and-columns@1.2.4: {}
 
-  lint-staged@15.5.0:
+  lint-staged@15.5.1:
     dependencies:
       chalk: 5.4.1
       commander: 13.1.0
