@@ -570,8 +570,8 @@ importers:
         specifier: 8.5.3
         version: 8.5.3
       radix-themes-tw:
-        specifier: 0.2.3
-        version: 0.2.3
+        specifier: 1.0.0
+        version: 1.0.0
       react:
         specifier: 19.1.0
         version: 19.1.0
@@ -9512,8 +9512,8 @@ packages:
   queue@6.0.2:
     resolution: {integrity: sha512-iHZWu+q3IdFZFX36ro/lKBkSvfkztY5Y7HMiPlOUjhupPcG2JMfst2KKEpu5XndviX/3UhFbRngUPNKtgvtZiA==}
 
-  radix-themes-tw@0.2.3:
-    resolution: {integrity: sha512-n3Luc4LzB5Zcv6SSvHWGey4Wzx1qtt+3Yj6OmRXzAD6RtZ2+RkT0OoilyxlaKr+kqJuvKhF4YfLbcMAkFu5gEw==}
+  radix-themes-tw@1.0.0:
+    resolution: {integrity: sha512-377iQUbYKw9Ey3O86IRu131/9HxcVSwGxh2BlfxUjgJobzBBtgNHJ442Rooy7QZ+7ZHz3AVITjOO24aDCDrHBA==}
 
   radix-ui@1.1.3:
     resolution: {integrity: sha512-W8L6soM1vQnIXVvVa31AkQhoZBDPwVoNHhT13R3aB9Qq7ARYIUS9DLaCopRBsbTdZm1NEEPx3rnq659CiNOBDw==}
@@ -20073,7 +20073,7 @@ snapshots:
     dependencies:
       inherits: 2.0.4
 
-  radix-themes-tw@0.2.3: {}
+  radix-themes-tw@1.0.0: {}
 
   radix-ui@1.1.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
     dependencies:
