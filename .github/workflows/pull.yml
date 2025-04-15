@@ -110,15 +110,15 @@ jobs:
 
       - name: '💽️  Init'
         id: pull-init
-        uses: JeromeFitz/websites/.github/actions/init@NICE-136
+        uses: JeromeFitz/websites/.github/actions/init@main
 
       - name: '📦  Install'
         id: pull-install
-        uses: JeromeFitz/websites/.github/actions/install@NICE-136
+        uses: JeromeFitz/websites/.github/actions/install@main
 
       - name: '🔺️  Cache (vercel)'
         id: pull-cache-vercel
-        uses: JeromeFitz/websites/.github/actions/cache-turbo@NICE-136
+        uses: JeromeFitz/websites/.github/actions/cache-turbo@main
         with:
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
@@ -126,14 +126,14 @@ jobs:
 
       - name: '🚨️  Lint'
         id: pull-lint
-        uses: JeromeFitz/websites/.github/actions/lint@NICE-136
+        uses: JeromeFitz/websites/.github/actions/lint@main
         with:
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
 
       - name: '🧪  Test'
         id: pull-test
-        uses: JeromeFitz/websites/.github/actions/test@NICE-136
+        uses: JeromeFitz/websites/.github/actions/test@main
         with:
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
@@ -148,7 +148,7 @@ jobs:
       - name: '🎭  E2E'
         id: pull-e2e
         if: ${{ contains(steps.pull-commit-message.outputs.message, '[b]') }}
-        uses: JeromeFitz/websites/.github/actions/e2e@NICE-136
+        uses: JeromeFitz/websites/.github/actions/e2e@main
         with:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
@@ -188,7 +188,7 @@ jobs:
       - name: '🔺️  Deploy (Preview)'
         id: pull-deploy-preview
         if: ${{ (env.IS_ACTOR_VERIFIED == 'true') && contains(steps.pull-commit-message.outputs.message, '[b]') }}
-        uses: JeromeFitz/websites/.github/actions/deploy@NICE-136
+        uses: JeromeFitz/websites/.github/actions/deploy@main
         with:
           DEPLOY_PR_FROM_FORK: true
           GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
