@@ -107,29 +107,29 @@ jobs:
 
       - name: '💽️  Init'
         id: push-init
-        uses: JeromeFitz/websites/.github/actions/init@deps/node-22
+        uses: JeromeFitz/websites/.github/actions/init@main
 
       - name: '📦  Install'
         id: push-install
-        uses: JeromeFitz/websites/.github/actions/install@deps/node-22
+        uses: JeromeFitz/websites/.github/actions/install@main
 
       - name: '🔺️  Cache (vercel)'
         id: push-cache-vercel
-        uses: JeromeFitz/websites/.github/actions/cache-turbo@deps/node-22
+        uses: JeromeFitz/websites/.github/actions/cache-turbo@main
         with:
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
 
       - name: '🚨️  Lint'
         id: push-lint
-        uses: JeromeFitz/websites/.github/actions/lint@deps/node-22
+        uses: JeromeFitz/websites/.github/actions/lint@main
         with:
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
 
       - name: '🧪  Test'
         id: push-test
-        uses: JeromeFitz/websites/.github/actions/test@deps/node-22
+        uses: JeromeFitz/websites/.github/actions/test@main
         with:
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
@@ -144,7 +144,7 @@ jobs:
       - name: '🎭  E2E'
         id: push-e2e
         if: ${{ contains(steps.push-commit-message.outputs.message, '[b]') }}
-        uses: JeromeFitz/websites/.github/actions/e2e@deps/node-22
+        uses: JeromeFitz/websites/.github/actions/e2e@main
         with:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
@@ -154,14 +154,14 @@ jobs:
 
       - name: '🏷️  Release'
         id: push-release
-        uses: JeromeFitz/websites/.github/actions/release@deps/node-22
+        uses: JeromeFitz/websites/.github/actions/release@main
         with:
           GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
 
       - name: '🔺️  Deploy (Production)'
         id: push-deploy
         if: github.ref == 'refs/heads/main'
-        uses: JeromeFitz/websites/.github/actions/deploy@deps/node-22
+        uses: JeromeFitz/websites/.github/actions/deploy@main
         with:
           GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
