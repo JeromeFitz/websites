@@ -21,11 +21,12 @@ function CurrentlyItemWrapper({
   href: string
   icon: any
   id: string
+  prefetch: boolean
   title: string
   titleSub: string
 }) {
-  const { color, href, icon, id, title } = c
-  const propsParent = { color, href, icon, id, title }
+  const { color, href, icon, id, prefetch, title } = c
+  const propsParent = { color, href, icon, id, prefetch, title }
 
   const isLoading = false
   const headline = isLoading ? '' : titleSub[0]
@@ -54,10 +55,12 @@ function CurrentlyWrapper({
   href: string
   icon: any
   id: string
+  prefetch: boolean
   title: string
 }) {
   const color = c.color
   const href = c.href
+  const prefetch = c.prefetch
   const title = c.title
 
   const Icon = c?.icon
@@ -104,7 +107,7 @@ function CurrentlyWrapper({
             radius="large"
             variant="soft"
           >
-            <NextLink className={cx('')} href={href}>
+            <NextLink className={cx('')} href={href} prefetch={prefetch}>
               <Box mr="3" position="relative" right="0">
                 <Icon
                   className={cx(

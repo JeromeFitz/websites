@@ -87,11 +87,7 @@ function ListWrapper({ podcasts }: { podcasts: Podcast[] }) {
                       mb="3"
                       p="3"
                     >
-                      <Heading
-                        as="h2"
-                        size="6"
-                        // style={{ fontFamily: 'var(--display-font-family)' }}
-                      >
+                      <Heading as="h2" size="6">
                         {podcast.title}
                       </Heading>
                       <Text

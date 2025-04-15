@@ -90,12 +90,7 @@ function HeaderSidebar({
             width="100%"
             wrap="nowrap"
           >
-            <Heading
-              as="h1"
-              className="min-h-15 line-clamp-2 font-medium"
-              size="6"
-              // style={{ fontFamily: 'var(--display-font-family)' }}
-            >
+            <Heading as="h1" className="min-h-15 line-clamp-2 font-medium" size="6">
               {title}
               {/* {hasBorder ? (
                 <>{title}</>

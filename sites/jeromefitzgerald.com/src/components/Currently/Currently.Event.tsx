@@ -21,11 +21,12 @@ async function CurrentlyEvent({
   href: string
   icon: any
   id: string
+  prefetch: boolean
   title: string
   titleSub: string
 }) {
   const dateNow = Date.now()
-  const { color, href, icon, id, title } = c
+  const { color, href, icon, id, prefetch, title } = c
   const items = await getEventsWithLimit({ limit: 10 })
   const events = _take(
     _orderBy(
@@ -57,6 +58,7 @@ async function CurrentlyEvent({
     href: hasTop ? top?.slugPreviewEt : href,
     icon,
     id,
+    prefetch,
     title,
   }
 

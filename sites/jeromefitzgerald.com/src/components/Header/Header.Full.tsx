@@ -72,7 +72,6 @@ function HeaderFull({
                 as="h2"
                 className="text-gray-11 font-medium"
                 size={{ initial: '2', md: '4' }}
-                // style={{ fontFamily: 'var(--display-font-family)' }}
               >
                 {overline}
               </Heading>
@@ -95,7 +94,6 @@ function HeaderFull({
                 as="h1"
                 className="font-medium"
                 size={{ initial: '8', md: '9' }}
-                // style={{ fontFamily: 'var(--display-font-family)' }}
               >
                 {title}
                 {!!count && (

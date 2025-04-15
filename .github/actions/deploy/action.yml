@@ -36,7 +36,7 @@ runs:
     - name: '🔺️ Install'
       id: wf-install
       shell: bash
-      run: npm install -g vercel@39.3.0
+      run: npm install -g vercel@41.6.0
     - name: '🔺️ Deploy'
       id: wf-deploy
       # uses: JeromeFitz/deploy-to-vercel-action@ci/vercel-deploy-commit-limits
