@@ -25,11 +25,12 @@ function CurrentlyMusicClient({
   href: string
   icon: any
   id: string
+  prefetch: boolean
   title: string
   titleSub: string
 }) {
-  const { color, href, icon, id, title } = c
-  const propsParent = { color, href, icon, id, title }
+  const { color, href, icon, id, prefetch, title } = c
+  const propsParent = { color, href, icon, id, prefetch, title }
   const { data, error, isLoading }: { data: any; error: any; isLoading: boolean } =
     useSWR(key, fetcher, options)
 

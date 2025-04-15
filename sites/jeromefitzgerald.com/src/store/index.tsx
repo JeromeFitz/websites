@@ -506,10 +506,6 @@ const initializeStoreMenu = (preloadedState: Partial<any> = {}) => {
         zzz_menuTertiaryActive: item,
       })
     },
-    zzz_menuTertiarySet: (item: any) => {
-      console.dir(`> zzz_menuTertiarySet`)
-      console.dir(item)
-    },
   }))
 }
 
