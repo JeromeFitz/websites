@@ -109,24 +109,24 @@ runs:
       # run: pnpm exec playwright@${{ env.PLAYWRIGHT_VERSION }} install
       if: steps.playwright-cache.outputs.cache-hit == 'true'
 
-    # - name: '🎭  Playwright: ${{ inputs.WEBSITE }}'
-    #   id: e2e-test
-    #   shell: bash
-    #   env:
-    #     TURBO_TEAM: ${{ inputs.TURBO_TEAM }}
-    #     TURBO_TOKEN: ${{ inputs.TURBO_TOKEN }}
-    #     VERCEL_ENV: ${{ inputs.VERCEL_ENV }}
-    #   # run: pnpm turbo run test:e2e --filter="${{ inputs.WEBSITE }}" --cache-dir=".cache-turbo"
-    #   run: |
-    #     pnpm --filter "${{ inputs.WEBSITE }}" test:e2e
+    - name: '🎭  Playwright: ${{ inputs.WEBSITE }}'
+      id: e2e-test
+      shell: bash
+      env:
+        TURBO_TEAM: ${{ inputs.TURBO_TEAM }}
+        TURBO_TOKEN: ${{ inputs.TURBO_TOKEN }}
+        VERCEL_ENV: ${{ inputs.VERCEL_ENV }}
+      # run: pnpm turbo run test:e2e --filter="${{ inputs.WEBSITE }}" --cache-dir=".cache-turbo"
+      run: |
+        pnpm --filter "${{ inputs.WEBSITE }}" test:e2e
 
-    # # - name: '🎭  Playwright: Upload'
-    # #   id: e2e-upload
-    # #   uses: actions/upload-artifact@v3
-    # #   if: ${{ always() }}
-    # #   with:
-    # #     name: e2e-reports
-    # #     path: |
-    # #       ${{ github.workspace }}/sites/${{ inputs.WEBSITE }}/e2e-report/
-    # #       ${{ github.workspace }}/sites/${{ inputs.WEBSITE }}/e2e-results/
-    # #     retention-days: 1
+    # - name: '🎭  Playwright: Upload'
+    #   id: e2e-upload
+    #   uses: actions/upload-artifact@v3
+    #   if: ${{ always() }}
+    #   with:
+    #     name: e2e-reports
+    #     path: |
+    #       ${{ github.workspace }}/sites/${{ inputs.WEBSITE }}/e2e-report/
+    #       ${{ github.workspace }}/sites/${{ inputs.WEBSITE }}/e2e-results/
+    #     retention-days: 1

@@ -1,7 +1,10 @@
 import type { Metadata, ResolvingMetadata } from 'next'
 
+import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
+
 import type { Page } from '@/lib/drizzle/schemas/cache-pages/types'
 
+import { ArticleMain } from '@/components/Article/Article.Main'
 // import { getImageKeyValue } from '@/lib/drizzle/schemas/cache-images/queries'
 import { getPage, segment } from '@/lib/drizzle/schemas/cache-pages/queries'
 // import { getImageKeySlug } from '@/lib/drizzle/utils/getImageKeySlug'
@@ -32,7 +35,8 @@ export async function generateMetadata(
   const info = infoInit[0]
   const previousImages = (await parent).openGraph?.images || []
 
-  const title = `${info.title}`
+  // const title = `${info.title}`
+  const title = 'Jerome Fitzgerald (he/him) | Actor. Comedian. Writer.'
   const description = `${info.seoDescription}`
 
   const seoImage: any = info.seoImage
@@ -53,7 +57,24 @@ export async function generateMetadata(
 }
 
 function Home() {
-  return <></>
+  return (
+    <>
+      <ArticleMain>
+        <Heading
+          as="h1"
+          className="sr-only absolute left-[-999px] top-[-999px] block"
+        >
+          Jerome Fitzgerald (he/him)
+        </Heading>
+        <Heading
+          as="h2"
+          className="sr-only absolute left-[-999px] top-[-999px] block"
+        >
+          Actor. Comedian. Human.
+        </Heading>
+      </ArticleMain>
+    </>
+  )
 }
 
 export default Home

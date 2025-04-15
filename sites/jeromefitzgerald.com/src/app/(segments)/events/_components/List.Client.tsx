@@ -16,7 +16,7 @@ import {
   AccordionTrigger,
 } from '@/components/Accordion'
 import { ExternalLinkIcon } from '@/components/Icon/index'
-import { Tags } from '@/components/Section/index'
+import { Tags } from '@/components/Tags/Tags'
 import { cx } from '@/utils/cx'
 
 const description = `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Recusandae, omnis? Quod, enim fugit doloribus qui culpa odit. Eveniet, cupiditate qui alias nihil similique tempora fugit?`

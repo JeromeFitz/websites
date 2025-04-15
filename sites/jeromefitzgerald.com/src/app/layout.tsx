@@ -10,7 +10,6 @@ import { ContainerSite } from '@/components/Container/Container.Site'
 import { Overlay } from '@/components/Overlay/Overlay'
 import { Providers } from '@/components/Providers/Providers'
 import { SkipNavContent, SkipNavLink } from '@/components/SkipNav'
-// import { getEventsWithLimit } from '@/lib/drizzle/schemas/queries'
 import { cx } from '@/utils/cx'
 
 import { fonts } from './_next/fonts'
@@ -25,15 +24,6 @@ export const metadata: Metadata = {
   description:
     'Jerome Fitzgerald is an actor, comedian, & writer hailing from Pittsburgh, PA.',
   metadataBase: new URL('https://jeromefitzgerald.com'),
-  // generator: 'Next.js',
-  // keywords: ['Comedy'],
-  // publisher: 'Jerome Fitzgerald',
-  // referrer: 'origin-when-cross-origin',
-  // formatDetection: {
-  //   email: false,
-  //   address: false,
-  //   telephone: false,
-  // },
   openGraph: {
     images: [
       {
@@ -42,28 +32,12 @@ export const metadata: Metadata = {
     ],
   },
   title: {
-    default: 'Jerome Fitzgerald (he/him)',
-    template: '%s | Jerome',
+    default: 'Jerome Fitzgerald (he/him) | Actor. Comedian. Writer.',
+    template: '%s | Jerome (he/him)',
   },
 }
 
-// const links = [
-//   { href: `/`, slug: `home` },
-//   { href: `/about`, slug: `about` },
-//   { href: `/blog`, slug: `blog` },
-//   { href: `/books`, slug: `books` },
-//   { href: `/colophon`, slug: `colophon` },
-//   { href: `/books/tasteful-nudes`, slug: `b: tf` },
-//   { href: `/events`, slug: `events` },
-//   { href: `/podcasts`, slug: `podcasts` },
-//   { href: `/shows`, slug: `shows` },
-//   { href: `/venues`, slug: `venues` },
-// ]
-
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  // const events = await getEventsWithLimit({ limit: 3 })
-  // console.dir(`events`)
-  // console.dir(events)
   return (
     <html lang="en" suppressHydrationWarning={true}>
       <PreloadResources />
