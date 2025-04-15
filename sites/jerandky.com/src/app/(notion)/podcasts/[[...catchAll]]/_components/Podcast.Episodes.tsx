@@ -8,7 +8,7 @@ function PodcastEpisodes({ properties }) {
   const { episodeSlugs, episodeTitles, ...props } = getPodcastData(properties)
   return (
     <>
-      <p className="pb-3 font-extrabold tracking-tight uppercase">
+      <p className="pb-3 font-extrabold uppercase tracking-tight">
         <strong>Episodes</strong>
       </p>
       <ul className={cx(blocks['bulleted_list'].className)}>

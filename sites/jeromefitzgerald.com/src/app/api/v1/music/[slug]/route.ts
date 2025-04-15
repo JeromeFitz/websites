@@ -11,6 +11,7 @@ import type { ClientProps, CredentialProps } from '@jeromefitz/spotify'
 import { Redis } from '@upstash/redis'
 import stringify from 'fast-json-stable-stringify'
 import { slug as _slug } from 'github-slugger'
+// @ts-ignore
 import ms from 'ms'
 import { NextRequest, NextResponse } from 'next/server.js'
 
@@ -31,7 +32,7 @@ const redis = new Redis({
  */
 const getTimeInSeconds = (time: number) => (!time ? 0 : time / 1000)
 
-const evictionPolicyTiming = {
+const evictionPolicyTiming: any = {
   long_term: getTimeInSeconds(ms('30d')),
   medium_term: getTimeInSeconds(ms('7d')),
   now_playing: getTimeInSeconds(ms('2m')),
@@ -47,6 +48,7 @@ const SLUG__VALIDATION = [
 ]
 const dataEmpty = { debug: { latency: 0, type: 'api' }, is_playing: false }
 
+// @ts-ignore
 const getKey = ({ before, limit, offset, slug, time_range }) => {
   if (slug === 'now-playing') {
     const key = `${keyPrefixSpotify}/${slug}`

@@ -2,7 +2,6 @@ import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
 
 import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Link } from '@radix-ui/themes/dist/esm/components/link.js'
-// eslint-disable-next-line no-restricted-imports
 import NextLink from 'next/link'
 
 import { ExternalLinkIcon } from '../Icon/Icon'

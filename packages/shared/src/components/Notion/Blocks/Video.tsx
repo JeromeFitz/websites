@@ -10,7 +10,6 @@ import { Fragment, Suspense } from 'react'
 import { VideoYouTube } from './Video.YouTube'
 
 // @todo(types)
-// eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
 function VideoImpl({ block }: { block: any | VideoBlockObjectResponse }) {
   const url = block.video.external.url
 

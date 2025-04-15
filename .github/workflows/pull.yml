@@ -40,6 +40,8 @@ env:
   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
   OCTOKIT_TOKEN: ${{ secrets.OCTOKIT_TOKEN }}
   OG_API_KEY: ${{ secrets.OG_API_KEY }}
+  POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
+  POSTGRES_SITE_ID: ${{ vars.POSTGRES_SITE_ID }}
   PREVIEW_TOKEN: ${{ secrets.PREVIEW_TOKEN }}
   REVALIDATE_TOKEN: ${{ secrets.REVALIDATE_TOKEN }}
   SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
@@ -82,6 +84,8 @@ jobs:
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       OCTOKIT_TOKEN: ${{ secrets.OCTOKIT_TOKEN }}
       OG_API_KEY: ${{ secrets.OG_API_KEY }}
+      POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
+      POSTGRES_SITE_ID: ${{ vars.POSTGRES_SITE_ID }}
       PREVIEW_TOKEN: ${{ secrets.PREVIEW_TOKEN }}
       REVALIDATE_TOKEN: ${{ secrets.REVALIDATE_TOKEN }}
       SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}

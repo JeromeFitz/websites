@@ -122,13 +122,14 @@ const config = defineConfig([
     files: [`**/*.ts?(x)`],
     rules: {
       '@next/next/no-html-link-for-pages': [RULES.OFF, 'src/app'],
-      'no-restricted-imports': [
-        'error',
-        {
-          message: 'Use local <Anchor /> instead',
-          name: 'next/link',
-        },
-      ],
+      // 'no-restricted-imports': [
+      //   'error',
+      //   {
+      //     message: 'Use local <Anchor /> instead',
+      //     name: 'next/link',
+      //   },
+      // ],
+      'perfectionist/sort-modules': RULES.OFF,
       /**
        * @todo(turbo) may _not_ need this after all
        * we have a check through next.config currently
@@ -149,6 +150,10 @@ const config = defineConfig([
     rules: {
       '@next/next/no-duplicate-head': RULES.OFF,
       '@next/next/no-page-custom-font': RULES.OFF,
+      // @note(typescript) interface cannot do unions as well as types
+      '@typescript-eslint/consistent-type-definitions': RULES.OFF,
+      // @note(typescript) i am doing something wrong with unions
+      '@typescript-eslint/no-redundant-type-constituents': RULES.OFF,
       // search: // @todo(eslint) react-hooks/exhaustive-deps
       'react-hooks/exhaustive-deps': RULES.OFF,
       // search: // @todo(eslint) storybook/no-title-property-in-meta

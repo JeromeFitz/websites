@@ -1,1 +1,0 @@
-export { Quote } from './Quote'

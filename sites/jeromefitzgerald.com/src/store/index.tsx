@@ -1,4 +1,12 @@
 'use client'
+import type { ReactNode } from 'react'
+import type { StoreApi } from 'zustand'
+
+import { createContext, useContext, useRef } from 'react'
+import { useStore as useZustandStore } from 'zustand'
+import { useShallow } from 'zustand/shallow'
+import { createStore } from 'zustand/vanilla'
+
 import {
   BookOpenIcon,
   // DesktopIcon,
@@ -16,24 +24,16 @@ import {
   StarIcon,
   // SunIcon,
   TicketIcon,
-} from '@jeromefitz/ds/components/Icon/index'
+} from '@/components/Icon/index'
+// import { getEventsWithLimit } from '@/lib/drizzle/schemas/queries'
 
-import type { ReactNode } from 'react'
-import type { StoreApi } from 'zustand'
-
-import { createContext, useContext, useRef } from 'react'
-import { useStore as useZustandStore } from 'zustand'
-import { useShallow } from 'zustand/shallow'
-import { createStore } from 'zustand/vanilla'
-
-// eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
 const Context = createContext<any | null>(null)
 
 interface ProviderProps {
   children: ReactNode
 }
 const Provider = ({ children }: ProviderProps) => {
-  const storeRef = useRef<StoreApi<any>>()
+  const storeRef = useRef<StoreApi<any>>(null)
   if (!storeRef.current) {
     storeRef.current = initializeStoreMenu()
   }
@@ -223,6 +223,16 @@ const getDefaultInitialStateStoreMenu = () => ({
         keywords: ['improv', 'death', 'show'],
         title: 'The Death Show: SAT 04/19',
         titleDescription: 'The Death Show: SAT 04/19',
+      },
+      {
+        href: '/events/2025/04/19/your-brain-on-drugs',
+        icon: TicketIcon,
+        id: '/events/2025/04/19/your-brain-on-drugs',
+        isActive: true,
+        isActiveMobile: true,
+        keywords: ['stand-up', 'your', 'brain', 'drugs'],
+        title: 'Your Brain On Drugs: SAT 04/19',
+        titleDescription: 'Your Brain On Drugs: SAT 04/19',
       },
     ],
     podcasts: [
@@ -417,17 +427,17 @@ const initializeStoreMenu = (preloadedState: Partial<any> = {}) => {
   return createStore<any>((set, get) => ({
     ...getDefaultInitialStateStoreMenu(),
     ...preloadedState,
-    bookStatusSet: (status) => {
+    bookStatusSet: (status: any) => {
       set({
         bookStatus: status,
       })
     },
-    cmdkInputSet: (search) => {
+    cmdkInputSet: (search: any) => {
       set({
         cmdkInput: search,
       })
     },
-    cmdkPagesSet: (page) => {
+    cmdkPagesSet: (page: any) => {
       set({
         cmdkPages: [...get().cmdkPages, page],
       })
@@ -476,17 +486,17 @@ const initializeStoreMenu = (preloadedState: Partial<any> = {}) => {
         isRouteChanging: val,
       })
     },
-    spotifyTimeRangeSet: (time_range) => {
+    spotifyTimeRangeSet: (time_range: any) => {
       set({
         spotifyTimeRange: time_range,
       })
     },
-    spotifyTypeSet: (type) => {
+    spotifyTypeSet: (type: any) => {
       set({
         spotifyType: type,
       })
     },
-    zzz_menuSecondaryActiveSet: (item) => {
+    zzz_menuSecondaryActiveSet: (item: { id: number | string }) => {
       const hasTertiary = !!get().zzz_menuTertiary[item.id]
       const menuTertiaryItemsActive = get().zzz_menuTertiary[item.id]?.filter(
         (i: { isActive: boolean; isActiveMobile: boolean }) =>
@@ -500,7 +510,7 @@ const initializeStoreMenu = (preloadedState: Partial<any> = {}) => {
           : { icon: null, id: null, isActive: false, title: null },
       })
     },
-    zzz_menuTertiaryActiveSet: (item) => {
+    zzz_menuTertiaryActiveSet: (item: any) => {
       set({
         zzz_menuTertiaryActive: item,
       })

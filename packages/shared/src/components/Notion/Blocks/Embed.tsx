@@ -3,7 +3,6 @@ import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoin
 import { EmbedTwitter } from './Embed.Twitter'
 
 // @todo(types)
-// eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
 function EmbedImpl({ block }: { block: any | BlockObjectResponse }) {
   // console.dir(`EmbedImpl`)
   // console.dir(block)

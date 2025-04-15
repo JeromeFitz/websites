@@ -9,7 +9,7 @@ import { isObjectEmpty } from '@jeromefitz/utils'
 import { Redis } from '@upstash/redis'
 import { slug as _slug } from 'github-slugger'
 // import { isImageExpired } from 'next-notion/src/utils/getAwsImage'
-import validUrl from 'valid-url'
+import { isHttpsUri } from 'valid-url'
 
 import { getPropertyTypeDataEpisode } from '../../../_config'
 
@@ -49,7 +49,7 @@ async function Image({ properties }) {
     slugImage = ''
 
   if (imageUrl) {
-    if (validUrl.isHttpsUri(imageUrl)) {
+    if (isHttpsUri(imageUrl)) {
       slugImage = _slug(imageUrl.includes('?') ? imageUrl.split('?')[0] : imageUrl)
       key = `${CACHE_KEY_PREFIX__IMAGE}/${slugImage}`.toLowerCase()
     }

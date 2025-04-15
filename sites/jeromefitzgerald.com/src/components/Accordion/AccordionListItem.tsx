@@ -1,7 +1,6 @@
-import { cx } from '@jeromefitz/ds/utils/cx'
-
-// eslint-disable-next-line no-restricted-imports
 import NextLink from 'next/link'
+
+import { cx } from '@/utils/cx'
 
 // import { useStore } from '@/store/index'
 
@@ -12,6 +11,8 @@ import NextLink from 'next/link'
 //   }))
 // }
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 function AccordionListItem({ children, href, icon, ...props }) {
   const Icon = icon
   return (
@@ -25,7 +26,7 @@ function AccordionListItem({ children, href, icon, ...props }) {
         className={cx(
           'cursor-pointer no-underline',
           'text-gray-11',
-          'flex w-full flex-row items-center justify-start select-none',
+          'flex w-full select-none flex-row items-center justify-start',
           'transition-colors',
           'my-1 gap-2 py-1',
           'md:my-1 md:gap-3 md:py-2',
