@@ -46,7 +46,7 @@
     --amber-a11: color(display-p3 0.61 0.37 0);
     --crimson-a11: color(display-p3 0.729 0.192 0.385);
     --pink-a11: color(display-p3 0.688 0.209 0.518);
-    --orange-a11: color(display-p3 0.69 0.29 0.05);
+    --orange-a11: color(display-p3 0.682 0.287 0.05);
     --red-a11: color(display-p3 0.73 0.22 0.217);
     --ruby-a11: color(display-p3 0.727 0.21 0.31);
     --tomato-a11: color(display-p3 0.701 0.249 0.137);
@@ -61,7 +61,8 @@
       --amber-a11: color(display-p3 0.61 0.37 0);
       --crimson-a11: color(display-p3 0.729 0.192 0.385);
       --pink-a11: color(display-p3 0.688 0.209 0.518);
-      --orange-a11: color(display-p3 0.69 0.29 0.05);
+      --orange-a3: color(display-p3 0.902 0.574 0.008 / 0.1);
+      --orange-a11: color(display-p3 0.682 0.287 0.05);
       --red-a11: color(display-p3 0.73 0.22 0.217);
       --ruby-a11: color(display-p3 0.727 0.21 0.31);
       --tomato-a11: color(display-p3 0.701 0.249 0.137);

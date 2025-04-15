@@ -21,7 +21,7 @@
     "db:seed": "npx tsx lib/drizzle/init/seed.ts",
     "db:setup": "npx tsx lib/drizzle/init/setup.ts",
     "db:studio": "drizzle-kit studio",
-    "dev": "next dev --turbopack --experimental-https",
+    "dev": "NODE_NO_WARNINGS=1 next dev --turbopack --experimental-https",
     "format": "pnpm run format:lint",
     "format:lint": "pnpm lint:eslint --fix",
     "lhci": "pnpm --package=@lhci/cli@0.14.0 dlx lhci autorun --config=.lighthouserc.cjs",

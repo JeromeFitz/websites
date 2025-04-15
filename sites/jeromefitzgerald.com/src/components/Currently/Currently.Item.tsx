@@ -3,21 +3,32 @@ import { Em } from '@radix-ui/themes/dist/esm/components/em.js'
 import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
 import { Skeleton } from '@radix-ui/themes/dist/esm/components/skeleton.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
-import { Fragment } from 'react'
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 function CodeGhost({ children }: { children: React.ReactNode }) {
   return <Code variant="ghost">{children}</Code>
 }
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-function CurrentlyItem({ headline, id = '', isLoading, subline }) {
-  const Component = id === 'events' ? CodeGhost : Fragment
+function CurrentlyItem({
+  headline,
+  id = '',
+  isLoading,
+  subline,
+}: {
+  headline: string
+  id?: string
+  isLoading: boolean
+  subline: string
+}) {
+  const Component = id === 'events' ? CodeGhost : Text
   return (
     <Skeleton loading={isLoading} minWidth="100%">
-      <Heading align="left" as="h3" size={{ initial: '3', md: '4' }} weight="medium">
-        <Component>{headline}</Component>
+      <Heading
+        align="left"
+        as="h3"
+        className="text-accentA-12 group-hover:text-accentA-11 transition-colors duration-1000"
+        size={{ initial: '3', md: '4' }}
+        weight="medium"
+      >
+        <Component as="span">{headline}</Component>
         <Text className="hidden"> – </Text>
         <br />
         <Text className="line-clamp-1" size={{ initial: '4', md: '5' }}>

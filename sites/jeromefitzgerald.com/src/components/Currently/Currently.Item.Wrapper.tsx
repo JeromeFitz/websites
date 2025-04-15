@@ -110,8 +110,10 @@ function CurrentlyWrapper({
                   className={cx(
                     'm-2 rounded-md p-2 text-inherit !opacity-100 md:p-2',
                     'transition-colors',
-                    'bg-white/75 group-hover:bg-white/95',
-                    'dark:bg-black/55 dark:group-hover:bg-black/95',
+                    // 'bg-white/75 group-hover:bg-white/95',
+                    // 'dark:bg-black/55 dark:group-hover:bg-black/95',
+                    'bg-whiteA-10 group-hover:bg-whiteA-9',
+                    'dark:bg-blackA-10 dark:group-hover:bg-blackA-9',
                     '!md:size-12 !size-10',
                   )}
                 />
