@@ -20,13 +20,13 @@
       }
     ],
     "paths": {
-      // "@jeromefitz/next-config/env.client.mjs": [
-      //   "./src/config/next.config.env.client.mjs"
-      // ],
-      // "@jeromefitz/next-config/env.server.mjs": [
-      //   "./src/config/next.config.env.server.mjs"
-      // ],
-      "@jeromefitz/next-config/*": ["../../packages/next-config/src/*"],
+      "@jeromefitz/next-config/env.client.mjs": [
+        "./src/config/next.config.env.client.mjs"
+      ],
+      "@jeromefitz/next-config/env.server.mjs": [
+        "./src/config/next.config.env.server.mjs"
+      ],
+      // "@jeromefitz/next-config/*": ["../../packages/next-config/src/*"],
       "radix-themes-tw": ["./src/config/radix-themes-tw.css"],
       "@/*": ["./src/*"]
     }

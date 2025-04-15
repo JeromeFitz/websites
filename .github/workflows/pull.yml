@@ -40,6 +40,8 @@ env:
   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
   OCTOKIT_TOKEN: ${{ secrets.OCTOKIT_TOKEN }}
   OG_API_KEY: ${{ secrets.OG_API_KEY }}
+  POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
+  POSTGRES_SITE_ID: ${{ vars.POSTGRES_SITE_ID }}
   PREVIEW_TOKEN: ${{ secrets.PREVIEW_TOKEN }}
   REVALIDATE_TOKEN: ${{ secrets.REVALIDATE_TOKEN }}
   SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
@@ -82,6 +84,8 @@ jobs:
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       OCTOKIT_TOKEN: ${{ secrets.OCTOKIT_TOKEN }}
       OG_API_KEY: ${{ secrets.OG_API_KEY }}
+      POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
+      POSTGRES_SITE_ID: ${{ vars.POSTGRES_SITE_ID }}
       PREVIEW_TOKEN: ${{ secrets.PREVIEW_TOKEN }}
       REVALIDATE_TOKEN: ${{ secrets.REVALIDATE_TOKEN }}
       SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
@@ -106,15 +110,15 @@ jobs:
 
       - name: '💽️  Init'
         id: pull-init
-        uses: JeromeFitz/websites/.github/actions/init@main
+        uses: JeromeFitz/websites/.github/actions/init@NICE-136
 
       - name: '📦  Install'
         id: pull-install
-        uses: JeromeFitz/websites/.github/actions/install@main
+        uses: JeromeFitz/websites/.github/actions/install@NICE-136
 
       - name: '🔺️  Cache (vercel)'
         id: pull-cache-vercel
-        uses: JeromeFitz/websites/.github/actions/cache-turbo@main
+        uses: JeromeFitz/websites/.github/actions/cache-turbo@NICE-136
         with:
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
@@ -122,14 +126,14 @@ jobs:
 
       - name: '🚨️  Lint'
         id: pull-lint
-        uses: JeromeFitz/websites/.github/actions/lint@main
+        uses: JeromeFitz/websites/.github/actions/lint@NICE-136
         with:
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
 
       - name: '🧪  Test'
         id: pull-test
-        uses: JeromeFitz/websites/.github/actions/test@main
+        uses: JeromeFitz/websites/.github/actions/test@NICE-136
         with:
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
@@ -144,7 +148,7 @@ jobs:
       - name: '🎭  E2E'
         id: pull-e2e
         if: ${{ contains(steps.pull-commit-message.outputs.message, '[b]') }}
-        uses: JeromeFitz/websites/.github/actions/e2e@main
+        uses: JeromeFitz/websites/.github/actions/e2e@NICE-136
         with:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
@@ -184,7 +188,7 @@ jobs:
       - name: '🔺️  Deploy (Preview)'
         id: pull-deploy-preview
         if: ${{ (env.IS_ACTOR_VERIFIED == 'true') && contains(steps.pull-commit-message.outputs.message, '[b]') }}
-        uses: JeromeFitz/websites/.github/actions/deploy@main
+        uses: JeromeFitz/websites/.github/actions/deploy@NICE-136
         with:
           DEPLOY_PR_FROM_FORK: true
           GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}

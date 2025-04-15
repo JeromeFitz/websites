@@ -119,6 +119,11 @@
     "zustand": "5.0.3"
   },
   "devDependencies": {
+    "@jeromefitz/jest-config": "workspace:*",
+    "@jeromefitz/lighthouse-config": "workspace:*",
+    "@jeromefitz/playwright-config": "workspace:*",
+    "@jeromefitz/storybook-config": "workspace:*",
+    "@jeromefitz/tailwind-config": "workspace:*",
     "@tailwindcss/aspect-ratio": "0.4.2",
     "@tailwindcss/forms": "0.5.10",
     "@tailwindcss/postcss": "4.1.4",

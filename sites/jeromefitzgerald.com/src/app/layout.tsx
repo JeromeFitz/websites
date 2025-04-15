@@ -20,10 +20,10 @@ import '@radix-ui/themes/styles.css'
 import './styles--globals.css'
 
 export const metadata: Metadata = {
-  // applicationName: 'Next.js',
   authors: [{ name: 'Jerome Fitzgerald', url: 'https://jeromefitzgerald.com' }],
   creator: 'Jerome Fitzgerald',
-  description: 'A simple todo list application',
+  description:
+    'Jerome Fitzgerald is an actor, comedian, & writer hailing from Pittsburgh, PA.',
   metadataBase: new URL('https://jeromefitzgerald.com'),
   // generator: 'Next.js',
   // keywords: ['Comedy'],

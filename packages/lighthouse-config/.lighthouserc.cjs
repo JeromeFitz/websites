@@ -5,6 +5,7 @@ const WARN = 'warn'
 const url = ['http://localhost:3000']
 
 const config = ({ urlAdditional, website }) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
   !!urlAdditional &&
     urlAdditional.map((ua) => {
       url.push(`${url[0]}${ua}`)
@@ -68,4 +69,5 @@ const config = ({ urlAdditional, website }) => {
   }
 }
 
+// eslint-disable-next-line no-undef
 module.exports = config

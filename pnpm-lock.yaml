@@ -1143,6 +1143,21 @@ importers:
         specifier: 5.0.3
         version: 5.0.3(@types/react@19.1.2)(react@19.1.0)
     devDependencies:
+      '@jeromefitz/jest-config':
+        specifier: workspace:*
+        version: link:../../packages/jest-config
+      '@jeromefitz/lighthouse-config':
+        specifier: workspace:*
+        version: link:../../packages/lighthouse-config
+      '@jeromefitz/playwright-config':
+        specifier: workspace:*
+        version: link:../../packages/playwright-config
+      '@jeromefitz/storybook-config':
+        specifier: workspace:*
+        version: link:../../packages/storybook-config
+      '@jeromefitz/tailwind-config':
+        specifier: workspace:*
+        version: link:../../packages/tailwind-config
       '@tailwindcss/aspect-ratio':
         specifier: 0.4.2
         version: 0.4.2(tailwindcss@4.1.4)
