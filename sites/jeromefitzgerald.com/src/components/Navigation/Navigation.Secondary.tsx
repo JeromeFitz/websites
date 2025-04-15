@@ -91,8 +91,7 @@ function NavigationSecondary({ order = 0 }) {
             sideOffset={6}
             size="2"
           >
-            {/* @ts-ignore */}
-            {zzz_menuSecondary.map((item, idx) => {
+            {zzz_menuSecondary.map((item: any, idx: number) => {
               if (!item.isActive && !item.isActiveMobile) return null
               const key = `secondary-${idx}-${item.id}`
               if (item.title === 'SEP') {

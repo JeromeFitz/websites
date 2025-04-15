@@ -61,6 +61,8 @@ const getDefaultInitialStateStoreMenu = () => ({
   countSet: FALLBACK_ACTION,
   current: 0,
   currentSet: FALLBACK_ACTION,
+  eventsUpcoming: [],
+  eventsUpcomingSet: FALLBACK_ACTION,
   isCmdkInnerOpen: false,
   isCmdkInnerOpenSet: FALLBACK_ACTION,
   isCmdkOpen: false,
@@ -204,37 +206,8 @@ const getDefaultInitialStateStoreMenu = () => ({
         title: '… All Events',
         titleDescription: 'Including recent past events.',
       },
-      {
-        href: '/events/2025/03/28/the-wedding-party',
-        icon: TicketIcon,
-        id: '/events/2025/03/28/the-wedding-party',
-        isActive: true,
-        isActiveMobile: true,
-        keywords: ['improv', 'immersive', 'wedding', 'party'],
-        title: 'The Wedding Party: FRI 03/28',
-        titleDescription: 'The Wedding Party: FRI 03/28',
-      },
-      {
-        href: '/events/2025/04/19/the-death-show',
-        icon: TicketIcon,
-        id: '/events/2025/04/19/the-death-show',
-        isActive: true,
-        isActiveMobile: true,
-        keywords: ['improv', 'death', 'show'],
-        title: 'The Death Show: SAT 04/19',
-        titleDescription: 'The Death Show: SAT 04/19',
-      },
-      {
-        href: '/events/2025/04/19/your-brain-on-drugs',
-        icon: TicketIcon,
-        id: '/events/2025/04/19/your-brain-on-drugs',
-        isActive: true,
-        isActiveMobile: true,
-        keywords: ['stand-up', 'your', 'brain', 'drugs'],
-        title: 'Your Brain On Drugs: SAT 04/19',
-        titleDescription: 'Your Brain On Drugs: SAT 04/19',
-      },
     ],
+    // @todo(zustand) NICE-144 init dynamic
     podcasts: [
       {
         href: '/podcasts',
@@ -275,6 +248,7 @@ const getDefaultInitialStateStoreMenu = () => ({
         titleDescription: '...',
       },
     ],
+    // @todo(zustand) NICE-144 init dynamic
     shows: [
       {
         href: '/shows',
@@ -447,6 +421,23 @@ const initializeStoreMenu = (preloadedState: Partial<any> = {}) => {
         cmdkPages: get().cmdkPages.slice(0, -1),
       })
     },
+    eventsUpcomingSet: (item: any) => {
+      set({
+        eventsUpcoming: item,
+      })
+      if (
+        get().zzz_menuTertiary.events.length === 1 &&
+        get().eventsUpcoming.length > 0 &&
+        item.length > 0
+      ) {
+        set({
+          zzz_menuTertiary: {
+            ...get().zzz_menuTertiary,
+            events: [...get().zzz_menuTertiary.events, ...item],
+          },
+        })
+      }
+    },
     isCmdkInnerOpenSet: () => {
       set({
         isCmdkInnerOpen: !get().isCmdkInnerOpen,
@@ -514,6 +505,10 @@ const initializeStoreMenu = (preloadedState: Partial<any> = {}) => {
       set({
         zzz_menuTertiaryActive: item,
       })
+    },
+    zzz_menuTertiarySet: (item: any) => {
+      console.dir(`> zzz_menuTertiarySet`)
+      console.dir(item)
     },
   }))
 }

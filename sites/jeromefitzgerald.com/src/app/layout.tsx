@@ -1,6 +1,12 @@
 import type { Metadata } from 'next'
 
 import { Theme } from '@radix-ui/themes/dist/esm/components/theme.js'
+import { isAfter } from 'date-fns/isAfter'
+import _filter from 'lodash/filter.js'
+import _orderBy from 'lodash/orderBy.js'
+import _take from 'lodash/take.js'
+
+import type { Event } from '@/lib/drizzle/schemas/types'
 
 import { ContainerFooter } from '@/components/Container/Container.Footer'
 import { ContainerGradient } from '@/components/Container/Container.Gradient'
@@ -9,7 +15,9 @@ import { ContainerNavigation } from '@/components/Container/Container.Navigation
 import { ContainerSite } from '@/components/Container/Container.Site'
 import { Overlay } from '@/components/Overlay/Overlay'
 import { Providers } from '@/components/Providers/Providers'
+import { StoreInitEventsUpcoming } from '@/components/Providers/StoreInitEventsUpcoming.client'
 import { SkipNavContent, SkipNavLink } from '@/components/SkipNav'
+import { getEventsWithLimit } from '@/lib/drizzle/schemas/queries'
 import { cx } from '@/utils/cx'
 
 import { fonts } from './_next/fonts'
@@ -37,7 +45,26 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  async function getEventsUpcoming() {
+    'use server'
+    const dateNow = Date.now()
+    const items = await getEventsWithLimit({ limit: 10 })
+    return _take(
+      _orderBy(
+        _filter(items, (event: Event) => !isAfter(dateNow, event.dateIso)),
+        (event: Event) => [event.dateIso],
+        ['asc'],
+      ),
+      3,
+    )
+  }
+  const events = await getEventsUpcoming()
+
   return (
     <html lang="en" suppressHydrationWarning={true}>
       <PreloadResources />
@@ -63,6 +90,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           <SkipNavLink />
           <Providers>
+            <StoreInitEventsUpcoming items={events} />
             <ContainerGradient />
             <ContainerSite>
               <ContainerNavigation />
