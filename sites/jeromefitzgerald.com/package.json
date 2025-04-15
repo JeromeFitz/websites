@@ -11,10 +11,14 @@
   },
   "license": "MIT",
   "engines": {
-    "node": ">=20.10.0"
+    "node": ">=22.12.0 <23",
+    "pnpm": ">=10 <11"
   },
   "scripts": {
-    "build": "next build",
+    "build": "CI=1 NODE_NO_WARNINGS=1 next build",
+    "clean": "rm -rf ./.lighthouseci ./.next ./.turbo ./coverage ./e2e-report ./e2e-results ./storybook-static",
+    "clean:install": "pnpm clean && rm -rf ./.cache ./node_modules",
+    "copy": "echo mkdir -p ./dist && ./scripts/copy.sh",
     "db:generate": "drizzle-kit generate",
     "db:init": "pnpm db:generate && pnpm db:migrate",
     "db:migrate": "npx tsx ./src/lib/drizzle/init/migrate.ts",
@@ -28,7 +32,11 @@
     "lint": "concurrently \"pnpm run lint:eslint\" \"pnpm run lint:typescript\"",
     "lint:eslint": "eslint ./src --max-warnings=0",
     "lint:typescript": "tsc --noEmit --declaration",
-    "start": "next start"
+    "semantic-release": "semantic-release",
+    "start": "NODE_NO_WARNINGS=1 next start",
+    "test:e2e": "NODE_NO_WARNINGS=1 playwright test --config ./playwright.config.ts",
+    "test:unit": "NODE_NO_WARNINGS=1 jest --ci --coverage",
+    "test:watch": "NODE_NO_WARNINGS=1 jest --watch"
   },
   "dependencies": {
     "@date-fns/tz": "1.2.0",

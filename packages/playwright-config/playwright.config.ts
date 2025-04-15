@@ -2,7 +2,15 @@ import type { PlaywrightTestConfig } from '@playwright/test'
 
 import { defineConfig, devices } from '@playwright/test'
 
-const config = ({ basePath = '', port, website = 'jeromefitzgerald.com' }) => {
+const config = ({
+  basePath = '',
+  port,
+  website = 'jeromefitzgerald.com',
+}: {
+  basePath?: string
+  port: number
+  website?: string
+}) => {
   const baseURL = `http://localhost:${port}${basePath}`
 
   const config: PlaywrightTestConfig = {
