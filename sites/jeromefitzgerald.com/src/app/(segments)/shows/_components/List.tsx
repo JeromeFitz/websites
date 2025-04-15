@@ -133,11 +133,7 @@ function ListWrapper({ shows }: { shows: Show[] }) {
                       mb="3"
                       p="3"
                     >
-                      <Heading
-                        as="h2"
-                        size="6"
-                        // style={{ fontFamily: 'var(--display-font-family)' }}
-                      >
+                      <Heading as="h2" size="6">
                         {show.title}
                       </Heading>
                       <Text

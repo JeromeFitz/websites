@@ -45,7 +45,6 @@ function NavigationTertiary({
 
   const mt = zzz_menuTertiary[zzz_menuSecondaryActive.id]
   const isDisabled = !mt
-  // if (!mt) return null
 
   const DropdownMenuTriggerIconType = zzz_menuTertiaryActive.icon ?? DotFilledIcon
 

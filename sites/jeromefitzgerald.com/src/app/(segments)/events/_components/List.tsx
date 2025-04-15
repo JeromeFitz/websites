@@ -109,11 +109,7 @@ function ListWrapper({ events }: { events: Event[] }) {
                       mb="3"
                       p="3"
                     >
-                      <Heading
-                        as="h2"
-                        size="6"
-                        // style={{ fontFamily: 'var(--display-font-family)' }}
-                      >
+                      <Heading as="h2" size="6">
                         {event.title}
                       </Heading>
                       <Text

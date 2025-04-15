@@ -17,6 +17,7 @@
   --sidebar-gap: 28px;
 }
 
+/*
 @font-face {
   font-display: swap;
   font-family: 'Borogodo';
@@ -24,12 +25,12 @@
   font-weight: 100 900;
   src: url('https://cdn.jeromefitzgerald.com/fonts/borogodo/0.2/BorogodoV0.2-BlackM.woff2')
     format('woff2');
-}
+} */
 
 .radix-themes {
   /* fonts */
-  --font-borogodo: 'Borogodo';
-  --display-font-family: var(--font-borogodo), var(--default-font-family);
+  /* --font-borogodo: 'Borogodo'; */
+  /* --display-font-family: var(--font-borogodo), var(--default-font-family); */
   --default-font-family:
     var(--font-geist-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI (Custom)',
     Roboto, 'Helvetica Neue', 'Open Sans (Custom)', system-ui, sans-serif,

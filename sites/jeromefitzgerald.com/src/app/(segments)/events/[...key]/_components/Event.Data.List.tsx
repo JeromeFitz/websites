@@ -21,6 +21,7 @@ import {
   InfoCircledIcon,
   // TagIcon,
 } from '@/components/Icon/index'
+import { TZ } from '@/config/const'
 import {
   getVenue,
   segment as segmentVenue,
@@ -28,8 +29,6 @@ import {
 import { cx } from '@/utils/cx'
 import { getKey } from '@/utils/getKey'
 import { isEmpty } from '@/utils/isEmpty'
-
-const TZ = 'America/New_York'
 
 async function DataList__VenueIndividual({ item }: { item: Event }) {
   const keyVenue = item.rollupVenuesSlug[0].rich_text[0]?.plain_text
