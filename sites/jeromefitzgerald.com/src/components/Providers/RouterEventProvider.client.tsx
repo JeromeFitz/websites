@@ -1,7 +1,7 @@
 'use client'
 
-import dynamic from 'next/dynamic.js'
-import { usePathname } from 'next/navigation.js'
+import dynamic from 'next/dynamic'
+import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 import { useStore as _useStore, useShallow } from '@/store/index'

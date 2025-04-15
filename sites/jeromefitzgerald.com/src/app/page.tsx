@@ -1,85 +1,59 @@
-import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
-import {
-  getDataFromCache,
-  getSegmentInfo,
-} from '@jeromefitz/shared/notion/utils/index'
-import { isObjectEmpty } from '@jeromefitz/utils'
+import type { Metadata, ResolvingMetadata } from 'next'
 
-import type { Metadata } from 'next'
+import type { Page } from '@/lib/drizzle/schemas/cache-pages/types'
 
-import { draftMode } from 'next/headers.js'
+// import { getImageKeyValue } from '@/lib/drizzle/schemas/cache-images/queries'
+import { getPage, segment } from '@/lib/drizzle/schemas/cache-pages/queries'
+// import { getImageKeySlug } from '@/lib/drizzle/utils/getImageKeySlug'
+import { getKey } from '@/utils/getKey'
+import { isEmpty } from '@/utils/isEmpty'
 
-import { CONFIG, getPageData } from '@/app/(notion)/_config/index'
-import { generateMetadataCustom } from '@/app/(notion)/_config/temp/generateMetadataCustom'
-import { PageHome } from '@/app/_components/Page.Home'
+interface Props {
+  params: Promise<{ key: string }>
+  searchParams?: Promise<Record<string, string | string[] | undefined>>
+}
 
-const slug = '/homepage'
-const { SEGMENT } = CONFIG.PAGES
+const _key = 'homepage'
 
-export async function generateMetadata({ ...props }): Promise<Metadata> {
-  const { isEnabled } = await draftMode()
-  const segmentInfo = getSegmentInfo({ SEGMENT, ...props })
-  const data = await getDataFromCache({
-    database_id: '',
-    draft: isEnabled,
-    filterType: 'equals',
-    // @todo(next) revalidate
-    revalidate: false,
-    segmentInfo: {
-      ...segmentInfo,
-      slug,
-    },
-  })
+export async function generateMetadata(
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  { params }: Props,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
+  const key = getKey(segment, _key)
+  const infoInit: Page[] = await getPage({ key })
 
-  const is404 = isObjectEmpty(data?.blocks || {})
-  const is404Seo = {
-    title: `404 | ${segmentInfo?.segment} | ${env.NEXT_PUBLIC__SITE}`,
+  if (isEmpty(infoInit)) {
+    return {
+      title: `404: ${segment}`,
+    }
   }
 
-  if (is404) return is404Seo
+  const info = infoInit[0]
+  const previousImages = (await parent).openGraph?.images || []
 
-  const pageData = getPageData(data?.page?.properties) || ''
-  const seo = await generateMetadataCustom({ data, pageData, segmentInfo })
+  const title = `${info.title}`
+  const description = `${info.seoDescription}`
 
-  return pageData?.isPublished
-    ? {
-        ...seo,
-        description:
-          'Jerome Fitzgerald is an an actor, comedian, & writer hailing from Pittsburgh, PA.',
-        title: 'Jerome Fitzgerald (he/him) | Actor. Comedian. Writer.',
-      }
-    : is404Seo
-}
+  const seoImage: any = info.seoImage
+  const imageUrl = info.seoImage ? seoImage[seoImage?.type]?.url : null
+  // const imageData = getImageKeySlug(imageUrl)
+  // const imageKeyValue = await getImageKeyValue({ key: imageData.key })
+  // const image: any = imageKeyValue[0].value[0]
 
-export default async function Page(props) {
-  const revalidate = props?.revalidate || false
-  const { params } = props
-  const { catchAll } = await params
-  const segmentInfo = getSegmentInfo({
-    params: { catchAll },
-    revalidate,
-    SEGMENT,
-  })
-
-  return <Slug revalidate={revalidate} segmentInfo={segmentInfo} />
-}
-
-async function Slug({ revalidate, segmentInfo }) {
-  const { isEnabled } = await draftMode()
-
-  const data = await getDataFromCache({
-    database_id: '',
-    draft: isEnabled,
-    filterType: 'equals',
-    revalidate,
-    segmentInfo: {
-      ...segmentInfo,
-      slug,
+  return {
+    description,
+    openGraph: {
+      description,
+      images: [imageUrl, ...previousImages],
+      title,
     },
-  })
-
-  // const { seoDescription, title } = getPageData(data?.page?.properties) || ''
-
-  if (isObjectEmpty(data.page)) return null
-  return <PageHome />
+    title,
+  }
 }
+
+function Home() {
+  return <></>
+}
+
+export default Home

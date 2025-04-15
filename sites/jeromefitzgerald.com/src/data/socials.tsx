@@ -7,8 +7,7 @@ import {
   LinkedInLogoIcon,
   SpotifyLogoIcon,
   ThreadsLogoIcon,
-  TwitterLogoIcon,
-} from '@jeromefitz/ds/components/Icon/index'
+} from '@/components/Icon/index'
 
 const URL_TYPE = {
   AUDIO: 'audio',
@@ -125,19 +124,6 @@ const socials = [
     tooltipDescription: 'Who uses this?',
     type: URL_TYPE.EXTERNAL,
     url: 'https://www.threads.net/@jeromefitz',
-  },
-  {
-    active: false,
-    className: 'hover:bg-twitter',
-    icon: <TwitterLogoIcon className="text-inherit" />,
-    id: 'x',
-    keywords: 'social twitter x',
-    rightSlot: <ExternalLinkIcon />,
-    subtitle: '@JeromeFitz',
-    title: 'X',
-    tooltipDescription: 'Who uses this?',
-    type: URL_TYPE.EXTERNAL,
-    url: 'https://x.com/JeromeFitz',
   },
 ]
 

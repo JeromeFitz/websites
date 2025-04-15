@@ -1,7 +1,0 @@
-.test::before {
-  background-color: var(--test);
-}
-
-.test1 {
-  color: var(--test);
-}

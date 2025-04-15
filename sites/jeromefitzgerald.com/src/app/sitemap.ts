@@ -1,10 +1,26 @@
+import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
+
 import _orderBy from 'lodash/orderBy.js'
 import { MetadataRoute } from 'next'
 
-/**
- * @todo(next) dynamic
- */
-const siteUrl = 'https://jeromefitzgerald.com'
+import type { Episode } from '@/lib/drizzle/schemas/cache-episodes/types'
+import type { Event } from '@/lib/drizzle/schemas/cache-events/types'
+import type { Page } from '@/lib/drizzle/schemas/cache-pages/types'
+import type { Podcast } from '@/lib/drizzle/schemas/cache-podcasts/types'
+import type { Show } from '@/lib/drizzle/schemas/cache-shows/types'
+
+import { getEpisodes } from '@/lib/drizzle/schemas/cache-episodes/queries'
+import { getEvents } from '@/lib/drizzle/schemas/cache-events/queries'
+import { getPages } from '@/lib/drizzle/schemas/cache-pages/queries'
+import { getPodcasts } from '@/lib/drizzle/schemas/cache-podcasts/queries'
+import { getShows } from '@/lib/drizzle/schemas/cache-shows/queries'
+
+function getUrl(slug: string) {
+  return `https://${siteUrl}${slug}`
+}
+
+const siteUrl = env.NEXT_PUBLIC__SITE
+// @todo(notion) get actual data here
 const lastModified = new Date()
 
 const root = ['']
@@ -13,98 +29,61 @@ const currently = [
   'listening-to',
   'reading',
 ]
-/**
- * @todo(dynamic) start somewhere though
- */
-const events = [
-  '2023/06/01/your-act',
-  '2023/06/10/the-playlist',
-  '2023/06/16/jerome-and',
-  '2023/06/30/bracket-night',
-  '2023/07/01/irony-city',
-  '2023/07/15/jerome-and',
-  '2023/08/03/your-act',
-  '2023/08/03/your-act',
-  '2023/08/12/arcade-hootenanny',
-  '2023/08/19/jerome-and',
-  '2023/09/07/your-act',
-  '2023/09/08/fondue-for-two',
-  '2023/09/09/super-late-night',
-  '2023/09/15/jerome-and',
-  '2023/09/16/knights-of-the-arcade',
-  '2023/09/22/the-sketch-comedy-lab',
-  '2023/09/23/fridge-art-sketch-show',
-  '2023/09/29/bitch-please',
-  '2023/10/13/the-latchkey-kids',
-  '2023/10/14/arcade-hootenanny',
-  '2023/10/15/master-class-sketch-reading',
-  '2023/10/21/jerome-and',
-  '2023/10/28/sketch-night',
-  '2023/11/03/unlocking-811',
-  '2023/11/18/jerome-and',
-  '2023/12/16/jerome-and',
-  '2024/01/13/arcade-hootenanny',
-  '2024/01/18/lucky-draw',
-  '2024/01/26/friday-night-raw-with-ricky-romance',
-  '2024/02/03/fridge-art-sketch-show',
-  '2024/03/22/sketch-madness',
-  '2024/03/23/sketch-madness',
-  '2024/04/13/arcade-hootenanny',
-  '2024/05/10/the-latchkey-kids',
-  '2024/06/06/your-act',
-  '2024/07/13/arcade-hootenanny',
-  '2024/07/18/sketch-lab-report-vol-1',
-  '2024/07/19/sketch-lab-report-vol-1',
-  '2024/08/09/barbara-a-mother-comedy-bingo',
-  '2024/08/17/doomscroll',
-  '2024/08/24/the-playlist',
-  '2024/10/12/arcade-hootenanny',
-  '2024/12/01/your-act',
-  '2024/12/11/sketch-writing-101-class-show',
-  '2024/12/13/cantus-secret-comedy-club',
-  '2024/12/21/improv-in-development',
-  '2025/01/04/irony-city',
-  '2025/01/05/your-act',
-  '2025/01/11/arcade-hootenanny',
-  '2025/01/18/dinner-with-the-nolens',
-  '2025/01/23/sketch-lab-report-vol-1',
-  '2025/01/24/sketch-lab-report-vol-1',
-  '2025/01/25/well-known-strangers',
-  '2025/01/31/sketch-lab-report-vol-1',
-  '2025/02/01/sketch-lab-report-vol-1',
-  '2025/02/02/your-act',
-  '2025/03/14/the-latchkey-kids',
-]
-const pages = [
-  'about',
-  // 'books',
-  'colophon',
-  'contact',
-  'events',
-  // 'music',
-  'podcasts',
-  'shows',
-]
-const podcasts = ['jer-and-ky-and-guest', 'knockoffs']
-const shows = [
-  'alex-o-jerome',
-  'boo-humbag',
-  'bubble-boy-the-musical',
-  'jer-and-ky',
-  'jerome-and',
-  'jfle-take-broadway',
-  'jfle',
-  'justin-and-jerome-experience',
-  'my-dinner-with-andre-the-musical',
-  'the-death-show',
-  'the-playlist',
-  'warp-zone',
-]
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const eventItems: Event[] = await getEvents()
+const events: string[] = []
+eventItems.map((item) => {
+  if (item.isIndexed && item.isPublished) {
+    events.push(item.slugPreview)
+  }
+})
+const pagesForRemoval = [
+  '/blog',
+  '/books',
+  '/homepage',
+  '/kitchen-sink',
+  '/music',
+  '/people',
+  '/venues',
+]
+const pageItems: Page[] = await getPages()
+const pages: string[] = []
+pageItems.map((item) => {
+  if (
+    item.isIndexed &&
+    item.isPublished &&
+    !pagesForRemoval.includes(item.slugPreview)
+  ) {
+    pages.push(item.slugPreview)
+  }
+})
+
+const podcastItems: Podcast[] = await getPodcasts()
+const podcasts: string[] = []
+podcastItems.map((item) => {
+  if (item.isIndexed && item.isPublished) {
+    podcasts.push(item.slugPreview)
+  }
+})
+const podcastEpisodeItems: Episode[] = await getEpisodes()
+const podcastEpisodes: string[] = []
+podcastEpisodeItems.map((item) => {
+  if (item.isIndexed && item.isPublished) {
+    podcastEpisodes.push(item.slugPreview)
+  }
+})
+
+const showItems: Show[] = await getShows()
+const shows: string[] = []
+showItems.map((item) => {
+  if (item.isIndexed && item.isPublished) {
+    shows.push(item.slugPreview)
+  }
+})
+
 const sitemapRoot = root.map((slug) => ({
   lastModified,
-  url: `${siteUrl}`,
+  url: getUrl(slug),
 }))
 const sitemapCurrently = currently.map((slug) => ({
   lastModified,
@@ -112,33 +91,35 @@ const sitemapCurrently = currently.map((slug) => ({
 }))
 const sitemapEvents = events.map((slug) => ({
   lastModified,
-  url: `${siteUrl}/events/${slug}`,
+  url: getUrl(slug),
 }))
 const sitemapPages = pages.map((slug) => ({
   lastModified,
-  url: `${siteUrl}/${slug}`,
+  url: getUrl(slug),
 }))
 const sitemapPodcasts = podcasts.map((slug) => ({
   lastModified,
-  url: `${siteUrl}/podcasts/${slug}`,
+  url: getUrl(slug),
+}))
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const sitemapPodcastEpisodes = podcastEpisodes.map((slug) => ({
+  lastModified,
+  url: getUrl(slug),
 }))
 const sitemapShows = shows.map((slug) => ({
   lastModified,
-  url: `${siteUrl}/shows/${slug}`,
+  url: getUrl(slug),
 }))
 
 function sitemap(): MetadataRoute.Sitemap {
   return _orderBy(
     [
-      // {
-      //   url: `${siteUrl}`,
-      //   lastModified: new Date(),
-      // },
       ...sitemapRoot,
       ...sitemapCurrently,
       ...sitemapEvents,
       ...sitemapPages,
       ...sitemapPodcasts,
+      // ...sitemapPodcastEpisodes,
       ...sitemapShows,
     ],
     ['url'],

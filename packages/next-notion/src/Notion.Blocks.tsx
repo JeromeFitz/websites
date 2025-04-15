@@ -13,7 +13,6 @@ function NotionBlocks({
 }: {
   // @todo(types) ListBlockChildrenResponse | any => children
   blocks?: any
-  // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
   data: any | ListBlockChildrenResponse
 }) {
   const { object, results, type } = data

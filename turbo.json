@@ -4,15 +4,18 @@
   "globalPassThroughEnv": [
     "*_TOKEN",
     "CI",
+    "ENABLE_EXPERIMENTAL_COREPACK",
     "IS_*",
     "NEXT_PUBLIC_*",
     "NODE_ENV",
     "NOTION_*",
     "OG_*",
     "OVERRIDE_CACHE",
+    "POSTGRES_*",
     "REDIS_*",
     "SPOTIFY_*",
     "UPSTASH_*",
+    "TURBO_*",
     "VERCEL_*"
   ],
   "tasks": {

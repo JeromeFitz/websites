@@ -47,7 +47,7 @@ function Emoji({ character }) {
  */
 function EmojiHtml({ emoji, label }) {
   return (
-    <span aria-label={label} className="mr-1.5 ml-0.5" role="img">
+    <span aria-label={label} className="ml-0.5 mr-1.5" role="img">
       {emoji}
     </span>
   )

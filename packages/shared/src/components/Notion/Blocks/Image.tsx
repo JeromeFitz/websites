@@ -32,7 +32,7 @@ import stringify from 'fast-json-stable-stringify'
 import { slug as _slug } from 'github-slugger'
 import { NotionEmoji as EmojiWrapper } from 'next-notion/blocks/Emoji'
 import { isImageExpired } from 'next-notion/utils/index'
-import validUrl from 'valid-url'
+import { isHttpsUri } from 'valid-url'
 
 import { TIME } from '../../../lib/constants'
 import { ImageClient as NextImage } from './Image.client'
@@ -66,7 +66,7 @@ async function getImageFromBlock({ block, url }) {
   let key = '',
     slugImage = ''
 
-  if (validUrl.isHttpsUri(imageUrl)) {
+  if (isHttpsUri(imageUrl)) {
     slugImage = _slug(imageUrl.includes('?') ? imageUrl.split('?')[0] : imageUrl)
     key = `${CACHE_KEY_PREFIX__IMAGE}/${slugImage}`.toLowerCase()
   }

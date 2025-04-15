@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 'use client'
-import { cx } from '@jeromefitz/ds/utils/cx'
-
 import type { AccordionItemProps } from '@radix-ui/react-accordion'
 
 import * as Accordion from '@radix-ui/react-accordion'
 import { forwardRef } from 'react'
+
+import { cx } from '@/utils/cx'
 
 const AccordionItem = forwardRef(
   // @todo(types) radix
