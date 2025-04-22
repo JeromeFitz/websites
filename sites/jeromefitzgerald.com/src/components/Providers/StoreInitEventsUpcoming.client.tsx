@@ -25,29 +25,26 @@ const StoreInitEventsUpcoming = memo(function StoreInitEventsUpcoming({
   items?: Event[]
 }) {
   const { eventsUpcoming, eventsUpcomingSet } = useStore()
-  if (eventsUpcoming.length === 0) {
+  if (eventsUpcoming.length === 0 && items.length > 1) {
     const events: any = []
-    if (items.length > 1) {
-      items.map((item) => {
-        // const timestamp = `${_upperCase(item.dateDayOfWeekAbbr)} ${item.dateMonth}/${item.dateDayOfMonth}`
+    items.map((item) => {
+      // const timestamp = `${_upperCase(item.dateDayOfWeekAbbr)} ${item.dateMonth}/${item.dateDayOfMonth}`
+      const timestampUTC = new TZDate(item.dateIso, 'UTC')
+      const timestamp = `${_upperCase(
+        formatInTimeZone(timestampUTC, TZ, `EEE`),
+      )} ${formatInTimeZone(timestampUTC, TZ, `MM/dd`)}`
 
-        const timestampUTC = new TZDate(item.dateIso, 'UTC')
-        const timestamp = `${_upperCase(
-          formatInTimeZone(timestampUTC, TZ, `EEE`),
-        )} ${formatInTimeZone(timestampUTC, TZ, `MM/dd`)}`
-
-        events.push({
-          href: item.slugPreview,
-          icon: TicketIcon,
-          id: item.slugPreview,
-          isActive: true,
-          isActiveMobile: true,
-          keywords: item.seoKeywords || [],
-          title: `${timestamp}: ${item.title}`,
-          titleDescription: `${timestamp}: ${item.title}`,
-        })
+      events.push({
+        href: item.slugPreview,
+        icon: TicketIcon,
+        id: item.slugPreview,
+        isActive: true,
+        isActiveMobile: true,
+        keywords: item.seoKeywords || [],
+        title: `${timestamp}: ${item.title}`,
+        titleDescription: `${timestamp}: ${item.title}`,
       })
-    }
+    })
     eventsUpcomingSet(events)
   }
   return null
