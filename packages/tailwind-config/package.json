@@ -14,7 +14,7 @@
     "cssnano": "7.0.6",
     "lightningcss": "1.29.3",
     "postcss": "8.5.3",
-    "radix-themes-tw": "1.0.0",
+    "radix-themes-tw": "1.1.0",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "sharp": "0.34.1",
