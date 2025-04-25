@@ -55,7 +55,7 @@
       "matchPackageNames": ["@types/*"]
     },
     {
-      "allowedVersions": "<21",
+      "allowedVersions": "<23",
       "commitMessagePrefix": "📦  (deps-dev)",
       "matchDepTypes": ["devDependencies", "dependencies"],
       "matchPackageNames": ["@types/node"]
