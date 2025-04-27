@@ -51,7 +51,7 @@
     "lodash": "4.17.21",
     "node-modules-inspector": "0.6.7",
     "semantic-release": "24.2.3",
-    "syncpack": "13.0.3",
+    "syncpack": "13.0.4",
     "ts-node": "10.9.2",
     "tsup": "8.4.0",
     "turbo": "2.5.2",
