@@ -65,7 +65,7 @@
       "sharp"
     ],
     "overrides": {
-      "@babel/core": "7.26.10",
+      "@babel/core": "7.27.1",
       "@babel/helpers": "7.27.1",
       "@babel/runtime": "7.27.1",
       "@octokit/plugin-paginate-rest": "^11.4.1",
