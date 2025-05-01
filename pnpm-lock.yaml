@@ -1076,8 +1076,8 @@ importers:
         specifier: 3.7.2
         version: 3.7.2
       geist:
-        specifier: 1.3.1
-        version: 1.3.1(next@15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0))
+        specifier: 1.4.1
+        version: 1.4.1(next@15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0))
       github-slugger:
         specifier: 2.0.0
         version: 2.0.0
@@ -7725,8 +7725,8 @@ packages:
     resolution: {integrity: sha512-trLf4SzuuUxfusZADLINj+dE8clK1frKdmqiJNb1Es75fmI5oY6X2mxLVUciLLjxqw/xr72Dhy+lER6dGd02FQ==}
     engines: {node: '>=10'}
 
-  geist@1.3.1:
-    resolution: {integrity: sha512-Q4gC1pBVPN+D579pBaz0TRRnGA4p9UK6elDY/xizXdFk/g4EKR5g0I+4p/Kj6gM0SajDBZ/0FvDV9ey9ud7BWw==}
+  geist@1.4.1:
+    resolution: {integrity: sha512-uyVD2rGwXoGNqr+SfXzz3eL2h6zDG72d6vPbfm6u2BEfk8WT23BC1lxSwAV/FIFezPkTutAw00MQ0at5W+5olA==}
     peerDependencies:
       next: '>=13.2.0'
 
@@ -20294,7 +20294,7 @@ snapshots:
 
   fuse.js@7.1.0: {}
 
-  geist@1.3.1(next@15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)):
+  geist@1.4.1(next@15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)):
     dependencies:
       next: 15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
 
