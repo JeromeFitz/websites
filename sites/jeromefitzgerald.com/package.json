@@ -139,7 +139,7 @@
     "@types/lodash": "4.17.16",
     "@types/pluralize": "0.0.33",
     "@types/react": "19.1.4",
-    "@types/react-dom": "19.1.4",
+    "@types/react-dom": "19.1.5",
     "@types/valid-url": "1.0.7",
     "plaiceholder": "3.0.0",
     "sharp": "0.34.1",
