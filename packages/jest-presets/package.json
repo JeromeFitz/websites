@@ -5,6 +5,6 @@
   "main": "./jest/node/jest-preset.js",
   "devDependencies": {
     "jest": "29.7.0",
-    "ts-jest": "29.3.3"
+    "ts-jest": "29.3.4"
   }
 }
