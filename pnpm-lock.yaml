@@ -1064,8 +1064,8 @@ importers:
         specifier: 0.3.1
         version: 0.3.1(drizzle-orm@0.43.1(@neondatabase/serverless@1.0.0)(postgres@3.4.7))
       drizzle-zod:
-        specifier: 0.7.1
-        version: 0.7.1(drizzle-orm@0.43.1(@neondatabase/serverless@1.0.0)(postgres@3.4.7))(zod@3.25.20)
+        specifier: 0.8.1
+        version: 0.8.1(drizzle-orm@0.43.1(@neondatabase/serverless@1.0.0)(postgres@3.4.7))(zod@3.25.20)
       emoji-regex:
         specifier: 10.4.0
         version: 10.4.0
@@ -6923,11 +6923,11 @@ packages:
       drizzle-orm:
         optional: true
 
-  drizzle-zod@0.7.1:
-    resolution: {integrity: sha512-nZzALOdz44/AL2U005UlmMqaQ1qe5JfanvLujiTHiiT8+vZJTBFhj3pY4Vk+L6UWyKFfNmLhk602Hn4kCTynKQ==}
+  drizzle-zod@0.8.1:
+    resolution: {integrity: sha512-k2/2cwBz3Vjb7CWPVCeMNajZpG43V7SqhNrZ8LsWJOz8TztQ5YtU2ifgnfnxqZXsxeHmdQnsl6eXm7GwDZnq/Q==}
     peerDependencies:
       drizzle-orm: '>=0.36.0'
-      zod: '>=3.0.0'
+      zod: ^3.25.1
 
   dunder-proto@1.0.1:
     resolution: {integrity: sha512-KIN/nDJBQRcXw0MLVhZE9iQHmG68qAVIBg9CqmUYjmQIhgij9U5MFvrqkUL5FbtyyzZuOeOt0zdeRe4UY7ct+A==}
@@ -19001,7 +19001,7 @@ snapshots:
     optionalDependencies:
       drizzle-orm: 0.43.1(@neondatabase/serverless@1.0.0)(postgres@3.4.7)
 
-  drizzle-zod@0.7.1(drizzle-orm@0.43.1(@neondatabase/serverless@1.0.0)(postgres@3.4.7))(zod@3.25.20):
+  drizzle-zod@0.8.1(drizzle-orm@0.43.1(@neondatabase/serverless@1.0.0)(postgres@3.4.7))(zod@3.25.20):
     dependencies:
       drizzle-orm: 0.43.1(@neondatabase/serverless@1.0.0)(postgres@3.4.7)
       zod: 3.25.20
