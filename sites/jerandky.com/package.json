@@ -119,7 +119,7 @@
     "uuid": "11.1.0",
     "valid-url": "1.0.9",
     "zod": "3.25.23",
-    "zustand": "5.0.4"
+    "zustand": "5.0.5"
   },
   "devDependencies": {
     "@jeromefitz/jest-config": "workspace:*",
