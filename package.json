@@ -50,7 +50,7 @@
     "is-ci": "4.1.0",
     "lodash": "4.17.21",
     "node-modules-inspector": "0.6.8",
-    "semantic-release": "24.2.4",
+    "semantic-release": "24.2.5",
     "syncpack": "13.0.4",
     "ts-node": "10.9.2",
     "tsup": "8.5.0",
