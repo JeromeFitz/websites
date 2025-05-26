@@ -33,7 +33,7 @@
     "upgrade:node": "pnpm update -i -r --latest '!unfetch'"
   },
   "dependencies": {
-    "@jeromefitz/conventional-gitmoji": "4.0.16",
+    "@jeromefitz/conventional-gitmoji": "4.0.17",
     "@jeromefitz/eslint-config": "5.0.0-canary.54",
     "@jeromefitz/lint-staged": "2.1.6",
     "@jeromefitz/prettier-config": "2.1.8",
