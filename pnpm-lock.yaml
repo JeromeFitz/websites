@@ -6,7 +6,7 @@ settings:
 
 overrides:
   '@babel/core': 7.27.4
-  '@babel/helpers': 7.27.3
+  '@babel/helpers': 7.27.4
   '@babel/runtime': 7.27.4
   '@octokit/plugin-paginate-rest': ^13.0.0
   '@typescript-eslint/typescript-estree': ^8.26.1
@@ -1380,8 +1380,8 @@ packages:
     resolution: {integrity: sha512-f1JLrlw/jbiNfxvdrfBgio/gRBk3yTAEJWirpAkiJG2Hb22E7cEYKHWo0dFPTv/niPovzIdPdEDetrv6tC6gPQ==}
     engines: {node: '>=6.9.0'}
 
-  '@babel/helpers@7.27.3':
-    resolution: {integrity: sha512-h/eKy9agOya1IGuLaZ9tEUgz+uIRXcbtOhRtUyyMf8JFmn1iT13vnl/IGVWSkdOCG/pC57U4S1jnAabAavTMwg==}
+  '@babel/helpers@7.27.4':
+    resolution: {integrity: sha512-Y+bO6U+I7ZKaM5G5rDUZiYfUvQPUibYmAFe7EnKdnKBbVXDZxvp+MWOH5gYciY0EPk4EScsuFMQBbEfpdRKSCQ==}
     engines: {node: '>=6.9.0'}
 
   '@babel/highlight@7.24.7':
@@ -11749,7 +11749,7 @@ snapshots:
       '@babel/generator': 7.27.3
       '@babel/helper-compilation-targets': 7.27.2
       '@babel/helper-module-transforms': 7.27.3(@babel/core@7.27.4)
-      '@babel/helpers': 7.27.3
+      '@babel/helpers': 7.27.4
       '@babel/parser': 7.27.4
       '@babel/template': 7.27.2
       '@babel/traverse': 7.27.4
@@ -11929,7 +11929,7 @@ snapshots:
       '@babel/template': 7.27.2
       '@babel/types': 7.27.3
 
-  '@babel/helpers@7.27.3':
+  '@babel/helpers@7.27.4':
     dependencies:
       '@babel/template': 7.27.2
       '@babel/types': 7.27.3
