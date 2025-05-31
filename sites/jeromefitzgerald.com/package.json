@@ -123,7 +123,7 @@
     "unfetch": "4.2.0",
     "uuid": "11.1.0",
     "valid-url": "1.0.9",
-    "virtua": "0.41.2",
+    "virtua": "0.41.3",
     "zustand": "5.0.5"
   },
   "devDependencies": {
