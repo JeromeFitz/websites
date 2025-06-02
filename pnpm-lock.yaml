@@ -604,8 +604,8 @@ importers:
         specifier: 2.2.0
         version: 2.2.0(react@19.1.0)
       '@jeromefitz/notion':
-        specifier: 5.1.6
-        version: 5.1.6(@jeromefitz/utils@3.1.4(lodash@4.17.21))(lodash@4.17.21)
+        specifier: 5.1.7
+        version: 5.1.7(@jeromefitz/utils@3.1.4(lodash@4.17.21))(lodash@4.17.21)
       '@jeromefitz/spotify':
         specifier: 4.2.3
         version: 4.2.3(@jeromefitz/utils@3.1.4(lodash@4.17.21))(lodash@4.17.21)(sharp@0.34.1)
@@ -2614,8 +2614,8 @@ packages:
     peerDependencies:
       is-ci: ^3.0.1 || ^4.0.0
 
-  '@jeromefitz/notion@5.1.6':
-    resolution: {integrity: sha512-TAh1/nR8NJ8wkT+Pv4tnCEp8BwPzB5EfokGolruozzzy27ENgJPTeLFyHbow6XE8GcDS0PIJIY5/uhtZJOPtdg==}
+  '@jeromefitz/notion@5.1.7':
+    resolution: {integrity: sha512-yPM5coGYu6jhNed748arh4HWOMxLny3fFAvy87U3rLlTfwvAACTPZu6NDr0jK2RKVDJF9+FNN05FdQabaZHW3Q==}
     engines: {node: '>=20'}
     peerDependencies:
       '@jeromefitz/utils': ^3.0.0
@@ -2865,10 +2865,6 @@ packages:
   '@nodelib/fs.walk@1.2.8':
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
-
-  '@notionhq/client@3.1.2':
-    resolution: {integrity: sha512-EqJhtx5ekKW3wieENnDHPl5ZSgDxGyRP5r2664rPH39toW899sL000TSE7WHxenHb+kSIckVQ5OsT9tzPqbENg==}
-    engines: {node: '>=18'}
 
   '@notionhq/client@3.1.3':
     resolution: {integrity: sha512-M2gVWoo1dIvBeX/Yc4fvQCVh2g3HQjOxKBWX472Qzma2VNMJV3cPLi0J0A4dmOlkcfNQLVXmhuh54zGHpptZ7g==}
@@ -13126,10 +13122,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@jeromefitz/notion@5.1.6(@jeromefitz/utils@3.1.4(lodash@4.17.21))(lodash@4.17.21)':
+  '@jeromefitz/notion@5.1.7(@jeromefitz/utils@3.1.4(lodash@4.17.21))(lodash@4.17.21)':
     dependencies:
       '@jeromefitz/utils': 3.1.4(lodash@4.17.21)
-      '@notionhq/client': 3.1.2
+      '@notionhq/client': 3.1.3
       date-fns: 4.1.0
       github-slugger: 2.0.0
       lodash: 4.17.21
@@ -13504,8 +13500,6 @@ snapshots:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.17.1
-
-  '@notionhq/client@3.1.2': {}
 
   '@notionhq/client@3.1.3': {}
 
