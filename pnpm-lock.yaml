@@ -63,8 +63,8 @@ importers:
         specifier: 22.15.29
         version: 22.15.29
       ccommit:
-        specifier: 3.1.3
-        version: 3.1.3
+        specifier: 3.1.4
+        version: 3.1.4
       concurrently:
         specifier: 9.1.2
         version: 9.1.2
@@ -6208,8 +6208,8 @@ packages:
     resolution: {integrity: sha512-roIFONhcxog0JSSWbvVAh3OocukmSgpqOH6YpMkCvav/ySIV3JKg4Dc8vYtQjYi/UxpNE36r/9v+VqTQqgkYmw==}
     engines: {node: '>=4'}
 
-  ccommit@3.1.3:
-    resolution: {integrity: sha512-pD26twa/LF/oLzV+M1oSAl9aR2tf5gbHV6SL5MLBWLjEwvo0kUqvDKUEF8jk8CSgN+4Gl9XnRGYF3spfvwE2Sg==}
+  ccommit@3.1.4:
+    resolution: {integrity: sha512-KfrIKikHGGFCa8Bj2nZGC6VDDjSiQZUrQvhg91HH+FbFW9nOyuY0jfGBynbdp7INlb8fAJMYxhUWMpL+4b0z8Q==}
     engines: {node: '>=20'}
     hasBin: true
 
@@ -7376,6 +7376,10 @@ packages:
     resolution: {integrity: sha512-QFNnTvU3UjgWFy8Ef9iDHvIdcgZ344ebkwYx4/KLbR+CKQA4xBaHzv+iRpp86QfMHP8faFQLh8iOc57215y4Rg==}
     engines: {node: ^18.19.0 || >=20.5.0}
 
+  execa@9.6.0:
+    resolution: {integrity: sha512-jpWzZ1ZhwUmeWRhS7Qv3mhpOhLfwI+uAX4e5fOcXqwMR7EcJ0pj2kV1CVzHVMX/LphnKWD3LObjZCoJ71lKpHw==}
+    engines: {node: ^18.19.0 || >=20.5.0}
+
   exit@0.1.2:
     resolution: {integrity: sha512-Zk/eNKV2zbjpKzrsQ+n1G6poVbErQxJ0LBOJXaKZ1EViLzH+hrLu9cdXI4zw9dBQJslwBEpbQ2P1oS7nDxs6jQ==}
     engines: {node: '>= 0.8.0'}
@@ -7867,6 +7871,10 @@ packages:
 
   human-signals@8.0.0:
     resolution: {integrity: sha512-/1/GPCpDUCCYwlERiYjxoczfP0zfvZMU/OWgQPMya9AbAE24vseigFdhAMObpc8Q4lc/kjutPfUddDYyAmejnA==}
+    engines: {node: '>=18.18.0'}
+
+  human-signals@8.0.1:
+    resolution: {integrity: sha512-eKCa6bwnJhvxj14kZk5NCPc6Hb6BdsU9DZcOnmQKSnO1VKrfV0zCvtttPZUsBvjmNDn8rpcJfpwSYnHBjc95MQ==}
     engines: {node: '>=18.18.0'}
 
   husky@9.1.7:
@@ -9958,6 +9966,10 @@ packages:
     resolution: {integrity: sha512-E9e9HJ9R9NasGOgPaPE8VMeiPKAyWR5jcFpNnwIejslIhWqdqOrb2wShBsncMPUb+BcCd2OPYfh7p2W6oemTng==}
     engines: {node: '>=18'}
 
+  pretty-ms@9.2.0:
+    resolution: {integrity: sha512-4yf0QO/sllf/1zbZWYnvWw3NxCQwLXKzIj0G849LSufP15BXKM0rbD2Z3wVnkMfjdn/CB0Dpp444gYAACdsplg==}
+    engines: {node: '>=18'}
+
   proc-log@5.0.0:
     resolution: {integrity: sha512-Azwzvl90HaF0aCz1JrDdXQykFakSSNPaPoiZ9fm5qJIMHioDZEi7OAdRwSm6rSoPtY3Qutnm3L7ogmg3dc+wbQ==}
     engines: {node: ^18.17.0 || >=20.5.0}
@@ -11693,6 +11705,10 @@ packages:
 
   yoctocolors@2.0.2:
     resolution: {integrity: sha512-Ct97huExsu7cWeEjmrXlofevF8CvzUglJ4iGUet5B8xn1oumtAZBpHU4GzYuoE6PVqcZ5hghtBrSlhwHuR1Jmw==}
+    engines: {node: '>=18'}
+
+  yoctocolors@2.1.1:
+    resolution: {integrity: sha512-GQHQqAopRhwU8Kt1DDM8NjibDXHC8eoh1erhGAJPEyveY9qqVeXvVikNKrDz69sHowPMorbPUrH/mx8c50eiBQ==}
     engines: {node: '>=18'}
 
   zod@3.25.46:
@@ -18384,11 +18400,11 @@ snapshots:
 
   case-sensitive-paths-webpack-plugin@2.4.0: {}
 
-  ccommit@3.1.3:
+  ccommit@3.1.4:
     dependencies:
       ansi-colors: 4.1.3
       enquirer: 2.4.1
-      execa: 9.5.3
+      execa: 9.6.0
       fuse.js: 7.1.0
       meow: 13.2.0
 
@@ -19749,6 +19765,21 @@ snapshots:
       strip-final-newline: 4.0.0
       yoctocolors: 2.0.2
 
+  execa@9.6.0:
+    dependencies:
+      '@sindresorhus/merge-streams': 4.0.0
+      cross-spawn: 7.0.6
+      figures: 6.1.0
+      get-stream: 9.0.1
+      human-signals: 8.0.1
+      is-plain-obj: 4.1.0
+      is-stream: 4.0.1
+      npm-run-path: 6.0.0
+      pretty-ms: 9.2.0
+      signal-exit: 4.1.0
+      strip-final-newline: 4.0.0
+      yoctocolors: 2.1.1
+
   exit@0.1.2: {}
 
   expect@29.7.0:
@@ -20299,6 +20330,8 @@ snapshots:
   human-signals@5.0.0: {}
 
   human-signals@8.0.0: {}
+
+  human-signals@8.0.1: {}
 
   husky@9.1.7: {}
 
@@ -22446,6 +22479,10 @@ snapshots:
     dependencies:
       parse-ms: 4.0.0
 
+  pretty-ms@9.2.0:
+    dependencies:
+      parse-ms: 4.0.0
+
   proc-log@5.0.0: {}
 
   process-nextick-args@2.0.1: {}
@@ -24445,6 +24482,8 @@ snapshots:
   yocto-queue@1.2.1: {}
 
   yoctocolors@2.0.2: {}
+
+  yoctocolors@2.1.1: {}
 
   zod@3.25.46: {}
 
