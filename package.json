@@ -67,7 +67,7 @@
     "overrides": {
       "@babel/core": "7.27.4",
       "@babel/helpers": "7.27.6",
-      "@babel/runtime": "7.27.4",
+      "@babel/runtime": "7.27.6",
       "@octokit/plugin-paginate-rest": "^13.0.0",
       "@typescript-eslint/typescript-estree": "^8.26.1",
       "cross-spawn": "^7.0.6",
