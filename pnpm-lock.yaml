@@ -81,8 +81,8 @@ importers:
         specifier: 4.17.21
         version: 4.17.21
       node-modules-inspector:
-        specifier: 0.6.8
-        version: 0.6.8
+        specifier: 0.6.9
+        version: 0.6.9
       semantic-release:
         specifier: 24.2.5
         version: 24.2.5(typescript@5.8.3)
@@ -5125,8 +5125,8 @@ packages:
     resolution: {integrity: sha512-bN798gFfQX+viw3R7yrGWRqnrN2oRkEkUjjl4JNn4E8GxxbjtG3FbrEIIY3l8/hrwUwIeCZvi4QuOTP4MErVug==}
     engines: {node: '>=12'}
 
-  ansis@3.17.0:
-    resolution: {integrity: sha512-0qWUglt9JEqLFr3w1I1pbrChn1grhaiAR2ocX1PP/flRmxgtwTzPFFFnfIlD6aMOLQZgSuCRlidD70lvx8yhzg==}
+  ansis@4.1.0:
+    resolution: {integrity: sha512-BGcItUBWSMRgOCe+SVZJ+S7yTRG0eGt9cXAHev72yuGcY23hnLA7Bky5L/xLyPINoSN95geovfBkqoTlNZYa7w==}
     engines: {node: '>=14'}
 
   any-promise@1.3.0:
@@ -8246,12 +8246,12 @@ packages:
   node-mock-http@1.0.0:
     resolution: {integrity: sha512-0uGYQ1WQL1M5kKvGRXWQ3uZCHtLTO8hln3oBjIusM75WoesZ909uQJs/Hb946i2SS+Gsrhkaa6iAO17jRIv6DQ==}
 
-  node-modules-inspector@0.6.8:
-    resolution: {integrity: sha512-/T8m49ZCp4vTFI4TTDUcDnz2V2Omz8m1Uar8VR4VT6hipoHHsU4luIxCPejTtftEz5k/A5xklDK5c+hsKmPIsw==}
+  node-modules-inspector@0.6.9:
+    resolution: {integrity: sha512-TNu5Ql9i5vLb4Jl5B5zmJuRrByC+8Ze+bewgHi4I6cEY4+dAeECrPm7J9r7dA0K8oP76ZZko6KTzcVsknVYvkA==}
     hasBin: true
 
-  node-modules-tools@0.6.8:
-    resolution: {integrity: sha512-ef6GW/ZZYgb+2K3a6yfMiEBV2sJBynn+uL2lYOg4wdWwpUhCJX/ebfhR3dwSntLqdORkxm8/IjPJuE2DDTXWxA==}
+  node-modules-tools@0.6.9:
+    resolution: {integrity: sha512-xe8FEt/NOI+KGYvhFhNyDrO/7HQ7mfEGY41UOjewQ2eYcCzRul6lwvCfIm9y5LeYqpJNKlqRCXVxyhazYfX+rw==}
 
   node-polyfill-webpack-plugin@2.0.1:
     resolution: {integrity: sha512-ZUMiCnZkP1LF0Th2caY6J/eKKoA0TefpoVa68m/LQU1I/mE8rGt4fNYGgNuCcK+aG8P8P43nbeJ2RqJMOL/Y1A==}
@@ -15830,7 +15830,7 @@ snapshots:
 
   ansi-styles@6.2.1: {}
 
-  ansis@3.17.0: {}
+  ansis@4.1.0: {}
 
   any-promise@1.3.0: {}
 
@@ -19412,9 +19412,9 @@ snapshots:
 
   node-mock-http@1.0.0: {}
 
-  node-modules-inspector@0.6.8:
+  node-modules-inspector@0.6.9:
     dependencies:
-      ansis: 3.17.0
+      ansis: 4.1.0
       birpc: 2.3.0
       cac: 6.7.14
       fast-npm-meta: 0.4.3
@@ -19423,7 +19423,7 @@ snapshots:
       launch-editor: 2.10.0
       mlly: 1.7.4
       mrmime: 2.0.1
-      node-modules-tools: 0.6.8
+      node-modules-tools: 0.6.9
       ohash: 2.0.11
       open: 10.1.2
       p-limit: 6.2.0
@@ -19456,7 +19456,7 @@ snapshots:
       - uploadthing
       - utf-8-validate
 
-  node-modules-tools@0.6.8:
+  node-modules-tools@0.6.9:
     dependencies:
       js-yaml: 4.1.0
       p-limit: 6.2.0
