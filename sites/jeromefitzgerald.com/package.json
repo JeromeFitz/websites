@@ -138,7 +138,7 @@
     "@tailwindcss/typography": "0.5.16",
     "@types/lodash": "4.17.17",
     "@types/pluralize": "0.0.33",
-    "@types/react": "19.1.6",
+    "@types/react": "19.1.7",
     "@types/react-dom": "19.1.6",
     "@types/valid-url": "1.0.7",
     "plaiceholder": "3.0.0",
