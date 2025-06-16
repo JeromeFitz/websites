@@ -45,8 +45,8 @@ importers:
         specifier: 2.1.10
         version: 2.1.10
       '@jeromefitz/release-notes-generator':
-        specifier: 3.1.9
-        version: 3.1.9(lodash@4.17.21)
+        specifier: 3.1.10
+        version: 3.1.10(lodash@4.17.21)
       '@jeromefitz/semantic':
         specifier: 11.1.6
         version: 11.1.6(@jeromefitz/conventional-gitmoji@4.0.17(lodash@4.17.21))(typescript@5.8.3)
@@ -2528,8 +2528,8 @@ packages:
     resolution: {integrity: sha512-L7puCPkw1G3A2RJOQdexBp7WmsPPUGxGcth0wCikKgGzrP3jEyRvUhdUM5ycg5c1n4v7W534XBXGTd20+UahPA==}
     engines: {node: '>=20'}
 
-  '@jeromefitz/release-notes-generator@3.1.9':
-    resolution: {integrity: sha512-caXLkj4pQGVzsLkUkly7PEWGu+XmpqjRS+jizISspoAafBP+wtMfHUXYK6PS9EKILtovGIebahtZ+k7YQQlX8Q==}
+  '@jeromefitz/release-notes-generator@3.1.10':
+    resolution: {integrity: sha512-p2CWfw/nCkvkIzhHBw0v1UXzaJaFAY6wX6od4NOQ0Y2Ij03CWXVMr72d4os9dL4Sg2i4cwl7mCcnvYqkvx7NHw==}
     engines: {node: '>=20'}
     peerDependencies:
       lodash: ^4.17.21
@@ -5669,6 +5669,11 @@ packages:
 
   conventional-commits-parser@6.1.0:
     resolution: {integrity: sha512-5nxDo7TwKB5InYBl4ZC//1g9GRwB/F3TXOGR9hgUjMGfvSP4Vu5NkpNro2+1+TIEy1vwxApl5ircECr2ri5JIw==}
+    engines: {node: '>=18'}
+    hasBin: true
+
+  conventional-commits-parser@6.2.0:
+    resolution: {integrity: sha512-uLnoLeIW4XaoFtH37qEcg/SXMJmKF4vi7V0H2rnPueg+VEtFGA/asSCNTcq4M/GQ6QmlzchAEtOoDTtKqWeHag==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -12191,11 +12196,11 @@ snapshots:
       - prettier-plugin-style-order
       - prettier-plugin-svelte
 
-  '@jeromefitz/release-notes-generator@3.1.9(lodash@4.17.21)':
+  '@jeromefitz/release-notes-generator@3.1.10(lodash@4.17.21)':
     dependencies:
       '@octokit/rest': 22.0.0
       conventional-commits-filter: 5.0.0
-      conventional-commits-parser: 6.1.0
+      conventional-commits-parser: 6.2.0
       date-fns: 4.1.0
       import-from-esm: 2.0.0
       lodash: 4.17.21
@@ -16422,6 +16427,10 @@ snapshots:
   conventional-commits-filter@5.0.0: {}
 
   conventional-commits-parser@6.1.0:
+    dependencies:
+      meow: 13.2.0
+
+  conventional-commits-parser@6.2.0:
     dependencies:
       meow: 13.2.0
 
