@@ -42,7 +42,7 @@ function ListWrapper({ events }: { events: Event[] }) {
           const imageUrl = seoImage[seoImage?.type]?.url
           const { key } = getImageKeySlug(imageUrl)
           const imageKeyValue = await getImageKeyValue({ key })
-          const image: any = imageKeyValue[0].value[0]
+          const image: any = imageKeyValue[0]?.value[0]
 
           return (
             <Box
@@ -86,7 +86,7 @@ function ListWrapper({ events }: { events: Event[] }) {
                           'max-w-full object-cover align-middle',
                           'transition-all duration-700 hover:scale-[1.05]',
                         )}
-                        src={image.src}
+                        src={image?.src}
                       />
                     </NextLink>
                   </Box>
