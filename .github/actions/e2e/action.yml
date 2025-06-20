@@ -76,10 +76,10 @@ runs:
     #   #   TURBO_TOKEN: ${{ inputs.TURBO_TOKEN }}
     #   #   VERCEL_ENV: ${{ inputs.VERCEL_ENV }}
     #   run: |
-    #     pnpm add @lhci/cli@0.14.0 --global
-    #   # pnpm dlx @lhci/cli@0.14.0
+    #     pnpm add @lhci/cli@0.15.0 --global
+    #   # pnpm dlx @lhci/cli@0.15.0
     #   # run: |
-    #   #   npx @lhci/cli@0.14.0 autorun --config="./sites/${{ inputs.WEBSITE }}/lighthouse.config.js"
+    #   #   npx @lhci/cli@0.15.0 autorun --config="./sites/${{ inputs.WEBSITE }}/lighthouse.config.js"
     - name: '💡  Lighthouse: ${{ inputs.WEBSITE }}'
       id: test-lighthouse
       shell: bash

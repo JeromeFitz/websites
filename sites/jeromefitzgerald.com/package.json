@@ -28,7 +28,7 @@
     "dev": "NODE_NO_WARNINGS=1 next dev --turbopack --experimental-https",
     "format": "pnpm run format:lint",
     "format:lint": "pnpm lint:eslint --fix",
-    "lhci": "pnpm --package=@lhci/cli@0.14.0 dlx lhci autorun --config=.lighthouserc.cjs",
+    "lhci": "pnpm --package=@lhci/cli@0.15.0 dlx lhci autorun --config=.lighthouserc.cjs",
     "lint": "concurrently \"pnpm run lint:eslint\" \"pnpm run lint:typescript\"",
     "lint:eslint": "eslint ./src --max-warnings=0",
     "lint:typescript": "tsc --noEmit --declaration",
