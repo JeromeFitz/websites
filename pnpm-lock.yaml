@@ -81,8 +81,8 @@ importers:
         specifier: 4.17.21
         version: 4.17.21
       node-modules-inspector:
-        specifier: 0.6.10
-        version: 0.6.10
+        specifier: 1.0.0
+        version: 1.0.0
       semantic-release:
         specifier: 24.2.5
         version: 24.2.5(typescript@5.8.3)
@@ -8236,12 +8236,12 @@ packages:
   node-mock-http@1.0.0:
     resolution: {integrity: sha512-0uGYQ1WQL1M5kKvGRXWQ3uZCHtLTO8hln3oBjIusM75WoesZ909uQJs/Hb946i2SS+Gsrhkaa6iAO17jRIv6DQ==}
 
-  node-modules-inspector@0.6.10:
-    resolution: {integrity: sha512-XwAnqQdQIY5uVpKFnrzcLQIh4Lz7xxvdqMHnDSDmuwnezHB1yGSwKwP4WPAfAiFIpqUDukLNdbSl7jtd2aBEpw==}
+  node-modules-inspector@1.0.0:
+    resolution: {integrity: sha512-7u+diiGdYLC0ij3eqifVdQ4AlxB/5aaPnoVXhlhw+gxLIBbT3ZagsXoUWsl0B5Px17VfHffVhCtVx9nu5nxnvQ==}
     hasBin: true
 
-  node-modules-tools@0.6.10:
-    resolution: {integrity: sha512-5rqLdTcCRjxj5Mu4IjO894of2CUj666qEIp6Ro+iphNZ8mxRa0/iXhu76iRaQP6p4piZVIyvPTEy+ZTIuuT7yQ==}
+  node-modules-tools@1.0.0:
+    resolution: {integrity: sha512-5XS4qAAdv8SIEH1tUisfe25EIituEkoLEQOYLtJdi9isdapx6dzKAYvB0GJpUcYU7W3pQoe3Tpnv9qpe8xK6nA==}
 
   node-polyfill-webpack-plugin@2.0.1:
     resolution: {integrity: sha512-ZUMiCnZkP1LF0Th2caY6J/eKKoA0TefpoVa68m/LQU1I/mE8rGt4fNYGgNuCcK+aG8P8P43nbeJ2RqJMOL/Y1A==}
@@ -19354,7 +19354,7 @@ snapshots:
 
   node-mock-http@1.0.0: {}
 
-  node-modules-inspector@0.6.10:
+  node-modules-inspector@1.0.0:
     dependencies:
       ansis: 4.1.0
       birpc: 2.4.0
@@ -19365,7 +19365,7 @@ snapshots:
       launch-editor: 2.10.0
       mlly: 1.7.4
       mrmime: 2.0.1
-      node-modules-tools: 0.6.10
+      node-modules-tools: 1.0.0
       ohash: 2.0.11
       open: 10.1.2
       p-limit: 6.2.0
@@ -19398,7 +19398,7 @@ snapshots:
       - uploadthing
       - utf-8-validate
 
-  node-modules-tools@0.6.10:
+  node-modules-tools@1.0.0:
     dependencies:
       js-yaml: 4.1.0
       p-limit: 6.2.0
