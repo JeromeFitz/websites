@@ -81,8 +81,8 @@ importers:
         specifier: 4.17.21
         version: 4.17.21
       node-modules-inspector:
-        specifier: 0.6.9
-        version: 0.6.9
+        specifier: 0.6.10
+        version: 0.6.10
       semantic-release:
         specifier: 24.2.5
         version: 24.2.5(typescript@5.8.3)
@@ -5338,8 +5338,8 @@ packages:
     resolution: {integrity: sha512-Ceh+7ox5qe7LJuLHoY0feh3pHuUDHAcRUeyL2VYghZwfpkNIy/+8Ocg0a3UuSoYzavmylwuLWQOf3hl0jjMMIw==}
     engines: {node: '>=8'}
 
-  birpc@2.3.0:
-    resolution: {integrity: sha512-ijbtkn/F3Pvzb6jHypHRyve2QApOCZDR25D/VnkY2G/lBNcXCTsnsCxgY4k4PkVB7zfwzYbY3O9Lcqe3xufS5g==}
+  birpc@2.4.0:
+    resolution: {integrity: sha512-5IdNxTyhXHv2UlgnPHQ0h+5ypVmkrYHzL8QT+DwFZ//2N/oNV8Ch+BCRmTJ3x6/z9Axo/cXYBc9eprsUVK/Jsg==}
 
   bn.js@4.12.2:
     resolution: {integrity: sha512-n4DSx829VRTRByMRGdjQ9iqsN0Bh4OolPsFnaZBLcbi8iXcB+kJ9s7EnRt4wILZNV3kPLHkRVfOc/HvhC3ovDw==}
@@ -8236,12 +8236,12 @@ packages:
   node-mock-http@1.0.0:
     resolution: {integrity: sha512-0uGYQ1WQL1M5kKvGRXWQ3uZCHtLTO8hln3oBjIusM75WoesZ909uQJs/Hb946i2SS+Gsrhkaa6iAO17jRIv6DQ==}
 
-  node-modules-inspector@0.6.9:
-    resolution: {integrity: sha512-TNu5Ql9i5vLb4Jl5B5zmJuRrByC+8Ze+bewgHi4I6cEY4+dAeECrPm7J9r7dA0K8oP76ZZko6KTzcVsknVYvkA==}
+  node-modules-inspector@0.6.10:
+    resolution: {integrity: sha512-XwAnqQdQIY5uVpKFnrzcLQIh4Lz7xxvdqMHnDSDmuwnezHB1yGSwKwP4WPAfAiFIpqUDukLNdbSl7jtd2aBEpw==}
     hasBin: true
 
-  node-modules-tools@0.6.9:
-    resolution: {integrity: sha512-xe8FEt/NOI+KGYvhFhNyDrO/7HQ7mfEGY41UOjewQ2eYcCzRul6lwvCfIm9y5LeYqpJNKlqRCXVxyhazYfX+rw==}
+  node-modules-tools@0.6.10:
+    resolution: {integrity: sha512-5rqLdTcCRjxj5Mu4IjO894of2CUj666qEIp6Ro+iphNZ8mxRa0/iXhu76iRaQP6p4piZVIyvPTEy+ZTIuuT7yQ==}
 
   node-polyfill-webpack-plugin@2.0.1:
     resolution: {integrity: sha512-ZUMiCnZkP1LF0Th2caY6J/eKKoA0TefpoVa68m/LQU1I/mE8rGt4fNYGgNuCcK+aG8P8P43nbeJ2RqJMOL/Y1A==}
@@ -16083,7 +16083,7 @@ snapshots:
 
   binary-extensions@2.3.0: {}
 
-  birpc@2.3.0: {}
+  birpc@2.4.0: {}
 
   bn.js@4.12.2: {}
 
@@ -19354,10 +19354,10 @@ snapshots:
 
   node-mock-http@1.0.0: {}
 
-  node-modules-inspector@0.6.9:
+  node-modules-inspector@0.6.10:
     dependencies:
       ansis: 4.1.0
-      birpc: 2.3.0
+      birpc: 2.4.0
       cac: 6.7.14
       fast-npm-meta: 0.4.3
       get-port-please: 3.1.2
@@ -19365,7 +19365,7 @@ snapshots:
       launch-editor: 2.10.0
       mlly: 1.7.4
       mrmime: 2.0.1
-      node-modules-tools: 0.6.9
+      node-modules-tools: 0.6.10
       ohash: 2.0.11
       open: 10.1.2
       p-limit: 6.2.0
@@ -19398,7 +19398,7 @@ snapshots:
       - uploadthing
       - utf-8-validate
 
-  node-modules-tools@0.6.9:
+  node-modules-tools@0.6.10:
     dependencies:
       js-yaml: 4.1.0
       p-limit: 6.2.0
