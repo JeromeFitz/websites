@@ -45,8 +45,8 @@ importers:
         specifier: 2.1.11
         version: 2.1.11
       '@jeromefitz/release-notes-generator':
-        specifier: 3.1.11
-        version: 3.1.11(lodash@4.17.21)
+        specifier: 3.1.12
+        version: 3.1.12(lodash@4.17.21)
       '@jeromefitz/semantic':
         specifier: 11.1.6
         version: 11.1.6(@jeromefitz/conventional-gitmoji@4.0.19(lodash@4.17.21))(typescript@5.8.3)
@@ -2572,8 +2572,8 @@ packages:
     resolution: {integrity: sha512-sRoqgh+IbZSseEshq7lQK0LTNSyasCTbbWQ0vsZtXaJdHVCzEdDUj1ZU93T9qSKNkikII9koZRJ3VqwENJU1qA==}
     engines: {node: '>=20'}
 
-  '@jeromefitz/release-notes-generator@3.1.11':
-    resolution: {integrity: sha512-AcZa+O/SzoKKuRn2uketZY9oEN9lQCVZz1E1qGASu3EH8Z3UHl/ozzsyNtT3r4J9G1NCmdjU1suyr0GB5LReTA==}
+  '@jeromefitz/release-notes-generator@3.1.12':
+    resolution: {integrity: sha512-TIQF0RfhnCsuAeM+wgnMPBbrSir5SntzR8bjNkx0L4HrVFu6z1LUZH46khKdrdao/uXS+gPyH5dpAoowN4UgmA==}
     engines: {node: '>=20'}
     peerDependencies:
       lodash: ^4.17.21
@@ -12379,7 +12379,7 @@ snapshots:
       - prettier-plugin-style-order
       - prettier-plugin-svelte
 
-  '@jeromefitz/release-notes-generator@3.1.11(lodash@4.17.21)':
+  '@jeromefitz/release-notes-generator@3.1.12(lodash@4.17.21)':
     dependencies:
       '@octokit/rest': 22.0.0
       conventional-commits-filter: 5.0.0
