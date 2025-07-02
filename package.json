@@ -41,7 +41,7 @@
     "@jeromefitz/semantic": "11.1.7",
     "@jeromefitz/tsconfig": "2.1.0",
     "@manypkg/cli": "0.24.0",
-    "@types/lodash": "4.17.19",
+    "@types/lodash": "4.17.20",
     "@types/node": "22.15.34",
     "ccommit": "3.1.4",
     "concurrently": "9.2.0",
