@@ -241,8 +241,8 @@ importers:
         specifier: workspace:*
         version: link:../tailwind-config
       '@mantine/hooks':
-        specifier: 8.1.2
-        version: 8.1.2(react@19.1.0)
+        specifier: 8.1.3
+        version: 8.1.3(react@19.1.0)
       next:
         specifier: 15.3.5
         version: 15.3.5(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -613,8 +613,8 @@ importers:
         specifier: 3.1.7
         version: 3.1.7(lodash@4.17.21)
       '@mantine/hooks':
-        specifier: 8.1.2
-        version: 8.1.2(react@19.1.0)
+        specifier: 8.1.3
+        version: 8.1.3(react@19.1.0)
       '@notionhq/client':
         specifier: 3.1.3
         version: 3.1.3
@@ -905,8 +905,8 @@ importers:
         specifier: 3.1.7
         version: 3.1.7(lodash@4.17.21)
       '@mantine/hooks':
-        specifier: 8.1.2
-        version: 8.1.2(react@19.1.0)
+        specifier: 8.1.3
+        version: 8.1.3(react@19.1.0)
       '@neondatabase/serverless':
         specifier: 1.0.1
         version: 1.0.1
@@ -2756,8 +2756,8 @@ packages:
   '@juggle/resize-observer@3.4.0':
     resolution: {integrity: sha512-dfLbk+PwWvFzSxwk3n5ySL0hfBog779o8h68wK/7/APo/7cgyWp5jcXockbxdk5kFRkbeXWm4Fbi9FrdN381sA==}
 
-  '@mantine/hooks@8.1.2':
-    resolution: {integrity: sha512-BrriTsiazqZ2fLuL7UDasNTQJSaoJ7mN2qYVkdsiYI158lxJdUaFWHhd6BDyzK+W6thvBx2D+R/hh1rsWWefdQ==}
+  '@mantine/hooks@8.1.3':
+    resolution: {integrity: sha512-yL4SbyYjrkmtIhscswajNz9RL0iO2+V8CMtOi0KISch2rPNvTAJNumFuZaXgj4UHeDc0JQYSmcZ+EW8NGm7xcQ==}
     peerDependencies:
       react: ^18.x || ^19.x
 
@@ -12787,7 +12787,7 @@ snapshots:
 
   '@juggle/resize-observer@3.4.0': {}
 
-  '@mantine/hooks@8.1.2(react@19.1.0)':
+  '@mantine/hooks@8.1.3(react@19.1.0)':
     dependencies:
       react: 19.1.0
 
