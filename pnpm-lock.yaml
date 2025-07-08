@@ -336,8 +336,8 @@ importers:
         specifier: 0.34.1
         version: 0.34.1
       zod:
-        specifier: 3.25.75
-        version: 3.25.75
+        specifier: 3.25.76
+        version: 3.25.76
 
   packages/next-notion:
     dependencies:
@@ -844,8 +844,8 @@ importers:
         specifier: 1.0.9
         version: 1.0.9
       zod:
-        specifier: 3.25.75
-        version: 3.25.75
+        specifier: 3.25.76
+        version: 3.25.76
       zustand:
         specifier: 5.0.6
         version: 5.0.6(immer@10.1.1)(react@19.1.0)
@@ -1065,7 +1065,7 @@ importers:
         version: 0.3.1(drizzle-orm@0.44.2(@neondatabase/serverless@1.0.1)(@upstash/redis@1.35.1)(postgres@3.4.7))
       drizzle-zod:
         specifier: 0.8.2
-        version: 0.8.2(drizzle-orm@0.44.2(@neondatabase/serverless@1.0.1)(@upstash/redis@1.35.1)(postgres@3.4.7))(zod@3.25.75)
+        version: 0.8.2(drizzle-orm@0.44.2(@neondatabase/serverless@1.0.1)(@upstash/redis@1.35.1)(postgres@3.4.7))(zod@3.25.76)
       emoji-regex:
         specifier: 10.4.0
         version: 10.4.0
@@ -1206,8 +1206,8 @@ importers:
         specifier: 5.8.3
         version: 5.8.3
       zod:
-        specifier: 3.25.75
-        version: 3.25.75
+        specifier: 3.25.76
+        version: 3.25.76
 
 packages:
 
@@ -11068,8 +11068,8 @@ packages:
     resolution: {integrity: sha512-GQHQqAopRhwU8Kt1DDM8NjibDXHC8eoh1erhGAJPEyveY9qqVeXvVikNKrDz69sHowPMorbPUrH/mx8c50eiBQ==}
     engines: {node: '>=18'}
 
-  zod@3.25.75:
-    resolution: {integrity: sha512-OhpzAmVzabPOL6C3A3gpAifqr9MqihV/Msx3gor2b2kviCgcb+HM9SEOpMWwwNp9MRunWnhtAKUoo0AHhjyPPg==}
+  zod@3.25.76:
+    resolution: {integrity: sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==}
 
   zustand@5.0.6:
     resolution: {integrity: sha512-ihAqNeUVhe0MAD+X8M5UzqyZ9k3FFZLBTtqo6JLPwV53cbRB/mJwBI0PxcIgqhBBHlEs8G45OTDTMq3gNcLq3A==}
@@ -17362,10 +17362,10 @@ snapshots:
     optionalDependencies:
       drizzle-orm: 0.44.2(@neondatabase/serverless@1.0.1)(@upstash/redis@1.35.1)(postgres@3.4.7)
 
-  drizzle-zod@0.8.2(drizzle-orm@0.44.2(@neondatabase/serverless@1.0.1)(@upstash/redis@1.35.1)(postgres@3.4.7))(zod@3.25.75):
+  drizzle-zod@0.8.2(drizzle-orm@0.44.2(@neondatabase/serverless@1.0.1)(@upstash/redis@1.35.1)(postgres@3.4.7))(zod@3.25.76):
     dependencies:
       drizzle-orm: 0.44.2(@neondatabase/serverless@1.0.1)(@upstash/redis@1.35.1)(postgres@3.4.7)
-      zod: 3.25.75
+      zod: 3.25.76
 
   dunder-proto@1.0.1:
     dependencies:
@@ -22596,7 +22596,7 @@ snapshots:
 
   yoctocolors@2.1.1: {}
 
-  zod@3.25.75: {}
+  zod@3.25.76: {}
 
   zustand@5.0.6(@types/react@19.1.8)(react@19.1.0):
     optionalDependencies:
