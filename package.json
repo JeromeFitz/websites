@@ -42,7 +42,7 @@
     "@jeromefitz/tsconfig": "2.1.0",
     "@manypkg/cli": "0.24.0",
     "@types/lodash": "4.17.20",
-    "@types/node": "22.16.2",
+    "@types/node": "22.16.3",
     "ccommit": "3.1.4",
     "concurrently": "9.2.0",
     "dotenv": "17.2.0",
