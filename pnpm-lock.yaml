@@ -1058,14 +1058,14 @@ importers:
         specifier: 0.31.4
         version: 0.31.4
       drizzle-orm:
-        specifier: 0.44.2
-        version: 0.44.2(@neondatabase/serverless@1.0.1)(@upstash/redis@1.35.1)(postgres@3.4.7)
+        specifier: 0.44.3
+        version: 0.44.3(@neondatabase/serverless@1.0.1)(@upstash/redis@1.35.1)(postgres@3.4.7)
       drizzle-seed:
         specifier: 0.3.1
-        version: 0.3.1(drizzle-orm@0.44.2(@neondatabase/serverless@1.0.1)(@upstash/redis@1.35.1)(postgres@3.4.7))
+        version: 0.3.1(drizzle-orm@0.44.3(@neondatabase/serverless@1.0.1)(@upstash/redis@1.35.1)(postgres@3.4.7))
       drizzle-zod:
         specifier: 0.8.2
-        version: 0.8.2(drizzle-orm@0.44.2(@neondatabase/serverless@1.0.1)(@upstash/redis@1.35.1)(postgres@3.4.7))(zod@3.25.76)
+        version: 0.8.2(drizzle-orm@0.44.3(@neondatabase/serverless@1.0.1)(@upstash/redis@1.35.1)(postgres@3.4.7))(zod@3.25.76)
       emoji-regex:
         specifier: 10.4.0
         version: 10.4.0
@@ -6317,8 +6317,8 @@ packages:
     resolution: {integrity: sha512-tCPWVZWZqWVx2XUsVpJRnH9Mx0ClVOf5YUHerZ5so1OKSlqww4zy1R5ksEdGRcO3tM3zj0PYN6V48TbQCL1RfA==}
     hasBin: true
 
-  drizzle-orm@0.44.2:
-    resolution: {integrity: sha512-zGAqBzWWkVSFjZpwPOrmCrgO++1kZ5H/rZ4qTGeGOe18iXGVJWf3WPfHOVwFIbmi8kHjfJstC6rJomzGx8g/dQ==}
+  drizzle-orm@0.44.3:
+    resolution: {integrity: sha512-8nIiYQxOpgUicEL04YFojJmvC4DNO4KoyXsEIqN44+g6gNBr6hmVpWk3uyAt4CaTiRGDwoU+alfqNNeonLAFOQ==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
       '@cloudflare/workers-types': '>=4'
@@ -17433,21 +17433,21 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.44.2(@neondatabase/serverless@1.0.1)(@upstash/redis@1.35.1)(postgres@3.4.7):
+  drizzle-orm@0.44.3(@neondatabase/serverless@1.0.1)(@upstash/redis@1.35.1)(postgres@3.4.7):
     optionalDependencies:
       '@neondatabase/serverless': 1.0.1
       '@upstash/redis': 1.35.1
       postgres: 3.4.7
 
-  drizzle-seed@0.3.1(drizzle-orm@0.44.2(@neondatabase/serverless@1.0.1)(@upstash/redis@1.35.1)(postgres@3.4.7)):
+  drizzle-seed@0.3.1(drizzle-orm@0.44.3(@neondatabase/serverless@1.0.1)(@upstash/redis@1.35.1)(postgres@3.4.7)):
     dependencies:
       pure-rand: 6.1.0
     optionalDependencies:
-      drizzle-orm: 0.44.2(@neondatabase/serverless@1.0.1)(@upstash/redis@1.35.1)(postgres@3.4.7)
+      drizzle-orm: 0.44.3(@neondatabase/serverless@1.0.1)(@upstash/redis@1.35.1)(postgres@3.4.7)
 
-  drizzle-zod@0.8.2(drizzle-orm@0.44.2(@neondatabase/serverless@1.0.1)(@upstash/redis@1.35.1)(postgres@3.4.7))(zod@3.25.76):
+  drizzle-zod@0.8.2(drizzle-orm@0.44.3(@neondatabase/serverless@1.0.1)(@upstash/redis@1.35.1)(postgres@3.4.7))(zod@3.25.76):
     dependencies:
-      drizzle-orm: 0.44.2(@neondatabase/serverless@1.0.1)(@upstash/redis@1.35.1)(postgres@3.4.7)
+      drizzle-orm: 0.44.3(@neondatabase/serverless@1.0.1)(@upstash/redis@1.35.1)(postgres@3.4.7)
       zod: 3.25.76
 
   dunder-proto@1.0.1:
