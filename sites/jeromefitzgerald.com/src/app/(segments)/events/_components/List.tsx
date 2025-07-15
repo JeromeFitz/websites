@@ -27,6 +27,7 @@ import { cx } from '@/utils/cx'
 import { AccordionClient } from './List.Client'
 
 function ListWrapper({ events }: { events: Event[] }) {
+  // return null
   return (
     <Box>
       <Grid
@@ -244,8 +245,9 @@ function Listing({ items }: { items: Event[] }) {
           <Text size={{ initial: '3', md: '5' }}>
             Upcoming Events that feature comedian Jerome Fitzgerald.{' '}
             <Em>
-              Though primarily based in Pittsburgh, occasionally he will venture out
-              into the wide world and do shows elsewhere.
+              Based in Brooklyn (<Text className="line-through">Pittsburgh</Text>),
+              occasionally he will venture out into the wide world and do shows
+              elsewhere.
             </Em>{' '}
             <Strong>(And he is always very game to do so.)</Strong>
           </Text>

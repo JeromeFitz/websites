@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   authors: [{ name: 'Jerome Fitzgerald', url: 'https://jeromefitzgerald.com' }],
   creator: 'Jerome Fitzgerald',
   description:
-    'Jerome Fitzgerald is an actor, comedian, & writer hailing from Pittsburgh, PA.',
+    'Jerome Fitzgerald is an actor, comedian, & writer in Brooklyn, NY. Hailing from Pittsburgh, PA.',
   metadataBase: new URL('https://jeromefitzgerald.com'),
   openGraph: {
     images: [
