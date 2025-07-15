@@ -57,6 +57,8 @@ function CTA({ href, isDisabled = false }: { href: string; isDisabled: boolean }
 
 function EventSlugHeaderData({ item }: { item: Event }) {
   const isEventOver = isAfter(Date.now(), item.dateIso)
+  const isNoTicketUrl = !item.urlTicket
+  const isDisabled = isEventOver || isNoTicketUrl
 
   return (
     <>
@@ -76,7 +78,7 @@ function EventSlugHeaderData({ item }: { item: Event }) {
       >
         <div className="contents size-full">
           <div className={cx('ml-0.5 w-full pb-2')}>
-            <CTA href={item.urlTicket} isDisabled={isEventOver} />
+            <CTA href={item.urlTicket} isDisabled={isDisabled} />
           </div>
         </div>
       </div>
@@ -94,7 +96,7 @@ function EventSlugHeaderData({ item }: { item: Event }) {
             position="fixed"
             width="100%"
           >
-            <CTA href={item.urlTicket} isDisabled={isEventOver} />
+            <CTA href={item.urlTicket} isDisabled={isDisabled} />
           </Box>
         </Portal>
       )}
