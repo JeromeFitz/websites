@@ -23,7 +23,7 @@ const envSchema = z.object({
   OVERRIDE_CACHE: z
     .string()
     .transform((value) => ['1', 'on', 'true', 'yes'].includes(value.toLowerCase()))
-    .default('false'),
+    .default(false),
   VERCEL_ENV: z
     .enum(['development', 'production', 'preview'])
     .default('development'),
@@ -47,9 +47,9 @@ const envClientParsed = envSchema.safeParse({
 if (!envClientParsed.success) {
   console.error(
     `- warn [ ⚠️ ] (client) Missing or invalid environment variable${
-      envClientParsed.error.errors.length > 1 ? 's' : ''
+      envClientParsed.error.issues.length > 1 ? 's' : ''
     }:
-${envClientParsed.error.errors.map((error) => `  ${error.path}: ${error.message}`).join('\n')}
+${envClientParsed.error.issues.map((issue) => `  ${issue.path}: ${issue.message}`).join('\n')}
 `,
   )
   process.exit(1)
