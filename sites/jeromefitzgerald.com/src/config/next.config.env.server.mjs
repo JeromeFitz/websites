@@ -58,9 +58,9 @@ const envServerParsed = envSchema.safeParse({
 if (!envServerParsed.success) {
   console.error(
     `- warn [ ⚠️ ] (server) Missing or invalid environment variable${
-      envServerParsed.error.errors.length > 1 ? 's' : ''
+      envServerParsed.error.issues.length > 1 ? 's' : ''
     }:
-${envServerParsed.error.errors.map((error) => `  ${error.path}: ${error.message}`).join('\n')}
+${envServerParsed.error.issues.map((issue) => `  ${issue.path}: ${issue.message}`).join('\n')}
 `,
   )
   process.exit(1)
