@@ -56,5 +56,7 @@ ${envClientParsed.error.issues.map((issue) => `  ${issue.path}: ${issue.message}
 }
 
 const envClient = Object.freeze(envClientParsed.data)
+console.dir(`envClient:`)
+console.dir(envClient)
 
 export { envClient }

@@ -4,8 +4,10 @@
 import { revalidatePath } from 'next/cache.js'
 import { NextRequest, NextResponse } from 'next/server.js'
 
+import type { Event } from '@/lib/drizzle/schemas/cache-events/types'
 import type { Show } from '@/lib/drizzle/schemas/cache-shows/types'
 
+import { getEvent } from '@/lib/drizzle/schemas/cache-events/queries'
 import { getShow } from '@/lib/drizzle/schemas/cache-shows/queries'
 import { buildInitialCache } from '@/lib/notion/buildInitialCache'
 import { getKey } from '@/utils/getKey'
@@ -30,7 +32,7 @@ async function test({
   path: string
   segment: string
 }): Promise<Validated> {
-  return { isDynamic: false, key: '/test', revalidated: true, timestamp: Date.now() }
+  return { isDynamic: false, key, revalidated: true, timestamp: Date.now() }
 }
 
 export async function POST(request: NextRequest) {
@@ -49,7 +51,17 @@ export async function POST(request: NextRequest) {
   }
 
   const key = getKey(segment, slug)
-  const items: Show[] = await getShow({ key })
+  console.dir(`key: ${key}`)
+  let items: Event[] | Show[] = []
+  if (segment === 'shows') {
+    console.dir(`=> events`)
+    items = await getShow({ key })
+  }
+  if (segment === 'events') {
+    console.dir(`=> events`)
+    items = await getEvent({ key })
+  }
+
   if (isEmpty(items)) {
     return NextResponse.json({
       revalidated: false,
@@ -57,7 +69,7 @@ export async function POST(request: NextRequest) {
     })
   }
   revalidatePath(key)
-  // await buildInitialCache({ revalidate: true, segment: 'shows' })
+  // await buildInitialCache({ revalidate: true, segment })
 
   const result = await test({ key, path, segment })
 
