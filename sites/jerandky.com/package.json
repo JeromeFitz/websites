@@ -83,7 +83,7 @@
     "@radix-ui/react-visually-hidden": "1.2.3",
     "@radix-ui/themes": "3.2.1",
     "@tanem/react-nprogress": "5.0.55",
-    "@upstash/ratelimit": "2.0.5",
+    "@upstash/ratelimit": "2.0.6",
     "@upstash/redis": "1.35.1",
     "@vercel/analytics": "1.5.0",
     "clsx": "2.1.1",
