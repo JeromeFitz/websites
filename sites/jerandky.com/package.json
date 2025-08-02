@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "@date-fns/tz": "1.2.0",
-    "@date-fns/utc": "2.1.0",
+    "@date-fns/utc": "2.1.1",
     "@heroicons/react": "2.2.0",
     "@jeromefitz/notion": "5.1.10",
     "@jeromefitz/spotify": "4.2.6",
