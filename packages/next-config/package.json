@@ -12,8 +12,8 @@
     "lodash": "4.17.21",
     "next": "15.4.4",
     "plaiceholder": "3.0.0",
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
+    "react": "19.1.1",
+    "react-dom": "19.1.1",
     "sharp": "0.34.1",
     "zod": "4.0.10"
   }

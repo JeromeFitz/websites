@@ -117,8 +117,8 @@
     "date-fns": "4.1.0",
     "ms": "3.0.0-canary.1",
     "next": "15.4.4",
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
+    "react": "19.1.1",
+    "react-dom": "19.1.1",
     "server-only": "0.0.1",
     "uuid": "11.1.0"
   },
