@@ -110,7 +110,7 @@
     "node-emoji": "2.2.0"
   },
   "devDependencies": {
-    "@date-fns/tz": "1.2.0",
+    "@date-fns/tz": "1.3.1",
     "@date-fns/utc": "2.1.1",
     "@jeromefitz/utils": "3.1.7",
     "@notionhq/client": "4.0.1",
