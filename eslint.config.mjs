@@ -10,6 +10,8 @@ import { configReact } from '@jeromefitz/eslint-config/react.js'
 import { configTailwind } from '@jeromefitz/eslint-config/tailwind.js'
 import { configTypescript } from '@jeromefitz/eslint-config/typescript.js'
 
+// For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
+// import storybook from 'eslint-plugin-storybook'
 import { defineConfig } from 'eslint/config'
 
 const __filename = fileURLToPath(import.meta.url)

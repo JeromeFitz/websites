@@ -1,5 +1,4 @@
-// import { withThemeByClassName } from '@storybook/addon-styling'
-import { MINIMAL_VIEWPORTS as viewports } from '@storybook/addon-viewport'
+import { INITIAL_VIEWPORTS as viewports } from 'storybook/viewport'
 
 import * as themes from './themes'
 import { DEFAULT_THEME, withTailwindTheme } from './withTailwindTheme.decorator'
