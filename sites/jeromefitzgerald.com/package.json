@@ -39,7 +39,7 @@
     "test:watch": "NODE_NO_WARNINGS=1 jest --watch"
   },
   "dependencies": {
-    "@date-fns/tz": "1.2.0",
+    "@date-fns/tz": "1.3.1",
     "@date-fns/utc": "2.1.1",
     "@heroicons/react": "2.2.0",
     "@jeromefitz/spotify": "4.2.6",
