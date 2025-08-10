@@ -35,7 +35,7 @@
   "dependencies": {
     "@jeromefitz/conventional-gitmoji": "4.0.20",
     "@jeromefitz/eslint-config": "5.0.0",
-    "@jeromefitz/lint-staged": "3.0.2",
+    "@jeromefitz/lint-staged": "3.0.3",
     "@jeromefitz/prettier-config": "2.1.13",
     "@jeromefitz/release-notes-generator": "3.1.13",
     "@jeromefitz/semantic": "11.1.8",
