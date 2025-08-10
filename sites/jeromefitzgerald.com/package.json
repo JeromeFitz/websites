@@ -146,6 +146,6 @@
     "tailwindcss-radix": "4.0.2",
     "tw-animate-css": "1.3.6",
     "typescript": "5.9.2",
-    "zod": "4.0.16"
+    "zod": "4.0.17"
   }
 }
