@@ -352,8 +352,8 @@ importers:
         version: 2.2.0
     devDependencies:
       '@date-fns/tz':
-        specifier: 1.3.1
-        version: 1.3.1
+        specifier: 1.4.1
+        version: 1.4.1
       '@date-fns/utc':
         specifier: 2.1.1
         version: 2.1.1
@@ -580,8 +580,8 @@ importers:
   sites/jerandky.com:
     dependencies:
       '@date-fns/tz':
-        specifier: 1.3.1
-        version: 1.3.1
+        specifier: 1.4.1
+        version: 1.4.1
       '@date-fns/utc':
         specifier: 2.1.1
         version: 2.1.1
@@ -875,8 +875,8 @@ importers:
   sites/jeromefitzgerald.com:
     dependencies:
       '@date-fns/tz':
-        specifier: 1.3.1
-        version: 1.3.1
+        specifier: 1.4.1
+        version: 1.4.1
       '@date-fns/utc':
         specifier: 2.1.1
         version: 2.1.1
@@ -1883,8 +1883,8 @@ packages:
     resolution: {integrity: sha512-Vd/9EVDiu6PPJt9yAh6roZP6El1xHrdvIVGjyBsHR0RYwNHgL7FJPyIIW4fANJNG6FtyZfvlRPpFI4ZM/lubvw==}
     engines: {node: '>=18'}
 
-  '@date-fns/tz@1.3.1':
-    resolution: {integrity: sha512-LnBOyuj+piItX/D5BWBSckBsuZyOt7Jg2obGNiObq7qjl1A2/8F+i4RS8/MmkSdnw6hOe6afrJLCWrUWZw5Mlw==}
+  '@date-fns/tz@1.4.1':
+    resolution: {integrity: sha512-P5LUNhtbj6YfI3iJjw5EL9eUAG6OitD0W3fWQcpQjDRc/QIsL0tRNuO1PcDvPccWL1fSTXXdE1ds+l95DV/OFA==}
 
   '@date-fns/utc@2.1.1':
     resolution: {integrity: sha512-SlJDfG6RPeEX8wEVv6ZB3kak4MmbtyiI2qX/5zuKdordbrhB/iaJ58GVMZgJ6P1sJaM1gMgENFYYeg1JWrCFrA==}
@@ -11173,7 +11173,7 @@ snapshots:
 
   '@csstools/css-tokenizer@3.0.4': {}
 
-  '@date-fns/tz@1.3.1': {}
+  '@date-fns/tz@1.4.1': {}
 
   '@date-fns/utc@2.1.1': {}
 
