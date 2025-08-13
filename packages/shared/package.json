@@ -136,7 +136,7 @@
   },
   "devDependencies": {
     "@jeromefitz/utils": "3.1.7",
-    "@notionhq/client": "4.0.1",
+    "@notionhq/client": "4.0.2",
     "@radix-ui/themes": "3.2.1",
     "@types/lodash": "4.17.20",
     "@upstash/ratelimit": "2.0.6",
