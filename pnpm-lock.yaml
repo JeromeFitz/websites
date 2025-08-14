@@ -6,7 +6,7 @@ settings:
 
 overrides:
   '@babel/core': 7.28.3
-  '@babel/helpers': 7.28.2
+  '@babel/helpers': 7.28.3
   '@babel/runtime': 7.28.2
   '@octokit/plugin-paginate-rest': ^13.0.0
   '@typescript-eslint/typescript-estree': ^8.26.1
@@ -1326,8 +1326,8 @@ packages:
     resolution: {integrity: sha512-NFJK2sHUvrjo8wAU/nQTWU890/zB2jj0qBcCbZbbf+005cAsv6tMjXz31fBign6M5ov1o0Bllu+9nbqkfsjjJQ==}
     engines: {node: '>=6.9.0'}
 
-  '@babel/helpers@7.28.2':
-    resolution: {integrity: sha512-/V9771t+EgXz62aCcyofnQhGM8DQACbRhvzKFsXKC9QM+5MadF8ZmIm0crDMaz3+o0h0zXfJnd4EhbYbxsrcFw==}
+  '@babel/helpers@7.28.3':
+    resolution: {integrity: sha512-PTNtvUQihsAsDHMOP5pfobP8C6CM4JWXmP8DrEIt46c3r2bf87Ua1zoqevsMo9g+tWDwgWrFP5EIxuBx5RudAw==}
     engines: {node: '>=6.9.0'}
 
   '@babel/parser@7.28.0':
@@ -10379,7 +10379,7 @@ snapshots:
       '@babel/generator': 7.28.3
       '@babel/helper-compilation-targets': 7.27.2
       '@babel/helper-module-transforms': 7.28.3(@babel/core@7.28.3)
-      '@babel/helpers': 7.28.2
+      '@babel/helpers': 7.28.3
       '@babel/parser': 7.28.3
       '@babel/template': 7.27.2
       '@babel/traverse': 7.28.3
@@ -10538,7 +10538,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@babel/helpers@7.28.2':
+  '@babel/helpers@7.28.3':
     dependencies:
       '@babel/template': 7.27.2
       '@babel/types': 7.28.2
