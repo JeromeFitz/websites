@@ -78,8 +78,8 @@ importers:
         specifier: 4.17.21
         version: 4.17.21
       node-modules-inspector:
-        specifier: 1.1.0
-        version: 1.1.0
+        specifier: 1.1.1
+        version: 1.1.1
       semantic-release:
         specifier: 24.2.7
         version: 24.2.7(typescript@5.9.2)
@@ -7577,10 +7577,6 @@ packages:
     resolution: {integrity: sha512-/imKNG4EbWNrVjoNC/1H5/9GFy+tqjGBHCaSsN+P2RnPqjsLmv6UD3Ej+Kj8nBWaRAwyk7kK5ZUc+OEatnTR3A==}
     hasBin: true
 
-  jiti@2.4.2:
-    resolution: {integrity: sha512-rg9zJN+G4n2nfJl5MW3BMygZX56zKPNVEYYqq7adpmMh4Jn2QNEwhvQlFy6jPVdcod7txZtKHWnyZiA3a0zP7A==}
-    hasBin: true
-
   jiti@2.5.1:
     resolution: {integrity: sha512-twQoecYPiVA5K/h6SxtORw/Bs3ar+mLUtoPSc7iMXzQzK8d7eJ/R09wmTwAjiamETn1cXYPGfNnu7DMoHgu12w==}
     hasBin: true
@@ -8170,12 +8166,12 @@ packages:
   node-mock-http@1.0.2:
     resolution: {integrity: sha512-zWaamgDUdo9SSLw47we78+zYw/bDr5gH8pH7oRRs8V3KmBtu8GLgGIbV2p/gRPd3LWpEOpjQj7X1FOU3VFMJ8g==}
 
-  node-modules-inspector@1.1.0:
-    resolution: {integrity: sha512-AoD10W7mbNFyK660YW1RL1VwMUQ1g3IKiPIuyaJgO5/KkjOpE86F78gMKEWvX88pQRd8+VCZcKUof/MIMpxITg==}
+  node-modules-inspector@1.1.1:
+    resolution: {integrity: sha512-7d5HAgVT8+4ABnaDJH/361Q0IHZw8TBXL6UyAMJJ1Y7mW+8qm5v20RtZg7weKTweaZBgmeHQHlBrehoYrscEpQ==}
     hasBin: true
 
-  node-modules-tools@1.1.0:
-    resolution: {integrity: sha512-C5BWF3pAEJZMPHLvmn57iSerqOh2xn0uyfUGsn68v4T9EM0KYfqJovze7GG8xHv9Bi/el5S/IZKYNziw4s9TTw==}
+  node-modules-tools@1.1.1:
+    resolution: {integrity: sha512-mYpNX6PvXuUH8Qw6JLt73e9HqAH11PxnPMFvkMIp3Pv1cglmRYhi+fXNST6tCbGgjuU9c3ga3ATM6Xe7D+PZAg==}
 
   node-polyfill-webpack-plugin@2.0.1:
     resolution: {integrity: sha512-ZUMiCnZkP1LF0Th2caY6J/eKKoA0TefpoVa68m/LQU1I/mE8rGt4fNYGgNuCcK+aG8P8P43nbeJ2RqJMOL/Y1A==}
@@ -18987,8 +18983,6 @@ snapshots:
 
   jiti@1.21.7: {}
 
-  jiti@2.4.2: {}
-
   jiti@2.5.1: {}
 
   jju@1.4.0: {}
@@ -19537,7 +19531,7 @@ snapshots:
 
   node-mock-http@1.0.2: {}
 
-  node-modules-inspector@1.1.0:
+  node-modules-inspector@1.1.1:
     dependencies:
       ansis: 4.1.0
       birpc: 2.5.0
@@ -19548,7 +19542,7 @@ snapshots:
       launch-editor: 2.11.1
       mlly: 1.7.4
       mrmime: 2.0.1
-      node-modules-tools: 1.1.0
+      node-modules-tools: 1.1.1
       ohash: 2.0.11
       open: 10.2.0
       p-limit: 6.2.0
@@ -19581,7 +19575,7 @@ snapshots:
       - uploadthing
       - utf-8-validate
 
-  node-modules-tools@1.1.0:
+  node-modules-tools@1.1.1:
     dependencies:
       js-yaml: 4.1.0
       p-limit: 6.2.0
@@ -21835,7 +21829,7 @@ snapshots:
     dependencies:
       '@quansync/fs': 0.1.3
       defu: 6.1.4
-      jiti: 2.4.2
+      jiti: 2.5.1
       quansync: 0.2.10
 
   uncrypto@0.1.3: {}
