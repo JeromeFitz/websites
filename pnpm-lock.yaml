@@ -589,8 +589,8 @@ importers:
         specifier: 2.2.0
         version: 2.2.0(react@19.1.1)
       '@jeromefitz/notion':
-        specifier: 5.1.11
-        version: 5.1.11(@jeromefitz/utils@3.1.7(lodash@4.17.21))(lodash@4.17.21)
+        specifier: 5.1.12
+        version: 5.1.12(@jeromefitz/utils@3.1.7(lodash@4.17.21))(lodash@4.17.21)
       '@jeromefitz/spotify':
         specifier: 4.2.6
         version: 4.2.6(@jeromefitz/utils@3.1.7(lodash@4.17.21))(lodash@4.17.21)(sharp@0.34.1)
@@ -2569,8 +2569,8 @@ packages:
     resolution: {integrity: sha512-6veYkUnagY0naFCoz4aCgkPgddYQ+t9YlmMIY4+Eoh6Y5ti0I2GhxdB0js4+OXrU+8vRznCxscbI1NLYAYKvJA==}
     engines: {node: '>=22.6.0'}
 
-  '@jeromefitz/notion@5.1.11':
-    resolution: {integrity: sha512-2K3cIRPQWoLg1cO2Pivh/9REWaPVzWt/NyyTxZVMZJBxgbgO5P+/9D3AV2Auf5gabIjK+GcgmRqppWV6JJnCuA==}
+  '@jeromefitz/notion@5.1.12':
+    resolution: {integrity: sha512-9zsKiCx0hNtKug4614erT3foB+0BTpJLubbnWgkA7aiKfnLNoj7vwFzgZVbuWawn4ijwXhxFNLAwl8MiMD+JQQ==}
     engines: {node: '>=20'}
     peerDependencies:
       '@jeromefitz/utils': ^3.0.0
@@ -2862,10 +2862,6 @@ packages:
   '@nolyfill/is-core-module@1.0.39':
     resolution: {integrity: sha512-nn5ozdjYQpUCZlWGuxcJY/KpxkWQs4DcbMCmKojjyrYDEAGy4Ce19NN4v5MduafTwJlbKc99UA8YhSVqq9yPZA==}
     engines: {node: '>=12.4.0'}
-
-  '@notionhq/client@4.0.1':
-    resolution: {integrity: sha512-SdILqiiThECLR2KDUOvl4JqRaJWBwDYaEw/f0qu+G6rKN/QUCkaJ84vN5MgBw1yKsMAsKxBlDazs3Jw6vv2ikA==}
-    engines: {node: '>=18'}
 
   '@notionhq/client@4.0.2':
     resolution: {integrity: sha512-4pk3dm4umhjsRI0umCnJ8lCZh0TMiaMdkY0rz6FV4OqVuTsmYFV3pk+YTR5S8792ZY2Rm4lJHlLj05HQVKDuIg==}
@@ -12097,10 +12093,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@jeromefitz/notion@5.1.11(@jeromefitz/utils@3.1.7(lodash@4.17.21))(lodash@4.17.21)':
+  '@jeromefitz/notion@5.1.12(@jeromefitz/utils@3.1.7(lodash@4.17.21))(lodash@4.17.21)':
     dependencies:
       '@jeromefitz/utils': 3.1.7(lodash@4.17.21)
-      '@notionhq/client': 4.0.1
+      '@notionhq/client': 4.0.2
       date-fns: 4.1.0
       github-slugger: 2.0.0
       lodash: 4.17.21
@@ -12531,8 +12527,6 @@ snapshots:
       fastq: 1.19.1
 
   '@nolyfill/is-core-module@1.0.39': {}
-
-  '@notionhq/client@4.0.1': {}
 
   '@notionhq/client@4.0.2': {}
 
