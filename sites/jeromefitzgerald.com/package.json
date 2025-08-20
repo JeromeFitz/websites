@@ -124,7 +124,7 @@
     "uuid": "11.1.0",
     "valid-url": "1.0.9",
     "virtua": "0.41.5",
-    "zustand": "5.0.7"
+    "zustand": "5.0.8"
   },
   "devDependencies": {
     "@jeromefitz/jest-config": "workspace:*",
