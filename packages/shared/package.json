@@ -150,7 +150,7 @@
     "ioredis": "5.7.0",
     "lodash": "4.17.21",
     "ms": "3.0.0-canary.1",
-    "next": "15.4.6",
+    "next": "15.5.0",
     "plaiceholder": "3.0.0",
     "react": "19.1.1",
     "react-dom": "19.1.1",
