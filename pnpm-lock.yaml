@@ -280,8 +280,8 @@ importers:
         specifier: 30.0.5
         version: 30.0.5(@types/node@22.18.0)(ts-node@10.9.2(@types/node@22.18.0)(typescript@5.9.2))
       jest-environment-jsdom:
-        specifier: 30.1.0
-        version: 30.1.0
+        specifier: 30.1.1
+        version: 30.1.1
       next:
         specifier: 15.5.2
         version: 15.5.2(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
@@ -2612,8 +2612,8 @@ packages:
     resolution: {integrity: sha512-n5H8QLDJ47QqbCNn5SuFjCRDrOLEZ0h8vAHCK5RL9Ls7Xa8AQLa/YxAc9UjFqoEDM48muwtBGjtMY5cr0PLDCw==}
     engines: {node: ^18.14.0 || ^20.0.0 || ^22.0.0 || >=24.0.0}
 
-  '@jest/environment-jsdom-abstract@30.1.0':
-    resolution: {integrity: sha512-hZyUBiTwI3JrO7QNhL6ID0PZZ+ZtFGEm5cCrh8d3LrSkK0EbL9fhgX/Pqa/ZXOvukvu4XHpMMiA+4Qj9MyAZUQ==}
+  '@jest/environment-jsdom-abstract@30.1.1':
+    resolution: {integrity: sha512-d7pP9SeIOI6qnrNIS/ds1hlS9jpqh8EywHK0dALSLODZKo2QEGnDNvnPvhRKI0FHWDnE2EMl8CDTP0jM9lhlOA==}
     engines: {node: ^18.14.0 || ^20.0.0 || ^22.0.0 || >=24.0.0}
     peerDependencies:
       canvas: ^3.0.0
@@ -2626,8 +2626,8 @@ packages:
     resolution: {integrity: sha512-aRX7WoaWx1oaOkDQvCWImVQ8XNtdv5sEWgk4gxR6NXb7WBUnL5sRak4WRzIQRZ1VTWPvV4VI4mgGjNL9TeKMYA==}
     engines: {node: ^18.14.0 || ^20.0.0 || ^22.0.0 || >=24.0.0}
 
-  '@jest/environment@30.1.0':
-    resolution: {integrity: sha512-a9yjDya5j/6jFFCbuF3wBlxHzaFNRpZBpO52VP80BzgEfLFY7ZlZnS8K3qZGlKYiA02tLCJL3R6+66l1lY05zQ==}
+  '@jest/environment@30.1.1':
+    resolution: {integrity: sha512-yWHbU+3j7ehQE+NRpnxRvHvpUhoohIjMePBbIr8lfe0cWVb0WeTf80DNux1GPJa18CDHiIU5DtksGUfxcDE+Rw==}
     engines: {node: ^18.14.0 || ^20.0.0 || ^22.0.0 || >=24.0.0}
 
   '@jest/expect-utils@30.0.2':
@@ -2646,8 +2646,8 @@ packages:
     resolution: {integrity: sha512-ZO5DHfNV+kgEAeP3gK3XlpJLL4U3Sz6ebl/n68Uwt64qFFs5bv4bfEEjyRGK5uM0C90ewooNgFuKMdkbEoMEXw==}
     engines: {node: ^18.14.0 || ^20.0.0 || ^22.0.0 || >=24.0.0}
 
-  '@jest/fake-timers@30.1.0':
-    resolution: {integrity: sha512-Yei5/jGS0OZbPaLOUMrWVjAlwrlQWPkrBx2lp9M1kx79q2O4JJnrXRCEGgag06zN+a4M3FKatw7g1GYcNATPMg==}
+  '@jest/fake-timers@30.1.1':
+    resolution: {integrity: sha512-fK/25dNgBNYPw3eLi2CRs57g1H04qBAFNMsUY3IRzkfx/m4THe0E1zF+yGQBOMKKc2XQVdc9EYbJ4hEm7/2UtA==}
     engines: {node: ^18.14.0 || ^20.0.0 || ^22.0.0 || >=24.0.0}
 
   '@jest/get-type@30.0.1':
@@ -7424,8 +7424,8 @@ packages:
     resolution: {integrity: sha512-dKjRsx1uZ96TVyejD3/aAWcNKy6ajMaN531CwWIsrazIqIoXI9TnnpPlkrEYku/8rkS3dh2rbH+kMOyiEIv0xQ==}
     engines: {node: ^18.14.0 || ^20.0.0 || ^22.0.0 || >=24.0.0}
 
-  jest-environment-jsdom@30.1.0:
-    resolution: {integrity: sha512-Y0gOO15Kd2SzHnIvGPG5TqZ27ungxA3sTs4DrRqPeFMYAE+cO4FmVeMPPNgckdtab6LothC2BarlbS+hHHWf+A==}
+  jest-environment-jsdom@30.1.1:
+    resolution: {integrity: sha512-fInyXsHSuPaERmRiub4V6jl6KERXowGqY8AISJrXZjOq7vdP46qecm+GnTngjcUPeHFqrxp1PfP0XuFfKTzA2A==}
     engines: {node: ^18.14.0 || ^20.0.0 || ^22.0.0 || >=24.0.0}
     peerDependencies:
       canvas: ^3.0.0
@@ -12171,10 +12171,10 @@ snapshots:
 
   '@jest/diff-sequences@30.0.1': {}
 
-  '@jest/environment-jsdom-abstract@30.1.0(jsdom@26.1.0)':
+  '@jest/environment-jsdom-abstract@30.1.1(jsdom@26.1.0)':
     dependencies:
-      '@jest/environment': 30.1.0
-      '@jest/fake-timers': 30.1.0
+      '@jest/environment': 30.1.1
+      '@jest/fake-timers': 30.1.1
       '@jest/types': 30.0.5
       '@types/jsdom': 21.1.7
       '@types/node': 22.18.0
@@ -12189,9 +12189,9 @@ snapshots:
       '@types/node': 22.18.0
       jest-mock: 30.0.5
 
-  '@jest/environment@30.1.0':
+  '@jest/environment@30.1.1':
     dependencies:
-      '@jest/fake-timers': 30.1.0
+      '@jest/fake-timers': 30.1.1
       '@jest/types': 30.0.5
       '@types/node': 22.18.0
       jest-mock: 30.0.5
@@ -12220,7 +12220,7 @@ snapshots:
       jest-mock: 30.0.5
       jest-util: 30.0.5
 
-  '@jest/fake-timers@30.1.0':
+  '@jest/fake-timers@30.1.1':
     dependencies:
       '@jest/types': 30.0.5
       '@sinonjs/fake-timers': 13.0.5
@@ -18664,10 +18664,10 @@ snapshots:
       jest-util: 30.0.5
       pretty-format: 30.0.5
 
-  jest-environment-jsdom@30.1.0:
+  jest-environment-jsdom@30.1.1:
     dependencies:
-      '@jest/environment': 30.1.0
-      '@jest/environment-jsdom-abstract': 30.1.0(jsdom@26.1.0)
+      '@jest/environment': 30.1.1
+      '@jest/environment-jsdom-abstract': 30.1.1(jsdom@26.1.0)
       '@types/jsdom': 21.1.7
       '@types/node': 22.18.0
       jsdom: 26.1.0
