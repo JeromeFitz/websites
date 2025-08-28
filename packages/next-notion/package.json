@@ -115,7 +115,7 @@
     "@jeromefitz/utils": "3.1.7",
     "@notionhq/client": "4.0.2",
     "date-fns": "4.1.0",
-    "ms": "3.0.0-canary.1",
+    "ms": "3.0.0-canary.202508261828",
     "next": "15.5.2",
     "react": "19.1.1",
     "react-dom": "19.1.1",
