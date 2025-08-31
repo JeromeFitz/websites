@@ -367,8 +367,8 @@ importers:
         specifier: 4.1.0
         version: 4.1.0
       ms:
-        specifier: 3.0.0-canary.1
-        version: 3.0.0-canary.1
+        specifier: 3.0.0-canary.202508261828
+        version: 3.0.0-canary.202508261828
       next:
         specifier: 15.5.2
         version: 15.5.2(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
@@ -436,8 +436,8 @@ importers:
         specifier: 4.17.21
         version: 4.17.21
       ms:
-        specifier: 3.0.0-canary.1
-        version: 3.0.0-canary.1
+        specifier: 3.0.0-canary.202508261828
+        version: 3.0.0-canary.202508261828
       next:
         specifier: 15.5.2
         version: 15.5.2(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
@@ -760,8 +760,8 @@ importers:
         specifier: 4.0.2
         version: 4.0.2
       ms:
-        specifier: 3.0.0-canary.1
-        version: 3.0.0-canary.1
+        specifier: 3.0.0-canary.202508261828
+        version: 3.0.0-canary.202508261828
       next:
         specifier: 15.5.2
         version: 15.5.2(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
@@ -1073,8 +1073,8 @@ importers:
         specifier: 4.17.21
         version: 4.17.21
       ms:
-        specifier: 3.0.0-canary.1
-        version: 3.0.0-canary.1
+        specifier: 3.0.0-canary.202508261828
+        version: 3.0.0-canary.202508261828
       next:
         specifier: 15.5.2
         version: 15.5.2(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
@@ -8045,9 +8045,9 @@ packages:
   ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
 
-  ms@3.0.0-canary.1:
-    resolution: {integrity: sha512-kh8ARjh8rMN7Du2igDRO9QJnqCb2xYTJxyQYK7vJJS4TvLLmsbyhiKpSW+t+y26gyOyMd0riphX0GeWKU3ky5g==}
-    engines: {node: '>=12.13'}
+  ms@3.0.0-canary.202508261828:
+    resolution: {integrity: sha512-NotsCoUCIUkojWCzQff4ttdCfIPoA1UGZsyQbi7KmqkNRfKCrvga8JJi2PknHymHOuor0cJSn/ylj52Cbt2IrQ==}
+    engines: {node: '>=18'}
 
   mz@2.7.0:
     resolution: {integrity: sha512-z81GNO7nnYMEhrGh9LeymoE4+Yr0Wn5McHIZMK5cfQCl+NDX08sCZgUc9/6MHni9IWuFLm1Z3HTCXu2z9fN62Q==}
@@ -19392,7 +19392,7 @@ snapshots:
 
   ms@2.1.3: {}
 
-  ms@3.0.0-canary.1: {}
+  ms@3.0.0-canary.202508261828: {}
 
   mz@2.7.0:
     dependencies:
