@@ -40,7 +40,7 @@
     "@jeromefitz/release-notes-generator": "3.1.13",
     "@jeromefitz/semantic": "11.1.8",
     "@jeromefitz/tsconfig": "2.1.0",
-    "@manypkg/cli": "0.25.0",
+    "@manypkg/cli": "0.25.1",
     "@types/lodash": "4.17.20",
     "@types/node": "22.18.0",
     "ccommit": "3.1.4",
