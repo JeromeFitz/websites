@@ -105,7 +105,7 @@
     "github-slugger": "2.0.0",
     "isomorphic-unfetch": "4.0.2",
     "lodash": "4.17.21",
-    "ms": "3.0.0-canary.1",
+    "ms": "3.0.0-canary.202508261828",
     "next": "15.5.2",
     "next-auth": "4.24.11",
     "next-themes": "0.4.6",
