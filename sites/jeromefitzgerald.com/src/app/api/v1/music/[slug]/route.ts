@@ -11,8 +11,7 @@ import type { ClientProps, CredentialProps } from '@jeromefitz/spotify'
 import { Redis } from '@upstash/redis'
 import stringify from 'fast-json-stable-stringify'
 import { slug as _slug } from 'github-slugger'
-// @ts-ignore
-import ms from 'ms'
+import { ms } from 'ms'
 import { NextRequest, NextResponse } from 'next/server.js'
 
 const keyPrefixSpotify = `${envClient.NEXT_PUBLIC__SITE}/spotify`
