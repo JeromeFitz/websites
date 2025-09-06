@@ -1,8 +1,8 @@
-import type { Options } from 'tsup'
+import type { Options } from 'tsdown'
 
-import { defineConfig } from 'tsup'
+import { defineConfig } from 'tsdown'
 
-import { config as _config } from '../../tsup.config'
+import { config as _config } from '../../tsdown.config'
 
 const entry = ['src/**']
 const config: Options = {

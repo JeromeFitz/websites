@@ -1,17 +1,14 @@
-import type { Options } from 'tsup'
+import type { Options } from 'tsdown'
 
-import { defineConfig } from 'tsup'
+import { defineConfig } from 'tsdown'
 
 const config: Options = {
-  clean: true,
   dts: true,
-  format: ['esm'],
   minify: true,
   onSuccess: 'pnpm copy',
   outDir: 'dist',
   silent: true,
   sourcemap: false,
-  splitting: false,
   target: ['node22'],
   treeshake: false,
 }
