@@ -75,7 +75,7 @@
         "semantic-release",
         "syncpack",
         "ts-node",
-        "tsup",
+        "tsdown",
         "turbo",
         "typescript"
       ]
