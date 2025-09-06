@@ -1,5 +1,6 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
+/** biome-ignore-all lint/suspicious/noArrayIndexKey: migrate */
 'use client'
+
 import { useIntersection } from '@mantine/hooks'
 import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
 import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
@@ -338,7 +339,7 @@ function DataItem({ item, type }: any) {
     </Flex>
   )
 }
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+
 function DataItemLoader({ error, handleScroll, isLoadingMore }: any) {
   const image = {
     blurDataURL:

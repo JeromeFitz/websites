@@ -1,12 +1,12 @@
+import type { Segment } from '@/utils/getBySegment'
+
+import type { Book } from './types'
+
 import { envServer } from '@jeromefitz/next-config/env.server.mjs'
 
 import { sql } from 'drizzle-orm'
 
-import type { Segment } from '@/utils/getBySegment'
-
 import { drizzle } from '@/lib/drizzle/index'
-
-import type { Book } from './types'
 export const segment: Segment = 'books'
 
 const orderBy_default = `ORDER BY

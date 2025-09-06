@@ -1,3 +1,6 @@
+import type { NotionTag } from '@/lib/drizzle/schemas/_notion/types'
+import type { Show } from '@/lib/drizzle/schemas/cache-shows/types'
+
 import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
 import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
@@ -10,9 +13,6 @@ import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import _filter from 'lodash/filter.js'
 import _orderBy from 'lodash/orderBy.js'
 import NextLink from 'next/link'
-
-import type { NotionTag } from '@/lib/drizzle/schemas/_notion/types'
-import type { Show } from '@/lib/drizzle/schemas/cache-shows/types'
 
 import { Anchor } from '@/components/Anchor/index'
 import { ArticleMain } from '@/components/Article/Article.Main'
@@ -108,7 +108,7 @@ function ListWrapper({ shows }: { shows: Show[] }) {
                 <NextLink href={show.slugPreview}>
                   <Box height="275px" overflow="hidden" position="relative">
                     {/* {!!imageUrl && <NextImage {...image} />} */}
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    {/* biome-ignore lint/performance/noImgElement: migrate */}
                     <img
                       alt="d"
                       className={cx(

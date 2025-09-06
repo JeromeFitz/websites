@@ -1,6 +1,8 @@
 {
   "$schema": "https://turborepo.org/schema.json",
-  "globalDependencies": ["pnpm-workspace.yaml"],
+  "globalDependencies": [
+    "pnpm-workspace.yaml"
+  ],
   "globalPassThroughEnv": [
     "*_TOKEN",
     "CI",
@@ -19,27 +21,30 @@
     "VERCEL_*"
   ],
   "tasks": {
-    "//#format": {
-      "dependsOn": [],
+    "build": {
+      "dependsOn": [
+        "^build"
+      ],
       "inputs": [
+        "src/**",
         "*.cjs",
         "*.js",
-        "*.jsx",
-        "*.json",
-        "*.md",
         "*.mjs",
-        "*.ts",
-        "*.tsx"
+        "tsconfig.json"
+      ],
+      "outputs": [
+        ".cache/**",
+        ".next/**",
+        "!.next/cache/**"
       ]
     },
-    "build": {
-      "dependsOn": ["^build"],
-      "inputs": ["src/**", "*.cjs", "*.js", "*.mjs", "tsconfig.json"],
-      "outputs": [".cache/**", ".next/**", "!.next/cache/**"]
-    },
     "build#jeromefitzgerald.com": {
-      "dependsOn": ["^build"],
-      "env": ["VERCEL_ENV"],
+      "dependsOn": [
+        "^build"
+      ],
+      "env": [
+        "VERCEL_ENV"
+      ],
       "inputs": [
         "src/**",
         "*.cjs",
@@ -49,7 +54,11 @@
         "tsconfig.*.json",
         "vercel.json"
       ],
-      "outputs": [".cache/**", ".next/**", "!.next/cache/**"]
+      "outputs": [
+        ".cache/**",
+        ".next/**",
+        "!.next/cache/**"
+      ]
     },
     "clean": {
       "cache": false
@@ -57,47 +66,75 @@
     "dev": {
       "cache": false
     },
-    "format": {
-      "cache": false,
-      "dependsOn": ["^//#format"]
-    },
-    "format:lint": {
-      "cache": false,
-      "dependsOn": ["^//#format"]
-    },
     "lhci": {
-      "dependsOn": ["^build"],
-      "inputs": ["src/**/*.ts", "src/**/*.tsx"],
-      "outputs": [".lighthouseci/**"]
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "src/**/*.ts",
+        "src/**/*.tsx"
+      ],
+      "outputs": [
+        ".lighthouseci/**"
+      ]
     },
     "lint": {
-      "dependsOn": ["^lint"],
-      "inputs": ["src/**", "*.cjs", "*.js", "*.mjs", "vercel.json"]
+      "dependsOn": [
+        "^lint"
+      ],
+      "inputs": [
+        "src/**",
+        "*.cjs",
+        "*.js",
+        "*.mjs",
+        "vercel.json"
+      ]
     },
     "semantic-release:mono": {
       "cache": false,
-      "dependsOn": ["lint"]
+      "dependsOn": [
+        "lint"
+      ]
     },
     "start": {
       "cache": false
     },
     "storybook:dev": {
       "cache": false,
-      "dependsOn": ["^build"],
+      "dependsOn": [
+        "^build"
+      ],
       "persistent": true
     },
     "storybook:build": {
-      "dependsOn": ["^build"],
-      "inputs": [".storybook/**", "src/**"],
-      "outputs": ["storybook-static/**"]
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        ".storybook/**",
+        "src/**"
+      ],
+      "outputs": [
+        "storybook-static/**"
+      ]
     },
     "test:e2e": {
-      "dependsOn": ["^build", "^jeromefitzgerald.com#build"],
-      "inputs": ["src/e2e/**"],
-      "outputs": ["e2e-report/**", "e2e-results/**"]
+      "dependsOn": [
+        "^build",
+        "^jeromefitzgerald.com#build"
+      ],
+      "inputs": [
+        "src/e2e/**"
+      ],
+      "outputs": [
+        "e2e-report/**",
+        "e2e-results/**"
+      ]
     },
     "test:unit": {
-      "dependsOn": ["^build"]
+      "dependsOn": [
+        "^build"
+      ]
     }
   },
   "ui": "stream"

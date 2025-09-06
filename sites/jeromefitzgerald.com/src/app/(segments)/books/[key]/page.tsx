@@ -1,10 +1,10 @@
-import { envClient } from '@jeromefitz/next-config/env.client.mjs'
-
 import type { Metadata, ResolvingMetadata } from 'next'
 
-import { notFound } from 'next/navigation.js'
-
 import type { Book } from '@/lib/drizzle/schemas/cache-books/types'
+
+import { envClient } from '@jeromefitz/next-config/env.client.mjs'
+
+import { notFound } from 'next/navigation.js'
 
 import { getBook, segment } from '@/lib/drizzle/schemas/cache-books/queries'
 import { getKey } from '@/utils/getKey'

@@ -14,7 +14,6 @@ import { CreditsItems } from './Credits.Items'
 import { CreditsLoading } from './Credits.Loading'
 import { getRollupTitle } from './Credits.utils'
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 function Credits({ id, relations }) {
   return (

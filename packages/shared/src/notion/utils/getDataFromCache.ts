@@ -1,4 +1,5 @@
 import 'server-only'
+
 /**
  * @note(next|redis) try to avoid breaking changes but if necessary
  *  run a build with:
@@ -17,6 +18,7 @@ import { cache } from 'react'
 
 import { getCache, setCache } from '../../redis/index'
 import { getDatabaseQuery, getMetadata } from './index'
+
 // @todo(types) next-notion
 // import type { SegmentInfo } from './index'
 
@@ -48,14 +50,14 @@ export const preload = ({
 }
 
 const getDataFromCache = cache(
-  // @todo(complexity) 38
-  // eslint-disable-next-line complexity
   async ({
     database_id,
     draft,
     filterType,
     revalidate,
     segmentInfo,
+    // todo(complexity) 21
+    // biome-ignore lint/complexity/noExcessiveCognitiveComplexity: migrate
   }: GetDataFromCache) => {
     const { slug } = segmentInfo
     /**

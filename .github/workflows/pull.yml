@@ -124,6 +124,9 @@ jobs:
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
           VERCEL_ENV: ${{ vars.VERCEL_ENV }}
 
+      - name: '☣️ Biome CI'
+        run: pnpm exec biome ci .
+
       - name: '🚨️  Lint'
         id: pull-lint
         uses: JeromeFitz/websites/.github/actions/lint@main

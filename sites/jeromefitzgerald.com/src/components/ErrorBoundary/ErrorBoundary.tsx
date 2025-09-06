@@ -1,4 +1,5 @@
 'use client'
+
 import type { ReactNode } from 'react'
 
 import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
@@ -30,15 +31,13 @@ class ErrorBoundary extends Component<PropsChildren> {
     this.state = { hasError: false }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   static getDerivedStateFromError(error: any) {
     // Update state so the next render will show the fallback UI.
     return { hasError: true }
   }
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
   componentDidCatch(error, errorInfo) {
     // // You can also log the error to an error reporting service
     // // logErrorToMyService(error, errorInfo)
@@ -48,7 +47,6 @@ class ErrorBoundary extends Component<PropsChildren> {
   }
 
   render() {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     if (this.state.hasError) {
       const title = 'Error'

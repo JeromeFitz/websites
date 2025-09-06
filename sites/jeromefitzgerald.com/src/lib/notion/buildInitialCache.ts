@@ -1,9 +1,9 @@
-import { envClient } from '@jeromefitz/next-config/env.client.mjs'
-
 import type { ListBlockChildrenResponse } from '@notionhq/client/build/src/api-endpoints'
 
 import type { NotionPropertiesShow } from '@/lib/drizzle/schemas/cache-shows/types'
 import type { Segment } from '@/utils/getBySegment'
+
+import { envClient } from '@jeromefitz/next-config/env.client.mjs'
 
 import {
   getNotionBlocks,
@@ -34,7 +34,7 @@ export async function buildInitialCache({
       void notion_items?.results.map(async (result: any) => {
         const properties: Properties = result?.properties
         // @todo(types)
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+
         // @ts-ignore
         const key = properties['Slug.Preview'].formula.string
         const value = [

@@ -14,12 +14,13 @@ interface SegmentInfo {
 function getSegmentInfo({ SEGMENT, ...props }) {
   const segment = SEGMENT
   const catchAll = [segment]
-  // eslint-disable-next-line no-unsafe-optional-chaining, @typescript-eslint/no-unused-expressions
+  // biome-ignore lint/correctness/noUnsafeOptionalChaining: migrate, @typescript-eslint/no-unused-expressions
   !!props.params?.catchAll && catchAll.push(...props.params?.catchAll)
 
   const first = _first(catchAll)
   const last = _last(catchAll)
 
+  // biome-ignore lint/correctness/useParseIntRadix: migrate
   const isIndex = first === last || _isInteger(parseInt(last))
   const segmentCount = catchAll.length
   const hasMeta = catchAll.length >= 2

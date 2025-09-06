@@ -2,7 +2,6 @@ import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 
 import { cx } from '@/utils/cx'
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 function ContainerSection({ children }: { children: React.ReactNode }) {
   return (

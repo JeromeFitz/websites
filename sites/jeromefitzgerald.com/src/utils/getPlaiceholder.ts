@@ -1,4 +1,5 @@
 'use server'
+
 import type { GetPlaiceholderOptions } from 'plaiceholder'
 
 import { getPlaiceholder as _getPlaiceholder } from 'plaiceholder'

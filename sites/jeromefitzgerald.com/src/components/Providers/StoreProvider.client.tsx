@@ -1,5 +1,6 @@
 'use client'
-import { type PropsWithChildren } from 'react'
+
+import type { PropsWithChildren } from 'react'
 
 import { Provider } from '@/store/index'
 

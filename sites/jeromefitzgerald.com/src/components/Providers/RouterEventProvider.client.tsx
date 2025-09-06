@@ -34,9 +34,8 @@ function RouterEventProvider() {
   const [pastRoute, pastRouteSet] = useState('')
 
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     pastRoute !== pathname && isRouteChangingSet(true)
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+
     pastRoute === pathname && isRouteChangingSet(false)
     pastRouteSet(pathname)
     // @todo(eslint) react-hooks/exhaustive-deps

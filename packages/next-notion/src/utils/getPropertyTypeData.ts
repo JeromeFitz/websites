@@ -3,9 +3,6 @@
  */
 import 'server-only'
 
-import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
-import { isObjectEmpty } from '@jeromefitz/utils'
-
 import type {
   CheckboxPropertyItemObjectResponse,
   DatePropertyItemObjectResponse,
@@ -22,14 +19,17 @@ import type {
   UrlPropertyItemObjectResponse,
 } from '@notionhq/client/build/src/api-endpoints.js'
 
-import _orderBy from 'lodash/orderBy.js'
-
 import type {
   DateResponse,
   EmptyObject,
   RollupFunction,
   SelectPropertyResponse,
 } from '../Notion.types'
+
+import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
+import { isObjectEmpty } from '@jeromefitz/utils'
+
+import _orderBy from 'lodash/orderBy.js'
 
 interface CheckboxData {
   checkbox: boolean
@@ -184,9 +184,7 @@ function getNumberData({ data, type }: { data: NumberData; type: string }) {
   return dataReturn
 }
 
-// @todo(complexity) 13
 // @todo(types)
-// eslint-disable-next-line complexity
 function getPropertyTypeData(properties, property) {
   // null
   if (!properties) return null
@@ -285,6 +283,8 @@ function getRollupData({ data, type }: { data: RollupData; type: string }) {
 
     if (!isObjectEmpty(dataReturn)) {
       const tempData: any = []
+      // @todo(complexity) 16
+      // biome-ignore lint/complexity/noExcessiveCognitiveComplexity: migrate
       dataReturn.map((item) => {
         // console.dir(`[info] getRollupData !isObjectEmpty: ${item.type}`)
         if (item.type === 'multi_select') {

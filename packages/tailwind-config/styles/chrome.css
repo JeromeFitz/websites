@@ -8,5 +8,6 @@
  * https://twitter.com/timer150/status/1345217126680899584
  */
 body.loading * {
+  /* biome-ignore lint/complexity/noImportantStyles: migrate */
   transition: none !important;
 }

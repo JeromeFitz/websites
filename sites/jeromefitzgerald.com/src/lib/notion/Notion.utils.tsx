@@ -28,7 +28,6 @@ function getBlock({
 }) {
   if (!block.type) return null
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const blockProps = { ...blocksDefault[block.type], ...blocks[block.type] }
   if (!blockProps) {

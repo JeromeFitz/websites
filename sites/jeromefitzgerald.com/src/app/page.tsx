@@ -1,8 +1,8 @@
 import type { Metadata, ResolvingMetadata } from 'next'
 
-import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
-
 import type { Page } from '@/lib/drizzle/schemas/cache-pages/types'
+
+import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
 
 import { ArticleMain } from '@/components/Article/Article.Main'
 // import { getImageKeyValue } from '@/lib/drizzle/schemas/cache-images/queries'
@@ -19,7 +19,6 @@ interface Props {
 const _key = 'homepage'
 
 export async function generateMetadata(
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   { params }: Props,
   parent: ResolvingMetadata,
 ): Promise<Metadata> {

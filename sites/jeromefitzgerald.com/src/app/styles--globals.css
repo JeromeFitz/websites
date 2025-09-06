@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/suspicious/noUnknownAtRules: migrate */
 @import 'tailwindcss';
 @import 'tw-animate-css';
 @import './styles--radix-themes-tw.css';

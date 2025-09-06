@@ -2,7 +2,6 @@ import { CaretRightIcon } from '@radix-ui/react-icons'
 
 import { cx } from '@/utils/cx'
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 function NavigationSeparator({ className, isActive = true, order = 0 }) {
   if (!isActive) return null

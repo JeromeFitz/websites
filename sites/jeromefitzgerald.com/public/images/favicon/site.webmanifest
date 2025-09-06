@@ -1,20 +1,20 @@
 {
-  "name": "Jerome Fitzgerald (he/him)",
-  "short_name": "Jerome",
+  "background_color": "#030303",
+  "display": "standalone",
   "icons": [
     {
-      "src": "/images/favicon/android-chrome-192x192.png",
       "sizes": "192x192",
+      "src": "/images/favicon/android-chrome-192x192.png",
       "type": "image/png"
     },
     {
-      "src": "/images/favicon/android-chrome-512x512.png",
+      "purpose": "any maskable",
       "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "src": "/images/favicon/android-chrome-512x512.png",
+      "type": "image/png"
     }
   ],
-  "theme_color": "#030303",
-  "background_color": "#030303",
-  "display": "standalone"
+  "name": "Jerome Fitzgerald (he/him)",
+  "short_name": "Jerome",
+  "theme_color": "#030303"
 }

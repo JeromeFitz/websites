@@ -1,9 +1,11 @@
+/** biome-ignore-all lint/style/useTemplate: migrate> */
 import 'server-only'
 
 import { envClient } from '@jeromefitz/next-config/env.client.mjs'
 import { envServer } from '@jeromefitz/next-config/env.server.mjs'
 
 import { addDays, format } from 'date-fns'
+
 // import { cache } from 'react'
 
 import type { FilterType, SortItem } from '../Notion.types'
@@ -42,7 +44,7 @@ const getDatabaseQuery = async ({
   database_id,
   filterType = 'equals',
   segmentInfo,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
   sortProperty,
 }: GetDatabaseQueryTypes) => {
   // console.dir(`> segmentInfo`)
@@ -111,7 +113,7 @@ const getDatabaseQuery = async ({
     segmentInfo.segment !== 'events'
   ) {
     console.dir(`(╯°□°)╯︵ ┻━┻  ${slug} api request: has_more (${i})`)
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+
     // @ts-ignore
     _response = await notion.databases.query({
       ...options,
@@ -139,12 +141,12 @@ const getNotionQueryDatePrepartion = (val, type) => {
   const date = val[2]
   const tsPrep =
     type === 'from'
-      ? `${year}-${('00' + month).substr(-2)}-${('00' + date).substr(
+      ? `${year}-${('00' + month).substr(
           -2,
-        )}T00:00:00.000Z`
-      : `${year}-${('00' + month).substr(-2)}-${('00' + date).substr(
+        )}-${('00' + date).substr(-2)}T00:00:00.000Z`
+      : `${year}-${('00' + month).substr(
           -2,
-        )}T23:59:59.999Z`
+        )}-${('00' + date).substr(-2)}T23:59:59.999Z`
   const tsNew = new Date(tsPrep)
   if (type === 'to') {
     return format(addDays(tsNew, 1), 'yyyy-MM-dd')
@@ -156,10 +158,10 @@ const getNotionQueryDatePrepartion = (val, type) => {
 // const getDatabaseQueryByDateRange = cache(
 const getDatabaseQueryByDateRange = async ({
   database_id,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
   filterType = 'equals',
   segmentInfo,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
   sortProperty,
 }: GetDatabaseQueryTypes) => {
   const { slug } = segmentInfo

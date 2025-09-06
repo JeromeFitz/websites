@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import type {
   BulletedListItemBlockObjectResponse,
   Heading1BlockObjectResponse,
@@ -10,7 +9,7 @@ import type {
   RichTextItemResponse,
 } from '@notionhq/client/build/src/api-endpoints.js'
 
-import { forwardRef, Fragment } from 'react'
+import { Fragment, forwardRef } from 'react'
 
 import { Anchor } from '@/components/Anchor/index'
 import { cx } from '@/utils/cx'

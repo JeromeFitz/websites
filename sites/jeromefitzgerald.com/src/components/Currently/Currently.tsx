@@ -74,7 +74,6 @@ function Currently() {
           const titleSub = c?.titleSub.split(' – ')
           const props = { ...c, titleSub }
 
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
           return <Component key={key} {...props} />
         })}

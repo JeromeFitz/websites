@@ -1,13 +1,13 @@
 'use client'
 
+import type { Event } from '@/lib/drizzle/schemas/types'
+
 import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
 import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import { isAfter } from 'date-fns/isAfter'
 import NextLink from 'next/link'
-
-import type { Event } from '@/lib/drizzle/schemas/types'
 
 import {
   AccordionContent,
@@ -21,7 +21,6 @@ import { cx } from '@/utils/cx'
 
 const description = `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Recusandae, omnis? Quod, enim fugit doloribus qui culpa odit. Eveniet, cupiditate qui alias nihil similique tempora fugit?`
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 function AccordionClient({ items }) {
   const defaultValue = items[0]?.id || null
@@ -35,7 +34,7 @@ function AccordionClient({ items }) {
       width="300px"
     >
       {/* @todo(types) radix */}
-      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment  */}
+
       {/* @ts-ignore */}
       <AccordionRoot collapsible defaultValue={defaultValue} type="single">
         {items.map((item: Event) => {
@@ -45,7 +44,7 @@ function AccordionClient({ items }) {
           const key = `items-item-${item.id}`
           return (
             // @todo(types) radix
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+
             // @ts-ignore
             <AccordionItem key={key} value={item.id}>
               <AccordionTrigger>

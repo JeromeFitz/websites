@@ -1,19 +1,14 @@
 {
-  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    // // w/ extends
-    // "baseUrl": ".",
-    "incremental": true,
-    // "noUnusedParameters": false, // @todo(lint)
-    // @todo(typescript) until figure out config stuff this has to go here
-    // "rootDir": "./src",
-    "outDir": "./dist",
     "allowJs": false,
     "allowSyntheticDefaultImports": true,
     "alwaysStrict": true,
     "baseUrl": ".",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
+    // // w/ extends
+    // "baseUrl": ".",
+    "incremental": true,
     "isolatedModules": true,
     // "jsx": "preserve",
     "jsx": "react-jsx",
@@ -26,6 +21,14 @@
     "noImplicitThis": true,
     "noUnusedLocals": true,
     "noUnusedParameters": false, // @todo(lint)
+    // "noUnusedParameters": false, // @todo(lint)
+    // @todo(typescript) until figure out config stuff this has to go here
+    // "rootDir": "./src",
+    "outDir": "./dist",
+    "paths": {
+      "@jeromefitz/ds/*": ["../../packages/design-system/src/*"],
+      "@jeromefitz/next-config/*": ["../../packages/next-config/src/*"]
+    },
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
@@ -34,12 +37,9 @@
     "strictNullChecks": false, // @todo(lint)
     "strictPropertyInitialization": false, // @todo(lint)
     "target": "ESNext",
-    "tsBuildInfoFile": ".tsbuildinfo",
-    "paths": {
-      "@jeromefitz/ds/*": ["../../packages/design-system/src/*"],
-      "@jeromefitz/next-config/*": ["../../packages/next-config/src/*"]
-    }
+    "tsBuildInfoFile": ".tsbuildinfo"
   },
-  "include": ["src", "index.d.ts", "next-env.d.ts"],
-  "exclude": ["node_modules", "**/*.test.ts"]
+  "exclude": ["node_modules", "**/*.test.ts"],
+  "extends": "../../tsconfig.json",
+  "include": ["src", "index.d.ts", "next-env.d.ts"]
 }

@@ -1,4 +1,5 @@
 'use server'
+
 /**
  * @ref https://github.com/dpnunez/nextjs-image-blur-with-sharp/tree/main
  */

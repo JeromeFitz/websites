@@ -10,6 +10,7 @@ function CreditsLoading({ size }: { size: number }) {
         .fill(0)
         .map((_, i) => {
           return (
+            // biome-ignore lint/suspicious/noArrayIndexKey: migrate
             <LI key={`rl-${i}`}>
               <Loading />
             </LI>

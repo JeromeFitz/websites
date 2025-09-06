@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 'use client'
+
 import { DotFilledIcon } from '@radix-ui/react-icons'
 import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
 import {
@@ -129,7 +129,7 @@ function NavigationTertiary({
                           //   console.dir(
                           //     `zzz_menuTertiaryActiveSet (router): ${item.href}`,
                           //   )
-                          // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+
                           !!item.href && router.push(item.href)
                         }}
                         textValue={item.title}

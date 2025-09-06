@@ -1,3 +1,5 @@
+/** biome-ignore-all lint/a11y/useSemanticElements: migrate */
+/** biome-ignore-all lint/a11y/noRedundantRoles: migrate */
 import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 
 /**

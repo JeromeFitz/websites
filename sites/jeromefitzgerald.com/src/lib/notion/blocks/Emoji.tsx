@@ -1,8 +1,9 @@
 import { EmojiWrapper } from './Emoji.server'
+
 // import { lazy, Suspense } from 'react'
 
 // // @note(next) outside of page.tsx, need to ignore
-// // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+//
 // // @ts-ignore
 // const EmojiWrapper = lazy(() => import('./Emoji.client'))
 

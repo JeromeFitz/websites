@@ -2,7 +2,11 @@
   "name": "jerandky.com",
   "version": "0.0.0",
   "description": "Website for the Jer & Ky BoyZ",
-  "repository": "jeromefitz/websites.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jeromefitz/websites",
+    "directory": "sites/jerandky.com"
+  },
   "author": {
     "name": "Jerome Fitzgerald",
     "email": "j@jeromefitzgerald.com",

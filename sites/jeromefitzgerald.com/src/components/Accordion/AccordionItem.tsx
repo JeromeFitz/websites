@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 'use client'
+
 import type { AccordionItemProps } from '@radix-ui/react-accordion'
 
 import * as Accordion from '@radix-ui/react-accordion'

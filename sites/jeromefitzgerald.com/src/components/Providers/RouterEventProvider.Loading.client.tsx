@@ -1,4 +1,5 @@
 'use client'
+
 import { useNProgress } from '@tanem/react-nprogress'
 import _find from 'lodash/find.js'
 import { usePathname } from 'next/navigation.js'
@@ -35,7 +36,6 @@ const Loading: React.FC<{ isRouteChanging: boolean }> = ({ isRouteChanging }) =>
   } = useStore()
 
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     isFinished
       ? document.body.classList.remove('loading')
       : document.body.classList.add('loading')

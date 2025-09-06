@@ -1,8 +1,8 @@
 import 'server-only'
 
-import stringify from 'fast-json-stable-stringify'
-
 import type { RC } from './index'
+
+import stringify from 'fast-json-stable-stringify'
 
 import { TIME } from '../lib/constants'
 import redis, { getKey } from './index'

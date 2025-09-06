@@ -1,4 +1,5 @@
 'use client'
+
 import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
 
 import { load, trackPageview } from 'fathom-client'

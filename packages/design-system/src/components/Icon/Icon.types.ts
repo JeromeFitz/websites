@@ -1,4 +1,4 @@
-import { SVGAttributes } from 'react'
+import type { SVGAttributes } from 'react'
 
 /**
  * ref: https://github.com/radix-ui/icons/blob/master/packages/radix-icons/src/types.tsx

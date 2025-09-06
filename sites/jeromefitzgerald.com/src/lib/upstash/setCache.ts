@@ -1,10 +1,10 @@
 import 'server-only'
 
+import type { RC } from './index'
+
 import stringify from 'fast-json-stable-stringify'
 
 import { TIME } from '@/lib/constants'
-
-import type { RC } from './index'
 
 import { getKey, redis } from './index'
 

@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 'use client'
+
 // import { useHover } from '@mantine/hooks'
 import { DotFilledIcon } from '@radix-ui/react-icons'
 import { AspectRatio } from '@radix-ui/themes/dist/esm/components/aspect-ratio.js'

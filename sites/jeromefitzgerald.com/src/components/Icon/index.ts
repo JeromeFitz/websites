@@ -1,5 +1,6 @@
-export * from './Icon'
 export type { IconProps } from './Icon.types'
+
+export * from './Icon'
 
 /**
  * @note(Icon) further breakdown/customizations

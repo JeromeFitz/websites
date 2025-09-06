@@ -1,0 +1,11 @@
+{
+  "extends": "//",
+  "javascript": { "globals": ["describe", "expect", "it"] },
+  "linter": {
+    "domains": {
+      "next": "all",
+      "react": "all",
+      "test": "all"
+    }
+  }
+}

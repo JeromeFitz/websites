@@ -1,3 +1,5 @@
+import type { Event } from '@/lib/drizzle/schemas/cache-events/types'
+
 import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
 import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
@@ -5,8 +7,6 @@ import { Portal } from '@radix-ui/themes/dist/esm/components/portal.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import { isAfter } from 'date-fns/isAfter'
 import NextLink from 'next/link'
-
-import type { Event } from '@/lib/drizzle/schemas/cache-events/types'
 
 import { DataList__Info } from '@/app/(segments)/events/[...key]/_components/Event.Data.List'
 import { ExternalLinkIcon } from '@/components/Icon/index'
@@ -84,7 +84,7 @@ function EventSlugHeaderData({ item }: { item: Event }) {
       </div>
       {!isEventOver && (
         // @todo(next) NICE-117 causes hydration error on direct links
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+
         // @ts-ignore
         <Portal asChild>
           <Box

@@ -1,16 +1,15 @@
+import type { NotionTag } from '@/lib/drizzle/schemas/_notion/types'
+
 import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
 import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
 import * as DataList from '@radix-ui/themes/dist/esm/components/data-list.js'
 import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 
-import type { NotionTag } from '@/lib/drizzle/schemas/_notion/types'
-
 // import { getShowData } from '@/app/(notion)/_config/index'
 import { IdCardIcon, TagIcon } from '@/components/Icon/index'
 import { cx } from '@/utils/cx'
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 function ShowSlugHeaderData({ item }) {
   return (

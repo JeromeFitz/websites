@@ -1,14 +1,14 @@
+import type { Venue as VenueType } from '@/lib/drizzle/schemas/cache-venues/types'
+
 import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import { format } from 'date-fns'
 
-import type { Venue } from '@/lib/drizzle/schemas/cache-venues/types'
-
 import { ImageNotion } from '@/components/Image/Image.Notion'
 import { segment } from '@/lib/drizzle/schemas/cache-venues/queries'
 
-export function Venue({ item }: { item: Venue }) {
+export function Venue({ item }: { item: VenueType }) {
   return (
     <Flex
       align="start"

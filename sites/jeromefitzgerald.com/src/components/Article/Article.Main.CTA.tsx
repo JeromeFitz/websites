@@ -35,7 +35,6 @@ function ArticleMainCTA({ color = 'accent', href = '/events', type = 'events' })
           wrap="nowrap"
         >
           {/* @todo(types) */}
-          {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
           {/* @ts-ignore */}
           <Button asChild color={color} variant="soft">
             <NextLink href={href}>

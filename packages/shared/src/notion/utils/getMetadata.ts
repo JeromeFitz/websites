@@ -1,11 +1,11 @@
-import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
-import { isObjectEmpty } from '@jeromefitz/utils'
-
 import type {
   RichTextItemResponse,
   TextRichTextItemResponse,
 } from '@notionhq/client/build/src/api-endpoints.js'
 import type { Metadata } from 'next'
+
+import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
+import { isObjectEmpty } from '@jeromefitz/utils'
 
 import { getPropertyTypeData } from 'next-notion/utils/index'
 import _title from 'title'
@@ -26,7 +26,7 @@ type ImageItemResponse =
 type TextRequest = string
 
 // @todo(complexity) 15
-// eslint-disable-next-line complexity
+// biome-ignore lint/complexity/noExcessiveCognitiveComplexity: migrate
 function getMetadata({ properties, segmentInfo }) {
   if (isObjectEmpty(properties)) return {}
   // console.dir(`[getMetadata] segmentInfo:`)

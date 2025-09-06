@@ -1,3 +1,7 @@
+// import type { NotionTag } from '@/lib/drizzle/schemas/_notion/types'
+import type { Event } from '@/lib/drizzle/schemas/cache-events/types'
+import type { Venue } from '@/lib/drizzle/schemas/cache-venues/types'
+
 import { TZDate } from '@date-fns/tz'
 import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
 import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
@@ -8,10 +12,6 @@ import { Skeleton } from '@radix-ui/themes/dist/esm/components/skeleton.js'
 import { Strong } from '@radix-ui/themes/dist/esm/components/strong.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import { formatInTimeZone } from 'date-fns-tz'
-
-// import type { NotionTag } from '@/lib/drizzle/schemas/_notion/types'
-import type { Event } from '@/lib/drizzle/schemas/cache-events/types'
-import type { Venue } from '@/lib/drizzle/schemas/cache-venues/types'
 
 import {
   CalendarIcon,

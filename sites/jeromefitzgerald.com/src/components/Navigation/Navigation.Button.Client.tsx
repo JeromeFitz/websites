@@ -1,4 +1,5 @@
 'use client'
+
 import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 import * as SegmentedControl from '@radix-ui/themes/dist/esm/components/segmented-control.js'
 import { Skeleton } from '@radix-ui/themes/dist/esm/components/skeleton.js'

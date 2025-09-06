@@ -1,3 +1,5 @@
+import type { Podcast } from '@/lib/drizzle/schemas/cache-podcasts/types'
+
 import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 import { Em } from '@radix-ui/themes/dist/esm/components/em.js'
 import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
@@ -8,8 +10,6 @@ import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import _filter from 'lodash/filter.js'
 import _orderBy from 'lodash/orderBy.js'
 import NextLink from 'next/link'
-
-import type { Podcast } from '@/lib/drizzle/schemas/cache-podcasts/types'
 
 import { HeaderFull } from '@/components/Header/Header.Full'
 import { getImageKeyValue } from '@/lib/drizzle/schemas/cache-images/queries'
@@ -62,7 +62,7 @@ function ListWrapper({ podcasts }: { podcasts: Podcast[] }) {
                 <NextLink href={podcast.slugPreview}>
                   <Box height="275px" overflow="hidden" position="relative">
                     {/* {!!imageUrl && <NextImage {...image} />} */}
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    {/* biome-ignore lint/performance/noImgElement: migrate */}
                     <img
                       alt="d"
                       className={cx(

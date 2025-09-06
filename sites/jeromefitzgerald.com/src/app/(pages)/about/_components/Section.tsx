@@ -404,6 +404,7 @@ function SectionLegend({ data }: { data: any }) {
             gap="4"
             height="100%"
             justify="start"
+            // biome-ignore lint/suspicious/noArrayIndexKey: migrate
             key={`legend-${i}`}
             p="5"
             position="relative"

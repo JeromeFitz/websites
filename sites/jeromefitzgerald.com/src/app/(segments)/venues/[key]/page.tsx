@@ -1,10 +1,10 @@
-import { envClient } from '@jeromefitz/next-config/env.client.mjs'
-
 import type { Metadata, ResolvingMetadata } from 'next'
 
-import { notFound } from 'next/navigation.js'
-
 import type { Venue } from '@/lib/drizzle/schemas/cache-venues/types'
+
+import { envClient } from '@jeromefitz/next-config/env.client.mjs'
+
+import { notFound } from 'next/navigation.js'
 
 import { getVenue, segment } from '@/lib/drizzle/schemas/cache-venues/queries'
 import { getKey } from '@/utils/getKey'

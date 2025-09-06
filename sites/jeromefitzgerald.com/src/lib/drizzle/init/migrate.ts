@@ -1,4 +1,4 @@
-import path from 'path'
+import path from 'node:path'
 
 import { config as dotenvConfig } from 'dotenv'
 import { migrate } from 'drizzle-orm/postgres-js/migrator'

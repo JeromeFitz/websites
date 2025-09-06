@@ -1,6 +1,6 @@
-import NextImage from 'next/image'
-
 import type { Segment } from '@/utils/getBySegment'
+
+import NextImage from 'next/image'
 
 /**
  * @note Image
@@ -13,7 +13,7 @@ import type { Segment } from '@/utils/getBySegment'
  *
  */
 import { isEmpty } from '@/utils/isEmpty'
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+
 interface ImagePlaceholder {
   alt?: string
   blurDataURL?: string
@@ -26,6 +26,7 @@ interface ImagePlaceholder {
   src?: string
   width?: number
 }
+
 import type {
   Blog,
   Book,
@@ -68,8 +69,10 @@ async function getImagePlaceholder({ image }: { image: any }) {
   return {
     blurDataURL: _imagePlaceholder.blurDataURL,
     ['data-key']: _imagePlaceholder.key,
+    // biome-ignore lint/correctness/useParseIntRadix: migrate
     height: parseInt(_imagePlaceholder.height),
     src: _imagePlaceholder.src,
+    // biome-ignore lint/correctness/useParseIntRadix: migrate
     width: parseInt(_imagePlaceholder.width),
   }
 }

@@ -1,7 +1,11 @@
 {
   "name": "@jeromefitz/shared",
   "version": "0.0.0",
-  "repository": "jeromefitz/websites.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jeromefitz/websites",
+    "directory": "packages/shared"
+  },
   "author": {
     "name": "Jerome Fitzgerald",
     "email": "j@jeromefitzgerald.com",
@@ -106,9 +110,7 @@
     "clean:install": "pnpm clean && rm -rf ./node_modules",
     "copy": "mkdir -p ./src && ./scripts/copy.sh",
     "dev": "tsdown --watch",
-    "format:lint": "pnpm lint:eslint --fix",
-    "lint": "pnpm lint:eslint && pnpm lint:typescript",
-    "lint:eslint": "eslint ./src --max-warnings=0",
+    "lint": "pnpm lint:typescript",
     "lint:typescript": "tsc --noEmit --declaration",
     "semantic-release": "echo semantic-release"
   },

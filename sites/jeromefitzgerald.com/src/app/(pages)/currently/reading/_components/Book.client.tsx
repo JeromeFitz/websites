@@ -1,5 +1,6 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
+/** biome-ignore-all lint/suspicious/noArrayIndexKey: migrate */
 'use client'
+
 import { lpad } from '@jeromefitz/utils'
 
 import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
@@ -366,8 +367,7 @@ function BookPage({ items }: { items: any }) {
   books[0].title = _title(books[0].id)
   books[1].title = _title(books[1].id)
   books[2].title = _title(books[2].id)
-  // @todo(complexity) 15
-  // eslint-disable-next-line complexity
+
   items.map((item: any) => {
     if (!item?.status) return null
     if (!item?.isActive) return null

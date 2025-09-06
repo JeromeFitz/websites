@@ -1,13 +1,14 @@
-import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
-
-import _orderBy from 'lodash/orderBy.js'
-import { MetadataRoute } from 'next'
+import type { MetadataRoute } from 'next'
 
 import type { Episode } from '@/lib/drizzle/schemas/cache-episodes/types'
 import type { Event } from '@/lib/drizzle/schemas/cache-events/types'
 import type { Page } from '@/lib/drizzle/schemas/cache-pages/types'
 import type { Podcast } from '@/lib/drizzle/schemas/cache-podcasts/types'
 import type { Show } from '@/lib/drizzle/schemas/cache-shows/types'
+
+import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
+
+import _orderBy from 'lodash/orderBy.js'
 
 import { getEpisodes } from '@/lib/drizzle/schemas/cache-episodes/queries'
 import { getEvents } from '@/lib/drizzle/schemas/cache-events/queries'
@@ -101,7 +102,7 @@ const sitemapPodcasts = podcasts.map((slug) => ({
   lastModified,
   url: getUrl(slug),
 }))
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+
 const sitemapPodcastEpisodes = podcastEpisodes.map((slug) => ({
   lastModified,
   url: getUrl(slug),

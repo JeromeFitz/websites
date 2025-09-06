@@ -1,3 +1,4 @@
+/** biome-ignore-all assist/source/useSortedKeys: migrate */
 import { envServer } from '@jeromefitz/next-config/env.server.mjs'
 
 import { and, eq, sql } from 'drizzle-orm'
@@ -35,7 +36,6 @@ export async function pre_addImageKeyValueToCache({ image }: { image: any }) {
   }
 }
 
-/* eslint-disable perfectionist/sort-objects */
 export async function addImageKeyValueToCache(imageCache: any) {
   await drizzle.insert(cacheImages).values({
     siteId: envServer.POSTGRES_SITE_ID,

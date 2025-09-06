@@ -1,8 +1,8 @@
 import type { Metadata, ResolvingMetadata } from 'next'
 
-import { notFound } from 'next/navigation.js'
-
 import type { Page } from '@/lib/drizzle/schemas/cache-pages/types'
+
+import { notFound } from 'next/navigation.js'
 
 import { getBooks, segment } from '@/lib/drizzle/schemas/cache-books/queries'
 import {
@@ -20,7 +20,6 @@ interface Props {
   searchParams?: Promise<Record<string, string | string[] | undefined>>
 }
 export async function generateMetadata(
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   { params }: Props,
   parent: ResolvingMetadata,
 ): Promise<Metadata> {

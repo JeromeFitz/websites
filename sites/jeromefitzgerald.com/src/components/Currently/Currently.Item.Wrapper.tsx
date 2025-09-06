@@ -1,10 +1,10 @@
+import type { NotionColor } from '@/lib/drizzle/schemas/_notion/types'
+
 import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
 import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
 import NextLink from 'next/link'
-
-import type { NotionColor } from '@/lib/drizzle/schemas/_notion/types'
 
 import { cx } from '@/utils/cx'
 

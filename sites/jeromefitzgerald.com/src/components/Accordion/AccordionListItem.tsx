@@ -11,7 +11,6 @@ import { cx } from '@/utils/cx'
 //   }))
 // }
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 function AccordionListItem({ children, href, icon, ...props }) {
   const Icon = icon

@@ -1,4 +1,7 @@
 'use client'
+
+import type { IconProps } from './Icon.types'
+
 import {
   ArrowUturnLeftIcon as ArrowUturnLeftHero,
   AtSymbolIcon as AtSymbolIconHero,
@@ -78,11 +81,8 @@ import {
   TwitterLogoIcon as TwitterLogoIconRadix,
   UpdateIcon as UpdateIconRadix,
 } from '@radix-ui/react-icons'
-// } from '@radix-ui/react-icons/dist/react-icons.esm'
 
 import { cx } from '../../utils/cx'
-// import { Slot } from '@radix-ui/react-slot'
-import { IconProps } from './Icon.types'
 
 /**
  * @hack(icon)

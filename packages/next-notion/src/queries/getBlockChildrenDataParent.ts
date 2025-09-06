@@ -1,8 +1,8 @@
 import 'server-only'
 
-import { asyncForEach } from '@jeromefitz/utils'
-
 import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints.js'
+
+import { asyncForEach } from '@jeromefitz/utils'
 
 import _noop from 'lodash/noop.js'
 
@@ -19,7 +19,7 @@ async function getBlockChildrenDataParent(block_id) {
 
   // response.results.map(async (block: BlockObjectResponse, i) => {
   // @todo(complexity) 12
-  // eslint-disable-next-line complexity
+  // biome-ignore lint/complexity/noExcessiveCognitiveComplexity: migrate
   await asyncForEach(response.results, async (block: BlockObjectResponse) => {
     // console.dir(`asyncForEach: ${block.type}`)
     /**

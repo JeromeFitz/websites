@@ -1,4 +1,5 @@
 'use client'
+
 import type { ReactNode } from 'react'
 import type { StoreApi } from 'zustand'
 
@@ -25,6 +26,7 @@ import {
   // SunIcon,
   TicketIcon,
 } from '@/components/Icon/index'
+
 // import { getEventsWithLimit } from '@/lib/drizzle/schemas/queries'
 
 const Context = createContext<any | null>(null)
@@ -447,7 +449,7 @@ const initializeStoreMenu = (preloadedState: Partial<any> = {}) => {
       set({
         isCmdkInnerOpen: !get().isCmdkInnerOpen,
       })
-      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+
       get().isCmdkOpen
         ? setTimeout(() => {
             // console.dir(`ok`)

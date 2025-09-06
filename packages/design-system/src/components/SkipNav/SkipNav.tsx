@@ -29,7 +29,6 @@ const SkipNavLink = forwardRef(function SkipNavLink(
       )}
       data-skip-nav-content=""
       href={`#${id}`}
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       ref={forwardedRef}
       tabIndex={0}
@@ -46,7 +45,6 @@ const SkipNavContent = forwardRef(function SkipNavContent(
 ) {
   const id = idProp || defaultId
   return (
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     <Box {...props} asChild id={id} ref={forwardedRef} />
   )
