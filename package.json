@@ -64,9 +64,6 @@
       "sharp"
     ],
     "overrides": {
-      "@babel/core": "7.28.4",
-      "@babel/helpers": "7.28.4",
-      "@babel/runtime": "7.28.4",
       "@octokit/plugin-paginate-rest": "^13.0.0",
       "@typescript-eslint/typescript-estree": "^8.26.1",
       "cross-spawn": "^7.0.6",
@@ -74,12 +71,12 @@
       "express": "^4.21.1",
       "micromatch": "^4.0.8",
       "nanoid@^3.0.0": "^3.3.8",
-      "unfetch": "4.2.0",
-      "semver@^5.0.0": "5.7.2",
-      "semver@^6.0.0": "6.3.1",
-      "semver@^7.0.0": "7.7.2",
+      "unfetch": "^4.2.0",
+      "semver@^5.0.0": "^5.7.2",
+      "semver@^6.0.0": "^6.3.1",
+      "semver@^7.0.0": "^7.7.2",
       "store2": "^2.14.4",
-      "tough-cookie": "4.1.4",
+      "tough-cookie": "^4.1.4",
       "ws": "^8.18.0"
     },
     "supportedArchitectures": {
