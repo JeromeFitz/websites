@@ -15,7 +15,7 @@ import _size from 'lodash/size.js'
 
 if (!isCI) {
   const dotenv = await import('dotenv')
-  dotenv.config({ path: './.env' })
+  dotenv.config({ path: './.env', quiet: true })
 }
 
 // const octokit = new Octokit({ auth: process.env.OCTOKIT_TOKEN })
