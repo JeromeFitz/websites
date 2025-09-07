@@ -21,7 +21,7 @@
     "VERCEL_*"
   ],
   "tasks": {
-        "//#biome:check": {
+    "//#biome:check": {
       "outputLogs": "new-only"
     },
     "//#biome:write": {
