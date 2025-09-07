@@ -35,6 +35,7 @@ const Loading: React.FC<{ isRouteChanging: boolean }> = ({ isRouteChanging }) =>
     zzz_menuTertiaryActiveSet,
   } = useStore()
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: migrate
   useEffect(() => {
     isFinished
       ? document.body.classList.remove('loading')

@@ -12,6 +12,7 @@ import { cx } from '@/utils/cx'
 function NavigationButtonClient() {
   const { resolvedTheme: theme, setTheme } = useTheme()
   const [isLoading, isLoadingSet] = useState(true)
+  // biome-ignore lint/correctness/useExhaustiveDependencies: migrate
   useEffect(() => isLoadingSet(false), [isLoading])
 
   const handleTheme = (value: any) => {

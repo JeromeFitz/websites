@@ -134,7 +134,7 @@
     "enabled": true,
     "rules": {
       "nursery": {
-        "useSortedClasses": "off"
+        "useSortedClasses": "on"
       },
       "recommended": true
     }
@@ -236,7 +236,7 @@
             "noUnusedFunctionParameters": "off",
             "noUnusedVariables": "off",
             "noVoidTypeReturn": "error",
-            "useExhaustiveDependencies": "off",
+            "useExhaustiveDependencies": "error",
             "useHookAtTopLevel": "error",
             "useImportExtensions": "off",
             "useJsxKeyInIterable": "error",

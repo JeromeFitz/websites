@@ -495,6 +495,7 @@ function DataItems() {
     },
   )
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: migrate
   useEffect(() => {
     if (
       canFetchMore &&
