@@ -85,7 +85,7 @@
       "semver@^7.0.0": "^7.7.2",
       "sha.js": "^2.4.12",
       "store2": "^2.14.4",
-      "tough-cookie": "^4.1.4",
+      "tough-cookie": "^6.0.0",
       "ws": "^8.18.0"
     },
     "supportedArchitectures": {
