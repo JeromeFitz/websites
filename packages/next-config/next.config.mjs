@@ -113,7 +113,7 @@ const config = ({
     experimental: {
       // esmExternals: true,
       // optimizePackageImports: ['@radix-ui/themes'],
-      useLightningcss: false,
+      useLightningcss: true,
     },
     // exportPathMap,
     // generateBuildId,

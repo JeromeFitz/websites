@@ -7,7 +7,7 @@ import releaseBranchTypes from './config/release-branch-types/index.cjs'
 
 if (!isCI) {
   const dotenv = await import('dotenv')
-  dotenv.config({ path: './.env' })
+  dotenv.config({ path: './.env', quiet: true })
 }
 
 const branchTypes = _map(

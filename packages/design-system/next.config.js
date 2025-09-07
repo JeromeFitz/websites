@@ -1,7 +1,7 @@
 const path = require('node:path')
 
 const isCI = require('is-ci')
-!isCI && require('dotenv').config({ path: './.env' })
+!isCI && require('dotenv').config({ path: './.env', quiet: true })
 
 const buildInfoConfig = {
   owner: 'jeromefitz',

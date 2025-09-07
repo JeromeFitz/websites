@@ -19,7 +19,7 @@
     "pnpm": ">=10 <11"
   },
   "scripts": {
-    "build": "CI=1 NODE_NO_WARNINGS=1 next build",
+    "build": "CI=1 NODE_NO_WARNINGS=1 next build --turbopack",
     "clean": "rm -rf ./.lighthouseci ./.next ./.turbo ./coverage ./e2e-report ./e2e-results ./storybook-static",
     "clean:install": "pnpm clean && rm -rf ./.cache ./node_modules",
     "copy": "echo mkdir -p ./dist && ./scripts/copy.sh",
