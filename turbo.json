@@ -21,6 +21,16 @@
     "VERCEL_*"
   ],
   "tasks": {
+        "//#biome:check": {
+      "outputLogs": "new-only"
+    },
+    "//#biome:write": {
+      "cache": false,
+      "outputLogs": "new-only"
+    },
+    "//#lint": {
+      "outputLogs": "new-only"
+    },
     "build": {
       "dependsOn": [
         "^build"

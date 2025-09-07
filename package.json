@@ -27,7 +27,7 @@
     "format:prettier:check": "pnpm format:prettier:base --check",
     "format:prettier:write": "pnpm format:prettier:base --write",
     "inspect": "pnpm node-modules-inspector",
-    "lint": "pnpm run lint:biome && pnpm run format:prettier:check && pnpm run lint:packages && pnpm turbo run lint",
+    "lint": "pnpm run lint:biome && pnpm run format:prettier:check && pnpm run lint:packages",
     "lint:biome": "biome lint",
     "lint:packages": "syncpack lint",
     "preinstall": "npx only-allow pnpm",
