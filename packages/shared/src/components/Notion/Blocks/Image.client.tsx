@@ -55,7 +55,7 @@ function Image({ ...props }) {
   return (
     <>
       <NextImage
-        className="rounded-3 h-auto w-full"
+        className="h-auto w-full rounded-3"
         placeholder="blur"
         {...imageProps}
       />

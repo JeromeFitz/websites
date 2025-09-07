@@ -91,7 +91,7 @@ function HeaderSidebar({
             width="100%"
             wrap="nowrap"
           >
-            <Heading as="h1" className="min-h-15 line-clamp-2 font-medium" size="6">
+            <Heading as="h1" className="line-clamp-2 min-h-15 font-medium" size="6">
               {title}
               {/* {hasBorder ? (
                 <>{title}</>

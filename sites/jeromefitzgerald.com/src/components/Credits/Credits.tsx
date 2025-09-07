@@ -145,8 +145,8 @@ function RelationsContainer({ children }: { children: React.ReactNode }) {
     <Flex
       className={cx(
         'items-stretch',
-        'rounded-3 z-10 place-content-start items-start overflow-hidden',
-        'border-gray-7 border-1 rounded-t-[0] border-t-0',
+        'z-10 place-content-start items-start overflow-hidden rounded-3',
+        'rounded-t-[0] border-1 border-gray-7 border-t-0',
         'bg-accentA-2',
       )}
       direction="row"

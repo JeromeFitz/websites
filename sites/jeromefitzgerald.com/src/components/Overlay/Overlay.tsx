@@ -16,7 +16,7 @@ function Overlay() {
   return (
     <div
       className={cx(
-        'bg-blackA-3 dark:bg-blackA-6 fixed left-0 top-0 z-50 h-min w-screen',
+        'fixed top-0 left-0 z-50 h-min w-screen bg-blackA-3 dark:bg-blackA-6',
         'transition-black/50',
         'pointer-events-none opacity-0',
         isOverlay && 'opacity-100',

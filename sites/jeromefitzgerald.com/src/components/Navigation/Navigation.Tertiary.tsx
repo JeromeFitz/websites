@@ -69,7 +69,7 @@ function NavigationTertiary({
               <Button
                 aria-label={isDisabled ? 'Disabled Tertiary Menu' : 'Tertiary Menu'}
                 className={cx(
-                  '!bg-accent-3 !hover:bg-accent-4 !active:bg-accent-5',
+                  '!bg-accent-3 !active:bg-accent-5 !hover:bg-accent-4',
                   'text-accent-11 hover:text-accent-11 active:text-accent-11',
                   'backdrop-blur-md transition-all',
                   '!min-w-[310px]',

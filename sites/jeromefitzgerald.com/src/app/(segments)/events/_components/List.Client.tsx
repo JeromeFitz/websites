@@ -27,7 +27,7 @@ function AccordionClient({ items }) {
   return (
     <Box
       asChild
-      className="border-accentA-12 shadow-3 bg-grayA-6 border-0 border-solid"
+      className="border-0 border-accentA-12 border-solid bg-grayA-6 shadow-3"
       maxWidth="100%"
       minWidth="100%"
       mt="4"
@@ -101,7 +101,7 @@ function AccordionClient({ items }) {
                     <p className="">{item.seoDescription || description}</p>
                   </div>
                   <div className="flex w-full flex-row flex-wrap justify-center md:flex-nowrap">
-                    <div className="w-full justify-start px-4 text-left md:-mt-4">
+                    <div className="md:-mt-4 w-full justify-start px-4 text-left">
                       <Tags classNameTag="px-3 py-2 mb-4 mr-4" tags={item.tags} />
                     </div>
                     <div

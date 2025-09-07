@@ -61,13 +61,13 @@ function Home() {
       <ArticleMain>
         <Heading
           as="h1"
-          className="sr-only absolute left-[-999px] top-[-999px] block"
+          className="sr-only absolute top-[-999px] left-[-999px] block"
         >
           Jerome Fitzgerald (he/him)
         </Heading>
         <Heading
           as="h2"
-          className="sr-only absolute left-[-999px] top-[-999px] block"
+          className="sr-only absolute top-[-999px] left-[-999px] block"
         >
           Actor. Comedian. Human.
         </Heading>

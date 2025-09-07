@@ -31,7 +31,7 @@ function NavigationButtonClient() {
         <SegmentedControl.Root
           className={cx(
             'bg-whiteA-3 hover:bg-whiteA-4 active:bg-whiteA-5',
-            'dark:bg-blackA-3 hover:dark:bg-blackA-4 active:dark:bg-blackA-5',
+            'dark:bg-blackA-3 active:dark:bg-blackA-5 hover:dark:bg-blackA-4',
             '',
           )}
           defaultValue={theme || 'dark'}

@@ -296,7 +296,7 @@ function SectionContent({ data }: { data: any }) {
               <Flex
                 className={cx(
                   'items-center self-start overflow-hidden',
-                  'after:border-accent-9 after:border-t-1 after:pointer-events-none after:absolute after:left-0 after:top-0 after:size-full after:content-[""]',
+                  'after:pointer-events-none after:absolute after:top-0 after:left-0 after:size-full after:border-accent-9 after:border-t-1 after:content-[""]',
                 )}
                 // column="row"
                 gap="3"
@@ -310,7 +310,7 @@ function SectionContent({ data }: { data: any }) {
                 wrap="nowrap"
               >
                 <Flex
-                  className="bg-accent-9 rounded-b-3 aspect-[1_/_1] items-center overflow-visible"
+                  className="aspect-[1_/_1] items-center overflow-visible rounded-b-3 bg-accent-9"
                   gap="0"
                   height="calc(var(--spacing) * 12)"
                   justify="center"
@@ -319,7 +319,7 @@ function SectionContent({ data }: { data: any }) {
                   wrap="nowrap"
                 >
                   <Flex
-                    className="outline-hidden line-clamp-1 transform-none items-center"
+                    className="line-clamp-1 transform-none items-center outline-hidden"
                     direction="column"
                     flexBasis="0x"
                     flexGrow="1"
@@ -357,7 +357,7 @@ function SectionContent({ data }: { data: any }) {
                   wrap="nowrap"
                 >
                   <Flex
-                    className="outline-hidden line-clamp-1 transform-none items-start"
+                    className="line-clamp-1 transform-none items-start outline-hidden"
                     direction="column"
                     flexBasis="0px"
                     flexGrow="1"
@@ -389,14 +389,14 @@ function SectionContent({ data }: { data: any }) {
 
 function SectionLegend({ data }: { data: any }) {
   return (
-    <Box className="border-gray-7 rounded-3 border-1">
+    <Box className="rounded-3 border-1 border-gray-7">
       {data.map((item: any, i: number) => {
         const Icon = item.icon
         return (
           <Flex
             asChild
             className={cx(
-              'hover:bg-accent-4 group items-center overflow-visible no-underline',
+              'group items-center overflow-visible no-underline hover:bg-accent-4',
               'border-gray-7 border-t-1 first-of-type:border-t-0',
               '',
             )}
@@ -426,7 +426,7 @@ function SectionLegend({ data }: { data: any }) {
                     wrap="nowrap"
                   >
                     <Flex
-                      className="rounded-3 bg-accent-9 items-center"
+                      className="items-center rounded-3 bg-accent-9"
                       direction="row"
                       height="calc(var(--spacing) * 8)"
                       justify="center"
@@ -476,7 +476,7 @@ function Section({ sections = sectionsDefault }: { sections?: SectionType[] }) {
         >
           <Box
             className={cx(
-              'rounded-3 absolute inset-x-0 top-0 z-0 h-16 flex-none overflow-hidden',
+              'absolute inset-x-0 top-0 z-0 h-16 flex-none overflow-hidden rounded-3',
               'hidden',
             )}
             data-name="Legend: Highlight"

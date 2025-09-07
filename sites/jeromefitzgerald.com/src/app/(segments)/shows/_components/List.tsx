@@ -93,7 +93,7 @@ function ListWrapper({ shows }: { shows: Show[] }) {
                 asChild
                 className={cx(
                   // 'bg-accent-6',
-                  'md:border-1 border-gray-7 hover:border-gray-8',
+                  'border-gray-7 hover:border-gray-8 md:border-1',
                   'rounded-sm',
                   'transition-all duration-500',
                   'group-hover:transform-[translate(0px,_-1em)]',

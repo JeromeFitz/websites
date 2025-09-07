@@ -1,6 +1,6 @@
 function EmbedSpotify({ id }) {
   return (
-    <div className="relative size-full max-h-[480] overflow-hidden [&>*:iframe]:absolute [&>*:iframe]:left-0 [&>*:iframe]:top-0 [&>*:iframe]:size-full [&>*:iframe]:max-h-[600]">
+    <div className="relative size-full max-h-[480] overflow-hidden [&>*:iframe]:absolute [&>*:iframe]:top-0 [&>*:iframe]:left-0 [&>*:iframe]:size-full [&>*:iframe]:max-h-[600]">
       <iframe
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
         allowFullScreen

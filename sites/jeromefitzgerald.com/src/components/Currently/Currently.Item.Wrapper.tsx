@@ -111,13 +111,13 @@ function CurrentlyWrapper({
               <Box mr="3" position="relative" right="0">
                 <Icon
                   className={cx(
-                    'm-2 rounded-md p-2 text-inherit !opacity-100 md:p-2',
+                    '!opacity-100 m-2 rounded-md p-2 text-inherit md:p-2',
                     'transition-colors',
                     // 'bg-white/75 group-hover:bg-white/95',
                     // 'dark:bg-black/55 dark:group-hover:bg-black/95',
                     'bg-whiteA-10 group-hover:bg-whiteA-9',
                     'dark:bg-blackA-10 dark:group-hover:bg-blackA-9',
-                    '!md:size-12 !size-10',
+                    '!size-10 !md:size-12',
                   )}
                 />
               </Box>
@@ -137,7 +137,7 @@ function CurrentlyWrapper({
                 <Heading
                   align="left"
                   as="h3"
-                  className={cx('font-mono font-medium uppercase')}
+                  className={cx('font-medium font-mono uppercase')}
                   highContrast
                   mb="2"
                   size="1"

@@ -59,7 +59,7 @@ function ListWrapper({ events }: { events: Event[] }) {
                 asChild
                 className={cx(
                   // 'bg-accent-6',
-                  'md:border-1 border-gray-7 hover:border-gray-8',
+                  'border-gray-7 hover:border-gray-8 md:border-1',
                   'rounded-sm',
                   'transition-all duration-500',
                   // 'group-hover:transform-[translate(0px,_-1em)]',
@@ -199,7 +199,7 @@ function ListWrapper({ events }: { events: Event[] }) {
                           <ExternalLinkIcon
                             className={cx(
                               // 'bg-blackA-9 group-hover:bg-blackA-10',
-                              'rounded-3 p-0-5 size-5 text-inherit !opacity-95 transition-colors group-hover:!opacity-100',
+                              '!opacity-95 group-hover:!opacity-100 size-5 rounded-3 p-0-5 text-inherit transition-colors',
                               '!transition-all',
                             )}
                           />

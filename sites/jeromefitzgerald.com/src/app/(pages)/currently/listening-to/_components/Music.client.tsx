@@ -130,7 +130,7 @@ function DataItem({ item, type }: any) {
 
   return (
     <Flex
-      className="border-gray-7 border-1 border-t-1 flex-auto items-start rounded-md"
+      className="flex-auto items-start rounded-md border-1 border-gray-7 border-t-1"
       direction={{ initial: 'column-reverse', md: 'row-reverse' }}
       gap="0"
       justify="between"
@@ -308,7 +308,7 @@ function DataItem({ item, type }: any) {
                       Open Spotify
                       {` `}
                       <ExternalLinkIcon
-                        className={cx('text-accent-11 !opacity-100')}
+                        className={cx('!opacity-100 text-accent-11')}
                       />
                     </NextLink>
                   </Button>
@@ -320,7 +320,7 @@ function DataItem({ item, type }: any) {
       </Flex>
       <Inset
         className={cx(
-          'rounded-3 relative h-full',
+          'relative h-full rounded-3',
           'h-[275px] w-[164px] min-w-[164px] max-w-[164px]',
           'md:size-full md:max-w-[308px]',
         )}
@@ -351,7 +351,7 @@ function DataItemLoader({ error, handleScroll, isLoadingMore }: any) {
   return (
     <>
       <Flex
-        className="border-gray-7 border-1 border-t-1 flex-auto items-start rounded-md"
+        className="flex-auto items-start rounded-md border-1 border-gray-7 border-t-1"
         direction={{ initial: 'column-reverse', md: 'row-reverse' }}
         gap="0"
         justify="between"
@@ -418,7 +418,7 @@ function DataItemLoader({ error, handleScroll, isLoadingMore }: any) {
         </Flex>
         <Inset
           className={cx(
-            'rounded-3 relative h-full',
+            'relative h-full rounded-3',
             'h-[275px] w-[164px] min-w-[164px] max-w-[164px]',
             'md:size-full md:max-w-[308px]',
             // 'md:h-[450px] md:w-[500px]',
@@ -642,8 +642,8 @@ function MusicClient() {
             <Flex
               className={cx(
                 // '!md:col-span-3 !col-span-full',
-                'bg-whiteA-12 dark:bg-blackA-12 md:bg-transparent md:dark:bg-transparent',
-                'backdrop-blur-xs z-40 md:z-0',
+                'bg-whiteA-12 md:bg-transparent dark:bg-blackA-12 md:dark:bg-transparent',
+                'z-40 backdrop-blur-xs md:z-0',
               )}
               direction="row"
               height="fit-content"
@@ -667,7 +667,7 @@ function MusicClient() {
                   >
                     <SelectTrigger
                       className={cx(
-                        '!md:w-full !w-full',
+                        '!w-full !md:w-full',
                         spotifyType === 'recently-played' && 'cursor-not-allowed',
                       )}
                       placeholder="Time Range:"
@@ -696,7 +696,7 @@ function MusicClient() {
                     size="3"
                   >
                     <SelectTrigger
-                      className="!md:w-full z-50 !w-full"
+                      className="!w-full z-50 !md:w-full"
                       placeholder="Type:"
                     />
                     <SelectContent className="z-50 w-full" position="popper">
@@ -710,7 +710,7 @@ function MusicClient() {
                 </Flex>
               </Flex>
             </Flex>
-            <Callout className="relative bottom-0 right-0" color="mint" size="1">
+            <Callout className="relative right-0 bottom-0" color="mint" size="1">
               <Strong className="font-mono uppercase">Spotify</Strong> does not earn
               a commission. But all data is currently from them.
             </Callout>

@@ -29,7 +29,7 @@ function AccordionListItem({ children, href, icon, ...props }) {
           'transition-colors',
           'my-1 gap-2 py-1',
           'md:my-1 md:gap-3 md:py-2',
-          'hover:text-gray-12 hover:bg-gray-4 rounded',
+          'rounded hover:bg-gray-4 hover:text-gray-12',
         )}
       >
         <Icon

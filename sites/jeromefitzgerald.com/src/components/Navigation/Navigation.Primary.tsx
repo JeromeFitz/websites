@@ -90,7 +90,7 @@ function NavigationPrimary({ order = 0 }) {
               >
                 <DotFilledIcon
                   className={cx(
-                    'text-pink-11 size-6 animate-pulse transition-all delay-1000',
+                    'size-6 animate-pulse text-pink-11 transition-all delay-1000',
                     '',
                   )}
                 />
@@ -108,7 +108,7 @@ function NavigationPrimary({ order = 0 }) {
           >
             <Grid
               className={cx(
-                'rounded-3 border-gray-7 border-1 !overflow-hidden',
+                '!overflow-hidden rounded-3 border-1 border-gray-7',
                 'w-[calc(var(--radix-popper-available-width)_-_3px)] min-w-[unset]',
                 'md:max-w-[209px]',
               )}

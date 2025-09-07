@@ -44,7 +44,7 @@ function CTA({ href, isDisabled = false }: { href: string; isDisabled: boolean }
           <ExternalLinkIcon
             className={cx(
               // 'bg-blackA-9 group-hover:bg-blackA-10 ',
-              'rounded-3 size-7 p-1 text-inherit !opacity-95 transition-colors group-hover:!opacity-100',
+              '!opacity-95 group-hover:!opacity-100 size-7 rounded-3 p-1 text-inherit transition-colors',
               '!transition-all',
               isDisabled && 'hidden',
             )}

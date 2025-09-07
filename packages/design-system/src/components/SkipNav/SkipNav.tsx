@@ -24,8 +24,8 @@ const SkipNavLink = forwardRef(function SkipNavLink(
     <Link
       {...props}
       className={cx(
-        'rounded-3 bg-accent-1 absolute right-[100%] top-2 z-50 block p-4',
-        'focus:left-2.5 focus:right-auto',
+        'absolute top-2 right-[100%] z-50 block rounded-3 bg-accent-1 p-4',
+        'focus:right-auto focus:left-2.5',
       )}
       data-skip-nav-content=""
       href={`#${id}`}

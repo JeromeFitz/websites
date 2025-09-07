@@ -8,7 +8,7 @@ function NavigationSeparator({ className, isActive = true, order = 0 }) {
   return (
     <div
       className={cx(
-        'relative -left-1 flex h-full w-3 flex-none items-center',
+        '-left-1 relative flex h-full w-3 flex-none items-center',
         className,
       )}
       style={{ opacity: 0.4, order }}

@@ -115,7 +115,7 @@ function Book({ book, item }: { book: any; item: any }) {
   }
   return (
     <Flex
-      className="border-gray-7 border-1 border-t-1 flex-auto items-start rounded-md"
+      className="flex-auto items-start rounded-md border-1 border-gray-7 border-t-1"
       direction={{ initial: 'row', md: 'row-reverse' }}
       gap="0"
       justify="between"
@@ -265,7 +265,7 @@ function Book({ book, item }: { book: any; item: any }) {
                       Buy New at Bookshop
                       {` `}
                       <ExternalLinkIcon
-                        className={cx('text-accent-11 !opacity-100')}
+                        className={cx('!opacity-100 text-accent-11')}
                       />
                     </NextLink>
                   </Button>
@@ -283,7 +283,7 @@ function Book({ book, item }: { book: any; item: any }) {
                       Buy Used at Biblio
                       {` `}
                       <ExternalLinkIcon
-                        className={cx('text-accent-11 !opacity-100')}
+                        className={cx('!opacity-100 text-accent-11')}
                       />
                     </NextLink>
                   </Button>
@@ -295,7 +295,7 @@ function Book({ book, item }: { book: any; item: any }) {
       </Flex>
       <Inset
         className={cx(
-          'rounded-3 relative h-full',
+          'relative h-full rounded-3',
           'h-[275px] w-[164px] min-w-[164px] max-w-[164px]',
           'md:size-full md:max-w-[308px]',
           // 'md:h-[450px] md:w-[500px]',
@@ -481,7 +481,7 @@ function BookPage({ items }: { items: any }) {
                 })}
               </SelectContent>
             </SelectRoot>
-            <Callout className="relative bottom-0 right-0" color="mint" size="1">
+            <Callout className="relative right-0 bottom-0" color="mint" size="1">
               <Strong className="font-mono uppercase">Bookshop</Strong> links earn a
               commission.
             </Callout>

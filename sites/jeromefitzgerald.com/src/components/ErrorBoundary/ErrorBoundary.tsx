@@ -73,8 +73,8 @@ class ErrorBoundary extends Component<PropsChildren> {
                 >
                   <DataList.Root
                     className={cx(
-                      'py-6 pl-4 pr-1',
-                      'gap-x-[var(--space-3)] md:!gap-x-[var(--space-1)]',
+                      'py-6 pr-1 pl-4',
+                      'md:!gap-x-[var(--space-1)] gap-x-[var(--space-3)]',
                       'w-full',
                     )}
                     size="2"
