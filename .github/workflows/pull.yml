@@ -103,7 +103,7 @@ jobs:
     steps:
       - name: '🐙️  Checkout'
         id: pull-checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 1
@@ -162,7 +162,7 @@ jobs:
       - name: '🛠️  Deploy (Config)'
         id: pull-deploy-config
         if: ${{ contains(steps.pull-commit-message.outputs.message, '[b]') }}
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             core.setOutput('ref', context.payload.pull_request.head.ref)
