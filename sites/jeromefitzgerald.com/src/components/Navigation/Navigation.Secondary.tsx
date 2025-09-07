@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 'use client'
+
 import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
 import {
   Content as DropdownMenuContent,
@@ -43,6 +43,7 @@ function NavigationSecondary({ order = 0 }) {
     zzz_menuTertiaryActiveSet,
   } = useStore()
 
+  // biome-ignore lint/complexity/noUselessTernary: migrate
   const isDisabled = zzz_menuSecondaryActive?.icon ? false : true
   const IconSecondary = zzz_menuSecondaryActive?.icon ?? HomeIcon
 
@@ -117,7 +118,7 @@ function NavigationSecondary({ order = 0 }) {
                       )}
                       onSelect={() => {
                         zzz_menuSecondaryActiveSet(item)
-                        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+
                         !!item.href && router.push(item.href)
                       }}
                       textValue={item.title}
@@ -162,7 +163,7 @@ function NavigationSecondary({ order = 0 }) {
                                     onSelect={() => {
                                       zzz_menuSecondaryActiveSet(item)
                                       zzz_menuTertiaryActiveSet(itemSub)
-                                      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+
                                       !!itemSub.href && router.push(itemSub.href)
                                     }}
                                   >

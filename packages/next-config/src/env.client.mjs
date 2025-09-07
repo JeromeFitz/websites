@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 // @ts-check
 /**
  * ref: https://vercel.com/docs/projects/environment-variables/system-environment-variables

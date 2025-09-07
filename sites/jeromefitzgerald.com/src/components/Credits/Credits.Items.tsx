@@ -14,6 +14,7 @@ const CreditsItems = ({ items }: { items: string[] }) => {
     <>
       {items.map((item: string, i: number) => {
         return (
+          // biome-ignore lint/suspicious/noArrayIndexKey: migrate
           <LI key={i}>
             <Text>{item}</Text>
             {/* <CreditsItem item={item} /> */}

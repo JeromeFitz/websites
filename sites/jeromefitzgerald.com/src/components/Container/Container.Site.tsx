@@ -2,7 +2,6 @@ import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 
 import { cx } from '@/utils/cx'
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 function ContainerSite({ children }: { children: React.ReactNode }) {
   return (

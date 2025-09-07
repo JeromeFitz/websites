@@ -1,4 +1,5 @@
 'use client'
+
 import _map from 'lodash/map.js'
 import _orderBy from 'lodash/orderBy.js'
 import _size from 'lodash/size.js'
@@ -56,7 +57,7 @@ function EmojiHtml({ emoji, label }) {
 }
 
 // @todo(complexity) 13
-// eslint-disable-next-line complexity, @next/next/no-async-client-component
+// biome-ignore lint/complexity/noExcessiveCognitiveComplexity: migrate
 async function EmojiWrapper({ id, text }) {
   // const [loading, loadingSet] = useState(true)
   // useEffect(() => {
@@ -73,7 +74,7 @@ async function EmojiWrapper({ id, text }) {
   // isDev && console.dir(`> lazy load emoji libraries`)
 
   let emojiIndex = 0
-  // eslint-disable-next-line no-unsafe-optional-chaining
+  // biome-ignore lint/correctness/noUnsafeOptionalChaining: migrate
   for (const match of text?.matchAll(regex)) {
     const emoji = match[0]
     // @note(emoji) double to take into account emoji codepoint length
@@ -126,14 +127,14 @@ async function EmojiWrapper({ id, text }) {
          * @todo(types)
          * Argument of type 'any' is not assignable to parameter of type 'never'
          */
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+
         // @ts-ignore
         item.emoji ? (
           /**
            * @note(next) outside of page.tsx, need to ignore
            * 'Emoji' cannot be used as a JSX component.
            */
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+
           // @ts-ignore
           <Emoji character={item.text.trim()} key={`${id}--emoji--${itemId}`} />
         ) : (
@@ -160,7 +161,7 @@ async function EmojiWrapper({ id, text }) {
          * @todo(types)
          * Argument of type 'any' is not assignable to parameter of type 'never'
          */
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+
         // @ts-ignore
         emojiMappingStitch.push(sliced)
       }

@@ -1,9 +1,9 @@
+import type { Event } from '@/lib/drizzle/schemas/types'
+
 import { isAfter } from 'date-fns/isAfter'
 import _filter from 'lodash/filter.js'
 import _orderBy from 'lodash/orderBy.js'
 import _take from 'lodash/take.js'
-
-import type { Event } from '@/lib/drizzle/schemas/types'
 
 import { getEventsWithLimit } from '@/lib/drizzle/schemas/queries'
 
@@ -65,7 +65,6 @@ async function CurrentlyEvent({
   if (!hasTop) return null
 
   return (
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     <CurrentlyWrapper {...propsParent}>
       <CurrentlyItem {...props} />

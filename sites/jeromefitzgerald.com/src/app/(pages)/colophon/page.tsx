@@ -1,11 +1,11 @@
 import type { Metadata, ResolvingMetadata } from 'next'
 
+import type { Block } from '@/lib/drizzle/schemas/cache-blocks/types'
+import type { Page } from '@/lib/drizzle/schemas/cache-pages/types'
+
 import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
 import { notFound } from 'next/navigation.js'
-
-import type { Block } from '@/lib/drizzle/schemas/cache-blocks/types'
-import type { Page } from '@/lib/drizzle/schemas/cache-pages/types'
 
 import { getBlocks } from '@/lib/drizzle/schemas/cache-blocks/queries'
 import { getPage, segment } from '@/lib/drizzle/schemas/cache-pages/queries'
@@ -24,7 +24,6 @@ interface Props {
 }
 
 export async function generateMetadata(
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   { params }: Props,
   parent: ResolvingMetadata,
 ): Promise<Metadata> {

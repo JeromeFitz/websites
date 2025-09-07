@@ -1,6 +1,6 @@
-import { sql } from 'drizzle-orm'
-
 import type { Segment } from '@/utils/getBySegment'
+
+import { sql } from 'drizzle-orm'
 
 import { drizzle } from '@/lib/drizzle/index'
 import { getBySegment } from '@/utils/getBySegment'

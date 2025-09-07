@@ -18,13 +18,13 @@ import 'server-only'
 
 import https from 'node:https'
 
+import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints.js'
+
 import { Callout } from '@jeromefitz/ds/components/Callout/index'
 import { CameraIcon } from '@jeromefitz/ds/components/Icon/index'
 import { envClient } from '@jeromefitz/next-config/env.client.mjs'
 import { envServer } from '@jeromefitz/next-config/env.server.mjs'
 import { isObjectEmpty } from '@jeromefitz/utils'
-
-import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints.js'
 
 import { Client } from '@notionhq/client'
 import { Redis } from '@upstash/redis'
@@ -54,7 +54,7 @@ const CACHE_KEY_PREFIX__IMAGE = `${envClient.NEXT_PUBLIC__SITE}/image`
 
 // async function getImage({ url }) {}
 
-// eslint-disable-next-line complexity
+// biome-ignore lint/complexity/noExcessiveCognitiveComplexity: migrate
 async function getImageFromBlock({ block, url }) {
   let imageUrl = url
   let imageExpiry = null
@@ -152,8 +152,6 @@ async function getImageFromBlock({ block, url }) {
   return image
 }
 
-// @todo(complexity) 15
-// eslint-disable-next-line complexity
 async function ImageImpl({
   block,
   blocks,
@@ -166,7 +164,7 @@ async function ImageImpl({
   order: any
 }) {
   // @todo(error-handling)
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+
   // @ts-ignore
   if (block?.image?.external?.url === '') return null
 

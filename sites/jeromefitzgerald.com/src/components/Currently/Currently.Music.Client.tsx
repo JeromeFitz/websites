@@ -1,17 +1,19 @@
 'use client'
+
+import type { NotionColor } from '@/lib/drizzle/schemas/_notion/types'
+
 /**
  * @todo(api) NICE-125 this takes way too long to run
  *                on what should be a redis cache hit
  */
 import useSWR from 'swr'
 
-import type { NotionColor } from '@/lib/drizzle/schemas/_notion/types'
-
 import { fetcher } from '@/lib/fetcher'
 import { getKeySpotify, INIT } from '@/utils/getKeySpotify'
 
 import { CurrentlyItem } from './Currently.Item'
 import { CurrentlyWrapper } from './Currently.Item.Wrapper'
+
 // const key = getKeySpotify(0, { ...INIT, time_range: 'short_term', type: 'top-tracks' })
 const key = getKeySpotify(0, { ...INIT, limit: 1, type: 'recently-played' })
 

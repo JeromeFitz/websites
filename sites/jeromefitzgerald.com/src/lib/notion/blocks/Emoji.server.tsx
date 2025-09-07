@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import emojiRegex from 'emoji-regex'
 import _map from 'lodash/map.js'
 import _orderBy from 'lodash/orderBy.js'
@@ -50,7 +49,7 @@ function Emoji({ character }) {
 // @ts-ignore
 function EmojiHtml({ emoji, label }) {
   return (
-    <span aria-label={label} className="ml-0.5 mr-1.5" role="img">
+    <span aria-label={label} className="mr-1.5 ml-0.5" role="img">
       {emoji}
     </span>
   )
@@ -58,7 +57,7 @@ function EmojiHtml({ emoji, label }) {
 
 // @ts-ignore
 // @todo(complexity) 13
-// eslint-disable-next-line complexity
+// biome-ignore lint/complexity/noExcessiveCognitiveComplexity: migrate
 function EmojiWrapper({ id, text }) {
   // const [loading, loadingSet] = useState(true)
   // useEffect(() => {
@@ -76,7 +75,7 @@ function EmojiWrapper({ id, text }) {
   // isDev && console.dir(`> lazy load emoji libraries`)
 
   let emojiIndex = 0
-  // eslint-disable-next-line no-unsafe-optional-chaining
+  // biome-ignore lint/correctness/noUnsafeOptionalChaining: migrate
   for (const match of text?.matchAll(regex)) {
     const emoji = match[0]
     // @note(emoji) double to take into account emoji codepoint length

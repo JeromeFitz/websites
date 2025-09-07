@@ -1,9 +1,9 @@
+import type { Page } from '@/lib/drizzle/schemas/cache-pages/types'
+import type { Segment } from '@/utils/getBySegment'
+
 import { envServer } from '@jeromefitz/next-config/env.server.mjs'
 
 import { sql } from 'drizzle-orm'
-
-import type { Page } from '@/lib/drizzle/schemas/cache-pages/types'
-import type { Segment } from '@/utils/getBySegment'
 
 import { drizzle } from '@/lib/drizzle/index'
 export const segment: Segment = 'pages'

@@ -3,7 +3,7 @@ import { defineConfig } from 'node-modules-inspector'
 export default defineConfig({
   defaultFilters: {
     excludeDts: true,
-    excludes: ['*eslint*', '*lint-staged*', '*prettier*', '*semantic*'],
+    excludes: ['*biome*', '*eslint*', '*lint-staged*', '*prettier*', '*semantic*'],
     excludeWorkspace: true,
   },
   defaultSettings: {

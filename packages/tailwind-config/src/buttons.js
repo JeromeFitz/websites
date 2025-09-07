@@ -3,6 +3,7 @@
  * https://www.radix-ui.com/docs/colors/palette-composition/understanding-the-scale
  *
  */
+/** biome-ignore-all lint/style/useTemplate: migrate */
 import { excludes, foregroundTextBlack, radixColors } from './colors'
 
 const buttons = {}
@@ -64,6 +65,7 @@ radixColors.map((color) => {
    * @note(radix) Steps 6–8: Borders
    */
   buttons['.' + color + '-button-outline'] = {
+    '--tw-ring-color': `var(--${color}6)`,
     '&:active': {
       '--tw-ring-color': `var(--${color}8)`,
       backgroundColor: `var(--${color}2)`,
@@ -78,7 +80,6 @@ radixColors.map((color) => {
       '--tw-ring-color': `var(--${color}7)`,
       borderColor: `var(--${color}7)`,
     },
-    '--tw-ring-color': `var(--${color}6)`,
     backgroundColor: `var(--${color}1)`,
     borderColor: `var(--${color}6)`,
     borderWidth: `2px`,
@@ -126,4 +127,4 @@ radixColors.map((color) => {
   }
 })
 
-export default { buttonTypes, buttons }
+export default { buttons, buttonTypes }

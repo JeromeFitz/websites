@@ -1,5 +1,3 @@
-/* eslint-disable perfectionist/sort-object-types */
-
 import type { ListBlockChildrenResponse } from '@notionhq/client/build/src/api-endpoints'
 
 export type CacheInit = {

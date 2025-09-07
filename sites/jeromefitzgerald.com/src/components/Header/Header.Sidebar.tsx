@@ -1,6 +1,7 @@
 // import { Em } from '@radix-ui/themes/dist/esm/components/em.js'
 import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
+
 // import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 
 import { cx } from '@/utils/cx'
@@ -42,7 +43,7 @@ function ContainerHeaderSidebar({ children }: { children: React.ReactNode }) {
 function HeaderSidebar({
   children = <></>,
   className = '',
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
   hasBorder = true,
   title = '',
 }) {
@@ -90,7 +91,7 @@ function HeaderSidebar({
             width="100%"
             wrap="nowrap"
           >
-            <Heading as="h1" className="min-h-15 line-clamp-2 font-medium" size="6">
+            <Heading as="h1" className="line-clamp-2 min-h-15 font-medium" size="6">
               {title}
               {/* {hasBorder ? (
                 <>{title}</>

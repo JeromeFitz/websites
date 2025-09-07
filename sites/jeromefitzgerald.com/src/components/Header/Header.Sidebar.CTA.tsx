@@ -24,7 +24,7 @@ function HeaderSidebarCTA({
         <div className={cx('w-full p-2')}>
           <Button
             asChild
-            className="group flex w-full justify-between py-8 hover:-translate-y-1"
+            className="group hover:-translate-y-1 flex w-full justify-between py-8"
             color="green"
             radius="small"
             size="4"
@@ -34,7 +34,7 @@ function HeaderSidebarCTA({
               <Text>{title}</Text>
               <ExternalLinkIcon
                 className={cx(
-                  'bg-blackA-9 group-hover:bg-blackA-10 rounded-3 size-6 p-1 text-inherit !opacity-100 transition-colors',
+                  '!opacity-100 size-6 rounded-3 bg-blackA-9 p-1 text-inherit transition-colors group-hover:bg-blackA-10',
                 )}
               />
             </NextLink>

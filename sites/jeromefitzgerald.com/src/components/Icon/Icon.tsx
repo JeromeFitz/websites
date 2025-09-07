@@ -1,4 +1,7 @@
 'use client'
+
+import type { IconProps } from './Icon.types'
+
 import {
   ArrowUturnLeftIcon as ArrowUturnLeftHero,
   AtSymbolIcon as AtSymbolIconHero,
@@ -82,12 +85,8 @@ import {
   TrashIcon as TrashIconRadix,
   UpdateIcon as UpdateIconRadix,
 } from '@radix-ui/react-icons'
-// } from '@radix-ui/react-icons/dist/react-icons.esm'
 
 import { cx } from '@/utils/cx'
-
-// import { Slot } from '@radix-ui/react-slot'
-import { IconProps } from './Icon.types'
 
 /**
  * @hack(icon)
@@ -111,7 +110,7 @@ const AmazonLogoIcon = ({ label, ...props }: IconProps) => (
     }
   >
     <svg
-      className="dark:fill:bg-white fill:bg-black"
+      className="fill:bg-black dark:fill:bg-white"
       height="17px"
       role="img"
       version="1.1"
@@ -150,7 +149,7 @@ const AppleLogoIcon = ({ label, ...props }: IconProps) => (
     label={label || 'An icon representing the logo of Apple. Which is an apple.'}
   >
     <svg
-      className="dark:fill:bg-white fill:bg-black"
+      className="fill:bg-black dark:fill:bg-white"
       height="17px"
       role="img"
       version="1.1"
@@ -239,7 +238,7 @@ const BlueskyLogoIcon = ({ label, ...props }: IconProps) => (
     }
   >
     <svg
-      className="dark:fill:bg-white fill:bg-black"
+      className="fill:bg-black dark:fill:bg-white"
       height="17px"
       role="img"
       version="1.1"
@@ -603,7 +602,7 @@ const GooglePodcastsLogoIcon = ({ label, ...props }: IconProps) => (
     label={label || 'An icon representing the logo for Google Podcasts.'}
   >
     <svg
-      className="dark:fill:bg-white fill:bg-black"
+      className="fill:bg-black dark:fill:bg-white"
       height="17px"
       role="img"
       version="1.1"
@@ -905,7 +904,7 @@ const ReturnIcon = ({ className, label, ...props }: IconProps) => (
     }
   >
     <ArrowUturnLeftHero
-      className={cx(twHeroToRadixIcon, 'rotate-180 -scale-x-100', className)}
+      className={cx(twHeroToRadixIcon, '-scale-x-100 rotate-180', className)}
       role="img"
       {...props}
     />
@@ -953,7 +952,7 @@ const SpotifyLogoIcon = ({ label, ...props }: IconProps) => (
     }
   >
     <svg
-      className="dark:fill:bg-white fill:bg-black"
+      className="fill:bg-black dark:fill:bg-white"
       height="17px"
       role="img"
       version="1.1"

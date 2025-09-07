@@ -1,6 +1,9 @@
+/** biome-ignore-all lint/style/useTemplate: migrate */
+/** biome-ignore-all lint/suspicious/noAssignInExpressions: migrate */
 import radixColors from '@radix-ui/colors'
 import { withOptions } from 'tailwindcss/plugin'
 
+// biome-ignore lint/correctness/noUnusedImports: migrate
 import { backgrounds, buttons, notion, notionColors } from './src/index'
 
 /**
@@ -32,7 +35,7 @@ const radixPlugin = withOptions(
       let radixStyles = {}
       let lightColors = {}
       let darkColors = {}
-      let radix = options.colors ?? []
+      const radix = options.colors ?? []
       radix.forEach((color) => {
         const light = { ...radixColors[color] }
         Object.keys(light).forEach(
@@ -67,11 +70,11 @@ const radixPlugin = withOptions(
         radixStyles = { ...radixStyles, ...backgrounds, ...buttons, ...notion }
       })
       addBase({
-        '.dark': {
-          ...darkColors,
-        },
         ':root': {
           ...lightColors,
+        },
+        '.dark': {
+          ...darkColors,
         },
       })
       // console.dir(`>> radixStyles > notions`)

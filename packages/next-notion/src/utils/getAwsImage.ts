@@ -18,8 +18,6 @@ function isAwsImage(imageUrl: string) {
  * - Check if `expiry_time` set: Y: Continue; No: Force
  * - Check if has valid Expiration Time for AWS Notion
  */
-// @todo(complexity) 12
-// eslint-disable-next-line complexity
 function isImageExpired(image) {
   if (!isAwsImage(image?.src)) {
     return false

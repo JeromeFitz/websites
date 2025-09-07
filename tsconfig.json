@@ -1,18 +1,14 @@
 {
-  "extends": "@jeromefitz/tsconfig/next.json",
   "compilerOptions": {
-    // // w/ extends
-    // "baseUrl": ".",
-    "incremental": true,
-    // "noUnusedParameters": false, // @todo(lint)
-    // "rootDir": "src",
-    "outDir": "dist",
     "allowJs": false,
     "allowSyntheticDefaultImports": true,
     "alwaysStrict": true,
     "baseUrl": ".",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
+    // // w/ extends
+    // "baseUrl": ".",
+    "incremental": true,
     "isolatedModules": true,
     "jsx": "preserve",
     "lib": ["dom", "ES2020"],
@@ -24,6 +20,9 @@
     "noImplicitThis": true,
     "noUnusedLocals": true,
     "noUnusedParameters": false, // @todo(lint)
+    // "noUnusedParameters": false, // @todo(lint)
+    // "rootDir": "src",
+    "outDir": "dist",
     "preserveSymlinks": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
@@ -34,6 +33,8 @@
     "strictPropertyInitialization": false, // @todo(lint)
     "target": "ESNext"
   },
+  "exclude": ["node_modules", "tests/*.test.ts", "todo"],
+  "extends": "@jeromefitz/tsconfig/next.json",
   "include": [
     "tsdown.config.ts",
     "node-modules-inspector.config.ts",
@@ -41,6 +42,5 @@
     "packages/**/*.tsx",
     "sites/**/*.ts",
     "sites/**/*.tsx"
-  ],
-  "exclude": ["node_modules", "tests/*.test.ts", "todo"]
+  ]
 }

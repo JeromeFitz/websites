@@ -1,12 +1,12 @@
 'use client'
 
+import type { NotionText } from '@/lib/drizzle/schemas/_notion/types'
+import type { Event } from '@/lib/drizzle/schemas/cache-events/types'
+
 import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
-
-import type { NotionText } from '@/lib/drizzle/schemas/_notion/types'
-import type { Event } from '@/lib/drizzle/schemas/cache-events/types'
 
 function getRollupText(data: any) {
   if (!data) return []

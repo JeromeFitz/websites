@@ -8,6 +8,8 @@ const strings = [
 ]
 
 function foo() {
+  // @todo(complexity) 11
+  // biome-ignore lint/complexity/noExcessiveCognitiveComplexity: migrate
   strings.map((str) => {
     console.dir(`--- ---`)
     console.dir(`${str}: `)

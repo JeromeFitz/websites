@@ -2,6 +2,7 @@ import type {
   BlockObjectResponse,
   ListBlockChildrenResponse,
 } from '@notionhq/client/build/src/api-endpoints.js'
+
 // import { Suspense } from 'react'
 
 import { blocks as blocksDefault, OBJECTS, TYPES } from './Notion.Config'

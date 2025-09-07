@@ -1,6 +1,5 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [":semanticCommitsDisabled"],
   "automerge": false,
   "baseBranches": ["main"],
   "branchPrefix": "deps/",
@@ -11,15 +10,16 @@
   "commitMessageSuffix": "",
   "commitMessageTopic": " {{depName}}@{{#if isPinDigest}}{{{newDigest}}}{{else}}{{#if isMajor}}{{{newVersion}}} 🧨 {{else}}{{#if isSingleVersion}}{{{newVersion}}}{{else}}{{#if newValue}}{{{newValue}}}{{else}}@{{{newDigest}}}{{/if}}{{/if}}{{/if}}{{/if}}",
   "dependencyDashboard": false,
-  "ignoreDeps": ["nanoid", "sharp", "unfetch"],
+  "extends": [":semanticCommitsDisabled"],
+  "ignoreDeps": ["nanoid", "unfetch"],
   "labels": ["📦️ Dependencies"],
   "node": {
     "enabled": false
   },
   "packageRules": [
     {
-      "commitMessagePrefix": "👷  (actions)",
       "commitMessageExtra": "{{depName}}@{{#if isPinDigest}}{{{newDigest}}}{{else}}{{#if isMajor}}{{{newVersion}}} 🧨 {{else}}{{#if isSingleVersion}}{{{newVersion}}}{{else}}{{#if newValue}}{{{newValue}}}{{else}}{{{newDigest}}}{{/if}}{{/if}}{{/if}}{{/if}}",
+      "commitMessagePrefix": "👷  (actions)",
       "commitMessageTopic": " {{depName}}",
       "groupName": "github actions :octocat: ",
       "groupSlug": "github-actions",
@@ -28,9 +28,9 @@
     {
       "commitMessagePrefix": "⬆️  (deps)",
       "commitMessageSuffix": "[b]",
+      "excludePackageNames": ["@radix-ui/themes"],
       "groupName": "radix-ui 🌐 ",
       "groupSlug": "radix-ui",
-      "excludePackageNames": ["@radix-ui/themes"],
       "matchPackagePatterns": ["^@radix-ui/"]
     },
     {
@@ -89,7 +89,7 @@
       "excludePackageNames": [],
       "groupName": "storybook 🧪 ",
       "groupSlug": "storybook",
-      "matchPackageNames": ["storybook", "eslint-plugin-storybook"],
+      "matchPackageNames": ["storybook"],
       "matchPackagePatterns": ["^@storybook/"]
     },
     {
@@ -102,19 +102,10 @@
     },
     {
       "commitMessagePrefix": "📦  (deps-dev)",
-      "commitMessageSuffix": "[b]",
-      "excludePackageNames": [],
-      "groupName": "playwright 🎭 ",
-      "groupSlug": "playwright",
-      "matchPackageNames": ["eslint-plugin-playwright", "playwright"],
-      "matchPackagePatterns": ["^@playwright/"]
-    },
-    {
-      "commitMessagePrefix": "📦  (deps-dev)",
       "excludePackageNames": [],
       "groupName": "jest 🃏 ",
       "groupSlug": "jest",
-      "matchPackageNames": ["@types/jest", "eslint-plugin-jest-dom", "jest"],
+      "matchPackageNames": ["@types/jest", "jest"],
       "matchPackagePatterns": ["^jest/", "^jest-/"]
     },
     {
@@ -128,15 +119,6 @@
       "assignees": ["JeromeFitz"],
       "commitMessagePrefix": "⬆️  (deps)",
       "commitMessageSuffix": "[b]",
-      "groupName": "next 🔺 ",
-      "groupSlug": "next",
-      "matchPackageNames": ["@next/bundle-analyzer", "next"],
-      "reviewers": ["JeromeFitz"]
-    },
-    {
-      "assignees": ["JeromeFitz"],
-      "commitMessagePrefix": "⬆️  (deps)",
-      "commitMessageSuffix": "[b]",
       "groupName": "radix-ui/themes 🎨 ",
       "groupSlug": "radix-ui/themes",
       "matchPackageNames": ["@radix-ui/themes"],
@@ -144,8 +126,8 @@
     },
     {
       "assignees": ["JeromeFitz"],
-      "matchUpdateTypes": ["major"],
       "labels": ["📦 Dependencies 💥 Breaking 💥", "🛑️ Do Not Merge"],
+      "matchUpdateTypes": ["major"],
       "reviewers": ["JeromeFitz"]
     },
     {

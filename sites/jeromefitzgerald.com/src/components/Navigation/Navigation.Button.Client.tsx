@@ -1,4 +1,5 @@
 'use client'
+
 import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 import * as SegmentedControl from '@radix-ui/themes/dist/esm/components/segmented-control.js'
 import { Skeleton } from '@radix-ui/themes/dist/esm/components/skeleton.js'
@@ -11,6 +12,7 @@ import { cx } from '@/utils/cx'
 function NavigationButtonClient() {
   const { resolvedTheme: theme, setTheme } = useTheme()
   const [isLoading, isLoadingSet] = useState(true)
+  // biome-ignore lint/correctness/useExhaustiveDependencies: migrate
   useEffect(() => isLoadingSet(false), [isLoading])
 
   const handleTheme = (value: any) => {
@@ -29,7 +31,7 @@ function NavigationButtonClient() {
         <SegmentedControl.Root
           className={cx(
             'bg-whiteA-3 hover:bg-whiteA-4 active:bg-whiteA-5',
-            'dark:bg-blackA-3 hover:dark:bg-blackA-4 active:dark:bg-blackA-5',
+            'dark:bg-blackA-3 active:dark:bg-blackA-5 hover:dark:bg-blackA-4',
             '',
           )}
           defaultValue={theme || 'dark'}

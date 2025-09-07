@@ -15,6 +15,8 @@ if (!process.env.POSTGRES_URL) {
 /**
  * postgres
  */
+
+// biome-ignore lint/style/noNonNullAssertion: migrate
 const client = postgres(process.env.POSTGRES_URL!)
 const drizzle = _drizzle(client, { casing: 'snake_case', schema })
 /**

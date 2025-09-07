@@ -7,7 +7,7 @@ function useThrottle(cb, delay) {
   useEffect(() => {
     cbRef.current = cb
   })
-  // @todo(eslint) react-hooks/exhaustive-deps
+  // biome-ignore lint/correctness/useExhaustiveDependencies: migrate
   return useCallback(
     _throttle((...args) => cbRef.current(...args), delay, options),
     [delay],

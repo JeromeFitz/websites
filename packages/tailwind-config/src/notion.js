@@ -1,4 +1,5 @@
-import radixColors from '@radix-ui/colors'
+/** biome-ignore-all lint/style/useTemplate: migrate */
+// import radixColors from '@radix-ui/colors'
 
 const notionColors = [
   // 'default',
@@ -31,7 +32,7 @@ const globalDark = []
 
 const notion = {}
 notionColors.map((color) => {
-  let radixColor = color.split('_')[0]
+  const radixColor = color.split('_')[0]
   // // @note(radix-ui) map gray to slate
   // if (radixColor === 'gray') radixColor = 'slate'
 

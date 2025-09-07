@@ -1,6 +1,3 @@
-import { Anchor } from '@jeromefitz/ds/components/Anchor/index'
-import { cx } from '@jeromefitz/ds/utils/cx'
-
 import type {
   BulletedListItemBlockObjectResponse,
   Heading1BlockObjectResponse,
@@ -12,9 +9,12 @@ import type {
   RichTextItemResponse,
 } from '@notionhq/client/build/src/api-endpoints.js'
 
-import { forwardRef, Fragment } from 'react'
-
 import type { ApiColor } from '../Notion.types'
+
+import { Anchor } from '@jeromefitz/ds/components/Anchor/index'
+import { cx } from '@jeromefitz/ds/utils/cx'
+
+import { Fragment, forwardRef } from 'react'
 
 import { getAnnotations, getBlockKey } from '../Notion.utils'
 import { NotionEmoji as EmojiWrapper } from './Emoji'

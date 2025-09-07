@@ -1,4 +1,3 @@
-/* eslint-disable perfectionist/sort-union-types */
 import type {
   BlockObjectResponse,
   PartialUserObjectResponse,

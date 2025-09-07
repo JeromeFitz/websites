@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
+/** biome-ignore-all assist/source/useSortedKeys: migrate */
 import type { Config } from 'tailwindcss'
 
 import { radixThemePreset } from 'radix-themes-tw'
@@ -8,7 +8,6 @@ import hocusPlugin from './hocus.plugin.js'
 
 // const safelist = ['cursor-pointer', 'hidden', 'md:hidden']
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const getConfig = ({ useTailwind = true }): Config => ({
   content: [
     /**
@@ -115,7 +114,7 @@ const getConfig = ({ useTailwind = true }): Config => ({
       boxShadow: {
         slider: '0 0 0 5px rgba(0, 0, 0, 0.3)',
       },
-      /* eslint-disable perfectionist/sort-objects */
+
       colors: {
         /**
          * App

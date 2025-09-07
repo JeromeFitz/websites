@@ -1,6 +1,7 @@
 import { Geist_Mono, Geist as Geist_Sans } from 'next/font/google'
 
 import { cx } from '@/utils/cx'
+
 const geistMono = Geist_Mono({
   display: 'swap',
   subsets: ['latin'],

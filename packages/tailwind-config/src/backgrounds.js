@@ -3,6 +3,7 @@
  * https://www.radix-ui.com/docs/colors/palette-composition/understanding-the-scale
  *
  */
+/** biome-ignore-all lint/style/useTemplate: migrate */
 import { excludes, radixColors } from './colors'
 
 const backgrounds = {}

@@ -1,6 +1,6 @@
-import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
-
 import type { Episode } from '@/lib/drizzle/schemas/cache-episodes/types'
+
+import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 
 import { ShowSlugHeaderData } from '@/app/(segments)/shows/[key]/_components/Show.Slug.Header.Data'
 import { ArticleMain } from '@/components/Article/Article.Main'

@@ -1,13 +1,13 @@
 'use client'
 
+import type { Event } from '@/lib/drizzle/schemas/types'
+
 import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
 import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import { isAfter } from 'date-fns/isAfter'
 import NextLink from 'next/link'
-
-import type { Event } from '@/lib/drizzle/schemas/types'
 
 import {
   AccordionContent,
@@ -21,21 +21,20 @@ import { cx } from '@/utils/cx'
 
 const description = `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Recusandae, omnis? Quod, enim fugit doloribus qui culpa odit. Eveniet, cupiditate qui alias nihil similique tempora fugit?`
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 function AccordionClient({ items }) {
   const defaultValue = items[0]?.id || null
   return (
     <Box
       asChild
-      className="border-accentA-12 shadow-3 bg-grayA-6 border-0 border-solid"
+      className="border-0 border-accentA-12 border-solid bg-grayA-6 shadow-3"
       maxWidth="100%"
       minWidth="100%"
       mt="4"
       width="300px"
     >
       {/* @todo(types) radix */}
-      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment  */}
+
       {/* @ts-ignore */}
       <AccordionRoot collapsible defaultValue={defaultValue} type="single">
         {items.map((item: Event) => {
@@ -45,7 +44,7 @@ function AccordionClient({ items }) {
           const key = `items-item-${item.id}`
           return (
             // @todo(types) radix
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+
             // @ts-ignore
             <AccordionItem key={key} value={item.id}>
               <AccordionTrigger>
@@ -102,7 +101,7 @@ function AccordionClient({ items }) {
                     <p className="">{item.seoDescription || description}</p>
                   </div>
                   <div className="flex w-full flex-row flex-wrap justify-center md:flex-nowrap">
-                    <div className="w-full justify-start px-4 text-left md:-mt-4">
+                    <div className="md:-mt-4 w-full justify-start px-4 text-left">
                       <Tags classNameTag="px-3 py-2 mb-4 mr-4" tags={item.tags} />
                     </div>
                     <div

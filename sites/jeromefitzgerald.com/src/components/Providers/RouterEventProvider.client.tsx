@@ -33,13 +33,12 @@ function RouterEventProvider() {
 
   const [pastRoute, pastRouteSet] = useState('')
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: migrate
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     pastRoute !== pathname && isRouteChangingSet(true)
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+
     pastRoute === pathname && isRouteChangingSet(false)
     pastRouteSet(pathname)
-    // @todo(eslint) react-hooks/exhaustive-deps
   }, [pathname, pastRoute])
 
   return <Loading isRouteChanging={isRouteChanging} />

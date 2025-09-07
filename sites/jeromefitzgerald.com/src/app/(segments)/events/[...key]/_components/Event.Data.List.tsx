@@ -1,3 +1,7 @@
+// import type { NotionTag } from '@/lib/drizzle/schemas/_notion/types'
+import type { Event } from '@/lib/drizzle/schemas/cache-events/types'
+import type { Venue } from '@/lib/drizzle/schemas/cache-venues/types'
+
 import { TZDate } from '@date-fns/tz'
 import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
 import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
@@ -8,10 +12,6 @@ import { Skeleton } from '@radix-ui/themes/dist/esm/components/skeleton.js'
 import { Strong } from '@radix-ui/themes/dist/esm/components/strong.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import { formatInTimeZone } from 'date-fns-tz'
-
-// import type { NotionTag } from '@/lib/drizzle/schemas/_notion/types'
-import type { Event } from '@/lib/drizzle/schemas/cache-events/types'
-import type { Venue } from '@/lib/drizzle/schemas/cache-venues/types'
 
 import {
   CalendarIcon,
@@ -66,7 +66,7 @@ function DataList__VenueIndividualWithSkeleton({
       >
         <Flex justify={{ initial: 'start', md: 'start' }} width="100%">
           <HomeIcon />
-          <Text className="font-mono md:!sr-only" ml="1" size="1">
+          <Text className="md:!sr-only font-mono" ml="1" size="1">
             Venue
           </Text>
         </Flex>
@@ -115,8 +115,8 @@ function DataList__Info({
     >
       <DataList.Root
         className={cx(
-          'py-6 pl-4 pr-1',
-          'gap-x-[var(--space-3)] md:!gap-x-[var(--space-2)]',
+          'py-6 pr-1 pl-4',
+          'md:!gap-x-[var(--space-2)] gap-x-[var(--space-3)]',
           'w-full',
         )}
         size="2"
@@ -128,7 +128,7 @@ function DataList__Info({
           >
             <Flex justify={{ initial: 'start', md: 'start' }} width="100%">
               <IdCardIcon />
-              <Text className="font-mono md:!sr-only" ml="1" size="1">
+              <Text className="md:!sr-only font-mono" ml="1" size="1">
                 Title
               </Text>
             </Flex>
@@ -142,7 +142,7 @@ function DataList__Info({
           >
             <Flex justify={{ initial: 'start', md: 'start' }} width="100%">
               <CalendarIcon />
-              <Text className="font-mono md:!sr-only" ml="1" size="1">
+              <Text className="md:!sr-only font-mono" ml="1" size="1">
                 Date
               </Text>
             </Flex>
@@ -159,7 +159,7 @@ function DataList__Info({
           >
             <Flex justify={{ initial: 'start', md: 'start' }} width="100%">
               <ClockIcon />
-              <Text className="font-mono md:!sr-only" ml="1" size="1">
+              <Text className="md:!sr-only font-mono" ml="1" size="1">
                 Time
               </Text>
             </Flex>
@@ -228,7 +228,7 @@ function DataList__Info({
             >
               <Flex justify={{ initial: 'start', md: 'start' }} width="100%">
                 <InfoCircledIcon />
-                <Text className="font-mono md:!sr-only" ml="1" size="1">
+                <Text className="md:!sr-only font-mono" ml="1" size="1">
                   Note
                 </Text>
               </Flex>

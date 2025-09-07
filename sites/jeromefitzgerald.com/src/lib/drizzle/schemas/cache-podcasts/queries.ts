@@ -1,9 +1,9 @@
+import type { Podcast } from '@/lib/drizzle/schemas/cache-podcasts/types'
+import type { Segment } from '@/utils/getBySegment'
+
 import { envServer } from '@jeromefitz/next-config/env.server.mjs'
 
 import { sql } from 'drizzle-orm'
-
-import type { Podcast } from '@/lib/drizzle/schemas/cache-podcasts/types'
-import type { Segment } from '@/utils/getBySegment'
 
 import { drizzle } from '@/lib/drizzle/index'
 export const segment: Segment = 'podcasts'

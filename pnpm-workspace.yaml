@@ -3,3 +3,6 @@ packages:
   - 'sites/*'
   - '!sites/jerandky.com/*'
 enable-pre-post-scripts: true
+onlyBuiltDependencies:
+  - '@biomejs/biome'
+  - 'sharp'

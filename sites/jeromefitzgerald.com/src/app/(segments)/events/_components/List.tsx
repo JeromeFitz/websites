@@ -1,4 +1,8 @@
 // import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
+
+// import type { NotionTag } from '@/lib/drizzle/schemas/_notion/types'
+import type { Event } from '@/lib/drizzle/schemas/types'
+
 import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
 // import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
@@ -13,9 +17,6 @@ import _filter from 'lodash/filter.js'
 import _orderBy from 'lodash/orderBy.js'
 import _take from 'lodash/take.js'
 import NextLink from 'next/link'
-
-// import type { NotionTag } from '@/lib/drizzle/schemas/_notion/types'
-import type { Event } from '@/lib/drizzle/schemas/types'
 
 import { DataList__Info } from '@/app/(segments)/events/[...key]/_components/Event.Data.List'
 import { HeaderFull } from '@/components/Header/Header.Full'
@@ -58,7 +59,7 @@ function ListWrapper({ events }: { events: Event[] }) {
                 asChild
                 className={cx(
                   // 'bg-accent-6',
-                  'md:border-1 border-gray-7 hover:border-gray-8',
+                  'border-gray-7 hover:border-gray-8 md:border-1',
                   'rounded-sm',
                   'transition-all duration-500',
                   // 'group-hover:transform-[translate(0px,_-1em)]',
@@ -77,7 +78,7 @@ function ListWrapper({ events }: { events: Event[] }) {
                     position="relative"
                   >
                     <NextLink href={event.slugPreview}>
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      {/* biome-ignore lint/performance/noImgElement: migrate */}
                       <img
                         alt="d"
                         className={cx(
@@ -198,7 +199,7 @@ function ListWrapper({ events }: { events: Event[] }) {
                           <ExternalLinkIcon
                             className={cx(
                               // 'bg-blackA-9 group-hover:bg-blackA-10',
-                              'rounded-3 p-0-5 size-5 text-inherit !opacity-95 transition-colors group-hover:!opacity-100',
+                              '!opacity-95 group-hover:!opacity-100 size-5 rounded-3 p-0-5 text-inherit transition-colors',
                               '!transition-all',
                             )}
                           />

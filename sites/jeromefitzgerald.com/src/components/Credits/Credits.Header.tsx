@@ -12,7 +12,7 @@ function CreditsHeader({
     <Flex
       className={cx(
         'place-content-start items-start overflow-hidden will-change-transform',
-        'border-gray-7 rounded-3 border-1 rounded-b-[0] border-b-0',
+        'rounded-3 rounded-b-[0] border-1 border-gray-7 border-b-0',
       )}
       direction="column"
       flexBasis="auto"
@@ -29,7 +29,7 @@ function CreditsHeader({
     >
       <Heading
         as="h2"
-        className="text-blackA-11 dark:text-whiteA-11 font-medium"
+        className="font-medium text-blackA-11 dark:text-whiteA-11"
         size="6"
       >
         {title}
