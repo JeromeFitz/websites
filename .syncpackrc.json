@@ -1,0 +1,54 @@
+{
+  "$schema": "./node_modules/syncpack/schema.json",
+  "indent": "  ",
+  "semverGroups": [
+    {
+      "dependencies": ["semver*"],
+      "dependencyTypes": ["pnpmOverrides", "resolutions"],
+      "isIgnored": true,
+      "label": "ignore: semver",
+      "packages": ["**"]
+    },
+    {
+      "dependencies": ["server-only"],
+      "dependencyTypes": ["peer"],
+      "isIgnored": true,
+      "label": "ignore: server-only",
+      "packages": ["**"]
+    },
+    {
+      "dependencies": ["**"],
+      "dependencyTypes": ["dev", "local", "overrides", "prod"],
+      "label": "types:  !peer",
+      "packages": ["**"],
+      "range": ""
+    },
+    {
+      "dependencies": ["**"],
+      "dependencyTypes": ["peer", "pnpmOverrides"],
+      "label": "types:  peer",
+      "packages": ["**"],
+      "range": "^"
+    }
+  ],
+  "versionGroups": [
+    {
+      "dependencies": ["server-only"],
+      "dependencyTypes": ["peer"],
+      "label": "@todo: server-only",
+      "packages": ["**"]
+    },
+    {
+      "dependencies": ["**"],
+      "dependencyTypes": ["peer"],
+      "label": "peer:  ^range",
+      "packages": ["**"]
+    },
+    {
+      "dependencies": ["$LOCAL"],
+      "dependencyTypes": ["dev", "prod"],
+      "label": "local: workspace protocol when local",
+      "pinVersion": "workspace:*"
+    }
+  ]
+}
