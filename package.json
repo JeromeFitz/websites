@@ -73,7 +73,6 @@
       "@babel/helpers": "^7.28.4",
       "@babel/runtime": "^7.28.4",
       "@octokit/plugin-paginate-rest": "^13.0.0",
-      "@typescript-eslint/typescript-estree": "^8.26.1",
       "cross-spawn": "^7.0.6",
       "elliptic": "^6.6.1",
       "express": "^4.21.1",
