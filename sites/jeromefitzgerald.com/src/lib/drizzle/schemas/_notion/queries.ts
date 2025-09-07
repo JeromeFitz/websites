@@ -1,12 +1,12 @@
+import type { Segment } from '@/utils/getBySegment'
+
+import type { NotionSeoImage } from './types'
+
 import { envServer } from '@jeromefitz/next-config/env.server.mjs'
 
 import { Client } from '@notionhq/client'
 
-import type { Segment } from '@/utils/getBySegment'
-
 import { getBySegment } from '@/utils/getBySegment'
-
-import type { NotionSeoImage } from './types'
 
 const notion = new Client({ auth: envServer.NOTION_API_KEY })
 

@@ -1,4 +1,3 @@
-/* eslint-disable perfectionist/sort-object-types */
 import type { Cache } from '../helpers.types'
 
 type CacheImageValue = {

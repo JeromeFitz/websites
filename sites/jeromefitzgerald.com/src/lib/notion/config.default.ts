@@ -2,6 +2,7 @@
  * @note(next-notion) Default Configuration
  */
 import { lazy } from 'react'
+
 // import { Divider } from './blocks/Divider'
 // import { ListBulleted } from './blocks/ListBulleted'
 // import { ListColumn } from './blocks/ListColumn'

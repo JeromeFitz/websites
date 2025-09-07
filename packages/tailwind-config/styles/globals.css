@@ -1,3 +1,7 @@
+/** biome-ignore-all lint/suspicious/noUnknownAtRules: migrate */
+/** biome-ignore-all lint/suspicious/noDuplicateCustomProperties: migrate */
+/** biome-ignore-all lint/complexity/noImportantStyles: migrate */
+/** biome-ignore-all lint/correctness/noInvalidPositionAtImportRule: migrate */
 @import 'tailwindcss';
 /* @config "../tailwind.config.ts"; */
 

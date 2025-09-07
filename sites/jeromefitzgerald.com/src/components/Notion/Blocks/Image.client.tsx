@@ -4,18 +4,17 @@
 // import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
 
 // import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+
 // @ts-ignore
 import NextImage from 'next/image'
 
-// @todo(complexity) 11
-// eslint-disable-next-line complexity
 function Image({ ...props }) {
   // @note(notion) eject for html validity purposes
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
   const { _time_time, base64, expiry_time, img, order, unoptimized, url, ...image } =
     props
 
+  // biome-ignore lint/complexity/noUselessTernary: migrate
   const isPriority = props?.priority ? props?.priority : order < 2 ? true : false
 
   // @todo(js) can do this be handled with ...

@@ -1,10 +1,10 @@
+import type { Segment } from '@/utils/getBySegment'
+
 import { envServer } from '@jeromefitz/next-config/env.server.mjs'
 
 import { TZDate } from '@date-fns/tz'
 import { format, isAfter, parseISO } from 'date-fns'
 import { and, eq, sql } from 'drizzle-orm'
-
-import type { Segment } from '@/utils/getBySegment'
 
 import { drizzle } from '@/lib/drizzle/index'
 import { pre_addImageKeyValueToCache } from '@/lib/drizzle/schemas/cache-images/actions'
@@ -16,7 +16,7 @@ import { getKeyValue } from './getKeyValue'
 const TZ_UTC = 'UTC'
 const formatConfig = `yyyy-MM-dd'T'HH:mm:ss.ms'Z'`
 
-/* eslint-disable perfectionist/sort-objects */
+// biome-ignore lint/complexity/noExcessiveCognitiveComplexity: migrate
 async function addItemToCache({
   key,
   segment,
@@ -36,7 +36,7 @@ async function addItemToCache({
     console.log(logMessage.replace('[X]', '[insert]'))
     await drizzle
       .insert(getBySegment[segment].drizzleDatabase)
-      .values({ siteId: envServer.POSTGRES_SITE_ID, key, value })
+      .values({ key, siteId: envServer.POSTGRES_SITE_ID, value })
   } else {
     // console.dir(`~> segment: ${segment}`)
     /**
@@ -65,8 +65,8 @@ async function addItemToCache({
         .update(getBySegment[segment].drizzleDatabase)
         .set({
           key,
-          value,
           updated_at: sql`NOW()`,
+          value,
         })
         .where(
           and(
@@ -113,8 +113,8 @@ async function overrideItemToCache({
     .update(getBySegment[segment].drizzleDatabase)
     .set({
       key,
-      value,
       updatedAt: sql`NOW()`,
+      value,
     })
     .where(
       and(

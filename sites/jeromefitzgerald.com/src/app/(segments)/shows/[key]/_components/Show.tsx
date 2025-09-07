@@ -1,4 +1,4 @@
-import type { Show } from '@/lib/drizzle/schemas/cache-shows/types'
+import type { Show as ShowType } from '@/lib/drizzle/schemas/cache-shows/types'
 
 import { ArticleMain } from '@/components/Article/Article.Main'
 import { ArticleMainCTA } from '@/components/Article/Article.Main.CTA'
@@ -25,13 +25,13 @@ const ROLLUPS: string[] = [
   'rollupPeopleCastPastTitle',
 ]
 
-export function Show({ blocks, item }: { blocks: any; item: Show }) {
+export function Show({ blocks, item }: { blocks: any; item: ShowType }) {
   const itemBlocks = blocks[0]
 
   const R: any = {}
   ROLLUPS.map((ROLLUP: any) => {
     R[ROLLUP] = []
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+
     // @ts-ignore
     const items = item[ROLLUP]
     items.map((i: any) => {

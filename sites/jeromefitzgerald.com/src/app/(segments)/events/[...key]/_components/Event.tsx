@@ -28,10 +28,9 @@ export function EventComponent({ blocks, item }: { blocks: any; item: Event }) {
   const R: any = {}
   ROLLUPS.map((ROLLUP: any) => {
     R[ROLLUP] = []
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+
     // @ts-ignore
     if (item[ROLLUP] && item[ROLLUP].length > 0) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       const items = item[ROLLUP]
       items.map((i: any) => {

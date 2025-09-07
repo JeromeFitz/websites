@@ -7,7 +7,7 @@ import { NavigationButtonClient } from './Navigation.Button.Client'
 function NavigationButton() {
   return (
     <Flex
-      className={cx('drop-shadow-xs backdrop-blur-xs z-50 hidden md:flex')}
+      className={cx('z-50 hidden drop-shadow-xs backdrop-blur-xs md:flex')}
       display={{ initial: 'none', md: 'flex' }}
       gap="3"
       height="calc(var(--spacing) * 10)"

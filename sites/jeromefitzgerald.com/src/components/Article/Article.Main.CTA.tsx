@@ -11,7 +11,7 @@ import { cx } from '@/utils/cx'
 function ArticleMainCTA({ color = 'accent', href = '/events', type = 'events' }) {
   return (
     <Box
-      className={cx('relative h-[266px] w-full flex-none', 'mb-2 mt-6')}
+      className={cx('relative h-[266px] w-full flex-none', 'mt-6 mb-2')}
       px={{ initial: '1', md: '0' }}
       style={{ opacity: 1, transform: 'perspective(1200px)' }}
     >
@@ -35,14 +35,13 @@ function ArticleMainCTA({ color = 'accent', href = '/events', type = 'events' })
           wrap="nowrap"
         >
           {/* @todo(types) */}
-          {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
           {/* @ts-ignore */}
           <Button asChild color={color} variant="soft">
             <NextLink href={href}>
               <Box mr="4" position="absolute" pt="0" right="0">
                 <ArrowTopRightIcon
                   className={cx(
-                    'rounded-3 !size-12 p-2 text-inherit !opacity-100',
+                    '!size-12 !opacity-100 rounded-3 p-2 text-inherit',
                     'transition-colors',
                     'bg-whiteA-9 group-hover:bg-whiteA-10',
                     'dark:bg-blackA-9 dark:group-hover:bg-blackA-10',
@@ -64,7 +63,7 @@ function ArticleMainCTA({ color = 'accent', href = '/events', type = 'events' })
               >
                 <Heading
                   as="h3"
-                  className={cx('mb-2 font-mono font-medium uppercase')}
+                  className={cx('mb-2 font-medium font-mono uppercase')}
                   highContrast
                   size="1"
                 >

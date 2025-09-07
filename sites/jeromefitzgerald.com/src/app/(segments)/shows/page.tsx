@@ -23,7 +23,6 @@ interface Props {
 }
 
 export async function generateMetadata(
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   { params }: Props,
   parent: ResolvingMetadata,
 ): Promise<Metadata> {

@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 // @ts-check
 /**
  * @note(next) until we can do `next.config.ts` this needs to be `mjs`

@@ -1,10 +1,11 @@
 'use client'
+
+import type { Event } from '@/lib/drizzle/schemas/types'
+
 import { TZDate } from '@date-fns/tz'
 import { formatInTimeZone } from 'date-fns-tz'
 import _upperCase from 'lodash/upperCase'
 import { memo } from 'react'
-
-import type { Event } from '@/lib/drizzle/schemas/types'
 
 import { TicketIcon } from '@/components/Icon/index'
 import { TZ } from '@/config/const'

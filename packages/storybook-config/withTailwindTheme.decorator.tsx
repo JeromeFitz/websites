@@ -1,6 +1,6 @@
 import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 import { Theme } from '@radix-ui/themes/dist/esm/components/theme.js'
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 
 import { cx } from '../design-system/src/utils/cx'
 
@@ -9,7 +9,6 @@ export const DEFAULT_THEME = 'light'
 export const withTailwindTheme = (Story, context) => {
   const { theme } = context.globals
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     const htmlTag = document.documentElement
     /**

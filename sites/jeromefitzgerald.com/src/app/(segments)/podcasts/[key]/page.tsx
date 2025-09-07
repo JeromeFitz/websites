@@ -1,11 +1,11 @@
-import { envClient } from '@jeromefitz/next-config/env.client.mjs'
-
 import type { Metadata, ResolvingMetadata } from 'next'
-
-import { notFound } from 'next/navigation.js'
 
 import type { Block } from '@/lib/drizzle/schemas/cache-blocks/types'
 import type { Podcast } from '@/lib/drizzle/schemas/cache-podcasts/types'
+
+import { envClient } from '@jeromefitz/next-config/env.client.mjs'
+
+import { notFound } from 'next/navigation.js'
 
 import { getBlocks } from '@/lib/drizzle/schemas/cache-blocks/queries'
 import { getPodcast, segment } from '@/lib/drizzle/schemas/cache-podcasts/queries'

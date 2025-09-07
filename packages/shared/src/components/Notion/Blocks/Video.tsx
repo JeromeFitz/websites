@@ -1,8 +1,8 @@
 import 'server-only'
 
-import { Callout } from '@jeromefitz/ds/components/Callout/index'
-
 import type { VideoBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints.js'
+
+import { Callout } from '@jeromefitz/ds/components/Callout/index'
 
 import { NotionEmoji as EmojiWrapper } from 'next-notion/blocks/Emoji'
 import { Fragment, Suspense } from 'react'
@@ -24,7 +24,6 @@ function VideoImpl({ block }: { block: any | VideoBlockObjectResponse }) {
     <Suspense fallback={<Fragment />}>
       <></>
       {/* Async out of next  */}
-      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
       {/* @ts-ignore */}
       <VideoYouTube block={block} url={url} />
       {!!caption && (

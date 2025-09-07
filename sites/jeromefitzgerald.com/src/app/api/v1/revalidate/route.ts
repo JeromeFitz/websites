@@ -1,11 +1,12 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 'use server'
 
-import { revalidatePath } from 'next/cache.js'
-import { NextRequest, NextResponse } from 'next/server.js'
+import type { NextRequest } from 'next/server.js'
 
 import type { Event } from '@/lib/drizzle/schemas/cache-events/types'
 import type { Show } from '@/lib/drizzle/schemas/cache-shows/types'
+
+import { revalidatePath } from 'next/cache.js'
+import { NextResponse } from 'next/server.js'
 
 import { getEvent } from '@/lib/drizzle/schemas/cache-events/queries'
 import { getShow } from '@/lib/drizzle/schemas/cache-shows/queries'
@@ -22,7 +23,6 @@ type Validated = {
   timestamp?: number
 }
 
-// eslint-disable-next-line @typescript-eslint/require-await
 async function test({
   key,
   path,
@@ -69,7 +69,7 @@ export async function POST(request: NextRequest) {
     })
   }
   revalidatePath(key)
-  // await buildInitialCache({ revalidate: true, segment })
+  await buildInitialCache({ revalidate: true, segment })
 
   const result = await test({ key, path, segment })
 

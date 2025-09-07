@@ -58,7 +58,7 @@ function Currently() {
               Currently…
               <sup
                 aria-hidden={true}
-                className="text-3 md:text-5 hidden align-super md:inline-block"
+                className="hidden align-super text-3 md:inline-block md:text-5"
               >
                 {items.length}
               </sup>
@@ -74,7 +74,6 @@ function Currently() {
           const titleSub = c?.titleSub.split(' – ')
           const props = { ...c, titleSub }
 
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
           return <Component key={key} {...props} />
         })}

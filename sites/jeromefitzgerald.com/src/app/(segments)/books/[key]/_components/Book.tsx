@@ -1,3 +1,5 @@
+import type { Book as BookType } from '@/lib/drizzle/schemas/cache-books/types'
+
 import { TZDate } from '@date-fns/tz'
 import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
 import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
@@ -6,15 +8,13 @@ import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import { format } from 'date-fns'
 import { formatInTimeZone } from 'date-fns-tz'
 
-import type { Book } from '@/lib/drizzle/schemas/cache-books/types'
-
 import { ImageNotion } from '@/components/Image/Image.Notion'
 import { segment } from '@/lib/drizzle/schemas/cache-books/queries'
 
 const timestampFormatISO = `yyyy-MM-dd'T'HH:mm:ss.ms'Z'`
 const timestampFormat = `yyyy-MM-dd HH:mma z`
 
-export function Book({ item }: { item: Book }) {
+export function Book({ item }: { item: BookType }) {
   const timestampUTC = new TZDate(item.updatedAt, 'UTC')
   const timestampET = timestampUTC.withTimeZone('America/New_York')
 

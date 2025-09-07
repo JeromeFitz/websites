@@ -28,7 +28,7 @@ function Tags({
               // `text-radix-${color}11 bg-radix-${color}3 dark:bg-radix-${color}3`,
               'relative rounded-full text-center font-semibold normal-case',
               // mobile (vertical sometimes)
-              '-left-1.5 my-0 mb-2 mr-2',
+              '-left-1.5 my-0 mr-2 mb-2',
               'px-2 py-3',
               // horizontal
               // 'px-3 py-2',

@@ -24,7 +24,7 @@ function CurrentlyItem({
       <Heading
         align="left"
         as="h3"
-        className="text-accentA-12 group-hover:text-accentA-11 transition-colors duration-300"
+        className="text-accentA-12 transition-colors duration-300 group-hover:text-accentA-11"
         size={{ initial: '3', md: '4' }}
         weight="medium"
       >

@@ -1,18 +1,14 @@
 {
-  "extends": "@jeromefitz/tsconfig/next.json",
   "compilerOptions": {
-    // // w/ extends
-    // "baseUrl": ".",
-    "incremental": true,
-    // "noUnusedParameters": false, // @todo(lint)
-    // "rootDir": "./src",
-    "outDir": "./dist",
     "allowJs": false,
     "allowSyntheticDefaultImports": true,
     "alwaysStrict": true,
     "baseUrl": ".",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
+    // // w/ extends
+    // "baseUrl": ".",
+    "incremental": true,
     "isolatedModules": true,
     // "jsx": "preserve",
     "jsx": "react-jsx",
@@ -25,6 +21,9 @@
     "noImplicitThis": true,
     "noUnusedLocals": true,
     "noUnusedParameters": false, // @todo(lint)
+    // "noUnusedParameters": false, // @todo(lint)
+    // "rootDir": "./src",
+    "outDir": "./dist",
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
@@ -36,12 +35,13 @@
     "tsBuildInfoFile": ".tsbuildinfo",
     "types": ["node", "react/canary", "jest", "testing-library__jest-dom"]
   },
-  "include": ["src", "index.d.ts", "next-env.d.ts"],
   "exclude": [
     "node_modules",
     "**/*.test.ts",
     "**/*.test.tsx",
     "**/*.stories.ts",
     "**/*.stories.tsx"
-  ]
+  ],
+  "extends": "@jeromefitz/tsconfig/next.json",
+  "include": ["src", "index.d.ts", "next-env.d.ts"]
 }

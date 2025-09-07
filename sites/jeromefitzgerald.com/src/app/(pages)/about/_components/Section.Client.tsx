@@ -9,6 +9,7 @@ function SectionClientLegend({ data }: { data: any }) {
           <Box
             className="z-10"
             height="calc(var(--spacing) * 16)"
+            // biome-ignore lint/suspicious/noArrayIndexKey: migrate
             key={`legend-${i}`}
             position="relative"
             width="100%"

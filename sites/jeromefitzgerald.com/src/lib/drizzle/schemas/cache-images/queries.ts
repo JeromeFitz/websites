@@ -1,10 +1,10 @@
+import type { CacheImage } from './types'
+
 import { envServer } from '@jeromefitz/next-config/env.server.mjs'
 
 import { eq, sql } from 'drizzle-orm'
 
 import { drizzle } from '@/lib/drizzle/index'
-
-import type { CacheImage } from './types'
 
 import { cacheImages } from './schemas'
 

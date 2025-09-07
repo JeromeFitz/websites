@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 'use client'
 
 import { Accordion as AccordionRoot } from '@radix-ui/react-accordion'

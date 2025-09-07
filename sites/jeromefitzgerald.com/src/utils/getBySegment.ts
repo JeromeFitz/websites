@@ -57,6 +57,7 @@ export const getBySegment: Record<Segments, SegmentValues> = {
   blocks: {
     drizzleDatabase: cacheBlocks,
     drizzleDatabaseString: 'cache_blocks',
+    // // biome-ignore lint/suspicious/noEmptyBlockStatements: migrate
     getItems: () => {},
     limit: 0,
     notionDatabaseId: '',

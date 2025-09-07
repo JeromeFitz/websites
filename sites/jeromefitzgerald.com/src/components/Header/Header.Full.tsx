@@ -3,6 +3,7 @@ import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
 
 import { cx } from '@/utils/cx'
+
 // import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 
 function HeaderFull({
@@ -58,7 +59,7 @@ function HeaderFull({
             width={{ initial: '100%', md: '100%' }}
           >
             <Flex
-              className={cx('outline-hidden transform-none whitespace-pre')}
+              className={cx('transform-none whitespace-pre outline-hidden')}
               direction="column"
               flexBasis="auto"
               flexGrow="0"
@@ -70,7 +71,7 @@ function HeaderFull({
             >
               <Heading
                 as="h2"
-                className="text-gray-11 font-medium"
+                className="font-medium text-gray-11"
                 size={{ initial: '2', md: '4' }}
               >
                 {overline}
@@ -79,7 +80,7 @@ function HeaderFull({
             <Flex
               className={cx(
                 'whitespace-pre-wrap break-words [word-break:break-word]',
-                'outline-hidden transform-none',
+                'transform-none outline-hidden',
               )}
               direction="column"
               flexBasis="auto"
@@ -97,7 +98,7 @@ function HeaderFull({
               >
                 {title}
                 {!!count && (
-                  <sup aria-hidden={true} className="text-3 md:text-6 align-super">
+                  <sup aria-hidden={true} className="align-super text-3 md:text-6">
                     {` `}
                     {count}
                   </sup>

@@ -1,9 +1,10 @@
 {
-  "extends": "../../tsconfig.json",
   "compilerOptions": {
     "baseUrl": ".",
     "outDir": "dist",
-    "preserveSymlinks": true,
+    "paths": {
+      "@jeromefitz/next-config/*": ["../../packages/next-config/src/*"]
+    },
     // "rootDir": "src",
 
     "plugins": [
@@ -11,12 +12,11 @@
         "name": "next"
       }
     ],
+    "preserveSymlinks": true,
     "strict": true,
-    "strictNullChecks": true,
-    "paths": {
-      "@jeromefitz/next-config/*": ["../../packages/next-config/src/*"]
-    }
+    "strictNullChecks": true
   },
-  "include": ["src"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+  "extends": "../../tsconfig.json",
+  "include": ["src"]
 }

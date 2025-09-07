@@ -29,7 +29,6 @@ const envSecrets = [
   // // 'UPSTASH_REDIS_REST_URL',
 ]
 for (const envSecretsVar of envSecrets) {
-  // eslint-disable-next-line no-undef
   delete process.env[envSecretsVar]
 }
 
@@ -149,7 +148,6 @@ const config = ({
       // minimumCacheTTL: 86400, // 1 day
       remotePatterns: [
         {
-          // eslint-disable-next-line no-undef
           hostname: `**.${process.env.NEXT_PUBLIC__SITE}`,
           protocol,
         },
@@ -291,18 +289,15 @@ const config = ({
     // @note(next) false will block: ./pages
     useFileSystemPublicRoutes: true,
 
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
     webpack: (config, { buildId, defaultLoaders, dev, isServer, webpack }) => {
       // @note(pnpm)  path mapping if working locally
       if (isLocal) {
         isLocalDebugMessages.map((msg) =>
-          // eslint-disable-next-line no-undef
           console.debug('\x1b[33m%s\x1b[0m', 'warn', ' - ', msg),
         )
         externals.map((ext) => {
-          // eslint-disable-next-line no-undef
           console.debug('\x1b[33m%s\x1b[0m', 'warn', ' - [ 📦 ] ›  ', ext)
           // @note(npmrc) shamefully-hoist === node_modules at root
           // @todo(npmrc) would be nice to not shamefully-hoist
@@ -325,7 +320,7 @@ const config = ({
    * @note
    * Plugins cannot handle their own Configuration at this time.
    */
-  // eslint-disable-next-line no-undef
+
   const wBA = withBundleAnalyzer({ enabled: process.env.ANALYZE === 'true' })
   const plugins = [wBA, withPlaiceholder]
 

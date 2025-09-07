@@ -1,12 +1,12 @@
 import { backgrounds } from './backgrounds'
-import { buttonTypes, buttons } from './buttons'
+import { buttons, buttonTypes } from './buttons'
 import { excludes, foregroundTextBlack, radixColors } from './colors'
 import { notion, notionColors } from './notion'
 
 export default {
   backgrounds,
-  buttonTypes,
   buttons,
+  buttonTypes,
   excludes,
   foregroundTextBlack,
   notion,

@@ -1,16 +1,15 @@
+import type { NotionTag } from '@/lib/drizzle/schemas/_notion/types'
+
 import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
 import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
 import * as DataList from '@radix-ui/themes/dist/esm/components/data-list.js'
 import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 
-import type { NotionTag } from '@/lib/drizzle/schemas/_notion/types'
-
 // import { getShowData } from '@/app/(notion)/_config/index'
 import { IdCardIcon, TagIcon } from '@/components/Icon/index'
 import { cx } from '@/utils/cx'
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 function ShowSlugHeaderData({ item }) {
   return (
@@ -30,8 +29,8 @@ function ShowSlugHeaderData({ item }) {
       >
         <DataList.Root
           className={cx(
-            'py-6 pl-4 pr-1',
-            'gap-x-[var(--space-3)] md:!gap-x-[var(--space-2)]',
+            'py-6 pr-1 pl-4',
+            'md:!gap-x-[var(--space-2)] gap-x-[var(--space-3)]',
             'w-full',
           )}
           size="2"
@@ -43,7 +42,7 @@ function ShowSlugHeaderData({ item }) {
             >
               <Flex justify={{ initial: 'start', md: 'start' }} width="100%">
                 <IdCardIcon />
-                <Text className="font-mono md:!sr-only" ml="1" size="1">
+                <Text className="md:!sr-only font-mono" ml="1" size="1">
                   Title
                 </Text>
               </Flex>
@@ -58,7 +57,7 @@ function ShowSlugHeaderData({ item }) {
               >
                 <Flex justify={{ initial: 'start', md: 'start' }} width="100%">
                   <TagIcon />
-                  <Text className="font-mono md:!sr-only" ml="1" size="1">
+                  <Text className="md:!sr-only font-mono" ml="1" size="1">
                     Type
                   </Text>
                 </Flex>

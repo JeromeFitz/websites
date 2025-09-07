@@ -9,7 +9,7 @@ const getDatabaseQueryByDateRange = cache(
 
     filterType = 'equals',
     segmentInfo,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
     sortProperty,
     // }: GetDatabaseQueryTypes) => {
   }: any) => {

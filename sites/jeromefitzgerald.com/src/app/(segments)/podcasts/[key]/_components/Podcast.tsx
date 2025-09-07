@@ -1,10 +1,10 @@
+import type { Episode } from '@/lib/drizzle/schemas/cache-episodes/types'
+import type { Podcast } from '@/lib/drizzle/schemas/cache-podcasts/types'
+
 import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Link } from '@radix-ui/themes/dist/esm/components/link.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import NextLink from 'next/link'
-
-import type { Episode } from '@/lib/drizzle/schemas/cache-episodes/types'
-import type { Podcast } from '@/lib/drizzle/schemas/cache-podcasts/types'
 
 import { ShowSlugHeaderData } from '@/app/(segments)/shows/[key]/_components/Show.Slug.Header.Data'
 import { ArticleMain } from '@/components/Article/Article.Main'

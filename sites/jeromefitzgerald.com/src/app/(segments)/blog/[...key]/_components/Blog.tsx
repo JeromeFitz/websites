@@ -1,3 +1,5 @@
+import type { Blog } from '@/lib/drizzle/schemas/cache-blogs/types'
+
 import { TZDate } from '@date-fns/tz'
 import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
 import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
@@ -5,8 +7,6 @@ import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import { format } from 'date-fns'
 import { formatInTimeZone } from 'date-fns-tz'
-
-import type { Blog } from '@/lib/drizzle/schemas/cache-blogs/types'
 
 import { ImageNotion } from '@/components/Image/Image.Notion'
 import { segment } from '@/lib/drizzle/schemas/cache-blogs/queries'
