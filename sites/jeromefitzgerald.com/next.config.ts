@@ -32,7 +32,7 @@ const config = () => {
     },
     excludeDefaultMomentLocales: true,
     experimental: {
-      useLightningcss: false,
+      useLightningcss: true,
       webVitalsAttribution: ['CLS', 'LCP'],
     },
     images: {

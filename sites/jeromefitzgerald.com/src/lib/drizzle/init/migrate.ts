@@ -5,7 +5,7 @@ import { migrate } from 'drizzle-orm/postgres-js/migrator'
 
 import { client, drizzle } from '../index'
 
-dotenvConfig()
+dotenvConfig({ quiet: true })
 
 async function main() {
   await migrate(drizzle, {
