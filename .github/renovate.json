@@ -65,11 +65,8 @@
       "matchDepTypes": ["devDependencies"],
       "matchPackageNames": [
         "@jeromefitz/*",
-        "@manypkg/cli",
         "ccommit",
-        "concurrently",
         "dotenv",
-        "glyphhanger",
         "husky",
         "is-ci",
         "semantic-release",

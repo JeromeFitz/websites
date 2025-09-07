@@ -47,7 +47,6 @@
     "@types/lodash": "4.17.20",
     "@types/node": "22.18.1",
     "ccommit": "3.1.4",
-    "concurrently": "9.2.1",
     "dotenv": "17.2.2",
     "is-ci": "4.1.0",
     "lodash": "4.17.21",
