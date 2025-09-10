@@ -108,7 +108,7 @@
     "@jeromefitz/next-config": "workspace:*",
     "@jeromefitz/storybook-config": "workspace:*",
     "@jeromefitz/tailwind-config": "workspace:*",
-    "@mantine/hooks": "8.3.0",
+    "@mantine/hooks": "8.3.1",
     "@storybook/addon-docs": "9.1.5",
     "eslint-plugin-storybook": "9.1.5",
     "next": "15.5.2",
