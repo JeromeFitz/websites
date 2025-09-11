@@ -134,7 +134,7 @@
     "@jeromefitz/tailwind-config": "workspace:*",
     "@jeromefitz/tsconfig": "2.1.0",
     "@types/pluralize": "0.0.33",
-    "@types/ramda": "0.31.0",
+    "@types/ramda": "0.31.1",
     "@types/react-headroom": "3.2.3",
     "@types/smoothscroll-polyfill": "0.3.4",
     "tailwind-merge": "3.3.1"
