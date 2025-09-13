@@ -374,8 +374,8 @@ importers:
         specifier: 0.0.1
         version: 0.0.1
       uuid:
-        specifier: 12.0.0
-        version: 12.0.0
+        specifier: 13.0.0
+        version: 13.0.0
 
   packages/playwright-config:
     devDependencies:
@@ -815,8 +815,8 @@ importers:
         specifier: ^4.2.0
         version: 4.2.0
       uuid:
-        specifier: 12.0.0
-        version: 12.0.0
+        specifier: 13.0.0
+        version: 13.0.0
       valid-url:
         specifier: 1.0.9
         version: 1.0.9
@@ -1113,8 +1113,8 @@ importers:
         specifier: ^4.2.0
         version: 4.2.0
       uuid:
-        specifier: 12.0.0
-        version: 12.0.0
+        specifier: 13.0.0
+        version: 13.0.0
       valid-url:
         specifier: 1.0.9
         version: 1.0.9
@@ -9499,8 +9499,8 @@ packages:
   utila@0.4.0:
     resolution: {integrity: sha512-Z0DbgELS9/L/75wZbro8xAnT50pBVFQZ+hUEueGDU5FN51YSCYM+jdxsfCiHjwNP/4LCDD0i/graKpeBnOXKRA==}
 
-  uuid@12.0.0:
-    resolution: {integrity: sha512-USe1zesMYh4fjCA8ZH5+X5WIVD0J4V1Jksm1bFTVBX2F/cwSXt0RO5w/3UXbdLKmZX65MiWV+hwhSS8p6oBTGA==}
+  uuid@13.0.0:
+    resolution: {integrity: sha512-XQegIaBTVUjSHliKqcnFqYypAd4S+WCYt5NIeRs6w/UAry7z8Y9j5ZwRRL4kzq9U3sD6v+85er9FvkEaBpji2w==}
     hasBin: true
 
   uuid@8.3.2:
@@ -19769,7 +19769,7 @@ snapshots:
 
   utila@0.4.0: {}
 
-  uuid@12.0.0: {}
+  uuid@13.0.0: {}
 
   uuid@8.3.2: {}
 
