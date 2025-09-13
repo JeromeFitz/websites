@@ -45,7 +45,7 @@
     "@jeromefitz/semantic": "11.1.8",
     "@jeromefitz/tsconfig": "2.1.0",
     "@types/lodash": "4.17.20",
-    "@types/node": "22.18.1",
+    "@types/node": "22.18.3",
     "ccommit": "3.1.4",
     "dotenv": "17.2.2",
     "is-ci": "4.1.0",
