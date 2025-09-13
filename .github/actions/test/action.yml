@@ -21,7 +21,7 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: '🃏  Jest: unit'
-      id: test-jest
+    - name: '🧪  Test'
+      id: test
       shell: bash
       run: pnpm turbo run test:unit --filter="${{ inputs.WEBSITE }}" --cache-dir=".cache-turbo"

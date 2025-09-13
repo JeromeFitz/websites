@@ -33,7 +33,7 @@
     "strictPropertyInitialization": false, // @todo(lint)
     "target": "esnext",
     "tsBuildInfoFile": ".tsbuildinfo",
-    "types": ["node", "react/canary", "jest", "testing-library__jest-dom"]
+    "types": ["node", "react/canary"]
   },
   "exclude": [
     "node_modules",
