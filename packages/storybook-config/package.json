@@ -8,7 +8,6 @@
     "@storybook/addon-a11y": "9.1.5",
     "@storybook/addon-links": "9.1.5",
     "@storybook/addon-themes": "9.1.5",
-    "@storybook/jest": "0.2.3",
     "@storybook/nextjs": "9.1.5",
     "@storybook/react": "9.1.5",
     "@storybook/testing-library": "0.2.2",

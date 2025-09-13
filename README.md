@@ -4,8 +4,6 @@
 - 🧑🏼‍💻️ **Code**: [`./sites/jeromefitzgerald.com`](https://github.com/JeromeFitz/websites/tree/main/sites/jeromefitzgerald.com)
 - 📦️ **Packages**: [`@jeromefitz/packages`](https://github.com/JeromeFitz/packages)
   - 🔧 Configuration
-    - `@jeromefitz/jest-config` \*
-    - `@jeromefitz/jest-presets` \*
     - `@jeromefitz/lighthouse-config` \*
     - `@jeromefitz/next-config` \*
     - `@jeromefitz/playwright-config` \*
