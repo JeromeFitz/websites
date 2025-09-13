@@ -36,8 +36,9 @@
     "semantic-release": "semantic-release",
     "start": "NODE_NO_WARNINGS=1 next start",
     "test:e2e": "NODE_NO_WARNINGS=1 playwright test --config ./playwright.config.ts",
-    "test:unit": "NODE_NO_WARNINGS=1 jest --ci --coverage",
-    "test:watch": "NODE_NO_WARNINGS=1 jest --watch"
+    "test:unit": "NODE_NO_WARNINGS=1 vitest run",
+    "test:unit:coverage": "NODE_NO_WARNINGS=1 vitest run --coverage",
+    "test:watch": "NODE_NO_WARNINGS=1 vitest run --watch"
   },
   "dependencies": {
     "@date-fns/tz": "1.4.1",
@@ -128,7 +129,6 @@
     "zustand": "5.0.8"
   },
   "devDependencies": {
-    "@jeromefitz/jest-config": "workspace:*",
     "@jeromefitz/lighthouse-config": "workspace:*",
     "@jeromefitz/playwright-config": "workspace:*",
     "@jeromefitz/storybook-config": "workspace:*",
@@ -147,6 +147,7 @@
     "tailwindcss-radix": "4.0.2",
     "tw-animate-css": "1.3.8",
     "typescript": "5.9.2",
+    "vitest": "3.2.4",
     "zod": "4.1.8"
   }
 }

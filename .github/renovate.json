@@ -45,13 +45,7 @@
     },
     {
       "commitMessagePrefix": "📦  (deps-dev)",
-      "excludePackageNames": [
-        "@types/jest",
-        "@types/node",
-        "@types/react",
-        "@types/react-dom",
-        "@types/testing-library__jest-dom"
-      ],
+      "excludePackageNames": ["@types/node", "@types/react", "@types/react-dom"],
       "matchPackageNames": ["@types/*"]
     },
     {
@@ -88,22 +82,6 @@
       "groupSlug": "storybook",
       "matchPackageNames": ["storybook"],
       "matchPackagePatterns": ["^@storybook/"]
-    },
-    {
-      "commitMessagePrefix": "📦  (deps-dev)",
-      "excludePackageNames": [],
-      "groupName": "testing-library 🧪 ",
-      "groupSlug": "testing-library",
-      "matchPackageNames": ["@types/testing-library__jest-dom"],
-      "matchPackagePatterns": ["^@testing-library/"]
-    },
-    {
-      "commitMessagePrefix": "📦  (deps-dev)",
-      "excludePackageNames": [],
-      "groupName": "jest 🃏 ",
-      "groupSlug": "jest",
-      "matchPackageNames": ["@types/jest", "jest"],
-      "matchPackagePatterns": ["^jest/", "^jest-/"]
     },
     {
       "commitMessagePrefix": "📦  (deps-dev)",

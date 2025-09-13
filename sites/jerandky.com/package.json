@@ -126,7 +126,6 @@
     "zustand": "5.0.8"
   },
   "devDependencies": {
-    "@jeromefitz/jest-config": "workspace:*",
     "@jeromefitz/lighthouse-config": "workspace:*",
     "@jeromefitz/next-config": "workspace:*",
     "@jeromefitz/playwright-config": "workspace:*",

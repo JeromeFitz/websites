@@ -2,9 +2,6 @@
 
 if [[ -d ./node_modules ]]; then rm -rf ./node_modules; fi
 
-if [[ -d ./packages/eslint-config/node_modules ]]; then rm -rf ./packages/eslint-config/node_modules; fi
-if [[ -d ./packages/jest-config/node_modules ]]; then rm -rf ./packages/jest-config/node_modules; fi
-if [[ -d ./packages/jest-presets/node_modules ]]; then rm -rf ./packages/jest-presets/node_modules; fi
 if [[ -d ./packages/lighthouse-config/node_modules ]]; then rm -rf ./packages/lighthouse-config/node_modules; fi
 if [[ -d ./packages/next-config/node_modules ]]; then rm -rf ./packages/next-config/node_modules; fi
 if [[ -d ./packages/playwright-config/node_modules ]]; then rm -rf ./packages/playwright-config/node_modules; fi
