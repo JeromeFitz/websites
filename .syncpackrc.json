@@ -3,10 +3,10 @@
   "indent": "  ",
   "semverGroups": [
     {
-      "dependencies": ["semver*"],
+      "dependencies": ["brace-expansion*", "semver*"],
       "dependencyTypes": ["pnpmOverrides", "resolutions"],
       "isIgnored": true,
-      "label": "ignore: semver",
+      "label": "ignore: pinned versions",
       "packages": ["**"]
     },
     {
