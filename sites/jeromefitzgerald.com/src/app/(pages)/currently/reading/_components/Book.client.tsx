@@ -401,8 +401,11 @@ function BookPage({ items }: { items: any }) {
             please consider <Strong>Biblio</Strong> (whose affiliate program is ...
             uh ... not in their control) and <Strong>Bookshop</Strong> (whose
             affiliate program I am in the process of setting up).{' '}
-            <Em>And if you are in Pittsburgh?</Em> Well we are home to a lot great
-            bookstores!
+          </Text>
+          <Text size="4">
+            <Em>Are you in Pittsburgh?</Em> Well they are home to a lot great
+            bookstores! (Brooklyn does too obviously, and will update this later on
+            our new haunts.)
           </Text>
           <Box asChild mb="4" pb="2" width="100%">
             <UL className="list-inside md:list-disc">

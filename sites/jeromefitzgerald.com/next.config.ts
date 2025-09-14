@@ -125,6 +125,16 @@ const config = () => {
           hostname: `**.giphy.com`,
           protocol,
         },
+        // @note(remotePattern) Apple Music
+        {
+          hostname: `*.mzstatic.com`,
+          protocol,
+        },
+        // @note(remotePattern) Goodreads
+        {
+          hostname: `*.gr-assets.com`,
+          protocol,
+        },
       ],
     },
     output: undefined,

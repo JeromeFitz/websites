@@ -9,6 +9,14 @@
 import { z } from 'zod'
 
 const envSchema = z.object({
+  APPLE_API: z.string().trim(),
+  APPLE_AUTH_ISS: z.string().trim(),
+  APPLE_AUTH_KID: z.string().trim(),
+  APPLE_IDENTIFIER: z.string().trim(),
+  APPLE_TOKEN_DEVELOPER: z.string().trim(),
+  APPLE_TOKEN_USER: z.string().trim(),
+  GOODREADS_ID: z.string().trim(),
+  GOODREADS_KEY: z.string().trim(),
   NOTION__DATABASE__BLOG: z.string().trim(),
   NOTION__DATABASE__BOOKS: z.string().trim(),
   NOTION__DATABASE__EPISODES: z.string().trim(),
@@ -32,6 +40,14 @@ const envSchema = z.object({
 })
 
 const envServerParsed = envSchema.safeParse({
+  APPLE_API: process.env.APPLE_API ?? '',
+  APPLE_AUTH_ISS: process.env.APPLE_AUTH_ISS ?? '',
+  APPLE_AUTH_KID: process.env.APPLE_AUTH_KID ?? '',
+  APPLE_IDENTIFIER: process.env.APPLE_IDENTIFIER ?? '',
+  APPLE_TOKEN_DEVELOPER: process.env.APPLE_TOKEN_DEVELOPER ?? '',
+  APPLE_TOKEN_USER: process.env.APPLE_TOKEN_USER ?? '',
+  GOODREADS_ID: process.env.GOODREADS_ID ?? '',
+  GOODREADS_KEY: process.env.GOODREADS_KEY ?? '',
   NOTION__DATABASE__BLOG: process.env.NOTION__DATABASE__BLOG ?? '',
   NOTION__DATABASE__BOOKS: process.env.NOTION__DATABASE__BOOKS ?? '',
   NOTION__DATABASE__EPISODES: process.env.NOTION__DATABASE__EPISODES ?? '',

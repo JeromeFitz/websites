@@ -5,7 +5,6 @@ import {
   GitHubLogoIcon,
   InstagramLogoIcon,
   LinkedInLogoIcon,
-  SpotifyLogoIcon,
   ThreadsLogoIcon,
 } from '@/components/Icon/index'
 
@@ -98,19 +97,6 @@ const socials = [
     tooltipDescription: 'Who uses this?',
     type: URL_TYPE.EXTERNAL,
     url: 'https://read.cv/jeromefitzgerald',
-  },
-  {
-    active: true,
-    className: 'hover:bg-spotify dark:hover:bg-spotify-dark',
-    icon: <SpotifyLogoIcon className="text-inherit" />,
-    id: 'spotify',
-    keywords: 'social spotify',
-    rightSlot: <ExternalLinkIcon />,
-    subtitle: 'some wild username spotify is odd',
-    title: 'Spotify',
-    tooltipDescription: 'Who follows people this?',
-    type: URL_TYPE.EXTERNAL,
-    url: 'https://open.spotify.com/user/jyxdd2oc2koozvbs7gk7omnwc',
   },
   {
     active: false,

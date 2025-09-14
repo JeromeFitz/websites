@@ -2,23 +2,18 @@
 
 import type { NotionColor } from '@/lib/drizzle/schemas/_notion/types'
 
-/**
- * @todo(api) NICE-125 this takes way too long to run
- *                on what should be a redis cache hit
- */
 import useSWR from 'swr'
 
 import { fetcher } from '@/lib/fetcher'
-import { getKeyAppleMusic, INIT } from '@/utils/getKeyAppleMusic'
 
 import { CurrentlyItem } from './Currently.Item'
 import { CurrentlyWrapper } from './Currently.Item.Wrapper'
 
-const key = getKeyAppleMusic(0, { ...INIT, limit: 1 })
+const key = `/api/v1/books/currently-reading`
 
 const options = {}
 
-function CurrentlyMusicClient({
+function CurrentlyBookClient({
   titleSub,
   ...c
 }: {
@@ -39,8 +34,8 @@ function CurrentlyMusicClient({
 
   const top = hasError ? {} : data?.data[0]
 
-  const headline = hasError ? titleSub[0] : top?.attributes.artistName
-  const subline = hasError ? titleSub[1] : top?.attributes.name
+  const headline = hasError ? titleSub[0] : top?.author_name
+  const subline = hasError ? titleSub[1] : top?.title
 
   const props = {
     headline,
@@ -56,4 +51,4 @@ function CurrentlyMusicClient({
   )
 }
 
-export { CurrentlyMusicClient }
+export { CurrentlyBookClient }

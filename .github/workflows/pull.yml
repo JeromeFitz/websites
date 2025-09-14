@@ -19,11 +19,21 @@ concurrency:
   cancel-in-progress: true
 
 env:
+  APPLE_API: ${{ secrets.APPLE_API }}
+  APPLE_AUTH_ISS: ${{ secrets.APPLE_AUTH_ISS }}
+  APPLE_AUTH_KID: ${{ secrets.APPLE_AUTH_KID }}
+  APPLE_IDENTIFIER: ${{ secrets.APPLE_IDENTIFIER }}
+  APPLE_TOKEN_DEVELOPER: ${{ secrets.APPLE_TOKEN_DEVELOPER }}
+  APPLE_TOKEN_USER: ${{ secrets.APPLE_TOKEN_USER }}
   GH_BOT_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
   GH_DEPLOY_TOKEN: ${{ secrets.GH_DEPLOY_TOKEN }}
   GH_TOKEN: ${{ secrets.GH_DEPLOY_TOKEN }}
   GITHUB_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
+  GOODREADS_ID: ${{ secrets.GOODREADS_ID }}
+  GOODREADS_KEY: ${{ secrets.GOODREADS_KEY }}
   LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+  NEXT_PUBLIC__APPLE_IDENTIFIER: ''
+  NEXT_PUBLIC__APPLE_TOKEN_DEVELOPER: ''
   NEXT_PUBLIC__FATHOM_SITE_ID: ${{ secrets.NEXT_PUBLIC__FATHOM_SITE_ID }}
   NEXT_PUBLIC__SITE: ${{ vars.NEXT_PUBLIC__SITE }}
   NEXT_TELEMETRY_DISABLED: ${{ vars.NEXT_TELEMETRY_DISABLED }}
@@ -63,11 +73,21 @@ jobs:
     timeout-minutes: 20
     runs-on: ubuntu-latest
     env:
+      APPLE_API: ${{ secrets.APPLE_API }}
+      APPLE_AUTH_KID: ${{ secrets.APPLE_AUTH_KID }}
+      APPLE_AUTH_ISS: ${{ secrets.APPLE_AUTH_ISS }}
+      APPLE_IDENTIFIER: ${{ secrets.APPLE_IDENTIFIER }}
+      APPLE_TOKEN_DEVELOPER: ${{ secrets.APPLE_TOKEN_DEVELOPER }}
+      APPLE_TOKEN_USER: ${{ secrets.APPLE_TOKEN_USER }}
       GH_BOT_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
       GH_DEPLOY_TOKEN: ${{ secrets.GH_DEPLOY_TOKEN }}
       GH_TOKEN: ${{ secrets.GH_DEPLOY_TOKEN }}
       GITHUB_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
+      GOODREADS_ID: ${{ secrets.GOODREADS_ID }}
+      GOODREADS_KEY: ${{ secrets.GOODREADS_KEY }}
       LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+      NEXT_PUBLIC__APPLE_IDENTIFIER: ''
+      NEXT_PUBLIC__APPLE_TOKEN_DEVELOPER: ''
       NEXT_PUBLIC__FATHOM_SITE_ID: ${{ secrets.NEXT_PUBLIC__FATHOM_SITE_ID }}
       NEXT_PUBLIC__SITE: ${{ vars.NEXT_PUBLIC__SITE }}
       NEXT_TELEMETRY_DISABLED: ${{ vars.NEXT_TELEMETRY_DISABLED }}

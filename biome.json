@@ -128,7 +128,8 @@
       "quoteStyle": "single",
       "semicolons": "asNeeded",
       "trailingCommas": "all"
-    }
+    },
+    "globals": ["MusicKit"]
   },
   "linter": {
     "enabled": true,

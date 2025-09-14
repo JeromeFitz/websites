@@ -5,8 +5,10 @@
   ],
   "globalPassThroughEnv": [
     "*_TOKEN",
+    "APPLE_*",
     "CI",
     "ENABLE_EXPERIMENTAL_COREPACK",
+    "GOODREADS_*",
     "IS_*",
     "NEXT_PUBLIC_*",
     "NODE_ENV",
