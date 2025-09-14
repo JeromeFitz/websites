@@ -22,7 +22,7 @@ export async function getAppleMusic({
 
   if (!response.ok) {
     console.dir(`❎ Failed to fetch: ${endpoint}.`)
-    return { data: null, next: null }
+    return { data: undefined, next: null }
   }
 
   const data = await response.json()
