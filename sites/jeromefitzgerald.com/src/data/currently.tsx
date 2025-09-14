@@ -1,3 +1,4 @@
+// import { CurrentlyBookClient } from '@/components/Currently/Currently.Book.Client'
 import { CurrentlyEvent } from '@/components/Currently/Currently.Event'
 import { CurrentlyItemWrapper } from '@/components/Currently/Currently.Item.Wrapper'
 import { CurrentlyMusicClient } from '@/components/Currently/Currently.Music.Client'
@@ -23,8 +24,7 @@ const currently = [
     titleSub: 'N/A',
   },
   {
-    // apiUrl: '/api/v1/music/top-tracks?limit=10&offset=0&time_range=short_term',
-    apiUrl: '/api/v1/music/recently-played?limit=10',
+    apiUrl: '/api/v2/music/recent-played-albums?limit=1&offset=0',
     color: 'orange',
     component: CurrentlyMusicClient,
     href: '/currently/listening-to',
@@ -36,7 +36,7 @@ const currently = [
     titleSub: 'Jessica Pratt – Here In The Pitch',
   },
   {
-    apiUrl: '',
+    apiUrl: '/api/v1/books/currently-reading',
     color: 'mint',
     component: CurrentlyItemWrapper,
     href: '/currently/reading',
@@ -45,7 +45,7 @@ const currently = [
     isActive: true,
     prefetch: false,
     title: 'I’m Reading…',
-    titleSub: 'Costanza Casati – Clytemnestra',
+    titleSub: 'Jaime Loftus – Raw Dog: The Naked Truth About Hot Dogs',
   },
   {
     apiUrl: '',

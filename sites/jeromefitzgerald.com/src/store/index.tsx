@@ -52,6 +52,8 @@ const useStore = <T,>(selector: (state: any) => T): T => {
 const FALLBACK_ACTION = () => {}
 
 const getDefaultInitialStateStoreMenu = () => ({
+  appleMusicType: 'recent-played-albums',
+  appleMusicTypeSet: FALLBACK_ACTION,
   bookStatus: 'in-progress',
   bookStatusSet: FALLBACK_ACTION,
   cmdkInput: '',
@@ -80,10 +82,6 @@ const getDefaultInitialStateStoreMenu = () => ({
   seen: 0,
   seenSetDecrease: FALLBACK_ACTION,
   seenSetIncrease: FALLBACK_ACTION,
-  spotifyTimeRange: 'medium_term',
-  spotifyTimeRangeSet: FALLBACK_ACTION,
-  spotifyType: 'top-tracks',
-  spotifyTypeSet: FALLBACK_ACTION,
   // @wip(menu)
   zzz_menuSecondary: [
     {
@@ -403,6 +401,11 @@ const initializeStoreMenu = (preloadedState: Partial<any> = {}) => {
   return createStore<any>((set, get) => ({
     ...getDefaultInitialStateStoreMenu(),
     ...preloadedState,
+    appleMusicTypeSet: (type: any) => {
+      set({
+        appleMusicType: type,
+      })
+    },
     bookStatusSet: (status: any) => {
       set({
         bookStatus: status,
@@ -477,16 +480,6 @@ const initializeStoreMenu = (preloadedState: Partial<any> = {}) => {
     isRouteChangingSet: (val: boolean) => {
       set({
         isRouteChanging: val,
-      })
-    },
-    spotifyTimeRangeSet: (time_range: any) => {
-      set({
-        spotifyTimeRange: time_range,
-      })
-    },
-    spotifyTypeSet: (type: any) => {
-      set({
-        spotifyType: type,
       })
     },
     zzz_menuSecondaryActiveSet: (item: { id: number | string }) => {

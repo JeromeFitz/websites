@@ -20,7 +20,7 @@ import { Strong } from '@radix-ui/themes/dist/esm/components/strong.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import Image from 'next/image'
 import NextLink from 'next/link'
-import { Fragment, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import _title from 'title'
 import { Virtualizer } from 'virtua'
 
@@ -37,15 +37,13 @@ import { useSWRInfinitePages } from '@/hooks/useSWRInfinitePages'
 import { fetcher } from '@/lib/fetcher'
 import { useStore as _useStore, useShallow } from '@/store/index'
 import { cx } from '@/utils/cx'
-import { getKeySpotify, INIT } from '@/utils/getKeySpotify'
+import { getKeyAppleMusic, INIT } from '@/utils/getKeyAppleMusic'
 
 const useStore = () => {
   return _useStore(
     useShallow((store) => ({
-      spotifyTimeRange: store.spotifyTimeRange,
-      spotifyTimeRangeSet: store.spotifyTimeRangeSet,
-      spotifyType: store.spotifyType,
-      spotifyTypeSet: store.spotifyTypeSet,
+      appleMusicType: store.appleMusicType,
+      appleMusicTypeSet: store.appleMusicTypeSet,
     })),
   )
 }
@@ -61,20 +59,6 @@ function addS(str: string) {
   return `${str}’${poss}`
 }
 
-const ranges = [
-  { active: true, slug: 'short_term', title: 'Past Month' },
-  {
-    active: true,
-    slug: 'medium_term',
-    title: 'Past Six Months',
-  },
-  { active: true, slug: 'long_term', title: 'All Time' },
-]
-
-/**
- * @note fuck ariel pink
- */
-const removeItems = ['5H0YoDsPDi9fObFmJtTjfN']
 const info = {
   error: {
     cta: 'Please check back later',
@@ -95,38 +79,48 @@ function DataItem({ item, type }: any) {
   let _alt: string,
     _genres: string[],
     _href: string,
-    _meta: any,
+    _imgSrc: string,
     _title1: string,
     _title2: string,
     _title3: string,
     GENRE_MAX = 4
 
-  if (type === 'top-artists') {
-    GENRE_MAX = 9
-    _href = item.external_urls.spotify
-    _title1 = item.name
-    _title2 = ''
-    _title3 = ''
-    _meta = item.image
-    _genres = item.genres
-    _alt = `Apologies, this image is dynamically generated from another source. Cannot yet provide vivid details. This is a photo of ${item.name}.`
+  if (type === 'recent-played-tracks') {
+    _href = item.attributes.url
+    _title1 = item.attributes.artistName
+    _title2 = `“${item.attributes.name}”`
+    _title3 = `“${item.attributes.albumName}”`
+    _imgSrc = item.attributes.artwork.url.replace('{w}', '800').replace('{h}', '800')
+    _genres = item.attributes.genreNames ?? []
+    _alt = `Apologies, this image is dynamically generated from another source. Cannot yet provide vivid details. This is an image of ${item.attributes.artistName}’s album cover for “${item.attributes.name}.”`
   } else {
-    _href = item.external_urls.spotify
-    _title1 = item.artist
-    _title2 = `“${item.name}”`
-    _title3 = `“${item.album.name}”`
-    _meta = item.album.image
-    _genres = item.genres
-    _alt = `Apologies, this image is dynamically generated from another source. Cannot yet provide vivid details. This is an image of ${item.artist}’s album cover for “${item.album.name}.”`
+    GENRE_MAX = 9
+    _href = item.attributes.url
+    _title1 = item.attributes.artistName
+    _title2 = `“${item.attributes.name}”`
+    _title3 = `“${item.attributes.name}”`
+    _imgSrc = item.attributes.artwork.url.replace('{w}', '800').replace('{h}', '800')
+    _genres = item.attributes.genreNames ?? []
+    _alt = `Apologies, this image is dynamically generated from another source. Cannot yet provide vivid details. This is a photo of ${item.attributes.name}.`
   }
 
+  /**
+   * @todo(blurDataURL)
+   */
   const image = {
-    blurDataURL: _meta?.base64,
-    ..._meta?.img,
+    // blurDataURL: _imgSrc?.base64,
+    // ..._imgSrc?.img,
+    //
+    blurDataURL:
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAIAAAACUFjqAAAACXBIWXMAAAsTAAALEwEAmpwYAAABQUlEQVR4nAE2Acn+APzz8fzz8f/29fns6vvt6v+7xfV9lf+Ko/5/l/S2uwD/29r/3d3/3t//4972ur9tIi1HGRpgKy+vSV/uo6oA//Hx//bz/+fm//f1r214KwAApXBWbkIxGQAAuV5oAP/y8f/AyvyOn/+GnOFke2wvLHJIO1kmI40kOM9JXwD/0db+f5X/hZv8fZL/h53Tb3R3OjqEKDfjZHzeXnAA/6Ox/4WY+oSV/omb/5Wm+4GS6GZ153KB1nx7xIFpAP+fr/uKmfuKmP+drv+WpfaIlPyPm9eGgq1+YryIbQD/pa/5kpv7lZz3k5r6lZz7nKX8m6PajY2+iHeUXlIA/6y2+Z+k7JSU/Kes/7K7/Kev+6Or+aKqq3hxm2VhAPK8vM6im/++xP+9wv+0u/++xfSqrdOPjNe2sNirpkiyyKcq+CIbAAAAAElFTkSuQmCC',
+    height: 800,
+    src: _imgSrc,
+    width: 800,
   }
+
   const genres = getArrayFirstX(_genres, GENRE_MAX)
   const genresExtra = getArrayCountOfOverage(_genres, GENRE_MAX)
-  const isTrack = ['recently-played', 'top-tracks'].includes(type)
+  const isTrack = ['recent-played-tracks'].includes(type)
 
   return (
     <Flex
@@ -166,53 +160,53 @@ function DataItem({ item, type }: any) {
             </DataList.Item>
           </Flex>
           {isTrack && (
-            <>
-              <Flex asChild direction="column" display="inline-flex" gap="0">
-                <DataList.Item align="start">
-                  <DataList.Label>
-                    <Text size="1">
-                      <Code variant="ghost">Song</Code>
-                    </Text>
-                  </DataList.Label>
-                  <DataList.Value>
-                    <Text size={{ initial: '1', md: '2' }} weight="medium">
-                      {_title2}
-                    </Text>
-                  </DataList.Value>
-                </DataList.Item>
-              </Flex>
-              <Flex asChild direction="column" display="inline-flex" gap="0">
-                <DataList.Item align="start">
-                  <DataList.Label>
-                    <Text size="1">
-                      <Code variant="ghost">Album</Code>
-                    </Text>
-                  </DataList.Label>
-                  <DataList.Value>
-                    <Text size={{ initial: '1', md: '2' }} weight="medium">
-                      {_title3}
-                    </Text>
-                  </DataList.Value>
-                </DataList.Item>
-              </Flex>
-              <Flex asChild direction="column" display="inline-flex" gap="0">
-                <DataList.Item align="start">
-                  <DataList.Label>
-                    <Text size="1">
-                      <Code variant="ghost">Year</Code>
-                    </Text>
-                  </DataList.Label>
-                  <DataList.Value>
-                    <Text size={{ initial: '1', md: '2' }}>
-                      <Code variant="ghost">
-                        {item.album.release_date.slice(0, 4)}
-                      </Code>
-                    </Text>
-                  </DataList.Value>
-                </DataList.Item>
-              </Flex>
-            </>
+            <Flex asChild direction="column" display="inline-flex" gap="0">
+              <DataList.Item align="start">
+                <DataList.Label>
+                  <Text size="1">
+                    <Code variant="ghost">Song</Code>
+                  </Text>
+                </DataList.Label>
+                <DataList.Value>
+                  <Text size={{ initial: '1', md: '2' }} weight="medium">
+                    {_title2}
+                  </Text>
+                </DataList.Value>
+              </DataList.Item>
+            </Flex>
           )}
+          <Flex asChild direction="column" display="inline-flex" gap="0">
+            <DataList.Item align="start">
+              <DataList.Label>
+                <Text size="1">
+                  <Code variant="ghost">Album</Code>
+                </Text>
+              </DataList.Label>
+              <DataList.Value>
+                <Text size={{ initial: '1', md: '2' }} weight="medium">
+                  {_title3}
+                </Text>
+              </DataList.Value>
+            </DataList.Item>
+          </Flex>
+          <Flex asChild direction="column" display="inline-flex" gap="0">
+            <DataList.Item align="start">
+              <DataList.Label>
+                <Text size="1">
+                  <Code variant="ghost">Year</Code>
+                </Text>
+              </DataList.Label>
+              <DataList.Value>
+                <Text size={{ initial: '1', md: '2' }}>
+                  <Code variant="ghost">
+                    {item.attributes.releaseDate.slice(0, 4)}
+                    {/* {item.attributes.releaseDate} */}
+                  </Code>
+                </Text>
+              </DataList.Value>
+            </DataList.Item>
+          </Flex>
+
           <Flex
             asChild
             direction="column"
@@ -230,7 +224,7 @@ function DataItem({ item, type }: any) {
                   <Flex
                     as="span"
                     gap="2"
-                    mb="6"
+                    mb={{ initial: '2', md: '2' }}
                     mt={{ initial: '2', md: '1' }}
                     pb="3"
                   >
@@ -297,7 +291,7 @@ function DataItem({ item, type }: any) {
                   <Button
                     asChild
                     className="w-fit"
-                    color="jade"
+                    color="ruby"
                     highContrast={false}
                     mt="0"
                     radius="full"
@@ -305,7 +299,7 @@ function DataItem({ item, type }: any) {
                     variant="outline"
                   >
                     <NextLink href={_href} target="_blank">
-                      Open Spotify
+                      Open Apple Music
                       {` `}
                       <ExternalLinkIcon
                         className={cx('!opacity-100 text-accent-11')}
@@ -321,7 +315,8 @@ function DataItem({ item, type }: any) {
       <Inset
         className={cx(
           'relative h-full rounded-3',
-          'h-[275px] w-[164px] min-w-[164px] max-w-[164px]',
+          // 'h-[275px] w-[164px] min-w-[164px] max-w-[164px]',
+          'size-full',
           'md:size-full md:max-w-[308px]',
         )}
         clip="border-box"
@@ -455,7 +450,7 @@ function DataItems() {
 
   const isVisible = entry?.isIntersecting
 
-  const { spotifyTimeRange, spotifyType } = useStore()
+  const { appleMusicType } = useStore()
 
   const [limit] = useState(10)
   const [url] = useState(INIT.url)
@@ -471,17 +466,16 @@ function DataItems() {
     isLoadingMore,
   } = useSWRInfinitePages(
     (pageIndex: number) =>
-      getKeySpotify(pageIndex, {
-        limit: spotifyType === 'recently-played' ? 50 : limit,
-        time_range: spotifyTimeRange ?? INIT.time_range,
-        type: spotifyType ?? INIT.type,
+      getKeyAppleMusic(pageIndex, {
+        limit: appleMusicType === 'recent-played-tracks' ? 10 : limit,
+        type: appleMusicType ?? INIT.type,
         url,
       }),
     fetcher,
     {
       // @ts-ignore
-      dataPath: 'items',
-      limit: spotifyType === 'recently-played' ? 50 : limit,
+      dataPath: 'data',
+      limit: appleMusicType === 'recent-played-tracks' ? 10 : limit,
       //
       refreshInterval: HOUR,
       revalidateAll: false,
@@ -495,15 +489,8 @@ function DataItems() {
     },
   )
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: migrate
   useEffect(() => {
-    if (
-      canFetchMore &&
-      !isFetchingMore &&
-      !isLoadingMore &&
-      isVisible &&
-      spotifyType !== 'recently-played'
-    ) {
+    if (canFetchMore && !isFetchingMore && !isLoadingMore && isVisible) {
       void fetchMore()
     }
   }, [canFetchMore, fetchMore, isFetchingMore, isLoadingMore, isVisible])
@@ -511,8 +498,6 @@ function DataItems() {
   return (
     <Virtualizer horizontal={false}>
       {data?.map((item: any, i: number) => {
-        if (removeItems.includes(item.id)) return null
-        // if (i > 5) return null
         /**
          * @todo(radix) when data changes drastically
          *  can this not be so jarring? Possible to have
@@ -521,11 +506,23 @@ function DataItems() {
          *
          * Or have opacity start at 0 then come to 100?
          */
+        if (
+          [
+            'curators',
+            'library-music-videos',
+            'library-playlists',
+            'library-songs',
+            'music-videos',
+            'playlists',
+            'stations',
+          ].includes(item.type)
+        )
+          return null
         return (
           <DataItem
             item={item}
-            key={`np--${spotifyType}}--${spotifyTimeRange}--${i}`}
-            type={spotifyType}
+            key={`np--${appleMusicType}}--${i}`}
+            type={appleMusicType}
           />
         )
       })}
@@ -559,23 +556,14 @@ function getArrayFirstX(arr: string[], max = 4) {
 }
 
 function MusicClient() {
-  const { spotifyTimeRange, spotifyTimeRangeSet, spotifyType, spotifyTypeSet } =
-    useStore()
+  const { appleMusicType, appleMusicTypeSet } = useStore()
 
-  const handleValueChangeTimeRange = (value: string) => {
-    // @todo(a11y) prefers reduced motion
-    // scrollIntoViewHandle()
-    // @hack(mantine) eh... sure.
-    setTimeout(() => {
-      spotifyTimeRangeSet(value)
-    }, SCROLL_DURATION)
-  }
   const handleValueChangeType = (value: string) => {
     // @todo(a11y) prefers reduced motion
     // scrollIntoViewHandle()
     // @hack(mantine) eh... sure.
     setTimeout(() => {
-      spotifyTypeSet(value)
+      appleMusicTypeSet(value)
     }, SCROLL_DURATION)
   }
 
@@ -656,42 +644,11 @@ function MusicClient() {
                 pb={{ initial: '4', md: '0' }}
                 width="100%"
               >
-                <Flex gap="3" width="100%">
-                  {/* @todo(radix) children */}
-                  {/* @ts-ignore */}
-                  <SelectRoot
-                    defaultValue={spotifyTimeRange ?? INIT.time_range}
-                    disabled={spotifyType === 'recently-played'}
-                    onValueChange={(value) => handleValueChangeTimeRange(value)}
-                    size={{ initial: '3', md: '3' }}
-                  >
-                    <SelectTrigger
-                      className={cx(
-                        '!w-full !md:w-full',
-                        spotifyType === 'recently-played' && 'cursor-not-allowed',
-                      )}
-                      placeholder="Time Range:"
-                      // width="100%"
-                    />
-                    <SelectContent className="z-50 w-full" position="popper">
-                      {ranges.map((range) => {
-                        if (!range.active) return null
-                        return (
-                          <Fragment key={range.slug}>
-                            <SelectItem className="w-full" value={range.slug}>
-                              {range.title}
-                            </SelectItem>
-                          </Fragment>
-                        )
-                      })}
-                    </SelectContent>
-                  </SelectRoot>
-                </Flex>
                 <Flex gap="3">
                   {/* @todo(radix) children */}
                   {/* @ts-ignore */}
                   <SelectRoot
-                    defaultValue={spotifyType ?? INIT.type}
+                    defaultValue={appleMusicType ?? INIT.type}
                     onValueChange={(value) => handleValueChangeType(value)}
                     size="3"
                   >
@@ -700,19 +657,23 @@ function MusicClient() {
                       placeholder="Type:"
                     />
                     <SelectContent className="z-50 w-full" position="popper">
-                      <SelectItem value="top-artists">Top Artists</SelectItem>
-                      <SelectItem value="top-tracks">Top Tracks</SelectItem>
-                      <SelectItem value="recently-played">
-                        Recently Played
+                      <SelectItem value="history-heavy-rotation">
+                        Heavy Rotation
+                      </SelectItem>
+                      <SelectItem value="recent-played-albums">
+                        Recently Played Albums
+                      </SelectItem>
+                      <SelectItem value="recent-played-tracks">
+                        Recently Played Tracks
                       </SelectItem>
                     </SelectContent>
                   </SelectRoot>
                 </Flex>
               </Flex>
             </Flex>
-            <Callout className="relative right-0 bottom-0" color="mint" size="1">
-              <Strong className="font-mono uppercase">Spotify</Strong> does not earn
-              a commission. But all data is currently from them.
+            <Callout className="relative right-0 bottom-0" color="ruby" size="1">
+              All data is from{' '}
+              <Strong className="font-mono uppercase">Apple Music</Strong>.
             </Callout>
           </Flex>
         </HeaderSidebar>

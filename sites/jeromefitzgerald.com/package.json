@@ -31,14 +31,15 @@
     "db:studio": "drizzle-kit studio",
     "dev": "NODE_NO_WARNINGS=1 next dev --turbopack --experimental-https",
     "lhci": "pnpm --package=@lhci/cli@0.15.0 dlx lhci autorun --config=.lighthouserc.cjs",
-    "lint": "pnpm run lint:typescript",
+    "lint": "pnpm run types && pnpm run lint:typescript",
     "lint:typescript": "tsc --noEmit --declaration",
     "semantic-release": "semantic-release",
     "start": "NODE_NO_WARNINGS=1 next start",
     "test:e2e": "NODE_NO_WARNINGS=1 playwright test --config ./playwright.config.ts",
     "test:unit": "NODE_NO_WARNINGS=1 vitest run",
     "test:unit:coverage": "NODE_NO_WARNINGS=1 vitest run --coverage",
-    "test:watch": "NODE_NO_WARNINGS=1 vitest run --watch"
+    "test:watch": "NODE_NO_WARNINGS=1 vitest run --watch",
+    "types": "NODE_NO_WARNINGS=1 next typegen"
   },
   "dependencies": {
     "@date-fns/tz": "1.4.1",
@@ -106,6 +107,7 @@
     "geist": "1.5.1",
     "github-slugger": "2.0.0",
     "isomorphic-unfetch": "4.0.2",
+    "jsonwebtoken": "9.0.2",
     "lodash": "4.17.21",
     "ms": "3.0.0-canary.202508261828",
     "next": "15.5.3",
@@ -126,6 +128,7 @@
     "uuid": "13.0.0",
     "valid-url": "1.0.9",
     "virtua": "0.43.1",
+    "xml2js": "0.6.2",
     "zustand": "5.0.8"
   },
   "devDependencies": {
@@ -137,11 +140,13 @@
     "@tailwindcss/forms": "0.5.10",
     "@tailwindcss/postcss": "4.1.13",
     "@tailwindcss/typography": "0.5.16",
+    "@types/jsonwebtoken": "9.0.10",
     "@types/lodash": "4.17.20",
     "@types/pluralize": "0.0.33",
     "@types/react": "19.1.13",
     "@types/react-dom": "19.1.9",
     "@types/valid-url": "1.0.7",
+    "@types/xml2js": "0.4.14",
     "plaiceholder": "3.0.0",
     "sharp": "0.34.3",
     "tailwindcss-radix": "4.0.2",
