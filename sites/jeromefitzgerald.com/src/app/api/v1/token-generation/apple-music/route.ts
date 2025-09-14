@@ -38,7 +38,7 @@ export async function GET() {
   const APPLE_TOKEN_DEVELOPER = await getMusicKitDeveloperToken()
   const response = await fetch(
     // ☁️ Who Is The Sky?
-    `${envServer.APPLE_API}/catalog/us/albums/1816027264`,
+    `${envServer.APPLE_API}/v1/catalog/us/albums/1816027264`,
     {
       headers: {
         Authorization: `Bearer ${APPLE_TOKEN_DEVELOPER}`,
