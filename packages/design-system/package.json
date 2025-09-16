@@ -112,7 +112,7 @@
     "@storybook/addon-docs": "9.1.5",
     "@vitejs/plugin-react": "5.0.2",
     "@vitest/browser": "3.2.4",
-    "eslint-plugin-storybook": "9.1.5",
+    "eslint-plugin-storybook": "9.1.6",
     "next": "15.5.3",
     "react": "19.1.1",
     "react-dom": "19.1.1",
