@@ -6,7 +6,7 @@
   "devDependencies": {
     "@jeromefitz/prettier-config": "2.1.13",
     "@next/bundle-analyzer": "15.5.3",
-    "@octokit/core": "7.0.3",
+    "@octokit/core": "7.0.4",
     "@plaiceholder/next": "3.0.0",
     "fast-json-stable-stringify": "2.1.0",
     "lodash": "4.17.21",
