@@ -495,8 +495,8 @@ importers:
         specifier: 4.1.13
         version: 4.1.13
       '@tailwindcss/typography':
-        specifier: 0.5.17
-        version: 0.5.17(tailwindcss@4.1.13)
+        specifier: 0.5.18
+        version: 0.5.18(tailwindcss@4.1.13)
       autoprefixer:
         specifier: 10.4.21
         version: 10.4.21(postcss@8.5.6)
@@ -1112,8 +1112,8 @@ importers:
         specifier: 4.1.13
         version: 4.1.13
       '@tailwindcss/typography':
-        specifier: 0.5.17
-        version: 0.5.17(tailwindcss@4.1.13)
+        specifier: 0.5.18
+        version: 0.5.18(tailwindcss@4.1.13)
       '@types/jsonwebtoken':
         specifier: 9.0.10
         version: 9.0.10
@@ -4303,8 +4303,8 @@ packages:
   '@tailwindcss/postcss@4.1.13':
     resolution: {integrity: sha512-HLgx6YSFKJT7rJqh9oJs/TkBFhxuMOfUKSBEPYwV+t78POOBsdQ7crhZLzwcH3T0UyUuOzU/GK5pk5eKr3wCiQ==}
 
-  '@tailwindcss/typography@0.5.17':
-    resolution: {integrity: sha512-Ll/jGz1flUVaSxK/Y7OqT+kHOhrbDpSXpAszhEBCE82yTcs47bJJLI0MB5Peoh9TgBOMUjJpsGez9MECzXLw9Q==}
+  '@tailwindcss/typography@0.5.18':
+    resolution: {integrity: sha512-dDIgwZOlf+tVkZ7A029VvQ1+ngKATENDjMEx2N35s2yPjfTS05RWSM8ilhEWSa5DMJ6ci2Ha9WNZEd2GQjrdQg==}
     peerDependencies:
       tailwindcss: '>=3.0.0 || insiders || >=4.0.0-alpha.20 || >=4.0.0-beta.1'
 
@@ -13633,7 +13633,7 @@ snapshots:
       postcss: 8.5.6
       tailwindcss: 4.1.13
 
-  '@tailwindcss/typography@0.5.17(tailwindcss@4.1.13)':
+  '@tailwindcss/typography@0.5.18(tailwindcss@4.1.13)':
     dependencies:
       postcss-selector-parser: 6.0.10
       tailwindcss: 4.1.13
