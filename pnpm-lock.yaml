@@ -225,8 +225,8 @@ importers:
         specifier: workspace:*
         version: link:../tailwind-config
       '@mantine/hooks':
-        specifier: 8.3.1
-        version: 8.3.1(react@19.1.1)
+        specifier: 8.3.2
+        version: 8.3.2(react@19.1.1)
       '@storybook/addon-docs':
         specifier: 9.1.7
         version: 9.1.7
@@ -552,8 +552,8 @@ importers:
         specifier: 3.1.7
         version: 3.1.7(lodash@4.17.21)
       '@mantine/hooks':
-        specifier: 8.3.1
-        version: 8.3.1(react@19.1.1)
+        specifier: 8.3.2
+        version: 8.3.2(react@19.1.1)
       '@notionhq/client':
         specifier: 4.0.2
         version: 4.0.2
@@ -841,8 +841,8 @@ importers:
         specifier: 3.1.7
         version: 3.1.7(lodash@4.17.21)
       '@mantine/hooks':
-        specifier: 8.3.1
-        version: 8.3.1(react@19.1.1)
+        specifier: 8.3.2
+        version: 8.3.2(react@19.1.1)
       '@neondatabase/serverless':
         specifier: 1.0.1
         version: 1.0.1
@@ -2463,8 +2463,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.9':
     resolution: {integrity: sha512-3Belt6tdc8bPgAtbcmdtNJlirVoTmEb5e2gC94PnkwEW9jI6CAHUeoG85tjWP5WquqfavoMtMwiG4P926ZKKuQ==}
 
-  '@mantine/hooks@8.3.1':
-    resolution: {integrity: sha512-lQutBS+Q0iz/cNFvdrsYassPWo3RtWcmDGJeOtKfHigLzFOhxUuLOkQgepDbMf3WcVMB/tist6Px1PQOv57JTw==}
+  '@mantine/hooks@8.3.2':
+    resolution: {integrity: sha512-urDgQJNAs2t2mAyGaA+7uNsBMRn9U/ccvi+ZUl5ef3/Wzfv5KYHe9LA9DBNhn24BTSewxrI27W0EFpFxv/Jsbg==}
     peerDependencies:
       react: ^18.x || ^19.x
 
@@ -10579,7 +10579,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
-  '@mantine/hooks@8.3.1(react@19.1.1)':
+  '@mantine/hooks@8.3.2(react@19.1.1)':
     dependencies:
       react: 19.1.1
 
