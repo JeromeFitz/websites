@@ -9,7 +9,7 @@
     "@tailwindcss/aspect-ratio": "0.4.2",
     "@tailwindcss/forms": "0.5.10",
     "@tailwindcss/postcss": "4.1.13",
-    "@tailwindcss/typography": "0.5.18",
+    "@tailwindcss/typography": "0.5.19",
     "autoprefixer": "10.4.21",
     "cssnano": "7.1.1",
     "lightningcss": "1.30.1",
