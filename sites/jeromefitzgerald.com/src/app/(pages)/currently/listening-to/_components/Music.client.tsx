@@ -83,24 +83,23 @@ function DataItem({ item, type }: any) {
     _title1: string,
     _title2: string,
     _title3: string,
+    _releaseDate: string,
     GENRE_MAX = 4
 
+  // shared
+  _href = item.attributes.url
+  _title1 = item.attributes.artistName
+  _title2 = `“${item.attributes.name}”`
+  _imgSrc = item.attributes.artwork.url.replace('{w}', '800').replace('{h}', '800')
+  _genres = item.attributes.genreNames ?? []
+  _releaseDate = item.attributes.releaseDate.slice(0, 4)
+
   if (type === 'recent-played-tracks') {
-    _href = item.attributes.url
-    _title1 = item.attributes.artistName
-    _title2 = `“${item.attributes.name}”`
     _title3 = `“${item.attributes.albumName}”`
-    _imgSrc = item.attributes.artwork.url.replace('{w}', '800').replace('{h}', '800')
-    _genres = item.attributes.genreNames ?? []
     _alt = `Apologies, this image is dynamically generated from another source. Cannot yet provide vivid details. This is an image of ${item.attributes.artistName}’s album cover for “${item.attributes.name}.”`
   } else {
     GENRE_MAX = 9
-    _href = item.attributes.url
-    _title1 = item.attributes.artistName
-    _title2 = `“${item.attributes.name}”`
     _title3 = `“${item.attributes.name}”`
-    _imgSrc = item.attributes.artwork.url.replace('{w}', '800').replace('{h}', '800')
-    _genres = item.attributes.genreNames ?? []
     _alt = `Apologies, this image is dynamically generated from another source. Cannot yet provide vivid details. This is a photo of ${item.attributes.name}.`
   }
 
@@ -198,10 +197,7 @@ function DataItem({ item, type }: any) {
               </DataList.Label>
               <DataList.Value>
                 <Text size={{ initial: '1', md: '2' }}>
-                  <Code variant="ghost">
-                    {item.attributes.releaseDate.slice(0, 4)}
-                    {/* {item.attributes.releaseDate} */}
-                  </Code>
+                  <Code variant="ghost">{_releaseDate}</Code>
                 </Text>
               </DataList.Value>
             </DataList.Item>
@@ -509,6 +505,7 @@ function DataItems() {
         if (
           [
             'curators',
+            'library-albums',
             'library-music-videos',
             'library-playlists',
             'library-songs',
