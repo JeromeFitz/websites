@@ -844,8 +844,8 @@ importers:
         specifier: 8.3.2
         version: 8.3.2(react@19.1.1)
       '@neondatabase/serverless':
-        specifier: 1.0.1
-        version: 1.0.1
+        specifier: 1.0.2
+        version: 1.0.2
       '@notionhq/client':
         specifier: 4.0.2
         version: 4.0.2
@@ -995,13 +995,13 @@ importers:
         version: 0.31.5
       drizzle-orm:
         specifier: 0.44.5
-        version: 0.44.5(@neondatabase/serverless@1.0.1)(@upstash/redis@1.35.4)(postgres@3.4.7)
+        version: 0.44.5(@neondatabase/serverless@1.0.2)(@upstash/redis@1.35.4)(postgres@3.4.7)
       drizzle-seed:
         specifier: 0.3.1
-        version: 0.3.1(drizzle-orm@0.44.5(@neondatabase/serverless@1.0.1)(@upstash/redis@1.35.4)(postgres@3.4.7))
+        version: 0.3.1(drizzle-orm@0.44.5(@neondatabase/serverless@1.0.2)(@upstash/redis@1.35.4)(postgres@3.4.7))
       drizzle-zod:
         specifier: 0.8.3
-        version: 0.8.3(drizzle-orm@0.44.5(@neondatabase/serverless@1.0.1)(@upstash/redis@1.35.4)(postgres@3.4.7))(zod@4.1.11)
+        version: 0.8.3(drizzle-orm@0.44.5(@neondatabase/serverless@1.0.2)(@upstash/redis@1.35.4)(postgres@3.4.7))(zod@4.1.11)
       emoji-regex:
         specifier: 10.5.0
         version: 10.5.0
@@ -2355,8 +2355,8 @@ packages:
   '@napi-rs/wasm-runtime@1.0.5':
     resolution: {integrity: sha512-TBr9Cf9onSAS2LQ2+QHx6XcC6h9+RIzJgbqG3++9TUZSH204AwEy5jg3BTQ0VATsyoGj4ee49tN/y6rvaOOtcg==}
 
-  '@neondatabase/serverless@1.0.1':
-    resolution: {integrity: sha512-O6yC5TT0jbw86VZVkmnzCZJB0hfxBl0JJz6f+3KHoZabjb/X08r9eFA+vuY06z1/qaovykvdkrXYq3SPUuvogA==}
+  '@neondatabase/serverless@1.0.2':
+    resolution: {integrity: sha512-I5sbpSIAHiB+b6UttofhrN/UJXII+4tZPAq1qugzwCwLIL8EZLV7F/JyHUrEIiGgQpEXzpnjlJ+zwcEhheGvCw==}
     engines: {node: '>=19.0.0'}
 
   '@next/bundle-analyzer@15.5.4':
@@ -4282,9 +4282,6 @@ packages:
 
   '@types/ms@2.1.0':
     resolution: {integrity: sha512-GsCCIZDE/p3i96vtEqx+7dBUGXrc7zeSK3wwPHIaRThS+9OhWIXRqzs4d6k1SVU8g91DrNRWxWUGhp5KXQb2VA==}
-
-  '@types/node@22.15.30':
-    resolution: {integrity: sha512-6Q7lr06bEHdlfplU6YRbgG1SFBdlsfNC4/lX+SkhiTs0cpJkOElmWls8PxDFv4yY/xKb8Y6SO0OmSX4wgqTZbA==}
 
   '@types/node@22.18.3':
     resolution: {integrity: sha512-gTVM8js2twdtqM+AE2PdGEe9zGQY4UvmFjan9rZcVb6FGdStfjWoWejdmy4CfWVO9rh5MiYQGZloKAGkJt8lMw==}
@@ -10452,9 +10449,9 @@ snapshots:
       '@tybys/wasm-util': 0.10.1
     optional: true
 
-  '@neondatabase/serverless@1.0.1':
+  '@neondatabase/serverless@1.0.2':
     dependencies:
-      '@types/node': 22.15.30
+      '@types/node': 22.18.7
       '@types/pg': 8.15.4
 
   '@next/bundle-analyzer@15.5.4':
@@ -13625,10 +13622,6 @@ snapshots:
 
   '@types/ms@2.1.0': {}
 
-  '@types/node@22.15.30':
-    dependencies:
-      undici-types: 6.21.0
-
   '@types/node@22.18.3':
     dependencies:
       undici-types: 6.21.0
@@ -14848,21 +14841,21 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.44.5(@neondatabase/serverless@1.0.1)(@upstash/redis@1.35.4)(postgres@3.4.7):
+  drizzle-orm@0.44.5(@neondatabase/serverless@1.0.2)(@upstash/redis@1.35.4)(postgres@3.4.7):
     optionalDependencies:
-      '@neondatabase/serverless': 1.0.1
+      '@neondatabase/serverless': 1.0.2
       '@upstash/redis': 1.35.4
       postgres: 3.4.7
 
-  drizzle-seed@0.3.1(drizzle-orm@0.44.5(@neondatabase/serverless@1.0.1)(@upstash/redis@1.35.4)(postgres@3.4.7)):
+  drizzle-seed@0.3.1(drizzle-orm@0.44.5(@neondatabase/serverless@1.0.2)(@upstash/redis@1.35.4)(postgres@3.4.7)):
     dependencies:
       pure-rand: 6.1.0
     optionalDependencies:
-      drizzle-orm: 0.44.5(@neondatabase/serverless@1.0.1)(@upstash/redis@1.35.4)(postgres@3.4.7)
+      drizzle-orm: 0.44.5(@neondatabase/serverless@1.0.2)(@upstash/redis@1.35.4)(postgres@3.4.7)
 
-  drizzle-zod@0.8.3(drizzle-orm@0.44.5(@neondatabase/serverless@1.0.1)(@upstash/redis@1.35.4)(postgres@3.4.7))(zod@4.1.11):
+  drizzle-zod@0.8.3(drizzle-orm@0.44.5(@neondatabase/serverless@1.0.2)(@upstash/redis@1.35.4)(postgres@3.4.7))(zod@4.1.11):
     dependencies:
-      drizzle-orm: 0.44.5(@neondatabase/serverless@1.0.1)(@upstash/redis@1.35.4)(postgres@3.4.7)
+      drizzle-orm: 0.44.5(@neondatabase/serverless@1.0.2)(@upstash/redis@1.35.4)(postgres@3.4.7)
       zod: 4.1.11
 
   dts-resolver@2.1.2: {}
