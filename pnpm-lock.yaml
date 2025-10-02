@@ -45,7 +45,7 @@ importers:
         version: 3.1.13(lodash@4.17.21)
       '@jeromefitz/semantic':
         specifier: 11.1.8
-        version: 11.1.8(@jeromefitz/conventional-gitmoji@4.0.20(lodash@4.17.21))(typescript@5.9.2)
+        version: 11.1.8(@jeromefitz/conventional-gitmoji@4.0.20(lodash@4.17.21))(typescript@5.9.3)
       '@jeromefitz/tsconfig':
         specifier: 2.1.0
         version: 2.1.0
@@ -72,22 +72,22 @@ importers:
         version: 1.1.1
       semantic-release:
         specifier: 24.2.9
-        version: 24.2.9(typescript@5.9.2)
+        version: 24.2.9(typescript@5.9.3)
       syncpack:
         specifier: 14.0.0-alpha.23
         version: 14.0.0-alpha.23
       ts-node:
         specifier: 10.9.2
-        version: 10.9.2(@types/node@22.18.8)(typescript@5.9.2)
+        version: 10.9.2(@types/node@22.18.8)(typescript@5.9.3)
       tsdown:
         specifier: 0.15.6
-        version: 0.15.6(typescript@5.9.2)
+        version: 0.15.6(typescript@5.9.3)
       turbo:
         specifier: 2.5.8
         version: 2.5.8
       typescript:
-        specifier: 5.9.2
-        version: 5.9.2
+        specifier: 5.9.3
+        version: 5.9.3
 
   packages/design-system:
     dependencies:
@@ -238,7 +238,7 @@ importers:
         version: 3.2.4(vitest@3.2.4)
       eslint-plugin-storybook:
         specifier: 9.1.10
-        version: 9.1.10(typescript@5.9.2)
+        version: 9.1.10(typescript@5.9.3)
       next:
         specifier: 15.5.4
         version: 15.5.4(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
@@ -250,7 +250,7 @@ importers:
         version: 19.1.1(react@19.1.1)
       vite-plugin-svgr:
         specifier: 4.5.0
-        version: 4.5.0(typescript@5.9.2)
+        version: 4.5.0(typescript@5.9.3)
       vitest:
         specifier: 3.2.4
         version: 3.2.4(@types/node@22.18.8)(@vitest/browser@3.2.4)
@@ -448,10 +448,10 @@ importers:
         version: 9.1.8(storybook@9.1.8)
       '@storybook/nextjs':
         specifier: 9.1.8
-        version: 9.1.8(next@15.5.4(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(storybook@9.1.8)(typescript@5.9.2)(webpack@5.102.0)
+        version: 9.1.8(next@15.5.4(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(storybook@9.1.8)(typescript@5.9.3)(webpack@5.102.0)
       '@storybook/react':
         specifier: 9.1.8
-        version: 9.1.8(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(storybook@9.1.8)(typescript@5.9.2)
+        version: 9.1.8(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(storybook@9.1.8)(typescript@5.9.3)
       '@storybook/testing-library':
         specifier: 0.2.2
         version: 0.2.2
@@ -772,7 +772,7 @@ importers:
         version: 4.0.1
       ts-node:
         specifier: 10.9.2
-        version: 10.9.2(@types/node@22.18.8)(typescript@5.9.2)
+        version: 10.9.2(@types/node@22.18.8)(typescript@5.9.3)
       unfetch:
         specifier: ^4.2.0
         version: 4.2.0
@@ -1148,8 +1148,8 @@ importers:
         specifier: 1.4.0
         version: 1.4.0
       typescript:
-        specifier: 5.9.2
-        version: 5.9.2
+        specifier: 5.9.3
+        version: 5.9.3
       vitest:
         specifier: 3.2.4
         version: 3.2.4(@types/node@22.18.8)
@@ -8752,8 +8752,8 @@ packages:
   types-ramda@0.31.0:
     resolution: {integrity: sha512-vaoC35CRC3xvL8Z6HkshDbi6KWM1ezK0LHN0YyxXWUn9HKzBNg/T3xSGlJZjCYspnOD3jE7bcizsp0bUXZDxnQ==}
 
-  typescript@5.9.2:
-    resolution: {integrity: sha512-CWBzXQrc/qOkhidw1OzBTQuYRbfyxDXJMVJ1XNwUHGROVmuaeiEm3OslpZ1RV96d7SKKjZKrSJu3+t/xlw3R9A==}
+  typescript@5.9.3:
+    resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
     engines: {node: '>=14.17'}
     hasBin: true
 
@@ -10378,12 +10378,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@jeromefitz/semantic@11.1.8(@jeromefitz/conventional-gitmoji@4.0.20(lodash@4.17.21))(typescript@5.9.2)':
+  '@jeromefitz/semantic@11.1.8(@jeromefitz/conventional-gitmoji@4.0.20(lodash@4.17.21))(typescript@5.9.3)':
     dependencies:
       '@jeromefitz/conventional-gitmoji': 4.0.20(lodash@4.17.21)
-      '@semantic-release/commit-analyzer': 13.0.1(patch_hash=12f29c0334ee55892c4c4d3dc4d9e1f0f18476656fb8c3c462a6203bc740493b)(semantic-release@24.2.7(typescript@5.9.2))
-      '@semantic-release/git': 10.0.1(semantic-release@24.2.7(typescript@5.9.2))
-      semantic-release: 24.2.7(typescript@5.9.2)
+      '@semantic-release/commit-analyzer': 13.0.1(patch_hash=12f29c0334ee55892c4c4d3dc4d9e1f0f18476656fb8c3c462a6203bc740493b)(semantic-release@24.2.7(typescript@5.9.3))
+      '@semantic-release/git': 10.0.1(semantic-release@24.2.7(typescript@5.9.3))
+      semantic-release: 24.2.7(typescript@5.9.3)
       semantic-release-commit-filter: 1.0.2
       title: 4.0.1
     transitivePeerDependencies:
@@ -12980,7 +12980,7 @@ snapshots:
 
   '@sec-ant/readable-stream@0.4.1': {}
 
-  '@semantic-release/commit-analyzer@13.0.1(patch_hash=12f29c0334ee55892c4c4d3dc4d9e1f0f18476656fb8c3c462a6203bc740493b)(semantic-release@24.2.7(typescript@5.9.2))':
+  '@semantic-release/commit-analyzer@13.0.1(patch_hash=12f29c0334ee55892c4c4d3dc4d9e1f0f18476656fb8c3c462a6203bc740493b)(semantic-release@24.2.7(typescript@5.9.3))':
     dependencies:
       conventional-changelog-angular: 8.0.0
       conventional-changelog-writer: 8.1.0
@@ -12990,11 +12990,11 @@ snapshots:
       import-from-esm: 2.0.0
       lodash-es: 4.17.21
       micromatch: 4.0.8
-      semantic-release: 24.2.7(typescript@5.9.2)
+      semantic-release: 24.2.7(typescript@5.9.3)
     transitivePeerDependencies:
       - supports-color
 
-  '@semantic-release/commit-analyzer@13.0.1(patch_hash=12f29c0334ee55892c4c4d3dc4d9e1f0f18476656fb8c3c462a6203bc740493b)(semantic-release@24.2.9(typescript@5.9.2))':
+  '@semantic-release/commit-analyzer@13.0.1(patch_hash=12f29c0334ee55892c4c4d3dc4d9e1f0f18476656fb8c3c462a6203bc740493b)(semantic-release@24.2.9(typescript@5.9.3))':
     dependencies:
       conventional-changelog-angular: 8.0.0
       conventional-changelog-writer: 8.1.0
@@ -13004,7 +13004,7 @@ snapshots:
       import-from-esm: 2.0.0
       lodash-es: 4.17.21
       micromatch: 4.0.8
-      semantic-release: 24.2.9(typescript@5.9.2)
+      semantic-release: 24.2.9(typescript@5.9.3)
     transitivePeerDependencies:
       - supports-color
 
@@ -13012,7 +13012,7 @@ snapshots:
 
   '@semantic-release/error@4.0.0': {}
 
-  '@semantic-release/git@10.0.1(semantic-release@24.2.7(typescript@5.9.2))':
+  '@semantic-release/git@10.0.1(semantic-release@24.2.7(typescript@5.9.3))':
     dependencies:
       '@semantic-release/error': 3.0.0
       aggregate-error: 3.1.0
@@ -13022,11 +13022,11 @@ snapshots:
       lodash: 4.17.21
       micromatch: 4.0.8
       p-reduce: 2.1.0
-      semantic-release: 24.2.7(typescript@5.9.2)
+      semantic-release: 24.2.7(typescript@5.9.3)
     transitivePeerDependencies:
       - supports-color
 
-  '@semantic-release/github@11.0.3(semantic-release@24.2.7(typescript@5.9.2))':
+  '@semantic-release/github@11.0.3(semantic-release@24.2.7(typescript@5.9.3))':
     dependencies:
       '@octokit/core': 7.0.5
       '@octokit/plugin-paginate-rest': 13.0.1(@octokit/core@7.0.5)
@@ -13043,12 +13043,12 @@ snapshots:
       lodash-es: 4.17.21
       mime: 4.0.7
       p-filter: 4.1.0
-      semantic-release: 24.2.7(typescript@5.9.2)
+      semantic-release: 24.2.7(typescript@5.9.3)
       url-join: 5.0.0
     transitivePeerDependencies:
       - supports-color
 
-  '@semantic-release/github@11.0.3(semantic-release@24.2.9(typescript@5.9.2))':
+  '@semantic-release/github@11.0.3(semantic-release@24.2.9(typescript@5.9.3))':
     dependencies:
       '@octokit/core': 7.0.5
       '@octokit/plugin-paginate-rest': 13.0.1(@octokit/core@7.0.5)
@@ -13065,12 +13065,12 @@ snapshots:
       lodash-es: 4.17.21
       mime: 4.0.7
       p-filter: 4.1.0
-      semantic-release: 24.2.9(typescript@5.9.2)
+      semantic-release: 24.2.9(typescript@5.9.3)
       url-join: 5.0.0
     transitivePeerDependencies:
       - supports-color
 
-  '@semantic-release/npm@12.0.2(semantic-release@24.2.7(typescript@5.9.2))':
+  '@semantic-release/npm@12.0.2(semantic-release@24.2.7(typescript@5.9.3))':
     dependencies:
       '@semantic-release/error': 4.0.0
       aggregate-error: 5.0.0
@@ -13083,11 +13083,11 @@ snapshots:
       rc: 1.2.8
       read-pkg: 9.0.1
       registry-auth-token: 5.1.0
-      semantic-release: 24.2.7(typescript@5.9.2)
+      semantic-release: 24.2.7(typescript@5.9.3)
       semver: 7.7.2
       tempy: 3.1.0
 
-  '@semantic-release/npm@12.0.2(semantic-release@24.2.9(typescript@5.9.2))':
+  '@semantic-release/npm@12.0.2(semantic-release@24.2.9(typescript@5.9.3))':
     dependencies:
       '@semantic-release/error': 4.0.0
       aggregate-error: 5.0.0
@@ -13100,11 +13100,11 @@ snapshots:
       rc: 1.2.8
       read-pkg: 9.0.1
       registry-auth-token: 5.1.0
-      semantic-release: 24.2.9(typescript@5.9.2)
+      semantic-release: 24.2.9(typescript@5.9.3)
       semver: 7.7.2
       tempy: 3.1.0
 
-  '@semantic-release/release-notes-generator@14.0.3(semantic-release@24.2.7(typescript@5.9.2))':
+  '@semantic-release/release-notes-generator@14.0.3(semantic-release@24.2.7(typescript@5.9.3))':
     dependencies:
       conventional-changelog-angular: 8.0.0
       conventional-changelog-writer: 8.1.0
@@ -13116,11 +13116,11 @@ snapshots:
       into-stream: 7.0.0
       lodash-es: 4.17.21
       read-package-up: 11.0.0
-      semantic-release: 24.2.7(typescript@5.9.2)
+      semantic-release: 24.2.7(typescript@5.9.3)
     transitivePeerDependencies:
       - supports-color
 
-  '@semantic-release/release-notes-generator@14.0.3(semantic-release@24.2.9(typescript@5.9.2))':
+  '@semantic-release/release-notes-generator@14.0.3(semantic-release@24.2.9(typescript@5.9.3))':
     dependencies:
       conventional-changelog-angular: 8.0.0
       conventional-changelog-writer: 8.1.0
@@ -13132,7 +13132,7 @@ snapshots:
       into-stream: 7.0.0
       lodash-es: 4.17.21
       read-package-up: 11.0.0
-      semantic-release: 24.2.9(typescript@5.9.2)
+      semantic-release: 24.2.9(typescript@5.9.3)
     transitivePeerDependencies:
       - supports-color
 
@@ -13172,14 +13172,14 @@ snapshots:
       storybook: 9.1.8
       ts-dedent: 2.2.0
 
-  '@storybook/builder-webpack5@9.1.8(storybook@9.1.8)(typescript@5.9.2)':
+  '@storybook/builder-webpack5@9.1.8(storybook@9.1.8)(typescript@5.9.3)':
     dependencies:
       '@storybook/core-webpack': 9.1.8(storybook@9.1.8)
       case-sensitive-paths-webpack-plugin: 2.4.0
       cjs-module-lexer: 1.4.3
       css-loader: 6.11.0(webpack@5.102.0)
       es-module-lexer: 1.7.0
-      fork-ts-checker-webpack-plugin: 8.0.0(typescript@5.9.2)(webpack@5.102.0)
+      fork-ts-checker-webpack-plugin: 8.0.0(typescript@5.9.3)(webpack@5.102.0)
       html-webpack-plugin: 5.6.3(webpack@5.102.0)
       magic-string: 0.30.19
       storybook: 9.1.8
@@ -13191,7 +13191,7 @@ snapshots:
       webpack-hot-middleware: 2.26.1
       webpack-virtual-modules: 0.6.2
     optionalDependencies:
-      typescript: 5.9.2
+      typescript: 5.9.3
     transitivePeerDependencies:
       - '@rspack/core'
       - '@swc/core'
@@ -13215,7 +13215,7 @@ snapshots:
       react: 19.1.1
       react-dom: 19.1.1(react@19.1.1)
 
-  '@storybook/nextjs@9.1.8(next@15.5.4(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(storybook@9.1.8)(typescript@5.9.2)(webpack@5.102.0)':
+  '@storybook/nextjs@9.1.8(next@15.5.4(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(storybook@9.1.8)(typescript@5.9.3)(webpack@5.102.0)':
     dependencies:
       '@babel/core': 7.28.4
       '@babel/plugin-syntax-bigint': 7.8.3(@babel/core@7.28.4)
@@ -13231,9 +13231,9 @@ snapshots:
       '@babel/preset-typescript': 7.27.1(@babel/core@7.28.4)
       '@babel/runtime': 7.28.4
       '@pmmmwh/react-refresh-webpack-plugin': 0.5.16(react-refresh@0.14.2)(webpack@5.102.0)
-      '@storybook/builder-webpack5': 9.1.8(storybook@9.1.8)(typescript@5.9.2)
-      '@storybook/preset-react-webpack': 9.1.8(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(storybook@9.1.8)(typescript@5.9.2)
-      '@storybook/react': 9.1.8(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(storybook@9.1.8)(typescript@5.9.2)
+      '@storybook/builder-webpack5': 9.1.8(storybook@9.1.8)(typescript@5.9.3)
+      '@storybook/preset-react-webpack': 9.1.8(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(storybook@9.1.8)(typescript@5.9.3)
+      '@storybook/react': 9.1.8(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(storybook@9.1.8)(typescript@5.9.3)
       '@types/semver': 7.7.0
       babel-loader: 9.2.1(@babel/core@7.28.4)(webpack@5.102.0)
       css-loader: 6.11.0(webpack@5.102.0)
@@ -13242,7 +13242,7 @@ snapshots:
       next: 15.5.4(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       node-polyfill-webpack-plugin: 2.0.1(webpack@5.102.0)
       postcss: 8.5.6
-      postcss-loader: 8.1.1(postcss@8.5.6)(typescript@5.9.2)(webpack@5.102.0)
+      postcss-loader: 8.1.1(postcss@8.5.6)(typescript@5.9.3)(webpack@5.102.0)
       react: 19.1.1
       react-dom: 19.1.1(react@19.1.1)
       react-refresh: 0.14.2
@@ -13255,7 +13255,7 @@ snapshots:
       tsconfig-paths: 4.2.0
       tsconfig-paths-webpack-plugin: 4.2.0
     optionalDependencies:
-      typescript: 5.9.2
+      typescript: 5.9.3
       webpack: 5.102.0
     transitivePeerDependencies:
       - '@rspack/core'
@@ -13275,10 +13275,10 @@ snapshots:
       - webpack-hot-middleware
       - webpack-plugin-serve
 
-  '@storybook/preset-react-webpack@9.1.8(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(storybook@9.1.8)(typescript@5.9.2)':
+  '@storybook/preset-react-webpack@9.1.8(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(storybook@9.1.8)(typescript@5.9.3)':
     dependencies:
       '@storybook/core-webpack': 9.1.8(storybook@9.1.8)
-      '@storybook/react-docgen-typescript-plugin': 1.0.6--canary.9.0c3f3b7.0(typescript@5.9.2)(webpack@5.102.0)
+      '@storybook/react-docgen-typescript-plugin': 1.0.6--canary.9.0c3f3b7.0(typescript@5.9.3)(webpack@5.102.0)
       '@types/semver': 7.7.0
       find-up: 7.0.0
       magic-string: 0.30.19
@@ -13291,7 +13291,7 @@ snapshots:
       tsconfig-paths: 4.2.0
       webpack: 5.102.0
     optionalDependencies:
-      typescript: 5.9.2
+      typescript: 5.9.3
     transitivePeerDependencies:
       - '@swc/core'
       - esbuild
@@ -13299,16 +13299,16 @@ snapshots:
       - uglify-js
       - webpack-cli
 
-  '@storybook/react-docgen-typescript-plugin@1.0.6--canary.9.0c3f3b7.0(typescript@5.9.2)(webpack@5.102.0)':
+  '@storybook/react-docgen-typescript-plugin@1.0.6--canary.9.0c3f3b7.0(typescript@5.9.3)(webpack@5.102.0)':
     dependencies:
       debug: 4.4.3
       endent: 2.1.0
       find-cache-dir: 3.3.2
       flat-cache: 3.2.0
       micromatch: 4.0.8
-      react-docgen-typescript: 2.2.2(typescript@5.9.2)
+      react-docgen-typescript: 2.2.2(typescript@5.9.3)
       tslib: 2.8.1
-      typescript: 5.9.2
+      typescript: 5.9.3
       webpack: 5.102.0
     transitivePeerDependencies:
       - supports-color
@@ -13324,7 +13324,7 @@ snapshots:
       react-dom: 19.1.1(react@19.1.1)
       storybook: 9.1.8
 
-  '@storybook/react@9.1.8(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(storybook@9.1.8)(typescript@5.9.2)':
+  '@storybook/react@9.1.8(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(storybook@9.1.8)(typescript@5.9.3)':
     dependencies:
       '@storybook/global': 5.0.0
       '@storybook/react-dom-shim': 9.1.8(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(storybook@9.1.8)
@@ -13332,7 +13332,7 @@ snapshots:
       react-dom: 19.1.1(react@19.1.1)
       storybook: 9.1.8
     optionalDependencies:
-      typescript: 5.9.2
+      typescript: 5.9.3
 
   '@storybook/testing-library@0.2.2':
     dependencies:
@@ -13384,12 +13384,12 @@ snapshots:
       '@svgr/babel-plugin-transform-react-native-svg': 8.1.0(@babel/core@7.28.4)
       '@svgr/babel-plugin-transform-svg-component': 8.0.0(@babel/core@7.28.4)
 
-  '@svgr/core@8.1.0(typescript@5.9.2)':
+  '@svgr/core@8.1.0(typescript@5.9.3)':
     dependencies:
       '@babel/core': 7.28.4
       '@svgr/babel-preset': 8.1.0(@babel/core@7.28.4)
       camelcase: 6.3.0
-      cosmiconfig: 8.3.6(typescript@5.9.2)
+      cosmiconfig: 8.3.6(typescript@5.9.3)
       snake-case: 3.0.4
     transitivePeerDependencies:
       - supports-color
@@ -13400,11 +13400,11 @@ snapshots:
       '@babel/types': 7.28.4
       entities: 4.5.0
 
-  '@svgr/plugin-jsx@8.1.0(@svgr/core@8.1.0(typescript@5.9.2))':
+  '@svgr/plugin-jsx@8.1.0(@svgr/core@8.1.0(typescript@5.9.3))':
     dependencies:
       '@babel/core': 7.28.4
       '@svgr/babel-preset': 8.1.0(@babel/core@7.28.4)
-      '@svgr/core': 8.1.0(typescript@5.9.2)
+      '@svgr/core': 8.1.0(typescript@5.9.3)
       '@svgr/hast-util-to-babel-ast': 8.0.0
       svg-parser: 2.0.4
     transitivePeerDependencies:
@@ -13681,12 +13681,12 @@ snapshots:
     dependencies:
       '@types/node': 22.18.3
 
-  '@typescript-eslint/project-service@8.41.0(typescript@5.9.2)':
+  '@typescript-eslint/project-service@8.41.0(typescript@5.9.3)':
     dependencies:
-      '@typescript-eslint/tsconfig-utils': 8.41.0(typescript@5.9.2)
+      '@typescript-eslint/tsconfig-utils': 8.41.0(typescript@5.9.3)
       '@typescript-eslint/types': 8.41.0
       debug: 4.4.3
-      typescript: 5.9.2
+      typescript: 5.9.3
     transitivePeerDependencies:
       - supports-color
 
@@ -13695,16 +13695,16 @@ snapshots:
       '@typescript-eslint/types': 8.41.0
       '@typescript-eslint/visitor-keys': 8.41.0
 
-  '@typescript-eslint/tsconfig-utils@8.41.0(typescript@5.9.2)':
+  '@typescript-eslint/tsconfig-utils@8.41.0(typescript@5.9.3)':
     dependencies:
-      typescript: 5.9.2
+      typescript: 5.9.3
 
   '@typescript-eslint/types@8.41.0': {}
 
-  '@typescript-eslint/typescript-estree@8.41.0(typescript@5.9.2)':
+  '@typescript-eslint/typescript-estree@8.41.0(typescript@5.9.3)':
     dependencies:
-      '@typescript-eslint/project-service': 8.41.0(typescript@5.9.2)
-      '@typescript-eslint/tsconfig-utils': 8.41.0(typescript@5.9.2)
+      '@typescript-eslint/project-service': 8.41.0(typescript@5.9.3)
+      '@typescript-eslint/tsconfig-utils': 8.41.0(typescript@5.9.3)
       '@typescript-eslint/types': 8.41.0
       '@typescript-eslint/visitor-keys': 8.41.0
       debug: 4.4.3
@@ -13712,18 +13712,18 @@ snapshots:
       is-glob: 4.0.3
       minimatch: 9.0.5
       semver: 7.7.2
-      ts-api-utils: 2.1.0(typescript@5.9.2)
-      typescript: 5.9.2
+      ts-api-utils: 2.1.0(typescript@5.9.3)
+      typescript: 5.9.3
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/utils@8.41.0(typescript@5.9.2)':
+  '@typescript-eslint/utils@8.41.0(typescript@5.9.3)':
     dependencies:
       '@eslint-community/eslint-utils': 4.7.0
       '@typescript-eslint/scope-manager': 8.41.0
       '@typescript-eslint/types': 8.41.0
-      '@typescript-eslint/typescript-estree': 8.41.0(typescript@5.9.2)
-      typescript: 5.9.2
+      '@typescript-eslint/typescript-estree': 8.41.0(typescript@5.9.3)
+      typescript: 5.9.3
     transitivePeerDependencies:
       - supports-color
 
@@ -14491,23 +14491,23 @@ snapshots:
       path-type: 4.0.0
       yaml: 1.10.2
 
-  cosmiconfig@8.3.6(typescript@5.9.2):
+  cosmiconfig@8.3.6(typescript@5.9.3):
     dependencies:
       import-fresh: 3.3.1
       js-yaml: 4.1.0
       parse-json: 5.2.0
       path-type: 4.0.0
     optionalDependencies:
-      typescript: 5.9.2
+      typescript: 5.9.3
 
-  cosmiconfig@9.0.0(typescript@5.9.2):
+  cosmiconfig@9.0.0(typescript@5.9.3):
     dependencies:
       env-paths: 2.2.1
       import-fresh: 3.3.1
       js-yaml: 4.1.0
       parse-json: 5.2.0
     optionalDependencies:
-      typescript: 5.9.2
+      typescript: 5.9.3
 
   create-ecdh@4.0.4:
     dependencies:
@@ -15039,9 +15039,9 @@ snapshots:
 
   escape-string-regexp@5.0.0: {}
 
-  eslint-plugin-storybook@9.1.10(typescript@5.9.2):
+  eslint-plugin-storybook@9.1.10(typescript@5.9.3):
     dependencies:
-      '@typescript-eslint/utils': 8.41.0(typescript@5.9.2)
+      '@typescript-eslint/utils': 8.41.0(typescript@5.9.3)
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -15232,7 +15232,7 @@ snapshots:
     dependencies:
       is-callable: 1.2.7
 
-  fork-ts-checker-webpack-plugin@8.0.0(typescript@5.9.2)(webpack@5.102.0):
+  fork-ts-checker-webpack-plugin@8.0.0(typescript@5.9.3)(webpack@5.102.0):
     dependencies:
       '@babel/code-frame': 7.27.1
       chalk: 4.1.2
@@ -15246,7 +15246,7 @@ snapshots:
       schema-utils: 3.3.0
       semver: 7.7.2
       tapable: 2.2.2
-      typescript: 5.9.2
+      typescript: 5.9.3
       webpack: 5.102.0
 
   formdata-polyfill@4.0.10:
@@ -16702,9 +16702,9 @@ snapshots:
     dependencies:
       postcss: 8.5.6
 
-  postcss-loader@8.1.1(postcss@8.5.6)(typescript@5.9.2)(webpack@5.102.0):
+  postcss-loader@8.1.1(postcss@8.5.6)(typescript@5.9.3)(webpack@5.102.0):
     dependencies:
-      cosmiconfig: 9.0.0(typescript@5.9.2)
+      cosmiconfig: 9.0.0(typescript@5.9.3)
       jiti: 1.21.7
       postcss: 8.5.6
       semver: 7.7.2
@@ -17116,9 +17116,9 @@ snapshots:
       minimist: 1.2.8
       strip-json-comments: 2.0.1
 
-  react-docgen-typescript@2.2.2(typescript@5.9.2):
+  react-docgen-typescript@2.2.2(typescript@5.9.3):
     dependencies:
-      typescript: 5.9.2
+      typescript: 5.9.3
 
   react-docgen@7.1.1:
     dependencies:
@@ -17396,7 +17396,7 @@ snapshots:
       hash-base: 3.0.5
       inherits: 2.0.4
 
-  rolldown-plugin-dts@0.16.8(rolldown@1.0.0-beta.41)(typescript@5.9.2):
+  rolldown-plugin-dts@0.16.8(rolldown@1.0.0-beta.41)(typescript@5.9.3):
     dependencies:
       '@babel/generator': 7.28.3
       '@babel/parser': 7.28.4
@@ -17409,7 +17409,7 @@ snapshots:
       magic-string: 0.30.19
       rolldown: 1.0.0-beta.41
     optionalDependencies:
-      typescript: 5.9.2
+      typescript: 5.9.3
     transitivePeerDependencies:
       - oxc-resolver
       - supports-color
@@ -17521,15 +17521,15 @@ snapshots:
 
   semantic-release-commit-filter@1.0.2: {}
 
-  semantic-release@24.2.7(typescript@5.9.2):
+  semantic-release@24.2.7(typescript@5.9.3):
     dependencies:
-      '@semantic-release/commit-analyzer': 13.0.1(patch_hash=12f29c0334ee55892c4c4d3dc4d9e1f0f18476656fb8c3c462a6203bc740493b)(semantic-release@24.2.7(typescript@5.9.2))
+      '@semantic-release/commit-analyzer': 13.0.1(patch_hash=12f29c0334ee55892c4c4d3dc4d9e1f0f18476656fb8c3c462a6203bc740493b)(semantic-release@24.2.7(typescript@5.9.3))
       '@semantic-release/error': 4.0.0
-      '@semantic-release/github': 11.0.3(semantic-release@24.2.7(typescript@5.9.2))
-      '@semantic-release/npm': 12.0.2(semantic-release@24.2.7(typescript@5.9.2))
-      '@semantic-release/release-notes-generator': 14.0.3(semantic-release@24.2.7(typescript@5.9.2))
+      '@semantic-release/github': 11.0.3(semantic-release@24.2.7(typescript@5.9.3))
+      '@semantic-release/npm': 12.0.2(semantic-release@24.2.7(typescript@5.9.3))
+      '@semantic-release/release-notes-generator': 14.0.3(semantic-release@24.2.7(typescript@5.9.3))
       aggregate-error: 5.0.0
-      cosmiconfig: 9.0.0(typescript@5.9.2)
+      cosmiconfig: 9.0.0(typescript@5.9.3)
       debug: 4.4.3
       env-ci: 11.1.1
       execa: 9.6.0
@@ -17556,15 +17556,15 @@ snapshots:
       - supports-color
       - typescript
 
-  semantic-release@24.2.9(typescript@5.9.2):
+  semantic-release@24.2.9(typescript@5.9.3):
     dependencies:
-      '@semantic-release/commit-analyzer': 13.0.1(patch_hash=12f29c0334ee55892c4c4d3dc4d9e1f0f18476656fb8c3c462a6203bc740493b)(semantic-release@24.2.9(typescript@5.9.2))
+      '@semantic-release/commit-analyzer': 13.0.1(patch_hash=12f29c0334ee55892c4c4d3dc4d9e1f0f18476656fb8c3c462a6203bc740493b)(semantic-release@24.2.9(typescript@5.9.3))
       '@semantic-release/error': 4.0.0
-      '@semantic-release/github': 11.0.3(semantic-release@24.2.9(typescript@5.9.2))
-      '@semantic-release/npm': 12.0.2(semantic-release@24.2.9(typescript@5.9.2))
-      '@semantic-release/release-notes-generator': 14.0.3(semantic-release@24.2.9(typescript@5.9.2))
+      '@semantic-release/github': 11.0.3(semantic-release@24.2.9(typescript@5.9.3))
+      '@semantic-release/npm': 12.0.2(semantic-release@24.2.9(typescript@5.9.3))
+      '@semantic-release/release-notes-generator': 14.0.3(semantic-release@24.2.9(typescript@5.9.3))
       aggregate-error: 5.0.0
-      cosmiconfig: 9.0.0(typescript@5.9.2)
+      cosmiconfig: 9.0.0(typescript@5.9.3)
       debug: 4.4.3
       env-ci: 11.1.1
       execa: 9.6.0
@@ -18100,15 +18100,15 @@ snapshots:
 
   tree-kill@1.2.2: {}
 
-  ts-api-utils@2.1.0(typescript@5.9.2):
+  ts-api-utils@2.1.0(typescript@5.9.3):
     dependencies:
-      typescript: 5.9.2
+      typescript: 5.9.3
 
   ts-dedent@2.2.0: {}
 
   ts-easing@0.2.0: {}
 
-  ts-node@10.9.2(@types/node@22.18.8)(typescript@5.9.2):
+  ts-node@10.9.2(@types/node@22.18.8)(typescript@5.9.3):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       '@tsconfig/node10': 1.0.11
@@ -18122,7 +18122,7 @@ snapshots:
       create-require: 1.1.1
       diff: 4.0.2
       make-error: 1.3.6
-      typescript: 5.9.2
+      typescript: 5.9.3
       v8-compile-cache-lib: 3.0.1
       yn: 3.1.1
 
@@ -18141,7 +18141,7 @@ snapshots:
       minimist: 1.2.8
       strip-bom: 3.0.0
 
-  tsdown@0.15.6(typescript@5.9.2):
+  tsdown@0.15.6(typescript@5.9.3):
     dependencies:
       ansis: 4.2.0
       cac: 6.7.14
@@ -18151,14 +18151,14 @@ snapshots:
       empathic: 2.0.0
       hookable: 5.5.3
       rolldown: 1.0.0-beta.41
-      rolldown-plugin-dts: 0.16.8(rolldown@1.0.0-beta.41)(typescript@5.9.2)
+      rolldown-plugin-dts: 0.16.8(rolldown@1.0.0-beta.41)(typescript@5.9.3)
       semver: 7.7.2
       tinyexec: 1.0.1
       tinyglobby: 0.2.15
       tree-kill: 1.2.2
       unconfig: 7.3.3
     optionalDependencies:
-      typescript: 5.9.2
+      typescript: 5.9.3
     transitivePeerDependencies:
       - '@ts-macro/tsc'
       - '@typescript/native-preview'
@@ -18222,7 +18222,7 @@ snapshots:
     dependencies:
       ts-toolbelt: 9.6.0
 
-  typescript@5.9.2: {}
+  typescript@5.9.3: {}
 
   ufo@1.6.1: {}
 
@@ -18394,11 +18394,11 @@ snapshots:
       - tsx
       - yaml
 
-  vite-plugin-svgr@4.5.0(typescript@5.9.2):
+  vite-plugin-svgr@4.5.0(typescript@5.9.3):
     dependencies:
       '@rollup/pluginutils': 5.3.0
-      '@svgr/core': 8.1.0(typescript@5.9.2)
-      '@svgr/plugin-jsx': 8.1.0(@svgr/core@8.1.0(typescript@5.9.2))
+      '@svgr/core': 8.1.0(typescript@5.9.3)
+      '@svgr/plugin-jsx': 8.1.0(@svgr/core@8.1.0(typescript@5.9.3))
     transitivePeerDependencies:
       - rollup
       - supports-color
