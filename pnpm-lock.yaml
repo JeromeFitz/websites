@@ -1081,8 +1081,8 @@ importers:
         specifier: 1.0.9
         version: 1.0.9
       virtua:
-        specifier: 0.44.3
-        version: 0.44.3(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        specifier: 0.45.1
+        version: 0.45.1(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       xml2js:
         specifier: 0.6.2
         version: 0.6.2
@@ -8967,8 +8967,8 @@ packages:
   validate-npm-package-license@3.0.4:
     resolution: {integrity: sha512-DpKm2Ui/xN7/HQKCtpZxoRWBhZ9Z0kqtygG8XCgNQ8ZlDnxuQmWhj566j8fN4Cu3/JmbhsDo7fcAJq4s9h27Ew==}
 
-  virtua@0.44.3:
-    resolution: {integrity: sha512-KAuFPMOTW/zhnnu+3jMhAzpPnxwrE00jTwnlLJzgv5DeeQ0quEgXtUW6Wf+/z1erlItmfersBjazjC1Q6roZvA==}
+  virtua@0.45.1:
+    resolution: {integrity: sha512-6zVzJXz+YW/mYF3aLrGk+P2ptGIf7ppVuqLcnyysIPdJM9kW9dJrvaWqEhIl0+xvPJjHScZRJPaWDwC3CVrWRg==}
     peerDependencies:
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
@@ -18411,7 +18411,7 @@ snapshots:
       spdx-correct: 3.2.0
       spdx-expression-parse: 3.0.1
 
-  virtua@0.44.3(react-dom@19.2.0(react@19.2.0))(react@19.2.0):
+  virtua@0.45.1(react-dom@19.2.0(react@19.2.0))(react@19.2.0):
     optionalDependencies:
       react: 19.2.0
       react-dom: 19.2.0(react@19.2.0)
