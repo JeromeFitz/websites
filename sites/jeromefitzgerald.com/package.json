@@ -47,7 +47,7 @@
     "@heroicons/react": "2.2.0",
     "@jeromefitz/spotify": "4.2.6",
     "@jeromefitz/utils": "3.1.7",
-    "@mantine/hooks": "8.3.3",
+    "@mantine/hooks": "8.3.4",
     "@neondatabase/serverless": "1.0.2",
     "@notionhq/client": "4.0.2",
     "@radix-ui/colors": "3.0.0",
