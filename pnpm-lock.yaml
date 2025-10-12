@@ -675,8 +675,8 @@ importers:
         specifier: 3.2.1
         version: 3.2.1(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@tanem/react-nprogress':
-        specifier: 5.0.55
-        version: 5.0.55(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        specifier: 5.0.56
+        version: 5.0.56(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@upstash/ratelimit':
         specifier: 2.0.6
         version: 2.0.6(@upstash/redis@1.35.5)
@@ -964,8 +964,8 @@ importers:
         specifier: 3.2.1
         version: 3.2.1(@types/react-dom@19.2.1(@types/react@19.2.2))(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@tanem/react-nprogress':
-        specifier: 5.0.55
-        version: 5.0.55(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        specifier: 5.0.56
+        version: 5.0.56(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@upstash/ratelimit':
         specifier: 2.0.6
         version: 2.0.6(@upstash/redis@1.35.5)
@@ -4190,8 +4190,8 @@ packages:
     peerDependencies:
       tailwindcss: '>=3.0.0 || insiders || >=4.0.0-alpha.20 || >=4.0.0-beta.1'
 
-  '@tanem/react-nprogress@5.0.55':
-    resolution: {integrity: sha512-Y9Ywyr/5T7P8PB19DOoIHmTfDAFJ07lEo/KsGBAuHnWMP6XGgAnxzakfLR9j+mxPP3aFP464Hl4/WQsY0MfIgg==}
+  '@tanem/react-nprogress@5.0.56':
+    resolution: {integrity: sha512-OI5rXB6jxC/RLJqnIuaKNXu3qQ6Lf3+g1HqkqGz01E25iV3pZFYBihMdGsEeg/4pAm0O7xo/umcAA3jsdeibHA==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
@@ -13521,7 +13521,7 @@ snapshots:
       postcss-selector-parser: 6.0.10
       tailwindcss: 4.1.14
 
-  '@tanem/react-nprogress@5.0.55(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+  '@tanem/react-nprogress@5.0.56(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
       '@babel/runtime': 7.28.4
       hoist-non-react-statics: 3.3.2
