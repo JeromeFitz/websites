@@ -144,7 +144,7 @@
     "@types/lodash": "4.17.20",
     "@types/pluralize": "0.0.33",
     "@types/react": "19.2.2",
-    "@types/react-dom": "19.2.1",
+    "@types/react-dom": "19.2.2",
     "@types/valid-url": "1.0.7",
     "@types/xml2js": "0.4.14",
     "plaiceholder": "3.0.0",
