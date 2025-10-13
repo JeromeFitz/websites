@@ -5,7 +5,7 @@
   "main": "./next.config.mjs",
   "devDependencies": {
     "@jeromefitz/prettier-config": "2.1.13",
-    "@next/bundle-analyzer": "15.5.4",
+    "@next/bundle-analyzer": "15.5.5",
     "@octokit/core": "7.0.5",
     "@plaiceholder/next": "3.0.0",
     "fast-json-stable-stringify": "2.1.0",
