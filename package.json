@@ -50,7 +50,7 @@
     "dotenv": "17.2.3",
     "is-ci": "4.1.0",
     "lodash": "4.17.21",
-    "node-modules-inspector": "1.1.1",
+    "node-modules-inspector": "1.1.3",
     "semantic-release": "24.2.9",
     "syncpack": "14.0.0-alpha.23",
     "ts-node": "10.9.2",
