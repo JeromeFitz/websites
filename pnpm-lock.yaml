@@ -705,8 +705,8 @@ importers:
         specifier: 2.0.0
         version: 2.0.0
       immer:
-        specifier: 10.1.3
-        version: 10.1.3
+        specifier: 10.2.0
+        version: 10.2.0
       ioredis:
         specifier: 5.8.2
         version: 5.8.2
@@ -787,7 +787,7 @@ importers:
         version: 4.1.12
       zustand:
         specifier: 5.0.8
-        version: 5.0.8(immer@10.1.3)(react@19.2.0)
+        version: 5.0.8(immer@10.2.0)(react@19.2.0)
     devDependencies:
       '@jeromefitz/lighthouse-config':
         specifier: workspace:*
@@ -6170,8 +6170,8 @@ packages:
     engines: {node: '>=16.x'}
     hasBin: true
 
-  immer@10.1.3:
-    resolution: {integrity: sha512-tmjF/k8QDKydUlm3mZU+tjM6zeq9/fFpPqH9SzWmBnVVKsPBg/V66qsMwb3/Bo90cgUN+ghdVBess+hPsxUyRw==}
+  immer@10.2.0:
+    resolution: {integrity: sha512-d/+XTN3zfODyjr89gM3mPq1WNX2B8pYsu7eORitdwyA2sBubnTl3laYlBk4sXY5FUa5qTZGBDPJICVbvqzjlbw==}
 
   import-fresh@3.3.1:
     resolution: {integrity: sha512-TR3KfrTZTYLPB6jUjfx6MF9WcWrHL9su5TObK4ZkYgBdWKPOFoSoQIdEuTuR82pmtxH2spWG9h6etwfr1pLBqQ==}
@@ -15613,7 +15613,7 @@ snapshots:
 
   image-size@2.0.2: {}
 
-  immer@10.1.3: {}
+  immer@10.2.0: {}
 
   import-fresh@3.3.1:
     dependencies:
@@ -18730,7 +18730,7 @@ snapshots:
       '@types/react': 19.2.2
       react: 19.2.0
 
-  zustand@5.0.8(immer@10.1.3)(react@19.2.0):
+  zustand@5.0.8(immer@10.2.0)(react@19.2.0):
     optionalDependencies:
-      immer: 10.1.3
+      immer: 10.2.0
       react: 19.2.0
