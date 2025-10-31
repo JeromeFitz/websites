@@ -26,13 +26,9 @@ const config = () => {
     devIndicators: {
       position: 'bottom-right',
     },
-    eslint: {
-      // @note(eslint) handled outside of next
-      ignoreDuringBuilds: true,
-    },
     excludeDefaultMomentLocales: true,
     experimental: {
-      useLightningcss: true,
+      // useLightningcss: true,
       webVitalsAttribution: ['CLS', 'LCP'],
     },
     images: {
@@ -45,6 +41,7 @@ const config = () => {
       minimumCacheTTL: 18144000, // 1 month
       // minimumCacheTTL: 604800, // 1 week
       // minimumCacheTTL: 86400, // 1 day
+      qualities: [25, 50, 75, 90],
       /**
        * @note why can you not do a map here?!
        */

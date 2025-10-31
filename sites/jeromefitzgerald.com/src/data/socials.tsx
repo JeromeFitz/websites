@@ -86,7 +86,7 @@ const socials = [
     url: 'https://www.linkedin.com/in/jeromefitzgerald',
   },
   {
-    active: true,
+    active: false,
     className: 'hover:bg-twitter',
     icon: <FileTextIcon className="text-inherit" />,
     id: 'x',

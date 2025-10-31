@@ -113,7 +113,7 @@ const config = ({
     experimental: {
       // esmExternals: true,
       // optimizePackageImports: ['@radix-ui/themes'],
-      useLightningcss: true,
+      // useLightningcss: true,
     },
     // exportPathMap,
     // generateBuildId,
@@ -146,6 +146,7 @@ const config = ({
       minimumCacheTTL: 18144000, // 1 month
       // minimumCacheTTL: 604800, // 1 week
       // minimumCacheTTL: 86400, // 1 day
+      qualities: [25, 50, 75, 90],
       remotePatterns: [
         {
           hostname: `**.${process.env.NEXT_PUBLIC__SITE}`,

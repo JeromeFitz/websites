@@ -22,6 +22,7 @@ import { cx } from '@/utils/cx'
 
 import { fonts } from './_next/fonts'
 import { PreloadResources } from './_next/preload-resources'
+import { KitchenSink } from './_v16/kitchen-sink'
 
 import '@radix-ui/themes/styles.css'
 import './styles--globals.css'
@@ -45,11 +46,7 @@ export const metadata: Metadata = {
   },
 }
 
-export default async function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export async function RootLayout({ children }: { children: React.ReactNode }) {
   async function getEventsUpcoming() {
     'use server'
     const dateNow = Date.now()
@@ -99,6 +96,45 @@ export default async function RootLayout({
               </SkipNavContent>
               <ContainerFooter />
             </ContainerSite>
+            <Overlay />
+          </Providers>
+        </body>
+      </Theme>
+    </html>
+  )
+}
+
+export default async function RootLayoutV16({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en" suppressHydrationWarning={true}>
+      <PreloadResources />
+      <Theme
+        accentColor="gold"
+        asChild
+        grayColor="mauve"
+        panelBackground="translucent"
+        radius="medium"
+        scaling="100%"
+      >
+        <body
+          className={cx(
+            fonts,
+            'antialiased',
+            'overflow-y-auto overflow-x-hidden md:overflow-y-auto',
+            'scroll-smooth font-sans antialiased',
+            //
+            'selection:bg-gray-12 selection:text-gray-1',
+            'bg-white dark:bg-black',
+          )}
+        >
+          <Providers>
+            <ContainerGradient />
+            <KitchenSink />
+            {/* {children} */}
             <Overlay />
           </Providers>
         </body>
