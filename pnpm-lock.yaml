@@ -8,7 +8,7 @@ overrides:
   '@babel/core': ^7.28.4
   '@babel/helpers': ^7.28.4
   '@babel/runtime': ^7.28.4
-  '@octokit/plugin-paginate-rest': ^13.0.0
+  '@octokit/plugin-paginate-rest': ^14.0.0
   brace-expansion@^1.0.0: 1.1.12
   cross-spawn: ^7.0.6
   elliptic: ^6.6.1
@@ -2483,8 +2483,8 @@ packages:
   '@octokit/openapi-types@27.0.0':
     resolution: {integrity: sha512-whrdktVs1h6gtR+09+QsNk2+FO+49j6ga1c55YZudfEG+oKJVvJLQi3zkOm5JjiUXAagWK2tI2kTGKJ2Ys7MGA==}
 
-  '@octokit/plugin-paginate-rest@13.0.1':
-    resolution: {integrity: sha512-m1KvHlueScy4mQJWvFDCxFBTIdXS0K1SgFGLmqHyX90mZdCIv6gWBbKRhatxRjhGlONuTK/hztYdaqrTXcFZdQ==}
+  '@octokit/plugin-paginate-rest@14.0.0':
+    resolution: {integrity: sha512-fNVRE7ufJiAA3XUrha2omTA39M6IXIc6GIZLvlbsm8QOQCYvpq/LkMNGyFlB1d8hTDzsAXa3OKtybdMAYsV/fw==}
     engines: {node: '>= 20'}
     peerDependencies:
       '@octokit/core': '>=6'
@@ -10669,10 +10669,10 @@ snapshots:
 
   '@octokit/openapi-types@27.0.0': {}
 
-  '@octokit/plugin-paginate-rest@13.0.1(@octokit/core@7.0.6)':
+  '@octokit/plugin-paginate-rest@14.0.0(@octokit/core@7.0.6)':
     dependencies:
       '@octokit/core': 7.0.6
-      '@octokit/types': 14.1.0
+      '@octokit/types': 16.0.0
 
   '@octokit/plugin-request-log@6.0.0(@octokit/core@7.0.6)':
     dependencies:
@@ -10715,7 +10715,7 @@ snapshots:
   '@octokit/rest@22.0.0':
     dependencies:
       '@octokit/core': 7.0.6
-      '@octokit/plugin-paginate-rest': 13.0.1(@octokit/core@7.0.6)
+      '@octokit/plugin-paginate-rest': 14.0.0(@octokit/core@7.0.6)
       '@octokit/plugin-request-log': 6.0.0(@octokit/core@7.0.6)
       '@octokit/plugin-rest-endpoint-methods': 16.0.0(@octokit/core@7.0.6)
 
@@ -13167,7 +13167,7 @@ snapshots:
   '@semantic-release/github@11.0.3(semantic-release@24.2.7(typescript@5.9.3))':
     dependencies:
       '@octokit/core': 7.0.6
-      '@octokit/plugin-paginate-rest': 13.0.1(@octokit/core@7.0.6)
+      '@octokit/plugin-paginate-rest': 14.0.0(@octokit/core@7.0.6)
       '@octokit/plugin-retry': 8.0.1(@octokit/core@7.0.6)
       '@octokit/plugin-throttling': 11.0.1(@octokit/core@7.0.6)
       '@semantic-release/error': 4.0.0
@@ -13189,7 +13189,7 @@ snapshots:
   '@semantic-release/github@12.0.0(semantic-release@25.0.1(typescript@5.9.3))':
     dependencies:
       '@octokit/core': 7.0.6
-      '@octokit/plugin-paginate-rest': 13.0.1(@octokit/core@7.0.6)
+      '@octokit/plugin-paginate-rest': 14.0.0(@octokit/core@7.0.6)
       '@octokit/plugin-retry': 8.0.1(@octokit/core@7.0.6)
       '@octokit/plugin-throttling': 11.0.1(@octokit/core@7.0.6)
       '@semantic-release/error': 4.0.0
