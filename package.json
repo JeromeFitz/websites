@@ -69,7 +69,7 @@
       "@babel/core": "^7.28.4",
       "@babel/helpers": "^7.28.4",
       "@babel/runtime": "^7.28.4",
-      "@octokit/plugin-paginate-rest": "^13.0.0",
+      "@octokit/plugin-paginate-rest": "^14.0.0",
       "brace-expansion@^1.0.0": "1.1.12",
       "cross-spawn": "^7.0.6",
       "elliptic": "^6.6.1",
