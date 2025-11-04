@@ -21,7 +21,7 @@ const Header = ({ children }: { children: React.ReactNode }) => {
   return (
     <header
       className={cx(
-        'fixed top-0 z-50 w-full transition-opacity duration-500 ease-out',
+        'fixed top-0 z-50 w-full transition-opacity duration-250 ease-out',
       )}
       style={{
         // transform: isVisible ? 'translateY(0)' : 'translateY(-100%)',

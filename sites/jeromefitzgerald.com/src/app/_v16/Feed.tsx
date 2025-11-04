@@ -58,15 +58,19 @@ const FeedTag = () => {
 
 const FeedTagContainer = () => {
   return (
-    <Flex
-      direction={{ initial: 'column', md: 'row' }}
-      gap={{ initial: '6', md: '2' }}
+    <Grid
+      // direction={{ initial: 'column', md: 'row' }}
+      columns={{ initial: '1', md: '2' }}
+      gapX={{ initial: '6', md: '2' }}
+      gapY={{ initial: '6', md: '6' }}
       gridColumnStart={{ initial: '5', md: '7' }}
       gridColumnEnd={{ initial: '13', md: '13' }}
     >
       <FeedTagContainerItem />
       <FeedTagContainerItem />
-    </Flex>
+      <FeedTagContainerItem />
+      <FeedTagContainerItem />
+    </Grid>
   )
 }
 
@@ -85,8 +89,8 @@ const FeedTagContainerItem = () => {
         gridColumnStart={{ initial: '1', md: '7' }}
         gridColumnEnd={{ initial: '7', md: '10' }}
       >
-        <NextLink href="/shows/alex-o-jerome">
-          <LinkButton tabIndex={-1} icon={<StarIcon />} text="Alex O’Jerome" />
+        <NextLink href="/shows/jerome-and">
+          <LinkButton tabIndex={-1} icon={<StarIcon />} text="Jerome &" />
           <Flex
             direction="column"
             gap="2"

@@ -1,13 +1,23 @@
 const bandcamps = [
   {
+    album: 'Clocks&Mirrors',
+    artist: 'AARIE',
+    href: 'https://kida412.bandcamp.com/album/clocks-mirrors',
+  },
+  {
     album: 'The Control Center',
     artist: 'Buscrates',
     href: 'https://buscrates412.bandcamp.com/album/control-center',
   },
+  // {
+  //   album: 'Check Please',
+  //   artist: 'Cam Chambers and Nice Rec',
+  //   href: 'https://camchambers.bandcamp.com/album/check-please',
+  // },
   {
-    album: 'Check Please',
-    artist: 'Cam Chambers and Nice Rec',
-    href: 'https://camchambers.bandcamp.com/album/check-please',
+    album: '',
+    artist: 'Christian Anderson',
+    href: '',
   },
   {
     album: 'Shifty',
@@ -35,10 +45,28 @@ const bandcamps = [
     href: 'https://nicerec.bandcamp.com/album/drink-the-blue-sky',
   },
   {
+    album: 'Vibrations',
+    artist: 'NOCASINO',
+    href: 'https://nocasino.bandcamp.com/album/vibrations',
+  },
+  {
     album: 'Slowly',
     artist: 'Tory Silver',
     href: 'https://torysilvermusic.bandcamp.com/album/slowly',
   },
 ]
 
-export { bandcamps }
+const jeromeands = [
+  { artist: 'Anna C. Reilly' },
+  { artist: 'Alex O’Brien' },
+  { artist: 'Alex Stypula' },
+  { artist: 'Alice Hamilton' },
+  { artist: 'Chanel Ali' },
+  { artist: 'Erica Sera' },
+  { artist: 'Missy Moreno' },
+  { artist: 'Nia Johnson' },
+  { artist: 'Pallavi Gunalan' },
+  { artist: 'Shannon Norman' },
+]
+
+export { bandcamps, jeromeands }

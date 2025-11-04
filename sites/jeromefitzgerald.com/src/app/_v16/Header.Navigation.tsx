@@ -39,23 +39,23 @@ const HeaderNavigation = () => {
           >
             <LinkButton icon={<InfoCircledIcon />} text="About" />
           </Box>
-          <Box
-            gridColumnStart={{ initial: '7', md: '10' }}
-            gridColumnEnd={{ initial: '13', md: '13' }}
-          >
-            <LinkButton icon={<CalendarIcon />} text="Events Upcoming" />
-          </Box>
-          <Box
+          {/* <Box
             gridColumnStart={{ initial: '1', md: '7' }}
             gridColumnEnd={{ initial: '7', md: '10' }}
           >
             <LinkButton icon={<MicrophoneIcon />} text="Podcasts" />
-          </Box>
+          </Box> */}
           <Box
             gridColumnStart={{ initial: '7', md: '10' }}
             gridColumnEnd={{ initial: '13', md: '13' }}
           >
             <LinkButton icon={<StarIcon />} text="Shows" />
+          </Box>
+          <Box
+            gridColumnStart={{ initial: '1', md: '7' }}
+            gridColumnEnd={{ initial: '13', md: '13' }}
+          >
+            <LinkButton icon={<CalendarIcon />} text="Upcoming Events" />
           </Box>
         </>
       </Grid>
