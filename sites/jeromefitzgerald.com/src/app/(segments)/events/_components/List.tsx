@@ -10,6 +10,7 @@ import { Em } from '@radix-ui/themes/dist/esm/components/em.js'
 import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Grid } from '@radix-ui/themes/dist/esm/components/grid.js'
 import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
+import { Link } from '@radix-ui/themes/dist/esm/components/link.js'
 import { Strong } from '@radix-ui/themes/dist/esm/components/strong.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import { isAfter } from 'date-fns/isAfter'
@@ -25,7 +26,7 @@ import { getImageKeyValue } from '@/lib/drizzle/schemas/cache-images/queries'
 import { getImageKeySlug } from '@/lib/drizzle/utils/getImageKeySlug'
 import { cx } from '@/utils/cx'
 
-import { AccordionClient } from './List.Client'
+// import { AccordionClient } from './List.Client'
 
 function ListWrapper({ events }: { events: Event[] }) {
   // return null
@@ -242,6 +243,41 @@ function Listing({ items }: { items: Event[] }) {
         mb={{ initial: '4', md: '6' }}
         pb={{ initial: '4', md: '6' }}
       >
+        <Flex direction="column" gap="7">
+          <Text size={{ initial: '5', md: '7' }}>
+            Ahoy. I recently moved to <Strong>Brooklyn</Strong> coming from{' '}
+            <Em>Pittsburgh</Em>.
+          </Text>{' '}
+          <Text size={{ initial: '5', md: '7' }}>
+            As a result, my known upcoming show calendar is all over the place as I
+            no longer have multiple monthly shows. (Perhaps I did not think this
+            through?)
+          </Text>
+          <Text size={{ initial: '4', md: '6' }}>
+            In lieu of that, I am doing feature sets, random drop-ins, and a lot of
+            last minute “Hey do this!”
+            <br />
+            And I will! I will do whatever <Strong>this</Strong> is.
+          </Text>
+          <Text size={{ initial: '4', md: '6' }}>
+            So reach out on IG I guess if so:{' '}
+            <Link href="https://instagram.com/JeromeFitz">@JeromeFitz</Link>{' '}
+            <Text size={{ initial: '3', md: '5' }}>
+              (That is admittedly empty! But I will respond [eventually].)
+            </Text>
+          </Text>
+          <Text size={{ initial: '4', md: '6' }}>
+            Will have a festival schedule and new upcoming show once things are
+            settled a bit.
+          </Text>
+        </Flex>
+      </Flex>
+      {/* <Flex
+        direction="column"
+        gap="9"
+        mb={{ initial: '4', md: '6' }}
+        pb={{ initial: '4', md: '6' }}
+      >
         <Flex direction="column" gap="3">
           <Text size={{ initial: '3', md: '5' }}>
             Upcoming Events that feature comedian Jerome Fitzgerald.{' '}
@@ -253,11 +289,10 @@ function Listing({ items }: { items: Event[] }) {
             <Strong>(And he is always very game to do so.)</Strong>
           </Text>
         </Flex>
-      </Flex>
-      <ListWrapper events={eventsUpcoming} />
-      <HeaderFull count={eventsPast.length} overline="" title="Past Events" />
-
-      <AccordionClient items={eventsPast} />
+      </Flex> */}
+      {/* <ListWrapper events={eventsUpcoming} /> */}
+      {/* <HeaderFull count={eventsPast.length} overline="" title="Past Events" /> */}
+      {/* <AccordionClient items={eventsPast} /> */}
     </Flex>
   )
 }
