@@ -88,7 +88,7 @@
     "@radix-ui/themes": "3.2.1",
     "@tanem/react-nprogress": "5.0.56",
     "@upstash/ratelimit": "2.0.7",
-    "@upstash/redis": "1.35.6",
+    "@upstash/redis": "1.35.7",
     "@vercel/analytics": "1.5.0",
     "clsx": "2.1.1",
     "cmdk": "1.1.1",
