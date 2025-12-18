@@ -16,7 +16,7 @@
     "postcss": "8.5.6",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "storybook": "9.1.16",
+    "storybook": "9.1.17",
     "webpack": "5.102.1"
   }
 }
