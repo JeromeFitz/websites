@@ -36,16 +36,16 @@ importers:
         version: 2.2.7
       '@jeromefitz/conventional-gitmoji':
         specifier: 4.0.20
-        version: 4.0.20(lodash@4.17.21)
+        version: 4.0.20(lodash@4.17.23)
       '@jeromefitz/prettier-config':
         specifier: 2.1.13
         version: 2.1.13
       '@jeromefitz/release-notes-generator':
         specifier: 3.1.13
-        version: 3.1.13(lodash@4.17.21)
+        version: 3.1.13(lodash@4.17.23)
       '@jeromefitz/semantic':
         specifier: 11.1.8
-        version: 11.1.8(@jeromefitz/conventional-gitmoji@4.0.20(lodash@4.17.21))(typescript@5.9.3)
+        version: 11.1.8(@jeromefitz/conventional-gitmoji@4.0.20(lodash@4.17.23))(typescript@5.9.3)
       '@jeromefitz/tsconfig':
         specifier: 2.1.0
         version: 2.1.0
@@ -65,8 +65,8 @@ importers:
         specifier: 4.1.0
         version: 4.1.0
       lodash:
-        specifier: 4.17.21
-        version: 4.17.21
+        specifier: 4.17.23
+        version: 4.17.23
       node-modules-inspector:
         specifier: 1.2.0
         version: 1.2.0
@@ -278,8 +278,8 @@ importers:
         specifier: 2.1.0
         version: 2.1.0
       lodash:
-        specifier: 4.17.21
-        version: 4.17.21
+        specifier: 4.17.23
+        version: 4.17.23
       next:
         specifier: 15.5.9
         version: 15.5.9(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -316,7 +316,7 @@ importers:
         version: 2.1.1
       '@jeromefitz/utils':
         specifier: 3.1.7
-        version: 3.1.7(lodash@4.17.21)
+        version: 3.1.7(lodash@4.17.23)
       '@notionhq/client':
         specifier: 4.0.2
         version: 4.0.2
@@ -352,7 +352,7 @@ importers:
     devDependencies:
       '@jeromefitz/utils':
         specifier: 3.1.7
-        version: 3.1.7(lodash@4.17.21)
+        version: 3.1.7(lodash@4.17.23)
       '@notionhq/client':
         specifier: 4.0.2
         version: 4.0.2
@@ -390,8 +390,8 @@ importers:
         specifier: 5.8.2
         version: 5.8.2
       lodash:
-        specifier: 4.17.21
-        version: 4.17.21
+        specifier: 4.17.23
+        version: 4.17.23
       ms:
         specifier: 3.0.0-canary.202508261828
         version: 3.0.0-canary.202508261828
@@ -544,13 +544,13 @@ importers:
         version: 2.2.0(react@19.2.3)
       '@jeromefitz/notion':
         specifier: 5.1.12
-        version: 5.1.12(@jeromefitz/utils@3.1.7(lodash@4.17.21))(lodash@4.17.21)
+        version: 5.1.12(@jeromefitz/utils@3.1.7(lodash@4.17.23))(lodash@4.17.23)
       '@jeromefitz/spotify':
         specifier: 4.2.6
-        version: 4.2.6(@jeromefitz/utils@3.1.7(lodash@4.17.21))(lodash@4.17.21)(sharp@0.34.4)
+        version: 4.2.6(@jeromefitz/utils@3.1.7(lodash@4.17.23))(lodash@4.17.23)(sharp@0.34.4)
       '@jeromefitz/utils':
         specifier: 3.1.7
-        version: 3.1.7(lodash@4.17.21)
+        version: 3.1.7(lodash@4.17.23)
       '@mantine/hooks':
         specifier: 8.3.9
         version: 8.3.9(react@19.2.3)
@@ -836,10 +836,10 @@ importers:
         version: 2.2.0(react@19.2.3)
       '@jeromefitz/spotify':
         specifier: 4.2.6
-        version: 4.2.6(@jeromefitz/utils@3.1.7(lodash@4.17.21))(lodash@4.17.21)(sharp@0.34.4)
+        version: 4.2.6(@jeromefitz/utils@3.1.7(lodash@4.17.23))(lodash@4.17.23)(sharp@0.34.4)
       '@jeromefitz/utils':
         specifier: 3.1.7
-        version: 3.1.7(lodash@4.17.21)
+        version: 3.1.7(lodash@4.17.23)
       '@mantine/hooks':
         specifier: 8.3.9
         version: 8.3.9(react@19.2.3)
@@ -1024,8 +1024,8 @@ importers:
         specifier: 9.0.3
         version: 9.0.3
       lodash:
-        specifier: 4.17.21
-        version: 4.17.21
+        specifier: 4.17.23
+        version: 4.17.23
       ms:
         specifier: 3.0.0-canary.202508261828
         version: 3.0.0-canary.202508261828
@@ -6651,8 +6651,8 @@ packages:
   lodash.uniqby@4.7.0:
     resolution: {integrity: sha512-e/zcLx6CSbmaEgFHCA7BnoQKyCtKMxnuWrJygbwPs/AIn+IMKl66L8/s+wBUn5LRw2pZx3bUHibiV1b6aTWIww==}
 
-  lodash@4.17.21:
-    resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
+  lodash@4.17.23:
+    resolution: {integrity: sha512-LgVTMpQtIopCi79SJeDiP0TfWi5CNEc/L/aRdTh3yIvmZXTnheWpKjSZhnvMl8iXbC1tFg9gdHHDMLoV7CnG+w==}
 
   loose-envify@1.4.0:
     resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
@@ -10415,20 +10415,20 @@ snapshots:
 
   '@ioredis/commands@1.4.0': {}
 
-  '@jeromefitz/conventional-gitmoji@4.0.20(lodash@4.17.21)':
+  '@jeromefitz/conventional-gitmoji@4.0.20(lodash@4.17.23)':
     dependencies:
       fast-json-stable-stringify: 2.1.0
       grapheme-splitter: 1.0.4
-      lodash: 4.17.21
+      lodash: 4.17.23
       title: 4.0.1
 
-  '@jeromefitz/notion@5.1.12(@jeromefitz/utils@3.1.7(lodash@4.17.21))(lodash@4.17.21)':
+  '@jeromefitz/notion@5.1.12(@jeromefitz/utils@3.1.7(lodash@4.17.23))(lodash@4.17.23)':
     dependencies:
-      '@jeromefitz/utils': 3.1.7(lodash@4.17.21)
+      '@jeromefitz/utils': 3.1.7(lodash@4.17.23)
       '@notionhq/client': 4.0.2
       date-fns: 4.1.0
       github-slugger: 2.0.0
-      lodash: 4.17.21
+      lodash: 4.17.23
 
   '@jeromefitz/prettier-config@2.1.13':
     dependencies:
@@ -10455,22 +10455,22 @@ snapshots:
       - prettier-plugin-style-order
       - prettier-plugin-svelte
 
-  '@jeromefitz/release-notes-generator@3.1.13(lodash@4.17.21)':
+  '@jeromefitz/release-notes-generator@3.1.13(lodash@4.17.23)':
     dependencies:
       '@octokit/rest': 22.0.0
       conventional-commits-filter: 5.0.0
       conventional-commits-parser: 6.2.0
       date-fns: 4.1.0
       import-from-esm: 2.0.0
-      lodash: 4.17.21
+      lodash: 4.17.23
       read-package-up: 11.0.0
       semver: 7.7.2
     transitivePeerDependencies:
       - supports-color
 
-  '@jeromefitz/semantic@11.1.8(@jeromefitz/conventional-gitmoji@4.0.20(lodash@4.17.21))(typescript@5.9.3)':
+  '@jeromefitz/semantic@11.1.8(@jeromefitz/conventional-gitmoji@4.0.20(lodash@4.17.23))(typescript@5.9.3)':
     dependencies:
-      '@jeromefitz/conventional-gitmoji': 4.0.20(lodash@4.17.21)
+      '@jeromefitz/conventional-gitmoji': 4.0.20(lodash@4.17.23)
       '@semantic-release/commit-analyzer': 13.0.1(patch_hash=12f29c0334ee55892c4c4d3dc4d9e1f0f18476656fb8c3c462a6203bc740493b)(semantic-release@24.2.7(typescript@5.9.3))
       '@semantic-release/git': 10.0.1(semantic-release@24.2.7(typescript@5.9.3))
       semantic-release: 24.2.7(typescript@5.9.3)
@@ -10480,20 +10480,20 @@ snapshots:
       - supports-color
       - typescript
 
-  '@jeromefitz/spotify@4.2.6(@jeromefitz/utils@3.1.7(lodash@4.17.21))(lodash@4.17.21)(sharp@0.34.4)':
+  '@jeromefitz/spotify@4.2.6(@jeromefitz/utils@3.1.7(lodash@4.17.23))(lodash@4.17.23)(sharp@0.34.4)':
     dependencies:
-      '@jeromefitz/utils': 3.1.7(lodash@4.17.21)
+      '@jeromefitz/utils': 3.1.7(lodash@4.17.23)
       github-slugger: 2.0.0
       isomorphic-unfetch: 4.0.2
-      lodash: 4.17.21
+      lodash: 4.17.23
       plaiceholder: 3.0.0(sharp@0.34.4)
       sharp: 0.34.4
 
   '@jeromefitz/tsconfig@2.1.0': {}
 
-  '@jeromefitz/utils@3.1.7(lodash@4.17.21)':
+  '@jeromefitz/utils@3.1.7(lodash@4.17.23)':
     dependencies:
-      lodash: 4.17.21
+      lodash: 4.17.23
 
   '@jridgewell/gen-mapping@0.3.12':
     dependencies:
@@ -13111,7 +13111,7 @@ snapshots:
       debug: 4.4.3
       dir-glob: 3.0.1
       execa: 5.1.1
-      lodash: 4.17.21
+      lodash: 4.17.23
       micromatch: 4.0.8
       p-reduce: 2.1.0
       semantic-release: 24.2.7(typescript@5.9.3)
@@ -15593,7 +15593,7 @@ snapshots:
     dependencies:
       '@types/html-minifier-terser': 6.1.0
       html-minifier-terser: 6.1.0
-      lodash: 4.17.21
+      lodash: 4.17.23
       pretty-error: 4.0.0
       tapable: 2.3.0
     optionalDependencies:
@@ -16078,7 +16078,7 @@ snapshots:
 
   lodash.uniqby@4.7.0: {}
 
-  lodash@4.17.21: {}
+  lodash@4.17.23: {}
 
   loose-envify@1.4.0:
     dependencies:
@@ -16967,7 +16967,7 @@ snapshots:
 
   pretty-error@4.0.0:
     dependencies:
-      lodash: 4.17.21
+      lodash: 4.17.23
       renderkid: 3.0.0
 
   pretty-format@27.5.1:
@@ -17415,7 +17415,7 @@ snapshots:
       css-select: 4.3.0
       dom-converter: 0.2.0
       htmlparser2: 6.1.0
-      lodash: 4.17.21
+      lodash: 4.17.23
       strip-ansi: 6.0.1
 
   require-directory@2.1.1: {}
