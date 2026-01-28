@@ -118,6 +118,6 @@
     "react-dom": "19.2.3",
     "vite-plugin-svgr": "4.5.0",
     "vitest": "3.2.4",
-    "vitest-browser-react": "1.0.1"
+    "vitest-browser-react": "2.0.5"
   }
 }
