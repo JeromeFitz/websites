@@ -10,7 +10,7 @@
     "@plaiceholder/next": "3.0.0",
     "fast-json-stable-stringify": "2.1.0",
     "lodash": "4.17.23",
-    "next": "15.5.9",
+    "next": "15.5.10",
     "plaiceholder": "3.0.0",
     "react": "19.2.3",
     "react-dom": "19.2.3",
