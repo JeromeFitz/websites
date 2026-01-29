@@ -113,7 +113,7 @@
     "@vitejs/plugin-react": "5.1.1",
     "@vitest/browser": "3.2.4",
     "eslint-plugin-storybook": "9.1.16",
-    "next": "15.5.10",
+    "next": "16.0.10",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "vite-plugin-svgr": "4.5.0",
