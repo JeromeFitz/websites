@@ -17,7 +17,7 @@ overrides:
   pbkdf2: ^3.1.3
   unfetch: ^4.2.0
   semver@^5.0.0: ^5.7.2
-  semver@^6.0.0: ^6.3.1
+  semver@^6.0.0: ^7.0.0
   semver@^7.0.0: ^7.7.2
   sha.js: ^2.4.12
   ws: ^8.18.0
@@ -8188,10 +8188,6 @@ packages:
     resolution: {integrity: sha512-cBznnQ9KjJqU67B52RMC65CMarK2600WFnbkcaiwWq3xy/5haFJlshgnpjovMVJ+Hff49d8GEn0b87C5pDQ10g==}
     hasBin: true
 
-  semver@6.3.1:
-    resolution: {integrity: sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==}
-    hasBin: true
-
   semver@7.7.2:
     resolution: {integrity: sha512-RF0Fw+rO5AMf9MAyaRXI4AV0Ulj5lMHqVxxdSgiVbixSCXoEmmX/jk0CuJw4+3SqroYO9VoUh+HcuJivvtJemA==}
     engines: {node: '>=10'}
@@ -9370,7 +9366,7 @@ snapshots:
       debug: 4.4.3
       gensync: 1.0.0-beta.2
       json5: 2.2.3
-      semver: 6.3.1
+      semver: 7.7.2
     transitivePeerDependencies:
       - supports-color
 
@@ -9392,7 +9388,7 @@ snapshots:
       '@babel/helper-validator-option': 7.27.1
       browserslist: 4.27.0
       lru-cache: 5.1.1
-      semver: 6.3.1
+      semver: 7.7.2
 
   '@babel/helper-create-class-features-plugin@7.27.1(@babel/core@7.28.4)':
     dependencies:
@@ -9403,7 +9399,7 @@ snapshots:
       '@babel/helper-replace-supers': 7.27.1(@babel/core@7.28.4)
       '@babel/helper-skip-transparent-expression-wrappers': 7.27.1
       '@babel/traverse': 7.28.4
-      semver: 6.3.1
+      semver: 7.7.2
     transitivePeerDependencies:
       - supports-color
 
@@ -9412,7 +9408,7 @@ snapshots:
       '@babel/core': 7.28.4
       '@babel/helper-annotate-as-pure': 7.27.3
       regexpu-core: 6.2.0
-      semver: 6.3.1
+      semver: 7.7.2
 
   '@babel/helper-define-polyfill-provider@0.6.4(@babel/core@7.28.4)':
     dependencies:
@@ -9896,7 +9892,7 @@ snapshots:
       babel-plugin-polyfill-corejs2: 0.4.13(@babel/core@7.28.4)
       babel-plugin-polyfill-corejs3: 0.11.1(@babel/core@7.28.4)
       babel-plugin-polyfill-regenerator: 0.6.4(@babel/core@7.28.4)
-      semver: 6.3.1
+      semver: 7.7.2
     transitivePeerDependencies:
       - supports-color
 
@@ -10033,7 +10029,7 @@ snapshots:
       babel-plugin-polyfill-corejs3: 0.11.1(@babel/core@7.28.4)
       babel-plugin-polyfill-regenerator: 0.6.4(@babel/core@7.28.4)
       core-js-compat: 3.42.0
-      semver: 6.3.1
+      semver: 7.7.2
     transitivePeerDependencies:
       - supports-color
 
@@ -14197,7 +14193,7 @@ snapshots:
       '@babel/compat-data': 7.27.5
       '@babel/core': 7.28.4
       '@babel/helper-define-polyfill-provider': 0.6.4(@babel/core@7.28.4)
-      semver: 6.3.1
+      semver: 7.7.2
     transitivePeerDependencies:
       - supports-color
 
@@ -16142,7 +16138,7 @@ snapshots:
 
   make-dir@3.1.0:
     dependencies:
-      semver: 6.3.1
+      semver: 7.7.2
 
   make-error@1.3.6: {}
 
@@ -17682,8 +17678,6 @@ snapshots:
 
   semver@5.7.2:
     optional: true
-
-  semver@6.3.1: {}
 
   semver@7.7.2: {}
 
