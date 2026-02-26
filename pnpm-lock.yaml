@@ -255,8 +255,8 @@ importers:
         specifier: 3.2.4
         version: 3.2.4(@types/node@22.18.13)(@vitest/browser@3.2.4)
       vitest-browser-react:
-        specifier: 1.0.1
-        version: 1.0.1(@vitest/browser@3.2.4)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(vitest@3.2.4)
+        specifier: 2.0.5
+        version: 2.0.5(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(vitest@3.2.4)
 
   packages/lighthouse-config: {}
 
@@ -9097,16 +9097,14 @@ packages:
       yaml:
         optional: true
 
-  vitest-browser-react@1.0.1:
-    resolution: {integrity: sha512-LqiGFCdknrbMoSDWXTCTrPsED3SvdIXIgYOOZyYUNj2dkJusW2eF6NENOlBlxwq+FBQqzNK1X59b+b03pXFpAQ==}
-    engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
+  vitest-browser-react@2.0.5:
+    resolution: {integrity: sha512-YODQX8mHTJCyKNVYTWJrLEYrUtw+QfLl78owgvuE7C5ydgmGBq6v5s4jK2w6wdPhIZsN9PpV1rQbmAevWJjO9g==}
     peerDependencies:
       '@types/react': ^18.0.0 || ^19.0.0
       '@types/react-dom': ^18.0.0 || ^19.0.0
-      '@vitest/browser': ^2.1.0 || ^3.0.0 || ^4.0.0-0
       react: ^18.0.0 || ^19.0.0
       react-dom: ^18.0.0 || ^19.0.0
-      vitest: ^2.1.0 || ^3.0.0 || ^4.0.0-0
+      vitest: ^4.0.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -18497,9 +18495,8 @@ snapshots:
       '@types/node': 22.18.13
       fsevents: 2.3.3
 
-  vitest-browser-react@1.0.1(@vitest/browser@3.2.4)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(vitest@3.2.4):
+  vitest-browser-react@2.0.5(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(vitest@3.2.4):
     dependencies:
-      '@vitest/browser': 3.2.4(vitest@3.2.4)
       react: 19.2.3
       react-dom: 19.2.3(react@19.2.3)
       vitest: 3.2.4(@types/node@22.18.13)(@vitest/browser@3.2.4)
