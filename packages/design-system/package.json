@@ -111,7 +111,7 @@
     "@mantine/hooks": "8.3.9",
     "@storybook/addon-docs": "9.1.16",
     "@vitejs/plugin-react": "5.1.1",
-    "@vitest/browser": "3.2.4",
+    "@vitest/browser": "4.0.18",
     "eslint-plugin-storybook": "9.1.16",
     "next": "15.5.10",
     "react": "19.2.3",
