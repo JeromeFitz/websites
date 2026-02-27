@@ -101,7 +101,7 @@
   "peerDependencies": {
     "@date-fns/tz": "^1.1.0",
     "@date-fns/utc": "^2.1.0",
-    "@notionhq/client": "^2.2.14 || ^3.0.0 || ^4.0.0",
+    "@notionhq/client": "^2.2.14 || ^3.0.0 || ^4.0.0 || ^5.0.0",
     "date-fns": "^4.0.0",
     "ms": "^3.0.0-canary.1",
     "server-only": "0.0.1",
@@ -115,7 +115,7 @@
     "@date-fns/tz": "1.4.1",
     "@date-fns/utc": "2.1.1",
     "@jeromefitz/utils": "3.1.7",
-    "@notionhq/client": "4.0.2",
+    "@notionhq/client": "5.11.0",
     "date-fns": "4.1.0",
     "ms": "3.0.0-canary.202508261828",
     "next": "15.5.10",

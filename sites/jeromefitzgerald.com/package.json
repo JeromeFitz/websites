@@ -49,7 +49,7 @@
     "@jeromefitz/utils": "3.1.7",
     "@mantine/hooks": "8.3.9",
     "@neondatabase/serverless": "1.0.2",
-    "@notionhq/client": "4.0.2",
+    "@notionhq/client": "5.11.0",
     "@radix-ui/colors": "3.0.0",
     "@radix-ui/react-accessible-icon": "1.1.7",
     "@radix-ui/react-accordion": "1.2.12",
