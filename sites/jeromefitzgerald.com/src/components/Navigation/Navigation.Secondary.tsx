@@ -114,7 +114,7 @@ function NavigationSecondary({ order = 0 }) {
                     <DropdownMenuItem
                       className={cx(
                         !!mt && 'hidden md:flex',
-                        !item.isActive && item.isActiveMobile && '!hidden',
+                        !item.isActive && item.isActiveMobile && 'hidden!',
                       )}
                       onSelect={() => {
                         zzz_menuSecondaryActiveSet(item)

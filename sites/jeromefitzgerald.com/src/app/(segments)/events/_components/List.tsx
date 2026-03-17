@@ -235,12 +235,6 @@ function Listing({ items }: { items: Event[] }) {
     10,
   )
 
-  console.dir(`eventsUpcoming:`)
-  console.dir(eventsUpcoming)
-
-  // console.dir(`eventsPast:`)
-  // console.dir(eventsPast)
-
   return (
     <Flex direction="column">
       <HeaderFull count={eventsUpcoming.length} overline="" title="Events" />

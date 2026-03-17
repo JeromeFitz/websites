@@ -1,6 +1,6 @@
 import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
 import { Em } from '@radix-ui/themes/dist/esm/components/em.js'
-import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
+// import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
 import { Skeleton } from '@radix-ui/themes/dist/esm/components/skeleton.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 
