@@ -23,9 +23,9 @@ function CurrentlyItem({
   const Component = id === 'events' && !!hasTop ? CodeGhost : Text
   return (
     <Skeleton loading={isLoading} minWidth="100%">
-      <Heading
+      <Text
         align="left"
-        as="h3"
+        // as="h3"
         className="text-accentA-12 transition-colors duration-300 group-hover:text-accentA-11"
         size={{ initial: '3', md: '4' }}
         weight="medium"
@@ -40,7 +40,7 @@ function CurrentlyItem({
           </Text>
           <Text as="span">”</Text>
         </Text>
-      </Heading>
+      </Text>
     </Skeleton>
   )
 }

@@ -2,6 +2,7 @@ import { Em } from '@radix-ui/themes/dist/esm/components/em.js'
 import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 // import { Grid } from '@radix-ui/themes/dist/esm/components/grid.js'
 import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
+import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 
 import { cx } from '@/utils/cx'
 
@@ -75,13 +76,13 @@ function HeaderFull({
               position="relative"
               width="auto"
             >
-              <Heading
-                as="h2"
+              <Text
+                // as="h2"
                 className="font-medium text-gray-11"
                 size={{ initial: '2', md: '4' }}
               >
                 {overline}
-              </Heading>
+              </Text>
             </Flex>
             <Flex
               className={cx(
@@ -134,14 +135,14 @@ function HeaderFull({
               position="relative"
               // width="auto"
             >
-              <Heading
-                as="h3"
+              <Text
+                // as="h3"
                 className="text-gray-11"
                 size={{ initial: '2', md: '4' }}
                 weight="light"
               >
                 {typeof subline === 'string' ? <Em>{subline}</Em> : <>{subline}</>}
-              </Heading>
+              </Text>
             </Flex>
           </Flex>
           <Flex

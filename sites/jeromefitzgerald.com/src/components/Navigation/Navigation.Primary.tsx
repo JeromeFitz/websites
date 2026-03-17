@@ -62,7 +62,7 @@ function NavigationButton({ isHomePage = false }: { isHomePage?: boolean }) {
   const router = useRouter()
   return (
     <Button
-      aria-label="Jerome"
+      // aria-label="Jerome"
       className={cx(
         '!bg-accent-1 !hover:bg-accent-2 transition-colors',
         '[&>svg]:data-[state="open"]:animate-none',

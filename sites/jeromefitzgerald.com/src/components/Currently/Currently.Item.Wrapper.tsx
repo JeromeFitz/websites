@@ -3,7 +3,7 @@ import type { NotionColor } from '@/lib/drizzle/schemas/_notion/types'
 import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
 import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
-import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
+import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import NextLink from 'next/link'
 
 import { cx } from '@/utils/cx'
@@ -138,9 +138,9 @@ function CurrentlyWrapper({
                 width="100%"
                 wrap="nowrap"
               >
-                <Heading
+                <Text
                   align="left"
-                  as="h3"
+                  // as="h3"
                   className={cx(
                     'font-medium font-mono uppercase',
                     // 'hidden! md:visible!'
@@ -150,7 +150,7 @@ function CurrentlyWrapper({
                   size="1"
                 >
                   {title}
-                </Heading>
+                </Text>
                 {children}
               </Flex>
             </NextLink>
