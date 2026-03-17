@@ -3,6 +3,8 @@
 # temp
 images
 sites/jeromefitzgerald.com/public/images/temp
+!sites/jeromefitzgerald.com/public/images/temp/images/alex-o-jerome/*
+!sites/jeromefitzgerald.com/public/images/temp/images/jerome-and/*
 
 # dependencies
 node_modules

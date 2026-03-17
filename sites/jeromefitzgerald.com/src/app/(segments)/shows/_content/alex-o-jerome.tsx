@@ -1,5 +1,3 @@
-// https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2020/05/aoj--201912--poster--004--small.jpg
-
 import type { Image } from '@/app/_v16/types'
 
 import aojLogo from '../../../../../public/images/temp/images/alex-o-jerome/alex-o-jerome.png'
@@ -14,64 +12,6 @@ const imageGallery: Image[] = [
   },
 ]
 
-// const imageHeadline: Image = {
-//   blurDataURL,
-//   height: 522,
-//   src: '/images/temp/images/jerome-and/tory-silver.jpg',
-//   width: 1022,
-// }
-// const imageGallery: Image[] = [
-//   {
-//     blurDataURL,
-//     height: 1098,
-//     src: '/images/temp/images/jerome-and/show-posters/jerome-and--02--social.png',
-//     width: 1098,
-//   },
-//   {
-//     blurDataURL,
-//     height: 1098,
-//     src: '/images/temp/images/jerome-and/show-posters/jerome-and--09--social.jpg',
-//     width: 1098,
-//   },
-//   {
-//     blurDataURL,
-//     height: 1098,
-//     src: '/images/temp/images/jerome-and/show-posters/jerome-and--10--social.jpg',
-//     width: 1098,
-//   },
-//   {
-//     blurDataURL,
-//     height: 1098,
-//     src: '/images/temp/images/jerome-and/show-posters/jerome-and--12--social.jpg',
-//     width: 1098,
-//   },
-// ]
-// const imageGallery2: Image[] = [
-//   {
-//     blurDataURL,
-//     height: 1350,
-//     src: '/images/temp/images/jerome-and/sara.jpg',
-//     width: 1080,
-//   },
-//   {
-//     blurDataURL,
-//     height: 639,
-//     src: '/images/temp/images/jerome-and/aob.jpg',
-//     width: 639,
-//   },
-//   {
-//     blurDataURL,
-//     height: 4032,
-//     src: '/images/temp/images/jerome-and/erica.jpg',
-//     width: 3024,
-//   },
-//   {
-//     blurDataURL,
-//     height: 1008,
-//     src: '/images/temp/images/jerome-and/very-normal-gents.jpg',
-//     width: 756,
-//   },
-// ]
 import type { Show } from '@/lib/drizzle/schemas/cache-shows/types'
 
 import { Code, Em, Flex, Strong, Text } from '@radix-ui/themes'

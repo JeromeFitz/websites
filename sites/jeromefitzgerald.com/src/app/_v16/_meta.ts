@@ -19,12 +19,6 @@ const image = {
   // quality: 90,
   sizes:
     '(max-width: 768px) 90vw, (max-width: 1280px) 50vw, (max-width: 2560px) 61vw, 50vw',
-  // src: 'https://cdn.jeromefitzgerald.com/images/2020/01/jfle--2020--cec-jr--bob-shields.jpg',
-  // src: '/images/temp/images/jerome-and/show-posters/jerome-and--02--social.png',
-  // src: '/images/temp/images/jerome-and/show-posters/jerome-and--07--social.jpg',
-  // src: '/images/temp/images/jerome-and/show-posters/jerome-and--08--social.jpg',
-  // src: '/images/temp/images/jerome-and/show-posters/jerome-and--09--social.jpg',
-  // src: '/images/temp/images/jerome-and/show-posters/jerome-and--10--social.jpg',
   src: '/images/temp/images/jerome-and/show-posters/jerome-and--12--social.jpg',
   url: 'https://cdn.jeromefitzgerald.com/images/2020/01/jfle--2020--cec-jr--bob-shields.jpg',
   width: 1280,
