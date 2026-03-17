@@ -65,7 +65,7 @@ const Content = () => {
             <Text size={{ initial: '5', md: '6' }} weight="regular">
               Together dam vommie twanz have performed at the{' '}
               <Strong>Detroit Improv Festival</Strong> and{' '}
-              <Strong>San Diego Improv Festvial</Strong>. Separately, they have
+              <Strong>San Diego Improv Festival</Strong>. Separately, they have
               featured in comedy festivals in: <Em>Baltimore</Em>, <Em>Chicago</Em>,{' '}
               <Em>New York</Em>, <Em>Pittsburgh</Em>, <Em>San Francisco</Em>,{' '}
               <Em>Toronto</Em>, <Em>& more</Em>.

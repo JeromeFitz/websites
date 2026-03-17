@@ -257,7 +257,8 @@ const Data = async ({ slug }: { slug: string }) => {
     emeritus: CAST_EMERITUS_FINAL,
     image: imageHeadline,
     rollups: R,
-    seoDescription: 'Lorem',
+    seoDescription:
+      'The monthly comedy variety show where Jerome hosts a cavalcade of hilarous and talented friends',
     slug,
     thanks: THANKS_FINAL,
     title: 'Jerome &: The Comedy Variety Show',
