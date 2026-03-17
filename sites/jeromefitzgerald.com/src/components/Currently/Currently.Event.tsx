@@ -28,6 +28,9 @@ async function CurrentlyEvent({
   const dateNow = Date.now()
   const { color, href, icon, id, prefetch, title } = c
   const items = await getEventsWithLimit({ limit: 10 })
+  // console.dir(`items...`)
+  // console.dir(items)
+
   const events = _take(
     _orderBy(
       _filter(items, (event: Event) => !isAfter(dateNow, event.dateIso)),
@@ -47,6 +50,7 @@ async function CurrentlyEvent({
   const subline = hasTop ? top?.title : titleSub[1]
 
   const props = {
+    hasTop,
     headline,
     id,
     isLoading: false,
@@ -55,6 +59,7 @@ async function CurrentlyEvent({
 
   const propsParent = {
     color,
+    hasTop,
     href: hasTop ? top?.slugPreviewEt : href,
     icon,
     id,
@@ -62,7 +67,13 @@ async function CurrentlyEvent({
     title,
   }
 
-  if (!hasTop) return null
+  // if (!hasTop) return null
+
+  // if (!hasTop) {
+  //   propsParent.title = 'Past Events…'
+  //   props.headline = 'Check Out Recent Shows'
+  //   props.subline = 'Book me!'
+  // }
 
   return (
     // @ts-ignore

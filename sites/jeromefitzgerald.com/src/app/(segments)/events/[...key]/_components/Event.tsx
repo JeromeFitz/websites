@@ -19,6 +19,7 @@ const ROLLUPS: string[] = [
   'rollupPeopleGuestTitle',
   'rollupShowsProducerTitle',
   'rollupShowsPrimaryCastTitle',
+  'rollupShowsPrimaryTitle',
   'rollupShowsSupportingTitle',
 ]
 

@@ -19,6 +19,7 @@ import {
 import { Strong } from '@radix-ui/themes/dist/esm/components/strong.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import NextLink from 'next/link'
+import { usePathname, useRouter } from 'next/navigation'
 import { useState } from 'react'
 
 import { useStore as _useStore, useShallow } from '@/store/index'
@@ -50,119 +51,148 @@ const image = {
   width: 1280,
 }
 
-function NavigationPrimary({ order = 0 }) {
+/**
+ * @todo
+ *
+ * If root -- Popover
+ * Anywhere else --- Go To Home
+ */
+
+function NavigationButton({ isHomePage = false }: { isHomePage?: boolean }) {
+  const router = useRouter()
+  return (
+    <Button
+      // aria-label="Jerome"
+      className={cx(
+        '!bg-accent-1 !hover:bg-accent-2 transition-colors',
+        '[&>svg]:data-[state="open"]:animate-none',
+        '!cursor-pointer',
+      )}
+      // color={isLoading ? 'accent' : 'gray'}
+      color="gray"
+      onClick={() => (!isHomePage ? router.push('/') : undefined)}
+      radius="full"
+      size="3"
+      variant="outline"
+    >
+      <DotFilledIcon
+        className={cx(
+          'size-6 animate-pulse text-pink-11 transition-all delay-1000',
+          '',
+        )}
+      />
+      <Text>
+        <Strong>Jerome</Strong>
+      </Text>
+    </Button>
+  )
+}
+
+function NavigationLink({ isHomePage = false }: { isHomePage?: boolean }) {
+  return <NavigationButton isHomePage={isHomePage} />
+}
+
+function NavigationPopOver() {
   // @ts-ignore
   const { isOverlaySet } = useStore()
   const [isPopover, isPoperoverSet] = useState(false)
+  return (
+    // @todo(radix) children
+    // @ts-ignore
+    <PopoverRoot
+      modal={true}
+      onOpenChange={() => {
+        isOverlaySet()
+        isPoperoverSet(!isPopover)
+      }}
+      open={isPopover}
+    >
+      {/* @ts-ignore */}
+      <PopoverTrigger asChild>
+        <Flex direction="row" gap="3">
+          <NavigationButton />
+        </Flex>
+      </PopoverTrigger>
+      <PopoverContent
+        asChild
+        // className="!z-[999]"
+        size="1"
+        style={{ zIndex: '9999' }}
+      >
+        <Grid
+          className={cx(
+            '!overflow-hidden rounded-3 border-1 border-gray-7',
+            'w-[calc(var(--radix-popper-available-width)_-_3px)] min-w-[unset]',
+            'md:max-w-[209px]',
+          )}
+          m="0"
+          p="0"
+          width="calc(var(--radix-popper-available-width) - 13px"
+        >
+          <Inset mb={{ initial: '6', md: '4' }} p="0" side="top">
+            <AspectRatio ratio={4 / 3}>
+              <NextImage {...image} />
+            </AspectRatio>
+          </Inset>
+
+          <Flex
+            direction="column"
+            display="flex"
+            gap="6"
+            mb={{ initial: '6', md: '4' }}
+            px={{ initial: '3', md: '3' }}
+          >
+            <Text as="p" size="3" trim="both">
+              <Em>Hello, fellow human (or robot).</Em>
+            </Text>
+            <Text as="p" size="3" trim="both">
+              <Strong>
+                I‘m Jerome (he/him).
+                <br />
+                An actor, comedian, & writer.
+              </Strong>
+            </Text>
+            <Text as="p" size="3" trim="both">
+              My focus is mainly comedy with the occasional drama or musical number.
+            </Text>
+            <Text as="p" size="3" trim="both">
+              Along with a healthy career in engineering leadership.
+            </Text>
+            <Text as="p" size="3" trim="both">
+              Well,{' '}
+              <Link
+                asChild
+                onClick={() => {
+                  isOverlaySet()
+                  isPoperoverSet(!isPopover)
+                }}
+              >
+                <NextLink href="/about">click around</NextLink>
+              </Link>{' '}
+              I guess.
+            </Text>
+          </Flex>
+        </Grid>
+      </PopoverContent>
+    </PopoverRoot>
+  )
+}
+
+function NavigationPrimary({ order = 0 }) {
+  const pathname = usePathname()
+  const isHomePage = pathname === '/'
 
   return (
     <div
       className={cx('', 'relative h-auto w-min flex-none')}
-      // ref={ref}
       style={{ opacity: 1, order }}
     >
       <div className="contents size-full">
-        {/* @todo(radix) children */}
-        {/* @ts-ignore */}
-        <PopoverRoot
-          modal={true}
-          onOpenChange={() => {
-            isOverlaySet()
-            isPoperoverSet(!isPopover)
-          }}
-          open={isPopover}
-        >
-          {/* @ts-ignore */}
-          <PopoverTrigger asChild>
-            <Flex asChild direction="row" gap="3">
-              <Button
-                aria-label="Jerome"
-                className={cx(
-                  '!bg-accent-1 !hover:bg-accent-2 transition-colors',
-                  '[&>svg]:data-[state="open"]:animate-none',
-                  '!cursor-pointer',
-                )}
-                // color={isLoading ? 'accent' : 'gray'}
-                color="gray"
-                radius="full"
-                size="3"
-                variant="outline"
-              >
-                <DotFilledIcon
-                  className={cx(
-                    'size-6 animate-pulse text-pink-11 transition-all delay-1000',
-                    '',
-                  )}
-                />
-                <Text>
-                  <Strong>Jerome</Strong>
-                </Text>
-              </Button>
-            </Flex>
-          </PopoverTrigger>
-          <PopoverContent
-            asChild
-            // className="!z-[999]"
-            size="1"
-            style={{ zIndex: '9999' }}
-          >
-            <Grid
-              className={cx(
-                '!overflow-hidden rounded-3 border-1 border-gray-7',
-                'w-[calc(var(--radix-popper-available-width)_-_3px)] min-w-[unset]',
-                'md:max-w-[209px]',
-              )}
-              m="0"
-              p="0"
-              width="calc(var(--radix-popper-available-width) - 13px"
-            >
-              <Inset mb={{ initial: '6', md: '4' }} p="0" side="top">
-                <AspectRatio ratio={4 / 3}>
-                  <NextImage {...image} />
-                </AspectRatio>
-              </Inset>
-
-              <Flex
-                direction="column"
-                display="flex"
-                gap="6"
-                mb={{ initial: '6', md: '4' }}
-                px={{ initial: '3', md: '3' }}
-              >
-                <Text as="p" size="3" trim="both">
-                  <Em>Hello, fellow human (or robot).</Em>
-                </Text>
-                <Text as="p" size="3" trim="both">
-                  <Strong>
-                    I‘m Jerome (he/him).
-                    <br />
-                    An actor, comedian, & writer.
-                  </Strong>
-                </Text>
-                <Text as="p" size="3" trim="both">
-                  My focus is mainly comedy with the occasional drama or musical
-                  number.
-                </Text>
-                <Text as="p" size="3" trim="both">
-                  Along with a healthy career in engineering leadership.
-                </Text>
-                <Text as="p" size="3" trim="both">
-                  Well,{' '}
-                  <Link
-                    asChild
-                    onClick={() => {
-                      isOverlaySet()
-                      isPoperoverSet(!isPopover)
-                    }}
-                  >
-                    <NextLink href="/about">click around</NextLink>
-                  </Link>{' '}
-                  I guess.
-                </Text>
-              </Flex>
-            </Grid>
-          </PopoverContent>
-        </PopoverRoot>
+        {isHomePage ? (
+          <NavigationPopOver />
+        ) : (
+          <NavigationLink isHomePage={isHomePage} />
+        )}
       </div>
     </div>
   )

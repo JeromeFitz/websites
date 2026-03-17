@@ -15,6 +15,7 @@ function ContainerFooter() {
       flexGrow="0"
       flexShrink="0"
       height="100%"
+      pb={{ initial: '0', md: '9' }}
       position="relative"
       style={{ opacity: 1, transform: 'perspective(1200px)' }}
       width="100%"

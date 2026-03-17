@@ -8,4 +8,5 @@ const cacheBlogs = pgTable('cache_blogs', {
 })
 
 export const selectSchemaBlogs = createSelectSchema(cacheBlogs)
+
 export { cacheBlogs }

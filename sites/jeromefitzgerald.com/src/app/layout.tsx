@@ -10,7 +10,7 @@ import _take from 'lodash/take.js'
 
 import { ContainerFooter } from '@/components/Container/Container.Footer'
 import { ContainerGradient } from '@/components/Container/Container.Gradient'
-import { ContainerContent } from '@/components/Container/Container.Main'
+// import { ContainerContent } from '@/components/Container/Container.Main'
 import { ContainerNavigation } from '@/components/Container/Container.Navigation'
 import { ContainerSite } from '@/components/Container/Container.Site'
 import { Overlay } from '@/components/Overlay/Overlay'
@@ -22,6 +22,7 @@ import { cx } from '@/utils/cx'
 
 import { fonts } from './_next/fonts'
 import { PreloadResources } from './_next/preload-resources'
+// import { KitchenSink } from './_v16/kitchen-sink'
 
 import '@radix-ui/themes/styles.css'
 import './styles--globals.css'
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
   authors: [{ name: 'Jerome Fitzgerald', url: 'https://jeromefitzgerald.com' }],
   creator: 'Jerome Fitzgerald',
   description:
-    'Jerome Fitzgerald is an actor, comedian, & writer in Brooklyn, NY. Hailing from Pittsburgh, PA.',
+    'Jerome Fitzgerald is an actor, comedian, & writer in NYC. Hailing from Pittsburgh, PA.',
   metadataBase: new URL('https://jeromefitzgerald.com'),
   openGraph: {
     images: [
@@ -95,10 +96,46 @@ export default async function RootLayout({
             <ContainerSite>
               <ContainerNavigation />
               <SkipNavContent>
-                <ContainerContent>{children}</ContainerContent>
+                {/* <ContainerContent>{children}</ContainerContent> */}
+                {children}
               </SkipNavContent>
               <ContainerFooter />
             </ContainerSite>
+            <Overlay />
+          </Providers>
+        </body>
+      </Theme>
+    </html>
+  )
+}
+
+export async function RootLayoutV16({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en" suppressHydrationWarning={true}>
+      <PreloadResources />
+      <Theme
+        accentColor="pink"
+        asChild
+        grayColor="mauve"
+        panelBackground="translucent"
+        radius="medium"
+        scaling="100%"
+      >
+        <body
+          className={cx(
+            fonts,
+            'antialiased',
+            'overflow-y-auto overflow-x-hidden md:overflow-y-auto',
+            'scroll-smooth font-sans antialiased',
+            //
+            'selection:bg-gray-12 selection:text-gray-1',
+            'bg-white dark:bg-black',
+          )}
+        >
+          <Providers>
+            <ContainerGradient />
+            {/* <KitchenSink /> */}
+            {children}
             <Overlay />
           </Providers>
         </body>

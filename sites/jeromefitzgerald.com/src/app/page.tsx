@@ -2,9 +2,18 @@ import type { Metadata, ResolvingMetadata } from 'next'
 
 import type { Page } from '@/lib/drizzle/schemas/cache-pages/types'
 
-import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
+// import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
+// import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
+// import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
+import { Em } from '@radix-ui/themes/dist/esm/components/em.js'
+import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
+// import { Grid } from '@radix-ui/themes/dist/esm/components/grid.js'
+// import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
+// import { Strong } from '@radix-ui/themes/dist/esm/components/strong.js'
+import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 
 import { ArticleMain } from '@/components/Article/Article.Main'
+import { HeaderFull } from '@/components/Header/Header.Full'
 // import { getImageKeyValue } from '@/lib/drizzle/schemas/cache-images/queries'
 import { getPage, segment } from '@/lib/drizzle/schemas/cache-pages/queries'
 // import { getImageKeySlug } from '@/lib/drizzle/utils/getImageKeySlug'
@@ -55,24 +64,35 @@ export async function generateMetadata(
   }
 }
 
+function Subline() {
+  return (
+    <Text size={{ initial: '2', md: '4' }}>
+      <Em>An actor, comedian, and writer residing in NYC.</Em>
+      <br />
+      <br />
+      <Em>Also does tech stuff.</Em>
+      <br />
+    </Text>
+  )
+}
+
 function Home() {
   return (
-    <>
+    <Flex direction="column" width="100%">
+      <HeaderFull count="he/him" subline={<Subline />} title="Jerome" />
       <ArticleMain>
-        <Heading
-          as="h1"
-          className="sr-only absolute top-[-999px] left-[-999px] block"
+        <Flex
+          direction="column"
+          gap="9"
+          mb={{ initial: '4', md: '6' }}
+          pb={{ initial: '4', md: '6' }}
         >
-          Jerome Fitzgerald (he/him)
-        </Heading>
-        <Heading
-          as="h2"
-          className="sr-only absolute top-[-999px] left-[-999px] block"
-        >
-          Actor. Comedian. Human.
-        </Heading>
+          <Flex direction="column" gap="3">
+            <Text size={{ initial: '3', md: '5' }}></Text>
+          </Flex>
+        </Flex>
       </ArticleMain>
-    </>
+    </Flex>
   )
 }
 

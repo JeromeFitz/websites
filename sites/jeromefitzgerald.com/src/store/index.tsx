@@ -504,4 +504,5 @@ const initializeStoreMenu = (preloadedState: Partial<any> = {}) => {
   }))
 }
 
+// biome-ignore lint/style/useComponentExportOnlyModules: @todo
 export { initializeStoreMenu, Provider, useShallow, useStore }

@@ -9,12 +9,13 @@
 @import url('./safari.css') layer(utilities);
 /* @import url('./fonts.css'); */
 
-@import 'tw-animate-css';
-@plugin "@tailwindcss/forms";
-@plugin "@tailwindcss/typography";
-@plugin "tailwindcss-radix";
 /* @plugin "radix-themes-tw"; */
 @import './radix-themes-tw.css';
+
+@import 'tw-animate-css';
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+@plugin 'tailwindcss-radix';
 
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,
@@ -161,8 +162,6 @@
     --inherit: 'inherit';
     --instagram: '#c32aa3';
     --linkedin: '#0a66c2';
-    --spotify: '#1ed760';
-    /* --spotify-dark: '#1db954'; */
     --threads: '#c32aa3';
     --twitter: '#1da1f2';
     /* custom */
@@ -186,12 +185,15 @@
   --tomato-a11: color(display-p3 0.701 0.249 0.137);
   --yellow-a11: color(display-p3 0.592 0.392 0);
 }
+/*
 .dark,
 .dark-theme {
-  --spotify: '#1db954';
 }
+*/
 
-#data-radix-popper-content-wrapper {
+#data-radix-popper-content-wrapper,
+.rt-BaseDialogOverlay,
+.rt-DialogOverlay {
   z-index: 9999;
 }
 

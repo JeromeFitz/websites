@@ -9,7 +9,7 @@ import type {
   RichTextItemResponse,
 } from '@notionhq/client/build/src/api-endpoints.js'
 
-import { Fragment, forwardRef } from 'react'
+import { Fragment } from 'react'
 
 import { Anchor } from '@/components/Anchor/index'
 import { cx } from '@/utils/cx'
@@ -39,7 +39,7 @@ type ApiColor =
   | 'yellow_background'
 
 // @todo(types)
-const Text = forwardRef(function Text(props: any, ref: any) {
+const Text = ({ ref, ...props }: any) => {
   const { children } = props
 
   const Component = props?.as ?? 'p'
@@ -52,7 +52,7 @@ const Text = forwardRef(function Text(props: any, ref: any) {
       {children}
     </Component>
   )
-})
+}
 
 // @ts-ignore
 function Href({ children, href, ...props }) {

@@ -76,7 +76,7 @@ async function Slug() {
 
   return (
     <>
-      <Flex direction="column">
+      <Flex direction="column" width="100%">
         <HeaderFull count={5} overline="" title="About" />
         <Flex
           direction="column"

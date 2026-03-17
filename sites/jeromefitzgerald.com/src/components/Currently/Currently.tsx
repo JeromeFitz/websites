@@ -1,3 +1,4 @@
+import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 import { Em } from '@radix-ui/themes/dist/esm/components/em.js'
 import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
@@ -25,6 +26,40 @@ function Currently() {
       width="100%"
       wrap="nowrap"
     >
+      <Box
+        className={cx(
+          'w-full',
+          // 'hidden!', 'md:inline!'
+        )}
+        gridColumnStart={{ initial: '1', md: '1' }}
+        gridColumnEnd={{ initial: '13', md: '13' }}
+      >
+        <Flex gap="5" direction="column" width="100%" py="6">
+          <Text
+            className={cx(
+              'text-accentA-12',
+              // 'uppercase md:capitalize'
+            )}
+            size={{ initial: '7', md: '8' }}
+            // weight="bold"
+          >
+            <Em>
+              Currently…
+              <sup
+                aria-hidden={true}
+                className={cx(
+                  'align-super text-3 md:text-5',
+                  // 'hidden',
+                  // 'md:inline-block',
+                )}
+              >
+                {items.length}
+              </sup>
+            </Em>
+          </Text>
+        </Flex>
+      </Box>
+
       <Flex
         className={cx('place-content-start items-start')}
         direction={{ initial: 'column', md: 'row' }}
@@ -38,7 +73,7 @@ function Currently() {
         wrap="nowrap"
       >
         <Flex
-          className="content-center items-center overflow-visible rounded-md"
+          className="hidden! content-center items-center overflow-visible rounded-md"
           content="center"
           direction="row"
           gap="10"

@@ -3,7 +3,6 @@ import type { NextRequest } from 'next/server.js'
 import { envClient } from '@jeromefitz/next-config/env.client.mjs'
 import { envServer } from '@jeromefitz/next-config/env.server.mjs'
 
-import fetch from 'isomorphic-unfetch'
 import { NextResponse } from 'next/server.js'
 import xml2js from 'xml2js'
 

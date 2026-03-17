@@ -22,9 +22,6 @@ const envSecrets = [
   'OG_API_KEY',
   'PREVIEW_TOKEN',
   'REVALIDATE_TOKEN',
-  'SPOTIFY_CLIENT_ID',
-  'SPOTIFY_CLIENT_SECRET',
-  'SPOTIFY_REFRESH_TOKEN',
   // // 'UPSTASH_REDIS_REST_TOKEN',
   // // 'UPSTASH_REDIS_REST_URL',
 ]
@@ -113,7 +110,7 @@ const config = ({
     experimental: {
       // esmExternals: true,
       // optimizePackageImports: ['@radix-ui/themes'],
-      useLightningcss: true,
+      // useLightningcss: true,
     },
     // exportPathMap,
     // generateBuildId,
@@ -146,6 +143,7 @@ const config = ({
       minimumCacheTTL: 18144000, // 1 month
       // minimumCacheTTL: 604800, // 1 week
       // minimumCacheTTL: 86400, // 1 day
+      qualities: [25, 50, 75, 90],
       remotePatterns: [
         {
           hostname: `**.${process.env.NEXT_PUBLIC__SITE}`,
@@ -201,11 +199,6 @@ const config = ({
         // @note(remotePattern) Notion
         {
           hostname: `**.notion.so`,
-          protocol,
-        },
-        // @note(remotePattern) Spotify
-        {
-          hostname: `i.scdn.co`,
           protocol,
         },
         // @note(remotePattern) Twitter

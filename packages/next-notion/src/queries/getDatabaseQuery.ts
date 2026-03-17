@@ -208,7 +208,8 @@ const getDatabaseQueryByDateRange = async ({
 
   return response
 }
+
 // )
 
-export { getDatabaseQuery, getDatabaseQueryByDateRange }
 export type { GetDatabaseQueryTypes }
+export { getDatabaseQuery, getDatabaseQueryByDateRange }

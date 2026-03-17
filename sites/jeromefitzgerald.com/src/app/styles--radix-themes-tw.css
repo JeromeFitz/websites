@@ -8,8 +8,8 @@
 @import '@radix-ui/themes/styles.css';
 
 @custom-variant dark (&:where(.dark, .dark *));
-@custom-variant translucent (&:where([data-panel-background="translucent"] *));
-@custom-variant solid (&:where([data-panel-background="solid"] *));
+@custom-variant translucent (&:where([data-panel-background='translucent'] *));
+@custom-variant solid (&:where([data-panel-background='solid'] *));
 
 @theme inline {
   /* colors - other */

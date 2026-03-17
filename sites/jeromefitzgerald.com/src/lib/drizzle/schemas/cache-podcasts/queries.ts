@@ -61,7 +61,6 @@ SELECT
 	arr.item_object -> 'properties' -> 'SEO.Keywords' -> 'rich_text' -> 0 ->> 'plain_text' AS "seoKeywords",
 	arr.item_object -> 'properties' -> 'Slug' -> 'rich_text' -> 0 ->> 'plain_text' AS "slug",
 	arr.item_object -> 'properties' -> 'Slug.Preview' -> 'formula' ->> 'string' AS "slugPreview",
-	arr.item_object -> 'properties' -> 'Social.Spotify' ->> 'url' AS "socialSpotify",
 	arr.item_object -> 'properties' -> 'Spotify.ID' -> 'rich_text' -> 0 ->> 'plain_text' AS "spotifyId",
 	arr.item_object -> 'properties' -> 'Spotify.URL' ->> 'url' AS "spotifyUrl",
 	arr.item_object -> 'properties' -> 'Title' -> 'title' -> 0 ->> 'plain_text' AS "title",

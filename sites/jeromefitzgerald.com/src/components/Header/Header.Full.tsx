@@ -1,6 +1,8 @@
+import { Em } from '@radix-ui/themes/dist/esm/components/em.js'
 import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 // import { Grid } from '@radix-ui/themes/dist/esm/components/grid.js'
 import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
+import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 
 import { cx } from '@/utils/cx'
 
@@ -9,12 +11,17 @@ import { cx } from '@/utils/cx'
 function HeaderFull({
   count = 0,
   overline = '',
+  subline = '',
   title = '',
 }: {
-  count?: number
+  count?: number | string
   overline?: string
-  title: string
+  subline?: string | React.ReactNode
+  title: string | React.ReactNode
 }) {
+  const isSupString = typeof count === 'string'
+  // console.dir(`isSupString: ${isSupString ? 'y' : 'n'}`)
+
   return (
     <Flex
       asChild
@@ -69,13 +76,13 @@ function HeaderFull({
               position="relative"
               width="auto"
             >
-              <Heading
-                as="h2"
+              <Text
+                // as="h2"
                 className="font-medium text-gray-11"
                 size={{ initial: '2', md: '4' }}
               >
                 {overline}
-              </Heading>
+              </Text>
             </Flex>
             <Flex
               className={cx(
@@ -98,12 +105,44 @@ function HeaderFull({
               >
                 {title}
                 {!!count && (
-                  <sup aria-hidden={true} className="align-super text-3 md:text-6">
+                  <sup
+                    aria-hidden={true}
+                    className={cx(
+                      'align-super text-3 md:text-6',
+                      isSupString && 'text-2! md:text-!',
+                    )}
+                  >
                     {` `}
+                    {isSupString && '('}
                     {count}
+                    {isSupString && ')'}
                   </sup>
                 )}
               </Heading>
+            </Flex>
+            <Flex
+              className={cx(
+                'transform-none outline-hidden',
+                'w-4/5 md:w-3/5',
+                // 'whitespace-pre'
+              )}
+              direction="column"
+              flexBasis="auto"
+              flexGrow="0"
+              flexShrink="0"
+              height="auto"
+              justify="start"
+              position="relative"
+              // width="auto"
+            >
+              <Text
+                // as="h3"
+                className="text-gray-11"
+                size={{ initial: '2', md: '4' }}
+                weight="light"
+              >
+                {typeof subline === 'string' ? <Em>{subline}</Em> : <>{subline}</>}
+              </Text>
             </Flex>
           </Flex>
           <Flex

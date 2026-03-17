@@ -8,6 +8,7 @@ import {
   BookOpenIcon as BookOpenIconHero,
   CloudIcon as CloudIconHero,
   HashtagIcon as HashtagIconHero,
+  LanguageIcon as LanguageIconHero,
   MapIcon as MapIconHero,
   MapPinIcon as MapPinIconHero,
   MicrophoneIcon as MicrophoneIconHero,
@@ -71,6 +72,7 @@ import {
   PlusCircledIcon as PlusCircledIconRadix,
   PlusIcon as PlusIconRadix,
   QuoteIcon as QuoteIconRadix,
+  ReaderIcon as ReaderIconRadix,
   ReloadIcon as ReloadIconRadix,
   Share1Icon as Share1IconRadix,
   SpeakerModerateIcon as SpeakerModerateIconRadix,
@@ -705,6 +707,22 @@ const InstagramLogoIcon = ({ label, ...props }: IconProps) => (
   </AccessibleIcon>
 )
 
+const LanguageIcon = ({ className, label, ...props }: IconProps) => (
+  <AccessibleIcon
+    label={
+      label ||
+      'An icon representing a map. This is a page that has been folded into four equal rectangles each kind of askew a bit to show depth. There is nothing within this outline of the four rectangles.'
+    }
+  >
+    <LanguageIconHero
+      className={cx(twHeroToRadixIcon, className)}
+      data-icon="hero"
+      role="img"
+      {...props}
+    />
+  </AccessibleIcon>
+)
+
 const Link1Icon = ({ label, ...props }: IconProps) => (
   <AccessibleIcon
     label={
@@ -885,6 +903,12 @@ const QuoteIcon = ({ label, ...props }: IconProps) => (
   </AccessibleIcon>
 )
 
+const ReaderIcon = ({ label, ...props }: IconProps) => (
+  <AccessibleIcon label={label || 'An icon representing a page with words on it.'}>
+    <ReaderIconRadix role="img" {...props} />
+  </AccessibleIcon>
+)
+
 const ReloadIcon = ({ label, ...props }: IconProps) => (
   <AccessibleIcon
     label={
@@ -904,7 +928,7 @@ const ReturnIcon = ({ className, label, ...props }: IconProps) => (
     }
   >
     <ArrowUturnLeftHero
-      className={cx(twHeroToRadixIcon, '-scale-x-100 rotate-180', className)}
+      className={cx(twHeroToRadixIcon, 'rotate-180 -scale-x-100', className)}
       role="img"
       {...props}
     />
@@ -1170,6 +1194,7 @@ export {
   ImageIcon,
   InfoCircledIcon,
   InstagramLogoIcon,
+  LanguageIcon,
   Link1Icon,
   LinkedInLogoIcon,
   ListBulletIcon,
@@ -1186,6 +1211,7 @@ export {
   PlusCircledIcon,
   PlusIcon,
   QuoteIcon,
+  ReaderIcon,
   ReloadIcon,
   ReturnIcon,
   Share1Icon,

@@ -17,7 +17,6 @@
     "OVERRIDE_CACHE",
     "POSTGRES_*",
     "REDIS_*",
-    "SPOTIFY_*",
     "UPSTASH_*",
     "TURBO_*",
     "VERCEL_*"

@@ -56,6 +56,7 @@ import {
   ImageIcon,
   InfoCircledIcon,
   InstagramLogoIcon,
+  LanguageIcon,
   Link1Icon,
   LinkedInLogoIcon,
   ListBulletIcon,
@@ -140,6 +141,7 @@ Icon.IdCard = IdCardIcon
 Icon.Image = ImageIcon
 Icon.InfoCircled = InfoCircledIcon
 Icon.InstagramLogo = InstagramLogoIcon
+Icon.LanguageIcon = LanguageIcon
 Icon.Link1 = Link1Icon
 Icon.LinkedInLogo = LinkedInLogoIcon
 Icon.ListBullet = ListBulletIcon

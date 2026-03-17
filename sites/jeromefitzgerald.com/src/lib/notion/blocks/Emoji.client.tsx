@@ -4,6 +4,7 @@ import _map from 'lodash/map.js'
 import _orderBy from 'lodash/orderBy.js'
 import _size from 'lodash/size.js'
 
+// biome-ignore lint/correctness/noNextAsyncClientComponent: @todo
 async function Emoji({ character }: { character: any }) {
   const { find: findEmoji } = await import('node-emoji')
   const emojiFound = findEmoji(character)
@@ -58,6 +59,7 @@ function EmojiHtml({ emoji, label }: { emoji: string; label: string }) {
 
 // @todo(complexity) 13
 // biome-ignore lint/complexity/noExcessiveCognitiveComplexity: migrate
+// biome-ignore lint/correctness/noNextAsyncClientComponent: @todo
 async function EmojiWrapper({ id, text }: { id: string; text: string }) {
   // const [loading, loadingSet] = useState(true)
   // useEffect(() => {

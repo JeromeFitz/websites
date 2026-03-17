@@ -1,15 +1,34 @@
 import type { Show as ShowType } from '@/lib/drizzle/schemas/cache-shows/types'
 
+// import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
+// import { Grid } from '@radix-ui/themes/dist/esm/components/grid.js'
+// import _findKey from 'lodash/findKey.js'
+import _get from 'lodash/get.js'
+
+import { ModuleCredits } from '@/app/_v16/Module'
+import { GridWrapper } from '@/app/_v16/Wrapper'
+import {
+  imageGallery,
+  // imageGallery2,
+  // imageHeadline,
+} from '@/app/(segments)/shows/_content/_images'
 import { ArticleMain } from '@/components/Article/Article.Main'
 import { ArticleMainCTA } from '@/components/Article/Article.Main.CTA'
 import { ContainerWithSidebar } from '@/components/Container/Container.Main'
 import { Credits } from '@/components/Credits/Credits'
+import { HeaderFull } from '@/components/Header/Header.Full'
 import { HeaderSidebar } from '@/components/Header/Header.Sidebar'
 import { segment } from '@/lib/drizzle/schemas/cache-shows/queries'
 import { Notion } from '@/lib/notion/Notion.Component'
 import { getTitleData } from '@/utils/getTitleData'
 import { isEmpty } from '@/utils/isEmpty'
 
+import {
+  ContentComponents,
+  ContentSection,
+  ContentTitle,
+  DataComponents,
+} from '../../_content/_components'
 import { ShowSlugHeaderData } from './Show.Slug.Header.Data'
 
 const ROLLUPS: string[] = [
@@ -25,7 +44,7 @@ const ROLLUPS: string[] = [
   'rollupPeopleCastPastTitle',
 ]
 
-export function Show({ blocks, item }: { blocks: any; item: ShowType }) {
+export async function Show({ blocks, item }: { blocks: any; item: ShowType }) {
   const itemBlocks = blocks[0]
 
   const R: any = {}
@@ -39,16 +58,52 @@ export function Show({ blocks, item }: { blocks: any; item: ShowType }) {
     })
   })
 
+  const customKey = _get(ContentComponents, item.slug)
+  const hasCustom = !!customKey
+  const customContent =
+    // @ts-ignore
+    hasCustom && (await DataComponents[item.slug]({ slug: item.slug }))
+
+  const foo = [imageGallery[2]]
+
   return (
-    <ContainerWithSidebar>
-      <HeaderSidebar title={item.title}>
-        <ShowSlugHeaderData item={item} />
-      </HeaderSidebar>
-      <ArticleMain>
-        {!isEmpty(blocks) && <Notion data={itemBlocks} />}
-        <Credits id={item.id} key={`relations--${item.id}--wrapper`} relations={R} />
-        <ArticleMainCTA href={`/${segment}`} type={segment} />
-      </ArticleMain>
-    </ContainerWithSidebar>
+    <>
+      <HeaderFull
+        count={0}
+        subline={customContent.seoDescription}
+        title={item.title}
+      />
+      <ContainerWithSidebar>
+        <HeaderSidebar title={item.title}>
+          <ShowSlugHeaderData item={item} />
+        </HeaderSidebar>
+        <ArticleMain>
+          {hasCustom ? (
+            <>
+              <customContent.content />
+              <GridWrapper>
+                <ContentTitle title="Credits" />
+                <ContentSection>
+                  <ModuleCredits data={customContent} />
+                </ContentSection>
+              </GridWrapper>
+            </>
+          ) : (
+            !isEmpty(blocks) && (
+              <>
+                <Notion data={itemBlocks} />
+                <Credits
+                  id={item.id}
+                  key={`relations--${item.id}--wrapper`}
+                  relations={R}
+                />
+              </>
+            )
+          )}
+
+          <ArticleMainCTA href={`/${segment}`} type={segment} />
+        </ArticleMain>
+      </ContainerWithSidebar>
+    </>
   )
 }

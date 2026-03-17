@@ -3,7 +3,7 @@ import type { NotionColor } from '@/lib/drizzle/schemas/_notion/types'
 import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
 import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
-import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
+import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import NextLink from 'next/link'
 
 import { cx } from '@/utils/cx'
@@ -87,12 +87,16 @@ function CurrentlyWrapper({
           asChild
           className=""
           direction="column"
+          gap={{ initial: '1', md: '3' }}
           height="100%"
           justify="between"
-          pb="5"
           position="relative"
-          pt="4"
-          px="0"
+          // pb="5"
+          // pt="4"
+          // px="0"
+          pb={{ initial: '5', md: '5' }}
+          pt={{ initial: '1', md: '5' }}
+          px={{ initial: '0', md: '0' }}
           width="100%"
           wrap="nowrap"
         >
@@ -134,16 +138,19 @@ function CurrentlyWrapper({
                 width="100%"
                 wrap="nowrap"
               >
-                <Heading
+                <Text
                   align="left"
-                  as="h3"
-                  className={cx('font-medium font-mono uppercase')}
+                  // as="h3"
+                  className={cx(
+                    'font-medium font-mono uppercase',
+                    // 'hidden! md:visible!'
+                  )}
                   highContrast
                   mb="2"
                   size="1"
                 >
                   {title}
-                </Heading>
+                </Text>
                 {children}
               </Flex>
             </NextLink>

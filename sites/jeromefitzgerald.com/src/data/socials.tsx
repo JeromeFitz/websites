@@ -4,6 +4,7 @@ import {
   FileTextIcon,
   GitHubLogoIcon,
   InstagramLogoIcon,
+  LanguageIcon,
   LinkedInLogoIcon,
   ThreadsLogoIcon,
 } from '@/components/Icon/index'
@@ -47,6 +48,19 @@ const socials = [
   },
   {
     active: true,
+    className: 'hover:bg-duolingo',
+    icon: <LanguageIcon className="text-inherit" />,
+    id: 'duolingo',
+    keywords: 'social duolingo',
+    rightSlot: <ExternalLinkIcon />,
+    subtitle: 'jeromefitzgerald',
+    title: 'Duolingo',
+    tooltipDescription: 'Uh... sure.',
+    type: URL_TYPE.EXTERNAL,
+    url: 'https://www.duolingo.com/profile/jeromefitzgerald',
+  },
+  {
+    active: true,
     className:
       'hover:bg-github border-0 hover:border-1 hover:border-github-dark dark:hover:bg-github-dark',
     icon: <GitHubLogoIcon className="text-inherit" />,
@@ -86,7 +100,7 @@ const socials = [
     url: 'https://www.linkedin.com/in/jeromefitzgerald',
   },
   {
-    active: true,
+    active: false,
     className: 'hover:bg-twitter',
     icon: <FileTextIcon className="text-inherit" />,
     id: 'x',
