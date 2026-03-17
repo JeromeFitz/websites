@@ -30,7 +30,7 @@ function CTA({ href, isDisabled = false }: { href: string; isDisabled: boolean }
           'data-[disabled="true"]:hover:!translate-y-0',
           'data-[disabled="true"]:hidden',
           'data-[disabled="true"]:!shadow-none',
-          isDisabled && '!hidden',
+          isDisabled && 'hidden!',
           '!text-black',
         )}
         color="green"

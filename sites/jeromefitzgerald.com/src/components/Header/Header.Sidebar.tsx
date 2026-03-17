@@ -19,12 +19,13 @@ function ContainerHeaderSidebar({ children }: { children: React.ReactNode }) {
         // 'rounded-md border-1',
         'z-0 content-center items-start overflow-auto will-change-opacity',
         'transition-opacity duration-250',
+        'top-[calc(var(--spacing)_*_22)]',
         'md:top-[calc(var(--spacing)_*_22)]',
-        isSticky ? 'opacity-100' : 'opacity-0',
+        // isSticky ? 'opacity-100' : 'opacity-0',
       )}
       data-name={isSticky ? 'Side Barzzzz' : 'Side Bar'}
       display="inline-flex"
-      flexBasis="0px"
+      flexBasis={{ initial: 'auto', md: '"0px"' }}
       flexGrow="1"
       flexShrink="0"
       height={{ initial: 'min-content', md: '88vh' }}

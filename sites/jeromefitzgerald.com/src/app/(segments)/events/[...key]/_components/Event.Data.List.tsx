@@ -121,7 +121,7 @@ function DataList__Info({
         )}
         size="2"
       >
-        <DataList.Item align="start" className="!hidden">
+        <DataList.Item align="start" className="hidden!">
           <DataList.Label
             className="flex flex-row items-center justify-start gap-1"
             minWidth="0px"

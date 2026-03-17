@@ -18,7 +18,7 @@ function ContainerContent({
         className,
       )}
       data-name="Container: Main"
-      direction="row"
+      direction={{ initial: 'column', md: 'row' }}
       gap={{ initial: '0', md: '6' }}
       height="min-content"
       id="container--main"
@@ -36,7 +36,7 @@ function ContainerContent({
 function ContainerWithSidebar({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <ContainerContent className="!p-0 !pb-24 md:flex-row">
+      <ContainerContent className="!p-0 !pb-24 flex-row md:flex-row">
         {children}
       </ContainerContent>
     </>

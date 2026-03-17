@@ -6,6 +6,7 @@ import {
   InstagramLogoIcon,
   LanguageIcon,
   LinkedInLogoIcon,
+  MusicalNoteIcon,
   ThreadsLogoIcon,
 } from '@/components/Icon/index'
 
@@ -33,6 +34,19 @@ const URL_TYPE = {
 // }
 
 const socials = [
+  {
+    active: true,
+    className: 'hover:bg-bandcamp',
+    icon: <MusicalNoteIcon className="text-inherit" />,
+    id: 'bandcamp',
+    keywords: 'social bandcamp',
+    rightSlot: <ExternalLinkIcon />,
+    subtitle: 'jeromefitz',
+    title: 'Bandcamp',
+    tooltipDescription: 'Uh... sure.',
+    type: URL_TYPE.EXTERNAL,
+    url: 'https://bandcamp.com/jeromefitz',
+  },
   {
     active: true,
     className: 'hover:bg-bluesky',
