@@ -14,14 +14,17 @@ const configDirectory = path.resolve(
 
 const privateKey = fs.readFileSync(
   // @hack
-  path.join(configDirectory, envClient.IS_DEV ? 'AuthKey.p8' : 'route.ts'),
+  path.join(
+    configDirectory,
+    envClient.IS_DEV ? 'AuthKey_28CR8P6JM2.p8' : 'route.ts',
+  ),
   'utf8',
 )
 
 const getMusicKitDeveloperToken = async () => {
   return await jwt.sign({}, privateKey, {
     algorithm: 'ES256',
-    expiresIn: '180d',
+    expiresIn: '179d',
     header: {
       alg: 'ES256',
       kid: envServer.APPLE_AUTH_KID,
@@ -45,6 +48,7 @@ export async function GET() {
       },
     },
   )
+
   let statusMessage
   const { status, statusText } = response
   if (response.status === 401) {

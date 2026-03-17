@@ -3,12 +3,10 @@ import type {
   NumberedListItemBlockObjectResponse,
 } from '@notionhq/client/build/src/api-endpoints.js'
 
-import { forwardRef } from 'react'
-
 import { NotionBlocks as Blocks } from '../Notion.Blocks'
 import { getBlockKey } from '../Notion.utils'
 
-const ListBulleted = forwardRef(function ListBulleted(props: any, ref: any) {
+const ListBulleted = ({ ref, ...props }: any) => {
   const {
     block,
     order,
@@ -35,7 +33,7 @@ const ListBulleted = forwardRef(function ListBulleted(props: any, ref: any) {
       })}
     </Component>
   )
-})
+}
 
 export { ListBulleted }
 export default ListBulleted

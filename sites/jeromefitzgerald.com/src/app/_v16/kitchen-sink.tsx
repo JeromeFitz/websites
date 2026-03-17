@@ -1,18 +1,29 @@
 /** biome-ignore-all lint/correctness/noUnusedImports: wip */
+import { Fragment } from 'react'
+
+import { imageGallery } from '../(segments)/shows/_content/_images'
 import { FeedContainer, FeedTag, FeedTagContainer, FeedWrapper } from './Feed'
 import { Footer } from './Footer'
-import { HeaderNavigation } from './Header.Navigation'
+import { FooterNavigation, HeaderNavigation } from './Header.Navigation'
 import { Main } from './Main'
-import { ModuleAbout, ModuleHome, ModuleShow } from './Module'
+import {
+  ModuleAbout,
+  ModuleCredits,
+  ModuleHome,
+  ModuleImageGallery,
+  ModuleShow,
+} from './Module'
 
 const Home = () => {
   return (
     <>
       <HeaderNavigation />
       <Main>
-        <></>
+        {/* <Fragment /> */}
+        <ModuleCredits data={``} />
+        {/* <ModuleImageGallery images={imageGallery} /> */}
         {/* <ModuleShow /> */}
-        <ModuleHome />
+        {/* <ModuleHome /> */}
         {/* <FeedContainer>
           <FeedWrapper>
             <FeedTag />
@@ -21,6 +32,7 @@ const Home = () => {
         </FeedContainer> */}
         {/* <ModuleAbout /> */}
       </Main>
+      <FooterNavigation />
       <Footer />
     </>
   )

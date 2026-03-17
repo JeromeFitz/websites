@@ -1,3 +1,5 @@
+import type { SectionType } from './Section.types'
+
 import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
 import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
@@ -9,19 +11,13 @@ import { Separator } from '@radix-ui/themes/dist/esm/components/separator.js'
 import { Strong } from '@radix-ui/themes/dist/esm/components/strong.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import NextLink from 'next/link'
+import { Fragment } from 'react'
 
 import { Callout } from '@/components/Callout/index'
 import { ExternalLinkIcon } from '@/components/Icon/index'
 import { LI, UL } from '@/components/List/index'
 import { socials } from '@/data/socials'
 import { cx } from '@/utils/cx'
-
-interface SectionType {
-  content: any
-  icon: any
-  id: string
-  title: string
-}
 
 const nonprofits = [
   'Animal Friends',
@@ -35,6 +31,54 @@ const nonprofits = [
   'SisTers PGH',
   'Steps To Independence',
   'Wounded Warriors',
+]
+
+const teachers = [
+  {
+    href: 'https://www.instagram.com/ccackowski',
+    slug: 'craig-cackowski',
+    title: 'Craig Cackowski',
+  },
+  {
+    href: 'https://www.instagram.com/sebastianconelli',
+    slug: 'sebastian-conelli',
+    title: 'Sebastian Conelli',
+  },
+  {
+    href: 'https://www.instagram.com/kithonline',
+    slug: 'kevin-mcdonald',
+    title: 'Kevin McDonald',
+  },
+  {
+    href: 'https://www.instagram.com/jamdetroit',
+    slug: 'jaime-moyer',
+    title: 'Jaime Moyer',
+  },
+  {
+    href: 'https://bsky.app/profile/nanglish.bsky.social',
+    slug: 'christine-nangle',
+    title: 'Christine Nangle',
+  },
+  {
+    href: 'https://www.instagram.com/spotastic/',
+    slug: 'shannon-o-neill',
+    title: 'Shannon O’Neill',
+  },
+  {
+    href: 'https://www.instagram.com/nataliepalamides',
+    slug: 'natalie-palamides',
+    title: 'Natalie Palamides',
+  },
+  {
+    href: 'https://www.instagram.com/rich_talarico',
+    slug: 'rich-talarico',
+    title: 'Rich Talarico',
+  },
+  {
+    href: 'https://www.instagram.com/reggiewatts',
+    slug: 'reggie-watts',
+    title: 'Reggie Watts',
+  },
 ]
 
 function Bio() {
@@ -69,7 +113,7 @@ function Comedy() {
       <br />
       <br />
       <Text>
-        Based in <Strong>Brooklyn, NY</Strong> (
+        Based in <Strong>NYC</Strong> (
         <Text className="line-through">Pittsburgh, PA</Text>) I’ve had shows in{' '}
         <Em>Chicago</Em>, <Em>Cleveland</Em>, <Em>Detroit</Em>,{' '}
         <Em>New York City</Em>, <Em>Philadelphia</Em>, <Em>Pittsburgh</Em>,{' '}
@@ -88,9 +132,19 @@ function Comedy() {
         I’ve also been extremely fortunate to take courses from some of the funniest
         people in the comedy world and as a result – <Strong>thee world</Strong>:
         <br />
-        <Em>Craig Cackowski</Em>, <Em>Kevin McDonald</Em>, <Em>Jaime Moyer</Em>,{' '}
-        <Em>Christine Nangle</Em>, <Em>Natalie Palamides</Em>, <Em>Rich Talarico</Em>
-        , <Em>Reggie Watts</Em>, and “more”!
+        {teachers.map((teacher, i) => {
+          return (
+            <Fragment
+              key={`teacher-${
+                // biome-ignore lint/suspicious/noArrayIndexKey: @todo
+                i
+              }`}
+            >
+              <Em>{teacher.title}</Em>,{` `}
+            </Fragment>
+          )
+        })}
+        and “more”!
       </Text>
     </>
   )
@@ -128,6 +182,7 @@ function Contact() {
                     )}
                     href={social.url}
                     target="_blank"
+                    rel="noopener"
                   >
                     {social.icon}
                     <span
@@ -491,5 +546,4 @@ function Section({ sections = sectionsDefault }: { sections?: SectionType[] }) {
   )
 }
 
-export type { SectionType }
 export { Section, SectionContent, SectionLegend }

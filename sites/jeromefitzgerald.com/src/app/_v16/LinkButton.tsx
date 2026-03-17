@@ -23,29 +23,34 @@ type Variant =
   | undefined
 
 const LinkButton = ({
+  className = '',
   color,
   disabled = false,
+  hasIcon = true,
   href = '',
+  iconSize = 'md',
   text,
   textComponent,
   textMobile,
   icon,
-  size = 'xs',
+  size = '2',
   tabIndex = 0,
   variant = 'surface',
 }: {
+  className?: string
   color?: NotionColor
   disabled?: boolean
+  hasIcon?: boolean
   href?: string
+  iconSize?: string
   text: React.ReactNode
   textComponent?: React.ReactNode
   textMobile?: React.ReactNode
   icon?: React.ReactNode
   tabIndex?: number
-  size?: 'xs' | 'sm'
+  size?: Size
   variant?: Variant
 }) => {
-  const _size: Size = size === 'xs' ? '2' : '3'
   const hasHref: boolean = !!href
   const Icon = hasHref
     ? isExternalUrl(href)
@@ -60,18 +65,26 @@ const LinkButton = ({
     <Flex asChild align="center" justify="between" width="100%">
       <Button
         asChild={hasHref}
-        className={cx('group cursor-pointer! disabled:cursor-not-allowed!')}
+        className={cx(
+          'group cursor-pointer! disabled:cursor-not-allowed!',
+          'transition-all duration-300 hover:bg-accent-2! focus:bg-accent-2!',
+          className,
+        )}
         disabled={disabled}
         color={color || 'gold'}
         variant={variant}
         radius="full"
-        size={_size}
+        size={size}
         tabIndex={tabIndex}
       >
         {/* @ts-ignore */}
         <WrapperComponent {...WrapperProps}>
           <Flex
             align="center"
+            className={cx(
+              'group-hover:translate-x-2 group-focus:translate-x-2',
+              'transition-transform duration-150',
+            )}
             justify="start"
             width={{ initial: '90%', md: '90%' }}
             gap="2"
@@ -90,14 +103,14 @@ const LinkButton = ({
               </>
             )}
           </Flex>
-          {!disabled && (
+          {!disabled && hasIcon && (
             <Icon
               className={cx(
                 'transition-all delay-75',
                 'md:opacity-0! md:group-focus:opacity-100! md:group-hover:opacity-100!',
                 'md:-translate-x-2 md:group-focus:translate-x-0 md:group-hover:translate-x-0',
                 'mx-1',
-                '',
+                iconSize === 'xl' && 'size-7',
               )}
             />
           )}

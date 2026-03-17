@@ -4,6 +4,7 @@ import {
   FileTextIcon,
   GitHubLogoIcon,
   InstagramLogoIcon,
+  LanguageIcon,
   LinkedInLogoIcon,
   ThreadsLogoIcon,
 } from '@/components/Icon/index'
@@ -44,6 +45,19 @@ const socials = [
     tooltipDescription: 'Uh... sure.',
     type: URL_TYPE.EXTERNAL,
     url: 'https://bsky.app/profile/jeromefitzgerald.com',
+  },
+  {
+    active: true,
+    className: 'hover:bg-duolingo',
+    icon: <LanguageIcon className="text-inherit" />,
+    id: 'duolingo',
+    keywords: 'social duolingo',
+    rightSlot: <ExternalLinkIcon />,
+    subtitle: 'jeromefitzgerald',
+    title: 'Duolingo',
+    tooltipDescription: 'Uh... sure.',
+    type: URL_TYPE.EXTERNAL,
+    url: 'https://www.duolingo.com/profile/jeromefitzgerald',
   },
   {
     active: true,

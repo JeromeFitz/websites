@@ -90,3 +90,9 @@
   margin: 0;
   padding: 0;
 } */
+
+/* @hack(radix-ui) why is this not set or able to be set */
+.rt-BaseDialogOverlay,
+.rt-DialogOverlay {
+  z-index: 9999;
+}

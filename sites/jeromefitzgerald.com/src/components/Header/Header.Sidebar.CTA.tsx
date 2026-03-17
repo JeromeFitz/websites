@@ -24,7 +24,7 @@ function HeaderSidebarCTA({
         <div className={cx('w-full p-2')}>
           <Button
             asChild
-            className="group hover:-translate-y-1 flex w-full justify-between py-8"
+            className="group flex w-full justify-between py-8 hover:-translate-y-1"
             color="green"
             radius="small"
             size="4"

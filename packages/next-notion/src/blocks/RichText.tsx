@@ -14,13 +14,13 @@ import type { ApiColor } from '../Notion.types'
 import { Anchor } from '@jeromefitz/ds/components/Anchor/index'
 import { cx } from '@jeromefitz/ds/utils/cx'
 
-import { Fragment, forwardRef } from 'react'
+import { Fragment } from 'react'
 
 import { getAnnotations, getBlockKey } from '../Notion.utils'
 import { NotionEmoji as EmojiWrapper } from './Emoji'
 
 // @todo(types)
-const Text = forwardRef(function Text(props: any, ref: any) {
+const Text = ({ ref, ...props }: any) => {
   const { children } = props
 
   const Component = props?.as ?? 'p'
@@ -33,7 +33,7 @@ const Text = forwardRef(function Text(props: any, ref: any) {
       {children}
     </Component>
   )
-})
+}
 
 function Href({ children, href, ...props }) {
   return (

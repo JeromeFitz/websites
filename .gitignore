@@ -1,7 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # temp
-sites/jeromefitzgerald.com/public/images/temp/
+images
+sites/jeromefitzgerald.com/public/images/temp
 
 # dependencies
 node_modules
@@ -29,6 +30,7 @@ dist
 *.p8
 
 # debug
+debug-storybook.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

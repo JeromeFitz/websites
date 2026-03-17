@@ -100,8 +100,14 @@ function Book({ book, item }: { book: any; item: any }) {
   // }
   // "https://prod-files-secure.s3.us-west-2.amazonaws.com/10fad01a-8742-4f5c-b22c-aaf74473ad73/87d7e4ff-7e43-4af2-9a25-681462292836/zadie-smith--the-fraud--9780525558965.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240310%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240310T190325Z&X-Amz-Expires=3600&X-Amz-Signature=21cd1231ffa525172e436c3a39789aa4d9df6c58aa3107bdabb475d1f158bfdb&X-Amz-SignedHeaders=host&x-id=GetObject"
   // console.dir(item?.seoImage?.name.split('.')[0])
-  const src = `https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/books/${item?.seoImage.name.split('.')[0]}.jpg`
-  // console.dir(src)
+
+  const isFullyQualifiedDomain = item?.seoImage.name.includes(
+    'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/books',
+  )
+  const src = isFullyQualifiedDomain
+    ? item?.seoImage.name
+    : `https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/books/${item?.seoImage.name.split('.')[0]}.jpg`
+
   const slug = _slug(src)
   const image = {
     base64:
@@ -113,6 +119,7 @@ function Book({ book, item }: { book: any; item: any }) {
     url: src,
     width: 315,
   }
+  console.dir(item?.seoImage.name)
   return (
     <Flex
       className="flex-auto items-start rounded-md border-1 border-gray-7 border-t-1"
@@ -383,6 +390,8 @@ function BookPage({ items }: { items: any }) {
     return null
   })
 
+  console.dir(books)
+
   return (
     <Flex direction="column">
       <HeaderFull overline="" title="Reading" />
@@ -404,8 +413,8 @@ function BookPage({ items }: { items: any }) {
           </Text>
           <Text size="4">
             <Em>Are you in Pittsburgh?</Em> Well they are home to a lot great
-            bookstores! (Brooklyn does too obviously, and will update this later on
-            our new haunts.)
+            bookstores! (NYC does too obviously, and will update this later on our
+            favorite new haunts.)
           </Text>
           <Box asChild mb="4" pb="2" width="100%">
             <UL className="list-inside md:list-disc">

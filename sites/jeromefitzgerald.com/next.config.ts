@@ -102,11 +102,6 @@ const config = () => {
           hostname: `**.notion.so`,
           protocol,
         },
-        // @note(remotePattern) Spotify
-        {
-          hostname: `i.scdn.co`,
-          protocol,
-        },
         // @note(remotePattern) Twitter
         {
           hostname: `pbs.twimg.com`,
@@ -130,6 +125,11 @@ const config = () => {
         // @note(remotePattern) Goodreads
         {
           hostname: `*.gr-assets.com`,
+          protocol,
+        },
+        // @note(remotePattern) Killa
+        {
+          hostname: `*.scdn.co`,
           protocol,
         },
       ],

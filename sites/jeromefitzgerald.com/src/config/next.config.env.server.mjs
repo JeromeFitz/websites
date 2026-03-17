@@ -32,9 +32,6 @@ const envSchema = z.object({
   PREVIEW_TOKEN: z.string().trim(),
   REDIS_URL: z.string().trim(),
   REVALIDATE_TOKEN: z.string().trim(),
-  SPOTIFY_CLIENT_ID: z.string().trim(),
-  SPOTIFY_CLIENT_SECRET: z.string().trim(),
-  SPOTIFY_REFRESH_TOKEN: z.string().trim(),
   UPSTASH_REDIS_REST_TOKEN: z.string().trim(),
   UPSTASH_REDIS_REST_URL: z.string().trim(),
 })
@@ -63,9 +60,6 @@ const envServerParsed = envSchema.safeParse({
   PREVIEW_TOKEN: process.env.PREVIEW_TOKEN ?? '',
   REDIS_URL: process.env.REDIS_URL ?? '',
   REVALIDATE_TOKEN: process.env.REVALIDATE_TOKEN ?? '',
-  SPOTIFY_CLIENT_ID: process.env.SPOTIFY_CLIENT_ID ?? '',
-  SPOTIFY_CLIENT_SECRET: process.env.SPOTIFY_CLIENT_SECRET ?? '',
-  SPOTIFY_REFRESH_TOKEN: process.env.SPOTIFY_REFRESH_TOKEN ?? '',
   UPSTASH_REDIS_REST_TOKEN: process.env.UPSTASH_REDIS_REST_TOKEN ?? '',
   UPSTASH_REDIS_REST_URL: process.env.UPSTASH_REDIS_REST_URL ?? '',
 })

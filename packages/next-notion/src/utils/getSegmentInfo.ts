@@ -48,5 +48,5 @@ function getSegmentInfo({ SEGMENT, ...props }) {
   return segmentInfo
 }
 
-export { getSegmentInfo }
 export type { SegmentInfo }
+export { getSegmentInfo }

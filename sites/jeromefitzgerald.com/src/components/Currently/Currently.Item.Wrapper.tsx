@@ -87,12 +87,16 @@ function CurrentlyWrapper({
           asChild
           className=""
           direction="column"
+          gap={{ initial: '1', md: '3' }}
           height="100%"
           justify="between"
-          pb="5"
           position="relative"
-          pt="4"
-          px="0"
+          // pb="5"
+          // pt="4"
+          // px="0"
+          pb={{ initial: '5', md: '5' }}
+          pt={{ initial: '1', md: '5' }}
+          px={{ initial: '0', md: '0' }}
           width="100%"
           wrap="nowrap"
         >
@@ -137,7 +141,10 @@ function CurrentlyWrapper({
                 <Heading
                   align="left"
                   as="h3"
-                  className={cx('font-medium font-mono uppercase')}
+                  className={cx(
+                    'font-medium font-mono uppercase',
+                    // 'hidden! md:visible!'
+                  )}
                   highContrast
                   mb="2"
                   size="1"

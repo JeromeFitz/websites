@@ -1,4 +1,4 @@
-import { AspectRatio, Flex, Grid, Text } from '@radix-ui/themes'
+import { Flex, Grid, Text } from '@radix-ui/themes'
 
 import { ImageClient as NextImage } from '@/components/Notion/Blocks/Image.client'
 
@@ -17,8 +17,22 @@ const ImageContainerGrid = ({ image }: { image: any }) => {
 
 const ImageContainerFlex = ({ image }: { image: any }) => {
   return (
-    <Flex gap="5" direction="column" align="center" justify="start">
-      <Flex direction="row" gap="2" align="center" justify="center" width="100%">
+    <Flex
+      gap="5"
+      direction="column"
+      align="center"
+      justify="start"
+      height="100%"
+      width="100%"
+    >
+      <Flex
+        direction="row"
+        gap="2"
+        align="start"
+        justify="center"
+        height="100%"
+        width="100%"
+      >
         <ImageSingle image={image} />
       </Flex>
     </Flex>
@@ -38,12 +52,13 @@ const ImageMulti = ({ image }: { image: any }) => {
 
 const ImageSingle = ({ image }: { image: any }) => {
   return (
-    <AspectRatio ratio={4 / 3}>
-      <NextImage {...image} />
-    </AspectRatio>
+    // <AspectRatio ratio={4 / 3}>
+    <NextImage {...image} />
+    // </AspectRatio>
   )
 }
 
 const ImageContainer = ImageContainerFlex
 
+// biome-ignore lint/style/useComponentExportOnlyModules: determine which one to actually export
 export { ImageContainer, ImageMulti, ImageSingle }

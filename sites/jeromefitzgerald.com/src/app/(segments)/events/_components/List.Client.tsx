@@ -101,7 +101,7 @@ function AccordionClient({ items }) {
                     <p className="">{item.seoDescription || description}</p>
                   </div>
                   <div className="flex w-full flex-row flex-wrap justify-center md:flex-nowrap">
-                    <div className="md:-mt-4 w-full justify-start px-4 text-left">
+                    <div className="w-full justify-start px-4 text-left md:-mt-4">
                       <Tags classNameTag="px-3 py-2 mb-4 mr-4" tags={item.tags} />
                     </div>
                     <div

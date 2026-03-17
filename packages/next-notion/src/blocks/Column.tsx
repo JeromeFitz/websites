@@ -3,12 +3,10 @@ import type {
   NumberedListItemBlockObjectResponse,
 } from '@notionhq/client/build/src/api-endpoints.js'
 
-import { forwardRef } from 'react'
-
 import { NotionBlocks as Blocks } from '../Notion.Blocks'
 import { getBlockKey } from '../Notion.utils'
 
-const Column = forwardRef(function Column(props: any, ref: any) {
+const Column = ({ ref, ...props }: any) => {
   const {
     block,
     order,
@@ -33,7 +31,7 @@ const Column = forwardRef(function Column(props: any, ref: any) {
       })}
     </Component>
   )
-})
+}
 
 export { Column }
 export default Column

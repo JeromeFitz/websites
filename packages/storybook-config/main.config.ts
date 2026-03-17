@@ -1,9 +1,7 @@
 import { resolve } from 'node:path'
 
-// console.dir(`***`)
-// console.dir(resolve(__dirname, '../../sites/jeromefitzgerald.com/next.config.js'))
+const __dirname = import.meta.dirname
 
-/** @type { import('@storybook/nextjs').StorybookConfig } */
 const config = {
   addons: [
     '@storybook/addon-links',
@@ -20,10 +18,6 @@ const config = {
   framework: {
     name: '@storybook/nextjs',
     options: {},
-    // options: {
-    //   // // nextConfigPath: resolve(__dirname, '../next.config.js'),
-    //   nextConfigPath: resolve(__dirname, '../next.config.js'),
-    // },
   },
   staticDirs: [resolve(__dirname, 'public')],
   stories: ['../src/**/*.stories.{js,jsx,ts,tsx}'],

@@ -18,7 +18,6 @@
   - 🖼️ Design System, Notion, etc.
     - `@jeromefitz/design-system`
     - `@jeromefitz/notion`
-    - `@jeromefitz/spotify`
     - `@jeromefitz/utils`
     - `next-notion` \*
 

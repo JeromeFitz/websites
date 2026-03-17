@@ -1,22 +1,28 @@
+'use client'
+
 // import { Em } from '@radix-ui/themes/dist/esm/components/em.js'
 import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
 
 // import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 
+import { useSticky } from '@/hooks/useSticky'
 import { cx } from '@/utils/cx'
 
 function ContainerHeaderSidebar({ children }: { children: React.ReactNode }) {
+  const { ref, isSticky } = useSticky()
   return (
     <Flex
       asChild
       className={cx(
         // 'bg-iris-3',
         // 'rounded-md border-1',
-        'z-0 content-center items-start overflow-auto will-change-transform',
+        'z-0 content-center items-start overflow-auto will-change-opacity',
+        'transition-opacity duration-250',
         'md:top-[calc(var(--spacing)_*_22)]',
+        isSticky ? 'opacity-100' : 'opacity-0',
       )}
-      data-name="Side Bar"
+      data-name={isSticky ? 'Side Barzzzz' : 'Side Bar'}
       display="inline-flex"
       flexBasis="0px"
       flexGrow="1"
@@ -30,7 +36,8 @@ function ContainerHeaderSidebar({ children }: { children: React.ReactNode }) {
       mt={{ initial: '0', md: '9' }}
       position={{ initial: 'relative', md: 'sticky' }}
       pt={{ initial: '0', md: '0' }}
-      style={{ opacity: 1, transform: 'perspective(1200px)' }}
+      ref={ref}
+      // style={{ opacity: 1, transform: 'perspective(1200px)' }}
       // top={{ initial: 'unset', md: 'unset' }}
       width="100%"
       wrap="nowrap"
@@ -43,7 +50,6 @@ function ContainerHeaderSidebar({ children }: { children: React.ReactNode }) {
 function HeaderSidebar({
   children = <></>,
   className = '',
-
   hasBorder = true,
   title = '',
 }) {

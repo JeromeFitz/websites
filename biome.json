@@ -77,29 +77,30 @@
       "enabled": true,
       "quoteStyle": "single"
     },
-    "parser": { "cssModules": true }
+    "parser": { "cssModules": true, "tailwindDirectives": true }
   },
   "files": {
     "ignoreUnknown": true,
     "includes": [
       "**",
-      "!**/.cache",
+      "!.vscode/settings.json",
+      "!**/_placeholder",
       "!**/.cache-turbo",
+      "!**/.cache",
       "!**/.husky",
       "!**/.idea",
       "!**/.lighthouseci",
       "!**/.next",
       "!**/.swc",
       "!**/.turbo",
-      "!**/_placeholder",
+      "!**/*.d.ts",
       "!**/coverage",
       "!**/dist",
       "!**/e2e-report",
       "!**/e2e-results",
       "!**/node_modules",
-      "!**/storybook-static",
       "!**/pnpm-lock.yaml",
-      "!.vscode/settings.json",
+      "!**/storybook-static",
       "!**/zzz"
     ]
   },
@@ -243,9 +244,7 @@
             "useJsxKeyInIterable": "error",
             "useUniqueElementIds": "off"
           },
-          "nursery": {
-            "useConsistentTypeDefinitions": "off"
-          },
+          "nursery": {},
           "security": {
             "noBlankTarget": "error",
             "noDangerouslySetInnerHtmlWithChildren": "error"
@@ -253,6 +252,18 @@
           "style": {
             "noRestrictedGlobals": { "level": "error", "options": {} },
             "noRestrictedImports": "error",
+            "useComponentExportOnlyModules": {
+              "level": "error",
+              "options": {
+                "allowExportNames": [
+                  "dynamic",
+                  "generateMetadata",
+                  "generateStaticParams",
+                  "metadata"
+                ]
+              }
+            },
+            "useConsistentTypeDefinitions": "off",
             "useConst": "error",
             "useImportType": {
               "level": "error",

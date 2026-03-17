@@ -1,34 +1,103 @@
-import { Box, Em, Flex, Separator, Strong, Text } from '@radix-ui/themes'
+// import type { Image } from '@/app/_v16/types'
 
-import { image } from '@/app/_v16/_meta'
+// const imageHeadline: Image = {
+//   blurDataURL,
+//   height: 522,
+//   src: '/images/temp/images/jerome-and/tory-silver.jpg',
+//   width: 1022,
+// }
+// const imageGallery: Image[] = [
+//   {
+//     blurDataURL,
+//     height: 1098,
+//     src: '/images/temp/images/jerome-and/show-posters/jerome-and--02--social.png',
+//     width: 1098,
+//   },
+//   {
+//     blurDataURL,
+//     height: 1098,
+//     src: '/images/temp/images/jerome-and/show-posters/jerome-and--09--social.jpg',
+//     width: 1098,
+//   },
+//   {
+//     blurDataURL,
+//     height: 1098,
+//     src: '/images/temp/images/jerome-and/show-posters/jerome-and--10--social.jpg',
+//     width: 1098,
+//   },
+//   {
+//     blurDataURL,
+//     height: 1098,
+//     src: '/images/temp/images/jerome-and/show-posters/jerome-and--12--social.jpg',
+//     width: 1098,
+//   },
+// ]
+// const imageGallery2: Image[] = [
+//   {
+//     blurDataURL,
+//     height: 1350,
+//     src: '/images/temp/images/jerome-and/sara.jpg',
+//     width: 1080,
+//   },
+//   {
+//     blurDataURL,
+//     height: 639,
+//     src: '/images/temp/images/jerome-and/aob.jpg',
+//     width: 639,
+//   },
+//   {
+//     blurDataURL,
+//     height: 4032,
+//     src: '/images/temp/images/jerome-and/erica.jpg',
+//     width: 3024,
+//   },
+//   {
+//     blurDataURL,
+//     height: 1008,
+//     src: '/images/temp/images/jerome-and/very-normal-gents.jpg',
+//     width: 756,
+//   },
+// ]
+import type { Show } from '@/lib/drizzle/schemas/cache-shows/types'
+
+import { Em, Flex, Separator, Strong, Text } from '@radix-ui/themes'
+
+import { LinkButton } from '@/app/_v16/LinkButton'
+import { ModuleImageGallery } from '@/app/_v16/Module'
 import { GridWrapper } from '@/app/_v16/Wrapper'
+import {
+  imageGallery,
+  imageGallery2,
+  imageHeadline,
+} from '@/app/(segments)/shows/_content/_images'
+import { Anchor } from '@/components/Anchor/Anchor'
 import { bandcamps, jeromeands } from '@/data/bandcamps'
+import { getShow, segment } from '@/lib/drizzle/schemas/cache-shows/queries'
+import { getKey } from '@/utils/getKey'
+import { getTitleData } from '@/utils/getTitleData'
 
-const headline = 'Jerome &'
-const subline = 'The Variety Show of Variety Shows'
+import { ContentSection, ContentTitle } from './_components'
+import {
+  getCreditsByPerson,
+  ROLLUPS,
+  ROLLUPS_CAST,
+  ROLLUPS_CAST_EMERITUS,
+  ROLLUPS_CREW,
+  ROLLUPS_THANKS,
+} from './_functions'
 
 const Content = () => {
+  const foo = [imageGallery[2]]
   return (
     <>
+      <ModuleImageGallery images={foo} />
       <GridWrapper>
-        <Box
-          gridColumnStart={{ initial: '1', md: '1' }}
-          gridColumnEnd={{ initial: '13', md: '7' }}
-        >
-          <Flex gap="5" direction="column" width="100%">
-            <Text size={{ initial: '7', md: '8' }} weight="bold">
-              Info
-            </Text>
-          </Flex>
-        </Box>
-        <Box
-          gridColumnStart={{ initial: '1', md: '7' }}
-          gridColumnEnd={{ initial: '13', md: '13' }}
-        >
+        <ContentTitle title="Info" />
+        <ContentSection>
           <Flex gap={{ initial: '6', md: '8' }} direction="column" width="100%">
             <Text size={{ initial: '6', md: '7' }} weight="regular">
-              Since <Strong>2017</Strong> the monthly comedy variety show where
-              Jerome hosts a cavalcade of hilarous and talented friends.
+              The monthly comedy variety show where Jerome hosts a cavalcade of
+              hilarous and talented friends.
             </Text>
             <Text size={{ initial: '5', md: '6' }} weight="regular">
               <Text color="gold">
@@ -44,6 +113,13 @@ const Content = () => {
                 That tradition of working without a net has continued ever since.
               </Em>
             </Text>
+          </Flex>
+        </ContentSection>
+      </GridWrapper>
+      <ModuleImageGallery images={imageGallery} />
+      <GridWrapper>
+        <ContentSection>
+          <Flex gap={{ initial: '6', md: '8' }} direction="column" width="100%">
             <Text size={{ initial: '6', md: '7' }} weight="regular">
               The show quickly evolved to also include special guests with{' '}
               <Strong>a lot</Strong> of experience in improv, music, sketch, and
@@ -53,112 +129,199 @@ const Content = () => {
             <Text size={{ initial: '5', md: '6' }} weight="regular">
               In its latest iteration at <Strong>Arcade Comedy Theater</Strong>{' '}
               frequent collaborators{' '}
-              <Em>Alex Conti, Nonsense, Raina Deerwater, & Sara Kantner</Em> would
-              weave absurdist humor through playful character sketches. Complete with
-              touring musical acts and of course a clown on stage reading a book
-              throughout the entirety of the show.
+              <Em>
+                <Anchor href="https://www.instagram.com/canticonti/">
+                  Alex Conti
+                </Anchor>
+                ,{' '}
+                <Anchor href="https://www.instagram.com/thisisnonsenseig/">
+                  Nonsense
+                </Anchor>
+                ,{' '}
+                <Anchor href="https://www.instagram.com/itsrainaingmen/">
+                  Raina Deerwater
+                </Anchor>
+                , &{' '}
+                <Anchor href="https://www.instagram.com/saknasty/">
+                  Sara Kantner
+                </Anchor>
+              </Em>{' '}
+              would weave absurdist humor through clowning and playful character
+              sketches. Complete with touring musical acts and of course a clown on
+              stage reading a book throughout the entirety of the show.
             </Text>
+          </Flex>
+        </ContentSection>
+      </GridWrapper>
+      <ModuleImageGallery images={imageGallery2} />
+      <GridWrapper>
+        <ContentSection>
+          <Flex gap={{ initial: '6', md: '8' }} direction="column" width="100%">
             <Text size={{ initial: '5', md: '6' }} weight="regular">
               It became parts SNL, parts bacchanal. (Sure that rhymes if you say it a
               certain way.)
             </Text>
-            <Text color="gold" size={{ initial: '7', md: '8' }} weight="regular">
+            <Text color="mint" size={{ initial: '7', md: '8' }} weight="regular">
               <Em>
-                Will the show ever return now that he has moved to Brooklyn? All
-                signs point to: <Strong>Probably</Strong>. (He has a lot of pals here
-                too.)
+                Will the show ever return now that he has moved to NYC? All signs
+                point to: <Strong>Probably</Strong>. (He has a lot of pals here too.)
               </Em>
             </Text>
             <Text size={{ initial: '5', md: '6' }} weight="regular">
-              And oh yea, big shout-out to the one and only{' '}
-              <Strong>Nick Jaramillo</Strong> who becomes Jerome on the months that
-              he cannot be there.
+              Big shout-out to the one and only{' '}
+              <Strong>
+                <Anchor href="https://www.instagram.com/nick_amarillo/">
+                  Nick Jaramillo
+                </Anchor>
+              </Strong>{' '}
+              who becomes Jerome on the months that he cannot be there.
             </Text>
           </Flex>
-        </Box>
+        </ContentSection>
       </GridWrapper>
       <Separator orientation="horizontal" size="4" />
+      {/* <GridWrapper>
+        <ContentTitle title="Credits" />
+        <ContentSection>
+          <ModuleCredits />
+        </ContentSection>
+      </GridWrapper> */}
       <GridWrapper>
-        <Box
-          gridColumnStart={{ initial: '1', md: '1' }}
-          gridColumnEnd={{ initial: '13', md: '7' }}
-        >
-          <Flex gap="5" direction="column" width="100%">
-            <Text size={{ initial: '7', md: '8' }} weight="bold">
-              Musical Guests*
-            </Text>
-          </Flex>
-        </Box>
-        <Box
-          gridColumnStart={{ initial: '1', md: '7' }}
-          gridColumnEnd={{ initial: '13', md: '13' }}
-        >
-          <Flex gap="5" direction="column" width="100%">
+        <ContentTitle title="Musical Guests*" />
+        <ContentSection>
+          <Flex gap="5" direction="column" width="100%" py="5">
             {bandcamps.map((item, i) => (
-              <Text
+              <LinkButton
+                color="pink"
+                iconSize="xl"
+                className="text-7!"
+                href={item.href}
                 // biome-ignore lint/suspicious/noArrayIndexKey: lazy
-                key={`guest-musical-${i}`}
-                size={{ initial: '6', md: '7' }}
-                weight="regular"
-              >
-                {item.artist}
-              </Text>
+                key={`guest-speical-1-${i}`}
+                size="4"
+                text={item.artist}
+                variant="ghost"
+              />
             ))}
           </Flex>
-        </Box>
-        <Box
-          gridColumnStart={{ initial: '1', md: '1' }}
-          gridColumnEnd={{ initial: '13', md: '7' }}
-        >
+        </ContentSection>
+        <ContentSection>
           <Flex gap="5" direction="column" width="100%">
             <Text size={{ initial: '2', md: '3' }} weight="regular">
               <Em>* Small Sampling</Em>
             </Text>
           </Flex>
-        </Box>
+        </ContentSection>
       </GridWrapper>
       <Separator orientation="horizontal" size="4" />{' '}
       <GridWrapper>
-        <Box
-          gridColumnStart={{ initial: '1', md: '1' }}
-          gridColumnEnd={{ initial: '13', md: '7' }}
-        >
-          <Flex gap="5" direction="column" width="100%">
-            <Text size={{ initial: '7', md: '8' }} weight="bold">
-              Special Guests*
-            </Text>
-          </Flex>
-        </Box>
-        <Box
-          gridColumnStart={{ initial: '1', md: '7' }}
-          gridColumnEnd={{ initial: '13', md: '13' }}
-        >
-          <Flex gap="5" direction="column" width="100%">
+        <ContentTitle title="Special Guests*" />
+        <ContentSection>
+          <Flex gap="5" direction="column" width="100%" py="5">
             {jeromeands.map((item, i) => (
-              <Text
+              <LinkButton
+                color="pink"
+                iconSize="xl"
+                className="text-7!"
+                href={item.href}
                 // biome-ignore lint/suspicious/noArrayIndexKey: lazy
-                key={`guest-speical-${i}`}
-                size={{ initial: '6', md: '7' }}
-                weight="regular"
-              >
-                {item.artist}
-              </Text>
+                key={`guest-speical-2-${i}`}
+                size="4"
+                text={item.artist}
+                variant="ghost"
+              />
             ))}
           </Flex>
-        </Box>
-        <Box
-          gridColumnStart={{ initial: '1', md: '1' }}
-          gridColumnEnd={{ initial: '13', md: '7' }}
-        >
+        </ContentSection>
+        <ContentSection>
           <Flex gap="5" direction="column" width="100%">
             <Text size={{ initial: '2', md: '3' }} weight="regular">
               <Em>* Small Sampling</Em>
             </Text>
           </Flex>
-        </Box>
+        </ContentSection>
       </GridWrapper>
     </>
   )
 }
 
-export { Content, image, headline, subline }
+const Data = async ({ slug }: { slug: string }) => {
+  const rollupKey = getKey(segment, slug)
+  const rollupItems: Show[] = await getShow({ key: rollupKey })
+  const rollupItem = rollupItems[0]
+
+  const R: any = {}
+  ROLLUPS.map((ROLLUP: any) => {
+    R[ROLLUP] = []
+
+    // @ts-ignore
+    const rollupItems = rollupItem[ROLLUP]
+    rollupItems.map((i: any) => {
+      R[ROLLUP].push(getTitleData({ data: i, type: i.type }))
+    })
+  })
+
+  const R_CAST: any = {}
+  ROLLUPS_CAST.map((ROLLUP: any) => {
+    R_CAST[ROLLUP] = []
+
+    // @ts-ignore
+    const rollupItems = rollupItem[ROLLUP]
+    rollupItems.map((i: any) => {
+      R_CAST[ROLLUP].push(getTitleData({ data: i, type: i.type }))
+    })
+  })
+
+  const R_CAST_EMERITUS: any = {}
+  ROLLUPS_CAST_EMERITUS.map((ROLLUP: any) => {
+    R_CAST_EMERITUS[ROLLUP] = []
+
+    // @ts-ignore
+    const rollupItems = rollupItem[ROLLUP]
+    rollupItems.map((i: any) => {
+      R_CAST_EMERITUS[ROLLUP].push(getTitleData({ data: i, type: i.type }))
+    })
+  })
+
+  const R_CREW: any = {}
+  ROLLUPS_CREW.map((ROLLUP: any) => {
+    R_CREW[ROLLUP] = []
+
+    // @ts-ignore
+    const rollupItems = rollupItem[ROLLUP]
+    rollupItems.map((i: any) => {
+      R_CREW[ROLLUP].push(getTitleData({ data: i, type: i.type }))
+    })
+  })
+
+  const R_THANKS: any = {}
+  ROLLUPS_THANKS.map((ROLLUP: any) => {
+    R_THANKS[ROLLUP] = []
+
+    // @ts-ignore
+    const rollupItems = rollupItem[ROLLUP]
+    rollupItems.map((i: any) => {
+      R_THANKS[ROLLUP].push(getTitleData({ data: i, type: i.type }))
+    })
+  })
+
+  const CAST_FINAL = getCreditsByPerson(R_CAST)
+  const CAST_EMERITUS_FINAL = getCreditsByPerson(R_CAST_EMERITUS)
+  const CREW_FINAL = getCreditsByPerson(R_CREW)
+  const THANKS_FINAL = getCreditsByPerson(R_THANKS)
+
+  return {
+    cast: CAST_FINAL,
+    content: Content,
+    crew: CREW_FINAL,
+    emeritus: CAST_EMERITUS_FINAL,
+    image: imageHeadline,
+    rollups: R,
+    seoDescription: 'Lorem',
+    slug,
+    thanks: THANKS_FINAL,
+    title: 'Jerome &: The Comedy Variety Show',
+  }
+}
+
+export { Content as ContentJeromeAnd, Data as DataJeromeAnd }

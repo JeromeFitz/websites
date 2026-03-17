@@ -35,9 +35,11 @@ function ContainerContent({
 
 function ContainerWithSidebar({ children }: { children: React.ReactNode }) {
   return (
-    <ContainerContent className="!p-0 !pb-24 md:flex-row">
-      {children}
-    </ContainerContent>
+    <>
+      <ContainerContent className="!p-0 !pb-24 md:flex-row">
+        {children}
+      </ContainerContent>
+    </>
   )
 }
 

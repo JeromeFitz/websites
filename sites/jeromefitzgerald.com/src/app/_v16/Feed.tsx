@@ -1,4 +1,4 @@
-import { AspectRatio, Box, Em, Flex, Grid, Text } from '@radix-ui/themes'
+import { Box, Em, Flex, Grid, Text } from '@radix-ui/themes'
 import NextLink from 'next/link'
 
 import { StarIcon } from '@/components/Icon'
@@ -17,8 +17,7 @@ const FeedWrapper = ({ children }: { children: React.ReactNode }) => {
     <Grid
       columns={{ initial: '12', md: '12' }}
       gap="2"
-      px={{ initial: '3', md: '6' }}
-      pb={{ initial: '3', md: '6' }}
+      py={{ initial: '9', md: '6' }}
       width="100%"
     >
       {children}
@@ -90,19 +89,21 @@ const FeedTagContainerItem = () => {
         gridColumnEnd={{ initial: '7', md: '10' }}
       >
         <NextLink href="/shows/jerome-and">
-          <LinkButton tabIndex={-1} icon={<StarIcon />} text="Jerome &" />
+          <LinkButton
+            tabIndex={-1}
+            icon={<StarIcon />}
+            text="My Dinner With Andre: The Musical"
+          />
           <Flex
             direction="column"
             gap="2"
             pt="1"
             className={cx(
               'transition-transform duration-300 ease-in-out',
-              'group-focus:-translate-y-0.5 group-hover:-translate-y-0.5 translate-y-0',
+              'translate-y-0 group-hover:-translate-y-0.5 group-focus:-translate-y-0.5',
             )}
           >
-            <AspectRatio ratio={4 / 3}>
-              <NextImage {...image} />
-            </AspectRatio>
+            <NextImage {...image} />
             <Box asChild pl="1">
               <Text as="p" color="gold" size={{ initial: '1' }}>
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore
@@ -119,8 +120,8 @@ const FeedTagContainerItem = () => {
 
 export {
   FeedContainer,
-  FeedWrapper,
   FeedTag,
   FeedTagContainer,
   FeedTagContainerItem,
+  FeedWrapper,
 }

@@ -16,11 +16,12 @@ function ArticleMain({ children }: { children: React.ReactNode }) {
       flexShrink={{ md: '0' }}
       gap={{ initial: '3', md: '6' }}
       height="min-content"
+      // mt={{ initial: '-9', md: '-6' }}
       mt="9"
       p="0"
       position="relative"
       style={{ opacity: 1, transform: 'none' }}
-      width={{ initial: '100%', md: '1px' }}
+      width={{ initial: '100%', md: '100%' }}
       wrap="nowrap"
     >
       <main id="skip-nav" role="main">

@@ -654,9 +654,9 @@ function MusicClient() {
                       placeholder="Type:"
                     />
                     <SelectContent className="z-50 w-full" position="popper">
-                      <SelectItem value="history-heavy-rotation">
+                      {/* <SelectItem value="history-heavy-rotation">
                         Heavy Rotation
-                      </SelectItem>
+                      </SelectItem> */}
                       <SelectItem value="recent-played-albums">
                         Recently Played Albums
                       </SelectItem>

@@ -144,8 +144,6 @@ const getConfig = ({ useTailwind = true }): Config => ({
         inherit: 'inherit',
         instagram: '#c32aa3',
         linkedin: '#0a66c2',
-        spotify: '#1ed760',
-        'spotify-dark': '#1db954',
         threads: '#c32aa3',
         twitter: '#1da1f2',
         /**

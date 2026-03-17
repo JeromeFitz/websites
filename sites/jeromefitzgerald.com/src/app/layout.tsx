@@ -10,7 +10,7 @@ import _take from 'lodash/take.js'
 
 import { ContainerFooter } from '@/components/Container/Container.Footer'
 import { ContainerGradient } from '@/components/Container/Container.Gradient'
-import { ContainerContent } from '@/components/Container/Container.Main'
+// import { ContainerContent } from '@/components/Container/Container.Main'
 import { ContainerNavigation } from '@/components/Container/Container.Navigation'
 import { ContainerSite } from '@/components/Container/Container.Site'
 import { Overlay } from '@/components/Overlay/Overlay'
@@ -22,7 +22,7 @@ import { cx } from '@/utils/cx'
 
 import { fonts } from './_next/fonts'
 import { PreloadResources } from './_next/preload-resources'
-import { KitchenSink } from './_v16/kitchen-sink'
+// import { KitchenSink } from './_v16/kitchen-sink'
 
 import '@radix-ui/themes/styles.css'
 import './styles--globals.css'
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   authors: [{ name: 'Jerome Fitzgerald', url: 'https://jeromefitzgerald.com' }],
   creator: 'Jerome Fitzgerald',
   description:
-    'Jerome Fitzgerald is an actor, comedian, & writer in Brooklyn, NY. Hailing from Pittsburgh, PA.',
+    'Jerome Fitzgerald is an actor, comedian, & writer in NYC. Hailing from Pittsburgh, PA.',
   metadataBase: new URL('https://jeromefitzgerald.com'),
   openGraph: {
     images: [
@@ -46,7 +46,11 @@ export const metadata: Metadata = {
   },
 }
 
-export async function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   async function getEventsUpcoming() {
     'use server'
     const dateNow = Date.now()
@@ -92,7 +96,8 @@ export async function RootLayout({ children }: { children: React.ReactNode }) {
             <ContainerSite>
               <ContainerNavigation />
               <SkipNavContent>
-                <ContainerContent>{children}</ContainerContent>
+                {/* <ContainerContent>{children}</ContainerContent> */}
+                {children}
               </SkipNavContent>
               <ContainerFooter />
             </ContainerSite>
@@ -104,16 +109,12 @@ export async function RootLayout({ children }: { children: React.ReactNode }) {
   )
 }
 
-export default async function RootLayoutV16({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export async function RootLayoutV16({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning={true}>
       <PreloadResources />
       <Theme
-        accentColor="gold"
+        accentColor="pink"
         asChild
         grayColor="mauve"
         panelBackground="translucent"
@@ -133,8 +134,8 @@ export default async function RootLayoutV16({
         >
           <Providers>
             <ContainerGradient />
-            <KitchenSink />
-            {/* {children} */}
+            {/* <KitchenSink /> */}
+            {children}
             <Overlay />
           </Providers>
         </body>

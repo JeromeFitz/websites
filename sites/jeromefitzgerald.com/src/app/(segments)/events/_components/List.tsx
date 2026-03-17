@@ -188,6 +188,7 @@ function ListWrapper({ events }: { events: Event[] }) {
                       </Button>
                       <Button
                         asChild
+                        disabled={!event.urlTicket}
                         className={cx(
                           'hover:!transform-[translate(0px,_-0.125em)] !transition-all',
                           '!text-black',
@@ -234,6 +235,12 @@ function Listing({ items }: { items: Event[] }) {
     10,
   )
 
+  console.dir(`eventsUpcoming:`)
+  console.dir(eventsUpcoming)
+
+  // console.dir(`eventsPast:`)
+  // console.dir(eventsPast)
+
   return (
     <Flex direction="column">
       <HeaderFull count={eventsUpcoming.length} overline="" title="Events" />
@@ -245,7 +252,7 @@ function Listing({ items }: { items: Event[] }) {
       >
         <Flex direction="column" gap="7">
           <Text size={{ initial: '5', md: '7' }}>
-            Ahoy. I recently moved to <Strong>Brooklyn</Strong> coming from{' '}
+            Ahoy. I recently moved to <Strong>NYC</Strong> coming from{' '}
             <Em>Pittsburgh</Em>.
           </Text>{' '}
           <Text size={{ initial: '5', md: '7' }}>
@@ -282,7 +289,7 @@ function Listing({ items }: { items: Event[] }) {
           <Text size={{ initial: '3', md: '5' }}>
             Upcoming Events that feature comedian Jerome Fitzgerald.{' '}
             <Em>
-              Based in Brooklyn (<Text className="line-through">Pittsburgh</Text>),
+              Based in NYC (<Text className="line-through">Pittsburgh</Text>),
               occasionally he will venture out into the wide world and do shows
               elsewhere.
             </Em>{' '}
@@ -290,7 +297,7 @@ function Listing({ items }: { items: Event[] }) {
           </Text>
         </Flex>
       </Flex> */}
-      {/* <ListWrapper events={eventsUpcoming} /> */}
+      <ListWrapper events={eventsUpcoming} />
       {/* <HeaderFull count={eventsPast.length} overline="" title="Past Events" /> */}
       {/* <AccordionClient items={eventsPast} /> */}
     </Flex>

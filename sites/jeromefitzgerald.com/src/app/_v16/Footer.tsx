@@ -1,4 +1,4 @@
-import { Box, Flex, Grid, Strong, Text } from '@radix-ui/themes'
+import { Box, Em, Flex, Grid, Strong, Text } from '@radix-ui/themes'
 
 import { socials } from '@/data/socials'
 
@@ -33,12 +33,37 @@ const Footer = () => {
     <FooterWrapper>
       <FooterGrid>
         <Box
+          className="hidden!"
+          gridColumnStart={{ initial: '1', md: '6' }}
+          gridColumnEnd={{ initial: '13', md: '9' }}
+        >
+          <Flex direction="column" gap="3">
+            <Text>
+              <Strong>Internal Links</Strong>
+              <Em className="block">... Kewl website.</Em>
+            </Text>
+            {socials.map((social) => {
+              if (!social.active) return null
+
+              return (
+                <LinkButton
+                  href={social.url}
+                  icon={social.icon}
+                  key={`footer--social--${social.id}`}
+                  text={social.title}
+                />
+              )
+            })}
+          </Flex>
+        </Box>
+        <Box
           gridColumnStart={{ initial: '1', md: '10' }}
           gridColumnEnd={{ initial: '13', md: '13' }}
         >
           <Flex direction="column" gap="3">
             <Text>
               <Strong>External Links</Strong>
+              <Em className="block">... Eh, not very “active.”</Em>
             </Text>
             {socials.map((social) => {
               if (!social.active) return null

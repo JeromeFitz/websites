@@ -56,6 +56,7 @@ import {
   ImageIcon,
   InfoCircledIcon,
   InstagramLogoIcon,
+  LanguageIcon,
   Link1Icon,
   LinkedInLogoIcon,
   ListBulletIcon,
@@ -72,6 +73,7 @@ import {
   PlusCircledIcon,
   PlusIcon,
   QuoteIcon,
+  ReaderIcon,
   ReloadIcon,
   ReturnIcon,
   Share1Icon,
@@ -144,6 +146,7 @@ Icon.IdCard = IdCardIcon
 Icon.Image = ImageIcon
 Icon.InfoCircled = InfoCircledIcon
 Icon.InstagramLogo = InstagramLogoIcon
+Icon.LanguageIcon = LanguageIcon
 Icon.Link1 = Link1Icon
 Icon.LinkedInLogo = LinkedInLogoIcon
 Icon.ListBullet = ListBulletIcon
@@ -160,6 +163,7 @@ Icon.Play = PlayIcon
 Icon.PlusCircled = PlusCircledIcon
 Icon.Plus = PlusIcon
 Icon.Quote = QuoteIcon
+Icon.Reader = ReaderIcon
 Icon.Reload = ReloadIcon
 Icon.Return = ReturnIcon
 Icon.Share1 = Share1Icon

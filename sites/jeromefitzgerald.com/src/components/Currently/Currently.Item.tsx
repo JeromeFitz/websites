@@ -8,17 +8,19 @@ function CodeGhost({ children }: { children: React.ReactNode }) {
   return <Code variant="ghost">{children}</Code>
 }
 function CurrentlyItem({
+  hasTop = false,
   headline,
   id = '',
   isLoading,
   subline,
 }: {
+  hasTop?: boolean
   headline: string
   id?: string
   isLoading: boolean
   subline: string
 }) {
-  const Component = id === 'events' ? CodeGhost : Text
+  const Component = id === 'events' && !!hasTop ? CodeGhost : Text
   return (
     <Skeleton loading={isLoading} minWidth="100%">
       <Heading

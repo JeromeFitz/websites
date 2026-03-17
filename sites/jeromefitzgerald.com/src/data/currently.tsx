@@ -1,4 +1,4 @@
-// import { CurrentlyBookClient } from '@/components/Currently/Currently.Book.Client'
+import { CurrentlyBookClient } from '@/components/Currently/Currently.Book.Client'
 import { CurrentlyEvent } from '@/components/Currently/Currently.Event'
 import { CurrentlyItemWrapper } from '@/components/Currently/Currently.Item.Wrapper'
 import { CurrentlyMusicClient } from '@/components/Currently/Currently.Music.Client'
@@ -38,7 +38,7 @@ const currently = [
   {
     apiUrl: '/api/v1/books/currently-reading',
     color: 'mint',
-    component: CurrentlyItemWrapper,
+    component: CurrentlyBookClient,
     href: '/currently/reading',
     icon: BookOpenIcon,
     id: 'reading',
