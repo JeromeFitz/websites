@@ -18,6 +18,7 @@
       "@jeromefitz/next-config/env.server.mjs": [
         "./src/config/next.config.env.server.mjs"
       ],
+      "~public/*": ["./public/*"],
       // "@jeromefitz/next-config/*": ["../../packages/next-config/src/*"],
       "radix-themes-tw": ["./src/config/radix-themes-tw.css"]
     },

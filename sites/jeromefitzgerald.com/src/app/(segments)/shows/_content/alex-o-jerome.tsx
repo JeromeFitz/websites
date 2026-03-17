@@ -1,7 +1,7 @@
 import type { Image } from '@/app/_v16/types'
 
-import aojLogo from '../../../../../public/images/temp/images/alex-o-jerome/alex-o-jerome.png'
-import aoj from '../../../../../public/images/temp/images/alex-o-jerome/aoj--pj.jpg'
+import aojLogo from '~public/images/temp/images/alex-o-jerome/alex-o-jerome.png'
+import aoj from '~public/images/temp/images/alex-o-jerome/aoj--pj.jpg'
 
 const imageGallery: Image[] = [
   {
