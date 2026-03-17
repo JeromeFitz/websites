@@ -1,8 +1,5 @@
 import type { Image } from '@/app/_v16/types'
 
-// import aojLogo from '~public/images/temp/images/alex-o-jerome/alex-o-jerome.png'
-// import aoj from '~public/images/temp/images/alex-o-jerome/aoj--pj.jpg'
-
 const blurDataURL =
   'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAEAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAX/xAAeEAABBAIDAQAAAAAAAAAAAAABAAMEBQIGEyIxYf/EABUBAQEAAAAAAAAAAAAAAAAAAAEF/8QAGREBAQEBAQEAAAAAAAAAAAAAAQIDABGR/9oADAMBAAIRAxEAPwCfGlwqbX9eZZoaWSXq1mQ47LjczmWeYJPYnz4iIquet1ItPDlA+Enzv//Z'
 
@@ -10,13 +7,13 @@ const imageGallery: Image[] = [
   {
     blurDataURL,
     height: 903,
-    src: '/images/temp/images/alex-o-jerome/aoj--pj.jpg',
+    src: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2026/03/aoj--pj.jpg',
     width: 1676,
   },
   {
     blurDataURL,
     height: 495,
-    src: '/images/temp/images/alex-o-jerome/alex-o-jerome.png',
+    src: 'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2026/03/alex-o-jerome.png',
     width: 495,
   },
 ]
