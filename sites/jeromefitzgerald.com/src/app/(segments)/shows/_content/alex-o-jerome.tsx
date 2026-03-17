@@ -1,14 +1,23 @@
 import type { Image } from '@/app/_v16/types'
 
-import aojLogo from '~public/images/temp/images/alex-o-jerome/alex-o-jerome.png'
-import aoj from '~public/images/temp/images/alex-o-jerome/aoj--pj.jpg'
+// import aojLogo from '~public/images/temp/images/alex-o-jerome/alex-o-jerome.png'
+// import aoj from '~public/images/temp/images/alex-o-jerome/aoj--pj.jpg'
+
+const blurDataURL =
+  'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAEAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAX/xAAeEAABBAIDAQAAAAAAAAAAAAABAAMEBQIGEyIxYf/EABUBAQEAAAAAAAAAAAAAAAAAAAEF/8QAGREBAQEBAQEAAAAAAAAAAAAAAQIDABGR/9oADAMBAAIRAxEAPwCfGlwqbX9eZZoaWSXq1mQ47LjczmWeYJPYnz4iIquet1ItPDlA+Enzv//Z'
 
 const imageGallery: Image[] = [
   {
-    src: aoj,
+    blurDataURL,
+    height: 903,
+    src: '/images/temp/images/alex-o-jerome/aoj--pj.jpg',
+    width: 1676,
   },
   {
-    src: aojLogo,
+    blurDataURL,
+    height: 495,
+    src: '/images/temp/images/alex-o-jerome/alex-o-jerome.png',
+    width: 495,
   },
 ]
 
