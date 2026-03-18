@@ -224,8 +224,8 @@ importers:
         specifier: workspace:*
         version: link:../tailwind-config
       '@mantine/hooks':
-        specifier: 8.3.17
-        version: 8.3.17(react@19.2.4)
+        specifier: 8.3.18
+        version: 8.3.18(react@19.2.4)
       '@storybook/addon-docs':
         specifier: 10.2.19
         version: 10.2.19(@types/react@19.2.14)
@@ -557,8 +557,8 @@ importers:
         specifier: 3.1.7
         version: 3.1.7(lodash@4.17.23)
       '@mantine/hooks':
-        specifier: 8.3.17
-        version: 8.3.17(react@19.2.4)
+        specifier: 8.3.18
+        version: 8.3.18(react@19.2.4)
       '@notionhq/client':
         specifier: 4.0.2
         version: 4.0.2
@@ -834,8 +834,8 @@ importers:
         specifier: 3.1.7
         version: 3.1.7(lodash@4.17.23)
       '@mantine/hooks':
-        specifier: 8.3.17
-        version: 8.3.17(react@19.2.4)
+        specifier: 8.3.18
+        version: 8.3.18(react@19.2.4)
       '@neondatabase/serverless':
         specifier: 1.0.2
         version: 1.0.2
@@ -2615,8 +2615,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.9':
     resolution: {integrity: sha512-3Belt6tdc8bPgAtbcmdtNJlirVoTmEb5e2gC94PnkwEW9jI6CAHUeoG85tjWP5WquqfavoMtMwiG4P926ZKKuQ==}
 
-  '@mantine/hooks@8.3.17':
-    resolution: {integrity: sha512-MqVw4ad0qrcY7IgVk8+GJh7qCRIwLXTfEtGeXwmaZagMDn2YB8EUtrnuZO2be5bi3yketWtOPYvl3adh05hZRg==}
+  '@mantine/hooks@8.3.18':
+    resolution: {integrity: sha512-QoWr9+S8gg5050TQ06aTSxtlpGjYOpIllRbjYYXlRvZeTsUqiTbVfvQROLexu4rEaK+yy9Wwriwl9PMRgbLqPw==}
     peerDependencies:
       react: ^18.x || ^19.x
 
@@ -11229,7 +11229,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
-  '@mantine/hooks@8.3.17(react@19.2.4)':
+  '@mantine/hooks@8.3.18(react@19.2.4)':
     dependencies:
       react: 19.2.4
 
