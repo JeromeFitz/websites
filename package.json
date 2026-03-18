@@ -12,7 +12,7 @@
   "private": true,
   "packageManager": "pnpm@10.32.1+sha512.a706938f0e89ac1456b6563eab4edf1d1faf3368d1191fc5c59790e96dc918e4456ab2e67d613de1043d2e8c81f87303e6b40d4ffeca9df15ef1ad567348f2be",
   "engines": {
-    "node": ">=22.12.0 <25",
+    "node": ">=24.14.0 <25",
     "pnpm": ">=10 <11"
   },
   "scripts": {
@@ -44,7 +44,7 @@
     "@jeromefitz/semantic": "11.1.8",
     "@jeromefitz/tsconfig": "2.1.0",
     "@types/lodash": "4.17.24",
-    "@types/node": "22.19.15",
+    "@types/node": "24.12.0",
     "ccommit": "3.1.4",
     "dotenv": "17.3.1",
     "is-ci": "4.1.0",
