@@ -9,7 +9,7 @@ const config: UserConfig = {
   outDir: 'dist',
   silent: true,
   sourcemap: false,
-  target: ['node22'],
+  target: ['node24'],
   treeshake: false,
 }
 

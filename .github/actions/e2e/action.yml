@@ -37,7 +37,7 @@ runs:
 
     - name: '🎭 Playwright: Check Browser Cache'
       id: playwright-cache
-      uses: actions/cache@v4
+      uses: actions/cache@v5
       with:
         path: |
           ~/.cache/ms-playwright
