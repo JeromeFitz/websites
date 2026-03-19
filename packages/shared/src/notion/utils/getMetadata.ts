@@ -1,7 +1,7 @@
 import type {
   RichTextItemResponse,
   TextRichTextItemResponse,
-} from '@notionhq/client/build/src/api-endpoints.js'
+} from '@notionhq/client/build/src/api-endpoints'
 import type { Metadata } from 'next'
 
 import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'

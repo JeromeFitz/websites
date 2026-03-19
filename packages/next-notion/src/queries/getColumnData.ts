@@ -2,7 +2,7 @@ import 'server-only'
 
 import { asyncForEach } from '@jeromefitz/utils'
 
-import _noop from 'lodash/noop.js'
+import { noop as _noop } from 'lodash-es'
 
 import { getBlockChildrenData } from './getBlockChildrenData'
 

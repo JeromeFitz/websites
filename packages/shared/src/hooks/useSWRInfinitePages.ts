@@ -4,8 +4,7 @@
  */
 // import type { SWRInfiniteConfiguration } from 'swr/infinite'
 
-import _get from 'lodash/get.js'
-import _last from 'lodash/last.js'
+import { get as _get, last as _last } from 'lodash-es'
 import { useCallback, useMemo, useRef } from 'react'
 import useSWRInfinite from 'swr/infinite'
 

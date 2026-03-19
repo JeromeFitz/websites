@@ -14,7 +14,7 @@ import type {
   StatusPropertyItemObjectResponse,
   TitlePropertyItemObjectResponse,
   UrlPropertyItemObjectResponse,
-} from '@notionhq/client/build/src/api-endpoints.js'
+} from '@notionhq/client/build/src/api-endpoints'
 
 import type { Spread } from '@/lib/drizzle/schemas/_notion/types'
 import type { Cache } from '@/lib/drizzle/schemas/helpers.types'

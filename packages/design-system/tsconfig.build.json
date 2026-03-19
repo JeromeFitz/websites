@@ -14,7 +14,7 @@
     "jsx": "react-jsx",
     "lib": ["dom", "ES2020"],
     "module": "ES2020",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "noEmit": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": false, // @todo(lint)

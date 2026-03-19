@@ -8,7 +8,7 @@ import type { Show } from '@/lib/drizzle/schemas/cache-shows/types'
 
 import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
 
-import _orderBy from 'lodash/orderBy.js'
+import { orderBy as _orderBy } from 'lodash-es'
 
 import { getEpisodes } from '@/lib/drizzle/schemas/cache-episodes/queries'
 import { getEvents } from '@/lib/drizzle/schemas/cache-events/queries'

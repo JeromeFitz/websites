@@ -1,10 +1,10 @@
 import 'server-only'
 
-import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints.js'
+import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 
 import { asyncForEach } from '@jeromefitz/utils'
 
-import _noop from 'lodash/noop.js'
+import { noop as _noop } from 'lodash-es'
 
 import { getBlockChildrenData } from './getBlockChildrenData'
 import { getColumnData } from './getColumnData'

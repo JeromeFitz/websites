@@ -17,7 +17,7 @@ import type {
   // SelectPropertyItemObjectResponse,
   // TitlePropertyItemObjectResponse,
   UrlPropertyItemObjectResponse,
-} from '@notionhq/client/build/src/api-endpoints.js'
+} from '@notionhq/client/build/src/api-endpoints'
 
 import type {
   DateResponse,
@@ -29,7 +29,7 @@ import type {
 import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
-import _orderBy from 'lodash/orderBy.js'
+import { orderBy as _orderBy } from 'lodash-es'
 
 interface CheckboxData {
   checkbox: boolean

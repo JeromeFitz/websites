@@ -1,4 +1,4 @@
-import type { DividerBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints.js'
+import type { DividerBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 
 import { getBlockKey } from '../Notion.utils'
 

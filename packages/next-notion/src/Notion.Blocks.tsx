@@ -1,7 +1,7 @@
 import type {
   BlockObjectResponse,
   ListBlockChildrenResponse,
-} from '@notionhq/client/build/src/api-endpoints.js'
+} from '@notionhq/client/build/src/api-endpoints'
 
 // import { Suspense } from 'react'
 

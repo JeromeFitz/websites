@@ -1,7 +1,5 @@
 import emojiRegex from 'emoji-regex'
-import _map from 'lodash/map.js'
-import _orderBy from 'lodash/orderBy.js'
-import _size from 'lodash/size.js'
+import { map as _map, orderBy as _orderBy, size as _size } from 'lodash-es'
 import { find as findEmoji } from 'node-emoji'
 
 function Emoji({ character }) {

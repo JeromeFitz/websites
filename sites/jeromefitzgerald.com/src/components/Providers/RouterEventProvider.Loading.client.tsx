@@ -1,7 +1,7 @@
 'use client'
 
 import { useNProgress } from '@tanem/react-nprogress'
-import _find from 'lodash/find.js'
+import { find as _find } from 'lodash-es'
 import { usePathname } from 'next/navigation.js'
 import { useEffect } from 'react'
 

@@ -1,7 +1,7 @@
 import type {
   BulletedListItemBlockObjectResponse,
   NumberedListItemBlockObjectResponse,
-} from '@notionhq/client/build/src/api-endpoints.js'
+} from '@notionhq/client/build/src/api-endpoints'
 
 import { NotionBlocks as Blocks } from '../Notion.Blocks'
 import { getBlockKey } from '../Notion.utils'

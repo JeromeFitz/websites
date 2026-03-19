@@ -1,6 +1,4 @@
-import _first from 'lodash/first.js'
-import _isInteger from 'lodash/isInteger.js'
-import _last from 'lodash/last.js'
+import { first as _first, isInteger as _isInteger, last as _last } from 'lodash-es'
 
 interface SegmentInfo {
   catchAll: string[]

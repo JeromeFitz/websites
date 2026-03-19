@@ -5,41 +5,33 @@
   "license": "MIT",
   "private": true,
   "engines": {
-    "node": ">=20.10.0"
+    "node": ">=24"
   },
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
-    },
-    "./components": {
-      "types": "./dist/components/index.d.ts",
-      "default": "./dist/components/index.js"
-    },
-    "./components/Anchor": {
-      "types": "./dist/components/Anchor/index.d.ts",
-      "default": "./dist/components/Anchor/index.js"
-    },
-    "./components/Callout": {
-      "types": "./dist/components/Callout/index.d.ts",
-      "default": "./dist/components/Callout/index.js"
-    },
-    "./components/Icon": {
-      "types": "./dist/components/Icon/index.d.ts",
-      "default": "./dist/components/Icon/index.js"
-    },
-    "./components/Section": {
-      "types": "./dist/components/Section/index.d.ts",
-      "default": "./dist/components/Section/index.js"
-    },
-    "./components/SkipNav": {
-      "types": "./dist/components/SkipNav/index.d.ts",
-      "default": "./dist/components/SkipNav/index.js"
-    },
-    "./utils/cx": {
-      "types": "./dist/utils/cx.d.ts",
-      "default": "./dist/utils/cx.js"
-    }
+    ".": "./dist/index.mjs",
+    "./components": "./dist/components/index.mjs",
+    "./components/Anchor": "./dist/components/Anchor/index.mjs",
+    "./components/Anchor/Anchor": "./dist/components/Anchor/Anchor.mjs",
+    "./components/Callout": "./dist/components/Callout/index.mjs",
+    "./components/Callout/Callout": "./dist/components/Callout/Callout.mjs",
+    "./components/Icon": "./dist/components/Icon/index.mjs",
+    "./components/Icon/Icon": "./dist/components/Icon/Icon.mjs",
+    "./components/Icon/Icon.stories": "./dist/components/Icon/Icon.stories.mjs",
+    "./components/Icon/Icon.test": "./dist/components/Icon/Icon.test.mjs",
+    "./components/Icon/Icon.types": "./dist/components/Icon/Icon.types.mjs",
+    "./components/Section": "./dist/components/Section/index.mjs",
+    "./components/Section/Section.Content": "./dist/components/Section/Section.Content.mjs",
+    "./components/Section/Section.Header": "./dist/components/Section/Section.Header.mjs",
+    "./components/Section/Section.Header.Content": "./dist/components/Section/Section.Header.Content.mjs",
+    "./components/Section/Section.Header.Title": "./dist/components/Section/Section.Header.Title.mjs",
+    "./components/Section/Section.Hero": "./dist/components/Section/Section.Hero.mjs",
+    "./components/Section/Section.test": "./dist/components/Section/Section.test.mjs",
+    "./components/Section/Section.Wrapper": "./dist/components/Section/Section.Wrapper.mjs",
+    "./components/Section/Tags": "./dist/components/Section/Tags.mjs",
+    "./components/SkipNav": "./dist/components/SkipNav/index.mjs",
+    "./components/SkipNav/SkipNav": "./dist/components/SkipNav/SkipNav.mjs",
+    "./utils/cx": "./dist/utils/cx.mjs",
+    "./package.json": "./package.json"
   },
   "scripts": {
     "build": "tsdown",
@@ -122,5 +114,47 @@
     "vite-plugin-svgr": "4.5.0",
     "vitest": "4.1.0",
     "vitest-browser-react": "2.1.0"
+  },
+  "inlinedDependencies": {
+    "@jridgewell/sourcemap-codec": "1.5.5",
+    "@next/env": "16.2.0",
+    "@storybook/builder-webpack5": "10.2.19",
+    "@storybook/core-webpack": "10.2.19",
+    "@storybook/nextjs": "10.2.19",
+    "@storybook/preset-react-webpack": "10.2.19",
+    "@storybook/react": "10.2.19",
+    "@storybook/react-docgen-typescript-plugin": "1.0.6--canary.9.0c3f3b7.0",
+    "@swc/helpers": "0.5.15",
+    "@types/estree": "1.0.8",
+    "@types/json-schema": "7.0.15",
+    "@vitest/expect": "4.1.0",
+    "@vitest/pretty-format": "4.1.0",
+    "@vitest/runner": "4.1.0",
+    "@vitest/snapshot": "4.1.0",
+    "@vitest/spy": "4.1.0",
+    "@vitest/utils": "4.1.0",
+    "acorn": "8.16.0",
+    "ajv": "8.18.0",
+    "ast-types": "0.16.1",
+    "chai": "6.2.2",
+    "expect-type": "1.3.0",
+    "fast-uri": "3.1.0",
+    "fork-ts-checker-webpack-plugin": "9.1.0",
+    "magic-string": "0.30.21",
+    "next": "16.2.0",
+    "node-abort-controller": "3.1.1",
+    "pathe": "2.0.3",
+    "react-docgen-typescript": "2.4.0",
+    "recast": "0.23.11",
+    "schema-utils": "4.3.3",
+    "sharp": "0.34.5",
+    "storybook": "10.2.19",
+    "tapable": "2.3.0",
+    "tinybench": "2.9.0",
+    "tinyrainbow": "3.1.0",
+    "typescript": "5.9.3",
+    "vite": "8.0.0",
+    "vitest": "4.1.0",
+    "webpack": "5.105.4"
   }
 }

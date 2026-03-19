@@ -18,7 +18,7 @@ import 'server-only'
 
 import https from 'node:https'
 
-import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints.js'
+import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 
 import { Callout } from '@jeromefitz/ds/components/Callout/index'
 import { CameraIcon } from '@jeromefitz/ds/components/Icon/index'
