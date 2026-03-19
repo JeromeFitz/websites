@@ -1,5 +1,4 @@
-import _filter from 'lodash/filter.js'
-import _startsWith from 'lodash/startsWith.js'
+import { filter as _filter, startsWith as _startsWith } from 'lodash-es'
 
 const FIND_ALT = 'ALT: '
 

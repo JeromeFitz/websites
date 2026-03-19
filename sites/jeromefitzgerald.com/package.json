@@ -5,7 +5,7 @@
   "description": "Website for Jerome Fitzgerald (he/him).",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jeromefitz/websites",
+    "url": "git+https://github.com/jeromefitz/websites.git",
     "directory": "sites/jeromefitzgerald.com"
   },
   "author": {
@@ -45,7 +45,7 @@
     "@date-fns/tz": "1.4.1",
     "@date-fns/utc": "2.1.1",
     "@heroicons/react": "2.2.0",
-    "@jeromefitz/utils": "3.1.7",
+    "@jeromefitz/utils": "3.1.8-canary.4",
     "@mantine/hooks": "8.3.18",
     "@neondatabase/serverless": "1.0.2",
     "@notionhq/client": "4.0.2",
@@ -106,7 +106,7 @@
     "geist": "1.7.0",
     "github-slugger": "2.0.0",
     "jsonwebtoken": "9.0.3",
-    "lodash": "4.17.23",
+    "lodash-es": "4.17.23",
     "ms": "3.0.0-canary.202508261828",
     "next": "16.2.0",
     "next-auth": "4.24.13",
@@ -138,7 +138,7 @@
     "@tailwindcss/postcss": "4.2.2",
     "@tailwindcss/typography": "0.5.19",
     "@types/jsonwebtoken": "9.0.10",
-    "@types/lodash": "4.17.24",
+    "@types/lodash-es": "4.17.12",
     "@types/pluralize": "0.0.33",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",

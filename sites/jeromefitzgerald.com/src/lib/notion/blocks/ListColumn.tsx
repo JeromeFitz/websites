@@ -1,4 +1,4 @@
-import type { ColumnListBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints.js'
+import type { ColumnListBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 
 import { NotionBlocks as Blocks } from '../Notion.Blocks'
 import { getBlockKey } from '../Notion.utils'

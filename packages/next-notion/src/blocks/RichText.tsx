@@ -7,7 +7,7 @@ import type {
   ParagraphBlockObjectResponse,
   QuoteBlockObjectResponse,
   RichTextItemResponse,
-} from '@notionhq/client/build/src/api-endpoints.js'
+} from '@notionhq/client/build/src/api-endpoints'
 
 import type { ApiColor } from '../Notion.types'
 

@@ -18,7 +18,7 @@ import 'server-only'
 
 import https from 'node:https'
 
-import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints.js'
+import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 
 import { envClient } from '@jeromefitz/next-config/env.client.mjs'
 import { envServer } from '@jeromefitz/next-config/env.server.mjs'

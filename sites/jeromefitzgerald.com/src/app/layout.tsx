@@ -4,9 +4,7 @@ import type { Event } from '@/lib/drizzle/schemas/types'
 
 import { Theme } from '@radix-ui/themes/dist/esm/components/theme.js'
 import { isAfter } from 'date-fns/isAfter'
-import _filter from 'lodash/filter.js'
-import _orderBy from 'lodash/orderBy.js'
-import _take from 'lodash/take.js'
+import { filter as _filter, orderBy as _orderBy, take as _take } from 'lodash-es'
 
 import { ContainerFooter } from '@/components/Container/Container.Footer'
 import { ContainerGradient } from '@/components/Container/Container.Gradient'

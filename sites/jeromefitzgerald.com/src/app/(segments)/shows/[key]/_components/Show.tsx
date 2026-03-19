@@ -1,9 +1,6 @@
 import type { Show as ShowType } from '@/lib/drizzle/schemas/cache-shows/types'
 
-// import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
-// import { Grid } from '@radix-ui/themes/dist/esm/components/grid.js'
-// import _findKey from 'lodash/findKey.js'
-import _get from 'lodash/get.js'
+import { get as _get } from 'lodash-es'
 
 import { ModuleCredits } from '@/app/_v16/Module'
 import { GridWrapper } from '@/app/_v16/Wrapper'

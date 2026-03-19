@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jeromefitz/websites",
+    "url": "git+https://github.com/jeromefitz/websites.git",
     "directory": "packages/next-notion"
   },
   "author": {
@@ -13,77 +13,36 @@
   },
   "license": "MIT",
   "engines": {
-    "node": ">=20.10.0"
+    "node": ">=24"
   },
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
-    },
-    "./blocks/Column": {
-      "types": "./dist/blocks/Column.d.ts",
-      "default": "./dist/blocks/Column.js"
-    },
-    "./blocks/Divider": {
-      "types": "./dist/blocks/Divider.d.ts",
-      "default": "./dist/blocks/Divider.js"
-    },
-    "./blocks/EmojiClient": {
-      "types": "./dist/blocks/Emoji.client.d.ts",
-      "default": "./dist/blocks/Emoji.client.js"
-    },
-    "./blocks/EmojiServer": {
-      "types": "./dist/blocks/Emoji.server.d.ts",
-      "default": "./dist/blocks/Emoji.server.js"
-    },
-    "./blocks/Emoji": {
-      "types": "./dist/blocks/Emoji.d.ts",
-      "default": "./dist/blocks/Emoji.js"
-    },
-    "./blocks/ListBulleted": {
-      "types": "./dist/blocks/ListBulleted.d.ts",
-      "default": "./dist/blocks/ListBulleted.js"
-    },
-    "./blocks/ListColumn": {
-      "types": "./dist/blocks/ListColumn.d.ts",
-      "default": "./dist/blocks/ListColumn.js"
-    },
-    "./blocks/RichText": {
-      "types": "./dist/blocks/RichText.d.ts",
-      "default": "./dist/blocks/RichText.js"
-    },
-    "./helper": {
-      "types": "./dist/helper.d.ts",
-      "default": "./dist/helper.js"
-    },
-    "./utils": {
-      "types": "./dist/utils/index.d.ts",
-      "default": "./dist/utils/index.js"
-    },
-    "./queries": {
-      "types": "./dist/queries/index.d.ts",
-      "default": "./dist/queries/index.js"
-    },
-    "./Notion.Blocks": {
-      "types": "./dist/Notion.Blocks.d.ts",
-      "default": "./dist/Notion.Blocks.js"
-    },
-    "./Notion.Config": {
-      "types": "./dist/Notion.Config.d.ts",
-      "default": "./dist/Notion.Config.js"
-    },
-    "./Notion.constants": {
-      "types": "./dist/Notion.constants.d.ts",
-      "default": "./dist/Notion.constants.js"
-    },
-    "./Notion.types": {
-      "types": "./dist/Notion.types.d.ts",
-      "default": "./dist/Notion.types.js"
-    },
-    "./Notion.utils": {
-      "types": "./dist/Notion.utils.d.ts",
-      "default": "./dist/Notion.utils.js"
-    }
+    ".": "./dist/index.mjs",
+    "./blocks/Column": "./dist/blocks/Column.mjs",
+    "./blocks/Divider": "./dist/blocks/Divider.mjs",
+    "./blocks/Emoji": "./dist/blocks/Emoji.mjs",
+    "./blocks/Emoji.client": "./dist/blocks/Emoji.client.mjs",
+    "./blocks/Emoji.server": "./dist/blocks/Emoji.server.mjs",
+    "./blocks/ListBulleted": "./dist/blocks/ListBulleted.mjs",
+    "./blocks/ListColumn": "./dist/blocks/ListColumn.mjs",
+    "./blocks/RichText": "./dist/blocks/RichText.mjs",
+    "./helper": "./dist/helper.mjs",
+    "./Notion.Blocks": "./dist/Notion.Blocks.mjs",
+    "./Notion.Config": "./dist/Notion.Config.mjs",
+    "./Notion.constants": "./dist/Notion.constants.mjs",
+    "./Notion.types": "./dist/Notion.types.mjs",
+    "./Notion.utils": "./dist/Notion.utils.mjs",
+    "./queries": "./dist/queries/index.mjs",
+    "./queries/getBlockChildrenData": "./dist/queries/getBlockChildrenData.mjs",
+    "./queries/getBlockChildrenDataParent": "./dist/queries/getBlockChildrenDataParent.mjs",
+    "./queries/getColumnData": "./dist/queries/getColumnData.mjs",
+    "./queries/getDatabaseQuery": "./dist/queries/getDatabaseQuery.mjs",
+    "./queries/getPageData": "./dist/queries/getPageData.mjs",
+    "./utils": "./dist/utils/index.mjs",
+    "./utils/getAwsImage": "./dist/utils/getAwsImage.mjs",
+    "./utils/getPropertyTypeData": "./dist/utils/getPropertyTypeData.mjs",
+    "./utils/getSegmentInfo": "./dist/utils/getSegmentInfo.mjs",
+    "./utils/uuid": "./dist/utils/uuid.mjs",
+    "./package.json": "./package.json"
   },
   "files": [
     "dist/**"
@@ -114,7 +73,7 @@
   "devDependencies": {
     "@date-fns/tz": "1.4.1",
     "@date-fns/utc": "2.1.1",
-    "@jeromefitz/utils": "3.1.7",
+    "@jeromefitz/utils": "3.1.8-canary.4",
     "@notionhq/client": "4.0.2",
     "date-fns": "4.1.0",
     "ms": "3.0.0-canary.202508261828",
@@ -127,5 +86,105 @@
   "publishConfig": {
     "access": "public"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "inlinedDependencies": {
+    "@floating-ui/core": "1.7.1",
+    "@floating-ui/dom": "1.7.1",
+    "@floating-ui/react-dom": "2.1.3",
+    "@floating-ui/utils": "0.2.9",
+    "@heroicons/react": "2.2.0",
+    "@jeromefitz/utils": "3.1.8-canary.4",
+    "@radix-ui/number": "1.1.1",
+    "@radix-ui/primitive": "1.1.2",
+    "@radix-ui/react-accessible-icon": [
+      "1.1.7",
+      "1.1.8"
+    ],
+    "@radix-ui/react-accordion": "1.2.11",
+    "@radix-ui/react-alert-dialog": "1.1.14",
+    "@radix-ui/react-arrow": "1.1.7",
+    "@radix-ui/react-aspect-ratio": "1.1.7",
+    "@radix-ui/react-avatar": "1.1.10",
+    "@radix-ui/react-checkbox": "1.3.2",
+    "@radix-ui/react-collapsible": "1.1.11",
+    "@radix-ui/react-collection": "1.1.7",
+    "@radix-ui/react-compose-refs": "1.1.2",
+    "@radix-ui/react-context": "1.1.2",
+    "@radix-ui/react-context-menu": "2.2.15",
+    "@radix-ui/react-dialog": "1.1.14",
+    "@radix-ui/react-direction": "1.1.1",
+    "@radix-ui/react-dismissable-layer": "1.1.10",
+    "@radix-ui/react-dropdown-menu": "2.1.15",
+    "@radix-ui/react-focus-guards": "1.1.2",
+    "@radix-ui/react-focus-scope": "1.1.7",
+    "@radix-ui/react-form": "0.1.7",
+    "@radix-ui/react-hover-card": "1.1.14",
+    "@radix-ui/react-icons": "1.3.2",
+    "@radix-ui/react-id": "1.1.1",
+    "@radix-ui/react-label": "2.1.7",
+    "@radix-ui/react-menu": "2.1.15",
+    "@radix-ui/react-menubar": "1.1.15",
+    "@radix-ui/react-navigation-menu": "1.2.13",
+    "@radix-ui/react-one-time-password-field": "0.1.7",
+    "@radix-ui/react-password-toggle-field": "0.1.2",
+    "@radix-ui/react-popover": "1.1.14",
+    "@radix-ui/react-popper": "1.2.7",
+    "@radix-ui/react-portal": "1.1.9",
+    "@radix-ui/react-presence": "1.1.4",
+    "@radix-ui/react-primitive": [
+      "2.1.3",
+      "2.1.4"
+    ],
+    "@radix-ui/react-progress": "1.1.7",
+    "@radix-ui/react-radio-group": "1.3.7",
+    "@radix-ui/react-roving-focus": "1.1.10",
+    "@radix-ui/react-scroll-area": "1.2.9",
+    "@radix-ui/react-select": "2.2.5",
+    "@radix-ui/react-separator": "1.1.7",
+    "@radix-ui/react-slider": "1.3.5",
+    "@radix-ui/react-slot": [
+      "1.2.3",
+      "1.2.4"
+    ],
+    "@radix-ui/react-switch": "1.2.5",
+    "@radix-ui/react-tabs": "1.1.12",
+    "@radix-ui/react-toast": "1.2.14",
+    "@radix-ui/react-toggle": "1.1.9",
+    "@radix-ui/react-toggle-group": "1.1.10",
+    "@radix-ui/react-toolbar": "1.1.10",
+    "@radix-ui/react-tooltip": "1.2.7",
+    "@radix-ui/react-use-callback-ref": "1.1.1",
+    "@radix-ui/react-use-controllable-state": "1.2.2",
+    "@radix-ui/react-use-effect-event": "0.0.2",
+    "@radix-ui/react-use-escape-keydown": "1.1.1",
+    "@radix-ui/react-use-is-hydrated": "0.1.0",
+    "@radix-ui/react-use-layout-effect": "1.1.1",
+    "@radix-ui/react-use-previous": "1.1.1",
+    "@radix-ui/react-use-size": "1.1.1",
+    "@radix-ui/react-visually-hidden": [
+      "1.2.3",
+      "1.2.4"
+    ],
+    "@radix-ui/themes": "3.3.0",
+    "@swc/helpers": "0.5.15",
+    "aria-hidden": "1.2.6",
+    "classnames": "2.5.1",
+    "clsx": "2.1.1",
+    "detect-node-es": "1.1.0",
+    "get-nonce": "1.0.1",
+    "lodash-es": "4.17.23",
+    "next": "16.2.0",
+    "radix-ui": "1.4.2",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "react-remove-scroll": "2.7.1",
+    "react-remove-scroll-bar": "2.3.8",
+    "react-style-singleton": "2.2.3",
+    "tailwind-merge": "3.5.0",
+    "tslib": "2.8.1",
+    "use-callback-ref": "1.3.3",
+    "use-sidecar": "1.1.3",
+    "use-sync-external-store": "1.5.0",
+    "zod": "4.3.6"
+  }
 }

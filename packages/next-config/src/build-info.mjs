@@ -6,10 +6,12 @@ import { join } from 'node:path'
 import { Octokit } from '@octokit/core'
 import stringify from 'fast-json-stable-stringify'
 import isCI from 'is-ci'
-import _filter from 'lodash/filter.js'
-import _orderBy from 'lodash/orderBy.js'
-import _pick from 'lodash/pick.js'
-import _size from 'lodash/size.js'
+import {
+  filter as _filter,
+  orderBy as _orderBy,
+  pick as _pick,
+  size as _size,
+} from 'lodash-es'
 
 // import { format } from 'prettier'
 

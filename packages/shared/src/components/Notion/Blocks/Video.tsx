@@ -1,6 +1,6 @@
 import 'server-only'
 
-import type { VideoBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints.js'
+import type { VideoBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 
 import { Callout } from '@jeromefitz/ds/components/Callout/index'
 

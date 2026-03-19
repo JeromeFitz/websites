@@ -1,9 +1,7 @@
 // import type { Show } from '@/lib/drizzle/schemas/cache-shows/types'
 
 import { slug as _slug } from 'github-slugger'
-import _find from 'lodash/find.js'
-import _findKey from 'lodash/findKey.js'
-import _map from 'lodash/map.js'
+import { find as _find, findKey as _findKey, map as _map } from 'lodash-es'
 
 import { getRollupTitle } from '@/components/Credits/Credits.utils'
 
