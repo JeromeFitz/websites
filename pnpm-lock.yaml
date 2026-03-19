@@ -245,8 +245,8 @@ importers:
         specifier: 4.1.0
         version: 4.1.0(vitest@4.1.0)
       eslint-plugin-storybook:
-        specifier: 10.2.19
-        version: 10.2.19(typescript@5.9.3)
+        specifier: 10.3.1
+        version: 10.3.1(typescript@5.9.3)
       next:
         specifier: 16.2.0
         version: 16.2.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -6077,11 +6077,11 @@ packages:
     resolution: {integrity: sha512-/veY75JbMK4j1yjvuUxuVsiS/hr/4iHs9FTT6cgTexxdE0Ly/glccBAkloH/DofkjRbZU3bnoj38mOmhkZ0lHw==}
     engines: {node: '>=12'}
 
-  eslint-plugin-storybook@10.2.19:
-    resolution: {integrity: sha512-JwwNgG24mkwwiJp/VIwUuJ9QIXoeCZteSZ7PEpb8DUhKpzCrNxJOeg7i5ep6yLexWAVjfFLG4OnFeV8cVS2PAg==}
+  eslint-plugin-storybook@10.3.1:
+    resolution: {integrity: sha512-zWE8cQTJo2Wuw6I/Ag73rP5rLbaypm5p3G2BV74Y7Lc8NwNclAwNi5u+yl9qBQLW2aSXotDW9fjj3Mx+GeEgfA==}
     peerDependencies:
       eslint: '>=8'
-      storybook: ^10.2.19
+      storybook: ^10.3.1
 
   eslint-scope@5.1.1:
     resolution: {integrity: sha512-2NxwbF/hZ0KpepYN0cNbo+FN6XoK7GaHlQhgx/hIZl6Va0bF45RQOOwhLIy8lQDbuCiadSLCBnH2CFYquit5bw==}
@@ -15939,7 +15939,7 @@ snapshots:
 
   escape-string-regexp@5.0.0: {}
 
-  eslint-plugin-storybook@10.2.19(typescript@5.9.3):
+  eslint-plugin-storybook@10.3.1(typescript@5.9.3):
     dependencies:
       '@typescript-eslint/utils': 8.57.0(typescript@5.9.3)
     transitivePeerDependencies:
