@@ -42,7 +42,7 @@
     "@date-fns/tz": "1.4.1",
     "@date-fns/utc": "2.1.1",
     "@heroicons/react": "2.2.0",
-    "@jeromefitz/notion": "5.1.12",
+    "@jeromefitz/notion": "6.0.0",
     "@jeromefitz/utils": "4.0.0",
     "@mantine/hooks": "8.3.18",
     "@notionhq/client": "4.0.2",
