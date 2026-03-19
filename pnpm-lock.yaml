@@ -557,8 +557,8 @@ importers:
         specifier: 2.2.0
         version: 2.2.0(react@19.2.4)
       '@jeromefitz/notion':
-        specifier: 6.0.0
-        version: 6.0.0(@jeromefitz/utils@4.0.0(lodash-es@4.17.23))(lodash-es@4.17.23)
+        specifier: 6.0.1
+        version: 6.0.1(@jeromefitz/utils@4.0.0(lodash-es@4.17.23))(lodash-es@4.17.23)
       '@jeromefitz/utils':
         specifier: 4.0.0
         version: 4.0.0(lodash-es@4.17.23)
@@ -2563,11 +2563,11 @@ packages:
     peerDependencies:
       lodash-es: ^4.17.21
 
-  '@jeromefitz/notion@6.0.0':
-    resolution: {integrity: sha512-R/ACKivYdaG7Aqe667QFaldHCVzANqQRt8IazMgYQ9P1BwcJ0cBU0UM26+clzhvrg5aYwyUM0Mw6EJE+Zc9T/A==}
+  '@jeromefitz/notion@6.0.1':
+    resolution: {integrity: sha512-Y29tE+vGWLPxInNxl6uf75TJ0jn5QpVLOhO+HxGDsn1S+IthBU3yiTX69p0Jsy3HFIGV5+ty3T5up1ItK4xqdQ==}
     engines: {node: '>=24'}
     peerDependencies:
-      '@jeromefitz/utils': ^3.0.0
+      '@jeromefitz/utils': ^4.0.0
       lodash-es: ^4.17.21
 
   '@jeromefitz/prettier-config@3.0.0':
@@ -10824,7 +10824,7 @@ snapshots:
       lodash-es: 4.17.23
       title: 4.0.1
 
-  '@jeromefitz/notion@6.0.0(@jeromefitz/utils@4.0.0(lodash-es@4.17.23))(lodash-es@4.17.23)':
+  '@jeromefitz/notion@6.0.1(@jeromefitz/utils@4.0.0(lodash-es@4.17.23))(lodash-es@4.17.23)':
     dependencies:
       '@jeromefitz/utils': 4.0.0(lodash-es@4.17.23)
       '@notionhq/client': 4.0.2
