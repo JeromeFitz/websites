@@ -11,7 +11,6 @@
   "commitMessageTopic": " {{depName}}@{{#if isPinDigest}}{{{newDigest}}}{{else}}{{#if isMajor}}{{{newVersion}}} 🧨 {{else}}{{#if isSingleVersion}}{{{newVersion}}}{{else}}{{#if newValue}}{{{newValue}}}{{else}}@{{{newDigest}}}{{/if}}{{/if}}{{/if}}{{/if}}",
   "dependencyDashboard": false,
   "extends": [":semanticCommitsDisabled"],
-  "ignoreDeps": ["nanoid"],
   "labels": ["📦️ Dependencies"],
   "node": {
     "enabled": false
@@ -110,6 +109,18 @@
       "automergeStrategy": "squash",
       "automergeType": "pr",
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"]
+    },
+    {
+      "enabled": false,
+      "matchPackageNames": [
+        "@semantic-release/commit-analyzer",
+        "brace-expansion",
+        "brace-expansion*",
+        "nanoid",
+        "nanoid*",
+        "semver",
+        "semver*"
+      ]
     }
   ],
   "prBodyColumns": ["Package", "Update", "Type", "Change"],
