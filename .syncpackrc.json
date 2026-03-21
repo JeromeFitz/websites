@@ -31,6 +31,13 @@
       "range": "^"
     }
   ],
+  "source": [
+    "!packages/*/dist/package.json",
+    "!sites/jerandky/package.json",
+    "packages/*/package.json",
+    "sites/*/package.json",
+    "package.json"
+  ],
   "versionGroups": [
     {
       "dependencies": ["server-only"],
