@@ -130,7 +130,7 @@
     "@floating-ui/utils": "0.2.9",
     "@heroicons/react": "2.2.0",
     "@jeromefitz/utils": "4.0.0",
-    "@next/env": "16.2.0",
+    "@next/env": "16.2.1",
     "@radix-ui/number": "1.1.1",
     "@radix-ui/primitive": "1.1.2",
     "@radix-ui/react-accessible-icon": [
@@ -214,7 +214,7 @@
     "emoji-regex": "10.6.0",
     "emojilib": "2.4.0",
     "get-nonce": "1.0.1",
-    "next": "16.2.0",
+    "next": "16.2.1",
     "node-emoji": "2.2.0",
     "radix-ui": "1.4.2",
     "react-remove-scroll": "2.7.1",
@@ -227,7 +227,7 @@
     "unicode-emoji-modifier-base": "1.0.0",
     "use-callback-ref": "1.3.3",
     "use-sidecar": "1.1.3",
-    "use-sync-external-store": "1.5.0",
+    "use-sync-external-store": "1.6.0",
     "zod": "4.3.6"
   }
 }
