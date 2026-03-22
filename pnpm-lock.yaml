@@ -339,8 +339,8 @@ importers:
         specifier: 4.0.0
         version: 4.0.0(lodash-es@4.17.23)
       '@notionhq/client':
-        specifier: 4.0.2
-        version: 4.0.2
+        specifier: 5.14.0
+        version: 5.14.0
       date-fns:
         specifier: 4.1.0
         version: 4.1.0
@@ -375,8 +375,8 @@ importers:
         specifier: 4.0.0
         version: 4.0.0(lodash-es@4.17.23)
       '@notionhq/client':
-        specifier: 4.0.2
-        version: 4.0.2
+        specifier: 5.14.0
+        version: 5.14.0
       '@radix-ui/themes':
         specifier: 3.3.0
         version: 3.3.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -573,8 +573,8 @@ importers:
         specifier: 8.3.18
         version: 8.3.18(react@19.2.4)
       '@notionhq/client':
-        specifier: 4.0.2
-        version: 4.0.2
+        specifier: 5.14.0
+        version: 5.14.0
       '@radix-ui/colors':
         specifier: 3.0.0
         version: 3.0.0
@@ -853,8 +853,8 @@ importers:
         specifier: 1.0.2
         version: 1.0.2
       '@notionhq/client':
-        specifier: 4.0.2
-        version: 4.0.2
+        specifier: 5.14.0
+        version: 5.14.0
       '@radix-ui/colors':
         specifier: 3.0.0
         version: 3.0.0
@@ -2423,6 +2423,10 @@ packages:
 
   '@notionhq/client@4.0.2':
     resolution: {integrity: sha512-4pk3dm4umhjsRI0umCnJ8lCZh0TMiaMdkY0rz6FV4OqVuTsmYFV3pk+YTR5S8792ZY2Rm4lJHlLj05HQVKDuIg==}
+    engines: {node: '>=18'}
+
+  '@notionhq/client@5.14.0':
+    resolution: {integrity: sha512-9bbH7/9M6D9YlHMYCZ1aAFxRCWiKRBpP/XOnAHFtBCFDf00PPhpWRSsGE1FfmjYCNW2BFRj19WshJFH5IFfNvg==}
     engines: {node: '>=18'}
 
   '@octokit/auth-token@6.0.0':
@@ -10538,6 +10542,8 @@ snapshots:
     optional: true
 
   '@notionhq/client@4.0.2': {}
+
+  '@notionhq/client@5.14.0': {}
 
   '@octokit/auth-token@6.0.0': {}
 
