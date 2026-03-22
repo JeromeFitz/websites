@@ -115,7 +115,6 @@
     "smoothscroll-polyfill": "0.4.4",
     "swr": "2.4.1",
     "title": "4.0.1",
-    "ts-node": "10.9.2",
     "uuid": "13.0.0",
     "valid-url": "1.0.9",
     "zod": "4.3.6",
