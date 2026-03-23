@@ -105,7 +105,7 @@
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "@vitejs/plugin-react": "6.0.1",
-    "@vitest/browser": "4.1.0",
+    "@vitest/browser": "4.1.1",
     "@vitest/browser-playwright": "4.1.0",
     "eslint-plugin-storybook": "10.3.1",
     "next": "16.2.1",
