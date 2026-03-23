@@ -99,6 +99,13 @@
       "reviewers": ["JeromeFitz"]
     },
     {
+      "commitMessagePrefix": "📦  (deps-dev)",
+      "excludePackageNames": [],
+      "groupName": "vitest",
+      "groupSlug": "vitest",
+      "matchPackagePatterns": ["^@vitest/", "vitest"]
+    },
+    {
       "assignees": ["JeromeFitz"],
       "labels": ["📦 Dependencies 💥 Breaking 💥", "🛑️ Do Not Merge"],
       "matchUpdateTypes": ["major"],
