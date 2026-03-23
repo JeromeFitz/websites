@@ -105,14 +105,14 @@
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "@vitejs/plugin-react": "6.0.1",
-    "@vitest/browser": "4.1.0",
-    "@vitest/browser-playwright": "4.1.0",
+    "@vitest/browser": "4.1.1",
+    "@vitest/browser-playwright": "4.1.1",
     "eslint-plugin-storybook": "10.3.3",
     "next": "16.2.1",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "vite-plugin-svgr": "4.5.0",
-    "vitest": "4.1.0",
+    "vitest": "4.1.1",
     "vitest-browser-react": "2.1.0"
   },
   "inlinedDependencies": {
