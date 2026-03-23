@@ -79,7 +79,7 @@
       "excludePackageNames": [],
       "groupName": "storybook 🧪 ",
       "groupSlug": "storybook",
-      "matchPackageNames": ["storybook"],
+      "matchPackageNames": ["eslint-plugin-storybook", "storybook"],
       "matchPackagePatterns": ["^@storybook/"]
     },
     {
@@ -103,7 +103,8 @@
       "excludePackageNames": [],
       "groupName": "vitest",
       "groupSlug": "vitest",
-      "matchPackagePatterns": ["^@vitest/", "vitest"]
+      "matchPackageNames": ["vitest"],
+      "matchPackagePatterns": ["^@vitest/"]
     },
     {
       "assignees": ["JeromeFitz"],
