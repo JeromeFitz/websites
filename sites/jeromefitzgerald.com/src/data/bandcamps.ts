@@ -70,6 +70,21 @@ const bandcamps = [
   },
 ]
 
+const deadies = [
+  { artist: 'Alex Conti', href: 'https://www.instagram.com/canticonti/' },
+  { artist: 'Beth Geaches', href: 'https://www.instagram.com/bethasketches/' },
+  { artist: 'Jerome Fitzgerald', href: 'https://www.instagram.com/jeromefitz/' },
+  { artist: 'Kyle Longsdorf', href: 'https://www.instagram.com/kysodof22/' },
+  // solter has less of an online presence than jerome
+  { artist: 'Matt Solter', href: 'https://www.instagram.com/jeromefitz/' },
+  { artist: 'Raina Deerwater', href: 'https://www.instagram.com/itsrainaingmen/' },
+  { artist: 'Sara Kantner', href: 'https://www.instagram.com/saknasty/' },
+  {
+    artist: 'Tyler Ray Kendrick',
+    href: 'https://www.instagram.com/tylerraykendrick/',
+  },
+]
+
 const jeromeands = [
   { artist: 'Anna C. Reilly', href: 'https://www.instagram.com/reillycoyooote/' },
   { artist: 'Alex O’Brien', href: 'https://www.instagram.com/aobtunney/' },
@@ -83,4 +98,4 @@ const jeromeands = [
   { artist: 'Shannon Norman', href: 'https://www.instagram.com/shambonez/' },
 ]
 
-export { bandcamps, jeromeands }
+export { bandcamps, deadies, jeromeands }

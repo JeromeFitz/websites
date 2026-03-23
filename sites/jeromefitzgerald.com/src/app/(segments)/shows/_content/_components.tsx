@@ -2,14 +2,20 @@ import { Box, Em, Flex, Separator, Text } from '@radix-ui/themes'
 
 import { ContentAlexOJerome, DataAlexOJerome } from './alex-o-jerome'
 import { ContentJeromeAnd, DataJeromeAnd } from './jerome-and'
+import { ContentTheDeathShow, DataTheDeathShow } from './the-death-show'
+import { ContentWarpZone, DataWarpZone } from './warp-zone'
 
-const DataComponents = {
-  'alex-o-jerome': DataAlexOJerome,
-  'jerome-and': DataJeromeAnd,
-}
 const ContentComponents = {
   'alex-o-jerome': ContentAlexOJerome,
   'jerome-and': ContentJeromeAnd,
+  'the-death-show': ContentTheDeathShow,
+  'warp-zone': ContentWarpZone,
+}
+const DataComponents = {
+  'alex-o-jerome': DataAlexOJerome,
+  'jerome-and': DataJeromeAnd,
+  'the-death-show': DataTheDeathShow,
+  'warp-zone': DataWarpZone,
 }
 
 const ContentTitle = ({ title }: { title: string }) => {

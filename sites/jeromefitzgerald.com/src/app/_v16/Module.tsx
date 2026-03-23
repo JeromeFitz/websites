@@ -394,7 +394,7 @@ const v16__ModuleCredit = ({ items }: { items: Credit[] }) => {
           const Component = isStrong ? Strong : Fragment
           return (
             <Text
-              as="p"
+              as="span"
               className="block whitespace-pre-line"
               key={`item-${creditType.toLowerCase()}--${item.id}`}
               size={item.id === 0 ? '6' : '3'}
@@ -450,7 +450,7 @@ const ModuleCredit = ({ data, items }: { data: any; items: Credit[] }) => {
           const Component = isStrong ? Strong : Fragment
           return (
             <Text
-              as="p"
+              as="span"
               className="block whitespace-pre-line"
               key={`item-${creditType.toLowerCase()}--${item.id}`}
               size={item.id === 0 ? '6' : '4'}
