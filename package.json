@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "@arethetypeswrong/core": "0.18.2",
-    "@biomejs/biome": "2.4.8",
+    "@biomejs/biome": "2.4.9",
     "@jeromefitz/conventional-gitmoji": "5.0.0",
     "@jeromefitz/prettier-config": "3.0.1",
     "@jeromefitz/release-notes-generator": "4.0.0",
