@@ -234,8 +234,8 @@ importers:
         specifier: workspace:*
         version: link:../tailwind-config
       '@mantine/hooks':
-        specifier: 8.3.18
-        version: 8.3.18(react@19.2.4)
+        specifier: 9.0.0
+        version: 9.0.0(react@19.2.4)
       '@storybook/addon-docs':
         specifier: 10.3.3
         version: 10.3.3(@types/react@19.2.14)
@@ -567,8 +567,8 @@ importers:
         specifier: 4.0.0
         version: 4.0.0(lodash-es@4.17.23)
       '@mantine/hooks':
-        specifier: 8.3.18
-        version: 8.3.18(react@19.2.4)
+        specifier: 9.0.0
+        version: 9.0.0(react@19.2.4)
       '@notionhq/client':
         specifier: 4.0.2
         version: 4.0.2
@@ -841,8 +841,8 @@ importers:
         specifier: 4.0.0
         version: 4.0.0(lodash-es@4.17.23)
       '@mantine/hooks':
-        specifier: 8.3.18
-        version: 8.3.18(react@19.2.4)
+        specifier: 9.0.0
+        version: 9.0.0(react@19.2.4)
       '@neondatabase/serverless':
         specifier: 1.0.2
         version: 1.0.2
@@ -2264,10 +2264,10 @@ packages:
   '@loaderkit/resolve@1.0.4':
     resolution: {integrity: sha512-rJzYKVcV4dxJv+vW6jlvagF8zvGxHJ2+HTr1e2qOejfmGhAApgJHl8Aog4mMszxceTRiKTTbnpgmTO1bEZHV/A==}
 
-  '@mantine/hooks@8.3.18':
-    resolution: {integrity: sha512-QoWr9+S8gg5050TQ06aTSxtlpGjYOpIllRbjYYXlRvZeTsUqiTbVfvQROLexu4rEaK+yy9Wwriwl9PMRgbLqPw==}
+  '@mantine/hooks@9.0.0':
+    resolution: {integrity: sha512-TKcz+k0JH/jtblBfwOw/vXBX2EpJO66psJ5ZVmdDhwc6vbHDsvY6oYN8ynt9TfRn/eHZXsEmLPNj+wuGtWy4BA==}
     peerDependencies:
-      react: ^18.x || ^19.x
+      react: ^19.2.0
 
   '@mdx-js/react@3.1.1':
     resolution: {integrity: sha512-f++rKLQgUVYDAtECQ6fn/is15GkEH9+nZPM3MS0RcxVqoTfawHvDlSCH7JbMhAM6uJ32v3eXLvLmLvjGu7PTQw==}
@@ -10252,7 +10252,7 @@ snapshots:
     dependencies:
       '@braidai/lang': 1.1.2
 
-  '@mantine/hooks@8.3.18(react@19.2.4)':
+  '@mantine/hooks@9.0.0(react@19.2.4)':
     dependencies:
       react: 19.2.4
 
