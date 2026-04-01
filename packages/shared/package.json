@@ -106,7 +106,7 @@
     "ioredis": "5.10.1",
     "lodash-es": "4.17.23",
     "ms": "3.0.0-canary.202508261828",
-    "next": "16.2.1",
+    "next": "16.2.2",
     "plaiceholder": "3.0.0",
     "react": "19.2.4",
     "react-dom": "19.2.4",
