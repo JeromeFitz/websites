@@ -9,7 +9,7 @@
     "@octokit/core": "7.0.6",
     "@plaiceholder/next": "3.0.0",
     "fast-json-stable-stringify": "2.1.0",
-    "lodash-es": "4.17.23",
+    "lodash-es": "4.18.1",
     "next": "16.2.2",
     "plaiceholder": "3.0.0",
     "react": "19.2.4",

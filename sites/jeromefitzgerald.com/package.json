@@ -106,7 +106,7 @@
     "geist": "1.7.0",
     "github-slugger": "2.0.0",
     "jsonwebtoken": "9.0.3",
-    "lodash-es": "4.17.23",
+    "lodash-es": "4.18.1",
     "ms": "3.0.0-canary.202508261828",
     "next": "16.2.2",
     "next-auth": "4.24.13",
