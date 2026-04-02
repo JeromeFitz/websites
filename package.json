@@ -52,7 +52,7 @@
     "ccommit": "4.0.1",
     "dotenv": "17.4.0",
     "is-ci": "4.1.0",
-    "lodash-es": "4.17.23",
+    "lodash-es": "4.18.1",
     "node-modules-inspector": "1.4.2",
     "publint": "0.3.18",
     "semantic-release": "25.0.3",
