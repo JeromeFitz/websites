@@ -5,18 +5,18 @@
   "devDependencies": {
     "@jeromefitz/tailwind-config": "workspace:*",
     "@radix-ui/themes": "3.3.0",
-    "@storybook/addon-a11y": "10.3.3",
-    "@storybook/addon-links": "10.3.3",
-    "@storybook/addon-themes": "10.3.3",
-    "@storybook/nextjs": "10.3.3",
-    "@storybook/react": "10.3.3",
+    "@storybook/addon-a11y": "10.3.4",
+    "@storybook/addon-links": "10.3.4",
+    "@storybook/addon-themes": "10.3.4",
+    "@storybook/nextjs": "10.3.4",
+    "@storybook/react": "10.3.4",
     "@storybook/testing-library": "0.2.2",
     "less": "4.6.4",
     "next": "16.2.2",
     "postcss": "8.5.8",
     "react": "19.2.4",
     "react-dom": "19.2.4",
-    "storybook": "10.3.3",
+    "storybook": "10.3.4",
     "webpack": "5.105.4"
   }
 }
