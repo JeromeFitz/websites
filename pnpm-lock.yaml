@@ -14,7 +14,7 @@ overrides:
   cross-spawn@^7.0.0: ^7.0.6
   elliptic@^6.0.0: ^6.6.1
   esbuild@^0.18.0: ^0.28.0
-  esbuild@^0.25.0: ^0.27.4
+  esbuild@^0.25.0: ^0.28.0
   flatted@^3.0.0: ^3.4.2
   h3@^1.0.0: ^1.15.9
   js-yaml@^4.0.0: ^4.1.1
@@ -14988,7 +14988,7 @@ snapshots:
     dependencies:
       '@drizzle-team/brocli': 0.10.2
       '@esbuild-kit/esm-loader': 2.6.5
-      esbuild: 0.27.4
+      esbuild: 0.28.0
       tsx: 4.21.0
 
   drizzle-orm@0.45.2(@neondatabase/serverless@1.0.2)(@upstash/redis@1.37.0)(postgres@3.4.8):
