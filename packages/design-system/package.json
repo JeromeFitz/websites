@@ -113,7 +113,7 @@
     "react-dom": "19.2.4",
     "vite-plugin-svgr": "5.2.0",
     "vitest": "4.1.2",
-    "vitest-browser-react": "2.1.0"
+    "vitest-browser-react": "2.2.0"
   },
   "inlinedDependencies": {
     "@jridgewell/sourcemap-codec": "1.5.5",
