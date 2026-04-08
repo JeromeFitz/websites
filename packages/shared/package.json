@@ -69,7 +69,7 @@
     "semantic-release": "echo semantic-release"
   },
   "peerDependencies": {
-    "@notionhq/client": "^2.2.14 || ^3.0.0 || ^4.0.0",
+    "@notionhq/client": "^2.2.14 || ^3.0.0 || ^4.0.0 || ^5.0.0",
     "@upstash/ratelimit": "^1.0.0 || ^2.0.0",
     "@upstash/redis": "^1.28.3",
     "@vercel/analytics": "^2.0.1",
@@ -92,7 +92,7 @@
   },
   "devDependencies": {
     "@jeromefitz/utils": "4.0.0",
-    "@notionhq/client": "4.0.2",
+    "@notionhq/client": "5.17.0",
     "@radix-ui/themes": "3.3.0",
     "@types/lodash-es": "4.17.12",
     "@upstash/ratelimit": "2.0.8",
