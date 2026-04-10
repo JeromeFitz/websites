@@ -17,6 +17,6 @@
     "react": "19.2.5",
     "react-dom": "19.2.5",
     "storybook": "10.3.4",
-    "webpack": "5.106.0"
+    "webpack": "5.106.1"
   }
 }
