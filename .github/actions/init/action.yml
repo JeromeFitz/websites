@@ -8,7 +8,7 @@ runs:
   steps:
     - name: '🔧  pnpm: Install'
       id: pnpm-setup
-      uses: pnpm/action-setup@v5
+      uses: pnpm/action-setup@v6
       with:
         run_install: false
 
