@@ -176,7 +176,7 @@ jobs:
       - name: '🛠️  Deploy (Config)'
         id: pull-deploy-config
         if: ${{ contains(steps.pull-commit-message.outputs.message, '[b]') }}
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           script: |
             core.setOutput('ref', context.payload.pull_request.head.ref)
