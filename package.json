@@ -50,7 +50,7 @@
     "@types/lodash-es": "4.17.12",
     "@types/node": "24.12.2",
     "ccommit": "4.0.1",
-    "dotenv": "17.4.1",
+    "dotenv": "17.4.2",
     "is-ci": "4.1.0",
     "lodash-es": "4.18.1",
     "node-modules-inspector": "1.4.2",
