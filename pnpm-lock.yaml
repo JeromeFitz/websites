@@ -1075,8 +1075,8 @@ importers:
         specifier: 1.0.9
         version: 1.0.9
       virtua:
-        specifier: 0.49.0
-        version: 0.49.0(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
+        specifier: 0.49.1
+        version: 0.49.1(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       xml2js:
         specifier: 0.6.2
         version: 0.6.2
@@ -8960,8 +8960,8 @@ packages:
     resolution: {integrity: sha512-OljLrQ9SQdOUqTaQxqL5dEfZWrXExyyWsozYlAWFawPVNuD83igl7uJD2RTkNMbniIYgt8l81eCJGIdQF7avLQ==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
 
-  virtua@0.49.0:
-    resolution: {integrity: sha512-yra9TIPqkVIn+LOjCZO8e6C6UsCiCIHJXt3yfnCP02r2sLpgr6mlispn3SHtWZv2aK2tuZLo6Sp2v6qmSrSVfw==}
+  virtua@0.49.1:
+    resolution: {integrity: sha512-6f79msqg3jzNFdqJiS0FSzhRN1EHlDhR7EvW7emp6z5qQ22VdsReiDHflkpMEMhoAyUuYr69nwT0aagiM7NrUg==}
     peerDependencies:
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
@@ -18328,7 +18328,7 @@ snapshots:
 
   validate-npm-package-name@5.0.1: {}
 
-  virtua@0.49.0(react-dom@19.2.5(react@19.2.5))(react@19.2.5):
+  virtua@0.49.1(react-dom@19.2.5(react@19.2.5))(react@19.2.5):
     optionalDependencies:
       react: 19.2.5
       react-dom: 19.2.5(react@19.2.5)
