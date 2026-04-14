@@ -11,7 +11,7 @@
     "@tailwindcss/postcss": "4.2.2",
     "@tailwindcss/typography": "0.5.19",
     "autoprefixer": "10.4.27",
-    "cssnano": "7.1.4",
+    "cssnano": "7.1.5",
     "lightningcss": "1.32.0",
     "postcss": "8.5.9",
     "radix-themes-tw": "1.1.0",
