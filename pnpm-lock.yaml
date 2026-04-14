@@ -516,8 +516,8 @@ importers:
         specifier: 0.5.19
         version: 0.5.19(tailwindcss@4.2.2)
       autoprefixer:
-        specifier: 10.4.27
-        version: 10.4.27(postcss@8.5.9)
+        specifier: 10.5.0
+        version: 10.5.0(postcss@8.5.9)
       cssnano:
         specifier: 7.1.5
         version: 7.1.5(postcss@8.5.9)
@@ -5095,8 +5095,8 @@ packages:
     resolution: {integrity: sha512-6t10qk83GOG8p0vKmaCr8eiilZwO171AvbROMtvvNiwrTly62t+7XkA8RdIIVbpMhCASAsxgAzdRSwh6nw/5Dg==}
     engines: {node: '>=4'}
 
-  autoprefixer@10.4.27:
-    resolution: {integrity: sha512-NP9APE+tO+LuJGn7/9+cohklunJsXWiaWEfV3si4Gi/XHDwVNgkwr1J3RQYFIvPy76GmJ9/bW8vyoU1LcxwKHA==}
+  autoprefixer@10.5.0:
+    resolution: {integrity: sha512-FMhOoZV4+qR6aTUALKX2rEqGG+oyATvwBt9IIzVR5rMa2HRWPkxf+P+PAJLD1I/H5/II+HuZcBJYEFBpq39ong==}
     engines: {node: ^10 || ^12 || >=14}
     hasBin: true
     peerDependencies:
@@ -9500,7 +9500,7 @@ snapshots:
     dependencies:
       '@babel/compat-data': 7.29.0
       '@babel/helper-validator-option': 7.27.1
-      browserslist: 4.28.1
+      browserslist: 4.28.2
       lru-cache: 5.1.1
       semver: 6.3.1
 
@@ -14471,10 +14471,10 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  autoprefixer@10.4.27(postcss@8.5.9):
+  autoprefixer@10.5.0(postcss@8.5.9):
     dependencies:
-      browserslist: 4.28.1
-      caniuse-lite: 1.0.30001779
+      browserslist: 4.28.2
+      caniuse-lite: 1.0.30001787
       fraction.js: 5.3.4
       picocolors: 1.1.1
       postcss: 8.5.9
@@ -14611,7 +14611,7 @@ snapshots:
   browserslist@4.28.1:
     dependencies:
       baseline-browser-mapping: 2.10.8
-      caniuse-lite: 1.0.30001779
+      caniuse-lite: 1.0.30001787
       electron-to-chromium: 1.5.302
       node-releases: 2.0.27
       update-browserslist-db: 1.2.3(browserslist@4.28.1)
@@ -14672,7 +14672,7 @@ snapshots:
   caniuse-api@3.0.0:
     dependencies:
       browserslist: 4.28.2
-      caniuse-lite: 1.0.30001779
+      caniuse-lite: 1.0.30001787
       lodash.memoize: 4.1.2
       lodash.uniq: 4.5.0
 
@@ -14897,7 +14897,7 @@ snapshots:
 
   core-js-compat@3.48.0:
     dependencies:
-      browserslist: 4.28.1
+      browserslist: 4.28.2
 
   core-js-pure@3.48.0: {}
 
