@@ -47,7 +47,7 @@
     "@heroicons/react": "2.2.0",
     "@jeromefitz/utils": "4.0.0",
     "@mantine/hooks": "9.0.2",
-    "@neondatabase/serverless": "1.0.2",
+    "@neondatabase/serverless": "1.1.0",
     "@notionhq/client": "4.0.2",
     "@radix-ui/colors": "3.0.0",
     "@radix-ui/react-accessible-icon": "1.1.8",
