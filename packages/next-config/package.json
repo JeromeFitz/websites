@@ -4,7 +4,7 @@
   "private": true,
   "main": "./next.config.mjs",
   "devDependencies": {
-    "@jeromefitz/prettier-config": "3.0.1",
+    "@jeromefitz/prettier-config": "3.0.3",
     "@next/bundle-analyzer": "16.2.4",
     "@octokit/core": "7.0.6",
     "@plaiceholder/next": "3.0.0",

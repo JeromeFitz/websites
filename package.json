@@ -43,7 +43,7 @@
     "@arethetypeswrong/core": "0.18.2",
     "@biomejs/biome": "2.4.12",
     "@jeromefitz/conventional-gitmoji": "5.0.0",
-    "@jeromefitz/prettier-config": "3.0.1",
+    "@jeromefitz/prettier-config": "3.0.3",
     "@jeromefitz/release-notes-generator": "4.0.0",
     "@jeromefitz/semantic": "12.0.2",
     "@jeromefitz/tsconfig": "3.0.0",
