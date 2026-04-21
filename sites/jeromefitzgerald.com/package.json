@@ -46,7 +46,7 @@
     "@date-fns/utc": "2.1.1",
     "@heroicons/react": "2.2.0",
     "@jeromefitz/utils": "4.0.0",
-    "@mantine/hooks": "9.0.2",
+    "@mantine/hooks": "9.1.0",
     "@neondatabase/serverless": "1.1.0",
     "@notionhq/client": "4.0.2",
     "@radix-ui/colors": "3.0.0",
