@@ -7,7 +7,7 @@ function getImageAlt(comments) {
   const c = _filter(comments, (comment) =>
     _startsWith(comment?.rich_text[0]?.plain_text, FIND_ALT),
   )
-  return !!c && c.length > 0
+  return c && c.length > 0
     ? c[0]?.rich_text[0]?.plain_text.slice(FIND_ALT.length)
     : comment
       ? comment?.rich_text[0]?.plain_text

@@ -98,7 +98,7 @@ async function EmojiWrapper({ id, text }) {
     }
 
     const prev = emojiMapping[emojiIndex - 1]
-    if (!!prev && prev.index !== match.to) {
+    if (prev && prev.index !== match.to) {
       emojiMapping[emojiIndex] = {
         emoji: false,
         index: prev.to,
