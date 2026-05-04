@@ -20,7 +20,7 @@ function CurrentlyItem({
   isLoading: boolean
   subline: string
 }) {
-  const Component = id === 'events' && !!hasTop ? CodeGhost : Text
+  const Component = id === 'events' && hasTop ? CodeGhost : Text
   return (
     <Skeleton loading={isLoading} minWidth="100%">
       <Text

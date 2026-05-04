@@ -112,7 +112,7 @@ function RichTextArray({ id, items }) {
         }
 
         const isInternalToNotion = !!href && !href?.includes('http')
-        if (!!href && !isInternalToNotion) {
+        if (href && !isInternalToNotion) {
           return (
             <Href href={href} key={key} {...props}>
               {plain_text}

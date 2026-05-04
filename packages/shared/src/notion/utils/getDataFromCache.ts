@@ -132,10 +132,7 @@ const getDataFromCache = cache(
     /**
      * @todo(notion) determine page id a bit better as it can be Listing or Slug
      */
-    if (
-      !!data?.page?.id &&
-      (isExpired || isObjectEmpty(data?.seo ? data?.seo : {}))
-    ) {
+    if (data?.page?.id && (isExpired || isObjectEmpty(data?.seo ? data?.seo : {}))) {
       // @todo(types)
       const pageData: any = await notion?.pages?.retrieve({
         page_id: data?.page?.id,

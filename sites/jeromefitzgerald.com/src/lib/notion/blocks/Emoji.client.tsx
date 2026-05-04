@@ -102,7 +102,7 @@ async function EmojiWrapper({ id, text }: { id: string; text: string }) {
     // @todo(types)
 
     // @ts-ignore
-    if (!!prev && prev.index !== match.to) {
+    if (prev && prev.index !== match.to) {
       emojiMapping[emojiIndex] = {
         emoji: false,
         index: prev.to,
