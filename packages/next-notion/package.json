@@ -64,7 +64,7 @@
     "date-fns": "^4.0.0",
     "ms": "^3.0.0-canary.1",
     "server-only": "0.0.1",
-    "uuid": "^13.0.0"
+    "uuid": "^14.0.0"
   },
   "dependencies": {
     "emoji-regex": "10.6.0",
@@ -81,7 +81,7 @@
     "react": "19.2.5",
     "react-dom": "19.2.5",
     "server-only": "0.0.1",
-    "uuid": "13.0.0"
+    "uuid": "14.0.0"
   },
   "publishConfig": {
     "access": "public"
