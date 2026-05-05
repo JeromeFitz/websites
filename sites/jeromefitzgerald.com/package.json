@@ -126,7 +126,7 @@
     "valid-url": "1.0.9",
     "virtua": "0.49.1",
     "xml2js": "0.6.2",
-    "zustand": "5.0.12"
+    "zustand": "5.0.13"
   },
   "devDependencies": {
     "@jeromefitz/lighthouse-config": "workspace:*",

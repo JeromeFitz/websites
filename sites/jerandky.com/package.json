@@ -118,7 +118,7 @@
     "uuid": "13.0.0",
     "valid-url": "1.0.9",
     "zod": "4.4.3",
-    "zustand": "5.0.12"
+    "zustand": "5.0.13"
   },
   "devDependencies": {
     "@jeromefitz/lighthouse-config": "workspace:*",
