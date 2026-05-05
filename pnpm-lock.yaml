@@ -80,8 +80,8 @@ importers:
         specifier: 1.4.2
         version: 1.4.2
       publint:
-        specifier: 0.3.18
-        version: 0.3.18
+        specifier: 0.3.19
+        version: 0.3.19
       semantic-release:
         specifier: 25.0.3
         version: 25.0.3(typescript@5.9.3)
@@ -90,7 +90,7 @@ importers:
         version: 14.3.1
       tsdown:
         specifier: 0.21.10
-        version: 0.21.10(@arethetypeswrong/core@0.18.2)(publint@0.3.18)(typescript@5.9.3)
+        version: 0.21.10(@arethetypeswrong/core@0.18.2)(publint@0.3.19)(typescript@5.9.3)
       turbo:
         specifier: 2.9.9
         version: 2.9.9
@@ -7727,8 +7727,8 @@ packages:
   public-encrypt@4.0.3:
     resolution: {integrity: sha512-zVpa8oKZSz5bTMTFClc1fQOnyyEzpl5ozpi1B5YcvBrdohMjH2rfsBtyXcuNuwjsDIXmBYlF2N5FlJYhR29t8Q==}
 
-  publint@0.3.18:
-    resolution: {integrity: sha512-JRJFeBTrfx4qLwEuGFPk+haJOJN97KnPuK01yj+4k/Wj5BgoOK5uNsivporiqBjk2JDaslg7qJOhGRnpltGeog==}
+  publint@0.3.19:
+    resolution: {integrity: sha512-J3p4GOocCRFyLLFRzGfIhAwWgk0Kkcdxj5iFspFvCYbyiJs5IhCM8gsIkcNeQL+tdpV671RtJQiTFSUKhl1Wjg==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -16299,7 +16299,7 @@ snapshots:
       open: 11.0.0
       p-limit: 7.3.0
       pathe: 2.0.3
-      publint: 0.3.18
+      publint: 0.3.19
       structured-clone-es: 1.0.0
       tinyglobby: 0.2.15
       unconfig: 7.5.0
@@ -16335,7 +16335,7 @@ snapshots:
       package-manager-detector: 1.6.0
       pathe: 2.0.3
       pkg-types: 2.3.0
-      publint: 0.3.18
+      publint: 0.3.19
       semver: 7.7.4
       tinyexec: 1.1.1
 
@@ -16940,7 +16940,7 @@ snapshots:
       randombytes: 2.1.0
       safe-buffer: 5.2.1
 
-  publint@0.3.18:
+  publint@0.3.19:
     dependencies:
       '@publint/pack': 0.1.4
       package-manager-detector: 1.6.0
@@ -18084,7 +18084,7 @@ snapshots:
       minimist: 1.2.8
       strip-bom: 3.0.0
 
-  tsdown@0.21.10(@arethetypeswrong/core@0.18.2)(publint@0.3.18)(typescript@5.9.3):
+  tsdown@0.21.10(@arethetypeswrong/core@0.18.2)(publint@0.3.19)(typescript@5.9.3):
     dependencies:
       ansis: 4.2.0
       cac: 7.0.0
@@ -18104,7 +18104,7 @@ snapshots:
       unrun: 0.2.37
     optionalDependencies:
       '@arethetypeswrong/core': 0.18.2
-      publint: 0.3.18
+      publint: 0.3.19
       typescript: 5.9.3
     transitivePeerDependencies:
       - '@ts-macro/tsc'
