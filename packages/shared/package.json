@@ -96,7 +96,7 @@
     "@radix-ui/themes": "3.3.0",
     "@types/lodash-es": "4.17.12",
     "@upstash/ratelimit": "2.0.8",
-    "@upstash/redis": "1.37.0",
+    "@upstash/redis": "1.38.0",
     "@vercel/analytics": "2.0.1",
     "@vercel/speed-insights": "2.0.0",
     "clsx": "2.1.1",
