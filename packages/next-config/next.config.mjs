@@ -52,7 +52,6 @@ const protocol = PROTOCOL.HTTPS
 
 /**
  * @note(turbopack) can only use the following configuration options
- *                  please see .npmrc, keep using webpack for now (sharp)
  * - configFileName
  * - env
  * - experimental.appDir
@@ -302,8 +301,8 @@ const config = ({
         )
         externals.map((ext) => {
           console.debug('\x1b[33m%s\x1b[0m', 'warn', ' - [ 📦 ] ›  ', ext)
-          // @note(npmrc) shamefully-hoist === node_modules at root
-          // @todo(npmrc) would be nice to not shamefully-hoist
+          // @note(pnpm) shamefully-hoist === node_modules at root
+          // @todo(pnpm) would be nice to not shamefully-hoist
           config.resolve.alias[ext] = resolve(
             pathDirName,
             '..',
