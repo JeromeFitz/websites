@@ -16,7 +16,7 @@
   "license": "MIT",
   "engines": {
     "node": ">=24.14.0 <25",
-    "pnpm": ">=10 <11"
+    "pnpm": ">=11 <12"
   },
   "scripts": {
     "build": "CI=1 NODE_NO_WARNINGS=1 next build --turbopack",

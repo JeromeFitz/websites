@@ -13,10 +13,10 @@
   },
   "license": "MIT",
   "private": true,
-  "packageManager": "pnpm@10.33.4+sha512.1c67b3b359b2d408119ba1ed289f34b8fc3c6873412bec6fd264fbdc82489e510fcbecb9ce9d22dae7f3b76269d8441046014bdca53b9979cd7a561ad631b800",
+  "packageManager": "pnpm@11.0.9+sha512.34ce82e6780233cf9cad8685029a8f81d2e06196c5a9bad98879f7424940c6817c4e4524fb7d38b8553ceed48b9758b8ebaf1abd3600c232c4c8cf7366086f38",
   "engines": {
     "node": ">=24.14.0 <25",
-    "pnpm": ">=10 <11"
+    "pnpm": ">=11 <12"
   },
   "scripts": {
     "biome:check": "biome check",
@@ -60,47 +60,5 @@
     "tsdown": "0.22.0",
     "turbo": "2.9.9",
     "typescript": "5.9.3"
-  },
-  "pnpm": {
-    "patchedDependencies": {
-      "@semantic-release/commit-analyzer@13.0.1": "patches/@semantic-release__commit-analyzer@13.0.0.patch"
-    },
-    "onlyBuiltDependencies": [
-      "sharp"
-    ],
-    "overrides": {
-      "@babel/core@^7.0.0": "^7.29.0",
-      "@babel/helpers@^7.0.0": "^7.29.2",
-      "@babel/runtime@^7.0.0": "^7.29.2",
-      "@octokit/plugin-paginate-rest@^14.0.0": "^14.0.0",
-      "@semantic-release/npm@^13.0.0": "^13.1.5",
-      "brace-expansion@^1.0.0": "1.1.12",
-      "cross-spawn@^7.0.0": "^7.0.6",
-      "elliptic@^6.0.0": "^6.6.1",
-      "esbuild@^0.18.0": "^0.28.0",
-      "esbuild@^0.25.0": "^0.28.0",
-      "flatted@^3.0.0": "^3.4.2",
-      "h3@^1.0.0": "^1.15.9",
-      "js-yaml@^4.0.0": "^4.1.1",
-      "micromatch@^4.0.0": "^4.0.8",
-      "nanoid@^3.0.0": "^3.3.8",
-      "pbkdf2@^3.0.0": "^3.1.5",
-      "preact@^10.0.0": "^10.26.10",
-      "semver@^5.0.0": "^5.7.2",
-      "semver@^6.0.0": "^6.3.1",
-      "semver@^7.0.0": "^7.7.4",
-      "sha.js@^2.0.0": "^2.4.12",
-      "ws@^8.0.0": "^8.20.0"
-    },
-    "supportedArchitectures": {
-      "os": [
-        "darwin",
-        "current"
-      ],
-      "cpu": [
-        "x64",
-        "arm64"
-      ]
-    }
   }
 }
