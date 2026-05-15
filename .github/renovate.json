@@ -17,6 +17,15 @@
   },
   "packageRules": [
     {
+      "matchDatasources": ["npm"],
+      "minimumReleaseAge": "1 day"
+    },
+    {
+      "description": "!minimumReleaseAge: pnpm-workspace.yaml => minimumReleaseAgeExclude",
+      "matchPackageNames": ["pnpm"],
+      "minimumReleaseAge": null
+    },
+    {
       "commitMessageExtra": "{{depName}}@{{#if isPinDigest}}{{{newDigest}}}{{else}}{{#if isMajor}}{{{newVersion}}} 🧨 {{else}}{{#if isSingleVersion}}{{{newVersion}}}{{else}}{{#if newValue}}{{{newValue}}}{{else}}{{{newDigest}}}{{/if}}{{/if}}{{/if}}{{/if}}",
       "commitMessagePrefix": "👷  (actions)",
       "commitMessageTopic": " {{depName}}",
