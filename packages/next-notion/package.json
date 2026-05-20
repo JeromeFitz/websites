@@ -75,7 +75,7 @@
     "@date-fns/utc": "2.1.1",
     "@jeromefitz/utils": "4.0.0",
     "@notionhq/client": "4.0.2",
-    "date-fns": "4.1.0",
+    "date-fns": "4.2.1",
     "ms": "3.0.0-canary.202508261828",
     "next": "16.2.6",
     "react": "19.2.6",
