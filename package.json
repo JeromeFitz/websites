@@ -13,7 +13,7 @@
   },
   "license": "MIT",
   "private": true,
-  "packageManager": "pnpm@11.1.2+sha512.415a1cc25974731e75455c1468371be74c5aa5fb7621b50d4056d222451609f11412f23fd602e6169f1e060466641f798597e1be961a10688836a67b16569499",
+  "packageManager": "pnpm@11.2.1+sha512.4c4c142b276348da01d39907cce2f40bf61281212a0e43295ee988055d50cce728ab7e9c181e252e4bce3a4f19ba1cff1a75b1e2e0fd6b17ba0be598a5e45446",
   "engines": {
     "node": ">=24.14.0 <25",
     "pnpm": ">=11 <12"
