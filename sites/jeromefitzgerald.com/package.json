@@ -42,7 +42,7 @@
     "types": "NODE_NO_WARNINGS=1 next typegen"
   },
   "dependencies": {
-    "@date-fns/tz": "1.4.1",
+    "@date-fns/tz": "1.5.0",
     "@date-fns/utc": "2.1.1",
     "@heroicons/react": "2.2.0",
     "@jeromefitz/utils": "4.0.0",
@@ -93,7 +93,7 @@
     "@vercel/analytics": "2.0.1",
     "@vercel/speed-insights": "2.0.0",
     "clsx": "2.1.1",
-    "date-fns": "4.2.1",
+    "date-fns": "4.3.0",
     "date-fns-tz": "3.2.0",
     "dotenv": "17.4.2",
     "drizzle-kit": "0.31.10",
