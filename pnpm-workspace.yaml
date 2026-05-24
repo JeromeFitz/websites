@@ -29,6 +29,7 @@ overrides:
   micromatch@^4.0.0: ^4.0.8
   nanoid@^3.0.0: ^3.3.8
   pbkdf2@^3.0.0: ^3.1.5
+  postcss@^8.0.0: ^8.5.10
   preact@^10.0.0: ^10.26.10
   semver@^5.0.0: ^5.7.2
   semver@^6.0.0: ^6.3.1
