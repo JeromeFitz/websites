@@ -73,7 +73,7 @@
   "devDependencies": {
     "@date-fns/tz": "1.5.0",
     "@date-fns/utc": "2.1.1",
-    "@jeromefitz/utils": "4.0.0",
+    "@jeromefitz/utils": "4.0.1",
     "@notionhq/client": "4.0.2",
     "date-fns": "4.3.0",
     "ms": "3.0.0-canary.202508261828",
