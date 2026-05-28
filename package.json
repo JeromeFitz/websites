@@ -13,7 +13,7 @@
   },
   "license": "MIT",
   "private": true,
-  "packageManager": "pnpm@11.3.0+sha512.2c403d6594527287672b1f7056343a1f7c3634036a67ffabfcc2b3d7595d843768f8787148d1b57cf7956c90606bbd192857c363af19e96d2d0ec9ec5741d215",
+  "packageManager": "pnpm@11.4.0+sha512.f0febc7e37552ab485494a914241b338e0b3580b93d54ce31f00933015880863129038a1b4ae4e414a0ee63ac35bf21197e990172c4a68256450b5636310968f",
   "engines": {
     "node": ">=24.14.0 <25",
     "pnpm": ">=11 <12"
@@ -41,10 +41,10 @@
   },
   "devDependencies": {
     "@arethetypeswrong/core": "0.18.2",
-    "@biomejs/biome": "2.4.15",
-    "@jeromefitz/conventional-gitmoji": "5.0.0",
+    "@biomejs/biome": "2.4.16",
+    "@jeromefitz/conventional-gitmoji": "5.0.1",
     "@jeromefitz/prettier-config": "3.0.3",
-    "@jeromefitz/release-notes-generator": "4.0.0",
+    "@jeromefitz/release-notes-generator": "4.0.3",
     "@jeromefitz/semantic": "12.0.2",
     "@jeromefitz/tsconfig": "3.0.0",
     "@types/lodash-es": "4.17.12",
@@ -58,7 +58,7 @@
     "semantic-release": "25.0.3",
     "syncpack": "15.3.1",
     "tsdown": "0.22.0",
-    "turbo": "2.9.14",
+    "turbo": "2.9.15",
     "typescript": "5.9.3"
   }
 }
