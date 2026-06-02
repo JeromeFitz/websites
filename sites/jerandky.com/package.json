@@ -91,7 +91,7 @@
     "@vercel/analytics": "2.0.1",
     "clsx": "2.1.1",
     "cmdk": "1.1.1",
-    "date-fns": "4.3.0",
+    "date-fns": "4.4.0",
     "fast-json-stable-stringify": "2.1.0",
     "fathom-client": "3.7.2",
     "github-slugger": "2.0.0",
@@ -117,7 +117,7 @@
     "uuid": "14.0.0",
     "valid-url": "1.0.9",
     "zod": "4.4.3",
-    "zustand": "5.0.13"
+    "zustand": "5.0.14"
   },
   "devDependencies": {
     "@jeromefitz/lighthouse-config": "workspace:*",

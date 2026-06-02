@@ -93,7 +93,7 @@
     "@vercel/analytics": "2.0.1",
     "@vercel/speed-insights": "2.0.0",
     "clsx": "2.1.1",
-    "date-fns": "4.3.0",
+    "date-fns": "4.4.0",
     "date-fns-tz": "3.2.0",
     "dotenv": "17.4.2",
     "drizzle-kit": "0.31.10",
@@ -125,7 +125,7 @@
     "valid-url": "1.0.9",
     "virtua": "0.49.1",
     "xml2js": "0.6.2",
-    "zustand": "5.0.13"
+    "zustand": "5.0.14"
   },
   "devDependencies": {
     "@jeromefitz/lighthouse-config": "workspace:*",
