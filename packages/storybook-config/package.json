@@ -13,7 +13,7 @@
     "@storybook/testing-library": "0.2.2",
     "less": "4.6.4",
     "next": "16.2.7",
-    "postcss": "8.5.10",
+    "postcss": "8.5.15",
     "react": "19.2.7",
     "react-dom": "19.2.7",
     "storybook": "10.4.2",
