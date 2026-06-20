@@ -11,7 +11,8 @@ import { getCache, getKey, setCache } from '../../redis'
 /**
  * @todo(next) draft | revalidate
  */
-const getPageDataFromNotion = cache(async (id) => {
+// @todo(types) any
+const getPageDataFromNotion = cache(async (id: any) => {
   let data
 
   const prefix = `/notion/pages/${id}`

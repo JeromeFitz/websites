@@ -646,7 +646,7 @@ function MusicClient() {
                   {/* @ts-ignore */}
                   <SelectRoot
                     defaultValue={appleMusicType ?? INIT.type}
-                    onValueChange={(value) => handleValueChangeType(value)}
+                    onValueChange={(value: string) => handleValueChangeType(value)}
                     size="3"
                   >
                     <SelectTrigger

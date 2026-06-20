@@ -5,7 +5,8 @@ import { Callout } from '@jeromefitz/ds/components/Callout'
 import { NotionEmoji as EmojiWrapper } from 'next-notion/blocks/Emoji'
 import { Tweet } from 'react-tweet'
 
-function EmbedTweet({ id }) {
+// @todo(types) any
+function EmbedTweet({ id }: { id: any }) {
   return (
     <div className="mx-auto my-2 flex w-full justify-center py-2">
       <Tweet id={id} />
@@ -13,7 +14,8 @@ function EmbedTweet({ id }) {
   )
 }
 
-function EmbedTwitter({ block }) {
+// @todo(types) any
+function EmbedTwitter({ block }: { block: any }) {
   const id = block.embed.url.split('').slice(-1)[0]
 
   /**

@@ -453,10 +453,10 @@ function BookPage({ items }: { items: any }) {
         <HeaderSidebar className="!size-full" hasBorder={false} title="">
           <>
             {/* @todo(radix) children */}
-            {/* @ts-igndore */}
+            {/* @ts-ignore */}
             <SelectRoot
               defaultValue={bookStatus ?? 'in-progress'}
-              onValueChange={(value) => handleValueChangeBookStatus(value)}
+              onValueChange={(value: any) => handleValueChangeBookStatus(value)}
               size={{ initial: '3', md: '3' }}
             >
               <SelectTrigger

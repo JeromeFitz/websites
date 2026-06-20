@@ -62,7 +62,8 @@ const getDataFromCache = cache(
     /**
      * Redis
      */
-    let data
+    // @todo(types) any
+    let data: any
     // console.dir(`getCache: slug: ${slug}`)
     const databaseQueryCache = await getCache({ slug })
     const isCached = !!databaseQueryCache && !isObjectEmpty(databaseQueryCache)

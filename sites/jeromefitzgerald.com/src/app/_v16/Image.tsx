@@ -4,6 +4,8 @@ import { ImageClient as NextImage } from '@/components/Notion/Blocks/Image.clien
 
 const imageCount = '4'
 
+// 'ImageContainerGrid' is declared but its value is never read.
+// @ts-ignore
 const ImageContainerGrid = ({ image }: { image: any }) => {
   return (
     <Grid columns={imageCount} gap="2" width="100%">

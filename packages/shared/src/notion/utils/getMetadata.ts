@@ -25,9 +25,16 @@ type ImageItemResponse =
     }
 type TextRequest = string
 
+// @todo(types) any
 // @todo(complexity) 15
 // biome-ignore lint/complexity/noExcessiveCognitiveComplexity: migrate
-function getMetadata({ properties, segmentInfo }) {
+function getMetadata({
+  properties,
+  segmentInfo,
+}: {
+  properties: any
+  segmentInfo: any
+}) {
   if (isObjectEmpty(properties)) return {}
   // console.dir(`[getMetadata] segmentInfo:`)
   // console.dir(segmentInfo)

@@ -4,11 +4,11 @@ import { get as _get } from 'lodash-es'
 
 import { ModuleCredits } from '@/app/_v16/Module'
 import { GridWrapper } from '@/app/_v16/Wrapper'
-import {
-  imageGallery,
-  // imageGallery2,
-  // imageHeadline,
-} from '@/app/(segments)/shows/_content/_images'
+// import {
+//   imageGallery,
+//   // imageGallery2,
+//   // imageHeadline,
+// } from '@/app/(segments)/shows/_content/_images'
 import { ArticleMain } from '@/components/Article/Article.Main'
 import { ArticleMainCTA } from '@/components/Article/Article.Main.CTA'
 import { ContainerWithSidebar } from '@/components/Container/Container.Main'
@@ -61,7 +61,7 @@ export async function Show({ blocks, item }: { blocks: any; item: ShowType }) {
     // @ts-ignore
     hasCustom && (await DataComponents[item.slug]({ slug: item.slug }))
 
-  const foo = [imageGallery[2]]
+  // const foo = [imageGallery[2]]
 
   return (
     <>

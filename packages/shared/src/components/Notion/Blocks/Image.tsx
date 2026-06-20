@@ -53,8 +53,9 @@ const CACHE_KEY_PREFIX__IMAGE = `${envClient.NEXT_PUBLIC__SITE}/image`
 
 // async function getImage({ url }) {}
 
+// @todo(types) any
 // biome-ignore lint/complexity/noExcessiveCognitiveComplexity: migrate
-async function getImageFromBlock({ block, url }) {
+async function getImageFromBlock({ block, url }: { block: any; url: any }) {
   let imageUrl = url
   let imageExpiry = null
   /**
@@ -157,7 +158,8 @@ async function ImageImpl({
   className = '',
   order,
 }: {
-  block: BlockObjectResponse
+  // @todo(types) any
+  block: BlockObjectResponse | any
   blocks?: any
   className?: string
   order: any

@@ -12,7 +12,8 @@ import { getImageAlt } from './Image.utils'
 
 const notion = new Client({ auth: env.NOTION_API_KEY })
 
-async function VideoYouTube({ block, url }) {
+// @todo(types) any
+async function VideoYouTube({ block, url }: { block: any; url: any }) {
   const embedId = url.split('').slice(-1)[0]
   if (!embedId) return null
 

@@ -102,10 +102,10 @@ const sitemapPodcasts = podcasts.map((slug) => ({
   url: getUrl(slug),
 }))
 
-const sitemapPodcastEpisodes = podcastEpisodes.map((slug) => ({
-  lastModified,
-  url: getUrl(slug),
-}))
+// const sitemapPodcastEpisodes = podcastEpisodes.map((slug) => ({
+//   lastModified,
+//   url: getUrl(slug),
+// }))
 const sitemapShows = shows.map((slug) => ({
   lastModified,
   url: getUrl(slug),

@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "noImplicitAny": false, // @todo(types)
     "types": ["node", "react"]
   },
   "exclude": ["node_modules", "**/*.test.ts"],

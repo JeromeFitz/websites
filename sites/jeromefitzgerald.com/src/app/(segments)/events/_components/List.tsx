@@ -14,7 +14,8 @@ import { Link } from '@radix-ui/themes/dist/esm/components/link.js'
 import { Strong } from '@radix-ui/themes/dist/esm/components/strong.js'
 import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 import { isAfter } from 'date-fns/isAfter'
-import { filter as _filter, orderBy as _orderBy, take as _take } from 'lodash-es'
+// import { filter as _filter, orderBy as _orderBy, take as _take } from 'lodash-es'
+import { filter as _filter, orderBy as _orderBy } from 'lodash-es'
 import NextLink from 'next/link'
 
 import { DataList__Info } from '@/app/(segments)/events/[...key]/_components/Event.Data.List'
@@ -224,14 +225,14 @@ function Listing({ items }: { items: Event[] }) {
     (item: Event) => [item.dateIso],
     ['asc'],
   )
-  const eventsPast = _take(
-    _orderBy(
-      _filter(items, (item: Event) => isAfter(dateNow, item.dateIso)),
-      (item: Event) => [item.dateIso],
-      ['desc'],
-    ),
-    10,
-  )
+  // const eventsPast = _take(
+  //   _orderBy(
+  //     _filter(items, (item: Event) => isAfter(dateNow, item.dateIso)),
+  //     (item: Event) => [item.dateIso],
+  //     ['desc'],
+  //   ),
+  //   10,
+  // )
 
   return (
     <Flex direction="column">
