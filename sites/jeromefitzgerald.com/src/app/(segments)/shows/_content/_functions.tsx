@@ -1,7 +1,8 @@
 // import type { Show } from '@/lib/drizzle/schemas/cache-shows/types'
 
 import { slug as _slug } from 'github-slugger'
-import { find as _find, findKey as _findKey, map as _map } from 'lodash-es'
+// import { find as _find, findKey as _findKey, map as _map } from 'lodash-es'
+import { findKey as _findKey, map as _map } from 'lodash-es'
 
 import { getRollupTitle } from '@/components/Credits/Credits.utils'
 
@@ -41,7 +42,7 @@ function getCreditsByPerson(PEOPLE: any) {
         id: _slug(_person),
         subline: getRollupTitle(relation),
       }
-      const _idExists = _find(PEOPLE_FINAL, { id: _data.id })
+      // const _idExists = _find(PEOPLE_FINAL, { id: _data.id })
       const _keyExists = _findKey(PEOPLE_FINAL, { id: _data.id })
 
       if (_keyExists) {
@@ -53,6 +54,7 @@ function getCreditsByPerson(PEOPLE: any) {
         PEOPLE_FINAL.push(_data)
       }
     })
+    return
   })
   PEOPLE_FINAL.sort((a: { id: string }, b: { id: string }) =>
     a.id.localeCompare(b.id),

@@ -1,11 +1,10 @@
 import fs from 'node:fs'
 import path from 'node:path'
 
-import { envClient } from '@jeromefitz/next-config/env.client.mjs'
-import { envServer } from '@jeromefitz/next-config/env.server.mjs'
-
 import jwt from 'jsonwebtoken'
 import { NextResponse } from 'next/server.js'
+import { envClient } from 'next-config/env.client'
+import { envServer } from 'next-config/env.server'
 
 const configDirectory = path.resolve(
   process.cwd(),

@@ -1,4 +1,4 @@
-import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
+import { envClient } from '@jeromefitz/next-config'
 
 import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Link } from '@radix-ui/themes/dist/esm/components/link.js'
@@ -6,7 +6,7 @@ import NextLink from 'next/link'
 
 import { ExternalLinkIcon } from '../Icon/Icon'
 
-const nextSeo = { url: `https://${env.NEXT_PUBLIC__SITE}` }
+const nextSeo = { url: `https://${envClient?.NEXT_PUBLIC__SITE}` }
 const domain = new URL(nextSeo.url)
 
 const getExternal = (href: string | string[]) =>
@@ -19,7 +19,7 @@ const getParams = (href: string | string[]) => ({
   isNotion: getNotion(href),
 })
 
-function FlexImpl({ children }) {
+function FlexImpl({ children }: { children: React.ReactNode }) {
   return (
     <Flex align="center" asChild direction="row" display="inline-flex" gap="1">
       {children}
@@ -27,7 +27,15 @@ function FlexImpl({ children }) {
   )
 }
 
-const Anchor = ({ children, className = '', href }) => {
+const Anchor = ({
+  children,
+  className = '',
+  href,
+}: {
+  children: React.ReactNode
+  className?: string
+  href: string
+}) => {
   const { isExternal, isNotion } = getParams(href)
 
   if (isExternal && !isNotion) {

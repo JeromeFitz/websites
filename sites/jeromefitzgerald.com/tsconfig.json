@@ -1,39 +1,21 @@
 {
   "compilerOptions": {
-    "allowImportingTsExtensions": true,
-    "allowJs": true,
-    "baseUrl": ".",
-    "esModuleInterop": true,
-    "incremental": true,
-    "isolatedModules": true,
-    "jsx": "react-jsx",
     "lib": ["dom", "dom.iterable", "esnext"],
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "noEmit": true,
     "paths": {
       "@/*": ["./src/*"],
-      "@jeromefitz/next-config/env.client.mjs": [
-        "./src/config/next.config.env.client.mjs"
-      ],
-      "@jeromefitz/next-config/env.server.mjs": [
-        "./src/config/next.config.env.server.mjs"
-      ],
       "~public/*": ["./public/*"],
-      // "@jeromefitz/next-config/*": ["../../packages/next-config/src/*"],
+      "next-config/env.client": ["./src/config/next.config.env.client.ts"],
+      "next-config/env.server": ["./src/config/next.config.env.server.ts"],
       "radix-themes-tw": ["./src/config/radix-themes-tw.css"]
     },
     "plugins": [
       {
         "name": "next"
       }
-    ],
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "target": "ESNext"
+    ]
   },
   "exclude": ["node_modules", "zzz/**"],
+  "extends": "../../tsconfig.json",
   "include": [
     "**/*.ts",
     "**/*.tsx",

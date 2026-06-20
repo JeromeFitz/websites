@@ -1,6 +1,14 @@
 import { cx } from '../../utils/cx'
 
-function SectionHeaderTitle({ children, className = '', isTitle = false }) {
+function SectionHeaderTitle({
+  children,
+  className = '',
+  isTitle = false,
+}: {
+  children: React.ReactNode
+  className: string
+  isTitle: boolean
+}) {
   return (
     <h2
       className={cx(

@@ -16,6 +16,7 @@ const AccordionRootImpl = ({
   ref,
   ...props
 }: AccordionRootPropsImpl) => (
+  // @ts-ignore
   <AccordionRoot className={className} {...props} ref={ref} type={type}>
     {children}
   </AccordionRoot>

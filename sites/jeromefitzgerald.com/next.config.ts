@@ -1,6 +1,6 @@
 // import type { RemotePattern } from 'next/dist/shared/lib/image-config'
-import '@jeromefitz/next-config/env.client.mjs'
-import '@jeromefitz/next-config/env.server.mjs'
+import 'next-config/env.client'
+import 'next-config/env.server'
 
 import type { NextConfig } from 'next'
 

@@ -1,8 +1,35 @@
 {
   "name": "@jeromefitz/next-config",
   "version": "0.0.0",
+  "type": "module",
   "private": true,
-  "main": "./next.config.mjs",
+  "exports": {
+    ".": {
+      "import": "./src/index.ts",
+      "types": "./src/index.ts"
+    },
+    "./build-info": {
+      "import": "./src/build-info.ts",
+      "types": "./src/build-info.ts"
+    },
+    "./env.client": {
+      "import": "./src/env.client.ts",
+      "types": "./src/env.client.ts"
+    },
+    "./env.server": {
+      "import": "./src/env.server.ts",
+      "types": "./src/env.server.ts"
+    },
+    "./security-headers": {
+      "import": "./src/security-headers.ts",
+      "types": "./src/security-headers.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "lint": "pnpm lint:typescript",
+    "lint:typescript": "tsc --noEmit --declaration"
+  },
   "devDependencies": {
     "@jeromefitz/prettier-config": "3.0.3",
     "@next/bundle-analyzer": "16.2.9",

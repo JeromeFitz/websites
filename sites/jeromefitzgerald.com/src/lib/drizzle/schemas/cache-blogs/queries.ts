@@ -1,10 +1,9 @@
 import type { Blog } from '@/lib/drizzle/schemas/cache-blogs/types'
 import type { Segment } from '@/utils/getBySegment'
 
-import { envServer } from '@jeromefitz/next-config/env.server.mjs'
-
 // import { and, eq, sql } from 'drizzle-orm'
 import { sql } from 'drizzle-orm'
+import { envServer } from 'next-config/env.server'
 
 import { drizzle } from '@/lib/drizzle/index'
 

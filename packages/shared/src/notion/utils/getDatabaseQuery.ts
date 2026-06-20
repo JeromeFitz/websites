@@ -1,15 +1,28 @@
 import 'server-only'
 
-import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
+import { envClient as env } from '@jeromefitz/next-config'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
-import { getDatabaseQuery as _getDatabaseQuery } from 'next-notion/queries/index'
+import { getDatabaseQuery as _getDatabaseQuery } from 'next-notion/queries'
 import { cache } from 'react'
 
-import { getCache, getKey, setCache } from '../../redis/index'
+import { getCache, getKey, setCache } from '../../redis'
 
 const getDatabaseQuery = cache(
-  async ({ database_id, draft, filterType, revalidate, segmentInfo }) => {
+  async ({
+    database_id,
+    draft,
+    filterType,
+    revalidate,
+    segmentInfo,
+  }: {
+    // @todo(types) any
+    database_id: any
+    draft: any
+    filterType: any
+    revalidate: any
+    segmentInfo: any
+  }) => {
     let data
 
     const { isIndex, segment, slug } = segmentInfo

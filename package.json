@@ -1,6 +1,7 @@
 {
   "name": "@jeromefitz/websites",
   "version": "0.0.0",
+  "type": "module",
   "description": "Monorepo for series of websites for Jerome Fitzgerald (he/him).",
   "repository": {
     "type": "git",
@@ -59,6 +60,6 @@
     "syncpack": "15.3.2",
     "tsdown": "0.22.3",
     "turbo": "2.9.18",
-    "typescript": "5.9.3"
+    "typescript": "6.0.3"
   }
 }

@@ -4,13 +4,13 @@ import type {
 } from '@notionhq/client/build/src/api-endpoints'
 import type { Metadata } from 'next'
 
-import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
+import { envClient as env } from '@jeromefitz/next-config'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
-import { getPropertyTypeData } from 'next-notion/utils/index'
+import { getPropertyTypeData } from 'next-notion/utils'
 import _title from 'title'
 
-// import { getEventData } from '../index'
+// import { getEventData } from '..'
 
 type ImageItemResponse =
   | {
@@ -25,9 +25,16 @@ type ImageItemResponse =
     }
 type TextRequest = string
 
+// @todo(types) any
 // @todo(complexity) 15
 // biome-ignore lint/complexity/noExcessiveCognitiveComplexity: migrate
-function getMetadata({ properties, segmentInfo }) {
+function getMetadata({
+  properties,
+  segmentInfo,
+}: {
+  properties: any
+  segmentInfo: any
+}) {
   if (isObjectEmpty(properties)) return {}
   // console.dir(`[getMetadata] segmentInfo:`)
   // console.dir(segmentInfo)

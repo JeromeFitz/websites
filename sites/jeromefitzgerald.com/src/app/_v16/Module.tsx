@@ -15,7 +15,7 @@ import {
 import NextLink from 'next/link'
 import { Fragment } from 'react'
 
-import { Anchor } from '@/components/Anchor/Anchor'
+// import { Anchor } from '@/components/Anchor/Anchor'
 import { BookOpenIcon, MusicalNoteIcon, TicketIcon } from '@/components/Icon'
 
 // import { DataJeromeAnd } from '../(segments)/shows/_content/jerome-and'
@@ -25,17 +25,17 @@ import { ImageGallery } from './ImageGallery'
 import { LinkButton } from './LinkButton'
 import { GridWrapper, WrapperLeft, WrapperRight } from './Wrapper'
 
-const BackTo = () => {
-  return (
-    <Flex pb="9" className="text-center" direction="column" width="100%" px="9">
-      <Heading as="h4" weight="regular">
-        <Em>
-          <Anchor href="/shows">← Back to all: Shows</Anchor>
-        </Em>
-      </Heading>
-    </Flex>
-  )
-}
+// const BackTo = () => {
+//   return (
+//     <Flex pb="9" className="text-center" direction="column" width="100%" px="9">
+//       <Heading as="h4" weight="regular">
+//         <Em>
+//           <Anchor href="/shows">← Back to all: Shows</Anchor>
+//         </Em>
+//       </Heading>
+//     </Flex>
+//   )
+// }
 
 const ModuleAbout = () => {
   return (
@@ -344,70 +344,70 @@ const emeritus: Credit[] = [
 
 const loop = [cast, crew, thanks, emeritus]
 
-const v16__ModuleCredits = () => {
-  return (
-    <GridWrapper>
-      <WrapperLeft>
-        <Heading as="h2" size={{ initial: '7', md: '8' }} className="font-normal!">
-          Credits
-        </Heading>
-      </WrapperLeft>
-      <WrapperRight>
-        {loop.map((l, i) => {
-          return (
-            <Flex
-              className="rounded-3 bg-accent-3"
-              direction="column"
-              width="100%"
-              // biome-ignore lint/suspicious/noArrayIndexKey: @todo
-              key={`credits-${i}`}
-            >
-              {/* @ts-ignore */}
-              <ModuleCredit items={l} />
-            </Flex>
-          )
-        })}
-      </WrapperRight>
-    </GridWrapper>
-  )
-}
+// const v16__ModuleCredits = () => {
+//   return (
+//     <GridWrapper>
+//       <WrapperLeft>
+//         <Heading as="h2" size={{ initial: '7', md: '8' }} className="font-normal!">
+//           Credits
+//         </Heading>
+//       </WrapperLeft>
+//       <WrapperRight>
+//         {loop.map((l, i) => {
+//           return (
+//             <Flex
+//               className="rounded-3 bg-accent-3"
+//               direction="column"
+//               width="100%"
+//               // biome-ignore lint/suspicious/noArrayIndexKey: @todo
+//               key={`credits-${i}`}
+//             >
+//               {/* @ts-ignore */}
+//               <ModuleCredit items={l} />
+//             </Flex>
+//           )
+//         })}
+//       </WrapperRight>
+//     </GridWrapper>
+//   )
+// }
 
-const v16__ModuleCredit = ({ items }: { items: Credit[] }) => {
-  const creditType = items[0].headline
-  // @ts-ignore
-  // biome-ignore lint/correctness/noUndeclaredVariables: @todo
-  const _items = DataJeromeAnd[creditType.toLowerCase()]
-  if (_items === undefined || _items?.length === 0) return null
+// const v16__ModuleCredit = ({ items }: { items: Credit[] }) => {
+//   const creditType = items[0].headline
+//   // @ts-ignore
+//   // biome-ignore lint/correctness/noUndeclaredVariables: @todo
+//   const _items = DataJeromeAnd[creditType.toLowerCase()]
+//   if (_items === undefined || _items?.length === 0) return null
 
-  return (
-    <Flex direction="column" gap="3" p={{ initial: '2', md: '4' }}>
-      <Heading as="h3">{creditType}</Heading>
-      <Grid className="h-fit" columns={{ initial: '2', md: '3' }} gap="3">
-        {_items.map((item: any) => {
-          const isHeading = item.id === 0
-          if (isHeading) return
-          const isStrong =
-            !!item.subline &&
-            item.subline !== 'Cast' &&
-            item.subline !== 'Thanks' &&
-            item.subline !== 'Cast Emeritus'
-          const Component = isStrong ? Strong : Fragment
-          return (
-            <Text
-              as="span"
-              className="block whitespace-pre-line"
-              key={`item-${creditType.toLowerCase()}--${item.id}`}
-              size={item.id === 0 ? '6' : '3'}
-            >
-              <Component className="block">{item.headline}</Component>
-              {isStrong && item.subline}
-            </Text>
-          )
-        })}
-      </Grid>
-    </Flex>
-  )
-}
+//   return (
+//     <Flex direction="column" gap="3" p={{ initial: '2', md: '4' }}>
+//       <Heading as="h3">{creditType}</Heading>
+//       <Grid className="h-fit" columns={{ initial: '2', md: '3' }} gap="3">
+//         {_items.map((item: any) => {
+//           const isHeading = item.id === 0
+//           if (isHeading) return
+//           const isStrong =
+//             !!item.subline &&
+//             item.subline !== 'Cast' &&
+//             item.subline !== 'Thanks' &&
+//             item.subline !== 'Cast Emeritus'
+//           const Component = isStrong ? Strong : Fragment
+//           return (
+//             <Text
+//               as="span"
+//               className="block whitespace-pre-line"
+//               key={`item-${creditType.toLowerCase()}--${item.id}`}
+//               size={item.id === 0 ? '6' : '3'}
+//             >
+//               <Component className="block">{item.headline}</Component>
+//               {isStrong && item.subline}
+//             </Text>
+//           )
+//         })}
+//       </Grid>
+//     </Flex>
+//   )
+// }
 
 const ModuleCredits = ({ data }: { data: any }) => {
   return (

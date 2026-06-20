@@ -1,9 +1,8 @@
 import type { Episode } from '@/lib/drizzle/schemas/cache-episodes/types'
 import type { Segment } from '@/utils/getBySegment'
 
-import { envServer } from '@jeromefitz/next-config/env.server.mjs'
-
 import { sql } from 'drizzle-orm'
+import { envServer } from 'next-config/env.server'
 
 import { drizzle } from '@/lib/drizzle/index'
 export const segment: Segment = 'episodes'

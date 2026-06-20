@@ -1,17 +1,17 @@
 /** biome-ignore-all lint/correctness/noUnusedImports: wip */
-import { Fragment } from 'react'
+// import { Fragment } from 'react'
 
-import { imageGallery } from '../(segments)/shows/_content/_images'
-import { FeedContainer, FeedTag, FeedTagContainer, FeedWrapper } from './Feed'
+// import { imageGallery } from '../(segments)/shows/_content/_images'
+// import { FeedContainer, FeedTag, FeedTagContainer, FeedWrapper } from './Feed'
 import { Footer } from './Footer'
 import { FooterNavigation, HeaderNavigation } from './Header.Navigation'
 import { Main } from './Main'
 import {
-  ModuleAbout,
+  // ModuleAbout,
   ModuleCredits,
-  ModuleHome,
-  ModuleImageGallery,
-  ModuleShow,
+  // ModuleHome,
+  // ModuleImageGallery,
+  // ModuleShow,
 } from './Module'
 
 const Home = () => {

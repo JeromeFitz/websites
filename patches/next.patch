@@ -1,0 +1,10 @@
+diff --git a/dist/build/webpack/loaders/next-app-loader/index.d.ts b/dist/build/webpack/loaders/next-app-loader/index.d.ts
+index 5badfc977fb0fd383970ad91870cf3fdb6b5177f..87e1f398cab0739fd98ea42775d1cb0eb1ca2e68 100644
+--- a/dist/build/webpack/loaders/next-app-loader/index.d.ts
++++ b/dist/build/webpack/loaders/next-app-loader/index.d.ts
+@@ -1,4 +1,4 @@
+-import type webpack from 'next/dist/compiled/webpack/webpack';
++import type { webpack } from 'next/dist/compiled/webpack/webpack';
+ import { type ValueOf } from '../../../../shared/lib/constants';
+ import type { ModuleTuple, CollectedMetadata } from '../metadata/types';
+ import type { NextConfig } from '../../../../server/config-shared';

@@ -1,6 +1,6 @@
 import type { Config } from 'drizzle-kit'
 
-import { envServer } from '@jeromefitz/next-config/env.server.mjs'
+import { envServer } from 'next-config/env.server'
 
 export default {
   dbCredentials: {

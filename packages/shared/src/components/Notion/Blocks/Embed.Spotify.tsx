@@ -1,4 +1,5 @@
-function EmbedSpotify({ id }) {
+// @todo(types) any
+function EmbedSpotify({ id }: { id: any }) {
   return (
     <div className="relative size-full max-h-[480] overflow-hidden [&>*:iframe]:absolute [&>*:iframe]:top-0 [&>*:iframe]:left-0 [&>*:iframe]:size-full [&>*:iframe]:max-h-[600]">
       <iframe

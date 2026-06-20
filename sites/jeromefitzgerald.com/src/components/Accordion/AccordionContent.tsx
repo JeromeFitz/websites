@@ -18,6 +18,7 @@ const AccordionContent = ({
   ref,
   ...props
 }: AccordionContentPropsImpl) => (
+  // @ts-ignore
   <Accordion.Content
     className={cx(
       'overflow-hidden bg-gray-2 text-[15px] text-gray-11 data-[state=closed]:animate-slideUp data-[state=open]:animate-slideDown',

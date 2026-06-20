@@ -3,7 +3,7 @@ import type { ListBlockChildrenResponse } from '@notionhq/client/build/src/api-e
 import type { NotionPropertiesShow } from '@/lib/drizzle/schemas/cache-shows/types'
 import type { Segment } from '@/utils/getBySegment'
 
-import { envClient } from '@jeromefitz/next-config/env.client.mjs'
+import { envClient } from 'next-config/env.client'
 
 import {
   getNotionBlocks,

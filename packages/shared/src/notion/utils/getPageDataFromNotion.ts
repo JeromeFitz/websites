@@ -1,17 +1,18 @@
 import 'server-only'
 
-import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
+import { envClient as env } from '@jeromefitz/next-config'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
-import { getPageData as _getPageData } from 'next-notion/queries/index'
+import { getPageData as _getPageData } from 'next-notion/queries'
 import { cache } from 'react'
 
-import { getCache, getKey, setCache } from '../../redis/index'
+import { getCache, getKey, setCache } from '../../redis'
 
 /**
  * @todo(next) draft | revalidate
  */
-const getPageDataFromNotion = cache(async (id) => {
+// @todo(types) any
+const getPageDataFromNotion = cache(async (id: any) => {
   let data
 
   const prefix = `/notion/pages/${id}`

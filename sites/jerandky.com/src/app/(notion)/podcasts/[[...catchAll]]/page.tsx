@@ -10,7 +10,7 @@
  *
  * Should we handle that all together, or not?
  */
-import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
+import { envClient as env } from '@jeromefitz/next-config/env.client'
 import {
   getDatabaseQuery,
   getDataFromCache,

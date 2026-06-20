@@ -1,40 +1,4 @@
 {
-  "compilerOptions": {
-    "allowJs": false,
-    "allowSyntheticDefaultImports": true,
-    "alwaysStrict": true,
-    "baseUrl": ".",
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    // // w/ extends
-    // "baseUrl": ".",
-    "incremental": true,
-    "isolatedModules": true,
-    // "jsx": "preserve",
-    "jsx": "react-jsx",
-    "lib": ["dom", "ES2020"],
-    "module": "ES2020",
-    "moduleResolution": "bundler",
-    "noEmit": true,
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitAny": false, // @todo(lint)
-    "noImplicitThis": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": false, // @todo(lint)
-    // "noUnusedParameters": false, // @todo(lint)
-    // "rootDir": "./src",
-    "outDir": "./dist",
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "strictBindCallApply": true,
-    "strictFunctionTypes": false, // @todo(lint)
-    "strictNullChecks": false, // @todo(lint)
-    "strictPropertyInitialization": false, // @todo(lint)
-    "target": "esnext",
-    "tsBuildInfoFile": ".tsbuildinfo",
-    "types": ["node", "react/canary"]
-  },
   "exclude": [
     "node_modules",
     "**/*.test.ts",
@@ -42,6 +6,6 @@
     "**/*.stories.ts",
     "**/*.stories.tsx"
   ],
-  "extends": "@jeromefitz/tsconfig/next.json",
+  "extends": "./tsconfig.json",
   "include": ["src", "index.d.ts", "next-env.d.ts"]
 }

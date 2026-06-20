@@ -1,47 +1,36 @@
 {
   "compilerOptions": {
     "allowImportingTsExtensions": true,
-    "allowJs": false,
+    "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "alwaysStrict": true,
-    "baseUrl": ".",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    // // w/ extends
-    // "baseUrl": ".",
     "incremental": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "lib": ["dom", "ES2020"],
     "module": "ESNext",
     "moduleResolution": "bundler",
     "noEmit": true,
     "noFallthroughCasesInSwitch": true,
-    "noImplicitAny": false, // @todo(lint)
+    "noImplicitAny": true,
     "noImplicitThis": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": false, // @todo(lint)
-    // "noUnusedParameters": false, // @todo(lint)
-    // "rootDir": "src",
-    "outDir": "dist",
     "preserveSymlinks": true,
     "resolveJsonModule": true,
+    "rewriteRelativeImportExtensions": true,
     "skipLibCheck": true,
     "strict": true,
     "strictBindCallApply": true,
-    "strictFunctionTypes": false, // @todo(lint)
-    "strictNullChecks": false, // @todo(lint)
-    "strictPropertyInitialization": false, // @todo(lint)
-    "target": "ESNext"
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true,
+    "target": "ESNext",
+    "tsBuildInfoFile": ".tsbuildinfo",
+    "types": ["node"]
   },
   "exclude": ["node_modules", "tests/*.test.ts", "todo"],
   "extends": "@jeromefitz/tsconfig/next.json",
-  "include": [
-    "tsdown.config.ts",
-    "node-modules-inspector.config.ts",
-    "packages/**/*.ts",
-    "packages/**/*.tsx",
-    "sites/**/*.ts",
-    "sites/**/*.tsx"
-  ]
+  "include": ["tsdown.config.ts", "node-modules-inspector.config.ts"]
 }

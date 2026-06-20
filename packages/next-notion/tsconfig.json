@@ -1,43 +1,12 @@
 {
   "compilerOptions": {
-    "allowJs": false,
-    "allowSyntheticDefaultImports": true,
-    "alwaysStrict": true,
-    "baseUrl": ".",
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    // // w/ extends
-    // "baseUrl": ".",
-    "incremental": true,
-    "isolatedModules": true,
-    // "jsx": "preserve",
-    "jsx": "react-jsx",
-    "lib": ["dom", "ES2020"],
-    "module": "ES2020",
-    "moduleResolution": "bundler",
-    "noEmit": true,
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitAny": false, // @todo(lint)
-    "noImplicitThis": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": false, // @todo(lint)
-    // "noUnusedParameters": false, // @todo(lint)
-    // @todo(typescript) until figure out config stuff this has to go here
-    // "rootDir": "./src",
-    "outDir": "./dist",
-    "paths": {
-      "@jeromefitz/ds/*": ["../../packages/design-system/src/*"],
-      "@jeromefitz/next-config/*": ["../../packages/next-config/src/*"]
-    },
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "strictBindCallApply": true,
-    "strictFunctionTypes": false, // @todo(lint)
-    "strictNullChecks": false, // @todo(lint)
-    "strictPropertyInitialization": false, // @todo(lint)
-    "target": "ESNext",
-    "tsBuildInfoFile": ".tsbuildinfo"
+    "noImplicitAny": false,
+    "outDir": "dist",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "exclude": ["node_modules", "**/*.test.ts"],
   "extends": "../../tsconfig.json",

@@ -1,6 +1,6 @@
 'use client'
 
-import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
+import { envClient as env } from '@jeromefitz/next-config'
 
 import { load, trackPageview } from 'fathom-client'
 import { usePathname, useSearchParams } from 'next/navigation.js'

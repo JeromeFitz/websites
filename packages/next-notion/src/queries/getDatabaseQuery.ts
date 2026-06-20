@@ -1,8 +1,7 @@
 /** biome-ignore-all lint/style/useTemplate: migrate> */
 import 'server-only'
 
-import { envClient } from '@jeromefitz/next-config/env.client.mjs'
-import { envServer } from '@jeromefitz/next-config/env.server.mjs'
+import { envClient, envServer } from '@jeromefitz/next-config'
 
 import { addDays, format } from 'date-fns'
 
@@ -25,7 +24,7 @@ interface GetDatabaseQueryTypes {
 /**
  * @note(notion) development pseudo preview
  */
-const isPublishedAnd = envClient.IS__DEV
+const isPublishedAnd = envClient.IS_DEV
   ? {
       created_time: {
         after: '2025-01-01T00:00:00.000Z',

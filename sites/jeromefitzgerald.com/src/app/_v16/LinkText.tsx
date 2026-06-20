@@ -1,4 +1,4 @@
-import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
+import { envClient as env } from 'next-config/env.client'
 
 const nextSeo = { url: `https://${env.NEXT_PUBLIC__SITE}` }
 

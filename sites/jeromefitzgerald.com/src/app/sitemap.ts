@@ -6,9 +6,8 @@ import type { Page } from '@/lib/drizzle/schemas/cache-pages/types'
 import type { Podcast } from '@/lib/drizzle/schemas/cache-podcasts/types'
 import type { Show } from '@/lib/drizzle/schemas/cache-shows/types'
 
-import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
-
 import { orderBy as _orderBy } from 'lodash-es'
+import { envClient as env } from 'next-config/env.client'
 
 import { getEpisodes } from '@/lib/drizzle/schemas/cache-episodes/queries'
 import { getEvents } from '@/lib/drizzle/schemas/cache-events/queries'
@@ -103,10 +102,10 @@ const sitemapPodcasts = podcasts.map((slug) => ({
   url: getUrl(slug),
 }))
 
-const sitemapPodcastEpisodes = podcastEpisodes.map((slug) => ({
-  lastModified,
-  url: getUrl(slug),
-}))
+// const sitemapPodcastEpisodes = podcastEpisodes.map((slug) => ({
+//   lastModified,
+//   url: getUrl(slug),
+// }))
 const sitemapShows = shows.map((slug) => ({
   lastModified,
   url: getUrl(slug),

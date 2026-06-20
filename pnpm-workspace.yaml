@@ -38,6 +38,7 @@ overrides:
   semver@^7.0.0: ^7.7.4
   sha.js@^2.0.0: ^2.4.12
   shell-quote@^1.0.0: ^1.8.4
+  typescript: ^6.0.3
   undici@^6.0.0: ^6.27.0
   undici@^7.0.0: ^7.28.0
   ws@^8.0.0: ^8.20.0
@@ -47,6 +48,7 @@ packages:
   - '!sites/jerandky.com/*'
 patchedDependencies:
   '@semantic-release/commit-analyzer@13.0.1': patches/@semantic-release__commit-analyzer@13.0.0.patch
+  next: patches/next.patch
 publicHoistPattern:
   - '*biome*'
   - '*ccommit*'

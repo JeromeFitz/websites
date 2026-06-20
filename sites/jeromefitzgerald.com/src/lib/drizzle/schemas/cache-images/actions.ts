@@ -1,7 +1,7 @@
 /** biome-ignore-all assist/source/useSortedKeys: migrate */
-import { envServer } from '@jeromefitz/next-config/env.server.mjs'
 
 import { and, eq, sql } from 'drizzle-orm'
+import { envServer } from 'next-config/env.server'
 
 import { drizzle } from '@/lib/drizzle/index'
 import { cacheImages } from '@/lib/drizzle/schemas'

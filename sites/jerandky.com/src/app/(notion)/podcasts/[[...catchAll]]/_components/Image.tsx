@@ -1,7 +1,6 @@
 import https from 'node:https'
 
-import { envClient } from '@jeromefitz/next-config/env.client.mjs'
-import { envServer } from '@jeromefitz/next-config/env.server.mjs'
+import { envClient, envServer } from '@jeromefitz/next-config'
 import { ImageClient as NextImage } from '@jeromefitz/shared/components/Notion/Blocks/Image.client'
 import { isObjectEmpty } from '@jeromefitz/utils'
 

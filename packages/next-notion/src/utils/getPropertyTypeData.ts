@@ -26,7 +26,7 @@ import type {
   SelectPropertyResponse,
 } from '../Notion.types'
 
-import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
+import { envClient as env } from '@jeromefitz/next-config/env.client'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
 import { orderBy as _orderBy } from 'lodash-es'

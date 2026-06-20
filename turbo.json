@@ -30,6 +30,9 @@
       "outputLogs": "new-only"
     },
     "//#lint": {
+      "dependsOn": [
+        "^build"
+      ],
       "outputLogs": "new-only"
     },
     "build": {
@@ -41,13 +44,10 @@
         "*.cjs",
         "*.js",
         "*.mjs",
+        "tsdown.config.ts",
         "tsconfig.json"
       ],
-      "outputs": [
-        ".cache/**",
-        ".next/**",
-        "!.next/cache/**"
-      ]
+      "outputs": []
     },
     "build#jeromefitzgerald.com": {
       "dependsOn": [
@@ -61,15 +61,12 @@
         "*.cjs",
         "*.js",
         "*.mjs",
+        "tsdown.config.ts",
         "tsconfig.json",
         "tsconfig.*.json",
         "vercel.json"
       ],
-      "outputs": [
-        ".cache/**",
-        ".next/**",
-        "!.next/cache/**"
-      ]
+      "outputs": []
     },
     "clean": {
       "cache": false
@@ -91,6 +88,7 @@
     },
     "lint": {
       "dependsOn": [
+        "^build",
         "^lint"
       ],
       "inputs": [
@@ -98,6 +96,8 @@
         "*.cjs",
         "*.js",
         "*.mjs",
+        "tsconfig.json",
+        "tsdown.config.ts",
         "vercel.json"
       ]
     },

@@ -24,4 +24,5 @@ const image = {
   width: 1280,
 }
 
+export type { Image }
 export { image }

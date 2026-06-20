@@ -1,10 +1,9 @@
 import type { NextRequest } from 'next/server.js'
 
-import { envClient } from '@jeromefitz/next-config/env.client.mjs'
-import { envServer } from '@jeromefitz/next-config/env.server.mjs'
-
 import { slug as _slug } from 'github-slugger'
 import { NextResponse } from 'next/server.js'
+import { envClient } from 'next-config/env.client'
+import { envServer } from 'next-config/env.server'
 
 import { getAppleMusic } from '@/lib/apple-music/get-apple-music'
 

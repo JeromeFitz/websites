@@ -11,7 +11,7 @@ import type {
 
 import type { ApiColor } from '../Notion.types'
 
-import { Anchor } from '@jeromefitz/ds/components/Anchor/index'
+import { Anchor } from '@jeromefitz/ds/components/Anchor'
 import { cx } from '@jeromefitz/ds/utils/cx'
 
 import { Fragment } from 'react'

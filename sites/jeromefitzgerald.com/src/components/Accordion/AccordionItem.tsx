@@ -18,6 +18,7 @@ const AccordionItem = ({
   ref,
   ...props
 }: AccordionItemPropsImpl) => (
+  // @ts-ignore
   <Accordion.Item
     className={cx(
       'mt-px overflow-hidden first:mt-0 first:rounded-t last:rounded-b focus-within:relative focus-within:z-10 focus-within:shadow-[0_0_0_0.25px] focus-within:shadow-accent-12',

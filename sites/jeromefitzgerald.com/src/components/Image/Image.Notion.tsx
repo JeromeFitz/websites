@@ -14,18 +14,18 @@ import NextImage from 'next/image'
  */
 import { isEmpty } from '@/utils/isEmpty'
 
-interface ImagePlaceholder {
-  alt?: string
-  blurDataURL?: string
-  ['data-key']?: string
-  height?: number
-  isImageExpired?: boolean
-  key?: string
-  placeholder?: 'blur'
-  priority?: boolean
-  src?: string
-  width?: number
-}
+// interface ImagePlaceholder {
+//   alt?: string
+//   blurDataURL?: string
+//   ['data-key']?: string
+//   height?: number
+//   isImageExpired?: boolean
+//   key?: string
+//   placeholder?: 'blur'
+//   priority?: boolean
+//   src?: string
+//   width?: number
+// }
 
 import type {
   Blog,
@@ -77,7 +77,7 @@ async function getImagePlaceholder({ image }: { image: any }) {
   }
 }
 
-export async function ImageNotion({
+async function ImageNotion({
   item,
   segment,
 }: {
@@ -151,3 +151,6 @@ export async function ImageNotion({
     </>
   )
 }
+
+// export type { ImagePlaceholder }
+export { ImageNotion }

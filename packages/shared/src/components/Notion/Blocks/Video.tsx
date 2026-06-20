@@ -2,7 +2,7 @@ import 'server-only'
 
 import type { VideoBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 
-import { Callout } from '@jeromefitz/ds/components/Callout/index'
+import { Callout } from '@jeromefitz/ds/components/Callout'
 
 import { NotionEmoji as EmojiWrapper } from 'next-notion/blocks/Emoji'
 import { Fragment, Suspense } from 'react'

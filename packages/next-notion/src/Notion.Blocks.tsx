@@ -45,7 +45,7 @@ function NotionBlocks({
   return (
     <>
       {!!results &&
-        results.map((block: BlockObjectResponse, order) => {
+        results.map((block: BlockObjectResponse, order: any) => {
           // if (order > 10) {
           //   return (
           //     // @todo(loading) suspense

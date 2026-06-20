@@ -1,6 +1,7 @@
-import { getPropertyTypeData } from 'next-notion/utils/index'
+import { getPropertyTypeData } from 'next-notion/utils'
 
-function getSlugPreview(properties) {
+// @todo(types) any
+function getSlugPreview(properties: any) {
   return getPropertyTypeData(properties, 'Slug.Preview')
 }
 

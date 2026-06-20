@@ -2,7 +2,7 @@ import 'server-only'
 
 import https from 'node:https'
 
-import { envServer } from '@jeromefitz/next-config/env.server.mjs'
+import { envServer } from '@jeromefitz/next-config'
 
 import { Redis } from '@upstash/redis'
 
