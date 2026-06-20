@@ -77,4 +77,7 @@ ${envServerParsed.error.issues.map((issue) => `  ${issue.path}: ${issue.message}
 
 const envServer = Object.freeze(envServerParsed.data)
 
+type EnvServer = typeof envServer
+
+export type { EnvServer }
 export { envServer }

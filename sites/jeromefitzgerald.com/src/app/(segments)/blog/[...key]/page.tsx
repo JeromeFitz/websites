@@ -2,9 +2,8 @@ import type { Metadata, ResolvingMetadata } from 'next'
 
 import type { Blog } from '@/lib/drizzle/schemas/cache-blogs/types'
 
-import { envClient } from '@jeromefitz/next-config/env.client.mjs'
-
 import { notFound } from 'next/navigation.js'
+import { envClient } from 'next-config/env.client'
 
 import { getBlog, segment } from '@/lib/drizzle/schemas/cache-blogs/queries'
 import { getKey } from '@/utils/getKey'

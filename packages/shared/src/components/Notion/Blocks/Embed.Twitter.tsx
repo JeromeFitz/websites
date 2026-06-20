@@ -1,6 +1,6 @@
 'use client'
 
-import { Callout } from '@jeromefitz/ds/components/Callout/index'
+import { Callout } from '@jeromefitz/ds/components/Callout'
 
 import { NotionEmoji as EmojiWrapper } from 'next-notion/blocks/Emoji'
 import { Tweet } from 'react-tweet'
@@ -14,7 +14,7 @@ function EmbedTweet({ id }) {
 }
 
 function EmbedTwitter({ block }) {
-  const id = block.embed.url.split('/').slice(-1)[0]
+  const id = block.embed.url.split('').slice(-1)[0]
 
   /**
    * @todo(notion) TextAnnotations

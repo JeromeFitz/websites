@@ -1,4 +1,4 @@
-import { envServer } from '@jeromefitz/next-config/env.server.mjs'
+import { envServer } from 'next-config/env.server'
 
 import {
   cacheBlocks,

@@ -1,4 +1,4 @@
-// @ts-check
+'use client'
 /**
  * ref: https://vercel.com/docs/projects/environment-variables/system-environment-variables
  *
@@ -12,7 +12,8 @@ const envSchema = z.object({
   IS_DEV: z.boolean(),
   IS_PRODUCTION: z.boolean(),
   IS_VERCEL: z.boolean(),
-  NEXT_PUBLIC__APPLE_IDENTIFIER: process.env.NEXT_PUBLIC__APPLE_IDENTIFIER ?? '',
+  NEXT_PUBLIC__APPLE_IDENTIFIER:
+    z.string(process.env.NEXT_PUBLIC__APPLE_IDENTIFIER) ?? '',
   NEXT_PUBLIC__APPLE_TOKEN_DEVELOPER: z.string().trim(),
   NEXT_PUBLIC__BASE_URL: z.enum([SITE_HTTPS]).default(SITE_HTTPS),
   NEXT_PUBLIC__FATHOM_SITE_ID: z.string().trim(),
@@ -61,4 +62,7 @@ ${envClientParsed.error.issues.map((issue) => `  ${issue.path}: ${issue.message}
 
 const envClient = Object.freeze(envClientParsed.data)
 
+type EnvClient = typeof envClient
+
+export type { EnvClient }
 export { envClient }

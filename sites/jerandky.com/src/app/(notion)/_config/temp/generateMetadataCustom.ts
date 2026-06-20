@@ -4,7 +4,7 @@
  * This needs to be moved elsewhere
  *
  */
-import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
+import { envClient as env } from '@jeromefitz/next-config/env.client'
 
 import _title from 'title'
 

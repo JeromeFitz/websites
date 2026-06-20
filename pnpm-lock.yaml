@@ -336,6 +336,12 @@ importers:
       '@date-fns/utc':
         specifier: 2.1.1
         version: 2.1.1
+      '@jeromefitz/ds':
+        specifier: workspace:*
+        version: link:../design-system
+      '@jeromefitz/next-config':
+        specifier: workspace:*
+        version: link:../next-config
       '@jeromefitz/utils':
         specifier: 4.0.1
         version: 4.0.1(lodash-es@4.18.1)
@@ -372,6 +378,12 @@ importers:
 
   packages/shared:
     devDependencies:
+      '@jeromefitz/ds':
+        specifier: workspace:*
+        version: link:../design-system
+      '@jeromefitz/next-config':
+        specifier: workspace:*
+        version: link:../next-config
       '@jeromefitz/utils':
         specifier: 4.0.1
         version: 4.0.1(lodash-es@4.18.1)
@@ -420,6 +432,9 @@ importers:
       next:
         specifier: 16.2.9
         version: 16.2.9(patch_hash=66fd881d63407e451a4ecba7f6341340f78d42dd214097ef937db88b9b430d58)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+      next-notion:
+        specifier: workspace:*
+        version: link:../next-notion
       plaiceholder:
         specifier: 3.0.0
         version: 3.0.0(sharp@0.35.2)
@@ -1025,9 +1040,15 @@ importers:
         specifier: 5.0.14
         version: 5.0.14(@types/react@19.2.17)(react@19.2.7)
     devDependencies:
+      '@jeromefitz/ds':
+        specifier: workspace:*
+        version: link:../../packages/design-system
       '@jeromefitz/lighthouse-config':
         specifier: workspace:*
         version: link:../../packages/lighthouse-config
+      '@jeromefitz/next-config':
+        specifier: workspace:*
+        version: link:../../packages/next-config
       '@jeromefitz/playwright-config':
         specifier: workspace:*
         version: link:../../packages/playwright-config

@@ -20,13 +20,12 @@ import https from 'node:https'
 
 import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 
-import { envClient } from '@jeromefitz/next-config/env.client.mjs'
-import { envServer } from '@jeromefitz/next-config/env.server.mjs'
-
 import { Client } from '@notionhq/client'
 import { Redis } from '@upstash/redis'
 import stringify from 'fast-json-stable-stringify'
 import { slug as _slug } from 'github-slugger'
+import { envClient } from 'next-config/env.client'
+import { envServer } from 'next-config/env.server'
 import { isHttpsUri } from 'valid-url'
 
 import { Callout } from '@/components/Callout/index'

@@ -1,7 +1,8 @@
+// @ts-nocheck
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'url'
 
-import nextConfig from '@jeromefitz/next-config/next.config.mjs'
+import nextConfig from '@jeromefitz/next-config'
 
 import dotenv from 'dotenv'
 import isCI from 'is-in-ci'

@@ -20,10 +20,9 @@ import https from 'node:https'
 
 import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 
-import { Callout } from '@jeromefitz/ds/components/Callout/index'
-import { CameraIcon } from '@jeromefitz/ds/components/Icon/index'
-import { envClient } from '@jeromefitz/next-config/env.client.mjs'
-import { envServer } from '@jeromefitz/next-config/env.server.mjs'
+import { Callout } from '@jeromefitz/ds/components/Callout'
+import { CameraIcon } from '@jeromefitz/ds/components/Icon'
+import { envClient, envServer } from '@jeromefitz/next-config'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
 import { Client } from '@notionhq/client'
@@ -31,7 +30,7 @@ import { Redis } from '@upstash/redis'
 import stringify from 'fast-json-stable-stringify'
 import { slug as _slug } from 'github-slugger'
 import { NotionEmoji as EmojiWrapper } from 'next-notion/blocks/Emoji'
-import { isImageExpired } from 'next-notion/utils/index'
+import { isImageExpired } from 'next-notion/utils'
 import { isHttpsUri } from 'valid-url'
 
 import { TIME } from '../../../lib/constants'

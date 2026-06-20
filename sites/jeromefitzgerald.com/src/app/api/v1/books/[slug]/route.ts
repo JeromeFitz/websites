@@ -1,9 +1,8 @@
 import type { NextRequest } from 'next/server.js'
 
-import { envClient } from '@jeromefitz/next-config/env.client.mjs'
-import { envServer } from '@jeromefitz/next-config/env.server.mjs'
-
 import { NextResponse } from 'next/server.js'
+import { envClient } from 'next-config/env.client'
+import { envServer } from 'next-config/env.server'
 import xml2js from 'xml2js'
 
 const keyPrefixGoodreads = `${envClient.NEXT_PUBLIC__SITE}/goodreads`

@@ -1,13 +1,14 @@
-import { join, resolve } from 'node:path'
+// @ts-nocheck
+import { join } from 'node:path'
 
 import withBundleAnalyzer from '@next/bundle-analyzer'
 import withPlaiceholder from '@plaiceholder/next'
 
-import { setupBuildInfo } from './src/build-info.mjs'
-import securityHeaders from './src/security-headers.mjs'
+import { setupBuildInfo } from './src/build-info'
+import securityHeaders from './src/security-headers'
 
-import './src/env.client.mjs'
-import './src/env.server.mjs'
+import './src/env.client'
+import './src/env.server'
 
 /**
  * @todo(next) cannot remove all of these just yet   🫠
@@ -29,20 +30,20 @@ for (const envSecretsVar of envSecrets) {
   delete process.env[envSecretsVar]
 }
 
-const externals = [
-  '@radix-ui/colors',
-  'cmdk',
-  'react',
-  'react-dom',
-  'prettier',
-  'swr',
-]
+// const externals = [
+//   '@radix-ui/colors',
+//   'cmdk',
+//   'react',
+//   'react-dom',
+//   'prettier',
+//   'swr',
+// ]
 
 /**
  * @note(pnpm) remnant from pnpm linking, should be removed
  */
-const isLocal = false
-const isLocalDebugMessages = [`[ 📝 ] pnpm link...`]
+// const isLocal = false
+// const isLocalDebugMessages = [`[ 📝 ] pnpm link...`]
 
 const PROTOCOL = {
   HTTP: 'http',
@@ -73,16 +74,13 @@ const config = ({
   buildInfoConfig,
   pathDirName,
   redirects = [],
-  serverComponentsExternalPackages = [],
+  serverComponentsExternalPackages = ['@jeromefitz/next-config'],
   transpilePackages = [],
 }) => {
   // console.dir(`> (debug) basePath:    ${basePath}`)
   // console.dir(`> (debug) pathDirName: ${pathDirName}`)
 
-  /**
-   * @type {import('next').NextConfig}
-   **/
-  let nextConfig = {
+  const nextConfig = {
     amp: {
       canonicalBase: undefined,
     },
@@ -292,6 +290,8 @@ const config = ({
   const wBA = withBundleAnalyzer({ enabled: process.env.ANALYZE === 'true' })
   const plugins = [wBA, withPlaiceholder]
 
+  // @todo(typescript@6)
+  // @ts-expect-error
   return plugins.reduce((config, plugin) => plugin(config), nextConfig)
 }
 

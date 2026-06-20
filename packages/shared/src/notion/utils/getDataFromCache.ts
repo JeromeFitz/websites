@@ -6,21 +6,20 @@ import 'server-only'
  *  -  OVERRIDE_CACHE=true pnpm turbo run build --filter="..."
  */
 
-import { envClient } from '@jeromefitz/next-config/env.client.mjs'
-import { envServer } from '@jeromefitz/next-config/env.server.mjs'
+import { envClient, envServer } from '@jeromefitz/next-config'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
 import { Client } from '@notionhq/client'
 // import type { FilterType } from 'next-notion/Notion.types'
-import { getBlockChildrenDataParent } from 'next-notion/queries/index'
-import { isAwsImage, isImageExpired } from 'next-notion/utils/index'
+import { getBlockChildrenDataParent } from 'next-notion/queries'
+import { isAwsImage, isImageExpired } from 'next-notion/utils'
 import { cache } from 'react'
 
-import { getCache, setCache } from '../../redis/index'
-import { getDatabaseQuery, getMetadata } from './index'
+import { getCache, setCache } from '../../redis'
+import { getDatabaseQuery, getMetadata } from '.'
 
 // @todo(types) next-notion
-// import type { SegmentInfo } from './index'
+// import type { SegmentInfo } from '.'
 
 const notion = new Client({ auth: envServer.NOTION_API_KEY })
 

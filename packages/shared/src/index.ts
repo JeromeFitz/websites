@@ -6,12 +6,12 @@ export {
   getPageDataFromNotion,
   getSegmentInfo,
   getSlugPreview,
-} from './notion/utils/index'
+} from './notion/utils'
 
 // @todo(types) next-notion
-// export type { SegmentInfo } from './notion/utils/index'
+// export type { SegmentInfo } from './notion/utils'
 
-export type { RC } from './redis/index'
+export type { RC } from './redis'
 
 export { getImage } from './plaiceholder/getImage'
-export { getCache, getKey, setCache } from './redis/index'
+export { getCache, getKey, setCache } from './redis'

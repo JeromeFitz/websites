@@ -1,5 +1,5 @@
 import { cx } from '@jeromefitz/ds/utils/cx'
-import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
+import { envClient as env } from '@jeromefitz/next-config/env.client'
 import '@jeromefitz/tailwind-config/styles/globals.css'
 
 import { Viewport } from 'next'
@@ -11,9 +11,8 @@ import { Providers } from '../components/Providers'
 
 const Analytics = dynamic(
   async () => {
-    const { Analytics: Component } = await import(
-      '@jeromefitz/shared/components/Analytics'
-    )
+    const { Analytics: Component } =
+      await import('@jeromefitz/shared/components/Analytics')
     return { default: Component }
   },
   { ssr: true },

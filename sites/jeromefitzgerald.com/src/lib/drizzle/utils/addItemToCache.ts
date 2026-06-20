@@ -1,10 +1,9 @@
 import type { Segment } from '@/utils/getBySegment'
 
-import { envServer } from '@jeromefitz/next-config/env.server.mjs'
-
 import { TZDate } from '@date-fns/tz'
 import { format, isAfter, parseISO } from 'date-fns'
 import { and, eq, sql } from 'drizzle-orm'
+import { envServer } from 'next-config/env.server'
 
 import { drizzle } from '@/lib/drizzle/index'
 import { pre_addImageKeyValueToCache } from '@/lib/drizzle/schemas/cache-images/actions'

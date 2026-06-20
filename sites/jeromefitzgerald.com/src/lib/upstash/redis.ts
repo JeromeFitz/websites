@@ -2,9 +2,8 @@ import 'server-only'
 
 import https from 'node:https'
 
-import { envServer } from '@jeromefitz/next-config/env.server.mjs'
-
 import { Redis } from '@upstash/redis'
+import { envServer } from 'next-config/env.server'
 
 const redis = new Redis({
   agent: new https.Agent({ keepAlive: true }),

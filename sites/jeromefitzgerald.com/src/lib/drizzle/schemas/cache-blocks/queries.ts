@@ -1,8 +1,7 @@
 import type { Block } from '@/lib/drizzle/schemas/cache-blocks/types'
 
-import { envServer } from '@jeromefitz/next-config/env.server.mjs'
-
 import { and, eq, sql } from 'drizzle-orm'
+import { envServer } from 'next-config/env.server'
 
 import { drizzle } from '@/lib/drizzle/index'
 

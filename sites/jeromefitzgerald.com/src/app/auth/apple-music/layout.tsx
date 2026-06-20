@@ -2,9 +2,8 @@
 
 import type { ReactNode } from 'react'
 
-import { envClient } from '@jeromefitz/next-config/env.client.mjs'
-
 import Script from 'next/script'
+import { envClient } from 'next-config/env.client'
 
 const musickitUrl = `https://js-cdn.music.apple.com/musickit/v3/musickit.js`
 

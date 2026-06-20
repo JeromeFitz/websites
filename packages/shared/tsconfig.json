@@ -22,11 +22,6 @@
     // "noUnusedParameters": false, // @todo(lint)
     // "rootDir": "./src",
     "outDir": "./dist",
-    "paths": {
-      "@jeromefitz/ds/*": ["../../packages/design-system/src/*"],
-      "@jeromefitz/next-config/*": ["../../packages/next-config/src/*"],
-      "next-notion/*": ["../../packages/next-notion/src/*"]
-    },
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
@@ -41,4 +36,8 @@
   "exclude": ["node_modules", "**/*.test.ts"],
   "extends": "../../tsconfig.json",
   "include": ["src", "index.d.ts", "next-env.d.ts"]
+  // "references": [
+  //   { "path": "../../packages/next-config" },
+  //   { "path": "../../packages/next-notion" }
+  // ]
 }

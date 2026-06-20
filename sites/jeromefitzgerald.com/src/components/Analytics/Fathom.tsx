@@ -1,9 +1,8 @@
 'use client'
 
-import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
-
 import { load, trackPageview } from 'fathom-client'
 import { usePathname, useSearchParams } from 'next/navigation.js'
+import { envClient as env } from 'next-config/env.client'
 import { useEffect } from 'react'
 
 function FathomAnalytics() {

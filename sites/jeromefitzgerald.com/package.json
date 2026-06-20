@@ -20,6 +20,7 @@
   },
   "scripts": {
     "build": "CI=1 NODE_NO_WARNINGS=1 next build --turbopack",
+    "build:no-turbo": "CI=1 NODE_NO_WARNINGS=1 next build",
     "clean": "rm -rf ./.lighthouseci ./.next ./.turbo ./coverage ./e2e-report ./e2e-results",
     "clean:install": "pnpm clean && rm -rf ./.cache ./node_modules",
     "copy": "echo mkdir -p ./dist && ./scripts/copy.sh",
@@ -128,7 +129,9 @@
     "zustand": "5.0.14"
   },
   "devDependencies": {
+    "@jeromefitz/ds": "workspace:*",
     "@jeromefitz/lighthouse-config": "workspace:*",
+    "@jeromefitz/next-config": "workspace:*",
     "@jeromefitz/playwright-config": "workspace:*",
     "@jeromefitz/tailwind-config": "workspace:*",
     "@tailwindcss/aspect-ratio": "0.4.2",

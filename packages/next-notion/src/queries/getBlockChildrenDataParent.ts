@@ -19,6 +19,7 @@ async function getBlockChildrenDataParent(block_id) {
 
   // response.results.map(async (block: BlockObjectResponse, i) => {
   // @todo(complexity) 12
+  // @ts-ignore
   // biome-ignore lint/complexity/noExcessiveCognitiveComplexity: migrate
   await asyncForEach(response.results, async (block: BlockObjectResponse) => {
     // console.dir(`asyncForEach: ${block.type}`)

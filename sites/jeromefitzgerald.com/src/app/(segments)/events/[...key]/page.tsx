@@ -3,9 +3,8 @@ import type { Metadata, ResolvingMetadata } from 'next'
 import type { Block } from '@/lib/drizzle/schemas/cache-blocks/types'
 import type { Event } from '@/lib/drizzle/schemas/cache-events/types'
 
-import { envClient } from '@jeromefitz/next-config/env.client.mjs'
-
 import { notFound } from 'next/navigation.js'
+import { envClient } from 'next-config/env.client'
 
 import { getBlocks } from '@/lib/drizzle/schemas/cache-blocks/queries'
 import { getEvent, segment } from '@/lib/drizzle/schemas/cache-events/queries'

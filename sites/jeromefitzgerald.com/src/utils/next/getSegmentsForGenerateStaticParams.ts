@@ -1,7 +1,7 @@
 import type { SegmentsArray } from '@/lib/drizzle/types'
 import type { Segment } from '@/utils/getBySegment'
 
-import { envClient } from '@jeromefitz/next-config/env.client.mjs'
+import { envClient } from 'next-config/env.client'
 
 import { getBySegment } from '@/utils/getBySegment'
 import { getKeyForGenerateStaticParams } from '@/utils/getKey'

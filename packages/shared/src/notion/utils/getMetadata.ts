@@ -4,13 +4,13 @@ import type {
 } from '@notionhq/client/build/src/api-endpoints'
 import type { Metadata } from 'next'
 
-import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
+import { envClient as env } from '@jeromefitz/next-config'
 import { isObjectEmpty } from '@jeromefitz/utils'
 
-import { getPropertyTypeData } from 'next-notion/utils/index'
+import { getPropertyTypeData } from 'next-notion/utils'
 import _title from 'title'
 
-// import { getEventData } from '../index'
+// import { getEventData } from '..'
 
 type ImageItemResponse =
   | {

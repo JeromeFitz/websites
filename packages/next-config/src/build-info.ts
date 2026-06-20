@@ -1,3 +1,5 @@
+// @ts-nocheck
+// biome-ignore-all lint: typescript@6
 import { execSync } from 'node:child_process'
 import { existsSync, readFileSync } from 'node:fs'
 import { writeFile } from 'node:fs/promises'
@@ -35,7 +37,6 @@ function getBranch(branch) {
  * @todo(dynamic) owner/repo from package.json
  */
 // @todo(complexity) 15
-// biome-ignore lint/complexity/noExcessiveCognitiveComplexity: migrate
 async function setupBuildInfo({ buildInfoConfig, pathDirName }) {
   /**
    * @todo(dynamic) determine path for multi-site

@@ -1,8 +1,7 @@
-import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
-
 import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
 import { Link } from '@radix-ui/themes/dist/esm/components/link.js'
 import NextLink from 'next/link'
+import { envClient as env } from 'next-config/env.client'
 
 import { ExternalLinkIcon } from '../Icon/Icon'
 

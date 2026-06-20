@@ -2,9 +2,8 @@ import type { Segment } from '@/utils/getBySegment'
 
 import type { NotionSeoImage } from './types'
 
-import { envServer } from '@jeromefitz/next-config/env.server.mjs'
-
 import { Client } from '@notionhq/client'
+import { envServer } from 'next-config/env.server'
 
 import { getBySegment } from '@/utils/getBySegment'
 

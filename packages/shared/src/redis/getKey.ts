@@ -1,4 +1,4 @@
-import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
+import { envClient as env } from '@jeromefitz/next-config'
 
 const KEY__PREFIX = env.NEXT_PUBLIC__SITE
 

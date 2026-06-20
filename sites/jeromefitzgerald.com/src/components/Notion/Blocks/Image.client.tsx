@@ -1,7 +1,7 @@
 /**
  * @todo(types) next/image
  */
-// import { envClient as env } from '@jeromefitz/next-config/env.client.mjs'
+// import { envClient as env } from 'next-config/env.client'
 
 // import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 

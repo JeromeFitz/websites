@@ -4,7 +4,7 @@
  */
 import 'server-only'
 
-import { envServer as env } from '@jeromefitz/next-config/env.server.mjs'
+import { envServer as env } from '@jeromefitz/next-config'
 
 import { Client } from '@notionhq/client'
 
@@ -13,7 +13,7 @@ import { getImageAlt } from './Image.utils'
 const notion = new Client({ auth: env.NOTION_API_KEY })
 
 async function VideoYouTube({ block, url }) {
-  const embedId = url.split('/').slice(-1)[0]
+  const embedId = url.split('').slice(-1)[0]
   if (!embedId) return null
 
   /**
