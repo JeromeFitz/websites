@@ -1,4 +1,4 @@
-import isCI from 'is-ci'
+import isCI from 'is-in-ci'
 
 if (!isCI) {
   const dotenv = await import('dotenv')

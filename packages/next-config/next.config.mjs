@@ -240,14 +240,6 @@ const config = ({
       pagesBufferLength: 2,
     },
     output: undefined,
-    // @note(next) storybook needs this -- but nothing else.
-    outputFileTracingExcludes: {
-      '*': [
-        'node_modules/.pnpm/@swc+core-linux-x64-musl',
-        'node_modules/.pnpm/@swc+core-linux-x64-gnu',
-        'node_modules/.pnpm/@esbuild+linux-x64',
-      ],
-    },
     // @note(next) monorepo root
     outputFileTracingRoot: join(pathDirName, '../../'),
     // output: 'export',
@@ -290,32 +282,6 @@ const config = ({
     },
     // @note(next) false will block: ./pages
     useFileSystemPublicRoutes: true,
-
-    // @ts-ignore
-
-    webpack: (config, { buildId, defaultLoaders, dev, isServer, webpack }) => {
-      // @note(pnpm)  path mapping if working locally
-      if (isLocal) {
-        isLocalDebugMessages.map((msg) =>
-          console.debug('\x1b[33m%s\x1b[0m', 'warn', ' - ', msg),
-        )
-        externals.map((ext) => {
-          console.debug('\x1b[33m%s\x1b[0m', 'warn', ' - [ 📦 ] ›  ', ext)
-          // @note(pnpm) shamefully-hoist === node_modules at root
-          // @todo(pnpm) would be nice to not shamefully-hoist
-          config.resolve.alias[ext] = resolve(
-            pathDirName,
-            '..',
-            '..',
-            'node_modules',
-            ext,
-          )
-        })
-      }
-
-      // return { ...config, module: { ...config.module, exprContextCritical: false } }
-      return config
-    },
   }
 
   /**

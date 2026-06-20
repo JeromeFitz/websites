@@ -53,7 +53,6 @@ publicHoistPattern:
   - '*playwright*'
   - '*prettier*'
   - '*semantic*'
-  - '*storybook*'
   - '*testing-library*'
   - '*types*'
 registry: https://registry.npmjs.org/

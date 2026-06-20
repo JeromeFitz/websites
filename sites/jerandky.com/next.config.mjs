@@ -4,7 +4,7 @@ import { fileURLToPath } from 'url'
 import nextConfig from '@jeromefitz/next-config/next.config.mjs'
 
 import dotenv from 'dotenv'
-import isCI from 'is-ci'
+import isCI from 'is-in-ci'
 if (!isCI) {
   dotenv.config({ patch: './.env' })
 }

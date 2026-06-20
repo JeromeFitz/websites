@@ -8,7 +8,7 @@
     - `@jeromefitz/next-config` \*
     - `@jeromefitz/playwright-config` \*
     - `@jeromefitz/prettier-config`
-    - `@jeromefitz/storybook-config` \*
+    - ~~`@jeromefitz/storybook-config` \*~~
     - `@jeromefitz/tailwind-config` \*
     - `@jeromefitz/tsconfig`
   - ⚡ Release Management

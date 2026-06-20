@@ -19,10 +19,7 @@ function SectionHeader({ children, className = '' }) {
           // 'before:left-2 before:right-2,
           'before:bg-gray-6',
           '',
-          // w/o react-headroom
           'top-7 md:top-3',
-          // w/  react-headroom
-          // 'top-4 md:top-8',
           className,
         )}
       >

@@ -1,6 +1,6 @@
 import { getConfig } from '@jeromefitz/semantic'
 
-import isCI from 'is-ci'
+import isCI from 'is-in-ci'
 import { map as _map } from 'lodash-es'
 
 import releaseBranchTypes from './config/release-branch-types/index.cjs'

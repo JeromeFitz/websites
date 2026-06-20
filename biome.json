@@ -100,7 +100,6 @@
       "!**/e2e-results",
       "!**/node_modules",
       "!**/pnpm-lock.yaml",
-      "!**/storybook-static",
       "!**/zzz"
     ]
   },

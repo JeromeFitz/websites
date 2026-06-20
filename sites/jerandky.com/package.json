@@ -16,7 +16,7 @@
   "scripts": {
     "analyze": "ANALYZE=true pnpm build",
     "build": "CI=1 next build",
-    "clean": "rm -rf ./.lighthouseci ./.next ./.turbo ./coverage ./e2e-report ./e2e-results ./storybook-static",
+    "clean": "rm -rf ./.lighthouseci ./.next ./.turbo ./coverage ./e2e-report ./e2e-results",
     "clean:install": "pnpm clean && rm -rf ./.cache ./node_modules",
     "copy": "echo mkdir -p ./dist && ./scripts/copy.sh",
     "dev": "next dev --experimental-https",
@@ -32,8 +32,6 @@
     "semantic-release": "semantic-release",
     "start": "next start",
     "start:isr": "next start -H localhost",
-    "storybook:build": "storybook build",
-    "storybook:dev": "storybook dev --quiet --port 6002",
     "test:e2e": "playwright test",
     "test:unit": "jest --ci --coverage",
     "test:watch": "jest --watch"
@@ -105,7 +103,6 @@
     "ramda": "0.32.0",
     "react": "19.2.7",
     "react-dom": "19.2.7",
-    "react-headroom": "3.2.1",
     "react-swipeable": "7.0.2",
     "react-tweet": "3.3.1",
     "react-wrap-balancer": "1.1.1",
@@ -123,12 +120,10 @@
     "@jeromefitz/lighthouse-config": "workspace:*",
     "@jeromefitz/next-config": "workspace:*",
     "@jeromefitz/playwright-config": "workspace:*",
-    "@jeromefitz/storybook-config": "workspace:*",
     "@jeromefitz/tailwind-config": "workspace:*",
     "@jeromefitz/tsconfig": "3.0.0",
     "@types/pluralize": "0.0.33",
     "@types/ramda": "0.31.1",
-    "@types/react-headroom": "3.2.3",
     "@types/smoothscroll-polyfill": "0.3.4",
     "tailwind-merge": "3.6.0"
   }

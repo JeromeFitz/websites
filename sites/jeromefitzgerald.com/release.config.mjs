@@ -1,6 +1,6 @@
 import { getConfig } from '@jeromefitz/semantic'
 
-import isCI from 'is-ci'
+import isCI from 'is-in-ci'
 
 import { config as configDefault } from '../../release.config.mjs'
 
