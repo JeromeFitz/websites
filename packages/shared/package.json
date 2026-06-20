@@ -116,7 +116,8 @@
     "swr": "2.4.1",
     "tailwind-merge": "3.6.0",
     "title": "4.0.1",
-    "valid-url": "1.0.9"
+    "valid-url": "1.0.9",
+    "webpack": "5.107.2"
   },
   "publishConfig": {
     "access": "public"

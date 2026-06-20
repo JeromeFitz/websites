@@ -1,6 +1,6 @@
 const path = require('node:path')
 
-const isCI = require('is-ci')
+const isCI = require('is-in-ci')
 !isCI && require('dotenv').config({ path: './.env', quiet: true })
 
 const buildInfoConfig = {

@@ -1,4 +1,4 @@
-const isCI = require('is-ci')
+const isCI = require('is-in-ci')
 
 let urlAdditional = undefined
 

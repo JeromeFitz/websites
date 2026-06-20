@@ -5,7 +5,7 @@ import { join } from 'node:path'
 
 import { Octokit } from '@octokit/core'
 import stringify from 'fast-json-stable-stringify'
-import isCI from 'is-ci'
+import isCI from 'is-in-ci'
 import {
   filter as _filter,
   orderBy as _orderBy,

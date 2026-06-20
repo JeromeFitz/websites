@@ -110,25 +110,6 @@
     "start": {
       "cache": false
     },
-    "storybook:dev": {
-      "cache": false,
-      "dependsOn": [
-        "^build"
-      ],
-      "persistent": true
-    },
-    "storybook:build": {
-      "dependsOn": [
-        "^build"
-      ],
-      "inputs": [
-        ".storybook/**",
-        "src/**"
-      ],
-      "outputs": [
-        "storybook-static/**"
-      ]
-    },
     "test:e2e": {
       "dependsOn": [
         "^build",

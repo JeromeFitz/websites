@@ -6,7 +6,6 @@ if [[ -d ./packages/lighthouse-config/node_modules ]]; then rm -rf ./packages/li
 if [[ -d ./packages/next-config/node_modules ]]; then rm -rf ./packages/next-config/node_modules; fi
 if [[ -d ./packages/playwright-config/node_modules ]]; then rm -rf ./packages/playwright-config/node_modules; fi
 if [[ -d ./packages/prettier-config/node_modules ]]; then rm -rf ./packages/prettier-config/node_modules; fi
-if [[ -d ./packages/storybook-config/node_modules ]]; then rm -rf ./packages/storybook-config/node_modules; fi
 if [[ -d ./packages/tailwind-config/node_modules ]]; then rm -rf ./packages/tailwind-config/node_modules; fi
 
 if [[ -d ./packages/design-system/dist ]]; then rm -rf ./packages/design-system/dist; fi
