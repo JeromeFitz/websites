@@ -1,7 +1,6 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "baseUrl": ".",
     "paths": {
       "@jeromefitz/ds/*": ["../../packages/design-system/src/*"],
       "@jeromefitz/next-config/*": ["../../packages/next-config/src/*"],

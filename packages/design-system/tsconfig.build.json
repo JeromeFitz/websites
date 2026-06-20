@@ -3,11 +3,8 @@
     "allowJs": false,
     "allowSyntheticDefaultImports": true,
     "alwaysStrict": true,
-    "baseUrl": ".",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    // // w/ extends
-    // "baseUrl": ".",
     "incremental": true,
     "isolatedModules": true,
     // "jsx": "preserve",

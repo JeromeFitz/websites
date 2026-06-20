@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "outDir": "dist",
     "paths": {
       "@jeromefitz/next-config/*": ["../../packages/next-config/src/*"]
