@@ -1,6 +1,12 @@
 import { cx } from '../../utils/cx'
 
-function SectionHeader({ children, className = '' }) {
+function SectionHeader({
+  children,
+  className = '',
+}: {
+  children: React.ReactNode
+  className: string
+}) {
   return (
     <>
       <div

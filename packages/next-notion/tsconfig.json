@@ -1,16 +1,12 @@
 {
   "compilerOptions": {
-    "noEmit": true,
+    "noImplicitAny": false,
     "outDir": "dist",
     "plugins": [
       {
         "name": "next"
       }
-    ],
-    "preserveSymlinks": true,
-    "strict": true,
-    "strictNullChecks": true,
-    "types": ["node"]
+    ]
   },
   "exclude": ["node_modules", "**/*.test.ts"],
   "extends": "../../tsconfig.json",

@@ -1,19 +1,10 @@
 {
   "compilerOptions": {
-    "allowImportingTsExtensions": true,
-    "allowJs": true,
-    "esModuleInterop": true,
-    "incremental": true,
-    "isolatedModules": true,
     "jsx": "react-jsx",
     "lib": ["dom", "dom.iterable", "esnext"],
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "noEmit": true,
     "paths": {
       "@/*": ["./src/*"],
       "~public/*": ["./public/*"],
-      //
       "next-config/env.client": ["./src/config/next.config.env.client.ts"],
       "next-config/env.server": ["./src/config/next.config.env.server.ts"],
       "radix-themes-tw": ["./src/config/radix-themes-tw.css"]
@@ -22,13 +13,10 @@
       {
         "name": "next"
       }
-    ],
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "target": "ESNext"
+    ]
   },
   "exclude": ["node_modules", "zzz/**"],
+  "extends": "../../tsconfig.json",
   "include": [
     "**/*.ts",
     "**/*.tsx",

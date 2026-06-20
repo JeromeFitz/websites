@@ -1,6 +1,15 @@
 import { cx } from '../../utils/cx'
 
-function Tags({ className = '', classNameTag = '', tags }) {
+// @todo(any)
+function Tags({
+  className = '',
+  classNameTag = '',
+  tags,
+}: {
+  className: string
+  classNameTag: string
+  tags: any
+}) {
   // console.dir(`> tags:`)
   // console.dir(tags)
   return (
@@ -11,7 +20,7 @@ function Tags({ className = '', classNameTag = '', tags }) {
         className,
       )}
     >
-      {tags?.map((tag) => {
+      {tags?.map((tag: any) => {
         const { color, id, name } = tag
         return (
           <li

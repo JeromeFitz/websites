@@ -1,6 +1,6 @@
 import { cx } from '../../utils/cx'
 
-function SectionWrapper({ children }) {
+function SectionWrapper({ children }: { children: React.ReactNode }) {
   return (
     <div className={cx('z-0 w-full')}>
       <div

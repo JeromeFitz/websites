@@ -19,7 +19,7 @@ const getParams = (href: string | string[]) => ({
   isNotion: getNotion(href),
 })
 
-function FlexImpl({ children }) {
+function FlexImpl({ children }: { children: React.ReactNode }) {
   return (
     <Flex align="center" asChild direction="row" display="inline-flex" gap="1">
       {children}
@@ -27,7 +27,15 @@ function FlexImpl({ children }) {
   )
 }
 
-const Anchor = ({ children, className = '', href }) => {
+const Anchor = ({
+  children,
+  className = '',
+  href,
+}: {
+  children: React.ReactNode
+  className?: string
+  href: string
+}) => {
   const { isExternal, isNotion } = getParams(href)
 
   if (isExternal && !isNotion) {

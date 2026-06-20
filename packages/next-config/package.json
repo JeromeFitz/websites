@@ -26,6 +26,10 @@
     },
     "./package.json": "./package.json"
   },
+  "scripts": {
+    "lint": "pnpm lint:typescript",
+    "lint:typescript": "tsc --noEmit --declaration"
+  },
   "devDependencies": {
     "@jeromefitz/prettier-config": "3.0.3",
     "@next/bundle-analyzer": "16.2.9",

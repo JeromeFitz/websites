@@ -1,6 +1,12 @@
 import { cx } from '../../utils/cx'
 
-function SectionContent({ children, className = '' }) {
+function SectionContent({
+  children,
+  className = '',
+}: {
+  children: React.ReactNode
+  className: string
+}) {
   return (
     <div
       className={cx(

@@ -1,16 +1,10 @@
 {
   "compilerOptions": {
-    "noEmit": true,
-    "noImplicitAny": false,
     "plugins": [
       {
         "name": "next"
       }
-    ],
-    "preserveSymlinks": true,
-    "rewriteRelativeImportExtensions": true,
-    "strict": true,
-    "strictNullChecks": true
+    ]
   },
   "exclude": ["node_modules"],
   "extends": "../../tsconfig.json",
