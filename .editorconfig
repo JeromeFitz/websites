@@ -12,10 +12,7 @@ insert_final_newline = true
 [*.md]
 trim_trailing_whitespace = false
 
-[*.js]
-quote_type = single
-
-[{*.c,*.cc,*.h,*.hh,*.cpp,*.hpp,*.m,*.mm,*.mpp,*.js,*.java,*.go,*.rs,*.php,*.ng,*.jsx,*.ts,*.d,*.cs,*.swift}]
+[{*.c,*.cc,*.cpp,*.cs,*.d,*.go,*.h,*.hh,*.hpp,*.java,*.js,*.jsx,*.m,*.mm,*.mpp,*.ng,*.php,*.rs,*.swift,*.ts,*.tsx}]
 curly_bracket_next_line = false
 spaces_around_operators = true
 spaces_around_brackets = outside
