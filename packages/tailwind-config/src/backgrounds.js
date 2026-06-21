@@ -3,7 +3,7 @@
  * https://www.radix-ui.com/docs/colors/palette-composition/understanding-the-scale
  *
  */
-import { excludes, radixColors } from './colors';
+import { excludes, radixColors } from "./colors";
 
 const backgrounds = {};
 
@@ -12,49 +12,49 @@ radixColors.map((_color) => {
   if (excludes.includes(color)) {
     color = `${color}A`;
   }
-  backgrounds['.' + color + '-bg'] = {
+  backgrounds["." + color + "-bg"] = {
     backgroundColor: `var(--${color}3)`,
   };
-  backgrounds['.' + color + '-bg-int'] = {
+  backgrounds["." + color + "-bg-int"] = {
     backgroundColor: `var(--${color}3)`,
   };
-  backgrounds['.' + color + '-bg-int:hover'] = {
+  backgrounds["." + color + "-bg-int:hover"] = {
     backgroundColor: `var(--${color}4)`,
   };
-  backgrounds['.' + color + '-bg-int:focus'] = {
+  backgrounds["." + color + "-bg-int:focus"] = {
     backgroundColor: `var(--${color}5)`,
   };
-  backgrounds['.' + color + '-cta'] = {
+  backgrounds["." + color + "-cta"] = {
     backgroundColor: `var(--${color}4)`,
   };
-  backgrounds['.' + color + '-cta-text'] = {
+  backgrounds["." + color + "-cta-text"] = {
     color: `var(--${color}11)`,
   };
-  backgrounds['.' + color + '-cta-int'] = {
+  backgrounds["." + color + "-cta-int"] = {
     backgroundColor: `var(--${color}4`,
   };
-  backgrounds['.' + color + '-cta-int:hover'] = {
+  backgrounds["." + color + "-cta-int:hover"] = {
     backgroundColor: `var(--${color}5)`,
   };
-  backgrounds['.' + color + '-cta-int:focus'] = {
+  backgrounds["." + color + "-cta-int:focus"] = {
     backgroundColor: `var(--${color}6)`,
   };
-  backgrounds['.' + color + '-border'] = {
+  backgrounds["." + color + "-border"] = {
     borderColor: `var(--${color}6)`,
   };
-  backgrounds['.' + color + '-border-int'] = {
+  backgrounds["." + color + "-border-int"] = {
     borderColor: `var(--${color}7)`,
   };
-  backgrounds['.' + color + '-border-int:hover'] = {
+  backgrounds["." + color + "-border-int:hover"] = {
     borderColor: `var(--${color}8)`,
   };
-  backgrounds['.' + color + '-solid'] = {
+  backgrounds["." + color + "-solid"] = {
     backgroundColor: `var(--${color}9)`,
   };
-  backgrounds['.' + color + '-solid-int'] = {
+  backgrounds["." + color + "-solid-int"] = {
     backgroundColor: `var(--${color}9)`,
   };
-  backgrounds['.' + color + '-solid-int:hover'] = {
+  backgrounds["." + color + "-solid-int:hover"] = {
     backgroundColor: `var(--${color}10)`,
   };
 });
