@@ -52,6 +52,7 @@ function EmojiHtml({ emoji, label }: { emoji: string; label: string }) {
 }
 
 // @todo(complexity) 13
+// oxlint-disable-next-line complexity
 async function EmojiWrapper({ id, text }: { id: string; text: string }) {
   // const [loading, loadingSet] = useState(true)
   // useEffect(() => {

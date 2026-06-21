@@ -73,7 +73,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           className={cx(
             fonts,
             "antialiased",
-            "overflow-y-auto overflow-x-hidden md:overflow-y-auto",
+            "overflow-x-hidden overflow-y-auto md:overflow-y-auto",
             "selection:bg-gray-12 selection:text-gray-1",
             "bg-white dark:bg-black",
             "scroll-smooth font-sans antialiased",
@@ -117,7 +117,7 @@ export async function RootLayoutV16({ children }: { children: React.ReactNode })
           className={cx(
             fonts,
             "antialiased",
-            "overflow-y-auto overflow-x-hidden md:overflow-y-auto",
+            "overflow-x-hidden overflow-y-auto md:overflow-y-auto",
             "scroll-smooth font-sans antialiased",
             //
             "selection:bg-gray-12 selection:text-gray-1",

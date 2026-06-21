@@ -879,7 +879,7 @@ const ReturnIcon = ({ className, label, ...props }: IconProps) => (
     }
   >
     <ArrowUturnLeftHero
-      className={cx(twHeroToRadixIcon, "rotate-180 -scale-x-100", className)}
+      className={cx(twHeroToRadixIcon, "-scale-x-100 rotate-180", className)}
       role="img"
       {...props}
     />

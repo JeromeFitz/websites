@@ -52,7 +52,7 @@ function HeaderFull({
         >
           <Flex
             className={cx(
-              "place-content-start items-start place-self-start overflow-visible [align-self:unset] [grid-column:auto_/_span_3]",
+              "col-[auto/span_3] place-content-start items-start place-self-start [align-self:unset] overflow-visible",
             )}
             direction="column"
             flexBasis={{ initial: "0px", md: "auto" }}
@@ -78,7 +78,7 @@ function HeaderFull({
             >
               <Text
                 // as="h2"
-                className="font-medium text-gray-11"
+                className="text-gray-11 font-medium"
                 size={{ initial: "2", md: "4" }}
               >
                 {overline}
@@ -86,7 +86,7 @@ function HeaderFull({
             </Flex>
             <Flex
               className={cx(
-                "whitespace-pre-wrap break-words [word-break:break-word]",
+                "wrap-break-word [word-break:break-word] whitespace-pre-wrap",
                 "transform-none outline-hidden",
               )}
               direction="column"
@@ -104,8 +104,8 @@ function HeaderFull({
                   <sup
                     aria-hidden={true}
                     className={cx(
-                      "align-super text-3 md:text-6",
-                      isSupString && "text-2! md:text-!",
+                      "text-3 md:text-6 align-super",
+                      isSupString && "md:text-! text-2!",
                     )}
                   >
                     {` `}

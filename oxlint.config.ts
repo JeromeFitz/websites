@@ -14,10 +14,11 @@ const tempRulesTurnedOffForOxlintAdoption: DummyRuleMap = {
   /**
    * correctness
    */
-  "eslint/no-extra-boolean-cast": "off", // x2
-  "eslint/no-unsafe-optional-chaining": "off", // x4
-  "eslint/no-unused-expressions": "off", // x10
-  "eslint/no-unused-vars": "off", // x34
+  "no-unsafe-optional-chaining": "warn", // x4
+  "no-unused-expressions": "warn", // x10
+  "no-unused-vars": "warn", // x34
+
+  // non-eslint
   "import/default": "off", // x1
   "jsx-a11y/control-has-associated-label": "off", // x1
   "jsx-a11y/prefer-tag-over-role": "off", // x181
@@ -29,27 +30,31 @@ const tempRulesTurnedOffForOxlintAdoption: DummyRuleMap = {
   /**
    * nursery
    */
-  "eslint/no-undef": "off", // x253
-  "eslint/no-useless-assignment": "off", // x6
+  "no-undef": "off", // x253
+  "no-useless-assignment": "off", // x6
+
+  // non-eslint
   "import/named": "off", // x18
   "react/react-compiler": "off", // x21
 
   /**
    * pedantic
    */
-  "eslint/array-callback-return": "off", // x71
-  "eslint/max-lines-per-function": "off", // x105
-  "eslint/max-lines": "off", // x12
-  "eslint/no-else-return": "off", // x3
-  "eslint/no-inline-comments": "off", // x16
-  "eslint/no-negated-condition": "off", // x13
-  "eslint/no-promise-executor-return": "off", // x1
-  "eslint/no-useless-return": "off", // x1
-  "eslint/no-warning-comments": "off", // x1
-  "eslint/radix": "off", // x3
-  "eslint/require-await": "off", // x8
-  "eslint/require-unicode-regexp": "off", // x48
-  "eslint/sort-vars": "off", // x2
+  "array-callback-return": "off", // x71
+  "max-lines-per-function": "off", // x105
+  "max-lines": "off", // x12
+  "no-else-return": "off", // x3
+  "no-inline-comments": "off", // x16
+  "no-negated-condition": "off", // x13
+  "no-promise-executor-return": "off", // x1
+  "no-useless-return": "off", // x1
+  "no-warning-comments": "off", // x1
+  radix: "off", // x3
+  "require-await": "off", // x8
+  "require-unicode-regexp": "off", // x48
+  "sort-vars": "off", // x2
+
+  // non-eslint
   "import/max-dependencies": "off", // x33
   "react/jsx-no-useless-fragment": "off", // x48
   "react/no-unescaped-entities": "off", // x2
@@ -60,7 +65,9 @@ const tempRulesTurnedOffForOxlintAdoption: DummyRuleMap = {
   /**
    * perf
    */
-  "eslint/no-await-in-loop": "off", // x3
+  "no-await-in-loop": "off", // x3
+
+  // non-eslint
   "react-perf/jsx-no-jsx-as-prop": "off", // x15
   "react-perf/jsx-no-new-array-as-prop": "off", // x7
   "react-perf/jsx-no-new-function-as-prop": "off", // x13
@@ -71,16 +78,17 @@ const tempRulesTurnedOffForOxlintAdoption: DummyRuleMap = {
   /**
    * restriction
    */
-  "eslint/class-methods-use-this": "off", // x2
-  "eslint/complexity": "off", // x2
-  "eslint/no-console": "off", // x76
-  "eslint/no-empty-function": "off", // x5
-  "eslint/no-implicit-globals": "off", // x1
-  "eslint/no-param-reassign": "off", // x2
-  "eslint/no-plusplus": "off", // x18
-  "eslint/no-undefined": "off", // x45
-  "eslint/no-use-before-define": "off", // x159
-  "eslint/no-void": "off", // x15
+  "class-methods-use-this": "off", // x2
+  "no-console": "off", // x76
+  "no-empty-function": "off", // x5
+  "no-implicit-globals": "off", // x1
+  "no-param-reassign": "off", // x2
+  "no-plusplus": "off", // x18
+  "no-undefined": "off", // x45
+  "no-use-before-define": "off", // x159
+  "no-void": "off", // x15
+
+  // non-eslint
   "import/no-commonjs": "off", // x28
   "import/no-cycle": "off", // x22
   "import/no-default-export": "off", // x82
@@ -110,32 +118,36 @@ const tempRulesTurnedOffForOxlintAdoption: DummyRuleMap = {
   /**
    * style
    */
-  "eslint/arrow-body-style": "off", // x75
-  "eslint/capitalized-comments": "off", // x894
-  "eslint/curly": "off", // x103
-  "eslint/func-names": "off", // x6
-  "eslint/func-style": "off", // x374
-  "eslint/id-length": "off", // x103
-  "eslint/init-declarations": "off", // x15
-  "eslint/logical-assignment-operators": "off", // x1
-  "eslint/max-statements": "off", // x195
-  "eslint/new-cap": "off", // x2
-  "eslint/no-duplicate-imports": "off", // x31
-  "eslint/no-implicit-coercion": "off", // x51
-  "eslint/no-magic-numbers": "off", // x416
-  "eslint/no-nested-ternary": "off", // x12
-  "eslint/no-template-curly-in-string": "off", // x1
-  "eslint/no-ternary": "off", // x192
-  "eslint/no-useless-computed-key": "off", // x1
-  "eslint/object-shorthand": "off", // x2
-  "eslint/prefer-arrow-callback": "off", // x4
-  "eslint/prefer-const": "off", // x6
-  "eslint/prefer-destructuring": "off", // x83
-  "eslint/prefer-named-capture-group": "off", // x4
-  "eslint/prefer-template": "off", // x33
-  "eslint/sort-imports": "off", // x487
-  "eslint/sort-keys": "off", // x93
-  "eslint/yoda": "off", // x1
+  // eslint
+  "arrow-body-style": "off", // x75
+  "capitalized-comments": "off", // x894
+  curly: "off", // x103
+  "func-names": "off", // x6
+  "func-style": "off", // x374
+  "id-length": "off", // x103
+  "init-declarations": "off", // x15
+  "logical-assignment-operators": "off", // x1
+  "max-statements": "off", // x195
+  "new-cap": "off", // x2
+  "no-duplicate-imports": "off", // x31
+  "no-implicit-coercion": "off", // x51
+  "no-magic-numbers": "off", // x416
+  "no-nested-ternary": "off", // x12
+  "no-template-curly-in-string": "off", // x1
+  "no-ternary": "off", // x192
+  "no-useless-computed-key": "off", // x1
+  "object-shorthand": "off", // x2
+  "prefer-arrow-callback": "off", // x4
+  "prefer-const": "off", // x6
+  "prefer-destructuring": "off", // x83
+  "prefer-named-capture-group": "off", // x4
+  "prefer-template": "off", // x33
+  "sort-imports": "off", // x487
+  "sort-keys": "off", // x93
+  // "sort-keys": ["warn", "asc", { allowLineSeparatedGroups: true }],
+  yoda: "off", // x1
+
+  // non-eslint
   "import/exports-last": "off", // x52
   "import/first": "off", // x51
   "import/group-exports": "off", // x140
@@ -164,29 +176,40 @@ const tempRulesTurnedOffForOxlintAdoption: DummyRuleMap = {
   /**
    * suspicious
    */
-  "eslint/no-shadow": "off", // x43
-  "eslint/no-underscore-dangle": "off", // x61
-  "eslint/no-unneeded-ternary": "off", // x3
+  "no-shadow": "off", // x43
+  "no-underscore-dangle": "off", // x61
+  "no-unneeded-ternary": "off", // x3
+
+  // non-eslint
   "import/no-unassigned-import": "off", // x28
   "promise/always-return": "off", // x1
   "react/iframe-missing-sandbox": "off", // x2
   "react/react-in-jsx-scope": "off", // x2237
+
+  /**
+   * @jsplugin(tailwindcss)
+   */
+  "tailwindcss/no-unknown-classes": "off", // x19`
+  "tailwindcss/no-dark-without-light": "off", // x15
+  "tailwindcss/enforce-consistent-line-wrapping": "off", // x15
 };
 
 const config: OxlintConfig = {
   categories: {
     correctness: "warn",
-    nursery: "warn",
-    pedantic: "warn",
-    perf: "warn",
-    restriction: "warn",
-    style: "warn",
-    suspicious: "warn",
+    nursery: "off",
+    pedantic: "off",
+    perf: "off",
+    restriction: "off",
+    style: "off",
+    suspicious: "off",
   },
   env: {
     builtin: true,
   },
+  jsPlugins: ["oxlint-tailwindcss"],
   options: {
+    maxWarnings: 53,
     reportUnusedDisableDirectives: "allow",
     typeAware: false,
     typeCheck: false,
@@ -205,6 +228,29 @@ const config: OxlintConfig = {
   ],
   rules: {
     ...tempRulesTurnedOffForOxlintAdoption,
+
+    /**
+     * eslint
+     */
+    complexity: ["error", { max: 10 }],
+    "react/exhaustive-deps": "warn",
+
+    /**
+     * @jsplugin(tailwindcss)
+     */
+    // "tailwindcss/enforce-canonical": "error", // @note(tailwindcss) 5.0s...
+    // "tailwindcss/enforce-sort-order": "error", // @note(tailwindcss) 0.5s...
+    // "tailwindcss/no-conflicting-classes": "error", // @note(tailwindcss) 0.5s...
+  },
+  settings: {
+    react: {
+      // renovate: datasource=npm depName=react
+      version: "19.2.7",
+    },
+    tailwindcss: {
+      // ref: https://oxlint-tailwindcss.pages.dev/
+      entryPoint: "./sites/jeromefitzgerald.com/src/app/styles--globals.css", // your CSS file with @import "tailwindcss"
+    },
   },
 };
 

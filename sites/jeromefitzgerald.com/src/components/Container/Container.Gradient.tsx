@@ -8,7 +8,7 @@ function ContainerGradient() {
       <Box
         className={cx(
           "pointer-events-none fixed top-0 z-30 w-full flex-none",
-          "h-[50px] md:h-[55px]",
+          "h-12.5 md:h-13.75",
           "backdrop-blur-xs",
           "opacity-80 md:opacity-90",
           "",
@@ -19,8 +19,8 @@ function ContainerGradient() {
       <Box
         className={cx(
           "pointer-events-none fixed top-0 z-40 w-full flex-none",
-          "h-[100px] md:h-[125px]",
-          "bg-gradient-to-b",
+          "h-25 md:h-31.25",
+          "bg-linear-to-b",
           "from-whiteA-10 dark:from-blackA-10",
           "from-65% md:from-45%",
           "",

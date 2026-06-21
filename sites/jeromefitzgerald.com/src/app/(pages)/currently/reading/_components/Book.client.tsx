@@ -120,7 +120,7 @@ function Book({ book, item }: { book: any; item: any }) {
   console.dir(item?.seoImage.name);
   return (
     <Flex
-      className="flex-auto items-start rounded-md border-1 border-gray-7 border-t-1"
+      className="border-gray-7 flex-auto items-start rounded-md border-1 border-t-1"
       direction={{ initial: "row", md: "row-reverse" }}
       gap="0"
       justify="between"
@@ -244,7 +244,7 @@ function Book({ book, item }: { book: any; item: any }) {
                     <NextLink href={item.urlBookshop} target="_blank">
                       Buy New at Bookshop
                       {` `}
-                      <ExternalLinkIcon className={cx("!opacity-100 text-accent-11")} />
+                      <ExternalLinkIcon className={cx("text-accent-11 !opacity-100")} />
                     </NextLink>
                   </Button>
                   <Button
@@ -260,7 +260,7 @@ function Book({ book, item }: { book: any; item: any }) {
                     <NextLink href={item.urlBiblio} target="_blank">
                       Buy Used at Biblio
                       {` `}
-                      <ExternalLinkIcon className={cx("!opacity-100 text-accent-11")} />
+                      <ExternalLinkIcon className={cx("text-accent-11 !opacity-100")} />
                     </NextLink>
                   </Button>
                 </Flex>
@@ -271,11 +271,11 @@ function Book({ book, item }: { book: any; item: any }) {
       </Flex>
       <Inset
         className={cx(
-          "relative h-full rounded-3",
-          "h-[275px] w-[164px] min-w-[164px] max-w-[164px]",
-          "md:size-full md:max-w-[308px]",
+          "rounded-3 relative h-full",
+          "h-68.75 w-41 max-w-41 min-w-41",
+          "md:size-full md:max-w-77",
           // 'md:h-[450px] md:w-[500px]',
-          // 'md:border-1 md:border-gray-7 ',
+          // 'md:border md:border-gray-7 ',
           "",
         )}
         clip="border-box"
@@ -344,6 +344,8 @@ function BookPage({ items }: { items: any }) {
   books[1].title = _title(books[1].id);
   books[2].title = _title(books[2].id);
 
+  // @todo(complexity) 11
+  // oxlint-disable-next-line complexity
   items.map((item: any) => {
     if (!item?.status) return null;
     if (!item?.isActive) return null;

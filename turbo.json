@@ -21,12 +21,13 @@
   ],
   "tasks": {
     "//#quality": {
-      "dependsOn": ["//#lint", "//#format"]
+      "dependsOn": ["//#lint:ci", "//#format"]
     },
     "//#quality:fix": {
       "dependsOn": ["//#lint:fix", "//#format:fix"]
     },
     "//#lint": {},
+    "//#lint:ci": {},
     "//#lint:fix": {
       "cache": false
     },

@@ -13,6 +13,8 @@ import { isExternalUrl } from "@/utils/isExternalUrl";
 
 type Size = "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9";
 
+// @todo(complexity) 14
+// oxlint-disable-next-line complexity
 const LinkText = ({
   color,
   disabled = false,
@@ -77,8 +79,8 @@ const LinkText = ({
             <Icon
               className={cx(
                 "transition-all delay-75",
-                "md:opacity-0! md:group-focus:opacity-100! md:group-hover:opacity-100!",
-                "md:-translate-x-2 md:group-focus:translate-x-0 md:group-hover:translate-x-0",
+                "md:opacity-0! md:group-hover:opacity-100! md:group-focus:opacity-100!",
+                "md:-translate-x-2 md:group-hover:translate-x-0 md:group-focus:translate-x-0",
                 "mx-1",
                 "",
               )}

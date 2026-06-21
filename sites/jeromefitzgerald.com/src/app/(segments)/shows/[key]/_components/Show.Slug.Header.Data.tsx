@@ -24,11 +24,7 @@ function ShowSlugHeaderData({ item }) {
         wrap="nowrap"
       >
         <DataList.Root
-          className={cx(
-            "py-6 pr-1 pl-4",
-            "md:!gap-x-[var(--space-2)] gap-x-[var(--space-3)]",
-            "w-full",
-          )}
+          className={cx("py-6 pr-1 pl-4", "gap-x-(--space-3) md:!gap-x-(--space-2)", "w-full")}
           size="2"
         >
           <DataList.Item align="start" className="hidden">
@@ -38,7 +34,7 @@ function ShowSlugHeaderData({ item }) {
             >
               <Flex justify={{ initial: "start", md: "start" }} width="100%">
                 <IdCardIcon />
-                <Text className="md:!sr-only font-mono" ml="1" size="1">
+                <Text className="font-mono md:!sr-only" ml="1" size="1">
                   Title
                 </Text>
               </Flex>
@@ -53,7 +49,7 @@ function ShowSlugHeaderData({ item }) {
               >
                 <Flex justify={{ initial: "start", md: "start" }} width="100%">
                   <TagIcon />
-                  <Text className="md:!sr-only font-mono" ml="1" size="1">
+                  <Text className="font-mono md:!sr-only" ml="1" size="1">
                     Type
                   </Text>
                 </Flex>
@@ -96,7 +92,7 @@ function ShowSlugHeaderData({ item }) {
           "relative h-auto w-full flex-none",
           "fixed bottom-0 left-0 inline",
           "md:fixed md:bottom-0 md:left-0 md:flex md:h-min",
-          "md:mb-[calc(var(--spacing)_*_11.5)]",
+          "md:mb-11.5",
           // @note(ui) this moved to Portal for mobile (hydration error)...
           "hidden",
         )}

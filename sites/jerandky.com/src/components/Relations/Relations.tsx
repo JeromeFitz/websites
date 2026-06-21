@@ -14,7 +14,7 @@ import {
 /**
  * @todo(notion) hrm, how do we get data from two tables over?
  */
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+// oxlint-disable-next-line typescript/no-unused-vars
 function Relations({ properties, relations, relationsSecondary }) {
   return (
     <div
@@ -42,7 +42,7 @@ function Relations({ properties, relations, relationsSecondary }) {
             )}
             key={`${id}-${relation}`}
           >
-            <p className={cx("pb-3 font-extrabold uppercase tracking-tight", "")}>
+            <p className={cx("pb-3 font-extrabold tracking-tight uppercase", "")}>
               <strong>{title}</strong>
             </p>
             <ul>

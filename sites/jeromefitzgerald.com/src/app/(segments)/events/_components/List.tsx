@@ -58,7 +58,7 @@ function ListWrapper({ events }: { events: Event[] }) {
                 asChild
                 className={cx(
                   // 'bg-accent-6',
-                  "border-gray-7 hover:border-gray-8 md:border-1",
+                  "border-gray-7 hover:border-gray-8 md:border",
                   "rounded-sm",
                   "transition-all duration-500",
                   // 'group-hover:transform-[translate(0px,_-1em)]',
@@ -113,7 +113,7 @@ function ListWrapper({ events }: { events: Event[] }) {
                         {event.title}
                       </Heading>
                       <Text
-                        className="md:line-clamp-3 md:min-h-[75px]"
+                        className="md:line-clamp-3 md:min-h-18.75"
                         mr={{ initial: "1", md: "3" }}
                       >
                         {event.seoDescription}
@@ -174,10 +174,10 @@ function ListWrapper({ events }: { events: Event[] }) {
                       <Button
                         asChild
                         className={cx(
-                          "hover:!transform-[translate(0px,_-0.125em)] !transition-all",
-                          "hover:!shadow-[inset_0_0_0_1px_var(--accent-a8)]",
-                          "!drop-shadow-lg hover:!drop-shadow-lg",
-                          "!shadow-[inset_0_0_0_1px_var(--accent-a7)]",
+                          "transition-all! hover:transform-[translate(0px,-0.125em)]!",
+                          "hover:shadow-[inset_0_0_0_1px_var(--accent-a8)]!",
+                          "drop-shadow-lg! hover:drop-shadow-lg!",
+                          "shadow-[inset_0_0_0_1px_var(--accent-a7)]!",
                         )}
                         variant="surface"
                       >
@@ -187,9 +187,9 @@ function ListWrapper({ events }: { events: Event[] }) {
                         asChild
                         disabled={!event.urlTicket}
                         className={cx(
-                          "hover:!transform-[translate(0px,_-0.125em)] !transition-all",
-                          "!text-black",
-                          "!drop-shadow-lg hover:!drop-shadow-lg",
+                          "transition-all! hover:transform-[translate(0px,-0.125em)]!",
+                          "text-black!",
+                          "drop-shadow-lg! hover:drop-shadow-lg!",
                         )}
                         color="green"
                       >
@@ -197,9 +197,9 @@ function ListWrapper({ events }: { events: Event[] }) {
                           Buy Tickets
                           <ExternalLinkIcon
                             className={cx(
-                              // 'bg-blackA-9 group-hover:bg-blackA-10',
-                              "!opacity-95 group-hover:!opacity-100 size-5 rounded-3 p-0-5 text-inherit transition-colors",
-                              "!transition-all",
+                              "rounded-3 size-5 p-0.5 text-inherit ",
+                              "opacity-95! group-hover:opacity-100!",
+                              "transition-all!",
                             )}
                           />
                         </a>

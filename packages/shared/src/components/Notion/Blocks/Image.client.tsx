@@ -8,6 +8,8 @@
 // @ts-ignore
 import NextImage from "next/image";
 
+// @todo(complexity) 11
+// oxlint-disable-next-line complexity
 function Image({ ...props }) {
   // @note(notion) eject for html validity purposes
 
@@ -52,7 +54,7 @@ function Image({ ...props }) {
 
   return (
     <>
-      <NextImage className="h-auto w-full rounded-3" placeholder="blur" {...imageProps} />
+      <NextImage className="rounded-3 h-auto w-full" placeholder="blur" {...imageProps} />
       {/* <Box
         height="100%"
         maxWidth={{ initial: '100%', lg: '1024px', md: '768px', xl: '1280px' }}

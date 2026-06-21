@@ -43,7 +43,7 @@ function CTA({ href, isDisabled = false }: { href: string; isDisabled: boolean }
           <ExternalLinkIcon
             className={cx(
               // 'bg-blackA-9 group-hover:bg-blackA-10 ',
-              "!opacity-95 group-hover:!opacity-100 size-7 rounded-3 p-1 text-inherit transition-colors",
+              "rounded-3 size-7 p-1 text-inherit !opacity-95 transition-colors group-hover:!opacity-100",
               "!transition-all",
               isDisabled && "hidden",
             )}
@@ -68,7 +68,7 @@ function EventSlugHeaderData({ item }: { item: Event }) {
           "relative h-auto w-full flex-none",
           "fixed bottom-0 left-0 inline",
           "md:fixed md:bottom-0 md:left-0 md:flex md:h-min",
-          "md:mb-[calc(var(--spacing)_*_11.5)]",
+          "md:mb-11.5",
           // @note(ui) this moved to Portal for mobile (hydration error)...
           "hidden",
         )}

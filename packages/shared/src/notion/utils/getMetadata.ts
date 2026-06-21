@@ -24,6 +24,8 @@ type ImageItemResponse =
 type TextRequest = string;
 
 // @todo(types) any
+// @todo(complexity) 15
+// oxlint-disable-next-line complexity
 function getMetadata({ properties, segmentInfo }: { properties: any; segmentInfo: any }) {
   if (isObjectEmpty(properties)) return {};
   // console.dir(`[getMetadata] segmentInfo:`)

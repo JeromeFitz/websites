@@ -1,7 +1,11 @@
 {
   "$schema": "./node_modules/oxfmt/configuration_schema.json",
   "sortImports": true,
-  "sortPackageJson": true,
+  "sortPackageJson": { "sortScripts": true },
+  "sortTailwindcss": {
+    "functions": ["cx"],
+    "preserveWhitespace": true
+  },
   "ignorePatterns": [
     ".vscode/settings.json",
     "**/_placeholder",

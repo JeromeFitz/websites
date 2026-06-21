@@ -31,6 +31,8 @@ interface UseSWRInfinitePagesConfig<Page extends object> {
  * @todo(types) SWRInfiniteMutatorOptions
  *              this is not exported so make any
  */
+// @todo(complexity) 14
+// oxlint-disable-next-line complexity
 const useSWRInfinitePages: any = <
   Page extends object,
   // @todo(types)

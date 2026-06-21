@@ -1,6 +1,7 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "jsx": "react-jsx",
     "paths": {
       "@jeromefitz/shared/*": ["../../packages/shared/src/*"],
       "~app/*": ["src/app/*"],

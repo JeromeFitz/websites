@@ -10,7 +10,7 @@ const lastModified = new Date();
 const root = [""];
 const podcasts = ["jer-and-ky-and-guest", "knockoffs"];
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+// oxlint-disable-next-line typescript/no-unused-vars
 const sitemapRoot = root.map((slug) => ({
   lastModified,
   url: `${siteUrl}`,

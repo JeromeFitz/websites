@@ -122,7 +122,7 @@ function DataItem({ item, type }: any) {
 
   return (
     <Flex
-      className="flex-auto items-start rounded-md border-1 border-gray-7 border-t-1"
+      className="border-gray-7 flex-auto items-start rounded-md border-1 border-t-1"
       direction={{ initial: "column-reverse", md: "row-reverse" }}
       gap="0"
       justify="between"
@@ -272,7 +272,7 @@ function DataItem({ item, type }: any) {
                     <NextLink href={_href} target="_blank">
                       Open Apple Music
                       {` `}
-                      <ExternalLinkIcon className={cx("!opacity-100 text-accent-11")} />
+                      <ExternalLinkIcon className={cx("text-accent-11 !opacity-100")} />
                     </NextLink>
                   </Button>
                 </Flex>
@@ -283,10 +283,10 @@ function DataItem({ item, type }: any) {
       </Flex>
       <Inset
         className={cx(
-          "relative h-full rounded-3",
+          "rounded-3 relative h-full",
           // 'h-[275px] w-[164px] min-w-[164px] max-w-[164px]',
           "size-full",
-          "md:size-full md:max-w-[308px]",
+          "md:size-full md:max-w-77",
         )}
         clip="border-box"
         side={{ initial: "all", md: "all" }}
@@ -294,7 +294,7 @@ function DataItem({ item, type }: any) {
         <Image
           {...image}
           alt={_alt}
-          className="mx-auto h-auto w-full max-w-64 md:h-full md:max-w-[575px]"
+          className="mx-auto h-auto w-full max-w-64 md:h-full md:max-w-143.75"
           placeholder="blur"
           role="img"
           tabIndex={-1}
@@ -315,7 +315,7 @@ function DataItemLoader({ error, handleScroll, isLoadingMore }: any) {
   return (
     <>
       <Flex
-        className="flex-auto items-start rounded-md border-1 border-gray-7 border-t-1"
+        className="border-gray-7 flex-auto items-start rounded-md border-1 border-t-1"
         direction={{ initial: "column-reverse", md: "row-reverse" }}
         gap="0"
         justify="between"
@@ -382,11 +382,11 @@ function DataItemLoader({ error, handleScroll, isLoadingMore }: any) {
         </Flex>
         <Inset
           className={cx(
-            "relative h-full rounded-3",
-            "h-[275px] w-[164px] min-w-[164px] max-w-[164px]",
-            "md:size-full md:max-w-[308px]",
+            "rounded-3 relative h-full",
+            "h-68.75 w-41 max-w-41 min-w-41",
+            "md:size-full md:max-w-77",
             // 'md:h-[450px] md:w-[500px]',
-            // 'md:border-1 md:border-gray-7 ',
+            // 'md:border md:border-gray-7 ',
             "",
           )}
           clip="border-box"
@@ -583,7 +583,7 @@ function MusicClient() {
             <Flex
               className={cx(
                 // '!md:col-span-3 !col-span-full',
-                "bg-whiteA-12 md:bg-transparent dark:bg-blackA-12 md:dark:bg-transparent",
+                "bg-whiteA-12 dark:bg-blackA-12 md:bg-transparent md:dark:bg-transparent",
                 "z-40 backdrop-blur-xs md:z-0",
               )}
               direction="row"
@@ -605,7 +605,7 @@ function MusicClient() {
                     onValueChange={(value: string) => handleValueChangeType(value)}
                     size="3"
                   >
-                    <SelectTrigger className="!w-full z-50 !md:w-full" placeholder="Type:" />
+                    <SelectTrigger className="!md:w-full z-50 !w-full" placeholder="Type:" />
                     <SelectContent className="z-50 w-full" position="popper">
                       {/* <SelectItem value="history-heavy-rotation">
                         Heavy Rotation

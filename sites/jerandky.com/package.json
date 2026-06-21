@@ -110,6 +110,7 @@
     "zustand": "5.0.14"
   },
   "devDependencies": {
+    "@jeromefitz/ds": "workspace:*",
     "@jeromefitz/lighthouse-config": "workspace:*",
     "@jeromefitz/next-config": "workspace:*",
     "@jeromefitz/playwright-config": "workspace:*",

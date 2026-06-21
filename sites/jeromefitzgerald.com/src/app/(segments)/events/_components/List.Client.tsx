@@ -26,7 +26,7 @@ function AccordionClient({ items }) {
   return (
     <Box
       asChild
-      className="border-0 border-accentA-12 border-solid bg-grayA-6 shadow-3"
+      className="border-accentA-12 bg-grayA-6 shadow-3 border-0 border-solid"
       maxWidth="100%"
       minWidth="100%"
       mt="4"

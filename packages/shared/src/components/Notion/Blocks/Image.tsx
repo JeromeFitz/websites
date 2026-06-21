@@ -51,6 +51,8 @@ const CACHE_KEY_PREFIX__IMAGE = `${envClient.NEXT_PUBLIC__SITE}/image`;
 // async function getImage({ url }) {}
 
 // @todo(types) any
+// @todo(complexity) 24
+// oxlint-disable-next-line complexity
 async function getImageFromBlock({ block, url }: { block: any; url: any }) {
   let imageUrl = url;
   let imageExpiry = null;
@@ -148,6 +150,8 @@ async function getImageFromBlock({ block, url }: { block: any; url: any }) {
   return image;
 }
 
+// @todo(complexity) 15
+// oxlint-disable-next-line complexity
 async function ImageImpl({
   block,
   blocks,

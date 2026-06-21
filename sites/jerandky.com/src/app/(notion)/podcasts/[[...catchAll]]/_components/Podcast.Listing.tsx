@@ -23,7 +23,7 @@ import { CONFIG, getPageData, getPodcastData } from "../../../_config";
 const { DATABASE_ID } = CONFIG.PODCASTS;
 
 // @todo(complexity) 12
-// eslint-disable-next-line complexity
+// oxlint-disable-next-line complexity
 async function Listing({ revalidate, segmentInfo }) {
   const { isEnabled } = await draftMode();
   // const { slug } = segmentInfo

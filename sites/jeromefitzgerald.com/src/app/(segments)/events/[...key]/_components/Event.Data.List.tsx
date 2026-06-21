@@ -59,7 +59,7 @@ function DataList__VenueIndividualWithSkeleton({
       <DataList.Label className="flex flex-row items-center justify-start gap-1" minWidth="0px">
         <Flex justify={{ initial: "start", md: "start" }} width="100%">
           <HomeIcon />
-          <Text className="md:!sr-only font-mono" ml="1" size="1">
+          <Text className="font-mono md:!sr-only" ml="1" size="1">
             Venue
           </Text>
         </Flex>
@@ -88,7 +88,7 @@ function DataList__Info({ isEventOver, item }: { isEventOver: boolean; item: Eve
   // const timestampET = timestampUTC.withTimeZone('America/New_York')
   return (
     <Flex
-      className={cx("content-center items-center overflow-auto", "border-gray-7 border-t-1")}
+      className={cx("content-center items-center overflow-auto", "border-gray-7 border-t")}
       direction="column"
       gap="0"
       justify="start"
@@ -98,18 +98,14 @@ function DataList__Info({ isEventOver, item }: { isEventOver: boolean; item: Eve
       wrap="nowrap"
     >
       <DataList.Root
-        className={cx(
-          "py-6 pr-1 pl-4",
-          "md:!gap-x-[var(--space-2)] gap-x-[var(--space-3)]",
-          "w-full",
-        )}
+        className={cx("py-6 pr-1 pl-4", "gap-x-(--space-3) md:!gap-x-(--space-2)", "w-full")}
         size="2"
       >
         <DataList.Item align="start" className="hidden!">
           <DataList.Label className="flex flex-row items-center justify-start gap-1" minWidth="0px">
             <Flex justify={{ initial: "start", md: "start" }} width="100%">
               <IdCardIcon />
-              <Text className="md:!sr-only font-mono" ml="1" size="1">
+              <Text className="font-mono md:!sr-only" ml="1" size="1">
                 Title
               </Text>
             </Flex>
@@ -120,7 +116,7 @@ function DataList__Info({ isEventOver, item }: { isEventOver: boolean; item: Eve
           <DataList.Label className="flex flex-row items-center justify-start gap-1" minWidth="0px">
             <Flex justify={{ initial: "start", md: "start" }} width="100%">
               <CalendarIcon />
-              <Text className="md:!sr-only font-mono" ml="1" size="1">
+              <Text className="font-mono md:!sr-only" ml="1" size="1">
                 Date
               </Text>
             </Flex>
@@ -134,7 +130,7 @@ function DataList__Info({ isEventOver, item }: { isEventOver: boolean; item: Eve
           <DataList.Label className="flex flex-row items-center justify-start gap-1" minWidth="0px">
             <Flex justify={{ initial: "start", md: "start" }} width="100%">
               <ClockIcon />
-              <Text className="md:!sr-only font-mono" ml="1" size="1">
+              <Text className="font-mono md:!sr-only" ml="1" size="1">
                 Time
               </Text>
             </Flex>
@@ -203,7 +199,7 @@ function DataList__Info({ isEventOver, item }: { isEventOver: boolean; item: Eve
             >
               <Flex justify={{ initial: "start", md: "start" }} width="100%">
                 <InfoCircledIcon />
-                <Text className="md:!sr-only font-mono" ml="1" size="1">
+                <Text className="font-mono md:!sr-only" ml="1" size="1">
                   Note
                 </Text>
               </Flex>

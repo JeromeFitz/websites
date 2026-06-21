@@ -15,11 +15,11 @@ function ContainerHeaderSidebar({ children }: { children: React.ReactNode }) {
       asChild
       className={cx(
         // 'bg-iris-3',
-        // 'rounded-md border-1',
-        "z-0 content-center items-start overflow-auto will-change-opacity",
+        // 'rounded-md border',
+        // 'will-change-opacity',
+        "z-0 content-center items-start overflow-auto",
         "transition-opacity duration-250",
-        "top-[calc(var(--spacing)_*_22)]",
-        "md:top-[calc(var(--spacing)_*_22)]",
+        "top-22 md:top-22",
         // isSticky ? 'opacity-100' : 'opacity-0',
       )}
       data-name={isSticky ? "Side Barzzzz" : "Side Bar"}
@@ -78,7 +78,7 @@ function HeaderSidebar({ children = <></>, className = "", hasBorder = true, tit
             className={cx(
               "z-30 place-content-start items-start overflow-hidden",
               isTitleEmpty && "hidden",
-              "border-gray-7 border-b-1",
+              "border-gray-7 border-b",
             )}
             direction="column"
             flexBasis="auto"

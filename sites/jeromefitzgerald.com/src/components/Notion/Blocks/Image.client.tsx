@@ -8,6 +8,8 @@
 // @ts-ignore
 import NextImage from "next/image";
 
+// @todo(complexity) 11
+// oxlint-disable-next-line complexity
 function Image({ ...props }) {
   // @note(notion) eject for html validity purposes
 

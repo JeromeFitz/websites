@@ -12,7 +12,7 @@ function CreditsHeader({
     <Flex
       className={cx(
         "place-content-start items-start overflow-hidden will-change-transform",
-        "rounded-3 rounded-b-[0] border-1 border-gray-7 border-b-0",
+        "rounded-3 border-gray-7 rounded-b-none border-1 border-b-0",
       )}
       direction="column"
       flexBasis="auto"
@@ -27,7 +27,7 @@ function CreditsHeader({
       width="100%"
       wrap="nowrap"
     >
-      <Heading as="h2" className="font-medium text-blackA-11 dark:text-whiteA-11" size="6">
+      <Heading as="h2" className="text-blackA-11 dark:text-whiteA-11 font-medium" size="6">
         {title}
       </Heading>
       <Text className="after:whitespace-pre after:content-['_']" color="gray" size="3">

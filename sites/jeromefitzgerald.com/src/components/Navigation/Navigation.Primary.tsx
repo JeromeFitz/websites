@@ -63,7 +63,7 @@ function NavigationButton({ isHomePage = false }: { isHomePage?: boolean }) {
     <Button
       // aria-label="Jerome"
       className={cx(
-        "!bg-accent-1 !hover:bg-accent-2 transition-colors",
+        "!hover:bg-accent-2 !bg-accent-1 transition-colors",
         '[&>svg]:data-[state="open"]:animate-none',
         "!cursor-pointer",
       )}
@@ -75,7 +75,7 @@ function NavigationButton({ isHomePage = false }: { isHomePage?: boolean }) {
       variant="outline"
     >
       <DotFilledIcon
-        className={cx("size-6 animate-pulse text-pink-11 transition-all delay-1000", "")}
+        className={cx("text-pink-11 size-6 animate-pulse transition-all delay-1000", "")}
       />
       <Text>
         <Strong>Jerome</Strong>
@@ -117,9 +117,9 @@ function NavigationPopOver() {
       >
         <Grid
           className={cx(
-            "!overflow-hidden rounded-3 border-1 border-gray-7",
-            "w-[calc(var(--radix-popper-available-width)_-_3px)] min-w-[unset]",
-            "md:max-w-[209px]",
+            "rounded-3 border-gray-7 !overflow-hidden border-1",
+            "w-[calc(var(--radix-popper-available-width)-3px)] min-w-[unset]",
+            "md:max-w-52.25",
           )}
           m="0"
           p="0"

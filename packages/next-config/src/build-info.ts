@@ -31,6 +31,7 @@ function getBranch(branch) {
  * @todo(dynamic) owner/repo from package.json
  */
 // @todo(complexity) 15
+// oxlint-disable-next-line complexity
 async function setupBuildInfo({ buildInfoConfig, pathDirName }) {
   /**
    * @todo(dynamic) determine path for multi-site
@@ -80,7 +81,7 @@ async function setupBuildInfo({ buildInfoConfig, pathDirName }) {
       major,
       minor,
       patch,
-      prerelease: !!prerelease ? prerelease : getBranch(branch),
+      prerelease: prerelease ? prerelease : getBranch(branch),
       version,
     };
 
@@ -95,7 +96,7 @@ async function setupBuildInfo({ buildInfoConfig, pathDirName }) {
     "",
     `build-info.json: ${hasBuildInfo ? "exists" : "generated"}`,
     `›  v${data?.version}`,
-    `›  ${!data?.isBranchMain ? (!!data?.prerelease ? data?.prerelease : data?.branch) : "main"}`,
+    `›  ${!data?.isBranchMain ? (data?.prerelease ? data?.prerelease : data?.branch) : "main"}`,
     "",
   ];
   const debugType = "info";

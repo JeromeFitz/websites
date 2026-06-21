@@ -85,7 +85,13 @@ importers:
         version: 0.55.0
       oxlint:
         specifier: 1.70.0
-        version: 1.70.0
+        version: 1.70.0(oxlint-tsgolint@0.23.0)
+      oxlint-tailwindcss:
+        specifier: 1.3.3
+        version: 1.3.3
+      oxlint-tsgolint:
+        specifier: 0.23.0
+        version: 0.23.0
       publint:
         specifier: 0.3.21
         version: 0.3.21
@@ -99,8 +105,8 @@ importers:
         specifier: 0.22.3
         version: 0.22.3(@arethetypeswrong/core@0.18.3)(publint@0.3.21)(typescript@6.0.3)
       turbo:
-        specifier: 2.9.18
-        version: 2.9.18
+        specifier: 2.9.19-canary.9
+        version: 2.9.19-canary.9
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -766,6 +772,9 @@ importers:
         specifier: 5.0.14
         version: 5.0.14(react@19.2.7)
     devDependencies:
+      '@jeromefitz/ds':
+        specifier: workspace:*
+        version: link:../../packages/design-system
       '@jeromefitz/lighthouse-config':
         specifier: workspace:*
         version: link:../../packages/lighthouse-config
@@ -2104,6 +2113,36 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  '@oxlint-tsgolint/darwin-arm64@0.23.0':
+    resolution: {integrity: sha512-gOs9PVr2wEg4ox9z0aJo+RKhhImW86YL5N6yav8BK/rgPsIrwN/igSZ+pbRr723NFvUNKde9fgMhRA6JrXAOZw==}
+    cpu: [arm64]
+    os: [darwin]
+
+  '@oxlint-tsgolint/darwin-x64@0.23.0':
+    resolution: {integrity: sha512-kjJ8B+7n4tB9VJdxS5A9GdJt6/bYpzbu4lXp2uO1S3sRmCB5gDEABlGoiePNApRWaW+xqL4b4xgiE727jSLhuA==}
+    cpu: [x64]
+    os: [darwin]
+
+  '@oxlint-tsgolint/linux-arm64@0.23.0':
+    resolution: {integrity: sha512-6dCZuKNu135seMXilkRk9SpCx6i1XgmiipYGalLij5WVRX6ZYS8c4xI7preN/zv9fCXhsQclTIMDu2Y/cytTjw==}
+    cpu: [arm64]
+    os: [linux]
+
+  '@oxlint-tsgolint/linux-x64@0.23.0':
+    resolution: {integrity: sha512-3bdilnyA7kmSTjK27rvjIjSxL5SIg3wt7vwNiRkouWB83ytssyKnuGvxSYJxgMEmFpSutzaBzcCUM2jDtPGcgA==}
+    cpu: [x64]
+    os: [linux]
+
+  '@oxlint-tsgolint/win32-arm64@0.23.0':
+    resolution: {integrity: sha512-j+OEp44SVYiQ+ZD+uttsX7u6L9SvmbbQ77SO1pSFCcJlsVMeCk8qZsjhKfGKuT/jIA+ipOJMVs/+pqUfObBWNw==}
+    cpu: [arm64]
+    os: [win32]
+
+  '@oxlint-tsgolint/win32-x64@0.23.0':
+    resolution: {integrity: sha512-5MyjFuqf+g8OUPJBSGWHJtmoWnzFJYyOg4To9WMQshZYEWig/vtu7JtJ03VWnzHv9LJkAUeApY0gVCOywFR/iQ==}
+    cpu: [x64]
+    os: [win32]
+
   '@oxlint/binding-android-arm-eabi@1.70.0':
     resolution: {integrity: sha512-zFh0P4cswmRvw6nkyb89dr18rRanuaCPAsEXsFDoQY8WdaquI8Pt4NWFjaMJg6L23cy5NeN8J9cBnREbWzZhaw==}
     engines: {node: ^20.19.0 || >=22.12.0}
@@ -3429,33 +3468,33 @@ packages:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
-  '@turbo/darwin-64@2.9.18':
-    resolution: {integrity: sha512-9f27peFu16ur8c0v9nUFUEyBnbKuuFsUTjHFWfmwGfzySBXbHwzU44QhZon6Mznz0cHsIr3984NQj/bVrnGSRw==}
+  '@turbo/darwin-64@2.9.19-canary.9':
+    resolution: {integrity: sha512-2WNVYbuuaWzkp3zGWVVc3dw3T3XLSwWa9lU/R+loR+6Ifpw6JJpg++Xf+ElV01lbv0OUyr1UHXjbLzforQbMpw==}
     cpu: [x64]
     os: [darwin]
 
-  '@turbo/darwin-arm64@2.9.18':
-    resolution: {integrity: sha512-9A6TMRq/Ib+QnbhLlgkhOm+624wO4pzSQ/yQviQfWHOlFvaYxdnIAYmu2H6TS6y7kSVL0DvzNe04NbESTOzFVQ==}
+  '@turbo/darwin-arm64@2.9.19-canary.9':
+    resolution: {integrity: sha512-e4YMssqSBtIYCD2I91RsBlEoaiY7lgHOAR1Op3lCz88QsU0pFZ9mTa9fVxF9In4glb4oIgSRvgj0loicmsH+ig==}
     cpu: [arm64]
     os: [darwin]
 
-  '@turbo/linux-64@2.9.18':
-    resolution: {integrity: sha512-zCdIDtz69AnbYh913elJRRoF3QY5aa2HNnf+4rAkc7bQ+tWujiDkCNV7stazOUPggaDvhKIf2Z87qHftTeXSkw==}
+  '@turbo/linux-64@2.9.19-canary.9':
+    resolution: {integrity: sha512-VNKDPKj3coSH/hOYZxcwJDTz7XK2mGhl3xAnaKPS3zH5omQirHk9UjncTgCoCl2hZurZXMJVIyl39vyrzfBK5w==}
     cpu: [x64]
     os: [linux]
 
-  '@turbo/linux-arm64@2.9.18':
-    resolution: {integrity: sha512-Va1kXI04naMgYwqv/5Dfa36dTDx8015U7oaQAjrXa45ua9OoFjSV4OmvkML4EmXvUclQHCiBRbY8bvd0jV7eAg==}
+  '@turbo/linux-arm64@2.9.19-canary.9':
+    resolution: {integrity: sha512-CALC2CxvDd/wu58d4te4RVdUcl7Hh+rz/aw/rRHLPRGP4JeWpZSwbXVY5ig8LVpL7eQidXB1eReYelqdmVpX9A==}
     cpu: [arm64]
     os: [linux]
 
-  '@turbo/windows-64@2.9.18':
-    resolution: {integrity: sha512-m0kDhZANxSNz9ck1ybogFscHabriAsp4eDFNrN/1H5WrgTF7b3VlcPZnhuO3v2+E2KnCbeAc+UUT10BZZHdDKw==}
+  '@turbo/windows-64@2.9.19-canary.9':
+    resolution: {integrity: sha512-Cjxs5YKbUDWTxiPDn5gStUMzrGLWFIW5ACenU362H/dbRNIhNIv/EQhSqmL91NnRvwu3YdrRj25LL6u1zWZECQ==}
     cpu: [x64]
     os: [win32]
 
-  '@turbo/windows-arm64@2.9.18':
-    resolution: {integrity: sha512-nUdR8WqoomUys9iIQmG45TMiizJ+5BV8egSeLLZba/AWblyp3fVBcIH1kSE58OtK4g2YzbMJEth6Ttv9w5rqMA==}
+  '@turbo/windows-arm64@2.9.19-canary.9':
+    resolution: {integrity: sha512-M5QXi1GP6/bp66+QX3Vhzf/PcwQ6sr5CmB+zbczp4k/IGATGbUXuAyL5AkYcnBAJ3X2sY9l8m9/yNGYGVhD4WQ==}
     cpu: [arm64]
     os: [win32]
 
@@ -5102,6 +5141,14 @@ packages:
       vite-plus:
         optional: true
 
+  oxlint-tailwindcss@1.3.3:
+    resolution: {integrity: sha512-oCUxCggTadACJINj2FSekgY95QbspO806x7+QpGer22U6AuZOIJ0T/Ncz25K9BG+tvE3YmbsG2Iw7D4hj05aIw==}
+    engines: {node: '>=20'}
+
+  oxlint-tsgolint@0.23.0:
+    resolution: {integrity: sha512-3mBv3CoPbh8dFbzfDGIWa2ytZjn2v+3EX4aKRXjIhsoGFzG8GCjfRirz3rwZf1wYbZzsNLTSgpw8VjQuWdp/jA==}
+    hasBin: true
+
   oxlint@1.70.0:
     resolution: {integrity: sha512-D6JgHtzkhRwvEC+A0Nw5AEc5bk8x5i1pHzvZIEf/a0C4hOzmAACNGtkDGPyFaxxX3ZVGxCPeig3P3rMM8XU3/g==}
     engines: {node: ^20.19.0 || >=22.12.0}
@@ -6054,8 +6101,8 @@ packages:
     resolution: {integrity: sha512-1h/Lnq9yajKY2PEbBadPXj3VxsDDu844OnaAo52UVmIzIvwwtBPIuNvkjuzBlTWpfJyUbG3ez0KSBibQkj4ojg==}
     engines: {node: '>=0.6.11 <=0.7.0 || >=0.7.3'}
 
-  turbo@2.9.18:
-    resolution: {integrity: sha512-bwabv6PupzeavybzEoArBAkwq5fnzwf8OFnRtpHwnviFWuwJPFxtyH+aVp36TmIqK3aYYgtTJ3J0m2ysxxSzQg==}
+  turbo@2.9.19-canary.9:
+    resolution: {integrity: sha512-5m0SWcTfgAeptKxnZs9PVwzUY9ult/sY7VnW8RX+cQ1/uN0fBPKJ0pFUosqXmstD7MZ0ZviNWhO/LkCSgbwulw==}
     hasBin: true
 
   tw-animate-css@1.4.0:
@@ -7278,6 +7325,24 @@ snapshots:
     optional: true
 
   '@oxfmt/binding-win32-x64-msvc@0.55.0':
+    optional: true
+
+  '@oxlint-tsgolint/darwin-arm64@0.23.0':
+    optional: true
+
+  '@oxlint-tsgolint/darwin-x64@0.23.0':
+    optional: true
+
+  '@oxlint-tsgolint/linux-arm64@0.23.0':
+    optional: true
+
+  '@oxlint-tsgolint/linux-x64@0.23.0':
+    optional: true
+
+  '@oxlint-tsgolint/win32-arm64@0.23.0':
+    optional: true
+
+  '@oxlint-tsgolint/win32-x64@0.23.0':
     optional: true
 
   '@oxlint/binding-android-arm-eabi@1.70.0':
@@ -9185,22 +9250,22 @@ snapshots:
       react: 19.2.7
       react-dom: 19.2.7(react@19.2.7)
 
-  '@turbo/darwin-64@2.9.18':
+  '@turbo/darwin-64@2.9.19-canary.9':
     optional: true
 
-  '@turbo/darwin-arm64@2.9.18':
+  '@turbo/darwin-arm64@2.9.19-canary.9':
     optional: true
 
-  '@turbo/linux-64@2.9.18':
+  '@turbo/linux-64@2.9.19-canary.9':
     optional: true
 
-  '@turbo/linux-arm64@2.9.18':
+  '@turbo/linux-arm64@2.9.19-canary.9':
     optional: true
 
-  '@turbo/windows-64@2.9.18':
+  '@turbo/windows-64@2.9.19-canary.9':
     optional: true
 
-  '@turbo/windows-arm64@2.9.18':
+  '@turbo/windows-arm64@2.9.19-canary.9':
     optional: true
 
   '@tybys/wasm-util@0.10.2':
@@ -10665,7 +10730,21 @@ snapshots:
       '@oxfmt/binding-win32-ia32-msvc': 0.55.0
       '@oxfmt/binding-win32-x64-msvc': 0.55.0
 
-  oxlint@1.70.0:
+  oxlint-tailwindcss@1.3.3:
+    dependencies:
+      '@tailwindcss/node': 4.3.1
+      tailwindcss: 4.3.1
+
+  oxlint-tsgolint@0.23.0:
+    optionalDependencies:
+      '@oxlint-tsgolint/darwin-arm64': 0.23.0
+      '@oxlint-tsgolint/darwin-x64': 0.23.0
+      '@oxlint-tsgolint/linux-arm64': 0.23.0
+      '@oxlint-tsgolint/linux-x64': 0.23.0
+      '@oxlint-tsgolint/win32-arm64': 0.23.0
+      '@oxlint-tsgolint/win32-x64': 0.23.0
+
+  oxlint@1.70.0(oxlint-tsgolint@0.23.0):
     optionalDependencies:
       '@oxlint/binding-android-arm-eabi': 1.70.0
       '@oxlint/binding-android-arm64': 1.70.0
@@ -10686,6 +10765,7 @@ snapshots:
       '@oxlint/binding-win32-arm64-msvc': 1.70.0
       '@oxlint/binding-win32-ia32-msvc': 1.70.0
       '@oxlint/binding-win32-x64-msvc': 1.70.0
+      oxlint-tsgolint: 0.23.0
 
   p-each-series@3.0.0: {}
 
@@ -11800,14 +11880,14 @@ snapshots:
 
   tunnel@0.0.6: {}
 
-  turbo@2.9.18:
+  turbo@2.9.19-canary.9:
     optionalDependencies:
-      '@turbo/darwin-64': 2.9.18
-      '@turbo/darwin-arm64': 2.9.18
-      '@turbo/linux-64': 2.9.18
-      '@turbo/linux-arm64': 2.9.18
-      '@turbo/windows-64': 2.9.18
-      '@turbo/windows-arm64': 2.9.18
+      '@turbo/darwin-64': 2.9.19-canary.9
+      '@turbo/darwin-arm64': 2.9.19-canary.9
+      '@turbo/linux-64': 2.9.19-canary.9
+      '@turbo/linux-arm64': 2.9.19-canary.9
+      '@turbo/windows-64': 2.9.19-canary.9
+      '@turbo/windows-arm64': 2.9.19-canary.9
 
   tw-animate-css@1.4.0: {}
 

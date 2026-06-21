@@ -59,9 +59,9 @@ const Loading: React.FC<{ isRouteChanging: boolean }> = ({ isRouteChanging }) =>
     <div
       className={cx(
         "pointer-events-none fixed",
-        "z-[9999] origin-[0_0]",
+        "z-9999 origin-top-left",
         "top-0 left-0 h-1 w-full",
-        "bg-gradient-to-r",
+        "bg-linear-to-r",
         "from-accent-1 to-accent-11",
         "dark:from-accent-11 dark:to-accent-1",
         isFinished ? "opacity-0" : "opacity-100",

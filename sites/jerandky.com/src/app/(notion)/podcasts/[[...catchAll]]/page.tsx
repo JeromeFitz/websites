@@ -38,8 +38,10 @@ import { Slug as PodcastSlug } from "./_components/Podcast.Slug";
 
 const { DATABASE_ID, SEGMENT } = CONFIG.PODCASTS;
 
+// @todo(types)
+// @ts-ignore
 // @todo(complexity) 15
-// eslint-disable-next-line complexity
+// oxlint-disable-next-line complexity
 export async function generateMetadata({ params }): Promise<Metadata> {
   const { catchAll } = await params;
   const segmentInfo = getSegmentInfo({
@@ -107,21 +109,21 @@ async function _generateStaticParams({ params }) {
       if (catchAll.length > 0) {
         for (let index = 0; index < catchAll.length; index++) {
           const element = catchAll.slice(0, index);
-          // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+          // oxlint-disable-next-line typescript/no-unused-expressions
           element.length > 0 && combos.push({ catchAll: element });
         }
       }
       const { episodeSlugs, ...props } = getPodcastData(properties);
       episodeSlugs.map((slug) => {
         const href = `${props.href}/${slug}`;
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // oxlint-disable-next-line typescript/ban-ts-comment
         // @ts-ignore
         const catchAll = href.replaceAll(`/${SEGMENT}/`, "").split("/");
         segments.push({ catchAll });
         if (catchAll.length > 0) {
           for (let index = 0; index < catchAll.length; index++) {
             const element = catchAll.slice(0, index);
-            // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+            // oxlint-disable-next-line typescript/no-unused-expressions
             element.length > 0 && combos.push({ catchAll: element });
           }
         }

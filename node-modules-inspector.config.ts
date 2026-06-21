@@ -3,6 +3,7 @@ import { defineConfig } from "node-modules-inspector";
 export default defineConfig({
   defaultFilters: {
     excludeDts: true,
+    excludeWorkspace: true,
     excludes: [
       "*eslint*",
       "*lint-staged*",
@@ -12,7 +13,6 @@ export default defineConfig({
       "*semantic*",
       "*tsdown*",
     ],
-    excludeWorkspace: true,
   },
   defaultSettings: {
     moduleTypeSimple: true,

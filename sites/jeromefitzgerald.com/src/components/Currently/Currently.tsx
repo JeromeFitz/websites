@@ -12,7 +12,7 @@ function Currently() {
   return (
     <Flex
       align="end"
-      className={cx("place-content-center items-center overflow-visible", "order-[0]")}
+      className={cx("order-0 place-content-center items-center overflow-visible")}
       direction="column"
       gap="10"
       height={{ initial: "min-content", md: "266px" }}
@@ -45,7 +45,7 @@ function Currently() {
               <sup
                 aria-hidden={true}
                 className={cx(
-                  "align-super text-3 md:text-5",
+                  "text-3 md:text-5 align-super",
                   // 'hidden',
                   // 'md:inline-block',
                 )}
@@ -86,7 +86,7 @@ function Currently() {
               Currently…
               <sup
                 aria-hidden={true}
-                className="hidden align-super text-3 md:inline-block md:text-5"
+                className="text-3 md:text-5 hidden align-super md:inline-block"
               >
                 {items.length}
               </sup>

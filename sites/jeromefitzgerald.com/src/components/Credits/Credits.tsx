@@ -110,7 +110,7 @@ function RelationContainerTitle({
 }) {
   return (
     <Box
-      className={cx("border-gray-7 border-y-1 bg-[var(--color-background)]", className)}
+      className={cx("border-gray-7 bg-background border-y-1", className)}
       flexBasis="auto"
       flexGrow="0"
       flexShrink="0"
@@ -141,8 +141,8 @@ function RelationsContainer({ children }: { children: React.ReactNode }) {
     <Flex
       className={cx(
         "items-stretch",
-        "z-10 place-content-start items-start overflow-hidden rounded-3",
-        "rounded-t-[0] border-1 border-gray-7 border-t-0",
+        "rounded-3 z-10 place-content-start items-start overflow-hidden",
+        "border-gray-7 rounded-t-none border-1 border-t-0",
         "bg-accentA-2",
       )}
       direction="row"

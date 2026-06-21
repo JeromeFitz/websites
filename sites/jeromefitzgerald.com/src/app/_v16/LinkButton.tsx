@@ -14,6 +14,8 @@ import { isExternalUrl } from "@/utils/isExternalUrl";
 type Size = "1" | "2" | "3" | "4";
 type Variant = "surface" | "classic" | "solid" | "soft" | "outline" | "ghost" | undefined;
 
+// @todo(complexity) 19
+// oxlint-disable-next-line complexity
 const LinkButton = ({
   className = "",
   color,
@@ -59,7 +61,7 @@ const LinkButton = ({
         asChild={hasHref}
         className={cx(
           "group cursor-pointer! disabled:cursor-not-allowed!",
-          "transition-all duration-300 hover:bg-accent-2! focus:bg-accent-2!",
+          "hover:bg-accent-2! focus:bg-accent-2! transition-all duration-300",
           className,
         )}
         disabled={disabled}
@@ -99,8 +101,8 @@ const LinkButton = ({
             <Icon
               className={cx(
                 "transition-all delay-75",
-                "md:opacity-0! md:group-focus:opacity-100! md:group-hover:opacity-100!",
-                "md:-translate-x-2 md:group-focus:translate-x-0 md:group-hover:translate-x-0",
+                "md:opacity-0! md:group-hover:opacity-100! md:group-focus:opacity-100!",
+                "md:-translate-x-2 md:group-hover:translate-x-0 md:group-focus:translate-x-0",
                 "mx-1",
                 iconSize === "xl" && "size-7",
               )}

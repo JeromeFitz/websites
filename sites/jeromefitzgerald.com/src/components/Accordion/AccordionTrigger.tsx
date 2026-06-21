@@ -18,7 +18,7 @@ const AccordionTrigger = ({ children, className, ref, ...props }: AccordionTrigg
     {/* @ts-ignore */}
     <Accordion.Trigger
       className={cx(
-        "group flex h-[45px] flex-1 cursor-default items-center justify-between bg-white px-5 text-[15px] text-accent-11 leading-[var(--leading-none)] shadow-[0_1px_0] shadow-gray-5 outline-hidden hover:bg-gray-2 dark:bg-black/95",
+        "group text-accent-11 shadow-gray-5 hover:bg-gray-2 flex h-11.25 flex-1 cursor-default items-center justify-between bg-white px-5 text-[15px] leading-(--leading-none) shadow-[0_1px_0] outline-hidden dark:bg-black/95",
         className,
       )}
       {...props}

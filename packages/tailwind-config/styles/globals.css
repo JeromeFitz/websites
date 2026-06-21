@@ -9,9 +9,9 @@
 @import "./radix-themes-tw.css";
 
 @import "tw-animate-css";
-@plugin '@tailwindcss/forms';
-@plugin '@tailwindcss/typography';
-@plugin 'tailwindcss-radix';
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/typography";
+@plugin "tailwindcss-radix";
 
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,

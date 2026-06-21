@@ -12,7 +12,7 @@ function ContainerSite({ children }: { children: React.ReactNode }) {
         // 'min-h-[100vh]',
         "flex flex-col flex-nowrap content-center items-center justify-end gap-0",
         "p-[0_12px_12px]",
-        "md:gap-[80px] md:p-[0_24px_24px]",
+        "md:gap-20 md:p-[0_24px_24px]",
       )}
       data-name="Container: Site"
       direction="column"

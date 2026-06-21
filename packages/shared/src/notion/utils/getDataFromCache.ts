@@ -46,14 +46,9 @@ export const preload = ({
 };
 
 const getDataFromCache = cache(
-  async ({
-    database_id,
-    draft,
-    filterType,
-    revalidate,
-    segmentInfo,
-    // todo(complexity) 21
-  }: GetDataFromCache) => {
+  // todo(complexity) 38
+  // oxlint-disable-next-line complexity
+  async ({ database_id, draft, filterType, revalidate, segmentInfo }: GetDataFromCache) => {
     const { slug } = segmentInfo;
     /**
      * Redis

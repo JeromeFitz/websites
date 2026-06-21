@@ -34,7 +34,7 @@ function HeaderSidebarCTA({
               <Text>{title}</Text>
               <ExternalLinkIcon
                 className={cx(
-                  "!opacity-100 size-6 rounded-3 bg-blackA-9 p-1 text-inherit transition-colors group-hover:bg-blackA-10",
+                  "rounded-3 bg-blackA-9 group-hover:bg-blackA-10 size-6 p-1 text-inherit !opacity-100 transition-colors",
                 )}
               />
             </NextLink>

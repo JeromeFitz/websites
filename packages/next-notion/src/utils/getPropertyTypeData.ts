@@ -174,7 +174,13 @@ function getNumberData({ data, type }: { data: NumberData; type: string }) {
 }
 
 // @todo(types)
-function getPropertyTypeData(properties, property) {
+// @ts-ignore
+// @todo(complexity) 18
+// oxlint-disable-next-line complexity
+function getPropertyTypeData(
+  properties: { [x: string]: { [x: string]: any } },
+  property: string | number,
+) {
   // null
   if (!properties) return null;
   const type = properties[property]?.type;
@@ -191,28 +197,40 @@ function getPropertyTypeData(properties, property) {
    */
   switch (type) {
     case "checkbox":
+      // @ts-ignore
       return getCheckboxData({ data, type });
     case "date":
+      // @ts-ignore
       return getDateData({ data, type });
     case "files":
+      // @ts-ignore
       return getFilesData({ data, type });
     case "formula":
+      // @ts-ignore
       return getFormulaData({ data, type });
     case "multi_select":
+      // @ts-ignore
       return getMultiSelectData({ data, type });
     case "number":
+      // @ts-ignore
       return getNumberData({ data, type });
     case "relation":
+      // @ts-ignore
       return getRelationData({ data, type });
     case "rich_text":
+      // @ts-ignore
       return getRichTextData({ data, type });
     case "rollup":
+      // @ts-ignore
       return getRollupData({ data, type });
     case "select":
+      // @ts-ignore
       return getSelectData({ data, type });
     case "title":
+      // @ts-ignore
       return getTitleData({ data, type });
     case "url":
+      // @ts-ignore
       return getUrlData({ data, type });
     default:
       break;

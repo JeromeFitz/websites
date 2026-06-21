@@ -20,9 +20,9 @@ function RouterEventProvider() {
   const [pastRoute, pastRouteSet] = useState("");
 
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+    // oxlint-disable-next-line typescript/no-unused-expressions
     pastRoute !== pathname && isRouteChangingSet(true);
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+    // oxlint-disable-next-line typescript/no-unused-expressions
     pastRoute === pathname && isRouteChangingSet(false);
     pastRouteSet(pathname);
   }, [pathname, pastRoute]);

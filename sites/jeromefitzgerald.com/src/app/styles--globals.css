@@ -2,9 +2,9 @@
 @import "tw-animate-css";
 @import "./styles--radix-themes-tw.css";
 
-@plugin '@tailwindcss/forms';
-@plugin '@tailwindcss/typography';
-@plugin 'tailwindcss-radix';
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/typography";
+@plugin "tailwindcss-radix";
 
 @theme inline {
   --default-font-family: var(--font-geist-sans);

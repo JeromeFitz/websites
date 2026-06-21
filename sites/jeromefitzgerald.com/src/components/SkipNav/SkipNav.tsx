@@ -28,7 +28,7 @@ const SkipNavLink = ({
     <Link
       {...props}
       className={cx(
-        "absolute top-2 right-full z-50 block rounded-3 bg-accent-1 p-4",
+        "rounded-3 bg-accent-1 absolute top-2 right-full z-50 block p-4",
         "focus:right-auto focus:left-2.5",
       )}
       data-skip-nav-content=""

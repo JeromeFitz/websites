@@ -56,7 +56,7 @@ function NavigationSecondary({ order = 0 }) {
             <Flex
               asChild
               className={cx(
-                "!bg-accent-1 !hover:bg-accent-2 transition-colors",
+                "!hover:bg-accent-2 !bg-accent-1 transition-colors",
                 // 'w-[165px] max-w-[165px] min-w-[128px]',
                 // 'flex items-center justify-between gap-4 text-left',
               )}
@@ -83,7 +83,7 @@ function NavigationSecondary({ order = 0 }) {
               </Button>
             </Flex>
           </DropdownMenuTrigger>
-          <DropdownMenuContent className="z-50 min-w-[165px]" sideOffset={6} size="2">
+          <DropdownMenuContent className="z-50 min-w-41.25" sideOffset={6} size="2">
             {zzz_menuSecondary.map((item: any, idx: number) => {
               if (!item.isActive && !item.isActiveMobile) return null;
               const key = `secondary-${idx}-${item.id}`;
@@ -155,7 +155,7 @@ function NavigationSecondary({ order = 0 }) {
                                     }}
                                   >
                                     <Text
-                                      className="max-w-[175px] truncate"
+                                      className="max-w-43.75 truncate"
                                       size={{ initial: "2", md: "3" }}
                                     >
                                       {itemSub.title}

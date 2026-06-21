@@ -19,7 +19,7 @@ import { Fragment, Suspense } from "react";
 /**
  * @note ignore this file for CI linting (created on next build)
  */
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// oxlint-disable-next-line typescript/ban-ts-comment
 // @ts-ignore
 // import buildInfo from '../../config/build-info.json'
 import { ThemeToggle } from "./Footer.client";
@@ -100,12 +100,12 @@ function Footer() {
               {menus.map((menu) => {
                 return (
                   <div className={cx("col-span-12", "md:col-span-4", "")} key={`menu-${menu.id}`}>
-                    <p className={cx("pb-3 font-extrabold uppercase tracking-tight", "")}>
+                    <p className={cx("pb-3 font-extrabold tracking-tight uppercase", "")}>
                       <strong>{menu?.title}</strong>
                     </p>
                     <ul>
                       {/* @todo(complexity) 17 */}
-                      {/* eslint-disable-next-line complexity */}
+                      {/* oxlint-disable-next-line complexity */}
                       {menu?.items.map((item) => {
                         return (
                           <li
@@ -158,7 +158,7 @@ function Footer() {
                 );
               })}
               <div className={cx("col-span-12", "md:col-span-4", "")}>
-                <p className={cx("pb-3 font-extrabold uppercase tracking-tight", "")}>
+                <p className={cx("pb-3 font-extrabold tracking-tight uppercase", "")}>
                   <strong>Info</strong>
                 </p>
                 <ul>
@@ -189,7 +189,7 @@ function Footer() {
               <SectionHeader className="hidden">Disclaimer</SectionHeader>
               <SectionContent className="w-full md:w-full">
                 <div className="flex flex-row items-start justify-start gap-1 py-4 align-text-bottom md:py-0">
-                  <span className="mr-2 mt-1 size-4">
+                  <span className="mt-1 mr-2 size-4">
                     <FileTextIcon className="text-inherit" />
                   </span>
                   <span>

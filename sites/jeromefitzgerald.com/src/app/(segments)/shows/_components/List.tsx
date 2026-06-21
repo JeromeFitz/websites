@@ -91,12 +91,12 @@ function ListWrapper({ shows }: { shows: Show[] }) {
                 asChild
                 className={cx(
                   // 'bg-accent-6',
-                  "border-gray-7 hover:border-gray-8 md:border-1",
+                  "border-gray-7 hover:border-gray-8 md:border",
                   "rounded-sm",
                   "transition-all duration-500",
-                  "group-hover:transform-[translate(0px,_-1em)]",
+                  "group-hover:transform-[translate(0px,-1em)]",
                   "shadow-xs group-hover:shadow-lg",
-                  "dark:shadow-accent-4",
+                  "shadow-accentA-4 dark:shadow-accent-4",
                 )}
                 flow="row"
                 gap="3"
@@ -134,7 +134,7 @@ function ListWrapper({ shows }: { shows: Show[] }) {
                         {show.title}
                       </Heading>
                       <Text
-                        className="md:line-clamp-3 md:min-h-[75px]"
+                        className="md:line-clamp-3 md:min-h-18.75"
                         mr={{ initial: "1", md: "3" }}
                       >
                         {show.seoDescription}
