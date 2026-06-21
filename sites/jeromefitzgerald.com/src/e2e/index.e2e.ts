@@ -18,6 +18,7 @@ test("has heading", async ({ page }) => {
    * - https://www.programsbuzz.com/article/playwright-select-first-or-last-element#first-method
    *
    */
+  // oxlint-disable-next-line testing-library/prefer-screen-queries
   const heading = page.getByRole("heading", { level: 1 }).first();
   await expect(heading).toContainText("Jerome (he/him)");
 });
