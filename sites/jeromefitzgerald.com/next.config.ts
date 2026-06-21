@@ -1,40 +1,37 @@
 // import type { RemotePattern } from 'next/dist/shared/lib/image-config'
-import 'next-config/env.client'
-import 'next-config/env.server'
-
-import type { NextConfig } from 'next'
+import "next-config/env.client";
+import "next-config/env.server";
+import type { NextConfig } from "next";
 
 // uh...
 const PROTOCOL: {
-  HTTP: 'http'
-  HTTPS: 'https'
+  HTTP: "http";
+  HTTPS: "https";
 } = {
-  HTTP: 'http',
-  HTTPS: 'https',
-}
-const protocol = PROTOCOL.HTTPS
+  HTTP: "http",
+  HTTPS: "https",
+};
+const protocol = PROTOCOL.HTTPS;
 
 const config = () => {
   const nextConfig: NextConfig = {
     compiler: {
       removeConsole:
-        process.env.NODE_ENV === 'development'
-          ? false
-          : { exclude: ['error', 'info'] },
+        process.env.NODE_ENV === "development" ? false : { exclude: ["error", "info"] },
     },
     compress: true,
     devIndicators: {
-      position: 'bottom-right',
+      position: "bottom-right",
     },
     excludeDefaultMomentLocales: true,
     experimental: {
       // useLightningcss: true,
-      webVitalsAttribution: ['CLS', 'LCP'],
+      webVitalsAttribution: ["CLS", "LCP"],
     },
     images: {
       // deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
       deviceSizes: [640, 1200, 1920],
-      formats: ['image/avif', 'image/webp'],
+      formats: ["image/avif", "image/webp"],
       // imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
       imageSizes: [24, 64, 384],
       // minimumCacheTTL: 31536000, // 1 year
@@ -82,19 +79,19 @@ const config = () => {
           protocol,
         },
         {
-          hostname: 's3.us-west-2.amazonaws.com',
+          hostname: "s3.us-west-2.amazonaws.com",
           protocol,
         },
         {
-          hostname: '*.s3.us-west-2.amazonaws.com',
+          hostname: "*.s3.us-west-2.amazonaws.com",
           protocol,
         },
         {
-          hostname: 'sc-events.s3.amazonaws.com',
+          hostname: "sc-events.s3.amazonaws.com",
           protocol,
         },
         {
-          hostname: '*.sc-events.s3.amazonaws.com',
+          hostname: "*.sc-events.s3.amazonaws.com",
           protocol,
         },
         // @note(remotePattern) Notion
@@ -135,7 +132,7 @@ const config = () => {
       ],
     },
     output: undefined,
-    pageExtensions: ['jsx', 'js', 'tsx', 'ts'],
+    pageExtensions: ["jsx", "js", "tsx", "ts"],
     poweredByHeader: false,
     productionBrowserSourceMaps: false,
     trailingSlash: false,
@@ -145,9 +142,9 @@ const config = () => {
     },
     // @note(next) false will block: ./pages
     useFileSystemPublicRoutes: true,
-  }
+  };
 
-  return nextConfig
-}
+  return nextConfig;
+};
 
-export default config
+export default config;

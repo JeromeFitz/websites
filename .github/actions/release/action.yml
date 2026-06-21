@@ -1,18 +1,18 @@
 # name: 'Release'
-name: '🏷️  '
-description: 'Localized Release'
-author: 'JeromeFitz'
+name: "🏷️  "
+description: "Localized Release"
+author: "JeromeFitz"
 
 inputs:
   GH_TOKEN:
-    descirption: 'Provide GitHub Token'
+    descirption: "Provide GitHub Token"
     required: true
     type: string
 
 runs:
-  using: 'composite'
+  using: "composite"
   steps:
-    - name: '🏷️  Release'
+    - name: "🏷️  Release"
       id: release
       shell: bash
       env:

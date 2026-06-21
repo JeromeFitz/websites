@@ -1,6 +1,6 @@
-'use client'
+"use client";
 
-import { ThemeProvider as NextThemesProvider } from 'next-themes'
+import { ThemeProvider as NextThemesProvider } from "next-themes";
 
 // https://github.com/pacocoursey/next-themes/issues/152#issuecomment-1364280564
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
@@ -10,9 +10,9 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       defaultTheme="system"
       disableTransitionOnChange={true}
       enableSystem
-      value={{ dark: 'dark', light: 'light' }}
+      value={{ dark: "dark", light: "light" }}
     >
       {children}
     </NextThemesProvider>
-  )
+  );
 }

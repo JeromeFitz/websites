@@ -1,7 +1,7 @@
-import { Suspense } from 'react'
+import { Suspense } from "react";
 
-import { FathomAnalytics } from './Fathom'
-import { VercelAnalytics, VercelSpeedInsights } from './Vercel'
+import { FathomAnalytics } from "./Fathom";
+import { VercelAnalytics, VercelSpeedInsights } from "./Vercel";
 
 function Analytics() {
   return (
@@ -12,7 +12,7 @@ function Analytics() {
         <FathomAnalytics />
       </Suspense>
     </>
-  )
+  );
 }
 
-export { Analytics }
+export { Analytics };

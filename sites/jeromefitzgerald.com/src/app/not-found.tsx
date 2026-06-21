@@ -1,15 +1,15 @@
-import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
-import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
-import { Link } from '@radix-ui/themes/dist/esm/components/link.js'
-import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
-import NextLink from 'next/link'
+import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
+import { Heading } from "@radix-ui/themes/dist/esm/components/heading.js";
+import { Link } from "@radix-ui/themes/dist/esm/components/link.js";
+import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
+import NextLink from "next/link";
 
 export default function NotFound() {
   const item = {
-    id: '404',
-    subtitle: 'Not Found',
-    title: '404',
-  }
+    id: "404",
+    subtitle: "Not Found",
+    title: "404",
+  };
 
   return (
     <>
@@ -39,5 +39,5 @@ export default function NotFound() {
         </section>
       </Flex>
     </>
-  )
+  );
 }

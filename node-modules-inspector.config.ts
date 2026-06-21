@@ -1,9 +1,17 @@
-import { defineConfig } from 'node-modules-inspector'
+import { defineConfig } from "node-modules-inspector";
 
 export default defineConfig({
   defaultFilters: {
     excludeDts: true,
-    excludes: ['*biome*', '*eslint*', '*lint-staged*', '*prettier*', '*semantic*'],
+    excludes: [
+      "*eslint*",
+      "*lint-staged*",
+      "*oxfmt*",
+      "*oxlint*",
+      "*rolldown*",
+      "*semantic*",
+      "*tsdown*",
+    ],
     excludeWorkspace: true,
   },
   defaultSettings: {
@@ -11,4 +19,4 @@ export default defineConfig({
   },
 
   publint: true,
-})
+});

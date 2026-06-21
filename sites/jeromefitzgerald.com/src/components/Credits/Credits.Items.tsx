@@ -1,6 +1,6 @@
-import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
+import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
 
-import { LI } from '@/components/List/index'
+import { LI } from "@/components/List/index";
 
 // import { CreditsItem } from './Credits.Item'
 
@@ -14,15 +14,14 @@ const CreditsItems = ({ items }: { items: string[] }) => {
     <>
       {items.map((item: string, i: number) => {
         return (
-          // biome-ignore lint/suspicious/noArrayIndexKey: migrate
           <LI key={i}>
             <Text>{item}</Text>
             {/* <CreditsItem item={item} /> */}
           </LI>
-        )
+        );
       })}
     </>
-  )
-}
+  );
+};
 
-export { CreditsItems }
+export { CreditsItems };

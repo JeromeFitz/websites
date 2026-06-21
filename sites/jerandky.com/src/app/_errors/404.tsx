@@ -1,4 +1,4 @@
-import { Anchor } from '@jeromefitz/ds/components/Anchor'
+import { Anchor } from "@jeromefitz/ds/components/Anchor";
 import {
   SectionContent,
   SectionHeader,
@@ -6,22 +6,21 @@ import {
   SectionHeaderTitle,
   SectionWrapper,
   // Tags,
-} from '@jeromefitz/ds/components/Section'
-import { isObjectEmpty } from '@jeromefitz/utils'
-
-import { Separator } from '@radix-ui/themes/dist/esm/components/separator.js'
+} from "@jeromefitz/ds/components/Section";
+import { isObjectEmpty } from "@jeromefitz/utils";
+import { Separator } from "@radix-ui/themes/dist/esm/components/separator.js";
 
 // @todo(types)
 function FourOhFour({
   isNotPublished = false,
   segmentInfo = {},
 }: {
-  isNotPublished: boolean
-  segmentInfo: any
+  isNotPublished: boolean;
+  segmentInfo: any;
 }) {
-  const title = '404'
-  const message = `Page Not Found${isNotPublished ? ':' : '.'}`
-  const body = `Hey, sometimes these things happen. I bet if this page existed it would be pretty cool.`
+  const title = "404";
+  const message = `Page Not Found${isNotPublished ? ":" : "."}`;
+  const body = `Hey, sometimes these things happen. I bet if this page existed it would be pretty cool.`;
 
   return (
     <>
@@ -54,7 +53,7 @@ function FourOhFour({
         </SectionContent>
       </SectionWrapper>
     </>
-  )
+  );
 }
 
-export { FourOhFour }
+export { FourOhFour };

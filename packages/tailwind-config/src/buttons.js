@@ -3,21 +3,20 @@
  * https://www.radix-ui.com/docs/colors/palette-composition/understanding-the-scale
  *
  */
-/** biome-ignore-all lint/style/useTemplate: migrate */
-import { excludes, foregroundTextBlack, radixColors } from './colors'
+import { excludes, foregroundTextBlack, radixColors } from './colors';
 
-const buttons = {}
-const types = ['', '-cta', '-outline', '-solid', '-transparent']
-const buttonTypes = []
+const buttons = {};
+const types = ['', '-cta', '-outline', '-solid', '-transparent'];
+const buttonTypes = [];
 
 radixColors.map((color) => {
   if (excludes.includes(color)) {
-    return
+    return;
   }
   types.map((type) => {
-    const base = `${color}-button`
-    buttonTypes.push(`${base}${type}`)
-  })
+    const base = `${color}-button`;
+    buttonTypes.push(`${base}${type}`);
+  });
   /**
    * @note(radix) Steps 3–5: Component backgrounds
    */
@@ -38,7 +37,7 @@ radixColors.map((color) => {
     },
     backgroundColor: `var(--${color}3)`,
     color: `var(--${color}11)`,
-  }
+  };
   /**
    * @note(radix) Steps 3–5: Component backgrounds
    */
@@ -60,7 +59,7 @@ radixColors.map((color) => {
     },
     backgroundColor: `var(--${color}3)`,
     color: `var(--${color}11)`,
-  }
+  };
   /**
    * @note(radix) Steps 6–8: Borders
    */
@@ -84,7 +83,7 @@ radixColors.map((color) => {
     borderColor: `var(--${color}6)`,
     borderWidth: `2px`,
     color: `var(--${color}11)`,
-  }
+  };
   /**
    * @note(radix) Steps 9–10: Solid backgrounds
    */
@@ -103,7 +102,7 @@ radixColors.map((color) => {
     },
     backgroundColor: `var(--${color}9)`,
     color: foregroundTextBlack.includes(color) ? `black` : `white`,
-  }
+  };
   /**
    * @note(radix) Transparent backgrounds
    */
@@ -124,7 +123,7 @@ radixColors.map((color) => {
     },
     backgroundColor: `transparent`,
     color: `var(--${color}11)`,
-  }
-})
+  };
+});
 
-export default { buttons, buttonTypes }
+export default { buttons, buttonTypes };

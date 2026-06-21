@@ -1,54 +1,50 @@
-import type { Metadata, ResolvingMetadata } from 'next'
+import type { Metadata, ResolvingMetadata } from "next";
+import { envClient } from "next-config/env.client";
+import { notFound } from "next/navigation.js";
 
-import type { Blog } from '@/lib/drizzle/schemas/cache-blogs/types'
+import { getBlog, segment } from "@/lib/drizzle/schemas/cache-blogs/queries";
+import type { Blog } from "@/lib/drizzle/schemas/cache-blogs/types";
+import { getKey } from "@/utils/getKey";
+import { isEmpty } from "@/utils/isEmpty";
+import { getSegmentsForGenerateStaticParams } from "@/utils/next/getSegmentsForGenerateStaticParams";
 
-import { notFound } from 'next/navigation.js'
-import { envClient } from 'next-config/env.client'
-
-import { getBlog, segment } from '@/lib/drizzle/schemas/cache-blogs/queries'
-import { getKey } from '@/utils/getKey'
-import { isEmpty } from '@/utils/isEmpty'
-import { getSegmentsForGenerateStaticParams } from '@/utils/next/getSegmentsForGenerateStaticParams'
-
-import { BlogComponent } from './_components/Blog'
+import { BlogComponent } from "./_components/Blog";
 
 // export const dynamic = 'force-dynamic'
-export const dynamic = 'force-static'
+export const dynamic = "force-static";
 
 interface Props {
-  params: Promise<{ key: string[] }>
-  searchParams?: Promise<Record<string, string | string[] | undefined>>
+  params: Promise<{ key: string[] }>;
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
 }
 
 async function _generateStaticParams() {
-  return await getSegmentsForGenerateStaticParams(segment)
+  return await getSegmentsForGenerateStaticParams(segment);
 }
-export const generateStaticParams = envClient.IS_DEV
-  ? undefined
-  : _generateStaticParams
+export const generateStaticParams = envClient.IS_DEV ? undefined : _generateStaticParams;
 
 export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
-  const key = (await params).key
-  const items: Blog[] = await getBlog({ key: getKey(segment, key) })
+  const key = (await params).key;
+  const items: Blog[] = await getBlog({ key: getKey(segment, key) });
 
   if (isEmpty(items)) {
     return {
       title: `404: ${segment}`,
-    }
+    };
   }
 
-  const item = items[0]
-  const previousImages = (await parent).openGraph?.images || []
+  const item = items[0];
+  const previousImages = (await parent).openGraph?.images || [];
 
   const image = {
     href: `https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/2025/03/lk-classroom-square-act.jpg`,
-  }
+  };
 
-  const title = `${item.title}`
-  const description = `${item.title}`
+  const title = `${item.title}`;
+  const description = `${item.title}`;
 
   return {
     description,
@@ -58,22 +54,22 @@ export async function generateMetadata(
       title,
     },
     title,
-  }
+  };
 }
 
 async function Slug({ params }: Props) {
-  const key = (await params).key
+  const key = (await params).key;
   const items: Blog[] = await getBlog({
     key: getKey(segment, key),
-  })
+  });
 
   if (isEmpty(items)) {
-    return notFound()
+    return notFound();
   }
 
-  const item = items[0]
+  const item = items[0];
 
-  return <BlogComponent item={item} />
+  return <BlogComponent item={item} />;
 }
 
-export default Slug
+export default Slug;

@@ -1,7 +1,6 @@
-/** biome-ignore-all lint/suspicious/noUnknownAtRules: migrate */
-@import 'tailwindcss';
-@import 'tw-animate-css';
-@import './styles--radix-themes-tw.css';
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "./styles--radix-themes-tw.css";
 
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
@@ -33,14 +32,13 @@
   /* --font-borogodo: 'Borogodo'; */
   /* --display-font-family: var(--font-borogodo), var(--default-font-family); */
   --default-font-family:
-    var(--font-geist-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI (Custom)',
-    Roboto, 'Helvetica Neue', 'Open Sans (Custom)', system-ui, sans-serif,
-    'Apple Color Emoji';
+    var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI (Custom)", Roboto,
+    "Helvetica Neue", "Open Sans (Custom)", system-ui, sans-serif, "Apple Color Emoji";
   --code-font-family:
-    var(--font-geist-mono), 'Menlo', 'Consolas (Custom)', 'Bitstream Vera Sans Mono',
-    monospace, 'Apple Color Emoji', 'Segoe UI Emoji';
-  --em-font-family: 'Times New Roman', 'Times', serif;
-  --quote-font-family: 'Times New Roman', 'Times', serif;
+    var(--font-geist-mono), "Menlo", "Consolas (Custom)", "Bitstream Vera Sans Mono", monospace,
+    "Apple Color Emoji", "Segoe UI Emoji";
+  --em-font-family: "Times New Roman", "Times", serif;
+  --quote-font-family: "Times New Roman", "Times", serif;
 
   /* a11y improvements */
   /* .light,

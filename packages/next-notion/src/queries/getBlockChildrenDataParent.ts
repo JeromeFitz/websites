@@ -1,26 +1,22 @@
-import 'server-only'
+import "server-only";
+import { asyncForEach } from "@jeromefitz/utils";
+import type { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
+import { noop as _noop } from "lodash-es";
 
-import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
-
-import { asyncForEach } from '@jeromefitz/utils'
-
-import { noop as _noop } from 'lodash-es'
-
-import { getBlockChildrenData } from './getBlockChildrenData'
-import { getColumnData } from './getColumnData'
+import { getBlockChildrenData } from "./getBlockChildrenData";
+import { getColumnData } from "./getColumnData";
 
 async function getBlockChildrenDataParent(block_id) {
-  const response = await getBlockChildrenData(block_id)
+  const response = await getBlockChildrenData(block_id);
 
-  let isListItemId = '',
+  let isListItemId = "",
     isListItemStart = false,
-    isListItemType = ''
-  const blocks: any = []
+    isListItemType = "";
+  const blocks: any = [];
 
   // response.results.map(async (block: BlockObjectResponse, i) => {
   // @todo(complexity) 12
   // @ts-ignore
-  // biome-ignore lint/complexity/noExcessiveCognitiveComplexity: migrate
   await asyncForEach(response.results, async (block: BlockObjectResponse) => {
     // console.dir(`asyncForEach: ${block.type}`)
     /**
@@ -28,14 +24,13 @@ async function getBlockChildrenDataParent(block_id) {
      */
     if (
       !isListItemStart &&
-      (block.type === 'bulleted_list_item' || block.type === 'numbered_list_item')
+      (block.type === "bulleted_list_item" || block.type === "numbered_list_item")
     ) {
-      isListItemStart = true
-      isListItemType = block.type
-      isListItemId = block.id
+      isListItemStart = true;
+      isListItemType = block.type;
+      isListItemId = block.id;
 
-      const listItemType =
-        block.type === 'bulleted_list_item' ? 'bulleted_list' : 'numbered_list'
+      const listItemType = block.type === "bulleted_list_item" ? "bulleted_list" : "numbered_list";
       blocks.push({
         archived: false,
         created_by: block.created_by,
@@ -45,50 +40,49 @@ async function getBlockChildrenDataParent(block_id) {
         last_edited_by: block.last_edited_time,
         last_edited_time: block.last_edited_time,
         [listItemType]: { [listItemType]: [] },
-        object: 'block',
+        object: "block",
         parent: block.parent,
         type: listItemType,
-      })
+      });
     }
     if (isListItemStart && block.type === isListItemType) {
-      const listItemType =
-        block.type === 'bulleted_list_item' ? 'bulleted_list' : 'numbered_list'
-      const temp = blocks.pop()
-      temp[listItemType][listItemType].push(block)
-      blocks.push(temp)
+      const listItemType = block.type === "bulleted_list_item" ? "bulleted_list" : "numbered_list";
+      const temp = blocks.pop();
+      temp[listItemType][listItemType].push(block);
+      blocks.push(temp);
     }
     if (isListItemStart && block.type !== isListItemType) {
-      isListItemStart = false
-      isListItemType = ''
-      isListItemId = ''
+      isListItemStart = false;
+      isListItemType = "";
+      isListItemId = "";
     }
 
     /**
      * COLUMNS
      */
     // @todo(notion) or `has_children===true` ??
-    if (block.type === 'column_list') {
-      const columnListChildrenData: any = await getBlockChildrenData(block.id)
-      const columnListData = await getColumnData(columnListChildrenData)
+    if (block.type === "column_list") {
+      const columnListChildrenData: any = await getBlockChildrenData(block.id);
+      const columnListData = await getColumnData(columnListChildrenData);
       const columnList = {
         ...block,
         column_list: { ...columnListData },
-      }
-      await blocks.push(columnList)
+      };
+      await blocks.push(columnList);
     }
 
     /**
      * EVERYTHING ELSE
      */
     if (!isListItemStart) {
-      await blocks.push(block)
+      await blocks.push(block);
     }
-  }).catch(_noop)
+  }).catch(_noop);
 
   return {
     ...response,
     results: blocks,
-  }
+  };
 }
 
-export { getBlockChildrenDataParent }
+export { getBlockChildrenDataParent };

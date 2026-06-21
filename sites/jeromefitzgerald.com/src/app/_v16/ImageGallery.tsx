@@ -1,12 +1,11 @@
-import type { Image } from './types'
-
-import { Dialog, Flex, Grid } from '@radix-ui/themes'
+import { Dialog, Flex, Grid } from "@radix-ui/themes";
 
 // import { image } from './_meta'
-import { ImageContainer } from './Image'
+import { ImageContainer } from "./Image";
+import type { Image } from "./types";
 
 const ImageModal = ({ idx, image }: { idx: number; image: any }) => {
-  const isEnabled = false
+  const isEnabled = false;
 
   return isEnabled ? (
     <>
@@ -30,29 +29,28 @@ const ImageModal = ({ idx, image }: { idx: number; image: any }) => {
     <>
       <ImageContainer image={image} />
     </>
-  )
-}
+  );
+};
 
 const ImageGallery = ({ images }: { images: Image[] }) => {
   // @todo(image) scrollable content, more rows
-  const imagesCount = images.length > 4 ? 4 : images.length
-  if (imagesCount === undefined) return null
+  const imagesCount = images.length > 4 ? 4 : images.length;
+  if (imagesCount === undefined) return null;
   return (
     <Grid
-      columns={{ initial: '1', md: imagesCount.toString() }}
-      gapX={{ initial: '1', md: '3' }}
-      gapY={{ initial: '6', md: '6' }}
-      pb={{ initial: '6', md: '9' }}
+      columns={{ initial: "1", md: imagesCount.toString() }}
+      gapX={{ initial: "1", md: "3" }}
+      gapY={{ initial: "6", md: "6" }}
+      pb={{ initial: "6", md: "9" }}
       role="list"
       height="100%"
       width="100%"
     >
       {images.map((image, i) => {
-        // biome-ignore lint/suspicious/noArrayIndexKey: @todo
-        return <ImageModal idx={i} image={image} key={`image-modal-${i}`} />
+        return <ImageModal idx={i} image={image} key={`image-modal-${i}`} />;
       })}
     </Grid>
-  )
-}
+  );
+};
 
-export { ImageGallery }
+export { ImageGallery };

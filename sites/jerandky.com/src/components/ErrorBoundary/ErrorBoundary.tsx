@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import {
   SectionContent,
   SectionHeader,
@@ -6,27 +6,25 @@ import {
   SectionHeaderTitle,
   SectionWrapper,
   // Tags,
-} from '@jeromefitz/ds/components/Section'
-
-import type { ReactNode } from 'react'
-
-import { Separator } from '@radix-ui/themes/dist/esm/components/separator.js'
-import { Component } from 'react'
+} from "@jeromefitz/ds/components/Section";
+import { Separator } from "@radix-ui/themes/dist/esm/components/separator.js";
+import type { ReactNode } from "react";
+import { Component } from "react";
 
 interface PropsChildren {
-  children?: ReactNode
+  children?: ReactNode;
 }
 
 class ErrorBoundary extends Component<PropsChildren> {
   constructor(props: any) {
-    super(props)
-    this.state = { hasError: false }
+    super(props);
+    this.state = { hasError: false };
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   static getDerivedStateFromError(error: any) {
     // Update state so the next render will show the fallback UI.
-    return { hasError: true }
+    return { hasError: true };
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -42,9 +40,9 @@ class ErrorBoundary extends Component<PropsChildren> {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     if (this.state.hasError) {
-      const title = 'Error'
-      const message = `Well this is embarassing.`
-      const body = `Hey, sometimes these things happen. This is an error that has sent an alert, so Jerome already knows most likely, heh.`
+      const title = "Error";
+      const message = `Well this is embarassing.`;
+      const body = `Hey, sometimes these things happen. This is an error that has sent an alert, so Jerome already knows most likely, heh.`;
 
       return (
         <main className="m-0 min-h-screen w-full p-0">
@@ -71,11 +69,11 @@ class ErrorBoundary extends Component<PropsChildren> {
             </SectionWrapper>
           </section>
         </main>
-      )
+      );
     }
 
-    return this.props.children
+    return this.props.children;
   }
 }
 
-export { ErrorBoundary }
+export { ErrorBoundary };

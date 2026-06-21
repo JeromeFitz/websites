@@ -10,28 +10,25 @@
  *
  * Should we handle that all together, or not?
  */
-import { envClient as env } from '@jeromefitz/next-config/env.client'
+import { envClient as env } from "@jeromefitz/next-config/env.client";
 import {
   getDatabaseQuery,
   getDataFromCache,
   getSegmentInfo,
-} from '@jeromefitz/shared/notion/utils'
-import { isObjectEmpty } from '@jeromefitz/utils'
-
-import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints'
+} from "@jeromefitz/shared/notion/utils";
+import { isObjectEmpty } from "@jeromefitz/utils";
+import type { QueryDatabaseResponse } from "@notionhq/client/build/src/api-endpoints";
 // import isEqual from 'lodash/isEqual.js'
 // import uniqWith from 'lodash/uniqWith.js'
-import type { Metadata } from 'next'
+import type { Metadata } from "next";
+import { getPropertyTypeData } from "next-notion/utils";
 
-import { getPropertyTypeData } from 'next-notion/utils'
-
-import type { PageObjectResponsePodcast } from '../../_config'
-
-import { CONFIG, getPageData, getPodcastData } from '../../_config'
-import { generateMetadataCustom } from '../../_config/temp/generateMetadataCustom'
-import { EpisodeSlug } from './_components/Episode.Slug'
-import { Listing as PodcastListing } from './_components/Podcast.Listing'
-import { Slug as PodcastSlug } from './_components/Podcast.Slug'
+import type { PageObjectResponsePodcast } from "../../_config";
+import { CONFIG, getPageData, getPodcastData } from "../../_config";
+import { generateMetadataCustom } from "../../_config/temp/generateMetadataCustom";
+import { EpisodeSlug } from "./_components/Episode.Slug";
+import { Listing as PodcastListing } from "./_components/Podcast.Listing";
+import { Slug as PodcastSlug } from "./_components/Podcast.Slug";
 
 // export const dynamic = 'auto'
 // export const dynamicParams = true
@@ -39,62 +36,61 @@ import { Slug as PodcastSlug } from './_components/Podcast.Slug'
 // export const revalidate = TIME.HOUR
 // export const runtime = 'nodejs'
 
-const { DATABASE_ID, SEGMENT } = CONFIG.PODCASTS
+const { DATABASE_ID, SEGMENT } = CONFIG.PODCASTS;
 
 // @todo(complexity) 15
 // eslint-disable-next-line complexity
 export async function generateMetadata({ params }): Promise<Metadata> {
-  const { catchAll } = await params
+  const { catchAll } = await params;
   const segmentInfo = getSegmentInfo({
     params: { catchAll },
     SEGMENT,
-  })
+  });
   const data = await getDataFromCache({
-    database_id: segmentInfo.isIndex ? '' : DATABASE_ID,
-    filterType: 'equals',
+    database_id: segmentInfo.isIndex ? "" : DATABASE_ID,
+    filterType: "equals",
     segmentInfo,
-  })
+  });
 
-  const is404 = isObjectEmpty(data?.blocks || {})
+  const is404 = isObjectEmpty(data?.blocks || {});
   const is404Seo = {
     title: `404 | ${segmentInfo?.segment} | ${env.NEXT_PUBLIC__SITE}`,
-  }
+  };
 
-  if (is404) return is404Seo
+  if (is404) return is404Seo;
 
-  const isPublished =
-    getPropertyTypeData(data?.page?.properties, 'Is.Published') || false
+  const isPublished = getPropertyTypeData(data?.page?.properties, "Is.Published") || false;
 
   const pageData = segmentInfo.isIndex
     ? getPageData(data?.page?.properties)
-    : getPodcastData(data?.page?.properties)
-  const seo = await generateMetadataCustom({ data, pageData, segmentInfo })
+    : getPodcastData(data?.page?.properties);
+  const seo = await generateMetadataCustom({ data, pageData, segmentInfo });
 
-  return isPublished ? seo : is404Seo
+  return isPublished ? seo : is404Seo;
 }
 
 async function _generateStaticParams({ params }) {
   if (env.IS_DEV) {
-    return []
+    return [];
   }
   // @todo(types)
-  const segments: any = [{ catchAll: [] }]
-  const combos: any = []
+  const segments: any = [{ catchAll: [] }];
+  const combos: any = [];
 
-  console.dir(`> generateStaticParams (${SEGMENT})`)
-  const { catchAll } = await params
+  console.dir(`> generateStaticParams (${SEGMENT})`);
+  const { catchAll } = await params;
   const segmentInfo = getSegmentInfo({
     params: { catchAll },
     SEGMENT,
-  })
+  });
   const dataStatic: QueryDatabaseResponse = await getDatabaseQuery({
     database_id: DATABASE_ID,
     draft: false,
-    filterType: 'starts_with',
+    filterType: "starts_with",
     revalidate: false,
     segmentInfo,
-  })
-  const hasContent = dataStatic?.results?.length > 0
+  });
+  const hasContent = dataStatic?.results?.length > 0;
 
   /**
    * @note(next)   Do not pass the `SEGMENT` itself, comes from Next
@@ -102,38 +98,35 @@ async function _generateStaticParams({ params }) {
    */
   if (hasContent) {
     dataStatic.results.map((item: PageObjectResponsePodcast) => {
-      const { properties } = item
-      const { isPublished } = getPodcastData(properties)
-      if (!isPublished) return
-      const href = getPropertyTypeData(properties, 'Slug.Preview')?.replaceAll(
-        `/${SEGMENT}/`,
-        '',
-      )
-      const catchAll = href.split('/')
-      segments.push({ catchAll })
+      const { properties } = item;
+      const { isPublished } = getPodcastData(properties);
+      if (!isPublished) return;
+      const href = getPropertyTypeData(properties, "Slug.Preview")?.replaceAll(`/${SEGMENT}/`, "");
+      const catchAll = href.split("/");
+      segments.push({ catchAll });
       if (catchAll.length > 0) {
         for (let index = 0; index < catchAll.length; index++) {
-          const element = catchAll.slice(0, index)
+          const element = catchAll.slice(0, index);
           // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-          element.length > 0 && combos.push({ catchAll: element })
+          element.length > 0 && combos.push({ catchAll: element });
         }
       }
-      const { episodeSlugs, ...props } = getPodcastData(properties)
+      const { episodeSlugs, ...props } = getPodcastData(properties);
       episodeSlugs.map((slug) => {
-        const href = `${props.href}/${slug}`
+        const href = `${props.href}/${slug}`;
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        const catchAll = href.replaceAll(`/${SEGMENT}/`, '').split('/')
-        segments.push({ catchAll })
+        const catchAll = href.replaceAll(`/${SEGMENT}/`, "").split("/");
+        segments.push({ catchAll });
         if (catchAll.length > 0) {
           for (let index = 0; index < catchAll.length; index++) {
-            const element = catchAll.slice(0, index)
+            const element = catchAll.slice(0, index);
             // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-            element.length > 0 && combos.push({ catchAll: element })
+            element.length > 0 && combos.push({ catchAll: element });
           }
         }
-      })
-    })
+      });
+    });
   }
   // const routes = !!combos && uniqWith(combos, isEqual)
   // !!routes && console.dir(`routes: turned off for now`)
@@ -142,25 +135,25 @@ async function _generateStaticParams({ params }) {
 
   // console.dir(segments)
 
-  return segments
+  return segments;
 }
-const generateStaticParams = env.IS_DEV ? undefined : _generateStaticParams
-export { generateStaticParams }
+const generateStaticParams = env.IS_DEV ? undefined : _generateStaticParams;
+export { generateStaticParams };
 
 export default function Page(props) {
-  const revalidate = props?.revalidate || false
-  const segmentInfo = getSegmentInfo({ SEGMENT, ...props })
+  const revalidate = props?.revalidate || false;
+  const segmentInfo = getSegmentInfo({ SEGMENT, ...props });
 
   /**
    * @hack(notion) Determiniation if this segment isa PODCAST or EPISODE
    */
-  const isEpisode = segmentInfo.segmentCount === 3
+  const isEpisode = segmentInfo.segmentCount === 3;
   if (isEpisode) {
-    return <EpisodeSlug revalidate={revalidate} segmentInfo={segmentInfo} />
+    return <EpisodeSlug revalidate={revalidate} segmentInfo={segmentInfo} />;
   }
 
   if (segmentInfo.isIndex) {
-    return <PodcastListing revalidate={revalidate} segmentInfo={segmentInfo} />
+    return <PodcastListing revalidate={revalidate} segmentInfo={segmentInfo} />;
   }
-  return <PodcastSlug revalidate={revalidate} segmentInfo={segmentInfo} />
+  return <PodcastSlug revalidate={revalidate} segmentInfo={segmentInfo} />;
 }

@@ -1,22 +1,21 @@
-import type { Book as BookType } from '@/lib/drizzle/schemas/cache-books/types'
+import { TZDate } from "@date-fns/tz";
+import { Code } from "@radix-ui/themes/dist/esm/components/code.js";
+import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
+import { Heading } from "@radix-ui/themes/dist/esm/components/heading.js";
+import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
+import { format } from "date-fns";
+import { formatInTimeZone } from "date-fns-tz";
 
-import { TZDate } from '@date-fns/tz'
-import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
-import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
-import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
-import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
-import { format } from 'date-fns'
-import { formatInTimeZone } from 'date-fns-tz'
+import { ImageNotion } from "@/components/Image/Image.Notion";
+import { segment } from "@/lib/drizzle/schemas/cache-books/queries";
+import type { Book as BookType } from "@/lib/drizzle/schemas/cache-books/types";
 
-import { ImageNotion } from '@/components/Image/Image.Notion'
-import { segment } from '@/lib/drizzle/schemas/cache-books/queries'
-
-const timestampFormatISO = `yyyy-MM-dd'T'HH:mm:ss.ms'Z'`
-const timestampFormat = `yyyy-MM-dd HH:mma z`
+const timestampFormatISO = `yyyy-MM-dd'T'HH:mm:ss.ms'Z'`;
+const timestampFormat = `yyyy-MM-dd HH:mma z`;
 
 export function Book({ item }: { item: BookType }) {
-  const timestampUTC = new TZDate(item.updatedAt, 'UTC')
-  const timestampET = timestampUTC.withTimeZone('America/New_York')
+  const timestampUTC = new TZDate(item.updatedAt, "UTC");
+  const timestampET = timestampUTC.withTimeZone("America/New_York");
 
   return (
     <Flex
@@ -38,9 +37,7 @@ export function Book({ item }: { item: BookType }) {
           {item.subtitle}
         </Heading>
         <hr className="my-2 w-full" />
-        <Text size="1">
-          Release Date: {format(item.dateReleasedISO, 'yyyy-MM-dd')}
-        </Text>
+        <Text size="1">Release Date: {format(item.dateReleasedISO, "yyyy-MM-dd")}</Text>
         <Text size="1">Author: {item.author}</Text>
         <hr className="my-2 w-full" />
         <Code size="1" variant="ghost">
@@ -53,11 +50,11 @@ export function Book({ item }: { item: BookType }) {
           E: {format(timestampET, timestampFormatISO)}
         </Code>
         <Code size="1" variant="ghost">
-          TZ-U: {formatInTimeZone(timestampUTC, 'UTC', timestampFormat)}
+          TZ-U: {formatInTimeZone(timestampUTC, "UTC", timestampFormat)}
         </Code>
         <Code size="1" variant="ghost">
           TZ-E:{` `}
-          {formatInTimeZone(timestampUTC, 'America/New_York', timestampFormat)}
+          {formatInTimeZone(timestampUTC, "America/New_York", timestampFormat)}
         </Code>
         <hr className="my-2 w-full" />
         <Flex>
@@ -65,5 +62,5 @@ export function Book({ item }: { item: BookType }) {
         </Flex>
       </section>
     </Flex>
-  )
+  );
 }

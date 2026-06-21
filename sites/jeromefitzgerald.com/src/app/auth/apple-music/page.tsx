@@ -1,22 +1,21 @@
-/** biome-ignore-all lint/correctness/noUndeclaredVariables: MusicKit global */
-'use client'
+"use client";
 
-import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
-import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
-import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
-import { Separator } from '@radix-ui/themes/dist/esm/components/separator.js'
-import { Strong } from '@radix-ui/themes/dist/esm/components/strong.js'
-import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
-import { envClient } from 'next-config/env.client'
-import { useEffect, useState } from 'react'
+import { Button } from "@radix-ui/themes/dist/esm/components/button.js";
+import { Code } from "@radix-ui/themes/dist/esm/components/code.js";
+import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
+import { Separator } from "@radix-ui/themes/dist/esm/components/separator.js";
+import { Strong } from "@radix-ui/themes/dist/esm/components/strong.js";
+import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
+import { envClient } from "next-config/env.client";
+import { useEffect, useState } from "react";
 
-import { HeaderFull } from '@/components/Header/Header.Full'
+import { HeaderFull } from "@/components/Header/Header.Full";
 
 export default function Home() {
-  const [isMusicKitReady, isMusicKitReadySet] = useState(false)
-  const [musicKitInstance, musicKitInstanceSet] = useState(null)
-  const [musicKitLoaded, musicKitLoadedSet] = useState(false)
-  const [musicUserToken, musicUserTokenSet] = useState(null)
+  const [isMusicKitReady, isMusicKitReadySet] = useState(false);
+  const [musicKitInstance, musicKitInstanceSet] = useState(null);
+  const [musicKitLoaded, musicKitLoadedSet] = useState(false);
+  const [musicUserToken, musicUserTokenSet] = useState(null);
 
   // 00. Load MusicKit
   useEffect(() => {
@@ -25,25 +24,25 @@ export default function Home() {
         // @ts-ignore
         await MusicKit.configure({
           app: {
-            build: '1.0.0',
-            name: 'Apple Music Kit',
+            build: "1.0.0",
+            name: "Apple Music Kit",
           },
           developerToken: envClient.NEXT_PUBLIC__APPLE_TOKEN_DEVELOPER,
-        })
+        });
         // @ts-ignore
-        musicKitInstanceSet(MusicKit.getInstance())
-        musicKitLoadedSet(true)
+        musicKitInstanceSet(MusicKit.getInstance());
+        musicKitLoadedSet(true);
       } catch (error) {
-        console.error('Error configuring MusicKit:', error)
+        console.error("Error configuring MusicKit:", error);
       }
-    }
+    };
 
-    window.addEventListener('musickitloaded', initializeMusicKit)
+    window.addEventListener("musickitloaded", initializeMusicKit);
 
     return () => {
-      window.removeEventListener('musickitloaded', initializeMusicKit)
-    }
-  }, [])
+      window.removeEventListener("musickitloaded", initializeMusicKit);
+    };
+  }, []);
 
   // 01. Authorize MusicKit
   useEffect(() => {
@@ -52,17 +51,17 @@ export default function Home() {
         const authorizeUser = async () => {
           try {
             // @ts-ignore
-            await musicKitInstance.authorize()
+            await musicKitInstance.authorize();
             // @ts-ignore
-            musicUserTokenSet(musicKitInstance.musicUserToken)
+            musicUserTokenSet(musicKitInstance.musicUserToken);
           } catch (error) {
-            console.error('Error authorizing MusicKit:', error)
+            console.error("Error authorizing MusicKit:", error);
           }
-        }
-        authorizeUser()
+        };
+        authorizeUser();
       }
     }
-  }, [isMusicKitReady, musicKitInstance, musicUserToken])
+  }, [isMusicKitReady, musicKitInstance, musicUserToken]);
 
   if (!envClient.IS_DEV) {
     return (
@@ -71,23 +70,22 @@ export default function Home() {
         <Flex
           direction="column"
           gap="9"
-          mb={{ initial: '4', md: '6' }}
-          pb={{ initial: '4', md: '6' }}
+          mb={{ initial: "4", md: "6" }}
+          pb={{ initial: "4", md: "6" }}
         >
           <Flex direction="column" gap="3">
-            <Text size={{ initial: '3', md: '5' }}>
-              Nothing to see here. This is a development only “feature” and these
-              tokens do not exist on the client side. Despite... Apple Music Kit
-              needing to be script inline.
+            <Text size={{ initial: "3", md: "5" }}>
+              Nothing to see here. This is a development only “feature” and these tokens do not
+              exist on the client side. Despite... Apple Music Kit needing to be script inline.
             </Text>
           </Flex>
         </Flex>
       </Flex>
-    )
+    );
   }
 
   if (!musicKitLoaded) {
-    return null
+    return null;
   }
 
   return (
@@ -97,24 +95,24 @@ export default function Home() {
         <Flex
           direction="column"
           gap="9"
-          mb={{ initial: '4', md: '6' }}
-          pb={{ initial: '4', md: '6' }}
+          mb={{ initial: "4", md: "6" }}
+          pb={{ initial: "4", md: "6" }}
         >
           <Flex direction="column" gap="3">
-            <Text size={{ initial: '3', md: '5' }}>
-              <Strong>isMusicKitReady:</Strong> {isMusicKitReady ? 'y' : 'n'}
+            <Text size={{ initial: "3", md: "5" }}>
+              <Strong>isMusicKitReady:</Strong> {isMusicKitReady ? "y" : "n"}
             </Text>
             <Button
               type="button"
               onClick={() => {
-                isMusicKitReadySet(true)
+                isMusicKitReadySet(true);
               }}
             >
               isMusicKitReadySet()
             </Button>
             <Separator my="4" orientation="horizontal" size="4" />
 
-            <Text size={{ initial: '3', md: '5' }}>
+            <Text size={{ initial: "3", md: "5" }}>
               <Strong>Music-User-Token:</Strong>
             </Text>
             {/* @ts-ignore */}
@@ -123,5 +121,5 @@ export default function Home() {
         </Flex>
       </Flex>
     </>
-  )
+  );
 }

@@ -1,15 +1,14 @@
-import type { Segment } from '@/utils/getBySegment'
+import { sql } from "drizzle-orm";
+import { envServer } from "next-config/env.server";
 
-import type { Book } from './types'
+import { drizzle } from "@/lib/drizzle/index";
+import type { Segment } from "@/utils/getBySegment";
 
-import { sql } from 'drizzle-orm'
-import { envServer } from 'next-config/env.server'
-
-import { drizzle } from '@/lib/drizzle/index'
-export const segment: Segment = 'books'
+import type { Book } from "./types";
+export const segment: Segment = "books";
 
 const orderBy_default = `ORDER BY
-  arr.item_object -> 'properties' -> 'Title' -> 'title' -> 0 ->> 'plain_text' ASC`
+  arr.item_object -> 'properties' -> 'Title' -> 'title' -> 0 ->> 'plain_text' ASC`;
 
 const sqlBase = `
 SELECT
@@ -56,38 +55,34 @@ WHERE
 [REPLACE_WHERE]
 [REPLACE_ORDERBY]
 [REPLACE_LIMIT]
-`
+`;
 export async function getBooks(): Promise<Book[]> {
   return await drizzle.execute(
     sql.raw(
       sqlBase
-        .replace('[REPLACE_WHERE]', '')
-        .replace('[REPLACE_ORDERBY]', orderBy_default)
-        .replace('[REPLACE_LIMIT]', ''),
+        .replace("[REPLACE_WHERE]", "")
+        .replace("[REPLACE_ORDERBY]", orderBy_default)
+        .replace("[REPLACE_LIMIT]", ""),
     ),
-  )
+  );
 }
-export async function getBooksWithLimit({
-  limit = 10,
-}: {
-  limit: number
-}): Promise<Book[]> {
+export async function getBooksWithLimit({ limit = 10 }: { limit: number }): Promise<Book[]> {
   return await drizzle.execute(
     sql.raw(
       sqlBase
-        .replace('[REPLACE_WHERE]', '')
-        .replace('[REPLACE_ORDERBY]', orderBy_default)
-        .replace('[REPLACE_LIMIT]', `LIMIT ${limit}`),
+        .replace("[REPLACE_WHERE]", "")
+        .replace("[REPLACE_ORDERBY]", orderBy_default)
+        .replace("[REPLACE_LIMIT]", `LIMIT ${limit}`),
     ),
-  )
+  );
 }
 export async function getBook({ key }: { key: string }): Promise<Book[]> {
   return await drizzle.execute(
     sql.raw(
       sqlBase
-        .replace('[REPLACE_WHERE]', `AND key = '${key}'`)
-        .replace('[REPLACE_ORDERBY]', '')
-        .replace('[REPLACE_LIMIT]', ''),
+        .replace("[REPLACE_WHERE]", `AND key = '${key}'`)
+        .replace("[REPLACE_ORDERBY]", "")
+        .replace("[REPLACE_LIMIT]", ""),
     ),
-  )
+  );
 }

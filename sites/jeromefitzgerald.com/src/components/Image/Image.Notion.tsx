@@ -1,19 +1,10 @@
-import type { Segment } from '@/utils/getBySegment'
+import NextImage from "next/image";
 
-import NextImage from 'next/image'
-
-/**
- * @note Image
- *
- * Is this an AWS Image hosted with: expiry_time
- *
- * NO => Load as normal
- *
- * YES =>  Jump through hoops
- *
- */
-import { isEmpty } from '@/utils/isEmpty'
-
+import { getNotionSeoImage } from "@/lib/drizzle/schemas/_notion/queries";
+import {
+  overrideImageKeyValueToCache,
+  pre_addImageKeyValueToCache,
+} from "@/lib/drizzle/schemas/cache-images/actions";
 // interface ImagePlaceholder {
 //   alt?: string
 //   blurDataURL?: string
@@ -26,7 +17,6 @@ import { isEmpty } from '@/utils/isEmpty'
 //   src?: string
 //   width?: number
 // }
-
 import type {
   Blog,
   Book,
@@ -36,80 +26,81 @@ import type {
   Podcast,
   Show,
   Venue,
-} from '@/lib/drizzle/schemas/types'
-
-import { getNotionSeoImage } from '@/lib/drizzle/schemas/_notion/queries'
-import {
-  overrideImageKeyValueToCache,
-  pre_addImageKeyValueToCache,
-} from '@/lib/drizzle/schemas/cache-images/actions'
-import { getKeyValue, overrideItemToCache } from '@/lib/drizzle/utils'
+} from "@/lib/drizzle/schemas/types";
+import { getKeyValue, overrideItemToCache } from "@/lib/drizzle/utils";
 // import { isEmpty } from '@/utils/isEmpty'
 import {
   isAwsImage as _isAwsImage,
   isImageExpired as _isImageExpired,
-} from '@/lib/notion/getAwsImage'
+} from "@/lib/notion/getAwsImage";
+import type { Segment } from "@/utils/getBySegment";
+/**
+ * @note Image
+ *
+ * Is this an AWS Image hosted with: expiry_time
+ *
+ * NO => Load as normal
+ *
+ * YES =>  Jump through hoops
+ *
+ */
+import { isEmpty } from "@/utils/isEmpty";
 
 function getIsImageExpired({ image }: { image: any }) {
-  let isImageExpired = false
-  const SEO_IMAGE_IS_AWS = image ? _isAwsImage(image[image?.type]?.url) : false
+  let isImageExpired = false;
+  const SEO_IMAGE_IS_AWS = image ? _isAwsImage(image[image?.type]?.url) : false;
   if (SEO_IMAGE_IS_AWS) {
     isImageExpired = _isImageExpired({
-      expiry_time:
-        image?.type === 'external' ? null : image[image?.type]?.expiry_time,
+      expiry_time: image?.type === "external" ? null : image[image?.type]?.expiry_time,
       src: image[image.type].url,
-    })
+    });
   }
-  return isImageExpired
+  return isImageExpired;
 }
 async function getImagePlaceholder({ image }: { image: any }) {
   const _imagePlaceholder: any = await pre_addImageKeyValueToCache({
     image,
-  })
+  });
   return {
     blurDataURL: _imagePlaceholder.blurDataURL,
-    ['data-key']: _imagePlaceholder.key,
-    // biome-ignore lint/correctness/useParseIntRadix: migrate
+    ["data-key"]: _imagePlaceholder.key,
     height: parseInt(_imagePlaceholder.height),
     src: _imagePlaceholder.src,
-    // biome-ignore lint/correctness/useParseIntRadix: migrate
     width: parseInt(_imagePlaceholder.width),
-  }
+  };
 }
 
 async function ImageNotion({
   item,
   segment,
 }: {
-  item: Blog | Book | Episode | Event | Podcast | Show | Venue
-  segment: Segment
+  item: Blog | Book | Episode | Event | Podcast | Show | Venue;
+  segment: Segment;
 }) {
   /**
    * @hack this is pretty intense
    */
-  let image: any = item.seoImage
+  let image: any = item.seoImage;
   if (
     image === null ||
     image === undefined ||
     // isEmpty(image[image?.type]) ||
     image[image?.type]?.url.length === 0
   ) {
-    return null
+    return null;
   }
-  let isImageExpired = getIsImageExpired({ image })
-  const imagePlaceholder = await getImagePlaceholder({ image })
+  let isImageExpired = getIsImageExpired({ image });
+  const imagePlaceholder = await getImagePlaceholder({ image });
 
   if (isImageExpired) {
-    console.log(
-      `isImageExpired(${isImageExpired ? 'y' : 'n'}): ${image.file.expiry_time}`,
-    )
+    console.log(`isImageExpired(${isImageExpired ? "y" : "n"}): ${image.file.expiry_time}`);
     const properties: NotionSeoImage = await getNotionSeoImage({
       segment,
       slug: item.slugPreview,
-    })
-    const key = properties['Slug.Preview'].formula.string
-    const row = await getKeyValue({ key, segment })
-    const result: any = row[0]
+    });
+    const key = properties["Slug.Preview"].formula.string;
+    const row = await getKeyValue({ key, segment });
+    const result: any = row[0];
     const value = [
       {
         ...result.value[0],
@@ -118,21 +109,21 @@ async function ImageNotion({
           ...properties,
         },
       },
-    ]
+    ];
 
-    image = properties['SEO.Image'].files[0]
+    image = properties["SEO.Image"].files[0];
     // image = value[0].properties['SEO.Image'].files[0]
-    isImageExpired = false
+    isImageExpired = false;
 
     if (isEmpty(image)) {
-      await overrideItemToCache({ key, segment, value })
-      await overrideImageKeyValueToCache({ value: image })
+      await overrideItemToCache({ key, segment, value });
+      await overrideImageKeyValueToCache({ value: image });
     }
   }
   /**
    * @note This is either the original, or updated one.
    */
-  imagePlaceholder.src = image[image.type].url
+  imagePlaceholder.src = image[image.type].url;
 
   return (
     <>
@@ -149,8 +140,8 @@ async function ImageNotion({
         />
       )}
     </>
-  )
+  );
 }
 
 // export type { ImagePlaceholder }
-export { ImageNotion }
+export { ImageNotion };

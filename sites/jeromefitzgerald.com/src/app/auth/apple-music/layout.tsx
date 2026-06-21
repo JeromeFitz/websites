@@ -1,11 +1,10 @@
-'use client'
+"use client";
 
-import type { ReactNode } from 'react'
+import { envClient } from "next-config/env.client";
+import Script from "next/script";
+import type { ReactNode } from "react";
 
-import Script from 'next/script'
-import { envClient } from 'next-config/env.client'
-
-const musickitUrl = `https://js-cdn.music.apple.com/musickit/v3/musickit.js`
+const musickitUrl = `https://js-cdn.music.apple.com/musickit/v3/musickit.js`;
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
@@ -16,20 +15,17 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         data-web-components
         id="music-kit"
         onLoad={() => {
-          console.dir(`loaded: ${musickitUrl}`)
+          console.dir(`loaded: ${musickitUrl}`);
         }}
       />
       <meta
         name="apple-music-developer-token"
         content={envClient.NEXT_PUBLIC__APPLE_TOKEN_DEVELOPER}
       />
-      <meta
-        name="apple-music-app-name"
-        content={envClient.NEXT_PUBLIC__APPLE_IDENTIFIER}
-      />
+      <meta name="apple-music-app-name" content={envClient.NEXT_PUBLIC__APPLE_IDENTIFIER} />
       <meta name="apple-music-app-build" content="1.0.0" />
 
       {children}
     </>
-  )
+  );
 }

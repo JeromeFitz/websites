@@ -1,25 +1,25 @@
 # name: 'Cache'
-name: '🔺️  '
-description: 'Localized Cache (vercel)'
-author: 'JeromeFitz'
+name: "🔺️  "
+description: "Localized Cache (vercel)"
+author: "JeromeFitz"
 
 inputs:
   TURBO_TEAM:
-    description: 'ID for Turbo'
+    description: "ID for Turbo"
     required: true
   TURBO_TOKEN:
-    description: 'ID for Turbo'
+    description: "ID for Turbo"
     required: true
   VERCEL_ENV:
-    description: 'Mock environment for Vercel / Turbo Cache'
+    description: "Mock environment for Vercel / Turbo Cache"
     required: true
     type: string
-    default: 'preview'
+    default: "preview"
 
 runs:
-  using: 'composite'
+  using: "composite"
   steps:
-    - name: '🔺️  Cache (turbo)'
+    - name: "🔺️  Cache (turbo)"
       id: cache-turbo
       uses: actions/cache@v5
       #   id: cache-turbo-restore
@@ -38,7 +38,7 @@ runs:
           turbo-${{ github.job }}-
           turbo-
 
-    - name: '🔺️  Cache (next)'
+    - name: "🔺️  Cache (next)"
       id: cache-next
       uses: actions/cache@v5
       # id: cache-next-restore

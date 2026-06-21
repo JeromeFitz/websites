@@ -1,5 +1,5 @@
-'use client'
-import { ThemeProvider as NextThemesProvider } from 'next-themes'
+"use client";
+import { ThemeProvider as NextThemesProvider } from "next-themes";
 
 // https://github.com/pacocoursey/next-themes/issues/152#issuecomment-1364280564
 export function ThemeProvider({ children }) {
@@ -9,9 +9,9 @@ export function ThemeProvider({ children }) {
       defaultTheme="system"
       disableTransitionOnChange={true}
       enableSystem
-      value={{ dark: 'dark', light: 'light' }}
+      value={{ dark: "dark", light: "light" }}
     >
       {children}
     </NextThemesProvider>
-  )
+  );
 }

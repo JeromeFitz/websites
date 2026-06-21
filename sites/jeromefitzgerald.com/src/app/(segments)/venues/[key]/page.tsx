@@ -1,50 +1,46 @@
-import type { Metadata, ResolvingMetadata } from 'next'
+import type { Metadata, ResolvingMetadata } from "next";
+import { envClient } from "next-config/env.client";
+import { notFound } from "next/navigation.js";
 
-import type { Venue } from '@/lib/drizzle/schemas/cache-venues/types'
+import { getVenue, segment } from "@/lib/drizzle/schemas/cache-venues/queries";
+import type { Venue } from "@/lib/drizzle/schemas/cache-venues/types";
+import { getKey } from "@/utils/getKey";
+import { isEmpty } from "@/utils/isEmpty";
+import { getSegmentsForGenerateStaticParams } from "@/utils/next/getSegmentsForGenerateStaticParams";
 
-import { notFound } from 'next/navigation.js'
-import { envClient } from 'next-config/env.client'
-
-import { getVenue, segment } from '@/lib/drizzle/schemas/cache-venues/queries'
-import { getKey } from '@/utils/getKey'
-import { isEmpty } from '@/utils/isEmpty'
-import { getSegmentsForGenerateStaticParams } from '@/utils/next/getSegmentsForGenerateStaticParams'
-
-import { Venue as VenueComponent } from './_components/Venue'
+import { Venue as VenueComponent } from "./_components/Venue";
 
 // export const dynamic = 'force-dynamic'
-export const dynamic = 'force-static'
+export const dynamic = "force-static";
 
 interface Props {
-  params: Promise<{ key: string }>
-  searchParams?: Promise<Record<string, string | string[] | undefined>>
+  params: Promise<{ key: string }>;
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
 }
 
 async function _generateStaticParams() {
-  return await getSegmentsForGenerateStaticParams(segment)
+  return await getSegmentsForGenerateStaticParams(segment);
 }
-export const generateStaticParams = envClient.IS_DEV
-  ? undefined
-  : _generateStaticParams
+export const generateStaticParams = envClient.IS_DEV ? undefined : _generateStaticParams;
 
 export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
-  const key = (await params).key
-  const items: Venue[] = await getVenue({ key: getKey(segment, key) })
+  const key = (await params).key;
+  const items: Venue[] = await getVenue({ key: getKey(segment, key) });
 
   if (isEmpty(items)) {
     return {
       title: `404: ${segment}`,
-    }
+    };
   }
 
-  const item = items[0]
-  const previousImages = (await parent).openGraph?.images || []
+  const item = items[0];
+  const previousImages = (await parent).openGraph?.images || [];
 
-  const title = `${item.title}`
-  const description = `${item.seoDescription}`
+  const title = `${item.title}`;
+  const description = `${item.seoDescription}`;
 
   // const seoImage: any = item.seoImage
   // const imageUrl = info.seoImage ? seoImage[seoImage?.type]?.url : null
@@ -60,20 +56,20 @@ export async function generateMetadata(
       title,
     },
     title,
-  }
+  };
 }
 
 async function Slug({ params }: Props) {
-  const key = (await params).key
-  const items: Venue[] = await getVenue({ key: getKey(segment, key) })
+  const key = (await params).key;
+  const items: Venue[] = await getVenue({ key: getKey(segment, key) });
 
   if (isEmpty(items)) {
-    return notFound()
+    return notFound();
   }
 
-  const item = items[0]
+  const item = items[0];
 
-  return <VenueComponent item={item} />
+  return <VenueComponent item={item} />;
 }
 
-export default Slug
+export default Slug;

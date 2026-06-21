@@ -1,37 +1,42 @@
 # name: 'Lint'
-name: '🚨️  '
-description: 'Localized Lint'
-author: 'JeromeFitz'
+name: "🚨️  "
+description: "Localized Lint"
+author: "JeromeFitz"
 
 inputs:
   TURBO_TEAM:
-    description: 'Provide Team ID for Turbo'
+    description: "Provide Team ID for Turbo"
     required: true
     type: string
   TURBO_TOKEN:
-    description: 'Provide Token for Turbo'
+    description: "Provide Token for Turbo"
     required: true
     type: string
 
 runs:
-  using: 'composite'
+  using: "composite"
   steps:
     # @todo(gh-actions) Separate `main` from PR
-    - name: '🎨  Format'
-      id: format
+    - name: "🚨️  Lint: Syncpack"
+      id: lint-syncpack
       shell: bash
-      env:
-        TURBO_TEAM: ${{ inputs.TURBO_TEAM }}
-        TURBO_TOKEN: ${{ inputs.TURBO_TOKEN }}
       run: |
-        pnpm run format:prettier:check
+        pnpm run lint:packages
 
-    # @todo(gh-actions) Separate `main` from PR
-    - name: '🚨️  Lint'
-      id: lint
+    - name: "🚨️  Lint: Quality"
+      id: lint-oxc
       shell: bash
       env:
         TURBO_TEAM: ${{ inputs.TURBO_TEAM }}
         TURBO_TOKEN: ${{ inputs.TURBO_TOKEN }}
       run: |
-        pnpm turbo run lint --cache-dir=".cache-turbo"
+        pnpm turbo run quality --cache-dir=".cache-turbo" -- --format=github
+
+    - name: "🚨️  Lint: TypeScript"
+      id: lint-ts
+      shell: bash
+      env:
+        TURBO_TEAM: ${{ inputs.TURBO_TEAM }}
+        TURBO_TOKEN: ${{ inputs.TURBO_TOKEN }}
+      run: |
+        pnpm turbo run lint:ts --cache-dir=".cache-turbo"

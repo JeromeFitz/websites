@@ -1,21 +1,22 @@
 {
   "name": "next-notion",
   "version": "0.0.0",
-  "type": "module",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jeromefitz/websites.git",
-    "directory": "packages/next-notion"
-  },
+  "license": "MIT",
   "author": {
     "name": "Jerome Fitzgerald",
     "email": "j@jeromefitzgerald.com",
     "url": "https://jeromefitzgerald.com"
   },
-  "license": "MIT",
-  "engines": {
-    "node": ">=24"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeromefitz/websites.git",
+    "directory": "packages/next-notion"
   },
+  "files": [
+    "dist/**"
+  ],
+  "type": "module",
+  "sideEffects": false,
   "exports": {
     ".": "./dist/index.mjs",
     "./blocks/Column": "./dist/blocks/Column.mjs",
@@ -45,27 +46,17 @@
     "./utils/uuid": "./dist/utils/uuid.mjs",
     "./package.json": "./package.json"
   },
-  "files": [
-    "dist/**"
-  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsdown",
     "clean": "rm -rf ./.turbo ./dist",
     "clean:install": "pnpm clean && rm -rf ./node_modules",
     "copy": "mkdir -p ./dist && ./scripts/copy.sh",
     "dev": "tsdown --watch",
-    "lint": "pnpm lint:typescript",
-    "lint:typescript": "tsc --noEmit --declaration",
+    "lint:ts": "tsc --noEmit --declaration",
     "semantic-release": "echo semantic-release"
-  },
-  "peerDependencies": {
-    "@date-fns/tz": "^1.1.0",
-    "@date-fns/utc": "^2.1.0",
-    "@notionhq/client": "^2.2.14 || ^3.0.0 || ^4.0.0",
-    "date-fns": "^4.0.0",
-    "ms": "^3.0.0-canary.1",
-    "server-only": "0.0.1",
-    "uuid": "^14.0.0"
   },
   "dependencies": {
     "emoji-regex": "10.6.0",
@@ -88,10 +79,18 @@
     "server-only": "0.0.1",
     "uuid": "14.0.0"
   },
-  "publishConfig": {
-    "access": "public"
+  "peerDependencies": {
+    "@date-fns/tz": "^1.1.0",
+    "@date-fns/utc": "^2.1.0",
+    "@notionhq/client": "^2.2.14 || ^3.0.0 || ^4.0.0",
+    "date-fns": "^4.0.0",
+    "ms": "^3.0.0-canary.1",
+    "server-only": "0.0.1",
+    "uuid": "^14.0.0"
   },
-  "sideEffects": false,
+  "engines": {
+    "node": ">=24"
+  },
   "inlinedDependencies": {
     "@floating-ui/core": "1.7.5",
     "@floating-ui/dom": "1.7.6",

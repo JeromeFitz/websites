@@ -1,14 +1,13 @@
-import type { Event } from '@/lib/drizzle/schemas/cache-events/types'
-import type { Segment } from '@/utils/getBySegment'
+import { sql } from "drizzle-orm";
+import { envServer } from "next-config/env.server";
 
-import { sql } from 'drizzle-orm'
-import { envServer } from 'next-config/env.server'
-
-import { drizzle } from '@/lib/drizzle/index'
-export const segment: Segment = 'events'
+import { drizzle } from "@/lib/drizzle/index";
+import type { Event } from "@/lib/drizzle/schemas/cache-events/types";
+import type { Segment } from "@/utils/getBySegment";
+export const segment: Segment = "events";
 
 const orderBy_default = `ORDER BY
-  arr.item_object -> 'properties' -> 'Date.ISO' -> 'formula' ->> 'string' DESC`
+  arr.item_object -> 'properties' -> 'Date.ISO' -> 'formula' ->> 'string' DESC`;
 
 const sqlBase = `
 SELECT
@@ -80,38 +79,34 @@ WHERE
 [REPLACE_WHERE]
 [REPLACE_ORDERBY]
 [REPLACE_LIMIT]
-`
+`;
 export async function getEvents(): Promise<Event[]> {
   return await drizzle.execute(
     sql.raw(
       sqlBase
-        .replace('[REPLACE_WHERE]', '')
-        .replace('[REPLACE_ORDERBY]', orderBy_default)
-        .replace('[REPLACE_LIMIT]', ''),
+        .replace("[REPLACE_WHERE]", "")
+        .replace("[REPLACE_ORDERBY]", orderBy_default)
+        .replace("[REPLACE_LIMIT]", ""),
     ),
-  )
+  );
 }
-export async function getEventsWithLimit({
-  limit = 10,
-}: {
-  limit: number
-}): Promise<Event[]> {
+export async function getEventsWithLimit({ limit = 10 }: { limit: number }): Promise<Event[]> {
   return await drizzle.execute(
     sql.raw(
       sqlBase
-        .replace('[REPLACE_WHERE]', '')
-        .replace('[REPLACE_ORDERBY]', orderBy_default)
-        .replace('[REPLACE_LIMIT]', `LIMIT ${limit}`),
+        .replace("[REPLACE_WHERE]", "")
+        .replace("[REPLACE_ORDERBY]", orderBy_default)
+        .replace("[REPLACE_LIMIT]", `LIMIT ${limit}`),
     ),
-  )
+  );
 }
 export async function getEvent({ key }: { key: string }): Promise<Event[]> {
   return await drizzle.execute(
     sql.raw(
       sqlBase
-        .replace('[REPLACE_WHERE]', `AND key = '${key}'`)
-        .replace('[REPLACE_ORDERBY]', '')
-        .replace('[REPLACE_LIMIT]', ''),
+        .replace("[REPLACE_WHERE]", `AND key = '${key}'`)
+        .replace("[REPLACE_ORDERBY]", "")
+        .replace("[REPLACE_LIMIT]", ""),
     ),
-  )
+  );
 }

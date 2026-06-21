@@ -1,39 +1,35 @@
-'use client'
+"use client";
 
-import type { ReactNode } from 'react'
+import { Badge } from "@radix-ui/themes/dist/esm/components/badge.js";
+import { Code } from "@radix-ui/themes/dist/esm/components/code.js";
+import * as DataList from "@radix-ui/themes/dist/esm/components/data-list.js";
+import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
+import { Link } from "@radix-ui/themes/dist/esm/components/link.js";
+import { Separator } from "@radix-ui/themes/dist/esm/components/separator.js";
+import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
+import type { ReactNode } from "react";
+import { Component } from "react";
 
-import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
-import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
-import * as DataList from '@radix-ui/themes/dist/esm/components/data-list.js'
-import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
-import { Link } from '@radix-ui/themes/dist/esm/components/link.js'
-import { Separator } from '@radix-ui/themes/dist/esm/components/separator.js'
-import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
-import { Component } from 'react'
-
-import { ArticleMain } from '@/components/Article/Article.Main'
-import {
-  ContainerContent,
-  ContainerWithSidebar,
-} from '@/components/Container/Container.Main'
-import { ContainerSite } from '@/components/Container/Container.Site'
-import { HeaderSidebar } from '@/components/Header/Header.Sidebar'
-import { ExclamationTriangleIcon } from '@/components/Icon/index'
-import { cx } from '@/utils/cx'
+import { ArticleMain } from "@/components/Article/Article.Main";
+import { ContainerContent, ContainerWithSidebar } from "@/components/Container/Container.Main";
+import { ContainerSite } from "@/components/Container/Container.Site";
+import { HeaderSidebar } from "@/components/Header/Header.Sidebar";
+import { ExclamationTriangleIcon } from "@/components/Icon/index";
+import { cx } from "@/utils/cx";
 
 interface PropsChildren {
-  children?: ReactNode
+  children?: ReactNode;
 }
 
 class ErrorBoundary extends Component<PropsChildren> {
   constructor(props: any) {
-    super(props)
-    this.state = { hasError: false }
+    super(props);
+    this.state = { hasError: false };
   }
 
   static getDerivedStateFromError(error: any) {
     // Update state so the next render will show the fallback UI.
-    return { hasError: true }
+    return { hasError: true };
   }
 
   // @ts-ignore
@@ -49,9 +45,9 @@ class ErrorBoundary extends Component<PropsChildren> {
   render() {
     // @ts-ignore
     if (this.state.hasError) {
-      const title = 'Error'
-      const message = `Well this is embarassing.`
-      const body = `Hey, sometimes these things happen. This is an error that has sent an alert, so Jerome already knows most likely, heh.`
+      const title = "Error";
+      const message = `Well this is embarassing.`;
+      const body = `Hey, sometimes these things happen. This is an error that has sent an alert, so Jerome already knows most likely, heh.`;
 
       return (
         <ContainerSite>
@@ -60,8 +56,8 @@ class ErrorBoundary extends Component<PropsChildren> {
               <HeaderSidebar title={title}>
                 <Flex
                   className={cx(
-                    'content-center items-center overflow-auto',
-                    'border-gray-7 border-t-1',
+                    "content-center items-center overflow-auto",
+                    "border-gray-7 border-t-1",
                   )}
                   direction="column"
                   gap="0"
@@ -73,9 +69,9 @@ class ErrorBoundary extends Component<PropsChildren> {
                 >
                   <DataList.Root
                     className={cx(
-                      'py-6 pr-1 pl-4',
-                      'md:!gap-x-[var(--space-1)] gap-x-[var(--space-3)]',
-                      'w-full',
+                      "py-6 pr-1 pl-4",
+                      "md:!gap-x-[var(--space-1)] gap-x-[var(--space-3)]",
+                      "w-full",
                     )}
                     size="2"
                   >
@@ -115,11 +111,11 @@ class ErrorBoundary extends Component<PropsChildren> {
             </ContainerWithSidebar>
           </ContainerContent>
         </ContainerSite>
-      )
+      );
     }
 
-    return this.props.children
+    return this.props.children;
   }
 }
 
-export { ErrorBoundary }
+export { ErrorBoundary };

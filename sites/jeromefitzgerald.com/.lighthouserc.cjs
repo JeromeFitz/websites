@@ -1,6 +1,6 @@
-const isCI = require('is-in-ci')
+const isCI = require("is-in-ci");
 
-let urlAdditional = undefined
+let urlAdditional = undefined;
 
 /**
  * @todo(turbo) 2.0.3 concern with way we pass `CI` in some cases
@@ -13,10 +13,10 @@ if (!isCI) {
     // '/events/2023/07/15/jerome-and',
     // '/shows',
     // '/shows/alex-o-jerome',
-  ]
+  ];
 }
 
-module.exports = require('@jeromefitz/lighthouse-config')({
+module.exports = require("@jeromefitz/lighthouse-config")({
   urlAdditional,
-  website: 'jeromefitzgerald.com',
-})
+  website: "jeromefitzgerald.com",
+});

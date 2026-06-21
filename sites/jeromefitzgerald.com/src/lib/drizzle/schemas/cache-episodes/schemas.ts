@@ -1,9 +1,9 @@
-import { pgTable } from 'drizzle-orm/pg-core'
+import { pgTable } from "drizzle-orm/pg-core";
 
-import { init } from '../helpers'
+import { init } from "../helpers";
 
-const cacheEpisodes = pgTable('cache_episodes', {
+const cacheEpisodes = pgTable("cache_episodes", {
   ...init,
-})
+});
 
-export { cacheEpisodes }
+export { cacheEpisodes };

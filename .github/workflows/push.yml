@@ -1,4 +1,4 @@
-name: '  🔀️  Push'
+name: "  🔀️  Push"
 
 on:
   push:
@@ -31,8 +31,8 @@ env:
   GOODREADS_ID: ${{ secrets.GOODREADS_ID }}
   GOODREADS_KEY: ${{ secrets.GOODREADS_KEY }}
   LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
-  NEXT_PUBLIC__APPLE_IDENTIFIER: ''
-  NEXT_PUBLIC__APPLE_TOKEN_DEVELOPER: ''
+  NEXT_PUBLIC__APPLE_IDENTIFIER: ""
+  NEXT_PUBLIC__APPLE_TOKEN_DEVELOPER: ""
   NEXT_PUBLIC__FATHOM_SITE_ID: ${{ secrets.NEXT_PUBLIC__FATHOM_SITE_ID }}
   NEXT_PUBLIC__SITE: ${{ vars.NEXT_PUBLIC__SITE }}
   NEXT_TELEMETRY_DISABLED: ${{ vars.NEXT_TELEMETRY_DISABLED }}
@@ -64,7 +64,7 @@ env:
 
 jobs:
   pull:
-    name: '👷️  CI'
+    name: "👷️  CI"
     if: (contains(github.event.head_commit.message, '[b]') || github.ref == 'refs/heads/main') && !contains(github.event.head_commit.message, '[skip ci]')
     timeout-minutes: 20
     runs-on: ubuntu-latest
@@ -82,8 +82,8 @@ jobs:
       GOODREADS_ID: ${{ secrets.GOODREADS_ID }}
       GOODREADS_KEY: ${{ secrets.GOODREADS_KEY }}
       LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
-      NEXT_PUBLIC__APPLE_IDENTIFIER: ''
-      NEXT_PUBLIC__APPLE_TOKEN_DEVELOPER: ''
+      NEXT_PUBLIC__APPLE_IDENTIFIER: ""
+      NEXT_PUBLIC__APPLE_TOKEN_DEVELOPER: ""
       NEXT_PUBLIC__FATHOM_SITE_ID: ${{ secrets.NEXT_PUBLIC__FATHOM_SITE_ID }}
       NEXT_PUBLIC__SITE: ${{ vars.NEXT_PUBLIC__SITE }}
       NEXT_TELEMETRY_DISABLED: ${{ vars.NEXT_TELEMETRY_DISABLED }}
@@ -113,72 +113,69 @@ jobs:
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
       VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
     steps:
-      - name: '🐙️  Checkout'
+      - name: "🐙️  Checkout"
         id: push-checkout
         uses: actions/checkout@v6
         with:
           fetch-depth: 10
 
-      - name: '💽️  Init'
+      - name: "💽️  Init"
         id: push-init
-        uses: JeromeFitz/websites/.github/actions/init@main
+        uses: JeromeFitz/websites/.github/actions/init@deps/oxc
 
-      - name: '📦  Install'
+      - name: "📦  Install"
         id: push-install
-        uses: JeromeFitz/websites/.github/actions/install@main
+        uses: JeromeFitz/websites/.github/actions/install@deps/oxc
 
-      - name: '🔺️  Cache (vercel)'
+      - name: "🔺️  Cache (vercel)"
         id: push-cache-vercel
-        uses: JeromeFitz/websites/.github/actions/cache-turbo@main
+        uses: JeromeFitz/websites/.github/actions/cache-turbo@deps/oxc
         with:
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
 
-      - name: '☣️ Biome CI'
-        run: pnpm exec biome ci .
-
-      - name: '🚨️  Lint'
+      - name: "🚨️  Lint"
         id: push-lint
-        uses: JeromeFitz/websites/.github/actions/lint@main
+        uses: JeromeFitz/websites/.github/actions/lint@deps/oxc
         with:
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
 
-      - name: '🧪  Test'
+      - name: "🧪  Test"
         id: push-test
-        uses: JeromeFitz/websites/.github/actions/test@main
+        uses: JeromeFitz/websites/.github/actions/test@deps/oxc
         with:
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-          WEBSITE: 'jeromefitzgerald.com'
+          WEBSITE: "jeromefitzgerald.com"
 
       # https://docs.github.com/en/actions/learn-github-actions/expressions
-      - name: '📛  Commit Message'
+      - name: "📛  Commit Message"
         id: push-commit-message
         run: |
           echo "message=$(git log --no-merges -1 --oneline)" >> $GITHUB_OUTPUT
 
-      - name: '🎭  E2E'
+      - name: "🎭  E2E"
         id: push-e2e
         if: ${{ contains(steps.push-commit-message.outputs.message, '[b]') }}
-        uses: JeromeFitz/websites/.github/actions/e2e@main
+        uses: JeromeFitz/websites/.github/actions/e2e@deps/oxc
         with:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
           VERCEL_ENV: ${{ vars.VERCEL_ENV }}
-          WEBSITE: 'jeromefitzgerald.com'
+          WEBSITE: "jeromefitzgerald.com"
 
-      - name: '🏷️  Release'
+      - name: "🏷️  Release"
         id: push-release
-        uses: JeromeFitz/websites/.github/actions/release@main
+        uses: JeromeFitz/websites/.github/actions/release@deps/oxc
         with:
           GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
 
-      - name: '🔺️  Deploy (Production)'
+      - name: "🔺️  Deploy (Production)"
         id: push-deploy
         if: github.ref == 'refs/heads/main'
-        uses: JeromeFitz/websites/.github/actions/deploy@main
+        uses: JeromeFitz/websites/.github/actions/deploy@deps/oxc
         with:
           GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}

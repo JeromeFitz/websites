@@ -1,24 +1,19 @@
-/** biome-ignore-all lint/style/useTemplate: migrate> */
-import 'server-only'
-
-import { envClient, envServer } from '@jeromefitz/next-config'
-
-import { addDays, format } from 'date-fns'
-
+import "server-only";
+import { envClient, envServer } from "@jeromefitz/next-config";
+import { addDays, format } from "date-fns";
 // import { cache } from 'react'
 
-import type { FilterType, SortItem } from '../Notion.types'
-import type { SegmentInfo } from '../utils/getSegmentInfo'
+import { notion } from "../helper";
+import type { FilterType, SortItem } from "../Notion.types";
+import type { SegmentInfo } from "../utils/getSegmentInfo";
 
-import { notion } from '../helper'
-
-const DATABASE_ID = envServer.NOTION__DATABASE__PAGES ?? ''
+const DATABASE_ID = envServer.NOTION__DATABASE__PAGES ?? "";
 
 interface GetDatabaseQueryTypes {
-  database_id?: string
-  filterType?: FilterType
-  segmentInfo: SegmentInfo
-  sortProperty?: SortItem
+  database_id?: string;
+  filterType?: FilterType;
+  segmentInfo: SegmentInfo;
+  sortProperty?: SortItem;
 }
 
 /**
@@ -27,41 +22,41 @@ interface GetDatabaseQueryTypes {
 const isPublishedAnd = envClient.IS_DEV
   ? {
       created_time: {
-        after: '2025-01-01T00:00:00.000Z',
+        after: "2025-01-01T00:00:00.000Z",
       },
-      timestamp: 'created_time',
+      timestamp: "created_time",
     }
   : {
       checkbox: {
         equals: true,
       },
-      property: 'Is.Published',
-    }
+      property: "Is.Published",
+    };
 
 // const getDatabaseQuery = cache(
 const getDatabaseQuery = async ({
   database_id,
-  filterType = 'equals',
+  filterType = "equals",
   segmentInfo,
 
   sortProperty,
 }: GetDatabaseQueryTypes) => {
   // console.dir(`> segmentInfo`)
   // console.dir(segmentInfo)
-  const { slug } = segmentInfo
+  const { slug } = segmentInfo;
   const filterData = {
     and: [
       {
-        property: 'Slug.Preview',
+        property: "Slug.Preview",
         rich_text: {
           [filterType]: slug,
         },
       },
       isPublishedAnd,
     ],
-  }
+  };
 
-  const sortsData: SortItem[] = []
+  const sortsData: SortItem[] = [];
   // const sortsData: SortItem[] = [
   //   {
   //     property: 'Date',
@@ -69,24 +64,24 @@ const getDatabaseQuery = async ({
   //   },
   // ]
 
-  const filter = filterData
-  const sorts = sortsData
+  const filter = filterData;
+  const sorts = sortsData;
 
   const options = {
     database_id: database_id ? database_id : DATABASE_ID,
     filter,
     page_size: 50,
     sorts,
-  }
+  };
 
   /**
    * @todo(notion) loop through cursors
    * @ref https://github.com/makenotion/notion-sdk-js/issues/147
    */
   // @ts-expect-error Property 'is_not_empty' is missing in type
-  let _response = await notion.databases.query(options)
-  let _results = _response?.results
-  let i = 0
+  let _response = await notion.databases.query(options);
+  let _results = _response?.results;
+  let i = 0;
   while (
     _response.has_more &&
     _response.next_cursor &&
@@ -109,24 +104,24 @@ const getDatabaseQuery = async ({
      * we lower the page_limit and we skip the cursor load_more for events
      *
      */
-    segmentInfo.segment !== 'events'
+    segmentInfo.segment !== "events"
   ) {
-    console.dir(`(╯°□°)╯︵ ┻━┻  ${slug} api request: has_more (${i})`)
+    console.dir(`(╯°□°)╯︵ ┻━┻  ${slug} api request: has_more (${i})`);
 
     // @ts-ignore
     _response = await notion.databases.query({
       ...options,
       start_cursor: _response.next_cursor,
-    })
+    });
 
-    const __results = _response.results
-    _results = _results.concat(__results)
-    i++
+    const __results = _response.results;
+    _results = _results.concat(__results);
+    i++;
   }
 
-  return { ..._response, results: _results }
+  return { ..._response, results: _results };
   // return _response
-}
+};
 // )
 
 /**
@@ -135,42 +130,38 @@ const getDatabaseQuery = async ({
 // @todo(types)
 // const getNotionQueryDatePrepartion = cache((val, type) => {
 const getNotionQueryDatePrepartion = (val, type) => {
-  const year = val[0]
-  const month = val[1]
-  const date = val[2]
+  const year = val[0];
+  const month = val[1];
+  const date = val[2];
   const tsPrep =
-    type === 'from'
-      ? `${year}-${('00' + month).substr(
-          -2,
-        )}-${('00' + date).substr(-2)}T00:00:00.000Z`
-      : `${year}-${('00' + month).substr(
-          -2,
-        )}-${('00' + date).substr(-2)}T23:59:59.999Z`
-  const tsNew = new Date(tsPrep)
-  if (type === 'to') {
-    return format(addDays(tsNew, 1), 'yyyy-MM-dd')
+    type === "from"
+      ? `${year}-${("00" + month).substr(-2)}-${("00" + date).substr(-2)}T00:00:00.000Z`
+      : `${year}-${("00" + month).substr(-2)}-${("00" + date).substr(-2)}T23:59:59.999Z`;
+  const tsNew = new Date(tsPrep);
+  if (type === "to") {
+    return format(addDays(tsNew, 1), "yyyy-MM-dd");
   }
-  return format(tsNew, 'yyyy-MM-dd')
-}
+  return format(tsNew, "yyyy-MM-dd");
+};
 // )
 
 // const getDatabaseQueryByDateRange = cache(
 const getDatabaseQueryByDateRange = async ({
   database_id,
 
-  filterType = 'equals',
+  filterType = "equals",
   segmentInfo,
 
   sortProperty,
 }: GetDatabaseQueryTypes) => {
-  const { slug } = segmentInfo
-  const property = 'Date'
+  const { slug } = segmentInfo;
+  const property = "Date";
   // @note(notion) first item is empty
-  const slugArray = slug.split('/')
-  const fromArray = slugArray.slice(2, 5)
-  const toArray = slugArray.slice(6, 9)
-  const from = getNotionQueryDatePrepartion(fromArray, 'from')
-  const to = getNotionQueryDatePrepartion(toArray, 'to')
+  const slugArray = slug.split("/");
+  const fromArray = slugArray.slice(2, 5);
+  const toArray = slugArray.slice(6, 9);
+  const from = getNotionQueryDatePrepartion(fromArray, "from");
+  const to = getNotionQueryDatePrepartion(toArray, "to");
 
   const filterData = {
     and: [
@@ -187,28 +178,28 @@ const getDatabaseQueryByDateRange = async ({
         property,
       },
     ],
-  }
+  };
   const sortsData: SortItem[] = [
     {
-      direction: 'descending',
-      property: 'Date',
+      direction: "descending",
+      property: "Date",
     },
-  ]
-  const filter = filterData
-  const sorts = sortsData
+  ];
+  const filter = filterData;
+  const sorts = sortsData;
 
   const options = {
     database_id: database_id ? database_id : DATABASE_ID,
     filter,
     sorts,
-  }
+  };
 
-  const response = await notion.databases.query(options)
+  const response = await notion.databases.query(options);
 
-  return response
-}
+  return response;
+};
 
 // )
 
-export type { GetDatabaseQueryTypes }
-export { getDatabaseQuery, getDatabaseQueryByDateRange }
+export type { GetDatabaseQueryTypes };
+export { getDatabaseQuery, getDatabaseQueryByDateRange };

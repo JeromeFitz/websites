@@ -1,35 +1,35 @@
-import type { ColumnListBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
+import type { ColumnListBlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 
-import { NotionBlocks as Blocks } from '../Notion.Blocks'
-import { getBlockKey } from '../Notion.utils'
+import { NotionBlocks as Blocks } from "../Notion.Blocks";
+import { getBlockKey } from "../Notion.utils";
 
 const ListColumn = ({ ref, ...props }: any) => {
   const {
     block,
     order,
   }: {
-    block: ColumnListBlockObjectResponse
-    order: number
-  } = props
-  const key = getBlockKey(block.id, block.type, order)
-  const items: any = block[block.type][block.type]
+    block: ColumnListBlockObjectResponse;
+    order: number;
+  } = props;
+  const key = getBlockKey(block.id, block.type, order);
+  const items: any = block[block.type][block.type];
 
-  const Component = props?.as ?? 'div'
+  const Component = props?.as ?? "div";
   const componentProps = {
     className: props?.className ?? undefined,
-  }
+  };
 
-  if (!items) return null
+  if (!items) return null;
 
   return (
     <Component ref={ref} {...componentProps}>
       {items.results.map((item) => {
-        const blockProps = props?.blocks['column']
+        const blockProps = props?.blocks["column"];
 
-        const ComponentColumn: any = blockProps?.element ?? 'div'
+        const ComponentColumn: any = blockProps?.element ?? "div";
         const componentColumnProps = {
           className: blockProps?.className ?? undefined,
-        }
+        };
 
         const block = {
           /**
@@ -38,26 +38,23 @@ const ListColumn = ({ ref, ...props }: any) => {
            * - await getBlockChildrenDataParent(item.id)
            */
           column: item.columnDataColumn,
-          object: 'block',
-          type: 'column',
-        }
+          object: "block",
+          type: "column",
+        };
         return (
-          <ComponentColumn
-            key={`${key}-column-${item.id}`}
-            {...componentColumnProps}
-          >
+          <ComponentColumn key={`${key}-column-${item.id}`} {...componentColumnProps}>
             <>
               {block.column.results.map((item, _order) => {
-                const blocksKey = `${key}--${order}--${item.id}--${_order}`
-                return <Blocks blocks={props?.blocks} data={item} key={blocksKey} />
+                const blocksKey = `${key}--${order}--${item.id}--${_order}`;
+                return <Blocks blocks={props?.blocks} data={item} key={blocksKey} />;
               })}
             </>
           </ComponentColumn>
-        )
+        );
       })}
     </Component>
-  )
-}
+  );
+};
 
-export { ListColumn }
-export default ListColumn
+export { ListColumn };
+export default ListColumn;

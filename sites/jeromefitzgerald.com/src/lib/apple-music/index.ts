@@ -1,1 +1,1 @@
-export * from './get-apple-music'
+export * from "./get-apple-music";

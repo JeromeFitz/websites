@@ -1,11 +1,11 @@
-import { TZDate } from '@date-fns/tz'
-import { format, isAfter, parseISO } from 'date-fns'
+import { TZDate } from "@date-fns/tz";
+import { format, isAfter, parseISO } from "date-fns";
 
-const TZ_UTC = 'UTC'
-const URL_AWS = 'amazonaws.com'
+const TZ_UTC = "UTC";
+const URL_AWS = "amazonaws.com";
 
 function isAwsImage(imageUrl: string) {
-  return imageUrl?.includes(URL_AWS) || false
+  return imageUrl?.includes(URL_AWS) || false;
 }
 
 /**
@@ -16,21 +16,21 @@ function isAwsImage(imageUrl: string) {
  */
 function isImageExpired(image: any) {
   if (!isAwsImage(image?.src)) {
-    return false
+    return false;
   }
-  let expiry_time = image?.expiry_time
+  let expiry_time = image?.expiry_time;
   if (expiry_time === null || expiry_time === undefined) {
-    return true
+    return true;
   }
 
-  const timestamp = new Date()
-  let utc: any = new TZDate(timestamp, TZ_UTC)
-  const formatConfig = `yyyy-MM-dd'T'HH:mm:ss.ms'Z'`
-  utc = format(utc, formatConfig)
-  expiry_time = parseISO(image?.expiry_time)
-  const isExpired = isAfter(parseISO(utc), expiry_time)
+  const timestamp = new Date();
+  let utc: any = new TZDate(timestamp, TZ_UTC);
+  const formatConfig = `yyyy-MM-dd'T'HH:mm:ss.ms'Z'`;
+  utc = format(utc, formatConfig);
+  expiry_time = parseISO(image?.expiry_time);
+  const isExpired = isAfter(parseISO(utc), expiry_time);
 
-  return isExpired
+  return isExpired;
 }
 
-export { isAwsImage, isImageExpired }
+export { isAwsImage, isImageExpired };

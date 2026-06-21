@@ -1,41 +1,41 @@
 # name: 'E2E'
-name: '🎭  '
-description: 'Localized E2E'
-author: 'JeromeFitz'
+name: "🎭  "
+description: "Localized E2E"
+author: "JeromeFitz"
 
 inputs:
   LHCI_GITHUB_APP_TOKEN:
-    description: 'Provide GitHub App Token for Lighthouse'
+    description: "Provide GitHub App Token for Lighthouse"
     required: true
     type: string
   TURBO_TEAM:
-    description: 'Provide Team ID for Turbo'
+    description: "Provide Team ID for Turbo"
     required: true
     type: string
   TURBO_TOKEN:
-    description: 'Provide Token for Turbo'
+    description: "Provide Token for Turbo"
     required: true
     type: string
   VERCEL_ENV:
-    description: 'Mock environment for Vercel / Turbo Cache'
+    description: "Mock environment for Vercel / Turbo Cache"
     required: true
     type: string
-    default: 'preview'
+    default: "preview"
   WEBSITE:
-    description: 'Provide Website for Lighthouse'
+    description: "Provide Website for Lighthouse"
     required: true
     type: string
-    default: 'jeromefitzgerald.com'
+    default: "jeromefitzgerald.com"
 
 runs:
-  using: 'composite'
+  using: "composite"
   steps:
-    - name: '🎭 Playwright: Get Installed Version'
+    - name: "🎭 Playwright: Get Installed Version"
       id: playwright-version
       shell: bash
       run: echo PLAYWRIGHT_VERSION=$(node --print 'require("./packages/playwright-config/package.json").devDependencies["@playwright/test"]') >> $GITHUB_ENV
 
-    - name: '🎭 Playwright: Check Browser Cache'
+    - name: "🎭 Playwright: Check Browser Cache"
       id: playwright-cache
       uses: actions/cache@v5
       with:
@@ -44,7 +44,7 @@ runs:
         key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
 
     # @todo(gh-actions) Separate `main` from PR
-    - name: '🧪  Test: Build'
+    - name: "🧪  Test: Build"
       id: e2e-build
       shell: bash
       env:
@@ -80,7 +80,7 @@ runs:
     #   # pnpm dlx @lhci/cli@0.15.0
     #   # run: |
     #   #   npx @lhci/cli@0.15.0 autorun --config="./sites/${{ inputs.WEBSITE }}/lighthouse.config.js"
-    - name: '💡  Lighthouse: ${{ inputs.WEBSITE }}'
+    - name: "💡  Lighthouse: ${{ inputs.WEBSITE }}"
       id: test-lighthouse
       shell: bash
       env:
@@ -93,7 +93,7 @@ runs:
       # run: |
       #   pnpm --filter "${{ inputs.WEBSITE }}" lhci
 
-    - name: '🎭  Playwright: Install (!cache)'
+    - name: "🎭  Playwright: Install (!cache)"
       id: e2e-dependencies-playwright
       shell: bash
       # run: pnpm playwright@${{ env.PLAYWRIGHT_VERSION }}  install --with-deps
@@ -101,7 +101,7 @@ runs:
       # run: pnpm exec playwright@${{ env.PLAYWRIGHT_VERSION }} install --with-deps
       if: steps.playwright-cache.outputs.cache-hit != 'true'
 
-    - name: '🎭  Playwright: Install (cache)'
+    - name: "🎭  Playwright: Install (cache)"
       id: e2e-dependencies-playwright-cache
       shell: bash
       # run: pnpm playwright@${{ env.PLAYWRIGHT_VERSION }}  install-deps
@@ -109,7 +109,7 @@ runs:
       # run: pnpm exec playwright@${{ env.PLAYWRIGHT_VERSION }} install
       if: steps.playwright-cache.outputs.cache-hit == 'true'
 
-    - name: '🎭  Playwright: ${{ inputs.WEBSITE }}'
+    - name: "🎭  Playwright: ${{ inputs.WEBSITE }}"
       id: e2e-test
       shell: bash
       env:

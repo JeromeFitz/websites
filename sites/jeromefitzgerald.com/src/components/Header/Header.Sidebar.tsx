@@ -1,42 +1,41 @@
-'use client'
+"use client";
 
 // import { Em } from '@radix-ui/themes/dist/esm/components/em.js'
-import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
-import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
-
+import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
+import { Heading } from "@radix-ui/themes/dist/esm/components/heading.js";
 // import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 
-import { useSticky } from '@/hooks/useSticky'
-import { cx } from '@/utils/cx'
+import { useSticky } from "@/hooks/useSticky";
+import { cx } from "@/utils/cx";
 
 function ContainerHeaderSidebar({ children }: { children: React.ReactNode }) {
-  const { ref, isSticky } = useSticky()
+  const { ref, isSticky } = useSticky();
   return (
     <Flex
       asChild
       className={cx(
         // 'bg-iris-3',
         // 'rounded-md border-1',
-        'z-0 content-center items-start overflow-auto will-change-opacity',
-        'transition-opacity duration-250',
-        'top-[calc(var(--spacing)_*_22)]',
-        'md:top-[calc(var(--spacing)_*_22)]',
+        "z-0 content-center items-start overflow-auto will-change-opacity",
+        "transition-opacity duration-250",
+        "top-[calc(var(--spacing)_*_22)]",
+        "md:top-[calc(var(--spacing)_*_22)]",
         // isSticky ? 'opacity-100' : 'opacity-0',
       )}
-      data-name={isSticky ? 'Side Barzzzz' : 'Side Bar'}
+      data-name={isSticky ? "Side Barzzzz" : "Side Bar"}
       display="inline-flex"
-      flexBasis={{ initial: 'auto', md: '"0px"' }}
+      flexBasis={{ initial: "auto", md: '"0px"' }}
       flexGrow="1"
       flexShrink="0"
-      height={{ initial: 'min-content', md: '88vh' }}
+      height={{ initial: "min-content", md: "88vh" }}
       id="header--sidebar"
       justify="between"
-      maxHeight={{ initial: 'unset', md: 'unset' }}
-      maxWidth={{ initial: 'unset', md: '320px' }}
-      mr={{ initial: '0', md: '-1' }}
-      mt={{ initial: '0', md: '9' }}
-      position={{ initial: 'relative', md: 'sticky' }}
-      pt={{ initial: '0', md: '0' }}
+      maxHeight={{ initial: "unset", md: "unset" }}
+      maxWidth={{ initial: "unset", md: "320px" }}
+      mr={{ initial: "0", md: "-1" }}
+      mt={{ initial: "0", md: "9" }}
+      position={{ initial: "relative", md: "sticky" }}
+      pt={{ initial: "0", md: "0" }}
       ref={ref}
       // style={{ opacity: 1, transform: 'perspective(1200px)' }}
       // top={{ initial: 'unset', md: 'unset' }}
@@ -45,22 +44,17 @@ function ContainerHeaderSidebar({ children }: { children: React.ReactNode }) {
     >
       <header>{children}</header>
     </Flex>
-  )
+  );
 }
 
-function HeaderSidebar({
-  children = <></>,
-  className = '',
-  hasBorder = true,
-  title = '',
-}) {
+function HeaderSidebar({ children = <></>, className = "", hasBorder = true, title = "" }) {
   // const isTitleEmpty = title === ''
-  const isTitleEmpty = true
+  const isTitleEmpty = true;
   return (
     <ContainerHeaderSidebar>
       <Flex
         className={cx(
-          'place-content-start items-start overflow-visible',
+          "place-content-start items-start overflow-visible",
           // hasBorder && 'rounded-3 border-gray-7 border-1',
           className,
         )}
@@ -71,7 +65,7 @@ function HeaderSidebar({
         gap="0"
         height="min-content"
         id="header-top"
-        p={{ md: '0' }}
+        p={{ md: "0" }}
         pb="5"
         position="relative"
         pt="0"
@@ -82,9 +76,9 @@ function HeaderSidebar({
         {!isTitleEmpty && (
           <Flex
             className={cx(
-              'z-30 place-content-start items-start overflow-hidden',
-              isTitleEmpty && 'hidden',
-              'border-gray-7 border-b-1',
+              "z-30 place-content-start items-start overflow-hidden",
+              isTitleEmpty && "hidden",
+              "border-gray-7 border-b-1",
             )}
             direction="column"
             flexBasis="auto"
@@ -132,7 +126,7 @@ function HeaderSidebar({
         </Flex>
       </Flex>
     </ContainerHeaderSidebar>
-  )
+  );
 }
 
-export { ContainerHeaderSidebar, HeaderSidebar }
+export { ContainerHeaderSidebar, HeaderSidebar };

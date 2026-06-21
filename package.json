@@ -1,50 +1,36 @@
 {
   "name": "@jeromefitz/websites",
   "version": "0.0.0",
-  "type": "module",
+  "private": true,
   "description": "Monorepo for series of websites for Jerome Fitzgerald (he/him).",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jeromefitz/websites"
-  },
+  "license": "MIT",
   "author": {
     "name": "Jerome Fitzgerald",
     "email": "j@jeromefitzgerald.com",
     "url": "https://jeromefitzgerald.com"
   },
-  "license": "MIT",
-  "private": true,
-  "packageManager": "pnpm@11.8.0+sha512.c1f5e7c4cb241c8f174b743851d82f42b802324afc8b0f116b96adb15aa06664948dde36960a3ba1079ba5b4b29dd0140135b94b5b5f5263592249d68e555f26",
-  "engines": {
-    "node": ">=24.14.0 <25",
-    "pnpm": ">=11 <12"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeromefitz/websites"
   },
+  "type": "module",
   "scripts": {
-    "biome:check": "biome check",
-    "biome:write": "biome check --write",
     "clean:install": "TURBO_TELEMETRY_DISABLED=1 turbo run clean && ./scripts/clean.sh",
-    "format": "pnpm format:biome:write && pnpm format:prettier:write",
-    "format:biome:base": "biome format",
-    "format:biome:check": "pnpm format:biome:base",
-    "format:biome:write": "pnpm format:biome:base --write",
-    "format:prettier:base": "prettier \"./**/package.json\" \"**.{html,md,mdx,yml,yaml}\" \"!pnpm-lock.yaml\" --ignore-unknown",
-    "format:prettier:check": "pnpm format:prettier:base --check",
-    "format:prettier:write": "pnpm format:prettier:base --write",
-    "preinstall": "npx only-allow pnpm",
-    "lint": "pnpm run lint:biome && pnpm run format:prettier:check && pnpm run lint:packages",
-    "lint:biome": "biome lint",
+    "format:fix": "oxfmt .",
+    "format": "oxfmt --check",
+    "lint:fix": "oxlint --fix .",
     "lint:packages": "syncpack lint",
+    "lint": "oxlint .",
+    "preinstall": "npx only-allow pnpm",
     "prepare": "pnpm is-in-ci || pnpm dlx husky@9.1.7",
-    "semantic-release": "pnpm run semantic-release:mono",
     "semantic-release:dry": "pnpm semantic-release:mono --dry-run",
     "semantic-release:mono": "pnpm --filter jeromefitzgerald.com -r --workspace-concurrency=1 exec -- npx --no-install semantic-release",
+    "semantic-release": "pnpm run semantic-release:mono",
     "turbo": "TURBO_TELEMETRY_DISABLED=1 turbo"
   },
   "devDependencies": {
     "@arethetypeswrong/core": "0.18.3",
-    "@biomejs/biome": "2.4.16",
     "@jeromefitz/conventional-gitmoji": "5.0.1",
-    "@jeromefitz/prettier-config": "3.0.3",
     "@jeromefitz/release-notes-generator": "4.0.3",
     "@jeromefitz/semantic": "12.0.2",
     "@jeromefitz/tsconfig": "3.0.0",
@@ -55,11 +41,18 @@
     "is-in-ci": "2.0.0",
     "lodash-es": "4.18.1",
     "node-modules-inspector": "1.4.2",
+    "oxfmt": "0.55.0",
+    "oxlint": "1.70.0",
     "publint": "0.3.21",
     "semantic-release": "25.0.5",
     "syncpack": "15.3.2",
     "tsdown": "0.22.3",
     "turbo": "2.9.18",
     "typescript": "6.0.3"
-  }
+  },
+  "engines": {
+    "node": ">=24.14.0 <25",
+    "pnpm": ">=11 <12"
+  },
+  "packageManager": "pnpm@11.8.0+sha512.c1f5e7c4cb241c8f174b743851d82f42b802324afc8b0f116b96adb15aa06664948dde36960a3ba1079ba5b4b29dd0140135b94b5b5f5263592249d68e555f26"
 }

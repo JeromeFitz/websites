@@ -1,43 +1,37 @@
-import fs from 'node:fs'
-import path from 'node:path'
+import fs from "node:fs";
+import path from "node:path";
 
-import jwt from 'jsonwebtoken'
-import { NextResponse } from 'next/server.js'
-import { envClient } from 'next-config/env.client'
-import { envServer } from 'next-config/env.server'
+import jwt from "jsonwebtoken";
+import { envClient } from "next-config/env.client";
+import { envServer } from "next-config/env.server";
+import { NextResponse } from "next/server.js";
 
-const configDirectory = path.resolve(
-  process.cwd(),
-  'src/app/api/v1/token-generation/apple-music',
-)
+const configDirectory = path.resolve(process.cwd(), "src/app/api/v1/token-generation/apple-music");
 
 const privateKey = fs.readFileSync(
   // @hack
-  path.join(
-    configDirectory,
-    envClient.IS_DEV ? 'AuthKey_28CR8P6JM2.p8' : 'route.ts',
-  ),
-  'utf8',
-)
+  path.join(configDirectory, envClient.IS_DEV ? "AuthKey_28CR8P6JM2.p8" : "route.ts"),
+  "utf8",
+);
 
 const getMusicKitDeveloperToken = async () => {
   return await jwt.sign({}, privateKey, {
-    algorithm: 'ES256',
-    expiresIn: '179d',
+    algorithm: "ES256",
+    expiresIn: "179d",
     header: {
-      alg: 'ES256',
+      alg: "ES256",
       kid: envServer.APPLE_AUTH_KID,
     },
     issuer: envServer.APPLE_AUTH_ISS,
-  })
-}
+  });
+};
 
 export async function GET() {
   if (!envClient.IS_DEV) {
-    return NextResponse.json({})
+    return NextResponse.json({});
   }
 
-  const APPLE_TOKEN_DEVELOPER = await getMusicKitDeveloperToken()
+  const APPLE_TOKEN_DEVELOPER = await getMusicKitDeveloperToken();
   const response = await fetch(
     // ☁️ Who Is The Sky?
     `${envServer.APPLE_API}/v1/catalog/us/albums/1816027264`,
@@ -46,20 +40,19 @@ export async function GET() {
         Authorization: `Bearer ${APPLE_TOKEN_DEVELOPER}`,
       },
     },
-  )
+  );
 
-  let statusMessage
-  const { status, statusText } = response
+  let statusMessage;
+  const { status, statusText } = response;
   if (response.status === 401) {
-    statusMessage =
-      '❎ The generated token is unauthorized to access the Apple Music API'
+    statusMessage = "❎ The generated token is unauthorized to access the Apple Music API";
   } else if (response.status === 429) {
-    statusMessage = '❎ The generated token was rejected by the Apple Music API'
+    statusMessage = "❎ The generated token was rejected by the Apple Music API";
   } else {
-    statusMessage = `✅ Test passed`
+    statusMessage = `✅ Test passed`;
   }
 
-  const data = await response.json()
+  const data = await response.json();
 
   return NextResponse.json({
     APPLE_TOKEN_DEVELOPER,
@@ -67,5 +60,5 @@ export async function GET() {
     status,
     statusMessage,
     statusText,
-  })
+  });
 }

@@ -1,3 +1,3 @@
-const fix = []
+const fix = [];
 
-module.exports = fix
+module.exports = fix;

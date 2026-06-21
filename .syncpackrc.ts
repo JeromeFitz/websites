@@ -1,0 +1,65 @@
+export default {
+  $schema: "./node_modules/syncpack/schema.json",
+  indent: "  ",
+  semverGroups: [
+    {
+      dependencies: ["brace-expansion*", "semver*"],
+      dependencyTypes: ["pnpmOverrides", "resolutions"],
+      isIgnored: true,
+      label: "ignore: pinned versions",
+      packages: ["**"],
+    },
+    {
+      dependencies: ["server-only"],
+      dependencyTypes: ["peer"],
+      isIgnored: true,
+      label: "ignore: server-only",
+      packages: ["**"],
+    },
+    {
+      dependencies: ["**"],
+      dependencyTypes: ["dev", "local", "overrides", "prod"],
+      label: "types:  !peer",
+      packages: ["**"],
+      range: "",
+    },
+    {
+      dependencies: ["**"],
+      dependencyTypes: ["peer", "pnpmOverrides"],
+      label: "types:  peer",
+      packages: ["**"],
+      range: "^",
+    },
+  ],
+  source: [
+    "!packages/*/dist/package.json",
+    "!sites/jerandky/package.json",
+    "packages/*/package.json",
+    "sites/*/package.json",
+    "package.json",
+  ],
+  versionGroups: [
+    {
+      dependencies: ["server-only"],
+      dependencyTypes: ["peer"],
+      label: "@todo: server-only",
+      packages: ["**"],
+    },
+    {
+      dependencies: ["**"],
+      dependencyTypes: ["peer"],
+      label: "peer:  ^range",
+      packages: ["**"],
+    },
+    {
+      dependencies: ["$LOCAL"],
+      dependencyTypes: ["dev", "prod"],
+      label: "local: workspace protocol when local",
+      pinVersion: "workspace:*",
+    },
+    {
+      dependencies: ["@vercel/edge"],
+      isIgnored: true,
+    },
+  ],
+} satisfies import("syncpack").RcFile;

@@ -1,6 +1,6 @@
-import NextLink from 'next/link'
+import NextLink from "next/link";
 
-import { cx } from '@/utils/cx'
+import { cx } from "@/utils/cx";
 
 // import { useStore } from '@/store/index'
 
@@ -13,34 +13,34 @@ import { cx } from '@/utils/cx'
 
 // @ts-ignore
 function AccordionListItem({ children, href, icon, ...props }) {
-  const Icon = icon
+  const Icon = icon;
   return (
     <NextLink
-      className={cx('cursor-pointer text-inherit no-underline')}
+      className={cx("cursor-pointer text-inherit no-underline")}
       href={href}
       // onClick={handleOnClick}
       {...props}
     >
       <li
         className={cx(
-          'cursor-pointer no-underline',
-          'text-gray-11',
-          'flex w-full select-none flex-row items-center justify-start',
-          'transition-colors',
-          'my-1 gap-2 py-1',
-          'md:my-1 md:gap-3 md:py-2',
-          'rounded hover:bg-gray-4 hover:text-gray-12',
+          "cursor-pointer no-underline",
+          "text-gray-11",
+          "flex w-full select-none flex-row items-center justify-start",
+          "transition-colors",
+          "my-1 gap-2 py-1",
+          "md:my-1 md:gap-3 md:py-2",
+          "rounded hover:bg-gray-4 hover:text-gray-12",
         )}
       >
         <Icon
           aria-hidden
-          className={cx('ml-1 size-4 min-w-4 text-[currentColor] md:ml-2')}
-          label={''}
+          className={cx("ml-1 size-4 min-w-4 text-[currentColor] md:ml-2")}
+          label={""}
         />
         <span className="truncate">{children}</span>
       </li>
     </NextLink>
-  )
+  );
 }
 
-export { AccordionListItem }
+export { AccordionListItem };

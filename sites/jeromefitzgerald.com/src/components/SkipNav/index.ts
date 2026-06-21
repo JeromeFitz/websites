@@ -1,1 +1,1 @@
-export { SkipNavContent, SkipNavLink } from './SkipNav'
+export { SkipNavContent, SkipNavLink } from "./SkipNav";

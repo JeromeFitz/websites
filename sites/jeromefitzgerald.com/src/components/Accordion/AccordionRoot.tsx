@@ -1,18 +1,18 @@
-'use client'
+"use client";
 
-import { Accordion as AccordionRoot } from '@radix-ui/react-accordion'
+import { Accordion as AccordionRoot } from "@radix-ui/react-accordion";
 
 interface AccordionRootPropsImpl {
-  children?: any
-  className?: any
-  type?: 'multiple' | 'single'
-  ref?: any
+  children?: any;
+  className?: any;
+  type?: "multiple" | "single";
+  ref?: any;
 }
 
 const AccordionRootImpl = ({
   children,
   className,
-  type = 'single',
+  type = "single",
   ref,
   ...props
 }: AccordionRootPropsImpl) => (
@@ -20,6 +20,6 @@ const AccordionRootImpl = ({
   <AccordionRoot className={className} {...props} ref={ref} type={type}>
     {children}
   </AccordionRoot>
-)
+);
 
-export { AccordionRootImpl as AccordionRoot }
+export { AccordionRootImpl as AccordionRoot };

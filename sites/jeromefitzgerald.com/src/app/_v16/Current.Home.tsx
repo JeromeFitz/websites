@@ -1,15 +1,15 @@
-import { Em, Flex, Text } from '@radix-ui/themes'
+import { Em, Flex, Text } from "@radix-ui/themes";
 
-import { cx } from '@/utils/cx'
+import { cx } from "@/utils/cx";
 
 const CurrentHome = ({
   disabled = false,
   headline,
   subline,
 }: {
-  disabled?: boolean
-  headline: string
-  subline: string
+  disabled?: boolean;
+  headline: string;
+  subline: string;
 }) => {
   return (
     <Flex
@@ -17,13 +17,13 @@ const CurrentHome = ({
       asChild
       gap="1"
       className={cx(
-        'truncate',
-        'text-gray-11 transition-colors duration-300',
-        !disabled && 'text-accentA-12 group-hover:text-accentA-11',
+        "truncate",
+        "text-gray-11 transition-colors duration-300",
+        !disabled && "text-accentA-12 group-hover:text-accentA-11",
       )}
       width="100%"
     >
-      <Text size={{ initial: '1', md: '3' }}>
+      <Text size={{ initial: "1", md: "3" }}>
         {headline.length === 0 ? (
           <Em>{subline}</Em>
         ) : (
@@ -38,19 +38,14 @@ const CurrentHome = ({
             <Text as="span" className="truncate" weight="light">
               –
             </Text>
-            <Text
-              as="span"
-              className="truncate"
-              size={{ initial: '1', md: '3' }}
-              weight="light"
-            >
+            <Text as="span" className="truncate" size={{ initial: "1", md: "3" }} weight="light">
               {headline}
             </Text>
           </>
         )}
       </Text>
     </Flex>
-  )
-}
+  );
+};
 
-export { CurrentHome }
+export { CurrentHome };

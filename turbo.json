@@ -1,8 +1,6 @@
 {
   "$schema": "https://turborepo.org/schema.json",
-  "globalDependencies": [
-    "pnpm-workspace.yaml"
-  ],
+  "globalDependencies": ["pnpm-workspace.yaml"],
   "globalPassThroughEnv": [
     "*_TOKEN",
     "APPLE_*",
@@ -22,40 +20,28 @@
     "VERCEL_*"
   ],
   "tasks": {
-    "//#biome:check": {
-      "outputLogs": "new-only"
+    "//#quality": {
+      "dependsOn": ["//#lint", "//#format"]
     },
-    "//#biome:write": {
-      "cache": false,
-      "outputLogs": "new-only"
+    "//#quality:fix": {
+      "dependsOn": ["//#lint:fix", "//#format:fix"]
     },
-    "//#lint": {
-      "dependsOn": [
-        "^build"
-      ],
-      "outputLogs": "new-only"
+    "//#lint": {},
+    "//#lint:fix": {
+      "cache": false
+    },
+    "//#format": {},
+    "//#format:fix": {
+      "cache": false
     },
     "build": {
-      "dependsOn": [
-        "^build"
-      ],
-      "inputs": [
-        "src/**",
-        "*.cjs",
-        "*.js",
-        "*.mjs",
-        "tsdown.config.ts",
-        "tsconfig.json"
-      ],
+      "dependsOn": ["^build"],
+      "inputs": ["src/**", "*.cjs", "*.js", "*.mjs", "tsdown.config.ts", "tsconfig.json"],
       "outputs": []
     },
     "build#jeromefitzgerald.com": {
-      "dependsOn": [
-        "^build"
-      ],
-      "env": [
-        "VERCEL_ENV"
-      ],
+      "dependsOn": ["^build"],
+      "env": ["VERCEL_ENV"],
       "inputs": [
         "src/**",
         "*.cjs",
@@ -75,58 +61,28 @@
       "cache": false
     },
     "lhci": {
-      "dependsOn": [
-        "^build"
-      ],
-      "inputs": [
-        "src/**/*.ts",
-        "src/**/*.tsx"
-      ],
-      "outputs": [
-        ".lighthouseci/**"
-      ]
+      "dependsOn": ["^build"],
+      "inputs": ["src/**/*.ts", "src/**/*.tsx"],
+      "outputs": [".lighthouseci/**"]
     },
-    "lint": {
-      "dependsOn": [
-        "^build",
-        "^lint"
-      ],
-      "inputs": [
-        "src/**",
-        "*.cjs",
-        "*.js",
-        "*.mjs",
-        "tsconfig.json",
-        "tsdown.config.ts",
-        "vercel.json"
-      ]
+    "lint:ts": {
+      "dependsOn": ["^build"],
+      "inputs": ["src/**/*.ts", "src/**/*.tsx", "*.ts", "tsconfig.json", "vercel.json"]
     },
     "semantic-release:mono": {
       "cache": false,
-      "dependsOn": [
-        "lint"
-      ]
+      "dependsOn": ["lint"]
     },
     "start": {
       "cache": false
     },
     "test:e2e": {
-      "dependsOn": [
-        "^build",
-        "^jeromefitzgerald.com#build"
-      ],
-      "inputs": [
-        "src/e2e/**"
-      ],
-      "outputs": [
-        "e2e-report/**",
-        "e2e-results/**"
-      ]
+      "dependsOn": ["^build", "^jeromefitzgerald.com#build"],
+      "inputs": ["src/e2e/**"],
+      "outputs": ["e2e-report/**", "e2e-results/**"]
     },
     "test:unit": {
-      "dependsOn": [
-        "^build"
-      ]
+      "dependsOn": ["^build"]
     }
   },
   "ui": "stream"

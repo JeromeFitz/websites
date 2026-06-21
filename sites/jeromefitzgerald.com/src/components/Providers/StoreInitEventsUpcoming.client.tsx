@@ -1,15 +1,14 @@
-'use client'
+"use client";
 
-import type { Event } from '@/lib/drizzle/schemas/types'
+import { TZDate } from "@date-fns/tz";
+import { formatInTimeZone } from "date-fns-tz";
+import { upperCase as _upperCase } from "lodash-es";
+import { memo } from "react";
 
-import { TZDate } from '@date-fns/tz'
-import { formatInTimeZone } from 'date-fns-tz'
-import { upperCase as _upperCase } from 'lodash-es'
-import { memo } from 'react'
-
-import { TicketIcon } from '@/components/Icon/index'
-import { TZ } from '@/config/const'
-import { useStore as _useStore, useShallow } from '@/store/index'
+import { TicketIcon } from "@/components/Icon/index";
+import { TZ } from "@/config/const";
+import type { Event } from "@/lib/drizzle/schemas/types";
+import { useStore as _useStore, useShallow } from "@/store/index";
 
 const useStore = () => {
   return _useStore(
@@ -17,23 +16,23 @@ const useStore = () => {
       eventsUpcoming: store.eventsUpcoming,
       eventsUpcomingSet: store.eventsUpcomingSet,
     })),
-  )
-}
+  );
+};
 
 const StoreInitEventsUpcoming = memo(function StoreInitEventsUpcoming({
   items = [],
 }: {
-  items?: Event[]
+  items?: Event[];
 }) {
-  const { eventsUpcoming, eventsUpcomingSet } = useStore()
+  const { eventsUpcoming, eventsUpcomingSet } = useStore();
   if (eventsUpcoming.length === 0 && items.length > 1) {
-    const events: any = []
+    const events: any = [];
     items.map((item) => {
       // const timestamp = `${_upperCase(item.dateDayOfWeekAbbr)} ${item.dateMonth}/${item.dateDayOfMonth}`
-      const timestampUTC = new TZDate(item.dateIso, 'UTC')
+      const timestampUTC = new TZDate(item.dateIso, "UTC");
       const timestamp = `${_upperCase(
         formatInTimeZone(timestampUTC, TZ, `EEE`),
-      )} ${formatInTimeZone(timestampUTC, TZ, `MM/dd`)}`
+      )} ${formatInTimeZone(timestampUTC, TZ, `MM/dd`)}`;
 
       events.push({
         href: item.slugPreview,
@@ -44,11 +43,11 @@ const StoreInitEventsUpcoming = memo(function StoreInitEventsUpcoming({
         keywords: item.seoKeywords || [],
         title: `${timestamp}: ${item.title}`,
         titleDescription: `${timestamp}: ${item.title}`,
-      })
-    })
-    eventsUpcomingSet(events)
+      });
+    });
+    eventsUpcomingSet(events);
   }
-  return null
-})
+  return null;
+});
 
-export { StoreInitEventsUpcoming }
+export { StoreInitEventsUpcoming };

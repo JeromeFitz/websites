@@ -1,6 +1,6 @@
-import configPlaywright from '@jeromefitz/playwright-config'
+import configPlaywright from "@jeromefitz/playwright-config";
 
 export default configPlaywright({
-  basePath: '',
+  basePath: "",
   port: 3000,
-})
+});

@@ -1,23 +1,23 @@
-import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
-import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
-import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
-import { map as _map, size as _size } from 'lodash-es'
-import pluralize from 'pluralize'
-import { Fragment, Suspense } from 'react'
+import { Box } from "@radix-ui/themes/dist/esm/components/box.js";
+import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
+import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
+import { map as _map, size as _size } from "lodash-es";
+import pluralize from "pluralize";
+import { Fragment, Suspense } from "react";
 
-import { UL } from '@/components/List/index'
-import { cx } from '@/utils/cx'
+import { UL } from "@/components/List/index";
+import { cx } from "@/utils/cx";
 
 // import { CreditsHeader } from './Credits.Header'
-import { CreditsItems } from './Credits.Items'
-import { CreditsLoading } from './Credits.Loading'
-import { getRollupTitle } from './Credits.utils'
+import { CreditsItems } from "./Credits.Items";
+import { CreditsLoading } from "./Credits.Loading";
+import { getRollupTitle } from "./Credits.utils";
 
 // @ts-ignore
 function Credits({ id, relations }) {
   return (
     <Flex
-      className={cx('place-content-center items-center overflow-visible', 'z-0')}
+      className={cx("place-content-center items-center overflow-visible", "z-0")}
       direction="column"
       flexBasis="auto"
       flexGrow="0"
@@ -33,17 +33,17 @@ function Credits({ id, relations }) {
       {/* <CreditsHeader /> */}
       <RelationsContainer>
         {_map(relations, (_items, relation) => {
-          if (!_items) return null
-          const itemsCount = _size(_items)
-          if (itemsCount === 0 || _items[0] === '') return null
+          if (!_items) return null;
+          const itemsCount = _size(_items);
+          if (itemsCount === 0 || _items[0] === "") return null;
           /**
            * @todo(dynamic-credits)
            * title only? simple sort is good
            * has data? utilize suspense
            */
-          const items = _items.sort()
-          const title = pluralize(getRollupTitle(relation), itemsCount)
-          const key = `relations--${id}--${relation}`
+          const items = _items.sort();
+          const title = pluralize(getRollupTitle(relation), itemsCount);
+          const key = `relations--${id}--${relation}`;
           return (
             <Fragment key={key}>
               <RelationContainer>
@@ -57,11 +57,11 @@ function Credits({ id, relations }) {
                 </RelationContainerContent>
               </RelationContainer>
             </Fragment>
-          )
+          );
         })}
       </RelationsContainer>
     </Flex>
-  )
+  );
 }
 
 function RelationContainer({ children }: { children: React.ReactNode }) {
@@ -80,7 +80,7 @@ function RelationContainer({ children }: { children: React.ReactNode }) {
     >
       {children}
     </Flex>
-  )
+  );
 }
 
 function RelationContainerContent({ children }: { children: React.ReactNode }) {
@@ -89,7 +89,7 @@ function RelationContainerContent({ children }: { children: React.ReactNode }) {
       className="place-content-start items-start overflow-visible"
       direction="column"
       gap="4"
-      height={{ initial: 'min-content', md: '100%' }}
+      height={{ initial: "min-content", md: "100%" }}
       position="relative"
       px="5"
       py="8"
@@ -98,22 +98,19 @@ function RelationContainerContent({ children }: { children: React.ReactNode }) {
     >
       {children}
     </Flex>
-  )
+  );
 }
 
 function RelationContainerTitle({
   children,
-  className = '',
+  className = "",
 }: {
-  children: React.ReactNode
-  className?: string
+  children: React.ReactNode;
+  className?: string;
 }) {
   return (
     <Box
-      className={cx(
-        'border-gray-7 border-y-1 bg-[var(--color-background)]',
-        className,
-      )}
+      className={cx("border-gray-7 border-y-1 bg-[var(--color-background)]", className)}
       flexBasis="auto"
       flexGrow="0"
       flexShrink="0"
@@ -127,13 +124,13 @@ function RelationContainerTitle({
     >
       <Box className="contents size-full">
         <Flex className="items-center" direction="row" gap="4" justify="start">
-          <Text className="font-medium capitalize" size={{ initial: '3', md: '5' }}>
+          <Text className="font-medium capitalize" size={{ initial: "3", md: "5" }}>
             {children}
           </Text>
         </Flex>
       </Box>
     </Box>
-  )
+  );
 }
 
 /**
@@ -143,10 +140,10 @@ function RelationsContainer({ children }: { children: React.ReactNode }) {
   return (
     <Flex
       className={cx(
-        'items-stretch',
-        'z-10 place-content-start items-start overflow-hidden rounded-3',
-        'rounded-t-[0] border-1 border-gray-7 border-t-0',
-        'bg-accentA-2',
+        "items-stretch",
+        "z-10 place-content-start items-start overflow-hidden rounded-3",
+        "rounded-t-[0] border-1 border-gray-7 border-t-0",
+        "bg-accentA-2",
       )}
       direction="row"
       gap="0"
@@ -159,7 +156,7 @@ function RelationsContainer({ children }: { children: React.ReactNode }) {
     >
       {children}
     </Flex>
-  )
+  );
 }
 
-export { Credits }
+export { Credits };

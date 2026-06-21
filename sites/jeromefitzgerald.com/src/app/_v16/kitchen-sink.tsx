@@ -1,18 +1,17 @@
-/** biome-ignore-all lint/correctness/noUnusedImports: wip */
 // import { Fragment } from 'react'
 
 // import { imageGallery } from '../(segments)/shows/_content/_images'
 // import { FeedContainer, FeedTag, FeedTagContainer, FeedWrapper } from './Feed'
-import { Footer } from './Footer'
-import { FooterNavigation, HeaderNavigation } from './Header.Navigation'
-import { Main } from './Main'
+import { Footer } from "./Footer";
+import { FooterNavigation, HeaderNavigation } from "./Header.Navigation";
+import { Main } from "./Main";
 import {
   // ModuleAbout,
   ModuleCredits,
   // ModuleHome,
   // ModuleImageGallery,
   // ModuleShow,
-} from './Module'
+} from "./Module";
 
 const Home = () => {
   return (
@@ -35,7 +34,7 @@ const Home = () => {
       <FooterNavigation />
       <Footer />
     </>
-  )
-}
+  );
+};
 
-export { Home as KitchenSink }
+export { Home as KitchenSink };

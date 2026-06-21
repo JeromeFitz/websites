@@ -1,3 +1,3 @@
-const TZ = 'America/New_York'
+const TZ = "America/New_York";
 
-export { TZ }
+export { TZ };

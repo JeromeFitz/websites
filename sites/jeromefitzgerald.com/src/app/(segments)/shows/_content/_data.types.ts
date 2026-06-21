@@ -7,29 +7,29 @@
  */
 
 type Person = {
-  nameFirst: string
-  nameLast: string
-  nameNick: string
-}
-type People = Person[]
+  nameFirst: string;
+  nameLast: string;
+  nameNick: string;
+};
+type People = Person[];
 
 enum ShowType {
   improv,
-  'musical-improv',
+  "musical-improv",
   sketch,
-  'stand-up',
+  "stand-up",
   variety,
 }
 
 type Show = {
-  title: string
-  type: ShowType
+  title: string;
+  type: ShowType;
   credits: {
-    cast: People
-    castEmeritus: People
-    crew: People
-    thanks: People
-  }
-}
+    cast: People;
+    castEmeritus: People;
+    crew: People;
+    thanks: People;
+  };
+};
 
-export type { Show }
+export type { Show };

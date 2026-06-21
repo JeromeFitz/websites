@@ -1,46 +1,43 @@
-import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
-import { Em } from '@radix-ui/themes/dist/esm/components/em.js'
-import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
-import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
-import { filter as _filter } from 'lodash-es'
+import { Box } from "@radix-ui/themes/dist/esm/components/box.js";
+import { Em } from "@radix-ui/themes/dist/esm/components/em.js";
+import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
+import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
+import { filter as _filter } from "lodash-es";
 
-import { currently } from '@/data/currently'
-import { cx } from '@/utils/cx'
+import { currently } from "@/data/currently";
+import { cx } from "@/utils/cx";
 
 function Currently() {
-  const items = _filter(currently, { isActive: true })
+  const items = _filter(currently, { isActive: true });
   return (
     <Flex
       align="end"
-      className={cx(
-        'place-content-center items-center overflow-visible',
-        'order-[0]',
-      )}
+      className={cx("place-content-center items-center overflow-visible", "order-[0]")}
       direction="column"
       gap="10"
-      height={{ initial: 'min-content', md: '266px' }}
+      height={{ initial: "min-content", md: "266px" }}
       justify="center"
       p="0"
-      px={{ initial: '1', md: '0' }}
+      px={{ initial: "1", md: "0" }}
       style={{ opacity: 1 }}
       width="100%"
       wrap="nowrap"
     >
       <Box
         className={cx(
-          'w-full',
+          "w-full",
           // 'hidden!', 'md:inline!'
         )}
-        gridColumnStart={{ initial: '1', md: '1' }}
-        gridColumnEnd={{ initial: '13', md: '13' }}
+        gridColumnStart={{ initial: "1", md: "1" }}
+        gridColumnEnd={{ initial: "13", md: "13" }}
       >
         <Flex gap="5" direction="column" width="100%" py="6">
           <Text
             className={cx(
-              'text-accentA-12',
+              "text-accentA-12",
               // 'uppercase md:capitalize'
             )}
-            size={{ initial: '7', md: '8' }}
+            size={{ initial: "7", md: "8" }}
             // weight="bold"
           >
             <Em>
@@ -48,7 +45,7 @@ function Currently() {
               <sup
                 aria-hidden={true}
                 className={cx(
-                  'align-super text-3 md:text-5',
+                  "align-super text-3 md:text-5",
                   // 'hidden',
                   // 'md:inline-block',
                 )}
@@ -61,11 +58,11 @@ function Currently() {
       </Box>
 
       <Flex
-        className={cx('place-content-start items-start')}
-        direction={{ initial: 'column', md: 'row' }}
+        className={cx("place-content-start items-start")}
+        direction={{ initial: "column", md: "row" }}
         gap="6"
         height="min-content"
-        justify={{ initial: 'start', md: 'between' }}
+        justify={{ initial: "start", md: "between" }}
         p="0"
         position="relative"
         style={{ opacity: 1 }}
@@ -78,17 +75,13 @@ function Currently() {
           direction="row"
           gap="10"
           justify="start"
-          maxWidth={{ initial: 'unset', md: '320px' }}
+          maxWidth={{ initial: "unset", md: "320px" }}
           position="relative"
           pr="0"
           style={{ opacity: 1 }}
-          width={{ initial: 'unset', md: '318px' }}
+          width={{ initial: "unset", md: "318px" }}
         >
-          <Text
-            className="text-accentA-12"
-            size={{ initial: '7', md: '8' }}
-            weight="medium"
-          >
+          <Text className="text-accentA-12" size={{ initial: "7", md: "8" }} weight="medium">
             <Em>
               Currently…
               <sup
@@ -101,20 +94,20 @@ function Currently() {
           </Text>
         </Flex>
         {items.map((c, idx) => {
-          if (!c?.isActive) return null
+          if (!c?.isActive) return null;
 
-          const key = `currently-${idx}-${c.id}`
+          const key = `currently-${idx}-${c.id}`;
 
-          const Component = c.component
-          const titleSub = c?.titleSub.split(' – ')
-          const props = { ...c, titleSub }
+          const Component = c.component;
+          const titleSub = c?.titleSub.split(" – ");
+          const props = { ...c, titleSub };
 
           // @ts-ignore
-          return <Component key={key} {...props} />
+          return <Component key={key} {...props} />;
         })}
       </Flex>
     </Flex>
-  )
+  );
 }
 
-export { Currently }
+export { Currently };

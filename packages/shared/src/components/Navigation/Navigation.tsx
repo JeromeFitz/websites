@@ -3,7 +3,7 @@ function Navigation() {
     <>
       <></>
     </>
-  )
+  );
 }
 
-export { Navigation }
+export { Navigation };

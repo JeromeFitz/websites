@@ -1,19 +1,14 @@
-import type { CacheImage } from './types'
+import { eq, sql } from "drizzle-orm";
+import { envServer } from "next-config/env.server";
 
-import { eq, sql } from 'drizzle-orm'
-import { envServer } from 'next-config/env.server'
+import { drizzle } from "@/lib/drizzle/index";
 
-import { drizzle } from '@/lib/drizzle/index'
+import { cacheImages } from "./schemas";
+import type { CacheImage } from "./types";
 
-import { cacheImages } from './schemas'
+export const segment = "images";
 
-export const segment = 'images'
-
-export async function getImageKeyValue({
-  key,
-}: {
-  key: string
-}): Promise<CacheImage[]> {
+export async function getImageKeyValue({ key }: { key: string }): Promise<CacheImage[]> {
   return await drizzle.execute(
     sql.raw(`
 SELECT
@@ -33,13 +28,9 @@ WHERE
 	site_id = ${envServer.POSTGRES_SITE_ID}
   AND
   key = '${key}'`),
-  )
+  );
 }
 
-export async function getImageKeyValue2({
-  key,
-}: {
-  key: string
-}): Promise<CacheImage[]> {
-  return await drizzle.select().from(cacheImages).where(eq(cacheImages.key, key))
+export async function getImageKeyValue2({ key }: { key: string }): Promise<CacheImage[]> {
+  return await drizzle.select().from(cacheImages).where(eq(cacheImages.key, key));
 }

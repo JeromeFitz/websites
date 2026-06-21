@@ -6,48 +6,46 @@ import {
   // SectionHero,
   SectionWrapper,
   Tags,
-} from '@jeromefitz/ds/components/Section'
-import { getDataFromCache } from '@jeromefitz/shared/notion/utils'
-import { isObjectEmpty } from '@jeromefitz/utils'
+} from "@jeromefitz/ds/components/Section";
+import { getDataFromCache } from "@jeromefitz/shared/notion/utils";
+import { isObjectEmpty } from "@jeromefitz/utils";
+import { draftMode } from "next/headers";
+import { notFound } from "next/navigation";
 
-import { draftMode } from 'next/headers'
-import { notFound } from 'next/navigation'
+import { Notion as Blocks } from "../../../../../components/Notion";
+import { Relations } from "../../../../../components/Relations";
+import type { PropertiesPodcast } from "../../../_config";
+import { CONFIG, getPodcastData } from "../../../_config";
+import { PodcastEpisodes } from "./Podcast.Episodes";
 
-import type { PropertiesPodcast } from '../../../_config'
+const { DATABASE_ID } = CONFIG.PODCASTS;
 
-import { Notion as Blocks } from '../../../../../components/Notion'
-import { Relations } from '../../../../../components/Relations'
-import { CONFIG, getPodcastData } from '../../../_config'
-import { PodcastEpisodes } from './Podcast.Episodes'
-
-const { DATABASE_ID } = CONFIG.PODCASTS
-
-type RELATIONS_TYPE = keyof PropertiesPodcast
+type RELATIONS_TYPE = keyof PropertiesPodcast;
 const RELATIONS: RELATIONS_TYPE[] = [
-  'Relation.People.Host',
-  'Relation.People.Producer',
-  'Relation.People.Thanks',
-]
+  "Relation.People.Host",
+  "Relation.People.Producer",
+  "Relation.People.Thanks",
+];
 
 async function Slug({ revalidate, segmentInfo }) {
-  const { isEnabled } = await draftMode()
+  const { isEnabled } = await draftMode();
   // console.dir(`Slug: segmentInfo => draft: ${isEnabled ? 'y' : 'n'}`)
   // console.dir(segmentInfo)
   const data = await getDataFromCache({
     database_id: DATABASE_ID,
     draft: isEnabled,
-    filterType: 'equals',
+    filterType: "equals",
     revalidate,
     segmentInfo,
-  })
-  const is404 = isObjectEmpty(data?.blocks || {})
-  if (is404) return notFound()
+  });
+  const is404 = isObjectEmpty(data?.blocks || {});
+  if (is404) return notFound();
 
   // eslint-disable-next-line no-unsafe-optional-chaining
-  const { properties }: { properties: PropertiesPodcast } = data?.page
-  const { isPublished, tags, title } = getPodcastData(properties)
+  const { properties }: { properties: PropertiesPodcast } = data?.page;
+  const { isPublished, tags, title } = getPodcastData(properties);
 
-  if (!isPublished) return notFound()
+  if (!isPublished) return notFound();
 
   return (
     <>
@@ -71,11 +69,7 @@ async function Slug({ revalidate, segmentInfo }) {
           <SectionHeaderTitle>Info</SectionHeaderTitle>
         </SectionHeader>
         <SectionContent>
-          <Relations
-            properties={properties}
-            relations={RELATIONS}
-            relationsSecondary={[]}
-          />
+          <Relations properties={properties} relations={RELATIONS} relationsSecondary={[]} />
         </SectionContent>
       </SectionWrapper>
       {/* <SectionWrapper>
@@ -87,7 +81,7 @@ async function Slug({ revalidate, segmentInfo }) {
         </SectionContent>
       </SectionWrapper> */}
     </>
-  )
+  );
 }
 
-export { Slug }
+export { Slug };

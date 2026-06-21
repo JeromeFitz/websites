@@ -1,11 +1,10 @@
-import 'server-only'
-
+import "server-only";
 // import { cache } from 'react'
 // import type { GetPageResponse } from '@notionhq/client/build/src/api-endpoints'
 // import type { PageObjectResponseShow } from '../../shows/[[...catchAll]]/Show.types'
-import { notion } from '../helper'
+import { notion } from "../helper";
 
-type PageData = any
+type PageData = any;
 
 async function getPageData(page_id) {
   // const getPageData = cache(async (page_id) => {
@@ -15,12 +14,12 @@ async function getPageData(page_id) {
   // // return {}
   const response: PageData = await notion.pages.retrieve({
     page_id,
-  })
+  });
   // console.dir(`(4) response: ${response?.id}`)
   // console.dir(response)
-  return response
+  return response;
 }
 
 // )
 
-export { getPageData }
+export { getPageData };

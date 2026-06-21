@@ -1,6 +1,6 @@
 function main() {
-  console.log('⏭️ Nothing to seed')
-  process.exit()
+  console.log("⏭️ Nothing to seed");
+  process.exit();
 }
 
-void main()
+void main();

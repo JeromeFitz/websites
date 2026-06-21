@@ -1,13 +1,13 @@
 function getRelationTitle(str) {
   const title = str
-    .split('.')
+    .split(".")
     .at(-1)
     .split(/(?=[A-Z])/)
-    .join(' ')
+    .join(" ");
 
   // console.dir(`title: ${title}`)
 
-  return title
+  return title;
 }
 
-export { getRelationTitle }
+export { getRelationTitle };

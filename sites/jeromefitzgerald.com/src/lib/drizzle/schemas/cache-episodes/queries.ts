@@ -1,14 +1,13 @@
-import type { Episode } from '@/lib/drizzle/schemas/cache-episodes/types'
-import type { Segment } from '@/utils/getBySegment'
+import { sql } from "drizzle-orm";
+import { envServer } from "next-config/env.server";
 
-import { sql } from 'drizzle-orm'
-import { envServer } from 'next-config/env.server'
-
-import { drizzle } from '@/lib/drizzle/index'
-export const segment: Segment = 'episodes'
+import { drizzle } from "@/lib/drizzle/index";
+import type { Episode } from "@/lib/drizzle/schemas/cache-episodes/types";
+import type { Segment } from "@/utils/getBySegment";
+export const segment: Segment = "episodes";
 
 const orderBy_default = `ORDER BY
-  arr.item_object -> 'properties' -> 'Date.ISO' -> 'formula' ->> 'string' DESC`
+  arr.item_object -> 'properties' -> 'Date.ISO' -> 'formula' ->> 'string' DESC`;
 
 const sqlBase = `
 SELECT
@@ -91,56 +90,45 @@ WHERE
 [REPLACE_WHERE]
 [REPLACE_ORDERBY]
 [REPLACE_LIMIT]
-`
+`;
 export async function getEpisodes(): Promise<Episode[]> {
   return await drizzle.execute(
     sql.raw(
       sqlBase
-        .replace('[REPLACE_WHERE]', '')
-        .replace('[REPLACE_ORDERBY]', orderBy_default)
-        .replace('[REPLACE_LIMIT]', ''),
+        .replace("[REPLACE_WHERE]", "")
+        .replace("[REPLACE_ORDERBY]", orderBy_default)
+        .replace("[REPLACE_LIMIT]", ""),
     ),
-  )
+  );
 }
-export async function getEpisodesWithLimit({
-  limit = 10,
-}: {
-  limit: number
-}): Promise<Episode[]> {
+export async function getEpisodesWithLimit({ limit = 10 }: { limit: number }): Promise<Episode[]> {
   return await drizzle.execute(
     sql.raw(
       sqlBase
-        .replace('[REPLACE_WHERE]', '')
-        .replace('[REPLACE_ORDERBY]', orderBy_default)
-        .replace('[REPLACE_LIMIT]', `LIMIT ${limit}`),
+        .replace("[REPLACE_WHERE]", "")
+        .replace("[REPLACE_ORDERBY]", orderBy_default)
+        .replace("[REPLACE_LIMIT]", `LIMIT ${limit}`),
     ),
-  )
+  );
 }
-export async function getEpisodesByPodcast({
-  key,
-}: {
-  key: string
-}): Promise<Episode[]> {
+export async function getEpisodesByPodcast({ key }: { key: string }): Promise<Episode[]> {
   return await drizzle.execute(
     sql.raw(
       sqlBase
-        .replace('[REPLACE_WHERE]', `AND key LIKE '${key}%'`)
-        .replace(
-          '[REPLACE_ORDERBY]',
-          'ORDER BY "metaSeason" DESC, "metaEpisode" DESC',
-        )
-        .replace('[REPLACE_LIMIT]', ''),
+        .replace("[REPLACE_WHERE]", `AND key LIKE '${key}%'`)
+        .replace("[REPLACE_ORDERBY]", 'ORDER BY "metaSeason" DESC, "metaEpisode" DESC')
+        .replace("[REPLACE_LIMIT]", ""),
     ),
-  )
+  );
 }
 export async function getEpisode({ key }: { key: string }): Promise<Episode[]> {
   return await drizzle.execute(
     sql.raw(
       sqlBase
-        .replace('[REPLACE_WHERE]', `AND key = '${key}'`)
+        .replace("[REPLACE_WHERE]", `AND key = '${key}'`)
 
-        .replace('[REPLACE_ORDERBY]', '')
-        .replace('[REPLACE_LIMIT]', ''),
+        .replace("[REPLACE_ORDERBY]", "")
+        .replace("[REPLACE_LIMIT]", ""),
     ),
-  )
+  );
 }

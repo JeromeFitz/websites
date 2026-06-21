@@ -1,25 +1,25 @@
-import { Em } from '@radix-ui/themes/dist/esm/components/em.js'
-import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
+import { Em } from "@radix-ui/themes/dist/esm/components/em.js";
+import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
 // import { Grid } from '@radix-ui/themes/dist/esm/components/grid.js'
-import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
-import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
+import { Heading } from "@radix-ui/themes/dist/esm/components/heading.js";
+import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
 
-import { cx } from '@/utils/cx'
+import { cx } from "@/utils/cx";
 
 // import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 
 function HeaderFull({
   count = 0,
-  overline = '',
-  subline = '',
-  title = '',
+  overline = "",
+  subline = "",
+  title = "",
 }: {
-  count?: number | string
-  overline?: string
-  subline?: string | React.ReactNode
-  title: string | React.ReactNode
+  count?: number | string;
+  overline?: string;
+  subline?: string | React.ReactNode;
+  title: string | React.ReactNode;
 }) {
-  const isSupString = typeof count === 'string'
+  const isSupString = typeof count === "string";
   // console.dir(`isSupString: ${isSupString ? 'y' : 'n'}`)
 
   return (
@@ -33,40 +33,40 @@ function HeaderFull({
       flexShrink="0"
       gap="12"
       height="min-content"
-      pb={{ initial: 'calc(var(--spacing) * 6)', md: 'calc(var(--spacing) * 0)' }}
+      pb={{ initial: "calc(var(--spacing) * 6)", md: "calc(var(--spacing) * 0)" }}
       position="relative"
-      pt={{ initial: 'calc(var(--spacing) * 24)', md: 'calc(var(--spacing) * 32)' }}
+      pt={{ initial: "calc(var(--spacing) * 24)", md: "calc(var(--spacing) * 32)" }}
       px="0"
       width="100%"
     >
       <header id="header--full">
         <Flex
           className={cx(
-            'relative h-min w-full overflow-hidden p-0',
-            'flex flex-row place-content-start items-start',
-            'md:grid md:flex-[0_0_auto] md:auto-rows-auto md:justify-center md:gap-6',
+            "relative h-min w-full overflow-hidden p-0",
+            "flex flex-row place-content-start items-start",
+            "md:grid md:flex-[0_0_auto] md:auto-rows-auto md:justify-center md:gap-6",
             // 'md:grid-cols-4 md:grid-rows-2',
-            'md:grid-cols-4 md:grid-rows-1',
+            "md:grid-cols-4 md:grid-rows-1",
           )}
-          style={{ opacity: 1, transform: 'perspective(1200px)' }}
+          style={{ opacity: 1, transform: "perspective(1200px)" }}
         >
           <Flex
             className={cx(
-              'place-content-start items-start place-self-start overflow-visible [align-self:unset] [grid-column:auto_/_span_3]',
+              "place-content-start items-start place-self-start overflow-visible [align-self:unset] [grid-column:auto_/_span_3]",
             )}
             direction="column"
-            flexBasis={{ initial: '0px', md: 'auto' }}
-            flexGrow={{ initial: '1', md: '0' }}
-            flexShrink={{ initial: '0', md: '0' }}
+            flexBasis={{ initial: "0px", md: "auto" }}
+            flexGrow={{ initial: "1", md: "0" }}
+            flexShrink={{ initial: "0", md: "0" }}
             gap="4"
             height="min-content"
             id="header--full--content--container"
             p="0"
             position="relative"
-            width={{ initial: '100%', md: '100%' }}
+            width={{ initial: "100%", md: "100%" }}
           >
             <Flex
-              className={cx('transform-none whitespace-pre outline-hidden')}
+              className={cx("transform-none whitespace-pre outline-hidden")}
               direction="column"
               flexBasis="auto"
               flexGrow="0"
@@ -79,15 +79,15 @@ function HeaderFull({
               <Text
                 // as="h2"
                 className="font-medium text-gray-11"
-                size={{ initial: '2', md: '4' }}
+                size={{ initial: "2", md: "4" }}
               >
                 {overline}
               </Text>
             </Flex>
             <Flex
               className={cx(
-                'whitespace-pre-wrap break-words [word-break:break-word]',
-                'transform-none outline-hidden',
+                "whitespace-pre-wrap break-words [word-break:break-word]",
+                "transform-none outline-hidden",
               )}
               direction="column"
               flexBasis="auto"
@@ -98,32 +98,28 @@ function HeaderFull({
               position="relative"
               width="auto"
             >
-              <Heading
-                as="h1"
-                className="font-medium"
-                size={{ initial: '8', md: '9' }}
-              >
+              <Heading as="h1" className="font-medium" size={{ initial: "8", md: "9" }}>
                 {title}
                 {!!count && (
                   <sup
                     aria-hidden={true}
                     className={cx(
-                      'align-super text-3 md:text-6',
-                      isSupString && 'text-2! md:text-!',
+                      "align-super text-3 md:text-6",
+                      isSupString && "text-2! md:text-!",
                     )}
                   >
                     {` `}
-                    {isSupString && '('}
+                    {isSupString && "("}
                     {count}
-                    {isSupString && ')'}
+                    {isSupString && ")"}
                   </sup>
                 )}
               </Heading>
             </Flex>
             <Flex
               className={cx(
-                'transform-none outline-hidden',
-                'w-4/5 md:w-3/5',
+                "transform-none outline-hidden",
+                "w-4/5 md:w-3/5",
                 // 'whitespace-pre'
               )}
               direction="column"
@@ -138,16 +134,16 @@ function HeaderFull({
               <Text
                 // as="h3"
                 className="text-gray-11"
-                size={{ initial: '2', md: '4' }}
+                size={{ initial: "2", md: "4" }}
                 weight="light"
               >
-                {typeof subline === 'string' ? <Em>{subline}</Em> : <>{subline}</>}
+                {typeof subline === "string" ? <Em>{subline}</Em> : <>{subline}</>}
               </Text>
             </Flex>
           </Flex>
           <Flex
             className="place-self-start overflow-hidden"
-            display={{ initial: 'none', md: 'flex' }}
+            display={{ initial: "none", md: "flex" }}
             flexBasis="auto"
             flexGrow="0"
             flexShrink="0"
@@ -159,7 +155,7 @@ function HeaderFull({
         </Flex>
       </header>
     </Flex>
-  )
+  );
 }
 
-export { HeaderFull }
+export { HeaderFull };

@@ -1,3 +1,3 @@
-const release = []
+const release = [];
 
-module.exports = release
+module.exports = release;

@@ -1,6 +1,6 @@
 function RelationLoading() {
-  const random = Math.floor(Math.random() * (10 - 5 + 1)) + 5
-  const colWidth = random === 12 ? 'w-full' : `w-${random}/12`
+  const random = Math.floor(Math.random() * (10 - 5 + 1)) + 5;
+  const colWidth = random === 12 ? "w-full" : `w-${random}/12`;
   return (
     <>
       <div className="relative top-0.5 inline-block w-full max-w-sm animate-pulse rounded-md">
@@ -11,7 +11,7 @@ function RelationLoading() {
         </div>
       </div>
     </>
-  )
+  );
 }
 
-export { RelationLoading }
+export { RelationLoading };
