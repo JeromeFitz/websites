@@ -80,6 +80,7 @@ const getDataFromCache = cache(
       let blocks = {};
       if (page) {
         const blockChildrenParentData = getBlockChildrenDataParent(page?.id);
+        // oxlint-disable-next-line unicorn/no-single-promise-in-promise-methods
         const [blockChildrenParent] = await Promise.all([blockChildrenParentData]);
         blocks = blockChildrenParent;
       }

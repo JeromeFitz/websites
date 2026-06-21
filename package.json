@@ -32,6 +32,7 @@
   "devDependencies": {
     "@arethetypeswrong/core": "0.18.3",
     "@jeromefitz/conventional-gitmoji": "5.0.1",
+    "@jeromefitz/oxlint-config": "workspace:*",
     "@jeromefitz/release-notes-generator": "4.0.3",
     "@jeromefitz/semantic": "12.0.2",
     "@jeromefitz/tsconfig": "3.0.0",
@@ -43,9 +44,6 @@
     "lodash-es": "4.18.1",
     "node-modules-inspector": "1.4.2",
     "oxfmt": "0.55.0",
-    "oxlint": "1.70.0",
-    "oxlint-tailwindcss": "1.3.3",
-    "oxlint-tsgolint": "0.23.0",
     "publint": "0.3.21",
     "semantic-release": "25.0.5",
     "syncpack": "15.3.2",

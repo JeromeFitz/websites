@@ -44,6 +44,7 @@ overrides:
   undici@^7.0.0: ^7.28.0
   ws@^8.0.0: ^8.20.0
 packages:
+  - "config/*"
   - "packages/*"
   - "sites/*"
   - "!sites/jerandky.com/*"
