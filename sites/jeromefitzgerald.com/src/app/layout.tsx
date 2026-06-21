@@ -1,68 +1,62 @@
-import type { Metadata } from 'next'
+import { Theme } from "@radix-ui/themes/dist/esm/components/theme.js";
+import { isAfter } from "date-fns/isAfter";
+import { filter as _filter, orderBy as _orderBy, take as _take } from "lodash-es";
+import type { Metadata } from "next";
 
-import type { Event } from '@/lib/drizzle/schemas/types'
-
-import { Theme } from '@radix-ui/themes/dist/esm/components/theme.js'
-import { isAfter } from 'date-fns/isAfter'
-import { filter as _filter, orderBy as _orderBy, take as _take } from 'lodash-es'
-
-import { ContainerFooter } from '@/components/Container/Container.Footer'
-import { ContainerGradient } from '@/components/Container/Container.Gradient'
+import { ContainerFooter } from "@/components/Container/Container.Footer";
+import { ContainerGradient } from "@/components/Container/Container.Gradient";
 // import { ContainerContent } from '@/components/Container/Container.Main'
-import { ContainerNavigation } from '@/components/Container/Container.Navigation'
-import { ContainerSite } from '@/components/Container/Container.Site'
-import { Overlay } from '@/components/Overlay/Overlay'
-import { Providers } from '@/components/Providers/Providers'
-import { StoreInitEventsUpcoming } from '@/components/Providers/StoreInitEventsUpcoming.client'
-import { SkipNavContent, SkipNavLink } from '@/components/SkipNav'
-import { getEventsWithLimit } from '@/lib/drizzle/schemas/queries'
-import { cx } from '@/utils/cx'
+import { ContainerNavigation } from "@/components/Container/Container.Navigation";
+import { ContainerSite } from "@/components/Container/Container.Site";
+import { Overlay } from "@/components/Overlay/Overlay";
+import { Providers } from "@/components/Providers/Providers";
+import { StoreInitEventsUpcoming } from "@/components/Providers/StoreInitEventsUpcoming.client";
+import { SkipNavContent, SkipNavLink } from "@/components/SkipNav";
+import { getEventsWithLimit } from "@/lib/drizzle/schemas/queries";
+import type { Event } from "@/lib/drizzle/schemas/types";
+import { cx } from "@/utils/cx";
 
-import { fonts } from './_next/fonts'
-import { PreloadResources } from './_next/preload-resources'
+import { fonts } from "./_next/fonts";
+import { PreloadResources } from "./_next/preload-resources";
 // import { KitchenSink } from './_v16/kitchen-sink'
 
-import '@radix-ui/themes/styles.css'
-import './styles--globals.css'
+import "@radix-ui/themes/styles.css";
+import "./styles--globals.css";
 
 export const metadata: Metadata = {
-  authors: [{ name: 'Jerome Fitzgerald', url: 'https://jeromefitzgerald.com' }],
-  creator: 'Jerome Fitzgerald',
+  authors: [{ name: "Jerome Fitzgerald", url: "https://jeromefitzgerald.com" }],
+  creator: "Jerome Fitzgerald",
   description:
-    'Jerome Fitzgerald is an actor, comedian, & writer in NYC. Hailing from Pittsburgh, PA.',
-  metadataBase: new URL('https://jeromefitzgerald.com'),
+    "Jerome Fitzgerald is an actor, comedian, & writer in NYC. Hailing from Pittsburgh, PA.",
+  metadataBase: new URL("https://jeromefitzgerald.com"),
   openGraph: {
     images: [
       {
-        url: 'https://cdn.jeromefitzgerald.com/images/2020/01/jfle--2020--cec-jr--bob-shields.jpg',
+        url: "https://cdn.jeromefitzgerald.com/images/2020/01/jfle--2020--cec-jr--bob-shields.jpg",
       },
     ],
   },
   title: {
-    default: 'Jerome Fitzgerald (he/him) | Actor. Comedian. Writer.',
-    template: '%s | Jerome (he/him)',
+    default: "Jerome Fitzgerald (he/him) | Actor. Comedian. Writer.",
+    template: "%s | Jerome (he/him)",
   },
-}
+};
 
-export default async function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
   async function getEventsUpcoming() {
-    'use server'
-    const dateNow = Date.now()
-    const items = await getEventsWithLimit({ limit: 10 })
+    "use server";
+    const dateNow = Date.now();
+    const items = await getEventsWithLimit({ limit: 10 });
     return _take(
       _orderBy(
         _filter(items, (event: Event) => !isAfter(dateNow, event.dateIso)),
         (event: Event) => [event.dateIso],
-        ['asc'],
+        ["asc"],
       ),
       3,
-    )
+    );
   }
-  const events = await getEventsUpcoming()
+  const events = await getEventsUpcoming();
 
   return (
     <html lang="en" suppressHydrationWarning={true}>
@@ -78,13 +72,13 @@ export default async function RootLayout({
         <body
           className={cx(
             fonts,
-            'antialiased',
-            'overflow-y-auto overflow-x-hidden md:overflow-y-auto',
-            'selection:bg-gray-12 selection:text-gray-1',
-            'bg-white dark:bg-black',
-            'scroll-smooth font-sans antialiased',
+            "antialiased",
+            "overflow-x-hidden overflow-y-auto md:overflow-y-auto",
+            "selection:bg-gray-12 selection:text-gray-1",
+            "bg-white dark:bg-black",
+            "scroll-smooth font-sans antialiased",
             // @hack(radix-ui) dropdown cause mr-45...
-            '!m-0',
+            "!m-0",
           )}
         >
           <SkipNavLink />
@@ -104,7 +98,7 @@ export default async function RootLayout({
         </body>
       </Theme>
     </html>
-  )
+  );
 }
 
 export async function RootLayoutV16({ children }: { children: React.ReactNode }) {
@@ -122,12 +116,12 @@ export async function RootLayoutV16({ children }: { children: React.ReactNode })
         <body
           className={cx(
             fonts,
-            'antialiased',
-            'overflow-y-auto overflow-x-hidden md:overflow-y-auto',
-            'scroll-smooth font-sans antialiased',
+            "antialiased",
+            "overflow-x-hidden overflow-y-auto md:overflow-y-auto",
+            "scroll-smooth font-sans antialiased",
             //
-            'selection:bg-gray-12 selection:text-gray-1',
-            'bg-white dark:bg-black',
+            "selection:bg-gray-12 selection:text-gray-1",
+            "bg-white dark:bg-black",
           )}
         >
           <Providers>
@@ -139,5 +133,5 @@ export async function RootLayoutV16({ children }: { children: React.ReactNode })
         </body>
       </Theme>
     </html>
-  )
+  );
 }

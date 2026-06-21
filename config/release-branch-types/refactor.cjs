@@ -1,3 +1,3 @@
-const refactor = []
+const refactor = [];
 
-module.exports = refactor
+module.exports = refactor;

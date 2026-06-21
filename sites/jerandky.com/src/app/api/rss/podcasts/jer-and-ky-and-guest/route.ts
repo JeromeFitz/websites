@@ -440,10 +440,10 @@ export function GET() {
       <itunes:episodeType>full</itunes:episodeType>
     </item>
   </channel>
-</rss>`
+</rss>`;
   const data = new Response(_data, {
-    headers: { charset: 'UTF-8', 'Content-Type': 'application/xml' },
-  })
+    headers: { charset: "UTF-8", "Content-Type": "application/xml" },
+  });
 
-  return data
+  return data;
 }

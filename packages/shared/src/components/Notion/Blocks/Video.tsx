@@ -1,24 +1,19 @@
-import 'server-only'
+import "server-only";
+import { Callout } from "@jeromefitz/ds/components/Callout";
+import type { VideoBlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
+import { NotionEmoji as EmojiWrapper } from "next-notion/blocks/Emoji";
+import { Fragment, Suspense } from "react";
 
-import type { VideoBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
-
-import { Callout } from '@jeromefitz/ds/components/Callout'
-
-import { NotionEmoji as EmojiWrapper } from 'next-notion/blocks/Emoji'
-import { Fragment, Suspense } from 'react'
-
-import { VideoYouTube } from './Video.YouTube'
+import { VideoYouTube } from "./Video.YouTube";
 
 // @todo(types)
 function VideoImpl({ block }: { block: any | VideoBlockObjectResponse }) {
-  const url = block.video.external.url
+  const url = block.video.external.url;
 
   /**
    * @todo(notion) TextAnnotations
    */
-  const caption = block[block.type]?.caption
-    ? block[block.type]?.caption[0]?.plain_text
-    : null
+  const caption = block[block.type]?.caption ? block[block.type]?.caption[0]?.plain_text : null;
 
   return (
     <Suspense fallback={<Fragment />}>
@@ -33,8 +28,8 @@ function VideoImpl({ block }: { block: any | VideoBlockObjectResponse }) {
         </Callout>
       )}
     </Suspense>
-  )
+  );
 }
 
-export { VideoImpl as Video }
-export default VideoImpl
+export { VideoImpl as Video };
+export default VideoImpl;

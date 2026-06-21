@@ -1,4 +1,4 @@
-import { EmojiWrapper } from './Emoji.server'
+import { EmojiWrapper } from "./Emoji.server";
 
 // import { lazy, Suspense } from 'react'
 
@@ -18,7 +18,7 @@ import { EmojiWrapper } from './Emoji.server'
 // }
 
 function NotionEmoji({ id, text }: { id: string; text: string }) {
-  return <EmojiWrapper id={id} text={text} />
+  return <EmojiWrapper id={id} text={text} />;
 }
 
-export { NotionEmoji }
+export { NotionEmoji };

@@ -1,19 +1,17 @@
-import 'server-only'
+import "server-only";
+import stringify from "fast-json-stable-stringify";
 
-import type { RC } from '.'
-
-import stringify from 'fast-json-stable-stringify'
-
-import { TIME } from '../lib/constants'
-import redis, { getKey } from '.'
+import type { RC } from ".";
+import redis, { getKey } from ".";
+import { TIME } from "../lib/constants";
 
 // @todo(types) any
 function setCache({ data, slug }: { data: any | RC; slug: string }) {
-  const key = getKey(slug)
+  const key = getKey(slug);
   void redis.set(key, stringify(data), {
     ex: TIME.MONTH,
-  })
-  return null
+  });
+  return null;
 }
 
-export { setCache }
+export { setCache };

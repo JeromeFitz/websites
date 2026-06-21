@@ -1,8 +1,8 @@
 {
   "name": "@jeromefitz/tailwind-config",
   "version": "0.0.0",
-  "type": "module",
   "private": true,
+  "type": "module",
   "devDependencies": {
     "@radix-ui/colors": "3.0.0",
     "@radix-ui/themes": "3.3.0",

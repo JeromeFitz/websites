@@ -1,8 +1,11 @@
 allowBuilds:
-  '@biomejs/biome': true
   core-js-pure: true
   esbuild: true
+  oxlint: true
+  rolldown: true
   sharp: true
+  syncpack: true
+  turbo: true
 autoInstallPeers: false
 dedupePeerDependents: false
 enablePrePostScripts: true # next-sitemap requirement
@@ -10,13 +13,13 @@ enable-pre-post-scripts: true
 lockfile: true
 minimumReleaseAge: 1440 # number (minutes) = 1 day
 minimumReleaseAgeExclude:
-  - 'pnpm'
+  - "pnpm"
 overrides:
-  '@babel/core@^7.0.0': ^7.29.6
-  '@babel/helpers@^7.0.0': ^7.29.2
-  '@babel/runtime@^7.0.0': ^7.29.2
-  '@octokit/plugin-paginate-rest@^14.0.0': ^14.0.0
-  '@semantic-release/npm@^13.0.0': ^13.1.5
+  "@babel/core@^7.0.0": ^7.29.6
+  "@babel/helpers@^7.0.0": ^7.29.2
+  "@babel/runtime@^7.0.0": ^7.29.2
+  "@octokit/plugin-paginate-rest@^14.0.0": ^14.0.0
+  "@semantic-release/npm@^13.0.0": ^13.1.5
   brace-expansion@^1.0.0: 1.1.13
   cross-spawn@^7.0.0: ^7.0.6
   elliptic@^6.0.0: ^6.6.1
@@ -31,7 +34,7 @@ overrides:
   nanoid@^3.0.0: ^3.3.8
   pbkdf2@^3.0.0: ^3.1.5
   picomatch@^2.0.0: ^2.3.2
-  postcss@^8.0.0: ^8.5.10
+  postcss@^8.0.0: ^8.5.15
   preact@^10.0.0: ^10.26.10
   semver@^5.0.0: ^5.7.2
   semver@^6.0.0: ^6.3.1
@@ -43,22 +46,22 @@ overrides:
   undici@^7.0.0: ^7.28.0
   ws@^8.0.0: ^8.20.0
 packages:
-  - 'packages/*'
-  - 'sites/*'
-  - '!sites/jerandky.com/*'
+  - "packages/*"
+  - "sites/*"
+  - "!sites/jerandky.com/*"
 patchedDependencies:
-  '@semantic-release/commit-analyzer@13.0.1': patches/@semantic-release__commit-analyzer@13.0.0.patch
+  "@semantic-release/commit-analyzer@13.0.1": patches/@semantic-release__commit-analyzer@13.0.0.patch
   next: patches/next.patch
 publicHoistPattern:
-  - '*biome*'
-  - '*ccommit*'
-  - '*eslint*'
-  - '*lint-staged*'
-  - '*playwright*'
-  - '*prettier*'
-  - '*semantic*'
-  - '*testing-library*'
-  - '*types*'
+  - "*ccommit*"
+  - "*eslint*"
+  - "*lint-staged*"
+  - "*playwright*"
+  - "*oxfmt*"
+  - "*oxlint*"
+  - "*semantic*"
+  - "*testing-library*"
+  - "*types*"
 registry: https://registry.npmjs.org/
 saveExact: true
 strictPeerDependencies: false
@@ -69,4 +72,4 @@ supportedArchitectures:
   cpu:
     - x64
     - arm64
-tagVersionPrefix: ''
+tagVersionPrefix: ""

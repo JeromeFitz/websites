@@ -1,44 +1,43 @@
-import type { Event } from '@/lib/drizzle/schemas/cache-events/types'
-
-import { ArticleMain } from '@/components/Article/Article.Main'
-import { ArticleMainCTA } from '@/components/Article/Article.Main.CTA'
-import { ContainerWithSidebar } from '@/components/Container/Container.Main'
-import { Credits } from '@/components/Credits/Credits'
+import { ArticleMain } from "@/components/Article/Article.Main";
+import { ArticleMainCTA } from "@/components/Article/Article.Main.CTA";
+import { ContainerWithSidebar } from "@/components/Container/Container.Main";
+import { Credits } from "@/components/Credits/Credits";
 // import { Credits } from '@/components/Credits/Credits'
-import { HeaderSidebar } from '@/components/Header/Header.Sidebar'
-import { ImageNotion } from '@/components/Image/Image.Notion'
-import { segment } from '@/lib/drizzle/schemas/cache-events/queries'
-import { Notion } from '@/lib/notion/Notion.Component'
-import { getTitleData } from '@/utils/getTitleData'
-import { isEmpty } from '@/utils/isEmpty'
+import { HeaderSidebar } from "@/components/Header/Header.Sidebar";
+import { ImageNotion } from "@/components/Image/Image.Notion";
+import { segment } from "@/lib/drizzle/schemas/cache-events/queries";
+import type { Event } from "@/lib/drizzle/schemas/cache-events/types";
+import { Notion } from "@/lib/notion/Notion.Component";
+import { getTitleData } from "@/utils/getTitleData";
+import { isEmpty } from "@/utils/isEmpty";
 
-import { EventSlugHeaderData } from './Event.Slug.Header.Data'
+import { EventSlugHeaderData } from "./Event.Slug.Header.Data";
 
 const ROLLUPS: string[] = [
-  'rollupShowsPrimaryCastTitle',
-  'rollupPeopleGuestTitle',
-  'rollupShowsProducerTitle',
-  'rollupShowsPrimaryCastTitle',
-  'rollupShowsPrimaryTitle',
-  'rollupShowsSupportingTitle',
-]
+  "rollupShowsPrimaryCastTitle",
+  "rollupPeopleGuestTitle",
+  "rollupShowsProducerTitle",
+  "rollupShowsPrimaryCastTitle",
+  "rollupShowsPrimaryTitle",
+  "rollupShowsSupportingTitle",
+];
 
 export function EventComponent({ blocks, item }: { blocks: any; item: Event }) {
-  const itemBlocks = blocks[0]
+  const itemBlocks = blocks[0];
 
-  const R: any = {}
+  const R: any = {};
   ROLLUPS.map((ROLLUP: any) => {
-    R[ROLLUP] = []
+    R[ROLLUP] = [];
 
     // @ts-ignore
     if (item[ROLLUP] && item[ROLLUP].length > 0) {
       // @ts-ignore
-      const items = item[ROLLUP]
+      const items = item[ROLLUP];
       items.map((i: any) => {
-        R[ROLLUP].push(getTitleData({ data: i, type: i.type }))
-      })
+        R[ROLLUP].push(getTitleData({ data: i, type: i.type }));
+      });
     }
-  })
+  });
 
   // console.dir(`> R`)
   // console.dir(R)
@@ -68,5 +67,5 @@ export function EventComponent({ blocks, item }: { blocks: any; item: Event }) {
         <ArticleMainCTA href={`/${segment}`} type={segment} />
       </ArticleMain>
     </ContainerWithSidebar>
-  )
+  );
 }

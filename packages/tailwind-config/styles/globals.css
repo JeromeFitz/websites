@@ -1,21 +1,17 @@
-/** biome-ignore-all lint/suspicious/noUnknownAtRules: migrate */
-/** biome-ignore-all lint/suspicious/noDuplicateCustomProperties: migrate */
-/** biome-ignore-all lint/complexity/noImportantStyles: migrate */
-/** biome-ignore-all lint/correctness/noInvalidPositionAtImportRule: migrate */
-@import 'tailwindcss';
+@import "tailwindcss";
 /* @config "../tailwind.config.ts"; */
 
-@import url('./chrome.css') layer(utilities);
-@import url('./safari.css') layer(utilities);
+@import url("./chrome.css") layer(utilities);
+@import url("./safari.css") layer(utilities);
 /* @import url('./fonts.css'); */
 
 /* @plugin "radix-themes-tw"; */
-@import './radix-themes-tw.css';
+@import "./radix-themes-tw.css";
 
-@import 'tw-animate-css';
-@plugin '@tailwindcss/forms';
-@plugin '@tailwindcss/typography';
-@plugin 'tailwindcss-radix';
+@import "tw-animate-css";
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/typography";
+@plugin "tailwindcss-radix";
 
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,
@@ -48,10 +44,10 @@
 }
 
 .icon-custom.hero svg path {
-  stroke-width: '1.5 !important';
+  stroke-width: "1.5 !important";
 }
 
-[data-size='hero'] {
+[data-size="hero"] {
   margin-top: 1px;
   width: 1rem;
 }
@@ -71,17 +67,16 @@
   /* --font-name-sans-mono: 'NameSansMono'; */
 
   --default-font-family:
-    var(--font-geist-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI (Custom)',
-    Roboto, 'Helvetica Neue', 'Open Sans (Custom)', system-ui, sans-serif,
-    'Apple Color Emoji';
+    var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI (Custom)", Roboto,
+    "Helvetica Neue", "Open Sans (Custom)", system-ui, sans-serif, "Apple Color Emoji";
 
   --code-font-family:
-    var(--font-geist-mono), 'Menlo', 'Consolas (Custom)', 'Bitstream Vera Sans Mono',
-    monospace, 'Apple Color Emoji', 'Segoe UI Emoji';
+    var(--font-geist-mono), "Menlo", "Consolas (Custom)", "Bitstream Vera Sans Mono", monospace,
+    "Apple Color Emoji", "Segoe UI Emoji";
 
-  --em-font-family: 'Times New Roman', 'Times', serif;
+  --em-font-family: "Times New Roman", "Times", serif;
 
-  --quote-font-family: 'Times New Roman', 'Times', serif;
+  --quote-font-family: "Times New Roman", "Times", serif;
 
   /* NameSans / Inter */
   /* font-feature-settings:
@@ -94,8 +89,8 @@
   /*  --white: '#ffffff; White */
 
   /* Gray 01, 99 */
-  --black: '#030303';
-  --white: '#fcfcfc';
+  --black: "#030303";
+  --white: "#fcfcfc";
 
   /* Gray 02, 98 */
   /*  --black: '#050505'; */
@@ -144,29 +139,29 @@
 @layer utilities {
   :root {
     /*  Gray 00, 100 */
-    --black: '#000000';
-    --white: '#ffffff';
+    --black: "#000000";
+    --white: "#ffffff";
     /* Gray 01, 99 */
-    --black: '#030303';
-    --white: '#fcfcfc';
+    --black: "#030303";
+    --white: "#fcfcfc";
     /* Gray 02, 98 */
-    --black: '#050505';
-    --white: '#fafafa';
+    --black: "#050505";
+    --white: "#fafafa";
     /* Gray 06, 94 */
-    --black: '#0f0f0f';
-    --white: '#f4f4f4';
+    --black: "#0f0f0f";
+    --white: "#f4f4f4";
     /* social */
-    --bluesky: '#3399FF';
-    --github: 'var(--black-a1)';
-    --github-dark: 'var(--white-a1)';
-    --inherit: 'inherit';
-    --instagram: '#c32aa3';
-    --linkedin: '#0a66c2';
-    --threads: '#c32aa3';
-    --twitter: '#1da1f2';
+    --bluesky: "#3399FF";
+    --github: "var(--black-a1)";
+    --github-dark: "var(--white-a1)";
+    --inherit: "inherit";
+    --instagram: "#c32aa3";
+    --linkedin: "#0a66c2";
+    --threads: "#c32aa3";
+    --twitter: "#1da1f2";
     /* custom */
-    --current: 'current';
-    --transparent: 'transparent';
+    --current: "current";
+    --transparent: "transparent";
     /* fonts */
     --font-family-mono: var(--font-geist-mono);
     --font-family-sans: var(--font-geist-sans);
@@ -201,12 +196,12 @@
   scroll-behavior: smooth;
 }
 
-[data-icon='hero'] {
+[data-icon="hero"] {
   /* padding: 0.325rem; */
   margin-top: 1px;
   width: 1rem;
 }
 
-[data-icon='hero'] * {
+[data-icon="hero"] * {
   stroke-width: 1.5 !important;
 }

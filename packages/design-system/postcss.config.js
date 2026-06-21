@@ -1,3 +1,3 @@
-import configPostcss from '@jeromefitz/tailwind-config/postcss.config.js'
+import configPostcss from '@jeromefitz/tailwind-config/postcss.config.js';
 
-export default configPostcss
+export default configPostcss;

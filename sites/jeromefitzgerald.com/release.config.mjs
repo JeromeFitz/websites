@@ -1,12 +1,11 @@
-import { getConfig } from '@jeromefitz/semantic'
+import { getConfig } from "@jeromefitz/semantic";
+import isCI from "is-in-ci";
 
-import isCI from 'is-in-ci'
-
-import { config as configDefault } from '../../release.config.mjs'
+import { config as configDefault } from "../../release.config.mjs";
 
 if (!isCI) {
-  const dotenv = await import('dotenv')
-  dotenv.config({ path: '../../.env', quiet: true })
+  const dotenv = await import("dotenv");
+  dotenv.config({ path: "../../.env", quiet: true });
 }
 
 // const require = createRequire(import.meta.url)
@@ -17,9 +16,9 @@ if (!isCI) {
 const configPassed = {
   ...configDefault,
   repositoryUrl: `https://github.com/JeromeFitz/websites`,
-  tagFormat: 'website-v${version}',
-}
+  tagFormat: "website-v${version}",
+};
 
-const config = getConfig(configPassed)
+const config = getConfig(configPassed);
 
-export default config
+export default config;

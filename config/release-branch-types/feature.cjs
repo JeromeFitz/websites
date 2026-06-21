@@ -1,3 +1,3 @@
-const feature = []
+const feature = [];
 
-module.exports = feature
+module.exports = feature;

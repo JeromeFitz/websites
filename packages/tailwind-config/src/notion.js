@@ -1,4 +1,3 @@
-/** biome-ignore-all lint/style/useTemplate: migrate */
 // import radixColors from '@radix-ui/colors'
 
 const notionColors = [
@@ -21,18 +20,18 @@ const notionColors = [
   'purple_background',
   'pink_background',
   'red_background',
-]
+];
 
 /**
  * @note(tailwind) you have lost your mind
  */
-const globalNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-const globalHack = []
-const globalDark = []
+const globalNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+const globalHack = [];
+const globalDark = [];
 
-const notion = {}
+const notion = {};
 notionColors.map((color) => {
-  const radixColor = color.split('_')[0]
+  const radixColor = color.split('_')[0];
   // // @note(radix-ui) map gray to slate
   // if (radixColor === 'gray') radixColor = 'slate'
 
@@ -40,11 +39,11 @@ notionColors.map((color) => {
     notion['.notion-' + color] = {
       // @note(a11y) Radix-UI uses `4`, but Page Insights warns
       backgroundColor: `var(--${radixColor}3)`,
-    }
+    };
   } else {
     notion['.notion-' + color] = {
       color: `var(--${radixColor}11)`,
-    }
+    };
 
     // globalNumbers.map((n) => {
     //   globalHack.push(
@@ -57,7 +56,7 @@ notionColors.map((color) => {
     //   )
     // })
   }
-})
+});
 
 // console.dir(`globalHack:`)
 // globalHack.map((g) => console.dir(g))
@@ -65,4 +64,4 @@ notionColors.map((color) => {
 // globalDark.map((g) => console.dir(g))
 // console.dir(`----`)
 
-export default { notion, notionColors }
+export default { notion, notionColors };

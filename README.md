@@ -7,7 +7,7 @@
     - `@jeromefitz/lighthouse-config` \*
     - `@jeromefitz/next-config` \*
     - `@jeromefitz/playwright-config` \*
-    - `@jeromefitz/prettier-config`
+    - ~~`@jeromefitz/prettier-config`~~
     - ~~`@jeromefitz/storybook-config` \*~~
     - `@jeromefitz/tailwind-config` \*
     - `@jeromefitz/tsconfig`

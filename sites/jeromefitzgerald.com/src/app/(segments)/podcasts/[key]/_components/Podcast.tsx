@@ -1,36 +1,29 @@
-import type { Episode } from '@/lib/drizzle/schemas/cache-episodes/types'
-import type { Podcast } from '@/lib/drizzle/schemas/cache-podcasts/types'
+import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
+import { Link } from "@radix-ui/themes/dist/esm/components/link.js";
+import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
+import NextLink from "next/link";
 
-import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
-import { Link } from '@radix-ui/themes/dist/esm/components/link.js'
-import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
-import NextLink from 'next/link'
+import { ShowSlugHeaderData } from "@/app/(segments)/shows/[key]/_components/Show.Slug.Header.Data";
+import { ArticleMain } from "@/components/Article/Article.Main";
+import { ArticleMainCTA } from "@/components/Article/Article.Main.CTA";
+import { Callout } from "@/components/Callout/Callout";
+import { ContainerWithSidebar } from "@/components/Container/Container.Main";
+import { HeaderSidebar } from "@/components/Header/Header.Sidebar";
+import { ImageNotion } from "@/components/Image/Image.Notion";
+import { getEpisodesByPodcast } from "@/lib/drizzle/schemas/cache-episodes/queries";
+import type { Episode } from "@/lib/drizzle/schemas/cache-episodes/types";
+import { segment } from "@/lib/drizzle/schemas/cache-podcasts/queries";
+import type { Podcast } from "@/lib/drizzle/schemas/cache-podcasts/types";
+import { Notion } from "@/lib/notion/Notion.Component";
+import { getKey } from "@/utils/getKey";
+import { isEmpty } from "@/utils/isEmpty";
 
-import { ShowSlugHeaderData } from '@/app/(segments)/shows/[key]/_components/Show.Slug.Header.Data'
-import { ArticleMain } from '@/components/Article/Article.Main'
-import { ArticleMainCTA } from '@/components/Article/Article.Main.CTA'
-import { Callout } from '@/components/Callout/Callout'
-import { ContainerWithSidebar } from '@/components/Container/Container.Main'
-import { HeaderSidebar } from '@/components/Header/Header.Sidebar'
-import { ImageNotion } from '@/components/Image/Image.Notion'
-import { getEpisodesByPodcast } from '@/lib/drizzle/schemas/cache-episodes/queries'
-import { segment } from '@/lib/drizzle/schemas/cache-podcasts/queries'
-import { Notion } from '@/lib/notion/Notion.Component'
-import { getKey } from '@/utils/getKey'
-import { isEmpty } from '@/utils/isEmpty'
-
-export async function PodcastComponent({
-  blocks,
-  item,
-}: {
-  blocks: any
-  item: Podcast
-}) {
-  const itemBlocks = blocks[0]
+export async function PodcastComponent({ blocks, item }: { blocks: any; item: Podcast }) {
+  const itemBlocks = blocks[0];
   // @todo(performance) if this was actually large, load dynamically
   const episodes: Episode[] = await getEpisodesByPodcast({
-    key: getKey('podcasts', item.key.replace('/podcasts/', '')),
-  })
+    key: getKey("podcasts", item.key.replace("/podcasts/", "")),
+  });
   return (
     <ContainerWithSidebar>
       <HeaderSidebar title={item.title}>
@@ -71,12 +64,10 @@ export async function PodcastComponent({
                   return (
                     <Text asChild key={episode.id}>
                       <Link asChild highContrast>
-                        <NextLink href={episode.slugPreview}>
-                          {episode.slugPreview}
-                        </NextLink>
+                        <NextLink href={episode.slugPreview}>{episode.slugPreview}</NextLink>
                       </Link>
                     </Text>
-                  )
+                  );
                 })}
               </ul>
             </Flex>
@@ -85,5 +76,5 @@ export async function PodcastComponent({
         <ArticleMainCTA href={`/${segment}`} type={segment} />
       </ArticleMain>
     </ContainerWithSidebar>
-  )
+  );
 }

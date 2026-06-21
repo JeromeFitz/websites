@@ -1,12 +1,11 @@
-'use client'
+"use client";
 
-import type { ReactNode } from 'react'
-import type { StoreApi } from 'zustand'
-
-import { createContext, useContext, useRef } from 'react'
-import { useStore as useZustandStore } from 'zustand'
-import { useShallow } from 'zustand/shallow'
-import { createStore } from 'zustand/vanilla'
+import type { ReactNode } from "react";
+import { createContext, useContext, useRef } from "react";
+import type { StoreApi } from "zustand";
+import { useStore as useZustandStore } from "zustand";
+import { useShallow } from "zustand/shallow";
+import { createStore } from "zustand/vanilla";
 
 import {
   BookOpenIcon,
@@ -25,38 +24,38 @@ import {
   StarIcon,
   // SunIcon,
   TicketIcon,
-} from '@/components/Icon/index'
+} from "@/components/Icon/index";
 
 // import { getEventsWithLimit } from '@/lib/drizzle/schemas/queries'
 
-const Context = createContext<any | null>(null)
+const Context = createContext<any | null>(null);
 
 interface ProviderProps {
-  children: ReactNode
+  children: ReactNode;
 }
 const Provider = ({ children }: ProviderProps) => {
-  const storeRef = useRef<StoreApi<any>>(null)
+  const storeRef = useRef<StoreApi<any>>(null);
   if (!storeRef.current) {
-    storeRef.current = initializeStoreMenu()
+    storeRef.current = initializeStoreMenu();
   }
-  return <Context.Provider value={storeRef.current}>{children}</Context.Provider>
-}
+  return <Context.Provider value={storeRef.current}>{children}</Context.Provider>;
+};
 
 const useStore = <T,>(selector: (state: any) => T): T => {
-  const store = useContext(Context)
-  if (!store) throw new Error('Store is missing the provider')
+  const store = useContext(Context);
+  if (!store) throw new Error("Store is missing the provider");
 
-  return useZustandStore(store, selector)
-}
+  return useZustandStore(store, selector);
+};
 
-const FALLBACK_ACTION = () => {}
+const FALLBACK_ACTION = () => {};
 
 const getDefaultInitialStateStoreMenu = () => ({
-  appleMusicType: 'recent-played-albums',
+  appleMusicType: "recent-played-albums",
   appleMusicTypeSet: FALLBACK_ACTION,
-  bookStatus: 'in-progress',
+  bookStatus: "in-progress",
   bookStatusSet: FALLBACK_ACTION,
-  cmdkInput: '',
+  cmdkInput: "",
   cmdkInputSet: FALLBACK_ACTION,
   cmdkPages: [],
   cmdkPagesSet: FALLBACK_ACTION,
@@ -86,306 +85,293 @@ const getDefaultInitialStateStoreMenu = () => ({
   zzz_menuSecondary: [
     {
       hasSubNavigation: true,
-      href: '/currently/listening-to',
+      href: "/currently/listening-to",
       icon: Share1Icon,
-      id: 'currently',
+      id: "currently",
       isActive: true,
       isActiveMobile: true,
-      title: 'Currently…',
+      title: "Currently…",
     },
     {
       hasSubNavigation: true,
-      href: '/events',
+      href: "/events",
       icon: TicketIcon,
-      id: 'events',
+      id: "events",
       isActive: true,
       isActiveMobile: true,
-      title: 'Events',
+      title: "Events",
     },
     {
       hasSubNavigation: true,
-      href: '/podcasts',
+      href: "/podcasts",
       icon: MicrophoneIcon,
-      id: 'podcasts',
+      id: "podcasts",
       isActive: true,
       isActiveMobile: true,
-      title: 'Podcasts',
+      title: "Podcasts",
     },
     {
       hasSubNavigation: true,
-      href: '/shows',
+      href: "/shows",
       icon: StarIcon,
-      id: 'shows',
+      id: "shows",
       isActive: true,
       isActiveMobile: true,
-      title: 'Shows',
+      title: "Shows",
     },
     {
       hasSubNavigation: false,
       href: null,
-      id: 'sep',
+      id: "sep",
       isActive: true,
       isActiveMobile: true,
-      title: 'SEP',
+      title: "SEP",
     },
     {
       hasSubNavigation: false,
-      href: '/about',
+      href: "/about",
       icon: IdCardIcon,
-      id: 'about',
+      id: "about",
       isActive: true,
       isActiveMobile: true,
-      title: 'About',
+      title: "About",
     },
     {
       hasSubNavigation: false,
-      href: '/',
+      href: "/",
       icon: HomeIcon,
-      id: 'home',
+      id: "home",
       isActive: true,
       isActiveMobile: true,
-      title: 'Home',
+      title: "Home",
     },
     {
       hasSubNavigation: false,
-      href: '/about#contact',
+      href: "/about#contact",
       icon: EnvelopeOpenIcon,
-      id: 'contact',
+      id: "contact",
       isActive: true,
       isActiveMobile: true,
-      title: 'Contact',
+      title: "Contact",
     },
   ],
-  zzz_menuSecondaryActive: { id: 'home', title: 'Home' },
+  zzz_menuSecondaryActive: { id: "home", title: "Home" },
   zzz_menuTertiary: {
     currently: [
       {
-        href: '/currently',
+        href: "/currently",
         icon: null,
-        id: 'all',
+        id: "all",
         isActive: false,
         isActiveMobile: false,
-        title: 'All',
+        title: "All",
         titleDescription: null,
       },
       {
-        href: '/currently/cooking',
+        href: "/currently/cooking",
         icon: null,
-        id: 'cooking',
+        id: "cooking",
         isActive: false,
         isActiveMobile: false,
-        title: 'Cooking…',
-        titleDescription: 'Currently Cooking… ',
+        title: "Cooking…",
+        titleDescription: "Currently Cooking… ",
       },
       {
-        href: '/currently/listening-to',
+        href: "/currently/listening-to",
         icon: MusicalNoteIcon,
-        id: 'listening-to',
+        id: "listening-to",
         isActive: true,
         isActiveMobile: true,
-        title: 'Listening to…',
-        titleDescription: 'Currently Listening to… ',
+        title: "Listening to…",
+        titleDescription: "Currently Listening to… ",
       },
       {
-        href: '/currently/reading',
+        href: "/currently/reading",
         icon: BookOpenIcon,
-        id: 'reading',
+        id: "reading",
         isActive: true,
         isActiveMobile: true,
-        title: 'Reading…',
-        titleDescription: 'Currently Reading… ',
+        title: "Reading…",
+        titleDescription: "Currently Reading… ",
       },
     ],
     events: [
       {
-        href: '/events',
+        href: "/events",
         icon: ListBulletIcon,
-        id: 'all',
+        id: "all",
         isActive: true,
         isActiveMobile: true,
-        title: '… All Events',
-        titleDescription: 'Including recent past events.',
+        title: "… All Events",
+        titleDescription: "Including recent past events.",
       },
     ],
     // @todo(zustand) NICE-144 init dynamic
     podcasts: [
       {
-        href: '/podcasts',
+        href: "/podcasts",
         icon: ListBulletIcon,
-        id: 'all',
+        id: "all",
         isActive: true,
         isActiveMobile: true,
-        title: '… All Podcasts',
-        titleDescription: 'These two he helps host, these he guests or is retired.',
+        title: "… All Podcasts",
+        titleDescription: "These two he helps host, these he guests or is retired.",
       },
       {
-        href: '/podcasts/jer-and-ky-and-guest',
+        href: "/podcasts/jer-and-ky-and-guest",
         icon: MicrophoneIcon,
-        id: '/podcasts/jer-and-ky-and-guest',
+        id: "/podcasts/jer-and-ky-and-guest",
         isActive: true,
         isActiveMobile: true,
-        keywords: [
-          'jerky',
-          'jer',
-          'ky',
-          'guest',
-          'mailshrimp',
-          'wild',
-          'fuck',
-          'podcast',
-        ],
-        title: 'Jer & Ky & Guest',
-        titleDescription: '...',
+        keywords: ["jerky", "jer", "ky", "guest", "mailshrimp", "wild", "fuck", "podcast"],
+        title: "Jer & Ky & Guest",
+        titleDescription: "...",
       },
       {
-        href: '/podcasts/knockoffs',
+        href: "/podcasts/knockoffs",
         icon: MicrophoneIcon,
-        id: '/podcasts/knockoffs',
+        id: "/podcasts/knockoffs",
         isActive: true,
         isActiveMobile: true,
-        keywords: ['knockoffs', 'alex', 'ky', 'podcast'],
-        title: 'Knockoffs',
-        titleDescription: '...',
+        keywords: ["knockoffs", "alex", "ky", "podcast"],
+        title: "Knockoffs",
+        titleDescription: "...",
       },
     ],
     // @todo(zustand) NICE-144 init dynamic
     shows: [
       {
-        href: '/shows',
+        href: "/shows",
         icon: ListBulletIcon,
-        id: 'all',
+        id: "all",
         isActive: true,
         isActiveMobile: false,
-        keywords: ['all', 'shows'],
-        title: '… All Shows',
-        titleDescription: 'If you can believe, there are more.',
+        keywords: ["all", "shows"],
+        title: "… All Shows",
+        titleDescription: "If you can believe, there are more.",
       },
       {
-        href: '/shows/alex-o-jerome',
+        href: "/shows/alex-o-jerome",
         icon: StarIcon,
-        id: 'alex-o-jerome',
+        id: "alex-o-jerome",
         isActive: true,
         isActiveMobile: true,
-        keywords: ['alex', 'jerome', 'aoj'],
-        title: 'Alex O’Jerome',
-        titleDescription: 'Chicago to Pittsburgh Connection. Dem Vomit Twinz.',
+        keywords: ["alex", "jerome", "aoj"],
+        title: "Alex O’Jerome",
+        titleDescription: "Chicago to Pittsburgh Connection. Dem Vomit Twinz.",
       },
       {
-        href: '/shows/boo-humbag',
+        href: "/shows/boo-humbag",
         icon: StarIcon,
-        id: 'boo-humbag',
+        id: "boo-humbag",
         isActive: true,
         isActiveMobile: true,
-        keywords: ['boo', 'humbag', 'musical'],
-        title: 'Boo Humbag: The Musical',
+        keywords: ["boo", "humbag", "musical"],
+        title: "Boo Humbag: The Musical",
         titleDescription:
-          'The most celebrated morality tale of all-time was transformed by into a hilarious send-up complete with original song and dance numbers. Gold, Toe Nails, & A Christmas Miracle',
+          "The most celebrated morality tale of all-time was transformed by into a hilarious send-up complete with original song and dance numbers. Gold, Toe Nails, & A Christmas Miracle",
       },
       {
-        href: '/shows/bubble-boy-the-musical',
+        href: "/shows/bubble-boy-the-musical",
         icon: StarIcon,
-        id: 'bubble-boy-the-musical',
+        id: "bubble-boy-the-musical",
         isActive: true,
         isActiveMobile: true,
-        keywords: ['bubble', 'boy', 'musical'],
-        title: 'Bubble Boy: The Musical',
-        titleDescription: 'A musical ahead of its time by Cinco Paul',
+        keywords: ["bubble", "boy", "musical"],
+        title: "Bubble Boy: The Musical",
+        titleDescription: "A musical ahead of its time by Cinco Paul",
       },
       {
-        href: '/shows/jer-and-ky',
+        href: "/shows/jer-and-ky",
         icon: StarIcon,
-        id: '/shows/jer-and-ky',
+        id: "/shows/jer-and-ky",
         isActive: true,
         isActiveMobile: true,
-        keywords: ['jer', '&', 'ky', 'mailshrimp'],
-        title: 'The Jer & Ky BoyZ',
+        keywords: ["jer", "&", "ky", "mailshrimp"],
+        title: "The Jer & Ky BoyZ",
+        titleDescription: "Special Comedy Guests, Special Musical Guests, Special Overall Hi-Jinks",
+      },
+      {
+        href: "/shows/jerome-and",
+        icon: StarIcon,
+        id: "/shows/jerome-and",
+        isActive: true,
+        isActiveMobile: true,
+        keywords: ["jerome", "&", "and"],
+        title: "Jerome &",
+        titleDescription: "Special Comedy Guests, Special Musical Guests, Special Overall Hi-Jinks",
+      },
+      {
+        href: "/shows/jfle",
+        icon: StarIcon,
+        id: "/shows/jfle",
+        isActive: true,
+        isActiveMobile: true,
+        keywords: ["jfle", "jesse", "jerome"],
+        title: "JFLE (Jerome & Jesse LE)",
+        titleDescription: "Delightful absurdity with dark whimsy and musical skill",
+      },
+      {
+        href: "/shows/jfle-take-broadway",
+        icon: StarIcon,
+        id: "/shows/jfle-take-broadway",
+        isActive: true,
+        isActiveMobile: true,
+        keywords: ["jfle", "jesse", "jerome", "broadway"],
+        title: "JFLE: Take Broadway",
         titleDescription:
-          'Special Comedy Guests, Special Musical Guests, Special Overall Hi-Jinks',
+          "Cats become Lion Kings in this send up of past, current, & future Broadway",
       },
       {
-        href: '/shows/jerome-and',
+        href: "/shows/jfle-grand-finale",
         icon: StarIcon,
-        id: '/shows/jerome-and',
-        isActive: true,
-        isActiveMobile: true,
-        keywords: ['jerome', '&', 'and'],
-        title: 'Jerome &',
-        titleDescription:
-          'Special Comedy Guests, Special Musical Guests, Special Overall Hi-Jinks',
-      },
-      {
-        href: '/shows/jfle',
-        icon: StarIcon,
-        id: '/shows/jfle',
-        isActive: true,
-        isActiveMobile: true,
-        keywords: ['jfle', 'jesse', 'jerome'],
-        title: 'JFLE (Jerome & Jesse LE)',
-        titleDescription: 'Delightful absurdity with dark whimsy and musical skill',
-      },
-      {
-        href: '/shows/jfle-take-broadway',
-        icon: StarIcon,
-        id: '/shows/jfle-take-broadway',
-        isActive: true,
-        isActiveMobile: true,
-        keywords: ['jfle', 'jesse', 'jerome', 'broadway'],
-        title: 'JFLE: Take Broadway',
-        titleDescription:
-          'Cats become Lion Kings in this send up of past, current, & future Broadway',
-      },
-      {
-        href: '/shows/jfle-grand-finale',
-        icon: StarIcon,
-        id: '/shows/jfle-grand-finale',
+        id: "/shows/jfle-grand-finale",
         isActive: false,
         isActiveMobile: false,
-        keywords: ['jfle', 'jesse', 'jerome', 'grand', 'finale'],
-        title: 'JFLE: Grand Finale',
+        keywords: ["jfle", "jesse", "jerome", "grand", "finale"],
+        title: "JFLE: Grand Finale",
         titleDescription:
-          'The two night sell out extravangza with special guests P-Si & G-Funk (Paul Simon & Art Garfunkel)',
+          "The two night sell out extravangza with special guests P-Si & G-Funk (Paul Simon & Art Garfunkel)",
       },
       {
-        href: '/shows/justin-and-jerome-experience',
+        href: "/shows/justin-and-jerome-experience",
         icon: StarIcon,
-        id: '/shows/justin-and-jerome-experience',
+        id: "/shows/justin-and-jerome-experience",
         isActive: true,
         isActiveMobile: true,
-        keywords: ['jje', 'justin', 'jerome', 'experience'],
-        title: 'Justin & Jerome Experience',
-        titleDescription: 'Acclaimed improv and heralded sketch (on-and-off stage)',
+        keywords: ["jje", "justin", "jerome", "experience"],
+        title: "Justin & Jerome Experience",
+        titleDescription: "Acclaimed improv and heralded sketch (on-and-off stage)",
       },
       {
-        href: '/shows/my-dinner-with-andre-the-musical',
+        href: "/shows/my-dinner-with-andre-the-musical",
         icon: StarIcon,
-        id: '/shows/my-dinner-with-andre-the-musical',
+        id: "/shows/my-dinner-with-andre-the-musical",
         isActive: true,
         isActiveMobile: true,
-        keywords: ['jje', 'justin', 'jerome', 'experience', 'andre', 'dinner'],
-        title: 'My Dinner With André: The Musical',
-        titleDescription:
-          'The cult classic gets the Justin & Jerome Experience treatment.',
+        keywords: ["jje", "justin", "jerome", "experience", "andre", "dinner"],
+        title: "My Dinner With André: The Musical",
+        titleDescription: "The cult classic gets the Justin & Jerome Experience treatment.",
       },
       {
-        href: '/shows/the-death-show',
+        href: "/shows/the-death-show",
         icon: StarIcon,
-        id: '/shows/the-death-show',
+        id: "/shows/the-death-show",
         isActive: true,
         isActiveMobile: true,
-        keywords: ['death', 'show'],
-        title: 'The Death Show',
-        titleDescription:
-          'The longest running death themed improv show in Pittsburgh.',
+        keywords: ["death", "show"],
+        title: "The Death Show",
+        titleDescription: "The longest running death themed improv show in Pittsburgh.",
       },
       {
-        href: '/shows/warp-zone',
+        href: "/shows/warp-zone",
         icon: StarIcon,
-        id: '/shows/warp-zone',
+        id: "/shows/warp-zone",
         isActive: true,
         isActiveMobile: true,
-        keywords: ['warp', 'zone'],
-        title: 'Warp Zone',
-        titleDescription: 'Arcade Comedy Theater’s Premier House Team',
+        keywords: ["warp", "zone"],
+        title: "Warp Zone",
+        titleDescription: "Arcade Comedy Theater’s Premier House Team",
       },
     ],
   },
@@ -395,7 +381,7 @@ const getDefaultInitialStateStoreMenu = () => ({
     isActiveMobile: true,
     title: null,
   },
-})
+});
 
 const initializeStoreMenu = (preloadedState: Partial<any> = {}) => {
   return createStore<any>((set, get) => ({
@@ -404,32 +390,32 @@ const initializeStoreMenu = (preloadedState: Partial<any> = {}) => {
     appleMusicTypeSet: (type: any) => {
       set({
         appleMusicType: type,
-      })
+      });
     },
     bookStatusSet: (status: any) => {
       set({
         bookStatus: status,
-      })
+      });
     },
     cmdkInputSet: (search: any) => {
       set({
         cmdkInput: search,
-      })
+      });
     },
     cmdkPagesSet: (page: any) => {
       set({
         cmdkPages: [...get().cmdkPages, page],
-      })
+      });
     },
     cmdkPagesSetRemove: () => {
       set({
         cmdkPages: get().cmdkPages.slice(0, -1),
-      })
+      });
     },
     eventsUpcomingSet: (item: any) => {
       set({
         eventsUpcoming: item,
-      })
+      });
       if (
         get().zzz_menuTertiary.events.length === 1 &&
         get().eventsUpcoming.length > 0 &&
@@ -440,69 +426,67 @@ const initializeStoreMenu = (preloadedState: Partial<any> = {}) => {
             ...get().zzz_menuTertiary,
             events: [...get().zzz_menuTertiary.events, ...item],
           },
-        })
+        });
       }
     },
     isCmdkInnerOpenSet: () => {
       set({
         isCmdkInnerOpen: !get().isCmdkInnerOpen,
-      })
+      });
     },
     isCmdkOpenSet: () => {
       set({
         isCmdkInnerOpen: !get().isCmdkInnerOpen,
-      })
+      });
 
       get().isCmdkOpen
         ? setTimeout(() => {
             // console.dir(`ok`)
             set({
-              cmdkInput: '',
+              cmdkInput: "",
               cmdkPages: get().cmdkPages.slice(0, -1),
               isCmdkInnerOpen: false,
               isCmdkOpen: !get().isCmdkOpen,
-            })
+            });
           }, 250)
         : set({
             isCmdkOpen: !get().isCmdkOpen,
-          })
+          });
     },
     isMenuMobileOpenSet: () => {
       set({
         isMenuMobileOpen: !get().isMenuMobileOpen,
-      })
+      });
     },
     isOverlaySet: () => {
       set({
         isOverlay: !get().isOverlay,
-      })
+      });
     },
     isRouteChangingSet: (val: boolean) => {
       set({
         isRouteChanging: val,
-      })
+      });
     },
     zzz_menuSecondaryActiveSet: (item: { id: number | string }) => {
-      const hasTertiary = !!get().zzz_menuTertiary[item.id]
+      const hasTertiary = !!get().zzz_menuTertiary[item.id];
       const menuTertiaryItemsActive = get().zzz_menuTertiary[item.id]?.filter(
-        (i: { isActive: boolean; isActiveMobile: boolean }) =>
-          i.isActive || i.isActiveMobile,
-      )
+        (i: { isActive: boolean; isActiveMobile: boolean }) => i.isActive || i.isActiveMobile,
+      );
 
       set({
         zzz_menuSecondaryActive: item,
         zzz_menuTertiaryActive: hasTertiary
           ? menuTertiaryItemsActive[0]
           : { icon: null, id: null, isActive: false, title: null },
-      })
+      });
     },
     zzz_menuTertiaryActiveSet: (item: any) => {
       set({
         zzz_menuTertiaryActive: item,
-      })
+      });
     },
-  }))
-}
+  }));
+};
 
-// biome-ignore lint/style/useComponentExportOnlyModules: @todo
-export { initializeStoreMenu, Provider, useShallow, useStore }
+export { initializeStoreMenu, Provider, useShallow, useStore };

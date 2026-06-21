@@ -1,3 +1,3 @@
-const ci = []
+const ci = [];
 
-module.exports = ci
+module.exports = ci;

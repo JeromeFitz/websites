@@ -1,28 +1,28 @@
-'use client'
+"use client";
 
-import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
-import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
-import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
-import { usePathname } from 'next/navigation.js'
+import { Box } from "@radix-ui/themes/dist/esm/components/box.js";
+import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
+import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
+import { usePathname } from "next/navigation.js";
 
-import { InfoCircledIcon } from '@/components/Icon/index'
-import { NotionEmoji as EmojiWrapper } from '@/lib/notion/blocks/Emoji'
+import { InfoCircledIcon } from "@/components/Icon/index";
+import { NotionEmoji as EmojiWrapper } from "@/lib/notion/blocks/Emoji";
 
-const IS_COLOPHON_SHOWN = false
+const IS_COLOPHON_SHOWN = false;
 
 function ContainerFooterClient() {
-  const pathname = usePathname()
-  const isHomepage = pathname === '/'
+  const pathname = usePathname();
+  const isHomepage = pathname === "/";
   return (
     <Flex
       className="order-1 content-start items-start"
-      display={{ initial: isHomepage ? 'none' : 'flex' }}
+      display={{ initial: isHomepage ? "none" : "flex" }}
       flexBasis="auto"
       flexGrow="0"
       flexShrink="0"
-      gap={{ initial: 'unset', md: '9' }}
+      gap={{ initial: "unset", md: "9" }}
       height="calc(var(--spacing) * 3)"
-      justify={{ initial: 'between', md: IS_COLOPHON_SHOWN ? 'between' : 'end' }}
+      justify={{ initial: "between", md: IS_COLOPHON_SHOWN ? "between" : "end" }}
       mb="2"
       p="0"
       position="relative"
@@ -32,9 +32,9 @@ function ContainerFooterClient() {
     >
       <Box>
         <Text
-          align={{ initial: 'center', md: 'left' }}
+          align={{ initial: "center", md: "left" }}
           className="font-mono md:mr-1"
-          size={{ initial: '1', md: '2' }}
+          size={{ initial: "1", md: "2" }}
         >
           <Text className="mr-0 size-4 font-sans md:mr-2">
             <EmojiWrapper id={`no-need-2`} text={`©`} />
@@ -45,12 +45,12 @@ function ContainerFooterClient() {
           </Box>
         </Text>
       </Box>
-      <Box display={{ initial: IS_COLOPHON_SHOWN ? 'block' : 'none' }}>
+      <Box display={{ initial: IS_COLOPHON_SHOWN ? "block" : "none" }}>
         <Text
-          align={{ initial: 'center', md: 'left' }}
+          align={{ initial: "center", md: "left" }}
           as="span"
           className="font-mono"
-          size={{ initial: '1', md: '2' }}
+          size={{ initial: "1", md: "2" }}
         >
           <Flex className="items-center" gap="2" justify="end">
             <Text>Colophon</Text>
@@ -59,7 +59,7 @@ function ContainerFooterClient() {
         </Text>
       </Box>
     </Flex>
-  )
+  );
 }
 
-export { ContainerFooterClient }
+export { ContainerFooterClient };

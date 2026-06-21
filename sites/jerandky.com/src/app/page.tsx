@@ -1,4 +1,4 @@
-import { Anchor } from '@jeromefitz/ds/components/Anchor'
+import { Anchor } from "@jeromefitz/ds/components/Anchor";
 import {
   SectionContent,
   SectionHeader,
@@ -7,15 +7,15 @@ import {
   SectionHeaderTitle,
   SectionWrapper,
   // Tags,
-} from '@jeromefitz/ds/components/Section'
+} from "@jeromefitz/ds/components/Section";
 
 export default function Page() {
-  return <Slug />
+  return <Slug />;
 }
 
 function Slug() {
-  const title = 'Jer & Ky BoyZ'
-  const subtitle = 'MailShrimp'
+  const title = "Jer & Ky BoyZ";
+  const subtitle = "MailShrimp";
 
   return (
     <>
@@ -27,8 +27,8 @@ function Slug() {
         <SectionContent>
           <p>Website is under construction.</p>
           <p>
-            Everything is available on RSS Feeds though through Apple, Spotify, and
-            other podcast providers.
+            Everything is available on RSS Feeds though through Apple, Spotify, and other podcast
+            providers.
           </p>
           <p>
             <Anchor href="/podcasts/jer-and-ky-and-guest">Jer & Ky (& Guest)</Anchor>
@@ -39,5 +39,5 @@ function Slug() {
         </SectionContent>
       </SectionWrapper>
     </>
-  )
+  );
 }

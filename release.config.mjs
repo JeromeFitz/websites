@@ -1,49 +1,45 @@
-import { getConfig } from '@jeromefitz/semantic'
+import { getConfig } from "@jeromefitz/semantic";
+import isCI from "is-in-ci";
+import { map as _map } from "lodash-es";
 
-import isCI from 'is-in-ci'
-import { map as _map } from 'lodash-es'
-
-import releaseBranchTypes from './config/release-branch-types/index.cjs'
+import releaseBranchTypes from "./config/release-branch-types/index.cjs";
 
 if (!isCI) {
-  const dotenv = await import('dotenv')
-  dotenv.config({ path: './.env', quiet: true })
+  const dotenv = await import("dotenv");
+  dotenv.config({ path: "./.env", quiet: true });
 }
 
-const branchTypes = _map(
-  releaseBranchTypes,
-  (releaseBranchType, releaseBranchTypeIndex) => {
-    return _map(releaseBranchType, (branchType) => {
-      return (
-        !!branchType && {
-          name: `${releaseBranchTypeIndex}/${branchType}`,
-          prerelease: branchType,
-        }
-      )
-    })[0]
-  },
-).filter((branchType) => !!branchType)
+const branchTypes = _map(releaseBranchTypes, (releaseBranchType, releaseBranchTypeIndex) => {
+  return _map(releaseBranchType, (branchType) => {
+    return (
+      !!branchType && {
+        name: `${releaseBranchTypeIndex}/${branchType}`,
+        prerelease: branchType,
+      }
+    );
+  })[0];
+}).filter((branchType) => !!branchType);
 
 const branches = [
-  { name: 'main' },
-  { name: 'canary', prerelease: 'canary' },
-  { name: 'NICE-67', prerelease: 'NICE-67' },
-  { name: 'deps/semantic-release-24.x', prerelease: 'canary' },
+  { name: "main" },
+  { name: "canary", prerelease: "canary" },
+  { name: "NICE-67", prerelease: "NICE-67" },
+  { name: "deps/semantic-release-24.x", prerelease: "canary" },
   ...branchTypes,
-]
+];
 
 const config = {
   branches,
   contributorsProhibitList: {
     email: [],
-    login: ['BotJerome', 'JeromeFitz'],
+    login: ["BotJerome", "JeromeFitz"],
   },
   enableNpm: false,
-}
+};
 
 // const _config = getConfig(config)
 
-const _config = config
-const _getConfig = getConfig
+const _config = config;
+const _getConfig = getConfig;
 
-export { _config as config, _getConfig as getConfig }
+export { _config as config, _getConfig as getConfig };

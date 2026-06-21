@@ -1,2 +1,2 @@
-export { TIME } from './constants'
-export { fetcher } from './fetcher'
+export { TIME } from "./constants";
+export { fetcher } from "./fetcher";

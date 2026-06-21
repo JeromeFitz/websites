@@ -1,3 +1,23 @@
 {
-  "editor.formatOnSave": true
+  "editor.codeActionsOnSave": {
+    "source.fixAll.biome": "never",
+    "source.fixAll.eslint": "never",
+    "source.fixAll.oxc": "explicit",
+    "source.fixAll.stylelint": "never",
+    "source.organizeImports": "never"
+  },
+  "editor.defaultFormatter": "oxc.oxc-vscode",
+  "editor.formatOnSave": true,
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "oxc.disableNestedConfig": false,
+  "oxc.enable": true,
+  "oxc.typeAware": false
 }

@@ -1,29 +1,28 @@
 // import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
 
-// import type { NotionTag } from '@/lib/drizzle/schemas/_notion/types'
-import type { Event } from '@/lib/drizzle/schemas/types'
-
-import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
-import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
+import { Box } from "@radix-ui/themes/dist/esm/components/box.js";
+import { Button } from "@radix-ui/themes/dist/esm/components/button.js";
 // import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
-import { Em } from '@radix-ui/themes/dist/esm/components/em.js'
-import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
-import { Grid } from '@radix-ui/themes/dist/esm/components/grid.js'
-import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
-import { Link } from '@radix-ui/themes/dist/esm/components/link.js'
-import { Strong } from '@radix-ui/themes/dist/esm/components/strong.js'
-import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
-import { isAfter } from 'date-fns/isAfter'
+import { Em } from "@radix-ui/themes/dist/esm/components/em.js";
+import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
+import { Grid } from "@radix-ui/themes/dist/esm/components/grid.js";
+import { Heading } from "@radix-ui/themes/dist/esm/components/heading.js";
+import { Link } from "@radix-ui/themes/dist/esm/components/link.js";
+import { Strong } from "@radix-ui/themes/dist/esm/components/strong.js";
+import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
+import { isAfter } from "date-fns/isAfter";
 // import { filter as _filter, orderBy as _orderBy, take as _take } from 'lodash-es'
-import { filter as _filter, orderBy as _orderBy } from 'lodash-es'
-import NextLink from 'next/link'
+import { filter as _filter, orderBy as _orderBy } from "lodash-es";
+import NextLink from "next/link";
 
-import { DataList__Info } from '@/app/(segments)/events/[...key]/_components/Event.Data.List'
-import { HeaderFull } from '@/components/Header/Header.Full'
-import { ExternalLinkIcon } from '@/components/Icon/index'
-import { getImageKeyValue } from '@/lib/drizzle/schemas/cache-images/queries'
-import { getImageKeySlug } from '@/lib/drizzle/utils/getImageKeySlug'
-import { cx } from '@/utils/cx'
+import { DataList__Info } from "@/app/(segments)/events/[...key]/_components/Event.Data.List";
+import { HeaderFull } from "@/components/Header/Header.Full";
+import { ExternalLinkIcon } from "@/components/Icon/index";
+import { getImageKeyValue } from "@/lib/drizzle/schemas/cache-images/queries";
+// import type { NotionTag } from '@/lib/drizzle/schemas/_notion/types'
+import type { Event } from "@/lib/drizzle/schemas/types";
+import { getImageKeySlug } from "@/lib/drizzle/utils/getImageKeySlug";
+import { cx } from "@/utils/cx";
 
 // import { AccordionClient } from './List.Client'
 
@@ -32,19 +31,19 @@ function ListWrapper({ events }: { events: Event[] }) {
   return (
     <Box>
       <Grid
-        columns={{ initial: '1', md: '2' }}
-        gapX={{ initial: '1', md: '3' }}
-        gapY={{ initial: '6', md: '6' }}
+        columns={{ initial: "1", md: "2" }}
+        gapX={{ initial: "1", md: "3" }}
+        gapY={{ initial: "6", md: "6" }}
         role="list"
         width="100%"
       >
         {events.map(async (event) => {
-          if (!event.isPublished) return null
-          const seoImage: any = event.seoImage
-          const imageUrl = seoImage[seoImage?.type]?.url
-          const { key } = getImageKeySlug(imageUrl)
-          const imageKeyValue = await getImageKeyValue({ key })
-          const image: any = imageKeyValue[0]?.value[0]
+          if (!event.isPublished) return null;
+          const seoImage: any = event.seoImage;
+          const imageUrl = seoImage[seoImage?.type]?.url;
+          const { key } = getImageKeySlug(imageUrl);
+          const imageKeyValue = await getImageKeyValue({ key });
+          const image: any = imageKeyValue[0]?.value[0];
 
           return (
             <Box
@@ -59,9 +58,9 @@ function ListWrapper({ events }: { events: Event[] }) {
                 asChild
                 className={cx(
                   // 'bg-accent-6',
-                  'border-gray-7 hover:border-gray-8 md:border-1',
-                  'rounded-sm',
-                  'transition-all duration-500',
+                  "border-gray-7 hover:border-gray-8 md:border",
+                  "rounded-sm",
+                  "transition-all duration-500",
                   // 'group-hover:transform-[translate(0px,_-1em)]',
                   // 'shadow-xs group-hover:shadow-lg',
                   // 'dark:shadow-accent-4',
@@ -73,20 +72,19 @@ function ListWrapper({ events }: { events: Event[] }) {
               >
                 <Box>
                   <Box
-                    height={{ initial: '275px', md: '500px' }}
+                    height={{ initial: "275px", md: "500px" }}
                     overflow="hidden"
                     position="relative"
                   >
                     <NextLink href={event.slugPreview}>
-                      {/* biome-ignore lint/performance/noImgElement: migrate */}
                       <img
                         alt="d"
                         className={cx(
-                          'absolute inline-block size-full',
-                          'inset-[0%_0%_auto]',
-                          'rounded-t-sm',
-                          'max-w-full object-cover align-middle',
-                          'transition-all duration-700 hover:scale-[1.05]',
+                          "absolute inline-block size-full",
+                          "inset-[0%_0%_auto]",
+                          "rounded-t-sm",
+                          "max-w-full object-cover align-middle",
+                          "transition-all duration-700 hover:scale-[1.05]",
                         )}
                         src={image?.src}
                       />
@@ -115,8 +113,8 @@ function ListWrapper({ events }: { events: Event[] }) {
                         {event.title}
                       </Heading>
                       <Text
-                        className="md:line-clamp-3 md:min-h-[75px]"
-                        mr={{ initial: '1', md: '3' }}
+                        className="md:line-clamp-3 md:min-h-18.75"
+                        mr={{ initial: "1", md: "3" }}
                       >
                         {event.seoDescription}
                       </Text>
@@ -176,10 +174,10 @@ function ListWrapper({ events }: { events: Event[] }) {
                       <Button
                         asChild
                         className={cx(
-                          'hover:!transform-[translate(0px,_-0.125em)] !transition-all',
-                          'hover:!shadow-[inset_0_0_0_1px_var(--accent-a8)]',
-                          '!drop-shadow-lg hover:!drop-shadow-lg',
-                          '!shadow-[inset_0_0_0_1px_var(--accent-a7)]',
+                          "transition-all! hover:transform-[translate(0px,-0.125em)]!",
+                          "hover:shadow-[inset_0_0_0_1px_var(--accent-a8)]!",
+                          "drop-shadow-lg! hover:drop-shadow-lg!",
+                          "shadow-[inset_0_0_0_1px_var(--accent-a7)]!",
                         )}
                         variant="surface"
                       >
@@ -189,9 +187,9 @@ function ListWrapper({ events }: { events: Event[] }) {
                         asChild
                         disabled={!event.urlTicket}
                         className={cx(
-                          'hover:!transform-[translate(0px,_-0.125em)] !transition-all',
-                          '!text-black',
-                          '!drop-shadow-lg hover:!drop-shadow-lg',
+                          "transition-all! hover:transform-[translate(0px,-0.125em)]!",
+                          "text-black!",
+                          "drop-shadow-lg! hover:drop-shadow-lg!",
                         )}
                         color="green"
                       >
@@ -199,9 +197,9 @@ function ListWrapper({ events }: { events: Event[] }) {
                           Buy Tickets
                           <ExternalLinkIcon
                             className={cx(
-                              // 'bg-blackA-9 group-hover:bg-blackA-10',
-                              '!opacity-95 group-hover:!opacity-100 size-5 rounded-3 p-0-5 text-inherit transition-colors',
-                              '!transition-all',
+                              "rounded-3 size-5 p-0.5 text-inherit ",
+                              "opacity-95! group-hover:opacity-100!",
+                              "transition-all!",
                             )}
                           />
                         </a>
@@ -211,20 +209,20 @@ function ListWrapper({ events }: { events: Event[] }) {
                 </Box>
               </Grid>
             </Box>
-          )
+          );
         })}
       </Grid>
     </Box>
-  )
+  );
 }
 
 function Listing({ items }: { items: Event[] }) {
-  const dateNow = Date.now()
+  const dateNow = Date.now();
   const eventsUpcoming = _orderBy(
     _filter(items, (item: Event) => !isAfter(dateNow, item.dateIso)),
     (item: Event) => [item.dateIso],
-    ['asc'],
-  )
+    ["asc"],
+  );
   // const eventsPast = _take(
   //   _orderBy(
   //     _filter(items, (item: Event) => isAfter(dateNow, item.dateIso)),
@@ -240,35 +238,32 @@ function Listing({ items }: { items: Event[] }) {
       <Flex
         direction="column"
         gap="9"
-        mb={{ initial: '4', md: '6' }}
-        pb={{ initial: '4', md: '6' }}
+        mb={{ initial: "4", md: "6" }}
+        pb={{ initial: "4", md: "6" }}
       >
         <Flex direction="column" gap="7">
-          <Text size={{ initial: '5', md: '7' }}>
-            Ahoy. I recently moved to <Strong>NYC</Strong> coming from{' '}
-            <Em>Pittsburgh</Em>.
-          </Text>{' '}
-          <Text size={{ initial: '5', md: '7' }}>
-            As a result, my known upcoming show calendar is all over the place as I
-            no longer have multiple monthly shows. (Perhaps I did not think this
-            through?)
+          <Text size={{ initial: "5", md: "7" }}>
+            Ahoy. I recently moved to <Strong>NYC</Strong> coming from <Em>Pittsburgh</Em>.
+          </Text>{" "}
+          <Text size={{ initial: "5", md: "7" }}>
+            As a result, my known upcoming show calendar is all over the place as I no longer have
+            multiple monthly shows. (Perhaps I did not think this through?)
           </Text>
-          <Text size={{ initial: '4', md: '6' }}>
-            In lieu of that, I am doing feature sets, random drop-ins, and a lot of
-            last minute “Hey do this!”
+          <Text size={{ initial: "4", md: "6" }}>
+            In lieu of that, I am doing feature sets, random drop-ins, and a lot of last minute “Hey
+            do this!”
             <br />
             And I will! I will do whatever <Strong>this</Strong> is.
           </Text>
-          <Text size={{ initial: '4', md: '6' }}>
-            So reach out on IG I guess if so:{' '}
-            <Link href="https://instagram.com/JeromeFitz">@JeromeFitz</Link>{' '}
-            <Text size={{ initial: '3', md: '5' }}>
+          <Text size={{ initial: "4", md: "6" }}>
+            So reach out on IG I guess if so:{" "}
+            <Link href="https://instagram.com/JeromeFitz">@JeromeFitz</Link>{" "}
+            <Text size={{ initial: "3", md: "5" }}>
               (That is admittedly empty! But I will respond [eventually].)
             </Text>
           </Text>
-          <Text size={{ initial: '4', md: '6' }}>
-            Will have a festival schedule and new upcoming show once things are
-            settled a bit.
+          <Text size={{ initial: "4", md: "6" }}>
+            Will have a festival schedule and new upcoming show once things are settled a bit.
           </Text>
         </Flex>
       </Flex>
@@ -294,7 +289,7 @@ function Listing({ items }: { items: Event[] }) {
       {/* <HeaderFull count={eventsPast.length} overline="" title="Past Events" /> */}
       {/* <AccordionClient items={eventsPast} /> */}
     </Flex>
-  )
+  );
 }
 
-export { Listing }
+export { Listing };

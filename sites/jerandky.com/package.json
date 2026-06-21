@@ -2,17 +2,17 @@
   "name": "jerandky.com",
   "version": "0.0.0",
   "description": "Website for the Jer & Ky BoyZ",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/jeromefitz/websites",
-    "directory": "sites/jerandky.com"
-  },
+  "license": "MIT",
   "author": {
     "name": "Jerome Fitzgerald",
     "email": "j@jeromefitzgerald.com",
     "url": "https://jeromefitzgerald.com"
   },
-  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jeromefitz/websites",
+    "directory": "sites/jerandky.com"
+  },
   "scripts": {
     "analyze": "ANALYZE=true pnpm build",
     "build": "CI=1 next build",
@@ -21,14 +21,7 @@
     "copy": "echo mkdir -p ./dist && ./scripts/copy.sh",
     "dev": "next dev --experimental-https",
     "dev:turbo": "next dev --turbo",
-    "format": "pnpm run format:lint",
-    "format:lint": "pnpm lint:eslint --fix",
     "lhci": "lhci autorun --config=lighthouse.config.js",
-    "lint": "concurrently \"pnpm run lint:eslint\" \"pnpm run lint:typescript:dev\"",
-    "lint:eslint": "eslint ./src --max-warnings=0",
-    "lint:typescript": "tsc --noEmit --declaration",
-    "lint:typescript:dev": "pnpm run lint:typescript -p ./tsconfig.dev.json",
-    "lint:typescript:prod": "pnpm run lint:typescript -p ./tsconfig.json",
     "semantic-release": "semantic-release",
     "start": "next start",
     "start:isr": "next start -H localhost",
@@ -117,13 +110,14 @@
     "zustand": "5.0.14"
   },
   "devDependencies": {
+    "@jeromefitz/ds": "workspace:*",
     "@jeromefitz/lighthouse-config": "workspace:*",
     "@jeromefitz/next-config": "workspace:*",
     "@jeromefitz/playwright-config": "workspace:*",
     "@jeromefitz/tailwind-config": "workspace:*",
     "@jeromefitz/tsconfig": "3.0.0",
     "@types/pluralize": "0.0.33",
-    "@types/ramda": "0.31.1",
+    "@types/ramda": "0.32.0",
     "@types/smoothscroll-polyfill": "0.3.4",
     "tailwind-merge": "3.6.0"
   }

@@ -6,10 +6,10 @@
  *
  */
 export function getKey(segment: string, key: any) {
-  if (segment === 'pages') {
-    return `/${key}`
+  if (segment === "pages") {
+    return `/${key}`;
   }
-  return `/${segment}/${Object.prototype.toString.call(key) === '[object Array]' ? key.join('/') : key}`
+  return `/${segment}/${Object.prototype.toString.call(key) === "[object Array]" ? key.join("/") : key}`;
 }
 
 /**
@@ -21,6 +21,6 @@ export function getKey(segment: string, key: any) {
  */
 // @todo(types) string[] | string
 export function getKeyForGenerateStaticParams(segment: string, key: string): any {
-  const _key = key.replace(`/${segment}/`, '')
-  return _key.includes('/') ? _key.split('/') : _key
+  const _key = key.replace(`/${segment}/`, "");
+  return _key.includes("/") ? _key.split("/") : _key;
 }

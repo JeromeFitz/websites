@@ -1,3 +1,3 @@
 export function isEmpty(data: any[]) {
-  return !Array.isArray(data) || !data.length
+  return !Array.isArray(data) || !data.length;
 }

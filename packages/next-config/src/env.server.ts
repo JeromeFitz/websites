@@ -6,7 +6,7 @@
  * ref: https://vercel.com/docs/projects/environment-variables/system-environment-variables
  *
  */
-import { z } from 'zod'
+import { z } from "zod";
 
 const envSchema = z.object({
   APPLE_API: z.string().trim(),
@@ -34,50 +34,50 @@ const envSchema = z.object({
   REVALIDATE_TOKEN: z.string().trim(),
   UPSTASH_REDIS_REST_TOKEN: z.string().trim(),
   UPSTASH_REDIS_REST_URL: z.string().trim(),
-})
+});
 
 const envServerParsed = envSchema.safeParse({
-  APPLE_API: process.env.APPLE_API ?? '',
-  APPLE_AUTH_ISS: process.env.APPLE_AUTH_ISS ?? '',
-  APPLE_AUTH_KID: process.env.APPLE_AUTH_KID ?? '',
-  APPLE_IDENTIFIER: process.env.APPLE_IDENTIFIER ?? '',
-  APPLE_TOKEN_DEVELOPER: process.env.APPLE_TOKEN_DEVELOPER ?? '',
-  APPLE_TOKEN_USER: process.env.APPLE_TOKEN_USER ?? '',
-  GOODREADS_ID: process.env.GOODREADS_ID ?? '',
-  GOODREADS_KEY: process.env.GOODREADS_KEY ?? '',
-  NOTION__DATABASE__BLOG: process.env.NOTION__DATABASE__BLOG ?? '',
-  NOTION__DATABASE__BOOKS: process.env.NOTION__DATABASE__BOOKS ?? '',
-  NOTION__DATABASE__EPISODES: process.env.NOTION__DATABASE__EPISODES ?? '',
-  NOTION__DATABASE__EVENTS: process.env.NOTION__DATABASE__EVENTS ?? '',
-  NOTION__DATABASE__PAGES: process.env.NOTION__DATABASE__PAGES ?? '',
-  NOTION__DATABASE__PEOPLE: process.env.NOTION__DATABASE__PEOPLE ?? '',
-  NOTION__DATABASE__PODCASTS: process.env.NOTION__DATABASE__PODCASTS ?? '',
-  NOTION__DATABASE__SHOWS: process.env.NOTION__DATABASE__SHOWS ?? '',
-  NOTION__DATABASE__VENUES: process.env.NOTION__DATABASE__VENUES ?? '',
-  NOTION_API_KEY: process.env.NOTION_API_KEY ?? '',
+  APPLE_API: process.env.APPLE_API ?? "",
+  APPLE_AUTH_ISS: process.env.APPLE_AUTH_ISS ?? "",
+  APPLE_AUTH_KID: process.env.APPLE_AUTH_KID ?? "",
+  APPLE_IDENTIFIER: process.env.APPLE_IDENTIFIER ?? "",
+  APPLE_TOKEN_DEVELOPER: process.env.APPLE_TOKEN_DEVELOPER ?? "",
+  APPLE_TOKEN_USER: process.env.APPLE_TOKEN_USER ?? "",
+  GOODREADS_ID: process.env.GOODREADS_ID ?? "",
+  GOODREADS_KEY: process.env.GOODREADS_KEY ?? "",
+  NOTION__DATABASE__BLOG: process.env.NOTION__DATABASE__BLOG ?? "",
+  NOTION__DATABASE__BOOKS: process.env.NOTION__DATABASE__BOOKS ?? "",
+  NOTION__DATABASE__EPISODES: process.env.NOTION__DATABASE__EPISODES ?? "",
+  NOTION__DATABASE__EVENTS: process.env.NOTION__DATABASE__EVENTS ?? "",
+  NOTION__DATABASE__PAGES: process.env.NOTION__DATABASE__PAGES ?? "",
+  NOTION__DATABASE__PEOPLE: process.env.NOTION__DATABASE__PEOPLE ?? "",
+  NOTION__DATABASE__PODCASTS: process.env.NOTION__DATABASE__PODCASTS ?? "",
+  NOTION__DATABASE__SHOWS: process.env.NOTION__DATABASE__SHOWS ?? "",
+  NOTION__DATABASE__VENUES: process.env.NOTION__DATABASE__VENUES ?? "",
+  NOTION_API_KEY: process.env.NOTION_API_KEY ?? "",
   POSTGRES_SITE_ID: process.env.POSTGRES_SITE_ID ?? 0,
-  POSTGRES_URL: process.env.POSTGRES_URL ?? '',
-  PREVIEW_TOKEN: process.env.PREVIEW_TOKEN ?? '',
-  REDIS_URL: process.env.REDIS_URL ?? '',
-  REVALIDATE_TOKEN: process.env.REVALIDATE_TOKEN ?? '',
-  UPSTASH_REDIS_REST_TOKEN: process.env.UPSTASH_REDIS_REST_TOKEN ?? '',
-  UPSTASH_REDIS_REST_URL: process.env.UPSTASH_REDIS_REST_URL ?? '',
-})
+  POSTGRES_URL: process.env.POSTGRES_URL ?? "",
+  PREVIEW_TOKEN: process.env.PREVIEW_TOKEN ?? "",
+  REDIS_URL: process.env.REDIS_URL ?? "",
+  REVALIDATE_TOKEN: process.env.REVALIDATE_TOKEN ?? "",
+  UPSTASH_REDIS_REST_TOKEN: process.env.UPSTASH_REDIS_REST_TOKEN ?? "",
+  UPSTASH_REDIS_REST_URL: process.env.UPSTASH_REDIS_REST_URL ?? "",
+});
 
 if (!envServerParsed.success) {
   console.error(
     `- warn [ ⚠️ ] (server) Missing or invalid environment variable${
-      envServerParsed.error.issues.length > 1 ? 's' : ''
+      envServerParsed.error.issues.length > 1 ? "s" : ""
     }:
-${envServerParsed.error.issues.map((issue) => `  ${issue.path}: ${issue.message}`).join('\n')}
+${envServerParsed.error.issues.map((issue) => `  ${issue.path}: ${issue.message}`).join("\n")}
 `,
-  )
-  process.exit(1)
+  );
+  process.exit(1);
 }
 
-const envServer = Object.freeze(envServerParsed.data)
+const envServer = Object.freeze(envServerParsed.data);
 
-type EnvServer = typeof envServer
+type EnvServer = typeof envServer;
 
-export type { EnvServer }
-export { envServer }
+export type { EnvServer };
+export { envServer };

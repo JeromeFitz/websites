@@ -1,43 +1,33 @@
 // @ts-nocheck
-import { join } from 'node:path'
+import { join } from "node:path";
 
-import withBundleAnalyzer from '@next/bundle-analyzer'
-import withPlaiceholder from '@plaiceholder/next'
+import withBundleAnalyzer from "@next/bundle-analyzer";
+import withPlaiceholder from "@plaiceholder/next";
 
-import { setupBuildInfo } from './src/build-info'
-import securityHeaders from './src/security-headers'
-
-import './src/env.client'
-import './src/env.server'
+import { setupBuildInfo } from "./src/build-info";
+import securityHeaders from "./src/security-headers";
+import "./src/env.client";
+import "./src/env.server";
 
 /**
  * @todo(next) cannot remove all of these just yet   🫠
  *             moved here instead of env.server for now
  */
 const envSecrets = [
-  'DRAFT_TOKEN',
-  'GH_TOKEN',
-  'LHCI_GITHUB_APP_TOKEN',
+  "DRAFT_TOKEN",
+  "GH_TOKEN",
+  "LHCI_GITHUB_APP_TOKEN",
   // 'NOTION_API_KEY',
   // // 'OCTOKIT_TOKEN',
-  'OG_API_KEY',
-  'PREVIEW_TOKEN',
-  'REVALIDATE_TOKEN',
+  "OG_API_KEY",
+  "PREVIEW_TOKEN",
+  "REVALIDATE_TOKEN",
   // // 'UPSTASH_REDIS_REST_TOKEN',
   // // 'UPSTASH_REDIS_REST_URL',
-]
+];
 for (const envSecretsVar of envSecrets) {
-  delete process.env[envSecretsVar]
+  delete process.env[envSecretsVar];
 }
-
-// const externals = [
-//   '@radix-ui/colors',
-//   'cmdk',
-//   'react',
-//   'react-dom',
-//   'prettier',
-//   'swr',
-// ]
 
 /**
  * @note(pnpm) remnant from pnpm linking, should be removed
@@ -46,10 +36,10 @@ for (const envSecretsVar of envSecrets) {
 // const isLocalDebugMessages = [`[ 📝 ] pnpm link...`]
 
 const PROTOCOL = {
-  HTTP: 'http',
-  HTTPS: 'https',
-}
-const protocol = PROTOCOL.HTTPS
+  HTTP: "http",
+  HTTPS: "https",
+};
+const protocol = PROTOCOL.HTTPS;
 
 /**
  * @note(turbopack) can only use the following configuration options
@@ -74,7 +64,7 @@ const config = ({
   buildInfoConfig,
   pathDirName,
   redirects = [],
-  serverComponentsExternalPackages = ['@jeromefitz/next-config'],
+  serverComponentsExternalPackages = ["@jeromefitz/next-config"],
   transpilePackages = [],
 }) => {
   // console.dir(`> (debug) basePath:    ${basePath}`)
@@ -94,9 +84,9 @@ const config = ({
     // crossOrigin: 'same-origin',
     devIndicators: {
       buildActivity: true,
-      buildActivityPosition: 'bottom-right',
+      buildActivityPosition: "bottom-right",
     },
-    distDir: './.next',
+    distDir: "./.next",
     // distDir: './out',
     // env,
     eslint: {
@@ -116,9 +106,9 @@ const config = ({
       return [
         {
           headers: securityHeaders,
-          source: '/(.*)',
+          source: "/(.*)",
         },
-      ]
+      ];
     },
     httpAgentOptions: {
       keepAlive: true,
@@ -133,7 +123,7 @@ const config = ({
     images: {
       // deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
       deviceSizes: [640, 1200, 1920],
-      formats: ['image/avif', 'image/webp'],
+      formats: ["image/avif", "image/webp"],
       // imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
       imageSizes: [24, 64, 384],
       // minimumCacheTTL: 31536000, // 1 year
@@ -178,19 +168,19 @@ const config = ({
           protocol,
         },
         {
-          hostname: 's3.us-west-2.amazonaws.com',
+          hostname: "s3.us-west-2.amazonaws.com",
           protocol,
         },
         {
-          hostname: '*.s3.us-west-2.amazonaws.com',
+          hostname: "*.s3.us-west-2.amazonaws.com",
           protocol,
         },
         {
-          hostname: 'sc-events.s3.amazonaws.com',
+          hostname: "sc-events.s3.amazonaws.com",
           protocol,
         },
         {
-          hostname: '*.sc-events.s3.amazonaws.com',
+          hostname: "*.sc-events.s3.amazonaws.com",
           protocol,
         },
         // @note(remotePattern) Notion
@@ -239,11 +229,11 @@ const config = ({
     },
     output: undefined,
     // @note(next) monorepo root
-    outputFileTracingRoot: join(pathDirName, '../../'),
+    outputFileTracingRoot: join(pathDirName, "../../"),
     // output: 'export',
     // output: 'standalone',
     // outputFileTracing: false,
-    pageExtensions: ['jsx', 'js', 'tsx', 'ts'],
+    pageExtensions: ["jsx", "js", "tsx", "ts"],
     poweredByHeader: false,
     productionBrowserSourceMaps: false,
     publicRuntimeConfig: {
@@ -253,7 +243,7 @@ const config = ({
     // reactStrictMode: true,
     // @note(next) redirect an incoming request path to a different destination path
     async redirects() {
-      return redirects
+      return redirects;
     },
     // @note(next) map an incoming request path to a different destination path
     async rewrites() {
@@ -261,10 +251,10 @@ const config = ({
        * @note
        * hack way to get repository data via GitHub
        */
-      await setupBuildInfo({ buildInfoConfig, pathDirName })
+      await setupBuildInfo({ buildInfoConfig, pathDirName });
 
       // return getRedirects
-      return {}
+      return {};
     },
     sassOptions: {},
     serverExternalPackages: serverComponentsExternalPackages,
@@ -280,19 +270,19 @@ const config = ({
     },
     // @note(next) false will block: ./pages
     useFileSystemPublicRoutes: true,
-  }
+  };
 
   /**
    * @note
    * Plugins cannot handle their own Configuration at this time.
    */
 
-  const wBA = withBundleAnalyzer({ enabled: process.env.ANALYZE === 'true' })
-  const plugins = [wBA, withPlaiceholder]
+  const wBA = withBundleAnalyzer({ enabled: process.env.ANALYZE === "true" });
+  const plugins = [wBA, withPlaiceholder];
 
   // @todo(typescript@6)
   // @ts-expect-error
-  return plugins.reduce((config, plugin) => plugin(config), nextConfig)
-}
+  return plugins.reduce((config, plugin) => plugin(config), nextConfig);
+};
 
-export default config
+export default config;

@@ -1,17 +1,13 @@
-// import type { NotionTag } from '@/lib/drizzle/schemas/_notion/types'
-import type { Event } from '@/lib/drizzle/schemas/cache-events/types'
-import type { Venue } from '@/lib/drizzle/schemas/cache-venues/types'
-
-import { TZDate } from '@date-fns/tz'
-import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
-import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
-import * as DataList from '@radix-ui/themes/dist/esm/components/data-list.js'
-import { Em } from '@radix-ui/themes/dist/esm/components/em.js'
-import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
-import { Skeleton } from '@radix-ui/themes/dist/esm/components/skeleton.js'
-import { Strong } from '@radix-ui/themes/dist/esm/components/strong.js'
-import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
-import { formatInTimeZone } from 'date-fns-tz'
+import { TZDate } from "@date-fns/tz";
+import { Badge } from "@radix-ui/themes/dist/esm/components/badge.js";
+import { Code } from "@radix-ui/themes/dist/esm/components/code.js";
+import * as DataList from "@radix-ui/themes/dist/esm/components/data-list.js";
+import { Em } from "@radix-ui/themes/dist/esm/components/em.js";
+import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
+import { Skeleton } from "@radix-ui/themes/dist/esm/components/skeleton.js";
+import { Strong } from "@radix-ui/themes/dist/esm/components/strong.js";
+import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
+import { formatInTimeZone } from "date-fns-tz";
 
 import {
   CalendarIcon,
@@ -20,25 +16,25 @@ import {
   IdCardIcon,
   InfoCircledIcon,
   // TagIcon,
-} from '@/components/Icon/index'
-import { TZ } from '@/config/const'
-import {
-  getVenue,
-  segment as segmentVenue,
-} from '@/lib/drizzle/schemas/cache-venues/queries'
-import { cx } from '@/utils/cx'
-import { getKey } from '@/utils/getKey'
-import { isEmpty } from '@/utils/isEmpty'
+} from "@/components/Icon/index";
+import { TZ } from "@/config/const";
+// import type { NotionTag } from '@/lib/drizzle/schemas/_notion/types'
+import type { Event } from "@/lib/drizzle/schemas/cache-events/types";
+import { getVenue, segment as segmentVenue } from "@/lib/drizzle/schemas/cache-venues/queries";
+import type { Venue } from "@/lib/drizzle/schemas/cache-venues/types";
+import { cx } from "@/utils/cx";
+import { getKey } from "@/utils/getKey";
+import { isEmpty } from "@/utils/isEmpty";
 
 async function DataList__VenueIndividual({ item }: { item: Event }) {
-  const keyVenue = item.rollupVenuesSlug[0].rich_text[0]?.plain_text
-  const venueInit: Venue[] = await getVenue({ key: getKey(segmentVenue, keyVenue) })
-  if (isEmpty(venueInit)) return null
-  const venue = venueInit[0]
-  const street = venue.addressStreet
-  const city = `${venue.addressCity}, ${venue.addressState} ${venue.addressPostalCode}`
-  const neighborhood = venue.addressNeighborhood
-  const title = venue.title
+  const keyVenue = item.rollupVenuesSlug[0].rich_text[0]?.plain_text;
+  const venueInit: Venue[] = await getVenue({ key: getKey(segmentVenue, keyVenue) });
+  if (isEmpty(venueInit)) return null;
+  const venue = venueInit[0];
+  const street = venue.addressStreet;
+  const city = `${venue.addressCity}, ${venue.addressState} ${venue.addressPostalCode}`;
+  const neighborhood = venue.addressNeighborhood;
+  const title = venue.title;
 
   return (
     <DataList__VenueIndividualWithSkeleton
@@ -48,25 +44,22 @@ async function DataList__VenueIndividual({ item }: { item: Event }) {
       street={street}
       title={title}
     />
-  )
+  );
 }
 
 function DataList__VenueIndividualWithSkeleton({
-  city = '',
+  city = "",
   isLoading = true,
-  neighborhood = '',
-  street = '',
-  title = '',
+  neighborhood = "",
+  street = "",
+  title = "",
 }) {
   return (
     <DataList.Item>
-      <DataList.Label
-        className="flex flex-row items-center justify-start gap-1"
-        minWidth="0px"
-      >
-        <Flex justify={{ initial: 'start', md: 'start' }} width="100%">
+      <DataList.Label className="flex flex-row items-center justify-start gap-1" minWidth="0px">
+        <Flex justify={{ initial: "start", md: "start" }} width="100%">
           <HomeIcon />
-          <Text className="md:!sr-only font-mono" ml="1" size="1">
+          <Text className="font-mono md:!sr-only" ml="1" size="1">
             Venue
           </Text>
         </Flex>
@@ -87,24 +80,15 @@ function DataList__VenueIndividualWithSkeleton({
         </Text>
       </DataList.Value>
     </DataList.Item>
-  )
+  );
 }
 
-function DataList__Info({
-  isEventOver,
-  item,
-}: {
-  isEventOver: boolean
-  item: Event
-}) {
-  const timestampUTC = new TZDate(item.dateIso, 'UTC')
+function DataList__Info({ isEventOver, item }: { isEventOver: boolean; item: Event }) {
+  const timestampUTC = new TZDate(item.dateIso, "UTC");
   // const timestampET = timestampUTC.withTimeZone('America/New_York')
   return (
     <Flex
-      className={cx(
-        'content-center items-center overflow-auto',
-        'border-gray-7 border-t-1',
-      )}
+      className={cx("content-center items-center overflow-auto", "border-gray-7 border-t")}
       direction="column"
       gap="0"
       justify="start"
@@ -114,21 +98,14 @@ function DataList__Info({
       wrap="nowrap"
     >
       <DataList.Root
-        className={cx(
-          'py-6 pr-1 pl-4',
-          'md:!gap-x-[var(--space-2)] gap-x-[var(--space-3)]',
-          'w-full',
-        )}
+        className={cx("py-6 pr-1 pl-4", "gap-x-(--space-3) md:!gap-x-(--space-2)", "w-full")}
         size="2"
       >
         <DataList.Item align="start" className="hidden!">
-          <DataList.Label
-            className="flex flex-row items-center justify-start gap-1"
-            minWidth="0px"
-          >
-            <Flex justify={{ initial: 'start', md: 'start' }} width="100%">
+          <DataList.Label className="flex flex-row items-center justify-start gap-1" minWidth="0px">
+            <Flex justify={{ initial: "start", md: "start" }} width="100%">
               <IdCardIcon />
-              <Text className="md:!sr-only font-mono" ml="1" size="1">
+              <Text className="font-mono md:!sr-only" ml="1" size="1">
                 Title
               </Text>
             </Flex>
@@ -136,13 +113,10 @@ function DataList__Info({
           <DataList.Value className="font-mono">{item.title}</DataList.Value>
         </DataList.Item>
         <DataList.Item align="start">
-          <DataList.Label
-            className="flex flex-row items-center justify-start gap-1"
-            minWidth="0px"
-          >
-            <Flex justify={{ initial: 'start', md: 'start' }} width="100%">
+          <DataList.Label className="flex flex-row items-center justify-start gap-1" minWidth="0px">
+            <Flex justify={{ initial: "start", md: "start" }} width="100%">
               <CalendarIcon />
-              <Text className="md:!sr-only font-mono" ml="1" size="1">
+              <Text className="font-mono md:!sr-only" ml="1" size="1">
                 Date
               </Text>
             </Flex>
@@ -153,19 +127,16 @@ function DataList__Info({
           </DataList.Value>
         </DataList.Item>
         <DataList.Item align="start">
-          <DataList.Label
-            className="flex flex-row items-center justify-start gap-1"
-            minWidth="0px"
-          >
-            <Flex justify={{ initial: 'start', md: 'start' }} width="100%">
+          <DataList.Label className="flex flex-row items-center justify-start gap-1" minWidth="0px">
+            <Flex justify={{ initial: "start", md: "start" }} width="100%">
               <ClockIcon />
-              <Text className="md:!sr-only font-mono" ml="1" size="1">
+              <Text className="font-mono md:!sr-only" ml="1" size="1">
                 Time
               </Text>
             </Flex>
           </DataList.Label>
           <DataList.Value className="font-mono">
-            {formatInTimeZone(timestampUTC, TZ, 'hh:mma zzz')}
+            {formatInTimeZone(timestampUTC, TZ, "hh:mma zzz")}
             {/* <br /> */}
             {/* {format(timestampET, 'hh:mma zzz')} */}
           </DataList.Value>
@@ -226,9 +197,9 @@ function DataList__Info({
               className="flex flex-row items-center justify-start gap-1"
               minWidth="0px"
             >
-              <Flex justify={{ initial: 'start', md: 'start' }} width="100%">
+              <Flex justify={{ initial: "start", md: "start" }} width="100%">
                 <InfoCircledIcon />
-                <Text className="md:!sr-only font-mono" ml="1" size="1">
+                <Text className="font-mono md:!sr-only" ml="1" size="1">
                   Note
                 </Text>
               </Flex>
@@ -242,7 +213,7 @@ function DataList__Info({
         )}
       </DataList.Root>
     </Flex>
-  )
+  );
 }
 
-export { DataList__Info }
+export { DataList__Info };

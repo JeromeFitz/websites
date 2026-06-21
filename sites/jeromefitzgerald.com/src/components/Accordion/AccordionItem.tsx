@@ -1,27 +1,21 @@
-'use client'
+"use client";
 
-import type { AccordionItemProps } from '@radix-ui/react-accordion'
+import type { AccordionItemProps } from "@radix-ui/react-accordion";
+import * as Accordion from "@radix-ui/react-accordion";
 
-import * as Accordion from '@radix-ui/react-accordion'
-
-import { cx } from '@/utils/cx'
+import { cx } from "@/utils/cx";
 
 interface AccordionItemPropsImpl extends AccordionItemProps {
-  children?: any
-  className?: any
-  ref?: any
+  children?: any;
+  className?: any;
+  ref?: any;
 }
 
-const AccordionItem = ({
-  children,
-  className,
-  ref,
-  ...props
-}: AccordionItemPropsImpl) => (
+const AccordionItem = ({ children, className, ref, ...props }: AccordionItemPropsImpl) => (
   // @ts-ignore
   <Accordion.Item
     className={cx(
-      'mt-px overflow-hidden first:mt-0 first:rounded-t last:rounded-b focus-within:relative focus-within:z-10 focus-within:shadow-[0_0_0_0.25px] focus-within:shadow-accent-12',
+      "focus-within:shadow-accent-12 mt-px overflow-hidden first:mt-0 first:rounded-t last:rounded-b focus-within:relative focus-within:z-10 focus-within:shadow-[0_0_0_0.25px]",
       className,
     )}
     {...props}
@@ -29,6 +23,6 @@ const AccordionItem = ({
   >
     {children}
   </Accordion.Item>
-)
+);
 
-export { AccordionItem }
+export { AccordionItem };

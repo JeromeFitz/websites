@@ -1,6 +1,4 @@
-/** biome-ignore-all lint/a11y/useSemanticElements: migrate */
-/** biome-ignore-all lint/a11y/noRedundantRoles: migrate */
-import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
+import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
 
 /**
  * @todo(a11y) should this be article instead of main
@@ -11,24 +9,24 @@ function ArticleMain({ children }: { children: React.ReactNode }) {
       asChild
       className="place-content-start items-start overflow-visible"
       direction="column"
-      flexBasis={{ md: '0px' }}
-      flexGrow={{ md: '1' }}
-      flexShrink={{ md: '0' }}
-      gap={{ initial: '3', md: '6' }}
+      flexBasis={{ md: "0px" }}
+      flexGrow={{ md: "1" }}
+      flexShrink={{ md: "0" }}
+      gap={{ initial: "3", md: "6" }}
       height="min-content"
       // mt={{ initial: '-9', md: '-6' }}
       mt="9"
       p="0"
       position="relative"
-      style={{ opacity: 1, transform: 'none' }}
-      width={{ initial: '100%', md: '100%' }}
+      style={{ opacity: 1, transform: "none" }}
+      width={{ initial: "100%", md: "100%" }}
       wrap="nowrap"
     >
       <main id="skip-nav" role="main">
         {children}
       </main>
     </Flex>
-  )
+  );
 }
 
-export { ArticleMain }
+export { ArticleMain };

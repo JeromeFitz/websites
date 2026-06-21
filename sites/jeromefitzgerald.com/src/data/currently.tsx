@@ -1,64 +1,64 @@
-import { CurrentlyBookClient } from '@/components/Currently/Currently.Book.Client'
-import { CurrentlyEvent } from '@/components/Currently/Currently.Event'
-import { CurrentlyItemWrapper } from '@/components/Currently/Currently.Item.Wrapper'
-import { CurrentlyMusicClient } from '@/components/Currently/Currently.Music.Client'
+import { CurrentlyBookClient } from "@/components/Currently/Currently.Book.Client";
+import { CurrentlyEvent } from "@/components/Currently/Currently.Event";
+import { CurrentlyItemWrapper } from "@/components/Currently/Currently.Item.Wrapper";
+import { CurrentlyMusicClient } from "@/components/Currently/Currently.Music.Client";
 import {
   BookOpenIcon,
   InfoCircledIcon,
   MusicalNoteIcon,
   TicketIcon,
-} from '@/components/Icon/index'
+} from "@/components/Icon/index";
 
 const currently = [
   {
-    apiUrl: '',
-    className: '',
-    color: 'pink',
+    apiUrl: "",
+    className: "",
+    color: "pink",
     component: CurrentlyItemWrapper,
-    href: '/currently/cooking',
+    href: "/currently/cooking",
     icon: InfoCircledIcon,
-    id: 'cooking',
+    id: "cooking",
     isActive: false,
     prefetch: false,
-    title: 'Cooking…',
-    titleSub: 'N/A',
+    title: "Cooking…",
+    titleSub: "N/A",
   },
   {
-    apiUrl: '/api/v2/music/recent-played-albums?limit=1&offset=0',
-    color: 'orange',
+    apiUrl: "/api/v2/music/recent-played-albums?limit=1&offset=0",
+    color: "orange",
     component: CurrentlyMusicClient,
-    href: '/currently/listening-to',
+    href: "/currently/listening-to",
     icon: MusicalNoteIcon,
-    id: 'listening',
+    id: "listening",
     isActive: true,
     prefetch: false,
-    title: 'I’m Listening To…',
-    titleSub: 'Jessica Pratt – Here In The Pitch',
+    title: "I’m Listening To…",
+    titleSub: "Jessica Pratt – Here In The Pitch",
   },
   {
-    apiUrl: '/api/v1/books/currently-reading',
-    color: 'mint',
+    apiUrl: "/api/v1/books/currently-reading",
+    color: "mint",
     component: CurrentlyBookClient,
-    href: '/currently/reading',
+    href: "/currently/reading",
     icon: BookOpenIcon,
-    id: 'reading',
+    id: "reading",
     isActive: true,
     prefetch: false,
-    title: 'I’m Reading…',
-    titleSub: 'Jaime Loftus – Raw Dog: The Naked Truth About Hot Dogs',
+    title: "I’m Reading…",
+    titleSub: "Jaime Loftus – Raw Dog: The Naked Truth About Hot Dogs",
   },
   {
-    apiUrl: '',
-    color: 'purple',
+    apiUrl: "",
+    color: "purple",
     component: CurrentlyEvent,
-    href: '/events',
+    href: "/events",
     icon: TicketIcon,
-    id: 'events',
+    id: "events",
     isActive: true,
     prefetch: true,
-    title: 'My Next Event…',
-    titleSub: 'Not Scheduled – See Past Events',
+    title: "My Next Event…",
+    titleSub: "Not Scheduled – See Past Events",
   },
-]
+];
 
-export { currently }
+export { currently };

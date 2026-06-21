@@ -1,27 +1,23 @@
-'use client'
+"use client";
 
-import { map as _map, orderBy as _orderBy, size as _size } from 'lodash-es'
+import { map as _map, orderBy as _orderBy, size as _size } from "lodash-es";
 
-// biome-ignore lint/correctness/noNextAsyncClientComponent: @todo
 async function Emoji({ character }) {
-  const { find: findEmoji } = await import('node-emoji')
-  const emojiFound = findEmoji(character)
+  const { find: findEmoji } = await import("node-emoji");
+  const emojiFound = findEmoji(character);
   // console.dir(`[emoji] supported: ${character}`)
 
   if (emojiFound === undefined) {
     // console.dir(`[emoji] unsupported: ${character}`)
     return (
-      <EmojiHtml
-        emoji={character}
-        label={'no generated description currently for this emoji'}
-      />
-    )
+      <EmojiHtml emoji={character} label={"no generated description currently for this emoji"} />
+    );
   }
 
-  const { emoji, key } = emojiFound
-  const label = `an emoji representation of ${key.replace(/_/gi, ' ')}`
+  const { emoji, key } = emojiFound;
+  const label = `an emoji representation of ${key.replace(/_/gi, " ")}`;
 
-  return <EmojiHtml emoji={emoji} label={label} />
+  return <EmojiHtml emoji={emoji} label={label} />;
 }
 
 /**
@@ -52,40 +48,37 @@ function EmojiHtml({ emoji, label }) {
     <span aria-label={label} className="" role="img">
       {emoji}
     </span>
-  )
+  );
 }
 
 // @todo(complexity) 13
-// biome-ignore lint/complexity/noExcessiveCognitiveComplexity: migrate
-// biome-ignore lint/correctness/noNextAsyncClientComponent: @todo
+// oxlint-disable-next-line complexity
 async function EmojiWrapper({ id, text }) {
   // const [loading, loadingSet] = useState(true)
   // useEffect(() => {
   //   loadingSet(false)
   // }, [])
-  if (!text) return null
+  if (!text) return null;
   // if (loading) return <>{text}</>
 
-  const { default: emojiRegex } = await import('emoji-regex')
-  const regex = emojiRegex()
-  const emojiMapping = {}
+  const { default: emojiRegex } = await import("emoji-regex");
+  const regex = emojiRegex();
+  const emojiMapping = {};
 
-  const _text = text
+  const _text = text;
   // isDev && console.dir(`> lazy load emoji libraries`)
 
-  let emojiIndex = 0
-  // biome-ignore lint/correctness/noUnsafeOptionalChaining: migrate
+  let emojiIndex = 0;
   for (const match of text?.matchAll(regex)) {
-    const emoji = match[0]
+    const emoji = match[0];
     // @note(emoji) double to take into account emoji codepoint length
-    const emojiLength = [...emoji].length
+    const emojiLength = [...emoji].length;
     // console.dir(`___ debug`)
     // console.dir(`emojiLength: ${emojiLength}`)
     // console.dir(emoji)
     // console.dir(`_________`)
     // @hack(emoji) truly have no idea why 1️⃣️ needs to be 1.5
-    const emojiLengthCodePoint =
-      emojiLength === 3 ? emojiLength * 1.5 : emojiLength * 2
+    const emojiLengthCodePoint = emojiLength === 3 ? emojiLength * 1.5 : emojiLength * 2;
     if (emojiIndex === 0 && match.index !== 0) {
       emojiMapping[0] = {
         emoji: false,
@@ -93,11 +86,11 @@ async function EmojiWrapper({ id, text }) {
         text: text.slice(0, match.index),
         to: match.index,
         to2: match.index,
-      }
-      emojiIndex++
+      };
+      emojiIndex++;
     }
 
-    const prev = emojiMapping[emojiIndex - 1]
+    const prev = emojiMapping[emojiIndex - 1];
     if (prev && prev.index !== match.to) {
       emojiMapping[emojiIndex] = {
         emoji: false,
@@ -105,8 +98,8 @@ async function EmojiWrapper({ id, text }) {
         text: text.slice(prev.to, match.index),
         to: match.index,
         to2: match.index,
-      }
-      emojiIndex++
+      };
+      emojiIndex++;
     }
 
     emojiMapping[emojiIndex] = {
@@ -115,13 +108,13 @@ async function EmojiWrapper({ id, text }) {
       text: emoji,
       to: Math.floor(match?.index + emojiLengthCodePoint),
       to2: Math.floor(match?.index + emojiLength),
-    }
+    };
 
-    emojiIndex++
+    emojiIndex++;
   }
-  const emojiMappingStitch = []
+  const emojiMappingStitch = [];
   if (_size(emojiMapping) > 0) {
-    _map(_orderBy(emojiMapping, ['index'], ['asc']), (item: any, itemId) => {
+    _map(_orderBy(emojiMapping, ["index"], ["asc"]), (item: any, itemId) => {
       emojiMappingStitch.push(
         /**
          * @todo(types)
@@ -140,11 +133,8 @@ async function EmojiWrapper({ id, text }) {
         ) : (
           item.text
         ),
-      )
-      if (
-        _size(emojiMapping) === _size(emojiMappingStitch) &&
-        item.to < [...text].length
-      ) {
+      );
+      if (_size(emojiMapping) === _size(emojiMappingStitch) && item.to < [...text].length) {
         // console.dir(`---`)
         // console.dir(`slice time:`)
         // console.dir(item)
@@ -152,10 +142,10 @@ async function EmojiWrapper({ id, text }) {
 
         const sliced = _text
           .slice(item.to2 + 1)
-          .normalize('NFD')
+          .normalize("NFD")
           // @hack(emoji) replace any non-alphanumeric, replace with space
           // ref: https://ricardometring.com/javascript-replace-special-characters
-          .replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, ' ')
+          .replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, " ");
 
         /**
          * @todo(types)
@@ -163,19 +153,13 @@ async function EmojiWrapper({ id, text }) {
          */
 
         // @ts-ignore
-        emojiMappingStitch.push(sliced)
+        emojiMappingStitch.push(sliced);
       }
-    })
+    });
   }
 
-  return (
-    <>
-      {_size(emojiMappingStitch) > 0
-        ? _map(emojiMappingStitch, (ems) => ems)
-        : _text}
-    </>
-  )
+  return <>{_size(emojiMappingStitch) > 0 ? _map(emojiMappingStitch, (ems) => ems) : _text}</>;
 }
 
-export { EmojiWrapper }
-export default EmojiWrapper
+export { EmojiWrapper };
+export default EmojiWrapper;

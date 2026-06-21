@@ -1,14 +1,14 @@
-import { pgTable, text } from 'drizzle-orm/pg-core'
+import { pgTable, text } from "drizzle-orm/pg-core";
 
-import { init } from '../helpers'
+import { init } from "../helpers";
 
-const cacheImages = pgTable('cache_images', {
+const cacheImages = pgTable("cache_images", {
   ...init,
-  blurDataUrl: text('blur_data_url').notNull(),
+  blurDataUrl: text("blur_data_url").notNull(),
   height: text().notNull(),
   slug: text().notNull(),
   src: text().notNull(),
   width: text().notNull(),
-})
+});
 
-export { cacheImages }
+export { cacheImages };

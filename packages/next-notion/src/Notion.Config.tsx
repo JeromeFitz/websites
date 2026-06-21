@@ -1,21 +1,21 @@
 /**
  * @note(next-notion) Default Configuration
  */
-import { lazy } from 'react'
+import { lazy } from "react";
 
 // import { Divider } from './blocks/Divider'
 // import { ListBulleted } from './blocks/ListBulleted'
 // import { ListColumn } from './blocks/ListColumn'
 // import { RichText } from './blocks/RichText'
 
-const OBJECTS = { BLOCK: 'block', LIST: 'list' }
+const OBJECTS = { BLOCK: "block", LIST: "list" };
 const TYPES = {
-  BLOCK: 'block',
-  BULLETED_LIST_ITEM: 'bulleted_list_item',
-  CHILD_PAGE: 'child_page',
-  COLUMN: 'column',
-  NUMBERED_LIST_ITEM: 'numbered_list_item',
-}
+  BLOCK: "block",
+  BULLETED_LIST_ITEM: "bulleted_list_item",
+  CHILD_PAGE: "child_page",
+  COLUMN: "column",
+  NUMBERED_LIST_ITEM: "numbered_list_item",
+};
 
 /**
  * blocks left:
@@ -39,82 +39,82 @@ const TYPES = {
  */
 const blocks = {
   bulleted_list: {
-    as: 'ul',
-    className: '',
-    component: lazy(() => import('./blocks/ListBulleted')),
+    as: "ul",
+    className: "",
+    component: lazy(() => import("./blocks/ListBulleted")),
     // component: ListBulleted,
   },
   bulleted_list_item: {
-    as: 'li',
-    className: '',
-    component: lazy(() => import('./blocks/RichText')),
+    as: "li",
+    className: "",
+    component: lazy(() => import("./blocks/RichText")),
     // component: RichText,
   },
   callout: {
-    as: 'blockquote',
-    className: '',
-    component: lazy(() => import('./blocks/RichText')),
+    as: "blockquote",
+    className: "",
+    component: lazy(() => import("./blocks/RichText")),
     // component: RichText,
   },
   column: {
-    as: 'div',
-    className: '',
-    component: 'div',
+    as: "div",
+    className: "",
+    component: "div",
   },
   column_list: {
-    as: 'div',
-    className: '',
-    component: lazy(() => import('./blocks/ListColumn')),
+    as: "div",
+    className: "",
+    component: lazy(() => import("./blocks/ListColumn")),
     // component: ListColumn,
   },
   divider: {
-    as: 'hr',
-    className: '',
-    component: lazy(() => import('./blocks/Divider')),
+    as: "hr",
+    className: "",
+    component: lazy(() => import("./blocks/Divider")),
     // component: Divider,
   },
   heading_1: {
-    as: 'h1',
-    className: '',
-    component: lazy(() => import('./blocks/RichText')),
+    as: "h1",
+    className: "",
+    component: lazy(() => import("./blocks/RichText")),
     // component: RichText,
   },
   heading_2: {
-    as: 'h2',
-    className: '',
-    component: lazy(() => import('./blocks/RichText')),
+    as: "h2",
+    className: "",
+    component: lazy(() => import("./blocks/RichText")),
     // component: RichText,
   },
   heading_3: {
-    as: 'h3',
-    className: '',
-    component: lazy(() => import('./blocks/RichText')),
+    as: "h3",
+    className: "",
+    component: lazy(() => import("./blocks/RichText")),
     // component: RichText,
   },
   numbered_list: {
-    as: 'ol',
-    className: '',
-    component: lazy(() => import('./blocks/ListBulleted')),
+    as: "ol",
+    className: "",
+    component: lazy(() => import("./blocks/ListBulleted")),
     // component: ListBulleted,
   },
   numbered_list_item: {
-    as: 'li',
-    className: '',
-    component: lazy(() => import('./blocks/RichText')),
+    as: "li",
+    className: "",
+    component: lazy(() => import("./blocks/RichText")),
     // component: RichText,
   },
   paragraph: {
-    as: 'p',
-    className: '',
-    component: lazy(() => import('./blocks/RichText')),
+    as: "p",
+    className: "",
+    component: lazy(() => import("./blocks/RichText")),
     // component: RichText,
   },
   quote: {
-    as: 'blockquote',
-    className: '',
-    component: lazy(() => import('./blocks/RichText')),
+    as: "blockquote",
+    className: "",
+    component: lazy(() => import("./blocks/RichText")),
     // component: RichText,
   },
-}
+};
 
-export { blocks, OBJECTS, TYPES }
+export { blocks, OBJECTS, TYPES };

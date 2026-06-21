@@ -6,35 +6,35 @@
 // import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 
 // @ts-ignore
-import NextImage from 'next/image'
+import NextImage from "next/image";
 
+// @todo(complexity) 11
+// oxlint-disable-next-line complexity
 function Image({ ...props }) {
   // @note(notion) eject for html validity purposes
 
-  const { _time_time, base64, expiry_time, img, order, unoptimized, url, ...image } =
-    props
+  const { _time_time, base64, expiry_time, img, order, unoptimized, url, ...image } = props;
 
-  // biome-ignore lint/complexity/noUselessTernary: migrate
-  const isPriority = props?.priority ? props?.priority : order < 2 ? true : false
+  const isPriority = props?.priority ? props?.priority : order < 2 ? true : false;
 
   // @todo(js) can do this be handled with ...
   // @hack(next) in case no comments are found in notion
-  if (!image?.alt) image.alt = ''
+  if (!image?.alt) image.alt = "";
   if (!image?.sizes)
     // image.sizes = '(max-width: 768px) 50vw, (max-width: 1200px) 50vw, 70vw'
     image.sizes =
-      '(max-width: 768px) 90vw, (max-width: 1280px) 50vw, (max-width: 2560px) 75vw, 50vw'
-  if (!image.blurDataURL) image.blurDataURL = base64
+      "(max-width: 768px) 90vw, (max-width: 1280px) 50vw, (max-width: 2560px) 75vw, 50vw";
+  if (!image.blurDataURL) image.blurDataURL = base64;
 
   const imageProps = {
-    fetchPriority: isPriority ? 'high' : 'auto',
+    fetchPriority: isPriority ? "high" : "auto",
     priority: isPriority,
     // loading: isPriority ? 'eager' : 'lazy',
     quality: 90,
     // unoptimized = env.IS_DEV',
     ...image,
     ...img,
-  }
+  };
 
   // console.dir(`imageProps`)
   // console.dir(imageProps)
@@ -54,11 +54,7 @@ function Image({ ...props }) {
 
   return (
     <>
-      <NextImage
-        className="h-auto w-full rounded-sm"
-        placeholder="blur"
-        {...imageProps}
-      />
+      <NextImage className="h-auto w-full rounded-sm" placeholder="blur" {...imageProps} />
       {/* <Box
         height="100%"
         maxWidth={{ initial: '100%', lg: '1024px', md: '768px', xl: '1280px' }}
@@ -72,7 +68,7 @@ function Image({ ...props }) {
         />
       </Box> */}
     </>
-  )
+  );
 }
 
-export { Image as ImageClient }
+export { Image as ImageClient };

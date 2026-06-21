@@ -1,7 +1,7 @@
-'use client'
+"use client";
 
 function Providers({ children }: { children: React.ReactNode }) {
-  return <>{children}</>
+  return <>{children}</>;
 }
 
-export { Providers }
+export { Providers };

@@ -840,10 +840,10 @@ export function GET() {
     </item>
   </channel>
 </rss>
-`
+`;
   const data = new Response(_data, {
-    headers: { charset: 'UTF-8', 'Content-Type': 'application/xml' },
-  })
+    headers: { charset: "UTF-8", "Content-Type": "application/xml" },
+  });
 
-  return data
+  return data;
 }

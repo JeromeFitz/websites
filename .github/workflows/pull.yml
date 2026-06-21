@@ -1,4 +1,4 @@
-name: '  ▶️  Pull'
+name: "  ▶️  Pull"
 
 on:
   pull_request:
@@ -32,8 +32,8 @@ env:
   GOODREADS_ID: ${{ secrets.GOODREADS_ID }}
   GOODREADS_KEY: ${{ secrets.GOODREADS_KEY }}
   LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
-  NEXT_PUBLIC__APPLE_IDENTIFIER: ''
-  NEXT_PUBLIC__APPLE_TOKEN_DEVELOPER: ''
+  NEXT_PUBLIC__APPLE_IDENTIFIER: ""
+  NEXT_PUBLIC__APPLE_TOKEN_DEVELOPER: ""
   NEXT_PUBLIC__FATHOM_SITE_ID: ${{ secrets.NEXT_PUBLIC__FATHOM_SITE_ID }}
   NEXT_PUBLIC__SITE: ${{ vars.NEXT_PUBLIC__SITE }}
   NEXT_TELEMETRY_DISABLED: ${{ vars.NEXT_TELEMETRY_DISABLED }}
@@ -65,7 +65,7 @@ env:
 
 jobs:
   pull:
-    name: '👷️  CI'
+    name: "👷️  CI"
     if: ${{ github.event.pull_request.draft == false && !contains(github.event.head_commit.message, '[skip ci]') }}
     timeout-minutes: 20
     runs-on: ubuntu-latest
@@ -83,8 +83,8 @@ jobs:
       GOODREADS_ID: ${{ secrets.GOODREADS_ID }}
       GOODREADS_KEY: ${{ secrets.GOODREADS_KEY }}
       LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
-      NEXT_PUBLIC__APPLE_IDENTIFIER: ''
-      NEXT_PUBLIC__APPLE_TOKEN_DEVELOPER: ''
+      NEXT_PUBLIC__APPLE_IDENTIFIER: ""
+      NEXT_PUBLIC__APPLE_TOKEN_DEVELOPER: ""
       NEXT_PUBLIC__FATHOM_SITE_ID: ${{ secrets.NEXT_PUBLIC__FATHOM_SITE_ID }}
       NEXT_PUBLIC__SITE: ${{ vars.NEXT_PUBLIC__SITE }}
       NEXT_TELEMETRY_DISABLED: ${{ vars.NEXT_TELEMETRY_DISABLED }}
@@ -115,22 +115,22 @@ jobs:
       VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
       IS_ACTOR_VERIFIED: ${{ github.actor == 'jeromefitz' || github.actor == 'renovate[bot]' }}
     steps:
-      - name: '🐙️  Checkout'
+      - name: "🐙️  Checkout"
         id: pull-checkout
         uses: actions/checkout@v6
         with:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 1
 
-      - name: '💽️  Init'
+      - name: "💽️  Init"
         id: pull-init
         uses: JeromeFitz/websites/.github/actions/init@main
 
-      - name: '📦  Install'
+      - name: "📦  Install"
         id: pull-install
         uses: JeromeFitz/websites/.github/actions/install@main
 
-      - name: '🔺️  Cache (vercel)'
+      - name: "🔺️  Cache (vercel)"
         id: pull-cache-vercel
         uses: JeromeFitz/websites/.github/actions/cache-turbo@main
         with:
@@ -138,31 +138,28 @@ jobs:
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
           VERCEL_ENV: ${{ vars.VERCEL_ENV }}
 
-      - name: '☣️ Biome CI'
-        run: pnpm exec biome ci .
-
-      - name: '🚨️  Lint'
+      - name: "🚨️  Lint"
         id: pull-lint
         uses: JeromeFitz/websites/.github/actions/lint@main
         with:
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
 
-      - name: '🧪  Test'
+      - name: "🧪  Test"
         id: pull-test
         uses: JeromeFitz/websites/.github/actions/test@main
         with:
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-          WEBSITE: 'jeromefitzgerald.com'
+          WEBSITE: "jeromefitzgerald.com"
 
       # https://docs.github.com/en/actions/learn-github-actions/expressions
-      - name: '📛  Commit Message'
+      - name: "📛  Commit Message"
         id: pull-commit-message
         run: |
           echo "message=$(git log --no-merges -1 --oneline)" >> $GITHUB_OUTPUT
 
-      - name: '🎭  E2E'
+      - name: "🎭  E2E"
         id: pull-e2e
         if: ${{ contains(steps.pull-commit-message.outputs.message, '[b]') }}
         uses: JeromeFitz/websites/.github/actions/e2e@main
@@ -171,9 +168,9 @@ jobs:
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
           VERCEL_ENV: ${{ vars.VERCEL_ENV }}
-          WEBSITE: 'jeromefitzgerald.com'
+          WEBSITE: "jeromefitzgerald.com"
 
-      - name: '🛠️  Deploy (Config)'
+      - name: "🛠️  Deploy (Config)"
         id: pull-deploy-config
         if: ${{ contains(steps.pull-commit-message.outputs.message, '[b]') }}
         uses: actions/github-script@v9
@@ -202,7 +199,7 @@ jobs:
       #     repository: ${{ steps.pull-deploy-config.outputs.repo }}
       #     fetch-depth: 1
 
-      - name: '🔺️  Deploy (Preview)'
+      - name: "🔺️  Deploy (Preview)"
         id: pull-deploy-preview
         if: ${{ (env.IS_ACTOR_VERIFIED == 'true') && contains(steps.pull-commit-message.outputs.message, '[b]') }}
         uses: JeromeFitz/websites/.github/actions/deploy@main

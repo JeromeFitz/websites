@@ -1,45 +1,43 @@
-/** biome-ignore-all lint/suspicious/noArrayIndexKey: migrate */
-'use client'
+"use client";
 
-import { lpad } from '@jeromefitz/utils'
-
-import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
-import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
-import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
-import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
-import * as DataList from '@radix-ui/themes/dist/esm/components/data-list.js'
-import { Em } from '@radix-ui/themes/dist/esm/components/em.js'
-import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
-import { Inset } from '@radix-ui/themes/dist/esm/components/inset.js'
+import { lpad } from "@jeromefitz/utils";
+import { Badge } from "@radix-ui/themes/dist/esm/components/badge.js";
+import { Box } from "@radix-ui/themes/dist/esm/components/box.js";
+import { Button } from "@radix-ui/themes/dist/esm/components/button.js";
+import { Code } from "@radix-ui/themes/dist/esm/components/code.js";
+import * as DataList from "@radix-ui/themes/dist/esm/components/data-list.js";
+import { Em } from "@radix-ui/themes/dist/esm/components/em.js";
+import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
+import { Inset } from "@radix-ui/themes/dist/esm/components/inset.js";
 import {
   Content as SelectContent,
   Item as SelectItem,
   Root as SelectRoot,
   Trigger as SelectTrigger,
-} from '@radix-ui/themes/dist/esm/components/select.js'
-import { Strong } from '@radix-ui/themes/dist/esm/components/strong.js'
-import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
-import { format, parseISO } from 'date-fns'
-import { slug as _slug } from 'github-slugger'
-import { orderBy as _orderBy } from 'lodash-es'
-import NextLink from 'next/link'
-import { Fragment } from 'react'
-import _title from 'title'
-import { Virtualizer } from 'virtua'
+} from "@radix-ui/themes/dist/esm/components/select.js";
+import { Strong } from "@radix-ui/themes/dist/esm/components/strong.js";
+import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
+import { format, parseISO } from "date-fns";
+import { slug as _slug } from "github-slugger";
+import { orderBy as _orderBy } from "lodash-es";
+import NextLink from "next/link";
+import { Fragment } from "react";
+import _title from "title";
+import { Virtualizer } from "virtua";
 
-import { Anchor } from '@/components/Anchor/index'
-import { ArticleMain } from '@/components/Article/Article.Main'
-import { Callout } from '@/components/Callout/index'
+import { Anchor } from "@/components/Anchor/index";
+import { ArticleMain } from "@/components/Article/Article.Main";
+import { Callout } from "@/components/Callout/index";
 // import { ArticleMainCTA } from '@/components/Article.Main.CTA'
-import { ContainerWithSidebar } from '@/components/Container/Container.Main'
-import { HeaderFull } from '@/components/Header/Header.Full'
-import { HeaderSidebar } from '@/components/Header/Header.Sidebar'
-import { ExternalLinkIcon } from '@/components/Icon/index'
+import { ContainerWithSidebar } from "@/components/Container/Container.Main";
+import { HeaderFull } from "@/components/Header/Header.Full";
+import { HeaderSidebar } from "@/components/Header/Header.Sidebar";
+import { ExternalLinkIcon } from "@/components/Icon/index";
 // import { Image } from '@/app/(notion)/events/[[...catchAll]]/_components/Image'
-import { LI, UL } from '@/components/List/index'
-import { ImageClient as NextImage } from '@/components/Notion/Blocks/Image.client'
-import { useStore as _useStore, useShallow } from '@/store/index'
-import { cx } from '@/utils/cx'
+import { LI, UL } from "@/components/List/index";
+import { ImageClient as NextImage } from "@/components/Notion/Blocks/Image.client";
+import { useStore as _useStore, useShallow } from "@/store/index";
+import { cx } from "@/utils/cx";
 
 const useStore = () => {
   return _useStore(
@@ -47,45 +45,45 @@ const useStore = () => {
       bookStatus: store.bookStatus,
       bookStatusSet: store.bookStatusSet,
     })),
-  )
-}
+  );
+};
 
 // const SCROLL_DURATION = 1250
-const SCROLL_DURATION = 250
+const SCROLL_DURATION = 250;
 
 const stores = [
   {
-    id: 'amazing-books-and-records',
-    title: 'Amazing Books and Records',
-    url: 'https://www.amazingbooksandrecords.com/',
+    id: "amazing-books-and-records",
+    title: "Amazing Books and Records",
+    url: "https://www.amazingbooksandrecords.com/",
   },
   {
-    id: 'bottom-feeder',
-    title: 'Bottom Feeder Books',
-    url: 'https://www.bottomfeederbooks.com/',
+    id: "bottom-feeder",
+    title: "Bottom Feeder Books",
+    url: "https://www.bottomfeederbooks.com/",
   },
   {
-    id: 'the-big-idea',
-    title: 'The Big Idea Bookstore Cooperative',
-    url: 'https://thebigideapgh.com/',
+    id: "the-big-idea",
+    title: "The Big Idea Bookstore Cooperative",
+    url: "https://thebigideapgh.com/",
   },
   {
-    id: 'city-of-aslyum',
-    title: 'City of Asylum Bookstore',
-    url: 'https://www.cityofasylumbooks.org/',
+    id: "city-of-aslyum",
+    title: "City of Asylum Bookstore",
+    url: "https://www.cityofasylumbooks.org/",
   },
   {
-    id: 'city-books',
-    title: 'City Books',
-    url: 'https://www.instagram.com/citybookspgh',
+    id: "city-books",
+    title: "City Books",
+    url: "https://www.instagram.com/citybookspgh",
   },
   {
-    id: 'white-whale-bookstore',
-    title: 'White Whale Bookstore',
-    url: 'https://whitewhalebookstore.com/',
+    id: "white-whale-bookstore",
+    title: "White Whale Bookstore",
+    url: "https://whitewhalebookstore.com/",
   },
-  { id: 'etc', title: '& “many more”', url: '' },
-]
+  { id: "etc", title: "& “many more”", url: "" },
+];
 
 function Book({ book, item }: { book: any; item: any }) {
   /**
@@ -102,32 +100,32 @@ function Book({ book, item }: { book: any; item: any }) {
   // console.dir(item?.seoImage?.name.split('.')[0])
 
   const isFullyQualifiedDomain = item?.seoImage.name.includes(
-    'https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/books',
-  )
+    "https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/books",
+  );
   const src = isFullyQualifiedDomain
     ? item?.seoImage.name
-    : `https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/books/${item?.seoImage.name.split('.')[0]}.jpg`
+    : `https://cdn.jeromefitzgerald.com/jeromefitzgerald.com/images/books/${item?.seoImage.name.split(".")[0]}.jpg`;
 
-  const slug = _slug(src)
+  const slug = _slug(src);
   const image = {
     base64:
-      'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAEAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAX/xAAeEAABBAIDAQAAAAAAAAAAAAABAAMEBQIGEyIxYf/EABUBAQEAAAAAAAAAAAAAAAAAAAEF/8QAGREBAQEBAQEAAAAAAAAAAAAAAQIDABGR/9oADAMBAAIRAxEAPwCfGlwqbX9eZZoaWSXq1mQ47LjczmWeYJPYnz4iIquet1ItPDlA+Enzv//Z',
+      "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAEAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAX/xAAeEAABBAIDAQAAAAAAAAAAAAABAAMEBQIGEyIxYf/EABUBAQEAAAAAAAAAAAAAAAAAAAEF/8QAGREBAQEBAQEAAAAAAAAAAAAAAQIDABGR/9oADAMBAAIRAxEAPwCfGlwqbX9eZZoaWSXq1mQ47LjczmWeYJPYnz4iIquet1ItPDlA+Enzv//Z",
     height: 400,
     slug,
     src,
-    type: 'jpg',
+    type: "jpg",
     url: src,
     width: 315,
-  }
-  console.dir(item?.seoImage.name)
+  };
+  console.dir(item?.seoImage.name);
   return (
     <Flex
-      className="flex-auto items-start rounded-md border-1 border-gray-7 border-t-1"
-      direction={{ initial: 'row', md: 'row-reverse' }}
+      className="border-gray-7 flex-auto items-start rounded-md border-1 border-t-1"
+      direction={{ initial: "row", md: "row-reverse" }}
       gap="0"
       justify="between"
-      mb={{ initial: '2', md: '5' }}
-      minHeight={{ initial: 'min-content', md: 'min-content' }}
+      mb={{ initial: "2", md: "5" }}
+      minHeight={{ initial: "min-content", md: "min-content" }}
       mr="4"
       p="0"
       position="relative"
@@ -137,9 +135,9 @@ function Book({ book, item }: { book: any; item: any }) {
       <Flex
         asChild
         direction="column"
-        gap={{ initial: '2', md: '5' }}
+        gap={{ initial: "2", md: "5" }}
         justify="start"
-        p={{ initial: '2', md: '4' }}
+        p={{ initial: "2", md: "4" }}
         width="100%"
       >
         <DataList.Root>
@@ -151,7 +149,7 @@ function Book({ book, item }: { book: any; item: any }) {
                 </Text>
               </DataList.Label>
               <DataList.Value>
-                <Text size={{ initial: '1', md: '2' }} weight="medium">
+                <Text size={{ initial: "1", md: "2" }} weight="medium">
                   {item.author}
                 </Text>
               </DataList.Value>
@@ -165,20 +163,14 @@ function Book({ book, item }: { book: any; item: any }) {
                 </Text>
               </DataList.Label>
               <DataList.Value>
-                <Text size={{ initial: '1', md: '2' }} weight="medium">
+                <Text size={{ initial: "1", md: "2" }} weight="medium">
                   {item.title}
                   {!!item.subtitle && `: ${item.subtitle}`}
                 </Text>
               </DataList.Value>
             </DataList.Item>
           </Flex>
-          <Flex
-            asChild
-            direction="column"
-            display="inline-flex"
-            gap="0"
-            wrap="nowrap"
-          >
+          <Flex asChild direction="column" display="inline-flex" gap="0" wrap="nowrap">
             <DataList.Item align="start">
               <DataList.Label>
                 <Text size="1">
@@ -186,26 +178,19 @@ function Book({ book, item }: { book: any; item: any }) {
                 </Text>
               </DataList.Label>
               <DataList.Value>
-                <Text size={{ initial: '1', md: '2' }}>
-                  <Code variant="ghost">
-                    {format(parseISO(item.dateReleasedISO), 'yyyy')}
-                  </Code>
+                <Text size={{ initial: "1", md: "2" }}>
+                  <Code variant="ghost">{format(parseISO(item.dateReleasedISO), "yyyy")}</Code>
                 </Text>
               </DataList.Value>
             </DataList.Item>
           </Flex>
-          <Flex
-            asChild
-            direction="column"
-            display={{ initial: 'none', md: 'inline-flex' }}
-            gap="0"
-          >
+          <Flex asChild direction="column" display={{ initial: "none", md: "inline-flex" }} gap="0">
             <DataList.Item align="start">
               <DataList.Label>
                 <Text size="1">Pages</Text>
               </DataList.Label>
               <DataList.Value>
-                <Text size={{ initial: '1', md: '2' }}>
+                <Text size={{ initial: "1", md: "2" }}>
                   <Code variant="ghost">{item.pages}</Code>
                 </Text>
               </DataList.Value>
@@ -214,8 +199,8 @@ function Book({ book, item }: { book: any; item: any }) {
           <Flex
             asChild
             direction="column"
-            display={{ initial: 'none', md: 'inline-flex' }}
-            gap={{ initial: '0', md: '1' }}
+            display={{ initial: "none", md: "inline-flex" }}
+            gap={{ initial: "0", md: "1" }}
           >
             <DataList.Item align="start">
               <DataList.Label>
@@ -224,11 +209,11 @@ function Book({ book, item }: { book: any; item: any }) {
                 </Text>
               </DataList.Label>
               <DataList.Value>
-                <Text size={{ initial: '2', md: '2' }}>
+                <Text size={{ initial: "2", md: "2" }}>
                   <Badge
                     color={book.color}
                     radius="full"
-                    size={{ initial: '1', md: '2' }}
+                    size={{ initial: "1", md: "2" }}
                     variant="soft"
                   >
                     <Code variant="ghost">{book.title}</Code>
@@ -237,12 +222,7 @@ function Book({ book, item }: { book: any; item: any }) {
               </DataList.Value>
             </DataList.Item>
           </Flex>
-          <Flex
-            asChild
-            direction="column"
-            display="inline-flex"
-            gap={{ initial: '0', md: '1' }}
-          >
+          <Flex asChild direction="column" display="inline-flex" gap={{ initial: "0", md: "1" }}>
             <DataList.Item align="start">
               <DataList.Label>
                 <Text size="1">
@@ -250,14 +230,7 @@ function Book({ book, item }: { book: any; item: any }) {
                 </Text>
               </DataList.Label>
               <DataList.Value>
-                <Flex
-                  align="start"
-                  direction="column"
-                  flexGrow="1"
-                  gap="2"
-                  justify="end"
-                  mb="2"
-                >
+                <Flex align="start" direction="column" flexGrow="1" gap="2" justify="end" mb="2">
                   <Button
                     asChild
                     className="w-fit"
@@ -265,15 +238,13 @@ function Book({ book, item }: { book: any; item: any }) {
                     highContrast={false}
                     mt="0"
                     radius="full"
-                    size={{ initial: '1', md: '2' }}
+                    size={{ initial: "1", md: "2" }}
                     variant="outline"
                   >
                     <NextLink href={item.urlBookshop} target="_blank">
                       Buy New at Bookshop
                       {` `}
-                      <ExternalLinkIcon
-                        className={cx('!opacity-100 text-accent-11')}
-                      />
+                      <ExternalLinkIcon className={cx("text-accent-11 !opacity-100")} />
                     </NextLink>
                   </Button>
                   <Button
@@ -283,15 +254,13 @@ function Book({ book, item }: { book: any; item: any }) {
                     highContrast={false}
                     mt="0"
                     radius="full"
-                    size={{ initial: '1', md: '2' }}
+                    size={{ initial: "1", md: "2" }}
                     variant="outline"
                   >
                     <NextLink href={item.urlBiblio} target="_blank">
                       Buy Used at Biblio
                       {` `}
-                      <ExternalLinkIcon
-                        className={cx('!opacity-100 text-accent-11')}
-                      />
+                      <ExternalLinkIcon className={cx("text-accent-11 !opacity-100")} />
                     </NextLink>
                   </Button>
                 </Flex>
@@ -302,23 +271,23 @@ function Book({ book, item }: { book: any; item: any }) {
       </Flex>
       <Inset
         className={cx(
-          'relative h-full rounded-3',
-          'h-[275px] w-[164px] min-w-[164px] max-w-[164px]',
-          'md:size-full md:max-w-[308px]',
+          "rounded-3 relative h-full",
+          "h-68.75 w-41 max-w-41 min-w-41",
+          "md:size-full md:max-w-77",
           // 'md:h-[450px] md:w-[500px]',
-          // 'md:border-1 md:border-gray-7 ',
-          '',
+          // 'md:border md:border-gray-7 ',
+          "",
         )}
         clip="border-box"
-        side={{ initial: 'all', md: 'all' }}
+        side={{ initial: "all", md: "all" }}
       >
         <NextImage
           className={cx(
-            'rounded-3',
+            "rounded-3",
             // 'max-h-[275px] min-w-[150px]',
             // 'size-full ',
             // 'md:max-h-full md:min-w-[275px] md:max-w-[575px]',
-            '',
+            "",
           )}
           role="img"
           tabIndex={-1}
@@ -326,40 +295,40 @@ function Book({ book, item }: { book: any; item: any }) {
         />
       </Inset>
     </Flex>
-  )
+  );
 }
 
 function Books({ data }: { data: any }) {
-  const { bookStatus } = useStore()
+  const { bookStatus } = useStore();
   return (
     <>
       {data.map((book: any) => {
-        const items = _orderBy(book.items, ['author', 'dateReleased', 'title'])
+        const items = _orderBy(book.items, ["author", "dateReleased", "title"]);
 
-        if (book.id !== bookStatus) return null
+        if (book.id !== bookStatus) return null;
 
         return (
           // @ts-ignore
           <Fragment key={`books-${book.id}`}>
             {items.map((item) => {
-              return <Book book={book} item={item} key={item.id} />
+              return <Book book={book} item={item} key={item.id} />;
             })}
           </Fragment>
-        )
+        );
       })}
     </>
-  )
+  );
 }
 
 function BookPage({ items }: { items: any }) {
-  const { bookStatus, bookStatusSet } = useStore()
+  const { bookStatus, bookStatusSet } = useStore();
 
   const handleValueChangeBookStatus = (value: any) => {
     // @hack(mantine) eh... sure.
     setTimeout(() => {
-      bookStatusSet(value)
-    }, SCROLL_DURATION)
-  }
+      bookStatusSet(value);
+    }, SCROLL_DURATION);
+  };
 
   /**
    * @todo
@@ -367,30 +336,32 @@ function BookPage({ items }: { items: any }) {
    *
    */
   const books: any = [
-    { color: 'orange', id: 'in-progress', items: [], notionFilter: 'In Progress' },
-    { color: 'mint', id: 'in-queue', items: [], notionFilter: 'Pending' },
-    { color: 'purple', id: 'completed', items: [], notionFilter: 'Complete' },
-  ]
-  books[0].title = _title(books[0].id)
-  books[1].title = _title(books[1].id)
-  books[2].title = _title(books[2].id)
+    { color: "orange", id: "in-progress", items: [], notionFilter: "In Progress" },
+    { color: "mint", id: "in-queue", items: [], notionFilter: "Pending" },
+    { color: "purple", id: "completed", items: [], notionFilter: "Complete" },
+  ];
+  books[0].title = _title(books[0].id);
+  books[1].title = _title(books[1].id);
+  books[2].title = _title(books[2].id);
 
+  // @todo(complexity) 11
+  // oxlint-disable-next-line complexity
   items.map((item: any) => {
-    if (!item?.status) return null
-    if (!item?.isActive) return null
-    if (item?.status === 'In Progress') {
-      books[0].items.push(item)
+    if (!item?.status) return null;
+    if (!item?.isActive) return null;
+    if (item?.status === "In Progress") {
+      books[0].items.push(item);
     }
-    if (item?.status === 'Pending') {
-      books[1].items.push(item)
+    if (item?.status === "Pending") {
+      books[1].items.push(item);
     }
-    if (item?.status === 'Complete') {
-      books[2].items.push(item)
+    if (item?.status === "Complete") {
+      books[2].items.push(item);
     }
-    return null
-  })
+    return null;
+  });
 
-  console.dir(books)
+  console.dir(books);
 
   return (
     <Flex direction="column">
@@ -398,50 +369,42 @@ function BookPage({ items }: { items: any }) {
       <Flex direction="column" gap="9" pb="4">
         <Flex direction="column" gap="6">
           <Text size="4">
-            <Em>There is something about physical books!</Em> Big S and I tend to
-            surround ourselves with them and are often reading a few at a time. Still
-            working on the layout and what kind of stuff it entails. This is not an
-            exhaustive all-time list just one that since I started creating this
-            section I have been keeping track of.
+            <Em>There is something about physical books!</Em> Big S and I tend to surround ourselves
+            with them and are often reading a few at a time. Still working on the layout and what
+            kind of stuff it entails. This is not an exhaustive all-time list just one that since I
+            started creating this section I have been keeping track of.
           </Text>
 
           <Text size="4">
-            Please support your local library and bookstores. If you buy online,
-            please consider <Strong>Biblio</Strong> (whose affiliate program is ...
-            uh ... not in their control) and <Strong>Bookshop</Strong> (whose
-            affiliate program I am in the process of setting up).{' '}
+            Please support your local library and bookstores. If you buy online, please consider{" "}
+            <Strong>Biblio</Strong> (whose affiliate program is ... uh ... not in their control) and{" "}
+            <Strong>Bookshop</Strong> (whose affiliate program I am in the process of setting
+            up).{" "}
           </Text>
           <Text size="4">
-            <Em>Are you in Pittsburgh?</Em> Well they are home to a lot great
-            bookstores! (NYC does too obviously, and will update this later on our
-            favorite new haunts.)
+            <Em>Are you in Pittsburgh?</Em> Well they are home to a lot great bookstores! (NYC does
+            too obviously, and will update this later on our favorite new haunts.)
           </Text>
           <Box asChild mb="4" pb="2" width="100%">
             <UL className="list-inside md:list-disc">
               {/* @todo(types) */}
               {stores.map((store: any, i) => {
-                if (store.url === '') {
+                if (store.url === "") {
                   return (
                     <LI key={`store-${i}`}>
                       <Text size="4">{store.title}</Text>
                     </LI>
-                  )
+                  );
                 } else {
                   return (
                     <LI key={`store-${i}`}>
-                      <Flex
-                        align="baseline"
-                        asChild
-                        direction="row"
-                        display="inline-flex"
-                        gap="2"
-                      >
+                      <Flex align="baseline" asChild direction="row" display="inline-flex" gap="2">
                         <Anchor href={store.url}>
                           <Text size="4">{store.title}</Text>
                         </Anchor>
                       </Flex>
                     </LI>
-                  )
+                  );
                 }
               })}
             </UL>
@@ -455,14 +418,11 @@ function BookPage({ items }: { items: any }) {
             {/* @todo(radix) children */}
             {/* @ts-ignore */}
             <SelectRoot
-              defaultValue={bookStatus ?? 'in-progress'}
+              defaultValue={bookStatus ?? "in-progress"}
               onValueChange={(value: any) => handleValueChangeBookStatus(value)}
-              size={{ initial: '3', md: '3' }}
+              size={{ initial: "3", md: "3" }}
             >
-              <SelectTrigger
-                className="w-full hover:cursor-pointer"
-                placeholder="Time Range:"
-              />
+              <SelectTrigger className="w-full hover:cursor-pointer" placeholder="Time Range:" />
               <SelectContent className="z-50 w-full" position="popper">
                 {books.map((book: any) => {
                   return (
@@ -476,7 +436,7 @@ function BookPage({ items }: { items: any }) {
                           <Badge
                             className={cx(
                               // 'group-hover:text-gray-1 group-hover:bg-accentA-12 group-hover:outline-dotted group-hover:outline-1',
-                              'group-hover:bg-white dark:group-hover:bg-black',
+                              "group-hover:bg-white dark:group-hover:bg-black",
                             )}
                             color={book.color}
                             highContrast={false}
@@ -489,13 +449,12 @@ function BookPage({ items }: { items: any }) {
                         </Box>
                       </Flex>
                     </SelectItem>
-                  )
+                  );
                 })}
               </SelectContent>
             </SelectRoot>
             <Callout className="relative right-0 bottom-0" color="mint" size="1">
-              <Strong className="font-mono uppercase">Bookshop</Strong> links earn a
-              commission.
+              <Strong className="font-mono uppercase">Bookshop</Strong> links earn a commission.
             </Callout>
           </>
         </HeaderSidebar>
@@ -506,7 +465,7 @@ function BookPage({ items }: { items: any }) {
         </ArticleMain>
       </ContainerWithSidebar>
     </Flex>
-  )
+  );
 }
 
-export { BookPage }
+export { BookPage };

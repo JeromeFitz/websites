@@ -1,13 +1,13 @@
-'use client'
+"use client";
 
-import type { Book } from '@/lib/drizzle/schemas/cache-books/types'
+import { Box } from "@radix-ui/themes/dist/esm/components/box.js";
+import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
+import { Heading } from "@radix-ui/themes/dist/esm/components/heading.js";
+import { Link } from "@radix-ui/themes/dist/esm/components/link.js";
+import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
+import NextLink from "next/link";
 
-import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
-import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
-import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
-import { Link } from '@radix-ui/themes/dist/esm/components/link.js'
-import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
-import NextLink from 'next/link'
+import type { Book } from "@/lib/drizzle/schemas/cache-books/types";
 
 function List({ items }: { items: Book[] }) {
   return (
@@ -42,11 +42,11 @@ function List({ items }: { items: Book[] }) {
                 </Link>
               </li>
             </Flex>
-          )
+          );
         })}
       </>
     </Wrapper>
-  )
+  );
 }
 
 function Wrapper({ children }: { children: React.ReactNode }) {
@@ -56,7 +56,7 @@ function Wrapper({ children }: { children: React.ReactNode }) {
         <ul>{children}</ul>
       </Box>
     </Box>
-  )
+  );
 }
 
-export { List }
+export { List };

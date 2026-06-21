@@ -14,31 +14,29 @@
  *  -  OVERRIDE_CACHE=true pnpm turbo run build --filter="..."
  */
 
-import 'server-only'
+import "server-only";
+import https from "node:https";
 
-import https from 'node:https'
+import { Client } from "@notionhq/client";
+import type { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
+import { Redis } from "@upstash/redis";
+import stringify from "fast-json-stable-stringify";
+import { slug as _slug } from "github-slugger";
+import { envClient } from "next-config/env.client";
+import { envServer } from "next-config/env.server";
+import { isHttpsUri } from "valid-url";
 
-import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
+import { Callout } from "@/components/Callout/index";
+import { CameraIcon } from "@/components/Icon/index";
+import { NotionEmoji as EmojiWrapper } from "@/lib/notion/blocks/Emoji";
+import { isImageExpired } from "@/lib/notion/getAwsImage";
+import { isObjectEmpty } from "@/utils/isObjectEmpty";
 
-import { Client } from '@notionhq/client'
-import { Redis } from '@upstash/redis'
-import stringify from 'fast-json-stable-stringify'
-import { slug as _slug } from 'github-slugger'
-import { envClient } from 'next-config/env.client'
-import { envServer } from 'next-config/env.server'
-import { isHttpsUri } from 'valid-url'
+import { TIME } from "../../../lib/constants";
+import { ImageClient as NextImage } from "./Image.client";
+import { getImageAlt, getImageExpiration, getImageUrl } from "./Image.utils";
 
-import { Callout } from '@/components/Callout/index'
-import { CameraIcon } from '@/components/Icon/index'
-import { NotionEmoji as EmojiWrapper } from '@/lib/notion/blocks/Emoji'
-import { isImageExpired } from '@/lib/notion/getAwsImage'
-import { isObjectEmpty } from '@/utils/isObjectEmpty'
-
-import { TIME } from '../../../lib/constants'
-import { ImageClient as NextImage } from './Image.client'
-import { getImageAlt, getImageExpiration, getImageUrl } from './Image.utils'
-
-const notion = new Client({ auth: envServer.NOTION_API_KEY })
+const notion = new Client({ auth: envServer.NOTION_API_KEY });
 
 const redis = new Redis({
   agent: new https.Agent({ keepAlive: true }),
@@ -48,32 +46,33 @@ const redis = new Redis({
   },
   token: envServer.UPSTASH_REDIS_REST_TOKEN,
   url: envServer.UPSTASH_REDIS_REST_URL,
-})
+});
 
-const CACHE_KEY_PREFIX__IMAGE = `${envClient.NEXT_PUBLIC__SITE}/image`
+const CACHE_KEY_PREFIX__IMAGE = `${envClient.NEXT_PUBLIC__SITE}/image`;
 
 // async function getImage({ url }) {}
 
-// biome-ignore lint/complexity/noExcessiveCognitiveComplexity: migrate
+// @todo(complexity) 24
+// oxlint-disable-next-line complexity
 async function getImageFromBlock({ block, url }: { block: any; url: string }) {
-  let imageUrl = url
-  let imageExpiry = null
+  let imageUrl = url;
+  let imageExpiry = null;
   /**
    * @note(notion) image data
    * @todo(types)
    */
 
-  let key = '',
-    slugImage = ''
+  let key = "",
+    slugImage = "";
 
   if (isHttpsUri(imageUrl)) {
-    slugImage = _slug(imageUrl.includes('?') ? imageUrl.split('?')[0] : imageUrl)
-    key = `${CACHE_KEY_PREFIX__IMAGE}/${slugImage}`.toLowerCase()
+    slugImage = _slug(imageUrl.includes("?") ? imageUrl.split("?")[0] : imageUrl);
+    key = `${CACHE_KEY_PREFIX__IMAGE}/${slugImage}`.toLowerCase();
   }
 
-  const cache: any = await redis.get(key)
-  const isCached = !!cache && !isObjectEmpty(cache)
-  let image = cache ? { ...cache } : {}
+  const cache: any = await redis.get(key);
+  const isCached = !!cache && !isObjectEmpty(cache);
+  let image = cache ? { ...cache } : {};
 
   /**
    * @note(notion) AWS, Notion, and Cache
@@ -89,14 +88,14 @@ async function getImageFromBlock({ block, url }: { block: any; url: string }) {
    * - - QUESTION: if we have cache with blurDataURL, could Suspend/SWR?
    * - - ANSWER: probably neglible perf but if site is large and in charge perhaps
    */
-  const isExpired = isImageExpired(image)
+  const isExpired = isImageExpired(image);
 
   if (isExpired) {
     const blockRefreshData = await notion?.blocks?.retrieve({
       block_id: block.id,
-    })
-    imageUrl = getImageUrl(blockRefreshData)
-    imageExpiry = getImageExpiration(blockRefreshData)
+    });
+    imageUrl = getImageUrl(blockRefreshData);
+    imageExpiry = getImageExpiration(blockRefreshData);
   }
 
   if (envClient.OVERRIDE_CACHE || !isCached) {
@@ -107,10 +106,10 @@ async function getImageFromBlock({ block, url }: { block: any; url: string }) {
      */
     const commentBlock = await notion?.comments?.list({
       block_id: block.id,
-    })
-    const alt = (!!commentBlock && getImageAlt(commentBlock?.results)) || ''
+    });
+    const alt = (!!commentBlock && getImageAlt(commentBlock?.results)) || "";
 
-    image.alt = alt
+    image.alt = alt;
   }
 
   /**
@@ -121,23 +120,23 @@ async function getImageFromBlock({ block, url }: { block: any; url: string }) {
    * would recommend not having the "hit" here
    */
   if (envClient.OVERRIDE_CACHE || (!isCached && !!imageUrl)) {
-    const { getImage } = await import('../../../lib/plaiceholder/getImage')
-    const imageData = await getImage(imageUrl)
-    image.blurDataURL = imageData?.base64
+    const { getImage } = await import("../../../lib/plaiceholder/getImage");
+    const imageData = await getImage(imageUrl);
+    image.blurDataURL = imageData?.base64;
     image = {
       ...image,
       ...imageData?.img,
-    }
+    };
   }
 
   if (isExpired) {
-    image.src = imageUrl
-    image.url = imageUrl
-    image._time_time = imageExpiry
+    image.src = imageUrl;
+    image.url = imageUrl;
+    image._time_time = imageExpiry;
   } else {
-    image._time_time = undefined
+    image._time_time = undefined;
   }
-  image.id = key
+  image.id = key;
 
   /**
    * Cache
@@ -146,45 +145,47 @@ async function getImageFromBlock({ block, url }: { block: any; url: string }) {
   if (envClient.OVERRIDE_CACHE || isExpired || !isCached) {
     void redis.set(key, stringify(image), {
       ex: TIME.MONTH,
-    })
+    });
   }
 
-  return image
+  return image;
 }
 
+// @todo(complexity) 15
+// oxlint-disable-next-line complexity
 async function ImageImpl({
   block,
   blocks,
-  className = '',
+  className = "",
   order,
 }: {
-  block: any | BlockObjectResponse
-  blocks?: any
-  className?: string
-  order: any
+  block: any | BlockObjectResponse;
+  blocks?: any;
+  className?: string;
+  order: any;
 }) {
   // @todo(error-handling)
 
   // @ts-ignore
-  if (block?.image?.external?.url === '') return null
+  if (block?.image?.external?.url === "") return null;
 
-  const classNameCaption = blocks?.caption?.className || ''
+  const classNameCaption = blocks?.caption?.className || "";
 
-  const imageUrl = getImageUrl(block)
-  if (!imageUrl) return null
+  const imageUrl = getImageUrl(block);
+  if (!imageUrl) return null;
 
   const imageCaption = block[block.type]?.caption
     ? block[block.type]?.caption[0]?.plain_text
-    : null
+    : null;
 
   let image: any = {
     order,
     src: imageUrl,
     url: imageUrl,
-  }
+  };
 
-  const imageOptimized = await getImageFromBlock({ block, url: imageUrl })
-  image = { ...image, ...imageOptimized }
+  const imageOptimized = await getImageFromBlock({ block, url: imageUrl });
+  image = { ...image, ...imageOptimized };
 
   // console.dir(`image:`)
   // console.dir(image)
@@ -198,8 +199,8 @@ async function ImageImpl({
         </Callout>
       )}
     </>
-  )
+  );
 }
 
-export { ImageImpl as Image }
-export default ImageImpl
+export { ImageImpl as Image };
+export default ImageImpl;

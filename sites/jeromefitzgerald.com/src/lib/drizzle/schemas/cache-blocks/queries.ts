@@ -1,11 +1,10 @@
-import type { Block } from '@/lib/drizzle/schemas/cache-blocks/types'
+import { and, eq, sql } from "drizzle-orm";
+import { envServer } from "next-config/env.server";
 
-import { and, eq, sql } from 'drizzle-orm'
-import { envServer } from 'next-config/env.server'
+import { drizzle } from "@/lib/drizzle/index";
+import type { Block } from "@/lib/drizzle/schemas/cache-blocks/types";
 
-import { drizzle } from '@/lib/drizzle/index'
-
-import { cacheBlocks } from './schemas'
+import { cacheBlocks } from "./schemas";
 
 const sqlBase = `
 SELECT
@@ -25,31 +24,22 @@ WHERE
 [REPLACE_WHERE]
 [REPLACE_ORDERBY]
 [REPLACE_LIMIT]
-`
+`;
 
 export async function getBlocks({ key }: { key: string }): Promise<Block[]> {
   return await drizzle.execute(
     sql.raw(
       sqlBase
-        .replace('[REPLACE_WHERE]', `AND key = '${key}'`)
-        .replace('[REPLACE_ORDERBY]', '')
-        .replace('[REPLACE_LIMIT]', ''),
+        .replace("[REPLACE_WHERE]", `AND key = '${key}'`)
+        .replace("[REPLACE_ORDERBY]", "")
+        .replace("[REPLACE_LIMIT]", ""),
     ),
-  )
+  );
 }
 
-export async function getBlocks2({
-  key,
-}: {
-  key: string
-}): Promise<Omit<Block, 'results'>[]> {
+export async function getBlocks2({ key }: { key: string }): Promise<Omit<Block, "results">[]> {
   return await drizzle
     .select()
     .from(cacheBlocks)
-    .where(
-      and(
-        eq(cacheBlocks.siteId, envServer.POSTGRES_SITE_ID),
-        eq(cacheBlocks.key, key),
-      ),
-    )
+    .where(and(eq(cacheBlocks.siteId, envServer.POSTGRES_SITE_ID), eq(cacheBlocks.key, key)));
 }

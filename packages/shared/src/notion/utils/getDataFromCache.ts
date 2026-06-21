@@ -1,35 +1,32 @@
-import 'server-only'
-
+import "server-only";
 /**
  * @note(next|redis) try to avoid breaking changes but if necessary
  *  run a build with:
  *  -  OVERRIDE_CACHE=true pnpm turbo run build --filter="..."
  */
-
-import { envClient, envServer } from '@jeromefitz/next-config'
-import { isObjectEmpty } from '@jeromefitz/utils'
-
-import { Client } from '@notionhq/client'
+import { envClient, envServer } from "@jeromefitz/next-config";
+import { isObjectEmpty } from "@jeromefitz/utils";
+import { Client } from "@notionhq/client";
 // import type { FilterType } from 'next-notion/Notion.types'
-import { getBlockChildrenDataParent } from 'next-notion/queries'
-import { isAwsImage, isImageExpired } from 'next-notion/utils'
-import { cache } from 'react'
+import { getBlockChildrenDataParent } from "next-notion/queries";
+import { isAwsImage, isImageExpired } from "next-notion/utils";
+import { cache } from "react";
 
-import { getCache, setCache } from '../../redis'
-import { getDatabaseQuery, getMetadata } from '.'
+import { getDatabaseQuery, getMetadata } from ".";
+import { getCache, setCache } from "../../redis";
 
 // @todo(types) next-notion
 // import type { SegmentInfo } from '.'
 
-const notion = new Client({ auth: envServer.NOTION_API_KEY })
+const notion = new Client({ auth: envServer.NOTION_API_KEY });
 
 interface GetDataFromCache {
-  database_id: string
-  draft?: boolean
-  filterType: any //FilterType
-  revalidate?: boolean
+  database_id: string;
+  draft?: boolean;
+  filterType: any; //FilterType
+  revalidate?: boolean;
   // @todo(types) next-notion
-  segmentInfo: any //SegmentInfo
+  segmentInfo: any; //SegmentInfo
 }
 
 export const preload = ({
@@ -45,29 +42,23 @@ export const preload = ({
     filterType,
     revalidate,
     segmentInfo,
-  })
-}
+  });
+};
 
 const getDataFromCache = cache(
-  async ({
-    database_id,
-    draft,
-    filterType,
-    revalidate,
-    segmentInfo,
-    // todo(complexity) 21
-    // biome-ignore lint/complexity/noExcessiveCognitiveComplexity: migrate
-  }: GetDataFromCache) => {
-    const { slug } = segmentInfo
+  // todo(complexity) 38
+  // oxlint-disable-next-line complexity
+  async ({ database_id, draft, filterType, revalidate, segmentInfo }: GetDataFromCache) => {
+    const { slug } = segmentInfo;
     /**
      * Redis
      */
     // @todo(types) any
-    let data: any
+    let data: any;
     // console.dir(`getCache: slug: ${slug}`)
-    const databaseQueryCache = await getCache({ slug })
-    const isCached = !!databaseQueryCache && !isObjectEmpty(databaseQueryCache)
-    data = databaseQueryCache
+    const databaseQueryCache = await getCache({ slug });
+    const isCached = !!databaseQueryCache && !isObjectEmpty(databaseQueryCache);
+    data = databaseQueryCache;
 
     if (envClient.OVERRIDE_CACHE || draft || revalidate || !isCached) {
       // console.dir(
@@ -82,15 +73,15 @@ const getDataFromCache = cache(
         filterType,
         revalidate,
         segmentInfo,
-      })
-      data = databaseQueryNotion
-      const page = data.results[0]
+      });
+      data = databaseQueryNotion;
+      const page = data.results[0];
 
-      let blocks = {}
+      let blocks = {};
       if (page) {
-        const blockChildrenParentData = getBlockChildrenDataParent(page?.id)
-        const [blockChildrenParent] = await Promise.all([blockChildrenParentData])
-        blocks = blockChildrenParent
+        const blockChildrenParentData = getBlockChildrenDataParent(page?.id);
+        const [blockChildrenParent] = await Promise.all([blockChildrenParentData]);
+        blocks = blockChildrenParent;
       }
 
       // @todo(next) but not a 404 empty please
@@ -99,15 +90,15 @@ const getDataFromCache = cache(
        * - [x] NotionContent
        * - [ ] SEO Information
        */
-      const seo = getMetadata({ properties: page?.properties || {}, segmentInfo })
+      const seo = getMetadata({ properties: page?.properties || {}, segmentInfo });
       data = {
         blocks,
         page,
         seo,
-      }
+      };
       if (!isObjectEmpty(data.blocks) && !draft) {
         // console.dir(`setCache: draft: ${draft ? 'y' : 'n'}`)
-        void setCache({ data, slug })
+        void setCache({ data, slug });
       }
     }
 
@@ -115,19 +106,19 @@ const getDataFromCache = cache(
      * Custom Check:
      * - If SEO Image is AWS, re-set cache
      */
-    let isExpired = false
-    const blockSeoImage = data?.page?.properties['SEO.Image']?.files[0]
+    let isExpired = false;
+    const blockSeoImage = data?.page?.properties["SEO.Image"]?.files[0];
     const SEO_IMAGE_IS_AWS = blockSeoImage
       ? isAwsImage(blockSeoImage[blockSeoImage?.type]?.url)
-      : false
+      : false;
     if (SEO_IMAGE_IS_AWS) {
       isExpired = isImageExpired({
         expiry_time:
-          blockSeoImage?.type === 'external'
+          blockSeoImage?.type === "external"
             ? null
             : blockSeoImage[blockSeoImage?.type]?.expiry_time,
         src: blockSeoImage[blockSeoImage.type].url,
-      })
+      });
     }
     /**
      * @todo(notion) determine page id a bit better as it can be Listing or Slug
@@ -136,26 +127,26 @@ const getDataFromCache = cache(
       // @todo(types)
       const pageData: any = await notion?.pages?.retrieve({
         page_id: data?.page?.id,
-      })
+      });
       const pageSeo = getMetadata({
         properties: pageData?.properties,
         segmentInfo,
-      })
+      });
       data = {
         ...data,
         page: pageData,
         seo: pageSeo,
-      }
+      };
       if (!isObjectEmpty(data.blocks) && !draft) {
         // console.dir(`setCache: draft: ${draft ? 'y' : 'n'}`)
-        void setCache({ data, slug })
+        void setCache({ data, slug });
       }
     }
     /**
      * 404
      */
-    return data
+    return data;
   },
-)
+);
 
-export { getDataFromCache }
+export { getDataFromCache };

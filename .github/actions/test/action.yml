@@ -1,27 +1,27 @@
 # name: 'Test'
-name: '🧪  '
-description: 'Localized Test'
-author: 'JeromeFitz'
+name: "🧪  "
+description: "Localized Test"
+author: "JeromeFitz"
 
 inputs:
   TURBO_TEAM:
-    description: 'Provide Team ID for Turbo'
+    description: "Provide Team ID for Turbo"
     required: true
     type: string
   TURBO_TOKEN:
-    description: 'Provide Token for Turbo'
+    description: "Provide Token for Turbo"
     required: true
     type: string
   WEBSITE:
-    description: 'Provide Website for Lighthouse'
+    description: "Provide Website for Lighthouse"
     required: true
     type: string
-    default: 'jeromefitzgerald.com'
+    default: "jeromefitzgerald.com"
 
 runs:
-  using: 'composite'
+  using: "composite"
   steps:
-    - name: '🧪  Test'
+    - name: "🧪  Test"
       id: test
       shell: bash
       run: pnpm turbo run test:unit --filter="${{ inputs.WEBSITE }}" --cache-dir=".cache-turbo"

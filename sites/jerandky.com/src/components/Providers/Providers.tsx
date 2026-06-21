@@ -1,7 +1,7 @@
-import { Providers as ProvidersClient } from './Providers.client'
+import { Providers as ProvidersClient } from "./Providers.client";
 
 function Providers({ children }) {
-  return <ProvidersClient>{children}</ProvidersClient>
+  return <ProvidersClient>{children}</ProvidersClient>;
 }
 
-export { Providers }
+export { Providers };

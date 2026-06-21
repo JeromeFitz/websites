@@ -1,33 +1,32 @@
-'use client'
+"use client";
 
-import type { Event } from '@/lib/drizzle/schemas/types'
-
-import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
-import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
-import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
-import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
-import { isAfter } from 'date-fns/isAfter'
-import NextLink from 'next/link'
+import { Box } from "@radix-ui/themes/dist/esm/components/box.js";
+import { Button } from "@radix-ui/themes/dist/esm/components/button.js";
+import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
+import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
+import { isAfter } from "date-fns/isAfter";
+import NextLink from "next/link";
 
 import {
   AccordionContent,
   AccordionItem,
   AccordionRoot,
   AccordionTrigger,
-} from '@/components/Accordion'
-import { ExternalLinkIcon } from '@/components/Icon/index'
-import { Tags } from '@/components/Tags/Tags'
-import { cx } from '@/utils/cx'
+} from "@/components/Accordion";
+import { ExternalLinkIcon } from "@/components/Icon/index";
+import { Tags } from "@/components/Tags/Tags";
+import type { Event } from "@/lib/drizzle/schemas/types";
+import { cx } from "@/utils/cx";
 
-const description = `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Recusandae, omnis? Quod, enim fugit doloribus qui culpa odit. Eveniet, cupiditate qui alias nihil similique tempora fugit?`
+const description = `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Recusandae, omnis? Quod, enim fugit doloribus qui culpa odit. Eveniet, cupiditate qui alias nihil similique tempora fugit?`;
 
 // @ts-ignore
 function AccordionClient({ items }) {
-  const defaultValue = items[0]?.id || null
+  const defaultValue = items[0]?.id || null;
   return (
     <Box
       asChild
-      className="border-0 border-accentA-12 border-solid bg-grayA-6 shadow-3"
+      className="border-accentA-12 bg-grayA-6 shadow-3 border-0 border-solid"
       maxWidth="100%"
       minWidth="100%"
       mt="4"
@@ -38,10 +37,10 @@ function AccordionClient({ items }) {
       {/* @ts-ignore */}
       <AccordionRoot collapsible defaultValue={defaultValue} type="single">
         {items.map((item: Event) => {
-          if (!item.id) return null
-          const isEventOver = isAfter(Date.now(), item.dateIso)
+          if (!item.id) return null;
+          const isEventOver = isAfter(Date.now(), item.dateIso);
 
-          const key = `items-item-${item.id}`
+          const key = `items-item-${item.id}`;
           return (
             // @todo(types) radix
 
@@ -61,9 +60,9 @@ function AccordionClient({ items }) {
                     align="center"
                     className="grow-0 text-left"
                     minWidth="0"
-                    width={{ initial: '70%', lg: '66.666667%', md: '75%' }}
+                    width={{ initial: "70%", lg: "66.666667%", md: "75%" }}
                   >
-                    <Text className="line-clamp-2" size={{ initial: '2', md: '4' }}>
+                    <Text className="line-clamp-2" size={{ initial: "2", md: "4" }}>
                       {item.title}
                     </Text>
                   </Flex>
@@ -71,25 +70,16 @@ function AccordionClient({ items }) {
                   <Flex
                     className="text-left"
                     px="2"
-                    width={{ initial: '30%', lg: '33.333333%', md: '25%' }}
+                    width={{ initial: "30%", lg: "33.333333%", md: "25%" }}
                   >
-                    <Text
-                      as="span"
-                      className="visible inline md:invisible md:hidden"
-                      size="1"
-                    >
-                      {item.dateDayOfWeekAbbr?.toUpperCase()},{' '}
-                      {item.dateMonthNameAbbr}/{item.dateDayOfMonth}
+                    <Text as="span" className="visible inline md:invisible md:hidden" size="1">
+                      {item.dateDayOfWeekAbbr?.toUpperCase()}, {item.dateMonthNameAbbr}/
+                      {item.dateDayOfMonth}
                       <br />
                       {item.dateTime}
                     </Text>
-                    <Text
-                      as="span"
-                      className="invisible hidden md:visible md:inline"
-                      size="2"
-                    >
-                      {item.dateDayOfWeek}, {item.dateMonthNameAbbr}{' '}
-                      {item.dateDayOfMonthOrdinal}
+                    <Text as="span" className="invisible hidden md:visible md:inline" size="2">
+                      {item.dateDayOfWeek}, {item.dateMonthNameAbbr} {item.dateDayOfMonthOrdinal}
                       <br />@ {item.dateTime}
                     </Text>
                   </Flex>
@@ -107,15 +97,15 @@ function AccordionClient({ items }) {
                     <div
                       className={cx(
                         // 'items-center align-middle',
-                        'mr-1 w-full justify-end text-right md:w-6/12 lg:mr-4',
-                        'flex flex-col',
-                        'gap-2',
+                        "mr-1 w-full justify-end text-right md:w-6/12 lg:mr-4",
+                        "flex flex-col",
+                        "gap-2",
                       )}
                     >
                       <Button
                         aria-label={`Read more detailed information for ${item.title}`}
                         asChild
-                        className={cx('justify-center')}
+                        className={cx("justify-center")}
                         variant="solid"
                       >
                         <NextLink href={item.slugPreview}>Detailed Info</NextLink>
@@ -123,9 +113,7 @@ function AccordionClient({ items }) {
                       {!!item.urlTicket && !isEventOver && (
                         <Button
                           asChild
-                          className={cx(
-                            'flex-row items-center justify-center gap-1',
-                          )}
+                          className={cx("flex-row items-center justify-center gap-1")}
                           variant="surface"
                         >
                           <NextLink href={item.urlTicket}>
@@ -139,11 +127,11 @@ function AccordionClient({ items }) {
                 </div>
               </AccordionContent>
             </AccordionItem>
-          )
+          );
         })}
       </AccordionRoot>
     </Box>
-  )
+  );
 }
 
-export { AccordionClient }
+export { AccordionClient };

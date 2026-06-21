@@ -1,43 +1,43 @@
 # name: 'Deploy'
-name: '🚀️  '
-description: 'Deploy to Vercel based to Preview, or Production if `main` branch'
-author: 'JeromeFitz'
+name: "🚀️  "
+description: "Deploy to Vercel based to Preview, or Production if `main` branch"
+author: "JeromeFitz"
 
 inputs:
   DEPLOY_PR_FROM_FORK:
-    description: 'Flag to allow Vercel to deploy from fork. (Not recommended.)'
+    description: "Flag to allow Vercel to deploy from fork. (Not recommended.)"
     required: false
     default: false
     type: boolean
   PRODUCTION:
-    description: 'Flag to request Vercel to deploy to Production (true) or Preview (false)'
+    description: "Flag to request Vercel to deploy to Production (true) or Preview (false)"
     default: false
     type: boolean
   GH_TOKEN:
-    description: 'Provide GitHub Token for Vercel to connect and verify with.'
+    description: "Provide GitHub Token for Vercel to connect and verify with."
     required: true
     type: string
   VERCEL_ORG_ID:
-    description: 'Provide Organization ID for Vercel.'
+    description: "Provide Organization ID for Vercel."
     required: true
     type: string
   VERCEL_PROJECT_ID:
-    description: 'Provide Project ID for Vercel.'
+    description: "Provide Project ID for Vercel."
     required: true
     type: string
   VERCEL_TOKEN:
-    description: 'Provide Token for Vercel.'
+    description: "Provide Token for Vercel."
     required: true
     type: string
 
 runs:
-  using: 'composite'
+  using: "composite"
   steps:
-    - name: '🔺️ Install'
+    - name: "🔺️ Install"
       id: wf-install
       shell: bash
       run: npm install -g vercel@54.14.2
-    - name: '🔺️ Deploy'
+    - name: "🔺️ Deploy"
       id: wf-deploy
       # uses: JeromeFitz/deploy-to-vercel-action@ci/vercel-deploy-commit-limits
       uses: BetaHuhn/deploy-to-vercel-action@v1

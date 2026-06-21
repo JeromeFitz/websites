@@ -1,12 +1,9 @@
 {
   "name": "@jeromefitz/ds",
   "version": "0.0.0",
-  "type": "module",
-  "license": "MIT",
   "private": true,
-  "engines": {
-    "node": ">=24"
-  },
+  "license": "MIT",
+  "type": "module",
   "exports": {
     ".": "./dist/index.mjs",
     "./components": "./dist/components/index.mjs",
@@ -38,17 +35,11 @@
     "clean:install": "pnpm clean && rm -rf ./node_modules",
     "copy": "mkdir -p ./dist && ./scripts/copy.sh",
     "dev": "tsdown --watch",
-    "lint": "pnpm lint:typescript",
-    "lint:typescript": "tsc --noEmit --declaration",
+    "lint:ts": "tsc --noEmit --declaration",
     "test:e2e": "playwright test",
     "test:unit": "vitest run",
     "test:unit:coverage": "vitest run --ci --coverage",
     "test:watch": "vitest run --watch"
-  },
-  "peerDependencies": {
-    "@mantine/hooks": "^7.5.1 || ^8.0.0 || ^9.0.0",
-    "react": "^18.0.0 || ^19.0.0",
-    "react-dom": "^18.0.0 || ^19.0.0"
   },
   "dependencies": {
     "@heroicons/react": "2.2.0",
@@ -110,6 +101,14 @@
     "vite-plugin-svgr": "5.2.0",
     "vitest": "4.1.9",
     "vitest-browser-react": "2.2.0"
+  },
+  "peerDependencies": {
+    "@mantine/hooks": "^7.5.1 || ^8.0.0 || ^9.0.0",
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  },
+  "engines": {
+    "node": ">=24"
   },
   "inlinedDependencies": {
     "@jridgewell/sourcemap-codec": "1.5.5",

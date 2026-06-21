@@ -4,11 +4,11 @@
  */
 // import type { SWRInfiniteConfiguration } from 'swr/infinite'
 
-import { get as _get, last as _last } from 'lodash-es'
-import { useCallback, useMemo, useRef } from 'react'
-import useSWRInfinite from 'swr/infinite'
+import { get as _get, last as _last } from "lodash-es";
+import { useCallback, useMemo, useRef } from "react";
+import useSWRInfinite from "swr/infinite";
 
-type PageFetcher<Page, Key extends any[]> = (...params: Key) => Page | Promise<Page>
+type PageFetcher<Page, Key extends any[]> = (...params: Key) => Page | Promise<Page>;
 
 type PageKeyMaker<Page, Key extends any[]> = (
   index: number,
@@ -20,17 +20,19 @@ type PageKeyMaker<Page, Key extends any[]> = (
    *
    * This prevents multiple page increases at once.
    */
-) => Key
+) => Key;
 
 interface UseSWRInfinitePagesConfig<Page extends object> {
-  dataPath: keyof Page | string[]
-  limit?: number
+  dataPath: keyof Page | string[];
+  limit?: number;
 } // & SWRInfiniteConfiguration<Page>
 
 /**
  * @todo(types) SWRInfiniteMutatorOptions
  *              this is not exported so make any
  */
+// @todo(complexity) 14
+// oxlint-disable-next-line complexity
 const useSWRInfinitePages: any = <
   Page extends object,
   // @todo(types)
@@ -42,71 +44,71 @@ const useSWRInfinitePages: any = <
   fetcher: PageFetcher<Page, Key>,
   { dataPath: path, limit = 20, ...options }: UseSWRInfinitePagesConfig<Page>,
 ) => {
-  const isFetching = useRef(false)
-  const dataPath = Array.isArray(path) ? path.join('.') : path
+  const isFetching = useRef(false);
+  const dataPath = Array.isArray(path) ? path.join(".") : path;
 
   const { data, error, isValidating, mutate, setSize, size } = useSWRInfinite<Page>(
     (index, previousPage) => {
-      const previousPageData = _get(previousPage, dataPath)
+      const previousPageData = _get(previousPage, dataPath);
       // we've reached the last page, no more fetching
-      if (previousPageData?.length === 0) return null
+      if (previousPageData?.length === 0) return null;
       // @todo(swr) is this correct?
       // this means we haven't fetched the previous page yet, so don't fetch multiple at once.
       // if (index > 0 && !previousPageData) return null
-      if (isFetching.current && index) return null
+      if (isFetching.current && index) return null;
       if (previousPageData && previousPageData.length < limit) {
-        return null
+        return null;
       }
 
-      return key(index, previousPageData)
+      return key(index, previousPageData);
     },
     async (...key: Key) => {
-      let val: Page
+      let val: Page;
       try {
-        isFetching.current = true
-        val = await fetcher(...key)
+        isFetching.current = true;
+        val = await fetcher(...key);
         if (isFetching.current) {
-          isFetching.current = false
+          isFetching.current = false;
         }
       } catch (e) {
         if (isFetching.current) {
-          isFetching.current = false
+          isFetching.current = false;
         }
-        throw e
+        throw e;
       }
 
-      return val
+      return val;
     },
     { revalidateAll: false, revalidateFirstPage: false, ...options },
-  )
+  );
 
-  const firstPageData = _get(data?.[0], dataPath)
-  const lastPage = _last(data)
-  const lastPageData = _get(lastPage, dataPath)
-  const canFetchMore = lastPageData?.length && lastPageData.length === limit
+  const firstPageData = _get(data?.[0], dataPath);
+  const lastPage = _last(data);
+  const lastPageData = _get(lastPage, dataPath);
+  const canFetchMore = lastPageData?.length && lastPageData.length === limit;
 
-  const isLoadingInitialData = !data && !error
+  const isLoadingInitialData = !data && !error;
   const isLoadingMore =
     isLoadingInitialData ||
-    (isValidating && size > 1 && data && typeof data[size - 1] === 'undefined')
+    (isValidating && size > 1 && data && typeof data[size - 1] === "undefined");
 
-  const isRefreshing = isValidating && data?.length === size
-  const isEmpty = firstPageData?.length === 0
+  const isRefreshing = isValidating && data?.length === size;
+  const isEmpty = firstPageData?.length === 0;
 
   // @ts-ignore
   const fetchMore = useCallback(() => {
-    if (isLoadingMore || isFetching.current) return null
+    if (isLoadingMore || isFetching.current) return null;
 
     void setSize((size) => {
-      return size + 1
-    })
-  }, [isLoadingMore, setSize])
+      return size + 1;
+    });
+  }, [isLoadingMore, setSize]);
 
   const flat = useMemo(() => {
     return data?.flatMap((page) => _get(page, dataPath) as Data).filter(Boolean) as
       | (Data extends readonly (infer InnerArr)[] ? InnerArr : Data)[]
-      | undefined
-  }, [data, dataPath])
+      | undefined;
+  }, [data, dataPath]);
 
   return {
     canFetchMore,
@@ -123,8 +125,8 @@ const useSWRInfinitePages: any = <
     mutate,
     pages: data,
     size,
-  }
-}
+  };
+};
 
-export type { UseSWRInfinitePagesConfig }
-export { useSWRInfinitePages }
+export type { UseSWRInfinitePagesConfig };
+export { useSWRInfinitePages };

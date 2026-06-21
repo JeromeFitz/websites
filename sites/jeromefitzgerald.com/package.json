@@ -1,23 +1,19 @@
 {
   "name": "jeromefitzgerald.com",
   "version": "0.0.0",
-  "type": "module",
   "description": "Website for Jerome Fitzgerald (he/him).",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jeromefitz/websites.git",
-    "directory": "sites/jeromefitzgerald.com"
-  },
+  "license": "MIT",
   "author": {
     "name": "Jerome Fitzgerald",
     "email": "j@jeromefitzgerald.com",
     "url": "https://jeromefitzgerald.com"
   },
-  "license": "MIT",
-  "engines": {
-    "node": ">=24.14.0 <25",
-    "pnpm": ">=11 <12"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeromefitz/websites.git",
+    "directory": "sites/jeromefitzgerald.com"
   },
+  "type": "module",
   "scripts": {
     "build": "CI=1 NODE_NO_WARNINGS=1 next build --turbopack",
     "build:no-turbo": "CI=1 NODE_NO_WARNINGS=1 next build",
@@ -32,8 +28,7 @@
     "db:studio": "drizzle-kit studio",
     "dev": "NODE_NO_WARNINGS=1 next dev --turbopack --experimental-https",
     "lhci": "pnpm --package=@lhci/cli@0.15.1 dlx lhci autorun --config=.lighthouserc.cjs",
-    "lint": "pnpm run types && pnpm run lint:typescript",
-    "lint:typescript": "tsc --noEmit --declaration",
+    "lint:ts": "pnpm run types && tsc --noEmit --declaration",
     "semantic-release": "semantic-release",
     "start": "NODE_NO_WARNINGS=1 next start",
     "test:e2e": "NODE_NO_WARNINGS=1 playwright test --config ./playwright.config.ts",
@@ -153,5 +148,9 @@
     "vite": "8.0.16",
     "vitest": "4.1.9",
     "zod": "4.4.3"
+  },
+  "engines": {
+    "node": ">=24.14.0 <25",
+    "pnpm": ">=11 <12"
   }
 }

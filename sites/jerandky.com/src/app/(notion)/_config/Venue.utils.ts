@@ -1,9 +1,9 @@
-import { getPropertyTypeData } from 'next-notion/utils'
+import { getPropertyTypeData } from "next-notion/utils";
 
-import type { PropertiesVenue } from '../_config'
+import type { PropertiesVenue } from "../_config";
 
 function getPropertyTypeDataVenue(properties, property: keyof PropertiesVenue) {
-  return getPropertyTypeData(properties, property)
+  return getPropertyTypeData(properties, property);
 }
 
-export { getPropertyTypeDataVenue }
+export { getPropertyTypeDataVenue };

@@ -1,18 +1,17 @@
-import type { Blog } from '@/lib/drizzle/schemas/cache-blogs/types'
-import type { Segment } from '@/utils/getBySegment'
-
 // import { and, eq, sql } from 'drizzle-orm'
-import { sql } from 'drizzle-orm'
-import { envServer } from 'next-config/env.server'
+import { sql } from "drizzle-orm";
+import { envServer } from "next-config/env.server";
 
-import { drizzle } from '@/lib/drizzle/index'
+import { drizzle } from "@/lib/drizzle/index";
+import type { Blog } from "@/lib/drizzle/schemas/cache-blogs/types";
+import type { Segment } from "@/utils/getBySegment";
 
 // import { cacheBlogs, selectSchemaBlogs } from './schemas'
 
-export const segment: Segment = 'blog'
+export const segment: Segment = "blog";
 
 const orderBy_default = `ORDER BY
-  arr.item_object -> 'properties' -> 'Date.ISO' -> 'formula' ->> 'string' DESC`
+  arr.item_object -> 'properties' -> 'Date.ISO' -> 'formula' ->> 'string' DESC`;
 
 const sqlBase = `
 SELECT
@@ -55,30 +54,26 @@ WHERE
  [REPLACE_WHERE]
 [REPLACE_ORDERBY]
 [REPLACE_LIMIT]
-`
+`;
 export async function getBlogs(): Promise<Blog[]> {
   return await drizzle.execute(
     sql.raw(
       sqlBase
-        .replace('[REPLACE_WHERE]', '')
-        .replace('[REPLACE_ORDERBY]', orderBy_default)
-        .replace('[REPLACE_LIMIT]', ''),
+        .replace("[REPLACE_WHERE]", "")
+        .replace("[REPLACE_ORDERBY]", orderBy_default)
+        .replace("[REPLACE_LIMIT]", ""),
     ),
-  )
+  );
 }
-export async function getBlogsWithLimit({
-  limit = 10,
-}: {
-  limit: number
-}): Promise<Blog[]> {
+export async function getBlogsWithLimit({ limit = 10 }: { limit: number }): Promise<Blog[]> {
   return await drizzle.execute(
     sql.raw(
       sqlBase
-        .replace('[REPLACE_WHERE]', '')
-        .replace('[REPLACE_ORDERBY]', orderBy_default)
-        .replace('[REPLACE_LIMIT]', `LIMIT ${limit}`),
+        .replace("[REPLACE_WHERE]", "")
+        .replace("[REPLACE_ORDERBY]", orderBy_default)
+        .replace("[REPLACE_LIMIT]", `LIMIT ${limit}`),
     ),
-  )
+  );
 }
 
 export async function getBlog({ key }: { key: string }): Promise<Blog[]> {
@@ -115,9 +110,9 @@ export async function getBlog({ key }: { key: string }): Promise<Blog[]> {
   return await drizzle.execute(
     sql.raw(
       sqlBase
-        .replace('[REPLACE_WHERE]', `AND key = '${key}'`)
-        .replace('[REPLACE_ORDERBY]', '')
-        .replace('[REPLACE_LIMIT]', ''),
+        .replace("[REPLACE_WHERE]", `AND key = '${key}'`)
+        .replace("[REPLACE_ORDERBY]", "")
+        .replace("[REPLACE_LIMIT]", ""),
     ),
-  )
+  );
 }

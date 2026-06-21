@@ -1,8 +1,8 @@
-const ci = require('./ci.cjs')
-const feature = require('./feature.cjs')
-const fix = require('./fix.cjs')
-const refactor = require('./refactor.cjs')
-const release = require('./release.cjs')
+const ci = require("./ci.cjs");
+const feature = require("./feature.cjs");
+const fix = require("./fix.cjs");
+const refactor = require("./refactor.cjs");
+const release = require("./release.cjs");
 
 /**
  * @todo To get a `prerelease` name these cannot be passed as RegEx.
@@ -19,6 +19,6 @@ const releaseBranchTypes = {
   fix,
   refactor,
   release,
-}
+};
 
-module.exports = releaseBranchTypes
+module.exports = releaseBranchTypes;

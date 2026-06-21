@@ -1,41 +1,33 @@
+import { envClient as env } from "@jeromefitz/next-config";
+import { isObjectEmpty } from "@jeromefitz/utils";
 import type {
   RichTextItemResponse,
   TextRichTextItemResponse,
-} from '@notionhq/client/build/src/api-endpoints'
-import type { Metadata } from 'next'
-
-import { envClient as env } from '@jeromefitz/next-config'
-import { isObjectEmpty } from '@jeromefitz/utils'
-
-import { getPropertyTypeData } from 'next-notion/utils'
-import _title from 'title'
+} from "@notionhq/client/build/src/api-endpoints";
+import type { Metadata } from "next";
+import { getPropertyTypeData } from "next-notion/utils";
+import _title from "title";
 
 // import { getEventData } from '..'
 
 type ImageItemResponse =
   | {
-      caption: RichTextItemResponse[]
-      external: { url: TextRequest }
-      type: 'external'
+      caption: RichTextItemResponse[];
+      external: { url: TextRequest };
+      type: "external";
     }
   | {
-      caption: RichTextItemResponse[]
-      file: { expiry_time: string; url: string }
-      type: 'file'
-    }
-type TextRequest = string
+      caption: RichTextItemResponse[];
+      file: { expiry_time: string; url: string };
+      type: "file";
+    };
+type TextRequest = string;
 
 // @todo(types) any
 // @todo(complexity) 15
-// biome-ignore lint/complexity/noExcessiveCognitiveComplexity: migrate
-function getMetadata({
-  properties,
-  segmentInfo,
-}: {
-  properties: any
-  segmentInfo: any
-}) {
-  if (isObjectEmpty(properties)) return {}
+// oxlint-disable-next-line complexity
+function getMetadata({ properties, segmentInfo }: { properties: any; segmentInfo: any }) {
+  if (isObjectEmpty(properties)) return {};
   // console.dir(`[getMetadata] segmentInfo:`)
   // console.dir(segmentInfo)
   // console.dir(`[getMetadata] properties:`)
@@ -43,37 +35,33 @@ function getMetadata({
   // console.dir(isObjectEmpty(properties) ? `y` : 'n')
 
   const canonical =
-    segmentInfo?.slug === '/homepage'
+    segmentInfo?.slug === "/homepage"
       ? env.NEXT_PUBLIC__BASE_URL
-      : `${env.NEXT_PUBLIC__BASE_URL}${segmentInfo?.slug}`
+      : `${env.NEXT_PUBLIC__BASE_URL}${segmentInfo?.slug}`;
 
   const descriptionTemp: TextRichTextItemResponse = getPropertyTypeData(
     properties,
-    'SEO.Description',
-  )
+    "SEO.Description",
+  );
 
-  const description: string = descriptionTemp?.toString()
+  const description: string = descriptionTemp?.toString();
 
   /**
    * @todo(notion) what if property does not exist?
    */
-  let openGraph: any
-  const hasImage = !isObjectEmpty(properties?.['SEO.Image'] ?? {})
+  let openGraph: any;
+  const hasImage = !isObjectEmpty(properties?.["SEO.Image"] ?? {});
   if (hasImage) {
-    const imageData: ImageItemResponse = getPropertyTypeData(
-      properties,
-      'SEO.Image',
-    )[0]
+    const imageData: ImageItemResponse = getPropertyTypeData(properties, "SEO.Image")[0];
     // console.dir(`> imageData`)
     // console.dir(imageData)
 
     if (imageData) {
-      const imageUrl =
-        imageData.type === 'external' ? imageData.external.url : imageData.file.url
+      const imageUrl = imageData.type === "external" ? imageData.external.url : imageData.file.url;
       const imageDescription: TextRichTextItemResponse = getPropertyTypeData(
         properties,
-        'SEO.Image.Description',
-      )
+        "SEO.Image.Description",
+      );
 
       openGraph = {
         images: [
@@ -82,7 +70,7 @@ function getMetadata({
             url: imageUrl,
           },
         ],
-      }
+      };
     }
   }
 
@@ -91,7 +79,7 @@ function getMetadata({
    */
   // const overrideTitle = getPropertyTypeDataEvent(properties, 'Override.Title')
 
-  let titleSeo = ''
+  let titleSeo = "";
   // const isEvent = segmentInfo.segment === 'events' && !segmentInfo.isIndex
   // if (isEvent) {
   //   // console.dir(`segmentInfo:`)
@@ -120,16 +108,16 @@ function getMetadata({
   // } else {
   //   titleSeo = getPropertyTypeData(properties, 'Title')
   // }
-  titleSeo = getPropertyTypeData(properties, 'Title')
+  titleSeo = getPropertyTypeData(properties, "Title");
 
   const titleSuffix =
-    segmentInfo.segment === 'pages' || segmentInfo.isIndex
-      ? segmentInfo.slug === '/homepage'
+    segmentInfo.segment === "pages" || segmentInfo.isIndex
+      ? segmentInfo.slug === "/homepage"
         ? ` | Actor. Comedian. Writer.`
         : ` | Jerome (he/him)`
-      : ` | ${_title(segmentInfo.segment)}`
+      : ` | ${_title(segmentInfo.segment)}`;
 
-  titleSeo = `${titleSeo?.toString()}${titleSuffix}`
+  titleSeo = `${titleSeo?.toString()}${titleSuffix}`;
 
   const metadata: Metadata = {
     // metadataBase: new URL(BASE_URL),
@@ -139,12 +127,12 @@ function getMetadata({
     description,
     openGraph,
     title: titleSeo,
-  }
+  };
 
   // console.dir(`>metadata`)
   // console.dir(metadata)
 
-  return metadata
+  return metadata;
 }
 
-export { getMetadata }
+export { getMetadata };

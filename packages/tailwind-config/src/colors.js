@@ -1,7 +1,7 @@
 /**
  * @note(tailwind) each site may _not_ want _every_ color
  */
-const isDev = process.env.NODE_ENV === 'development'
+const isDev = process.env.NODE_ENV === 'development';
 const siteColors = [
   'black',
   // 'gray',
@@ -11,7 +11,7 @@ const siteColors = [
   'slate',
   'white',
   // '',
-]
+];
 
 const _radixColors = [
   'tomato',
@@ -48,13 +48,13 @@ const _radixColors = [
   // overlays
   'black',
   'white',
-]
-const radixColors = isDev ? _radixColors : siteColors
+];
+const radixColors = isDev ? _radixColors : siteColors;
 /**
  * @note(radix) These colors should have `black` text instead of `white`
  * ref: https://www.radix-ui.com/docs/colors/palette-composition/understanding-the-scale#steps-910-solid-backgrounds
  */
-const foregroundTextBlack = ['sky', 'mint', 'lime', 'yellow', 'amber']
-const excludes = ['white', 'black']
+const foregroundTextBlack = ['sky', 'mint', 'lime', 'yellow', 'amber'];
+const excludes = ['white', 'black'];
 
-export default { excludes, foregroundTextBlack, radixColors }
+export default { excludes, foregroundTextBlack, radixColors };

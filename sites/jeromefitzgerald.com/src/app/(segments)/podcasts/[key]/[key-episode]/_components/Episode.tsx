@@ -1,21 +1,20 @@
-import type { Episode } from '@/lib/drizzle/schemas/cache-episodes/types'
+import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
 
-import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
-
-import { ShowSlugHeaderData } from '@/app/(segments)/shows/[key]/_components/Show.Slug.Header.Data'
-import { ArticleMain } from '@/components/Article/Article.Main'
-import { ArticleMainCTA } from '@/components/Article/Article.Main.CTA'
-import { Callout } from '@/components/Callout/Callout'
-import { ContainerWithSidebar } from '@/components/Container/Container.Main'
+import { ShowSlugHeaderData } from "@/app/(segments)/shows/[key]/_components/Show.Slug.Header.Data";
+import { ArticleMain } from "@/components/Article/Article.Main";
+import { ArticleMainCTA } from "@/components/Article/Article.Main.CTA";
+import { Callout } from "@/components/Callout/Callout";
+import { ContainerWithSidebar } from "@/components/Container/Container.Main";
 // import { Credits } from '@/components/Credits/Credits'
-import { HeaderSidebar } from '@/components/Header/Header.Sidebar'
-import { ImageNotion } from '@/components/Image/Image.Notion'
-import { segment } from '@/lib/drizzle/schemas/cache-episodes/queries'
-import { Notion } from '@/lib/notion/Notion.Component'
-import { isEmpty } from '@/utils/isEmpty'
+import { HeaderSidebar } from "@/components/Header/Header.Sidebar";
+import { ImageNotion } from "@/components/Image/Image.Notion";
+import { segment } from "@/lib/drizzle/schemas/cache-episodes/queries";
+import type { Episode } from "@/lib/drizzle/schemas/cache-episodes/types";
+import { Notion } from "@/lib/notion/Notion.Component";
+import { isEmpty } from "@/utils/isEmpty";
 
 export function EpisodeComponent({ blocks, item }: { blocks: any; item: Episode }) {
-  const itemBlocks = blocks[0]
+  const itemBlocks = blocks[0];
   return (
     <>
       <ContainerWithSidebar>
@@ -45,5 +44,5 @@ export function EpisodeComponent({ blocks, item }: { blocks: any; item: Episode 
         </ArticleMain>
       </ContainerWithSidebar>
     </>
-  )
+  );
 }

@@ -1,38 +1,38 @@
-import { cx } from '../../utils/cx'
+import { cx } from "../../utils/cx";
 
 function SectionHeader({
   children,
-  className = '',
+  className = "",
 }: {
-  children: React.ReactNode
-  className: string
+  children: React.ReactNode;
+  className?: string;
 }) {
   return (
     <>
       <div
         className={cx(
-          'sticky z-0',
-          'flex w-1/6 flex-col items-start py-4',
+          "sticky z-0",
+          "flex w-1/6 flex-col items-start py-4",
           // desktop
-          'md:w-2/6 md:items-start',
-          'md:py-2 md:pr-0.5',
+          "md:w-2/6 md:items-start",
+          "md:py-2 md:pr-0.5",
           //
           // 'md:slate-border md:border-t-[1px] md:border-solid md:py-3'
           // before
-          'before:h-px',
+          "before:h-px",
           // 'before:h-0',
-          'before:relative before:top-0 before:w-11/12 before:content-normal',
+          "before:relative before:top-0 before:w-11/12 before:content-normal",
           // 'before:left-2 before:right-2,
-          'before:bg-gray-6',
-          '',
-          'top-7 md:top-3',
+          "before:bg-gray-6",
+          "",
+          "top-7 md:top-3",
           className,
         )}
       >
         {children}
       </div>
     </>
-  )
+  );
 }
 
-export { SectionHeader }
+export { SectionHeader };

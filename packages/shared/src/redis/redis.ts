@@ -1,10 +1,8 @@
-import 'server-only'
+import "server-only";
+import https from "node:https";
 
-import https from 'node:https'
-
-import { envServer } from '@jeromefitz/next-config'
-
-import { Redis } from '@upstash/redis'
+import { envServer } from "@jeromefitz/next-config";
+import { Redis } from "@upstash/redis";
 
 const redis = new Redis({
   agent: new https.Agent({ keepAlive: true }),
@@ -14,6 +12,6 @@ const redis = new Redis({
   },
   token: envServer.UPSTASH_REDIS_REST_TOKEN,
   url: envServer.UPSTASH_REDIS_REST_URL,
-})
+});
 
-export default redis
+export default redis;

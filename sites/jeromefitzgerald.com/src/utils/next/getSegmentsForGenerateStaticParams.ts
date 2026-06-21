@@ -1,26 +1,24 @@
-import type { SegmentsArray } from '@/lib/drizzle/types'
-import type { Segment } from '@/utils/getBySegment'
+import { envClient } from "next-config/env.client";
 
-import { envClient } from 'next-config/env.client'
-
-import { getBySegment } from '@/utils/getBySegment'
-import { getKeyForGenerateStaticParams } from '@/utils/getKey'
+import type { SegmentsArray } from "@/lib/drizzle/types";
+import type { Segment } from "@/utils/getBySegment";
+import { getBySegment } from "@/utils/getBySegment";
+import { getKeyForGenerateStaticParams } from "@/utils/getKey";
 
 export async function getSegmentsForGenerateStaticParams(segment: Segment) {
   if (envClient.IS_DEV) {
-    return []
+    return [];
   }
-  const segments: SegmentsArray[] = []
+  const segments: SegmentsArray[] = [];
   const items: any = await getBySegment[segment].getItems({
     limit: getBySegment[segment].limit,
-  })
+  });
 
   items.map((item: any) => {
-    segments.push({ key: getKeyForGenerateStaticParams(segment, item.key) })
-  })
+    segments.push({ key: getKeyForGenerateStaticParams(segment, item.key) });
+  });
 
-  // // biome-ignore lint/suspicious/noConsole: migrate
-  console.info(`> generateStaticParams (${segment}: ${segments.length})`)
+  console.info(`> generateStaticParams (${segment}: ${segments.length})`);
 
-  return segments
+  return segments;
 }

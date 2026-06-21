@@ -18,7 +18,7 @@ function EmbedSpotify({ id }: { id: any }) {
         width="100%"
       />
     </div>
-  )
+  );
 }
 
-export { EmbedSpotify }
+export { EmbedSpotify };

@@ -1,46 +1,44 @@
-import 'server-only'
+import "server-only";
+import { envClient as env } from "@jeromefitz/next-config";
+import { isObjectEmpty } from "@jeromefitz/utils";
+import { getPageData as _getPageData } from "next-notion/queries";
+import { cache } from "react";
 
-import { envClient as env } from '@jeromefitz/next-config'
-import { isObjectEmpty } from '@jeromefitz/utils'
-
-import { getPageData as _getPageData } from 'next-notion/queries'
-import { cache } from 'react'
-
-import { getCache, getKey, setCache } from '../../redis'
+import { getCache, getKey, setCache } from "../../redis";
 
 /**
  * @todo(next) draft | revalidate
  */
 // @todo(types) any
 const getPageDataFromNotion = cache(async (id: any) => {
-  let data
+  let data;
 
-  const prefix = `/notion/pages/${id}`
-  const key: string = getKey(prefix)
-  const dataFromCache = await getCache({ slug: key })
+  const prefix = `/notion/pages/${id}`;
+  const key: string = getKey(prefix);
+  const dataFromCache = await getCache({ slug: key });
 
   // console.dir(`> getCache: ${key}`)
   // console.dir(dataFromCache)
 
-  const isCached = !!dataFromCache && !isObjectEmpty(dataFromCache)
+  const isCached = !!dataFromCache && !isObjectEmpty(dataFromCache);
 
   if (env.OVERRIDE_CACHE || !isCached) {
-    const dataFromNotion = await _getPageData(id)
+    const dataFromNotion = await _getPageData(id);
     // console.dir(`> dataFromNotion: ${id}`)
     // console.dir(dataFromNotion)
 
     if (!isObjectEmpty(dataFromNotion)) {
       // console.dir(`setCache: ${key}`)
-      void setCache({ data: dataFromNotion, slug: key })
+      void setCache({ data: dataFromNotion, slug: key });
     }
 
-    data = dataFromNotion
+    data = dataFromNotion;
   } else {
     // console.dir(`gotCache: ${key}`)
-    data = dataFromCache
+    data = dataFromCache;
   }
 
-  return data
-})
+  return data;
+});
 
-export { getPageDataFromNotion }
+export { getPageDataFromNotion };

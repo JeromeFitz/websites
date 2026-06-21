@@ -1,5 +1,5 @@
-import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
-import NextLink from 'next/link'
+import { Box } from "@radix-ui/themes/dist/esm/components/box.js";
+import NextLink from "next/link";
 
 function SectionClientLegend({ data }: { data: any }) {
   return (
@@ -9,17 +9,16 @@ function SectionClientLegend({ data }: { data: any }) {
           <Box
             className="z-10"
             height="calc(var(--spacing) * 16)"
-            // biome-ignore lint/suspicious/noArrayIndexKey: migrate
             key={`legend-${i}`}
             position="relative"
             width="100%"
           >
             <NextLink href={`#${item.id}`}>{item.title}</NextLink>
           </Box>
-        )
+        );
       })}
     </>
-  )
+  );
 }
 
-export { SectionClientLegend }
+export { SectionClientLegend };

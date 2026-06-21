@@ -1,37 +1,36 @@
-import type { Podcast } from '@/lib/drizzle/schemas/cache-podcasts/types'
+import { Box } from "@radix-ui/themes/dist/esm/components/box.js";
+import { Em } from "@radix-ui/themes/dist/esm/components/em.js";
+import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
+import { Grid } from "@radix-ui/themes/dist/esm/components/grid.js";
+import { Heading } from "@radix-ui/themes/dist/esm/components/heading.js";
+import { Strong } from "@radix-ui/themes/dist/esm/components/strong.js";
+import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
+import { filter as _filter, orderBy as _orderBy } from "lodash-es";
+import NextLink from "next/link";
 
-import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
-import { Em } from '@radix-ui/themes/dist/esm/components/em.js'
-import { Flex } from '@radix-ui/themes/dist/esm/components/flex.js'
-import { Grid } from '@radix-ui/themes/dist/esm/components/grid.js'
-import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
-import { Strong } from '@radix-ui/themes/dist/esm/components/strong.js'
-import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
-import { filter as _filter, orderBy as _orderBy } from 'lodash-es'
-import NextLink from 'next/link'
-
-import { HeaderFull } from '@/components/Header/Header.Full'
-import { getImageKeyValue } from '@/lib/drizzle/schemas/cache-images/queries'
-import { getImageKeySlug } from '@/lib/drizzle/utils/getImageKeySlug'
-import { cx } from '@/utils/cx'
+import { HeaderFull } from "@/components/Header/Header.Full";
+import { getImageKeyValue } from "@/lib/drizzle/schemas/cache-images/queries";
+import type { Podcast } from "@/lib/drizzle/schemas/cache-podcasts/types";
+import { getImageKeySlug } from "@/lib/drizzle/utils/getImageKeySlug";
+import { cx } from "@/utils/cx";
 
 function ListWrapper({ podcasts }: { podcasts: Podcast[] }) {
   return (
     <Box>
       <Grid
-        columns={{ initial: '1', md: '2' }}
-        gapX={{ initial: '1', md: '3' }}
-        gapY={{ initial: '6', md: '6' }}
+        columns={{ initial: "1", md: "2" }}
+        gapX={{ initial: "1", md: "3" }}
+        gapY={{ initial: "6", md: "6" }}
         role="list"
         width="100%"
       >
         {podcasts.map(async (podcast) => {
-          if (!podcast.isPublished) return null
-          const seoImage: any = podcast.seoImage
-          const imageUrl = seoImage[seoImage?.type]?.url
-          const { key } = getImageKeySlug(imageUrl)
-          const imageKeyValue = await getImageKeyValue({ key })
-          const image: any = imageKeyValue[0].value[0]
+          if (!podcast.isPublished) return null;
+          const seoImage: any = podcast.seoImage;
+          const imageUrl = seoImage[seoImage?.type]?.url;
+          const { key } = getImageKeySlug(imageUrl);
+          const imageKeyValue = await getImageKeyValue({ key });
+          const image: any = imageKeyValue[0].value[0];
 
           return (
             <Box
@@ -46,12 +45,12 @@ function ListWrapper({ podcasts }: { podcasts: Podcast[] }) {
                 asChild
                 className={cx(
                   // 'bg-accent-6',
-                  'border-gray-7 hover:border-gray-8 md:border-1',
-                  'rounded-sm',
-                  'transition-all duration-500',
-                  'group-hover:transform-[translate(0px,_-1em)]',
-                  'shadow-xs group-hover:shadow-lg',
-                  'dark:shadow-accent-4',
+                  "border-gray-7 hover:border-gray-8 md:border",
+                  "rounded-sm",
+                  "transition-all duration-500",
+                  "group-hover:transform-[translate(0px,-1em)]",
+                  "shadow-xs group-hover:shadow-lg",
+                  "shadow-accentA-4 dark:shadow-accent-4",
                 )}
                 flow="row"
                 gap="3"
@@ -61,16 +60,15 @@ function ListWrapper({ podcasts }: { podcasts: Podcast[] }) {
                 <NextLink href={podcast.slugPreview}>
                   <Box height="275px" overflow="hidden" position="relative">
                     {/* {!!imageUrl && <NextImage {...image} />} */}
-                    {/* biome-ignore lint/performance/noImgElement: migrate */}
                     <img
                       alt="d"
                       className={cx(
-                        'absolute inline-block size-full',
-                        'inset-[0%_0%_auto]',
+                        "absolute inline-block size-full",
+                        "inset-[0%_0%_auto]",
                         // 'inset-2.5',
-                        'rounded-t-sm',
-                        'max-w-full object-cover align-middle',
-                        'transition-all duration-700 group-hover:scale-[1.05]',
+                        "rounded-t-sm",
+                        "max-w-full object-cover align-middle",
+                        "transition-all duration-700 group-hover:scale-[1.05]",
                       )}
                       src={image.src}
                     />
@@ -90,8 +88,8 @@ function ListWrapper({ podcasts }: { podcasts: Podcast[] }) {
                         {podcast.title}
                       </Heading>
                       <Text
-                        className="md:line-clamp-3 md:min-h-[75px]"
-                        mr={{ initial: '1', md: '3' }}
+                        className="md:line-clamp-3 md:min-h-18.75"
+                        mr={{ initial: "1", md: "3" }}
                       >
                         {podcast.seoDescription}
                       </Text>
@@ -127,37 +125,35 @@ function ListWrapper({ podcasts }: { podcasts: Podcast[] }) {
                 </NextLink>
               </Grid>
             </Box>
-          )
+          );
         })}
       </Grid>
     </Box>
-  )
+  );
 }
 
 function List({ items }: { items: Podcast[] }) {
-  const podcasts = _orderBy(_filter(items, { isPublished: true }), ['title'])
+  const podcasts = _orderBy(_filter(items, { isPublished: true }), ["title"]);
   return (
     <Flex direction="column">
       <HeaderFull count={items.length} overline="" title="Podcasts" />
       <Flex
         direction="column"
         gap="9"
-        mb={{ initial: '4', md: '6' }}
-        pb={{ initial: '4', md: '6' }}
+        mb={{ initial: "4", md: "6" }}
+        pb={{ initial: "4", md: "6" }}
       >
         <Flex direction="column" gap="3">
-          <Text size={{ initial: '3', md: '5' }}>
-            This features Podcasts that Jerome has either guested on,{' '}
-            <Em>
-              or against his better judgment spent time on creating and maintaining
-            </Em>
-            . <Strong>Major shout-out to the original J. Pitts Show.</Strong>
+          <Text size={{ initial: "3", md: "5" }}>
+            This features Podcasts that Jerome has either guested on,{" "}
+            <Em>or against his better judgment spent time on creating and maintaining</Em>.{" "}
+            <Strong>Major shout-out to the original J. Pitts Show.</Strong>
           </Text>
         </Flex>
       </Flex>
       <ListWrapper podcasts={podcasts} />
     </Flex>
-  )
+  );
 }
 
-export { List }
+export { List };

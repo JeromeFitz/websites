@@ -1,23 +1,22 @@
-import type { UserConfig } from 'tsdown'
-
-import { defineConfig } from 'tsdown'
+import type { UserConfig } from "tsdown";
+import { defineConfig } from "tsdown";
 
 const config: UserConfig = {
   attw: {
-    profile: 'esm-only',
+    profile: "esm-only",
   },
   deps: { alwaysBundle: [], neverBundle: [] },
   dts: true,
   exports: true,
   failOnWarn: true,
-  logLevel: 'error',
+  logLevel: "error",
   minify: true,
-  outDir: 'dist',
+  outDir: "dist",
   publint: true,
   sourcemap: false,
-  target: ['node24'],
+  target: ["node24"],
   treeshake: false,
-}
+};
 
-export { config }
-export default defineConfig({ ...config })
+export { config };
+export default defineConfig({ ...config });

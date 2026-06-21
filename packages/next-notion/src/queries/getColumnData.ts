@@ -1,28 +1,26 @@
-import 'server-only'
+import "server-only";
+import { asyncForEach } from "@jeromefitz/utils";
+import { noop as _noop } from "lodash-es";
 
-import { asyncForEach } from '@jeromefitz/utils'
-
-import { noop as _noop } from 'lodash-es'
-
-import { getBlockChildrenData } from './getBlockChildrenData'
+import { getBlockChildrenData } from "./getBlockChildrenData";
 
 async function getColumnData(columnListData) {
-  const columnResults: any = []
+  const columnResults: any = [];
   await asyncForEach(columnListData.results, async (columnData: any) => {
-    const columnDataColumn = await getBlockChildrenData(columnData.id)
+    const columnDataColumn = await getBlockChildrenData(columnData.id);
     const column = {
       ...columnData,
       columnDataColumn,
-    }
-    columnResults.push(column)
-  }).catch(_noop)
+    };
+    columnResults.push(column);
+  }).catch(_noop);
   const columnList = {
     column_list: {
       ...columnListData,
       results: columnResults,
     },
-  }
-  return columnList
+  };
+  return columnList;
 }
 
-export { getColumnData }
+export { getColumnData };

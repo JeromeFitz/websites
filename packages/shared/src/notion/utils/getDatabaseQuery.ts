@@ -1,12 +1,10 @@
-import 'server-only'
+import "server-only";
+import { envClient as env } from "@jeromefitz/next-config";
+import { isObjectEmpty } from "@jeromefitz/utils";
+import { getDatabaseQuery as _getDatabaseQuery } from "next-notion/queries";
+import { cache } from "react";
 
-import { envClient as env } from '@jeromefitz/next-config'
-import { isObjectEmpty } from '@jeromefitz/utils'
-
-import { getDatabaseQuery as _getDatabaseQuery } from 'next-notion/queries'
-import { cache } from 'react'
-
-import { getCache, getKey, setCache } from '../../redis'
+import { getCache, getKey, setCache } from "../../redis";
 
 const getDatabaseQuery = cache(
   async ({
@@ -17,21 +15,21 @@ const getDatabaseQuery = cache(
     segmentInfo,
   }: {
     // @todo(types) any
-    database_id: any
-    draft: any
-    filterType: any
-    revalidate: any
-    segmentInfo: any
+    database_id: any;
+    draft: any;
+    filterType: any;
+    revalidate: any;
+    segmentInfo: any;
   }) => {
-    let data
+    let data;
 
-    const { isIndex, segment, slug } = segmentInfo
+    const { isIndex, segment, slug } = segmentInfo;
 
-    const prefixSlug = isIndex || segment === slug ? segment : `${segment}${slug}`
-    const prefix = `/notion/queries/${prefixSlug}`
-    const key: string = getKey(prefix)
-    const dataFromCache = await getCache({ slug: key })
-    const isCached = !!dataFromCache && !isObjectEmpty(dataFromCache)
+    const prefixSlug = isIndex || segment === slug ? segment : `${segment}${slug}`;
+    const prefix = `/notion/queries/${prefixSlug}`;
+    const key: string = getKey(prefix);
+    const dataFromCache = await getCache({ slug: key });
+    const isCached = !!dataFromCache && !isObjectEmpty(dataFromCache);
 
     // console.dir(`> getCache: ${key} (${prefix})`)
     // console.dir(`> isCached: ${isCached ? 'y' : 'n'}`)
@@ -45,22 +43,22 @@ const getDatabaseQuery = cache(
         database_id,
         filterType,
         segmentInfo,
-      })
+      });
       // console.dir(`> dataFromNotion: ${database_id}`)
       // console.dir(dataFromNotion)
 
       if (!isObjectEmpty(dataFromNotion) && !draft) {
         // console.dir(`setCache: ${key}`)
-        void setCache({ data: dataFromNotion, slug: key })
+        void setCache({ data: dataFromNotion, slug: key });
       }
 
-      data = dataFromNotion
+      data = dataFromNotion;
     } else {
       // console.dir(`gotCache: ${key}`)
-      data = dataFromCache
+      data = dataFromCache;
     }
-    return data
+    return data;
   },
-)
+);
 
-export { getDatabaseQuery }
+export { getDatabaseQuery };

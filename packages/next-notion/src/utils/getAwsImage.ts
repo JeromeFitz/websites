@@ -1,15 +1,15 @@
 // import url from 'node:url'
-import { TZDate } from '@date-fns/tz'
-import { differenceInSeconds, format, isAfter, parseISO } from 'date-fns'
+import { TZDate } from "@date-fns/tz";
+import { differenceInSeconds, format, isAfter, parseISO } from "date-fns";
 
-const DEBUG = false
+const DEBUG = false;
 
-const TZ_UTC = 'UTC'
+const TZ_UTC = "UTC";
 // const TZ_AWS = 'America/New_York'
-const URL_AWS = 'amazonaws.com'
+const URL_AWS = "amazonaws.com";
 
 function isAwsImage(imageUrl: string) {
-  return imageUrl?.includes(URL_AWS) || false
+  return imageUrl?.includes(URL_AWS) || false;
 }
 
 /**
@@ -18,34 +18,36 @@ function isAwsImage(imageUrl: string) {
  * - Check if `expiry_time` set: Y: Continue; No: Force
  * - Check if has valid Expiration Time for AWS Notion
  */
+// @todo(complexity) 12
+// oxlint-disable-next-line complexity
 function isImageExpired(image) {
   if (!isAwsImage(image?.src)) {
-    return false
+    return false;
   }
   if (image?.expiry_time === null || image?.expiry_time === undefined) {
-    return true
+    return true;
   }
 
-  const timestamp = new Date()
+  const timestamp = new Date();
   // @todo(types)
   // @note(notion) format in notion api (not aws query param)
-  let utc: any = new TZDate(timestamp, TZ_UTC)
-  utc = format(utc, `yyyy-MM-dd'T'HH:mm:ss.ms'Z'`)
-  const isExpired = isAfter(parseISO(utc), parseISO(image?.expiry_time))
+  let utc: any = new TZDate(timestamp, TZ_UTC);
+  utc = format(utc, `yyyy-MM-dd'T'HH:mm:ss.ms'Z'`);
+  const isExpired = isAfter(parseISO(utc), parseISO(image?.expiry_time));
 
   // @debug
   if (DEBUG) {
-    const diff = differenceInSeconds(parseISO(utc), parseISO(image?.expiry_time))
+    const diff = differenceInSeconds(parseISO(utc), parseISO(image?.expiry_time));
     // diff = diff < 0 ? diff * -1 : diff
-    console.dir(`utc:          ${utc}`)
-    console.dir(`expiry_time:  ${image?.expiry_time}`)
-    console.dir(`diff:         ${diff} (${diff / 60} minutes)`)
-    console.dir(`isExpired:    ${isExpired ? 'y' : 'n'}`)
-    console.dir(`---`)
+    console.dir(`utc:          ${utc}`);
+    console.dir(`expiry_time:  ${image?.expiry_time}`);
+    console.dir(`diff:         ${diff} (${diff / 60} minutes)`);
+    console.dir(`isExpired:    ${isExpired ? "y" : "n"}`);
+    console.dir(`---`);
   }
 
-  return isExpired
+  return isExpired;
 }
 
 // export { isAwsImage, isAwsImageExpired, isImageExpired }
-export { isAwsImage, isImageExpired }
+export { isAwsImage, isImageExpired };

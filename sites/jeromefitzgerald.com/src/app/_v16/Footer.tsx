@@ -1,8 +1,8 @@
-import { Box, Em, Flex, Grid, Strong, Text } from '@radix-ui/themes'
+import { Box, Em, Flex, Grid, Strong, Text } from "@radix-ui/themes";
 
-import { socials } from '@/data/socials'
+import { socials } from "@/data/socials";
 
-import { LinkButton } from './LinkButton'
+import { LinkButton } from "./LinkButton";
 
 const FooterWrapper = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -11,22 +11,22 @@ const FooterWrapper = ({ children }: { children: React.ReactNode }) => {
       className="bg-accent-4"
       direction="column"
       gap="2"
-      px={{ initial: '3', md: '6' }}
-      py={{ initial: '3', md: '6' }}
+      px={{ initial: "3", md: "6" }}
+      py={{ initial: "3", md: "6" }}
       width="100%"
     >
       <footer>{children}</footer>
     </Flex>
-  )
-}
+  );
+};
 
 const FooterGrid = ({ children }: { children: React.ReactNode }) => {
   return (
-    <Grid gap="2" columns={{ initial: '12', md: '12' }} width="100%">
+    <Grid gap="2" columns={{ initial: "12", md: "12" }} width="100%">
       {children}
     </Grid>
-  )
-}
+  );
+};
 
 const Footer = () => {
   return (
@@ -34,8 +34,8 @@ const Footer = () => {
       <FooterGrid>
         <Box
           className="hidden!"
-          gridColumnStart={{ initial: '1', md: '6' }}
-          gridColumnEnd={{ initial: '13', md: '9' }}
+          gridColumnStart={{ initial: "1", md: "6" }}
+          gridColumnEnd={{ initial: "13", md: "9" }}
         >
           <Flex direction="column" gap="3">
             <Text>
@@ -43,7 +43,7 @@ const Footer = () => {
               <Em className="block">... Kewl website.</Em>
             </Text>
             {socials.map((social) => {
-              if (!social.active) return null
+              if (!social.active) return null;
 
               return (
                 <LinkButton
@@ -52,13 +52,13 @@ const Footer = () => {
                   key={`footer--social--${social.id}`}
                   text={social.title}
                 />
-              )
+              );
             })}
           </Flex>
         </Box>
         <Box
-          gridColumnStart={{ initial: '1', md: '10' }}
-          gridColumnEnd={{ initial: '13', md: '13' }}
+          gridColumnStart={{ initial: "1", md: "10" }}
+          gridColumnEnd={{ initial: "13", md: "13" }}
         >
           <Flex direction="column" gap="3">
             <Text>
@@ -66,7 +66,7 @@ const Footer = () => {
               <Em className="block">... Eh, not very “active.”</Em>
             </Text>
             {socials.map((social) => {
-              if (!social.active) return null
+              if (!social.active) return null;
 
               return (
                 <LinkButton
@@ -75,13 +75,13 @@ const Footer = () => {
                   key={`footer--social--${social.id}`}
                   text={social.title}
                 />
-              )
+              );
             })}
           </Flex>
         </Box>
       </FooterGrid>
     </FooterWrapper>
-  )
-}
+  );
+};
 
-export { Footer }
+export { Footer };

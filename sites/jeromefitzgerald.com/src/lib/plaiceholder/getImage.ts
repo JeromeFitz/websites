@@ -1,23 +1,21 @@
-import { getPlaiceholder } from 'plaiceholder'
+import { getPlaiceholder } from "plaiceholder";
 
 const getImage = async (src: string) => {
   // console.dir(`src: ${src}`)
-  const buffer = await fetch(src).then(async (res) =>
-    Buffer.from(await res.arrayBuffer()),
-  )
+  const buffer = await fetch(src).then(async (res) => Buffer.from(await res.arrayBuffer()));
 
   const {
     metadata: { height, width },
     ...plaiceholder
-  } = await getPlaiceholder(buffer, { size: 10 })
+  } = await getPlaiceholder(buffer, { size: 10 });
 
   return {
     ...plaiceholder,
     img: { height, src, width },
-  }
-}
+  };
+};
 
-export { getImage }
+export { getImage };
 
 /**
  * @note(plaiceholder) usage

@@ -1,24 +1,24 @@
-import _orderBy from 'lodash/orderBy'
-import { MetadataRoute } from 'next'
+import _orderBy from "lodash/orderBy";
+import { MetadataRoute } from "next";
 
 /**
  * @todo(next) dynamic
  */
-const siteUrl = 'https://jeromefitzgerald.com'
-const lastModified = new Date()
+const siteUrl = "https://jeromefitzgerald.com";
+const lastModified = new Date();
 
-const root = ['']
-const podcasts = ['jer-and-ky-and-guest', 'knockoffs']
+const root = [""];
+const podcasts = ["jer-and-ky-and-guest", "knockoffs"];
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+// oxlint-disable-next-line typescript/no-unused-vars
 const sitemapRoot = root.map((slug) => ({
   lastModified,
   url: `${siteUrl}`,
-}))
+}));
 const sitemapPodcasts = podcasts.map((slug) => ({
   lastModified,
   url: `${siteUrl}/podcasts/${slug}`,
-}))
+}));
 
 function sitemap(): MetadataRoute.Sitemap {
   return _orderBy(
@@ -30,9 +30,9 @@ function sitemap(): MetadataRoute.Sitemap {
       ...sitemapRoot,
       ...sitemapPodcasts,
     ],
-    ['url'],
-    ['asc'],
-  )
+    ["url"],
+    ["asc"],
+  );
 }
 
-export default sitemap
+export default sitemap;

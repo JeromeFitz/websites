@@ -1,3 +1,3 @@
 export interface SegmentsArray {
-  key: string | string[]
+  key: string | string[];
 }

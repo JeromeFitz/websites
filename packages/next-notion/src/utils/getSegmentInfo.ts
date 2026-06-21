@@ -1,27 +1,25 @@
-import { first as _first, isInteger as _isInteger, last as _last } from 'lodash-es'
+import { first as _first, isInteger as _isInteger, last as _last } from "lodash-es";
 
 interface SegmentInfo {
-  catchAll: string[]
-  hasMeta: boolean
-  isIndex: boolean
-  segment: string
-  segmentCount: number
-  slug: string
+  catchAll: string[];
+  hasMeta: boolean;
+  isIndex: boolean;
+  segment: string;
+  segmentCount: number;
+  slug: string;
 }
 
 function getSegmentInfo({ SEGMENT, ...props }) {
-  const segment = SEGMENT
-  const catchAll = [segment]
-  // biome-ignore lint/correctness/noUnsafeOptionalChaining: migrate, @typescript-eslint/no-unused-expressions
-  !!props.params?.catchAll && catchAll.push(...props.params?.catchAll)
+  const segment = SEGMENT;
+  const catchAll = [segment];
+  !!props.params?.catchAll && catchAll.push(...props.params?.catchAll);
 
-  const first = _first(catchAll)
-  const last = _last(catchAll)
+  const first = _first(catchAll);
+  const last = _last(catchAll);
 
-  // biome-ignore lint/correctness/useParseIntRadix: migrate
-  const isIndex = first === last || _isInteger(parseInt(last))
-  const segmentCount = catchAll.length
-  const hasMeta = catchAll.length >= 2
+  const isIndex = first === last || _isInteger(parseInt(last));
+  const segmentCount = catchAll.length;
+  const hasMeta = catchAll.length >= 2;
 
   // // @todo(notion) remove this if possible
   // const segmentOptions = {}
@@ -37,14 +35,14 @@ function getSegmentInfo({ SEGMENT, ...props }) {
     segment,
     segmentCount,
     // segmentOptions,
-    slug: `/${catchAll.join('/')}`,
-  }
+    slug: `/${catchAll.join("/")}`,
+  };
 
   // console.dir(`> segmentInfo`)
   // console.dir(segmentInfo)
 
-  return segmentInfo
+  return segmentInfo;
 }
 
-export type { SegmentInfo }
-export { getSegmentInfo }
+export type { SegmentInfo };
+export { getSegmentInfo };

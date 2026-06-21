@@ -1,13 +1,13 @@
-import { getDatabaseQueryByDateRange as _getDatabaseQueryByDateRange } from 'next-notion/queries'
+import { getDatabaseQueryByDateRange as _getDatabaseQueryByDateRange } from "next-notion/queries";
 // @todo(types) next-notion
 // import type { GetDatabaseQueryTypes } from 'next-notion/queries'
-import { cache } from 'react'
+import { cache } from "react";
 
 const getDatabaseQueryByDateRange = cache(
   async ({
     database_id,
 
-    filterType = 'equals',
+    filterType = "equals",
     segmentInfo,
 
     sortProperty,
@@ -17,8 +17,8 @@ const getDatabaseQueryByDateRange = cache(
       database_id,
       filterType,
       segmentInfo,
-    })
+    });
   },
-)
+);
 
-export { getDatabaseQueryByDateRange }
+export { getDatabaseQueryByDateRange };

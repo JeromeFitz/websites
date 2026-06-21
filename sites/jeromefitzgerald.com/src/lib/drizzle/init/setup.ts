@@ -1,64 +1,62 @@
-import { exec } from 'node:child_process'
-import { promises as fs } from 'node:fs'
-import path from 'node:path'
-import readline from 'node:readline'
-import { promisify } from 'node:util'
+import { exec } from "node:child_process";
+import { promises as fs } from "node:fs";
+import path from "node:path";
+import readline from "node:readline";
+import { promisify } from "node:util";
 
-const execAsync = promisify(exec)
+const execAsync = promisify(exec);
 
 async function getPostgresURL(): Promise<string> {
-  console.log('🗃️ Setting up Postgres')
-  const dbChoice = await question(
-    '(L) Local Postgres w/ Docker; (R) Remote Postgres? (L/R): ',
-  )
+  console.log("🗃️ Setting up Postgres");
+  const dbChoice = await question("(L) Local Postgres w/ Docker; (R) Remote Postgres? (L/R): ");
 
-  if (dbChoice.toLowerCase() === 'l') {
-    console.log('🟢 (L) Setting up local Postgres instance w/ Docker...')
-    await setupLocalPostgres()
-    return 'postgres://postgres:postgres@localhost:54322/postgres'
+  if (dbChoice.toLowerCase() === "l") {
+    console.log("🟢 (L) Setting up local Postgres instance w/ Docker...");
+    await setupLocalPostgres();
+    return "postgres://postgres:postgres@localhost:54322/postgres";
   } else {
-    return await question('📝 POSTGRES_URL: ')
+    return await question("📝 POSTGRES_URL: ");
   }
 }
 
 async function main() {
-  const POSTGRES_URL = await getPostgresURL()
+  const POSTGRES_URL = await getPostgresURL();
 
   await writeEnvFile({
     POSTGRES_URL,
-  })
+  });
 
-  console.log('🏁 Setup completed successfully!')
+  console.log("🏁 Setup completed successfully!");
 }
 
 function question(query: string): Promise<string> {
   const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
-  })
+  });
 
   return new Promise((resolve) =>
     rl.question(query, (ans) => {
-      rl.close()
-      resolve(ans)
+      rl.close();
+      resolve(ans);
     }),
-  )
+  );
 }
 
 async function setupLocalPostgres() {
-  console.log('🐳 Checking if Docker (Podman?) is installed...')
+  console.log("🐳 Checking if Docker (Podman?) is installed...");
   try {
-    await execAsync('docker --version')
-    console.log('✅ Docker is installed.')
+    await execAsync("docker --version");
+    console.log("✅ Docker is installed.");
 
     // @ts-ignore
   } catch (error) {
-    console.error('❎ Docker is not installed. Please install Docker and try again.')
-    console.log('📝 To install Docker, visit: https://docs.docker.com/get-docker/')
-    process.exit(1)
+    console.error("❎ Docker is not installed. Please install Docker and try again.");
+    console.log("📝 To install Docker, visit: https://docs.docker.com/get-docker/");
+    process.exit(1);
   }
 
-  console.log('⏳ Creating docker-compose.yml file...')
+  console.log("⏳ Creating docker-compose.yml file...");
   const dockerComposeContent = `
 services:
   postgres:
@@ -75,36 +73,33 @@ services:
 
 volumes:
   postgres_data:
-`
+`;
 
-  await fs.writeFile(
-    path.join(process.cwd(), 'docker-compose.yml'),
-    dockerComposeContent,
-  )
-  console.log('✅ docker-compose.yml file created.')
+  await fs.writeFile(path.join(process.cwd(), "docker-compose.yml"), dockerComposeContent);
+  console.log("✅ docker-compose.yml file created.");
 
-  console.log('🟢 Starting Docker container with `docker compose up -d`...')
+  console.log("🟢 Starting Docker container with `docker compose up -d`...");
   try {
-    await execAsync('docker compose up -d')
-    console.log('✅ Docker container started successfully.')
+    await execAsync("docker compose up -d");
+    console.log("✅ Docker container started successfully.");
 
     // @ts-ignore
   } catch (error) {
     console.error(
-      '🔴 Failed to start Docker container. Please check your Docker installation and try again.',
-    )
-    process.exit(1)
+      "🔴 Failed to start Docker container. Please check your Docker installation and try again.",
+    );
+    process.exit(1);
   }
 }
 
 async function writeEnvFile(envVars: Record<string, string>) {
-  console.log('💽 Writing environment variables to .env')
+  console.log("💽 Writing environment variables to .env");
   const envContent = Object.entries(envVars)
     .map(([key, value]) => `${key}=${value}`)
-    .join('\n')
+    .join("\n");
 
-  await fs.writeFile(path.join(process.cwd(), '.env'), envContent)
-  console.log('✅ .env file created with the necessary variables.')
+  await fs.writeFile(path.join(process.cwd(), ".env"), envContent);
+  console.log("✅ .env file created with the necessary variables.");
 }
 
-main().catch(console.error)
+main().catch(console.error);

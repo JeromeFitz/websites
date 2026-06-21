@@ -1,7 +1,7 @@
-'use client'
+"use client";
 
-import { DotFilledIcon } from '@radix-ui/react-icons'
-import { Button } from '@radix-ui/themes/dist/esm/components/button.js'
+import { DotFilledIcon } from "@radix-ui/react-icons";
+import { Button } from "@radix-ui/themes/dist/esm/components/button.js";
 import {
   Content as DropdownMenuContent,
   Item as DropdownMenuItem,
@@ -9,13 +9,13 @@ import {
   Separator as DropdownMenuSeparator,
   Trigger as DropdownMenuTrigger,
   TriggerIcon as DropdownMenuTriggerIcon,
-} from '@radix-ui/themes/dist/esm/components/dropdown-menu.js'
-import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
-import { useRouter } from 'next/navigation.js'
-import { Fragment } from 'react'
+} from "@radix-ui/themes/dist/esm/components/dropdown-menu.js";
+import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
+import { useRouter } from "next/navigation.js";
+import { Fragment } from "react";
 
-import { useStore as _useStore, useShallow } from '@/store/index'
-import { cx } from '@/utils/cx'
+import { useStore as _useStore, useShallow } from "@/store/index";
+import { cx } from "@/utils/cx";
 
 const useStore = () => {
   return _useStore(
@@ -25,37 +25,26 @@ const useStore = () => {
       zzz_menuTertiaryActive: store.zzz_menuTertiaryActive,
       zzz_menuTertiaryActiveSet: store.zzz_menuTertiaryActiveSet,
     })),
-  )
-}
+  );
+};
 
-function NavigationTertiary({
-  className,
-  order = 0,
-}: {
-  className: string
-  order?: number
-}) {
-  const router = useRouter()
+function NavigationTertiary({ className, order = 0 }: { className: string; order?: number }) {
+  const router = useRouter();
   const {
     zzz_menuSecondaryActive,
     zzz_menuTertiary,
     zzz_menuTertiaryActive,
     zzz_menuTertiaryActiveSet,
-  } = useStore()
+  } = useStore();
 
-  const mt = zzz_menuTertiary[zzz_menuSecondaryActive.id]
-  const isDisabled = !mt
+  const mt = zzz_menuTertiary[zzz_menuSecondaryActive.id];
+  const isDisabled = !mt;
 
-  const DropdownMenuTriggerIconType = zzz_menuTertiaryActive.icon ?? DotFilledIcon
+  const DropdownMenuTriggerIconType = zzz_menuTertiaryActive.icon ?? DotFilledIcon;
 
   return (
     <div
-      className={cx(
-        'hidden md:flex',
-        'relative h-auto flex-none',
-        'w-max',
-        className,
-      )}
+      className={cx("hidden md:flex", "relative h-auto flex-none", "w-max", className)}
       style={{ opacity: 1, order }}
     >
       <div className="contents size-full">
@@ -63,16 +52,14 @@ function NavigationTertiary({
           {/* @todo(radix) children */}
           {/* @ts-ignore */}
           <DropdownMenuRoot modal={false}>
-            <DropdownMenuTrigger
-              className={cx(isDisabled && 'hover:cursor-not-allowed')}
-            >
+            <DropdownMenuTrigger className={cx(isDisabled && "hover:cursor-not-allowed")}>
               <Button
-                aria-label={isDisabled ? 'Disabled Tertiary Menu' : 'Tertiary Menu'}
+                aria-label={isDisabled ? "Disabled Tertiary Menu" : "Tertiary Menu"}
                 className={cx(
-                  '!bg-accent-3 !active:bg-accent-5 !hover:bg-accent-4',
-                  'text-accent-11 hover:text-accent-11 active:text-accent-11',
-                  'backdrop-blur-md transition-all',
-                  '!min-w-[310px]',
+                  "!active:bg-accent-5 !hover:bg-accent-4 !bg-accent-3",
+                  "text-accent-11 hover:text-accent-11 active:text-accent-11",
+                  "backdrop-blur-md transition-all",
+                  "!min-w-77.5",
                 )}
                 // @todo(types)
                 // @ts-ignore
@@ -81,11 +68,11 @@ function NavigationTertiary({
                 disabled={isDisabled}
                 size="3"
                 style={{
-                  display: 'flex',
-                  gap: 'var(--space-2)',
-                  justifyContent: 'space-between',
-                  minWidth: '165px',
-                  textAlign: 'left',
+                  display: "flex",
+                  gap: "var(--space-2)",
+                  justifyContent: "space-between",
+                  minWidth: "165px",
+                  textAlign: "left",
                 }}
                 variant="outline"
               >
@@ -97,40 +84,36 @@ function NavigationTertiary({
               </Button>
             </DropdownMenuTrigger>
             {!isDisabled && (
-              <DropdownMenuContent
-                sideOffset={6}
-                size="2"
-                style={{ minWidth: '310px' }}
-              >
+              <DropdownMenuContent sideOffset={6} size="2" style={{ minWidth: "310px" }}>
                 {/* @ts-ignore */}
                 {mt?.map((item, idx) => {
-                  if (!item.isActive && !item.isActiveMobile) return null
+                  if (!item.isActive && !item.isActiveMobile) return null;
 
-                  const key = `tertiary-${idx}-${item.id}`
+                  const key = `tertiary-${idx}-${item.id}`;
 
-                  if (item.title === 'SEP') {
-                    return <DropdownMenuSeparator key={key} />
+                  if (item.title === "SEP") {
+                    return <DropdownMenuSeparator key={key} />;
                   }
 
-                  const DropdownMenuItemIcon = item.icon
+                  const DropdownMenuItemIcon = item.icon;
 
                   return (
                     <Fragment key={key}>
                       {/* @ts-ignore */}
                       <DropdownMenuItem
                         className={cx(
-                          item.isActive && !item.isActiveMobile && 'hidden',
-                          !item.isActive && item.isActiveMobile && 'md:hidden',
+                          item.isActive && !item.isActiveMobile && "hidden",
+                          !item.isActive && item.isActiveMobile && "md:hidden",
                         )}
                         key={key}
                         onSelect={() => {
-                          zzz_menuTertiaryActiveSet(item)
+                          zzz_menuTertiaryActiveSet(item);
                           // !!item.href &&
                           //   console.dir(
                           //     `zzz_menuTertiaryActiveSet (router): ${item.href}`,
                           //   )
 
-                          !!item.href && router.push(item.href)
+                          !!item.href && router.push(item.href);
                         }}
                         textValue={item.title}
                       >
@@ -140,7 +123,7 @@ function NavigationTertiary({
                         </Text>
                       </DropdownMenuItem>
                     </Fragment>
-                  )
+                  );
                 })}
               </DropdownMenuContent>
             )}
@@ -148,7 +131,7 @@ function NavigationTertiary({
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export { NavigationTertiary }
+export { NavigationTertiary };
