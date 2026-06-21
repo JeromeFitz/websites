@@ -1,7 +1,7 @@
-import radixColors from '@radix-ui/colors';
-import { withOptions } from 'tailwindcss/plugin';
+import radixColors from "@radix-ui/colors";
+import { withOptions } from "tailwindcss/plugin";
 
-import { backgrounds, buttons, notion, notionColors } from './src/index';
+import { backgrounds, buttons, notion, notionColors } from "./src/index";
 
 /**
  * @debug
@@ -38,28 +38,28 @@ const radixPlugin = withOptions(
         Object.keys(light).forEach(
           (oldKey) =>
             delete Object.assign(light, {
-              ['--' + oldKey]: light[oldKey],
+              ["--" + oldKey]: light[oldKey],
             })[oldKey],
         );
-        const lightA = { ...radixColors[color + 'A'] };
+        const lightA = { ...radixColors[color + "A"] };
         Object.keys(lightA).forEach(
           (oldKey) =>
             delete Object.assign(lightA, {
-              ['--' + oldKey]: lightA[oldKey],
+              ["--" + oldKey]: lightA[oldKey],
             })[oldKey],
         );
-        const dark = { ...radixColors[color + 'Dark'] };
+        const dark = { ...radixColors[color + "Dark"] };
         Object.keys(dark).forEach(
           (oldKey) =>
             delete Object.assign(dark, {
-              ['--' + oldKey]: dark[oldKey],
+              ["--" + oldKey]: dark[oldKey],
             })[oldKey],
         );
-        const darkA = { ...radixColors[color + 'DarkA'] };
+        const darkA = { ...radixColors[color + "DarkA"] };
         Object.keys(darkA).forEach(
           (oldKey) =>
             delete Object.assign(darkA, {
-              ['--' + oldKey]: darkA[oldKey],
+              ["--" + oldKey]: darkA[oldKey],
             })[oldKey],
         );
         darkColors = { ...darkColors, ...dark, ...darkA };
@@ -67,10 +67,10 @@ const radixPlugin = withOptions(
         radixStyles = { ...radixStyles, ...backgrounds, ...buttons, ...notion };
       });
       addBase({
-        ':root': {
+        ":root": {
           ...lightColors,
         },
-        '.dark': {
+        ".dark": {
           ...darkColors,
         },
       });
@@ -82,13 +82,13 @@ const radixPlugin = withOptions(
   function (options) {
     const chosen = options.colors ?? [];
     const filtered = Object.keys(radixColors)
-      .filter((color) => chosen.includes(color) && !color.includes('A') && !color.includes('Dark'))
+      .filter((color) => chosen.includes(color) && !color.includes("A") && !color.includes("Dark"))
       .reduce((obj, key) => {
         Object.keys(radixColors[key]).forEach((color) => (obj[color] = `var(--${color})`));
         return obj;
       }, {});
     const filteredA = Object.keys(radixColors)
-      .filter((color) => !chosen.includes(color) && color.includes('A') && !color.includes('Dark'))
+      .filter((color) => !chosen.includes(color) && color.includes("A") && !color.includes("Dark"))
       .reduce((obj, key) => {
         Object.keys(radixColors[key]).forEach((color) => (obj[`${color}`] = `var(--${color})`));
         return obj;
