@@ -9,6 +9,9 @@
   "commitMessagePrefix": "⬆️  (deps)",
   "commitMessageSuffix": "",
   "commitMessageTopic": " {{depName}}@{{#if isPinDigest}}{{{newDigest}}}{{else}}{{#if isMajor}}{{{newVersion}}} 🧨 {{else}}{{#if isSingleVersion}}{{{newVersion}}}{{else}}{{#if newValue}}{{{newValue}}}{{else}}@{{{newDigest}}}{{/if}}{{/if}}{{/if}}{{/if}}",
+  "constraints": {
+    "pnpm": "11.8.0"
+  },
   "dependencyDashboard": false,
   "extends": [":semanticCommitsDisabled"],
   "labels": ["📦️ Dependencies"],
@@ -16,6 +19,10 @@
     "enabled": false
   },
   "packageRules": [
+    {
+      "matchPackageNames": ["*"],
+      "minimumReleaseAgeStrict": false
+    },
     {
       "commitMessageExtra": "{{depName}}@{{#if isPinDigest}}{{{newDigest}}}{{else}}{{#if isMajor}}{{{newVersion}}} 🧨 {{else}}{{#if isSingleVersion}}{{{newVersion}}}{{else}}{{#if newValue}}{{{newValue}}}{{else}}{{{newDigest}}}{{/if}}{{/if}}{{/if}}{{/if}}",
       "commitMessagePrefix": "👷  (actions)",
