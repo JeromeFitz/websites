@@ -53,7 +53,7 @@
         "tsconfig.*.json",
         "vercel.json"
       ],
-      "outputs": [".next"]
+      "outputs": [".next/**"]
     },
     "clean": {
       "cache": false
@@ -76,6 +76,9 @@
     },
     "start": {
       "cache": false
+    },
+    "jeromefitzgerald.com#start": {
+      "dependsOn": ["build"]
     },
     "test:e2e": {
       "dependsOn": ["^build", "^jeromefitzgerald.com#build"],
