@@ -1,4 +1,3 @@
-// oxlint-disable playwright/no-standalone-expect
 import { TZDate } from "@date-fns/tz";
 import { format } from "date-fns";
 import { describe, expect, it } from "vitest";

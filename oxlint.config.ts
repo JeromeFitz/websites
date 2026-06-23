@@ -7,6 +7,14 @@ export default defineConfig({
   env: {
     builtin: true,
   },
+  overrides: [
+    {
+      files: ["**/*.test.ts", "**/*.test.tsx"],
+      rules: {
+        "playwright/no-standalone-expect": "off",
+      },
+    },
+  ],
   options: {
     maxWarnings: 53,
     reportUnusedDisableDirectives: "allow",
