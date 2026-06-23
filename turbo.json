@@ -62,7 +62,7 @@
       "cache": false
     },
     "lhci": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["^build", "^jeromefitzgerald.com#build"],
       "inputs": ["src/**/*.ts", "src/**/*.tsx"],
       "outputs": [".lighthouseci/**"]
     },
