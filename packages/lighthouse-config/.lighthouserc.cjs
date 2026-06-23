@@ -65,6 +65,7 @@ const config = ({ urlAdditional, website }) => {
         // startServerReadyPattern:
         // Don't run certain audits
         skipAudits: ["redirects-http"],
+        // @note(github-actions) yeesh this needs to be dynamic but works locally, but cache-dir needs to make github-actions
         startServerCommand: `pnpm turbo run start --filter="${website}" --cache-dir=".cache-turbo"`,
         //   'ready - started server on 0.0.0.0:3000, url: http://localhost:3000',
         startServerReadyPattern: `${website}:start: - ready started server on 0.0.0.0:3000, url: http://localhost:3000`,
