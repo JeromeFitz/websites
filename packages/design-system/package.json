@@ -4,6 +4,7 @@
   "private": true,
   "license": "MIT",
   "type": "module",
+  "sideEffects": false,
   "exports": {
     ".": "./dist/index.mjs",
     "./components": "./dist/components/index.mjs",
@@ -13,6 +14,9 @@
     "./components/callout/callout": "./dist/components/callout/callout.mjs",
     "./components/icon": "./dist/components/icon/index.mjs",
     "./components/icon/icon": "./dist/components/icon/icon.mjs",
+    "./components/icon/icon.custom": "./dist/components/icon/icon.custom.mjs",
+    "./components/icon/icon.hero": "./dist/components/icon/icon.hero.mjs",
+    "./components/icon/icon.radix": "./dist/components/icon/icon.radix.mjs",
     "./components/icon/icon.test": "./dist/components/icon/icon.test.mjs",
     "./components/icon/icon.types": "./dist/components/icon/icon.types.mjs",
     "./components/section": "./dist/components/section/index.mjs",
