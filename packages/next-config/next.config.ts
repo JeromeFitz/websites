@@ -1,7 +1,6 @@
 // @ts-nocheck
 import { join } from "node:path";
 
-import withBundleAnalyzer from "@next/bundle-analyzer";
 import withPlaiceholder from "@plaiceholder/next";
 
 import { setupBuildInfo } from "./src/build-info";
@@ -276,9 +275,7 @@ const config = ({
    * @note
    * Plugins cannot handle their own Configuration at this time.
    */
-
-  const wBA = withBundleAnalyzer({ enabled: process.env.ANALYZE === "true" });
-  const plugins = [wBA, withPlaiceholder];
+  const plugins = [withPlaiceholder];
 
   // @todo(typescript@6)
   // @ts-expect-error
