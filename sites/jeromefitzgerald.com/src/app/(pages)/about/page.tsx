@@ -5,16 +5,16 @@ import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation.js";
 
-import { HeaderFull } from "@/components/Header/Header.Full";
+import { HeaderFull } from "@/components/header/header.full";
 // import { getBlocks } from '@/lib/drizzle/schemas/cache-blocks/queries'
 import { getPage, segment } from "@/lib/drizzle/schemas/cache-pages/queries";
 // import type { Block } from '@/lib/drizzle/schemas/cache-blocks/types'
 import type { Page } from "@/lib/drizzle/schemas/cache-pages/types";
-// import { Notion } from '@/lib/notion/Notion.Component'
-import { getKey } from "@/utils/getKey";
-import { isEmpty } from "@/utils/isEmpty";
+// import { Notion } from '@/lib/notion/notion.component'
+import { getKey } from "@/utils/get-key";
+import { isEmpty } from "@/utils/is-empty";
 
-import { Section } from "./_components/Section";
+import { Section } from "./_components/section";
 
 const _key = "about";
 

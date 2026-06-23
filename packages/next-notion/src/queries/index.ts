@@ -1,5 +1,5 @@
-export { getBlockChildrenData } from "./getBlockChildrenData";
-export { getBlockChildrenDataParent } from "./getBlockChildrenDataParent";
-export { getColumnData } from "./getColumnData";
-export { getDatabaseQuery, getDatabaseQueryByDateRange } from "./getDatabaseQuery";
-export { getPageData } from "./getPageData";
+export { getBlockChildrenData } from "./get-block-children-data";
+export { getBlockChildrenDataParent } from "./get-block-children-data-parent";
+export { getColumnData } from "./get-column-data";
+export { getDatabaseQuery, getDatabaseQueryByDateRange } from "./get-database-query";
+export { getPageData } from "./get-page-data";

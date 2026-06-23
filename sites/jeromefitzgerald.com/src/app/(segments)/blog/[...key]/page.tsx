@@ -4,11 +4,11 @@ import { notFound } from "next/navigation.js";
 
 import { getBlog, segment } from "@/lib/drizzle/schemas/cache-blogs/queries";
 import type { Blog } from "@/lib/drizzle/schemas/cache-blogs/types";
-import { getKey } from "@/utils/getKey";
-import { isEmpty } from "@/utils/isEmpty";
-import { getSegmentsForGenerateStaticParams } from "@/utils/next/getSegmentsForGenerateStaticParams";
+import { getKey } from "@/utils/get-key";
+import { isEmpty } from "@/utils/is-empty";
+import { getSegmentsForGenerateStaticParams } from "@/utils/next/get-segments-for-generate-static-params";
 
-import { BlogComponent } from "./_components/Blog";
+import { BlogComponent } from "./_components/blog";
 
 // export const dynamic = 'force-dynamic'
 export const dynamic = "force-static";

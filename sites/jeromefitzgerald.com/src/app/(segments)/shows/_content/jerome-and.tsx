@@ -5,15 +5,15 @@ import {
   imageGallery2,
   imageHeadline,
 } from "@/app/(segments)/shows/_content/_images";
-import { LinkButton } from "@/app/_v16/LinkButton";
-import { ModuleImageGallery } from "@/app/_v16/Module";
-import { GridWrapper } from "@/app/_v16/Wrapper";
-import { Anchor } from "@/components/Anchor/Anchor";
+import { LinkButton } from "@/app/_v16/link-button";
+import { ModuleImageGallery } from "@/app/_v16/module";
+import { GridWrapper } from "@/app/_v16/wrapper";
+import { Anchor } from "@/components/anchor/anchor";
 import { bandcamps, jeromeands } from "@/data/bandcamps";
 import { getShow, segment } from "@/lib/drizzle/schemas/cache-shows/queries";
 import type { Show } from "@/lib/drizzle/schemas/cache-shows/types";
-import { getKey } from "@/utils/getKey";
-import { getTitleData } from "@/utils/getTitleData";
+import { getKey } from "@/utils/get-key";
+import { getTitleData } from "@/utils/get-title-data";
 
 import { ContentSection, ContentTitle } from "./_components";
 import {

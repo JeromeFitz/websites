@@ -4,7 +4,7 @@ import { envServer } from "next-config/env.server";
 
 import { drizzle } from "@/lib/drizzle/index";
 import type { Blog } from "@/lib/drizzle/schemas/cache-blogs/types";
-import type { Segment } from "@/utils/getBySegment";
+import type { Segment } from "@/utils/get-by-segment";
 
 // import { cacheBlogs, selectSchemaBlogs } from './schemas'
 

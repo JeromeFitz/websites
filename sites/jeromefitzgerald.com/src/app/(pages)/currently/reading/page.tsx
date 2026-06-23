@@ -4,11 +4,11 @@ import { notFound } from "next/navigation.js";
 import { getBooks, segment } from "@/lib/drizzle/schemas/cache-books/queries";
 import { getPage, segment as segmentPage } from "@/lib/drizzle/schemas/cache-pages/queries";
 import type { Page } from "@/lib/drizzle/schemas/cache-pages/types";
-import { buildInitialCache } from "@/lib/notion/buildInitialCache";
-import { getKey } from "@/utils/getKey";
-import { isEmpty } from "@/utils/isEmpty";
+import { buildInitialCache } from "@/lib/notion/build-initial-cache";
+import { getKey } from "@/utils/get-key";
+import { isEmpty } from "@/utils/is-empty";
 
-import { BookPage } from "./_components/Book.client";
+import { BookPage } from "./_components/book.client";
 
 interface Props {
   params: Promise<{ key: string }>;

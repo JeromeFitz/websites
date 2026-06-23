@@ -9,7 +9,7 @@ import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
 import { envClient } from "next-config/env.client";
 import { useEffect, useState } from "react";
 
-import { HeaderFull } from "@/components/Header/Header.Full";
+import { HeaderFull } from "@/components/header/header.full";
 
 export default function Home() {
   const [isMusicKitReady, isMusicKitReadySet] = useState(false);

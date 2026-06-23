@@ -25,10 +25,10 @@ import { getPropertyTypeData } from "next-notion/utils";
 
 import type { PageObjectResponsePodcast } from "../../_config";
 import { CONFIG, getPageData, getPodcastData } from "../../_config";
-import { generateMetadataCustom } from "../../_config/temp/generateMetadataCustom";
-import { EpisodeSlug } from "./_components/Episode.Slug";
-import { Listing as PodcastListing } from "./_components/Podcast.Listing";
-import { Slug as PodcastSlug } from "./_components/Podcast.Slug";
+import { generateMetadataCustom } from "../../_config/temp/generate-metadata-custom";
+import { EpisodeSlug } from "./_components/episode.slug";
+import { Listing as PodcastListing } from "./_components/podcast.listing";
+import { Slug as PodcastSlug } from "./_components/podcast.slug";
 
 // export const dynamic = 'auto'
 // export const dynamicParams = true

@@ -3,15 +3,15 @@ import { isAfter } from "date-fns/isAfter";
 import { filter as _filter, orderBy as _orderBy, take as _take } from "lodash-es";
 import type { Metadata } from "next";
 
-import { ContainerFooter } from "@/components/Container/Container.Footer";
-import { ContainerGradient } from "@/components/Container/Container.Gradient";
-// import { ContainerContent } from '@/components/Container/Container.Main'
-import { ContainerNavigation } from "@/components/Container/Container.Navigation";
-import { ContainerSite } from "@/components/Container/Container.Site";
-import { Overlay } from "@/components/Overlay/Overlay";
-import { Providers } from "@/components/Providers/Providers";
-import { StoreInitEventsUpcoming } from "@/components/Providers/StoreInitEventsUpcoming.client";
-import { SkipNavContent, SkipNavLink } from "@/components/SkipNav";
+import { ContainerFooter } from "@/components/container/container.footer";
+import { ContainerGradient } from "@/components/container/container.gradient";
+// import { ContainerContent } from '@/components/container/container.main'
+import { ContainerNavigation } from "@/components/container/container.navigation";
+import { ContainerSite } from "@/components/container/container.site";
+import { Overlay } from "@/components/overlay/overlay";
+import { Providers } from "@/components/providers/providers";
+import { StoreInitEventsUpcoming } from "@/components/providers/store-init-events-upcoming.client";
+import { SkipNavContent, SkipNavLink } from "@/components/skip-nav";
 import { getEventsWithLimit } from "@/lib/drizzle/schemas/queries";
 import type { Event } from "@/lib/drizzle/schemas/types";
 import { cx } from "@/utils/cx";

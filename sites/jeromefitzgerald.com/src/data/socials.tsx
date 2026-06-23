@@ -8,7 +8,7 @@ import {
   LinkedInLogoIcon,
   MusicalNoteIcon,
   ThreadsLogoIcon,
-} from "@/components/Icon/index";
+} from "@/components/icon/index";
 
 const URL_TYPE = {
   AUDIO: "audio",

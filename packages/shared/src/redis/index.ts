@@ -10,9 +10,9 @@ interface RC {
 
 import redis from "./redis";
 
-export { getCache } from "./getCache";
-export { getKey } from "./getKey";
-export { setCache } from "./setCache";
+export { getCache } from "./get-cache";
+export { getKey } from "./get-key";
+export { setCache } from "./set-cache";
 
 export type { RC };
 export default redis;

@@ -1,0 +1,33 @@
+"use client";
+import dynamic from "next/dynamic";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+
+// import { Loading } from './router-event-provider.loading.client'
+const Loading = dynamic(
+  async () => {
+    const { Loading: Component } = await import("./router-event-provider.loading.client");
+    return { default: Component };
+  },
+  { ssr: true },
+);
+
+function RouterEventProvider() {
+  // @todo(types)
+  const pathname: any = usePathname();
+
+  const [isRouteChanging, isRouteChangingSet] = useState(false);
+  const [pastRoute, pastRouteSet] = useState("");
+
+  useEffect(() => {
+    // oxlint-disable-next-line typescript/no-unused-expressions
+    pastRoute !== pathname && isRouteChangingSet(true);
+    // oxlint-disable-next-line typescript/no-unused-expressions
+    pastRoute === pathname && isRouteChangingSet(false);
+    pastRouteSet(pathname);
+  }, [pathname, pastRoute]);
+
+  return <Loading isRouteChanging={isRouteChanging} />;
+}
+
+export { RouterEventProvider };

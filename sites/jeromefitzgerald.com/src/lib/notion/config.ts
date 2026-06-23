@@ -1,4 +1,4 @@
-import { Image } from "@/components/Notion/Blocks/Image";
+import { Image } from "@/components/notion/blocks/image";
 
 const custom = {
   caption: {

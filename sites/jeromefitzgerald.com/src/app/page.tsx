@@ -9,14 +9,14 @@ import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
 import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
 import type { Metadata, ResolvingMetadata } from "next";
 
-import { ArticleMain } from "@/components/Article/Article.Main";
-import { HeaderFull } from "@/components/Header/Header.Full";
+import { ArticleMain } from "@/components/article/article.main";
+import { HeaderFull } from "@/components/header/header.full";
 // import { getImageKeyValue } from '@/lib/drizzle/schemas/cache-images/queries'
 import { getPage, segment } from "@/lib/drizzle/schemas/cache-pages/queries";
 import type { Page } from "@/lib/drizzle/schemas/cache-pages/types";
-// import { getImageKeySlug } from '@/lib/drizzle/utils/getImageKeySlug'
-import { getKey } from "@/utils/getKey";
-import { isEmpty } from "@/utils/isEmpty";
+// import { getImageKeySlug } from '@/lib/drizzle/utils/get-image-key-slug'
+import { getKey } from "@/utils/get-key";
+import { isEmpty } from "@/utils/is-empty";
 
 interface Props {
   params: Promise<{ key: string }>;

@@ -1,17 +1,17 @@
 // import { Fragment } from 'react'
 
 // import { imageGallery } from '../(segments)/shows/_content/_images'
-// import { FeedContainer, FeedTag, FeedTagContainer, FeedWrapper } from './Feed'
-import { Footer } from "./Footer";
-import { FooterNavigation, HeaderNavigation } from "./Header.Navigation";
-import { Main } from "./Main";
+// import { FeedContainer, FeedTag, FeedTagContainer, FeedWrapper } from './feed'
+import { Footer } from "./footer";
+import { FooterNavigation, HeaderNavigation } from "./header.navigation";
+import { Main } from "./main";
 import {
   // ModuleAbout,
   ModuleCredits,
   // ModuleHome,
   // ModuleImageGallery,
   // ModuleShow,
-} from "./Module";
+} from "./module";
 
 const Home = () => {
   return (

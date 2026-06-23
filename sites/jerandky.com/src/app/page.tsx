@@ -1,4 +1,4 @@
-import { Anchor } from "@jeromefitz/ds/components/Anchor";
+import { Anchor } from "@jeromefitz/ds/components/anchor";
 import {
   SectionContent,
   SectionHeader,
@@ -7,7 +7,7 @@ import {
   SectionHeaderTitle,
   SectionWrapper,
   // Tags,
-} from "@jeromefitz/ds/components/Section";
+} from "@jeromefitz/ds/components/section";
 
 export default function Page() {
   return <Slug />;

@@ -1,4 +1,4 @@
-// export { isAwsImage, isAwsImageExpired, isImageExpired } from './getAwsImage'
-export { isAwsImage, isImageExpired } from "./getAwsImage";
-export { getPropertyTypeData } from "./getPropertyTypeData";
-export { getSegmentInfo } from "./getSegmentInfo";
+// export { isAwsImage, isAwsImageExpired, isImageExpired } from './get-aws-image'
+export { isAwsImage, isImageExpired } from "./get-aws-image";
+export { getPropertyTypeData } from "./get-property-type-data";
+export { getSegmentInfo } from "./get-segment-info";

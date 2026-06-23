@@ -1,4 +1,4 @@
-export { Anchor } from "./Anchor/index";
-export { Callout } from "./Callout/index";
-export { Icon } from "./Icon/index";
-export { SkipNavContent, SkipNavLink } from "./SkipNav/index";
+export { Anchor } from "./anchor/index";
+export { Callout } from "./callout/index";
+export { Icon } from "./icon/index";
+export { SkipNavContent, SkipNavLink } from "./skip-nav/index";

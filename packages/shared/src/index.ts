@@ -13,5 +13,5 @@ export {
 
 export type { RC } from "./redis";
 
-export { getImage } from "./plaiceholder/getImage";
+export { getImage } from "./plaiceholder/get-image";
 export { getCache, getKey, setCache } from "./redis";
