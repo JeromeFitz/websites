@@ -1,4 +1,4 @@
-import { config } from "@jeromefitz/oxlint-config";
+import { config, overridePlaywright, overrideVitest } from "@jeromefitz/oxlint-config";
 import { defineConfig } from "oxlint";
 
 export default defineConfig({
@@ -7,14 +7,7 @@ export default defineConfig({
   env: {
     builtin: true,
   },
-  overrides: [
-    {
-      files: ["**/*.test.ts", "**/*.test.tsx"],
-      rules: {
-        "playwright/no-standalone-expect": "off",
-      },
-    },
-  ],
+  overrides: [overridePlaywright, overrideVitest],
   options: {
     maxWarnings: 53,
     reportUnusedDisableDirectives: "allow",

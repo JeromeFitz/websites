@@ -1,4 +1,4 @@
-import type { DummyRuleMap, OxlintConfig } from "oxlint";
+import type { DummyRuleMap, OxlintConfig, OxlintOverride } from "oxlint";
 
 import { categories } from "./categories.ts";
 import { globals } from "./globals.ts";
@@ -21,12 +21,6 @@ import { typescript } from "./plugins.typescript.ts";
 import { unicorn } from "./plugins.unicorn.ts";
 import { vitest } from "./plugins.vitest.ts";
 
-const jsPluginsRules: DummyRuleMap = {
-  ...playwright,
-  ...testingLibrary,
-  ...tailwindcss,
-};
-
 const pluginsRules: DummyRuleMap = {
   ...eslint,
   ...importRules,
@@ -39,19 +33,28 @@ const pluginsRules: DummyRuleMap = {
   ...reactPerf,
   ...typescript,
   ...unicorn,
-  ...vitest,
 };
 
-const rules: DummyRuleMap = {
-  ...pluginsRules,
-  ...jsPluginsRules,
-};
-
-export const config: OxlintConfig = {
+const config: OxlintConfig = {
   categories,
   ignorePatterns,
   globals,
   jsPlugins,
   plugins,
-  rules,
+  rules: {
+    ...pluginsRules,
+    ...tailwindcss,
+  },
 };
+
+const overridePlaywright: OxlintOverride = {
+  files: ["**/*.e2e.ts", "**/*.e2e.tsx", "**/e2e/**/*.ts"],
+  rules: { ...playwright },
+};
+
+const overrideVitest: OxlintOverride = {
+  files: ["**/*.test.ts", "**/*.test.tsx"],
+  rules: { ...vitest, ...testingLibrary },
+};
+
+export { config, overridePlaywright, overrideVitest };
