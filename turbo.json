@@ -53,7 +53,7 @@
         "tsconfig.*.json",
         "vercel.json"
       ],
-      "outputs": []
+      "outputs": [".next"]
     },
     "clean": {
       "cache": false
@@ -80,7 +80,8 @@
     "test:e2e": {
       "dependsOn": ["^build", "^jeromefitzgerald.com#build"],
       "inputs": ["src/e2e/**"],
-      "outputs": ["e2e-report/**", "e2e-results/**"]
+      "outputs": ["e2e-report/**", "e2e-results/**"],
+      "passThroughEnv": ["PLAYWRIGHT_*"]
     },
     "test:unit": {
       "dependsOn": ["^build"]
