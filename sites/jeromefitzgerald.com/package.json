@@ -90,7 +90,6 @@
     "@vercel/speed-insights": "2.0.0",
     "clsx": "2.1.1",
     "date-fns": "4.4.0",
-    "date-fns-tz": "3.2.0",
     "dotenv": "17.4.2",
     "drizzle-kit": "0.31.10",
     "drizzle-orm": "0.45.2",

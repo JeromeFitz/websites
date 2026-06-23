@@ -1,7 +1,7 @@
 "use client";
 
 import { TZDate } from "@date-fns/tz";
-import { formatInTimeZone } from "date-fns-tz";
+import { format } from "date-fns";
 import { upperCase as _upperCase } from "lodash-es";
 import { memo } from "react";
 
@@ -30,9 +30,8 @@ const StoreInitEventsUpcoming = memo(function StoreInitEventsUpcoming({
     items.map((item) => {
       // const timestamp = `${_upperCase(item.dateDayOfWeekAbbr)} ${item.dateMonth}/${item.dateDayOfMonth}`
       const timestampUTC = new TZDate(item.dateIso, "UTC");
-      const timestamp = `${_upperCase(
-        formatInTimeZone(timestampUTC, TZ, `EEE`),
-      )} ${formatInTimeZone(timestampUTC, TZ, `MM/dd`)}`;
+      const timestampTZ = timestampUTC.withTimeZone(TZ);
+      const timestamp = `${_upperCase(format(timestampTZ, `EEE`))} ${format(timestampTZ, `MM/dd`)}`;
 
       events.push({
         href: item.slugPreview,
