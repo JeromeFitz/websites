@@ -32,7 +32,13 @@ const overrides: DummyRuleMap = {
   /**
    * style
    */
-  "unicorn/filename-case": "error",
+  "unicorn/filename-case": [
+    "error",
+    {
+      case: "kebabCase",
+      multipleFileExtensions: false,
+    },
+  ],
 };
 
 const rules: DummyRuleMap = {
