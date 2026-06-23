@@ -1,4 +1,4 @@
-import type { DummyRuleMap, OxlintConfig } from "oxlint";
+import type { DummyRuleMap, OxlintConfig, OxlintOverride } from "oxlint";
 
 import { categories } from "./categories.ts";
 import { globals } from "./globals.ts";
@@ -6,7 +6,7 @@ import { ignorePatterns } from "./ignore-patterns.ts";
 import { tailwindcss } from "./js-plugins.oxlint-tailwindcss.ts";
 import { playwright } from "./js-plugins.playwright.ts";
 import { testingLibrary } from "./js-plugins.testing-library.ts";
-import { jsPlugins } from "./js-plugins.ts";
+import { jsPluginPlaywright, jsPluginTestingLibrary, jsPlugins } from "./js-plugins.ts";
 import { eslint } from "./plugins.eslint.ts";
 import { importRules } from "./plugins.import.ts";
 import { jsxA11y } from "./plugins.jsx-a11y.ts";
@@ -21,12 +21,6 @@ import { typescript } from "./plugins.typescript.ts";
 import { unicorn } from "./plugins.unicorn.ts";
 import { vitest } from "./plugins.vitest.ts";
 
-const jsPluginsRules: DummyRuleMap = {
-  ...playwright,
-  ...testingLibrary,
-  ...tailwindcss,
-};
-
 const pluginsRules: DummyRuleMap = {
   ...eslint,
   ...importRules,
@@ -39,19 +33,31 @@ const pluginsRules: DummyRuleMap = {
   ...reactPerf,
   ...typescript,
   ...unicorn,
-  ...vitest,
 };
 
-const rules: DummyRuleMap = {
-  ...pluginsRules,
-  ...jsPluginsRules,
-};
-
-export const config: OxlintConfig = {
+const config: OxlintConfig = {
   categories,
   ignorePatterns,
   globals,
   jsPlugins,
   plugins,
-  rules,
+  rules: {
+    ...pluginsRules,
+    ...tailwindcss,
+  },
 };
+
+const overridePlaywright: OxlintOverride = {
+  files: ["**/*.e2e.ts", "**/*.e2e.tsx", "**/e2e/**/*.ts"],
+  jsPlugins: [jsPluginPlaywright],
+  rules: { ...playwright },
+};
+
+const overrideVitest: OxlintOverride = {
+  files: ["**/*.test.ts", "**/*.test.tsx"],
+  jsPlugins: [jsPluginTestingLibrary],
+  plugins: ["vitest"],
+  rules: { ...vitest, ...testingLibrary },
+};
+
+export { config, overridePlaywright, overrideVitest };
