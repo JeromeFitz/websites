@@ -7,7 +7,7 @@ import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
 import { Skeleton } from "@radix-ui/themes/dist/esm/components/skeleton.js";
 import { Strong } from "@radix-ui/themes/dist/esm/components/strong.js";
 import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
-import { formatInTimeZone } from "date-fns-tz";
+import { format } from "date-fns";
 
 import {
   CalendarIcon,
@@ -136,7 +136,7 @@ function DataList__Info({ isEventOver, item }: { isEventOver: boolean; item: Eve
             </Flex>
           </DataList.Label>
           <DataList.Value className="font-mono">
-            {formatInTimeZone(timestampUTC, TZ, "hh:mma zzz")}
+            {format(timestampUTC.withTimeZone(TZ), "hh:mma zzz")}
             {/* <br /> */}
             {/* {format(timestampET, 'hh:mma zzz')} */}
           </DataList.Value>

@@ -4,14 +4,13 @@ import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
 import { Heading } from "@radix-ui/themes/dist/esm/components/heading.js";
 import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
 import { format } from "date-fns";
-import { formatInTimeZone } from "date-fns-tz";
 
 import { ImageNotion } from "@/components/image/image.notion";
 import { segment } from "@/lib/drizzle/schemas/cache-blogs/queries";
 import type { Blog } from "@/lib/drizzle/schemas/cache-blogs/types";
 
 const timestampFormatISO = `yyyy-MM-dd'T'HH:mm:ss.ms'Z'`;
-const timestampFormat = `yyyy-MM-dd HH:mma z`;
+const timestampFormat = `yyyy-MM-dd hh:mma z`;
 
 export function BlogComponent({ item }: { item: Blog }) {
   const timestampUTC = new TZDate(item.updatedAt, "UTC");
@@ -50,11 +49,11 @@ export function BlogComponent({ item }: { item: Blog }) {
           E: {format(timestampET, timestampFormatISO)}
         </Code>
         <Code size="1" variant="ghost">
-          TZ-U: {formatInTimeZone(timestampUTC, "UTC", timestampFormat)}
+          TZ-U: {format(timestampUTC, timestampFormat)}
         </Code>
         <Code size="1" variant="ghost">
           TZ-E:{` `}
-          {formatInTimeZone(timestampUTC, "America/New_York", timestampFormat)}
+          {format(timestampET, timestampFormat)}
         </Code>
         <hr className="my-2 w-full" />
         <Flex>
