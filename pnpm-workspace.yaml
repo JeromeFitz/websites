@@ -11,7 +11,6 @@ dedupePeerDependents: false
 enablePrePostScripts: true # next-sitemap requirement
 lockfile: true
 minimumReleaseAge: 1440
-minimumReleaseAgeStrict: strict
 overrides:
   "@babel/core@^7.0.0": ^7.29.6
   "@babel/helpers@^7.0.0": ^7.29.2
@@ -51,7 +50,7 @@ packages:
 patchedDependencies:
   "@semantic-release/commit-analyzer@13.0.1": patches/@semantic-release__commit-analyzer@13.0.0.patch
   next: patches/next.patch
-provenance: true,
+provenance: true
 publicHoistPattern:
   - "*ccommit*"
   - "*eslint*"
