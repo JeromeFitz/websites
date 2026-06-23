@@ -16,7 +16,6 @@ inputs:
 runs:
   using: "composite"
   steps:
-    # @todo(gh-actions) Separate `main` from PR
     - name: "🚨️  Lint: Syncpack"
       id: lint-syncpack
       shell: bash

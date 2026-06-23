@@ -43,7 +43,6 @@ runs:
           ~/.cache/ms-playwright
         key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
 
-    # @todo(gh-actions) Separate `main` from PR
     - name: "🧪  Test: Build"
       id: e2e-build
       shell: bash
@@ -96,17 +95,13 @@ runs:
     - name: "🎭  Playwright: Install (!cache)"
       id: e2e-dependencies-playwright
       shell: bash
-      # run: pnpm playwright@${{ env.PLAYWRIGHT_VERSION }}  install --with-deps
-      run: npx playwright@${{ env.PLAYWRIGHT_VERSION }} install --with-deps
-      # run: pnpm exec playwright@${{ env.PLAYWRIGHT_VERSION }} install --with-deps
+      run: pnpm dlx playwright@${{ env.PLAYWRIGHT_VERSION }} install --with-deps
       if: steps.playwright-cache.outputs.cache-hit != 'true'
 
     - name: "🎭  Playwright: Install (cache)"
       id: e2e-dependencies-playwright-cache
       shell: bash
-      # run: pnpm playwright@${{ env.PLAYWRIGHT_VERSION }}  install-deps
-      run: npx playwright@${{ env.PLAYWRIGHT_VERSION }} install-deps
-      # run: pnpm exec playwright@${{ env.PLAYWRIGHT_VERSION }} install
+      run: pnpm dlx playwright@${{ env.PLAYWRIGHT_VERSION }} install-deps
       if: steps.playwright-cache.outputs.cache-hit == 'true'
 
     - name: "🎭  Playwright: ${{ inputs.WEBSITE }}"
@@ -116,9 +111,7 @@ runs:
         TURBO_TEAM: ${{ inputs.TURBO_TEAM }}
         TURBO_TOKEN: ${{ inputs.TURBO_TOKEN }}
         VERCEL_ENV: ${{ inputs.VERCEL_ENV }}
-      # run: pnpm turbo run test:e2e --filter="${{ inputs.WEBSITE }}" --cache-dir=".cache-turbo"
-      run: |
-        pnpm --filter "${{ inputs.WEBSITE }}" test:e2e
+      run: pnpm turbo run test:e2e --filter="${{ inputs.WEBSITE }}" --cache-dir=".cache-turbo"
 
     # - name: '🎭  Playwright: Upload'
     #   id: e2e-upload
