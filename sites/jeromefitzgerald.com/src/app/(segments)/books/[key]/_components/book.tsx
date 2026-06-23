@@ -10,7 +10,7 @@ import { segment } from "@/lib/drizzle/schemas/cache-books/queries";
 import type { Book as BookType } from "@/lib/drizzle/schemas/cache-books/types";
 
 const timestampFormatISO = `yyyy-MM-dd'T'HH:mm:ss.ms'Z'`;
-const timestampFormat = `yyyy-MM-dd HH:mma z`;
+const timestampFormat = `yyyy-MM-dd hh:mma z`;
 
 export function Book({ item }: { item: BookType }) {
   const timestampUTC = new TZDate(item.updatedAt, "UTC");

@@ -19,7 +19,7 @@ describe("@date-fns/tz — TZDate construction", () => {
     expect(format(d, "yyyy-MM-dd HH:mm")).toBe("2025-01-15 20:30");
   });
 
-  it("shifts to America/New_York (EST) in inter", () => {
+  it("shifts to America/New_York (EST) in winter", () => {
     const d = new TZDate(JAN_UTC, "America/New_York");
     expect(format(d, "yyyy-MM-dd HH:mm")).toBe("2025-01-15 15:30");
   });
@@ -46,21 +46,18 @@ describe("@date-fns/tz — withTimeZone conversion", () => {
 
 // Format strings used in the codebase — validated here so regressions are caught
 // at the call site if @date-fns/tz or date-fns bumps a breaking change.
-// The format string in book.tsx / blog.tsx uses HH (24-hour) + a (AM/PM suffix).
-// The combined output is intentionally 24-hour with a redundant suffix — tested
-// here exactly as-is so a future date-fns upgrade can't silently change behaviour.
-describe("format patterns — book.tsx / blog.tsx (yyyy-MM-dd HH:mma z)", () => {
-  it("formats timestampUTC in UTC zone (24-hour HH + AM/PM suffix)", () => {
+describe("format patterns — book.tsx / blog.tsx (yyyy-MM-dd hh:mma z)", () => {
+  it("formats timestampUTC in UTC zone (12-hour)", () => {
     const utc = new TZDate(JAN_UTC, "UTC");
-    const result = format(utc, "yyyy-MM-dd HH:mma");
-    expect(result).toBe("2025-01-15 20:30PM");
+    const result = format(utc, "yyyy-MM-dd hh:mma");
+    expect(result).toBe("2025-01-15 08:30PM");
   });
 
-  it("formats timestampET via withTimeZone (winter EST, 24-hour HH + AM/PM suffix)", () => {
+  it("formats timestampET via withTimeZone (winter EST, 12-hour)", () => {
     const utc = new TZDate(JAN_UTC, "UTC");
     const et = utc.withTimeZone("America/New_York");
-    const result = format(et, "yyyy-MM-dd HH:mma");
-    expect(result).toBe("2025-01-15 15:30PM");
+    const result = format(et, "yyyy-MM-dd hh:mma");
+    expect(result).toBe("2025-01-15 03:30PM");
   });
 });
 
