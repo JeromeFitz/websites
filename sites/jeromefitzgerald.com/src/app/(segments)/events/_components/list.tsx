@@ -1,0 +1,295 @@
+// import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
+
+import { Box } from "@radix-ui/themes/dist/esm/components/box.js";
+import { Button } from "@radix-ui/themes/dist/esm/components/button.js";
+// import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
+import { Em } from "@radix-ui/themes/dist/esm/components/em.js";
+import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
+import { Grid } from "@radix-ui/themes/dist/esm/components/grid.js";
+import { Heading } from "@radix-ui/themes/dist/esm/components/heading.js";
+import { Link } from "@radix-ui/themes/dist/esm/components/link.js";
+import { Strong } from "@radix-ui/themes/dist/esm/components/strong.js";
+import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
+import { isAfter } from "date-fns/isAfter";
+// import { filter as _filter, orderBy as _orderBy, take as _take } from 'lodash-es'
+import { filter as _filter, orderBy as _orderBy } from "lodash-es";
+import NextLink from "next/link";
+
+import { DataList__Info } from "@/app/(segments)/events/[...key]/_components/event.data.list";
+import { HeaderFull } from "@/components/header/header.full";
+import { ExternalLinkIcon } from "@/components/icon/index";
+import { getImageKeyValue } from "@/lib/drizzle/schemas/cache-images/queries";
+// import type { NotionTag } from '@/lib/drizzle/schemas/_notion/types'
+import type { Event } from "@/lib/drizzle/schemas/types";
+import { getImageKeySlug } from "@/lib/drizzle/utils/get-image-key-slug";
+import { cx } from "@/utils/cx";
+
+// import { AccordionClient } from './list.client'
+
+function ListWrapper({ events }: { events: Event[] }) {
+  // return null
+  return (
+    <Box>
+      <Grid
+        columns={{ initial: "1", md: "2" }}
+        gapX={{ initial: "1", md: "3" }}
+        gapY={{ initial: "6", md: "6" }}
+        role="list"
+        width="100%"
+      >
+        {events.map(async (event) => {
+          if (!event.isPublished) return null;
+          const seoImage: any = event.seoImage;
+          const imageUrl = seoImage[seoImage?.type]?.url;
+          const { key } = getImageKeySlug(imageUrl);
+          const imageKeyValue = await getImageKeyValue({ key });
+          const image: any = imageKeyValue[0]?.value[0];
+
+          return (
+            <Box
+              className="group rounded-sm bg-scroll"
+              key={event.id}
+              position="relative"
+              role="listitem"
+              width="100%"
+            >
+              <Grid
+                align="start"
+                asChild
+                className={cx(
+                  // 'bg-accent-6',
+                  "border-gray-7 hover:border-gray-8 md:border",
+                  "rounded-sm",
+                  "transition-all duration-500",
+                  // 'group-hover:transform-[translate(0px,_-1em)]',
+                  // 'shadow-xs group-hover:shadow-lg',
+                  // 'dark:shadow-accent-4',
+                )}
+                flow="row"
+                gap="3"
+                height="100%"
+                width="100%"
+              >
+                <Box>
+                  <Box
+                    height={{ initial: "275px", md: "500px" }}
+                    overflow="hidden"
+                    position="relative"
+                  >
+                    <NextLink href={event.slugPreview}>
+                      <img
+                        alt="d"
+                        className={cx(
+                          "absolute inline-block size-full",
+                          "inset-[0%_0%_auto]",
+                          "rounded-t-sm",
+                          "max-w-full object-cover align-middle",
+                          "transition-all duration-700 hover:scale-[1.05]",
+                        )}
+                        src={image?.src}
+                      />
+                    </NextLink>
+                  </Box>
+                  <Grid
+                    align="start"
+                    data-name={`Container: ${event.slugPreview}`}
+                    flow="row"
+                    gap="3"
+                    height="100%"
+                    justify="start"
+                  >
+                    <Flex
+                      align="start"
+                      data-name="Info"
+                      direction="column"
+                      gap="3"
+                      // height="12rem"
+                      height="100%"
+                      justify="start"
+                      mb="3"
+                      p="3"
+                    >
+                      <Heading as="h2" size="6">
+                        {event.title}
+                      </Heading>
+                      <Text
+                        className="md:line-clamp-3 md:min-h-18.75"
+                        mr={{ initial: "1", md: "3" }}
+                      >
+                        {event.seoDescription}
+                      </Text>
+                      {/* <Flex
+                        align="end"
+                        className="bg-transparent"
+                        direction="row"
+                        gap={{ initial: '2', md: '3' }}
+                        height="100%"
+                        width="100%"
+                        wrap="nowrap"
+                      >
+                        <>
+                          {event?.tags.length === 0 && (
+                            <Badge className="lowercase" color="amber" size="2">
+                              <Code variant="ghost">comedy</Code>
+                            </Badge>
+                          )}
+                          {event.tags.map(({ color, id, name }: NotionTag) => (
+                            <Badge
+                              className="lowercase"
+                              color={color}
+                              key={id}
+                              size="2"
+                            >
+                              <Code variant="ghost">{name}</Code>
+                            </Badge>
+                          ))}
+                        </>
+                      </Flex> */}
+                    </Flex>
+                    <Flex
+                      align="start"
+                      className="z-50"
+                      data-name="Credits"
+                      direction="column"
+                      gap="3"
+                      height="100%"
+                      justify="start"
+                      mb="3"
+                      p="3"
+                    >
+                      <DataList__Info isEventOver={false} item={event} />
+                    </Flex>
+                    <Flex
+                      align="start"
+                      className="z-50"
+                      data-name="Links"
+                      direction="row"
+                      gap="3"
+                      height="100%"
+                      justify="end"
+                      mb="3"
+                      p="3"
+                      width="100%"
+                    >
+                      <Button
+                        asChild
+                        className={cx(
+                          "transition-all! hover:transform-[translate(0px,-0.125em)]!",
+                          "hover:shadow-[inset_0_0_0_1px_var(--accent-a8)]!",
+                          "drop-shadow-lg! hover:drop-shadow-lg!",
+                          "shadow-[inset_0_0_0_1px_var(--accent-a7)]!",
+                        )}
+                        variant="surface"
+                      >
+                        <NextLink href={event.slugPreview}>More Info</NextLink>
+                      </Button>
+                      <Button
+                        asChild
+                        disabled={!event.urlTicket}
+                        className={cx(
+                          "transition-all! hover:transform-[translate(0px,-0.125em)]!",
+                          "text-black!",
+                          "drop-shadow-lg! hover:drop-shadow-lg!",
+                        )}
+                        color="green"
+                      >
+                        <a href={event.urlTicket}>
+                          Buy Tickets
+                          <ExternalLinkIcon
+                            className={cx(
+                              "rounded-3 size-5 p-0.5 text-inherit ",
+                              "opacity-95! group-hover:opacity-100!",
+                              "transition-all!",
+                            )}
+                          />
+                        </a>
+                      </Button>
+                    </Flex>
+                  </Grid>
+                </Box>
+              </Grid>
+            </Box>
+          );
+        })}
+      </Grid>
+    </Box>
+  );
+}
+
+function Listing({ items }: { items: Event[] }) {
+  const dateNow = Date.now();
+  const eventsUpcoming = _orderBy(
+    _filter(items, (item: Event) => !isAfter(dateNow, item.dateIso)),
+    (item: Event) => [item.dateIso],
+    ["asc"],
+  );
+  // const eventsPast = _take(
+  //   _orderBy(
+  //     _filter(items, (item: Event) => isAfter(dateNow, item.dateIso)),
+  //     (item: Event) => [item.dateIso],
+  //     ['desc'],
+  //   ),
+  //   10,
+  // )
+
+  return (
+    <Flex direction="column">
+      <HeaderFull count={eventsUpcoming.length} overline="" title="Events" />
+      <Flex
+        direction="column"
+        gap="9"
+        mb={{ initial: "4", md: "6" }}
+        pb={{ initial: "4", md: "6" }}
+      >
+        <Flex direction="column" gap="7">
+          <Text size={{ initial: "5", md: "7" }}>
+            Ahoy. I recently moved to <Strong>NYC</Strong> coming from <Em>Pittsburgh</Em>.
+          </Text>{" "}
+          <Text size={{ initial: "5", md: "7" }}>
+            As a result, my known upcoming show calendar is all over the place as I no longer have
+            multiple monthly shows. (Perhaps I did not think this through?)
+          </Text>
+          <Text size={{ initial: "4", md: "6" }}>
+            In lieu of that, I am doing feature sets, random drop-ins, and a lot of last minute “Hey
+            do this!”
+            <br />
+            And I will! I will do whatever <Strong>this</Strong> is.
+          </Text>
+          <Text size={{ initial: "4", md: "6" }}>
+            So reach out on IG I guess if so:{" "}
+            <Link href="https://instagram.com/JeromeFitz">@JeromeFitz</Link>{" "}
+            <Text size={{ initial: "3", md: "5" }}>
+              (That is admittedly empty! But I will respond [eventually].)
+            </Text>
+          </Text>
+          <Text size={{ initial: "4", md: "6" }}>
+            Will have a festival schedule and new upcoming show once things are settled a bit.
+          </Text>
+        </Flex>
+      </Flex>
+      {/* <Flex
+        direction="column"
+        gap="9"
+        mb={{ initial: '4', md: '6' }}
+        pb={{ initial: '4', md: '6' }}
+      >
+        <Flex direction="column" gap="3">
+          <Text size={{ initial: '3', md: '5' }}>
+            Upcoming Events that feature comedian Jerome Fitzgerald.{' '}
+            <Em>
+              Based in NYC (<Text className="line-through">Pittsburgh</Text>),
+              occasionally he will venture out into the wide world and do shows
+              elsewhere.
+            </Em>{' '}
+            <Strong>(And he is always very game to do so.)</Strong>
+          </Text>
+        </Flex>
+      </Flex> */}
+      <ListWrapper events={eventsUpcoming} />
+      {/* <HeaderFull count={eventsPast.length} overline="" title="Past Events" /> */}
+      {/* <AccordionClient items={eventsPast} /> */}
+    </Flex>
+  );
+}
+
+export { Listing };

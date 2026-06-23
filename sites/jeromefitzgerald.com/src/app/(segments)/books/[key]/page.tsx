@@ -4,11 +4,11 @@ import { notFound } from "next/navigation.js";
 
 import { getBook, segment } from "@/lib/drizzle/schemas/cache-books/queries";
 import type { Book } from "@/lib/drizzle/schemas/cache-books/types";
-import { getKey } from "@/utils/getKey";
-import { isEmpty } from "@/utils/isEmpty";
-import { getSegmentsForGenerateStaticParams } from "@/utils/next/getSegmentsForGenerateStaticParams";
+import { getKey } from "@/utils/get-key";
+import { isEmpty } from "@/utils/is-empty";
+import { getSegmentsForGenerateStaticParams } from "@/utils/next/get-segments-for-generate-static-params";
 
-import { Book as BookComponent } from "./_components/Book";
+import { Book as BookComponent } from "./_components/book";
 
 // export const dynamic = 'force-dynamic'
 export const dynamic = "force-static";

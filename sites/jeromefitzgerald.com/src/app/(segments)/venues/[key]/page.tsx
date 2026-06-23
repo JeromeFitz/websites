@@ -4,11 +4,11 @@ import { notFound } from "next/navigation.js";
 
 import { getVenue, segment } from "@/lib/drizzle/schemas/cache-venues/queries";
 import type { Venue } from "@/lib/drizzle/schemas/cache-venues/types";
-import { getKey } from "@/utils/getKey";
-import { isEmpty } from "@/utils/isEmpty";
-import { getSegmentsForGenerateStaticParams } from "@/utils/next/getSegmentsForGenerateStaticParams";
+import { getKey } from "@/utils/get-key";
+import { isEmpty } from "@/utils/is-empty";
+import { getSegmentsForGenerateStaticParams } from "@/utils/next/get-segments-for-generate-static-params";
 
-import { Venue as VenueComponent } from "./_components/Venue";
+import { Venue as VenueComponent } from "./_components/venue";
 
 // export const dynamic = 'force-dynamic'
 export const dynamic = "force-static";

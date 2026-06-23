@@ -3,11 +3,11 @@ import type { Metadata, ResolvingMetadata } from "next";
 import { getPage, segment as segmentPage } from "@/lib/drizzle/schemas/cache-pages/queries";
 import type { Page } from "@/lib/drizzle/schemas/cache-pages/types";
 import { getPodcasts, segment } from "@/lib/drizzle/schemas/cache-podcasts/queries";
-import { buildInitialCache } from "@/lib/notion/buildInitialCache";
-import { getKey } from "@/utils/getKey";
-import { isEmpty } from "@/utils/isEmpty";
+import { buildInitialCache } from "@/lib/notion/build-initial-cache";
+import { getKey } from "@/utils/get-key";
+import { isEmpty } from "@/utils/is-empty";
 
-import { List } from "./_components/List";
+import { List } from "./_components/list";
 
 // export const dynamic = 'force-dynamic'
 export const dynamic = "force-static";

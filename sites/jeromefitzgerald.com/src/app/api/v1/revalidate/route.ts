@@ -8,9 +8,9 @@ import { getEvent } from "@/lib/drizzle/schemas/cache-events/queries";
 import type { Event } from "@/lib/drizzle/schemas/cache-events/types";
 import { getShow } from "@/lib/drizzle/schemas/cache-shows/queries";
 import type { Show } from "@/lib/drizzle/schemas/cache-shows/types";
-import { buildInitialCache } from "@/lib/notion/buildInitialCache";
-import { getKey } from "@/utils/getKey";
-import { isEmpty } from "@/utils/isEmpty";
+import { buildInitialCache } from "@/lib/notion/build-initial-cache";
+import { getKey } from "@/utils/get-key";
+import { isEmpty } from "@/utils/is-empty";
 
 import { isValid as _isValid } from "./actions";
 

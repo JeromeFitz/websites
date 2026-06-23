@@ -8,18 +8,18 @@ import dynamic from "next/dynamic";
 import localFont from "next/font/local";
 import { Fragment } from "react";
 
-import { Providers } from "../components/Providers";
+import { Providers } from "../components/providers";
 
 const Analytics = dynamic(
   async () => {
-    const { Analytics: Component } = await import("@jeromefitz/shared/components/Analytics");
+    const { Analytics: Component } = await import("@jeromefitz/shared/components/analytics");
     return { default: Component };
   },
   { ssr: true },
 );
 const Footer = dynamic(
   async () => {
-    const { Footer: Component } = await import("../components/Footer");
+    const { Footer: Component } = await import("../components/footer");
     return { default: Component };
   },
   { ssr: true },

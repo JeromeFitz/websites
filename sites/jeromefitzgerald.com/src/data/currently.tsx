@@ -1,13 +1,13 @@
-import { CurrentlyBookClient } from "@/components/Currently/Currently.Book.Client";
-import { CurrentlyEvent } from "@/components/Currently/Currently.Event";
-import { CurrentlyItemWrapper } from "@/components/Currently/Currently.Item.Wrapper";
-import { CurrentlyMusicClient } from "@/components/Currently/Currently.Music.Client";
+import { CurrentlyBookClient } from "@/components/currently/currently.book.client";
+import { CurrentlyEvent } from "@/components/currently/currently.event";
+import { CurrentlyItemWrapper } from "@/components/currently/currently.item.wrapper";
+import { CurrentlyMusicClient } from "@/components/currently/currently.music.client";
 import {
   BookOpenIcon,
   InfoCircledIcon,
   MusicalNoteIcon,
   TicketIcon,
-} from "@/components/Icon/index";
+} from "@/components/icon/index";
 
 const currently = [
   {

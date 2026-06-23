@@ -1,3 +1,3 @@
-export { useSWRInfinitePages } from "./useSWRInfinitePages";
-export { useThemeToggle } from "./useThemeToggle";
-export { useThrottle } from "./useThrottle";
+export { useSWRInfinitePages } from "./use-swr-infinite-pages";
+export { useThemeToggle } from "./use-theme-toggle";
+export { useThrottle } from "./use-throttle";

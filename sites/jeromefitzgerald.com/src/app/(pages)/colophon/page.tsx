@@ -7,9 +7,9 @@ import { getBlocks } from "@/lib/drizzle/schemas/cache-blocks/queries";
 import type { Block } from "@/lib/drizzle/schemas/cache-blocks/types";
 import { getPage, segment } from "@/lib/drizzle/schemas/cache-pages/queries";
 import type { Page } from "@/lib/drizzle/schemas/cache-pages/types";
-import { Notion } from "@/lib/notion/Notion.Component";
-import { getKey } from "@/utils/getKey";
-import { isEmpty } from "@/utils/isEmpty";
+import { Notion } from "@/lib/notion/notion.component";
+import { getKey } from "@/utils/get-key";
+import { isEmpty } from "@/utils/is-empty";
 
 const _key = "colophon";
 

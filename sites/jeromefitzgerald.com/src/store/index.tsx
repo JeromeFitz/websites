@@ -24,7 +24,7 @@ import {
   StarIcon,
   // SunIcon,
   TicketIcon,
-} from "@/components/Icon/index";
+} from "@/components/icon/index";
 
 // import { getEventsWithLimit } from '@/lib/drizzle/schemas/queries'
 

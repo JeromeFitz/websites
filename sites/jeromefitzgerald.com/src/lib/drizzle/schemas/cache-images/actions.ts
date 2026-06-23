@@ -4,9 +4,9 @@ import { envServer } from "next-config/env.server";
 import { drizzle } from "@/lib/drizzle/index";
 import { cacheImages } from "@/lib/drizzle/schemas";
 import { getImageKeyValue } from "@/lib/drizzle/schemas/cache-images/queries";
-import { getImageKeySlug } from "@/lib/drizzle/utils/getImageKeySlug";
-import { getPlaceholder } from "@/utils/getPlaceholder";
-import { isEmpty } from "@/utils/isEmpty";
+import { getImageKeySlug } from "@/lib/drizzle/utils/get-image-key-slug";
+import { getPlaceholder } from "@/utils/get-placeholder";
+import { isEmpty } from "@/utils/is-empty";
 
 export async function pre_addImageKeyValueToCache({ image }: { image: any }) {
   /**

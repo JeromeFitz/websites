@@ -28,7 +28,18 @@ const overridesTemporary: DummyRuleMap = {
    */
 };
 
-const overrides: DummyRuleMap = {};
+const overrides: DummyRuleMap = {
+  /**
+   * style
+   */
+  "unicorn/filename-case": [
+    "error",
+    {
+      case: "kebabCase",
+      multipleFileExtensions: false,
+    },
+  ],
+};
 
 const rules: DummyRuleMap = {
   ...overridesTemporary,

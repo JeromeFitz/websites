@@ -53,6 +53,7 @@ yarn-error.log*
 ## Custom
 .cache
 .cache-turbo
+.claude
 .idea
 .lighthouseci
 .swc

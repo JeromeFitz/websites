@@ -8,9 +8,9 @@ interface RC {
   page: PageObjectResponse;
 }
 
-export { getCache } from "./getCache";
-export { getKey } from "./getKey";
+export { getCache } from "./get-cache";
+export { getKey } from "./get-key";
 export { redis } from "./redis";
-export { setCache } from "./setCache";
+export { setCache } from "./set-cache";
 
 export type { RC };

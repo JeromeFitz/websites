@@ -1,3 +1,3 @@
-export { addItemToCache, overrideItemToCache } from "./addItemToCache";
-export { getKeyValue } from "./getKeyValue";
-export { getKeyValues } from "./getKeyValues";
+export { addItemToCache, overrideItemToCache } from "./add-item-to-cache";
+export { getKeyValue } from "./get-key-value";
+export { getKeyValues } from "./get-key-values";

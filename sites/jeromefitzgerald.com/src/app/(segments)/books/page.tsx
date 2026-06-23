@@ -3,10 +3,10 @@ import type { Metadata, ResolvingMetadata } from "next";
 import { getBooks, segment } from "@/lib/drizzle/schemas/cache-books/queries";
 import { getPage, segment as segmentPage } from "@/lib/drizzle/schemas/cache-pages/queries";
 import type { Page } from "@/lib/drizzle/schemas/cache-pages/types";
-import { buildInitialCache } from "@/lib/notion/buildInitialCache";
-import { getKey } from "@/utils/getKey";
+import { buildInitialCache } from "@/lib/notion/build-initial-cache";
+import { getKey } from "@/utils/get-key";
 
-import { List } from "./_components/List";
+import { List } from "./_components/list";
 
 // export const dynamic = 'force-dynamic'
 export const dynamic = "force-static";

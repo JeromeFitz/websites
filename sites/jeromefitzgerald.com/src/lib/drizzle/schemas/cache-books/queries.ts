@@ -2,7 +2,7 @@ import { sql } from "drizzle-orm";
 import { envServer } from "next-config/env.server";
 
 import { drizzle } from "@/lib/drizzle/index";
-import type { Segment } from "@/utils/getBySegment";
+import type { Segment } from "@/utils/get-by-segment";
 
 import type { Book } from "./types";
 export const segment: Segment = "books";

@@ -4,7 +4,7 @@ import { slug as _slug } from "github-slugger";
 // import { find as _find, findKey as _findKey, map as _map } from 'lodash-es'
 import { findKey as _findKey, map as _map } from "lodash-es";
 
-import { getRollupTitle } from "@/components/Credits/Credits.utils";
+import { getRollupTitle } from "@/components/credits/credits.utils";
 
 const ROLLUPS: string[] = [
   "rollupPeopleCastTitle",

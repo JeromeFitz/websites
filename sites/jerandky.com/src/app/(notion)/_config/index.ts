@@ -1,19 +1,19 @@
 export { CONFIG } from "./config";
 
-export type { PageObjectResponseEpisode, PropertiesEpisode } from "./Episode.types";
-export { getEpisodeData, getPropertyTypeDataEpisode } from "./Episode.utils";
+export type { PageObjectResponseEpisode, PropertiesEpisode } from "./episode.types";
+export { getEpisodeData, getPropertyTypeDataEpisode } from "./episode.utils";
 
-export type { PageObjectResponsePage, PropertiesPage } from "./Page.types";
-export { getPageData, getPropertyTypeDataPage } from "./Page.utils";
+export type { PageObjectResponsePage, PropertiesPage } from "./page.types";
+export { getPageData, getPropertyTypeDataPage } from "./page.utils";
 
-export type { PageObjectResponsePerson, PropertiesPerson } from "./Person.types";
-export { getPersonData, getPropertyTypeDataPerson } from "./Person.utils";
+export type { PageObjectResponsePerson, PropertiesPerson } from "./person.types";
+export { getPersonData, getPropertyTypeDataPerson } from "./person.utils";
 
-export type { PageObjectResponsePodcast, PropertiesPodcast } from "./Podcast.types";
-export { getPodcastData, getPropertyTypeDataPodcast } from "./Podcast.utils";
+export type { PageObjectResponsePodcast, PropertiesPodcast } from "./podcast.types";
+export { getPodcastData, getPropertyTypeDataPodcast } from "./podcast.utils";
 
-export type { PageObjectResponseVenue, PropertiesVenue } from "./Venue.types";
-export { getPropertyTypeDataVenue } from "./Venue.utils";
+export type { PageObjectResponseVenue, PropertiesVenue } from "./venue.types";
+export { getPropertyTypeDataVenue } from "./venue.utils";
 
 // @todo(types) way to do this for data passback and tell which one?
 // type PageObjectResponseCustom =

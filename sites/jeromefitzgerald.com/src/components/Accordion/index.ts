@@ -1,6 +1,0 @@
-export { AccordionContent } from "./AccordionContent";
-export { AccordionItem } from "./AccordionItem";
-export { AccordionList } from "./AccordionList";
-export { AccordionListItem } from "./AccordionListItem";
-export { AccordionRoot } from "./AccordionRoot";
-export { AccordionTrigger } from "./AccordionTrigger";

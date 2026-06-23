@@ -3,7 +3,7 @@ import { envServer } from "next-config/env.server";
 
 import { drizzle } from "@/lib/drizzle/index";
 import type { Show } from "@/lib/drizzle/schemas/cache-shows/types";
-import type { Segment } from "@/utils/getBySegment";
+import type { Segment } from "@/utils/get-by-segment";
 export const segment: Segment = "shows";
 
 const orderBy_default = `ORDER BY

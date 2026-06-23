@@ -6,11 +6,11 @@ import { getBlocks } from "@/lib/drizzle/schemas/cache-blocks/queries";
 import type { Block } from "@/lib/drizzle/schemas/cache-blocks/types";
 import { getPodcast, segment } from "@/lib/drizzle/schemas/cache-podcasts/queries";
 import type { Podcast } from "@/lib/drizzle/schemas/cache-podcasts/types";
-import { getKey } from "@/utils/getKey";
-import { isEmpty } from "@/utils/isEmpty";
-import { getSegmentsForGenerateStaticParams } from "@/utils/next/getSegmentsForGenerateStaticParams";
+import { getKey } from "@/utils/get-key";
+import { isEmpty } from "@/utils/is-empty";
+import { getSegmentsForGenerateStaticParams } from "@/utils/next/get-segments-for-generate-static-params";
 
-import { PodcastComponent } from "./_components/Podcast";
+import { PodcastComponent } from "./_components/podcast";
 
 // export const dynamic = 'force-dynamic'
 export const dynamic = "force-static";

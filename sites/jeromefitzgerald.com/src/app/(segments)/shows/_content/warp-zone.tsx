@@ -19,12 +19,12 @@ import {
   // imageGallery2,
   imageHeadline,
 } from "@/app/(segments)/shows/_content/_images";
-import { ModuleImageGallery } from "@/app/_v16/Module";
-import { GridWrapper } from "@/app/_v16/Wrapper";
+import { ModuleImageGallery } from "@/app/_v16/module";
+import { GridWrapper } from "@/app/_v16/wrapper";
 import { getShow, segment } from "@/lib/drizzle/schemas/cache-shows/queries";
 import type { Show } from "@/lib/drizzle/schemas/cache-shows/types";
-import { getKey } from "@/utils/getKey";
-import { getTitleData } from "@/utils/getTitleData";
+import { getKey } from "@/utils/get-key";
+import { getTitleData } from "@/utils/get-title-data";
 
 import { ContentSection, ContentTitle } from "./_components";
 import {
