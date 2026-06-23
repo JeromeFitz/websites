@@ -43,7 +43,6 @@ runs:
           ~/.cache/ms-playwright
         key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
 
-    # @todo(gh-actions) Separate `main` from PR
     - name: "🧪  Test: Build"
       id: e2e-build
       shell: bash
@@ -54,32 +53,6 @@ runs:
       run: |
         pnpm turbo run build --filter="${{ inputs.WEBSITE }}" --cache-dir=".cache-turbo"
 
-    # - name: '🔺️  Cache (next)'
-    #   id: e2e-build-cache
-    #   uses: actions/cache@v3
-    #   env:
-    #     TURBO_TEAM: ${{ inputs.TURBO_TEAM }}
-    #     TURBO_TOKEN: ${{ inputs.TURBO_TOKEN }}
-    #   with:
-    #     path: |
-    #       ${{ github.workspace }}/sites/jeromefitzgerald.com/.next/cache
-    #     key: |
-    #       ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
-    #     restore-keys: |
-    #       ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-
-    # - name: '💡  Lighthouse: Install'
-    #   id: e2e-dependencies-lighthouse
-    #   shell: bash
-    #   # env:
-    #   #   LHCI_GITHUB_APP_TOKEN: ${{ inputs.LHCI_GITHUB_APP_TOKEN }}
-    #   #   TURBO_TEAM: ${{ inputs.TURBO_TEAM }}
-    #   #   TURBO_TOKEN: ${{ inputs.TURBO_TOKEN }}
-    #   #   VERCEL_ENV: ${{ inputs.VERCEL_ENV }}
-    #   run: |
-    #     pnpm add @lhci/cli@0.15.0 --global
-    #   # pnpm dlx @lhci/cli@0.15.0
-    #   # run: |
-    #   #   npx @lhci/cli@0.15.0 autorun --config="./sites/${{ inputs.WEBSITE }}/lighthouse.config.js"
     - name: "💡  Lighthouse: ${{ inputs.WEBSITE }}"
       id: test-lighthouse
       shell: bash
@@ -90,23 +63,17 @@ runs:
         VERCEL_ENV: ${{ inputs.VERCEL_ENV }}
       run: |
         pnpm turbo run lhci --filter="${{ inputs.WEBSITE }}" --cache-dir=".cache-turbo"
-      # run: |
-      #   pnpm --filter "${{ inputs.WEBSITE }}" lhci
 
     - name: "🎭  Playwright: Install (!cache)"
       id: e2e-dependencies-playwright
       shell: bash
-      # run: pnpm playwright@${{ env.PLAYWRIGHT_VERSION }}  install --with-deps
-      run: npx playwright@${{ env.PLAYWRIGHT_VERSION }} install --with-deps
-      # run: pnpm exec playwright@${{ env.PLAYWRIGHT_VERSION }} install --with-deps
+      run: pnpm dlx playwright@${{ env.PLAYWRIGHT_VERSION }} install --with-deps
       if: steps.playwright-cache.outputs.cache-hit != 'true'
 
     - name: "🎭  Playwright: Install (cache)"
       id: e2e-dependencies-playwright-cache
       shell: bash
-      # run: pnpm playwright@${{ env.PLAYWRIGHT_VERSION }}  install-deps
-      run: npx playwright@${{ env.PLAYWRIGHT_VERSION }} install-deps
-      # run: pnpm exec playwright@${{ env.PLAYWRIGHT_VERSION }} install
+      run: pnpm dlx playwright@${{ env.PLAYWRIGHT_VERSION }} install-deps
       if: steps.playwright-cache.outputs.cache-hit == 'true'
 
     - name: "🎭  Playwright: ${{ inputs.WEBSITE }}"
@@ -116,9 +83,7 @@ runs:
         TURBO_TEAM: ${{ inputs.TURBO_TEAM }}
         TURBO_TOKEN: ${{ inputs.TURBO_TOKEN }}
         VERCEL_ENV: ${{ inputs.VERCEL_ENV }}
-      # run: pnpm turbo run test:e2e --filter="${{ inputs.WEBSITE }}" --cache-dir=".cache-turbo"
-      run: |
-        pnpm --filter "${{ inputs.WEBSITE }}" test:e2e
+      run: pnpm turbo run test:e2e --filter="${{ inputs.WEBSITE }}" --cache-dir=".cache-turbo"
 
     # - name: '🎭  Playwright: Upload'
     #   id: e2e-upload
@@ -130,3 +95,4 @@ runs:
     #       ${{ github.workspace }}/sites/${{ inputs.WEBSITE }}/e2e-report/
     #       ${{ github.workspace }}/sites/${{ inputs.WEBSITE }}/e2e-results/
     #     retention-days: 1
+    #   include-hidden-files: true
