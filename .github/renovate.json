@@ -24,10 +24,6 @@
       "minimumReleaseAge": "1 day"
     },
     {
-      "matchPackageNames": ["*"],
-      "minimumReleaseAgeStrict": false
-    },
-    {
       "commitMessageExtra": "{{depName}}@{{#if isPinDigest}}{{{newDigest}}}{{else}}{{#if isMajor}}{{{newVersion}}} 🧨 {{else}}{{#if isSingleVersion}}{{{newVersion}}}{{else}}{{#if newValue}}{{{newValue}}}{{else}}{{{newDigest}}}{{/if}}{{/if}}{{/if}}{{/if}}",
       "commitMessagePrefix": "👷  (actions)",
       "commitMessageTopic": " {{depName}}",
