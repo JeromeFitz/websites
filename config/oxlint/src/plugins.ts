@@ -30,7 +30,6 @@ const plugins: LintPluginOptionsSchema[] = [
   "promise",
   "react-perf",
   "react",
-  "vitest",
 ];
 
 export { plugins };

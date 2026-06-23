@@ -6,7 +6,7 @@ import { ignorePatterns } from "./ignore-patterns.ts";
 import { tailwindcss } from "./js-plugins.oxlint-tailwindcss.ts";
 import { playwright } from "./js-plugins.playwright.ts";
 import { testingLibrary } from "./js-plugins.testing-library.ts";
-import { jsPlugins } from "./js-plugins.ts";
+import { jsPluginPlaywright, jsPluginTestingLibrary, jsPlugins } from "./js-plugins.ts";
 import { eslint } from "./plugins.eslint.ts";
 import { importRules } from "./plugins.import.ts";
 import { jsxA11y } from "./plugins.jsx-a11y.ts";
@@ -49,11 +49,14 @@ const config: OxlintConfig = {
 
 const overridePlaywright: OxlintOverride = {
   files: ["**/*.e2e.ts", "**/*.e2e.tsx", "**/e2e/**/*.ts"],
+  jsPlugins: [jsPluginPlaywright],
   rules: { ...playwright },
 };
 
 const overrideVitest: OxlintOverride = {
   files: ["**/*.test.ts", "**/*.test.tsx"],
+  jsPlugins: [jsPluginTestingLibrary],
+  plugins: ["vitest"],
   rules: { ...vitest, ...testingLibrary },
 };
 
