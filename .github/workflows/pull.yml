@@ -179,26 +179,6 @@ jobs:
             core.setOutput('ref', context.payload.pull_request.head.ref)
             core.setOutput('repo', context.payload.pull_request.head.repo.full_name)
 
-      # @note(gh-actions)
-      # I believe we need to `save/cache@3` for `.turbo-cache`
-      #  before this step. For some reason I think it is getting
-      #  cleared out when we re-pull a Checkout
-      #
-      # Now issue here is without this re-pull of Checkout I believe
-      #  we do not pass Vercel the info it needs to determine if
-      #  it needs to run the full build again. We shall see.
-      #
-      #
-      #################################
-      # - name: '🐙️  Deploy (Checkout)'
-      #   id: pull-deploy-checkout
-      #   uses: actions/checkout@v4
-      #   if: ${{ (env.IS_ACTOR_VERIFIED == 'true') && contains(steps.pull-commit-message.outputs.message, '[b]') }}
-      #   with:
-      #     ref: ${{ steps.pull-deploy-config.outputs.ref }}
-      #     repository: ${{ steps.pull-deploy-config.outputs.repo }}
-      #     fetch-depth: 1
-
       - name: "🔺️  Deploy (Preview)"
         id: pull-deploy-preview
         if: ${{ (env.IS_ACTOR_VERIFIED == 'true') && contains(steps.pull-commit-message.outputs.message, '[b]') }}

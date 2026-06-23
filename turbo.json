@@ -53,7 +53,7 @@
         "tsconfig.*.json",
         "vercel.json"
       ],
-      "outputs": [".next/**"]
+      "outputs": [".next/**", "!.next/cache/**", "dist/**"]
     },
     "clean": {
       "cache": false

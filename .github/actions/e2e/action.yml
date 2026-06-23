@@ -123,3 +123,4 @@ runs:
     #       ${{ github.workspace }}/sites/${{ inputs.WEBSITE }}/e2e-report/
     #       ${{ github.workspace }}/sites/${{ inputs.WEBSITE }}/e2e-results/
     #     retention-days: 1
+    #   include-hidden-files: true
