@@ -56,7 +56,10 @@
     "copy": "mkdir -p ./dist && ./scripts/copy.sh",
     "dev": "tsdown --watch",
     "lint:ts": "tsc --noEmit --declaration",
-    "semantic-release": "echo semantic-release"
+    "semantic-release": "echo semantic-release",
+    "test:unit": "NODE_NO_WARNINGS=1 vitest run",
+    "test:unit:coverage": "NODE_NO_WARNINGS=1 vitest run --coverage",
+    "test:watch": "NODE_NO_WARNINGS=1 vitest run --watch"
   },
   "dependencies": {
     "emoji-regex": "10.6.0",
@@ -77,7 +80,8 @@
     "react": "19.2.7",
     "react-dom": "19.2.7",
     "server-only": "0.0.1",
-    "uuid": "14.0.0"
+    "uuid": "14.0.0",
+    "vitest": "4.1.9"
   },
   "peerDependencies": {
     "@date-fns/tz": "^1.1.0",
