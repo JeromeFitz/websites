@@ -38,9 +38,9 @@
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["src/**", "*.cjs", "*.js", "*.mjs", "tsdown.config.ts", "tsconfig.json"],
-      "outputs": []
+      "outputs": ["dist/**"]
     },
-    "build#jeromefitzgerald.com": {
+    "jeromefitzgerald.com#build": {
       "dependsOn": ["^build"],
       "env": ["VERCEL_ENV"],
       "inputs": [
@@ -48,12 +48,11 @@
         "*.cjs",
         "*.js",
         "*.mjs",
-        "tsdown.config.ts",
         "tsconfig.json",
         "tsconfig.*.json",
         "vercel.json"
       ],
-      "outputs": [".next/**", "!.next/cache/**", "dist/**"]
+      "outputs": [".next/**", "!.next/cache/**"]
     },
     "clean": {
       "cache": false
@@ -90,7 +89,8 @@
       "dependsOn": ["^build"]
     },
     "test:unit:coverage": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["^build"],
+      "outputs": ["coverage/**"]
     }
   },
   "ui": "stream"

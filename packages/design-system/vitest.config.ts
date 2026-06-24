@@ -8,7 +8,6 @@ export default defineConfig({
   test: {
     browser: {
       enabled: true,
-      // at least one instance is required
       instances: [{ browser: "chromium" }],
       provider: playwright(),
     },
