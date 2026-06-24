@@ -10,5 +10,10 @@ export default defineConfig({
       "next-config/env.server": resolve(__dirname, "./src/config/next.config.env.server.ts"),
     },
   },
-  test: {},
+  test: {
+    coverage: {
+      provider: "v8",
+      reporter: ["text", "json-summary", "json"],
+    },
+  },
 });

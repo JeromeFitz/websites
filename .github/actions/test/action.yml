@@ -12,11 +12,6 @@ inputs:
     description: "Provide Token for Turbo"
     required: true
     type: string
-  WEBSITE:
-    description: "Provide Website for Lighthouse"
-    required: true
-    type: string
-    default: "jeromefitzgerald.com"
 
 runs:
   using: "composite"
@@ -24,4 +19,4 @@ runs:
     - name: "🧪  Test"
       id: test
       shell: bash
-      run: pnpm turbo run test:unit --filter="${{ inputs.WEBSITE }}" --cache-dir=".cache-turbo"
+      run: pnpm turbo run test:unit:coverage --filter='!@jeromefitz/ds' --cache-dir=".cache-turbo"

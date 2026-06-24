@@ -38,10 +38,10 @@
     "copy": "mkdir -p ./dist && ./scripts/copy.sh",
     "dev": "tsdown --watch",
     "lint:ts": "tsc --noEmit --declaration",
-    "test:e2e": "playwright test",
-    "test:unit": "vitest run",
-    "test:unit:coverage": "vitest run --coverage",
-    "test:watch": "vitest run --watch"
+    "test:e2e": "NODE_NO_WARNINGS=1 playwright test",
+    "test:unit": "NODE_NO_WARNINGS=1 vitest run",
+    "test:unit:coverage": "NODE_NO_WARNINGS=1 vitest run",
+    "test:watch": "NODE_NO_WARNINGS=1 vitest run --watch"
   },
   "dependencies": {
     "@heroicons/react": "2.2.0",
@@ -95,7 +95,6 @@
     "@vitejs/plugin-react": "6.0.2",
     "@vitest/browser": "4.1.9",
     "@vitest/browser-playwright": "4.1.9",
-    "@vitest/coverage-v8": "4.1.9",
     "next": "16.2.9",
     "playwright": "1.61.0",
     "react": "19.2.7",

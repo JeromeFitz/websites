@@ -151,7 +151,30 @@ jobs:
         with:
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-          WEBSITE: "jeromefitzgerald.com"
+
+      - name: "📊  Coverage (@jeromefitz/shared)"
+        id: pull-coverage-shared
+        uses: davelosert/vitest-coverage-report-action@v2
+        with:
+          name: "@jeromefitz/shared"
+          json-summary-path: packages/shared/coverage/coverage-summary.json
+          json-final-path: packages/shared/coverage/coverage-final.json
+
+      - name: "📊  Coverage (next-notion)"
+        id: pull-coverage-next-notion
+        uses: davelosert/vitest-coverage-report-action@v2
+        with:
+          name: "next-notion"
+          json-summary-path: packages/next-notion/coverage/coverage-summary.json
+          json-final-path: packages/next-notion/coverage/coverage-final.json
+
+      - name: "📊  Coverage (jeromefitzgerald.com)"
+        id: pull-coverage-site
+        uses: davelosert/vitest-coverage-report-action@v2
+        with:
+          name: "jeromefitzgerald.com"
+          json-summary-path: sites/jeromefitzgerald.com/coverage/coverage-summary.json
+          json-final-path: sites/jeromefitzgerald.com/coverage/coverage-final.json
 
       # https://docs.github.com/en/actions/learn-github-actions/expressions
       - name: "📛  Commit Message"

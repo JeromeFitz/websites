@@ -16,7 +16,10 @@ describe("getKey", () => {
   });
 
   it("coerces array key to comma-separated string for pages segment (no join)", () => {
-    /** @note(get-key) pages uses `/${key}` — arrays stringify with commas; always pass a string for pages */
+    /**
+     * @note(get-key) pages uses `/${key}` —
+     * arrays stringify with commas; always pass a string for pages
+     */
     expect(getKey("pages", ["a", "b"])).toBe("/a,b");
   });
 });
