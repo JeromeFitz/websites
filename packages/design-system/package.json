@@ -40,7 +40,7 @@
     "lint:ts": "tsc --noEmit --declaration",
     "test:e2e": "playwright test",
     "test:unit": "vitest run",
-    "test:unit:coverage": "vitest run --ci --coverage",
+    "test:unit:coverage": "vitest run --coverage",
     "test:watch": "vitest run --watch"
   },
   "dependencies": {
@@ -95,6 +95,7 @@
     "@vitejs/plugin-react": "6.0.2",
     "@vitest/browser": "4.1.9",
     "@vitest/browser-playwright": "4.1.9",
+    "@vitest/coverage-v8": "4.1.9",
     "next": "16.2.9",
     "playwright": "1.61.0",
     "react": "19.2.7",
