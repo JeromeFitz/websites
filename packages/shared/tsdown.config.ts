@@ -3,7 +3,7 @@ import { defineConfig } from "tsdown";
 
 import { config as _config } from "../../tsdown.config.ts";
 
-const entry = ["src/**"];
+const entry = ["src/**", "!src/**/*.test.*"];
 const config: UserConfig = {
   ..._config,
   attw: {

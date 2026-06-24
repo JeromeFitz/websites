@@ -139,6 +139,7 @@
     "@types/react-dom": "19.2.3",
     "@types/valid-url": "1.0.7",
     "@types/xml2js": "0.4.14",
+    "@vitest/coverage-v8": "4.1.9",
     "plaiceholder": "3.0.0",
     "sharp": "0.35.2",
     "tailwindcss-radix": "4.0.2",

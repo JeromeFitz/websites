@@ -6,6 +6,8 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": resolve(__dirname, "./src"),
+      "next-config/env.client": resolve(__dirname, "./src/config/next.config.env.client.ts"),
+      "next-config/env.server": resolve(__dirname, "./src/config/next.config.env.server.ts"),
     },
   },
   test: {},

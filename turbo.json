@@ -88,6 +88,9 @@
     },
     "test:unit": {
       "dependsOn": ["^build"]
+    },
+    "test:unit:coverage": {
+      "dependsOn": ["^build"]
     }
   },
   "ui": "stream"

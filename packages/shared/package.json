@@ -67,7 +67,10 @@
     "copy": "mkdir -p ./src && ./scripts/copy.sh",
     "dev": "tsdown --watch",
     "lint:ts": "tsc --noEmit --declaration",
-    "semantic-release": "echo semantic-release"
+    "semantic-release": "echo semantic-release",
+    "test:unit": "NODE_NO_WARNINGS=1 vitest run",
+    "test:unit:coverage": "NODE_NO_WARNINGS=1 vitest run --coverage",
+    "test:watch": "NODE_NO_WARNINGS=1 vitest run --watch"
   },
   "devDependencies": {
     "@jeromefitz/ds": "workspace:*",
@@ -75,6 +78,8 @@
     "@jeromefitz/utils": "4.0.1",
     "@notionhq/client": "4.0.2",
     "@radix-ui/themes": "3.3.0",
+    "@testing-library/dom": "10.4.1",
+    "@testing-library/react": "16.3.2",
     "@types/lodash-es": "4.17.12",
     "@types/react": "19.2.17",
     "@types/react-dom": "19.2.3",
@@ -82,10 +87,12 @@
     "@upstash/redis": "1.38.0",
     "@vercel/analytics": "2.0.1",
     "@vercel/speed-insights": "2.0.0",
+    "@vitest/coverage-v8": "4.1.9",
     "clsx": "2.1.1",
     "fast-json-stable-stringify": "2.1.0",
     "fathom-client": "3.7.2",
     "github-slugger": "2.0.0",
+    "happy-dom": "20.10.6",
     "ioredis": "5.11.1",
     "lodash-es": "4.18.1",
     "ms": "3.0.0-canary.202508261828",
@@ -100,7 +107,8 @@
     "swr": "2.4.1",
     "tailwind-merge": "3.6.0",
     "title": "4.0.1",
-    "valid-url": "1.0.9"
+    "valid-url": "1.0.9",
+    "vitest": "4.1.9"
   },
   "peerDependencies": {
     "@notionhq/client": "^2.2.14 || ^3.0.0 || ^4.0.0",
