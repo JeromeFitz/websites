@@ -43,23 +43,22 @@
     "is-in-ci": "2.0.0",
     "lodash-es": "4.18.1",
     "node-modules-inspector": "1.4.2",
-    "oxfmt": "0.55.0",
+    "oxfmt": "0.56.0",
     "publint": "0.3.21",
     "semantic-release": "25.0.5",
     "syncpack": "15.3.2",
     "tsdown": "0.22.3",
     "turbo": "2.9.19-canary.9",
-    "typescript": "6.0.3"
+    "typescript": "^6.0.3"
   },
   "devEngines": {
     "packageManager": {
       "name": "pnpm",
-      "version": "11.8.0"
+      "version": "11.9.0"
+    },
+    "runtime": {
+      "name": "node",
+      "version": ">=24.17.0 <25"
     }
-  },
-  "engines": {
-    "node": ">=24.14.0 <25",
-    "pnpm": "11.8.0"
-  },
-  "packageManager": "pnpm@11.8.0"
+  }
 }
