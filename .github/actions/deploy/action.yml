@@ -41,9 +41,9 @@ runs:
         VERCEL_PROJECT_ID: ${{ inputs.VERCEL_PROJECT_ID }}
       run: |
         if [ "${{ inputs.PRODUCTION }}" = "true" ]; then
-          timeout 300 vercel deploy --prod --token=${{ inputs.VERCEL_TOKEN }}
+          timeout 300 VERCEL_TELEMETRY_DISABLED=1 vercel deploy --prod --token=${{ inputs.VERCEL_TOKEN }}
         else
-          timeout 300 vercel deploy --token=${{ inputs.VERCEL_TOKEN }} 2>&1 | tee /tmp/vercel-deploy.log
+          timeout 300 VERCEL_TELEMETRY_DISABLED=1 vercel deploy --token=${{ inputs.VERCEL_TOKEN }} 2>&1 | tee /tmp/vercel-deploy.log
           preview_url=$(grep -oE 'https://[a-zA-Z0-9-]+\.vercel\.app' /tmp/vercel-deploy.log | head -1)
           inspect_url=$(grep -oE 'https://vercel\.com/[^[:space:]]+' /tmp/vercel-deploy.log | head -1)
           echo "preview_url=$preview_url" >> $GITHUB_OUTPUT

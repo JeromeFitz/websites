@@ -152,8 +152,7 @@
   "devEngines": {
     "packageManager": {
       "name": "pnpm",
-      "version": "11.9.0",
-      "pmOnFail": "ignore"
+      "version": "11.9.0"
     },
     "runtime": {
       "name": "node",
