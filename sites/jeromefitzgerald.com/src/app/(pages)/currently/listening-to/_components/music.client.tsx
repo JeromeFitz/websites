@@ -1,5 +1,6 @@
 "use client";
 
+import { ExternalLinkIcon } from "@jeromefitz/ds/components/icon";
 import { useIntersection } from "@mantine/hooks";
 import { Badge } from "@radix-ui/themes/dist/esm/components/badge.js";
 import { Box } from "@radix-ui/themes/dist/esm/components/box.js";
@@ -29,7 +30,6 @@ import { Callout } from "@/components/callout/index";
 import { ContainerWithSidebar } from "@/components/container/container.main";
 import { HeaderFull } from "@/components/header/header.full";
 import { HeaderSidebar } from "@/components/header/header.sidebar";
-import { ExternalLinkIcon } from "@/components/icon/index";
 import { LI, UL } from "@/components/list/index";
 import { bandcamps } from "@/data/bandcamps";
 import { useSWRInfinitePages } from "@/hooks/use-swr-infinite-pages";

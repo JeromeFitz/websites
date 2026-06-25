@@ -2,11 +2,11 @@ import { envClient as env } from "next-config/env.client";
 
 const nextSeo = { url: `https://${env.NEXT_PUBLIC__SITE}` };
 
+import { ArrowRightIcon, ArrowTopRightIcon } from "@jeromefitz/ds/components/icon";
 import { Button, Flex, Text } from "@radix-ui/themes";
 import NextLink from "next/link";
 import { Fragment } from "react";
 
-import { ArrowRightIcon, ArrowTopRightIcon } from "@/components/icon";
 import type { NotionColor } from "@/lib/drizzle/schemas/_notion/types";
 import { cx } from "@/utils/cx";
 import { isExternalUrl } from "@/utils/is-external-url";

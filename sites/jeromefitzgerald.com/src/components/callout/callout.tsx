@@ -1,3 +1,4 @@
+import { FileTextIcon } from "@jeromefitz/ds/components/icon";
 import type { RootProps as CalloutRootProps } from "@radix-ui/themes/dist/esm/components/callout.js";
 import {
   Icon as CalloutIcon,
@@ -6,7 +7,6 @@ import {
 } from "@radix-ui/themes/dist/esm/components/callout.js";
 import type { ReactNode } from "react";
 
-import { FileTextIcon } from "@/components/icon/index";
 import { cx } from "@/utils/cx";
 
 interface AdditionalProps {

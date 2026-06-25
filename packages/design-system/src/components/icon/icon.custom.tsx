@@ -1,20 +1,11 @@
-"use client";
-
-import { AccessibleIcon } from "@radix-ui/react-accessible-icon";
-
 import type { IconProps } from "./icon.types";
 
 const AmazonLogoIcon = ({ label, ...props }: IconProps) => (
-  <AccessibleIcon
-    label={
-      label ||
-      "An icon representing the logo of Amazon. Which is a sans serif letter -a, with a curved arrow underline pointing to the right that mimics a smirk or smiley face."
-    }
-  >
+  <>
     <svg
       className="fill:bg-black dark:fill:bg-white"
       height="17px"
-      role="img"
+      aria-hidden="true"
       version="1.1"
       viewBox="3 1 252 260"
       width="17px"
@@ -43,15 +34,16 @@ const AmazonLogoIcon = ({ label, ...props }: IconProps) => (
         ></path>
       </g>
     </svg>
-  </AccessibleIcon>
+    {label && <span className="sr-only">{label}</span>}
+  </>
 );
 
 const AppleLogoIcon = ({ label, ...props }: IconProps) => (
-  <AccessibleIcon label={label || "An icon representing the logo of Apple. Which is an apple."}>
+  <>
     <svg
       className="fill:bg-black dark:fill:bg-white"
       height="17px"
-      role="img"
+      aria-hidden="true"
       version="1.1"
       viewBox="0 0 814 1000"
       width="17px"
@@ -65,19 +57,16 @@ const AppleLogoIcon = ({ label, ...props }: IconProps) => (
         id="apple-icon"
       ></path>
     </svg>
-  </AccessibleIcon>
+    {label && <span className="sr-only">{label}</span>}
+  </>
 );
 
 const BlueskyLogoIcon = ({ label, ...props }: IconProps) => (
-  <AccessibleIcon
-    label={
-      label || "An icon representing the logo of Bluesky. Which is a silhouette of a butterfly."
-    }
-  >
+  <>
     <svg
       className="fill:bg-black dark:fill:bg-white"
       height="17px"
-      role="img"
+      aria-hidden="true"
       version="1.1"
       viewBox="0 0 568 501"
       width="17px"
@@ -91,15 +80,16 @@ const BlueskyLogoIcon = ({ label, ...props }: IconProps) => (
         id="bluesky-icon"
       ></path>
     </svg>
-  </AccessibleIcon>
+    {label && <span className="sr-only">{label}</span>}
+  </>
 );
 
 const GooglePodcastsLogoIcon = ({ label, ...props }: IconProps) => (
-  <AccessibleIcon label={label || "An icon representing the logo for Google Podcasts."}>
+  <>
     <svg
       className="fill:bg-black dark:fill:bg-white"
       height="17px"
-      role="img"
+      aria-hidden="true"
       version="1.1"
       viewBox="0 0 400 400"
       width="17px"
@@ -115,20 +105,16 @@ const GooglePodcastsLogoIcon = ({ label, ...props }: IconProps) => (
         <path d="m200 127.06v145.87m0-248.68v27.351m0 296.78v27.351" stroke="currentColor"></path>
       </g>
     </svg>
-  </AccessibleIcon>
+    {label && <span className="sr-only">{label}</span>}
+  </>
 );
 
 const SpotifyLogoIcon = ({ label, ...props }: IconProps) => (
-  <AccessibleIcon
-    label={
-      label ||
-      "An icon representing the logo of Spotify. A circle with what looks like three sound waves slightly off centered to the right and pointed upward. The waves start small and get larger, and encompass about 90% of the circle with some space around them. The slightly off centered icon rankles a lot of people."
-    }
-  >
+  <>
     <svg
       className="fill:bg-black dark:fill:bg-white"
       height="17px"
-      role="img"
+      aria-hidden="true"
       version="1.1"
       viewBox="0 0 17 17"
       width="17px"
@@ -148,7 +134,8 @@ const SpotifyLogoIcon = ({ label, ...props }: IconProps) => (
         </g>
       </g>
     </svg>
-  </AccessibleIcon>
+    {label && <span className="sr-only">{label}</span>}
+  </>
 );
 
 export { AmazonLogoIcon, AppleLogoIcon, BlueskyLogoIcon, GooglePodcastsLogoIcon, SpotifyLogoIcon };

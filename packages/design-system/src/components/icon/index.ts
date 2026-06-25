@@ -66,10 +66,15 @@ import {
   MicrophoneIcon,
   MoonIcon,
   MusicalNoteIcon,
+  OpenInNewWindowIcon,
   Pencil1Icon,
   Pencil2Icon,
   PlayIcon,
+  PlusCircledIcon,
+  PlusIcon,
   QuoteIcon,
+  ReaderIcon,
+  ReloadIcon,
   ReturnIcon,
   Share1Icon,
   SpeakerModerateIcon,
@@ -85,6 +90,7 @@ import {
   TextAlignRightIcon,
   ThreadsLogoIcon,
   TicketIcon,
+  TrashIcon,
   TwitterLogoIcon,
   UpdateIcon,
 } from "./icon";
@@ -151,10 +157,15 @@ Icon.Map = MapIcon;
 Icon.Microphone = MicrophoneIcon;
 Icon.Moon = MoonIcon;
 Icon.MusicNote = MusicalNoteIcon;
+Icon.OpenInNewWindow = OpenInNewWindowIcon;
 Icon.Pencil1 = Pencil1Icon;
 Icon.Pencil2 = Pencil2Icon;
 Icon.PlayIcon = PlayIcon;
+Icon.PlusCircled = PlusCircledIcon;
+Icon.Plus = PlusIcon;
 Icon.Quote = QuoteIcon;
+Icon.Reader = ReaderIcon;
+Icon.Reload = ReloadIcon;
 Icon.Return = ReturnIcon;
 Icon.Share1 = Share1Icon;
 Icon.SpeakerModerate = SpeakerModerateIcon;
@@ -170,6 +181,7 @@ Icon.TextAlignLeft = TextAlignLeftIcon;
 Icon.TextAlignRight = TextAlignRightIcon;
 Icon.Ticket = TicketIcon;
 Icon.ThreadsLogo = ThreadsLogoIcon;
+Icon.Trash = TrashIcon;
 Icon.TwitterLogo = TwitterLogoIcon;
 Icon.UpdateIcon = UpdateIcon;
 /**

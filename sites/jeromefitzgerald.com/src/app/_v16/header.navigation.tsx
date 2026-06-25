@@ -1,7 +1,5 @@
 "use client";
 
-import { Box, Grid } from "@radix-ui/themes";
-
 import {
   BookOpenIcon,
   // CalendarIcon,
@@ -12,7 +10,8 @@ import {
   // ReaderIcon,
   StarIcon,
   TicketIcon,
-} from "@/components/icon";
+} from "@jeromefitz/ds/components/icon";
+import { Box, Grid } from "@radix-ui/themes";
 
 import { Footer, Header } from "./header";
 import { LinkButton } from "./link-button";

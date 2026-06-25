@@ -1,9 +1,9 @@
 "use client";
 
+import { ChevronDownIcon } from "@jeromefitz/ds/components/icon";
 import type { AccordionTriggerProps } from "@radix-ui/react-accordion";
 import * as Accordion from "@radix-ui/react-accordion";
 
-import { ChevronDownIcon } from "@/components/icon/index";
 import { cx } from "@/utils/cx";
 
 interface AccordionTriggerPropsImpl extends AccordionTriggerProps {

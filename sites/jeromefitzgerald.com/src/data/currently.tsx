@@ -1,15 +1,31 @@
-import { CurrentlyBookClient } from "@/components/currently/currently.book.client";
-import { CurrentlyEvent } from "@/components/currently/currently.event";
-import { CurrentlyItemWrapper } from "@/components/currently/currently.item.wrapper";
-import { CurrentlyMusicClient } from "@/components/currently/currently.music.client";
 import {
   BookOpenIcon,
   InfoCircledIcon,
   MusicalNoteIcon,
   TicketIcon,
-} from "@/components/icon/index";
+} from "@jeromefitz/ds/components/icon";
+import type { ComponentType } from "react";
 
-const currently = [
+import { CurrentlyBookClient } from "@/components/currently/currently.book.client";
+import { CurrentlyEvent } from "@/components/currently/currently.event";
+import { CurrentlyItemWrapper } from "@/components/currently/currently.item.wrapper";
+import { CurrentlyMusicClient } from "@/components/currently/currently.music.client";
+
+type CurrentlyItem = {
+  apiUrl: string;
+  className?: string;
+  color: string;
+  component: ComponentType<any>;
+  href: string;
+  icon: ComponentType<any>;
+  id: string;
+  isActive: boolean;
+  prefetch: boolean;
+  title: string;
+  titleSub: string;
+};
+
+const currently: CurrentlyItem[] = [
   {
     apiUrl: "",
     className: "",

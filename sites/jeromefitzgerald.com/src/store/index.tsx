@@ -1,12 +1,5 @@
 "use client";
 
-import type { ReactNode } from "react";
-import { createContext, useContext, useRef } from "react";
-import type { StoreApi } from "zustand";
-import { useStore as useZustandStore } from "zustand";
-import { useShallow } from "zustand/shallow";
-import { createStore } from "zustand/vanilla";
-
 import {
   BookOpenIcon,
   // DesktopIcon,
@@ -24,7 +17,13 @@ import {
   StarIcon,
   // SunIcon,
   TicketIcon,
-} from "@/components/icon/index";
+} from "@jeromefitz/ds/components/icon";
+import type { ReactNode } from "react";
+import { createContext, useContext, useRef } from "react";
+import type { StoreApi } from "zustand";
+import { useStore as useZustandStore } from "zustand";
+import { useShallow } from "zustand/shallow";
+import { createStore } from "zustand/vanilla";
 
 // import { getEventsWithLimit } from '@/lib/drizzle/schemas/queries'
 

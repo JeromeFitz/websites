@@ -1,3 +1,5 @@
+// import { Anchor } from '@/components/anchor/anchor'
+import { BookOpenIcon, MusicalNoteIcon, TicketIcon } from "@jeromefitz/ds/components/icon";
 import {
   Box,
   Code,
@@ -12,9 +14,6 @@ import {
 } from "@radix-ui/themes";
 import NextLink from "next/link";
 import { Fragment } from "react";
-
-// import { Anchor } from '@/components/anchor/anchor'
-import { BookOpenIcon, MusicalNoteIcon, TicketIcon } from "@/components/icon";
 
 // import { DataJeromeAnd } from '../(segments)/shows/_content/jerome-and'
 import { CurrentHome } from "./current.home";

@@ -1,5 +1,6 @@
 "use client";
 
+import { HomeIcon } from "@jeromefitz/ds/components/icon";
 import { Button } from "@radix-ui/themes/dist/esm/components/button.js";
 import {
   Content as DropdownMenuContent,
@@ -17,7 +18,6 @@ import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
 import { useRouter } from "next/navigation.js";
 import { Fragment } from "react";
 
-import { HomeIcon } from "@/components/icon/index";
 import { useStore as _useStore, useShallow } from "@/store/index";
 import { cx } from "@/utils/cx";
 

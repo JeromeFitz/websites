@@ -1,3 +1,4 @@
+import { ExternalLinkIcon } from "@jeromefitz/ds/components/icon";
 import { Box } from "@radix-ui/themes/dist/esm/components/box.js";
 import { Button } from "@radix-ui/themes/dist/esm/components/button.js";
 import { Code } from "@radix-ui/themes/dist/esm/components/code.js";
@@ -12,7 +13,6 @@ import NextLink from "next/link";
 import { Fragment } from "react";
 
 import { Callout } from "@/components/callout/index";
-import { ExternalLinkIcon } from "@/components/icon/index";
 import { LI, UL } from "@/components/list/index";
 import { socials } from "@/data/socials";
 import { cx } from "@/utils/cx";

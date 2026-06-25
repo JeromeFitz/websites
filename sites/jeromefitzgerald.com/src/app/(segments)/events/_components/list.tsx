@@ -1,5 +1,6 @@
 // import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
 
+import { ExternalLinkIcon } from "@jeromefitz/ds/components/icon";
 import { Box } from "@radix-ui/themes/dist/esm/components/box.js";
 import { Button } from "@radix-ui/themes/dist/esm/components/button.js";
 // import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
@@ -17,7 +18,6 @@ import NextLink from "next/link";
 
 import { DataList__Info } from "@/app/(segments)/events/[...key]/_components/event.data.list";
 import { HeaderFull } from "@/components/header/header.full";
-import { ExternalLinkIcon } from "@/components/icon/index";
 import { getImageKeyValue } from "@/lib/drizzle/schemas/cache-images/queries";
 // import type { NotionTag } from '@/lib/drizzle/schemas/_notion/types'
 import type { Event } from "@/lib/drizzle/schemas/types";

@@ -1,5 +1,6 @@
 "use client";
 
+import { ExternalLinkIcon } from "@jeromefitz/ds/components/icon";
 import { Box } from "@radix-ui/themes/dist/esm/components/box.js";
 import { Button } from "@radix-ui/themes/dist/esm/components/button.js";
 import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
@@ -13,7 +14,6 @@ import {
   AccordionRoot,
   AccordionTrigger,
 } from "@/components/accordion";
-import { ExternalLinkIcon } from "@/components/icon/index";
 import { Tags } from "@/components/tags/tags";
 import type { Event } from "@/lib/drizzle/schemas/types";
 import { cx } from "@/utils/cx";

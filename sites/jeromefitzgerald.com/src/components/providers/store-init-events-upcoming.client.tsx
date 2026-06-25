@@ -1,11 +1,11 @@
 "use client";
 
 import { TZDate } from "@date-fns/tz";
+import { TicketIcon } from "@jeromefitz/ds/components/icon";
 import { format } from "date-fns";
 import { upperCase as _upperCase } from "lodash-es";
 import { memo } from "react";
 
-import { TicketIcon } from "@/components/icon/index";
 import { TZ } from "@/config/const";
 import type { Event } from "@/lib/drizzle/schemas/types";
 import { useStore as _useStore, useShallow } from "@/store/index";
