@@ -1,13 +1,7 @@
 "use client";
 
 import { ExclamationTriangleIcon } from "@jeromefitz/ds/components/icon";
-import { Badge } from "@radix-ui/themes/dist/esm/components/badge.js";
-import { Code } from "@radix-ui/themes/dist/esm/components/code.js";
-import * as DataList from "@radix-ui/themes/dist/esm/components/data-list.js";
-import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
-import { Link } from "@radix-ui/themes/dist/esm/components/link.js";
-import { Separator } from "@radix-ui/themes/dist/esm/components/separator.js";
-import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
+import { Badge, Code, DataList, Flex, Link, Separator, Text } from "@radix-ui/themes";
 import type { ReactNode } from "react";
 import { Component } from "react";
 

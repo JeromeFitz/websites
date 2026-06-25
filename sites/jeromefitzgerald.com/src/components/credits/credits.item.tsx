@@ -1,4 +1,4 @@
-import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
+import { Text } from "@radix-ui/themes";
 import { cache } from "react";
 
 // import { getEventData } from '@/app/(notion)/_config/index'

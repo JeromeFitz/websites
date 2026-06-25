@@ -1,9 +1,7 @@
 "use client";
 
 import { MoonIcon, SunIcon } from "@jeromefitz/ds/components/icon";
-import { Box } from "@radix-ui/themes/dist/esm/components/box.js";
-import * as SegmentedControl from "@radix-ui/themes/dist/esm/components/segmented-control.js";
-import { Skeleton } from "@radix-ui/themes/dist/esm/components/skeleton.js";
+import { Box, SegmentedControl, Skeleton } from "@radix-ui/themes";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 

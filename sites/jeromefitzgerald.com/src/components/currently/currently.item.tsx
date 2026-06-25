@@ -1,8 +1,5 @@
-import { Code } from "@radix-ui/themes/dist/esm/components/code.js";
-import { Em } from "@radix-ui/themes/dist/esm/components/em.js";
+import { Code, Em, Skeleton, Text } from "@radix-ui/themes";
 // import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
-import { Skeleton } from "@radix-ui/themes/dist/esm/components/skeleton.js";
-import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
 
 function CodeGhost({ children }: { children: React.ReactNode }) {
   return <Code variant="ghost">{children}</Code>;

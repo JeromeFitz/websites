@@ -1,4 +1,4 @@
-import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
+import { Flex } from "@radix-ui/themes";
 
 /**
  * @todo(a11y) should this be article instead of main

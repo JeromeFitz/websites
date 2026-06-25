@@ -1,5 +1,4 @@
-import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
-import { Heading } from "@radix-ui/themes/dist/esm/components/heading.js";
+import { Flex, Heading } from "@radix-ui/themes";
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation.js";
 

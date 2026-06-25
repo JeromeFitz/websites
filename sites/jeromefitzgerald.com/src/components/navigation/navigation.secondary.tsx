@@ -1,20 +1,7 @@
 "use client";
 
 import { HomeIcon } from "@jeromefitz/ds/components/icon";
-import { Button } from "@radix-ui/themes/dist/esm/components/button.js";
-import {
-  Content as DropdownMenuContent,
-  Item as DropdownMenuItem,
-  Root as DropdownMenuRoot,
-  Separator as DropdownMenuSeparator,
-  Sub as DropdownMenuSub,
-  SubContent as DropdownMenuSubContent,
-  SubTrigger as DropdownMenuSubTrigger,
-  Trigger as DropdownMenuTrigger,
-  TriggerIcon as DropdownMenuTriggerIcon,
-} from "@radix-ui/themes/dist/esm/components/dropdown-menu.js";
-import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
-import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
+import { Button, DropdownMenu, Flex, Text } from "@radix-ui/themes";
 import { useRouter } from "next/navigation.js";
 import { Fragment } from "react";
 
@@ -51,8 +38,8 @@ function NavigationSecondary({ order = 0 }) {
       <div className="contents size-full">
         {/* @todo(radix) children */}
         {/* @ts-ignore */}
-        <DropdownMenuRoot modal={false}>
-          <DropdownMenuTrigger>
+        <DropdownMenu.Root modal={false}>
+          <DropdownMenu.Trigger>
             <Flex
               asChild
               className={cx(
@@ -79,16 +66,16 @@ function NavigationSecondary({ order = 0 }) {
                   {!isDisabled && <IconSecondary className="ml-1" />}
                   {!isDisabled && <Text>{zzz_menuSecondaryActive.title}</Text>}
                 </div>
-                <DropdownMenuTriggerIcon className="size-5" />
+                <DropdownMenu.TriggerIcon className="size-5" />
               </Button>
             </Flex>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent className="z-50 min-w-41.25" sideOffset={6} size="2">
+          </DropdownMenu.Trigger>
+          <DropdownMenu.Content className="z-50 min-w-41.25" sideOffset={6} size="2">
             {zzz_menuSecondary.map((item: any, idx: number) => {
               if (!item.isActive && !item.isActiveMobile) return null;
               const key = `secondary-${idx}-${item.id}`;
               if (item.title === "SEP") {
-                return <DropdownMenuSeparator key={key} />;
+                return <DropdownMenu.Separator key={key} />;
               }
 
               const Icon = item.icon;
@@ -103,7 +90,7 @@ function NavigationSecondary({ order = 0 }) {
                       md: "flex",
                     }}
                   >
-                    <DropdownMenuItem
+                    <DropdownMenu.Item
                       className={cx(
                         !!mt && "hidden md:flex",
                         !item.isActive && item.isActiveMobile && "hidden!",
@@ -117,18 +104,18 @@ function NavigationSecondary({ order = 0 }) {
                     >
                       <Icon className="hidden size-5 md:inline-flex" />
                       <Text size={{ initial: "2", md: "3" }}>{item.title}</Text>
-                    </DropdownMenuItem>
+                    </DropdownMenu.Item>
                   </Flex>
                   {!!mt && (
                     <Flex asChild>
-                      <DropdownMenuSub>
+                      <DropdownMenu.Sub>
                         <Flex asChild display={{ initial: "flex", md: "none" }}>
-                          <DropdownMenuSubTrigger className="hidden">
+                          <DropdownMenu.SubTrigger className="hidden">
                             <Text size={{ initial: "2", md: "3" }}>{item.title}</Text>
-                          </DropdownMenuSubTrigger>
+                          </DropdownMenu.SubTrigger>
                         </Flex>
                         {/* @ts-ignore */}
-                        <DropdownMenuSubContent size={{ initial: "2", md: "3" }}>
+                        <DropdownMenu.SubContent size={{ initial: "2", md: "3" }}>
                           {/* @ts-ignore */}
                           {mt.map((itemSub) => {
                             if (!itemSub.isActive && !itemSub.isActiveMobile) return null;
@@ -140,7 +127,7 @@ function NavigationSecondary({ order = 0 }) {
                             return (
                               <Fragment key={key}>
                                 <Flex asChild>
-                                  <DropdownMenuItem
+                                  <DropdownMenu.Item
                                     className={cx(
                                       itemSub.isActive &&
                                         !itemSub.isActiveMobile &&
@@ -160,20 +147,20 @@ function NavigationSecondary({ order = 0 }) {
                                     >
                                       {itemSub.title}
                                     </Text>
-                                  </DropdownMenuItem>
+                                  </DropdownMenu.Item>
                                 </Flex>
                               </Fragment>
                             );
                           })}
-                        </DropdownMenuSubContent>
-                      </DropdownMenuSub>
+                        </DropdownMenu.SubContent>
+                      </DropdownMenu.Sub>
                     </Flex>
                   )}
                 </Fragment>
               );
             })}
-          </DropdownMenuContent>
-        </DropdownMenuRoot>
+          </DropdownMenu.Content>
+        </DropdownMenu.Root>
       </div>
     </div>
   );

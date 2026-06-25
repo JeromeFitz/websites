@@ -1,9 +1,5 @@
 import { ExternalLinkIcon } from "@jeromefitz/ds/components/icon";
-import { Box } from "@radix-ui/themes/dist/esm/components/box.js";
-import { Button } from "@radix-ui/themes/dist/esm/components/button.js";
-import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
-import { Portal } from "@radix-ui/themes/dist/esm/components/portal.js";
-import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
+import { Box, Button, Flex, Portal, Text } from "@radix-ui/themes";
 import { isAfter } from "date-fns/isAfter";
 import NextLink from "next/link";
 

@@ -1,7 +1,5 @@
-import { Em } from "@radix-ui/themes/dist/esm/components/em.js";
-import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
+import { Em, Flex, Text } from "@radix-ui/themes";
 // import { Strong } from '@radix-ui/themes/dist/esm/components/strong.js'
-import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation.js";
 

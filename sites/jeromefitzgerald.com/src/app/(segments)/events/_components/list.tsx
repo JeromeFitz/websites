@@ -1,16 +1,8 @@
 // import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
 
 import { ExternalLinkIcon } from "@jeromefitz/ds/components/icon";
-import { Box } from "@radix-ui/themes/dist/esm/components/box.js";
-import { Button } from "@radix-ui/themes/dist/esm/components/button.js";
+import { Box, Button, Em, Flex, Grid, Heading, Link, Strong, Text } from "@radix-ui/themes";
 // import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
-import { Em } from "@radix-ui/themes/dist/esm/components/em.js";
-import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
-import { Grid } from "@radix-ui/themes/dist/esm/components/grid.js";
-import { Heading } from "@radix-ui/themes/dist/esm/components/heading.js";
-import { Link } from "@radix-ui/themes/dist/esm/components/link.js";
-import { Strong } from "@radix-ui/themes/dist/esm/components/strong.js";
-import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
 import { isAfter } from "date-fns/isAfter";
 // import { filter as _filter, orderBy as _orderBy, take as _take } from 'lodash-es'
 import { filter as _filter, orderBy as _orderBy } from "lodash-es";

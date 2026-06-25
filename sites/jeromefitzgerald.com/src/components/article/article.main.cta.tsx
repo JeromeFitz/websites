@@ -1,9 +1,5 @@
 import { ArrowTopRightIcon } from "@jeromefitz/ds/components/icon";
-import { Box } from "@radix-ui/themes/dist/esm/components/box.js";
-import { Button } from "@radix-ui/themes/dist/esm/components/button.js";
-import { Em } from "@radix-ui/themes/dist/esm/components/em.js";
-import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
-import { Heading } from "@radix-ui/themes/dist/esm/components/heading.js";
+import { Box, Button, Em, Flex, Heading } from "@radix-ui/themes";
 import NextLink from "next/link";
 
 import { cx } from "@/utils/cx";

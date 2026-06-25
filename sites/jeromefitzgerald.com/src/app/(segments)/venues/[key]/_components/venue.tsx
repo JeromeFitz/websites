@@ -1,6 +1,4 @@
-import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
-import { Heading } from "@radix-ui/themes/dist/esm/components/heading.js";
-import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
+import { Flex, Heading, Text } from "@radix-ui/themes";
 import { format } from "date-fns";
 
 import { ImageNotion } from "@/components/image/image.notion";

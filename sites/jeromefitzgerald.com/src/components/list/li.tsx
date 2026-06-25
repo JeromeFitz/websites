@@ -1,5 +1,5 @@
 import { CornerBottomLeftIcon } from "@radix-ui/react-icons";
-import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
+import { Flex } from "@radix-ui/themes";
 
 import { cx } from "@/utils/cx";
 

@@ -1,7 +1,4 @@
-import { Box } from "@radix-ui/themes/dist/esm/components/box.js";
-import { Em } from "@radix-ui/themes/dist/esm/components/em.js";
-import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
-import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
+import { Box, Em, Flex, Text } from "@radix-ui/themes";
 import { filter as _filter } from "lodash-es";
 
 import { currently } from "@/data/currently";

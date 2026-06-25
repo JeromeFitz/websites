@@ -1,4 +1,4 @@
-import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
+import { Flex } from "@radix-ui/themes";
 
 import { ShowSlugHeaderData } from "@/app/(segments)/shows/[key]/_components/show.slug.header.data";
 import { ArticleMain } from "@/components/article/article.main";

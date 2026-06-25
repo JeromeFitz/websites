@@ -2,22 +2,19 @@
 
 import { ExternalLinkIcon } from "@jeromefitz/ds/components/icon";
 import { useIntersection } from "@mantine/hooks";
-import { Badge } from "@radix-ui/themes/dist/esm/components/badge.js";
-import { Box } from "@radix-ui/themes/dist/esm/components/box.js";
-import { Button } from "@radix-ui/themes/dist/esm/components/button.js";
-import { Code } from "@radix-ui/themes/dist/esm/components/code.js";
-import * as DataList from "@radix-ui/themes/dist/esm/components/data-list.js";
-import { Em } from "@radix-ui/themes/dist/esm/components/em.js";
-import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
-import { Inset } from "@radix-ui/themes/dist/esm/components/inset.js";
 import {
-  Content as SelectContent,
-  Item as SelectItem,
-  Root as SelectRoot,
-  Trigger as SelectTrigger,
-} from "@radix-ui/themes/dist/esm/components/select.js";
-import { Strong } from "@radix-ui/themes/dist/esm/components/strong.js";
-import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
+  Badge,
+  Box,
+  Button,
+  Code,
+  DataList,
+  Em,
+  Flex,
+  Inset,
+  Select,
+  Strong,
+  Text,
+} from "@radix-ui/themes";
 import Image from "next/image";
 import NextLink from "next/link";
 import { useEffect, useRef, useState } from "react";
@@ -600,20 +597,20 @@ function MusicClient() {
                 <Flex gap="3">
                   {/* @todo(radix) children */}
                   {/* @ts-ignore */}
-                  <SelectRoot
+                  <Select.Root
                     defaultValue={appleMusicType ?? INIT.type}
                     onValueChange={(value: string) => handleValueChangeType(value)}
                     size="3"
                   >
-                    <SelectTrigger className="!md:w-full z-50 !w-full" placeholder="Type:" />
-                    <SelectContent className="z-50 w-full" position="popper">
-                      {/* <SelectItem value="history-heavy-rotation">
+                    <Select.Trigger className="!md:w-full z-50 !w-full" placeholder="Type:" />
+                    <Select.Content className="z-50 w-full" position="popper">
+                      {/* <Select.Item value="history-heavy-rotation">
                         Heavy Rotation
-                      </SelectItem> */}
-                      <SelectItem value="recent-played-albums">Recently Played Albums</SelectItem>
-                      <SelectItem value="recent-played-tracks">Recently Played Tracks</SelectItem>
-                    </SelectContent>
-                  </SelectRoot>
+                      </Select.Item> */}
+                      <Select.Item value="recent-played-albums">Recently Played Albums</Select.Item>
+                      <Select.Item value="recent-played-tracks">Recently Played Tracks</Select.Item>
+                    </Select.Content>
+                  </Select.Root>
                 </Flex>
               </Flex>
             </Flex>

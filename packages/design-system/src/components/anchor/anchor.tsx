@@ -1,6 +1,5 @@
 import { envClient } from "@jeromefitz/next-config";
-import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
-import { Link } from "@radix-ui/themes/dist/esm/components/link.js";
+import { Flex, Link } from "@radix-ui/themes";
 import NextLink from "next/link";
 
 import { ExternalLinkIcon } from "../icon/icon";

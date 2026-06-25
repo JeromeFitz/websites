@@ -1,12 +1,10 @@
 // import { Badge } from '@radix-ui/themes/dist/esm/components/badge.js'
 // import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 // import { Code } from '@radix-ui/themes/dist/esm/components/code.js'
-import { Em } from "@radix-ui/themes/dist/esm/components/em.js";
-import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
+import { Em, Flex, Text } from "@radix-ui/themes";
 // import { Grid } from '@radix-ui/themes/dist/esm/components/grid.js'
 // import { Heading } from '@radix-ui/themes/dist/esm/components/heading.js'
 // import { Strong } from '@radix-ui/themes/dist/esm/components/strong.js'
-import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
 import type { Metadata, ResolvingMetadata } from "next";
 
 import { ArticleMain } from "@/components/article/article.main";

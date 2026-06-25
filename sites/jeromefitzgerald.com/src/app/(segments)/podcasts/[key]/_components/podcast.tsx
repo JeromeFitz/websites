@@ -1,6 +1,4 @@
-import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
-import { Link } from "@radix-ui/themes/dist/esm/components/link.js";
-import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
+import { Flex, Link, Text } from "@radix-ui/themes";
 import NextLink from "next/link";
 
 import { ShowSlugHeaderData } from "@/app/(segments)/shows/[key]/_components/show.slug.header.data";

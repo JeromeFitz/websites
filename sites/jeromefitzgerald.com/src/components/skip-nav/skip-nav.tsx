@@ -1,5 +1,4 @@
-import { Box } from "@radix-ui/themes/dist/esm/components/box.js";
-import { Link } from "@radix-ui/themes/dist/esm/components/link.js";
+import { Box, Link } from "@radix-ui/themes";
 import type { Ref } from "react";
 
 import { cx } from "@/utils/cx";
