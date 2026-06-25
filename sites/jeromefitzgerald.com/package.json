@@ -149,6 +149,12 @@
     "vitest": "4.1.9",
     "zod": "4.4.3"
   },
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 Edge versions",
+    "last 2 Firefox versions",
+    "last 2 Safari versions"
+  ],
   "devEngines": {
     "packageManager": {
       "name": "pnpm",
