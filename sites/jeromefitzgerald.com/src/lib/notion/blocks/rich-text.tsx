@@ -54,7 +54,15 @@ const Text = ({ ref, ...props }: any) => {
   );
 };
 
-function Href({ children, href, ...props }: { children: ReactNode; href: string; [key: string]: unknown }) {
+function Href({
+  children,
+  href,
+  ...props
+}: {
+  children: ReactNode;
+  href: string;
+  [key: string]: unknown;
+}) {
   return (
     <Anchor href={href} {...(props as any)}>
       {children}

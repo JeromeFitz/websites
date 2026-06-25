@@ -1,7 +1,5 @@
 function getRelationTitle(str: string) {
-  const title = (str.split(".").at(-1) ?? "")
-    .split(/(?=[A-Z])/)
-    .join(" ");
+  const title = (str.split(".").at(-1) ?? "").split(/(?=[A-Z])/).join(" ");
 
   return title;
 }

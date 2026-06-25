@@ -28,7 +28,10 @@ function getBlock({
 }) {
   if (!block.type) return null;
 
-  const blockProps = { ...(blocksDefault as Record<string, any>)[block.type], ...blocks[block.type] };
+  const blockProps = {
+    ...(blocksDefault as Record<string, any>)[block.type],
+    ...blocks[block.type],
+  };
   if (!blockProps) {
     console.dir(`>> unsupported: ${block.type} (${block.id})`);
     // console.dir(block)
