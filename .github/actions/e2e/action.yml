@@ -27,6 +27,23 @@ inputs:
     type: string
     default: "jeromefitzgerald.com"
 
+outputs:
+  lhci_performance:
+    description: "Lighthouse Performance score (0-100)"
+    value: ${{ steps.lhci-parse.outputs.performance }}
+  lhci_accessibility:
+    description: "Lighthouse Accessibility score (0-100)"
+    value: ${{ steps.lhci-parse.outputs.accessibility }}
+  lhci_best_practices:
+    description: "Lighthouse Best Practices score (0-100)"
+    value: ${{ steps.lhci-parse.outputs.best_practices }}
+  lhci_seo:
+    description: "Lighthouse SEO score (0-100)"
+    value: ${{ steps.lhci-parse.outputs.seo }}
+  lhci_report_url:
+    description: "Lighthouse CI uploaded report URL"
+    value: ${{ steps.lhci-parse.outputs.report_url }}
+
 runs:
   using: "composite"
   steps:
@@ -63,6 +80,33 @@ runs:
         VERCEL_ENV: ${{ inputs.VERCEL_ENV }}
       run: |
         pnpm turbo run lhci --filter="${{ inputs.WEBSITE }}" --cache-dir=".cache-turbo"
+
+    - name: "💡  Lighthouse: Parse Scores"
+      id: lhci-parse
+      shell: bash
+      run: |
+        lhci_dir="sites/${{ inputs.WEBSITE }}/.lighthouseci"
+        lhr=$(ls -t "$lhci_dir"/lhr-*.json 2>/dev/null | head -1)
+        if [ -n "$lhr" ]; then
+          LHCI_LHR="$lhr" LHCI_DIR="$lhci_dir" node -e "
+            const fs = require('fs');
+            const lhr = JSON.parse(fs.readFileSync(process.env.LHCI_LHR, 'utf8'));
+            const cats = lhr.categories;
+            const score = c => Math.round((cats[c]?.score ?? 0) * 100);
+            const lines = [
+              'performance=' + score('performance'),
+              'accessibility=' + score('accessibility'),
+              'best_practices=' + score('best-practices'),
+              'seo=' + score('seo'),
+            ];
+            try {
+              const links = JSON.parse(fs.readFileSync(process.env.LHCI_DIR + '/links.json', 'utf8'));
+              const url = Object.values(links)[0] || '';
+              if (url) lines.push('report_url=' + url);
+            } catch {}
+            process.stdout.write(lines.join('\n') + '\n');
+          " >> \$GITHUB_OUTPUT
+        fi
 
     - name: "🎭  Playwright: Install (!cache)"
       id: e2e-dependencies-playwright

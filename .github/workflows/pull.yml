@@ -218,3 +218,8 @@ jobs:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          LHCI_PERFORMANCE: ${{ steps.pull-e2e.outputs.lhci_performance }}
+          LHCI_ACCESSIBILITY: ${{ steps.pull-e2e.outputs.lhci_accessibility }}
+          LHCI_BEST_PRACTICES: ${{ steps.pull-e2e.outputs.lhci_best_practices }}
+          LHCI_SEO: ${{ steps.pull-e2e.outputs.lhci_seo }}
+          LHCI_REPORT_URL: ${{ steps.pull-e2e.outputs.lhci_report_url }}

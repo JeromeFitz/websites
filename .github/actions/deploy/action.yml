@@ -24,6 +24,26 @@ inputs:
   VERCEL_TOKEN:
     required: true
     type: string
+  LHCI_PERFORMANCE:
+    description: "Lighthouse Performance score (0-100)"
+    required: false
+    type: string
+  LHCI_ACCESSIBILITY:
+    description: "Lighthouse Accessibility score (0-100)"
+    required: false
+    type: string
+  LHCI_BEST_PRACTICES:
+    description: "Lighthouse Best Practices score (0-100)"
+    required: false
+    type: string
+  LHCI_SEO:
+    description: "Lighthouse SEO score (0-100)"
+    required: false
+    type: string
+  LHCI_REPORT_URL:
+    description: "Lighthouse CI uploaded report URL"
+    required: false
+    type: string
 
 runs:
   using: "composite"
@@ -110,14 +130,39 @@ runs:
           }
           rows.push(`<tr>\n<td><strong>📋 Logs:</strong></td>\n<td><a href='${runUrl}'>View Workflow Logs</a></td>\n</tr>`);
 
-          const body = [
+          const sections = [
             marker,
             'PR Deployed to: `▲ Vercel`',
             '',
             '<table>',
             ...rows,
             '</table>',
-          ].join('\n');
+          ];
+
+          const perf = '${{ inputs.LHCI_PERFORMANCE }}';
+          const a11y = '${{ inputs.LHCI_ACCESSIBILITY }}';
+          const bp   = '${{ inputs.LHCI_BEST_PRACTICES }}';
+          const seo  = '${{ inputs.LHCI_SEO }}';
+          const reportUrl = '${{ inputs.LHCI_REPORT_URL }}';
+
+          if (perf || a11y || bp || seo) {
+            const dot = n => n >= 90 ? '🟢' : n >= 50 ? '🟡' : '🔴';
+            const row = (label, val) => val
+              ? `<tr>\n<td><strong>${label}</strong></td>\n<td>${dot(+val)} ${val}</td>\n</tr>`
+              : null;
+            const lhciRows = [
+              row('⚡ Performance', perf),
+              row('♿ Accessibility', a11y),
+              row('✨ Best Practices', bp),
+              row('🔍 SEO', seo),
+            ].filter(Boolean);
+            if (reportUrl) {
+              lhciRows.push(`<tr>\n<td><strong>📊 Report</strong></td>\n<td><a href='${reportUrl}'>View Report</a></td>\n</tr>`);
+            }
+            sections.push('', '**Lighthouse**', '', '<table>', ...lhciRows, '</table>');
+          }
+
+          const body = sections.join('\n');
 
           const { data: comments } = await github.rest.issues.listComments({
             owner: context.repo.owner,
