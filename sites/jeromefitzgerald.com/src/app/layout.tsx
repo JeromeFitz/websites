@@ -18,7 +18,6 @@ import { cx } from "@/utils/cx";
 
 import { fonts } from "./_next/fonts";
 import { PreloadResources } from "./_next/preload-resources";
-// import { KitchenSink } from './_v16/kitchen-sink'
 
 import "./styles--globals.css";
 

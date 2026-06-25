@@ -1,4 +1,4 @@
-import type { Image } from "@/app/_v16/types";
+import type { Image } from "@/components/v16/_meta";
 
 const blurDataURL =
   "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAEAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAX/xAAeEAABBAIDAQAAAAAAAAAAAAABAAMEBQIGEyIxYf/EABUBAQEAAAAAAAAAAAAAAAAAAAEF/8QAGREBAQEBAQEAAAAAAAAAAAAAAQIDABGR/9oADAMBAAIRAxEAPwCfGlwqbX9eZZoaWSXq1mQ47LjczmWeYJPYnz4iIquet1ItPDlA+Enzv//Z";
@@ -19,8 +19,8 @@ import {
   // imageGallery2,
   imageHeadline,
 } from "@/app/(segments)/shows/_content/_images";
-import { ModuleImageGallery } from "@/app/_v16/module";
-import { GridWrapper } from "@/app/_v16/wrapper";
+import { ModuleImageGallery } from "@/components/v16/module";
+import { GridWrapper } from "@/components/v16/wrapper";
 import { getShow, segment } from "@/lib/drizzle/schemas/cache-shows/queries";
 import type { Show } from "@/lib/drizzle/schemas/cache-shows/types";
 import { getKey } from "@/utils/get-key";

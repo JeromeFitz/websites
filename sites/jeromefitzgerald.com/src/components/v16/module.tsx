@@ -15,12 +15,12 @@ import {
 import NextLink from "next/link";
 import { Fragment } from "react";
 
+import type { Image } from "./_meta";
 // import { DataJeromeAnd } from '../(segments)/shows/_content/jerome-and'
 import { CurrentHome } from "./current.home";
 // import { ImageContainer } from './image'
 import { ImageGallery } from "./image-gallery";
 import { LinkButton } from "./link-button";
-import type { Image } from "./types";
 import { GridWrapper, WrapperLeft, WrapperRight } from "./wrapper";
 
 // const BackTo = () => {
