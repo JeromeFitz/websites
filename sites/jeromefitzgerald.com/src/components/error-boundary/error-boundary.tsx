@@ -1,5 +1,6 @@
 "use client";
 
+import { ExclamationTriangleIcon } from "@jeromefitz/ds/components/icon";
 import { Badge } from "@radix-ui/themes/dist/esm/components/badge.js";
 import { Code } from "@radix-ui/themes/dist/esm/components/code.js";
 import * as DataList from "@radix-ui/themes/dist/esm/components/data-list.js";
@@ -14,7 +15,6 @@ import { ArticleMain } from "@/components/article/article.main";
 import { ContainerContent, ContainerWithSidebar } from "@/components/container/container.main";
 import { ContainerSite } from "@/components/container/container.site";
 import { HeaderSidebar } from "@/components/header/header.sidebar";
-import { ExclamationTriangleIcon } from "@/components/icon/index";
 import { cx } from "@/utils/cx";
 
 interface PropsChildren {

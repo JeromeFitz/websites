@@ -1,5 +1,6 @@
 "use client";
 
+import { ExternalLinkIcon } from "@jeromefitz/ds/components/icon";
 import { lpad } from "@jeromefitz/utils";
 import { Badge } from "@radix-ui/themes/dist/esm/components/badge.js";
 import { Box } from "@radix-ui/themes/dist/esm/components/box.js";
@@ -32,7 +33,6 @@ import { Callout } from "@/components/callout/index";
 import { ContainerWithSidebar } from "@/components/container/container.main";
 import { HeaderFull } from "@/components/header/header.full";
 import { HeaderSidebar } from "@/components/header/header.sidebar";
-import { ExternalLinkIcon } from "@/components/icon/index";
 // import { Image } from '@/app/(notion)/events/[[...catchAll]]/_components/image'
 import { LI, UL } from "@/components/list/index";
 import { ImageClient as NextImage } from "@/components/notion/blocks/image.client";
@@ -117,7 +117,7 @@ function Book({ book, item }: { book: any; item: any }) {
     url: src,
     width: 315,
   };
-  console.dir(item?.seoImage.name);
+  // console.dir(item?.seoImage.name);
   return (
     <Flex
       className="border-gray-7 flex-auto items-start rounded-md border-1 border-t-1"
@@ -361,7 +361,7 @@ function BookPage({ items }: { items: any }) {
     return null;
   });
 
-  console.dir(books);
+  // console.dir(books);
 
   return (
     <Flex direction="column">

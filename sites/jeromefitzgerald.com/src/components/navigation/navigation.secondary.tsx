@@ -1,5 +1,6 @@
 "use client";
 
+import { HomeIcon } from "@jeromefitz/ds/components/icon";
 import { Button } from "@radix-ui/themes/dist/esm/components/button.js";
 import {
   Content as DropdownMenuContent,
@@ -17,7 +18,6 @@ import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
 import { useRouter } from "next/navigation.js";
 import { Fragment } from "react";
 
-import { HomeIcon } from "@/components/icon/index";
 import { useStore as _useStore, useShallow } from "@/store/index";
 import { cx } from "@/utils/cx";
 
@@ -79,7 +79,7 @@ function NavigationSecondary({ order = 0 }) {
                   {!isDisabled && <IconSecondary className="ml-1" />}
                   {!isDisabled && <Text>{zzz_menuSecondaryActive.title}</Text>}
                 </div>
-                <DropdownMenuTriggerIcon />
+                <DropdownMenuTriggerIcon className="size-5" />
               </Button>
             </Flex>
           </DropdownMenuTrigger>
@@ -115,7 +115,7 @@ function NavigationSecondary({ order = 0 }) {
                       }}
                       textValue={item.title}
                     >
-                      <Icon className="hidden md:inline-flex" />
+                      <Icon className="hidden size-5 md:inline-flex" />
                       <Text size={{ initial: "2", md: "3" }}>{item.title}</Text>
                     </DropdownMenuItem>
                   </Flex>

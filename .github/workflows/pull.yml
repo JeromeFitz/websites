@@ -154,30 +154,36 @@ jobs:
 
       - name: "📊  Coverage (@jeromefitz/shared)"
         id: pull-coverage-shared
+        if: always()
         uses: davelosert/vitest-coverage-report-action@v2
         with:
           name: "@jeromefitz/shared"
-          vite-config-path: packages/shared/vitest.config.ts
-          json-summary-path: packages/shared/coverage/coverage-summary.json
           json-final-path: packages/shared/coverage/coverage-final.json
+          json-summary-path: packages/shared/coverage/coverage-summary.json
+          vite-config-path: packages/shared/vitest.config.ts
+          threshold-icons: "{0: '🔴', 75: '🟠', 90: '🟢'}"
 
       - name: "📊  Coverage (next-notion)"
         id: pull-coverage-next-notion
+        if: always()
         uses: davelosert/vitest-coverage-report-action@v2
         with:
           name: "next-notion"
-          vite-config-path: packages/next-notion/vitest.config.ts
-          json-summary-path: packages/next-notion/coverage/coverage-summary.json
           json-final-path: packages/next-notion/coverage/coverage-final.json
+          json-summary-path: packages/next-notion/coverage/coverage-summary.json
+          vite-config-path: packages/next-notion/vitest.config.ts
+          threshold-icons: "{0: '🔴', 75: '🟠', 90: '🟢'}"
 
       - name: "📊  Coverage (jeromefitzgerald.com)"
         id: pull-coverage-site
+        if: always()
         uses: davelosert/vitest-coverage-report-action@v2
         with:
           name: "jeromefitzgerald.com"
-          vite-config-path: sites/jeromefitzgerald.com/vitest.config.ts
-          json-summary-path: sites/jeromefitzgerald.com/coverage/coverage-summary.json
           json-final-path: sites/jeromefitzgerald.com/coverage/coverage-final.json
+          json-summary-path: sites/jeromefitzgerald.com/coverage/coverage-summary.json
+          vite-config-path: sites/jeromefitzgerald.com/vitest.config.ts
+          threshold-icons: "{0: '🔴', 75: '🟠', 90: '🟢'}"
 
       # https://docs.github.com/en/actions/learn-github-actions/expressions
       - name: "📛  Commit Message"

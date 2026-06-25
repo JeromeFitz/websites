@@ -1,8 +1,8 @@
+import { ExternalLinkIcon } from "@jeromefitz/ds/components/icon";
 import { Button } from "@radix-ui/themes/dist/esm/components/button.js";
 import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
 import NextLink from "next/link";
 
-import { ExternalLinkIcon } from "@/components/icon/index";
 import { cx } from "@/utils/cx";
 
 function HeaderSidebarCTA({

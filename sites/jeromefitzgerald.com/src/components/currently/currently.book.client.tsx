@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import useSWR from "swr";
 
 import type { NotionColor } from "@/lib/drizzle/schemas/_notion/types";
@@ -18,7 +19,7 @@ function CurrentlyBookClient({
 }: {
   color: NotionColor;
   href: string;
-  icon: any;
+  icon: ReactNode;
   id: string;
   prefetch: boolean;
   title: string;

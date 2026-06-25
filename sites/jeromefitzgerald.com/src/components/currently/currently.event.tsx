@@ -1,5 +1,6 @@
 import { isAfter } from "date-fns/isAfter";
 import { filter as _filter, orderBy as _orderBy, take as _take } from "lodash-es";
+import type { ReactNode } from "react";
 
 import { getEventsWithLimit } from "@/lib/drizzle/schemas/queries";
 import type { Event } from "@/lib/drizzle/schemas/types";
@@ -16,7 +17,7 @@ async function CurrentlyEvent({
 }: {
   color: string;
   href: string;
-  icon: any;
+  icon: ReactNode;
   id: string;
   prefetch: boolean;
   title: string;

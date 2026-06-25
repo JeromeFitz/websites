@@ -17,6 +17,7 @@
 import "server-only";
 import https from "node:https";
 
+import { CameraIcon } from "@jeromefitz/ds/components/icon";
 import { Client } from "@notionhq/client";
 import type { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import { Redis } from "@upstash/redis";
@@ -27,7 +28,6 @@ import { envServer } from "next-config/env.server";
 import { isHttpsUri } from "valid-url";
 
 import { Callout } from "@/components/callout/index";
-import { CameraIcon } from "@/components/icon/index";
 import { NotionEmoji as EmojiWrapper } from "@/lib/notion/blocks/emoji";
 import { isImageExpired } from "@/lib/notion/get-aws-image";
 import { isObjectEmpty } from "@/utils/is-object-empty";

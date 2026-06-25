@@ -1,7 +1,7 @@
+import { StarIcon } from "@jeromefitz/ds/components/icon";
 import { Box, Em, Flex, Grid, Text } from "@radix-ui/themes";
 import NextLink from "next/link";
 
-import { StarIcon } from "@/components/icon";
 import { ImageClient as NextImage } from "@/components/notion/blocks/image.client";
 import { cx } from "@/utils/cx";
 

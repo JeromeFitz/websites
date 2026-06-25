@@ -103,12 +103,12 @@ function NavigationPopOver() {
       }}
       open={isPopover}
     >
-      {/* @ts-ignore */}
-      <PopoverTrigger asChild>
-        <Flex direction="row" gap="3">
+      <Flex direction="row" gap="3">
+        {/* @ts-ignore */}
+        <PopoverTrigger asChild>
           <NavigationButton />
-        </Flex>
-      </PopoverTrigger>
+        </PopoverTrigger>
+      </Flex>
       <PopoverContent
         asChild
         // className="!z-[999]"

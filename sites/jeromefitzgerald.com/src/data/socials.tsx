@@ -8,7 +8,7 @@ import {
   LinkedInLogoIcon,
   MusicalNoteIcon,
   ThreadsLogoIcon,
-} from "@/components/icon/index";
+} from "@jeromefitz/ds/components/icon";
 
 const URL_TYPE = {
   AUDIO: "audio",
@@ -37,7 +37,7 @@ const socials = [
   {
     active: true,
     className: "hover:bg-bandcamp",
-    icon: <MusicalNoteIcon className="text-inherit" />,
+    icon: <MusicalNoteIcon className="size-5 text-inherit" />,
     id: "bandcamp",
     keywords: "social bandcamp",
     rightSlot: <ExternalLinkIcon />,
@@ -63,7 +63,7 @@ const socials = [
   {
     active: true,
     className: "hover:bg-duolingo",
-    icon: <LanguageIcon className="text-inherit" />,
+    icon: <LanguageIcon className="size-5 text-inherit " />,
     id: "duolingo",
     keywords: "social duolingo",
     rightSlot: <ExternalLinkIcon />,

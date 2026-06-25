@@ -1,3 +1,4 @@
+import { ArrowTopRightIcon } from "@jeromefitz/ds/components/icon";
 import { Box } from "@radix-ui/themes/dist/esm/components/box.js";
 import { Button } from "@radix-ui/themes/dist/esm/components/button.js";
 import { Em } from "@radix-ui/themes/dist/esm/components/em.js";
@@ -5,7 +6,6 @@ import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
 import { Heading } from "@radix-ui/themes/dist/esm/components/heading.js";
 import NextLink from "next/link";
 
-import { ArrowTopRightIcon } from "@/components/icon/index";
 import { cx } from "@/utils/cx";
 
 function ArticleMainCTA({ color = "accent", href = "/events", type = "events" }) {

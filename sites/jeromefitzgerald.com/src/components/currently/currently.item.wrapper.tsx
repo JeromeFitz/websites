@@ -3,6 +3,7 @@ import { Button } from "@radix-ui/themes/dist/esm/components/button.js";
 import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
 import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
 import NextLink from "next/link";
+import type { ReactNode } from "react";
 
 import type { NotionColor } from "@/lib/drizzle/schemas/_notion/types";
 import { cx } from "@/utils/cx";
@@ -18,7 +19,7 @@ function CurrentlyItemWrapper({
 }: {
   color: NotionColor;
   href: string;
-  icon: any;
+  icon: ReactNode;
   id: string;
   prefetch: boolean;
   title: string;
@@ -49,10 +50,10 @@ function CurrentlyWrapper({
   children,
   ...c
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
   color: NotionColor;
   href: string;
-  icon: any;
+  icon: ReactNode;
   id: string;
   prefetch: boolean;
   title: string;
@@ -61,17 +62,12 @@ function CurrentlyWrapper({
   const href = c.href;
   const prefetch = c.prefetch;
   const title = c.title;
-
-  const Icon = c?.icon;
+  const icon = c?.icon;
 
   return (
     <Flex
       align="end"
-      className={cx(
-        "transition-all duration-300",
-        "!transition-all hover:!-translate-y-2",
-        "!rounded-sm !shadow-none !transition-all",
-      )}
+      className={cx("rounded-sm! shadow-none! transition-all! duration-300 hover:-translate-y-2!")}
       flexBasis="0px"
       flexGrow="1"
       flexShrink="0"
@@ -90,9 +86,6 @@ function CurrentlyWrapper({
           height="100%"
           justify="between"
           position="relative"
-          // pb="5"
-          // pt="4"
-          // px="0"
           pb={{ initial: "5", md: "5" }}
           pt={{ initial: "1", md: "5" }}
           px={{ initial: "0", md: "0" }}
@@ -103,8 +96,8 @@ function CurrentlyWrapper({
             asChild
             className={cx(
               "group content-end",
-              "!shadow-[inset_0_0_0_1px_var(--accent-a7)]",
-              "!hover:shadow-[inset_0_0_0_1px_var(--accent-a8)]",
+              "shadow-[inset_0_0_0_1px_var(--accent-a7)]!",
+              "hover:shadow-[inset_0_0_0_1px_var(--accent-a8)]!",
             )}
             color={color}
             radius="large"
@@ -112,17 +105,7 @@ function CurrentlyWrapper({
           >
             <NextLink className={cx("")} href={href} prefetch={prefetch}>
               <Box mr="3" position="relative" right="0">
-                <Icon
-                  className={cx(
-                    "m-2 rounded-md p-2 text-inherit !opacity-100 md:p-2",
-                    "transition-colors",
-                    // 'bg-white/75 group-hover:bg-white/95',
-                    // 'dark:bg-black/55 dark:group-hover:bg-black/95',
-                    "bg-whiteA-10 group-hover:bg-whiteA-9",
-                    "dark:bg-blackA-10 dark:group-hover:bg-blackA-9",
-                    "!md:size-12 !size-10",
-                  )}
-                />
+                {icon}
               </Box>
               <Flex
                 className="place-content-start items-start"
@@ -139,11 +122,7 @@ function CurrentlyWrapper({
               >
                 <Text
                   align="left"
-                  // as="h3"
-                  className={cx(
-                    "font-mono font-medium uppercase",
-                    // 'hidden! md:visible!'
-                  )}
+                  className={cx("font-mono font-medium uppercase")}
                   highContrast
                   mb="2"
                   size="1"

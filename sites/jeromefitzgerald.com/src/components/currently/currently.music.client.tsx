@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 /**
  * @todo(api) NICE-125 this takes way too long to run
  *                on what should be a redis cache hit
@@ -23,7 +24,7 @@ function CurrentlyMusicClient({
 }: {
   color: NotionColor;
   href: string;
-  icon: any;
+  icon: ReactNode;
   id: string;
   prefetch: boolean;
   title: string;
