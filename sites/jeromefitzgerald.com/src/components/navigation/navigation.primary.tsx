@@ -2,22 +2,19 @@
 
 // import { useHover } from '@mantine/hooks'
 import { DotFilledIcon } from "@radix-ui/react-icons";
-import { AspectRatio } from "@radix-ui/themes/dist/esm/components/aspect-ratio.js";
-import { Button } from "@radix-ui/themes/dist/esm/components/button.js";
-import { Em } from "@radix-ui/themes/dist/esm/components/em.js";
-import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
-import { Grid } from "@radix-ui/themes/dist/esm/components/grid.js";
-import { Inset } from "@radix-ui/themes/dist/esm/components/inset.js";
-// import { useEffect, useState } from 'react'
-import { Link } from "@radix-ui/themes/dist/esm/components/link.js";
 import {
-  // Close as PopoverClose,
-  Content as PopoverContent,
-  Root as PopoverRoot,
-  Trigger as PopoverTrigger,
-} from "@radix-ui/themes/dist/esm/components/popover.js";
-import { Strong } from "@radix-ui/themes/dist/esm/components/strong.js";
-import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
+  AspectRatio,
+  Button,
+  Em,
+  Flex,
+  Grid,
+  Inset,
+  Link,
+  Popover,
+  Strong,
+  Text,
+} from "@radix-ui/themes";
+// import { useEffect, useState } from 'react'
 import NextLink from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
@@ -95,7 +92,7 @@ function NavigationPopOver() {
   return (
     // @todo(radix) children
     // @ts-ignore
-    <PopoverRoot
+    <Popover.Root
       modal={true}
       onOpenChange={() => {
         isOverlaySet();
@@ -105,11 +102,11 @@ function NavigationPopOver() {
     >
       <Flex direction="row" gap="3">
         {/* @ts-ignore */}
-        <PopoverTrigger asChild>
+        <Popover.Trigger asChild>
           <NavigationButton />
-        </PopoverTrigger>
+        </Popover.Trigger>
       </Flex>
-      <PopoverContent
+      <Popover.Content
         asChild
         // className="!z-[999]"
         size="1"
@@ -169,8 +166,8 @@ function NavigationPopOver() {
             </Text>
           </Flex>
         </Grid>
-      </PopoverContent>
-    </PopoverRoot>
+      </Popover.Content>
+    </Popover.Root>
   );
 }
 

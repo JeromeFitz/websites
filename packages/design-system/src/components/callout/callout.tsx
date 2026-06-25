@@ -1,9 +1,4 @@
-import type { RootProps as CalloutRootProps } from "@radix-ui/themes/dist/esm/components/callout.js";
-import {
-  Icon as CalloutIcon,
-  Root as CalloutRoot,
-  Text as CalloutText,
-} from "@radix-ui/themes/dist/esm/components/callout.js";
+import { Callout } from "@radix-ui/themes";
 import type { ReactNode } from "react";
 
 import { cx } from "../../utils/cx";
@@ -16,7 +11,7 @@ interface AdditionalProps {
   color?: string;
   icon?: any;
 }
-type CalloutRootPropsImpl = AdditionalProps & CalloutRootProps;
+type CalloutRootPropsImpl = AdditionalProps & Callout.RootProps;
 
 function CalloutImpl({
   children = <>This page is in the process of being updated.</>,
@@ -28,17 +23,17 @@ function CalloutImpl({
   variant = "soft",
 }: CalloutRootPropsImpl) {
   return (
-    <CalloutRoot
+    <Callout.Root
       className={cx("w-full font-mono", className)}
       color={color}
       size={size}
       variant={variant}
     >
-      <CalloutIcon>
+      <Callout.Icon>
         <Icon />
-      </CalloutIcon>
-      <CalloutText className={classNameText}>{children}</CalloutText>
-    </CalloutRoot>
+      </Callout.Icon>
+      <Callout.Text className={classNameText}>{children}</Callout.Text>
+    </Callout.Root>
   );
 }
 

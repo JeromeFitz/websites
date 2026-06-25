@@ -1,6 +1,5 @@
 import { ExternalLinkIcon } from "@jeromefitz/ds/components/icon";
-import { Button } from "@radix-ui/themes/dist/esm/components/button.js";
-import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
+import { Button, Text } from "@radix-ui/themes";
 import NextLink from "next/link";
 
 import { cx } from "@/utils/cx";

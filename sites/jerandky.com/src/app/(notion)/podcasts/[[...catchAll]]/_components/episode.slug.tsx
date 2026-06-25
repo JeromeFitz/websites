@@ -13,11 +13,8 @@ import { cx } from "@jeromefitz/ds/utils/cx";
 import { EmbedSpotify } from "@jeromefitz/shared/components/notion/blocks/embed.spotify";
 import { getDataFromCache } from "@jeromefitz/shared/notion/utils";
 import { isObjectEmpty } from "@jeromefitz/utils";
-import { Box } from "@radix-ui/themes/dist/esm/components/box.js";
+import { Box, Separator, Strong, Text } from "@radix-ui/themes";
 // import { Grid } from '@radix-ui/themes/dist/esm/components/grid.js'
-import { Separator } from "@radix-ui/themes/dist/esm/components/separator.js";
-import { Strong } from "@radix-ui/themes/dist/esm/components/strong.js";
-import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
 import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 

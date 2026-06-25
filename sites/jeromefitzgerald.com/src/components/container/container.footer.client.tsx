@@ -1,9 +1,7 @@
 "use client";
 
 import { InfoCircledIcon } from "@jeromefitz/ds/components/icon";
-import { Box } from "@radix-ui/themes/dist/esm/components/box.js";
-import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
-import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
+import { Box, Flex, Text } from "@radix-ui/themes";
 import { usePathname } from "next/navigation.js";
 
 const IS_COLOPHON_SHOWN = false;

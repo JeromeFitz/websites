@@ -1,9 +1,6 @@
 "use client";
 
-import { Box } from "@radix-ui/themes/dist/esm/components/box.js";
-import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
-import { Heading } from "@radix-ui/themes/dist/esm/components/heading.js";
-import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
+import { Box, Flex, Heading, Text } from "@radix-ui/themes";
 
 import type { NotionText } from "@/lib/drizzle/schemas/_notion/types";
 import type { Event } from "@/lib/drizzle/schemas/cache-events/types";

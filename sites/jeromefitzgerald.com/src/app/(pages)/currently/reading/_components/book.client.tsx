@@ -2,22 +2,19 @@
 
 import { ExternalLinkIcon } from "@jeromefitz/ds/components/icon";
 import { lpad } from "@jeromefitz/utils";
-import { Badge } from "@radix-ui/themes/dist/esm/components/badge.js";
-import { Box } from "@radix-ui/themes/dist/esm/components/box.js";
-import { Button } from "@radix-ui/themes/dist/esm/components/button.js";
-import { Code } from "@radix-ui/themes/dist/esm/components/code.js";
-import * as DataList from "@radix-ui/themes/dist/esm/components/data-list.js";
-import { Em } from "@radix-ui/themes/dist/esm/components/em.js";
-import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
-import { Inset } from "@radix-ui/themes/dist/esm/components/inset.js";
 import {
-  Content as SelectContent,
-  Item as SelectItem,
-  Root as SelectRoot,
-  Trigger as SelectTrigger,
-} from "@radix-ui/themes/dist/esm/components/select.js";
-import { Strong } from "@radix-ui/themes/dist/esm/components/strong.js";
-import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
+  Badge,
+  Box,
+  Button,
+  Code,
+  DataList,
+  Em,
+  Flex,
+  Inset,
+  Select,
+  Strong,
+  Text,
+} from "@radix-ui/themes";
 import { format, parseISO } from "date-fns";
 import { slug as _slug } from "github-slugger";
 import { orderBy as _orderBy } from "lodash-es";
@@ -417,16 +414,16 @@ function BookPage({ items }: { items: any }) {
           <>
             {/* @todo(radix) children */}
             {/* @ts-ignore */}
-            <SelectRoot
+            <Select.Root
               defaultValue={bookStatus ?? "in-progress"}
               onValueChange={(value: any) => handleValueChangeBookStatus(value)}
               size={{ initial: "3", md: "3" }}
             >
-              <SelectTrigger className="w-full hover:cursor-pointer" placeholder="Time Range:" />
-              <SelectContent className="z-50 w-full" position="popper">
+              <Select.Trigger className="w-full hover:cursor-pointer" placeholder="Time Range:" />
+              <Select.Content className="z-50 w-full" position="popper">
                 {books.map((book: any) => {
                   return (
-                    <SelectItem
+                    <Select.Item
                       className="group hover:cursor-pointer"
                       key={`si--${book.id}`}
                       value={book.id}
@@ -448,11 +445,11 @@ function BookPage({ items }: { items: any }) {
                           <Text>{book.title}</Text>
                         </Box>
                       </Flex>
-                    </SelectItem>
+                    </Select.Item>
                   );
                 })}
-              </SelectContent>
-            </SelectRoot>
+              </Select.Content>
+            </Select.Root>
             <Callout className="relative right-0 bottom-0" color="mint" size="1">
               <Strong className="font-mono uppercase">Bookshop</Strong> links earn a commission.
             </Callout>

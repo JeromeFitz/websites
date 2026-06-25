@@ -7,14 +7,7 @@ import {
   InfoCircledIcon,
   // TagIcon,
 } from "@jeromefitz/ds/components/icon";
-import { Badge } from "@radix-ui/themes/dist/esm/components/badge.js";
-import { Code } from "@radix-ui/themes/dist/esm/components/code.js";
-import * as DataList from "@radix-ui/themes/dist/esm/components/data-list.js";
-import { Em } from "@radix-ui/themes/dist/esm/components/em.js";
-import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
-import { Skeleton } from "@radix-ui/themes/dist/esm/components/skeleton.js";
-import { Strong } from "@radix-ui/themes/dist/esm/components/strong.js";
-import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
+import { Badge, Code, DataList, Em, Flex, Skeleton, Strong, Text } from "@radix-ui/themes";
 import { format } from "date-fns";
 
 import { TZ } from "@/config/const";

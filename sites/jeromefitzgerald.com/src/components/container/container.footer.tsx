@@ -1,5 +1,4 @@
-import { Box } from "@radix-ui/themes/dist/esm/components/box.js";
-import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
+import { Box, Flex } from "@radix-ui/themes";
 
 import { Currently } from "@/components/currently/currently";
 

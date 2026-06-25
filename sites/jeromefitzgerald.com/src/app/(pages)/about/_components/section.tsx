@@ -1,14 +1,16 @@
 import { ExternalLinkIcon } from "@jeromefitz/ds/components/icon";
-import { Box } from "@radix-ui/themes/dist/esm/components/box.js";
-import { Button } from "@radix-ui/themes/dist/esm/components/button.js";
-import { Code } from "@radix-ui/themes/dist/esm/components/code.js";
-import { Em } from "@radix-ui/themes/dist/esm/components/em.js";
-import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
-import { Heading } from "@radix-ui/themes/dist/esm/components/heading.js";
-import { Link } from "@radix-ui/themes/dist/esm/components/link.js";
-import { Separator } from "@radix-ui/themes/dist/esm/components/separator.js";
-import { Strong } from "@radix-ui/themes/dist/esm/components/strong.js";
-import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
+import {
+  Box,
+  Button,
+  Code,
+  Em,
+  Flex,
+  Heading,
+  Link,
+  Separator,
+  Strong,
+  Text,
+} from "@radix-ui/themes";
 import NextLink from "next/link";
 import { Fragment } from "react";
 

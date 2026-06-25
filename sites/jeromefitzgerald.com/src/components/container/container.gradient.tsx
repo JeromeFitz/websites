@@ -1,4 +1,4 @@
-import { Box } from "@radix-ui/themes/dist/esm/components/box.js";
+import { Box } from "@radix-ui/themes";
 
 import { cx } from "@/utils/cx";
 

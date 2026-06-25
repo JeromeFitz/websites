@@ -1,4 +1,4 @@
-import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
+import { Flex } from "@radix-ui/themes";
 
 import { cx } from "@/utils/cx";
 

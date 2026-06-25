@@ -1,6 +1,4 @@
-import { Box } from "@radix-ui/themes/dist/esm/components/box.js";
-import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
-import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
+import { Box, Flex, Text } from "@radix-ui/themes";
 import { map as _map, size as _size } from "lodash-es";
 import pluralize from "pluralize";
 import { Fragment, Suspense } from "react";

@@ -1,7 +1,4 @@
-import { Box } from "@radix-ui/themes/dist/esm/components/box.js";
-import { Button } from "@radix-ui/themes/dist/esm/components/button.js";
-import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
-import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
+import { Box, Button, Flex, Text } from "@radix-ui/themes";
 import NextLink from "next/link";
 import type { ReactNode } from "react";
 

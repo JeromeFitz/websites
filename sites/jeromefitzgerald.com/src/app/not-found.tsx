@@ -1,7 +1,4 @@
-import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
-import { Heading } from "@radix-ui/themes/dist/esm/components/heading.js";
-import { Link } from "@radix-ui/themes/dist/esm/components/link.js";
-import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
+import { Flex, Heading, Link, Text } from "@radix-ui/themes";
 import NextLink from "next/link";
 
 export default function NotFound() {

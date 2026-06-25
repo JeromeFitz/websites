@@ -1,8 +1,5 @@
-import { Em } from "@radix-ui/themes/dist/esm/components/em.js";
-import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
+import { Em, Flex, Heading, Text } from "@radix-ui/themes";
 // import { Grid } from '@radix-ui/themes/dist/esm/components/grid.js'
-import { Heading } from "@radix-ui/themes/dist/esm/components/heading.js";
-import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
 
 import { cx } from "@/utils/cx";
 

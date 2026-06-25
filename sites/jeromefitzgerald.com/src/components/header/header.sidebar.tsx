@@ -1,8 +1,7 @@
 "use client";
 
 // import { Em } from '@radix-ui/themes/dist/esm/components/em.js'
-import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
-import { Heading } from "@radix-ui/themes/dist/esm/components/heading.js";
+import { Flex, Heading } from "@radix-ui/themes";
 // import { Text } from '@radix-ui/themes/dist/esm/components/text.js'
 
 import { useSticky } from "@/hooks/use-sticky";

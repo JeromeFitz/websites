@@ -8,7 +8,7 @@ import {
   // Tags,
 } from "@jeromefitz/ds/components/section";
 import { isObjectEmpty } from "@jeromefitz/utils";
-import { Separator } from "@radix-ui/themes/dist/esm/components/separator.js";
+import { Separator } from "@radix-ui/themes";
 
 // @todo(types)
 function FourOhFour({

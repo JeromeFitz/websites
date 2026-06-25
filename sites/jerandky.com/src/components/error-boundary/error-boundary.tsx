@@ -7,7 +7,7 @@ import {
   SectionWrapper,
   // Tags,
 } from "@jeromefitz/ds/components/section";
-import { Separator } from "@radix-ui/themes/dist/esm/components/separator.js";
+import { Separator } from "@radix-ui/themes";
 import type { ReactNode } from "react";
 import { Component } from "react";
 

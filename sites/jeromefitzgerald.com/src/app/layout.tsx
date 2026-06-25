@@ -1,4 +1,4 @@
-import { Theme } from "@radix-ui/themes/dist/esm/components/theme.js";
+import { Theme } from "@radix-ui/themes";
 import { isAfter } from "date-fns/isAfter";
 import { filter as _filter, orderBy as _orderBy, take as _take } from "lodash-es";
 import type { Metadata } from "next";

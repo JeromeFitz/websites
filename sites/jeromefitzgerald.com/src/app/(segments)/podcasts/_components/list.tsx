@@ -1,10 +1,4 @@
-import { Box } from "@radix-ui/themes/dist/esm/components/box.js";
-import { Em } from "@radix-ui/themes/dist/esm/components/em.js";
-import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
-import { Grid } from "@radix-ui/themes/dist/esm/components/grid.js";
-import { Heading } from "@radix-ui/themes/dist/esm/components/heading.js";
-import { Strong } from "@radix-ui/themes/dist/esm/components/strong.js";
-import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
+import { Box, Em, Flex, Grid, Heading, Strong, Text } from "@radix-ui/themes";
 import { filter as _filter, orderBy as _orderBy } from "lodash-es";
 import NextLink from "next/link";
 

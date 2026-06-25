@@ -1,11 +1,6 @@
 "use client";
 
-import { Button } from "@radix-ui/themes/dist/esm/components/button.js";
-import { Code } from "@radix-ui/themes/dist/esm/components/code.js";
-import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
-import { Separator } from "@radix-ui/themes/dist/esm/components/separator.js";
-import { Strong } from "@radix-ui/themes/dist/esm/components/strong.js";
-import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
+import { Button, Code, Flex, Separator, Strong, Text } from "@radix-ui/themes";
 import { envClient } from "next-config/env.client";
 import { useEffect, useState } from "react";
 
