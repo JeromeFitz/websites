@@ -157,6 +157,7 @@ jobs:
         uses: davelosert/vitest-coverage-report-action@v2
         with:
           name: "@jeromefitz/shared"
+          vite-config-path: packages/shared/vitest.config.ts
           json-summary-path: packages/shared/coverage/coverage-summary.json
           json-final-path: packages/shared/coverage/coverage-final.json
 
@@ -165,6 +166,7 @@ jobs:
         uses: davelosert/vitest-coverage-report-action@v2
         with:
           name: "next-notion"
+          vite-config-path: packages/next-notion/vitest.config.ts
           json-summary-path: packages/next-notion/coverage/coverage-summary.json
           json-final-path: packages/next-notion/coverage/coverage-final.json
 
@@ -173,6 +175,7 @@ jobs:
         uses: davelosert/vitest-coverage-report-action@v2
         with:
           name: "jeromefitzgerald.com"
+          vite-config-path: sites/jeromefitzgerald.com/vitest.config.ts
           json-summary-path: sites/jeromefitzgerald.com/coverage/coverage-summary.json
           json-final-path: sites/jeromefitzgerald.com/coverage/coverage-final.json
 
