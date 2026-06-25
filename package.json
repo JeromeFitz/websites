@@ -32,7 +32,7 @@
     "validate:full": "pnpm turbo //#quality lint:ts test:unit && pnpm run lint:packages"
   },
   "devDependencies": {
-    "@arethetypeswrong/core": "0.18.3",
+    "@arethetypeswrong/core": "0.18.4",
     "@jeromefitz/conventional-gitmoji": "5.0.1",
     "@jeromefitz/oxlint-config": "workspace:*",
     "@jeromefitz/release-notes-generator": "4.0.3",
