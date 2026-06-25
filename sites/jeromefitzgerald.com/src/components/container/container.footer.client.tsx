@@ -6,8 +6,6 @@ import { Flex } from "@radix-ui/themes/dist/esm/components/flex.js";
 import { Text } from "@radix-ui/themes/dist/esm/components/text.js";
 import { usePathname } from "next/navigation.js";
 
-import { NotionEmoji as EmojiWrapper } from "@/lib/notion/blocks/emoji";
-
 const IS_COLOPHON_SHOWN = false;
 
 function ContainerFooterClient() {
@@ -36,9 +34,7 @@ function ContainerFooterClient() {
           className="font-mono md:mr-1"
           size={{ initial: "1", md: "2" }}
         >
-          <Text className="mr-0 size-4 font-sans md:mr-2">
-            <EmojiWrapper id={`no-need-2`} text={`©`} />
-          </Text>
+          <Text className="mr-0 size-4 font-sans md:mr-2">©</Text>
           <Box as="span" display="inline">
             <Text>Nice Group of People, LLC –&nbsp;</Text>
             <Text className="">{new Date().getFullYear()}</Text>

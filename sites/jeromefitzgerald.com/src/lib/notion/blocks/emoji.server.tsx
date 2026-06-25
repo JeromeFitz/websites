@@ -1,3 +1,4 @@
+import "server-only";
 import emojiRegex from "emoji-regex";
 import { map as _map, orderBy as _orderBy, size as _size } from "lodash-es";
 import { find as findEmoji } from "node-emoji";
