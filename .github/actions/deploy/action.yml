@@ -1,18 +1,18 @@
 name: "🚀️  "
-description: "Deploy to Vercel. Preview or Production based on PRODUCTION input."
+description: "▲ Deploy to Vercel. Production or Preview based on PRODUCTION input."
 author: "JeromeFitz"
 
 inputs:
   PRODUCTION:
-    description: "Deploy to production (true) or preview (false)"
+    description: "▲ Deploy to: Production (true); Preview (false)"
     default: false
     type: boolean
   GH_TOKEN:
-    description: "GitHub Token (botjerome) for posting the preview comment."
+    description: "▲ GitHub Token (BotJerome) that posts comment for Preview."
     required: true
     type: string
   PR_NUMBER:
-    description: "Pull request number for the preview comment. Omit for production."
+    description: "▲ PR # for the Preview comment. (Omit for Production.)"
     required: false
     type: string
   VERCEL_ORG_ID:
@@ -66,8 +66,8 @@ runs:
           const marker = '<!-- vercel-preview -->';
 
           const rows = [
-            `<tr>\n<td><strong>Latest commit:</strong></td>\n<td><code>${sha}</code></td>\n</tr>`,
-            `<tr>\n<td><strong>Branch:</strong></td>\n<td><code>${branch}</code></td>\n</tr>`,
+            `<tr>\n<td><strong>🪵 Latest commit:</strong></td>\n<td><code>${sha}</code></td>\n</tr>`,
+            `<tr>\n<td><strong>🎋 Branch:</strong></td>\n<td><code>${branch}</code></td>\n</tr>`,
             `<tr>\n<td><strong>✅ Preview:</strong></td>\n<td><a href='${previewUrl}'>${previewUrl}</a></td>\n</tr>`,
           ];
           if (inspectUrl) {
@@ -77,7 +77,7 @@ runs:
 
           const body = [
             marker,
-            'This pull request has been deployed to Vercel.',
+            'PR Deployed to: `▲ Vercel`',
             '',
             '<table>',
             ...rows,
