@@ -1,8 +1,8 @@
 import { Dialog, Flex, Grid } from "@radix-ui/themes";
 
+import type { Image } from "./_meta";
 // import { image } from './_meta'
 import { ImageContainer } from "./image";
-import type { Image } from "./types";
 
 const ImageModal = ({ idx, image }: { idx: number; image: any }) => {
   const isEnabled = false;

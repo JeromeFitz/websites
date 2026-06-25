@@ -5,10 +5,10 @@ import {
   imageGallery2,
   imageHeadline,
 } from "@/app/(segments)/shows/_content/_images";
-import { LinkButton } from "@/app/_v16/link-button";
-import { ModuleImageGallery } from "@/app/_v16/module";
-import { GridWrapper } from "@/app/_v16/wrapper";
 import { Anchor } from "@/components/anchor/anchor";
+import { LinkButton } from "@/components/v16/link-button";
+import { ModuleImageGallery } from "@/components/v16/module";
+import { GridWrapper } from "@/components/v16/wrapper";
 import { bandcamps, jeromeands } from "@/data/bandcamps";
 import { getShow, segment } from "@/lib/drizzle/schemas/cache-shows/queries";
 import type { Show } from "@/lib/drizzle/schemas/cache-shows/types";

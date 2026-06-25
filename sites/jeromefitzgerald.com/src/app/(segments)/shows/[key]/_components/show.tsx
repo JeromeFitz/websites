@@ -1,7 +1,5 @@
 import { get as _get } from "lodash-es";
 
-import { ModuleCredits } from "@/app/_v16/module";
-import { GridWrapper } from "@/app/_v16/wrapper";
 // import {
 //   imageGallery,
 //   // imageGallery2,
@@ -13,6 +11,8 @@ import { ContainerWithSidebar } from "@/components/container/container.main";
 import { Credits } from "@/components/credits/credits";
 import { HeaderFull } from "@/components/header/header.full";
 import { HeaderSidebar } from "@/components/header/header.sidebar";
+import { ModuleCredits } from "@/components/v16/module";
+import { GridWrapper } from "@/components/v16/wrapper";
 import { segment } from "@/lib/drizzle/schemas/cache-shows/queries";
 import type { Show as ShowType } from "@/lib/drizzle/schemas/cache-shows/types";
 import { Notion } from "@/lib/notion/notion.component";
