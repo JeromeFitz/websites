@@ -105,7 +105,7 @@ runs:
               if (url) lines.push('report_url=' + url);
             } catch {}
             process.stdout.write(lines.join('\n') + '\n');
-          " >> \$GITHUB_OUTPUT
+          " >> $GITHUB_OUTPUT
         fi
 
     - name: "🎭  Playwright: Install (!cache)"
