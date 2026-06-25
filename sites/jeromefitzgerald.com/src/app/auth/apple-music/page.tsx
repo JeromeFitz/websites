@@ -8,15 +8,14 @@ import { HeaderFull } from "@/components/header/header.full";
 
 export default function Home() {
   const [isMusicKitReady, isMusicKitReadySet] = useState(false);
-  const [musicKitInstance, musicKitInstanceSet] = useState(null);
+  const [musicKitInstance, musicKitInstanceSet] = useState<MusicKitInstance | null>(null);
   const [musicKitLoaded, musicKitLoadedSet] = useState(false);
-  const [musicUserToken, musicUserTokenSet] = useState(null);
+  const [musicUserToken, musicUserTokenSet] = useState<string | null>(null);
 
   // 00. Load MusicKit
   useEffect(() => {
     const initializeMusicKit = async () => {
       try {
-        // @ts-ignore
         await MusicKit.configure({
           app: {
             build: "1.0.0",
@@ -24,7 +23,6 @@ export default function Home() {
           },
           developerToken: envClient.NEXT_PUBLIC__APPLE_TOKEN_DEVELOPER,
         });
-        // @ts-ignore
         musicKitInstanceSet(MusicKit.getInstance());
         musicKitLoadedSet(true);
       } catch (error) {
@@ -45,9 +43,7 @@ export default function Home() {
       if (musicKitInstance && !musicUserToken) {
         const authorizeUser = async () => {
           try {
-            // @ts-ignore
             await musicKitInstance.authorize();
-            // @ts-ignore
             musicUserTokenSet(musicKitInstance.musicUserToken);
           } catch (error) {
             console.error("Error authorizing MusicKit:", error);
@@ -110,8 +106,7 @@ export default function Home() {
             <Text size={{ initial: "3", md: "5" }}>
               <Strong>Music-User-Token:</Strong>
             </Text>
-            {/* @ts-ignore */}
-            <Code className="wrap-anywhere">{musicKitInstance.musicUserToken}</Code>
+            <Code className="wrap-anywhere">{musicKitInstance?.musicUserToken}</Code>
           </Flex>
         </Flex>
       </Flex>

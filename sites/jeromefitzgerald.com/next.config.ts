@@ -131,8 +131,6 @@ const config = () => {
         },
       ],
     },
-    output: undefined,
-    // output: "standalone",
     pageExtensions: ["jsx", "js", "tsx", "ts"],
     poweredByHeader: false,
     productionBrowserSourceMaps: false,

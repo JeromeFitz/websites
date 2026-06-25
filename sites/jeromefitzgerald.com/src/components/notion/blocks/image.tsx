@@ -166,7 +166,6 @@ async function ImageImpl({
 }) {
   // @todo(error-handling)
 
-  // @ts-ignore
   if (block?.image?.external?.url === "") return null;
 
   const classNameCaption = blocks?.caption?.className || "";

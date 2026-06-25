@@ -5,7 +5,6 @@
 
 // import { Box } from '@radix-ui/themes/dist/esm/components/box.js'
 
-// @ts-ignore
 import NextImage from "next/image";
 
 // @todo(complexity) 11

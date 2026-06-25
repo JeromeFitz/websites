@@ -95,9 +95,8 @@ const useSWRInfinitePages: any = <
   const isRefreshing = isValidating && data?.length === size;
   const isEmpty = firstPageData?.length === 0;
 
-  // @ts-ignore
   const fetchMore = useCallback(() => {
-    if (isLoadingMore || isFetching.current) return null;
+    if (isLoadingMore || isFetching.current) return;
 
     void setSize((size) => {
       return size + 1;

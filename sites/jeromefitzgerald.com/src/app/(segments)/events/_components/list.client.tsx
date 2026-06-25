@@ -17,8 +17,7 @@ import { cx } from "@/utils/cx";
 
 const description = `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Recusandae, omnis? Quod, enim fugit doloribus qui culpa odit. Eveniet, cupiditate qui alias nihil similique tempora fugit?`;
 
-// @ts-ignore
-function AccordionClient({ items }) {
+function AccordionClient({ items }: { items: Event[] }) {
   const defaultValue = items[0]?.id || null;
   return (
     <Box
@@ -31,7 +30,6 @@ function AccordionClient({ items }) {
     >
       {/* @todo(types) radix */}
 
-      {/* @ts-ignore */}
       <AccordionRoot collapsible defaultValue={defaultValue} type="single">
         {items.map((item: Event) => {
           if (!item.id) return null;
@@ -41,7 +39,6 @@ function AccordionClient({ items }) {
           return (
             // @todo(types) radix
 
-            // @ts-ignore
             <AccordionItem key={key} value={item.id}>
               <AccordionTrigger>
                 <Flex

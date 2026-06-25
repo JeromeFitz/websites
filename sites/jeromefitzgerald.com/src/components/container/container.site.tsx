@@ -2,7 +2,6 @@ import { Flex } from "@radix-ui/themes";
 
 import { cx } from "@/utils/cx";
 
-// @ts-ignore
 function ContainerSite({ children }: { children: React.ReactNode }) {
   return (
     <Flex

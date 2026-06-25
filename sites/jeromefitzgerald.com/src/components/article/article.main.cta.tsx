@@ -1,10 +1,19 @@
 import { ArrowTopRightIcon } from "@jeromefitz/ds/components/icon";
+import type { ButtonProps } from "@radix-ui/themes";
 import { Box, Button, Em, Flex, Heading } from "@radix-ui/themes";
 import NextLink from "next/link";
 
 import { cx } from "@/utils/cx";
 
-function ArticleMainCTA({ color = "accent", href = "/events", type = "events" }) {
+function ArticleMainCTA({
+  color = "accent" as ButtonProps["color"],
+  href = "/events",
+  type = "events",
+}: {
+  color?: ButtonProps["color"];
+  href?: string;
+  type?: string;
+}) {
   return (
     <Box
       className={cx("relative h-66.5 w-full flex-none", "mt-6 mb-2")}
@@ -30,7 +39,6 @@ function ArticleMainCTA({ color = "accent", href = "/events", type = "events" })
           wrap="nowrap"
         >
           {/* @todo(types) */}
-          {/* @ts-ignore */}
           <Button asChild color={color} variant="soft">
             <NextLink href={href}>
               <Box mr="4" position="absolute" pt="0" right="0">

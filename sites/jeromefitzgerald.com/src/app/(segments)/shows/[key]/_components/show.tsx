@@ -43,12 +43,12 @@ const ROLLUPS: string[] = [
 export async function Show({ blocks, item }: { blocks: any; item: ShowType }) {
   const itemBlocks = blocks[0];
 
+  const itemRecord = item as Record<string, any>;
   const R: any = {};
   ROLLUPS.map((ROLLUP: any) => {
     R[ROLLUP] = [];
 
-    // @ts-ignore
-    const items = item[ROLLUP];
+    const items = itemRecord[ROLLUP];
     items.map((i: any) => {
       R[ROLLUP].push(getTitleData({ data: i, type: i.type }));
     });
@@ -57,8 +57,10 @@ export async function Show({ blocks, item }: { blocks: any; item: ShowType }) {
   const customKey = _get(ContentComponents, item.slug);
   const hasCustom = !!customKey;
   const customContent =
-    // @ts-ignore
-    hasCustom && (await DataComponents[item.slug]({ slug: item.slug }));
+    hasCustom &&
+    (await (DataComponents as Record<string, (args: { slug: string }) => Promise<any>>)[item.slug]({
+      slug: item.slug,
+    }));
 
   // const foo = [imageGallery[2]]
 

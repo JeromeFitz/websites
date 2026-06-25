@@ -4,7 +4,6 @@ import { EmojiWrapper } from "./emoji.server";
 
 // // @note(next) outside of page.tsx, need to ignore
 //
-// // @ts-ignore
 // const EmojiWrapper = lazy(() => import('./emoji.client'))
 
 // function NotionEmoji({ id, text }) {

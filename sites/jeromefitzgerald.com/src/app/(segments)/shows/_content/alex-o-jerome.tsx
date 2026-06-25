@@ -111,13 +111,12 @@ const Content = () => {
 const Data = async ({ slug }: { slug: string }) => {
   const rollupKey = getKey(segment, slug);
   const rollupItems: Show[] = await getShow({ key: rollupKey });
-  const rollupItem = rollupItems[0];
+  const rollupItem = rollupItems[0] as Record<string, any>;
 
   const R: any = {};
   ROLLUPS.map((ROLLUP: any) => {
     R[ROLLUP] = [];
 
-    // @ts-ignore
     const rollupItems = rollupItem[ROLLUP];
     rollupItems.map((i: any) => {
       R[ROLLUP].push(getTitleData({ data: i, type: i.type }));
@@ -128,7 +127,6 @@ const Data = async ({ slug }: { slug: string }) => {
   ROLLUPS_CAST.map((ROLLUP: any) => {
     R_CAST[ROLLUP] = [];
 
-    // @ts-ignore
     const rollupItems = rollupItem[ROLLUP];
     rollupItems.map((i: any) => {
       R_CAST[ROLLUP].push(getTitleData({ data: i, type: i.type }));
@@ -139,7 +137,6 @@ const Data = async ({ slug }: { slug: string }) => {
   ROLLUPS_CAST_EMERITUS.map((ROLLUP: any) => {
     R_CAST_EMERITUS[ROLLUP] = [];
 
-    // @ts-ignore
     const rollupItems = rollupItem[ROLLUP];
     rollupItems.map((i: any) => {
       R_CAST_EMERITUS[ROLLUP].push(getTitleData({ data: i, type: i.type }));
@@ -150,7 +147,6 @@ const Data = async ({ slug }: { slug: string }) => {
   ROLLUPS_CREW.map((ROLLUP: any) => {
     R_CREW[ROLLUP] = [];
 
-    // @ts-ignore
     const rollupItems = rollupItem[ROLLUP];
     rollupItems.map((i: any) => {
       R_CREW[ROLLUP].push(getTitleData({ data: i, type: i.type }));
@@ -161,7 +157,6 @@ const Data = async ({ slug }: { slug: string }) => {
   ROLLUPS_THANKS.map((ROLLUP: any) => {
     R_THANKS[ROLLUP] = [];
 
-    // @ts-ignore
     const rollupItems = rollupItem[ROLLUP];
     rollupItems.map((i: any) => {
       R_THANKS[ROLLUP].push(getTitleData({ data: i, type: i.type }));

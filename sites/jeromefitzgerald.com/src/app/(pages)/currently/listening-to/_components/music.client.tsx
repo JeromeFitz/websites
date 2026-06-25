@@ -17,6 +17,7 @@ import {
 } from "@radix-ui/themes";
 import Image from "next/image";
 import NextLink from "next/link";
+import type { FC, ReactNode } from "react";
 import { useEffect, useRef, useState } from "react";
 import _title from "title";
 import { Virtualizer } from "virtua";
@@ -34,6 +35,22 @@ import { fetcher } from "@/lib/fetcher";
 import { useStore as _useStore, useShallow } from "@/store/index";
 import { cx } from "@/utils/cx";
 import { getKeyAppleMusic, INIT } from "@/utils/get-key-apple-music";
+
+const SelectRoot = Select.Root as FC<{
+  children?: ReactNode;
+  defaultValue?: string;
+  disabled?: boolean;
+  name?: string;
+  onOpenChange?: (open: boolean) => void;
+  onValueChange?: (value: string) => void;
+  open?: boolean;
+  size?:
+    | "1"
+    | "2"
+    | "3"
+    | Partial<Record<"initial" | "xs" | "sm" | "md" | "lg" | "xl", "1" | "2" | "3">>;
+  value?: string;
+}>;
 
 const useStore = () => {
   return _useStore(
@@ -119,7 +136,7 @@ function DataItem({ item, type }: any) {
 
   return (
     <Flex
-      className="border-gray-7 flex-auto items-start rounded-md border-1 border-t-1"
+      className="border-gray-7 flex-auto items-start rounded-md border border-t"
       direction={{ initial: "column-reverse", md: "row-reverse" }}
       gap="0"
       justify="between"
@@ -269,7 +286,7 @@ function DataItem({ item, type }: any) {
                     <NextLink href={_href} target="_blank">
                       Open Apple Music
                       {` `}
-                      <ExternalLinkIcon className={cx("text-accent-11 !opacity-100")} />
+                      <ExternalLinkIcon className={cx("text-accent-11 opacity-100!")} />
                     </NextLink>
                   </Button>
                 </Flex>
@@ -312,7 +329,7 @@ function DataItemLoader({ error, handleScroll, isLoadingMore }: any) {
   return (
     <>
       <Flex
-        className="border-gray-7 flex-auto items-start rounded-md border-1 border-t-1"
+        className="border-gray-7 flex-auto items-start rounded-md border border-t"
         direction={{ initial: "column-reverse", md: "row-reverse" }}
         gap="0"
         justify="between"
@@ -435,7 +452,6 @@ function DataItems() {
       }),
     fetcher,
     {
-      // @ts-ignore
       dataPath: "data",
       limit: appleMusicType === "recent-played-tracks" ? 10 : limit,
       //
@@ -565,7 +581,7 @@ function MusicClient() {
       </Flex>
       <Callout size="1" variant="outline" />
       <ContainerWithSidebar>
-        <HeaderSidebar className="!size-full" hasBorder={false} title="">
+        <HeaderSidebar className="size-full!" hasBorder={false} title="">
           <Flex
             // className="rounded-3 border-1"
             direction="column"
@@ -595,14 +611,12 @@ function MusicClient() {
                 width="100%"
               >
                 <Flex gap="3">
-                  {/* @todo(radix) children */}
-                  {/* @ts-ignore */}
-                  <Select.Root
+                  <SelectRoot
                     defaultValue={appleMusicType ?? INIT.type}
                     onValueChange={(value: string) => handleValueChangeType(value)}
                     size="3"
                   >
-                    <Select.Trigger className="!md:w-full z-50 !w-full" placeholder="Type:" />
+                    <Select.Trigger className="z-50 w-full! md:w-full!" placeholder="Type:" />
                     <Select.Content className="z-50 w-full" position="popper">
                       {/* <Select.Item value="history-heavy-rotation">
                         Heavy Rotation
@@ -610,7 +624,7 @@ function MusicClient() {
                       <Select.Item value="recent-played-albums">Recently Played Albums</Select.Item>
                       <Select.Item value="recent-played-tracks">Recently Played Tracks</Select.Item>
                     </Select.Content>
-                  </Select.Root>
+                  </SelectRoot>
                 </Flex>
               </Flex>
             </Flex>

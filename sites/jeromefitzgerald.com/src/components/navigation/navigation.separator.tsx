@@ -2,8 +2,15 @@ import { CaretRightIcon } from "@radix-ui/react-icons";
 
 import { cx } from "@/utils/cx";
 
-// @ts-ignore
-function NavigationSeparator({ className, isActive = true, order = 0 }) {
+function NavigationSeparator({
+  className,
+  isActive = true,
+  order = 0,
+}: {
+  className: string;
+  isActive?: boolean;
+  order?: number;
+}) {
   if (!isActive) return null;
   return (
     <div

@@ -341,7 +341,6 @@ const loop = [cast, crew, thanks, emeritus];
 //               width="100%"
 //               key={`credits-${i}`}
 //             >
-//               {/* @ts-ignore */}
 //               <ModuleCredit items={l} />
 //             </Flex>
 //           )
@@ -353,7 +352,6 @@ const loop = [cast, crew, thanks, emeritus];
 
 // const v16__ModuleCredit = ({ items }: { items: Credit[] }) => {
 //   const creditType = items[0].headline
-//   // @ts-ignore
 //   const _items = DataJeromeAnd[creditType.toLowerCase()]
 //   if (_items === undefined || _items?.length === 0) return null
 

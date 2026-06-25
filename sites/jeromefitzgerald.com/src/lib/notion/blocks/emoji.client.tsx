@@ -93,9 +93,7 @@ async function EmojiWrapper({ id, text }: { id: string; text: string }) {
 
     const prev = emojiMapping[emojiIndex - 1];
     // @todo(types)
-
-    // @ts-ignore
-    if (prev && prev.index !== match.to) {
+    if (prev && prev.index !== (match as any).to) {
       emojiMapping[emojiIndex] = {
         emoji: false,
         index: prev.to,
@@ -126,14 +124,12 @@ async function EmojiWrapper({ id, text }: { id: string; text: string }) {
          * Argument of type 'any' is not assignable to parameter of type 'never'
          */
 
-        // @ts-ignore
         item.emoji ? (
           /**
            * @note(next) outside of page.tsx, need to ignore
            * 'Emoji' cannot be used as a JSX component.
            */
 
-          // @ts-ignore
           <Emoji character={item.text.trim()} key={`${id}--emoji--${itemId}`} />
         ) : (
           item.text
@@ -157,7 +153,6 @@ async function EmojiWrapper({ id, text }: { id: string; text: string }) {
          * Argument of type 'any' is not assignable to parameter of type 'never'
          */
 
-        // @ts-ignore
         emojiMappingStitch.push(sliced);
       }
     });
