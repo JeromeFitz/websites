@@ -17,6 +17,7 @@ coverage
 # vercel
 .next
 .turbo
+next-env.d.ts
 
 # next-pwa
 /public/fallback-*.js
