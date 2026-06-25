@@ -41,7 +41,9 @@ runs:
         VERCEL_PROJECT_ID: ${{ inputs.VERCEL_PROJECT_ID }}
       run: |
         if [ "${{ inputs.PRODUCTION }}" = "true" ]; then
-          timeout 300 vercel deploy --prod --token=${{ inputs.VERCEL_TOKEN }}
+          timeout 300 vercel deploy --prod --token=${{ inputs.VERCEL_TOKEN }} 2>&1 | tee /tmp/vercel-deploy.log
+          production_url=$(grep 'Production:' /tmp/vercel-deploy.log | grep -oE 'https://[^[:space:]]+' | head -1)
+          echo "production_url=$production_url" >> $GITHUB_OUTPUT
         else
           timeout 300 vercel deploy --token=${{ inputs.VERCEL_TOKEN }} 2>&1 | tee /tmp/vercel-deploy.log
           preview_url=$(grep -oE 'https://[a-zA-Z0-9-]+\.vercel\.app' /tmp/vercel-deploy.log | head -1)
@@ -49,6 +51,39 @@ runs:
           echo "preview_url=$preview_url" >> $GITHUB_OUTPUT
           echo "inspect_url=$inspect_url" >> $GITHUB_OUTPUT
         fi
+
+    - name: "🔗  GitHub Deployment"
+      id: wf-gh-deployment
+      if: ${{ steps.wf-deploy.outputs.preview_url != '' || steps.wf-deploy.outputs.production_url != '' }}
+      uses: actions/github-script@v9
+      with:
+        github-token: ${{ inputs.GH_TOKEN }}
+        script: |
+          const isProduction = '${{ inputs.PRODUCTION }}' === 'true';
+          const envUrl = isProduction
+            ? '${{ steps.wf-deploy.outputs.production_url }}'
+            : '${{ steps.wf-deploy.outputs.preview_url }}';
+          const ref = process.env.GITHUB_HEAD_REF || process.env.GITHUB_REF_NAME;
+          const runUrl = `https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+
+          const { data: deployment } = await github.rest.repos.createDeployment({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            ref,
+            environment: isProduction ? 'Production' : 'Preview',
+            auto_merge: false,
+            required_contexts: [],
+            transient_environment: !isProduction,
+          });
+
+          await github.rest.repos.createDeploymentStatus({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            deployment_id: deployment.id,
+            state: 'success',
+            environment_url: envUrl,
+            log_url: runUrl,
+          });
 
     - name: "💬  Comment (Preview)"
       id: wf-comment
