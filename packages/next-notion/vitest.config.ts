@@ -5,6 +5,12 @@ export default defineConfig({
     coverage: {
       provider: "v8",
       reporter: ["text", "json-summary", "json"],
+      thresholds: {
+        statements: 75,
+        branches: 80,
+        functions: 65,
+        lines: 74,
+      },
     },
     include: ["src/**/*.test.{ts,tsx}"],
   },

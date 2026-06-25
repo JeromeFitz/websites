@@ -154,6 +154,7 @@ jobs:
 
       - name: "📊  Coverage (@jeromefitz/shared)"
         id: pull-coverage-shared
+        if: always()
         uses: davelosert/vitest-coverage-report-action@v2
         with:
           name: "@jeromefitz/shared"
@@ -163,6 +164,7 @@ jobs:
 
       - name: "📊  Coverage (next-notion)"
         id: pull-coverage-next-notion
+        if: always()
         uses: davelosert/vitest-coverage-report-action@v2
         with:
           name: "next-notion"
@@ -172,6 +174,7 @@ jobs:
 
       - name: "📊  Coverage (jeromefitzgerald.com)"
         id: pull-coverage-site
+        if: always()
         uses: davelosert/vitest-coverage-report-action@v2
         with:
           name: "jeromefitzgerald.com"
