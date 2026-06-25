@@ -19,6 +19,7 @@ import { format, parseISO } from "date-fns";
 import { slug as _slug } from "github-slugger";
 import { orderBy as _orderBy } from "lodash-es";
 import NextLink from "next/link";
+import type { FC, ReactNode } from "react";
 import { Fragment } from "react";
 import _title from "title";
 import { Virtualizer } from "virtua";
@@ -35,6 +36,22 @@ import { LI, UL } from "@/components/list/index";
 import { ImageClient as NextImage } from "@/components/notion/blocks/image.client";
 import { useStore as _useStore, useShallow } from "@/store/index";
 import { cx } from "@/utils/cx";
+
+const SelectRoot = Select.Root as FC<{
+  children?: ReactNode;
+  defaultValue?: string;
+  disabled?: boolean;
+  name?: string;
+  onOpenChange?: (open: boolean) => void;
+  onValueChange?: (value: string) => void;
+  open?: boolean;
+  size?:
+    | "1"
+    | "2"
+    | "3"
+    | Partial<Record<"initial" | "xs" | "sm" | "md" | "lg" | "xl", "1" | "2" | "3">>;
+  value?: string;
+}>;
 
 const useStore = () => {
   return _useStore(
@@ -117,7 +134,7 @@ function Book({ book, item }: { book: any; item: any }) {
   // console.dir(item?.seoImage.name);
   return (
     <Flex
-      className="border-gray-7 flex-auto items-start rounded-md border-1 border-t-1"
+      className="border-gray-7 flex-auto items-start rounded-md border border-t"
       direction={{ initial: "row", md: "row-reverse" }}
       gap="0"
       justify="between"
@@ -241,7 +258,7 @@ function Book({ book, item }: { book: any; item: any }) {
                     <NextLink href={item.urlBookshop} target="_blank">
                       Buy New at Bookshop
                       {` `}
-                      <ExternalLinkIcon className={cx("text-accent-11 !opacity-100")} />
+                      <ExternalLinkIcon className={cx("text-accent-11 opacity-100!")} />
                     </NextLink>
                   </Button>
                   <Button
@@ -257,7 +274,7 @@ function Book({ book, item }: { book: any; item: any }) {
                     <NextLink href={item.urlBiblio} target="_blank">
                       Buy Used at Biblio
                       {` `}
-                      <ExternalLinkIcon className={cx("text-accent-11 !opacity-100")} />
+                      <ExternalLinkIcon className={cx("text-accent-11 opacity-100!")} />
                     </NextLink>
                   </Button>
                 </Flex>
@@ -305,7 +322,6 @@ function Books({ data }: { data: any }) {
         if (book.id !== bookStatus) return null;
 
         return (
-          // @ts-ignore
           <Fragment key={`books-${book.id}`}>
             {items.map((item) => {
               return <Book book={book} item={item} key={item.id} />;
@@ -410,11 +426,9 @@ function BookPage({ items }: { items: any }) {
       </Flex>
       <Callout size="1" variant="outline" />
       <ContainerWithSidebar>
-        <HeaderSidebar className="!size-full" hasBorder={false} title="">
+        <HeaderSidebar className="size-full!" hasBorder={false} title="">
           <>
-            {/* @todo(radix) children */}
-            {/* @ts-ignore */}
-            <Select.Root
+            <SelectRoot
               defaultValue={bookStatus ?? "in-progress"}
               onValueChange={(value: any) => handleValueChangeBookStatus(value)}
               size={{ initial: "3", md: "3" }}
@@ -449,7 +463,7 @@ function BookPage({ items }: { items: any }) {
                   );
                 })}
               </Select.Content>
-            </Select.Root>
+            </SelectRoot>
             <Callout className="relative right-0 bottom-0" color="mint" size="1">
               <Strong className="font-mono uppercase">Bookshop</Strong> links earn a commission.
             </Callout>

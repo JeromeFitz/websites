@@ -2,7 +2,7 @@
 
 import { ExclamationTriangleIcon } from "@jeromefitz/ds/components/icon";
 import { Badge, Code, DataList, Flex, Link, Separator, Text } from "@radix-ui/themes";
-import type { ReactNode } from "react";
+import type { ErrorInfo, ReactNode } from "react";
 import { Component } from "react";
 
 import { ArticleMain } from "@/components/article/article.main";
@@ -15,7 +15,11 @@ interface PropsChildren {
   children?: ReactNode;
 }
 
-class ErrorBoundary extends Component<PropsChildren> {
+interface ErrorBoundaryState {
+  hasError: boolean;
+}
+
+class ErrorBoundary extends Component<PropsChildren, ErrorBoundaryState> {
   constructor(props: any) {
     super(props);
     this.state = { hasError: false };
@@ -26,9 +30,7 @@ class ErrorBoundary extends Component<PropsChildren> {
     return { hasError: true };
   }
 
-  // @ts-ignore
-
-  componentDidCatch(error, errorInfo) {
+  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     // // You can also log the error to an error reporting service
     // // logErrorToMyService(error, errorInfo)
     // console.dir(`> componentDidCatch`)
@@ -37,7 +39,6 @@ class ErrorBoundary extends Component<PropsChildren> {
   }
 
   render() {
-    // @ts-ignore
     if (this.state.hasError) {
       const title = "Error";
       const message = `Well this is embarassing.`;

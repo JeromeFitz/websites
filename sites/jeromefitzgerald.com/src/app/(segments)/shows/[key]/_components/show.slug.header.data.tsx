@@ -5,12 +5,11 @@ import { Badge, Code, DataList, Flex, Text } from "@radix-ui/themes";
 import type { NotionTag } from "@/lib/drizzle/schemas/_notion/types";
 import { cx } from "@/utils/cx";
 
-// @ts-ignore
-function ShowSlugHeaderData({ item }) {
+function ShowSlugHeaderData({ item }: { item: any }) {
   return (
     <>
       <Flex
-        className={cx("content-center items-center overflow-auto", "border-gray-7 border-t-1")}
+        className={cx("content-center items-center overflow-auto", "border-gray-7 border-t")}
         direction="column"
         gap="0"
         justify="start"
@@ -20,7 +19,7 @@ function ShowSlugHeaderData({ item }) {
         wrap="nowrap"
       >
         <DataList.Root
-          className={cx("py-6 pr-1 pl-4", "gap-x-(--space-3) md:!gap-x-(--space-2)", "w-full")}
+          className={cx("py-6 pr-1 pl-4", "gap-x-(--space-3) md:gap-x-(--space-2)!", "w-full")}
           size="2"
         >
           <DataList.Item align="start" className="hidden">
@@ -30,7 +29,7 @@ function ShowSlugHeaderData({ item }) {
             >
               <Flex justify={{ initial: "start", md: "start" }} width="100%">
                 <IdCardIcon />
-                <Text className="font-mono md:!sr-only" ml="1" size="1">
+                <Text className="font-mono md:sr-only!" ml="1" size="1">
                   Title
                 </Text>
               </Flex>
@@ -45,7 +44,7 @@ function ShowSlugHeaderData({ item }) {
               >
                 <Flex justify={{ initial: "start", md: "start" }} width="100%">
                   <TagIcon />
-                  <Text className="font-mono md:!sr-only" ml="1" size="1">
+                  <Text className="font-mono md:sr-only!" ml="1" size="1">
                     Type
                   </Text>
                 </Flex>
