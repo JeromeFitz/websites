@@ -1,54 +1,107 @@
-# name: 'Deploy'
 name: "🚀️  "
-description: "Deploy to Vercel based to Preview, or Production if `main` branch"
+description: "Deploy to Vercel. Preview or Production based on PRODUCTION input."
 author: "JeromeFitz"
 
 inputs:
-  DEPLOY_PR_FROM_FORK:
-    description: "Flag to allow Vercel to deploy from fork. (Not recommended.)"
-    required: false
-    default: false
-    type: boolean
   PRODUCTION:
-    description: "Flag to request Vercel to deploy to Production (true) or Preview (false)"
+    description: "Deploy to production (true) or preview (false)"
     default: false
     type: boolean
   GH_TOKEN:
-    description: "Provide GitHub Token for Vercel to connect and verify with."
+    description: "GitHub Token (botjerome) for posting the preview comment."
     required: true
     type: string
+  PR_NUMBER:
+    description: "Pull request number for the preview comment. Omit for production."
+    required: false
+    type: string
   VERCEL_ORG_ID:
-    description: "Provide Organization ID for Vercel."
     required: true
     type: string
   VERCEL_PROJECT_ID:
-    description: "Provide Project ID for Vercel."
     required: true
     type: string
   VERCEL_TOKEN:
-    description: "Provide Token for Vercel."
     required: true
     type: string
 
 runs:
   using: "composite"
   steps:
-    - name: "🔺️ Install"
+    - name: "🔺️  Install"
       id: wf-install
       shell: bash
-      run: npm install -g vercel@54.14.2
-    - name: "🔺️ Deploy"
+      run: npm install -g vercel@54.14.5
+
+    - name: "🔺️  Deploy"
       id: wf-deploy
-      # uses: JeromeFitz/deploy-to-vercel-action@ci/vercel-deploy-commit-limits
-      uses: BetaHuhn/deploy-to-vercel-action@v1
-      with:
-        GITHUB_TOKEN: ${{ inputs.GH_TOKEN }}
+      shell: bash
+      env:
         VERCEL_ORG_ID: ${{ inputs.VERCEL_ORG_ID }}
         VERCEL_PROJECT_ID: ${{ inputs.VERCEL_PROJECT_ID }}
-        VERCEL_TOKEN: ${{ inputs.VERCEL_TOKEN }}
-        CREATE_COMMENT: true
-        DELETE_EXISTING_COMMENT: true
-        PR_LABELS: false
-        PRODUCTION: ${{ inputs.PRODUCTION }}
-        DEPLOY_PR_FROM_FORK: ${{ inputs.DEPLOY_PR_FROM_FORK }}
-        TRIM_COMMIT_MESSAGE: true
+      run: |
+        if [ "${{ inputs.PRODUCTION }}" = "true" ]; then
+          timeout 300 vercel deploy --prod --token=${{ inputs.VERCEL_TOKEN }}
+        else
+          timeout 300 vercel deploy --token=${{ inputs.VERCEL_TOKEN }} 2>&1 | tee /tmp/vercel-deploy.log
+          preview_url=$(grep -oE 'https://[a-zA-Z0-9-]+\.vercel\.app' /tmp/vercel-deploy.log | head -1)
+          inspect_url=$(grep -oE 'https://vercel\.com/[^[:space:]]+' /tmp/vercel-deploy.log | head -1)
+          echo "preview_url=$preview_url" >> $GITHUB_OUTPUT
+          echo "inspect_url=$inspect_url" >> $GITHUB_OUTPUT
+        fi
+
+    - name: "💬  Comment (Preview)"
+      id: wf-comment
+      if: ${{ inputs.PRODUCTION != 'true' && inputs.PR_NUMBER != '' }}
+      uses: actions/github-script@v9
+      with:
+        github-token: ${{ inputs.GH_TOKEN }}
+        script: |
+          const prNumber = parseInt('${{ inputs.PR_NUMBER }}');
+          const previewUrl = '${{ steps.wf-deploy.outputs.preview_url }}';
+          const inspectUrl = '${{ steps.wf-deploy.outputs.inspect_url }}';
+          const sha = context.payload.pull_request.head.sha.slice(0, 7);
+          const branch = context.payload.pull_request.head.ref;
+          const runUrl = `https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+          const marker = '<!-- vercel-preview -->';
+
+          const rows = [
+            `<tr>\n<td><strong>Latest commit:</strong></td>\n<td><code>${sha}</code></td>\n</tr>`,
+            `<tr>\n<td><strong>Branch:</strong></td>\n<td><code>${branch}</code></td>\n</tr>`,
+            `<tr>\n<td><strong>✅ Preview:</strong></td>\n<td><a href='${previewUrl}'>${previewUrl}</a></td>\n</tr>`,
+          ];
+          if (inspectUrl) {
+            rows.push(`<tr>\n<td><strong>🔍 Inspect:</strong></td>\n<td><a href='${inspectUrl}'>${inspectUrl}</a></td>\n</tr>`);
+          }
+          rows.push(`<tr>\n<td><strong>📋 Logs:</strong></td>\n<td><a href='${runUrl}'>View Workflow Logs</a></td>\n</tr>`);
+
+          const body = [
+            marker,
+            'This pull request has been deployed to Vercel.',
+            '',
+            '<table>',
+            ...rows,
+            '</table>',
+          ].join('\n');
+
+          const { data: comments } = await github.rest.issues.listComments({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            issue_number: prNumber,
+          });
+
+          const existing = comments.find(c => c.body.includes(marker));
+          if (existing) {
+            await github.rest.issues.deleteComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              comment_id: existing.id,
+            });
+          }
+
+          await github.rest.issues.createComment({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            issue_number: prNumber,
+            body,
+          });
