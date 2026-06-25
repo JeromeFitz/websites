@@ -9,6 +9,7 @@ import type {
   RichTextItemResponse,
 } from "@notionhq/client/build/src/api-endpoints";
 import { Fragment } from "react";
+import type { ReactNode } from "react";
 
 import { Anchor } from "@/components/anchor/index";
 import { cx } from "@/utils/cx";
@@ -53,10 +54,9 @@ const Text = ({ ref, ...props }: any) => {
   );
 };
 
-// @ts-ignore
-function Href({ children, href, ...props }) {
+function Href({ children, href, ...props }: { children: ReactNode; href: string; [key: string]: unknown }) {
   return (
-    <Anchor href={href} {...props}>
+    <Anchor href={href} {...(props as any)}>
       {children}
     </Anchor>
   );
@@ -95,14 +95,12 @@ function RichText({
   );
 }
 
-// @ts-ignore
-function RichTextArray({ id, items }) {
+function RichTextArray({ id, items }: { id: string; items: RichTextItemResponse[] }) {
   // console.dir(`-- items --`)
   // console.dir(items)
   if (!items) return null;
   return (
     <>
-      {/* @ts-ignore */}
       {items.map((item: RichTextItemResponse, _i) => {
         const key = getBlockKey(id, "rich_text", _i);
         const { annotations, href, plain_text } = item;

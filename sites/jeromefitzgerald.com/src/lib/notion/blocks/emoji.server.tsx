@@ -3,8 +3,7 @@ import emojiRegex from "emoji-regex";
 import { map as _map, orderBy as _orderBy, size as _size } from "lodash-es";
 import { find as findEmoji } from "node-emoji";
 
-// @ts-ignore
-function Emoji({ character }) {
+function Emoji({ character }: { character: string }) {
   // const { find: findEmoji } = await import('node-emoji')
   const emojiFound = findEmoji(character);
   // console.dir(`[emoji] supported: ${character}`)
@@ -42,8 +41,7 @@ function Emoji({ character }) {
  *  so for now --- letting it go.
  *
  */
-// @ts-ignore
-function EmojiHtml({ emoji, label }) {
+function EmojiHtml({ emoji, label }: { emoji: string; label: string }) {
   return (
     <span aria-label={label} className="mr-1.5 ml-0.5" role="img">
       {emoji}
@@ -51,10 +49,9 @@ function EmojiHtml({ emoji, label }) {
   );
 }
 
-// @ts-ignore
 // @todo(complexity) 13
 // oxlint-disable-next-line complexity
-function EmojiWrapper({ id, text }) {
+function EmojiWrapper({ id, text }: { id: string; text: string }) {
   // const [loading, loadingSet] = useState(true)
   // useEffect(() => {
   //   loadingSet(false)
@@ -93,7 +90,7 @@ function EmojiWrapper({ id, text }) {
     }
 
     const prev = emojiMapping[emojiIndex - 1];
-    if (prev && prev.index !== match.to) {
+    if (prev && prev.index !== (match as any).to) {
       emojiMapping[emojiIndex] = {
         emoji: false,
         index: prev.to,
@@ -124,14 +121,12 @@ function EmojiWrapper({ id, text }) {
          * Argument of type 'any' is not assignable to parameter of type 'never'
          */
 
-        // @ts-ignore
         item.emoji ? (
           /**
            * @note(next) outside of page.tsx, need to ignore
            * 'Emoji' cannot be used as a JSX component.
            */
 
-          // @ts-ignore
           <Emoji character={item.text.trim()} key={`${id}--emoji--${itemId}`} />
         ) : (
           item.text
@@ -155,7 +150,6 @@ function EmojiWrapper({ id, text }) {
          * Argument of type 'any' is not assignable to parameter of type 'never'
          */
 
-        // @ts-ignore
         emojiMappingStitch.push(sliced);
       }
     });

@@ -80,7 +80,6 @@ function EventSlugHeaderData({ item }: { item: Event }) {
       {!isEventOver && (
         // @todo(next) NICE-117 causes hydration error on direct links
 
-        // @ts-ignore
         <Portal asChild>
           <Box
             bottom="0"

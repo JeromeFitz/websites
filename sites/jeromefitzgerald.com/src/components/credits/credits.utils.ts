@@ -1,8 +1,5 @@
-function getRelationTitle(str?: string) {
-  // @ts-ignore
-  const title = str
-    .split(".")
-    .at(-1)
+function getRelationTitle(str: string) {
+  const title = (str.split(".").at(-1) ?? "")
     .split(/(?=[A-Z])/)
     .join(" ");
 

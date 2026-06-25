@@ -30,8 +30,9 @@ export async function buildInitialCache({
         const properties: Properties = result?.properties;
         // @todo(types)
 
-        // @ts-ignore
-        const key = properties["Slug.Preview"].formula.string;
+        const slugFormula = properties["Slug.Preview"].formula;
+        if (slugFormula.type !== "string" || !slugFormula.string) return;
+        const key = slugFormula.string;
         const value = [
           {
             ...result,

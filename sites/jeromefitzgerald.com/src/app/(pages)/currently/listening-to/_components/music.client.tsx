@@ -452,7 +452,6 @@ function DataItems() {
       }),
     fetcher,
     {
-      // @ts-ignore
       dataPath: "data",
       limit: appleMusicType === "recent-played-tracks" ? 10 : limit,
       //

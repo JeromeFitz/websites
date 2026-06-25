@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 
 import { getEventsWithLimit } from "@/lib/drizzle/schemas/queries";
 import type { Event } from "@/lib/drizzle/schemas/types";
+import type { NotionColor } from "@/lib/drizzle/schemas/_notion/types";
 
 import { CurrentlyItem } from "./currently.item";
 import { CurrentlyWrapper } from "./currently.item.wrapper";
@@ -15,7 +16,7 @@ async function CurrentlyEvent({
   titleSub,
   ...c
 }: {
-  color: string;
+  color: NotionColor;
   href: string;
   icon: ReactNode;
   id: string;
@@ -74,7 +75,6 @@ async function CurrentlyEvent({
   // }
 
   return (
-    // @ts-ignore
     <CurrentlyWrapper {...propsParent}>
       <CurrentlyItem {...props} />
     </CurrentlyWrapper>

@@ -1,13 +1,19 @@
 "use client";
 
-import { Accordion as AccordionRoot } from "@radix-ui/react-accordion";
+import { Accordion as AccordionRootRadix } from "@radix-ui/react-accordion";
+import type { FC, ReactNode, Ref } from "react";
 
 interface AccordionRootPropsImpl {
-  children?: any;
-  className?: any;
+  children?: ReactNode;
+  className?: string;
+  collapsible?: boolean;
+  defaultValue?: string;
+  onValueChange?: (value: string) => void;
+  ref?: Ref<HTMLDivElement>;
   type?: "multiple" | "single";
-  ref?: any;
 }
+
+const AccordionRootRC = AccordionRootRadix as FC<AccordionRootPropsImpl>;
 
 const AccordionRootImpl = ({
   children,
@@ -16,10 +22,9 @@ const AccordionRootImpl = ({
   ref,
   ...props
 }: AccordionRootPropsImpl) => (
-  // @ts-ignore
-  <AccordionRoot className={className} {...props} ref={ref} type={type}>
+  <AccordionRootRC className={className} {...props} ref={ref} type={type}>
     {children}
-  </AccordionRoot>
+  </AccordionRootRC>
 );
 
 export { AccordionRootImpl as AccordionRoot };

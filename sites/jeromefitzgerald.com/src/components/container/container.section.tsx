@@ -2,7 +2,6 @@ import { Box } from "@radix-ui/themes";
 
 import { cx } from "@/utils/cx";
 
-// @ts-ignore
 function ContainerSection({ children }: { children: React.ReactNode }) {
   return (
     <Box

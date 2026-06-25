@@ -11,8 +11,7 @@ import { CreditsItems } from "./credits.items";
 import { CreditsLoading } from "./credits.loading";
 import { getRollupTitle } from "./credits.utils";
 
-// @ts-ignore
-function Credits({ id, relations }) {
+function Credits({ id, relations }: { id: string; relations: any }) {
   return (
     <Flex
       className={cx("place-content-center items-center overflow-visible", "z-0")}

@@ -25,14 +25,13 @@ const ROLLUPS: string[] = [
 export function EventComponent({ blocks, item }: { blocks: any; item: Event }) {
   const itemBlocks = blocks[0];
 
+  const itemRecord = item as Record<string, any>;
   const R: any = {};
   ROLLUPS.map((ROLLUP: any) => {
     R[ROLLUP] = [];
 
-    // @ts-ignore
-    if (item[ROLLUP] && item[ROLLUP].length > 0) {
-      // @ts-ignore
-      const items = item[ROLLUP];
+    if (itemRecord[ROLLUP] && itemRecord[ROLLUP].length > 0) {
+      const items = itemRecord[ROLLUP];
       items.map((i: any) => {
         R[ROLLUP].push(getTitleData({ data: i, type: i.type }));
       });

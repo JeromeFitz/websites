@@ -226,11 +226,8 @@ const config = ({
        */
       pagesBufferLength: 2,
     },
-    output: undefined,
     // @note(next) monorepo root
     outputFileTracingRoot: join(pathDirName, "../../"),
-    // output: 'export',
-    // output: 'standalone',
     // outputFileTracing: false,
     pageExtensions: ["jsx", "js", "tsx", "ts"],
     poweredByHeader: false,

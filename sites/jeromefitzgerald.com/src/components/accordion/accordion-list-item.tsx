@@ -1,25 +1,25 @@
 import NextLink from "next/link";
+import type { FC, ReactNode } from "react";
 
 import { cx } from "@/utils/cx";
 
-// import { useStore } from '@/store/index'
-
-// const useStoreMenu = () => {
-//   return useStore((store) => ({
-//     isMenuMobileOpen: store.isMenuMobileOpen,
-//     isMenuMobileOpenSet: store.isMenuMobileOpenSet,
-//   }))
-// }
-
-// @ts-ignore
-function AccordionListItem({ children, href, icon, ...props }) {
+function AccordionListItem({
+  children,
+  href,
+  icon,
+  ...props
+}: {
+  children: ReactNode;
+  href: string;
+  icon: FC<{ "aria-hidden"?: boolean; className?: string; label: string }>;
+  [key: string]: unknown;
+}) {
   const Icon = icon;
   return (
     <NextLink
       className={cx("cursor-pointer text-inherit no-underline")}
       href={href}
-      // onClick={handleOnClick}
-      {...props}
+      {...(props as any)}
     >
       <li
         className={cx(

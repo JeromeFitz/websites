@@ -111,7 +111,6 @@ function Currently() {
           const { component: _c, icon: _icon, ...rest } = c;
           const props = { ...rest, icon, titleSub };
 
-          // @ts-ignore
           return <Component key={key} {...props} />;
         })}
       </Flex>
