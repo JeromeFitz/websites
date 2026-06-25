@@ -17,6 +17,7 @@ import {
 // import { useEffect, useState } from 'react'
 import NextLink from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import type { FC, ReactNode } from "react";
 import { useState } from "react";
 
 import { useStore as _useStore, useShallow } from "@/store/index";
@@ -60,9 +61,9 @@ function NavigationButton({ isHomePage = false }: { isHomePage?: boolean }) {
     <Button
       // aria-label="Jerome"
       className={cx(
-        "!hover:bg-accent-2 !bg-accent-1 transition-colors",
+        "hover:bg-accent-2! bg-accent-1! transition-colors",
         '[&>svg]:data-[state="open"]:animate-none',
-        "!cursor-pointer",
+        "cursor-pointer!",
       )}
       // color={isLoading ? 'accent' : 'gray'}
       color="gray"
@@ -85,14 +86,19 @@ function NavigationLink({ isHomePage = false }: { isHomePage?: boolean }) {
   return <NavigationButton isHomePage={isHomePage} />;
 }
 
+const PopoverRoot = Popover.Root as FC<{
+  children?: ReactNode;
+  defaultOpen?: boolean;
+  modal?: boolean;
+  onOpenChange?: (open: boolean) => void;
+  open?: boolean;
+}>;
+
 function NavigationPopOver() {
-  // @ts-ignore
   const { isOverlaySet } = useStore();
   const [isPopover, isPoperoverSet] = useState(false);
   return (
-    // @todo(radix) children
-    // @ts-ignore
-    <Popover.Root
+    <PopoverRoot
       modal={true}
       onOpenChange={() => {
         isOverlaySet();
@@ -101,9 +107,25 @@ function NavigationPopOver() {
       open={isPopover}
     >
       <Flex direction="row" gap="3">
-        {/* @ts-ignore */}
-        <Popover.Trigger asChild>
-          <NavigationButton />
+        <Popover.Trigger>
+          <Button
+            className={cx(
+              "hover:bg-accent-2! bg-accent-1! transition-colors",
+              '[&>svg]:data-[state="open"]:animate-none',
+              "cursor-pointer!",
+            )}
+            color="gray"
+            radius="full"
+            size="3"
+            variant="outline"
+          >
+            <DotFilledIcon
+              className={cx("text-pink-11 size-6 animate-pulse transition-all delay-1000")}
+            />
+            <Text>
+              <Strong>Jerome</Strong>
+            </Text>
+          </Button>
         </Popover.Trigger>
       </Flex>
       <Popover.Content
@@ -114,7 +136,7 @@ function NavigationPopOver() {
       >
         <Grid
           className={cx(
-            "rounded-3 border-gray-7 !overflow-hidden border-1",
+            "rounded-3 border-gray-7 overflow-hidden! border",
             "w-[calc(var(--radix-popper-available-width)-3px)] min-w-[unset]",
             "md:max-w-52.25",
           )}
@@ -167,7 +189,7 @@ function NavigationPopOver() {
           </Flex>
         </Grid>
       </Popover.Content>
-    </Popover.Root>
+    </PopoverRoot>
   );
 }
 
