@@ -3,10 +3,20 @@
 import { DotFilledIcon } from "@radix-ui/react-icons";
 import { Button, DropdownMenu, Text } from "@radix-ui/themes";
 import { useRouter } from "next/navigation.js";
+import type { FC, ReactNode } from "react";
 import { Fragment } from "react";
 
 import { useStore as _useStore, useShallow } from "@/store/index";
 import { cx } from "@/utils/cx";
+
+const DropdownMenuRoot = DropdownMenu.Root as FC<{
+  children?: ReactNode;
+  defaultOpen?: boolean;
+  dir?: "ltr" | "rtl";
+  modal?: boolean;
+  onOpenChange?: (open: boolean) => void;
+  open?: boolean;
+}>;
 
 const useStore = () => {
   return _useStore(
@@ -40,22 +50,16 @@ function NavigationTertiary({ className, order = 0 }: { className: string; order
     >
       <div className="contents size-full">
         <div className={cx()}>
-          {/* @todo(radix) children */}
-          {/* @ts-ignore */}
-          <DropdownMenu.Root modal={false}>
+          <DropdownMenuRoot modal={false}>
             <DropdownMenu.Trigger className={cx(isDisabled && "hover:cursor-not-allowed")}>
               <Button
                 aria-label={isDisabled ? "Disabled Tertiary Menu" : "Tertiary Menu"}
                 className={cx(
-                  "!active:bg-accent-5 !hover:bg-accent-4 !bg-accent-3",
+                  "active:bg-accent-5! hover:bg-accent-4! bg-accent-3!",
                   "text-accent-11 hover:text-accent-11 active:text-accent-11",
                   "backdrop-blur-md transition-all",
-                  "!min-w-77.5",
+                  "min-w-77.5!",
                 )}
-                // @todo(types)
-                // @ts-ignore
-                // color="orange"
-                // color={isDisabled ? 'gray' : 'accent'}
                 disabled={isDisabled}
                 size="3"
                 style={{
@@ -76,8 +80,7 @@ function NavigationTertiary({ className, order = 0 }: { className: string; order
             </DropdownMenu.Trigger>
             {!isDisabled && (
               <DropdownMenu.Content sideOffset={6} size="2" style={{ minWidth: "310px" }}>
-                {/* @ts-ignore */}
-                {mt?.map((item, idx) => {
+                {mt?.map((item: any, idx: number) => {
                   if (!item.isActive && !item.isActiveMobile) return null;
 
                   const key = `tertiary-${idx}-${item.id}`;
@@ -90,7 +93,6 @@ function NavigationTertiary({ className, order = 0 }: { className: string; order
 
                   return (
                     <Fragment key={key}>
-                      {/* @ts-ignore */}
                       <DropdownMenu.Item
                         className={cx(
                           item.isActive && !item.isActiveMobile && "hidden",
@@ -104,7 +106,7 @@ function NavigationTertiary({ className, order = 0 }: { className: string; order
                           //     `zzz_menuTertiaryActiveSet (router): ${item.href}`,
                           //   )
 
-                          !!item.href && router.push(item.href);
+                          if (item.href) router.push(item.href);
                         }}
                         textValue={item.title}
                       >
@@ -118,7 +120,7 @@ function NavigationTertiary({ className, order = 0 }: { className: string; order
                 })}
               </DropdownMenu.Content>
             )}
-          </DropdownMenu.Root>
+          </DropdownMenuRoot>
         </div>
       </div>
     </div>

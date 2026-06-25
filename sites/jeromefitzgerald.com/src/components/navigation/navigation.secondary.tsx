@@ -3,10 +3,20 @@
 import { HomeIcon } from "@jeromefitz/ds/components/icon";
 import { Button, DropdownMenu, Flex, Text } from "@radix-ui/themes";
 import { useRouter } from "next/navigation.js";
+import type { FC, ReactNode } from "react";
 import { Fragment } from "react";
 
 import { useStore as _useStore, useShallow } from "@/store/index";
 import { cx } from "@/utils/cx";
+
+const DropdownMenuRoot = DropdownMenu.Root as FC<{
+  children?: ReactNode;
+  defaultOpen?: boolean;
+  dir?: "ltr" | "rtl";
+  modal?: boolean;
+  onOpenChange?: (open: boolean) => void;
+  open?: boolean;
+}>;
 
 const useStore = () => {
   return _useStore(
@@ -36,14 +46,12 @@ function NavigationSecondary({ order = 0 }) {
   return (
     <div className={cx("relative h-auto w-min flex-none")} style={{ opacity: 1, order }}>
       <div className="contents size-full">
-        {/* @todo(radix) children */}
-        {/* @ts-ignore */}
-        <DropdownMenu.Root modal={false}>
+        <DropdownMenuRoot modal={false}>
           <DropdownMenu.Trigger>
             <Flex
               asChild
               className={cx(
-                "!hover:bg-accent-2 !bg-accent-1 transition-colors",
+                "hover:bg-accent-2! bg-accent-1! transition-colors",
                 // 'w-[165px] max-w-[165px] min-w-[128px]',
                 // 'flex items-center justify-between gap-4 text-left',
               )}
@@ -55,9 +63,7 @@ function NavigationSecondary({ order = 0 }) {
             >
               <Button
                 className="text-left"
-                // @todo(types)
-                // @ts-ignore
-                color={isDisabled ? "gray" : "accent"}
+                color={isDisabled ? "gray" : undefined}
                 disabled={isDisabled}
                 size="3"
                 variant="outline"
@@ -98,7 +104,7 @@ function NavigationSecondary({ order = 0 }) {
                       onSelect={() => {
                         zzz_menuSecondaryActiveSet(item);
 
-                        !!item.href && router.push(item.href);
+                        if (item.href) router.push(item.href);
                       }}
                       textValue={item.title}
                     >
@@ -114,10 +120,8 @@ function NavigationSecondary({ order = 0 }) {
                             <Text size={{ initial: "2", md: "3" }}>{item.title}</Text>
                           </DropdownMenu.SubTrigger>
                         </Flex>
-                        {/* @ts-ignore */}
-                        <DropdownMenu.SubContent size={{ initial: "2", md: "3" }}>
-                          {/* @ts-ignore */}
-                          {mt.map((itemSub) => {
+                        <DropdownMenu.SubContent size="2">
+                          {mt.map((itemSub: any) => {
                             if (!itemSub.isActive && !itemSub.isActiveMobile) return null;
 
                             // const Icon = itemSub.icon
@@ -138,7 +142,7 @@ function NavigationSecondary({ order = 0 }) {
                                       zzz_menuSecondaryActiveSet(item);
                                       zzz_menuTertiaryActiveSet(itemSub);
 
-                                      !!itemSub.href && router.push(itemSub.href);
+                                      if (itemSub.href) router.push(itemSub.href);
                                     }}
                                   >
                                     <Text
@@ -160,7 +164,7 @@ function NavigationSecondary({ order = 0 }) {
               );
             })}
           </DropdownMenu.Content>
-        </DropdownMenu.Root>
+        </DropdownMenuRoot>
       </div>
     </div>
   );
