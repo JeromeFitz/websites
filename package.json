@@ -49,7 +49,7 @@
     "syncpack": "15.3.2",
     "tsdown": "0.22.3",
     "turbo": "2.9.19-canary.9",
-    "typescript": "^6.0.3"
+    "typescript": "6.0.3"
   },
   "devEngines": {
     "packageManager": {
