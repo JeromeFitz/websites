@@ -40,6 +40,10 @@
       "inputs": ["src/**", "*.cjs", "*.js", "*.mjs", "tsdown.config.ts", "tsconfig.json"],
       "outputs": ["dist/**"]
     },
+    "build:analyze": {
+      "cache": false,
+      "dependsOn": ["^build"]
+    },
     "jeromefitzgerald.com#build": {
       "dependsOn": ["^build"],
       "env": ["VERCEL_ENV"],
