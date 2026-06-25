@@ -40,10 +40,10 @@ function NavigationButtonClient() {
           radius="full"
           variant="surface"
         >
-          <SegmentedControl.Item suppressHydrationWarning value="dark">
+          <SegmentedControl.Item aria-label="Dark mode" suppressHydrationWarning value="dark">
             <MoonIcon />
           </SegmentedControl.Item>
-          <SegmentedControl.Item suppressHydrationWarning value="light">
+          <SegmentedControl.Item aria-label="Light mode" suppressHydrationWarning value="light">
             <SunIcon />
           </SegmentedControl.Item>
         </SegmentedControl.Root>
