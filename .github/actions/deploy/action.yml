@@ -24,6 +24,26 @@ inputs:
   VERCEL_TOKEN:
     required: true
     type: string
+  LHCI_PERFORMANCE:
+    description: "Lighthouse Performance score (0-100)"
+    required: false
+    type: string
+  LHCI_ACCESSIBILITY:
+    description: "Lighthouse Accessibility score (0-100)"
+    required: false
+    type: string
+  LHCI_BEST_PRACTICES:
+    description: "Lighthouse Best Practices score (0-100)"
+    required: false
+    type: string
+  LHCI_SEO:
+    description: "Lighthouse SEO score (0-100)"
+    required: false
+    type: string
+  LHCI_REPORT_URL:
+    description: "Lighthouse CI uploaded report URL"
+    required: false
+    type: string
 
 runs:
   using: "composite"
@@ -41,7 +61,9 @@ runs:
         VERCEL_PROJECT_ID: ${{ inputs.VERCEL_PROJECT_ID }}
       run: |
         if [ "${{ inputs.PRODUCTION }}" = "true" ]; then
-          timeout 300 vercel deploy --prod --token=${{ inputs.VERCEL_TOKEN }}
+          timeout 300 vercel deploy --prod --token=${{ inputs.VERCEL_TOKEN }} 2>&1 | tee /tmp/vercel-deploy.log
+          production_url=$(grep 'Production:' /tmp/vercel-deploy.log | grep -oE 'https://[^[:space:]]+' | head -1)
+          echo "production_url=$production_url" >> $GITHUB_OUTPUT
         else
           timeout 300 vercel deploy --token=${{ inputs.VERCEL_TOKEN }} 2>&1 | tee /tmp/vercel-deploy.log
           preview_url=$(grep -oE 'https://[a-zA-Z0-9-]+\.vercel\.app' /tmp/vercel-deploy.log | head -1)
@@ -49,6 +71,39 @@ runs:
           echo "preview_url=$preview_url" >> $GITHUB_OUTPUT
           echo "inspect_url=$inspect_url" >> $GITHUB_OUTPUT
         fi
+
+    - name: "🔗  GitHub Deployment"
+      id: wf-gh-deployment
+      if: ${{ steps.wf-deploy.outputs.preview_url != '' || steps.wf-deploy.outputs.production_url != '' }}
+      uses: actions/github-script@v9
+      with:
+        github-token: ${{ inputs.GH_TOKEN }}
+        script: |
+          const isProduction = '${{ inputs.PRODUCTION }}' === 'true';
+          const envUrl = isProduction
+            ? '${{ steps.wf-deploy.outputs.production_url }}'
+            : '${{ steps.wf-deploy.outputs.preview_url }}';
+          const ref = process.env.GITHUB_HEAD_REF || process.env.GITHUB_REF_NAME;
+          const runUrl = `https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+
+          const { data: deployment } = await github.rest.repos.createDeployment({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            ref,
+            environment: isProduction ? 'Production' : 'Preview',
+            auto_merge: false,
+            required_contexts: [],
+            transient_environment: !isProduction,
+          });
+
+          await github.rest.repos.createDeploymentStatus({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            deployment_id: deployment.id,
+            state: 'success',
+            environment_url: envUrl,
+            log_url: runUrl,
+          });
 
     - name: "💬  Comment (Preview)"
       id: wf-comment
@@ -75,14 +130,39 @@ runs:
           }
           rows.push(`<tr>\n<td><strong>📋 Logs:</strong></td>\n<td><a href='${runUrl}'>View Workflow Logs</a></td>\n</tr>`);
 
-          const body = [
+          const sections = [
             marker,
             'PR Deployed to: `▲ Vercel`',
             '',
             '<table>',
             ...rows,
             '</table>',
-          ].join('\n');
+          ];
+
+          const perf = '${{ inputs.LHCI_PERFORMANCE }}';
+          const a11y = '${{ inputs.LHCI_ACCESSIBILITY }}';
+          const bp   = '${{ inputs.LHCI_BEST_PRACTICES }}';
+          const seo  = '${{ inputs.LHCI_SEO }}';
+          const reportUrl = '${{ inputs.LHCI_REPORT_URL }}';
+
+          if (perf || a11y || bp || seo) {
+            const dot = n => n >= 90 ? '🟢' : n >= 50 ? '🟡' : '🔴';
+            const row = (label, val) => val
+              ? `<tr>\n<td><strong>${label}</strong></td>\n<td>${dot(+val)} ${val}</td>\n</tr>`
+              : null;
+            const lhciRows = [
+              row('⚡ Performance', perf),
+              row('♿ Accessibility', a11y),
+              row('✨ Best Practices', bp),
+              row('🔍 SEO', seo),
+            ].filter(Boolean);
+            if (reportUrl) {
+              lhciRows.push(`<tr>\n<td><strong>📊 Report</strong></td>\n<td><a href='${reportUrl}'>View Report</a></td>\n</tr>`);
+            }
+            sections.push('', '**Lighthouse**', '', '<table>', ...lhciRows, '</table>');
+          }
+
+          const body = sections.join('\n');
 
           const { data: comments } = await github.rest.issues.listComments({
             owner: context.repo.owner,

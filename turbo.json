@@ -61,9 +61,8 @@
       "cache": false
     },
     "lhci": {
-      "dependsOn": ["^build", "^jeromefitzgerald.com#build"],
-      "inputs": ["src/**/*.ts", "src/**/*.tsx"],
-      "outputs": [".lighthouseci/**"]
+      "cache": false,
+      "dependsOn": ["^build", "^jeromefitzgerald.com#build"]
     },
     "lint:ts": {
       "dependsOn": ["^build"],

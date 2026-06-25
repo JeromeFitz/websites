@@ -55,6 +55,7 @@ packages:
 patchedDependencies:
   "@semantic-release/commit-analyzer@13.0.1": patches/@semantic-release__commit-analyzer@13.0.0.patch
   next: patches/next.patch
+pmOnFail: ignore
 publicHoistPattern:
   - "*ccommit*"
   - "*eslint*"

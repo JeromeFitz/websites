@@ -46,6 +46,7 @@ env:
   NOTION__DATABASE__SHOWS: ${{ secrets.NOTION__DATABASE__SHOWS }}
   NOTION__DATABASE__VENUES: ${{ secrets.NOTION__DATABASE__VENUES }}
   NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
+  NPM_CONFIG_FUND: false
   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
   OCTOKIT_TOKEN: ${{ secrets.OCTOKIT_TOKEN }}
   OG_API_KEY: ${{ secrets.OG_API_KEY }}
@@ -60,6 +61,7 @@ env:
   VERCEL_ENV: ${{ vars.VERCEL_ENV }}
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+  VERCEL_TELEMETRY_DISABLED: 1
   VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
 
 jobs:
@@ -97,6 +99,7 @@ jobs:
       NOTION__DATABASE__SHOWS: ${{ secrets.NOTION__DATABASE__SHOWS }}
       NOTION__DATABASE__VENUES: ${{ secrets.NOTION__DATABASE__VENUES }}
       NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
+      NPM_CONFIG_FUND: false
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       OCTOKIT_TOKEN: ${{ secrets.OCTOKIT_TOKEN }}
       OG_API_KEY: ${{ secrets.OG_API_KEY }}
@@ -111,6 +114,7 @@ jobs:
       VERCEL_ENV: ${{ vars.VERCEL_ENV }}
       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      VERCEL_TELEMETRY_DISABLED: 1
       VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
     steps:
       - name: "🐙️  Checkout"
