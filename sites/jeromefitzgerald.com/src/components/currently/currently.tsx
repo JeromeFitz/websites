@@ -97,10 +97,22 @@ function Currently() {
           if (!c?.isActive) return null;
 
           const key = `currently-${idx}-${c.id}`;
-
           const Component = c.component;
+          const IconComponent = c.icon;
+          const icon = (
+            <IconComponent
+              className={cx(
+                "m-2 rounded-md p-2 text-inherit opacity-100! md:p-2",
+                "transition-colors",
+                "bg-whiteA-10 group-hover:bg-whiteA-9",
+                "dark:bg-blackA-10 dark:group-hover:bg-blackA-9",
+                "size-10! md:size-12!",
+              )}
+            />
+          );
           const titleSub = c?.titleSub.split(" – ");
-          const props = { ...c, titleSub };
+          const { component: _c, icon: _icon, ...rest } = c;
+          const props = { ...rest, icon, titleSub };
 
           // @ts-ignore
           return <Component key={key} {...props} />;

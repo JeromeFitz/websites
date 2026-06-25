@@ -77,7 +77,7 @@ function NavigationTertiary({ className, order = 0 }: { className: string; order
                 variant="outline"
               >
                 <div className="flex items-center justify-start gap-2">
-                  {!isDisabled && <DropdownMenuTriggerIconType className="ml-1" />}
+                  {!isDisabled && <DropdownMenuTriggerIconType className="ml-1 size-5" />}
                   {zzz_menuTertiaryActive?.title}
                 </div>
                 {!isDisabled && <DropdownMenuTriggerIcon />}
@@ -117,7 +117,7 @@ function NavigationTertiary({ className, order = 0 }: { className: string; order
                         }}
                         textValue={item.title}
                       >
-                        <DropdownMenuItemIcon />
+                        <DropdownMenuItemIcon className="size-5" />
                         <Text className="line-clamp-1" size="3">
                           {item.title}
                         </Text>

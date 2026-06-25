@@ -117,7 +117,7 @@ function Book({ book, item }: { book: any; item: any }) {
     url: src,
     width: 315,
   };
-  console.dir(item?.seoImage.name);
+  // console.dir(item?.seoImage.name);
   return (
     <Flex
       className="border-gray-7 flex-auto items-start rounded-md border-1 border-t-1"
@@ -361,7 +361,7 @@ function BookPage({ items }: { items: any }) {
     return null;
   });
 
-  console.dir(books);
+  // console.dir(books);
 
   return (
     <Flex direction="column">
