@@ -61,11 +61,19 @@ runs:
         VERCEL_PROJECT_ID: ${{ inputs.VERCEL_PROJECT_ID }}
       run: |
         if [ "${{ inputs.PRODUCTION }}" = "true" ]; then
-          timeout 300 vercel deploy --prod --token=${{ inputs.VERCEL_TOKEN }} 2>&1 | tee /tmp/vercel-deploy.log
-          production_url=$(grep 'Production:' /tmp/vercel-deploy.log | grep -oE 'https://[^[:space:]]+' | head -1)
+          timeout 300 vercel deploy --prod --token=${{ inputs.VERCEL_TOKEN }} 2>&1 | tee /tmp/vercel-deploy.log || true
+          if ! grep -qE 'Deployment completed|Ready in' /tmp/vercel-deploy.log; then
+            echo "Vercel deployment failed — no success indicator found in logs"
+            exit 1
+          fi
+          production_url=$(grep -E 'Production' /tmp/vercel-deploy.log | grep -oE 'https://[^[:space:]]+' | head -1)
           echo "production_url=$production_url" >> $GITHUB_OUTPUT
         else
-          timeout 300 vercel deploy --token=${{ inputs.VERCEL_TOKEN }} 2>&1 | tee /tmp/vercel-deploy.log
+          timeout 300 vercel deploy --token=${{ inputs.VERCEL_TOKEN }} 2>&1 | tee /tmp/vercel-deploy.log || true
+          if ! grep -qE 'Deployment completed|Ready in' /tmp/vercel-deploy.log; then
+            echo "Vercel deployment failed — no success indicator found in logs"
+            exit 1
+          fi
           preview_url=$(grep -oE 'https://[a-zA-Z0-9-]+\.vercel\.app' /tmp/vercel-deploy.log | head -1)
           inspect_url=$(grep -oE 'https://vercel\.com/[^[:space:]]+' /tmp/vercel-deploy.log | head -1)
           echo "preview_url=$preview_url" >> $GITHUB_OUTPUT
