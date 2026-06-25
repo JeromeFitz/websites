@@ -1,7 +1,14 @@
 import { describe, expect, it } from "vitest";
 
-describe("Section", () => {
-  it("placeholder: moved to @jeromefitz/ds", () => {
-    expect(true).toBe(true);
+describe("section barrel exports", () => {
+  it("exports all section components from the index", async () => {
+    const section = await import("./index");
+    expect(section.SectionContent).toBeDefined();
+    expect(section.SectionHeader).toBeDefined();
+    expect(section.SectionHeaderContent).toBeDefined();
+    expect(section.SectionHeaderTitle).toBeDefined();
+    expect(section.SectionHero).toBeDefined();
+    expect(section.SectionWrapper).toBeDefined();
+    expect(section.Tags).toBeDefined();
   });
 });
