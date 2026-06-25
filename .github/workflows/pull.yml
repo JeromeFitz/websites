@@ -157,6 +157,7 @@ jobs:
         if: always()
         uses: davelosert/vitest-coverage-report-action@v2
         with:
+          github-token: ${{ secrets.GH_BOT_TOKEN }}
           name: "@jeromefitz/shared"
           json-final-path: packages/shared/coverage/coverage-final.json
           json-summary-path: packages/shared/coverage/coverage-summary.json
@@ -167,6 +168,7 @@ jobs:
         if: always()
         uses: davelosert/vitest-coverage-report-action@v2
         with:
+          github-token: ${{ secrets.GH_BOT_TOKEN }}
           name: "next-notion"
           json-final-path: packages/next-notion/coverage/coverage-final.json
           json-summary-path: packages/next-notion/coverage/coverage-summary.json
@@ -177,6 +179,7 @@ jobs:
         if: always()
         uses: davelosert/vitest-coverage-report-action@v2
         with:
+          github-token: ${{ secrets.GH_BOT_TOKEN }}
           name: "jeromefitzgerald.com"
           json-final-path: sites/jeromefitzgerald.com/coverage/coverage-final.json
           json-summary-path: sites/jeromefitzgerald.com/coverage/coverage-summary.json
