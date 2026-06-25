@@ -20,7 +20,6 @@ import { fonts } from "./_next/fonts";
 import { PreloadResources } from "./_next/preload-resources";
 // import { KitchenSink } from './_v16/kitchen-sink'
 
-import "@radix-ui/themes/styles.css";
 import "./styles--globals.css";
 
 export const metadata: Metadata = {
