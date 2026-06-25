@@ -48,7 +48,7 @@
     "semantic-release": "25.0.5",
     "syncpack": "15.3.2",
     "tsdown": "0.22.3",
-    "turbo": "2.9.19-canary.9",
+    "turbo": "2.10.0",
     "typescript": "6.0.3"
   },
   "devEngines": {

@@ -298,8 +298,8 @@ importers:
         specifier: 0.22.3
         version: 0.22.3(@arethetypeswrong/core@0.18.3)(publint@0.3.21)(tsx@4.22.4)(typescript@6.0.3)
       turbo:
-        specifier: 2.9.19-canary.9
-        version: 2.9.19-canary.9
+        specifier: 2.10.0
+        version: 2.10.0
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -3665,33 +3665,33 @@ packages:
       '@types/react-dom':
         optional: true
 
-  '@turbo/darwin-64@2.9.19-canary.9':
-    resolution: {integrity: sha512-2WNVYbuuaWzkp3zGWVVc3dw3T3XLSwWa9lU/R+loR+6Ifpw6JJpg++Xf+ElV01lbv0OUyr1UHXjbLzforQbMpw==}
+  '@turbo/darwin-64@2.10.0':
+    resolution: {integrity: sha512-EwvHThXzpY0KGd1/NAmuewI5D+aVa3Rl/OlxE36yfjUKb/+ySrfJrSlEFt8aD1OXwnnaHnQnPKHFndor0Zxlsg==}
     cpu: [x64]
     os: [darwin]
 
-  '@turbo/darwin-arm64@2.9.19-canary.9':
-    resolution: {integrity: sha512-e4YMssqSBtIYCD2I91RsBlEoaiY7lgHOAR1Op3lCz88QsU0pFZ9mTa9fVxF9In4glb4oIgSRvgj0loicmsH+ig==}
+  '@turbo/darwin-arm64@2.10.0':
+    resolution: {integrity: sha512-9d2fTyyG0lf5Wq1bwJA9qUaeecViMkLcdctWaMMmCkxZ/JqypmqOwK3W6vmejeKVgkr06gSoiX8bD+xN5Jpxcg==}
     cpu: [arm64]
     os: [darwin]
 
-  '@turbo/linux-64@2.9.19-canary.9':
-    resolution: {integrity: sha512-VNKDPKj3coSH/hOYZxcwJDTz7XK2mGhl3xAnaKPS3zH5omQirHk9UjncTgCoCl2hZurZXMJVIyl39vyrzfBK5w==}
+  '@turbo/linux-64@2.10.0':
+    resolution: {integrity: sha512-sZBtjMuufitanjzi6UssoUpJMnnPlLMcdcJj3m3ptNsSq31Xh7MnjhwA5nWvLDTfEFg8GPcbYFXMo8vSdKRfqQ==}
     cpu: [x64]
     os: [linux]
 
-  '@turbo/linux-arm64@2.9.19-canary.9':
-    resolution: {integrity: sha512-CALC2CxvDd/wu58d4te4RVdUcl7Hh+rz/aw/rRHLPRGP4JeWpZSwbXVY5ig8LVpL7eQidXB1eReYelqdmVpX9A==}
+  '@turbo/linux-arm64@2.10.0':
+    resolution: {integrity: sha512-vkq/Z8R+1DQ+kifWFa810IjRy2NNBVvha3cg9sWA3nFh6nnGrHSMnnJKrzH7c/No9kq4Jb55Ru44YKsCSBgrKg==}
     cpu: [arm64]
     os: [linux]
 
-  '@turbo/windows-64@2.9.19-canary.9':
-    resolution: {integrity: sha512-Cjxs5YKbUDWTxiPDn5gStUMzrGLWFIW5ACenU362H/dbRNIhNIv/EQhSqmL91NnRvwu3YdrRj25LL6u1zWZECQ==}
+  '@turbo/windows-64@2.10.0':
+    resolution: {integrity: sha512-CRUEguLWxFQHptYZS7HjPhNhAFawfea07iR+xAQ5e4klgLrPCMdexBkXwSCwOxqTFknJ7RZFN3gOaADsw+Gttg==}
     cpu: [x64]
     os: [win32]
 
-  '@turbo/windows-arm64@2.9.19-canary.9':
-    resolution: {integrity: sha512-M5QXi1GP6/bp66+QX3Vhzf/PcwQ6sr5CmB+zbczp4k/IGATGbUXuAyL5AkYcnBAJ3X2sY9l8m9/yNGYGVhD4WQ==}
+  '@turbo/windows-arm64@2.10.0':
+    resolution: {integrity: sha512-dVHGaf9F8twzgibcBqKoADT/LLqf9++jDb+hq/LPWWaOmRpp4M+/pVOm7vy4z9D++xg8eaxWLT0+wQxFwhYu9A==}
     cpu: [arm64]
     os: [win32]
 
@@ -6569,8 +6569,8 @@ packages:
     resolution: {integrity: sha512-1h/Lnq9yajKY2PEbBadPXj3VxsDDu844OnaAo52UVmIzIvwwtBPIuNvkjuzBlTWpfJyUbG3ez0KSBibQkj4ojg==}
     engines: {node: '>=0.6.11 <=0.7.0 || >=0.7.3'}
 
-  turbo@2.9.19-canary.9:
-    resolution: {integrity: sha512-5m0SWcTfgAeptKxnZs9PVwzUY9ult/sY7VnW8RX+cQ1/uN0fBPKJ0pFUosqXmstD7MZ0ZviNWhO/LkCSgbwulw==}
+  turbo@2.10.0:
+    resolution: {integrity: sha512-o016H9PPtuH2deb3mh3Vci3Avfi9UYgM/RONQisY7HnloupP0IFSbFS3gFYJgFJP8nwBrByHWFQIDa8T2zIXPw==}
     hasBin: true
 
   tw-animate-css@1.4.0:
@@ -9107,22 +9107,22 @@ snapshots:
       '@types/react': 19.2.17
       '@types/react-dom': 19.2.3(@types/react@19.2.17)
 
-  '@turbo/darwin-64@2.9.19-canary.9':
+  '@turbo/darwin-64@2.10.0':
     optional: true
 
-  '@turbo/darwin-arm64@2.9.19-canary.9':
+  '@turbo/darwin-arm64@2.10.0':
     optional: true
 
-  '@turbo/linux-64@2.9.19-canary.9':
+  '@turbo/linux-64@2.10.0':
     optional: true
 
-  '@turbo/linux-arm64@2.9.19-canary.9':
+  '@turbo/linux-arm64@2.10.0':
     optional: true
 
-  '@turbo/windows-64@2.9.19-canary.9':
+  '@turbo/windows-64@2.10.0':
     optional: true
 
-  '@turbo/windows-arm64@2.9.19-canary.9':
+  '@turbo/windows-arm64@2.10.0':
     optional: true
 
   '@tybys/wasm-util@0.10.2':
@@ -11953,14 +11953,14 @@ snapshots:
 
   tunnel@0.0.6: {}
 
-  turbo@2.9.19-canary.9:
+  turbo@2.10.0:
     optionalDependencies:
-      '@turbo/darwin-64': 2.9.19-canary.9
-      '@turbo/darwin-arm64': 2.9.19-canary.9
-      '@turbo/linux-64': 2.9.19-canary.9
-      '@turbo/linux-arm64': 2.9.19-canary.9
-      '@turbo/windows-64': 2.9.19-canary.9
-      '@turbo/windows-arm64': 2.9.19-canary.9
+      '@turbo/darwin-64': 2.10.0
+      '@turbo/darwin-arm64': 2.10.0
+      '@turbo/linux-64': 2.10.0
+      '@turbo/linux-arm64': 2.10.0
+      '@turbo/windows-64': 2.10.0
+      '@turbo/windows-arm64': 2.10.0
 
   tw-animate-css@1.4.0: {}
 
