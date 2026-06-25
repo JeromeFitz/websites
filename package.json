@@ -22,11 +22,11 @@
     "lint:ci": "oxlint . --format=github --quiet",
     "lint:fix": "oxlint --fix .",
     "lint:packages": "syncpack lint",
-    "preinstall": "npx only-allow pnpm",
+    "preinstall": "pnpm dlx only-allow pnpm",
     "prepare": "pnpm is-in-ci || pnpm dlx husky@9.1.7",
     "semantic-release": "pnpm run semantic-release:mono",
     "semantic-release:dry": "pnpm semantic-release:mono --dry-run",
-    "semantic-release:mono": "pnpm --filter jeromefitzgerald.com -r --workspace-concurrency=1 exec -- npx --no-install semantic-release",
+    "semantic-release:mono": "pnpm --filter jeromefitzgerald.com -r --workspace-concurrency=1 exec -- pnpm dlx semantic-release",
     "turbo": "TURBO_TELEMETRY_DISABLED=1 turbo"
   },
   "devDependencies": {
