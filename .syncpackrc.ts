@@ -17,6 +17,13 @@ export default {
       packages: ["**"],
     },
     {
+      dependencies: ["postcss", "typescript"],
+      dependencyTypes: ["dev", "prod"],
+      label: "range:  override-managed",
+      packages: ["**"],
+      range: "^",
+    },
+    {
       dependencies: ["**"],
       dependencyTypes: ["dev", "local", "overrides", "prod"],
       label: "types:  !peer",
