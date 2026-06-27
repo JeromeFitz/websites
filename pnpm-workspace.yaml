@@ -12,29 +12,20 @@ overrides:
   "@babel/core@^7.0.0": ^7.29.6
   "@babel/helpers@^7.0.0": ^7.29.2
   "@babel/runtime@^7.0.0": ^7.29.2
-  "@octokit/plugin-paginate-rest@^14.0.0": ^14.0.0
   "@semantic-release/npm@^13.0.0": ^13.1.5
-  brace-expansion@^1.0.0: 1.1.13
   cross-spawn@^7.0.0: ^7.0.6
-  elliptic@^6.0.0: ^6.6.1
   esbuild@^0.18.0: ^0.28.0
   esbuild@^0.25.0: ^0.28.0
   flatted@^3.0.0: ^3.4.2
   handlebars@^4.0.0: ^4.7.9
-  h3@^1.0.0: ^1.15.9
   js-yaml@^4.0.0: ^4.2.0
-  launch-editor@^2.0.0: ^2.14.1
   micromatch@^4.0.0: ^4.0.8
   nanoid@^3.0.0: ^3.3.8
-  pbkdf2@^3.0.0: ^3.1.5
   picomatch@^2.0.0: ^2.3.2
   postcss@^8.0.0: ^8.5.15
-  preact@^10.0.0: ^10.26.10
   semver@^5.0.0: ^5.7.2
   semver@^6.0.0: ^6.3.1
   semver@^7.0.0: ^7.7.4
-  sha.js@^2.0.0: ^2.4.12
-  shell-quote@^1.0.0: ^1.8.4
   typescript: ^6.0.3
   undici@^6.0.0: ^6.27.0
   undici@^7.0.0: ^7.28.0
