@@ -19,7 +19,7 @@
     },
     {
       "enabled": false,
-      "matchDepTypes": ["overrides"],
+      "matchFileNames": ["pnpm-workspace.yaml"],
       "matchUpdateTypes": ["major"]
     },
     {
