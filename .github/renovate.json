@@ -1,7 +1,7 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "automerge": false,
-  "baseBranches": ["main"],
+  "baseBranchPatterns": ["main"],
   "branchPrefix": "deps/",
   "commitMessage": "{{{commitMessagePrefix}}} {{{commitMessageAction}}} {{{commitMessageTopic}}} {{{commitMessageExtra}}} {{{commitMessageSuffix}}}",
   "commitMessageAction": "",
@@ -12,10 +12,11 @@
   "dependencyDashboard": true,
   "extends": [":semanticCommitsDisabled"],
   "labels": ["📦️ Dependencies"],
-  "node": {
-    "enabled": false
-  },
   "packageRules": [
+    {
+      "matchCategories": ["node"],
+      "enabled": false
+    },
     {
       "enabled": false,
       "matchDepTypes": ["overrides"],
@@ -31,15 +32,14 @@
       "commitMessageTopic": " {{depName}}",
       "groupName": "github actions :octocat: ",
       "groupSlug": "github-actions",
-      "matchPackagePatterns": ["^actions"]
+      "matchPackageNames": ["/^actions/"]
     },
     {
       "commitMessagePrefix": "⬆️  (deps)",
       "commitMessageSuffix": "[b]",
-      "excludePackageNames": ["@radix-ui/themes"],
       "groupName": "radix-ui 🌐 ",
       "groupSlug": "radix-ui",
-      "matchPackagePatterns": ["^@radix-ui/"]
+      "matchPackageNames": ["!@radix-ui/themes", "/^@radix-ui//"]
     },
     {
       "commitMessagePrefix": "⬆️  (deps)",
@@ -53,8 +53,7 @@
     },
     {
       "commitMessagePrefix": "📦  (deps-dev)",
-      "excludePackageNames": ["@types/node", "@types/react", "@types/react-dom"],
-      "matchPackageNames": ["@types/*"]
+      "matchPackageNames": ["@types/*", "!@types/node", "!@types/react", "!@types/react-dom"]
     },
     {
       "allowedVersions": "<25",
@@ -85,10 +84,9 @@
     },
     {
       "commitMessagePrefix": "📦  (deps-dev)",
-      "excludePackageNames": [],
       "groupName": "tailwind 🌬️ ",
       "groupSlug": "tailwind",
-      "matchPackagePatterns": ["^@tailwind/", "tailwind*"]
+      "matchPackageNames": ["/^@tailwind//", "/tailwind*/"]
     },
     {
       "assignees": ["JeromeFitz"],
@@ -101,11 +99,9 @@
     },
     {
       "commitMessagePrefix": "📦  (deps-dev)",
-      "excludePackageNames": [],
       "groupName": "vitest",
       "groupSlug": "vitest",
-      "matchPackageNames": ["vitest"],
-      "matchPackagePatterns": ["^@vitest/"]
+      "matchPackageNames": ["vitest", "/^@vitest//"]
     },
     {
       "assignees": ["JeromeFitz"],
