@@ -3,10 +3,9 @@
   "automerge": false,
   "baseBranchPatterns": ["main"],
   "branchPrefix": "deps/",
-  "commitMessage": "{{{commitMessagePrefix}}} {{{commitMessageAction}}} {{{commitMessageTopic}}} {{{commitMessageExtra}}} {{{commitMessageSuffix}}}",
-  "commitMessageAction": "",
+  "commitMessageAction": "(deps)",
   "commitMessageExtra": "",
-  "commitMessagePrefix": "⬆️  (deps)",
+  "commitMessagePrefix": "⬆️",
   "commitMessageSuffix": "",
   "commitMessageTopic": " {{depName}}@{{#if isPinDigest}}{{{newDigest}}}{{else}}{{#if isMajor}}{{{newVersion}}} 🧨 {{else}}{{#if isSingleVersion}}{{{newVersion}}}{{else}}{{#if newValue}}{{{newValue}}}{{else}}@{{{newDigest}}}{{/if}}{{/if}}{{/if}}{{/if}}",
   "dependencyDashboard": true,
@@ -27,42 +26,47 @@
       "minimumReleaseAge": "1 day"
     },
     {
-      "commitMessageExtra": "{{depName}}@{{#if isPinDigest}}{{{newDigest}}}{{else}}{{#if isMajor}}{{{newVersion}}} 🧨 {{else}}{{#if isSingleVersion}}{{{newVersion}}}{{else}}{{#if newValue}}{{{newValue}}}{{else}}{{{newDigest}}}{{/if}}{{/if}}{{/if}}{{/if}}",
-      "commitMessagePrefix": "👷  (actions)",
-      "commitMessageTopic": " {{depName}}",
+      "commitMessageAction": "(actions)",
+      "commitMessagePrefix": "👷",
       "groupName": "github actions :octocat: ",
       "groupSlug": "github-actions",
       "matchPackageNames": ["/^actions/"]
     },
     {
-      "commitMessagePrefix": "⬆️  (deps)",
+      "commitMessageAction": "(deps)",
+      "commitMessagePrefix": "⬆️",
       "commitMessageSuffix": "[b]",
       "groupName": "radix-ui 🌐 ",
       "groupSlug": "radix-ui",
       "matchPackageNames": ["!@radix-ui/themes", "/^@radix-ui//"]
     },
     {
-      "commitMessagePrefix": "⬆️  (deps)",
+      "commitMessageAction": "(deps)",
+      "commitMessagePrefix": "⬆️",
       "groupName": "react ⚛️ ",
       "groupSlug": "react",
       "matchPackageNames": ["@types/react", "@types/react-dom", "react", "react-dom"]
     },
     {
-      "commitMessagePrefix": "📦  (deps-peer)",
+      "commitMessageAction": "(deps-peer)",
+      "commitMessagePrefix": "📦",
       "matchDepTypes": ["peerDependencies"]
     },
     {
-      "commitMessagePrefix": "📦  (deps-dev)",
+      "commitMessageAction": "(deps-dev)",
+      "commitMessagePrefix": "📦",
       "matchPackageNames": ["@types/*", "!@types/node", "!@types/react", "!@types/react-dom"]
     },
     {
       "allowedVersions": "<25",
-      "commitMessagePrefix": "📦  (deps-dev)",
+      "commitMessageAction": "(deps-dev)",
+      "commitMessagePrefix": "📦",
       "matchDepTypes": ["devDependencies", "dependencies"],
       "matchPackageNames": ["@types/node"]
     },
     {
-      "commitMessagePrefix": "📦  (deps-dev)",
+      "commitMessageAction": "(deps-dev)",
+      "commitMessagePrefix": "📦",
       "matchDepTypes": ["devDependencies"],
       "matchPackageNames": [
         "@jeromefitz/*",
@@ -79,18 +83,21 @@
       ]
     },
     {
-      "commitMessagePrefix": "⬆️  (deps)",
+      "commitMessageAction": "(deps)",
+      "commitMessagePrefix": "⬆️",
       "matchDepTypes": ["dependencies"]
     },
     {
-      "commitMessagePrefix": "📦  (deps-dev)",
+      "commitMessageAction": "(deps-dev)",
+      "commitMessagePrefix": "📦",
       "groupName": "tailwind 🌬️ ",
       "groupSlug": "tailwind",
       "matchPackageNames": ["/^@tailwind//", "/tailwind*/"]
     },
     {
       "assignees": ["JeromeFitz"],
-      "commitMessagePrefix": "⬆️  (deps)",
+      "commitMessageAction": "(deps)",
+      "commitMessagePrefix": "⬆️",
       "commitMessageSuffix": "[b]",
       "groupName": "radix-ui/themes 🎨 ",
       "groupSlug": "radix-ui/themes",
@@ -98,7 +105,8 @@
       "reviewers": ["JeromeFitz"]
     },
     {
-      "commitMessagePrefix": "📦  (deps-dev)",
+      "commitMessageAction": "(deps-dev)",
+      "commitMessagePrefix": "📦",
       "groupName": "vitest",
       "groupSlug": "vitest",
       "matchPackageNames": ["vitest", "/^@vitest//"]
@@ -132,7 +140,6 @@
   "prFooter": "<!-- COMMIT_BODY_TEXT_END -->",
   "prHeader": "<!-- COMMIT_BODY_TEXT_BEGIN -->",
   "prHourlyLimit": 2,
-  "prTitle": "{{{commitMessagePrefix}}} {{{commitMessageAction}}} {{{commitMessageTopic}}} {{{commitMessageExtra}}} {{{commitMessageSuffix}}} [skip ci]",
   "rebaseWhen": "conflicted",
   "semanticCommits": "disabled"
 }
