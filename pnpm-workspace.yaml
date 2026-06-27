@@ -9,7 +9,7 @@ allowBuilds:
 autoInstallPeers: false
 lockfile: true
 overrides:
-  "@babel/core@^7.0.0": ^7.29.6
+  "@babel/core@^7.0.0": ^8.0.0
   "@babel/helpers@^7.0.0": ^7.29.2
   "@babel/runtime@^7.0.0": ^7.29.2
   "@semantic-release/npm@^13.0.0": ^13.1.5
