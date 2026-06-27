@@ -1,7 +1,9 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "automerge": false,
-  "baseBranches": ["main"],
+  "baseBranchPatterns": [
+    "main"
+  ],
   "branchPrefix": "deps/",
   "commitMessage": "{{{commitMessagePrefix}}} {{{commitMessageAction}}} {{{commitMessageTopic}}} {{{commitMessageExtra}}} {{{commitMessageSuffix}}}",
   "commitMessageAction": "",
@@ -12,17 +14,26 @@
   "dependencyDashboard": true,
   "extends": [":semanticCommitsDisabled"],
   "labels": ["📦️ Dependencies"],
-  "node": {
-    "enabled": false
-  },
   "packageRules": [
     {
-      "enabled": false,
-      "matchDepTypes": ["overrides"],
-      "matchUpdateTypes": ["major"]
+      "matchCategories": [
+        "node"
+      ],
+      "enabled": false
     },
     {
-      "matchDatasources": ["npm"],
+      "enabled": false,
+      "matchDepTypes": [
+        "overrides"
+      ],
+      "matchUpdateTypes": [
+        "major"
+      ]
+    },
+    {
+      "matchDatasources": [
+        "npm"
+      ],
       "minimumReleaseAge": "1 day"
     },
     {
@@ -31,36 +42,45 @@
       "commitMessageTopic": " {{depName}}",
       "groupName": "github actions :octocat: ",
       "groupSlug": "github-actions",
-      "matchPackagePatterns": ["^actions"]
+      "matchPackageNames": [
+        "/^actions/"
+      ]
     },
     {
       "commitMessagePrefix": "⬆️  (deps)",
       "commitMessageSuffix": "[b]",
-      "excludePackageNames": ["@radix-ui/themes"],
       "groupName": "radix-ui 🌐 ",
       "groupSlug": "radix-ui",
-      "matchPackagePatterns": ["^@radix-ui/"]
+      "matchPackageNames": ["!@radix-ui/themes", "/^@radix-ui//"]
     },
     {
       "commitMessagePrefix": "⬆️  (deps)",
       "groupName": "react ⚛️ ",
       "groupSlug": "react",
-      "matchPackageNames": ["@types/react", "@types/react-dom", "react", "react-dom"]
+      "matchPackageNames": [
+        "@types/react",
+        "@types/react-dom",
+        "react",
+        "react-dom"
+      ]
     },
     {
       "commitMessagePrefix": "📦  (deps-peer)",
-      "matchDepTypes": ["peerDependencies"]
+      "matchDepTypes": [
+        "peerDependencies"
+      ]
     },
     {
       "commitMessagePrefix": "📦  (deps-dev)",
-      "excludePackageNames": ["@types/node", "@types/react", "@types/react-dom"],
-      "matchPackageNames": ["@types/*"]
+      "matchPackageNames": ["@types/*",  "!@types/node", "!@types/react", "!@types/react-dom"]
     },
     {
       "allowedVersions": "<25",
       "commitMessagePrefix": "📦  (deps-dev)",
       "matchDepTypes": ["devDependencies", "dependencies"],
-      "matchPackageNames": ["@types/node"]
+      "matchPackageNames": [
+        "@types/node"
+      ]
     },
     {
       "commitMessagePrefix": "📦  (deps-dev)",
@@ -81,55 +101,65 @@
     },
     {
       "commitMessagePrefix": "⬆️  (deps)",
-      "matchDepTypes": ["dependencies"]
+      "matchDepTypes": [
+        "dependencies"
+      ]
     },
     {
       "commitMessagePrefix": "📦  (deps-dev)",
-      "excludePackageNames": [],
       "groupName": "tailwind 🌬️ ",
       "groupSlug": "tailwind",
-      "matchPackagePatterns": ["^@tailwind/", "tailwind*"]
+      "matchPackageNames": ["/^@tailwind//",  "/tailwind*/"]
     },
     {
-      "assignees": ["JeromeFitz"],
+      "assignees": [
+        "JeromeFitz"
+      ],
       "commitMessagePrefix": "⬆️  (deps)",
       "commitMessageSuffix": "[b]",
       "groupName": "radix-ui/themes 🎨 ",
       "groupSlug": "radix-ui/themes",
       "matchPackageNames": ["@radix-ui/themes"],
-      "reviewers": ["JeromeFitz"]
+      "reviewers": [
+        "JeromeFitz"
+      ]
     },
     {
       "commitMessagePrefix": "📦  (deps-dev)",
-      "excludePackageNames": [],
       "groupName": "vitest",
       "groupSlug": "vitest",
-      "matchPackageNames": ["vitest"],
-      "matchPackagePatterns": ["^@vitest/"]
+      "matchPackageNames": [
+        "vitest",
+        "/^@vitest//"
+      ]
     },
     {
-      "assignees": ["JeromeFitz"],
-      "labels": ["📦 Dependencies 💥 Breaking 💥", "🛑️ Do Not Merge"],
+      "assignees": [
+        "JeromeFitz"
+      ],
+      "labels": [
+        "📦 Dependencies 💥 Breaking 💥",
+        "🛑️ Do Not Merge"
+      ],
       "matchUpdateTypes": ["major"],
-      "reviewers": ["JeromeFitz"]
+      "reviewers": [
+        "JeromeFitz"
+      ]
     },
     {
       "automerge": true,
       "automergeStrategy": "squash",
       "automergeType": "pr",
-      "matchUpdateTypes": ["minor", "patch", "pin", "digest"]
+      "matchUpdateTypes": [
+        "minor",
+        "patch",
+        "pin",
+        "digest"
+      ]
     },
     {
       "enabled": false,
-      "matchPackageNames": [
-        "@semantic-release/commit-analyzer",
-        "brace-expansion",
-        "brace-expansion*",
-        "nanoid",
-        "nanoid*",
-        "semver",
-        "semver*"
-      ]
+      "matchPackageNames": ["@semantic-release/commit-analyzer", "brace-expansion", "brace-expansion*", "nanoid", "nanoid*", "semver", "semver*"]
     }
   ],
   "prBodyColumns": ["Package", "Update", "Type", "Change"],
