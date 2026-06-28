@@ -18,6 +18,7 @@
     "clean:install": "TURBO_TELEMETRY_DISABLED=1 turbo run clean && ./scripts/clean.sh",
     "format": "oxfmt --check",
     "format:fix": "oxfmt .",
+    "inspect": "pnpm node-modules-inspector",
     "lint": "oxlint .",
     "lint:ci": "oxlint . --format=github --quiet",
     "lint:fix": "oxlint --fix .",

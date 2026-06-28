@@ -1,12 +1,16 @@
 import { defineConfig } from "node-modules-inspector";
 
+import pkg from "./package.json";
+
+const rootDevDeps = Object.keys(pkg.devDependencies);
+
 export default defineConfig({
   defaultFilters: {
     excludeDts: true,
     excludeWorkspace: true,
     excludes: [
+      ...rootDevDeps,
       "*eslint*",
-      "*lint-staged*",
       "*oxfmt*",
       "*oxlint*",
       "*rolldown*",
@@ -17,6 +21,5 @@ export default defineConfig({
   defaultSettings: {
     moduleTypeSimple: true,
   },
-
   publint: true,
 });
