@@ -75,7 +75,7 @@
   "devDependencies": {
     "@jeromefitz/ds": "workspace:*",
     "@jeromefitz/next-config": "workspace:*",
-    "@jeromefitz/utils": "4.1.0",
+    "@jeromefitz/utils": "4.2.0",
     "@notionhq/client": "5.22.0",
     "@radix-ui/themes": "3.3.0",
     "@testing-library/dom": "10.4.1",
@@ -111,7 +111,7 @@
     "vitest": "4.1.9"
   },
   "peerDependencies": {
-    "@notionhq/client": "^2.2.14 || ^3.0.0 || ^4.0.0 || ^5.0.0",
+    "@notionhq/client": "^5.0.0",
     "@upstash/ratelimit": "^1.0.0 || ^2.0.0",
     "@upstash/redis": "^1.28.3",
     "@vercel/analytics": "^2.0.1",
@@ -142,8 +142,8 @@
     "@floating-ui/react-dom": "2.1.8",
     "@floating-ui/utils": "0.2.11",
     "@heroicons/react": "2.2.0",
-    "@jeromefitz/utils": "4.0.1",
-    "@next/env": "16.2.9",
+    "@jeromefitz/utils": "4.2.0",
+    "@next/env": "16.2.10",
     "@octokit/auth-token": "6.0.0",
     "@octokit/core": "7.0.6",
     "@octokit/endpoint": "11.0.3",
@@ -225,7 +225,7 @@
     "get-nonce": "1.0.1",
     "is-in-ci": "2.0.0",
     "json-with-bigint": "3.5.8",
-    "next": "16.2.9",
+    "next": "16.2.10",
     "node-emoji": "2.2.0",
     "radix-ui": "1.6.0",
     "react-remove-scroll": "2.7.2",
