@@ -34,11 +34,11 @@
     "@plaiceholder/next": "3.0.0",
     "fast-json-stable-stringify": "2.1.0",
     "lodash-es": "4.18.1",
-    "next": "16.2.9",
+    "next": "16.2.10",
     "plaiceholder": "3.0.0",
     "react": "19.2.7",
     "react-dom": "19.2.7",
-    "sharp": "0.35.2",
+    "sharp": "0.35.3",
     "zod": "4.4.3"
   }
 }
