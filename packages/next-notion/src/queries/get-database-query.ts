@@ -3,7 +3,7 @@ import { envClient, envServer } from "@jeromefitz/next-config";
 import { addDays, format } from "date-fns";
 // import { cache } from 'react'
 
-import { notion } from "../helper";
+import { getDataSourceId, notion } from "../helper";
 import type { FilterType, SortItem } from "../notion.types";
 import type { SegmentInfo } from "../utils/get-segment-info";
 
@@ -24,7 +24,7 @@ const isPublishedAnd = envClient.IS_DEV
       created_time: {
         after: "2025-01-01T00:00:00.000Z",
       },
-      timestamp: "created_time",
+      timestamp: "created_time" as const,
     }
   : {
       checkbox: {
@@ -67,8 +67,10 @@ const getDatabaseQuery = async ({
   const filter = filterData;
   const sorts = sortsData;
 
+  const data_source_id = await getDataSourceId(database_id ? database_id : DATABASE_ID);
+
   const options = {
-    database_id: database_id ? database_id : DATABASE_ID,
+    data_source_id,
     filter,
     page_size: 50,
     sorts,
@@ -79,7 +81,7 @@ const getDatabaseQuery = async ({
    * @ref https://github.com/makenotion/notion-sdk-js/issues/147
    */
   // @ts-expect-error Property 'is_not_empty' is missing in type
-  let _response = await notion.databases.query(options);
+  let _response = await notion.dataSources.query(options);
   let _results = _response?.results;
   let i = 0;
   while (
@@ -108,8 +110,8 @@ const getDatabaseQuery = async ({
   ) {
     console.dir(`(╯°□°)╯︵ ┻━┻  ${slug} api request: has_more (${i})`);
 
-    // @ts-ignore
-    _response = await notion.databases.query({
+    // @ts-expect-error Property 'is_not_empty' is missing in type
+    _response = await notion.dataSources.query({
       ...options,
       start_cursor: _response.next_cursor,
     });
@@ -188,13 +190,15 @@ const getDatabaseQueryByDateRange = async ({
   const filter = filterData;
   const sorts = sortsData;
 
+  const data_source_id = await getDataSourceId(database_id ? database_id : DATABASE_ID);
+
   const options = {
-    database_id: database_id ? database_id : DATABASE_ID,
+    data_source_id,
     filter,
     sorts,
   };
 
-  const response = await notion.databases.query(options);
+  const response = await notion.dataSources.query(options);
 
   return response;
 };

@@ -76,7 +76,7 @@
     "@jeromefitz/ds": "workspace:*",
     "@jeromefitz/next-config": "workspace:*",
     "@jeromefitz/utils": "4.1.0",
-    "@notionhq/client": "4.0.2",
+    "@notionhq/client": "5.22.0",
     "@radix-ui/themes": "3.3.0",
     "@testing-library/dom": "10.4.1",
     "@testing-library/react": "16.3.2",
@@ -111,7 +111,7 @@
     "vitest": "4.1.9"
   },
   "peerDependencies": {
-    "@notionhq/client": "^2.2.14 || ^3.0.0 || ^4.0.0",
+    "@notionhq/client": "^2.2.14 || ^3.0.0 || ^4.0.0 || ^5.0.0",
     "@upstash/ratelimit": "^1.0.0 || ^2.0.0",
     "@upstash/redis": "^1.28.3",
     "@vercel/analytics": "^2.0.1",
