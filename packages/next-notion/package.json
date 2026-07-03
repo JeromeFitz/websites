@@ -102,7 +102,7 @@
     "@floating-ui/react-dom": "2.1.8",
     "@floating-ui/utils": "0.2.11",
     "@heroicons/react": "2.2.0",
-    "@jeromefitz/utils": "4.0.1",
+    "@jeromefitz/utils": "4.1.0",
     "@octokit/auth-token": "6.0.0",
     "@octokit/core": "7.0.6",
     "@octokit/endpoint": "11.0.3",

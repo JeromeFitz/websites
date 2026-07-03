@@ -8,6 +8,15 @@ import type { NotionSeoImage } from "./types";
 
 const notion = new Client({ auth: envServer.NOTION_API_KEY });
 
+async function getDataSourceId(database_id: string): Promise<string> {
+  const database = await notion.databases.retrieve({ database_id });
+  const data_source_id = "data_sources" in database ? database.data_sources[0]?.id : undefined;
+  if (!data_source_id) {
+    throw new Error(`No data source found for Notion database ${database_id}`);
+  }
+  return data_source_id;
+}
+
 const checkForMore = true;
 const page_size = 50;
 /**
@@ -83,21 +92,22 @@ export async function getNotionBlocks({ block_id }: { block_id: string }) {
 }
 
 export async function getNotionItems(segment: Segment) {
+  const data_source_id = await getDataSourceId(getBySegment[segment].notionDatabaseId);
   const options = {
-    database_id: getBySegment[segment].notionDatabaseId,
+    data_source_id,
     filter: {
       and: [filter_isPublishedAnd],
     },
     page_size,
   };
 
-  let _response = await notion.databases.query(options);
+  let _response = await notion.dataSources.query(options);
   let _results = _response?.results;
   let i = 0;
   if (checkForMore) {
     while (_response.has_more && _response.next_cursor) {
       console.info(`getNotionItems(${segment}) > has_more: ${i}`);
-      _response = await notion.databases.query({
+      _response = await notion.dataSources.query({
         ...options,
         start_cursor: _response.next_cursor,
       });
@@ -119,8 +129,9 @@ export async function getNotionSeoImage({
   segment: Segment;
   slug: string;
 }): Promise<NotionSeoImage> {
+  const data_source_id = await getDataSourceId(getBySegment[segment].notionDatabaseId);
   const options = {
-    database_id: getBySegment[segment].notionDatabaseId,
+    data_source_id,
     filter: {
       and: [
         {
@@ -135,7 +146,7 @@ export async function getNotionSeoImage({
     page_size,
   };
 
-  const _response: any = await notion.databases.query(options);
+  const _response: any = await notion.dataSources.query(options);
   return {
     "SEO.Image": _response.results[0].properties["SEO.Image"],
     "Slug.Preview": _response.results[0].properties["Slug.Preview"],

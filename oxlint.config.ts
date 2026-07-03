@@ -9,7 +9,7 @@ export default defineConfig({
   },
   overrides: [overridePlaywright, overrideVitest],
   options: {
-    maxWarnings: 50,
+    maxWarnings: 48,
     reportUnusedDisableDirectives: "allow",
     typeAware: false,
     typeCheck: false,
