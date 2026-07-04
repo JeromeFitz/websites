@@ -13,27 +13,26 @@ minimumReleaseAgeExclude:
   - ccommit
   - eslint@10.6.0
 overrides:
-  "@babel/core@^7.0.0": ^7.29.6
-  "@babel/helpers@^7.0.0": ^7.29.2
-  "@babel/runtime@^7.0.0": ^7.29.2
+  "@babel/core@^7.0.0": ^7.29.7
+  "@babel/helpers@^7.0.0": ^7.29.7
+  "@babel/runtime@^7.0.0": ^7.29.7
   "@semantic-release/npm@^13.0.0": ^13.1.5
   cross-spawn@^7.0.0: ^7.0.6
-  esbuild@^0.18.0: ^0.28.0
-  esbuild@^0.25.0: ^0.28.0
+  esbuild@^0.18.0: ^0.28.1
+  esbuild@^0.25.0: ^0.28.1
   flatted@^3.0.0: ^3.4.2
   handlebars@^4.0.0: ^4.7.9
   js-yaml@^4.0.0: ^4.2.0
   micromatch@^4.0.0: ^4.0.8
-  nanoid@^3.0.0: ^3.3.8
+  nanoid@^3.0.0: ^3.3.15
   picomatch@^2.0.0: ^2.3.2
-  postcss@^8.0.0: ^8.5.15
-  semver@^5.0.0: ^5.7.2
+  postcss@^8.0.0: ^8.5.16
   semver@^6.0.0: ^6.3.1
-  semver@^7.0.0: ^7.7.4
+  semver@^7.0.0: ^7.8.5
   typescript: ^6.0.3
   undici@^6.0.0: ^6.27.0
   undici@^7.0.0: ^7.28.0
-  ws@^8.0.0: ^8.20.0
+  ws@^8.0.0: ^8.21.0
 packages:
   - "config/*"
   - "packages/*"
