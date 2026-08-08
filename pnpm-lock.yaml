@@ -234,8 +234,8 @@ importers:
   .:
     devDependencies:
       '@arethetypeswrong/core':
-        specifier: 0.18.4
-        version: 0.18.4
+        specifier: 0.18.5
+        version: 0.18.5
       '@jeromefitz/conventional-gitmoji':
         specifier: 5.2.0
         version: 5.2.0(lodash-es@4.18.1)
@@ -286,7 +286,7 @@ importers:
         version: 15.3.2
       tsdown:
         specifier: 0.22.4
-        version: 0.22.4(@arethetypeswrong/core@0.18.4)(publint@0.3.21)(tsx@4.22.4)(typescript@6.0.3)
+        version: 0.22.4(@arethetypeswrong/core@0.18.5)(publint@0.3.21)(tsx@4.22.4)(typescript@6.0.3)
       turbo:
         specifier: 2.10.4
         version: 2.10.4
@@ -1380,8 +1380,8 @@ packages:
   '@andrewbranch/untar.js@1.0.3':
     resolution: {integrity: sha512-Jh15/qVmrLGhkKJBdXlK1+9tY4lZruYjsgkDFj08ZmDiWVBLJcqkok7Z0/R0In+i1rScBpJlSvrTS2Lm41Pbnw==}
 
-  '@arethetypeswrong/core@0.18.4':
-    resolution: {integrity: sha512-M5F0ePyN6h2Z6XxRiyIPqjGbltotXLjR0CKA0uKspsDu0QmgTNYvRb4RSQPMUs2ZXZHCCYpbaZbFbYOXLxCjUA==}
+  '@arethetypeswrong/core@0.18.5':
+    resolution: {integrity: sha512-9ytjzGwxjm9Uz7I9avfbt5vlQt6uk9uRRESzJjqrznl6WKvI6dwYTo+vJ3U02Wrq/mR3iql/PzhvHhKdJIAjDQ==}
     engines: {node: '>=20'}
 
   '@babel/code-frame@7.29.7':
@@ -7876,7 +7876,7 @@ snapshots:
 
   '@andrewbranch/untar.js@1.0.3': {}
 
-  '@arethetypeswrong/core@0.18.4':
+  '@arethetypeswrong/core@0.18.5':
     dependencies:
       '@andrewbranch/untar.js': 1.0.3
       '@loaderkit/resolve': 1.0.6
@@ -13443,7 +13443,7 @@ snapshots:
 
   ts-toolbelt@9.6.0: {}
 
-  tsdown@0.22.4(@arethetypeswrong/core@0.18.4)(publint@0.3.21)(tsx@4.22.4)(typescript@6.0.3):
+  tsdown@0.22.4(@arethetypeswrong/core@0.18.5)(publint@0.3.21)(tsx@4.22.4)(typescript@6.0.3):
     dependencies:
       ansis: 4.3.1
       cac: 7.0.0
@@ -13461,7 +13461,7 @@ snapshots:
       tree-kill: 1.2.2
       unconfig-core: 7.5.0
     optionalDependencies:
-      '@arethetypeswrong/core': 0.18.4
+      '@arethetypeswrong/core': 0.18.5
       publint: 0.3.21
       tsx: 4.22.4
       typescript: 6.0.3
