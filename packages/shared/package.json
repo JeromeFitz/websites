@@ -108,7 +108,7 @@
     "tailwind-merge": "3.6.0",
     "title": "4.0.1",
     "valid-url": "1.0.9",
-    "vitest": "4.1.10"
+    "vitest": "4.1.11"
   },
   "peerDependencies": {
     "@notionhq/client": "^5.0.0",

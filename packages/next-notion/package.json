@@ -82,7 +82,7 @@
     "react-dom": "19.2.7",
     "server-only": "0.0.1",
     "uuid": "14.0.1",
-    "vitest": "4.1.10"
+    "vitest": "4.1.11"
   },
   "peerDependencies": {
     "@date-fns/tz": "^1.1.0",
