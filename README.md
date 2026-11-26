@@ -1,3 +1,9 @@
+> [!IMPORTANT]
+> Have moved to a different private repo on this.
+> Website still up at: https://jeromefitzgerald.com
+>
+> Will be OSS at some point.
+
 # jeromefitzgerald.com
 
 - 👱🏻️ **Website**: [`jeromefitzgerald.com`](https://jeromefitzgerald.com)
